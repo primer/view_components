@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.files         = Dir["CHANGELOG.md", "LICENSE.txt", "README.md", "lib/**/*"]
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency     "activesupport", [">= 5.0.0", "< 7.0"]
+  spec.add_runtime_dependency     "rails", [">= 5.0.0", "< 7.0"]
   spec.add_runtime_dependency     "view_component", [">= 2.0.0", "< 3.0"]
   spec.add_development_dependency "minitest", "= 5.6.0"
   spec.add_development_dependency "rubocop", "= 0.88"
