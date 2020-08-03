@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "test_helper"
-require "primer/fetch_or_fallback_helper"
 
 class Primer::FetchOrFallbackHelperTest < Minitest::Test
   include Primer::FetchOrFallbackHelper
