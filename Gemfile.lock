@@ -2,12 +2,28 @@ PATH
   remote: .
   specs:
     primer_view_components (0.0.1)
+      view_component (>= 2.0.0, < 3.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (6.0.3.2)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+      zeitwerk (~> 2.2, >= 2.2.2)
+    concurrent-ruby (1.1.6)
+    i18n (1.8.5)
+      concurrent-ruby (~> 1.0)
     minitest (5.14.1)
     rake (12.3.2)
+    thread_safe (0.3.6)
+    tzinfo (1.2.7)
+      thread_safe (~> 0.1)
+    view_component (2.18.0)
+      activesupport (>= 5.0.0, < 7.0)
+    zeitwerk (2.4.0)
 
 PLATFORMS
   ruby

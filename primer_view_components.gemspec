@@ -22,4 +22,6 @@ Gem::Specification.new do |spec|
 
   spec.files         = Dir["CHANGELOG.md", "LICENSE.txt", "README.md", "lib/**/*"]
   spec.require_paths = ["lib"]
+
+  spec.add_runtime_dependency     "view_component", [">= 2.0.0", "< 3.0"]
 end
