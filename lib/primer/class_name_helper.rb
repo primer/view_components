@@ -18,7 +18,7 @@ module Primer
           end
         when Array
           aux = class_names(*class_name)
-          classes << class_names(*class_name) if aux != "" && !aux.nil?
+          classes << class_names(*class_name) if aux != ""
         end
       end
 
