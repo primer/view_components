@@ -2,5 +2,5 @@
 
 # Base configurations
 
-require_relative "./component"
-require_relative "./base_component"
+# require_relative "./component"
+# require_relative "./base_component"

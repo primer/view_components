@@ -88,7 +88,7 @@ module Primer
       def validated_class_names(classes)
         return unless classes.present?
 
-        if Rails.development?
+        if ENV["RAILS_ENV"] == "development"
           invalid_class_names =
             classes.split(" ").each_with_object([]) do |class_name, memo|
               if INVALID_CLASS_NAME_PREFIXES.any? { |prefix| class_name.start_with?(prefix) }
