@@ -2,16 +2,17 @@
   "name": "demo",
   "private": true,
   "dependencies": {
-    "@rails/ujs": "^6.0.0",
-    "turbolinks": "^5.2.0",
+    "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
-    "@rails/actioncable": "^6.0.0"
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "5.1.1",
+    "turbolinks": "^5.2.0"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^v6.0.0-rc.20",
     "@storybook/addon-actions": "^v6.0.0-rc.20",
-    "@storybook/addon-docs": "^v6.0.0-rc.20",
     "@storybook/addon-controls": "^v6.0.0-rc.20",
+    "@storybook/addon-docs": "^v6.0.0-rc.20",
     "@storybook/server": "^v6.0.0-rc.20",
     "webpack-dev-server": "^3.11.0"
   },
