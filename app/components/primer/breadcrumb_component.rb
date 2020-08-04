@@ -21,33 +21,31 @@
 # ```
 ##
 module Primer
-  module Breadcrumb
-    class Component < Primer::Component
-      include ViewComponent::Slotable
+  class BreadcrumbComponent < Primer::Component
+    include ViewComponent::Slotable
 
-      with_slot :item, collection: true, class_name: "BreadcrumbItem"
+    with_slot :item, collection: true, class_name: "BreadcrumbItem"
 
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] = :nav
-        @kwargs[:aria] = { label: "Breadcrumb" }
-      end
+    def initialize(**kwargs)
+      @kwargs = kwargs
+      @kwargs[:tag] = :nav
+      @kwargs[:aria] = { label: "Breadcrumb" }
+    end
 
-      def render?
-        items.any?
-      end
+    def render?
+      items.any?
+    end
 
-      class BreadcrumbItem < ViewComponent::Slot
-        attr_reader :href, :kwargs
+    class BreadcrumbItem < ViewComponent::Slot
+      attr_reader :href, :kwargs
 
-        def initialize(href: nil, selected: false, **kwargs)
-          @href, @kwargs = href, kwargs
+      def initialize(href: nil, selected: false, **kwargs)
+        @href, @kwargs = href, kwargs
 
-          @href = nil if selected
-          @kwargs[:tag] = :li
-          @kwargs[:"aria-current"] = "page" if selected
-          @kwargs[:classes] = "breadcrumb-item #{@kwargs[:classes]}"
-        end
+        @href = nil if selected
+        @kwargs[:tag] = :li
+        @kwargs[:"aria-current"] = "page" if selected
+        @kwargs[:classes] = "breadcrumb-item #{@kwargs[:classes]}"
       end
     end
   end
