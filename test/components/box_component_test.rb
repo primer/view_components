@@ -3,7 +3,7 @@
 require "test_helper"
 
 class PrimerBoxComponentTest < Minitest::Test
-  include ViewComponent::TestHelpers
+  include Primer::ComponentTestHelpers
 
   def test_renders_content
     render_inline(Primer::BoxComponent.new) do

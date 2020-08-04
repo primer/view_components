@@ -3,7 +3,7 @@
 require "test_helper"
 
 class PrimerBaseComponentTest < Minitest::Test
-  include ViewComponent::TestHelpers
+  include Primer::ComponentTestHelpers
 
   def test_renders_title
     render_inline(Primer::BaseComponent.new(tag: :div, title: "title"))
