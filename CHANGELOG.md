@@ -12,6 +12,11 @@
 
     *Manuel Puyol*
 
-* Add BoxComponent, ButtonComponent, LabelComponent, CounterComponent
+* Add:
+    * BoxComponent
+    * ButtonComponent
+    * CounterComponent
+    * LabelComponent
+    * ProgressBarComponent
 
     *Manuel Puyol*
