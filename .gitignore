@@ -9,3 +9,4 @@
 /vendor/
 /test/log/
 **/*.stories.json
+**/node_modules/
