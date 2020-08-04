@@ -18,6 +18,7 @@
     * Counter
     * Flex
     * FlexItem
+    * Heading
     * Label
     * ProgressBar
 
