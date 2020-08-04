@@ -12,6 +12,6 @@
 
     *Manuel Puyol*
 
-* Add BoxComponent
+* Add BoxComponent, ButtonComponent
 
     *Manuel Puyol*
