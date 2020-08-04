@@ -24,5 +24,6 @@
     * Link
     * ProgressBar
     * State
+    * Text
 
     *Manuel Puyol*
