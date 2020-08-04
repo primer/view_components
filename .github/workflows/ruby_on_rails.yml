@@ -35,5 +35,7 @@ jobs:
       run: bundle exec rake
       env:
         RAILS_VERSION: ${{ matrix.rails_version }}
-    # - name: Run liners
-    #   run: bundle exec rubocop
+    - name: Run liners
+      run: bundle exec rubocop
+      env:
+        RAILS_VERSION: ${{ matrix.rails_version }}
