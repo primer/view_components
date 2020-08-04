@@ -7,3 +7,4 @@ AllCops:
   Exclude:
     - "test/tmp/**/*"
     - "vendor/**/*"
+    - "**/node_modules/**/*"
