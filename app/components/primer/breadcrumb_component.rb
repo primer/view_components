@@ -5,7 +5,7 @@
 #
 # ## Example
 #
-# The `Primer::Breadcrumb::Component` uses the [Slots API](https://github.com/github/view_component#slots-experimental) and at least one slot is required for the component to render. Each slot can accept the following parameters:
+# The `Primer::BreadcrumbComponent` uses the [Slots API](https://github.com/github/view_component#slots-experimental) and at least one slot is required for the component to render. Each slot can accept the following parameters:
 #
 # 1. `href` (string). The URL to link to.
 # 2. `selected` (boolean, default=false). Flag indicating whether or not the item is selected and not rendered as a link.
@@ -13,7 +13,7 @@
 # Note that if if both `href` and `selected: true` are passed in, `href` will be ignored and the item will not be rendered as a link.
 #
 # ```ruby
-# <%= render(Primer::Breadcrumb::Component.new) do |component| %>
+# <%= render(Primer::BreadcrumbComponent.new) do |component| %>
 #   <% component.slot(:item, href: "/") do %>Home<% end %>
 #   <% component.slot(:item, href: "/about") do %>About<% end %>
 #   <% component.slot(:item, selected: true) do %>Team<% end %>
