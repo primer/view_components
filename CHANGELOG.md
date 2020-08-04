@@ -20,6 +20,7 @@
     * FlexItem
     * Heading
     * Label
+    * Layout
     * ProgressBar
 
     *Manuel Puyol*

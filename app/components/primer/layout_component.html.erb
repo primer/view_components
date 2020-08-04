@@ -1,0 +1,23 @@
+<%= render(
+  Primer::FlexComponent.new(
+    **{
+      classes: "gutter-condensed gutter-lg",
+      direction: (@responsive ? [:column, nil, :row] : nil)
+    }.merge(@args)
+ )) do %>
+  <% if @side == :left %>
+    <%= render Primer::BaseComponent.new(tag: :div, classes: "flex-shrink-0", col: (@responsive ? [12, nil, 3] : 3), mb: (@responsive ? [4, nil, 0] : nil)) do %>
+      <%= sidebar %>
+    <% end %>
+  <% end %>
+
+  <%= render Primer::BaseComponent.new(tag: :div, classes: "flex-shrink-0", col: (@responsive ? [12, nil, 9] : 9), mb: (@responsive ? [4, nil, 0] : nil)) do %>
+    <%= main %>
+  <% end %>
+
+  <% if @side == :right %>
+    <%= render Primer::BaseComponent.new(tag: :div, classes: "flex-shrink-0", col: (@responsive ? [12, nil, 3] : 3)) do %>
+      <%= sidebar %>
+    <% end %>
+  <% end %>
+<% end %>
