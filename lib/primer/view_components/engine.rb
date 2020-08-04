@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Primer
   module ViewComponents
     class Engine < ::Rails::Engine
@@ -6,4 +8,4 @@ module Primer
   end
 end
 
-require "#{Primer::ViewComponents::Engine.root.to_s}/app/components/primer/view_components.rb"
+require "#{Primer::ViewComponents::Engine.root}/app/components/primer/view_components.rb"

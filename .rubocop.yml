@@ -6,3 +6,4 @@ inherit_gem:
 AllCops:
   Exclude:
     - "test/tmp/**/*"
+    - "vendor/**/*"
