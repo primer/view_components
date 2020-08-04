@@ -16,6 +16,7 @@
     * Box
     * Button
     * Counter
+    * Details
     * Flex
     * FlexItem
     * Heading
