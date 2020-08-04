@@ -12,12 +12,13 @@
 
     *Manuel Puyol*
 
-* Add:
-    * BoxComponent
-    * ButtonComponent
-    * CounterComponent
-    * FlexComponent
-    * LabelComponent
-    * ProgressBarComponent
+* Add components:
+    * Box
+    * Button
+    * Counter
+    * Flex
+    * FlexItem
+    * Label
+    * ProgressBar
 
     *Manuel Puyol*
