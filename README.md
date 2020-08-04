@@ -14,7 +14,7 @@ In `Gemfile`, add:
 gem "primer_view_components"
 ```
 
-In `config/application.rb`, add:
+In `config/application.rb`, add **after the application definition**
 
 ```bash
 require "primer/view_components/engine"
