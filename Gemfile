@@ -5,8 +5,6 @@ source "https://rubygems.org"
 gemspec
 rails_version = "#{ENV['RAILS_VERSION'] || '6.0.3.2'}"
 
-ruby "2.6.3"
-
 gem "rake", "~> 12.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", rails_version == "master" ? { github: "rails/rails" } : rails_version
