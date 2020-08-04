@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
   story(:primary) do
     controls do
