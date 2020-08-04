@@ -16,6 +16,7 @@
     * BoxComponent
     * ButtonComponent
     * CounterComponent
+    * FlexComponent
     * LabelComponent
     * ProgressBarComponent
 
