@@ -12,6 +12,18 @@
 
     *Manuel Puyol*
 
-* Add BoxComponent, ButtonComponent, LabelComponent, CounterComponent
+* Add components:
+    * Box
+    * Button
+    * Counter
+    * Flex
+    * FlexItem
+    * Heading
+    * Label
+    * Layout
+    * Link
+    * ProgressBar
+    * State
+    * Text
 
     *Manuel Puyol*
