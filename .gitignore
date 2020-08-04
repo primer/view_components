@@ -10,3 +10,4 @@
 /test/log/
 **/*.stories.json
 **/node_modules/
+*.log
