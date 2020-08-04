@@ -1,4 +1,6 @@
-require_relative 'lib/primer/view_components/version'
+lib = File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "primer/view_components/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "primer_view_components"
@@ -20,6 +22,13 @@ Gem::Specification.new do |spec|
       "public gem pushes."
   end
 
-  spec.files         = Dir["CHANGELOG.md", "LICENSE.txt", "README.md", "lib/**/*"]
+  spec.files         = Dir["CHANGELOG.md", "LICENSE.txt", "README.md", "lib/**/*", "app/**/*"]
   spec.require_paths = ["lib"]
+
+  spec.add_runtime_dependency     "rails", [">= 5.0.0", "< 7.0"]
+  spec.add_runtime_dependency     "view_component", [">= 2.0.0", "< 3.0"]
+  spec.add_development_dependency "minitest", "= 5.6.0"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "rubocop", "= 0.88"
+  spec.add_development_dependency "rubocop-github", "~> 0.13.0"
 end

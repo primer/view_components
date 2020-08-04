@@ -6,3 +6,5 @@
 /pkg/
 /spec/reports/
 /tmp/
+/vendor/
+/test/log/
