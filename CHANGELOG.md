@@ -14,6 +14,7 @@
 
 * Add components:
     * Box
+    * Breadcrumb
     * Button
     * Counter
     * Details
