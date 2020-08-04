@@ -1,4 +1,4 @@
-require_relative 'lib/primer/view_components/version'
+require "primer/view_components/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "primer_view_components"
