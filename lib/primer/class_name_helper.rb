@@ -11,14 +11,14 @@ module Primer
       args.each do |class_name|
         case class_name
         when String
-          classes << class_name if class_name != ""
+          classes << class_name if class_name.present?
         when Hash
           class_name.each do |key, val|
             classes << key if val
           end
         when Array
           aux = class_names(*class_name)
-          classes << class_names(*class_name) if aux != ""
+          classes << class_names(*class_name).presence
         end
       end
 
