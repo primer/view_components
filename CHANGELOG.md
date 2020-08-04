@@ -21,6 +21,7 @@
     * Heading
     * Label
     * Layout
+    * Link
     * ProgressBar
 
     *Manuel Puyol*
