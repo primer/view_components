@@ -8,3 +8,4 @@
 /tmp/
 /vendor/
 /test/log/
+**/*.stories.json
