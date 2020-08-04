@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "@storybook/addon-a11y": "^v6.0.0-rc.20",
+    "@storybook/addon-actions": "^v6.0.0-rc.20",
+    "@storybook/addon-docs": "^v6.0.0-rc.20",
+    "@storybook/addon-controls": "^v6.0.0-rc.20",
+    "@storybook/server": "^v6.0.0-rc.20",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "storybook": "start-storybook"
+  }
+}
