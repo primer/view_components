@@ -18,6 +18,7 @@
     * Counter
     * Details
     * Dropdown
+    * Flash
     * Flex
     * FlexItem
     * Heading
