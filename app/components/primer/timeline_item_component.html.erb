@@ -7,7 +7,7 @@
 
   <% if badge %>
     <%= render Primer::BaseComponent.new(**badge.kwargs) do %>
-      <%= badge.content %>
+      <%= octicon badge.icon %>
     <% end %>
   <% end %>
 

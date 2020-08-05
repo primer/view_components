@@ -6,6 +6,10 @@ require "active_support/core_ext"
 
 require "view_component/engine"
 
+# Octicons
+
+require "octicons_helper/helper"
+
 # Helpers
 
 require "primer/class_name_helper"

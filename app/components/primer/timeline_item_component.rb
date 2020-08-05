@@ -40,8 +40,10 @@ module Primer
     end
 
     class Badge < Primer::Slot
-      attr_reader :kwargs
-      def initialize(**kwargs)
+      attr_reader :kwargs, :icon
+      def initialize(icon:, **kwargs)
+        @icon = icon
+
         @kwargs = kwargs
         @kwargs[:tag] = :div
         @kwargs[:classes] = class_names(
