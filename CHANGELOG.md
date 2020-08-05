@@ -15,8 +15,12 @@
 * Add components:
     * BorderBox
     * Box
+    * Breadcrumb
     * Button
     * Counter
+    * Details
+    * Dropdown
+    * Flash
     * Flex
     * FlexItem
     * Heading
@@ -26,5 +30,6 @@
     * ProgressBar
     * State
     * Text
+    * UnderlineNav
 
     *Manuel Puyol*

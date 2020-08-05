@@ -1,0 +1,8 @@
+<%= render Primer::BaseComponent.new(**@kwargs) do %>
+  <ol>
+    <% items.each do |item| %>
+      <%# The <li> and <a> need to be on the same line to prevent unwanted whitespace %>
+      <%= render Primer::BaseComponent.new(**item.kwargs) do %><%- if item.href.present? %><a href="<%= item.href %>"><%= item.content.strip %></a><%- else %><%= item.content.strip %><%- end %><%- end %>
+    <% end %>
+  </ol>
+<% end %>

@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 ##
-# The `Primer::ProgressBar::Component` can take the following arguments:
+# The `Primer::ProgressBarComponent` can take the following arguments:
 #
 # 1. `size` (string). Can be "small" or "large". Increases the height of the progress bar.
 # 2. `percentage` (number). Used to set the width of the completed bar.
 #
 # ```ruby
-#   <%= render(Primer::ProgressBar::Component.new(percentage: 50)) %>
+#   <%= render(Primer::ProgressBarComponent.new(percentage: 50)) %>
 # ```
 ##
 module Primer
