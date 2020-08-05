@@ -5,8 +5,8 @@ class Primer::TimelineItemComponentStories < ViewComponent::Storybook::Stories
 
   story(:timeline_item) do
     content do |component|
-      component.slot(:badge) { "Badge" }
-      component.slot(:body) { "Body" }
+      component.slot(:badge, bg: :green, color: :white) { "✓" }
+      component.slot(:body) { "Success" }
     end
   end
 end

@@ -1,9 +1,16 @@
 <%= render Primer::BaseComponent.new(**kwargs) do %>
+  <% if avatar %>
+    <%= render Primer::BaseComponent.new(**avatar.kwargs) do %>
+      <%= avatar.content %>
+    <% end %>
+  <% end %>
+
   <% if badge %>
     <%= render Primer::BaseComponent.new(**badge.kwargs) do %>
       <%= badge.content %>
     <% end %>
   <% end %>
+
   <% if body %>
     <%= render Primer::BaseComponent.new(**body.kwargs) do %>
       <%= body.content %>

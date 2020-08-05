@@ -4,6 +4,7 @@ module Primer
   class TimelineItemComponent < Primer::Component
     include ViewComponent::Slotable
 
+    with_slot :avatar, class_name: "TimelineItemAvatar"
     with_slot :badge, class_name: "TimelineItemBadge"
     with_slot :body, class_name: "TimelineItemBody"
 
@@ -19,6 +20,18 @@ module Primer
 
     def render?
       badge.present? || body.present?
+    end
+
+    class TimelineItemAvatar < Primer::Slot
+      attr_reader :kwargs
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:tag] = :div
+        @kwargs[:classes] = class_names(
+          "TimelineItem-avatar",
+          kwargs[:classes]
+        )
+      end
     end
 
     class TimelineItemBadge < Primer::Slot
