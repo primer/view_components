@@ -35,7 +35,7 @@ module Primer
       @kwargs[:classes] =
         class_names(
           @kwargs[:classes],
-          "Subhead hx_Subhead--responsive",
+          "Subhead",
           "Subhead--spacious": spacious,
           "border-bottom-0": hide_border
         )
