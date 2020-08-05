@@ -20,7 +20,7 @@ module Primer
     end
 
     def render?
-      badge.present? || body.present?
+      avatar.present? || badge.present? || body.present?
     end
 
     class TimelineItemAvatar < Primer::Slot
