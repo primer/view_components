@@ -1,0 +1,26 @@
+<%= render Primer::BaseComponent.new(**@kwargs) do %>
+  <% if title %>
+    <div class="Box-header">
+      <%= header.content %>
+    </div>
+  <% end %>
+  <% if body %>
+    <div class="Box-body">
+      <%= body.content %>
+    </div>
+  <% end %>
+  <% if rows.any? %>
+    <ul>
+      <% rows.each do |row| %>
+        <li class="<%= row.classes %>">
+          <%= row.content %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if footer %>
+    <div class="Box-footer">
+      <%= footer %>
+    </div>
+  <% end %>
+<% end %>
