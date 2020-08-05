@@ -9,11 +9,12 @@ module Primer
     with_slot :body, class_name: "TimelineItemBody"
 
     attr_reader :kwargs
-    def initialize(**kwargs)
+    def initialize(condensed: false, **kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :div
       @kwargs[:classes] = class_names(
         "TimelineItem",
+        condensed ? "TimelineItem--condensed" : "",
         kwargs[:classes]
       )
     end
