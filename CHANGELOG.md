@@ -30,6 +30,7 @@
     * State
     * Subhead
     * Text
+    * TimelineItem
     * UnderlineNav
 
     *Manuel Puyol*

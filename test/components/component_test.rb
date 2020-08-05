@@ -25,8 +25,8 @@ class PrimerComponentTest < Minitest::Test
       [Primer::ProgressBarComponent, {}, proc { |component| component.slot(:item)  }],
       [Primer::StateComponent, { title: "Open" }],
       [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
-      [Primer::TimelineItemComponent, {}, proc { |component| component.slot(:badge) { "Foo" } }],
       [Primer::TextComponent, {}],
+      [Primer::TimelineItemComponent, {}, proc { |component| component.slot(:badge) { "Foo" } }],
       [Primer::UnderlineNavComponent, {}],
     ]
 
