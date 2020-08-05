@@ -8,3 +8,9 @@
 /tmp/
 /vendor/
 /test/log/
+**/*.stories.json
+**/node_modules/
+*.log
+test/demo/public/packs/
+test/demo/tmp/
+test/demo/config/master.key

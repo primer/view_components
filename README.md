@@ -16,8 +16,20 @@ gem "primer_view_components"
 
 In `config/application.rb`, add **after the application definition**
 
-```bash
+```ruby
 require "primer/view_components/engine"
+```
+
+## Storybook
+
+To run storybook:
+
+```bash
+cd test/demo
+bundle exec rake view_component_storybook:write_stories_json
+
+bin/rails s
+yarn storybook
 ```
 
 ## Contributing

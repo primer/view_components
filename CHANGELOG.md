@@ -4,7 +4,7 @@
 
     *Manuel Puyol, Joel Hawksley*
 
-* Add dummy app to test
+* Add demo app to test
 
     *Manuel Puyol*
 

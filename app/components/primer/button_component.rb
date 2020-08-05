@@ -45,7 +45,7 @@ module Primer
       @kwargs[:classes] = class_names(
         "btn",
         kwargs[:classes],
-        BUTTON_TYPE_MAPPINGS[fetch_or_fallback(BUTTON_TYPE_OPTIONS, button_type, DEFAULT_BUTTON_TYPE)],
+        BUTTON_TYPE_MAPPINGS[fetch_or_fallback(BUTTON_TYPE_OPTIONS, button_type.to_sym, DEFAULT_BUTTON_TYPE)],
         VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)],
         group_item ? "BtnGroup-item" : ""
       )
