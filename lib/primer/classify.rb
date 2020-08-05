@@ -22,6 +22,13 @@ module Primer
     VERTICAL_ALIGN_KEY = :vertical_align
     WORD_BREAK_KEY = :word_break
     TEXT_KEYS = [:text_align, :font_weight]
+    FLEX_KEY = :flex
+    FLEX_GROW_KEY = :flex_grow
+    FLEX_SHRINK_KEY = :flex_shrink
+    ALIGN_SELF_KEY = :align_self
+    WIDTH_KEY = :width
+    HEIGHT_KEY = :height
+
 
     BOOLEAN_MAPPINGS = {
       underline: {
@@ -85,7 +92,13 @@ module Primer
         WORD_BREAK_KEY,
         DIRECTION_KEY,
         JUSTIFY_CONTENT_KEY,
-        ALIGN_ITEMS_KEY
+        ALIGN_ITEMS_KEY,
+        FLEX_KEY,
+        FLEX_GROW_KEY,
+        FLEX_SHRINK_KEY,
+        ALIGN_SELF_KEY,
+        WIDTH_KEY,
+        HEIGHT_KEY
       ]
     ).freeze
 
@@ -179,6 +192,18 @@ module Primer
               memo << "flex#{breakpoint}-justify-#{formatted_value}"
             elsif key == ALIGN_ITEMS_KEY
               memo << "flex#{breakpoint}-items-#{val.to_s.gsub("flex_", "")}"
+            elsif key == FLEX_KEY
+              memo << "flex-#{val}"
+            elsif key == FLEX_GROW_KEY
+              memo << "flex-grow-#{val}"
+            elsif key == FLEX_SHRINK_KEY
+              memo << "flex-shrink-#{val}"
+            elsif key == ALIGN_SELF_KEY
+              memo << "flex-self-#{val}"
+            elsif key == WIDTH_KEY || key == HEIGHT_KEY
+              if val == :fit || val == :fill
+                memo << "#{key}-#{val}"
+              end
             elsif TEXT_KEYS.include?(key)
               memo << "text-#{dasherized_val}"
             elsif TYPOGRAPHY_KEYS.include?(key)
