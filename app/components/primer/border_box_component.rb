@@ -4,7 +4,7 @@ module Primer
   class BorderBoxComponent < Primer::Component
     include ViewComponent::Slotable
 
-    with_slot :title, :body, :footer
+    with_slot :header, :body, :footer
     with_slot :row, collection: true, class_name: "BorderBoxRow"
 
     def initialize(**kwargs)
@@ -17,6 +17,9 @@ module Primer
     end
 
     class BorderBoxRow < ViewComponent::Slot
+      include ClassNameHelper
+
+      attr_reader :kwargs
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] = :li

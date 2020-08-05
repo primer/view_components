@@ -1,5 +1,5 @@
 <%= render Primer::BaseComponent.new(**@kwargs) do %>
-  <% if title %>
+  <% if header %>
     <div class="Box-header">
       <%= header.content %>
     </div>
@@ -12,15 +12,15 @@
   <% if rows.any? %>
     <ul>
       <% rows.each do |row| %>
-        <li class="<%= row.classes %>">
+        <%= render Primer::BaseComponent.new(**row.kwargs) do %>
           <%= row.content %>
-        </li>
+        <% end %>
       <% end %>
     </ul>
   <% end %>
   <% if footer %>
     <div class="Box-footer">
-      <%= footer %>
+      <%= footer.content %>
     </div>
   <% end %>
 <% end %>
