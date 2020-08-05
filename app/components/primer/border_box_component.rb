@@ -22,8 +22,7 @@ module Primer
       rows.any? || header.present? || body.present? || footer.present?
     end
 
-    class Header < ViewComponent::Slot
-      include ClassNameHelper
+    class Header < Primer::Slot
 
       attr_reader :kwargs
       def initialize(**kwargs)
@@ -36,8 +35,7 @@ module Primer
       end
     end
 
-    class Body < ViewComponent::Slot
-      include ClassNameHelper
+    class Body < Primer::Slot
 
       attr_reader :kwargs
       def initialize(**kwargs)
@@ -50,8 +48,7 @@ module Primer
       end
     end
 
-    class Footer < ViewComponent::Slot
-      include ClassNameHelper
+    class Footer < Primer::Slot
 
       attr_reader :kwargs
       def initialize(**kwargs)
@@ -64,8 +61,7 @@ module Primer
       end
     end
 
-    class Row < ViewComponent::Slot
-      include ClassNameHelper
+    class Row < Primer::Slot
 
       attr_reader :kwargs
       def initialize(**kwargs)
