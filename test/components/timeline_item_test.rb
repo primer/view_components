@@ -17,7 +17,7 @@ class PrimerTimelineItemComponentTest < Minitest::Test
 
   def test_defaults_to_not_condensed
     render_inline(Primer::TimelineItemComponent.new) do |component|
-      component.slot(:avatar) { "Avatar" }
+      component.slot(:body) { "Body" }
     end
 
     assert_selector("div.TimelineItem")
@@ -26,7 +26,7 @@ class PrimerTimelineItemComponentTest < Minitest::Test
 
   def test_adds_condensed_modifier
     render_inline(Primer::TimelineItemComponent.new(condensed: true)) do |component|
-      component.slot(:avatar) { "Avatar" }
+      component.slot(:body) { "Body" }
     end
 
     assert_selector("div.TimelineItem")
@@ -35,10 +35,11 @@ class PrimerTimelineItemComponentTest < Minitest::Test
 
   def test_renders_avatar
     render_inline(Primer::TimelineItemComponent.new) do |component|
-      component.slot(:avatar) { "Avatar" }
+      component.slot(:avatar, alt: "mock", src: "mock")
     end
 
-    assert_selector(".TimelineItem-avatar", text: "Avatar")
+    assert_selector(".TimelineItem-avatar")
+    assert_selector(".avatar.avatar-6")
   end
 
   def test_renders_body
@@ -51,9 +52,9 @@ class PrimerTimelineItemComponentTest < Minitest::Test
 
   def test_renders_badge
     render_inline(Primer::TimelineItemComponent.new) do |component|
-      component.slot(:badge) { "Badge" }
+      component.slot(:badge, icon: :check)
     end
 
-    assert_selector(".TimelineItem-badge", text: "Badge")
+    assert_selector(".TimelineItem-badge")
   end
 end

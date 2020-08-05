@@ -23,11 +23,11 @@ class PrimerComponentTest < Minitest::Test
       [Primer::LabelComponent, { title: "Hello!" }],
       [Primer::LayoutComponent, {}],
       [Primer::LinkComponent, { href: "https://www.google.com" }],
-      [Primer::ProgressBarComponent, {}, proc { |component| component.slot(:item)  }],
+      [Primer::ProgressBarComponent, {}, proc { |component| component.slot(:item) }],
       [Primer::StateComponent, { title: "Open" }],
       [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
       [Primer::TextComponent, {}],
-      [Primer::TimelineItemComponent, {}, proc { |component| component.slot(:badge) { "Foo" } }],
+      [Primer::TimelineItemComponent, {}, proc { |component| component.slot(:body) { "Foo" } }],
       [Primer::UnderlineNavComponent, {}],
     ]
 

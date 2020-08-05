@@ -25,7 +25,7 @@ module Primer
 
     class Avatar < Primer::Slot
       attr_reader :kwargs, :alt, :src, :size
-      def initialize(alt:, src:, size: 6, **kwargs)
+      def initialize(alt: nil, src: nil, size: 6, **kwargs)
         @alt = alt
         @src = src
         @size = size
@@ -41,7 +41,7 @@ module Primer
 
     class Badge < Primer::Slot
       attr_reader :kwargs, :icon
-      def initialize(icon:, **kwargs)
+      def initialize(icon: nil, **kwargs)
         @icon = icon
 
         @kwargs = kwargs
