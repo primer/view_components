@@ -8,6 +8,7 @@ class PrimerComponentTest < Minitest::Test
   def test_primer_components_provide_a_consistent_interface
     # Components with any arguments necessary to make them render
     components_with_args = [
+      [Primer::AvatarComponent, { alt: "github", src: "https://github.com/github.png", size: 2 }],
       [Primer::BaseComponent, { tag: :div }],
       [Primer::BorderBoxComponent, {}, proc { |component| component.slot(:header) { "Foo" }  }],
       [Primer::BoxComponent, {}],
