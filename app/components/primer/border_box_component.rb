@@ -4,8 +4,10 @@ module Primer
   class BorderBoxComponent < Primer::Component
     include ViewComponent::Slotable
 
-    with_slot :header, :body, :footer
-    with_slot :row, collection: true, class_name: "BorderBoxRow"
+    with_slot :header, class_name: "Header"
+    with_slot :body, class_name: "Body"
+    with_slot :footer, class_name: "Footer"
+    with_slot :row, collection: true, class_name: "Row"
 
     def initialize(**kwargs)
       @kwargs = kwargs
@@ -20,7 +22,49 @@ module Primer
       rows.any? || header.present? || body.present? || footer.present?
     end
 
-    class BorderBoxRow < ViewComponent::Slot
+    class Header < ViewComponent::Slot
+      include ClassNameHelper
+
+      attr_reader :kwargs
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:tag] = :li
+        @kwargs[:classes] = class_names(
+          "Box-header",
+          kwargs[:classes]
+        )
+      end
+    end
+
+    class Body < ViewComponent::Slot
+      include ClassNameHelper
+
+      attr_reader :kwargs
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:tag] = :li
+        @kwargs[:classes] = class_names(
+          "Box-body",
+          kwargs[:classes]
+        )
+      end
+    end
+
+    class Footer < ViewComponent::Slot
+      include ClassNameHelper
+
+      attr_reader :kwargs
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:tag] = :li
+        @kwargs[:classes] = class_names(
+          "Box-footer",
+          kwargs[:classes]
+        )
+      end
+    end
+
+    class Row < ViewComponent::Slot
       include ClassNameHelper
 
       attr_reader :kwargs
