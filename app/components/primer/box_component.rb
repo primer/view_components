@@ -2,12 +2,13 @@
 
 module Primer
   class BoxComponent < Primer::Component
-    def initialize(**args)
-      @args = args
+    def initialize(**kwargs)
+      @kwargs = kwargs
+      @kwargs[:tag] = :div
     end
 
     def call
-      render(Primer::BaseComponent.new(**{ tag: :div }.merge(@args))) { content }
+      render(Primer::BaseComponent.new(**@kwargs)) { content }
     end
   end
 end

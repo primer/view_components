@@ -2,10 +2,13 @@
 
 module Primer
   class Classify
-    SPACING_KEYS = [:m, :my, :mx, :mt, :ml, :mb, :mr, :p, :py, :px, :pt, :pl, :pb, :pr].freeze
-    FLEX_KEYS = [:direction].freeze
+    MARGIN_DIRECTION_KEYS = [:mt, :ml, :mb, :mr]
+    SPACING_KEYS = ([:m, :my, :mx, :p, :py, :px, :pt, :pl, :pb, :pr] + MARGIN_DIRECTION_KEYS).freeze
+    DIRECTION_KEY = :direction
+    JUSTIFY_CONTENT_KEY = :justify_content
+    ALIGN_ITEMS_KEY = :align_items
     DISPLAY_KEY = :display
-    RESPONSIVE_KEYS = ([DISPLAY_KEY, :col] + SPACING_KEYS + FLEX_KEYS).freeze
+    RESPONSIVE_KEYS = ([DISPLAY_KEY, DIRECTION_KEY, JUSTIFY_CONTENT_KEY, ALIGN_ITEMS_KEY, :col] + SPACING_KEYS).freeze
     BREAKPOINTS = ["", "-sm", "-md", "-lg"]
 
     # Keys where we can simply translate { key: value } into ".key-value"
@@ -70,12 +73,20 @@ module Primer
     TYPOGRAPHY_KEYS = [:font_size].freeze
     VALID_KEYS = (
       CONCAT_KEYS +
-      FLEX_KEYS +
       BOOLEAN_MAPPINGS.keys +
       BORDER_KEYS +
       TYPOGRAPHY_KEYS +
       TEXT_KEYS +
-      [COLOR_KEY, BG_KEY, DISPLAY_KEY, VERTICAL_ALIGN_KEY, WORD_BREAK_KEY]
+      [
+        COLOR_KEY,
+        BG_KEY,
+        DISPLAY_KEY,
+        VERTICAL_ALIGN_KEY,
+        WORD_BREAK_KEY,
+        DIRECTION_KEY,
+        JUSTIFY_CONTENT_KEY,
+        ALIGN_ITEMS_KEY
+      ]
     ).freeze
 
     class << self
@@ -130,7 +141,13 @@ module Primer
           Array(value).each_with_index do |val, index|
             next if val.nil?
 
-            raise ArgumentError, "value must be between 0 and 6" if SPACING_KEYS.include?(key) && (val < 0 || val > 6)
+            if SPACING_KEYS.include?(key)
+              if MARGIN_DIRECTION_KEYS.include?(key)
+                raise ArgumentError, "value must be between -6 and 6" if (val < -6 || val > 6)
+              else
+                raise ArgumentError, "value must be between 0 and 6" if (val < 0 || val > 6)
+              end
+            end
 
             dasherized_val = val.to_s.dasherize
             breakpoint = BREAKPOINTS[index]
@@ -155,12 +172,19 @@ module Primer
               memo << "wb-#{dasherized_val}"
             elsif BORDER_KEYS.include?(key)
               memo << "border-#{dasherized_val}"
-            elsif FLEX_KEYS.include?(key)
+            elsif key == DIRECTION_KEY
               memo << "flex#{breakpoint}-#{dasherized_val}"
+            elsif key == JUSTIFY_CONTENT_KEY
+              formatted_value = val.to_s.gsub(/(flex\_|space\_)/, "")
+              memo << "flex#{breakpoint}-justify-#{formatted_value}"
+            elsif key == ALIGN_ITEMS_KEY
+              memo << "flex#{breakpoint}-items-#{val.to_s.gsub("flex_", "")}"
             elsif TEXT_KEYS.include?(key)
               memo << "text-#{dasherized_val}"
             elsif TYPOGRAPHY_KEYS.include?(key)
               memo << "f#{dasherized_val}"
+            elsif MARGIN_DIRECTION_KEYS.include?(key) && val < 0
+              memo << "#{key.to_s.dasherize}#{breakpoint}-n#{val.abs}"
             else
               memo << "#{key.to_s.dasherize}#{breakpoint}-#{dasherized_val}"
             end

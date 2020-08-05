@@ -20,7 +20,6 @@
     * Counter
     * Details
     * Dropdown
-    * Flash
     * Flex
     * FlexItem
     * Heading
@@ -29,6 +28,7 @@
     * Link
     * ProgressBar
     * State
+    * Subhead
     * Text
     * UnderlineNav
 

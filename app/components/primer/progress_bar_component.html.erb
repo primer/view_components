@@ -1,3 +1,5 @@
 <%= render Primer::BaseComponent.new(**@kwargs) do %>
-  <span class="bg-green Progress-item" style="width: <%= @percentage %>%;"></span>
+  <% items.each do |item| %>
+    <%= render Primer::BaseComponent.new(**item.kwargs) %>
+  <% end %>
 <% end %>

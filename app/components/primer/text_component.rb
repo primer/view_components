@@ -2,12 +2,13 @@
 
 module Primer
   class TextComponent < Primer::Component
-    def initialize(**args)
-      @args = args
+    def initialize(**kwargs)
+      @kwargs = kwargs
+      @kwargs[:tag] ||= :span
     end
 
     def call
-      render(Primer::BaseComponent.new(**{ tag: :span }.merge(@args))) { content }
+      render(Primer::BaseComponent.new(**@kwargs)) { content }
     end
   end
 end

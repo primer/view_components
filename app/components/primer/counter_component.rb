@@ -58,7 +58,7 @@ module Primer
       elsif @count.nil?
         "" # CSS will hide it
       elsif @count == Float::INFINITY
-        "&#8734;"
+        "∞"
       else
         if @round
           count = [@count.to_i, @limit].min

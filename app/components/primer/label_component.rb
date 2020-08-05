@@ -31,7 +31,7 @@ module Primer
     def initialize(title:, scheme: nil, variant: nil, **kwargs)
       @kwargs = kwargs
       @kwargs[:bg] = :blue if scheme.nil?
-      @kwargs[:tag] = :span
+      @kwargs[:tag] ||= :span
       @kwargs[:title] = title
       @kwargs[:classes] = class_names(
         "Label",

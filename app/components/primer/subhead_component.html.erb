@@ -1,0 +1,17 @@
+<%= render Primer::BaseComponent.new(**@kwargs) do %>
+  <% if heading.present? %>
+    <%= render Primer::BaseComponent.new(**heading.kwargs) do %>
+      <%= heading.content %>
+    <% end %>
+  <% end %>
+  <% if actions.present? %>
+    <%= render Primer::BaseComponent.new(**actions.kwargs) do %>
+      <%= actions.content %>
+    <% end %>
+  <% end %>
+  <% if description.present? %>
+    <%= render Primer::BaseComponent.new(**description.kwargs) do %>
+      <%= description.content %>
+    <% end %>
+  <% end %>
+<% end %>

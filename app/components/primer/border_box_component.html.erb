@@ -1,13 +1,13 @@
 <%= render Primer::BaseComponent.new(**@kwargs) do %>
   <% if header %>
-    <div class="Box-header">
+    <%= render Primer::BaseComponent.new(**header.kwargs) do %>
       <%= header.content %>
-    </div>
+    <% end %>
   <% end %>
   <% if body %>
-    <div class="Box-body">
+    <%= render Primer::BaseComponent.new(**body.kwargs) do %>
       <%= body.content %>
-    </div>
+    <% end %>
   <% end %>
   <% if rows.any? %>
     <ul>
@@ -19,8 +19,8 @@
     </ul>
   <% end %>
   <% if footer %>
-    <div class="Box-footer">
+    <%= render Primer::BaseComponent.new(**footer.kwargs) do %>
       <%= footer.content %>
-    </div>
+    <% end %>
   <% end %>
 <% end %>

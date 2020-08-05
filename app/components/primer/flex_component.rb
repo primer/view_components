@@ -37,8 +37,12 @@ module Primer
       flex_wrap: FLEX_WRAP_DEFAULT,
       align_items: ALIGN_ITEMS_DEFAULT,
       direction: nil,
-      **args
+      **kwargs
     )
+      @align_items = fetch_or_fallback(ALIGN_ITEMS_OPTIONS, align_items, ALIGN_ITEMS_DEFAULT)
+      @justify_content = fetch_or_fallback(JUSTIFY_CONTENT_OPTIONS, justify_content, JUSTIFY_CONTENT_DEFAULT)
+      @flex_wrap = fetch_or_fallback(FLEX_WRAP_OPTIONS, flex_wrap, FLEX_WRAP_DEFAULT)
+
       # Support direction argument that is an array
       @direction =
         if (Array(direction) - ALLOWED_DIRECTIONS).empty?
@@ -47,16 +51,13 @@ module Primer
           DEFAULT_DIRECTION
         end
 
-      @args = args.merge({ direction: @direction }.compact)
-
-      @align_items = fetch_or_fallback(ALIGN_ITEMS_OPTIONS, align_items, ALIGN_ITEMS_DEFAULT)
-      @justify_content = fetch_or_fallback(JUSTIFY_CONTENT_OPTIONS, justify_content, JUSTIFY_CONTENT_DEFAULT)
-      @display = fetch_or_fallback(INLINE_OPTIONS, inline, INLINE_DEFAULT) ? :inline_flex : :flex
-      @flex_wrap = fetch_or_fallback(FLEX_WRAP_OPTIONS, flex_wrap, FLEX_WRAP_DEFAULT)
+      @kwargs = kwargs.merge({ direction: @direction }.compact)
+      @kwargs[:classes] = class_names(@kwargs[:classes], component_class_names)
+      @kwargs[:display] = fetch_or_fallback(INLINE_OPTIONS, inline, INLINE_DEFAULT) ? :inline_flex : :flex
     end
 
     def call
-      render(Primer::BoxComponent.new(**{ classes: component_class_names, display: @display }.merge(@args))) { content }
+      render(Primer::BoxComponent.new(**@kwargs)) { content }
     end
 
     private

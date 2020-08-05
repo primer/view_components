@@ -1,17 +1,28 @@
 # frozen_string_literal: true
 
 ##
-# The `Primer::ProgressBarComponent` can take the following arguments:
+# Use progress components to visualize task completion.
+
+## Basic example
+#
+# The `Primer::ProgressBar::Component` can take the following arguments:
 #
 # 1. `size` (string). Can be "small" or "large". Increases the height of the progress bar.
-# 2. `percentage` (number). Used to set the width of the completed bar.
+#
+# The `Primer::ProgressBar::Component` uses the [Slots API](https://github.com/github/view_component#slots-experimental) and at least one slot is required for the component to render. Each slot accepts a `percentage` parameter, which is used to set the width of the completed bar.
 #
 # ```ruby
-#   <%= render(Primer::ProgressBarComponent.new(percentage: 50)) %>
+#   <%= render(Primer::ProgressBar::Component.new(size: :small)) do |component| %>
+#     <% component.slot(:item, bg: :blue-4, percentage: 50) %>
+#   <% end %>
 # ```
 ##
 module Primer
   class ProgressBarComponent < Primer::Component
+    include ViewComponent::Slotable
+
+    with_slot :item, collection: true, class_name: "Item"
+
     SIZE_DEFAULT = :default
 
     SIZE_MAPPINGS = {
@@ -31,7 +42,25 @@ module Primer
       )
       @kwargs[:tag] = :span
 
-      @percentage = percentage
+    end
+
+    def render?
+      items.any?
+    end
+
+    class Item < ViewComponent::Slot
+      include ClassNameHelper
+      attr_reader :kwargs
+
+      def initialize(percentage: 0, bg: :green, **kwargs)
+        @percentage = percentage
+        @kwargs = kwargs
+
+        @kwargs[:tag] = :span
+        @kwargs[:bg] = bg
+        @kwargs[:style] = "width: #{@percentage}%;"
+        @kwargs[:classes] = class_names("Progress-item", @kwargs[:classes])
+      end
     end
   end
 end

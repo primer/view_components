@@ -39,9 +39,9 @@ class CounterComponentTest < Minitest::Test
   def test_scheme_falls_back_to_default
     without_fetch_or_fallback_raises do
       render_inline(Primer::CounterComponent.new(scheme: :pink, count: 2))
-    end
 
-    assert_selector(".Counter[title='2']")
+      assert_selector(".Counter[title='2']")
+    end
   end
 
   def test_render_small_number
@@ -108,7 +108,7 @@ class CounterComponentTest < Minitest::Test
   def test_render_infinity
     render_inline(Primer::CounterComponent.new(count: Float::INFINITY))
 
-    assert_selector("[title='Infinity']", text: "&#8734;")
+    assert_selector("[title='Infinity']", text: "∞")
   end
 
   def test_render_arbitrary_string
