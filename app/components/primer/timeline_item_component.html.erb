@@ -1,0 +1,12 @@
+<%= render Primer::BaseComponent.new(**kwargs) do %>
+  <% if badge %>
+    <%= render Primer::BaseComponent.new(**badge.kwargs) do %>
+      <%= badge.content %>
+    <% end %>
+  <% end %>
+  <% if body %>
+    <%= render Primer::BaseComponent.new(**body.kwargs) do %>
+      <%= body.content %>
+    <% end %>
+  <% end %>
+<% end %>
