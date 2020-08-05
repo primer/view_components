@@ -4,9 +4,9 @@ module Primer
   class TimelineItemComponent < Primer::Component
     include ViewComponent::Slotable
 
-    with_slot :avatar, class_name: "TimelineItemAvatar"
-    with_slot :badge, class_name: "TimelineItemBadge"
-    with_slot :body, class_name: "TimelineItemBody"
+    with_slot :avatar, class_name: "Avatar"
+    with_slot :badge, class_name: "Badge"
+    with_slot :body, class_name: "Body"
 
     attr_reader :kwargs
     def initialize(condensed: false, **kwargs)
@@ -23,7 +23,7 @@ module Primer
       avatar.present? || badge.present? || body.present?
     end
 
-    class TimelineItemAvatar < Primer::Slot
+    class Avatar < Primer::Slot
       attr_reader :kwargs
       def initialize(**kwargs)
         @kwargs = kwargs
@@ -35,7 +35,7 @@ module Primer
       end
     end
 
-    class TimelineItemBadge < Primer::Slot
+    class Badge < Primer::Slot
       attr_reader :kwargs
       def initialize(**kwargs)
         @kwargs = kwargs
@@ -47,7 +47,7 @@ module Primer
       end
     end
 
-    class TimelineItemBody < Primer::Slot
+    class Body < Primer::Slot
       attr_reader :kwargs
       def initialize(**kwargs)
         @kwargs = kwargs
