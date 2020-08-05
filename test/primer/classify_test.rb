@@ -26,6 +26,10 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("ml-4", { ml: 4 })
     assert_generated_class("mb-4", { mb: 4 })
     assert_generated_class("mr-4", { mr: 4 })
+    assert_generated_class("mt-n4", { mt: -4 })
+    assert_generated_class("ml-n4", { ml: -4 })
+    assert_generated_class("mb-n4", { mb: -4 })
+    assert_generated_class("mr-n4", { mr: -4 })
 
     assert_raises ArgumentError do
       Primer::Classify.call(m: -1)
@@ -33,6 +37,10 @@ class PrimerClassifyTest < Minitest::Test
 
     assert_raises ArgumentError do
       Primer::Classify.call(m: 7)
+    end
+
+    assert_raises ArgumentError do
+      Primer::Classify.call(mr: -7)
     end
   end
 
@@ -158,6 +166,22 @@ class PrimerClassifyTest < Minitest::Test
 
   def test_border_color
     assert_generated_class("border-black-fade", { border_color: :black_fade })
+  end
+
+  def test_justify_content
+    assert_generated_class("flex-justify-start", { justify_content: :flex_start })
+    assert_generated_class("flex-justify-end", { justify_content: :flex_end })
+    assert_generated_class("flex-justify-center", { justify_content: :center })
+    assert_generated_class("flex-justify-between", { justify_content: :space_between })
+    assert_generated_class("flex-justify-around", { justify_content: :space_around })
+  end
+
+  def test_align_items
+    assert_generated_class("flex-items-start", { align_items: :flex_start })
+    assert_generated_class("flex-items-end", { align_items: :flex_end })
+    assert_generated_class("flex-items-center", { align_items: :center })
+    assert_generated_class("flex-items-baseline", { align_items: :baseline })
+    assert_generated_class("flex-items-stretch", { align_items: :stretch })
   end
 
   def test_word_break

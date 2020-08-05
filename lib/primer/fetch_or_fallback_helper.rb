@@ -26,8 +26,10 @@ module Primer
         if fallback_raises && ENV["RAILS_ENV"] != "production"
           raise InvalidValueError, <<~MSG
             fetch_or_fallback was called with an invalid value.
+
             Expected one of: #{allowed_values.inspect}
             Got: #{given_value.inspect}
+
             This will not raise in production, but will instead fallback to: #{fallback.inspect}
           MSG
         end

@@ -17,7 +17,6 @@ module Primer
             classes << key if val
           end
         when Array
-          aux = class_names(*class_name)
           classes << class_names(*class_name).presence
         end
       end

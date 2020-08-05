@@ -1,10 +1,4 @@
-<%= render(
-  Primer::FlexComponent.new(
-    **{
-      classes: "gutter-condensed gutter-lg",
-      direction: (@responsive ? [:column, nil, :row] : nil)
-    }.merge(@args)
- )) do %>
+<%= render(Primer::FlexComponent.new(**@kwargs)) do %>
   <% if @side == :left %>
     <%= render Primer::BaseComponent.new(tag: :div, classes: "flex-shrink-0", col: (@responsive ? [12, nil, 3] : 3), mb: (@responsive ? [4, nil, 0] : nil)) do %>
       <%= sidebar %>
