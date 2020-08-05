@@ -19,6 +19,7 @@ require_relative "./base_component"
 
 # Components
 
+require_relative "./border_box_component"
 require_relative "./box_component"
 require_relative "./button_component"
 require_relative "./counter_component"

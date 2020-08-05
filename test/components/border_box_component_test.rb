@@ -5,10 +5,10 @@ require "test_helper"
 class PrimerBorderBoxComponentTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  def test_renders_an_empty_box
+  def test_does_not_render_an_empty_box
     render_inline(Primer::BorderBoxComponent.new)
 
-    assert_selector("div.Box")
+    refute_selector("div.Box")
     refute_selector(".Box-header")
     refute_selector(".Box-body")
     refute_selector(".Box-row")

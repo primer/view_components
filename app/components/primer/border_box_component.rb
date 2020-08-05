@@ -16,6 +16,10 @@ module Primer
       )
     end
 
+    def render?
+      rows.any? || header.present? || body.present? || footer.present?
+    end
+
     class BorderBoxRow < ViewComponent::Slot
       include ClassNameHelper
 
