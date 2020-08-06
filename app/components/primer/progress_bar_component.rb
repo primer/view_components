@@ -5,14 +5,14 @@
 
 ## Basic example
 #
-# The `Primer::ProgressBar::Component` can take the following arguments:
+# The `Primer::ProgressBarComponent` can take the following arguments:
 #
 # 1. `size` (string). Can be "small" or "large". Increases the height of the progress bar.
 #
-# The `Primer::ProgressBar::Component` uses the [Slots API](https://github.com/github/view_component#slots-experimental) and at least one slot is required for the component to render. Each slot accepts a `percentage` parameter, which is used to set the width of the completed bar.
+# The `Primer::ProgressBarComponent` uses the [Slots API](https://github.com/github/view_component#slots-experimental) and at least one slot is required for the component to render. Each slot accepts a `percentage` parameter, which is used to set the width of the completed bar.
 #
 # ```ruby
-#   <%= render(Primer::ProgressBar::Component.new(size: :small)) do |component| %>
+#   <%= render(Primer::ProgressBarComponent.new(size: :small)) do |component| %>
 #     <% component.slot(:item, bg: :blue-4, percentage: 50) %>
 #   <% end %>
 # ```
