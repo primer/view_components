@@ -102,14 +102,6 @@ module Primer
       ]
     ).freeze
 
-    PROTECTED_KEYS = (
-      VALID_KEYS.dup -
-      [
-        WIDTH_KEY,
-        HEIGHT_KEY
-      ]
-    ).freeze
-
     class << self
       def call(classes: "", **args)
         [validated_class_names(classes), classes_from_hash(args)].compact.join(" ").presence
