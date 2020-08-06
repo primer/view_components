@@ -88,4 +88,16 @@ class PrimerBaseComponentTest < Minitest::Test
     refute_selector("[test_selector='bar']")
     assert_selector("[data-test-selector='bar']")
   end
+
+  def test_renders_height_attribute
+    render_inline(Primer::BaseComponent.new(tag: :div, height: 30))
+
+    assert_selector("div[height=30]")
+  end
+
+  def test_renders_width_attribute
+    render_inline(Primer::BaseComponent.new(tag: :div, width: 30))
+
+    assert_selector("div[width=30]")
+  end
 end

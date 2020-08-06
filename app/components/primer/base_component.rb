@@ -19,7 +19,7 @@ module Primer
       @classes = Primer::Classify.call(**args.merge(classes: classes))
 
       # Filter out Primer keys so they don't get assigned as HTML attributes
-      @content_tag_args = add_test_selector(args).except(*Primer::Classify::VALID_KEYS)
+      @content_tag_args = add_test_selector(args).except(*Primer::Classify::PROTECTED_KEYS)
     end
 
     def call
