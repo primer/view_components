@@ -33,13 +33,32 @@ class PrimerTimelineItemComponentTest < Minitest::Test
     assert_selector("div.TimelineItem--condensed")
   end
 
-  def test_renders_avatar
+  def test_avatar_defaults_to_square_and_size_40
     render_inline(Primer::TimelineItemComponent.new) do |component|
       component.slot(:avatar, alt: "mock", src: "mock")
     end
 
     assert_selector(".TimelineItem-avatar")
-    assert_selector(".avatar")
+    assert_selector(".avatar[size=40][width=40][height=40]")
+    refute_selector(".CircleBadge")
+  end
+
+  def test_renders_circle_avatar
+    render_inline(Primer::TimelineItemComponent.new) do |component|
+      component.slot(:avatar, alt: "mock", src: "mock", square: false)
+    end
+
+    assert_selector(".TimelineItem-avatar")
+    assert_selector(".avatar.CircleBadge")
+  end
+
+  def test_renders_avatar_with_custom_size
+    render_inline(Primer::TimelineItemComponent.new) do |component|
+      component.slot(:avatar, alt: "mock", src: "mock", size: 30)
+    end
+
+    assert_selector(".TimelineItem-avatar")
+    assert_selector(".avatar[size=30][width=30][height=30]")
   end
 
   def test_renders_body
