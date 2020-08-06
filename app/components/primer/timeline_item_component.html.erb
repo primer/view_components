@@ -1,7 +1,7 @@
 <%= render Primer::BaseComponent.new(**kwargs) do %>
   <% if avatar %>
     <%= render Primer::BaseComponent.new(**avatar.kwargs) do %>
-      <%= render Primer::AvatarComponent.new(alt: avatar.alt, src: avatar.src, size: avatar.size) %>
+      <%= render Primer::AvatarComponent.new(alt: avatar.alt, src: avatar.src, size: avatar.size, square: avatar.square) %>
     <% end %>
   <% end %>
 

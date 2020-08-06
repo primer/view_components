@@ -24,11 +24,12 @@ module Primer
     end
 
     class Avatar < Primer::Slot
-      attr_reader :kwargs, :alt, :src, :size
-      def initialize(alt: nil, src: nil, size: 40, **kwargs)
+      attr_reader :kwargs, :alt, :src, :size, :square
+      def initialize(alt: nil, src: nil, size: 40, square: true, **kwargs)
         @alt = alt
         @src = src
         @size = size
+        @square = square
 
         @kwargs = kwargs
         @kwargs[:tag] = :div
