@@ -16,14 +16,16 @@ module Primer
 
     def initialize(tag:, classes: nil, **args)
       @tag = tag
-      @classes = Primer::Classify.call(**args.merge(classes: classes))
+      @result = Primer::Classify.call(**args.merge(classes: classes))
 
       # Filter out Primer keys so they don't get assigned as HTML attributes
       @content_tag_args = add_test_selector(args).except(*Primer::Classify::VALID_KEYS)
     end
 
     def call
-      tag.public_send(@tag, content, **{ class: @classes }.merge(@content_tag_args))
+      tag.public_send(
+        @tag, content, **@content_tag_args.merge(@result)
+      )
     end
 
     private
