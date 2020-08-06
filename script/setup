@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Gems
-bundle install
+bundle install --path vendor/bundle
 
 # NPM packages
 cd test/demo
