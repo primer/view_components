@@ -27,7 +27,7 @@ module Primer
       attr_reader :kwargs
       def initialize(**kwargs)
         @kwargs = kwargs
-        @kwargs[:tag] = :li
+        @kwargs[:tag] = :div
         @kwargs[:classes] = class_names(
           "Box-header",
           kwargs[:classes]
@@ -40,7 +40,7 @@ module Primer
       attr_reader :kwargs
       def initialize(**kwargs)
         @kwargs = kwargs
-        @kwargs[:tag] = :li
+        @kwargs[:tag] = :div
         @kwargs[:classes] = class_names(
           "Box-body",
           kwargs[:classes]
@@ -53,7 +53,7 @@ module Primer
       attr_reader :kwargs
       def initialize(**kwargs)
         @kwargs = kwargs
-        @kwargs[:tag] = :li
+        @kwargs[:tag] = :div
         @kwargs[:classes] = class_names(
           "Box-footer",
           kwargs[:classes]
