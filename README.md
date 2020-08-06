@@ -20,16 +20,24 @@ In `config/application.rb`, add **after the application definition**
 require "primer/view_components/engine"
 ```
 
+## Setting up
+
+Run
+
+```bash
+script/setup
+```
+
+to install all necessary dependencies
+
 ## Storybook
+
+*We recommend having [overmind](https://github.com/DarthSim/overmind) installed to run both rails and storybook, but it is not required.*
 
 To run storybook:
 
 ```bash
-cd test/demo
-bundle exec rake view_component_storybook:write_stories_json
-
-bin/rails s
-yarn storybook
+script/storybook
 ```
 
 ## Contributing

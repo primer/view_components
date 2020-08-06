@@ -203,6 +203,22 @@ class PrimerClassifyTest < Minitest::Test
     end
   end
 
+  def test_style
+    assert_equal("background-color: #fff;", Primer::Classify.call(bg: "#fff")[:style])
+  end
+
+  def test_height
+    assert_equal(10, Primer::Classify.call(height: 10)[:height])
+    assert_nil(Primer::Classify.call(height: :fit)[:height])
+    assert_nil(Primer::Classify.call(height: :fill)[:height])
+  end
+
+  def test_width
+    assert_equal(10, Primer::Classify.call(width: 10)[:width])
+    assert_nil(Primer::Classify.call(width: :fit)[:width])
+    assert_nil(Primer::Classify.call(width: :fill)[:width])
+  end
+
   def test_flex
     assert_generated_class("flex-1",    { flex: 1 })
     assert_generated_class("flex-auto", { flex: :auto })
@@ -248,10 +264,10 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def assert_generated_class(generated_class_name, input)
-    assert_equal(generated_class_name, Primer::Classify.call(**input))
+    assert_equal(generated_class_name, Primer::Classify.call(**input)[:class])
   end
 
   def refute_generated_class(input)
-    assert_nil(Primer::Classify.call(**input))
+    assert_nil(Primer::Classify.call(**input)[:class])
   end
 end

@@ -100,4 +100,18 @@ class PrimerBaseComponentTest < Minitest::Test
 
     assert_selector("div[width=30]")
   end
+
+  def test_does_not_render_height_as_attribute_if_value_is_class
+    render_inline(Primer::BaseComponent.new(tag: :div, height: :fill))
+
+    refute_selector("div[height='fill']")
+    assert_selector("div.height-fill")
+  end
+
+  def test_does_not_render_width_as_attribute_if_value_is_class
+    render_inline(Primer::BaseComponent.new(tag: :div, width: :fill))
+
+    refute_selector("div[width='fill']")
+    assert_selector("div.width-fill")
+  end
 end
