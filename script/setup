@@ -5,6 +5,7 @@ bundle install
 
 # NPM packages
 cd test/demo
+bundle install
 yarn install
 
 # back to root
