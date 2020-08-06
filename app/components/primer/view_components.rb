@@ -6,6 +6,10 @@ require "active_support/core_ext"
 
 require "view_component/engine"
 
+# Octicons
+
+require "octicons_helper/helper"
+
 # Helpers
 
 require "primer/class_name_helper"
@@ -16,6 +20,7 @@ require "primer/fetch_or_fallback_helper"
 
 require_relative "component"
 require_relative "base_component"
+require_relative "slot"
 
 # Components
 
@@ -36,4 +41,5 @@ require_relative "progress_bar_component"
 require_relative "state_component"
 require_relative "subhead_component"
 require_relative "text_component"
+require_relative "timeline_item_component"
 require_relative "underline_nav_component"

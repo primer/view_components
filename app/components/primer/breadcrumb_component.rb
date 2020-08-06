@@ -36,7 +36,7 @@ module Primer
       items.any?
     end
 
-    class BreadcrumbItem < ViewComponent::Slot
+    class BreadcrumbItem < Primer::Slot
       attr_reader :href, :kwargs
 
       def initialize(href: nil, selected: false, **kwargs)

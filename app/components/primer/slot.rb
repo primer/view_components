@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 module Primer
-  class Component < ViewComponent::Base
+  class Slot < ViewComponent::Slot
     include ClassNameHelper
     include FetchOrFallbackHelper
-    include OcticonsHelper
   end
 end
