@@ -13,7 +13,6 @@
     *Manuel Puyol*
 
 * Add components:
-    * Avatar
     * BorderBox
     * Box
     * Breadcrumb

@@ -9,7 +9,6 @@ class PrimerTimelineItemComponentTest < Minitest::Test
     render_inline(Primer::TimelineItemComponent.new)
 
     refute_selector("div.TimelineItem")
-    refute_selector(".TimelineItem-avatar")
     refute_selector(".TimelineItem-body")
     refute_selector(".TimelineItem-row")
     refute_selector(".TimelineItem-badge")
@@ -31,15 +30,6 @@ class PrimerTimelineItemComponentTest < Minitest::Test
 
     assert_selector("div.TimelineItem")
     assert_selector("div.TimelineItem--condensed")
-  end
-
-  def test_renders_avatar
-    render_inline(Primer::TimelineItemComponent.new) do |component|
-      component.slot(:avatar, alt: "mock", src: "mock")
-    end
-
-    assert_selector(".TimelineItem-avatar")
-    assert_selector(".avatar.avatar-6")
   end
 
   def test_renders_body

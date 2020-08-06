@@ -1,10 +1,4 @@
 <%= render Primer::BaseComponent.new(**kwargs) do %>
-  <% if avatar %>
-    <%= render Primer::BaseComponent.new(**avatar.kwargs) do %>
-      <%= render Primer::AvatarComponent.new(alt: avatar.alt, src: avatar.src, size: avatar.size) %>
-    <% end %>
-  <% end %>
-
   <% if badge %>
     <%= render Primer::BaseComponent.new(**badge.kwargs) do %>
       <%= octicon badge.icon %>
