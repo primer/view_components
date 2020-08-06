@@ -147,9 +147,10 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_font_weight
-    assert_generated_class("text-normal",  { font_weight: :normal })
-    assert_generated_class("text-bold",    { font_weight: :bold })
-    assert_generated_class("text-bold",    { font_weight: :bold })
+    assert_generated_class("text-light",    { font_weight: :light })
+    assert_generated_class("text-normal",   { font_weight: :normal })
+    assert_generated_class("text-semibold", { font_weight: :semibold })
+    assert_generated_class("text-bold",     { font_weight: :bold })
   end
 
   def test_col
@@ -200,6 +201,35 @@ class PrimerClassifyTest < Minitest::Test
     assert_raises ArgumentError do
       Primer::Classify.call(border: [:top, :left])
     end
+  end
+
+  def test_flex
+    assert_generated_class("flex-1",    { flex: 1 })
+    assert_generated_class("flex-auto", { flex: :auto })
+  end
+
+  def test_flex_align_self
+    assert_generated_class("flex-self-auto",      { align_self: :auto })
+    assert_generated_class("flex-self-start",     { align_self: :start })
+    assert_generated_class("flex-self-end",       { align_self: :end })
+    assert_generated_class("flex-self-center",    { align_self: :center })
+    assert_generated_class("flex-self-baseline",  { align_self: :baseline })
+    assert_generated_class("flex-self-stretch",   { align_self: :stretch })
+  end
+
+  def test_width_and_height
+    assert_generated_class("width-fit",   { width: :fit })
+    assert_generated_class("width-fill",  { width: :fill })
+    assert_generated_class("height-fit",  { height: :fit })
+    assert_generated_class("height-fill", { height: :fill })
+  end
+
+  def test_flex_grow
+    assert_generated_class("flex-grow-0", { flex_grow: 0 })
+  end
+
+  def test_flex_shrink
+    assert_generated_class("flex-shrink-0", { flex_shrink: 0 })
   end
 
   def test_raises_error_when_passing_in_a_primer_css_class_name_in_development

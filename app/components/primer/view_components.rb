@@ -24,7 +24,6 @@ require_relative "slot"
 
 # Components
 
-require_relative "avatar_component"
 require_relative "border_box_component"
 require_relative "box_component"
 require_relative "breadcrumb_component"
