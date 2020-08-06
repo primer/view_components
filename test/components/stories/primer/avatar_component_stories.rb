@@ -7,7 +7,8 @@ class Primer::AvatarComponentStories < ViewComponent::Storybook::Stories
     controls do
       text(:alt, "github")
       text(:src, "https://github.com/github.png")
-      select(:size, Primer::AvatarComponent::SIZE_MAPPINGS.keys.each_with_object({}) { |k, h| h[k] = k }, 4)
+      size 20
+      square false
     end
   end
 end

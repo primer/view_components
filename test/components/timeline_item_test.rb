@@ -39,7 +39,7 @@ class PrimerTimelineItemComponentTest < Minitest::Test
     end
 
     assert_selector(".TimelineItem-avatar")
-    assert_selector(".avatar.avatar-6")
+    assert_selector(".avatar")
   end
 
   def test_renders_body

@@ -2,27 +2,22 @@
 
 module Primer
   class AvatarComponent < Primer::Component
-    SIZE_MAPPINGS = {
-      1 => "avatar-1",
-      2 => "avatar-2",
-      3 => "avatar-3",
-      4 => "avatar-4",
-      5 => "avatar-5",
-      6 => "avatar-6",
-      7 => "avatar-7",
-      8 => "avatar-8",
-    }.freeze
-    SIZE_OPTIONS = SIZE_MAPPINGS.keys
+    SMALL_THRESHOLD = 24
 
-    def initialize(src:, alt:, size: nil, **kwargs)
+    def initialize(src:, alt:, size: 20, square: false, **kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :img
       @kwargs[:src] = src
       @kwargs[:alt] = alt
+      @kwargs[:size] = size
+      @kwargs[:height] = size
+      @kwargs[:width] = size
+
       @kwargs[:classes] = class_names(
         "avatar",
         kwargs[:classes],
-        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size.to_i)]
+        "avatar--small" => size < SMALL_THRESHOLD,
+        "CircleBadge" => !square
       )
     end
 
