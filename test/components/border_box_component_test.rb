@@ -20,7 +20,7 @@ class PrimerBorderBoxComponentTest < Minitest::Test
       component.slot(:header) { "Header" }
     end
 
-    assert_selector(".Box-header", text: "Header")
+    assert_selector("div.Box-header", text: "Header")
   end
 
   def test_renders_body
@@ -28,7 +28,7 @@ class PrimerBorderBoxComponentTest < Minitest::Test
       component.slot(:body) { "Body" }
     end
 
-    assert_selector(".Box-body", text: "Body")
+    assert_selector("div.Box-body", text: "Body")
   end
 
   def test_renders_footer
@@ -36,7 +36,7 @@ class PrimerBorderBoxComponentTest < Minitest::Test
       component.slot(:footer) { "Footer" }
     end
 
-    assert_selector(".Box-footer", text: "Footer")
+    assert_selector("div.Box-footer", text: "Footer")
   end
 
   def test_renders_multiple_rows
@@ -46,6 +46,7 @@ class PrimerBorderBoxComponentTest < Minitest::Test
       component.slot(:row) { "Third" }
     end
 
+    assert_selector("ul", count: 1)
     assert_selector("li.Box-row", count: 3)
   end
 end
