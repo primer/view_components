@@ -14,11 +14,18 @@ In `Gemfile`, add:
 gem "primer_view_components"
 ```
 
-In `config/application.rb`, add **after the application definition**
+Create an initializer `config/initializer/primer_view_components.rb` with
 
 ```ruby
+require "primer/view_components"
+
+Primer::ViewComponents.configure do |config|
+  # any configuration needed here
+  # config.autoload = true
+end
+
 require "primer/view_components/engine"
-```
+
 ```
 
 ## Contributing

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "view_component/engine"
 require "primer/view_components"
 
 module Primer

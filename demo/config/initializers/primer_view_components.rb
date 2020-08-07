@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
 require "primer/view_components"
 
-if Rails.env.development?
-  Primer::ViewComponents.configure do |config|
-    config.autoload = true
-  end
-
-  require "primer/view_components/engine"
+Primer::ViewComponents.configure do |config|
+  config.autoload = Rails.env.development?
 end
+
+require "primer/view_components/engine" unless Rails.env.test?

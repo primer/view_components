@@ -34,3 +34,7 @@
     * UnderlineNav
 
     *Manuel Puyol*
+
+* Add `autoload` option for improved development workflow
+
+    *Manuel Puyol*
