@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     primer_view_components (0.0.1)
+      octicons_helper (>= 9.0.0, < 11.0.0)
       rails (>= 5.0.0, < 7.0)
       view_component (>= 2.0.0, < 3.0)
 
@@ -106,6 +107,11 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    octicons (10.0.0)
+      nokogiri (>= 1.6.3.1)
+    octicons_helper (10.0.0)
+      octicons (= 10.0.0)
+      rails
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)

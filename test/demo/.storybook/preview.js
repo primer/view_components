@@ -1,5 +1,5 @@
 export const parameters = {
   server: {
-    url: `http://localhost:3000/rails/stories`,
-  },
+    url: `http://localhost:4000/rails/stories`,
+  }
 };

@@ -4,7 +4,7 @@
 
     *Manuel Puyol, Joel Hawksley*
 
-* Add demo app to test
+* Add demo app and storybook to test
 
     *Manuel Puyol*
 
@@ -30,6 +30,7 @@
     * State
     * Subhead
     * Text
+    * TimelineItem
     * UnderlineNav
 
     *Manuel Puyol*

@@ -22,6 +22,13 @@ module Primer
     VERTICAL_ALIGN_KEY = :vertical_align
     WORD_BREAK_KEY = :word_break
     TEXT_KEYS = [:text_align, :font_weight]
+    FLEX_KEY = :flex
+    FLEX_GROW_KEY = :flex_grow
+    FLEX_SHRINK_KEY = :flex_shrink
+    ALIGN_SELF_KEY = :align_self
+    WIDTH_KEY = :width
+    HEIGHT_KEY = :height
+
 
     BOOLEAN_MAPPINGS = {
       underline: {
@@ -85,13 +92,24 @@ module Primer
         WORD_BREAK_KEY,
         DIRECTION_KEY,
         JUSTIFY_CONTENT_KEY,
-        ALIGN_ITEMS_KEY
+        ALIGN_ITEMS_KEY,
+        FLEX_KEY,
+        FLEX_GROW_KEY,
+        FLEX_SHRINK_KEY,
+        ALIGN_SELF_KEY,
+        WIDTH_KEY,
+        HEIGHT_KEY
       ]
     ).freeze
 
     class << self
-      def call(classes: "", **args)
-        [validated_class_names(classes), classes_from_hash(args)].compact.join(" ").presence
+      def call(classes: "", style: nil, **args)
+        extracted_results = extract_hash(args)
+
+        {
+          class: [validated_class_names(classes), extracted_results[:classes]].compact.join(" ").presence,
+          style: [extracted_results[:styles], style].compact.join("").presence,
+        }.merge(extracted_results.except(:classes, :styles))
       end
 
       private
@@ -129,9 +147,9 @@ module Primer
       # Returns a string of Primer CSS class names to be added to an HTML class attribute
       #
       # Example usage:
-      # classes_from_hash({ mt: 4, py: 2 }) => "mt-4 py-2"
-      def classes_from_hash(styles_hash)
-        styles_hash.each_with_object([]) do |(key, value), memo|
+      # extract_hash({ mt: 4, py: 2 }) => "mt-4 py-2"
+      def extract_hash(styles_hash)
+        out = styles_hash.each_with_object({ classes: [], styles: [] }) do |(key, value), memo|
           next unless VALID_KEYS.include?(key)
 
           if value.is_a?(Array) && !RESPONSIVE_KEYS.include?(key)
@@ -154,42 +172,65 @@ module Primer
 
             if BOOLEAN_MAPPINGS.has_key?(key)
               BOOLEAN_MAPPINGS[key][:mappings].map { |m| m[:css_class] if m[:value] == val }.compact.each do |css_class|
-                memo << css_class
+                memo[:classes] << css_class
               end
             elsif key == BG_KEY
-              memo << "bg-#{dasherized_val}"
+              if val.to_s.starts_with?("#")
+                memo[:styles] << "background-color: #{val};"
+              else
+                memo[:classes] << "bg-#{dasherized_val}"
+              end
             elsif key == COLOR_KEY
               if val.to_s.chars.last !~ /\D/
-                memo << "color-#{dasherized_val}"
+                memo[:classes] << "color-#{dasherized_val}"
               else
-                memo << "text-#{dasherized_val}"
+                memo[:classes] << "text-#{dasherized_val}"
               end
             elsif key == DISPLAY_KEY
-              memo << "d#{breakpoint}-#{dasherized_val}"
+              memo[:classes] << "d#{breakpoint}-#{dasherized_val}"
             elsif key == VERTICAL_ALIGN_KEY
-              memo << "v-align-#{dasherized_val}"
+              memo[:classes] << "v-align-#{dasherized_val}"
             elsif key == WORD_BREAK_KEY
-              memo << "wb-#{dasherized_val}"
+              memo[:classes] << "wb-#{dasherized_val}"
             elsif BORDER_KEYS.include?(key)
-              memo << "border-#{dasherized_val}"
+              memo[:classes] << "border-#{dasherized_val}"
             elsif key == DIRECTION_KEY
-              memo << "flex#{breakpoint}-#{dasherized_val}"
+              memo[:classes] << "flex#{breakpoint}-#{dasherized_val}"
             elsif key == JUSTIFY_CONTENT_KEY
               formatted_value = val.to_s.gsub(/(flex\_|space\_)/, "")
-              memo << "flex#{breakpoint}-justify-#{formatted_value}"
+              memo[:classes] << "flex#{breakpoint}-justify-#{formatted_value}"
             elsif key == ALIGN_ITEMS_KEY
-              memo << "flex#{breakpoint}-items-#{val.to_s.gsub("flex_", "")}"
+              memo[:classes] << "flex#{breakpoint}-items-#{val.to_s.gsub("flex_", "")}"
+            elsif key == FLEX_KEY
+              memo[:classes] << "flex-#{val}"
+            elsif key == FLEX_GROW_KEY
+              memo[:classes] << "flex-grow-#{val}"
+            elsif key == FLEX_SHRINK_KEY
+              memo[:classes] << "flex-shrink-#{val}"
+            elsif key == ALIGN_SELF_KEY
+              memo[:classes] << "flex-self-#{val}"
+            elsif key == WIDTH_KEY || key == HEIGHT_KEY
+              if val == :fit || val == :fill
+                memo[:classes] << "#{key}-#{val}"
+              else
+                memo[key] = val
+              end
             elsif TEXT_KEYS.include?(key)
-              memo << "text-#{dasherized_val}"
+              memo[:classes] << "text-#{dasherized_val}"
             elsif TYPOGRAPHY_KEYS.include?(key)
-              memo << "f#{dasherized_val}"
+              memo[:classes] << "f#{dasherized_val}"
             elsif MARGIN_DIRECTION_KEYS.include?(key) && val < 0
-              memo << "#{key.to_s.dasherize}#{breakpoint}-n#{val.abs}"
+              memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-n#{val.abs}"
             else
-              memo << "#{key.to_s.dasherize}#{breakpoint}-#{dasherized_val}"
+              memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{dasherized_val}"
             end
           end
-        end.join(" ")
+        end
+
+        {
+          classes: out[:classes].join(" "),
+          styles: out[:styles].join(" ")
+        }.merge(out.except(:classes, :styles))
       end
     end
   end

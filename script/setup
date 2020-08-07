@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Gems
+bundle install --path vendor/bundle
+
+# NPM packages
+cd test/demo
+bundle install
+yarn install
+
+# back to root
+cd ../../

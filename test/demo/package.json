@@ -16,7 +16,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "storybook": "start-storybook"
+    "storybook": "start-storybook -p 5000"
   },
   "version": "0.1.0"
 }

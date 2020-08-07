@@ -12,6 +12,7 @@ class PrimerComponentTest < Minitest::Test
       [Primer::BorderBoxComponent, {}, proc { |component| component.slot(:header) { "Foo" }  }],
       [Primer::BoxComponent, {}],
       [Primer::BreadcrumbComponent, {}, proc { |component| component.slot(:item) { "Foo" } }],
+      [Primer::ButtonComponent, {}],
       [Primer::CounterComponent, { count: 1 }],
       [Primer::DetailsComponent, {}],
       [Primer::DropdownMenuComponent, {}],
@@ -21,12 +22,12 @@ class PrimerComponentTest < Minitest::Test
       [Primer::LabelComponent, { title: "Hello!" }],
       [Primer::LayoutComponent, {}],
       [Primer::LinkComponent, { href: "https://www.google.com" }],
-      [Primer::ProgressBarComponent, {}, proc { |component| component.slot(:item)  }],
+      [Primer::ProgressBarComponent, {}, proc { |component| component.slot(:item) }],
       [Primer::StateComponent, { title: "Open" }],
       [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
       [Primer::TextComponent, {}],
+      [Primer::TimelineItemComponent, {}, proc { |component| component.slot(:body) { "Foo" } }],
       [Primer::UnderlineNavComponent, {}],
-      [Primer::ButtonComponent, {}],
     ]
 
     ignored_components = ["Primer::Component"]
