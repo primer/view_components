@@ -11,6 +11,7 @@ require "view_component/engine"
 require "octicons_helper/helper"
 
 Primer::ViewComponents::PATHS = [
+  "lib/primer/unloadable",
   "lib/primer/class_name_helper",
   "lib/primer/classify",
   "lib/primer/fetch_or_fallback_helper",

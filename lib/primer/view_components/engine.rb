@@ -7,7 +7,6 @@ module Primer
 
       if Rails.env.development?
         config.to_prepare do
-          Rails.logger.debug "RELOADING COMPONENTS"
           require_dependency Primer::ViewComponents::Engine.root.join('app', 'components', 'primer', 'view_components.rb')
           Primer::ViewComponents::PATHS.each do |path|
             require_dependency Primer::ViewComponents::Engine.root.join(path)
@@ -24,4 +23,4 @@ module Primer
   end
 end
 
-require "#{Primer::ViewComponents::Engine.root}/app/components/primer/view_components.rb"
+require "#{Primer::ViewComponents::Engine.root}/app/components/primer/view_components.rb" unless Rails.env.development?

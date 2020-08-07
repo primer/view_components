@@ -5,6 +5,8 @@
 # Helps build a list of conditional class names
 module Primer
   module ClassNameHelper
+    include Unloadable
+
     def class_names(*args)
       classes = []
 

@@ -2,6 +2,8 @@
 
 module Primer
   class Classify
+    include Unloadable
+
     MARGIN_DIRECTION_KEYS = [:mt, :ml, :mb, :mr]
     SPACING_KEYS = ([:m, :my, :mx, :p, :py, :px, :pt, :pl, :pb, :pr] + MARGIN_DIRECTION_KEYS).freeze
     DIRECTION_KEY = :direction

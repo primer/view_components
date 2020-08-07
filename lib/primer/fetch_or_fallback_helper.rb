@@ -15,6 +15,8 @@
 # fetch_or_fallback([1,2,3], nil, 2) => 2
 module Primer
   module FetchOrFallbackHelper
+    include Unloadable
+
     mattr_accessor :fallback_raises, default: true
 
     InvalidValueError = Class.new(StandardError)
