@@ -4,9 +4,9 @@
 bundle install --path vendor/bundle
 
 # NPM packages
-cd test/demo
+cd demo
 bundle install
 yarn install
 
 # back to root
-cd ../../
+cd ../
