@@ -7,7 +7,7 @@ module Primer
     class Engine < ::Rails::Engine
       isolate_namespace Primer::ViewComponents
 
-      if Rails.env.development?
+      if Primer::ViewComponents.autoload?
         config.to_prepare do
           require_dependency Primer::ViewComponents::Engine.root.join("app", "components", "primer", "view_components.rb")
           Primer::ViewComponents::PATHS.each do |path|
@@ -23,4 +23,4 @@ module Primer
   end
 end
 
-require "#{Primer::ViewComponents::Engine.root}/app/components/primer/view_components.rb" unless Rails.env.development?
+require "#{Primer::ViewComponents::Engine.root}/app/components/primer/view_components.rb" unless Primer::ViewComponents.autoload?

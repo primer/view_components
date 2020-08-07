@@ -39,7 +39,7 @@ Primer::ViewComponents::PATHS = [
   "app/components/primer/underline_nav_component"
 ]
 
-unless Rails.env.development?
+unless Primer::ViewComponents.autoload?
   Primer::ViewComponents::PATHS.each do |path|
     require_relative File.expand_path(path)
   end
