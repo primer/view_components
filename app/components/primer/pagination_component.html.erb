@@ -1,0 +1,29 @@
+<%= render Primer::BaseComponent.new(**@kwargs) do %>
+  <div class="pagination">
+    <span class="previous_page" aria-disabled="<%= first_page? %>" aria-label="Previous Page">Previous</span>
+
+    <% if @show_pages %>
+      <% left_margin_pages.each do |page| %>
+        <%= render Primer::PaginationItemComponent.new(page: page, current_page: @page, href_builder: @href_builder) %>
+      <% end %>
+
+      <% if show_left_ellipsis? %>
+        <span class="gap">…</span>
+      <% end %>
+
+      <% middle_pages.each do |page| %>
+        <%= render Primer::PaginationItemComponent.new(page: page, current_page: @page, href_builder: @href_builder) %>
+      <% end %>
+
+      <% if show_right_ellipsis? %>
+        <span class="gap">…</span>
+      <% end %>
+
+      <% right_margin_pages.each do |page| %>
+        <%= render Primer::PaginationItemComponent.new(page: page, current_page: @page, href_builder: @href_builder) %>
+      <% end %>
+    <% end %>
+
+    <a class="next_page" rel="next" href="#url" aria-label="Next Page" aria-disabled="<%= last_page? %>">Next</a>
+  </div>
+<% end %>
