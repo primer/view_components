@@ -4,7 +4,7 @@ if command -v overmind &> /dev/null
 then
   exec overmind start
 else
-  cd test/demo
+  cd demo
 
   bin/rails view_component_storybook:write_stories_json
   bin/rails s -p 4000 &
