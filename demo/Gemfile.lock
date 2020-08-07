@@ -154,7 +154,6 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.7.1)
-    require_reloader (0.2.1)
     semantic_range (2.3.0)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
@@ -199,7 +198,6 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (= 6.0.3.2)
   rake (~> 12.0)
-  require_reloader
   spring
   spring-watcher-listen (~> 2.0.0)
   view_component_storybook (~> 0.4.0)

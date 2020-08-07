@@ -41,6 +41,6 @@ Primer::ViewComponents::PATHS = [
 
 unless Primer::ViewComponents.autoload?
   Primer::ViewComponents::PATHS.each do |path|
-    require_relative File.expand_path(path)
+    require_relative "../../../#{path}"
   end
 end
