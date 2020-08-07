@@ -7,6 +7,6 @@ else
   cd demo
 
   bin/rails view_component_storybook:write_stories_json
-  bin/rails s -p 4000 &
-  bin/yarn storybook -p 5000
+  STORYBOOK=true bin/rails s -p 4000 &
+  STORYBOOK=true bin/yarn storybook -p 5000
 fi
