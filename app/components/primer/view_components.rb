@@ -40,7 +40,7 @@ Primer::ViewComponents::PATHS = [
 ]
 
 unless Rails.env.development?
-  PATHS.each do |path|
-    require path
+  Primer::ViewComponents::PATHS.each do |path|
+    require_relative File.expand_path(path)
   end
 end
