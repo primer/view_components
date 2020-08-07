@@ -1,5 +1,9 @@
 <% if @is_current %>
-  <em aria-label="Page <%= @page %>" aria-current="page"><%= @page %></em>
+  <%= render Primer::BaseComponent.new(tag: :em, "aria-label": "Page #{@page}", "aria-current": "page", **@kwargs) do %>
+    <%= @page %>
+  <% end %>
 <% else %>
-  <a href="<%= @href_builder.call(@page) %>" aria-label="Page <%= @page %>"><%= @page %></a>
+  <%= render Primer::BaseComponent.new(tag: :a, "aria-label": "Page #{@page}", href: @href_builder.call(@page), **@kwargs) do %>
+    <%= @page %>
+  <% end %>
 <% end %>

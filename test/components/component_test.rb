@@ -22,6 +22,8 @@ class PrimerComponentTest < Minitest::Test
       [Primer::LabelComponent, { title: "Hello!" }],
       [Primer::LayoutComponent, {}],
       [Primer::LinkComponent, { href: "https://www.google.com" }],
+      [Primer::PaginationComponent, { page: 1, page_count: 2 }],
+      [Primer::PaginationItemComponent, { page: 1, current_page: 1 }],
       [Primer::ProgressBarComponent, {}, proc { |component| component.slot(:item) }],
       [Primer::StateComponent, { title: "Open" }],
       [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],

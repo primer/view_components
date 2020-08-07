@@ -4,7 +4,7 @@ module Primer
   class PaginationComponent < Primer::Component
     DEFAULT_MARGIN_PAGES = 1
     DEFAULT_SURROUNDING_PAGES = 2
-    DEFAULT_HREF_BUILDER = proc { |page| "##{page}"}
+    DEFAULT_HREF_BUILDER = proc { |page| "##{page}" }
 
     def initialize(
       page:,
