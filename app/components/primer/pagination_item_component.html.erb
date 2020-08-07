@@ -1,0 +1,5 @@
+<% if @is_current %>
+  <em aria-label="Page <%= @page %>" aria-current="page"><%= @page %></em>
+<% else %>
+  <a href="<%= @href_builder.call(@page) %>" aria-label="Page <%= @page %>"><%= @page %></a>
+<% end %>
