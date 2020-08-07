@@ -13,7 +13,7 @@ module Primer
 
     def initialize(responsive: false, side: DEFAULT_SIDE, sidebar_col: DEFAULT_SIDEBAR_COL, **kwargs)
       @kwargs = kwargs
-      @side = fetch_or_fallback(ALLOWED_SIDES, side, DEFAULT_SIDE)
+      @side = fetch_or_fallback(ALLOWED_SIDES, side.to_sym, DEFAULT_SIDE)
       @responsive = responsive
       @kwargs[:classes] = class_names(
         "gutter-condensed gutter-lg",
