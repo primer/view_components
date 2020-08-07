@@ -2,7 +2,7 @@
 
 module Primer
   module Unloadable
-    if Rails.env.development?
+    if Primer::ViewComponents.autoload?
       include ActiveSupport::Dependencies
       unloadable
 

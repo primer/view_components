@@ -6,7 +6,7 @@ module Primer
     include FetchOrFallbackHelper
     include OcticonsHelper
 
-    if Rails.env.development?
+    if Primer::ViewComponents.autoload?
       include ActiveSupport::Dependencies
       unloadable
 
