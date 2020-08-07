@@ -12,3 +12,4 @@ require "test_helpers/component_test_helpers"
 
 require "minitest/autorun"
 require "primer/view_components"
+require "primer/view_components/engine"

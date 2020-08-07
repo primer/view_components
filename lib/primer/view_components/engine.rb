@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "primer/view_components"
+
 module Primer
   module ViewComponents
     class Engine < ::Rails::Engine
@@ -14,8 +16,6 @@ module Primer
         end
 
         config.after_initialize do
-          # optional, without it will call `to_prepend` only when a file changes,
-          # not on every request
           Rails.application.config.reload_classes_only_on_change = false
         end
       end
