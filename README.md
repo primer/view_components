@@ -21,7 +21,6 @@ In `config/application.rb`, add **after the application definition**
 ```ruby
 require "primer/view_components/engine"
 ```
-```
 
 ## Contributing
 
@@ -45,6 +44,7 @@ To run storybook:
 
 ```bash
 script/storybook
+``` 
 
 ## License
 
