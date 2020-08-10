@@ -6,6 +6,8 @@
 
 <p align="center">ViewComponents for the Primer Design System</p>
 
+_Note: This library is in pre-release development, and should not be considered stable._
+
 ## Installation
 
 In `Gemfile`, add:
