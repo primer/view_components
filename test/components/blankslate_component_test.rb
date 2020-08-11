@@ -5,7 +5,7 @@ require "test_helper"
 class BlankslateComponentTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  test "renders a basic blankslate component with a title" do
+  def test_renders_a_basic_blankslate_component_with_a_title
     render_inline(Primer::BlankslateComponent.new(
       title: "Title",
       description: "Description",
@@ -16,8 +16,17 @@ class BlankslateComponentTest < Minitest::Test
     refute_selector(".blankslate-narrow")
   end
 
-  test "renders a narrow blankslate component" do
+  def test_renders_a_blankslate_component_with_a_title_and_custom_tag
     render_inline(Primer::BlankslateComponent.new(
+      title: "Title",
+      title_tag: :h5
+    ))
+
+    assert_selector("h5", text: "Title")
+  end
+
+  def test_renders_a_narrow_blankslate_component
+    result = render_inline(Primer::BlankslateComponent.new(
       title: "Title",
       narrow: true,
     ))
@@ -25,7 +34,7 @@ class BlankslateComponentTest < Minitest::Test
     assert_selector(".blankslate.blankslate-narrow")
   end
 
-  test "renders a blankslate component with an icon" do
+  def test_renders_a_blankslate_component_with_an_icon
     render_inline(Primer::BlankslateComponent.new(
       icon: "octoface",
       title: "Title",
@@ -34,7 +43,7 @@ class BlankslateComponentTest < Minitest::Test
     assert_selector(".blankslate-icon")
   end
 
-  test "renders a blankslate component with an image" do
+  def test_renders_a_blankslate_component_with_an_image
     render_inline(Primer::BlankslateComponent.new(
       image_src: "file.svg",
       image_alt: "Alt text",
@@ -45,7 +54,7 @@ class BlankslateComponentTest < Minitest::Test
     assert_selector(".blankslate > img[alt='Alt text']")
   end
 
-  test "renders a blankslate component with a description" do
+  def test_renders_a_blankslate_component_with_a_description
     render_inline(Primer::BlankslateComponent.new(
       title: "Title",
       description: "Description",
@@ -54,7 +63,7 @@ class BlankslateComponentTest < Minitest::Test
     assert_selector("p", text: "Description")
   end
 
-  test "renders a blankslate component with custom content" do
+  def test_renders_a_blankslate_component_with_custom_content
     render_inline(Primer::BlankslateComponent.new(
       icon: "octoface",
       title: "Title",
@@ -63,7 +72,7 @@ class BlankslateComponentTest < Minitest::Test
     assert_text("Custom content")
   end
 
-  test "renders a blankslate component with a button" do
+  def test_renders_a_blankslate_component_with_a_button
     render_inline(Primer::BlankslateComponent.new(
       title: "Title",
       button_text: "Button",
@@ -73,7 +82,18 @@ class BlankslateComponentTest < Minitest::Test
     assert_selector("a.btn[href='https://github.com']", text: "Button")
   end
 
-  test "renders a blankslate component with a link" do
+  def test_renders_a_blankslate_component_with_a_button_with_custom_classes
+    render_inline(Primer::BlankslateComponent.new(
+      title: "Title",
+      button_text: "Button",
+      button_url: "https://github.com",
+      button_classes: "btn-outline"
+    ))
+
+    assert_selector("a.btn.btn-outline[href='https://github.com']", text: "Button")
+  end
+
+  def test_renders_a_blankslate_component_with_a_link
     render_inline(Primer::BlankslateComponent.new(
       title: "Title",
       link_text: "Link",

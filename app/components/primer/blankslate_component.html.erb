@@ -7,7 +7,7 @@
     <%= image_tag "#{@image_src}", class: "mb-3", size: "56x56", alt: "#{@image_alt}" %>
   <% end %>
 
-  <h3 class="mb-1"><%= @title %></h3>
+  <<%= @title_tag %> class="mb-1"><%= @title %></<%= @title_tag %>>
 
   <% if @description.present? %>
     <p><%= @description %></p>
@@ -16,7 +16,7 @@
   <%= content %>
 
   <% if @button_text.present? && @button_url.present? %>
-    <p><a class="btn btn-sm btn-primary" href="<%= @button_url %>"><%= @button_text %></a></p>
+    <p><a class="btn <%= @button_classes %>" href="<%= @button_url %>"><%= @button_text %></a></p>
   <% end %>
 
   <% if @link_text.present? && @link_url.present? %>

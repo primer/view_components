@@ -114,12 +114,14 @@ module Primer
       title:,
 
       # optional
+      title_tag: :h3,
       icon: "",
       image_src: "",
       image_alt: " ",
       description: "",
       button_text: "",
       button_url: "",
+      button_classes: "btn-sm btn-primary",
       link_text: "",
       link_url: "",
 
@@ -136,6 +138,7 @@ module Primer
         "blankslate-narrow": narrow,
       )
 
+      @title_tag = title_tag
       @icon = icon
       @image_src = image_src
       @image_alt = image_alt
@@ -143,6 +146,7 @@ module Primer
       @description = description
       @button_text = button_text
       @button_url = button_url
+      @button_classes = button_classes
       @link_text = link_text
       @link_url = link_url
     end
