@@ -6,6 +6,8 @@
 
 <p align="center">ViewComponents for the Primer Design System</p>
 
+_Note: This library is in pre-release development and should not be considered stable._
+
 ## Installation
 
 In `Gemfile`, add:
@@ -18,7 +20,6 @@ In `config/application.rb`, add **after the application definition**
 
 ```ruby
 require "primer/view_components/engine"
-```
 ```
 
 ## Contributing
@@ -43,6 +44,7 @@ To run storybook:
 
 ```bash
 script/storybook
+``` 
 
 ## License
 
