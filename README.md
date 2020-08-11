@@ -44,7 +44,27 @@ To run storybook:
 
 ```bash
 script/storybook
-``` 
+```
+
+### Developing with another app
+
+In your app, change the Gemfile from
+
+```ruby
+gem "primer_view_components"
+```
+
+to
+
+```ruby
+gem "primer_view_components", path: "path_to_the_gem" # e.g. path: "~/primer/view_components"
+```
+
+Then, `bundle install` to update references. You'll now be able to see changes from the gem without having to build it.
+Remember that restarting Rails server is necessary to see the changes, since the gem is loaded at boot.
+
+To minimize the number of restarts, we recommend checking the component first in Storybook and when it's in a good state
+you can check it in your app.
 
 ## License
 
