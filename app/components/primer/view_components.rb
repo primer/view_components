@@ -14,6 +14,7 @@ require "octicons_helper/helper"
 
 require "primer/class_name_helper"
 require "primer/classify"
+require "primer/styleable"
 require "primer/fetch_or_fallback_helper"
 
 # Base configurations
