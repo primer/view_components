@@ -5,112 +5,81 @@ require "test_helper"
 class BlankslateComponentTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  def test_renders_title
-    render_inline(Primer::BaseComponent.new(tag: :div, title: "title"))
+  test "renders a basic blankslate component with a title" do
+    render_inline(Primer::BlankslateComponent.new(
+      title: "Title",
+      description: "Description",
+    ))
 
-    assert_selector("[title='title']")
+    assert_selector("div.blankslate")
+    assert_selector("h3", text: "Title")
+    refute_selector(".blankslate-narrow")
   end
 
-  def test_renders_content
-    render_inline(Primer::BaseComponent.new(tag: :div)) do
-      "content"
-    end
+  test "renders a narrow blankslate component" do
+    render_inline(Primer::BlankslateComponent.new(
+      title: "Title",
+      narrow: true,
+    ))
 
-    assert_text("content")
+    assert_selector(".blankslate.blankslate-narrow")
   end
 
-  def test_skips_rendering_primer_class_if_value_is_nil
-    result = render_inline(Primer::BaseComponent.new(tag: :div, my: nil)) # rubocop:todo ViewComponent/RenderInlineAssignment
+  test "renders a blankslate component with an icon" do
+    render_inline(Primer::BlankslateComponent.new(
+      icon: "octoface",
+      title: "Title",
+    ))
 
-    assert result.css("div").first.attribute("class").nil?
+    assert_selector(".blankslate-icon")
   end
 
-  def test_renders_arbitrary_attributes
-    render_inline(Primer::BaseComponent.new(tag: :div, itemtype: "http://schema.org/Code"))
+  test "renders a blankslate component with an image" do
+    render_inline(Primer::BlankslateComponent.new(
+      image_src: "file.svg",
+      image_alt: "Alt text",
+      title: "Title",
+    ))
 
-    assert_selector("[itemtype='http://schema.org/Code']")
+    assert_selector(".blankslate > img[src$='file.svg']")
+    assert_selector(".blankslate > img[alt='Alt text']")
   end
 
-  def test_renders_arbitrary_class_names
-    render_inline(Primer::BaseComponent.new(tag: :div, classes: "foobar"))
+  test "renders a blankslate component with a description" do
+    render_inline(Primer::BlankslateComponent.new(
+      title: "Title",
+      description: "Description",
+    ))
 
-    assert_selector(".foobar")
+    assert_selector("p", text: "Description")
   end
 
-  def test_renders_arbitrary_blank_attributes
-    render_inline(Primer::BaseComponent.new(tag: :div, itemscope: true))
+  test "renders a blankslate component with custom content" do
+    render_inline(Primer::BlankslateComponent.new(
+      icon: "octoface",
+      title: "Title",
+    )) { "Custom content" }
 
-    assert_selector("[itemscope]")
+    assert_text("Custom content")
   end
 
-  def test_conditionally_renders_arbitrary_blank_attributes
-    render_inline(Primer::BaseComponent.new(tag: :div, itemscope: false))
+  test "renders a blankslate component with a button" do
+    render_inline(Primer::BlankslateComponent.new(
+      title: "Title",
+      button_text: "Button",
+      button_url: "https://github.com",
+    ))
 
-    refute_selector("[itemscope]")
+    assert_selector("a.btn[href='https://github.com']", text: "Button")
   end
 
-  def test_does_not_render_class_attribute_if_none_is_set
-    render_inline(Primer::BaseComponent.new(tag: :div, title: "title"))
+  test "renders a blankslate component with a link" do
+    render_inline(Primer::BlankslateComponent.new(
+      title: "Title",
+      link_text: "Link",
+      link_url: "https://docs.github.com",
+    ))
 
-    refute_selector("div[class='']")
-  end
-
-  def test_does_not_render_primer_layout_classes_as_attributes
-    render_inline(Primer::BaseComponent.new(tag: :div, my: 4))
-
-    refute_selector("[my='4']")
-  end
-
-  def test_renders_as_a_link
-    render_inline(Primer::BaseComponent.new(tag: :a, href: "http://google.com"))
-
-    assert_selector("a[href='http://google.com']")
-  end
-
-  # We were calling tag.send(as), passing in :p ended up calling `p`, aka `puts`
-  # Due to how Rails uses method_missing in TagHelper.
-  def test_renders_as_a_paragraph
-    render_inline(Primer::BaseComponent.new(tag: :p))
-
-    refute_text("[")
-  end
-
-  def test_renders_data_attributes
-    render_inline(Primer::BaseComponent.new(tag: :div, data: { foo: "bar" }))
-
-    assert_selector("[data-foo='bar']")
-  end
-
-  def test_renders_test_selector
-    render_inline(Primer::BaseComponent.new(tag: :div, test_selector: "bar"))
-
-    refute_selector("[test_selector='bar']")
-    assert_selector("[data-test-selector='bar']")
-  end
-
-  def test_renders_height_attribute
-    render_inline(Primer::BaseComponent.new(tag: :div, height: 30))
-
-    assert_selector("div[height=30]")
-  end
-
-  def test_renders_width_attribute
-    render_inline(Primer::BaseComponent.new(tag: :div, width: 30))
-
-    assert_selector("div[width=30]")
-  end
-
-  def test_does_not_render_height_as_attribute_if_value_is_class
-    render_inline(Primer::BaseComponent.new(tag: :div, height: :fill))
-
-    refute_selector("div[height='fill']")
-    assert_selector("div.height-fill")
-  end
-
-  def test_does_not_render_width_as_attribute_if_value_is_class
-    render_inline(Primer::BaseComponent.new(tag: :div, width: :fill))
-
-    refute_selector("div[width='fill']")
-    assert_selector("div.width-fill")
+    assert_selector("a[href='https://docs.github.com']", text: "Link")
   end
 end
