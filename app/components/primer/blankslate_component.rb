@@ -29,7 +29,7 @@ module Primer
   # ) %>
   # ```
   #
-  # Alternatively you can also add a graphic by providing a path (`image_src`) to an image instead. Note: The image needs to be in [github/github/public/static/images/](https://github.com/github/github/tree/master/public/static/images/) and the path is relative. For example: `image_src: "[mona-happy.gif](https://github.com/github/github/blob/master/public/static/images/mona-happy.gif)",`. Also, make sure to add an alternative description (`image_alt`). It will be used for the `alt` tag.
+  # Alternatively you can also add a graphic by providing a path (`image_src`) to an image instead.Also, make sure to add an alternative description (`image_alt`). It will be used for the `alt` tag.
   #
   # ```ruby
   # <%= render Primer::BlankslateComponent.new(
