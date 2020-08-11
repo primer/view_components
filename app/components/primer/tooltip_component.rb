@@ -13,10 +13,11 @@ module Primer
       direction = fetch_or_fallback(DIRECTION_OPTIONS, direction.to_sym, DIRECTION_DEFAULT)
 
       @kwargs = kwargs
+      @kwargs[:tag] ||= :span
       @kwargs["aria-label"] = label
       @kwargs[:classes] = class_names(
         @kwargs[:classes],
-        "tooltiped",
+        "tooltipped",
         "tooltipped-#{direction}",
         "tooltipped-align-right-1" => align == :right,
         "tooltipped-align-left-1" => align == :left,
