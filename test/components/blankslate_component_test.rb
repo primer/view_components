@@ -68,8 +68,7 @@ class BlankslateComponentTest < Minitest::Test
   end
 
   # We were calling tag.send(as), passing in :p ended up calling `p`, aka `puts`
-  # Due to how Rails uses method_missing in TagHelper. See Slack convo:
-  # https://github.slack.com/archives/C0HV3F37A/p1556216733019500
+  # Due to how Rails uses method_missing in TagHelper.
   def test_renders_as_a_paragraph
     render_inline(Primer::BaseComponent.new(tag: :p))
 
