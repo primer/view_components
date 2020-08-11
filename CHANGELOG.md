@@ -1,5 +1,12 @@
 # main
 
+* Add components:
+    * Avatar
+
+    *Manuel Puyol*
+
+# 0.0.1
+
 * Add initial gem configuration.
 
     *Manuel Puyol, Joel Hawksley*
