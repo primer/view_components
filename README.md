@@ -48,7 +48,7 @@ script/storybook
 
 ### Developing with another app
 
-In your app, change the Gemfile from
+In your `Gemfile`, change:
 
 ```ruby
 gem "primer_view_components"
