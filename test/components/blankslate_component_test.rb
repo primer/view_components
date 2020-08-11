@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class Primer::BlankslateComponentTest < Minitest::Test
+class BlankslateComponentTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_title
