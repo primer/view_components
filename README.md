@@ -61,7 +61,7 @@ gem "primer_view_components", path: "path_to_the_gem" # e.g. path: "~/primer/vie
 ```
 
 Then, `bundle install` to update references. You'll now be able to see changes from the gem without having to build it.
-Remember that restarting Rails server is necessary to see the changes, since the gem is loaded at boot.
+Remember that restarting the Rails server is necessary to see changes, as the gem is loaded at boot time.
 
 To minimize the number of restarts, we recommend checking the component first in Storybook and when it's in a good state
 you can check it in your app.
