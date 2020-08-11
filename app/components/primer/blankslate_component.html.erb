@@ -1,10 +1,6 @@
 <%= render Primer::BaseComponent.new(**@kwargs) do %>
   <% if @icon.present? %>
-    <%= render(GitHub::OcticonComponent.new(
-      icon: @icon,
-      size: :medium,
-      class: "blankslate-icon"
-    )) %>
+    <%= octicon @icon, height: 32, class: "blankslate-icon" %>
   <% end %>
 
   <% if @image_src.present? && @image_alt.present? %>
