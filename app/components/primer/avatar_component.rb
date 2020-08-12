@@ -15,9 +15,9 @@ module Primer
 
       @kwargs[:classes] = class_names(
         "avatar",
-        kwargs[:classes],
         "avatar--small" => size < SMALL_THRESHOLD,
-        "CircleBadge" => !square
+        "CircleBadge" => !square,
+        kwargs[:classes],
       )
     end
 
