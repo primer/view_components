@@ -2,8 +2,9 @@
 
 * Add components:
     * Avatar
+    * Blankslate
 
-    *Manuel Puyol*
+    *Manuel Puyol, Ben Emdon*
 
 # 0.0.1
 
