@@ -24,7 +24,6 @@ module Primer
 
       @kwargs = kwargs
       @kwargs[:tag] = :nav
-      @kwargs["aria-label"] = "Pagination"
       @kwargs[:classes] = class_names(
         "paginate-container",
         @kwargs[:classes]
