@@ -10,6 +10,7 @@ class PrimerComponentTest < Minitest::Test
     components_with_args = [
       [Primer::AvatarComponent, { alt: "github", src: "https://github.com/github.png" }],
       [Primer::BaseComponent, { tag: :div }],
+      [Primer::BlankslateComponent, { title: "Foo" }],
       [Primer::BorderBoxComponent, {}, proc { |component| component.slot(:header) { "Foo" }  }],
       [Primer::BoxComponent, {}],
       [Primer::BreadcrumbComponent, {}, proc { |component| component.slot(:item) { "Foo" } }],
