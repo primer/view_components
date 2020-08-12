@@ -116,6 +116,7 @@ module Primer
       # optional
       title_tag: :h3,
       icon: "",
+      icon_height: 32,
       image_src: "",
       image_alt: " ",
       description: "",
@@ -140,6 +141,7 @@ module Primer
 
       @title_tag = title_tag
       @icon = icon
+      @icon_height = icon_height
       @image_src = image_src
       @image_alt = image_alt
       @title = title
