@@ -1,4 +1,4 @@
-<%= render Primer::BaseComponent.new("aria-label" => "Pagination", **@kwargs) do %>
+<%= render Primer::BaseComponent.new("aria-label": "Pagination", **@kwargs) do %>
   <div class="pagination">
     <span class="previous_page" href="<%= @href_builder.call(@page - 1) %>" aria-disabled="<%= first_page? %>" aria-label="Previous Page">Previous</span>
 
