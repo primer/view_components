@@ -28,7 +28,11 @@ module Primer
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys << nil
 
+    deprecated_options_for :scheme, :outline, :green_outline
+
     def initialize(title:, scheme: nil, variant: nil, **kwargs)
+      @scheme = scheme
+
       @kwargs = kwargs
       @kwargs[:bg] = :blue if scheme.nil?
       @kwargs[:tag] ||= :span
