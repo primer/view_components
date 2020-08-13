@@ -8,6 +8,10 @@
 
 _Note: This library is in pre-release development and should not be considered stable._
 
+## Design philosophy
+
+Primer ViewComponents aims to mimic the API of [Primer Components](https://github.com/primer/components), while using [Primer CSS](https://github.com/primer/css) under the hood.
+
 ## Installation
 
 In `Gemfile`, add:
