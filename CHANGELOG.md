@@ -1,6 +1,8 @@
 # main
 
-* Add support for responsive `float` style arguments.
+# 0.0.3
+
+* Add support for responsive `float` style argument.
 
     *Joel Hawksley*
 
