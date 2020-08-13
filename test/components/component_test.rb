@@ -9,6 +9,7 @@ class PrimerComponentTest < Minitest::Test
     # Components with any arguments necessary to make them render
     components_with_args = [
       [Primer::BaseComponent, { tag: :div }],
+      [Primer::BlankslateComponent, { title: "Foo" }],
       [Primer::BorderBoxComponent, {}, proc { |component| component.slot(:header) { "Foo" }  }],
       [Primer::BoxComponent, {}],
       [Primer::BreadcrumbComponent, {}, proc { |component| component.slot(:item) { "Foo" } }],
