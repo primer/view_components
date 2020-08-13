@@ -36,7 +36,7 @@ Example label built with Primer CSS:
 
 The same label using `Primer::LabelComponent`:
 
-```html
+```erb
 <%= render Primer::LabelComponent.new(ml: 2, vertical_align: :middle, scheme: :green, title: "Label: Suggested") do %>
   Suggested
 <% end %>
@@ -99,7 +99,7 @@ Example heading built with Primer CSS:
 
 The same label using `Primer::HeadingComponent`:
 
-```html
+```erb
 <%= render Primer::HeadingComponent.new(mt: [0, nil, nil, 4]) do %>
   Hello world
 <% end %>
