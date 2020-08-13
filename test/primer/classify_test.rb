@@ -192,6 +192,7 @@ class PrimerClassifyTest < Minitest::Test
   def test_responsive
     assert_generated_class("p-4",  { p: [4] })
     assert_generated_class("p-4 p-sm-3",  { p: [4, 3] })
+    assert_generated_class("float-left float-md-right",  { float: [:left, nil, :right] })
     assert_generated_class("d-flex d-sm-block",  { display: [:flex, :block] })
     assert_generated_class("d-flex d-md-block",  { display: [:flex, nil, :block] })
     assert_generated_class("flex-row flex-sm-column",  { direction: [:row, :column] })

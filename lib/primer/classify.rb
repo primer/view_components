@@ -8,7 +8,7 @@ module Primer
     JUSTIFY_CONTENT_KEY = :justify_content
     ALIGN_ITEMS_KEY = :align_items
     DISPLAY_KEY = :display
-    RESPONSIVE_KEYS = ([DISPLAY_KEY, DIRECTION_KEY, JUSTIFY_CONTENT_KEY, ALIGN_ITEMS_KEY, :col] + SPACING_KEYS).freeze
+    RESPONSIVE_KEYS = ([DISPLAY_KEY, DIRECTION_KEY, JUSTIFY_CONTENT_KEY, ALIGN_ITEMS_KEY, :col, :float] + SPACING_KEYS).freeze
     BREAKPOINTS = ["", "-sm", "-md", "-lg"]
 
     # Keys where we can simply translate { key: value } into ".key-value"
