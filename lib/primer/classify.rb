@@ -161,9 +161,9 @@ module Primer
 
             if SPACING_KEYS.include?(key)
               if MARGIN_DIRECTION_KEYS.include?(key)
-                raise ArgumentError, "value must be between -6 and 6" if (val < -6 || val > 6)
-              else
-                raise ArgumentError, "value must be between 0 and 6" if (val < 0 || val > 6)
+                raise ArgumentError, "value of #{key} must be between -6 and 6" if (val < -6 || val > 6)
+              elsif !((key == :mx || key == :my) && val == :auto)
+                raise ArgumentError, "value of #{key} must be between 0 and 6" if (val < 0 || val > 6)
               end
             end
 
