@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Primer::TimelineItemComponentStories < ViewComponent::Storybook::Stories
-  layout "storybook_preview"
+  layout "storybook_centered_preview"
 
   story(:timeline_item) do
     controls do
