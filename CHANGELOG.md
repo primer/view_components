@@ -6,6 +6,9 @@
 
     *Christian Giordano*
 
+* Added support for custom layout sizes.
+
+    *Manuel Puyol*
 # 0.0.3
 
 * Add support for responsive `float` style argument.
