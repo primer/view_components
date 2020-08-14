@@ -1,5 +1,11 @@
 # main
 
+# 0.0.3
+
+* Add support for responsive `float` style argument.
+
+    *Joel Hawksley*
+
 * Add components:
     * Avatar
     * Blankslate
