@@ -1,5 +1,11 @@
 # main
 
+# 0.0.4
+
+* Added support for mx: and my: :auto.
+
+    *Christian Giordano*
+
 # 0.0.3
 
 * Add support for responsive `float` style argument.
