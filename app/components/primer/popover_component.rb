@@ -25,7 +25,7 @@ module Primer
     end
 
     class Message < Slot
-      CARET_DEFAULT = :none
+      CARET_DEFAULT = :top
       CARET_MAPPINGS = {
         CARET_DEFAULT => "",
         :bottom => "Popover-message--bottom",
