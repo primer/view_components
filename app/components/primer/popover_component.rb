@@ -4,8 +4,8 @@ module Primer
   class PopoverComponent < Primer::Component
     include ViewComponent::Slotable
 
-    with_slot :message, class_name: "Message"
     with_slot :heading, class_name: "Heading"
+    with_slot :message, class_name: "Message"
     with_slot :button, class_name: "Button"
 
     def initialize(**kwargs)
@@ -18,6 +18,10 @@ module Primer
       @kwargs[:position] ||= :relative
       @kwargs[:right] = false unless kwargs.key?(:right)
       @kwargs[:left] = false unless kwargs.key?(:left)
+    end
+
+    def render?
+      message.present?
     end
 
     class Message < Slot

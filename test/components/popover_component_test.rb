@@ -26,10 +26,15 @@ class PrimerPopoverComponentTest < Minitest::Test
   end
 
   def test_allows_customization
-    render_inline(Primer::PopoverComponent.new(position: :absolute, tag: :span,
-      classes: "custom-class"))
+    render_inline(Primer::PopoverComponent.new(
+      position: :absolute, tag: :span, classes: "custom-class"
+    )) do |component|
+      component.slot(:message) do
+        "Hi there"
+      end
+    end
 
-    assert_selector("span.Popover.position-absolute.custom-class")
+    assert_selector("span.Popover.position-absolute.custom-class", text: "Hi there")
   end
 
   def test_respects_message_caret_option
