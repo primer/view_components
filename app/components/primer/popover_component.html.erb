@@ -7,7 +7,9 @@
         <% end %>
       <% end %>
       <% if body %>
-        <%= body.content %>
+        <%= render body.component do %>
+          <%= body.content %>
+        <% end %>
       <% end %>
       <% if button %>
         <%= render button.component do %>

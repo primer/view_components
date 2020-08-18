@@ -70,6 +70,14 @@ module Primer
     end
 
     class Body < ViewComponent::Slot
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:tag] ||= :div
+      end
+
+      def component
+        Primer::BaseComponent.new(**@kwargs)
+      end
     end
 
     class Button < ViewComponent::Slot
