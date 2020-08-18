@@ -24,6 +24,7 @@ class PrimerComponentTest < Minitest::Test
       [Primer::LabelComponent, { title: "Hello!" }],
       [Primer::LayoutComponent, {}],
       [Primer::LinkComponent, { href: "https://www.google.com" }],
+      [Primer::PopoverComponent, {}],
       [Primer::ProgressBarComponent, {}, proc { |component| component.slot(:item) }],
       [Primer::StateComponent, { title: "Open" }],
       [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
