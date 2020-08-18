@@ -9,7 +9,7 @@ module Primer
     with_slot :body, class_name: "Body"
     with_slot :button, class_name: "Button"
 
-    class Message < ViewComponent::Slot
+    class Message < Slot
       CARET_DEFAULT = :none
       CARET_MAPPINGS = {
         CARET_DEFAULT => "",
