@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Primer::PopoverComponentStories < ViewComponent::Storybook::Stories
-  layout "storybook_preview"
+  layout "storybook_centered_preview"
 
   story(:popover) do
     content do |component|
@@ -39,7 +39,10 @@ class Primer::PopoverComponentStories < ViewComponent::Storybook::Stories
     end
   end
 
-  Primer::PopoverComponent::Message::CARET_MAPPINGS.keys.each do |caret|
+  (
+    Primer::PopoverComponent::Message::CARET_MAPPINGS.keys -
+    [Primer::PopoverComponent::Message::CARET_DEFAULT]
+  ).each do |caret|
     story("popover_#{caret}".to_sym) do
       content do |component|
         component.slot(:heading) { "Popover heading" }
