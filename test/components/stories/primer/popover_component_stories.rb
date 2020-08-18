@@ -5,7 +5,9 @@ class Primer::PopoverComponentStories < ViewComponent::Storybook::Stories
 
   story(:popover) do
     controls do
-      condensed false
+      select(:caret,
+        Primer::PopoverComponent::Message::CARET_MAPPINGS.each_with_object({}) { |k, h| h[k] = k },
+        :primary)
     end
 
     content do |component|
