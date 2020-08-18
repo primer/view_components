@@ -154,6 +154,14 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("text-bold",     { font_weight: :bold })
   end
 
+  def test_box_shadow
+    assert_generated_class("box-shadow",             { box_shadow: true })
+    assert_generated_class("box-shadow-medium",      { box_shadow: :medium })
+    assert_generated_class("box-shadow-large",       { box_shadow: :large })
+    assert_generated_class("box-shadow-extra-large", { box_shadow: :extra_large })
+    assert_generated_class("box-shadow-none",        { box_shadow: :none })
+  end
+
   def test_col
     assert_generated_class("col-1", { col: 1 })
   end

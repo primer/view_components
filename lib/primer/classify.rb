@@ -12,10 +12,10 @@ module Primer
     BREAKPOINTS = ["", "-sm", "-md", "-lg"]
 
     # Keys where we can simply translate { key: value } into ".key-value"
-    CONCAT_KEYS = SPACING_KEYS + [:hide, :position, :v, :float, :col, :text].freeze
+    CONCAT_KEYS = SPACING_KEYS + [:hide, :position, :v, :float, :col, :text, :box_shadow].freeze
 
     INVALID_CLASS_NAME_PREFIXES =
-      (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "text-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
+      (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "text-", "box-shadow-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
 
     COLOR_KEY = :color
     BG_KEY = :bg
@@ -28,9 +28,18 @@ module Primer
     ALIGN_SELF_KEY = :align_self
     WIDTH_KEY = :width
     HEIGHT_KEY = :height
+    BOX_SHADOW_KEY = :box_shadow
 
 
     BOOLEAN_MAPPINGS = {
+      box_shadow: {
+        mappings: [
+          {
+            value: true,
+            css_class: "box-shadow"
+          }
+        ]
+      },
       underline: {
         mappings: [
           {
@@ -98,7 +107,8 @@ module Primer
         FLEX_SHRINK_KEY,
         ALIGN_SELF_KEY,
         WIDTH_KEY,
-        HEIGHT_KEY
+        HEIGHT_KEY,
+        BOX_SHADOW_KEY
       ]
     ).freeze
 
