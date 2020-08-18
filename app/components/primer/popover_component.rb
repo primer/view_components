@@ -25,12 +25,13 @@ module Primer
 
       attr_reader :kwargs
 
-      def initialize(caret: CARET_DEFAULT, **kwargs)
+      def initialize(caret: CARET_DEFAULT, large: false, **kwargs)
         @kwargs = kwargs
         @kwargs[:classes] = class_names(
           kwargs[:classes],
           "Popover-message text-left Box box-shadow-large",
-          CARET_MAPPINGS[fetch_or_fallback(CARET_MAPPINGS.keys, caret, CARET_DEFAULT)]
+          CARET_MAPPINGS[fetch_or_fallback(CARET_MAPPINGS.keys, caret, CARET_DEFAULT)],
+          "Popover-message--large" => large
         )
         @kwargs[:p] = 4 unless kwargs.key?(:p)
         @kwargs[:mt] = 2 unless kwargs.key?(:mt)
