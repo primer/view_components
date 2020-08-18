@@ -1,5 +1,20 @@
 # main
 
+# 0.0.4
+
+* Added support for mx: and my: :auto.
+
+    *Christian Giordano*
+
+* Added support for custom layout sizes.
+
+    *Manuel Puyol*
+# 0.0.3
+
+* Add support for responsive `float` style argument.
+
+    *Joel Hawksley*
+
 * Add components:
     * Avatar
     * Blankslate
