@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Primer::PopoverComponentStories < ViewComponent::Storybook::Stories
-  layout "storybook_centered_preview"
+  layout "storybook_preview"
 
   story(:popover) do
     controls do
