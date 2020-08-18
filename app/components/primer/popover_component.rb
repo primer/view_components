@@ -4,26 +4,25 @@ module Primer
   class PopoverComponent < Primer::Component
     include ViewComponent::Slotable
 
-    CARET_DEFAULT = :none
-    CARET_MAPPINGS = {
-      CARET_DEFAULT => "",
-      :bottom => "Popover-message--bottom",
-      :bottom_right => "Popover-message--bottom-right",
-      :bottom_left => "Popover-message--bottom-left",
-      :left => "Popover-message--left",
-      :left_bottom => "Popover-message--left-bottom",
-      :left_top => "Popover-message--left-top",
-      :right => "Popover-message--right",
-      :right_bottom => "Popover-message--right-bottom",
-      :right_top => "Popover-message--right-top",
-      :top_left => "Popover-message--top-left",
-      :top_right => "Popover-message--top-right"
-    }.freeze
-
-    with_content_areas :heading, :body, :button
-    with_slot :message
+    with_slot :message, :heading, :body, :button
 
     class Message < ViewComponent::Slot
+      CARET_DEFAULT = :none
+      CARET_MAPPINGS = {
+        CARET_DEFAULT => "",
+        :bottom => "Popover-message--bottom",
+        :bottom_right => "Popover-message--bottom-right",
+        :bottom_left => "Popover-message--bottom-left",
+        :left => "Popover-message--left",
+        :left_bottom => "Popover-message--left-bottom",
+        :left_top => "Popover-message--left-top",
+        :right => "Popover-message--right",
+        :right_bottom => "Popover-message--right-bottom",
+        :right_top => "Popover-message--right-top",
+        :top_left => "Popover-message--top-left",
+        :top_right => "Popover-message--top-right"
+      }.freeze
+
       attr_reader :kwargs
 
       def initialize(caret: CARET_DEFAULT, **kwargs)
@@ -36,6 +35,38 @@ module Primer
       end
     end
 
+    class Heading < ViewComponent::Slot
+      attr_reader :kwargs
+
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:mb] = 2 unless @kwargs.key?(:mb)
+      end
+    end
+
+    class Body < ViewComponent::Slot
+      attr_reader :kwargs
+
+      def initialize(**kwargs)
+        @kwargs = kwargs
+      end
+    end
+
+    class Button < ViewComponent::Slot
+      attr_reader :kwargs
+
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:tag] ||= :button
+        @kwargs[:type] ||= "button"
+        @kwargs[:classes] = class_names(
+          kwargs[:classes],
+          "btn btn-outline text-bold"
+        )
+        @kwargs[:mt] = 2 unless @kwargs.key?(:mt)
+      end
+    end
+
     def initialize(**kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :div
@@ -43,9 +74,6 @@ module Primer
         kwargs[:classes],
         "Popover right-0 left-0 position-relative"
       )
-
-      @heading_kwargs = { tag: :h4, classes: "mb-2" }
-      @button_kwargs = { tag: :button, type: "button", classes: "btn btn-outline mt-2 text-bold" }
     end
   end
 end
