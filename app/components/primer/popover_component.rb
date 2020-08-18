@@ -9,6 +9,18 @@ module Primer
     with_slot :body, class_name: "Body"
     with_slot :button, class_name: "Button"
 
+    def initialize(**kwargs)
+      @kwargs = kwargs
+      @kwargs[:tag] ||= :div
+      @kwargs[:classes] = class_names(
+        kwargs[:classes],
+        "Popover"
+      )
+      @kwargs[:position] ||= :relative
+      @kwargs[:right] = false unless kwargs.key?(:right)
+      @kwargs[:left] = false unless kwargs.key?(:left)
+    end
+
     class Message < Slot
       CARET_DEFAULT = :none
       CARET_MAPPINGS = {
@@ -77,18 +89,6 @@ module Primer
           Primer::BaseComponent.new(**@kwargs)
         end
       end
-    end
-
-    def initialize(**kwargs)
-      @kwargs = kwargs
-      @kwargs[:tag] ||= :div
-      @kwargs[:classes] = class_names(
-        kwargs[:classes],
-        "Popover"
-      )
-      @kwargs[:position] ||= :relative
-      @kwargs[:right] = false unless kwargs.key?(:right)
-      @kwargs[:left] = false unless kwargs.key?(:left)
     end
   end
 end
