@@ -2,6 +2,8 @@
 
 module Primer
   class PopoverComponent < Primer::Component
+    include ViewComponent::Slotable
+
     CARET_DEFAULT = :none
     CARET_MAPPINGS = {
       CARET_DEFAULT => "",
@@ -19,8 +21,22 @@ module Primer
     }.freeze
 
     with_content_areas :heading, :body, :button
+    with_slot :message
 
-    def initialize(caret: CARET_DEFAULT, **kwargs)
+    class Message < ViewComponent::Slot
+      attr_reader :kwargs
+
+      def initialize(caret: CARET_DEFAULT, **kwargs)
+        @kwargs = kwargs
+        @kwargs[:classes] = class_names(
+          kwargs[:classes],
+          "Popover-message text-left p-4 mt-2 mx-auto Box box-shadow-large",
+          CARET_MAPPINGS[fetch_or_fallback(CARET_MAPPINGS.keys, caret, CARET_DEFAULT)]
+        )
+      end
+    end
+
+    def initialize(**kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :div
       @kwargs[:classes] = class_names(
@@ -28,13 +44,6 @@ module Primer
         "Popover right-0 left-0 position-relative"
       )
 
-      @message_kwargs = {
-        tag: :div,
-        classes: class_names(
-          "Popover-message text-left p-4 mt-2 mx-auto Box box-shadow-large",
-          CARET_MAPPINGS[fetch_or_fallback(CARET_MAPPINGS.keys, caret, CARET_DEFAULT)]
-        )
-      }
       @heading_kwargs = { tag: :h4, classes: "mb-2" }
       @button_kwargs = { tag: :button, type: "button", classes: "btn btn-outline mt-2 text-bold" }
     end

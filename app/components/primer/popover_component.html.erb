@@ -1,11 +1,13 @@
 <%= render Primer::BaseComponent.new(**@kwargs) do %>
-  <%= render Primer::BaseComponent.new(**@message_kwargs) do %>
-    <%= render Primer::BaseComponent.new(**@heading_kwargs) do %>
-      <%= heading %>
-    <% end %>
-    <%= body %>
-    <%= render Primer::BaseComponent.new(**@button_kwargs) do %>
-      <%= button %>
-    <% end %>
+  <% if message %>
+    <%= render Primer::BaseComponent.new(**message.kwargs) do %>
+      <%= render Primer::BaseComponent.new(**@heading_kwargs) do %>
+        <%= heading %>
+      <% end %>
+      <%= body %>
+      <%= render Primer::BaseComponent.new(**@button_kwargs) do %>
+        <%= button %>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
