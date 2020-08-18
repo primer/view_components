@@ -18,10 +18,18 @@ class PrimerPopoverComponentTest < Minitest::Test
       end
     end
 
+    assert_selector("div.Popover.right-0.left-0")
     assert_selector("div.Popover div.Popover-message h4.mb-2", text: "My header")
     assert_selector("div.Popover div.Popover-message", text: "My body")
     assert_selector("div.Popover div.Popover-message button.btn.btn-outline.mt-2.text-bold",
       text: "My button")
+  end
+
+  def test_allows_customization
+    render_inline(Primer::PopoverComponent.new(position: :absolute, tag: :span,
+      classes: "custom-class"))
+
+    assert_selector("span.Popover.position-absolute.custom-class")
   end
 
   def test_respects_message_caret_option
