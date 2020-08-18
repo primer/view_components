@@ -6,7 +6,6 @@ module Primer
 
     with_slot :heading, class_name: "Heading"
     with_slot :message, class_name: "Message"
-    with_slot :button, class_name: "Button"
 
     def initialize(**kwargs)
       @kwargs = kwargs
@@ -70,26 +69,6 @@ module Primer
 
       def component
         Primer::HeadingComponent.new(**@kwargs)
-      end
-    end
-
-    class Button < ViewComponent::Slot
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] ||= :button
-        @kwargs[:mt] ||= 2
-        if @kwargs[:tag] == :button
-          @kwargs[:button_type] ||= :outline
-        end
-        @kwargs[:font_weight] ||= :bold
-      end
-
-      def component
-        if @kwargs[:tag] == :button
-          Primer::ButtonComponent.new(**@kwargs)
-        else
-          Primer::BaseComponent.new(**@kwargs)
-        end
       end
     end
   end

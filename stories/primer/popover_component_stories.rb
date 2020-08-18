@@ -7,25 +7,10 @@ class Primer::PopoverComponentStories < ViewComponent::Storybook::Stories
     content do |component|
       component.slot(:heading) { "Popover heading" }
       component.slot(:message) { "Message about this particular piece of UI." }
-      component.slot(:button) { "Got it!" }
     end
   end
 
   story(:popover_without_heading) do
-    content do |component|
-      component.slot(:message) { "Message about this particular piece of UI." }
-      component.slot(:button) { "Got it!" }
-    end
-  end
-
-  story(:popover_without_button) do
-    content do |component|
-      component.slot(:heading) { "Popover heading" }
-      component.slot(:message) { "Message about this particular piece of UI." }
-    end
-  end
-
-  story(:popover_without_heading_or_button) do
     content do |component|
       component.slot(:message) { "Message about this particular piece of UI." }
     end
@@ -35,7 +20,6 @@ class Primer::PopoverComponentStories < ViewComponent::Storybook::Stories
     content do |component|
       component.slot(:heading) { "Popover heading" }
       component.slot(:message, large: true) { "Message about this particular piece of UI." }
-      component.slot(:button) { "Got it!" }
     end
   end
 
@@ -47,7 +31,6 @@ class Primer::PopoverComponentStories < ViewComponent::Storybook::Stories
       content do |component|
         component.slot(:heading) { "Popover heading" }
         component.slot(:message, caret: caret) { "Message about this particular piece of UI." }
-        component.slot(:button) { "Got it!" }
       end
     end
   end

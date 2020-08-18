@@ -13,16 +13,11 @@ class PrimerPopoverComponentTest < Minitest::Test
       component.slot(:message) do
         "My body"
       end
-      component.slot(:button) do
-        "My button"
-      end
     end
 
     assert_selector("div.Popover.right-0.left-0")
     assert_selector("div.Popover div.Popover-message h4.mb-2", text: "My header")
     assert_selector("div.Popover div.Popover-message.box-shadow-large", text: "My body")
-    assert_selector("div.Popover div.Popover-message button.btn.btn-outline.mt-2.text-bold",
-      text: "My button")
   end
 
   def test_allows_customization
@@ -70,29 +65,5 @@ class PrimerPopoverComponentTest < Minitest::Test
     end
 
     assert_selector("div.Popover div.Popover-message h3.mb-4.pr-3", text: "Hello world")
-  end
-
-  def test_allows_button_customization
-    render_inline(Primer::PopoverComponent.new) do |component|
-      component.slot(:message)
-      component.slot(:button, mt: 1, button_type: :danger, font_weight: :normal) do
-        "A lovely day"
-      end
-    end
-
-    assert_selector("div.Popover div.Popover-message button.btn.btn-danger.mt-1.text-normal",
-      text: "A lovely day")
-  end
-
-  def test_allows_different_tag_for_button_slot
-    render_inline(Primer::PopoverComponent.new) do |component|
-      component.slot(:message)
-      component.slot(:button, tag: :summary) do
-        "Neat music"
-      end
-    end
-
-    assert_selector("div.Popover div.Popover-message summary.mt-2.text-bold",
-      text: "Neat music")
   end
 end
