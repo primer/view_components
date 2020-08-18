@@ -21,13 +21,13 @@ module Primer
     with_content_areas :summary, :body
 
     def initialize(overlay: OVERLAY_DEFAULT, button: BUTTON_DEFAULT, **kwargs)
-      @button = fetch_or_fallback(BUTTON_OPTIONS, button, BUTTON_DEFAULT)
+      @button = fetch_or_fallback(BUTTON_OPTIONS, button.to_sym, BUTTON_DEFAULT)
 
       @kwargs = kwargs
       @kwargs[:tag] = :details
       @kwargs[:classes] = class_names(
         kwargs[:classes],
-        OVERLAY_MAPPINGS[fetch_or_fallback(OVERLAY_MAPPINGS.keys, overlay, OVERLAY_DEFAULT)],
+        OVERLAY_MAPPINGS[fetch_or_fallback(OVERLAY_MAPPINGS.keys, overlay.to_sym, OVERLAY_DEFAULT)],
         "details-reset" => @button == BUTTON_RESET
       )
 
