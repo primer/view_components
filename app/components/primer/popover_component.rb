@@ -27,13 +27,14 @@ module Primer
         @kwargs = kwargs
         @kwargs[:classes] = class_names(
           kwargs[:classes],
-          "Popover-message text-left box-shadow-large",
+          "Popover-message box-shadow-large",
           CARET_MAPPINGS[fetch_or_fallback(CARET_MAPPINGS.keys, caret, CARET_DEFAULT)],
           "Popover-message--large" => large
         )
         @kwargs[:p] = 4 unless kwargs.key?(:p)
         @kwargs[:mt] = 2 unless kwargs.key?(:mt)
         @kwargs[:mx] = "auto" unless kwargs.key?(:mx)
+        @kwargs[:text_align] = :left unless kwargs.key?(:text_align)
       end
 
       def component
@@ -53,8 +54,6 @@ module Primer
     end
 
     class Body < ViewComponent::Slot
-      def initialize
-      end
     end
 
     class Button < ViewComponent::Slot
