@@ -61,10 +61,11 @@ module Primer
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:mb] ||= 2
+        @kwargs[:tag] ||= :h4
       end
 
       def component
-        Primer::BaseComponent.new(**@kwargs)
+        Primer::HeadingComponent.new(**@kwargs)
       end
     end
 
