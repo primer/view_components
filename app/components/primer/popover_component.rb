@@ -4,7 +4,10 @@ module Primer
   class PopoverComponent < Primer::Component
     include ViewComponent::Slotable
 
-    with_slot :message, :heading, :body, :button
+    with_slot :message, class_name: "Message"
+    with_slot :heading, class_name: "Heading"
+    with_slot :body, class_name: "Body"
+    with_slot :button, class_name: "Button"
 
     class Message < ViewComponent::Slot
       CARET_DEFAULT = :none
