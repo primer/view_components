@@ -33,7 +33,7 @@ module Primer
         )
         @kwargs[:p] = 4 unless kwargs.key?(:p)
         @kwargs[:mt] = 2 unless kwargs.key?(:mt)
-        @kwargs[:mx] = "auto" unless kwargs.key?(:mx)
+        @kwargs[:mx] = :auto unless kwargs.key?(:mx)
         @kwargs[:text_align] = :left unless kwargs.key?(:text_align)
       end
 
