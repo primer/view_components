@@ -20,7 +20,7 @@ class PrimerPopoverComponentTest < Minitest::Test
 
     assert_selector("div.Popover.right-0.left-0")
     assert_selector("div.Popover div.Popover-message h4.mb-2", text: "My header")
-    assert_selector("div.Popover div.Popover-message", text: "My body")
+    assert_selector("div.Popover div.Popover-message.box-shadow-large", text: "My body")
     assert_selector("div.Popover div.Popover-message button.btn.btn-outline.mt-2.text-bold",
       text: "My button")
   end
