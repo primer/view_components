@@ -72,11 +72,12 @@ module Primer
 
     def initialize(**kwargs)
       @kwargs = kwargs
-      @kwargs[:tag] = :div
+      @kwargs[:tag] ||= :div
       @kwargs[:classes] = class_names(
         kwargs[:classes],
-        "Popover right-0 left-0 position-relative"
+        "Popover right-0 left-0"
       )
+      @kwargs[:position] = :relative unless kwargs.key?(:position)
     end
   end
 end
