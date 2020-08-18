@@ -56,12 +56,12 @@ module Primer
     end
 
     class Button < ViewComponent::Slot
-      attr_reader :kwargs
+      attr_reader :kwargs, :tag
 
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] ||= :button
-        @kwargs[:type] ||= "button"
+        @tag = @kwargs[:tag]
         @kwargs[:classes] = class_names(
           kwargs[:classes],
           "btn btn-outline text-bold"

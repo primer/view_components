@@ -10,8 +10,14 @@
         <%= body.content %>
       <% end %>
       <% if button %>
-        <%= render Primer::BaseComponent.new(**button.kwargs) do %>
-          <%= button.content %>
+        <% if button.tag == :button %>
+          <%= render Primer::ButtonComponent.new(**button.kwargs) do %>
+            <%= button.content %>
+          <% end %>
+        <% else %>
+          <%= render Primer::BaseComponent.new(**button.kwargs) do %>
+            <%= button.content %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
