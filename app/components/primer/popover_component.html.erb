@@ -6,11 +6,7 @@
           <%= heading.content %>
         <% end %>
       <% end %>
-      <% if body %>
-        <%= render body.component do %>
-          <%= body.content %>
-        <% end %>
-      <% end %>
+      <%= message.content %>
       <% if button %>
         <%= render button.component do %>
           <%= button.content %>

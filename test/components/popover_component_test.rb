@@ -7,11 +7,10 @@ class PrimerPopoverComponentTest < Minitest::Test
 
   def test_renders_default_styling
     render_inline(Primer::PopoverComponent.new) do |component|
-      component.slot(:message)
       component.slot(:heading) do
         "My header"
       end
-      component.slot(:body) do
+      component.slot(:message) do
         "My body"
       end
       component.slot(:button) do

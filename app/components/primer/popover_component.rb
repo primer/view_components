@@ -6,7 +6,6 @@ module Primer
 
     with_slot :message, class_name: "Message"
     with_slot :heading, class_name: "Heading"
-    with_slot :body, class_name: "Body"
     with_slot :button, class_name: "Button"
 
     def initialize(**kwargs)
@@ -66,17 +65,6 @@ module Primer
 
       def component
         Primer::HeadingComponent.new(**@kwargs)
-      end
-    end
-
-    class Body < ViewComponent::Slot
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] ||= :div
-      end
-
-      def component
-        Primer::BaseComponent.new(**@kwargs)
       end
     end
 
