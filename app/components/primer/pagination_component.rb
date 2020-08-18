@@ -39,7 +39,9 @@ module Primer
     def show_left_ellipsis?
       leftmost_surrounding_page = @page - @surrounding_pages
 
-      leftmost_surrounding_page > left_margin_pages.last
+      # We don't show ellipsis if the leftmost surrounding page
+      # is either in the margin pages or is the page after the left margin
+      leftmost_surrounding_page > left_margin_pages.last + 1
     end
 
     def middle_pages
@@ -57,7 +59,9 @@ module Primer
     def show_right_ellipsis?
       rightmost_surrounding_page = @page + @surrounding_pages
 
-      rightmost_surrounding_page < right_margin_pages.first
+      # We don't show ellipsis if the rightmost surrounding page
+      # is either in the margin pages or is the page before the right margin
+      rightmost_surrounding_page < right_margin_pages.first - 1
     end
 
     def first_page?
