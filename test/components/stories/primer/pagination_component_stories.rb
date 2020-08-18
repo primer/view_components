@@ -5,11 +5,11 @@ class Primer::PaginationComponentStories < ViewComponent::Storybook::Stories
 
   story(:pagination) do
     controls do
-      page 1
-      page_count 10
+      current_page 3
+      page_count 5
       show_pages true
-      margin_pages 1
-      surrounding_pages 2
+      margin_page_count 1
+      surrounding_page_count 1
     end
   end
 end

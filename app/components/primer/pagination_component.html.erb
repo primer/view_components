@@ -1,10 +1,10 @@
 <%= render Primer::BaseComponent.new("aria-label": "Pagination", **@kwargs) do %>
   <div class="pagination">
-    <span class="previous_page" href="<%= @href_builder.call(@page - 1) %>" aria-disabled="<%= first_page? %>" aria-label="Previous Page">Previous</span>
+    <span class="previous_page" href="<%= @href_builder.call(@current_page - 1) %>" aria-disabled="<%= first_page? %>" aria-label="Previous Page">Previous</span>
 
     <% if @show_pages %>
       <% left_margin_pages.each do |page| %>
-        <%= render Primer::PaginationItemComponent.new(page: page, current_page: @page, href_builder: @href_builder) %>
+        <%= render Primer::PaginationItemComponent.new(page: page, current_page: @current_page, href_builder: @href_builder) %>
       <% end %>
 
       <% if show_left_ellipsis? %>
@@ -12,7 +12,7 @@
       <% end %>
 
       <% middle_pages.each do |page| %>
-        <%= render Primer::PaginationItemComponent.new(page: page, current_page: @page, href_builder: @href_builder) %>
+        <%= render Primer::PaginationItemComponent.new(page: page, current_page: @current_page, href_builder: @href_builder) %>
       <% end %>
 
       <% if show_right_ellipsis? %>
@@ -20,10 +20,10 @@
       <% end %>
 
       <% right_margin_pages.each do |page| %>
-        <%= render Primer::PaginationItemComponent.new(page: page, current_page: @page, href_builder: @href_builder) %>
+        <%= render Primer::PaginationItemComponent.new(page: page, current_page: @current_page, href_builder: @href_builder) %>
       <% end %>
     <% end %>
 
-    <a class="next_page" rel="next" href="<%= @href_builder.call(@page + 1) %>" aria-label="Next Page" aria-disabled="<%= last_page? %>">Next</a>
+    <a class="next_page" rel="next" href="<%= @href_builder.call(@current_page + 1) %>" aria-label="Next Page" aria-disabled="<%= last_page? %>">Next</a>
   </div>
 <% end %>

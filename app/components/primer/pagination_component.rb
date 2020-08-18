@@ -7,19 +7,19 @@ module Primer
     DEFAULT_HREF_BUILDER = proc { |page| "##{page}" }
 
     def initialize(
-      page:,
+      current_page:,
       page_count:,
       show_pages: true,
-      margin_pages: DEFAULT_MARGIN_PAGES,
-      surrounding_pages: DEFAULT_SURROUNDING_PAGES,
+      margin_page_count: DEFAULT_MARGIN_PAGES,
+      surrounding_page_count: DEFAULT_SURROUNDING_PAGES,
       href_builder: DEFAULT_HREF_BUILDER,
       **kwargs
     )
-      @page = page
+      @current_page = current_page
       @page_count = page_count
       @show_pages = show_pages
-      @margin_pages = margin_pages
-      @surrounding_pages = surrounding_pages
+      @margin_page_count = margin_page_count
+      @surrounding_page_count = surrounding_page_count
       @href_builder = href_builder
 
       @kwargs = kwargs
@@ -31,13 +31,13 @@ module Primer
     end
 
     def left_margin_pages
-      return [] if @margin_pages == 0
+      return [] if @margin_page_count == 0
 
-      @left_margin_pages ||= (1..@margin_pages)
+      @left_margin_pages ||= (1..@margin_page_count)
     end
 
     def show_left_ellipsis?
-      leftmost_surrounding_page = @page - @surrounding_pages
+      leftmost_surrounding_page = @current_page - @surrounding_page_count
 
       # We don't show ellipsis if the leftmost surrounding page
       # is either in the margin pages or is the page after the left margin
@@ -45,19 +45,19 @@ module Primer
     end
 
     def middle_pages
-      leftmost_non_margin_page = [@page - @surrounding_pages, left_margin_pages.last + 1].max
-      rightmost_non_margin_page = [@page + @surrounding_pages, right_margin_pages.first - 1].min
+      leftmost_non_margin_page = [@current_page - @surrounding_page_count, left_margin_pages.last + 1].max
+      rightmost_non_margin_page = [@current_page + @surrounding_page_count, right_margin_pages.first - 1].min
       @middle_pages ||= (leftmost_non_margin_page..rightmost_non_margin_page)
     end
 
     def right_margin_pages
-      return [] if @margin_pages == 0
+      return [] if @margin_page_count == 0
 
-      @right_margin_pages ||= ((@page_count - @margin_pages + 1)..@page_count)
+      @right_margin_pages ||= ((@page_count - @margin_page_count + 1)..@page_count)
     end
 
     def show_right_ellipsis?
-      rightmost_surrounding_page = @page + @surrounding_pages
+      rightmost_surrounding_page = @current_page + @surrounding_page_count
 
       # We don't show ellipsis if the rightmost surrounding page
       # is either in the margin pages or is the page before the right margin
@@ -65,11 +65,11 @@ module Primer
     end
 
     def first_page?
-      @page == 1
+      @current_page == 1
     end
 
     def last_page?
-      @page == @page_count
+      @current_page == @page_count
     end
   end
 end
