@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Primer::TimelineItemComponentStories < ViewComponent::Storybook::Stories
+class Primer::TimelineItemComponentStories < Primer::Stories
   layout "storybook_centered_preview"
 
   story(:timeline_item) do

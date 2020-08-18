@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
+class Primer::BorderBoxComponentStories < Primer::Stories
   layout "storybook_preview"
 
   story(:full_box) do

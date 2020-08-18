@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Primer::BlankslateComponentStories < ViewComponent::Storybook::Stories
+class Primer::BlankslateComponentStories < Primer::Stories
   layout "storybook_preview"
 
   story(:icon) do
