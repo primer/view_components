@@ -61,14 +61,11 @@ module Primer
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] ||= :button
-        @kwargs[:classes] = class_names(
-          kwargs[:classes],
-          "text-bold"
-        )
         @kwargs[:mt] = 2 unless kwargs.key?(:mt)
         if @kwargs[:tag] == :button && !@kwargs.key?(:button_type)
           @kwargs[:button_type] = :outline
         end
+        @kwargs[:font_weight] = :bold unless @kwargs.key?(:font_weight)
       end
 
       def component
