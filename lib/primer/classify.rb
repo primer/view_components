@@ -32,14 +32,6 @@ module Primer
 
 
     BOOLEAN_MAPPINGS = {
-      box_shadow: {
-        mappings: [
-          {
-            value: true,
-            css_class: "box-shadow"
-          }
-        ]
-      },
       underline: {
         mappings: [
           {
@@ -231,6 +223,12 @@ module Primer
               memo[:classes] << "f#{dasherized_val}"
             elsif MARGIN_DIRECTION_KEYS.include?(key) && val < 0
               memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-n#{val.abs}"
+            elsif key == BOX_SHADOW_KEY
+              if val == true
+                memo[:classes] << "box-shadow"
+              else
+                memo[:classes] << "box-shadow-#{dasherized_val}"
+              end
             else
               memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{dasherized_val}"
             end
