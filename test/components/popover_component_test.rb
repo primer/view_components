@@ -17,7 +17,7 @@ class PrimerPopoverComponentTest < Minitest::Test
 
     assert_selector("div.Popover.right-0.left-0")
     assert_selector("div.Popover div.Popover-message h4.mb-2", text: "My header")
-    assert_selector("div.Popover div.Popover-message.box-shadow-large", text: "My body")
+    assert_selector("div.Popover div.Popover-message.Box.box-shadow-large", text: "My body")
   end
 
   def test_allows_customization
@@ -37,7 +37,7 @@ class PrimerPopoverComponentTest < Minitest::Test
       component.slot(:message, caret: :left_bottom)
     end
 
-    assert_selector("div.Popover div.Popover-message.Popover-message--left-bottom")
+    assert_selector("div.Popover div.Popover-message.Popover-message--left-bottom.Box")
   end
 
   def test_respects_message_large_option
@@ -45,7 +45,7 @@ class PrimerPopoverComponentTest < Minitest::Test
       component.slot(:message, large: true)
     end
 
-    assert_selector("div.Popover div.Popover-message.Popover-message--large")
+    assert_selector("div.Popover div.Popover-message.Popover-message--large.Box")
   end
 
   def test_allows_message_customization
@@ -53,7 +53,7 @@ class PrimerPopoverComponentTest < Minitest::Test
       component.slot(:message, p: 3, mt: 1, mx: 4, text_align: :right)
     end
 
-    assert_selector("div.Popover div.Popover-message.p-3.mt-1.mx-4.text-right")
+    assert_selector("div.Popover div.Popover-message.Box.p-3.mt-1.mx-4.text-right")
   end
 
   def test_allows_heading_customization
@@ -64,6 +64,6 @@ class PrimerPopoverComponentTest < Minitest::Test
       end
     end
 
-    assert_selector("div.Popover div.Popover-message h3.mb-4.pr-3", text: "Hello world")
+    assert_selector("div.Popover div.Popover-message.Box h3.mb-4.pr-3", text: "Hello world")
   end
 end

@@ -44,7 +44,7 @@ module Primer
         @kwargs = kwargs
         @kwargs[:classes] = class_names(
           kwargs[:classes],
-          "Popover-message",
+          "Popover-message Box",
           CARET_MAPPINGS[fetch_or_fallback(CARET_MAPPINGS.keys, caret, CARET_DEFAULT)],
           "Popover-message--large" => large
         )
