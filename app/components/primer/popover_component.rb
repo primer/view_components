@@ -31,10 +31,10 @@ module Primer
           CARET_MAPPINGS[fetch_or_fallback(CARET_MAPPINGS.keys, caret, CARET_DEFAULT)],
           "Popover-message--large" => large
         )
-        @kwargs[:p] = 4 unless kwargs.key?(:p)
-        @kwargs[:mt] = 2 unless kwargs.key?(:mt)
-        @kwargs[:mx] = :auto unless kwargs.key?(:mx)
-        @kwargs[:text_align] = :left unless kwargs.key?(:text_align)
+        @kwargs[:p] ||= 4
+        @kwargs[:mt] ||= 2
+        @kwargs[:mx] ||= :auto
+        @kwargs[:text_align] ||= :left
       end
 
       def component
@@ -45,7 +45,7 @@ module Primer
     class Heading < ViewComponent::Slot
       def initialize(**kwargs)
         @kwargs = kwargs
-        @kwargs[:mb] = 2 unless kwargs.key?(:mb)
+        @kwargs[:mb] ||= 2
       end
 
       def component
@@ -60,11 +60,11 @@ module Primer
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] ||= :button
-        @kwargs[:mt] = 2 unless kwargs.key?(:mt)
-        if @kwargs[:tag] == :button && !@kwargs.key?(:button_type)
-          @kwargs[:button_type] = :outline
+        @kwargs[:mt] ||= 2
+        if @kwargs[:tag] == :button
+          @kwargs[:button_type] ||= :outline
         end
-        @kwargs[:font_weight] = :bold unless @kwargs.key?(:font_weight)
+        @kwargs[:font_weight] ||= :bold
       end
 
       def component
@@ -83,7 +83,7 @@ module Primer
         kwargs[:classes],
         "Popover"
       )
-      @kwargs[:position] = :relative unless kwargs.key?(:position)
+      @kwargs[:position] ||= :relative
       @kwargs[:right] = false unless kwargs.key?(:right)
       @kwargs[:left] = false unless kwargs.key?(:left)
     end
