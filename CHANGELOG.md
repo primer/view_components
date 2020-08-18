@@ -1,5 +1,9 @@
 # main
 
+* Added support for button props on `DetailsComponent`
+
+    *Manuel Puyol*
+
 # 0.0.4
 
 * Added support for mx: and my: :auto.
