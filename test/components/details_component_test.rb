@@ -68,4 +68,17 @@ class PrimerDetailsComponentTest < Minitest::Test
     assert_selector("details")
     assert_selector(".btn")
   end
+
+  def test_passes_props_to_button
+    render_inline(Primer::DetailsComponent.new(button_props: { variant: :small, button_type: :primary })) do |component|
+      component.with(:summary) do
+        "Summary"
+      end
+      component.with(:body) do
+        "Body"
+      end
+    end
+
+    assert_selector("summary.btn.btn-sm.btn-primary")
+  end
 end
