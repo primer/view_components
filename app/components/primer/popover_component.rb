@@ -29,9 +29,12 @@ module Primer
         @kwargs = kwargs
         @kwargs[:classes] = class_names(
           kwargs[:classes],
-          "Popover-message text-left p-4 mt-2 mx-auto Box box-shadow-large",
+          "Popover-message text-left Box box-shadow-large",
           CARET_MAPPINGS[fetch_or_fallback(CARET_MAPPINGS.keys, caret, CARET_DEFAULT)]
         )
+        @kwargs[:p] = 4 unless kwargs.key?(:p)
+        @kwargs[:mt] = 2 unless kwargs.key?(:mt)
+        @kwargs[:mx] = "auto" unless kwargs.key?(:mx)
       end
     end
 
@@ -40,7 +43,7 @@ module Primer
 
       def initialize(**kwargs)
         @kwargs = kwargs
-        @kwargs[:mb] = 2 unless @kwargs.key?(:mb)
+        @kwargs[:mb] = 2 unless kwargs.key?(:mb)
       end
     end
 
@@ -63,7 +66,7 @@ module Primer
           kwargs[:classes],
           "btn btn-outline text-bold"
         )
-        @kwargs[:mt] = 2 unless @kwargs.key?(:mt)
+        @kwargs[:mt] = 2 unless kwargs.key?(:mt)
       end
     end
 
