@@ -1,8 +1,8 @@
 <%= render Primer::BaseComponent.new(**@kwargs) do %>
   <% if message %>
-    <%= render Primer::BaseComponent.new(**message.kwargs) do %>
+    <%= render message.component do %>
       <% if heading %>
-        <%= render Primer::BaseComponent.new(**heading.kwargs) do %>
+        <%= render heading.component do %>
           <%= heading.content %>
         <% end %>
       <% end %>
@@ -10,14 +10,8 @@
         <%= body.content %>
       <% end %>
       <% if button %>
-        <% if button.tag == :button %>
-          <%= render Primer::ButtonComponent.new(**button.kwargs) do %>
-            <%= button.content %>
-          <% end %>
-        <% else %>
-          <%= render Primer::BaseComponent.new(**button.kwargs) do %>
-            <%= button.content %>
-          <% end %>
+        <%= render button.component do %>
+          <%= button.content %>
         <% end %>
       <% end %>
     <% end %>

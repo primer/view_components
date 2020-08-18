@@ -23,8 +23,6 @@ module Primer
         :top_right => "Popover-message--top-right"
       }.freeze
 
-      attr_reader :kwargs
-
       def initialize(caret: CARET_DEFAULT, large: false, **kwargs)
         @kwargs = kwargs
         @kwargs[:classes] = class_names(
@@ -37,37 +35,45 @@ module Primer
         @kwargs[:mt] = 2 unless kwargs.key?(:mt)
         @kwargs[:mx] = "auto" unless kwargs.key?(:mx)
       end
+
+      def component
+        Primer::BaseComponent.new(**@kwargs)
+      end
     end
 
     class Heading < ViewComponent::Slot
-      attr_reader :kwargs
-
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:mb] = 2 unless kwargs.key?(:mb)
       end
+
+      def component
+        Primer::BaseComponent.new(**@kwargs)
+      end
     end
 
     class Body < ViewComponent::Slot
-      attr_reader :kwargs
-
-      def initialize(**kwargs)
-        @kwargs = kwargs
+      def initialize
       end
     end
 
     class Button < ViewComponent::Slot
-      attr_reader :kwargs, :tag
-
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] ||= :button
-        @tag = @kwargs[:tag]
         @kwargs[:classes] = class_names(
           kwargs[:classes],
           "btn btn-outline text-bold"
         )
         @kwargs[:mt] = 2 unless kwargs.key?(:mt)
+      end
+
+      def component
+        if @kwargs[:tag] == :button
+          Primer::ButtonComponent.new(**@kwargs)
+        else
+          Primer::BaseComponent.new(**@kwargs)
+        end
       end
     end
 
