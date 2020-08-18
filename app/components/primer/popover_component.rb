@@ -63,9 +63,12 @@ module Primer
         @kwargs[:tag] ||= :button
         @kwargs[:classes] = class_names(
           kwargs[:classes],
-          "btn btn-outline text-bold"
+          "text-bold"
         )
         @kwargs[:mt] = 2 unless kwargs.key?(:mt)
+        if @kwargs[:tag] == :button && !@kwargs.key?(:button_type)
+          @kwargs[:button_type] = :outline
+        end
       end
 
       def component
