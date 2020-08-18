@@ -10,7 +10,7 @@ class PrimerPopoverComponentTest < Minitest::Test
       component.slot(:heading) do
         "My header"
       end
-      component.slot(:message) do
+      component.slot(:body) do
         "My body"
       end
     end
@@ -24,7 +24,7 @@ class PrimerPopoverComponentTest < Minitest::Test
     render_inline(Primer::PopoverComponent.new(
       position: :absolute, tag: :span, classes: "custom-class"
     )) do |component|
-      component.slot(:message) do
+      component.slot(:body) do
         "Hi there"
       end
     end
@@ -34,7 +34,7 @@ class PrimerPopoverComponentTest < Minitest::Test
 
   def test_respects_message_caret_option
     render_inline(Primer::PopoverComponent.new) do |component|
-      component.slot(:message, caret: :left_bottom)
+      component.slot(:body, caret: :left_bottom)
     end
 
     assert_selector("div.Popover div.Popover-message.Popover-message--left-bottom.Box")
@@ -42,7 +42,7 @@ class PrimerPopoverComponentTest < Minitest::Test
 
   def test_respects_message_large_option
     render_inline(Primer::PopoverComponent.new) do |component|
-      component.slot(:message, large: true)
+      component.slot(:body, large: true)
     end
 
     assert_selector("div.Popover div.Popover-message.Popover-message--large.Box")
@@ -50,7 +50,7 @@ class PrimerPopoverComponentTest < Minitest::Test
 
   def test_allows_message_customization
     render_inline(Primer::PopoverComponent.new) do |component|
-      component.slot(:message, p: 3, mt: 1, mx: 4, text_align: :right)
+      component.slot(:body, p: 3, mt: 1, mx: 4, text_align: :right)
     end
 
     assert_selector("div.Popover div.Popover-message.Box.p-3.mt-1.mx-4.text-right")
@@ -58,7 +58,7 @@ class PrimerPopoverComponentTest < Minitest::Test
 
   def test_allows_heading_customization
     render_inline(Primer::PopoverComponent.new) do |component|
-      component.slot(:message)
+      component.slot(:body)
       component.slot(:heading, mb: 4, pr: 3, tag: :h3) do
         "Hello world"
       end

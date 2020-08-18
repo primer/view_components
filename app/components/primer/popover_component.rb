@@ -5,7 +5,7 @@ module Primer
     include ViewComponent::Slotable
 
     with_slot :heading, class_name: "Heading"
-    with_slot :message, class_name: "Message"
+    with_slot :body, class_name: "Body"
 
     def initialize(**kwargs)
       @kwargs = kwargs
@@ -20,10 +20,22 @@ module Primer
     end
 
     def render?
-      message.present?
+      body.present?
     end
 
-    class Message < Slot
+    class Heading < ViewComponent::Slot
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:mb] ||= 2
+        @kwargs[:tag] ||= :h4
+      end
+
+      def component
+        Primer::HeadingComponent.new(**@kwargs)
+      end
+    end
+
+    class Body < Slot
       CARET_DEFAULT = :top
       CARET_MAPPINGS = {
         CARET_DEFAULT => "",
@@ -57,18 +69,6 @@ module Primer
 
       def component
         Primer::BoxComponent.new(**@kwargs)
-      end
-    end
-
-    class Heading < ViewComponent::Slot
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:mb] ||= 2
-        @kwargs[:tag] ||= :h4
-      end
-
-      def component
-        Primer::HeadingComponent.new(**@kwargs)
       end
     end
   end
