@@ -20,8 +20,9 @@ module Primer
 
     with_content_areas :summary, :body
 
-    def initialize(overlay: OVERLAY_DEFAULT, button: BUTTON_DEFAULT, **kwargs)
+    def initialize(overlay: OVERLAY_DEFAULT, button: BUTTON_DEFAULT, button_props: {}, **kwargs)
       @button = fetch_or_fallback(BUTTON_OPTIONS, button.to_sym, BUTTON_DEFAULT)
+      @button_props = button_props
 
       @kwargs = kwargs
       @kwargs[:tag] = :details
@@ -32,7 +33,10 @@ module Primer
       )
 
       @summary_kwargs = { tag: :summary, role: "button" }
-      @summary_kwargs[:classes] = "btn" if @button == BUTTON_DEFAULT
+    end
+
+    def button?
+      @button == BUTTON_DEFAULT
     end
   end
 end
