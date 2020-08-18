@@ -81,9 +81,11 @@ module Primer
       @kwargs[:tag] ||= :div
       @kwargs[:classes] = class_names(
         kwargs[:classes],
-        "Popover right-0 left-0"
+        "Popover"
       )
       @kwargs[:position] = :relative unless kwargs.key?(:position)
+      @kwargs[:right] = false unless kwargs.key?(:right)
+      @kwargs[:left] = false unless kwargs.key?(:left)
     end
   end
 end
