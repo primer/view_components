@@ -122,7 +122,7 @@ module Primer
       description: "",
       button_text: "",
       button_url: "",
-      button_classes: "btn-sm btn-primary",
+      button_classes: "btn-primary my-3",
       link_text: "",
       link_url: "",
 
