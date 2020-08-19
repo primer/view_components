@@ -81,6 +81,7 @@ Some components have their own specific arguments, but they can all be styled wi
 | `direction`     | `flex-<value>` | `direction: :row` → `.flex-row` |
 | `justify_content`    | `flex-justify-<value>` | `justify_content: :center` → `.flex-justify-center` |
 | `align_items`   | `flex-items-<value>` | `align_items: :baseline` → `.flex-items-baseline` |
+| `box_shadow` | `box-shadow-<value>` | `box_shadow: :medium` → `.box-shadow-medium` |
 
 #### Boolean arguments
 | Component arguments | True    | False |
