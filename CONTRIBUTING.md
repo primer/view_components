@@ -38,8 +38,9 @@ If you are the current maintainer of this gem:
 1. Bump gem version in `lib/primer/view_components/version.rb`. Try to adhere to [SemVer](https://semver.org).
 1. Add version heading/entries to `CHANGELOG.md`.
 1. Make a PR to primer/view_components.
-1. Build a local gem: `gem build primer_view_components.gemspec`
 1. Merge primer/view_components PR
+1. Get latest changes from default branch: `git pull origin main`
+1. Build a local gem: `gem build primer_view_components.gemspec`
 1. Tag and push: `git tag vx.xx.xx; git push --tags`
 1. Create a GitHub [release](https://github.com/primer/view_components/releases/new) with the pushed tag and populate it with a list of the changes from `CHANGELOG.md`.
 1. Push to rubygems.org -- `gem push primer_view_components-VERSION.gem`
