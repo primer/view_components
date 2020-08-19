@@ -20,7 +20,7 @@
   <% end %>
 
   <% if @link_text.present? && @link_url.present? %>
-    <p class="mt-3">
+    <p>
       <%= link_to "#{@link_url}" do %><%= @link_text %><% end %>
     </p>
   <% end %>
