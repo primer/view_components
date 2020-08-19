@@ -16,7 +16,7 @@
   <%= content %>
 
   <% if @button_text.present? && @button_url.present? %>
-    <p><a class="btn <%= @button_classes %>" href="<%= @button_url %>"><%= @button_text %></a></p>
+    <a class="btn <%= @button_classes %>" href="<%= @button_url %>"><%= @button_text %></a>
   <% end %>
 
   <% if @link_text.present? && @link_url.present? %>
