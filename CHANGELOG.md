@@ -1,7 +1,5 @@
 # main
 
-# 0.0.5
-
 * Add support for box_shadow
 * Add components:
     * Popover
