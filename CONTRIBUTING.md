@@ -37,8 +37,6 @@ If you are the current maintainer of this gem:
 1. Create a branch for the release: `git checkout -b release-vxx.xx.xx`
 1. Bump gem version in `lib/primer/view_components/version.rb`. Try to adhere to [SemVer](https://semver.org).
 1. Add version heading/entries to `CHANGELOG.md`.
-1. Make sure your local dependencies are up to date: `bundle`
-1. Ensure that tests are green: `bundle exec rake`
 1. Make a PR to primer/view_components.
 1. Build a local gem: `gem build primer_view_components.gemspec`
 1. Merge primer/view_components PR
