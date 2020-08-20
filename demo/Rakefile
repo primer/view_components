@@ -9,7 +9,7 @@ Rails.application.load_tasks
 
 Rake::Task["assets:precompile"].clear
 namespace :assets do
-  task 'precompile' do
+  task "precompile" do
     Rake::Task["view_component_storybook:write_stories_json"].invoke
   end
 end
