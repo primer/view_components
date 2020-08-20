@@ -2,11 +2,12 @@
 
 module Primer
   #
-  # overlay - options are `none`, `default` and `dark`. Dictates the type of overlay to render with.
-  # button - options are `default` and `reset`. default will make the target a default primer ``.btn`
-  #          reset will remove all styles from the <summary> element.
+  # overlay - options are `none`, `default` and `dark`. Dictates the type of page overlay to render with.
+  # reset - Boolean; true will result in `details-reset` on the details element
   #
   class DetailsComponent < Primer::Component
+    include ViewComponent::Slotable
+
     OVERLAY_DEFAULT = :none
     OVERLAY_MAPPINGS = {
       OVERLAY_DEFAULT => "",
@@ -14,25 +15,48 @@ module Primer
       :dark => "details-overlay details-overlay-dark",
     }.freeze
 
-    BUTTON_DEFAULT = :default
-    BUTTON_RESET = :reset
-    BUTTON_OPTIONS = [BUTTON_DEFAULT, BUTTON_RESET]
+    attr_reader :reset
+    with_slot :summary, class_name: "Summary"
+    with_slot :body, class_name: "Body"
 
-    with_content_areas :summary, :body
-
-    def initialize(overlay: OVERLAY_DEFAULT, button: BUTTON_DEFAULT, **kwargs)
-      @button = fetch_or_fallback(BUTTON_OPTIONS, button, BUTTON_DEFAULT)
-
+    def initialize(overlay: OVERLAY_DEFAULT, reset: false, **kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :details
+      @reset = reset
       @kwargs[:classes] = class_names(
         kwargs[:classes],
         OVERLAY_MAPPINGS[fetch_or_fallback(OVERLAY_MAPPINGS.keys, overlay, OVERLAY_DEFAULT)],
-        "details-reset" => @button == BUTTON_RESET
+        "details-reset" => @reset
       )
+    end
 
-      @summary_kwargs = { tag: :summary, role: "button" }
-      @summary_kwargs[:classes] = "btn" if @button == BUTTON_DEFAULT
+    def render?
+      summary.present? && body.present?
+    end
+
+    class Summary < ViewComponent::Slot
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:mb] ||= 2
+        @kwargs[:tag] ||= :summary
+        @kwargs[:role] ||= "button" if @kwargs[:tag] == :summary
+        @kwargs[:classes] ||= "btn"
+      end
+
+      def component
+        Primer::BaseComponent.new(**@kwargs)
+      end
+    end
+
+    class Body < ViewComponent::Slot
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:tag] ||= :div
+      end
+
+      def component
+        Primer::BaseComponent.new(**@kwargs)
+      end
     end
   end
 end

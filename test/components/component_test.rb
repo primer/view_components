@@ -16,7 +16,10 @@ class PrimerComponentTest < Minitest::Test
       [Primer::BreadcrumbComponent, {}, proc { |component| component.slot(:item) { "Foo" } }],
       [Primer::ButtonComponent, {}],
       [Primer::CounterComponent, { count: 1 }],
-      [Primer::DetailsComponent, {}],
+      [Primer::DetailsComponent, {}, proc do |component|
+        component.slot(:summary)
+        component.slot(:body)
+      end],
       [Primer::DropdownMenuComponent, {}],
       [Primer::FlexComponent, {}],
       [Primer::FlexItemComponent, { flex_auto: true }],
