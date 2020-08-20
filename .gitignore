@@ -7,7 +7,7 @@
 /spec/reports/
 /tmp/
 /vendor/
-/storybook-static/
+/demo/public/
 /test/log/
 **/*.stories.json
 **/node_modules/
