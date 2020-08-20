@@ -68,6 +68,21 @@ class PrimerDetailsComponentTest < Minitest::Test
     end
 
     assert_selector("summary.btn-link.ml-3")
+    refute_selector("summary.btn")
+  end
+
+  def test_allows_summary_without_classes
+    render_inline(Primer::DetailsComponent.new) do |component|
+      component.slot(:summary, classes: "") do
+        "Summary"
+      end
+      component.slot(:body) do
+        "Body"
+      end
+    end
+
+    assert_selector("summary")
+    refute_selector("summary.btn")
   end
 
   def test_falls_back_to_defaults_when_invalid_overlay_is_passed
