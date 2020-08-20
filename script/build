@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Setting up
+./setup
+
+# Generate stories and build static
+cd demo
+bin/rails view_component_storybook:write_stories_json
+yarn build-storybook
+
+# Go back to root
+cd ..
