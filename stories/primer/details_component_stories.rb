@@ -14,4 +14,15 @@ class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
       component.with(:body) { "Body" }
     end
   end
+
+  story(:custom_button) do
+    controls do
+      select(:overlay, Primer::StoriesHelper.array_to_options(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys), :none)
+    end
+
+    content do |component|
+      component.slot(:summary, variant: :small, button_type: :primary) { "Click me" }
+      component.with(:body) { "Body" }
+    end
+  end
 end
