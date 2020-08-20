@@ -1,5 +1,9 @@
 # main
 
+* Add large and spacious option to BlankslateComponent
+
+    *simurai*
+
 # 0.0.5
 
 * Add support for box_shadow
