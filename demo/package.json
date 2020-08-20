@@ -19,7 +19,7 @@
   "scripts": {
     "storybook": "start-storybook -p 5000",
     "build-storybook": "build-storybook -o public",
-    "heroku-postbuild": "yarn build-storybook"
+    "build": "yarn build-storybook"
   },
   "engines": {
     "node": "14.x",
