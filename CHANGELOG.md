@@ -1,6 +1,8 @@
 # main
 
-* Added support for button props on `DetailsComponent`
+## Breaking changes
+
+* Changed `DetailsComponent` summary to be a slot
 
     *Manuel Puyol*
 
