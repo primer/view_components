@@ -36,7 +36,7 @@ module Primer
     end
 
     def render?
-      summary.present? && body.present?
+      summary.present?
     end
 
     def summary_component
