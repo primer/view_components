@@ -1,12 +1,6 @@
 <%= render Primer::BaseComponent.new(**@kwargs) do %>
-  <% if button? %>
-    <%= render Primer::ButtonComponent.new(**@summary_kwargs, **@button_props) do %>
-      <%= summary %>
-    <% end %>
-  <% else %>
-    <%= render Primer::BaseComponent.new(**@summary_kwargs) do %>
-      <%= summary %>
-    <% end %>
+  <%= render Primer::BaseComponent.new(**@summary_kwargs) do %>
+    <%= summary %>
   <% end %>
   <%= body %>
 <% end %>
