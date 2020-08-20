@@ -4,6 +4,10 @@
 
     *simurai*
 
+* Add more styling control over `summary` in DetailsComponent
+
+    *Sarah Vessels*
+
 # 0.0.5
 
 * Add support for box_shadow
