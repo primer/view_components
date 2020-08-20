@@ -1,12 +1,30 @@
 #!/bin/sh
 
+env="production"
+
+while getopts ":e:" opt; do
+  case $opt in
+    e)
+      env=$OPTARG
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      exit 1
+      ;;
+  esac
+done
+
 # Setting up
 ./setup
 
 # Generate stories and build static
 cd demo
 bin/rails view_component_storybook:write_stories_json
-yarn build-storybook
+NODE_ENV=$env yarn build-storybook
 
 # Go back to root
 cd ..
