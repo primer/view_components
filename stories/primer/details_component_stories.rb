@@ -5,12 +5,12 @@ class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
 
   story(:details) do
     controls do
-      select(:overlay, Primer::DetailsComponent::OVERLAY_MAPPINGS.keys.each_with_object({}) { |k, h| h[k] = k }, :none)
-      select(:button, Primer::DetailsComponent::BUTTON_OPTIONS.each_with_object({}) { |k, h| h[k] = k }, :default)
+      select(:overlay, Primer::StoriesHelper.array_to_options(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys), :none)
+      select(:button, Primer::StoriesHelper.array_to_options(Primer::DetailsComponent::BUTTON_OPTIONS), :default)
     end
 
     content do |component|
-      component.with(:summary) { "Click me" }
+      component.slot(:summary) { "Click me" }
       component.with(:body) { "Body" }
     end
   end
