@@ -15,7 +15,7 @@ gem "webpacker", "~> 5.0"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
-gem "primer_view_components", path: "../"
+gem "primer_view_components", ENV['RAILS_ENV'] == "production" ? { github: "primer/view_components" } : { path: "../" }
 gem "view_component_storybook", "~> 0.4.0"
 
 group :development, :test do
