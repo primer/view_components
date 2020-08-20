@@ -4,6 +4,14 @@
 
     *Manuel Puyol*
 
+# 0.0.5
+
+* Add support for box_shadow
+* Add components:
+    * Popover
+
+    *Sarah Vessels*
+
 # 0.0.4
 
 * Added support for mx: and my: :auto.
