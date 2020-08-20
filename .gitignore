@@ -14,3 +14,4 @@
 demo/public/packs/
 demo/tmp/
 demo/config/master.key
+primer_view_components*.gem
