@@ -17,7 +17,7 @@
   },
   "scripts": {
     "storybook": "start-storybook -p 5000",
-    "build-storybook": "build-storybook -o public/storybook"
+    "build-storybook": "build-storybook -o public"
   },
   "version": "0.1.0"
 }
