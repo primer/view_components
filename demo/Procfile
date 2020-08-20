@@ -1,1 +1,1 @@
-web: cd demo; bin/rails s
+web: bin/rails s
