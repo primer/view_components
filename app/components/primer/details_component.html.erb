@@ -1,5 +1,5 @@
 <%= render Primer::BaseComponent.new(**@kwargs) do %>
-  <%= render summary_component.new(**summary.kwargs) do %>
+  <%= render summary.component do %>
     <%= summary.content %>
   <% end %>
   <%= render Primer::BaseComponent.new(**body.kwargs) do %>

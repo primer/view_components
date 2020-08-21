@@ -6,12 +6,12 @@ class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
   story(:details) do
     controls do
       select(:overlay, Primer::StoriesHelper.array_to_options(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys), :none)
-      select(:button, Primer::StoriesHelper.array_to_options(Primer::DetailsComponent::BUTTON_OPTIONS), :default)
+      reset false
     end
 
     content do |component|
       component.slot(:summary) { "Click me" }
-      component.with(:body) { "Body" }
+      component.slot(:body) { "Body" }
     end
   end
 
@@ -22,7 +22,18 @@ class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
 
     content do |component|
       component.slot(:summary, variant: :small, button_type: :primary) { "Click me" }
-      component.with(:body) { "Body" }
+      component.slot(:body) { "Body" }
+    end
+  end
+
+  story(:without_button) do
+    controls do
+      select(:overlay, Primer::StoriesHelper.array_to_options(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys), :none)
+    end
+
+    content do |component|
+      component.slot(:summary, button: false) { "Click me" }
+      component.slot(:body) { "Body" }
     end
   end
 end

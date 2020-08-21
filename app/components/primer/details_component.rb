@@ -23,15 +23,13 @@ module Primer
     with_slot :body, class_name: "Body"
     with_slot :summary, class_name: "Summary"
 
-    def initialize(overlay: OVERLAY_DEFAULT, button: BUTTON_DEFAULT, **kwargs)
-      @button = fetch_or_fallback(BUTTON_OPTIONS, button.to_sym, BUTTON_DEFAULT)
-
+    def initialize(overlay: OVERLAY_DEFAULT, reset: false, **kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :details
       @kwargs[:classes] = class_names(
         kwargs[:classes],
         OVERLAY_MAPPINGS[fetch_or_fallback(OVERLAY_MAPPINGS.keys, overlay.to_sym, OVERLAY_DEFAULT)],
-        "details-reset" => @button == BUTTON_RESET
+        "details-reset" => reset
       )
     end
 
@@ -39,22 +37,24 @@ module Primer
       summary.present? && body.present?
     end
 
-    def summary_component
-      return Primer::BaseComponent unless button?
-
-      Primer::ButtonComponent
-    end
-
-    def button?
-      @button == BUTTON_DEFAULT
-    end
-
     class Summary < Primer::Slot
-      attr_reader :kwargs
-      def initialize(**kwargs)
+      attr_reader :kwargs, :button
+      def initialize(button: true, **kwargs)
+        @button = button
+
         @kwargs = kwargs
         @kwargs[:tag] = :summary
         @kwargs[:role] = "button"
+      end
+
+      def component
+        return Primer::BaseComponent.new(**kwargs) unless button
+
+        Primer::ButtonComponent.new(**kwargs)
+      end
+
+      def button?
+        @button == BUTTON_DEFAULT
       end
     end
 

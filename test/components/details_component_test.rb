@@ -32,7 +32,7 @@ class PrimerDetailsComponentTest < Minitest::Test
   end
 
   def test_renders_details_reset_when_reseting_the_button_style
-    render_inline(Primer::DetailsComponent.new(button: :reset)) do |component|
+    render_inline(Primer::DetailsComponent.new(reset: true)) do |component|
       component.slot(:summary) do
         "Summary"
       end
