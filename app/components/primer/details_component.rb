@@ -16,10 +16,6 @@ module Primer
       :dark => "details-overlay details-overlay-dark",
     }.freeze
 
-    BUTTON_DEFAULT = :default
-    BUTTON_RESET = :reset
-    BUTTON_OPTIONS = [BUTTON_DEFAULT, BUTTON_RESET]
-
     with_slot :body, class_name: "Body"
     with_slot :summary, class_name: "Summary"
 
@@ -51,10 +47,6 @@ module Primer
         return Primer::BaseComponent.new(**kwargs) unless button
 
         Primer::ButtonComponent.new(**kwargs)
-      end
-
-      def button?
-        @button == BUTTON_DEFAULT
       end
     end
 
