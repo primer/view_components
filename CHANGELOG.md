@@ -1,5 +1,9 @@
 # main
 
+* Add large and spacious option to BlankslateComponent
+
+    *simurai*
+
 ## Breaking changes
 
 * Changed `DetailsComponent` summary to be a slot
