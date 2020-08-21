@@ -6,7 +6,7 @@
 
 ## Breaking changes
 
-* Changed `DetailsComponent` summary to be a slot
+* Changed `DetailsComponent` summary and body to be a slots
 
     *Manuel Puyol*
 

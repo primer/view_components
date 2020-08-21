@@ -10,7 +10,7 @@ class PrimerDetailsComponentTest < Minitest::Test
       component.slot(:summary) do
         "Summary"
       end
-      component.with(:body) do
+      component.slot(:body) do
         "Body"
       end
     end
@@ -23,7 +23,7 @@ class PrimerDetailsComponentTest < Minitest::Test
       component.slot(:summary) do
         "Summary"
       end
-      component.with(:body) do
+      component.slot(:body) do
         "Body"
       end
     end
@@ -36,7 +36,7 @@ class PrimerDetailsComponentTest < Minitest::Test
       component.slot(:summary) do
         "Summary"
       end
-      component.with(:body) do
+      component.slot(:body) do
         "Body"
       end
     end
@@ -49,7 +49,7 @@ class PrimerDetailsComponentTest < Minitest::Test
       component.slot(:summary) do
         "Summary"
       end
-      component.with(:body) do
+      component.slot(:body) do
         "Body"
       end
     end
@@ -61,7 +61,7 @@ class PrimerDetailsComponentTest < Minitest::Test
     without_fetch_or_fallback_raises do
       render_inline(Primer::DetailsComponent.new(button: :foo, overlay: :bar)) do |component|
         component.slot(:summary) { "Summary" }
-        component.with(:body) { "Body" }
+        component.slot(:body) { "Body" }
       end
     end
 
@@ -74,11 +74,24 @@ class PrimerDetailsComponentTest < Minitest::Test
       component.slot(:summary, variant: :small, button_type: :primary) do
         "Summary"
       end
-      component.with(:body) do
+      component.slot(:body) do
         "Body"
       end
     end
 
     assert_selector("summary.btn.btn-sm.btn-primary")
+  end
+
+  def test_prevents_rendering_without_slots
+    render_inline(Primer::DetailsComponent.new)
+    render_inline(Primer::DetailsComponent.new) do |component|
+      component.slot(:body) { "Body" }
+    end
+    render_inline(Primer::DetailsComponent.new) do |component|
+      component.slot(:summary) { "Summary" }
+    end
+
+    refute_selector("details")
+    refute_selector("summary")
   end
 end

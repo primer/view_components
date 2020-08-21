@@ -20,7 +20,7 @@ module Primer
     BUTTON_RESET = :reset
     BUTTON_OPTIONS = [BUTTON_DEFAULT, BUTTON_RESET]
 
-    with_content_areas :body
+    with_slot :body, class_name: "Body"
     with_slot :summary, class_name: "Summary"
 
     def initialize(overlay: OVERLAY_DEFAULT, button: BUTTON_DEFAULT, **kwargs)
@@ -36,7 +36,7 @@ module Primer
     end
 
     def render?
-      summary.present?
+      summary.present? && body.present?
     end
 
     def summary_component
@@ -55,6 +55,14 @@ module Primer
         @kwargs = kwargs
         @kwargs[:tag] = :summary
         @kwargs[:role] = "button"
+      end
+    end
+
+    class Body < Primer::Slot
+      attr_reader :kwargs
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:tag] ||= :div
       end
     end
   end
