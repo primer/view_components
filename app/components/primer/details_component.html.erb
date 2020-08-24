@@ -2,7 +2,7 @@
   <%= render summary.component do %>
     <%= summary.content %>
   <% end %>
-  <%= render Primer::BaseComponent.new(**body.kwargs) do %>
+  <%= render body.component do %>
     <%= body.content %>
   <% end %>
 <% end %>

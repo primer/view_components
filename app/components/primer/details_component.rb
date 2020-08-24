@@ -34,7 +34,6 @@ module Primer
     end
 
     class Summary < Primer::Slot
-      attr_reader :kwargs, :button
       def initialize(button: true, **kwargs)
         @button = button
 
@@ -44,17 +43,20 @@ module Primer
       end
 
       def component
-        return Primer::BaseComponent.new(**kwargs) unless button
+        return Primer::BaseComponent.new(**@kwargs) unless @button
 
-        Primer::ButtonComponent.new(**kwargs)
+        Primer::ButtonComponent.new(**@kwargs)
       end
     end
 
     class Body < Primer::Slot
-      attr_reader :kwargs
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] ||= :div
+      end
+
+      def component
+        Primer::BaseComponent.new(**@kwargs)
       end
     end
   end
