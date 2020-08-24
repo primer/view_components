@@ -1,8 +1,8 @@
-<%= render Primer::BaseComponent.new(**@kwargs) do %>
+<%= primer :base, **@kwargs do %>
   <% if actions && @align == :right %>
     <%= actions %>
   <% end %>
-  <%= render Primer::BaseComponent.new(tag: :ul, classes: "UnderlineNav-body list-style-none") do %>
+  <%= primer :base, tag: :ul, classes: "UnderlineNav-body list-style-none" do %>
     <%= body %>
   <% end %>
   <% if actions && @align == :left %>

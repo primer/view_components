@@ -1,16 +1,16 @@
-<%= render(Primer::FlexComponent.new(**@kwargs)) do %>
+<%= primer :flex, **@kwargs do %>
   <% if @side == :left %>
-    <%= render Primer::BaseComponent.new(tag: :div, classes: "flex-shrink-0", col: (@responsive ? [12, nil, @sidebar_col] : @sidebar_col), mb: (@responsive ? [4, nil, 0] : nil)) do %>
+    <%= primer :base, tag: :div, classes: "flex-shrink-0", col: (@responsive ? [12, nil, @sidebar_col] : @sidebar_col), mb: (@responsive ? [4, nil, 0] : nil) do %>
       <%= sidebar %>
     <% end %>
   <% end %>
 
-  <%= render Primer::BaseComponent.new(tag: :div, classes: "flex-shrink-0", col: (@responsive ? [12, nil, @main_col] : @main_col), mb: (@responsive ? [4, nil, 0] : nil)) do %>
+  <%= primer :base, tag: :div, classes: "flex-shrink-0", col: (@responsive ? [12, nil, @main_col] : @main_col), mb: (@responsive ? [4, nil, 0] : nil) do %>
     <%= main %>
   <% end %>
 
   <% if @side == :right %>
-    <%= render Primer::BaseComponent.new(tag: :div, classes: "flex-shrink-0", col: (@responsive ? [12, nil, @sidebar_col] : @sidebar_col)) do %>
+    <%= primer :base, tag: :div, classes: "flex-shrink-0", col: (@responsive ? [12, nil, @sidebar_col] : @sidebar_col) do %>
       <%= sidebar %>
     <% end %>
   <% end %>

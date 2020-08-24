@@ -1,4 +1,4 @@
-<%= render Primer::BaseComponent.new(**@kwargs) do %>
+<%= primer :base, **@kwargs do %>
   <% if @icon.present? %>
     <%= octicon @icon, height: @icon_height, class: "blankslate-icon" %>
   <% end %>

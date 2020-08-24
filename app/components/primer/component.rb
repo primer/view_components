@@ -5,5 +5,6 @@ module Primer
     include ClassNameHelper
     include FetchOrFallbackHelper
     include OcticonsHelper
+    include ViewHelper
   end
 end

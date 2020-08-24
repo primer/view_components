@@ -1,4 +1,4 @@
-<%= render Primer::BaseComponent.new(**@kwargs) do %>
+<%= primer :base, **@kwargs do %>
   <% if @header.present? %>
     <div class="dropdown-header">
       <%= @header %>

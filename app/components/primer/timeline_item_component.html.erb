@@ -1,16 +1,16 @@
-<%= render Primer::BaseComponent.new(**kwargs) do %>
+<%= primer :base, **kwargs do %>
   <% if avatar %>
-    <%= render Primer::AvatarComponent.new(alt: avatar.alt, src: avatar.src, size: avatar.size, square: avatar.square, **avatar.kwargs) %>
+    <%= primer :avatar, alt: avatar.alt, src: avatar.src, size: avatar.size, square: avatar.square, **avatar.kwargs %>
   <% end %>
 
   <% if badge %>
-    <%= render Primer::BaseComponent.new(**badge.kwargs) do %>
+    <%= primer :base, **badge.kwargs do %>
       <%= octicon badge.icon %>
     <% end %>
   <% end %>
 
   <% if body %>
-    <%= render Primer::BaseComponent.new(**body.kwargs) do %>
+    <%= primer :base, **body.kwargs do %>
       <%= body.content %>
     <% end %>
   <% end %>

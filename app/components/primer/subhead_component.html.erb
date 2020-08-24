@@ -1,16 +1,16 @@
-<%= render Primer::BaseComponent.new(**@kwargs) do %>
+<%= primer :base, **@kwargs do %>
   <% if heading.present? %>
-    <%= render Primer::BaseComponent.new(**heading.kwargs) do %>
+    <%= primer :base, **heading.kwargs do %>
       <%= heading.content %>
     <% end %>
   <% end %>
   <% if actions.present? %>
-    <%= render Primer::BaseComponent.new(**actions.kwargs) do %>
+    <%= primer :base, **actions.kwargs do %>
       <%= actions.content %>
     <% end %>
   <% end %>
   <% if description.present? %>
-    <%= render Primer::BaseComponent.new(**description.kwargs) do %>
+    <%= primer :base, **description.kwargs do %>
       <%= description.content %>
     <% end %>
   <% end %>

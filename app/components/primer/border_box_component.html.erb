@@ -1,25 +1,25 @@
-<%= render Primer::BaseComponent.new(**@kwargs) do %>
+<%= primer :base, **@kwargs do %>
   <% if header %>
-    <%= render Primer::BaseComponent.new(**header.kwargs) do %>
+    <%= primer :base, **header.kwargs do %>
       <%= header.content %>
     <% end %>
   <% end %>
   <% if body %>
-    <%= render Primer::BaseComponent.new(**body.kwargs) do %>
+    <%= primer :base, **body.kwargs do %>
       <%= body.content %>
     <% end %>
   <% end %>
   <% if rows.any? %>
     <ul>
       <% rows.each do |row| %>
-        <%= render Primer::BaseComponent.new(**row.kwargs) do %>
+        <%= primer :base, **row.kwargs do %>
           <%= row.content %>
         <% end %>
       <% end %>
     </ul>
   <% end %>
   <% if footer %>
-    <%= render Primer::BaseComponent.new(**footer.kwargs) do %>
+    <%= primer :base, **footer.kwargs do %>
       <%= footer.content %>
     <% end %>
   <% end %>

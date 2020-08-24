@@ -1,5 +1,5 @@
-<%= render Primer::BaseComponent.new(**@kwargs) do %>
+<%= primer :base, **@kwargs do %>
   <% items.each do |item| %>
-    <%= render Primer::BaseComponent.new(**item.kwargs) %>
+    <%= primer :base, **item.kwargs %>
   <% end %>
 <% end %>
