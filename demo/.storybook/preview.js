@@ -1,5 +1,8 @@
+const isProd = process.env.NODE_ENV == 'production';
+const serverHost = isProd ? 'https://primer-view-components.herokuapp.com' : 'http://localhost:4000';
+
 export const parameters = {
   server: {
-    url: `http://localhost:4000/rails/stories`,
+    url: `${serverHost}/rails/stories`,
   }
 };
