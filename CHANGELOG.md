@@ -3,6 +3,9 @@
 
 * Updated the invalid class name error message
     *emplums*
+    
+* Updated README with testing instructions
+   *emplums*
 
 * Add large and spacious option to BlankslateComponent
 
