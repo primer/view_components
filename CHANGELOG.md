@@ -8,6 +8,10 @@
 
     *simurai*
 
+* Add option for `ButtonComponent` to render a `summary` tag
+
+    *Manuel Puyol*
+
 ## Breaking changes
 
 * Changed `DetailsComponent` summary and body to be slots
