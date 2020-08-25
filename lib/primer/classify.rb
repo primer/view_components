@@ -131,7 +131,7 @@ module Primer
             raise ArgumentError.new(
               "Primer CSS class #{'name'.pluralize(invalid_class_names.length)} \
               #{invalid_class_names.to_sentence} #{'is'.pluralize(invalid_class_names.length)} \
-              not allowed, use hash syntax instead. This warning will not be raised in production.",
+              not allowed, use style arguments instead (https://github.com/primer/view_components#built-in-styling-arguments). This warning will not be raised in production.",
             )
           end
         end
