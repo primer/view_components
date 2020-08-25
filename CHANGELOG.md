@@ -1,5 +1,7 @@
 # main
 
+* Allow inline styles on ProgressBar item slots
+    *emplums*
 
 * Updated the invalid class name error message
     *emplums*
