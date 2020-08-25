@@ -1,5 +1,9 @@
 # main
 
+# 0.0.5
+
+* Updated the invalid class name error message
+
 # 0.0.4
 
 * Added support for mx: and my: :auto.
