@@ -52,7 +52,7 @@ module Primer
       include ClassNameHelper
       attr_reader :kwargs
 
-      def initialize(percentage: 0, bg: :green, style: "", **kwargs)
+      def initialize(percentage: 0, bg: :green, **kwargs)
         @percentage = percentage
         @kwargs = kwargs
         @style = style
