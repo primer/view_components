@@ -27,7 +27,10 @@ module Primer
 
     def before_render
       deprecations.each do |(opt, values)|
-        val = instance_variable_get("@#{opt}")
+        var_name = "@#{opt}"
+        raise Primer::InstanceVariableNotFound, "The instance variable #{var_name} must be defined when deprecating #{opt}" unless instance_variable_defined?(var_name)
+
+        val = instance_variable_get(var_name)
         Primer::Deprecation.warn("option `#{val}` for `#{opt}` is deprecated and should not be used") if val.present? && val.in?(values)
       end
     end

@@ -10,6 +10,10 @@ require "view_component/engine"
 
 require "octicons_helper/helper"
 
+# Errors
+
+require "primer/errors"
+
 # Helpers
 
 require "primer/class_name_helper"
