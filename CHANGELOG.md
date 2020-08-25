@@ -1,12 +1,20 @@
 # main
 
 
-# 0.0.6
-
 * Updated the invalid class name error message
+    *emplums*
+
+* Add large and spacious option to BlankslateComponent
+
+    *simurai*
 
 # 0.0.5
 
+* Add support for box_shadow
+* Add components:
+    * Popover
+
+    *Sarah Vessels*
 
 # 0.0.4
 
