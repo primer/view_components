@@ -52,13 +52,14 @@ module Primer
       include ClassNameHelper
       attr_reader :kwargs
 
-      def initialize(percentage: 0, bg: :green, **kwargs)
+      def initialize(percentage: 0, bg: :green, style: "", **kwargs)
         @percentage = percentage
         @kwargs = kwargs
+        @style = style
 
         @kwargs[:tag] = :span
         @kwargs[:bg] = bg
-        @kwargs[:style] = "width: #{@percentage}%;"
+        @kwargs[:style] = @style + "width: #{@percentage}%;"
         @kwargs[:classes] = class_names("Progress-item", @kwargs[:classes])
       end
     end
