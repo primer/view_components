@@ -65,6 +65,6 @@ class Primer::ProgressBarComponentTest < Minitest::Test
     render_inline(Primer::ProgressBarComponent.new) do |component|
       component.slot(:item, bg: :blue, style: "transition: width .2s ease-out;")
     end
-    assert_selector("[style='transition: width .2s ease-out;width: 0%;']")
+    assert_selector("[style='width: 0%;transition: width .2s ease-out;']")
   end
 end

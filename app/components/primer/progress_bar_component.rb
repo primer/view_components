@@ -55,11 +55,10 @@ module Primer
       def initialize(percentage: 0, bg: :green, **kwargs)
         @percentage = percentage
         @kwargs = kwargs
-        @style = style
 
         @kwargs[:tag] = :span
         @kwargs[:bg] = bg
-        @kwargs[:style] = "width: #{@percentage}%; #{@kwargs[:style]}"
+        @kwargs[:style] = "width: #{@percentage}%;#{@kwargs[:style]}"
         @kwargs[:classes] = class_names("Progress-item", @kwargs[:classes])
       end
     end
