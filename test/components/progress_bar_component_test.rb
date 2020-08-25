@@ -61,10 +61,10 @@ class Primer::ProgressBarComponentTest < Minitest::Test
     assert_selector("span.Progress .Progress-item.bg-yellow-8")
   end
 
-  def allows_inline_styles_on_slots
+  def test_allows_inline_styles_on_slots
     render_inline(Primer::ProgressBarComponent.new) do |component|
       component.slot(:item, bg: :blue, style: "transition: width .2s ease-out;")
     end
-    assert_selector("[style='transition: widdddth .2s ease-out;']")
+    assert_selector("[style='transition: width .2s ease-out;']")
   end
 end
