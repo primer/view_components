@@ -23,4 +23,36 @@ class PrimerLayoutComponentTest < Minitest::Test
 
     assert_selector(".d-flex > .col-3:first-child")
   end
+
+  def test_defaults_to_col_3_on_sidebar
+    render_inline(Primer::LayoutComponent.new) do |component|
+      component.with(:sidebar) { "Sidebar" }
+      component.with(:main) { "Main content" }
+    end
+
+    assert_selector(".d-flex > .col-9:first-child") # main
+    assert_selector(".d-flex > .col-3:last-child") # sidebar
+  end
+
+  def test_defaults_to_col_3_on_sidebar_if_value_is_invalid
+    without_fetch_or_fallback_raises do
+      render_inline(Primer::LayoutComponent.new(sidebar_col: Primer::LayoutComponent::MAX_COL)) do |component|
+        component.with(:sidebar) { "Sidebar" }
+        component.with(:main) { "Main content" }
+      end
+    end
+
+    assert_selector(".d-flex > .col-9:first-child") # main
+    assert_selector(".d-flex > .col-3:last-child") # sidebar
+  end
+
+  def test_changes_sidebar_col_and_main_col_accordingly
+    render_inline(Primer::LayoutComponent.new(sidebar_col: 5)) do |component|
+      component.with(:sidebar) { "Sidebar" }
+      component.with(:main) { "Main content" }
+    end
+
+    assert_selector(".d-flex > .col-7:first-child") # main
+    assert_selector(".d-flex > .col-5:last-child") # sidebar
+  end
 end

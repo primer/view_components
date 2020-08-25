@@ -1,6 +1,7 @@
 {
   "name": "demo",
   "private": true,
+  "version": "0.1.0",
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -16,7 +17,12 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "storybook": "start-storybook -p 5000"
+    "storybook": "start-storybook -p 5000",
+    "build-storybook": "build-storybook -o public",
+    "build": "yarn build-storybook"
   },
-  "version": "0.1.0"
+  "engines": {
+    "node": "14.x",
+    "yarn": "1.22.x"
+  }
 }

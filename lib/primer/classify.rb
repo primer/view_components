@@ -8,14 +8,14 @@ module Primer
     JUSTIFY_CONTENT_KEY = :justify_content
     ALIGN_ITEMS_KEY = :align_items
     DISPLAY_KEY = :display
-    RESPONSIVE_KEYS = ([DISPLAY_KEY, DIRECTION_KEY, JUSTIFY_CONTENT_KEY, ALIGN_ITEMS_KEY, :col] + SPACING_KEYS).freeze
+    RESPONSIVE_KEYS = ([DISPLAY_KEY, DIRECTION_KEY, JUSTIFY_CONTENT_KEY, ALIGN_ITEMS_KEY, :col, :float] + SPACING_KEYS).freeze
     BREAKPOINTS = ["", "-sm", "-md", "-lg"]
 
     # Keys where we can simply translate { key: value } into ".key-value"
-    CONCAT_KEYS = SPACING_KEYS + [:hide, :position, :v, :float, :col, :text].freeze
+    CONCAT_KEYS = SPACING_KEYS + [:hide, :position, :v, :float, :col, :text, :box_shadow].freeze
 
     INVALID_CLASS_NAME_PREFIXES =
-      (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "text-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
+      (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "text-", "box-shadow-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
 
     COLOR_KEY = :color
     BG_KEY = :bg
@@ -28,6 +28,7 @@ module Primer
     ALIGN_SELF_KEY = :align_self
     WIDTH_KEY = :width
     HEIGHT_KEY = :height
+    BOX_SHADOW_KEY = :box_shadow
 
 
     BOOLEAN_MAPPINGS = {
@@ -98,7 +99,8 @@ module Primer
         FLEX_SHRINK_KEY,
         ALIGN_SELF_KEY,
         WIDTH_KEY,
-        HEIGHT_KEY
+        HEIGHT_KEY,
+        BOX_SHADOW_KEY
       ]
     ).freeze
 
@@ -161,9 +163,9 @@ module Primer
 
             if SPACING_KEYS.include?(key)
               if MARGIN_DIRECTION_KEYS.include?(key)
-                raise ArgumentError, "value must be between -6 and 6" if (val < -6 || val > 6)
-              else
-                raise ArgumentError, "value must be between 0 and 6" if (val < 0 || val > 6)
+                raise ArgumentError, "value of #{key} must be between -6 and 6" if (val < -6 || val > 6)
+              elsif !((key == :mx || key == :my) && val == :auto)
+                raise ArgumentError, "value of #{key} must be between 0 and 6" if (val < 0 || val > 6)
               end
             end
 
@@ -221,6 +223,12 @@ module Primer
               memo[:classes] << "f#{dasherized_val}"
             elsif MARGIN_DIRECTION_KEYS.include?(key) && val < 0
               memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-n#{val.abs}"
+            elsif key == BOX_SHADOW_KEY
+              if val == true
+                memo[:classes] << "box-shadow"
+              else
+                memo[:classes] << "box-shadow-#{dasherized_val}"
+              end
             else
               memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{dasherized_val}"
             end

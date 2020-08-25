@@ -98,6 +98,8 @@ module Primer
   # There are a few variations of how the Blankslate appears:
   #
   # - `narrow` (`Boolean` optional). Adds a maximum width.
+  # - `large` (`Boolean` optional). Increaeses the font size.
+  # - `spacious` (`Boolean` optional). Adds extra padding.
   #
   # ```ruby
   # <%= render Primer::BlankslateComponent.new(
@@ -106,6 +108,8 @@ module Primer
   #   description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
   #
   #   narrow: true,
+  #   large: true,
+  #   spacious: true,
   # ) %>
   # ```
   class BlankslateComponent < Primer::Component
@@ -122,12 +126,14 @@ module Primer
       description: "",
       button_text: "",
       button_url: "",
-      button_classes: "btn-sm btn-primary",
+      button_classes: "btn-primary my-3",
       link_text: "",
       link_url: "",
 
       #variations
       narrow: false,
+      large: false,
+      spacious: false,
 
       **kwargs
     )
@@ -137,6 +143,8 @@ module Primer
         @kwargs[:classes],
         "blankslate",
         "blankslate-narrow": narrow,
+        "blankslate-large": large,
+        "blankslate-spacious": spacious,
       )
 
       @title_tag = title_tag
