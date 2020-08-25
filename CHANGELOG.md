@@ -1,8 +1,12 @@
 # main
 
-# 0.0.5
+
+# 0.0.6
 
 * Updated the invalid class name error message
+
+# 0.0.5
+
 
 # 0.0.4
 
