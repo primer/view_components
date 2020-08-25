@@ -59,7 +59,7 @@ module Primer
 
         @kwargs[:tag] = :span
         @kwargs[:bg] = bg
-        @kwargs[:style] = @style + "width: #{@percentage}%;"
+        @kwargs[:style] = "width: #{@percentage}%; #{@kwargs[:style]}"
         @kwargs[:classes] = class_names("Progress-item", @kwargs[:classes])
       end
     end
