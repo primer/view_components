@@ -20,7 +20,7 @@ module Primer
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
     DEFAULT_TAG = :button
-    TAG_OPTIONS = [DEFAULT_TAG, :a].freeze
+    TAG_OPTIONS = [DEFAULT_TAG, :a, :summary].freeze
 
     DEFAULT_TYPE = :button
     TYPE_OPTIONS = [DEFAULT_TYPE, :reset, :submit].freeze
