@@ -124,6 +124,15 @@ script/setup
 
 to install all necessary dependencies
 
+
+### Running tests
+
+To run the full test suite:
+
+```bash
+bundle exec rake
+```
+
 ### Storybook
 
 *We recommend having [overmind](https://github.com/DarthSim/overmind) installed to run both rails and storybook, but it is not required.*
