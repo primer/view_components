@@ -23,9 +23,11 @@ class PrimerComponentInterfaceTest < Minitest::Test
     def initialize(attribute:)
     end
 
+    # :nocov:
     def call
       render(Primer::BoxComponent.new)
     end
+    # :nocov:
   end
 
   def test_raises_error_if_instance_variable_is_not_defined
