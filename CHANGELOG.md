@@ -1,8 +1,25 @@
 # main
 
+
+* Updated the invalid class name error message
+    *emplums*
+    
+* Updated README with testing instructions
+   *emplums*
+
 * Add large and spacious option to BlankslateComponent
 
     *simurai*
+
+* Add option for `ButtonComponent` to render a `summary` tag
+
+    *Manuel Puyol*
+
+## Breaking changes
+
+* Changed `DetailsComponent` summary and body to be slots
+
+    *Manuel Puyol*
 
 # 0.0.5
 
