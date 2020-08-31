@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency     "view_component", [">= 2.0.0", "< 3.0"]
   spec.add_runtime_dependency     "octicons_helper", [">= 9.0.0", "< 11.0.0"]
   spec.add_development_dependency "minitest", "= 5.6.0"
+  spec.add_development_dependency "mocha"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rubocop", "= 0.74"
   spec.add_development_dependency "rubocop-github", "~> 0.13.0"

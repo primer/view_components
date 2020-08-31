@@ -11,4 +11,5 @@ require "view_component/test_helpers"
 require "test_helpers/component_test_helpers"
 
 require "minitest/autorun"
+require "mocha/minitest"
 require "primer/view_components"
