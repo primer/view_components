@@ -93,6 +93,12 @@ class PrimerFlexComponentTest < Minitest::Test
     refute_selector(".flex-justify-start")
   end
 
+  def test_defaults_to_no_direction_when_invalid_direction_is_used
+    render_inline(Primer::FlexComponent.new(direction: :invalid)) { "content" }
+
+    refute_selector(".flex-row")
+  end
+
   def test_renders_direction
     render_inline(Primer::FlexComponent.new(direction: :row)) { "content" }
 
