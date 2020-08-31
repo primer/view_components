@@ -2,9 +2,11 @@
 
 
 * Updated the invalid class name error message
+
     *emplums*
-    
+
 * Updated README with testing instructions
+
    *emplums*
 
 * Add large and spacious option to BlankslateComponent
@@ -12,6 +14,12 @@
     *simurai*
 
 * Add option for `ButtonComponent` to render a `summary` tag
+
+    *Manuel Puyol*
+
+## Deprecations
+
+* Deprecates schemes `outline` and `green_outline` for `LabelComponent`
 
     *Manuel Puyol*
 
