@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class PrimerComponentTest < Minitest::Test
+class PrimerComponentInterfaceTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_primer_components_provide_a_consistent_interface
