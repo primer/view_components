@@ -163,6 +163,10 @@ Remember that restarting the Rails server is necessary to see changes, as the ge
 To minimize the number of restarts, we recommend checking the component in Storybook first, and then when it's in a good state,
 you can check it in your app.
 
+### Documentation
+
+Document components with [YARD](https://yardoc.org/). Docs are published to [RubyDoc.info](https://rubydoc.info/github/primer/view_components).
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
