@@ -9,6 +9,13 @@ module Primer
       :light_gray => "Counter Counter--gray-light",
     }.freeze
 
+    # @param count [Integer, Float::INFINITY, nil] The number to be displayed (e.x. # of issues, pull requests)
+    # @param scheme [Symbol] Color scheme. One of `SCHEME_MAPPINGS.keys`.
+    # @param limit [Integer] Maximum value to display. (e.x. if count == 6,000 and limit == 5000, counter will display "5,000+")
+    # @param hide_if_zero [Boolean] If true, a `hidden` attribute is added to the counter if `count` is zero.
+    # @param text [String] Text to display instead of count.
+    # @param round [Boolean] Whether to apply our standard rounding logic to value.
+    # @param kwargs [Hash] Style arguments to be passed to Primer::Classify
     def initialize(
       count: 0,
       scheme: DEFAULT_SCHEME,
