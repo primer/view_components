@@ -18,6 +18,13 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("f6",  { font_size: 6 })
   end
 
+  def test_border_margins
+    assert_generated_class("border-top-0",    { border_top: 0 })
+    assert_generated_class("border-bottom-0", { border_bottom: 0 })
+    assert_generated_class("border-left-0",   { border_left: 0 })
+    assert_generated_class("border-right-0",  { border_right: 0 })
+  end
+
   def test_m
     assert_generated_class("m-4",   { m: 4 })
     assert_generated_class("mx-4",  { mx: 4 })
