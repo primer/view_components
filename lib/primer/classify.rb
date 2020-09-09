@@ -77,7 +77,7 @@ module Primer
         ]
       }
     }.freeze
-    BORDER_KEYS = [:border, :border_color].freeze
+    BORDER_KEYS = [:border, :border_color, :border_top, :border_bottom, :border_left, :border_right].freeze
     TYPOGRAPHY_KEYS = [:font_size].freeze
     VALID_KEYS = (
       CONCAT_KEYS +
@@ -170,6 +170,8 @@ module Primer
             end
 
             dasherized_val = val.to_s.dasherize
+            dasherized_key = key.to_s.dasherize
+
             breakpoint = BREAKPOINTS[index]
 
             if BOOLEAN_MAPPINGS.has_key?(key)
@@ -195,7 +197,11 @@ module Primer
             elsif key == WORD_BREAK_KEY
               memo[:classes] << "wb-#{dasherized_val}"
             elsif BORDER_KEYS.include?(key)
-              memo[:classes] << "border-#{dasherized_val}"
+              if (key == :border || key == :border_color)
+                memo[:classes] << "border-#{dasherized_val}"
+              else
+                memo[:classes] << "#{dasherized_key}-#{val}"
+              end
             elsif key == DIRECTION_KEY
               memo[:classes] << "flex#{breakpoint}-#{dasherized_val}"
             elsif key == JUSTIFY_CONTENT_KEY
