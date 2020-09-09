@@ -172,7 +172,6 @@ module Primer
             end
 
             dasherized_val = val.to_s.dasherize
-
             breakpoint = BREAKPOINTS[index]
 
             if BOOLEAN_MAPPINGS.has_key?(key)
