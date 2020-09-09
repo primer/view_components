@@ -77,6 +77,10 @@ Some components have their own specific arguments, but they can all be styled wi
 | `font_weight`     | `text-<value>` | `font_weight: :bold` → `.text-bold` |
 | `border`     | `border-<value>` | `border: :bottom` → `.border-bottom` |
 | `border_color`     | `border-<value>` | `border: :green` → `.border-green` |
+| `border_top`     | `border-top-<value>` | `border_top: 0` → `.border-top-0` |
+| `border_bottom`     | `border-bottom-<value>` | `border_bottom: 0` → `.border-bottom-0` |
+| `border_left`     | `border-left-<value>` | `border_left: 0` → `.border-left-0` |
+| `border_right`     | `border-right-<value>` | `border_right: 0` → `.border-right-0` |
 | `word_break`     | `wb-<value>` | `word_break: :break_all` → `.wb-break-all` |
 | `direction`     | `flex-<value>` | `direction: :row` → `.flex-row` |
 | `justify_content`    | `flex-justify-<value>` | `justify_content: :center` → `.flex-justify-center` |
