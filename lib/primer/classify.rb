@@ -84,6 +84,7 @@ module Primer
       CONCAT_KEYS +
       BOOLEAN_MAPPINGS.keys +
       BORDER_KEYS +
+      BORDER_MARGIN_KEYS +
       TYPOGRAPHY_KEYS +
       TEXT_KEYS +
       [
@@ -171,6 +172,7 @@ module Primer
             end
 
             dasherized_val = val.to_s.dasherize
+            dasherized_key = key.to_s.dasherize
 
             breakpoint = BREAKPOINTS[index]
 
