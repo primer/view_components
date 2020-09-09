@@ -172,7 +172,6 @@ module Primer
             end
 
             dasherized_val = val.to_s.dasherize
-            dasherized_key = key.to_s.dasherize
 
             breakpoint = BREAKPOINTS[index]
 
