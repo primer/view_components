@@ -1,8 +1,10 @@
-# 0.0.7
+# main
 
 * Added support for border margins, such as: `border_top: 0`
 
     *Natasha Umer*
+
+# 0.0.7
 
 * Use `octicons_helper` v11.0.0.
 
