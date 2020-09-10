@@ -7,7 +7,7 @@ class Primer::BlankslateComponentStories < ViewComponent::Storybook::Stories
     controls do
       icon "shield"
       title "It looks like we have discovered a vulnerability"
-      icon_height 64
+      icon_size "large"
     end
   end
 

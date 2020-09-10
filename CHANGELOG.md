@@ -4,6 +4,16 @@
 
     *Natasha Umer*
 
+* Add FlashComponent and OcticonComponent.
+
+    *Joel Hawksley*
+
+## Breaking changes
+
+* BlankslateComponent accepts `icon_size` instead of `icon_height`.
+
+    *Joel Hawksley*
+
 # 0.0.7
 
 * Use `octicons_helper` v11.0.0.
