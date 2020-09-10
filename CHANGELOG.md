@@ -1,6 +1,6 @@
 # main
 
-* Added support for border margins, such as: `border_top: 0`
+* Add support for border margins, such as: `border_top: 0`.
 
     *Natasha Umer*
 
