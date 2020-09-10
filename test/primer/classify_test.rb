@@ -167,11 +167,18 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_border
-    assert_generated_class("border-left",    { border: :left })
-    assert_generated_class("border-top",     { border: :top })
-    assert_generated_class("border-bottom",  { border: :bottom })
-    assert_generated_class("border-right",   { border: :right })
-    assert_generated_class("border-y",       { border: :y })
+    assert_generated_class("border-left",   { border: :left })
+    assert_generated_class("border-top",    { border: :top })
+    assert_generated_class("border-bottom", { border: :bottom })
+    assert_generated_class("border-right",  { border: :right })
+    assert_generated_class("border-y",      { border: :y })
+  end
+
+  def test_border_margins
+    assert_generated_class("border-top-0",    { border_top: 0 })
+    assert_generated_class("border-bottom-0", { border_bottom: 0 })
+    assert_generated_class("border-left-0",   { border_left: 0 })
+    assert_generated_class("border-right-0",  { border_right: 0 })
   end
 
   def test_border_color
