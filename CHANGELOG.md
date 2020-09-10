@@ -1,3 +1,13 @@
+# 0.0.7
+
+* Added support for border margins, such as: `border_top: 0`
+
+    *Natasha Umer*
+
+* Use `octicons_helper` v11.0.0.
+
+    *Joel Hawksley*
+
 # 0.0.6
 
 * Updated the invalid class name error message
