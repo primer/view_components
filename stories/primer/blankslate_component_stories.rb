@@ -7,7 +7,7 @@ class Primer::BlankslateComponentStories < ViewComponent::Storybook::Stories
     controls do
       icon "shield"
       title "It looks like we have discovered a vulnerability"
-      icon_size "large"
+      select(:icon_size, Primer::StoriesHelper.array_to_options(Primer::OcticonComponent::SIZE_MAPPINGS.keys), :large)
     end
   end
 
