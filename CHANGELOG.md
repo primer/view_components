@@ -1,5 +1,7 @@
 # main
 
+# 0.0.8
+
 * Add support for border margins, such as: `border_top: 0`.
 
     *Natasha Umer*
