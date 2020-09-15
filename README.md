@@ -88,6 +88,7 @@ Some components have their own specific arguments, but they can all be styled wi
 | `box_shadow` | `box-shadow-<value>` | `box_shadow: :medium` → `.box-shadow-medium` |
 
 #### Boolean arguments
+
 | Component arguments | True    | False |
 | -------------- | ------- | ------ |
 | `underline`   | `underline: true` → `.text-underline`  | `underline: false` → `.no-underline` |
@@ -116,7 +117,7 @@ The same label using `Primer::HeadingComponent`:
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/primer/view_components. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/primer/view_components](https://github.com/primer/view_components). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ### Setting up
 
@@ -127,7 +128,6 @@ script/setup
 ```
 
 to install all necessary dependencies
-
 
 ### Running tests
 
