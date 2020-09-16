@@ -7,7 +7,7 @@ class Primer::StateComponentStories < ViewComponent::Storybook::Stories
     controls do
       title "this is the title"
       select(:color, Primer::StoriesHelper.array_to_options(Primer::StateComponent::COLOR_OPTIONS), :default)
-      select(:size, Primer::StoriesHelper.array_to_options(Primer::StateComponent::SIZE_MAPPINGS.keys), :default)
+      select(:size, Primer::StoriesHelper.array_to_options(Primer::StateComponent::SIZE_OPTIONS), :default)
       select(:tag, Primer::StoriesHelper.array_to_options(Primer::StateComponent::TAG_OPTIONS), :span)
     end
 
