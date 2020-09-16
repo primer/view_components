@@ -5,80 +5,45 @@ require "test_helper"
 class PrimerComponentTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
+  # Components with any arguments necessary to make them render
+  COMPONENTS_WITH_ARGS = [
+    [Primer::AvatarComponent, { alt: "github", src: "https://github.com/github.png" }],
+    [Primer::BaseComponent, { tag: :div }],
+    [Primer::BlankslateComponent, { title: "Foo" }],
+    [Primer::BorderBoxComponent, {}, proc { |component| component.slot(:header) { "Foo" } }],
+    [Primer::BoxComponent, {}],
+    [Primer::BreadcrumbComponent, {}, proc { |component| component.slot(:item) { "Foo" } }],
+    [Primer::ButtonComponent, {}],
+    [Primer::CounterComponent, { count: 1 }],
+    [Primer::DetailsComponent, {}, lambda do |component|
+      component.slot(:summary) { "Foo" }
+      component.slot(:body) { "Bar" }
+    end],
+    [Primer::DropdownMenuComponent, {}],
+    [Primer::FlexComponent, {}],
+    [Primer::FlashComponent, {}],
+    [Primer::FlexItemComponent, { flex_auto: true }],
+    [Primer::HeadingComponent, {}],
+    [Primer::LabelComponent, { title: "Hello!" }],
+    [Primer::LayoutComponent, {}],
+    [Primer::LinkComponent, { href: "https://www.google.com" }],
+    [Primer::OcticonComponent, { icon: "people" }],
+    [Primer::PopoverComponent, {}, proc { |component| component.slot(:body) }],
+    [Primer::ProgressBarComponent, {}, proc { |component| component.slot(:item) }],
+    [Primer::StateComponent, { title: "Open" }],
+    [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
+    [Primer::TextComponent, {}],
+    [Primer::TimelineItemComponent, {}, proc { |component| component.slot(:body) { "Foo" } }],
+    [Primer::UnderlineNavComponent, {}],
+  ]
 
-
-  # COMPONENTS_WITH_ARGS = [
-  #   [Primer::AvatarComponent, { alt: "github", src: "https://github.com/github.png" }],
-  #   [Primer::BaseComponent, { tag: :div }],
-  #   [Primer::BlankslateComponent, { title: "Foo" }],
-  #   [Primer::BorderBoxComponent, {}, proc { |component| component.slot(:header) { "Foo" } }],
-  #   [Primer::BoxComponent, {}],
-  #   [Primer::BreadcrumbComponent, {}, proc { |component| component.slot(:item) { "Foo" } }],
-  #   [Primer::ButtonComponent, {}],
-  #   [Primer::CounterComponent, { count: 1 }],
-  #   [Primer::DetailsComponent, {}, lambda do |component|
-  #     component.slot(:summary) { "Foo" }
-  #     component.slot(:body) { "Bar" }
-  #   end],
-  #   [Primer::DropdownMenuComponent, {}],
-  #   [Primer::FlexComponent, {}],
-  #   [Primer::FlashComponent, {}],
-  #   [Primer::FlexItemComponent, { flex_auto: true }],
-  #   [Primer::HeadingComponent, {}],
-  #   [Primer::LabelComponent, { title: "Hello!" }],
-  #   [Primer::LayoutComponent, {}],
-  #   [Primer::LinkComponent, { href: "https://www.google.com" }],
-  #   [Primer::OcticonComponent, { icon: "people" }],
-  #   [Primer::PopoverComponent, {}, proc { |component| component.slot(:body) }],
-  #   [Primer::ProgressBarComponent, {}, proc { |component| component.slot(:item) }],
-  #   [Primer::StateComponent, { title: "Open" }],
-  #   [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
-  #   [Primer::TextComponent, {}],
-  #   [Primer::TimelineItemComponent, {}, proc { |component| component.slot(:body) { "Foo" } }],
-  #   [Primer::UnderlineNavComponent, {}],
-  # ]
-
-  # write a step when it's ititerating to see if a story file exists for that component and if it doesnt you can raise an error, placeholder story file for each one. That will allow us to ensure that we always have a story everytime we have a component.
-  # or write a story first. cc / john.
   def test_primer_components_provide_a_consistent_interface
-    # Components with any arguments necessary to make them render
-    components_with_args = [
-      [Primer::AvatarComponent, { alt: "github", src: "https://github.com/github.png" }],
-      [Primer::BaseComponent, { tag: :div }],
-      [Primer::BlankslateComponent, { title: "Foo" }],
-      [Primer::BorderBoxComponent, {}, proc { |component| component.slot(:header) { "Foo" } }],
-      [Primer::BoxComponent, {}],
-      [Primer::BreadcrumbComponent, {}, proc { |component| component.slot(:item) { "Foo" } }],
-      [Primer::ButtonComponent, {}],
-      [Primer::CounterComponent, { count: 1 }],
-      [Primer::DetailsComponent, {}, lambda do |component|
-        component.slot(:summary) { "Foo" }
-        component.slot(:body) { "Bar" }
-      end],
-      [Primer::DropdownMenuComponent, {}],
-      [Primer::FlexComponent, {}],
-      [Primer::FlashComponent, {}],
-      [Primer::FlexItemComponent, { flex_auto: true }],
-      [Primer::HeadingComponent, {}],
-      [Primer::LabelComponent, { title: "Hello!" }],
-      [Primer::LayoutComponent, {}],
-      [Primer::LinkComponent, { href: "https://www.google.com" }],
-      [Primer::OcticonComponent, { icon: "people" }],
-      [Primer::PopoverComponent, {}, proc { |component| component.slot(:body) }],
-      [Primer::ProgressBarComponent, {}, proc { |component| component.slot(:item) }],
-      [Primer::StateComponent, { title: "Open" }],
-      [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
-      [Primer::TextComponent, {}],
-      [Primer::TimelineItemComponent, {}, proc { |component| component.slot(:body) { "Foo" } }],
-      [Primer::UnderlineNavComponent, {}],
-    ]
-
     ignored_components = ["Primer::Component"]
 
     primer_component_files_count = Dir["app/**/*component.rb"].count
-    assert_equal primer_component_files_count, components_with_args.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"
+    assert_equal primer_component_files_count, COMPONENTS_WITH_ARGS.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"
 
-    components_with_args.each do |component, args, proc|
+    COMPONENTS_WITH_ARGS.each do |component, args, proc|
       # component renders hash arguments
       render_component(component, { my: 4 }.merge(args), proc)
       assert_selector(".my-4")
@@ -115,18 +80,15 @@ class PrimerComponentTest < Minitest::Test
     end
   end
 
-  # def components_storybook_count
-  #
-  #   expected_components_count = COMPONENTS_WITH_ARGS.length
+  def test_components_storybook_count
+    expected_missing_stories = 13
 
-  #   storybook_count = Dir[Rails.root.join("stories/primer/**/*.rb")].length
+    expected_components_count = COMPONENTS_WITH_ARGS.length
 
-  #   #if expected_components_count != storybook_count
+    storybook_count = Dir[Rails.root.join("../stories/primer/**/*.rb")].length
 
-  #   message = "\n The storybook count is less than the expected components count "
-
-  #   assert_equal expected_components_count, storybook_count, message
-  # end
+    assert_equal expected_components_count, storybook_count + expected_missing_stories
+  end
 
   def render_component(component, args, proc)
     render_inline(component.new(**args)) do |c|
