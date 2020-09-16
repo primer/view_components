@@ -2,6 +2,10 @@
 
 ## main
 
+* Add Pagination component
+
+    *Manuel Puyol*
+
 ## 0.0.8
 
 * Add support for border margins, such as: `border_top: 0`.
