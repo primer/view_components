@@ -37,12 +37,12 @@ module Primer
     )
       @kwargs = kwargs
       @kwargs[:title] = title
-      @kwargs[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
+      @kwargs[:tag] = fetch_or_fallback(TAG_OPTIONS, tag.to_sym, TAG_DEFAULT)
       @kwargs[:classes] = class_names(
         @kwargs[:classes],
         "State",
-        COLOR_MAPPINGS[fetch_or_fallback(COLOR_OPTIONS, color, COLOR_DEFAULT)],
-        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
+        COLOR_MAPPINGS[fetch_or_fallback(COLOR_OPTIONS, color.to_sym, COLOR_DEFAULT)],
+        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size.to_sym, SIZE_DEFAULT)]
       )
     end
 

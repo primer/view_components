@@ -1,13 +1,19 @@
 <%= render Primer::BaseComponent.new(**@kwargs) do %>
   <% if @icon.present? %>
-    <%= octicon @icon, height: @icon_height, class: "blankslate-icon" %>
+    <%= render(Primer::OcticonComponent.new(
+      icon: @icon,
+      size: @icon_size,
+      class: "blankslate-icon"
+    )) %>
   <% end %>
 
   <% if @image_src.present? && @image_alt.present? %>
     <%= image_tag "#{@image_src}", class: "mb-3", size: "56x56", alt: "#{@image_alt}" %>
   <% end %>
 
-  <<%= @title_tag %> class="mb-1"><%= @title %></<%= @title_tag %>>
+  <% if @title.present? %>
+    <%= render Primer::BaseComponent.new(tag: @title_tag, mb: 1) do %><%= @title %><% end %>
+  <% end %>
 
   <% if @description.present? %>
     <p><%= @description %></p>

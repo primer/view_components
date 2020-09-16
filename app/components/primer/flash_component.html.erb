@@ -1,0 +1,14 @@
+<%= render Primer::BaseComponent.new(**@kwargs) do %>
+  <%= render(Primer::OcticonComponent.new(icon: @icon)) if @icon %>
+  <%= content %>
+  <% if @dismissible %>
+    <button class="flash-close js-flash-close" type="button" aria-label="Close">
+      <%= render(Primer::OcticonComponent.new(icon: "x")) %>
+    </button>
+  <% end %>
+  <% if actions.present? %>
+    <%= render Primer::BaseComponent.new(**actions.kwargs) do %>
+      <%= actions.content %>
+    <% end %>
+  <% end %>
+<% end %>

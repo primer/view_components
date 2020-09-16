@@ -7,7 +7,7 @@ module Primer
   #
   # The `Primer::BlankslateComponent` supports the following arguments to add a basic blankslate:
   #
-  # 1. `title` (`String` required). Text that appears in a larger bold font.
+  # 1. `title` (`String` optional). Text that appears in a larger bold font.
   # 2. `description` (`String` optional). Text that appears below the title. Typically a whole sentence.
   #
   # ```ruby
@@ -98,6 +98,8 @@ module Primer
   # There are a few variations of how the Blankslate appears:
   #
   # - `narrow` (`Boolean` optional). Adds a maximum width.
+  # - `large` (`Boolean` optional). Increaeses the font size.
+  # - `spacious` (`Boolean` optional). Adds extra padding.
   #
   # ```ruby
   # <%= render Primer::BlankslateComponent.new(
@@ -106,17 +108,16 @@ module Primer
   #   description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
   #
   #   narrow: true,
+  #   large: true,
+  #   spacious: true,
   # ) %>
   # ```
   class BlankslateComponent < Primer::Component
     def initialize(
-      # required
-      title:,
-
-      # optional
+      title: "",
       title_tag: :h3,
       icon: "",
-      icon_height: 32,
+      icon_size: :medium,
       image_src: "",
       image_alt: " ",
       description: "",
@@ -128,20 +129,24 @@ module Primer
 
       #variations
       narrow: false,
+      large: false,
+      spacious: false,
 
       **kwargs
     )
       @kwargs = kwargs
-      @kwargs[:tag] = :div
+      @kwargs[:tag] ||= :div
       @kwargs[:classes] = class_names(
         @kwargs[:classes],
         "blankslate",
         "blankslate-narrow": narrow,
+        "blankslate-large": large,
+        "blankslate-spacious": spacious,
       )
 
       @title_tag = title_tag
       @icon = icon
-      @icon_height = icon_height
+      @icon_size = icon_size
       @image_src = image_src
       @image_alt = image_alt
       @title = title

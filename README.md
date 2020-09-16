@@ -77,6 +77,10 @@ Some components have their own specific arguments, but they can all be styled wi
 | `font_weight`     | `text-<value>` | `font_weight: :bold` → `.text-bold` |
 | `border`     | `border-<value>` | `border: :bottom` → `.border-bottom` |
 | `border_color`     | `border-<value>` | `border: :green` → `.border-green` |
+| `border_top`     | `border-top-<value>` | `border_top: 0` → `.border-top-0` |
+| `border_bottom`     | `border-bottom-<value>` | `border_bottom: 0` → `.border-bottom-0` |
+| `border_left`     | `border-left-<value>` | `border_left: 0` → `.border-left-0` |
+| `border_right`     | `border-right-<value>` | `border_right: 0` → `.border-right-0` |
 | `word_break`     | `wb-<value>` | `word_break: :break_all` → `.wb-break-all` |
 | `direction`     | `flex-<value>` | `direction: :row` → `.flex-row` |
 | `justify_content`    | `flex-justify-<value>` | `justify_content: :center` → `.flex-justify-center` |
@@ -84,6 +88,7 @@ Some components have their own specific arguments, but they can all be styled wi
 | `box_shadow` | `box-shadow-<value>` | `box_shadow: :medium` → `.box-shadow-medium` |
 
 #### Boolean arguments
+
 | Component arguments | True    | False |
 | -------------- | ------- | ------ |
 | `underline`   | `underline: true` → `.text-underline`  | `underline: false` → `.no-underline` |
@@ -112,7 +117,7 @@ The same label using `Primer::HeadingComponent`:
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/primer/view_components. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/primer/view_components](https://github.com/primer/view_components). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ### Setting up
 
@@ -123,6 +128,14 @@ script/setup
 ```
 
 to install all necessary dependencies
+
+### Running tests
+
+To run the full test suite:
+
+```bash
+bundle exec rake
+```
 
 ### Storybook
 
@@ -153,6 +166,10 @@ Remember that restarting the Rails server is necessary to see changes, as the ge
 
 To minimize the number of restarts, we recommend checking the component in Storybook first, and then when it's in a good state,
 you can check it in your app.
+
+### Documentation
+
+Document components with [YARD](https://yardoc.org/). Docs are published to [RubyDoc.info](https://rubydoc.info/github/primer/view_components).
 
 ## License
 
