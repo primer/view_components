@@ -172,7 +172,7 @@ GEM
       thread_safe (~> 0.1)
     view_component (2.18.0)
       activesupport (>= 5.0.0, < 7.0)
-    view_component_storybook (0.4.0)
+    view_component_storybook (0.6.0)
       view_component (>= 2.2)
     webpacker (5.1.1)
       activesupport (>= 5.2)
@@ -200,7 +200,7 @@ DEPENDENCIES
   rake (~> 12.0)
   spring
   spring-watcher-listen (~> 2.0.0)
-  view_component_storybook (~> 0.4.0)
+  view_component_storybook (~> 0.6.0)
   webpacker (~> 5.0)
 
 BUNDLED WITH

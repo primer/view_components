@@ -16,7 +16,7 @@ gem "webpacker", "~> 5.0"
 gem "bootsnap", ">= 1.4.2", require: false
 
 gem "primer_view_components", path: "../"
-gem "view_component_storybook", "~> 0.4.0"
+gem "view_component_storybook", "~> 0.6.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
