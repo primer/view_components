@@ -6,7 +6,7 @@ class Primer::LayoutComponentStories < ViewComponent::Storybook::Stories
   story(:layout) do
     controls do
       responsive false
-      select(:side, Primer::StoriesHelper.array_to_options(Primer::LayoutComponent::ALLOWED_SIDES), :right)
+      select(:side, Primer::LayoutComponent::ALLOWED_SIDES, :right)
       sidebar_col 3
     end
 
