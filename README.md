@@ -127,7 +127,7 @@ Run
 script/setup
 ```
 
-to install all necessary dependencies
+To install all necessary dependencies.
 
 ### Running tests
 
@@ -137,15 +137,19 @@ To run the full test suite:
 bundle exec rake
 ```
 
-### Storybook
+### Writing documentation
 
-*We recommend having [overmind](https://github.com/DarthSim/overmind) installed to run both rails and storybook, but it is not required.*
+Documentation is written as [YARD](https://yardoc.org/) comments directly in the source code, compiled into Markdown via `rake docs:build` and served by [Doctocat](https://github.com/primer/doctocat).
 
-To run storybook:
+### Storybook / Documentation
+
+To run Storybook and the documentation site, run:
 
 ```bash
-script/storybook
+script/dev
 ```
+
+_Note: Overmind is required to run script/dev._
 
 ### Developing with another app
 
