@@ -6,8 +6,8 @@ class Primer::LabelComponentStories < ViewComponent::Storybook::Stories
   story(:label) do
     controls do
       title "this is a label"
-      select(:scheme, Primer::StoriesHelper.array_to_options(Primer::LabelComponent::SCHEME_MAPPINGS.keys), :blue)
-      select(:variant, Primer::StoriesHelper.array_to_options(Primer::LabelComponent::VARIANT_MAPPINGS.keys), :large)
+      select(:scheme, (Primer::LabelComponent::SCHEME_MAPPINGS.keys), :blue)
+      select(:variant, (Primer::LabelComponent::VARIANT_MAPPINGS.keys), :large)
     end
 
     content do

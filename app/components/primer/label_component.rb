@@ -36,8 +36,8 @@ module Primer
       @kwargs[:classes] = class_names(
         "Label",
         kwargs[:classes],
-        SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme.to_sym)],
-        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant.to_sym)]
+        SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme)],
+        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant)]
       )
     end
 
