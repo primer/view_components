@@ -74,7 +74,7 @@ namespace :docs do
 
       initialize_method.tags.each do |tag|
         if tag.tag_name == "param"
-          o = tag.object.parameters.find {|a| [tag.name.to_s, tag.name.to_s + ":"].include?(a[0]) }
+          o = tag.object.parameters.find { |a| [tag.name.to_s, tag.name.to_s + ":"].include?(a[0]) }
 
           default =
             if o && o[1]
