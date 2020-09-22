@@ -84,7 +84,8 @@ class PrimerComponentTest < Minitest::Test
   def test_components_storybook_count
     # Should be deprecated each time a new storybook is added to a component
     # Should be incremented if a new view component is added without a storybook
-    expected_missing_stories = 8
+    expected_missing_stories = 7
+
     expected_components_count = COMPONENTS_WITH_ARGS.length
 
     storybook_count = Dir[Rails.root.join("../stories/primer/**/*.rb")].length
