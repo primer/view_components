@@ -81,7 +81,7 @@ class PrimerComponentTest < Minitest::Test
   end
 
   def test_components_storybook_count
-    expected_missing_stories = 12
+    expected_missing_stories = 14
 
     expected_components_count = COMPONENTS_WITH_ARGS.length
 
