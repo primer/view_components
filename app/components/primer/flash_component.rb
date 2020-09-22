@@ -22,7 +22,7 @@ module Primer
       @kwargs[:classes] = class_names(
         @kwargs[:classes],
         "flash",
-        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_MAPPINGS.keys, variant.to_sym, DEFAULT_VARIANT)],
+        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_MAPPINGS.keys, variant, DEFAULT_VARIANT)],
         "flash-full": full
       )
       @kwargs[:mb] ||= spacious ? 4 : nil
