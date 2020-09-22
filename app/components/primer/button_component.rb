@@ -34,19 +34,19 @@ module Primer
       **kwargs
     )
       @kwargs = kwargs
-      @kwargs[:tag] = fetch_or_fallback(TAG_OPTIONS, tag.to_sym, DEFAULT_TAG)
+      @kwargs[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
 
       if @kwargs[:tag] == :a
         @kwargs[:role] = :button
       else
-        @kwargs[:type] = type.to_sym
+        @kwargs[:type] = type
       end
 
       @kwargs[:classes] = class_names(
         "btn",
         kwargs[:classes],
-        BUTTON_TYPE_MAPPINGS[fetch_or_fallback(BUTTON_TYPE_OPTIONS, button_type.to_sym, DEFAULT_BUTTON_TYPE)],
-        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant.to_sym, DEFAULT_VARIANT)],
+        BUTTON_TYPE_MAPPINGS[fetch_or_fallback(BUTTON_TYPE_OPTIONS, button_type, DEFAULT_BUTTON_TYPE)],
+        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)],
         "BtnGroup-item" => group_item
       )
     end

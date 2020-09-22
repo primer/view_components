@@ -16,7 +16,7 @@ module Primer
     def initialize(icon:, size: SIZE_DEFAULT, **kwargs)
       @icon, @kwargs = icon, kwargs
 
-      @kwargs[:height] = SIZE_MAPPINGS[size.to_sym]
+      @kwargs[:height] = SIZE_MAPPINGS[size]
       @kwargs[:class] = class_names(@kwargs[:class], Primer::Classify.call(**@kwargs)[:class])
     end
 

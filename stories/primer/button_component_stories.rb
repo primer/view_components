@@ -5,10 +5,10 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
 
   story(:button) do
     controls do
-      select(:button_type, Primer::StoriesHelper.array_to_options(Primer::ButtonComponent::BUTTON_TYPE_OPTIONS), :primary)
-      select(:variant, Primer::StoriesHelper.array_to_options(Primer::ButtonComponent::VARIANT_OPTIONS), :medium)
-      select(:tag, Primer::StoriesHelper.array_to_options(Primer::ButtonComponent::TAG_OPTIONS), :button)
-      select(:type, Primer::StoriesHelper.array_to_options(Primer::ButtonComponent::TYPE_OPTIONS), :button)
+      select(:button_type, Primer::ButtonComponent::BUTTON_TYPE_OPTIONS, :primary)
+      select(:variant, Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
+      select(:tag, Primer::ButtonComponent::TAG_OPTIONS, :button)
+      select(:type, Primer::ButtonComponent::TYPE_OPTIONS, :button)
       group_item false
     end
     content do
