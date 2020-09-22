@@ -5,7 +5,7 @@ class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
 
   story(:details) do
     controls do
-      select(:overlay, Primer::StoriesHelper.array_to_options(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys), :none)
+      select(:overlay, Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :none)
       reset false
     end
 
@@ -17,7 +17,7 @@ class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
 
   story(:custom_button) do
     controls do
-      select(:overlay, Primer::StoriesHelper.array_to_options(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys), :none)
+      select(:overlay, Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :none)
     end
 
     content do |component|
@@ -28,7 +28,7 @@ class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
 
   story(:without_button) do
     controls do
-      select(:overlay, Primer::StoriesHelper.array_to_options(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys), :none)
+      select(:overlay, Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :none)
     end
 
     content do |component|
