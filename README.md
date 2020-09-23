@@ -173,7 +173,7 @@ Document components with [YARD](https://yardoc.org/). Docs are published to [Rub
 
 ## Deploying to Heroku
 
-We have both `staging` and `production` environments. To deploy Storybook to heroku run on `#primer-view-components-ops`:
+We have both `staging` and `production` environments. To deploy Storybook to Heroku, run the following in `#primer-view-components-ops`:
 
 ```bash
 .deploy primer-view-components</branch> to <environment>
