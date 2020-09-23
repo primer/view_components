@@ -171,6 +171,16 @@ you can check it in your app.
 
 Document components with [YARD](https://yardoc.org/). Docs are published to [RubyDoc.info](https://rubydoc.info/github/primer/view_components).
 
+## Deploying to Heroku
+
+We have both `staging` and `production` environments. To deploy Storybook to Heroku, run the following in `#primer-view-components-ops`:
+
+```bash
+.deploy primer-view-components</branch> to <environment>
+```
+
+If no `branch` is passed, `main` will be deployed.
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
