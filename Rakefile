@@ -70,22 +70,18 @@ namespace :docs do
       f.puts("| Name | Type | Default | Description |")
       f.puts("| :- | :- | :-: | :- |")
 
-      initialize_method = documentation.meths.find(&:constructor?)
+      initialize_method.tags(:param).each do |tag|
+        params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
 
-      initialize_method.tags.each do |tag|
-        if tag.tag_name == "param"
-          o = tag.object.parameters.find { |a| [tag.name.to_s, tag.name.to_s + ":"].include?(a[0]) }
-
-          default =
-            if o && o[1]
-              o[1]
-            else
-              ""
-            end
+        default =
+          if params && params[1]
+            params[1]
+          else
+            ""
+          end
 
 
-          f.puts("| #{tag.name} | #{tag.types.join(", ")} | #{default} | #{tag.text} |")
-        end
+        f.puts("| #{tag.name} | #{tag.types.join(", ")} | #{default} | #{tag.text} |")
       end
     end
 
