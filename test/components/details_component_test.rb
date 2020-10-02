@@ -94,4 +94,18 @@ class PrimerDetailsComponentTest < Minitest::Test
     refute_selector("details")
     refute_selector("summary")
   end
+
+  def test_details_menu_is_direct_child
+    menu = render_inline(Primer::DropdownMenuComponent.new(direction: :w)) { "Body" }
+    render_inline(Primer::DetailsComponent.new) do |component|
+      component.slot(:summary, variant: :small, button_type: :primary) do
+        "Summary"
+      end
+      component.slot(:body) do
+        menu.to_s.html_safe
+      end
+    end
+
+    assert_selector("details > details-menu", visible: false)
+  end
 end
