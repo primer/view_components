@@ -78,7 +78,7 @@ class PrimerOcticonComponentTest < Minitest::Test
   end
 
   def test_does_not_render_classify_attributes_as_html_attributes
-    render_inline(Primer::OcticonComponent.new(icon: "star", classes: "foo", my: 4, display: [:none]))
+    render_inline(Primer::OcticonComponent.new(icon: "star", classes: "foo", display: [:none]))
 
     refute_selector('[classes="foo"][display="none"]')
   end
