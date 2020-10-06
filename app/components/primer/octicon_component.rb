@@ -15,9 +15,10 @@ module Primer
 
     def initialize(icon:, size: SIZE_DEFAULT, **kwargs)
       @icon, @kwargs = icon, kwargs
-
+      classes = class_names(@kwargs.delete(:class), @kwargs.delete(:classes))
+      @kwargs[:class] = class_names(Primer::Classify.call(**@kwargs)[:class], classes)
+      @kwargs = @kwargs.except(*Primer::Classify::VALID_KEYS)
       @kwargs[:height] = SIZE_MAPPINGS[size]
-      @kwargs[:class] = class_names(@kwargs[:class], Primer::Classify.call(**@kwargs)[:class])
     end
 
     def call
