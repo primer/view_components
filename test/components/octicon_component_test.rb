@@ -53,6 +53,12 @@ class PrimerOcticonComponentTest < Minitest::Test
     assert_selector("[height='16']")
   end
 
+  def test_renders_with_overridden_height_and_width_despite_given_a_size
+    render_inline(Primer::OcticonComponent.new(icon: "star", size: :large, height: 33, width: 47))
+
+    assert_selector('[height="33"][width="47"]')
+  end
+
   def test_renders_class_passed_in
     render_inline(Primer::OcticonComponent.new(icon: "star", class: "foo"))
 
