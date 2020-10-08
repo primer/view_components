@@ -59,28 +59,16 @@ class PrimerOcticonComponentTest < Minitest::Test
     assert_selector('[height="33"][width="47"]')
   end
 
-  def test_renders_class_passed_in
-    render_inline(Primer::OcticonComponent.new(icon: "star", class: "foo"))
-
-    assert_selector(".foo")
-  end
-
   def test_renders_classes_passed_in
     render_inline(Primer::OcticonComponent.new(icon: "star", classes: "foo"))
 
     assert_selector(".foo")
   end
 
-  def test_renders_class_passed_in_along_with_primer_class
-    render_inline(Primer::OcticonComponent.new(icon: "star", class: "foo", my: 4))
+  def test_renders_classes_passed_in_along_with_primer_class
+    render_inline(Primer::OcticonComponent.new(icon: "star", classes: "foo", my: 4))
 
     assert_selector(".foo.my-4")
-  end
-
-  def test_renders_concatenated_class_and_classes_passed_in
-    render_inline(Primer::OcticonComponent.new(icon: "star", class: "foo", classes: "bar"))
-
-    assert_selector(".foo.bar")
   end
 
   def test_does_not_render_classify_attributes_as_html_attributes

@@ -16,8 +16,7 @@ module Primer
     def initialize(icon:, size: SIZE_DEFAULT, **kwargs)
       @icon, @kwargs = icon, kwargs
 
-      classes = class_names(@kwargs.delete(:class), @kwargs.delete(:classes))
-      @kwargs[:class] = class_names(Primer::Classify.call(**@kwargs)[:class], classes)
+      @kwargs[:class] = class_names(Primer::Classify.call(**@kwargs)[:class], @kwargs.delete(:classes))
       @kwargs[:height] ||= SIZE_MAPPINGS[size]
 
       # Filter out classify options to prevent them from becoming invalid html attributes.
