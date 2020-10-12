@@ -2,6 +2,12 @@
 
 ## main
 
+## 0.0.9
+
+* BREAKING CHANGE: OcticonComponent no longer accepts `class` parameter; use `classes` instead.
+
+    *heynan0*
+
 ## 0.0.8
 
 * Add support for border margins, such as: `border_top: 0`.
