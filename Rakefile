@@ -47,6 +47,8 @@ namespace :docs do
   task :build do
     require File.expand_path("../demo/config/environment.rb", __FILE__)
     require "primer/view_components"
+    require "view_component/test_helpers"
+    include ViewComponent::TestHelpers
 
     puts "Building YARD documentation."
     Rake::Task["yard"].execute
@@ -64,6 +66,25 @@ namespace :docs do
       f.puts("---")
       f.puts
       f.puts(documentation.base_docstring)
+      f.puts
+      f.puts("## Examples")
+      f.puts
+
+      initialize_method = documentation.meths.find(&:constructor?)
+
+      initialize_method.tags(:example).each do |tag|
+        f.puts("### #{tag.name}")
+        f.puts
+
+        html = render_inline(eval(tag.text.gsub("<%= render(", "").gsub(") %>", ""))).to_html
+
+        f.puts("<iframe style=\"width: 100%; border: 0px; height: 34px;\" srcdoc=\"<html><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.gsub("\"", "\'")}</body></html>\"></iframe>")
+        f.puts
+        f.puts("```ruby")
+        f.puts("#{tag.text}")
+        f.puts("```")
+      end
+
       f.puts
       f.puts("## Arguments")
       f.puts

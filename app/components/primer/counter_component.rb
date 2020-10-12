@@ -10,6 +10,10 @@ module Primer
       :light_gray => "Counter Counter--gray-light",
     }.freeze
 
+    #
+    # @example Default
+    #   <%= render(Primer::CounterComponent.new(count: 25)) %>
+    #
     # @param count [Integer, Float::INFINITY, nil] The number to be displayed (e.x. # of issues, pull requests)
     # @param scheme [Symbol] Color scheme. One of `SCHEME_MAPPINGS.keys`.
     # @param limit [Integer] Maximum value to display. (e.x. if count == 6,000 and limit == 5000, counter will display "5,000+")
