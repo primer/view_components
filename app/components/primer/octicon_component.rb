@@ -16,8 +16,13 @@ module Primer
     def initialize(icon:, size: SIZE_DEFAULT, **kwargs)
       @icon, @kwargs = icon, kwargs
 
-      @kwargs[:height] = SIZE_MAPPINGS[size.to_sym]
-      @kwargs[:class] = class_names(@kwargs[:class], Primer::Classify.call(**@kwargs)[:class])
+      @kwargs[:class] = Primer::Classify.call(**@kwargs)[:class]
+      @kwargs[:height] ||= SIZE_MAPPINGS[size]
+
+      # Filter out classify options to prevent them from becoming invalid html attributes.
+      # Note height and width are both classify options and valid html attributes.
+      octicon_helper_options = @kwargs.slice(:height, :width)
+      @kwargs = @kwargs.except(*Primer::Classify::VALID_KEYS, :classes).merge(octicon_helper_options)
     end
 
     def call

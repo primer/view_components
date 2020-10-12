@@ -53,15 +53,28 @@ class PrimerOcticonComponentTest < Minitest::Test
     assert_selector("[height='16']")
   end
 
-  def test_renders_class_passed_in
-    render_inline(Primer::OcticonComponent.new(icon: "star", class: "foo"))
+  def test_renders_with_overridden_height_and_width_despite_given_a_size
+    render_inline(Primer::OcticonComponent.new(icon: "star", size: :large, height: 33, width: 47))
+
+    assert_selector('[height="33"][width="47"]')
+  end
+
+  def test_renders_classes_passed_in
+    render_inline(Primer::OcticonComponent.new(icon: "star", classes: "foo"))
 
     assert_selector(".foo")
   end
 
-  def test_renders_class_passed_in_along_with_primer_class
-    render_inline(Primer::OcticonComponent.new(icon: "star", class: "foo", my: 4))
+  def test_renders_classes_passed_in_along_with_primer_class
+    render_inline(Primer::OcticonComponent.new(icon: "star", classes: "foo", my: 4))
 
     assert_selector(".foo.my-4")
+  end
+
+  def test_does_not_render_classify_attributes_as_html_attributes
+    render_inline(Primer::OcticonComponent.new(icon: "star", classes: "foo", display: [:none]))
+
+    refute_selector('[classes="foo"]')
+    refute_selector('[display="none"]')
   end
 end
