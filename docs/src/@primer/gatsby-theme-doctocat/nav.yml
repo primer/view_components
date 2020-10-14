@@ -5,5 +5,7 @@
   children:
     - title: Avatar
       url: /components/avatar
+    - title: Base
+      url: /components/base
     - title: Counter
       url: /components/counter

@@ -57,7 +57,11 @@ namespace :docs do
 
     registry = YARD::RegistryStore.new
     registry.load!(".yardoc")
-    components = [Primer::AvatarComponent, Primer::CounterComponent]
+    components = [
+      Primer::AvatarComponent,
+      Primer::BaseComponent,
+      Primer::CounterComponent
+    ]
     components.each do |component|
       documentation = registry.get(component.name)
 
