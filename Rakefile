@@ -57,54 +57,56 @@ namespace :docs do
 
     registry = YARD::RegistryStore.new
     registry.load!(".yardoc")
-    component = Primer::CounterComponent
-    documentation = registry.get(component.name)
+    components = [Primer::AvatarComponent, Primer::CounterComponent]
+    components.each do |component|
+      documentation = registry.get(component.name)
 
-    File.open("docs/content/components/#{component.name.demodulize.gsub("Component", "").downcase}.md", "w") do |f|
-      f.puts("---")
-      f.puts("title: #{component.name}")
-      f.puts("---")
-      f.puts
-      f.puts(documentation.base_docstring)
-      f.puts
-      f.puts("## Examples")
-      f.puts
-
-      initialize_method = documentation.meths.find(&:constructor?)
-
-      initialize_method.tags(:example).each do |tag|
-        f.puts("### #{tag.name}")
+      File.open("docs/content/components/#{component.name.demodulize.gsub("Component", "").downcase}.md", "w") do |f|
+        f.puts("---")
+        f.puts("title: #{component.name}")
+        f.puts("---")
+        f.puts
+        f.puts(documentation.base_docstring)
+        f.puts
+        f.puts("## Examples")
         f.puts
 
-        # rubocop:disable Security/Eval
-        html = render_inline(eval(tag.text.gsub("<%= render(", "").gsub(") %>", ""))).to_html
-        # rubocop:enable Security/Eval
+        initialize_method = documentation.meths.find(&:constructor?)
 
-        f.puts("<iframe style=\"width: 100%; border: 0px; height: 34px;\" srcdoc=\"<html><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.gsub("\"", "\'")}</body></html>\"></iframe>")
+        initialize_method.tags(:example).each do |tag|
+          f.puts("### #{tag.name}")
+          f.puts
+
+          # rubocop:disable Security/Eval
+          html = render_inline(eval(tag.text.gsub("<%= render(", "").gsub(") %>", ""))).to_html
+          # rubocop:enable Security/Eval
+
+          f.puts("<iframe style=\"width: 100%; border: 0px; height: 34px;\" srcdoc=\"<html><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.gsub("\"", "\'")}</body></html>\"></iframe>")
+          f.puts
+          f.puts("```ruby")
+          f.puts("#{tag.text}")
+          f.puts("```")
+        end
+
         f.puts
-        f.puts("```ruby")
-        f.puts("#{tag.text}")
-        f.puts("```")
-      end
+        f.puts("## Arguments")
+        f.puts
+        f.puts("| Name | Type | Default | Description |")
+        f.puts("| :- | :- | :-: | :- |")
 
-      f.puts
-      f.puts("## Arguments")
-      f.puts
-      f.puts("| Name | Type | Default | Description |")
-      f.puts("| :- | :- | :-: | :- |")
+        initialize_method.tags(:param).each do |tag|
+          params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
 
-      initialize_method.tags(:param).each do |tag|
-        params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
-
-        default =
-          if params && params[1]
-            params[1]
-          else
-            ""
-          end
+          default =
+            if params && params[1]
+              params[1]
+            else
+              ""
+            end
 
 
-        f.puts("| #{tag.name} | #{tag.types.join(", ")} | #{default} | #{tag.text} |")
+          f.puts("| #{tag.name} | #{tag.types.join(", ")} | #{default} | #{tag.text} |")
+        end
       end
     end
 
