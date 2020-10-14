@@ -77,9 +77,9 @@ namespace :docs do
           f.puts("### #{tag.name}")
           f.puts
 
-          # rubocop:disable Security/Eval
-          html = render_inline(eval(tag.text.gsub("<%= render(", "").gsub(") %>", ""))).to_html
-          # rubocop:enable Security/Eval
+          request = ActionDispatch::TestRequest.create
+          controller = ApplicationController.new.tap { |c| c.request = request }
+          html = controller.view_context.render(inline: tag.text)
 
           f.puts("<iframe style=\"width: 100%; border: 0px; height: 34px;\" srcdoc=\"<html><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.gsub("\"", "\'")}</body></html>\"></iframe>")
           f.puts
