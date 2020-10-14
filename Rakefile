@@ -60,6 +60,7 @@ namespace :docs do
     components = [
       Primer::AvatarComponent,
       Primer::BaseComponent,
+      Primer::BlankslateComponent,
       Primer::CounterComponent
     ]
     components.each do |component|
