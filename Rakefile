@@ -78,10 +78,12 @@ namespace :docs do
         initialize_method = documentation.meths.find(&:constructor?)
 
         initialize_method.tags(:example).each do |tag|
-          iframe_height = tag.name.split(":").first
-          name = tag.name.split(":")[1]
+          iframe_height = tag.name.split("|").first
+          name = tag.name.split("|")[1]
+          description = tag.name.split("|")[2]
 
           f.puts("### #{name}")
+          f.puts(description) if description
           f.puts
 
           request = ActionDispatch::TestRequest.create

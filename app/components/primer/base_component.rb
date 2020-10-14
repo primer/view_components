@@ -6,7 +6,7 @@ module Primer
     TEST_SELECTOR_TAG = :test_selector
 
     #
-    # @example 34:Default
+    # @example 34|Default
     #   <%= render(Primer::BaseComponent.new(tag: :a, href: "http://www.google.com", mt: 4)) { "Link" } %>
     #
     # @param tag [Symbol] HTML tag name to be passed to tag.send(tag)
