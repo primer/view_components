@@ -78,14 +78,17 @@ namespace :docs do
         initialize_method = documentation.meths.find(&:constructor?)
 
         initialize_method.tags(:example).each do |tag|
-          f.puts("### #{tag.name}")
+          iframe_height = tag.name.split(":").first
+          name = tag.name.split(":")[1]
+
+          f.puts("### #{name}")
           f.puts
 
           request = ActionDispatch::TestRequest.create
           controller = ApplicationController.new.tap { |c| c.request = request }
           html = controller.view_context.render(inline: tag.text)
 
-          f.puts("<iframe style=\"width: 100%; border: 0px; height: 34px;\" srcdoc=\"<html><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.gsub("\"", "\'")}</body></html>\"></iframe>")
+          f.puts("<iframe style=\"width: 100%; border: 0px; height: #{iframe_height}px;\" srcdoc=\"<html><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.gsub("\"", "\'").gsub("\n", "")}</body></html>\"></iframe>")
           f.puts
           f.puts("```ruby")
           f.puts("#{tag.text}")
