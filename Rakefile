@@ -77,6 +77,9 @@ namespace :docs do
 
         initialize_method = documentation.meths.find(&:constructor?)
 
+        request = ActionDispatch::TestRequest.create
+        controller = ApplicationController.new.tap { |c| c.request = request }
+
         initialize_method.tags(:example).each do |tag|
           iframe_height = tag.name.split("|").first
           name = tag.name.split("|")[1]
@@ -85,9 +88,6 @@ namespace :docs do
           f.puts("### #{name}")
           f.puts(description) if description
           f.puts
-
-          request = ActionDispatch::TestRequest.create
-          controller = ApplicationController.new.tap { |c| c.request = request }
           html = controller.view_context.render(inline: tag.text)
 
           f.puts("<iframe style=\"width: 100%; border: 0px; height: #{iframe_height}px;\" srcdoc=\"<html><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.gsub("\"", "\'").gsub("\n", "")}</body></html>\"></iframe>")
@@ -114,7 +114,7 @@ namespace :docs do
             end
 
 
-          f.puts("| #{tag.name} | #{tag.types.join(", ")} | #{default} | #{tag.text} |")
+          f.puts("| #{tag.name} | #{tag.types.join(", ")} | #{default} | #{controller.view_context.render(inline: tag.text)} |")
         end
       end
     end
