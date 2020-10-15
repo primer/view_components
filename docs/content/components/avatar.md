@@ -16,7 +16,6 @@ for organizations or any other non-human avatars.
 <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
 ```
 
-
 ## Arguments
 
 | Name | Type | Default | Description |

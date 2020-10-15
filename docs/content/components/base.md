@@ -14,7 +14,6 @@ Base component used by other Primer components.
 <%= render(Primer::BaseComponent.new(tag: :a, href: "http://www.google.com", mt: 4)) { "Link" } %>
 ```
 
-
 ## Arguments
 
 | Name | Type | Default | Description |

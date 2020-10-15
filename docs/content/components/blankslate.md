@@ -95,7 +95,6 @@ There are a few variations of how the Blankslate appears: `narrow` adds a maximu
 ) %>
 ```
 
-
 ## Arguments
 
 | Name | Type | Default | Description |

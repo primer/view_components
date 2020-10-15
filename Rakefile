@@ -102,7 +102,6 @@ namespace :docs do
           f.puts
         end
 
-        f.puts
         f.puts("## Arguments")
         f.puts
         f.puts("| Name | Type | Default | Description |")

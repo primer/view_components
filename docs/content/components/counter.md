@@ -14,7 +14,6 @@ Use Primer::CounterComponent to add a count to navigational elements and buttons
 <%= render(Primer::CounterComponent.new(count: 25)) %>
 ```
 
-
 ## Arguments
 
 | Name | Type | Default | Description |
