@@ -93,9 +93,10 @@ namespace :docs do
 
           f.puts("<iframe style=\"width: 100%; border: 0px; height: #{iframe_height}px;\" srcdoc=\"<html><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.gsub("\"", "\'").gsub("\n", "")}</body></html>\"></iframe>")
           f.puts
-          f.puts("```ruby")
+          f.puts("```erb")
           f.puts("#{tag.text}")
           f.puts("```")
+          f.puts
         end
 
         f.puts
