@@ -3,10 +3,13 @@
 # Gems
 bundle install --path vendor/bundle
 
-# NPM packages
-cd demo
+# Set up demo
+pushd demo
 bundle install
 yarn install
+popd
 
-# back to root
-cd ../
+# Set up docs
+pushd docs
+yarn install
+popd
