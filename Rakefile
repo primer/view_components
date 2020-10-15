@@ -87,7 +87,10 @@ namespace :docs do
           description = tag.name.split("|")[2]
 
           f.puts("### #{name}")
-          f.puts(description) if description
+          if description
+            f.puts
+            f.puts(description)
+          end
           f.puts
           html = controller.view_context.render(inline: tag.text)
 
