@@ -57,11 +57,17 @@ module Primer
     # @param title_tag [Symbol] HTML tag to use for title.
     # @param icon [String] Octicon icon to use at top of component.
     # @param icon_size [Symbol] One of <%= Primer::OcticonComponent::SIZE_MAPPINGS.keys.map { |k| "`:#{k}`" }.to_sentence %>
+    # @param image_src [String] Image to display.
+    # @param image_alt [String] Alt text for image.
     # @param description [String] Text that appears below the title. Typically a whole sentence.
     # @param button_text [String] The text of the button.
     # @param button_url [String] The URL where the user will be taken after clicking the button.
+    # @param button_classes [String] Classes to apply to action button
     # @param link_text [String] The text of the link.
     # @param link_url [String] The URL where the user will be taken after clicking the link.
+    # @param narrow [Boolean] Adds a maximum width.
+    # @param large [Boolean] Increases the font size.
+    # @param spacious [Boolean] Adds extra padding.
     def initialize(
       title: "",
       title_tag: :h3,
