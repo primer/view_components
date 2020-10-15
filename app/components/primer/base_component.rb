@@ -2,18 +2,15 @@
 
 module Primer
   # Base component used by other Primer components.
-  #
-  # tag(symbol): HTML tag name to be passed to tag.send(tag)
-  # class_names(string): CSS class name value to be concatenated with generated Primer CSS classes
-  # args(hash): Combination of arguments for classes_from_hash and content_tag
-  #
-  # Example usage:
-  # <%= render Primer::BaseComponent, tag: :a, href: "http://www.google.com", mt: 4 do %>Link<% end %>
-  # generates:
-  # <a href="http://www.google.com" class="mt-4">Link</a>
   class BaseComponent < Primer::Component
     TEST_SELECTOR_TAG = :test_selector
 
+    #
+    # @example 34|Default
+    #   <%= render(Primer::BaseComponent.new(tag: :a, href: "http://www.google.com", mt: 4)) { "Link" } %>
+    #
+    # @param tag [Symbol] HTML tag name to be passed to tag.send(tag)
+    # @param classes [String] CSS class name value to be concatenated with generated Primer CSS classes
     def initialize(tag:, classes: nil, **args)
       @tag = tag
       @result = Primer::Classify.call(**args.merge(classes: classes))
