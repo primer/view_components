@@ -5,7 +5,7 @@ class Primer::SpinnerComponentStories < ViewComponent::Storybook::Stories
 
   story(:spinner) do
     controls do
-      text(:title, "github")
+      size 32
     end
   end
 end
