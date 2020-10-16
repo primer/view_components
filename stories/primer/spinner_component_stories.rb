@@ -9,4 +9,3 @@ class Primer::SpinnerComponentStories < ViewComponent::Storybook::Stories
     end
   end
 end
-  

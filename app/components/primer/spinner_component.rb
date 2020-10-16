@@ -5,7 +5,7 @@ module Primer
 
     #
     # @example 48|Default
-    #   <%= render(Primer::SpinnerComponent.new()) %>
+    #   <%= render(Primer::SpinnerComponent.new) %>
     #
     # @example 32|Small
     #   <%= render(Primer::SpinnerComponent.new(size: 16)) %>
@@ -18,7 +18,7 @@ module Primer
       @kwargs[:height] = size
       @kwargs[:viewBox] = "0 0 16 16"
       @kwargs[:fill] = :none
-      # Setting `box-sizing: content-box` allows consumers to add padding 
+      # Setting `box-sizing: content-box` allows consumers to add padding
       # to the spinner without shrinking the icon
       @kwargs[:style] = "box-sizing: content-box; color: var(--color-icon-primary);"
     end
