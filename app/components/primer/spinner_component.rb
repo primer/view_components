@@ -22,7 +22,7 @@ module Primer
     # @example 80|Large
     #   <%= render(Primer::SpinnerComponent.new(size: :large)) %>
     #
-    # @param size [Symbol] Sets the size of the spinner
+    # @param size [Symbol] One of <%= Primer::SpinnerComponent::SIZE_OPTIONS.map { |k| "`:#{k}`" }.to_sentence(last_word_connector: ', or ') %>
     def initialize(size: DEFAULT_SIZE, **kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :svg

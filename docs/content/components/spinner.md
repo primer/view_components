@@ -34,4 +34,4 @@ Use Primer::SpinnerComponent to let users know that content is being loaded.
 
 | Name | Type | Default | Description |
 | :- | :- | :-: | :- |
-| size | Symbol | DEFAULT_SIZE | Sets the size of the spinner |
+| size | Symbol | DEFAULT_SIZE | One of `:small`, `:medium`, or `:large` |
