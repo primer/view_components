@@ -61,7 +61,8 @@ namespace :docs do
       Primer::AvatarComponent,
       Primer::BaseComponent,
       Primer::BlankslateComponent,
-      Primer::CounterComponent
+      Primer::CounterComponent,
+      Primer::SpinnerComponent
     ]
     components.each do |component|
       documentation = registry.get(component.name)
