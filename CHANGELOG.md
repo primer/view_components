@@ -4,7 +4,7 @@
 
 * Add SpinnerComponent
 
-    *colebemis*
+    *Cole Bemis*
 
 ## 0.0.9
 
