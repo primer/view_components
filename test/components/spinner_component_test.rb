@@ -8,7 +8,7 @@ class PrimerSpinnerComponentTest < Minitest::Test
   def test_renders_an_svg
     render_inline(Primer::SpinnerComponent.new)
 
-    assert_selector("spinner")
+    assert_selector("svg")
   end
 
   def test_defaults_to_size_32
