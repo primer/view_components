@@ -2,6 +2,10 @@
 
 ## main
 
+* Add SpinnerComponent
+
+    *colebemis*
+
 ## 0.0.9
 
 * BREAKING CHANGE: OcticonComponent no longer accepts `class` parameter; use `classes` instead.
