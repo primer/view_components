@@ -17,9 +17,15 @@ class PrimerSpinnerComponentTest < Minitest::Test
     assert_selector("svg[height=32][width=32]")
   end
 
-  def test_sets_size_height_and_width
-    render_inline(Primer::SpinnerComponent.new(size: 16))
+  def test_size_small
+    render_inline(Primer::SpinnerComponent.new(size: :small))
 
     assert_selector("svg[height=16][width=16]")
+  end
+
+  def test_size_large
+    render_inline(Primer::SpinnerComponent.new(size: :large))
+
+    assert_selector("svg[height=64][width=64]")
   end
 end

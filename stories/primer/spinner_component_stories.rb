@@ -5,7 +5,7 @@ class Primer::SpinnerComponentStories < ViewComponent::Storybook::Stories
 
   story(:spinner) do
     controls do
-      size 32
+      select(:size, Primer::SpinnerComponent::SIZE_OPTIONS, :medium)
     end
   end
 end
