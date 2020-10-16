@@ -25,7 +25,7 @@ module Primer
     # @param size [Symbol] Sets the size of the spinner
     def initialize(size: DEFAULT_SIZE, **kwargs)
       @kwargs = kwargs
-      @kwargs[:tag] ||= :svg
+      @kwargs[:tag] = :svg
       @kwargs[:width] = SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
       @kwargs[:height] = SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
       @kwargs[:viewBox] = "0 0 16 16"
