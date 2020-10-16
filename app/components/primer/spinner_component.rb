@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # Use Primer::SpinnerComponent to let users know that content is being loaded.
   class SpinnerComponent < Primer::Component
 
     #
