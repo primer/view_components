@@ -14,7 +14,7 @@ module Primer
     # @param size [Integer] Sets the size of the spinner
     def initialize(size: 32, **kwargs)
       @kwargs = kwargs
-      @kwargs[:tag] ||= :svg
+      @kwargs[:tag] = :svg
       @kwargs[:width] = size
       @kwargs[:height] = size
       @kwargs[:viewBox] = "0 0 16 16"
