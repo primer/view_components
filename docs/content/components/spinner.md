@@ -2,7 +2,7 @@
 title: Primer::SpinnerComponent
 ---
 
-
+Use Primer::SpinnerComponent to let users know that content is being loaded.
 
 ## Examples
 
