@@ -13,6 +13,8 @@
       url: /components/borderbox
     - title: Box
       url: /components/box
+    - title: Breadcrumb
+      url: /components/breadcrumb
     - title: Counter
       url: /components/counter
     - title: Spinner

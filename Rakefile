@@ -66,6 +66,7 @@ namespace :docs do
       Primer::BlankslateComponent,
       Primer::BorderBoxComponent,
       Primer::BoxComponent,
+      Primer::BreadcrumbComponent,
       Primer::CounterComponent,
       Primer::SpinnerComponent
     ]
@@ -153,7 +154,7 @@ namespace :docs do
 
             f.puts
 
-            if slot_documentation.base_docstring
+            if slot_documentation.base_docstring.present?
               f.puts(slot_documentation.base_docstring)
               f.puts
             end
