@@ -55,6 +55,9 @@ namespace :docs do
 
     puts "Converting YARD documentation to Markdown files."
 
+    # Rails controller for rendering arbitrary ERB
+    controller = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }
+
     registry = YARD::RegistryStore.new
     registry.load!(".yardoc")
     components = [
@@ -78,9 +81,6 @@ namespace :docs do
         f.puts
 
         initialize_method = documentation.meths.find(&:constructor?)
-
-        request = ActionDispatch::TestRequest.create
-        controller = ApplicationController.new.tap { |c| c.request = request }
 
         initialize_method.tags(:example).each do |tag|
           iframe_height = tag.name.split("|").first
