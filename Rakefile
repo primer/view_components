@@ -45,7 +45,7 @@ namespace :docs do
   end
 
   def one_of(enumerable)
-    "One of #{enumerable.map { |k| "`:#{k}`" }.to_sentence(last_word_connector: ', or ')}."
+    "One of #{enumerable.map { |k| "`#{k.nil? ? 'nil' : ":#{k}"}`" }.to_sentence(last_word_connector: ', or ')}."
   end
 
   task :build do
