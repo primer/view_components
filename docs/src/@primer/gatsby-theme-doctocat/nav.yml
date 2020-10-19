@@ -11,6 +11,8 @@
       url: /components/blankslate
     - title: BorderBox
       url: /components/borderbox
+    - title: Box
+      url: /components/box
     - title: Counter
       url: /components/counter
     - title: Spinner

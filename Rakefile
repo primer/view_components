@@ -65,6 +65,7 @@ namespace :docs do
       Primer::BaseComponent,
       Primer::BlankslateComponent,
       Primer::BorderBoxComponent,
+      Primer::BoxComponent,
       Primer::CounterComponent,
       Primer::SpinnerComponent
     ]
