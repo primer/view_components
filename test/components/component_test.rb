@@ -82,10 +82,9 @@ class PrimerComponentTest < Minitest::Test
   end
 
   def test_components_storybook_count
-
-    # Should be deprecated each time a new storybook is added to a component
+    # Should be Should be deprecated each time a new storybook is added to a component
     # Should be incremented if a new view component is added without a storybook
-    expected_missing_stories = 11
+    expected_missing_stories = 10
 
     expected_components_count = COMPONENTS_WITH_ARGS.length
 
