@@ -121,6 +121,33 @@ namespace :docs do
 
           f.puts("| #{tag.name} | #{tag.types.join(", ")} | #{default} | #{controller.view_context.render(inline: tag.text)} |")
         end
+
+        component.slots.each do |name, value|
+          slot_documentation = registry.get("#{component.name}::#{value[:class_name]}")
+
+          if slot_documentation
+            slot_initialize_method = slot_documentation.meths.find(&:constructor?)
+
+            f.puts("### `#{name}` slot")
+            f.puts
+            f.puts("| Name | Type | Default | Description |")
+            f.puts("| :- | :- | :-: | :- |")
+
+            slot_initialize_method.tags(:param).each do |tag|
+              params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
+
+              default =
+                if params && params[1]
+                  params[1]
+                else
+                  ""
+                end
+
+
+              f.puts("| #{tag.name} | #{tag.types.join(", ")} | #{default} | #{controller.view_context.render(inline: tag.text)} |")
+            end
+          end
+        end
       end
     end
 
