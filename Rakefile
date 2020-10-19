@@ -74,6 +74,7 @@ namespace :docs do
       Primer::ButtonComponent,
       Primer::CounterComponent,
       Primer::FlashComponent,
+      Primer::LabelComponent,
       Primer::SpinnerComponent
     ]
     components.each do |component|

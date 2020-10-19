@@ -21,5 +21,7 @@
       url: /components/counter
     - title: Flash
       url: /components/flash
+    - title: Label
+      url: /components/label
     - title: Spinner
       url: /components/spinner
