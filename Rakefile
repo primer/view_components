@@ -129,7 +129,6 @@ namespace :docs do
               "N/A"
             end
 
-
           f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{controller.view_context.render(inline: tag.text)} |")
         end
 
