@@ -30,6 +30,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::OcticonComponent, { icon: "people" }],
     [Primer::PopoverComponent, {}, proc { |component| component.slot(:body) }],
     [Primer::ProgressBarComponent, {}, proc { |component| component.slot(:item) }],
+    [Primer::SpinnerComponent, {}],
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
     [Primer::TextComponent, {}],
@@ -81,11 +82,9 @@ class PrimerComponentTest < Minitest::Test
   end
 
   def test_components_storybook_count
-
     # Should be deprecated each time a new storybook is added to a component
     # Should be incremented if a new view component is added without a storybook
     expected_missing_stories = 9
-
     expected_components_count = COMPONENTS_WITH_ARGS.length
 
     storybook_count = Dir[Rails.root.join("../stories/primer/**/*.rb")].length
