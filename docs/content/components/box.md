@@ -7,5 +7,5 @@ A basic wrapper component for most layout related needs.
 ## Arguments
 
 | Name | Type | Default | Description |
-| :- | :- | :-: | :- |
-| kwargs | Hash |  | Style arguments to be passed to `Primer::Classify` |
+| :- | :- | :- | :- |
+| `kwargs` | `Hash` | `` | Style arguments to be passed to `Primer::Classify` |

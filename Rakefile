@@ -116,7 +116,7 @@ namespace :docs do
         f.puts("## Arguments")
         f.puts
         f.puts("| Name | Type | Default | Description |")
-        f.puts("| :- | :- | :-: | :- |")
+        f.puts("| :- | :- | :- | :- |")
 
         initialize_method.tags(:param).each do |tag|
           params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
@@ -129,7 +129,7 @@ namespace :docs do
             end
 
 
-          f.puts("| #{tag.name} | #{tag.types.join(", ")} | #{default} | #{controller.view_context.render(inline: tag.text)} |")
+          f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | `#{default}` | #{controller.view_context.render(inline: tag.text)} |")
         end
 
         component.slots.each do |name, value|
@@ -141,7 +141,7 @@ namespace :docs do
             f.puts("### `#{name}` slot")
             f.puts
             f.puts("| Name | Type | Default | Description |")
-            f.puts("| :- | :- | :-: | :- |")
+            f.puts("| :- | :- | :- | :- |")
 
             slot_initialize_method.tags(:param).each do |tag|
               params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
@@ -153,7 +153,7 @@ namespace :docs do
                   ""
                 end
 
-              f.puts("| #{tag.name} | #{tag.types.join(", ")} | #{default} | #{controller.view_context.render(inline: tag.text)} |")
+              f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | `#{default}` | #{controller.view_context.render(inline: tag.text)} |")
             end
 
             f.puts
