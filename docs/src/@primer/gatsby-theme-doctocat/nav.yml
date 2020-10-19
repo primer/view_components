@@ -19,5 +19,7 @@
       url: /components/button
     - title: Counter
       url: /components/counter
+    - title: Flash
+      url: /components/flash
     - title: Spinner
       url: /components/spinner
