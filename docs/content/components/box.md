@@ -8,4 +8,4 @@ A basic wrapper component for most layout related needs.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | `` | Style arguments to be passed to `Primer::Classify` |
+| `kwargs` | `Hash` | N/A | Style arguments to be passed to `Primer::Classify` |

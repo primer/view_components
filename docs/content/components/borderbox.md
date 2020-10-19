@@ -25,28 +25,28 @@ end %>
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | `` | Style arguments to be passed to `Primer::Classify` |
+| `kwargs` | `Hash` | N/A | Style arguments to be passed to `Primer::Classify` |
 ### `header` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | `` | Style arguments to be passed to `Primer::Classify` |
+| `kwargs` | `Hash` |  | Style arguments to be passed to `Primer::Classify` |
 
 ### `body` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | `` | Style arguments to be passed to `Primer::Classify` |
+| `kwargs` | `Hash` |  | Style arguments to be passed to `Primer::Classify` |
 
 ### `footer` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | `` | Style arguments to be passed to `Primer::Classify` |
+| `kwargs` | `Hash` |  | Style arguments to be passed to `Primer::Classify` |
 
 ### `row` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | `` | Style arguments to be passed to `Primer::Classify` |
+| `kwargs` | `Hash` |  | Style arguments to be passed to `Primer::Classify` |
 

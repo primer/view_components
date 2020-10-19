@@ -71,6 +71,7 @@ namespace :docs do
       Primer::BorderBoxComponent,
       Primer::BoxComponent,
       Primer::BreadcrumbComponent,
+      Primer::ButtonComponent,
       Primer::CounterComponent,
       Primer::SpinnerComponent
     ]
@@ -123,13 +124,13 @@ namespace :docs do
 
           default =
             if params && params[1]
-              params[1]
+              "`#{params[1]}`"
             else
-              ""
+              "N/A"
             end
 
 
-          f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | `#{default}` | #{controller.view_context.render(inline: tag.text)} |")
+          f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{controller.view_context.render(inline: tag.text)} |")
         end
 
         component.slots.each do |name, value|
@@ -148,12 +149,12 @@ namespace :docs do
 
               default =
                 if params && params[1]
-                  params[1]
+                  "`#{params[1]}`"
                 else
                   ""
                 end
 
-              f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | `#{default}` | #{controller.view_context.render(inline: tag.text)} |")
+              f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{controller.view_context.render(inline: tag.text)} |")
             end
 
             f.puts

@@ -20,7 +20,7 @@ for organizations or any other non-human avatars.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `src` | `String` | `` | The source url of the avatar image |
-| `alt` | `String` | `` | Passed through to alt on img tag |
+| `src` | `String` | N/A | The source url of the avatar image |
+| `alt` | `String` | N/A | Passed through to alt on img tag |
 | `size` | `Integer` | `20` | Adds the avatar-small class if less than 24 |
 | `square` | `Boolean` | `false` | Used to create a square avatar. |
