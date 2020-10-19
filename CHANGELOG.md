@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.10
+
 * Add SpinnerComponent
 
     *Cole Bemis*
