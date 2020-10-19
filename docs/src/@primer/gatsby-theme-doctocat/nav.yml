@@ -9,6 +9,8 @@
       url: /components/base
     - title: Blankslate
       url: /components/blankslate
+    - title: BorderBox
+      url: /components/borderbox
     - title: Counter
       url: /components/counter
     - title: Spinner

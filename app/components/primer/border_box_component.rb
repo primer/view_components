@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # BorderBox is a Box component with a border.
   class BorderBoxComponent < Primer::Component
     include ViewComponent::Slotable
 
@@ -9,6 +10,17 @@ module Primer
     with_slot :footer, class_name: "Footer"
     with_slot :row, collection: true, class_name: "Row"
 
+    # @example 350|Header, body, rows and footer
+    #   <%= render(Primer::BorderBoxComponent.new) do |component|
+    #     component.slot(:header) { "Header" }
+    #     component.slot(:body) { "Body" }
+    #     component.slot(:row) { "Row one" }
+    #     component.slot(:row) { "Row two" }
+    #     component.slot(:row) { "Row three" }
+    #     component.slot(:footer) { "Footer" }
+    #   end %>
+    #
+    # @param kwargs [Hash] Style arguments to be passed to `Primer::Classify`
     def initialize(**kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :div
@@ -23,8 +35,8 @@ module Primer
     end
 
     class Header < Primer::Slot
-
       attr_reader :kwargs
+      # @param kwargs [Hash] Style arguments to be passed to `Primer::Classify`
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] = :div
@@ -36,8 +48,8 @@ module Primer
     end
 
     class Body < Primer::Slot
-
       attr_reader :kwargs
+      # @param kwargs [Hash] Style arguments to be passed to `Primer::Classify`
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] = :div
@@ -49,8 +61,8 @@ module Primer
     end
 
     class Footer < Primer::Slot
-
       attr_reader :kwargs
+      # @param kwargs [Hash] Style arguments to be passed to `Primer::Classify`
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] = :div
@@ -62,8 +74,8 @@ module Primer
     end
 
     class Row < Primer::Slot
-
       attr_reader :kwargs
+      # @param kwargs [Hash] Style arguments to be passed to `Primer::Classify`
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] = :li
