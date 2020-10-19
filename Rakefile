@@ -150,7 +150,7 @@ namespace :docs do
                 if params && params[1]
                   "`#{params[1]}`"
                 else
-                  ""
+                  "N/A"
                 end
 
               f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{controller.view_context.render(inline: tag.text)} |")

@@ -29,7 +29,7 @@ Breadcrumbs are used to display page hierarchy within a section of the site. All
 | :- | :- | :- | :- |
 | `href` | `String` | `nil` | The URL to link to. |
 | `selected` | `Boolean` | `false` | Whether or not the item is selected and not rendered as a link. |
-| `kwargs` | `Hash` |  | Style arguments to be passed to `Primer::Classify` |
+| `kwargs` | `Hash` | N/A | Style arguments to be passed to `Primer::Classify` |
 
 _Note: if both `href` and `selected: true` are passed in, `href` will be ignored and the item will not be rendered as a link._
 
