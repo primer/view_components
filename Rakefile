@@ -78,10 +78,13 @@ namespace :docs do
         f.puts
         f.puts(documentation.base_docstring)
         f.puts
-        f.puts("## Examples")
-        f.puts
 
         initialize_method = documentation.meths.find(&:constructor?)
+
+        if initialize_method.tags(:example).any?
+          f.puts("## Examples")
+          f.puts
+        end
 
         initialize_method.tags(:example).each do |tag|
           iframe_height = tag.name.split("|").first
