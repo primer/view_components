@@ -44,6 +44,10 @@ namespace :docs do
     sleep
   end
 
+  def one_of(enumerable)
+    "One of #{enumerable.map { |k| "`:#{k}`" }.to_sentence(last_word_connector: ', or ')}."
+  end
+
   task :build do
     require File.expand_path("../demo/config/environment.rb", __FILE__)
     require "primer/view_components"
