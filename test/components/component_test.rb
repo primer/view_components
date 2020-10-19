@@ -81,15 +81,36 @@ class PrimerComponentTest < Minitest::Test
     end
   end
 
-  def test_components_storybook_count
-    # Should be deprecated each time a new storybook is added to a component
-    # Should be incremented if a new view component is added without a storybook
-    expected_missing_stories = 8
-    expected_components_count = COMPONENTS_WITH_ARGS.length
+  def test_components_storybook_coverage
+    components = Dir[Rails.root.join("../app/components/primer/**/*.rb")].map { |path| path.gsub(".rb", "").split("/").last }
+    stories = Dir[Rails.root.join("../stories/primer/**/*.rb")].map { |path| path.gsub("_stories.rb", "").split("/").last }
 
-    storybook_count = Dir[Rails.root.join("../stories/primer/**/*.rb")].length
+    # TODO: Remove these exceptions as we add stories
+    expected_missing_stories =
+      [
+        "component",  # No story needed
+        "view_components", # No story needed
+        "slot", "component",  # No story needed
+        "text_component",
+        "subhead_component",
+        "flex_item_component",
+        "dropdown_menu_component",
+        "underline_nav_component",
+        "base_component",
+        "flex_component",
+      ]
 
-    assert_equal expected_components_count, storybook_count + expected_missing_stories
+    components_missing_stories = components - stories - expected_missing_stories
+
+    message =
+      if components_missing_stories.any?
+        "It looks like you've added #{components_missing_stories.map { |name| name.camelize }.to_sentence} " \
+        "without adding #{components_missing_stories.length > 1 ? 'corresponding stories' : 'a corresponding story'}"
+      else
+        ""
+      end
+
+    assert_empty(components_missing_stories, message)
   end
 
   def render_component(component, args, proc)
