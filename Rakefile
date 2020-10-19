@@ -160,8 +160,8 @@ namespace :docs do
             end
 
             if slot_documentation.base_docstring.present?
-              f.puts(slot_documentation.base_docstring)
               f.puts
+              f.puts(slot_documentation.base_docstring)
             end
           end
         end
