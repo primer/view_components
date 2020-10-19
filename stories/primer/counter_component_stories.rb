@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Primer::CounterComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
