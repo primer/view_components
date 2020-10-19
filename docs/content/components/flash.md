@@ -64,9 +64,9 @@ The Flash component informs users of successful or pending actions.
 | `icon` | `String` | `nil` | Name of Octicon icon to use. |
 | `variant` | `Symbol` | `DEFAULT_VARIANT` | One of `:default`, `:warning`, `:danger`, or `:success`. |
 | `kwargs` | `Hash` | N/A | Style arguments to be passed to Primer::Classify |
+
 ### `actions` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | Style arguments to be passed to `Primer::Classify` |
-

@@ -140,6 +140,7 @@ namespace :docs do
           if slot_documentation
             slot_initialize_method = slot_documentation.meths.find(&:constructor?)
 
+            f.puts
             f.puts("### `#{name}` slot")
             f.puts
             f.puts("| Name | Type | Default | Description |")
@@ -157,8 +158,6 @@ namespace :docs do
 
               f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{controller.view_context.render(inline: tag.text)} |")
             end
-
-            f.puts
 
             if slot_documentation.base_docstring.present?
               f.puts(slot_documentation.base_docstring)

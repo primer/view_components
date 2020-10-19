@@ -26,6 +26,7 @@ end %>
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | Style arguments to be passed to `Primer::Classify` |
+
 ### `header` slot
 
 | Name | Type | Default | Description |
@@ -49,4 +50,3 @@ end %>
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | Style arguments to be passed to `Primer::Classify` |
-
