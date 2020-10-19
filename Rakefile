@@ -150,6 +150,13 @@ namespace :docs do
 
               f.puts("| #{tag.name} | #{tag.types.join(", ")} | #{default} | #{controller.view_context.render(inline: tag.text)} |")
             end
+
+            f.puts
+
+            if slot_documentation.base_docstring
+              f.puts(slot_documentation.base_docstring)
+              f.puts
+            end
           end
         end
       end
