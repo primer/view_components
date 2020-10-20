@@ -39,3 +39,5 @@
       url: /components/state
     - title: Subhead
       url: /components/subhead
+    - title: Text
+      url: /components/text
