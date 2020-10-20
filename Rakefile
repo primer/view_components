@@ -80,6 +80,7 @@ namespace :docs do
       Primer::FlashComponent,
       Primer::LabelComponent,
       Primer::LayoutComponent,
+      Primer::LinkComponent,
       Primer::SpinnerComponent
     ]
     components.each do |component|

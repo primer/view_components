@@ -25,5 +25,7 @@
       url: /components/label
     - title: Layout
       url: /components/layout
+    - title: Link
+      url: /components/link
     - title: Spinner
       url: /components/spinner
