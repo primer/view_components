@@ -29,5 +29,7 @@
       url: /components/link
     - title: Octicon
       url: /components/octicon
+    - title: Popover
+      url: /components/popover
     - title: Spinner
       url: /components/spinner

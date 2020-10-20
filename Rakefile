@@ -82,6 +82,7 @@ namespace :docs do
       Primer::LayoutComponent,
       Primer::LinkComponent,
       Primer::OcticonComponent,
+      Primer::PopoverComponent,
       Primer::SpinnerComponent
     ]
     components.each do |component|
