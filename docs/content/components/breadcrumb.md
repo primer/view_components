@@ -22,7 +22,7 @@ Breadcrumbs are used to display page hierarchy within a section of the site. All
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | Primer style arguments. See https://github.com/primer/view_components#built-in-styling-arguments. |
+| `kwargs` | `Hash` | N/A | Primer [style arguments](https://github.com/primer/view_components#built-in-styling-arguments). |
 
 ### `item` slot
 
@@ -30,6 +30,6 @@ Breadcrumbs are used to display page hierarchy within a section of the site. All
 | :- | :- | :- | :- |
 | `href` | `String` | `nil` | The URL to link to. |
 | `selected` | `Boolean` | `false` | Whether or not the item is selected and not rendered as a link. |
-| `kwargs` | `Hash` | N/A | Primer style arguments. See https://github.com/primer/view_components#built-in-styling-arguments. |
+| `kwargs` | `Hash` | N/A | Primer [style arguments](https://github.com/primer/view_components#built-in-styling-arguments). |
 
 _Note: if both `href` and `selected: true` are passed in, `href` will be ignored and the item will not be rendered as a link._
