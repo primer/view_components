@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # The Label component is used to add contextual metadata to a design. Visually it styles text, adds padding, and rounded corners.
+  # Use labels to add contextual metadata to a design.
   class LabelComponent < Primer::Component
     SCHEME_MAPPINGS = {
       # gray

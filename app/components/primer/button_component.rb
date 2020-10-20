@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Button is used for actions, like in forms, while Link is used for destinations, or moving from one page to another.
+  # Use buttons for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
   class ButtonComponent < Primer::Component
     DEFAULT_BUTTON_TYPE = :default
     BUTTON_TYPE_MAPPINGS = {

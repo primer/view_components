@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # The Flash component informs users of successful or pending actions.
+  # Use the Flash component to inform users of successful or pending actions.
   class FlashComponent < Primer::Component
     include ViewComponent::Slotable
 
