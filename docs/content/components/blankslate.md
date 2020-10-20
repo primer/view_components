@@ -102,7 +102,7 @@ There are a few variations of how the Blankslate appears: `narrow` adds a maximu
 | `title` | `String` | `""` | Text that appears in a larger bold font. |
 | `title_tag` | `Symbol` | `:h3` | HTML tag to use for title. |
 | `icon` | `String` | `""` | Octicon icon to use at top of component. |
-| `icon_size` | `Symbol` | `:medium` | One of `:small`, `:medium`, and `:large` |
+| `icon_size` | `Symbol` | `:medium` | One of `:small`, `:medium`, or `:large`. |
 | `image_src` | `String` | `""` | Image to display. |
 | `image_alt` | `String` | `" "` | Alt text for image. |
 | `description` | `String` | `""` | Text that appears below the title. Typically a whole sentence. |
