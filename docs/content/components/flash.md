@@ -2,7 +2,7 @@
 title: Primer::FlashComponent
 ---
 
-The Flash component informs users of successful or pending actions.
+Use the Flash component to inform users of successful or pending actions.
 
 ## Examples
 
@@ -63,7 +63,7 @@ The Flash component informs users of successful or pending actions.
 | `dismissible` | `Boolean` | `false` | Whether the component can be dismissed with an X button. |
 | `icon` | `String` | `nil` | Name of Octicon icon to use. |
 | `variant` | `Symbol` | `DEFAULT_VARIANT` | One of `:default`, `:warning`, `:danger`, or `:success`. |
-| `kwargs` | `Hash` | N/A | Style arguments to be passed to Primer::Classify |
+| `kwargs` | `Hash` | N/A | Primer [style arguments](https://github.com/primer/view_components#built-in-styling-arguments). |
 
 ### `actions` slot
 

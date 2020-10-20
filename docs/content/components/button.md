@@ -2,7 +2,7 @@
 title: Primer::ButtonComponent
 ---
 
-Button is used for actions, like in forms, while Link is used for destinations, or moving from one page to another.
+Use buttons for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
 
 ## Examples
 
