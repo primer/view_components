@@ -17,6 +17,6 @@ Base component used by other Primer components.
 ## Arguments
 
 | Name | Type | Default | Description |
-| :- | :- | :-: | :- |
-| tag | Symbol |  | HTML tag name to be passed to tag.send(tag) |
-| classes | String | nil | CSS class name value to be concatenated with generated Primer CSS classes |
+| :- | :- | :- | :- |
+| `tag` | `Symbol` | N/A | HTML tag name to be passed to tag.send(tag) |
+| `classes` | `String` | `nil` | CSS class name value to be concatenated with generated Primer CSS classes |

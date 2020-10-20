@@ -9,7 +9,19 @@
       url: /components/base
     - title: Blankslate
       url: /components/blankslate
+    - title: BorderBox
+      url: /components/borderbox
+    - title: Box
+      url: /components/box
+    - title: Breadcrumb
+      url: /components/breadcrumb
+    - title: Button
+      url: /components/button
     - title: Counter
       url: /components/counter
+    - title: Flash
+      url: /components/flash
+    - title: Label
+      url: /components/label
     - title: Spinner
       url: /components/spinner
