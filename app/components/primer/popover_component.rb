@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Popovers are used to bring attention to specific user interface elements, typically to suggest an action or to guide users through a new experience.
+  # Use popovers to bring attention to specific user interface elements, typically to suggest an action or to guide users through a new experience.
   #
   # By default, the popover renders with absolute positioning, meaning it should usually be wrapped in an element with a relative position in order to be positioned properly. To render the popover with relative positioning, use the relative property.
   class PopoverComponent < Primer::Component
@@ -88,7 +88,7 @@ module Primer
       }.freeze
 
       # @param caret [Symbol] <%= one_of(Primer::PopoverComponent::Body::CARET_MAPPINGS.keys) %>
-      # @param large [Boolean] Whather to use the large version of the component.
+      # @param large [Boolean] Whether to use the large version of the component.
       # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
       def initialize(caret: CARET_DEFAULT, large: false, **kwargs)
         @kwargs = kwargs

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # The Link component styles anchor tags with default blue styling and hover text decoration. `Link` is used for destinations, or moving from one page to another.
+  # Use links for moving from one page to another. The Link component styles anchor tags with default blue styling and hover text-decoration.
   class LinkComponent < Primer::Component
     # @example 40|Default
     #   <%= render(Primer::LinkComponent.new(href: "http://www.google.com")) { "Link" } %>
