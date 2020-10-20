@@ -87,7 +87,8 @@ namespace :docs do
       Primer::StateComponent,
       Primer::SpinnerComponent,
       Primer::SubheadComponent,
-      Primer::TextComponent
+      Primer::TextComponent,
+      Primer::TimelineItemComponent
     ]
     components.each do |component|
       documentation = registry.get(component.name)
