@@ -48,6 +48,10 @@ namespace :docs do
     "One of #{enumerable.map { |k| "`#{k.nil? ? 'nil' : ":#{k}"}`" }.to_sentence(last_word_connector: ', or ')}."
   end
 
+  def link_to_style_arguments_docs
+    "Primer style arguments. See https://github.com/primer/view_components#built-in-styling-arguments."
+  end
+
   task :build do
     require File.expand_path("../demo/config/environment.rb", __FILE__)
     require "primer/view_components"

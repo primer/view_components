@@ -14,7 +14,7 @@ module Primer
     #     <% component.slot(:item, selected: true) do %>Team<% end %>
     #   <% end %>
     #
-    # @param kwargs [Hash] Style arguments to be passed to `Primer::Classify`
+    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
     def initialize(**kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :nav
@@ -31,7 +31,7 @@ module Primer
 
       # @param href [String] The URL to link to.
       # @param selected [Boolean] Whether or not the item is selected and not rendered as a link.
-      # @param kwargs [Hash] Style arguments to be passed to `Primer::Classify`
+      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
       def initialize(href: nil, selected: false, **kwargs)
         @href, @kwargs = href, kwargs
 
