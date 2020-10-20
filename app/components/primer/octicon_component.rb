@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # Renders an [Octicon](https://primer.style/octicons/) with <%= link_to_style_arguments_docs %>
   class OcticonComponent < Primer::Component
     include Primer::ClassNameHelper
     include OcticonsHelper
@@ -13,6 +14,18 @@ module Primer
     }.freeze
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
+    # @example 25|Default
+    #   <%= render(Primer::OcticonComponent.new(icon: "check")) %>
+    #
+    # @example 40|Medium
+    #   <%= render(Primer::OcticonComponent.new(icon: "people", size: :medium)) %>
+    #
+    # @example 80|Large
+    #   <%= render(Primer::OcticonComponent.new(icon: "x", size: :large)) %>
+    #
+    # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
+    # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_OPTIONS) %>
+    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
     def initialize(icon:, size: SIZE_DEFAULT, **kwargs)
       @icon, @kwargs = icon, kwargs
 

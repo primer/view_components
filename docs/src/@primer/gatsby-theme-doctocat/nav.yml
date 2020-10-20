@@ -27,5 +27,7 @@
       url: /components/layout
     - title: Link
       url: /components/link
+    - title: Octicon
+      url: /components/octicon
     - title: Spinner
       url: /components/spinner
