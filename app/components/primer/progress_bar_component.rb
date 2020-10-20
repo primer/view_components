@@ -33,7 +33,7 @@ module Primer
 
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
-    def initialize(size: SIZE_DEFAULT, percentage: 0, **kwargs)
+    def initialize(size: SIZE_DEFAULT, **kwargs)
       @kwargs = kwargs
       @kwargs[:classes] = class_names(
         @kwargs[:classes],
