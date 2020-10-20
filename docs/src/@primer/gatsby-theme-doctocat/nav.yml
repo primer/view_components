@@ -31,5 +31,7 @@
       url: /components/octicon
     - title: Popover
       url: /components/popover
+    - title: ProgressBar
+      url: /components/progressbar
     - title: Spinner
       url: /components/spinner
