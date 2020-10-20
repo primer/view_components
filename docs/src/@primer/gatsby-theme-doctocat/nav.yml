@@ -23,5 +23,7 @@
       url: /components/flash
     - title: Label
       url: /components/label
+    - title: Layout
+      url: /components/layout
     - title: Spinner
       url: /components/spinner
