@@ -1,5 +1,5 @@
 ---
-title: Primer::BorderBoxComponent
+title: BorderBox
 ---
 
 BorderBox is a Box component with a border.

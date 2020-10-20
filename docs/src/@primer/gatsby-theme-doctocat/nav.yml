@@ -23,5 +23,23 @@
       url: /components/flash
     - title: Label
       url: /components/label
+    - title: Layout
+      url: /components/layout
+    - title: Link
+      url: /components/link
+    - title: Octicon
+      url: /components/octicon
+    - title: Popover
+      url: /components/popover
+    - title: ProgressBar
+      url: /components/progressbar
     - title: Spinner
       url: /components/spinner
+    - title: State
+      url: /components/state
+    - title: Subhead
+      url: /components/subhead
+    - title: Text
+      url: /components/text
+    - title: TimelineItem
+      url: /components/timelineitem

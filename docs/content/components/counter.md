@@ -1,5 +1,5 @@
 ---
-title: Primer::CounterComponent
+title: Counter
 ---
 
 Use Primer::CounterComponent to add a count to navigational elements and buttons.

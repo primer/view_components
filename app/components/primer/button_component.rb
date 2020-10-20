@@ -30,7 +30,7 @@ module Primer
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
     #   <%= render(Primer::ButtonComponent.new(button_type: :primary)) { "Primary" } %>
     #   <%= render(Primer::ButtonComponent.new(button_type: :danger)) { "Danger" } %>
-    #   <%= render(Primer::ButtonComponent.new(button_type: :outline)) { "Danger" } %>
+    #   <%= render(Primer::ButtonComponent.new(button_type: :outline)) { "Outline" } %>
     #
     # @example 50|Variants
     #   <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>

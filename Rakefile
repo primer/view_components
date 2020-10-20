@@ -64,7 +64,7 @@ namespace :docs do
     puts "Converting YARD documentation to Markdown files."
 
     # Rails controller for rendering arbitrary ERB
-    controller = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }
+    view_context = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context
 
     registry = YARD::RegistryStore.new
     registry.load!(".yardoc")
@@ -79,17 +79,29 @@ namespace :docs do
       Primer::CounterComponent,
       Primer::FlashComponent,
       Primer::LabelComponent,
-      Primer::SpinnerComponent
+      Primer::LayoutComponent,
+      Primer::LinkComponent,
+      Primer::OcticonComponent,
+      Primer::PopoverComponent,
+      Primer::ProgressBarComponent,
+      Primer::StateComponent,
+      Primer::SpinnerComponent,
+      Primer::SubheadComponent,
+      Primer::TextComponent,
+      Primer::TimelineItemComponent
     ]
     components.each do |component|
       documentation = registry.get(component.name)
 
-      File.open("docs/content/components/#{component.name.demodulize.gsub("Component", "").downcase}.md", "w") do |f|
+      # Primer::AvatarComponent => Avatar
+      short_name = component.name.demodulize.gsub("Component", "")
+
+      File.open("docs/content/components/#{short_name}.md", "w") do |f|
         f.puts("---")
-        f.puts("title: #{component.name}")
+        f.puts("title: #{short_name}")
         f.puts("---")
         f.puts
-        f.puts(documentation.base_docstring)
+        f.puts(view_context.render(inline: documentation.base_docstring))
         f.puts
 
         initialize_method = documentation.meths.find(&:constructor?)
@@ -110,7 +122,7 @@ namespace :docs do
             f.puts(description)
           end
           f.puts
-          html = controller.view_context.render(inline: tag.text)
+          html = view_context.render(inline: tag.text)
 
           f.puts("<iframe style=\"width: 100%; border: 0px; height: #{iframe_height}px;\" srcdoc=\"<html><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.gsub("\"", "\'").gsub("\n", "")}</body></html>\"></iframe>")
           f.puts
@@ -135,7 +147,7 @@ namespace :docs do
               "N/A"
             end
 
-          f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{controller.view_context.render(inline: tag.text)} |")
+          f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{view_context.render(inline: tag.text)} |")
         end
 
         component.slots.each do |name, value|
@@ -160,7 +172,7 @@ namespace :docs do
                   "N/A"
                 end
 
-              f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{controller.view_context.render(inline: tag.text)} |")
+              f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{view_context.render(inline: tag.text)} |")
             end
 
             if slot_documentation.base_docstring.present?

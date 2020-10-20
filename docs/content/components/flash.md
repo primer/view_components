@@ -1,5 +1,5 @@
 ---
-title: Primer::FlashComponent
+title: Flash
 ---
 
 Use the Flash component to inform users of successful or pending actions.

@@ -1,5 +1,5 @@
 ---
-title: Primer::LabelComponent
+title: Label
 ---
 
 Use labels to add contextual metadata to a design.
