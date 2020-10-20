@@ -2,7 +2,7 @@
 title: Popover
 ---
 
-Popovers are used to bring attention to specific user interface elements, typically to suggest an action or to guide users through a new experience.
+Use popovers to bring attention to specific user interface elements, typically to suggest an action or to guide users through a new experience.
 
 By default, the popover renders with absolute positioning, meaning it should usually be wrapped in an element with a relative position in order to be positioned properly. To render the popover with relative positioning, use the relative property.
 
@@ -70,5 +70,5 @@ By default, the popover renders with absolute positioning, meaning it should usu
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `caret` | `Symbol` | `CARET_DEFAULT` | One of `:top`, `:bottom`, `:bottom_right`, `:bottom_left`, `:left`, `:left_bottom`, `:left_top`, `:right`, `:right_bottom`, `:right_top`, `:top_left`, or `:top_right`. |
-| `large` | `Boolean` | `false` | Whather to use the large version of the component. |
+| `large` | `Boolean` | `false` | Whether to use the large version of the component. |
 | `kwargs` | `Hash` | N/A | Primer [style arguments](https://github.com/primer/view_components#built-in-styling-arguments). |
