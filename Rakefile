@@ -93,9 +93,12 @@ namespace :docs do
     components.each do |component|
       documentation = registry.get(component.name)
 
-      File.open("docs/content/components/#{component.name.demodulize.gsub("Component", "").downcase}.md", "w") do |f|
+      # Primer::AvatarComponent => Avatar
+      short_name = component.name.demodulize.gsub("Component", "")
+
+      File.open("docs/content/components/#{short_name}.md", "w") do |f|
         f.puts("---")
-        f.puts("title: #{component.name}")
+        f.puts("title: #{short_name}")
         f.puts("---")
         f.puts
         f.puts(view_context.render(inline: documentation.base_docstring))

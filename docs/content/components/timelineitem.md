@@ -1,5 +1,5 @@
 ---
-title: Primer::TimelineItemComponent
+title: TimelineItem
 ---
 
 Use `TimelineItem` to display items on a vertical timeline, connected by badge elements.

@@ -1,5 +1,5 @@
 ---
-title: Primer::LayoutComponent
+title: Layout
 ---
 
 Use Layout to build a main/sidebar layout.

@@ -1,5 +1,5 @@
 ---
-title: Primer::BaseComponent
+title: Base
 ---
 
 Base component used by other Primer components.

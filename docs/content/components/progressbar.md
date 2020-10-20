@@ -1,5 +1,5 @@
 ---
-title: Primer::ProgressBarComponent
+title: ProgressBar
 ---
 
 Use ProgressBar to visualize task completion.

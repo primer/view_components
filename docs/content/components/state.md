@@ -1,5 +1,5 @@
 ---
-title: Primer::StateComponent
+title: State
 ---
 
 Component for rendering the status of an item.

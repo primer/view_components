@@ -1,5 +1,5 @@
 ---
-title: Primer::SpinnerComponent
+title: Spinner
 ---
 
 Use Primer::SpinnerComponent to let users know that content is being loaded.

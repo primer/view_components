@@ -1,5 +1,5 @@
 ---
-title: Primer::ButtonComponent
+title: Button
 ---
 
 Use buttons for actions (e.g. in forms). Use links for destinations, or moving from one page to another.

@@ -1,5 +1,5 @@
 ---
-title: Primer::BlankslateComponent
+title: Blankslate
 ---
 
 Use Primer::BlankslateComponent when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.

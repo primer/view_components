@@ -1,5 +1,5 @@
 ---
-title: Primer::OcticonComponent
+title: Octicon
 ---
 
 Renders an [Octicon](https://primer.style/octicons/) with Primer [style arguments](https://github.com/primer/view_components#built-in-styling-arguments).

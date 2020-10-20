@@ -1,5 +1,5 @@
 ---
-title: Primer::AvatarComponent
+title: Avatar
 ---
 
 Avatars are images used to represent users and organizations on GitHub.

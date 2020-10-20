@@ -1,5 +1,5 @@
 ---
-title: Primer::TextComponent
+title: Text
 ---
 
 The Text component is a wrapper component that will apply typography styles to the text inside.

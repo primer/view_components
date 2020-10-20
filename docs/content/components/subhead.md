@@ -1,5 +1,5 @@
 ---
-title: Primer::SubheadComponent
+title: Subhead
 ---
 
 Use the Subhead component for page headings.
