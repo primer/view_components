@@ -8,13 +8,13 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ### Button types
 
-<iframe style="width: 100%; border: 0px; height: 50px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><button type='button' class='btn '>Default</button><button type='button' class='btn btn-primary '>Primary</button><button type='button' class='btn btn-danger '>Danger</button><button type='button' class='btn btn-outline '>Danger</button></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 50px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><button type='button' class='btn '>Default</button><button type='button' class='btn btn-primary '>Primary</button><button type='button' class='btn btn-danger '>Danger</button><button type='button' class='btn btn-outline '>Outline</button></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::ButtonComponent.new) { "Default" } %>
 <%= render(Primer::ButtonComponent.new(button_type: :primary)) { "Primary" } %>
 <%= render(Primer::ButtonComponent.new(button_type: :danger)) { "Danger" } %>
-<%= render(Primer::ButtonComponent.new(button_type: :outline)) { "Danger" } %>
+<%= render(Primer::ButtonComponent.new(button_type: :outline)) { "Outline" } %>
 ```
 
 ### Variants
