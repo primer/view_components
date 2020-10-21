@@ -1,5 +1,5 @@
 ---
-title: Primer::BlankslateComponent
+title: Blankslate
 ---
 
 Use Primer::BlankslateComponent when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.
@@ -98,19 +98,19 @@ There are a few variations of how the Blankslate appears: `narrow` adds a maximu
 ## Arguments
 
 | Name | Type | Default | Description |
-| :- | :- | :-: | :- |
-| title | String | "" | Text that appears in a larger bold font. |
-| title_tag | Symbol | :h3 | HTML tag to use for title. |
-| icon | String | "" | Octicon icon to use at top of component. |
-| icon_size | Symbol | :medium | One of `:small`, `:medium`, and `:large` |
-| image_src | String | "" | Image to display. |
-| image_alt | String | " " | Alt text for image. |
-| description | String | "" | Text that appears below the title. Typically a whole sentence. |
-| button_text | String | "" | The text of the button. |
-| button_url | String | "" | The URL where the user will be taken after clicking the button. |
-| button_classes | String | "btn-primary my-3" | Classes to apply to action button |
-| link_text | String | "" | The text of the link. |
-| link_url | String | "" | The URL where the user will be taken after clicking the link. |
-| narrow | Boolean | false | Adds a maximum width. |
-| large | Boolean | false | Increases the font size. |
-| spacious | Boolean | false | Adds extra padding. |
+| :- | :- | :- | :- |
+| `title` | `String` | `""` | Text that appears in a larger bold font. |
+| `title_tag` | `Symbol` | `:h3` | HTML tag to use for title. |
+| `icon` | `String` | `""` | Octicon icon to use at top of component. |
+| `icon_size` | `Symbol` | `:medium` | One of `:small`, `:medium`, or `:large`. |
+| `image_src` | `String` | `""` | Image to display. |
+| `image_alt` | `String` | `" "` | Alt text for image. |
+| `description` | `String` | `""` | Text that appears below the title. Typically a whole sentence. |
+| `button_text` | `String` | `""` | The text of the button. |
+| `button_url` | `String` | `""` | The URL where the user will be taken after clicking the button. |
+| `button_classes` | `String` | `"btn-primary my-3"` | Classes to apply to action button |
+| `link_text` | `String` | `""` | The text of the link. |
+| `link_url` | `String` | `""` | The URL where the user will be taken after clicking the link. |
+| `narrow` | `Boolean` | `false` | Adds a maximum width. |
+| `large` | `Boolean` | `false` | Increases the font size. |
+| `spacious` | `Boolean` | `false` | Adds extra padding. |
