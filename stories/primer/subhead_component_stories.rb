@@ -10,8 +10,8 @@ class Primer::SubheadComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |component|
-      component.slot(:heading, danger: false, tag: :h1) { "My Profile Heading" }
-      component.slot(:description, tag: :span) { "This is a description of my profile. I live on planet Earth. Sometimes." }
+      component.slot(:heading) { "My Profile Heading" }
+      component.slot(:description) { "This is a description of my profile. I live on planet Earth. Sometimes." }
       component.slot(:actions, classes: "btn btn-sm") { "Link to personal website" }
     end
   end
