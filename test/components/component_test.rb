@@ -91,7 +91,6 @@ class PrimerComponentTest < Minitest::Test
         "component",  # No story needed
         "view_components", # No story needed
         "slot", "component",  # No story needed
-        "subhead_component",
         "flex_item_component",
         "dropdown_menu_component",
         "base_component",
