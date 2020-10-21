@@ -35,4 +35,4 @@ Use labels to add contextual metadata to a design.
 | `title` | `String` | N/A | `title` attribute for the component element. |
 | `scheme` | `Symbol` | `nil` | One of `:gray`, `:dark_gray`, `:yellow`, `:orange`, `:red`, `:green`, `:blue`, `:purple`, `:pink`, `:outline`, `:green_outline`, or `nil`. |
 | `variant` | `Symbol` | `nil` | One of `:large`, `:inline`, or `nil`. |
-| `kwargs` | `Hash` | N/A | Primer [style arguments](https://github.com/primer/view_components#built-in-styling-arguments). |
+| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Renders an [Octicon](https://primer.style/octicons/) with <%= link_to_style_arguments_docs %>
+  # Renders an [Octicon](https://primer.style/octicons/) with <%= link_to_style_arguments_docs %>.
   class OcticonComponent < Primer::Component
     include Primer::ClassNameHelper
     include OcticonsHelper
