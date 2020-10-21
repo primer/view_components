@@ -1,12 +1,46 @@
 # frozen_string_literal: true
 
 module Primer
+  # Use popovers to bring attention to specific user interface elements, typically to suggest an action or to guide users through a new experience.
+  #
+  # By default, the popover renders with absolute positioning, meaning it should usually be wrapped in an element with a relative position in order to be positioned properly. To render the popover with relative positioning, use the relative property.
   class PopoverComponent < Primer::Component
     include ViewComponent::Slotable
 
     with_slot :heading, class_name: "Heading"
     with_slot :body, class_name: "Body"
 
+    # @example 150|Default
+    #   <%= render Primer::PopoverComponent.new do |component| %>
+    #     <% component.slot(:heading) do %>
+    #       Activity feed
+    #     <% end %>
+    #     <% component.slot(:body) do %>
+    #       This is the Popover body.
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example 150|Large
+    #   <%= render Primer::PopoverComponent.new do |component| %>
+    #     <% component.slot(:heading) do %>
+    #       Activity feed
+    #     <% end %>
+    #     <% component.slot(:body, large: true) do %>
+    #       This is the large Popover body.
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example 150|Caret position
+    #   <%= render Primer::PopoverComponent.new do |component| %>
+    #     <% component.slot(:heading) do %>
+    #       Activity feed
+    #     <% end %>
+    #     <% component.slot(:body, caret: :left) do %>
+    #       This is the large Popover body.
+    #     <% end %>
+    #   <% end %>
+    #
+    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
     def initialize(**kwargs)
       @kwargs = kwargs
       @kwargs[:tag] ||= :div
@@ -24,6 +58,7 @@ module Primer
     end
 
     class Heading < ViewComponent::Slot
+      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:mb] ||= 2
@@ -52,6 +87,9 @@ module Primer
         :top_right => "Popover-message--top-right"
       }.freeze
 
+      # @param caret [Symbol] <%= one_of(Primer::PopoverComponent::Body::CARET_MAPPINGS.keys) %>
+      # @param large [Boolean] Whether to use the large version of the component.
+      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
       def initialize(caret: CARET_DEFAULT, large: false, **kwargs)
         @kwargs = kwargs
         @kwargs[:classes] = class_names(

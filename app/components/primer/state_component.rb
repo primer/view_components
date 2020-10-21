@@ -1,14 +1,8 @@
 # frozen_string_literal: true
 
 module Primer
+  # Component for rendering the status of an item.
   class StateComponent < Primer::Component
-    # Component for rendering the status of an item
-    #
-    # title(string): (required) title attribute
-    # color(symbol): label background color
-    # size(symbol): label size
-    # counter(integer): counter value
-    # **args(hash): utility parameters for Primer::Classify
     COLOR_DEFAULT = :default
     COLOR_MAPPINGS = {
       COLOR_DEFAULT => "",
@@ -28,6 +22,24 @@ module Primer
     TAG_DEFAULT = :span
     TAG_OPTIONS = [TAG_DEFAULT, :div, :a]
 
+    # @example 40|Default
+    #   <%= render(Primer::StateComponent.new(title: "title")) { "State" } %>
+    #
+    # @example 40|Colors
+    #   <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
+    #   <%= render(Primer::StateComponent.new(title: "title", color: :green)) { "Green" } %>
+    #   <%= render(Primer::StateComponent.new(title: "title", color: :red)) { "Red" } %>
+    #   <%= render(Primer::StateComponent.new(title: "title", color: :purple)) { "Purple" } %>
+    #
+    # @example 40|Sizes
+    #   <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
+    #   <%= render(Primer::StateComponent.new(title: "title", size: :small)) { "Small" } %>
+    #
+    # @param title [String] `title` HTML attribute.
+    # @param color [Symbol] Background color. <%= one_of(Primer::StateComponent::COLOR_OPTIONS) %>
+    # @param tag [Symbol] HTML tag for element. <%= one_of(Primer::StateComponent::TAG_OPTIONS) %>
+    # @param size [Symbol] <%= one_of(Primer::StateComponent::SIZE_OPTIONS) %>
+    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
     def initialize(
       title:,
       color: COLOR_DEFAULT,

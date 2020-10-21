@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # @private
   class Component < ViewComponent::Base
     include ClassNameHelper
     include FetchOrFallbackHelper
