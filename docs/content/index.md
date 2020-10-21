@@ -5,9 +5,15 @@ title: Primer ViewComponents
 import {HeroLayout} from '@primer/gatsby-theme-doctocat'
 export default HeroLayout
 
-## Design philosophy
+Primer ViewComponents is an implementation of the Primer Design System, using [ViewComponent](https://github.com/github/view_component).
 
-Primer ViewComponents aims to mimic the API of [Primer Components](https://github.com/primer/components), while using [Primer CSS](https://github.com/primer/css) under the hood.
+## Usage
+
+Render Primer ViewComponents from templates:
+
+```erb
+<%= render(Primer::CounterComponent.new(count: 25)) %>
+```
 
 ## Installation
 
