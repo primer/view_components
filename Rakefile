@@ -49,7 +49,7 @@ namespace :docs do
   end
 
   def link_to_style_arguments_docs
-    "Primer [style arguments](https://github.com/primer/view_components#built-in-styling-arguments)."
+    "[Style arguments](/style-arguments)"
   end
 
   task :build do

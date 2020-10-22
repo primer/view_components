@@ -25,28 +25,28 @@ end %>
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | Primer [style arguments](https://github.com/primer/view_components#built-in-styling-arguments). |
+| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
 
 ### `header` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | Primer [style arguments](https://github.com/primer/view_components#built-in-styling-arguments). |
+| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
 
 ### `body` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | Primer [style arguments](https://github.com/primer/view_components#built-in-styling-arguments). |
+| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
 
 ### `footer` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | Primer [style arguments](https://github.com/primer/view_components#built-in-styling-arguments). |
+| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
 
 ### `row` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | Primer [style arguments](https://github.com/primer/view_components#built-in-styling-arguments). |
+| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
