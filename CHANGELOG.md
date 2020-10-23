@@ -2,6 +2,12 @@
 
 ## main
 
+## 0.0.11
+
+* Renames DetailsComponent::OVERLAY_DEFAULT to DetailsComponent::NO_OVERLAY to more correctly describe its value.
+
+    *Justin Kenyon*
+
 ## 0.0.10
 
 * Add SpinnerComponent
