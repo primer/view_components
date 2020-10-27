@@ -8,7 +8,9 @@
 
 _Note: This library is in pre-release development and should not be considered stable._
 
-Visit [https://view-components.primer.vercel.app/](https://view-components.primer.vercel.app/) to view documentation.
+## Documentation
+
+Visit [https://primer.style/view-components/](https://primer.style/view-components//) to view documentation.
 
 ## License
 
