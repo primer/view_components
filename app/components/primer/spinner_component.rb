@@ -11,6 +11,9 @@ module Primer
       :large => 64,
     }.freeze
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
+    # Setting `box-sizing: content-box` allows consumers to add padding
+    # to the spinner without shrinking the icon
+    DEFAULT_STYLE = "box-sizing: content-box; color: var(--color-icon-primary);"
 
     #
     # @example 48|Default
@@ -23,16 +26,14 @@ module Primer
     #   <%= render(Primer::SpinnerComponent.new(size: :large)) %>
     #
     # @param size [Symbol] <%= one_of(Primer::SpinnerComponent::SIZE_OPTIONS) %>
-    def initialize(size: DEFAULT_SIZE, **kwargs)
+    def initialize(size: DEFAULT_SIZE, style: DEFAULT_STYLE, **kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :svg
       @kwargs[:width] = SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
       @kwargs[:height] = SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
       @kwargs[:viewBox] = "0 0 16 16"
       @kwargs[:fill] = :none
-      # Setting `box-sizing: content-box` allows consumers to add padding
-      # to the spinner without shrinking the icon
-      @kwargs[:style] = "box-sizing: content-box; color: var(--color-icon-primary);"
+      @kwargs[:style] = DEFAULT_STYLE unless style.nil?
     end
   end
 end
