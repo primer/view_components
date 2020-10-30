@@ -2,6 +2,12 @@
 
 ## main
 
+## 0.0.12
+
+* Adds support for disabling inline box-sizing style for `SpinnerComponent` via style parameter `Primer::SpinnerComponent.new(style: nil)`.
+
+    *Chris Wilson*
+
 ## 0.0.11
 
 * Renames DetailsComponent::OVERLAY_DEFAULT to DetailsComponent::NO_OVERLAY to more correctly describe its value.
