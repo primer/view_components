@@ -28,4 +28,16 @@ class PrimerSpinnerComponentTest < Minitest::Test
 
     assert_selector("svg[height=64][width=64]")
   end
+
+  def test_defaults_to_box_sizing_style
+    render_inline(Primer::SpinnerComponent.new)
+
+    assert_selector("[style='box-sizing: content-box; color: var(--color-icon-primary);']")
+  end
+
+  def test_no_box_sizing_style
+    render_inline(Primer::SpinnerComponent.new(style: nil))
+
+    assert_no_selector("style")
+  end
 end
