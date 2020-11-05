@@ -74,7 +74,3 @@ module Primer
     end
   end
 end
-
-
-# TODO
-# v
