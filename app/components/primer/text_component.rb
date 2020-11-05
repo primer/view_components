@@ -7,7 +7,7 @@ module Primer
     #   <%= render(Primer::TextComponent.new(tag: :p, font_weight: :bold)) { "Bold Text" } %>
     #   <%= render(Primer::TextComponent.new(tag: :p, color: :red_5)) { "Red Text" } %>
     #
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**kwargs)
       @kwargs = kwargs
       @kwargs[:tag] ||= :span

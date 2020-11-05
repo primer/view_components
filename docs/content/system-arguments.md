@@ -1,6 +1,8 @@
 ---
-title: Style arguments
+title: System Arguments
 ---
+
+All Primer ViewComponents support System Arguments.
 
 Primer ViewComponents should be styled using the built-in arguments when possible. Most Primer utility classes for spacing, alignment, display, and colors have equivalent component arguments.
 

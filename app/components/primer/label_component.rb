@@ -44,7 +44,7 @@ module Primer
     # @param title [String] `title` attribute for the component element.
     # @param scheme [Symbol] <%= one_of(Primer::LabelComponent::SCHEME_OPTIONS) %>
     # @param variant [Symbol] <%= one_of(Primer::LabelComponent::VARIANT_OPTIONS) %>
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
     def initialize(title:, scheme: nil, variant: nil, **kwargs)
       @kwargs = kwargs
       @kwargs[:bg] = :blue if scheme.nil?

@@ -48,8 +48,8 @@ namespace :docs do
     "One of #{enumerable.map { |k| "`#{k.nil? ? 'nil' : ":#{k}"}`" }.to_sentence(last_word_connector: ', or ')}."
   end
 
-  def link_to_style_arguments_docs
-    "[Style Arguments](/style-arguments)"
+  def link_to_system_arguments_docs
+    "[System Arguments](/system-arguments)"
   end
 
   task :build do
