@@ -45,7 +45,18 @@ namespace :docs do
   end
 
   def one_of(enumerable)
-    "One of #{enumerable.map { |k| "`#{k.nil? ? 'nil' : ":#{k}"}`" }.to_sentence(last_word_connector: ', or ')}."
+    values = enumerable.map do |key|
+      case key
+      when nil
+        "`nil`"
+      when Symbol
+        "`:#{key}`"
+      else
+        "`#{key}`"
+      end
+    end
+
+    "One of #{values.to_sentence(last_word_connector: ', or ')}."
   end
 
   def link_to_system_arguments_docs
@@ -70,7 +81,6 @@ namespace :docs do
     registry.load!(".yardoc")
     components = [
       Primer::AvatarComponent,
-      Primer::BaseComponent,
       Primer::BlankslateComponent,
       Primer::BorderBoxComponent,
       Primer::BoxComponent,
@@ -90,6 +100,7 @@ namespace :docs do
       Primer::TextComponent,
       Primer::TimelineItemComponent
     ]
+
     components.each do |component|
       documentation = registry.get(component.name)
 
@@ -181,6 +192,30 @@ namespace :docs do
             end
           end
         end
+      end
+    end
+
+    # Build System Arguments docs from BaseComponent
+    documentation = registry.get(Primer::BaseComponent.name)
+    File.open("docs/content/system-arguments.md", "w") do |f|
+      f.puts("---")
+      f.puts("title: System Arguments")
+      f.puts("---")
+      f.puts
+      f.puts(documentation.base_docstring)
+      f.puts
+
+      initialize_method = documentation.meths.find(&:constructor?)
+
+      f.puts("## Arguments")
+      f.puts
+      f.puts("| Name | Type | Default | Description |")
+      f.puts("| :- | :- | :- |")
+
+      initialize_method.tags(:param).each do |tag|
+        params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
+
+        f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{view_context.render(inline: tag.text)} |")
       end
     end
 

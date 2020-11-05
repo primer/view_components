@@ -2,19 +2,13 @@
 title: System Arguments
 ---
 
-Primer ViewComponents should be styled using System Arguments, a set of options mimicking the [styled-system API](https://styled-system.com/table) [used by Primer React](https://primer.style/components/system-props). Under the hood, system Arguments are mapped to Primer CSS classes.
+All Primer ViewComponents accept a standard set of options called System Arguments, mimicking the [styled-system API](https://styled-system.com/table) [used by Primer React](https://primer.style/components/system-props).
 
-## Responsive Arguments
+Under the hood, System Arguments are [mapped](https://github.com/primer/view_components/blob/main/lib/primer/classify.rb) to Primer CSS classes, with any remaining options passed to Rails' [`content_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag).
 
-Different classes can be used for different breakpoints just like in Primer CSS. Simply use an array with the four values required for `[none, small, medium, large]`. If no breakpoint is needed for a breakpoint, pass `nil`.
 
-Example heading built with Primer CSS:
-
-```html
-<h1 class="mt-0 mt-lg-4">Hello world</h1>
-```
-
-The same label using `Primer::HeadingComponent`:
+## Responsive values
+To use different argument values across responsive breakpoints, pass an array with the four values required for `[none, small, medium, large]`. If no value is needed for a breakpoint, pass `nil`. For example:
 
 ```erb
 <%= render Primer::HeadingComponent.new(mt: [0, nil, nil, 4]) do %>
@@ -22,70 +16,33 @@ The same label using `Primer::HeadingComponent`:
 <% end %>
 ```
 
-## Migrating from Primer CSS
+## Arguments
 
-To migrate a label using Primer CSS:
-
-```html
-<span title="Label: Suggested" class="Label Label--outline Label--outline-green ml-2 v-align-middle">Suggested</span>
-```
-
-Use `Primer::LabelComponent`, with Style Arguments:
-
-```erb
-<%= render Primer::LabelComponent.new(ml: 2, vertical_align: :middle, scheme: :green, title: "Label: Suggested") do %>
-  Suggested
-<% end %>
-```
-
-
-| System Argument | Primer class    | Example |
-| --------------- | --------------- | -------- |
-| `m`            | `m-<value>`     | `m: 4` → `.m-4` |
-| `my`            | `my-<value>`   | `my: 4` → `.my-4` |
-| `mx`            | `my-<value>`   | `mx: 4` → `.mx-4` |
-| `mt`            | `mt-<value>`   | `mt: 4` → `.mt-4` |
-| `mb`            | `mb-<value>`   | `mb: 4` → `.mb-4` |
-| `ml`            | `ml-<value>`   | `ml: 4` → `.ml-4` |
-| `mr`            | `mr-<value>`   | `mr: 4` → `.mr-4` |
-| `p`             | `p-<value>`    | `p: 4` → `.p-4` |
-| `py`            | `py-<value>`   | `py: 4` → `.py-4` |
-| `px`            | `py-<value>`   | `px: 4` → `.px-4` |
-| `pt`            | `pt-<value>`   | `pt: 4` → `.pt-4` |
-| `pb`            | `pb-<value>`   | `pb: 4` → `.pb-4` |
-| `pl`            | `pl-<value>`   | `pl: 4` → `.pl-4` |
-| `pr`            | `pr-<value>`   | `pr: 4` → `.pr-4` |
-| `pr`            | `pr-<value>`   | `pr: 4` → `.pr-4` |
-| `f`            | `f-<value>`   | `f: 4` → `.f-4` |
-| `color`            | `color-<value>`   | `color: :red_500` → `.color-red-500` |
-| `text`         | `text-<value>`   | `text: :green` → `.text-green` |
-| `bg`         | `bg-<value>`   | `bg: :blue_light` → `.bg-blue-light` |
-| `display`     | `d-<value>` | `display: :none` → `.d-none` |
-| `float`         | `float-<value>`   | `float: :right` → `.float-right` |
-| `vertical_align`         | `v-align-<value>`   | `vertical_align: :baseline` → `.v-align-baseline` |
-| `text_align`     | `text-<value>` | `text_align: :right` → `.text-right` |
-| `font_size`     | `f<value>` | `font_size: 4` → `.f4` |
-| `font_weight`     | `text-<value>` | `font_weight: :bold` → `.text-bold` |
-| `border`     | `border-<value>` | `border: :bottom` → `.border-bottom` |
-| `border_color`     | `border-<value>` | `border: :green` → `.border-green` |
-| `border_top`     | `border-top-<value>` | `border_top: 0` → `.border-top-0` |
-| `border_bottom`     | `border-bottom-<value>` | `border_bottom: 0` → `.border-bottom-0` |
-| `border_left`     | `border-left-<value>` | `border_left: 0` → `.border-left-0` |
-| `border_right`     | `border-right-<value>` | `border_right: 0` → `.border-right-0` |
-| `word_break`     | `wb-<value>` | `word_break: :break_all` → `.wb-break-all` |
-| `direction`     | `flex-<value>` | `direction: :row` → `.flex-row` |
-| `justify_content`    | `flex-justify-<value>` | `justify_content: :center` → `.flex-justify-center` |
-| `align_items`   | `flex-items-<value>` | `align_items: :baseline` → `.flex-items-baseline` |
-| `box_shadow` | `box-shadow-<value>` | `box_shadow: :medium` → `.box-shadow-medium` |
-
-## Boolean arguments
-
-| Component arguments | True    | False |
-| -------------- | ------- | ------ |
-| `underline`   | `underline: true` → `.text-underline`  | `underline: false` → `.no-underline` |
-| `top`    | n/a | `top: false` → `.top-0`  |
-| `bottom` | n/a | `bottom: false` → `.bottom-0`  |
-| `left`   | n/a | `left: false` → `.left-0`  |
-| `right`  | n/a | `right: false` → `.right-0`  |
-
-
+| Name | Type | Default | Description |
+| :- | :- | :- |
+| `m` | `Integer` | Margin. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mt` | `Integer` | Margin left. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mr` | `Integer` | Margin right. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mb` | `Integer` | Margin bottom. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `ml` | `Integer` | Margin left. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mx` | `Integer` | Horizontal margins. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |
+| `my` | `Integer` | Vertical margins. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `m` | `Integer` | Padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mt` | `Integer` | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mr` | `Integer` | Padding right. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mb` | `Integer` | Padding bottom. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `ml` | `Integer` | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mx` | `Integer` | Horizontal padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `my` | `Integer` | Vertical padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `position` | `Symbol` | One of `:relative`, `:absolute`, or `:fixed`. |
+| `top` | `Boolean` | If `false`, sets `top: 0`. |
+| `right` | `Boolean` | If `false`, sets `right: 0`. |
+| `bottom` | `Boolean` | If `false`, sets `bottom: 0`. |
+| `left` | `Boolean` | If `false`, sets `left: 0`. |
+| `display` | `Symbol` | One of `:block`, `:none`, `:inline`, `:inline_block`, `:table`, or `:table_cell`. |
+| `hide` | `Symbol` | Hide the element at a specific breakpoint. One of `:sm`, `:md`, `:lg`, or `:xl`. |
+| `vertical_align` | `Symbol` | One of `:baseline`, `:top`, `:middle`, `:bottom`, `:text_top`, or `:text_bottom`. |
+| `float` | `Symbol` | One of `:left` and `:right`. |
+| `font_size` | `String` | One of `00`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `tag` | `Symbol` | HTML tag name to be passed to `tag.send` |
+| `classes` | `String` | CSS class name value to be concatenated with generated Primer CSS classes |
