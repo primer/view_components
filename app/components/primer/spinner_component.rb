@@ -25,7 +25,7 @@ module Primer
     # @example 80|Large
     #   <%= render(Primer::SpinnerComponent.new(size: :large)) %>
     #
-    # @param size [Symbol] <%= one_of(Primer::SpinnerComponent::SIZE_OPTIONS) %>
+    # @param size [Symbol] <%= one_of(Primer::SpinnerComponent::SIZE_MAPPINGS) %>
     def initialize(size: DEFAULT_SIZE, style: DEFAULT_STYLE, **kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :svg

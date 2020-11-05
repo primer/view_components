@@ -11,7 +11,7 @@ module Primer
     #
     # @param href [String] URL to be used for the Link
     # @param muted [Boolean] Uses light gray for Link color, and blue on hover
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
     def initialize(href:, muted: false, **kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :a

@@ -3,7 +3,7 @@
 module Primer
   # A basic wrapper component for most layout related needs.
   class BoxComponent < Primer::Component
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :div

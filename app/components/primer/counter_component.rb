@@ -20,7 +20,7 @@ module Primer
     # @param hide_if_zero [Boolean] If true, a `hidden` attribute is added to the counter if `count` is zero.
     # @param text [String] Text to display instead of count.
     # @param round [Boolean] Whether to apply our standard rounding logic to value.
-    # @param kwargs [Hash] Style arguments to be passed to Primer::Classify
+    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       count: 0,
       scheme: DEFAULT_SCHEME,

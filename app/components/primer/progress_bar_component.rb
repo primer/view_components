@@ -39,7 +39,7 @@ module Primer
     #   <% end %>
     #
     # @param size [Symbol] <%= one_of(Primer::ProgressBarComponent::SIZE_OPTIONS) %> Increases height.
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
     def initialize(size: SIZE_DEFAULT, **kwargs)
       @kwargs = kwargs
       @kwargs[:classes] = class_names(
@@ -61,7 +61,7 @@ module Primer
 
       # @param percentage [Integer] Percentage completion of item.
       # @param bg [Symbol] Color of item.
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
       def initialize(percentage: 0, bg: :green, **kwargs)
         @percentage = percentage
         @kwargs = kwargs
