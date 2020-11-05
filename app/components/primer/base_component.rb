@@ -6,6 +6,7 @@ module Primer
   # Under the hood, System Arguments are [mapped](https://github.com/primer/view_components/blob/main/lib/primer/classify.rb) to Primer CSS classes, with any remaining options passed to Rails' [`content_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag).
   #
   # ## Responsive values
+  #
   # To use different argument values across responsive breakpoints, pass an array with the four values required for `[none, small, medium, large]`. If no value is needed for a breakpoint, pass `nil`. For example:
   #
   # ```erb
