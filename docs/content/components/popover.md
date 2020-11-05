@@ -57,13 +57,13 @@ By default, the popover renders with absolute positioning, meaning it should usu
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `kwargs` | `Hash` | N/A | [Style Arguments](/style-arguments) |
 
 ### `heading` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `kwargs` | `Hash` | N/A | [Style Arguments](/style-arguments) |
 
 ### `body` slot
 
@@ -71,4 +71,4 @@ By default, the popover renders with absolute positioning, meaning it should usu
 | :- | :- | :- | :- |
 | `caret` | `Symbol` | `CARET_DEFAULT` | One of `:top`, `:bottom`, `:bottom_right`, `:bottom_left`, `:left`, `:left_bottom`, `:left_top`, `:right`, `:right_bottom`, `:right_top`, `:top_left`, or `:top_right`. |
 | `large` | `Boolean` | `false` | Whether to use the large version of the component. |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `kwargs` | `Hash` | N/A | [Style Arguments](/style-arguments) |

@@ -49,7 +49,7 @@ namespace :docs do
   end
 
   def link_to_style_arguments_docs
-    "[Style arguments](/style-arguments)"
+    "[Style Arguments](/style-arguments)"
   end
 
   task :build do

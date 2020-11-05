@@ -25,28 +25,28 @@ end %>
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `kwargs` | `Hash` | N/A | [Style Arguments](/style-arguments) |
 
 ### `header` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `kwargs` | `Hash` | N/A | [Style Arguments](/style-arguments) |
 
 ### `body` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `kwargs` | `Hash` | N/A | [Style Arguments](/style-arguments) |
 
 ### `footer` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `kwargs` | `Hash` | N/A | [Style Arguments](/style-arguments) |
 
 ### `row` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `kwargs` | `Hash` | N/A | [Style Arguments](/style-arguments) |

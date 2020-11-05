@@ -53,7 +53,7 @@ Use ProgressBar to visualize task completion.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `size` | `Symbol` | `SIZE_DEFAULT` | One of `:default`, `:small`, or `:large`. Increases height. |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `kwargs` | `Hash` | N/A | [Style Arguments](/style-arguments) |
 
 ### `item` slot
 
@@ -61,4 +61,4 @@ Use ProgressBar to visualize task completion.
 | :- | :- | :- | :- |
 | `percentage` | `Integer` | `0` | Percentage completion of item. |
 | `bg` | `Symbol` | `:green` | Color of item. |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `kwargs` | `Hash` | N/A | [Style Arguments](/style-arguments) |

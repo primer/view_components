@@ -35,4 +35,4 @@ Use Layout to build a main/sidebar layout.
 | `responsive` | `Boolean` | `false` | Whether to collapse layout to a single column at smaller widths. |
 | `side` | `Symbol` | `DEFAULT_SIDE` | Which side to display the sidebar on. One of `:right` and `:left`. |
 | `sidebar_col` | `Integer` | `DEFAULT_SIDEBAR_COL` | Sidebar column width. |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `kwargs` | `Hash` | N/A | [Style Arguments](/style-arguments) |
