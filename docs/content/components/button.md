@@ -31,8 +31,8 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `button_type` | `Symbol` | `DEFAULT_BUTTON_TYPE` | One of `:default`, `:primary`, `:danger`, or `:outline`. |
-| `variant` | `Symbol` | `DEFAULT_VARIANT` | One of `:small`, `:medium`, or `:large`. |
-| `tag` | `Symbol` | `DEFAULT_TAG` | One of `:button`, `:a`, or `:summary`. |
-| `type` | `Symbol` | `DEFAULT_TYPE` | One of `:button`, `:reset`, or `:submit`. |
+| `button_type` | `Symbol` | `:default` | One of `:default`, `:primary`, `:danger`, or `:outline`. |
+| `variant` | `Symbol` | `:medium` | One of `:small`, `:medium`, or `:large`. |
+| `tag` | `Symbol` | `:button` | One of `:button`, `:a`, or `:summary`. |
+| `type` | `Symbol` | `:button` | One of `:button`, `:reset`, or `:submit`. |
 | `group_item` | `Boolean` | `false` | Whether button is part of a ButtonGroup. |

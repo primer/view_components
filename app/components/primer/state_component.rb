@@ -39,7 +39,7 @@ module Primer
     # @param color [Symbol] Background color. <%= one_of(Primer::StateComponent::COLOR_OPTIONS) %>
     # @param tag [Symbol] HTML tag for element. <%= one_of(Primer::StateComponent::TAG_OPTIONS) %>
     # @param size [Symbol] <%= one_of(Primer::StateComponent::SIZE_OPTIONS) %>
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       title:,
       color: COLOR_DEFAULT,

@@ -40,7 +40,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**kwargs)
       @kwargs = kwargs
       @kwargs[:tag] ||= :div
@@ -58,7 +58,7 @@ module Primer
     end
 
     class Heading < ViewComponent::Slot
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:mb] ||= 2
@@ -89,7 +89,7 @@ module Primer
 
       # @param caret [Symbol] <%= one_of(Primer::PopoverComponent::Body::CARET_MAPPINGS.keys) %>
       # @param large [Boolean] Whether to use the large version of the component.
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
       def initialize(caret: CARET_DEFAULT, large: false, **kwargs)
         @kwargs = kwargs
         @kwargs[:classes] = class_names(

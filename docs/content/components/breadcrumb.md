@@ -22,7 +22,7 @@ Use breadcrumbs to display page hierarchy within a section of the site. All of t
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `kwargs` | `Hash` | N/A | [System Arguments](/system-arguments) |
 
 ### `item` slot
 
@@ -30,6 +30,6 @@ Use breadcrumbs to display page hierarchy within a section of the site. All of t
 | :- | :- | :- | :- |
 | `href` | `String` | `nil` | The URL to link to. |
 | `selected` | `Boolean` | `false` | Whether or not the item is selected and not rendered as a link. |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `kwargs` | `Hash` | N/A | [System Arguments](/system-arguments) |
 
 _Note: if both `href` and `selected: true` are passed in, `href` will be ignored and the item will not be rendered as a link._

@@ -88,7 +88,7 @@
 
 ## 0.0.3
 
-* Add support for responsive `float` style argument.
+* Add support for responsive `float` system argument.
 
     *Joel Hawksley*
 

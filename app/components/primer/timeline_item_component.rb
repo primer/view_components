@@ -21,7 +21,7 @@ module Primer
     #   </div>
     #
     # @param condensed [Boolean] Reduce the vertical padding and remove the background from the badge item. Most commonly used in commits.
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
     def initialize(condensed: false, **kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :div
@@ -43,7 +43,7 @@ module Primer
       # @param src [String] Src attribute for avatar image.
       # @param size [Integer] Image size.
       # @param square [Boolean] Whether to round the edges of the image.
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
       def initialize(alt: nil, src: nil, size: 40, square: true, **kwargs)
         @alt = alt
         @src = src
@@ -63,7 +63,7 @@ module Primer
       attr_reader :kwargs, :icon
 
       # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
       def initialize(icon: nil, **kwargs)
         @icon = icon
 
@@ -79,7 +79,7 @@ module Primer
     class Body < Primer::Slot
       attr_reader :kwargs
 
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] = :div

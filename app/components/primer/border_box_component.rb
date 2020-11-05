@@ -20,7 +20,7 @@ module Primer
     #     component.slot(:footer) { "Footer" }
     #   end %>
     #
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :div
@@ -36,7 +36,7 @@ module Primer
 
     class Header < Primer::Slot
       attr_reader :kwargs
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] = :div
@@ -49,7 +49,7 @@ module Primer
 
     class Body < Primer::Slot
       attr_reader :kwargs
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] = :div
@@ -62,7 +62,7 @@ module Primer
 
     class Footer < Primer::Slot
       attr_reader :kwargs
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] = :div
@@ -75,7 +75,7 @@ module Primer
 
     class Row < Primer::Slot
       attr_reader :kwargs
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] = :li
