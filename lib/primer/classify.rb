@@ -131,9 +131,7 @@ module Primer
 
           if invalid_class_names.any?
             raise ArgumentError.new(
-              "Primer CSS class #{'name'.pluralize(invalid_class_names.length)} \
-              #{invalid_class_names.to_sentence} #{'is'.pluralize(invalid_class_names.length)} \
-              not allowed, use style arguments instead (https://github.com/primer/view_components#built-in-styling-arguments). This warning will not be raised in production.",
+              "Use System Arguments (https://primer.style/view-components/system-arguments) instead of Primer CSS class #{'name'.pluralize(invalid_class_names.length)} #{invalid_class_names.to_sentence}. This warning will not be raised in production.",
             )
           end
         end

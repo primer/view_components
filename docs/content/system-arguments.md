@@ -2,17 +2,35 @@
 title: System Arguments
 ---
 
-All Primer ViewComponents support System Arguments.
+Primer ViewComponents should be styled using System Arguments, a set of options mimicking the [styled-system API](https://styled-system.com/table) [used by Primer React](https://primer.style/components/system-props). Under the hood, system Arguments are mapped to Primer CSS classes.
 
-Primer ViewComponents should be styled using the built-in arguments when possible. Most Primer utility classes for spacing, alignment, display, and colors have equivalent component arguments.
+## Responsive Arguments
 
-Example label built with Primer CSS:
+Different classes can be used for different breakpoints just like in Primer CSS. Simply use an array with the four values required for `[none, small, medium, large]`. If no breakpoint is needed for a breakpoint, pass `nil`.
+
+Example heading built with Primer CSS:
+
+```html
+<h1 class="mt-0 mt-lg-4">Hello world</h1>
+```
+
+The same label using `Primer::HeadingComponent`:
+
+```erb
+<%= render Primer::HeadingComponent.new(mt: [0, nil, nil, 4]) do %>
+  Hello world
+<% end %>
+```
+
+## Migrating from Primer CSS
+
+To migrate a label using Primer CSS:
 
 ```html
 <span title="Label: Suggested" class="Label Label--outline Label--outline-green ml-2 v-align-middle">Suggested</span>
 ```
 
-The same label using `Primer::LabelComponent`:
+Use `Primer::LabelComponent`, with Style Arguments:
 
 ```erb
 <%= render Primer::LabelComponent.new(ml: 2, vertical_align: :middle, scheme: :green, title: "Label: Suggested") do %>
@@ -20,9 +38,8 @@ The same label using `Primer::LabelComponent`:
 <% end %>
 ```
 
-Some components have their own specific arguments, but they can all be styled with the following arguments.
 
-| Component argument | Primer class    | Example |
+| System Argument | Primer class    | Example |
 | --------------- | --------------- | -------- |
 | `m`            | `m-<value>`     | `m: 4` → `.m-4` |
 | `my`            | `my-<value>`   | `my: 4` → `.my-4` |
@@ -71,20 +88,4 @@ Some components have their own specific arguments, but they can all be styled wi
 | `left`   | n/a | `left: false` → `.left-0`  |
 | `right`  | n/a | `right: false` → `.right-0`  |
 
-## Responsive arguments
 
-Different classes can be used for different breakpoints just like in Primer CSS. Simply use an array with the four values required for `[none, small, medium, large]`. If no breakpoint is needed for a breakpoint, pass `nil`.
-
-Example heading built with Primer CSS:
-
-```html
-<h1 class="mt-0 mt-lg-4">Hello world</h1>
-```
-
-The same label using `Primer::HeadingComponent`:
-
-```erb
-<%= render Primer::HeadingComponent.new(mt: [0, nil, nil, 4]) do %>
-  Hello world
-<% end %>
-```
