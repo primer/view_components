@@ -45,9 +45,17 @@ namespace :docs do
   end
 
   def one_of(enumerable)
-    values = enumerable.map do |key|
-      pretty_value(key)
-    end
+    values =
+      case enumerable
+      when Hash
+        enumerable.map do |key, value|
+          "#{pretty_value(key)} (#{pretty_value(value)})"
+        end
+      else
+        enumerable.map do |key|
+          pretty_value(key)
+        end
+      end
 
     "One of #{values.to_sentence(last_word_connector: ', or ')}."
   end

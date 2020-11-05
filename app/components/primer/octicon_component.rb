@@ -24,7 +24,7 @@ module Primer
     #   <%= render(Primer::OcticonComponent.new(icon: "x", size: :large)) %>
     #
     # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
-    # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_OPTIONS) %>
+    # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
     # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
     def initialize(icon:, size: SIZE_DEFAULT, **kwargs)
       @icon, @kwargs = icon, kwargs

@@ -56,7 +56,7 @@ module Primer
     # @param title [String] Text that appears in a larger bold font.
     # @param title_tag [Symbol] HTML tag to use for title.
     # @param icon [String] Octicon icon to use at top of component.
-    # @param icon_size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS.keys) %>
+    # @param icon_size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
     # @param image_src [String] Image to display.
     # @param image_alt [String] Alt text for image.
     # @param description [String] Text that appears below the title. Typically a whole sentence.

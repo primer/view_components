@@ -35,5 +35,5 @@ Renders an [Octicon](https://primer.style/octicons/) with [System Arguments](/sy
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `icon` | `String` | N/A | Name of [Octicon](https://primer.style/octicons/) to use. |
-| `size` | `Symbol` | `:small` | <%= one_of(One of `:small` (16px), `:medium` (32px), or `:large` (64px). |
+| `size` | `Symbol` | `:small` | One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`). |
 | `kwargs` | `Hash` | N/A | [System Arguments](/system-arguments) |
