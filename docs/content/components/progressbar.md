@@ -52,7 +52,7 @@ Use ProgressBar to visualize task completion.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `size` | `Symbol` | `SIZE_DEFAULT` | One of `:default`, `:small`, or `:large`. Increases height. |
+| `size` | `Symbol` | `:default` | One of `:default`, `:small`, or `:large`. Increases height. |
 | `kwargs` | `Hash` | N/A | [System Arguments](/system-arguments) |
 
 ### `item` slot

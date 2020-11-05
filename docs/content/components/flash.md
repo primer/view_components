@@ -62,7 +62,7 @@ Use the Flash component to inform users of successful or pending actions.
 | `spacious` | `Boolean` | `false` | Whether to add margin to the bottom of the component. |
 | `dismissible` | `Boolean` | `false` | Whether the component can be dismissed with an X button. |
 | `icon` | `String` | `nil` | Name of Octicon icon to use. |
-| `variant` | `Symbol` | `DEFAULT_VARIANT` | One of `:default`, `:warning`, `:danger`, or `:success`. |
+| `variant` | `Symbol` | `:default` | One of `:default`, `:warning`, `:danger`, or `:success`. |
 | `kwargs` | `Hash` | N/A | [System Arguments](/system-arguments) |
 
 ### `actions` slot

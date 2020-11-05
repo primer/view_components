@@ -46,14 +46,7 @@ namespace :docs do
 
   def one_of(enumerable)
     values = enumerable.map do |key|
-      case key
-      when nil
-        "`nil`"
-      when Symbol
-        "`:#{key}`"
-      else
-        "`#{key}`"
-      end
+      pretty_value(key)
     end
 
     "One of #{values.to_sentence(last_word_connector: ', or ')}."
@@ -61,6 +54,17 @@ namespace :docs do
 
   def link_to_system_arguments_docs
     "[System Arguments](/system-arguments)"
+  end
+
+  def pretty_value(val)
+    case val
+    when nil
+      "`nil`"
+    when Symbol
+      "`:#{val}`"
+    else
+      "`#{val}`"
+    end
   end
 
   task :build do
@@ -153,7 +157,13 @@ namespace :docs do
 
           default =
             if params && params[1]
-              "`#{params[1]}`"
+              constant_name = "#{component.name}::#{params[1]}"
+              constant_value = constant_name.safe_constantize
+              if constant_value
+                pretty_value(constant_value)
+              else
+                pretty_value(params[1])
+              end
             else
               "N/A"
             end
