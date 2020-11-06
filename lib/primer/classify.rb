@@ -9,7 +9,7 @@ module Primer
     ALIGN_ITEMS_KEY = :align_items
     DISPLAY_KEY = :display
     RESPONSIVE_KEYS = ([DISPLAY_KEY, DIRECTION_KEY, JUSTIFY_CONTENT_KEY, ALIGN_ITEMS_KEY, :col, :float] + SPACING_KEYS).freeze
-    BREAKPOINTS = ["", "-sm", "-md", "-lg"]
+    BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"]
 
     # Keys where we can simply translate { key: value } into ".key-value"
     CONCAT_KEYS = SPACING_KEYS + [:hide, :position, :v, :float, :col, :text, :box_shadow].freeze
