@@ -2,6 +2,10 @@
 
 ## main
 
+* Add support for `xl` breakpoint.
+
+    *Joel Hawksley*
+
 ## 0.0.12
 
 * Adds support for disabling inline box-sizing style for `SpinnerComponent` via style parameter `Primer::SpinnerComponent.new(style: nil)`.
