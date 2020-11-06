@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # Use buttons for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
   class ButtonComponent < Primer::Component
     DEFAULT_BUTTON_TYPE = :default
     BUTTON_TYPE_MAPPINGS = {
@@ -20,11 +21,27 @@ module Primer
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
     DEFAULT_TAG = :button
-    TAG_OPTIONS = [DEFAULT_TAG, :a].freeze
+    TAG_OPTIONS = [DEFAULT_TAG, :a, :summary].freeze
 
     DEFAULT_TYPE = :button
     TYPE_OPTIONS = [DEFAULT_TYPE, :reset, :submit].freeze
 
+    # @example 50|Button types
+    #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
+    #   <%= render(Primer::ButtonComponent.new(button_type: :primary)) { "Primary" } %>
+    #   <%= render(Primer::ButtonComponent.new(button_type: :danger)) { "Danger" } %>
+    #   <%= render(Primer::ButtonComponent.new(button_type: :outline)) { "Outline" } %>
+    #
+    # @example 50|Variants
+    #   <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>
+    #   <%= render(Primer::ButtonComponent.new(variant: :medium)) { "Medium" } %>
+    #   <%= render(Primer::ButtonComponent.new(variant: :large)) { "Large" } %>
+    #
+    # @param button_type [Symbol] <%= one_of(Primer::ButtonComponent::BUTTON_TYPE_OPTIONS) %>
+    # @param variant [Symbol] <%= one_of(Primer::ButtonComponent::VARIANT_OPTIONS) %>
+    # @param tag [Symbol] <%= one_of(Primer::ButtonComponent::TAG_OPTIONS) %>
+    # @param type [Symbol] <%= one_of(Primer::ButtonComponent::TYPE_OPTIONS) %>
+    # @param group_item [Boolean] Whether button is part of a ButtonGroup.
     def initialize(
       button_type: DEFAULT_BUTTON_TYPE,
       variant: DEFAULT_VARIANT,
@@ -45,9 +62,9 @@ module Primer
       @kwargs[:classes] = class_names(
         "btn",
         kwargs[:classes],
-        BUTTON_TYPE_MAPPINGS[fetch_or_fallback(BUTTON_TYPE_OPTIONS, button_type.to_sym, DEFAULT_BUTTON_TYPE)],
+        BUTTON_TYPE_MAPPINGS[fetch_or_fallback(BUTTON_TYPE_OPTIONS, button_type, DEFAULT_BUTTON_TYPE)],
         VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)],
-        group_item ? "BtnGroup-item" : ""
+        "BtnGroup-item" => group_item
       )
     end
 

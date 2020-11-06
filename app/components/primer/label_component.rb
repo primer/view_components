@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # Use labels to add contextual metadata to a design.
   class LabelComponent < Primer::Component
     SCHEME_MAPPINGS = {
       # gray
@@ -28,6 +29,22 @@ module Primer
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys << nil
 
+    # @example 40|Schemes
+    #   <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "default" } %>
+    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :gray)) { "gray" } %>
+    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :dark_gray)) { "dark_gray" } %>
+    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :yellow)) { "yellow" } %>
+    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :green)) { "green" } %>
+    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :purple)) { "purple" } %>
+    #
+    # @example 40|Variants
+    #   <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>
+    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", variant: :large)) { "Large" } %>
+    #
+    # @param title [String] `title` attribute for the component element.
+    # @param scheme [Symbol] <%= one_of(Primer::LabelComponent::SCHEME_OPTIONS) %>
+    # @param variant [Symbol] <%= one_of(Primer::LabelComponent::VARIANT_OPTIONS) %>
+    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
     def initialize(title:, scheme: nil, variant: nil, **kwargs)
       @kwargs = kwargs
       @kwargs[:bg] = :blue if scheme.nil?

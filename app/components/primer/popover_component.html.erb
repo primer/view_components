@@ -1,0 +1,10 @@
+<%= render Primer::BaseComponent.new(**@kwargs) do %>
+  <%= render body.component do %>
+    <% if heading %>
+      <%= render heading.component do %>
+        <%= heading.content %>
+      <% end %>
+    <% end %>
+    <%= body.content %>
+  <% end %>
+<% end %>

@@ -19,17 +19,18 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_m
-    assert_generated_class("m-4",  { m: 4 })
-    assert_generated_class("mx-4", { mx: 4 })
-    assert_generated_class("my-4", { my: 4 })
-    assert_generated_class("mt-4", { mt: 4 })
-    assert_generated_class("ml-4", { ml: 4 })
-    assert_generated_class("mb-4", { mb: 4 })
-    assert_generated_class("mr-4", { mr: 4 })
-    assert_generated_class("mt-n4", { mt: -4 })
-    assert_generated_class("ml-n4", { ml: -4 })
-    assert_generated_class("mb-n4", { mb: -4 })
-    assert_generated_class("mr-n4", { mr: -4 })
+    assert_generated_class("m-4",   { m: 4 })
+    assert_generated_class("mx-4",  { mx: 4 })
+    assert_generated_class("my-4",  { my: 4 })
+    assert_generated_class("mt-4",  { mt: 4 })
+    assert_generated_class("ml-4",  { ml: 4 })
+    assert_generated_class("mb-4",  { mb: 4 })
+    assert_generated_class("mr-4",  { mr: 4 })
+    assert_generated_class("mt-n4",   { mt: -4 })
+    assert_generated_class("ml-n4",   { ml: -4 })
+    assert_generated_class("mb-n4",   { mb: -4 })
+    assert_generated_class("mr-n4",   { mr: -4 })
+    assert_generated_class("mx-auto", { mx: :auto })
 
     assert_raises ArgumentError do
       Primer::Classify.call(m: -1)
@@ -153,16 +154,31 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("text-bold",     { font_weight: :bold })
   end
 
+  def test_box_shadow
+    assert_generated_class("box-shadow",             { box_shadow: true })
+    assert_generated_class("box-shadow-medium",      { box_shadow: :medium })
+    assert_generated_class("box-shadow-large",       { box_shadow: :large })
+    assert_generated_class("box-shadow-extra-large", { box_shadow: :extra_large })
+    assert_generated_class("box-shadow-none",        { box_shadow: :none })
+  end
+
   def test_col
     assert_generated_class("col-1", { col: 1 })
   end
 
   def test_border
-    assert_generated_class("border-left",    { border: :left })
-    assert_generated_class("border-top",     { border: :top })
-    assert_generated_class("border-bottom",  { border: :bottom })
-    assert_generated_class("border-right",   { border: :right })
-    assert_generated_class("border-y",       { border: :y })
+    assert_generated_class("border-left",   { border: :left })
+    assert_generated_class("border-top",    { border: :top })
+    assert_generated_class("border-bottom", { border: :bottom })
+    assert_generated_class("border-right",  { border: :right })
+    assert_generated_class("border-y",      { border: :y })
+  end
+
+  def test_border_margins
+    assert_generated_class("border-top-0",    { border_top: 0 })
+    assert_generated_class("border-bottom-0", { border_bottom: 0 })
+    assert_generated_class("border-left-0",   { border_left: 0 })
+    assert_generated_class("border-right-0",  { border_right: 0 })
   end
 
   def test_border_color
@@ -192,10 +208,13 @@ class PrimerClassifyTest < Minitest::Test
   def test_responsive
     assert_generated_class("p-4",  { p: [4] })
     assert_generated_class("p-4 p-sm-3",  { p: [4, 3] })
+    assert_generated_class("float-left float-md-right",  { float: [:left, nil, :right] })
     assert_generated_class("d-flex d-sm-block",  { display: [:flex, :block] })
     assert_generated_class("d-flex d-md-block",  { display: [:flex, nil, :block] })
+    assert_generated_class("d-lg-block",  { display: [nil, nil, nil, :block] })
     assert_generated_class("flex-row flex-sm-column",  { direction: [:row, :column] })
     assert_generated_class("col-1 col-sm-2",  { col: [1, 2] })
+    assert_generated_class("col-12 col-lg-9",  { col: [12, nil, nil, 9] })
     assert_generated_class("p-4 p-sm-3 p-md-3 p-lg-3",  { p: [4, 3, 3, 3] })
 
     assert_raises ArgumentError do

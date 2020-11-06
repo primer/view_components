@@ -14,6 +14,8 @@ class BlankslateComponentTest < Minitest::Test
     assert_selector("div.blankslate")
     assert_selector("h3", text: "Title")
     refute_selector(".blankslate-narrow")
+    refute_selector(".blankslate-large")
+    refute_selector(".blankslate-spacious")
   end
 
   def test_renders_a_blankslate_component_with_a_title_and_custom_tag
@@ -25,13 +27,17 @@ class BlankslateComponentTest < Minitest::Test
     assert_selector("h5", text: "Title")
   end
 
-  def test_renders_a_narrow_blankslate_component
+  def test_renders_a_narrow_large_and_spacious_blankslate_component
     result = render_inline(Primer::BlankslateComponent.new(
       title: "Title",
       narrow: true,
+      large: true,
+      spacious: true,
     ))
 
     assert_selector(".blankslate.blankslate-narrow")
+    assert_selector(".blankslate.blankslate-large")
+    assert_selector(".blankslate.blankslate-spacious")
   end
 
   def test_renders_a_blankslate_component_with_an_icon
@@ -43,10 +49,10 @@ class BlankslateComponentTest < Minitest::Test
     assert_selector(".blankslate-icon[height=32]")
   end
 
-  def test_renders_a_blankslate_component_with_an_icon_with_a_custom_height
+  def test_renders_a_blankslate_component_with_an_icon_with_a_custom_size
     render_inline(Primer::BlankslateComponent.new(
       icon: "octoface",
-      icon_height: 64,
+      icon_size: :large,
       title: "Title"
     ))
 

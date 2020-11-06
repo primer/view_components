@@ -7,32 +7,57 @@ module Primer
   #          reset will remove all styles from the <summary> element.
   #
   class DetailsComponent < Primer::Component
-    OVERLAY_DEFAULT = :none
+    include ViewComponent::Slotable
+
+    NO_OVERLAY = :none
     OVERLAY_MAPPINGS = {
-      OVERLAY_DEFAULT => "",
+      NO_OVERLAY => "",
       :default => "details-overlay",
       :dark => "details-overlay details-overlay-dark",
     }.freeze
 
-    BUTTON_DEFAULT = :default
-    BUTTON_RESET = :reset
-    BUTTON_OPTIONS = [BUTTON_DEFAULT, BUTTON_RESET]
+    with_slot :body, class_name: "Body"
+    with_slot :summary, class_name: "Summary"
 
-    with_content_areas :summary, :body
-
-    def initialize(overlay: OVERLAY_DEFAULT, button: BUTTON_DEFAULT, **kwargs)
-      @button = fetch_or_fallback(BUTTON_OPTIONS, button, BUTTON_DEFAULT)
-
+    def initialize(overlay: NO_OVERLAY, reset: false, **kwargs)
       @kwargs = kwargs
       @kwargs[:tag] = :details
       @kwargs[:classes] = class_names(
         kwargs[:classes],
-        OVERLAY_MAPPINGS[fetch_or_fallback(OVERLAY_MAPPINGS.keys, overlay, OVERLAY_DEFAULT)],
-        "details-reset" => @button == BUTTON_RESET
+        OVERLAY_MAPPINGS[fetch_or_fallback(OVERLAY_MAPPINGS.keys, overlay, NO_OVERLAY)],
+        "details-reset" => reset
       )
+    end
 
-      @summary_kwargs = { tag: :summary, role: "button" }
-      @summary_kwargs[:classes] = "btn" if @button == BUTTON_DEFAULT
+    def render?
+      summary.present? && body.present?
+    end
+
+    class Summary < Primer::Slot
+      def initialize(button: true, **kwargs)
+        @button = button
+
+        @kwargs = kwargs
+        @kwargs[:tag] = :summary
+        @kwargs[:role] = "button"
+      end
+
+      def component
+        return Primer::BaseComponent.new(**@kwargs) unless @button
+
+        Primer::ButtonComponent.new(**@kwargs)
+      end
+    end
+
+    class Body < Primer::Slot
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:tag] ||= :div
+      end
+
+      def component
+        Primer::BaseComponent.new(**@kwargs)
+      end
     end
   end
 end

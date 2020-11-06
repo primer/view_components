@@ -1,26 +1,7 @@
 # frozen_string_literal: true
 
-# This component consists of a .Subhead container, which has a light gray bottom border.
-
-# Use a heading element whenever possible as they can be
-# used as navigation for assistive technologies, and avoid skipping levels.
-
-# ## Basic example
-
-# The `Primer::SubheadComponent` can take the following arguments:
-
-# 1. `heading` (string). The heading to be rendered.
-# 2. `actions` (content). Slot to render any actions to the right of heading.
-# 3. `description` (string). Slot to render description under the heading.
-
-# ```erb
-# <%= Primer::SubheadComponent.new(heading: "Hello world")) do |component| %>
-#   <% component.slot(:actions) do %>
-#     My Actions
-#   <% end %>
-# <% end %>
-# ```
 module Primer
+  # Use the Subhead component for page headings.
   class SubheadComponent < Primer::Component
     include ViewComponent::Slotable
 
@@ -28,6 +9,46 @@ module Primer
     with_slot :actions, class_name: "Actions"
     with_slot :description, class_name: "Description"
 
+    # @example 95|Default
+    #   <%= render(Primer::SubheadComponent.new) do |component| %>
+    #     <% component.slot(:heading) do %>
+    #       My Heading
+    #     <% end %>
+    #     <% component.slot(:description) do %>
+    #       My Description
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example 95|Without border
+    #   <%= render(Primer::SubheadComponent.new(hide_border: true)) do |component| %>
+    #     <% component.slot(:heading) do %>
+    #       My Heading
+    #     <% end %>
+    #     <% component.slot(:description) do %>
+    #       My Description
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example 95|With actions
+    #   <%= render(Primer::SubheadComponent.new) do |component| %>
+    #     <% component.slot(:heading) do %>
+    #       My Heading
+    #     <% end %>
+    #     <% component.slot(:description) do %>
+    #       My Description
+    #     <% end %>
+    #     <% component.slot(:actions) do %>
+    #       <%= render(
+    #         Primer::ButtonComponent.new(
+    #           tag: :a, href: "http://www.google.com", button_type: :danger
+    #         )
+    #       ) { "Action" } %>
+    #     <% end %>
+    #   <% end %>
+    #
+    # @param spacious [Boolean] Whether to add spacing to the Subhead.
+    # @param hide_border [Boolean] Whether to hide the border under the heading.
+    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
     def initialize(spacious: false, hide_border: false, **kwargs)
       @kwargs = kwargs
 
@@ -51,6 +72,8 @@ module Primer
 
       attr_reader :kwargs
 
+      # @param danger [Boolean] Whether to style the heading as dangerous.
+      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
       def initialize(danger: false, **kwargs)
         @kwargs = kwargs
         @kwargs[:tag] ||= :div
@@ -67,6 +90,7 @@ module Primer
 
       attr_reader :kwargs
 
+      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] = :div
@@ -79,6 +103,7 @@ module Primer
 
       attr_reader :kwargs
 
+      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**kwargs)
         @kwargs = kwargs
         @kwargs[:tag] = :div

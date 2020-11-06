@@ -7,6 +7,7 @@
 /spec/reports/
 /tmp/
 /vendor/
+/demo/public/
 /test/log/
 **/*.stories.json
 **/node_modules/
@@ -14,3 +15,5 @@
 demo/public/packs/
 demo/tmp/
 demo/config/master.key
+primer_view_components*.gem
+.DS_Store
