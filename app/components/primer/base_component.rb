@@ -7,13 +7,22 @@ module Primer
   #
   # ## Responsive values
   #
-  # To use different argument values across responsive breakpoints, pass an array with the four values required for `[none, small, medium, large]`. If no value is needed for a breakpoint, pass `nil`. For example:
+  # To apply different values across responsive breakpoints, pass an array with up to five values in the order `[default, small, medium, large, xlarge]`. To skip a breakpoint, pass `nil`.
+  #
+  # For example:
   #
   # ```erb
-  # <%= render Primer::HeadingComponent.new(mt: [0, nil, nil, 4]) do %>
+  # <%= render Primer::HeadingComponent.new(mt: [0, nil, nil, 4, 2]) do %>
   #   Hello world
   # <% end %>
   # ```
+  #
+  # Renders:
+  #
+  # ```html
+  # <h1 class="mt-0 mt-lg-4 mt-xl-2">Hello world</h1>
+  # ```
+  #
   class BaseComponent < Primer::Component
     TEST_SELECTOR_TAG = :test_selector
 
