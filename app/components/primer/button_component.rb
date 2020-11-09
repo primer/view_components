@@ -48,20 +48,20 @@ module Primer
       tag: DEFAULT_TAG,
       type: DEFAULT_TYPE,
       group_item: false,
-      **kwargs
+      **system_arguments
     )
-      @kwargs = kwargs
-      @kwargs[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
 
-      if @kwargs[:tag] == :a
-        @kwargs[:role] = :button
+      if @system_arguments[:tag] == :a
+        @system_arguments[:role] = :button
       else
-        @kwargs[:type] = type
+        @system_arguments[:type] = type
       end
 
-      @kwargs[:classes] = class_names(
+      @system_arguments[:classes] = class_names(
         "btn",
-        kwargs[:classes],
+        system_arguments[:classes],
         BUTTON_TYPE_MAPPINGS[fetch_or_fallback(BUTTON_TYPE_OPTIONS, button_type, DEFAULT_BUTTON_TYPE)],
         VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)],
         "BtnGroup-item" => group_item
@@ -69,7 +69,7 @@ module Primer
     end
 
     def call
-      render(Primer::BaseComponent.new(**@kwargs)) { content }
+      render(Primer::BaseComponent.new(**@system_arguments)) { content }
     end
   end
 end

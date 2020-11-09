@@ -44,22 +44,22 @@ module Primer
     # @param title [String] `title` attribute for the component element.
     # @param scheme [Symbol] <%= one_of(Primer::LabelComponent::SCHEME_OPTIONS) %>
     # @param variant [Symbol] <%= one_of(Primer::LabelComponent::VARIANT_OPTIONS) %>
-    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(title:, scheme: nil, variant: nil, **kwargs)
-      @kwargs = kwargs
-      @kwargs[:bg] = :blue if scheme.nil?
-      @kwargs[:tag] ||= :span
-      @kwargs[:title] = title
-      @kwargs[:classes] = class_names(
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    def initialize(title:, scheme: nil, variant: nil, **system_arguments)
+      @system_arguments = system_arguments
+      @system_arguments[:bg] = :blue if scheme.nil?
+      @system_arguments[:tag] ||= :span
+      @system_arguments[:title] = title
+      @system_arguments[:classes] = class_names(
         "Label",
-        kwargs[:classes],
+        system_arguments[:classes],
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme)],
         VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant)]
       )
     end
 
     def call
-      render(Primer::BaseComponent.new(**@kwargs)) { content }
+      render(Primer::BaseComponent.new(**@system_arguments)) { content }
     end
   end
 end

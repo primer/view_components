@@ -60,7 +60,7 @@ class PrimerComponentTest < Minitest::Test
       render_component(component, { "data-ga-click": "Foo,bar" }.merge(args), proc)
       assert_selector("[data-ga-click='Foo,bar']", visible: false)
 
-      # Ensure all slots accept Primer kwargs
+      # Ensure all slots accept Primer system_arguments
       if component.slots.any?
         render_inline(component.new(**args)) do |c|
           component.slots.each do |slot_name, slot_attributes|

@@ -40,17 +40,17 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(**kwargs)
-      @kwargs = kwargs
-      @kwargs[:tag] ||= :div
-      @kwargs[:classes] = class_names(
-        kwargs[:classes],
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    def initialize(**system_arguments)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] ||= :div
+      @system_arguments[:classes] = class_names(
+        system_arguments[:classes],
         "Popover"
       )
-      @kwargs[:position] ||= :relative
-      @kwargs[:right] = false unless kwargs.key?(:right)
-      @kwargs[:left] = false unless kwargs.key?(:left)
+      @system_arguments[:position] ||= :relative
+      @system_arguments[:right] = false unless system_arguments.key?(:right)
+      @system_arguments[:left] = false unless system_arguments.key?(:left)
     end
 
     def render?
@@ -58,15 +58,15 @@ module Primer
     end
 
     class Heading < ViewComponent::Slot
-      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:mb] ||= 2
-        @kwargs[:tag] ||= :h4
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(**system_arguments)
+        @system_arguments = system_arguments
+        @system_arguments[:mb] ||= 2
+        @system_arguments[:tag] ||= :h4
       end
 
       def component
-        Primer::HeadingComponent.new(**@kwargs)
+        Primer::HeadingComponent.new(**@system_arguments)
       end
     end
 
@@ -89,24 +89,24 @@ module Primer
 
       # @param caret [Symbol] <%= one_of(Primer::PopoverComponent::Body::CARET_MAPPINGS.keys) %>
       # @param large [Boolean] Whether to use the large version of the component.
-      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(caret: CARET_DEFAULT, large: false, **kwargs)
-        @kwargs = kwargs
-        @kwargs[:classes] = class_names(
-          kwargs[:classes],
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(caret: CARET_DEFAULT, large: false, **system_arguments)
+        @system_arguments = system_arguments
+        @system_arguments[:classes] = class_names(
+          system_arguments[:classes],
           "Popover-message Box",
           CARET_MAPPINGS[fetch_or_fallback(CARET_MAPPINGS.keys, caret, CARET_DEFAULT)],
           "Popover-message--large" => large
         )
-        @kwargs[:p] ||= 4
-        @kwargs[:mt] ||= 2
-        @kwargs[:mx] ||= :auto
-        @kwargs[:text_align] ||= :left
-        @kwargs[:box_shadow] ||= :large
+        @system_arguments[:p] ||= 4
+        @system_arguments[:mt] ||= 2
+        @system_arguments[:mx] ||= :auto
+        @system_arguments[:text_align] ||= :left
+        @system_arguments[:box_shadow] ||= :large
       end
 
       def component
-        Primer::BoxComponent.new(**@kwargs)
+        Primer::BoxComponent.new(**@system_arguments)
       end
     end
   end

@@ -9,7 +9,7 @@ module Primer
     with_slot :badge, class_name: "Badge"
     with_slot :body, class_name: "Body"
 
-    attr_reader :kwargs
+    attr_reader :system_arguments
 
     # @example 75|Default
     #   <div style="padding-left: 60px">
@@ -21,14 +21,14 @@ module Primer
     #   </div>
     #
     # @param condensed [Boolean] Reduce the vertical padding and remove the background from the badge item. Most commonly used in commits.
-    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(condensed: false, **kwargs)
-      @kwargs = kwargs
-      @kwargs[:tag] = :div
-      @kwargs[:classes] = class_names(
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    def initialize(condensed: false, **system_arguments)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = :div
+      @system_arguments[:classes] = class_names(
         "TimelineItem",
         condensed ? "TimelineItem--condensed" : "",
-        kwargs[:classes]
+        system_arguments[:classes]
       )
     end
 
@@ -37,55 +37,55 @@ module Primer
     end
 
     class Avatar < Primer::Slot
-      attr_reader :kwargs, :alt, :src, :size, :square
+      attr_reader :system_arguments, :alt, :src, :size, :square
 
       # @param alt [String] Alt text for avatar image.
       # @param src [String] Src attribute for avatar image.
       # @param size [Integer] Image size.
       # @param square [Boolean] Whether to round the edges of the image.
-      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(alt: nil, src: nil, size: 40, square: true, **kwargs)
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(alt: nil, src: nil, size: 40, square: true, **system_arguments)
         @alt = alt
         @src = src
         @size = size
         @square = square
 
-        @kwargs = kwargs
-        @kwargs[:tag] = :div
-        @kwargs[:classes] = class_names(
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :div
+        @system_arguments[:classes] = class_names(
           "TimelineItem-avatar",
-          kwargs[:classes]
+          system_arguments[:classes]
         )
       end
     end
 
     class Badge < Primer::Slot
-      attr_reader :kwargs, :icon
+      attr_reader :system_arguments, :icon
 
       # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
-      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(icon: nil, **kwargs)
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(icon: nil, **system_arguments)
         @icon = icon
 
-        @kwargs = kwargs
-        @kwargs[:tag] = :div
-        @kwargs[:classes] = class_names(
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :div
+        @system_arguments[:classes] = class_names(
           "TimelineItem-badge",
-          kwargs[:classes]
+          system_arguments[:classes]
         )
       end
     end
 
     class Body < Primer::Slot
-      attr_reader :kwargs
+      attr_reader :system_arguments
 
-      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] = :div
-        @kwargs[:classes] = class_names(
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(**system_arguments)
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :div
+        @system_arguments[:classes] = class_names(
           "TimelineItem-body",
-          kwargs[:classes]
+          system_arguments[:classes]
         )
       end
     end

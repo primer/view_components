@@ -25,21 +25,21 @@ module Primer
     #
     # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
     # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
-    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(icon:, size: SIZE_DEFAULT, **kwargs)
-      @icon, @kwargs = icon, kwargs
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    def initialize(icon:, size: SIZE_DEFAULT, **system_arguments)
+      @icon, @system_arguments = icon, system_arguments
 
-      @kwargs[:class] = Primer::Classify.call(**@kwargs)[:class]
-      @kwargs[:height] ||= SIZE_MAPPINGS[size]
+      @system_arguments[:class] = Primer::Classify.call(**@system_arguments)[:class]
+      @system_arguments[:height] ||= SIZE_MAPPINGS[size]
 
       # Filter out classify options to prevent them from becoming invalid html attributes.
       # Note height and width are both classify options and valid html attributes.
-      octicon_helper_options = @kwargs.slice(:height, :width)
-      @kwargs = @kwargs.except(*Primer::Classify::VALID_KEYS, :classes).merge(octicon_helper_options)
+      octicon_helper_options = @system_arguments.slice(:height, :width)
+      @system_arguments = @system_arguments.except(*Primer::Classify::VALID_KEYS, :classes).merge(octicon_helper_options)
     end
 
     def call
-      octicon(@icon, **@kwargs)
+      octicon(@icon, **@system_arguments)
     end
   end
 end

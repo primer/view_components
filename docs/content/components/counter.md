@@ -24,4 +24,4 @@ Use Primer::CounterComponent to add a count to navigational elements and buttons
 | `hide_if_zero` | `Boolean` | `false` | If true, a `hidden` attribute is added to the counter if `count` is zero. |
 | `text` | `String` | `""` | Text to display instead of count. |
 | `round` | `Boolean` | `false` | Whether to apply our standard rounding logic to value. |
-| `kwargs` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |

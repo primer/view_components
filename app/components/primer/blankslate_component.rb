@@ -87,12 +87,12 @@ module Primer
       large: false,
       spacious: false,
 
-      **kwargs
+      **system_arguments
     )
-      @kwargs = kwargs
-      @kwargs[:tag] ||= :div
-      @kwargs[:classes] = class_names(
-        @kwargs[:classes],
+      @system_arguments = system_arguments
+      @system_arguments[:tag] ||= :div
+      @system_arguments[:classes] = class_names(
+        @system_arguments[:classes],
         "blankslate",
         "blankslate-narrow": narrow,
         "blankslate-large": large,

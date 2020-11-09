@@ -1,4 +1,4 @@
-<%= render Primer::BaseComponent.new(**@kwargs) do %>
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <%= render(Primer::OcticonComponent.new(icon: @icon)) if @icon %>
   <%= content %>
   <% if @dismissible %>
@@ -7,7 +7,7 @@
     </button>
   <% end %>
   <% if actions.present? %>
-    <%= render Primer::BaseComponent.new(**actions.kwargs) do %>
+    <%= render Primer::BaseComponent.new(**actions.system_arguments) do %>
       <%= actions.content %>
     <% end %>
   <% end %>

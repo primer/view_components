@@ -20,7 +20,7 @@ module Primer
     # @param hide_if_zero [Boolean] If true, a `hidden` attribute is added to the counter if `count` is zero.
     # @param text [String] Text to display instead of count.
     # @param round [Boolean] Whether to apply our standard rounding logic to value.
-    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       count: 0,
       scheme: DEFAULT_SCHEME,
@@ -28,23 +28,23 @@ module Primer
       hide_if_zero: false,
       text: "",
       round: false,
-      **kwargs
+      **system_arguments
     )
-      @count, @limit, @hide_if_zero, @text, @round, @kwargs = count, limit, hide_if_zero, text, round, kwargs
+      @count, @limit, @hide_if_zero, @text, @round, @system_arguments = count, limit, hide_if_zero, text, round, system_arguments
 
-      @kwargs[:title] = title
-      @kwargs[:tag] = :span
-      @kwargs[:classes] = class_names(
-        @kwargs[:classes],
+      @system_arguments[:title] = title
+      @system_arguments[:tag] = :span
+      @system_arguments[:classes] = class_names(
+        @system_arguments[:classes],
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)]
       )
       if count == 0 && hide_if_zero
-        @kwargs[:hidden] = true
+        @system_arguments[:hidden] = true
       end
     end
 
     def call
-      render(Primer::BaseComponent.new(**@kwargs)) { value }
+      render(Primer::BaseComponent.new(**@system_arguments)) { value }
     end
 
     private

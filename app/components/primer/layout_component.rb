@@ -27,16 +27,16 @@ module Primer
     # @param responsive [Boolean] Whether to collapse layout to a single column at smaller widths.
     # @param side [Symbol] Which side to display the sidebar on. <%= one_of(Primer::LayoutComponent::ALLOWED_SIDES) %>
     # @param sidebar_col [Integer] Sidebar column width.
-    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(responsive: false, side: DEFAULT_SIDE, sidebar_col: DEFAULT_SIDEBAR_COL, **kwargs)
-      @kwargs = kwargs
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    def initialize(responsive: false, side: DEFAULT_SIDE, sidebar_col: DEFAULT_SIDEBAR_COL, **system_arguments)
+      @system_arguments = system_arguments
       @side = fetch_or_fallback(ALLOWED_SIDES, side, DEFAULT_SIDE)
       @responsive = responsive
-      @kwargs[:classes] = class_names(
+      @system_arguments[:classes] = class_names(
         "gutter-condensed gutter-lg",
-        @kwargs[:classes]
+        @system_arguments[:classes]
       )
-      @kwargs[:direction] = responsive ? [:column, nil, :row] : nil
+      @system_arguments[:direction] = responsive ? [:column, nil, :row] : nil
 
       @sidebar_col = fetch_or_fallback(ALLOWED_SIDEBAR_COLS, sidebar_col, DEFAULT_SIDEBAR_COL)
       @main_col = MAX_COL - @sidebar_col

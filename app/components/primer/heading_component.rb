@@ -2,13 +2,13 @@
 
 module Primer
   class HeadingComponent < Primer::Component
-    def initialize(**kwargs)
-      @kwargs = kwargs
-      @kwargs[:tag] ||= :h1
+    def initialize(**system_arguments)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] ||= :h1
     end
 
     def call
-      render(Primer::BaseComponent.new(**@kwargs)) { content }
+      render(Primer::BaseComponent.new(**@system_arguments)) { content }
     end
   end
 end

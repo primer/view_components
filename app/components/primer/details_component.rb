@@ -19,11 +19,11 @@ module Primer
     with_slot :body, class_name: "Body"
     with_slot :summary, class_name: "Summary"
 
-    def initialize(overlay: NO_OVERLAY, reset: false, **kwargs)
-      @kwargs = kwargs
-      @kwargs[:tag] = :details
-      @kwargs[:classes] = class_names(
-        kwargs[:classes],
+    def initialize(overlay: NO_OVERLAY, reset: false, **system_arguments)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = :details
+      @system_arguments[:classes] = class_names(
+        system_arguments[:classes],
         OVERLAY_MAPPINGS[fetch_or_fallback(OVERLAY_MAPPINGS.keys, overlay, NO_OVERLAY)],
         "details-reset" => reset
       )
@@ -34,29 +34,29 @@ module Primer
     end
 
     class Summary < Primer::Slot
-      def initialize(button: true, **kwargs)
+      def initialize(button: true, **system_arguments)
         @button = button
 
-        @kwargs = kwargs
-        @kwargs[:tag] = :summary
-        @kwargs[:role] = "button"
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :summary
+        @system_arguments[:role] = "button"
       end
 
       def component
-        return Primer::BaseComponent.new(**@kwargs) unless @button
+        return Primer::BaseComponent.new(**@system_arguments) unless @button
 
-        Primer::ButtonComponent.new(**@kwargs)
+        Primer::ButtonComponent.new(**@system_arguments)
       end
     end
 
     class Body < Primer::Slot
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] ||= :div
+      def initialize(**system_arguments)
+        @system_arguments = system_arguments
+        @system_arguments[:tag] ||= :div
       end
 
       def component
-        Primer::BaseComponent.new(**@kwargs)
+        Primer::BaseComponent.new(**@system_arguments)
       end
     end
   end
