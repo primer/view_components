@@ -59,12 +59,12 @@ module Primer
     # @param font_size [String] <%= one_of(["00", "0", "1", "2", "3", "4", "5", "6"]) %>
     # @param tag [Symbol] HTML tag name to be passed to `tag.send`
     # @param classes [String] CSS class name value to be concatenated with generated Primer CSS classes
-    def initialize(tag:, classes: nil, **kwargs)
+    def initialize(tag:, classes: nil, **system_arguments)
       @tag = tag
-      @result = Primer::Classify.call(**kwargs.merge(classes: classes))
+      @result = Primer::Classify.call(**system_arguments.merge(classes: classes))
 
       # Filter out Primer keys so they don't get assigned as HTML attributes
-      @content_tag_args = add_test_selector(kwargs).except(*Primer::Classify::VALID_KEYS)
+      @content_tag_args = add_test_selector(system_arguments).except(*Primer::Classify::VALID_KEYS)
     end
 
     def call

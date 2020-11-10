@@ -20,13 +20,13 @@ module Primer
     #     component.slot(:footer) { "Footer" }
     #   end %>
     #
-    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(**kwargs)
-      @kwargs = kwargs
-      @kwargs[:tag] = :div
-      @kwargs[:classes] = class_names(
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    def initialize(**system_arguments)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = :div
+      @system_arguments[:classes] = class_names(
         "Box",
-        kwargs[:classes]
+        system_arguments[:classes]
       )
     end
 
@@ -35,53 +35,53 @@ module Primer
     end
 
     class Header < Primer::Slot
-      attr_reader :kwargs
-      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] = :div
-        @kwargs[:classes] = class_names(
+      attr_reader :system_arguments
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(**system_arguments)
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :div
+        @system_arguments[:classes] = class_names(
           "Box-header",
-          kwargs[:classes]
+          system_arguments[:classes]
         )
       end
     end
 
     class Body < Primer::Slot
-      attr_reader :kwargs
-      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] = :div
-        @kwargs[:classes] = class_names(
+      attr_reader :system_arguments
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(**system_arguments)
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :div
+        @system_arguments[:classes] = class_names(
           "Box-body",
-          kwargs[:classes]
+          system_arguments[:classes]
         )
       end
     end
 
     class Footer < Primer::Slot
-      attr_reader :kwargs
-      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] = :div
-        @kwargs[:classes] = class_names(
+      attr_reader :system_arguments
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(**system_arguments)
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :div
+        @system_arguments[:classes] = class_names(
           "Box-footer",
-          kwargs[:classes]
+          system_arguments[:classes]
         )
       end
     end
 
     class Row < Primer::Slot
-      attr_reader :kwargs
-      # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] = :li
-        @kwargs[:classes] = class_names(
+      attr_reader :system_arguments
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(**system_arguments)
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :li
+        @system_arguments[:classes] = class_names(
           "Box-row",
-          kwargs[:classes]
+          system_arguments[:classes]
         )
       end
     end

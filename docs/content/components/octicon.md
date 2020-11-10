@@ -36,4 +36,4 @@ Renders an [Octicon](https://primer.style/octicons/) with [System Arguments](/sy
 | :- | :- | :- | :- |
 | `icon` | `String` | N/A | Name of [Octicon](https://primer.style/octicons/) to use. |
 | `size` | `Symbol` | `:small` | One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`). |
-| `kwargs` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |

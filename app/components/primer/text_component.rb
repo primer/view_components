@@ -7,14 +7,14 @@ module Primer
     #   <%= render(Primer::TextComponent.new(tag: :p, font_weight: :bold)) { "Bold Text" } %>
     #   <%= render(Primer::TextComponent.new(tag: :p, color: :red_5)) { "Red Text" } %>
     #
-    # @param kwargs [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(**kwargs)
-      @kwargs = kwargs
-      @kwargs[:tag] ||= :span
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    def initialize(**system_arguments)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] ||= :span
     end
 
     def call
-      render(Primer::BaseComponent.new(**@kwargs)) { content }
+      render(Primer::BaseComponent.new(**@system_arguments)) { content }
     end
   end
 end

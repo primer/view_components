@@ -15,25 +15,25 @@ module Primer
     # @param alt [String] Passed through to alt on img tag
     # @param size [Integer] Adds the avatar-small class if less than 24
     # @param square [Boolean] Used to create a square avatar.
-    def initialize(src:, alt:, size: 20, square: false, **kwargs)
-      @kwargs = kwargs
-      @kwargs[:tag] = :img
-      @kwargs[:src] = src
-      @kwargs[:alt] = alt
-      @kwargs[:size] = size
-      @kwargs[:height] = size
-      @kwargs[:width] = size
+    def initialize(src:, alt:, size: 20, square: false, **system_arguments)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = :img
+      @system_arguments[:src] = src
+      @system_arguments[:alt] = alt
+      @system_arguments[:size] = size
+      @system_arguments[:height] = size
+      @system_arguments[:width] = size
 
-      @kwargs[:classes] = class_names(
+      @system_arguments[:classes] = class_names(
         "avatar",
-        kwargs[:classes],
+        system_arguments[:classes],
         "avatar--small" => size < SMALL_THRESHOLD,
         "CircleBadge" => !square
       )
     end
 
     def call
-      render(Primer::BaseComponent.new(**@kwargs)) { content }
+      render(Primer::BaseComponent.new(**@system_arguments)) { content }
     end
   end
 end

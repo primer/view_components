@@ -1,4 +1,4 @@
-<%= render Primer::BaseComponent.new(**@kwargs) do %>
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <% if @icon.present? %>
     <%= render(Primer::OcticonComponent.new(
       icon: @icon,

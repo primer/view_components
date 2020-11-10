@@ -37,7 +37,7 @@ module Primer
       flex_wrap: FLEX_WRAP_DEFAULT,
       align_items: ALIGN_ITEMS_DEFAULT,
       direction: nil,
-      **kwargs
+      **system_arguments
     )
       @align_items = fetch_or_fallback(ALIGN_ITEMS_OPTIONS, align_items, ALIGN_ITEMS_DEFAULT)
       @justify_content = fetch_or_fallback(JUSTIFY_CONTENT_OPTIONS, justify_content, JUSTIFY_CONTENT_DEFAULT)
@@ -51,13 +51,13 @@ module Primer
           DEFAULT_DIRECTION
         end
 
-      @kwargs = kwargs.merge({ direction: @direction }.compact)
-      @kwargs[:classes] = class_names(@kwargs[:classes], component_class_names)
-      @kwargs[:display] = fetch_or_fallback(INLINE_OPTIONS, inline, INLINE_DEFAULT) ? :inline_flex : :flex
+      @system_arguments = system_arguments.merge({ direction: @direction }.compact)
+      @system_arguments[:classes] = class_names(@system_arguments[:classes], component_class_names)
+      @system_arguments[:display] = fetch_or_fallback(INLINE_OPTIONS, inline, INLINE_DEFAULT) ? :inline_flex : :flex
     end
 
     def call
-      render(Primer::BoxComponent.new(**@kwargs)) { content }
+      render(Primer::BoxComponent.new(**@system_arguments)) { content }
     end
 
     private

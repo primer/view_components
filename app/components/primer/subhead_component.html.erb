@@ -1,16 +1,16 @@
-<%= render Primer::BaseComponent.new(**@kwargs) do %>
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <% if heading.present? %>
-    <%= render Primer::BaseComponent.new(**heading.kwargs) do %>
+    <%= render Primer::BaseComponent.new(**heading.system_arguments) do %>
       <%= heading.content %>
     <% end %>
   <% end %>
   <% if actions.present? %>
-    <%= render Primer::BaseComponent.new(**actions.kwargs) do %>
+    <%= render Primer::BaseComponent.new(**actions.system_arguments) do %>
       <%= actions.content %>
     <% end %>
   <% end %>
   <% if description.present? %>
-    <%= render Primer::BaseComponent.new(**description.kwargs) do %>
+    <%= render Primer::BaseComponent.new(**description.system_arguments) do %>
       <%= description.content %>
     <% end %>
   <% end %>
