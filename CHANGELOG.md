@@ -2,6 +2,12 @@
 
 ## main
 
+## 0.0.14
+
+* Add functional colors to Label.
+
+    *Joel Hawksley*
+
 ## 0.0.13
 
 * Add support for `xl` breakpoint.
