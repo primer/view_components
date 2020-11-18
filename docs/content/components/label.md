@@ -8,7 +8,7 @@ Use labels to add contextual metadata to a design.
 
 ### Schemes
 
-<iframe style="width: 100%; border: 0px; height: 40px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span title='Label: Label' class='Label bg-blue'>default</span><span title='Label: Label' class='Label '>gray</span><span title='Label: Label' class='Label '>dark_gray</span><span title='Label: Label' class='Label '>yellow</span><span title='Label: Label' class='Label '>green</span><span title='Label: Label' class='Label '>purple</span></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 40px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span title='Label: Label' class='Label bg-blue'>default</span><span title='Label: Label' class='Label Label--gray '>gray</span><span title='Label: Label' class='Label Label--gray-darker '>dark_gray</span><span title='Label: Label' class='Label Label--yellow '>yellow</span><span title='Label: Label' class='Label Label--green '>green</span><span title='Label: Label' class='Label Label--purple '>purple</span></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "default" } %>
