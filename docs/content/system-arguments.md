@@ -35,13 +35,13 @@ Renders:
 | `ml` | `Integer` | Margin left. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
 | `mx` | `Integer` | Horizontal margins. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |
 | `my` | `Integer` | Vertical margins. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `m` | `Integer` | Padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `mt` | `Integer` | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `mr` | `Integer` | Padding right. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `mb` | `Integer` | Padding bottom. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `ml` | `Integer` | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `mx` | `Integer` | Horizontal padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `my` | `Integer` | Vertical padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `p` | `Integer` | Padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `pt` | `Integer` | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `pr` | `Integer` | Padding right. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `pb` | `Integer` | Padding bottom. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `pl` | `Integer` | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `px` | `Integer` | Horizontal padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `py` | `Integer` | Vertical padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
 | `position` | `Symbol` | One of `:relative`, `:absolute`, or `:fixed`. |
 | `top` | `Boolean` | If `false`, sets `top: 0`. |
 | `right` | `Boolean` | If `false`, sets `right: 0`. |

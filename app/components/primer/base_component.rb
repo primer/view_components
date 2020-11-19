@@ -33,13 +33,13 @@ module Primer
     # @param ml [Integer] Margin left. <%= one_of((-6..6).to_a) %>
     # @param mx [Integer] Horizontal margins. <%= one_of((-6..6).to_a + [:auto]) %>
     # @param my [Integer] Vertical margins. <%= one_of((-6..6).to_a) %>
-    # @param m [Integer] Padding. <%= one_of((0..6).to_a) %>
-    # @param mt [Integer] Padding left. <%= one_of((0..6).to_a) %>
-    # @param mr [Integer] Padding right. <%= one_of((0..6).to_a) %>
-    # @param mb [Integer] Padding bottom. <%= one_of((0..6).to_a) %>
-    # @param ml [Integer] Padding left. <%= one_of((0..6).to_a) %>
-    # @param mx [Integer] Horizontal padding. <%= one_of((0..6).to_a) %>
-    # @param my [Integer] Vertical padding. <%= one_of((0..6).to_a) %>
+    # @param p [Integer] Padding. <%= one_of((0..6).to_a) %>
+    # @param pt [Integer] Padding left. <%= one_of((0..6).to_a) %>
+    # @param pr [Integer] Padding right. <%= one_of((0..6).to_a) %>
+    # @param pb [Integer] Padding bottom. <%= one_of((0..6).to_a) %>
+    # @param pl [Integer] Padding left. <%= one_of((0..6).to_a) %>
+    # @param px [Integer] Horizontal padding. <%= one_of((0..6).to_a) %>
+    # @param py [Integer] Vertical padding. <%= one_of((0..6).to_a) %>
     #
     # @param position [Symbol] <%= one_of([:relative, :absolute, :fixed]) %>
     #
