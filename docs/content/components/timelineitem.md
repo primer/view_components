@@ -25,7 +25,7 @@ Use `TimelineItem` to display items on a vertical timeline, connected by badge e
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `condensed` | `Boolean` | `false` | Reduce the vertical padding and remove the background from the badge item. Most commonly used in commits. |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `avatar` slot
 
@@ -35,17 +35,17 @@ Use `TimelineItem` to display items on a vertical timeline, connected by badge e
 | `src` | `String` | `nil` | Src attribute for avatar image. |
 | `size` | `Integer` | `40` | Image size. |
 | `square` | `Boolean` | `true` | Whether to round the edges of the image. |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `badge` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `icon` | `String` | `nil` | Name of [Octicon](https://primer.style/octicons/) to use. |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `body` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

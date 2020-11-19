@@ -3,7 +3,7 @@
   children:
     - title: Contributing
       url: /contributing
-    - title: System Arguments
+    - title: System arguments
       url: /system-arguments
 - title: Components
   url: /components

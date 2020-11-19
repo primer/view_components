@@ -61,7 +61,7 @@ namespace :docs do
   end
 
   def link_to_system_arguments_docs
-    "[System Arguments](/system-arguments)"
+    "[System arguments](/system-arguments)"
   end
 
   def pretty_value(val)
@@ -213,11 +213,11 @@ namespace :docs do
       end
     end
 
-    # Build System Arguments docs from BaseComponent
+    # Build system arguments docs from BaseComponent
     documentation = registry.get(Primer::BaseComponent.name)
     File.open("docs/content/system-arguments.md", "w") do |f|
       f.puts("---")
-      f.puts("title: System Arguments")
+      f.puts("title: System arguments")
       f.puts("---")
       f.puts
       f.puts(documentation.base_docstring)
@@ -227,7 +227,7 @@ namespace :docs do
 
       f.puts("## Arguments")
       f.puts
-      f.puts("| Name | Type | Default | Description |")
+      f.puts("| Name | Type | Description |")
       f.puts("| :- | :- | :- |")
 
       initialize_method.tags(:param).each do |tag|

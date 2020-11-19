@@ -2,6 +2,10 @@
 
 ## main
 
+* Rename `v` system argument to `visibility`.
+
+    *Joel Hawksley*
+
 ## 0.0.14
 
 * Add functional colors to Label.

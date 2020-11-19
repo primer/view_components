@@ -35,4 +35,4 @@ Use labels to add contextual metadata to a design.
 | `title` | `String` | N/A | `title` attribute for the component element. |
 | `scheme` | `Symbol` | `nil` | One of `:gray`, `:dark_gray`, `:yellow`, `:orange`, `:red`, `:green`, `:blue`, `:purple`, `:pink`, `:outline`, or `:green_outline`. |
 | `variant` | `Symbol` | `nil` | One of `:large`, `:inline`, or `nil`. |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

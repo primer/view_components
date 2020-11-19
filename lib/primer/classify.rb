@@ -29,7 +29,7 @@ module Primer
     WIDTH_KEY = :width
     HEIGHT_KEY = :height
     BOX_SHADOW_KEY = :box_shadow
-
+    VISIBILITY_KEY = :visibility
 
     BOOLEAN_MAPPINGS = {
       underline: {
@@ -102,7 +102,8 @@ module Primer
         ALIGN_SELF_KEY,
         WIDTH_KEY,
         HEIGHT_KEY,
-        BOX_SHADOW_KEY
+        BOX_SHADOW_KEY,
+        VISIBILITY_KEY
       ]
     ).freeze
 
@@ -231,6 +232,8 @@ module Primer
               else
                 memo[:classes] << "box-shadow-#{dasherized_val}"
               end
+            elsif key == VISIBILITY_KEY
+              memo[:classes] << "v-#{dasherized_val}"
             else
               memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{dasherized_val}"
             end
