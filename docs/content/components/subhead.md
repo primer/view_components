@@ -64,23 +64,23 @@ Use the Subhead component for page headings.
 | :- | :- | :- | :- |
 | `spacious` | `Boolean` | `false` | Whether to add spacing to the Subhead. |
 | `hide_border` | `Boolean` | `false` | Whether to hide the border under the heading. |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `heading` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `danger` | `Boolean` | `false` | Whether to style the heading as dangerous. |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `actions` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `description` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

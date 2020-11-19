@@ -25,28 +25,28 @@ end %>
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `header` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `body` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `footer` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `row` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

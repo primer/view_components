@@ -42,4 +42,4 @@ Component for rendering the status of an item.
 | `color` | `Symbol` | `:default` | Background color. One of `:default`, `:green`, `:red`, or `:purple`. |
 | `tag` | `Symbol` | `:span` | HTML tag for element. One of `:span`, `:div`, or `:a`. |
 | `size` | `Symbol` | `:default` | One of `:default` and `:small`. |
-| `system_arguments` | `Hash` | N/A | [System Arguments](/system-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
