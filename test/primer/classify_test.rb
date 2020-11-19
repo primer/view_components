@@ -88,8 +88,8 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_v
-    assert_generated_class("v-hidden",  { v: :hidden })
-    assert_generated_class("v-visible", { v: :visible })
+    assert_generated_class("v-hidden",  { visibility: :hidden })
+    assert_generated_class("v-visible", { visibility: :visible })
   end
 
   def test_hide
