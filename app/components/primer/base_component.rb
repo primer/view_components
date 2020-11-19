@@ -25,13 +25,14 @@ module Primer
   #
   # ## HTML attributes
   #
-  # System arguments sinclude most HTML attributes. For example:
+  # System arguments include most HTML attributes. For example:
   #
   # | Name | Type | Description |
   # | :- | :- | :- |
   # | `width` | `Integer` | Width. |
   # | `height` | `Integer` | Height. |
   # | `data` | `Hash` | Data attributes. For example: `data: { foo: :bar }` will render `data-foo='bar'`. |
+  # | `aria` | `Hash` | Aria attributes. For example: `aria: { label: "foo" }` will render `aria-label='foo'`. |
   # | `title` | `String` | The `title` attribute. |
   # | `hidden` | `Boolean` | Whether to assign the `hidden` attribute. |
   class BaseComponent < Primer::Component
