@@ -31,8 +31,8 @@ module Primer
   # | :- | :- | :- |
   # | `width` | `Integer` | Width. |
   # | `height` | `Integer` | Height. |
-  # | `data` | `Hash` | Data attributes. For example: `data: { foo: :bar }` will render `data-foo='bar'`. |
-  # | `aria` | `Hash` | Aria attributes. For example: `aria: { label: "foo" }` will render `aria-label='foo'`. |
+  # | `data` | `Hash` | Data attributes: `data: { foo: :bar }` renders `data-foo='bar'`. |
+  # | `aria` | `Hash` | Aria attributes: `aria: { label: "foo" }` renders `aria-label='foo'`. |
   # | `title` | `String` | The `title` attribute. |
   # | `hidden` | `Boolean` | Whether to assign the `hidden` attribute. |
   class BaseComponent < Primer::Component
