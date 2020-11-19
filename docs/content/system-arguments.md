@@ -77,7 +77,7 @@ System arguments include most HTML attributes. For example:
 | `border_bottom` | `Integer` | Set to `0` to remove the bottom border. |
 | `border_left` | `Integer` | Set to `0` to remove the left border. |
 | `border_right` | `Integer` | Set to `0` to remove the right border. |
-| `font_size` | `String` | One of `00`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `font_size` | `String, Integer` | One of `00`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
 | `text_align` | `Symbol` | Text alignment. One of `:left`, `:right`, or `:center`. |
 | `font_weight` | `Symbol` | Font weight. One of `:light`, `:normal`, or `:bold`. |
 | `flex` | `Integer, Symbol` | One of `1` and `:auto`. |

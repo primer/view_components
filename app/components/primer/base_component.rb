@@ -86,7 +86,7 @@ module Primer
     # @param border_left [Integer] Set to `0` to remove the left border.
     # @param border_right [Integer] Set to `0` to remove the right border.
     #
-    # @param font_size [String] <%= one_of(["00", "0", "1", "2", "3", "4", "5", "6"]) %>
+    # @param font_size [String, Integer] <%= one_of(["00", 0, 1, 2, 3, 4, 5, 6]) %>
     # @param text_align [Symbol] Text alignment. <%= one_of([:left, :right, :center]) %>
     # @param font_weight [Symbol] Font weight. <%= one_of([:light, :normal, :bold]) %>
     #
