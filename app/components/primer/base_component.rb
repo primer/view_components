@@ -78,7 +78,7 @@ module Primer
     # @param color [Symbol] Text color. <%= one_of([:blue, :red, :gray_light, :gray, :gray_dark, :green, :orange, :orange_light, :purple, :pink, :white, :inherit]) %> Note: this API is subject to change as we move to functional colors.
     # @param bg [String, Symbol] Background color. Accepts either a hex value as a String or a color name as a Symbol.
     #
-    # @param box_shadow [Boolean, Symbol] Box shadow. <%= one_of([true, :medium, :large, :extra_large, :none])
+    # @param box_shadow [Boolean, Symbol] Box shadow. <%= one_of([true, :medium, :large, :extra_large, :none]) %>
     # @param border [Symbol] <%= one_of([:left, :top, :bottom, :right, :y, :x]) %>
     # @param border_color [Symbol] <%= one_of([:blue, :blue_light, :gray, :gray_dark, :green, :purple, :red, :red_light, :white, :yellow, :black_fade]) %> Note: this API is subject to change as we move to functional colors.
     # @param border_top [Integer] Set to `0` to remove the top border.

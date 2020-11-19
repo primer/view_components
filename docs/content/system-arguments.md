@@ -70,7 +70,7 @@ System arguments include most HTML attributes. For example:
 | `underline` | `Boolean` | Whether text should be underlined. |
 | `color` | `Symbol` | Text color. One of `:blue`, `:red`, `:gray_light`, `:gray`, `:gray_dark`, `:green`, `:orange`, `:orange_light`, `:purple`, `:pink`, `:white`, or `:inherit`. Note: this API is subject to change as we move to functional colors. |
 | `bg` | `String, Symbol` | Background color. Accepts either a hex value as a String or a color name as a Symbol. |
-| `box_shadow` | `Boolean, Symbol` | Box shadow. <%= one_of([true, :medium, :large, :extra_large, :none]) |
+| `box_shadow` | `Boolean, Symbol` | Box shadow. One of `true`, `:medium`, `:large`, `:extra_large`, or `:none`. |
 | `border` | `Symbol` | One of `:left`, `:top`, `:bottom`, `:right`, `:y`, or `:x`. |
 | `border_color` | `Symbol` | One of `:blue`, `:blue_light`, `:gray`, `:gray_dark`, `:green`, `:purple`, `:red`, `:red_light`, `:white`, `:yellow`, or `:black_fade`. Note: this API is subject to change as we move to functional colors. |
 | `border_top` | `Integer` | Set to `0` to remove the top border. |
