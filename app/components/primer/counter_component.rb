@@ -16,7 +16,7 @@ module Primer
     #
     # @param count [Integer, Float::INFINITY, nil] The number to be displayed (e.x. # of issues, pull requests)
     # @param scheme [Symbol] Color scheme. One of `SCHEME_MAPPINGS.keys`.
-    # @param limit [Integer, nil] Maximum value to display, pass nil if you don't want any limit. (e.x. if count == 6,000 and limit == 5000, counter will display "5,000+")
+    # @param limit [Integer, nil] Maximum value to display. Pass `nil` for no limit. (e.x. if `count` == 6,000 and `limit` == 5000, counter will display "5,000+")
     # @param hide_if_zero [Boolean] If true, a `hidden` attribute is added to the counter if `count` is zero.
     # @param text [String] Text to display instead of count.
     # @param round [Boolean] Whether to apply our standard rounding logic to value.
