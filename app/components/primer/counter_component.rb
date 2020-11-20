@@ -16,7 +16,7 @@ module Primer
     #
     # @param count [Integer, Float::INFINITY, nil] The number to be displayed (e.x. # of issues, pull requests)
     # @param scheme [Symbol] Color scheme. One of `SCHEME_MAPPINGS.keys`.
-    # @param limit [Integer] Maximum value to display. (e.x. if count == 6,000 and limit == 5000, counter will display "5,000+")
+    # @param limit [Integer, nil] Maximum value to display. Pass `nil` for no limit. (e.x. if `count` == 6,000 and `limit` == 5000, counter will display "5,000+")
     # @param hide_if_zero [Boolean] If true, a `hidden` attribute is added to the counter if `count` is zero.
     # @param text [String] Text to display instead of count.
     # @param round [Boolean] Whether to apply our standard rounding logic to value.
@@ -32,6 +32,7 @@ module Primer
     )
       @count, @limit, @hide_if_zero, @text, @round, @system_arguments = count, limit, hide_if_zero, text, round, system_arguments
 
+      @has_limit = !@limit.nil?
       @system_arguments[:title] = title
       @system_arguments[:tag] = :span
       @system_arguments[:classes] = class_names(
@@ -58,8 +59,8 @@ module Primer
         "Infinity"
       else
         count = @count.to_i
-        str = number_with_delimiter([count, @limit].min)
-        str += "+" if count > @limit
+        str = number_with_delimiter(@has_limit ? [count, @limit].min : count)
+        str += "+" if (@has_limit && count > @limit)
         str
       end
     end
@@ -73,16 +74,16 @@ module Primer
         "∞"
       else
         if @round
-          count = [@count.to_i, @limit].min
+          count = @has_limit ? [@count.to_i, @limit].min : @count.to_i
           precision = count.between?(100_000, 999_999) ? 0 : 1
           units = {thousand: "k", million: "m", billion: "b"}
           str = number_to_human(count, precision: precision, significant: false, units: units, format: "%n%u")
         else
           @count = @count.to_i
-          str = number_with_delimiter([@count, @limit].min)
+          str = number_with_delimiter(@has_limit ? [@count, @limit].min : @count)
         end
 
-        str += "+" if @count.to_i > @limit
+        str += "+" if (@has_limit && @count.to_i > @limit)
         str
       end
     end
