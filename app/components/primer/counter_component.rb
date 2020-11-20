@@ -32,7 +32,7 @@ module Primer
     )
       @count, @limit, @hide_if_zero, @text, @round, @system_arguments = count, limit, hide_if_zero, text, round, system_arguments
 
-      @has_limit = @limit != nil
+      @has_limit = !@limit.nil?
       @system_arguments[:title] = title
       @system_arguments[:tag] = :span
       @system_arguments[:classes] = class_names(
