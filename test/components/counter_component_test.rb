@@ -92,6 +92,12 @@ class CounterComponentTest < Minitest::Test
     assert_selector("[title='1,234,567,890']", text: "1.2b")
   end
 
+  def test_no_limit
+    render_inline(Primer::CounterComponent.new(count: 5_001, limit: nil))
+
+    assert_selector("[title='5,001']", text: "5,001")
+  end
+
   def test_rounds_no_limit
     render_inline(Primer::CounterComponent.new(count: 1_234_567_890, limit: nil, round: true))
 
