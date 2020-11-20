@@ -2,6 +2,12 @@
 
 ## main
 
+## 0.0.15
+
+* Add ability to disable `limit` on Counter.
+
+    *Christian Giordano*
+
 * Rename `v` system argument to `visibility`.
 
     *Joel Hawksley*
