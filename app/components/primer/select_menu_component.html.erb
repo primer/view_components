@@ -28,13 +28,13 @@
         <% end %>
       <% end %>
 
-      <% if loading %>
-        <%= render loading.component do %>
-          <%= loading.content %>
-        <% end %>
+      <% if modal.loading? %>
+        <div class="SelectMenu-loading">
+          <%= modal.content %>
+        </div>
+      <% else %>
+        <%= modal.content %>
       <% end %>
-
-      <%= modal.content %>
     <% end %>
 
     <% if footer %>

@@ -11,7 +11,6 @@ module Primer
     with_slot :filter, class_name: "Filter"
     with_slot :footer, class_name: "Footer"
     with_slot :close_button, class_name: "CloseButton"
-    with_slot :loading, class_name: "Loading"
 
     def initialize(align_right: DEFAULT_ALIGN_RIGHT, **kwargs)
       @align_right = fetch_or_fallback([true, false], align_right, DEFAULT_ALIGN_RIGHT)
@@ -21,7 +20,7 @@ module Primer
     end
 
     def render?
-      modal.present? || loading.present?
+      modal.present?
     end
 
     class Modal < Primer::Slot
@@ -31,10 +30,12 @@ module Primer
         none: "SelectMenu-list--borderless",
       }.freeze
       DEFAULT_BORDER_CLASS = :all
+      DEFAULT_LOADING = false
 
       attr_reader :message
 
-      def initialize(border: DEFAULT_BORDER_CLASS, list_role: nil, message: nil, **kwargs)
+      def initialize(loading: DEFAULT_LOADING, border: DEFAULT_BORDER_CLASS, list_role: nil, message: nil, **kwargs)
+        @loading = fetch_or_fallback([true, false], loading, DEFAULT_LOADING)
         @border = fetch_or_fallback(BORDER_CLASSES.keys, border, DEFAULT_BORDER_CLASS)
         @list_role = list_role
         @message = message
@@ -44,6 +45,10 @@ module Primer
           "SelectMenu-modal",
           kwargs[:classes],
         )
+      end
+
+      def loading?
+        @loading
       end
 
       def wrapper_component
@@ -155,21 +160,6 @@ module Primer
 
       def component
         Primer::ButtonComponent.new(**@kwargs)
-      end
-    end
-
-    class Loading < Primer::Slot
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] = :div
-        @kwargs[:classes] = class_names(
-          "SelectMenu-loading",
-          kwargs[:classes],
-        )
-      end
-
-      def component
-        Primer::BaseComponent.new(**@kwargs)
       end
     end
 

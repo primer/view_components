@@ -151,9 +151,7 @@ Display a loading message:
   <% end %>
   <% details_component.slot(:body, omit_wrapper: true) do %>
     <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
-      <%= menu_component.slot(:modal) do %>
-      <% end %>
-      <%= menu_component.slot(:loading) do %>
+      <%= menu_component.slot(:modal, loading: true) do %>
         <%= render Primer::OcticonComponent(icon: "octoface", classes: "anim-pulse") %>
       <% end %>
       <%= menu_component.slot(:footer) do %>

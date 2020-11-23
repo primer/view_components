@@ -17,26 +17,11 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     end
   end
 
-  def test_renders_with_empty_modal
-    render_inline Primer::SelectMenuComponent.new do |component|
-      component.slot(:modal) {}
-      component.slot(:loading) { "Loading" }
-    end
-
-    assert_selector("div.SelectMenu") do
-      assert_selector("div.SelectMenu-modal") do
-        assert_selector("div.SelectMenu-list[role='menu']")
-        assert_selector("div.SelectMenu-loading", text: /Loading/)
-      end
-    end
-  end
-
   def test_nests_components_correctly
     render_inline Primer::SelectMenuComponent.new do |component|
       component.slot(:header) { "A nice title" }
       component.slot(:filter) { "filter description" }
-      component.slot(:modal, message: "Goodness me") { "hello world" }
-      component.slot(:loading) { "Loading" }
+      component.slot(:modal, message: "Goodness me", loading: true) { "hello world" }
       component.slot(:close_button) { "close me" }
       component.slot(:footer) { "the end" }
     end
@@ -52,19 +37,19 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
       "div.SelectMenu-message", text: /Goodness me/)
     assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
-      "div.SelectMenu-loading", text: /Loading/)
+      "div.SelectMenu-loading", text: /hello world/)
   end
 
   def test_renders_with_loading
     render_inline Primer::SelectMenuComponent.new do |component|
-      component.slot(:modal) { "hello world" }
-      component.slot(:loading) { "Loading" }
+      component.slot(:modal, loading: true) { "Loading" }
     end
 
     assert_selector("div.SelectMenu") do
       assert_selector("div.SelectMenu-modal") do
-        assert_selector("div.SelectMenu-list", text: /hello world/)
-        assert_selector("div.SelectMenu-loading", text: /Loading/)
+        assert_selector("div.SelectMenu-list") do
+          assert_selector("div.SelectMenu-loading", text: /Loading/)
+        end
       end
     end
   end
@@ -205,10 +190,6 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         tag: :div,
         mr: 3,
       ) { "the end" }
-      component.slot(:loading,
-        classes: "my-loading",
-        mb: 1,
-      ) { "Loading" }
     end
 
     assert_selector("details-menu.SelectMenu.SelectMenu--hasFilter.my-class.mr-3.d-block[role='menu']") do
@@ -220,7 +201,6 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         end
         assert_selector("div.SelectMenu-list.my-list-class", text: /hello world/) do
           assert_selector("div.SelectMenu-message.my-message", text: /Goodness me/)
-          assert_selector("div.SelectMenu-loading.my-loading.mb-1", text: /Loading/)
         end
         assert_selector("div.SelectMenu-filter.my-filter.py-1", text: /filter description/) do
           assert_selector("input.SelectMenu-input.my-input[placeholder='Search']" \
