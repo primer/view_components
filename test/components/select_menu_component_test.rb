@@ -17,6 +17,27 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     end
   end
 
+  def test_nests_components_correctly
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:header) { "A nice title" }
+      component.slot(:filter) { "filter description" }
+      component.slot(:modal, message: "Goodness me") { "hello world" }
+      component.slot(:close_button) { "close me" }
+      component.slot(:footer) { "the end" }
+    end
+
+    assert_selector("div.SelectMenu div.SelectMenu-modal header.SelectMenu-header " \
+      "h3.SelectMenu-title", text: /A nice title/)
+    assert_selector("div.SelectMenu div.SelectMenu-modal header.SelectMenu-header " \
+      "button.SelectMenu-closeButton", text: /close me/)
+    assert_selector("div.SelectMenu div.SelectMenu-modal form.SelectMenu-filter " \
+      "input.SelectMenu-input")
+    assert_selector("div.SelectMenu div.SelectMenu-modal footer.SelectMenu-footer",
+      text: /the end/)
+    assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
+      "div.SelectMenu-message", text: /Goodness me/)
+  end
+
   def test_renders_with_message
     render_inline Primer::SelectMenuComponent.new do |component|
       component.slot(:modal, message: "Goodness me") { "hello world" }
