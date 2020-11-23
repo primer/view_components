@@ -31,11 +31,20 @@ module Primer
       }.freeze
       DEFAULT_BORDER_CLASS = :all
       DEFAULT_LOADING = false
+      DEFAULT_BLANKSLATE = false
 
       attr_reader :message
 
-      def initialize(loading: DEFAULT_LOADING, border: DEFAULT_BORDER_CLASS, list_role: nil, message: nil, **kwargs)
+      def initialize(
+        loading: DEFAULT_LOADING,
+        blankslate: DEFAULT_BLANKSLATE,
+        border: DEFAULT_BORDER_CLASS,
+        list_role: nil,
+        message: nil,
+        **kwargs
+      )
         @loading = fetch_or_fallback([true, false], loading, DEFAULT_LOADING)
+        @blankslate = fetch_or_fallback([true, false], blankslate, DEFAULT_BLANKSLATE)
         @border = fetch_or_fallback(BORDER_CLASSES.keys, border, DEFAULT_BORDER_CLASS)
         @list_role = list_role
         @message = message
@@ -49,6 +58,10 @@ module Primer
 
       def loading?
         @loading
+      end
+
+      def blankslate?
+        @blankslate
       end
 
       def wrapper_component

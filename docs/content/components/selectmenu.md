@@ -130,11 +130,9 @@ Display a blankslate:
   <% end %>
   <% details_component.slot(:body, omit_wrapper: true) do %>
     <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
-      <%= menu_component.slot(:modal) do %>
-        <%= render Primer::SelectMenuBlankslateComponent.new do %>
-          <h4>No results</h4>
-          <p>There are no results to show.</p>
-        <% end %>
+      <%= menu_component.slot(:modal, blankslate: true) do %>
+        <h4>No results</h4>
+        <p>There are no results to show.</p>
       <% end %>
     <% end %>
   <% end %>

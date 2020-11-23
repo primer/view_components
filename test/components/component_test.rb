@@ -33,7 +33,6 @@ class PrimerComponentTest < Minitest::Test
     [Primer::SelectMenuComponent, {}, lambda do |component|
       component.slot(:modal) { "Foo" }
     end],
-    [Primer::SelectMenuBlankslateComponent, {}],
     [Primer::SelectMenuItemComponent, {}],
     [Primer::SpinnerComponent, {}],
     [Primer::StateComponent, { title: "Open" }],

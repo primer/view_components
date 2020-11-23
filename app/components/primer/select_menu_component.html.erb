@@ -32,6 +32,10 @@
         <div class="SelectMenu-loading">
           <%= modal.content %>
         </div>
+      <% elsif modal.blankslate? %>
+        <div class="SelectMenu-blankslate">
+          <%= modal.content %>
+        </div>
       <% else %>
         <%= modal.content %>
       <% end %>

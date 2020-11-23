@@ -15,6 +15,18 @@ class Primer::SelectMenuComponentStories < ViewComponent::Storybook::Stories
     end
   end
 
+  story(:select_menu_with_blankslate) do
+    content do |component|
+      component.slot(:modal, blankslate: true) { "No results" }
+    end
+  end
+
+  story(:select_menu_with_loading) do
+    content do |component|
+      component.slot(:modal, loading: true) { "Loading..." }
+    end
+  end
+
   story(:select_menu_with_header) do
     content do |component|
       component.slot(:header) { "A nice title" }
