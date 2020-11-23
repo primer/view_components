@@ -11,6 +11,7 @@ module Primer
     with_slot :filter, class_name: "Filter"
     with_slot :footer, class_name: "Footer"
     with_slot :close_button, class_name: "CloseButton"
+    with_slot :loading, class_name: "Loading"
 
     def initialize(align_right: DEFAULT_ALIGN_RIGHT, **kwargs)
       @align_right = fetch_or_fallback([true, false], align_right, DEFAULT_ALIGN_RIGHT)
@@ -20,7 +21,7 @@ module Primer
     end
 
     def render?
-      modal.present?
+      modal.present? || loading.present?
     end
 
     class Modal < Primer::Slot
@@ -154,6 +155,21 @@ module Primer
 
       def component
         Primer::ButtonComponent.new(**@kwargs)
+      end
+    end
+
+    class Loading < Primer::Slot
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:tag] = :div
+        @kwargs[:classes] = class_names(
+          "SelectMenu-loading",
+          kwargs[:classes],
+        )
+      end
+
+      def component
+        Primer::BaseComponent.new(**@kwargs)
       end
     end
 

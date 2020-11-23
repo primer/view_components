@@ -28,6 +28,12 @@
         <% end %>
       <% end %>
 
+      <% if loading %>
+        <%= render loading.component do %>
+          <%= loading.content %>
+        <% end %>
+      <% end %>
+
       <%= modal.content %>
     <% end %>
 
