@@ -1,33 +1,39 @@
 <%= render component do %>
   <%= render modal.outer_component do %>
-    <%= render modal.inner_component do %>
-      <% if header %>
-        <%= render header.outer_component do %>
-          <%= render header.inner_component do %>
-            <%= header.content %>
-          <% end %>
+    <% if header %>
+      <%= render header.outer_component do %>
+        <%= render header.inner_component do %>
+          <%= header.content %>
+        <% end %>
 
-          <% if close_button %>
-            <%= render close_button.component do %>
-              <%= close_button.content %>
-            <% end %>
+        <% if close_button %>
+          <%= render close_button.component do %>
+            <%= close_button.content %>
           <% end %>
         <% end %>
       <% end %>
+    <% end %>
 
-      <% if filter %>
-        <%= render filter.outer_component do %>
-          <%= render filter.inner_component %>
-          <%= filter.content %>
+    <% if filter %>
+      <%= render filter.outer_component do %>
+        <%= render filter.inner_component %>
+        <%= filter.content %>
+      <% end %>
+    <% end %>
+
+    <%= render modal.inner_component do %>
+      <% if modal.message.present? %>
+        <%= render modal.message_component do %>
+          <%= modal.message %>
         <% end %>
       <% end %>
 
       <%= modal.content %>
+    <% end %>
 
-      <% if footer %>
-        <%= render footer.component do %>
-          <%= footer.content %>
-        <% end %>
+    <% if footer %>
+      <%= render footer.component do %>
+        <%= footer.content %>
       <% end %>
     <% end %>
   <% end %>

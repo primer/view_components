@@ -30,13 +30,16 @@ module Primer
       }.freeze
       DEFAULT_BORDER_CLASS = :all
 
-      def initialize(border: DEFAULT_BORDER_CLASS, **kwargs)
+      attr_reader :message
+
+      def initialize(border: DEFAULT_BORDER_CLASS, message: nil, **kwargs)
         @border = fetch_or_fallback(BORDER_CLASSES.keys, border, DEFAULT_BORDER_CLASS)
+        @message = message
         @kwargs = kwargs
         @kwargs[:tag] = :div
         @kwargs[:classes] = class_names(
           "SelectMenu-modal",
-          kwargs[:classes]
+          kwargs[:classes],
         )
       end
 
@@ -51,7 +54,17 @@ module Primer
           classes: class_names(
             "SelectMenu-list",
             @kwargs[:list_classes],
-            BORDER_CLASSES[@border]
+            BORDER_CLASSES[@border],
+          )
+        )
+      end
+
+      def message_component
+        Primer::BaseComponent.new(
+          tag: :div,
+          classes: class_names(
+            "SelectMenu-message",
+            @kwargs[:message_classes],
           )
         )
       end

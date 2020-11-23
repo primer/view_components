@@ -17,6 +17,20 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     end
   end
 
+  def test_renders_with_message
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:modal, message: "Goodness me") { "hello world" }
+    end
+
+    assert_selector("div.SelectMenu") do
+      assert_selector("div.SelectMenu-modal") do
+        assert_selector("div.SelectMenu-list", text: /hello world/) do
+          assert_selector("div.SelectMenu-message", text: /Goodness me/)
+        end
+      end
+    end
+  end
+
   def test_renders_with_header
     render_inline Primer::SelectMenuComponent.new do |component|
       component.slot(:header) { "A nice title" }
@@ -107,7 +121,9 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         classes: "my-modal-class",
         py: 2,
         color: :red,
-        list_classes: "my-list-class"
+        list_classes: "my-list-class",
+        message: "Goodness me",
+        message_classes: "my-message",
       ) { "hello world" }
       component.slot(:close_button,
         classes: "my-close-button",
@@ -128,7 +144,9 @@ class PrimerSelectMenuComponentTest < Minitest::Test
           assert_selector("button.SelectMenu-closeButton.my-close-button.ml-4.d-inline-flex",
             text: /close me/)
         end
-        assert_selector("div.SelectMenu-list.my-list-class", text: /hello world/)
+        assert_selector("div.SelectMenu-list.my-list-class", text: /hello world/) do
+          assert_selector("div.SelectMenu-message.my-message", text: /Goodness me/)
+        end
         assert_selector("div.SelectMenu-filter.my-filter.py-1", text: /filter description/) do
           assert_selector("input.SelectMenu-input.my-input[placeholder='Search']" \
             "[aria-label='A nice filter field']")
