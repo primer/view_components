@@ -2,8 +2,10 @@
   <%= render modal.outer_component do %>
     <%= render modal.inner_component do %>
       <% if header %>
-        <%= render header.component do %>
-          <%= header.content %>
+        <%= render header.outer_component do %>
+          <%= render header.inner_component do %>
+            <%= header.content %>
+          <% end %>
         <% end %>
       <% end %>
       <%= modal.content %>

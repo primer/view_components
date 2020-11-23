@@ -69,8 +69,18 @@ module Primer
         )
       end
 
-      def component
+      def outer_component
         Primer::BaseComponent.new(**@kwargs)
+      end
+
+      def inner_component
+        Primer::BaseComponent.new(
+          tag: @kwargs[:title_tag] || :h3,
+          classes: class_names(
+            "SelectMenu-title",
+            @kwargs[:title_classes],
+          )
+        )
       end
     end
 

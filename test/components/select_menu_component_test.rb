@@ -31,7 +31,9 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
     assert_selector("div.SelectMenu") do
       assert_selector("div.SelectMenu-modal") do
-        assert_selector("header.SelectMenu-header", text: /A nice title/)
+        assert_selector("header.SelectMenu-header") do
+          assert_selector("h3.SelectMenu-title", text: /A nice title/)
+        end
         assert_selector("div.SelectMenu-list", text: /hello world/)
       end
     end
