@@ -4,14 +4,18 @@ module Primer
   class SelectMenuComponent < Primer::Component
     include ViewComponent::Slotable
 
+    DEFAULT_ALIGN_RIGHT = false
+
     with_slot :modal, class_name: "Modal"
 
-    def initialize(**kwargs)
+    def initialize(align_right: DEFAULT_ALIGN_RIGHT, **kwargs)
+      @align_right = fetch_or_fallback([true, false], align_right, DEFAULT_ALIGN_RIGHT)
       @kwargs = kwargs
       @kwargs[:tag] = :div
       @kwargs[:classes] = class_names(
         "SelectMenu",
-        kwargs[:classes]
+        kwargs[:classes],
+        "right-0" => @align_right
       )
     end
 

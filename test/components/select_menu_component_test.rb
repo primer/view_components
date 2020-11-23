@@ -56,7 +56,21 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     end
   end
 
-  def test_prevents_rendering_without_slots
+  def test_supports_right_alignment_of_menu
+    render_inline Primer::SelectMenuComponent.new(align_right: true) do |component|
+      component.slot(:modal) do
+        "hello world"
+      end
+    end
+
+    assert_selector("div.SelectMenu.right-0") do
+      assert_selector("div.SelectMenu-modal") do
+        assert_selector("div.SelectMenu-list", text: /hello world/)
+      end
+    end
+  end
+
+  def test_prevents_rendering_without_modal
     render_inline(Primer::SelectMenuComponent.new)
     refute_selector("div")
   end
