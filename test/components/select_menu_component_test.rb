@@ -42,6 +42,20 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     end
   end
 
+  def test_omits_top_list_border_when_specified
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:modal, omit_top_border: true) do
+        "hello world"
+      end
+    end
+
+    assert_selector("div.SelectMenu") do
+      assert_selector("div.SelectMenu-modal") do
+        assert_selector("div.SelectMenu-list.border-top-0", text: /hello world/)
+      end
+    end
+  end
+
   def test_prevents_rendering_without_slots
     render_inline(Primer::SelectMenuComponent.new)
     refute_selector("div")
