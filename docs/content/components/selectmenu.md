@@ -6,7 +6,7 @@ Use select menus to list clickable choices, allow filtering between them, and hi
 
 ## Examples
 
-Use a `DetailsComponent` to toggle the select menu.
+Use a `DetailsComponent` to toggle the select menu:
 
 ```erb
 <%= render Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative) do |details_component| %>
@@ -26,6 +26,24 @@ Use a `DetailsComponent` to toggle the select menu.
     <% end %>
   <% end %>
 <% end %>
+```
+
+Or make the select menu the `details-menu` element itself:
+
+```erb
+<details class="details-reset details-overlay">
+  <summary class="btn" title="Pick an item">
+    <span>Choose</span>
+    <span class="dropdown-caret"></span>
+  </summary>
+  <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
+    <%= menu_component.slot(:modal) do %>
+      <button class="SelectMenu-item" role="menuitem">Item 1</button>
+      <button class="SelectMenu-item" role="menuitem">Item 2</button>
+      <button class="SelectMenu-item" role="menuitem">Item 3</button>
+    <% end %>
+  <% end %>
+</details>
 ```
 
 Include a button to close the menu:
