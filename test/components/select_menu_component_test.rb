@@ -51,6 +51,23 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     end
   end
 
+  def test_renders_with_filter
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:filter) { "filter description" }
+      component.slot(:modal) { "hello world" }
+    end
+
+    assert_selector("div.SelectMenu.SelectMenu--hasFilter") do
+      assert_selector("div.SelectMenu-modal") do
+        assert_selector("div.SelectMenu-list", text: /hello world/)
+        assert_selector("form.SelectMenu-filter", text: /filter description/) do
+          assert_selector("input.SelectMenu-input.form-control[placeholder='Filter']" \
+            "[aria-label='Filter']")
+        end
+      end
+    end
+  end
+
   def test_renders_with_footer
     render_inline Primer::SelectMenuComponent.new do |component|
       component.slot(:modal) { "hello world" }
@@ -78,6 +95,14 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         title_tag: :h1,
         title_classes: "my-title-class",
       ) { "A nice title" }
+      component.slot(:filter,
+        tag: :div,
+        input_classes: "my-input",
+        classes: "my-filter",
+        placeholder: "Search",
+        "aria-label" => "A nice filter field",
+        py: 1,
+      ) { "filter description" }
       component.slot(:modal,
         classes: "my-modal-class",
         py: 2,
@@ -96,7 +121,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       ) { "the end" }
     end
 
-    assert_selector("div.SelectMenu.my-class.mr-3.d-block") do
+    assert_selector("div.SelectMenu.SelectMenu--hasFilter.my-class.mr-3.d-block") do
       assert_selector("div.SelectMenu-modal.my-modal-class.py-2.text-red") do
         assert_selector("div.SelectMenu-header.my-header-class.mt-1") do
           assert_selector("h1.SelectMenu-title.my-title-class", text: /A nice title/)
@@ -104,6 +129,10 @@ class PrimerSelectMenuComponentTest < Minitest::Test
             text: /close me/)
         end
         assert_selector("div.SelectMenu-list.my-list-class", text: /hello world/)
+        assert_selector("div.SelectMenu-filter.my-filter.py-1", text: /filter description/) do
+          assert_selector("input.SelectMenu-input.my-input[placeholder='Search']" \
+            "[aria-label='A nice filter field']")
+        end
         assert_selector("div.SelectMenu-footer.mr-3.my-footer", text: /the end/)
       end
     end

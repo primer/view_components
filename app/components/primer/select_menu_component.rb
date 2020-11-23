@@ -6,8 +6,9 @@ module Primer
 
     DEFAULT_ALIGN_RIGHT = false
 
-    with_slot :modal, class_name: "Modal"
     with_slot :header, class_name: "Header"
+    with_slot :modal, class_name: "Modal"
+    with_slot :filter, class_name: "Filter"
     with_slot :footer, class_name: "Footer"
     with_slot :close_button, class_name: "CloseButton"
 
@@ -15,11 +16,6 @@ module Primer
       @align_right = fetch_or_fallback([true, false], align_right, DEFAULT_ALIGN_RIGHT)
       @kwargs = kwargs
       @kwargs[:tag] = :div
-      @kwargs[:classes] = class_names(
-        "SelectMenu",
-        kwargs[:classes],
-        "right-0" => @align_right
-      )
     end
 
     def render?
@@ -101,6 +97,36 @@ module Primer
       end
     end
 
+    class Filter < Primer::Slot
+      def initialize(placeholder: "Filter", **kwargs)
+        @placeholder = placeholder
+        @kwargs = kwargs
+        @kwargs[:tag] ||= :form
+        @kwargs[:classes] = class_names(
+          "SelectMenu-filter",
+          kwargs[:classes],
+        )
+        @kwargs[:input_classes] ||= "form-control"
+      end
+
+      def outer_component
+        Primer::BaseComponent.new(**@kwargs)
+      end
+
+      def inner_component
+        Primer::BaseComponent.new(
+          tag: :input,
+          type: "text",
+          placeholder: @placeholder,
+          "aria-label": @kwargs["aria-label"] || @placeholder,
+          classes: class_names(
+            "SelectMenu-input",
+            @kwargs[:input_classes],
+          )
+        )
+      end
+    end
+
     class CloseButton < Primer::Slot
       def initialize(**kwargs)
         @kwargs = kwargs
@@ -117,6 +143,12 @@ module Primer
     end
 
     def component
+      @kwargs[:classes] = class_names(
+        "SelectMenu",
+        @kwargs[:classes],
+        "right-0" => @align_right,
+        "SelectMenu--hasFilter" => filter.present?,
+      )
       Primer::BaseComponent.new(**@kwargs)
     end
   end

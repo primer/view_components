@@ -15,6 +15,13 @@
         <% end %>
       <% end %>
 
+      <% if filter %>
+        <%= render filter.outer_component do %>
+          <%= render filter.inner_component %>
+          <%= filter.content %>
+        <% end %>
+      <% end %>
+
       <%= modal.content %>
 
       <% if footer %>
