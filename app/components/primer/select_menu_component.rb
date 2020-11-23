@@ -8,6 +8,7 @@ module Primer
 
     with_slot :modal, class_name: "Modal"
     with_slot :header, class_name: "Header"
+    with_slot :footer, class_name: "Footer"
     with_slot :close_button, class_name: "CloseButton"
 
     def initialize(align_right: DEFAULT_ALIGN_RIGHT, **kwargs)
@@ -82,6 +83,21 @@ module Primer
             @kwargs[:title_classes],
           )
         )
+      end
+    end
+
+    class Footer < Primer::Slot
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:tag] ||= :footer
+        @kwargs[:classes] = class_names(
+          "SelectMenu-footer",
+          kwargs[:classes]
+        )
+      end
+
+      def component
+        Primer::BaseComponent.new(**@kwargs)
       end
     end
 

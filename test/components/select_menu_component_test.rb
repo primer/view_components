@@ -7,9 +7,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_renders
     render_inline Primer::SelectMenuComponent.new do |component|
-      component.slot(:modal) do
-        "hello world"
-      end
+      component.slot(:modal) { "hello world" }
     end
 
     assert_selector("div.SelectMenu") do
@@ -21,12 +19,8 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_renders_with_header
     render_inline Primer::SelectMenuComponent.new do |component|
-      component.slot(:header) do
-        "A nice title"
-      end
-      component.slot(:modal) do
-        "hello world"
-      end
+      component.slot(:header) { "A nice title" }
+      component.slot(:modal) { "hello world" }
     end
 
     assert_selector("div.SelectMenu") do
@@ -57,6 +51,20 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     end
   end
 
+  def test_renders_with_footer
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:modal) { "hello world" }
+      component.slot(:footer) { "the end" }
+    end
+
+    assert_selector("div.SelectMenu") do
+      assert_selector("div.SelectMenu-modal") do
+        assert_selector("div.SelectMenu-list", text: /hello world/)
+        assert_selector("footer.SelectMenu-footer", text: /the end/)
+      end
+    end
+  end
+
   def test_passes_along_other_arguments
     render_inline Primer::SelectMenuComponent.new(
       classes: "my-class",
@@ -69,24 +77,23 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         mt: 1,
         title_tag: :h1,
         title_classes: "my-title-class",
-      ) do
-        "A nice title"
-      end
+      ) { "A nice title" }
       component.slot(:modal,
         classes: "my-modal-class",
         py: 2,
         color: :red,
         list_classes: "my-list-class"
-      ) do
-        "hello world"
-      end
+      ) { "hello world" }
       component.slot(:close_button,
         classes: "my-close-button",
         ml: 4,
         display: :inline_flex,
-      ) do
-        "close me"
-      end
+      ) { "close me" }
+      component.slot(:footer,
+        classes: "my-footer",
+        tag: :div,
+        mr: 3,
+      ) { "the end" }
     end
 
     assert_selector("div.SelectMenu.my-class.mr-3.d-block") do
@@ -97,15 +104,14 @@ class PrimerSelectMenuComponentTest < Minitest::Test
             text: /close me/)
         end
         assert_selector("div.SelectMenu-list.my-list-class", text: /hello world/)
+        assert_selector("div.SelectMenu-footer.mr-3.my-footer", text: /the end/)
       end
     end
   end
 
   def test_omits_top_list_border_when_specified
     render_inline Primer::SelectMenuComponent.new do |component|
-      component.slot(:modal, border: :omit_top) do
-        "hello world"
-      end
+      component.slot(:modal, border: :omit_top) { "hello world" }
     end
 
     assert_selector("div.SelectMenu") do
@@ -117,9 +123,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_omits_all_borders_when_specified
     render_inline Primer::SelectMenuComponent.new do |component|
-      component.slot(:modal, border: :none) do
-        "hello world"
-      end
+      component.slot(:modal, border: :none) { "hello world" }
     end
 
     assert_selector("div.SelectMenu") do
@@ -132,9 +136,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_supports_right_alignment_of_menu
     render_inline Primer::SelectMenuComponent.new(align_right: true) do |component|
-      component.slot(:modal) do
-        "hello world"
-      end
+      component.slot(:modal) { "hello world" }
     end
 
     assert_selector("div.SelectMenu.right-0") do

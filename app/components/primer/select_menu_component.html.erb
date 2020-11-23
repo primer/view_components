@@ -16,6 +16,12 @@
       <% end %>
 
       <%= modal.content %>
+
+      <% if footer %>
+        <%= render footer.component do %>
+          <%= footer.content %>
+        <% end %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
