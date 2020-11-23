@@ -20,12 +20,15 @@ Use a `DetailsComponent` to toggle the select menu:
       <% end %>
       <%= menu_component.slot(:modal) do %>
         <%= render Primer::SelectMenuItemComponent.new do %>
+          <%= render Primer::SelectMenuIconComponent.new %>
           Item 1
         <% end %>
         <%= render Primer::SelectMenuItemComponent.new do %>
+          <%= render Primer::SelectMenuIconComponent.new %>
           Item 2
         <% end %>
         <%= render Primer::SelectMenuItemComponent.new do %>
+          <%= render Primer::SelectMenuIconComponent.new %>
           Item 3
         <% end %>
       <% end %>
