@@ -187,6 +187,8 @@ Display a loading message:
 | `list_classes` | `String` | N/A | CSS classes to apply to the list element within the modal. |
 | `list_role` | `String` | N/A | Optional `role` attribute for the list element within the modal. |
 | `message_classes` | `String` | N/A | CSS classes to apply to the message element within the modal, if a message is included. |
+| `loading` | `Boolean` | `false` | Whether the content will be a loading message. |
+| `blankslate` | `Boolean` | `false` | Whether to style the content as a blankslate, to represent there is no content. |
 
 ### `filter` slot
 
