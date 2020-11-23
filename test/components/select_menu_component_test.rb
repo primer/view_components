@@ -136,7 +136,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         classes: "my-filter",
         placeholder: "Search",
         py: 1,
-        :"aria-label" => "A nice filter field"
+        "aria-label": "A nice filter field"
       ) { "filter description" }
       component.slot(:modal,
         classes: "my-modal-class",
