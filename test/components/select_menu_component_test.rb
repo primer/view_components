@@ -12,7 +12,34 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       end
     end
 
-    assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list", text: /hello world/)
+    assert_selector("div.SelectMenu") do
+      assert_selector("div.SelectMenu-modal") do
+        assert_selector("div.SelectMenu-list", text: /hello world/)
+      end
+    end
+  end
+
+  def test_passes_along_other_arguments
+    render_inline Primer::SelectMenuComponent.new(
+      classes: "my-class",
+      mr: 3,
+      display: :block,
+    ) do |component|
+      component.slot(:modal,
+        classes: "my-modal-class",
+        py: 2,
+        color: :red,
+        list_classes: "my-list-class"
+      ) do
+        "hello world"
+      end
+    end
+
+    assert_selector("div.SelectMenu.my-class.mr-3.d-block") do
+      assert_selector("div.SelectMenu-modal.my-modal-class.py-2.text-red") do
+        assert_selector("div.SelectMenu-list.my-list-class", text: /hello world/)
+      end
+    end
   end
 
   def test_prevents_rendering_without_slots
