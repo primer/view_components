@@ -22,7 +22,7 @@
     "build": "yarn build-storybook"
   },
   "engines": {
-    "node": "14.x",
+    "node": "15.x",
     "yarn": "1.22.x"
   }
 }
