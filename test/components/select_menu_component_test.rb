@@ -139,6 +139,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       classes: "my-class",
       mr: 3,
       display: :block,
+      tag: :"details-menu",
     ) do |component|
       component.slot(:header,
         tag: :div,
@@ -175,7 +176,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       ) { "the end" }
     end
 
-    assert_selector("div.SelectMenu.SelectMenu--hasFilter.my-class.mr-3.d-block") do
+    assert_selector("details-menu.SelectMenu.SelectMenu--hasFilter.my-class.mr-3.d-block") do
       assert_selector("div.SelectMenu-modal.my-modal-class.py-2.text-red") do
         assert_selector("div.SelectMenu-header.my-header-class.mt-1") do
           assert_selector("h1.SelectMenu-title.my-title-class", text: /A nice title/)

@@ -81,6 +81,7 @@ Include a filter field for filtering the modal contents:
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `tag` | `Symbol` | `:div` | HTML element type for the `.SelectMenu` tag. |
 | `align_right` | `Boolean` | `false` | Align the whole menu to the right or not. |
 
 ### `header` slot

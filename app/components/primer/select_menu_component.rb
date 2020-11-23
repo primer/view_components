@@ -15,7 +15,7 @@ module Primer
     def initialize(align_right: DEFAULT_ALIGN_RIGHT, **kwargs)
       @align_right = fetch_or_fallback([true, false], align_right, DEFAULT_ALIGN_RIGHT)
       @kwargs = kwargs
-      @kwargs[:tag] = :div
+      @kwargs[:tag] ||= :div
     end
 
     def render?
