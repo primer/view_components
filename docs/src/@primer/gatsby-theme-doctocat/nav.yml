@@ -38,6 +38,8 @@
       url: /components/popover
     - title: ProgressBar
       url: /components/progressbar
+    - title: SelectMenu
+      url: /components/selectmenu
     - title: Spinner
       url: /components/spinner
     - title: State
