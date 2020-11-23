@@ -30,6 +30,9 @@ class PrimerComponentTest < Minitest::Test
     [Primer::OcticonComponent, { icon: "people" }],
     [Primer::PopoverComponent, {}, proc { |component| component.slot(:body) }],
     [Primer::ProgressBarComponent, {}, proc { |component| component.slot(:item) }],
+    [Primer::SelectMenuComponent, {}, lambda do |component|
+      component.slot(:modal) { "Foo" }
+    end],
     [Primer::SpinnerComponent, {}],
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
