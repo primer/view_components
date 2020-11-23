@@ -141,6 +141,29 @@ Display a blankslate:
 <% end %>
 ```
 
+Display a loading message:
+
+```erb
+<%= render Primer::DetailsComponent.new(overlay: :default, reset: true) do |details_component| %>
+  <% details_component.slot(:summary, title: "Pick an item") do %>
+    Choose an option
+    <span class="dropdown-caret"></span>
+  <% end %>
+  <% details_component.slot(:body, omit_wrapper: true) do %>
+    <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
+      <%= menu_component.slot(:modal) do %>
+        <%= render Primer::SelectMenuLoadingComponent.new do %>
+          <%= render Primer::OcticonComponent.new(icon: "octoface") %>
+        <% end %>
+      <% end %>
+      <%= menu_component.slot(:footer) do %>
+        Loading...
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+```
+
 ## Arguments
 
 | Name | Type | Default | Description |

@@ -35,6 +35,7 @@ class PrimerComponentTest < Minitest::Test
     end],
     [Primer::SelectMenuBlankslateComponent, {}],
     [Primer::SelectMenuItemComponent, {}],
+    [Primer::SelectMenuLoadingComponent, {}],
     [Primer::SpinnerComponent, {}],
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
