@@ -33,6 +33,6 @@ Use labels to add contextual metadata to a design.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `title` | `String` | N/A | `title` attribute for the component element. |
-| `scheme` | `Symbol` | `nil` | One of `:gray`, `:dark_gray`, `:yellow`, `:orange`, `:red`, `:green`, `:blue`, `:purple`, `:pink`, `:outline`, `:green_outline`, or `nil`. |
+| `scheme` | `Symbol` | `nil` | One of `:gray`, `:dark_gray`, `:yellow`, `:orange`, `:red`, `:green`, `:blue`, `:purple`, `:pink`, `:outline`, or `:green_outline`. |
 | `variant` | `Symbol` | `nil` | One of `:large`, `:inline`, or `nil`. |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

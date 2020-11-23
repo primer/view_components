@@ -48,19 +48,19 @@ module Primer
     #
     # @param spacious [Boolean] Whether to add spacing to the Subhead.
     # @param hide_border [Boolean] Whether to hide the border under the heading.
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
-    def initialize(spacious: false, hide_border: false, **kwargs)
-      @kwargs = kwargs
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    def initialize(spacious: false, hide_border: false, **system_arguments)
+      @system_arguments = system_arguments
 
-      @kwargs[:tag] = :div
-      @kwargs[:classes] =
+      @system_arguments[:tag] = :div
+      @system_arguments[:classes] =
         class_names(
-          @kwargs[:classes],
+          @system_arguments[:classes],
           "Subhead hx_Subhead--responsive",
           "Subhead--spacious": spacious,
           "border-bottom-0": hide_border
         )
-      @kwargs[:mb] ||= hide_border ? 0 : nil
+      @system_arguments[:mb] ||= hide_border ? 0 : nil
     end
 
     def render?
@@ -70,15 +70,15 @@ module Primer
     class Heading < ViewComponent::Slot
       include ClassNameHelper
 
-      attr_reader :kwargs
+      attr_reader :system_arguments
 
       # @param danger [Boolean] Whether to style the heading as dangerous.
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
-      def initialize(danger: false, **kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] ||= :div
-        @kwargs[:classes] = class_names(
-          @kwargs[:classes],
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(danger: false, **system_arguments)
+        @system_arguments = system_arguments
+        @system_arguments[:tag] ||= :div
+        @system_arguments[:classes] = class_names(
+          @system_arguments[:classes],
           "Subhead-heading",
           "Subhead-heading--danger": danger
         )
@@ -88,26 +88,26 @@ module Primer
     class Actions < ViewComponent::Slot
       include ClassNameHelper
 
-      attr_reader :kwargs
+      attr_reader :system_arguments
 
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] = :div
-        @kwargs[:classes] = class_names(@kwargs[:classes], "Subhead-actions")
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(**system_arguments)
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :div
+        @system_arguments[:classes] = class_names(@system_arguments[:classes], "Subhead-actions")
       end
     end
 
     class Description < ViewComponent::Slot
       include ClassNameHelper
 
-      attr_reader :kwargs
+      attr_reader :system_arguments
 
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] = :div
-        @kwargs[:classes] = class_names(@kwargs[:classes], "Subhead-description")
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(**system_arguments)
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :div
+        @system_arguments[:classes] = class_names(@system_arguments[:classes], "Subhead-description")
       end
     end
   end

@@ -2,6 +2,34 @@
 
 ## main
 
+## 0.0.15
+
+* Add ability to disable `limit` on Counter.
+
+    *Christian Giordano*
+
+* Rename `v` system argument to `visibility`.
+
+    *Joel Hawksley*
+
+## 0.0.14
+
+* Add functional colors to Label.
+
+    *Joel Hawksley*
+
+## 0.0.13
+
+* Add support for `xl` breakpoint.
+
+    *Joel Hawksley*
+
+## 0.0.12
+
+* Adds support for disabling inline box-sizing style for `SpinnerComponent` via style parameter `Primer::SpinnerComponent.new(style: nil)`.
+
+    *Chris Wilson*
+
 ## 0.0.11
 
 * Renames DetailsComponent::OVERLAY_DEFAULT to DetailsComponent::NO_OVERLAY to more correctly describe its value.
@@ -82,7 +110,7 @@
 
 ## 0.0.3
 
-* Add support for responsive `float` style argument.
+* Add support for responsive `float` system argument.
 
     *Joel Hawksley*
 

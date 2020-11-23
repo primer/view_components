@@ -42,31 +42,31 @@ module Primer
     # @param dismissible [Boolean] Whether the component can be dismissed with an X button.
     # @param icon [String] Name of Octicon icon to use.
     # @param variant [Symbol] <%= one_of(Primer::FlashComponent::VARIANT_MAPPINGS.keys) %>
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
-    def initialize(full: false, spacious: false, dismissible: false, icon: nil, variant: DEFAULT_VARIANT, **kwargs)
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    def initialize(full: false, spacious: false, dismissible: false, icon: nil, variant: DEFAULT_VARIANT, **system_arguments)
       @icon = icon
       @dismissible = dismissible
-      @kwargs = kwargs
-      @kwargs[:tag] = :div
-      @kwargs[:classes] = class_names(
-        @kwargs[:classes],
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = :div
+      @system_arguments[:classes] = class_names(
+        @system_arguments[:classes],
         "flash",
         VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_MAPPINGS.keys, variant, DEFAULT_VARIANT)],
         "flash-full": full
       )
-      @kwargs[:mb] ||= spacious ? 4 : nil
+      @system_arguments[:mb] ||= spacious ? 4 : nil
     end
 
     class Actions < ViewComponent::Slot
       include ClassNameHelper
 
-      attr_reader :kwargs
+      attr_reader :system_arguments
 
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] = :div
-        @kwargs[:classes] = class_names(@kwargs[:classes], "flash-action")
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(**system_arguments)
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :div
+        @system_arguments[:classes] = class_names(@system_arguments[:classes], "flash-action")
       end
     end
   end

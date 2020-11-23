@@ -11,14 +11,14 @@ module Primer
     DIRECTION_DEFAULT = :se
     DIRECTION_OPTIONS = [DIRECTION_DEFAULT, :sw, :w, :e, :ne, :s]
 
-    def initialize(direction: DIRECTION_DEFAULT, scheme: SCHEME_DEFAULT, header: nil, **kwargs)
-      @header, @direction, @kwargs = header, direction, kwargs
+    def initialize(direction: DIRECTION_DEFAULT, scheme: SCHEME_DEFAULT, header: nil, **system_arguments)
+      @header, @direction, @system_arguments = header, direction, system_arguments
 
-      @kwargs[:tag] = "details-menu"
-      @kwargs[:role] = "menu"
+      @system_arguments[:tag] = "details-menu"
+      @system_arguments[:role] = "menu"
 
-      @kwargs[:classes] = class_names(
-        @kwargs[:classes],
+      @system_arguments[:classes] = class_names(
+        @system_arguments[:classes],
         "dropdown-menu",
         "dropdown-menu-#{fetch_or_fallback(DIRECTION_OPTIONS, direction, DIRECTION_DEFAULT)}",
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, SCHEME_DEFAULT)]

@@ -8,4 +8,4 @@ A basic wrapper component for most layout related needs.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

@@ -88,8 +88,8 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_v
-    assert_generated_class("v-hidden",  { v: :hidden })
-    assert_generated_class("v-visible", { v: :visible })
+    assert_generated_class("v-hidden",  { visibility: :hidden })
+    assert_generated_class("v-visible", { visibility: :visible })
   end
 
   def test_hide
@@ -150,7 +150,6 @@ class PrimerClassifyTest < Minitest::Test
   def test_font_weight
     assert_generated_class("text-light",    { font_weight: :light })
     assert_generated_class("text-normal",   { font_weight: :normal })
-    assert_generated_class("text-semibold", { font_weight: :semibold })
     assert_generated_class("text-bold",     { font_weight: :bold })
   end
 
@@ -172,6 +171,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("border-bottom", { border: :bottom })
     assert_generated_class("border-right",  { border: :right })
     assert_generated_class("border-y",      { border: :y })
+    assert_generated_class("border-x",      { border: :x })
   end
 
   def test_border_margins
@@ -215,7 +215,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-row flex-sm-column",  { direction: [:row, :column] })
     assert_generated_class("col-1 col-sm-2",  { col: [1, 2] })
     assert_generated_class("col-12 col-lg-9",  { col: [12, nil, nil, 9] })
-    assert_generated_class("p-4 p-sm-3 p-md-3 p-lg-3",  { p: [4, 3, 3, 3] })
+    assert_generated_class("p-4 p-sm-3 p-md-3 p-lg-3 p-xl-2",  { p: [4, 3, 3, 3, 2] })
 
     assert_raises ArgumentError do
       Primer::Classify.call(border: [:top, :left])

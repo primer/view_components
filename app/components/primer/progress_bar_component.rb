@@ -39,15 +39,15 @@ module Primer
     #   <% end %>
     #
     # @param size [Symbol] <%= one_of(Primer::ProgressBarComponent::SIZE_OPTIONS) %> Increases height.
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
-    def initialize(size: SIZE_DEFAULT, **kwargs)
-      @kwargs = kwargs
-      @kwargs[:classes] = class_names(
-        @kwargs[:classes],
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    def initialize(size: SIZE_DEFAULT, **system_arguments)
+      @system_arguments = system_arguments
+      @system_arguments[:classes] = class_names(
+        @system_arguments[:classes],
         "Progress",
         SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
       )
-      @kwargs[:tag] = :span
+      @system_arguments[:tag] = :span
 
     end
 
@@ -57,19 +57,19 @@ module Primer
 
     class Item < ViewComponent::Slot
       include ClassNameHelper
-      attr_reader :kwargs
+      attr_reader :system_arguments
 
       # @param percentage [Integer] Percentage completion of item.
       # @param bg [Symbol] Color of item.
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
-      def initialize(percentage: 0, bg: :green, **kwargs)
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(percentage: 0, bg: :green, **system_arguments)
         @percentage = percentage
-        @kwargs = kwargs
+        @system_arguments = system_arguments
 
-        @kwargs[:tag] = :span
-        @kwargs[:bg] = bg
-        @kwargs[:style] = "width: #{@percentage}%;"
-        @kwargs[:classes] = class_names("Progress-item", @kwargs[:classes])
+        @system_arguments[:tag] = :span
+        @system_arguments[:bg] = bg
+        @system_arguments[:style] = "width: #{@percentage}%;"
+        @system_arguments[:classes] = class_names("Progress-item", @system_arguments[:classes])
       end
     end
   end

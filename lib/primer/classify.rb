@@ -9,7 +9,7 @@ module Primer
     ALIGN_ITEMS_KEY = :align_items
     DISPLAY_KEY = :display
     RESPONSIVE_KEYS = ([DISPLAY_KEY, DIRECTION_KEY, JUSTIFY_CONTENT_KEY, ALIGN_ITEMS_KEY, :col, :float] + SPACING_KEYS).freeze
-    BREAKPOINTS = ["", "-sm", "-md", "-lg"]
+    BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"]
 
     # Keys where we can simply translate { key: value } into ".key-value"
     CONCAT_KEYS = SPACING_KEYS + [:hide, :position, :v, :float, :col, :text, :box_shadow].freeze
@@ -29,7 +29,7 @@ module Primer
     WIDTH_KEY = :width
     HEIGHT_KEY = :height
     BOX_SHADOW_KEY = :box_shadow
-
+    VISIBILITY_KEY = :visibility
 
     BOOLEAN_MAPPINGS = {
       underline: {
@@ -102,7 +102,8 @@ module Primer
         ALIGN_SELF_KEY,
         WIDTH_KEY,
         HEIGHT_KEY,
-        BOX_SHADOW_KEY
+        BOX_SHADOW_KEY,
+        VISIBILITY_KEY
       ]
     ).freeze
 
@@ -131,9 +132,7 @@ module Primer
 
           if invalid_class_names.any?
             raise ArgumentError.new(
-              "Primer CSS class #{'name'.pluralize(invalid_class_names.length)} \
-              #{invalid_class_names.to_sentence} #{'is'.pluralize(invalid_class_names.length)} \
-              not allowed, use style arguments instead (https://github.com/primer/view_components#built-in-styling-arguments). This warning will not be raised in production.",
+              "Use System Arguments (https://primer.style/view-components/system-arguments) instead of Primer CSS class #{'name'.pluralize(invalid_class_names.length)} #{invalid_class_names.to_sentence}. This warning will not be raised in production.",
             )
           end
         end
@@ -233,6 +232,8 @@ module Primer
               else
                 memo[:classes] << "box-shadow-#{dasherized_val}"
               end
+            elsif key == VISIBILITY_KEY
+              memo[:classes] << "v-#{dasherized_val}"
             else
               memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{dasherized_val}"
             end

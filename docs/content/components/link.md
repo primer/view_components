@@ -28,4 +28,4 @@ Use links for moving from one page to another. The Link component styles anchor 
 | :- | :- | :- | :- |
 | `href` | `String` | N/A | URL to be used for the Link |
 | `muted` | `Boolean` | `false` | Uses light gray for Link color, and blue on hover |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

@@ -11,19 +11,19 @@ module Primer
     #
     # @param href [String] URL to be used for the Link
     # @param muted [Boolean] Uses light gray for Link color, and blue on hover
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
-    def initialize(href:, muted: false, **kwargs)
-      @kwargs = kwargs
-      @kwargs[:tag] = :a
-      @kwargs[:href] = href
-      @kwargs[:classes] = class_names(
-        @kwargs[:classes],
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    def initialize(href:, muted: false, **system_arguments)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = :a
+      @system_arguments[:href] = href
+      @system_arguments[:classes] = class_names(
+        @system_arguments[:classes],
         "muted-link" => fetch_or_fallback([true, false], muted, false)
       )
     end
 
     def call
-      render(Primer::BaseComponent.new(**@kwargs)) { content }
+      render(Primer::BaseComponent.new(**@system_arguments)) { content }
     end
   end
 end

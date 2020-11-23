@@ -19,4 +19,4 @@ The Text component is a wrapper component that will apply typography styles to t
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

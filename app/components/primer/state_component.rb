@@ -39,19 +39,19 @@ module Primer
     # @param color [Symbol] Background color. <%= one_of(Primer::StateComponent::COLOR_OPTIONS) %>
     # @param tag [Symbol] HTML tag for element. <%= one_of(Primer::StateComponent::TAG_OPTIONS) %>
     # @param size [Symbol] <%= one_of(Primer::StateComponent::SIZE_OPTIONS) %>
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       title:,
       color: COLOR_DEFAULT,
       tag: TAG_DEFAULT,
       size: SIZE_DEFAULT,
-      **kwargs
+      **system_arguments
     )
-      @kwargs = kwargs
-      @kwargs[:title] = title
-      @kwargs[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
-      @kwargs[:classes] = class_names(
-        @kwargs[:classes],
+      @system_arguments = system_arguments
+      @system_arguments[:title] = title
+      @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
+      @system_arguments[:classes] = class_names(
+        @system_arguments[:classes],
         "State",
         COLOR_MAPPINGS[fetch_or_fallback(COLOR_OPTIONS, color, COLOR_DEFAULT)],
         SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
@@ -59,7 +59,7 @@ module Primer
     end
 
     def call
-      render(Primer::BaseComponent.new(**@kwargs)) { content }
+      render(Primer::BaseComponent.new(**@system_arguments)) { content }
     end
   end
 end

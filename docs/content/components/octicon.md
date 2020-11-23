@@ -2,7 +2,7 @@
 title: Octicon
 ---
 
-Renders an [Octicon](https://primer.style/octicons/) with [Style arguments](/style-arguments).
+Renders an [Octicon](https://primer.style/octicons/) with [System arguments](/system-arguments).
 
 ## Examples
 
@@ -35,5 +35,5 @@ Renders an [Octicon](https://primer.style/octicons/) with [Style arguments](/sty
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `icon` | `String` | N/A | Name of [Octicon](https://primer.style/octicons/) to use. |
-| `size` | `Symbol` | `SIZE_DEFAULT` | One of `:small`, `:medium`, or `:large`. |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `size` | `Symbol` | `:small` | One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`). |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

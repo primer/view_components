@@ -3,15 +3,13 @@
   children:
     - title: Contributing
       url: /contributing
-    - title: Style arguments
-      url: /style-arguments
+    - title: System arguments
+      url: /system-arguments
 - title: Components
   url: /components
   children:
     - title: Avatar
       url: /components/avatar
-    - title: Base
-      url: /components/base
     - title: Blankslate
       url: /components/blankslate
     - title: BorderBox

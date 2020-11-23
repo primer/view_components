@@ -56,7 +56,7 @@ module Primer
     # @param title [String] Text that appears in a larger bold font.
     # @param title_tag [Symbol] HTML tag to use for title.
     # @param icon [String] Octicon icon to use at top of component.
-    # @param icon_size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS.keys) %>
+    # @param icon_size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
     # @param image_src [String] Image to display.
     # @param image_alt [String] Alt text for image.
     # @param description [String] Text that appears below the title. Typically a whole sentence.
@@ -87,12 +87,12 @@ module Primer
       large: false,
       spacious: false,
 
-      **kwargs
+      **system_arguments
     )
-      @kwargs = kwargs
-      @kwargs[:tag] ||= :div
-      @kwargs[:classes] = class_names(
-        @kwargs[:classes],
+      @system_arguments = system_arguments
+      @system_arguments[:tag] ||= :div
+      @system_arguments[:classes] = class_names(
+        @system_arguments[:classes],
         "blankslate",
         "blankslate-narrow": narrow,
         "blankslate-large": large,

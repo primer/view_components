@@ -14,11 +14,11 @@ module Primer
     #     <% component.slot(:item, selected: true) do %>Team<% end %>
     #   <% end %>
     #
-    # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
-    def initialize(**kwargs)
-      @kwargs = kwargs
-      @kwargs[:tag] = :nav
-      @kwargs[:aria] = { label: "Breadcrumb" }
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    def initialize(**system_arguments)
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = :nav
+      @system_arguments[:aria] = { label: "Breadcrumb" }
     end
 
     def render?
@@ -27,18 +27,18 @@ module Primer
 
     # _Note: if both `href` and `selected: true` are passed in, `href` will be ignored and the item will not be rendered as a link._
     class BreadcrumbItem < Primer::Slot
-      attr_reader :href, :kwargs
+      attr_reader :href, :system_arguments
 
       # @param href [String] The URL to link to.
       # @param selected [Boolean] Whether or not the item is selected and not rendered as a link.
-      # @param kwargs [Hash] <%= link_to_style_arguments_docs %>
-      def initialize(href: nil, selected: false, **kwargs)
-        @href, @kwargs = href, kwargs
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(href: nil, selected: false, **system_arguments)
+        @href, @system_arguments = href, system_arguments
 
         @href = nil if selected
-        @kwargs[:tag] = :li
-        @kwargs[:"aria-current"] = "page" if selected
-        @kwargs[:classes] = "breadcrumb-item #{@kwargs[:classes]}"
+        @system_arguments[:tag] = :li
+        @system_arguments[:"aria-current"] = "page" if selected
+        @system_arguments[:classes] = "breadcrumb-item #{@system_arguments[:classes]}"
       end
     end
   end
