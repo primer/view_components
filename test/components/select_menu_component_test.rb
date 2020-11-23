@@ -45,6 +45,15 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       mr: 3,
       display: :block,
     ) do |component|
+      component.slot(:header,
+        tag: :div,
+        classes: "my-header-class",
+        mt: 1,
+        title_tag: :h1,
+        title_classes: "my-title-class",
+      ) do
+        "A nice title"
+      end
       component.slot(:modal,
         classes: "my-modal-class",
         py: 2,
@@ -57,6 +66,9 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
     assert_selector("div.SelectMenu.my-class.mr-3.d-block") do
       assert_selector("div.SelectMenu-modal.my-modal-class.py-2.text-red") do
+        assert_selector("div.SelectMenu-header.my-header-class.mt-1") do
+          assert_selector("h1.SelectMenu-title.my-title-class", text: /A nice title/)
+        end
         assert_selector("div.SelectMenu-list.my-list-class", text: /hello world/)
       end
     end
