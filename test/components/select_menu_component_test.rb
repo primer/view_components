@@ -7,12 +7,12 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_renders
     render_inline Primer::SelectMenuComponent.new do |component|
-      component.slot(:modal) { "hello world" }
+      component.slot(:modal, list_role: "menu") { "hello world" }
     end
 
     assert_selector("div.SelectMenu") do
       assert_selector("div.SelectMenu-modal") do
-        assert_selector("div.SelectMenu-list", text: /hello world/)
+        assert_selector("div.SelectMenu-list[role='menu']", text: /hello world/)
       end
     end
   end
@@ -176,7 +176,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       ) { "the end" }
     end
 
-    assert_selector("details-menu.SelectMenu.SelectMenu--hasFilter.my-class.mr-3.d-block") do
+    assert_selector("details-menu.SelectMenu.SelectMenu--hasFilter.my-class.mr-3.d-block[role='menu']") do
       assert_selector("div.SelectMenu-modal.my-modal-class.py-2.text-red") do
         assert_selector("div.SelectMenu-header.my-header-class.mt-1") do
           assert_selector("h1.SelectMenu-title.my-title-class", text: /A nice title/)

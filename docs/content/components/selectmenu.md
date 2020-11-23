@@ -101,6 +101,7 @@ Include a filter field for filtering the modal contents:
 | `border` | `Symbol` | `:all` | What kind of border to have around the modal. One of `:all`, `:omit_top`, or `:none`. |
 | `message` | `String` | N/A | A message shown above the modal contents. |
 | `list_classes` | `String` | N/A | CSS classes to apply to the list element within the modal. |
+| `list_role` | `String` | N/A | Optional `role` attribute for the list element within the modal. |
 | `message_classes` | `String` | N/A | CSS classes to apply to the message element within the modal, if a message is included. |
 
 ### `filter` slot

@@ -16,6 +16,7 @@ module Primer
       @align_right = fetch_or_fallback([true, false], align_right, DEFAULT_ALIGN_RIGHT)
       @kwargs = kwargs
       @kwargs[:tag] ||= :div
+      @kwargs[:role] ||= "menu" if @kwargs[:tag] == :"details-menu"
     end
 
     def render?
@@ -32,8 +33,9 @@ module Primer
 
       attr_reader :message
 
-      def initialize(border: DEFAULT_BORDER_CLASS, message: nil, **kwargs)
+      def initialize(border: DEFAULT_BORDER_CLASS, list_role: nil, message: nil, **kwargs)
         @border = fetch_or_fallback(BORDER_CLASSES.keys, border, DEFAULT_BORDER_CLASS)
+        @list_role = list_role
         @message = message
         @kwargs = kwargs
         @kwargs[:tag] = :div
@@ -50,7 +52,7 @@ module Primer
       def inner_component
         Primer::BaseComponent.new(
           tag: :div,
-          role: "menu",
+          role: @list_role,
           classes: class_names(
             "SelectMenu-list",
             @kwargs[:list_classes],
