@@ -45,11 +45,11 @@ module Primer
         )
       end
 
-      def outer_component
+      def wrapper_component
         Primer::BaseComponent.new(**@kwargs)
       end
 
-      def inner_component
+      def list_component
         Primer::BaseComponent.new(
           tag: :div,
           role: @list_role,
@@ -82,11 +82,11 @@ module Primer
         )
       end
 
-      def outer_component
+      def wrapper_component
         Primer::BaseComponent.new(**@kwargs)
       end
 
-      def inner_component
+      def title_component
         Primer::BaseComponent.new(
           tag: @kwargs[:title_tag] || :h3,
           classes: class_names(
@@ -124,11 +124,11 @@ module Primer
         @kwargs[:input_classes] ||= "form-control"
       end
 
-      def outer_component
+      def wrapper_component
         Primer::BaseComponent.new(**@kwargs)
       end
 
-      def inner_component
+      def input_component
         Primer::BaseComponent.new(
           tag: :input,
           type: "text",

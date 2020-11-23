@@ -1,8 +1,8 @@
 <%= render component do %>
-  <%= render modal.outer_component do %>
+  <%= render modal.wrapper_component do %>
     <% if header %>
-      <%= render header.outer_component do %>
-        <%= render header.inner_component do %>
+      <%= render header.wrapper_component do %>
+        <%= render header.title_component do %>
           <%= header.content %>
         <% end %>
 
@@ -15,13 +15,13 @@
     <% end %>
 
     <% if filter %>
-      <%= render filter.outer_component do %>
-        <%= render filter.inner_component %>
+      <%= render filter.wrapper_component do %>
+        <%= render filter.input_component %>
         <%= filter.content %>
       <% end %>
     <% end %>
 
-    <%= render modal.inner_component do %>
+    <%= render modal.list_component do %>
       <% if modal.message.present? %>
         <%= render modal.message_component do %>
           <%= modal.message %>
