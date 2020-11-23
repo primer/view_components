@@ -19,9 +19,15 @@ Use a `DetailsComponent` to toggle the select menu:
         My menu
       <% end %>
       <%= menu_component.slot(:modal) do %>
-        <button class="SelectMenu-item" role="menuitem">Item 1</button>
-        <button class="SelectMenu-item" role="menuitem">Item 2</button>
-        <button class="SelectMenu-item" role="menuitem">Item 3</button>
+        <%= render Primer::SelectMenuItemComponent.new do %>
+          Item 1
+        <% end %>
+        <%= render Primer::SelectMenuItemComponent.new do %>
+          Item 2
+        <% end %>
+        <%= render Primer::SelectMenuItemComponent.new do %>
+          Item 3
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
@@ -39,9 +45,15 @@ Or make the select menu the `details-menu` element itself:
   <% details_component.slot(:body, omit_wrapper: true) do %>
     <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
       <%= menu_component.slot(:modal) do %>
-        <button class="SelectMenu-item" role="menuitem">Item 1</button>
-        <button class="SelectMenu-item" role="menuitem">Item 2</button>
-        <button class="SelectMenu-item" role="menuitem">Item 3</button>
+        <%= render Primer::SelectMenuItemComponent.new do %>
+          Item 1
+        <% end %>
+        <%= render Primer::SelectMenuItemComponent.new do %>
+          Item 2
+        <% end %>
+        <%= render Primer::SelectMenuItemComponent.new do %>
+          Item 3
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
@@ -64,9 +76,15 @@ Include a button to close the menu:
         <%= render Primer::OcticonComponent.new(icon: "x") %>
       <% end %>
       <%= menu_component.slot(:modal) do %>
-        <button class="SelectMenu-item" role="menuitem">Item 1</button>
-        <button class="SelectMenu-item" role="menuitem">Item 2</button>
-        <button class="SelectMenu-item" role="menuitem">Item 3</button>
+        <%= render Primer::SelectMenuItemComponent.new do %>
+          Item 1
+        <% end %>
+        <%= render Primer::SelectMenuItemComponent.new do %>
+          Item 2
+        <% end %>
+        <%= render Primer::SelectMenuItemComponent.new do %>
+          Item 3
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
@@ -87,9 +105,15 @@ Include a filter field for filtering the modal contents:
       <% end %>
       <%= menu_component.slot(:filter) %>
       <%= menu_component.slot(:modal) do %>
-        <button class="SelectMenu-item" role="menuitem">Item 1</button>
-        <button class="SelectMenu-item" role="menuitem">Item 2</button>
-        <button class="SelectMenu-item" role="menuitem">Item 3</button>
+        <%= render Primer::SelectMenuItemComponent.new do %>
+          Item 1
+        <% end %>
+        <%= render Primer::SelectMenuItemComponent.new do %>
+          Item 2
+        <% end %>
+        <%= render Primer::SelectMenuItemComponent.new do %>
+          Item 3
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
