@@ -62,7 +62,7 @@ Use a `DetailsComponent` to toggle the select menu.
 | `placeholder` | `String` | `"Filter"` | The placeholder attribute for the input field. |
 | `tag` | `Symbol` | `:form` | HTML element type for the filter tag. |
 | `input_classes` | `String` | `"form-control"` | CSS classes to apply to the input element within the modal. |
-| `"aria-label"` | `String` | `"Filter"` | The aria-label attribute for the input field. |
+| `aria-label` | `String` | `"Filter"` | The aria-label attribute for the input field. |
 
 ### `footer` slot
 

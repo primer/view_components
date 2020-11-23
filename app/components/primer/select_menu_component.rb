@@ -131,7 +131,7 @@ module Primer
           tag: :input,
           type: "text",
           placeholder: @placeholder,
-          "aria-label": @kwargs["aria-label"] || @placeholder,
+          "aria-label": @kwargs[:"aria-label"] || @placeholder,
           classes: class_names(
             "SelectMenu-input",
             @kwargs[:input_classes],

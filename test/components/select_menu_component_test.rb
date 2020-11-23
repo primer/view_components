@@ -130,15 +130,14 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         title_tag: :h1,
         title_classes: "my-title-class",
       ) { "A nice title" }
-      filter_options = {
+      component.slot(:filter,
         tag: :div,
         input_classes: "my-input",
         classes: "my-filter",
         placeholder: "Search",
         py: 1,
-      }
-      filter_options["aria-label"] = "A nice filter field"
-      component.slot(:filter, **filter_options) { "filter description" }
+        :"aria-label" => "A nice filter field"
+      ) { "filter description" }
       component.slot(:modal,
         classes: "my-modal-class",
         py: 2,
