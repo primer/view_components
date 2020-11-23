@@ -103,6 +103,23 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     end
   end
 
+  def test_renders_with_filter_without_contents
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:filter)
+      component.slot(:modal) { "hello world" }
+    end
+
+    assert_selector("div.SelectMenu.SelectMenu--hasFilter") do
+      assert_selector("div.SelectMenu-modal") do
+        assert_selector("div.SelectMenu-list", text: /hello world/)
+        assert_selector("form.SelectMenu-filter") do
+          assert_selector("input.SelectMenu-input.form-control[placeholder='Filter']" \
+            "[aria-label='Filter']")
+        end
+      end
+    end
+  end
+
   def test_renders_with_footer
     render_inline Primer::SelectMenuComponent.new do |component|
       component.slot(:modal) { "hello world" }

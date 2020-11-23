@@ -2,7 +2,7 @@
 title: Select menu
 ---
 
-Use select menus to list clickable choices, allow filtering between them, and highlight which ones are selected.
+Use select menus to list clickable choices, allow filtering between them, and highlight which ones are selected. See [Primer CSS documentation](https://primer.style/css/components/select-menu) for more details.
 
 ## Examples
 
@@ -18,6 +18,54 @@ Use a `DetailsComponent` to toggle the select menu.
       <%= menu_component.slot(:header) do %>
         My menu
       <% end %>
+      <%= menu_component.slot(:modal) do %>
+        <button class="SelectMenu-item" role="menuitem">Item 1</button>
+        <button class="SelectMenu-item" role="menuitem">Item 2</button>
+        <button class="SelectMenu-item" role="menuitem">Item 3</button>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+```
+
+Include a button to close the menu:
+
+```erb
+<%= render Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative) do |details_component| %>
+  <% details_component.slot(:summary) do %>
+    Choose an option
+  <% end %>
+  <% details_component.slot(:body) do %>
+    <%= render Primer::SelectMenuComponent.new do |menu_component| %>
+      <%= menu_component.slot(:header) do %>
+        My menu
+      <% end %>
+      <%= menu_component.slot(:close_button) do %>
+        <%= render Primer::OcticonComponent.new(icon: "x") %>
+      <% end %>
+      <%= menu_component.slot(:modal) do %>
+        <button class="SelectMenu-item" role="menuitem">Item 1</button>
+        <button class="SelectMenu-item" role="menuitem">Item 2</button>
+        <button class="SelectMenu-item" role="menuitem">Item 3</button>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+```
+
+Include a filter field for filtering the modal contents:
+
+```erb
+<%= render Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative) do |details_component| %>
+  <% details_component.slot(:summary) do %>
+    Choose an option
+  <% end %>
+  <% details_component.slot(:body) do %>
+    <%= render Primer::SelectMenuComponent.new do |menu_component| %>
+      <%= menu_component.slot(:header) do %>
+        My menu
+      <% end %>
+      <%= menu_component.slot(:filter) %>
       <%= menu_component.slot(:modal) do %>
         <button class="SelectMenu-item" role="menuitem">Item 1</button>
         <button class="SelectMenu-item" role="menuitem">Item 2</button>
