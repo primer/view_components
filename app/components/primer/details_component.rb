@@ -50,9 +50,16 @@ module Primer
     end
 
     class Body < Primer::Slot
-      def initialize(**kwargs)
+      DEFAULT_OMIT_WRAPPER = false
+
+      def initialize(omit_wrapper: DEFAULT_OMIT_WRAPPER, **kwargs)
+        @omit_wrapper = fetch_or_fallback([true, false], omit_wrapper, DEFAULT_OMIT_WRAPPER)
         @kwargs = kwargs
         @kwargs[:tag] ||= :div
+      end
+
+      def omit_wrapper?
+        @omit_wrapper
       end
 
       def component

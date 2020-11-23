@@ -31,19 +31,21 @@ Use a `DetailsComponent` to toggle the select menu:
 Or make the select menu the `details-menu` element itself:
 
 ```erb
-<details class="details-reset details-overlay">
-  <summary class="btn" title="Pick an item">
-    <span>Choose</span>
+<%= render Primer::DetailsComponent.new(overlay: :default, reset: true) do |details_component| %>
+  <% details_component.slot(:summary, title: "Pick an item") do %>
+    Choose an option
     <span class="dropdown-caret"></span>
-  </summary>
-  <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
-    <%= menu_component.slot(:modal) do %>
-      <button class="SelectMenu-item" role="menuitem">Item 1</button>
-      <button class="SelectMenu-item" role="menuitem">Item 2</button>
-      <button class="SelectMenu-item" role="menuitem">Item 3</button>
+  <% end %>
+  <% details_component.slot(:body, omit_wrapper: true) do %>
+    <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
+      <%= menu_component.slot(:modal) do %>
+        <button class="SelectMenu-item" role="menuitem">Item 1</button>
+        <button class="SelectMenu-item" role="menuitem">Item 2</button>
+        <button class="SelectMenu-item" role="menuitem">Item 3</button>
+      <% end %>
     <% end %>
   <% end %>
-</details>
+<% end %>
 ```
 
 Include a button to close the menu:
