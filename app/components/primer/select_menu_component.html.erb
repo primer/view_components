@@ -1,5 +1,7 @@
 <%= render component do %>
-  <%= render modal.component do %>
-    <%= modal.content %>
+  <%= render modal.outer_component do %>
+    <%= render modal.inner_component do %>
+      <%= modal.content %>
+    <% end %>
   <% end %>
 <% end %>

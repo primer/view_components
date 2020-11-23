@@ -29,8 +29,18 @@ module Primer
         )
       end
 
-      def component
+      def outer_component
         Primer::BaseComponent.new(**@kwargs)
+      end
+
+      def inner_component
+        Primer::BaseComponent.new(
+          tag: :div,
+          classes: class_names(
+            "SelectMenu-list",
+            @kwargs[:list_classes],
+          )
+        )
       end
     end
 
