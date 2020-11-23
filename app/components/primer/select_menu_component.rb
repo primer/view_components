@@ -24,10 +24,15 @@ module Primer
     end
 
     class Modal < Primer::Slot
-      DEFAULT_OMIT_TOP_BORDER = false
+      BORDER_CLASSES = {
+        all: nil,
+        omit_top: "border-top-0",
+        none: "SelectMenu-list--borderless",
+      }.freeze
+      DEFAULT_BORDER_CLASS = :all
 
-      def initialize(omit_top_border: DEFAULT_OMIT_TOP_BORDER, **kwargs)
-        @omit_top_border = fetch_or_fallback([true, false], omit_top_border, DEFAULT_OMIT_TOP_BORDER)
+      def initialize(border: DEFAULT_BORDER_CLASS, **kwargs)
+        @border = fetch_or_fallback(BORDER_CLASSES.keys, border, DEFAULT_BORDER_CLASS)
         @kwargs = kwargs
         @kwargs[:tag] = :div
         @kwargs[:classes] = class_names(
@@ -47,7 +52,7 @@ module Primer
           classes: class_names(
             "SelectMenu-list",
             @kwargs[:list_classes],
-            "border-top-0" => @omit_top_border,
+            BORDER_CLASSES[@border]
           )
         )
       end
