@@ -69,27 +69,6 @@ class PrimerDetailsComponentTest < Minitest::Test
     assert_selector(".btn")
   end
 
-  def test_renders_containing_div_by_default_for_body
-    render_inline(Primer::DetailsComponent.new) do |component|
-      component.slot(:summary) { "Summary" }
-      component.slot(:body) { "Body" }
-    end
-
-    assert_selector("details summary", text: /Summary/)
-    assert_selector("details div", text: /Body/)
-  end
-
-  def test_doesnt_render_containing_div_for_body_when_specified
-    render_inline(Primer::DetailsComponent.new) do |component|
-      component.slot(:summary) { "Summary" }
-      component.slot(:body, omit_wrapper: true) { "Body" }
-    end
-
-    assert_selector("details summary", text: /Summary/)
-    assert_selector("details", text: /Body/)
-    refute_selector("details div")
-  end
-
   def test_passes_props_to_button
     render_inline(Primer::DetailsComponent.new) do |component|
       component.slot(:summary, variant: :small, button_type: :primary) do
