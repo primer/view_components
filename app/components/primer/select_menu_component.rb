@@ -8,6 +8,7 @@ module Primer
 
     with_slot :modal, class_name: "Modal"
     with_slot :header, class_name: "Header"
+    with_slot :close_button, class_name: "CloseButton"
 
     def initialize(align_right: DEFAULT_ALIGN_RIGHT, **kwargs)
       @align_right = fetch_or_fallback([true, false], align_right, DEFAULT_ALIGN_RIGHT)
@@ -81,6 +82,21 @@ module Primer
             @kwargs[:title_classes],
           )
         )
+      end
+    end
+
+    class CloseButton < Primer::Slot
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:tag] = :button
+        @kwargs[:classes] = class_names(
+          "SelectMenu-closeButton",
+          kwargs[:classes],
+        )
+      end
+
+      def component
+        Primer::ButtonComponent.new(**@kwargs)
       end
     end
 

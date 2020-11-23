@@ -6,8 +6,15 @@
           <%= render header.inner_component do %>
             <%= header.content %>
           <% end %>
+
+          <% if close_button %>
+            <%= render close_button.component do %>
+              <%= close_button.content %>
+            <% end %>
+          <% end %>
         <% end %>
       <% end %>
+
       <%= modal.content %>
     <% end %>
   <% end %>

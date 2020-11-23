@@ -39,6 +39,24 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     end
   end
 
+  def test_renders_with_header_and_close_button
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:header) { "A nice title" }
+      component.slot(:modal) { "hello world" }
+      component.slot(:close_button) { "close me" }
+    end
+
+    assert_selector("div.SelectMenu") do
+      assert_selector("div.SelectMenu-modal") do
+        assert_selector("header.SelectMenu-header") do
+          assert_selector("h3.SelectMenu-title", text: /A nice title/)
+          assert_selector("button.SelectMenu-closeButton", text: /close me/)
+        end
+        assert_selector("div.SelectMenu-list", text: /hello world/)
+      end
+    end
+  end
+
   def test_passes_along_other_arguments
     render_inline Primer::SelectMenuComponent.new(
       classes: "my-class",
@@ -62,12 +80,21 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       ) do
         "hello world"
       end
+      component.slot(:close_button,
+        classes: "my-close-button",
+        ml: 4,
+        display: :inline_flex,
+      ) do
+        "close me"
+      end
     end
 
     assert_selector("div.SelectMenu.my-class.mr-3.d-block") do
       assert_selector("div.SelectMenu-modal.my-modal-class.py-2.text-red") do
         assert_selector("div.SelectMenu-header.my-header-class.mt-1") do
           assert_selector("h1.SelectMenu-title.my-title-class", text: /A nice title/)
+          assert_selector("button.SelectMenu-closeButton.my-close-button.ml-4.d-inline-flex",
+            text: /close me/)
         end
         assert_selector("div.SelectMenu-list.my-list-class", text: /hello world/)
       end
