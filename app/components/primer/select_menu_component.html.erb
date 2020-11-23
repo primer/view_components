@@ -1,6 +1,11 @@
 <%= render component do %>
   <%= render modal.outer_component do %>
     <%= render modal.inner_component do %>
+      <% if header %>
+        <%= render header.component do %>
+          <%= header.content %>
+        <% end %>
+      <% end %>
       <%= modal.content %>
     <% end %>
   <% end %>

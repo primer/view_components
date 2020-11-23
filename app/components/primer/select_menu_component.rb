@@ -7,6 +7,7 @@ module Primer
     DEFAULT_ALIGN_RIGHT = false
 
     with_slot :modal, class_name: "Modal"
+    with_slot :header, class_name: "Header"
 
     def initialize(align_right: DEFAULT_ALIGN_RIGHT, **kwargs)
       @align_right = fetch_or_fallback([true, false], align_right, DEFAULT_ALIGN_RIGHT)
@@ -55,6 +56,21 @@ module Primer
             BORDER_CLASSES[@border]
           )
         )
+      end
+    end
+
+    class Header < Primer::Slot
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:tag] ||= :header
+        @kwargs[:classes] = class_names(
+          "SelectMenu-header",
+          kwargs[:classes]
+        )
+      end
+
+      def component
+        Primer::BaseComponent.new(**@kwargs)
       end
     end
 

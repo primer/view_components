@@ -19,6 +19,24 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     end
   end
 
+  def test_renders_with_header
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:header) do
+        "A nice title"
+      end
+      component.slot(:modal) do
+        "hello world"
+      end
+    end
+
+    assert_selector("div.SelectMenu") do
+      assert_selector("div.SelectMenu-modal") do
+        assert_selector("header.SelectMenu-header", text: /A nice title/)
+        assert_selector("div.SelectMenu-list", text: /hello world/)
+      end
+    end
+  end
+
   def test_passes_along_other_arguments
     render_inline Primer::SelectMenuComponent.new(
       classes: "my-class",
