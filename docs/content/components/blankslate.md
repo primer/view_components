@@ -35,14 +35,14 @@ Add an `icon` to give additional context. Refer to the [Octicons](https://primer
 
 Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
 
-<iframe style="width: 100%; border: 0px; height: 150px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='blankslate '>    <svg viewBox='0 0 16 16' fill='none' style='box-sizing: content-box; color: var(--color-icon-primary);' class='mb-3' width='32' height='32'>  <circle cx='8' cy='8' r='7' stroke='currentColor' stroke-opacity='0.25' stroke-width='2' vector-effect='non-scaling-stroke' />  <path d='M15 8a7.002 7.002 0 00-7-7' stroke='currentColor' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke'>    <animateTransform attributeName='transform' type='rotate' from='0 8 8' to='360 8 8' dur='1s' repeatCount='indefinite' />  </path></svg>    <h3 class='mb-1'>Title</h3>    <p>Description</p>  </div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 150px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='blankslate '>    <svg viewBox='0 0 16 16' fill='none' style='box-sizing: content-box; color: var(--color-icon-primary);' class='mb-3' width='64' height='64'>  <circle cx='8' cy='8' r='7' stroke='currentColor' stroke-opacity='0.25' stroke-width='2' vector-effect='non-scaling-stroke' />  <path d='M15 8a7.002 7.002 0 00-7-7' stroke='currentColor' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke'>    <animateTransform attributeName='transform' type='rotate' from='0 8 8' to='360 8 8' dur='1s' repeatCount='indefinite' />  </path></svg>    <h3 class='mb-1'>Title</h3>    <p>Description</p>  </div></body></html>"></iframe>
 
 ```erb
 <%= render Primer::BlankslateComponent.new(
   title: "Title",
   description: "Description",
 ) do |component| %>
-  <% component.slot(:spinner) %>
+  <% component.slot(:spinner, size: :large) %>
 <% end %>
 ```
 
@@ -134,4 +134,5 @@ There are a few variations of how the Blankslate appears: `narrow` adds a maximu
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `size` | `Symbol` | N/A | One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`). |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

@@ -26,7 +26,7 @@ module Primer
     #     title: "Title",
     #     description: "Description",
     #   ) do |component| %>
-    #     <% component.slot(:spinner) %>
+    #     <% component.slot(:spinner, size: :large) %>
     #   <% end %>
     #
     # @example 150|Custom content|Pass custom content as a block in place of `description`.
@@ -126,6 +126,7 @@ module Primer
     end
 
     class Spinner < Primer::Slot
+      # @param size [Symbol] <%= one_of(Primer::SpinnerComponent::SIZE_MAPPINGS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = system_arguments
