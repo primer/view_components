@@ -65,11 +65,8 @@ Include a button to close the menu:
   <% end %>
   <% details_component.slot(:body) do %>
     <%= render Primer::SelectMenuComponent.new do |menu_component| %>
-      <%= menu_component.slot(:header) do %>
+      <%= menu_component.slot(:header, close_button: true) do %>
         My menu
-      <% end %>
-      <%= menu_component.slot(:close_button) do %>
-        <%= render Primer::OcticonComponent.new(icon: "x") %>
       <% end %>
       <%= menu_component.slot(:item) do %>
         Item 1
@@ -171,6 +168,8 @@ Display a loading message:
 | `tag` | `Symbol` | `:header` | HTML element type for the header tag. |
 | `title_classes` | `String` | N/A | CSS classes to apply to the title element within the header. |
 | `title_tag` | `Symbol` | `:h3` | HTML element type for the title tag. |
+| `close_button` | `Boolean` | `false` | Whether to include a close button in the header for closing the whole menu. |
+| `close_button_classes` | `String` | N/A | CSS classes to apply to the close button within the header. Only used if `close_button` = `true`. |
 
 ### `filter` slot
 
@@ -189,8 +188,12 @@ Display a loading message:
 | `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
 | `tag` | `Symbol` | `:footer` | HTML element type for the footer tag. |
 
-### `close_button` slot
+### `item` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `tag` | `Symbol` | `:button` | HTML element type for the item tag. |
+| `role` | `String` | `"menuitem"` | HTML role attribute for the item tag. |
+| `icon` | `String` | `nil` | Octicon name for this item. Defaults to no icon. Set to a value like `"check"` to add an icon to this item. |
+| `icon_classes` | `String` | N/A | CSS classes to apply to the icon. Only used if `icon` is not `nil`. |

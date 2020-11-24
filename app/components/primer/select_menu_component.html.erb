@@ -6,9 +6,9 @@
           <%= header.content %>
         <% end %>
 
-        <% if close_button %>
-          <%= render close_button.component do %>
-            <%= close_button.content %>
+        <% if header.close_button %>
+          <%= render header.close_button_component do %>
+            <%= render header.close_button_icon %>
           <% end %>
         <% end %>
       <% end %>

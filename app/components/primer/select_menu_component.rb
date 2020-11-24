@@ -18,7 +18,6 @@ module Primer
     with_slot :item, class_name: "Item", collection: true
     with_slot :filter, class_name: "Filter"
     with_slot :footer, class_name: "Footer"
-    with_slot :close_button, class_name: "CloseButton"
 
     attr_reader :message
 
@@ -92,7 +91,12 @@ module Primer
     end
 
     class Header < Primer::Slot
-      def initialize(**kwargs)
+      DEFAULT_CLOSE_BUTTON = false
+
+      attr_reader :close_button
+
+      def initialize(close_button: DEFAULT_CLOSE_BUTTON, **kwargs)
+        @close_button = fetch_or_fallback([true, false], close_button, DEFAULT_CLOSE_BUTTON)
         @kwargs = kwargs
         @kwargs[:tag] ||= :header
         @kwargs[:classes] = class_names(
@@ -113,6 +117,20 @@ module Primer
             @kwargs[:title_classes],
           )
         )
+      end
+
+      def close_button_component
+        Primer::ButtonComponent.new(
+          tag: :button,
+          classes: class_names(
+            "SelectMenu-closeButton",
+            @kwargs[:close_button_classes],
+          )
+        )
+      end
+
+      def close_button_icon
+        Primer::OcticonComponent.new(icon: "x")
       end
     end
 
@@ -158,21 +176,6 @@ module Primer
             @kwargs[:input_classes],
           )
         )
-      end
-    end
-
-    class CloseButton < Primer::Slot
-      def initialize(**kwargs)
-        @kwargs = kwargs
-        @kwargs[:tag] = :button
-        @kwargs[:classes] = class_names(
-          "SelectMenu-closeButton",
-          kwargs[:classes],
-        )
-      end
-
-      def component
-        Primer::ButtonComponent.new(**@kwargs)
       end
     end
 
