@@ -2,6 +2,10 @@
 
 ## main
 
+* Adding a `spinner` slot to the `BlankslateComponent` that uses the `SpinnerComponent` added in `0.0.10`.
+
+    *Jon Rohan*
+
 ## 0.0.15
 
 * Add ability to disable `limit` on Counter.
