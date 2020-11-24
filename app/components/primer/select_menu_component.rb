@@ -70,7 +70,7 @@ module Primer
           "SelectMenu-tab",
           kwargs[:classes],
         )
-        @kwargs["aria-selected"] = "true" if @selected
+        @kwargs[:"aria-selected"] = "true" if @selected
       end
 
       def component
