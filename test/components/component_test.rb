@@ -34,7 +34,6 @@ class PrimerComponentTest < Minitest::Test
       component.slot(:modal) { "Foo" }
     end],
     [Primer::SelectMenuIconComponent, {}],
-    [Primer::SelectMenuItemComponent, {}],
     [Primer::SpinnerComponent, {}],
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],

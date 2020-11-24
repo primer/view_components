@@ -22,6 +22,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       component.slot(:header) { "A nice title" }
       component.slot(:filter) { "filter description" }
       component.slot(:modal, message: "Goodness me", loading: true) { "hello world" }
+      component.slot(:item) { "item 1" }
       component.slot(:close_button) { "close me" }
       component.slot(:footer) { "the end" }
     end
@@ -38,6 +39,8 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       "div.SelectMenu-message", text: /Goodness me/)
     assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
       "div.SelectMenu-loading", text: /hello world/)
+    assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
+      "button.SelectMenu-item", text: /item 1/)
   end
 
   def test_renders_with_loading
@@ -49,6 +52,57 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       assert_selector("div.SelectMenu-modal") do
         assert_selector("div.SelectMenu-list") do
           assert_selector("div.SelectMenu-loading", text: /Loading/)
+        end
+      end
+    end
+  end
+
+  def test_renders_with_items_and_no_modal_content
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:item) { "item 1" }
+      component.slot(:item) { "item 2" }
+    end
+
+    assert_selector("div.SelectMenu") do
+      assert_selector("div.SelectMenu-modal") do
+        assert_selector("div.SelectMenu-list") do
+          assert_selector("button.SelectMenu-item[role='menuitem']", text: /item 1/)
+          assert_selector("button.SelectMenu-item[role='menuitem']", text: /item 2/)
+        end
+      end
+    end
+  end
+
+  def test_renders_with_items_and_modal_options_but_no_modal_content
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:modal, list_role: "menu", my: 3, list_classes: "p-4")
+      component.slot(:item) { "item 1" }
+      component.slot(:item) { "item 2" }
+    end
+
+    assert_selector("div.SelectMenu") do
+      assert_selector("div.SelectMenu-modal.my-3") do
+        assert_selector("div.SelectMenu-list.p-4[role='menu']") do
+          assert_selector("button.SelectMenu-item[role='menuitem']", text: /item 1/)
+          assert_selector("button.SelectMenu-item[role='menuitem']", text: /item 2/)
+        end
+      end
+    end
+  end
+
+  def test_renders_with_items_using_specified_tag
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:modal, list_role: "menu") { "hello world" }
+      component.slot(:item, tag: :a, href: "#some-url") { "item 1" }
+      component.slot(:item, tag: :div) { "item 2" }
+    end
+
+    assert_selector("div.SelectMenu") do
+      assert_selector("div.SelectMenu-modal") do
+        assert_selector("div.SelectMenu-list[role='menu']", text: /hello world/) do
+          assert_selector("a.SelectMenu-item[href='#some-url'][role='menuitem']",
+            text: /item 1/)
+          assert_selector("div.SelectMenu-item[role='menuitem']", text: /item 2/)
         end
       end
     end
@@ -204,6 +258,11 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         tag: :div,
         mr: 3,
       ) { "the end" }
+      component.slot(:item,
+        classes: "my-item",
+        role: "menuitemcheckbox",
+        mt: 1,
+      ) { "item 1" }
     end
 
     assert_selector("details-menu.SelectMenu.SelectMenu--hasFilter.my-class.mr-3.d-block[role='menu']") do
@@ -215,6 +274,8 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         end
         assert_selector("div.SelectMenu-list.my-list-class", text: /hello world/) do
           assert_selector("div.SelectMenu-message.my-message", text: /Goodness me/)
+          assert_selector("button.SelectMenu-item.my-item.mt-1[role='menuitemcheckbox']",
+            text: /item 1/)
         end
         assert_selector("div.SelectMenu-filter.my-filter.py-1", text: /filter description/) do
           assert_selector("input.SelectMenu-input.my-input[placeholder='Search']" \

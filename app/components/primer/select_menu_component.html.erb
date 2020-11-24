@@ -39,6 +39,14 @@
       <% else %>
         <%= modal.content %>
       <% end %>
+
+      <% if items.any? %>
+        <% items.each do |item| %>
+          <%= render item.component do %>
+            <%= item.content %>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
 
     <% if footer %>

@@ -8,6 +8,7 @@ module Primer
 
     with_slot :header, class_name: "Header"
     with_slot :modal, class_name: "Modal"
+    with_slot :item, class_name: "Item", collection: true
     with_slot :filter, class_name: "Filter"
     with_slot :footer, class_name: "Footer"
     with_slot :close_button, class_name: "CloseButton"
@@ -20,7 +21,7 @@ module Primer
     end
 
     def render?
-      modal.present?
+      modal.content.present? || items.any?
     end
 
     class Modal < Primer::Slot
@@ -88,6 +89,29 @@ module Primer
             @kwargs[:message_classes],
           )
         )
+      end
+    end
+
+    class Item < Primer::Slot
+      def initialize(**kwargs)
+        @kwargs = kwargs
+        @kwargs[:tag] ||= :button
+        @kwargs[:role] ||= "menuitem"
+        @kwargs[:classes] = class_names(
+          "SelectMenu-item",
+          kwargs[:classes],
+        )
+      end
+
+      def component
+        case @kwargs[:tag]
+        when :button
+          Primer::ButtonComponent.new(**@kwargs)
+        when :a
+          Primer::LinkComponent.new(**@kwargs)
+        else
+          Primer::BaseComponent.new(**@kwargs)
+        end
       end
     end
 
@@ -184,6 +208,11 @@ module Primer
         "SelectMenu--hasFilter" => filter.present?,
       )
       Primer::BaseComponent.new(**@kwargs)
+    end
+
+    def modal
+      return @modal if defined?(@modal)
+      Modal.new
     end
   end
 end
