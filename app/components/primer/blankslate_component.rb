@@ -21,7 +21,7 @@ module Primer
     #     description: "Description",
     #   ) %>
     #
-    # @example 150|Loading|Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
+    # @example 220|Loading|Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
     #   <%= render Primer::BlankslateComponent.new(
     #     title: "Title",
     #     description: "Description",
