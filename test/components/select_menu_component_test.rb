@@ -22,7 +22,8 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       component.slot(:header, close_button: true) { "A nice title" }
       component.slot(:filter) { "filter description" }
       component.slot(:tab, selected: true) { "Tab 1" }
-      component.slot(:item) { "item 1" }
+      component.slot(:item, divider: true) { "item 1" }
+      component.slot(:item) { "item 2" }
       component.slot(:footer) { "the end" }
       "hello world"
     end
@@ -43,6 +44,10 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       "div.SelectMenu-loading", text: /hello world/)
     assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
       "button.SelectMenu-item", text: /item 1/)
+    assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
+      "hr.SelectMenu-divider")
+    assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
+      "button.SelectMenu-item", text: /item 2/)
   end
 
   def test_renders_with_loading
@@ -61,7 +66,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_renders_with_items
     render_inline Primer::SelectMenuComponent.new do |component|
-      component.slot(:item) { "item 1" }
+      component.slot(:item, divider: "some divider") { "item 1" }
       component.slot(:item, icon: "star") { "item 2" }
     end
 
@@ -69,6 +74,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       assert_selector("div.SelectMenu-modal") do
         assert_selector("div.SelectMenu-list") do
           assert_selector("button.SelectMenu-item[role='menuitem']", text: /item 1/)
+          assert_selector("div.SelectMenu-divider", text: /some divider/)
           assert_selector("button.SelectMenu-item[role='menuitem']", text: /item 2/) do
             assert_selector(".SelectMenu-icon.SelectMenu-icon--check.octicon." \
               "octicon-star")
@@ -292,6 +298,8 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         icon: "check",
         icon_classes: "my-icon",
         tab: 1,
+        divider: true,
+        divider_classes: "my-divider",
       ) { "item 1" }
     end
 
@@ -308,6 +316,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
               assert_selector(".SelectMenu-icon.SelectMenu-icon--check.octicon." \
                 "octicon-check.my-icon")
           end
+          assert_selector("hr.SelectMenu-divider.my-divider")
         end
         assert_selector("div.SelectMenu-filter.my-filter.py-1", text: /filter description/) do
           assert_selector("input.SelectMenu-input.my-input[placeholder='Search']" \

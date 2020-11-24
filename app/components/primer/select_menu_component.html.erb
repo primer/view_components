@@ -59,6 +59,10 @@
 
             <%= item.content %>
           <% end %>
+
+          <% if item.divider %>
+            <%= render item.divider_component %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>

@@ -125,7 +125,7 @@ Include tabs to have multiple lists of items:
       <%= menu_component.slot(:tab) do %>
         Tab 2
       <% end >
-      <%= menu_component.slot(:item, tab: 1) do %>
+      <%= menu_component.slot(:item, tab: 1, divider: true) do %>
         Item 1
       <% end %>
       <%= menu_component.slot(:item, tab: 1) do %>
@@ -201,6 +201,8 @@ Display a loading message:
 | `role` | `String` | `"menuitem"` | HTML role attribute for the item tag. |
 | `icon` | `String` | `nil` | Octicon name for this item. Defaults to no icon. Set to a value like `"check"` to add an icon to this item. |
 | `icon_classes` | `String` | N/A | CSS classes to apply to the icon. Only used if `icon` is not `nil`. |
+| `divider` | `Boolean` or `String` | `nil` | Whether to show a divider after this item. Pass `true` to show a simple line divider, or pass a String to show a divider with a message. |
+| `divider_classes` | `String` | N/A | CSS classes to apply to the divider after this item. Only used if `divider` is not `nil`. |
 
 ### `tab` slot
 

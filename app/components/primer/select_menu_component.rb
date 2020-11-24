@@ -81,11 +81,12 @@ module Primer
     class Item < Primer::Slot
       DEFAULT_TAB = 1
 
-      attr_reader :icon, :tab
+      attr_reader :icon, :tab, :divider
 
-      def initialize(icon: nil, tab: DEFAULT_TAB, **kwargs)
+      def initialize(icon: nil, tab: DEFAULT_TAB, divider: nil, **kwargs)
         @icon = icon
         @tab = (tab || DEFAULT_TAB).to_i
+        @divider = divider
         @kwargs = kwargs
         @kwargs[:tag] ||= :button
         @kwargs[:role] ||= "menuitem"
@@ -115,6 +116,25 @@ module Primer
             @kwargs[:icon_classes],
           )
         )
+      end
+
+      # Private: Only used if `divider` is non-nil.
+      def divider_component
+        divider_classes = class_names(
+          "SelectMenu-divider",
+          @kwargs[:divider_classes],
+        )
+        if divider.is_a?(String)
+          Primer::BaseComponent.new(
+            tag: :div,
+            classes: divider_classes
+          ) { divider }
+        else
+          Primer::BaseComponent.new(
+            tag: :hr,
+            classes: divider_classes
+          )
+        end
       end
     end
 
