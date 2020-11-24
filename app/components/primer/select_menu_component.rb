@@ -56,7 +56,10 @@ module Primer
     end
 
     class Item < Primer::Slot
-      def initialize(**kwargs)
+      attr_reader :icon
+
+      def initialize(icon: nil, **kwargs)
+        @icon = icon
         @kwargs = kwargs
         @kwargs[:tag] ||= :button
         @kwargs[:role] ||= "menuitem"
@@ -66,7 +69,7 @@ module Primer
         )
       end
 
-      def component
+      def wrapper_component
         case @kwargs[:tag]
         when :button
           Primer::ButtonComponent.new(**@kwargs)
@@ -75,6 +78,16 @@ module Primer
         else
           Primer::BaseComponent.new(**@kwargs)
         end
+      end
+
+      def icon_component
+        Primer::OcticonComponent.new(
+          icon: icon,
+          classes: class_names(
+            "SelectMenu-icon SelectMenu-icon--check",
+            @kwargs[:icon_classes],
+          )
+        )
       end
     end
 

@@ -60,14 +60,17 @@ class PrimerSelectMenuComponentTest < Minitest::Test
   def test_renders_with_items
     render_inline Primer::SelectMenuComponent.new do |component|
       component.slot(:item) { "item 1" }
-      component.slot(:item) { "item 2" }
+      component.slot(:item, icon: "star") { "item 2" }
     end
 
     assert_selector("div.SelectMenu") do
       assert_selector("div.SelectMenu-modal") do
         assert_selector("div.SelectMenu-list") do
           assert_selector("button.SelectMenu-item[role='menuitem']", text: /item 1/)
-          assert_selector("button.SelectMenu-item[role='menuitem']", text: /item 2/)
+          assert_selector("button.SelectMenu-item[role='menuitem']", text: /item 2/) do
+            assert_selector(".SelectMenu-icon.SelectMenu-icon--check.octicon." \
+              "octicon-star")
+          end
         end
       end
     end
@@ -240,6 +243,8 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         classes: "my-item",
         role: "menuitemcheckbox",
         mt: 1,
+        icon: "check",
+        icon_classes: "my-icon",
       ) { "item 1" }
     end
 
@@ -253,7 +258,10 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         assert_selector("div.SelectMenu-list.my-list-class") do
           assert_selector("div.SelectMenu-message.my-message", text: /Goodness me/)
           assert_selector("button.SelectMenu-item.my-item.mt-1[role='menuitemcheckbox']",
-            text: /item 1/)
+            text: /item 1/) do
+              assert_selector(".SelectMenu-icon.SelectMenu-icon--check.octicon." \
+                "octicon-check.my-icon")
+          end
         end
         assert_selector("div.SelectMenu-filter.my-filter.py-1", text: /filter description/) do
           assert_selector("input.SelectMenu-input.my-input[placeholder='Search']" \

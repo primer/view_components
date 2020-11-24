@@ -18,16 +18,13 @@ Use a `DetailsComponent` to toggle the select menu:
       <%= menu_component.slot(:header) do %>
         My menu
       <% end %>
-      <%= menu_component.slot(:item) do %>
-        <%= render Primer::SelectMenuIconComponent.new %>
+      <%= menu_component.slot(:item, icon: "check") do %>
         Item 1
       <% end %>
-      <%= menu_component.slot(:item) do %>
-        <%= render Primer::SelectMenuIconComponent.new %>
+      <%= menu_component.slot(:item, icon: "check") do %>
         Item 2
       <% end %>
-      <%= menu_component.slot(:item) do %>
-        <%= render Primer::SelectMenuIconComponent.new %>
+      <%= menu_component.slot(:item, icon: "check") do %>
         Item 3
       <% end %>
     <% end %>

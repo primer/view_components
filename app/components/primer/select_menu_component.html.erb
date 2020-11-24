@@ -42,7 +42,11 @@
 
       <% if items.any? %>
         <% items.each do |item| %>
-          <%= render item.component do %>
+          <%= render item.wrapper_component do %>
+            <% if item.icon %>
+              <%= render item.icon_component %>
+            <% end %>
+
             <%= item.content %>
           <% end %>
         <% end %>
