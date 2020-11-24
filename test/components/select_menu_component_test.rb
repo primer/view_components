@@ -67,7 +67,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
   def test_renders_with_items
     render_inline Primer::SelectMenuComponent.new do |component|
       component.slot(:item, divider: "some divider") { "item 1" }
-      component.slot(:item, icon: "star") { "item 2" }
+      component.slot(:item, selected: true, icon: "star") { "item 2" }
     end
 
     assert_selector("div.SelectMenu") do
@@ -75,10 +75,11 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         assert_selector("div.SelectMenu-list") do
           assert_selector("button.SelectMenu-item[role='menuitem']", text: /item 1/)
           assert_selector("div.SelectMenu-divider", text: /some divider/)
-          assert_selector("button.SelectMenu-item[role='menuitem']", text: /item 2/) do
-            assert_selector(".SelectMenu-icon.SelectMenu-icon--check.octicon." \
-              "octicon-star")
-          end
+          assert_selector("button.SelectMenu-item[role='menuitemcheckbox'][aria-checked='true']",
+            text: /item 2/) do
+              assert_selector(".SelectMenu-icon.SelectMenu-icon--check.octicon." \
+                "octicon-star")
+            end
         end
       end
     end

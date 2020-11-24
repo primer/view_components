@@ -80,20 +80,27 @@ module Primer
 
     class Item < Primer::Slot
       DEFAULT_TAB = 1
+      DEFAULT_SELECTED = false
 
       attr_reader :icon, :tab, :divider
 
-      def initialize(icon: nil, tab: DEFAULT_TAB, divider: nil, **kwargs)
+      def initialize(selected: DEFAULT_SELECTED, icon: nil, tab: DEFAULT_TAB, divider: nil, **kwargs)
+        @selected = fetch_or_fallback([true, false], selected, DEFAULT_SELECTED)
         @icon = icon
         @tab = (tab || DEFAULT_TAB).to_i
         @divider = divider
         @kwargs = kwargs
         @kwargs[:tag] ||= :button
-        @kwargs[:role] ||= "menuitem"
+        @kwargs[:role] ||= if @selected || @icon
+          "menuitemcheckbox"
+        else
+          "menuitem"
+        end
         @kwargs[:classes] = class_names(
           "SelectMenu-item",
           kwargs[:classes],
         )
+        @kwargs[:"aria-checked"] = "true" if @selected
       end
 
       def wrapper_component

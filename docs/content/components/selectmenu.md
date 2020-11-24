@@ -18,7 +18,7 @@ Use a `DetailsComponent` to toggle the select menu:
       <%= menu_component.slot(:header) do %>
         My menu
       <% end %>
-      <%= menu_component.slot(:item, icon: "check") do %>
+      <%= menu_component.slot(:item, selected: true, icon: "check") do %>
         Item 1
       <% end %>
       <%= menu_component.slot(:item, icon: "check") do %>
@@ -196,6 +196,7 @@ Display a loading message:
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
+| `selected` | `Boolean` | `false` | Whether this item is the currently active one. |
 | `tag` | `Symbol` | `:button` | HTML element type for the item tag. |
 | `tab` | `Integer` | `1` | Which tab this item should appear in. The first tab is 1. |
 | `role` | `String` | `"menuitem"` | HTML role attribute for the item tag. |
