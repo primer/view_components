@@ -16,6 +16,7 @@ module Primer
 
     with_slot :header, class_name: "Header"
     with_slot :item, class_name: "Item", collection: true
+    with_slot :tab, class_name: "Tab", collection: true
     with_slot :filter, class_name: "Filter"
     with_slot :footer, class_name: "Footer"
 
@@ -43,7 +44,7 @@ module Primer
     end
 
     def render?
-      items.any? || content.present? || message.present?
+      items.any? || tabs.any? || content.present? || message.present?
     end
 
     def loading?
@@ -54,11 +55,33 @@ module Primer
       @blankslate
     end
 
-    class Item < Primer::Slot
-      attr_reader :icon
+    class Tab < Primer::Slot
+      DEFAULT_SELECTED = false
 
-      def initialize(icon: nil, **kwargs)
+      attr_reader :selected
+
+      def initialize(selected: DEFAULT_SELECTED, **kwargs)
+        @selected = fetch_or_fallback([true, false], selected, DEFAULT_SELECTED)
+        @kwargs = kwargs
+        @kwargs[:tag] = :button
+        @kwargs[:classes] = class_names(
+          "SelectMenu-tab",
+          kwargs[:classes],
+        )
+        @kwargs["aria-selected"] = "true" if @selected
+      end
+
+      def component
+        Primer::BaseComponent.new(**@kwargs)
+      end
+    end
+
+    class Item < Primer::Slot
+      attr_reader :icon, :tab
+
+      def initialize(icon: nil, tab: 1, **kwargs)
         @icon = icon
+        @tab = (tab || 1).to_i
         @kwargs = kwargs
         @kwargs[:tag] ||= :button
         @kwargs[:role] ||= "menuitem"
@@ -199,10 +222,28 @@ module Primer
       )
     end
 
-    def list_component
+    def items_in_tab(tab)
+      return [] if items.empty?
+      items.select { |item| item.tab == tab }
+    end
+
+    # Private: Get all the `.SelectMenu-list` elements necessary to represent all the
+    # tabs in this select menu.
+    def list_components
+      if tabs.any?
+        tabs.map do |tab|
+          list_component(hidden: !tab.selected)
+        end
+      else
+        [list_component]
+      end
+    end
+
+    def list_component(hidden: false)
       Primer::BaseComponent.new(
         tag: :div,
         role: @list_role,
+        hidden: hidden,
         classes: class_names(
           "SelectMenu-list",
           @kwargs[:list_classes],
@@ -217,6 +258,16 @@ module Primer
         classes: class_names(
           "SelectMenu-message",
           @kwargs[:message_classes],
+        )
+      )
+    end
+
+    def tab_wrapper_component
+      Primer::BaseComponent.new(
+        tag: :nav,
+        classes: class_names(
+          "SelectMenu-tabs",
+          @kwargs[:tab_wrapper_classes],
         )
       )
     end

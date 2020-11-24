@@ -21,27 +21,37 @@
       <% end %>
     <% end %>
 
-    <%= render list_component do %>
-      <% if message.present? %>
-        <%= render message_component do %>
-          <%= message %>
+    <% if tabs.any? %>
+      <%= render tab_wrapper_component do %>
+        <% tabs.each do |tab| %>
+          <%= render tab.component do %>
+            <%= tab.content %>
+          <% end %>
         <% end %>
       <% end %>
+    <% end %>
 
-      <% if loading? %>
-        <div class="SelectMenu-loading">
-          <%= content %>
-        </div>
-      <% elsif blankslate? %>
-        <div class="SelectMenu-blankslate">
-          <%= content %>
-        </div>
-      <% else %>
-        <%= content %>
-      <% end %>
+    <% list_components.each_with_index do |list_component, i| %>
+      <%= render list_component do %>
+        <% if message.present? %>
+          <%= render message_component do %>
+            <%= message %>
+          <% end %>
+        <% end %>
 
-      <% if items.any? %>
-        <% items.each do |item| %>
+        <% if loading? %>
+          <div class="SelectMenu-loading">
+            <%= content %>
+          </div>
+        <% elsif blankslate? %>
+          <div class="SelectMenu-blankslate">
+            <%= content %>
+          </div>
+        <% else %>
+          <%= content %>
+        <% end %>
+
+        <% items_in_tab(i + 1).each do |item| %>
           <%= render item.wrapper_component do %>
             <% if item.icon %>
               <%= render item.icon_component %>

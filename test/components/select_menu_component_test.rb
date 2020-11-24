@@ -21,6 +21,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     render_inline Primer::SelectMenuComponent.new(message: "Goodness me", loading: true) do |component|
       component.slot(:header, close_button: true) { "A nice title" }
       component.slot(:filter) { "filter description" }
+      component.slot(:tab, selected: true) { "Tab 1" }
       component.slot(:item) { "item 1" }
       component.slot(:footer) { "the end" }
       "hello world"
@@ -32,6 +33,8 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       "button.SelectMenu-closeButton .octicon.octicon-x")
     assert_selector("div.SelectMenu div.SelectMenu-modal form.SelectMenu-filter " \
       "input.SelectMenu-input")
+    assert_selector("div.SelectMenu div.SelectMenu-modal nav.SelectMenu-tabs " \
+      "button.SelectMenu-tab[aria-selected='true']", text: /Tab 1/)
     assert_selector("div.SelectMenu div.SelectMenu-modal footer.SelectMenu-footer",
       text: /the end/)
     assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
@@ -189,6 +192,46 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     end
   end
 
+  def test_renders_with_tabs
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:tab, selected: true) { "Tab 1" }
+      component.slot(:tab) { "Tab 2" }
+    end
+
+    assert_selector("div.SelectMenu") do
+      assert_selector("div.SelectMenu-modal") do
+        assert_selector("nav.SelectMenu-tabs") do
+          assert_selector("button.SelectMenu-tab[aria-selected='true']", text: /Tab 1/)
+          assert_selector("button.SelectMenu-tab", text: /Tab 2/)
+        end
+      end
+    end
+  end
+
+  def test_renders_with_tabs_and_items_in_the_right_tab
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:tab) { "Tab 1" }
+      component.slot(:tab, selected: true) { "Tab 2" }
+      component.slot(:item, tab: 1) { "hello" }
+      component.slot(:item, tab: 2) { "world" }
+    end
+
+    assert_selector("div.SelectMenu") do
+      assert_selector("div.SelectMenu-modal") do
+        assert_selector("nav.SelectMenu-tabs") do
+          assert_selector("button.SelectMenu-tab", text: /Tab 1/)
+          assert_selector("button.SelectMenu-tab[aria-selected='true']", text: /Tab 2/)
+        end
+        assert_selector("div.SelectMenu-list[hidden='hidden']", visible: false) do
+          assert_selector("button.SelectMenu-item", text: /hello/, visible: false)
+        end
+        assert_selector("div.SelectMenu-list") do
+          assert_selector("button.SelectMenu-item", text: /world/)
+        end
+      end
+    end
+  end
+
   def test_renders_with_footer
     render_inline Primer::SelectMenuComponent.new do |component|
       component.slot(:footer) { "the end" }
@@ -213,6 +256,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       list_classes: "my-list-class",
       message: "Goodness me",
       message_classes: "my-message",
+      tab_wrapper_classes: "my-tab-wrapper",
     ) do |component|
       component.slot(:header,
         tag: :div,
@@ -236,12 +280,18 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         tag: :div,
         mr: 3,
       ) { "the end" }
+      component.slot(:tab,
+        classes: "my-tab",
+        selected: true,
+        mr: 1,
+      ) { "Tab 1" }
       component.slot(:item,
         classes: "my-item",
         role: "menuitemcheckbox",
         mt: 1,
         icon: "check",
         icon_classes: "my-icon",
+        tab: 1,
       ) { "item 1" }
     end
 
@@ -262,6 +312,9 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         assert_selector("div.SelectMenu-filter.my-filter.py-1", text: /filter description/) do
           assert_selector("input.SelectMenu-input.my-input[placeholder='Search']" \
             "[aria-label='A nice filter field']")
+        end
+        assert_selector("nav.SelectMenu-tabs.my-tab-wrapper") do
+          assert_selector("button.SelectMenu-tab[aria-selected='true']", text: /Tab 1/)
         end
         assert_selector("div.SelectMenu-footer.mr-3.my-footer", text: /the end/)
       end
