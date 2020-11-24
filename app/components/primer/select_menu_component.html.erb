@@ -60,7 +60,11 @@
             <%= item.content %>
           <% end %>
 
-          <% if item.divider %>
+          <% if item.divider.is_a?(String) %>
+            <%= render item.divider_component do %>
+              <%= item.divider %>
+            <% end %>
+          <% elsif item.divider %>
             <%= render item.divider_component %>
           <% end %>
         <% end %>

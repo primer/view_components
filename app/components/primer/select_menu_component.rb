@@ -128,7 +128,7 @@ module Primer
           Primer::BaseComponent.new(
             tag: :div,
             classes: divider_classes
-          ) { divider }
+          )
         else
           Primer::BaseComponent.new(
             tag: :hr,
