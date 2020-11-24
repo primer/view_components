@@ -55,8 +55,7 @@ module Primer
       items.any?
     end
 
-    class Item < ViewComponent::Slot
-      include ClassNameHelper
+    class Item < Primer::Slot
       attr_reader :system_arguments
 
       # @param percentage [Integer] Percentage completion of item.

@@ -57,9 +57,7 @@ module Primer
       @system_arguments[:mb] ||= spacious ? 4 : nil
     end
 
-    class Actions < ViewComponent::Slot
-      include ClassNameHelper
-
+    class Actions < Primer::Slot
       attr_reader :system_arguments
 
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
