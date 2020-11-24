@@ -31,7 +31,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::PopoverComponent, {}, proc { |component| component.slot(:body) }],
     [Primer::ProgressBarComponent, {}, proc { |component| component.slot(:item) }],
     [Primer::SelectMenuComponent, {}, lambda do |component|
-      component.slot(:modal) { "Foo" }
+      "Foo"
     end],
     [Primer::SelectMenuIconComponent, {}],
     [Primer::SpinnerComponent, {}],

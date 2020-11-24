@@ -1,5 +1,5 @@
 <%= render component do %>
-  <%= render modal.wrapper_component do %>
+  <%= render modal_component do %>
     <% if header %>
       <%= render header.wrapper_component do %>
         <%= render header.title_component do %>
@@ -21,23 +21,23 @@
       <% end %>
     <% end %>
 
-    <%= render modal.list_component do %>
-      <% if modal.message.present? %>
-        <%= render modal.message_component do %>
-          <%= modal.message %>
+    <%= render list_component do %>
+      <% if message.present? %>
+        <%= render message_component do %>
+          <%= message %>
         <% end %>
       <% end %>
 
-      <% if modal.loading? %>
+      <% if loading? %>
         <div class="SelectMenu-loading">
-          <%= modal.content %>
+          <%= content %>
         </div>
-      <% elsif modal.blankslate? %>
+      <% elsif blankslate? %>
         <div class="SelectMenu-blankslate">
-          <%= modal.content %>
+          <%= content %>
         </div>
       <% else %>
-        <%= modal.content %>
+        <%= content %>
       <% end %>
 
       <% if items.any? %>

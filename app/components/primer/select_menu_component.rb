@@ -4,92 +4,55 @@ module Primer
   class SelectMenuComponent < Primer::Component
     include ViewComponent::Slotable
 
+    LIST_BORDER_CLASSES = {
+      all: nil,
+      omit_top: "border-top-0",
+      none: "SelectMenu-list--borderless",
+    }.freeze
+    DEFAULT_LIST_BORDER_CLASS = :all
+    DEFAULT_LOADING = false
+    DEFAULT_BLANKSLATE = false
     DEFAULT_ALIGN_RIGHT = false
 
     with_slot :header, class_name: "Header"
-    with_slot :modal, class_name: "Modal"
     with_slot :item, class_name: "Item", collection: true
     with_slot :filter, class_name: "Filter"
     with_slot :footer, class_name: "Footer"
     with_slot :close_button, class_name: "CloseButton"
 
-    def initialize(align_right: DEFAULT_ALIGN_RIGHT, **kwargs)
+    attr_reader :message
+
+    def initialize(
+      align_right: DEFAULT_ALIGN_RIGHT,
+      loading: DEFAULT_LOADING,
+      blankslate: DEFAULT_BLANKSLATE,
+      list_border: DEFAULT_LIST_BORDER_CLASS,
+      list_role: nil,
+      message: nil,
+      **kwargs
+    )
       @align_right = fetch_or_fallback([true, false], align_right, DEFAULT_ALIGN_RIGHT)
+      @loading = fetch_or_fallback([true, false], loading, DEFAULT_LOADING)
+      @blankslate = fetch_or_fallback([true, false], blankslate, DEFAULT_BLANKSLATE)
+      @list_border = fetch_or_fallback(LIST_BORDER_CLASSES.keys, list_border,
+        DEFAULT_LIST_BORDER_CLASS)
+      @list_role = list_role
+      @message = message
       @kwargs = kwargs
       @kwargs[:tag] ||= :div
       @kwargs[:role] ||= "menu" if @kwargs[:tag] == :"details-menu"
     end
 
     def render?
-      modal.content.present? || items.any?
+      items.any? || content.present? || message.present?
     end
 
-    class Modal < Primer::Slot
-      BORDER_CLASSES = {
-        all: nil,
-        omit_top: "border-top-0",
-        none: "SelectMenu-list--borderless",
-      }.freeze
-      DEFAULT_BORDER_CLASS = :all
-      DEFAULT_LOADING = false
-      DEFAULT_BLANKSLATE = false
+    def loading?
+      @loading
+    end
 
-      attr_reader :message
-
-      def initialize(
-        loading: DEFAULT_LOADING,
-        blankslate: DEFAULT_BLANKSLATE,
-        border: DEFAULT_BORDER_CLASS,
-        list_role: nil,
-        message: nil,
-        **kwargs
-      )
-        @loading = fetch_or_fallback([true, false], loading, DEFAULT_LOADING)
-        @blankslate = fetch_or_fallback([true, false], blankslate, DEFAULT_BLANKSLATE)
-        @border = fetch_or_fallback(BORDER_CLASSES.keys, border, DEFAULT_BORDER_CLASS)
-        @list_role = list_role
-        @message = message
-        @kwargs = kwargs
-        @kwargs[:tag] = :div
-        @kwargs[:classes] = class_names(
-          "SelectMenu-modal",
-          kwargs[:classes],
-        )
-      end
-
-      def loading?
-        @loading
-      end
-
-      def blankslate?
-        @blankslate
-      end
-
-      def wrapper_component
-        Primer::BaseComponent.new(**@kwargs)
-      end
-
-      def list_component
-        Primer::BaseComponent.new(
-          tag: :div,
-          role: @list_role,
-          classes: class_names(
-            "SelectMenu-list",
-            @kwargs[:list_classes],
-            BORDER_CLASSES[@border],
-          )
-        )
-      end
-
-      def message_component
-        Primer::BaseComponent.new(
-          tag: :div,
-          classes: class_names(
-            "SelectMenu-message",
-            @kwargs[:message_classes],
-          )
-        )
-      end
+    def blankslate?
+      @blankslate
     end
 
     class Item < Primer::Slot
@@ -210,9 +173,36 @@ module Primer
       Primer::BaseComponent.new(**@kwargs)
     end
 
-    def modal
-      return @modal if defined?(@modal)
-      Modal.new
+    def modal_component
+      Primer::BaseComponent.new(
+        tag: :div,
+        classes: class_names(
+          "SelectMenu-modal",
+          @kwargs[:modal_classes],
+        )
+      )
+    end
+
+    def list_component
+      Primer::BaseComponent.new(
+        tag: :div,
+        role: @list_role,
+        classes: class_names(
+          "SelectMenu-list",
+          @kwargs[:list_classes],
+          LIST_BORDER_CLASSES[@list_border],
+        )
+      )
+    end
+
+    def message_component
+      Primer::BaseComponent.new(
+        tag: :div,
+        classes: class_names(
+          "SelectMenu-message",
+          @kwargs[:message_classes],
+        )
+      )
     end
   end
 end

@@ -124,11 +124,9 @@ Display a blankslate:
     <span class="dropdown-caret"></span>
   <% end %>
   <% details_component.slot(:body, omit_wrapper: true) do %>
-    <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
-      <%= menu_component.slot(:modal, blankslate: true) do %>
-        <h4>No results</h4>
-        <p>There are no results to show.</p>
-      <% end %>
+    <%= render Primer::SelectMenuComponent.new(tag: :"details-menu", blankslate: true) do %>
+      <h4>No results</h4>
+      <p>There are no results to show.</p>
     <% end %>
   <% end %>
 <% end %>
@@ -143,13 +141,11 @@ Display a loading message:
     <span class="dropdown-caret"></span>
   <% end %>
   <% details_component.slot(:body, omit_wrapper: true) do %>
-    <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
-      <%= menu_component.slot(:modal, loading: true) do %>
-        <%= render Primer::OcticonComponent(icon: "octoface", classes: "anim-pulse") %>
-      <% end %>
+    <%= render Primer::SelectMenuComponent.new(tag: :"details-menu", loading: true) do |menu_component| %>
       <%= menu_component.slot(:footer) do %>
         Loading...
       <% end %>
+      <%= render Primer::OcticonComponent(icon: "octoface", classes: "anim-pulse") %>
     <% end %>
   <% end %>
 <% end %>
@@ -162,6 +158,13 @@ Display a loading message:
 | `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
 | `tag` | `Symbol` | `:div` | HTML element type for the `.SelectMenu` tag. |
 | `align_right` | `Boolean` | `false` | Align the whole menu to the right or not. |
+| `list_border` | `Symbol` | `:all` | What kind of border to have around the list element. One of `:all`, `:omit_top`, or `:none`. |
+| `message` | `String` | N/A | A message shown above the contents. |
+| `list_classes` | `String` | N/A | CSS classes to apply to the list element. |
+| `list_role` | `String` | N/A | Optional `role` attribute for the list element. |
+| `message_classes` | `String` | N/A | CSS classes to apply to the message element, if a message is included. |
+| `loading` | `Boolean` | `false` | Whether the content will be a loading message. |
+| `blankslate` | `Boolean` | `false` | Whether to style the content as a blankslate, to represent there is no content. |
 
 ### `header` slot
 
@@ -171,19 +174,6 @@ Display a loading message:
 | `tag` | `Symbol` | `:header` | HTML element type for the header tag. |
 | `title_classes` | `String` | N/A | CSS classes to apply to the title element within the header. |
 | `title_tag` | `Symbol` | `:h3` | HTML element type for the title tag. |
-
-### `modal` slot
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | [Style arguments](/style-arguments) |
-| `border` | `Symbol` | `:all` | What kind of border to have around the modal. One of `:all`, `:omit_top`, or `:none`. |
-| `message` | `String` | N/A | A message shown above the modal contents. |
-| `list_classes` | `String` | N/A | CSS classes to apply to the list element within the modal. |
-| `list_role` | `String` | N/A | Optional `role` attribute for the list element within the modal. |
-| `message_classes` | `String` | N/A | CSS classes to apply to the message element within the modal, if a message is included. |
-| `loading` | `Boolean` | `false` | Whether the content will be a loading message. |
-| `blankslate` | `Boolean` | `false` | Whether to style the content as a blankslate, to represent there is no content. |
 
 ### `filter` slot
 
