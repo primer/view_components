@@ -47,6 +47,8 @@ module Primer
       items.any? || tabs.any? || content.present? || message.present?
     end
 
+    private
+
     def loading?
       @loading
     end
@@ -77,11 +79,13 @@ module Primer
     end
 
     class Item < Primer::Slot
+      DEFAULT_TAB = 1
+
       attr_reader :icon, :tab
 
-      def initialize(icon: nil, tab: 1, **kwargs)
+      def initialize(icon: nil, tab: DEFAULT_TAB, **kwargs)
         @icon = icon
-        @tab = (tab || 1).to_i
+        @tab = (tab || DEFAULT_TAB).to_i
         @kwargs = kwargs
         @kwargs[:tag] ||= :button
         @kwargs[:role] ||= "menuitem"
@@ -102,6 +106,7 @@ module Primer
         end
       end
 
+      # Private: Only used if `icon` is non-nil.
       def icon_component
         Primer::OcticonComponent.new(
           icon: icon,
@@ -142,6 +147,7 @@ module Primer
         )
       end
 
+      # Private: Only used if `close_button` is `true`.
       def close_button_component
         Primer::ButtonComponent.new(
           tag: :button,
@@ -152,6 +158,7 @@ module Primer
         )
       end
 
+      # Private: Only used if `close_button` is `true`.
       def close_button_icon
         Primer::OcticonComponent.new(icon: "x")
       end
@@ -173,7 +180,9 @@ module Primer
     end
 
     class Filter < Primer::Slot
-      def initialize(placeholder: "Filter", **kwargs)
+      DEFAULT_PLACEHOLDER = "Filter"
+
+      def initialize(placeholder: DEFAULT_PLACEHOLDER, **kwargs)
         @placeholder = placeholder
         @kwargs = kwargs
         @kwargs[:tag] ||= :form
@@ -222,6 +231,11 @@ module Primer
       )
     end
 
+    # Private: Returns a list of the content items that should be shown in the specified tab.
+    #
+    # tab - Integer starting at 1 to represent the first tab
+    #
+    # Returns an Array of Item instances.
     def items_in_tab(tab)
       return [] if items.empty?
       items.select { |item| item.tab == tab }
@@ -239,6 +253,13 @@ module Primer
       end
     end
 
+    # Private: Get a component to represent the `.SelectMenu-list` element that will
+    # contain the items in the menu.
+    #
+    # hidden - Boolean indicating whether this list should be hidden initially, such
+    #          as when it represents an unselected tab's contents
+    #
+    # Returns a component.
     def list_component(hidden: false)
       Primer::BaseComponent.new(
         tag: :div,
