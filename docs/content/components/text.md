@@ -2,6 +2,8 @@
 title: Text
 ---
 
+<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
+
 The Text component is a wrapper component that will apply typography styles to the text inside.
 
 ## Examples

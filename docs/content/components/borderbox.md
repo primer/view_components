@@ -2,6 +2,8 @@
 title: BorderBox
 ---
 
+<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
+
 BorderBox is a Box component with a border.
 
 ## Examples

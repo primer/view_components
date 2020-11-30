@@ -2,6 +2,8 @@
 title: Counter
 ---
 
+<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
+
 Use Primer::CounterComponent to add a count to navigational elements and buttons.
 
 ## Examples

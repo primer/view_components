@@ -2,6 +2,8 @@
 title: Avatar
 ---
 
+<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
+
 Avatars are images used to represent users and organizations on GitHub.
 Use the default round avatar for users, and the `square` argument
 for organizations or any other non-human avatars.
