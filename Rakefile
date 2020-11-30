@@ -169,10 +169,10 @@ namespace :docs do
             if params && params[1]
               constant_name = "#{component.name}::#{params[1]}"
               constant_value = constant_name.safe_constantize
-              if constant_value
-                pretty_value(constant_value)
-              else
+              if constant_value.nil?
                 pretty_value(params[1])
+              else
+                pretty_value(constant_value)
               end
             else
               "N/A"
