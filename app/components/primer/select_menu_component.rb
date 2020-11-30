@@ -168,7 +168,6 @@ module Primer
     #         <%= menu_component.slot(:footer) do %>
     #           Loading...
     #         <% end %>
-    #         <%= render Primer::OcticonComponent(icon: "octoface", classes: "anim-pulse") %>
     #       <% end %>
     #     <% end %>
     #   <% end %>
