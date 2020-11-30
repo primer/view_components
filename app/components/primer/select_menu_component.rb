@@ -209,6 +209,7 @@ module Primer
       items.any? || tabs.any? || content.present? || message.present?
     end
 
+    # Represents the clickable tabs at the top of the select menu, if any.
     class Tab < Primer::Slot
       DEFAULT_SELECTED = false
 
@@ -232,6 +233,7 @@ module Primer
       end
     end
 
+    # List items within the select menu. Can be organized into tabs.
     class Item < Primer::Slot
       DEFAULT_TAB = 1
       DEFAULT_SELECTED = false
@@ -308,6 +310,7 @@ module Primer
       end
     end
 
+    # An optional header for the select menu.
     class Header < Primer::Slot
       DEFAULT_CLOSE_BUTTON = false
 
@@ -360,6 +363,7 @@ module Primer
       end
     end
 
+    # An optional footer for the select menu.
     class Footer < Primer::Slot
       # @param tag [Symbol] HTML element type for the footer tag. Defaults to `:footer`.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -377,6 +381,8 @@ module Primer
       end
     end
 
+    # An optional filter bar for the select menu, to allow limiting how much of its contents
+    # is shown at a time.
     class Filter < Primer::Slot
       DEFAULT_PLACEHOLDER = "Filter"
 
