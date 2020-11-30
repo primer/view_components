@@ -106,6 +106,7 @@ namespace :docs do
       Primer::OcticonComponent,
       Primer::PopoverComponent,
       Primer::ProgressBarComponent,
+      Primer::SelectMenuComponent,
       Primer::StateComponent,
       Primer::SpinnerComponent,
       Primer::SubheadComponent,
