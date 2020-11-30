@@ -25,7 +25,7 @@ module Primer
     attr_reader :message
 
     #
-    # @example 34|Basic example|Use a `DetailsComponent` to toggle the select menu, with the `body` of the details component holding the select menu.
+    # @example 193|Basic example|Use a `DetailsComponent` to toggle the select menu, with the `body` of the details component holding the select menu.
     #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative) do |details_component| %>
     #     <%= details_component.slot(:summary) do %>
     #       Choose an option
@@ -48,7 +48,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example 34|As a details-menu|Or make the select menu the `details-menu` element itself, omitting the `body` container for the details component.
+    # @example 193|As a details-menu|Or make the select menu the `details-menu` element itself, omitting the `body` container for the details component.
     #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true) do |details_component| %>
     #     <%= details_component.slot(:summary, title: "Pick an item") do %>
     #       Choose an option
@@ -69,7 +69,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example 34|Close button|Include a button to close the menu:
+    # @example 193|Close button|Include a button to close the menu:
     #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative) do |details_component| %>
     #     <%= details_component.slot(:summary) do %>
     #       Choose an option
@@ -92,7 +92,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example 34|Filter|If the list is expected to get long, consider adding a filter input. On mobile devices it will add a fixed height and anchor the select menu to the top of the screen. This makes sure the filter input stays at the same position while typing.
+    # @example 242|Filter|If the list is expected to get long, consider adding a filter input. On mobile devices it will add a fixed height and anchor the select menu to the top of the screen. This makes sure the filter input stays at the same position while typing.
     #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative) do |details_component| %>
     #     <%= details_component.slot(:summary) do %>
     #       Choose an option
@@ -116,7 +116,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example 34|Tabs|Sometimes you need two or more lists of items in your select menu, e.g. branches and tags.
+    # @example 169|Tabs|Sometimes you need two or more lists of items in your select menu, e.g. branches and tags.
     #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true) do |details_component| %>
     #     <%= details_component.slot(:summary, title: "Pick an item") do %>
     #       Choose an option
@@ -143,7 +143,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example 34|Blankslate|Sometimes a select menu needs to communicate a "blank slate" where there's no content in the menu's list.
+    # @example 155|Blankslate|Sometimes a select menu needs to communicate a "blank slate" where there's no content in the menu's list.
     #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true) do |details_component| %>
     #     <%= details_component.slot(:summary, title: "Pick an item") do %>
     #       Choose an option
@@ -157,7 +157,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example 34|Loading|When fetching large lists, consider showing a loading message.
+    # @example 136|Loading|When fetching large lists, consider showing a loading message.
     #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true) do |details_component| %>
     #     <%= details_component.slot(:summary, title: "Pick an item") do %>
     #       Choose an option
@@ -172,17 +172,13 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @param tag [Symbol] HTML element type for the `.SelectMenu` tag. Defaults to `:div`.
     # @param align_right [Boolean] Align the whole menu to the right or not.
     # @param loading [Boolean] Whether the content will be a loading message.
     # @param blankslate [Boolean] Whether to style the content as a blankslate, to represent there is no content.
     # @param list_border [Symbol] What kind of border to have around the list element. One of `:all`, `:omit_top`, or `:none`.
     # @param message [String] A message shown above the contents.
-    # @param list_classes [String] CSS classes to apply to the list element.
     # @param list_role [String] Optional `role` attribute for the list element.
-    # @param message_classes [String] CSS classes to apply to the message element, if a message is included.
-    # @param tab_wrapper_classes [String] CSS classes to apply to the containing tab `nav` element, if any tabs are added.
-    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the `.SelectMenu` tag; defaults to `:div`. `list_classes` (`String`) - CSS classes to apply to the list element. `message_classes` (`String`) - CSS classes to apply to the message element, if a message is included. `tab_wrapper_classes` (`String`) - CSS classes to apply to the containing tab `nav` element, if any tabs are added.
     def initialize(
       align_right: DEFAULT_ALIGN_RIGHT,
       loading: DEFAULT_LOADING,
@@ -240,15 +236,11 @@ module Primer
 
       attr_reader :icon, :tab, :divider
 
-      # @param tag [Symbol] HTML element type for the item tag. Defaults to `:button`.
       # @param selected [Boolean] Whether this item is the currently active one.
       # @param tab [Integer] Which tab this item should appear in. The first tab is 1.
       # @param icon [String] Octicon name for this item. Defaults to no icon. Set to a value like `"check"` to add an [Octicon](https://primer.style/octicons/) to this item.
-      # @param role [String] HTML role attribute for the item tag. Defaults to `"menuitem"`.
-      # @param icon_classes [String] CSS classes to apply to the icon. Only used if `icon` is not `nil`.
       # @param divider [Boolean, String, nil] Whether to show a divider after this item. Pass `true` to show a simple line divider, or pass a String to show a divider with a message.
-      # @param divider_classes [String] CSS classes to apply to the divider after this item. Only used if `divider` is not `nil`.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the item tag; defaults to `:button`. `role` (`String`) - HTML role attribute for the item tag; defaults to `"menuitem"`. `divider_classes` (`String`) - CSS classes to apply to the divider after this item; only used if `divider` is not `nil`. `icon_classes` (`String`) - CSS classes to apply to the icon; only used if `icon` is not `nil`.
       def initialize(selected: DEFAULT_SELECTED, icon: nil, tab: DEFAULT_TAB, divider: nil, **system_arguments)
         @selected = fetch_or_fallback_boolean(selected, DEFAULT_SELECTED)
         @icon = icon
@@ -316,12 +308,8 @@ module Primer
 
       attr_reader :close_button
 
-      # @param tag [Symbol] HTML element type for the header tag. Defaults to `:header`.
       # @param close_button [Boolean] Whether to include a close button in the header for closing the whole menu. |
-      # @param close_button_classes [String] CSS classes to apply to the close button within the header. Only used if `close_button` = `true`.
-      # @param title_classes [String] CSS classes to apply to the title element within the header.
-      # @param title_tag [Symbol] HTML element type for the title tag. Defaults to `:h3`.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the header tag; defaults to `:header`. `title_tag` (`Symbol`) - HTML element type for the title tag; defaults to `:h3`. `title_classes` (`String`) - CSS classes to apply to the title element within the header. `close_button_classes` (`String`) - CSS classes to apply to the close button within the header; only used if `close_button` = `true`.
       def initialize(close_button: DEFAULT_CLOSE_BUTTON, **system_arguments)
         @close_button = fetch_or_fallback_boolean(close_button, DEFAULT_CLOSE_BUTTON)
         @system_arguments = system_arguments
@@ -365,8 +353,7 @@ module Primer
 
     # An optional footer for the select menu.
     class Footer < Primer::Slot
-      # @param tag [Symbol] HTML element type for the footer tag. Defaults to `:footer`.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the footer tag; defaults to `:footer`.
       def initialize(**system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] ||= :footer
@@ -386,11 +373,8 @@ module Primer
     class Filter < Primer::Slot
       DEFAULT_PLACEHOLDER = "Filter"
 
-      # @param tag [Symbol] HTML element type for the filter tag. Defaults to `:form`.
-      # @param input_classes [String] CSS classes to apply to the input element within the modal. Defaults to `"form-control"`.
-      # @param aria-label [String] The aria-label attribute for the input field. Defaults to `"Filter"`.
       # @param placeholder [String] The placeholder attribute for the input field.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the filter tag; defaults to `:form`. `input_classes` (`String`) - CSS classes to apply to the input element within the modal; defaults to `"form-control"`. `aria-label` (`String`) - The aria-label attribute for the input field; defaults to `"Filter"`.
       def initialize(placeholder: DEFAULT_PLACEHOLDER, **system_arguments)
         @placeholder = placeholder
         @system_arguments = system_arguments
