@@ -238,7 +238,7 @@ module Primer
       end
     end
 
-    def component
+    def container_component
       @kwargs[:classes] = class_names(
         "SelectMenu",
         @kwargs[:classes],
