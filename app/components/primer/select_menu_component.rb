@@ -205,7 +205,8 @@ module Primer
     end
 
     def render?
-      items.any? || tabs.any? || content.present? || message.present?
+      items.any? || tabs.any? || content.present? || message.present? ||
+        footer.present? || header.present?
     end
 
     # Represents the clickable tabs at the top of the select menu, if any.
