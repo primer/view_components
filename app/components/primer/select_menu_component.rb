@@ -126,10 +126,10 @@ module Primer
     #       <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
     #         <%= menu_component.slot(:tab, selected: true) do %>
     #           Tab 1
-    #         <% end >
+    #         <% end %>
     #         <%= menu_component.slot(:tab) do %>
     #           Tab 2
-    #         <% end >
+    #         <% end %>
     #         <%= menu_component.slot(:item, tab: 1, divider: true) do %>
     #           Item 1
     #         <% end %>
