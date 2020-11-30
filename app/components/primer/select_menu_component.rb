@@ -31,9 +31,9 @@ module Primer
       message: nil,
       **kwargs
     )
-      @align_right = fetch_or_fallback([true, false], align_right, DEFAULT_ALIGN_RIGHT)
-      @loading = fetch_or_fallback([true, false], loading, DEFAULT_LOADING)
-      @blankslate = fetch_or_fallback([true, false], blankslate, DEFAULT_BLANKSLATE)
+      @align_right = fetch_or_fallback_boolean(align_right, DEFAULT_ALIGN_RIGHT)
+      @loading = fetch_or_fallback_boolean(loading, DEFAULT_LOADING)
+      @blankslate = fetch_or_fallback_boolean(blankslate, DEFAULT_BLANKSLATE)
       @list_border = fetch_or_fallback(LIST_BORDER_CLASSES.keys, list_border,
         DEFAULT_LIST_BORDER_CLASS)
       @list_role = list_role
@@ -63,7 +63,7 @@ module Primer
       attr_reader :selected
 
       def initialize(selected: DEFAULT_SELECTED, **kwargs)
-        @selected = fetch_or_fallback([true, false], selected, DEFAULT_SELECTED)
+        @selected = fetch_or_fallback_boolean(selected, DEFAULT_SELECTED)
         @kwargs = kwargs
         @kwargs[:tag] = :button
         @kwargs[:classes] = class_names(
@@ -85,7 +85,7 @@ module Primer
       attr_reader :icon, :tab, :divider
 
       def initialize(selected: DEFAULT_SELECTED, icon: nil, tab: DEFAULT_TAB, divider: nil, **kwargs)
-        @selected = fetch_or_fallback([true, false], selected, DEFAULT_SELECTED)
+        @selected = fetch_or_fallback_boolean(selected, DEFAULT_SELECTED)
         @icon = icon
         @tab = (tab || DEFAULT_TAB).to_i
         @divider = divider
@@ -151,7 +151,7 @@ module Primer
       attr_reader :close_button
 
       def initialize(close_button: DEFAULT_CLOSE_BUTTON, **kwargs)
-        @close_button = fetch_or_fallback([true, false], close_button, DEFAULT_CLOSE_BUTTON)
+        @close_button = fetch_or_fallback_boolean(close_button, DEFAULT_CLOSE_BUTTON)
         @kwargs = kwargs
         @kwargs[:tag] ||= :header
         @kwargs[:classes] = class_names(

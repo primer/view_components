@@ -53,7 +53,7 @@ module Primer
       DEFAULT_OMIT_WRAPPER = false
 
       def initialize(omit_wrapper: DEFAULT_OMIT_WRAPPER, **system_arguments)
-        @omit_wrapper = fetch_or_fallback([true, false], omit_wrapper, DEFAULT_OMIT_WRAPPER)
+        @omit_wrapper = fetch_or_fallback_boolean(omit_wrapper, DEFAULT_OMIT_WRAPPER)
         @system_arguments = system_arguments
         @system_arguments[:tag] ||= :div
       end
