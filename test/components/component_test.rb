@@ -55,6 +55,10 @@ class PrimerComponentTest < Minitest::Test
       render_component(component, { classes: "foo" }.merge(args), proc)
       assert_selector(".foo")
 
+      # component supports inline styles
+      render_component(component, { style: "width: 100%;" }.merge(args), proc)
+      assert_selector("[style='width: 100%;']")
+
       # component supports basic content_tag arguments
       render_component(component, { hidden: true }.merge(args), proc)
       assert_selector("[hidden]", visible: false)
@@ -64,20 +68,26 @@ class PrimerComponentTest < Minitest::Test
 
       # Ensure all slots accept Primer system_arguments
       if component.slots.any?
-        render_inline(component.new(**args)) do |c|
+        result = render_inline(component.new(**args)) do |c|
           component.slots.each do |slot_name, slot_attributes|
             c.slot(
               slot_name,
               classes: "test-#{slot_name}",
               my: 1,
               hidden: true,
+              style: "height: 100%;",
               "data-ga-click": "Foo,bar"
             ) { "foo" }
           end
         end
 
         component.slots.each do |slot_name, _attrs|
-          assert_selector(".test-#{slot_name}.my-1[hidden][data-ga-click='Foo,bar']", visible: false)
+          assert_selector(
+            ".test-#{slot_name}.my-1[hidden][data-ga-click='Foo,bar']",
+            visible: false
+          )
+
+          assert_includes result.to_html, "height: 100%;"
         end
       end
     end

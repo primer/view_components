@@ -34,6 +34,7 @@ module Primer
   # | `data` | `Hash` | Data attributes: `data: { foo: :bar }` renders `data-foo='bar'`. |
   # | `aria` | `Hash` | Aria attributes: `aria: { label: "foo" }` renders `aria-label='foo'`. |
   # | `title` | `String` | The `title` attribute. |
+  # | `style` | `String` | Inline styles. |
   # | `hidden` | `Boolean` | Whether to assign the `hidden` attribute. |
   class BaseComponent < Primer::Component
     TEST_SELECTOR_TAG = :test_selector
