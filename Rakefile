@@ -124,6 +124,8 @@ namespace :docs do
         f.puts("title: #{short_name}")
         f.puts("---")
         f.puts
+        f.puts("<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->")
+        f.puts
         f.puts(view_context.render(inline: documentation.base_docstring))
         f.puts
 
