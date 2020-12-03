@@ -2,6 +2,8 @@
 title: Spinner
 ---
 
+<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
+
 Use Primer::SpinnerComponent to let users know that content is being loaded.
 
 ## Examples

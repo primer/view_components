@@ -119,10 +119,12 @@ namespace :docs do
       # Primer::AvatarComponent => Avatar
       short_name = component.name.demodulize.gsub("Component", "")
 
-      File.open("docs/content/components/#{short_name}.md", "w") do |f|
+      File.open("docs/content/components/#{short_name.downcase}.md", "w") do |f|
         f.puts("---")
         f.puts("title: #{short_name}")
         f.puts("---")
+        f.puts
+        f.puts("<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->")
         f.puts
         f.puts(view_context.render(inline: documentation.base_docstring))
         f.puts
@@ -167,10 +169,10 @@ namespace :docs do
             if params && params[1]
               constant_name = "#{component.name}::#{params[1]}"
               constant_value = constant_name.safe_constantize
-              if constant_value
-                pretty_value(constant_value)
-              else
+              if constant_value.nil?
                 pretty_value(params[1])
+              else
+                pretty_value(constant_value)
               end
             else
               "N/A"

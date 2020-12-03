@@ -2,6 +2,8 @@
 title: TimelineItem
 ---
 
+<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
+
 Use `TimelineItem` to display items on a vertical timeline, connected by badge elements.
 
 ## Examples
