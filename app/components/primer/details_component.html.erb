@@ -2,11 +2,7 @@
   <%= render summary.component do %>
     <%= summary.content %>
   <% end %>
-  <% if body.omit_wrapper? %>
+  <%= render body.component do %>
     <%= body.content %>
-  <% else %>
-    <%= render body.component do %>
-      <%= body.content %>
-    <% end %>
   <% end %>
 <% end %>

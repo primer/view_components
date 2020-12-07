@@ -13,7 +13,7 @@ which ones are selected.
 
 Use a `DetailsComponent` to toggle the select menu, with the `body` of the details component holding the select menu.
 
-<iframe style="width: 100%; border: 0px; height: 193px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Choose an option</summary>    <div>      <div class='SelectMenu '>  <div class='SelectMenu-modal '>      <header class='SelectMenu-header '>        <h3 class='SelectMenu-title '>          My menu</h3></header>      <div class='SelectMenu-list '>                    <button role='menuitemcheckbox' aria-checked='true' type='button' class='btn SelectMenu-item '>              <svg class='octicon octicon-check SelectMenu-icon SelectMenu-icon--check' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>            Item 1</button>          <button role='menuitemcheckbox' type='button' class='btn SelectMenu-item '>              <svg class='octicon octicon-check SelectMenu-icon SelectMenu-icon--check' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>            Item 2</button>          <button role='menuitemcheckbox' type='button' class='btn SelectMenu-item '>              <svg class='octicon octicon-check SelectMenu-icon SelectMenu-icon--check' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>            Item 3</button></div></div></div></div></details></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 193px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Choose an option</summary>  <div>    <div class='SelectMenu '>  <div class='SelectMenu-modal '>      <header class='SelectMenu-header '>        <h3 class='SelectMenu-title '>          My menu</h3></header>      <div class='SelectMenu-list '>                    <button role='menuitemcheckbox' aria-checked='true' type='button' class='btn SelectMenu-item '>              <svg class='octicon octicon-check SelectMenu-icon SelectMenu-icon--check' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>            Item 1</button>          <button role='menuitemcheckbox' type='button' class='btn SelectMenu-item '>              <svg class='octicon octicon-check SelectMenu-icon SelectMenu-icon--check' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>            Item 2</button>          <button role='menuitemcheckbox' type='button' class='btn SelectMenu-item '>              <svg class='octicon octicon-check SelectMenu-icon SelectMenu-icon--check' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>            Item 3</button></div></div></div></div></details></body></html>"></iframe>
 
 ```erb
 <%= render Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative) do |details_component| %>
@@ -39,39 +39,11 @@ Use a `DetailsComponent` to toggle the select menu, with the `body` of the detai
 <% end %>
 ```
 
-### As a details-menu
-
-Or make the select menu the `details-menu` element itself, omitting the `body` container for the details component.
-
-<iframe style="width: 100%; border: 0px; height: 193px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset '>  <summary title='Pick an item' role='button' type='button' class='btn '>    Choose an option    <span class='dropdown-caret'></span></summary>    <details-menu role='menu' class='SelectMenu '>  <div class='SelectMenu-modal '>      <div class='SelectMenu-list '>                    <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 1</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 2</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 3</button></div></div></details-menu></details></body></html>"></iframe>
-
-```erb
-<%= render Primer::DetailsComponent.new(overlay: :default, reset: true) do |details_component| %>
-  <%= details_component.slot(:summary, title: "Pick an item") do %>
-    Choose an option
-    <span class="dropdown-caret"></span>
-  <% end %>
-  <%= details_component.slot(:body, omit_wrapper: true) do %>
-    <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
-      <%= menu_component.slot(:item) do %>
-        Item 1
-      <% end %>
-      <%= menu_component.slot(:item) do %>
-        Item 2
-      <% end %>
-      <%= menu_component.slot(:item) do %>
-        Item 3
-      <% end %>
-    <% end %>
-  <% end %>
-<% end %>
-```
-
 ### Close button
 
 Include a button to close the menu:
 
-<iframe style="width: 100%; border: 0px; height: 193px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Choose an option</summary>    <div>      <div class='SelectMenu '>  <div class='SelectMenu-modal '>      <header close_button='true' class='SelectMenu-header '>        <h3 class='SelectMenu-title '>          My menu</h3></header>      <div class='SelectMenu-list '>                    <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 1</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 2</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 3</button></div></div></div></div></details></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 193px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Choose an option</summary>  <div>    <div class='SelectMenu '>  <div class='SelectMenu-modal '>      <header close_button='true' class='SelectMenu-header '>        <h3 class='SelectMenu-title '>          My menu</h3></header>      <div class='SelectMenu-list '>                    <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 1</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 2</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 3</button></div></div></div></div></details></body></html>"></iframe>
 
 ```erb
 <%= render Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative) do |details_component| %>
@@ -101,7 +73,7 @@ Include a button to close the menu:
 
 If the list is expected to get long, consider adding a filter input. On mobile devices it will add a fixed height and anchor the select menu to the top of the screen. This makes sure the filter input stays at the same position while typing.
 
-<iframe style="width: 100%; border: 0px; height: 242px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Choose an option</summary>    <div>      <div class='SelectMenu SelectMenu--hasFilter '>  <div class='SelectMenu-modal '>      <header class='SelectMenu-header '>        <h3 class='SelectMenu-title '>          My menu</h3></header>      <form input_classes='form-control' class='SelectMenu-filter '>        <input type='text' placeholder='Filter' aria-label='Filter' class='SelectMenu-input form-control '></input>        </form>      <div class='SelectMenu-list '>                    <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 1</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 2</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 3</button></div></div></div></div></details></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 242px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Choose an option</summary>  <div>    <div class='SelectMenu SelectMenu--hasFilter '>  <div class='SelectMenu-modal '>      <header class='SelectMenu-header '>        <h3 class='SelectMenu-title '>          My menu</h3></header>      <form input_classes='form-control' class='SelectMenu-filter '>        <input type='text' placeholder='Filter' aria-label='Filter' class='SelectMenu-input form-control '></input>        </form>      <div class='SelectMenu-list '>                    <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 1</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 2</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 3</button></div></div></div></div></details></body></html>"></iframe>
 
 ```erb
 <%= render Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative) do |details_component| %>
@@ -132,7 +104,7 @@ If the list is expected to get long, consider adding a filter input. On mobile d
 
 Sometimes you need two or more lists of items in your select menu, e.g. branches and tags.
 
-<iframe style="width: 100%; border: 0px; height: 169px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset '>  <summary title='Pick an item' role='button' type='button' class='btn '>    Choose an option    <span class='dropdown-caret'></span></summary>    <details-menu role='menu' class='SelectMenu '>  <div class='SelectMenu-modal '>      <nav class='SelectMenu-tabs '>          <button aria-selected='true' class='SelectMenu-tab '>            Tab 1</button>          <button class='SelectMenu-tab '>            Tab 2</button></nav>      <div class='SelectMenu-list '>                    <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 1</button>            <hr class='SelectMenu-divider '></hr>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 2</button></div>      <div hidden='hidden' class='SelectMenu-list '>                    <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 3</button></div></div></details-menu></details></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 169px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset '>  <summary title='Pick an item' role='button' type='button' class='btn '>    Choose an option    <span class='dropdown-caret'></span></summary>  <div>    <details-menu role='menu' class='SelectMenu '>  <div class='SelectMenu-modal '>      <nav class='SelectMenu-tabs '>          <button aria-selected='true' class='SelectMenu-tab '>            Tab 1</button>          <button class='SelectMenu-tab '>            Tab 2</button></nav>      <div class='SelectMenu-list '>                    <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 1</button>            <hr class='SelectMenu-divider '></hr>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 2</button></div>      <div hidden='hidden' class='SelectMenu-list '>                    <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 3</button></div></div></details-menu></div></details></body></html>"></iframe>
 
 ```erb
 <%= render Primer::DetailsComponent.new(overlay: :default, reset: true) do |details_component| %>
@@ -140,7 +112,7 @@ Sometimes you need two or more lists of items in your select menu, e.g. branches
     Choose an option
     <span class="dropdown-caret"></span>
   <% end %>
-  <%= details_component.slot(:body, omit_wrapper: true) do %>
+  <%= details_component.slot(:body) do %>
     <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
       <%= menu_component.slot(:tab, selected: true) do %>
         Tab 1
@@ -166,7 +138,7 @@ Sometimes you need two or more lists of items in your select menu, e.g. branches
 
 Sometimes a select menu needs to communicate a "blank slate" where there's no content in the menu's list.
 
-<iframe style="width: 100%; border: 0px; height: 155px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset '>  <summary title='Pick an item' role='button' type='button' class='btn '>    Choose an option    <span class='dropdown-caret'></span></summary>    <details-menu role='menu' class='SelectMenu '>  <div class='SelectMenu-modal '>      <div class='SelectMenu-list '>          <div class='SelectMenu-blankslate'>                  <h4>No results</h4>      <p>There are no results to show.</p>          </div></div></div></details-menu></details></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 155px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset '>  <summary title='Pick an item' role='button' type='button' class='btn '>    Choose an option    <span class='dropdown-caret'></span></summary>  <div>    <details-menu role='menu' class='SelectMenu '>  <div class='SelectMenu-modal '>      <div class='SelectMenu-list '>          <div class='SelectMenu-blankslate'>                  <h4>No results</h4>      <p>There are no results to show.</p>          </div></div></div></details-menu></div></details></body></html>"></iframe>
 
 ```erb
 <%= render Primer::DetailsComponent.new(overlay: :default, reset: true) do |details_component| %>
@@ -174,7 +146,7 @@ Sometimes a select menu needs to communicate a "blank slate" where there's no co
     Choose an option
     <span class="dropdown-caret"></span>
   <% end %>
-  <%= details_component.slot(:body, omit_wrapper: true) do %>
+  <%= details_component.slot(:body) do %>
     <%= render Primer::SelectMenuComponent.new(tag: :"details-menu", blankslate: true) do %>
       <h4>No results</h4>
       <p>There are no results to show.</p>
@@ -187,7 +159,7 @@ Sometimes a select menu needs to communicate a "blank slate" where there's no co
 
 When fetching large lists, consider showing a loading message.
 
-<iframe style="width: 100%; border: 0px; height: 136px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset '>  <summary title='Pick an item' role='button' type='button' class='btn '>    Choose an option    <span class='dropdown-caret'></span></summary>    <details-menu role='menu' class='SelectMenu '>  <div class='SelectMenu-modal '>      <div class='SelectMenu-list '>          <div class='SelectMenu-loading'>                      </div></div>      <footer class='SelectMenu-footer '>        Loading...</footer></div></details-menu></details></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 136px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset '>  <summary title='Pick an item' role='button' type='button' class='btn '>    Choose an option    <span class='dropdown-caret'></span></summary>  <div>    <details-menu role='menu' class='SelectMenu '>  <div class='SelectMenu-modal '>      <div class='SelectMenu-list '>          <div class='SelectMenu-loading'>                      </div></div>      <footer class='SelectMenu-footer '>        Loading...</footer></div></details-menu></div></details></body></html>"></iframe>
 
 ```erb
 <%= render Primer::DetailsComponent.new(overlay: :default, reset: true) do |details_component| %>
@@ -195,7 +167,7 @@ When fetching large lists, consider showing a loading message.
     Choose an option
     <span class="dropdown-caret"></span>
   <% end %>
-  <%= details_component.slot(:body, omit_wrapper: true) do %>
+  <%= details_component.slot(:body) do %>
     <%= render Primer::SelectMenuComponent.new(tag: :"details-menu", loading: true) do |menu_component| %>
       <%= menu_component.slot(:footer) do %>
         Loading...

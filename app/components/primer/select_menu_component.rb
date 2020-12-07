@@ -48,27 +48,6 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example 193|As a details-menu|Or make the select menu the `details-menu` element itself, omitting the `body` container for the details component.
-    #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true) do |details_component| %>
-    #     <%= details_component.slot(:summary, title: "Pick an item") do %>
-    #       Choose an option
-    #       <span class="dropdown-caret"></span>
-    #     <% end %>
-    #     <%= details_component.slot(:body, omit_wrapper: true) do %>
-    #       <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
-    #         <%= menu_component.slot(:item) do %>
-    #           Item 1
-    #         <% end %>
-    #         <%= menu_component.slot(:item) do %>
-    #           Item 2
-    #         <% end %>
-    #         <%= menu_component.slot(:item) do %>
-    #           Item 3
-    #         <% end %>
-    #       <% end %>
-    #     <% end %>
-    #   <% end %>
-    #
     # @example 193|Close button|Include a button to close the menu:
     #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative) do |details_component| %>
     #     <%= details_component.slot(:summary) do %>
@@ -122,7 +101,7 @@ module Primer
     #       Choose an option
     #       <span class="dropdown-caret"></span>
     #     <% end %>
-    #     <%= details_component.slot(:body, omit_wrapper: true) do %>
+    #     <%= details_component.slot(:body) do %>
     #       <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
     #         <%= menu_component.slot(:tab, selected: true) do %>
     #           Tab 1
@@ -149,7 +128,7 @@ module Primer
     #       Choose an option
     #       <span class="dropdown-caret"></span>
     #     <% end %>
-    #     <%= details_component.slot(:body, omit_wrapper: true) do %>
+    #     <%= details_component.slot(:body) do %>
     #       <%= render Primer::SelectMenuComponent.new(tag: :"details-menu", blankslate: true) do %>
     #         <h4>No results</h4>
     #         <p>There are no results to show.</p>
@@ -163,7 +142,7 @@ module Primer
     #       Choose an option
     #       <span class="dropdown-caret"></span>
     #     <% end %>
-    #     <%= details_component.slot(:body, omit_wrapper: true) do %>
+    #     <%= details_component.slot(:body) do %>
     #       <%= render Primer::SelectMenuComponent.new(tag: :"details-menu", loading: true) do |menu_component| %>
     #         <%= menu_component.slot(:footer) do %>
     #           Loading...

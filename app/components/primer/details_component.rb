@@ -50,16 +50,9 @@ module Primer
     end
 
     class Body < Primer::Slot
-      DEFAULT_OMIT_WRAPPER = false
-
-      def initialize(omit_wrapper: DEFAULT_OMIT_WRAPPER, **system_arguments)
-        @omit_wrapper = fetch_or_fallback_boolean(omit_wrapper, DEFAULT_OMIT_WRAPPER)
+      def initialize(**system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] ||= :div
-      end
-
-      def omit_wrapper?
-        @omit_wrapper
       end
 
       def component
