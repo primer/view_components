@@ -6,7 +6,7 @@
           <%= header.content %>
         <% end %>
 
-        <% if header.close_button %>
+        <% if header.closeable? %>
           <%= render header.close_button_component do %>
             <%= render header.close_button_icon %>
           <% end %>

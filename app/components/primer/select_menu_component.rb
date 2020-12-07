@@ -304,20 +304,22 @@ module Primer
 
     # An optional header for the select menu.
     class Header < Primer::Slot
-      DEFAULT_CLOSE_BUTTON = false
+      DEFAULT_CLOSEABLE = false
 
-      attr_reader :close_button
-
-      # @param close_button [Boolean] Whether to include a close button in the header for closing the whole menu. |
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the header tag; defaults to `:header`. `title_tag` (`Symbol`) - HTML element type for the title tag; defaults to `:h3`. `title_classes` (`String`) - CSS classes to apply to the title element within the header. `close_button_classes` (`String`) - CSS classes to apply to the close button within the header; only used if `close_button` = `true`.
-      def initialize(close_button: DEFAULT_CLOSE_BUTTON, **system_arguments)
-        @close_button = fetch_or_fallback_boolean(close_button, DEFAULT_CLOSE_BUTTON)
+      # @param closeable [Boolean] Whether to include a close button in the header for closing the whole menu. |
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the header tag; defaults to `:header`. `title_tag` (`Symbol`) - HTML element type for the title tag; defaults to `:h3`. `title_classes` (`String`) - CSS classes to apply to the title element within the header. `close_button_classes` (`String`) - CSS classes to apply to the close button within the header; only used if `closeable` = `true`.
+      def initialize(closeable: DEFAULT_CLOSEABLE, **system_arguments)
+        @closeable = fetch_or_fallback_boolean(closeable, DEFAULT_CLOSEABLE)
         @system_arguments = system_arguments
         @system_arguments[:tag] ||= :header
         @system_arguments[:classes] = class_names(
           "SelectMenu-header",
           system_arguments[:classes]
         )
+      end
+
+      def closeable?
+        @closeable
       end
 
       def wrapper_component
@@ -334,7 +336,7 @@ module Primer
         )
       end
 
-      # Private: Only used if `close_button` is `true`.
+      # Private: Only used if `closeable` is `true`.
       def close_button_component
         Primer::ButtonComponent.new(
           tag: :button,
@@ -345,7 +347,7 @@ module Primer
         )
       end
 
-      # Private: Only used if `close_button` is `true`.
+      # Private: Only used if `closeable` is `true`.
       def close_button_icon
         Primer::OcticonComponent.new(icon: "x")
       end

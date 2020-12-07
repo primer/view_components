@@ -71,7 +71,7 @@ Or make the select menu the `details-menu` element itself, omitting the `body` c
 
 Include a button to close the menu:
 
-<iframe style="width: 100%; border: 0px; height: 193px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Choose an option</summary>    <div>      <div class='SelectMenu '>  <div class='SelectMenu-modal '>      <header class='SelectMenu-header '>        <h3 class='SelectMenu-title '>          My menu</h3>          <button type='button' class='btn SelectMenu-closeButton '>            <svg class='octicon octicon-x' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg></button></header>      <div class='SelectMenu-list '>                    <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 1</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 2</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 3</button></div></div></div></div></details></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 193px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Choose an option</summary>    <div>      <div class='SelectMenu '>  <div class='SelectMenu-modal '>      <header close_button='true' class='SelectMenu-header '>        <h3 class='SelectMenu-title '>          My menu</h3></header>      <div class='SelectMenu-list '>                    <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 1</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 2</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 3</button></div></div></div></div></details></body></html>"></iframe>
 
 ```erb
 <%= render Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative) do |details_component| %>
@@ -221,8 +221,8 @@ When fetching large lists, consider showing a loading message.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `close_button` | `Boolean` | `DEFAULT_CLOSE_BUTTON` | Whether to include a close button in the header for closing the whole menu. | |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `tag` (`Symbol`) - HTML element type for the header tag; defaults to `:header`. `title_tag` (`Symbol`) - HTML element type for the title tag; defaults to `:h3`. `title_classes` (`String`) - CSS classes to apply to the title element within the header. `close_button_classes` (`String`) - CSS classes to apply to the close button within the header; only used if `close_button` = `true`. |
+| `closeable` | `Boolean` | `DEFAULT_CLOSEABLE` | Whether to include a close button in the header for closing the whole menu. | |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `tag` (`Symbol`) - HTML element type for the header tag; defaults to `:header`. `title_tag` (`Symbol`) - HTML element type for the title tag; defaults to `:h3`. `title_classes` (`String`) - CSS classes to apply to the title element within the header. `close_button_classes` (`String`) - CSS classes to apply to the close button within the header; only used if `closeable` = `true`. |
 
 An optional header for the select menu.
 

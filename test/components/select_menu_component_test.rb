@@ -19,7 +19,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_nests_components_correctly
     render_inline Primer::SelectMenuComponent.new(message: "Goodness me", loading: true) do |component|
-      component.slot(:header, close_button: true) { "A nice title" }
+      component.slot(:header, closeable: true) { "A nice title" }
       component.slot(:filter) { "filter description" }
       component.slot(:tab, selected: true) { "Tab 1" }
       component.slot(:item, divider: true) { "item 1" }
@@ -148,7 +148,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_renders_with_header_and_close_button
     render_inline Primer::SelectMenuComponent.new do |component|
-      component.slot(:header, close_button: true) { "A nice title" }
+      component.slot(:header, closeable: true) { "A nice title" }
       "hello world"
     end
 
@@ -271,7 +271,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         mt: 1,
         title_tag: :h1,
         title_classes: "my-title-class",
-        close_button: true,
+        closeable: true,
         close_button_classes: "my-close-button",
       ) { "A nice title" }
       component.slot(:filter,
