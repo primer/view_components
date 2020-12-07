@@ -16,6 +16,7 @@ module Primer
     DEFAULT_BLANKSLATE = false
     DEFAULT_ALIGN_RIGHT = false
 
+    with_slot :summary, class_name: "Summary"
     with_slot :header, class_name: "Header"
     with_slot :item, class_name: "Item", collection: true
     with_slot :tab, class_name: "Tab", collection: true
@@ -182,6 +183,20 @@ module Primer
     def render?
       items.any? || tabs.any? || content.present? || message.present? ||
         footer.present? || header.present?
+    end
+
+    class Summary < Primer::Slot
+      def initialize(button: true, **system_arguments)
+        @button = button
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :summary
+        @system_arguments[:role] = "button"
+      end
+
+      def component
+        return Primer::BaseComponent.new(**@system_arguments) unless @button
+        Primer::ButtonComponent.new(**@system_arguments)
+      end
     end
 
     # Represents the clickable tabs at the top of the select menu, if any.

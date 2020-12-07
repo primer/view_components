@@ -1,3 +1,9 @@
+<% if summary %>
+  <%= render summary.component do %>
+    <%= summary.content %>
+  <% end %>
+<% end %>
+
 <%= render container_component do %>
   <%= render modal_component do %>
     <% if header %>
