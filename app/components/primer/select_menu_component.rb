@@ -26,129 +26,124 @@ module Primer
     attr_reader :message
 
     #
-    # @example 193|Basic example|Use a `DetailsComponent` to toggle the select menu, with the `body` of the details component holding the select menu.
-    #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative) do |details_component| %>
-    #     <%= details_component.slot(:summary) do %>
+    # @example 193|Basic example|
+    #   <%= render Primer::SelectMenuComponent.new do |component| %>
+    #     <%= component.slot(:summary) do %>
     #       Choose an option
     #     <% end %>
-    #     <%= details_component.slot(:body) do %>
-    #       <%= render Primer::SelectMenuComponent.new do |menu_component| %>
-    #         <%= menu_component.slot(:header) do %>
-    #           My menu
-    #         <% end %>
-    #         <%= menu_component.slot(:item, selected: true, icon: "check") do %>
-    #           Item 1
-    #         <% end %>
-    #         <%= menu_component.slot(:item, icon: "check") do %>
-    #           Item 2
-    #         <% end %>
-    #         <%= menu_component.slot(:item, icon: "check") do %>
-    #           Item 3
-    #         <% end %>
-    #       <% end %>
+    #     <%= component.slot(:header) do %>
+    #       My menu
+    #     <% end %>
+    #     <%= component.slot(:item, selected: true, icon: "check") do %>
+    #       Item 1
+    #     <% end %>
+    #     <%= component.slot(:item, icon: "check") do %>
+    #       Item 2
+    #     <% end %>
+    #     <%= component.slot(:item, icon: "check") do %>
+    #       Item 3
     #     <% end %>
     #   <% end %>
     #
     # @example 193|Close button|Include a button to close the menu:
-    #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative) do |details_component| %>
-    #     <%= details_component.slot(:summary) do %>
+    #   <%= render Primer::SelectMenuComponent.new do |component| %>
+    #     <%= component.slot(:summary) do %>
     #       Choose an option
     #     <% end %>
-    #     <%= details_component.slot(:body) do %>
-    #       <%= render Primer::SelectMenuComponent.new do |menu_component| %>
-    #         <%= menu_component.slot(:header, close_button: true) do %>
-    #           My menu
-    #         <% end %>
-    #         <%= menu_component.slot(:item) do %>
-    #           Item 1
-    #         <% end %>
-    #         <%= menu_component.slot(:item) do %>
-    #           Item 2
-    #         <% end %>
-    #         <%= menu_component.slot(:item) do %>
-    #           Item 3
-    #         <% end %>
-    #       <% end %>
+    #     <%= component.slot(:header, closeable: true) do %>
+    #       My menu
+    #     <% end %>
+    #     <%= component.slot(:item) do %>
+    #       Item 1
+    #     <% end %>
+    #     <%= component.slot(:item) do %>
+    #       Item 2
+    #     <% end %>
+    #     <%= component.slot(:item) do %>
+    #       Item 3
     #     <% end %>
     #   <% end %>
     #
     # @example 242|Filter|If the list is expected to get long, consider adding a filter input. On mobile devices it will add a fixed height and anchor the select menu to the top of the screen. This makes sure the filter input stays at the same position while typing.
-    #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative) do |details_component| %>
-    #     <%= details_component.slot(:summary) do %>
+    #   <%= render Primer::SelectMenuComponent.new do |component| %>
+    #     <%= component.slot(:summary) do %>
     #       Choose an option
     #     <% end %>
-    #     <%= details_component.slot(:body) do %>
-    #       <%= render Primer::SelectMenuComponent.new do |menu_component| %>
-    #         <%= menu_component.slot(:header) do %>
-    #           My menu
-    #         <% end %>
-    #         <%= menu_component.slot(:filter) %>
-    #         <%= menu_component.slot(:item) do %>
-    #           Item 1
-    #         <% end %>
-    #         <%= menu_component.slot(:item) do %>
-    #           Item 2
-    #         <% end %>
-    #         <%= menu_component.slot(:item) do %>
-    #           Item 3
-    #         <% end %>
-    #       <% end %>
+    #     <%= component.slot(:header) do %>
+    #       My menu
+    #     <% end %>
+    #     <%= component.slot(:filter) %>
+    #     <%= component.slot(:item) do %>
+    #       Item 1
+    #     <% end %>
+    #     <%= component.slot(:item) do %>
+    #       Item 2
+    #     <% end %>
+    #     <%= component.slot(:item) do %>
+    #       Item 3
     #     <% end %>
     #   <% end %>
     #
     # @example 169|Tabs|Sometimes you need two or more lists of items in your select menu, e.g. branches and tags.
-    #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true) do |details_component| %>
-    #     <%= details_component.slot(:summary, title: "Pick an item") do %>
+    #   <%= render Primer::SelectMenuComponent.new do |component| %>
+    #     <%= component.slot(:summary, title: "Pick an item") do %>
     #       Choose an option
     #       <span class="dropdown-caret"></span>
     #     <% end %>
-    #     <%= details_component.slot(:body) do %>
-    #       <%= render Primer::SelectMenuComponent.new(tag: :"details-menu") do |menu_component| %>
-    #         <%= menu_component.slot(:tab, selected: true) do %>
-    #           Tab 1
-    #         <% end %>
-    #         <%= menu_component.slot(:tab) do %>
-    #           Tab 2
-    #         <% end %>
-    #         <%= menu_component.slot(:item, tab: 1, divider: true) do %>
-    #           Item 1
-    #         <% end %>
-    #         <%= menu_component.slot(:item, tab: 1) do %>
-    #           Item 2
-    #         <% end %>
-    #         <%= menu_component.slot(:item, tab: 2) do %>
-    #           Item 3
-    #         <% end %>
-    #       <% end %>
+    #     <%= component.slot(:tab, selected: true) do %>
+    #       Tab 1
+    #     <% end %>
+    #     <%= component.slot(:tab) do %>
+    #       Tab 2
+    #     <% end %>
+    #     <%= component.slot(:item, tab: 1, divider: true) do %>
+    #       Item 1
+    #     <% end %>
+    #     <%= component.slot(:item, tab: 1) do %>
+    #       Item 2
+    #     <% end %>
+    #     <%= component.slot(:item, tab: 2) do %>
+    #       Item 3
     #     <% end %>
     #   <% end %>
     #
     # @example 155|Blankslate|Sometimes a select menu needs to communicate a "blank slate" where there's no content in the menu's list.
-    #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true) do |details_component| %>
-    #     <%= details_component.slot(:summary, title: "Pick an item") do %>
+    #   <%= render Primer::SelectMenuComponent.new(blankslate: true) do |component| %>
+    #     <%= component.slot(:summary, title: "Pick an item") do %>
     #       Choose an option
     #       <span class="dropdown-caret"></span>
     #     <% end %>
-    #     <%= details_component.slot(:body) do %>
-    #       <%= render Primer::SelectMenuComponent.new(tag: :"details-menu", blankslate: true) do %>
-    #         <h4>No results</h4>
-    #         <p>There are no results to show.</p>
-    #       <% end %>
-    #     <% end %>
+    #     <h4>No results</h4>
+    #     <p>There are no results to show.</p>
     #   <% end %>
     #
     # @example 136|Loading|When fetching large lists, consider showing a loading message.
-    #   <%= render Primer::DetailsComponent.new(overlay: :default, reset: true) do |details_component| %>
-    #     <%= details_component.slot(:summary, title: "Pick an item") do %>
+    #   <%= render Primer::SelectMenuComponent.new(loading: true) do |component| %>
+    #     <%= component.slot(:summary, title: "Pick an item") do %>
     #       Choose an option
     #       <span class="dropdown-caret"></span>
     #     <% end %>
-    #     <%= details_component.slot(:body) do %>
-    #       <%= render Primer::SelectMenuComponent.new(tag: :"details-menu", loading: true) do |menu_component| %>
-    #         <%= menu_component.slot(:footer) do %>
-    #           Loading...
-    #         <% end %>
-    #       <% end %>
+    #     <%= component.slot(:footer) do %>
+    #       Loading...
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example 193|details-menu example|Use a details-menu instead of a div for the `.SelectMenu` element.
+    #   <%= render Primer::SelectMenuComponent.new(details_overlay: :default, reset_details: true, position: :relative, menu_tag: :"details-menu") do |component| %>
+    #     <%= component.slot(:summary) do %>
+    #       Choose an option
+    #     <% end %>
+    #     <%= component.slot(:header) do %>
+    #       My menu
+    #     <% end %>
+    #     <%= component.slot(:item, selected: true, icon: "check") do %>
+    #       Item 1
+    #     <% end %>
+    #     <%= component.slot(:item, icon: "check") do %>
+    #       Item 2
+    #     <% end %>
+    #     <%= component.slot(:item, icon: "check") do %>
+    #       Item 3
     #     <% end %>
     #   <% end %>
     #
@@ -158,7 +153,9 @@ module Primer
     # @param list_border [Symbol] What kind of border to have around the list element. One of `:all`, `:omit_top`, or `:none`.
     # @param message [String] A message shown above the contents.
     # @param list_role [String] Optional `role` attribute for the list element.
-    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the `.SelectMenu` tag; defaults to `:div`. `list_classes` (`String`) - CSS classes to apply to the list element. `message_classes` (`String`) - CSS classes to apply to the message element, if a message is included. `tab_wrapper_classes` (`String`) - CSS classes to apply to the containing tab `nav` element, if any tabs are added.
+    # @param overlay [Symbol] options are `:none`, `:default`, and `:dark`. Dictates the type of overlay to render with.
+    # @param menu_tag [Symbol] HTML element type for the `.SelectMenu` tag; defaults to `:div`, could also use `:"details-menu"`.
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `list_classes` (`String`) - CSS classes to apply to the list element. `message_classes` (`String`) - CSS classes to apply to the message element, if a message is included. `tab_wrapper_classes` (`String`) - CSS classes to apply to the containing tab `nav` element, if any tabs are added. `menu_classes` (`String`) - CSS classes to apply to the `.SelectMenu` element.
     def initialize(
       align_right: DEFAULT_ALIGN_RIGHT,
       loading: DEFAULT_LOADING,
@@ -166,6 +163,9 @@ module Primer
       list_border: DEFAULT_LIST_BORDER_CLASS,
       list_role: nil,
       message: nil,
+      reset_details: false,
+      menu_tag: :div,
+      details_overlay: DetailsComponent::NO_OVERLAY,
       **system_arguments
     )
       @align_right = fetch_or_fallback_boolean(align_right, DEFAULT_ALIGN_RIGHT)
@@ -175,12 +175,23 @@ module Primer
         DEFAULT_LIST_BORDER_CLASS)
       @list_role = list_role
       @message = message
+      @details_overlay = details_overlay
+      @reset_details = reset_details
+      @menu_tag = menu_tag
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :div
-      @system_arguments[:role] ||= "menu" if @system_arguments[:tag] == :"details-menu"
+      overlay_option = fetch_or_fallback(DetailsComponent::OVERLAY_MAPPINGS.keys, @details_overlay,
+        DetailsComponent::NO_OVERLAY)
+      @system_arguments[:tag] = :details
+      @system_arguments[:classes] = class_names(
+        @system_arguments[:classes],
+        DetailsComponent::OVERLAY_MAPPINGS[overlay_option],
+        "details-reset" => @reset_details,
+      )
     end
 
     def render?
+      return false unless summary.present?
+
       items.any? || tabs.any? || content.present? || message.present? ||
         footer.present? || header.present?
     end
@@ -410,14 +421,22 @@ module Primer
       @blankslate
     end
 
-    def container_component
-      @system_arguments[:classes] = class_names(
-        "SelectMenu",
-        @system_arguments[:classes],
-        "right-0" => @align_right,
-        "SelectMenu--hasFilter" => filter.present?,
-      )
+    def details_component
       Primer::BaseComponent.new(**@system_arguments)
+    end
+
+    def select_menu_component
+      role = "menu" if @menu_tag == :"details-menu"
+      Primer::BaseComponent.new(
+        tag: @menu_tag,
+        role: role,
+        classes: class_names(
+          "SelectMenu",
+          @system_arguments[:menu_classes],
+          "right-0" => @align_right,
+          "SelectMenu--hasFilter" => filter.present?,
+        )
+      )
     end
 
     def modal_component

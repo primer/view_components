@@ -6,19 +6,23 @@ class PrimerSelectMenuComponentTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders
-    render_inline Primer::SelectMenuComponent.new(list_role: "menu") do
+    render_inline Primer::SelectMenuComponent.new(list_role: "menu") do |component|
+      component.slot(:summary) { "Click me" }
       "hello world"
     end
 
-    assert_selector("div.SelectMenu") do
-      assert_selector("div.SelectMenu-modal") do
-        assert_selector("div.SelectMenu-list[role='menu']", text: /hello world/)
+    assert_selector("details") do
+      assert_selector("div.SelectMenu") do
+        assert_selector("div.SelectMenu-modal") do
+          assert_selector("div.SelectMenu-list[role='menu']", text: /hello world/)
+        end
       end
     end
   end
 
   def test_nests_components_correctly
     render_inline Primer::SelectMenuComponent.new(message: "Goodness me", loading: true) do |component|
+      component.slot(:summary) { "Click me" }
       component.slot(:header, closeable: true) { "A nice title" }
       component.slot(:filter) { "filter description" }
       component.slot(:tab, selected: true) { "Tab 1" }
@@ -28,30 +32,32 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       "hello world"
     end
 
-    assert_selector("div.SelectMenu div.SelectMenu-modal header.SelectMenu-header " \
+    assert_selector("details summary.btn", text: /Click me/)
+    assert_selector("details div.SelectMenu div.SelectMenu-modal header.SelectMenu-header " \
       "h3.SelectMenu-title", text: /A nice title/)
-    assert_selector("div.SelectMenu div.SelectMenu-modal header.SelectMenu-header " \
+    assert_selector("details div.SelectMenu div.SelectMenu-modal header.SelectMenu-header " \
       "button.SelectMenu-closeButton .octicon.octicon-x")
-    assert_selector("div.SelectMenu div.SelectMenu-modal form.SelectMenu-filter " \
+    assert_selector("details div.SelectMenu div.SelectMenu-modal form.SelectMenu-filter " \
       "input.SelectMenu-input")
-    assert_selector("div.SelectMenu div.SelectMenu-modal nav.SelectMenu-tabs " \
+    assert_selector("details div.SelectMenu div.SelectMenu-modal nav.SelectMenu-tabs " \
       "button.SelectMenu-tab[aria-selected='true']", text: /Tab 1/)
-    assert_selector("div.SelectMenu div.SelectMenu-modal footer.SelectMenu-footer",
+    assert_selector("details div.SelectMenu div.SelectMenu-modal footer.SelectMenu-footer",
       text: /the end/)
-    assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
+    assert_selector("details div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
       "div.SelectMenu-message", text: /Goodness me/)
-    assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
+    assert_selector("details div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
       "div.SelectMenu-loading", text: /hello world/)
-    assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
+    assert_selector("details div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
       "button.SelectMenu-item", text: /item 1/)
-    assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
+    assert_selector("details div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
       "hr.SelectMenu-divider")
-    assert_selector("div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
+    assert_selector("details div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
       "button.SelectMenu-item", text: /item 2/)
   end
 
   def test_renders_with_loading
-    render_inline Primer::SelectMenuComponent.new(loading: true) do
+    render_inline Primer::SelectMenuComponent.new(loading: true) do |component|
+      component.slot(:summary) { "Click me" }
       "Loading"
     end
 
@@ -66,6 +72,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_renders_with_items
     render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:summary) { "Click me" }
       component.slot(:item, divider: "some divider") { "item 1" }
       component.slot(:item, selected: true, icon: "star") { "item 2" }
     end
@@ -87,6 +94,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_renders_with_items_using_specified_tag
     render_inline Primer::SelectMenuComponent.new(list_role: "menu") do |component|
+      component.slot(:summary) { "Click me" }
       component.slot(:item, tag: :a, href: "#some-url") { "item 1" }
       component.slot(:item, tag: :div) { "item 2" }
     end
@@ -103,7 +111,8 @@ class PrimerSelectMenuComponentTest < Minitest::Test
   end
 
   def test_renders_with_blankslate
-    render_inline Primer::SelectMenuComponent.new(blankslate: true) do
+    render_inline Primer::SelectMenuComponent.new(blankslate: true) do |component|
+      component.slot(:summary) { "Click me" }
       "No results"
     end
 
@@ -117,7 +126,8 @@ class PrimerSelectMenuComponentTest < Minitest::Test
   end
 
   def test_renders_with_message
-    render_inline Primer::SelectMenuComponent.new(message: "Goodness me") do
+    render_inline Primer::SelectMenuComponent.new(message: "Goodness me") do |component|
+      component.slot(:summary) { "Click me" }
       "hello world"
     end
 
@@ -132,6 +142,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_renders_with_header
     render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:summary) { "Click me" }
       component.slot(:header) { "A nice title" }
       "hello world"
     end
@@ -148,6 +159,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_renders_with_header_and_close_button
     render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:summary) { "Click me" }
       component.slot(:header, closeable: true) { "A nice title" }
       "hello world"
     end
@@ -167,6 +179,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_renders_with_filter
     render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:summary) { "Click me" }
       component.slot(:filter) { "filter description" }
       "hello world"
     end
@@ -184,6 +197,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_renders_with_filter_without_contents
     render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:summary) { "Click me" }
       component.slot(:filter)
       "hello world"
     end
@@ -201,6 +215,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_renders_with_tabs
     render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:summary) { "Click me" }
       component.slot(:tab, selected: true) { "Tab 1" }
       component.slot(:tab) { "Tab 2" }
     end
@@ -217,6 +232,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_renders_with_tabs_and_items_in_the_right_tab
     render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:summary) { "Click me" }
       component.slot(:tab) { "Tab 1" }
       component.slot(:tab, selected: true) { "Tab 2" }
       component.slot(:item, tab: 1) { "hello" }
@@ -241,6 +257,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_renders_with_footer
     render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:summary) { "Click me" }
       component.slot(:footer) { "the end" }
       "hello world"
     end
@@ -264,7 +281,15 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       message: "Goodness me",
       message_classes: "my-message",
       tab_wrapper_classes: "my-tab-wrapper",
+      menu_tag: :"details-menu",
+      menu_classes: "my-menu",
     ) do |component|
+      component.slot(:summary,
+        variant: :small,
+        button_type: :primary,
+        position: :relative,
+        classes: "my-summary",
+      ) { "Click me" }
       component.slot(:header,
         tag: :div,
         classes: "my-header-class",
@@ -304,35 +329,39 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       ) { "item 1" }
     end
 
-    assert_selector("details-menu.SelectMenu.SelectMenu--hasFilter.my-class.mr-3.d-block[role='menu']") do
-      assert_selector("div.SelectMenu-modal.my-modal-class") do
-        assert_selector("div.SelectMenu-header.my-header-class.mt-1") do
-          assert_selector("h1.SelectMenu-title.my-title-class", text: /A nice title/)
-          assert_selector("button.SelectMenu-closeButton.my-close-button .octicon.octicon-x")
-        end
-        assert_selector("div.SelectMenu-list.my-list-class") do
-          assert_selector("div.SelectMenu-message.my-message", text: /Goodness me/)
-          assert_selector("button.SelectMenu-item.my-item.mt-1[role='menuitemcheckbox']",
-            text: /item 1/) do
-              assert_selector(".SelectMenu-icon.SelectMenu-icon--check.octicon." \
-                "octicon-check.my-icon")
+    assert_selector("details.my-class") do
+      assert_selector("summary.position-relative.my-summary.btn-primary.btn-sm.btn", text: /Click me/)
+      assert_selector("details-menu.SelectMenu.SelectMenu--hasFilter.my-menu.mr-3.d-block[role='menu']") do
+        assert_selector("div.SelectMenu-modal.my-modal-class") do
+          assert_selector("div.SelectMenu-header.my-header-class.mt-1") do
+            assert_selector("h1.SelectMenu-title.my-title-class", text: /A nice title/)
+            assert_selector("button.SelectMenu-closeButton.my-close-button .octicon.octicon-x")
           end
-          assert_selector("hr.SelectMenu-divider.my-divider")
+          assert_selector("div.SelectMenu-list.my-list-class") do
+            assert_selector("div.SelectMenu-message.my-message", text: /Goodness me/)
+            assert_selector("button.SelectMenu-item.my-item.mt-1[role='menuitemcheckbox']",
+              text: /item 1/) do
+                assert_selector(".SelectMenu-icon.SelectMenu-icon--check.octicon." \
+                  "octicon-check.my-icon")
+            end
+            assert_selector("hr.SelectMenu-divider.my-divider")
+          end
+          assert_selector("div.SelectMenu-filter.my-filter.py-1", text: /filter description/) do
+            assert_selector("input.SelectMenu-input.my-input[placeholder='Search']" \
+              "[aria-label='A nice filter field']")
+          end
+          assert_selector("nav.SelectMenu-tabs.my-tab-wrapper") do
+            assert_selector("button.SelectMenu-tab[aria-selected='true']", text: /Tab 1/)
+          end
+          assert_selector("div.SelectMenu-footer.mr-3.my-footer", text: /the end/)
         end
-        assert_selector("div.SelectMenu-filter.my-filter.py-1", text: /filter description/) do
-          assert_selector("input.SelectMenu-input.my-input[placeholder='Search']" \
-            "[aria-label='A nice filter field']")
-        end
-        assert_selector("nav.SelectMenu-tabs.my-tab-wrapper") do
-          assert_selector("button.SelectMenu-tab[aria-selected='true']", text: /Tab 1/)
-        end
-        assert_selector("div.SelectMenu-footer.mr-3.my-footer", text: /the end/)
       end
     end
   end
 
   def test_omits_top_list_border_when_specified
     render_inline Primer::SelectMenuComponent.new(list_border: :omit_top) do |component|
+      component.slot(:summary) { "Click me" }
       "hello world"
     end
 
@@ -345,6 +374,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
 
   def test_omits_all_borders_when_specified
     render_inline Primer::SelectMenuComponent.new(list_border: :none) do |component|
+      component.slot(:summary) { "Click me" }
       "hello world"
     end
 
@@ -357,7 +387,8 @@ class PrimerSelectMenuComponentTest < Minitest::Test
   end
 
   def test_supports_right_alignment_of_menu
-    render_inline Primer::SelectMenuComponent.new(align_right: true) do
+    render_inline Primer::SelectMenuComponent.new(align_right: true) do |component|
+      component.slot(:summary) { "Click me" }
       "hello world"
     end
 
@@ -369,7 +400,18 @@ class PrimerSelectMenuComponentTest < Minitest::Test
   end
 
   def test_prevents_rendering_without_content_or_items
-    render_inline(Primer::SelectMenuComponent.new)
-    refute_selector("div")
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:summary) { "Click me" }
+    end
+
+    refute_component_rendered
+  end
+
+  def test_prevents_rendering_without_summary
+    render_inline Primer::SelectMenuComponent.new do |component|
+      component.slot(:item) { "item" }
+    end
+
+    refute_component_rendered
   end
 end

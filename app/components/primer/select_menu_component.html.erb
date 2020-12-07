@@ -1,85 +1,85 @@
-<% if summary %>
+<%= render details_component do %>
   <%= render summary.component do %>
     <%= summary.content %>
   <% end %>
-<% end %>
 
-<%= render container_component do %>
-  <%= render modal_component do %>
-    <% if header %>
-      <%= render header.wrapper_component do %>
-        <%= render header.title_component do %>
-          <%= header.content %>
-        <% end %>
+  <%= render select_menu_component do %>
+    <%= render modal_component do %>
+      <% if header %>
+        <%= render header.wrapper_component do %>
+          <%= render header.title_component do %>
+            <%= header.content %>
+          <% end %>
 
-        <% if header.closeable? %>
-          <%= render header.close_button_component do %>
-            <%= render header.close_button_icon %>
+          <% if header.closeable? %>
+            <%= render header.close_button_component do %>
+              <%= render header.close_button_icon %>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
 
-    <% if filter %>
-      <%= render filter.wrapper_component do %>
-        <%= render filter.input_component %>
-        <%= filter.content %>
+      <% if filter %>
+        <%= render filter.wrapper_component do %>
+          <%= render filter.input_component %>
+          <%= filter.content %>
+        <% end %>
       <% end %>
-    <% end %>
 
-    <% if tabs.any? %>
-      <%= render tab_wrapper_component do %>
-        <% tabs.each do |tab| %>
-          <%= render tab.component do %>
-            <%= tab.content %>
+      <% if tabs.any? %>
+        <%= render tab_wrapper_component do %>
+          <% tabs.each do |tab| %>
+            <%= render tab.component do %>
+              <%= tab.content %>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
 
-    <% list_components.each_with_index do |list_component, i| %>
-      <%= render list_component do %>
-        <% if message.present? %>
-          <%= render message_component do %>
-            <%= message %>
+      <% list_components.each_with_index do |list_component, i| %>
+        <%= render list_component do %>
+          <% if message.present? %>
+            <%= render message_component do %>
+              <%= message %>
+            <% end %>
           <% end %>
-        <% end %>
 
-        <% if loading? %>
-          <div class="SelectMenu-loading">
+          <% if loading? %>
+            <div class="SelectMenu-loading">
+              <%= content %>
+            </div>
+          <% elsif blankslate? %>
+            <div class="SelectMenu-blankslate">
+              <%= content %>
+            </div>
+          <% else %>
             <%= content %>
-          </div>
-        <% elsif blankslate? %>
-          <div class="SelectMenu-blankslate">
-            <%= content %>
-          </div>
-        <% else %>
-          <%= content %>
-        <% end %>
+          <% end %>
 
-        <% items_in_tab(i + 1).each do |item| %>
-          <%= render item.wrapper_component do %>
-            <% if item.icon %>
-              <%= render item.icon_component %>
+          <% items_in_tab(i + 1).each do |item| %>
+            <%= render item.wrapper_component do %>
+              <% if item.icon %>
+                <%= render item.icon_component %>
+              <% end %>
+
+              <%= item.content %>
             <% end %>
 
-            <%= item.content %>
-          <% end %>
-
-          <% if item.divider.is_a?(String) %>
-            <%= render item.divider_component do %>
-              <%= item.divider %>
+            <% if item.divider.is_a?(String) %>
+              <%= render item.divider_component do %>
+                <%= item.divider %>
+              <% end %>
+            <% elsif item.divider %>
+              <%= render item.divider_component %>
             <% end %>
-          <% elsif item.divider %>
-            <%= render item.divider_component %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
 
-    <% if footer %>
-      <%= render footer.component do %>
-        <%= footer.content %>
+      <% if footer %>
+        <%= render footer.component do %>
+          <%= footer.content %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
