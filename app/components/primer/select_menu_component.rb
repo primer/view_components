@@ -327,9 +327,21 @@ module Primer
       DEFAULT_CLOSEABLE = false
 
       # @param closeable [Boolean] Whether to include a close button in the header for closing the whole menu.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the header tag; defaults to `:header`. `title_tag` (`Symbol`) - HTML element type for the title tag; defaults to `:h3`. `title_classes` (`String`) - CSS classes to apply to the title element within the header. `close_button_classes` (`String`) - CSS classes to apply to the close button within the header; only used if `closeable` = `true`.
-      def initialize(closeable: DEFAULT_CLOSEABLE, **system_arguments)
+      # @param title_tag [Symbol] HTML element type for the `.SelectMenu-title` tag; defaults to `:h3`.
+      # @param title_classes [String] CSS classes to apply to the title element within the header.
+      # @param close_button_classes [String] CSS classes to apply to the close button within the header; only used if `closeable` = `true`.
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the header tag; defaults to `:header`.
+      def initialize(
+        closeable: DEFAULT_CLOSEABLE,
+        title_tag: :h3,
+        title_classes: nil,
+        close_button_classes: nil,
+        **system_arguments
+      )
         @closeable = fetch_or_fallback_boolean(closeable, DEFAULT_CLOSEABLE)
+        @title_tag = title_tag
+        @title_classes = title_classes
+        @close_button_classes = close_button_classes
         @system_arguments = system_arguments
         @system_arguments[:tag] ||= :header
         @system_arguments[:classes] = class_names(
@@ -348,10 +360,10 @@ module Primer
 
       def title_component
         Primer::BaseComponent.new(
-          tag: @system_arguments[:title_tag] || :h3,
+          tag: @title_tag || :h3,
           classes: class_names(
             "SelectMenu-title",
-            @system_arguments[:title_classes],
+            @title_classes,
           )
         )
       end
@@ -362,7 +374,7 @@ module Primer
           tag: :button,
           classes: class_names(
             "SelectMenu-closeButton",
-            @system_arguments[:close_button_classes],
+            @close_button_classes,
           )
         )
       end

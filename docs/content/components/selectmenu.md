@@ -206,7 +206,10 @@ Use a details-menu instead of a div for the `.SelectMenu` element.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `closeable` | `Boolean` | `DEFAULT_CLOSEABLE` | Whether to include a close button in the header for closing the whole menu. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `tag` (`Symbol`) - HTML element type for the header tag; defaults to `:header`. `title_tag` (`Symbol`) - HTML element type for the title tag; defaults to `:h3`. `title_classes` (`String`) - CSS classes to apply to the title element within the header. `close_button_classes` (`String`) - CSS classes to apply to the close button within the header; only used if `closeable` = `true`. |
+| `title_tag` | `Symbol` | `:h3` | HTML element type for the `.SelectMenu-title` tag; defaults to `:h3`. |
+| `title_classes` | `String` | `nil` | CSS classes to apply to the title element within the header. |
+| `close_button_classes` | `String` | `nil` | CSS classes to apply to the close button within the header; only used if `closeable` = `true`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `tag` (`Symbol`) - HTML element type for the header tag; defaults to `:header`. |
 
 An optional header for the select menu.
 
