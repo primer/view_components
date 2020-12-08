@@ -260,12 +260,24 @@ module Primer
       # @param tab [Integer] Which tab this item should appear in. The first tab is 1.
       # @param icon [String] Octicon name for this item. Defaults to no icon. Set to a value like `"check"` to add an [Octicon](https://primer.style/octicons/) to this item.
       # @param divider [Boolean, String, nil] Whether to show a divider after this item. Pass `true` to show a simple line divider, or pass a String to show a divider with a message.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the item tag; defaults to `:button`. `role` (`String`) - HTML role attribute for the item tag; defaults to `"menuitem"`. `divider_classes` (`String`) - CSS classes to apply to the divider after this item; only used if `divider` is not `nil`. `icon_classes` (`String`) - CSS classes to apply to the icon; only used if `icon` is not `nil`.
-      def initialize(selected: DEFAULT_SELECTED, icon: nil, tab: DEFAULT_TAB, divider: nil, **system_arguments)
+      # @param icon_classes [String] CSS classes to apply to the icon; only used if `icon` is not `nil`.
+      # @param divider_classes [String] CSS classes to apply to the divider after this item; only used if `divider` is not `nil`.
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the item tag; defaults to `:button`. `role` (`String`) - HTML role attribute for the item tag; defaults to `"menuitem"`.
+      def initialize(
+        selected: DEFAULT_SELECTED,
+        icon: nil,
+        icon_classes: nil,
+        divider_classes: nil,
+        tab: DEFAULT_TAB,
+        divider: nil,
+        **system_arguments
+      )
         @selected = fetch_or_fallback_boolean(selected, DEFAULT_SELECTED)
         @icon = icon
+        @icon_classes = icon_classes
         @tab = (tab || DEFAULT_TAB).to_i
         @divider = divider
+        @divider_classes = divider_classes
         @system_arguments = system_arguments
         @system_arguments[:tag] ||= :button
         @system_arguments[:role] ||= if @selected || @icon
@@ -297,28 +309,17 @@ module Primer
           icon: icon,
           classes: class_names(
             "SelectMenu-icon SelectMenu-icon--check",
-            @system_arguments[:icon_classes],
+            @icon_classes,
           )
         )
       end
 
       # Private: Only used if `divider` is non-nil.
       def divider_component
-        divider_classes = class_names(
-          "SelectMenu-divider",
-          @system_arguments[:divider_classes],
+        Primer::BaseComponent.new(
+          tag: divider.is_a?(String) ? :div : :hr,
+          classes: class_names("SelectMenu-divider", @divider_classes)
         )
-        if divider.is_a?(String)
-          Primer::BaseComponent.new(
-            tag: :div,
-            classes: divider_classes
-          )
-        else
-          Primer::BaseComponent.new(
-            tag: :hr,
-            classes: divider_classes
-          )
-        end
       end
     end
 
