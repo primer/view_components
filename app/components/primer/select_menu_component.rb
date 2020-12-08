@@ -408,16 +408,24 @@ module Primer
       DEFAULT_PLACEHOLDER = "Filter"
 
       # @param placeholder [String] The placeholder attribute for the input field.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the filter tag; defaults to `:form`. `input_classes` (`String`) - CSS classes to apply to the input element within the modal; defaults to `"form-control"`. `aria-label` (`String`) - The aria-label attribute for the input field; defaults to `"Filter"`.
-      def initialize(placeholder: DEFAULT_PLACEHOLDER, **system_arguments)
+      # @param input_classes [String] CSS classes to apply to the input element within the modal.
+      # @param aria_label [String] The aria-label attribute for the input field.
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the filter tag; defaults to `:form`.
+      def initialize(
+        placeholder: DEFAULT_PLACEHOLDER,
+        input_classes: "form-control",
+        aria_label: DEFAULT_PLACEHOLDER,
+        **system_arguments
+      )
         @placeholder = placeholder
+        @input_classes = input_classes
+        @aria_label = aria_label
         @system_arguments = system_arguments
         @system_arguments[:tag] ||= :form
         @system_arguments[:classes] = class_names(
           "SelectMenu-filter",
           system_arguments[:classes],
         )
-        @system_arguments[:input_classes] ||= "form-control"
       end
 
       def wrapper_component
@@ -429,10 +437,10 @@ module Primer
           tag: :input,
           type: "text",
           placeholder: @placeholder,
-          "aria-label": @system_arguments[:"aria-label"] || @placeholder,
+          "aria-label": @aria_label,
           classes: class_names(
             "SelectMenu-input",
-            @system_arguments[:input_classes],
+            @input_classes,
           )
         )
       end

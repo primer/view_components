@@ -305,7 +305,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         classes: "my-filter",
         placeholder: "Search",
         py: 1,
-        "aria-label": "A nice filter field"
+        aria_label: "A nice filter field"
       ) { "filter description" }
       component.slot(:footer,
         classes: "my-footer",

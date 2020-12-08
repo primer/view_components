@@ -63,7 +63,7 @@ Include a button to close the menu:
 
 If the list is expected to get long, consider adding a filter input. On mobile devices it will add a fixed height and anchor the select menu to the top of the screen. This makes sure the filter input stays at the same position while typing.
 
-<iframe style="width: 100%; border: 0px; height: 242px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details>  <summary role='button' type='button' class='btn '>    Choose an option</summary>  <div class='SelectMenu SelectMenu--hasFilter '>    <div class='SelectMenu-modal '>        <header class='SelectMenu-header '>          <h3 class='SelectMenu-title '>            My menu</h3></header>        <form input_classes='form-control' class='SelectMenu-filter '>          <input type='text' placeholder='Filter' aria-label='Filter' class='SelectMenu-input form-control '></input>          </form>        <div class='SelectMenu-list '>                        <button role='menuitem' type='button' class='btn SelectMenu-item '>              Item 1</button>            <button role='menuitem' type='button' class='btn SelectMenu-item '>              Item 2</button>            <button role='menuitem' type='button' class='btn SelectMenu-item '>              Item 3</button></div></div></div></details></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 242px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details>  <summary role='button' type='button' class='btn '>    Choose an option</summary>  <div class='SelectMenu SelectMenu--hasFilter '>    <div class='SelectMenu-modal '>        <header class='SelectMenu-header '>          <h3 class='SelectMenu-title '>            My menu</h3></header>        <form class='SelectMenu-filter '>          <input type='text' placeholder='Filter' aria-label='Filter' class='SelectMenu-input form-control '></input>          </form>        <div class='SelectMenu-list '>                        <button role='menuitem' type='button' class='btn SelectMenu-item '>              Item 1</button>            <button role='menuitem' type='button' class='btn SelectMenu-item '>              Item 2</button>            <button role='menuitem' type='button' class='btn SelectMenu-item '>              Item 3</button></div></div></div></details></body></html>"></iframe>
 
 ```erb
 <%= render Primer::SelectMenuComponent.new do |component| %>
@@ -239,7 +239,9 @@ Represents the clickable tabs at the top of the select menu, if any.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `placeholder` | `String` | `DEFAULT_PLACEHOLDER` | The placeholder attribute for the input field. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `tag` (`Symbol`) - HTML element type for the filter tag; defaults to `:form`. `input_classes` (`String`) - CSS classes to apply to the input element within the modal; defaults to `"form-control"`. `aria-label` (`String`) - The aria-label attribute for the input field; defaults to `"Filter"`. |
+| `input_classes` | `String` | `"form-control"` | CSS classes to apply to the input element within the modal. |
+| `aria_label` | `String` | `DEFAULT_PLACEHOLDER` | The aria-label attribute for the input field. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `tag` (`Symbol`) - HTML element type for the filter tag; defaults to `:form`. |
 
 An optional filter bar for the select menu, to allow limiting how much of its contents
 is shown at a time.
