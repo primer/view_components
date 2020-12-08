@@ -189,7 +189,12 @@ Use a details-menu instead of a div for the `.SelectMenu` element.
 | `list_role` | `String` | `nil` | Optional `role` attribute for the list element. |
 | `overlay` | `Symbol` | N/A | options are `:none`, `:default`, and `:dark`. Dictates the type of overlay to render with. |
 | `menu_tag` | `Symbol` | `:div` | HTML element type for the `.SelectMenu` tag; defaults to `:div`, could also use `:"details-menu"`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `list_classes` (`String`) - CSS classes to apply to the list element. `message_classes` (`String`) - CSS classes to apply to the message element, if a message is included. `tab_wrapper_classes` (`String`) - CSS classes to apply to the containing tab `nav` element, if any tabs are added. `menu_classes` (`String`) - CSS classes to apply to the `.SelectMenu` element. |
+| `modal_classes` | `String` | `nil` | CSS classes to apply to the `.SelectMenu-modal` element. |
+| `tab_wrapper_classes` | `String` | `nil` | CSS classes to apply to the containing tab `nav` element, if any tabs are added. |
+| `list_classes` | `String` | `nil` | CSS classes to apply to the `.SelectMenu-list` element. |
+| `menu_classes` | `String` | `nil` | CSS classes to apply to the `.SelectMenu` element. |
+| `message_classes` | `String` | `nil` | CSS classes to apply to the message element, if a message is included. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `summary` slot
 

@@ -155,7 +155,12 @@ module Primer
     # @param list_role [String] Optional `role` attribute for the list element.
     # @param overlay [Symbol] options are `:none`, `:default`, and `:dark`. Dictates the type of overlay to render with.
     # @param menu_tag [Symbol] HTML element type for the `.SelectMenu` tag; defaults to `:div`, could also use `:"details-menu"`.
-    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `list_classes` (`String`) - CSS classes to apply to the list element. `message_classes` (`String`) - CSS classes to apply to the message element, if a message is included. `tab_wrapper_classes` (`String`) - CSS classes to apply to the containing tab `nav` element, if any tabs are added. `menu_classes` (`String`) - CSS classes to apply to the `.SelectMenu` element.
+    # @param modal_classes [String] CSS classes to apply to the `.SelectMenu-modal` element.
+    # @param tab_wrapper_classes [String] CSS classes to apply to the containing tab `nav` element, if any tabs are added.
+    # @param list_classes [String] CSS classes to apply to the `.SelectMenu-list` element.
+    # @param menu_classes [String] CSS classes to apply to the `.SelectMenu` element.
+    # @param message_classes [String] CSS classes to apply to the message element, if a message is included.
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       align_right: DEFAULT_ALIGN_RIGHT,
       loading: DEFAULT_LOADING,
@@ -165,6 +170,11 @@ module Primer
       message: nil,
       reset_details: false,
       menu_tag: :div,
+      modal_classes: nil,
+      message_classes: nil,
+      tab_wrapper_classes: nil,
+      menu_classes: nil,
+      list_classes: nil,
       details_overlay: DetailsComponent::NO_OVERLAY,
       **system_arguments
     )
@@ -178,6 +188,11 @@ module Primer
       @details_overlay = details_overlay
       @reset_details = reset_details
       @menu_tag = menu_tag
+      @modal_classes = modal_classes
+      @list_classes = list_classes
+      @message_classes = message_classes
+      @tab_wrapper_classes = tab_wrapper_classes
+      @menu_classes = menu_classes
       @system_arguments = system_arguments
       overlay_option = fetch_or_fallback(DetailsComponent::OVERLAY_MAPPINGS.keys, @details_overlay,
         DetailsComponent::NO_OVERLAY)
@@ -432,7 +447,7 @@ module Primer
         role: role,
         classes: class_names(
           "SelectMenu",
-          @system_arguments[:menu_classes],
+          @menu_classes,
           "right-0" => @align_right,
           "SelectMenu--hasFilter" => filter.present?,
         )
@@ -444,7 +459,7 @@ module Primer
         tag: :div,
         classes: class_names(
           "SelectMenu-modal",
-          @system_arguments[:modal_classes],
+          @modal_classes,
         )
       )
     end
@@ -485,7 +500,7 @@ module Primer
         hidden: hidden,
         classes: class_names(
           "SelectMenu-list",
-          @system_arguments[:list_classes],
+          @list_classes,
           LIST_BORDER_CLASSES[@list_border],
         )
       )
@@ -496,7 +511,7 @@ module Primer
         tag: :div,
         classes: class_names(
           "SelectMenu-message",
-          @system_arguments[:message_classes],
+          @message_classes,
         )
       )
     end
@@ -506,7 +521,7 @@ module Primer
         tag: :nav,
         classes: class_names(
           "SelectMenu-tabs",
-          @system_arguments[:tab_wrapper_classes],
+          @tab_wrapper_classes,
         )
       )
     end
