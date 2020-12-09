@@ -317,7 +317,6 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         title_tag: :h1,
         title_classes: "my-title-class",
         closeable: true,
-        close_button_classes: "my-close-button",
       ) { "A nice title" }
       component.slot(:filter,
         tag: :div,
@@ -355,7 +354,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         assert_selector("div.SelectMenu-modal.my-modal-class") do
           assert_selector("div.SelectMenu-header.my-header-class.mt-1") do
             assert_selector("h1.SelectMenu-title.my-title-class", text: /A nice title/)
-            assert_selector("button.SelectMenu-closeButton.my-close-button .octicon.octicon-x")
+            assert_selector("button.SelectMenu-closeButton .octicon.octicon-x")
           end
           assert_selector("div.SelectMenu-list.my-list-class") do
             assert_selector("div.SelectMenu-message.my-message", text: /Goodness me/)
