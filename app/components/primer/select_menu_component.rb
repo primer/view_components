@@ -256,7 +256,7 @@ module Primer
             "SelectMenu-tab",
             system_arguments[:classes],
           )
-          @system_arguments[:"aria-selected"] = "true" if selected
+          @system_arguments[:"aria-selected"] = "true" if parent.selected
         end
 
         def component
