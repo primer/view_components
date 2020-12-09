@@ -233,10 +233,10 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     render_inline Primer::SelectMenuComponent.new(open: true) do |component|
       component.slot(:summary) { "Click me" }
       component.tab(selected: true) do |tab_component|
-        tab_component.slot(:button) { "Tab 1" }
+        tab_component.button { "Tab 1" }
       end
       component.tab do |tab_component|
-        tab_component.slot(:button) { "Tab 2" }
+        tab_component.button { "Tab 2" }
       end
     end
 
@@ -254,12 +254,12 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     render_inline Primer::SelectMenuComponent.new(open: true) do |component|
       component.slot(:summary) { "Click me" }
       component.tab do |tab_component|
-        tab_component.slot(:button) { "Tab 1" }
-        tab_component.slot(:item) { "hello" }
+        tab_component.button { "Tab 1" }
+        tab_component.item { "hello" }
       end
       component.tab(selected: true) do |tab_component|
-        tab_component.slot(:button) { "Tab 2" }
-        tab_component.slot(:item) { "world" }
+        tab_component.button { "Tab 2" }
+        tab_component.item { "world" }
       end
     end
 
