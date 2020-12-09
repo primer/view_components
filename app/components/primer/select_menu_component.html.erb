@@ -28,16 +28,16 @@
 
       <% if tabs.any? %>
         <%= render tab_wrapper_component do %>
-          <% tabs.each do |tab| %>
-            <%= render tab_button.component do %>
-              <%= tab_button.content %>
+          <% tabs.each do |tab_component| %>
+            <%= render tab_component.tab_button.component do %>
+              <%= tab_component.tab_button.content %>
             <% end %>
           <% end %>
         <% end %>
 
-        <% tabs.each do |tab| %>
-          <%= render list_component(hidden: !tab.selected) do %>
-            <% if tab.selected %>
+        <% tabs.each do |tab_component| %>
+          <%= render list_component(hidden: !tab_component.selected) do %>
+            <% if tab_component.selected %>
               <% if message.present? %>
                 <%= render message_component do %>
                   <%= message %>
@@ -57,7 +57,7 @@
               <% end %>
             <% end %>
 
-            <% tab_items.each do |tab_item| %>
+            <% tab_component.tab_items.each do |tab_item| %>
               <%= render tab_item.wrapper_component do %>
                 <% if tab_item.icon %>
                   <%= render tab_item.icon_component %>
