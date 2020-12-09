@@ -245,6 +245,10 @@ module Primer
         @selected = fetch_or_fallback_boolean(selected, DEFAULT_SELECTED)
       end
 
+      def render?
+        tab_button.present?
+      end
+
       class TabButton < Primer::Slot
         def initialize(**system_arguments)
           @system_arguments = system_arguments
