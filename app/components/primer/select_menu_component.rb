@@ -326,6 +326,7 @@ module Primer
     # An optional header for the select menu.
     class Header < Primer::Slot
       DEFAULT_CLOSEABLE = false
+      DEFAULT_TITLE_TAG = :h3
 
       # @param closeable [Boolean] Whether to include a close button in the header for closing the whole menu.
       # @param title_tag [Symbol] HTML element type for the `.SelectMenu-title` tag; defaults to `:h3`.
@@ -333,7 +334,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the header tag; defaults to `:header`.
       def initialize(
         closeable: DEFAULT_CLOSEABLE,
-        title_tag: :h3,
+        title_tag: DEFAULT_TITLE_TAG,
         title_classes: nil,
         **system_arguments
       )
@@ -358,7 +359,7 @@ module Primer
 
       def title_component
         Primer::BaseComponent.new(
-          tag: @title_tag || :h3,
+          tag: @title_tag || DEFAULT_TITLE_TAG,
           classes: class_names(
             "SelectMenu-title",
             @title_classes,
