@@ -4,7 +4,7 @@ PATH
     primer_view_components (0.0.16)
       octicons_helper (>= 9.0.0, < 12.0.0)
       rails (>= 5.0.0, < 7.0)
-      view_component (>= 2.0.0, < 3.0)
+      view_component (>= 2.23.0, < 3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -109,10 +109,10 @@ GEM
     nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
-    octicons (11.0.0)
+    octicons (11.2.0)
       nokogiri (>= 1.6.3.1)
-    octicons_helper (11.0.0)
-      octicons (= 11.0.0)
+    octicons_helper (11.2.0)
+      octicons (= 11.2.0)
       rails
     parallel (1.19.2)
     parser (2.7.1.4)
@@ -199,10 +199,10 @@ GEM
       unicode-display_width (~> 1.1, >= 1.1.1)
     thor (1.0.1)
     thread_safe (0.3.6)
-    tzinfo (1.2.7)
+    tzinfo (1.2.8)
       thread_safe (~> 0.1)
     unicode-display_width (1.6.1)
-    view_component (2.18.0)
+    view_component (2.23.0)
       activesupport (>= 5.0.0, < 7.0)
     view_component_storybook (0.4.0)
       view_component (>= 2.2)
@@ -217,7 +217,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.25)
-    zeitwerk (2.4.0)
+    zeitwerk (2.4.2)
 
 PLATFORMS
   ruby
