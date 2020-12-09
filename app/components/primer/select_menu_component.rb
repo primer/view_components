@@ -5,6 +5,7 @@ module Primer
   # which ones are selected.
   class SelectMenuComponent < Primer::Component
     include ViewComponent::Slotable
+    include ViewComponent::SlotableV2
 
     LIST_BORDER_CLASSES = {
       all: nil,
@@ -19,7 +20,9 @@ module Primer
     with_slot :summary, class_name: "Summary"
     with_slot :header, class_name: "Header"
     with_slot :item, class_name: "Item", collection: true
-    with_slot :tab, class_name: "Tab", collection: true
+    renders_many :tabs, -> (selected: false, **kwargs) do
+      Tab.new(selected: selected, **kwargs)
+    end
     with_slot :filter, class_name: "Filter"
     with_slot :footer, class_name: "Footer"
 
@@ -226,8 +229,13 @@ module Primer
     end
 
     # Represents the clickable tabs at the top of the select menu, if any.
-    class Tab < Primer::Slot
+    class Tab < Primer::Component
+      include ViewComponent::Slotable
+
       DEFAULT_SELECTED = false
+
+      with_slot :tab_button, class_name: "TabButton"
+      with_slot :tab_item, class_name: "TabItem", collection: true
 
       attr_reader :selected
 
@@ -235,13 +243,91 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(selected: DEFAULT_SELECTED, **system_arguments)
         @selected = fetch_or_fallback_boolean(selected, DEFAULT_SELECTED)
-        @system_arguments = system_arguments
-        @system_arguments[:tag] = :button
-        @system_arguments[:classes] = class_names(
-          "SelectMenu-tab",
-          system_arguments[:classes],
+      end
+
+      class TabButton < Primer::Slot
+        def initialize(**system_arguments)
+          @system_arguments = system_arguments
+          @system_arguments[:classes] = class_names(
+            "SelectMenu-tab",
+            system_arguments[:classes],
+          )
+          @system_arguments[:"aria-selected"] = "true" if selected
+        end
+
+        def component
+          Primer::ButtonComponent.new(**@system_arguments)
+        end
+      end
+
+      # List items within the select menu. Can be organized into tabs.
+      class TabItem < Primer::Slot
+        DEFAULT_SELECTED = false
+
+        attr_reader :icon, :divider
+
+        # @param selected [Boolean] Whether this item is the currently active one.
+        # @param icon [String] Octicon name for this item. Defaults to no icon. Set to a value like `"check"` to add an [Octicon](https://primer.style/octicons/) to this item.
+        # @param divider [Boolean, String, nil] Whether to show a divider after this item. Pass `true` to show a simple line divider, or pass a String to show a divider with a message.
+        # @param icon_classes [String] CSS classes to apply to the icon; only used if `icon` is not `nil`.
+        # @param divider_classes [String] CSS classes to apply to the divider after this item; only used if `divider` is not `nil`.
+        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the item tag; defaults to `:button`. `role` (`String`) - HTML role attribute for the item tag; defaults to `"menuitem"`.
+        def initialize(
+          selected: DEFAULT_SELECTED,
+          icon: nil,
+          icon_classes: nil,
+          divider_classes: nil,
+          divider: nil,
+          **system_arguments
         )
-        @system_arguments[:"aria-selected"] = "true" if @selected
+          @selected = fetch_or_fallback_boolean(selected, DEFAULT_SELECTED)
+          @icon = icon
+          @icon_classes = icon_classes
+          @divider = divider
+          @divider_classes = divider_classes
+          @system_arguments = system_arguments
+          @system_arguments[:tag] ||= :button
+          @system_arguments[:role] ||= if @selected || @icon
+            "menuitemcheckbox"
+          else
+            "menuitem"
+          end
+          @system_arguments[:classes] = class_names(
+            "SelectMenu-item",
+            system_arguments[:classes],
+          )
+          @system_arguments[:"aria-checked"] = "true" if @selected
+        end
+
+        def wrapper_component
+          case @system_arguments[:tag]
+          when :button
+            Primer::ButtonComponent.new(**@system_arguments)
+          when :a
+            Primer::LinkComponent.new(**@system_arguments)
+          else
+            Primer::BaseComponent.new(**@system_arguments)
+          end
+        end
+
+        # Private: Only used if `icon` is non-nil.
+        def icon_component
+          Primer::OcticonComponent.new(
+            icon: icon,
+            classes: class_names(
+              "SelectMenu-icon SelectMenu-icon--check",
+              @icon_classes,
+            )
+          )
+        end
+
+        # Private: Only used if `divider` is non-nil.
+        def divider_component
+          Primer::BaseComponent.new(
+            tag: divider.is_a?(String) ? :div : :hr,
+            classes: class_names("SelectMenu-divider", @divider_classes)
+          )
+        end
       end
 
       def component
@@ -475,28 +561,6 @@ module Primer
           @modal_classes,
         )
       )
-    end
-
-    # Private: Returns a list of the content items that should be shown in the specified tab.
-    #
-    # tab - Integer starting at 1 to represent the first tab
-    #
-    # Returns an Array of Item instances.
-    def items_in_tab(tab)
-      return [] if items.empty?
-      items.select { |item| item.tab == tab }
-    end
-
-    # Private: Get all the `.SelectMenu-list` elements necessary to represent all the
-    # tabs in this select menu.
-    def list_components
-      if tabs.any?
-        tabs.map do |tab|
-          list_component(hidden: !tab.selected)
-        end
-      else
-        [list_component]
-      end
     end
 
     # Private: Get a component to represent the `.SelectMenu-list` element that will

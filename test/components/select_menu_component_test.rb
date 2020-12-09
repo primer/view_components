@@ -44,7 +44,6 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       component.slot(:summary) { "Click me" }
       component.slot(:header, closeable: true) { "A nice title" }
       component.slot(:filter) { "filter description" }
-      component.slot(:tab, selected: true) { "Tab 1" }
       component.slot(:item, divider: true) { "item 1" }
       component.slot(:item) { "item 2" }
       component.slot(:footer) { "the end" }
@@ -58,8 +57,6 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       "button.SelectMenu-closeButton .octicon.octicon-x")
     assert_selector("details div.SelectMenu div.SelectMenu-modal form.SelectMenu-filter " \
       "input.SelectMenu-input")
-    assert_selector("details div.SelectMenu div.SelectMenu-modal nav.SelectMenu-tabs " \
-      "button.SelectMenu-tab[aria-selected='true']", text: /Tab 1/)
     assert_selector("details div.SelectMenu div.SelectMenu-modal footer.SelectMenu-footer",
       text: /the end/)
     assert_selector("details div.SelectMenu div.SelectMenu-modal div.SelectMenu-list " \
@@ -235,8 +232,12 @@ class PrimerSelectMenuComponentTest < Minitest::Test
   def test_renders_with_tabs
     render_inline Primer::SelectMenuComponent.new(open: true) do |component|
       component.slot(:summary) { "Click me" }
-      component.slot(:tab, selected: true) { "Tab 1" }
-      component.slot(:tab) { "Tab 2" }
+      component.tab(selected: true) do |tab_component|
+        tab_component.slot(:tab_button) { "Tab 1" }
+      end
+      component.tab do |tab_component|
+        tab_component.slot(:tab_button) { "Tab 2" }
+      end
     end
 
     assert_selector("div.SelectMenu") do
@@ -252,10 +253,14 @@ class PrimerSelectMenuComponentTest < Minitest::Test
   def test_renders_with_tabs_and_items_in_the_right_tab
     render_inline Primer::SelectMenuComponent.new(open: true) do |component|
       component.slot(:summary) { "Click me" }
-      component.slot(:tab) { "Tab 1" }
-      component.slot(:tab, selected: true) { "Tab 2" }
-      component.slot(:item, tab: 1) { "hello" }
-      component.slot(:item, tab: 2) { "world" }
+      component.tab do |tab_component|
+        tab_component.slot(:tab_button) { "Tab 1" }
+        tab_component.slot(:tab_item) { "hello" }
+      end
+      component.tab(selected: true) do |tab_component|
+        tab_component.slot(:tab_button) { "Tab 2" }
+        tab_component.slot(:tab_item) { "world" }
+      end
     end
 
     assert_selector("div.SelectMenu") do
@@ -331,18 +336,12 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         tag: :div,
         mr: 3,
       ) { "the end" }
-      component.slot(:tab,
-        classes: "my-tab",
-        selected: true,
-        mr: 1,
-      ) { "Tab 1" }
       component.slot(:item,
         classes: "my-item",
         role: "menuitemcheckbox",
         mt: 1,
         icon: "check",
         icon_classes: "my-icon",
-        tab: 1,
         divider: true,
         divider_classes: "my-divider",
       ) { "item 1" }
@@ -368,9 +367,6 @@ class PrimerSelectMenuComponentTest < Minitest::Test
           assert_selector("div.SelectMenu-filter.my-filter.py-1", text: /filter description/) do
             assert_selector("input.SelectMenu-input.my-input[placeholder='Search']" \
               "[aria-label='A nice filter field']")
-          end
-          assert_selector("nav.SelectMenu-tabs.my-tab-wrapper") do
-            assert_selector("button.SelectMenu-tab[aria-selected='true']", text: /Tab 1/)
           end
           assert_selector("div.SelectMenu-footer.mr-3.my-footer", text: /the end/)
         end
