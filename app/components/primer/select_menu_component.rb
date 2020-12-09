@@ -234,8 +234,8 @@ module Primer
 
       DEFAULT_SELECTED = false
 
-      with_slot :tab_button, class_name: "TabButton"
-      with_slot :tab_item, class_name: "TabItem", collection: true
+      with_slot :button, class_name: "TabButton"
+      with_slot :item, class_name: "TabItem", collection: true
 
       attr_reader :selected
 
