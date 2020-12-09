@@ -29,9 +29,7 @@
       <% if tabs.any? %>
         <%= render tab_wrapper_component do %>
           <% tabs.each do |tab_component| %>
-            <%= render tab_component.button.component do %>
-              <%= tab_component.button.content %>
-            <% end %>
+            <%= tab_component.button %>
           <% end %>
         <% end %>
 
@@ -58,21 +56,7 @@
             <% end %>
 
             <% tab_component.items.each do |tab_item| %>
-              <%= render tab_item.wrapper_component do %>
-                <% if tab_item.icon %>
-                  <%= render tab_item.icon_component %>
-                <% end %>
-
-                <%= tab_item.content %>
-              <% end %>
-
-              <% if tab_item.divider.is_a?(String) %>
-                <%= render tab_item.divider_component do %>
-                  <%= tab_item.divider %>
-                <% end %>
-              <% elsif tab_item.divider %>
-                <%= render tab_item.divider_component %>
-              <% end %>
+              <%= tab_item %>
             <% end %>
           <% end %>
         <% end %>
