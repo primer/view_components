@@ -2,6 +2,8 @@
 title: Flash
 ---
 
+<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
+
 Use the Flash component to inform users of successful or pending actions.
 
 ## Examples

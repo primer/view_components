@@ -6,7 +6,13 @@
 
     *Joel Hawksley*
 
+## 0.0.16
+
 * Adding a `spinner` slot to the `BlankslateComponent` that uses the `SpinnerComponent` added in `0.0.10`.
+
+    *Jon Rohan*
+
+* Bumping node engine to version `15.x`
 
     *Jon Rohan*
 

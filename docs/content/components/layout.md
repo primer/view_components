@@ -2,6 +2,8 @@
 title: Layout
 ---
 
+<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
+
 Use Layout to build a main/sidebar layout.
 
 ## Examples

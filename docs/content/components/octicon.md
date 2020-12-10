@@ -2,6 +2,8 @@
 title: Octicon
 ---
 
+<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
+
 Renders an [Octicon](https://primer.style/octicons/) with [System arguments](/system-arguments).
 
 ## Examples

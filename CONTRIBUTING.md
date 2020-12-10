@@ -22,6 +22,8 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 Here are a few things you can do that will increase the likelihood of your pull request being accepted:
 
 - Write tests.
+- Write YARD comments for component and slot initializers. Please document the purpose and general use of new components or slots you add, as well as the parameters they accept. See for example the comment style in app/components/primer/counter_component.rb.
+- Add new components to the `components` list in Rakefile in the `docs:build` task, so that Markdown documentation is generated for them within docs/content/components/.
 - Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
 - Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
 

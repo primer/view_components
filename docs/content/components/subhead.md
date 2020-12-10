@@ -2,6 +2,8 @@
 title: Subhead
 ---
 
+<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
+
 Use the Subhead component for page headings.
 
 ## Examples

@@ -2,6 +2,8 @@
 title: Link
 ---
 
+<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
+
 Use links for moving from one page to another. The Link component styles anchor tags with default blue styling and hover text-decoration.
 
 ## Examples
