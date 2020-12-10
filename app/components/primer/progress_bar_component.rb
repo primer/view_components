@@ -68,7 +68,7 @@ module Primer
         @system_arguments[:tag] = :span
         @system_arguments[:bg] = bg
         @system_arguments[:style] =
-          join_style_arguments("width: #{@percentage}%;", @system_arguments[:style])
+          join_style_arguments(@system_arguments[:style], "width: #{@percentage}%;")
         @system_arguments[:classes] = class_names("Progress-item", @system_arguments[:classes])
       end
     end
