@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Primer
   module JoinStyleArgumentsHelper
     # Join two `style` arguments
