@@ -57,7 +57,7 @@ module Primer
       body.present?
     end
 
-    class Heading < ViewComponent::Slot
+    class Heading < Primer::Slot
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = system_arguments

@@ -38,12 +38,14 @@ class PrimerComponentTest < Minitest::Test
     [Primer::UnderlineNavComponent, {}],
   ]
 
-  def test_primer_components_provide_a_consistent_interface
+  def test_registered_components
     ignored_components = ["Primer::Component"]
 
     primer_component_files_count = Dir["app/**/*component.rb"].count
     assert_equal primer_component_files_count, COMPONENTS_WITH_ARGS.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"
+  end
 
+  def test_primer_components_provide_a_consistent_interface
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       # component renders hash arguments
       render_component(component, { my: 4 }.merge(args), proc)
@@ -52,6 +54,10 @@ class PrimerComponentTest < Minitest::Test
       # component passes through class_names
       render_component(component, { classes: "foo" }.merge(args), proc)
       assert_selector(".foo")
+
+      # component supports inline styles
+      render_component(component, { style: "width: 100%;" }.merge(args), proc)
+      assert_selector("[style='width: 100%;']")
 
       # component supports basic content_tag arguments
       render_component(component, { hidden: true }.merge(args), proc)
@@ -62,20 +68,26 @@ class PrimerComponentTest < Minitest::Test
 
       # Ensure all slots accept Primer system_arguments
       if component.respond_to?(:slots) && component.slots.any?
-        render_inline(component.new(**args)) do |c|
+        result = render_inline(component.new(**args)) do |c|
           component.slots.each do |slot_name, slot_attributes|
             c.slot(
               slot_name,
               classes: "test-#{slot_name}",
               my: 1,
               hidden: true,
+              style: "height: 100%;",
               "data-ga-click": "Foo,bar"
             ) { "foo" }
           end
         end
 
         component.slots.each do |slot_name, _attrs|
-          assert_selector(".test-#{slot_name}.my-1[hidden][data-ga-click='Foo,bar']", visible: false)
+          assert_selector(
+            ".test-#{slot_name}.my-1[hidden][data-ga-click='Foo,bar']",
+            visible: false
+          )
+
+          assert_includes result.to_html, "height: 100%;"
         end
       end
     end

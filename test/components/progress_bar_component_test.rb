@@ -45,6 +45,14 @@ class Primer::ProgressBarComponentTest < Minitest::Test
     assert_selector("[style='width: 80%;']")
   end
 
+  def test_renders_custom_styles
+    render_inline(Primer::ProgressBarComponent.new) do |component|
+      component.slot(:item, percentage: 80, style: "color: red")
+    end
+
+    assert_selector("[style='color: red;width: 80%;']")
+  end
+
   def test_renders_background_colors
     render_inline(Primer::ProgressBarComponent.new) do |component|
       component.slot(:item, bg: :red)
