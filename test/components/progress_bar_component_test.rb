@@ -50,7 +50,7 @@ class Primer::ProgressBarComponentTest < Minitest::Test
       component.slot(:item, percentage: 80, style: "color: red")
     end
 
-    assert_selector("[style='width: 80%;;color: red']")
+    assert_selector("[style='color: red;width: 80%;']")
   end
 
   def test_renders_background_colors
