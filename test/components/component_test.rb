@@ -67,7 +67,7 @@ class PrimerComponentTest < Minitest::Test
       assert_selector("[data-ga-click='Foo,bar']", visible: false)
 
       # Ensure all slots accept Primer system_arguments
-      if component.slots.any?
+      if component.respond_to?(:slots) && component.slots.any?
         result = render_inline(component.new(**args)) do |c|
           component.slots.each do |slot_name, slot_attributes|
             c.slot(
