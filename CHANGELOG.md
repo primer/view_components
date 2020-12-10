@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.17
+
 * Ensure all components support inline styles.
 
     *Joel Hawksley*
