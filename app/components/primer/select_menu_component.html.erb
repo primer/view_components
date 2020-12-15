@@ -26,76 +26,40 @@
         <% end %>
       <% end %>
 
-      <% if tabs.any? %>
-        <%= render tab_wrapper_component do %>
-          <% tabs.each do |tab_component| %>
-            <%= tab_component.button %>
+      <%= render list_component do %>
+        <% if message.present? %>
+          <%= render message_component do %>
+            <%= message %>
           <% end %>
         <% end %>
 
-        <% tabs.each do |tab_component| %>
-          <%= render list_component(hidden: !tab_component.selected) do %>
-            <% if tab_component.selected %>
-              <% if message.present? %>
-                <%= render message_component do %>
-                  <%= message %>
-                <% end %>
-              <% end %>
-
-              <% if loading? %>
-                <div class="SelectMenu-loading">
-                  <%= content %>
-                </div>
-              <% elsif blankslate? %>
-                <div class="SelectMenu-blankslate">
-                  <%= content %>
-                </div>
-              <% else %>
-                <%= content %>
-              <% end %>
-            <% end %>
-
-            <% tab_component.items.each do |tab_item| %>
-              <%= tab_item %>
-            <% end %>
-          <% end %>
-        <% end %>
-      <% else %>
-        <%= render list_component do %>
-          <% if message.present? %>
-            <%= render message_component do %>
-              <%= message %>
-            <% end %>
-          <% end %>
-
-          <% if loading? %>
-            <div class="SelectMenu-loading">
-              <%= content %>
-            </div>
-          <% elsif blankslate? %>
-            <div class="SelectMenu-blankslate">
-              <%= content %>
-            </div>
-          <% else %>
+        <% if loading? %>
+          <div class="SelectMenu-loading">
             <%= content %>
+          </div>
+        <% elsif blankslate? %>
+          <div class="SelectMenu-blankslate">
+            <%= content %>
+          </div>
+        <% else %>
+          <%= content %>
+        <% end %>
+
+        <% items.each do |item| %>
+          <%= render item.wrapper_component do %>
+            <% if item.icon %>
+              <%= render item.icon_component %>
+            <% end %>
+
+            <%= item.content %>
           <% end %>
 
-          <% items.each do |item| %>
-            <%= render item.wrapper_component do %>
-              <% if item.icon %>
-                <%= render item.icon_component %>
-              <% end %>
-
-              <%= item.content %>
+          <% if item.divider.is_a?(String) %>
+            <%= render item.divider_component do %>
+              <%= item.divider %>
             <% end %>
-
-            <% if item.divider.is_a?(String) %>
-              <%= render item.divider_component do %>
-                <%= item.divider %>
-              <% end %>
-            <% elsif item.divider %>
-              <%= render item.divider_component %>
-            <% end %>
+          <% elsif item.divider %>
+            <%= render item.divider_component %>
           <% end %>
         <% end %>
       <% end %>

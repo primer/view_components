@@ -229,56 +229,6 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     end
   end
 
-  def test_renders_with_tabs
-    render_inline Primer::SelectMenuComponent.new(open: true) do |component|
-      component.slot(:summary) { "Click me" }
-      component.tab(selected: true) do |tab_component|
-        tab_component.button { "Tab 1" }
-      end
-      component.tab do |tab_component|
-        tab_component.button { "Tab 2" }
-      end
-    end
-
-    assert_selector("div.SelectMenu") do
-      assert_selector("div.SelectMenu-modal") do
-        assert_selector("nav.SelectMenu-tabs") do
-          assert_selector("button.SelectMenu-tab[aria-selected='true']", text: /Tab 1/)
-          assert_selector("button.SelectMenu-tab", text: /Tab 2/)
-        end
-      end
-    end
-  end
-
-  def test_renders_with_tabs_and_items_in_the_right_tab
-    render_inline Primer::SelectMenuComponent.new(open: true) do |component|
-      component.slot(:summary) { "Click me" }
-      component.tab do |tab_component|
-        tab_component.button { "Tab 1" }
-        tab_component.item { "hello" }
-      end
-      component.tab(selected: true) do |tab_component|
-        tab_component.button { "Tab 2" }
-        tab_component.item { "world" }
-      end
-    end
-
-    assert_selector("div.SelectMenu") do
-      assert_selector("div.SelectMenu-modal") do
-        assert_selector("nav.SelectMenu-tabs") do
-          assert_selector("button.SelectMenu-tab", text: /Tab 1/)
-          assert_selector("button.SelectMenu-tab[aria-selected='true']", text: /Tab 2/)
-        end
-        assert_selector("div.SelectMenu-list[hidden='hidden']", visible: false) do
-          assert_selector("button.SelectMenu-item", text: /hello/, visible: false)
-        end
-        assert_selector("div.SelectMenu-list") do
-          assert_selector("button.SelectMenu-item", text: /world/)
-        end
-      end
-    end
-  end
-
   def test_renders_with_footer
     render_inline Primer::SelectMenuComponent.new(open: true) do |component|
       component.slot(:summary) { "Click me" }
@@ -305,7 +255,6 @@ class PrimerSelectMenuComponentTest < Minitest::Test
       list_classes: "my-list-class",
       message: "Goodness me",
       message_classes: "my-message",
-      tab_wrapper_classes: "my-tab-wrapper",
       menu_tag: :"details-menu",
       menu_classes: "my-menu",
     ) do |component|
