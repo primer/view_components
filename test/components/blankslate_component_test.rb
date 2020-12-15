@@ -36,7 +36,7 @@ class BlankslateComponentTest < Minitest::Test
   end
 
   def test_renders_a_narrow_large_and_spacious_blankslate_component
-    result = render_inline(Primer::BlankslateComponent.new(
+    render_inline(Primer::BlankslateComponent.new(
       title: "Title",
       narrow: true,
       large: true,

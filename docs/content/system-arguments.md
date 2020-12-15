@@ -35,6 +35,7 @@ System arguments include most HTML attributes. For example:
 | `data` | `Hash` | Data attributes: `data: { foo: :bar }` renders `data-foo='bar'`. |
 | `aria` | `Hash` | Aria attributes: `aria: { label: "foo" }` renders `aria-label='foo'`. |
 | `title` | `String` | The `title` attribute. |
+| `style` | `String` | Inline styles. |
 | `hidden` | `Boolean` | Whether to assign the `hidden` attribute. |
 
 ## Arguments

@@ -2,6 +2,12 @@
 
 ## main
 
+## 0.0.17
+
+* Ensure all components support inline styles.
+
+    *Joel Hawksley*
+
 ## 0.0.16
 
 * Adding a `spinner` slot to the `BlankslateComponent` that uses the `SpinnerComponent` added in `0.0.10`.

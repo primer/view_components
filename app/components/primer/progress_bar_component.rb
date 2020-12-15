@@ -55,8 +55,7 @@ module Primer
       items.any?
     end
 
-    class Item < ViewComponent::Slot
-      include ClassNameHelper
+    class Item < Primer::Slot
       attr_reader :system_arguments
 
       # @param percentage [Integer] Percentage completion of item.
@@ -68,7 +67,8 @@ module Primer
 
         @system_arguments[:tag] = :span
         @system_arguments[:bg] = bg
-        @system_arguments[:style] = "width: #{@percentage}%;"
+        @system_arguments[:style] =
+          join_style_arguments(@system_arguments[:style], "width: #{@percentage}%;")
         @system_arguments[:classes] = class_names("Progress-item", @system_arguments[:classes])
       end
     end

@@ -33,8 +33,8 @@ class Primer::FetchOrFallbackHelperTest < Minitest::Test
       fetch_or_fallback([1, 2, 3], 0, 1)
     end
 
-    assert_match /Expected one of: \[1, 2, 3\]/, error.message
-    assert_match /Got: 0/, error.message
-    assert_match /This will not raise in production, but will instead fallback to: 1/, error.message
+    assert_match(/Expected one of: \[1, 2, 3\]/, error.message)
+    assert_match(/Got: 0/, error.message)
+    assert_match(/This will not raise in production, but will instead fallback to: 1/, error.message)
   end
 end
