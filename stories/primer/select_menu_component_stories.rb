@@ -20,28 +20,6 @@ class Primer::SelectMenuComponentStories < ViewComponent::Storybook::Stories
     end
   end
 
-  story(:select_menu_with_tabs) do
-    controls do
-      text(:message, "Message")
-      select(:details_overlay, Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :none)
-      select(:list_border, Primer::SelectMenuComponent::LIST_BORDER_CLASSES.keys, :all)
-      loading false
-      blankslate false
-      align_right false
-      reset_details false
-    end
-
-    content do |component|
-      component.slot(:summary) { "Click me" }
-      component.slot(:tab, selected: true) { "Tab 1" }
-      component.slot(:tab) { "Tab 2" }
-      component.slot(:item, tab: 1, divider: true) { "hello world" }
-      component.slot(:item, tab: 1) { "It's nice to meet you." }
-      component.slot(:item, tab: 2) { "foo bar" }
-      component.slot(:item, tab: 2) { "baz" }
-    end
-  end
-
   story(:select_menu_with_header) do
     controls do
       text(:message, "Message")
