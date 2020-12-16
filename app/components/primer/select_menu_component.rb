@@ -200,7 +200,6 @@ module Primer
 
     # List items within the select menu.
     class Item < Primer::Slot
-      DEFAULT_TAB = 1
       DEFAULT_SELECTED = false
 
       attr_reader :icon, :divider
