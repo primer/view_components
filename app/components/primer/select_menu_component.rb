@@ -185,8 +185,19 @@ module Primer
     end
 
     class Summary < Primer::Slot
-      def initialize(button: true, **system_arguments)
+      # @param button [Boolean] Whether the `summary` element should be styled as a button.
+      # @param button_type [Symbol] Only applies when `button`=`true`. <%= one_of(Primer::ButtonComponent::BUTTON_TYPE_OPTIONS) %>
+      # @param variant [Symbol] Only applies when `button`=`true`. <%= one_of(Primer::ButtonComponent::VARIANT_OPTIONS) %>
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(
+        button: true,
+        button_type: :default,
+        variant: :medium,
+        **system_arguments
+      )
         @button = button
+        @button_type = button_type
+        @variant = variant
         @system_arguments = system_arguments
         @system_arguments[:tag] = :summary
         @system_arguments[:role] = "button"
@@ -194,7 +205,11 @@ module Primer
 
       def component
         return Primer::BaseComponent.new(**@system_arguments) unless @button
-        Primer::ButtonComponent.new(**@system_arguments)
+        Primer::ButtonComponent.new(
+          button_type: @button_type,
+          variant: @variant,
+          **@system_arguments
+        )
       end
     end
 

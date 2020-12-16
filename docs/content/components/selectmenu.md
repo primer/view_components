@@ -169,6 +169,10 @@ Use a details-menu instead of a div for the `.SelectMenu` element.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `button` | `Boolean` | `true` | Whether the `summary` element should be styled as a button. |
+| `button_type` | `Symbol` | `:default` | Only applies when `button`=`true`. One of `:default`, `:primary`, `:danger`, or `:outline`. |
+| `variant` | `Symbol` | `:medium` | Only applies when `button`=`true`. One of `:small`, `:medium`, or `:large`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `header` slot
 
@@ -185,11 +189,10 @@ An optional header for the select menu.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `selected` | `Boolean` | `DEFAULT_SELECTED` | Whether this item is the currently active one. |
-| `icon` | `String` | `nil` | Octicon name for this item. Defaults to no icon. Set to a value like `"check"` to add an [Octicon](https://primer.style/octicons/) to this item. |
+| `selected` | `Boolean` | `DEFAULT_SELECTED` | Whether item is the currently active one. |
+| `icon` | `String` | `nil` | Octicon name. Set to a value like `"check"` to add an [Octicon](https://primer.style/octicons/). |
 | `divider` | `Boolean, String, nil` | `nil` | Whether to show a divider after this item. Pass `true` to show a simple line divider, or pass a String to show a divider with a message. |
 | `icon_classes` | `String` | `nil` | CSS classes to apply to the icon; only used if `icon` is not `nil`. |
-| `divider_classes` | `String` | `nil` | CSS classes to apply to the divider after this item; only used if `divider` is not `nil`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `tag` (`Symbol`) - HTML element type for the item tag; defaults to `:button`. `role` (`String`) - HTML role attribute for the item tag; defaults to `"menuitem"`. |
 
 List items within the select menu.
