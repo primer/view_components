@@ -205,8 +205,8 @@ module Primer
 
       attr_reader :icon, :divider
 
-      # @param selected [Boolean] Whether this item is the currently active one.
-      # @param icon [String] Octicon name for this item. Defaults to no icon. Set to a value like `"check"` to add an [Octicon](https://primer.style/octicons/) to this item.
+      # @param selected [Boolean] Whether item is the currently active one.
+      # @param icon [String] Octicon name. Set to a value like `"check"` to add an [Octicon](https://primer.style/octicons/).
       # @param divider [Boolean, String, nil] Whether to show a divider after this item. Pass `true` to show a simple line divider, or pass a String to show a divider with a message.
       # @param icon_classes [String] CSS classes to apply to the icon; only used if `icon` is not `nil`.
       # @param divider_classes [String] CSS classes to apply to the divider after this item; only used if `divider` is not `nil`.
