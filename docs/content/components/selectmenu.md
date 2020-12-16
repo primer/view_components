@@ -191,7 +191,7 @@ An optional header for the select menu.
 | :- | :- | :- | :- |
 | `selected` | `Boolean` | `DEFAULT_SELECTED` | Whether item is the currently active one. |
 | `icon` | `String` | `nil` | Octicon name. Set to a value like `"check"` to add an [Octicon](https://primer.style/octicons/). |
-| `divider` | `Boolean, String, nil` | `nil` | Whether to show a divider after this item. Pass `true` to show a simple line divider, or pass a String to show a divider with a message. |
+| `divider` | `Boolean, String, nil` | `nil` | Whether to show a divider after item. Pass `true` to show a simple line divider, or pass a String to show a divider with a title. |
 | `icon_classes` | `String` | `nil` | CSS classes to apply to the icon; only used if `icon` is not `nil`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `tag` (`Symbol`) - HTML element type for the item tag; defaults to `:button`. `role` (`String`) - HTML role attribute for the item tag; defaults to `"menuitem"`. |
 
