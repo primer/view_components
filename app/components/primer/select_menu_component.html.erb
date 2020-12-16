@@ -47,10 +47,9 @@
 
         <% items.each do |item| %>
           <%= render item.wrapper_component do %>
-            <% if item.icon %>
-              <%= render item.icon_component %>
+            <% if icon_el = item.icon_component %>
+              <%= render icon_el %>
             <% end %>
-
             <%= item.content %>
           <% end %>
 

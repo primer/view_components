@@ -21,13 +21,13 @@ which ones are selected.
   <%= component.slot(:header) do %>
     My menu
   <% end %>
-  <%= component.slot(:item, selected: true, icon: "check") do %>
+  <%= component.slot(:item, selected: true) do %>
     Item 1
   <% end %>
-  <%= component.slot(:item, icon: "check") do %>
+  <%= component.slot(:item) do %>
     Item 2
   <% end %>
-  <%= component.slot(:item, icon: "check") do %>
+  <%= component.slot(:item) do %>
     Item 3
   <% end %>
 <% end %>
@@ -37,7 +37,7 @@ which ones are selected.
 
 Include a button to close the menu:
 
-<iframe style="width: 100%; border: 0px; height: 193px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details>  <summary role='button' type='button' class='btn '>    Choose an option</summary>  <div class='SelectMenu '>    <div class='SelectMenu-modal '>        <header class='SelectMenu-header '>          <h3 class='SelectMenu-title '>            My menu</h3>            <button type='button' class='btn SelectMenu-closeButton '>              <svg class='octicon octicon-x' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg></button></header>      <div class='SelectMenu-list '>                    <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 1</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 2</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 3</button></div></div></div></details></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 193px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details>  <summary role='button' type='button' class='btn '>    Choose an option</summary>  <div class='SelectMenu '>    <div class='SelectMenu-modal '>        <header class='SelectMenu-header '>          <h3 class='SelectMenu-title '>            My menu</h3>            <button type='button' class='btn SelectMenu-closeButton '>              <svg class='octicon octicon-x' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg></button></header>      <div class='SelectMenu-list '>                    <button role='menuitemcheckbox' type='button' class='btn SelectMenu-item '>              <svg class='octicon octicon-check SelectMenu-icon SelectMenu-icon--check' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>            Item 1</button>          <button role='menuitemcheckbox' type='button' class='btn SelectMenu-item '>              <svg class='octicon octicon-check SelectMenu-icon SelectMenu-icon--check' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>            Item 2</button>          <button role='menuitemcheckbox' type='button' class='btn SelectMenu-item '>              <svg class='octicon octicon-check SelectMenu-icon SelectMenu-icon--check' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>            Item 3</button></div></div></div></details></body></html>"></iframe>
 
 ```erb
 <%= render Primer::SelectMenuComponent.new do |component| %>
@@ -63,7 +63,7 @@ Include a button to close the menu:
 
 If the list is expected to get long, consider adding a filter input. On mobile devices it will add a fixed height and anchor the select menu to the top of the screen. This makes sure the filter input stays at the same position while typing.
 
-<iframe style="width: 100%; border: 0px; height: 242px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details>  <summary role='button' type='button' class='btn '>    Choose an option</summary>  <div class='SelectMenu SelectMenu--hasFilter '>    <div class='SelectMenu-modal '>        <header class='SelectMenu-header '>          <h3 class='SelectMenu-title '>            My menu</h3></header>        <form class='SelectMenu-filter '>          <input type='text' placeholder='Filter' aria-label='Filter' class='SelectMenu-input form-control '></input>          </form>      <div class='SelectMenu-list '>                    <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 1</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 2</button>          <button role='menuitem' type='button' class='btn SelectMenu-item '>            Item 3</button></div></div></div></details></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 242px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details>  <summary role='button' type='button' class='btn '>    Choose an option</summary>  <div class='SelectMenu SelectMenu--hasFilter '>    <div class='SelectMenu-modal '>        <header class='SelectMenu-header '>          <h3 class='SelectMenu-title '>            My menu</h3></header>        <form class='SelectMenu-filter '>          <input type='text' placeholder='Filter' aria-label='Filter' class='SelectMenu-input form-control '></input>          </form>      <div class='SelectMenu-list '>                    <button role='menuitemcheckbox' type='button' class='btn SelectMenu-item '>              <svg class='octicon octicon-check SelectMenu-icon SelectMenu-icon--check' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>            Item 1</button>          <button role='menuitemcheckbox' type='button' class='btn SelectMenu-item '>              <svg class='octicon octicon-check SelectMenu-icon SelectMenu-icon--check' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>            Item 2</button>          <button role='menuitemcheckbox' type='button' class='btn SelectMenu-item '>              <svg class='octicon octicon-check SelectMenu-icon SelectMenu-icon--check' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>            Item 3</button></div></div></div></details></body></html>"></iframe>
 
 ```erb
 <%= render Primer::SelectMenuComponent.new do |component| %>
@@ -135,13 +135,13 @@ Use a details-menu instead of a div for the `.SelectMenu` element.
   <%= component.slot(:header) do %>
     My menu
   <% end %>
-  <%= component.slot(:item, selected: true, icon: "check") do %>
+  <%= component.slot(:item, selected: true) do %>
     Item 1
   <% end %>
-  <%= component.slot(:item, icon: "check") do %>
+  <%= component.slot(:item) do %>
     Item 2
   <% end %>
-  <%= component.slot(:item, icon: "check") do %>
+  <%= component.slot(:item) do %>
     Item 3
   <% end %>
 <% end %>
@@ -190,9 +190,9 @@ An optional header for the select menu.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `selected` | `Boolean` | `DEFAULT_SELECTED` | Whether item is the currently active one. |
-| `icon` | `String` | `nil` | Octicon name. Set to a value like `"check"` to add an [Octicon](https://primer.style/octicons/). |
+| `icon` | `Boolean` | `DEFAULT_ICON` | Whether or not to include a check Octicon when this item is selected. |
 | `divider` | `Boolean, String, nil` | `nil` | Whether to show a divider after item. Pass `true` to show a simple line divider, or pass a String to show a divider with a title. |
-| `icon_classes` | `String` | `nil` | CSS classes to apply to the icon; only used if `icon` is not `nil`. |
+| `icon_classes` | `String` | `nil` | CSS classes to apply to the icon; only used if `icon`=`true`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `tag` (`Symbol`) - HTML element type for the item tag; defaults to `:button`. `role` (`String`) - HTML role attribute for the item tag; defaults to `"menuitem"`. |
 
 List items within the select menu.

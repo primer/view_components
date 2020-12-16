@@ -89,8 +89,8 @@ class PrimerSelectMenuComponentTest < Minitest::Test
   def test_renders_with_items
     render_inline Primer::SelectMenuComponent.new(open: true) do |component|
       component.slot(:summary) { "Click me" }
-      component.slot(:item, divider: "some divider") { "item 1" }
-      component.slot(:item, selected: true, icon: "star") { "item 2" }
+      component.slot(:item, divider: "some divider", icon: false) { "item 1" }
+      component.slot(:item, selected: true, icon: false) { "item 2" }
     end
 
     assert_selector("div.SelectMenu") do
@@ -100,8 +100,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
           assert_selector("div.SelectMenu-divider", text: /some divider/)
           assert_selector("button.SelectMenu-item[role='menuitemcheckbox'][aria-checked='true']",
             text: /item 2/) do
-              assert_selector(".SelectMenu-icon.SelectMenu-icon--check.octicon." \
-                "octicon-star")
+              refute_selector(".SelectMenu-icon.SelectMenu-icon--check.octicon.octicon-check")
             end
         end
       end
@@ -111,8 +110,8 @@ class PrimerSelectMenuComponentTest < Minitest::Test
   def test_renders_with_items_using_specified_tag
     render_inline Primer::SelectMenuComponent.new(list_role: "menu", open: true) do |component|
       component.slot(:summary) { "Click me" }
-      component.slot(:item, tag: :a, href: "#some-url") { "item 1" }
-      component.slot(:item, tag: :div) { "item 2" }
+      component.slot(:item, tag: :a, href: "#some-url", icon: false) { "item 1" }
+      component.slot(:item, tag: :div, icon: false) { "item 2" }
     end
 
     assert_selector("div.SelectMenu") do
@@ -289,7 +288,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         classes: "my-item",
         role: "menuitemcheckbox",
         mt: 1,
-        icon: "check",
+        icon: true,
         icon_classes: "my-icon",
         divider: true,
       ) { "item 1" }

@@ -33,13 +33,13 @@ module Primer
     #     <%= component.slot(:header) do %>
     #       My menu
     #     <% end %>
-    #     <%= component.slot(:item, selected: true, icon: "check") do %>
+    #     <%= component.slot(:item, selected: true) do %>
     #       Item 1
     #     <% end %>
-    #     <%= component.slot(:item, icon: "check") do %>
+    #     <%= component.slot(:item) do %>
     #       Item 2
     #     <% end %>
-    #     <%= component.slot(:item, icon: "check") do %>
+    #     <%= component.slot(:item) do %>
     #       Item 3
     #     <% end %>
     #   <% end %>
@@ -112,13 +112,13 @@ module Primer
     #     <%= component.slot(:header) do %>
     #       My menu
     #     <% end %>
-    #     <%= component.slot(:item, selected: true, icon: "check") do %>
+    #     <%= component.slot(:item, selected: true) do %>
     #       Item 1
     #     <% end %>
-    #     <%= component.slot(:item, icon: "check") do %>
+    #     <%= component.slot(:item) do %>
     #       Item 2
     #     <% end %>
-    #     <%= component.slot(:item, icon: "check") do %>
+    #     <%= component.slot(:item) do %>
     #       Item 3
     #     <% end %>
     #   <% end %>
@@ -216,23 +216,24 @@ module Primer
     # List items within the select menu.
     class Item < Primer::Slot
       DEFAULT_SELECTED = false
+      DEFAULT_ICON = true
 
-      attr_reader :icon, :divider
+      attr_reader :divider
 
       # @param selected [Boolean] Whether item is the currently active one.
-      # @param icon [String] Octicon name. Set to a value like `"check"` to add an [Octicon](https://primer.style/octicons/).
+      # @param icon [Boolean] Whether or not to include a check Octicon when this item is selected.
       # @param divider [Boolean, String, nil] Whether to show a divider after item. Pass `true` to show a simple line divider, or pass a String to show a divider with a title.
-      # @param icon_classes [String] CSS classes to apply to the icon; only used if `icon` is not `nil`.
+      # @param icon_classes [String] CSS classes to apply to the icon; only used if `icon`=`true`.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the item tag; defaults to `:button`. `role` (`String`) - HTML role attribute for the item tag; defaults to `"menuitem"`.
       def initialize(
         selected: DEFAULT_SELECTED,
-        icon: nil,
+        icon: DEFAULT_ICON,
         icon_classes: nil,
         divider: nil,
         **system_arguments
       )
         @selected = fetch_or_fallback_boolean(selected, DEFAULT_SELECTED)
-        @icon = icon
+        @icon = fetch_or_fallback_boolean(icon, DEFAULT_ICON)
         @icon_classes = icon_classes
         @divider = divider
         @system_arguments = system_arguments
@@ -260,10 +261,12 @@ module Primer
         end
       end
 
-      # Private: Only used if `icon` is non-nil.
+      # Private: Only used if `icon`=`true`.
       def icon_component
+        return unless @icon
+
         Primer::OcticonComponent.new(
-          icon: icon,
+          icon: "check",
           classes: class_names(
             "SelectMenu-icon SelectMenu-icon--check",
             @icon_classes,
