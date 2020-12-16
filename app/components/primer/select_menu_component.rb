@@ -223,18 +223,15 @@ module Primer
       # @param selected [Boolean] Whether item is the currently active one.
       # @param icon [Boolean] Whether or not to include a check Octicon when this item is selected.
       # @param divider [Boolean, String, nil] Whether to show a divider after item. Pass `true` to show a simple line divider, or pass a String to show a divider with a title.
-      # @param icon_classes [String] CSS classes to apply to the icon; only used if `icon`=`true`.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the item tag; defaults to `:button`. `role` (`String`) - HTML role attribute for the item tag; defaults to `"menuitem"`.
       def initialize(
         selected: DEFAULT_SELECTED,
         icon: DEFAULT_ICON,
-        icon_classes: nil,
         divider: nil,
         **system_arguments
       )
         @selected = fetch_or_fallback_boolean(selected, DEFAULT_SELECTED)
         @icon = fetch_or_fallback_boolean(icon, DEFAULT_ICON)
-        @icon_classes = icon_classes
         @divider = divider
         @system_arguments = system_arguments
         @system_arguments[:tag] ||= :button
@@ -267,10 +264,7 @@ module Primer
 
         Primer::OcticonComponent.new(
           icon: "check",
-          classes: class_names(
-            "SelectMenu-icon SelectMenu-icon--check",
-            @icon_classes,
-          )
+          classes: "SelectMenu-icon SelectMenu-icon--check",
         )
       end
 

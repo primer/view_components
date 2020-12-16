@@ -289,7 +289,6 @@ class PrimerSelectMenuComponentTest < Minitest::Test
         role: "menuitemcheckbox",
         mt: 1,
         icon: true,
-        icon_classes: "my-icon",
         divider: true,
       ) { "item 1" }
     end
@@ -307,7 +306,7 @@ class PrimerSelectMenuComponentTest < Minitest::Test
             assert_selector("button.SelectMenu-item.my-item.mt-1[role='menuitemcheckbox']",
               text: /item 1/) do
                 assert_selector(".SelectMenu-icon.SelectMenu-icon--check.octicon." \
-                  "octicon-check.my-icon")
+                  "octicon-check")
             end
             assert_selector("hr.SelectMenu-divider")
           end

@@ -192,7 +192,6 @@ An optional header for the select menu.
 | `selected` | `Boolean` | `DEFAULT_SELECTED` | Whether item is the currently active one. |
 | `icon` | `Boolean` | `DEFAULT_ICON` | Whether or not to include a check Octicon when this item is selected. |
 | `divider` | `Boolean, String, nil` | `nil` | Whether to show a divider after item. Pass `true` to show a simple line divider, or pass a String to show a divider with a title. |
-| `icon_classes` | `String` | `nil` | CSS classes to apply to the icon; only used if `icon`=`true`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `tag` (`Symbol`) - HTML element type for the item tag; defaults to `:button`. `role` (`String`) - HTML role attribute for the item tag; defaults to `"menuitem"`. |
 
 List items within the select menu.
