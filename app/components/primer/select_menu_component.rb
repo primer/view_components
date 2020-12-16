@@ -221,7 +221,7 @@ module Primer
 
       # @param selected [Boolean] Whether item is the currently active one.
       # @param icon [String] Octicon name. Set to a value like `"check"` to add an [Octicon](https://primer.style/octicons/).
-      # @param divider [Boolean, String, nil] Whether to show a divider after this item. Pass `true` to show a simple line divider, or pass a String to show a divider with a message.
+      # @param divider [Boolean, String, nil] Whether to show a divider after item. Pass `true` to show a simple line divider, or pass a String to show a divider with a title.
       # @param icon_classes [String] CSS classes to apply to the icon; only used if `icon` is not `nil`.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>, including: `tag` (`Symbol`) - HTML element type for the item tag; defaults to `:button`. `role` (`String`) - HTML role attribute for the item tag; defaults to `"menuitem"`.
       def initialize(
