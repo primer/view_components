@@ -161,6 +161,8 @@ Use a details-menu instead of a div for the `.SelectMenu` element.
 
 ### `header` slot
 
+An optional header for the select menu.
+
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `closeable` | `Boolean` | `DEFAULT_CLOSEABLE` | Whether to include a close button in the header for closing the whole menu. |
@@ -168,9 +170,9 @@ Use a details-menu instead of a div for the `.SelectMenu` element.
 | `title_classes` | `String` | `nil` | CSS classes to apply to the title element within the header. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `tag` (`Symbol`) - HTML element type for the header tag; defaults to `:header`. |
 
-An optional header for the select menu.
-
 ### `item` slot
+
+List items within the select menu.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
@@ -179,9 +181,10 @@ An optional header for the select menu.
 | `divider` | `Boolean, String, nil` | `nil` | Whether to show a divider after item. Pass `true` to show a simple line divider, or pass a String to show a divider with a title. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `tag` (`Symbol`) - HTML element type for the item tag; defaults to `:button`. `role` (`String`) - HTML role attribute for the item tag; defaults to `"menuitem"`. |
 
-List items within the select menu.
-
 ### `filter` slot
+
+An optional filter bar for the select menu, to allow limiting how much of its contents
+is shown at a time.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
@@ -190,13 +193,10 @@ List items within the select menu.
 | `aria_label` | `String` | `DEFAULT_PLACEHOLDER` | The aria-label attribute for the input field. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `tag` (`Symbol`) - HTML element type for the filter tag; defaults to `:form`. |
 
-An optional filter bar for the select menu, to allow limiting how much of its contents
-is shown at a time.
-
 ### `footer` slot
+
+An optional footer for the select menu.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments), including: `tag` (`Symbol`) - HTML element type for the footer tag; defaults to `:footer`. |
-
-An optional footer for the select menu.

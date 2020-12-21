@@ -28,10 +28,10 @@ Use breadcrumbs to display page hierarchy within a section of the site. All of t
 
 ### `item` slot
 
+_Note: if both `href` and `selected: true` are passed in, `href` will be ignored and the item will not be rendered as a link._
+
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `href` | `String` | `nil` | The URL to link to. |
 | `selected` | `Boolean` | `false` | Whether or not the item is selected and not rendered as a link. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-_Note: if both `href` and `selected: true` are passed in, `href` will be ignored and the item will not be rendered as a link._

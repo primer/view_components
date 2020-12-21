@@ -191,6 +191,10 @@ namespace :docs do
             f.puts
             f.puts("### `#{name}` slot")
             f.puts
+            if slot_documentation.base_docstring.present?
+              f.puts(slot_documentation.base_docstring)
+              f.puts
+            end
             f.puts("| Name | Type | Default | Description |")
             f.puts("| :- | :- | :- | :- |")
 
@@ -205,11 +209,6 @@ namespace :docs do
                 end
 
               f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{view_context.render(inline: tag.text)} |")
-            end
-
-            if slot_documentation.base_docstring.present?
-              f.puts
-              f.puts(slot_documentation.base_docstring)
             end
           end
         end
