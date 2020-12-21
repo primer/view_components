@@ -13,7 +13,6 @@ module Primer
     }.freeze
     DEFAULT_LIST_BORDER_CLASS = :all
     DEFAULT_LOADING = false
-    DEFAULT_BLANKSLATE = false
     DEFAULT_ALIGN_RIGHT = false
 
     with_slot :summary, class_name: "Summary"
@@ -86,16 +85,6 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example 160|Blankslate|Sometimes a select menu needs to communicate a "blank slate" where there's no content in the menu's list.
-    #   <%= render Primer::SelectMenuComponent.new(blankslate: true) do |component| %>
-    #     <%= component.slot(:summary, title: "Pick an item") do %>
-    #       Choose an option
-    #       <span class="dropdown-caret"></span>
-    #     <% end %>
-    #     <h4>No results</h4>
-    #     <p>There are no results to show.</p>
-    #   <% end %>
-    #
     # @example 200|details-menu example|Use a details-menu instead of a div for the `.SelectMenu` element.
     #   <%= render Primer::SelectMenuComponent.new(details_overlay: :default, position: :relative, menu_tag: :"details-menu") do |component| %>
     #     <%= component.slot(:summary) do %>
@@ -117,7 +106,6 @@ module Primer
     #
     # @param align_right [Boolean] Align the whole menu to the right or not.
     # @param loading [Boolean] Whether the content will be a loading message.
-    # @param blankslate [Boolean] Whether to style the content as a blankslate, to represent there is no content.
     # @param list_border [Symbol] What kind of border to have around the list element. One of `:all`, `:omit_top`, or `:none`.
     # @param message [String] A message shown above the contents.
     # @param list_role [String] Optional `role` attribute for the list element.
@@ -131,7 +119,6 @@ module Primer
     def initialize(
       align_right: DEFAULT_ALIGN_RIGHT,
       loading: DEFAULT_LOADING,
-      blankslate: DEFAULT_BLANKSLATE,
       list_border: DEFAULT_LIST_BORDER_CLASS,
       list_role: nil,
       message: nil,
@@ -146,7 +133,6 @@ module Primer
     )
       @align_right = fetch_or_fallback_boolean(align_right, DEFAULT_ALIGN_RIGHT)
       @loading = fetch_or_fallback_boolean(loading, DEFAULT_LOADING)
-      @blankslate = fetch_or_fallback_boolean(blankslate, DEFAULT_BLANKSLATE)
       @list_border = fetch_or_fallback(LIST_BORDER_CLASSES.keys, list_border,
         DEFAULT_LIST_BORDER_CLASS)
       @list_role = list_role
@@ -389,10 +375,6 @@ module Primer
 
     def loading?
       @loading
-    end
-
-    def blankslate?
-      @blankslate
     end
 
     def details_component

@@ -89,23 +89,6 @@ If the list is expected to get long, consider adding a filter input. On mobile d
 <% end %>
 ```
 
-### Blankslate
-
-Sometimes a select menu needs to communicate a "blank slate" where there's no content in the menu's list.
-
-<iframe style="width: 100%; border: 0px; height: 160px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><details class='details-reset '>  <summary title='Pick an item' role='button' type='button' class='btn '>    Choose an option    <span class='dropdown-caret'></span></summary>  <div class='SelectMenu '>    <div class='SelectMenu-modal '>      <div class='SelectMenu-list '>          <div class='SelectMenu-blankslate'>                <h4>No results</h4>  <p>There are no results to show.</p>          </div></div></div></div></details></body></html>"></iframe>
-
-```erb
-<%= render Primer::SelectMenuComponent.new(blankslate: true) do |component| %>
-  <%= component.slot(:summary, title: "Pick an item") do %>
-    Choose an option
-    <span class="dropdown-caret"></span>
-  <% end %>
-  <h4>No results</h4>
-  <p>There are no results to show.</p>
-<% end %>
-```
-
 ### details-menu example
 
 Use a details-menu instead of a div for the `.SelectMenu` element.
@@ -138,7 +121,6 @@ Use a details-menu instead of a div for the `.SelectMenu` element.
 | :- | :- | :- | :- |
 | `align_right` | `Boolean` | `false` | Align the whole menu to the right or not. |
 | `loading` | `Boolean` | `false` | Whether the content will be a loading message. |
-| `blankslate` | `Boolean` | `false` | Whether to style the content as a blankslate, to represent there is no content. |
 | `list_border` | `Symbol` | `:all` | What kind of border to have around the list element. One of `:all`, `:omit_top`, or `:none`. |
 | `message` | `String` | `nil` | A message shown above the contents. |
 | `list_role` | `String` | `nil` | Optional `role` attribute for the list element. |
