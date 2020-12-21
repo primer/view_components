@@ -25,7 +25,7 @@ module Primer
     attr_reader :message
 
     #
-    # @example 193|Basic example|
+    # @example 240|Basic example|
     #   <%= render Primer::SelectMenuComponent.new do |component| %>
     #     <%= component.slot(:summary) do %>
     #       Choose an option
@@ -42,9 +42,12 @@ module Primer
     #     <%= component.slot(:item) do %>
     #       Item 3
     #     <% end %>
+    #     <%= component.slot(:footer) do %>
+    #       Footer
+    #     <% end %>
     #   <% end %>
     #
-    # @example 193|Close button|Include a button to close the menu:
+    # @example 210|Close button|Include a button to close the menu:
     #   <%= render Primer::SelectMenuComponent.new do |component| %>
     #     <%= component.slot(:summary) do %>
     #       Choose an option
@@ -63,7 +66,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example 242|Filter|If the list is expected to get long, consider adding a filter input. On mobile devices it will add a fixed height and anchor the select menu to the top of the screen. This makes sure the filter input stays at the same position while typing.
+    # @example 250|Filter|If the list is expected to get long, consider adding a filter input. On mobile devices it will add a fixed height and anchor the select menu to the top of the screen. This makes sure the filter input stays at the same position while typing.
     #   <%= render Primer::SelectMenuComponent.new do |component| %>
     #     <%= component.slot(:summary) do %>
     #       Choose an option
@@ -83,7 +86,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example 155|Blankslate|Sometimes a select menu needs to communicate a "blank slate" where there's no content in the menu's list.
+    # @example 160|Blankslate|Sometimes a select menu needs to communicate a "blank slate" where there's no content in the menu's list.
     #   <%= render Primer::SelectMenuComponent.new(blankslate: true) do |component| %>
     #     <%= component.slot(:summary, title: "Pick an item") do %>
     #       Choose an option
@@ -93,19 +96,8 @@ module Primer
     #     <p>There are no results to show.</p>
     #   <% end %>
     #
-    # @example 136|Loading|When fetching large lists, consider showing a loading message.
-    #   <%= render Primer::SelectMenuComponent.new(loading: true) do |component| %>
-    #     <%= component.slot(:summary, title: "Pick an item") do %>
-    #       Choose an option
-    #       <span class="dropdown-caret"></span>
-    #     <% end %>
-    #     <%= component.slot(:footer) do %>
-    #       Loading...
-    #     <% end %>
-    #   <% end %>
-    #
-    # @example 193|details-menu example|Use a details-menu instead of a div for the `.SelectMenu` element.
-    #   <%= render Primer::SelectMenuComponent.new(details_overlay: :default, reset_details: true, position: :relative, menu_tag: :"details-menu") do |component| %>
+    # @example 200|details-menu example|Use a details-menu instead of a div for the `.SelectMenu` element.
+    #   <%= render Primer::SelectMenuComponent.new(details_overlay: :default, position: :relative, menu_tag: :"details-menu") do |component| %>
     #     <%= component.slot(:summary) do %>
     #       Choose an option
     #     <% end %>
@@ -143,7 +135,7 @@ module Primer
       list_border: DEFAULT_LIST_BORDER_CLASS,
       list_role: nil,
       message: nil,
-      reset_details: false,
+      reset_details: true,
       menu_tag: :div,
       modal_classes: nil,
       message_classes: nil,
