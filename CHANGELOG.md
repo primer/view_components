@@ -2,6 +2,10 @@
 
 ## main
 
+* Add initial implementation of SelectMenu.
+
+    *Sarah Vessels*
+
 ## 0.0.17
 
 * Ensure all components support inline styles.
