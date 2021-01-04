@@ -125,21 +125,6 @@ class PrimerSelectMenuComponentTest < Minitest::Test
     end
   end
 
-  def test_renders_with_blankslate
-    render_inline Primer::SelectMenuComponent.new(blankslate: true, open: true) do |component|
-      component.slot(:summary) { "Click me" }
-      "No results"
-    end
-
-    assert_selector("div.SelectMenu") do
-      assert_selector("div.SelectMenu-modal") do
-        assert_selector("div.SelectMenu-list") do
-          assert_selector("div.SelectMenu-blankslate", text: /No results/)
-        end
-      end
-    end
-  end
-
   def test_renders_with_message
     render_inline Primer::SelectMenuComponent.new(message: "Goodness me", open: true) do |component|
       component.slot(:summary) { "Click me" }
