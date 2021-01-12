@@ -62,7 +62,7 @@ module Primer
     # @param bottom [Boolean] If `false`, sets `bottom: 0`.
     # @param left [Boolean] If `false`, sets `left: 0`.
     #
-    # @param display [Symbol] <%= one_of([:block, :none, :inline, :inline_block, :table, :table_cell]) %>
+    # @param display [Symbol] <%= one_of([:none, :block, :flex, :inline, :inline_block, :table, :table_cell]) %>
     #
     # @param v [Symbol] Visibility. <%= one_of([:hidden, :visible]) %>
     #
