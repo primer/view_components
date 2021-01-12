@@ -2,6 +2,8 @@
 title: System arguments
 ---
 
+<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
+
 All Primer ViewComponents accept a standard set of options called system arguments, mimicking the [styled-system API](https://styled-system.com/table) used by [Primer React](https://primer.style/components/system-props).
 
 Under the hood, system arguments are [mapped](https://github.com/primer/view_components/blob/main/lib/primer/classify.rb) to Primer CSS classes, with any remaining options passed to Rails' [`content_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag).
@@ -62,7 +64,7 @@ System arguments include most HTML attributes. For example:
 | `right` | `Boolean` | If `false`, sets `right: 0`. |
 | `bottom` | `Boolean` | If `false`, sets `bottom: 0`. |
 | `left` | `Boolean` | If `false`, sets `left: 0`. |
-| `display` | `Symbol` | One of `:block`, `:none`, `:inline`, `:inline_block`, `:table`, or `:table_cell`. |
+| `display` | `Symbol` | One of `:none`, `:block`, `:flex`, `:inline`, `:inline_block`, `:table`, or `:table_cell`. |
 | `v` | `Symbol` | Visibility. One of `:hidden` and `:visible`. |
 | `hide` | `Symbol` | Hide the element at a specific breakpoint. One of `:sm`, `:md`, `:lg`, or `:xl`. |
 | `vertical_align` | `Symbol` | One of `:baseline`, `:top`, `:middle`, `:bottom`, `:text_top`, or `:text_bottom`. |

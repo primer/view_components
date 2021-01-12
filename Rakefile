@@ -181,6 +181,8 @@ namespace :docs do
           f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{view_context.render(inline: tag.text)} |")
         end
 
+        next unless component.respond_to?(:slots)
+
         component.slots.each do |name, value|
           slot_documentation = registry.get("#{component.name}::#{value[:class_name]}")
 
@@ -221,6 +223,8 @@ namespace :docs do
       f.puts("---")
       f.puts("title: System arguments")
       f.puts("---")
+      f.puts
+      f.puts("<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->")
       f.puts
       f.puts(documentation.base_docstring)
       f.puts
