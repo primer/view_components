@@ -62,7 +62,7 @@ System arguments include most HTML attributes. For example:
 | `right` | `Boolean` | If `false`, sets `right: 0`. |
 | `bottom` | `Boolean` | If `false`, sets `bottom: 0`. |
 | `left` | `Boolean` | If `false`, sets `left: 0`. |
-| `display` | `Symbol` | One of `:block`, `:none`, `:inline`, `:inline_block`, `:table`, or `:table_cell`. |
+| `display` | `Symbol` | One of `:none`, `:block`, `:flex`, `:inline`, `:inline_block`, `:table`, or `:table_cell`. |
 | `v` | `Symbol` | Visibility. One of `:hidden` and `:visible`. |
 | `hide` | `Symbol` | Hide the element at a specific breakpoint. One of `:sm`, `:md`, `:lg`, or `:xl`. |
 | `vertical_align` | `Symbol` | One of `:baseline`, `:top`, `:middle`, `:bottom`, `:text_top`, or `:text_bottom`. |
