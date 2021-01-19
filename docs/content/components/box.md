@@ -6,6 +6,16 @@ title: Box
 
 A basic wrapper component for most layout related needs.
 
+## Examples
+
+### 
+
+<iframe style="width: 100%; border: 0px; height: px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div></div></body></html>"></iframe>
+
+```erb
+<%= render(Primer::BoxComponent.new) %>
+```
+
 ## Arguments
 
 | Name | Type | Default | Description |
