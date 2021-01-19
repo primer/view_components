@@ -10,10 +10,10 @@ A basic wrapper component for most layout related needs.
 
 ### Default
 
-<iframe style="width: 100%; border: 0px; height: 40px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div></div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 20px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div>Your content here</div></body></html>"></iframe>
 
 ```erb
-<%= render(Primer::BoxComponent.new) %>
+<%= render(Primer::BoxComponent.new) { "Your content here" } %>
 ```
 
 ## Arguments
