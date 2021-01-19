@@ -6,7 +6,7 @@ module Primer
     # @example 20|Default
     #   <%= render(Primer::BoxComponent.new) { "Your content here" } %>
     #
-    # @example 20|Color and padding
+    # @example 54|Color and padding
     #   <%= render(Primer::BoxComponent.new(bg: :gray, p: 3)) { "Hello world" } %>
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
