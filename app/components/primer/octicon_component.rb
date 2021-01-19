@@ -39,7 +39,7 @@ module Primer
     end
 
     def call
-      octicon(@icon, **@system_arguments)
+      octicon(@icon, { **@system_arguments })
     end
   end
 end
