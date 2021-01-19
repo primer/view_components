@@ -22,7 +22,7 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
-        key: gems-build-rails-master-ruby-2.7.x-${{ hashFiles('**/Gemfile.lock') }}
+        key: gems-build-rails-main-ruby-2.7.x-${{ hashFiles('**/Gemfile.lock') }}
     - name: Lint with Rubocop
       run: |
         gem install bundler:1.17.3
@@ -34,10 +34,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        rails_version: [5.2.3, 6.0.0, master]
+        rails_version: [5.2.3, 6.0.0, main]
         ruby_version: [2.4.x, 2.5.x, 2.6.x, 2.7.x]
         exclude:
-          - rails_version: master
+          - rails_version: main
             ruby_version: 2.4.x
           - rails_version: 6.0.0
             ruby_version: 2.4.x
@@ -83,7 +83,7 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
-        key: gems-build-rails-master-ruby-2.7.x-${{ hashFiles('**/Gemfile.lock') }}
+        key: gems-build-rails-main-ruby-2.7.x-${{ hashFiles('**/Gemfile.lock') }}
     - name: Collate simplecov
       run: |
         gem install bundler:1.17.3
