@@ -16,6 +16,14 @@ A basic wrapper component for most layout related needs.
 <%= render(Primer::BoxComponent.new) { "Your content here" } %>
 ```
 
+### Color and padding
+
+<iframe style="width: 100%; border: 0px; height: 20px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='bg-gray p-3'>Hello world</div></body></html>"></iframe>
+
+```erb
+<%= render(Primer::BoxComponent.new(bg: :gray, p: 3)) { "Hello world" } %>
+```
+
 ## Arguments
 
 | Name | Type | Default | Description |
