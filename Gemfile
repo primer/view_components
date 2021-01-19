@@ -7,7 +7,7 @@ rails_version = "#{ENV['RAILS_VERSION'] || '6.0.3.3'}"
 
 gem "rake", "~> 12.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", rails_version == "master" ? { github: "rails/rails" } : rails_version
+gem "rails", rails_version == "main" ? { github: "rails/rails" } : rails_version
 # Use Puma as the app server
 gem "puma", "~> 4.3.6"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
