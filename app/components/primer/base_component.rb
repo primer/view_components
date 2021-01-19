@@ -113,7 +113,7 @@ module Primer
     end
 
     def call
-      content_tag(@tag, content, **@content_tag_args.merge(@result))
+      content_tag(@tag, content, { **@content_tag_args.merge(@result) })
     end
 
     private
