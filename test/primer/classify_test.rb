@@ -185,6 +185,13 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("border-black-fade", { border_color: :black_fade })
   end
 
+  def test_rounded
+    assert_generated_class("rounded-0", { rounded_0: 0})
+    assert_generated_class("rounded-1", { rounded_0: 1})
+    assert_generated_class("rounded-2", { rounded_0: 2})
+    assert_generated_class("rounded-3", { rounded_0: 3})
+  end
+
   def test_justify_content
     assert_generated_class("flex-justify-start", { justify_content: :flex_start })
     assert_generated_class("flex-justify-end", { justify_content: :flex_end })

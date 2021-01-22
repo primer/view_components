@@ -2,6 +2,12 @@
 
 ## main
 
+## 0.0.18
+
+* Add `rounded` tests
+
+    *Ash Guillaume*
+
 ## 0.0.17
 
 * Ensure all components support inline styles.
