@@ -113,6 +113,8 @@ namespace :docs do
       Primer::TimelineItemComponent
     ]
 
+    components_without_examples = []
+
     components.each do |component|
       documentation = registry.get(component.name)
 
@@ -134,6 +136,8 @@ namespace :docs do
         if initialize_method.tags(:example).any?
           f.puts("## Examples")
           f.puts
+        else
+          components_without_examples << component
         end
 
         initialize_method.tags(:example).each do |tag|
@@ -244,6 +248,10 @@ namespace :docs do
     end
 
     puts "Markdown compiled."
+
+    if components_without_examples.any?
+      puts "The following components have no examples defined: #{components_without_examples.map(&:name).join(", ")}. Consider adding an example?"
+    end
   end
 end
 
