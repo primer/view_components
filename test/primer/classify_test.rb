@@ -186,10 +186,10 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_rounded
-    assert_generated_class("rounded-0", { rounded_0: 0})
-    assert_generated_class("rounded-1", { rounded_0: 1})
-    assert_generated_class("rounded-2", { rounded_0: 2})
-    assert_generated_class("rounded-3", { rounded_0: 3})
+    assert_generated_class("rounded-0", { border_radius: 0 })
+    assert_generated_class("rounded-1", { border_radius: 1 })
+    assert_generated_class("rounded-2", { border_radius: 2 })
+    assert_generated_class("rounded-3", { border_radius: 3 })
   end
 
   def test_justify_content

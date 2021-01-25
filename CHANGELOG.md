@@ -4,7 +4,7 @@
 
 ## 0.0.18
 
-* Add `rounded` tests
+* Add `border_radius` system argument.
 
     *Ash Guillaume*
 
