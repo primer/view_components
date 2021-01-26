@@ -133,6 +133,13 @@ namespace :docs do
 
         initialize_method = documentation.meths.find(&:constructor?)
 
+        if component.status.present?
+          f.puts("## Status")
+          f.puts
+          f.puts(component.status.to_s.capitalize)
+          f.puts
+        end
+
         if initialize_method.tags(:example).any?
           f.puts("## Examples")
           f.puts

@@ -6,6 +6,10 @@ title: Box
 
 A basic wrapper component for most layout related needs.
 
+## Status
+
+Released
+
 ## Examples
 
 ### Default

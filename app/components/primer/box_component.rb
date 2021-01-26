@@ -18,5 +18,9 @@ module Primer
     def call
       render(Primer::BaseComponent.new(**@system_arguments)) { content }
     end
+
+    def self.status
+      :released
+    end
   end
 end
