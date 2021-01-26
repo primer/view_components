@@ -188,7 +188,7 @@ module Primer
                 memo[:classes] << "bg-#{val.to_s.dasherize}"
               end
             elsif key == COLOR_KEY
-              if val[-1] !~ /\D/ # 9 allocations
+              if val[-1] !~ /\D/
                 memo[:classes] << "color-#{val.to_s.dasherize}"
               else
                 memo[:classes] << "text-#{val.to_s.dasherize}"
@@ -246,8 +246,7 @@ module Primer
           end
         end
 
-        memo[:classes] = memo[:classes].join(" ")
-        memo[:styles] = memo[:styles].join(" ")
+        memo[:classes] = memo[:classes].join(" ") # 1 allocation
 
         memo
       end
