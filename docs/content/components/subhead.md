@@ -1,5 +1,6 @@
 ---
 title: Subhead
+status: Experimental
 source: https://github.com/primer/view_components/tree/main/app/components/primer/subhead_component.rb
 ---
 

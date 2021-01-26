@@ -1,5 +1,6 @@
 ---
 title: Box
+status: Stable
 source: https://github.com/primer/view_components/tree/main/app/components/primer/box_component.rb
 ---
 

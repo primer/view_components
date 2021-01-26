@@ -1,5 +1,6 @@
 ---
 title: Blankslate
+status: Experimental
 source: https://github.com/primer/view_components/tree/main/app/components/primer/blankslate_component.rb
 ---
 

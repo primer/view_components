@@ -1,5 +1,6 @@
 ---
 title: ProgressBar
+status: Experimental
 source: https://github.com/primer/view_components/tree/main/app/components/primer/progress_bar_component.rb
 ---
 

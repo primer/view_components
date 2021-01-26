@@ -1,5 +1,6 @@
 ---
 title: Avatar
+status: Experimental
 source: https://github.com/primer/view_components/tree/main/app/components/primer/avatar_component.rb
 ---
 
