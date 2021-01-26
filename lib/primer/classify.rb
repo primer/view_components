@@ -188,7 +188,7 @@ module Primer
                 memo[:classes] << "bg-#{val.to_s.dasherize}"
               end
             elsif key == COLOR_KEY
-              if val.to_s.chars.last !~ /\D/
+              if val[-1] !~ /\D/ # 9 allocations
                 memo[:classes] << "color-#{val.to_s.dasherize}"
               else
                 memo[:classes] << "text-#{val.to_s.dasherize}"
