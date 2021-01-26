@@ -156,7 +156,7 @@ module Primer
       # Example usage:
       # extract_hash({ mt: 4, py: 2 }) => "mt-4 py-2"
       def extract_hash(styles_hash)
-        memo = { classes: [], styles: [] }
+        memo = { classes: [], styles: String.new }
         styles_hash.each do |key, value|
           next unless VALID_KEYS.include?(key)
 
