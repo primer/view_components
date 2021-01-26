@@ -124,6 +124,9 @@ namespace :docs do
       File.open("docs/content/components/#{short_name.downcase}.md", "w") do |f|
         f.puts("---")
         f.puts("title: #{short_name}")
+        if component.status.present?
+          f.puts("status: #{component.status.to_s.capitalize}")
+        end
         f.puts("---")
         f.puts
         f.puts("<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->")
@@ -132,13 +135,6 @@ namespace :docs do
         f.puts
 
         initialize_method = documentation.meths.find(&:constructor?)
-
-        if component.status.present?
-          f.puts("## Status")
-          f.puts
-          f.puts(component.status.to_s.capitalize)
-          f.puts
-        end
 
         if initialize_method.tags(:example).any?
           f.puts("## Examples")
