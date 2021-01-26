@@ -79,6 +79,7 @@ module Primer
     }.freeze
     BORDER_KEYS = [:border, :border_color].freeze
     BORDER_MARGIN_KEYS = [:border_top, :border_bottom, :border_left, :border_right].freeze
+    BORDER_RADIUS_KEY = :border_radius
     TYPOGRAPHY_KEYS = [:font_size].freeze
     VALID_KEYS = (
       CONCAT_KEYS +
@@ -88,6 +89,7 @@ module Primer
       TYPOGRAPHY_KEYS +
       TEXT_KEYS +
       [
+        BORDER_RADIUS_KEY,
         COLOR_KEY,
         BG_KEY,
         DISPLAY_KEY,
@@ -199,6 +201,8 @@ module Primer
               memo[:classes] << "border-#{dasherized_val}"
             elsif BORDER_MARGIN_KEYS.include?(key)
               memo[:classes] << "#{key.to_s.dasherize}-#{val}"
+            elsif key == BORDER_RADIUS_KEY
+              memo[:classes] << "rounded-#{val}"
             elsif key == DIRECTION_KEY
               memo[:classes] << "flex#{breakpoint}-#{dasherized_val}"
             elsif key == JUSTIFY_CONTENT_KEY

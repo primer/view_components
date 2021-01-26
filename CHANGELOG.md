@@ -2,6 +2,10 @@
 
 ## main
 
+* Add `border_radius` system argument.
+
+    *Ash Guillaume*
+
 ## 0.0.17
 
 * Ensure all components support inline styles.
