@@ -2,8 +2,6 @@
 
 ## main
 
-## 0.0.18
-
 * Add `border_radius` system argument.
 
     *Ash Guillaume*
