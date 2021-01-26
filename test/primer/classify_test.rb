@@ -294,7 +294,7 @@ class PrimerClassifyTest < Minitest::Test
     values = { align_self: :center, width: :fit, p: 4, m: 1, border: :top, box_shadow: true, color: :red, visibility: :hidden}
     Primer::Classify.call(**values)
 
-    assert_allocations 41 do
+    assert_allocations 41, within: 3 do
       Primer::Classify.call(**values)
     end
   end
@@ -309,7 +309,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_nil(Primer::Classify.call(**input)[:class])
   end
 
-  def assert_allocations(count, msg = nil, &block)
+  def assert_allocations(count, within:, &block)
     GC.disable
     total_start = GC.stat[:total_allocated_objects]
     yield
@@ -318,6 +318,6 @@ class PrimerClassifyTest < Minitest::Test
 
     total = total_end - total_start
 
-    assert_equal count, total, msg
+    assert_in_delta count, total, within, "Expected between #{count - within} and #{count + within} allocations. Got #{total}"
   end
 end
