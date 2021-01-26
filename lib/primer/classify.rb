@@ -154,7 +154,8 @@ module Primer
       # Example usage:
       # extract_hash({ mt: 4, py: 2 }) => "mt-4 py-2"
       def extract_hash(styles_hash)
-        out = styles_hash.each_with_object({ classes: [], styles: [] }) do |(key, value), memo|
+        memo = { classes: [], styles: [] }
+        styles_hash.each do |key, value|
           next unless VALID_KEYS.include?(key)
 
           if value.is_a?(Array) && !RESPONSIVE_KEYS.include?(key)
@@ -245,9 +246,9 @@ module Primer
         end
 
         {
-          classes: out[:classes].join(" "),
-          styles: out[:styles].join(" ")
-        }.merge(out.except(:classes, :styles))
+          classes: memo[:classes].join(" "),
+          styles: memo[:styles].join(" ")
+        }.merge(memo.except(:classes, :styles))
       end
     end
   end
