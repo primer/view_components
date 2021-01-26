@@ -8,10 +8,12 @@ module Primer
     include OcticonsHelper
     include JoinStyleArgumentsHelper
 
+    # sourced from https://primer.style/doctocat/usage/front-matter#status
     STATUSES = {
+      deprecated: :deprecated,
+      review: :review,
       experimental: :experimental,
-      beta: :beta,
-      recommended: :recommended,
+      new: :new,
       stable: :stable,
     }
 
