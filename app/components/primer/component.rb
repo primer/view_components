@@ -16,6 +16,7 @@ module Primer
     }
 
     def self.status
+      STATUSES[:experimental]
     end
   end
 end
