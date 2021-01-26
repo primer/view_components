@@ -113,10 +113,12 @@ module Primer
       def call(classes: "", style: nil, **args)
         extracted_results = extract_hash(args)
 
-        {
-          class: [validated_class_names(classes), extracted_results[:classes]].compact.join(" ").presence,
-          style: [extracted_results[:styles], style].compact.join("").presence,
-        }.merge(extracted_results.except(:classes, :styles))
+        extracted_results[:class] = [validated_class_names(classes), extracted_results[:classes]].compact.join(" ").presence
+        extracted_results[:style] = [extracted_results[:styles], style].compact.join("").presence
+        extracted_results.delete(:classes)
+        extracted_results.delete(:styles)
+
+        extracted_results
       end
 
       private
