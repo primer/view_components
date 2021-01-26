@@ -93,6 +93,10 @@ class PrimerComponentTest < Minitest::Test
     end
   end
 
+  def test_status_has_a_default
+    assert_equal Primer::Component.status, Primer::Component::STATUSES[:experimental]
+  end
+
   def test_components_storybook_coverage
     components = Dir[Rails.root.join("../app/components/primer/**/*.rb")].map { |path| path.gsub(".rb", "").split("/").last }
     stories = Dir[Rails.root.join("../stories/primer/**/*.rb")].map { |path| path.gsub("_stories.rb", "").split("/").last }
