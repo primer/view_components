@@ -12,7 +12,7 @@ module Primer
       experimental: :experimental,
       beta: :beta,
       recommended: :recommended,
-      released: :released,
+      stable: :stable,
     }
 
     def self.status

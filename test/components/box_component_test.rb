@@ -22,6 +22,6 @@ class PrimerBoxComponentTest < Minitest::Test
   end
 
   def test_status
-    assert_equal Primer::BoxComponent.status, Primer::Component::STATUSES[:released]
+    assert_equal Primer::BoxComponent.status, Primer::Component::STATUSES[:stable]
   end
 end

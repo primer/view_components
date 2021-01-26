@@ -20,7 +20,7 @@ module Primer
     end
 
     def self.status
-      Primer::Component::STATUSES[:released]
+      Primer::Component::STATUSES[:stable]
     end
   end
 end
