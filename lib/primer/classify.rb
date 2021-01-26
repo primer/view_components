@@ -173,7 +173,6 @@ module Primer
               end
             end
 
-            dasherized_val = val.to_s.dasherize
             breakpoint = BREAKPOINTS[index]
 
             if BOOLEAN_MAPPINGS.has_key?(key)
@@ -184,28 +183,28 @@ module Primer
               if val.to_s.starts_with?("#")
                 memo[:styles] << "background-color: #{val};"
               else
-                memo[:classes] << "bg-#{dasherized_val}"
+                memo[:classes] << "bg-#{val.to_s.dasherize}"
               end
             elsif key == COLOR_KEY
               if val.to_s.chars.last !~ /\D/
-                memo[:classes] << "color-#{dasherized_val}"
+                memo[:classes] << "color-#{val.to_s.dasherize}"
               else
-                memo[:classes] << "text-#{dasherized_val}"
+                memo[:classes] << "text-#{val.to_s.dasherize}"
               end
             elsif key == DISPLAY_KEY
-              memo[:classes] << "d#{breakpoint}-#{dasherized_val}"
+              memo[:classes] << "d#{breakpoint}-#{val.to_s.dasherize}"
             elsif key == VERTICAL_ALIGN_KEY
-              memo[:classes] << "v-align-#{dasherized_val}"
+              memo[:classes] << "v-align-#{val.to_s.dasherize}"
             elsif key == WORD_BREAK_KEY
-              memo[:classes] << "wb-#{dasherized_val}"
+              memo[:classes] << "wb-#{val.to_s.dasherize}"
             elsif BORDER_KEYS.include?(key)
-              memo[:classes] << "border-#{dasherized_val}"
+              memo[:classes] << "border-#{val.to_s.dasherize}"
             elsif BORDER_MARGIN_KEYS.include?(key)
               memo[:classes] << "#{key.to_s.dasherize}-#{val}"
             elsif key == BORDER_RADIUS_KEY
               memo[:classes] << "rounded-#{val}"
             elsif key == DIRECTION_KEY
-              memo[:classes] << "flex#{breakpoint}-#{dasherized_val}"
+              memo[:classes] << "flex#{breakpoint}-#{val.to_s.dasherize}"
             elsif key == JUSTIFY_CONTENT_KEY
               formatted_value = val.to_s.gsub(/(flex\_|space\_)/, "")
               memo[:classes] << "flex#{breakpoint}-justify-#{formatted_value}"
@@ -226,21 +225,21 @@ module Primer
                 memo[key] = val
               end
             elsif TEXT_KEYS.include?(key)
-              memo[:classes] << "text-#{dasherized_val}"
+              memo[:classes] << "text-#{val.to_s.dasherize}"
             elsif TYPOGRAPHY_KEYS.include?(key)
-              memo[:classes] << "f#{dasherized_val}"
+              memo[:classes] << "f#{val.to_s.dasherize}"
             elsif MARGIN_DIRECTION_KEYS.include?(key) && val < 0
               memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-n#{val.abs}"
             elsif key == BOX_SHADOW_KEY
               if val == true
                 memo[:classes] << "box-shadow"
               else
-                memo[:classes] << "box-shadow-#{dasherized_val}"
+                memo[:classes] << "box-shadow-#{val.to_s.dasherize}"
               end
             elsif key == VISIBILITY_KEY
-              memo[:classes] << "v-#{dasherized_val}"
+              memo[:classes] << "v-#{val.to_s.dasherize}"
             else
-              memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{dasherized_val}"
+              memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{val.to_s.dasherize}"
             end
           end
         end
