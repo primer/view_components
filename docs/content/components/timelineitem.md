@@ -1,5 +1,7 @@
 ---
 title: TimelineItem
+status: Experimental
+source: https://github.com/primer/view_components/tree/main/app/components/primer/timeline_item_component.rb
 ---
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->

@@ -20,4 +20,8 @@ class PrimerBoxComponentTest < Minitest::Test
 
     assert_selector("div")
   end
+
+  def test_status
+    assert_equal Primer::BoxComponent.status, Primer::Component::STATUSES[:stable]
+  end
 end
