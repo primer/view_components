@@ -8,12 +8,12 @@ module Primer
     include OcticonsHelper
     include JoinStyleArgumentsHelper
 
-    STATUSES = [
-      :experimental,
-      :beta,
-      :recommended,
-      :released,
-    ]
+    STATUSES = {
+      experimental: :experimental,
+      beta: :beta,
+      recommended: :recommended,
+      released: :released,
+    }
 
     def self.status
     end
