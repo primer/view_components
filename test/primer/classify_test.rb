@@ -290,7 +290,7 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_limits_allocations
-    assert_allocations 0 do
+    assert_allocations 93 do
       Primer::Classify.call(align_self: :center, width: :fit, p: 4, m: 1, border: :top, box_shadow: true, color: :red)
     end
   end
