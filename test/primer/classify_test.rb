@@ -289,11 +289,29 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("bg-blue text-center float-left ml-1 ",  { classes: "bg-blue text-center float-left ml-1" })
   end
 
+  def test_limits_allocations
+    assert_allocations 0 do
+      Primer::Classify.call(align_self: :center, width: :fit, p: 4, m: 1, border: :top, box_shadow: true, color: :red)
+    end
+  end
+
+  private
+
   def assert_generated_class(generated_class_name, input)
     assert_equal(generated_class_name, Primer::Classify.call(**input)[:class])
   end
 
   def refute_generated_class(input)
     assert_nil(Primer::Classify.call(**input)[:class])
+  end
+
+  def assert_allocations(count, msg = nil, &block)
+    total_start = GC.stat[:total_allocated_objects]
+    yield
+    total_end = GC.stat[:total_allocated_objects]
+
+    total = total_end - total_start
+
+    assert_equal count, total, msg
   end
 end
