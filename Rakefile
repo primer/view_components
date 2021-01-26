@@ -124,6 +124,7 @@ namespace :docs do
       File.open("docs/content/components/#{short_name.downcase}.md", "w") do |f|
         f.puts("---")
         f.puts("title: #{short_name}")
+        f.puts("source: https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb")
         f.puts("---")
         f.puts
         f.puts("<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->")
