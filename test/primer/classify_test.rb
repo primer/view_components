@@ -294,7 +294,7 @@ class PrimerClassifyTest < Minitest::Test
     values = { align_self: :center, width: :fit, p: 4, m: 1, border: :top, box_shadow: true, color: :red, visibility: :hidden}
     Primer::Classify.call(**values)
 
-    assert_allocations 41, within: 3 do
+    assert_allocations 38, within: 0 do
       Primer::Classify.call(**values)
     end
   end

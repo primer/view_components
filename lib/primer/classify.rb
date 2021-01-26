@@ -3,7 +3,6 @@
 module Primer
   class Classify
     MARGIN_DIRECTION_KEYS = [:mt, :ml, :mb, :mr]
-    MARGIN_DIRECTION_KEY_VALUES = [:mt, :ml, :mb, :mr].map { |k| [k, k.to_s.dasherize] }.to_h.freeze
     SPACING_KEYS = ([:m, :my, :mx, :p, :py, :px, :pt, :pl, :pb, :pr] + MARGIN_DIRECTION_KEYS).freeze
     DIRECTION_KEY = :direction
     JUSTIFY_CONTENT_KEY = :justify_content
@@ -80,7 +79,10 @@ module Primer
     }.freeze
     BORDER_KEYS = [:border, :border_color].freeze
     BORDER_MARGIN_KEYS = [:border_top, :border_bottom, :border_left, :border_right].freeze
+<<<<<<< HEAD
     BORDER_RADIUS_KEY = :border_radius
+=======
+>>>>>>> c5fb29f (38 allocations)
     TYPOGRAPHY_KEYS = [:font_size].freeze
     VALID_KEYS = (
       CONCAT_KEYS +
@@ -114,10 +116,15 @@ module Primer
       def call(classes: "", style: nil, **args)
         extracted_results = extract_hash(args)
 
-        extracted_results[:class] = [validated_class_names(classes), extracted_results[:classes]].compact.join(" ").presence
-        extracted_results[:style] = [extracted_results[:styles], style].compact.join("").presence
-        extracted_results.delete(:classes)
-        extracted_results.delete(:styles)
+        extracted_results[:class] = [
+          validated_class_names(classes),
+          extracted_results.delete(:classes)
+        ].compact.join(" ").presence
+
+        extracted_results[:style] = [
+          extracted_results.delete(:styles),
+          style
+        ].compact.join("").presence
 
         extracted_results
       end
@@ -172,7 +179,7 @@ module Primer
           end
         end
 
-        memo[:classes] = memo[:classes].join(" ") # 1 allocation
+        memo[:classes] = memo[:classes].join(" ")
 
         memo
       end
@@ -198,10 +205,12 @@ module Primer
             memo[:classes] << "bg-#{val.to_s.dasherize}"
           end
         elsif key == COLOR_KEY
-          if val[-1] !~ /\D/
+          char_code = val[-1].ord
+          # Does this string end in a character that is NOT a number?
+          if char_code < 48 || char_code > 57 # 48 is the charcode for 0; 57 is the charcode for 9
             memo[:classes] << "color-#{val.to_s.dasherize}"
           else
-            memo[:classes] << "text-#{val.to_s.dasherize}" # 2 allocations
+            memo[:classes] << "text-#{val.to_s.dasherize}"
           end
         elsif key == DISPLAY_KEY
           memo[:classes] << "d#{breakpoint}-#{val.to_s.dasherize}"
@@ -210,9 +219,9 @@ module Primer
         elsif key == WORD_BREAK_KEY
           memo[:classes] << "wb-#{val.to_s.dasherize}"
         elsif BORDER_KEYS.include?(key)
-          memo[:classes] << "border-#{val.to_s.dasherize}" # 2 allocations
+          memo[:classes] << "border-#{val.to_s.dasherize}"
         elsif BORDER_MARGIN_KEYS.include?(key)
-          memo[:classes] << "#{BORDER_MARGIN_KEY_VALUES[key]}-#{val}"
+          memo[:classes] << "#{key.to_s.dasherize}-#{val}"
         elsif key == BORDER_RADIUS_KEY
           memo[:classes] << "rounded-#{val}"
         elsif key == DIRECTION_KEY
@@ -229,10 +238,10 @@ module Primer
         elsif key == FLEX_SHRINK_KEY
           memo[:classes] << "flex-shrink-#{val}"
         elsif key == ALIGN_SELF_KEY
-          memo[:classes] << "flex-self-#{val}" # 2 allocations
+          memo[:classes] << "flex-self-#{val}"
         elsif key == WIDTH_KEY || key == HEIGHT_KEY
           if val == :fit || val == :fill
-            memo[:classes] << "#{key}-#{val}" # 3 allocations
+            memo[:classes] << "#{key}-#{val}"
           else
             memo[key] = val
           end
@@ -241,7 +250,7 @@ module Primer
         elsif TYPOGRAPHY_KEYS.include?(key)
           memo[:classes] << "f#{val.to_s.dasherize}"
         elsif MARGIN_DIRECTION_KEYS.include?(key) && val < 0
-          memo[:classes] << "#{MARGIN_DIRECTION_KEY_VALUES[key]}#{breakpoint}-n#{val.abs}"
+          memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-n#{val.abs}"
         elsif key == BOX_SHADOW_KEY
           if val == true
             memo[:classes] << "box-shadow"
@@ -249,9 +258,9 @@ module Primer
             memo[:classes] << "box-shadow-#{val.to_s.dasherize}"
           end
         elsif key == VISIBILITY_KEY
-          memo[:classes] << "v-#{val.to_s.dasherize}" # 2 allocations
+          memo[:classes] << "v-#{val.to_s.dasherize}"
         else
-          memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{val.to_s.dasherize}" # 4 allocations
+          memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{val.to_s.dasherize}"
         end
       end
     end
