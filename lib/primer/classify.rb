@@ -244,10 +244,10 @@ module Primer
           end
         end
 
-        {
-          classes: memo[:classes].join(" "),
-          styles: memo[:styles].join(" ")
-        }.merge(memo.except(:classes, :styles))
+        memo[:classes] = memo[:classes].join(" ")
+        memo[:styles] = memo[:styles].join(" ")
+
+        memo
       end
     end
   end
