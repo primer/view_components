@@ -113,6 +113,9 @@ namespace :docs do
       Primer::TimelineItemComponent
     ]
 
+    all_components = Primer::Component.descendants
+    components_needing_docs = all_components - components
+
     components_without_examples = []
 
     components.each do |component|
@@ -251,7 +254,13 @@ namespace :docs do
     puts "Markdown compiled."
 
     if components_without_examples.any?
+      puts
       puts "The following components have no examples defined: #{components_without_examples.map(&:name).join(", ")}. Consider adding an example?"
+    end
+
+    if components_needing_docs.any?
+      puts
+      puts "The following components needs docs. Care to contribute them? #{components_needing_docs.map(&:name).join(", ")}"
     end
   end
 end
