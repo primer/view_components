@@ -3,6 +3,7 @@
 module Primer
   class Classify
     MARGIN_DIRECTION_KEYS = [:mt, :ml, :mb, :mr]
+    MARGIN_DIRECTION_KEY_VALUES = [:mt, :ml, :mb, :mr].map { |k| [k, k.to_s.dasherize] }.to_h.freeze
     SPACING_KEYS = ([:m, :my, :mx, :p, :py, :px, :pt, :pl, :pb, :pr] + MARGIN_DIRECTION_KEYS).freeze
     DIRECTION_KEY = :direction
     JUSTIFY_CONTENT_KEY = :justify_content
@@ -160,11 +161,9 @@ module Primer
         styles_hash.each do |key, value|
           next unless VALID_KEYS.include?(key)
 
-          if value.is_a?(Array) && !RESPONSIVE_KEYS.include?(key)
-            raise ArgumentError, "#{key} does not support responsive values"
-          end
-
           if value.is_a?(Array)
+            raise ArgumentError, "#{key} does not support responsive values" if !RESPONSIVE_KEYS.include?(key)
+
             value.each_with_index do |val, index|
               extract_value(memo, key, val, BREAKPOINTS[index])
             end
@@ -209,7 +208,6 @@ module Primer
         elsif key == VERTICAL_ALIGN_KEY
           memo[:classes] << "v-align-#{val.to_s.dasherize}"
         elsif key == WORD_BREAK_KEY
-          puts "here"
           memo[:classes] << "wb-#{val.to_s.dasherize}"
         elsif BORDER_KEYS.include?(key)
           memo[:classes] << "border-#{val.to_s.dasherize}" # 2 allocations
