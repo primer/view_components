@@ -207,7 +207,7 @@ module Primer
         elsif key == COLOR_KEY
           char_code = val[-1].ord
           # Does this string end in a character that is NOT a number?
-          if char_code < 48 || char_code > 57 # 48 is the charcode for 0; 57 is the charcode for 9
+          if char_code >= 48 && char_code <= 57 # 48 is the charcode for 0; 57 is the charcode for 9
             memo[:classes] << "color-#{val.to_s.dasherize}"
           else
             memo[:classes] << "text-#{val.to_s.dasherize}"
