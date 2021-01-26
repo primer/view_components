@@ -306,9 +306,11 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def assert_allocations(count, msg = nil, &block)
+    GC.disable
     total_start = GC.stat[:total_allocated_objects]
     yield
     total_end = GC.stat[:total_allocated_objects]
+    GC.enable
 
     total = total_end - total_start
 
