@@ -79,10 +79,7 @@ module Primer
     }.freeze
     BORDER_KEYS = [:border, :border_color].freeze
     BORDER_MARGIN_KEYS = [:border_top, :border_bottom, :border_left, :border_right].freeze
-<<<<<<< HEAD
     BORDER_RADIUS_KEY = :border_radius
-=======
->>>>>>> c5fb29f (38 allocations)
     TYPOGRAPHY_KEYS = [:font_size].freeze
     VALID_KEYS = (
       CONCAT_KEYS +
