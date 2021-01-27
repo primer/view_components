@@ -11,7 +11,7 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 ## Submitting a pull request
 
 0. [Fork](https://github.com/primer/view_components/fork) and clone the repository
-0. Configure and install the dependencies: `bundle`
+0. Configure and install the dependencies: `./script/setup`
 0. Make sure the tests pass on your machine: `bundle exec rake`
 0. Create a new branch: `git checkout -b my-branch-name`
 0. Make your change, add tests, and make sure the tests still pass
