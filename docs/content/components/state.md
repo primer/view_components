@@ -1,5 +1,7 @@
 ---
 title: State
+status: Experimental
+source: https://github.com/primer/view_components/tree/main/app/components/primer/state_component.rb
 ---
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->

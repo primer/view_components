@@ -185,6 +185,13 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("border-black-fade", { border_color: :black_fade })
   end
 
+  def test_rounded
+    assert_generated_class("rounded-0", { border_radius: 0 })
+    assert_generated_class("rounded-1", { border_radius: 1 })
+    assert_generated_class("rounded-2", { border_radius: 2 })
+    assert_generated_class("rounded-3", { border_radius: 3 })
+  end
+
   def test_justify_content
     assert_generated_class("flex-justify-start", { justify_content: :flex_start })
     assert_generated_class("flex-justify-end", { justify_content: :flex_end })
@@ -282,11 +289,57 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("bg-blue text-center float-left ml-1 ",  { classes: "bg-blue text-center float-left ml-1" })
   end
 
+  def test_limits_allocations
+    # Warm up allocations
+    values = {
+      align_items: :center,
+      align_self: :center,
+      bg: :blue,
+      border: :top,
+      box_shadow: true,
+      col: 1,
+      color: :red,
+      flex: 1,
+      float: :left,
+      font_weight: :bold,
+      font_size: 1,
+      height: :fit,
+      justify_content: :flex_start,
+      m: 1,
+      p: 4,
+      position: :relative,
+      text_align: :left,
+      visibility: :hidden,
+      width: :fit,
+      underline: true,
+      vertical_align: true,
+    }
+    Primer::Classify.call(**values)
+
+    assert_allocations 87, within: 4 do
+      Primer::Classify.call(**values)
+    end
+  end
+
+  private
+
   def assert_generated_class(generated_class_name, input)
     assert_equal(generated_class_name, Primer::Classify.call(**input)[:class])
   end
 
   def refute_generated_class(input)
     assert_nil(Primer::Classify.call(**input)[:class])
+  end
+
+  def assert_allocations(count, within:, &block)
+    GC.disable
+    total_start = GC.stat[:total_allocated_objects]
+    yield
+    total_end = GC.stat[:total_allocated_objects]
+    GC.enable
+
+    total = total_end - total_start
+
+    assert_in_delta count, total, within, "Expected between #{count - within} and #{count + within} allocations. Got #{total}"
   end
 end

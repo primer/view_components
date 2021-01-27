@@ -79,6 +79,7 @@ module Primer
     }.freeze
     BORDER_KEYS = [:border, :border_color].freeze
     BORDER_MARGIN_KEYS = [:border_top, :border_bottom, :border_left, :border_right].freeze
+    BORDER_RADIUS_KEY = :border_radius
     TYPOGRAPHY_KEYS = [:font_size].freeze
     VALID_KEYS = (
       CONCAT_KEYS +
@@ -88,6 +89,7 @@ module Primer
       TYPOGRAPHY_KEYS +
       TEXT_KEYS +
       [
+        BORDER_RADIUS_KEY,
         COLOR_KEY,
         BG_KEY,
         DISPLAY_KEY,
@@ -111,10 +113,17 @@ module Primer
       def call(classes: "", style: nil, **args)
         extracted_results = extract_hash(args)
 
-        {
-          class: [validated_class_names(classes), extracted_results[:classes]].compact.join(" ").presence,
-          style: [extracted_results[:styles], style].compact.join("").presence,
-        }.merge(extracted_results.except(:classes, :styles))
+        extracted_results[:class] = [
+          validated_class_names(classes),
+          extracted_results.delete(:classes)
+        ].compact.join(" ").presence
+
+        extracted_results[:style] = [
+          extracted_results.delete(:styles),
+          style
+        ].compact.join("").presence
+
+        extracted_results
       end
 
       private
@@ -152,98 +161,104 @@ module Primer
       # Example usage:
       # extract_hash({ mt: 4, py: 2 }) => "mt-4 py-2"
       def extract_hash(styles_hash)
-        out = styles_hash.each_with_object({ classes: [], styles: [] }) do |(key, value), memo|
+        memo = { classes: [], styles: String.new }
+        styles_hash.each do |key, value|
           next unless VALID_KEYS.include?(key)
 
-          if value.is_a?(Array) && !RESPONSIVE_KEYS.include?(key)
-            raise ArgumentError, "#{key} does not support responsive values"
-          end
+          if value.is_a?(Array)
+            raise ArgumentError, "#{key} does not support responsive values" if !RESPONSIVE_KEYS.include?(key)
 
-          Array(value).each_with_index do |val, index|
-            next if val.nil?
-
-            if SPACING_KEYS.include?(key)
-              if MARGIN_DIRECTION_KEYS.include?(key)
-                raise ArgumentError, "value of #{key} must be between -6 and 6" if (val < -6 || val > 6)
-              elsif !((key == :mx || key == :my) && val == :auto)
-                raise ArgumentError, "value of #{key} must be between 0 and 6" if (val < 0 || val > 6)
-              end
+            value.each_with_index do |val, index|
+              extract_value(memo, key, val, BREAKPOINTS[index])
             end
-
-            dasherized_val = val.to_s.dasherize
-            breakpoint = BREAKPOINTS[index]
-
-            if BOOLEAN_MAPPINGS.has_key?(key)
-              BOOLEAN_MAPPINGS[key][:mappings].map { |m| m[:css_class] if m[:value] == val }.compact.each do |css_class|
-                memo[:classes] << css_class
-              end
-            elsif key == BG_KEY
-              if val.to_s.starts_with?("#")
-                memo[:styles] << "background-color: #{val};"
-              else
-                memo[:classes] << "bg-#{dasherized_val}"
-              end
-            elsif key == COLOR_KEY
-              if val.to_s.chars.last !~ /\D/
-                memo[:classes] << "color-#{dasherized_val}"
-              else
-                memo[:classes] << "text-#{dasherized_val}"
-              end
-            elsif key == DISPLAY_KEY
-              memo[:classes] << "d#{breakpoint}-#{dasherized_val}"
-            elsif key == VERTICAL_ALIGN_KEY
-              memo[:classes] << "v-align-#{dasherized_val}"
-            elsif key == WORD_BREAK_KEY
-              memo[:classes] << "wb-#{dasherized_val}"
-            elsif BORDER_KEYS.include?(key)
-              memo[:classes] << "border-#{dasherized_val}"
-            elsif BORDER_MARGIN_KEYS.include?(key)
-              memo[:classes] << "#{key.to_s.dasherize}-#{val}"
-            elsif key == DIRECTION_KEY
-              memo[:classes] << "flex#{breakpoint}-#{dasherized_val}"
-            elsif key == JUSTIFY_CONTENT_KEY
-              formatted_value = val.to_s.gsub(/(flex\_|space\_)/, "")
-              memo[:classes] << "flex#{breakpoint}-justify-#{formatted_value}"
-            elsif key == ALIGN_ITEMS_KEY
-              memo[:classes] << "flex#{breakpoint}-items-#{val.to_s.gsub("flex_", "")}"
-            elsif key == FLEX_KEY
-              memo[:classes] << "flex-#{val}"
-            elsif key == FLEX_GROW_KEY
-              memo[:classes] << "flex-grow-#{val}"
-            elsif key == FLEX_SHRINK_KEY
-              memo[:classes] << "flex-shrink-#{val}"
-            elsif key == ALIGN_SELF_KEY
-              memo[:classes] << "flex-self-#{val}"
-            elsif key == WIDTH_KEY || key == HEIGHT_KEY
-              if val == :fit || val == :fill
-                memo[:classes] << "#{key}-#{val}"
-              else
-                memo[key] = val
-              end
-            elsif TEXT_KEYS.include?(key)
-              memo[:classes] << "text-#{dasherized_val}"
-            elsif TYPOGRAPHY_KEYS.include?(key)
-              memo[:classes] << "f#{dasherized_val}"
-            elsif MARGIN_DIRECTION_KEYS.include?(key) && val < 0
-              memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-n#{val.abs}"
-            elsif key == BOX_SHADOW_KEY
-              if val == true
-                memo[:classes] << "box-shadow"
-              else
-                memo[:classes] << "box-shadow-#{dasherized_val}"
-              end
-            elsif key == VISIBILITY_KEY
-              memo[:classes] << "v-#{dasherized_val}"
-            else
-              memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{dasherized_val}"
-            end
+          else
+            extract_value(memo, key, value, BREAKPOINTS[0])
           end
         end
 
-        {
-          classes: out[:classes].join(" "),
-          styles: out[:styles].join(" ")
-        }.merge(out.except(:classes, :styles))
+        memo[:classes] = memo[:classes].join(" ")
+
+        memo
+      end
+
+      def extract_value(memo, key, val, breakpoint)
+        return if val.nil?
+        if SPACING_KEYS.include?(key)
+          if MARGIN_DIRECTION_KEYS.include?(key)
+            raise ArgumentError, "value of #{key} must be between -6 and 6" if (val < -6 || val > 6)
+          elsif !((key == :mx || key == :my) && val == :auto)
+            raise ArgumentError, "value of #{key} must be between 0 and 6" if (val < 0 || val > 6)
+          end
+        end
+
+        if BOOLEAN_MAPPINGS.has_key?(key)
+          BOOLEAN_MAPPINGS[key][:mappings].map { |m| m[:css_class] if m[:value] == val }.compact.each do |css_class|
+            memo[:classes] << css_class
+          end
+        elsif key == BG_KEY
+          if val.to_s.starts_with?("#")
+            memo[:styles] << "background-color: #{val};"
+          else
+            memo[:classes] << "bg-#{val.to_s.dasherize}"
+          end
+        elsif key == COLOR_KEY
+          char_code = val[-1].ord
+          # Does this string end in a character that is NOT a number?
+          if char_code >= 48 && char_code <= 57 # 48 is the charcode for 0; 57 is the charcode for 9
+            memo[:classes] << "color-#{val.to_s.dasherize}"
+          else
+            memo[:classes] << "text-#{val.to_s.dasherize}"
+          end
+        elsif key == DISPLAY_KEY
+          memo[:classes] << "d#{breakpoint}-#{val.to_s.dasherize}"
+        elsif key == VERTICAL_ALIGN_KEY
+          memo[:classes] << "v-align-#{val.to_s.dasherize}"
+        elsif key == WORD_BREAK_KEY
+          memo[:classes] << "wb-#{val.to_s.dasherize}"
+        elsif BORDER_KEYS.include?(key)
+          memo[:classes] << "border-#{val.to_s.dasherize}"
+        elsif BORDER_MARGIN_KEYS.include?(key)
+          memo[:classes] << "#{key.to_s.dasherize}-#{val}"
+        elsif key == BORDER_RADIUS_KEY
+          memo[:classes] << "rounded-#{val}"
+        elsif key == DIRECTION_KEY
+          memo[:classes] << "flex#{breakpoint}-#{val.to_s.dasherize}"
+        elsif key == JUSTIFY_CONTENT_KEY
+          formatted_value = val.to_s.gsub(/(flex\_|space\_)/, "")
+          memo[:classes] << "flex#{breakpoint}-justify-#{formatted_value}"
+        elsif key == ALIGN_ITEMS_KEY
+          memo[:classes] << "flex#{breakpoint}-items-#{val.to_s.gsub("flex_", "")}"
+        elsif key == FLEX_KEY
+          memo[:classes] << "flex-#{val}"
+        elsif key == FLEX_GROW_KEY
+          memo[:classes] << "flex-grow-#{val}"
+        elsif key == FLEX_SHRINK_KEY
+          memo[:classes] << "flex-shrink-#{val}"
+        elsif key == ALIGN_SELF_KEY
+          memo[:classes] << "flex-self-#{val}"
+        elsif key == WIDTH_KEY || key == HEIGHT_KEY
+          if val == :fit || val == :fill
+            memo[:classes] << "#{key}-#{val}"
+          else
+            memo[key] = val
+          end
+        elsif TEXT_KEYS.include?(key)
+          memo[:classes] << "text-#{val.to_s.dasherize}"
+        elsif TYPOGRAPHY_KEYS.include?(key)
+          memo[:classes] << "f#{val.to_s.dasherize}"
+        elsif MARGIN_DIRECTION_KEYS.include?(key) && val < 0
+          memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-n#{val.abs}"
+        elsif key == BOX_SHADOW_KEY
+          if val == true
+            memo[:classes] << "box-shadow"
+          else
+            memo[:classes] << "box-shadow-#{val.to_s.dasherize}"
+          end
+        elsif key == VISIBILITY_KEY
+          memo[:classes] << "v-#{val.to_s.dasherize}"
+        else
+          memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{val.to_s.dasherize}"
+        end
       end
     end
   end
