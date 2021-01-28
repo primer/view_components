@@ -5,7 +5,7 @@ bundle install --path vendor/bundle
 
 # Set up demo
 pushd demo
-bundle install
+bundle install --path vendor/bundle
 yarn install
 popd
 
