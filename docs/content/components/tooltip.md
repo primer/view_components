@@ -12,7 +12,7 @@ The Tooltip component is a wrapper component that will apply a tooltip
 
 ### Default
 
-<iframe style="width: 100%; border: 0px; height: 50px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span label='Even bolder'>Bold Text</span></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 50px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span aria-label='Even bolder' class='tooltipped css-truncate-target '>Bold Text</span></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::TooltipComponent.new(label: "Even bolder")) { "Bold Text" } %>

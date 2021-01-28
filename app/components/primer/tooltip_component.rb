@@ -7,9 +7,15 @@ module Primer
     #   <%= render(Primer::TooltipComponent.new(label: "Even bolder")) { "Bold Text" } %>
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(**system_arguments)
+    def initialize(label:, **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] ||= :span
+      @system_arguments[:aria] = { label: label }
+
+      @system_arguments[:classes] = class_names(
+        @system_arguments[:classes],
+        "tooltipped",
+      )
     end
 
     def call
