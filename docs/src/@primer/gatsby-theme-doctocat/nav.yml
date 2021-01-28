@@ -44,5 +44,7 @@
       url: /components/subhead
     - title: Text
       url: /components/text
+    - title: Truncate
+      url: /components/truncate
     - title: TimelineItem
       url: /components/timelineitem

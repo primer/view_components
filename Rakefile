@@ -110,6 +110,7 @@ namespace :docs do
       Primer::SpinnerComponent,
       Primer::SubheadComponent,
       Primer::TextComponent,
+      Primer::TruncateComponent,
       Primer::TimelineItemComponent
     ]
 

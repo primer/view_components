@@ -14,7 +14,7 @@ for organizations or any other non-human avatars.
 
 ### Default
 
-<iframe style="width: 100%; border: 0px; height: 34px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' class='avatar avatar--small CircleBadge ' height='20' width='20'></img></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 34px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small CircleBadge '></img></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
