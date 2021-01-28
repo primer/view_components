@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # The Truncate component is a wrapper component that will shorten text with an ellipsis.
+  # Use TruncateComponent to shorten overflowing text with an ellipsis.
   class TruncateComponent < Primer::Component
     # @example 25|Default
     #   <div class="col-2">
@@ -15,7 +15,7 @@ module Primer
     #   <%= render(Primer::TruncateComponent.new(tag: :span, inline: true, expandable: true)) { "branch-name-that-is-really-long" } %>
     #
     # @param inline [Boolean] Whether the element is inline (or inline-block).
-    # @param expandable [Boolean] Whether the entire string should be revealed on hover. Can only be used in conjuction with inline.
+    # @param expandable [Boolean] Whether the entire string should be revealed on hover. Can only be used in conjunction with `inline`.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(inline: false, expandable: false, **system_arguments)
       @system_arguments = system_arguments
