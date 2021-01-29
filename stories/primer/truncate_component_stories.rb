@@ -7,6 +7,7 @@ class Primer::TruncateComponentStories < ViewComponent::Storybook::Stories
     controls do
       inline false
       expandable false
+      max_width 125
     end
 
     content do

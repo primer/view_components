@@ -35,4 +35,10 @@ class PrimerTruncateComponentTest < Minitest::Test
     assert_selector(".css-truncate", text: "content")
     refute_selector(".expandable")
   end
+
+  def test_renders_custom_max_width
+    render_inline(Primer::TruncateComponent.new(max_width: 100)) { "content" }
+
+    assert_selector(".css-truncate", text: "content", style: "max-width: 100px;")
+  end
 end
