@@ -44,7 +44,7 @@ module Primer
     #
     # @param label [String] the text to appear in the tooltip
     # @param direction [String] Direction of the tooltip. <%= one_of(Primer::TooltipComponent::DIRECTION_OPTIONS) %>
-    # @param alignment [String] Align tooltips to the left or right of an element, combined with a directional class to specify north or south. <%= one_of(Primer::TooltipComponent::ALIGNMENT_OPTIONS) %>
+    # @param alignment [String] Align tooltips to the left or right of an element, combined with a `direction` to specify north or south. <%= one_of(Primer::TooltipComponent::ALIGNMENT_OPTIONS) %>
     # @param multiline [Boolean] Use this when you have long content
     # @param delay [Boolean] By default the tooltips have a slight delay before appearing. Set false to override this
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
