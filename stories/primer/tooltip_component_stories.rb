@@ -6,9 +6,9 @@ class Primer::TooltipComponentStories < ViewComponent::Storybook::Stories
   story(:tooltip_default) do
     controls do
       label "Now you know more"
-      select(:direction, Primer::TooltipComponent::DIRECTION_OPTIONS, "nw")
-      select(:alignment, Primer::TooltipComponent::ALIGNMENT_OPTIONS, "right-1")
-      delay true
+      select(:direction, Primer::TooltipComponent::DIRECTION_OPTIONS, :nw)
+      select(:align, Primer::TooltipComponent::ALIGNMENT_OPTIONS, :right_1)
+      no_delay false
       multiline false
     end
 

@@ -20,14 +20,14 @@ class PrimerTooltipComponentTest < Minitest::Test
   end
 
   def test_renders_with_alignment
-    render_inline(Primer::TooltipComponent.new(label: "More", alignment: :"right-1")) { "Some" }
+    render_inline(Primer::TooltipComponent.new(label: "More", align: :right_1)) { "Some" }
 
     assert_text("Some")
     assert_selector(".tooltipped.tooltipped-align-right-1")
   end
 
   def test_renders_with_no_delay
-    render_inline(Primer::TooltipComponent.new(label: "More", delay: false)) { "Some" }
+    render_inline(Primer::TooltipComponent.new(label: "More", no_delay: true)) { "Some" }
 
     assert_text("Some")
     assert_selector(".tooltipped.tooltipped-no-delay")
