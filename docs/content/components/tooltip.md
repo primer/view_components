@@ -47,8 +47,8 @@ The Tooltip component is a wrapper component that will apply a tooltip
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `label` | `String` | N/A | the text to appear in the tooltip |
-| `direction` | `String` | `` | Specify the direction of a tooltip with north, south, east, and west directions |
-| `alignment` | `String` | `` | Align tooltips to the left or right of an element, combined with a directional class to specify north or south |
+| `direction` | `String` | `` | Direction of the tooltip. One of ``, `nw`, `n`, `ne`, `w`, `e`, `sw`, `s`, or `se`. |
+| `alignment` | `String` | `` | Align tooltips to the left or right of an element, combined with a directional class to specify north or south. One of ``, `right-1`, `left-1`, `right-2`, `left-2`, `right-1`, `left-1`, `right-2`, or `left-2`. |
 | `multiline` | `Boolean` | `` | Use this when you have long content |
 | `delay` | `Boolean` | `true` | By default the tooltips have a slight delay before appearing. Set false to override this |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
