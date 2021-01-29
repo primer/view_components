@@ -93,6 +93,6 @@ System arguments include most HTML attributes. For example:
 | `width` | `Symbol` | One of `:fit` and `:fill`. |
 | `height` | `Symbol` | One of `:fit` and `:fill`. |
 | `word_break` | `Symbol` | Whether to break words on line breaks. Can only be `:break_all`. |
+| `animation` | `Symbol` | One of `:fade_in`, `:fade_out`, `:fade_up`, `:fade_down`, `:scale_in`, `:pulse`, `:grow_x`, or `:grow`. |
 | `tag` | `Symbol` | HTML tag name to be passed to `tag.send`. |
 | `classes` | `String` | CSS class name value to be concatenated with generated Primer CSS classes. |
-| `animation` | `Symbol` | One of `:fade_in`, `:fade_out`, `:fade_up`, `:fade_down`, `:scale_in`, `:grow_x`, `:pulse` or `:grow` |

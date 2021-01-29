@@ -103,6 +103,8 @@ module Primer
     #
     # @param word_break [Symbol] Whether to break words on line breaks. Can only be `:break_all`.
     #
+    # @param animation [Symbol] <%= one_of([:fade_in, :fade_out, :fade_up, :fade_down, :scale_in, :pulse, :grow_x, :grow]) %>
+    #
     # @param tag [Symbol] HTML tag name to be passed to `tag.send`.
     # @param classes [String] CSS class name value to be concatenated with generated Primer CSS classes.
     def initialize(tag:, classes: nil, **system_arguments)
