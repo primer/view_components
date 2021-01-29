@@ -3,8 +3,8 @@
 module Primer
   # The Tooltip component is a wrapper component that will apply a tooltip
   class TooltipComponent < Primer::Component
-    DIRECTION_DEFAULT = ""
-    ALIGNMENT_DEFAULT = ""
+    DIRECTION_DEFAULT = nil
+    ALIGNMENT_DEFAULT = nil
     MULTILINE_DEFAULT = false
     DELAY_DEFAULT = true
 
