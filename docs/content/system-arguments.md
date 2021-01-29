@@ -95,3 +95,4 @@ System arguments include most HTML attributes. For example:
 | `word_break` | `Symbol` | Whether to break words on line breaks. Can only be `:break_all`. |
 | `tag` | `Symbol` | HTML tag name to be passed to `tag.send`. |
 | `classes` | `String` | CSS class name value to be concatenated with generated Primer CSS classes. |
+| `animation` | `Symbol` | One of `:fade_in`, `:fade_out`, `:fade_up`, `:fade_down`, `:scale_in`, `:grow_x`, `:pulse` or `:grow` |
