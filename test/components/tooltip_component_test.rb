@@ -13,14 +13,14 @@ class PrimerTooltipComponentTest < Minitest::Test
   end
 
   def test_renders_with_a_direction
-    render_inline(Primer::TooltipComponent.new(label: "More", direction: "nw")) { "Some" }
+    render_inline(Primer::TooltipComponent.new(label: "More", direction: :nw)) { "Some" }
 
     assert_text("Some")
     assert_selector(".tooltipped.tooltipped-nw")
   end
 
   def test_renders_with_alignment
-    render_inline(Primer::TooltipComponent.new(label: "More", alignment: "right-1")) { "Some" }
+    render_inline(Primer::TooltipComponent.new(label: "More", alignment: :"right-1")) { "Some" }
 
     assert_text("Some")
     assert_selector(".tooltipped.tooltipped-align-right-1")

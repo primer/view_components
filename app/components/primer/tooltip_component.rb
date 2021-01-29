@@ -8,27 +8,27 @@ module Primer
     MULTILINE_DEFAULT = false
     DELAY_DEFAULT = true
 
-    DIRECTION_OPTIONS = [DIRECTION_DEFAULT] + %w(
-      nw
-      n
-      ne
-      w
-      e
-      sw
-      s
-      se
-    )
+    DIRECTION_OPTIONS = [DIRECTION_DEFAULT] + [
+      :nw,
+      :n,
+      :ne,
+      :w,
+      :e,
+      :sw,
+      :s,
+      :se,
+    ]
 
-    ALIGNMENT_OPTIONS = [ALIGNMENT_DEFAULT] + %w(
-      right-1
-      left-1
-      right-2
-      left-2
-      right-1
-      left-1
-      right-2
-      left-2
-    )
+    ALIGNMENT_OPTIONS = [ALIGNMENT_DEFAULT] + [
+      :"right-1",
+      :"left-1",
+      :"right-2",
+      :"left-2",
+      :"right-1",
+      :"left-1",
+      :"right-2",
+      :"left-2",
+    ]
 
     # @example 50|Default
     #   <%= render(Primer::TooltipComponent.new(label: "Even bolder")) { "Bold Text" } %>
