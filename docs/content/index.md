@@ -30,3 +30,7 @@ In `config/application.rb`, add **after the application definition**:
 ```ruby
 require "primer/view_components/engine"
 ```
+
+## Dependencies
+
+In addition to the dependencies declared in the `gemspec`, Primer ViewComponents assumes the presence of Primer CSS.
