@@ -10,7 +10,6 @@ module Primer
 
     DIRECTION_OPTIONS = [DIRECTION_DEFAULT] + [
       :nw,
-      :n,
       :ne,
       :w,
       :e,
@@ -20,7 +19,6 @@ module Primer
     ]
 
     ALIGNMENT_OPTIONS = [ALIGNMENT_DEFAULT] + [
-      :right_1,
       :left_1,
       :right_2,
       :left_2,
