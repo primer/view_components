@@ -6,7 +6,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-The Truncate component is a wrapper component that will shorten text with an ellipsis.
+Use TruncateComponent to shorten overflowing text with an ellipsis.
 
 ## Examples
 
@@ -38,7 +38,7 @@ The Truncate component is a wrapper component that will shorten text with an ell
 
 ### Custom size
 
-<iframe style="width: 100%; border: 0px; height: 25px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span style='max-width: 100;' class='css-truncate css-truncate-target expandable '>branch-name-that-is-really-long</span></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 25px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span style='max-width: 100px;' class='css-truncate css-truncate-target expandable '>branch-name-that-is-really-long</span></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::TruncateComponent.new(tag: :span, inline: true, expandable: true, max_width: 100)) { "branch-name-that-is-really-long" } %>
@@ -49,6 +49,6 @@ The Truncate component is a wrapper component that will shorten text with an ell
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `inline` | `Boolean` | `false` | Whether the element is inline (or inline-block). |
-| `expandable` | `Boolean` | `false` | Whether the entire string should be revealed on hover. Can only be used in conjuction with inline. |
-| `max_width` | `Integer` | `nil` | Sets the max-width of the text |
+| `expandable` | `Boolean` | `false` | Whether the entire string should be revealed on hover. Can only be used in conjunction with `inline`. |
+| `max_width` | `Integer` | `nil` | Sets the max-width of the text. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
