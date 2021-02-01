@@ -20,6 +20,18 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 </div>
 ```
 
+### Wrapping another component
+
+<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n '>    <button type='button' class='btn '>Bold Button</button></span></div></body></html>"></iframe>
+
+```erb
+<div class="pt-5">
+  <%= render(Primer::TooltipComponent.new(label: "Even bolder")) do %>
+    <%= render(Primer::ButtonComponent.new) { "Bold Button" } %>
+  <% end %>
+</div>
+```
+
 ### With a direction
 
 <iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s '>Bold Text With a Direction</span></div></body></html>"></iframe>

@@ -31,6 +31,13 @@ module Primer
     #     <%= render(Primer::TooltipComponent.new(label: "Even bolder")) { "Default Bold Text" } %>
     #   </div>
     #
+    # @example 100|Wrapping another component
+    #   <div class="pt-5">
+    #     <%= render(Primer::TooltipComponent.new(label: "Even bolder")) do %>
+    #       <%= render(Primer::ButtonComponent.new) { "Bold Button" } %>
+    #     <% end %>
+    #   </div>
+    #
     # @example 100|With a direction
     #   <div class="pt-5">
     #     <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s)) { "Bold Text With a Direction" } %>
