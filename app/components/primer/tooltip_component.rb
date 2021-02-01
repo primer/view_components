@@ -10,10 +10,10 @@ module Primer
 
     ALIGN_MAPPING = {
       ALIGN_DEFAULT => "",
-      left_1: "tooltipped-align-left-1",
-      right_1: "tooltipped-align-right-1",
-      left_2: "tooltipped-align-left-2",
-      right_2: "tooltipped-align-right-2",
+      left_1 => "tooltipped-align-left-1",
+      right_1 => "tooltipped-align-right-1",
+      left_2 => "tooltipped-align-left-2",
+      right_2 => "tooltipped-align-right-2",
     }
 
     DIRECTION_OPTIONS = [DIRECTION_DEFAULT] + [
