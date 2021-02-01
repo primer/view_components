@@ -19,7 +19,7 @@ module Primer
     #
     # @param inline [Boolean] Whether the element is inline (or inline-block).
     # @param expandable [Boolean] Whether the entire string should be revealed on hover. Can only be used in conjunction with `inline`.
-    # @param max_width [Integer] Sets the max-width of the text
+    # @param max_width [Integer] Sets the max-width of the text.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(inline: false, expandable: false, max_width: nil, **system_arguments)
       @system_arguments = system_arguments
