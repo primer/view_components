@@ -13,10 +13,7 @@ module Primer
       left_1: "tooltipped-align-left-1",
       right_1: "tooltipped-align-right-1",
       left_2: "tooltipped-align-left-2",
-      right_1: "tooltipped-align-right-1",
-      left_1: "tooltipped-aligh-left-1",
       right_2: "tooltipped-align-right-2",
-      left_2: "tooltipped-align-left-2",
     }
 
     DIRECTION_OPTIONS = [DIRECTION_DEFAULT] + [
