@@ -110,7 +110,8 @@ namespace :docs do
       Primer::SpinnerComponent,
       Primer::SubheadComponent,
       Primer::TextComponent,
-      Primer::TimelineItemComponent
+      Primer::TimelineItemComponent,
+      Primer::TruncateComponent
     ]
 
     all_components = Primer::Component.descendants
