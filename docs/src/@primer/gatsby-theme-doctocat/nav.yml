@@ -24,6 +24,8 @@
       url: /components/counter
     - title: Flash
       url: /components/flash
+    - title: Heading
+      url: /components/heading
     - title: Label
       url: /components/label
     - title: Layout
@@ -48,3 +50,5 @@
       url: /components/truncate
     - title: TimelineItem
       url: /components/timelineitem
+    - title: UnderlineNav
+      url: /components/underlinenav
