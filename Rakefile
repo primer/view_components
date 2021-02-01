@@ -100,6 +100,7 @@ namespace :docs do
       Primer::ButtonComponent,
       Primer::CounterComponent,
       Primer::FlashComponent,
+      Primer::HeadingComponent,
       Primer::LabelComponent,
       Primer::LayoutComponent,
       Primer::LinkComponent,
