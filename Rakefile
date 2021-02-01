@@ -112,10 +112,11 @@ namespace :docs do
       Primer::SubheadComponent,
       Primer::TextComponent,
       Primer::TimelineItemComponent,
-      Primer::TruncateComponent
+      Primer::TruncateComponent,
+      Primer::UnderlineNavComponent
     ]
 
-    all_components = Primer::Component.descendants
+    all_components = Primer::Component.descendants - [Primer::BaseComponent]
     components_needing_docs = all_components - components
 
     components_without_examples = []
