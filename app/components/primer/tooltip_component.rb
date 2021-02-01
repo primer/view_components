@@ -26,17 +26,25 @@ module Primer
       :se,
     ]
 
-    # @example 50|Default
-    #   <%= render(Primer::TooltipComponent.new(label: "Even bolder")) { "Bold Text" } %>
+    # @example 100|Default
+    #   <div class="pt-5">
+    #     <%= render(Primer::TooltipComponent.new(label: "Even bolder")) { "Default Bold Text" } %>
+    #   </div>
     #
-    # @example 50|With a direction
-    #   <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :nw)) { "Bold Text" } %>
+    # @example 100|With a direction
+    #   <div class="pt-5">
+    #     <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s)) { "Bold Text With a Direction" } %>
+    #   </div>
     #
-    # @example 50|With an alignment
-    #   <%= render(Primer::TooltipComponent.new(label: "Even bolder", alignment: :right_1)) { "Bold Text" } %>
+    # @example 100|With an alignment
+    #   <div class="pt-5">
+    #     <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s, alignment: :right_1)) { "Bold Text With an Alignment" } %>
+    #   </div>
     #
-    # @example 50|Without a delay
-    #   <%= render(Primer::TooltipComponent.new(label: "Even bolder", delay: false)) { "Bold Text" } %>
+    # @example 100|Without a delay
+    #   <div class="pt-5">
+    #     <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s, no_delay: true)) { "Bold Text without a delay" } %>
+    #   </div>
     #
     # @param label [String] the text to appear in the tooltip
     # @param direction [String] Direction of the tooltip. <%= one_of(Primer::TooltipComponent::DIRECTION_OPTIONS) %>

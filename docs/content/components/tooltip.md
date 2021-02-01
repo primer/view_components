@@ -12,34 +12,42 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### Default
 
-<iframe style="width: 100%; border: 0px; height: 50px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span aria-label='Even bolder' class='tooltipped tooltipped-n '>Bold Text</span></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n '>Default Bold Text</span></div></body></html>"></iframe>
 
 ```erb
-<%= render(Primer::TooltipComponent.new(label: "Even bolder")) { "Bold Text" } %>
+<div class="pt-5">
+  <%= render(Primer::TooltipComponent.new(label: "Even bolder")) { "Default Bold Text" } %>
+</div>
 ```
 
 ### With a direction
 
-<iframe style="width: 100%; border: 0px; height: 50px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span aria-label='Even bolder' class='tooltipped tooltipped-nw '>Bold Text</span></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s '>Bold Text With a Direction</span></div></body></html>"></iframe>
 
 ```erb
-<%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :nw)) { "Bold Text" } %>
+<div class="pt-5">
+  <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s)) { "Bold Text With a Direction" } %>
+</div>
 ```
 
 ### With an alignment
 
-<iframe style="width: 100%; border: 0px; height: 50px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span alignment='right_1' aria-label='Even bolder' class='tooltipped tooltipped-n '>Bold Text</span></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='pt-5'>  <span alignment='right_1' aria-label='Even bolder' class='tooltipped tooltipped-s '>Bold Text With an Alignment</span></div></body></html>"></iframe>
 
 ```erb
-<%= render(Primer::TooltipComponent.new(label: "Even bolder", alignment: :right_1)) { "Bold Text" } %>
+<div class="pt-5">
+  <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s, alignment: :right_1)) { "Bold Text With an Alignment" } %>
+</div>
 ```
 
 ### Without a delay
 
-<iframe style="width: 100%; border: 0px; height: 50px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span delay='false' aria-label='Even bolder' class='tooltipped tooltipped-n '>Bold Text</span></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s tooltipped-no-delay '>Bold Text without a delay</span></div></body></html>"></iframe>
 
 ```erb
-<%= render(Primer::TooltipComponent.new(label: "Even bolder", delay: false)) { "Bold Text" } %>
+<div class="pt-5">
+  <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s, no_delay: true)) { "Bold Text without a delay" } %>
+</div>
 ```
 
 ## Arguments
