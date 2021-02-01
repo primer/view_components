@@ -112,6 +112,7 @@ namespace :docs do
       Primer::TextComponent,
       Primer::TimelineItemComponent,
       Primer::TooltipComponent,
+      Primer::TruncateComponent
     ]
 
     all_components = Primer::Component.descendants
