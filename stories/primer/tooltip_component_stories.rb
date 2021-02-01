@@ -7,7 +7,7 @@ class Primer::TooltipComponentStories < ViewComponent::Storybook::Stories
     controls do
       label "Now you know more"
       select(:direction, Primer::TooltipComponent::DIRECTION_OPTIONS, :nw)
-      select(:align, Primer::TooltipComponent::ALIGNMENT_OPTIONS, :right_1)
+      select(:align, Primer::TooltipComponent::ALIGN_MAPPING.keys, :default)
       no_delay false
       multiline false
     end
