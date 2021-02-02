@@ -19,7 +19,7 @@ class PrimerButtonGroupComponentTest < Minitest::Test
     end
   end
 
-  def test_renders_button_with_props
+  def test_renders_button_with_arguments
     render_inline(Primer::ButtonGroupComponent.new) do |c|
       c.button { "Button" }
       c.button(button_type: :primary) { "Primary" }
