@@ -22,6 +22,8 @@
       url: /components/button
     - title: Counter
       url: /components/counter
+    - title: DropdownMenu
+      url: /components/dropdownmenu
     - title: Flash
       url: /components/flash
     - title: Label
