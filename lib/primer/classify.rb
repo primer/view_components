@@ -184,7 +184,7 @@ module Primer
         if SPACING_KEYS.include?(key)
           if MARGIN_DIRECTION_KEYS.include?(key)
             raise ArgumentError, "value of #{key} must be between -6 and 6" if val < -6 || val > 6
-          elsif !(%i[mx my].include?(key) && val == :auto)
+          elsif !((key == :mx || key == :my) && val == :auto)
             raise ArgumentError, "value of #{key} must be between 0 and 6" if val.negative? || val > 6
           end
         end
@@ -234,8 +234,8 @@ module Primer
           memo[:classes] << "flex-shrink-#{val}"
         elsif key == ALIGN_SELF_KEY
           memo[:classes] << "flex-self-#{val}"
-        elsif [WIDTH_KEY, HEIGHT_KEY].include?(key)
-          if %i[fit fill].include?(val)
+        elsif key == WIDTH_KEY || key == HEIGHT_KEY
+          if val == :fit || val == :fill
             memo[:classes] << "#{key}-#{val}"
           else
             memo[key] = val

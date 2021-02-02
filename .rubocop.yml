@@ -26,3 +26,11 @@ Style/Documentation:
 Naming/MethodParameterName:
   Enabled: true
   MinNameLength: 2
+
+Rails/RefuteMethods:
+  Enabled: false
+
+Style/MultipleComparison:
+  Enabled: true
+  Exclude:
+    - lib/primer/classify.rb
