@@ -13,7 +13,7 @@ end
 YARD::Rake::YardocTask.new
 
 namespace :coverage do
-  task :report do
+  task report: :environment do
     require "simplecov"
     require "simplecov-console"
 
@@ -26,7 +26,7 @@ namespace :coverage do
 end
 
 namespace :docs do
-  task :livereload do
+  task livereload: :environment do
     require "listen"
 
     Rake::Task["docs:build"].execute
@@ -75,7 +75,7 @@ namespace :docs do
     end
   end
 
-  task :build do
+  task build: :environment do
     require File.expand_path("demo/config/environment.rb", __dir__)
     require "primer/view_components"
     require "view_component/test_helpers"
@@ -249,8 +249,6 @@ namespace :docs do
       f.puts("| :- | :- | :- |")
 
       initialize_method.tags(:param).each do |tag|
-        params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
-
         f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{view_context.render(inline: tag.text)} |")
       end
     end

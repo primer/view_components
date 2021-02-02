@@ -7,7 +7,8 @@ AllCops:
   NewCops: enable
   Exclude:
     - "test/tmp/**/*"
-    - "**/vendor/**/*"
+    - "demo/**/*"
+    - "vendor/**/*"
     - "**/node_modules/**/*"
 
 Style/ClassAndModuleChildren:
@@ -21,3 +22,7 @@ Style/Documentation:
   Exclude:
     - "stories/**/*"
     - "test/**/*"
+
+Naming/MethodParameterName:
+  Enabled: true
+  MinNameLength: 2

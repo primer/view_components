@@ -54,6 +54,7 @@ module Primer
       items.any?
     end
 
+    # :nodoc
     class Item < Primer::Slot
       attr_reader :system_arguments
 

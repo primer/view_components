@@ -57,6 +57,7 @@ module Primer
       body.present?
     end
 
+    # :nodoc
     class Heading < Primer::Slot
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
@@ -70,6 +71,7 @@ module Primer
       end
     end
 
+    # :nodoc
     class Body < Slot
       CARET_DEFAULT = :top
       CARET_MAPPINGS = {

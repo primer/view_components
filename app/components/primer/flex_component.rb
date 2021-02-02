@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # :nodoc
   class FlexComponent < Primer::Component
     JUSTIFY_CONTENT_DEFAULT = nil
     JUSTIFY_CONTENT_MAPPINGS = {

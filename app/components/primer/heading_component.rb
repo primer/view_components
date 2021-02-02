@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # :nodoc
   class HeadingComponent < Primer::Component
     def initialize(**system_arguments)
       @system_arguments = system_arguments

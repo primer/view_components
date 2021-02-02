@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # :nodoc:
   class Classify
     MARGIN_DIRECTION_KEYS = %i[mt ml mb mr].freeze
     SPACING_KEYS = (%i[m my mx p py px pt pl pb pr] + MARGIN_DIRECTION_KEYS).freeze
@@ -157,7 +158,7 @@ module Primer
       # Example usage:
       # extract_hash({ mt: 4, py: 2 }) => "mt-4 py-2"
       def extract_hash(styles_hash)
-        memo = { classes: [], styles: String.new }
+        memo = { classes: [], styles: +"" }
         styles_hash.each do |key, value|
           next unless VALID_KEYS.include?(key)
 
@@ -183,8 +184,8 @@ module Primer
         if SPACING_KEYS.include?(key)
           if MARGIN_DIRECTION_KEYS.include?(key)
             raise ArgumentError, "value of #{key} must be between -6 and 6" if val < -6 || val > 6
-          elsif !((key == :mx || key == :my) && val == :auto)
-            raise ArgumentError, "value of #{key} must be between 0 and 6" if val < 0 || val > 6
+          elsif !(%i[mx my].include?(key) && val == :auto)
+            raise ArgumentError, "value of #{key} must be between 0 and 6" if val.negative? || val > 6
           end
         end
 
@@ -233,8 +234,8 @@ module Primer
           memo[:classes] << "flex-shrink-#{val}"
         elsif key == ALIGN_SELF_KEY
           memo[:classes] << "flex-self-#{val}"
-        elsif key == WIDTH_KEY || key == HEIGHT_KEY
-          if val == :fit || val == :fill
+        elsif [WIDTH_KEY, HEIGHT_KEY].include?(key)
+          if %i[fit fill].include?(val)
             memo[:classes] << "#{key}-#{val}"
           else
             memo[key] = val
@@ -243,7 +244,7 @@ module Primer
           memo[:classes] << "text-#{val.to_s.dasherize}"
         elsif TYPOGRAPHY_KEYS.include?(key)
           memo[:classes] << "f#{val.to_s.dasherize}"
-        elsif MARGIN_DIRECTION_KEYS.include?(key) && val < 0
+        elsif MARGIN_DIRECTION_KEYS.include?(key) && val.negative?
           memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-n#{val.abs}"
         elsif key == BOX_SHADOW_KEY
           memo[:classes] << if val == true

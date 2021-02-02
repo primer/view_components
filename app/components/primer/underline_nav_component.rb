@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # :nodoc
   class UnderlineNavComponent < Primer::Component
     ALIGN_DEFAULT = :left
     ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
