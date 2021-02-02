@@ -274,6 +274,16 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-shrink-0", { flex_shrink: 0 })
   end
 
+  def test_animation
+    assert_generated_class("anim-fade-in", { animation: :fade_in })
+    assert_generated_class("anim-fade-out", { animation: :fade_out })
+    assert_generated_class("anim-fade-up", { animation: :fade_up })
+    assert_generated_class("anim-fade-down", { animation: :fade_down })
+    assert_generated_class("anim-fade-scale-in", { animation: :fade_scale_in })
+    assert_generated_class("anim-grow-x", { animation: :grow_x })
+    assert_generated_class("hover-grow", { animation: :grow })
+  end
+
   def test_raises_error_when_passing_in_a_primer_css_class_name_in_development
     ENV["RAILS_ENV"] = "development"
     exception = assert_raises ArgumentError do

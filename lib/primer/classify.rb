@@ -30,6 +30,7 @@ module Primer
     HEIGHT_KEY = :height
     BOX_SHADOW_KEY = :box_shadow
     VISIBILITY_KEY = :visibility
+    ANIMATION_KEY = :animation
 
     BOOLEAN_MAPPINGS = {
       underline: {
@@ -105,7 +106,8 @@ module Primer
         WIDTH_KEY,
         HEIGHT_KEY,
         BOX_SHADOW_KEY,
-        VISIBILITY_KEY
+        VISIBILITY_KEY,
+        ANIMATION_KEY,
       ]
     ).freeze
 
@@ -256,6 +258,12 @@ module Primer
           end
         elsif key == VISIBILITY_KEY
           memo[:classes] << "v-#{val.to_s.dasherize}"
+        elsif key == ANIMATION_KEY
+          if val == :grow
+            memo[:classes] << "hover-grow"
+          else
+            memo[:classes] << "anim-#{val.to_s.dasherize}"
+          end
         else
           memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{val.to_s.dasherize}"
         end
