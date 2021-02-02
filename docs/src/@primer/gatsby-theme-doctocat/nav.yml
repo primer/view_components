@@ -48,3 +48,5 @@
       url: /components/truncate
     - title: TimelineItem
       url: /components/timelineitem
+    - title: Tooltip
+      url: /components/tooltip

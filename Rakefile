@@ -111,6 +111,7 @@ namespace :docs do
       Primer::SubheadComponent,
       Primer::TextComponent,
       Primer::TimelineItemComponent,
+      Primer::TooltipComponent,
       Primer::TruncateComponent
     ]
 
