@@ -13,7 +13,7 @@ end
 YARD::Rake::YardocTask.new
 
 namespace :coverage do
-  task report: :environment do
+  task :report do
     require "simplecov"
     require "simplecov-console"
 
@@ -26,7 +26,7 @@ namespace :coverage do
 end
 
 namespace :docs do
-  task livereload: :environment do
+  task :livereload do
     require "listen"
 
     Rake::Task["docs:build"].execute
@@ -75,7 +75,7 @@ namespace :docs do
     end
   end
 
-  task build: :environment do
+  task :build do
     require File.expand_path("demo/config/environment.rb", __dir__)
     require "primer/view_components"
     require "view_component/test_helpers"

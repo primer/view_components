@@ -34,3 +34,6 @@ Style/MultipleComparison:
   Enabled: true
   Exclude:
     - lib/primer/classify.rb
+
+Rails/RakeEnvironment:
+  Enabled: false
