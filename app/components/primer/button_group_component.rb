@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use ButtonGroupComponent to wrap a series of buttons.
-  # They will be rounded and spaced automatically
+  # Use ButtonGroupComponent to render a series of buttons.
   class ButtonGroupComponent < Primer::Component
-
     include ViewComponent::SlotableV2
 
     renders_many :buttons, ->(classes: "", **kwargs) do
