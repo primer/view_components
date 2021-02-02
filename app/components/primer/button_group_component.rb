@@ -29,5 +29,9 @@ module Primer
         system_arguments[:classes],
       )
     end
+
+    def render?
+      buttons.any?
+    end
   end
 end
