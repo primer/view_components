@@ -99,6 +99,7 @@ namespace :docs do
       Primer::BreadcrumbComponent,
       Primer::ButtonComponent,
       Primer::CounterComponent,
+      Primer::DropdownMenuComponent,
       Primer::FlashComponent,
       Primer::LabelComponent,
       Primer::LayoutComponent,
@@ -110,7 +111,9 @@ namespace :docs do
       Primer::SpinnerComponent,
       Primer::SubheadComponent,
       Primer::TextComponent,
-      Primer::TimelineItemComponent
+      Primer::TimelineItemComponent,
+      Primer::TooltipComponent,
+      Primer::TruncateComponent
     ]
 
     all_components = Primer::Component.descendants
