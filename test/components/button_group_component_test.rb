@@ -5,10 +5,10 @@ require "test_helper"
 class PrimerButtonGroupComponentTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  def test_renders_group
+  def test_does_not_render_without_buttons
     render_inline(Primer::ButtonGroupComponent.new)
 
-    assert_selector("div.BtnGroup")
+    refute_selector("div.BtnGroup")
   end
 
   def test_renders_button_items
