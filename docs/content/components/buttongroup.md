@@ -6,8 +6,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use ButtonGroupComponent to wrap a series of buttons.
-They will be rounded and spaced automatically
+Use ButtonGroupComponent to render a series of buttons.
 
 ## Examples
 

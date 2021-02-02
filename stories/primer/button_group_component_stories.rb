@@ -9,7 +9,6 @@ class Primer::ButtonGroupComponentStories < ViewComponent::Storybook::Stories
       c.button(button_type: :primary) { "Primary" }
       c.button(button_type: :danger) { "Danger" }
       c.button(button_type: :outline) { "Outline" }
-      c.button(classes: "my-class") { "Custom class" }
     end
   end
 end
