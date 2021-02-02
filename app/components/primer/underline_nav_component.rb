@@ -3,7 +3,7 @@
 module Primer
   class UnderlineNavComponent < Primer::Component
     ALIGN_DEFAULT = :left
-    ALIGN_OPTIONS = [ALIGN_DEFAULT, :right]
+    ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
 
     with_content_areas :body, :actions
 

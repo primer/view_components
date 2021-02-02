@@ -77,9 +77,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
-    config.logger = Logger.new(STDOUT)
-  end
+  config.logger = Logger.new(STDOUT) if ENV["RAILS_LOG_TO_STDOUT"].present?
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector

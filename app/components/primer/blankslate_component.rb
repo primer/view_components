@@ -94,7 +94,7 @@ module Primer
       link_text: "",
       link_url: "",
 
-      #variations
+      # variations
       narrow: false,
       large: false,
       spacious: false,
@@ -108,7 +108,7 @@ module Primer
         "blankslate",
         "blankslate-narrow": narrow,
         "blankslate-large": large,
-        "blankslate-spacious": spacious,
+        "blankslate-spacious": spacious
       )
 
       @title_tag = title_tag

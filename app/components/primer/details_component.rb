@@ -13,7 +13,7 @@ module Primer
     OVERLAY_MAPPINGS = {
       NO_OVERLAY => "",
       :default => "details-overlay",
-      :dark => "details-overlay details-overlay-dark",
+      :dark => "details-overlay details-overlay-dark"
     }.freeze
 
     with_slot :body, class_name: "Body"

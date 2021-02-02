@@ -9,7 +9,7 @@ module Primer
     # fallback behavior works in production.
     # The helper enables us to easily test
     # this production-only behavior.
-    def without_fetch_or_fallback_raises(&block)
+    def without_fetch_or_fallback_raises
       FetchOrFallbackHelper.fallback_raises = false
       yield
     ensure

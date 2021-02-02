@@ -209,23 +209,23 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_word_break
-    assert_generated_class("wb-break-all",   { word_break: :break_all })
+    assert_generated_class("wb-break-all", { word_break: :break_all })
   end
 
   def test_responsive
-    assert_generated_class("p-4",  { p: [4] })
-    assert_generated_class("p-4 p-sm-3",  { p: [4, 3] })
-    assert_generated_class("float-left float-md-right",  { float: [:left, nil, :right] })
-    assert_generated_class("d-flex d-sm-block",  { display: [:flex, :block] })
+    assert_generated_class("p-4", { p: [4] })
+    assert_generated_class("p-4 p-sm-3", { p: [4, 3] })
+    assert_generated_class("float-left float-md-right", { float: [:left, nil, :right] })
+    assert_generated_class("d-flex d-sm-block",  { display: %i[flex block] })
     assert_generated_class("d-flex d-md-block",  { display: [:flex, nil, :block] })
-    assert_generated_class("d-lg-block",  { display: [nil, nil, nil, :block] })
-    assert_generated_class("flex-row flex-sm-column",  { direction: [:row, :column] })
-    assert_generated_class("col-1 col-sm-2",  { col: [1, 2] })
-    assert_generated_class("col-12 col-lg-9",  { col: [12, nil, nil, 9] })
-    assert_generated_class("p-4 p-sm-3 p-md-3 p-lg-3 p-xl-2",  { p: [4, 3, 3, 3, 2] })
+    assert_generated_class("d-lg-block", { display: [nil, nil, nil, :block] })
+    assert_generated_class("flex-row flex-sm-column", { direction: %i[row column] })
+    assert_generated_class("col-1 col-sm-2", { col: [1, 2] })
+    assert_generated_class("col-12 col-lg-9", { col: [12, nil, nil, 9] })
+    assert_generated_class("p-4 p-sm-3 p-md-3 p-lg-3 p-xl-2", { p: [4, 3, 3, 3, 2] })
 
     assert_raises ArgumentError do
-      Primer::Classify.call(border: [:top, :left])
+      Primer::Classify.call(border: %i[top left])
     end
   end
 
@@ -296,7 +296,7 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_does_not_raise_error_when_passing_in_a_primer_css_class_otherwise
-    assert_generated_class("bg-blue text-center float-left ml-1 ",  { classes: "bg-blue text-center float-left ml-1" })
+    assert_generated_class("bg-blue text-center float-left ml-1 ", { classes: "bg-blue text-center float-left ml-1" })
   end
 
   def test_limits_allocations
@@ -322,7 +322,7 @@ class PrimerClassifyTest < Minitest::Test
       visibility: :hidden,
       width: :fit,
       underline: true,
-      vertical_align: true,
+      vertical_align: true
     }
     Primer::Classify.call(**values)
 
@@ -341,7 +341,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_nil(Primer::Classify.call(**input)[:class])
   end
 
-  def assert_allocations(count, within:, &block)
+  def assert_allocations(count, within:)
     GC.disable
     total_start = GC.stat[:total_allocated_objects]
     yield
