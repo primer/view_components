@@ -13,13 +13,13 @@ module Primer
     end
 
     # @example 50|Default
-    #   <%= render(Primer::ButtonGroupComponent.new) do |component| %>
+    #   <%= render(Primer::ButtonGroupComponent.new) do |component|
     #     component.button { "Default" }
     #     component.button(button_type: :primary) { "Primary" }
     #     component.button(button_type: :danger) { "Danger" }
     #     component.button(button_type: :outline) { "Outline" }
     #     component.button(classes: "my-class") { "Custom class" }
-    #   <% end %>
+    #   end %>
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)
