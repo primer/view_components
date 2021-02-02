@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Details classes are created to enhance the native behaviors of the details element
+  # Use DetailsComponent to reveal content after clicking a button.
   class DetailsComponent < Primer::Component
     include ViewComponent::Slotable
 
