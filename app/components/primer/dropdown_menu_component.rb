@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module Primer
+  # DropdownMenus are lightweight context menus for housing navigation and actions.
+  # They're great for instances where you don't need the full power (and code)
+  # of the select menu.
   class DropdownMenuComponent < Primer::Component
     SCHEME_DEFAULT = :default
     SCHEME_MAPPINGS = {
@@ -11,6 +14,29 @@ module Primer
     DIRECTION_DEFAULT = :se
     DIRECTION_OPTIONS = [DIRECTION_DEFAULT, :sw, :w, :e, :ne, :s]
 
+    # @example 200|With a header
+    #   <div style="margin-bottom: 150px">
+    #     <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
+    #       <% c.slot(:summary) do %>
+    #         Dropdown
+    #       <% end %>
+    #
+    #       <% c.slot(:body) do %>
+    #         <%= render(Primer::DropdownMenuComponent.new(header: "Options")) do %>
+    #           <ul>
+    #             <li><a class="dropdown-item" href="#url">Dropdown item</a></li>
+    #             <li><a class="dropdown-item" href="#url">Dropdown item</a></li>
+    #             <li><a class="dropdown-item" href="#url">Dropdown item</a></li>
+    #           </ul>
+    #         <% end %>
+    #       <% end %>
+    #     <% end %>
+    #   </div>
+    #
+    # @param direction [Symbol] <%= one_of(Primer::DropdownMenuComponent::DIRECTION_OPTIONS) %>
+    # @param scheme [Symbol] Pass :dark for dark mode theming
+    # @param header [String] Optional string to display as the header
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(direction: DIRECTION_DEFAULT, scheme: SCHEME_DEFAULT, header: nil, **system_arguments)
       @header, @direction, @system_arguments = header, direction, system_arguments
 

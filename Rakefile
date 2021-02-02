@@ -99,6 +99,7 @@ namespace :docs do
       Primer::BreadcrumbComponent,
       Primer::ButtonComponent,
       Primer::CounterComponent,
+      Primer::DropdownMenuComponent,
       Primer::FlashComponent,
       Primer::LabelComponent,
       Primer::LayoutComponent,
