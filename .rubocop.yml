@@ -1,10 +1,23 @@
 inherit_gem:
   rubocop-github:
-    - config/default.yml
-    - config/rails.yml
+    - config/default_edge.yml
+    - config/rails_edge.yml
 
 AllCops:
+  NewCops: enable
   Exclude:
     - "test/tmp/**/*"
-    - "vendor/**/*"
+    - "**/vendor/**/*"
     - "**/node_modules/**/*"
+
+Style/ClassAndModuleChildren:
+  Enabled: true
+  Exclude:
+    - "stories/**/*"
+    - "test/**/*"
+
+Style/Documentation:
+  Enabled: true
+  Exclude:
+    - "stories/**/*"
+    - "test/**/*"
