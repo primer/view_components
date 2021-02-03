@@ -25,16 +25,16 @@ module Primer
     DEFAULT_TYPE = :button
     TYPE_OPTIONS = [DEFAULT_TYPE, :submit].freeze
 
-    # @example 50|Button types
-    #   <%= render(Primer::ButtonMarketingComponent.new) { "Default" } %>
-    #   <%= render(Primer::ButtonMarketingComponent.new(button_type: :primary)) { "Primary" } %>
+    # @example 125|Button types
+    #   <%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>
+    #   <%= render(Primer::ButtonMarketingComponent.new(button_type: :primary, mr: 2)) { "Primary" } %>
     #   <%= render(Primer::ButtonMarketingComponent.new(button_type: :outline)) { "Outline" } %>
     #   <div class="bg-gray-dark">
     #     <%= render(Primer::ButtonMarketingComponent.new(button_type: :transparent)) { "Transparent" } %>
     #   </div>
     #
-    # @example 50|Sizes
-    #   <%= render(Primer::ButtonMarketingComponent.new) { "Default" } %>
+    # @example 75|Sizes
+    #   <%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>
     #   <%= render(Primer::ButtonMarketingComponent.new(variant: :large)) { "Large" } %>
     #
     # @param button_type [Symbol] <%= one_of(Primer::ButtonMarketingComponent::BUTTON_TYPE_OPTIONS) %>

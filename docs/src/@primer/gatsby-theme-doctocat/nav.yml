@@ -20,6 +20,8 @@
       url: /components/breadcrumb
     - title: Button
       url: /components/button
+    - title: ButtonMarketing
+      url: /components/buttonmarketing
     - title: Counter
       url: /components/counter
     - title: DropdownMenu
