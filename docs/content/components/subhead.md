@@ -77,14 +77,20 @@ Use the Subhead component for page headings.
 | `danger` | `Boolean` | `false` | Whether to style the heading as dangerous. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
+:nodoc
+
 ### `actions` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
+:nodoc
+
 ### `description` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+:nodoc

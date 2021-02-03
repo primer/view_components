@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # The Heading component is a wrapper component that will create a heading element
+  # Use the Heading component to wrap a component that will create a heading element
   class HeadingComponent < Primer::Component
     # @example 70|Default
     #   <%= render(Primer::HeadingComponent.new) { "H1 Text" } %>

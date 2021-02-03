@@ -46,5 +46,5 @@ of the page.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `align` | `Symbol` | `:left` | One of `:left` and `:right`. |
+| `align` | `Symbol` | `:left` | One of `:left` and `:right`. - Defaults to left |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

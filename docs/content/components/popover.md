@@ -69,6 +69,8 @@ By default, the popover renders with absolute positioning, meaning it should usu
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
+:nodoc
+
 ### `body` slot
 
 | Name | Type | Default | Description |
@@ -76,3 +78,5 @@ By default, the popover renders with absolute positioning, meaning it should usu
 | `caret` | `Symbol` | `CARET_DEFAULT` | One of `:top`, `:bottom`, `:bottom_right`, `:bottom_left`, `:left`, `:left_bottom`, `:left_top`, `:right`, `:right_bottom`, `:right_top`, `:top_left`, or `:top_right`. |
 | `large` | `Boolean` | `false` | Whether to use the large version of the component. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+:nodoc
