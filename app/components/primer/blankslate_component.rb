@@ -94,7 +94,7 @@ module Primer
       link_text: "",
       link_url: "",
 
-      #variations
+      # variations
       narrow: false,
       large: false,
       spacious: false,
@@ -108,7 +108,7 @@ module Primer
         "blankslate",
         "blankslate-narrow": narrow,
         "blankslate-large": large,
-        "blankslate-spacious": spacious,
+        "blankslate-spacious": spacious
       )
 
       @title_tag = title_tag
@@ -125,6 +125,7 @@ module Primer
       @link_url = link_url
     end
 
+    # :nodoc
     class Spinner < Primer::Slot
       # @param size [Symbol] <%= one_of(Primer::SpinnerComponent::SIZE_MAPPINGS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

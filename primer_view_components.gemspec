@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-lib = File.expand_path("../lib", __FILE__)
+lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "primer/view_components/version"
 
@@ -27,14 +27,15 @@ Gem::Specification.new do |spec|
   spec.files         = Dir["CHANGELOG.md", "LICENSE.txt", "README.md", "lib/**/*", "app/**/*"]
   spec.require_paths = ["lib"]
 
+  spec.add_runtime_dependency     "octicons_helper", [">= 9.0.0", "< 12.0.0"]
   spec.add_runtime_dependency     "rails", [">= 5.0.0", "< 7.0"]
   spec.add_runtime_dependency     "view_component", [">= 2.0.0", "< 3.0"]
-  spec.add_runtime_dependency     "octicons_helper", [">= 9.0.0", "< 12.0.0"]
   spec.add_development_dependency "listen", "~> 3.0"
   spec.add_development_dependency "minitest", "= 5.6.0"
   spec.add_development_dependency "pry"
-  spec.add_development_dependency "rubocop", "= 0.74"
-  spec.add_development_dependency "rubocop-github", "~> 0.13.0"
+  spec.add_development_dependency "rubocop", "= 0.82"
+  spec.add_development_dependency "rubocop-github", "~> 0.16.0"
+  spec.add_development_dependency "rubocop-performance", "~> 1.7"
   spec.add_development_dependency "simplecov", "~> 0.18.0"
   spec.add_development_dependency "simplecov-console", "~> 0.7.2"
   spec.add_development_dependency "yard", "~> 0.9.25"

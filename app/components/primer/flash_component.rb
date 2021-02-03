@@ -57,6 +57,7 @@ module Primer
       @system_arguments[:mb] ||= spacious ? 4 : nil
     end
 
+    # :nodoc
     class Actions < Primer::Slot
       attr_reader :system_arguments
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # :nodoc
   class FlexComponent < Primer::Component
     JUSTIFY_CONTENT_DEFAULT = nil
     JUSTIFY_CONTENT_MAPPINGS = {
@@ -8,9 +9,9 @@ module Primer
       flex_end: "flex-justify-end",
       center: "flex-justify-center",
       space_between: "flex-justify-between",
-      space_around: "flex-justify-around",
-    }
-    JUSTIFY_CONTENT_OPTIONS = [JUSTIFY_CONTENT_DEFAULT, *JUSTIFY_CONTENT_MAPPINGS.keys]
+      space_around: "flex-justify-around"
+    }.freeze
+    JUSTIFY_CONTENT_OPTIONS = [JUSTIFY_CONTENT_DEFAULT, *JUSTIFY_CONTENT_MAPPINGS.keys].freeze
 
     ALIGN_ITEMS_DEFAULT = nil
     ALIGN_ITEMS_MAPPINGS = {
@@ -18,18 +19,18 @@ module Primer
       end: "flex-items-end",
       center: "flex-items-center",
       baseline: "flex-items-baseline",
-      stretch: "flex-items-stretch",
-    }
-    ALIGN_ITEMS_OPTIONS = [ALIGN_ITEMS_DEFAULT, *ALIGN_ITEMS_MAPPINGS.keys]
+      stretch: "flex-items-stretch"
+    }.freeze
+    ALIGN_ITEMS_OPTIONS = [ALIGN_ITEMS_DEFAULT, *ALIGN_ITEMS_MAPPINGS.keys].freeze
 
     INLINE_DEFAULT = false
-    INLINE_OPTIONS = [INLINE_DEFAULT, true]
+    INLINE_OPTIONS = [INLINE_DEFAULT, true].freeze
 
     FLEX_WRAP_DEFAULT = nil
-    FLEX_WRAP_OPTIONS = [FLEX_WRAP_DEFAULT, true, false]
+    FLEX_WRAP_OPTIONS = [FLEX_WRAP_DEFAULT, true, false].freeze
 
     DEFAULT_DIRECTION = nil
-    ALLOWED_DIRECTIONS = [DEFAULT_DIRECTION, :column, :column_reverse, :row, :row_reverse]
+    ALLOWED_DIRECTIONS = [DEFAULT_DIRECTION, :column, :column_reverse, :row, :row_reverse].freeze
 
     def initialize(
       justify_content: JUSTIFY_CONTENT_DEFAULT,

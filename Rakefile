@@ -76,7 +76,7 @@ namespace :docs do
   end
 
   task :build do
-    require File.expand_path("../demo/config/environment.rb", __FILE__)
+    require File.expand_path("demo/config/environment.rb", __dir__)
     require "primer/view_components"
     require "view_component/test_helpers"
     include ViewComponent::TestHelpers
@@ -161,10 +161,10 @@ namespace :docs do
           f.puts
           html = view_context.render(inline: tag.text)
 
-          f.puts("<iframe style=\"width: 100%; border: 0px; height: #{iframe_height}px;\" srcdoc=\"<html><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.gsub("\"", "\'").gsub("\n", "")}</body></html>\"></iframe>")
+          f.puts("<iframe style=\"width: 100%; border: 0px; height: #{iframe_height}px;\" srcdoc=\"<html><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.tr('"', "\'").delete("\n")}</body></html>\"></iframe>")
           f.puts
           f.puts("```erb")
-          f.puts("#{tag.text}")
+          f.puts(tag.text.to_s)
           f.puts("```")
           f.puts
         end
@@ -190,7 +190,7 @@ namespace :docs do
               "N/A"
             end
 
-          f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{view_context.render(inline: tag.text)} |")
+          f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
         end
 
         next unless component.respond_to?(:slots)
@@ -198,32 +198,32 @@ namespace :docs do
         component.slots.each do |name, value|
           slot_documentation = registry.get("#{component.name}::#{value[:class_name]}")
 
-          if slot_documentation
-            slot_initialize_method = slot_documentation.meths.find(&:constructor?)
+          next unless slot_documentation
 
+          slot_initialize_method = slot_documentation.meths.find(&:constructor?)
+
+          f.puts
+          f.puts("### `#{name}` slot")
+          f.puts
+          f.puts("| Name | Type | Default | Description |")
+          f.puts("| :- | :- | :- | :- |")
+
+          slot_initialize_method.tags(:param).each do |tag|
+            params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
+
+            default =
+              if params && params[1]
+                "`#{params[1]}`"
+              else
+                "N/A"
+              end
+
+            f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
+          end
+
+          if slot_documentation.base_docstring.present?
             f.puts
-            f.puts("### `#{name}` slot")
-            f.puts
-            f.puts("| Name | Type | Default | Description |")
-            f.puts("| :- | :- | :- | :- |")
-
-            slot_initialize_method.tags(:param).each do |tag|
-              params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
-
-              default =
-                if params && params[1]
-                  "`#{params[1]}`"
-                else
-                  "N/A"
-                end
-
-              f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{view_context.render(inline: tag.text)} |")
-            end
-
-            if slot_documentation.base_docstring.present?
-              f.puts
-              f.puts(slot_documentation.base_docstring)
-            end
+            f.puts(slot_documentation.base_docstring)
           end
         end
       end
@@ -249,9 +249,7 @@ namespace :docs do
       f.puts("| :- | :- | :- |")
 
       initialize_method.tags(:param).each do |tag|
-        params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
-
-        f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{view_context.render(inline: tag.text)} |")
+        f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{view_context.render(inline: tag.text)} |")
       end
     end
 
@@ -259,12 +257,12 @@ namespace :docs do
 
     if components_without_examples.any?
       puts
-      puts "The following components have no examples defined: #{components_without_examples.map(&:name).join(", ")}. Consider adding an example?"
+      puts "The following components have no examples defined: #{components_without_examples.map(&:name).join(', ')}. Consider adding an example?"
     end
 
     if components_needing_docs.any?
       puts
-      puts "The following components needs docs. Care to contribute them? #{components_needing_docs.map(&:name).join(", ")}"
+      puts "The following components needs docs. Care to contribute them? #{components_needing_docs.map(&:name).join(', ')}"
     end
   end
 end

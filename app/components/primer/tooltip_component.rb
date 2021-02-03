@@ -13,17 +13,17 @@ module Primer
       :left_1 => "tooltipped-align-left-1",
       :right_1 => "tooltipped-align-right-1",
       :left_2 => "tooltipped-align-left-2",
-      :right_2 => "tooltipped-align-right-2",
-    }
+      :right_2 => "tooltipped-align-right-2"
+    }.freeze
 
-    DIRECTION_OPTIONS = [DIRECTION_DEFAULT] + [
-      :nw,
-      :ne,
-      :w,
-      :e,
-      :sw,
-      :s,
-      :se,
+    DIRECTION_OPTIONS = [DIRECTION_DEFAULT] + %i[
+      nw
+      ne
+      w
+      e
+      sw
+      s
+      se
     ]
 
     # @example 100|Default
@@ -77,7 +77,7 @@ module Primer
         "tooltipped-#{fetch_or_fallback(DIRECTION_OPTIONS, direction, DIRECTION_DEFAULT)}",
         ALIGN_MAPPING[fetch_or_fallback(ALIGN_MAPPING.keys, align, ALIGN_DEFAULT)],
         "tooltipped-no-delay" => fetch_or_fallback_boolean(no_delay, DELAY_DEFAULT),
-        "tooltipped-multiline" => fetch_or_fallback_boolean(multiline, MULTILINE_DEFAULT),
+        "tooltipped-multiline" => fetch_or_fallback_boolean(multiline, MULTILINE_DEFAULT)
       )
     end
 

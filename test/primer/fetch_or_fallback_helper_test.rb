@@ -16,7 +16,6 @@ class Primer::FetchOrFallbackHelperTest < Minitest::Test
     assert_equal(fetch_or_fallback([1, 2, 3], false, 2), 2)
     assert_equal(fetch_or_fallback([1, 2, 3], true, 2), 2)
     assert_nil(fetch_or_fallback([1, 2, 3], true))
-
   ensure
     Primer::FetchOrFallbackHelper.fallback_raises = true
   end

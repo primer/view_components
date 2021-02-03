@@ -10,7 +10,7 @@ class Primer::DropdownMenuComponentStories < ViewComponent::Storybook::Stories
       header "Header"
     end
 
-    content do |component|
+    content do |_component|
       "<ul><li><a class='dropdown-item'>Turkey sandwich</a></li></ul>".html_safe
     end
   end
