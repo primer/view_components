@@ -28,6 +28,8 @@
       url: /components/dropdownmenu
     - title: Flash
       url: /components/flash
+    - title: FlexItem
+      url: /components/flexitem
     - title: Heading
       url: /components/heading
     - title: Label
