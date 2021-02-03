@@ -101,6 +101,7 @@ namespace :docs do
       Primer::CounterComponent,
       Primer::DropdownMenuComponent,
       Primer::FlashComponent,
+      Primer::HeadingComponent,
       Primer::LabelComponent,
       Primer::LayoutComponent,
       Primer::LinkComponent,
@@ -113,10 +114,11 @@ namespace :docs do
       Primer::TextComponent,
       Primer::TimelineItemComponent,
       Primer::TooltipComponent,
-      Primer::TruncateComponent
+      Primer::TruncateComponent,
+      Primer::UnderlineNavComponent
     ]
 
-    all_components = Primer::Component.descendants
+    all_components = Primer::Component.descendants - [Primer::BaseComponent]
     components_needing_docs = all_components - components
 
     components_without_examples = []
