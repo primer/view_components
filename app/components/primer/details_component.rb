@@ -15,39 +15,6 @@ module Primer
     with_slot :body, class_name: "Body"
     with_slot :summary, class_name: "Summary"
 
-    # @example 100|Default
-    #   <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
-    #     <% c.slot(:summary) do %>
-    #       Click me
-    #     <% end %>
-    #
-    #     <% c.slot(:body) do %>
-    #       Body
-    #     <% end %>
-    #   <% end %>
-    #
-    # @example 100|Custom button
-    #   <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
-    #     <% c.slot(:summary, variant: :small, button_type: :primary) do %>
-    #       Click me
-    #     <% end %>
-    #
-    #     <% c.slot(:body) do %>
-    #       Body
-    #     <% end %>
-    #   <% end %>
-    #
-    # @example 100|Without button
-    #   <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
-    #     <% c.slot(:summary, button: false) do %>
-    #       Click me
-    #     <% end %>
-    #
-    #     <% c.slot(:body) do %>
-    #       Body
-    #     <% end %>
-    #   <% end %>
-    #
     # @param overlay [Symbol] Dictates the type of overlay to render with. <%= one_of(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys) %>
     # @param reset [Boolean] Defatuls to false. If set to true, it will remove the default caret and remove style from the summary element
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
