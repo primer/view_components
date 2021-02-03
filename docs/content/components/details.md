@@ -22,7 +22,7 @@ Use DetailsComponent to reveal content after clicking a button.
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-:nodoc
+Use the Body slot as the main content to be shown when triggered by the Summary
 
 ### `summary` slot
 
@@ -31,4 +31,4 @@ Use DetailsComponent to reveal content after clicking a button.
 | `button` | `Boolean` | `true` | If there should be a button or not |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-:nodoc
+Use the Summary slot  as the trigger button
