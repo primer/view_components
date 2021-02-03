@@ -175,7 +175,7 @@ GEM
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    view_component (2.18.0)
+    view_component (2.25.1)
       activesupport (>= 5.0.0, < 7.0)
     view_component_storybook (0.6.0)
       view_component (>= 2.2)
