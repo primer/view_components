@@ -20,6 +20,8 @@
       url: /components/breadcrumb
     - title: Button
       url: /components/button
+    - title: ButtonGroup
+      url: /components/buttongroup
     - title: ButtonMarketing
       url: /components/buttonmarketing
     - title: Counter
@@ -28,6 +30,8 @@
       url: /components/dropdownmenu
     - title: Flash
       url: /components/flash
+    - title: Heading
+      url: /components/heading
     - title: Label
       url: /components/label
     - title: Layout
@@ -48,9 +52,11 @@
       url: /components/subhead
     - title: Text
       url: /components/text
-    - title: Truncate
-      url: /components/truncate
     - title: TimelineItem
       url: /components/timelineitem
     - title: Tooltip
       url: /components/tooltip
+    - title: Truncate
+      url: /components/truncate
+    - title: UnderlineNav
+      url: /components/underlinenav
