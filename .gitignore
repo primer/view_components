@@ -12,6 +12,7 @@
 **/*.stories.json
 **/node_modules/
 *.log
+*.orig
 demo/public/packs/
 demo/tmp/
 demo/config/master.key
