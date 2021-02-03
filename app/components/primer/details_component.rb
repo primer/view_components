@@ -51,7 +51,7 @@ module Primer
       end
     end
 
-    # Use the Body slot as the main content to be shown when triggered by the Summary
+    # Use the Body slot as the main content to be shown when triggered by the Summary.
     class Body < Primer::Slot
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
