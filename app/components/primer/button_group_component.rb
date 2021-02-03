@@ -5,10 +5,10 @@ module Primer
   class ButtonGroupComponent < Primer::Component
     include ViewComponent::SlotableV2
 
-    renders_many :buttons, ->(classes: "", **kwargs) do
+    renders_many :buttons, lambda { |classes: "", **kwargs|
       btn_classes = class_names("BtnGroup-item", classes)
       Primer::ButtonComponent.new(classes: btn_classes, **kwargs)
-    end
+    }
 
     # @example 50|Default
     #   <%= render(Primer::ButtonGroupComponent.new) do |component|
@@ -26,7 +26,7 @@ module Primer
 
       @system_arguments[:classes] = class_names(
         "BtnGroup",
-        system_arguments[:classes],
+        system_arguments[:classes]
       )
     end
 
