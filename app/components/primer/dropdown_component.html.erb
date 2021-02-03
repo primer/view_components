@@ -1,0 +1,9 @@
+<%= render(Primer::DetailsComponent.new(**@system_arguments)) do |c| %>
+  <% c.slot(:summary, classes: "dropdown") do %>
+    <%= button %>
+  <% end %>
+
+  <% c.slot(:body) do %>
+    <%= menu %>
+  <% end %>
+<% end %>
