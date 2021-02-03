@@ -14,25 +14,17 @@ of the select menu.
 
 ### With a header
 
-<iframe style="width: 100%; border: 0px; height: 200px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div style='margin-bottom: 150px'>  <details class='details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Dropdown</summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-se '>    <div class='dropdown-header'>      Options    </div>          <ul>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>        </ul></details-menu></div></details></div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 200px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='position-relative mt-2'>  <details-menu role='menu' class='dropdown-menu dropdown-menu-se '>    <div class='dropdown-header'>      Options    </div>  <ul>      <li class='dropdown-item '>Item 1</li>      <li class='dropdown-item '>Item 2</li>      <li role='none' class='dropdown-divider '></li>      <li class='dropdown-item '>Item 3</li>      <li class='dropdown-item '>Item 4</li>  </ul></details-menu></div></body></html>"></iframe>
 
 ```erb
-<div style="margin-bottom: 150px">
-  <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
-    <% c.slot(:summary) do %>
-      Dropdown
-    <% end %>
-
-    <% c.slot(:body) do %>
-      <%= render(Primer::DropdownMenuComponent.new(header: "Options")) do %>
-        <ul>
-          <li><a class="dropdown-item" href="#url">Dropdown item</a></li>
-          <li><a class="dropdown-item" href="#url">Dropdown item</a></li>
-          <li><a class="dropdown-item" href="#url">Dropdown item</a></li>
-        </ul>
-      <% end %>
-    <% end %>
-  <% end %>
+<div class="position-relative mt-2">
+  <%= render(Primer::DropdownMenuComponent.new(header: "Options")) do |c|
+    c.item { "Item 1" }
+    c.item { "Item 2" }
+    c.item(divider: true)
+    c.item { "Item 3" }
+    c.item { "Item 4" }
+  end %>
 </div>
 ```
 

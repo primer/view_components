@@ -18,7 +18,7 @@ module Primer
 
     renders_many :items, -> (divider: false, **item_arguments) do
       item_arguments[:tag] = :li
-      iterm_arguments[:role] = :none if divider
+      item_arguments[:role] = :none if divider
       item_arguments[:classes] = class_names(
         item_arguments[:classes],
         "dropdown-item" => !divider,
@@ -29,13 +29,15 @@ module Primer
     end
 
     # @example 200|With a header
-    #   <%= render(Primer::DropdownMenuComponent.new(header: "Options")) do |c|
-    #     c.item { "Item 1" }
-    #     c.item { "Item 2" }
-    #     c.item(divider: true)
-    #     c.item { "Item 3" }
-    #     c.item { "Item 4" }
-    #   end %>
+    #   <div class="position-relative mt-2">
+    #     <%= render(Primer::DropdownMenuComponent.new(header: "Options")) do |c|
+    #       c.item { "Item 1" }
+    #       c.item { "Item 2" }
+    #       c.item(divider: true)
+    #       c.item { "Item 3" }
+    #       c.item { "Item 4" }
+    #     end %>
+    #   </div>
     #
     # @param direction [Symbol] <%= one_of(Primer::DropdownMenuComponent::DIRECTION_OPTIONS) %>
     # @param scheme [Symbol] Pass :dark for dark mode theming

@@ -30,4 +30,22 @@ class PrimerDropdownMenuComponentTest < Minitest::Test
 
     assert_selector(".dropdown-header")
   end
+
+  def test_renders_items
+    render_inline(Primer::DropdownMenuComponent.new(header: "Header")) do |c|
+      c.item { "Item 1" }
+      c.item { "Item 2" }
+    end
+
+    assert_selector(".dropdown-item", text: "Item 1")
+    assert_selector(".dropdown-item", text: "Item 2")
+  end
+
+  def test_renders_dividers
+    render_inline(Primer::DropdownMenuComponent.new(header: "Header")) do |c|
+      c.item(divider: true)
+    end
+
+    assert_selector(".dropdown-divider")
+  end
 end
