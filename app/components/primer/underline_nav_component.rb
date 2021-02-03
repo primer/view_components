@@ -30,7 +30,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @param align [Symbol] <%= one_of(Primer::UnderlineNavComponent::ALIGN_OPTIONS) %>
+    # @param align [Symbol] <%= one_of(Primer::UnderlineNavComponent::ALIGN_OPTIONS) %> - Defaults to <%= Primer::UnderlineNavComponent::ALIGN_DEFAULT %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(align: ALIGN_DEFAULT, **system_arguments)
       @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
