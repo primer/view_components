@@ -66,3 +66,5 @@ Use ProgressBar to visualize task completion.
 | `percentage` | `Integer` | `0` | Percentage completion of item. |
 | `bg` | `Symbol` | `:green` | Color of item. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+:nodoc

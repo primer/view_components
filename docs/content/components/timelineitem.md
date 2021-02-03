@@ -41,6 +41,8 @@ Use `TimelineItem` to display items on a vertical timeline, connected by badge e
 | `square` | `Boolean` | `true` | Whether to round the edges of the image. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
+:nodoc
+
 ### `badge` slot
 
 | Name | Type | Default | Description |
@@ -48,8 +50,12 @@ Use `TimelineItem` to display items on a vertical timeline, connected by badge e
 | `icon` | `String` | `nil` | Name of [Octicon](https://primer.style/octicons/) to use. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
+:nodoc
+
 ### `body` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+:nodoc
