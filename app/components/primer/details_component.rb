@@ -32,7 +32,7 @@ module Primer
       summary.present? && body.present?
     end
 
-    # Use the Summary slot  as the trigger button
+    # Use the Summary slot as a trigger to reveal the content.
     class Summary < Primer::Slot
       # @param button [Boolean] If there should be a button or not
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
