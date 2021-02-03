@@ -20,7 +20,7 @@ class PrimerBaseComponentTest < Minitest::Test
   end
 
   def test_skips_rendering_primer_class_if_value_is_nil
-    result = render_inline(Primer::BaseComponent.new(tag: :div, my: nil)) # rubocop:todo ViewComponent/RenderInlineAssignment
+    result = render_inline(Primer::BaseComponent.new(tag: :div, my: nil))
 
     assert result.css("div").first.attribute("class").nil?
   end

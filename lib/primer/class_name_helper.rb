@@ -4,6 +4,7 @@
 #
 # Helps build a list of conditional class names
 module Primer
+  # :nodoc:
   module ClassNameHelper
     def class_names(*args)
       classes = []

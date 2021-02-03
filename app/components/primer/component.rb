@@ -14,8 +14,8 @@ module Primer
       review: :review,
       experimental: :experimental,
       new: :new,
-      stable: :stable,
-    }
+      stable: :stable
+    }.freeze
 
     def self.status
       STATUSES[:experimental]

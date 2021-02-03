@@ -7,7 +7,7 @@ module Primer
     SCHEME_MAPPINGS = {
       DEFAULT_SCHEME => "Counter",
       :gray => "Counter Counter--gray",
-      :light_gray => "Counter Counter--gray-light",
+      :light_gray => "Counter Counter--gray-light"
     }.freeze
 
     #
@@ -30,7 +30,12 @@ module Primer
       round: false,
       **system_arguments
     )
-      @count, @limit, @hide_if_zero, @text, @round, @system_arguments = count, limit, hide_if_zero, text, round, system_arguments
+      @count = count
+      @limit = limit
+      @hide_if_zero = hide_if_zero
+      @text = text
+      @round = round
+      @system_arguments = system_arguments
 
       @has_limit = !@limit.nil?
       @system_arguments[:title] = title
@@ -39,9 +44,7 @@ module Primer
         @system_arguments[:classes],
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)]
       )
-      if count == 0 && hide_if_zero
-        @system_arguments[:hidden] = true
-      end
+      @system_arguments[:hidden] = true if count == 0 && hide_if_zero # rubocop:disable Style/NumericPredicate
     end
 
     def call
@@ -60,7 +63,7 @@ module Primer
       else
         count = @count.to_i
         str = number_with_delimiter(@has_limit ? [count, @limit].min : count)
-        str += "+" if (@has_limit && count > @limit)
+        str += "+" if @has_limit && count > @limit
         str
       end
     end
@@ -76,14 +79,14 @@ module Primer
         if @round
           count = @has_limit ? [@count.to_i, @limit].min : @count.to_i
           precision = count.between?(100_000, 999_999) ? 0 : 1
-          units = {thousand: "k", million: "m", billion: "b"}
+          units = { thousand: "k", million: "m", billion: "b" }
           str = number_to_human(count, precision: precision, significant: false, units: units, format: "%n%u")
         else
           @count = @count.to_i
           str = number_with_delimiter(@has_limit ? [@count, @limit].min : @count)
         end
 
-        str += "+" if (@has_limit && @count.to_i > @limit)
+        str += "+" if @has_limit && @count.to_i > @limit
         str
       end
     end

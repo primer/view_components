@@ -37,8 +37,8 @@ class PrimerComponentTest < Minitest::Test
     [Primer::TruncateComponent, {}],
     [Primer::TimelineItemComponent, {}, proc { |component| component.slot(:body) { "Foo" } }],
     [Primer::TooltipComponent, { label: "More" }],
-    [Primer::UnderlineNavComponent, {}],
-  ]
+    [Primer::UnderlineNavComponent, {}]
+  ].freeze
 
   def test_registered_components
     ignored_components = ["Primer::Component"]
@@ -69,28 +69,28 @@ class PrimerComponentTest < Minitest::Test
       assert_selector("[data-ga-click='Foo,bar']", visible: false)
 
       # Ensure all slots accept Primer system_arguments
-      if component.respond_to?(:slots) && component.slots.any?
-        result = render_inline(component.new(**args)) do |c|
-          component.slots.each do |slot_name, slot_attributes|
-            c.slot(
-              slot_name,
-              classes: "test-#{slot_name}",
-              my: 1,
-              hidden: true,
-              style: "height: 100%;",
-              "data-ga-click": "Foo,bar"
-            ) { "foo" }
-          end
-        end
+      next unless component.respond_to?(:slots) && component.slots.any?
 
-        component.slots.each do |slot_name, _attrs|
-          assert_selector(
-            ".test-#{slot_name}.my-1[hidden][data-ga-click='Foo,bar']",
-            visible: false
-          )
-
-          assert_includes result.to_html, "height: 100%;"
+      result = render_inline(component.new(**args)) do |c|
+        component.slots.each do |slot_name, _slot_attributes|
+          c.slot(
+            slot_name,
+            classes: "test-#{slot_name}",
+            my: 1,
+            hidden: true,
+            style: "height: 100%;",
+            "data-ga-click": "Foo,bar"
+          ) { "foo" }
         end
+      end
+
+      component.slots.each do |slot_name, _attrs|
+        assert_selector(
+          ".test-#{slot_name}.my-1[hidden][data-ga-click='Foo,bar']",
+          visible: false
+        )
+
+        assert_includes result.to_html, "height: 100%;"
       end
     end
   end
@@ -106,20 +106,20 @@ class PrimerComponentTest < Minitest::Test
     # TODO: Remove these exceptions as we add stories
     expected_missing_stories =
       [
-        "component",  # No story needed
+        "component", # No story needed
         "view_components", # No story needed
-        "slot", "component",  # No story needed
+        "slot", "component", # No story needed
         "flex_item_component",
         "dropdown_menu_component",
         "base_component",
-        "flex_component",
+        "flex_component"
       ]
 
     components_missing_stories = components - stories - expected_missing_stories
 
     message =
       if components_missing_stories.any?
-        "It looks like you've added #{components_missing_stories.map { |name| name.camelize }.to_sentence} " \
+        "It looks like you've added #{components_missing_stories.map(&:camelize).to_sentence} " \
         "without adding #{components_missing_stories.length > 1 ? 'corresponding stories' : 'a corresponding story'}"
       else
         ""

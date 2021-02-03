@@ -33,7 +33,8 @@ module Primer
       # @param selected [Boolean] Whether or not the item is selected and not rendered as a link.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(href: nil, selected: false, **system_arguments)
-        @href, @system_arguments = href, system_arguments
+        @href = href
+        @system_arguments = system_arguments
 
         @href = nil if selected
         @system_arguments[:tag] = :li

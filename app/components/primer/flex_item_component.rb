@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 module Primer
+  # :nodoc
   class FlexItemComponent < Primer::Component
     FLEX_AUTO_DEFAULT = false
-    FLEX_AUTO_ALLOWED_VALUES = [FLEX_AUTO_DEFAULT, true]
+    FLEX_AUTO_ALLOWED_VALUES = [FLEX_AUTO_DEFAULT, true].freeze
 
     def initialize(flex_auto: FLEX_AUTO_DEFAULT, **system_arguments)
       @system_arguments = system_arguments

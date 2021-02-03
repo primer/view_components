@@ -3,12 +3,11 @@
 module Primer
   # Use Primer::SpinnerComponent to let users know that content is being loaded.
   class SpinnerComponent < Primer::Component
-
     DEFAULT_SIZE = :medium
     SIZE_MAPPINGS = {
       :small => 16,
       DEFAULT_SIZE => 32,
-      :large => 64,
+      :large => 64
     }.freeze
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
     # Setting `box-sizing: content-box` allows consumers to add padding

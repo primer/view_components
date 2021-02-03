@@ -16,7 +16,7 @@ module Primer
     VARIANT_MAPPINGS = {
       :small => "btn-sm",
       DEFAULT_VARIANT => "",
-      :large => "btn-large",
+      :large => "btn-large"
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
