@@ -67,6 +67,7 @@ module Primer
       heading.present?
     end
 
+    # :nodoc
     class Heading < ViewComponent::Slot
       include ClassNameHelper
 
@@ -85,6 +86,7 @@ module Primer
       end
     end
 
+    # :nodoc
     class Actions < ViewComponent::Slot
       include ClassNameHelper
 
@@ -98,6 +100,7 @@ module Primer
       end
     end
 
+    # :nodoc
     class Description < ViewComponent::Slot
       include ClassNameHelper
 

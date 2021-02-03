@@ -12,7 +12,7 @@ module Primer
     SIZE_MAPPINGS = {
       SIZE_DEFAULT => "",
       :small => "Progress--small",
-      :large => "Progress--large",
+      :large => "Progress--large"
     }.freeze
 
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
@@ -48,13 +48,13 @@ module Primer
         SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
       )
       @system_arguments[:tag] = :span
-
     end
 
     def render?
       items.any?
     end
 
+    # :nodoc
     class Item < Primer::Slot
       attr_reader :system_arguments
 

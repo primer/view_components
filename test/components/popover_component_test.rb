@@ -22,8 +22,8 @@ class PrimerPopoverComponentTest < Minitest::Test
 
   def test_allows_customization
     render_inline(Primer::PopoverComponent.new(
-      position: :absolute, tag: :span, classes: "custom-class"
-    )) do |component|
+                    position: :absolute, tag: :span, classes: "custom-class"
+                  )) do |component|
       component.slot(:body) do
         "Hi there"
       end

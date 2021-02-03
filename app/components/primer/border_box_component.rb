@@ -34,6 +34,7 @@ module Primer
       rows.any? || header.present? || body.present? || footer.present?
     end
 
+    # :nodoc
     class Header < Primer::Slot
       attr_reader :system_arguments
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -47,6 +48,7 @@ module Primer
       end
     end
 
+    # :nodoc
     class Body < Primer::Slot
       attr_reader :system_arguments
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -60,6 +62,7 @@ module Primer
       end
     end
 
+    # :nodoc
     class Footer < Primer::Slot
       attr_reader :system_arguments
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -73,6 +76,7 @@ module Primer
       end
     end
 
+    # :nodoc
     class Row < Primer::Slot
       attr_reader :system_arguments
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

@@ -13,7 +13,7 @@ module Primer
     OVERLAY_MAPPINGS = {
       NO_OVERLAY => "",
       :default => "details-overlay",
-      :dark => "details-overlay details-overlay-dark",
+      :dark => "details-overlay details-overlay-dark"
     }.freeze
 
     with_slot :body, class_name: "Body"
@@ -33,6 +33,7 @@ module Primer
       summary.present? && body.present?
     end
 
+    # :nodoc
     class Summary < Primer::Slot
       def initialize(button: true, **system_arguments)
         @button = button
@@ -49,6 +50,7 @@ module Primer
       end
     end
 
+    # :nodoc
     class Body < Primer::Slot
       def initialize(**system_arguments)
         @system_arguments = system_arguments

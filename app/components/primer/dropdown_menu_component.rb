@@ -8,11 +8,11 @@ module Primer
     SCHEME_DEFAULT = :default
     SCHEME_MAPPINGS = {
       SCHEME_DEFAULT => "",
-      :dark => "dropdown-menu-dark",
+      :dark => "dropdown-menu-dark"
     }.freeze
 
     DIRECTION_DEFAULT = :se
-    DIRECTION_OPTIONS = [DIRECTION_DEFAULT, :sw, :w, :e, :ne, :s]
+    DIRECTION_OPTIONS = [DIRECTION_DEFAULT, :sw, :w, :e, :ne, :s].freeze
 
     # @example 200|With a header
     #   <div style="margin-bottom: 150px">
@@ -38,7 +38,9 @@ module Primer
     # @param header [String] Optional string to display as the header
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(direction: DIRECTION_DEFAULT, scheme: SCHEME_DEFAULT, header: nil, **system_arguments)
-      @header, @direction, @system_arguments = header, direction, system_arguments
+      @header = header
+      @direction = direction
+      @system_arguments = system_arguments
 
       @system_arguments[:tag] = "details-menu"
       @system_arguments[:role] = "menu"
