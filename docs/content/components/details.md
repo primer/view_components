@@ -22,13 +22,13 @@ Use DetailsComponent to reveal content after clicking a button.
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-Use the Body slot as the main content to be shown when triggered by the Summary
+Use the Body slot as the main content to be shown when triggered by the Summary.
 
 ### `summary` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `button` | `Boolean` | `true` | If there should be a button or not |
+| `button` | `Boolean` | `true` | Whether to render the Summary as a button or not. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-Use the Summary slot  as the trigger button
+Use the Summary slot as a trigger to reveal the content.
