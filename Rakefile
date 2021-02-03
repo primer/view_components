@@ -76,7 +76,8 @@ namespace :docs do
   end
 
   def check_for_stories(component, missing_accumulator)
-    components_with_stories_names = Dir.glob("stories/**/*.rb")
+    components_with_stories_names = Dir
+      .glob("stories/**/*.rb")
       .map { |path| path[15, path.size].delete_suffix("_stories.rb") }
 
     component_name = component.to_s.delete_prefix("Primer::").underscore
