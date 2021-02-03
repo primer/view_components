@@ -14,6 +14,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::BoxComponent, {}],
     [Primer::BreadcrumbComponent, {}, proc { |component| component.slot(:item) { "Foo" } }],
     [Primer::ButtonComponent, {}],
+    [Primer::ButtonGroupComponent, {}, proc { |component| component.button { "Button" } }],
     [Primer::CounterComponent, { count: 1 }],
     [Primer::DetailsComponent, {}, lambda do |component|
       component.slot(:summary) { "Foo" }
