@@ -32,7 +32,7 @@ module Primer
       summary.present? && body.present?
     end
 
-    # :nodoc
+    # Use the Summary slot  as the trigger button
     class Summary < Primer::Slot
       # @param button [Boolean] If there should be a button or not
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -51,7 +51,7 @@ module Primer
       end
     end
 
-    # :nodoc
+    # Use the Body slot as the main content to be shown when triggered by the Summary
     class Body < Primer::Slot
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
