@@ -4,5 +4,9 @@
       <%= @header %>
     </div>
   <% end %>
-  <%= content %>
+  <ul>
+    <% items.each do |item| %>
+      <%= item %>
+    <% end %>
+  </ul>
 <% end %>

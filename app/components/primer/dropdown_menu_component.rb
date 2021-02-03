@@ -5,6 +5,8 @@ module Primer
   # They're great for instances where you don't need the full power (and code)
   # of the select menu.
   class DropdownMenuComponent < Primer::Component
+    include ViewComponent::SlotableV2
+
     SCHEME_DEFAULT = :default
     SCHEME_MAPPINGS = {
       SCHEME_DEFAULT => "",
@@ -14,24 +16,26 @@ module Primer
     DIRECTION_DEFAULT = :se
     DIRECTION_OPTIONS = [DIRECTION_DEFAULT, :sw, :w, :e, :ne, :s].freeze
 
+    renders_many :items, -> (divider: false, **item_arguments) do
+      item_arguments[:tag] = :li
+      iterm_arguments[:role] = :none if divider
+      item_arguments[:classes] = class_names(
+        item_arguments[:classes],
+        "dropdown-item" => !divider,
+        "dropdown-divider" => divider,
+      )
+
+      Primer::BaseComponent.new(**item_arguments)
+    end
+
     # @example 200|With a header
-    #   <div style="margin-bottom: 150px">
-    #     <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
-    #       <% c.slot(:summary) do %>
-    #         Dropdown
-    #       <% end %>
-    #
-    #       <% c.slot(:body) do %>
-    #         <%= render(Primer::DropdownMenuComponent.new(header: "Options")) do %>
-    #           <ul>
-    #             <li><a class="dropdown-item" href="#url">Dropdown item</a></li>
-    #             <li><a class="dropdown-item" href="#url">Dropdown item</a></li>
-    #             <li><a class="dropdown-item" href="#url">Dropdown item</a></li>
-    #           </ul>
-    #         <% end %>
-    #       <% end %>
-    #     <% end %>
-    #   </div>
+    #   <%= render(Primer::DropdownMenuComponent.new(header: "Options")) do |c|
+    #     c.item { "Item 1" }
+    #     c.item { "Item 2" }
+    #     c.item(divider: true)
+    #     c.item { "Item 3" }
+    #     c.item { "Item 4" }
+    #   end %>
     #
     # @param direction [Symbol] <%= one_of(Primer::DropdownMenuComponent::DIRECTION_OPTIONS) %>
     # @param scheme [Symbol] Pass :dark for dark mode theming
