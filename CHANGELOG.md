@@ -6,6 +6,18 @@
 
     *Ash Guillaume*
 
+* Add `animation` system argument.
+
+    *Manuel Puyol*
+
+* Add `Truncate`, `ButtonGroup` and `ButtonMarketing` components.
+
+    *Manuel Puyol*
+
+* Add `Tooltip` component.
+
+    *Simon Taranto*
+
 ## 0.0.17
 
 * Ensure all components support inline styles.
