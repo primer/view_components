@@ -13,7 +13,9 @@ class Primer::FlexComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do
-      "<div>Foo</div><div>Bar</div><div>Baz</div>".html_safe
+      "<div class='p-5 border bg-gray-light'>Item 1</div>
+      <div class='p-5 border bg-gray-light'>Item 2</div>
+      <div class='p-5 border bg-gray-light'>Item 3</div>".html_safe
     end
   end
 end
