@@ -24,6 +24,8 @@
       url: /components/buttongroup
     - title: Counter
       url: /components/counter
+    - title: Details
+      url: /components/details
     - title: DropdownMenu
       url: /components/dropdownmenu
     - title: Flash
