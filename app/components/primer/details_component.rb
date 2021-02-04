@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  #
-  # overlay - options are `none`, `default` and `dark`. Dictates the type of overlay to render with.
-  # button - options are `default` and `reset`. default will make the target a default primer ``.btn`
-  #          reset will remove all styles from the <summary> element.
-  #
+  # Use DetailsComponent to reveal content after clicking a button.
   class DetailsComponent < Primer::Component
     include ViewComponent::Slotable
 
@@ -19,6 +15,9 @@ module Primer
     with_slot :body, class_name: "Body"
     with_slot :summary, class_name: "Summary"
 
+    # @param overlay [Symbol] Dictates the type of overlay to render with. <%= one_of(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys) %>
+    # @param reset [Boolean] Defatuls to false. If set to true, it will remove the default caret and remove style from the summary element
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(overlay: NO_OVERLAY, reset: false, **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = :details
@@ -33,8 +32,10 @@ module Primer
       summary.present? && body.present?
     end
 
-    # :nodoc
+    # Use the Summary slot as a trigger to reveal the content.
     class Summary < Primer::Slot
+      # @param button [Boolean] Whether to render the Summary as a button or not.
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(button: true, **system_arguments)
         @button = button
 
@@ -50,8 +51,9 @@ module Primer
       end
     end
 
-    # :nodoc
+    # Use the Body slot as the main content to be shown when triggered by the Summary.
     class Body < Primer::Slot
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] ||= :div

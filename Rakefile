@@ -113,6 +113,7 @@ namespace :docs do
       Primer::ButtonGroupComponent,
       Primer::ButtonMarketingComponent,
       Primer::CounterComponent,
+      Primer::DetailsComponent,
       Primer::DropdownMenuComponent,
       Primer::FlashComponent,
       Primer::HeadingComponent,
