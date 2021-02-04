@@ -35,10 +35,54 @@ module Primer
     DEFAULT_DIRECTION = nil
     ALLOWED_DIRECTIONS = [DEFAULT_DIRECTION, :column, :column_reverse, :row, :row_reverse].freeze
 
-    # @param justify_content [Symbol] Use this param to distribute space between and around flex items along the main axis of the container <%= one_of(Primer::FlexComponent::JUSTIFY_CONTENT_OPTIONS) %>
+    # @example 100|Default
+    #   <%= render(Primer::FlexComponent.new(bg: :gray)) do %>
+    #     <%= render(Primer::FlexItemComponent.new(bg: :blue)) do %>
+    #       Item 1
+    #     <% end %>
+    #
+    #     <%= render(Primer::FlexItemComponent.new(bg: :yellow)) do %>
+    #       Item 2
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example 100|Justify center
+    #   <%= render(Primer::FlexComponent.new(justify_content: :center, bg: :gray)) do %>
+    #     <%= render(Primer::FlexItemComponent.new(bg: :blue)) do %>
+    #       Item 1
+    #     <% end %>
+    #
+    #     <%= render(Primer::FlexItemComponent.new(bg: :yellow)) do %>
+    #       Item 2
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example 100|Align end
+    #   <%= render(Primer::FlexComponent.new(align_items: :end, bg: :gray, style: "height: 50px")) do %>
+    #     <%= render(Primer::FlexItemComponent.new(bg: :blue)) do %>
+    #       Item 1
+    #     <% end %>
+    #
+    #     <%= render(Primer::FlexItemComponent.new(bg: :yellow)) do %>
+    #       Item 2
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example 100|Direction column
+    #   <%= render(Primer::FlexComponent.new(direction: :column, bg: :gray)) do %>
+    #     <%= render(Primer::FlexItemComponent.new(bg: :blue)) do %>
+    #       Item 1
+    #     <% end %>
+    #
+    #     <%= render(Primer::FlexItemComponent.new(bg: :yellow)) do %>
+    #       Item 2
+    #     <% end %>
+    #   <% end %>
+    #
+    # @param justify_content [Symbol] Use this param to distribute space between and around flex items along the main axis of the container. <%= one_of(Primer::FlexComponent::JUSTIFY_CONTENT_OPTIONS) %>
     # @param inline [Boolean] Defaults to false.
     # @param flex_wrap [Boolean] Defaults to nil
-    # @param align_items [Symbol] Use this param to align items on the cross axis <%= one_of(Primer::FlexComponent::ALIGN_ITEMS_OPTIONS) %>
+    # @param align_items [Symbol] Use this param to align items on the cross axis. <%= one_of(Primer::FlexComponent::ALIGN_ITEMS_OPTIONS) %>
     # @param direction [Symbol] Use this param to define the orientation of the main axis (row or column). By default, flex items will display in a row. <%= one_of(Primer::FlexComponent::ALLOWED_DIRECTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
