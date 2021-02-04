@@ -15,65 +15,49 @@ Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/
 
 ### Default
 
-<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='bg-gray d-flex'>  <div class='bg-blue'>    Item 1</div>  <div class='bg-yellow'>    Item 2</div></div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='bg-gray d-flex'>  <div class='p-5 border bg-gray-light'>Item 1</div>  <div class='p-5 border bg-gray-light'>Item 2</div>  <div class='p-5 border bg-gray-light'>Item 3</div></div></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::FlexComponent.new(bg: :gray)) do %>
-  <%= render(Primer::FlexItemComponent.new(bg: :blue)) do %>
-    Item 1
-  <% end %>
-
-  <%= render(Primer::FlexItemComponent.new(bg: :yellow)) do %>
-    Item 2
-  <% end %>
+  <div class="p-5 border bg-gray-light">Item 1</div>
+  <div class="p-5 border bg-gray-light">Item 2</div>
+  <div class="p-5 border bg-gray-light">Item 3</div>
 <% end %>
 ```
 
 ### Justify center
 
-<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='flex-justify-center bg-gray d-flex'>  <div class='bg-blue'>    Item 1</div>  <div class='bg-yellow'>    Item 2</div></div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='flex-justify-center bg-gray d-flex'>  <div class='p-5 border bg-gray-light'>Item 1</div>  <div class='p-5 border bg-gray-light'>Item 2</div>  <div class='p-5 border bg-gray-light'>Item 3</div></div></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::FlexComponent.new(justify_content: :center, bg: :gray)) do %>
-  <%= render(Primer::FlexItemComponent.new(bg: :blue)) do %>
-    Item 1
-  <% end %>
-
-  <%= render(Primer::FlexItemComponent.new(bg: :yellow)) do %>
-    Item 2
-  <% end %>
+  <div class="p-5 border bg-gray-light">Item 1</div>
+  <div class="p-5 border bg-gray-light">Item 2</div>
+  <div class="p-5 border bg-gray-light">Item 3</div>
 <% end %>
 ```
 
 ### Align end
 
-<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div style='height: 50px' class='flex-items-end bg-gray d-flex'>  <div class='bg-blue'>    Item 1</div>  <div class='bg-yellow'>    Item 2</div></div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='flex-items-end bg-gray d-flex'>  <div class='p-5 border bg-gray-light'>Item 1</div>  <div class='p-5 border bg-gray-light'>Item 2</div>  <div class='p-5 border bg-gray-light'>Item 3</div></div></body></html>"></iframe>
 
 ```erb
-<%= render(Primer::FlexComponent.new(align_items: :end, bg: :gray, style: "height: 50px")) do %>
-  <%= render(Primer::FlexItemComponent.new(bg: :blue)) do %>
-    Item 1
-  <% end %>
-
-  <%= render(Primer::FlexItemComponent.new(bg: :yellow)) do %>
-    Item 2
-  <% end %>
+<%= render(Primer::FlexComponent.new(align_items: :end, bg: :gray)) do %>
+  <div class="p-5 border bg-gray-light">Item 1</div>
+  <div class="p-5 border bg-gray-light">Item 2</div>
+  <div class="p-5 border bg-gray-light">Item 3</div>
 <% end %>
 ```
 
 ### Direction column
 
-<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='bg-gray flex-column d-flex'>  <div class='bg-blue'>    Item 1</div>  <div class='bg-yellow'>    Item 2</div></div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='bg-gray flex-column d-flex'>  <div class='p-5 border bg-gray-light'>Item 1</div>  <div class='p-5 border bg-gray-light'>Item 2</div>  <div class='p-5 border bg-gray-light'>Item 3</div></div></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::FlexComponent.new(direction: :column, bg: :gray)) do %>
-  <%= render(Primer::FlexItemComponent.new(bg: :blue)) do %>
-    Item 1
-  <% end %>
-
-  <%= render(Primer::FlexItemComponent.new(bg: :yellow)) do %>
-    Item 2
-  <% end %>
+  <div class="p-5 border bg-gray-light">Item 1</div>
+  <div class="p-5 border bg-gray-light">Item 2</div>
+  <div class="p-5 border bg-gray-light">Item 3</div>
 <% end %>
 ```
 

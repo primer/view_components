@@ -37,46 +37,30 @@ module Primer
 
     # @example 100|Default
     #   <%= render(Primer::FlexComponent.new(bg: :gray)) do %>
-    #     <%= render(Primer::FlexItemComponent.new(bg: :blue)) do %>
-    #       Item 1
-    #     <% end %>
-    #
-    #     <%= render(Primer::FlexItemComponent.new(bg: :yellow)) do %>
-    #       Item 2
-    #     <% end %>
+    #     <div class="p-5 border bg-gray-light">Item 1</div>
+    #     <div class="p-5 border bg-gray-light">Item 2</div>
+    #     <div class="p-5 border bg-gray-light">Item 3</div>
     #   <% end %>
     #
     # @example 100|Justify center
     #   <%= render(Primer::FlexComponent.new(justify_content: :center, bg: :gray)) do %>
-    #     <%= render(Primer::FlexItemComponent.new(bg: :blue)) do %>
-    #       Item 1
-    #     <% end %>
-    #
-    #     <%= render(Primer::FlexItemComponent.new(bg: :yellow)) do %>
-    #       Item 2
-    #     <% end %>
+    #     <div class="p-5 border bg-gray-light">Item 1</div>
+    #     <div class="p-5 border bg-gray-light">Item 2</div>
+    #     <div class="p-5 border bg-gray-light">Item 3</div>
     #   <% end %>
     #
     # @example 100|Align end
-    #   <%= render(Primer::FlexComponent.new(align_items: :end, bg: :gray, style: "height: 50px")) do %>
-    #     <%= render(Primer::FlexItemComponent.new(bg: :blue)) do %>
-    #       Item 1
-    #     <% end %>
-    #
-    #     <%= render(Primer::FlexItemComponent.new(bg: :yellow)) do %>
-    #       Item 2
-    #     <% end %>
+    #   <%= render(Primer::FlexComponent.new(align_items: :end, bg: :gray)) do %>
+    #     <div class="p-5 border bg-gray-light">Item 1</div>
+    #     <div class="p-5 border bg-gray-light">Item 2</div>
+    #     <div class="p-5 border bg-gray-light">Item 3</div>
     #   <% end %>
     #
     # @example 100|Direction column
     #   <%= render(Primer::FlexComponent.new(direction: :column, bg: :gray)) do %>
-    #     <%= render(Primer::FlexItemComponent.new(bg: :blue)) do %>
-    #       Item 1
-    #     <% end %>
-    #
-    #     <%= render(Primer::FlexItemComponent.new(bg: :yellow)) do %>
-    #       Item 2
-    #     <% end %>
+    #     <div class="p-5 border bg-gray-light">Item 1</div>
+    #     <div class="p-5 border bg-gray-light">Item 2</div>
+    #     <div class="p-5 border bg-gray-light">Item 3</div>
     #   <% end %>
     #
     # @param justify_content [Symbol] Use this param to distribute space between and around flex items along the main axis of the container. <%= one_of(Primer::FlexComponent::JUSTIFY_CONTENT_OPTIONS) %>
