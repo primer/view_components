@@ -114,6 +114,7 @@ namespace :docs do
       Primer::ButtonMarketingComponent,
       Primer::CounterComponent,
       Primer::DetailsComponent,
+      Primer::DropdownComponent,
       Primer::DropdownMenuComponent,
       Primer::FlashComponent,
       Primer::HeadingComponent,
