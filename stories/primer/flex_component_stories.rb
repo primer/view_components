@@ -13,9 +13,11 @@ class Primer::FlexComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do
+      # rubocop:disable Rails/OutputSafety
       "<div class='p-5 border bg-gray-light'>Item 1</div>
       <div class='p-5 border bg-gray-light'>Item 2</div>
       <div class='p-5 border bg-gray-light'>Item 3</div>".html_safe
+      # rubocop:enable Rails/OutputSafety
     end
   end
 end
