@@ -16,17 +16,17 @@ module Primer
     DIRECTION_DEFAULT = :se
     DIRECTION_OPTIONS = [DIRECTION_DEFAULT, :sw, :w, :e, :ne, :s].freeze
 
-    renders_many :items, -> (divider: false, **item_arguments) do
+    renders_many :items, lambda { |divider: false, **item_arguments|
       item_arguments[:tag] = :li
       item_arguments[:role] = :none if divider
       item_arguments[:classes] = class_names(
         item_arguments[:classes],
         "dropdown-item" => !divider,
-        "dropdown-divider" => divider,
+        "dropdown-divider" => divider
       )
 
       Primer::BaseComponent.new(**item_arguments)
-    end
+    }
 
     # @example 200|With a header
     #   <div class="position-relative mt-2">

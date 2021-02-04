@@ -55,7 +55,7 @@ module Primer
       @system_arguments[:position] = :relative
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "dropdown",
+        "dropdown"
       )
       @summary_classes = summary_classes
     end
