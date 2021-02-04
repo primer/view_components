@@ -59,5 +59,9 @@ module Primer
       )
       @summary_classes = summary_classes
     end
+
+    def render?
+      button.present? && menu.present?
+    end
   end
 end
