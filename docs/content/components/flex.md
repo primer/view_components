@@ -15,9 +15,9 @@ Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `justify_content` | `Symbol` | `JUSTIFY_CONTENT_DEFAULT` | Use this param to distribute space between and around flex items along the main axis of the container One of `nil`, `:flex_start`, `:flex_end`, `:center`, `:space_between`, or `:space_around`.. |
+| `justify_content` | `Symbol` | `JUSTIFY_CONTENT_DEFAULT` | Use this param to distribute space between and around flex items along the main axis of the container One of `nil`, `:flex_start`, `:flex_end`, `:center`, `:space_between`, or `:space_around`. |
 | `inline` | `Boolean` | `false` | Defaults to false. |
 | `flex_wrap` | `Boolean` | `FLEX_WRAP_DEFAULT` | Defaults to nil |
-| `align_items` | `Symbol` | `ALIGN_ITEMS_DEFAULT` | Use this param to align items on the cross axis One of `nil`, `:start`, `:end`, `:center`, `:baseline`, or `:stretch`.. |
+| `align_items` | `Symbol` | `ALIGN_ITEMS_DEFAULT` | Use this param to align items on the cross axis One of `nil`, `:start`, `:end`, `:center`, `:baseline`, or `:stretch`. |
 | `direction` | `Symbol` | `nil` | Use this param to define the orientation of the main axis (row or column). By default, flex items will display in a row. One of `nil`, `:column`, `:column_reverse`, `:row`, or `:row_reverse`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
