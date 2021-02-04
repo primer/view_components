@@ -6,9 +6,8 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-DropdownMenus are lightweight context menus for housing navigation and actions.
-They're great for instances where you don't need the full power (and code)
-of the select menu.
+Dropdowns are lightweight context menus for housing navigation and actions.
+They're great for instances where you don't need the full power (and code) of the select menu.
 
 ## Examples
 

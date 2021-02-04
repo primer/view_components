@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 module Primer
-  # DropdownMenus are lightweight context menus for housing navigation and actions.
-  # They're great for instances where you don't need the full power (and code)
-  # of the select menu.
+  # Dropdowns are lightweight context menus for housing navigation and actions.
+  # They're great for instances where you don't need the full power (and code) of the select menu.
   class DropdownComponent < Primer::Component
     include ViewComponent::SlotableV2
 
