@@ -10,7 +10,7 @@
 
     *Manuel Puyol*
 
-* Add `Truncate`, `ButtonGroup` and `ButtonMarketing` components.
+* Add `Truncate`, `Dropdown`, `ButtonGroup` and `ButtonMarketing` components.
 
     *Manuel Puyol*
 
