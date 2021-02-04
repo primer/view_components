@@ -39,8 +39,13 @@ jobs:
         exclude:
           - rails_version: main
             ruby_version: 2.4.x
+          - rails_version: main
+            ruby_version: 2.5.x
+          - rails_version: main
+            ruby_version: 2.6.x
           - rails_version: 6.0.0
             ruby_version: 2.4.x
+
     steps:
     - uses: actions/checkout@master
     - name: Setup Ruby
