@@ -111,6 +111,7 @@ namespace :docs do
       Primer::BreadcrumbComponent,
       Primer::ButtonComponent,
       Primer::ButtonGroupComponent,
+      Primer::ButtonMarketingComponent,
       Primer::CounterComponent,
       Primer::DetailsComponent,
       Primer::DropdownMenuComponent,
