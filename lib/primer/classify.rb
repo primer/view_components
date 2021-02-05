@@ -202,11 +202,13 @@ module Primer
         elsif key == COLOR_KEY
           char_code = val[-1].ord
           # Does this string end in a character that is NOT a number?
-          memo[:classes] << if char_code >= 48 && char_code <= 57 # 48 is the charcode for 0; 57 is the charcode for 9
-                              "color-#{val.to_s.dasherize}"
-                            else
-                              "text-#{val.to_s.dasherize}"
-                            end
+          memo[:classes] <<
+            if (char_code >= 48 && char_code <= 57) || # 48 is the charcode for 0; 57 is the charcode for 9
+               val =~ /(primary|secondary|tertiary|link|success|warning|danger|info)/
+              "color-#{val.to_s.dasherize}"
+            else
+              "text-#{val.to_s.dasherize}"
+            end
         elsif key == DISPLAY_KEY
           memo[:classes] << "d#{breakpoint}-#{val.to_s.dasherize}"
         elsif key == VERTICAL_ALIGN_KEY
