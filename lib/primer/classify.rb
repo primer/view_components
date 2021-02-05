@@ -17,6 +17,7 @@ module Primer
 
     INVALID_CLASS_NAME_PREFIXES =
       (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "text-", "box-shadow-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
+    FUNCTIONAL_COLOR_REGEX = /(primary|secondary|tertiary|link|success|warning|danger|info)/.freeze
 
     COLOR_KEY = :color
     BG_KEY = :bg
@@ -204,7 +205,7 @@ module Primer
           # Does this string end in a character that is NOT a number?
           memo[:classes] <<
             if (char_code >= 48 && char_code <= 57) || # 48 is the charcode for 0; 57 is the charcode for 9
-               val =~ /(primary|secondary|tertiary|link|success|warning|danger|info)/
+               FUNCTIONAL_COLOR_REGEX.match?(val)
               "color-#{val.to_s.dasherize}"
             else
               "text-#{val.to_s.dasherize}"
