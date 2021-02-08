@@ -15,49 +15,49 @@ Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/
 
 ### Default
 
-<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='bg-gray d-flex'>  <div class='border bg-gray-light p-5'>Item 1</div>  <div class='border bg-gray-light p-5'>Item 2</div>  <div class='border bg-gray-light p-5'>Item 3</div></div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='bg-gray d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::FlexComponent.new(bg: :gray)) do %>
-  <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 1" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 2" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 3" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
 <% end %>
 ```
 
 ### Justify center
 
-<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='flex-justify-center bg-gray d-flex'>  <div class='border bg-gray-light p-5'>Item 1</div>  <div class='border bg-gray-light p-5'>Item 2</div>  <div class='border bg-gray-light p-5'>Item 3</div></div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='flex-justify-center bg-gray d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::FlexComponent.new(justify_content: :center, bg: :gray)) do %>
-  <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 1" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 2" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 3" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
 <% end %>
 ```
 
 ### Align end
 
-<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='flex-items-end bg-gray d-flex'>  <div class='border bg-gray-light p-5'>Item 1</div>  <div class='border bg-gray-light p-5'>Item 2</div>  <div class='border bg-gray-light p-5'>Item 3</div></div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='flex-items-end bg-gray d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::FlexComponent.new(align_items: :end, bg: :gray)) do %>
-  <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 1" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 2" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 3" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
 <% end %>
 ```
 
 ### Direction column
 
-<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='bg-gray flex-column d-flex'>  <div class='border bg-gray-light p-5'>Item 1</div>  <div class='border bg-gray-light p-5'>Item 2</div>  <div class='border bg-gray-light p-5'>Item 3</div></div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='bg-gray flex-column d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::FlexComponent.new(direction: :column, bg: :gray)) do %>
-  <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 1" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 2" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 3" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
 <% end %>
 ```
 
