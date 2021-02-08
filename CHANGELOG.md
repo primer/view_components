@@ -2,6 +2,16 @@
 
 ## main
 
+* Add `Dropdown` component.
+
+    *Manuel Puyol*
+
+### Breaking Changes
+
+* Move `DropdownMenuComponent` to `Dropdown::MenuComponent`, its content now uses `item` slots instead of raw HTML.
+
+    *Manuel Puyol*
+
 ## 0.0.18
 
 * Add `border_radius` system argument.

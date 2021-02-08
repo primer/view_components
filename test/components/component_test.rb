@@ -23,8 +23,10 @@ class PrimerComponentTest < Minitest::Test
     end],
     [Primer::DropdownComponent, {}, lambda do |component|
       component.button { "Foo" }
-      component.menu
-    end}],
+      component.menu do |m|
+        m.item { "Baz" }
+      end
+    end],
     [Primer::Dropdown::MenuComponent, {}],
     [Primer::FlexComponent, {}],
     [Primer::FlashComponent, {}],

@@ -30,8 +30,6 @@
       url: /components/details
     - title: Dropdown
       url: /components/dropdown
-    - title: DropdownMenu
-      url: /components/dropdownmenu
     - title: Flash
       url: /components/flash
     - title: Heading
