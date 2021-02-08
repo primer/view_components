@@ -32,9 +32,9 @@ bundle
 popd
 
 # commiting and pushing
-# git add CHANGELOG.md Gemfile.lock lib/primer/view_components/version.rb
-# git commit -m "release v$major.$minor.$patch"
-# git push origin release-v$major.$minor.$patch
+git add CHANGELOG.md Gemfile.lock demo/Gemfile.lock lib/primer/view_components/version.rb
+git commit -m "release v$major.$minor.$patch"
+git push origin release-v$major.$minor.$patch
 
 echo "####################################################"
 echo "Now, open a PR with this branch and merge it to main"
