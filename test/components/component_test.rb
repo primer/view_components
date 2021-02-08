@@ -21,8 +21,11 @@ class PrimerComponentTest < Minitest::Test
       component.slot(:summary) { "Foo" }
       component.slot(:body) { "Bar" }
     end],
-    [Primer::DropdownComponent, {}],
-    [Primer::DropdownMenuComponent, {}],
+    [Primer::DropdownComponent, {}, lambda do |component|
+      component.button { "Foo" }
+      component.menu
+    end}],
+    [Primer::Dropdown::MenuComponent, {}],
     [Primer::FlexComponent, {}],
     [Primer::FlashComponent, {}],
     [Primer::FlexItemComponent, { flex_auto: true }],

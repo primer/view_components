@@ -18,7 +18,7 @@ of the select menu.
 
 ```erb
 <div class="position-relative mt-2">
-  <%= render(Primer::DropdownMenuComponent.new(header: "Options")) do |c|
+  <%= render(Primer::Dropdown::MenuComponent.new(header: "Options")) do |c|
     c.item { "Item 1" }
     c.item { "Item 2" }
     c.item(divider: true)

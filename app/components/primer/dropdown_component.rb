@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "dropdown/menu_component"
+
 module Primer
   # Dropdowns are lightweight context menus for housing navigation and actions.
   # They're great for instances where you don't need the full power (and code) of the select menu.
@@ -7,7 +9,7 @@ module Primer
     include ViewComponent::SlotableV2
 
     renders_one :button
-    renders_one :menu, "Primer::DropdownMenuComponent"
+    renders_one :menu, Primer::Dropdown::MenuComponent
 
     # @example 210|Default
     #   <div style="margin-bottom: 150px">
