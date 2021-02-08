@@ -299,38 +299,6 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("bg-blue text-center float-left ml-1 ", { classes: "bg-blue text-center float-left ml-1" })
   end
 
-  def test_limits_allocations
-    # Warm up allocations
-    values = {
-      align_items: :center,
-      align_self: :center,
-      bg: :blue,
-      border: :top,
-      box_shadow: true,
-      col: 1,
-      color: :red,
-      flex: 1,
-      float: :left,
-      font_weight: :bold,
-      font_size: 1,
-      height: :fit,
-      justify_content: :flex_start,
-      m: 1,
-      p: 4,
-      position: :relative,
-      text_align: :left,
-      visibility: :hidden,
-      width: :fit,
-      underline: true,
-      vertical_align: true
-    }
-    Primer::Classify.call(**values)
-
-    assert_allocations 87, within: 4 do
-      Primer::Classify.call(**values)
-    end
-  end
-
   private
 
   def assert_generated_class(generated_class_name, input)
@@ -339,17 +307,5 @@ class PrimerClassifyTest < Minitest::Test
 
   def refute_generated_class(input)
     assert_nil(Primer::Classify.call(**input)[:class])
-  end
-
-  def assert_allocations(count, within:)
-    GC.disable
-    total_start = GC.stat[:total_allocated_objects]
-    yield
-    total_end = GC.stat[:total_allocated_objects]
-    GC.enable
-
-    total = total_end - total_start
-
-    assert_in_delta count, total, within, "Expected between #{count - within} and #{count + within} allocations. Got #{total}"
   end
 end
