@@ -37,30 +37,30 @@ module Primer
 
     # @example 100|Default
     #   <%= render(Primer::FlexComponent.new(bg: :gray)) do %>
-    #     <div class="p-5 border bg-gray-light">Item 1</div>
-    #     <div class="p-5 border bg-gray-light">Item 2</div>
-    #     <div class="p-5 border bg-gray-light">Item 3</div>
+    #     <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 1" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 2" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 3" } %>
     #   <% end %>
     #
     # @example 100|Justify center
     #   <%= render(Primer::FlexComponent.new(justify_content: :center, bg: :gray)) do %>
-    #     <div class="p-5 border bg-gray-light">Item 1</div>
-    #     <div class="p-5 border bg-gray-light">Item 2</div>
-    #     <div class="p-5 border bg-gray-light">Item 3</div>
+    #     <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 1" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 2" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 3" } %>
     #   <% end %>
     #
     # @example 100|Align end
     #   <%= render(Primer::FlexComponent.new(align_items: :end, bg: :gray)) do %>
-    #     <div class="p-5 border bg-gray-light">Item 1</div>
-    #     <div class="p-5 border bg-gray-light">Item 2</div>
-    #     <div class="p-5 border bg-gray-light">Item 3</div>
+    #     <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 1" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 2" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 3" } %>
     #   <% end %>
     #
     # @example 100|Direction column
     #   <%= render(Primer::FlexComponent.new(direction: :column, bg: :gray)) do %>
-    #     <div class="p-5 border bg-gray-light">Item 1</div>
-    #     <div class="p-5 border bg-gray-light">Item 2</div>
-    #     <div class="p-5 border bg-gray-light">Item 3</div>
+    #     <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 1" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 2" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, classes: "border bg-gray-light")) { "Item 3" } %>
     #   <% end %>
     #
     # @param justify_content [Symbol] Use this param to distribute space between and around flex items along the main axis of the container. <%= one_of(Primer::FlexComponent::JUSTIFY_CONTENT_OPTIONS) %>
