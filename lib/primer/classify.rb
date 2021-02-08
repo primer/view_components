@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "classify/cache"
+
 module Primer
   # :nodoc:
   class Classify
@@ -166,10 +168,10 @@ module Primer
             raise ArgumentError, "#{key} does not support responsive values" unless RESPONSIVE_KEYS.include?(key)
 
             value.each_with_index do |val, index|
-              extract_value(memo, key, val, BREAKPOINTS[index])
+              Primer::Classify::Cache.read(memo, key, val, BREAKPOINTS[index]) || extract_value(memo, key, val, BREAKPOINTS[index])
             end
           else
-            extract_value(memo, key, value, BREAKPOINTS[0])
+            Primer::Classify::Cache.read(memo, key, value, BREAKPOINTS[0]) || extract_value(memo, key, value, BREAKPOINTS[0])
           end
         end
 
@@ -194,7 +196,7 @@ module Primer
             memo[:classes] << css_class
           end
         elsif key == BG_KEY
-          if val.to_s.starts_with?("#")
+          if val.to_s.start_with?("#")
             memo[:styles] << "background-color: #{val};"
           else
             memo[:classes] << "bg-#{val.to_s.dasherize}"
@@ -265,5 +267,7 @@ module Primer
         end
       end
     end
+
+    Cache.preload!
   end
 end

@@ -37,3 +37,6 @@ Style/MultipleComparison:
 
 Rails/RakeEnvironment:
   Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
