@@ -6,9 +6,7 @@
 
     *Manuel Puyol*
 
-### Breaking Changes
-
-* Move `DropdownMenuComponent` to `Dropdown::MenuComponent`, its content now uses `item` slots instead of raw HTML.
+* Deprecates `DropdownMenuComponent` in favor of `Dropdown::MenuComponent`. This component should not be used standalone, being part of `Dropdown`.
 
     *Manuel Puyol*
 

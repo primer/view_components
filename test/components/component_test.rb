@@ -28,6 +28,7 @@ class PrimerComponentTest < Minitest::Test
       end
     end],
     [Primer::Dropdown::MenuComponent, {}],
+    [Primer::DropdownMenuComponent, {}],
     [Primer::FlexComponent, {}],
     [Primer::FlashComponent, {}],
     [Primer::FlexItemComponent, { flex_auto: true }],

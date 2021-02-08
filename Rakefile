@@ -115,6 +115,7 @@ namespace :docs do
       Primer::CounterComponent,
       Primer::DetailsComponent,
       Primer::DropdownComponent,
+      Primer::DropdownMenuComponent,
       Primer::FlashComponent,
       Primer::HeadingComponent,
       Primer::LabelComponent,
