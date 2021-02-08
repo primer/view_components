@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.0.17)
+    primer_view_components (0.0.18)
       octicons_helper (>= 9.0.0, < 12.0.0)
       rails (>= 5.0.0, < 7.0)
       view_component (>= 2.0.0, < 3.0)
@@ -110,10 +110,10 @@ GEM
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
-    octicons (11.2.0)
+    octicons (11.3.0)
       nokogiri (>= 1.6.3.1)
-    octicons_helper (11.2.0)
-      octicons (= 11.2.0)
+    octicons_helper (11.3.0)
+      octicons (= 11.3.0)
       rails
     pry (0.13.1)
       coderay (~> 1.1)
