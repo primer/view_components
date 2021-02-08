@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 module Primer
-  # :nodoc
+  # Use FlexComponent to make an element lay out its content using the flexbox model.
+  # Before using these utilities, you should be familiar with CSS3 Flexible Box
+  # spec. If you are not, check out MDN's guide  [Using CSS Flexible
+  # Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox).
   class FlexComponent < Primer::Component
     JUSTIFY_CONTENT_DEFAULT = nil
     JUSTIFY_CONTENT_MAPPINGS = {
@@ -32,6 +35,40 @@ module Primer
     DEFAULT_DIRECTION = nil
     ALLOWED_DIRECTIONS = [DEFAULT_DIRECTION, :column, :column_reverse, :row, :row_reverse].freeze
 
+    # @example 100|Default
+    #   <%= render(Primer::FlexComponent.new(bg: :gray)) do %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
+    #   <% end %>
+    #
+    # @example 100|Justify center
+    #   <%= render(Primer::FlexComponent.new(justify_content: :center, bg: :gray)) do %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
+    #   <% end %>
+    #
+    # @example 100|Align end
+    #   <%= render(Primer::FlexComponent.new(align_items: :end, bg: :gray)) do %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
+    #   <% end %>
+    #
+    # @example 100|Direction column
+    #   <%= render(Primer::FlexComponent.new(direction: :column, bg: :gray)) do %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
+    #   <% end %>
+    #
+    # @param justify_content [Symbol] Use this param to distribute space between and around flex items along the main axis of the container. <%= one_of(Primer::FlexComponent::JUSTIFY_CONTENT_OPTIONS) %>
+    # @param inline [Boolean] Defaults to false.
+    # @param flex_wrap [Boolean] Defaults to nil.
+    # @param align_items [Symbol] Use this param to align items on the cross axis. <%= one_of(Primer::FlexComponent::ALIGN_ITEMS_OPTIONS) %>
+    # @param direction [Symbol] Use this param to define the orientation of the main axis (row or column). By default, flex items will display in a row. <%= one_of(Primer::FlexComponent::ALLOWED_DIRECTIONS) %>
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       justify_content: JUSTIFY_CONTENT_DEFAULT,
       inline: INLINE_DEFAULT,
