@@ -13,7 +13,7 @@ module Primer
       alpha: :alpha,
       beta: :beta,
       stable: :stable,
-      deprecated: :deprecated,
+      deprecated: :deprecated
     }.freeze
 
     def self.status
