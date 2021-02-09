@@ -49,4 +49,8 @@ class PrimerBorderBoxComponentTest < Minitest::Test
     assert_selector("ul", count: 1)
     assert_selector("li.Box-row", count: 3)
   end
+
+  def test_status
+    assert_equal Primer::BorderBoxComponent.status, Primer::Component::STATUSES[:beta]
+  end
 end
