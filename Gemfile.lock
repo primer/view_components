@@ -70,8 +70,10 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    allocation_tracer (0.6.3)
     ansi (1.5.0)
     ast (2.4.2)
+    benchmark-ips (2.8.4)
     bootsnap (1.5.1)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -235,6 +237,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  allocation_tracer (~> 0.6.3)
+  benchmark-ips (~> 2.8.4)
   bootsnap (>= 1.4.2)
   capybara (~> 3)
   listen (~> 3.0)

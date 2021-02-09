@@ -76,7 +76,7 @@ module Primer
     #
     # @param underline [Boolean] Whether text should be underlined.
     #
-    # @param color [Symbol] Text color. <%= one_of([:blue, :red, :gray_light, :gray, :gray_dark, :green, :orange, :orange_light, :purple, :pink, :white, :inherit]) %> Note: this API is subject to change as we move to functional colors.
+    # @param color [Symbol] Text color. <%= one_of([:blue, :red, :gray_light, :gray, :gray_dark, :green, :orange, :orange_light, :purple, :pink, :white, :inherit, :text_primary, :text_secondary, :text_tertiary, :text_link, :text_success, :text_warning, :text_danger, :icon_primary, :icon_secondary, :icon_tertiary, :icon_info, :icon_success, :icon_warning, :icon_danger]) %>
     # @param bg [String, Symbol] Background color. Accepts either a hex value as a String or a color name as a Symbol.
     #
     # @param box_shadow [Boolean, Symbol] Box shadow. <%= one_of([true, :medium, :large, :extra_large, :none]) %>
@@ -116,7 +116,7 @@ module Primer
     end
 
     def call
-      content_tag(@tag, content, { **@content_tag_args.merge(@result) })
+      content_tag(@tag, content, @content_tag_args.merge(@result))
     end
 
     private

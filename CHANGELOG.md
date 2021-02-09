@@ -2,6 +2,10 @@
 
 ## main
 
+* Add support for functional colors to `color` system argument.
+
+    *Jake Shorty
+
 * Add `Dropdown` component.
 
     *Manuel Puyol*
