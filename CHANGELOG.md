@@ -2,6 +2,10 @@
 
 ## main
 
+* Add support for functional colors to `color` system argument.
+
+    *Jake Shorty*
+
 * Add `border_radius` system argument.
 
     *Ash Guillaume*
