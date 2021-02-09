@@ -7,7 +7,7 @@ module Primer
 
     # Required list of buttons to be rendered.
     #
-    # @param kwargs [Hash] the same arguments as <%= link_to_component(Primer::ButtonComponent) %>
+    # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
     renders_many :buttons, ->(**kwargs) { Primer::ButtonComponent.new(group_item: true, **kwargs) }
 
     # @example 50|Default
