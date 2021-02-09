@@ -4,9 +4,11 @@ require "pry"
 require "simplecov"
 require "simplecov-console"
 
-SimpleCov.start do
-  command_name "rails#{ENV['RAILS_VERSION']}-ruby#{ENV['RUBY_VERSION']}" if ENV["RUBY_VERSION"]
-  formatter SimpleCov::Formatter::Console
+if ENV["COVERAGE"] == "1"
+  SimpleCov.start do
+    command_name "rails#{ENV['RAILS_VERSION']}-ruby#{ENV['RUBY_VERSION']}" if ENV["RUBY_VERSION"]
+    formatter SimpleCov::Formatter::Console
+  end
 end
 
 require "bundler/setup"
