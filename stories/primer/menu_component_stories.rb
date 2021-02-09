@@ -11,7 +11,7 @@ class Primer::MenuComponentStories < ViewComponent::Storybook::Stories
     end
   end
 
-  story(:with_header) do
+  story(:with_heading) do
     content do |c|
       c.heading { "Heading" }
       c.item(selected: true, href: "#url") { "Item 1" }

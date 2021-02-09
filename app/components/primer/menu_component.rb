@@ -5,6 +5,7 @@ module Primer
   class MenuComponent < Primer::Component
     include ViewComponent::SlotableV2
 
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :heading, lambda { |**system_arguments|
       system_arguments[:tag] = :span
       system_arguments[:classes] = class_names(
@@ -15,6 +16,9 @@ module Primer
       Primer::BaseComponent.new(**system_arguments)
     }
 
+    # @param href [String] URL to be used for the Link
+    # @param selected [Boolean] Whether the item is the current selection
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_many :items, lambda { |href:, selected: false, **system_arguments|
       system_arguments[:tag] = :a
       system_arguments[:href] = href
@@ -45,8 +49,6 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @param href [String] URL to be used for the Link
-    # @param muted [Boolean] Uses light gray for Link color, and blue on hover
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)
       @system_arguments = system_arguments
