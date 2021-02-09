@@ -52,8 +52,12 @@ module Primer
       @system_arguments[:tag] = :nav
       @system_arguments[:classes] = class_names(
         "menu"
-        @system_arguments[:classes],
+        @system_arguments[:classes]
       )
+    end
+
+    def render?
+      items.any?
     end
   end
 end
