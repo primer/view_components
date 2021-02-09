@@ -38,6 +38,5 @@ module Primer
     def self.status
       Primer::Component::STATUSES[:beta]
     end
-
   end
 end
