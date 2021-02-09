@@ -128,6 +128,7 @@ namespace :docs do
       Primer::LabelComponent,
       Primer::LayoutComponent,
       Primer::LinkComponent,
+      Primer::MenuComponent,
       Primer::OcticonComponent,
       Primer::PopoverComponent,
       Primer::ProgressBarComponent,
