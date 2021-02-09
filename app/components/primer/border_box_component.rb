@@ -36,10 +36,7 @@ module Primer
     def initialize(**system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
-      @system_arguments[:classes] = class_names(
-        "Box",
-        system_arguments[:classes]
-      )
+      @system_arguments[:classes] = class_names("Box", system_arguments[:classes])
     end
 
     def render?
