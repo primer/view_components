@@ -3,6 +3,8 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
 require "yard"
+require "yard/renders_one_handler"
+require "yard/renders_many_handler"
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
@@ -68,6 +70,11 @@ namespace :docs do
 
   def link_to_system_arguments_docs
     "[System arguments](/system-arguments)"
+  end
+
+  def link_to_component(component)
+    short_name = component.name.demodulize.gsub("Component", "")
+    "[#{short_name}](/components/#{short_name.downcase})"
   end
 
   def pretty_value(val)
@@ -220,6 +227,42 @@ namespace :docs do
           f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
         end
 
+        # Slots V2 docs
+        slot_v2_methods = documentation.meths.select { |x| x[:renders_one] || x[:renders_many] }
+
+        if slot_v2_methods.any?
+          f.puts
+          f.puts("## Slots")
+
+          slot_v2_methods.each do |slot_documentation|
+            f.puts
+            f.puts("### `#{slot_documentation.name.to_s.capitalize}`")
+            f.puts
+
+            unless slot_documentation.base_docstring.blank?
+              f.puts(slot_documentation.base_docstring)
+              f.puts
+            end
+
+            f.puts("| Name | Type | Default | Description |")
+            f.puts("| :- | :- | :- | :- |")
+
+            slot_documentation.tags(:param).each do |tag|
+              params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
+
+              default =
+                if params && params[1]
+                  "`#{params[1]}`"
+                else
+                  "N/A"
+                end
+
+              f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
+            end
+          end
+        end
+
+        # Slots V1 docs
         next unless component.respond_to?(:slots)
 
         component.slots.each do |name, value|
