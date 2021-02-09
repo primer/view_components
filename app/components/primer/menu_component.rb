@@ -33,11 +33,11 @@ module Primer
     #     <% c.item(selected: true, href: "#url") do %>
     #       Item 1
     #     <% end %>
-    #     <% c.item(selected: true, href: "#url") do %>
+    #     <% c.item(href: "#url") do %>
     #       <%= render(Primer::OcticonComponent.new(icon: "check")) %>
     #       With Icon
     #     <% end %>
-    #     <% c.item(selected: true, href: "#url") do %>
+    #     <% c.item(href: "#url") do %>
     #       <%= render(Primer::OcticonComponent.new(icon: "check")) %>
     #       With Icon and Counter
     #       <%= render(Primer::CounterComponent.new(count: 25)) %>
