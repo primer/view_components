@@ -29,3 +29,13 @@ end %>
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Buttons`
+
+Required list of buttons to be rendered.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `kwargs` | `Hash` | N/A | the same arguments as [Button](/components/button) |
