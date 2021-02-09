@@ -34,5 +34,10 @@ module Primer
       @system_arguments[:viewBox] = "0 0 16 16"
       @system_arguments[:fill] = :none
     end
+
+    def self.status
+      Primer::Component::STATUSES[:beta]
+    end
+
   end
 end

@@ -42,5 +42,9 @@ module Primer
     def call
       octicon(@icon, { **@system_arguments })
     end
+
+    def self.status
+      Primer::Component::STATUSES[:beta]
+    end
   end
 end
