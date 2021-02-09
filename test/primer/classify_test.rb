@@ -134,6 +134,21 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("color-blue-5",       { color: :blue_5 })
     assert_generated_class("color-gray-9",       { color: :gray_9 })
     assert_generated_class("color-purple-3",     { color: :purple_3 })
+
+    assert_generated_class("color-text-primary",   { color: :text_primary })
+    assert_generated_class("color-text-secondary", { color: :text_secondary })
+    assert_generated_class("color-text-tertiary",  { color: :text_tertiary })
+    assert_generated_class("color-text-link",      { color: :text_link })
+    assert_generated_class("color-text-success",   { color: :text_success })
+    assert_generated_class("color-text-warning",   { color: :text_warning })
+    assert_generated_class("color-text-danger",    { color: :text_danger })
+    assert_generated_class("color-icon-primary",   { color: :icon_primary })
+    assert_generated_class("color-icon-secondary", { color: :icon_secondary })
+    assert_generated_class("color-icon-tertiary",  { color: :icon_tertiary })
+    assert_generated_class("color-icon-info",      { color: :icon_info })
+    assert_generated_class("color-icon-success",   { color: :icon_success })
+    assert_generated_class("color-icon-warning",   { color: :icon_warning })
+    assert_generated_class("color-icon-danger",    { color: :icon_danger })
   end
 
   def test_bg
