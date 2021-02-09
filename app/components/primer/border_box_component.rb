@@ -42,6 +42,10 @@ module Primer
       rows.any? || header.present? || body.present? || footer.present?
     end
 
+    def self.status
+      Primer::Component::STATUSES[:beta]
+    end
+
     # :nodoc
     class Header < Primer::Slot
       attr_reader :system_arguments

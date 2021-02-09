@@ -1,6 +1,6 @@
 ---
 title: ButtonGroup
-status: Experimental
+status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/button_group_component.rb
 ---
 

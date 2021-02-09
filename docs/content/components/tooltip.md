@@ -1,6 +1,6 @@
 ---
 title: Tooltip
-status: Experimental
+status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/tooltip_component.rb
 ---
 
