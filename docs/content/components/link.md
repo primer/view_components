@@ -1,6 +1,6 @@
 ---
 title: Link
-status: Experimental
+status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/link_component.rb
 ---
 
