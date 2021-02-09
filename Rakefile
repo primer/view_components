@@ -239,7 +239,7 @@ namespace :docs do
             f.puts("### `#{slot_documentation.name.to_s.capitalize}`")
             f.puts
 
-            unless slot_documentation.base_docstring.blank?
+            if slot_documentation.base_docstring.present?
               f.puts(slot_documentation.base_docstring)
               f.puts
             end
