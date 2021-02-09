@@ -81,18 +81,6 @@ namespace :docs do
     end
   end
 
-  def check_for_stories(component, missing_accumulator)
-    components_with_stories_names = Dir.glob("stories/**/*.rb").map do |path|
-      path[15, path.size].delete_suffix("_stories.rb")
-    end
-
-    component_name = component.to_s.delete_prefix("Primer::").underscore
-
-    return if components_with_stories_names.include?(component_name)
-
-    missing_accumulator << component
-  end
-
   task :build do
     require File.expand_path("demo/config/environment.rb", __dir__)
     require "primer/view_components"
@@ -145,10 +133,8 @@ namespace :docs do
     components_needing_docs = all_components - components
 
     components_without_examples = []
-    components_without_stories = []
 
     components.each do |component|
-      check_for_stories(component, components_without_stories)
       documentation = registry.get(component.name)
 
       # Primer::AvatarComponent => Avatar
@@ -281,11 +267,6 @@ namespace :docs do
     end
 
     puts "Markdown compiled."
-
-    if components_without_stories.any?
-      puts
-      puts "The following components have no storybook stories defined: #{components_without_stories.map(&:name).join(', ')}. Consider telling a story?"
-    end
 
     if components_without_examples.any?
       puts
