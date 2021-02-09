@@ -27,7 +27,7 @@ class AllComponentsHaveStoriesTest < Minitest::Test
       path[15, path.size].chomp("_stories.rb")
     end
 
-    component_name = component.to_s.delete_prefix("Primer::").underscore
+    component_name = component.to_s.chomp("Primer::").underscore
 
     return if components_with_stories_names.include?(component_name)
 
