@@ -17,6 +17,7 @@ module Primer
 
     renders_many :items, lambda { |href:, selected: false, **system_arguments|
       system_arguments[:tag] = :a
+      system_arguments[:href] = href
       system_arguments[:"aria-current"] = :page if selected
       system_arguments[:classes] = class_names(
         "menu-item",
@@ -51,7 +52,7 @@ module Primer
       @system_arguments = system_arguments
       @system_arguments[:tag] = :nav
       @system_arguments[:classes] = class_names(
-        "menu"
+        "menu",
         @system_arguments[:classes]
       )
     end
