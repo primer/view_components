@@ -6,7 +6,7 @@
 
     *Manuel Puyol*
 
-* Deprecates `DropdownMenuComponent` in favor of `Dropdown::MenuComponent`. This component should not be used standalone, being part of `Dropdown`.
+* Deprecate `DropdownMenuComponent`.
 
     *Manuel Puyol*
 
