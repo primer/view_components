@@ -19,13 +19,12 @@ module Primer
     #       Body
     #     <% end %>
     #     <% component.slot(:row) do %>
-    #       Row one
+    #       <% if true %>
+    #         Row one
+    #       <% end %>
     #     <% end %>
     #     <% component.slot(:row) do %>
     #       Row two
-    #     <% end %>
-    #     <% component.slot(:row) do %>
-    #       Row three
     #     <% end %>
     #     <% component.slot(:footer) do %>
     #       Footer
