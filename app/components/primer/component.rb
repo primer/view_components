@@ -10,15 +10,14 @@ module Primer
 
     # sourced from https://primer.style/doctocat/usage/front-matter#status
     STATUSES = {
-      deprecated: :deprecated,
-      review: :review,
-      experimental: :experimental,
-      new: :new,
-      stable: :stable
+      alpha: :alpha,
+      beta: :beta,
+      stable: :stable,
+      deprecated: :deprecated
     }.freeze
 
     def self.status
-      STATUSES[:experimental]
+      STATUSES[:alpha]
     end
   end
 end

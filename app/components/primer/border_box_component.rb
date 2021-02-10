@@ -11,27 +11,39 @@ module Primer
     with_slot :row, collection: true, class_name: "Row"
 
     # @example 350|Header, body, rows, and footer
-    #   <%= render(Primer::BorderBoxComponent.new) do |component|
-    #     component.slot(:header) { "Header" }
-    #     component.slot(:body) { "Body" }
-    #     component.slot(:row) { "Row one" }
-    #     component.slot(:row) { "Row two" }
-    #     component.slot(:row) { "Row three" }
-    #     component.slot(:footer) { "Footer" }
-    #   end %>
+    #   <%= render(Primer::BorderBoxComponent.new) do |component| %>
+    #     <% component.slot(:header) do %>
+    #       Header
+    #     <% end %>
+    #     <% component.slot(:body) do %>
+    #       Body
+    #     <% end %>
+    #     <% component.slot(:row) do %>
+    #       <% if true %>
+    #         Row one
+    #       <% end %>
+    #     <% end %>
+    #     <% component.slot(:row) do %>
+    #       Row two
+    #     <% end %>
+    #     <% component.slot(:footer) do %>
+    #       Footer
+    #     <% end %>
+    #   <% end %>
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
-      @system_arguments[:classes] = class_names(
-        "Box",
-        system_arguments[:classes]
-      )
+      @system_arguments[:classes] = class_names("Box", system_arguments[:classes])
     end
 
     def render?
       rows.any? || header.present? || body.present? || footer.present?
+    end
+
+    def self.status
+      Primer::Component::STATUSES[:beta]
     end
 
     # :nodoc

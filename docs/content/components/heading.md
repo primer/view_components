@@ -1,6 +1,6 @@
 ---
 title: Heading
-status: Experimental
+status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/heading_component.rb
 ---
 

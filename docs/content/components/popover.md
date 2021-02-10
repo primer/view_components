@@ -1,6 +1,6 @@
 ---
 title: Popover
-status: Experimental
+status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/popover_component.rb
 ---
 
