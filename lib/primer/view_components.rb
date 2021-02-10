@@ -12,14 +12,9 @@ module Primer
     # generate_statuses returns a hash mapping component name to
     # the component's status
     def self.generate_statuses
-      statuses = {}
-      components = Primer::Component.descendants
-
-      components.each do |component|
-        statuses[component.to_s] = component.status.to_s
+      Primer::Component.descendants.each_with_object({}) do |component, mem|
+        mem[component.to_s] = component.status.to_s
       end
-
-      statuses
     end
 
     # dump_statuses generates the status hash and then serializes
