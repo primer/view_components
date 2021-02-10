@@ -5,6 +5,8 @@ module Primer
   class MenuComponent < Primer::Component
     include ViewComponent::SlotableV2
 
+    # Optional menu heading
+    #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :heading, lambda { |**system_arguments|
       system_arguments[:tag] ||= :span
@@ -16,6 +18,8 @@ module Primer
       Primer::BaseComponent.new(**system_arguments)
     }
 
+    # Required list of navigational links
+    #
     # @param href [String] URL to be used for the Link
     # @param selected [Boolean] Whether the item is the current selection
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

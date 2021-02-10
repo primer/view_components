@@ -1,6 +1,6 @@
 ---
 title: Menu
-status: Experimental
+status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/menu_component.rb
 ---
 
@@ -38,4 +38,24 @@ Use menus to create vertical lists of navigational links.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Heading`
+
+Optional menu heading
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Items`
+
+Required list of navigational links
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `href` | `String` | N/A | URL to be used for the Link |
+| `selected` | `Boolean` | N/A | Whether the item is the current selection |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
