@@ -46,6 +46,8 @@
       url: /components/layout
     - title: Link
       url: /components/link
+    - title: Menu
+      url: /components/menu
     - title: Octicon
       url: /components/octicon
     - title: Popover
