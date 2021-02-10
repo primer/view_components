@@ -125,6 +125,10 @@ module Primer
       @link_url = link_url
     end
 
+    def self.status
+      Primer::Component::STATUSES[:beta]
+    end
+
     # :nodoc
     class Spinner < Primer::Slot
       # @param size [Symbol] <%= one_of(Primer::SpinnerComponent::SIZE_MAPPINGS) %>
