@@ -3,6 +3,8 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
 require "yard"
+require "yard/renders_one_handler"
+require "yard/renders_many_handler"
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
@@ -28,6 +30,15 @@ namespace :coverage do
     SimpleCov.collate Dir["simplecov-resultset-*/.resultset.json"], "rails" do
       formatter SimpleCov::Formatter::Console
     end
+  end
+end
+
+namespace :statuses do
+  task :dump do
+    require File.expand_path("demo/config/environment.rb", __dir__)
+    require "primer/view_components"
+
+    Primer::ViewComponents.dump_statuses
   end
 end
 
@@ -70,6 +81,11 @@ namespace :docs do
     "[System arguments](/system-arguments)"
   end
 
+  def link_to_component(component)
+    short_name = component.name.demodulize.gsub("Component", "")
+    "[#{short_name}](/components/#{short_name.downcase})"
+  end
+
   def pretty_value(val)
     case val
     when nil
@@ -79,18 +95,6 @@ namespace :docs do
     else
       "`#{val}`"
     end
-  end
-
-  def check_for_stories(component, missing_accumulator)
-    components_with_stories_names = Dir.glob("stories/**/*.rb").map do |path|
-      path[15, path.size].delete_suffix("_stories.rb")
-    end
-
-    component_name = component.to_s.delete_prefix("Primer::").underscore
-
-    return if components_with_stories_names.include?(component_name)
-
-    missing_accumulator << component
   end
 
   task :build do
@@ -146,10 +150,8 @@ namespace :docs do
     components_needing_docs = all_components - components
 
     components_without_examples = []
-    components_without_stories = []
 
     components.each do |component|
-      check_for_stories(component, components_without_stories)
       documentation = registry.get(component.name)
 
       # Primer::AvatarComponent => Avatar
@@ -221,6 +223,42 @@ namespace :docs do
           f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
         end
 
+        # Slots V2 docs
+        slot_v2_methods = documentation.meths.select { |x| x[:renders_one] || x[:renders_many] }
+
+        if slot_v2_methods.any?
+          f.puts
+          f.puts("## Slots")
+
+          slot_v2_methods.each do |slot_documentation|
+            f.puts
+            f.puts("### `#{slot_documentation.name.to_s.capitalize}`")
+            f.puts
+
+            if slot_documentation.base_docstring.present?
+              f.puts(slot_documentation.base_docstring)
+              f.puts
+            end
+
+            f.puts("| Name | Type | Default | Description |")
+            f.puts("| :- | :- | :- | :- |")
+
+            slot_documentation.tags(:param).each do |tag|
+              params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
+
+              default =
+                if params && params[1]
+                  "`#{params[1]}`"
+                else
+                  "N/A"
+                end
+
+              f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
+            end
+          end
+        end
+
+        # Slots V1 docs
         next unless component.respond_to?(:slots)
 
         component.slots.each do |name, value|
@@ -282,11 +320,6 @@ namespace :docs do
     end
 
     puts "Markdown compiled."
-
-    if components_without_stories.any?
-      puts
-      puts "The following components have no storybook stories defined: #{components_without_stories.map(&:name).join(', ')}. Consider telling a story?"
-    end
 
     if components_without_examples.any?
       puts

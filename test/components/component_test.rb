@@ -99,7 +99,7 @@ class PrimerComponentTest < Minitest::Test
   end
 
   def test_status_has_a_default
-    assert_equal Primer::Component.status, Primer::Component::STATUSES[:experimental]
+    assert_equal Primer::Component.status, Primer::Component::STATUSES[:alpha]
   end
 
   def test_components_storybook_coverage

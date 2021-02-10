@@ -67,4 +67,8 @@ class PrimerFlashComponentTest < Minitest::Test
 
     assert_selector(".flash.mb-1")
   end
+
+  def test_status
+    assert_equal Primer::FlashComponent.status, Primer::Component::STATUSES[:beta]
+  end
 end

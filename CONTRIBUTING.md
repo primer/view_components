@@ -31,12 +31,4 @@ Here are a few things you can do that will increase the likelihood of your pull 
 
 If you are the current maintainer of this gem:
 
-1. Create a branch for the release: `git checkout -b release-vxx.xx.xx`
-1. Bump gem version in `lib/primer/view_components/version.rb`. Try to adhere to [SemVer](https://semver.org).
-1. Add version heading to `CHANGELOG.md`.
-1. Make a PR to primer/view_components.
-1. Merge primer/view_components PR
-1. Create a GitHub [release](https://github.com/primer/view_components/releases/new) and populate it with a list of the changes from `CHANGELOG.md`. The title is the same as the release version. Example title: v0.0.8
-1. Get latest changes from default branch: `git pull origin main`
-1. Build gem: `gem build primer_view_components.gemspec`
-1. Push to rubygems.org -- `gem push primer_view_components-VERSION.gem`
+1. Run `./script/release` and follow the instructions.

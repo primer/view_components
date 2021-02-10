@@ -1,6 +1,6 @@
 ---
 title: Layout
-status: Experimental
+status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/layout_component.rb
 ---
 

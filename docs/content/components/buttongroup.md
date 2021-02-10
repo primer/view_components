@@ -1,6 +1,6 @@
 ---
 title: ButtonGroup
-status: Experimental
+status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/button_group_component.rb
 ---
 
@@ -29,3 +29,13 @@ end %>
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Buttons`
+
+Required list of buttons to be rendered.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `kwargs` | `Hash` | N/A | The same arguments as [Button](/components/button). |
