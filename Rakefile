@@ -224,15 +224,15 @@ namespace :docs do
           slot_v2_methods.each do |slot_documentation|
             f.puts
             f.puts("### `#{slot_documentation.name.to_s.capitalize}`")
-            f.puts
 
             if slot_documentation.base_docstring.present?
-              f.puts(slot_documentation.base_docstring)
               f.puts
+              f.puts(slot_documentation.base_docstring)
             end
 
             param_tags = slot_documentation.tags(:param)
             if param_tags.any?
+              f.puts
               f.puts("| Name | Type | Default | Description |")
               f.puts("| :- | :- | :- | :- |")
             end
