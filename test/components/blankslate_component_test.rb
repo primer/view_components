@@ -128,6 +128,6 @@ class BlankslateComponentTest < Minitest::Test
   end
 
   def test_status
-    assert_equal Primer::BoxComponent.status, Primer::Component::STATUSES[:beta]
+    assert_equal Primer::BlankslateComponent.status, Primer::Component::STATUSES[:beta]
   end
 end
