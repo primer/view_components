@@ -1,6 +1,6 @@
 ---
 title: TimelineItem
-status: Experimental
+status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/timeline_item_component.rb
 ---
 
