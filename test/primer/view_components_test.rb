@@ -26,6 +26,6 @@ class Primer::ViewComponentsTest < Minitest::Test
     # dump to disk and then read back again
     Primer::ViewComponents.dump_statuses
 
-    assert_equal Primer::ViewComponents.generate_statuses.to_json, Primer::ViewComponents.read_statuses
+    assert_equal Primer::ViewComponents.generate_statuses.to_json, Primer::ViewComponents.read_statuses.chomp
   end
 end

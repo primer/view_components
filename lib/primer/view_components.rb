@@ -31,6 +31,7 @@ module Primer
 
       File.open(File.join(path, DEFAULT_STATUS_FILE_NAME), "w") do |f|
         f.write(statuses.to_json)
+        f.write($/)
       end
     end
 
