@@ -1,6 +1,6 @@
 ---
 title: Dropdown
-status: Experimental
+status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/dropdown_component.rb
 ---
 
@@ -62,4 +62,23 @@ They're great for instances where you don't need the full power (and code) of th
 | `overlay` | `Symbol` | `:default` | One of `:none`, `:default`, or `:dark`. |
 | `reset` | `Boolean` | `true` | Whether to hide the default caret on the button |
 | `summary_classes` | `String` | `""` | Custom classes to add to the button |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Button`
+
+Required trigger for the dropdown. Only accepts a content.
+Its classes can be customized by the `summary_classes` param in the parent component
+
+
+### `Menu`
+
+Required context menu for the dropdown
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `direction` | `Symbol` | N/A | One of `:se`, `:sw`, `:w`, `:e`, `:ne`, or `:s`. |
+| `scheme` | `Symbol` | N/A | Pass :dark for dark mode theming |
+| `header` | `String` | N/A | Optional string to display as the header |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

@@ -231,10 +231,13 @@ namespace :docs do
               f.puts
             end
 
-            f.puts("| Name | Type | Default | Description |")
-            f.puts("| :- | :- | :- | :- |")
+            param_tags = slot_documentation.tags(:param)
+            if param_tags.any?
+              f.puts("| Name | Type | Default | Description |")
+              f.puts("| :- | :- | :- | :- |")
+            end
 
-            slot_documentation.tags(:param).each do |tag|
+            param_tags.each do |tag|
               params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
 
               default =
