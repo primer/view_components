@@ -14,6 +14,10 @@ module Primer
     DIRECTION_DEFAULT = :se
     DIRECTION_OPTIONS = [DIRECTION_DEFAULT, :sw, :w, :e, :ne, :s].freeze
 
+    def self.status
+      STATUSES[:deprecated]
+    end
+
     # @example 200|With a header
     #   <div style="margin-bottom: 150px">
     #     <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
