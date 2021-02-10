@@ -33,6 +33,15 @@ namespace :coverage do
   end
 end
 
+namespace :statuses do
+  task :dump do
+    require File.expand_path("demo/config/environment.rb", __dir__)
+    require "primer/view_components"
+
+    Primer::ViewComponents.dump_statuses
+  end
+end
+
 namespace :docs do
   task :livereload do
     require "listen"
