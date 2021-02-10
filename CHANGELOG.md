@@ -4,7 +4,15 @@
 
 * Add support for functional colors to `color` system argument.
 
-    *Jake Shorty*
+    *Jake Shorty
+
+* Add `Dropdown` component.
+
+    *Manuel Puyol*
+
+* Deprecate `DropdownMenuComponent`.
+
+    *Manuel Puyol*
 
 ## 0.0.18
 

@@ -1,6 +1,6 @@
 ---
 title: DropdownMenu
-status: Alpha
+status: Deprecated
 source: https://github.com/primer/view_components/tree/main/app/components/primer/dropdown_menu_component.rb
 ---
 

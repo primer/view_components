@@ -28,6 +28,8 @@
       url: /components/counter
     - title: Details
       url: /components/details
+    - title: Dropdown
+      url: /components/dropdown
     - title: DropdownMenu
       url: /components/dropdownmenu
     - title: Flash

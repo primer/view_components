@@ -124,6 +124,7 @@ namespace :docs do
       Primer::ButtonMarketingComponent,
       Primer::CounterComponent,
       Primer::DetailsComponent,
+      Primer::DropdownComponent,
       Primer::DropdownMenuComponent,
       Primer::FlashComponent,
       Primer::FlexComponent,
@@ -233,17 +234,20 @@ namespace :docs do
           slot_v2_methods.each do |slot_documentation|
             f.puts
             f.puts("### `#{slot_documentation.name.to_s.capitalize}`")
-            f.puts
 
             if slot_documentation.base_docstring.present?
-              f.puts(slot_documentation.base_docstring)
               f.puts
+              f.puts(slot_documentation.base_docstring)
             end
 
-            f.puts("| Name | Type | Default | Description |")
-            f.puts("| :- | :- | :- | :- |")
+            param_tags = slot_documentation.tags(:param)
+            if param_tags.any?
+              f.puts
+              f.puts("| Name | Type | Default | Description |")
+              f.puts("| :- | :- | :- | :- |")
+            end
 
-            slot_documentation.tags(:param).each do |tag|
+            param_tags.each do |tag|
               params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
 
               default =
