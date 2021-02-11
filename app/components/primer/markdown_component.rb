@@ -3,8 +3,8 @@
 module Primer
   # Use MarkdownComponent to weap markdown content
   class MarkdownComponent < Primer::Component
-    # @example 34|Default
-    #   <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
+    # @example 5320|Default
+    #   <%= render(Primer::MarkdownComponent.new) do %>
     #     <p>Text can be <b>bold</b>, <i>italic</i>, or <s>strikethrough</s>. <a href="https://github.com">Links </a> should be blue with no underlines (unless hovered over).</p>
     #
     #     <p>There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.</p>
