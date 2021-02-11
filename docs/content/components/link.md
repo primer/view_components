@@ -12,7 +12,7 @@ Use links for moving from one page to another. The Link component styles anchor 
 
 ### Default
 
-<iframe style="width: 100%; border: 0px; height: 40px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><a href='http://www.google.com'>Link</a></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 54px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><a href='http://www.google.com'>Link</a></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::LinkComponent.new(href: "http://www.google.com")) { "Link" } %>
@@ -20,7 +20,7 @@ Use links for moving from one page to another. The Link component styles anchor 
 
 ### Muted
 
-<iframe style="width: 100%; border: 0px; height: 40px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><a href='http://www.google.com' class='muted-link '>Link</a></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 54px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><a href='http://www.google.com' class='muted-link '>Link</a></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::LinkComponent.new(href: "http://www.google.com", muted: true)) { "Link" } %>

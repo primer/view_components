@@ -22,16 +22,16 @@ module Primer
     TAG_DEFAULT = :span
     TAG_OPTIONS = [TAG_DEFAULT, :div, :a].freeze
 
-    # @example 40|Default
+    # @example 35|Default
     #   <%= render(Primer::StateComponent.new(title: "title")) { "State" } %>
     #
-    # @example 40|Colors
+    # @example 35|Colors
     #   <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
     #   <%= render(Primer::StateComponent.new(title: "title", color: :green)) { "Green" } %>
     #   <%= render(Primer::StateComponent.new(title: "title", color: :red)) { "Red" } %>
     #   <%= render(Primer::StateComponent.new(title: "title", color: :purple)) { "Purple" } %>
     #
-    # @example 40|Sizes
+    # @example 35|Sizes
     #   <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
     #   <%= render(Primer::StateComponent.new(title: "title", size: :small)) { "Small" } %>
     #

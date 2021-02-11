@@ -13,7 +13,7 @@ dimensions to fill available space
 
 ### Default
 
-<iframe style="width: 100%; border: 0px; height: 100px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='d-flex'>  <div>    Item 1</div>  <div class='flex-auto '>    Item 2</div></div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 134px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='d-flex'>  <div>    Item 1</div>  <div class='flex-auto '>    Item 2</div></div></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::FlexComponent.new) do %>

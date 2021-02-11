@@ -12,7 +12,7 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ### Button types
 
-<iframe style="width: 100%; border: 0px; height: 50px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><button type='button' class='btn '>Default</button><button type='button' class='btn btn-primary '>Primary</button><button type='button' class='btn btn-danger '>Danger</button><button type='button' class='btn btn-outline '>Outline</button></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 69px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><button type='button' class='btn '>Default</button><button type='button' class='btn btn-primary '>Primary</button><button type='button' class='btn btn-danger '>Danger</button><button type='button' class='btn btn-outline '>Outline</button></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::ButtonComponent.new) { "Default" } %>
@@ -23,7 +23,7 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ### Variants
 
-<iframe style="width: 100%; border: 0px; height: 50px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><button type='button' class='btn btn-sm '>Small</button><button type='button' class='btn '>Medium</button><button type='button' class='btn btn-large '>Large</button></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 79px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><button type='button' class='btn btn-sm '>Small</button><button type='button' class='btn '>Medium</button><button type='button' class='btn btn-large '>Large</button></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>

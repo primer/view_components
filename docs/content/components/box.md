@@ -12,7 +12,7 @@ A basic wrapper component for most layout related needs.
 
 ### Default
 
-<iframe style="width: 100%; border: 0px; height: 20px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div>Your content here</div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 54px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div>Your content here</div></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::BoxComponent.new) { "Your content here" } %>
@@ -20,7 +20,7 @@ A basic wrapper component for most layout related needs.
 
 ### Color and padding
 
-<iframe style="width: 100%; border: 0px; height: 54px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='bg-gray p-3'>Hello world</div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 88px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='bg-gray p-3'>Hello world</div></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::BoxComponent.new(bg: :gray, p: 3)) { "Hello world" } %>

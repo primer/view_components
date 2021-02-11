@@ -14,7 +14,7 @@ of the page.
 
 ### Default
 
-<iframe style="width: 100%; border: 0px; height: 70px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><nav class='UnderlineNav '>  <ul class='UnderlineNav-body list-style-none '>        <a href='#url'>Item 1</a></ul>        <button type='button' class='btn '>Button!</button></nav></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 69px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><nav class='UnderlineNav '>  <ul class='UnderlineNav-body list-style-none '>        <a href='#url'>Item 1</a></ul>        <button type='button' class='btn '>Button!</button></nav></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new) do |component| %>
@@ -29,7 +29,7 @@ of the page.
 
 ### Align right
 
-<iframe style="width: 100%; border: 0px; height: 70px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><nav class='UnderlineNav UnderlineNav--right '>        <button type='button' class='btn '>Button!</button>  <ul class='UnderlineNav-body list-style-none '>        <a href='#url'>Item 1</a></ul></nav></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 69px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><nav class='UnderlineNav UnderlineNav--right '>        <button type='button' class='btn '>Button!</button>  <ul class='UnderlineNav-body list-style-none '>        <a href='#url'>Item 1</a></ul></nav></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>

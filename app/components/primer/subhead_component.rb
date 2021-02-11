@@ -9,7 +9,7 @@ module Primer
     with_slot :actions, class_name: "Actions"
     with_slot :description, class_name: "Description"
 
-    # @example 95|Default
+    # @example 65|Default
     #   <%= render(Primer::SubheadComponent.new) do |component| %>
     #     <% component.slot(:heading) do %>
     #       My Heading
