@@ -89,7 +89,7 @@ module Primer
     #     <ol>
     #       <li>Michael Jackson</li>
     #       <li>Michael Bolton</li>
-    #       <li>Michael Bublé</li>
+    #       <li>Michael Buble</li>
     #     </ol>
     #
     #     <p>And an unordered task list:</p>
