@@ -219,7 +219,11 @@ module Primer
         elsif key == WORD_BREAK_KEY
           memo[:classes] << "wb-#{val.to_s.dasherize}"
         elsif BORDER_KEYS.include?(key)
-          memo[:classes] << "border-#{val.to_s.dasherize}"
+          if val == true
+            memo[:classes] << "border"
+          else
+            memo[:classes] << "border-#{val.to_s.dasherize}"
+          end
         elsif BORDER_MARGIN_KEYS.include?(key)
           memo[:classes] << "#{key.to_s.dasherize}-#{val}"
         elsif key == BORDER_RADIUS_KEY
