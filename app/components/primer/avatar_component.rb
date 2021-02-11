@@ -8,7 +8,7 @@ module Primer
     SMALL_THRESHOLD = 24
 
     #
-    # @example 20|Default
+    # @example auto|Default
     #   <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
     #
     # @param src [String] The source url of the avatar image

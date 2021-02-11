@@ -35,7 +35,7 @@ module Primer
       Primer::BaseComponent.new(**system_arguments)
     }
 
-    # @example 150|Default
+    # @example auto|Default
     #   <%= render(Primer::MenuComponent.new) do |c| %>
     #     <% c.heading do %>
     #       Heading

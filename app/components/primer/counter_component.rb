@@ -11,7 +11,7 @@ module Primer
     }.freeze
 
     #
-    # @example 20|Default
+    # @example auto|Default
     #   <%= render(Primer::CounterComponent.new(count: 25)) %>
     #
     # @param count [Integer, Float::INFINITY, nil] The number to be displayed (e.x. # of issues, pull requests)
