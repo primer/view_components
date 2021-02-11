@@ -25,7 +25,7 @@ jobs:
         key: gems-build-rails-main-ruby-2.7.x-${{ hashFiles('**/Gemfile.lock') }}
     - name: Lint with Rubocop
       run: |
-        gem install bundler:1.17.3
+        gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
         bundle exec rubocop
@@ -44,7 +44,7 @@ jobs:
         key: gems-build-bench-ruby-2.7-${{ hashFiles('**/Gemfile.lock') }}
     - name: Build and test with Rake
       run: |
-        gem install bundler:1.17.3
+        gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle update
         bundle exec rake bench
@@ -74,7 +74,7 @@ jobs:
         key: gems-build-rails-${{ matrix.rails_version }}-ruby-${{ matrix.ruby_version }}-${{ hashFiles('**/Gemfile.lock') }}
     - name: Build and test with Rake
       run: |
-        gem install bundler:1.17.3
+        gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle update
         bundle exec rake
@@ -104,7 +104,7 @@ jobs:
         key: gems-build-rails-main-ruby-2.7.x-${{ hashFiles('**/Gemfile.lock') }}
     - name: Collate simplecov
       run: |
-        gem install bundler:1.17.3
+        gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
         bundle exec rake coverage:report
