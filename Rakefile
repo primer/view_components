@@ -180,7 +180,7 @@ namespace :docs do
         end
 
         initialize_method.tags(:example).each do |tag|
-          iframe_height = tag.name.split("|").first
+          iframe_height = tag.name.split("|").first.to_i + 34 # account for padding and borders
           name = tag.name.split("|")[1]
           description = tag.name.split("|")[2]
 
@@ -192,7 +192,7 @@ namespace :docs do
           f.puts
           html = view_context.render(inline: tag.text)
 
-          f.puts("<iframe style=\"width: 100%; border: 0px; height: #{iframe_height}px;\" srcdoc=\"<html><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.tr('"', "\'").delete("\n")}</body></html>\"></iframe>")
+          f.puts("<iframe style=\"width: 100%; border: 0px; height: #{iframe_height}px;\" srcdoc=\"<html class=\'Box height-full p-3\'><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.tr('"', "\'").delete("\n")}</body></html>\"></iframe>")
           f.puts
           f.puts("```erb")
           f.puts(tag.text.to_s)
