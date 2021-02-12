@@ -26,29 +26,29 @@ module Primer
       se
     ]
 
-    # @example 100|Default
+    # @example 55|Default
     #   <div class="pt-5">
     #     <%= render(Primer::TooltipComponent.new(label: "Even bolder")) { "Default Bold Text" } %>
     #   </div>
     #
-    # @example 100|Wrapping another component
+    # @example 65|Wrapping another component
     #   <div class="pt-5">
     #     <%= render(Primer::TooltipComponent.new(label: "Even bolder")) do %>
     #       <%= render(Primer::ButtonComponent.new) { "Bold Button" } %>
     #     <% end %>
     #   </div>
     #
-    # @example 100|With a direction
+    # @example 65|With a direction
     #   <div class="pt-5">
     #     <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s)) { "Bold Text With a Direction" } %>
     #   </div>
     #
-    # @example 100|With an alignment
+    # @example 65|With an alignment
     #   <div class="pt-5">
     #     <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s, alignment: :right_1)) { "Bold Text With an Alignment" } %>
     #   </div>
     #
-    # @example 100|Without a delay
+    # @example 65|Without a delay
     #   <div class="pt-5">
     #     <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s, no_delay: true)) { "Bold Text without a delay" } %>
     #   </div>

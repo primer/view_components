@@ -16,22 +16,22 @@ module Primer
     }.freeze
 
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
-    # @example 20|Default
+    # @example auto|Default
     #   <%= render(Primer::ProgressBarComponent.new) do |component| %>
     #     <% component.slot(:item, percentage: 25) %>
     #   <% end %>
     #
-    # @example 20|Small
+    # @example auto|Small
     #   <%= render(Primer::ProgressBarComponent.new(size: :small)) do |component| %>
     #     <% component.slot(:item, bg: :blue_4, percentage: 50) %>
     #   <% end %>
     #
-    # @example 30|Large
+    # @example auto|Large
     #   <%= render(Primer::ProgressBarComponent.new(size: :large)) do |component| %>
     #     <% component.slot(:item, bg: :red_4, percentage: 75) %>
     #   <% end %>
     #
-    # @example 20|Multiple items
+    # @example auto|Multiple items
     #   <%= render(Primer::ProgressBarComponent.new) do |component| %>
     #     <% component.slot(:item, percentage: 10) %>
     #     <% component.slot(:item, bg: :blue_4, percentage: 20) %>

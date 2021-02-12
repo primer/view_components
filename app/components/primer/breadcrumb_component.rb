@@ -7,7 +7,7 @@ module Primer
 
     with_slot :item, collection: true, class_name: "BreadcrumbItem"
 
-    # @example 40|Basic
+    # @example auto|Basic
     #   <%= render(Primer::BreadcrumbComponent.new) do |component| %>
     #     <% component.slot(:item, href: "/") do %>Home<% end %>
     #     <% component.slot(:item, href: "/about") do %>About<% end %>

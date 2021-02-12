@@ -12,7 +12,7 @@ Use the Heading component to wrap a component that will create a heading element
 
 ### Default
 
-<iframe style="width: 100%; border: 0px; height: 70px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><h1>H1 Text</h1><h2>H2 Text</h2><h3>H3 Text</h3></body></html>"></iframe>
+<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><h1>H1 Text</h1><h2>H2 Text</h2><h3>H3 Text</h3></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::HeadingComponent.new) { "H1 Text" } %>
