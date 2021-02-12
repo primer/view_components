@@ -6,5 +6,10 @@ const serverHost = isProd ? `https://${appName}.herokuapp.com` : 'http://localho
 export const parameters = {
   server: {
     url: `${serverHost}/rails/stories`,
+  },
+  options: {
+    storySort: {
+      method: 'alphabetical',
+    }
   }
 };
