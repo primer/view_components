@@ -12,7 +12,7 @@ Use Primer::CounterComponent to add a count to navigational elements and buttons
 
 ### Default
 
-<iframe style="width: 100%; border: 0px; height: 34px;" srcdoc="<html><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span title='25' class='Counter '>25</span></body></html>"></iframe>
+<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span title='25' class='Counter '>25</span></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::CounterComponent.new(count: 25)) %>
