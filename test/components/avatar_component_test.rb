@@ -48,4 +48,13 @@ class PrimerAvatarComponentTest < Minitest::Test
     assert_selector("img.avatar")
     refute_selector(".CircleBadge")
   end
+
+  def test_renders_link_wrapper
+    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", link: true, href: "#"))
+
+    assert_selector("a.avatar") do
+      assert_selector("img")
+    end
+    refute_selector("img.avatar")
+  end
 end
