@@ -5,8 +5,8 @@ source "https://rubygems.org"
 gemspec
 rails_version = (ENV["RAILS_VERSION"] || "6.1.1").to_s
 
-gem "rake", "~> 12.0"
 gem "rack-cors"
+gem "rake", "~> 12.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", rails_version == "main" ? { git: "https://github.com/rails/rails", ref: "main" } : rails_version
 # Use Puma as the app server
