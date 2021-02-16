@@ -48,6 +48,8 @@
       url: /components/link
     - title: Menu
       url: /components/menu
+    - title: Markdown
+      url: /components/markdown
     - title: Octicon
       url: /components/octicon
     - title: Popover
