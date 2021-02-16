@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Primer::DropdownMenuComponentStories < ViewComponent::Storybook::Stories
+  self.title = "Primer/Deprecated/DropdownMenu"
+
   layout "storybook_centered_preview"
 
   story(:with_header) do
