@@ -39,6 +39,6 @@ If you are the current maintainer of this gem:
 
 The following criteria should be met:
 
-* The component does not use any deprecated `view_components` platform features (eg - Slots v1)
-* Documentation and storybook stories are complete.
-* The API is expected to be stable
+- The component does not use any deprecated `view_components` platform features (eg - Slots v1)
+- Documentation and storybook stories are complete.
+- The API is expected to be stable
