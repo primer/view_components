@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # :nodoc
+  # :nodoc:
   module JoinStyleArgumentsHelper
     # Join two `style` arguments
     #
