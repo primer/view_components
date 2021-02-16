@@ -32,6 +32,6 @@ class PrimerDropdownMenuComponentTest < Minitest::Test
   end
 
   def test_status
-    assert_equal Primer::DropdownMenuComponent.status, Primer::Component::STATUSES[:deprecated]
+    assert_component_state(Primer::DropdownMenuComponent, :deprecated)
   end
 end

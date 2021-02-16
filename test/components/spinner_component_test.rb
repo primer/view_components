@@ -42,6 +42,6 @@ class PrimerSpinnerComponentTest < Minitest::Test
   end
 
   def test_status
-    assert_equal Primer::SpinnerComponent.status, Primer::Component::STATUSES[:beta]
+    assert_component_state(Primer::SpinnerComponent, :beta)
   end
 end

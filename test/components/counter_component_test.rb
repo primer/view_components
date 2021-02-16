@@ -130,6 +130,6 @@ class CounterComponentTest < Minitest::Test
   end
 
   def test_status
-    assert_equal Primer::CounterComponent.status, Primer::Component::STATUSES[:beta]
+    assert_component_state(Primer::CounterComponent, :beta)
   end
 end

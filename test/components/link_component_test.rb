@@ -39,6 +39,6 @@ class PrimerLinkComponentTest < Minitest::Test
   end
 
   def test_status
-    assert_equal Primer::LinkComponent.status, Primer::Component::STATUSES[:beta]
+    assert_component_state(Primer::LinkComponent, :beta)
   end
 end
