@@ -32,3 +32,13 @@ Here are a few things you can do that will increase the likelihood of your pull 
 If you are the current maintainer of this gem:
 
 1. Run `./script/release` and follow the instructions.
+
+## Criteria for changing component status
+
+### Promote from alpha to beta
+
+The following criteria should be met:
+
+- The component does not use any deprecated `view_components` platform features (eg - Slots v1).
+- Documentation and storybook stories are complete.
+- The API is expected to be stable.
