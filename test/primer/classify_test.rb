@@ -187,6 +187,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("border-right",  { border: :right })
     assert_generated_class("border-y",      { border: :y })
     assert_generated_class("border-x",      { border: :x })
+    assert_generated_class("border",        { border: true })
   end
 
   def test_border_margins
