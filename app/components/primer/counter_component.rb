@@ -51,6 +51,10 @@ module Primer
       render(Primer::BaseComponent.new(**@system_arguments)) { value }
     end
 
+    def self.status
+      Primer::Component::STATUSES[:beta]
+    end
+
     private
 
     def title
@@ -89,10 +93,6 @@ module Primer
         str += "+" if @has_limit && @count.to_i > @limit
         str
       end
-    end
-
-    def self.status
-      Primer::Component::STATUSES[:beta]
     end
   end
 end
