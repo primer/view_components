@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use MarkdownComponent to weap markdown content
+  # Use MarkdownComponent to wrap markdown content
   class MarkdownComponent < Primer::Component
     # @example 5320|Default
     #   <%= render(Primer::MarkdownComponent.new) do %>
