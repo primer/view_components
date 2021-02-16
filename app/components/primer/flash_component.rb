@@ -3,9 +3,9 @@
 module Primer
   # Use the Flash component to inform users of successful or pending actions.
   class FlashComponent < Primer::Component
-    include ViewComponent::Slotable
+    include ViewComponent::SlotableV2
 
-    with_slot :actions, class_name: "Actions"
+    renders_many :actions, class_name: "ActionComponent"
 
     DEFAULT_VARIANT = :default
     VARIANT_MAPPINGS = {
@@ -32,7 +32,7 @@ module Primer
     # @example auto|With actions
     #   <%= render(Primer::FlashComponent.new) do |component| %>
     #     This is a flash message with actions!
-    #     <% component.slot(:actions) do %>
+    #     <% component.action do %>
     #       <%= render(Primer::ButtonComponent.new(variant: :small)) { "Take action" } %>
     #     <% end %>
     #   <% end %>
@@ -61,11 +61,9 @@ module Primer
       Primer::Component::STATUSES[:beta]
     end
 
-    # :nodoc
-    class Actions < Primer::Slot
+    class ActionComponent < ViewComponent::Base
       attr_reader :system_arguments
 
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
