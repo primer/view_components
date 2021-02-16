@@ -90,5 +90,9 @@ module Primer
         str
       end
     end
+
+    def self.status
+      Primer::Component::STATUSES[:beta]
+    end
   end
 end
