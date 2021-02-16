@@ -225,7 +225,7 @@ module Primer
                            "border-#{val.to_s.dasherize}"
                          end
 
-          memo[:classes] = border_value
+          memo[:classes] << border_value
         elsif BORDER_MARGIN_KEYS.include?(key)
           memo[:classes] << "#{key.to_s.dasherize}-#{val}"
         elsif key == BORDER_RADIUS_KEY
