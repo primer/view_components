@@ -10,11 +10,13 @@ module Primer
     DEFAULT_STATUS_FILE_NAME = "statuses.json"
 
     # generate_statuses returns a hash mapping component name to
-    # the component's status
+    # the component's status sorted alphabetically by the component name.
     def self.generate_statuses
-      Primer::Component.descendants.each_with_object({}) do |component, mem|
+      statuses = Primer::Component.descendants.each_with_object({}) do |component, mem|
         mem[component.to_s] = component.status.to_s
       end
+
+      statuses.sort_by { |k, _v| k }.to_h
     end
 
     # dump_statuses generates the status hash and then serializes
