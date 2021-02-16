@@ -40,3 +40,8 @@ Rails/RakeEnvironment:
 
 Style/SymbolArray:
   Enabled: false
+
+Rails/OutputSafety:
+  Enabled: true
+  Exclude:
+    - "stories/**/*"
