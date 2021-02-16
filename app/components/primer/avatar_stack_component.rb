@@ -12,7 +12,25 @@ module Primer
     renders_many :avatars, Primer::AvatarComponent
 
     # @example auto|Default
-    #   <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
+    #   <%= render(Primer::AvatarStackComponent.new) do |c| %>
+    #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+    #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+    #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+    #   <% end  %>
+    #
+    # @example auto|Align right
+    #   <%= render(Primer::AvatarStackComponent.new(align: :right)) do |c| %>
+    #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+    #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+    #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+    #   <% end  %>
+    #
+    # @example auto|With tooltip
+    #   <%= render(Primer::AvatarStackComponent.new(tooltipped: true, body_arguments: { label: 'This is a tooltip!' })) do |c| %>
+    #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+    #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+    #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+    #   <% end  %>
     #
     # @param align [Symbol] <%= one_of(Primer::AvatarStackComponent::ALIGN_OPTIONS) %>
     # @param tooltipped [Boolean] Whether to add a tooltip to the stack or not

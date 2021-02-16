@@ -115,6 +115,7 @@ namespace :docs do
     registry.load!(".yardoc")
     components = [
       Primer::AvatarComponent,
+      Primer::AvatarStackComponent,
       Primer::BlankslateComponent,
       Primer::BorderBoxComponent,
       Primer::BoxComponent,

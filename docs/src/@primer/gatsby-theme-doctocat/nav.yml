@@ -10,6 +10,8 @@
   children:
     - title: Avatar
       url: /components/avatar
+    - title: AvatarStack
+      url: /components/avatarstack
     - title: Blankslate
       url: /components/blankslate
     - title: BorderBox
