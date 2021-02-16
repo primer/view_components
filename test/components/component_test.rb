@@ -36,6 +36,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::LabelComponent, { title: "Hello!" }],
     [Primer::LayoutComponent, {}],
     [Primer::LinkComponent, { href: "https://www.google.com" }],
+    [Primer::MarkdownComponent, {}],
     [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],
     [Primer::OcticonComponent, { icon: "people" }],
     [Primer::PopoverComponent, {}, proc { |component| component.slot(:body) }],
