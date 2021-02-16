@@ -1,5 +1,5 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <%= render(body) do %>
+  <%= render body_component do %>
     <% avatars.each_with_index do |avatar, i| %>
       <% if i == 2 %>
         <div class="avatar avatar-more"></div>

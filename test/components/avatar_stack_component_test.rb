@@ -25,13 +25,12 @@ class PrimerAvatarStackComponentTest < Minitest::Test
   end
 
   def test_renders_tooltipped_body
-    render_inline(Primer::AvatarStackComponent.new) do |c|
-      c.body(tooltipped: true, label: "label")
+    render_inline(Primer::AvatarStackComponent.new(tooltipped: true, body_arguments: { label: 'Tooltip' })) do |c|
       c.avatar(src: "Foo", alt: "Bar")
     end
 
     assert_selector(".AvatarStack") do
-      assert_selector(".AvatarStack-body.tooltipped") do
+      assert_selector("div[aria-label=\"Tooltip\"].AvatarStack-body.tooltipped") do
         assert_selector("img.avatar", count: 1)
       end
     end
