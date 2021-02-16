@@ -3,18 +3,18 @@
 module Primer
   # Use TruncateComponent to shorten overflowing text with an ellipsis.
   class TruncateComponent < Primer::Component
-    # @example 25|Default
+    # @example auto|Default
     #   <div class="col-2">
     #     <%= render(Primer::TruncateComponent.new(tag: :p)) { "branch-name-that-is-really-long" } %>
     #   </div>
     #
-    # @example 25|Inline
+    # @example auto|Inline
     #   <%= render(Primer::TruncateComponent.new(tag: :span, inline: true)) { "branch-name-that-is-really-long" } %>
     #
-    # @example 25|Expandable
+    # @example auto|Expandable
     #   <%= render(Primer::TruncateComponent.new(tag: :span, inline: true, expandable: true)) { "branch-name-that-is-really-long" } %>
     #
-    # @example 25|Custom size
+    # @example auto|Custom size
     #   <%= render(Primer::TruncateComponent.new(tag: :span, inline: true, expandable: true, max_width: 100)) { "branch-name-that-is-really-long" } %>
     #
     # @param inline [Boolean] Whether the element is inline (or inline-block).

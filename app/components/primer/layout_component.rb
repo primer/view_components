@@ -12,13 +12,13 @@ module Primer
     DEFAULT_SIDEBAR_COL = 3
     ALLOWED_SIDEBAR_COLS = (1..(MAX_COL - 1)).to_a.freeze
 
-    # @example 40|Default
+    # @example auto|Default
     #   <%= render(Primer::LayoutComponent.new) do |component| %>
     #     <% component.with(:sidebar) { "Sidebar" } %>
     #     <% component.with(:main) { "Main" } %>
     #   <% end %>
     #
-    # @example 40|Left sidebar
+    # @example auto|Left sidebar
     #   <%= render(Primer::LayoutComponent.new(side: :left)) do |component| %>
     #     <% component.with(:sidebar) { "Sidebar" } %>
     #     <% component.with(:main) { "Main" } %>

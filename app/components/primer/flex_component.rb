@@ -35,28 +35,28 @@ module Primer
     DEFAULT_DIRECTION = nil
     ALLOWED_DIRECTIONS = [DEFAULT_DIRECTION, :column, :column_reverse, :row, :row_reverse].freeze
 
-    # @example 100|Default
+    # @example auto|Default
     #   <%= render(Primer::FlexComponent.new(bg: :gray)) do %>
     #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
     #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
     #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
     #   <% end %>
     #
-    # @example 100|Justify center
+    # @example auto|Justify center
     #   <%= render(Primer::FlexComponent.new(justify_content: :center, bg: :gray)) do %>
     #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
     #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
     #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
     #   <% end %>
     #
-    # @example 100|Align end
+    # @example auto|Align end
     #   <%= render(Primer::FlexComponent.new(align_items: :end, bg: :gray)) do %>
     #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
     #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
     #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
     #   <% end %>
     #
-    # @example 100|Direction column
+    # @example auto|Direction column
     #   <%= render(Primer::FlexComponent.new(direction: :column, bg: :gray)) do %>
     #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
     #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
