@@ -47,12 +47,12 @@ Use the Flash component to inform users of successful or pending actions.
 
 ### With actions
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='flash '>      This is a flash message with actions!    <div class='flash-action '>      <button type='button' class='btn btn-sm '>Take action</button></div></div></body></html>"></iframe>
+<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='flash '>      This is a flash message with actions!    </div></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::FlashComponent.new) do |component| %>
   This is a flash message with actions!
-  <% component.slot(:actions) do %>
+  <% component.action do %>
     <%= render(Primer::ButtonComponent.new(variant: :small)) { "Take action" } %>
   <% end %>
 <% end %>

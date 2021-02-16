@@ -62,12 +62,14 @@ module Primer
     end
 
     class ActionComponent < ViewComponent::Base
-      attr_reader :system_arguments
-
       def initialize(**system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
         @system_arguments[:classes] = class_names(@system_arguments[:classes], "flash-action")
+      end
+
+      def call
+        content
       end
     end
   end

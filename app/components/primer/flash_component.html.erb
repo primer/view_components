@@ -6,9 +6,8 @@
       <%= render(Primer::OcticonComponent.new(icon: "x")) %>
     </button>
   <% end %>
+
   <% actions.each do |action| %>
-    <%= render Primer::BaseComponent.new(**action.system_arguments) do %>
-      <%= action.content %>
-    <% end %>
+    <%= action %>
   <% end %>
 <% end %>
