@@ -5,7 +5,15 @@ module Primer
   class FlashComponent < Primer::Component
     include ViewComponent::SlotableV2
 
-    renders_many :actions, class_name: "ActionComponent"
+    # Optional action content showed on the right side of the component.
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    renders_one :action, lambda { |**system_arguments|
+      system_arguments[:tag] = :div
+      system_arguments[:classes] = class_names(system_arguments[:classes], "flash-action")
+
+      Primer::BaseComponent.new(**system_arguments)
+    }
 
     DEFAULT_VARIANT = :default
     VARIANT_MAPPINGS = {
@@ -59,18 +67,6 @@ module Primer
 
     def self.status
       Primer::Component::STATUSES[:beta]
-    end
-
-    class ActionComponent < ViewComponent::Base
-      def initialize(**system_arguments)
-        @system_arguments = system_arguments
-        @system_arguments[:tag] = :div
-        @system_arguments[:classes] = class_names(@system_arguments[:classes], "flash-action")
-      end
-
-      def call
-        content
-      end
     end
   end
 end
