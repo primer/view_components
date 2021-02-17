@@ -6,7 +6,7 @@
 
     *Jake Shorty
 
-* Add `Dropdown`, `Markdown` and `Menu` components.
+* Add `AvatarStack`, `Dropdown`, `Markdown` and `Menu` components.
 
     *Manuel Puyol*
 
