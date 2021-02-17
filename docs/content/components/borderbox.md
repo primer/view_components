@@ -48,15 +48,11 @@ BorderBox is a Box component with a border.
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-:nodoc
-
 ### `body` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-:nodoc
 
 ### `footer` slot
 
@@ -64,12 +60,8 @@ BorderBox is a Box component with a border.
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-:nodoc
-
 ### `row` slot
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-:nodoc

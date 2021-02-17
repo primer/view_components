@@ -22,6 +22,6 @@ class PrimerBoxComponentTest < Minitest::Test
   end
 
   def test_status
-    assert_equal Primer::BoxComponent.status, Primer::Component::STATUSES[:stable]
+    assert_component_state(Primer::BoxComponent, :stable)
   end
 end

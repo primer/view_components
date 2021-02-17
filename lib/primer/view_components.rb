@@ -4,7 +4,7 @@ require "primer/view_components/version"
 require "primer/view_components/engine"
 
 module Primer
-  # :nodoc
+  # :nodoc:
   module ViewComponents
     DEFAULT_STATUSES_PATH = File.expand_path("static")
     DEFAULT_STATUS_FILE_NAME = "statuses.json"

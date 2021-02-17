@@ -14,7 +14,7 @@
 # fetch_or_fallback([1,2,3], 1, 2) => 1
 # fetch_or_fallback([1,2,3], nil, 2) => 2
 module Primer
-  # :nodoc
+  # :nodoc:
   module FetchOrFallbackHelper
     mattr_accessor :fallback_raises, default: true
 
