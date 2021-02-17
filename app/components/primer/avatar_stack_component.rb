@@ -8,7 +8,9 @@ module Primer
     ALIGN_DEFAULT = :left
     ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
 
-    # Required list of stacked avatars. Has the same arguments as <%= link_to_component(Primer::AvatarComponent) %>.
+    # Required list of stacked avatars.
+    #
+    # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::AvatarComponent) %>.
     renders_many :avatars, Primer::AvatarComponent
 
     # @example auto|Default

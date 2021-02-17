@@ -59,4 +59,8 @@ Use AvatarStack to stack multiple avatars together.
 
 ### `Avatars`
 
-Required list of stacked avatars. Has the same arguments as <%= link_to_component(Primer::AvatarComponent) %>.
+Required list of stacked avatars.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `kwargs` | `Hash` | N/A | The same arguments as [Avatar](/components/avatar). |
