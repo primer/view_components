@@ -6,13 +6,37 @@
 
     *Jake Shorty
 
-* Add `Dropdown` component.
+* Add `Dropdown`, `Markdown` and `Menu` components.
 
     *Manuel Puyol*
 
 * Deprecate `DropdownMenuComponent`.
 
     *Manuel Puyol*
+
+* Fix `Avatar` bug when used with links.
+
+    *Manuel Puyol*
+
+* Add cache for common Primer values.
+
+    *Blake Williams*
+
+* Add support for `octicons_helper` v12.
+
+    *Cole Bemis*
+
+* Add support for `border: true` to apply the `border` class.
+
+    *Simon Taranto*
+
+* Promote `Link` and `Counter` components to beta.
+
+    *Simon Taranto*
+
+* **Breaking change**: Drop support for Ruby 2.4.
+
+    *Simon Taranto*
 
 ## 0.0.18
 

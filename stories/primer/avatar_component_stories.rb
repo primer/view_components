@@ -9,6 +9,7 @@ class Primer::AvatarComponentStories < ViewComponent::Storybook::Stories
       text(:src, "https://github.com/github.png")
       size 20
       square false
+      text(:href, "#")
     end
   end
 end
