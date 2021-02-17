@@ -35,7 +35,7 @@ module Primer
     #   <% end  %>
     #
     # @param align [Symbol] <%= one_of(Primer::AvatarStackComponent::ALIGN_OPTIONS) %>
-    # @param tooltipped [Boolean] Whether to add a tooltip to the stack or not
+    # @param tooltipped [Boolean] Whether to add a tooltip to the stack or not.
     # @param body_arguments [Hash] Parameters to add to the Body. If `tooltipped` is set, has the same arguments as <%= link_to_component(Primer::TooltipComponent) %>.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(align: ALIGN_DEFAULT, tooltipped: false, body_arguments: {}, **system_arguments)
