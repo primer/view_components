@@ -69,6 +69,6 @@ class PrimerFlashComponentTest < Minitest::Test
   end
 
   def test_status
-    assert_equal Primer::FlashComponent.status, Primer::Component::STATUSES[:beta]
+    assert_component_state(Primer::FlashComponent, :beta)
   end
 end
