@@ -25,7 +25,7 @@ class PrimerAvatarStackComponentTest < Minitest::Test
   end
 
   def test_renders_tooltipped_body
-    render_inline(Primer::AvatarStackComponent.new(tooltipped: true, body_arguments: { label: 'Tooltip' })) do |c|
+    render_inline(Primer::AvatarStackComponent.new(tooltipped: true, body_arguments: { label: "Tooltip" })) do |c|
       c.avatar(src: "Foo", alt: "Bar")
     end
 

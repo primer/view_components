@@ -47,7 +47,7 @@ module Primer
       @body_arguments[:tag] ||= :div
       @body_arguments[:classes] = class_names(
         "AvatarStack-body",
-        @body_arguments[:classes],
+        @body_arguments[:classes]
       )
 
       @system_arguments[:tag] ||= :div
