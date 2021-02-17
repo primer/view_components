@@ -51,6 +51,10 @@ module Primer
       render(Primer::BaseComponent.new(**@system_arguments)) { value }
     end
 
+    def self.status
+      Primer::Component::STATUSES[:beta]
+    end
+
     private
 
     def title
