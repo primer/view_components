@@ -36,7 +36,7 @@ module Primer
       avatar.present? || badge.present? || body.present?
     end
 
-    # :nodoc
+    # :nodoc:
     class Avatar < Primer::Slot
       attr_reader :system_arguments, :alt, :src, :size, :square
 
@@ -60,7 +60,7 @@ module Primer
       end
     end
 
-    # :nodoc
+    # :nodoc:
     class Badge < Primer::Slot
       attr_reader :system_arguments, :icon
 
@@ -78,7 +78,7 @@ module Primer
       end
     end
 
-    # :nodoc
+    # :nodoc:
     class Body < Primer::Slot
       attr_reader :system_arguments
 

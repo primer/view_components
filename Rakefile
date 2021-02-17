@@ -298,9 +298,11 @@ namespace :docs do
             f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
           end
 
-          if slot_documentation.base_docstring.present?
+          docstring = slot_documentation.base_docstring
+
+          if docstring.present? && docstring != ":nodoc:"
             f.puts
-            f.puts(slot_documentation.base_docstring)
+            f.puts(docstring)
           end
         end
       end

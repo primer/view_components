@@ -37,4 +37,8 @@ class PrimerLinkComponentTest < Minitest::Test
 
     assert_selector(".foo.muted-link")
   end
+
+  def test_status
+    assert_component_state(Primer::LinkComponent, :beta)
+  end
 end

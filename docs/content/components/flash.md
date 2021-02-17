@@ -74,5 +74,3 @@ Use the Flash component to inform users of successful or pending actions.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-:nodoc

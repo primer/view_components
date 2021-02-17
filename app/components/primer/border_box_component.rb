@@ -46,7 +46,7 @@ module Primer
       Primer::Component::STATUSES[:beta]
     end
 
-    # :nodoc
+    # :nodoc:
     class Header < Primer::Slot
       attr_reader :system_arguments
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -60,7 +60,7 @@ module Primer
       end
     end
 
-    # :nodoc
+    # :nodoc:
     class Body < Primer::Slot
       attr_reader :system_arguments
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -74,7 +74,7 @@ module Primer
       end
     end
 
-    # :nodoc
+    # :nodoc:
     class Footer < Primer::Slot
       attr_reader :system_arguments
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -88,7 +88,7 @@ module Primer
       end
     end
 
-    # :nodoc
+    # :nodoc:
     class Row < Primer::Slot
       attr_reader :system_arguments
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
