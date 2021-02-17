@@ -125,7 +125,7 @@ module Primer
       @link_url = link_url
     end
 
-    # :nodoc
+    # :nodoc:
     class Spinner < Primer::Slot
       # @param size [Symbol] <%= one_of(Primer::SpinnerComponent::SIZE_MAPPINGS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

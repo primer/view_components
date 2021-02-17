@@ -15,5 +15,9 @@ module Primer
     ensure
       FetchOrFallbackHelper.fallback_raises = true
     end
+
+    def assert_component_state(component, state)
+      assert_equal component.status, Primer::Component::STATUSES[state]
+    end
   end
 end
