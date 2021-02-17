@@ -61,7 +61,7 @@ module Primer
       Primer::Component::STATUSES[:beta]
     end
 
-    # :nodoc
+    # :nodoc:
     class Actions < Primer::Slot
       attr_reader :system_arguments
 
