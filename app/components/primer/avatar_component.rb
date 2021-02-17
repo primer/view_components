@@ -10,6 +10,9 @@ module Primer
     # @example auto|Default
     #   <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
     #
+    # @example auto|Square
+    #   <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", square: true)) %>
+    #
     # @example auto|Link
     #   <%= render(Primer::AvatarComponent.new(href: "#", src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
     #
@@ -33,7 +36,7 @@ module Primer
         system_arguments[:classes],
         "avatar" => !href,
         "avatar--small" => size < SMALL_THRESHOLD,
-        "CircleBadge" => !square
+        "circle" => !square
       )
     end
 
