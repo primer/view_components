@@ -2,9 +2,13 @@
 
 ## main
 
+* **Breaking change**: Upgrade `FlashComponent` to use Slots V2.
+
+    *Joel Hawksley, Simon Taranto*
+
 * Add support for functional colors to `color` system argument.
 
-    *Jake Shorty
+    *Jake Shorty*
 
 * Add `Dropdown` component.
 
