@@ -87,6 +87,28 @@ jobs:
       with:
         name: simplecov-resultset-rails${{matrix.rails_version}}-ruby${{matrix.ruby_version}}
         path: coverage
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7.x
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: gems-build-rails-main-ruby-2.7.x-${{ hashFiles('**/Gemfile.lock') }}
+    - name: Generate and diff docs
+      run: |
+        gem install bundler:2.2.9
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
+        bundle exec rake docs:build
+        if [ $(git ls-files -m | grep docs\/content | wc -l) -gt 0 ] ; then
+          echo "There are changes in the docs/ directory. Please run `rake docs:build` and commit the diff."
+          exit 1
+        fi
   coverage:
     needs: test
     runs-on: ubuntu-latest
