@@ -1,10 +1,10 @@
 # 1. Record architecture decisions
 
-Date: 2021-02-19
+Date: 2021-02-18
 
 ## Status
 
-Proposed
+Accepted
 
 ## Context
 
