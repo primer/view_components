@@ -112,7 +112,7 @@ class PrimerFlexComponentTest < Minitest::Test
   end
 
   def test_renders_responsive_direction
-    render_inline(Primer::FlexComponent.new(direction: [:row, :column])) { "content" }
+    render_inline(Primer::FlexComponent.new(direction: %i[row column])) { "content" }
 
     assert_selector(".flex-row.flex-sm-column")
   end

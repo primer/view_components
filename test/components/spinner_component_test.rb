@@ -40,4 +40,8 @@ class PrimerSpinnerComponentTest < Minitest::Test
 
     assert_no_selector("style")
   end
+
+  def test_status
+    assert_component_state(Primer::SpinnerComponent, :beta)
+  end
 end

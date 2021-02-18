@@ -9,8 +9,8 @@ module Primer
       info: "Label--info",
       success: "Label--success",
       warning: "Label--warning",
-      danger: "Label--danger",
-    }
+      danger: "Label--danger"
+    }.freeze
 
     DEPRECATED_SCHEME_MAPPINGS = {
       gray: "Label--gray",
@@ -23,7 +23,7 @@ module Primer
       purple: "Label--purple",
       pink: "Label--pink",
       outline: "Label--outline",
-      green_outline: "Label--outline-green",
+      green_outline: "Label--outline-green"
     }.freeze
 
     SCHEME_MAPPINGS = NEW_SCHEME_MAPPINGS.merge(DEPRECATED_SCHEME_MAPPINGS)
@@ -31,11 +31,11 @@ module Primer
 
     VARIANT_MAPPINGS = {
       large: "Label--large",
-      inline: "Label--inline",
+      inline: "Label--inline"
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys << nil
 
-    # @example 40|Schemes
+    # @example auto|Schemes
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "default" } %>
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :gray)) { "gray" } %>
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :dark_gray)) { "dark_gray" } %>
@@ -43,7 +43,7 @@ module Primer
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :green)) { "green" } %>
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :purple)) { "purple" } %>
     #
-    # @example 40|Variants
+    # @example auto|Variants
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", variant: :large)) { "Large" } %>
     #

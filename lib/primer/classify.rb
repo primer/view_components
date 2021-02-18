@@ -1,27 +1,31 @@
 # frozen_string_literal: true
 
+require_relative "classify/cache"
+
 module Primer
+  # :nodoc:
   class Classify
-    MARGIN_DIRECTION_KEYS = [:mt, :ml, :mb, :mr]
-    SPACING_KEYS = ([:m, :my, :mx, :p, :py, :px, :pt, :pl, :pb, :pr] + MARGIN_DIRECTION_KEYS).freeze
+    MARGIN_DIRECTION_KEYS = %i[mt ml mb mr].freeze
+    SPACING_KEYS = (%i[m my mx p py px pt pl pb pr] + MARGIN_DIRECTION_KEYS).freeze
     DIRECTION_KEY = :direction
     JUSTIFY_CONTENT_KEY = :justify_content
     ALIGN_ITEMS_KEY = :align_items
     DISPLAY_KEY = :display
     RESPONSIVE_KEYS = ([DISPLAY_KEY, DIRECTION_KEY, JUSTIFY_CONTENT_KEY, ALIGN_ITEMS_KEY, :col, :float] + SPACING_KEYS).freeze
-    BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"]
+    BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
 
     # Keys where we can simply translate { key: value } into ".key-value"
-    CONCAT_KEYS = SPACING_KEYS + [:hide, :position, :v, :float, :col, :text, :box_shadow].freeze
+    CONCAT_KEYS = SPACING_KEYS + %i[hide position v float col text box_shadow].freeze
 
     INVALID_CLASS_NAME_PREFIXES =
       (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "text-", "box-shadow-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
+    FUNCTIONAL_COLOR_REGEX = /(primary|secondary|tertiary|link|success|warning|danger|info)/.freeze
 
     COLOR_KEY = :color
     BG_KEY = :bg
     VERTICAL_ALIGN_KEY = :vertical_align
     WORD_BREAK_KEY = :word_break
-    TEXT_KEYS = [:text_align, :font_weight]
+    TEXT_KEYS = %i[text_align font_weight].freeze
     FLEX_KEY = :flex
     FLEX_GROW_KEY = :flex_grow
     FLEX_SHRINK_KEY = :flex_shrink
@@ -30,19 +34,20 @@ module Primer
     HEIGHT_KEY = :height
     BOX_SHADOW_KEY = :box_shadow
     VISIBILITY_KEY = :visibility
+    ANIMATION_KEY = :animation
 
     BOOLEAN_MAPPINGS = {
       underline: {
         mappings: [
           {
             value: true,
-            css_class: "text-underline",
+            css_class: "text-underline"
           },
           {
             value: false,
-            css_class: "no-underline",
-          },
-        ],
+            css_class: "no-underline"
+          }
+        ]
       },
       top: {
         mappings: [
@@ -77,8 +82,8 @@ module Primer
         ]
       }
     }.freeze
-    BORDER_KEYS = [:border, :border_color].freeze
-    BORDER_MARGIN_KEYS = [:border_top, :border_bottom, :border_left, :border_right].freeze
+    BORDER_KEYS = %i[border border_color].freeze
+    BORDER_MARGIN_KEYS = %i[border_top border_bottom border_left border_right].freeze
     BORDER_RADIUS_KEY = :border_radius
     TYPOGRAPHY_KEYS = [:font_size].freeze
     VALID_KEYS = (
@@ -105,7 +110,8 @@ module Primer
         WIDTH_KEY,
         HEIGHT_KEY,
         BOX_SHADOW_KEY,
-        VISIBILITY_KEY
+        VISIBILITY_KEY,
+        ANIMATION_KEY
       ]
     ).freeze
 
@@ -129,21 +135,15 @@ module Primer
       private
 
       def validated_class_names(classes)
-        return unless classes.present?
+        return if classes.blank?
 
         if ENV["RAILS_ENV"] == "development"
           invalid_class_names =
             classes.split(" ").each_with_object([]) do |class_name, memo|
-              if INVALID_CLASS_NAME_PREFIXES.any? { |prefix| class_name.start_with?(prefix) }
-                memo << class_name
-              end
+              memo << class_name if INVALID_CLASS_NAME_PREFIXES.any? { |prefix| class_name.start_with?(prefix) }
             end
 
-          if invalid_class_names.any?
-            raise ArgumentError.new(
-              "Use System Arguments (https://primer.style/view-components/system-arguments) instead of Primer CSS class #{'name'.pluralize(invalid_class_names.length)} #{invalid_class_names.to_sentence}. This warning will not be raised in production.",
-            )
-          end
+          raise ArgumentError, "Use System Arguments (https://primer.style/view-components/system-arguments) instead of Primer CSS class #{'name'.pluralize(invalid_class_names.length)} #{invalid_class_names.to_sentence}. This warning will not be raised in production." if invalid_class_names.any?
         end
 
         classes
@@ -161,18 +161,18 @@ module Primer
       # Example usage:
       # extract_hash({ mt: 4, py: 2 }) => "mt-4 py-2"
       def extract_hash(styles_hash)
-        memo = { classes: [], styles: String.new }
+        memo = { classes: [], styles: +"" }
         styles_hash.each do |key, value|
           next unless VALID_KEYS.include?(key)
 
           if value.is_a?(Array)
-            raise ArgumentError, "#{key} does not support responsive values" if !RESPONSIVE_KEYS.include?(key)
+            raise ArgumentError, "#{key} does not support responsive values" unless RESPONSIVE_KEYS.include?(key)
 
             value.each_with_index do |val, index|
-              extract_value(memo, key, val, BREAKPOINTS[index])
+              Primer::Classify::Cache.read(memo, key, val, BREAKPOINTS[index]) || extract_value(memo, key, val, BREAKPOINTS[index])
             end
           else
-            extract_value(memo, key, value, BREAKPOINTS[0])
+            Primer::Classify::Cache.read(memo, key, value, BREAKPOINTS[0]) || extract_value(memo, key, value, BREAKPOINTS[0])
           end
         end
 
@@ -183,20 +183,21 @@ module Primer
 
       def extract_value(memo, key, val, breakpoint)
         return if val.nil?
+
         if SPACING_KEYS.include?(key)
           if MARGIN_DIRECTION_KEYS.include?(key)
-            raise ArgumentError, "value of #{key} must be between -6 and 6" if (val < -6 || val > 6)
+            raise ArgumentError, "value of #{key} must be between -6 and 6" if val < -6 || val > 6
           elsif !((key == :mx || key == :my) && val == :auto)
-            raise ArgumentError, "value of #{key} must be between 0 and 6" if (val < 0 || val > 6)
+            raise ArgumentError, "value of #{key} must be between 0 and 6" if val.negative? || val > 6
           end
         end
 
-        if BOOLEAN_MAPPINGS.has_key?(key)
+        if BOOLEAN_MAPPINGS.key?(key)
           BOOLEAN_MAPPINGS[key][:mappings].map { |m| m[:css_class] if m[:value] == val }.compact.each do |css_class|
             memo[:classes] << css_class
           end
         elsif key == BG_KEY
-          if val.to_s.starts_with?("#")
+          if val.to_s.start_with?("#")
             memo[:styles] << "background-color: #{val};"
           else
             memo[:classes] << "bg-#{val.to_s.dasherize}"
@@ -204,11 +205,13 @@ module Primer
         elsif key == COLOR_KEY
           char_code = val[-1].ord
           # Does this string end in a character that is NOT a number?
-          if char_code >= 48 && char_code <= 57 # 48 is the charcode for 0; 57 is the charcode for 9
-            memo[:classes] << "color-#{val.to_s.dasherize}"
-          else
-            memo[:classes] << "text-#{val.to_s.dasherize}"
-          end
+          memo[:classes] <<
+            if (char_code >= 48 && char_code <= 57) || # 48 is the charcode for 0; 57 is the charcode for 9
+               FUNCTIONAL_COLOR_REGEX.match?(val)
+              "color-#{val.to_s.dasherize}"
+            else
+              "text-#{val.to_s.dasherize}"
+            end
         elsif key == DISPLAY_KEY
           memo[:classes] << "d#{breakpoint}-#{val.to_s.dasherize}"
         elsif key == VERTICAL_ALIGN_KEY
@@ -216,7 +219,13 @@ module Primer
         elsif key == WORD_BREAK_KEY
           memo[:classes] << "wb-#{val.to_s.dasherize}"
         elsif BORDER_KEYS.include?(key)
-          memo[:classes] << "border-#{val.to_s.dasherize}"
+          border_value = if val == true
+                           "border"
+                         else
+                           "border-#{val.to_s.dasherize}"
+                         end
+
+          memo[:classes] << border_value
         elsif BORDER_MARGIN_KEYS.include?(key)
           memo[:classes] << "#{key.to_s.dasherize}-#{val}"
         elsif key == BORDER_RADIUS_KEY
@@ -227,7 +236,7 @@ module Primer
           formatted_value = val.to_s.gsub(/(flex\_|space\_)/, "")
           memo[:classes] << "flex#{breakpoint}-justify-#{formatted_value}"
         elsif key == ALIGN_ITEMS_KEY
-          memo[:classes] << "flex#{breakpoint}-items-#{val.to_s.gsub("flex_", "")}"
+          memo[:classes] << "flex#{breakpoint}-items-#{val.to_s.gsub('flex_', '')}"
         elsif key == FLEX_KEY
           memo[:classes] << "flex-#{val}"
         elsif key == FLEX_GROW_KEY
@@ -246,20 +255,28 @@ module Primer
           memo[:classes] << "text-#{val.to_s.dasherize}"
         elsif TYPOGRAPHY_KEYS.include?(key)
           memo[:classes] << "f#{val.to_s.dasherize}"
-        elsif MARGIN_DIRECTION_KEYS.include?(key) && val < 0
+        elsif MARGIN_DIRECTION_KEYS.include?(key) && val.negative?
           memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-n#{val.abs}"
         elsif key == BOX_SHADOW_KEY
-          if val == true
-            memo[:classes] << "box-shadow"
-          else
-            memo[:classes] << "box-shadow-#{val.to_s.dasherize}"
-          end
+          memo[:classes] << if val == true
+                              "box-shadow"
+                            else
+                              "box-shadow-#{val.to_s.dasherize}"
+                            end
         elsif key == VISIBILITY_KEY
           memo[:classes] << "v-#{val.to_s.dasherize}"
+        elsif key == ANIMATION_KEY
+          memo[:classes] << if val == :grow
+                              "hover-grow"
+                            else
+                              "anim-#{val.to_s.dasherize}"
+                            end
         else
           memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{val.to_s.dasherize}"
         end
       end
     end
+
+    Cache.preload!
   end
 end

@@ -3,11 +3,19 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
 require "yard"
+require "yard/renders_one_handler"
+require "yard/renders_many_handler"
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
   t.libs << "lib"
   t.test_files = FileList["test/**/*_test.rb"]
+end
+
+Rake::TestTask.new(:bench) do |t|
+  t.libs << "test"
+  t.test_files = FileList["test/benchmarks/**/bench_*.rb"]
+  t.verbose = true
 end
 
 YARD::Rake::YardocTask.new
@@ -22,6 +30,15 @@ namespace :coverage do
     SimpleCov.collate Dir["simplecov-resultset-*/.resultset.json"], "rails" do
       formatter SimpleCov::Formatter::Console
     end
+  end
+end
+
+namespace :statuses do
+  task :dump do
+    require File.expand_path("demo/config/environment.rb", __dir__)
+    require "primer/view_components"
+
+    Primer::ViewComponents.dump_statuses
   end
 end
 
@@ -64,6 +81,11 @@ namespace :docs do
     "[System arguments](/system-arguments)"
   end
 
+  def link_to_component(component)
+    short_name = component.name.demodulize.gsub("Component", "")
+    "[#{short_name}](/components/#{short_name.downcase})"
+  end
+
   def pretty_value(val)
     case val
     when nil
@@ -76,7 +98,7 @@ namespace :docs do
   end
 
   task :build do
-    require File.expand_path("../demo/config/environment.rb", __FILE__)
+    require File.expand_path("demo/config/environment.rb", __dir__)
     require "primer/view_components"
     require "view_component/test_helpers"
     include ViewComponent::TestHelpers
@@ -93,16 +115,27 @@ namespace :docs do
     registry.load!(".yardoc")
     components = [
       Primer::AvatarComponent,
+      Primer::AvatarStackComponent,
       Primer::BlankslateComponent,
       Primer::BorderBoxComponent,
       Primer::BoxComponent,
       Primer::BreadcrumbComponent,
       Primer::ButtonComponent,
+      Primer::ButtonGroupComponent,
+      Primer::ButtonMarketingComponent,
       Primer::CounterComponent,
+      Primer::DetailsComponent,
+      Primer::DropdownComponent,
+      Primer::DropdownMenuComponent,
       Primer::FlashComponent,
+      Primer::FlexComponent,
+      Primer::FlexItemComponent,
+      Primer::HeadingComponent,
       Primer::LabelComponent,
       Primer::LayoutComponent,
       Primer::LinkComponent,
+      Primer::MarkdownComponent,
+      Primer::MenuComponent,
       Primer::OcticonComponent,
       Primer::PopoverComponent,
       Primer::ProgressBarComponent,
@@ -110,10 +143,13 @@ namespace :docs do
       Primer::SpinnerComponent,
       Primer::SubheadComponent,
       Primer::TextComponent,
-      Primer::TimelineItemComponent
+      Primer::TimelineItemComponent,
+      Primer::TooltipComponent,
+      Primer::TruncateComponent,
+      Primer::UnderlineNavComponent
     ]
 
-    all_components = Primer::Component.descendants
+    all_components = Primer::Component.descendants - [Primer::BaseComponent]
     components_needing_docs = all_components - components
 
     components_without_examples = []
@@ -146,6 +182,7 @@ namespace :docs do
         end
 
         initialize_method.tags(:example).each do |tag|
+          padding = 34 # accounts for p-3 and border
           iframe_height = tag.name.split("|").first
           name = tag.name.split("|")[1]
           description = tag.name.split("|")[2]
@@ -158,10 +195,15 @@ namespace :docs do
           f.puts
           html = view_context.render(inline: tag.text)
 
-          f.puts("<iframe style=\"width: 100%; border: 0px; height: #{iframe_height}px;\" srcdoc=\"<html><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.gsub("\"", "\'").gsub("\n", "")}</body></html>\"></iframe>")
+          iframe_attrs = if iframe_height == "auto"
+                           "onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + #{padding} + 'px'} style=\"width: 100%; border: 0px;\""
+                         else
+                           "style=\"width: 100%; border: 0px; height: #{iframe_height.to_i + padding}px;\""
+          end
+          f.puts("<iframe #{iframe_attrs} srcdoc=\"<html class=\'Box height-full p-3\'><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.tr('"', "\'").delete("\n")}</body></html>\"></iframe>")
           f.puts
           f.puts("```erb")
-          f.puts("#{tag.text}")
+          f.puts(tag.text.to_s)
           f.puts("```")
           f.puts
         end
@@ -187,24 +229,33 @@ namespace :docs do
               "N/A"
             end
 
-          f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{view_context.render(inline: tag.text)} |")
+          f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
         end
 
-        next unless component.respond_to?(:slots)
+        # Slots V2 docs
+        slot_v2_methods = documentation.meths.select { |x| x[:renders_one] || x[:renders_many] }
 
-        component.slots.each do |name, value|
-          slot_documentation = registry.get("#{component.name}::#{value[:class_name]}")
+        if slot_v2_methods.any?
+          f.puts
+          f.puts("## Slots")
 
-          if slot_documentation
-            slot_initialize_method = slot_documentation.meths.find(&:constructor?)
-
+          slot_v2_methods.each do |slot_documentation|
             f.puts
-            f.puts("### `#{name}` slot")
-            f.puts
-            f.puts("| Name | Type | Default | Description |")
-            f.puts("| :- | :- | :- | :- |")
+            f.puts("### `#{slot_documentation.name.to_s.capitalize}`")
 
-            slot_initialize_method.tags(:param).each do |tag|
+            if slot_documentation.base_docstring.present?
+              f.puts
+              f.puts(slot_documentation.base_docstring)
+            end
+
+            param_tags = slot_documentation.tags(:param)
+            if param_tags.any?
+              f.puts
+              f.puts("| Name | Type | Default | Description |")
+              f.puts("| :- | :- | :- | :- |")
+            end
+
+            param_tags.each do |tag|
               params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
 
               default =
@@ -214,13 +265,45 @@ namespace :docs do
                   "N/A"
                 end
 
-              f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{default} | #{view_context.render(inline: tag.text)} |")
+              f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
             end
+          end
+        end
 
-            if slot_documentation.base_docstring.present?
-              f.puts
-              f.puts(slot_documentation.base_docstring)
-            end
+        # Slots V1 docs
+        next unless component.respond_to?(:slots)
+
+        component.slots.each do |name, value|
+          slot_documentation = registry.get("#{component.name}::#{value[:class_name]}")
+
+          next unless slot_documentation
+
+          slot_initialize_method = slot_documentation.meths.find(&:constructor?)
+
+          f.puts
+          f.puts("### `#{name}` slot")
+          f.puts
+          f.puts("| Name | Type | Default | Description |")
+          f.puts("| :- | :- | :- | :- |")
+
+          slot_initialize_method.tags(:param).each do |tag|
+            params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
+
+            default =
+              if params && params[1]
+                "`#{params[1]}`"
+              else
+                "N/A"
+              end
+
+            f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
+          end
+
+          docstring = slot_documentation.base_docstring
+
+          if docstring.present? && docstring != ":nodoc:"
+            f.puts
+            f.puts(docstring)
           end
         end
       end
@@ -246,9 +329,7 @@ namespace :docs do
       f.puts("| :- | :- | :- |")
 
       initialize_method.tags(:param).each do |tag|
-        params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
-
-        f.puts("| `#{tag.name}` | `#{tag.types.join(", ")}` | #{view_context.render(inline: tag.text)} |")
+        f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{view_context.render(inline: tag.text)} |")
       end
     end
 
@@ -256,12 +337,12 @@ namespace :docs do
 
     if components_without_examples.any?
       puts
-      puts "The following components have no examples defined: #{components_without_examples.map(&:name).join(", ")}. Consider adding an example?"
+      puts "The following components have no examples defined: #{components_without_examples.map(&:name).join(', ')}. Consider adding an example?"
     end
 
     if components_needing_docs.any?
       puts
-      puts "The following components needs docs. Care to contribute them? #{components_needing_docs.map(&:name).join(", ")}"
+      puts "The following components needs docs. Care to contribute them? #{components_needing_docs.map(&:name).join(', ')}"
     end
   end
 end

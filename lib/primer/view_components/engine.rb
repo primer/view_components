@@ -2,6 +2,7 @@
 
 module Primer
   module ViewComponents
+    # :nodoc:
     class Engine < ::Rails::Engine
       isolate_namespace Primer::ViewComponents
     end

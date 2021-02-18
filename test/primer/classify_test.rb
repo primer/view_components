@@ -134,6 +134,21 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("color-blue-5",       { color: :blue_5 })
     assert_generated_class("color-gray-9",       { color: :gray_9 })
     assert_generated_class("color-purple-3",     { color: :purple_3 })
+
+    assert_generated_class("color-text-primary",   { color: :text_primary })
+    assert_generated_class("color-text-secondary", { color: :text_secondary })
+    assert_generated_class("color-text-tertiary",  { color: :text_tertiary })
+    assert_generated_class("color-text-link",      { color: :text_link })
+    assert_generated_class("color-text-success",   { color: :text_success })
+    assert_generated_class("color-text-warning",   { color: :text_warning })
+    assert_generated_class("color-text-danger",    { color: :text_danger })
+    assert_generated_class("color-icon-primary",   { color: :icon_primary })
+    assert_generated_class("color-icon-secondary", { color: :icon_secondary })
+    assert_generated_class("color-icon-tertiary",  { color: :icon_tertiary })
+    assert_generated_class("color-icon-info",      { color: :icon_info })
+    assert_generated_class("color-icon-success",   { color: :icon_success })
+    assert_generated_class("color-icon-warning",   { color: :icon_warning })
+    assert_generated_class("color-icon-danger",    { color: :icon_danger })
   end
 
   def test_bg
@@ -172,6 +187,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("border-right",  { border: :right })
     assert_generated_class("border-y",      { border: :y })
     assert_generated_class("border-x",      { border: :x })
+    assert_generated_class("border",        { border: true })
   end
 
   def test_border_margins
@@ -209,23 +225,23 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_word_break
-    assert_generated_class("wb-break-all",   { word_break: :break_all })
+    assert_generated_class("wb-break-all", { word_break: :break_all })
   end
 
   def test_responsive
-    assert_generated_class("p-4",  { p: [4] })
-    assert_generated_class("p-4 p-sm-3",  { p: [4, 3] })
-    assert_generated_class("float-left float-md-right",  { float: [:left, nil, :right] })
-    assert_generated_class("d-flex d-sm-block",  { display: [:flex, :block] })
+    assert_generated_class("p-4", { p: [4] })
+    assert_generated_class("p-4 p-sm-3", { p: [4, 3] })
+    assert_generated_class("float-left float-md-right", { float: [:left, nil, :right] })
+    assert_generated_class("d-flex d-sm-block",  { display: %i[flex block] })
     assert_generated_class("d-flex d-md-block",  { display: [:flex, nil, :block] })
-    assert_generated_class("d-lg-block",  { display: [nil, nil, nil, :block] })
-    assert_generated_class("flex-row flex-sm-column",  { direction: [:row, :column] })
-    assert_generated_class("col-1 col-sm-2",  { col: [1, 2] })
-    assert_generated_class("col-12 col-lg-9",  { col: [12, nil, nil, 9] })
-    assert_generated_class("p-4 p-sm-3 p-md-3 p-lg-3 p-xl-2",  { p: [4, 3, 3, 3, 2] })
+    assert_generated_class("d-lg-block", { display: [nil, nil, nil, :block] })
+    assert_generated_class("flex-row flex-sm-column", { direction: %i[row column] })
+    assert_generated_class("col-1 col-sm-2", { col: [1, 2] })
+    assert_generated_class("col-12 col-lg-9", { col: [12, nil, nil, 9] })
+    assert_generated_class("p-4 p-sm-3 p-md-3 p-lg-3 p-xl-2", { p: [4, 3, 3, 3, 2] })
 
     assert_raises ArgumentError do
-      Primer::Classify.call(border: [:top, :left])
+      Primer::Classify.call(border: %i[top left])
     end
   end
 
@@ -274,6 +290,16 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-shrink-0", { flex_shrink: 0 })
   end
 
+  def test_animation
+    assert_generated_class("anim-fade-in", { animation: :fade_in })
+    assert_generated_class("anim-fade-out", { animation: :fade_out })
+    assert_generated_class("anim-fade-up", { animation: :fade_up })
+    assert_generated_class("anim-fade-down", { animation: :fade_down })
+    assert_generated_class("anim-fade-scale-in", { animation: :fade_scale_in })
+    assert_generated_class("anim-grow-x", { animation: :grow_x })
+    assert_generated_class("hover-grow", { animation: :grow })
+  end
+
   def test_raises_error_when_passing_in_a_primer_css_class_name_in_development
     ENV["RAILS_ENV"] = "development"
     exception = assert_raises ArgumentError do
@@ -286,39 +312,7 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_does_not_raise_error_when_passing_in_a_primer_css_class_otherwise
-    assert_generated_class("bg-blue text-center float-left ml-1 ",  { classes: "bg-blue text-center float-left ml-1" })
-  end
-
-  def test_limits_allocations
-    # Warm up allocations
-    values = {
-      align_items: :center,
-      align_self: :center,
-      bg: :blue,
-      border: :top,
-      box_shadow: true,
-      col: 1,
-      color: :red,
-      flex: 1,
-      float: :left,
-      font_weight: :bold,
-      font_size: 1,
-      height: :fit,
-      justify_content: :flex_start,
-      m: 1,
-      p: 4,
-      position: :relative,
-      text_align: :left,
-      visibility: :hidden,
-      width: :fit,
-      underline: true,
-      vertical_align: true,
-    }
-    Primer::Classify.call(**values)
-
-    assert_allocations 87, within: 4 do
-      Primer::Classify.call(**values)
-    end
+    assert_generated_class("bg-blue text-center float-left ml-1 ", { classes: "bg-blue text-center float-left ml-1" })
   end
 
   private
@@ -329,17 +323,5 @@ class PrimerClassifyTest < Minitest::Test
 
   def refute_generated_class(input)
     assert_nil(Primer::Classify.call(**input)[:class])
-  end
-
-  def assert_allocations(count, within:, &block)
-    GC.disable
-    total_start = GC.stat[:total_allocated_objects]
-    yield
-    total_end = GC.stat[:total_allocated_objects]
-    GC.enable
-
-    total = total_end - total_start
-
-    assert_in_delta count, total, within, "Expected between #{count - within} and #{count + within} allocations. Got #{total}"
   end
 end

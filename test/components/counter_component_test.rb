@@ -128,4 +128,8 @@ class CounterComponentTest < Minitest::Test
 
     assert_selector("[title='?']", text: "?")
   end
+
+  def test_status
+    assert_component_state(Primer::CounterComponent, :beta)
+  end
 end

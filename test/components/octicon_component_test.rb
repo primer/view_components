@@ -77,4 +77,8 @@ class PrimerOcticonComponentTest < Minitest::Test
     refute_selector('[classes="foo"]')
     refute_selector('[display="none"]')
   end
+
+  def test_status
+    assert_component_state(Primer::OcticonComponent, :beta)
+  end
 end

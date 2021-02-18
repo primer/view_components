@@ -71,10 +71,10 @@ System arguments include most HTML attributes. For example:
 | `float` | `Symbol` | One of `:left` and `:right`. |
 | `col` | `Integer` | Number of columns. |
 | `underline` | `Boolean` | Whether text should be underlined. |
-| `color` | `Symbol` | Text color. One of `:blue`, `:red`, `:gray_light`, `:gray`, `:gray_dark`, `:green`, `:orange`, `:orange_light`, `:purple`, `:pink`, `:white`, or `:inherit`. Note: this API is subject to change as we move to functional colors. |
+| `color` | `Symbol` | Text color. One of `:blue`, `:red`, `:gray_light`, `:gray`, `:gray_dark`, `:green`, `:orange`, `:orange_light`, `:purple`, `:pink`, `:white`, `:inherit`, `:text_primary`, `:text_secondary`, `:text_tertiary`, `:text_link`, `:text_success`, `:text_warning`, `:text_danger`, `:icon_primary`, `:icon_secondary`, `:icon_tertiary`, `:icon_info`, `:icon_success`, `:icon_warning`, or `:icon_danger`. |
 | `bg` | `String, Symbol` | Background color. Accepts either a hex value as a String or a color name as a Symbol. |
 | `box_shadow` | `Boolean, Symbol` | Box shadow. One of `true`, `:medium`, `:large`, `:extra_large`, or `:none`. |
-| `border` | `Symbol` | One of `:left`, `:top`, `:bottom`, `:right`, `:y`, or `:x`. |
+| `border` | `Symbol` | One of `:left`, `:top`, `:bottom`, `:right`, `:y`, `:x`, or `true`. |
 | `border_color` | `Symbol` | One of `:blue`, `:blue_light`, `:gray`, `:gray_dark`, `:green`, `:purple`, `:red`, `:red_light`, `:white`, `:yellow`, or `:black_fade`. Note: this API is subject to change as we move to functional colors. |
 | `border_top` | `Integer` | Set to `0` to remove the top border. |
 | `border_bottom` | `Integer` | Set to `0` to remove the bottom border. |
@@ -93,5 +93,6 @@ System arguments include most HTML attributes. For example:
 | `width` | `Symbol` | One of `:fit` and `:fill`. |
 | `height` | `Symbol` | One of `:fit` and `:fill`. |
 | `word_break` | `Symbol` | Whether to break words on line breaks. Can only be `:break_all`. |
+| `animation` | `Symbol` | One of `:fade_in`, `:fade_out`, `:fade_up`, `:fade_down`, `:scale_in`, `:pulse`, `:grow_x`, or `:grow`. |
 | `tag` | `Symbol` | HTML tag name to be passed to `tag.send`. |
 | `classes` | `String` | CSS class name value to be concatenated with generated Primer CSS classes. |

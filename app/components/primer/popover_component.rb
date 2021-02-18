@@ -10,7 +10,7 @@ module Primer
     with_slot :heading, class_name: "Heading"
     with_slot :body, class_name: "Body"
 
-    # @example 150|Default
+    # @example auto|Default
     #   <%= render Primer::PopoverComponent.new do |component| %>
     #     <% component.slot(:heading) do %>
     #       Activity feed
@@ -20,7 +20,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example 150|Large
+    # @example auto|Large
     #   <%= render Primer::PopoverComponent.new do |component| %>
     #     <% component.slot(:heading) do %>
     #       Activity feed
@@ -30,7 +30,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example 150|Caret position
+    # @example auto|Caret position
     #   <%= render Primer::PopoverComponent.new do |component| %>
     #     <% component.slot(:heading) do %>
     #       Activity feed
@@ -57,6 +57,7 @@ module Primer
       body.present?
     end
 
+    # :nodoc:
     class Heading < Primer::Slot
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
@@ -70,6 +71,7 @@ module Primer
       end
     end
 
+    # :nodoc:
     class Body < Slot
       CARET_DEFAULT = :top
       CARET_MAPPINGS = {

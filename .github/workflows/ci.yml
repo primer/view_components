@@ -25,50 +25,95 @@ jobs:
         key: gems-build-rails-main-ruby-2.7.x-${{ hashFiles('**/Gemfile.lock') }}
     - name: Lint with Rubocop
       run: |
-        gem install bundler:1.17.3
+        gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
         bundle exec rubocop
+  benchmark:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: gems-build-bench-ruby-2.7-${{ hashFiles('**/Gemfile.lock') }}
+    - name: Build and test with Rake
+      run: |
+        gem install bundler:2.2.9
+        bundle config path vendor/bundle
+        bundle update
+        bundle exec rake bench
+      env:
+        RAILS_VERSION: main
   test:
     needs: lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
         rails_version: [5.2.3, 6.0.0, main]
-        ruby_version: [2.4.x, 2.5.x, 2.6.x, 2.7.x]
+        ruby_version: [2.5.x, 2.6.x, 2.7.x]
         exclude:
           - rails_version: main
-            ruby_version: 2.4.x
-          - rails_version: 6.0.0
-            ruby_version: 2.4.x
+            ruby_version: 2.5.x
+          - rails_version: main
+            ruby_version: 2.6.x
     steps:
     - uses: actions/checkout@master
     - name: Setup Ruby
       uses: actions/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby_version }}
-    - name: Update rubygems when testing with Ruby 2.4.x
-      if: startsWith(matrix.ruby_version, '2.4')
-      run: |
-        gem update --system --no-document
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
         key: gems-build-rails-${{ matrix.rails_version }}-ruby-${{ matrix.ruby_version }}-${{ hashFiles('**/Gemfile.lock') }}
     - name: Build and test with Rake
       run: |
-        gem install bundler:1.17.3
+        gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle update
         bundle exec rake
       env:
         RAILS_VERSION: ${{ matrix.rails_version }}
+        COVERAGE: 1
     - name: Upload coverage results
       uses: actions/upload-artifact@master
       if: always()
       with:
         name: simplecov-resultset-rails${{matrix.rails_version}}-ruby${{matrix.ruby_version}}
         path: coverage
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7.x
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: gems-build-rails-main-ruby-2.7.x-${{ hashFiles('**/Gemfile.lock') }}
+    - name: Generate and diff docs
+      run: |
+        gem install bundler:2.2.9
+        bundle config path vendor/bundle
+        bundle update
+        bundle exec rake docs:build
+
+        if [ $(git ls-files -m | grep docs\/content | wc -l) -gt 0 ] ; then
+          echo "======================================================================="
+          echo "👋! There are changes in the docs/ directory. Please run bundle exec rake docs:build and commit the diff."
+          echo "======================================================================="
+          exit 1
+        fi
+
+        exit 0
   coverage:
     needs: test
     runs-on: ubuntu-latest
@@ -86,7 +131,7 @@ jobs:
         key: gems-build-rails-main-ruby-2.7.x-${{ hashFiles('**/Gemfile.lock') }}
     - name: Collate simplecov
       run: |
-        gem install bundler:1.17.3
+        gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
         bundle exec rake coverage:report

@@ -8,20 +8,20 @@ module Primer
     with_slot :spinner, class_name: "Spinner"
 
     #
-    # @example 150|Basic
+    # @example auto|Basic
     #   <%= render Primer::BlankslateComponent.new(
     #     title: "Title",
     #     description: "Description",
     #   ) %>
     #
-    # @example 190|Icon|Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
+    # @example auto|Icon|Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
     #   <%= render Primer::BlankslateComponent.new(
     #     icon: "octoface",
     #     title: "Title",
     #     description: "Description",
     #   ) %>
     #
-    # @example 220|Loading|Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
+    # @example auto|Loading|Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
     #   <%= render Primer::BlankslateComponent.new(
     #     title: "Title",
     #     description: "Description",
@@ -29,14 +29,14 @@ module Primer
     #     <% component.slot(:spinner, size: :large) %>
     #   <% end %>
     #
-    # @example 150|Custom content|Pass custom content as a block in place of `description`.
+    # @example auto|Custom content|Pass custom content as a block in place of `description`.
     #   <%= render Primer::BlankslateComponent.new(
     #     title: "Title",
     #   ) do %>
     #     <em>Your custom content here</em>
     #   <% end %>
     #
-    # @example 270|Action button|Provide a button to guide users to take action from the blankslate. The button appears below the description and custom content.
+    # @example auto|Action button|Provide a button to guide users to take action from the blankslate. The button appears below the description and custom content.
     #   <%= render Primer::BlankslateComponent.new(
     #     icon: "book",
     #     title: "Welcome to the mona wiki!",
@@ -46,7 +46,7 @@ module Primer
     #     button_url: "https://github.com/monalisa/mona/wiki/_new",
     #   ) %>
     #
-    # @example 225|Link|Add an additional link to help users learn more about a feature. The link will be shown at the very bottom:
+    # @example auto|Link|Add an additional link to help users learn more about a feature. The link will be shown at the very bottom:
     #   <%= render Primer::BlankslateComponent.new(
     #     icon: "book",
     #     title: "Welcome to the mona wiki!",
@@ -55,7 +55,7 @@ module Primer
     #     link_url: "https://docs.github.com/en/github/building-a-strong-community/about-wikis",
     #   ) %>
     #
-    # @example 340|Variations|There are a few variations of how the Blankslate appears: `narrow` adds a maximum width, `large` increases the font size, and `spacious` adds extra padding.
+    # @example auto|Variations|There are a few variations of how the Blankslate appears: `narrow` adds a maximum width, `large` increases the font size, and `spacious` adds extra padding.
     #   <%= render Primer::BlankslateComponent.new(
     #     icon: "book",
     #     title: "Welcome to the mona wiki!",
@@ -94,7 +94,7 @@ module Primer
       link_text: "",
       link_url: "",
 
-      #variations
+      # variations
       narrow: false,
       large: false,
       spacious: false,
@@ -108,7 +108,7 @@ module Primer
         "blankslate",
         "blankslate-narrow": narrow,
         "blankslate-large": large,
-        "blankslate-spacious": spacious,
+        "blankslate-spacious": spacious
       )
 
       @title_tag = title_tag
@@ -125,6 +125,7 @@ module Primer
       @link_url = link_url
     end
 
+    # :nodoc:
     class Spinner < Primer::Slot
       # @param size [Symbol] <%= one_of(Primer::SpinnerComponent::SIZE_MAPPINGS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

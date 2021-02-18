@@ -3,12 +3,11 @@
 module Primer
   # Use Primer::SpinnerComponent to let users know that content is being loaded.
   class SpinnerComponent < Primer::Component
-
     DEFAULT_SIZE = :medium
     SIZE_MAPPINGS = {
       :small => 16,
       DEFAULT_SIZE => 32,
-      :large => 64,
+      :large => 64
     }.freeze
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
     # Setting `box-sizing: content-box` allows consumers to add padding
@@ -16,13 +15,13 @@ module Primer
     DEFAULT_STYLE = "box-sizing: content-box; color: var(--color-icon-primary);"
 
     #
-    # @example 48|Default
+    # @example auto|Default
     #   <%= render(Primer::SpinnerComponent.new) %>
     #
-    # @example 32|Small
+    # @example auto|Small
     #   <%= render(Primer::SpinnerComponent.new(size: :small)) %>
     #
-    # @example 80|Large
+    # @example auto|Large
     #   <%= render(Primer::SpinnerComponent.new(size: :large)) %>
     #
     # @param size [Symbol] <%= one_of(Primer::SpinnerComponent::SIZE_MAPPINGS) %>
@@ -34,6 +33,10 @@ module Primer
       @system_arguments[:height] = SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
       @system_arguments[:viewBox] = "0 0 16 16"
       @system_arguments[:fill] = :none
+    end
+
+    def self.status
+      Primer::Component::STATUSES[:beta]
     end
   end
 end

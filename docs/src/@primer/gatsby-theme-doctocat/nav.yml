@@ -10,6 +10,8 @@
   children:
     - title: Avatar
       url: /components/avatar
+    - title: AvatarStack
+      url: /components/avatarstack
     - title: Blankslate
       url: /components/blankslate
     - title: BorderBox
@@ -20,16 +22,36 @@
       url: /components/breadcrumb
     - title: Button
       url: /components/button
+    - title: ButtonGroup
+      url: /components/buttongroup
+    - title: ButtonMarketing
+      url: /components/buttonmarketing
     - title: Counter
       url: /components/counter
+    - title: Details
+      url: /components/details
+    - title: Dropdown
+      url: /components/dropdown
+    - title: DropdownMenu
+      url: /components/dropdownmenu
     - title: Flash
       url: /components/flash
+    - title: Flex
+      url: /components/flex
+    - title: FlexItem
+      url: /components/flexitem
+    - title: Heading
+      url: /components/heading
     - title: Label
       url: /components/label
     - title: Layout
       url: /components/layout
     - title: Link
       url: /components/link
+    - title: Menu
+      url: /components/menu
+    - title: Markdown
+      url: /components/markdown
     - title: Octicon
       url: /components/octicon
     - title: Popover
@@ -46,3 +68,9 @@
       url: /components/text
     - title: TimelineItem
       url: /components/timelineitem
+    - title: Tooltip
+      url: /components/tooltip
+    - title: Truncate
+      url: /components/truncate
+    - title: UnderlineNav
+      url: /components/underlinenav

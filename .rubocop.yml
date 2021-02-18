@@ -1,10 +1,47 @@
 inherit_gem:
   rubocop-github:
-    - config/default.yml
-    - config/rails.yml
+    - config/default_edge.yml
+    - config/rails_edge.yml
 
 AllCops:
+  NewCops: enable
   Exclude:
     - "test/tmp/**/*"
+    - "demo/**/*"
     - "vendor/**/*"
     - "**/node_modules/**/*"
+
+Style/ClassAndModuleChildren:
+  Enabled: true
+  Exclude:
+    - "stories/**/*"
+    - "test/**/*"
+
+Style/Documentation:
+  Enabled: true
+  Exclude:
+    - "stories/**/*"
+    - "test/**/*"
+
+Naming/MethodParameterName:
+  Enabled: true
+  MinNameLength: 2
+
+Rails/RefuteMethods:
+  Enabled: false
+
+Style/MultipleComparison:
+  Enabled: true
+  Exclude:
+    - lib/primer/classify.rb
+
+Rails/RakeEnvironment:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Rails/OutputSafety:
+  Enabled: true
+  Exclude:
+    - "stories/**/*"

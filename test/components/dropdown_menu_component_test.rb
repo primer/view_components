@@ -30,4 +30,8 @@ class PrimerDropdownMenuComponentTest < Minitest::Test
 
     assert_selector(".dropdown-header")
   end
+
+  def test_status
+    assert_component_state(Primer::DropdownMenuComponent, :deprecated)
+  end
 end

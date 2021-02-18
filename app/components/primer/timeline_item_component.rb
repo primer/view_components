@@ -11,7 +11,7 @@ module Primer
 
     attr_reader :system_arguments
 
-    # @example 75|Default
+    # @example auto|Default
     #   <div style="padding-left: 60px">
     #     <%= render(Primer::TimelineItemComponent.new) do |component| %>
     #       <% component.slot(:avatar, src: "https://github.com/github.png", alt: "github") %>
@@ -36,6 +36,7 @@ module Primer
       avatar.present? || badge.present? || body.present?
     end
 
+    # :nodoc:
     class Avatar < Primer::Slot
       attr_reader :system_arguments, :alt, :src, :size, :square
 
@@ -59,6 +60,7 @@ module Primer
       end
     end
 
+    # :nodoc:
     class Badge < Primer::Slot
       attr_reader :system_arguments, :icon
 
@@ -76,6 +78,7 @@ module Primer
       end
     end
 
+    # :nodoc:
     class Body < Primer::Slot
       attr_reader :system_arguments
 

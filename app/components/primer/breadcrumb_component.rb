@@ -7,7 +7,7 @@ module Primer
 
     with_slot :item, collection: true, class_name: "BreadcrumbItem"
 
-    # @example 40|Basic
+    # @example auto|Basic
     #   <%= render(Primer::BreadcrumbComponent.new) do |component| %>
     #     <% component.slot(:item, href: "/") do %>Home<% end %>
     #     <% component.slot(:item, href: "/about") do %>About<% end %>
@@ -33,7 +33,8 @@ module Primer
       # @param selected [Boolean] Whether or not the item is selected and not rendered as a link.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(href: nil, selected: false, **system_arguments)
-        @href, @system_arguments = href, system_arguments
+        @href = href
+        @system_arguments = system_arguments
 
         @href = nil if selected
         @system_arguments[:tag] = :li
