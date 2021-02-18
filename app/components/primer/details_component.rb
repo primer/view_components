@@ -3,7 +3,7 @@
 module Primer
   # Use DetailsComponent to reveal content after clicking a button.
   class DetailsComponent < Primer::Component
-    include ViewComponent::Slotable
+    include ViewComponent::SlotableV2
 
     NO_OVERLAY = :none
     OVERLAY_MAPPINGS = {
@@ -12,9 +12,42 @@ module Primer
       :dark => "details-overlay details-overlay-dark"
     }.freeze
 
-    with_slot :body, class_name: "Body"
-    with_slot :summary, class_name: "Summary"
+    renders_one :body, class_name: "Body"
+    renders_one :summary, class_name: "Summary"
 
+    # @example 100|Default
+    #   <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
+    #     <% c.summary do %>
+    #       Click me
+    #     <% end %>
+    #
+    #     <% c.body do %>
+    #       Body
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example 100|Custom button
+    #   <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
+    #     <% c.summary(variant: :small, button_type: :primary) do %>
+    #       Click me
+    #     <% end %>
+    #
+    #     <% c.body do %>
+    #       Body
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example 100|Without button
+    #   <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
+    #     <% c.summary(button: false) do %>
+    #       Click me
+    #     <% end %>
+    #
+    #     <% c.body do %>
+    #       Body
+    #     <% end %>
+    #   <% end %>
+    #
     # @param overlay [Symbol] Dictates the type of overlay to render with. <%= one_of(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys) %>
     # @param reset [Boolean] Defatuls to false. If set to true, it will remove the default caret and remove style from the summary element
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -44,10 +77,10 @@ module Primer
         @system_arguments[:role] = "button"
       end
 
-      def component
-        return Primer::BaseComponent.new(**@system_arguments) unless @button
+      def call
+        return render Primer::BaseComponent.new(**@system_arguments) { content } unless @button
 
-        Primer::ButtonComponent.new(**@system_arguments)
+        render Primer::ButtonComponent.new(**@system_arguments) { content }
       end
     end
 
@@ -59,8 +92,8 @@ module Primer
         @system_arguments[:tag] ||= :div
       end
 
-      def component
-        Primer::BaseComponent.new(**@system_arguments)
+      def call
+        render Primer::BaseComponent.new(**@system_arguments) { content }
       end
     end
   end

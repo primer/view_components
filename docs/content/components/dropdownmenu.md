@@ -14,16 +14,16 @@ of the select menu.
 
 ### With a header
 
-<iframe style="width: 100%; border: 0px; height: 234px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div style='margin-bottom: 150px'>  <details class='details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Dropdown</summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-se '>    <div class='dropdown-header'>      Options    </div>          <ul>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>        </ul></details-menu></div></details></div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 234px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div style='margin-bottom: 150px'>  <details class='details-overlay details-reset position-relative'></details></div></body></html>"></iframe>
 
 ```erb
 <div style="margin-bottom: 150px">
   <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
-    <% c.slot(:summary) do %>
+    <% c.summary do %>
       Dropdown
     <% end %>
 
-    <% c.slot(:body) do %>
+    <% c.body do %>
       <%= render(Primer::DropdownMenuComponent.new(header: "Options")) do %>
         <ul>
           <li><a class="dropdown-item" href="#url">Dropdown item</a></li>

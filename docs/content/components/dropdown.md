@@ -13,7 +13,7 @@ They're great for instances where you don't need the full power (and code) of th
 
 ### Default
 
-<iframe style="width: 100%; border: 0px; height: 244px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div style='margin-bottom: 150px'>  <details class='dropdown details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Dropdown</summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-se '>    <div class='dropdown-header'>      Options    </div>  <ul>      <li class='dropdown-item '>Item 1</li>      <li class='dropdown-item '>Item 2</li>      <li role='none' class='dropdown-divider '></li>      <li class='dropdown-item '>Item 3</li>      <li class='dropdown-item '>Item 4</li>  </ul></details-menu></div></details></div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 244px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div style='margin-bottom: 150px'>  <details class='dropdown details-overlay details-reset position-relative'></details></div></body></html>"></iframe>
 
 ```erb
 <div style="margin-bottom: 150px">
@@ -35,7 +35,7 @@ They're great for instances where you don't need the full power (and code) of th
 
 ### With Direction
 
-<iframe style="width: 100%; border: 0px; height: 244px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div style='margin-bottom: 150px' class='d-flex flex-justify-center'>  <details class='dropdown details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Dropdown</summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-s '>    <div class='dropdown-header'>      Options    </div>  <ul>      <li class='dropdown-item '>Item 1</li>      <li class='dropdown-item '>Item 2</li>      <li role='none' class='dropdown-divider '></li>      <li class='dropdown-item '>Item 3</li>      <li class='dropdown-item '>Item 4</li>  </ul></details-menu></div></details></div></body></html>"></iframe>
+<iframe style="width: 100%; border: 0px; height: 244px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div style='margin-bottom: 150px' class='d-flex flex-justify-center'>  <details class='dropdown details-overlay details-reset position-relative'></details></div></body></html>"></iframe>
 
 ```erb
 <div style="margin-bottom: 150px" class="d-flex flex-justify-center">
