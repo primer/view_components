@@ -57,4 +57,8 @@ class PrimerAvatarComponentTest < Minitest::Test
     end
     refute_selector("img.avatar")
   end
+
+  def test_status
+    assert_component_state(Primer::AvatarComponent, :beta)
+  end
 end
