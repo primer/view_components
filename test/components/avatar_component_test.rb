@@ -20,7 +20,7 @@ class PrimerAvatarComponentTest < Minitest::Test
   def test_defaults_to_circle_avatar
     render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github"))
 
-    assert_selector("img.avatar.CircleBadge")
+    assert_selector("img.avatar.circle")
   end
 
   def test_defaults_adds_small_modifier_when_size_is_less_than_threshold

@@ -40,7 +40,7 @@ class PrimerTimelineItemComponentTest < Minitest::Test
 
     assert_selector(".TimelineItem-avatar")
     assert_selector(".avatar[size=40][width=40][height=40]")
-    refute_selector(".CircleBadge")
+    refute_selector(".circle")
   end
 
   def test_renders_circle_avatar
@@ -49,7 +49,7 @@ class PrimerTimelineItemComponentTest < Minitest::Test
     end
 
     assert_selector(".TimelineItem-avatar")
-    assert_selector(".avatar.CircleBadge")
+    assert_selector(".avatar.circle")
   end
 
   def test_renders_avatar_with_custom_size
