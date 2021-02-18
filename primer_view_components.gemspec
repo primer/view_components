@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
       "public gem pushes."
   end
 
-  spec.files         = Dir["CHANGELOG.md", "LICENSE.txt", "README.md", "lib/**/*", "app/**/*"]
+  spec.files         = Dir["CHANGELOG.md", "LICENSE.txt", "README.md", "lib/**/*", "app/**/*", "static/statuses.json"]
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency     "octicons_helper", [">= 9.0.0", "< 13.0.0"]
