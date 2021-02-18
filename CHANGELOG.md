@@ -6,6 +6,8 @@
 
     *Joel Hawksley, Simon Taranto*
 
+## 0.0.19
+
 * Add support for functional colors to `color` system argument.
 
     *Jake Shorty*
@@ -34,7 +36,7 @@
 
     *Simon Taranto*
 
-* Promote `Link` and `Counter` components to beta.
+* Promote `Avatar`, `Link`, and `Counter` components to beta.
 
     *Simon Taranto*
 
