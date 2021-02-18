@@ -107,7 +107,7 @@ jobs:
         bundle exec rake docs:build
 
         if [ $(git ls-files -m | grep docs\/content | wc -l) -gt 0 ] ; then
-          echo "There are changes in the docs/ directory. Please run `rake docs:build` and commit the diff."
+          echo "👋! There are changes in the docs/ directory. Please run bundle exec rake docs:build and commit the diff."
           exit 1
         fi
 
