@@ -30,7 +30,7 @@
 
     *Simon Taranto*
 
-* Promote `Link` and `Counter` components to beta.
+* Promote `Avatar`, `Link`, and `Counter` components to beta.
 
     *Simon Taranto*
 
