@@ -3,8 +3,7 @@ name: Docs Build
 on:
   push:
     branches:
-      # TODO - change me to main
-      - st-build-docs-in-actions
+      - main
 
 jobs:
     runs-on: ubuntu-latest
@@ -31,4 +30,4 @@ jobs:
           git config --local user.name "Actions Auto Build"
           git add -f docs static/statuses.json
           git commit -m "docs: build docs" || true
-          git push --force origin HEAD:refs/heads/st-build-docs-in-actions
+          git push --force origin HEAD:refs/heads/main
