@@ -51,7 +51,7 @@ Use AvatarStack to stack multiple avatars together.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `align` | `Symbol` | `:left` | One of `:left` and `:right`. |
-| `tooltipped` | `Boolean` | `false` | Whether to add a tooltip to the stack or not |
+| `tooltipped` | `Boolean` | `false` | Whether to add a tooltip to the stack or not. |
 | `body_arguments` | `Hash` | `{}` | Parameters to add to the Body. If `tooltipped` is set, has the same arguments as [Tooltip](/components/tooltip). |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
