@@ -85,11 +85,20 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    cliver (0.3.2)
     coderay (1.1.3)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
+    cuprite (0.11)
+      capybara (>= 2.1, < 4)
+      ferrum (~> 0.9.0)
     docile (1.3.4)
     erubi (1.10.0)
+    ferrum (0.9)
+      addressable (~> 2.5)
+      cliver (~> 0.3)
+      concurrent-ruby (~> 1.1)
+      websocket-driver (>= 0.6, < 0.8)
     ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -115,6 +124,8 @@ GEM
     nio4r (2.5.4)
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
+    nokogiri (1.11.1-x86_64-darwin)
       racc (~> 1.4)
     octicons (12.0.0)
       nokogiri (>= 1.6.3.1)
@@ -237,12 +248,14 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-darwin-19
 
 DEPENDENCIES
   allocation_tracer (~> 0.6.3)
   benchmark-ips (~> 2.8.4)
   bootsnap (>= 1.4.2)
   capybara (~> 3)
+  cuprite (= 0.11)
   listen (~> 3.0)
   minitest (~> 5.0)
   primer_view_components!

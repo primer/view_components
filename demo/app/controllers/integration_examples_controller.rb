@@ -1,0 +1,3 @@
+class IntegrationExamplesController < ApplicationController
+
+end
