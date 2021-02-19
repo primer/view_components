@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.0.19)
+    primer_view_components (0.0.20)
       octicons_helper (>= 9.0.0, < 13.0.0)
       rails (>= 5.0.0, < 7.0)
       view_component (>= 2.0.0, < 3.0)
@@ -88,7 +88,7 @@ GEM
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.8.8)
+    i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -179,7 +179,7 @@ GEM
       concurrent-ruby (~> 1.0)
     view_component (2.25.1)
       activesupport (>= 5.0.0, < 7.0)
-    view_component_storybook (0.6.0)
+    view_component_storybook (0.8.0)
       view_component (>= 2.2)
     webpacker (5.1.1)
       activesupport (>= 5.2)
@@ -208,7 +208,7 @@ DEPENDENCIES
   rake (~> 12.0)
   spring
   spring-watcher-listen (~> 2.0.0)
-  view_component_storybook (~> 0.6.0)
+  view_component_storybook (~> 0.8.0)
   webpacker (~> 5.0)
 
 BUNDLED WITH
