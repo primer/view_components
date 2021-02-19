@@ -6,6 +6,9 @@ class Primer::ViewHelperTest < Minitest::Test
   include Primer::ViewHelper
   include Primer::ComponentTestHelpers
 
+  # The helper calls #render, but it is not available in tests
+  alias_method :render, :render_inline
+
   def test_renders_component_using_shorthand
     primer(:heading, tag: :h2) { "My Heading" }
 
