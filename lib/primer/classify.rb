@@ -182,7 +182,7 @@ module Primer
       end
 
       def extract_value(memo, key, val, breakpoint)
-        return if val.nil?
+        return if val.nil? || val == ""
 
         if SPACING_KEYS.include?(key)
           if MARGIN_DIRECTION_KEYS.include?(key)
