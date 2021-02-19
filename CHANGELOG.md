@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.20
+
 * Fix bug when empty string was passed to Classify.
 
     *Manuel Puyol*
