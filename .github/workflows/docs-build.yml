@@ -1,10 +1,6 @@
 name: Docs Build
 
-on:
-  push:
-    branches:
-      - main
-      - srt32-patch-1
+on: [push, pull_request]
 
 jobs:
   build-docs:
