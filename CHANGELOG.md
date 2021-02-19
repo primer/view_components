@@ -6,6 +6,12 @@
 
     *Joel Hawksley, Simon Taranto*
 
+## 0.0.20
+
+* Fix bug when empty string was passed to Classify.
+
+    *Manuel Puyol*
+
 ## 0.0.19
 
 * Add support for functional colors to `color` system argument.
