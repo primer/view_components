@@ -7,6 +7,7 @@ module Primer
     include FetchOrFallbackHelper
     include OcticonsHelper
     include JoinStyleArgumentsHelper
+    include ViewHelper
 
     # sourced from https://primer.style/doctocat/usage/front-matter#status
     STATUSES = {

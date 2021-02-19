@@ -16,6 +16,7 @@ require "primer/class_name_helper"
 require "primer/classify"
 require "primer/fetch_or_fallback_helper"
 require "primer/join_style_arguments_helper"
+require "primer/view_helper"
 
 # Base configurations
 
