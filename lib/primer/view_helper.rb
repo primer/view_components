@@ -9,6 +9,8 @@ module Primer
   module ViewHelper
     extend ActiveSupport::Concern
 
+    class ViewHelperNotFound < StandardError; end
+
     def primer(name, **component_args, &block)
       component = Primer::Component.helpers[name]
 

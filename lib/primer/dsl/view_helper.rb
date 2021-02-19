@@ -17,7 +17,6 @@ module Primer
       extend ActiveSupport::Concern
 
       class ViewHelperAlreadyDefined < StandardError; end
-      class ViewHelperNotFound < StandardError; end
 
       included do
         class_attribute :helpers, instance_writer: false, default: {}
@@ -29,14 +28,6 @@ module Primer
 
           helpers[name] = self
         end
-      end
-
-      def primer(name, **component_args, &block)
-        component = helpers[name]
-
-        raise ViewHelperNotFound if component.blank?
-
-        render component.new(**component_args), &block
       end
     end
   end

@@ -14,4 +14,10 @@ class Primer::ViewHelperTest < Minitest::Test
 
     assert_selector("h2", text: "My Heading")
   end
+
+  def test_raises_if_component_is_not_registered
+    assert_raises Primer::ViewHelper::ViewHelperNotFound do
+      primer(:not_registered)
+    end
+  end
 end

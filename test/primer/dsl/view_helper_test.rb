@@ -12,6 +12,10 @@ class Primer::DSL::ViewHelperTest < Minitest::Test
 
     TestComponent.view_helper :test
 
+    assert_raises Primer::DSL::ViewHelper::ViewHelperAlreadyDefined do
+      TestComponent.view_helper :test
+    end
+
     assert_equal TestComponent, TestComponent.helpers[:test]
   end
 end
