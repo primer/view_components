@@ -1,0 +1,19 @@
+# frozen_string_literal: true
+
+class Primer::Utilities::AnimationStories < ViewComponent::Storybook::Stories
+  layout "storybook_preview"
+
+  def self.default_component
+    Primer::BoxComponent
+  end
+
+  story(:animation) do
+    controls do
+      select(:animation, [:fade_in, :fade_out, :fade_up, :fade_down, :scale_in, :pulse, :grow_x, :grow], :fade_in)
+    end
+
+    content do |c|
+      c.render Primer::OcticonComponent.new(icon: "mark-github", size: :large)
+    end
+  end
+end
