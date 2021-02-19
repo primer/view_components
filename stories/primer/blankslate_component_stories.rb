@@ -26,7 +26,7 @@ class Primer::BlankslateComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |component|
-      component.slot(:spinner)
+      component.spinner
     end
   end
 

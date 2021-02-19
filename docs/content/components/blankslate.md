@@ -46,7 +46,7 @@ Add a [SpinnerComponent](https://primer.style/view-components/components/spinner
   title: "Title",
   description: "Description",
 ) do |component| %>
-  <% component.slot(:spinner, size: :large) %>
+  <% component.spinner(size: :large) %>
 <% end %>
 ```
 
@@ -134,9 +134,12 @@ There are a few variations of how the Blankslate appears: `narrow` adds a maximu
 | `large` | `Boolean` | `false` | Increases the font size. |
 | `spacious` | `Boolean` | `false` | Adds extra padding. |
 
-### `spinner` slot
+## Slots
+
+### `Spinner`
+
+Optional Spinner.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `size` | `Symbol` | N/A | One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`). |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+| `kwargs` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |

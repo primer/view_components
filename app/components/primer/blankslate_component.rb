@@ -3,9 +3,15 @@
 module Primer
   # Use Primer::BlankslateComponent when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.
   class BlankslateComponent < Primer::Component
-    include ViewComponent::Slotable
+    include ViewComponent::SlotableV2
 
-    with_slot :spinner, class_name: "Spinner"
+    # Optional Spinner.
+    #
+    # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::SpinnerComponent) %>.
+    renders_one :spinner, ->(**system_arguments) do
+      system_arguments[:mb] ||= 3
+      Primer::SpinnerComponent.new(**system_arguments)
+    end
 
     #
     # @example auto|Basic
@@ -26,7 +32,7 @@ module Primer
     #     title: "Title",
     #     description: "Description",
     #   ) do |component| %>
-    #     <% component.slot(:spinner, size: :large) %>
+    #     <% component.spinner(size: :large) %>
     #   <% end %>
     #
     # @example auto|Custom content|Pass custom content as a block in place of `description`.
@@ -123,20 +129,6 @@ module Primer
       @button_classes = button_classes
       @link_text = link_text
       @link_url = link_url
-    end
-
-    # :nodoc:
-    class Spinner < Primer::Slot
-      # @param size [Symbol] <%= one_of(Primer::SpinnerComponent::SIZE_MAPPINGS) %>
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**system_arguments)
-        @system_arguments = system_arguments
-        @system_arguments[:mb] ||= 3
-      end
-
-      def component
-        Primer::SpinnerComponent.new(**@system_arguments)
-      end
     end
   end
 end

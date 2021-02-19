@@ -1,6 +1,6 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <% if spinner.present? %>
-    <%= render spinner.component %>
+    <%= spinner %>
   <% elsif @icon.present? %>
     <%= render(Primer::OcticonComponent.new(
       icon: @icon,
