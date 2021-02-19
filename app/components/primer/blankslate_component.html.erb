@@ -2,11 +2,11 @@
   <% if spinner.present? %>
     <%= render spinner.component %>
   <% elsif @icon.present? %>
-    <%= render(Primer::OcticonComponent.new(
+    <%= primer(:octicon,
       icon: @icon,
       size: @icon_size,
       classes: "blankslate-icon"
-    )) %>
+    ) %>
   <% elsif @image_src.present? && @image_alt.present? %>
     <%= image_tag "#{@image_src}", class: "mb-3", size: "56x56", alt: "#{@image_alt}" %>
   <% end %>
