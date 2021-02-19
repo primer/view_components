@@ -19,11 +19,10 @@ module Primer
       system_arguments = system_arguments
       system_arguments[:tag] = :summary
       system_arguments[:role] = "button"
-      system_arguments[:tag] ||= :div
 
-      Primer::BaseComponent.new(**@system_arguments) unless button
+      Primer::BaseComponent.new(**system_arguments) unless button
 
-      Primer::ButtonComponent.new(**@system_arguments)
+      Primer::ButtonComponent.new(**system_arguments)
     }
 
     # Use the Body slot as the main content to be shown when triggered by the Summary.
