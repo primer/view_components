@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'active_support/concern'
+require "active_support/concern"
 
 module Primer
   module DSL
@@ -17,6 +17,7 @@ module Primer
       class_methods do
         def view_helper(name)
           raise ViewHelperAlreadyDefined if helpers[name].present?
+
           helpers[name] = self
         end
       end
@@ -24,7 +25,7 @@ module Primer
       def primer(name, **component_args, &block)
         component = helpers[name]
 
-        raise ViewHelperNotFound unless component.present?
+        raise ViewHelperNotFound if component.blank?
 
         render component.new(**component_args), &block
       end

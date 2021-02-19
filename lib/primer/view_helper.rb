@@ -7,7 +7,7 @@ module Primer
     def primer(name, **component_args, &block)
       component = Primer::Component.helpers[name]
 
-      raise ViewHelperNotFound unless component.present?
+      raise ViewHelperNotFound if component.blank?
 
       render component.new(**component_args), &block
     end
