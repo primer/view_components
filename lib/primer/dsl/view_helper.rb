@@ -3,7 +3,16 @@
 require "active_support/concern"
 
 module Primer
+  # :nodoc:
   module DSL
+    # DSL to allow components to register a View Helper for shorthand calls.
+    #
+    # Example:
+    #
+    # class MyComponent < ViewComponent::Base
+    #   include Primer::DSL::ViewHelper
+    #   view_helper :my_component
+    # end
     module ViewHelper
       extend ActiveSupport::Concern
 

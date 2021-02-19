@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 module Primer
+  # Module to allow shorthand calls for registered Primer components
+  #
+  # Registered components can be called with
+  # `primer(:name, **kwargs) { block }` instead of
+  # `render Primer::NameComponent.new(**kwargs) { block }`
   module ViewHelper
     extend ActiveSupport::Concern
 
