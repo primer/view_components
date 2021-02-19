@@ -25,8 +25,8 @@ class Primer::BlankslateComponentStories < ViewComponent::Storybook::Stories
       description "We’re currently mirroring this repository. It should take anywhere from a few minutes to a couple of hours depending on the size of the repository."
     end
 
-    content do |component|
-      component.spinner
+    content do |c|
+      c.spinner(size: :large)
     end
   end
 
