@@ -29,4 +29,4 @@ jobs:
           git config --local user.name "Actions Auto Build"
           git add -f docs static/statuses.json
           git commit -m "docs: build docs" || true
-          git push --force origin HEAD
+          git push
