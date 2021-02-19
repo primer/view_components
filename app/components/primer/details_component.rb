@@ -12,8 +12,27 @@ module Primer
       :dark => "details-overlay details-overlay-dark"
     }.freeze
 
-    renders_one :body, class_name: "Body"
-    renders_one :summary, class_name: "Summary"
+    # Use the Summary slot as a trigger to reveal the content.
+    #
+    # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
+    renders_one :summary, lambda { |button=true, **system_arguments|
+      system_arguments = system_arguments
+      system_arguments[:tag] = :summary
+      system_arguments[:role] = "button"
+      system_arguments[:tag] ||= :div
+
+      Primer::BaseComponent.new(**@system_arguments) unless button
+
+      Primer::ButtonComponent.new(**@system_arguments)
+    }
+
+    # Use the Body slot as the main content to be shown when triggered by the Summary.
+    #
+    # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
+    renders_one :body, lambda { |**system_arguments|
+      system_arguments[:tag] ||= :div
+      Primer::BaseComponent.new(**system_arguments)
+    }
 
     # @example 100|Default
     #   <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
@@ -63,38 +82,6 @@ module Primer
 
     def render?
       summary.present? && body.present?
-    end
-
-    # Use the Summary slot as a trigger to reveal the content.
-    class Summary < Primer::Slot
-      # @param button [Boolean] Whether to render the Summary as a button or not.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(button: true, **system_arguments)
-        @button = button
-
-        @system_arguments = system_arguments
-        @system_arguments[:tag] = :summary
-        @system_arguments[:role] = "button"
-      end
-
-      def call
-        return render Primer::BaseComponent.new(**@system_arguments) { content } unless @button
-
-        render Primer::ButtonComponent.new(**@system_arguments) { content }
-      end
-    end
-
-    # Use the Body slot as the main content to be shown when triggered by the Summary.
-    class Body < Primer::Slot
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**system_arguments)
-        @system_arguments = system_arguments
-        @system_arguments[:tag] ||= :div
-      end
-
-      def call
-        render Primer::BaseComponent.new(**@system_arguments) { content }
-      end
     end
   end
 end
