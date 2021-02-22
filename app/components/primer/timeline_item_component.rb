@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'timeline_item/badge_component'
+require_relative "timeline_item/badge_component"
 
 module Primer
   # Use `TimelineItem` to display items on a vertical timeline, connected by badge elements.
