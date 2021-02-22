@@ -4,6 +4,10 @@
 
 * **Breaking change**: Upgrade `StateComponent` to support functional colors. This change requires using [@primer/css-next](https://www.npmjs.com/package/@primer/css-next). The required changes will be upstreamed to @primer/css at a later date.
 
+* Add `TimeAgo` component.
+
+    *Keith Cirkel*
+
 ## 0.0.21
 
 * **Breaking change**: Upgrade `FlashComponent` to use Slots V2.

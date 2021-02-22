@@ -147,6 +147,7 @@ namespace :docs do
       Primer::SpinnerComponent,
       Primer::SubheadComponent,
       Primer::TextComponent,
+      Primer::TimeAgoComponent,
       Primer::TimelineItemComponent,
       Primer::TooltipComponent,
       Primer::TruncateComponent,

@@ -66,6 +66,8 @@
       url: /components/subhead
     - title: Text
       url: /components/text
+    - title: TimeAgo
+      url: /components/timeago
     - title: TimelineItem
       url: /components/timelineitem
     - title: Tooltip

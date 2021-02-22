@@ -49,6 +49,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
     [Primer::TextComponent, {}],
     [Primer::TruncateComponent, {}],
+    [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::TooltipComponent, { label: "More" }],
     [Primer::UnderlineNavComponent, {}]

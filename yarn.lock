@@ -23,6 +23,11 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
+"@github/time-elements@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@github/time-elements/-/time-elements-3.1.1.tgz#b52be933a87a0b585a5df6fd2dea6ccda5d776b9"
+  integrity sha512-95TquDedxMpNb8BUrVIt9NEfdNBw4DRjdcECDPx4Ix6gkksI2npKRJBOV9XJMYjEIBo50iAiJzUuwL/fh3ptFw==
+
 "@rollup/plugin-node-resolve@^11.2.0":
   version "11.2.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-11.2.0.tgz#a5ab88c35bb7622d115f44984dee305112b6f714"
