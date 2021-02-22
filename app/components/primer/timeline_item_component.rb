@@ -7,7 +7,7 @@ module Primer
   class TimelineItemComponent < Primer::Component
     include ViewComponent::SlotableV2
 
-    # Optional Avatar to be rendered besides the badge.
+    # Avatar to be rendered to the left of the Badge.
     #
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::AvatarComponent) %>.
     renders_one :avatar, lambda { |src:, size: 40, square: true, **system_arguments|
@@ -19,8 +19,15 @@ module Primer
       Primer::AvatarComponent.new(src: src, size: size, square: square, **system_arguments)
     }
 
-    # Required Badge
+    # Badge that will be connected to other TimelineItems.
+    #
+    # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :badge, Primer::TimelineItem::BadgeComponent
+
+    # Body to be rendered to the left of the Badge.
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :body, lambda { |**system_arguments|
       system_arguments[:tag] = :div
       system_arguments[:classes] = class_names(
