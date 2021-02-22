@@ -2,6 +2,10 @@
 
 ## main
 
+* **Breaking change**: Upgrade `BlankslateComponent` to use SlotsV2.
+
+    *Manuel Puyol*
+
 ## 0.0.20
 
 * Fix bug when empty string was passed to Classify.
