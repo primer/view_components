@@ -1,6 +1,10 @@
 name: Docs Build
 
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - main
+  
 
 jobs:
   build-docs:
