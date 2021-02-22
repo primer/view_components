@@ -5,6 +5,8 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-underline-nav-component
 ---
 
+import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 Use the UnderlineNav component to style navigation with a minimal
@@ -15,7 +17,7 @@ of the page.
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><nav class='UnderlineNav '>  <ul class='UnderlineNav-body list-style-none '>        <a href='#url'>Item 1</a></ul>        <button type='button' class='btn '>Button!</button></nav></body></html>"></iframe>
+<IFrame height="auto" content="<nav class='UnderlineNav '>  <ul class='UnderlineNav-body list-style-none '>        <a href='#url'>Item 1</a></ul>        <button type='button' class='btn '>Button!</button></nav>"></IFrame>
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new) do |component| %>
@@ -30,7 +32,7 @@ of the page.
 
 ### Align right
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><nav class='UnderlineNav UnderlineNav--right '>        <button type='button' class='btn '>Button!</button>  <ul class='UnderlineNav-body list-style-none '>        <a href='#url'>Item 1</a></ul></nav></body></html>"></iframe>
+<IFrame height="auto" content="<nav class='UnderlineNav UnderlineNav--right '>        <button type='button' class='btn '>Button!</button>  <ul class='UnderlineNav-body list-style-none '>        <a href='#url'>Item 1</a></ul></nav>"></IFrame>
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>

@@ -5,6 +5,8 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-flex-component
 ---
 
+import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 Use FlexComponent to make an element lay out its content using the flexbox model.
@@ -16,7 +18,7 @@ Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='bg-gray d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div></body></html>"></iframe>
+<IFrame height="auto" content="<div class='bg-gray d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div>"></IFrame>
 
 ```erb
 <%= render(Primer::FlexComponent.new(bg: :gray)) do %>
@@ -28,7 +30,7 @@ Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/
 
 ### Justify center
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='flex-justify-center bg-gray d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div></body></html>"></iframe>
+<IFrame height="auto" content="<div class='flex-justify-center bg-gray d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div>"></IFrame>
 
 ```erb
 <%= render(Primer::FlexComponent.new(justify_content: :center, bg: :gray)) do %>
@@ -40,7 +42,7 @@ Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/
 
 ### Align end
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='flex-items-end bg-gray d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div></body></html>"></iframe>
+<IFrame height="auto" content="<div class='flex-items-end bg-gray d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div>"></IFrame>
 
 ```erb
 <%= render(Primer::FlexComponent.new(align_items: :end, bg: :gray)) do %>
@@ -52,7 +54,7 @@ Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/
 
 ### Direction column
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='bg-gray flex-column d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div></body></html>"></iframe>
+<IFrame height="auto" content="<div class='bg-gray flex-column d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div>"></IFrame>
 
 ```erb
 <%= render(Primer::FlexComponent.new(direction: :column, bg: :gray)) do %>

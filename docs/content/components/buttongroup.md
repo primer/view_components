@@ -5,6 +5,8 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-button-group-component
 ---
 
+import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 Use ButtonGroupComponent to render a series of buttons.
@@ -13,7 +15,7 @@ Use ButtonGroupComponent to render a series of buttons.
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='BtnGroup '>    <button type='button' class='btn BtnGroup-item '>Default</button>    <button type='button' class='btn btn-primary BtnGroup-item '>Primary</button>    <button type='button' class='btn btn-danger BtnGroup-item '>Danger</button>    <button type='button' class='btn btn-outline BtnGroup-item '>Outline</button>    <button type='button' class='btn my-class BtnGroup-item '>Custom class</button></div></body></html>"></iframe>
+<IFrame height="auto" content="<div class='BtnGroup '>    <button type='button' class='btn BtnGroup-item '>Default</button>    <button type='button' class='btn btn-primary BtnGroup-item '>Primary</button>    <button type='button' class='btn btn-danger BtnGroup-item '>Danger</button>    <button type='button' class='btn btn-outline BtnGroup-item '>Outline</button>    <button type='button' class='btn my-class BtnGroup-item '>Custom class</button></div>"></IFrame>
 
 ```erb
 <%= render(Primer::ButtonGroupComponent.new) do |component|

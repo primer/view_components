@@ -5,6 +5,8 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-subhead-component
 ---
 
+import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 Use the Subhead component for page headings.
@@ -13,7 +15,7 @@ Use the Subhead component for page headings.
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='Subhead hx_Subhead--responsive '>    <div class='Subhead-heading '>      My Heading</div>    <div class='Subhead-description '>      My Description</div></div></body></html>"></iframe>
+<IFrame height="auto" content="<div class='Subhead hx_Subhead--responsive '>    <div class='Subhead-heading '>      My Heading</div>    <div class='Subhead-description '>      My Description</div></div>"></IFrame>
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>
@@ -28,7 +30,7 @@ Use the Subhead component for page headings.
 
 ### Without border
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='Subhead hx_Subhead--responsive border-bottom-0 mb-0'>    <div class='Subhead-heading '>      My Heading</div>    <div class='Subhead-description '>      My Description</div></div></body></html>"></iframe>
+<IFrame height="auto" content="<div class='Subhead hx_Subhead--responsive border-bottom-0 mb-0'>    <div class='Subhead-heading '>      My Heading</div>    <div class='Subhead-description '>      My Description</div></div>"></IFrame>
 
 ```erb
 <%= render(Primer::SubheadComponent.new(hide_border: true)) do |component| %>
@@ -43,7 +45,7 @@ Use the Subhead component for page headings.
 
 ### With actions
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='Subhead hx_Subhead--responsive '>    <div class='Subhead-heading '>      My Heading</div>    <div class='Subhead-actions '>      <a href='http://www.google.com' role='button' class='btn btn-danger '>Action</a></div>    <div class='Subhead-description '>      My Description</div></div></body></html>"></iframe>
+<IFrame height="auto" content="<div class='Subhead hx_Subhead--responsive '>    <div class='Subhead-heading '>      My Heading</div>    <div class='Subhead-actions '>      <a href='http://www.google.com' role='button' class='btn btn-danger '>Action</a></div>    <div class='Subhead-description '>      My Description</div></div>"></IFrame>
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>

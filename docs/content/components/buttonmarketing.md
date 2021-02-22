@@ -5,6 +5,8 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-button-marketing-component
 ---
 
+import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 Use buttons for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
@@ -13,7 +15,7 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ### Button types
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-primary-mktg mr-2'>Primary</button><button type='button' class='btn-mktg btn-outline-mktg '>Outline</button><div class='bg-gray-dark'>  <button type='button' class='btn-mktg btn-transparent '>Transparent</button></div></body></html>"></iframe>
+<IFrame height="auto" content="<button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-primary-mktg mr-2'>Primary</button><button type='button' class='btn-mktg btn-outline-mktg '>Outline</button><div class='bg-gray-dark'>  <button type='button' class='btn-mktg btn-transparent '>Transparent</button></div>"></IFrame>
 
 ```erb
 <%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>
@@ -26,7 +28,7 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ### Sizes
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-large-mktg '>Large</button></body></html>"></iframe>
+<IFrame height="auto" content="<button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-large-mktg '>Large</button>"></IFrame>
 
 ```erb
 <%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>

@@ -5,6 +5,8 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-counter-component
 ---
 
+import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 Use Primer::CounterComponent to add a count to navigational elements and buttons.
@@ -13,7 +15,7 @@ Use Primer::CounterComponent to add a count to navigational elements and buttons
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span title='25' class='Counter '>25</span></body></html>"></iframe>
+<IFrame height="auto" content="<span title='25' class='Counter '>25</span>"></IFrame>
 
 ```erb
 <%= render(Primer::CounterComponent.new(count: 25)) %>

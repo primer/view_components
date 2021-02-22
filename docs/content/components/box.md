@@ -5,6 +5,8 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-box-component
 ---
 
+import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 A basic wrapper component for most layout related needs.
@@ -13,7 +15,7 @@ A basic wrapper component for most layout related needs.
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div>Your content here</div></body></html>"></iframe>
+<IFrame height="auto" content="<div>Your content here</div>"></IFrame>
 
 ```erb
 <%= render(Primer::BoxComponent.new) { "Your content here" } %>
@@ -21,7 +23,7 @@ A basic wrapper component for most layout related needs.
 
 ### Color and padding
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='bg-gray p-3'>Hello world</div></body></html>"></iframe>
+<IFrame height="auto" content="<div class='bg-gray p-3'>Hello world</div>"></IFrame>
 
 ```erb
 <%= render(Primer::BoxComponent.new(bg: :gray, p: 3)) { "Hello world" } %>

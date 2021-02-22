@@ -5,6 +5,8 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-label-component
 ---
 
+import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 Use labels to add contextual metadata to a design.
@@ -13,7 +15,7 @@ Use labels to add contextual metadata to a design.
 
 ### Schemes
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span title='Label: Label' class='Label bg-blue'>default</span><span title='Label: Label' class='Label Label--gray '>gray</span><span title='Label: Label' class='Label Label--gray-darker '>dark_gray</span><span title='Label: Label' class='Label Label--yellow '>yellow</span><span title='Label: Label' class='Label Label--green '>green</span><span title='Label: Label' class='Label Label--purple '>purple</span></body></html>"></iframe>
+<IFrame height="auto" content="<span title='Label: Label' class='Label bg-blue'>default</span><span title='Label: Label' class='Label Label--gray '>gray</span><span title='Label: Label' class='Label Label--gray-darker '>dark_gray</span><span title='Label: Label' class='Label Label--yellow '>yellow</span><span title='Label: Label' class='Label Label--green '>green</span><span title='Label: Label' class='Label Label--purple '>purple</span>"></IFrame>
 
 ```erb
 <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "default" } %>
@@ -26,7 +28,7 @@ Use labels to add contextual metadata to a design.
 
 ### Variants
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span title='Label: Label' class='Label bg-blue'>Default</span><span title='Label: Label' class='Label Label--large bg-blue'>Large</span></body></html>"></iframe>
+<IFrame height="auto" content="<span title='Label: Label' class='Label bg-blue'>Default</span><span title='Label: Label' class='Label Label--large bg-blue'>Large</span>"></IFrame>
 
 ```erb
 <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>

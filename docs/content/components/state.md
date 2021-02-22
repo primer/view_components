@@ -5,6 +5,8 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-state-component
 ---
 
+import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 Component for rendering the status of an item.
@@ -13,7 +15,7 @@ Component for rendering the status of an item.
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span title='title' class='State '>State</span></body></html>"></iframe>
+<IFrame height="auto" content="<span title='title' class='State '>State</span>"></IFrame>
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "State" } %>
@@ -21,7 +23,7 @@ Component for rendering the status of an item.
 
 ### Colors
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span title='title' class='State '>Default</span><span title='title' class='State State--green '>Green</span><span title='title' class='State State--red '>Red</span><span title='title' class='State State--purple '>Purple</span></body></html>"></iframe>
+<IFrame height="auto" content="<span title='title' class='State '>Default</span><span title='title' class='State State--green '>Green</span><span title='title' class='State State--red '>Red</span><span title='title' class='State State--purple '>Purple</span>"></IFrame>
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
@@ -32,7 +34,7 @@ Component for rendering the status of an item.
 
 ### Sizes
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span title='title' class='State '>Default</span><span title='title' class='State State--small '>Small</span></body></html>"></iframe>
+<IFrame height="auto" content="<span title='title' class='State '>Default</span><span title='title' class='State State--small '>Small</span>"></IFrame>
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>

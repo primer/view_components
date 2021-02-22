@@ -5,6 +5,8 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-progress-bar-component
 ---
 
+import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 Use ProgressBar to visualize task completion.
@@ -13,7 +15,7 @@ Use ProgressBar to visualize task completion.
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span class='Progress '>    <span style='width: 25%;' class='Progress-item bg-green'></span></span></body></html>"></iframe>
+<IFrame height="auto" content="<span class='Progress '>    <span style='width: 25%;' class='Progress-item bg-green'></span></span>"></IFrame>
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new) do |component| %>
@@ -23,7 +25,7 @@ Use ProgressBar to visualize task completion.
 
 ### Small
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span class='Progress Progress--small '>    <span style='width: 50%;' class='Progress-item bg-blue-4'></span></span></body></html>"></iframe>
+<IFrame height="auto" content="<span class='Progress Progress--small '>    <span style='width: 50%;' class='Progress-item bg-blue-4'></span></span>"></IFrame>
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new(size: :small)) do |component| %>
@@ -33,7 +35,7 @@ Use ProgressBar to visualize task completion.
 
 ### Large
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span class='Progress Progress--large '>    <span style='width: 75%;' class='Progress-item bg-red-4'></span></span></body></html>"></iframe>
+<IFrame height="auto" content="<span class='Progress Progress--large '>    <span style='width: 75%;' class='Progress-item bg-red-4'></span></span>"></IFrame>
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new(size: :large)) do |component| %>
@@ -43,7 +45,7 @@ Use ProgressBar to visualize task completion.
 
 ### Multiple items
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span class='Progress '>    <span style='width: 10%;' class='Progress-item bg-green'></span>    <span style='width: 20%;' class='Progress-item bg-blue-4'></span>    <span style='width: 30%;' class='Progress-item bg-red-4'></span></span></body></html>"></iframe>
+<IFrame height="auto" content="<span class='Progress '>    <span style='width: 10%;' class='Progress-item bg-green'></span>    <span style='width: 20%;' class='Progress-item bg-blue-4'></span>    <span style='width: 30%;' class='Progress-item bg-red-4'></span></span>"></IFrame>
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new) do |component| %>

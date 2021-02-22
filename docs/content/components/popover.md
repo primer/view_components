@@ -5,6 +5,8 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-popover-component
 ---
 
+import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 Use popovers to bring attention to specific user interface elements, typically to suggest an action or to guide users through a new experience.
@@ -15,7 +17,7 @@ By default, the popover renders with absolute positioning, meaning it should usu
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box p-4 mt-2 mx-auto text-left box-shadow-large'>      <h4 class='mb-2'>        Activity feed</h4>    This is the Popover body.</div></div></body></html>"></iframe>
+<IFrame height="auto" content="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box p-4 mt-2 mx-auto text-left box-shadow-large'>      <h4 class='mb-2'>        Activity feed</h4>    This is the Popover body.</div></div>"></IFrame>
 
 ```erb
 <%= render Primer::PopoverComponent.new do |component| %>
@@ -30,7 +32,7 @@ By default, the popover renders with absolute positioning, meaning it should usu
 
 ### Large
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--large p-4 mt-2 mx-auto text-left box-shadow-large'>      <h4 class='mb-2'>        Activity feed</h4>    This is the large Popover body.</div></div></body></html>"></iframe>
+<IFrame height="auto" content="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--large p-4 mt-2 mx-auto text-left box-shadow-large'>      <h4 class='mb-2'>        Activity feed</h4>    This is the large Popover body.</div></div>"></IFrame>
 
 ```erb
 <%= render Primer::PopoverComponent.new do |component| %>
@@ -45,7 +47,7 @@ By default, the popover renders with absolute positioning, meaning it should usu
 
 ### Caret position
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--left p-4 mt-2 mx-auto text-left box-shadow-large'>      <h4 class='mb-2'>        Activity feed</h4>    This is the large Popover body.</div></div></body></html>"></iframe>
+<IFrame height="auto" content="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--left p-4 mt-2 mx-auto text-left box-shadow-large'>      <h4 class='mb-2'>        Activity feed</h4>    This is the large Popover body.</div></div>"></IFrame>
 
 ```erb
 <%= render Primer::PopoverComponent.new do |component| %>
