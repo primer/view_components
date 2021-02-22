@@ -50,6 +50,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::TextComponent, {}],
     [Primer::TruncateComponent, {}],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
+    [Primer::TimelineItem::BadgeComponent, { icon: "people" }],
     [Primer::TooltipComponent, { label: "More" }],
     [Primer::UnderlineNavComponent, {}]
   ].freeze
