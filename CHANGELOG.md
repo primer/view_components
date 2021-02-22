@@ -2,6 +2,14 @@
 
 ## main
 
+* **Breaking change**: Upgrade `FlashComponent` to use Slots V2.
+
+    *Joel Hawksley, Simon Taranto*
+
+* **Breaking change**: Upgrade `BlankslateComponent` to use SlotsV2.
+
+    *Manuel Puyol*
+
 ## 0.0.20
 
 * Fix bug when empty string was passed to Classify.
@@ -12,7 +20,7 @@
 
 * Add support for functional colors to `color` system argument.
 
-    *Jake Shorty
+    *Jake Shorty*
 
 * Add `AvatarStack`, `Dropdown`, `Markdown` and `Menu` components.
 
