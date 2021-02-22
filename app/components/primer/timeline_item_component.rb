@@ -11,7 +11,7 @@ module Primer
     #
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::AvatarComponent) %>.
     renders_one :avatar, lambda { |src:, size: 40, square: true, **system_arguments|
-      @system_arguments[:classes] = class_names(
+      system_arguments[:classes] = class_names(
         "TimelineItem-avatar",
         system_arguments[:classes]
       )
@@ -37,8 +37,6 @@ module Primer
 
       Primer::BaseComponent.new(**system_arguments)
     }
-
-    attr_reader :system_arguments
 
     # @example auto|Default
     #   <div style="padding-left: 60px">
