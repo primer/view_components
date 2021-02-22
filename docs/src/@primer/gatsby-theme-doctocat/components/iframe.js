@@ -17,7 +17,6 @@ function IFrame({height, content}) {
     rest.style.height = `${Number(height) + PADDING}px`
   }
 
-  console.log(content)
 
   return (
     <iframe srcDoc={`<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body>${content}</body></html>`} {...rest}></iframe>
