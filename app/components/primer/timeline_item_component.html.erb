@@ -1,17 +1,5 @@
 <%= render Primer::BaseComponent.new(**system_arguments) do %>
-  <% if avatar %>
-    <%= render Primer::AvatarComponent.new(alt: avatar.alt, src: avatar.src, size: avatar.size, square: avatar.square, **avatar.system_arguments) %>
-  <% end %>
-
-  <% if badge %>
-    <%= render Primer::BaseComponent.new(**badge.system_arguments) do %>
-      <%= octicon badge.icon %>
-    <% end %>
-  <% end %>
-
-  <% if body %>
-    <%= render Primer::BaseComponent.new(**body.system_arguments) do %>
-      <%= body.content %>
-    <% end %>
-  <% end %>
+  <%= avatar %>
+  <%= badge %>
+  <%= body %>
 <% end %>

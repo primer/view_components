@@ -3,11 +3,31 @@
 module Primer
   # Use `TimelineItem` to display items on a vertical timeline, connected by badge elements.
   class TimelineItemComponent < Primer::Component
-    include ViewComponent::Slotable
+    include ViewComponent::SlotableV2
 
-    with_slot :avatar, class_name: "Avatar"
-    with_slot :badge, class_name: "Badge"
-    with_slot :body, class_name: "Body"
+    # Optional Avatar to be rendered besides the badge.
+    #
+    # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::AvatarComponent) %>.
+    renders_one :avatar, lambda { |src:, size: 40, square: true, **system_arguments|
+      @system_arguments[:classes] = class_names(
+        "TimelineItem-avatar",
+        system_arguments[:classes]
+      )
+
+      Primer::AvatarComponent.new(src: src, size: size, square: square, **system_arguments)
+    }
+
+    # Required Badge
+    renders_one :badge, "Badge"
+    renders_one :body, "Body", lambda { |**system_arguments|
+      system_arguments[:tag] = :div
+      system_arguments[:classes] = class_names(
+        "TimelineItem-body",
+        system_arguments[:classes]
+      )
+
+      Primer::BaseComponent.new(**@system_arguments)
+    }
 
     attr_reader :system_arguments
 
@@ -33,37 +53,11 @@ module Primer
     end
 
     def render?
-      avatar.present? || badge.present? || body.present?
+      badge.present? && body.present?
     end
 
     # :nodoc:
-    class Avatar < Primer::Slot
-      attr_reader :system_arguments, :alt, :src, :size, :square
-
-      # @param alt [String] Alt text for avatar image.
-      # @param src [String] Src attribute for avatar image.
-      # @param size [Integer] Image size.
-      # @param square [Boolean] Whether to round the edges of the image.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(alt: nil, src: nil, size: 40, square: true, **system_arguments)
-        @alt = alt
-        @src = src
-        @size = size
-        @square = square
-
-        @system_arguments = system_arguments
-        @system_arguments[:tag] = :div
-        @system_arguments[:classes] = class_names(
-          "TimelineItem-avatar",
-          system_arguments[:classes]
-        )
-      end
-    end
-
-    # :nodoc:
-    class Badge < Primer::Slot
-      attr_reader :system_arguments, :icon
-
+    class Badge < Primer::Component
       # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(icon: nil, **system_arguments)
@@ -76,20 +70,11 @@ module Primer
           system_arguments[:classes]
         )
       end
-    end
 
-    # :nodoc:
-    class Body < Primer::Slot
-      attr_reader :system_arguments
-
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**system_arguments)
-        @system_arguments = system_arguments
-        @system_arguments[:tag] = :div
-        @system_arguments[:classes] = class_names(
-          "TimelineItem-body",
-          system_arguments[:classes]
-        )
+      def call
+        render(Primer::BaseComponent.new(**@system_arguments)) do
+          render(Primer::OcticonComponent(icon: @icon))
+        end
       end
     end
   end
