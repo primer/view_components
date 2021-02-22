@@ -2,6 +2,7 @@
 title: FlexItem
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/flex_item_component.rb
+storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-flex-item-component
 ---
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->

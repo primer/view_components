@@ -2,6 +2,7 @@
 title: DropdownMenu
 status: Deprecated
 source: https://github.com/primer/view_components/tree/main/app/components/primer/dropdown_menu_component.rb
+storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-dropdown-menu-component
 ---
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->

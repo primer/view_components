@@ -2,6 +2,7 @@
 title: ButtonMarketing
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/button_marketing_component.rb
+storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-button-marketing-component
 ---
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->

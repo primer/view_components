@@ -2,6 +2,7 @@
 title: Flash
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/flash_component.rb
+storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-flash-component
 ---
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->

@@ -2,6 +2,7 @@
 title: UnderlineNav
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/underline_nav_component.rb
+storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-underline-nav-component
 ---
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->

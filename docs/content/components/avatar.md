@@ -2,6 +2,7 @@
 title: Avatar
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/avatar_component.rb
+storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-avatar-component
 ---
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->

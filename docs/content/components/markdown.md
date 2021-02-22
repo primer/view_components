@@ -2,6 +2,7 @@
 title: Markdown
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/markdown_component.rb
+storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-markdown-component
 ---
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->

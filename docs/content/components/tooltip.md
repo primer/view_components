@@ -2,6 +2,7 @@
 title: Tooltip
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/tooltip_component.rb
+storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-tooltip-component
 ---
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->

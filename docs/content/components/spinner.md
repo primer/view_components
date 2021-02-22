@@ -2,6 +2,7 @@
 title: Spinner
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/spinner_component.rb
+storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-spinner-component
 ---
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
