@@ -5,12 +5,11 @@ import {
   Flex,
   Grid,
   Heading,
-  Link,
   Position,
   StyledOcticon,
   Text,
 } from '@primer/components'
-import {ChevronDownIcon, ChevronUpIcon, CodeIcon, RocketIcon} from '@primer/octicons-react'
+import {ChevronDownIcon, ChevronUpIcon} from '@primer/octicons-react'
 import React from 'react'
 import {
   Head,
@@ -22,15 +21,7 @@ import {
 import {HEADER_HEIGHT} from '@primer/gatsby-theme-doctocat/src/components/header'
 import PageFooter from '@primer/gatsby-theme-doctocat/src/components/page-footer'
 import TableOfContents from '@primer/gatsby-theme-doctocat/src/components//table-of-contents'
-
-function StorybookLink({href}) {
-  return (
-    <Link href={href} lineHeight="condensedUltra" fontSize={1}>
-      <StyledOcticon icon={RocketIcon} mr={2} />
-      View storybook
-    </Link>
-  )
-}
+import StorybookLink from './storybook-link'
 
 function Layout({children, pageContext}) {
   let {
