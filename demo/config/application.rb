@@ -20,6 +20,7 @@ module Demo
     config.view_component.show_previews = true
 
     config.action_dispatch.default_headers.clear
+    config.hosts << "*"
 
     config.action_dispatch.default_headers = {
       "Access-Control-Allow-Origin" => "*",

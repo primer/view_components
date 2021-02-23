@@ -18,3 +18,4 @@ demo/tmp/
 demo/config/master.key
 primer_view_components*.gem
 .DS_Store
+app/components/**/*.js
