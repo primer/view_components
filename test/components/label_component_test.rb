@@ -20,7 +20,7 @@ class PrimerLabelComponentTest < Minitest::Test
   def test_supports_functional_schemes
     render_inline(Primer::LabelComponent.new(title: "foo", scheme: :danger)) { "private" }
 
-    assert_selector(".Label--danger")
+    assert_selector(".Label--red")
   end
 
   def test_falls_back_when_scheme_isn_t_valid

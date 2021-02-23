@@ -4,12 +4,12 @@ module Primer
   # Use labels to add contextual metadata to a design.
   class LabelComponent < Primer::Component
     NEW_SCHEME_MAPPINGS = {
-      primary: "Label--primary",
-      secondary: "Label--secondary",
-      info: "Label--info",
-      success: "Label--success",
-      warning: "Label--warning",
-      danger: "Label--danger"
+      primary: "Label--gray-darker",
+      secondary: "Label--gray",
+      info: "Label--blue",
+      success: "Label--green",
+      warning: "Label--yellow",
+      danger: "Label--red"
     }.freeze
 
     DEPRECATED_SCHEME_MAPPINGS = {
