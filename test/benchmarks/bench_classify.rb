@@ -57,7 +57,7 @@ class BenchClassify < Minitest::Benchmark
   end
 
   def bench_allocations_for_base_component
-    assert_allocations 103 do
+    assert_allocations 100 do
       component = Primer::BaseComponent.new(tag: :div, classes: @values)
 
       component.call
