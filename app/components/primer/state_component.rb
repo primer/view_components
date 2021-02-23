@@ -43,7 +43,7 @@ module Primer
     #   <%= render(Primer::StateComponent.new(title: "title", size: :small)) { "Small" } %>
     #
     # @param title [String] `title` HTML attribute.
-    # @param color [Symbol] Background color. <%= one_of(Primer::StateComponent:: COLOR_OPTIONS) %>
+    # @param color [Symbol] Background color. <%= one_of(Primer::StateComponent::COLOR_OPTIONS) %>
     # @param tag [Symbol] HTML tag for element. <%= one_of(Primer::StateComponent::TAG_OPTIONS) %>
     # @param size [Symbol] <%= one_of(Primer::StateComponent::SIZE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
