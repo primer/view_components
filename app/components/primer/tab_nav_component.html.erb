@@ -1,0 +1,15 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <nav role="tablist" aria-label="<%= @aria_label %>" class="tabnav-tabs">
+    <% tabs.each do |tab| %>
+      <%= tab %>
+    <% end %>
+  </nav >
+<% end %>
+
+<% tabs.each do |tab| %>
+  <% if tab.panel.present? %>
+    <div role="tabpanel" <%= "hidden" if tab.hidden? %>>
+      <%= tab.panel %>
+    </div>
+  <% end %>
+<% end %>
