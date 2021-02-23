@@ -97,7 +97,7 @@ class PrimerComponentTest < Minitest::Test
   end
 
   def test_all_slots_support_system_arguments
-    COMPONENTS_WITH_ARGS.each do |component, args, proc|
+    COMPONENTS_WITH_ARGS.each do |component, args|
       next unless component.respond_to?(:slots) && component.slots.any?
 
       result = render_inline(component.new(**args)) do |c|
