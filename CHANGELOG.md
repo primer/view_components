@@ -2,11 +2,17 @@
 
 ## main
 
+## 0.0.21
+
 * **Breaking change**: Upgrade `FlashComponent` to use Slots V2.
 
     *Joel Hawksley, Simon Taranto*
 
-* **Breaking change**: Upgrade `BlankslateComponent` to use SlotsV2.
+* **Breaking change**: Upgrade `BlankslateComponent` to use Slots V2.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Upgrade `TimelineItemComponent` to use Slots V2.
 
     *Manuel Puyol*
 
