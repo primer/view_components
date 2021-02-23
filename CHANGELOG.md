@@ -2,7 +2,17 @@
 
 ## main
 
-* **Breaking change**: Upgrade `BlankslateComponent` to use SlotsV2.
+## 0.0.21
+
+* **Breaking change**: Upgrade `FlashComponent` to use Slots V2.
+
+    *Joel Hawksley, Simon Taranto*
+
+* **Breaking change**: Upgrade `BlankslateComponent` to use Slots V2.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Upgrade `TimelineItemComponent` to use Slots V2.
 
     *Manuel Puyol*
 
@@ -16,7 +26,7 @@
 
 * Add support for functional colors to `color` system argument.
 
-    *Jake Shorty
+    *Jake Shorty*
 
 * Add `AvatarStack`, `Dropdown`, `Markdown` and `Menu` components.
 
