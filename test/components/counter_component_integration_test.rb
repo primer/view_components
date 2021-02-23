@@ -8,10 +8,4 @@ class CounterComponentIntegrationTest < ApplicationSystemTestCase
 
     assert_selector(".Counter", text: "2")
   end
-
-  def with_preview(preview_name)
-    component_uri = self.class.name.split("Integration").first.underscore
-
-    visit("/rails/view_components/#{component_uri}/#{preview_name}")
-  end
 end
