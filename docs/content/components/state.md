@@ -43,7 +43,7 @@ Component for rendering the status of an item.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `title` | `String` | N/A | `title` HTML attribute. |
-| `color` | `Symbol` | `:default` | Background color. One of `:default`, `:green`, `:red`, or `:purple`. |
+| `color` | `Symbol` | `:default` | Background color. One of `:open`, `:closed`, `:merged`, `:default`, `:green`, `:red`, or `:purple`. |
 | `tag` | `Symbol` | `:span` | HTML tag for element. One of `:span`, `:div`, or `:a`. |
 | `size` | `Symbol` | `:default` | One of `:default` and `:small`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
