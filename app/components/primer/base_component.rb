@@ -112,7 +112,7 @@ module Primer
       @result = Primer::Classify.call(**system_arguments.merge(classes: classes))
 
       # Filter out Primer keys so they don't get assigned as HTML attributes
-      @content_tag_args = add_test_selector(system_arguments).except(*Primer::Classify::VALID_KEYS)
+      @content_tag_args = add_test_selector(system_arguments).except(*Primer::Classify::VALID_KEYS + [TEST_SELECTOR_TAG])
     end
 
     def call
@@ -127,7 +127,7 @@ module Primer
         args[:data][TEST_SELECTOR_TAG] = args[TEST_SELECTOR_TAG]
       end
 
-      args.except(TEST_SELECTOR_TAG)
+      args
     end
   end
 end
