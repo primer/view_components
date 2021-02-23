@@ -11,6 +11,8 @@ if ENV["COVERAGE"] == "1"
   end
 end
 
+Ferrum::Browser.new(process_timeout: 5)
+
 require "bundler/setup"
 
 ENV["RAILS_ENV"] = "test"
