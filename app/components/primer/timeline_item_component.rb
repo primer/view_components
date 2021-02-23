@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "timeline_item/badge_component"
-
 module Primer
   # Use `TimelineItem` to display items on a vertical timeline, connected by badge elements.
   class TimelineItemComponent < Primer::Component
@@ -23,7 +21,7 @@ module Primer
     #
     # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_one :badge, Primer::TimelineItem::BadgeComponent
+    renders_one :badge, "BadgeComponent"
 
     # Body to be rendered to the left of the Badge.
     #
@@ -61,6 +59,27 @@ module Primer
 
     def render?
       avatar.present? || badge.present? || body.present?
+    end
+
+    # This component is part of `Primer::TimelineItemComponent` and should not be
+    # used as a standalone component.
+    class BadgeComponent < Primer::Component
+      def initialize(icon: nil, **system_arguments)
+        @icon = icon
+
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :div
+        @system_arguments[:classes] = class_names(
+          "TimelineItem-badge",
+          system_arguments[:classes]
+        )
+      end
+
+      def call
+        render(Primer::BaseComponent.new(**@system_arguments)) do
+          render(Primer::OcticonComponent.new(icon: @icon))
+        end
+      end
     end
   end
 end
