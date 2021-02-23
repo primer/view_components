@@ -118,7 +118,7 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_color
-    assert_generated_class(nil,                  { color: "" })
+    refute_generated_class({ color: "" })
     assert_generated_class("text-blue",          { color: :blue })
     assert_generated_class("text-red",           { color: :red })
     assert_generated_class("text-gray-light",    { color: :gray_light })
