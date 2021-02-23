@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.21
+
 * **Breaking change**: Upgrade `FlashComponent` to use Slots V2.
 
     *Joel Hawksley, Simon Taranto*
