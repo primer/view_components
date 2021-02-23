@@ -1,3 +1,0 @@
-class IntegrationExamplesController < ApplicationController
-
-end
