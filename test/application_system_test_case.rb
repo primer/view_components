@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require "test_helper"
-require 'capybara/rails'
-require 'capybara/minitest'
+require "capybara/rails"
+require "capybara/minitest"
 require "capybara/cuprite"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
