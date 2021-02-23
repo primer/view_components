@@ -12,9 +12,9 @@ module Primer
 
     DEPRECATED_COLOR_MAPPINGS = {
       COLOR_DEFAULT => "",
-      green: "State--green",
-      red: "State--red",
-      purple: "State--purple"
+      :green => "State--green",
+      :red => "State--red",
+      :purple => "State--purple"
     }.freeze
     COLOR_MAPPINGS = NEW_COLOR_MAPPINGS.merge(DEPRECATED_COLOR_MAPPINGS)
     COLOR_OPTIONS = COLOR_MAPPINGS.keys
