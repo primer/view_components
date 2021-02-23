@@ -40,9 +40,9 @@ for organizations or any other non-human avatars.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `src` | `String` | N/A | The source url of the avatar image |
-| `alt` | `String` | N/A | Passed through to alt on img tag |
-| `size` | `Integer` | `20` | Adds the avatar-small class if less than 24 |
+| `src` | `String` | N/A | The source url of the avatar image. |
+| `alt` | `String` | N/A | Passed through to alt on img tag. |
+| `size` | `Integer` | `20` | Adds the avatar-small class if less than 24. |
 | `square` | `Boolean` | `false` | Used to create a square avatar. |
-| `href` | `String` | `nil` | The URL to link to. If used, component will be wrapped by an `<a>` tag |
+| `href` | `String` | `nil` | The URL to link to. If used, component will be wrapped by an `<a>` tag. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
