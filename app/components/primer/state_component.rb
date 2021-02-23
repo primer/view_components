@@ -34,9 +34,9 @@ module Primer
     #
     # @example auto|Colors
     #   <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
-    #   <%= render(Primer::StateComponent.new(title: "title", color: :green)) { "Green" } %>
-    #   <%= render(Primer::StateComponent.new(title: "title", color: :red)) { "Red" } %>
-    #   <%= render(Primer::StateComponent.new(title: "title", color: :purple)) { "Purple" } %>
+    #   <%= render(Primer::StateComponent.new(title: "title", color: :open)) { "Open" } %>
+    #   <%= render(Primer::StateComponent.new(title: "title", color: :closed)) { "Closed" } %>
+    #   <%= render(Primer::StateComponent.new(title: "title", color: :merged)) { "Merged" } %>
     #
     # @example auto|Sizes
     #   <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
