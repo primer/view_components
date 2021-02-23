@@ -1,1 +1,1 @@
-../../../../app/assets/javascripts/primer.js
+import '../../../../app/assets/javascripts/primer.js';
