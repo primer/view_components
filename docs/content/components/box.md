@@ -2,7 +2,7 @@
 title: Box
 status: Stable
 source: https://github.com/primer/view_components/tree/main/app/components/primer/box_component.rb
-storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-box-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-box-component
 ---
 
 import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'

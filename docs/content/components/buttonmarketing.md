@@ -2,7 +2,7 @@
 title: ButtonMarketing
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/button_marketing_component.rb
-storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-button-marketing-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-button-marketing-component
 ---
 
 import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'

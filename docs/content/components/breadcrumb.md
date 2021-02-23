@@ -2,7 +2,7 @@
 title: Breadcrumb
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/breadcrumb_component.rb
-storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-breadcrumb-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-breadcrumb-component
 ---
 
 import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'

@@ -2,7 +2,7 @@
 title: Label
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/label_component.rb
-storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-label-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-label-component
 ---
 
 import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'

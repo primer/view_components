@@ -2,7 +2,7 @@
 title: ProgressBar
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/progress_bar_component.rb
-storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-progress-bar-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-progress-bar-component
 ---
 
 import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'

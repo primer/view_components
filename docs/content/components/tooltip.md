@@ -2,7 +2,7 @@
 title: Tooltip
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/tooltip_component.rb
-storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-tooltip-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-tooltip-component
 ---
 
 import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'

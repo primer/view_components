@@ -2,7 +2,7 @@
 title: Avatar
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/avatar_component.rb
-storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-avatar-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-avatar-component
 ---
 
 import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'

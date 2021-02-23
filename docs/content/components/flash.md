@@ -2,7 +2,7 @@
 title: Flash
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/flash_component.rb
-storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-flash-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-flash-component
 ---
 
 import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'

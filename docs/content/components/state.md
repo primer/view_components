@@ -2,7 +2,7 @@
 title: State
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/state_component.rb
-storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-state-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-state-component
 ---
 
 import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'

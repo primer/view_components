@@ -2,7 +2,7 @@
 title: ButtonGroup
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/button_group_component.rb
-storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-button-group-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-button-group-component
 ---
 
 import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'

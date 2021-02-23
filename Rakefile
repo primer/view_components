@@ -165,7 +165,7 @@ namespace :docs do
         f.puts("title: #{short_name}")
         f.puts("status: #{component.status.to_s.capitalize}")
         f.puts("source: https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb")
-        f.puts("storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-#{short_name.underscore.dasherize}-component")
+        f.puts("storybook: https://primer.style/view-components/stories/?path=/story/primer-#{short_name.underscore.dasherize}-component")
         f.puts("---")
         f.puts
         f.puts("import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'")

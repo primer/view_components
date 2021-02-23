@@ -2,7 +2,7 @@
 title: Link
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/link_component.rb
-storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-link-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-link-component
 ---
 
 import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'

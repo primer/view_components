@@ -2,7 +2,7 @@
 title: BorderBox
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/border_box_component.rb
-storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-border-box-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-border-box-component
 ---
 
 import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'

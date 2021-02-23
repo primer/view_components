@@ -2,7 +2,7 @@
 title: AvatarStack
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/avatar_stack_component.rb
-storybook: https://primer-view-components.herokuapp.com/?path=/story/primer-avatar-stack-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-avatar-stack-component
 ---
 
 import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
