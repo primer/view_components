@@ -3,20 +3,45 @@
 module Primer
   # Use `TimelineItem` to display items on a vertical timeline, connected by badge elements.
   class TimelineItemComponent < Primer::Component
-    include ViewComponent::Slotable
+    include ViewComponent::SlotableV2
 
-    with_slot :avatar, class_name: "Avatar"
-    with_slot :badge, class_name: "Badge"
-    with_slot :body, class_name: "Body"
+    # Avatar to be rendered to the left of the Badge.
+    #
+    # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::AvatarComponent) %>.
+    renders_one :avatar, lambda { |src:, size: 40, square: true, **system_arguments|
+      system_arguments[:classes] = class_names(
+        "TimelineItem-avatar",
+        system_arguments[:classes]
+      )
 
-    attr_reader :system_arguments
+      Primer::AvatarComponent.new(src: src, size: size, square: square, **system_arguments)
+    }
+
+    # Badge that will be connected to other TimelineItems.
+    #
+    # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    renders_one :badge, "BadgeComponent"
+
+    # Body to be rendered to the left of the Badge.
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    renders_one :body, lambda { |**system_arguments|
+      system_arguments[:tag] = :div
+      system_arguments[:classes] = class_names(
+        "TimelineItem-body",
+        system_arguments[:classes]
+      )
+
+      Primer::BaseComponent.new(**system_arguments)
+    }
 
     # @example auto|Default
     #   <div style="padding-left: 60px">
     #     <%= render(Primer::TimelineItemComponent.new) do |component| %>
-    #       <% component.slot(:avatar, src: "https://github.com/github.png", alt: "github") %>
-    #       <% component.slot(:badge, bg: :green, color: :white, icon: :check) %>
-    #       <% component.slot(:body) { "Success!" } %>
+    #       <% component.avatar(src: "https://github.com/github.png", alt: "github") %>
+    #       <% component.badge(bg: :green, color: :white, icon: :check) %>
+    #       <% component.body { "Success!" } %>
     #     <% end %>
     #   </div>
     #
@@ -36,36 +61,9 @@ module Primer
       avatar.present? || badge.present? || body.present?
     end
 
-    # :nodoc:
-    class Avatar < Primer::Slot
-      attr_reader :system_arguments, :alt, :src, :size, :square
-
-      # @param alt [String] Alt text for avatar image.
-      # @param src [String] Src attribute for avatar image.
-      # @param size [Integer] Image size.
-      # @param square [Boolean] Whether to round the edges of the image.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(alt: nil, src: nil, size: 40, square: true, **system_arguments)
-        @alt = alt
-        @src = src
-        @size = size
-        @square = square
-
-        @system_arguments = system_arguments
-        @system_arguments[:tag] = :div
-        @system_arguments[:classes] = class_names(
-          "TimelineItem-avatar",
-          system_arguments[:classes]
-        )
-      end
-    end
-
-    # :nodoc:
-    class Badge < Primer::Slot
-      attr_reader :system_arguments, :icon
-
-      # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    # This component is part of `Primer::TimelineItemComponent` and should not be
+    # used as a standalone component.
+    class BadgeComponent < Primer::Component
       def initialize(icon: nil, **system_arguments)
         @icon = icon
 
@@ -76,20 +74,11 @@ module Primer
           system_arguments[:classes]
         )
       end
-    end
 
-    # :nodoc:
-    class Body < Primer::Slot
-      attr_reader :system_arguments
-
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**system_arguments)
-        @system_arguments = system_arguments
-        @system_arguments[:tag] = :div
-        @system_arguments[:classes] = class_names(
-          "TimelineItem-body",
-          system_arguments[:classes]
-        )
+      def call
+        render(Primer::BaseComponent.new(**@system_arguments)) do
+          render(Primer::OcticonComponent.new(icon: @icon))
+        end
       end
     end
   end
