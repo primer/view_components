@@ -4,12 +4,19 @@ module Primer
   # Component for rendering the status of an item.
   class StateComponent < Primer::Component
     COLOR_DEFAULT = :default
-    COLOR_MAPPINGS = {
+    NEW_COLOR_MAPPINGS = {
+      :open  => "State--open",
+      :closed => "State--closed",
+      :merged => "State--merged"
+    }.freeze
+
+    DEPRECATED_COLOR_MAPPINGS = {
       COLOR_DEFAULT => "",
       :green => "State--green",
       :red => "State--red",
       :purple => "State--purple"
     }.freeze
+    COLOR_MAPPINGS = NEW_COLOR_MAPPINGS.merge(DEPRECATED_COLOR_MAPPINGS)
     COLOR_OPTIONS = COLOR_MAPPINGS.keys
 
     SIZE_DEFAULT = :default
@@ -36,7 +43,7 @@ module Primer
     #   <%= render(Primer::StateComponent.new(title: "title", size: :small)) { "Small" } %>
     #
     # @param title [String] `title` HTML attribute.
-    # @param color [Symbol] Background color. <%= one_of(Primer::StateComponent::COLOR_OPTIONS) %>
+    # @param color [Symbol] Background color. <%= one_of(Primer::StateComponent::DEPRECATED_COLOR_MAPPINGS.keys) %>
     # @param tag [Symbol] HTML tag for element. <%= one_of(Primer::StateComponent::TAG_OPTIONS) %>
     # @param size [Symbol] <%= one_of(Primer::StateComponent::SIZE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

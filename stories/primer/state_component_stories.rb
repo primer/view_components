@@ -6,7 +6,7 @@ class Primer::StateComponentStories < ViewComponent::Storybook::Stories
   story(:state) do
     controls do
       title "this is the title"
-      select(:color, Primer::StateComponent::COLOR_OPTIONS, :default)
+      select(:color, Primer::StateComponent::DEPRECATED_COLOR_MAPPINGS.keys, :default)
       select(:size, Primer::StateComponent::SIZE_OPTIONS, :default)
       select(:tag, Primer::StateComponent::TAG_OPTIONS, :span)
     end
