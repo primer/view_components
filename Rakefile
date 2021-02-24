@@ -105,6 +105,8 @@ namespace :docs do
     require "view_component/test_helpers"
     include ViewComponent::TestHelpers
 
+    Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
+
     puts "Building YARD documentation."
     Rake::Task["yard"].execute
 
