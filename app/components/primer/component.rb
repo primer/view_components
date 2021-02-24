@@ -7,7 +7,7 @@ module Primer
     include FetchOrFallbackHelper
     include OcticonsHelper
     include JoinStyleArgumentsHelper
-    include DSL::ViewHelper
+    include ViewHelper::DSL
     include ViewHelper
 
     # sourced from https://primer.style/doctocat/usage/front-matter#status

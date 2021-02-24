@@ -4,16 +4,16 @@ require "active_support/concern"
 
 module Primer
   # :nodoc:
-  module DSL
+  module ViewHelper
     # DSL to allow components to register a View Helper for shorthand calls.
     #
     # Example:
     #
     # class MyComponent < ViewComponent::Base
-    #   include Primer::DSL::ViewHelper
+    #   include Primer::ViewHelper::DSL
     #   view_helper :my_component
     # end
-    module ViewHelper
+    module DSL
       extend ActiveSupport::Concern
 
       class ViewHelperAlreadyDefined < StandardError; end
@@ -24,7 +24,7 @@ module Primer
 
       class_methods do
         def view_helper(name)
-          raise ViewHelperAlreadyDefined if helpers[name].present?
+          raise ViewHelperAlreadyDefined, "#{name} is already defined" if helpers[name].present?
 
           helpers[name] = self
         end
