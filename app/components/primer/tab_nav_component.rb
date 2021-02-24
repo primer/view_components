@@ -10,11 +10,11 @@ module Primer
     # @param title [String] Text to be rendered by the tab.
     # @param selected [Boolean] Whether the tab is selected.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_many :tabs, -> (**system_arguments) do
+    renders_many :tabs, lambda { |**system_arguments|
       return TabComponent.new(**system_arguments) unless @with_panel
 
       TabComponent.new(tag: :button, type: :button, **system_arguments)
-    end
+    }
 
     # @example auto|Default
     #   <%= render(Primer::TabNavComponent.new) do |c| %>
@@ -41,7 +41,7 @@ module Primer
 
       @system_arguments[:classes] = class_names(
         "tabnav",
-        system_arguments[:classes],
+        system_arguments[:classes]
       )
     end
 
@@ -53,6 +53,7 @@ module Primer
       @with_panel ? Primer::TabContainerComponent : Primer::BaseComponent
     end
 
+    # Tabs to be rendered.
     class TabComponent < Primer::Component
       def initialize(title:, selected: false, **system_arguments)
         @title = title
@@ -71,7 +72,7 @@ module Primer
 
         @system_arguments[:classes] = class_names(
           "tabnav-tab",
-          system_arguments[:classes],
+          system_arguments[:classes]
         )
       end
 
