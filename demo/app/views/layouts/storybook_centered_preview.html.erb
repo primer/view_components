@@ -4,7 +4,11 @@
     <title>ActionView::Component Storybook Preview</title>
 
     <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
-    <%= javascript_include_tag "primer_view_components" %>
+    <% if Rails.env.development? %>
+      <%= javascript_include_tag "primer_view_components", host: "localhost:4000" %>
+    <% else %>
+      <%= javascript_include_tag "primer_view_components" %>
+    <% end %>
   </head>
 
   <body>
