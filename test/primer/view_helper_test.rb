@@ -16,8 +16,10 @@ class Primer::ViewHelperTest < Minitest::Test
   end
 
   def test_raises_if_component_is_not_registered
-    assert_raises Primer::ViewHelper::ViewHelperNotFound do
+    err = assert_raises Primer::ViewHelper::ViewHelperNotFound do
       primer(:not_registered)
     end
+
+    assert_equal "no component defined for helper not_registered", err.message
   end
 end
