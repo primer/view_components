@@ -8,7 +8,7 @@ require "sprockets/railtie"
 require "rails/test_unit/railtie"
 require "view_component/engine"
 require "view_component/storybook/engine"
-require "primer/view_components/engine" unless Rails.env.test?
+require "primer/view_components/engine"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
