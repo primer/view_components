@@ -22,6 +22,18 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 <% end %>
 ```
 
+### With panels
+
+<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><tab-container class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <button type='button' role='tab' aria-selected='true' class='tabnav-tab '>Tab 1</button>      <button type='button' role='tab' class='tabnav-tab '>Tab 2</button>      <button type='button' role='tab' class='tabnav-tab '>Tab 3</button>  </nav >        <div role='tabpanel' >          Panel 1        </div>        <div role='tabpanel' hidden>          Panel 1        </div>        <div role='tabpanel' hidden>          Panel 1        </div></tab-container></body></html>"></iframe>
+
+```erb
+<%= render(Primer::TabNavComponent.new(with_panel: true)) do |c| %>
+  <% c.tab(selected: true, title: "Tab 1") { "Panel 1" } %>
+  <% c.tab(title: "Tab 2") { "Panel 1" } %>
+  <% c.tab(title: "Tab 3") { "Panel 1" } %>
+<% end %>
+```
+
 ## Arguments
 
 | Name | Type | Default | Description |
