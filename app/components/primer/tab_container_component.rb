@@ -1,8 +1,27 @@
 # frozen_string_literal: true
 
 module Primer
+  # Use TabContainer to create tabbed content with keyboard support.
   class TabContainerComponent < Primer::Component
-
+    # @example auto|Default
+    #   <%= render(Primer::TabContainerComponent.new)  do %>
+    #     <div role="tablist">
+    #       <button type="button" role="tab" aria-selected="true">Tab one</button>
+    #       <button type="button" role="tab" tabindex="-1">Tab two</button>
+    #       <button type="button" role="tab" tabindex="-1">Tab three</button>
+    #     </div>
+    #     <div role="tabpanel">
+    #       Panel 1
+    #     </div>
+    #     <div role="tabpanel" hidden>
+    #       Panel 2
+    #     </div>
+    #     <div role="tabpanel" hidden>
+    #       Panel 3
+    #     </div>
+    #   <% end %>
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = "tab-container"
