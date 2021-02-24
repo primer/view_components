@@ -7,7 +7,6 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 Use TabNav to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.
-This component will only work with links. If you want to use tabbed content in the same page, please see [TabNavContainer](/components/tabnavcontainer).
 
 ## Examples
 
@@ -28,7 +27,7 @@ This component will only work with links. If you want to use tabbed content in t
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `aria_label` | `String` | `nil` | Used to set the `aria-label` on the top level `<nav>` element. |
-| `with_panel` | `Boolean` | `false` | If `true`, renders the tabs as `<button>` instead of `<a>`. |
+| `with_panel` | `Boolean` | `false` | Whether the TabNav should navigate through pages or panels. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots

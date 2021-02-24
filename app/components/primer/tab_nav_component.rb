@@ -2,7 +2,6 @@
 
 module Primer
   # Use TabNav to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.
-  # This component will only work with links. If you want to use tabbed content in the same page, please see <%= link_to_component(Primer::TabNavContainerComponent) %>.
   class TabNavComponent < Primer::Component
     include ViewComponent::SlotableV2
 
@@ -25,7 +24,7 @@ module Primer
     #   <% end %>
     #
     # @param aria_label [String] Used to set the `aria-label` on the top level `<nav>` element.
-    # @param with_panel [Boolean] If `true`, renders the tabs as `<button>` instead of `<a>`.
+    # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(aria_label: nil, with_panel: false, **system_arguments)
       @aria_label = aria_label
@@ -41,6 +40,10 @@ module Primer
 
     def render?
       tabs.any?
+    end
+
+    def wrapper
+      @with_panel ? Primer::TabContainerComponent : Primer::BaseComponent
     end
 
     class TabComponent < Primer::Component

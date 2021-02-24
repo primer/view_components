@@ -4,14 +4,6 @@ class Primer::TabNavComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:tab_nav) do
-    content do |c|
-      c.tab(selected: true, title: "Tab 1")
-      c.tab(title: "Tab 2")
-      c.tab(title: "Tab 3")
-    end
-  end
-
-  story(:with_panel) do
     controls do
       with_panel true
     end

@@ -49,7 +49,6 @@ class PrimerComponentTest < Minitest::Test
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
     [Primer::TabContainerComponent, {}, proc { "Foo" }],
     [Primer::TabNavComponent, {}, proc { |c| c.tab(title: "Foo") }],
-    [Primer::TabNavContainerComponent, {}, proc { |c| c.nav { |n| n.tab(title: "Foo") }}],
     [Primer::TextComponent, {}],
     [Primer::TruncateComponent, {}],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
