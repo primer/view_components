@@ -52,5 +52,3 @@ Rails.application.configure do
 
   config.view_component_storybook.stories_path = Rails.root.join("../stories")
 end
-
-require "primer/view_components/engine"
