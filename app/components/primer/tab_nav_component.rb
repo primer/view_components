@@ -23,6 +23,13 @@ module Primer
     #     <% c.tab(title: "Tab 3", href: "#") %>
     #   <% end %>
     #
+    # @example auto|With panels
+    #   <%= render(Primer::TabNavComponent.new(with_panel: true)) do |c| %>
+    #     <% c.tab(selected: true, title: "Tab 1") { "Panel 1" } %>
+    #     <% c.tab(title: "Tab 2") { "Panel 1" } %>
+    #     <% c.tab(title: "Tab 3") { "Panel 1" } %>
+    #   <% end %>
+    #
     # @param aria_label [String] Used to set the `aria-label` on the top level `<nav>` element.
     # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
