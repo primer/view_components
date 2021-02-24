@@ -7,6 +7,11 @@ module Primer
     # :nodoc:
     class Engine < ::Rails::Engine
       isolate_namespace Primer::ViewComponents
+      config.eager_load_namespaces << Primer::ViewComponents
+      config.autoload_once_paths = %W(
+        #{root}/app/components
+        #{root}/app/lib
+      )
 
       initializer "primer_view_components.assets" do |app|
         if app.config.respond_to?(:assets)
@@ -16,5 +21,3 @@ module Primer
     end
   end
 end
-
-require "#{Primer::ViewComponents::Engine.root}/app/components/primer/view_components.rb"
