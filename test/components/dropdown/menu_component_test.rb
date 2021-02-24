@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class PrimerDropdownMenuComponentTest < Minitest::Test
+class Primer::Dropdown::MenuComponentTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_dropdown_component_renders_dark_scheme
