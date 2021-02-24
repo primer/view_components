@@ -12,7 +12,7 @@ module Primer
     class ViewHelperNotFound < StandardError; end
 
     def primer(name, **component_args, &block)
-      component = Primer::Component.helpers[name]
+      component = Primer::Component.primer_helpers[name]
 
       raise ViewHelperNotFound, "no component defined for helper #{name}" if component.blank?
 

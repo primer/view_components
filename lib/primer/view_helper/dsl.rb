@@ -19,14 +19,14 @@ module Primer
       class ViewHelperAlreadyDefined < StandardError; end
 
       included do
-        class_attribute :helpers, instance_writer: false, default: {}
+        class_attribute :primer_helpers, instance_writer: false, default: {}
       end
 
       class_methods do
         def view_helper(name)
-          raise ViewHelperAlreadyDefined, "#{name} is already defined" if helpers[name].present?
+          raise ViewHelperAlreadyDefined, "#{name} is already defined" if primer_helpers[name].present?
 
-          helpers[name] = self
+          primer_helpers[name] = self
         end
       end
     end
