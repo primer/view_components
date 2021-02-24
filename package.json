@@ -5,7 +5,7 @@
   "author": "GitHub (https://github.com)",
   "homepage": "https://github.com/primer/view_components#readme",
   "license": "MIT",
-  "main": "app/assets/javascripts/primer.js",
+  "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
   "repository": {
     "type": "git",
