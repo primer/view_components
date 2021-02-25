@@ -66,6 +66,6 @@ class PrimerStateComponentTest < Minitest::Test
   def test_supports_functional_colors
     render_inline(Primer::StateComponent.new(title: "foo", color: :merged)) { "Merged" }
 
-    assert_selector(".State--purple")
+    assert_selector(".State--merged")
   end
 end
