@@ -21,7 +21,7 @@ module Primer
     renders_one :menu, Primer::Dropdown::MenuComponent
 
     # @example 210|Default
-    #   <div style="margin-bottom: 150px">
+    #   <div>
     #     <%= render(Primer::DropdownComponent.new) do |c| %>
     #       <% c.button do %>
     #         Dropdown
@@ -38,7 +38,7 @@ module Primer
     #   </div>
     #
     # @example 210|With Direction
-    #   <div style="margin-bottom: 150px" class="d-flex flex-justify-center">
+    #   <div>
     #     <%= render(Primer::DropdownComponent.new) do |c| %>
     #       <% c.button do %>
     #         Dropdown

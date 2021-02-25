@@ -19,7 +19,7 @@ module Primer
     end
 
     # @example 200|With a header
-    #   <div style="margin-bottom: 150px">
+    #   <div>
     #     <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
     #       <% c.slot(:summary) do %>
     #         Dropdown
