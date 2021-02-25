@@ -11,15 +11,15 @@ module Primer
 
     # @example auto|Schemes
     #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :blue)) { "Primer" } %>
-    #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :red, scheme: :gray)) { "bug 🐛<" } %>
-    #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :pink, scheme: :dark_gray)) { "help wanted" } %>
-    #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :yellow, scheme: :yellow)) { "🚂 deploy: train" } %>
+    #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :red)) { "bug 🐛<" } %>
+    #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :pink)) { "help wanted" } %>
+    #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :yellow)) { "🚂 deploy: train" } %>
     #
-    # @example auto|Variants
-    #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :blue)) { "Primer" } %>
-    #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :red, scheme: :gray)) { "bug 🐛<" } %>
-    #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :pink, scheme: :dark_gray)) { "help wanted" } %>
-    #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :yellow, scheme: :yellow)) { "🚂 deploy: train" } %>
+    # @example auto|Big variant
+    #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :blue, variant: :big)) { "Primer" } %>
+    #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :red, variant: :big)) { "bug 🐛<" } %>
+    #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :pink, variant: :big)) { "help wanted" } %>
+    #   <%= render(Primer::IssueLabelComponent.new(text: :white, bg: :yellow, variant: :big)) { "🚂 deploy: train" } %>
     #
     # @param variant [Symbol] <%= one_of(Primer::IssueLabelComponent::VARIANT_MAPPINGS.keys) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
