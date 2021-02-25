@@ -90,7 +90,7 @@ function Layout({children, pageContext}) {
                 <Box mx="auto" />
                 <Flex flexDirection="column">
                   {source ? <SourceLink href={source} /> : null}
-                  {storybook ? <StorybookLink href={storybook} /> : null}
+                  {storybook ? <StorybookLink href={storybook} mt={source ? 2 : 0}/> : null}
                 </Flex>
               </Flex>
             ) : null}
