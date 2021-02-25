@@ -20,7 +20,7 @@ Component for rendering the status of an item.
 
 ### Colors
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span title='title' class='State '>Default</span><span title='title' class='State State--green '>Open</span><span title='title' class='State State--red '>Closed</span><span title='title' class='State State--purple '>Merged</span></body></html>"></iframe>
+<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><span title='title' class='State '>Default</span><span title='title' class='State State--open '>Open</span><span title='title' class='State State--closed '>Closed</span><span title='title' class='State State--merged '>Merged</span></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
