@@ -68,5 +68,9 @@ module Primer
     def call
       render(Primer::BaseComponent.new(**@system_arguments)) { content }
     end
+
+    def self.status
+      Primer::Component::STATUSES[:beta]
+    end
   end
 end
