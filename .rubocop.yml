@@ -41,6 +41,9 @@ Rails/RakeEnvironment:
 Style/SymbolArray:
   Enabled: false
 
+Style/AsciiComments:
+  Enabled: false
+
 Rails/OutputSafety:
   Enabled: true
   Exclude:

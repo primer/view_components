@@ -6,7 +6,7 @@ module Primer
     DEFAULT_VARIANT = :default
     VARIANT_MAPPINGS = {
       DEFAULT_VARIANT => "",
-      big: "IssueLabel--big",
+      :big => "IssueLabel--big"
     }.freeze
 
     # @example auto|Schemes
