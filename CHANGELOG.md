@@ -2,6 +2,8 @@
 
 ## main
 
+* **Breaking change**: Upgrade StateComponent to support functional colors. This change requires using https://www.npmjs.com/package/@primer/css-next. 
+
 ## 0.0.21
 
 * **Breaking change**: Upgrade `FlashComponent` to use Slots V2.
