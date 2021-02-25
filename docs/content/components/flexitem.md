@@ -13,7 +13,7 @@ dimensions to fill available space
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='d-flex'>  <div>    Item 1</div>  <div class='flex-auto '>    Item 2</div></div></body></html>"></iframe>
+<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><div class='d-flex'>  <div>    Item 1</div>  <div class='flex-auto '>    Item 2</div></div></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::FlexComponent.new) do %>
