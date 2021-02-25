@@ -2,6 +2,10 @@
 
 ## main
 
+* Add view helpers to easily render Primer components.
+
+    *Manuel Puyol*
+
 ## 0.0.21
 
 * **Breaking change**: Upgrade `FlashComponent` to use Slots V2.
