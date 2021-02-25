@@ -5,16 +5,16 @@ module Primer
   class StateComponent < Primer::Component
     COLOR_DEFAULT = :default
     NEW_COLOR_MAPPINGS = {
-      open: "State--green",
-      closed: "State--red",
-      merged: "State--purple"
+      open: "State--open",
+      closed: "State--closed",
+      merged: "State--merged"
     }.freeze
 
     DEPRECATED_COLOR_MAPPINGS = {
       COLOR_DEFAULT => "",
-      :green => "State--green",
-      :red => "State--red",
-      :purple => "State--purple"
+      green: "State--open",
+      red: "State--closed",
+      purple: "State--merged"
     }.freeze
     COLOR_MAPPINGS = NEW_COLOR_MAPPINGS.merge(DEPRECATED_COLOR_MAPPINGS)
     COLOR_OPTIONS = COLOR_MAPPINGS.keys
