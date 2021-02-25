@@ -60,7 +60,7 @@ class PrimerStateComponentTest < Minitest::Test
       Primer::StateComponent.new(title: "title", color: :red, size: :small, classes: "additional class-names here")
     ) { "foo" }
 
-    assert_selector(".State.State--red.State--small.additional.class-names.here")
+    assert_selector(".State.State--closed.State--small.additional.class-names.here")
   end
 
   def test_supports_functional_colors
