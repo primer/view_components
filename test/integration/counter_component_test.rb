@@ -2,7 +2,7 @@
 
 require "application_system_test_case"
 
-class CounterComponentIntegrationTest < ApplicationSystemTestCase
+class IntegrationCounterComponentTest < ApplicationSystemTestCase
   def test_integration
     with_preview(:default)
 
