@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use TabContainer to create tabbed content with keyboard support.
+  # Use TabContainer to create tabbed content with keyboard support. This component requires javascript.
   class TabContainerComponent < Primer::Component
     # @example auto|Default
     #   <%= render(Primer::TabContainerComponent.new)  do %>
