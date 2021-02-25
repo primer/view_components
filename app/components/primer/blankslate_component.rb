@@ -14,20 +14,20 @@ module Primer
     }
 
     #
-    # @example auto|Basic
+    # @example Basic
     #   <%= render Primer::BlankslateComponent.new(
     #     title: "Title",
     #     description: "Description",
     #   ) %>
     #
-    # @example auto|Icon|Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
+    # @example Icon|Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
     #   <%= render Primer::BlankslateComponent.new(
     #     icon: "octoface",
     #     title: "Title",
     #     description: "Description",
     #   ) %>
     #
-    # @example auto|Loading|Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
+    # @example Loading|Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
     #   <%= render Primer::BlankslateComponent.new(
     #     title: "Title",
     #     description: "Description",
@@ -35,14 +35,14 @@ module Primer
     #     <% component.spinner(size: :large) %>
     #   <% end %>
     #
-    # @example auto|Custom content|Pass custom content as a block in place of `description`.
+    # @example Custom content|Pass custom content as a block in place of `description`.
     #   <%= render Primer::BlankslateComponent.new(
     #     title: "Title",
     #   ) do %>
     #     <em>Your custom content here</em>
     #   <% end %>
     #
-    # @example auto|Action button|Provide a button to guide users to take action from the blankslate. The button appears below the description and custom content.
+    # @example Action button|Provide a button to guide users to take action from the blankslate. The button appears below the description and custom content.
     #   <%= render Primer::BlankslateComponent.new(
     #     icon: "book",
     #     title: "Welcome to the mona wiki!",
@@ -52,7 +52,7 @@ module Primer
     #     button_url: "https://github.com/monalisa/mona/wiki/_new",
     #   ) %>
     #
-    # @example auto|Link|Add an additional link to help users learn more about a feature. The link will be shown at the very bottom:
+    # @example Link|Add an additional link to help users learn more about a feature. The link will be shown at the very bottom:
     #   <%= render Primer::BlankslateComponent.new(
     #     icon: "book",
     #     title: "Welcome to the mona wiki!",
@@ -61,7 +61,7 @@ module Primer
     #     link_url: "https://docs.github.com/en/github/building-a-strong-community/about-wikis",
     #   ) %>
     #
-    # @example auto|Variations|There are a few variations of how the Blankslate appears: `narrow` adds a maximum width, `large` increases the font size, and `spacious` adds extra padding.
+    # @example Variations|There are a few variations of how the Blankslate appears: `narrow` adds a maximum width, `large` increases the font size, and `spacious` adds extra padding.
     #   <%= render Primer::BlankslateComponent.new(
     #     icon: "book",
     #     title: "Welcome to the mona wiki!",

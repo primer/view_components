@@ -3,7 +3,7 @@
 module Primer
   # The Text component is a wrapper component that will apply typography styles to the text inside.
   class TextComponent < Primer::Component
-    # @example auto|Default
+    # @example Default
     #   <%= render(Primer::TextComponent.new(tag: :p, font_weight: :bold)) { "Bold Text" } %>
     #   <%= render(Primer::TextComponent.new(tag: :p, color: :red_5)) { "Red Text" } %>
     #

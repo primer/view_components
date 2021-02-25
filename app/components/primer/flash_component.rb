@@ -22,22 +22,22 @@ module Primer
       :danger => "flash-error",
       :success => "flash-success"
     }.freeze
-    # @example auto|Variants
+    # @example Variants
     #   <%= render(Primer::FlashComponent.new) { "This is a flash message!" } %>
     #   <%= render(Primer::FlashComponent.new(variant: :warning)) { "This is a warning flash message!" } %>
     #   <%= render(Primer::FlashComponent.new(variant: :danger)) { "This is a danger flash message!" } %>
     #   <%= render(Primer::FlashComponent.new(variant: :success)) { "This is a success flash message!" } %>
     #
-    # @example auto|Full width
+    # @example Full width
     #   <%= render(Primer::FlashComponent.new(full: true)) { "This is a full width flash message!" } %>
     #
-    # @example auto|Dismissible
+    # @example Dismissible
     #   <%= render(Primer::FlashComponent.new(dismissible: true)) { "This is a dismissible flash message!" } %>
     #
-    # @example auto|Icon
+    # @example Icon
     #   <%= render(Primer::FlashComponent.new(icon: "people")) { "This is a flash message with an icon!" } %>
     #
-    # @example auto|With actions
+    # @example With actions
     #   <%= render(Primer::FlashComponent.new) do |component| %>
     #     This is a flash message with actions!
     #     <% component.action do %>

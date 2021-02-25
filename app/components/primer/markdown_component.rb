@@ -3,7 +3,7 @@
 module Primer
   # Use MarkdownComponent to wrap markdown content
   class MarkdownComponent < Primer::Component
-    # @example 5320|Default
+    # @example Default
     #   <%= render(Primer::MarkdownComponent.new) do %>
     #     <p>Text can be <b>bold</b>, <i>italic</i>, or <s>strikethrough</s>. <a href="https://github.com">Links </a> should be blue with no underlines (unless hovered over).</p>
     #

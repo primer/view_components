@@ -10,7 +10,7 @@ module Primer
     with_slot :footer, class_name: "Footer"
     with_slot :row, collection: true, class_name: "Row"
 
-    # @example auto|Header, body, rows, and footer
+    # @example Header, body, rows, and footer
     #   <%= render(Primer::BorderBoxComponent.new) do |component| %>
     #     <% component.slot(:header) do %>
     #       Header

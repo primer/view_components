@@ -20,7 +20,7 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :menu, Primer::Dropdown::MenuComponent
 
-    # @example 210|Default
+    # @example Default
     #   <div>
     #     <%= render(Primer::DropdownComponent.new) do |c| %>
     #       <% c.button do %>
@@ -37,7 +37,7 @@ module Primer
     #     <% end %>
     #   </div>
     #
-    # @example 210|With Direction
+    # @example With Direction
     #   <div>
     #     <%= render(Primer::DropdownComponent.new) do |c| %>
     #       <% c.button do %>

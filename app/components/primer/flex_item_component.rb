@@ -7,7 +7,7 @@ module Primer
     FLEX_AUTO_DEFAULT = false
     FLEX_AUTO_ALLOWED_VALUES = [FLEX_AUTO_DEFAULT, true].freeze
 
-    # @example auto|Default
+    # @example Default
     #   <%= render(Primer::FlexComponent.new) do %>
     #     <%= render(Primer::FlexItemComponent.new) do %>
     #       Item 1

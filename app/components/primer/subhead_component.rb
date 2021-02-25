@@ -9,7 +9,7 @@ module Primer
     with_slot :actions, class_name: "Actions"
     with_slot :description, class_name: "Description"
 
-    # @example auto|Default
+    # @example Default
     #   <%= render(Primer::SubheadComponent.new) do |component| %>
     #     <% component.slot(:heading) do %>
     #       My Heading
@@ -19,7 +19,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example auto|Without border
+    # @example Without border
     #   <%= render(Primer::SubheadComponent.new(hide_border: true)) do |component| %>
     #     <% component.slot(:heading) do %>
     #       My Heading
@@ -29,7 +29,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example auto|With actions
+    # @example With actions
     #   <%= render(Primer::SubheadComponent.new) do |component| %>
     #     <% component.slot(:heading) do %>
     #       My Heading
