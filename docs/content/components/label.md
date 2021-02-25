@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-label-component
 ---
 
-import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -15,7 +15,7 @@ Use labels to add contextual metadata to a design.
 
 ### Schemes
 
-<IFrame height="auto" content="<span title='Label: Label' class='Label bg-blue'>default</span><span title='Label: Label' class='Label Label--gray '>gray</span><span title='Label: Label' class='Label Label--gray-darker '>dark_gray</span><span title='Label: Label' class='Label Label--yellow '>yellow</span><span title='Label: Label' class='Label Label--green '>green</span><span title='Label: Label' class='Label Label--purple '>purple</span>"></IFrame>
+<Example src="<span title='Label: Label' class='Label bg-blue'>default</span><span title='Label: Label' class='Label Label--gray '>gray</span><span title='Label: Label' class='Label Label--gray-darker '>dark_gray</span><span title='Label: Label' class='Label Label--yellow '>yellow</span><span title='Label: Label' class='Label Label--green '>green</span><span title='Label: Label' class='Label Label--purple '>purple</span>" />
 
 ```erb
 <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "default" } %>
@@ -28,7 +28,7 @@ Use labels to add contextual metadata to a design.
 
 ### Variants
 
-<IFrame height="auto" content="<span title='Label: Label' class='Label bg-blue'>Default</span><span title='Label: Label' class='Label Label--large bg-blue'>Large</span>"></IFrame>
+<Example src="<span title='Label: Label' class='Label bg-blue'>Default</span><span title='Label: Label' class='Label Label--large bg-blue'>Large</span>" />
 
 ```erb
 <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>

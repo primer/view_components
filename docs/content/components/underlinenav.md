@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-underline-nav-component
 ---
 
-import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -17,7 +17,7 @@ of the page.
 
 ### Default
 
-<IFrame height="auto" content="<nav class='UnderlineNav '>  <ul class='UnderlineNav-body list-style-none '>        <a href='#url'>Item 1</a></ul>        <button type='button' class='btn '>Button!</button></nav>"></IFrame>
+<Example src="<nav class='UnderlineNav '>  <ul class='UnderlineNav-body list-style-none '>        <a href='#url'>Item 1</a></ul>        <button type='button' class='btn '>Button!</button></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new) do |component| %>
@@ -32,7 +32,7 @@ of the page.
 
 ### Align right
 
-<IFrame height="auto" content="<nav class='UnderlineNav UnderlineNav--right '>        <button type='button' class='btn '>Button!</button>  <ul class='UnderlineNav-body list-style-none '>        <a href='#url'>Item 1</a></ul></nav>"></IFrame>
+<Example src="<nav class='UnderlineNav UnderlineNav--right '>        <button type='button' class='btn '>Button!</button>  <ul class='UnderlineNav-body list-style-none '>        <a href='#url'>Item 1</a></ul></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>

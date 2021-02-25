@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-link-component
 ---
 
-import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -15,7 +15,7 @@ Use links for moving from one page to another. The Link component styles anchor 
 
 ### Default
 
-<IFrame height="auto" content="<a href='http://www.google.com'>Link</a>"></IFrame>
+<Example src="<a href='http://www.google.com'>Link</a>" />
 
 ```erb
 <%= render(Primer::LinkComponent.new(href: "http://www.google.com")) { "Link" } %>
@@ -23,7 +23,7 @@ Use links for moving from one page to another. The Link component styles anchor 
 
 ### Muted
 
-<IFrame height="auto" content="<a href='http://www.google.com' class='muted-link '>Link</a>"></IFrame>
+<Example src="<a href='http://www.google.com' class='muted-link '>Link</a>" />
 
 ```erb
 <%= render(Primer::LinkComponent.new(href: "http://www.google.com", muted: true)) { "Link" } %>

@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-dropdown-component
 ---
 
-import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -16,10 +16,10 @@ They're great for instances where you don't need the full power (and code) of th
 
 ### Default
 
-<IFrame height="210" content="<div style='margin-bottom: 150px'>  <details class='dropdown details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Dropdown</summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-se '>    <div class='dropdown-header'>      Options    </div>  <ul>      <li class='dropdown-item '>Item 1</li>      <li class='dropdown-item '>Item 2</li>      <li role='none' class='dropdown-divider '></li>      <li class='dropdown-item '>Item 3</li>      <li class='dropdown-item '>Item 4</li>  </ul></details-menu></div></details></div>"></IFrame>
+<Example src="<div>  <details class='dropdown details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Dropdown</summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-se '>    <div class='dropdown-header'>      Options    </div>  <ul>      <li class='dropdown-item '>Item 1</li>      <li class='dropdown-item '>Item 2</li>      <li role='none' class='dropdown-divider '></li>      <li class='dropdown-item '>Item 3</li>      <li class='dropdown-item '>Item 4</li>  </ul></details-menu></div></details></div>" />
 
 ```erb
-<div style="margin-bottom: 150px">
+<div>
   <%= render(Primer::DropdownComponent.new) do |c| %>
     <% c.button do %>
       Dropdown
@@ -38,10 +38,10 @@ They're great for instances where you don't need the full power (and code) of th
 
 ### With Direction
 
-<IFrame height="210" content="<div style='margin-bottom: 150px' class='d-flex flex-justify-center'>  <details class='dropdown details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Dropdown</summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-s '>    <div class='dropdown-header'>      Options    </div>  <ul>      <li class='dropdown-item '>Item 1</li>      <li class='dropdown-item '>Item 2</li>      <li role='none' class='dropdown-divider '></li>      <li class='dropdown-item '>Item 3</li>      <li class='dropdown-item '>Item 4</li>  </ul></details-menu></div></details></div>"></IFrame>
+<Example src="<div>  <details class='dropdown details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Dropdown</summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-s '>    <div class='dropdown-header'>      Options    </div>  <ul>      <li class='dropdown-item '>Item 1</li>      <li class='dropdown-item '>Item 2</li>      <li role='none' class='dropdown-divider '></li>      <li class='dropdown-item '>Item 3</li>      <li class='dropdown-item '>Item 4</li>  </ul></details-menu></div></details></div>" />
 
 ```erb
-<div style="margin-bottom: 150px" class="d-flex flex-justify-center">
+<div>
   <%= render(Primer::DropdownComponent.new) do |c| %>
     <% c.button do %>
       Dropdown

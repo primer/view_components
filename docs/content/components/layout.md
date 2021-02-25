@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-layout-component
 ---
 
-import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -15,7 +15,7 @@ Use Layout to build a main/sidebar layout.
 
 ### Default
 
-<IFrame height="auto" content="<div class='gutter-condensed gutter-lg d-flex'>  <div class='flex-shrink-0 col-9'>    Main</div>    <div class='flex-shrink-0 col-3'>      Sidebar</div></div>"></IFrame>
+<Example src="<div class='gutter-condensed gutter-lg d-flex'>  <div class='flex-shrink-0 col-9'>    Main</div>    <div class='flex-shrink-0 col-3'>      Sidebar</div></div>" />
 
 ```erb
 <%= render(Primer::LayoutComponent.new) do |component| %>
@@ -26,7 +26,7 @@ Use Layout to build a main/sidebar layout.
 
 ### Left sidebar
 
-<IFrame height="auto" content="<div class='gutter-condensed gutter-lg d-flex'>    <div class='flex-shrink-0 col-3'>      Sidebar</div>  <div class='flex-shrink-0 col-9'>    Main</div></div>"></IFrame>
+<Example src="<div class='gutter-condensed gutter-lg d-flex'>    <div class='flex-shrink-0 col-3'>      Sidebar</div>  <div class='flex-shrink-0 col-9'>    Main</div></div>" />
 
 ```erb
 <%= render(Primer::LayoutComponent.new(side: :left)) do |component| %>

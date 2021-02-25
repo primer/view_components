@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-flex-item-component
 ---
 
-import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -16,7 +16,7 @@ dimensions to fill available space
 
 ### Default
 
-<IFrame height="auto" content="<div class='d-flex'>  <div>    Item 1</div>  <div class='flex-auto '>    Item 2</div></div>"></IFrame>
+<Example src="<div class='d-flex'>  <div>    Item 1</div>  <div class='flex-auto '>    Item 2</div></div>" />
 
 ```erb
 <%= render(Primer::FlexComponent.new) do %>

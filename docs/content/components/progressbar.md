@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-progress-bar-component
 ---
 
-import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -15,7 +15,7 @@ Use ProgressBar to visualize task completion.
 
 ### Default
 
-<IFrame height="auto" content="<span class='Progress '>    <span style='width: 25%;' class='Progress-item bg-green'></span></span>"></IFrame>
+<Example src="<span class='Progress '>    <span style='width: 25%;' class='Progress-item bg-green'></span></span>" />
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new) do |component| %>
@@ -25,7 +25,7 @@ Use ProgressBar to visualize task completion.
 
 ### Small
 
-<IFrame height="auto" content="<span class='Progress Progress--small '>    <span style='width: 50%;' class='Progress-item bg-blue-4'></span></span>"></IFrame>
+<Example src="<span class='Progress Progress--small '>    <span style='width: 50%;' class='Progress-item bg-blue-4'></span></span>" />
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new(size: :small)) do |component| %>
@@ -35,7 +35,7 @@ Use ProgressBar to visualize task completion.
 
 ### Large
 
-<IFrame height="auto" content="<span class='Progress Progress--large '>    <span style='width: 75%;' class='Progress-item bg-red-4'></span></span>"></IFrame>
+<Example src="<span class='Progress Progress--large '>    <span style='width: 75%;' class='Progress-item bg-red-4'></span></span>" />
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new(size: :large)) do |component| %>
@@ -45,7 +45,7 @@ Use ProgressBar to visualize task completion.
 
 ### Multiple items
 
-<IFrame height="auto" content="<span class='Progress '>    <span style='width: 10%;' class='Progress-item bg-green'></span>    <span style='width: 20%;' class='Progress-item bg-blue-4'></span>    <span style='width: 30%;' class='Progress-item bg-red-4'></span></span>"></IFrame>
+<Example src="<span class='Progress '>    <span style='width: 10%;' class='Progress-item bg-green'></span>    <span style='width: 20%;' class='Progress-item bg-blue-4'></span>    <span style='width: 30%;' class='Progress-item bg-red-4'></span></span>" />
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new) do |component| %>

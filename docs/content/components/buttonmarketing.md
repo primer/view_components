@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-button-marketing-component
 ---
 
-import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -15,7 +15,7 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ### Button types
 
-<IFrame height="auto" content="<button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-primary-mktg mr-2'>Primary</button><button type='button' class='btn-mktg btn-outline-mktg '>Outline</button><div class='bg-gray-dark'>  <button type='button' class='btn-mktg btn-transparent '>Transparent</button></div>"></IFrame>
+<Example src="<button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-primary-mktg mr-2'>Primary</button><button type='button' class='btn-mktg btn-outline-mktg '>Outline</button><div class='bg-gray-dark'>  <button type='button' class='btn-mktg btn-transparent '>Transparent</button></div>" />
 
 ```erb
 <%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>
@@ -28,7 +28,7 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ### Sizes
 
-<IFrame height="auto" content="<button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-large-mktg '>Large</button>"></IFrame>
+<Example src="<button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-large-mktg '>Large</button>" />
 
 ```erb
 <%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>

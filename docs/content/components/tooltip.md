@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-tooltip-component
 ---
 
-import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -15,7 +15,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### Default
 
-<IFrame height="55" content="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n '>Default Bold Text</span></div>"></IFrame>
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n '>Default Bold Text</span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -25,7 +25,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### Wrapping another component
 
-<IFrame height="65" content="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n '>    <button type='button' class='btn '>Bold Button</button></span></div>"></IFrame>
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n '>    <button type='button' class='btn '>Bold Button</button></span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -37,7 +37,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### With a direction
 
-<IFrame height="65" content="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s '>Bold Text With a Direction</span></div>"></IFrame>
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s '>Bold Text With a Direction</span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -47,7 +47,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### With an alignment
 
-<IFrame height="65" content="<div class='pt-5'>  <span alignment='right_1' aria-label='Even bolder' class='tooltipped tooltipped-s '>Bold Text With an Alignment</span></div>"></IFrame>
+<Example src="<div class='pt-5'>  <span alignment='right_1' aria-label='Even bolder' class='tooltipped tooltipped-s '>Bold Text With an Alignment</span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -57,7 +57,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### Without a delay
 
-<IFrame height="65" content="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s tooltipped-no-delay '>Bold Text without a delay</span></div>"></IFrame>
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s tooltipped-no-delay '>Bold Text without a delay</span></div>" />
 
 ```erb
 <div class="pt-5">

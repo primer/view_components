@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-box-component
 ---
 
-import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -15,7 +15,7 @@ A basic wrapper component for most layout related needs.
 
 ### Default
 
-<IFrame height="auto" content="<div>Your content here</div>"></IFrame>
+<Example src="<div>Your content here</div>" />
 
 ```erb
 <%= render(Primer::BoxComponent.new) { "Your content here" } %>
@@ -23,7 +23,7 @@ A basic wrapper component for most layout related needs.
 
 ### Color and padding
 
-<IFrame height="auto" content="<div class='bg-gray p-3'>Hello world</div>"></IFrame>
+<Example src="<div class='bg-gray p-3'>Hello world</div>" />
 
 ```erb
 <%= render(Primer::BoxComponent.new(bg: :gray, p: 3)) { "Hello world" } %>

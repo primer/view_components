@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-heading-component
 ---
 
-import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -15,7 +15,7 @@ Use the Heading component to wrap a component that will create a heading element
 
 ### Default
 
-<IFrame height="auto" content="<h1>H1 Text</h1><h2>H2 Text</h2><h3>H3 Text</h3>"></IFrame>
+<Example src="<h1>H1 Text</h1><h2>H2 Text</h2><h3>H3 Text</h3>" />
 
 ```erb
 <%= render(Primer::HeadingComponent.new) { "H1 Text" } %>

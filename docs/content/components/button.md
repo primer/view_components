@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-button-component
 ---
 
-import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -15,7 +15,7 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ### Button types
 
-<IFrame height="auto" content="<button type='button' class='btn '>Default</button><button type='button' class='btn btn-primary '>Primary</button><button type='button' class='btn btn-danger '>Danger</button><button type='button' class='btn btn-outline '>Outline</button>"></IFrame>
+<Example src="<button type='button' class='btn '>Default</button><button type='button' class='btn btn-primary '>Primary</button><button type='button' class='btn btn-danger '>Danger</button><button type='button' class='btn btn-outline '>Outline</button>" />
 
 ```erb
 <%= render(Primer::ButtonComponent.new) { "Default" } %>
@@ -26,7 +26,7 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ### Variants
 
-<IFrame height="auto" content="<button type='button' class='btn btn-sm '>Small</button><button type='button' class='btn '>Medium</button><button type='button' class='btn btn-large '>Large</button>"></IFrame>
+<Example src="<button type='button' class='btn btn-sm '>Small</button><button type='button' class='btn '>Medium</button><button type='button' class='btn btn-large '>Large</button>" />
 
 ```erb
 <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>

@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-state-component
 ---
 
-import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -15,7 +15,7 @@ Component for rendering the status of an item.
 
 ### Default
 
-<IFrame height="auto" content="<span title='title' class='State '>State</span>"></IFrame>
+<Example src="<span title='title' class='State '>State</span>" />
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "State" } %>
@@ -23,7 +23,7 @@ Component for rendering the status of an item.
 
 ### Colors
 
-<IFrame height="auto" content="<span title='title' class='State '>Default</span><span title='title' class='State State--green '>Green</span><span title='title' class='State State--red '>Red</span><span title='title' class='State State--purple '>Purple</span>"></IFrame>
+<Example src="<span title='title' class='State '>Default</span><span title='title' class='State State--green '>Green</span><span title='title' class='State State--red '>Red</span><span title='title' class='State State--purple '>Purple</span>" />
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
@@ -34,7 +34,7 @@ Component for rendering the status of an item.
 
 ### Sizes
 
-<IFrame height="auto" content="<span title='title' class='State '>Default</span><span title='title' class='State State--small '>Small</span>"></IFrame>
+<Example src="<span title='title' class='State '>Default</span><span title='title' class='State State--small '>Small</span>" />
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>

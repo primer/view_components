@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-avatar-stack-component
 ---
 
-import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -15,7 +15,7 @@ Use AvatarStack to stack multiple avatars together.
 
 ### Default
 
-<IFrame height="auto" content="<div class='AvatarStack AvatarStack--three-plus '>  <div class='AvatarStack-body '>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img></div></div>"></IFrame>
+<Example src="<div class='AvatarStack AvatarStack--three-plus '>  <div class='AvatarStack-body '>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img></div></div>" />
 
 ```erb
 <%= render(Primer::AvatarStackComponent.new) do |c| %>
@@ -27,7 +27,7 @@ Use AvatarStack to stack multiple avatars together.
 
 ### Align right
 
-<IFrame height="auto" content="<div class='AvatarStack AvatarStack--right AvatarStack--three-plus '>  <div class='AvatarStack-body '>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img></div></div>"></IFrame>
+<Example src="<div class='AvatarStack AvatarStack--right AvatarStack--three-plus '>  <div class='AvatarStack-body '>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img></div></div>" />
 
 ```erb
 <%= render(Primer::AvatarStackComponent.new(align: :right)) do |c| %>
@@ -39,7 +39,7 @@ Use AvatarStack to stack multiple avatars together.
 
 ### With tooltip
 
-<IFrame height="auto" content="<div class='AvatarStack AvatarStack--three-plus '>  <div aria-label='This is a tooltip!' class='AvatarStack-body tooltipped tooltipped-n '>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img></div></div>"></IFrame>
+<Example src="<div class='AvatarStack AvatarStack--three-plus '>  <div aria-label='This is a tooltip!' class='AvatarStack-body tooltipped tooltipped-n '>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img></div></div>" />
 
 ```erb
 <%= render(Primer::AvatarStackComponent.new(tooltipped: true, body_arguments: { label: 'This is a tooltip!' })) do |c| %>
