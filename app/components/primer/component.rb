@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "octicons_helper/helper"
+
 module Primer
   # @private
   class Component < ViewComponent::Base
