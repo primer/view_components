@@ -2,6 +2,10 @@
 
 ## main
 
+* Add `TabContainer` and `TabNav` components.
+
+    *Manuel Puyol*
+
 ## 0.0.21
 
 * **Breaking change**: Upgrade `FlashComponent` to use Slots V2.
