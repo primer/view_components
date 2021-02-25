@@ -137,6 +137,7 @@ namespace :docs do
       Primer::FlexComponent,
       Primer::FlexItemComponent,
       Primer::HeadingComponent,
+      Primer::IssueLabelComponent,
       Primer::LabelComponent,
       Primer::LayoutComponent,
       Primer::LinkComponent,

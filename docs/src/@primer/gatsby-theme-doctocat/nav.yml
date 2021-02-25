@@ -46,6 +46,8 @@
       url: /components/flexitem
     - title: Heading
       url: /components/heading
+    - title: IssueLabel
+      url: /components/issuelabel
     - title: Label
       url: /components/label
     - title: Layout

@@ -38,6 +38,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::FlashComponent, {}],
     [Primer::FlexItemComponent, { flex_auto: true }],
     [Primer::HeadingComponent, {}],
+    [Primer::IssueLabelComponent, {}],
     [Primer::LabelComponent, { title: "Hello!" }],
     [Primer::LayoutComponent, {}],
     [Primer::LinkComponent, { href: "https://www.google.com" }],
