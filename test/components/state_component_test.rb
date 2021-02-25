@@ -44,7 +44,7 @@ class PrimerStateComponentTest < Minitest::Test
   def test_renders_with_the_css_class_mapping_to_the_provided_color
     render_inline(Primer::StateComponent.new(title: "title", color: :green)) { "foo" }
 
-    assert_selector(".State--green")
+    assert_selector(".State--open")
   end
 
   def test_applies_additional_classes_to_the_underlying_element_when_given_class_names
