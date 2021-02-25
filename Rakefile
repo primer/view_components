@@ -185,9 +185,7 @@ namespace :docs do
         end
 
         initialize_method.tags(:example).each do |tag|
-          iframe_height = tag.name.split("|").first
-          name = tag.name.split("|")[1]
-          description = tag.name.split("|")[2]
+          (name, description) = tag.name.split("|")
 
           f.puts("### #{name}")
           if description
