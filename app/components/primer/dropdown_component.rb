@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "dropdown/menu_component"
-
 module Primer
   # Dropdowns are lightweight context menus for housing navigation and actions.
   # They're great for instances where you don't need the full power (and code) of the select menu.

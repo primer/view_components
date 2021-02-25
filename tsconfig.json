@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom",
+      "dom.iterable"
+    ],
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "baseUrl": ".",
+    "types": []
+  },
+  "include": [
+    "app/components/primer/*.ts"
+  ],
+  "exclude": [
+    "demo/**/*",
+    "vendor/**/*"
+  ]
+}
