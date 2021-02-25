@@ -37,6 +37,8 @@ namespace :statuses do
   task :dump do
     require File.expand_path("demo/config/environment.rb", __dir__)
     require "primer/view_components"
+    # Loads all components for `.descendants` to work properly
+    Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
 
     Primer::ViewComponents.dump_statuses
   end
@@ -102,6 +104,8 @@ namespace :docs do
     require "primer/view_components"
     require "view_component/test_helpers"
     include ViewComponent::TestHelpers
+
+    Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
 
     puts "Building YARD documentation."
     Rake::Task["yard"].execute

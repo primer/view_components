@@ -2,6 +2,7 @@
 
 # Gems
 bundle install --path vendor/bundle
+yarn install
 
 # Set up demo
 pushd demo
