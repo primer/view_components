@@ -95,17 +95,17 @@ module Primer
     #     <p>And an unordered task list:</p>
     #
     #     <ul>
-    #       <li><input type="checkbox" checked> Create a sample markdown document</li>
-    #       <li><input type="checkbox"> Add task lists to it</li>
-    #       <li><input type="checkbox"> Take a vacation</li>
+    #       <li><input type="checkbox" checked /> Create a sample markdown document</li>
+    #       <li><input type="checkbox"/> Add task lists to it</li>
+    #       <li><input type="checkbox"/> Take a vacation</li>
     #     </ul>
     #
     #     <p>And a "mixed" task list:</p>
     #
     #     <ul>
-    #       <li><input type="checkbox"> Steal underpants</li>
+    #       <li><input type="checkbox"/> Steal underpants</li>
     #       <li>?</li>
-    #       <li><input type="checkbox"> Profit!</li>
+    #       <li><input type="checkbox"/> Profit!</li>
     #     </ul>
     #
     #     And a nested list:
@@ -266,11 +266,11 @@ module Primer
     #
     #     <p>Small images should be shown at their actual size.</p>
     #
-    #     <p><img src="http://placekitten.com/g/300/200/"></p>
+    #     <p><img src="http://placekitten.com/g/300/200/"/></p>
     #
     #     <p>Large images should always scale down and fit in the content container.</p>
     #
-    #     <p><img src="http://placekitten.com/g/1200/800/"></p>
+    #     <p><img src="http://placekitten.com/g/1200/800/"/></p>
     #
     #     <pre><code>This is the final element on the page and there should be no margin below this.</code></pre>
     #   <% end %>
