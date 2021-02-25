@@ -200,7 +200,7 @@ namespace :docs do
                          else
                            "style=\"width: 100%; border: 0px; height: #{iframe_height.to_i + padding}px;\""
           end
-          f.puts("<iframe #{iframe_attrs} srcdoc=\"<html class=\'Box height-full p-3\'><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.tr('"', "\'").delete("\n")}</body></html>\"></iframe>")
+          f.puts("<iframe #{iframe_attrs} srcdoc=\"<html class=\'Box height-full p-3\'><head><link href=\'https://unpkg.com/@primer/css-next@canary/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.tr('"', "\'").delete("\n")}</body></html>\"></iframe>")
           f.puts
           f.puts("```erb")
           f.puts(tag.text.to_s)
