@@ -12,7 +12,7 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <a href='#' role='tab' aria-current='page' class='tabnav-tab '>Tab 1</a>      <a href='#' role='tab' class='tabnav-tab '>Tab 2</a>      <a href='#' role='tab' class='tabnav-tab '>Tab 3</a>  </nav ></div></body></html>"></iframe>
+<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><div class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <a href='#' role='tab' aria-current='page' class='tabnav-tab '>Tab 1</a>      <a href='#' role='tab' class='tabnav-tab '>Tab 2</a>      <a href='#' role='tab' class='tabnav-tab '>Tab 3</a>  </nav ></div></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::TabNavComponent.new) do |c| %>
@@ -24,7 +24,7 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 
 ### With panels
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><tab-container class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <button type='button' role='tab' aria-selected='true' class='tabnav-tab '>Tab 1</button>      <button type='button' role='tab' class='tabnav-tab '>Tab 2</button>      <button type='button' role='tab' class='tabnav-tab '>Tab 3</button>  </nav >        <div role='tabpanel' >          Panel 1        </div>        <div role='tabpanel' hidden>          Panel 1        </div>        <div role='tabpanel' hidden>          Panel 1        </div></tab-container></body></html>"></iframe>
+<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><tab-container class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <button type='button' role='tab' aria-selected='true' class='tabnav-tab '>Tab 1</button>      <button type='button' role='tab' class='tabnav-tab '>Tab 2</button>      <button type='button' role='tab' class='tabnav-tab '>Tab 3</button>  </nav >        <div role='tabpanel' >          Panel 1        </div>        <div role='tabpanel' hidden>          Panel 1        </div>        <div role='tabpanel' hidden>          Panel 1        </div></tab-container></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::TabNavComponent.new(with_panel: true)) do |c| %>
