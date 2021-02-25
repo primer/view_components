@@ -19,7 +19,7 @@ function IFrame({height, content}) {
 
 
   return (
-    <iframe srcDoc={`<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body>${content}</body></html>`} {...rest}></iframe>
+    <iframe srcDoc={`<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body>${content}</body></html>`} {...rest}></iframe>
   )
 }
 
