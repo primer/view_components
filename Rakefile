@@ -168,7 +168,7 @@ namespace :docs do
         f.puts("storybook: https://primer.style/view-components/stories/?path=/story/primer-#{short_name.underscore.dasherize}-component")
         f.puts("---")
         f.puts
-        f.puts("import IFrame from '../../src/@primer/gatsby-theme-doctocat/components/iframe'")
+        f.puts("import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'")
         f.puts
         f.puts("<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->")
         f.puts
@@ -197,7 +197,7 @@ namespace :docs do
           f.puts
           html = view_context.render(inline: tag.text)
 
-          f.puts("<IFrame height=\"#{iframe_height}\" content=\"#{html.tr('"', "\'").delete("\n")}\"></IFrame>")
+          f.puts("<Example src=\"#{html.tr('"', "\'").delete("\n")}\" />")
           f.puts
           f.puts("```erb")
           f.puts(tag.text.to_s)
