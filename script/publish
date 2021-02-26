@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Releasing gem
+bundle exec rake release
+
+# Releasing NPM package
+npm publish --access public
