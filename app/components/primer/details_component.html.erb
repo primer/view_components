@@ -1,8 +1,4 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <%= render summary.component do %>
-    <%= summary.content %>
-  <% end %>
-  <%= render body.component do %>
-    <%= body.content %>
-  <% end %>
+  <%= summary %>
+  <%= body %>
 <% end %>
