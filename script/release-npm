@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
+echo "####################################################"
 echo "NPM version:"
+echo "####################################################"
 
 read -p "MAJOR: " major
 read -p "MINOR: " minor
