@@ -1,2 +1,0 @@
-<%# The <li> and <a> need to be on the same line to prevent unwanted whitespace %>
-<%= render Primer::BaseComponent.new(**@system_arguments) do %><%- if @href.present? %><a href="<%= @href %>"><%= content %></a><%- else %><%= content %><%- end %><%- end %>
