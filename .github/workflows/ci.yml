@@ -46,7 +46,7 @@ jobs:
         yarn
         yarn lint
   benchmark:
-    needs: lint
+    needs: lint_rb
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -67,7 +67,7 @@ jobs:
       env:
         RAILS_VERSION: main
   test:
-    needs: lint
+    needs: lint_rb
     runs-on: ubuntu-latest
     strategy:
       matrix:
