@@ -1,1 +1,1 @@
-import "./tab_container_component"
+import './tab_container_component'
