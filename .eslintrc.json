@@ -16,7 +16,6 @@
     "@typescript-eslint"
   ],
   "overrides": [
-    // rules which apply only to JS
     {
       "files": ["**/*.ts"],
       "extends": ["plugin:@typescript-eslint/recommended", "plugin:github/recommended", "plugin:github/browser"],
