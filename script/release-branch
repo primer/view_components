@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+read -p "MAJOR: " major
+read -p "MINOR: " minor
+read -p "PATCH: " patch
+
+# creating branch
+# git checkout -b release-v$major.$minor.$patch
+
+# updating version file
+sed -E -i.bak \
+    -e "s/MAJOR = [0-9]+/MAJOR = $major/g" \
+    -e "s/MINOR = [0-9]+/MINOR = $minor/g" \
+    -e "s/PATCH = [0-9]+/PATCH = $patch/g" \
+    lib/primer/view_components/version.rb
+
+# updating changelog
+sed -i.bak "/## main/ {a\
+\\
+\\
+## $major.$minor.$patch
+}" CHANGELOG.md
+
+# updating package.json version
+
+sed -E -i.bak "s/\"version\": \"(.*)?\"/\"version\": \"$major.$minor.$patch\"/g" package.json
+
+# removing bak files
+rm CHANGELOG.md.bak
+rm lib/primer/view_components/version.rb.bak
+rm package.json.bak
+
+# updating Gemfile.lock
+bundle
+pushd demo
+bundle
+popd
+
+# updating yarn.lock and assets build
+yarn
+
+# commiting and pushing
+git add \
+    CHANGELOG.md \
+    Gemfile.lock \
+    demo/Gemfile.lock \
+    lib/primer/view_components/version.rb \
+    package.json \
+    app/assets/javascripts/primer_view_components.js
+git commit -m "release v$major.$minor.$patch"
+git push origin release-v$major.$minor.$patch
+
+# echo "####################################################"
+echo "Now, open a PR with this branch and merge it to main"
+echo "Then, run script/release on main to release the gem and the NPM package"
+echo "Finally, create a GitHub release https://github.com/primer/view_components/releases/new with the changes from CHANGELOG"
+echo "####################################################"
