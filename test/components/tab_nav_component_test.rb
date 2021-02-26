@@ -5,10 +5,28 @@ require "test_helper"
 class PrimerTabNavComponentTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  def test_does_not_render_without_tabs
-    render_inline(Primer::TabNavComponent.new)
+  def test_raises_if_no_tab_is_selected
+    err = assert_raises Primer::TabNavComponent::NoSelectedTabsError do
+      render_inline(Primer::TabNavComponent.new) do |c|
+        c.tab(title: "Tab 1")
+        c.tab(title: "Tab 2")
+        c.tab(title: "Tab 3")
+      end
+    end
 
-    refute_selector(".tabnav")
+    assert_equal("a tab must be selected", err.message)
+  end
+
+  def test_raises_if_multiple_tabs_are_selected
+    err = assert_raises Primer::TabNavComponent::MultipleSelectedTabsError do
+      render_inline(Primer::TabNavComponent.new) do |c|
+        c.tab(title: "Tab 1", selected: true)
+        c.tab(title: "Tab 2")
+        c.tab(title: "Tab 3", selected: true)
+      end
+    end
+
+    assert_equal("only one tab can be selected", err.message)
   end
 
   def test_renders_tabs

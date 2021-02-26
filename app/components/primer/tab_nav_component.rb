@@ -5,6 +5,9 @@ module Primer
   class TabNavComponent < Primer::Component
     include ViewComponent::SlotableV2
 
+    class MultipleSelectedTabsError < StandardError; end
+    class NoSelectedTabsError < StandardError; end
+
     # Tabs to be rendered.
     #
     # @param title [String] Text to be rendered by the tab.
@@ -45,16 +48,29 @@ module Primer
       )
     end
 
-    def render?
-      tabs.any?
+    def before_render
+      validate_single_selected_tab
     end
+
+    private
 
     def wrapper
       @with_panel ? Primer::TabContainerComponent : Primer::BaseComponent
     end
 
+    def validate_single_selected_tab
+      raise MultipleSelectedTabsError, "only one tab can be selected" if selected_tabs_count > 1
+      raise NoSelectedTabsError, "a tab must be selected" if selected_tabs_count != 1
+    end
+
+    def selected_tabs_count
+      @selected_tabs_count ||= tabs.select(&:selected).size
+    end
+
     # Tabs to be rendered.
     class TabComponent < Primer::Component
+      attr_reader :selected
+
       def initialize(title:, selected: false, **system_arguments)
         @title = title
         @selected = selected
