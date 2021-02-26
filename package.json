@@ -20,8 +20,8 @@
   },
   "scripts": {
     "prepare": "tsc && rollup -c",
-    "lint": "eslint app/components --fix",
-    "lint:fix": "eslint app/components"
+    "lint": "eslint app/components",
+    "lint:fix": "eslint app/components --fix"
   },
   "dependencies": {
     "@github/tab-container-element": "^3.1.0"
