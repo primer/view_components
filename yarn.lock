@@ -23,6 +23,11 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
+"@github/tab-container-element@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@github/tab-container-element/-/tab-container-element-3.1.0.tgz#1725966b33d3ee7390cc7e7d313b50581fdbc6dd"
+  integrity sha512-C/HmAxRieqQK1MR58cT3M+GuuuqGIZdCzWd8UiOayLixpnOMSkiWDrGVJe1LpFWWOHKAcwA0LGilcIb+SJ5ZWw==
+
 "@rollup/plugin-node-resolve@^11.2.0":
   version "11.2.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-11.2.0.tgz#a5ab88c35bb7622d115f44984dee305112b6f714"

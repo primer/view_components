@@ -2,6 +2,10 @@
 
 ## main
 
+* Add `TabContainer` and `TabNav` components.
+
+    *Manuel Puyol*
+
 * **Breaking change**: Upgrade `StateComponent` to support functional colors. This change requires using [@primer/css-next](https://www.npmjs.com/package/@primer/css-next). The required changes will be upstreamed to @primer/css at a later date.
 
     *Simon Taranto*
