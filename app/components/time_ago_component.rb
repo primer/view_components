@@ -16,21 +16,20 @@ module Primer
       @system_arguments[:classes] = class_names("no-wrap", @system_arguments[:classes])
       @system_arguments[:tag] = "time-ago"
       @system_arguments[:format] = "micro" if micro
-      @content = if micro
-                   micro_time_ago(time)
-                 else
-                   time.in_time_zone.strftime("%b %-d, %Y")
-                 end
+      @time = time
+      @micro = micro
     end
 
     def call
-      render(Primer::BaseComponent.new(**@system_arguments)) { @content }
+      render(Primer::BaseComponent.new(**@system_arguments)) { time_in_words }
     end
 
     private
 
-    def micro_time_ago(time)
-      seconds_ago = Time.current - time
+    def time_in_words
+      return @time.in_time_zone.strftime("%b %-d, %Y") unless @micro
+
+      seconds_ago = Time.current - @time
 
       if seconds_ago < 1.minute
         "1m"
