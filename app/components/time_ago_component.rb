@@ -1,8 +1,15 @@
 # frozen_string_literal: true
 
 module Primer
-  # A basic wrapper for the "<time-ago>" element.
+  # Use Primer::TimeAgoComponent to display a time relative to how long ago it was
   class TimeAgoComponent < Primer::Component
+
+    #
+    # @example auto|Default
+    #   <%= render(Primer::TimeAgoComponent.new(time: Time.zone.now)) %>
+    #
+    # @param time [Time] The time to be formatted 
+    # @param micro [Boolean] If true then the text will be formatted in "micro" mode, using as few characters as possible
     def initialize(time:, micro: false, **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:datetime] = time.utc.iso8601
