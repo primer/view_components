@@ -1,1 +1,1 @@
-import '@github/tab-container-element';
+import '@github/tab-container-element'
