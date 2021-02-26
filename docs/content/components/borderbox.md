@@ -15,25 +15,25 @@ BorderBox is a Box component with a border.
 
 ### Header, body, rows, and footer
 
-<Example src="<div class='Box '>    <div class='Box-header '>      Header</div>    <div class='Box-body '>      Body</div>    <ul>        <li class='Box-row '>          Row one</li>        <li class='Box-row '>          Row two</li>    </ul>    <div class='Box-footer '>      Footer</div></div>" />
+<Example src="<div class='Box '>  <div class='Box-header '>    Header</div>  <div class='Box-body '>    Body</div>    <ul>        <li class='Box-row '>      Row one</li>        <li class='Box-row '>    Row two</li>    </ul>  <div class='Box-footer '>    Footer</div></div>" />
 
 ```erb
 <%= render(Primer::BorderBoxComponent.new) do |component| %>
-  <% component.slot(:header) do %>
+  <% component.header do %>
     Header
   <% end %>
-  <% component.slot(:body) do %>
+  <% component.body do %>
     Body
   <% end %>
-  <% component.slot(:row) do %>
+  <% component.row do %>
     <% if true %>
       Row one
     <% end %>
   <% end %>
-  <% component.slot(:row) do %>
+  <% component.row do %>
     Row two
   <% end %>
-  <% component.slot(:footer) do %>
+  <% component.footer do %>
     Footer
   <% end %>
 <% end %>
@@ -45,25 +45,35 @@ BorderBox is a Box component with a border.
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `header` slot
+## Slots
+
+### `Header`
+
+Optional Header.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `body` slot
+### `Body`
+
+Optional Body.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `footer` slot
+### `Footer`
+
+Optional Footer.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `row` slot
+### `Rows`
+
+Use Rows to add rows with borders and maintain the same padding.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |

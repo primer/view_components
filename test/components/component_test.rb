@@ -13,7 +13,7 @@ class PrimerComponentTest < Minitest::Test
     end],
     [Primer::BaseComponent, { tag: :div }],
     [Primer::BlankslateComponent, { title: "Foo" }],
-    [Primer::BorderBoxComponent, {}, proc { |component| component.slot(:header) { "Foo" } }],
+    [Primer::BorderBoxComponent, {}, proc { |component| component.header { "Foo" } }],
     [Primer::BoxComponent, {}],
     [Primer::BreadcrumbComponent, {}, proc { |component| component.slot(:item) { "Foo" } }],
     [Primer::ButtonComponent, {}],
