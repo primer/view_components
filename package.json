@@ -26,6 +26,10 @@
     "lint": "eslint app/components",
     "lint:fix": "eslint app/components --fix"
   },
+  "engines": {
+    "node": "15.x",
+    "yarn": "1.22.x"
+  },
   "dependencies": {
     "@github/tab-container-element": "^3.1.0"
   },
