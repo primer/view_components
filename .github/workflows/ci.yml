@@ -11,7 +11,7 @@ jobs:
       with:
         config: '.github/lint/markdown.json'
         args: '**/*.md'
-  lint_rb:
+  lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -46,7 +46,7 @@ jobs:
         yarn
         yarn lint
   benchmark:
-    needs: lint_rb
+    needs: lint
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -67,7 +67,7 @@ jobs:
       env:
         RAILS_VERSION: main
   test:
-    needs: lint_rb
+    needs: lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
