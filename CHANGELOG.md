@@ -2,6 +2,10 @@
 
 ## main
 
+* **Breaking change**: Upgrade `DetailsComponent` to use Slots V2.
+
+    *Simon Taranto*
+
 ## 0.0.21
 
 * **Breaking change**: Upgrade `FlashComponent` to use Slots V2.
@@ -15,10 +19,6 @@
 * **Breaking change**: Upgrade `TimelineItemComponent` to use Slots V2.
 
     *Manuel Puyol*
-
-* **Breaking change**: Upgrade `DetailsComponent` to use Slots V2.
-
-    *Simon Taranto*
 
 ## 0.0.20
 
