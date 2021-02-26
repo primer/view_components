@@ -10,8 +10,8 @@ class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |component|
-      component.slot(:summary) { "Click me" }
-      component.slot(:body) { "Body" }
+      component.summary { "Click me" }
+      component.body { "Body" }
     end
   end
 
@@ -21,8 +21,8 @@ class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |component|
-      component.slot(:summary, variant: :small, button_type: :primary) { "Click me" }
-      component.slot(:body) { "Body" }
+      component.summary(variant: :small, button_type: :primary) { "Click me" }
+      component.body { "Body" }
     end
   end
 
@@ -32,8 +32,8 @@ class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |component|
-      component.slot(:summary, button: false) { "Click me" }
-      component.slot(:body) { "Body" }
+      component.summary(button: false) { "Click me" }
+      component.body { "Body" }
     end
   end
 end

@@ -14,6 +14,10 @@
 
     *Simon Taranto*
 
+* **Breaking change**: Upgrade `DetailsComponent` to use Slots V2.
+
+    *Simon Taranto*
+
 ## 0.0.21
 
 * **Breaking change**: Upgrade `FlashComponent` to use Slots V2.
