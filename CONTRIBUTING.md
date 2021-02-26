@@ -31,7 +31,8 @@ Here are a few things you can do that will increase the likelihood of your pull 
 
 If you are the current maintainer of this gem:
 
-1. Run `./script/release` and follow the instructions.
+1. Checkout to `main`
+1. Run `./script/release-branch` and follow the instructions.
 
 ## Criteria for changing component status
 
