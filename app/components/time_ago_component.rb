@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use Primer::TimeAgoComponent to display a time relative to how long ago it was
+  # Use Primer::TimeAgoComponent to display a time relative to how long ago it was. This component requires JavaScript.
   class TimeAgoComponent < Primer::Component
 
     #
