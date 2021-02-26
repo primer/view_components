@@ -13,9 +13,7 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 
 ## Examples
 
-### auto
-
-Default
+### Default
 
 <Example src="<div class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <a href='#' role='tab' aria-current='page' class='tabnav-tab '>Tab 1</a>      <a href='#' role='tab' class='tabnav-tab '>Tab 2</a>      <a href='#' role='tab' class='tabnav-tab '>Tab 3</a>  </nav ></div>" />
 
@@ -27,9 +25,7 @@ Default
 <% end %>
 ```
 
-### auto
-
-With panels
+### With panels
 
 <Example src="<tab-container class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <button type='button' role='tab' aria-selected='true' class='tabnav-tab '>Tab 1</button>      <button type='button' role='tab' class='tabnav-tab '>Tab 2</button>      <button type='button' role='tab' class='tabnav-tab '>Tab 3</button>  </nav >        <div role='tabpanel' >          Panel 1        </div>        <div role='tabpanel' hidden>          Panel 1        </div>        <div role='tabpanel' hidden>          Panel 1        </div></tab-container>" />
 

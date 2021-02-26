@@ -16,9 +16,7 @@ This component requires javascript.
 
 ## Examples
 
-### auto
-
-Default
+### Default
 
 <Example src="<tab-container>  <div role='tablist'>    <button type='button' role='tab' aria-selected='true'>Tab one</button>    <button type='button' role='tab' tabindex='-1'>Tab two</button>    <button type='button' role='tab' tabindex='-1'>Tab three</button>  </div>  <div role='tabpanel'>    Panel 1  </div>  <div role='tabpanel' hidden>    Panel 2  </div>  <div role='tabpanel' hidden>    Panel 3  </div></tab-container>" />
 
