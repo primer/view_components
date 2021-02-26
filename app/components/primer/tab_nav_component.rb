@@ -64,7 +64,7 @@ module Primer
     end
 
     def selected_tabs_count
-      @selected_tabs_count ||= tabs.select(&:selected).size
+      @selected_tabs_count ||= tabs.count(&:selected)
     end
 
     # Tabs to be rendered.
