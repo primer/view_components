@@ -7,7 +7,8 @@ export default {
   input: pkg.module,
   output: {
     file: pkg.main,
-    format: "es"
+    format: "es",
+    sourcemap: true
   },
   plugins: [
     resolve(),
