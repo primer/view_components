@@ -64,6 +64,10 @@
       url: /components/state
     - title: Subhead
       url: /components/subhead
+    - title: TabContainer
+      url: /components/tabcontainer
+    - title: TabNav
+      url: /components/tabnav
     - title: Text
       url: /components/text
     - title: TimeAgo
