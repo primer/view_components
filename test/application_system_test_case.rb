@@ -11,7 +11,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :cuprite, using: :chrome, screen_size: [1400, 1400]
 
   def with_preview(preview_name)
-    component_uri = self.class.name.split("Integration").first.underscore
+    component_uri = self.class.name.gsub("Test", "").gsub("Integration", "").underscore
 
     visit("/rails/view_components/#{component_uri}/#{preview_name}")
   end
