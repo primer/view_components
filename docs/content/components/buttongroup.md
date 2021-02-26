@@ -12,7 +12,7 @@ Use ButtonGroupComponent to render a series of buttons.
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='BtnGroup '>    <button type='button' class='btn BtnGroup-item '>Default</button>    <button type='button' class='btn btn-primary BtnGroup-item '>Primary</button>    <button type='button' class='btn btn-danger BtnGroup-item '>Danger</button>    <button type='button' class='btn btn-outline BtnGroup-item '>Outline</button>    <button type='button' class='btn my-class BtnGroup-item '>Custom class</button></div></body></html>"></iframe>
+<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><div class='BtnGroup '>    <button type='button' class='btn BtnGroup-item '>Default</button>    <button type='button' class='btn btn-primary BtnGroup-item '>Primary</button>    <button type='button' class='btn btn-danger BtnGroup-item '>Danger</button>    <button type='button' class='btn btn-outline BtnGroup-item '>Outline</button>    <button type='button' class='btn my-class BtnGroup-item '>Custom class</button></div></body></html>"></iframe>
 
 ```erb
 <%= render(Primer::ButtonGroupComponent.new) do |component|

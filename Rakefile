@@ -37,6 +37,8 @@ namespace :statuses do
   task :dump do
     require File.expand_path("demo/config/environment.rb", __dir__)
     require "primer/view_components"
+    # Loads all components for `.descendants` to work properly
+    Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
 
     Primer::ViewComponents.dump_statuses
   end
@@ -103,6 +105,8 @@ namespace :docs do
     require "view_component/test_helpers"
     include ViewComponent::TestHelpers
 
+    Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
+
     puts "Building YARD documentation."
     Rake::Task["yard"].execute
 
@@ -142,6 +146,8 @@ namespace :docs do
       Primer::StateComponent,
       Primer::SpinnerComponent,
       Primer::SubheadComponent,
+      Primer::TabContainerComponent,
+      Primer::TabNavComponent,
       Primer::TextComponent,
       Primer::TimelineItemComponent,
       Primer::TooltipComponent,
@@ -200,7 +206,7 @@ namespace :docs do
                          else
                            "style=\"width: 100%; border: 0px; height: #{iframe_height.to_i + padding}px;\""
           end
-          f.puts("<iframe #{iframe_attrs} srcdoc=\"<html class=\'Box height-full p-3\'><head><link href=\'https://unpkg.com/@primer/css/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.tr('"', "\'").delete("\n")}</body></html>\"></iframe>")
+          f.puts("<iframe #{iframe_attrs} srcdoc=\"<html class=\'Box height-full p-3\'><head><link href=\'https://unpkg.com/@primer/css-next@canary/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.tr('"', "\'").delete("\n")}</body></html>\"></iframe>")
           f.puts
           f.puts("```erb")
           f.puts(tag.text.to_s)

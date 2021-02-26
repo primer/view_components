@@ -44,7 +44,7 @@ class PrimerStateComponentTest < Minitest::Test
   def test_renders_with_the_css_class_mapping_to_the_provided_color
     render_inline(Primer::StateComponent.new(title: "title", color: :green)) { "foo" }
 
-    assert_selector(".State--green")
+    assert_selector(".State--open")
   end
 
   def test_applies_additional_classes_to_the_underlying_element_when_given_class_names
@@ -60,6 +60,12 @@ class PrimerStateComponentTest < Minitest::Test
       Primer::StateComponent.new(title: "title", color: :red, size: :small, classes: "additional class-names here")
     ) { "foo" }
 
-    assert_selector(".State.State--red.State--small.additional.class-names.here")
+    assert_selector(".State.State--closed.State--small.additional.class-names.here")
+  end
+
+  def test_supports_functional_colors
+    render_inline(Primer::StateComponent.new(title: "foo", color: :merged)) { "Merged" }
+
+    assert_selector(".State--merged")
   end
 end
