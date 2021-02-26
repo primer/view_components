@@ -1,0 +1,31 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "overrides": [
+    // rules which apply only to JS
+    {
+      "files": ["**/*.ts"],
+      "extends": ["plugin:@typescript-eslint/recommended", "plugin:github/recommended", "plugin:github/browser"],
+      "rules": {
+        "eslint-comments/no-use": 0,
+        "import/no-namespace": 0,
+        "no-shadow": 0,
+        "no-unused-vars": ["error", {"ignoreRestSiblings": true}]
+      }
+    }
+  ]
+}
