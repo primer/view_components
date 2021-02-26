@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+echo "NPM version:"
+
+read -p "MAJOR: " major
+read -p "MINOR: " minor
+read -p "PATCH: " patch
+
+# Update package.json version
+sed -E -i.bak "s/\"version\": \"(.*)?\"/\"version\": \"$major.$minor.$patch\"/g" package.json
+
+# Remove bak files
+rm package.json.bak
+
+# Update lock and assets
+yarn

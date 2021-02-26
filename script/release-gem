@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+echo "GEM version:"
+
+read -p "MAJOR: " major
+read -p "MINOR: " minor
+read -p "PATCH: " patch
+
+# Update version file
+sed -E -i.bak \
+    -e "s/MAJOR = [0-9]+/MAJOR = $major/g" \
+    -e "s/MINOR = [0-9]+/MINOR = $minor/g" \
+    -e "s/PATCH = [0-9]+/PATCH = $patch/g" \
+    lib/primer/view_components/version.rb
+
+# Update Changelog
+sed -i.bak "/## main/ {a\
+\\
+\\
+## $major.$minor.$patch
+}" CHANGELOG.md
+
+# Remove bak files
+rm CHANGELOG.md.bak
+rm lib/primer/view_components/version.rb.bak
+
+# Update Gemfile.lock
+bundle
+pushd demo
+bundle
+popd
