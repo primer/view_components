@@ -13,7 +13,7 @@ class Primer::ProgressBarComponentTest < Minitest::Test
 
   def test_renders_empty_bar_if_percentage_is_not_provided
     render_inline(Primer::ProgressBarComponent.new) do |component|
-      component.slot(:item)
+      component.item
     end
 
     assert_selector("span.Progress .Progress-item")
@@ -21,7 +21,7 @@ class Primer::ProgressBarComponentTest < Minitest::Test
 
   def test_renders_large_option
     render_inline(Primer::ProgressBarComponent.new(size: :large)) do |component|
-      component.slot(:item, percentage: 80)
+      component(item, percentage: 80)
     end
 
     assert_selector("span.Progress--large.Progress")
@@ -30,7 +30,7 @@ class Primer::ProgressBarComponentTest < Minitest::Test
   def test_renders_default_when_invalid_size_arg_passed
     without_fetch_or_fallback_raises do
       render_inline(Primer::ProgressBarComponent.new(size: "kittens")) do |component|
-        component.slot(:item)
+        component.item
       end
 
       assert_selector("span.Progress")
@@ -39,7 +39,7 @@ class Primer::ProgressBarComponentTest < Minitest::Test
 
   def test_renders_percent_completed_progress
     render_inline(Primer::ProgressBarComponent.new) do |component|
-      component.slot(:item, percentage: 80)
+      component.item(percentage: 80)
     end
 
     assert_selector("[style='width: 80%;']")
@@ -47,7 +47,7 @@ class Primer::ProgressBarComponentTest < Minitest::Test
 
   def test_renders_custom_styles
     render_inline(Primer::ProgressBarComponent.new) do |component|
-      component.slot(:item, percentage: 80, style: "color: red")
+      component.item(percentage: 80, style: "color: red")
     end
 
     assert_selector("[style='color: red;width: 80%;']")
@@ -55,7 +55,7 @@ class Primer::ProgressBarComponentTest < Minitest::Test
 
   def test_renders_background_colors
     render_inline(Primer::ProgressBarComponent.new) do |component|
-      component.slot(:item, bg: :red)
+      component.item(bg: :red)
     end
 
     assert_selector("span.Progress .Progress-item.bg-red")
@@ -63,7 +63,7 @@ class Primer::ProgressBarComponentTest < Minitest::Test
 
   def test_renders_non_standard_background_colors
     render_inline(Primer::ProgressBarComponent.new) do |component|
-      component.slot(:item, bg: :yellow_8)
+      component.item(bg: :yellow_8)
     end
 
     assert_selector("span.Progress .Progress-item.bg-yellow-8")

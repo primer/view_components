@@ -16,7 +16,7 @@ Use ProgressBar to visualize task completion.
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new) do |component| %>
-  <% component.slot(:item, percentage: 25) %>
+  <% component.item(percentage: 25) %>
 <% end %>
 ```
 
@@ -26,7 +26,7 @@ Use ProgressBar to visualize task completion.
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new(size: :small)) do |component| %>
-  <% component.slot(:item, bg: :blue_4, percentage: 50) %>
+  <% component.item(bg: :blue_4, percentage: 50) %>
 <% end %>
 ```
 
@@ -36,7 +36,7 @@ Use ProgressBar to visualize task completion.
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new(size: :large)) do |component| %>
-  <% component.slot(:item, bg: :red_4, percentage: 75) %>
+  <% component.item(bg: :red_4, percentage: 75) %>
 <% end %>
 ```
 
@@ -46,9 +46,9 @@ Use ProgressBar to visualize task completion.
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new) do |component| %>
-  <% component.slot(:item, percentage: 10) %>
-  <% component.slot(:item, bg: :blue_4, percentage: 20) %>
-  <% component.slot(:item, bg: :red_4, percentage: 30) %>
+  <% component.item(percentage: 10) %>
+  <% component.item(bg: :blue_4, percentage: 20) %>
+  <% component.item(bg: :red_4, percentage: 30) %>
 <% end %>
 ```
 
@@ -59,10 +59,14 @@ Use ProgressBar to visualize task completion.
 | `size` | `Symbol` | `:default` | One of `:default`, `:small`, or `:large`. Increases height. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `item` slot
+## Slots
+
+### `Items`
+
+Use the Item slot to add an item to the progress bas
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `percentage` | `Integer` | `0` | Percentage completion of item. |
-| `bg` | `Symbol` | `:green` | Color of item. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+| `percentage` | `Integer` | N/A | The percent complete |
+| `bg` | `Symbol` | N/A | The background color |
+| `kwargs` | `Hash` | N/A | The same arguments as [System arguments](/system-arguments). |
