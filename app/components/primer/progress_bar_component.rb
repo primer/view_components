@@ -10,7 +10,7 @@ module Primer
     # @param percentage [Integer] The percent complete
     # @param bg [Symbol] The background color
     # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
-    renders_many :items, -> (percentage: 0, bg: :green, **system_arguments) do
+    renders_many :items, lambda { |percentage: 0, bg: :green, **system_arguments|
       percentage = percentage
       system_arguments = system_arguments
 
@@ -20,7 +20,7 @@ module Primer
       system_arguments[:classes] = class_names("Progress-item", system_arguments[:classes])
 
       Primer::BaseComponent.new(**system_arguments)
-    end
+    }
 
     SIZE_DEFAULT = :default
 
