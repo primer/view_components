@@ -22,7 +22,7 @@ class IntegrationTabNavComponentTest < ApplicationSystemTestCase
     click_button("Tab #{tab}")
 
     (1..3).each do |num|
-      assert_selector("button.tabnav-tab[role='tab']#{"[aria-selected='true']" if tab == num}", text: "Tab #{num}")
+      assert_selector("button.tabnav-tab[role='tab'][aria-selected='#{tab == num}']", text: "Tab #{num}")
     end
 
     assert_shows_panel(tab)
