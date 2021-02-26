@@ -16,6 +16,10 @@
 
     *Manuel Puyol*
 
+* **Breaking change**: Upgrade `DetailsComponent` to use Slots V2.
+
+    *Simon Taranto*
+
 ## 0.0.20
 
 * Fix bug when empty string was passed to Classify.
