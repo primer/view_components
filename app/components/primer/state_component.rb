@@ -4,12 +4,19 @@ module Primer
   # Component for rendering the status of an item.
   class StateComponent < Primer::Component
     COLOR_DEFAULT = :default
-    COLOR_MAPPINGS = {
-      COLOR_DEFAULT => "",
-      :green => "State--green",
-      :red => "State--red",
-      :purple => "State--purple"
+    NEW_COLOR_MAPPINGS = {
+      open: "State--open",
+      closed: "State--closed",
+      merged: "State--merged"
     }.freeze
+
+    DEPRECATED_COLOR_MAPPINGS = {
+      COLOR_DEFAULT => "",
+      :green => "State--open",
+      :red => "State--closed",
+      :purple => "State--merged"
+    }.freeze
+    COLOR_MAPPINGS = NEW_COLOR_MAPPINGS.merge(DEPRECATED_COLOR_MAPPINGS)
     COLOR_OPTIONS = COLOR_MAPPINGS.keys
 
     SIZE_DEFAULT = :default
@@ -27,9 +34,9 @@ module Primer
     #
     # @example auto|Colors
     #   <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
-    #   <%= render(Primer::StateComponent.new(title: "title", color: :green)) { "Green" } %>
-    #   <%= render(Primer::StateComponent.new(title: "title", color: :red)) { "Red" } %>
-    #   <%= render(Primer::StateComponent.new(title: "title", color: :purple)) { "Purple" } %>
+    #   <%= render(Primer::StateComponent.new(title: "title", color: :open)) { "Open" } %>
+    #   <%= render(Primer::StateComponent.new(title: "title", color: :closed)) { "Closed" } %>
+    #   <%= render(Primer::StateComponent.new(title: "title", color: :merged)) { "Merged" } %>
     #
     # @example auto|Sizes
     #   <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
