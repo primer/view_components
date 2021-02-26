@@ -11,7 +11,7 @@ jobs:
       with:
         config: '.github/lint/markdown.json'
         args: '**/*.md'
-  lint:
+  lint_rb:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -29,6 +29,22 @@ jobs:
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
         bundle exec rubocop
+  lint_js:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Node.js
+      uses: actions/setup-node@master
+      with:
+        node-version: 15
+    - uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: node-modules-main-${{ hashFiles('yarn.lock') }}
+    - name: Lint with ESLint
+      run: |
+        yarn
+        yarn lint
   benchmark:
     needs: lint
     runs-on: ubuntu-latest
