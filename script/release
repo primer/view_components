@@ -5,7 +5,7 @@ read -p "MINOR: " minor
 read -p "PATCH: " patch
 
 # creating branch
-# git checkout -b release-v$major.$minor.$patch
+git checkout -b release-v$major.$minor.$patch
 
 # updating version file
 sed -E -i.bak \
