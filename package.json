@@ -1,6 +1,6 @@
 {
   "name": "@primer/view_components",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
