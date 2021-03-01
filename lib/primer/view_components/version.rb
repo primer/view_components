@@ -12,6 +12,6 @@ module Primer
   end
 end
 
-if __FILE__ == $0
-  puts Primer::ViewComponents::VERSION::STRING
-end
+# rubocop:disable Rails/Output
+puts Primer::ViewComponents::VERSION::STRING if __FILE__ == $PROGRAM_NAME
+# rubocop:enable Rails/Output
