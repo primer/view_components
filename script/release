@@ -18,7 +18,7 @@ create_release_branch() {
 }
 
 update_readme() {
-  sed -i "/## main/ {a\
+  sed -i '' "/## main/ {a\
   \\
   \\
   ## $1.$2.$3
@@ -27,7 +27,7 @@ update_readme() {
 
 update_ruby_version() {
   # Update version file
-  sed -E -i.bak \
+  sed -E -i '' \
       -e "s/MAJOR = [0-9]+/MAJOR = $1/g" \
       -e "s/MINOR = [0-9]+/MINOR = $2/g" \
       -e "s/PATCH = [0-9]+/PATCH = $3/g" \
