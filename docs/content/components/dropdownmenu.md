@@ -17,16 +17,16 @@ of the select menu.
 
 ### With a header
 
-<Example src="<div>  <details class='details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>    Dropdown</summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-se '>    <div class='dropdown-header'>      Options    </div>          <ul>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>        </ul></details-menu></div></details></div>" />
+<Example src="<div>  <details class='details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>      Dropdown</summary>  <div>      <details-menu role='menu' class='dropdown-menu dropdown-menu-se '>    <div class='dropdown-header'>      Options    </div>          <ul>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>        </ul></details-menu></div></details></div>" />
 
 ```erb
 <div>
   <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
-    <% c.slot(:summary) do %>
+    <% c.summary do %>
       Dropdown
     <% end %>
 
-    <% c.slot(:body) do %>
+    <% c.body do %>
       <%= render(Primer::DropdownMenuComponent.new(header: "Options")) do %>
         <ul>
           <li><a class="dropdown-item" href="#url">Dropdown item</a></li>

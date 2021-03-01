@@ -21,8 +21,8 @@ class PrimerComponentTest < Minitest::Test
     [Primer::ButtonMarketingComponent, {}],
     [Primer::CounterComponent, { count: 1 }],
     [Primer::DetailsComponent, {}, lambda do |component|
-      component.slot(:summary) { "Foo" }
-      component.slot(:body) { "Bar" }
+      component.summary { "Foo" }
+      component.body { "Bar" }
     end],
     [Primer::DropdownComponent, {}, lambda do |component|
       component.button { "Foo" }
