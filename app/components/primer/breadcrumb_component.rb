@@ -12,7 +12,7 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_many :items, "ItemComponent"
 
-    # @example auto|Basic
+    # @example Basic
     #   <%= render(Primer::BreadcrumbComponent.new) do |component| %>
     #     <% component.item(href: "/") do %>Home<% end %>
     #     <% component.item(href: "/about") do %>About<% end %>

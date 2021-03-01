@@ -17,7 +17,7 @@ class PrimerBorderBoxComponentTest < Minitest::Test
 
   def test_renders_header
     render_inline(Primer::BorderBoxComponent.new) do |component|
-      component.slot(:header) { "Header" }
+      component.header { "Header" }
     end
 
     assert_selector("div.Box-header", text: "Header")
@@ -25,7 +25,7 @@ class PrimerBorderBoxComponentTest < Minitest::Test
 
   def test_renders_body
     render_inline(Primer::BorderBoxComponent.new) do |component|
-      component.slot(:body) { "Body" }
+      component.body { "Body" }
     end
 
     assert_selector("div.Box-body", text: "Body")
@@ -33,7 +33,7 @@ class PrimerBorderBoxComponentTest < Minitest::Test
 
   def test_renders_footer
     render_inline(Primer::BorderBoxComponent.new) do |component|
-      component.slot(:footer) { "Footer" }
+      component.footer { "Footer" }
     end
 
     assert_selector("div.Box-footer", text: "Footer")
@@ -41,9 +41,9 @@ class PrimerBorderBoxComponentTest < Minitest::Test
 
   def test_renders_multiple_rows
     render_inline(Primer::BorderBoxComponent.new) do |component|
-      component.slot(:row) { "First" }
-      component.slot(:row) { "Second" }
-      component.slot(:row) { "Third" }
+      component.row { "First" }
+      component.row { "Second" }
+      component.row { "Third" }
     end
 
     assert_selector("ul", count: 1)

@@ -26,13 +26,13 @@ module Primer
     DEFAULT_TYPE = :button
     TYPE_OPTIONS = [DEFAULT_TYPE, :reset, :submit].freeze
 
-    # @example auto|Button types
+    # @example Button types
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
     #   <%= render(Primer::ButtonComponent.new(button_type: :primary)) { "Primary" } %>
     #   <%= render(Primer::ButtonComponent.new(button_type: :danger)) { "Danger" } %>
     #   <%= render(Primer::ButtonComponent.new(button_type: :outline)) { "Outline" } %>
     #
-    # @example auto|Variants
+    # @example Variants
     #   <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>
     #   <%= render(Primer::ButtonComponent.new(variant: :medium)) { "Medium" } %>
     #   <%= render(Primer::ButtonComponent.new(variant: :large)) { "Large" } %>

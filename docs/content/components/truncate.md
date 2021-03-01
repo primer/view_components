@@ -2,7 +2,10 @@
 title: Truncate
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/truncate_component.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-truncate-component
 ---
+
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -12,7 +15,7 @@ Use TruncateComponent to shorten overflowing text with an ellipsis.
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><div class='col-2'>  <p class='css-truncate css-truncate-overflow '>branch-name-that-is-really-long</p></div></body></html>"></iframe>
+<Example src="<div class='col-2'>  <p class='css-truncate css-truncate-overflow '>branch-name-that-is-really-long</p></div>" />
 
 ```erb
 <div class="col-2">
@@ -22,7 +25,7 @@ Use TruncateComponent to shorten overflowing text with an ellipsis.
 
 ### Inline
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><span class='css-truncate css-truncate-target '>branch-name-that-is-really-long</span></body></html>"></iframe>
+<Example src="<span class='css-truncate css-truncate-target '>branch-name-that-is-really-long</span>" />
 
 ```erb
 <%= render(Primer::TruncateComponent.new(tag: :span, inline: true)) { "branch-name-that-is-really-long" } %>
@@ -30,7 +33,7 @@ Use TruncateComponent to shorten overflowing text with an ellipsis.
 
 ### Expandable
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><span class='css-truncate css-truncate-target expandable '>branch-name-that-is-really-long</span></body></html>"></iframe>
+<Example src="<span class='css-truncate css-truncate-target expandable '>branch-name-that-is-really-long</span>" />
 
 ```erb
 <%= render(Primer::TruncateComponent.new(tag: :span, inline: true, expandable: true)) { "branch-name-that-is-really-long" } %>
@@ -38,7 +41,7 @@ Use TruncateComponent to shorten overflowing text with an ellipsis.
 
 ### Custom size
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><span style='max-width: 100px;' class='css-truncate css-truncate-target expandable '>branch-name-that-is-really-long</span></body></html>"></iframe>
+<Example src="<span style='max-width: 100px;' class='css-truncate css-truncate-target expandable '>branch-name-that-is-really-long</span>" />
 
 ```erb
 <%= render(Primer::TruncateComponent.new(tag: :span, inline: true, expandable: true, max_width: 100)) { "branch-name-that-is-really-long" } %>

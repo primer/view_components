@@ -41,7 +41,7 @@ module Primer
     # @param test_selector [String] Adds `data-test-selector='given value'` in non-Production environments for testing purposes.
     #
     # @param m [Integer] Margin. <%= one_of((-6..6).to_a) %>
-    # @param mt [Integer] Margin left. <%= one_of((-6..6).to_a) %>
+    # @param mt [Integer] Margin top. <%= one_of((-6..6).to_a) %>
     # @param mr [Integer] Margin right. <%= one_of((-6..6).to_a) %>
     # @param mb [Integer] Margin bottom. <%= one_of((-6..6).to_a) %>
     # @param ml [Integer] Margin left. <%= one_of((-6..6).to_a) %>

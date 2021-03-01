@@ -1,9 +1,9 @@
 <%= render(Primer::DetailsComponent.new(**@system_arguments)) do |c| %>
-  <% c.slot(:summary, classes: @summary_classes) do %>
+  <% c.summary(classes: @summary_classes) do %>
     <%= button %>
   <% end %>
 
-  <% c.slot(:body) do %>
+  <% c.body do %>
     <%= menu %>
   <% end %>
 <% end %>

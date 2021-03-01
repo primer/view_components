@@ -13,7 +13,7 @@ class PrimerComponentTest < Minitest::Test
     end],
     [Primer::BaseComponent, { tag: :div }],
     [Primer::BlankslateComponent, { title: "Foo" }],
-    [Primer::BorderBoxComponent, {}, proc { |component| component.slot(:header) { "Foo" } }],
+    [Primer::BorderBoxComponent, {}, proc { |component| component.header { "Foo" } }],
     [Primer::BoxComponent, {}],
     [Primer::BreadcrumbComponent, {}, proc { |component| component.item { "Foo" } }],
     [Primer::ButtonComponent, {}],
@@ -21,8 +21,8 @@ class PrimerComponentTest < Minitest::Test
     [Primer::ButtonMarketingComponent, {}],
     [Primer::CounterComponent, { count: 1 }],
     [Primer::DetailsComponent, {}, lambda do |component|
-      component.slot(:summary) { "Foo" }
-      component.slot(:body) { "Bar" }
+      component.summary { "Foo" }
+      component.body { "Bar" }
     end],
     [Primer::DropdownComponent, {}, lambda do |component|
       component.button { "Foo" }
@@ -47,6 +47,8 @@ class PrimerComponentTest < Minitest::Test
     [Primer::SpinnerComponent, {}],
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
+    [Primer::TabContainerComponent, {}, proc { "Foo" }],
+    [Primer::TabNavComponent, {}, proc { |c| c.tab(title: "Foo", selected: true) }],
     [Primer::TextComponent, {}],
     [Primer::TruncateComponent, {}],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
