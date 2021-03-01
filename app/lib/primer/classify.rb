@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "classify/cache"
-
 module Primer
   # :nodoc:
   class Classify
