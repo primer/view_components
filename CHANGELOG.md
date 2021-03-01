@@ -2,6 +2,10 @@
 
 ## main
 
+* Add view helpers to easily render Primer components.
+
+    *Manuel Puyol*
+
 * Add `TabContainer` and `TabNav` components.
 
     *Manuel Puyol*
