@@ -5,6 +5,7 @@
 * Add `TabContainer` and `TabNav` components.
 
     *Manuel Puyol*
+
 * Promote `StateComponent` to beta.
 
     *Simon Taranto*
