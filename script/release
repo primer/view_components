@@ -51,6 +51,8 @@ commit() {
 }
 
 push() {
+  git push origin release
+
   echo "####################################################"
   echo "Now, open a PR with this branch and merge it to main"
   echo "Then, run script/publish on main to release the gem and the NPM package"
