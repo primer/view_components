@@ -15,10 +15,10 @@ Use labels to add contextual metadata to a design.
 
 ### Schemes
 
-<Example src="<span title='Label: Label' class='Label bg-blue'>default</span><span title='Label: Label' class='Label Label--primary '>Primary</span><span title='Label: Label' class='Label Label--secondary '>Secondary</span><span title='Label: Label' class='Label Label--info '>Info</span><span title='Label: Label' class='Label Label--success '>Success</span><span title='Label: Label' class='Label Label--warning '>Warning</span><span title='Label: Label' class='Label Label--danger '>Danger</span>" />
+<Example src="<span title='Label: Label' class='Label bg-blue'>Default</span><span title='Label: Label' class='Label Label--primary '>Primary</span><span title='Label: Label' class='Label Label--secondary '>Secondary</span><span title='Label: Label' class='Label Label--info '>Info</span><span title='Label: Label' class='Label Label--success '>Success</span><span title='Label: Label' class='Label Label--warning '>Warning</span><span title='Label: Label' class='Label Label--danger '>Danger</span>" />
 
 ```erb
-<%= render(Primer::LabelComponent.new(title: "Label: Label")) { "default" } %>
+<%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>
 <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :primary)) { "Primary" } %>
 <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :secondary)) { "Secondary" } %>
 <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :info)) { "Info" } %>
