@@ -1,6 +1,8 @@
 # CHANGELOG
 
 ## main
+  
+## 0.0.22
 
 * **Breaking change**: Update `LabelComponent` to use only functional color
   supportive scheme keys. The component no longer accepts colors (`:gray`, for
