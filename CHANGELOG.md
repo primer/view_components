@@ -1,6 +1,8 @@
 # CHANGELOG
 
 ## main
+  
+## 0.0.22
 
 * Add view helpers to easily render Primer components.
 

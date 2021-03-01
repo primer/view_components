@@ -1,6 +1,6 @@
 {
   "name": "@primer/view_components",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -18,7 +18,9 @@
   "bugs": {
     "url": "https://github.com/primer/view_components/issues"
   },
-  "files": ["app/components/primer/*.js"],
+  "files": [
+    "app/components/primer/*.js"
+  ],
   "scripts": {
     "prepare": "tsc && rollup -c",
     "lint": "eslint app/components",
