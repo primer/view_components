@@ -28,7 +28,7 @@ working_tree_is_clean() {
 }
 
 create_release_branch() {
-  git checkout -B release
+  git switch -c release-v$1-$2-$3
 }
 
 update_readme() {
