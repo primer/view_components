@@ -1,6 +1,10 @@
 # CHANGELOG
 
 ## main
+
+* **Breaking change**: Upgrade `SubheadComponent` to use Slots V2.
+
+    *Simon Taranto*
   
 ## 0.0.22
 
