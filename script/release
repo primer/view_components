@@ -1,54 +1,105 @@
 #!/usr/bin/env bash
 
-read -p "Bump gem (y/N)? " answer
-case ${answer:0:1} in
-    y|Y )
-        bump_gem=1
-    ;;
-    * )
-        bump_gem=0
-    ;;
-esac
+create_release_branch() {
+  git checkout -B release
+}
 
-read -p "Bump NPM (y/N)? " answer
-case ${answer:0:1} in
-    y|Y )
-        bump_npm=1
-    ;;
-    * )
-        bump_npm=0
-    ;;
-esac
+update_readme() {
+  sed -i "/## main/ {a\
+  \\
+  \\
+  ## $1.$2.$3
+  }" CHANGELOG.md
+}
 
-# Create release branch
-git checkout -B release
+update_ruby_version() {
+  # Update version file
+  sed -E -i.bak \
+      -e "s/MAJOR = [0-9]+/MAJOR = $1/g" \
+      -e "s/MINOR = [0-9]+/MINOR = $2/g" \
+      -e "s/PATCH = [0-9]+/PATCH = $3/g" \
+      lib/primer/view_components/version.rb
+}
 
-if [[ $bump_gem -eq 1 ]]
-then
-  script/release-gem
+update_gemfiles() {
+  # Update Gemfile.lock
+  bundle
+  pushd demo
+  bundle
+  popd
+}
 
+
+update_npm() {
+  npm version --no-git-tag-version "$1.$2.$3"
+  yarn
+}
+
+add_changed_files() {
   git add \
     CHANGELOG.md \
     Gemfile.lock \
     demo/Gemfile.lock \
-    lib/primer/view_components/version.rb
-fi
-
-if [[ $bump_npm -eq 1 ]]
-then
-  script/release-npm
-
-  git add \
+    lib/primer/view_components/version.rb \
+    app/assets/javascripts \
     package.json \
-    app/assets/javascripts/
-fi
+    yarn.lock
+}
 
-# Commit and push
-git commit -m "release"
-# git push origin release
+commit() {
+  git commit -m "release $1.$2.$3"
+  git tag "v$1.$2.$3"
+}
 
-echo "####################################################"
-echo "Now, open a PR with this branch and merge it to main"
-echo "Then, run script/publish on main to release the gem and the NPM package"
-echo "Finally, create a GitHub release https://github.com/primer/view_components/releases/new with the changes from CHANGELOG"
-echo "####################################################"
+push() {
+  echo "####################################################"
+  echo "Now, open a PR with this branch and merge it to main"
+  echo "Then, run script/publish on main to release the gem and the NPM package"
+  echo "Finally, create a GitHub release https://github.com/primer/view_components/releases/new with the changes from CHANGELOG"
+  echo "####################################################"
+}
+
+main() {
+  version=$(ruby ./lib/primer/view_components/version.rb)
+  version=(${version//./ })
+  major=${version[0]}
+  minor=${version[1]}
+  patch=${version[2]}
+
+  echo "Type the number of an option to bump, or pick Manual to enter a version number"
+  select bump in Major Minor Patch Manual
+  do 
+    if [ "$bump" == "Major" ]; then
+      major=$((major + 1))
+    elif [ "$bump" == "Minor" ]; then
+      minor=$((minor + 1))
+    elif [ "$bump" == "Patch" ]; then
+      patch=$((patch + 1))
+    else
+      read -p "What version? (Currently $major.$minor.$patch): " new_version
+      if [ "$new_version" == "$major.$minor.$patch" ]; then
+        echo "Error: Cannot be the same version"
+        exit 1
+      fi
+
+      new_version=(${new_version//./ })
+
+      major=${new_version[0]}
+      minor=${new_version[1]}
+      patch=${new_version[2]}
+    fi
+
+    echo new version $major $minor $patch
+
+    create_release_branch
+    update_readme $major $minor $patch
+    update_ruby_version $major $minor $patch
+    update_gemfiles $major $minor $patch
+    update_npm $major $minor $patch
+    add_changed_files
+    commit
+    push
+  done
+}
+
+main
