@@ -2,6 +2,13 @@
 
 ## main
 
+* **Breaking change**: Update `LabelComponent` to use only functional color
+  supportive scheme keys. The component no longer accepts colors (`:gray`, for
+  example) but only functional schemes (`primary`, for example).
+  `LabelComponent` is promoted to beta status.
+
+  *Simon Taranto*
+
 * Add view helpers to easily render Primer components.
 
     *Manuel Puyol*
