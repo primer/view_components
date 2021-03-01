@@ -21,7 +21,7 @@ module Primer
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys << nil
 
     # @example Schemes
-    #   <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "default" } %>
+    #   <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :primary)) { "Primary" } %>
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :secondary)) { "Secondary" } %>
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :info)) { "Info" } %>
