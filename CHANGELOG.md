@@ -2,13 +2,13 @@
 
 ## main
 
-* **Breaking change**: Upgrade `BreadcrumbComponent` to use Slots V2.
-
-    *Manuel Puyol*
-
 * **Breaking change**: Upgrade `ProgressBarComponent` to use Slots V2.
 
   *Simon Taranto*
+
+* **Breaking change**: Upgrade `BreadcrumbComponent` to use Slots V2.
+
+    *Manuel Puyol*
 
 ## 0.0.23
 
