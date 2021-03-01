@@ -68,4 +68,8 @@ class PrimerStateComponentTest < Minitest::Test
 
     assert_selector(".State--merged")
   end
+
+  def test_status
+    assert_component_state(Primer::StateComponent, :beta)
+  end
 end

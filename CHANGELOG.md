@@ -2,9 +2,17 @@
 
 ## main
 
+* Add view helpers to easily render Primer components.
+
+    *Manuel Puyol*
+
 * Add `TabContainer` and `TabNav` components.
 
     *Manuel Puyol*
+
+* Promote `StateComponent` to beta.
+
+    *Simon Taranto*
 
 * **Breaking change**: Upgrade `BorderBoxComponent` to use Slots V2.
 
