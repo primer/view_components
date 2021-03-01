@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+working_tree_is_clean() {
+  status=$(git status --porcelain)
+  [ "$status" == "" ]
+}
+
 create_release_branch() {
   git checkout -B release
 }
@@ -66,6 +71,15 @@ main() {
   major=${version[0]}
   minor=${version[1]}
   patch=${version[2]}
+
+  echo "==================="
+  echo "Prerequisite Checks"
+  echo "==================="
+
+  if ! working_tree_is_clean; then 
+    echo "Error: unclean working tree"
+    exit 1
+  fi 
 
   echo "Type the number of an option to bump, or pick Manual to enter a version number"
   select bump in Major Minor Patch Manual
