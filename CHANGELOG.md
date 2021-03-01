@@ -2,6 +2,12 @@
 
 ## main
 
+## 0.0.23
+
+* Remove node and yarn version requirements from `@primer/view-components`.
+
+  *Manuel Puyol*
+
 * **Breaking change**: Upgrade `SubheadComponent` to use Slots V2.
 
     *Simon Taranto*
@@ -12,7 +18,7 @@
   `LabelComponent` is promoted to beta status.
 
   *Simon Taranto*
-  
+
 ## 0.0.22
 
 * Add view helpers to easily render Primer components.
