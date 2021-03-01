@@ -4,6 +4,10 @@ fetch() {
   git fetch --all
 }
 
+branch_name() {
+  git symbolic-ref --short HEAD
+}
+
 local_history_is_clean() {
   history=$(git rev-list --count --right-only @{u}...HEAD)
   [ "$history" == "0" ]
@@ -98,6 +102,11 @@ main() {
     echo "Error: unclean working tree"
     exit 1
   fi 
+
+  if [ "$(branch_name)" !== "main" ]; then
+    echo "Error: can only make a release on the main branch"
+    exit 1
+  fi
 
   fetch
   if ! remote_history_is_clean; then 
