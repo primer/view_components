@@ -18,8 +18,8 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :menu, Primer::Dropdown::MenuComponent
 
-    # @example 210|Default
-    #   <div style="margin-bottom: 150px">
+    # @example Default
+    #   <div>
     #     <%= render(Primer::DropdownComponent.new) do |c| %>
     #       <% c.button do %>
     #         Dropdown
@@ -35,8 +35,8 @@ module Primer
     #     <% end %>
     #   </div>
     #
-    # @example 210|With Direction
-    #   <div style="margin-bottom: 150px" class="d-flex flex-justify-center">
+    # @example With Direction
+    #   <div>
     #     <%= render(Primer::DropdownComponent.new) do |c| %>
     #       <% c.button do %>
     #         Dropdown

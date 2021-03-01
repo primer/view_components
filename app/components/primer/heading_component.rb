@@ -5,7 +5,7 @@ module Primer
   class HeadingComponent < Primer::Component
     view_helper :heading
 
-    # @example auto|Default
+    # @example Default
     #   <%= render(Primer::HeadingComponent.new) { "H1 Text" } %>
     #   <%= render(Primer::HeadingComponent.new(tag: :h2)) { "H2 Text" } %>
     #   <%= render(Primer::HeadingComponent.new(tag: :h3)) { "H3 Text" } %>

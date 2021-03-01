@@ -146,6 +146,8 @@ namespace :docs do
       Primer::StateComponent,
       Primer::SpinnerComponent,
       Primer::SubheadComponent,
+      Primer::TabContainerComponent,
+      Primer::TabNavComponent,
       Primer::TextComponent,
       Primer::TimelineItemComponent,
       Primer::TooltipComponent,
@@ -169,7 +171,10 @@ namespace :docs do
         f.puts("title: #{short_name}")
         f.puts("status: #{component.status.to_s.capitalize}")
         f.puts("source: https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb")
+        f.puts("storybook: https://primer.style/view-components/stories/?path=/story/primer-#{short_name.underscore.dasherize}-component")
         f.puts("---")
+        f.puts
+        f.puts("import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'")
         f.puts
         f.puts("<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->")
         f.puts
@@ -186,10 +191,7 @@ namespace :docs do
         end
 
         initialize_method.tags(:example).each do |tag|
-          padding = 34 # accounts for p-3 and border
-          iframe_height = tag.name.split("|").first
-          name = tag.name.split("|")[1]
-          description = tag.name.split("|")[2]
+          (name, description) = tag.name.split("|")
 
           f.puts("### #{name}")
           if description
@@ -199,12 +201,7 @@ namespace :docs do
           f.puts
           html = view_context.render(inline: tag.text)
 
-          iframe_attrs = if iframe_height == "auto"
-                           "onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + #{padding} + 'px'} style=\"width: 100%; border: 0px;\""
-                         else
-                           "style=\"width: 100%; border: 0px; height: #{iframe_height.to_i + padding}px;\""
-          end
-          f.puts("<iframe #{iframe_attrs} srcdoc=\"<html class=\'Box height-full p-3\'><head><link href=\'https://unpkg.com/@primer/css-next@canary/dist/primer.css\' rel=\'stylesheet\'></head><body>#{html.tr('"', "\'").delete("\n")}</body></html>\"></iframe>")
+          f.puts("<Example src=\"#{html.tr('"', "\'").delete("\n")}\" />")
           f.puts
           f.puts("```erb")
           f.puts(tag.text.to_s)

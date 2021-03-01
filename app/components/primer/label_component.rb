@@ -35,7 +35,7 @@ module Primer
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys << nil
 
-    # @example auto|Schemes
+    # @example Schemes
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "default" } %>
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :gray)) { "gray" } %>
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :dark_gray)) { "dark_gray" } %>
@@ -43,7 +43,7 @@ module Primer
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :green)) { "green" } %>
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :purple)) { "purple" } %>
     #
-    # @example auto|Variants
+    # @example Variants
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", variant: :large)) { "Large" } %>
     #

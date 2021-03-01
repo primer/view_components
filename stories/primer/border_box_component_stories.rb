@@ -5,38 +5,38 @@ class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
 
   story(:full_box) do
     content do |component|
-      component.slot(:header) { "Header" }
-      component.slot(:body) { "Body" }
-      component.slot(:row) { "Row one" }
-      component.slot(:row) { "Row two" }
-      component.slot(:row) { "Row three" }
-      component.slot(:footer) { "Footer" }
+      component.header { "Header" }
+      component.body { "Body" }
+      component.row { "Row one" }
+      component.row { "Row two" }
+      component.row { "Row three" }
+      component.footer { "Footer" }
     end
   end
 
   story(:header) do
     content do |component|
-      component.slot(:header) { "Header" }
+      component.header { "Header" }
     end
   end
 
   story(:body) do
     content do |component|
-      component.slot(:body) { "Body" }
+      component.body { "Body" }
     end
   end
 
   story(:footer) do
     content do |component|
-      component.slot(:footer) { "Footer" }
+      component.footer { "Footer" }
     end
   end
 
   story(:rows) do
     content do |component|
-      component.slot(:row) { "Row one" }
-      component.slot(:row) { "Row two" }
-      component.slot(:row) { "Row three" }
+      component.row { "Row one" }
+      component.row { "Row two" }
+      component.row { "Row three" }
     end
   end
 end

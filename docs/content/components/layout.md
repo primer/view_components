@@ -2,7 +2,10 @@
 title: Layout
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/layout_component.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-layout-component
 ---
+
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -12,7 +15,7 @@ Use Layout to build a main/sidebar layout.
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><div class='gutter-condensed gutter-lg d-flex'>  <div class='flex-shrink-0 col-9'>    Main</div>    <div class='flex-shrink-0 col-3'>      Sidebar</div></div></body></html>"></iframe>
+<Example src="<div class='gutter-condensed gutter-lg d-flex'>  <div class='flex-shrink-0 col-9'>    Main</div>    <div class='flex-shrink-0 col-3'>      Sidebar</div></div>" />
 
 ```erb
 <%= render(Primer::LayoutComponent.new) do |component| %>
@@ -23,7 +26,7 @@ Use Layout to build a main/sidebar layout.
 
 ### Left sidebar
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><div class='gutter-condensed gutter-lg d-flex'>    <div class='flex-shrink-0 col-3'>      Sidebar</div>  <div class='flex-shrink-0 col-9'>    Main</div></div></body></html>"></iframe>
+<Example src="<div class='gutter-condensed gutter-lg d-flex'>    <div class='flex-shrink-0 col-3'>      Sidebar</div>  <div class='flex-shrink-0 col-9'>    Main</div></div>" />
 
 ```erb
 <%= render(Primer::LayoutComponent.new(side: :left)) do |component| %>

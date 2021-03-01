@@ -10,7 +10,7 @@ module Primer
 
     with_content_areas :body, :actions
 
-    # @example auto|Default
+    # @example Default
     #   <%= render(Primer::UnderlineNavComponent.new) do |component| %>
     #     <% component.with(:body) do %>
     #       <%= render(Primer::LinkComponent.new(href: "#url")) { "Item 1" } %>
@@ -20,7 +20,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example auto|Align right
+    # @example Align right
     #   <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>
     #     <% component.with(:body) do %>
     #       <%= render(Primer::LinkComponent.new(href: "#url")) { "Item 1" } %>

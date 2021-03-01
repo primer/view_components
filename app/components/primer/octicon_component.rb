@@ -16,13 +16,13 @@ module Primer
     }.freeze
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
-    # @example auto|Default
+    # @example Default
     #   <%= render(Primer::OcticonComponent.new(icon: "check")) %>
     #
-    # @example auto|Medium
+    # @example Medium
     #   <%= render(Primer::OcticonComponent.new(icon: "people", size: :medium)) %>
     #
-    # @example auto|Large
+    # @example Large
     #   <%= render(Primer::OcticonComponent.new(icon: "x", size: :large)) %>
     #
     # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
