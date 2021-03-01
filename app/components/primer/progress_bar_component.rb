@@ -3,9 +3,24 @@
 module Primer
   # Use ProgressBar to visualize task completion.
   class ProgressBarComponent < Primer::Component
-    include ViewComponent::Slotable
+    include ViewComponent::SlotableV2
 
-    with_slot :item, collection: true, class_name: "Item"
+    # Use the Item slot to add an item to the progress bas
+    #
+    # @param percentage [Integer] The percent complete
+    # @param bg [Symbol] The background color
+    # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
+    renders_many :items, lambda { |percentage: 0, bg: :green, **system_arguments|
+      percentage = percentage
+      system_arguments = system_arguments
+
+      system_arguments[:tag] = :span
+      system_arguments[:bg] = bg
+      system_arguments[:style] = join_style_arguments(system_arguments[:style], "width: #{percentage}%;")
+      system_arguments[:classes] = class_names("Progress-item", system_arguments[:classes])
+
+      Primer::BaseComponent.new(**system_arguments)
+    }
 
     SIZE_DEFAULT = :default
 
@@ -18,24 +33,24 @@ module Primer
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
     # @example Default
     #   <%= render(Primer::ProgressBarComponent.new) do |component| %>
-    #     <% component.slot(:item, percentage: 25) %>
+    #     <% component.item(percentage: 25) %>
     #   <% end %>
     #
     # @example Small
     #   <%= render(Primer::ProgressBarComponent.new(size: :small)) do |component| %>
-    #     <% component.slot(:item, bg: :blue_4, percentage: 50) %>
+    #     <% component.item(bg: :blue_4, percentage: 50) %>
     #   <% end %>
     #
     # @example Large
     #   <%= render(Primer::ProgressBarComponent.new(size: :large)) do |component| %>
-    #     <% component.slot(:item, bg: :red_4, percentage: 75) %>
+    #     <% component.item(bg: :red_4, percentage: 75) %>
     #   <% end %>
     #
     # @example Multiple items
     #   <%= render(Primer::ProgressBarComponent.new) do |component| %>
-    #     <% component.slot(:item, percentage: 10) %>
-    #     <% component.slot(:item, bg: :blue_4, percentage: 20) %>
-    #     <% component.slot(:item, bg: :red_4, percentage: 30) %>
+    #     <% component.item(percentage: 10) %>
+    #     <% component.item(bg: :blue_4, percentage: 20) %>
+    #     <% component.item(bg: :red_4, percentage: 30) %>
     #   <% end %>
     #
     # @param size [Symbol] <%= one_of(Primer::ProgressBarComponent::SIZE_OPTIONS) %> Increases height.
@@ -52,25 +67,6 @@ module Primer
 
     def render?
       items.any?
-    end
-
-    # :nodoc:
-    class Item < Primer::Slot
-      attr_reader :system_arguments
-
-      # @param percentage [Integer] Percentage completion of item.
-      # @param bg [Symbol] Color of item.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(percentage: 0, bg: :green, **system_arguments)
-        @percentage = percentage
-        @system_arguments = system_arguments
-
-        @system_arguments[:tag] = :span
-        @system_arguments[:bg] = bg
-        @system_arguments[:style] =
-          join_style_arguments(@system_arguments[:style], "width: #{@percentage}%;")
-        @system_arguments[:classes] = class_names("Progress-item", @system_arguments[:classes])
-      end
     end
   end
 end
