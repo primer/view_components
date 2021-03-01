@@ -15,7 +15,6 @@ module Primer
         "Subhead-heading--danger": danger
       )
 
-
       Primer::BaseComponent.new(**system_arguments)
     }
 
