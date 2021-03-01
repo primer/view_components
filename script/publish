@@ -1,23 +1,7 @@
 #!/usr/bin/env bash
 
 # Publish gem
-read -p "Publish gem (y/N)? " answer
-case ${answer:0:1} in
-    y|Y )
-        bundle exec rake release
-    ;;
-    * )
-        # noop
-    ;;
-esac
+bundle exec rake release
 
 # Publish NPM
-read -p "Publish NPM (y/N)? " answer
-case ${answer:0:1} in
-    y|Y )
-        npm publish --access public
-    ;;
-    * )
-        # noop
-    ;;
-esac
+npm publish --access public
