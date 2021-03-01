@@ -10,7 +10,7 @@ module Primer
     with_slot :heading, class_name: "Heading"
     with_slot :body, class_name: "Body"
 
-    # @example auto|Default
+    # @example Default
     #   <%= render Primer::PopoverComponent.new do |component| %>
     #     <% component.slot(:heading) do %>
     #       Activity feed
@@ -20,7 +20,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example auto|Large
+    # @example Large
     #   <%= render Primer::PopoverComponent.new do |component| %>
     #     <% component.slot(:heading) do %>
     #       Activity feed
@@ -30,7 +30,7 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example auto|Caret position
+    # @example Caret position
     #   <%= render Primer::PopoverComponent.new do |component| %>
     #     <% component.slot(:heading) do %>
     #       Activity feed

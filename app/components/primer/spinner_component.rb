@@ -15,13 +15,13 @@ module Primer
     DEFAULT_STYLE = "box-sizing: content-box; color: var(--color-icon-primary);"
 
     #
-    # @example auto|Default
+    # @example Default
     #   <%= render(Primer::SpinnerComponent.new) %>
     #
-    # @example auto|Small
+    # @example Small
     #   <%= render(Primer::SpinnerComponent.new(size: :small)) %>
     #
-    # @example auto|Large
+    # @example Large
     #   <%= render(Primer::SpinnerComponent.new(size: :large)) %>
     #
     # @param size [Symbol] <%= one_of(Primer::SpinnerComponent::SIZE_MAPPINGS) %>

@@ -25,7 +25,7 @@ module Primer
     DEFAULT_TYPE = :button
     TYPE_OPTIONS = [DEFAULT_TYPE, :submit].freeze
 
-    # @example auto|Button types
+    # @example Button types
     #   <%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>
     #   <%= render(Primer::ButtonMarketingComponent.new(button_type: :primary, mr: 2)) { "Primary" } %>
     #   <%= render(Primer::ButtonMarketingComponent.new(button_type: :outline)) { "Outline" } %>
@@ -33,7 +33,7 @@ module Primer
     #     <%= render(Primer::ButtonMarketingComponent.new(button_type: :transparent)) { "Transparent" } %>
     #   </div>
     #
-    # @example auto|Sizes
+    # @example Sizes
     #   <%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>
     #   <%= render(Primer::ButtonMarketingComponent.new(variant: :large)) { "Large" } %>
     #

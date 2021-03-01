@@ -2,7 +2,10 @@
 title: Heading
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/heading_component.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-heading-component
 ---
+
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -12,7 +15,7 @@ Use the Heading component to wrap a component that will create a heading element
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><h1>H1 Text</h1><h2>H2 Text</h2><h3>H3 Text</h3></body></html>"></iframe>
+<Example src="<h1>H1 Text</h1><h2>H2 Text</h2><h3>H3 Text</h3>" />
 
 ```erb
 <%= render(Primer::HeadingComponent.new) { "H1 Text" } %>

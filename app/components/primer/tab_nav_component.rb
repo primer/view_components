@@ -19,14 +19,14 @@ module Primer
       TabComponent.new(tag: :button, type: :button, **system_arguments)
     }
 
-    # @example auto|Default
+    # @example Default
     #   <%= render(Primer::TabNavComponent.new) do |c| %>
     #     <% c.tab(selected: true, title: "Tab 1", href: "#") %>
     #     <% c.tab(title: "Tab 2", href: "#") %>
     #     <% c.tab(title: "Tab 3", href: "#") %>
     #   <% end %>
     #
-    # @example auto|With panels
+    # @example With panels
     #   <%= render(Primer::TabNavComponent.new(with_panel: true)) do |c| %>
     #     <% c.tab(selected: true, title: "Tab 1") { "Panel 1" } %>
     #     <% c.tab(title: "Tab 2") { "Panel 1" } %>

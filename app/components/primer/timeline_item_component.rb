@@ -36,7 +36,7 @@ module Primer
       Primer::BaseComponent.new(**system_arguments)
     }
 
-    # @example auto|Default
+    # @example Default
     #   <div style="padding-left: 60px">
     #     <%= render(Primer::TimelineItemComponent.new) do |component| %>
     #       <% component.avatar(src: "https://github.com/github.png", alt: "github") %>
