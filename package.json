@@ -18,9 +18,7 @@
   "bugs": {
     "url": "https://github.com/primer/view_components/issues"
   },
-  "files": [
-    "app/assets/javascripts"
-  ],
+  "files": ["app/components/primer/*.js"],
   "scripts": {
     "prepare": "tsc && rollup -c",
     "lint": "eslint app/components",
