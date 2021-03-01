@@ -48,7 +48,6 @@ add_changed_files() {
 
 commit() {
   git commit -m "release $1.$2.$3"
-  git tag "v$1.$2.$3"
 }
 
 push() {
