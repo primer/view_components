@@ -113,12 +113,14 @@ main() {
       patch=${new_version[2]}
     fi
 
-    echo new version $major $minor $patch
-
     if tag_exists_on_remote $major $minor $patch; then
       echo "Error: tag exists on remote"
       exit 1
     fi
+
+    echo "==============================="
+    echo "Creating release for $major.$minor.$patch"
+    echo "==============================="
 
     create_release_branch
     update_readme $major $minor $patch
