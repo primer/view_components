@@ -4,8 +4,13 @@ fetch() {
   git fetch --all
 }
 
+local_history_is_clean() {
+  history=$(git rev-list --count --right-only @{u}...HEAD)
+  [ "$history" == "0" ]
+}
+
 remote_history_is_clean() {
-  history =$(git rev-list --count --left-only @{u}...HEAD)
+  history=$(git rev-list --count --left-only @{u}...HEAD)
   [ "$history" == "0" ]
 }
 
@@ -92,6 +97,11 @@ main() {
   fetch
   if ! remote_history_is_clean; then 
     echo "Error: changes exist on origin not pulled into this branch. Please pull"
+    exit 1
+  fi 
+
+  if ! local_history_is_clean; then 
+    echo "Error: changes exist that haven't been pushed to origin. Please pull"
     exit 1
   fi 
 
