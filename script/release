@@ -94,6 +94,11 @@ main() {
   echo "Prerequisite Checks"
   echo "==================="
 
+  if ! working_tree_is_clean; then 
+    echo "Error: unclean working tree"
+    exit 1
+  fi 
+
   fetch
   if ! remote_history_is_clean; then 
     echo "Error: changes exist on origin not pulled into this branch. Please pull"
@@ -102,11 +107,6 @@ main() {
 
   if ! local_history_is_clean; then 
     echo "Error: changes exist that haven't been pushed to origin. Please pull"
-    exit 1
-  fi 
-
-  if ! working_tree_is_clean; then 
-    echo "Error: unclean working tree"
     exit 1
   fi 
 
