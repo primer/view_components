@@ -9,10 +9,7 @@ read -p "MINOR: " minor
 read -p "PATCH: " patch
 
 # Update package.json version
-sed -E -i.bak "s/\"version\": \"(.*)?\"/\"version\": \"$major.$minor.$patch\"/g" package.json
-
-# Remove bak files
-rm package.json.bak
+npm version --no-git-tag-version "$major.$minor.$patch"
 
 # Update lock and assets
 yarn
