@@ -10,6 +10,10 @@
 
     *Manuel Puyol*
 
+* Promote `StateComponent` to beta.
+
+    *Simon Taranto*
+
 * **Breaking change**: Upgrade `BorderBoxComponent` to use Slots V2.
 
     *Manuel Puyol*
