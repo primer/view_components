@@ -35,7 +35,7 @@ update_readme() {
   sed -i '' "/## main/ {a\
   \\
   \\
-  ## $1.$2.$3
+## $1.$2.$3
   }" CHANGELOG.md
 }
 
@@ -78,7 +78,7 @@ commit() {
 }
 
 push() {
-  git push origin release
+  git push origin release-v$1-$2-$3
 
   echo "####################################################"
   echo "Now, open a PR with this branch and merge it to main"
@@ -98,10 +98,10 @@ main() {
   echo "Prerequisite Checks"
   echo "==================="
 
-  if ! working_tree_is_clean; then 
+  if ! working_tree_is_clean; then
     echo "Error: unclean working tree"
     exit 1
-  fi 
+  fi
 
   if [ "$(branch_name)" !== "main" ]; then
     echo "Error: can only make a release on the main branch"
@@ -109,19 +109,19 @@ main() {
   fi
 
   fetch
-  if ! remote_history_is_clean; then 
+  if ! remote_history_is_clean; then
     echo "Error: changes exist on origin not pulled into this branch. Please pull"
     exit 1
-  fi 
+  fi
 
-  if ! local_history_is_clean; then 
+  if ! local_history_is_clean; then
     echo "Error: changes exist that haven't been pushed to origin. Please pull"
     exit 1
-  fi 
+  fi
 
   echo "Type the number of an option to bump, or pick Manual to enter a version number"
   select bump in Major Minor Patch Manual
-  do 
+  do
     if [ "$bump" == "Major" ]; then
       major=$((major + 1))
     elif [ "$bump" == "Minor" ]; then
