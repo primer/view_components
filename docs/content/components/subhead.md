@@ -77,7 +77,7 @@ Use the Subhead component for page headings.
 
 ### `Heading`
 
-
+The heading
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
@@ -86,7 +86,7 @@ Use the Subhead component for page headings.
 
 ### `Actions`
 
-
+Actions
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
@@ -94,7 +94,7 @@ Use the Subhead component for page headings.
 
 ### `Description`
 
-
+The description
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |

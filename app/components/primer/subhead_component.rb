@@ -5,6 +5,8 @@ module Primer
   class SubheadComponent < Primer::Component
     include ViewComponent::SlotableV2
 
+    # The heading
+    #
     # @param danger [Boolean] Whether to style the heading as dangerous.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :heading, lambda { |danger: false, **system_arguments|
@@ -18,6 +20,8 @@ module Primer
       Primer::BaseComponent.new(**system_arguments)
     }
 
+    # Actions
+    #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :actions, lambda { |**system_arguments|
       system_arguments[:tag] = :div
@@ -26,6 +30,8 @@ module Primer
       Primer::BaseComponent.new(**system_arguments)
     }
 
+    # The description
+    #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :description, lambda { |**system_arguments|
       system_arguments[:tag] = :div
