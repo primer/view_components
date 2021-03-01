@@ -15,14 +15,14 @@ Use the Subhead component for page headings.
 
 ### Default
 
-<Example src="<div class='Subhead hx_Subhead--responsive '>    <div class='Subhead-heading '>      My Heading</div>    <div class='Subhead-description '>      My Description</div></div>" />
+<Example src="<div class='Subhead hx_Subhead--responsive '>  <div class='Subhead-heading '>    My Heading</div>    <div class='Subhead-description '>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>
-  <% component.slot(:heading) do %>
+  <% component.heading do %>
     My Heading
   <% end %>
-  <% component.slot(:description) do %>
+  <% component.description do %>
     My Description
   <% end %>
 <% end %>
@@ -30,14 +30,14 @@ Use the Subhead component for page headings.
 
 ### Without border
 
-<Example src="<div class='Subhead hx_Subhead--responsive border-bottom-0 mb-0'>    <div class='Subhead-heading '>      My Heading</div>    <div class='Subhead-description '>      My Description</div></div>" />
+<Example src="<div class='Subhead hx_Subhead--responsive border-bottom-0 mb-0'>  <div class='Subhead-heading '>    My Heading</div>    <div class='Subhead-description '>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new(hide_border: true)) do |component| %>
-  <% component.slot(:heading) do %>
+  <% component.heading do %>
     My Heading
   <% end %>
-  <% component.slot(:description) do %>
+  <% component.description do %>
     My Description
   <% end %>
 <% end %>
@@ -45,17 +45,17 @@ Use the Subhead component for page headings.
 
 ### With actions
 
-<Example src="<div class='Subhead hx_Subhead--responsive '>    <div class='Subhead-heading '>      My Heading</div>    <div class='Subhead-actions '>      <a href='http://www.google.com' role='button' class='btn btn-danger '>Action</a></div>    <div class='Subhead-description '>      My Description</div></div>" />
+<Example src="<div class='Subhead hx_Subhead--responsive '>  <div class='Subhead-heading '>    My Heading</div>  <div class='Subhead-actions '>    <a href='http://www.google.com' role='button' class='btn btn-danger '>Action</a></div>  <div class='Subhead-description '>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>
-  <% component.slot(:heading) do %>
+  <% component.heading do %>
     My Heading
   <% end %>
-  <% component.slot(:description) do %>
+  <% component.description do %>
     My Description
   <% end %>
-  <% component.slot(:actions) do %>
+  <% component.actions do %>
     <%= render(
       Primer::ButtonComponent.new(
         tag: :a, href: "http://www.google.com", button_type: :danger
@@ -73,20 +73,28 @@ Use the Subhead component for page headings.
 | `hide_border` | `Boolean` | `false` | Whether to hide the border under the heading. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `heading` slot
+## Slots
+
+### `Heading`
+
+
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `danger` | `Boolean` | `false` | Whether to style the heading as dangerous. |
+| `danger` | `Boolean` | N/A | Whether to style the heading as dangerous. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `actions` slot
+### `Actions`
+
+
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `description` slot
+### `Description`
+
+
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
