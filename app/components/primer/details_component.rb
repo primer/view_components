@@ -3,7 +3,7 @@
 module Primer
   # Use DetailsComponent to reveal content after clicking a button.
   class DetailsComponent < Primer::Component
-    include ViewComponent::Slotable
+    include ViewComponent::SlotableV2
 
     NO_OVERLAY = :none
     OVERLAY_MAPPINGS = {
@@ -12,8 +12,27 @@ module Primer
       :dark => "details-overlay details-overlay-dark"
     }.freeze
 
-    with_slot :body, class_name: "Body"
-    with_slot :summary, class_name: "Summary"
+    # Use the Summary slot as a trigger to reveal the content.
+    #
+    # @param button [Boolean] Whether to render the Summary as a button or not.
+    # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
+    renders_one :summary, lambda { |button = true, **system_arguments|
+      system_arguments = system_arguments
+      system_arguments[:tag] = :summary
+      system_arguments[:role] = "button"
+
+      Primer::BaseComponent.new(**system_arguments) unless button
+
+      Primer::ButtonComponent.new(**system_arguments)
+    }
+
+    # Use the Body slot as the main content to be shown when triggered by the Summary.
+    #
+    # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
+    renders_one :body, lambda { |**system_arguments|
+      system_arguments[:tag] ||= :div
+      Primer::BaseComponent.new(**system_arguments)
+    }
 
     # @param overlay [Symbol] Dictates the type of overlay to render with. <%= one_of(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys) %>
     # @param reset [Boolean] Defatuls to false. If set to true, it will remove the default caret and remove style from the summary element
@@ -30,38 +49,6 @@ module Primer
 
     def render?
       summary.present? && body.present?
-    end
-
-    # Use the Summary slot as a trigger to reveal the content.
-    class Summary < Primer::Slot
-      # @param button [Boolean] Whether to render the Summary as a button or not.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(button: true, **system_arguments)
-        @button = button
-
-        @system_arguments = system_arguments
-        @system_arguments[:tag] = :summary
-        @system_arguments[:role] = "button"
-      end
-
-      def component
-        return Primer::BaseComponent.new(**@system_arguments) unless @button
-
-        Primer::ButtonComponent.new(**@system_arguments)
-      end
-    end
-
-    # Use the Body slot as the main content to be shown when triggered by the Summary.
-    class Body < Primer::Slot
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**system_arguments)
-        @system_arguments = system_arguments
-        @system_arguments[:tag] ||= :div
-      end
-
-      def component
-        Primer::BaseComponent.new(**@system_arguments)
-      end
     end
   end
 end

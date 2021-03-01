@@ -1,26 +1,12 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <% if header %>
-    <%= render Primer::BaseComponent.new(**header.system_arguments) do %>
-      <%= header.content %>
-    <% end %>
-  <% end %>
-  <% if body %>
-    <%= render Primer::BaseComponent.new(**body.system_arguments) do %>
-      <%= body.content %>
-    <% end %>
-  <% end %>
+  <%= header %>
+  <%= body %>
   <% if rows.any? %>
     <ul>
       <% rows.each do |row| %>
-        <%= render Primer::BaseComponent.new(**row.system_arguments) do %>
-          <%= row.content %>
-        <% end %>
+        <%= row %>
       <% end %>
     </ul>
   <% end %>
-  <% if footer %>
-    <%= render Primer::BaseComponent.new(**footer.system_arguments) do %>
-      <%= footer.content %>
-    <% end %>
-  <% end %>
+  <%= footer %>
 <% end %>

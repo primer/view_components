@@ -6,6 +6,10 @@
 
     *Manuel Puyol*
 
+* **Breaking change**: Upgrade `BorderBoxComponent` to use Slots V2.
+
+    *Manuel Puyol*
+
 * **Breaking change**: Upgrade `StateComponent` to support functional colors. This change requires using [@primer/css-next](https://www.npmjs.com/package/@primer/css-next). The required changes will be upstreamed to @primer/css at a later date.
 
     *Simon Taranto*
@@ -13,6 +17,10 @@
 * Add `TimeAgo` component.
 
     *Keith Cirkel*
+
+* **Breaking change**: Upgrade `DetailsComponent` to use Slots V2.
+
+    *Simon Taranto*
 
 ## 0.0.21
 

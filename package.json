@@ -1,33 +1,56 @@
 {
-  "name": "@primer/view_components",
-  "version": "0.0.20",
+  "name": "@primer/view-components",
+  "version": "0.0.1",
   "description": "ViewComponents for the Primer Design System",
+  "main": "app/assets/javascripts/primer_view_components.js",
+  "module": "app/components/primer/primer.js",
+  "repository": "primer/view_components",
+  "keywords": [
+    "rails",
+    "view_components",
+    "components",
+    "library",
+    "design-system"
+  ],
+  "author": "GitHub, Inc.",
+  "license": "MIT",
   "homepage": "https://github.com/primer/view_components#readme",
   "bugs": {
     "url": "https://github.com/primer/view_components/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/primer/view_components.git"
-  },
-  "license": "MIT",
-  "author": "GitHub (https://github.com)",
-  "main": "app/assets/javascripts/primer_view_components.js",
-  "module": "app/components/primer/primer.js",
   "scripts": {
-    "prepare": "tsc && rollup -c"
+    "prepare": "tsc && rollup -c",
+    "lint": "eslint app/components",
+    "lint:fix": "eslint app/components --fix"
+  },
+  "engines": {
+    "node": "15.x",
+    "yarn": "1.22.x"
+  },
+  "dependencies": {
+    "@github/tab-container-element": "^3.1.0"
   },
   "dependencies": {
     "@github/tab-container-element": "^3.1.0",
     "@github/time-elements": "^3.1.1"
   },
   "devDependencies": {
+    "@github/prettier-config": "0.0.4",
     "@rollup/plugin-node-resolve": "^11.2.0",
     "@rollup/plugin-typescript": "^8.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
+    "eslint": "^7.20.0",
+    "eslint-plugin-github": "^4.1.1",
+    "eslint-plugin-prettier": "^3.3.1",
     "mocha": "^8.3.0",
     "rollup": "^2.39.0",
     "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.1.0",
     "typescript": "^4.1.5"
+  },
+  "prettier": "@github/prettier-config",
+  "storybook": {
+    "url": "https://primer.style/view-components/stories/"
   }
 }
