@@ -4,6 +4,8 @@
 
 * **Breaking change**: Upgrade `ProgressBarComponent` to use Slots V2.
 
+  *Simon Taranto*
+
 ## 0.0.23
 
 * Remove node and yarn version requirements from `@primer/view-components`.
