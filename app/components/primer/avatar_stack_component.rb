@@ -13,21 +13,21 @@ module Primer
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::AvatarComponent) %>.
     renders_many :avatars, Primer::AvatarComponent
 
-    # @example auto|Default
+    # @example Default
     #   <%= render(Primer::AvatarStackComponent.new) do |c| %>
     #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
     #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
     #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
     #   <% end  %>
     #
-    # @example auto|Align right
+    # @example Align right
     #   <%= render(Primer::AvatarStackComponent.new(align: :right)) do |c| %>
     #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
     #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
     #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
     #   <% end  %>
     #
-    # @example auto|With tooltip
+    # @example With tooltip
     #   <%= render(Primer::AvatarStackComponent.new(tooltipped: true, body_arguments: { label: 'This is a tooltip!' })) do |c| %>
     #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
     #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>

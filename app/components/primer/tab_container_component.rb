@@ -6,7 +6,7 @@ module Primer
   #
   # This component requires javascript.
   class TabContainerComponent < Primer::Component
-    # @example auto|Default
+    # @example Default
     #   <%= render(Primer::TabContainerComponent.new)  do %>
     #     <div role="tablist">
     #       <button type="button" role="tab" aria-selected="true">Tab one</button>
