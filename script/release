@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+fetch() {
+  git fetch --all
+}
+
+tag_exists_on_remote() {
+ git rev-parse --quiet --verify refs/tags/v$1.$2.$3 > /dev/null
+}
+
 working_tree_is_clean() {
   status=$(git status --porcelain)
   [ "$status" == "" ]
@@ -76,6 +84,7 @@ main() {
   echo "Prerequisite Checks"
   echo "==================="
 
+  fetch
   if ! working_tree_is_clean; then 
     echo "Error: unclean working tree"
     exit 1
@@ -105,6 +114,11 @@ main() {
     fi
 
     echo new version $major $minor $patch
+
+    if tag_exists_on_remote $major $minor $patch; then
+      echo "Error: tag exists on remote"
+      exit 1
+    fi
 
     create_release_branch
     update_readme $major $minor $patch
