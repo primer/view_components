@@ -1,5 +1,5 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <% items.each do |item| %>
-    <%= render Primer::BaseComponent.new(**item.system_arguments) %>
+    <%= item %>
   <% end %>
 <% end %>

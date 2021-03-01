@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -25,10 +25,6 @@
     "prepare": "tsc && rollup -c",
     "lint": "eslint app/components",
     "lint:fix": "eslint app/components --fix"
-  },
-  "engines": {
-    "node": "15.x",
-    "yarn": "1.22.x"
   },
   "dependencies": {
     "@github/tab-container-element": "^3.1.0"
