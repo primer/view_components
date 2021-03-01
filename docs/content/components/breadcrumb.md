@@ -19,9 +19,9 @@ Use breadcrumbs to display page hierarchy within a section of the site. All of t
 
 ```erb
 <%= render(Primer::BreadcrumbComponent.new) do |component| %>
-  <% component.slot(:item, href: "/") do %>Home<% end %>
-  <% component.slot(:item, href: "/about") do %>About<% end %>
-  <% component.slot(:item, selected: true) do %>Team<% end %>
+  <% component.item(href: "/") do %>Home<% end %>
+  <% component.item(href: "/about") do %>About<% end %>
+  <% component.item(selected: true) do %>Team<% end %>
 <% end %>
 ```
 
@@ -31,12 +31,14 @@ Use breadcrumbs to display page hierarchy within a section of the site. All of t
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `item` slot
+## Slots
+
+### `Items`
+
+_Note: if both `href` and `selected: true` are passed in, `href` will be ignored and the item will not be rendered as a link._
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `href` | `String` | `nil` | The URL to link to. |
-| `selected` | `Boolean` | `false` | Whether or not the item is selected and not rendered as a link. |
+| `href` | `String` | N/A | The URL to link to. |
+| `selected` | `Boolean` | N/A | Whether or not the item is selected and not rendered as a link. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-_Note: if both `href` and `selected: true` are passed in, `href` will be ignored and the item will not be rendered as a link._

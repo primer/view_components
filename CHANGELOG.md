@@ -6,6 +6,10 @@
 
   *Simon Taranto*
 
+* **Breaking change**: Upgrade `BreadcrumbComponent` to use Slots V2.
+
+    *Manuel Puyol*
+
 ## 0.0.23
 
 * Remove node and yarn version requirements from `@primer/view-components`.

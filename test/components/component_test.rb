@@ -15,7 +15,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::BorderBoxComponent, {}, proc { |component| component.header { "Foo" } }],
     [Primer::BoxComponent, {}],
-    [Primer::BreadcrumbComponent, {}, proc { |component| component.slot(:item) { "Foo" } }],
+    [Primer::BreadcrumbComponent, {}, proc { |component| component.item { "Foo" } }],
     [Primer::ButtonComponent, {}],
     [Primer::ButtonGroupComponent, {}, proc { |component| component.button { "Button" } }],
     [Primer::ButtonMarketingComponent, {}],
