@@ -1,6 +1,10 @@
 # CHANGELOG
 
 ## main
+
+* **Breaking change**: Upgrade `ProgressBarComponent` to use Slots V2.
+
+    *Simon Taranto*
   
 ## 0.0.22
 
@@ -25,10 +29,6 @@
     *Simon Taranto*
 
 * **Breaking change**: Upgrade `DetailsComponent` to use Slots V2.
-
-    *Simon Taranto*
-
-* **Breaking change**: Upgrade `ProgressBarComponent` to use Slots V2.
 
     *Simon Taranto*
 
