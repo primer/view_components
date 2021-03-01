@@ -46,7 +46,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::ProgressBarComponent, {}, proc { |component| component.item }],
     [Primer::SpinnerComponent, {}],
     [Primer::StateComponent, { title: "Open" }],
-    [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
+    [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.heading { "Foo" } }],
     [Primer::TabContainerComponent, {}, proc { "Foo" }],
     [Primer::TabNavComponent, {}, proc { |c| c.tab(title: "Foo", selected: true) }],
     [Primer::TextComponent, {}],

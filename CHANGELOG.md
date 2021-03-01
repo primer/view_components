@@ -4,6 +4,14 @@
 
 * **Breaking change**: Upgrade `ProgressBarComponent` to use Slots V2.
 
+## 0.0.23
+
+* Remove node and yarn version requirements from `@primer/view-components`.
+
+  *Manuel Puyol*
+
+* **Breaking change**: Upgrade `SubheadComponent` to use Slots V2.
+
     *Simon Taranto*
 
 * **Breaking change**: Update `LabelComponent` to use only functional color
@@ -12,7 +20,7 @@
   `LabelComponent` is promoted to beta status.
 
   *Simon Taranto*
-  
+
 ## 0.0.22
 
 * Add view helpers to easily render Primer components.
