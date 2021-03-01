@@ -8,6 +8,10 @@
 
   *Manuel Puyol*
 
+* **Breaking change**: Upgrade `SubheadComponent` to use Slots V2.
+
+    *Simon Taranto*
+
 * **Breaking change**: Update `LabelComponent` to use only functional color
   supportive scheme keys. The component no longer accepts colors (`:gray`, for
   example) but only functional schemes (`primary`, for example).
