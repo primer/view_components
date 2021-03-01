@@ -1,8 +1,12 @@
 # CHANGELOG
 
 ## main
-  
+
 ## 0.0.23
+
+* Remove node and yarn version requirements from `@primer/view-components`.
+
+  *Manuel Puyol*
 
 * **Breaking change**: Update `LabelComponent` to use only functional color
   supportive scheme keys. The component no longer accepts colors (`:gray`, for
@@ -10,7 +14,7 @@
   `LabelComponent` is promoted to beta status.
 
   *Simon Taranto*
-  
+
 ## 0.0.22
 
 * Add view helpers to easily render Primer components.
