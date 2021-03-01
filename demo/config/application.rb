@@ -16,6 +16,8 @@ Bundler.require(*Rails.groups)
 
 module Demo
   class Application < Rails::Application
+    config.load_defaults 6.0
+
     # Initialize configuration defaults for originally generated Rails version.
     config.view_component_storybook.show_stories = true
     config.view_component.show_previews = true
