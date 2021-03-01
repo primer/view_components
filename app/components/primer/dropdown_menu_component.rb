@@ -18,8 +18,8 @@ module Primer
       STATUSES[:deprecated]
     end
 
-    # @example 200|With a header
-    #   <div style="margin-bottom: 150px">
+    # @example With a header
+    #   <div>
     #     <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
     #       <% c.summary do %>
     #         Dropdown

@@ -10,7 +10,7 @@ module Primer
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
     renders_many :buttons, ->(**kwargs) { Primer::ButtonComponent.new(group_item: true, **kwargs) }
 
-    # @example auto|Default
+    # @example Default
     #   <%= render(Primer::ButtonGroupComponent.new) do |component|
     #     component.button { "Default" }
     #     component.button(button_type: :primary) { "Primary" }

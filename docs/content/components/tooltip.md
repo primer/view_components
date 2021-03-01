@@ -2,7 +2,10 @@
 title: Tooltip
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/tooltip_component.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-tooltip-component
 ---
+
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -12,7 +15,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### Default
 
-<iframe style="width: 100%; border: 0px; height: 89px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n '>Default Bold Text</span></div></body></html>"></iframe>
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n '>Default Bold Text</span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -22,7 +25,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### Wrapping another component
 
-<iframe style="width: 100%; border: 0px; height: 99px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n '>    <button type='button' class='btn '>Bold Button</button></span></div></body></html>"></iframe>
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n '>    <button type='button' class='btn '>Bold Button</button></span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -34,7 +37,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### With a direction
 
-<iframe style="width: 100%; border: 0px; height: 99px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s '>Bold Text With a Direction</span></div></body></html>"></iframe>
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s '>Bold Text With a Direction</span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -44,7 +47,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### With an alignment
 
-<iframe style="width: 100%; border: 0px; height: 99px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><div class='pt-5'>  <span alignment='right_1' aria-label='Even bolder' class='tooltipped tooltipped-s '>Bold Text With an Alignment</span></div></body></html>"></iframe>
+<Example src="<div class='pt-5'>  <span alignment='right_1' aria-label='Even bolder' class='tooltipped tooltipped-s '>Bold Text With an Alignment</span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -54,7 +57,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### Without a delay
 
-<iframe style="width: 100%; border: 0px; height: 99px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css-next@canary/dist/primer.css' rel='stylesheet'></head><body><div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s tooltipped-no-delay '>Bold Text without a delay</span></div></body></html>"></iframe>
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s tooltipped-no-delay '>Bold Text without a delay</span></div>" />
 
 ```erb
 <div class="pt-5">
