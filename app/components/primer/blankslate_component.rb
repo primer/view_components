@@ -130,5 +130,9 @@ module Primer
       @link_text = link_text
       @link_url = link_url
     end
+
+    def self.status
+      Primer::Component::STATUSES[:beta]
+    end
   end
 end

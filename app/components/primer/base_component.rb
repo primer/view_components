@@ -119,6 +119,10 @@ module Primer
       content_tag(@tag, content, @content_tag_args.merge(@result))
     end
 
+    def self.status
+      Primer::Component::STATUSES[:beta]
+    end
+
     private
 
     def add_test_selector(args)

@@ -114,4 +114,8 @@ class PrimerBaseComponentTest < Minitest::Test
     refute_selector("div[width='fill']")
     assert_selector("div.width-fill")
   end
+
+  def test_status
+    assert_component_state(Primer::BaseComponent, :beta)
+  end
 end

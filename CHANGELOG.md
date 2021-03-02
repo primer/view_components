@@ -1,6 +1,10 @@
 # CHANGELOG
 
 ## main
+
+* Promote `BlankslateComponent` and `BaseComponent` to beta status.
+
+    *Simon Taranto*
   
 ## 0.0.24
 
