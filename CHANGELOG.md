@@ -2,6 +2,10 @@
 
 ## main
 
+* Fix zeitwerk autoload integration.
+
+    *Manuel Puyol*
+
 * **Breaking change**: Upgrade `ProgressBarComponent` to use Slots V2.
 
   *Simon Taranto*

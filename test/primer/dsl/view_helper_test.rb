@@ -3,14 +3,14 @@
 require "test_helper"
 
 class TestComponent < ViewComponent::Base
-  include Primer::ViewHelper::DSL
+  include Primer::ViewHelper::Dsl
 end
 
 class OtherTestComponent < ViewComponent::Base
-  include Primer::ViewHelper::DSL
+  include Primer::ViewHelper::Dsl
 end
 
-class Primer::ViewHelper::DSLTest < Minitest::Test
+class Primer::ViewHelper::DslTest < Minitest::Test
   def test_register_view_helpers
     assert_respond_to(TestComponent, :view_helper)
 
@@ -22,7 +22,7 @@ class Primer::ViewHelper::DSLTest < Minitest::Test
   def test_raises_if_helper_already_defined
     OtherTestComponent.view_helper :test
 
-    err = assert_raises Primer::ViewHelper::DSL::ViewHelperAlreadyDefined do
+    err = assert_raises Primer::ViewHelper::Dsl::ViewHelperAlreadyDefined do
       OtherTestComponent.view_helper :test
     end
 
