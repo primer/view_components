@@ -1,6 +1,8 @@
 # CHANGELOG
 
 ## main
+  
+## 0.0.25
 
 * Add deprecated `orange` and `purple` schemes to `LabelComponent`.
 
