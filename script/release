@@ -34,7 +34,7 @@ create_release_branch() {
 update_readme() {
   sed -i '' "/## main/ {a\
   \\
-  \\
+\\
 ## $1.$2.$3
   }" CHANGELOG.md
 }
