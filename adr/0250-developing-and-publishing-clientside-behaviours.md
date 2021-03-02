@@ -4,7 +4,7 @@ Date: 2021-02-19
 
 ## Status
 
-Proposed
+Accepted
 
 ## Context
 
@@ -33,11 +33,11 @@ Publishing a sidecar package like this moderately increases _complexity_ for thi
 
 ### Testing
 
-We will test our behaviours in the Browser environment (using System tests), as this is where they will be consumed. This will require using Browser APIs to automate testing. We will use test automation libraries that automate browsers via the [Devtools Protocol](https://chromedevtools.github.io/devtools-protocol/) such as [Puppeteer](https://pptr.dev/), [Playwright](https://playwright.dev/) or [Ferrum](https://ferrum.rocks/). Using a Devtools Protocol based tool gives us the best level of flexibility in testing, while also being compatible with current browsers.
+We will test our behaviours in the Browser environment (using Rails System tests), as this is where they will be consumed. This will require using Browser APIs to automate testing. We will use test automation libraries that automate browsers via the [Devtools Protocol](https://chromedevtools.github.io/devtools-protocol/) such as [Puppeteer](https://pptr.dev/), [Playwright](https://playwright.dev/) or [Ferrum](https://ferrum.rocks/). Using a Devtools Protocol based tool gives us the best level of flexibility in testing, while also being compatible with current browsers.
 
 ### Documentation
 
-We will document which components are behavioural, so that consumers are aware they are required to load the client side bundle code for these components to work properly. We will offer a documentation page on how to use the `javascript_include_tag` helper to load the bundle using the Asset Bundle, or otherwise import the npm package within their codebases.
+We will document which components are behavioural, so that consumers are aware they are required to load the client side bundle code for these components to work properly. We will offer a documentation page on how to use the `javascript_include_tag` helper to load the bundle using the Asset Pipeline, or otherwise import the npm package within their codebases.
 
 ## Consequences
 
