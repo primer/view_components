@@ -10,10 +10,10 @@ module Primer
     # Example:
     #
     # class MyComponent < ViewComponent::Base
-    #   include Primer::ViewHelper::DSL
+    #   include Primer::ViewHelper::Dsl
     #   view_helper :my_component
     # end
-    module DSL
+    module Dsl
       extend ActiveSupport::Concern
 
       class ViewHelperAlreadyDefined < StandardError; end
