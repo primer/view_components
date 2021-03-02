@@ -1,6 +1,8 @@
 # CHANGELOG
 
 ## main
+  
+## 0.0.24
 
 * Fix zeitwerk autoload integration.
 
