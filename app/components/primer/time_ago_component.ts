@@ -1,1 +1,1 @@
-import {TimeAgoElement} from '@github/time-elements'
+import '@github/time-elements'
