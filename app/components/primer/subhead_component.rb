@@ -3,41 +3,72 @@
 module Primer
   # Use the Subhead component for page headings.
   class SubheadComponent < Primer::Component
-    include ViewComponent::Slotable
+    include ViewComponent::SlotableV2
 
-    with_slot :heading, class_name: "Heading"
-    with_slot :actions, class_name: "Actions"
-    with_slot :description, class_name: "Description"
+    # The heading
+    #
+    # @param danger [Boolean] Whether to style the heading as dangerous.
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    renders_one :heading, lambda { |danger: false, **system_arguments|
+      system_arguments[:tag] ||= :div
+      system_arguments[:classes] = class_names(
+        system_arguments[:classes],
+        "Subhead-heading",
+        "Subhead-heading--danger": danger
+      )
 
-    # @example auto|Default
+      Primer::BaseComponent.new(**system_arguments)
+    }
+
+    # Actions
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    renders_one :actions, lambda { |**system_arguments|
+      system_arguments[:tag] = :div
+      system_arguments[:classes] = class_names(system_arguments[:classes], "Subhead-actions")
+
+      Primer::BaseComponent.new(**system_arguments)
+    }
+
+    # The description
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    renders_one :description, lambda { |**system_arguments|
+      system_arguments[:tag] = :div
+      system_arguments[:classes] = class_names(system_arguments[:classes], "Subhead-description")
+
+      Primer::BaseComponent.new(**system_arguments)
+    }
+
+    # @example Default
     #   <%= render(Primer::SubheadComponent.new) do |component| %>
-    #     <% component.slot(:heading) do %>
+    #     <% component.heading do %>
     #       My Heading
     #     <% end %>
-    #     <% component.slot(:description) do %>
+    #     <% component.description do %>
     #       My Description
     #     <% end %>
     #   <% end %>
     #
-    # @example auto|Without border
+    # @example Without border
     #   <%= render(Primer::SubheadComponent.new(hide_border: true)) do |component| %>
-    #     <% component.slot(:heading) do %>
+    #     <% component.heading do %>
     #       My Heading
     #     <% end %>
-    #     <% component.slot(:description) do %>
+    #     <% component.description do %>
     #       My Description
     #     <% end %>
     #   <% end %>
     #
-    # @example auto|With actions
+    # @example With actions
     #   <%= render(Primer::SubheadComponent.new) do |component| %>
-    #     <% component.slot(:heading) do %>
+    #     <% component.heading do %>
     #       My Heading
     #     <% end %>
-    #     <% component.slot(:description) do %>
+    #     <% component.description do %>
     #       My Description
     #     <% end %>
-    #     <% component.slot(:actions) do %>
+    #     <% component.actions do %>
     #       <%= render(
     #         Primer::ButtonComponent.new(
     #           tag: :a, href: "http://www.google.com", button_type: :danger
@@ -65,53 +96,6 @@ module Primer
 
     def render?
       heading.present?
-    end
-
-    # :nodoc:
-    class Heading < ViewComponent::Slot
-      include ClassNameHelper
-
-      attr_reader :system_arguments
-
-      # @param danger [Boolean] Whether to style the heading as dangerous.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(danger: false, **system_arguments)
-        @system_arguments = system_arguments
-        @system_arguments[:tag] ||= :div
-        @system_arguments[:classes] = class_names(
-          @system_arguments[:classes],
-          "Subhead-heading",
-          "Subhead-heading--danger": danger
-        )
-      end
-    end
-
-    # :nodoc:
-    class Actions < ViewComponent::Slot
-      include ClassNameHelper
-
-      attr_reader :system_arguments
-
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**system_arguments)
-        @system_arguments = system_arguments
-        @system_arguments[:tag] = :div
-        @system_arguments[:classes] = class_names(@system_arguments[:classes], "Subhead-actions")
-      end
-    end
-
-    # :nodoc:
-    class Description < ViewComponent::Slot
-      include ClassNameHelper
-
-      attr_reader :system_arguments
-
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**system_arguments)
-        @system_arguments = system_arguments
-        @system_arguments[:tag] = :div
-        @system_arguments[:classes] = class_names(@system_arguments[:classes], "Subhead-description")
-      end
     end
   end
 end

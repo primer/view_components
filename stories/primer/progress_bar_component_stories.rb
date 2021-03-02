@@ -9,7 +9,7 @@ class Primer::ProgressBarComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |component|
-      component.slot(:item, bg: :green, percentage: 10)
+      component.item(bg: :green, percentage: 10)
     end
   end
 end

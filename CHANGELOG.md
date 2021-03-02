@@ -1,10 +1,51 @@
 # CHANGELOG
 
 ## main
+  
+## 0.0.24
+
+* Fix zeitwerk autoload integration.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Upgrade `ProgressBarComponent` to use Slots V2.
+
+  *Simon Taranto*
+
+* **Breaking change**: Upgrade `BreadcrumbComponent` to use Slots V2.
+
+    *Manuel Puyol*
+
+## 0.0.23
+
+* Remove node and yarn version requirements from `@primer/view-components`.
+
+  *Manuel Puyol*
+
+* **Breaking change**: Upgrade `SubheadComponent` to use Slots V2.
+
+    *Simon Taranto*
+
+* **Breaking change**: Update `LabelComponent` to use only functional color
+  supportive scheme keys. The component no longer accepts colors (`:gray`, for
+  example) but only functional schemes (`primary`, for example).
+  `LabelComponent` is promoted to beta status.
+
+  *Simon Taranto*
+
+## 0.0.22
+
+* Add view helpers to easily render Primer components.
+
+    *Manuel Puyol*
 
 * Add `TabContainer` and `TabNav` components.
 
     *Manuel Puyol*
+
+* Promote `StateComponent` to beta.
+
+    *Simon Taranto*
 
 * **Breaking change**: Upgrade `BorderBoxComponent` to use Slots V2.
 

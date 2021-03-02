@@ -7,13 +7,13 @@ module Primer
   class AvatarComponent < Primer::Component
     SMALL_THRESHOLD = 24
 
-    # @example auto|Default
+    # @example Default
     #   <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
     #
-    # @example auto|Square
+    # @example Square
     #   <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", square: true)) %>
     #
-    # @example auto|Link
+    # @example Link
     #   <%= render(Primer::AvatarComponent.new(href: "#", src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
     #
     # @param src [String] The source url of the avatar image.

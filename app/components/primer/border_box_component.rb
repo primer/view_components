@@ -57,7 +57,7 @@ module Primer
       Primer::BaseComponent.new(**system_arguments)
     }
 
-    # @example auto|Header, body, rows, and footer
+    # @example Header, body, rows, and footer
     #   <%= render(Primer::BorderBoxComponent.new) do |component| %>
     #     <% component.header do %>
     #       Header

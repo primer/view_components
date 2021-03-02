@@ -5,8 +5,8 @@ class Primer::BreadcrumbComponentStories < ViewComponent::Storybook::Stories
 
   story(:breadcrumb) do
     content do |component|
-      component.slot(:item, selected: false) { "Breadcrumb Item one" }
-      component.slot(:item, href: "https://github.com/") { "Breadcrumb Item two" }
+      component.item(selected: false) { "Breadcrumb Item one" }
+      component.item(href: "https://github.com/") { "Breadcrumb Item two" }
     end
   end
 end

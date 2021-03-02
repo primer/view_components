@@ -1591,10 +1591,10 @@
     react-is "16.10.2"
     styled-system "5.1.2"
 
-"@primer/gatsby-theme-doctocat@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@primer/gatsby-theme-doctocat/-/gatsby-theme-doctocat-1.4.0.tgz#15435d2ea37fd012d1d7bb66c4fb9cac03c0cd82"
-  integrity sha512-NvkH762Hj+ZNXXqlCYgn0F6rAQQvQegTtOKBzRaUwjpbQylyjpW5BrPJuFARPQcwJmIqUkgWjy13xBRNhIZyrQ==
+"@primer/gatsby-theme-doctocat@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@primer/gatsby-theme-doctocat/-/gatsby-theme-doctocat-1.5.0.tgz#9002125695ac6eeadae4adcc8532c1c1f22ac5bf"
+  integrity sha512-PzmiuNKnkkO7dSnHhDJejVzHFGEtzyEUq3P7H/6bp6yGEZIEr7ATGRGQXnpoVMae4r0HhK5LR8idnSqJGbNtKA==
   dependencies:
     "@babel/preset-env" "^7.5.5"
     "@babel/preset-react" "^7.0.0"

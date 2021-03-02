@@ -5,9 +5,13 @@ module Primer
     module VERSION
       MAJOR = 0
       MINOR = 0
-      PATCH = 21
+      PATCH = 24
 
       STRING = [MAJOR, MINOR, PATCH].join(".")
     end
   end
 end
+
+# rubocop:disable Rails/Output
+puts Primer::ViewComponents::VERSION::STRING if __FILE__ == $PROGRAM_NAME
+# rubocop:enable Rails/Output
