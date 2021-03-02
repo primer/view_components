@@ -36,11 +36,20 @@ Use labels to add contextual metadata to a design.
 <%= render(Primer::LabelComponent.new(title: "Label: Label", variant: :large)) { "Large" } %>
 ```
 
+### Deprecated schemes
+
+<Example src="<span title='Label: Label' class='Label Label--orange '>Orange</span><span title='Label: Label' class='Label Label--purple '>Purple</span>" />
+
+```erb
+<%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :orange)) { "Orange" } %>
+<%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :purple)) { "Purple" } %>
+```
+
 ## Arguments
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `title` | `String` | N/A | `title` attribute for the component element. |
-| `scheme` | `Symbol` | `nil` | One of `:primary`, `:secondary`, `:info`, `:success`, `:warning`, or `:danger`. |
+| `scheme` | `Symbol` | `nil` | One of `:primary`, `:secondary`, `:info`, `:success`, `:warning`, `:danger`, `:orange`, or `:purple`. |
 | `variant` | `Symbol` | `nil` | One of `:large`, `:inline`, or `nil`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

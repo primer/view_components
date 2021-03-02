@@ -9,9 +9,11 @@ module Primer
       info: "Label--info",
       success: "Label--success",
       warning: "Label--warning",
-      danger: "Label--danger"
+      danger: "Label--danger",
+      # deprecated
+      orange: "Label--orange",
+      purple: "Label--purple"
     }.freeze
-
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys << nil
 
     VARIANT_MAPPINGS = {
@@ -32,6 +34,10 @@ module Primer
     # @example Variants
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", variant: :large)) { "Large" } %>
+    #
+    # @example Deprecated schemes
+    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :orange)) { "Orange" } %>
+    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :purple)) { "Purple" } %>
     #
     # @param title [String] `title` attribute for the component element.
     # @param scheme [Symbol] <%= one_of(Primer::LabelComponent::SCHEME_MAPPINGS.keys) %>
