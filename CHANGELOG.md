@@ -2,6 +2,10 @@
 
 ## main
 
+* Promote `BlankslateComponent` and `BaseComponent` to beta status.
+
+    *Simon Taranto*
+
 ## 0.0.25
 
 * Promote `SubheadComponent` to beta.
