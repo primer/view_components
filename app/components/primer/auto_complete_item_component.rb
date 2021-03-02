@@ -5,8 +5,8 @@ module Primer
   class AutoCompleteItemComponent < Primer::Component
     include ViewComponent::SlotableV2
 
-    # @example 25|Default
-    #   <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value)) do |c| %>
+    # @example Default
+    #   <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
     #     Option
     #   <% end %>
     #

@@ -35,19 +35,19 @@ module Primer
       Primer::BaseComponent.new(**system_arguments)
     }
 
-    # @example 100|Default
-    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", for: "user-popup")) do |c| %>
+    # @example Default
+    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup")) do |c| %>
     #     <% c.input(type: :text, name: "username") %>
     #   <% end %>
     #
-    # @example 100|With custom classes for the results
-    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", for: "user-popup")) do |c| %>
+    # @example With custom classes for the results
+    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup")) do |c| %>
     #     <% c.input(type: :text, name: "username") %>
     #     <% c.results(classes: "my-custom-class") %>
     #   <% end %>
     #
-    # @example 100|With Icon
-    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", for: "user-popup")) do |c| %>
+    # @example With Icon
+    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup")) do |c| %>
     #     <% c.input(type: :text, name: "username") %>
     #     <% c.icon(icon: :search) %>
     #   <% end %>
