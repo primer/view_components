@@ -5,27 +5,36 @@ module Primer
   # underlined selected state, typically used for navigation placed at the top
   # of the page.
   class UnderlineNavComponent < Primer::Component
+    include ViewComponent::SlotableV2
+
     ALIGN_DEFAULT = :left
     ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
 
-    with_content_areas :body, :actions
+    renders_one :body, lambda { |**system_arguments|
+      Primer::BaseComponent.new(tag: :ul, classes: "UnderlineNav-body list-style-none") { content }
+    }
+
+    renders_one :actions, lambda { |**system_arguments|
+      system_arguments[:tag] ||= :span
+      Primer::BaseComponent.new(**system_arguments) { content }
+    }
 
     # @example Default
     #   <%= render(Primer::UnderlineNavComponent.new) do |component| %>
-    #     <% component.with(:body) do %>
+    #     <% component.body do %>
     #       <%= render(Primer::LinkComponent.new(href: "#url")) { "Item 1" } %>
     #     <% end %>
-    #     <% component.with(:actions) do %>
+    #     <% component.actions do %>
     #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
     #     <% end %>
     #   <% end %>
     #
     # @example Align right
     #   <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>
-    #     <% component.with(:body) do %>
+    #     <% component.body do %>
     #       <%= render(Primer::LinkComponent.new(href: "#url")) { "Item 1" } %>
     #     <% end %>
-    #     <% component.with(:actions) do %>
+    #     <% component.actions do %>
     #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
     #     <% end %>
     #   <% end %>
