@@ -3,12 +3,11 @@
 module Primer
   # Use Primer::TimeAgoComponent to display a time relative to how long ago it was. This component requires JavaScript.
   class TimeAgoComponent < Primer::Component
-
     #
     # @example auto|Default
     #   <%= render(Primer::TimeAgoComponent.new(time: Time.zone.now)) %>
     #
-    # @param time [Time] The time to be formatted 
+    # @param time [Time] The time to be formatted
     # @param micro [Boolean] If true then the text will be formatted in "micro" mode, using as few characters as possible
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(time:, micro: false, **system_arguments)
