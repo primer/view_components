@@ -1,5 +1,7 @@
-class CounterComponentPreview < ViewComponent::Preview
-  def default
-    render(Primer::CounterComponent.new(count: 2))
+module Primer
+  class CounterComponentPreview < ViewComponent::Preview
+    def default
+      render(Primer::CounterComponent.new(count: 2))
+    end
   end
 end

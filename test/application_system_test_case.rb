@@ -13,6 +13,6 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   def with_preview(preview_name)
     component_uri = self.class.name.gsub("Test", "").gsub("Integration", "").underscore
 
-    visit("/rails/view_components/#{component_uri}/#{preview_name}")
+    visit("/rails/view_components/primer/#{component_uri}/#{preview_name}")
   end
 end
