@@ -25,11 +25,9 @@ module Primer
 
       if @side == :left
         system_arguments[:mb] = (@responsive ? [4, nil, 0] : nil)
-
-        Primer::BaseComponent.new(tag: :div, **system_arguments)
-      else
-        Primer::BaseComponent.new(tag: :div, **system_arguments)
       end
+
+      Primer::BaseComponent.new(tag: :div, **system_arguments)
     }
 
     DEFAULT_SIDE = :right
