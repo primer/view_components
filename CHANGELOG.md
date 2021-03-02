@@ -2,6 +2,10 @@
 
 ## main
 
+* **Breaking change**: Updates `UnderlineNavComponent` to use Slots V2.
+
+    *Simon Taranto*
+
 * Promote `BlankslateComponent` and `BaseComponent` to beta status.
 
     *Simon Taranto*
