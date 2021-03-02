@@ -68,4 +68,8 @@ class SubheadComponentTest < Minitest::Test
 
     assert_selector(".Subhead .Subhead-description", text: "My Description")
   end
+
+  def test_status
+    assert_component_state(Primer::SubheadComponent, :beta)
+  end
 end
