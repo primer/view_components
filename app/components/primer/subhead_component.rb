@@ -97,5 +97,9 @@ module Primer
     def render?
       heading.present?
     end
+
+    def self.status
+      Primer::Component::STATUSES[:beta]
+    end
   end
 end
