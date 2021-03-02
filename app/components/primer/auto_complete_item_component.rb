@@ -7,7 +7,10 @@ module Primer
 
     # @example Default
     #   <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
-    #     Option
+    #     Selected
+    #   <% end %>
+    #   <%= render(Primer::AutoCompleteItemComponent.new(value: "value")) do |c| %>
+    #     Not selected
     #   <% end %>
     #
     # @param value [String] Value of the item.

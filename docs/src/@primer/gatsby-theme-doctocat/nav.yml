@@ -8,6 +8,10 @@
 - title: Components
   url: /components
   children:
+    - title: AutoComplete
+      url: /components/autocomplete
+    - title: AutoCompleteItem
+      url: /components/autocompleteitem
     - title: Avatar
       url: /components/avatar
     - title: AvatarStack

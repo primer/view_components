@@ -36,20 +36,43 @@ module Primer
     }
 
     # @example Default
-    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup")) do |c| %>
-    #     <% c.input(type: :text, name: "username") %>
+    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
+    #     <% c.input(type: :text, name: "input", classes: "form-control") %>
+    #     <% c.results do %>
+    #       <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
+    #         Selected
+    #       <% end %>
+    #       <%= render(Primer::AutoCompleteItemComponent.new(value: "value")) do |c| %>
+    #         Not selected
+    #       <% end %>
+    #     <% end %>
     #   <% end %>
     #
     # @example With custom classes for the results
-    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup")) do |c| %>
-    #     <% c.input(type: :text, name: "username") %>
-    #     <% c.results(classes: "my-custom-class") %>
+    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
+    #     <% c.input(type: :text, name: "input", classes: "form-control") %>
+    #     <% c.results(classes: "my-custom-class") do %>
+    #       <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
+    #         Selected
+    #       <% end %>
+    #       <%= render(Primer::AutoCompleteItemComponent.new(value: "value")) do |c| %>
+    #         Not selected
+    #       <% end %>
+    #     <% end %>
     #   <% end %>
     #
     # @example With Icon
-    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup")) do |c| %>
-    #     <% c.input(type: :text, name: "username") %>
+    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
+    #     <% c.input(type: :text, name: "input", classes: "form-control") %>
     #     <% c.icon(icon: :search) %>
+    #     <% c.results do %>
+    #       <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
+    #         Selected
+    #       <% end %>
+    #       <%= render(Primer::AutoCompleteItemComponent.new(value: "value")) do |c| %>
+    #         Not selected
+    #       <% end %>
+    #     <% end %>
     #   <% end %>
     #
     # @param src [String] The route to query.

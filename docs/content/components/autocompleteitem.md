@@ -15,11 +15,14 @@ Use AutoCompleteItem to list results of an auto-completed search.
 
 ### Default
 
-<Example src="<li role='option' data-autocomplete-value='value' aria-selected='true' class='autocomplete-item '>  Option</li>" />
+<Example src="<li role='option' data-autocomplete-value='value' aria-selected='true' class='autocomplete-item '>  Selected</li><li role='option' data-autocomplete-value='value' class='autocomplete-item '>  Not selected</li>" />
 
 ```erb
 <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
-  Option
+  Selected
+<% end %>
+<%= render(Primer::AutoCompleteItemComponent.new(value: "value")) do |c| %>
+  Not selected
 <% end %>
 ```
 
