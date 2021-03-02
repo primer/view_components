@@ -2,7 +2,10 @@
 title: Subhead
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/subhead_component.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-subhead-component
 ---
+
+import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -12,14 +15,14 @@ Use the Subhead component for page headings.
 
 ### Default
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='Subhead hx_Subhead--responsive '>    <div class='Subhead-heading '>      My Heading</div>    <div class='Subhead-description '>      My Description</div></div></body></html>"></iframe>
+<Example src="<div class='Subhead hx_Subhead--responsive '>  <div class='Subhead-heading '>    My Heading</div>    <div class='Subhead-description '>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>
-  <% component.slot(:heading) do %>
+  <% component.heading do %>
     My Heading
   <% end %>
-  <% component.slot(:description) do %>
+  <% component.description do %>
     My Description
   <% end %>
 <% end %>
@@ -27,14 +30,14 @@ Use the Subhead component for page headings.
 
 ### Without border
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='Subhead hx_Subhead--responsive border-bottom-0 mb-0'>    <div class='Subhead-heading '>      My Heading</div>    <div class='Subhead-description '>      My Description</div></div></body></html>"></iframe>
+<Example src="<div class='Subhead hx_Subhead--responsive border-bottom-0 mb-0'>  <div class='Subhead-heading '>    My Heading</div>    <div class='Subhead-description '>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new(hide_border: true)) do |component| %>
-  <% component.slot(:heading) do %>
+  <% component.heading do %>
     My Heading
   <% end %>
-  <% component.slot(:description) do %>
+  <% component.description do %>
     My Description
   <% end %>
 <% end %>
@@ -42,17 +45,17 @@ Use the Subhead component for page headings.
 
 ### With actions
 
-<iframe onLoad={(e) => e.target.style.height = e.target.contentWindow.document.body.scrollHeight + 34 + 'px'} style="width: 100%; border: 0px;" srcdoc="<html class='Box height-full p-3'><head><link href='https://unpkg.com/@primer/css/dist/primer.css' rel='stylesheet'></head><body><div class='Subhead hx_Subhead--responsive '>    <div class='Subhead-heading '>      My Heading</div>    <div class='Subhead-actions '>      <a href='http://www.google.com' role='button' class='btn btn-danger '>Action</a></div>    <div class='Subhead-description '>      My Description</div></div></body></html>"></iframe>
+<Example src="<div class='Subhead hx_Subhead--responsive '>  <div class='Subhead-heading '>    My Heading</div>  <div class='Subhead-actions '>    <a href='http://www.google.com' role='button' class='btn btn-danger '>Action</a></div>  <div class='Subhead-description '>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>
-  <% component.slot(:heading) do %>
+  <% component.heading do %>
     My Heading
   <% end %>
-  <% component.slot(:description) do %>
+  <% component.description do %>
     My Description
   <% end %>
-  <% component.slot(:actions) do %>
+  <% component.actions do %>
     <%= render(
       Primer::ButtonComponent.new(
         tag: :a, href: "http://www.google.com", button_type: :danger
@@ -70,20 +73,28 @@ Use the Subhead component for page headings.
 | `hide_border` | `Boolean` | `false` | Whether to hide the border under the heading. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `heading` slot
+## Slots
+
+### `Heading`
+
+The heading
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `danger` | `Boolean` | `false` | Whether to style the heading as dangerous. |
+| `danger` | `Boolean` | N/A | Whether to style the heading as dangerous. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `actions` slot
+### `Actions`
+
+Actions
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `description` slot
+### `Description`
+
+The description
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |

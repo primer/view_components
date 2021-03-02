@@ -18,7 +18,7 @@ gem "webpacker", "~> 5.0"
 gem "bootsnap", ">= 1.4.2", require: false
 
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
-gem "view_component_storybook", "0.6.0"
+gem "view_component_storybook", "~> 0.8.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -35,4 +35,6 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", "~> 3"
+
+  gem "cuprite", "0.11"
 end

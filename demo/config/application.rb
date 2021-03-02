@@ -8,6 +8,7 @@ require "sprockets/railtie"
 require "rails/test_unit/railtie"
 require "view_component/engine"
 require "view_component/storybook/engine"
+require "primer/view_components/engine"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -15,8 +16,12 @@ Bundler.require(*Rails.groups)
 
 module Demo
   class Application < Rails::Application
+    config.load_defaults 6.0 if Rails.version.to_i >= 6
+
     # Initialize configuration defaults for originally generated Rails version.
     config.view_component_storybook.show_stories = true
+    config.view_component.show_previews = true
+
     config.action_dispatch.default_headers.clear
 
     config.action_dispatch.default_headers = {

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "dropdown/menu_component"
-
 module Primer
   # Dropdowns are lightweight context menus for housing navigation and actions.
   # They're great for instances where you don't need the full power (and code) of the select menu.
@@ -20,8 +18,8 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :menu, Primer::Dropdown::MenuComponent
 
-    # @example 210|Default
-    #   <div style="margin-bottom: 150px">
+    # @example Default
+    #   <div>
     #     <%= render(Primer::DropdownComponent.new) do |c| %>
     #       <% c.button do %>
     #         Dropdown
@@ -37,8 +35,8 @@ module Primer
     #     <% end %>
     #   </div>
     #
-    # @example 210|With Direction
-    #   <div style="margin-bottom: 150px" class="d-flex flex-justify-center">
+    # @example With Direction
+    #   <div>
     #     <%= render(Primer::DropdownComponent.new) do |c| %>
     #       <% c.button do %>
     #         Dropdown

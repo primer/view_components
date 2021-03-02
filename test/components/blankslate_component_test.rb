@@ -29,7 +29,7 @@ class BlankslateComponentTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_a_spinner_component
     render_inline(Primer::BlankslateComponent.new(title: "Title")) do |component|
-      component.slot(:spinner, test_selector: "blankslate-spinner")
+      component.spinner(test_selector: "blankslate-spinner")
     end
 
     assert_selector(".blankslate [data-test-selector='blankslate-spinner']")
@@ -69,12 +69,12 @@ class BlankslateComponentTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_an_image
     render_inline(Primer::BlankslateComponent.new(
-                    image_src: "file.svg",
+                    image_src: "/some_image",
                     image_alt: "Alt text",
                     title: "Title"
                   ))
 
-    assert_selector(".blankslate > img[src$='file.svg']")
+    assert_selector(".blankslate > img[src$='/some_image']")
     assert_selector(".blankslate > img[alt='Alt text']")
   end
 

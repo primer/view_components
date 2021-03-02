@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "octicons_helper/helper"
+
 module Primer
   # @private
   class Component < ViewComponent::Base
@@ -7,6 +9,8 @@ module Primer
     include FetchOrFallbackHelper
     include OcticonsHelper
     include JoinStyleArgumentsHelper
+    include ViewHelper::Dsl
+    include ViewHelper
 
     # sourced from https://primer.style/doctocat/usage/front-matter#status
     STATUSES = {

@@ -9,9 +9,9 @@ class Primer::TimelineItemComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |component|
-      component.slot(:avatar, src: "https://github.com/github.png", alt: "github")
-      component.slot(:badge, bg: :green, color: :white, icon: :check)
-      component.slot(:body) { "Success" }
+      component.avatar(src: "https://github.com/github.png", alt: "github")
+      component.badge(bg: :green, color: :white, icon: :check)
+      component.body { "Success" }
     end
   end
 end

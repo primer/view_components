@@ -7,20 +7,20 @@ module Primer
   class AvatarComponent < Primer::Component
     SMALL_THRESHOLD = 24
 
-    # @example auto|Default
+    # @example Default
     #   <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
     #
-    # @example auto|Square
+    # @example Square
     #   <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", square: true)) %>
     #
-    # @example auto|Link
+    # @example Link
     #   <%= render(Primer::AvatarComponent.new(href: "#", src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
     #
-    # @param src [String] The source url of the avatar image
-    # @param alt [String] Passed through to alt on img tag
-    # @param size [Integer] Adds the avatar-small class if less than 24
+    # @param src [String] The source url of the avatar image.
+    # @param alt [String] Passed through to alt on img tag.
+    # @param size [Integer] Adds the avatar-small class if less than 24.
     # @param square [Boolean] Used to create a square avatar.
-    # @param href [String] The URL to link to. If used, component will be wrapped by an `<a>` tag
+    # @param href [String] The URL to link to. If used, component will be wrapped by an `<a>` tag.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(src:, alt:, size: 20, square: false, href: nil, **system_arguments)
       @href = href

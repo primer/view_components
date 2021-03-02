@@ -13,16 +13,16 @@ class PrimerComponentTest < Minitest::Test
     end],
     [Primer::BaseComponent, { tag: :div }],
     [Primer::BlankslateComponent, { title: "Foo" }],
-    [Primer::BorderBoxComponent, {}, proc { |component| component.slot(:header) { "Foo" } }],
+    [Primer::BorderBoxComponent, {}, proc { |component| component.header { "Foo" } }],
     [Primer::BoxComponent, {}],
-    [Primer::BreadcrumbComponent, {}, proc { |component| component.slot(:item) { "Foo" } }],
+    [Primer::BreadcrumbComponent, {}, proc { |component| component.item { "Foo" } }],
     [Primer::ButtonComponent, {}],
     [Primer::ButtonGroupComponent, {}, proc { |component| component.button { "Button" } }],
     [Primer::ButtonMarketingComponent, {}],
     [Primer::CounterComponent, { count: 1 }],
     [Primer::DetailsComponent, {}, lambda do |component|
-      component.slot(:summary) { "Foo" }
-      component.slot(:body) { "Bar" }
+      component.summary { "Foo" }
+      component.body { "Bar" }
     end],
     [Primer::DropdownComponent, {}, lambda do |component|
       component.button { "Foo" }
@@ -43,13 +43,15 @@ class PrimerComponentTest < Minitest::Test
     [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],
     [Primer::OcticonComponent, { icon: "people" }],
     [Primer::PopoverComponent, {}, proc { |component| component.slot(:body) }],
-    [Primer::ProgressBarComponent, {}, proc { |component| component.slot(:item) }],
+    [Primer::ProgressBarComponent, {}, proc { |component| component.item }],
     [Primer::SpinnerComponent, {}],
     [Primer::StateComponent, { title: "Open" }],
-    [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.slot(:heading) { "Foo" } }],
+    [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.heading { "Foo" } }],
+    [Primer::TabContainerComponent, {}, proc { "Foo" }],
+    [Primer::TabNavComponent, {}, proc { |c| c.tab(title: "Foo", selected: true) }],
     [Primer::TextComponent, {}],
     [Primer::TruncateComponent, {}],
-    [Primer::TimelineItemComponent, {}, proc { |component| component.slot(:body) { "Foo" } }],
+    [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::TooltipComponent, { label: "More" }],
     [Primer::UnderlineNavComponent, {}]
   ].freeze
@@ -61,28 +63,43 @@ class PrimerComponentTest < Minitest::Test
     assert_equal primer_component_files_count, COMPONENTS_WITH_ARGS.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"
   end
 
-  def test_primer_components_provide_a_consistent_interface
+  def test_all_components_support_system_arguments
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
-      # component renders hash arguments
       render_component(component, { my: 4 }.merge(args), proc)
       assert_selector(".my-4")
+    end
+  end
 
-      # component passes through class_names
+  def test_all_components_pass_through_classes
+    COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, { classes: "foo" }.merge(args), proc)
       assert_selector(".foo")
+    end
+  end
 
-      # component supports inline styles
+  def test_all_components_support_inline_styles
+    COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, { style: "width: 100%;" }.merge(args), proc)
       assert_selector("[style='width: 100%;']")
+    end
+  end
 
-      # component supports basic content_tag arguments
+  def test_all_components_support_content_tag_arguments
+    COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, { hidden: true }.merge(args), proc)
       assert_selector("[hidden]", visible: false)
+    end
+  end
 
+  def test_all_components_support_data_tag_arguments
+    COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, { "data-ga-click": "Foo,bar" }.merge(args), proc)
       assert_selector("[data-ga-click='Foo,bar']", visible: false)
+    end
+  end
 
-      # Ensure all slots accept Primer system_arguments
+  def test_all_slots_support_system_arguments
+    COMPONENTS_WITH_ARGS.each do |component, args|
       next unless component.respond_to?(:slots) && component.slots.any?
 
       result = render_inline(component.new(**args)) do |c|
