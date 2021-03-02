@@ -79,13 +79,11 @@ jobs:
       with:
         path: vendor/bundle
         key: gems-build-stories-ruby-2.7-${{ hashFiles('**/Gemfile.lock') }}
-    - name: Build gem
+    - name: Build and test
       run: |
         gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle update
-    - name: Build demo and run stories
-      run: |
         cd demo
         bundle config path vendor/bundle
         bundle bundle update
