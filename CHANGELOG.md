@@ -6,6 +6,12 @@
 
     *Simon Taranto*
 
+## 0.0.25
+
+* Promote `SubheadComponent` to beta.
+
+    *Simon Taranto*
+
 * Add deprecated `orange` and `purple` schemes to `LabelComponent`.
 
     *Manuel Puyol*
@@ -18,7 +24,7 @@
 
 * **Breaking change**: Upgrade `ProgressBarComponent` to use Slots V2.
 
-  *Simon Taranto*
+    *Simon Taranto*
 
 * **Breaking change**: Upgrade `BreadcrumbComponent` to use Slots V2.
 
