@@ -10,10 +10,16 @@ module Primer
     ALIGN_DEFAULT = :left
     ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
 
+    #  Use the body for the navigation items
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :body, lambda { |**system_arguments|
       Primer::BaseComponent.new(tag: :ul, classes: "UnderlineNav-body list-style-none") { content }
     }
 
+    #  Use actions for a call to action
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :actions, lambda { |**system_arguments|
       system_arguments[:tag] ||= :span
       Primer::BaseComponent.new(**system_arguments) { content }
