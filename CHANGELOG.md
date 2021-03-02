@@ -5,7 +5,11 @@
 * Promote `BlankslateComponent` and `BaseComponent` to beta status.
 
     *Simon Taranto*
-  
+
+* Add deprecated `orange` and `purple` schemes to `LabelComponent`.
+
+    *Manuel Puyol*
+
 ## 0.0.24
 
 * Fix zeitwerk autoload integration.
