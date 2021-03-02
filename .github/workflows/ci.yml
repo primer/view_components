@@ -84,12 +84,9 @@ jobs:
         gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle update
-    - name: Build demo and run stories
-      run: |
         cd demo
-        gem install bundler:2.2.9
         bundle config path vendor/bundle
-        bundle bundle update
+        bundle update
         bin/rails view_component_storybook:write_stories_json
   test:
     needs: lint
