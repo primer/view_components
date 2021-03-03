@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.26
+
 * Fix `DetailsComponent` summary always being rendered as a `btn`.
 
     *Manuel Puyol*
