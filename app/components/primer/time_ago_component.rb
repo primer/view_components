@@ -5,7 +5,7 @@ module Primer
   class TimeAgoComponent < Primer::Component
     #
     # @example auto|Default
-    #   <%= render(Primer::TimeAgoComponent.new(time: Time.zone.now)) %>
+    #   <%= render(Primer::TimeAgoComponent.new(time: Time.at(628232400))) %>
     #
     # @param time [Time] The time to be formatted
     # @param micro [Boolean] If true then the text will be formatted in "micro" mode, using as few characters as possible
