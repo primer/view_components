@@ -17,7 +17,7 @@ Use Primer::TimeAgoComponent to display a time relative to how long ago it was. 
 
 Default
 
-<Example src="<time-ago datetime='2021-03-03T16:53:55Z' class='no-wrap '>Mar 3, 2021</time-ago>" />
+<Example src="<time-ago datetime='2021-03-03T17:45:54Z' class='no-wrap '>Mar 3, 2021</time-ago>" />
 
 ```erb
 <%= render(Primer::TimeAgoComponent.new(time: Time.zone.now)) %>
