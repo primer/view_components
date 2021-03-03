@@ -2,6 +2,16 @@
 
 ## main
 
+* **Breaking change**: Upgrade `LayoutComponent` to use Slots V2.
+
+    *Simon Taranto*
+
+## 0.0.26
+
+* Fix `DetailsComponent` summary always being rendered as a `btn`.
+
+    *Manuel Puyol*
+
 * Promote `BlankslateComponent` and `BaseComponent` to beta status.
 
     *Simon Taranto*

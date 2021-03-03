@@ -11,8 +11,8 @@ class Primer::LayoutComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |component|
-      component.with(:main) { "Main" }
-      component.with(:sidebar) { "Sidebar" }
+      component.main { "Main" }
+      component.sidebar { "Sidebar" }
     end
   end
 end
