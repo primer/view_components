@@ -17,7 +17,7 @@ of the page.
 
 ### Default
 
-<Example src="<nav class='UnderlineNav '>  <ul class='UnderlineNav-body list-style-none '>    <a href='#url'>Item 1</a></ul>    <span>    <button type='button' class='btn '>Button!</button></span></nav>" />
+<Example src="<nav class='UnderlineNav '>  <ul class='UnderlineNav-body list-style-none '>    <a href='#url'>Item 1</a></ul>    <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new) do |component| %>
@@ -32,7 +32,7 @@ of the page.
 
 ### Align right
 
-<Example src="<nav class='UnderlineNav UnderlineNav--right '>    <span>    <button type='button' class='btn '>Button!</button></span>  <ul class='UnderlineNav-body list-style-none '>    <a href='#url'>Item 1</a></ul></nav>" />
+<Example src="<nav class='UnderlineNav UnderlineNav--right '>    <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div>  <ul class='UnderlineNav-body list-style-none '>    <a href='#url'>Item 1</a></ul></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>
