@@ -18,6 +18,7 @@ class Primer::Status::DslTest < Minitest::Test
 
     assert_equal :beta, TestComponent.status
   end
+
   def test_raises_if_status_does_not_exist
     err = assert_raises Primer::Status::Dsl::UnknownStatusError do
       TestComponent.status :foo
