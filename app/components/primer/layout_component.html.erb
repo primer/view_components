@@ -1,17 +1,11 @@
 <%= render(Primer::FlexComponent.new(**@system_arguments)) do %>
   <% if @side == :left %>
-    <%= render Primer::BaseComponent.new(tag: :div, classes: "flex-shrink-0", col: (@responsive ? [12, nil, @sidebar_col] : @sidebar_col), mb: (@responsive ? [4, nil, 0] : nil)) do %>
-      <%= sidebar %>
-    <% end %>
+    <%= sidebar %>
   <% end %>
 
-  <%= render Primer::BaseComponent.new(tag: :div, classes: "flex-shrink-0", col: (@responsive ? [12, nil, @main_col] : @main_col), mb: (@responsive ? [4, nil, 0] : nil)) do %>
-    <%= main %>
-  <% end %>
+  <%= main %>
 
   <% if @side == :right %>
-    <%= render Primer::BaseComponent.new(tag: :div, classes: "flex-shrink-0", col: (@responsive ? [12, nil, @sidebar_col] : @sidebar_col)) do %>
-      <%= sidebar %>
-    <% end %>
+    <%= sidebar %>
   <% end %>
 <% end %>
