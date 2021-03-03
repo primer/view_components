@@ -2,10 +2,6 @@
 
 ## main
 
-* **Breaking change**: Upgrade `LayoutComponent` to use Slots V2.
-
-    *Simon Taranto*
-
 * Promote `BlankslateComponent` and `BaseComponent` to beta status.
 
     *Simon Taranto*
