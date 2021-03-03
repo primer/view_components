@@ -31,6 +31,18 @@ In `config/application.rb`, add **after the application definition**:
 require "primer/view_components/engine"
 ```
 
+To add the JavaScript behaviours, in your `application.html.erb` in the `<head>` tag add:
+
+```erb
+<%= javascript_include_tag("primer") %>
+```
+
+Or alternatively, you can install the `@primer/view-components` npm package and in your JavaScript code add:
+
+```js
+import '@primer/view-components'
+```
+
 ## Dependencies
 
 In addition to the dependencies declared in the `gemspec`, Primer ViewComponents assumes the presence of Primer CSS.
