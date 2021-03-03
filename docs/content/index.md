@@ -31,7 +31,7 @@ In `config/application.rb`, add **after the application definition**:
 require "primer/view_components/engine"
 ```
 
-To add the JavaScript behaviours, in your `application.html.erb` in the `<head>` tag add:
+Optionally, to add the JavaScript behaviours, in your `application.html.erb` in the `<head>` tag add:
 
 ```erb
 <%= javascript_include_tag("primer") %>
