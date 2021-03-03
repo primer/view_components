@@ -126,4 +126,8 @@ class BlankslateComponentTest < Minitest::Test
 
     assert_selector("a[href='https://docs.github.com']", text: "Link")
   end
+
+  def test_status
+    assert_component_state(Primer::BlankslateComponent, :beta)
+  end
 end
