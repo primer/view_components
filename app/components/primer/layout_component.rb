@@ -3,7 +3,32 @@
 module Primer
   # Use Layout to build a main/sidebar layout.
   class LayoutComponent < Primer::Component
-    with_content_areas :main, :sidebar
+    include ViewComponent::SlotableV2
+
+    # The main content
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    renders_one :main, lambda { |**system_arguments|
+      system_arguments[:classes] = class_names("flex-shrink-0", system_arguments[:classes])
+      system_arguments[:col] = (@responsive ? [12, nil, @main_col] : @main_col)
+      system_arguments[:mb] = (@responsive ? [4, nil, 0] : nil)
+
+      Primer::BaseComponent.new(tag: :div, **system_arguments)
+    }
+
+    # The sidebar content
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    renders_one :sidebar, lambda { |**system_arguments|
+      system_arguments[:classes] = class_names("flex-shrink-0", system_arguments[:classes])
+      system_arguments[:col] = (@responsive ? [12, nil, @sidebar_col] : @sidebar_col)
+
+      if @side == :left
+        system_arguments[:mb] = (@responsive ? [4, nil, 0] : nil)
+      end
+
+      Primer::BaseComponent.new(tag: :div, **system_arguments)
+    }
 
     DEFAULT_SIDE = :right
     ALLOWED_SIDES = [DEFAULT_SIDE, :left].freeze
@@ -14,14 +39,14 @@ module Primer
 
     # @example Default
     #   <%= render(Primer::LayoutComponent.new) do |component| %>
-    #     <% component.with(:sidebar) { "Sidebar" } %>
-    #     <% component.with(:main) { "Main" } %>
+    #     <% component.sidebar { "Sidebar" } %>
+    #     <% component.main { "Main" } %>
     #   <% end %>
     #
     # @example Left sidebar
     #   <%= render(Primer::LayoutComponent.new(side: :left)) do |component| %>
-    #     <% component.with(:sidebar) { "Sidebar" } %>
-    #     <% component.with(:main) { "Main" } %>
+    #     <% component.sidebar { "Sidebar" } %>
+    #     <% component.main { "Main" } %>
     #   <% end %>
     #
     # @param responsive [Boolean] Whether to collapse layout to a single column at smaller widths.
