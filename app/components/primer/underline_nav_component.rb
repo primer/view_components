@@ -5,27 +5,46 @@ module Primer
   # underlined selected state, typically used for navigation placed at the top
   # of the page.
   class UnderlineNavComponent < Primer::Component
+    include ViewComponent::SlotableV2
+
     ALIGN_DEFAULT = :left
     ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
 
-    with_content_areas :body, :actions
+    #  Use the body for the navigation items
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    renders_one :body, lambda { |**system_arguments|
+      system_arguments[:classes] = class_names("UnderlineNav-body", "list-style-none", system_arguments[:classes])
+      system_arguments[:tag] ||= :ul
+
+      Primer::BaseComponent.new(**system_arguments) { content }
+    }
+
+    #  Use actions for a call to action
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    renders_one :actions, lambda { |**system_arguments|
+      system_arguments[:tag] ||= :div
+      system_arguments[:classes] = class_names("UnderlineNav-actions", system_arguments[:classes])
+      Primer::BaseComponent.new(**system_arguments) { content }
+    }
 
     # @example Default
     #   <%= render(Primer::UnderlineNavComponent.new) do |component| %>
-    #     <% component.with(:body) do %>
+    #     <% component.body do %>
     #       <%= render(Primer::LinkComponent.new(href: "#url")) { "Item 1" } %>
     #     <% end %>
-    #     <% component.with(:actions) do %>
+    #     <% component.actions do %>
     #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
     #     <% end %>
     #   <% end %>
     #
     # @example Align right
     #   <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>
-    #     <% component.with(:body) do %>
+    #     <% component.body do %>
     #       <%= render(Primer::LinkComponent.new(href: "#url")) { "Item 1" } %>
     #     <% end %>
-    #     <% component.with(:actions) do %>
+    #     <% component.actions do %>
     #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
     #     <% end %>
     #   <% end %>
