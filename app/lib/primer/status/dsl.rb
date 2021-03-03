@@ -34,6 +34,7 @@ module Primer
           return component_status if status.nil?
 
           raise UnknownStatusError, "status #{status} does not exist" if STATUSES[status].nil?
+
           self.component_status = STATUSES[status]
         end
       end
