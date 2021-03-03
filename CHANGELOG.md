@@ -5,6 +5,10 @@
 * **Breaking change**: Upgrade `LayoutComponent` to use Slots V2.
 
     *Simon Taranto*
+    
+* Add `TimeAgo` component.
+
+    *Keith Cirkel*
 
 ## 0.0.26
 
@@ -15,10 +19,6 @@
 * Promote `BlankslateComponent` and `BaseComponent` to beta status.
 
     *Simon Taranto*
-
-* Add `TimeAgo` component.
-
-    *Keith Cirkel*
 
 ## 0.0.25
 
