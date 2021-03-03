@@ -14,7 +14,7 @@ module Primer
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :body, lambda { |**system_arguments|
-      system_arguments[:classes] = class_names("UnderlineNav-body list-style-none", system_arguments[:classes])
+      system_arguments[:classes] = class_names("UnderlineNav-body", "list-style-none", system_arguments[:classes])
 
       Primer::BaseComponent.new(tag: :ul, **system_arguments) { content }
     }
