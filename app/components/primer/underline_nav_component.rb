@@ -23,7 +23,8 @@ module Primer
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :actions, lambda { |**system_arguments|
-      system_arguments[:tag] ||= :span
+      system_arguments[:tag] ||= :div
+      system_arguments[:classes] = class_names("UnderlineNav-actions", system_arguments[:classes])
       Primer::BaseComponent.new(**system_arguments) { content }
     }
 
