@@ -2,6 +2,10 @@
 
 ## main
 
+* Fix `DetailsComponent` summary always being rendered as a `btn`.
+
+    *Manuel Puyol*
+
 * Promote `BlankslateComponent` and `BaseComponent` to beta status.
 
     *Simon Taranto*
