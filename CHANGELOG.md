@@ -2,6 +2,10 @@
 
 ## main
 
+* Fix `DetailsComponent` summary always being rendered as a `btn`.
+
+    *Manuel Puyol*
+
 * **Breaking change**: Upgrade `LayoutComponent` to use Slots V2.
 
     *Simon Taranto*

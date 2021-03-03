@@ -57,9 +57,23 @@ class PrimerDetailsComponentTest < Minitest::Test
     assert_selector("summary.btn")
   end
 
-  def test_falls_back_to_defaults_when_invalid_button_and_overlay_are_passed
+  def test_does_not_render_btn_if_button_false
+    render_inline(Primer::DetailsComponent.new) do |component|
+      component.summary(button: false) do
+        "Summary"
+      end
+      component.body do
+        "Body"
+      end
+    end
+
+    assert_selector("summary")
+    refute_selector(".btn")
+  end
+
+  def test_falls_back_to_defaults_when_invalid_overlay_is_passed
     without_fetch_or_fallback_raises do
-      render_inline(Primer::DetailsComponent.new(button: :foo, overlay: :bar)) do |component|
+      render_inline(Primer::DetailsComponent.new(overlay: :bar)) do |component|
         component.summary { "Summary" }
         component.body { "Body" }
       end
