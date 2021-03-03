@@ -17,10 +17,10 @@ Use Primer::TimeAgoComponent to display a time relative to how long ago it was. 
 
 Default
 
-<Example src="<time-ago datetime='2021-03-03T17:45:54Z' class='no-wrap '>Mar 3, 2021</time-ago>" />
+<Example src="<time-ago datetime='1989-11-28T05:00:00Z' class='no-wrap '>Nov 28, 1989</time-ago>" />
 
 ```erb
-<%= render(Primer::TimeAgoComponent.new(time: Time.zone.now)) %>
+<%= render(Primer::TimeAgoComponent.new(time: Time.at(628232400))) %>
 ```
 
 ## Arguments
