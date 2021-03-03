@@ -6,6 +6,10 @@
 
     *Simon Taranto*
 
+* Add `TimeAgo` component.
+
+    *Keith Cirkel*
+
 ## 0.0.25
 
 * Promote `SubheadComponent` to beta.
@@ -68,10 +72,6 @@
 * **Breaking change**: Upgrade `StateComponent` to support functional colors. This change requires using [@primer/css-next](https://www.npmjs.com/package/@primer/css-next). The required changes will be upstreamed to @primer/css at a later date.
 
     *Simon Taranto*
-
-* Add `TimeAgo` component.
-
-    *Keith Cirkel*
 
 * **Breaking change**: Upgrade `DetailsComponent` to use Slots V2.
 
