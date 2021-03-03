@@ -16,12 +16,11 @@ module Primer
     #
     # @param button [Boolean] Whether to render the Summary as a button or not.
     # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
-    renders_one :summary, lambda { |button = true, **system_arguments|
-      system_arguments = system_arguments
+    renders_one :summary, lambda { |button: true, **system_arguments|
       system_arguments[:tag] = :summary
       system_arguments[:role] = "button"
 
-      Primer::BaseComponent.new(**system_arguments) unless button
+      return Primer::BaseComponent.new(**system_arguments) unless button
 
       Primer::ButtonComponent.new(**system_arguments)
     }
