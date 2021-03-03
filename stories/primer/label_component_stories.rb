@@ -6,8 +6,7 @@ class Primer::LabelComponentStories < ViewComponent::Storybook::Stories
   story(:label) do
     controls do
       title "this is a label"
-      # TODO: Update to use functional scheme mappings
-      select(:scheme, Primer::LabelComponent::SCHEME_MAPPINGS.keys, :blue)
+      select(:scheme, Primer::LabelComponent::SCHEME_MAPPINGS.keys, :success)
       select(:variant, Primer::LabelComponent::VARIANT_MAPPINGS.keys, :large)
     end
 
