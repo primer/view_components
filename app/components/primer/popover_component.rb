@@ -38,7 +38,7 @@ module Primer
     # @param caret [Symbol] <%= one_of(Primer::PopoverComponent::CARET_MAPPINGS.keys) %>
     # @param large [Boolean] Whether to use the large version of the component.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_one :body, lambda { |caret: CARET_DEFAULT, large: false, **system_arguments|
+    renders_one :body, lambda { |caret: CARET_DEFAULT, large: false, **system_arguments, &block|
       system_arguments[:classes] = class_names(
         system_arguments[:classes],
         "Popover-message Box",
@@ -53,7 +53,7 @@ module Primer
 
       # This is a hack to allow the parent to set the slot's content
       @body_arguments = system_arguments
-      ContentComponent.new
+      block.call
     }
 
     # @example Default
