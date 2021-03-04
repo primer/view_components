@@ -149,6 +149,7 @@ namespace :docs do
       Primer::TabContainerComponent,
       Primer::TabNavComponent,
       Primer::TextComponent,
+      Primer::TimeAgoComponent,
       Primer::TimelineItemComponent,
       Primer::TooltipComponent,
       Primer::TruncateComponent,

@@ -8,10 +8,10 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
   def test_align_falls_back_to_default
     without_fetch_or_fallback_raises do
       render_inline(Primer::UnderlineNavComponent.new(align: :foo)) do |component|
-        component.with(:body) do
+        component.body do
           "Body content"
         end
-        component.with(:actions) do
+        component.actions do
           "Actions content"
         end
       end
@@ -22,10 +22,10 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
   def test_adds_underline_nav_right_when_align_right_is_set
     render_inline(Primer::UnderlineNavComponent.new(align: :right)) do |component|
-      component.with(:body) do
+      component.body do
         "Body content"
       end
-      component.with(:actions) do
+      component.actions do
         "Actions content"
       end
     end
@@ -35,10 +35,10 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
   def test_puts_actions_first_if_align_right_and_actions_exist
     render_inline(Primer::UnderlineNavComponent.new(align: :right)) do |component|
-      component.with(:body) do
+      component.body do
         "Body content"
       end
-      component.with(:actions) do
+      component.actions do
         "Actions content"
       end
     end

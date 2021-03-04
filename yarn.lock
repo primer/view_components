@@ -56,6 +56,11 @@
   resolved "https://registry.yarnpkg.com/@github/tab-container-element/-/tab-container-element-3.1.0.tgz"
   integrity sha512-C/HmAxRieqQK1MR58cT3M+GuuuqGIZdCzWd8UiOayLixpnOMSkiWDrGVJe1LpFWWOHKAcwA0LGilcIb+SJ5ZWw==
 
+"@github/time-elements@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@github/time-elements/-/time-elements-3.1.1.tgz#b52be933a87a0b585a5df6fd2dea6ccda5d776b9"
+  integrity sha512-95TquDedxMpNb8BUrVIt9NEfdNBw4DRjdcECDPx4Ix6gkksI2npKRJBOV9XJMYjEIBo50iAiJzUuwL/fh3ptFw==
+
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz"
