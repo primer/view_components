@@ -5,7 +5,7 @@
 * **Breaking change**: Upgrade `LayoutComponent` to use Slots V2.
 
     *Simon Taranto*
-    
+
 * Add `TimeAgo` component.
 
     *Keith Cirkel*
