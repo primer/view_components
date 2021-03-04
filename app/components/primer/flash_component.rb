@@ -3,6 +3,8 @@
 module Primer
   # Use the Flash component to inform users of successful or pending actions.
   class FlashComponent < Primer::Component
+    status :beta
+
     include ViewComponent::SlotableV2
 
     # Optional action content showed on the right side of the component.
@@ -63,10 +65,6 @@ module Primer
         "flash-full": full
       )
       @system_arguments[:mb] ||= spacious ? 4 : nil
-    end
-
-    def self.status
-      Primer::Component::STATUSES[:beta]
     end
   end
 end

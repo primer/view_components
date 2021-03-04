@@ -5,6 +5,8 @@ module Primer
   # Use the default round avatar for users, and the `square` argument
   # for organizations or any other non-human avatars.
   class AvatarComponent < Primer::Component
+    status :beta
+
     SMALL_THRESHOLD = 24
 
     # @example Default
@@ -48,10 +50,6 @@ module Primer
       else
         render(Primer::BaseComponent.new(**@system_arguments)) { content }
       end
-    end
-
-    def self.status
-      Primer::Component::STATUSES[:beta]
     end
   end
 end

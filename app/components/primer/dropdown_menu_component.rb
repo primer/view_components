@@ -5,6 +5,8 @@ module Primer
   # They're great for instances where you don't need the full power (and code)
   # of the select menu.
   class DropdownMenuComponent < Primer::Component
+    status :deprecated
+
     SCHEME_DEFAULT = :default
     SCHEME_MAPPINGS = {
       SCHEME_DEFAULT => "",
@@ -13,10 +15,6 @@ module Primer
 
     DIRECTION_DEFAULT = :se
     DIRECTION_OPTIONS = [DIRECTION_DEFAULT, :sw, :w, :e, :ne, :s].freeze
-
-    def self.status
-      STATUSES[:deprecated]
-    end
 
     # @example With a header
     #   <div>

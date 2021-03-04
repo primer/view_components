@@ -37,6 +37,8 @@ module Primer
   # | `style` | `String` | Inline styles. |
   # | `hidden` | `Boolean` | Whether to assign the `hidden` attribute. |
   class BaseComponent < Primer::Component
+    status :beta
+
     include TestSelectorHelper
 
     # @param test_selector [String] Adds `data-test-selector='given value'` in non-Production environments for testing purposes.
@@ -118,10 +120,6 @@ module Primer
 
     def call
       content_tag(@tag, content, @content_tag_args.merge(@result))
-    end
-
-    def self.status
-      Primer::Component::STATUSES[:beta]
     end
   end
 end
