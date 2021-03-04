@@ -2,6 +2,14 @@
 
 ## main
 
+* **Breaking change**: Updates `UnderlineNavComponent` to use Slots V2.
+
+    *Simon Taranto*
+
+* Fix `OcticonComponent` not rendering `data-test-selector` correctly.
+
+    *Manuel Puyol*
+
 * **Breaking change**: Upgrade `LayoutComponent` to use Slots V2.
 
     *Simon Taranto*

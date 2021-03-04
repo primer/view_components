@@ -5,7 +5,8 @@ module Primer
   class OcticonComponent < Primer::Component
     view_helper :octicon
 
-    include Primer::ClassNameHelper
+    include ClassNameHelper
+    include TestSelectorHelper
     include OcticonsHelper
 
     SIZE_DEFAULT = :small
@@ -38,7 +39,7 @@ module Primer
       # Filter out classify options to prevent them from becoming invalid html attributes.
       # Note height and width are both classify options and valid html attributes.
       octicon_helper_options = @system_arguments.slice(:height, :width)
-      @system_arguments = @system_arguments.except(*Primer::Classify::VALID_KEYS, :classes).merge(octicon_helper_options)
+      @system_arguments = add_test_selector(@system_arguments).except(*Primer::Classify::VALID_KEYS, :classes).merge(octicon_helper_options)
     end
 
     def call

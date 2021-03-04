@@ -9,7 +9,7 @@ class Primer::UnderlineNavComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |component|
-      component.with(:body) { "body" }
+      component.body { "body" }
     end
   end
 end

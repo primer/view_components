@@ -37,7 +37,8 @@ module Primer
   # | `style` | `String` | Inline styles. |
   # | `hidden` | `Boolean` | Whether to assign the `hidden` attribute. |
   class BaseComponent < Primer::Component
-    TEST_SELECTOR_TAG = :test_selector
+    include TestSelectorHelper
+
     # @param test_selector [String] Adds `data-test-selector='given value'` in non-Production environments for testing purposes.
     #
     # @param m [Integer] Margin. <%= one_of((-6..6).to_a) %>
@@ -121,17 +122,6 @@ module Primer
 
     def self.status
       Primer::Component::STATUSES[:beta]
-    end
-
-    private
-
-    def add_test_selector(args)
-      if args.key?(TEST_SELECTOR_TAG) && !Rails.env.production?
-        args[:data] ||= {}
-        args[:data][TEST_SELECTOR_TAG] = args[TEST_SELECTOR_TAG]
-      end
-
-      args.except(TEST_SELECTOR_TAG)
     end
   end
 end

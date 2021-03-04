@@ -17,14 +17,14 @@ of the page.
 
 ### Default
 
-<Example src="<nav class='UnderlineNav '>  <ul class='UnderlineNav-body list-style-none '>        <a href='#url'>Item 1</a></ul>        <button type='button' class='btn '>Button!</button></nav>" />
+<Example src="<nav class='UnderlineNav '>  <ul class='UnderlineNav-body list-style-none '>    <a href='#url'>Item 1</a></ul>    <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new) do |component| %>
-  <% component.with(:body) do %>
+  <% component.body do %>
     <%= render(Primer::LinkComponent.new(href: "#url")) { "Item 1" } %>
   <% end %>
-  <% component.with(:actions) do %>
+  <% component.actions do %>
     <%= render(Primer::ButtonComponent.new) { "Button!" } %>
   <% end %>
 <% end %>
@@ -32,14 +32,14 @@ of the page.
 
 ### Align right
 
-<Example src="<nav class='UnderlineNav UnderlineNav--right '>        <button type='button' class='btn '>Button!</button>  <ul class='UnderlineNav-body list-style-none '>        <a href='#url'>Item 1</a></ul></nav>" />
+<Example src="<nav class='UnderlineNav UnderlineNav--right '>    <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div>  <ul class='UnderlineNav-body list-style-none '>    <a href='#url'>Item 1</a></ul></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>
-  <% component.with(:body) do %>
+  <% component.body do %>
     <%= render(Primer::LinkComponent.new(href: "#url")) { "Item 1" } %>
   <% end %>
-  <% component.with(:actions) do %>
+  <% component.actions do %>
     <%= render(Primer::ButtonComponent.new) { "Button!" } %>
   <% end %>
 <% end %>
@@ -50,4 +50,22 @@ of the page.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `align` | `Symbol` | `:left` | One of `:left` and `:right`. - Defaults to left |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Body`
+
+Use the body for the navigation items
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Actions`
+
+Use actions for a call to action
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

@@ -66,6 +66,28 @@ jobs:
         bundle exec rake bench
       env:
         RAILS_VERSION: main
+  stories:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: gems-build-stories-ruby-2.7-${{ hashFiles('**/Gemfile.lock') }}
+    - name: Build gem
+      run: |
+        gem install bundler:2.2.9
+        bundle config path vendor/bundle
+        bundle update
+        cd demo
+        bundle config path vendor/bundle
+        bundle update
+        bin/rails view_component_storybook:write_stories_json
   test:
     needs: lint
     runs-on: ubuntu-latest

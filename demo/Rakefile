@@ -7,9 +7,5 @@ require_relative "config/application"
 
 Rails.application.load_tasks
 
-Rake::Task["assets:precompile"].clear
-namespace :assets do
-  task "precompile" do
-    Rake::Task["view_component_storybook:write_stories_json"].invoke
-  end
-end
+# generate stories before precompiling assets
+Rake::Task["assets:precompile"].enhance(["view_component_storybook:write_stories_json"])
