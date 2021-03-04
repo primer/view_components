@@ -53,7 +53,7 @@ module Primer
 
       # This is a hack to allow the parent to set the slot's content
       @body_arguments = system_arguments
-      block.call
+      block&.call
     }
 
     # @example Default
@@ -105,13 +105,6 @@ module Primer
 
     def body_component
       Primer::BoxComponent.new(**@body_arguments)
-    end
-
-    # :nodoc:
-    class ContentComponent < ViewComponent::Base
-      def call
-        content
-      end
     end
   end
 end
