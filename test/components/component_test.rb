@@ -42,7 +42,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::MarkdownComponent, {}],
     [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],
     [Primer::OcticonComponent, { icon: "people" }],
-    [Primer::PopoverComponent, {}, proc { |component| component.slot(:body) }],
+    [Primer::PopoverComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::ProgressBarComponent, {}, proc { |component| component.item }],
     [Primer::SpinnerComponent, {}],
     [Primer::StateComponent, { title: "Open" }],
