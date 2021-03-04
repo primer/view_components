@@ -14,6 +14,10 @@
 
     *Simon Taranto*
 
+* Add `TimeAgo` component.
+
+    *Keith Cirkel*
+
 ## 0.0.26
 
 * Fix `DetailsComponent` summary always being rendered as a `btn`.

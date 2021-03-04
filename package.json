@@ -29,6 +29,10 @@
   "dependencies": {
     "@github/tab-container-element": "^3.1.0"
   },
+  "dependencies": {
+    "@github/tab-container-element": "^3.1.0",
+    "@github/time-elements": "^3.1.1"
+  },
   "devDependencies": {
     "@github/prettier-config": "0.0.4",
     "@rollup/plugin-node-resolve": "^11.2.0",
