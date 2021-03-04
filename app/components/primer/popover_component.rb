@@ -107,6 +107,7 @@ module Primer
       Primer::BoxComponent.new(**@body_arguments)
     end
 
+    # :nodoc:
     class ContentComponent < ViewComponent::Base
       def call
         content
