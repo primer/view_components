@@ -4,6 +4,7 @@ module Primer
   # Renders an [Octicon](https://primer.style/octicons/) with <%= link_to_system_arguments_docs %>.
   class OcticonComponent < Primer::Component
     view_helper :octicon
+    status :beta
 
     include ClassNameHelper
     include TestSelectorHelper
@@ -44,10 +45,6 @@ module Primer
 
     def call
       octicon(@icon, { **@system_arguments })
-    end
-
-    def self.status
-      Primer::Component::STATUSES[:beta]
     end
   end
 end

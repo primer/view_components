@@ -3,6 +3,8 @@
 module Primer
   # Use Primer::SpinnerComponent to let users know that content is being loaded.
   class SpinnerComponent < Primer::Component
+    status :beta
+
     DEFAULT_SIZE = :medium
     SIZE_MAPPINGS = {
       :small => 16,
@@ -33,10 +35,6 @@ module Primer
       @system_arguments[:height] = SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
       @system_arguments[:viewBox] = "0 0 16 16"
       @system_arguments[:fill] = :none
-    end
-
-    def self.status
-      Primer::Component::STATUSES[:beta]
     end
   end
 end
