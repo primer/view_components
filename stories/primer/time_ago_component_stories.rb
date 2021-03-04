@@ -5,7 +5,7 @@ class Primer::TimeAgoComponentStories < ViewComponent::Storybook::Stories
 
   story(:time_ago) do
     controls do
-      time Time.zone.now
+      date(:time, "Time")
     end
   end
 end
