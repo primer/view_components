@@ -208,7 +208,7 @@ module Primer
                FUNCTIONAL_COLOR_REGEX.match?(val)
               "color-#{val.to_s.dasherize}"
             else
-              "text-#{val.to_s.dasherize}"
+              FunctionalColors.text_color(val)
             end
         elsif key == DISPLAY_KEY
           memo[:classes] << "d#{breakpoint}-#{val.to_s.dasherize}"
