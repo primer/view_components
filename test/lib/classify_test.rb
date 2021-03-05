@@ -185,13 +185,13 @@ class PrimerClassifyTest < Minitest::Test
       assert_generated_class("color-text-link",      { color: :blue })
 
       assert_generated_class("color-text-success",   { color: :text_success })
-      assert_generated_class("color-text-success",   { color: :green})
+      assert_generated_class("color-text-success",   { color: :green })
 
       assert_generated_class("color-text-warning",   { color: :text_warning })
       assert_generated_class("color-text-warning",   { color: :yellow })
 
       assert_generated_class("color-text-danger",    { color: :text_danger })
-      assert_generated_class("color-text-danger",    { color: :red})
+      assert_generated_class("color-text-danger",    { color: :red })
 
       assert_generated_class("color-text-white",     { color: :text_white })
       assert_generated_class("color-text-white",     { color: :white })

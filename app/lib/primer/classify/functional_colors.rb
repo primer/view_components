@@ -31,7 +31,7 @@ module Primer
           # if the app still allows non functional colors
           return "text-#{val.to_s.dasherize}" unless force_functional_colors?
 
-          if TEXT_COLOR_MAPPINGS.keys.include?(val)
+          if TEXT_COLOR_MAPPINGS.key?(val)
             functional_color = TEXT_COLOR_MAPPINGS[val]
             # colors without functional mapping stay the same
             return "text-#{val.to_s.dasherize}" if functional_color.blank?
