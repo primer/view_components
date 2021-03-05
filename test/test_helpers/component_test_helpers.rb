@@ -17,7 +17,7 @@ module Primer
     end
 
     def with_force_functional_colors(new_value)
-      old_value = Rails.application.config.primer_view_component.force_functional_colors
+      old_value = Rails.application.config.primer_view_components.force_functional_colors
       Rails.application.config.primer_view_components.force_functional_colors = new_value
       yield
       Rails.application.config.primer_view_components.force_functional_colors = old_value
