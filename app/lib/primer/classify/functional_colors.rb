@@ -27,7 +27,7 @@ module Primer
       class << self
         def text_color(val)
           # the value is a functional color
-          return "color-#{val.to_s.dasherize}" if FUNCTIONAL_COLOR_REGEX.match?(val) || ends_with_number?(val)
+          return "color-#{val.to_s.dasherize}" if ends_with_number?(val) || FUNCTIONAL_COLOR_REGEX.match?(val) 
           # if the app still allows non functional colors
           return "text-#{val.to_s.dasherize}" unless force_functional_colors?
 
