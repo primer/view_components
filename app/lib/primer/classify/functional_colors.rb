@@ -27,7 +27,7 @@ module Primer
       class << self
         def text_color(val)
           # the value is a functional color
-          return "color-#{val.to_s.dasherize}" if ends_with_number?(val) || FUNCTIONAL_COLOR_REGEX.match?(val) 
+          return "color-#{val.to_s.dasherize}" if ends_with_number?(val) || FUNCTIONAL_COLOR_REGEX.match?(val)
           # if the app still allows non functional colors
           return "text-#{val.to_s.dasherize}" unless force_functional_colors?
 
@@ -38,7 +38,7 @@ module Primer
 
             ActiveSupport::Deprecation.warn("Color #{val} is deprecated. Please use #{functional_color} instead.") unless Rails.env.production?
 
-            return text_color(functional_color)
+            return "color-#{functional_color.to_s.dasherize}"
           end
 
           raise ArgumentError, "Color #{val} does not exist."
