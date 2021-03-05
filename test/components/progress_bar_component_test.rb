@@ -64,4 +64,8 @@ class Primer::ProgressBarComponentTest < Minitest::Test
 
     assert_selector("span.Progress .Progress-item.bg-yellow-8")
   end
+
+  def test_status
+    assert_component_state(Primer::ProgressBarComponent, :beta)
+  end
 end
