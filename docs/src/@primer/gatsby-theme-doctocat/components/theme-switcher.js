@@ -14,7 +14,7 @@ function ThemeSwitcher({children}) {
       document.removeEventListener('keydown', handleKeyDown)
     }
   }, [theme])
-  return <div data-color-mode={theme} data-dark-theme="dark" data-light-theme="light">{children}</div>
+  return <div className="Box p-3" data-color-mode={theme} data-dark-theme="dark" data-light-theme="light">{children}</div>
 }
 
 export default ThemeSwitcher
