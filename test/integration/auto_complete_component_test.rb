@@ -16,7 +16,7 @@ class IntegrationAutoCompleteComponentTest < ApplicationSystemTestCase
   def test_search_items
     with_preview(:default)
 
-    fill_in 'input', with: 'a'
+    fill_in "input", with: "a"
 
     # results are now visible
     assert_selector("ul[id=\"test-id\"].autocomplete-results", visible: true)

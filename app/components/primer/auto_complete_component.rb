@@ -12,11 +12,11 @@ module Primer
     #
     # @param type [Symbol] <%= one_of(Primer::AutoCompleteComponent::INPUT_TYPE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_one :input, ->(type: DEFAULT_INPUT_TYPE, **system_arguments) do
+    renders_one :input, lambda { |type: DEFAULT_INPUT_TYPE, **system_arguments|
       system_arguments[:tag] = :input
       system_arguments[:type] = fetch_or_fallback(INPUT_TYPE_OPTIONS, type, DEFAULT_INPUT_TYPE)
       Primer::BaseComponent.new(**system_arguments)
-    end
+    }
 
     # Optional icon to be rendered before the input. Has the same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
     renders_one :icon, Primer::OcticonComponent
@@ -89,7 +89,8 @@ module Primer
 
     # add `results` without needing to explicitly call it in the view
     def before_render
-      raise ArgumentError, "Missing `input` slot" unless input.present?
+      raise ArgumentError, "Missing `input` slot" if input.blank?
+
       results(classes: "") unless results
     end
   end
