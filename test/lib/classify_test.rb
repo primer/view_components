@@ -207,7 +207,7 @@ class PrimerClassifyTest < Minitest::Test
       Primer::Classify.call(color: :not_a_color)
     end
 
-    assert_equal("Color not_a_color does not exist.", err.message)
+    assert_equal("color not_a_color does not exist.", err.message)
   end
 
   def test_bg

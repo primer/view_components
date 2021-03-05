@@ -211,7 +211,7 @@ module Primer
           border_value = if val == true
                            "border"
                          else
-                           "border-#{val.to_s.dasherize}"
+                            Primer::Classify::FunctionalColors.border_color(val)
                          end
 
           memo[:classes] << border_value

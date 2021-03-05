@@ -48,24 +48,64 @@ module Primer
       ].freeze
       DEPRECATED_TEXT_OPTIONS = TEXT_COLOR_MAPPINGS.keys.freeze
 
+      BORDER_COLOR_MAPPINGS = {
+        gray: :primary,
+        gray_light: :secondary,
+        gray_dark: :tertiary,
+        blue: :info,
+        green: :success,
+        yellow: :warning,
+        red: :danger,
+        white: :inverse,
+        # still unsure what will happen with these colors
+        gray_darker: nil,
+        blue_light: nil,
+        red_light: nil,
+        purple: nil,
+        black_fade: nil,
+        white_fade: nil
+      }.freeze
+
       class << self
         def text_color(val)
+          functional_color(
+            value: val,
+            functional_prefix: "color",
+            non_functional_prefix: "text",
+            mappings: TEXT_COLOR_MAPPINGS,
+            key: "color"
+          )
+        end
+
+        def border_color(val)
+          functional_color(
+            value: val,
+            functional_prefix: "color-border",
+            non_functional_prefix: "border",
+            mappings: BORDER_COLOR_MAPPINGS,
+            key: "border"
+          )
+        end
+
+        private
+
+        def functional_color(value:, functional_prefix:, non_functional_prefix:, mappings:, key:)
           # the value is a functional color
-          return "color-#{val.to_s.dasherize}" if ends_with_number?(val) || TEXT_OPTIONS.include?(val)
+(??)          return "color-#{val.to_s.dasherize}" if ends_with_number?(val) || FUNCTIONAL_COLOR_REGEX.match?(val)
           # if the app still allows non functional colors
-          return "text-#{val.to_s.dasherize}" unless force_functional_colors?
+          return "#{non_functional_prefix}-#{value.to_s.dasherize}" unless force_functional_colors?
 
-          if TEXT_COLOR_MAPPINGS.key?(val)
-            functional_color = TEXT_COLOR_MAPPINGS[val]
+          if mappings.key?(value)
+            functional_color = mappings[value]
             # colors without functional mapping stay the same
-            return "text-#{val.to_s.dasherize}" if functional_color.blank?
+            return "#{non_functional_prefix}-#{value.to_s.dasherize}" if functional_color.blank?
 
-            ActiveSupport::Deprecation.warn("Color #{val} is deprecated. Please use #{functional_color} instead.") unless Rails.env.production? || silence_color_deprecations?
+            ActiveSupport::Deprecation.warn("#{key} #{value} is deprecated. Please use #{functional_color} instead.") unless Rails.env.production? || silence_color_deprecations?
 
-            return "color-#{functional_color.to_s.dasherize}"
+            return "#{functional_prefix}-#{functional_color.to_s.dasherize}"
           end
 
-          raise ArgumentError, "Color #{val} does not exist." unless Rails.env.production?
+          raise ArgumentError, "#{key} #{value} does not exist." unless Rails.env.production?
         end
 
         def ends_with_number?(val)
