@@ -2,21 +2,25 @@
 
 ## main
 
-* **Breaking change**: Updates `UnderlineNavComponent` to use Slots V2.
+* Add `TimeAgo` component.
 
-    *Simon Taranto*
+    *Keith Cirkel*
+
+* Add `AutComplete` and `AutoCompleteItem` components.
+
+    *Keith Cirkel*
 
 * Fix `OcticonComponent` not rendering `data-test-selector` correctly.
 
     *Manuel Puyol*
 
-* **Breaking change**: Upgrade `LayoutComponent` to use Slots V2.
+* **Breaking change**: Updates `UnderlineNavComponent` to use Slots V2.
 
     *Simon Taranto*
 
-* Add `TimeAgo` component.
+* **Breaking change**: Upgrade `LayoutComponent` to use Slots V2.
 
-    *Keith Cirkel*
+    *Simon Taranto*
 
 ## 0.0.26
 
