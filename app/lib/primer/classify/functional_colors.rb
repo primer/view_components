@@ -2,43 +2,55 @@
 
 module Primer
   class Classify
-    # :nodoc:
+    # https://primer-css-git-mkt-color-modes-docs-primer.vercel.app/css/support/v16-migration
     class FunctionalColors
-      class DeprecatedColorError < StandardError; end
+      FUNCTIONAL_COLOR_REGEX = /(primary|secondary|tertiary|link|success|warning|danger|info|inverse|text_white)/.freeze
 
       TEXT_COLOR_MAPPINGS = {
-        gray_dark: :primary,
-        gray: :secondary,
-        gray_light: :tertiary,
-        blue: :link,
-        green: :success,
-        yellow: :warning,
-        red: :danger,
-        white: :white,
+        gray_dark: :text_primary,
+        gray: :text_secondary,
+        gray_light: :text_tertiary,
+        blue: :text_link,
+        green: :text_success,
+        yellow: :text_warning,
+        red: :text_danger,
+        white: :text_white,
         # still unsure what will happen with these colors
         black: nil,
         orange: nil,
         orange_light: nil,
         purple: nil,
-        pink: nil
+        pink: nil,
+        inherit: nil
       }.freeze
 
       class << self
-        def text_color(key)
-          return "color-text-#{key}" if TEXT_COLOR_MAPPINGS.values.include?(key)
+        def text_color(val)
+          # the value is a functional color
+          return "color-#{val.to_s.dasherize}" if FUNCTIONAL_COLOR_REGEX.match?(val) || ends_with_number?(val)
+          # if the app still allows non functional colors
+          return "text-#{val.to_s.dasherize}" unless force_functional_colors?
 
-          if TEXT_COLOR_MAPPINGS.keys.include?(key)
-            functional_color = TEXT_COLOR_MAPPINGS[key]
+          if TEXT_COLOR_MAPPINGS.keys.include?(val)
+            functional_color = TEXT_COLOR_MAPPINGS[val]
             # colors without functional mapping stay the same
-            return "text-#{key.to_s.dasherize}" if functional_color.blank?
+            return "text-#{val.to_s.dasherize}" if functional_color.blank?
 
-            raise DeprecatedColorError, "Color #{key} is deprecated. Please use #{TEXT_COLOR_MAPPINGS[key]} instead." if Rails.env.test?
+            ActiveSupport::Deprecation.warn("Color #{val} is deprecated. Please use #{functional_color} instead.") if Rails.env.test?
 
-            return "color-text-#{TEXT_COLOR_MAPPINGS[key]}"
+            return text_color(functional_color)
           end
 
-          raise DeprecatedColorError, "Color #{key} is deprecated and will be removed soon. Please consider using another color." if Rails.env.test?
-          "text-#{key.to_s.dasherize}"
+          raise ArgumentError, "Color #{val} does not exist."
+        end
+
+        def ends_with_number?(val)
+          char_code = val[-1].ord
+          char_code >= 48 && char_code <= 57
+        end
+
+        def force_functional_colors?
+          Rails.application.config.primer_view_component.force_functional_colors
         end
       end
     end

@@ -3,6 +3,7 @@
 require "test_helper"
 
 class PrimerClassifyTest < Minitest::Test
+  include Primer::ComponentTestHelpers
   def test_multiple_params
     assert_generated_class("m-4 py-2", { m: 4, py: 2 })
   end
@@ -143,6 +144,9 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("color-text-success",   { color: :text_success })
     assert_generated_class("color-text-warning",   { color: :text_warning })
     assert_generated_class("color-text-danger",    { color: :text_danger })
+    assert_generated_class("color-text-white",     { color: :text_white })
+    assert_generated_class("color-text-inverse",   { color: :text_inverse })
+
     assert_generated_class("color-icon-primary",   { color: :icon_primary })
     assert_generated_class("color-icon-secondary", { color: :icon_secondary })
     assert_generated_class("color-icon-tertiary",  { color: :icon_tertiary })
@@ -150,6 +154,64 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("color-icon-success",   { color: :icon_success })
     assert_generated_class("color-icon-warning",   { color: :icon_warning })
     assert_generated_class("color-icon-danger",    { color: :icon_danger })
+  end
+
+  def test_color_enforcing_functional_colors
+    with_force_functional_colors(true) do
+      Primer::Classify::Cache.preload!
+
+      assert_generated_class("text-orange",        { color: :orange })
+      assert_generated_class("text-orange-light",  { color: :orange_light })
+      assert_generated_class("text-purple",        { color: :purple })
+      assert_generated_class("text-pink",          { color: :pink })
+      assert_generated_class("text-inherit",       { color: :inherit })
+
+      assert_generated_class("color-blue-5",       { color: :blue_5 })
+      assert_generated_class("color-gray-9",       { color: :gray_9 })
+      assert_generated_class("color-purple-3",     { color: :purple_3 })
+
+      assert_generated_class("color-text-inverse",   { color: :text_inverse })
+
+      assert_generated_class("color-text-primary",   { color: :text_primary })
+      assert_generated_class("color-text-primary",   { color: :gray_dark })
+
+      assert_generated_class("color-text-secondary", { color: :text_secondary })
+      assert_generated_class("color-text-secondary", { color: :gray })
+
+      assert_generated_class("color-text-tertiary",  { color: :text_tertiary })
+      assert_generated_class("color-text-tertiary",  { color: :gray_light })
+
+      assert_generated_class("color-text-link",      { color: :text_link })
+      assert_generated_class("color-text-link",      { color: :blue })
+
+      assert_generated_class("color-text-success",   { color: :text_success })
+      assert_generated_class("color-text-success",   { color: :green})
+
+      assert_generated_class("color-text-warning",   { color: :text_warning })
+      assert_generated_class("color-text-warning",   { color: :yellow })
+
+      assert_generated_class("color-text-danger",    { color: :text_danger })
+      assert_generated_class("color-text-danger",    { color: :red})
+
+      assert_generated_class("color-text-white",     { color: :text_white })
+      assert_generated_class("color-text-white",     { color: :white })
+
+      assert_generated_class("color-icon-primary",   { color: :icon_primary })
+      assert_generated_class("color-icon-secondary", { color: :icon_secondary })
+      assert_generated_class("color-icon-tertiary",  { color: :icon_tertiary })
+      assert_generated_class("color-icon-info",      { color: :icon_info })
+      assert_generated_class("color-icon-success",   { color: :icon_success })
+      assert_generated_class("color-icon-warning",   { color: :icon_warning })
+      assert_generated_class("color-icon-danger",    { color: :icon_danger })
+
+      err = assert_raises ArgumentError do
+        Primer::Classify.call(color: :not_a_color)
+      end
+
+      assert_equal("Color not_a_color does not exist.", err.message)
+    end
+  ensure
+    Primer::Classify::Cache.preload!
   end
 
   def test_bg
