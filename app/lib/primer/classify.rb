@@ -200,7 +200,7 @@ module Primer
             memo[:classes] << "bg-#{val.to_s.dasherize}"
           end
         elsif key == COLOR_KEY
-          memo[:classes] << FunctionalColors.text_color(val)
+          memo[:classes] << Primer::Classify::FunctionalColors.text_color(val)
         elsif key == DISPLAY_KEY
           memo[:classes] << "d#{breakpoint}-#{val.to_s.dasherize}"
         elsif key == VERTICAL_ALIGN_KEY
