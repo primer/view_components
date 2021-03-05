@@ -15,7 +15,7 @@ module Primer
         warning: :text_warning,
         danger: :text_danger,
         white: :text_white,
-        inverse: :text_inverse,
+        inverse: :text_inverse
       }.freeze
 
       TEXT_COLOR_MAPPINGS = {
