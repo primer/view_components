@@ -71,7 +71,7 @@ System arguments include most HTML attributes. For example:
 | `float` | `Symbol` | One of `:left` and `:right`. |
 | `col` | `Integer` | Number of columns. |
 | `underline` | `Boolean` | Whether text should be underlined. |
-| `color` | `Symbol` | Text color. One of `:blue`, `:red`, `:gray_light`, `:gray`, `:gray_dark`, `:green`, `:orange`, `:orange_light`, `:purple`, `:pink`, `:white`, `:inherit`, `:text_primary`, `:text_secondary`, `:text_tertiary`, `:text_link`, `:text_success`, `:text_warning`, `:text_danger`, `:icon_primary`, `:icon_secondary`, `:icon_tertiary`, `:icon_info`, `:icon_success`, `:icon_warning`, or `:icon_danger`. |
+| `color` | `Symbol` | Text color. <br /> One of `:icon_primary`, `:icon_secondary`, `:icon_tertiary`, `:icon_info`, `:icon_success`, `:icon_warning`, `:icon_danger`, `:text_primary`, `:text_secondary`, `:text_tertiary`, `:text_link`, `:text_success`, `:text_warning`, `:text_danger`, `:text_white`, or `:text_inverse`. <br /> Deprecated options: One of `:gray_dark`, `:gray`, `:gray_light`, `:blue`, `:green`, `:yellow`, `:red`, `:white`, `:black`, `:orange`, `:orange_light`, `:purple`, `:pink`, or `:inherit`. |
 | `bg` | `String, Symbol` | Background color. Accepts either a hex value as a String or a color name as a Symbol. |
 | `box_shadow` | `Boolean, Symbol` | Box shadow. One of `true`, `:medium`, `:large`, `:extra_large`, or `:none`. |
 | `border` | `Symbol` | One of `:left`, `:top`, `:bottom`, `:right`, `:y`, `:x`, or `true`. |

@@ -6,15 +6,27 @@ module Primer
     class FunctionalColors
       FUNCTIONAL_COLOR_REGEX = /(primary|secondary|tertiary|link|success|warning|danger|info|inverse|text_white)/.freeze
 
-      TEXT_COLOR_MAPPINGS = {
-        gray_dark: :text_primary,
-        gray: :text_secondary,
-        gray_light: :text_tertiary,
-        blue: :text_link,
-        green: :text_success,
-        yellow: :text_warning,
-        red: :text_danger,
+      FUNCTIONAL_TEXT_OPTIONS = {
+        primary: :text_primary,
+        secondary: :text_secondary,
+        tertiary: :text_tertiary,
+        link: :text_link,
+        success: :text_success,
+        warning: :text_warning,
+        danger: :text_danger,
         white: :text_white,
+        inverse: :text_inverse,
+      }.freeze
+
+      TEXT_COLOR_MAPPINGS = {
+        gray_dark: FUNCTIONAL_TEXT_OPTIONS[:primary],
+        gray: FUNCTIONAL_TEXT_OPTIONS[:secondary],
+        gray_light: FUNCTIONAL_TEXT_OPTIONS[:tertiary],
+        blue: FUNCTIONAL_TEXT_OPTIONS[:link],
+        green: FUNCTIONAL_TEXT_OPTIONS[:success],
+        yellow: FUNCTIONAL_TEXT_OPTIONS[:warning],
+        red: FUNCTIONAL_TEXT_OPTIONS[:danger],
+        white: FUNCTIONAL_TEXT_OPTIONS[:white],
         # still unsure what will happen with these colors
         black: nil,
         orange: nil,
@@ -23,6 +35,18 @@ module Primer
         pink: nil,
         inherit: nil
       }.freeze
+
+      TEXT_OPTIONS = [
+        :icon_primary,
+        :icon_secondary,
+        :icon_tertiary,
+        :icon_info,
+        :icon_success,
+        :icon_warning,
+        :icon_danger,
+        *FUNCTIONAL_TEXT_OPTIONS.values
+      ].freeze
+      DEPRECATED_TEXT_OPTIONS = TEXT_COLOR_MAPPINGS.keys.freeze
 
       class << self
         def text_color(val)
