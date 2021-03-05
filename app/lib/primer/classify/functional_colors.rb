@@ -48,15 +48,27 @@ module Primer
       ].freeze
       DEPRECATED_TEXT_OPTIONS = TEXT_COLOR_MAPPINGS.keys.freeze
 
+      FUNCTIONAL_BORDER_OPTIONS = {
+        primary: :primary,
+        secondary: :secondary,
+        tertiary: :tertiary,
+        ingo: :ingo,
+        success: :success,
+        warning: :warning,
+        danger: :danger,
+        inverse: :inverse,
+        overlay: :overlay
+      }.freeze
+
       BORDER_COLOR_MAPPINGS = {
-        gray: :primary,
-        gray_light: :secondary,
-        gray_dark: :tertiary,
-        blue: :info,
-        green: :success,
-        yellow: :warning,
-        red: :danger,
-        white: :inverse,
+        gray: FUNCTIONAL_BORDER_OPTIONS[:primary],
+        gray_light: FUNCTIONAL_BORDER_OPTIONS[:secondary],
+        gray_dark: FUNCTIONAL_BORDER_OPTIONS[:tertiary],
+        blue: FUNCTIONAL_BORDER_OPTIONS[:info],
+        green: FUNCTIONAL_BORDER_OPTIONS[:success],
+        yellow: FUNCTIONAL_BORDER_OPTIONS[:warning],
+        red: FUNCTIONAL_BORDER_OPTIONS[:danger],
+        white: FUNCTIONAL_BORDER_OPTIONS[:inverse],
         # still unsure what will happen with these colors
         gray_darker: nil,
         blue_light: nil,
@@ -65,6 +77,9 @@ module Primer
         black_fade: nil,
         white_fade: nil
       }.freeze
+
+      BORDER_OPTIONS = *FUNCTIONAL_BORDER_OPTIONS.values.freeze
+      DEPRECATED_BORDER_OPTIONS = BORDER_COLOR_MAPPINGS.keys.freeze
 
       class << self
         def text_color(val)

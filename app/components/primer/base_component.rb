@@ -84,7 +84,7 @@ module Primer
     #
     # @param box_shadow [Boolean, Symbol] Box shadow. <%= one_of([true, :medium, :large, :extra_large, :none]) %>
     # @param border [Symbol] <%= one_of([:left, :top, :bottom, :right, :y, :x, true]) %>
-    # @param border_color [Symbol] <%= one_of([:blue, :blue_light, :gray, :gray_dark, :green, :purple, :red, :red_light, :white, :yellow, :black_fade]) %> Note: this API is subject to change as we move to functional colors.
+    # @param border_color [Symbol] <%= one_of(Primer::Classify::FunctionalColors::BORDER_OPTIONS) %> <br /> Deprecated options: <%= one_of(Primer::Classify::FunctionalColors::DEPRECATED_BORDER_OPTIONS) %>
     # @param border_top [Integer] Set to `0` to remove the top border.
     # @param border_bottom [Integer] Set to `0` to remove the bottom border.
     # @param border_left [Integer] Set to `0` to remove the left border.
