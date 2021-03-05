@@ -50,7 +50,7 @@ module Primer
         end
 
         def force_functional_colors?
-          Rails.application.config.primer_view_component.force_functional_colors
+          Rails.application.config.primer_view_components.force_functional_colors
         end
       end
     end
