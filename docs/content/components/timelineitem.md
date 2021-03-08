@@ -15,7 +15,7 @@ Use `TimelineItem` to display items on a vertical timeline, connected by badge e
 
 ### Default
 
-<Example src="<div style='padding-left: 60px'>  <div class='TimelineItem '>  <img src='https://github.com/github.png' alt='github' size='40' height='40' width='40' class='TimelineItem-avatar avatar '></img>  <div class='TimelineItem-badge bg-green text-white'><svg class='octicon octicon-check' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg></div>  <div class='TimelineItem-body '>Success!</div></div></div>" />
+<Example src="<div style='padding-left: 60px'>  <div class='TimelineItem '>  <img src='https://github.com/github.png' alt='github' size='40' height='40' width='40' class='TimelineItem-avatar avatar '></img>  <div class='TimelineItem-badge bg-green color-text-white'><svg class='octicon octicon-check' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg></div>  <div class='TimelineItem-body '>Success!</div></div></div>" />
 
 ```erb
 <div style="padding-left: 60px">
