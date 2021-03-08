@@ -1,6 +1,6 @@
 ---
 title: ProgressBar
-status: Alpha
+status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/progress_bar_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-progress-bar-component
 ---

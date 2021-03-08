@@ -2,11 +2,7 @@
 
 ## main
 
-* Promote `BreadcrumbComponent` to beta status.
-
-    *Simon Taranto*
-
-* **Breaking change**: Updates `UnderlineNavComponent` to use Slots V2.
+* Promote `BreadcrumbComponent` and `ProgressBarComponent` to beta status.
 
     *Simon Taranto*
 
@@ -14,13 +10,17 @@
 
     *Manuel Puyol*
 
-* **Breaking change**: Upgrade `LayoutComponent` to use Slots V2.
-
-    *Simon Taranto*
-
 * Add `TimeAgo` component.
 
     *Keith Cirkel*
+
+* **Breaking change**: Updates `UnderlineNavComponent` to use Slots V2.
+
+    *Simon Taranto*
+
+* **Breaking change**: Upgrade `LayoutComponent` to use Slots V2.
+
+    *Simon Taranto*
 
 ## 0.0.26
 
