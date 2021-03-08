@@ -13,9 +13,7 @@ Use Primer::TimeAgoComponent to display a time relative to how long ago it was. 
 
 ## Examples
 
-### auto
-
-Default
+### Default
 
 <Example src="<time-ago datetime='1989-11-28T05:00:00Z' class='no-wrap '>Nov 28, 1989</time-ago>" />
 
