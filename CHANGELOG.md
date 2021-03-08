@@ -2,6 +2,10 @@
 
 ## main
 
+* Promote `BreadcrumbComponent` to beta status.
+
+    *Simon Taranto*
+
 * **Breaking change**: Updates `UnderlineNavComponent` to use Slots V2.
 
     *Simon Taranto*
