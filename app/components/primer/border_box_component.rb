@@ -3,6 +3,8 @@
 module Primer
   # BorderBox is a Box component with a border.
   class BorderBoxComponent < Primer::Component
+    status :beta
+
     include ViewComponent::SlotableV2
 
     # Optional Header.
@@ -87,10 +89,6 @@ module Primer
 
     def render?
       rows.any? || header.present? || body.present? || footer.present?
-    end
-
-    def self.status
-      Primer::Component::STATUSES[:beta]
     end
   end
 end

@@ -11,17 +11,6 @@ module Primer
     include JoinStyleArgumentsHelper
     include ViewHelper::Dsl
     include ViewHelper
-
-    # sourced from https://primer.style/doctocat/usage/front-matter#status
-    STATUSES = {
-      alpha: :alpha,
-      beta: :beta,
-      stable: :stable,
-      deprecated: :deprecated
-    }.freeze
-
-    def self.status
-      STATUSES[:alpha]
-    end
+    include Status::Dsl
   end
 end

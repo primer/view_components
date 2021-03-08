@@ -3,6 +3,8 @@
 module Primer
   # Use the Subhead component for page headings.
   class SubheadComponent < Primer::Component
+    status :beta
+
     include ViewComponent::SlotableV2
 
     # The heading
@@ -96,10 +98,6 @@ module Primer
 
     def render?
       heading.present?
-    end
-
-    def self.status
-      Primer::Component::STATUSES[:beta]
     end
   end
 end
