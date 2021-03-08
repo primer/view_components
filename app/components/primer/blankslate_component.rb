@@ -3,6 +3,8 @@
 module Primer
   # Use Primer::BlankslateComponent when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.
   class BlankslateComponent < Primer::Component
+    status :beta
+
     include ViewComponent::SlotableV2
 
     # Optional Spinner.
@@ -129,10 +131,6 @@ module Primer
       @button_classes = button_classes
       @link_text = link_text
       @link_url = link_url
-    end
-
-    def self.status
-      Primer::Component::STATUSES[:beta]
     end
   end
 end

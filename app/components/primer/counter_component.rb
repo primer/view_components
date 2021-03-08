@@ -3,6 +3,8 @@
 module Primer
   # Use Primer::CounterComponent to add a count to navigational elements and buttons.
   class CounterComponent < Primer::Component
+    status :beta
+
     DEFAULT_SCHEME = :default
     SCHEME_MAPPINGS = {
       DEFAULT_SCHEME => "Counter",
@@ -49,10 +51,6 @@ module Primer
 
     def call
       render(Primer::BaseComponent.new(**@system_arguments)) { value }
-    end
-
-    def self.status
-      Primer::Component::STATUSES[:beta]
     end
 
     private
