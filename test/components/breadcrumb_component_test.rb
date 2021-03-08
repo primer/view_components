@@ -47,4 +47,8 @@ class PrimerBreadcrumbComponentTest < Minitest::Test
 
     refute_selector("nav[aria-label='Breadcrumb'] .breadcrumb-item a")
   end
+
+  def test_status
+    assert_component_state(Primer::BreadcrumbComponent, :beta)
+  end
 end
