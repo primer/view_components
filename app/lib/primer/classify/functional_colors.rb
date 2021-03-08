@@ -84,29 +84,30 @@ module Primer
       class << self
         def text_color(val)
           functional_color(
+            key: "color",
             value: val,
-            functional_prefix: "color",
-            non_functional_prefix: "text",
             mappings: TEXT_COLOR_MAPPINGS,
-            key: "color"
+            non_functional_prefix: "text",
+            functional_options: TEXT_OPTIONS
           )
         end
 
         def border_color(val)
           functional_color(
+            key: "border",
             value: val,
-            functional_prefix: "color-border",
-            non_functional_prefix: "border",
             mappings: BORDER_COLOR_MAPPINGS,
-            key: "border"
+            non_functional_prefix: "border",
+            functional_prefix: "border-",
+            functional_options: BORDER_OPTIONS
           )
         end
 
         private
 
-        def functional_color(value:, functional_prefix:, non_functional_prefix:, mappings:, key:)
+        def functional_color(key:, value:, mappings:, non_functional_prefix:, functional_options:, functional_prefix: "")
           # the value is a functional color
-(??)          return "color-#{val.to_s.dasherize}" if ends_with_number?(val) || FUNCTIONAL_COLOR_REGEX.match?(val)
+          return "color-#{functional_prefix}#{value.to_s.dasherize}" if ends_with_number?(value) || functional_options.include?(value)
           # if the app still allows non functional colors
           return "#{non_functional_prefix}-#{value.to_s.dasherize}" unless force_functional_colors?
 
@@ -117,7 +118,7 @@ module Primer
 
             ActiveSupport::Deprecation.warn("#{key} #{value} is deprecated. Please use #{functional_color} instead.") unless Rails.env.production? || silence_color_deprecations?
 
-            return "#{functional_prefix}-#{functional_color.to_s.dasherize}"
+            return "color-#{functional_prefix}#{functional_color.to_s.dasherize}"
           end
 
           raise ArgumentError, "#{key} #{value} does not exist." unless Rails.env.production?
