@@ -4,6 +4,7 @@ module Primer
   # Use breadcrumbs to display page hierarchy within a section of the site. All of the items in the breadcrumb "trail" are links except for the final item, which is a plain string indicating the current page.
   class BreadcrumbComponent < Primer::Component
     include ViewComponent::SlotableV2
+    status :beta
 
     # _Note: if both `href` and `selected: true` are passed in, `href` will be ignored and the item will not be rendered as a link._
     #
