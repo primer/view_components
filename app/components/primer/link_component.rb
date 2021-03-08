@@ -3,6 +3,8 @@
 module Primer
   # Use links for moving from one page to another. The Link component styles anchor tags with default blue styling and hover text-decoration.
   class LinkComponent < Primer::Component
+    status :beta
+
     # @example Default
     #   <%= render(Primer::LinkComponent.new(href: "http://www.google.com")) { "Link" } %>
     #
@@ -24,10 +26,6 @@ module Primer
 
     def call
       render(Primer::BaseComponent.new(**@system_arguments)) { content }
-    end
-
-    def self.status
-      Primer::Component::STATUSES[:beta]
     end
   end
 end

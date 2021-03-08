@@ -3,6 +3,8 @@
 module Primer
   # Component for rendering the status of an item.
   class StateComponent < Primer::Component
+    status :beta
+
     COLOR_DEFAULT = :default
     NEW_COLOR_MAPPINGS = {
       open: "State--open",
@@ -67,10 +69,6 @@ module Primer
 
     def call
       render(Primer::BaseComponent.new(**@system_arguments)) { content }
-    end
-
-    def self.status
-      Primer::Component::STATUSES[:beta]
     end
   end
 end

@@ -1591,10 +1591,10 @@
     react-is "16.10.2"
     styled-system "5.1.2"
 
-"@primer/gatsby-theme-doctocat@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@primer/gatsby-theme-doctocat/-/gatsby-theme-doctocat-1.5.0.tgz#9002125695ac6eeadae4adcc8532c1c1f22ac5bf"
-  integrity sha512-PzmiuNKnkkO7dSnHhDJejVzHFGEtzyEUq3P7H/6bp6yGEZIEr7ATGRGQXnpoVMae4r0HhK5LR8idnSqJGbNtKA==
+"@primer/gatsby-theme-doctocat@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@primer/gatsby-theme-doctocat/-/gatsby-theme-doctocat-1.6.0.tgz#b80831b17ad654b34e9d0379b42bb7fd833fac72"
+  integrity sha512-E/GXYk07VhWt0l18v30xCu+NlDszvSdTs56dKFuH+L8JlV2V2efvl88kKm2INqlM9PTP/bFQ9jeyKSC1YDHNiQ==
   dependencies:
     "@babel/preset-env" "^7.5.5"
     "@babel/preset-react" "^7.0.0"
@@ -11998,12 +11998,7 @@ preval.macro@^3.0.0:
   dependencies:
     babel-plugin-preval "^3.0.0"
 
-prism-react-renderer@^1.0.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.1.1.tgz#1c1be61b1eb9446a146ca7a50b7bcf36f2a70a44"
-  integrity sha512-MgMhSdHuHymNRqD6KM3eGS0PNqgK9q4QF5P0yoQQvpB6jNjeSAi3jcSAz0Sua/t9fa4xDOMar9HJbLa08gl9ug==
-
-prism-react-renderer@^1.2.0:
+prism-react-renderer@^1.0.1, prism-react-renderer@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.2.0.tgz#5ad4f90c3e447069426c8a53a0eafde60909cdf4"
   integrity sha512-GHqzxLYImx1iKN1jJURcuRoA/0ygCcNhfGw1IT8nPIMzarmKQ3Nc+JcG0gi8JXQzuh0C5ShE4npMIoqNin40hg==

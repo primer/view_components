@@ -3,6 +3,8 @@
 module Primer
   # Use labels to add contextual metadata to a design.
   class LabelComponent < Primer::Component
+    status :beta
+
     SCHEME_MAPPINGS = {
       primary: "Label--primary",
       secondary: "Label--secondary",
@@ -58,10 +60,6 @@ module Primer
 
     def call
       render(Primer::BaseComponent.new(**@system_arguments)) { content }
-    end
-
-    def self.status
-      Primer::Component::STATUSES[:beta]
     end
   end
 end

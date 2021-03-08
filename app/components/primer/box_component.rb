@@ -3,6 +3,8 @@
 module Primer
   # A basic wrapper component for most layout related needs.
   class BoxComponent < Primer::Component
+    status :stable
+
     # @example Default
     #   <%= render(Primer::BoxComponent.new) { "Your content here" } %>
     #
@@ -17,10 +19,6 @@ module Primer
 
     def call
       render(Primer::BaseComponent.new(**@system_arguments)) { content }
-    end
-
-    def self.status
-      Primer::Component::STATUSES[:stable]
     end
   end
 end
