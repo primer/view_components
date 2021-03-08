@@ -46,6 +46,18 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@github/auto-complete-element@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@github/auto-complete-element/-/auto-complete-element-3.0.2.tgz#85b7c2a4205e375173186709268eeb20bcd7d562"
+  integrity sha512-2N6SP/WOvPPnMm5E0uq21AyCxsJ0d6cBxBZ0yVNpvgeaNgPNI8gR1h54c2Ao4iQtvFce6eWdIezBXLDPMPbDag==
+  dependencies:
+    "@github/combobox-nav" "^2.0.2"
+
+"@github/combobox-nav@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@github/combobox-nav/-/combobox-nav-2.0.2.tgz#c4ce5999c2937ad5877fb5113a82e41a17c420e0"
+  integrity sha512-xVnncEyRjIFKWT1Bw0R51/V/13vwYrqg6v7rc8HNfsa5pstVqHx/L2ai8eX/3iK98uk6JxGJDzm8ryTo86S+nQ==
+
 "@github/prettier-config@0.0.4":
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/@github/prettier-config/-/prettier-config-0.0.4.tgz"

@@ -6,6 +6,14 @@
 
     *Manuel Puyol*
 
+* Add `AutoComplete` and `AutoCompleteItem` components.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Updates `PopoverComponent` to use Slots V2.
+
+    *Manuel Puyol*
+
 ## 0.0.27
 
 * Promote `BreadcrumbComponent` and `ProgressBarComponent` to beta status.

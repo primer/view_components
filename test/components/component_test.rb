@@ -7,6 +7,8 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::AutoCompleteComponent, { src: "Foo", id: "Bar" }, proc { |c| c.input(classes: "Baz") }],
+    [Primer::AutoCompleteItemComponent, { value: "Foo" }],
     [Primer::AvatarComponent, { alt: "github", src: "https://github.com/github.png" }],
     [Primer::AvatarStackComponent, {}, lambda do |component|
       component.avatar(alt: "github", src: "https://github.com/github.png")
@@ -42,7 +44,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::MarkdownComponent, {}],
     [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],
     [Primer::OcticonComponent, { icon: "people" }],
-    [Primer::PopoverComponent, {}, proc { |component| component.slot(:body) }],
+    [Primer::PopoverComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::ProgressBarComponent, {}, proc { |component| component.item }],
     [Primer::SpinnerComponent, {}],
     [Primer::StateComponent, { title: "Open" }],
