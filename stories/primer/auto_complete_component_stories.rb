@@ -10,7 +10,7 @@ class Primer::AutoCompleteComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |c|
-      c.input(type: :text, name: "username")
+      c.input(name: "username")
       c.icon(icon: :search)
     end
   end

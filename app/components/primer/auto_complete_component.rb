@@ -12,9 +12,10 @@ module Primer
     #
     # @param type [Symbol] <%= one_of(Primer::AutoCompleteComponent::INPUT_TYPE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_one :input, lambda { |type: DEFAULT_INPUT_TYPE, **system_arguments|
+    renders_one :input, lambda { |type: DEFAULT_INPUT_TYPE, classes: "form-control", **system_arguments|
       system_arguments[:tag] = :input
       system_arguments[:type] = fetch_or_fallback(INPUT_TYPE_OPTIONS, type, DEFAULT_INPUT_TYPE)
+      system_arguments[:classes] = classes
       Primer::BaseComponent.new(**system_arguments)
     }
 
@@ -37,7 +38,7 @@ module Primer
 
     # @example Default
     #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
-    #     <% c.input(type: :text, name: "input", classes: "form-control") %>
+    #     <% c.input(type: :text, name: "input") %>
     #     <% c.results do %>
     #       <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
     #         Selected
@@ -50,7 +51,7 @@ module Primer
     #
     # @example With custom classes for the results
     #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
-    #     <% c.input(type: :text, name: "input", classes: "form-control") %>
+    #     <% c.input(type: :text, name: "input") %>
     #     <% c.results(classes: "my-custom-class") do %>
     #       <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
     #         Selected
@@ -63,7 +64,7 @@ module Primer
     #
     # @example With Icon
     #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
-    #     <% c.input(type: :text, name: "input", classes: "form-control") %>
+    #     <% c.input(type: :text, name: "input") %>
     #     <% c.icon(icon: :search) %>
     #     <% c.results do %>
     #       <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
