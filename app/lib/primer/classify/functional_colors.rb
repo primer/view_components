@@ -4,8 +4,6 @@ module Primer
   class Classify
     # https://primer-css-git-mkt-color-modes-docs-primer.vercel.app/css/support/v16-migration
     class FunctionalColors
-      FUNCTIONAL_COLOR_REGEX = /(primary|secondary|tertiary|link|success|warning|danger|info|inverse|text_white)/.freeze
-
       FUNCTIONAL_TEXT_OPTIONS = {
         primary: :text_primary,
         secondary: :text_secondary,
@@ -51,7 +49,7 @@ module Primer
       class << self
         def text_color(val)
           # the value is a functional color
-          return "color-#{val.to_s.dasherize}" if ends_with_number?(val) || FUNCTIONAL_COLOR_REGEX.match?(val)
+          return "color-#{val.to_s.dasherize}" if ends_with_number?(val) || TEXT_OPTIONS.include?(val)
           # if the app still allows non functional colors
           return "text-#{val.to_s.dasherize}" unless force_functional_colors?
 
