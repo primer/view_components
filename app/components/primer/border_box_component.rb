@@ -111,7 +111,7 @@ module Primer
       @system_arguments[:classes] = class_names(
         "Box",
         PADDING_MAPPINGS[fetch_or_fallback(PADDING_MAPPINGS.keys, padding, DEFAULT_PADDING)],
-        system_arguments[:classes],
+        system_arguments[:classes]
       )
     end
 
