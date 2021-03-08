@@ -52,7 +52,7 @@ module Primer
         primary: :primary,
         secondary: :secondary,
         tertiary: :tertiary,
-        ingo: :ingo,
+        info: :info,
         success: :success,
         warning: :warning,
         danger: :danger,
@@ -78,7 +78,7 @@ module Primer
         white_fade: nil
       }.freeze
 
-      BORDER_OPTIONS = *FUNCTIONAL_BORDER_OPTIONS.values.freeze
+      BORDER_OPTIONS = FUNCTIONAL_BORDER_OPTIONS.values.freeze
       DEPRECATED_BORDER_OPTIONS = BORDER_COLOR_MAPPINGS.keys.freeze
 
       class << self
