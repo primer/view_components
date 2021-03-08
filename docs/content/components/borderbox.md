@@ -39,12 +39,12 @@ BorderBox is a Box component with a border.
 <% end %>
 ```
 
-### Condensed
+### Padding density
 
 <Example src="<div class='Box Box--condensed '>  <div class='Box-header '>    Header</div>  <div class='Box-body '>    Body</div>    <ul>        <li class='Box-row '>    Row two</li>    </ul>  <div class='Box-footer '>    Footer</div></div>" />
 
 ```erb
-<%= render(Primer::BorderBoxComponent.new(condensed: true)) do |component| %>
+<%= render(Primer::BorderBoxComponent.new(padding: :condensed)) do |component| %>
   <% component.header do %>
     Header
   <% end %>
@@ -64,7 +64,7 @@ BorderBox is a Box component with a border.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `condensed` | `Boolean` | `false` | Whether or not the box should be condensed. |
+| `padding` | `Symbol` | `:default` | One of `:default`, `:condensed`, or `:spacious`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
