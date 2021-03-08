@@ -17,7 +17,7 @@ function Head(props) {
       <meta property="og:description" content={description} />
       <meta property="og:image" content={siteMetadata.imageUrl} />
       <meta property="twitter:card" content="summary_large_image" />
-      <link href="https://unpkg.com/@primer/css-next@canary/dist/primer.css" rel="stylesheet" />
+      <link href="https://unpkg.com/@primer/css-next@0.0.0-7e7b125/dist/primer.css" rel="stylesheet" />
     </Helmet>
   )
 }
