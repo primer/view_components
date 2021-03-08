@@ -2,6 +2,10 @@
 
 ## main
 
+* **Breaking change**: Updates `PopoverComponent` to use Slots V2.
+
+    *Simon Taranto*
+
 ## 0.0.27
 
 * Promote `BreadcrumbComponent` and `ProgressBarComponent` to beta status.
