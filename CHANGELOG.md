@@ -2,9 +2,13 @@
 
 ## main
 
+* Add `AutoComplete` and `AutoCompleteItem` components.
+
+    *Manuel Puyol*
+
 * **Breaking change**: Updates `PopoverComponent` to use Slots V2.
 
-    *Simon Taranto*
+    *Manuel Puyol*
 
 ## 0.0.27
 
