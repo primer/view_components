@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.27
+
 * Promote `BreadcrumbComponent` and `ProgressBarComponent` to beta status.
 
     *Simon Taranto*
