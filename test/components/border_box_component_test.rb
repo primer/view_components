@@ -51,11 +51,19 @@ class PrimerBorderBoxComponentTest < Minitest::Test
   end
 
   def test_renders_condensed
-    render_inline(Primer::BorderBoxComponent.new(condensed: true)) do |component|
+    render_inline(Primer::BorderBoxComponent.new(padding: :condensed)) do |component|
       component.body { "Body" }
     end
 
     assert_selector("div.Box.Box--condensed")
+  end
+
+  def test_renders_spacious
+    render_inline(Primer::BorderBoxComponent.new(padding: :spacious)) do |component|
+      component.body { "Body" }
+    end
+
+    assert_selector("div.Box.Box--spacious")
   end
 
   def test_status

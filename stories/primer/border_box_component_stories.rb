@@ -5,7 +5,7 @@ class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
 
   story(:full_box) do
     controls do
-      condensed false
+      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
     end
 
     content do |component|
@@ -20,7 +20,7 @@ class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
 
   story(:header) do
     controls do
-      condensed false
+      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
     end
 
     content do |component|
@@ -30,7 +30,7 @@ class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
 
   story(:body) do
     controls do
-      condensed false
+      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
     end
 
     content do |component|
@@ -40,7 +40,7 @@ class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
 
   story(:footer) do
     controls do
-      condensed false
+      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
     end
 
     content do |component|
@@ -50,7 +50,7 @@ class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
 
   story(:rows) do
     controls do
-      condensed false
+      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
     end
 
     content do |component|
