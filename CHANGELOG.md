@@ -6,7 +6,7 @@
 
     *Keith Cirkel*
 
-* Add `AutComplete` and `AutoCompleteItem` components.
+* Add `AutoComplete` and `AutoCompleteItem` components.
 
     *Keith Cirkel*
 
