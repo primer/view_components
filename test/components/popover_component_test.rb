@@ -7,10 +7,10 @@ class PrimerPopoverComponentTest < Minitest::Test
 
   def test_renders_default_styling
     render_inline(Primer::PopoverComponent.new) do |component|
-      component.slot(:heading) do
+      component.heading do
         "My header"
       end
-      component.slot(:body) do
+      component.body do
         "My body"
       end
     end
@@ -24,7 +24,7 @@ class PrimerPopoverComponentTest < Minitest::Test
     render_inline(Primer::PopoverComponent.new(
                     position: :absolute, tag: :span, classes: "custom-class"
                   )) do |component|
-      component.slot(:body) do
+      component.body do
         "Hi there"
       end
     end
@@ -34,7 +34,7 @@ class PrimerPopoverComponentTest < Minitest::Test
 
   def test_respects_message_caret_option
     render_inline(Primer::PopoverComponent.new) do |component|
-      component.slot(:body, caret: :left_bottom)
+      component.body(caret: :left_bottom)
     end
 
     assert_selector("div.Popover div.Popover-message.Popover-message--left-bottom.Box")
@@ -42,7 +42,7 @@ class PrimerPopoverComponentTest < Minitest::Test
 
   def test_respects_message_large_option
     render_inline(Primer::PopoverComponent.new) do |component|
-      component.slot(:body, large: true)
+      component.body(large: true)
     end
 
     assert_selector("div.Popover div.Popover-message.Popover-message--large.Box")
@@ -50,7 +50,7 @@ class PrimerPopoverComponentTest < Minitest::Test
 
   def test_allows_message_customization
     render_inline(Primer::PopoverComponent.new) do |component|
-      component.slot(:body, p: 3, mt: 1, mx: 4, text_align: :right)
+      component.body(p: 3, mt: 1, mx: 4, text_align: :right)
     end
 
     assert_selector("div.Popover div.Popover-message.Box.p-3.mt-1.mx-4.text-right")
@@ -58,8 +58,8 @@ class PrimerPopoverComponentTest < Minitest::Test
 
   def test_allows_heading_customization
     render_inline(Primer::PopoverComponent.new) do |component|
-      component.slot(:body)
-      component.slot(:heading, mb: 4, pr: 3, tag: :h3) do
+      component.body { "Foo" }
+      component.heading(mb: 4, pr: 3, tag: :h3) do
         "Hello world"
       end
     end

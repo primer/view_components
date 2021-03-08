@@ -17,14 +17,14 @@ By default, the popover renders with absolute positioning, meaning it should usu
 
 ### Default
 
-<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box p-4 mt-2 mx-auto text-left box-shadow-large'>      <h4 class='mb-2'>        Activity feed</h4>    This is the Popover body.</div></div>" />
+<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box p-4 mt-2 mx-auto text-left box-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the Popover body.</div></div>" />
 
 ```erb
 <%= render Primer::PopoverComponent.new do |component| %>
-  <% component.slot(:heading) do %>
+  <% component.heading do %>
     Activity feed
   <% end %>
-  <% component.slot(:body) do %>
+  <% component.body do %>
     This is the Popover body.
   <% end %>
 <% end %>
@@ -32,14 +32,14 @@ By default, the popover renders with absolute positioning, meaning it should usu
 
 ### Large
 
-<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--large p-4 mt-2 mx-auto text-left box-shadow-large'>      <h4 class='mb-2'>        Activity feed</h4>    This is the large Popover body.</div></div>" />
+<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--large p-4 mt-2 mx-auto text-left box-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the large Popover body.</div></div>" />
 
 ```erb
 <%= render Primer::PopoverComponent.new do |component| %>
-  <% component.slot(:heading) do %>
+  <% component.heading do %>
     Activity feed
   <% end %>
-  <% component.slot(:body, large: true) do %>
+  <% component.body(large: true) do %>
     This is the large Popover body.
   <% end %>
 <% end %>
@@ -47,14 +47,14 @@ By default, the popover renders with absolute positioning, meaning it should usu
 
 ### Caret position
 
-<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--left p-4 mt-2 mx-auto text-left box-shadow-large'>      <h4 class='mb-2'>        Activity feed</h4>    This is the large Popover body.</div></div>" />
+<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--left p-4 mt-2 mx-auto text-left box-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the large Popover body.</div></div>" />
 
 ```erb
 <%= render Primer::PopoverComponent.new do |component| %>
-  <% component.slot(:heading) do %>
+  <% component.heading do %>
     Activity feed
   <% end %>
-  <% component.slot(:body, caret: :left) do %>
+  <% component.body(caret: :left) do %>
     This is the large Popover body.
   <% end %>
 <% end %>
@@ -66,16 +66,22 @@ By default, the popover renders with absolute positioning, meaning it should usu
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `heading` slot
+## Slots
+
+### `Heading`
+
+The heading
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `body` slot
+### `Body`
+
+The body
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `caret` | `Symbol` | `CARET_DEFAULT` | One of `:top`, `:bottom`, `:bottom_right`, `:bottom_left`, `:left`, `:left_bottom`, `:left_top`, `:right`, `:right_bottom`, `:right_top`, `:top_left`, or `:top_right`. |
-| `large` | `Boolean` | `false` | Whether to use the large version of the component. |
+| `caret` | `Symbol` | N/A | One of `:top`, `:bottom`, `:bottom_right`, `:bottom_left`, `:left`, `:left_bottom`, `:left_top`, `:right`, `:right_bottom`, `:right_top`, `:top_left`, or `:top_right`. |
+| `large` | `Boolean` | N/A | Whether to use the large version of the component. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
