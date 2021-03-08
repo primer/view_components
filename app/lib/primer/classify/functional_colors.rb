@@ -60,7 +60,7 @@ module Primer
             # colors without functional mapping stay the same
             return "text-#{val.to_s.dasherize}" if functional_color.blank?
 
-            ActiveSupport::Deprecation.warn("Color #{val} is deprecated. Please use #{functional_color} instead.") unless Rails.env.production?
+            ActiveSupport::Deprecation.warn("Color #{val} is deprecated. Please use #{functional_color} instead.") unless Rails.env.production? || silence_color_deprecations?
 
             return "color-#{functional_color.to_s.dasherize}"
           end
@@ -75,6 +75,10 @@ module Primer
 
         def force_functional_colors?
           Rails.application.config.primer_view_components.force_functional_colors
+        end
+
+        def silence_color_deprecations?
+          Rails.application.config.primer_view_components.silence_color_deprecations
         end
       end
     end
