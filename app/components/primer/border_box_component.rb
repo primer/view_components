@@ -80,11 +80,32 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
+    # @example Condensed
+    #   <%= render(Primer::BorderBoxComponent.new(condensed: true)) do |component| %>
+    #     <% component.header do %>
+    #       Header
+    #     <% end %>
+    #     <% component.body do %>
+    #       Body
+    #     <% end %>
+    #     <% component.row do %>
+    #       Row two
+    #     <% end %>
+    #     <% component.footer do %>
+    #       Footer
+    #     <% end %>
+    #   <% end %>
+    #
+    # @param condensed [Boolean] Whether or not the box should be condensed.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(**system_arguments)
+    def initialize(condensed: false, **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
-      @system_arguments[:classes] = class_names("Box", system_arguments[:classes])
+      @system_arguments[:classes] = class_names(
+        "Box",
+        system_arguments[:classes],
+        "Box--condensed" => condensed
+      )
     end
 
     def render?

@@ -50,6 +50,14 @@ class PrimerBorderBoxComponentTest < Minitest::Test
     assert_selector("li.Box-row", count: 3)
   end
 
+  def test_renders_condensed
+    render_inline(Primer::BorderBoxComponent.new(condensed: true)) do |component|
+      component.body { "Body" }
+    end
+
+    assert_selector("div.Box.Box--condensed")
+  end
+
   def test_status
     assert_component_state(Primer::BorderBoxComponent, :beta)
   end
