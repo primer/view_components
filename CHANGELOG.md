@@ -2,17 +2,23 @@
 
 ## main
 
-* Add `TimeAgo` component.
-
-    *Keith Cirkel*
-
 * Add `AutoComplete` and `AutoCompleteItem` components.
 
-    *Keith Cirkel*
+    *Manuel Puyol*
+
+## 0.0.27
+
+* Promote `BreadcrumbComponent` and `ProgressBarComponent` to beta status.
+
+    *Simon Taranto*
 
 * Fix `OcticonComponent` not rendering `data-test-selector` correctly.
 
     *Manuel Puyol*
+
+* Add `TimeAgo` component.
+
+    *Keith Cirkel*
 
 * **Breaking change**: Updates `UnderlineNavComponent` to use Slots V2.
 
