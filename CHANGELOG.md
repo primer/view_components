@@ -1,10 +1,10 @@
 # CHANGELOG
 
+## main
+
 * Add `force_functional_colors` option to convert colors to functional.
 
     *Manuel Puyol*
-
-## main
 
 ## 0.0.27
 
