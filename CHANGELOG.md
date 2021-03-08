@@ -2,6 +2,10 @@
 
 ## main
 
+* Add `AutoComplete` and `AutoCompleteItem` components.
+
+    *Manuel Puyol*
+
 ## 0.0.27
 
 * Promote `BreadcrumbComponent` and `ProgressBarComponent` to beta status.

@@ -27,6 +27,7 @@
     "lint:fix": "eslint app/components --fix"
   },
   "dependencies": {
+    "@github/auto-complete-element": "^3.0.2",
     "@github/tab-container-element": "^3.1.0",
     "@github/time-elements": "^3.1.1"
   },
