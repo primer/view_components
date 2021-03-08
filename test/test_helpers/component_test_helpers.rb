@@ -19,8 +19,11 @@ module Primer
     def with_force_functional_colors(new_value)
       old_value = Rails.application.config.primer_view_components.force_functional_colors
       Rails.application.config.primer_view_components.force_functional_colors = new_value
+      Primer::Classify::Cache.preload!
       yield
+    ensure
       Rails.application.config.primer_view_components.force_functional_colors = old_value
+      Primer::Classify::Cache.preload!
     end
 
     def assert_component_state(component, state)
