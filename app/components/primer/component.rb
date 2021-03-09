@@ -9,7 +9,6 @@ module Primer
     include FetchOrFallbackHelper
     include OcticonsHelper
     include JoinStyleArgumentsHelper
-    include ViewHelper::Dsl
     include ViewHelper
     include Status::Dsl
   end
