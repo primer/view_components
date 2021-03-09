@@ -15,27 +15,35 @@ Use links for moving from one page to another. The Link component styles anchor 
 
 ### Default
 
-<Example src="<a href='http://www.google.com'>Link</a>" />
+<Example src="<a href='#'>Link</a>" />
 
 ```erb
-<%= render(Primer::LinkComponent.new(href: "http://www.google.com")) { "Link" } %>
+<%= render(Primer::LinkComponent.new(href: "#")) { "Link" } %>
 ```
 
 ### Muted
 
-<Example src="<a href='http://www.google.com' class='Link--muted '>Link</a>" />
+<Example src="<a href='#' class='Link--muted '>Link</a>" />
 
 ```erb
-<%= render(Primer::LinkComponent.new(href: "http://www.google.com", muted: true)) { "Link" } %>
+<%= render(Primer::LinkComponent.new(href: "#", muted: true)) { "Link" } %>
 ```
 
 ### Variants
 
-<Example src="<a href='http://www.google.com' class='Link--primary '>Primary</a><a href='http://www.google.com' class='Link--secondary '>Secondary</a>" />
+<Example src="<a href='#' class='Link--primary '>Primary</a><a href='#' class='Link--secondary '>Secondary</a>" />
 
 ```erb
-<%= render(Primer::LinkComponent.new(href: "http://www.google.com", variant: :primary)) { "Primary" } %>
-<%= render(Primer::LinkComponent.new(href: "http://www.google.com", variant: :secondary)) { "Secondary" } %>
+<%= render(Primer::LinkComponent.new(href: "#", variant: :primary)) { "Primary" } %>
+<%= render(Primer::LinkComponent.new(href: "#", variant: :secondary)) { "Secondary" } %>
+```
+
+### Without underline
+
+<Example src="<a href='#' class='no-underline '>Link</a>" />
+
+```erb
+<%= render(Primer::LinkComponent.new(href: "#", underline: false)) { "Link" } %>
 ```
 
 ### Span as link

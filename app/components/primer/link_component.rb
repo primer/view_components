@@ -16,14 +16,17 @@ module Primer
     TAG_OPTIONS = [DEFAULT_TAG, :span]
 
     # @example Default
-    #   <%= render(Primer::LinkComponent.new(href: "http://www.google.com")) { "Link" } %>
+    #   <%= render(Primer::LinkComponent.new(href: "#")) { "Link" } %>
     #
     # @example Muted
-    #   <%= render(Primer::LinkComponent.new(href: "http://www.google.com", muted: true)) { "Link" } %>
+    #   <%= render(Primer::LinkComponent.new(href: "#", muted: true)) { "Link" } %>
     #
     # @example Variants
-    #   <%= render(Primer::LinkComponent.new(href: "http://www.google.com", variant: :primary)) { "Primary" } %>
-    #   <%= render(Primer::LinkComponent.new(href: "http://www.google.com", variant: :secondary)) { "Secondary" } %>
+    #   <%= render(Primer::LinkComponent.new(href: "#", variant: :primary)) { "Primary" } %>
+    #   <%= render(Primer::LinkComponent.new(href: "#", variant: :secondary)) { "Secondary" } %>
+    #
+    # @example Without underline
+    #   <%= render(Primer::LinkComponent.new(href: "#", underline: false)) { "Link" } %>
     #
     # @example Span as link
     #   <%= render(Primer::LinkComponent.new(tag: :span)) { "Span as a link" } %>
