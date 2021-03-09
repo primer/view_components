@@ -26,14 +26,7 @@ module Primer
         green: FUNCTIONAL_OPTIONS[:success],
         yellow: FUNCTIONAL_OPTIONS[:warning],
         red: FUNCTIONAL_OPTIONS[:danger],
-        white: FUNCTIONAL_OPTIONS[:white],
-        # still unsure what will happen with these colors
-        black: nil,
-        orange: nil,
-        orange_light: nil,
-        purple: nil,
-        pink: nil,
-        inherit: nil
+        white: FUNCTIONAL_OPTIONS[:white]
       }.freeze
 
       OPTIONS = [
@@ -46,7 +39,8 @@ module Primer
         :icon_danger,
         *FUNCTIONAL_OPTIONS.values
       ].freeze
-      DEPRECATED_OPTIONS = MAPPINGS.keys.freeze
+      OPTIONS_WITHOUT_MAPPINGS = [:black, :orange, :orange_light, :purple, :pink, :inherit].freeze
+      DEPRECATED_OPTIONS = [*MAPPINGS.keys, *OPTIONS_WITHOUT_MAPPINGS].freeze
 
       class << self
         def color(val)
@@ -55,7 +49,8 @@ module Primer
             value: val,
             mappings: MAPPINGS,
             non_functional_prefix: "text",
-            functional_options: OPTIONS
+            functional_options: OPTIONS,
+            options_without_mappigs: OPTIONS_WITHOUT_MAPPINGS
           )
         end
       end

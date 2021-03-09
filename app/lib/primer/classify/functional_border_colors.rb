@@ -24,18 +24,12 @@ module Primer
         green: FUNCTIONAL_OPTIONS[:success],
         yellow: FUNCTIONAL_OPTIONS[:warning],
         red: FUNCTIONAL_OPTIONS[:danger],
-        white: FUNCTIONAL_OPTIONS[:inverse],
-        # still unsure what will happen with these colors
-        gray_darker: nil,
-        blue_light: nil,
-        red_light: nil,
-        purple: nil,
-        black_fade: nil,
-        white_fade: nil
+        white: FUNCTIONAL_OPTIONS[:inverse]
       }.freeze
 
       OPTIONS = FUNCTIONAL_OPTIONS.values.freeze
-      DEPRECATED_OPTIONS = MAPPINGS.keys.freeze
+      OPTIONS_WITHOUT_MAPPINGS = [:gray_darker, :blue_light, :red_light, :purple, :black_fade, :white_fade].freeze
+      DEPRECATED_OPTIONS = [*MAPPINGS.keys, *OPTIONS_WITHOUT_MAPPINGS].freeze
 
       class << self
         def color(val)
@@ -45,7 +39,8 @@ module Primer
             mappings: MAPPINGS,
             non_functional_prefix: "border",
             functional_prefix: "border-",
-            functional_options: OPTIONS
+            functional_options: OPTIONS,
+            options_without_mappigs: OPTIONS_WITHOUT_MAPPINGS
           )
         end
       end

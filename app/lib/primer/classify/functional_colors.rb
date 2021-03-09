@@ -11,13 +11,21 @@ module Primer
 
         private
 
-        def functional_color(key:, value:, mappings:, non_functional_prefix:, functional_options:, functional_prefix: "")
+        def functional_color(
+          key:,
+          value:,
+          mappings:,
+          non_functional_prefix:,
+          functional_prefix: "",
+          functional_options:,
+          options_without_mappigs: []
+        )
           # the value is a functional color
           return "color-#{functional_prefix}#{value.to_s.dasherize}" if ends_with_number?(value) || functional_options.include?(value)
           # if the app still allows non functional colors
           return "#{non_functional_prefix}-#{value.to_s.dasherize}" unless force_functional_colors?
 
-          if mappings.key?(value)
+          if mappings.key?(value) || options_without_mappigs.include?(value)
             functional_color = mappings[value]
             # colors without functional mapping stay the same
             return "#{non_functional_prefix}-#{value.to_s.dasherize}" if functional_color.blank?
