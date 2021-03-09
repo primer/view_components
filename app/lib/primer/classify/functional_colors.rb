@@ -16,6 +16,8 @@ module Primer
         inverse: :text_inverse
       }.freeze
 
+      # colors mapping to `nil` will preserve the old classes.
+      # e.g. `text: :orange` will generate `text-orange`.
       TEXT_COLOR_MAPPINGS = {
         gray_dark: FUNCTIONAL_TEXT_OPTIONS[:primary],
         gray: FUNCTIONAL_TEXT_OPTIONS[:secondary],
