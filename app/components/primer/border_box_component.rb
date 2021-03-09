@@ -7,6 +7,13 @@ module Primer
 
     include ViewComponent::SlotableV2
 
+    DEFAULT_PADDING = :default
+    PADDING_MAPPINGS = {
+      DEFAULT_PADDING => "",
+      :condensed => "Box--condensed",
+      :spacious => "Box--spacious"
+    }.freeze
+
     # Optional Header.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -80,11 +87,32 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
+    # @example Padding density
+    #   <%= render(Primer::BorderBoxComponent.new(padding: :condensed)) do |component| %>
+    #     <% component.header do %>
+    #       Header
+    #     <% end %>
+    #     <% component.body do %>
+    #       Body
+    #     <% end %>
+    #     <% component.row do %>
+    #       Row two
+    #     <% end %>
+    #     <% component.footer do %>
+    #       Footer
+    #     <% end %>
+    #   <% end %>
+    #
+    # @param padding [Symbol] <%= one_of(Primer::BorderBoxComponent::PADDING_MAPPINGS.keys) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(**system_arguments)
+    def initialize(padding: DEFAULT_PADDING, **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
-      @system_arguments[:classes] = class_names("Box", system_arguments[:classes])
+      @system_arguments[:classes] = class_names(
+        "Box",
+        PADDING_MAPPINGS[fetch_or_fallback(PADDING_MAPPINGS.keys, padding, DEFAULT_PADDING)],
+        system_arguments[:classes]
+      )
     end
 
     def render?
