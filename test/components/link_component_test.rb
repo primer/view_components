@@ -9,7 +9,7 @@ class PrimerLinkComponentTest < Minitest::Test
     render_inline(Primer::LinkComponent.new(href: "http://joe-jonas-shirtless.com")) { "content" }
 
     assert_text("content")
-    refute_selector(".muted-link")
+    refute_selector(".Link--muted")
   end
 
   def test_renders_as_a_link
@@ -21,7 +21,7 @@ class PrimerLinkComponentTest < Minitest::Test
   def test_renders_primer_classes
     render_inline(Primer::LinkComponent.new(href: "http://google.com", mr: 3, muted: true)) { "content" }
 
-    assert_selector(".mr-3.muted-link")
+    assert_selector(".mr-3.Link--muted")
   end
 
   def test_defaults_muted_to_false
@@ -29,13 +29,13 @@ class PrimerLinkComponentTest < Minitest::Test
       render_inline(Primer::LinkComponent.new(href: "http://google.com", muted: nil)) { "content" }
     end
 
-    refute_selector(".muted-link")
+    refute_selector(".Link--muted")
   end
 
   def test_renders_muted_and_custom_css_class
     render_inline(Primer::LinkComponent.new(href: "http://google.com", classes: "foo", muted: true)) { "content" }
 
-    assert_selector(".foo.muted-link")
+    assert_selector(".foo.Link--muted")
   end
 
   def test_status

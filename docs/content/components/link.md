@@ -23,7 +23,7 @@ Use links for moving from one page to another. The Link component styles anchor 
 
 ### Muted
 
-<Example src="<a href='http://www.google.com' class='muted-link '>Link</a>" />
+<Example src="<a href='http://www.google.com' class='Link--muted '>Link</a>" />
 
 ```erb
 <%= render(Primer::LinkComponent.new(href: "http://www.google.com", muted: true)) { "Link" } %>
