@@ -38,7 +38,7 @@ module Primer
       DEPRECATED_OPTIONS = MAPPINGS.keys.freeze
 
       class << self
-        def call(val)
+        def color(val)
           functional_color(
             key: "border",
             value: val,

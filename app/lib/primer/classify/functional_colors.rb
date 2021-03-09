@@ -5,6 +5,10 @@ module Primer
     # https://primer-css-git-mkt-color-modes-docs-primer.vercel.app/css/support/v16-migration
     class FunctionalColors
       class << self
+        def color(val)
+          # Implemented by class' childrens.
+        end
+
         private
 
         def functional_color(key:, value:, mappings:, non_functional_prefix:, functional_options:, functional_prefix: "")

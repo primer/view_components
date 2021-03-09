@@ -202,7 +202,7 @@ module Primer
             memo[:classes] << "bg-#{val.to_s.dasherize}"
           end
         elsif key == COLOR_KEY
-          memo[:classes] << Primer::Classify::FunctionalColors.text_color(val)
+          memo[:classes] << Primer::Classify::FunctionalTextColors.color(val)
         elsif key == DISPLAY_KEY
           memo[:classes] << "d#{breakpoint}-#{val.to_s.dasherize}"
         elsif key == VERTICAL_ALIGN_KEY
@@ -213,12 +213,12 @@ module Primer
           border_value = if val == true
                            "border"
                          else
-                            "border-#{val.to_s.dasherize}"
+                           "border-#{val.to_s.dasherize}"
                          end
 
           memo[:classes] << border_value
         elsif key == BORDER_COLOR_KEY
-          memo[:classes] << Primer::Classify::FunctionalColors.border_color(val)
+          memo[:classes] << Primer::Classify::FunctionalBorderColors.color(val)
         elsif BORDER_MARGIN_KEYS.include?(key)
           memo[:classes] << "#{key.to_s.dasherize}-#{val}"
         elsif key == BORDER_RADIUS_KEY
