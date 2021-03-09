@@ -38,10 +38,6 @@ module Primer
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", variant: :large)) { "Large" } %>
     #
-    # @example Deprecated schemes
-    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :orange)) { "Orange" } %>
-    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :purple)) { "Purple" } %>
-    #
     # @param title [String] `title` attribute for the component element.
     # @param scheme [Symbol] <%= one_of(Primer::LabelComponent::SCHEME_MAPPINGS.keys) %>
     # @param variant [Symbol] <%= one_of(Primer::LabelComponent::VARIANT_OPTIONS) %>
