@@ -6,6 +6,10 @@
 
     *Manuel Puyol*
 
+* _Deprecation_: Deprecate `orange` and `purple` schemes in `LabelComponent`.
+
+    *Manuel Puyol*
+
 * **Breaking change**: Updates `PopoverComponent` to use Slots V2.
 
     *Manuel Puyol*
