@@ -7,6 +7,10 @@
 
     *Simon Taranto*
 
+* Update `LinkComponent` to use `Link--muted` instead of `muted-link`.
+
+    *Manuel Puyol*
+
 * Add `AutoComplete` and `AutoCompleteItem` components.
 
     *Manuel Puyol*
