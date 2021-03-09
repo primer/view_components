@@ -76,4 +76,8 @@ class PrimerTimelineItemComponentTest < Minitest::Test
 
     assert_selector(".TimelineItem-badge")
   end
+
+  def test_status
+    assert_component_state(Primer::TimelineItemComponent, :beta)
+  end
 end

@@ -108,4 +108,8 @@ class PrimerDetailsComponentTest < Minitest::Test
     refute_selector("details")
     refute_selector("summary")
   end
+
+  def test_status
+    assert_component_state(Primer::DetailsComponent, :beta)
+  end
 end

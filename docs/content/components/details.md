@@ -1,6 +1,6 @@
 ---
 title: Details
-status: Alpha
+status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/details_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-details-component
 ---
