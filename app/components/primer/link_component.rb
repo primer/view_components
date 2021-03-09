@@ -13,7 +13,7 @@ module Primer
     }.freeze
 
     DEFAULT_TAG = :a
-    TAG_OPTIONS = [DEFAULT_TAG, :span]
+    TAG_OPTIONS = [DEFAULT_TAG, :span].freeze
 
     # @example Default
     #   <%= render(Primer::LinkComponent.new(href: "#")) { "Link" } %>
