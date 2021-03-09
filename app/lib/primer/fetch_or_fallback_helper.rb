@@ -20,8 +20,12 @@ module Primer
 
     InvalidValueError = Class.new(StandardError)
 
-    def fetch_or_fallback(allowed_values, given_value, fallback = nil)
+    def fetch_or_fallback(allowed_values, given_value, fallback = nil, deprecated_values: [])
       if allowed_values.include?(given_value)
+        given_value
+      elsif deprecated_values.include?(given_value)
+        ActiveSupport::Deprecation.warn("#{given_value} is deprecated and will be removed in a future version.")
+
         given_value
       else
         if fallback_raises && ENV["RAILS_ENV"] != "production" && ENV["STORYBOOK"] != "true"
