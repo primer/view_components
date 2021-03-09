@@ -20,7 +20,7 @@ module Primer
       @system_arguments[:href] = href
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "muted-link" => fetch_or_fallback_boolean(muted, false)
+        "Link--muted" => fetch_or_fallback_boolean(muted, false)
       )
     end
 
