@@ -4,50 +4,6 @@ module Primer
   class Classify
     # https://primer-css-git-mkt-color-modes-docs-primer.vercel.app/css/support/v16-migration
     class FunctionalColors
-      FUNCTIONAL_TEXT_OPTIONS = {
-        primary: :text_primary,
-        secondary: :text_secondary,
-        tertiary: :text_tertiary,
-        link: :text_link,
-        success: :text_success,
-        warning: :text_warning,
-        danger: :text_danger,
-        white: :text_white,
-        inverse: :text_inverse
-      }.freeze
-
-      # colors mapping to `nil` will preserve the old classes.
-      # e.g. `text: :orange` will generate `text-orange`.
-      TEXT_COLOR_MAPPINGS = {
-        gray_dark: FUNCTIONAL_TEXT_OPTIONS[:primary],
-        gray: FUNCTIONAL_TEXT_OPTIONS[:secondary],
-        gray_light: FUNCTIONAL_TEXT_OPTIONS[:tertiary],
-        blue: FUNCTIONAL_TEXT_OPTIONS[:link],
-        green: FUNCTIONAL_TEXT_OPTIONS[:success],
-        yellow: FUNCTIONAL_TEXT_OPTIONS[:warning],
-        red: FUNCTIONAL_TEXT_OPTIONS[:danger],
-        white: FUNCTIONAL_TEXT_OPTIONS[:white],
-        # still unsure what will happen with these colors
-        black: nil,
-        orange: nil,
-        orange_light: nil,
-        purple: nil,
-        pink: nil,
-        inherit: nil
-      }.freeze
-
-      TEXT_OPTIONS = [
-        :icon_primary,
-        :icon_secondary,
-        :icon_tertiary,
-        :icon_info,
-        :icon_success,
-        :icon_warning,
-        :icon_danger,
-        *FUNCTIONAL_TEXT_OPTIONS.values
-      ].freeze
-      DEPRECATED_TEXT_OPTIONS = TEXT_COLOR_MAPPINGS.keys.freeze
-
       FUNCTIONAL_BORDER_OPTIONS = {
         primary: :primary,
         secondary: :secondary,
@@ -82,16 +38,6 @@ module Primer
       DEPRECATED_BORDER_OPTIONS = BORDER_COLOR_MAPPINGS.keys.freeze
 
       class << self
-        def text_color(val)
-          functional_color(
-            key: "color",
-            value: val,
-            mappings: TEXT_COLOR_MAPPINGS,
-            non_functional_prefix: "text",
-            functional_options: TEXT_OPTIONS
-          )
-        end
-
         def border_color(val)
           functional_color(
             key: "border",
