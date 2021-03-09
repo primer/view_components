@@ -29,10 +29,30 @@ Use links for moving from one page to another. The Link component styles anchor 
 <%= render(Primer::LinkComponent.new(href: "http://www.google.com", muted: true)) { "Link" } %>
 ```
 
+### Variants
+
+<Example src="<a href='http://www.google.com' class='Link--primary '>Primary</a><a href='http://www.google.com' class='Link--secondary '>Secondary</a>" />
+
+```erb
+<%= render(Primer::LinkComponent.new(href: "http://www.google.com", variant: :primary)) { "Primary" } %>
+<%= render(Primer::LinkComponent.new(href: "http://www.google.com", variant: :secondary)) { "Secondary" } %>
+```
+
+### Span as link
+
+<Example src="<span class='Link '>Span as a link</span>" />
+
+```erb
+<%= render(Primer::LinkComponent.new(tag: :span)) { "Span as a link" } %>
+```
+
 ## Arguments
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `href` | `String` | N/A | URL to be used for the Link |
-| `muted` | `Boolean` | `false` | Uses light gray for Link color, and blue on hover |
+| `tag` | `String` | `:a` | One of `:a` and `:span`. |
+| `href` | `String` | `nil` | URL to be used for the Link. Required if tag is `:a`. |
+| `variant` | `Symbol` | `:default` | One of `:default`, `:primary`, or `:secondary`. |
+| `muted` | `Boolean` | `false` | Uses light gray for Link color, and blue on hover. |
+| `underline` | `Boolean` | `true` | Whether or not to underline the link. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
