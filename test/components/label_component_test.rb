@@ -23,6 +23,13 @@ class PrimerLabelComponentTest < Minitest::Test
     assert_selector(".Label--danger")
   end
 
+  def test_deprecated_schemes
+    Primer::LabelComponent::DEPRECATED_SCHEME_OPTIONS.each do |scheme|
+      ActiveSupport::Deprecation.expects(:warn).with("#{scheme} is deprecated and will be removed in a future version.").once
+      render_inline(Primer::LabelComponent.new(title: "foo", scheme: scheme)) { "scheme" }
+    end
+  end
+
   def test_falls_back_when_scheme_isn_t_valid
     without_fetch_or_fallback_raises do
       render_inline(Primer::LabelComponent.new(title: "title", scheme: :pink)) { "content" }

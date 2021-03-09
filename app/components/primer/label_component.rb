@@ -16,7 +16,8 @@ module Primer
       orange: "Label--orange",
       purple: "Label--purple"
     }.freeze
-    SCHEME_OPTIONS = SCHEME_MAPPINGS.keys << nil
+    DEPRECATED_SCHEME_OPTIONS = [:orange, :purple].freeze
+    SCHEME_OPTIONS = ([*SCHEME_MAPPINGS.keys, nil] - DEPRECATED_SCHEME_OPTIONS).freeze
 
     VARIANT_MAPPINGS = {
       large: "Label--large",
@@ -53,7 +54,7 @@ module Primer
       @system_arguments[:classes] = class_names(
         "Label",
         system_arguments[:classes],
-        SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme)],
+        SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, deprecated_values: DEPRECATED_SCHEME_OPTIONS)],
         VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant)]
       )
     end
