@@ -2,6 +2,11 @@
 
 ## main
 
+* Promote `DetailsComponent`, `TextComponent`, `TimelineItemComponent`, and
+  `PopoverComponent` to beta status.
+
+    *Simon Taranto*
+
 * Add `AutoComplete` and `AutoCompleteItem` components.
 
     *Manuel Puyol*

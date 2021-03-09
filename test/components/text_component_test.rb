@@ -22,4 +22,8 @@ class PrimerTextComponentTest < Minitest::Test
 
     assert_selector("p")
   end
+
+  def test_status
+    assert_component_state(Primer::TextComponent, :beta)
+  end
 end
