@@ -8,6 +8,7 @@ class Primer::LinkComponentStories < ViewComponent::Storybook::Stories
       href "https://github.com/"
       muted false
       underline true
+      select(:variant, Primer::LinkComponent::VARIANT_MAPPINGS.keys, :default)
     end
 
     content do
