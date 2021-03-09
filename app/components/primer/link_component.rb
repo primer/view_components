@@ -11,16 +11,18 @@ module Primer
     # @example Muted
     #   <%= render(Primer::LinkComponent.new(href: "http://www.google.com", muted: true)) { "Link" } %>
     #
-    # @param href [String] URL to be used for the Link
-    # @param muted [Boolean] Uses light gray for Link color, and blue on hover
+    # @param href [String] URL to be used for the Link.
+    # @param muted [Boolean] Uses light gray for Link color, and blue on hover.
+    # @param underline [Boolean] Whether or not to underline the link.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(href:, muted: false, **system_arguments)
+    def initialize(href:, muted: false, underline: true, **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = :a
       @system_arguments[:href] = href
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
-        "Link--muted" => fetch_or_fallback_boolean(muted, false)
+        "Link--muted" => muted,
+        "no-underline" => !underline
       )
     end
 

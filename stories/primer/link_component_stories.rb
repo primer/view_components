@@ -7,6 +7,7 @@ class Primer::LinkComponentStories < ViewComponent::Storybook::Stories
     controls do
       href "https://github.com/"
       muted false
+      underline true
     end
 
     content do

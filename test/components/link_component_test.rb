@@ -38,6 +38,12 @@ class PrimerLinkComponentTest < Minitest::Test
     assert_selector(".foo.Link--muted")
   end
 
+  def test_renders_no_underline
+    render_inline(Primer::LinkComponent.new(href: "http://google.com", underline: false)) { "content" }
+
+    assert_selector(".no-underline")
+  end
+
   def test_status
     assert_component_state(Primer::LinkComponent, :beta)
   end
