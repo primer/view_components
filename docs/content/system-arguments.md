@@ -75,7 +75,7 @@ System arguments include most HTML attributes. For example:
 | `bg` | `String, Symbol` | Background color. Accepts either a hex value as a String or a color name as a Symbol. |
 | `box_shadow` | `Boolean, Symbol` | Box shadow. One of `true`, `:medium`, `:large`, `:extra_large`, or `:none`. |
 | `border` | `Symbol` | One of `:left`, `:top`, `:bottom`, `:right`, `:y`, `:x`, or `true`. |
-| `border_color` | `Symbol` | One of `:primary`, `:secondary`, `:tertiary`, `:ingo`, `:success`, `:warning`, `:danger`, `:inverse`, or `:overlay`. <br /> Deprecated options: One of `:gray`, `:gray_light`, `:gray_dark`, `:blue`, `:green`, `:yellow`, `:red`, `:white`, `:gray_darker`, `:blue_light`, `:red_light`, `:purple`, `:black_fade`, or `:white_fade`. |
+| `border_color` | `Symbol` | One of `:primary`, `:secondary`, `:tertiary`, `:info`, `:success`, `:warning`, `:danger`, `:inverse`, or `:overlay`. <br /> Deprecated options: One of `:gray`, `:gray_light`, `:gray_dark`, `:blue`, `:green`, `:yellow`, `:red`, `:white`, `:gray_darker`, `:blue_light`, `:red_light`, `:purple`, `:black_fade`, or `:white_fade`. |
 | `border_top` | `Integer` | Set to `0` to remove the top border. |
 | `border_bottom` | `Integer` | Set to `0` to remove the bottom border. |
 | `border_left` | `Integer` | Set to `0` to remove the left border. |
