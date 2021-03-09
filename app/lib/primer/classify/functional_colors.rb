@@ -65,7 +65,7 @@ module Primer
             return "color-#{functional_color.to_s.dasherize}"
           end
 
-          raise ArgumentError, "Color #{val} does not exist."
+          raise ArgumentError, "Color #{val} does not exist." unless Rails.env.production?
         end
 
         def ends_with_number?(val)
