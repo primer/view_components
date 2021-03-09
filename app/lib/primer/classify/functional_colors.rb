@@ -11,6 +11,13 @@ module Primer
 
         private
 
+        # @param key [String|Symbol] Option name.
+        # @param value [String|Symbol] Option value.
+        # @param mappings [Hash] A `color` => `functional_color` mapping hash.
+        # @param non_functional_prefix [String] The prefix to use for the non-functional color classes. E.g. "text" would create "text-value".
+        # @param functional_prefix [String] The prefix to use for the functional color classes. E.g. "text-" would create "color-text-value".
+        # @param functional_options [Array] All the acceptable functional values.
+        # @param options_without_mappigs [Array] Non functional values that don't have an associated functional color.
         def functional_color(
           key:,
           value:,
