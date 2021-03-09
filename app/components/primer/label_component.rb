@@ -48,7 +48,6 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(title:, scheme: nil, variant: nil, **system_arguments)
       @system_arguments = system_arguments
-      @system_arguments[:bg] = :blue if scheme.nil?
       @system_arguments[:tag] ||= :span
       @system_arguments[:title] = title
       @system_arguments[:classes] = class_names(

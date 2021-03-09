@@ -11,12 +11,6 @@ class PrimerLabelComponentTest < Minitest::Test
     assert_text("private")
   end
 
-  def test_defaults_to_bg_blue
-    render_inline(Primer::LabelComponent.new(title: "foo")) { "private" }
-
-    assert_selector(".bg-blue")
-  end
-
   def test_supports_functional_schemes
     render_inline(Primer::LabelComponent.new(title: "foo", scheme: :danger)) { "private" }
 
