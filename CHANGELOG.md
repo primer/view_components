@@ -2,11 +2,7 @@
 
 ## main
 
-* Promote `HeadingComponent` to beta.
-
-    *Simon Taranto*
-
-* Promote `DetailsComponent`, `TextComponent`, `TimelineItemComponent`, and
+* Promote `DetailsComponent`, `HeadingComponent`, `TextComponent`, `TimelineItemComponent`, and
   `PopoverComponent` to beta status.
 
     *Simon Taranto*
