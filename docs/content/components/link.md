@@ -59,7 +59,7 @@ Use links for moving from one page to another. The Link component styles anchor 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `tag` | `String` | `:a` | One of `:a` and `:span`. |
-| `href` | `String` | `nil` | URL to be used for the Link. Required if tag is `:a`. |
+| `href` | `String` | `nil` | URL to be used for the Link. Required if tag is `:a`. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered. |
 | `variant` | `Symbol` | `:default` | One of `:default`, `:primary`, or `:secondary`. |
 | `muted` | `Boolean` | `false` | Uses light gray for Link color, and blue on hover. |
 | `underline` | `Boolean` | `true` | Whether or not to underline the link. |
