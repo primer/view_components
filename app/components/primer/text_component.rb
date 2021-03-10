@@ -7,7 +7,7 @@ module Primer
 
     # @example Default
     #   <%= render(Primer::TextComponent.new(tag: :p, font_weight: :bold)) { "Bold Text" } %>
-    #   <%= render(Primer::TextComponent.new(tag: :p, color: :danger)) { "Danger Text" } %>
+    #   <%= render(Primer::TextComponent.new(tag: :p, color: :text_danger)) { "Danger Text" } %>
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)
