@@ -253,7 +253,7 @@ module Primer
         elsif key == BOX_SHADOW_KEY
           memo[:classes] << if val == true
                               "color-shadow-small"
-                            elsif val == :none
+                            elsif val == :none || val.blank?
                               "box-shadow-none"
                             else
                               "color-shadow-#{val.to_s.dasherize}"
