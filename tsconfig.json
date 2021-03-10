@@ -9,6 +9,8 @@
     ],
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationDir": "app/components/primer/",
     "strict": true,
     "baseUrl": ".",
     "types": []
