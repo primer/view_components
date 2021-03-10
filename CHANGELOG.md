@@ -19,6 +19,10 @@
 
     *Manuel Puyol*
 
+* Publish types with npm package.
+
+    *Keith Cirkel* & *Clay Miller*
+
 ## 0.0.27
 
 * Promote `BreadcrumbComponent` and `ProgressBarComponent` to beta status.
