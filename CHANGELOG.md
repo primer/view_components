@@ -11,7 +11,10 @@
 
     *Simon Taranto*
 
-* Update `LinkComponent` to use `Link--muted` instead of `muted-link`.
+* Update `LinkComponent`:
+  * use `Link--muted` instead of `muted-link`.
+  * accept `variant` and `underline` options.
+  * accept `:span` as a tag.
 
     *Manuel Puyol*
 

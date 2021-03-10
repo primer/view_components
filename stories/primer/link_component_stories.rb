@@ -7,6 +7,9 @@ class Primer::LinkComponentStories < ViewComponent::Storybook::Stories
     controls do
       href "https://github.com/"
       muted false
+      underline true
+      select(:variant, Primer::LinkComponent::VARIANT_MAPPINGS.keys, Primer::LinkComponent::DEFAULT_VARIANT)
+      select(:tag, Primer::LinkComponent::TAG_OPTIONS, Primer::LinkComponent::DEFAULT_TAG)
     end
 
     content do
