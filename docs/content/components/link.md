@@ -15,24 +15,52 @@ Use links for moving from one page to another. The Link component styles anchor 
 
 ### Default
 
-<Example src="<a href='http://www.google.com'>Link</a>" />
+<Example src="<a href='#'>Link</a>" />
 
 ```erb
-<%= render(Primer::LinkComponent.new(href: "http://www.google.com")) { "Link" } %>
+<%= render(Primer::LinkComponent.new(href: "#")) { "Link" } %>
 ```
 
 ### Muted
 
-<Example src="<a href='http://www.google.com' class='Link--muted '>Link</a>" />
+<Example src="<a href='#' class='Link--muted '>Link</a>" />
 
 ```erb
-<%= render(Primer::LinkComponent.new(href: "http://www.google.com", muted: true)) { "Link" } %>
+<%= render(Primer::LinkComponent.new(href: "#", muted: true)) { "Link" } %>
+```
+
+### Variants
+
+<Example src="<a href='#' class='Link--primary '>Primary</a><a href='#' class='Link--secondary '>Secondary</a>" />
+
+```erb
+<%= render(Primer::LinkComponent.new(href: "#", variant: :primary)) { "Primary" } %>
+<%= render(Primer::LinkComponent.new(href: "#", variant: :secondary)) { "Secondary" } %>
+```
+
+### Without underline
+
+<Example src="<a href='#' class='no-underline '>Link</a>" />
+
+```erb
+<%= render(Primer::LinkComponent.new(href: "#", underline: false)) { "Link" } %>
+```
+
+### Span as link
+
+<Example src="<span class='Link '>Span as a link</span>" />
+
+```erb
+<%= render(Primer::LinkComponent.new(tag: :span)) { "Span as a link" } %>
 ```
 
 ## Arguments
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `href` | `String` | N/A | URL to be used for the Link |
-| `muted` | `Boolean` | `false` | Uses light gray for Link color, and blue on hover |
+| `tag` | `String` | `:a` | One of `:a` and `:span`. |
+| `href` | `String` | `nil` | URL to be used for the Link. Required if tag is `:a`. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered. |
+| `variant` | `Symbol` | `:default` | One of `:default`, `:primary`, or `:secondary`. |
+| `muted` | `Boolean` | `false` | Uses light gray for Link color, and blue on hover. |
+| `underline` | `Boolean` | `true` | Whether or not to underline the link. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

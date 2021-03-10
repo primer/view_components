@@ -3,6 +3,7 @@
 module Primer
   class Classify
     # Text specific functional colors.
+    # https://primer-css-git-mkt-color-modes-docs-primer.vercel.app/css/support/v16-migration#text
     class FunctionalTextColors < FunctionalColors
       FUNCTIONAL_OPTIONS = {
         primary: :text_primary,
@@ -49,6 +50,8 @@ module Primer
             value: val,
             mappings: MAPPINGS,
             non_functional_prefix: "text",
+            functional_prefix: "color",
+            number_prefix: "color",
             functional_options: OPTIONS,
             options_without_mappigs: OPTIONS_WITHOUT_MAPPINGS
           )

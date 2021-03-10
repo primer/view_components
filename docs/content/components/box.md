@@ -23,10 +23,10 @@ A basic wrapper component for most layout related needs.
 
 ### Color and padding
 
-<Example src="<div class='bg-gray p-3'>Hello world</div>" />
+<Example src="<div class='color-bg-tertiary p-3'>Hello world</div>" />
 
 ```erb
-<%= render(Primer::BoxComponent.new(bg: :gray, p: 3)) { "Hello world" } %>
+<%= render(Primer::BoxComponent.new(bg: :tertiary, p: 3)) { "Hello world" } %>
 ```
 
 ## Arguments

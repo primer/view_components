@@ -15,7 +15,8 @@ module Primer
         # @param value [String|Symbol] Option value.
         # @param mappings [Hash] A `color` => `functional_color` mapping hash.
         # @param non_functional_prefix [String] The prefix to use for the non-functional color classes. E.g. "text" would create "text-value".
-        # @param functional_prefix [String] The prefix to use for the functional color classes. E.g. "text-" would create "color-text-value".
+        # @param functional_prefix [String] The prefix to use for the functional color classes. E.g. "color-text" would create "color-text-value".
+        # @param number_prefix [String] The prefix to use for colors ending with number. E.g. "text" would create "text-value-1".
         # @param functional_options [Array] All the acceptable functional values.
         # @param options_without_mappigs [Array] Non functional values that don't have an associated functional color.
         def functional_color(
@@ -24,11 +25,13 @@ module Primer
           mappings:,
           non_functional_prefix:,
           functional_prefix: "",
+          number_prefix: "",
           functional_options:,
           options_without_mappigs: []
         )
           # the value is a functional color
-          return "color-#{functional_prefix}#{value.to_s.dasherize}" if ends_with_number?(value) || functional_options.include?(value)
+          return "#{number_prefix}-#{value.to_s.dasherize}" if ends_with_number?(value)
+          return "#{functional_prefix}-#{value.to_s.dasherize}" if functional_options.include?(value)
           # if the app still allows non functional colors
           return "#{non_functional_prefix}-#{value.to_s.dasherize}" unless force_functional_colors?
 
@@ -39,7 +42,7 @@ module Primer
 
             ActiveSupport::Deprecation.warn("#{key} #{value} is deprecated. Please use #{functional_color} instead.") unless Rails.env.production? || silence_color_deprecations?
 
-            return "color-#{functional_prefix}#{functional_color.to_s.dasherize}"
+            return "#{functional_prefix}-#{functional_color.to_s.dasherize}"
           end
 
           raise ArgumentError, "#{key} #{value} does not exist." unless Rails.env.production?

@@ -50,8 +50,13 @@ module Primer
           )
 
           preload(
-            keys: [Primer::Classify::COLOR_KEY, Primer::Classify::BG_KEY],
+            keys: [Primer::Classify::COLOR_KEY],
             values: [*Primer::Classify::FunctionalTextColors::OPTIONS, *Primer::Classify::FunctionalTextColors::DEPRECATED_OPTIONS]
+          )
+
+          preload(
+            keys: [Primer::Classify::BG_KEY],
+            values: [*Primer::Classify::FunctionalBackgroundColors::OPTIONS, *Primer::Classify::FunctionalBackgroundColors::DEPRECATED_OPTIONS]
           )
 
           preload(

@@ -18,49 +18,49 @@ Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/
 
 ### Default
 
-<Example src="<div class='bg-gray d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div>" />
+<Example src="<div class='color-bg-tertiary d-flex'>  <div class='border p-5 color-bg-secondary'>Item 1</div>  <div class='border p-5 color-bg-secondary'>Item 2</div>  <div class='border p-5 color-bg-secondary'>Item 3</div></div>" />
 
 ```erb
-<%= render(Primer::FlexComponent.new(bg: :gray)) do %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
+<%= render(Primer::FlexComponent.new(bg: :tertiary)) do %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 1" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 2" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 3" } %>
 <% end %>
 ```
 
 ### Justify center
 
-<Example src="<div class='flex-justify-center bg-gray d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div>" />
+<Example src="<div class='flex-justify-center color-bg-tertiary d-flex'>  <div class='border p-5 color-bg-secondary'>Item 1</div>  <div class='border p-5 color-bg-secondary'>Item 2</div>  <div class='border p-5 color-bg-secondary'>Item 3</div></div>" />
 
 ```erb
-<%= render(Primer::FlexComponent.new(justify_content: :center, bg: :gray)) do %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
+<%= render(Primer::FlexComponent.new(justify_content: :center, bg: :tertiary)) do %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 1" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 2" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 3" } %>
 <% end %>
 ```
 
 ### Align end
 
-<Example src="<div class='flex-items-end bg-gray d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div>" />
+<Example src="<div class='flex-items-end color-bg-tertiary d-flex'>  <div class='border p-5 color-bg-secondary'>Item 1</div>  <div class='border p-5 color-bg-secondary'>Item 2</div>  <div class='border p-5 color-bg-secondary'>Item 3</div></div>" />
 
 ```erb
-<%= render(Primer::FlexComponent.new(align_items: :end, bg: :gray)) do %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
+<%= render(Primer::FlexComponent.new(align_items: :end, bg: :tertiary)) do %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 1" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 2" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 3" } %>
 <% end %>
 ```
 
 ### Direction column
 
-<Example src="<div class='bg-gray flex-column d-flex'>  <div class='border p-5 bg-gray-light'>Item 1</div>  <div class='border p-5 bg-gray-light'>Item 2</div>  <div class='border p-5 bg-gray-light'>Item 3</div></div>" />
+<Example src="<div class='color-bg-tertiary flex-column d-flex'>  <div class='border p-5 color-bg-secondary'>Item 1</div>  <div class='border p-5 color-bg-secondary'>Item 2</div>  <div class='border p-5 color-bg-secondary'>Item 3</div></div>" />
 
 ```erb
-<%= render(Primer::FlexComponent.new(direction: :column, bg: :gray)) do %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
+<%= render(Primer::FlexComponent.new(direction: :column, bg: :tertiary)) do %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 1" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 2" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 3" } %>
 <% end %>
 ```
 
