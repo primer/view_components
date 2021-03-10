@@ -12,7 +12,7 @@ class BenchClassify < Minitest::Benchmark
       border: :top,
       box_shadow: true,
       col: 1,
-      color: :red,
+      color: :text_danger,
       flex: 1,
       float: :left,
       font_weight: :bold,

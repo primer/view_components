@@ -2,7 +2,14 @@
 
 ## main
 
-* Update `LinkComponent` to accept `variant` and `underline` options.
+* Add `force_functional_colors` option to convert colors to functional. This change includes a deprecation warning in non-production environments that warns about non functional color usage.
+
+    *Manuel Puyol*
+
+* Promote `DetailsComponent`, `HeadingComponent`, `TextComponent`, `TimelineItemComponent`, and
+  `PopoverComponent` to beta status.
+
+    *Simon Taranto*
 
 * Update `LinkComponent`:
   * use `Link--muted` instead of `muted-link`.
@@ -10,11 +17,6 @@
   * accept `:span` as a tag.
 
     *Manuel Puyol*
-
-* Promote `DetailsComponent`, `TextComponent`, `TimelineItemComponent`, and
-  `PopoverComponent` to beta status.
-
-    *Simon Taranto*
 
 * Add `AutoComplete` and `AutoCompleteItem` components.
 
