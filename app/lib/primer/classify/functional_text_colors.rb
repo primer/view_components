@@ -50,6 +50,8 @@ module Primer
             value: val,
             mappings: MAPPINGS,
             non_functional_prefix: "text",
+            functional_prefix: "color",
+            number_prefix: "color",
             functional_options: OPTIONS,
             options_without_mappigs: OPTIONS_WITHOUT_MAPPINGS
           )

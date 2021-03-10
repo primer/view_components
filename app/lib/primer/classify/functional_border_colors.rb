@@ -39,7 +39,8 @@ module Primer
             value: val,
             mappings: MAPPINGS,
             non_functional_prefix: "border",
-            functional_prefix: "border-",
+            functional_prefix: "color-border",
+            number_prefix: "border",
             functional_options: OPTIONS,
             options_without_mappigs: OPTIONS_WITHOUT_MAPPINGS
           )

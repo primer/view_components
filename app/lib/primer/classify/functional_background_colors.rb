@@ -45,11 +45,12 @@ module Primer
       class << self
         def color(val)
           functional_color(
-            key: "bg",
+            key: "background",
             value: val,
             mappings: MAPPINGS,
             non_functional_prefix: "bg",
-            functional_prefix: "bg-",
+            functional_prefix: "color-bg",
+            number_prefix: "bg",
             functional_options: OPTIONS,
             options_without_mappigs: OPTIONS_WITHOUT_MAPPINGS
           )
