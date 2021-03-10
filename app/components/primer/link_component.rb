@@ -32,7 +32,7 @@ module Primer
     #   <%= render(Primer::LinkComponent.new(tag: :span)) { "Span as a link" } %>
     #
     # @param tag [String]  <%= one_of(Primer::LinkComponent::TAG_OPTIONS) %>
-    # @param href [String] URL to be used for the Link. Required if tag is `:a`.
+    # @param href [String] URL to be used for the Link. Required if tag is `:a`. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered.
     # @param variant [Symbol] <%= one_of(Primer::LinkComponent::VARIANT_MAPPINGS.keys) %>
     # @param muted [Boolean] Uses light gray for Link color, and blue on hover.
     # @param underline [Boolean] Whether or not to underline the link.
