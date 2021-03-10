@@ -2,6 +2,10 @@
 
 ## main
 
+* Update `CounterComponent` to accept functional schemes `primary` and `secondary`. Deprecate `gray` and `light_gray` schemes.
+
+    *Manuel Puyol*
+
 * Add `force_functional_colors` option to convert colors to functional. This change includes a deprecation warning in non-production environments that warns about non functional color usage.
 
     *Manuel Puyol*
