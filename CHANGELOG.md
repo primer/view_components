@@ -6,10 +6,6 @@
 
     *Manuel Puyol*
 
-* Update `LinkComponent` to use `Link--muted` instead of `muted-link`.
-
-    *Manuel Puyol*
-
 * Promote `DetailsComponent`, `HeadingComponent`, `TextComponent`, `TimelineItemComponent`, and
   `PopoverComponent` to beta status.
 
