@@ -2,7 +2,7 @@
 
 ## main
 
-* Add `force_functional_colors` option to convert colors to functional.
+* Add `force_functional_colors` option to convert colors to functional. This change includes a deprecation warning in non-production environments that warns about non functional color usage.
 
     *Manuel Puyol*
 
