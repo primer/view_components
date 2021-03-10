@@ -96,7 +96,7 @@ module Primer
 
           preload(
             keys: Primer::Classify::BOX_SHADOW_KEY,
-            values: [true, :medium, :large, :extra_large, :none]
+            values: [true, :small, :medium, :large, :extra_large, :none]
           )
 
           preload(

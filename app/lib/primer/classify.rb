@@ -253,8 +253,10 @@ module Primer
         elsif key == BOX_SHADOW_KEY
           memo[:classes] << if val == true
                               "box-shadow"
+                            elsif val == :none
+                              "box-shadow-none"
                             else
-                              "box-shadow-#{val.to_s.dasherize}"
+                              "color-shadow-#{val.to_s.dasherize}"
                             end
         elsif key == VISIBILITY_KEY
           memo[:classes] << "v-#{val.to_s.dasherize}"
