@@ -3,7 +3,7 @@
 module Primer
   # Use the Heading component to wrap a component that will create a heading element
   class HeadingComponent < Primer::Component
-    view_helper :heading
+    status :beta
 
     # @example Default
     #   <%= render(Primer::HeadingComponent.new) { "H1 Text" } %>

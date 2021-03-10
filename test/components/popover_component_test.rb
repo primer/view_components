@@ -66,4 +66,8 @@ class PrimerPopoverComponentTest < Minitest::Test
 
     assert_selector("div.Popover div.Popover-message.Box h3.mb-4.pr-3", text: "Hello world")
   end
+
+  def test_status
+    assert_component_state(Primer::PopoverComponent, :beta)
+  end
 end

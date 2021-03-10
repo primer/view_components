@@ -79,12 +79,12 @@ module Primer
     #
     # @param underline [Boolean] Whether text should be underlined.
     #
-    # @param color [Symbol] Text color. <%= one_of([:blue, :red, :gray_light, :gray, :gray_dark, :green, :orange, :orange_light, :purple, :pink, :white, :inherit, :text_primary, :text_secondary, :text_tertiary, :text_link, :text_success, :text_warning, :text_danger, :icon_primary, :icon_secondary, :icon_tertiary, :icon_info, :icon_success, :icon_warning, :icon_danger]) %>
+    # @param color [Symbol] Text color. <br /> <%= one_of(Primer::Classify::FunctionalTextColors::OPTIONS) %> <br /> Deprecated options: <%= one_of(Primer::Classify::FunctionalTextColors::DEPRECATED_OPTIONS) %>
     # @param bg [String, Symbol] Background color. Accepts either a hex value as a String or a color name as a Symbol.
     #
     # @param box_shadow [Boolean, Symbol] Box shadow. <%= one_of([true, :medium, :large, :extra_large, :none]) %>
     # @param border [Symbol] <%= one_of([:left, :top, :bottom, :right, :y, :x, true]) %>
-    # @param border_color [Symbol] <%= one_of([:blue, :blue_light, :gray, :gray_dark, :green, :purple, :red, :red_light, :white, :yellow, :black_fade]) %> Note: this API is subject to change as we move to functional colors.
+    # @param border_color [Symbol] <%= one_of(Primer::Classify::FunctionalBorderColors::OPTIONS) %> <br /> Deprecated options: <%= one_of(Primer::Classify::FunctionalBorderColors::DEPRECATED_OPTIONS) %>
     # @param border_top [Integer] Set to `0` to remove the top border.
     # @param border_bottom [Integer] Set to `0` to remove the bottom border.
     # @param border_left [Integer] Set to `0` to remove the left border.

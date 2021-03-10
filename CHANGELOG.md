@@ -2,6 +2,19 @@
 
 ## main
 
+* Add `force_functional_colors` option to convert colors to functional. This change includes a deprecation warning in non-production environments that warns about non functional color usage.
+
+    *Manuel Puyol*
+
+* Promote `DetailsComponent`, `HeadingComponent`, `TextComponent`, `TimelineItemComponent`, and
+  `PopoverComponent` to beta status.
+
+    *Simon Taranto*
+
+* Update `LinkComponent` to use `Link--muted` instead of `muted-link`.
+
+    *Manuel Puyol*
+
 * Add `AutoComplete` and `AutoCompleteItem` components.
 
     *Manuel Puyol*
