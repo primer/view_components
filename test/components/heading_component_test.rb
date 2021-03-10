@@ -22,4 +22,8 @@ class PrimerHeadingComponentTest < Minitest::Test
 
     assert_selector("h3")
   end
+
+  def test_status
+    assert_component_state(Primer::HeadingComponent, :beta)
+  end
 end
