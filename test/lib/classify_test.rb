@@ -211,9 +211,98 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_bg
+    with_force_functional_colors(false) do
+      assert_generated_class("bg-blue-5",       { bg: :blue_5 })
+      assert_generated_class("bg-gray-9",       { bg: :gray_9 })
+      assert_generated_class("bg-purple-3",     { bg: :purple_3 })
+
+      assert_generated_class("bg-white", { bg: :white })
+      assert_generated_class("bg-gray-light", { bg: :gray_light })
+      assert_generated_class("bg-gray", { bg: :gray })
+      assert_generated_class("bg-gray-dark", { bg: :gray_dark })
+      assert_generated_class("bg-blue-light", { bg: :blue_light })
+      assert_generated_class("bg-blue", { bg: :blue })
+      assert_generated_class("bg-green-light", { bg: :green_light })
+      assert_generated_class("bg-green", { bg: :green })
+      assert_generated_class("bg-yellow-light", { bg: :yellow_light })
+      assert_generated_class("bg-yellow", { bg: :yellow })
+      assert_generated_class("bg-red-light", { bg: :red_light })
+      assert_generated_class("bg-red", { bg: :red })
+      assert_generated_class("bg-purple-light", { bg: :purple_light })
+      assert_generated_class("bg-purple", { bg: :purple })
+      assert_generated_class("bg-yellow-dark", { bg: :yellow_dark })
+      assert_generated_class("bg-orange", { bg: :orange })
+      assert_generated_class("bg-pink", { bg: :pink })
+
+      assert_generated_class("color-bg-primary", { bg: :primary })
+      assert_generated_class("color-bg-secondary", { bg: :secondary })
+      assert_generated_class("color-bg-tertiary", { bg: :tertiary })
+      assert_generated_class("color-bg-canvas", { bg: :canvas })
+      assert_generated_class("color-bg-canvas-inset", { bg: :canvas_inset })
+      assert_generated_class("color-bg-canvas-inverse", { bg: :canvas_inverse })
+      assert_generated_class("color-bg-info", { bg: :info })
+      assert_generated_class("color-bg-info-inverse", { bg: :info_inverse })
+      assert_generated_class("color-bg-success", { bg: :success })
+      assert_generated_class("color-bg-success-inverse", { bg: :success_inverse })
+      assert_generated_class("color-bg-warning", { bg: :warning })
+      assert_generated_class("color-bg-warning-inverse", { bg: :warning_inverse })
+      assert_generated_class("color-bg-danger", { bg: :danger })
+      assert_generated_class("color-bg-danger-inverse", { bg: :danger_inverse })
+      assert_generated_class("color-bg-overlay", { bg: :overlay })
+    end
+  end
+
+  def test_bg_enforcing_functional_colors
     assert_generated_class("bg-blue-5",       { bg: :blue_5 })
     assert_generated_class("bg-gray-9",       { bg: :gray_9 })
     assert_generated_class("bg-purple-3",     { bg: :purple_3 })
+
+    assert_generated_class("bg-purple-light", { bg: :purple_light })
+    assert_generated_class("bg-purple", { bg: :purple })
+    assert_generated_class("bg-yellow-dark", { bg: :yellow_dark })
+    assert_generated_class("bg-orange", { bg: :orange })
+    assert_generated_class("bg-pink", { bg: :pink })
+
+    assert_generated_class("bg-white", { bg: :white })
+    assert_generated_class("color-bg-primary", { bg: :primary })
+
+    assert_generated_class("bg-gray-light", { bg: :gray_light })
+    assert_generated_class("color-bg-secondary", { bg: :secondary })
+
+    assert_generated_class("bg-gray", { bg: :gray })
+    assert_generated_class("color-bg-tertiary", { bg: :tertiary })
+
+    assert_generated_class("color-bg-canvas", { bg: :canvas })
+    assert_generated_class("color-bg-canvas-inset", { bg: :canvas_inset })
+
+    assert_generated_class("bg-gray-dark", { bg: :gray_dark })
+    assert_generated_class("color-bg-canvas-inverse", { bg: :canvas_inverse })
+
+    assert_generated_class("bg-blue-light", { bg: :blue_light })
+    assert_generated_class("color-bg-info", { bg: :info })
+
+    assert_generated_class("bg-blue", { bg: :blue })
+    assert_generated_class("color-bg-info-inverse", { bg: :info_inverse })
+
+    assert_generated_class("bg-green-light", { bg: :green_light })
+    assert_generated_class("color-bg-success", { bg: :success })
+
+    assert_generated_class("bg-green", { bg: :green })
+    assert_generated_class("color-bg-success-inverse", { bg: :success_inverse })
+
+    assert_generated_class("bg-yellow-light", { bg: :yellow_light })
+    assert_generated_class("color-bg-warning", { bg: :warning })
+
+    assert_generated_class("bg-yellow", { bg: :yellow })
+    assert_generated_class("color-bg-warning-inverse", { bg: :warning_inverse })
+
+    assert_generated_class("bg-red-light", { bg: :red_light })
+    assert_generated_class("color-bg-danger", { bg: :danger })
+
+    assert_generated_class("bg-red", { bg: :red })
+    assert_generated_class("color-bg-danger-inverse", { bg: :danger_inverse })
+
+    assert_generated_class("color-bg-overlay", { bg: :overlay })
   end
 
   def test_text_align

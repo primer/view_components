@@ -18,6 +18,7 @@ module Primer
         success_inverse: :success_inverse,
         warning: :warning,
         warning_inverse: :warning_inverse,
+        danger: :danger,
         danger_inverse: :danger_inverse,
         overlay: :overlay
       }.freeze
