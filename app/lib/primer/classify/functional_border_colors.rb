@@ -3,6 +3,7 @@
 module Primer
   class Classify
     # Border specific functional colors
+    # https://primer-css-git-mkt-color-modes-docs-primer.vercel.app/css/support/v16-migration#border
     class FunctionalBorderColors < FunctionalColors
       FUNCTIONAL_OPTIONS = {
         primary: :primary,
