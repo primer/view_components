@@ -199,7 +199,7 @@ module Primer
           if val.to_s.start_with?("#")
             memo[:styles] << "background-color: #{val};"
           else
-            memo[:classes] << "bg-#{val.to_s.dasherize}"
+            memo[:classes] << Primer::Classify::FunctionalBackgroundColors.color(val)
           end
         elsif key == COLOR_KEY
           memo[:classes] << Primer::Classify::FunctionalTextColors.color(val)
