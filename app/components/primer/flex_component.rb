@@ -36,31 +36,31 @@ module Primer
     ALLOWED_DIRECTIONS = [DEFAULT_DIRECTION, :column, :column_reverse, :row, :row_reverse].freeze
 
     # @example Default
-    #   <%= render(Primer::FlexComponent.new(bg: :gray)) do %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
+    #   <%= render(Primer::FlexComponent.new(bg: :tertiary)) do %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 1" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 2" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 3" } %>
     #   <% end %>
     #
     # @example Justify center
-    #   <%= render(Primer::FlexComponent.new(justify_content: :center, bg: :gray)) do %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
+    #   <%= render(Primer::FlexComponent.new(justify_content: :center, bg: :tertiary)) do %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 1" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 2" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 3" } %>
     #   <% end %>
     #
     # @example Align end
-    #   <%= render(Primer::FlexComponent.new(align_items: :end, bg: :gray)) do %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
+    #   <%= render(Primer::FlexComponent.new(align_items: :end, bg: :tertiary)) do %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 1" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 2" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 3" } %>
     #   <% end %>
     #
     # @example Direction column
-    #   <%= render(Primer::FlexComponent.new(direction: :column, bg: :gray)) do %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 1" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 2" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :gray_light, classes: "border")) { "Item 3" } %>
+    #   <%= render(Primer::FlexComponent.new(direction: :column, bg: :tertiary)) do %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 1" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 2" } %>
+    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 3" } %>
     #   <% end %>
     #
     # @param justify_content [Symbol] Use this param to distribute space between and around flex items along the main axis of the container. <%= one_of(Primer::FlexComponent::JUSTIFY_CONTENT_OPTIONS) %>

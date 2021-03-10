@@ -15,11 +15,11 @@ The Text component is a wrapper component that will apply typography styles to t
 
 ### Default
 
-<Example src="<p class='text-bold'>Bold Text</p><p class='color-red-5'>Red Text</p>" />
+<Example src="<p class='text-bold'>Bold Text</p><p class='color-text-danger'>Danger Text</p>" />
 
 ```erb
 <%= render(Primer::TextComponent.new(tag: :p, font_weight: :bold)) { "Bold Text" } %>
-<%= render(Primer::TextComponent.new(tag: :p, color: :red_5)) { "Red Text" } %>
+<%= render(Primer::TextComponent.new(tag: :p, color: :text_danger)) { "Danger Text" } %>
 ```
 
 ## Arguments
