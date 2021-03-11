@@ -15,6 +15,7 @@
   "plugins": [
     "@typescript-eslint"
   ],
+  "ignorePatterns": ["**/*.d.ts"],
   "overrides": [
     {
       "files": ["**/*.ts"],
