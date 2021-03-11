@@ -7,7 +7,8 @@ module Primer
 
     HELPERS = {
       octicon: "Primer::OcticonComponent",
-      heading: "Primer::HeadingComponent"
+      heading: "Primer::HeadingComponent",
+      time_ago: "Primer::TimeAgoComponent",
     }.freeze
 
     HELPERS.each do |name, component|
