@@ -210,6 +210,19 @@ class PrimerClassifyTest < Minitest::Test
     assert_equal("color not_a_color does not exist.", err.message)
   end
 
+  def test_color_accepts_string_values
+    assert_generated_class("text-orange",        { color: "orange" })
+    assert_generated_class("color-blue-5",       { color: "blue_5" })
+    assert_generated_class("color-text-primary", { color: "text_primary" })
+    assert_generated_class("color-text-primary", { color: "gray_dark" })
+
+    err = assert_raises ArgumentError do
+      Primer::Classify.call(color: "not_a_color")
+    end
+
+    assert_equal("color not_a_color does not exist.", err.message)
+  end
+
   def test_bg
     with_force_functional_colors(false) do
       assert_generated_class("bg-blue-5",       { bg: :blue_5 })
@@ -310,6 +323,19 @@ class PrimerClassifyTest < Minitest::Test
     assert_equal("background not_a_color does not exist.", err.message)
   end
 
+  def test_bg_accepts_string_values
+    assert_generated_class("bg-blue-5",        { bg: "blue_5" })
+    assert_generated_class("bg-purple-light",  { bg: "purple_light" })
+    assert_generated_class("color-bg-primary", { bg: "white" })
+    assert_generated_class("color-bg-primary", { bg: "primary" })
+
+    err = assert_raises ArgumentError do
+      Primer::Classify.call(bg: "not_a_color")
+    end
+
+    assert_equal("background not_a_color does not exist.", err.message)
+  end
+
   def test_text_align
     assert_generated_class("text-right",      { text_align: :right })
     assert_generated_class("text-left",       { text_align: :left })
@@ -380,8 +406,6 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_border_color_enforcing_functional_colors
-    assert_generated_class("border-black-fade", { border_color: :black_fade })
-
     assert_generated_class("color-border-primary", { border_color: :gray })
     assert_generated_class("color-border-primary", { border_color: :primary })
 
@@ -415,6 +439,18 @@ class PrimerClassifyTest < Minitest::Test
 
     err = assert_raises ArgumentError do
       Primer::Classify.call(border_color: :not_a_color)
+    end
+
+    assert_equal("border not_a_color does not exist.", err.message)
+  end
+
+  def test_border_color_accepts_string_values
+    assert_generated_class("border-gray-darker", { border_color: "gray_darker" })
+    assert_generated_class("color-border-primary", { border_color: "gray" })
+    assert_generated_class("color-border-primary", { border_color: "primary" })
+
+    err = assert_raises ArgumentError do
+      Primer::Classify.call(border_color: "not_a_color")
     end
 
     assert_equal("border not_a_color does not exist.", err.message)

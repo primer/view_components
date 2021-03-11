@@ -29,16 +29,18 @@ module Primer
           functional_options:,
           options_without_mappigs: []
         )
+          sym_value = value.to_sym
+          dasherized_value = value.to_s.dasherize
           # the value is a functional color
-          return "#{number_prefix}-#{value.to_s.dasherize}" if ends_with_number?(value)
-          return "#{functional_prefix}-#{value.to_s.dasherize}" if functional_options.include?(value)
+          return "#{number_prefix}-#{dasherized_value}" if ends_with_number?(sym_value)
+          return "#{functional_prefix}-#{dasherized_value}" if functional_options.include?(sym_value)
           # if the app still allows non functional colors
-          return "#{non_functional_prefix}-#{value.to_s.dasherize}" unless force_functional_colors?
+          return "#{non_functional_prefix}-#{dasherized_value}" unless force_functional_colors?
 
-          if mappings.key?(value) || options_without_mappigs.include?(value)
-            functional_color = mappings[value]
+          if mappings.key?(sym_value) || options_without_mappigs.include?(sym_value)
+            functional_color = mappings[sym_value]
             # colors without functional mapping stay the same
-            return "#{non_functional_prefix}-#{value.to_s.dasherize}" if functional_color.blank?
+            return "#{non_functional_prefix}-#{dasherized_value}" if functional_color.blank?
 
             ActiveSupport::Deprecation.warn("#{key} #{value} is deprecated. Please use #{functional_color} instead.") unless Rails.env.production? || silence_deprecations?
 
