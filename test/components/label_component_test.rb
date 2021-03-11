@@ -19,7 +19,6 @@ class PrimerLabelComponentTest < Minitest::Test
 
   def test_deprecated_schemes
     Primer::LabelComponent::DEPRECATED_SCHEME_OPTIONS.each do |scheme|
-      ActiveSupport::Deprecation.expects(:warn).with("#{scheme} is deprecated and will be removed in a future version.").once
       render_inline(Primer::LabelComponent.new(title: "foo", scheme: scheme)) { "scheme" }
     end
   end
