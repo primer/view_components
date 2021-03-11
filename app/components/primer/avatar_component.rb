@@ -24,33 +24,32 @@ module Primer
     # @param square [Boolean] Used to create a square avatar.
     # @param href [String] The URL to link to. If used, component will be wrapped by an `<a>` tag.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(src:, alt:, size: 20, square: false, href: nil, classes: nil, **image_arguments)
+    def initialize(src:, alt:, size: 20, square: false, href: nil, **system_arguments)
       @href = href
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = :img
+      @system_arguments[:src] = src
+      @system_arguments[:alt] = alt
+      @system_arguments[:size] = size
+      @system_arguments[:height] = size
+      @system_arguments[:width] = size
 
-      @image_arguments = image_arguments
-      @image_arguments[:tag] = :img
-      @image_arguments[:src] = src
-      @image_arguments[:alt] = alt
-      @image_arguments[:size] = size
-      @image_arguments[:height] = size
-      @image_arguments[:width] = size
-
-      @avatar_classes = class_names(
+      @system_arguments[:classes] = class_names(
+        system_arguments[:classes],
         "avatar",
         "avatar-small" => size < SMALL_THRESHOLD,
-        "circle" => !square
+        "circle" => !square,
+        "lh-0" => !!href # Addresses a overflow issue with linked avatars
       )
-
-      @all_classes = class_names(classes, @avatar_classes)
     end
 
     def call
       if @href
-        render(Primer::LinkComponent.new(href: @href, classes: @all_classes)) do
-          render(Primer::BaseComponent.new(classes: @avatar_classes, **@image_arguments)) { content }
+        render(Primer::LinkComponent.new(href: @href, classes: @system_arguments[:classes])) do
+          render(Primer::BaseComponent.new(**@system_arguments.except(:classes))) { content }
         end
       else
-        render(Primer::BaseComponent.new(classes: @all_classes, **@image_arguments)) { content }
+        render(Primer::BaseComponent.new(**@system_arguments)) { content }
       end
     end
   end
