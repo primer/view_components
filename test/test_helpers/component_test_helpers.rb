@@ -26,6 +26,14 @@ module Primer
       Primer::Classify::Cache.preload!
     end
 
+    def with_silence_deprecations(new_value)
+      old_value = Rails.application.config.primer_view_components.silence_deprecations
+      Rails.application.config.primer_view_components.silence_deprecations = new_value
+      yield
+    ensure
+      Rails.application.config.primer_view_components.silence_deprecations = old_value
+    end
+
     def assert_component_state(component, state)
       assert_equal component.status, Primer::Component::STATUSES[state]
     end

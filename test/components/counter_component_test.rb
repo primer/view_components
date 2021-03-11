@@ -112,8 +112,6 @@ class CounterComponentTest < Minitest::Test
   end
 
   def test_renders_with_the_css_class_scheme_mapping_to_the_provided_deprecated_scheme
-    ActiveSupport::Deprecation.expects(:warn).with("gray is deprecated and will be removed in a future version.").once
-
     render_inline(Primer::CounterComponent.new(count: 20, scheme: :gray))
 
     assert_selector(".Counter.Counter--primary")
