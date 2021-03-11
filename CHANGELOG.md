@@ -6,7 +6,7 @@
 
     *Simon Taranto*
 
-* Add config to supress deprecation warnings.
+* Add `silence_deprecations` config to supress deprecation warnings.
 
     *Manuel Puyol*
 
