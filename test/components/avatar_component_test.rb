@@ -36,6 +36,12 @@ class PrimerAvatarComponentTest < Minitest::Test
     refute_selector(".avatar--small")
   end
 
+  def test_adds_custom_classes
+    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", classes: "custom-class"))
+
+    assert_selector("img.avatar.custom-class")
+  end
+
   def test_sets_size_height_and_width
     render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", size: 50))
 

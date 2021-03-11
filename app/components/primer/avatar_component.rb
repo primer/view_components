@@ -33,6 +33,7 @@ module Primer
       @system_arguments[:size] = size
       @system_arguments[:height] = size
       @system_arguments[:width] = size
+
       @system_arguments[:classes] = class_names(
         system_arguments[:classes],
         "avatar",
@@ -47,7 +48,7 @@ module Primer
           render(Primer::BaseComponent.new(**@system_arguments.except(:classes))) { content }
         end
       else
-        render(Primer::BaseComponent.new(classes: @classes, **@system_arguments)) { content }
+        render(Primer::BaseComponent.new(**@system_arguments)) { content }
       end
     end
   end
