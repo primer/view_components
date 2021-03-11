@@ -8,11 +8,11 @@ class BenchClassify < Minitest::Benchmark
     @values = {
       align_items: :center,
       align_self: :center,
-      bg: :blue,
+      bg: :info,
       border: :top,
       box_shadow: true,
       col: 1,
-      color: :red,
+      color: :text_danger,
       flex: 1,
       float: :left,
       font_weight: :bold,
@@ -40,7 +40,7 @@ class BenchClassify < Minitest::Benchmark
     Primer::Classify::Cache.clear!
     Primer::Classify.call(**@values)
 
-    assert_allocations 114 do
+    assert_allocations 115 do
       Primer::Classify.call(**@values)
     end
   ensure

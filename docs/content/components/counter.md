@@ -21,12 +21,21 @@ Use Primer::CounterComponent to add a count to navigational elements and buttons
 <%= render(Primer::CounterComponent.new(count: 25)) %>
 ```
 
+### Schemes
+
+<Example src="<span title='25' class='Counter Counter--primary '>25</span><span title='25' class='Counter Counter--secondary '>25</span>" />
+
+```erb
+<%= render(Primer::CounterComponent.new(count: 25, scheme: :primary)) %>
+<%= render(Primer::CounterComponent.new(count: 25, scheme: :secondary)) %>
+```
+
 ## Arguments
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `count` | `Integer, Float::INFINITY, nil` | `0` | The number to be displayed (e.x. # of issues, pull requests) |
-| `scheme` | `Symbol` | `:default` | Color scheme. One of `SCHEME_MAPPINGS.keys`. |
+| `scheme` | `Symbol` | `:default` | Color scheme. One of `:default`, `:primary`, or `:secondary`. |
 | `limit` | `Integer, nil` | `5_000` | Maximum value to display. Pass `nil` for no limit. (e.x. if `count` == 6,000 and `limit` == 5000, counter will display "5,000+") |
 | `hide_if_zero` | `Boolean` | `false` | If true, a `hidden` attribute is added to the counter if `count` is zero. |
 | `text` | `String` | `""` | Text to display instead of count. |

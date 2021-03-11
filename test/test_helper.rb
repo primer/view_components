@@ -3,6 +3,7 @@
 ENV["RAILS_ENV"] = "test"
 
 require "minitest/autorun"
+require "mocha/minitest"
 require "rails"
 require "rails/test_help"
 require "view_component/test_helpers"

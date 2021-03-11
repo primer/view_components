@@ -7,17 +7,26 @@ module Primer
 
     DEFAULT_SCHEME = :default
     SCHEME_MAPPINGS = {
-      DEFAULT_SCHEME => "Counter",
-      :gray => "Counter Counter--gray",
-      :light_gray => "Counter Counter--gray-light"
+      DEFAULT_SCHEME => "",
+      :primary => "Counter--primary",
+      :secondary => "Counter--secondary",
+      # deprecated
+      :gray => "Counter--primary",
+      :light_gray => "Counter--secondary"
     }.freeze
+    DEPRECATED_SCHEME_OPTIONS = [:gray, :light_gray].freeze
+    SCHEME_OPTIONS = (SCHEME_MAPPINGS.keys - DEPRECATED_SCHEME_OPTIONS).freeze
 
     #
     # @example Default
     #   <%= render(Primer::CounterComponent.new(count: 25)) %>
     #
+    # @example Schemes
+    #   <%= render(Primer::CounterComponent.new(count: 25, scheme: :primary)) %>
+    #   <%= render(Primer::CounterComponent.new(count: 25, scheme: :secondary)) %>
+    #
     # @param count [Integer, Float::INFINITY, nil] The number to be displayed (e.x. # of issues, pull requests)
-    # @param scheme [Symbol] Color scheme. One of `SCHEME_MAPPINGS.keys`.
+    # @param scheme [Symbol] Color scheme. <%= one_of(Primer::CounterComponent::SCHEME_OPTIONS) %>
     # @param limit [Integer, nil] Maximum value to display. Pass `nil` for no limit. (e.x. if `count` == 6,000 and `limit` == 5000, counter will display "5,000+")
     # @param hide_if_zero [Boolean] If true, a `hidden` attribute is added to the counter if `count` is zero.
     # @param text [String] Text to display instead of count.
@@ -43,8 +52,9 @@ module Primer
       @system_arguments[:title] = title
       @system_arguments[:tag] = :span
       @system_arguments[:classes] = class_names(
+        "Counter",
         @system_arguments[:classes],
-        SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)]
+        SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME, deprecated_values: DEPRECATED_SCHEME_OPTIONS)]
       )
       @system_arguments[:hidden] = true if count == 0 && hide_if_zero # rubocop:disable Style/NumericPredicate
     end

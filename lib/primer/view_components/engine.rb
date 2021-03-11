@@ -12,6 +12,10 @@ module Primer
         #{root}/app/lib
       ]
 
+      config.primer_view_components = ActiveSupport::OrderedOptions.new
+      config.primer_view_components.force_functional_colors = true
+      config.primer_view_components.silence_color_deprecations = false
+
       initializer "primer_view_components.assets" do |app|
         app.config.assets.precompile += %w[primer_view_components] if app.config.respond_to?(:assets)
       end

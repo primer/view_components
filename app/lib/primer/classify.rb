@@ -17,7 +17,6 @@ module Primer
 
     INVALID_CLASS_NAME_PREFIXES =
       (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "text-", "box-shadow-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
-    FUNCTIONAL_COLOR_REGEX = /(primary|secondary|tertiary|link|success|warning|danger|info)/.freeze
 
     COLOR_KEY = :color
     BG_KEY = :bg
@@ -80,18 +79,20 @@ module Primer
         ]
       }
     }.freeze
-    BORDER_KEYS = %i[border border_color].freeze
+    BORDER_KEY = :border
+    BORDER_COLOR_KEY = :border_color
     BORDER_MARGIN_KEYS = %i[border_top border_bottom border_left border_right].freeze
     BORDER_RADIUS_KEY = :border_radius
     TYPOGRAPHY_KEYS = [:font_size].freeze
     VALID_KEYS = (
       CONCAT_KEYS +
       BOOLEAN_MAPPINGS.keys +
-      BORDER_KEYS +
       BORDER_MARGIN_KEYS +
       TYPOGRAPHY_KEYS +
       TEXT_KEYS +
       [
+        BORDER_KEY,
+        BORDER_COLOR_KEY,
         BORDER_RADIUS_KEY,
         COLOR_KEY,
         BG_KEY,
@@ -198,25 +199,17 @@ module Primer
           if val.to_s.start_with?("#")
             memo[:styles] << "background-color: #{val};"
           else
-            memo[:classes] << "bg-#{val.to_s.dasherize}"
+            memo[:classes] << Primer::Classify::FunctionalBackgroundColors.color(val)
           end
         elsif key == COLOR_KEY
-          char_code = val[-1].ord
-          # Does this string end in a character that is NOT a number?
-          memo[:classes] <<
-            if (char_code >= 48 && char_code <= 57) || # 48 is the charcode for 0; 57 is the charcode for 9
-               FUNCTIONAL_COLOR_REGEX.match?(val)
-              "color-#{val.to_s.dasherize}"
-            else
-              "text-#{val.to_s.dasherize}"
-            end
+          memo[:classes] << Primer::Classify::FunctionalTextColors.color(val)
         elsif key == DISPLAY_KEY
           memo[:classes] << "d#{breakpoint}-#{val.to_s.dasherize}"
         elsif key == VERTICAL_ALIGN_KEY
           memo[:classes] << "v-align-#{val.to_s.dasherize}"
         elsif key == WORD_BREAK_KEY
           memo[:classes] << "wb-#{val.to_s.dasherize}"
-        elsif BORDER_KEYS.include?(key)
+        elsif key == BORDER_KEY
           border_value = if val == true
                            "border"
                          else
@@ -224,6 +217,8 @@ module Primer
                          end
 
           memo[:classes] << border_value
+        elsif key == BORDER_COLOR_KEY
+          memo[:classes] << Primer::Classify::FunctionalBorderColors.color(val)
         elsif BORDER_MARGIN_KEYS.include?(key)
           memo[:classes] << "#{key.to_s.dasherize}-#{val}"
         elsif key == BORDER_RADIUS_KEY

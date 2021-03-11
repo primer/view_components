@@ -6,7 +6,7 @@ class Primer::CounterComponentStories < ViewComponent::Storybook::Stories
   story(:counter) do
     controls do
       count 0
-      select(:scheme, Primer::CounterComponent::SCHEME_MAPPINGS.keys, :gray)
+      select(:scheme, Primer::CounterComponent::SCHEME_MAPPINGS.keys, :primary)
       limit 5000
       hide_if_zero false
       round false

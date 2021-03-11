@@ -50,8 +50,13 @@ module Primer
           )
 
           preload(
-            keys: [Primer::Classify::COLOR_KEY, Primer::Classify::BG_KEY],
-            values: [:blue, :gray_dark, :gray, :gray_light, :red, :orange, :orange_light, :yellow, :green, :purple, :white, :pink]
+            keys: [Primer::Classify::COLOR_KEY],
+            values: [*Primer::Classify::FunctionalTextColors::OPTIONS, *Primer::Classify::FunctionalTextColors::DEPRECATED_OPTIONS]
+          )
+
+          preload(
+            keys: [Primer::Classify::BG_KEY],
+            values: [*Primer::Classify::FunctionalBackgroundColors::OPTIONS, *Primer::Classify::FunctionalBackgroundColors::DEPRECATED_OPTIONS]
           )
 
           preload(

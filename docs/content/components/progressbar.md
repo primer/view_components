@@ -15,7 +15,7 @@ Use ProgressBar to visualize task completion.
 
 ### Default
 
-<Example src="<span class='Progress '>    <span style='width: 25%;' class='Progress-item bg-green'></span></span>" />
+<Example src="<span class='Progress '>    <span style='width: 25%;' class='Progress-item color-bg-success-inverse'></span></span>" />
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new) do |component| %>
@@ -25,33 +25,33 @@ Use ProgressBar to visualize task completion.
 
 ### Small
 
-<Example src="<span class='Progress Progress--small '>    <span style='width: 50%;' class='Progress-item bg-blue-4'></span></span>" />
+<Example src="<span class='Progress Progress--small '>    <span style='width: 50%;' class='Progress-item color-bg-info-inverse'></span></span>" />
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new(size: :small)) do |component| %>
-  <% component.item(bg: :blue_4, percentage: 50) %>
+  <% component.item(bg: :info_inverse, percentage: 50) %>
 <% end %>
 ```
 
 ### Large
 
-<Example src="<span class='Progress Progress--large '>    <span style='width: 75%;' class='Progress-item bg-red-4'></span></span>" />
+<Example src="<span class='Progress Progress--large '>    <span style='width: 75%;' class='Progress-item color-bg-danger-inverse'></span></span>" />
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new(size: :large)) do |component| %>
-  <% component.item(bg: :red_4, percentage: 75) %>
+  <% component.item(bg: :danger_inverse, percentage: 75) %>
 <% end %>
 ```
 
 ### Multiple items
 
-<Example src="<span class='Progress '>    <span style='width: 10%;' class='Progress-item bg-green'></span>    <span style='width: 20%;' class='Progress-item bg-blue-4'></span>    <span style='width: 30%;' class='Progress-item bg-red-4'></span></span>" />
+<Example src="<span class='Progress '>    <span style='width: 10%;' class='Progress-item color-bg-success-inverse'></span>    <span style='width: 20%;' class='Progress-item color-bg-info-inverse'></span>    <span style='width: 30%;' class='Progress-item color-bg-danger-inverse'></span></span>" />
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new) do |component| %>
   <% component.item(percentage: 10) %>
-  <% component.item(bg: :blue_4, percentage: 20) %>
-  <% component.item(bg: :red_4, percentage: 30) %>
+  <% component.item(bg: :info_inverse, percentage: 20) %>
+  <% component.item(bg: :danger_inverse, percentage: 30) %>
 <% end %>
 ```
 
