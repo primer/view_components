@@ -17,7 +17,7 @@ By default, the popover renders with absolute positioning, meaning it should usu
 
 ### Default
 
-<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box p-4 mt-2 mx-auto text-left box-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the Popover body.</div></div>" />
+<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box p-4 mt-2 mx-auto text-left color-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the Popover body.</div></div>" />
 
 ```erb
 <%= render Primer::PopoverComponent.new do |component| %>
@@ -32,7 +32,7 @@ By default, the popover renders with absolute positioning, meaning it should usu
 
 ### Large
 
-<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--large p-4 mt-2 mx-auto text-left box-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the large Popover body.</div></div>" />
+<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--large p-4 mt-2 mx-auto text-left color-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the large Popover body.</div></div>" />
 
 ```erb
 <%= render Primer::PopoverComponent.new do |component| %>
@@ -47,7 +47,7 @@ By default, the popover renders with absolute positioning, meaning it should usu
 
 ### Caret position
 
-<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--left p-4 mt-2 mx-auto text-left box-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the large Popover body.</div></div>" />
+<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--left p-4 mt-2 mx-auto text-left color-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the large Popover body.</div></div>" />
 
 ```erb
 <%= render Primer::PopoverComponent.new do |component| %>

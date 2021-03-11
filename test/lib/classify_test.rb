@@ -322,11 +322,13 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_box_shadow
-    assert_generated_class("box-shadow",             { box_shadow: true })
-    assert_generated_class("box-shadow-medium",      { box_shadow: :medium })
-    assert_generated_class("box-shadow-large",       { box_shadow: :large })
-    assert_generated_class("box-shadow-extra-large", { box_shadow: :extra_large })
-    assert_generated_class("box-shadow-none",        { box_shadow: :none })
+    assert_generated_class("color-shadow-small",       { box_shadow: true })
+    assert_generated_class("color-shadow-small",       { box_shadow: :small })
+    assert_generated_class("color-shadow-medium",      { box_shadow: :medium })
+    assert_generated_class("color-shadow-large",       { box_shadow: :large })
+    assert_generated_class("color-shadow-extra-large", { box_shadow: :extra_large })
+    assert_generated_class("box-shadow-none",          { box_shadow: :none })
+    assert_generated_class("box-shadow-none",          { box_shadow: false })
   end
 
   def test_col
