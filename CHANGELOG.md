@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.28
+
 * Update `CounterComponent` to accept functional schemes `primary` and `secondary`. Deprecate `gray` and `light_gray` schemes.
 
     *Manuel Puyol*
