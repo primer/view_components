@@ -46,7 +46,7 @@ class PrimerAvatarComponentTest < Minitest::Test
     render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", square: true))
 
     assert_selector("img.avatar")
-    refute_selector(".CircleBadge")
+    refute_selector(".circle")
   end
 
   def test_renders_link_wrapper
@@ -56,6 +56,42 @@ class PrimerAvatarComponentTest < Minitest::Test
       assert_selector("img")
     end
     refute_selector("img.avatar")
+  end
+
+  def test_defaults_circle_link_wrapper
+    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#"))
+
+    assert_selector("a.avatar.circle") do
+      assert_selector("img")
+    end
+    refute_selector("img.avatar")
+  end
+
+  def test_squared_link_wrapper
+    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#", square: true))
+
+    assert_selector("a.avatar") do
+      assert_selector("img")
+    end
+    refute_selector(".circle")
+  end
+
+  def test_adds_small_modifier_to_link_wrapper_when_size_is_less_than_threshold
+    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#", size: Primer::AvatarComponent::SMALL_THRESHOLD - 1))
+
+    assert_selector("a.avatar.avatar--small") do
+      assert_selector("img")
+    end
+    refute_selector("img.avatar")
+  end
+
+  def test_does_not_add_small_modifier_to_link_wrapper_when_size_is_greater_than_threshold
+    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#", size: Primer::AvatarComponent::SMALL_THRESHOLD + 1))
+
+    assert_selector("a.avatar") do
+      assert_selector("img")
+    end
+    refute_selector(".avatar--small")
   end
 
   def test_status
