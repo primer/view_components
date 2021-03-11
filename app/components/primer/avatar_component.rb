@@ -33,9 +33,8 @@ module Primer
       @system_arguments[:size] = size
       @system_arguments[:height] = size
       @system_arguments[:width] = size
-
-      @classes = class_names(
-        system_arguments.delete(:classes),
+      @system_arguments[:classes] = class_names(
+        system_arguments[:classes],
         "avatar",
         "avatar--small" => size < SMALL_THRESHOLD,
         "circle" => !square
@@ -44,8 +43,8 @@ module Primer
 
     def call
       if @href
-        render(Primer::LinkComponent.new(classes: @classes, href: @href)) do
-          render(Primer::BaseComponent.new(**@system_arguments)) { content }
+        render(Primer::LinkComponent.new(href: @href, classes: @system_arguments[:classes])) do
+          render(Primer::BaseComponent.new(**@system_arguments.except(:classes))) { content }
         end
       else
         render(Primer::BaseComponent.new(classes: @classes, **@system_arguments)) { content }
