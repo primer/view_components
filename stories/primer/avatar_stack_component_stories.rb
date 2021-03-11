@@ -39,4 +39,16 @@ class Primer::AvatarStackComponentStories < ViewComponent::Storybook::Stories
       component.avatar(src: "https://github.com/github.png", alt: "github")
     end
   end
+
+  story(:linked) do
+    controls do
+      select(:align, Primer::AvatarStackComponent::ALIGN_OPTIONS, Primer::AvatarStackComponent::ALIGN_DEFAULT)
+    end
+
+    content do |component|
+      component.avatar(href: "#", src: "https://github.com/github.png", alt: "github")
+      component.avatar(href: "#", src: "https://github.com/github.png", alt: "github")
+      component.avatar(href: "#", src: "https://github.com/github.png", alt: "github")
+    end
+  end
 end

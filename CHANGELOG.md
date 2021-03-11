@@ -30,6 +30,14 @@
 
     *Keith Cirkel* & *Clay Miller*
 
+* Fix `AvatarComponent` to apply classes to the link wrapper if present.
+
+    *Steve Richert*
+
+* Fix `AvatarComponent` to apply the `avatar-small` class rather than `avatar--small`.
+
+    *Steve Richert*
+
 * **Breaking change**: Updates `PopoverComponent` to use Slots V2.
 
     *Manuel Puyol*
