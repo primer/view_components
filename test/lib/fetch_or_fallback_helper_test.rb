@@ -4,6 +4,7 @@ require "test_helper"
 
 class Primer::FetchOrFallbackHelperTest < Minitest::Test
   include Primer::FetchOrFallbackHelper
+  include Primer::ComponentTestHelpers
 
   def test_one_of
     Primer::FetchOrFallbackHelper.fallback_raises = false
@@ -21,8 +22,14 @@ class Primer::FetchOrFallbackHelperTest < Minitest::Test
   end
 
   def test_accepts_deprecated_values
-    ActiveSupport::Deprecation.expects(:warn).with("3 is deprecated and will be removed in a future version.").once
     assert_equal(fetch_or_fallback([1, 2], 3, deprecated_values: [3]), 3)
+  end
+
+  def test_warns_of_deprecation_if_not_silenced
+    with_silence_deprecations(false) do
+      ActiveSupport::Deprecation.expects(:warn).with("3 is deprecated and will be removed in a future version.").once
+      assert_equal(fetch_or_fallback([1, 2], 3, deprecated_values: [3]), 3)
+    end
   end
 
   def test_does_not_raise_in_production
