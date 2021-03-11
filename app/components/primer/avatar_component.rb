@@ -39,7 +39,7 @@ module Primer
         "avatar",
         "avatar-small" => size < SMALL_THRESHOLD,
         "circle" => !square,
-        "lh-0" => !!href # Addresses a overflow issue with linked avatars
+        "lh-0" => !!href # Addresses an overflow issue with linked avatars
       )
     end
 
