@@ -60,25 +60,23 @@ class PrimerAvatarComponentTest < Minitest::Test
 
     assert_selector("a.avatar") do |(a)|
       assert_equal("#given-href", a["href"])
-      assert_selector("img")
+      assert_selector("img.avatar")
     end
-    refute_selector("img.avatar")
   end
 
   def test_defaults_circle_link_wrapper
     render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#"))
 
     assert_selector("a.avatar.circle") do
-      assert_selector("img")
+      assert_selector("img.avatar.circle")
     end
-    refute_selector("img.avatar")
   end
 
   def test_squared_link_wrapper
     render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#", square: true))
 
     assert_selector("a.avatar") do
-      assert_selector("img")
+      assert_selector("img.avatar")
     end
     refute_selector(".circle")
   end
@@ -87,16 +85,15 @@ class PrimerAvatarComponentTest < Minitest::Test
     render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#", size: Primer::AvatarComponent::SMALL_THRESHOLD - 1))
 
     assert_selector("a.avatar.avatar--small") do
-      assert_selector("img")
+      assert_selector("img.avatar.avatar--small")
     end
-    refute_selector("img.avatar")
   end
 
   def test_does_not_add_small_modifier_to_link_wrapper_when_size_is_greater_than_threshold
     render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#", size: Primer::AvatarComponent::SMALL_THRESHOLD + 1))
 
     assert_selector("a.avatar") do
-      assert_selector("img")
+      assert_selector("img.avatar")
     end
     refute_selector(".avatar--small")
   end
@@ -105,7 +102,7 @@ class PrimerAvatarComponentTest < Minitest::Test
     render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#", classes: "custom-class"))
 
     assert_selector("a.avatar.custom-class") do
-      assert_selector("img")
+      assert_selector("img.avatar")
     end
     refute_selector("img.custom-class")
   end
