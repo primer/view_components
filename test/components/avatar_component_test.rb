@@ -50,9 +50,10 @@ class PrimerAvatarComponentTest < Minitest::Test
   end
 
   def test_renders_link_wrapper
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#"))
+    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#given-href"))
 
-    assert_selector("a.avatar") do
+    assert_selector("a.avatar") do |(a)|
+      assert_equal("#given-href", a["href"])
       assert_selector("img")
     end
     refute_selector("img.avatar")
