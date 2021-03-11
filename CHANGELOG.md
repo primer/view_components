@@ -26,6 +26,10 @@
 
     *Manuel Puyol*
 
+* Publish types with npm package.
+
+    *Keith Cirkel* & *Clay Miller*
+
 * **Breaking change**: Updates `PopoverComponent` to use Slots V2.
 
     *Manuel Puyol*

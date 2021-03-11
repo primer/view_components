@@ -4,6 +4,7 @@
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
+  "types": "app/components/primer/primer.d.ts",
   "repository": "primer/view_components",
   "keywords": [
     "rails",
@@ -19,7 +20,8 @@
     "url": "https://github.com/primer/view_components/issues"
   },
   "files": [
-    "app/components/primer/*.js"
+    "app/components/primer/*.js",
+    "app/components/primer/*.d.ts"
   ],
   "scripts": {
     "prepare": "tsc && rollup -c",
