@@ -26,14 +26,14 @@ class PrimerAvatarComponentTest < Minitest::Test
   def test_defaults_adds_small_modifier_when_size_is_less_than_threshold
     render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", size: Primer::AvatarComponent::SMALL_THRESHOLD - 1))
 
-    assert_selector("img.avatar.avatar--small")
+    assert_selector("img.avatar.avatar-small")
   end
 
   def test_defaults_does_not_add_small_modifier_when_size_is_greater_than_threshold
     render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", size: Primer::AvatarComponent::SMALL_THRESHOLD + 1))
 
     assert_selector("img.avatar")
-    refute_selector(".avatar--small")
+    refute_selector(".avatar-small")
   end
 
   def test_adds_custom_classes
@@ -84,8 +84,8 @@ class PrimerAvatarComponentTest < Minitest::Test
   def test_adds_small_modifier_to_link_wrapper_when_size_is_less_than_threshold
     render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#", size: Primer::AvatarComponent::SMALL_THRESHOLD - 1))
 
-    assert_selector("a.avatar.avatar--small") do
-      assert_selector("img.avatar.avatar--small")
+    assert_selector("a.avatar.avatar-small") do
+      assert_selector("img.avatar.avatar-small")
     end
   end
 
@@ -95,7 +95,7 @@ class PrimerAvatarComponentTest < Minitest::Test
     assert_selector("a.avatar") do
       assert_selector("img.avatar")
     end
-    refute_selector(".avatar--small")
+    refute_selector(".avatar-small")
   end
 
   def test_adds_custom_classes_to_link_wrapper

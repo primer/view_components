@@ -17,7 +17,7 @@ for organizations or any other non-human avatars.
 
 ### Default
 
-<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img>" />
+<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small circle '></img>" />
 
 ```erb
 <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
@@ -25,7 +25,7 @@ for organizations or any other non-human avatars.
 
 ### Square
 
-<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small '></img>" />
+<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small '></img>" />
 
 ```erb
 <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", square: true)) %>
@@ -33,7 +33,7 @@ for organizations or any other non-human avatars.
 
 ### Link
 
-<Example src="<a href='#' class='avatar avatar--small circle '><img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar--small circle '></img></a>" />
+<Example src="<a href='#' class='avatar avatar-small circle '><img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small circle '></img></a>" />
 
 ```erb
 <%= render(Primer::AvatarComponent.new(href: "#", src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>

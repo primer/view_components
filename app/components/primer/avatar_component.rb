@@ -37,7 +37,7 @@ module Primer
 
       @avatar_classes = class_names(
         "avatar",
-        "avatar--small" => size < SMALL_THRESHOLD,
+        "avatar-small" => size < SMALL_THRESHOLD,
         "circle" => !square
       )
 
