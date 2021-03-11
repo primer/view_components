@@ -94,6 +94,15 @@ class PrimerAvatarComponentTest < Minitest::Test
     refute_selector(".avatar--small")
   end
 
+  def test_adds_custom_classes_to_link_wrapper
+    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#", classes: "custom-class"))
+
+    assert_selector("a.avatar.custom-class") do
+      assert_selector("img")
+    end
+    refute_selector("img.custom-class")
+  end
+
   def test_status
     assert_component_state(Primer::AvatarComponent, :beta)
   end
