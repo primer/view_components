@@ -16,7 +16,7 @@ class Primer::ViewHelperTest < Minitest::Test
   end
 
   def test_renders_time_ago_using_shorthand
-    primer_time_ago(time: Time.at(1615490863))
+    primer_time_ago(time: Time.at(1615490863).utc)
 
     assert_selector("time-ago", text: "Mar 11, 2021")
   end
