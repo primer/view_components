@@ -84,8 +84,8 @@ class Project
 
   def self.fetch_columns
     response = Github::Client.query(ProjectQuery)
-    raise(QueryExecutionError, response.errors[:data].join(", ")) if response.errors.any?
-    response.data.repository.project.columns
+    return response.data.repository.project.columns unless response.errors.any?
+    raise(QueryExecutionError, response.errors[:data].join(", "))
   end
 end
 
@@ -102,7 +102,7 @@ def get_card(name_prefix:)
   @cards.find { |card| card.note.start_with?(name_prefix + NOTE_SEPARATOR) }
 end
 
-def on_correct_column(card_id:, status:)
+def on_correct_column?(card_id:, status:)
   card = @cards.find { |c| c.id == card_id }
   card.column.name.casecmp(status).zero?
 end
@@ -127,7 +127,7 @@ statuses_json.each do |component_name, component_status|
   card = get_card(name_prefix: component_name)
 
   if card
-    if !on_correct_column(card_id: card.id, status: component_status)
+    if !on_correct_column?(card_id: card.id, status: component_status)
       move_card(card_id: card.id, status: component_status)
     else
       puts "#{card.id} is on the right column. noop"
