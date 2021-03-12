@@ -75,7 +75,7 @@ class Project
 
     return unless response.errors.any?
 
-    raise QueryExecutionError.new(response.errors[:data].join(", "))
+    raise QueryExecutionError, response.errors[:data].join(", ")
   end
 
   def self.move_card(card_id:, column_id:)
