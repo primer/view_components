@@ -11,7 +11,7 @@ statuses_json = JSON.parse(statuses)
 class QueryExecutionError < StandardError; end
 
 module Github
-  GITHUB_ACCESS_TOKEN = ENV['GITHUB_TOKEN']
+  GITHUB_ACCESS_TOKEN = ENV.fetch("GITHUB_TOKEN")
   URL = 'https://api.github.com/graphql'
   HttpAdapter = GraphQL::Client::HTTP.new(URL) do
     def headers(context)
