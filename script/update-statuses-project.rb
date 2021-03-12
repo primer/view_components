@@ -123,9 +123,9 @@ def move_card(card_id:, status:)
 end
 
 def create_card(component_name:, status:)
-  puts "create card with #{component_name} on #{status}"
-
   column_id = @column_mapping[status.downcase]
+
+  puts "create card with #{component_name} on #{status} on column #{column_id}"
 
   Project.create_card(note: component_name, column_id: column_id)
 end
