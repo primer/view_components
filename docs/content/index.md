@@ -7,8 +7,6 @@ export default HeroLayout
 
 Primer ViewComponents is an implementation of the Primer Design System, using [ViewComponent](https://github.com/github/view_component).
 
-<Note variant="warning">This library is in pre-release development and should not be considered stable.</Note>
-
 ## Usage
 
 Render Primer ViewComponents from templates:
