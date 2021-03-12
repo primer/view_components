@@ -6,6 +6,7 @@ import {HeroLayout} from '@primer/gatsby-theme-doctocat'
 export default HeroLayout
 
 Primer ViewComponents is an implementation of the Primer Design System, using [ViewComponent](https://github.com/github/view_component).
+<Note variant="warning">This library is under active pre-1.0 development. Breaking changes are likely in patch releases.</Note>
 
 ## Usage
 
