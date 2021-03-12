@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-#/ Usage: script/update-statuses-project
+# Usage: script/update-statuses-project
 # frozen_string_literal: true
 
 require "graphql/client"
@@ -9,16 +9,16 @@ statuses = File.read(File.join(File.dirname(__FILE__), "../static/statuses.json"
 statuses_json = JSON.parse(statuses)
 
 class QueryExecutionError < StandardError; end
-NOTE_SEPERATOR = " --- "
+NOTE_SEPARATOR = " --- "
 
 module Github
   GITHUB_ACCESS_TOKEN = ENV.fetch("GITHUB_TOKEN")
-  URL = 'https://api.github.com/graphql'
+  URL = "https://api.github.com/graphql"
   HttpAdapter = GraphQL::Client::HTTP.new(URL) do
-    def headers(context)
+    def headers(_)
       {
         "Authorization" => "Bearer #{GITHUB_ACCESS_TOKEN}",
-        "User-Agent" => 'Ruby'
+        "User-Agent" => "Ruby"
       }
     end
   end
@@ -26,6 +26,7 @@ module Github
   Client = GraphQL::Client.new(schema: Schema, execute: HttpAdapter)
 end
 
+# Project is a GraphQL wrapper for interacting with GitHub projects
 class Project
   ProjectQuery = Github::Client.parse <<-'GRAPHQL'
     query {
@@ -72,27 +73,25 @@ class Project
   def self.create_card(note:, column_id:)
     response = Github::Client.query(CreateCard, variables: { note: note, projectColumnId: column_id })
 
-    if response.errors.any?
-      raise QueryExecutionError.new(response.errors[:data].join(", "))
-    end
+    return unless response.errors.any?
+
+    raise QueryExecutionError.new(response.errors[:data].join(", "))
   end
 
   def self.move_card(card_id:, column_id:)
     response = Github::Client.query(MoveCard, variables: { cardId: card_id, columnId: column_id })
 
-    if response.errors.any?
-      raise QueryExecutionError.new(response.errors[:data].join(", "))
-    end
+    return unless response.errors.any?
+
+    raise(QueryExecutionError, response.errors[:data].join(", "))
   end
 
   def self.fetch_columns
     response = Github::Client.query(ProjectQuery)
 
-    if response.errors.any?
-      raise QueryExecutionError.new(response.errors[:data].join(", "))
-    else
-      response.data.repository.project.columns
-    end
+    raise(QueryExecutionError, response.errors[:data].join(", ")) if response.errors.any?
+
+    response.data.repository.project.columns
   end
 end
 
@@ -106,13 +105,13 @@ end
 @cards = columns.map(&:cards).map(&:nodes).flatten
 
 def get_card(name_prefix:)
-  @cards.find { |card| card.note.start_with?(name_prefix + NOTE_SEPERATOR) }
+  @cards.find { |card| card.note.start_with?(name_prefix + NOTE_SEPARATOR) }
 end
 
 def on_correct_column(card_id:, status:)
-  card = @cards.find { |card| card.id == card_id }
+  card = @cards.find { |c| c.id == card_id }
 
-  card.column.name.downcase == status.downcase
+  card.column.name.casecmp(status).zero?
 end
 
 def move_card(card_id:, status:)
@@ -128,7 +127,7 @@ def create_card(component_name:, status:)
 
   puts "create card with #{component_name} on #{status} on column #{column_id}"
 
-  Project.create_card(note: component_name + NOTE_SEPERATOR, column_id: column_id)
+  Project.create_card(note: component_name + NOTE_SEPARATOR, column_id: column_id)
 end
 
 statuses_json.each do |component_name, component_status|
