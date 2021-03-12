@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.30
+
 * Make `color:`, `bg:` and `border_color:` accept string values.
 
     *Manuel Puyol*
