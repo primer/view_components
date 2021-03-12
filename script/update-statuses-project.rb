@@ -9,6 +9,7 @@ statuses = File.read(File.join(File.dirname(__FILE__), "../static/statuses.json"
 statuses_json = JSON.parse(statuses)
 
 class QueryExecutionError < StandardError; end
+NOTE_SEPERATOR = " --- "
 
 module Github
   GITHUB_ACCESS_TOKEN = ENV.fetch("GITHUB_TOKEN")
@@ -69,7 +70,7 @@ class Project
   GRAPHQL
 
   def self.create_card(note:, column_id:)
-    response = Github::Client.query(CreateCard, variables: { note: note, project_column_id: column_id })
+    response = Github::Client.query(CreateCard, variables: { note: note, projectColumnId: column_id })
 
     if response.errors.any?
       raise QueryExecutionError.new(response.errors[:data].join(", "))
@@ -77,7 +78,7 @@ class Project
   end
 
   def self.move_card(card_id:, column_id:)
-    response = Github::Client.query(MoveCard, variables: { card_id: card_id, column_id: column_id })
+    response = Github::Client.query(MoveCard, variables: { cardId: card_id, columnId: column_id })
 
     if response.errors.any?
       raise QueryExecutionError.new(response.errors[:data].join(", "))
@@ -105,7 +106,7 @@ end
 @cards = columns.map(&:cards).map(&:nodes).flatten
 
 def get_card(name_prefix:)
-  @cards.find { |card| card.note.start_with?(name_prefix) }
+  @cards.find { |card| card.note.start_with?(name_prefix + NOTE_SEPERATOR) }
 end
 
 def on_correct_column(card_id:, status:)
@@ -127,7 +128,7 @@ def create_card(component_name:, status:)
 
   puts "create card with #{component_name} on #{status} on column #{column_id}"
 
-  Project.create_card(note: component_name, column_id: column_id)
+  Project.create_card(note: component_name + NOTE_SEPERATOR, column_id: column_id)
 end
 
 statuses_json.each do |component_name, component_status|
