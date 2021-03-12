@@ -2,6 +2,9 @@
 #/ Usage: script/update-statuses-project
 # frozen_string_literal: true
 
+require "graphql/client"
+require "graphql/client/http"
+
 module Github
   GITHUB_ACCESS_TOKEN = ENV['GITHUB_TOKEN']
   URL = 'https://api.github.com/graphql'
@@ -57,7 +60,7 @@ end
 
 columns = Project.fetch_columns
 
-puts columns
+puts columns.nodes.map(&:name)
 
 # TODO: find missing cards
 # TODO: parse statuses.json

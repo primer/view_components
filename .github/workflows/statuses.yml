@@ -16,9 +16,6 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.7.x
-      - uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: gems-build-docs-${{ hashFiles('**/Gemfile.lock') }}
       - name: Rewrite code
+        run: gem install graphql-client
         run: script/update-statuses-project.rb
