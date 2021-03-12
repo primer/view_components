@@ -72,25 +72,19 @@ class Project
 
   def self.create_card(note:, column_id:)
     response = Github::Client.query(CreateCard, variables: { note: note, projectColumnId: column_id })
-
     return unless response.errors.any?
-
     raise QueryExecutionError, response.errors[:data].join(", ")
   end
 
   def self.move_card(card_id:, column_id:)
     response = Github::Client.query(MoveCard, variables: { cardId: card_id, columnId: column_id })
-
     return unless response.errors.any?
-
     raise(QueryExecutionError, response.errors[:data].join(", "))
   end
 
   def self.fetch_columns
     response = Github::Client.query(ProjectQuery)
-
     raise(QueryExecutionError, response.errors[:data].join(", ")) if response.errors.any?
-
     response.data.repository.project.columns
   end
 end
@@ -110,7 +104,6 @@ end
 
 def on_correct_column(card_id:, status:)
   card = @cards.find { |c| c.id == card_id }
-
   card.column.name.casecmp(status).zero?
 end
 
