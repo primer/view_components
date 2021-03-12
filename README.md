@@ -6,8 +6,6 @@
 
 <p align="center">ViewComponents for the Primer Design System</p>
 
-_Note: This library is in pre-release development and should not be considered stable._
-
 ## Documentation
 
 Visit [https://primer.style/view-components/](https://primer.style/view-components//) to view documentation.
