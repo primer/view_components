@@ -18,6 +18,6 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.7.x
-      - name: Rewrite code
+      - name: Make updates
         run: gem install graphql-client
         run: script/update-statuses-project.rb
