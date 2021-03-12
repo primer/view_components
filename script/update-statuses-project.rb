@@ -5,6 +5,11 @@
 require "graphql/client"
 require "graphql/client/http"
 
+statuses = File.read(File.join(File.dirname(__FILE__), "../static/statuses.json"))
+statuses_json = JSON.parse(statuses)
+
+class QueryExecutionError < StandardError; end
+
 module Github
   GITHUB_ACCESS_TOKEN = ENV['GITHUB_TOKEN']
   URL = 'https://api.github.com/graphql'
@@ -35,6 +40,9 @@ class Project
                   id
                   databaseId
                   note
+                  column {
+                    name
+                  }
                 }
               }
             }
@@ -43,6 +51,38 @@ class Project
       }
     }
   GRAPHQL
+
+  CreateCard = Github::Client.parse <<-'GRAPHQL'
+    mutation($note: String!, $projectColumnId: ID!) {
+      addProjectCard(input:{note: $note, projectColumnId: $projectColumnId, clientMutationId: "pvc-actions"}) {
+        __typename
+      }
+    }
+  GRAPHQL
+
+  MoveCard = Github::Client.parse <<-'GRAPHQL'
+    mutation($cardId: ID!, $columnId: ID!) {
+      moveProjectCard(input:{cardId: $cardId, columnId: $columnId, clientMutationId: "pvc-actions"}) {
+        __typename
+      }
+    }
+  GRAPHQL
+
+  def self.create_card(note:, column_id:)
+    response = Github::Client.query(CreateCard, variables: { note: note, project_column_id: column_id })
+
+    if response.errors.any?
+      raise QueryExecutionError.new(response.errors[:data].join(", "))
+    end
+  end
+
+  def self.move_card(card_id:, column_id:)
+    response = Github::Client.query(MoveCard, variables: { card_id: card_id, column_id: column_id })
+
+    if response.errors.any?
+      raise QueryExecutionError.new(response.errors[:data].join(", "))
+    end
+  end
 
   def self.fetch_columns
     response = Github::Client.query(ProjectQuery)
@@ -55,13 +95,51 @@ class Project
   end
 end
 
-# fetch project columns
-# fetch cards
+columns = Project.fetch_columns.nodes
 
-columns = Project.fetch_columns
+@column_mapping = {}
+columns.each do |column|
+  @column_mapping[column.name.downcase] = column.id
+end
 
-puts columns.nodes.map(&:name)
+@cards = columns.map(&:cards).map(&:nodes).flatten
 
-# TODO: find missing cards
-# TODO: parse statuses.json
-# TODO: move cards on wrong column
+def get_card(name_prefix:)
+  @cards.find { |card| card.note.start_with?(name_prefix) }
+end
+
+def on_correct_column(card_id:, status:)
+  card = @cards.find { |card| card.id == card_id }
+
+  card.column.name.downcase == status.downcase
+end
+
+def move_card(card_id:, status:)
+  column_id = @column_mapping[status.downcase]
+
+  puts "move card with #{card_id} to #{status} on column #{column_id}"
+
+  Project.move_card(card_id: card_id, column_id: column_id)
+end
+
+def create_card(component_name:, status:)
+  puts "create card with #{component_name} on #{status}"
+
+  column_id = @column_mapping[status.downcase]
+
+  Project.create_card(note: component_name, column_id: column_id)
+end
+
+statuses_json.each do |component_name, component_status|
+  card = get_card(name_prefix: component_name)
+
+  if card
+    if !on_correct_column(card_id: card.id, status: component_status)
+      move_card(card_id: card.id, status: component_status)
+    else
+      puts "#{card.id} is on the right column. noop"
+    end
+  else
+    create_card(component_name: component_name, status: component_status)
+  end
+end
