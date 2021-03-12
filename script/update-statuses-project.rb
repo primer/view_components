@@ -73,18 +73,21 @@ class Project
   def self.create_card(note:, column_id:)
     response = Github::Client.query(CreateCard, variables: { note: note, projectColumnId: column_id })
     return unless response.errors.any?
+
     raise QueryExecutionError, response.errors[:data].join(", ")
   end
 
   def self.move_card(card_id:, column_id:)
     response = Github::Client.query(MoveCard, variables: { cardId: card_id, columnId: column_id })
     return unless response.errors.any?
+
     raise(QueryExecutionError, response.errors[:data].join(", "))
   end
 
   def self.fetch_columns
     response = Github::Client.query(ProjectQuery)
     return response.data.repository.project.columns unless response.errors.any?
+
     raise(QueryExecutionError, response.errors[:data].join(", "))
   end
 end
