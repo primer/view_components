@@ -1,0 +1,22 @@
+name: Docs Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-docs:
+    name: Update statuses project
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: {{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.x
+      - name: Make updates
+        run: gem install graphql-client
+        run: script/update-statuses-project.rb
