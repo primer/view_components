@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - srt32-patch-2
 
 jobs:
   build-docs:
