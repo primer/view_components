@@ -19,4 +19,4 @@ jobs:
       - name: Install deps
         run: gem install graphql-client
       - name: Make updates
-        run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} script/update-statuses-project.rb
+        run: script/update-statuses-project.rb
