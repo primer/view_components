@@ -2,6 +2,12 @@
 
 ## main
 
+## 0.0.30
+
+* Make `color:`, `bg:` and `border_color:` accept string values.
+
+    *Manuel Puyol*
+
 ## 0.0.29
 
 * Add `primer_time_ago` helper.
