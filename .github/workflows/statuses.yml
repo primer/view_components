@@ -1,4 +1,4 @@
-name: Docs Build
+name: Update Statuses Board
 
 on:
   push:
