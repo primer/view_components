@@ -54,7 +54,7 @@ module Primer
 
       # This is a hack to allow the parent to set the slot's content
       @body_arguments = system_arguments
-      block&.call
+      view_context.capture { block&.call }
     }
 
     # @example Default
@@ -83,7 +83,24 @@ module Primer
     #       Activity feed
     #     <% end %>
     #     <% component.body(caret: :left) do %>
-    #       This is the large Popover body.
+    #       This is the Popover body.
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example With HTML body
+    #   <%= render Primer::PopoverComponent.new do |component| %>
+    #     <% component.heading do %>
+    #       Activity feed
+    #     <% end %>
+    #     <% component.body(caret: :left) do %>
+    #       <p> This is the Popover body.</p>
+    #       <div>
+    #         This is using HTML.
+    #         <ul>
+    #           <li>Thing #1</li>
+    #           <li>Thing #2</li>
+    #         </ul>
+    #       </div>
     #     <% end %>
     #   <% end %>
     #

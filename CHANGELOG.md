@@ -2,6 +2,12 @@
 
 ## main
 
+## 0.0.31
+
+* Fix `Popover` bug where body was only returning the last line of the HTML.
+
+    *Manuel Puyol, Blake Williams*
+
 ## 0.0.30
 
 * Make `color:`, `bg:` and `border_color:` accept string values.
