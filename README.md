@@ -5,8 +5,7 @@
 <h1 align="center">Primer ViewComponents</h1>
 
 <p align="center">ViewComponents for the Primer Design System</p>
-
-_Note: This library is in pre-release development and should not be considered stable._
+_Note: This library is under active pre-1.0 development. Breaking changes are likely in patch releases._
 
 ## Documentation
 
