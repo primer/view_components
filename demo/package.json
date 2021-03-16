@@ -17,7 +17,7 @@
   },
   "scripts": {
     "storybook": "start-storybook -p 5000",
-    "build-storybook": "build-storybook -o public/view-components/stories",
+    "build-storybook": "build-storybook -o public/view-components/stories --preview-url=/view-components/stories/iframe.html",
     "build": "yarn build-storybook"
   },
   "engines": {
