@@ -3,8 +3,9 @@
 module Primer
   # Use buttons for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
   class ButtonComponent < Primer::Component
+    extend FetchOrFallbackHelper
+
     BUTTON_TYPE_CLASS = ""
-    TYPES = [:default, :block, :danger, :invisible, :outline, :primary].freeze
 
     DEFAULT_VARIANT = :medium
     VARIANT_MAPPINGS = {
@@ -19,6 +20,19 @@ module Primer
 
     DEFAULT_TYPE = :button
     TYPE_OPTIONS = [DEFAULT_TYPE, :reset, :submit].freeze
+
+    TYPES = {
+      default: "Primer::ButtonComponent",
+      block: "Primer::ButtonBlockComponent",
+      danger: "Primer::ButtonDangerComponent",
+      invisible: "Primer::ButtonInvisibleComponent",
+      outline: "Primer::ButtonOutlineComponent",
+      primary: "Primer::ButtonPrimaryComponent"
+    }.freeze
+
+    def self.button_class(type)
+      TYPES[fetch_or_fallback(TYPES.keys, type, :default)].constantize
+    end
 
     # @example Button types
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>

@@ -22,9 +22,9 @@ class PrimerButtonGroupComponentTest < Minitest::Test
   def test_renders_button_with_props
     render_inline(Primer::ButtonGroupComponent.new) do |c|
       c.button { "Button" }
-      c.button(type: :primary) { "Primary" }
-      c.button(type: :danger) { "Danger" }
-      c.button(type: :outline) { "Outline" }
+      c.button(button_type: :primary) { "Primary" }
+      c.button(button_type: :danger) { "Danger" }
+      c.button(button_type: :outline) { "Outline" }
       c.button(classes: "my-class") { "Custom class" }
     end
 

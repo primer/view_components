@@ -17,13 +17,13 @@ module Primer
     #
     # @param button [Boolean] Whether to render the Summary as a button or not.
     # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
-    renders_one :summary, lambda { |button: true, **system_arguments|
+    renders_one :summary, lambda { |button: true, button_type: :default, **system_arguments|
       system_arguments[:tag] = :summary
       system_arguments[:role] = "button"
 
       return Primer::BaseComponent.new(**system_arguments) unless button
 
-      Primer::ButtonComponent.new(**system_arguments)
+      Primer::ButtonComponent.button_class(button_type).new(**system_arguments)
     }
 
     # Use the Body slot as the main content to be shown when triggered by the Summary.
