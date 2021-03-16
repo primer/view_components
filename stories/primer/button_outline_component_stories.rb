@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
-class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
+class Primer::ButtonOutlineComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
-  story(:default) do
+  self.title = "Primer/Button Component"
+
+  story(:outline) do
     controls do
       select(:variant, Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
       select(:tag, Primer::ButtonComponent::TAG_OPTIONS, :button)
