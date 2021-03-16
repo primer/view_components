@@ -19,8 +19,13 @@ class PrimerComponentTest < Minitest::Test
     [Primer::BoxComponent, {}],
     [Primer::BreadcrumbComponent, {}, proc { |component| component.item { "Foo" } }],
     [Primer::ButtonComponent, {}],
+    [Primer::ButtonBlockComponent, {}],
+    [Primer::ButtonDangerComponent, {}],
     [Primer::ButtonGroupComponent, {}, proc { |component| component.button { "Button" } }],
+    [Primer::ButtonInvisibleComponent, {}],
     [Primer::ButtonMarketingComponent, {}],
+    [Primer::ButtonOutlineComponent, {}],
+    [Primer::ButtonPrimaryComponent, {}],
     [Primer::CounterComponent, { count: 1 }],
     [Primer::DetailsComponent, {}, lambda do |component|
       component.summary { "Foo" }
