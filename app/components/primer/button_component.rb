@@ -4,6 +4,7 @@ module Primer
   # Use buttons for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
   class ButtonComponent < Primer::Component
     BUTTON_TYPE_CLASS = ""
+    TYPES = [:default, :block, :danger, :invisible, :outline, :primary].freeze
 
     DEFAULT_VARIANT = :medium
     VARIANT_MAPPINGS = {

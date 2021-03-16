@@ -7,8 +7,19 @@ module Primer
 
     # Required list of buttons to be rendered.
     #
+    # @param type [Sybol] <%= one_of(Primer::ButtonComponent::TYPES) %>
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
-    renders_many :buttons, ->(**kwargs) { Primer::ButtonComponent.new(group_item: true, **kwargs) }
+    renders_many :buttons, lambda { |type: :default, **kwargs|
+      button_type = fetch_or_fallback(Primer::ButtonComponent::TYPES, type, :default)
+
+      button_class = if button_type == :default
+                       Primer::ButtonComponent
+                     else
+                       "Primer::Button#{button_type.to_s.capitalize}Component".constantize
+                     end
+
+      button_class.new(group_item: true, **kwargs)
+    }
 
     # @example Default
     #   <%= render(Primer::ButtonGroupComponent.new) do |component|
