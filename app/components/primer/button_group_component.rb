@@ -7,9 +7,9 @@ module Primer
 
     # Required list of buttons to be rendered.
     #
-    # @param button_type [Symbol] <%= one_of(Primer::ButtonComponent::TYPES.keys) %>
+    # @param button_type [Symbol] <%= one_of(Primer::ButtonMapper::TYPES.keys) %>
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
-    renders_many :buttons, ->(button_type: :default, **kwargs) { Primer::ButtonComponent.button_class(button_type).new(group_item: true, **kwargs) }
+    renders_many :buttons, ->(button_type: :default, **kwargs) { Primer::ButtonMapper.button_class(button_type).new(group_item: true, **kwargs) }
 
     # @example Default
     #   <%= render(Primer::ButtonGroupComponent.new) do |component|

@@ -16,6 +16,7 @@ module Primer
     # Use the Summary slot as a trigger to reveal the content.
     #
     # @param button [Boolean] Whether to render the Summary as a button or not.
+    # @param button_type [Symbol] <%= one_of(Primer::ButtonMapper::TYPES.keys) %>
     # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
     renders_one :summary, lambda { |button: true, button_type: :default, **system_arguments|
       system_arguments[:tag] = :summary
@@ -23,7 +24,7 @@ module Primer
 
       return Primer::BaseComponent.new(**system_arguments) unless button
 
-      Primer::ButtonComponent.button_class(button_type).new(**system_arguments)
+      Primer::ButtonMapper.button_class(button_type).new(**system_arguments)
     }
 
     # Use the Body slot as the main content to be shown when triggered by the Summary.

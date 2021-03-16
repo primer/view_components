@@ -21,19 +21,6 @@ module Primer
     DEFAULT_TYPE = :button
     TYPE_OPTIONS = [DEFAULT_TYPE, :reset, :submit].freeze
 
-    TYPES = {
-      default: "Primer::ButtonComponent",
-      block: "Primer::ButtonBlockComponent",
-      danger: "Primer::ButtonDangerComponent",
-      invisible: "Primer::ButtonInvisibleComponent",
-      outline: "Primer::ButtonOutlineComponent",
-      primary: "Primer::ButtonPrimaryComponent"
-    }.freeze
-
-    def self.button_class(type)
-      TYPES[fetch_or_fallback(TYPES.keys, type, :default)].constantize
-    end
-
     # @example Button types
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
     #   <%= render(Primer::ButtonPrimaryComponent.new) { "Primary" } %>
