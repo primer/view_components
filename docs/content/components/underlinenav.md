@@ -17,12 +17,15 @@ of the page.
 
 ### Default
 
-<Example src="<nav class='UnderlineNav '>  <ul class='UnderlineNav-body list-style-none '>    <a href='#url'>Item 1</a></ul>    <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>" />
+<Example src="<nav class='UnderlineNav '>  <div class='UnderlineNav-body '>      <a role='tab' aria-current='page' class='UnderlineNav-item '>    Item 1</a>      <a role='tab' class='UnderlineNav-item '>    Item 2</a></div>    <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new) do |component| %>
-  <% component.body do %>
-    <%= render(Primer::LinkComponent.new(href: "#url")) { "Item 1" } %>
+  <% component.tab(href: "#", selected: true) do %>
+    Item 1
+  <% end %>
+  <% component.tab(href: "#") do %>
+    Item 2
   <% end %>
   <% component.actions do %>
     <%= render(Primer::ButtonComponent.new) { "Button!" } %>
@@ -32,12 +35,39 @@ of the page.
 
 ### Align right
 
-<Example src="<nav class='UnderlineNav UnderlineNav--right '>    <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div>  <ul class='UnderlineNav-body list-style-none '>    <a href='#url'>Item 1</a></ul></nav>" />
+<Example src="<nav class='UnderlineNav UnderlineNav--right '>    <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div>  <div class='UnderlineNav-body '>      <a role='tab' aria-current='page' class='UnderlineNav-item '>    Item 1</a>      <a role='tab' class='UnderlineNav-item '>    Item 2</a></div></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>
-  <% component.body do %>
-    <%= render(Primer::LinkComponent.new(href: "#url")) { "Item 1" } %>
+  <% component.tab(href: "#", selected: true) do %>
+    Item 1
+  <% end %>
+  <% component.tab(href: "#") do %>
+    Item 2
+  <% end %>
+  <% component.actions do %>
+    <%= render(Primer::ButtonComponent.new) { "Button!" } %>
+  <% end %>
+<% end %>
+```
+
+### With panels
+
+<Example src="<nav class='UnderlineNav '>  <div class='UnderlineNav-body '>      <button role='tab' type='button' aria-selected='true' class='UnderlineNav-item '>    Item 1</button>      <button role='tab' type='button' class='UnderlineNav-item '>    Item 2</button></div>    <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>    <div role='tabpanel' >            Panel 1    </div>    <div role='tabpanel' hidden>            Panel 2    </div>" />
+
+```erb
+<%= render(Primer::UnderlineNavComponent.new) do |component| %>
+  <% component.tab(selected: true) do |t| %>
+    Item 1
+    <% t.panel do %>
+      Panel 1
+    <% end %>
+  <% end %>
+  <% component.tab do |t| %>
+    Item 2
+    <% t.panel do %>
+      Panel 2
+    <% end %>
   <% end %>
   <% component.actions do %>
     <%= render(Primer::ButtonComponent.new) { "Button!" } %>
@@ -54,9 +84,9 @@ of the page.
 
 ## Slots
 
-### `Body`
+### `Tabs`
 
-Use the body for the navigation items
+Use the tabs to list navigation items.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
@@ -64,7 +94,7 @@ Use the body for the navigation items
 
 ### `Actions`
 
-Use actions for a call to action
+Use actions for a call to action.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |

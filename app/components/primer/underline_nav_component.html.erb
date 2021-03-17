@@ -3,9 +3,20 @@
     <%= actions %>
   <% end %>
 
-  <%= body %>
+  <%= render body do %>
+    <% tabs.each do |tab| %>
+      <%= tab %>
+    <% end %>
+  <% end %>
 
   <% if @align == :left %>
     <%= actions %>
+  <% end %>
+<% end %>
+<% tabs.each do |tab| %>
+  <% if tab.panel.present? %>
+    <div role="tabpanel" <%= "hidden" unless tab.selected %>>
+      <%= tab.panel %>
+    </div>
   <% end %>
 <% end %>

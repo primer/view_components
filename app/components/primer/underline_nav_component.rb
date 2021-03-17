@@ -10,29 +10,28 @@ module Primer
     ALIGN_DEFAULT = :left
     ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
 
-    #  Use the body for the navigation items
+    # Use the tabs to list navigation items.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_one :body, lambda { |**system_arguments|
-      system_arguments[:classes] = class_names("UnderlineNav-body", "list-style-none", system_arguments[:classes])
-      system_arguments[:tag] ||= :ul
+    renders_many :tabs, "TabComponent"
 
-      Primer::BaseComponent.new(**system_arguments) { content }
-    }
-
-    #  Use actions for a call to action
+    # Use actions for a call to action.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :actions, lambda { |**system_arguments|
       system_arguments[:tag] ||= :div
       system_arguments[:classes] = class_names("UnderlineNav-actions", system_arguments[:classes])
-      Primer::BaseComponent.new(**system_arguments) { content }
+
+      Primer::BaseComponent.new(**system_arguments)
     }
 
     # @example Default
     #   <%= render(Primer::UnderlineNavComponent.new) do |component| %>
-    #     <% component.body do %>
-    #       <%= render(Primer::LinkComponent.new(href: "#url")) { "Item 1" } %>
+    #     <% component.tab(href: "#", selected: true) do %>
+    #       Item 1
+    #     <% end %>
+    #     <% component.tab(href: "#") do %>
+    #       Item 2
     #     <% end %>
     #     <% component.actions do %>
     #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
@@ -41,8 +40,30 @@ module Primer
     #
     # @example Align right
     #   <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>
-    #     <% component.body do %>
-    #       <%= render(Primer::LinkComponent.new(href: "#url")) { "Item 1" } %>
+    #     <% component.tab(href: "#", selected: true) do %>
+    #       Item 1
+    #     <% end %>
+    #     <% component.tab(href: "#") do %>
+    #       Item 2
+    #     <% end %>
+    #     <% component.actions do %>
+    #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example With panels
+    #   <%= render(Primer::UnderlineNavComponent.new) do |component| %>
+    #     <% component.tab(selected: true) do |t| %>
+    #       Item 1
+    #       <% t.panel do %>
+    #         Panel 1
+    #       <% end %>
+    #     <% end %>
+    #     <% component.tab do |t| %>
+    #       Item 2
+    #       <% t.panel do %>
+    #         Panel 2
+    #       <% end %>
     #     <% end %>
     #     <% component.actions do %>
     #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
@@ -51,7 +72,7 @@ module Primer
     #
     # @param align [Symbol] <%= one_of(Primer::UnderlineNavComponent::ALIGN_OPTIONS) %> - Defaults to <%= Primer::UnderlineNavComponent::ALIGN_DEFAULT %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(align: ALIGN_DEFAULT, **system_arguments)
+    def initialize(align: ALIGN_DEFAULT, body_classes: "", **system_arguments)
       @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
 
       @system_arguments = system_arguments
@@ -61,6 +82,56 @@ module Primer
         "UnderlineNav",
         "UnderlineNav--right" => @align == :right
       )
+
+      @body_arguments = {
+        tag: :div,
+        classes: class_names(
+          "UnderlineNav-body",
+          body_classes
+        )
+      }
+    end
+
+    def body
+      Primer::BaseComponent.new(**@body_arguments)
+    end
+
+    # Tabs to be rendered.
+    class TabComponent < Primer::Component
+      include ViewComponent::SlotableV2
+
+      renders_one :panel
+
+      attr_reader :selected
+      def initialize(selected: false, href: nil, **system_arguments)
+        @selected = selected
+        @system_arguments = system_arguments
+        @system_arguments[:role] = :tab
+
+        if href.present?
+          @system_arguments[:tag] = :a
+        else
+          @system_arguments[:tag] = :button
+          @system_arguments[:type] = :button
+        end
+
+        if selected
+          if @system_arguments[:tag] == :a
+            @system_arguments[:"aria-current"] = :page
+          else
+            @system_arguments[:"aria-selected"] = true
+          end
+        end
+
+        @system_arguments[:classes] = class_names(
+          "UnderlineNav-item",
+          system_arguments[:classes]
+        )
+      end
+
+      def call
+        render(Primer::BaseComponent.new(**@system_arguments)) { content }
+      end
     end
   end
 end
