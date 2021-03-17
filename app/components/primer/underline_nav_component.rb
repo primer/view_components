@@ -98,16 +98,10 @@ module Primer
     end
 
     def wrapper
-      if @with_panel
-        render Primer::TabContainerComponent.new do
-          render Primer::BaseComponent.new(**@system_arguments) do
-            yield
-          end
-        end
-      else
-        render Primer::BaseComponent.new(**@system_arguments) do
-          yield
-        end
+      return yield unless @with_panel
+
+      render Primer::TabContainerComponent.new do
+        yield
       end
     end
 
