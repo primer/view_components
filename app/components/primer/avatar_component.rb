@@ -36,16 +36,17 @@ module Primer
 
       @system_arguments[:classes] = class_names(
         system_arguments[:classes],
-        "avatar" => !href,
-        "avatar--small" => size < SMALL_THRESHOLD,
-        "circle" => !square
+        "avatar",
+        "avatar-small" => size < SMALL_THRESHOLD,
+        "circle" => !square,
+        "lh-0" => href # Addresses an overflow issue with linked avatars
       )
     end
 
     def call
       if @href
-        render(Primer::LinkComponent.new(href: @href, classes: "avatar")) do
-          render(Primer::BaseComponent.new(**@system_arguments)) { content }
+        render(Primer::LinkComponent.new(href: @href, classes: @system_arguments[:classes])) do
+          render(Primer::BaseComponent.new(**@system_arguments.except(:classes))) { content }
         end
       else
         render(Primer::BaseComponent.new(**@system_arguments)) { content }

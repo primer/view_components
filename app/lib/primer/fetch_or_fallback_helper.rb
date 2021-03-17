@@ -29,7 +29,7 @@ module Primer
       if allowed_values.include?(given_value)
         given_value
       elsif deprecated_values.include?(given_value)
-        ActiveSupport::Deprecation.warn("#{given_value} is deprecated and will be removed in a future version.") unless Rails.env.production?
+        ActiveSupport::Deprecation.warn("#{given_value} is deprecated and will be removed in a future version.") unless Rails.env.production? || silence_deprecations?
 
         given_value
       else
@@ -54,6 +54,10 @@ module Primer
       else
         fallback
       end
+    end
+
+    def silence_deprecations?
+      Rails.application.config.primer_view_components.silence_deprecations
     end
   end
 end

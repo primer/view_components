@@ -17,7 +17,7 @@ By default, the popover renders with absolute positioning, meaning it should usu
 
 ### Default
 
-<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box p-4 mt-2 mx-auto text-left box-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the Popover body.</div></div>" />
+<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box p-4 mt-2 mx-auto text-left color-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the Popover body.</div></div>" />
 
 ```erb
 <%= render Primer::PopoverComponent.new do |component| %>
@@ -32,7 +32,7 @@ By default, the popover renders with absolute positioning, meaning it should usu
 
 ### Large
 
-<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--large p-4 mt-2 mx-auto text-left box-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the large Popover body.</div></div>" />
+<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--large p-4 mt-2 mx-auto text-left color-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the large Popover body.</div></div>" />
 
 ```erb
 <%= render Primer::PopoverComponent.new do |component| %>
@@ -47,7 +47,7 @@ By default, the popover renders with absolute positioning, meaning it should usu
 
 ### Caret position
 
-<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--left p-4 mt-2 mx-auto text-left box-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the large Popover body.</div></div>" />
+<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--left p-4 mt-2 mx-auto text-left color-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        This is the Popover body.</div></div>" />
 
 ```erb
 <%= render Primer::PopoverComponent.new do |component| %>
@@ -55,7 +55,29 @@ By default, the popover renders with absolute positioning, meaning it should usu
     Activity feed
   <% end %>
   <% component.body(caret: :left) do %>
-    This is the large Popover body.
+    This is the Popover body.
+  <% end %>
+<% end %>
+```
+
+### With HTML body
+
+<Example src="<div class='Popover position-relative right-0 left-0'>  <div class='Popover-message Box Popover-message--left p-4 mt-2 mx-auto text-left color-shadow-large'>    <h4 class='mb-2'>    Activity feed</h4>        <p> This is the Popover body.</p>    <div>      This is using HTML.      <ul>        <li>Thing #1</li>        <li>Thing #2</li>      </ul>    </div></div></div>" />
+
+```erb
+<%= render Primer::PopoverComponent.new do |component| %>
+  <% component.heading do %>
+    Activity feed
+  <% end %>
+  <% component.body(caret: :left) do %>
+    <p> This is the Popover body.</p>
+    <div>
+      This is using HTML.
+      <ul>
+        <li>Thing #1</li>
+        <li>Thing #2</li>
+      </ul>
+    </div>
   <% end %>
 <% end %>
 ```

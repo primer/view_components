@@ -252,9 +252,11 @@ module Primer
           memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-n#{val.abs}"
         elsif key == BOX_SHADOW_KEY
           memo[:classes] << if val == true
-                              "box-shadow"
+                              "color-shadow-small"
+                            elsif val == :none || val.blank?
+                              "box-shadow-none"
                             else
-                              "box-shadow-#{val.to_s.dasherize}"
+                              "color-shadow-#{val.to_s.dasherize}"
                             end
         elsif key == VISIBILITY_KEY
           memo[:classes] << "v-#{val.to_s.dasherize}"

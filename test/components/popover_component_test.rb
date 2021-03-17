@@ -17,7 +17,7 @@ class PrimerPopoverComponentTest < Minitest::Test
 
     assert_selector("div.Popover.right-0.left-0")
     assert_selector("div.Popover div.Popover-message h4.mb-2", text: "My header")
-    assert_selector("div.Popover div.Popover-message.Box.box-shadow-large", text: "My body")
+    assert_selector("div.Popover div.Popover-message.Box.color-shadow-large", text: "My body")
   end
 
   def test_allows_customization

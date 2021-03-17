@@ -2,6 +2,30 @@
 
 ## main
 
+## 0.0.31
+
+* Fix `Popover` bug where body was only returning the last line of the HTML.
+
+    *Manuel Puyol, Blake Williams*
+
+## 0.0.30
+
+* Make `color:`, `bg:` and `border_color:` accept string values.
+
+    *Manuel Puyol*
+
+## 0.0.29
+
+* Add `primer_time_ago` helper.
+
+    *Simon Taranto*
+
+* Add `silence_deprecations` config to supress deprecation warnings.
+
+    *Manuel Puyol*
+
+## 0.0.28
+
 * Update `CounterComponent` to accept functional schemes `primary` and `secondary`. Deprecate `gray` and `light_gray` schemes.
 
     *Manuel Puyol*
@@ -29,6 +53,14 @@
 * Publish types with npm package.
 
     *Keith Cirkel* & *Clay Miller*
+
+* Fix `AvatarComponent` to apply classes to the link wrapper if present.
+
+    *Steve Richert*
+
+* Fix `AvatarComponent` to apply the `avatar-small` class rather than `avatar--small`.
+
+    *Steve Richert*
 
 * **Breaking change**: Updates `PopoverComponent` to use Slots V2.
 
