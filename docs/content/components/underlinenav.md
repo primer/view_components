@@ -17,7 +17,7 @@ of the page.
 
 ### Default
 
-<Example src="  <nav role='tablist' class='UnderlineNav '>    <div class='UnderlineNav-body '>        <a role='tab' aria-current='page' class='UnderlineNav-item '>    Item 1</a>        <a role='tab' class='UnderlineNav-item '>    Item 2</a></div>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>" />
+<Example src="  <nav role='tablist' class='UnderlineNav '>    <div class='UnderlineNav-body '>        <a role='tab' href='#' aria-current='page' class='UnderlineNav-item '>    Item 1</a>        <a role='tab' href='#' class='UnderlineNav-item '>    Item 2</a></div>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new) do |component| %>
@@ -35,7 +35,7 @@ of the page.
 
 ### Align right
 
-<Example src="  <nav role='tablist' class='UnderlineNav UnderlineNav--right '>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div>    <div class='UnderlineNav-body '>        <a role='tab' aria-current='page' class='UnderlineNav-item '>    Item 1</a>        <a role='tab' class='UnderlineNav-item '>    Item 2</a></div></nav>" />
+<Example src="  <nav role='tablist' class='UnderlineNav UnderlineNav--right '>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div>    <div class='UnderlineNav-body '>        <a role='tab' href='#' aria-current='page' class='UnderlineNav-item '>    Item 1</a>        <a role='tab' href='#' class='UnderlineNav-item '>    Item 2</a></div></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>
@@ -53,7 +53,7 @@ of the page.
 
 ### With panels
 
-<Example src="<tab-container>  <nav role='tablist' class='UnderlineNav '>    <div class='UnderlineNav-body '>        <button role='tab' type='button' aria-selected='true' class='UnderlineNav-item '>    Item 1</button>        <button role='tab' type='button' class='UnderlineNav-item '>    Item 2</button></div>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>        <div role='tabpanel' >                Panel 1        </div>        <div role='tabpanel' hidden>                Panel 2        </div></tab-container>" />
+<Example src="<tab-container>  <nav role='tablist' class='UnderlineNav '>    <div class='UnderlineNav-body '>        <button role='tab' type='button' aria-selected='true' class='UnderlineNav-item '>    Item 1</button>        <button role='tab' type='button' class='UnderlineNav-item '>    Item 2</button></div>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>      <div role='tabpanel'>      Panel 1</div>      <div role='tabpanel' hidden='hidden'>      Panel 2</div></tab-container>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(with_panel: true)) do |component| %>
