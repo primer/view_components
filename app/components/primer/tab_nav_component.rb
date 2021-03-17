@@ -10,13 +10,14 @@ module Primer
 
     # Tabs to be rendered.
     #
-    # @param title [String] Text to be rendered by the tab.
     # @param selected [Boolean] Whether the tab is selected.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_many :tabs, lambda { |**system_arguments|
-      return TabComponent.new(**system_arguments) unless @with_panel
-
-      TabComponent.new(tag: :button, type: :button, **system_arguments)
+    renders_many :tabs, lambda { |selected: false, **system_arguments|
+      system_arguments[:classes] = class_names(
+        "tabnav-tab",
+        system_arguments[:classes]
+      )
+      Primer::Navigation::TabComponent.new(selected: selected, with_panel: @with_panel, **system_arguments)
     }
 
     # @example Default
@@ -65,44 +66,6 @@ module Primer
 
     def selected_tabs_count
       @selected_tabs_count ||= tabs.count(&:selected)
-    end
-
-    # Tabs to be rendered.
-    class TabComponent < Primer::Component
-      attr_reader :selected
-
-      def initialize(title:, selected: false, **system_arguments)
-        @title = title
-        @selected = selected
-        @system_arguments = system_arguments
-        @system_arguments[:tag] ||= :a
-        @system_arguments[:role] = :tab
-
-        if selected
-          if @system_arguments[:tag] == :a
-            @system_arguments[:"aria-current"] = :page
-          else
-            @system_arguments[:"aria-selected"] = true
-          end
-        end
-
-        @system_arguments[:classes] = class_names(
-          "tabnav-tab",
-          system_arguments[:classes]
-        )
-      end
-
-      def call
-        render(Primer::BaseComponent.new(**@system_arguments)) { @title }
-      end
-
-      def panel
-        content
-      end
-
-      def hidden?
-        !@selected
-      end
     end
   end
 end

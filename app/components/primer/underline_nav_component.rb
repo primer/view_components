@@ -12,10 +12,15 @@ module Primer
 
     # Use the tabs to list navigation items.
     #
-    # @param href [String] The URL to link to.
     # @param selected [Boolean] Whether the tab is selected.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_many :tabs, "TabComponent"
+    renders_many :tabs, lambda { |selected: false, **system_arguments|
+      system_arguments[:classes] = class_names(
+        "UnderlineNav-item",
+        system_arguments[:classes]
+      )
+      Primer::Navigation::TabComponent.new(selected: selected, with_panel: @with_panel, **system_arguments)
+    }
 
     # Use actions for a call to action.
     #
@@ -111,50 +116,6 @@ module Primer
 
     def render?
       tabs.any?
-    end
-
-    # Tabs to be rendered.
-    class TabComponent < Primer::Component
-      include ViewComponent::SlotableV2
-
-      renders_one :panel, lambda { |**system_arguments|
-        system_arguments[:tag] ||= :div
-        system_arguments[:role] ||= :tabpanel
-        system_arguments[:hidden] = true unless @selected
-
-        Primer::BaseComponent.new(**system_arguments)
-      }
-
-      def initialize(selected: false, href: nil, **system_arguments)
-        @selected = selected
-        @system_arguments = system_arguments
-        @system_arguments[:role] = :tab
-        @system_arguments[:href] = href
-
-        if href.present?
-          @system_arguments[:tag] = :a
-        else
-          @system_arguments[:tag] = :button
-          @system_arguments[:type] = :button
-        end
-
-        if @selected
-          if @system_arguments[:tag] == :a
-            @system_arguments[:"aria-current"] = :page
-          else
-            @system_arguments[:"aria-selected"] = true
-          end
-        end
-
-        @system_arguments[:classes] = class_names(
-          "UnderlineNav-item",
-          system_arguments[:classes]
-        )
-      end
-
-      def call
-        render(Primer::BaseComponent.new(**@system_arguments)) { content }
-      end
     end
   end
 end

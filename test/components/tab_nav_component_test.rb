@@ -8,9 +8,9 @@ class PrimerTabNavComponentTest < Minitest::Test
   def test_raises_if_no_tab_is_selected
     err = assert_raises Primer::TabNavComponent::NoSelectedTabsError do
       render_inline(Primer::TabNavComponent.new) do |c|
-        c.tab(title: "Tab 1")
-        c.tab(title: "Tab 2")
-        c.tab(title: "Tab 3")
+        c.tab { "Tab 1" }
+        c.tab { "Tab 2" }
+        c.tab { "Tab 3" }
       end
     end
 
@@ -20,9 +20,13 @@ class PrimerTabNavComponentTest < Minitest::Test
   def test_raises_if_multiple_tabs_are_selected
     err = assert_raises Primer::TabNavComponent::MultipleSelectedTabsError do
       render_inline(Primer::TabNavComponent.new) do |c|
-        c.tab(title: "Tab 1", selected: true)
-        c.tab(title: "Tab 2")
-        c.tab(title: "Tab 3", selected: true)
+        c.tab(selected: true) do
+          "Tab 1"
+        end
+        c.tab { "Tab 2" }
+        c.tab(selected: true) do
+          "Tab 3"
+        end
       end
     end
 
@@ -31,8 +35,8 @@ class PrimerTabNavComponentTest < Minitest::Test
 
   def test_renders_tabs
     render_inline(Primer::TabNavComponent.new) do |c|
-      c.tab(selected: true, title: "Tab 1")
-      c.tab(title: "Tab 2")
+      c.tab(selected: true) { "Tab 1" }
+      c.tab { "Tab 2" }
     end
 
     assert_selector(".tabnav") do
@@ -45,8 +49,8 @@ class PrimerTabNavComponentTest < Minitest::Test
 
   def test_renders_tabs_as_buttons
     render_inline(Primer::TabNavComponent.new) do |c|
-      c.tab(tag: :button, selected: true, title: "Tab 1")
-      c.tab(tag: :button, title: "Tab 2")
+      c.tab(tag: :button, selected: true) { "Tab 1" }
+      c.tab(tag: :button) { "Tab 2" }
     end
 
     assert_selector(".tabnav") do
@@ -59,11 +63,13 @@ class PrimerTabNavComponentTest < Minitest::Test
 
   def test_renders_tab_panels_with_tabs_as_button
     render_inline(Primer::TabNavComponent.new(with_panel: true)) do |c|
-      c.tab(selected: true, title: "Tab 1") do
-        "Panel 1"
+      c.tab(selected: true) do |t|
+        t.panel { "Panel 1" }
+        "Tab 1"
       end
-      c.tab(title: "Tab 2") do
-        "Panel 2"
+      c.tab do |t|
+        t.panel { "Panel 2" }
+        "Tab 2"
       end
     end
 
@@ -79,10 +85,11 @@ class PrimerTabNavComponentTest < Minitest::Test
 
   def test_only_renders_panels_for_tabs_with_content
     render_inline(Primer::TabNavComponent.new(with_panel: true)) do |c|
-      c.tab(tag: :button, selected: true, title: "Tab 1") do
-        "Panel 1"
+      c.tab(tag: :button, selected: true) do |t|
+        t.panel { "Panel 1" }
+        "Tab 1"
       end
-      c.tab(tag: :button, title: "Tab 2")
+      c.tab(tag: :button) { "Tab 2" }
     end
 
     assert_selector(".tabnav") do
@@ -96,11 +103,13 @@ class PrimerTabNavComponentTest < Minitest::Test
 
   def test_does_not_render_panels_when_with_panel_is_false
     render_inline(Primer::TabNavComponent.new(with_panel: false)) do |c|
-      c.tab(selected: true, title: "Tab 1") do
-        "Panel 1"
+      c.tab(selected: true) do |t|
+        t.panel { "Panel 1" }
+        "Tab 1"
       end
-      c.tab(title: "Tab 2") do
-        "Panel 2"
+      c.tab do |t|
+        t.panel { "Panel 2" }
+        "Tab 2"
       end
     end
 
