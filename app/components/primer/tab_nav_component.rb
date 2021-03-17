@@ -3,10 +3,7 @@
 module Primer
   # Use TabNav to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.
   class TabNavComponent < Primer::Component
-    include ViewComponent::SlotableV2
-
-    class MultipleSelectedTabsError < StandardError; end
-    class NoSelectedTabsError < StandardError; end
+    include Primer::TabbedComponentHelper
 
     # Tabs to be rendered.
     #
@@ -49,23 +46,10 @@ module Primer
       )
     end
 
-    def before_render
-      validate_single_selected_tab
-    end
-
     private
 
     def wrapper
       @with_panel ? Primer::TabContainerComponent : Primer::BaseComponent
-    end
-
-    def validate_single_selected_tab
-      raise MultipleSelectedTabsError, "only one tab can be selected" if selected_tabs_count > 1
-      raise NoSelectedTabsError, "a tab must be selected" if selected_tabs_count != 1
-    end
-
-    def selected_tabs_count
-      @selected_tabs_count ||= tabs.count(&:selected)
     end
   end
 end

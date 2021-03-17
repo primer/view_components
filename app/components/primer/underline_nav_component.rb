@@ -5,7 +5,7 @@ module Primer
   # underlined selected state, typically used for navigation placed at the top
   # of the page.
   class UnderlineNavComponent < Primer::Component
-    include ViewComponent::SlotableV2
+    include Primer::TabbedComponentHelper
 
     ALIGN_DEFAULT = :left
     ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
@@ -102,6 +102,8 @@ module Primer
       }
     end
 
+    private
+
     def wrapper
       return yield unless @with_panel
 
@@ -114,8 +116,5 @@ module Primer
       Primer::BaseComponent.new(**@body_arguments)
     end
 
-    def render?
-      tabs.any?
-    end
   end
 end
