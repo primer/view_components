@@ -19,16 +19,31 @@ module Primer
 
     # @example Default
     #   <%= render(Primer::TabNavComponent.new) do |c| %>
-    #     <% c.tab(selected: true, title: "Tab 1", href: "#") %>
-    #     <% c.tab(title: "Tab 2", href: "#") %>
-    #     <% c.tab(title: "Tab 3", href: "#") %>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(href: "#") { "Tab 2" } %>
+    #     <% c.tab(href: "#") { "Tab 3" } %>
     #   <% end %>
     #
     # @example With panels
     #   <%= render(Primer::TabNavComponent.new(with_panel: true)) do |c| %>
-    #     <% c.tab(selected: true, title: "Tab 1") { "Panel 1" } %>
-    #     <% c.tab(title: "Tab 2") { "Panel 1" } %>
-    #     <% c.tab(title: "Tab 3") { "Panel 1" } %>
+    #     <% c.tab(selected: true) do |t| %>
+    #       Tab 1
+    #       <% t.panel do %>
+    #         Panel 1
+    #       <% end %>
+    #     <% end %>
+    #     <% c.tab do |t| %>
+    #       Tab 2
+    #       <% t.panel do %>
+    #         Panel 2
+    #       <% end %>
+    #     <% end %>
+    #     <% c.tab do |t| %>
+    #       Tab 3
+    #       <% t.panel do %>
+    #         Panel 3
+    #       <% end %>
+    #     <% end %>
     #   <% end %>
     #
     # @param aria_label [String] Used to set the `aria-label` on the top level `<nav>` element.

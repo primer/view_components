@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "primer/navigation/tab_component"
+
 class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_centered_preview"
 

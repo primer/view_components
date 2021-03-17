@@ -15,25 +15,40 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 
 ### Default
 
-<Example src="<div class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <a title='Tab 1' href='#' role='tab' aria-current='page' class='tabnav-tab '></a>      <a title='Tab 2' href='#' role='tab' class='tabnav-tab '></a>      <a title='Tab 3' href='#' role='tab' class='tabnav-tab '></a>  </nav ></div>" />
+<Example src="<div class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <a href='#' role='tab' aria-current='page' class='tabnav-tab '>Tab 1</a>      <a href='#' role='tab' class='tabnav-tab '>Tab 2</a>      <a href='#' role='tab' class='tabnav-tab '>Tab 3</a>  </nav ></div>" />
 
 ```erb
 <%= render(Primer::TabNavComponent.new) do |c| %>
-  <% c.tab(selected: true, title: "Tab 1", href: "#") %>
-  <% c.tab(title: "Tab 2", href: "#") %>
-  <% c.tab(title: "Tab 3", href: "#") %>
+  <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+  <% c.tab(href: "#") { "Tab 2" } %>
+  <% c.tab(href: "#") { "Tab 3" } %>
 <% end %>
 ```
 
 ### With panels
 
-<Example src="<tab-container class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <button title='Tab 1' role='tab' type='button' aria-selected='true' class='tabnav-tab '>Panel 1</button>      <button title='Tab 2' role='tab' type='button' class='tabnav-tab '>Panel 1</button>      <button title='Tab 3' role='tab' type='button' class='tabnav-tab '>Panel 1</button>  </nav >                  </tab-container>" />
+<Example src="<tab-container class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <button role='tab' type='button' aria-selected='true' class='tabnav-tab '>    Tab 1</button>      <button role='tab' type='button' class='tabnav-tab '>    Tab 2</button>      <button role='tab' type='button' class='tabnav-tab '>    Tab 3</button>  </nav >      <div role='tabpanel'>      Panel 1</div>      <div role='tabpanel' hidden='hidden'>      Panel 2</div>      <div role='tabpanel' hidden='hidden'>      Panel 3</div></tab-container>" />
 
 ```erb
 <%= render(Primer::TabNavComponent.new(with_panel: true)) do |c| %>
-  <% c.tab(selected: true, title: "Tab 1") { "Panel 1" } %>
-  <% c.tab(title: "Tab 2") { "Panel 1" } %>
-  <% c.tab(title: "Tab 3") { "Panel 1" } %>
+  <% c.tab(selected: true) do |t| %>
+    Tab 1
+    <% t.panel do %>
+      Panel 1
+    <% end %>
+  <% end %>
+  <% c.tab do |t| %>
+    Tab 2
+    <% t.panel do %>
+      Panel 2
+    <% end %>
+  <% end %>
+  <% c.tab do |t| %>
+    Tab 3
+    <% t.panel do %>
+      Panel 3
+    <% end %>
+  <% end %>
 <% end %>
 ```
 
