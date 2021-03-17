@@ -60,11 +60,5 @@ module Primer
         system_arguments[:classes]
       )
     end
-
-    private
-
-    def wrapper
-      @with_panel ? Primer::TabContainerComponent : Primer::BaseComponent
-    end
   end
 end

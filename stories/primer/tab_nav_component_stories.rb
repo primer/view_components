@@ -9,9 +9,18 @@ class Primer::TabNavComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |c|
-      c.tab(selected: true, title: "Tab 1") { "Panel 1" }
-      c.tab(title: "Tab 2") { "Panel 2" }
-      c.tab(title: "Tab 3") { "Panel 3" }
+      c.tab(selected: true) do |t|
+        t.panel { "Panel 1" }
+        "Tab 1"
+      end
+      c.tab do |t|
+        t.panel { "Panel 2" }
+        "Tab 2"
+      end
+      c.tab do |t|
+        t.panel { "Panel 3" }
+        "Tab 3"
+      end
     end
   end
 end

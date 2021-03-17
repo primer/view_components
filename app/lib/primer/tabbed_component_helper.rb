@@ -21,6 +21,14 @@ module Primer
 
     private
 
+    def wrapper
+      return yield unless @with_panel
+
+      render Primer::TabContainerComponent.new do
+        yield
+      end
+    end
+
     def validate_single_selected_tab
       raise MultipleSelectedTabsError, "only one tab can be selected" if selected_tabs_count > 1
       raise NoSelectedTabsError, "a tab must be selected" if selected_tabs_count != 1

@@ -104,14 +104,6 @@ module Primer
 
     private
 
-    def wrapper
-      return yield unless @with_panel
-
-      render Primer::TabContainerComponent.new do
-        yield
-      end
-    end
-
     def body
       Primer::BaseComponent.new(**@body_arguments)
     end

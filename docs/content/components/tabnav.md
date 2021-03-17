@@ -15,7 +15,7 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 
 ### Default
 
-<Example src="<div class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <a href='#' role='tab' aria-current='page' class='tabnav-tab '>Tab 1</a>      <a href='#' role='tab' class='tabnav-tab '>Tab 2</a>      <a href='#' role='tab' class='tabnav-tab '>Tab 3</a>  </nav ></div>" />
+<Example src="  <div class='tabnav '>    <nav role='tablist' aria-label='' class='tabnav-tabs'>        <a href='#' role='tab' aria-current='page' class='tabnav-tab '>Tab 1</a>        <a href='#' role='tab' class='tabnav-tab '>Tab 2</a>        <a href='#' role='tab' class='tabnav-tab '>Tab 3</a>    </nav></div>" />
 
 ```erb
 <%= render(Primer::TabNavComponent.new) do |c| %>
@@ -27,7 +27,7 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 
 ### With panels
 
-<Example src="<tab-container class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <button role='tab' type='button' aria-selected='true' class='tabnav-tab '>    Tab 1</button>      <button role='tab' type='button' class='tabnav-tab '>    Tab 2</button>      <button role='tab' type='button' class='tabnav-tab '>    Tab 3</button>  </nav >      <div role='tabpanel'>      Panel 1</div>      <div role='tabpanel' hidden='hidden'>      Panel 2</div>      <div role='tabpanel' hidden='hidden'>      Panel 3</div></tab-container>" />
+<Example src="<tab-container>  <div class='tabnav '>    <nav role='tablist' aria-label='' class='tabnav-tabs'>        <button role='tab' type='button' aria-selected='true' class='tabnav-tab '>    Tab 1</button>        <button role='tab' type='button' class='tabnav-tab '>    Tab 2</button>        <button role='tab' type='button' class='tabnav-tab '>    Tab 3</button>    </nav></div>      <div role='tabpanel'>      Panel 1</div>      <div role='tabpanel' hidden='hidden'>      Panel 2</div>      <div role='tabpanel' hidden='hidden'>      Panel 3</div></tab-container>" />
 
 ```erb
 <%= render(Primer::TabNavComponent.new(with_panel: true)) do |c| %>
