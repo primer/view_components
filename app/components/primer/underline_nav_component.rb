@@ -115,6 +115,5 @@ module Primer
     def body
       Primer::BaseComponent.new(**@body_arguments)
     end
-
   end
 end

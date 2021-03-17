@@ -7,7 +7,7 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
     controls do
       selected true
       with_panel false
-      select(:classes, ["tabnav-tab", "UnderlineNav-item"], "tabnav-tab")
+      select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
     end
 
     content do

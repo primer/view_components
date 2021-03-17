@@ -16,6 +16,7 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
     assert_equal("a tab must be selected", err.message)
   end
+
   def test_raises_if_no_tab_is_selected
     err = assert_raises Primer::TabbedComponentHelper::NoSelectedTabsError do
       render_inline(Primer::UnderlineNavComponent.new) do |c|

@@ -3,6 +3,8 @@
 require "active_support/concern"
 
 module Primer
+  # Helper to share tab validation logic between components.
+  # The component will raise an error if there are 0 or 2+ selected tabs.
   module TabbedComponentHelper
     extend ActiveSupport::Concern
 

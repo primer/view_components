@@ -17,7 +17,7 @@ of the page.
 
 ### Default
 
-<Example src="  <nav role='tablist' class='UnderlineNav '>    <div class='UnderlineNav-body '>        <a role='tab' href='#' aria-current='page' class='UnderlineNav-item '>    Item 1</a>        <a role='tab' href='#' class='UnderlineNav-item '>    Item 2</a></div>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>" />
+<Example src="  <nav role='tablist' class='UnderlineNav '>    <div class='UnderlineNav-body '>        <a href='#' role='tab' aria-current='page' class='UnderlineNav-item '>    Item 1</a>        <a href='#' role='tab' class='UnderlineNav-item '>    Item 2</a></div>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new) do |component| %>
@@ -35,7 +35,7 @@ of the page.
 
 ### Align right
 
-<Example src="  <nav role='tablist' class='UnderlineNav UnderlineNav--right '>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div>    <div class='UnderlineNav-body '>        <a role='tab' href='#' aria-current='page' class='UnderlineNav-item '>    Item 1</a>        <a role='tab' href='#' class='UnderlineNav-item '>    Item 2</a></div></nav>" />
+<Example src="  <nav role='tablist' class='UnderlineNav UnderlineNav--right '>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div>    <div class='UnderlineNav-body '>        <a href='#' role='tab' aria-current='page' class='UnderlineNav-item '>    Item 1</a>        <a href='#' role='tab' class='UnderlineNav-item '>    Item 2</a></div></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>
@@ -91,7 +91,6 @@ Use the tabs to list navigation items.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `href` | `String` | N/A | The URL to link to. |
 | `selected` | `Boolean` | N/A | Whether the tab is selected. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 

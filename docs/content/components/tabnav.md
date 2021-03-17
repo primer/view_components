@@ -15,7 +15,7 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 
 ### Default
 
-<Example src="<div class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <a href='#' role='tab' aria-current='page' class='tabnav-tab '>Tab 1</a>      <a href='#' role='tab' class='tabnav-tab '>Tab 2</a>      <a href='#' role='tab' class='tabnav-tab '>Tab 3</a>  </nav ></div>" />
+<Example src="<div class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <a title='Tab 1' href='#' role='tab' aria-current='page' class='tabnav-tab '></a>      <a title='Tab 2' href='#' role='tab' class='tabnav-tab '></a>      <a title='Tab 3' href='#' role='tab' class='tabnav-tab '></a>  </nav ></div>" />
 
 ```erb
 <%= render(Primer::TabNavComponent.new) do |c| %>
@@ -27,7 +27,7 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 
 ### With panels
 
-<Example src="<tab-container class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <button type='button' role='tab' aria-selected='true' class='tabnav-tab '>Tab 1</button>      <button type='button' role='tab' class='tabnav-tab '>Tab 2</button>      <button type='button' role='tab' class='tabnav-tab '>Tab 3</button>  </nav >        <div role='tabpanel' >          Panel 1        </div>        <div role='tabpanel' hidden>          Panel 1        </div>        <div role='tabpanel' hidden>          Panel 1        </div></tab-container>" />
+<Example src="<tab-container class='tabnav '>  <nav role='tablist' aria-label='' class='tabnav-tabs'>      <button title='Tab 1' role='tab' type='button' aria-selected='true' class='tabnav-tab '>Panel 1</button>      <button title='Tab 2' role='tab' type='button' class='tabnav-tab '>Panel 1</button>      <button title='Tab 3' role='tab' type='button' class='tabnav-tab '>Panel 1</button>  </nav >                  </tab-container>" />
 
 ```erb
 <%= render(Primer::TabNavComponent.new(with_panel: true)) do |c| %>
@@ -53,6 +53,5 @@ Tabs to be rendered.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `title` | `String` | N/A | Text to be rendered by the tab. |
 | `selected` | `Boolean` | N/A | Whether the tab is selected. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
