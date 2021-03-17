@@ -9,14 +9,13 @@ jobs:
   build-docs:
     name: Update statuses project
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: {{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.7.x
-      - name: Make updates
+      - name: Install deps
         run: gem install graphql-client
-        run: script/update-statuses-project.rb
+      - name: Make updates
+        run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} script/update-statuses-project.rb
