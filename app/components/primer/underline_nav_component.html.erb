@@ -1,4 +1,4 @@
-<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+<%= wrapper do %>
   <% if @align == :right %>
     <%= actions %>
   <% end %>
@@ -13,10 +13,12 @@
     <%= actions %>
   <% end %>
 <% end %>
-<% tabs.each do |tab| %>
-  <% if tab.panel.present? %>
-    <div role="tabpanel" <%= "hidden" unless tab.selected %>>
-      <%= tab.panel %>
-    </div>
+<% if @with_panel %>
+  <% tabs.each do |tab| %>
+    <% if tab.panel.present? %>
+      <div role="tabpanel" <%= "hidden" unless tab.selected %>>
+        <%= tab.panel %>
+      </div>
+    <% end %>
   <% end %>
 <% end %>

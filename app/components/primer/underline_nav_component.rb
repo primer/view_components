@@ -12,6 +12,8 @@ module Primer
 
     # Use the tabs to list navigation items.
     #
+    # @param href [String] The URL to link to.
+    # @param selected [Boolean] Whether the tab is selected.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_many :tabs, "TabComponent"
 
@@ -52,7 +54,7 @@ module Primer
     #   <% end %>
     #
     # @example With panels
-    #   <%= render(Primer::UnderlineNavComponent.new) do |component| %>
+    #   <%= render(Primer::UnderlineNavComponent.new(with_panel: true)) do |component| %>
     #     <% component.tab(selected: true) do |t| %>
     #       Item 1
     #       <% t.panel do %>
@@ -70,13 +72,16 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
+    # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
     # @param align [Symbol] <%= one_of(Primer::UnderlineNavComponent::ALIGN_OPTIONS) %> - Defaults to <%= Primer::UnderlineNavComponent::ALIGN_DEFAULT %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(align: ALIGN_DEFAULT, body_classes: "", **system_arguments)
+    def initialize(with_panel: false, align: ALIGN_DEFAULT, body_classes: "", **system_arguments)
+      @with_panel = with_panel
       @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = :nav
+      @system_arguments[:role] = :tablist
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "UnderlineNav",
@@ -90,6 +95,20 @@ module Primer
           body_classes
         )
       }
+    end
+
+    def wrapper
+      if @with_panel
+        render Primer::TabContainerComponent.new do
+          render Primer::BaseComponent.new(**@system_arguments) do
+            yield
+          end
+        end
+      else
+        render Primer::BaseComponent.new(**@system_arguments) do
+          yield
+        end
+      end
     end
 
     def body
