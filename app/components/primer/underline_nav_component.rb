@@ -109,17 +109,27 @@ module Primer
       Primer::BaseComponent.new(**@body_arguments)
     end
 
+    def render?
+      tabs.any?
+    end
+
     # Tabs to be rendered.
     class TabComponent < Primer::Component
       include ViewComponent::SlotableV2
 
-      renders_one :panel
+      renders_one :panel, lambda { |**system_arguments|
+        system_arguments[:tag] ||= :div
+        system_arguments[:role] ||= :tabpanel
+        system_arguments[:hidden] = true unless @selected
 
-      attr_reader :selected
+        Primer::BaseComponent.new(**system_arguments)
+      }
+
       def initialize(selected: false, href: nil, **system_arguments)
         @selected = selected
         @system_arguments = system_arguments
         @system_arguments[:role] = :tab
+        @system_arguments[:href] = href
 
         if href.present?
           @system_arguments[:tag] = :a
@@ -128,7 +138,7 @@ module Primer
           @system_arguments[:type] = :button
         end
 
-        if selected
+        if @selected
           if @system_arguments[:tag] == :a
             @system_arguments[:"aria-current"] = :page
           else
