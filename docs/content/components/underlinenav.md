@@ -17,16 +17,12 @@ of the page.
 
 ### Default
 
-<Example src="  <nav role='tablist' class='UnderlineNav '>    <div class='UnderlineNav-body '>        <a href='#' role='tab' aria-current='page' class='UnderlineNav-item '>              Item 1</a>        <a href='#' role='tab' class='UnderlineNav-item '>              Item 2</a></div>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>" />
+<Example src="  <nav role='tablist' class='UnderlineNav '>    <div class='UnderlineNav-body '>        <a href='#' role='tab' aria-current='page' class='UnderlineNav-item '>          Item 1</a>        <a href='#' role='tab' class='UnderlineNav-item '>          Item 2</a></div>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new) do |component| %>
-  <% component.tab(href: "#", selected: true) do %>
-    Item 1
-  <% end %>
-  <% component.tab(href: "#") do %>
-    Item 2
-  <% end %>
+  <% component.tab(href: "#", selected: true) { "Item 1" } %>
+  <% component.tab(href: "#") { "Item 2" } %>
   <% component.actions do %>
     <%= render(Primer::ButtonComponent.new) { "Button!" } %>
   <% end %>
@@ -35,15 +31,15 @@ of the page.
 
 ### Align right
 
-<Example src="  <nav role='tablist' class='UnderlineNav UnderlineNav--right '>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div>    <div class='UnderlineNav-body '>        <a href='#' role='tab' aria-current='page' class='UnderlineNav-item '>              Item 1</a>        <a href='#' role='tab' class='UnderlineNav-item '>              Item 2</a></div></nav>" />
+<Example src="  <nav role='tablist' class='UnderlineNav UnderlineNav--right '>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div>    <div class='UnderlineNav-body '>        <a href='#' role='tab' aria-current='page' class='UnderlineNav-item '>    <span>Item 1</span>  </a>        <a href='#' role='tab' class='UnderlineNav-item '>    <span>Item 2</span>  </a></div></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>
-  <% component.tab(href: "#", selected: true) do %>
-    Item 1
+  <% component.tab(href: "#", selected: true) do |t| %>
+    <% t.title { "Item 1" } %>
   <% end %>
-  <% component.tab(href: "#") do %>
-    Item 2
+  <% component.tab(href: "#") do |t| %>
+    <% t.title { "Item 2" } %>
   <% end %>
   <% component.actions do %>
     <%= render(Primer::ButtonComponent.new) { "Button!" } %>
@@ -53,18 +49,18 @@ of the page.
 
 ### With panels
 
-<Example src="<tab-container>  <nav role='tablist' class='UnderlineNav '>    <div class='UnderlineNav-body '>        <button role='tab' type='button' aria-selected='true' class='UnderlineNav-item '>              Item 1</button>        <button role='tab' type='button' class='UnderlineNav-item '>              Item 2</button></div>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>      <div role='tabpanel'>      Panel 1</div>      <div role='tabpanel' hidden='hidden'>      Panel 2</div></tab-container>" />
+<Example src="<tab-container>  <nav role='tablist' class='UnderlineNav '>    <div class='UnderlineNav-body '>        <button role='tab' type='button' aria-selected='true' class='UnderlineNav-item '>    <span>Item 1</span>  </button>        <button role='tab' type='button' class='UnderlineNav-item '>    <span>Item 2</span>  </button></div>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>      <div role='tabpanel'>      Panel 1</div>      <div role='tabpanel' hidden='hidden'>      Panel 2</div></tab-container>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(with_panel: true)) do |component| %>
   <% component.tab(selected: true) do |t| %>
-    Item 1
+    <% t.title { "Item 1" } %>
     <% t.panel do %>
       Panel 1
     <% end %>
   <% end %>
   <% component.tab do |t| %>
-    Item 2
+    <% t.title { "Item 2" } %>
     <% t.panel do %>
       Panel 2
     <% end %>

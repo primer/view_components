@@ -27,24 +27,24 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 
 ### With panels
 
-<Example src="<tab-container>  <div class='tabnav '>    <nav role='tablist' aria-label='' class='tabnav-tabs'>        <button role='tab' type='button' aria-selected='true' class='tabnav-tab '>              Tab 1</button>        <button role='tab' type='button' class='tabnav-tab '>              Tab 2</button>        <button role='tab' type='button' class='tabnav-tab '>              Tab 3</button>    </nav></div>      <div role='tabpanel'>      Panel 1</div>      <div role='tabpanel' hidden='hidden'>      Panel 2</div>      <div role='tabpanel' hidden='hidden'>      Panel 3</div></tab-container>" />
+<Example src="<tab-container>  <div class='tabnav '>    <nav role='tablist' aria-label='' class='tabnav-tabs'>        <button role='tab' type='button' aria-selected='true' class='tabnav-tab '>    <span>Tab 1</span>  </button>        <button role='tab' type='button' class='tabnav-tab '>    <span>Tab 2</span>  </button>        <button role='tab' type='button' class='tabnav-tab '>    <span>Tab 3</span>  </button>    </nav></div>      <div role='tabpanel'>      Panel 1</div>      <div role='tabpanel' hidden='hidden'>      Panel 2</div>      <div role='tabpanel' hidden='hidden'>      Panel 3</div></tab-container>" />
 
 ```erb
 <%= render(Primer::TabNavComponent.new(with_panel: true)) do |c| %>
   <% c.tab(selected: true) do |t| %>
-    Tab 1
+    <% t.title { "Tab 1" } %>
     <% t.panel do %>
       Panel 1
     <% end %>
   <% end %>
   <% c.tab do |t| %>
-    Tab 2
+    <% t.title { "Tab 2" } %>
     <% t.panel do %>
       Panel 2
     <% end %>
   <% end %>
   <% c.tab do |t| %>
-    Tab 3
+    <% t.title { "Tab 3" } %>
     <% t.panel do %>
       Panel 3
     <% end %>

@@ -34,12 +34,8 @@ module Primer
 
     # @example Default
     #   <%= render(Primer::UnderlineNavComponent.new) do |component| %>
-    #     <% component.tab(href: "#", selected: true) do %>
-    #       Item 1
-    #     <% end %>
-    #     <% component.tab(href: "#") do %>
-    #       Item 2
-    #     <% end %>
+    #     <% component.tab(href: "#", selected: true) { "Item 1" } %>
+    #     <% component.tab(href: "#") { "Item 2" } %>
     #     <% component.actions do %>
     #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
     #     <% end %>
@@ -47,11 +43,11 @@ module Primer
     #
     # @example Align right
     #   <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>
-    #     <% component.tab(href: "#", selected: true) do %>
-    #       Item 1
+    #     <% component.tab(href: "#", selected: true) do |t| %>
+    #       <% t.title { "Item 1" } %>
     #     <% end %>
-    #     <% component.tab(href: "#") do %>
-    #       Item 2
+    #     <% component.tab(href: "#") do |t| %>
+    #       <% t.title { "Item 2" } %>
     #     <% end %>
     #     <% component.actions do %>
     #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
@@ -61,13 +57,13 @@ module Primer
     # @example With panels
     #   <%= render(Primer::UnderlineNavComponent.new(with_panel: true)) do |component| %>
     #     <% component.tab(selected: true) do |t| %>
-    #       Item 1
+    #       <% t.title { "Item 1" } %>
     #       <% t.panel do %>
     #         Panel 1
     #       <% end %>
     #     <% end %>
     #     <% component.tab do |t| %>
-    #       Item 2
+    #       <% t.title { "Item 2" } %>
     #       <% t.panel do %>
     #         Panel 2
     #       <% end %>

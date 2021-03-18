@@ -50,11 +50,11 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
       render_inline(Primer::UnderlineNavComponent.new(align: :foo)) do |component|
         component.tab(selected: true, href: "#") do |t|
           t.panel { "Panel 1" }
-          "Tab 1"
+          t.title { "Tab 1" }
         end
         component.tab(href: "#") do |t|
           t.panel { "Panel 2" }
-          "Tab 2"
+          t.title { "Tab 2" }
         end
         component.actions do
           "Actions content"
@@ -79,11 +79,11 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     render_inline(Primer::UnderlineNavComponent.new(align: :right)) do |component|
       component.tab(selected: true, href: "#") do |t|
         t.panel { "Panel 1" }
-        "Tab 1"
+        t.title { "Tab 1" }
       end
       component.tab(href: "#") do |t|
         t.panel { "Panel 2" }
-        "Tab 2"
+        t.title { "Tab 2" }
       end
       component.actions do
         "Actions content"
@@ -105,11 +105,11 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     render_inline(Primer::UnderlineNavComponent.new(align: :right)) do |component|
       component.tab(selected: true, href: "#") do |t|
         t.panel { "Panel 1" }
-        "Tab 1"
+        t.title { "Tab 1" }
       end
       component.tab(href: "#") do |t|
         t.panel { "Panel 2" }
-        "Tab 2"
+        t.title { "Tab 2" }
       end
       component.actions do
         "Actions content"
@@ -123,11 +123,11 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     render_inline(Primer::UnderlineNavComponent.new(with_panel: true)) do |component|
       component.tab(selected: true) do |t|
         t.panel { "Panel 1" }
-        "Tab 1"
+        t.title { "Tab 1" }
       end
       component.tab do |t|
         t.panel { "Panel 2" }
-        "Tab 2"
+        t.title { "Tab 2" }
       end
       component.actions do
         "Actions content"
