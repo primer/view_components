@@ -64,7 +64,7 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
       select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
     end
 
-    content do |c|
+    content do |_c|
       "<div>This is my <strong>custom HTML</strong></div>".html_safe
     end
   end
