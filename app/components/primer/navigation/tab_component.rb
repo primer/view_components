@@ -16,6 +16,7 @@ module Primer
       }
 
       attr_reader :selected
+
       def initialize(selected: false, with_panel: false, **system_arguments)
         @selected = selected
         @system_arguments = system_arguments
