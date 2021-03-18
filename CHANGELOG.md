@@ -12,6 +12,10 @@
 
     *Manuel Puyol, Blake Williams*
 
+* **Breaking change**: Update `UnderlineNavComponent` API be more strict and support `TabContainer`.
+
+    *Manuel Puyol*
+
 ## 0.0.30
 
 * Make `color:`, `bg:` and `border_color:` accept string values.
