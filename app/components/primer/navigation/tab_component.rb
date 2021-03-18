@@ -3,7 +3,7 @@
 module Primer
   module Navigation
     # This component is part of navigation components such as `Primer::TabNavComponent`
-    # and `Primer::UnderlineNavComponent` and shoult not be used as a standalone component.
+    # and `Primer::UnderlineNavComponent` and should not be used as a standalone component.
     class TabComponent < Primer::Component
       include ViewComponent::SlotableV2
 
