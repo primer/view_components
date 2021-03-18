@@ -46,6 +46,26 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
+    # @example With icons and counters
+    #   <%= render(Primer::UnderlineNavComponent.new) do |component| %>
+    #     <% component.tab(href: "#", selected: true) do |t| %>
+    #       <% t.icon(icon: :star) %>
+    #       <% t.title { "Item 1" } %>
+    #     <% end %>
+    #     <% component.tab(href: "#") do |t| %>
+    #       <% t.icon(icon: :star) %>
+    #       <% t.title { "Item 2" } %>
+    #       <% t.counter(count: 10) %>
+    #     <% end %>
+    #     <% component.tab(href: "#") do |t| %>
+    #       <% t.title { "Item 3" } %>
+    #       <% t.counter(count: 10) %>
+    #     <% end %>
+    #     <% component.actions do %>
+    #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
+    #     <% end %>
+    #   <% end %>
+    #
     # @example Align right
     #   <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>
     #     <% component.tab(href: "#", selected: true) do |t| %>
