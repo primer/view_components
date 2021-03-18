@@ -40,6 +40,39 @@ module Primer
 
       attr_reader :selected
 
+      # @example Default
+      #   <%= render(Primer::Navigation::TabComponent.new(selected: true)) do |c| %>
+      #     <% c.title { "Selected" } %>
+      #   <% end %>
+      #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
+      #     <% c.title { "Not selected" } %>
+      #   <% end %>
+      #
+      # @example With icons and counters
+      #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
+      #     <% c.icon(icon: :star) %>
+      #     <% c.title { "Tab" } %>
+      #   <% end %>
+      #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
+      #     <% c.icon(icon: :star) %>
+      #     <% c.title { "Tab" } %>
+      #     <% c.counter(count: 10) %>
+      #   <% end %>
+      #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
+      #     <% c.title { "Tab" } %>
+      #     <% c.counter(count: 10) %>
+      #   <% end %>
+      #
+      # @example With custom HTML
+      #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
+      #     <div>
+      #       This is my <strong>custom HTML</strong>
+      #     </div>
+      #   <% end %>
+      #
+      # @param selected [Boolean] Whether the Tab is selected or not.
+      # @param with_panel [Boolean] Whether the Tab has an associated panel.
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(selected: false, with_panel: false, **system_arguments)
         @selected = selected
         @system_arguments = system_arguments
