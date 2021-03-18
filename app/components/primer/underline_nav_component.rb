@@ -19,7 +19,12 @@ module Primer
         "UnderlineNav-item",
         system_arguments[:classes]
       )
-      Primer::Navigation::TabComponent.new(selected: selected, with_panel: @with_panel, **system_arguments)
+      Primer::Navigation::TabComponent.new(
+        selected: selected,
+        with_panel: @with_panel,
+        icon_classes: "UnderlineNav-octicon",
+        **system_arguments
+      )
     }
 
     # Use actions for a call to action.

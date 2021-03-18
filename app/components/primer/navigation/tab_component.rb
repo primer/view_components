@@ -23,7 +23,8 @@ module Primer
       # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
       renders_one :icon, lambda { |**system_arguments|
         system_arguments[:classes] = class_names(
-          "UnderlineNav-octicon"
+          @icon_classes,
+          system_arguments[:classes]
         )
         Primer::OcticonComponent.new(**system_arguments)
       }
@@ -72,9 +73,11 @@ module Primer
       #
       # @param selected [Boolean] Whether the Tab is selected or not.
       # @param with_panel [Boolean] Whether the Tab has an associated panel.
+      # @param icon_classes [Boolean] Classes that must always be applied to icons.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(selected: false, with_panel: false, **system_arguments)
+      def initialize(selected: false, with_panel: false, icon_classes: "", **system_arguments)
         @selected = selected
+        @icon_classes = icon_classes
         @system_arguments = system_arguments
         @system_arguments[:role] = :tab
 

@@ -146,4 +146,16 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
       assert_selector("div[role='tabpanel']", text: "Panel 2", visible: false)
     end
   end
+
+  def test_renders_tab_icon_with_correct_classes
+    render_inline(Primer::UnderlineNavComponent.new(align: :right)) do |component|
+      component.tab(selected: true, href: "#") do |t|
+        t.panel { "Panel 1" }
+        t.title { "Tab 1" }
+        t.icon(icon: :star)
+      end
+    end
+
+    assert_selector(".UnderlineNav-octicon.octicon.octicon-star")
+  end
 end

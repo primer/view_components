@@ -89,4 +89,12 @@ class PrimerNavigationTabComponentTest < Minitest::Test
       assert_selector("span", text: "Title")
     end
   end
+
+  def test_renders_icon_with_classes
+    render_inline Primer::Navigation::TabComponent.new(icon_classes: "custom-class") do |c|
+      c.icon(icon: :star)
+    end
+
+    assert_selector(".custom-class.octicon.octicon-star")
+  end
 end
