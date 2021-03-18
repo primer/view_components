@@ -12,8 +12,60 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
       select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
     end
 
-    content do
-      "Tab"
+    content do |c|
+      c.title { "Tab" }
+    end
+  end
+
+  story(:with_icon) do
+    controls do
+      selected true
+      with_panel false
+      select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
+    end
+
+    content do |c|
+      c.icon(icon: :star)
+      c.title { "Tab" }
+    end
+  end
+
+  story(:with_counter) do
+    controls do
+      selected true
+      with_panel false
+      select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
+    end
+
+    content do |c|
+      c.counter(count: 25)
+      c.title { "Tab" }
+    end
+  end
+
+  story(:full) do
+    controls do
+      selected true
+      with_panel false
+      select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
+    end
+
+    content do |c|
+      c.icon(icon: :star)
+      c.counter(count: 25)
+      c.title { "Tab" }
+    end
+  end
+
+  story(:with_custom_html) do
+    controls do
+      selected true
+      with_panel false
+      select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
+    end
+
+    content do |c|
+      "<div>This is my <strong>custom HTML</strong></div>".html_safe
     end
   end
 end
