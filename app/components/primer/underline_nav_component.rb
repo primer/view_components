@@ -10,7 +10,7 @@ module Primer
     ALIGN_DEFAULT = :left
     ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
 
-    # Use the tabs to list navigation items.
+    # Use the tabs to list navigation items. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
     # @param selected [Boolean] Whether the tab is selected.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

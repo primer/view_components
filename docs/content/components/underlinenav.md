@@ -83,7 +83,7 @@ of the page.
 
 ### `Tabs`
 
-Use the tabs to list navigation items.
+Use the tabs to list navigation items. For more information, refer to [Tab](/components/tab).
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |

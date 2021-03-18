@@ -64,7 +64,7 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 
 ### `Tabs`
 
-Tabs to be rendered.
+Tabs to be rendered. For more information, refer to [Tab](/components/tab).
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
