@@ -193,9 +193,7 @@ module Primer
 
         if BOOLEAN_MAPPINGS.key?(key)
           BOOLEAN_MAPPINGS[key][:mappings].each do |m|
-            if m[:value] == val && m[:css_class].present?
-              memo[:classes] << m[:css_class]
-            end
+            memo[:classes] << m[:css_class] if m[:value] == val && m[:css_class].present?
           end
         elsif key == BG_KEY
           if val.to_s.start_with?("#")
