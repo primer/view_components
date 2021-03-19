@@ -16,7 +16,7 @@ module Primer
     class NoSelectedTabsError < StandardError; end
 
     def before_render
-      validate_single_selected_tab
+      validate_single_selected_tab unless Rails.env.production?
     end
 
     private
