@@ -13,7 +13,7 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
     end
 
     content do |c|
-      c.title { "Tab" }
+      c.text { "Tab" }
     end
   end
 
@@ -26,7 +26,7 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
 
     content do |c|
       c.icon(icon: :star)
-      c.title { "Tab" }
+      c.text { "Tab" }
     end
   end
 
@@ -39,7 +39,7 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
 
     content do |c|
       c.counter(count: 25)
-      c.title { "Tab" }
+      c.text { "Tab" }
     end
   end
 
@@ -53,7 +53,7 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
     content do |c|
       c.icon(icon: :star)
       c.counter(count: 25)
-      c.title { "Tab" }
+      c.text { "Tab" }
     end
   end
 

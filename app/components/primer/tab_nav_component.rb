@@ -28,15 +28,15 @@ module Primer
     #   <%= render(Primer::TabNavComponent.new) do |component| %>
     #     <% component.tab(href: "#", selected: true) do |t| %>
     #       <% t.icon(icon: :star) %>
-    #       <% t.title { "Item 1" } %>
+    #       <% t.text { "Item 1" } %>
     #     <% end %>
     #     <% component.tab(href: "#") do |t| %>
     #       <% t.icon(icon: :star) %>
-    #       <% t.title { "Item 2" } %>
+    #       <% t.text { "Item 2" } %>
     #       <% t.counter(count: 10) %>
     #     <% end %>
     #     <% component.tab(href: "#") do |t| %>
-    #       <% t.title { "Item 3" } %>
+    #       <% t.text { "Item 3" } %>
     #       <% t.counter(count: 10) %>
     #     <% end %>
     #   <% end %>
@@ -44,19 +44,19 @@ module Primer
     # @example With panels
     #   <%= render(Primer::TabNavComponent.new(with_panel: true)) do |c| %>
     #     <% c.tab(selected: true) do |t| %>
-    #       <% t.title { "Tab 1" } %>
+    #       <% t.text { "Tab 1" } %>
     #       <% t.panel do %>
     #         Panel 1
     #       <% end %>
     #     <% end %>
     #     <% c.tab do |t| %>
-    #       <% t.title { "Tab 2" } %>
+    #       <% t.text { "Tab 2" } %>
     #       <% t.panel do %>
     #         Panel 2
     #       <% end %>
     #     <% end %>
     #     <% c.tab do |t| %>
-    #       <% t.title { "Tab 3" } %>
+    #       <% t.text { "Tab 3" } %>
     #       <% t.panel do %>
     #         Panel 3
     #       <% end %>

@@ -1,9 +1,9 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <%= icon %>
-  <%= title %>
-  <%= counter %>
-
-  <% if render_content? %>
+  <% if text.present? %>
+    <%= text %>
+  <% else %>
     <%= content %>
   <% end %>
+  <%= counter %>
 <% end %>

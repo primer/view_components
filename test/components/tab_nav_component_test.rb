@@ -73,11 +73,11 @@ class PrimerTabNavComponentTest < Minitest::Test
     render_inline(Primer::TabNavComponent.new(with_panel: true)) do |c|
       c.tab(selected: true) do |t|
         t.panel { "Panel 1" }
-        t.title { "Tab 1" }
+        t.text { "Tab 1" }
       end
       c.tab do |t|
         t.panel { "Panel 2" }
-        t.title { "Tab 2" }
+        t.text { "Tab 2" }
       end
     end
 
@@ -95,7 +95,7 @@ class PrimerTabNavComponentTest < Minitest::Test
     render_inline(Primer::TabNavComponent.new(with_panel: true)) do |c|
       c.tab(tag: :button, selected: true) do |t|
         t.panel { "Panel 1" }
-        t.title { "Tab 1" }
+        t.text { "Tab 1" }
       end
       c.tab(tag: :button) { "Tab 2" }
     end
@@ -113,11 +113,11 @@ class PrimerTabNavComponentTest < Minitest::Test
     render_inline(Primer::TabNavComponent.new(with_panel: false)) do |c|
       c.tab(selected: true) do |t|
         t.panel { "Panel 1" }
-        t.title { "Tab 1" }
+        t.text { "Tab 1" }
       end
       c.tab do |t|
         t.panel { "Panel 2" }
-        t.title { "Tab 2" }
+        t.text { "Tab 2" }
       end
     end
 

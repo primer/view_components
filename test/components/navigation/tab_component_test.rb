@@ -7,7 +7,7 @@ class PrimerNavigationTabComponentTest < Minitest::Test
 
   def test_renders_title
     render_inline Primer::Navigation::TabComponent.new do |c|
-      c.title { "Title" }
+      c.text { "Title" }
     end
 
     assert_selector("a[role='tab']") do
@@ -33,7 +33,7 @@ class PrimerNavigationTabComponentTest < Minitest::Test
 
   def test_full_component
     render_inline Primer::Navigation::TabComponent.new do |c|
-      c.title { "Title" }
+      c.text { "Title" }
       c.icon(icon: :star)
       c.counter(count: 10)
     end
@@ -53,7 +53,7 @@ class PrimerNavigationTabComponentTest < Minitest::Test
 
   def test_does_not_render_custom_content_if_slots_are_used
     render_inline Primer::Navigation::TabComponent.new do |c|
-      c.title { "Title" }
+      c.text { "Title" }
       "Custom content"
     end
 
@@ -62,7 +62,7 @@ class PrimerNavigationTabComponentTest < Minitest::Test
 
   def test_renders_as_button_if_has_panel
     render_inline Primer::Navigation::TabComponent.new(with_panel: true) do |c|
-      c.title { "Title" }
+      c.text { "Title" }
     end
 
     assert_selector("button[role='tab'][type='button']") do
@@ -72,7 +72,7 @@ class PrimerNavigationTabComponentTest < Minitest::Test
 
   def test_renders_aria_current_if_link_and_selected
     render_inline Primer::Navigation::TabComponent.new(selected: true) do |c|
-      c.title { "Title" }
+      c.text { "Title" }
     end
 
     assert_selector("a[role='tab'][aria-current='page']") do
@@ -82,7 +82,7 @@ class PrimerNavigationTabComponentTest < Minitest::Test
 
   def test_renders_aria_selected_if_button_and_selected
     render_inline Primer::Navigation::TabComponent.new(selected: true, with_panel: true) do |c|
-      c.title { "Title" }
+      c.text { "Title" }
     end
 
     assert_selector("button[role='tab'][type='button'][aria-selected='true']") do

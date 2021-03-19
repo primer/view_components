@@ -32,10 +32,10 @@ module Primer
         Primer::OcticonComponent.new(**system_arguments)
       }
 
-      # The Tab's title.
+      # The Tab's text.
       #
       # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::TextComponent) %>.
-      renders_one :title, Primer::TextComponent
+      renders_one :text, Primer::TextComponent
 
       # Counter to be rendered in the Tab right.
       #
@@ -46,24 +46,24 @@ module Primer
 
       # @example Default
       #   <%= render(Primer::Navigation::TabComponent.new(selected: true)) do |c| %>
-      #     <% c.title { "Selected" } %>
+      #     <% c.text { "Selected" } %>
       #   <% end %>
       #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
-      #     <% c.title { "Not selected" } %>
+      #     <% c.text { "Not selected" } %>
       #   <% end %>
       #
       # @example With icons and counters
       #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
       #     <% c.icon(icon: :star) %>
-      #     <% c.title { "Tab" } %>
+      #     <% c.text { "Tab" } %>
       #   <% end %>
       #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
       #     <% c.icon(icon: :star) %>
-      #     <% c.title { "Tab" } %>
+      #     <% c.text { "Tab" } %>
       #     <% c.counter(count: 10) %>
       #   <% end %>
       #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
-      #     <% c.title { "Tab" } %>
+      #     <% c.text { "Tab" } %>
       #     <% c.counter(count: 10) %>
       #   <% end %>
       #
@@ -98,10 +98,6 @@ module Primer
         else
           @system_arguments[:"aria-selected"] = true
         end
-      end
-
-      def render_content?
-        !icon && !title && !counter
       end
     end
   end

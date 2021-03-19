@@ -12,15 +12,15 @@ class Primer::UnderlineNavComponentStories < ViewComponent::Storybook::Stories
     content do |c|
       c.tab(selected: true) do |t|
         t.panel { "Panel 1" }
-        t.title { "Tab 1" }
+        t.text { "Tab 1" }
       end
       c.tab do |t|
         t.panel { "Panel 2" }
-        t.title { "Tab 2" }
+        t.text { "Tab 2" }
       end
       c.tab do |t|
         t.panel { "Panel 3" }
-        t.title { "Tab 3" }
+        t.text { "Tab 3" }
       end
     end
   end
