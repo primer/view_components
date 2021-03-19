@@ -5,8 +5,6 @@ module Primer
   class SubheadComponent < Primer::Component
     status :beta
 
-    include ViewComponent::SlotableV2
-
     # The heading
     #
     # @param danger [Boolean] Whether to style the heading as dangerous.

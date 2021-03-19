@@ -3,7 +3,6 @@
 module Primer
   # Use ProgressBar to visualize task completion.
   class ProgressBarComponent < Primer::Component
-    include ViewComponent::SlotableV2
     status :beta
 
     # Use the Item slot to add an item to the progress bas

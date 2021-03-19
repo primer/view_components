@@ -5,8 +5,6 @@ module Primer
   class FlashComponent < Primer::Component
     status :beta
 
-    include ViewComponent::SlotableV2
-
     # Optional action content showed on the right side of the component.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

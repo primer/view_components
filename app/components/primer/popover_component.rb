@@ -5,7 +5,6 @@ module Primer
   #
   # By default, the popover renders with absolute positioning, meaning it should usually be wrapped in an element with a relative position in order to be positioned properly. To render the popover with relative positioning, use the relative property.
   class PopoverComponent < Primer::Component
-    include ViewComponent::SlotableV2
     status :beta
 
     CARET_DEFAULT = :top

@@ -3,8 +3,6 @@
 module Primer
   # Use AutoComplete to populate input values from server search results.
   class AutoCompleteComponent < Primer::Component
-    include ViewComponent::SlotableV2
-
     DEFAULT_INPUT_TYPE = :text
     INPUT_TYPE_OPTIONS = [DEFAULT_INPUT_TYPE, :search].freeze
 

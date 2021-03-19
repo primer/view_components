@@ -5,8 +5,6 @@ module Primer
     # This component is part of `Primer::DropdownComponent` and should not be
     # used as a standalone component.
     class MenuComponent < Primer::Component
-      include ViewComponent::SlotableV2
-
       SCHEME_DEFAULT = :default
       SCHEME_MAPPINGS = {
         SCHEME_DEFAULT => "",

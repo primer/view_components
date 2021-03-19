@@ -3,8 +3,6 @@
 module Primer
   # Use Layout to build a main/sidebar layout.
   class LayoutComponent < Primer::Component
-    include ViewComponent::SlotableV2
-
     # The main content
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

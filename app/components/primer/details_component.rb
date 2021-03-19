@@ -3,7 +3,6 @@
 module Primer
   # Use DetailsComponent to reveal content after clicking a button.
   class DetailsComponent < Primer::Component
-    include ViewComponent::SlotableV2
     status :beta
 
     NO_OVERLAY = :none
