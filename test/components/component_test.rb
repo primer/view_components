@@ -43,6 +43,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::LinkComponent, { href: "https://www.google.com" }],
     [Primer::MarkdownComponent, {}],
     [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],
+    [Primer::Navigation::TabComponent, {}],
     [Primer::OcticonComponent, { icon: "people" }],
     [Primer::PopoverComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::ProgressBarComponent, {}, proc { |component| component.item }],
@@ -56,7 +57,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::TooltipComponent, { label: "More" }],
-    [Primer::UnderlineNavComponent, {}, proc { |component| component.tab { "Foo" } }]
+    [Primer::UnderlineNavComponent, {}, proc { |component| component.tab(selected: true) { "Foo" } }]
   ].freeze
 
   def test_registered_components

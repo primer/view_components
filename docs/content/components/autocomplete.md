@@ -89,7 +89,7 @@ Required input used to search for results
 
 ### `Icon`
 
-Optional icon to be rendered before the input. Has the same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
+Optional icon to be rendered before the input. Has the same arguments as [Octicon](/components/octicon).
 
 ### `Results`
 

@@ -5,17 +5,27 @@ module Primer
   # underlined selected state, typically used for navigation placed at the top
   # of the page.
   class UnderlineNavComponent < Primer::Component
-    include ViewComponent::SlotableV2
+    include Primer::TabbedComponentHelper
 
     ALIGN_DEFAULT = :left
     ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
 
-    # Use the tabs to list navigation items.
+    # Use the tabs to list navigation items. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
-    # @param href [String] The URL to link to.
     # @param selected [Boolean] Whether the tab is selected.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_many :tabs, "TabComponent"
+    renders_many :tabs, lambda { |selected: false, **system_arguments|
+      system_arguments[:classes] = class_names(
+        "UnderlineNav-item",
+        system_arguments[:classes]
+      )
+      Primer::Navigation::TabComponent.new(
+        selected: selected,
+        with_panel: @with_panel,
+        icon_classes: "UnderlineNav-octicon",
+        **system_arguments
+      )
+    }
 
     # Use actions for a call to action.
     #
@@ -29,11 +39,27 @@ module Primer
 
     # @example Default
     #   <%= render(Primer::UnderlineNavComponent.new) do |component| %>
-    #     <% component.tab(href: "#", selected: true) do %>
-    #       Item 1
+    #     <% component.tab(href: "#", selected: true) { "Item 1" } %>
+    #     <% component.tab(href: "#") { "Item 2" } %>
+    #     <% component.actions do %>
+    #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
     #     <% end %>
-    #     <% component.tab(href: "#") do %>
-    #       Item 2
+    #   <% end %>
+    #
+    # @example With icons and counters
+    #   <%= render(Primer::UnderlineNavComponent.new) do |component| %>
+    #     <% component.tab(href: "#", selected: true) do |t| %>
+    #       <% t.icon(icon: :star) %>
+    #       <% t.text { "Item 1" } %>
+    #     <% end %>
+    #     <% component.tab(href: "#") do |t| %>
+    #       <% t.icon(icon: :star) %>
+    #       <% t.text { "Item 2" } %>
+    #       <% t.counter(count: 10) %>
+    #     <% end %>
+    #     <% component.tab(href: "#") do |t| %>
+    #       <% t.text { "Item 3" } %>
+    #       <% t.counter(count: 10) %>
     #     <% end %>
     #     <% component.actions do %>
     #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
@@ -42,11 +68,11 @@ module Primer
     #
     # @example Align right
     #   <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>
-    #     <% component.tab(href: "#", selected: true) do %>
-    #       Item 1
+    #     <% component.tab(href: "#", selected: true) do |t| %>
+    #       <% t.text { "Item 1" } %>
     #     <% end %>
-    #     <% component.tab(href: "#") do %>
-    #       Item 2
+    #     <% component.tab(href: "#") do |t| %>
+    #       <% t.text { "Item 2" } %>
     #     <% end %>
     #     <% component.actions do %>
     #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
@@ -56,13 +82,13 @@ module Primer
     # @example With panels
     #   <%= render(Primer::UnderlineNavComponent.new(with_panel: true)) do |component| %>
     #     <% component.tab(selected: true) do |t| %>
-    #       Item 1
+    #       <% t.text { "Item 1" } %>
     #       <% t.panel do %>
     #         Panel 1
     #       <% end %>
     #     <% end %>
     #     <% component.tab do |t| %>
-    #       Item 2
+    #       <% t.text { "Item 2" } %>
     #       <% t.panel do %>
     #         Panel 2
     #       <% end %>
@@ -97,64 +123,10 @@ module Primer
       }
     end
 
-    def wrapper
-      return yield unless @with_panel
-
-      render Primer::TabContainerComponent.new do
-        yield
-      end
-    end
+    private
 
     def body
       Primer::BaseComponent.new(**@body_arguments)
-    end
-
-    def render?
-      tabs.any?
-    end
-
-    # Tabs to be rendered.
-    class TabComponent < Primer::Component
-      include ViewComponent::SlotableV2
-
-      renders_one :panel, lambda { |**system_arguments|
-        system_arguments[:tag] ||= :div
-        system_arguments[:role] ||= :tabpanel
-        system_arguments[:hidden] = true unless @selected
-
-        Primer::BaseComponent.new(**system_arguments)
-      }
-
-      def initialize(selected: false, href: nil, **system_arguments)
-        @selected = selected
-        @system_arguments = system_arguments
-        @system_arguments[:role] = :tab
-        @system_arguments[:href] = href
-
-        if href.present?
-          @system_arguments[:tag] = :a
-        else
-          @system_arguments[:tag] = :button
-          @system_arguments[:type] = :button
-        end
-
-        if @selected
-          if @system_arguments[:tag] == :a
-            @system_arguments[:"aria-current"] = :page
-          else
-            @system_arguments[:"aria-selected"] = true
-          end
-        end
-
-        @system_arguments[:classes] = class_names(
-          "UnderlineNav-item",
-          system_arguments[:classes]
-        )
-      end
-
-      def call
-        render(Primer::BaseComponent.new(**@system_arguments)) { content }
-      end
     end
   end
 end

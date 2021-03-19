@@ -6,15 +6,19 @@
 
     *Manuel Puyol*
 
+* **Breaking change**: Update `TabNav#tab` API to accept the tab content as a block and panel content as a slot.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Update `UnderlineNavComponent` API be more strict and support `TabContainer`.
+
+    *Manuel Puyol*
+
 ## 0.0.31
 
 * Fix `Popover` bug where body was only returning the last line of the HTML.
 
     *Manuel Puyol, Blake Williams*
-
-* **Breaking change**: Update `UnderlineNavComponent` API be more strict and support `TabContainer`.
-
-    *Manuel Puyol*
 
 ## 0.0.30
 
