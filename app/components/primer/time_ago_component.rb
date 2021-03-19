@@ -3,7 +3,8 @@
 module Primer
   # Use Primer::TimeAgoComponent to display a time relative to how long ago it was. This component requires JavaScript.
   class TimeAgoComponent < Primer::Component
-    #
+    status :beta
+
     # @example Default
     #   <%= render(Primer::TimeAgoComponent.new(time: Time.at(628232400))) %>
     #
