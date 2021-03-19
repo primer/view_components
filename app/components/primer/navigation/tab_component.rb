@@ -7,7 +7,10 @@ module Primer
     class TabComponent < Primer::Component
       include ViewComponent::SlotableV2
 
-      # Panel controlled by the Tab. It will only renderd if `with_panel` is `true`.
+      # Panel controlled by the Tab. This will not render anything in the tab itself.
+      # It will provide a accessor for the Tab's parent to call and render the panel
+      # content in the appropriate place.
+      # Refer to `UnderlineNavComponent` and `TabNavComponent` implementations for examples.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :panel, lambda { |**system_arguments|

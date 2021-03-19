@@ -10,7 +10,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 This component is part of navigation components such as `Primer::TabNavComponent`
-and `Primer::UnderlineNavComponent` and should not be used as a standalone component.
+and `Primer::UnderlineNavComponent` and should not be used by itself.
 
 ## Examples
 
@@ -72,7 +72,10 @@ and `Primer::UnderlineNavComponent` and should not be used as a standalone compo
 
 ### `Panel`
 
-Panel controlled by the Tab. It will only renderd if `with_panel` is `true`.
+Panel controlled by the Tab. This will not render anything in the tab itself.
+It will provide a accessor for the Tab's parent to call and render the panel
+content in the appropriate place.
+Refer to `UnderlineNavComponent` and `TabNavComponent` implementations for examples.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
