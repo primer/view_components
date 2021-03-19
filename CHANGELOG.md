@@ -18,12 +18,6 @@
 
 * Fix `Popover` bug where body was only returning the last line of the HTML.
 
-    *Manuel Puyol*
-
-## 0.0.31
-
-* Fix `Popover` bug where body was only returning the last line of the HTML.
-
     *Manuel Puyol, Blake Williams*
 
 ## 0.0.30
