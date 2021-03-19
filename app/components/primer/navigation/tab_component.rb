@@ -5,8 +5,6 @@ module Primer
     # This component is part of navigation components such as `Primer::TabNavComponent`
     # and `Primer::UnderlineNavComponent` and should not be used by itself.
     class TabComponent < Primer::Component
-      include ViewComponent::SlotableV2
-
       # Panel controlled by the Tab. This will not render anything in the tab itself.
       # It will provide a accessor for the Tab's parent to call and render the panel
       # content in the appropriate place.

@@ -3,7 +3,6 @@
 module Primer
   # Use `TimelineItem` to display items on a vertical timeline, connected by badge elements.
   class TimelineItemComponent < Primer::Component
-    include ViewComponent::SlotableV2
     status :beta
 
     # Avatar to be rendered to the left of the Badge.

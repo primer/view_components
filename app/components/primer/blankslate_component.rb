@@ -5,8 +5,6 @@ module Primer
   class BlankslateComponent < Primer::Component
     status :beta
 
-    include ViewComponent::SlotableV2
-
     # Optional Spinner.
     #
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::SpinnerComponent) %>.

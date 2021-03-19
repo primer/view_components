@@ -3,8 +3,6 @@
 module Primer
   # Use AutoCompleteItem to list results of an auto-completed search.
   class AutoCompleteItemComponent < Primer::Component
-    include ViewComponent::SlotableV2
-
     # @example Default
     #   <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
     #     Selected

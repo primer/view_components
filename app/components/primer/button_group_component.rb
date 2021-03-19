@@ -3,8 +3,6 @@
 module Primer
   # Use ButtonGroupComponent to render a series of buttons.
   class ButtonGroupComponent < Primer::Component
-    include ViewComponent::SlotableV2
-
     # Required list of buttons to be rendered.
     #
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
