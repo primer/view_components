@@ -9,14 +9,18 @@ class Primer::UnderlineNavComponentStories < ViewComponent::Storybook::Stories
       with_panel false
     end
 
-    content do |component|
-      component.tab(selected: true) do |t|
+    content do |c|
+      c.tab(selected: true) do |t|
         t.panel { "Panel 1" }
-        "Tab 1"
+        t.text { "Tab 1" }
       end
-      component.tab do |t|
+      c.tab do |t|
         t.panel { "Panel 2" }
-        "Tab 2"
+        t.text { "Tab 2" }
+      end
+      c.tab do |t|
+        t.panel { "Panel 3" }
+        t.text { "Tab 3" }
       end
     end
   end

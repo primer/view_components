@@ -3,8 +3,6 @@
 module Primer
   # Use menus to create vertical lists of navigational links.
   class MenuComponent < Primer::Component
-    include ViewComponent::SlotableV2
-
     # Optional menu heading
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

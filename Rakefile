@@ -142,6 +142,7 @@ namespace :docs do
       Primer::LinkComponent,
       Primer::MarkdownComponent,
       Primer::MenuComponent,
+      Primer::Navigation::TabComponent,
       Primer::OcticonComponent,
       Primer::PopoverComponent,
       Primer::ProgressBarComponent,
@@ -249,7 +250,7 @@ namespace :docs do
 
             if slot_documentation.base_docstring.present?
               f.puts
-              f.puts(slot_documentation.base_docstring)
+              f.puts(view_context.render(inline: slot_documentation.base_docstring))
             end
 
             param_tags = slot_documentation.tags(:param)
@@ -271,43 +272,6 @@ namespace :docs do
 
               f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
             end
-          end
-        end
-
-        # Slots V1 docs
-        next unless component.respond_to?(:slots)
-
-        component.slots.each do |name, value|
-          slot_documentation = registry.get("#{component.name}::#{value[:class_name]}")
-
-          next unless slot_documentation
-
-          slot_initialize_method = slot_documentation.meths.find(&:constructor?)
-
-          f.puts
-          f.puts("### `#{name}` slot")
-          f.puts
-          f.puts("| Name | Type | Default | Description |")
-          f.puts("| :- | :- | :- | :- |")
-
-          slot_initialize_method.tags(:param).each do |tag|
-            params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
-
-            default =
-              if params && params[1]
-                "`#{params[1]}`"
-              else
-                "N/A"
-              end
-
-            f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
-          end
-
-          docstring = slot_documentation.base_docstring
-
-          if docstring.present? && docstring != ":nodoc:"
-            f.puts
-            f.puts(docstring)
           end
         end
       end

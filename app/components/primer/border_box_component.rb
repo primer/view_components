@@ -5,8 +5,6 @@ module Primer
   class BorderBoxComponent < Primer::Component
     status :beta
 
-    include ViewComponent::SlotableV2
-
     DEFAULT_PADDING = :default
     PADDING_MAPPINGS = {
       DEFAULT_PADDING => "",
