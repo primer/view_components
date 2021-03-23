@@ -1,5 +1,5 @@
 ---
-title: Component status
+title: Statuses
 ---
 
 Each component is given a status that explains the component's maturity level.
