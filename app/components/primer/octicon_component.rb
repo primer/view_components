@@ -18,19 +18,20 @@ module Primer
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
     # @example Default
+    #   <%= render(Primer::OcticonComponent.new("check")) %>
     #   <%= render(Primer::OcticonComponent.new(icon: "check")) %>
     #
     # @example Medium
-    #   <%= render(Primer::OcticonComponent.new(icon: "people", size: :medium)) %>
+    #   <%= render(Primer::OcticonComponent.new("people", size: :medium)) %>
     #
     # @example Large
-    #   <%= render(Primer::OcticonComponent.new(icon: "x", size: :large)) %>
+    #   <%= render(Primer::OcticonComponent.new("x", size: :large)) %>
     #
     # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
     # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(icon:, size: SIZE_DEFAULT, **system_arguments)
-      @icon = icon
+    def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, **system_arguments)
+      @icon = icon_name || icon
       @system_arguments = system_arguments
 
       @system_arguments[:class] = Primer::Classify.call(**@system_arguments)[:class]
