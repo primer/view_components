@@ -277,6 +277,17 @@ namespace :docs do
       end
     end
 
+    # Build the status docs page
+    File.open("docs/content/statuses.md", "w") do |f|
+      f.puts("---")
+      f.puts("title: System arguments")
+      f.puts("---")
+      f.puts
+      f.puts("<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->")
+      f.puts
+      f.puts
+    end
+
     # Build system arguments docs from BaseComponent
     documentation = registry.get(Primer::BaseComponent.name)
     File.open("docs/content/system-arguments.md", "w") do |f|
