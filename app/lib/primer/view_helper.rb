@@ -12,8 +12,8 @@ module Primer
     }.freeze
 
     HELPERS.each do |name, component|
-      define_method "primer_#{name}" do |**component_args, &block|
-        render component.constantize.new(**component_args), &block
+      define_method "primer_#{name}" do |*args, **kwargs, &block|
+        render component.constantize.new(*args, **kwargs), &block
       end
     end
   end

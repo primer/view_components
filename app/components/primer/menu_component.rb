@@ -42,11 +42,11 @@ module Primer
     #       Item 1
     #     <% end %>
     #     <% c.item(href: "#url") do %>
-    #       <%= render(Primer::OcticonComponent.new(icon: "check")) %>
+    #       <%= render(Primer::OcticonComponent.new("check")) %>
     #       With Icon
     #     <% end %>
     #     <% c.item(href: "#url") do %>
-    #       <%= render(Primer::OcticonComponent.new(icon: "check")) %>
+    #       <%= render(Primer::OcticonComponent.new("check")) %>
     #       With Icon and Counter
     #       <%= render(Primer::CounterComponent.new(count: 25)) %>
     #     <% end %>

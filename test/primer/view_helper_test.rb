@@ -26,4 +26,10 @@ class Primer::ViewHelperTest < Minitest::Test
 
     assert_selector(".octicon.octicon-star")
   end
+
+  def test_renders_octicon_using_positional_argument
+    primer_octicon :star
+
+    assert_selector(".octicon.octicon-star")
+  end
 end
