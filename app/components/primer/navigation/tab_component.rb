@@ -22,12 +22,12 @@ module Primer
       # Icon to be rendered in the Tab left.
       #
       # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
-      renders_one :icon, lambda { |**system_arguments|
+      renders_one :icon, lambda { |icon = nil, **system_arguments|
         system_arguments[:classes] = class_names(
           @icon_classes,
           system_arguments[:classes]
         )
-        Primer::OcticonComponent.new(**system_arguments)
+        Primer::OcticonComponent.new(icon, **system_arguments)
       }
 
       # The Tab's text.
@@ -52,11 +52,11 @@ module Primer
       #
       # @example With icons and counters
       #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
-      #     <% c.icon(icon: :star) %>
+      #     <% c.icon(:star) %>
       #     <% c.text { "Tab" } %>
       #   <% end %>
       #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
-      #     <% c.icon(icon: :star) %>
+      #     <% c.icon(:star) %>
       #     <% c.text { "Tab" } %>
       #     <% c.counter(count: 10) %>
       #   <% end %>

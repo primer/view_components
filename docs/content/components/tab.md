@@ -33,11 +33,11 @@ and `Primer::UnderlineNavComponent` and should not be used by itself.
 
 ```erb
 <%= render(Primer::Navigation::TabComponent.new) do |c| %>
-  <% c.icon(icon: :star) %>
+  <% c.icon(:star) %>
   <% c.text { "Tab" } %>
 <% end %>
 <%= render(Primer::Navigation::TabComponent.new) do |c| %>
-  <% c.icon(icon: :star) %>
+  <% c.icon(:star) %>
   <% c.text { "Tab" } %>
   <% c.counter(count: 10) %>
 <% end %>

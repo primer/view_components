@@ -2,6 +2,12 @@
 
 ## main
 
+## 0.0.32
+
+* Allow passing the icon name as a positional argument to `OcticonComponent`.
+
+    *Manuel Puyol*
+
 * Promote `TimeAgoComponent` to beta.
 
     *Manuel Puyol*
