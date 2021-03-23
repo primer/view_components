@@ -2,7 +2,7 @@
 
 ## main
 
-* Allow passing the icon name as a positional argument in `OcticonComponent`.
+* Allow passing the icon name as a positional argument to `OcticonComponent`.
 
     *Manuel Puyol*
 
