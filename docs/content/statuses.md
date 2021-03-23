@@ -19,6 +19,6 @@ You can also see component status at a glance on [this project board](https://gi
 
 ### Promote from alpha to beta
 
-- The component does not use any deprecated `view_components` platform features (eg - Slots v1).
+- The component does not use any deprecated `view_component` framework features, such as Slots v1.
 - Documentation and storybook stories are complete.
 - The API is expected to be stable.
