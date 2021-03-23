@@ -4,7 +4,6 @@ title: Component status
 
 Each component is given a status that explains the component's maturity level.
 
-
 | Status         | Meaning                                                                |
 | -------------- |------------------------------------------------------------------------|
 | `Alpha`        | Experimental. Breaking changes are likely.                             |
