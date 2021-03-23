@@ -17,3 +17,11 @@ soon. Feel free to watch for releases in the
 
 You can also see component status at a glance on [this project
 board](https://github.com/primer/view_components/projects/3).
+
+## Criteria for changing component status
+
+### Promote from alpha to beta
+
+- The component does not use any deprecated `view_components` platform features (eg - Slots v1).
+- Documentation and storybook stories are complete.
+- The API is expected to be stable.
