@@ -2,7 +2,7 @@
 title: Statuses
 ---
 
-Each component is given a status that explains the component's maturity level.
+Each component is assigned a status for its maturity level:
 
 | Status         | Meaning                                                                |
 | -------------- |------------------------------------------------------------------------|
