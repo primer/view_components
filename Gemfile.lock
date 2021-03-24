@@ -262,6 +262,7 @@ DEPENDENCIES
   pry
   puma (~> 4.3.6)
   rack-cors
+  railties (= 6.1.1)
   rake (~> 12.0)
   rubocop (= 0.82)
   rubocop-github (~> 0.16.0)

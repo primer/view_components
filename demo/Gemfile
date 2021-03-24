@@ -7,10 +7,19 @@ rails_version = (ENV["RAILS_VERSION"] || "6.1.1").to_s
 gem "rake", "~> 12.0"
 gem "rack-cors"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "actionview", rails_version == "main" ? { git: "https://github.com/rails/rails", ref: "main" } : rails_version
-gem "activemodel", rails_version == "main" ? { git: "https://github.com/rails/rails", ref: "main" } : rails_version
-gem "activesupport", rails_version == "main" ? { git: "https://github.com/rails/rails", ref: "main" } : rails_version
-gem "railties", rails_version == "main" ? { git: "https://github.com/rails/rails", ref: "main" } : rails_version
+if ENV["RAILS_VERSION"] != "main"
+  gem "actionview", rails_version
+  gem "activemodel", rails_version
+  gem "activesupport", rails_version
+  gem "railties", rails_version
+else
+  git "https://github.com/rails/rails.git", ref: "main" do
+    gem "actionview"
+    gem "activemodel"
+    gem "activesupport"
+    gem "railties"
+  end
+end
 
 # Use Puma as the app server
 gem "puma", "~> 4.3.6"
