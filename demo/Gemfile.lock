@@ -100,7 +100,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionpack (= 6.1.1)
   actionview (= 6.1.1)
   activemodel (= 6.1.1)
   activesupport (= 6.1.1)
