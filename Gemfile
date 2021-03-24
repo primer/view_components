@@ -8,7 +8,7 @@ rails_version = (ENV["RAILS_VERSION"] || "6.1.1").to_s
 gem "rack-cors"
 gem "rake", "~> 12.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-if ENV["RAILS_VERSION"] != "main"
+if rails_version != "main"
   gem "actionview", rails_version
   gem "activemodel", rails_version
   gem "activesupport", rails_version
