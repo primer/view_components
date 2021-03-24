@@ -7,7 +7,7 @@ module Primer
 
     include ClassNameHelper
     include TestSelectorHelper
-    include OcticonsHelper
+    # include OcticonsHelper
 
     SIZE_DEFAULT = :small
     SIZE_MAPPINGS = {
@@ -44,7 +44,7 @@ module Primer
     end
 
     def call
-      octicon(@icon, { **@system_arguments })
+      # octicon(@icon, { **@system_arguments })
     end
   end
 end

@@ -27,14 +27,17 @@ Gem::Specification.new do |spec|
   spec.files         = Dir["CHANGELOG.md", "LICENSE.txt", "README.md", "lib/**/*", "app/**/*", "static/statuses.json"]
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency     "octicons_helper", [">= 9.0.0", "< 13.0.0"]
-  spec.add_runtime_dependency     "rails", [">= 5.0.0", "< 7.0"]
+  spec.add_runtime_dependency     "actionview", ">= 5.0.0"
+  spec.add_runtime_dependency     "activesupport", ">= 5.0.0"
+  # spec.add_runtime_dependency     "octicons_helper", [">= 9.0.0", "< 13.0.0"]
   spec.add_runtime_dependency     "view_component", [">= 2.0.0", "< 3.0"]
 
   spec.add_development_dependency "allocation_tracer", "~> 0.6.3"
   spec.add_development_dependency "benchmark-ips", "~> 2.8.4"
+  spec.add_development_dependency "capybara", "~> 3"
+  spec.add_development_dependency "cuprite", "= 0.11"
   spec.add_development_dependency "listen", "~> 3.0"
-  spec.add_development_dependency "minitest", "= 5.6.0"
+  spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "mocha"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rubocop", "= 0.82"
@@ -42,5 +45,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop-performance", "~> 1.7"
   spec.add_development_dependency "simplecov", "~> 0.18.0"
   spec.add_development_dependency "simplecov-console", "~> 0.7.2"
+  spec.add_development_dependency "sprockets"
+  spec.add_development_dependency "sprockets-rails"
   spec.add_development_dependency "yard", "~> 0.9.25"
 end
