@@ -179,6 +179,7 @@ DEPENDENCIES
   actionpack (= 6.1.1)
   actionview (= 6.1.1)
   activemodel (= 6.1.1)
+  activesupport (= 6.1.1)
   allocation_tracer (~> 0.6.3)
   benchmark-ips (~> 2.8.4)
   bootsnap (>= 1.4.2)

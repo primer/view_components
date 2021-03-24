@@ -11,6 +11,7 @@ gem "rake", "~> 12.0"
 gem "actionview", rails_version == "main" ? { git: "https://github.com/rails/rails", ref: "main" } : rails_version
 gem "activemodel", rails_version == "main" ? { git: "https://github.com/rails/rails", ref: "main" } : rails_version
 gem "actionpack", rails_version == "main" ? { git: "https://github.com/rails/rails", ref: "main" } : rails_version
+gem "activesupport", rails_version == "main" ? { git: "https://github.com/rails/rails", ref: "main" } : rails_version
 
 # Use Puma as the app server
 gem "puma", "~> 4.3.6"
