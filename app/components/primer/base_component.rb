@@ -39,8 +39,6 @@ module Primer
   class BaseComponent < Primer::Component
     status :beta
 
-    include TestSelectorHelper
-
     # @param test_selector [String] Adds `data-test-selector='given value'` in non-Production environments for testing purposes.
     #
     # @param m [Integer] Margin. <%= one_of((-6..6).to_a) %>

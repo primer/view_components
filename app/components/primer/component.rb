@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# require "octicons_helper/helper"
+require "octicons_helper/helper"
 require "view_component/version"
 
 module Primer
@@ -9,7 +9,8 @@ module Primer
     include ViewComponent::SlotableV2 unless ViewComponent::VERSION::STRING.to_f >= 2.28
     include ClassNameHelper
     include FetchOrFallbackHelper
-    # include OcticonsHelper
+    include OcticonsHelper
+    include TestSelectorHelper
     include JoinStyleArgumentsHelper
     include ViewHelper
     include Status::Dsl
