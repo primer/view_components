@@ -14,7 +14,7 @@ if ENV["RAILS_VERSION"] != "main"
   gem "activesupport", rails_version
   gem "railties", rails_version
 else
-  git "https://github.com/rails/rails.git", ref: "main" do
+  git "https://github.com/rails/rails", ref: "main" do
     # rubocop:disable Bundler/DuplicatedGem
     gem "actionview"
     gem "activemodel"
