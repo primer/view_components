@@ -5,6 +5,10 @@
       url: /contributing
     - title: System arguments
       url: /system-arguments
+    - title: Migration
+      url: /migration
+    - title: Statuses
+      url: /statuses
 - title: Components
   url: /components
   children:
