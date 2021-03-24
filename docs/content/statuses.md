@@ -21,4 +21,4 @@ You can also see component status at a glance on [this project board](https://gi
 
 - The component does not use any deprecated `view_component` framework features, such as Slots v1.
 - Documentation and storybook stories are complete.
-- The API is expected to be stable.
+- The API is expected to be stable and the component is used in dotcom at least 3 times.
