@@ -18,6 +18,7 @@ else
     # rubocop:disable Bundler/DuplicatedGem
     gem "actionview"
     gem "activemodel"
+    gem "activerecord"
     gem "activesupport"
     gem "railties"
     # rubocop:enable Bundler/DuplicatedGem
