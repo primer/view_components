@@ -3,12 +3,14 @@
   children:
     - title: Contributing
       url: /contributing
-    - title: System arguments
-      url: /system-arguments
+    - title: JavaScript
+      url: /javascript
     - title: Migration
       url: /migration
     - title: Statuses
       url: /statuses
+    - title: System arguments
+      url: /system-arguments
 - title: Components
   url: /components
   children:
