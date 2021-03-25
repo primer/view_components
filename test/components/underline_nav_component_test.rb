@@ -5,30 +5,6 @@ require "test_helper"
 class PrimerUnderlineNavComponentTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  def test_raises_if_no_tab_is_rendered
-    err = assert_raises Primer::TabbedComponentHelper::NoSelectedTabsError do
-      render_inline(Primer::UnderlineNavComponent.new) do |component|
-        component.actions do
-          "Actions content"
-        end
-      end
-    end
-
-    assert_equal("a tab must be selected", err.message)
-  end
-
-  def test_raises_if_no_tab_is_selected
-    err = assert_raises Primer::TabbedComponentHelper::NoSelectedTabsError do
-      render_inline(Primer::UnderlineNavComponent.new) do |c|
-        c.tab { "Tab 1" }
-        c.tab { "Tab 2" }
-        c.tab { "Tab 3" }
-      end
-    end
-
-    assert_equal("a tab must be selected", err.message)
-  end
-
   def test_raises_if_multiple_tabs_are_selected
     err = assert_raises Primer::TabbedComponentHelper::MultipleSelectedTabsError do
       render_inline(Primer::UnderlineNavComponent.new) do |c|
