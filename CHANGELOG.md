@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.33
+
 ## 0.0.32
 
 * Allow passing the icon name as a positional argument to `OcticonComponent`.
