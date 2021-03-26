@@ -159,6 +159,14 @@ namespace :docs do
       Primer::UnderlineNavComponent
     ]
 
+    js_components = [
+      Primer::AutoCompleteComponent,
+      Primer::TimeAgoComponent,
+      Primer::TabContainerComponent,
+      Primer::TabNavComponent,
+      Primer::UnderlineNavComponent
+    ]
+
     all_components = Primer::Component.descendants - [Primer::BaseComponent]
     components_needing_docs = all_components - components
 
@@ -179,6 +187,13 @@ namespace :docs do
         f.puts("---")
         f.puts
         f.puts("import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'")
+
+        if js_components.include?(component)
+          f.puts("import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash'")
+          f.puts
+          f.puts("<RequiresJSFlash />")
+        end
+
         f.puts
         f.puts("<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->")
         f.puts
