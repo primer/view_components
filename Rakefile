@@ -301,19 +301,12 @@ namespace :docs do
       f.puts
       f.puts("<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->")
       f.puts
-      f.puts(view_context.render(inline: documentation.base_docstring))
+      f.puts(documentation.base_docstring)
       f.puts
 
       initialize_method = documentation.meths.find(&:constructor?)
 
-      f.puts("## Arguments")
-      f.puts
-      f.puts("| Name | Type | Description |")
-      f.puts("| :- | :- | :- |")
-
-      initialize_method.tags(:param).each do |tag|
-        f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{view_context.render(inline: tag.text)} |")
-      end
+      f.puts(view_context.render(inline: initialize_method.base_docstring))
     end
 
     puts "Markdown compiled."

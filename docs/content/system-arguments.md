@@ -15,9 +15,10 @@ To apply different values across responsive breakpoints, pass an array with up t
 For example:
 
 ```erb
-<h1 class="mt-0 mt-lg-4 mt-xl-2">
+<%= render Primer::HeadingComponent.new(mt: [0, nil, nil, 4, 2]) do %>
   Hello world
-</h1>```
+<% end %>
+```
 
 Renders:
 
@@ -133,10 +134,10 @@ System arguments include most HTML attributes. For example:
 | `underline` | Boolean | Whether text should be underlined. |
 | `word_break` | Symbol | Whether to break words on line breaks. Can only be `:break_all`. |
 
-## Arguments
+## Other
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `classes` | `String` | CSS class name value to be concatenated with generated Primer CSS classes. |
-| `tag` | `Symbol` | HTML tag name to be passed to `content_tag`. |
-| `test_selector` | `String` | Adds `data-test-selector='given value'` in non-Production environments for testing purposes. |
+| classes | String | CSS class name value to be concatenated with generated Primer CSS classes. |
+| tag | Symbol | HTML tag name to be passed to `content_tag`. |
+| test_selector | String | Adds `data-test-selector='given value'` in non-Production environments for testing purposes. |
