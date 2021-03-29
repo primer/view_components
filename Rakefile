@@ -5,6 +5,7 @@ require "rake/testtask"
 require "yard"
 require "yard/renders_one_handler"
 require "yard/renders_many_handler"
+require "yaml"
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
@@ -251,7 +252,6 @@ namespace :docs do
               "N/A"
             end
 
-
           args << {
             "name" => tag.name,
             "type" => tag.types.join(', '),
@@ -310,8 +310,9 @@ namespace :docs do
       end
     end
 
-    require "yaml"
-    puts YAML.dump(args_for_components)
+    File.open("static/arguments.yml", "w") do |f|
+      f.puts YAML.dump(args_for_components)
+    end
 
     # Build system arguments docs from BaseComponent
     documentation = registry.get(Primer::BaseComponent.name)
