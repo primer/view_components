@@ -264,6 +264,7 @@ namespace :docs do
 
         component_args = {
           component: short_name,
+          source: "https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb",
           parameters: args,
         }
 
