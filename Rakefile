@@ -254,9 +254,9 @@ namespace :docs do
 
           args << {
             "name" => tag.name,
-            "type" => tag.types.join(', '),
+            "type" => tag.types.join(", "),
             "default" => default,
-            "description" => view_context.render(inline: tag.text),
+            "description" => view_context.render(inline: tag.text)
           }
 
           f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
@@ -265,7 +265,7 @@ namespace :docs do
         component_args = {
           "component" => short_name,
           "source" => "https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb",
-          "parameters" => args,
+          "parameters" => args
         }
 
         args_for_components << component_args
