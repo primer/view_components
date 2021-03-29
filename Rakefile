@@ -254,7 +254,7 @@ namespace :docs do
 
           args << {
             name: tag.name,
-            types: tag.types.join(', '),
+            type: tag.types.join(', '),
             default: default,
             description: view_context.render(inline: tag.text),
           }
@@ -263,8 +263,8 @@ namespace :docs do
         end
 
         component_args = {
-          component_name: short_name,
-          args: args,
+          component: short_name,
+          parameters: args,
         }
 
         args_for_components << component_args
@@ -309,7 +309,8 @@ namespace :docs do
       end
     end
 
-    puts args_for_components
+    require "yaml"
+    puts YAML.dump(args_for_components)
 
     # Build system arguments docs from BaseComponent
     documentation = registry.get(Primer::BaseComponent.name)
