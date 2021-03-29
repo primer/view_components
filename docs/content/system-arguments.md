@@ -15,10 +15,9 @@ To apply different values across responsive breakpoints, pass an array with up t
 For example:
 
 ```erb
-<%= render Primer::HeadingComponent.new(mt: [0, nil, nil, 4, 2]) do %>
+<h1 class="mt-0 mt-lg-4 mt-xl-2">
   Hello world
-<% end %>
-```
+</h1>```
 
 Renders:
 
@@ -44,39 +43,39 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `animation` | Symbol | <%= one_of([:fade_in, :fade_out, :fade_up, :fade_down, :scale_in, :pulse, :grow_x, :grow]) %> |
+| `animation` | Symbol | One of `:fade_in`, `:fade_out`, `:fade_up`, `:fade_down`, `:scale_in`, `:pulse`, `:grow_x`, or `:grow`. |
 
 ## Border
 
 | Name | Type | Description |
 | :- | :- | :- |
 | `border_bottom` | Integer | Set to `0` to remove the bottom border. |
-| `border_color` | Symbol | <%= one_of(Primer::Classify::FunctionalBorderColors::OPTIONS) %> <br /> |
+| `border_color` | Symbol | One of `:primary`, `:secondary`, `:tertiary`, `:info`, `:success`, `:warning`, `:danger`, `:inverse`, or `:overlay`. <br /> |
 | `border_left` | Integer | Set to `0` to remove the left border. |
-| `border_radius` | Integer | <%= one_of([0, 1, 2, 3]) %> |
+| `border_radius` | Integer | One of `0`, `1`, `2`, or `3`. |
 | `border_right` | Integer | Set to `0` to remove the right border. |
 | `border_top` | Integer | Set to `0` to remove the top border. |
-| `border` | Symbol | <%= one_of([:left, :top, :bottom, :right, :y, :x, true]) %> |
-| `box_shadow` | Boolean, Symbol | Box shadow. <%= one_of([true, :medium, :large, :extra_large, :none]) %> |
+| `border` | Symbol | One of `:left`, `:top`, `:bottom`, `:right`, `:y`, `:x`, or `true`. |
+| `box_shadow` | Boolean, Symbol | Box shadow. One of `true`, `:medium`, `:large`, `:extra_large`, or `:none`. |
 
 ## Color
 
 | Name | Type | Description |
 | :- | :- | :- |
 | `bg` | String, Symbol | Background color. Accepts either a hex value as a String or a color name as a Symbol. |
-| `color` | Symbol | Text color. <br /> <%= one_of(Primer::Classify::FunctionalTextColors::OPTIONS) %> <br />  |
+| `color` | Symbol | Text color. <br /> One of `:icon_primary`, `:icon_secondary`, `:icon_tertiary`, `:icon_info`, `:icon_success`, `:icon_warning`, `:icon_danger`, `:text_primary`, `:text_secondary`, `:text_tertiary`, `:text_link`, `:text_success`, `:text_warning`, `:text_danger`, `:text_white`, or `:text_inverse`. <br />  |
 
 ## Flex
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `align_items` | Symbol | <%= one_of([:flex_start, :flex_end, :center, :baseline, :stretch]) %> |
-| `align_self` | Symbol | <%= one_of([:auto, :start, :end, :center, :baseline, :stretch]) %> |
+| `align_items` | Symbol | One of `:flex_start`, `:flex_end`, `:center`, `:baseline`, or `:stretch`. |
+| `align_self` | Symbol | One of `:auto`, `:start`, `:end`, `:center`, `:baseline`, or `:stretch`. |
 | `flex_grow` | Integer | To enable, set to `0`. |
 | `flex_shrink` | Integer | To enable, set to `0`. |
-| `flex` | Integer, Symbol | <%= one_of([1, :auto]) %> |
-| `justify_content` | Symbol | <%= one_of([:flex_start, :flex_end, :center, :space_between, :space_around]) %> |
-| `width` | Symbol | <%= one_of([:fit, :fill]) %> |
+| `flex` | Integer, Symbol | One of `1` and `:auto`. |
+| `justify_content` | Symbol | One of `:flex_start`, `:flex_end`, `:center`, `:space_between`, or `:space_around`. |
+| `width` | Symbol | One of `:fit` and `:fill`. |
 
 ## Grid
 
@@ -88,20 +87,20 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `display` | Symbol | <%= one_of([:none, :block, :flex, :inline, :inline_block, :table, :table_cell]) %> |
-| `height` | Symbol | <%= one_of([:fit, :fill]) %> |
-| `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of([:sm, :md, :lg, :xl]) %> |
-| `v` | Symbol | Visibility. <%= one_of([:hidden, :visible]) %> |
-| `vertical_align` | Symbol | <%= one_of([:baseline, :top, :middle, :bottom, :text_top, :text_bottom]) %> |
+| `display` | Symbol | One of `:none`, `:block`, `:flex`, `:inline`, `:inline_block`, `:table`, or `:table_cell`. |
+| `height` | Symbol | One of `:fit` and `:fill`. |
+| `hide` | Symbol | Hide the element at a specific breakpoint. One of `:sm`, `:md`, `:lg`, or `:xl`. |
+| `v` | Symbol | Visibility. One of `:hidden` and `:visible`. |
+| `vertical_align` | Symbol | One of `:baseline`, `:top`, `:middle`, `:bottom`, `:text_top`, or `:text_bottom`. |
 
 ## Position
 
 | Name | Type | Description |
 | :- | :- | :- |
 | `bottom` | Boolean | If `false`, sets `bottom: 0`. |
-| `float` | Symbol | <%= one_of([:left, :right]) %> |
+| `float` | Symbol | One of `:left` and `:right`. |
 | `left` | Boolean | If `false`, sets `left: 0`. |
-| `position` | Symbol | <%= one_of([:relative, :absolute, :fixed]) %> |
+| `position` | Symbol | One of `:relative`, `:absolute`, or `:fixed`. |
 | `right` | Boolean | If `false`, sets `right: 0`. |
 | `top` | Boolean | If `false`, sets `top: 0`. |
 
@@ -109,28 +108,28 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `m` | Integer | Margin. <%= one_of((-6..6).to_a) %> |
-| `mb` | Integer | Margin bottom. <%= one_of((-6..6).to_a) %> |
-| `ml` | Integer | Margin left. <%= one_of((-6..6).to_a) %> |
-| `mr` | Integer | Margin right. <%= one_of((-6..6).to_a) %> |
-| `mt` | Integer | Margin top. <%= one_of((-6..6).to_a) %> |
-| `mx` | Integer | Horizontal margins. <%= one_of((-6..6).to_a + [:auto]) %> |
-| `my` | Integer | Vertical margins. <%= one_of((-6..6).to_a) %> |
-| `p` | Integer | Padding. <%= one_of((0..6).to_a) %> |
-| `pb` | Integer | Padding bottom. <%= one_of((0..6).to_a) %> |
-| `pl` | Integer | Padding left. <%= one_of((0..6).to_a) %> |
-| `pr` | Integer | Padding right. <%= one_of((0..6).to_a) %> |
-| `pt` | Integer | Padding left. <%= one_of((0..6).to_a) %> |
-| `px` | Integer | Horizontal padding. <%= one_of((0..6).to_a) %> |
-| `py` | Integer | Vertical padding. <%= one_of((0..6).to_a) %> |
+| `m` | Integer | Margin. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mb` | Integer | Margin bottom. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `ml` | Integer | Margin left. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mr` | Integer | Margin right. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mt` | Integer | Margin top. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mx` | Integer | Horizontal margins. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |
+| `my` | Integer | Vertical margins. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `p` | Integer | Padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `pb` | Integer | Padding bottom. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `pl` | Integer | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `pr` | Integer | Padding right. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `pt` | Integer | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `px` | Integer | Horizontal padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `py` | Integer | Vertical padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
 
 ## Typography
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `font_size` | String, Integer | <%= one_of(["00", 0, 1, 2, 3, 4, 5, 6]) %> |
-| `font_weight` | Symbol | Font weight. <%= one_of([:light, :normal, :bold]) %> |
-| `text_align` | Symbol | Text alignment. <%= one_of([:left, :right, :center]) %> |
+| `font_size` | String, Integer | One of `00`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `font_weight` | Symbol | Font weight. One of `:light`, `:normal`, or `:bold`. |
+| `text_align` | Symbol | Text alignment. One of `:left`, `:right`, or `:center`. |
 | `underline` | Boolean | Whether text should be underlined. |
 | `word_break` | Symbol | Whether to break words on line breaks. Can only be `:break_all`. |
 

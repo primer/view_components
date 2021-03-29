@@ -301,7 +301,7 @@ namespace :docs do
       f.puts
       f.puts("<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->")
       f.puts
-      f.puts(documentation.base_docstring)
+      f.puts(view_context.render(inline: documentation.base_docstring))
       f.puts
 
       initialize_method = documentation.meths.find(&:constructor?)
