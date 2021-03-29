@@ -306,14 +306,7 @@ namespace :docs do
 
       initialize_method = documentation.meths.find(&:constructor?)
 
-      f.puts("## Arguments")
-      f.puts
-      f.puts("| Name | Type | Description |")
-      f.puts("| :- | :- | :- |")
-
-      initialize_method.tags(:param).each do |tag|
-        f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{view_context.render(inline: tag.text)} |")
-      end
+      f.puts(view_context.render(inline: initialize_method.base_docstring))
     end
 
     puts "Markdown compiled."
