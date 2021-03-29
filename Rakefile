@@ -171,6 +171,7 @@ namespace :docs do
     components_needing_docs = all_components - components
 
     components_without_examples = []
+    args_for_components = []
 
     components.each do |component|
       documentation = registry.get(component.name)
@@ -233,6 +234,7 @@ namespace :docs do
         f.puts("| Name | Type | Default | Description |")
         f.puts("| :- | :- | :- | :- |")
 
+        args = []
         initialize_method.tags(:param).each do |tag|
           params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
 
@@ -249,8 +251,23 @@ namespace :docs do
               "N/A"
             end
 
+
+          args << {
+            name: tag.name,
+            types: tag.types.join(', '),
+            default: default,
+            description: view_context.render(inline: tag.text),
+          }
+
           f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
         end
+
+        component_args = {
+          component_name: short_name,
+          args: args,
+        }
+
+        args_for_components << component_args
 
         # Slots V2 docs
         slot_v2_methods = documentation.meths.select { |x| x[:renders_one] || x[:renders_many] }
@@ -291,6 +308,8 @@ namespace :docs do
         end
       end
     end
+
+    puts args_for_components
 
     # Build system arguments docs from BaseComponent
     documentation = registry.get(Primer::BaseComponent.name)
