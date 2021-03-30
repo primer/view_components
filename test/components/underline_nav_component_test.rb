@@ -43,7 +43,7 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
       end
       assert_selector("div.UnderlineNav-actions", text: "Actions content")
     end
-    refute_selector("nav[role='tablist']")
+    refute_selector("div[role='tablist']")
     refute_selector("a[role='tab']")
   end
 
@@ -137,8 +137,8 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     end
 
     assert_selector("tab-container") do
-      assert_selector("nav.UnderlineNav[role='tablist']") do
-        assert_selector("div.UnderlineNav-body") do
+      assert_selector("nav.UnderlineNav") do
+        assert_selector("div.UnderlineNav-body[role='tablist']") do
           assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
           assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 2")
         end

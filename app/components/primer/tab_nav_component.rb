@@ -80,7 +80,7 @@ module Primer
         tag: :nav,
         classes: "tabnav-tabs",
         aria: {
-          label: aria_label,
+          label: aria_label
         }
       }
 

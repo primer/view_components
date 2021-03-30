@@ -107,7 +107,6 @@ module Primer
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = :nav
-      @system_arguments[:role] = :tablist if with_panel
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "UnderlineNav",
@@ -121,6 +120,7 @@ module Primer
           body_classes
         )
       }
+      @body_arguments[:role] = :tablist if with_panel
     end
 
     private
