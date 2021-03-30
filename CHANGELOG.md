@@ -2,6 +2,10 @@
 
 ## main
 
+* _Accessibility:_ Don't add tab roles when `UnderlineNav` or `TabNav` use link redirects.
+
+    *Manuel Puyol*
+
 ## 0.0.33
 
 * Remove `TabbedComponent` validation requiring a tab to be selected.

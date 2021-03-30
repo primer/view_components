@@ -80,7 +80,7 @@ module Primer
         @selected = selected
         @icon_classes = icon_classes
         @system_arguments = system_arguments
-        @system_arguments[:role] = :tab
+        @system_arguments[:role] = :tab if with_panel
 
         if with_panel
           @system_arguments[:tag] ||= :button

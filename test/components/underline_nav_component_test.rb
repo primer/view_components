@@ -21,6 +21,32 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     assert_equal("only one tab can be selected", err.message)
   end
 
+  def test_does_not_add_tab_roles_if_not_with_panel
+    render_inline(Primer::UnderlineNavComponent.new) do |component|
+      component.tab(selected: true, href: "#") do |t|
+        t.panel { "Panel 1" }
+        t.text { "Tab 1" }
+      end
+      component.tab(href: "#") do |t|
+        t.panel { "Panel 2" }
+        t.text { "Tab 2" }
+      end
+      component.actions do
+        "Actions content"
+      end
+    end
+
+    assert_selector("nav.UnderlineNav") do
+      assert_selector("div.UnderlineNav-body") do
+        assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
+        assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
+      end
+      assert_selector("div.UnderlineNav-actions", text: "Actions content")
+    end
+    refute_selector("nav[role='tablist']")
+    refute_selector("a[role='tab']")
+  end
+
   def test_align_falls_back_to_default
     without_fetch_or_fallback_raises do
       render_inline(Primer::UnderlineNavComponent.new(align: :foo)) do |component|
@@ -42,10 +68,10 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     refute_selector("div[role='tabpanel']")
     refute_selector("tab-container")
 
-    assert_selector("nav.UnderlineNav[role='tablist']") do
+    assert_selector("nav.UnderlineNav") do
       assert_selector("div.UnderlineNav-body") do
-        assert_selector("a.UnderlineNav-item[role='tab'][href='#'][aria-current='page']", text: "Tab 1")
-        assert_selector("a.UnderlineNav-item[role='tab'][href='#']", text: "Tab 2")
+        assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
+        assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
       end
       assert_selector("div.UnderlineNav-actions", text: "Actions content")
     end
@@ -68,10 +94,10 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
     refute_selector("div[role='tabpanel']")
     refute_selector("tab-container")
-    assert_selector("nav.UnderlineNav.UnderlineNav--right[role='tablist']") do
+    assert_selector("nav.UnderlineNav.UnderlineNav--right") do
       assert_selector("div.UnderlineNav-body") do
-        assert_selector("a.UnderlineNav-item[role='tab'][href='#'][aria-current='page']", text: "Tab 1")
-        assert_selector("a.UnderlineNav-item[role='tab'][href='#']", text: "Tab 2")
+        assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
+        assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
       end
       assert_selector("div.UnderlineNav-actions", text: "Actions content")
     end

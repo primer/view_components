@@ -67,7 +67,6 @@ module Primer
     # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(aria_label: nil, with_panel: false, **system_arguments)
-      @aria_label = aria_label
       @with_panel = with_panel
       @system_arguments = system_arguments
       @system_arguments[:tag] ||= :div
@@ -76,6 +75,16 @@ module Primer
         "tabnav",
         system_arguments[:classes]
       )
+
+      @body_arguments = {
+        tag: :nav,
+        classes: "tabnav-tabs",
+        aria: {
+          label: aria_label,
+        }
+      }
+
+      @body_arguments[:role] = :tablist if @with_panel
     end
   end
 end

@@ -10,7 +10,18 @@ class PrimerNavigationTabComponentTest < Minitest::Test
       c.text { "Title" }
     end
 
-    assert_selector("a[role='tab']") do
+    assert_selector("a") do
+      assert_selector("span", text: "Title")
+    end
+    refute_selector("a[role='tab']")
+  end
+
+  def test_renders_role_only_if_with_panel
+    render_inline Primer::Navigation::TabComponent.new(with_panel: true) do |c|
+      c.text { "Title" }
+    end
+
+    assert_selector("button[role='tab']") do
       assert_selector("span", text: "Title")
     end
   end
@@ -75,9 +86,10 @@ class PrimerNavigationTabComponentTest < Minitest::Test
       c.text { "Title" }
     end
 
-    assert_selector("a[role='tab'][aria-current='page']") do
+    assert_selector("a[aria-current='page']") do
       assert_selector("span", text: "Title")
     end
+    refute_selector("a[role='tab']")
   end
 
   def test_renders_aria_selected_if_button_and_selected

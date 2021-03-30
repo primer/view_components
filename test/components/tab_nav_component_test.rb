@@ -28,9 +28,9 @@ class PrimerTabNavComponentTest < Minitest::Test
     end
 
     assert_selector(".tabnav") do
-      assert_selector("nav.tabnav-tabs[role='tablist']") do
-        assert_selector("a.tabnav-tab[aria-current='page'][role='tab']", text: "Tab 1")
-        assert_selector("a.tabnav-tab[role='tab']", text: "Tab 2")
+      assert_selector("nav.tabnav-tabs") do
+        assert_selector("a.tabnav-tab[aria-current='page']", text: "Tab 1")
+        assert_selector("a.tabnav-tab", text: "Tab 2")
       end
     end
   end
@@ -42,9 +42,9 @@ class PrimerTabNavComponentTest < Minitest::Test
     end
 
     assert_selector(".tabnav") do
-      assert_selector("nav.tabnav-tabs[role='tablist']") do
-        assert_selector("button.tabnav-tab[aria-selected='true'][role='tab']", text: "Tab 1")
-        assert_selector("button.tabnav-tab[role='tab']", text: "Tab 2")
+      assert_selector("nav.tabnav-tabs") do
+        assert_selector("button.tabnav-tab[aria-selected='true']", text: "Tab 1")
+        assert_selector("button.tabnav-tab", text: "Tab 2")
       end
     end
   end
@@ -102,9 +102,9 @@ class PrimerTabNavComponentTest < Minitest::Test
     end
 
     assert_selector(".tabnav") do
-      assert_selector("nav.tabnav-tabs[role='tablist']") do
-        assert_selector("a.tabnav-tab[aria-current='page'][role='tab']", text: "Tab 1")
-        assert_selector("a.tabnav-tab[role='tab']", text: "Tab 2")
+      assert_selector("nav.tabnav-tabs") do
+        assert_selector("a.tabnav-tab[aria-current='page']", text: "Tab 1")
+        assert_selector("a.tabnav-tab", text: "Tab 2")
       end
     end
     refute_selector("div[role='tabpanel']")

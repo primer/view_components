@@ -107,7 +107,7 @@ module Primer
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = :nav
-      @system_arguments[:role] = :tablist
+      @system_arguments[:role] = :tablist if with_panel
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "UnderlineNav",
