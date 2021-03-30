@@ -18,14 +18,14 @@ module Primer
     }
 
     # @example Default
-    #   <%= render(Primer::TabNavComponent.new) do |c| %>
+    #   <%= render(Primer::TabNavComponent.new(aria_label: "Default")) do |c| %>
     #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
     #     <% c.tab(href: "#") { "Tab 2" } %>
     #     <% c.tab(href: "#") { "Tab 3" } %>
     #   <% end %>
     #
     # @example With icons and counters
-    #   <%= render(Primer::TabNavComponent.new) do |component| %>
+    #   <%= render(Primer::TabNavComponent.new(aria_label: "With icons and counters")) do |component| %>
     #     <% component.tab(href: "#", selected: true) do |t| %>
     #       <% t.icon(icon: :star) %>
     #       <% t.text { "Item 1" } %>
@@ -42,7 +42,7 @@ module Primer
     #   <% end %>
     #
     # @example With panels
-    #   <%= render(Primer::TabNavComponent.new(with_panel: true)) do |c| %>
+    #   <%= render(Primer::TabNavComponent.new(aria_label: "With panels", with_panel: true)) do |c| %>
     #     <% c.tab(selected: true) do |t| %>
     #       <% t.text { "Tab 1" } %>
     #       <% t.panel do %>

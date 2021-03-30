@@ -38,7 +38,7 @@ module Primer
     }
 
     # @example Default
-    #   <%= render(Primer::UnderlineNavComponent.new) do |component| %>
+    #   <%= render(Primer::UnderlineNavComponent.new(aria: { label: "Default" })) do |component| %>
     #     <% component.tab(href: "#", selected: true) { "Item 1" } %>
     #     <% component.tab(href: "#") { "Item 2" } %>
     #     <% component.actions do %>
@@ -47,7 +47,7 @@ module Primer
     #   <% end %>
     #
     # @example With icons and counters
-    #   <%= render(Primer::UnderlineNavComponent.new) do |component| %>
+    #   <%= render(Primer::UnderlineNavComponent.new(aria: { label: "With icons and counters" })) do |component| %>
     #     <% component.tab(href: "#", selected: true) do |t| %>
     #       <% t.icon(icon: :star) %>
     #       <% t.text { "Item 1" } %>
@@ -67,7 +67,7 @@ module Primer
     #   <% end %>
     #
     # @example Align right
-    #   <%= render(Primer::UnderlineNavComponent.new(align: :right)) do |component| %>
+    #   <%= render(Primer::UnderlineNavComponent.new(aria: { label: "Align right" }, align: :right)) do |component| %>
     #     <% component.tab(href: "#", selected: true) do |t| %>
     #       <% t.text { "Item 1" } %>
     #     <% end %>
@@ -80,7 +80,7 @@ module Primer
     #   <% end %>
     #
     # @example With panels
-    #   <%= render(Primer::UnderlineNavComponent.new(with_panel: true)) do |component| %>
+    #   <%= render(Primer::UnderlineNavComponent.new(aria: { label: "With panels" }, with_panel: true)) do |component| %>
     #     <% component.tab(selected: true) do |t| %>
     #       <% t.text { "Item 1" } %>
     #       <% t.panel do %>
