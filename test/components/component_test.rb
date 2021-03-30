@@ -40,6 +40,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::HeadingComponent, {}],
     [Primer::LabelComponent, { title: "Hello!" }],
     [Primer::LayoutComponent, {}],
+    [Primer::ListComponent, {}, proc { |component| component.item { "Item" } }],
     [Primer::LinkComponent, { href: "https://www.google.com" }],
     [Primer::MarkdownComponent, {}],
     [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],

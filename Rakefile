@@ -140,6 +140,7 @@ namespace :docs do
       Primer::LabelComponent,
       Primer::LayoutComponent,
       Primer::LinkComponent,
+      Primer::ListComponent,
       Primer::MarkdownComponent,
       Primer::MenuComponent,
       Primer::Navigation::TabComponent,
