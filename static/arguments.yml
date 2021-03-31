@@ -7,7 +7,7 @@
     default: N/A
     description: The route to query.
   - name: id
-    type: String
+    type: Boolean
     default: N/A
     description: Id of the list element.
   - name: system_arguments

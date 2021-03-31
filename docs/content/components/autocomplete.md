@@ -76,7 +76,7 @@ Use AutoComplete to populate input values from server search results.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `src` | `String` | N/A | The route to query. |
-| `id` | `String` | N/A | Id of the list element. |
+| `id` | `Boolean` | N/A | Id of the list element. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
