@@ -132,9 +132,9 @@ module Primer
       )
 
       @body_arguments = body_arguments
-      @body_tag = @body_arguments[:tag]&.to_sym
+      @body_tag = fetch_or_fallback(BODY_TAG_OPTIONS, body_arguments[:tag]&.to_sym, BODY_TAG_DEFAULT)
 
-      @body_arguments[:tag] = fetch_or_fallback(BODY_TAG_OPTIONS, @body_tag, BODY_TAG_DEFAULT)
+      @body_arguments[:tag] = @body_tag
       @body_arguments[:classes] = class_names(
         "UnderlineNav-body",
         @body_arguments[:classes],
