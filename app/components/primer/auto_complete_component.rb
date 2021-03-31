@@ -8,7 +8,7 @@ module Primer
 
     # Required input used to search for results
     #
-    # @param type [Symbol] <%= one_of(Primer::AutoCompleteComponent::INPUT_TYPE_OPTIONS) %>
+    # @param type [Symbol] srt32-test <%= one_of(Primer::AutoCompleteComponent::INPUT_TYPE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :input, lambda { |type: DEFAULT_INPUT_TYPE, classes: "form-control", **system_arguments|
       system_arguments[:tag] = :input
