@@ -11,7 +11,7 @@ module Primer
     ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
 
     BODY_TAG_DEFAULT = :div
-    BODY_TAG_OPTIONS = [BODY_TAG_DEFAULT, :ul]
+    BODY_TAG_OPTIONS = [BODY_TAG_DEFAULT, :ul].freeze
 
     # Use the tabs to list navigation items. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
