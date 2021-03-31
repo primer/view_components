@@ -160,4 +160,34 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
     assert_selector(".UnderlineNav-octicon.octicon.octicon-star")
   end
+
+  def test_renders_tabs_in_a_list
+    render_inline(Primer::UnderlineNavComponent.new(body_arguments: { tag: :ul })) do |component|
+      component.tab(selected: true, href: "#") do |t|
+        t.panel { "Panel 1" }
+        t.text { "Tab 1" }
+      end
+      component.tab(href: "#") do |t|
+        t.panel { "Panel 2" }
+        t.text { "Tab 2" }
+      end
+      component.actions do
+        "Actions content"
+      end
+    end
+
+    assert_selector("nav.UnderlineNav") do
+      assert_selector("ul.UnderlineNav-body.list-style-none") do
+        assert_selector("li") do
+          assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
+        end
+        assert_selector("li") do
+          assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
+        end
+      end
+      assert_selector("div.UnderlineNav-actions", text: "Actions content")
+    end
+    refute_selector("div[role='tablist']")
+    refute_selector("a[role='tab']")
+  end
 end

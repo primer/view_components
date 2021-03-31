@@ -7,6 +7,7 @@ class Primer::UnderlineNavComponentStories < ViewComponent::Storybook::Stories
     controls do
       select(:align, Primer::UnderlineNavComponent::ALIGN_OPTIONS, :left)
       with_panel false
+      body_arguments(tag: :ul)
     end
 
     content do |c|

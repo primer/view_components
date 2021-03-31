@@ -109,4 +109,17 @@ class PrimerNavigationTabComponentTest < Minitest::Test
 
     assert_selector(".custom-class.octicon.octicon-star")
   end
+
+  def test_renders_inside_list
+    render_inline Primer::Navigation::TabComponent.new(list: true) do |c|
+      c.text { "Title" }
+    end
+
+    assert_selector("li.d-flex") do
+      assert_selector("a") do
+        assert_selector("span", text: "Title")
+      end
+    end
+    refute_selector("a[role='tab']")
+  end
 end
