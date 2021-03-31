@@ -75,7 +75,7 @@ module Primer
     #   <% end %>
     #
     # @param src [String] The route to query.
-    # @param id [String] Id of the list element.
+    # @param id [Boolean] Id of the list element.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(src:, id:, **system_arguments)
       @id = id
