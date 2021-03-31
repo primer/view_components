@@ -49,7 +49,7 @@ and `Primer::UnderlineNavComponent` and should not be used by itself.
 
 ### Inside a list
 
-<Example src="  <li class='d-flex'>    <a>              <span>Tab</span>      </a></li>" />
+<Example src="<li class='d-flex'>  <a>          <span>Tab</span>    </a></li>" />
 
 ```erb
 <%= render(Primer::Navigation::TabComponent.new(list: true)) do |c| %>

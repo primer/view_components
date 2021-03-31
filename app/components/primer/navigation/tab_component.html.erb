@@ -1,16 +1,4 @@
-<% if @list %>
-  <%= render(Primer::BaseComponent.new(**@wrapper_arguments)) do %>
-    <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-      <%= icon %>
-      <% if text.present? %>
-        <%= text %>
-      <% else %>
-        <%= content %>
-      <% end %>
-      <%= counter %>
-    <% end %>
-  <% end %>
-<% else %>
+<%= wrapper do %>
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
     <%= icon %>
     <% if text.present? %>

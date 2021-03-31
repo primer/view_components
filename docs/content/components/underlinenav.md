@@ -77,7 +77,7 @@ of the page.
 
 ### As a list
 
-<Example src="  <nav aria-label='As a list' class='UnderlineNav '>    <ul class='UnderlineNav-body list-style-none '>          <li class='d-flex'>    <a href='#' aria-current='page' class='UnderlineNav-item '>              <span>Item 1</span>      </a></li>          <li class='d-flex'>    <a href='#' class='UnderlineNav-item '>              <span>Item 2</span>      </a></li></ul>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>" />
+<Example src="  <nav aria-label='As a list' class='UnderlineNav '>    <ul class='UnderlineNav-body list-style-none '>        <li class='d-flex'>  <a href='#' aria-current='page' class='UnderlineNav-item '>          <span>Item 1</span>    </a></li>        <li class='d-flex'>  <a href='#' class='UnderlineNav-item '>          <span>Item 2</span>    </a></li></ul>      <div class='UnderlineNav-actions '>    <button type='button' class='btn '>Button!</button></div></nav>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(aria: { label: "As a list" }, body_arguments: { tag: :ul })) do |component| %>

@@ -109,6 +109,17 @@ module Primer
           @system_arguments[:"aria-selected"] = true
         end
       end
+
+      def wrapper
+        unless @list
+          yield
+          return # returning `yield` caused a double render
+        end
+
+        render(Primer::BaseComponent.new(**@wrapper_arguments)) do
+          yield
+        end
+      end
     end
   end
 end
