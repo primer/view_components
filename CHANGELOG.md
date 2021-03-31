@@ -2,6 +2,10 @@
 
 ## main
 
+* Allow `UnderlineNav` tabs to be rendered as a `<ul><li>` list.
+
+    *Manuel Puyol*
+
 * _Accessibility:_ Don't add tab roles when `UnderlineNav` or `TabNav` use link redirects.
 
     *Manuel Puyol*
