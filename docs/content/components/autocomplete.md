@@ -87,7 +87,7 @@ Required input used to search for results
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `type` | `Symbol` | N/A | srt32-test One of `:text` and `:search`. |
+| `type` | `String` | N/A | srt32-test One of `:text` and `:search`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `Icon`
