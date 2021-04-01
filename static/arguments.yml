@@ -529,7 +529,7 @@
     type: String
     default: N/A
     description: "`title` HTML attribute."
-  - name: color
+  - name: scheme
     type: Symbol
     default: "`:default`"
     description: Background color. One of `:open`, `:closed`, `:merged`, `:default`,

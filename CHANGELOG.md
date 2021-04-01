@@ -10,19 +10,23 @@
 
     *Manuel Puyol*
 
-* **Breaking change**: Update `FlashComponent` `variant` argument to be `scheme`.
+* **Breaking change**: Rename `FlashComponent` `variant` argument to `scheme`.
 
     *Manuel Puyol*
 
-* **Breaking change**: Update `LinkComponent` `variant` argument to be `scheme`.
+* **Breaking change**: Rename `LinkComponent` `variant` argument to `scheme`.
 
     *Manuel Puyol*
 
-* **Breaking change**: Update `ButtonComponent` `button_type` argument to be `scheme`.
+* **Breaking change**: Rename `ButtonComponent` `button_type` argument to `scheme`.
 
     *Manuel Puyol*
 
-* **Breaking change**: Update `ButtonMarketingComponent` `button_type` argument to be `scheme`.
+* **Breaking change**: Rename `ButtonMarketingComponent` `button_type` argument to `scheme`.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Rename `StateComponent` `color` argument to `scheme`.
 
     *Manuel Puyol*
 

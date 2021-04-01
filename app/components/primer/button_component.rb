@@ -26,7 +26,7 @@ module Primer
     DEFAULT_TYPE = :button
     TYPE_OPTIONS = [DEFAULT_TYPE, :reset, :submit].freeze
 
-    # @example Button types
+    # @example Schemes
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :danger)) { "Danger" } %>

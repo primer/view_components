@@ -13,7 +13,7 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ## Examples
 
-### Button types
+### Schemes
 
 <Example src="<button type='button' class='btn '>Default</button><button type='button' class='btn btn-primary '>Primary</button><button type='button' class='btn btn-danger '>Danger</button><button type='button' class='btn btn-outline '>Outline</button>" />
 
