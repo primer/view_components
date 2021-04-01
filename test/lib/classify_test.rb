@@ -32,7 +32,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("mb-n4",   { mb: -4 })
     assert_generated_class("mr-n4",   { mr: -4 })
     assert_generated_class("mx-auto", { mx: :auto })
-    assert_generated_class("mr-1 mr-sm-2 mr-md-3 mr-lg-4 mr-xl-5",  { mr: [1, 2, 3, 4, 5] })
+    assert_generated_class("mr-1 mr-sm-2 mr-md-3 mr-lg-4 mr-xl-5", { mr: [1, 2, 3, 4, 5] })
 
     assert_raises ArgumentError do
       Primer::Classify.call(m: -1)
@@ -64,7 +64,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("pb-4", { pb: 4 })
     assert_generated_class("pr-4", { pr: 4 })
     assert_generated_class("p-responsive", { p: :responsive })
-    assert_generated_class("pr-1 pr-sm-2 pr-md-3 pr-lg-4 pr-xl-5",  { pr: [1, 2, 3, 4, 5] })
+    assert_generated_class("pr-1 pr-sm-2 pr-md-3 pr-lg-4 pr-xl-5", { pr: [1, 2, 3, 4, 5] })
 
     assert_raises ArgumentError do
       Primer::Classify.call(p: -1)
