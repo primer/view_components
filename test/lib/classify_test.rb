@@ -44,6 +44,14 @@ class PrimerClassifyTest < Minitest::Test
     assert_raises ArgumentError do
       Primer::Classify.call(mr: -7)
     end
+
+    assert_raises ArgumentError do
+      Primer::Classify.call(m: :auto)
+    end
+
+    assert_raises ArgumentError do
+      Primer::Classify.call(mr: :auto)
+    end
   end
 
   def test_p
@@ -54,6 +62,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("pl-4", { pl: 4 })
     assert_generated_class("pb-4", { pb: 4 })
     assert_generated_class("pr-4", { pr: 4 })
+    assert_generated_class("p-responsive", { p: :responsive })
 
     assert_raises ArgumentError do
       Primer::Classify.call(p: -1)
@@ -61,6 +70,14 @@ class PrimerClassifyTest < Minitest::Test
 
     assert_raises ArgumentError do
       Primer::Classify.call(p: 7)
+    end
+
+    assert_raises ArgumentError do
+      Primer::Classify.call(pr: :responsive)
+    end
+
+    assert_raises ArgumentError do
+      Primer::Classify.call(px: :responsive)
     end
   end
 

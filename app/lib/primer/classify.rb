@@ -3,12 +3,11 @@
 module Primer
   # :nodoc:
   class Classify
-    MARGIN_DIRECTION_KEYS = %i[mt ml mb mr].freeze
-    SPACING_KEYS = (%i[m my mx p py px pt pl pb pr] + MARGIN_DIRECTION_KEYS).freeze
     DIRECTION_KEY = :direction
     JUSTIFY_CONTENT_KEY = :justify_content
     ALIGN_ITEMS_KEY = :align_items
     DISPLAY_KEY = :display
+    SPACING_KEYS = Primer::Classify::Spacing::KEYS
     RESPONSIVE_KEYS = ([DISPLAY_KEY, DIRECTION_KEY, JUSTIFY_CONTENT_KEY, ALIGN_ITEMS_KEY, :col, :float] + SPACING_KEYS).freeze
     BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
 
@@ -184,14 +183,8 @@ module Primer
         return if val.nil? || val == ""
 
         if SPACING_KEYS.include?(key)
-          if MARGIN_DIRECTION_KEYS.include?(key)
-            raise ArgumentError, "value of #{key} must be between -6 and 6" if val < -6 || val > 6
-          elsif !((key == :mx || key == :my) && val == :auto)
-            raise ArgumentError, "value of #{key} must be between 0 and 6" if val.negative? || val > 6
-          end
-        end
-
-        if BOOLEAN_MAPPINGS.key?(key)
+          memo[:classes] << Primer::Classify::Spacing.spacing(key, val, breakpoint)
+        elsif BOOLEAN_MAPPINGS.key?(key)
           BOOLEAN_MAPPINGS[key][:mappings].each do |m|
             memo[:classes] << m[:css_class] if m[:value] == val && m[:css_class].present?
           end
@@ -248,8 +241,6 @@ module Primer
           memo[:classes] << "text-#{val.to_s.dasherize}"
         elsif TYPOGRAPHY_KEYS.include?(key)
           memo[:classes] << "f#{val.to_s.dasherize}"
-        elsif MARGIN_DIRECTION_KEYS.include?(key) && val.negative?
-          memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-n#{val.abs}"
         elsif key == BOX_SHADOW_KEY
           memo[:classes] << if val == true
                               "color-shadow-small"
