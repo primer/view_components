@@ -5,6 +5,7 @@ require "rake/testtask"
 require "yard"
 require "yard/renders_one_handler"
 require "yard/renders_many_handler"
+require "yaml"
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
@@ -63,7 +64,7 @@ namespace :docs do
     sleep
   end
 
-  def one_of(enumerable)
+  def one_of(enumerable, lower: false)
     values =
       case enumerable
       when Hash
@@ -76,7 +77,10 @@ namespace :docs do
         end
       end
 
-    "One of #{values.to_sentence(last_word_connector: ', or ')}."
+    prefix = "One of"
+    prefix = prefix.downcase if lower
+
+    "#{prefix} #{values.to_sentence(last_word_connector: ', or ')}."
   end
 
   def link_to_system_arguments_docs
@@ -171,6 +175,7 @@ namespace :docs do
     components_needing_docs = all_components - components
 
     components_without_examples = []
+    args_for_components = []
 
     components.each do |component|
       documentation = registry.get(component.name)
@@ -233,6 +238,7 @@ namespace :docs do
         f.puts("| Name | Type | Default | Description |")
         f.puts("| :- | :- | :- | :- |")
 
+        args = []
         initialize_method.tags(:param).each do |tag|
           params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
 
@@ -249,8 +255,23 @@ namespace :docs do
               "N/A"
             end
 
+          args << {
+            "name" => tag.name,
+            "type" => tag.types.join(", "),
+            "default" => default,
+            "description" => view_context.render(inline: tag.text)
+          }
+
           f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
         end
+
+        component_args = {
+          "component" => short_name,
+          "source" => "https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb",
+          "parameters" => args
+        }
+
+        args_for_components << component_args
 
         # Slots V2 docs
         slot_v2_methods = documentation.meths.select { |x| x[:renders_one] || x[:renders_many] }
@@ -290,6 +311,10 @@ namespace :docs do
           end
         end
       end
+    end
+
+    File.open("static/arguments.yml", "w") do |f|
+      f.puts YAML.dump(args_for_components)
     end
 
     # Build system arguments docs from BaseComponent
