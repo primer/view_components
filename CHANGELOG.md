@@ -2,7 +2,11 @@
 
 ## main
 
-* Add `p: :responsive` system argument.
+* Add `p: :responsive` and `m: :auto` system arguments.
+
+    *Manuel Puyol*
+
+* Remove `my: :auto` and negative `m:` system arguments.
 
     *Manuel Puyol*
 
