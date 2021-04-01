@@ -2,6 +2,14 @@
 
 ## main
 
+* Add `p: :responsive` and `m: :auto` system arguments.
+
+    *Manuel Puyol*
+
+* Remove `my: :auto` and negative `m:` system arguments.
+
+    *Manuel Puyol*
+
 ## 0.0.33
 
 * Remove `TabbedComponent` validation requiring a tab to be selected.

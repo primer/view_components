@@ -51,7 +51,6 @@ System arguments include most HTML attributes. For example:
 | Name | Type | Description |
 | :- | :- | :- |
 | `border_bottom` | Integer | Set to `0` to remove the bottom border. |
-| `border_color` | Symbol | One of `:primary`, `:secondary`, `:tertiary`, `:info`, `:success`, `:warning`, `:danger`, `:inverse`, or `:overlay`. <br /> |
 | `border_left` | Integer | Set to `0` to remove the left border. |
 | `border_radius` | Integer | One of `0`, `1`, `2`, or `3`. |
 | `border_right` | Integer | Set to `0` to remove the right border. |
@@ -63,8 +62,9 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `bg` | String, Symbol | Background color. Accepts either a hex value as a String or a color name as a Symbol. |
-| `color` | Symbol | Text color. <br /> One of `:icon_primary`, `:icon_secondary`, `:icon_tertiary`, `:icon_info`, `:icon_success`, `:icon_warning`, `:icon_danger`, `:text_primary`, `:text_secondary`, `:text_tertiary`, `:text_link`, `:text_success`, `:text_warning`, `:text_danger`, `:text_white`, or `:text_inverse`. <br />  |
+| `bg` | String, Symbol | Background color. Accepts either a hex value as a String or one of `:primary`, `:secondary`, `:tertiary`, `:info`, `:success`, `:warning`, `:danger`, `:inverse`, or `:overlay`. |
+| `border_color` | Symbol | Border color. One of `:primary`, `:secondary`, `:tertiary`, `:info`, `:success`, `:warning`, `:danger`, `:inverse`, or `:overlay`. |
+| `color` | Symbol | Text color. One of `:icon_primary`, `:icon_secondary`, `:icon_tertiary`, `:icon_info`, `:icon_success`, `:icon_warning`, `:icon_danger`, `:text_primary`, `:text_secondary`, `:text_tertiary`, `:text_link`, `:text_success`, `:text_warning`, `:text_danger`, `:text_white`, or `:text_inverse`. |
 
 ## Flex
 
@@ -109,14 +109,14 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `m` | Integer | Margin. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `m` | Integer | Margin. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |
 | `mb` | Integer | Margin bottom. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
 | `ml` | Integer | Margin left. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
 | `mr` | Integer | Margin right. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
 | `mt` | Integer | Margin top. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `mx` | Integer | Horizontal margins. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |
-| `my` | Integer | Vertical margins. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `p` | Integer | Padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mx` | Integer | Horizontal margins. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |
+| `my` | Integer | Vertical margins. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `p` | Integer | Padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:responsive`. |
 | `pb` | Integer | Padding bottom. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
 | `pl` | Integer | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
 | `pr` | Integer | Padding right. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
