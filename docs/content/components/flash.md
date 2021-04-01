@@ -50,13 +50,13 @@ Use the Flash component to inform users of successful or pending actions.
 
 ### With actions
 
-<Example src="<div class='flash '>      This is a flash message with actions!  <div class='flash-action '>    <button scheme='small' type='button' class='btn '>Take action</button></div></div>" />
+<Example src="<div class='flash '>      This is a flash message with actions!  <div class='flash-action '>    <button type='button' class='btn btn-sm '>Take action</button></div></div>" />
 
 ```erb
 <%= render(Primer::FlashComponent.new) do |component| %>
   This is a flash message with actions!
   <% component.action do %>
-    <%= render(Primer::ButtonComponent.new(scheme: :small)) { "Take action" } %>
+    <%= render(Primer::ButtonComponent.new(variant: :small)) { "Take action" } %>
   <% end %>
 <% end %>
 ```

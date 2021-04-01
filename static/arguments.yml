@@ -172,7 +172,7 @@
 - component: Button
   source: https://github.com/primer/view_components/tree/main/app/components/primer/button_component.rb
   parameters:
-  - name: button_type
+  - name: scheme
     type: Symbol
     default: "`:default`"
     description: One of `:default`, `:primary`, `:danger`, or `:outline`.
@@ -202,7 +202,7 @@
 - component: ButtonMarketing
   source: https://github.com/primer/view_components/tree/main/app/components/primer/button_marketing_component.rb
   parameters:
-  - name: button_type
+  - name: scheme
     type: Symbol
     default: "`:default`"
     description: One of `:default`, `:primary`, `:outline`, or `:transparent`.

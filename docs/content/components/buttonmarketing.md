@@ -19,10 +19,10 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ```erb
 <%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>
-<%= render(Primer::ButtonMarketingComponent.new(button_type: :primary, mr: 2)) { "Primary" } %>
-<%= render(Primer::ButtonMarketingComponent.new(button_type: :outline)) { "Outline" } %>
+<%= render(Primer::ButtonMarketingComponent.new(scheme: :primary, mr: 2)) { "Primary" } %>
+<%= render(Primer::ButtonMarketingComponent.new(scheme: :outline)) { "Outline" } %>
 <div class="bg-gray-dark">
-  <%= render(Primer::ButtonMarketingComponent.new(button_type: :transparent)) { "Transparent" } %>
+  <%= render(Primer::ButtonMarketingComponent.new(scheme: :transparent)) { "Transparent" } %>
 </div>
 ```
 
@@ -39,7 +39,7 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `button_type` | `Symbol` | `:default` | One of `:default`, `:primary`, `:outline`, or `:transparent`. |
+| `scheme` | `Symbol` | `:default` | One of `:default`, `:primary`, `:outline`, or `:transparent`. |
 | `variant` | `Symbol` | `:default` | One of `:default` and `:large`. |
 | `tag` | `Symbol` | `:button` | One of `:button` and `:a`. |
 | `type` | `Symbol` | `:button` | One of `:button` and `:submit`. |
