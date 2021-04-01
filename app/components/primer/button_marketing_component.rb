@@ -29,7 +29,7 @@ module Primer
     #   <%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>
     #   <%= render(Primer::ButtonMarketingComponent.new(scheme: :primary, mr: 2)) { "Primary" } %>
     #   <%= render(Primer::ButtonMarketingComponent.new(scheme: :outline)) { "Outline" } %>
-    #   <div class="bg-gray-dark">
+    #   <div class="color-bg-canvas-inverse">
     #     <%= render(Primer::ButtonMarketingComponent.new(scheme: :transparent)) { "Transparent" } %>
     #   </div>
     #

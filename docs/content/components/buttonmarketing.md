@@ -15,13 +15,13 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ### Schemes
 
-<Example src="<button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-primary-mktg mr-2'>Primary</button><button type='button' class='btn-mktg btn-outline-mktg '>Outline</button><div class='bg-gray-dark'>  <button type='button' class='btn-mktg btn-transparent '>Transparent</button></div>" />
+<Example src="<button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-primary-mktg mr-2'>Primary</button><button type='button' class='btn-mktg btn-outline-mktg '>Outline</button><div class='color-bg-canvas-inverse'>  <button type='button' class='btn-mktg btn-transparent '>Transparent</button></div>" />
 
 ```erb
 <%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>
 <%= render(Primer::ButtonMarketingComponent.new(scheme: :primary, mr: 2)) { "Primary" } %>
 <%= render(Primer::ButtonMarketingComponent.new(scheme: :outline)) { "Outline" } %>
-<div class="bg-gray-dark">
+<div class="color-bg-canvas-inverse">
   <%= render(Primer::ButtonMarketingComponent.new(scheme: :transparent)) { "Transparent" } %>
 </div>
 ```
