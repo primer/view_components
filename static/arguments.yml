@@ -473,6 +473,10 @@
 - component: Tab
   source: https://github.com/primer/view_components/tree/main/app/components/primer/tab_component.rb
   parameters:
+  - name: list
+    type: Boolean
+    default: "`false`"
+    description: Whether the Tab is an item in a `<ul>` list.
   - name: selected
     type: Boolean
     default: "`false`"
@@ -485,6 +489,11 @@
     type: Boolean
     default: '`""`'
     description: Classes that must always be applied to icons.
+  - name: wrapper_arguments
+    type: Hash
+    default: "`{}`"
+    description: "[System arguments](/system-arguments) to be used in the `<li>` wrapper
+      when the tab is an item in a list."
   - name: system_arguments
     type: Hash
     default: N/A
@@ -687,6 +696,10 @@
     type: Symbol
     default: "`:left`"
     description: One of `:left` and `:right`. - Defaults to left
+  - name: body_arguments
+    type: Hash
+    default: "`{ tag: BODY_TAG_DEFAULT }`"
+    description: "[System arguments](/system-arguments) for the body wrapper."
   - name: system_arguments
     type: Hash
     default: N/A
