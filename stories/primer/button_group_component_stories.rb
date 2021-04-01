@@ -6,9 +6,9 @@ class Primer::ButtonGroupComponentStories < ViewComponent::Storybook::Stories
   story(:button_group) do
     content do |c|
       c.button { "Button" }
-      c.button(button_type: :primary) { "Primary" }
-      c.button(button_type: :danger) { "Danger" }
-      c.button(button_type: :outline) { "Outline" }
+      c.button(scheme: :primary) { "Primary" }
+      c.button(scheme: :danger) { "Danger" }
+      c.button(scheme: :outline) { "Outline" }
     end
   end
 end

@@ -10,6 +10,26 @@
 
     *Manuel Puyol*
 
+* **Breaking change**: Rename `FlashComponent` `variant` argument to `scheme`.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Rename `LinkComponent` `variant` argument to `scheme`.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Rename `ButtonComponent` `button_type` argument to `scheme`.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Rename `ButtonMarketingComponent` `button_type` argument to `scheme`.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Rename `StateComponent` `color` argument to `scheme`.
+
+    *Manuel Puyol*
+
 ## 0.0.33
 
 * Remove `TabbedComponent` validation requiring a tab to be selected.

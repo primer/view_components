@@ -44,12 +44,12 @@ class PrimerLinkComponentTest < Minitest::Test
     assert_selector(".no-underline")
   end
 
-  def test_variants
-    render_inline(Primer::LinkComponent.new(href: "http://google.com", variant: :primary)) { "content" }
+  def test_schemes
+    render_inline(Primer::LinkComponent.new(href: "http://google.com", scheme: :primary)) { "content" }
 
     assert_selector(".Link--primary")
 
-    render_inline(Primer::LinkComponent.new(href: "http://google.com", variant: :secondary)) { "content" }
+    render_inline(Primer::LinkComponent.new(href: "http://google.com", scheme: :secondary)) { "content" }
 
     assert_selector(".Link--secondary")
   end
