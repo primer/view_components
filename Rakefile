@@ -64,7 +64,7 @@ namespace :docs do
     sleep
   end
 
-  def one_of(enumerable)
+  def one_of(enumerable, lower: false)
     values =
       case enumerable
       when Hash
@@ -77,7 +77,10 @@ namespace :docs do
         end
       end
 
-    "One of #{values.to_sentence(last_word_connector: ', or ')}."
+    prefix = "One of"
+    prefix = prefix.downcase if lower
+
+    "#{prefix} #{values.to_sentence(last_word_connector: ', or ')}."
   end
 
   def link_to_system_arguments_docs

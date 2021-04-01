@@ -20,13 +20,23 @@ module Primer
 
         def preload!
           preload(
-            keys: Primer::Classify::MARGIN_DIRECTION_KEYS,
-            values: [-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6]
+            keys: Primer::Classify::Spacing::MARGIN_DIRECTION_MAPPINGS.keys,
+            values: Primer::Classify::Spacing::MARGIN_DIRECTION_OPTIONS
           )
 
           preload(
-            keys: (Primer::Classify::SPACING_KEYS - Primer::Classify::MARGIN_DIRECTION_KEYS),
-            values: [0, 1, 2, 3, 4, 5, 6]
+            keys: Primer::Classify::Spacing::BASE_MAPPINGS.keys,
+            values: Primer::Classify::Spacing::BASE_OPTIONS
+          )
+
+          preload(
+            keys: Primer::Classify::Spacing::AUTO_MAPPINGS.keys,
+            values: Primer::Classify::Spacing::AUTO_OPTIONS
+          )
+
+          preload(
+            keys: Primer::Classify::Spacing::RESPONSIVE_MAPPINGS.keys,
+            values: Primer::Classify::Spacing::RESPONSIVE_OPTIONS
           )
 
           preload(

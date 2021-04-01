@@ -52,7 +52,6 @@ module Primer
     # | Name | Type | Description |
     # | :- | :- | :- |
     # | `border_bottom` | Integer | Set to `0` to remove the bottom border. |
-    # | `border_color` | Symbol | <%= one_of(Primer::Classify::FunctionalBorderColors::OPTIONS) %> <br /> |
     # | `border_left` | Integer | Set to `0` to remove the left border. |
     # | `border_radius` | Integer | <%= one_of([0, 1, 2, 3]) %> |
     # | `border_right` | Integer | Set to `0` to remove the right border. |
@@ -64,8 +63,9 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `bg` | String, Symbol | Background color. Accepts either a hex value as a String or a color name as a Symbol. |
-    # | `color` | Symbol | Text color. <br /> <%= one_of(Primer::Classify::FunctionalTextColors::OPTIONS) %> <br />  |
+    # | `bg` | String, Symbol | Background color. Accepts either a hex value as a String or <%= one_of(Primer::Classify::FunctionalBorderColors::OPTIONS, lower: true) %> |
+    # | `border_color` | Symbol | Border color. <%= one_of(Primer::Classify::FunctionalBorderColors::OPTIONS) %> |
+    # | `color` | Symbol | Text color. <%= one_of(Primer::Classify::FunctionalTextColors::OPTIONS) %> |
     #
     # ## Flex
     #
@@ -110,20 +110,20 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `m` | Integer | Margin. <%= one_of((-6..6).to_a) %> |
-    # | `mb` | Integer | Margin bottom. <%= one_of((-6..6).to_a) %> |
-    # | `ml` | Integer | Margin left. <%= one_of((-6..6).to_a) %> |
-    # | `mr` | Integer | Margin right. <%= one_of((-6..6).to_a) %> |
-    # | `mt` | Integer | Margin top. <%= one_of((-6..6).to_a) %> |
-    # | `mx` | Integer | Horizontal margins. <%= one_of((-6..6).to_a + [:auto]) %> |
-    # | `my` | Integer | Vertical margins. <%= one_of((-6..6).to_a) %> |
-    # | `p` | Integer | Padding. <%= one_of((0..6).to_a) %> |
-    # | `pb` | Integer | Padding bottom. <%= one_of((0..6).to_a) %> |
-    # | `pl` | Integer | Padding left. <%= one_of((0..6).to_a) %> |
-    # | `pr` | Integer | Padding right. <%= one_of((0..6).to_a) %> |
-    # | `pt` | Integer | Padding left. <%= one_of((0..6).to_a) %> |
-    # | `px` | Integer | Horizontal padding. <%= one_of((0..6).to_a) %> |
-    # | `py` | Integer | Vertical padding. <%= one_of((0..6).to_a) %> |
+    # | `m` | Integer | Margin. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:m]) %> |
+    # | `mb` | Integer | Margin bottom. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mb]) %> |
+    # | `ml` | Integer | Margin left. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:ml]) %> |
+    # | `mr` | Integer | Margin right. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mr]) %> |
+    # | `mt` | Integer | Margin top. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mt]) %> |
+    # | `mx` | Integer | Horizontal margins. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mx]) %> |
+    # | `my` | Integer | Vertical margins. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:my]) %> |
+    # | `p` | Integer | Padding. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:p]) %> |
+    # | `pb` | Integer | Padding bottom. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pb]) %> |
+    # | `pl` | Integer | Padding left. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pl]) %> |
+    # | `pr` | Integer | Padding right. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pr]) %> |
+    # | `pt` | Integer | Padding left. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pt]) %> |
+    # | `px` | Integer | Horizontal padding. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:px]) %> |
+    # | `py` | Integer | Vertical padding. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:py]) %> |
     #
     # ## Typography
     #
