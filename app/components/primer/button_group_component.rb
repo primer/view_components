@@ -11,9 +11,9 @@ module Primer
     # @example Default
     #   <%= render(Primer::ButtonGroupComponent.new) do |component|
     #     component.button { "Default" }
-    #     component.button(button_type: :primary) { "Primary" }
-    #     component.button(button_type: :danger) { "Danger" }
-    #     component.button(button_type: :outline) { "Outline" }
+    #     component.button(scheme: :primary) { "Primary" }
+    #     component.button(scheme: :danger) { "Danger" }
+    #     component.button(scheme: :outline) { "Outline" }
     #     component.button(classes: "my-class") { "Custom class" }
     #   end %>
     #

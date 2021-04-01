@@ -3,14 +3,14 @@
 module Primer
   # Use buttons for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
   class ButtonComponent < Primer::Component
-    DEFAULT_BUTTON_TYPE = :default
-    BUTTON_TYPE_MAPPINGS = {
-      DEFAULT_BUTTON_TYPE => "",
+    DEFAULT_SCHEME = :default
+    SCHEME_MAPPINGS = {
+      DEFAULT_SCHEME => "",
       :primary => "btn-primary",
       :danger => "btn-danger",
       :outline => "btn-outline"
     }.freeze
-    BUTTON_TYPE_OPTIONS = BUTTON_TYPE_MAPPINGS.keys
+    SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
     DEFAULT_VARIANT = :medium
     VARIANT_MAPPINGS = {
@@ -28,22 +28,22 @@ module Primer
 
     # @example Button types
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
-    #   <%= render(Primer::ButtonComponent.new(button_type: :primary)) { "Primary" } %>
-    #   <%= render(Primer::ButtonComponent.new(button_type: :danger)) { "Danger" } %>
-    #   <%= render(Primer::ButtonComponent.new(button_type: :outline)) { "Outline" } %>
+    #   <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
+    #   <%= render(Primer::ButtonComponent.new(scheme: :danger)) { "Danger" } %>
+    #   <%= render(Primer::ButtonComponent.new(scheme: :outline)) { "Outline" } %>
     #
     # @example Variants
     #   <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>
     #   <%= render(Primer::ButtonComponent.new(variant: :medium)) { "Medium" } %>
     #   <%= render(Primer::ButtonComponent.new(variant: :large)) { "Large" } %>
     #
-    # @param button_type [Symbol] <%= one_of(Primer::ButtonComponent::BUTTON_TYPE_OPTIONS) %>
+    # @param scheme [Symbol] <%= one_of(Primer::ButtonComponent::SCHEME_OPTIONS) %>
     # @param variant [Symbol] <%= one_of(Primer::ButtonComponent::VARIANT_OPTIONS) %>
     # @param tag [Symbol] <%= one_of(Primer::ButtonComponent::TAG_OPTIONS) %>
     # @param type [Symbol] <%= one_of(Primer::ButtonComponent::TYPE_OPTIONS) %>
     # @param group_item [Boolean] Whether button is part of a ButtonGroup.
     def initialize(
-      button_type: DEFAULT_BUTTON_TYPE,
+      scheme: DEFAULT_SCHEME,
       variant: DEFAULT_VARIANT,
       tag: DEFAULT_TAG,
       type: DEFAULT_TYPE,
@@ -62,7 +62,7 @@ module Primer
       @system_arguments[:classes] = class_names(
         "btn",
         system_arguments[:classes],
-        BUTTON_TYPE_MAPPINGS[fetch_or_fallback(BUTTON_TYPE_OPTIONS, button_type, DEFAULT_BUTTON_TYPE)],
+        SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
         VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)],
         "BtnGroup-item" => group_item
       )
