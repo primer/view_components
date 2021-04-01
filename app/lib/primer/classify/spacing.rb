@@ -2,7 +2,7 @@
 
 module Primer
   class Classify
-    # Spacing PrimerCSS classes handler.
+    # Handler for PrimerCSS spacing classes.
     class Spacing
       BASE_OPTIONS = (0..6).to_a.freeze
       BASE_MAPPINGS = {
