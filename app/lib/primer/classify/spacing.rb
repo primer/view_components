@@ -5,7 +5,7 @@ module Primer
     class Spacing
       BASE_OPTIONS = (0..6).to_a.freeze
       BASE_MAPPINGS = {
-        m: BASE_OPTIONS,
+        my: BASE_OPTIONS,
         pb: BASE_OPTIONS,
         pl: BASE_OPTIONS,
         pr: BASE_OPTIONS,
@@ -24,8 +24,8 @@ module Primer
 
       AUTO_OPTIONS = [*BASE_OPTIONS, :auto].freeze
       AUTO_MAPPINGS = {
-        mx: AUTO_OPTIONS,
-        my: AUTO_OPTIONS
+        m: AUTO_OPTIONS,
+        mx: AUTO_OPTIONS
       }.freeze
 
       RESPONSIVE_OPTIONS = [*BASE_OPTIONS, :responsive].freeze

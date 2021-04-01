@@ -46,7 +46,7 @@ class PrimerClassifyTest < Minitest::Test
     end
 
     assert_raises ArgumentError do
-      Primer::Classify.call(m: :auto)
+      Primer::Classify.call(my: :auto)
     end
 
     assert_raises ArgumentError do
