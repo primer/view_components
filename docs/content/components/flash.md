@@ -13,15 +13,15 @@ Use the Flash component to inform users of successful or pending actions.
 
 ## Examples
 
-### Variants
+### Schemes
 
 <Example src="<div class='flash '>    This is a flash message!  </div><div class='flash flash-warn '>    This is a warning flash message!  </div><div class='flash flash-error '>    This is a danger flash message!  </div><div class='flash flash-success '>    This is a success flash message!  </div>" />
 
 ```erb
 <%= render(Primer::FlashComponent.new) { "This is a flash message!" } %>
-<%= render(Primer::FlashComponent.new(variant: :warning)) { "This is a warning flash message!" } %>
-<%= render(Primer::FlashComponent.new(variant: :danger)) { "This is a danger flash message!" } %>
-<%= render(Primer::FlashComponent.new(variant: :success)) { "This is a success flash message!" } %>
+<%= render(Primer::FlashComponent.new(scheme: :warning)) { "This is a warning flash message!" } %>
+<%= render(Primer::FlashComponent.new(scheme: :danger)) { "This is a danger flash message!" } %>
+<%= render(Primer::FlashComponent.new(scheme: :success)) { "This is a success flash message!" } %>
 ```
 
 ### Full width
@@ -50,13 +50,13 @@ Use the Flash component to inform users of successful or pending actions.
 
 ### With actions
 
-<Example src="<div class='flash '>      This is a flash message with actions!  <div class='flash-action '>    <button type='button' class='btn btn-sm '>Take action</button></div></div>" />
+<Example src="<div class='flash '>      This is a flash message with actions!  <div class='flash-action '>    <button scheme='small' type='button' class='btn '>Take action</button></div></div>" />
 
 ```erb
 <%= render(Primer::FlashComponent.new) do |component| %>
   This is a flash message with actions!
   <% component.action do %>
-    <%= render(Primer::ButtonComponent.new(variant: :small)) { "Take action" } %>
+    <%= render(Primer::ButtonComponent.new(scheme: :small)) { "Take action" } %>
   <% end %>
 <% end %>
 ```
@@ -69,7 +69,7 @@ Use the Flash component to inform users of successful or pending actions.
 | `spacious` | `Boolean` | `false` | Whether to add margin to the bottom of the component. |
 | `dismissible` | `Boolean` | `false` | Whether the component can be dismissed with an X button. |
 | `icon` | `String` | `nil` | Name of Octicon icon to use. |
-| `variant` | `Symbol` | `:default` | One of `:default`, `:warning`, `:danger`, or `:success`. |
+| `scheme` | `Symbol` | `:default` | One of `:default`, `:warning`, `:danger`, or `:success`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots

@@ -15,18 +15,18 @@ module Primer
       Primer::BaseComponent.new(**system_arguments)
     }
 
-    DEFAULT_VARIANT = :default
-    VARIANT_MAPPINGS = {
-      DEFAULT_VARIANT => "",
+    DEFAULT_SCHEME = :default
+    SCHEME_MAPPINGS = {
+      DEFAULT_SCHEME => "",
       :warning => "flash-warn",
       :danger => "flash-error",
       :success => "flash-success"
     }.freeze
-    # @example Variants
+    # @example Schemes
     #   <%= render(Primer::FlashComponent.new) { "This is a flash message!" } %>
-    #   <%= render(Primer::FlashComponent.new(variant: :warning)) { "This is a warning flash message!" } %>
-    #   <%= render(Primer::FlashComponent.new(variant: :danger)) { "This is a danger flash message!" } %>
-    #   <%= render(Primer::FlashComponent.new(variant: :success)) { "This is a success flash message!" } %>
+    #   <%= render(Primer::FlashComponent.new(scheme: :warning)) { "This is a warning flash message!" } %>
+    #   <%= render(Primer::FlashComponent.new(scheme: :danger)) { "This is a danger flash message!" } %>
+    #   <%= render(Primer::FlashComponent.new(scheme: :success)) { "This is a success flash message!" } %>
     #
     # @example Full width
     #   <%= render(Primer::FlashComponent.new(full: true)) { "This is a full width flash message!" } %>
@@ -41,7 +41,7 @@ module Primer
     #   <%= render(Primer::FlashComponent.new) do |component| %>
     #     This is a flash message with actions!
     #     <% component.action do %>
-    #       <%= render(Primer::ButtonComponent.new(variant: :small)) { "Take action" } %>
+    #       <%= render(Primer::ButtonComponent.new(scheme: :small)) { "Take action" } %>
     #     <% end %>
     #   <% end %>
     #
@@ -49,9 +49,9 @@ module Primer
     # @param spacious [Boolean] Whether to add margin to the bottom of the component.
     # @param dismissible [Boolean] Whether the component can be dismissed with an X button.
     # @param icon [String] Name of Octicon icon to use.
-    # @param variant [Symbol] <%= one_of(Primer::FlashComponent::VARIANT_MAPPINGS.keys) %>
+    # @param scheme [Symbol] <%= one_of(Primer::FlashComponent::SCHEME_MAPPINGS.keys) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(full: false, spacious: false, dismissible: false, icon: nil, variant: DEFAULT_VARIANT, **system_arguments)
+    def initialize(full: false, spacious: false, dismissible: false, icon: nil, scheme: DEFAULT_SCHEME, **system_arguments)
       @icon = icon
       @dismissible = dismissible
       @system_arguments = system_arguments
@@ -59,7 +59,7 @@ module Primer
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "flash",
-        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_MAPPINGS.keys, variant, DEFAULT_VARIANT)],
+        SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_MAPPINGS.keys, scheme, DEFAULT_SCHEME)],
         "flash-full": full
       )
       @system_arguments[:mb] ||= spacious ? 4 : nil

@@ -329,7 +329,7 @@
     type: String
     default: "`nil`"
     description: Name of Octicon icon to use.
-  - name: variant
+  - name: scheme
     type: Symbol
     default: "`:default`"
     description: One of `:default`, `:warning`, `:danger`, or `:success`.
