@@ -14,6 +14,10 @@
 
     *Manuel Puyol*
 
+* **Breaking change**: Update `LinkComponent` `variant` argument to be `scheme`.
+
+    *Manuel Puyol*
+
 ## 0.0.33
 
 * Remove `TabbedComponent` validation requiring a tab to be selected.

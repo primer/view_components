@@ -440,7 +440,7 @@
     description: URL to be used for the Link. Required if tag is `:a`. If the requirements
       are not met an error will be raised in non production environments. In production,
       an empty link element will be rendered.
-  - name: variant
+  - name: scheme
     type: Symbol
     default: "`:default`"
     description: One of `:default`, `:primary`, or `:secondary`.
