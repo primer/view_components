@@ -22,15 +22,14 @@ module Primer
         "UnderlineNav-item",
         system_arguments[:classes]
       )
-      id = "#{@id}-#{tabs.size}"
-      system_arguments[:id] ||= id
-      system_arguments[:"aria-controls"] ||= "#{id}-panel" if @with_panel
 
       Primer::Navigation::TabComponent.new(
         list: list?,
         selected: selected,
         with_panel: @with_panel,
         icon_classes: "UnderlineNav-octicon",
+        parent_id: @id,
+        index: tabs.size,
         **system_arguments
       )
     }
@@ -131,14 +130,13 @@ module Primer
       @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
 
       @system_arguments = system_arguments
-      @system_arguments[:tag] = :nav
+      @system_arguments[:tag] = navigation_tag(with_panel)
       @system_arguments[:id] = @id
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "UnderlineNav",
         "UnderlineNav--right" => @align == :right
       )
-      @system_arguments[:"aria-label"] = label
 
       @body_arguments = body_arguments
       @body_tag = fetch_or_fallback(BODY_TAG_OPTIONS, body_arguments[:tag]&.to_sym, BODY_TAG_DEFAULT)
@@ -152,7 +150,9 @@ module Primer
 
       if with_panel
         @body_arguments[:role] = :tablist
-        @body_arguments[:"aria-labelledby"] = id
+        @body_arguments[:"aria-label"] = label
+      else
+        @system_arguments[:"aria-label"] = label
       end
     end
 

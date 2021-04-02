@@ -16,6 +16,10 @@ module Primer
 
     private
 
+    def navigation_tag(with_panel)
+      with_panel ? :div : :nav
+    end
+
     def wrapper
       return yield unless @with_panel
 

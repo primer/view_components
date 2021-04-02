@@ -45,59 +45,62 @@ module Primer
       attr_reader :selected
 
       # @example Default
-      #   <%= render(Primer::Navigation::TabComponent.new(id: "default-0", selected: true)) do |c| %>
+      #   <%= render(Primer::Navigation::TabComponent.new(parent_id: "default", index: 0, selected: true)) do |c| %>
       #     <% c.text { "Selected" } %>
       #   <% end %>
-      #   <%= render(Primer::Navigation::TabComponent.new(id: "default-1")) do |c| %>
+      #   <%= render(Primer::Navigation::TabComponent.new(parent_id: "default", index: 1)) do |c| %>
       #     <% c.text { "Not selected" } %>
       #   <% end %>
       #
       # @example With icons and counters
-      #   <%= render(Primer::Navigation::TabComponent.new(id: "with-icons-and-counters-0")) do |c| %>
+      #   <%= render(Primer::Navigation::TabComponent.new(parent_id: "with-icons-and-counters", index: 0)) do |c| %>
       #     <% c.icon(:star) %>
       #     <% c.text { "Tab" } %>
       #   <% end %>
-      #   <%= render(Primer::Navigation::TabComponent.new(id: "with-icons-and-counters-1")) do |c| %>
+      #   <%= render(Primer::Navigation::TabComponent.new(parent_id: "with-icons-and-counters", index: 1)) do |c| %>
       #     <% c.icon(:star) %>
       #     <% c.text { "Tab" } %>
       #     <% c.counter(count: 10) %>
       #   <% end %>
-      #   <%= render(Primer::Navigation::TabComponent.new(id: "with-icons-and-counters-2")) do |c| %>
+      #   <%= render(Primer::Navigation::TabComponent.new(parent_id: "with-icons-and-counters", index: 2)) do |c| %>
       #     <% c.text { "Tab" } %>
       #     <% c.counter(count: 10) %>
       #   <% end %>
       #
       # @example Inside a list
-      #   <%= render(Primer::Navigation::TabComponent.new(id: "inside-a-list", list: true)) do |c| %>
+      #   <%= render(Primer::Navigation::TabComponent.new(parent_id: "inside-a-list", index: 0, list: true)) do |c| %>
       #     <% c.text { "Tab" } %>
       #   <% end %>
       #
       # @example With custom HTML
-      #   <%= render(Primer::Navigation::TabComponent.new(id: "with-custom-html")) do %>
+      #   <%= render(Primer::Navigation::TabComponent.new(parent_id: "with-custom-html", index: 0)) do %>
       #     <div>
       #       This is my <strong>custom HTML</strong>
       #     </div>
       #   <% end %>
       #
-      # @param id [Boolean] The tab id.
+      # @param parent_id [Boolean] The id of the parent element.
+      # @param index [Int] Index of the tab.
       # @param list [Boolean] Whether the Tab is an item in a `<ul>` list.
       # @param selected [Boolean] Whether the Tab is selected or not.
       # @param with_panel [Boolean] Whether the Tab has an associated panel.
       # @param icon_classes [Boolean] Classes that must always be applied to icons.
       # @param wrapper_arguments [Hash] <%= link_to_system_arguments_docs %> to be used in the `<li>` wrapper when the tab is an item in a list.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(id:, list: false, selected: false, with_panel: false, icon_classes: "", wrapper_arguments: {}, **system_arguments)
-        @id = id
+      def initialize(parent_id:, index:, list: false, selected: false, with_panel: false, icon_classes: "", wrapper_arguments: {}, **system_arguments)
         @selected = selected
         @icon_classes = icon_classes
         @list = list
+        @id = system_arguments[:id] || "#{parent_id}-#{index}"
+
         @system_arguments = system_arguments
-        @system_arguments[:id] = id
+        @system_arguments[:id] = @id
 
         if with_panel
           @system_arguments[:tag] ||= :button
           @system_arguments[:type] = :button
           @system_arguments[:role] = :tab
+          @system_arguments[:"aria-controls"] = "#{@id}-panel"
         else
           @system_arguments[:tag] ||= :a
         end

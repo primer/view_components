@@ -14,11 +14,14 @@ module Primer
         "tabnav-tab",
         system_arguments[:classes]
       )
-      id = "#{@id}-#{tabs.size}"
-      system_arguments[:id] ||= id
-      system_arguments[:"aria-controls"] ||= "#{id}-panel" if @with_panel
 
-      Primer::Navigation::TabComponent.new(selected: selected, with_panel: @with_panel, **system_arguments)
+      Primer::Navigation::TabComponent.new(
+        selected: selected,
+        with_panel: @with_panel,
+        parent_id: @id,
+        index: tabs.size,
+        **system_arguments
+      )
     }
 
     # @example Default
@@ -84,7 +87,7 @@ module Primer
       )
 
       @body_arguments = {
-        tag: :nav,
+        tag: navigation_tag(with_panel),
         classes: "tabnav-tabs",
         aria: {
           label: label

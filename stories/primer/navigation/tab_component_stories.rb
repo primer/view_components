@@ -7,6 +7,8 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
 
   story(:tab) do
     controls do
+      parent_id "id"
+      index 0
       selected true
       list false
       with_panel false
@@ -20,6 +22,8 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
 
   story(:with_icon) do
     controls do
+      parent_id "id"
+      index 0
       selected true
       list false
       with_panel false
@@ -34,6 +38,8 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
 
   story(:with_counter) do
     controls do
+      parent_id "id"
+      index 0
       selected true
       list false
       with_panel false
@@ -48,6 +54,8 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
 
   story(:full) do
     controls do
+      parent_id "id"
+      index 0
       selected true
       list false
       with_panel false
@@ -63,6 +71,8 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
 
   story(:with_custom_html) do
     controls do
+      parent_id "id"
+      index 0
       selected true
       list false
       with_panel false

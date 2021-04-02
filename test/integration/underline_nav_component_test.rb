@@ -5,7 +5,7 @@ require "application_system_test_case"
 class IntegrationUnderlineNavComponentTest < ApplicationSystemTestCase
   def assert_underline_nav_rendered
     assert_selector("tab-container") do
-      assert_selector("nav.UnderlineNav") do
+      assert_selector("div.UnderlineNav") do
         assert_selector("div.UnderlineNav-body[role='tablist']") do
           assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
           assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 2")
