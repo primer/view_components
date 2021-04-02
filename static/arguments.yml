@@ -587,9 +587,13 @@
 - component: TabNav
   source: https://github.com/primer/view_components/tree/main/app/components/primer/tab_nav_component.rb
   parameters:
-  - name: aria_label
+  - name: id
     type: String
-    default: "`nil`"
+    default: N/A
+    description: The element id.
+  - name: label
+    type: String
+    default: N/A
     description: Used to set the `aria-label` on the top level `<nav>` element.
   - name: with_panel
     type: Boolean
@@ -688,6 +692,14 @@
 - component: UnderlineNav
   source: https://github.com/primer/view_components/tree/main/app/components/primer/underline_nav_component.rb
   parameters:
+  - name: id
+    type: String
+    default: N/A
+    description: The element id.
+  - name: label
+    type: String
+    default: N/A
+    description: The `aria-label` on top level `<nav>` element.
   - name: with_panel
     type: Boolean
     default: "`false`"

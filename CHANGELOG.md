@@ -10,6 +10,10 @@
 
     *Manuel Puyol*
 
+* **Breaking change**: Make `id` and `label` required for `UnderlineNav` and `TabNav`.
+
+    *Manuel Puyol*
+
 ## 0.0.34
 
 * Add `p: :responsive` and `m: :auto` system arguments.

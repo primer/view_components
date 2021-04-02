@@ -5,6 +5,8 @@ class Primer::UnderlineNavComponentStories < ViewComponent::Storybook::Stories
 
   story(:underline_nav) do
     controls do
+      id "id"
+      label "aria label"
       select(:align, Primer::UnderlineNavComponent::ALIGN_OPTIONS, :left)
       with_panel false
       body_arguments(tag: :ul)
