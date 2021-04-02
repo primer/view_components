@@ -14,6 +14,10 @@ module Primer
         "tabnav-tab",
         system_arguments[:classes]
       )
+      id = "#{@id}-#{tabs.size}"
+      system_arguments[:id] ||= id
+      system_arguments[:"aria-controls"] ||= "#{id}-panel" if @with_panel
+
       Primer::Navigation::TabComponent.new(selected: selected, with_panel: @with_panel, **system_arguments)
     }
 
@@ -69,6 +73,7 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(id:, label:, with_panel: false, **system_arguments)
       @with_panel = with_panel
+      @id = id
       @system_arguments = system_arguments
       @system_arguments[:tag] ||= :div
       @system_arguments[:id] = id

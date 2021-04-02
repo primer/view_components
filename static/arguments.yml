@@ -473,6 +473,10 @@
 - component: Tab
   source: https://github.com/primer/view_components/tree/main/app/components/primer/tab_component.rb
   parameters:
+  - name: id
+    type: Boolean
+    default: N/A
+    description: The tab id.
   - name: list
     type: Boolean
     default: "`false`"

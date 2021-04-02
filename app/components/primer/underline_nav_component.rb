@@ -22,6 +22,10 @@ module Primer
         "UnderlineNav-item",
         system_arguments[:classes]
       )
+      id = "#{@id}-#{tabs.size}"
+      system_arguments[:id] ||= id
+      system_arguments[:"aria-controls"] ||= "#{id}-panel" if @with_panel
+
       Primer::Navigation::TabComponent.new(
         list: list?,
         selected: selected,
@@ -123,11 +127,12 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(id:, label:, with_panel: false, align: ALIGN_DEFAULT, body_arguments: { tag: BODY_TAG_DEFAULT }, **system_arguments)
       @with_panel = with_panel
+      @id = id
       @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = :nav
-      @system_arguments[:id] = id
+      @system_arguments[:id] = @id
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "UnderlineNav",
