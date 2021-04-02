@@ -172,7 +172,7 @@
 - component: Button
   source: https://github.com/primer/view_components/tree/main/app/components/primer/button_component.rb
   parameters:
-  - name: button_type
+  - name: scheme
     type: Symbol
     default: "`:default`"
     description: One of `:default`, `:primary`, `:danger`, or `:outline`.
@@ -202,7 +202,7 @@
 - component: ButtonMarketing
   source: https://github.com/primer/view_components/tree/main/app/components/primer/button_marketing_component.rb
   parameters:
-  - name: button_type
+  - name: scheme
     type: Symbol
     default: "`:default`"
     description: One of `:default`, `:primary`, `:outline`, or `:transparent`.
@@ -329,7 +329,7 @@
     type: String
     default: "`nil`"
     description: Name of Octicon icon to use.
-  - name: variant
+  - name: scheme
     type: Symbol
     default: "`:default`"
     description: One of `:default`, `:warning`, `:danger`, or `:success`.
@@ -440,7 +440,7 @@
     description: URL to be used for the Link. Required if tag is `:a`. If the requirements
       are not met an error will be raised in non production environments. In production,
       an empty link element will be rendered.
-  - name: variant
+  - name: scheme
     type: Symbol
     default: "`:default`"
     description: One of `:default`, `:primary`, or `:secondary`.
@@ -538,7 +538,7 @@
     type: String
     default: N/A
     description: "`title` HTML attribute."
-  - name: color
+  - name: scheme
     type: Symbol
     default: "`:default`"
     description: Background color. One of `:open`, `:closed`, `:merged`, `:default`,

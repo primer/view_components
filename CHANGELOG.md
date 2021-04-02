@@ -10,11 +10,33 @@
 
     *Manuel Puyol*
 
+## 0.0.34
+
 * Add `p: :responsive` and `m: :auto` system arguments.
 
     *Manuel Puyol*
 
 * Remove `my: :auto` and negative `m:` system arguments.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Rename `FlashComponent` `variant` argument to `scheme`.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Rename `LinkComponent` `variant` argument to `scheme`.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Rename `ButtonComponent` `button_type` argument to `scheme`.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Rename `ButtonMarketingComponent` `button_type` argument to `scheme`.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Rename `StateComponent` `color` argument to `scheme`.
 
     *Manuel Puyol*
 
