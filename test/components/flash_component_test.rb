@@ -17,14 +17,14 @@ class PrimerFlashComponentTest < Minitest::Test
   end
 
   def test_renders_danger
-    render_inline(Primer::FlashComponent.new(variant: :danger)) { "foo" }
+    render_inline(Primer::FlashComponent.new(scheme: :danger)) { "foo" }
 
     assert_selector(".flash.flash-error", text: "foo")
   end
 
-  def test_uses_default_if_variant_does_not_exist
+  def test_uses_default_if_scheme_does_not_exist
     without_fetch_or_fallback_raises do
-      render_inline(Primer::FlashComponent.new(variant: :zombieratsfromouterspace)) { "foo" }
+      render_inline(Primer::FlashComponent.new(scheme: :zombieratsfromouterspace)) { "foo" }
 
       assert_selector(".flash", text: "foo")
     end

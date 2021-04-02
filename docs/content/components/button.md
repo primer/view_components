@@ -13,15 +13,15 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ## Examples
 
-### Button types
+### Schemes
 
 <Example src="<button type='button' class='btn '>Default</button><button type='button' class='btn btn-primary '>Primary</button><button type='button' class='btn btn-danger '>Danger</button><button type='button' class='btn btn-outline '>Outline</button>" />
 
 ```erb
 <%= render(Primer::ButtonComponent.new) { "Default" } %>
-<%= render(Primer::ButtonComponent.new(button_type: :primary)) { "Primary" } %>
-<%= render(Primer::ButtonComponent.new(button_type: :danger)) { "Danger" } %>
-<%= render(Primer::ButtonComponent.new(button_type: :outline)) { "Outline" } %>
+<%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
+<%= render(Primer::ButtonComponent.new(scheme: :danger)) { "Danger" } %>
+<%= render(Primer::ButtonComponent.new(scheme: :outline)) { "Outline" } %>
 ```
 
 ### Variants
@@ -38,7 +38,7 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `button_type` | `Symbol` | `:default` | One of `:default`, `:primary`, `:danger`, or `:outline`. |
+| `scheme` | `Symbol` | `:default` | One of `:default`, `:primary`, `:danger`, or `:outline`. |
 | `variant` | `Symbol` | `:medium` | One of `:small`, `:medium`, or `:large`. |
 | `tag` | `Symbol` | `:button` | One of `:button`, `:a`, or `:summary`. |
 | `type` | `Symbol` | `:button` | One of `:button`, `:reset`, or `:submit`. |
