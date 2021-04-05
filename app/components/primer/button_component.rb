@@ -3,6 +3,8 @@
 module Primer
   # Use buttons for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
   class ButtonComponent < Primer::Component
+    status :beta
+
     DEFAULT_SCHEME = :default
     SCHEME_MAPPINGS = {
       DEFAULT_SCHEME => "",
