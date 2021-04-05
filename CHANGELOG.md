@@ -2,6 +2,10 @@
 
 ## main
 
+* Promote `AvatarStackComponent` to beta.
+
+    *Manuel Puyol*
+
 ## 0.0.34
 
 * Add `p: :responsive` and `m: :auto` system arguments.
