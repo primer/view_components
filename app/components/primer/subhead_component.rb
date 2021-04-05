@@ -71,7 +71,7 @@ module Primer
     #     <% component.actions do %>
     #       <%= render(
     #         Primer::ButtonComponent.new(
-    #           tag: :a, href: "http://www.google.com", button_type: :danger
+    #           tag: :a, href: "http://www.google.com", scheme: :danger
     #         )
     #       ) { "Action" } %>
     #     <% end %>
