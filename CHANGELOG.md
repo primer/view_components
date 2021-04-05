@@ -2,7 +2,7 @@
 
 ## main
 
-* Promote `AvatarStackComponent` to beta.
+* Promote `AvatarStackComponent` and `ButtonComponent` to beta.
 
     *Manuel Puyol*
 
