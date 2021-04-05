@@ -42,6 +42,12 @@ Or alternatively, you can install the `@primer/view-components` npm package and 
 import '@primer/view-components'
 ```
 
+You can also import only the components you need:
+
+```js
+import '@primer/view-components/tab_container'
+```
+
 ## Dependencies
 
 In addition to the dependencies declared in the `gemspec`, Primer ViewComponents assumes the presence of Primer CSS.

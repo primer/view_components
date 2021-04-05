@@ -9,7 +9,6 @@ module Primer
     extend ActiveSupport::Concern
 
     class MultipleSelectedTabsError < StandardError; end
-    class NoSelectedTabsError < StandardError; end
 
     def before_render
       validate_single_selected_tab unless Rails.env.production?
@@ -27,7 +26,6 @@ module Primer
 
     def validate_single_selected_tab
       raise MultipleSelectedTabsError, "only one tab can be selected" if selected_tabs_count > 1
-      raise NoSelectedTabsError, "a tab must be selected" if selected_tabs_count != 1
     end
 
     def selected_tabs_count

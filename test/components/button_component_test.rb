@@ -11,7 +11,7 @@ class PrimerButtonComponentTest < Minitest::Test
     assert_text("content")
   end
 
-  def test_defaults_button_tag_with_button_type
+  def test_defaults_button_tag_with_scheme
     render_inline(Primer::ButtonComponent.new) { "content" }
 
     assert_selector("button.btn[type='button']")
@@ -37,14 +37,14 @@ class PrimerButtonComponentTest < Minitest::Test
 
   def test_falls_back_when_type_isn_t_valid
     without_fetch_or_fallback_raises do
-      render_inline(Primer::ButtonComponent.new(button_type: :invalid)) { "content" }
+      render_inline(Primer::ButtonComponent.new(scheme: :invalid)) { "content" }
 
       assert_selector(".btn")
     end
   end
 
   def test_renders_with_the_css_class_mapping_to_the_provided_type
-    render_inline(Primer::ButtonComponent.new(button_type: :primary)) { "content" }
+    render_inline(Primer::ButtonComponent.new(scheme: :primary)) { "content" }
 
     assert_selector(".btn.btn-primary")
   end

@@ -11,7 +11,7 @@ class PrimerButtonMarketingComponentTest < Minitest::Test
     assert_selector("button.btn-mktg", text: "content")
   end
 
-  def test_defaults_button_tag_with_button_type
+  def test_defaults_button_tag_with_scheme
     render_inline(Primer::ButtonMarketingComponent.new) { "content" }
 
     assert_selector("button.btn-mktg[type='button']")
@@ -30,7 +30,7 @@ class PrimerButtonMarketingComponentTest < Minitest::Test
   end
 
   def test_renders_with_the_css_class_mapping_to_the_provided_type
-    render_inline(Primer::ButtonMarketingComponent.new(button_type: :primary)) { "content" }
+    render_inline(Primer::ButtonMarketingComponent.new(scheme: :primary)) { "content" }
 
     assert_selector(".btn-mktg.btn-primary-mktg")
   end

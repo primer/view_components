@@ -29,13 +29,13 @@ Use links for moving from one page to another. The Link component styles anchor 
 <%= render(Primer::LinkComponent.new(href: "#", muted: true)) { "Link" } %>
 ```
 
-### Variants
+### Schemes
 
 <Example src="<a href='#' class='Link--primary '>Primary</a><a href='#' class='Link--secondary '>Secondary</a>" />
 
 ```erb
-<%= render(Primer::LinkComponent.new(href: "#", variant: :primary)) { "Primary" } %>
-<%= render(Primer::LinkComponent.new(href: "#", variant: :secondary)) { "Secondary" } %>
+<%= render(Primer::LinkComponent.new(href: "#", scheme: :primary)) { "Primary" } %>
+<%= render(Primer::LinkComponent.new(href: "#", scheme: :secondary)) { "Secondary" } %>
 ```
 
 ### Without underline
@@ -60,7 +60,7 @@ Use links for moving from one page to another. The Link component styles anchor 
 | :- | :- | :- | :- |
 | `tag` | `String` | `:a` | One of `:a` and `:span`. |
 | `href` | `String` | `nil` | URL to be used for the Link. Required if tag is `:a`. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered. |
-| `variant` | `Symbol` | `:default` | One of `:default`, `:primary`, or `:secondary`. |
+| `scheme` | `Symbol` | `:default` | One of `:default`, `:primary`, or `:secondary`. |
 | `muted` | `Boolean` | `false` | Uses light gray for Link color, and blue on hover. |
 | `underline` | `Boolean` | `true` | Whether or not to underline the link. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

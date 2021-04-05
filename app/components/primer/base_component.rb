@@ -22,92 +22,124 @@ module Primer
   # ```html
   # <h1 class="mt-0 mt-lg-4 mt-xl-2">Hello world</h1>
   # ```
-  #
-  # ## HTML attributes
-  #
-  # System arguments include most HTML attributes. For example:
-  #
-  # | Name | Type | Description |
-  # | :- | :- | :- |
-  # | `width` | `Integer` | Width. |
-  # | `height` | `Integer` | Height. |
-  # | `data` | `Hash` | Data attributes: `data: { foo: :bar }` renders `data-foo='bar'`. |
-  # | `aria` | `Hash` | Aria attributes: `aria: { label: "foo" }` renders `aria-label='foo'`. |
-  # | `title` | `String` | The `title` attribute. |
-  # | `style` | `String` | Inline styles. |
-  # | `hidden` | `Boolean` | Whether to assign the `hidden` attribute. |
   class BaseComponent < Primer::Component
     status :beta
 
-    # @param test_selector [String] Adds `data-test-selector='given value'` in non-Production environments for testing purposes.
+    # ## HTML attributes
     #
-    # @param m [Integer] Margin. <%= one_of((-6..6).to_a) %>
-    # @param mt [Integer] Margin top. <%= one_of((-6..6).to_a) %>
-    # @param mr [Integer] Margin right. <%= one_of((-6..6).to_a) %>
-    # @param mb [Integer] Margin bottom. <%= one_of((-6..6).to_a) %>
-    # @param ml [Integer] Margin left. <%= one_of((-6..6).to_a) %>
-    # @param mx [Integer] Horizontal margins. <%= one_of((-6..6).to_a + [:auto]) %>
-    # @param my [Integer] Vertical margins. <%= one_of((-6..6).to_a) %>
-    # @param p [Integer] Padding. <%= one_of((0..6).to_a) %>
-    # @param pt [Integer] Padding left. <%= one_of((0..6).to_a) %>
-    # @param pr [Integer] Padding right. <%= one_of((0..6).to_a) %>
-    # @param pb [Integer] Padding bottom. <%= one_of((0..6).to_a) %>
-    # @param pl [Integer] Padding left. <%= one_of((0..6).to_a) %>
-    # @param px [Integer] Horizontal padding. <%= one_of((0..6).to_a) %>
-    # @param py [Integer] Vertical padding. <%= one_of((0..6).to_a) %>
+    # System arguments include most HTML attributes. For example:
     #
-    # @param position [Symbol] <%= one_of([:relative, :absolute, :fixed]) %>
+    # | Name | Type | Description |
+    # | :- | :- | :- |
+    # | `aria` | `Hash` | Aria attributes: `aria: { label: "foo" }` renders `aria-label='foo'`. |
+    # | `data` | `Hash` | Data attributes: `data: { foo: :bar }` renders `data-foo='bar'`. |
+    # | `height` | `Integer` | Height. |
+    # | `hidden` | `Boolean` | Whether to assign the `hidden` attribute. |
+    # | `style` | `String` | Inline styles. |
+    # | `title` | `String` | The `title` attribute. |
+    # | `width` | `Integer` | Width. |
     #
-    # @param top [Boolean] If `false`, sets `top: 0`.
-    # @param right [Boolean] If `false`, sets `right: 0`.
-    # @param bottom [Boolean] If `false`, sets `bottom: 0`.
-    # @param left [Boolean] If `false`, sets `left: 0`.
+    # ## Animation
     #
-    # @param display [Symbol] <%= one_of([:none, :block, :flex, :inline, :inline_block, :table, :table_cell]) %>
+    # | Name | Type | Description |
+    # | :- | :- | :- |
+    # | `animation` | Symbol | <%= one_of([:fade_in, :fade_out, :fade_up, :fade_down, :scale_in, :pulse, :grow_x, :grow]) %> |
     #
-    # @param v [Symbol] Visibility. <%= one_of([:hidden, :visible]) %>
+    # ## Border
     #
-    # @param hide [Symbol] Hide the element at a specific breakpoint. <%= one_of([:sm, :md, :lg, :xl]) %>
+    # | Name | Type | Description |
+    # | :- | :- | :- |
+    # | `border_bottom` | Integer | Set to `0` to remove the bottom border. |
+    # | `border_left` | Integer | Set to `0` to remove the left border. |
+    # | `border_radius` | Integer | <%= one_of([0, 1, 2, 3]) %> |
+    # | `border_right` | Integer | Set to `0` to remove the right border. |
+    # | `border_top` | Integer | Set to `0` to remove the top border. |
+    # | `border` | Symbol | <%= one_of([:left, :top, :bottom, :right, :y, :x, true]) %> |
+    # | `box_shadow` | Boolean, Symbol | Box shadow. <%= one_of([true, :medium, :large, :extra_large, :none]) %> |
     #
-    # @param vertical_align [Symbol] <%= one_of([:baseline, :top, :middle, :bottom, :text_top, :text_bottom]) %>
+    # ## Color
     #
-    # @param float [Symbol] <%= one_of([:left, :right]) %>
+    # | Name | Type | Description |
+    # | :- | :- | :- |
+    # | `bg` | String, Symbol | Background color. Accepts either a hex value as a String or <%= one_of(Primer::Classify::FunctionalBorderColors::OPTIONS, lower: true) %> |
+    # | `border_color` | Symbol | Border color. <%= one_of(Primer::Classify::FunctionalBorderColors::OPTIONS) %> |
+    # | `color` | Symbol | Text color. <%= one_of(Primer::Classify::FunctionalTextColors::OPTIONS) %> |
     #
-    # @param col [Integer] Number of columns.
+    # ## Flex
     #
-    # @param underline [Boolean] Whether text should be underlined.
+    # | Name | Type | Description |
+    # | :- | :- | :- |
+    # | `align_items` | Symbol | <%= one_of([:flex_start, :flex_end, :center, :baseline, :stretch]) %> |
+    # | `align_self` | Symbol | <%= one_of([:auto, :start, :end, :center, :baseline, :stretch]) %> |
+    # | `flex_grow` | Integer | To enable, set to `0`. |
+    # | `flex_shrink` | Integer | To enable, set to `0`. |
+    # | `flex` | Integer, Symbol | <%= one_of([1, :auto]) %> |
+    # | `justify_content` | Symbol | <%= one_of([:flex_start, :flex_end, :center, :space_between, :space_around]) %> |
+    # | `width` | Symbol | <%= one_of([:fit, :fill]) %> |
     #
-    # @param color [Symbol] Text color. <br /> <%= one_of(Primer::Classify::FunctionalTextColors::OPTIONS) %> <br /> Deprecated options: <%= one_of(Primer::Classify::FunctionalTextColors::DEPRECATED_OPTIONS) %>
-    # @param bg [String, Symbol] Background color. Accepts either a hex value as a String or a color name as a Symbol.
+    # ## Grid
     #
-    # @param box_shadow [Boolean, Symbol] Box shadow. <%= one_of([true, :medium, :large, :extra_large, :none]) %>
-    # @param border [Symbol] <%= one_of([:left, :top, :bottom, :right, :y, :x, true]) %>
-    # @param border_color [Symbol] <%= one_of(Primer::Classify::FunctionalBorderColors::OPTIONS) %> <br /> Deprecated options: <%= one_of(Primer::Classify::FunctionalBorderColors::DEPRECATED_OPTIONS) %>
-    # @param border_top [Integer] Set to `0` to remove the top border.
-    # @param border_bottom [Integer] Set to `0` to remove the bottom border.
-    # @param border_left [Integer] Set to `0` to remove the left border.
-    # @param border_right [Integer] Set to `0` to remove the right border.
-    # @param border_radius [Integer] <%= one_of([0, 1, 2, 3]) %>
+    # | Name | Type | Description |
+    # | :- | :- | :- |
+    # | `col` | Integer | Number of columns. |
     #
-    # @param font_size [String, Integer] <%= one_of(["00", 0, 1, 2, 3, 4, 5, 6]) %>
-    # @param text_align [Symbol] Text alignment. <%= one_of([:left, :right, :center]) %>
-    # @param font_weight [Symbol] Font weight. <%= one_of([:light, :normal, :bold]) %>
+    # ## Layout
     #
-    # @param flex [Integer, Symbol] <%= one_of([1, :auto]) %>
-    # @param flex_grow [Integer] To enable, set to `0`.
-    # @param flex_shrink [Integer] To enable, set to `0`.
-    # @param align_self [Symbol] <%= one_of([:auto, :start, :end, :center, :baseline, :stretch]) %>
-    # @param justify_content [Symbol] <%= one_of([:flex_start, :flex_end, :center, :space_between, :space_around]) %>
-    # @param align_items [Symbol] <%= one_of([:flex_start, :flex_end, :center, :baseline, :stretch]) %>
-    # @param width [Symbol] <%= one_of([:fit, :fill]) %>
-    # @param height [Symbol] <%= one_of([:fit, :fill]) %>
+    # | Name | Type | Description |
+    # | :- | :- | :- |
+    # | `display` | Symbol | <%= one_of([:none, :block, :flex, :inline, :inline_block, :table, :table_cell]) %> |
+    # | `height` | Symbol | <%= one_of([:fit, :fill]) %> |
+    # | `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of([:sm, :md, :lg, :xl]) %> |
+    # | `v` | Symbol | Visibility. <%= one_of([:hidden, :visible]) %> |
+    # | `vertical_align` | Symbol | <%= one_of([:baseline, :top, :middle, :bottom, :text_top, :text_bottom]) %> |
     #
-    # @param word_break [Symbol] Whether to break words on line breaks. Can only be `:break_all`.
+    # ## Position
     #
-    # @param animation [Symbol] <%= one_of([:fade_in, :fade_out, :fade_up, :fade_down, :scale_in, :pulse, :grow_x, :grow]) %>
+    # | Name | Type | Description |
+    # | :- | :- | :- |
+    # | `bottom` | Boolean | If `false`, sets `bottom: 0`. |
+    # | `float` | Symbol | <%= one_of([:left, :right]) %> |
+    # | `left` | Boolean | If `false`, sets `left: 0`. |
+    # | `position` | Symbol | <%= one_of([:relative, :absolute, :fixed]) %> |
+    # | `right` | Boolean | If `false`, sets `right: 0`. |
+    # | `top` | Boolean | If `false`, sets `top: 0`. |
     #
-    # @param tag [Symbol] HTML tag name to be passed to `tag.send`.
-    # @param classes [String] CSS class name value to be concatenated with generated Primer CSS classes.
+    # ## Spacing
+    #
+    # | Name | Type | Description |
+    # | :- | :- | :- |
+    # | `m` | Integer | Margin. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:m]) %> |
+    # | `mb` | Integer | Margin bottom. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mb]) %> |
+    # | `ml` | Integer | Margin left. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:ml]) %> |
+    # | `mr` | Integer | Margin right. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mr]) %> |
+    # | `mt` | Integer | Margin top. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mt]) %> |
+    # | `mx` | Integer | Horizontal margins. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mx]) %> |
+    # | `my` | Integer | Vertical margins. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:my]) %> |
+    # | `p` | Integer | Padding. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:p]) %> |
+    # | `pb` | Integer | Padding bottom. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pb]) %> |
+    # | `pl` | Integer | Padding left. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pl]) %> |
+    # | `pr` | Integer | Padding right. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pr]) %> |
+    # | `pt` | Integer | Padding left. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pt]) %> |
+    # | `px` | Integer | Horizontal padding. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:px]) %> |
+    # | `py` | Integer | Vertical padding. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:py]) %> |
+    #
+    # ## Typography
+    #
+    # | Name | Type | Description |
+    # | :- | :- | :- |
+    # | `font_size` | String, Integer | <%= one_of(["00", 0, 1, 2, 3, 4, 5, 6]) %> |
+    # | `font_weight` | Symbol | Font weight. <%= one_of([:light, :normal, :bold]) %> |
+    # | `text_align` | Symbol | Text alignment. <%= one_of([:left, :right, :center]) %> |
+    # | `underline` | Boolean | Whether text should be underlined. |
+    # | `word_break` | Symbol | Whether to break words on line breaks. Can only be `:break_all`. |
+    #
+    # ## Other
+    #
+    # | Name | Type | Description |
+    # | :- | :- | :- |
+    # | classes | String | CSS class name value to be concatenated with generated Primer CSS classes. |
+    # | tag | Symbol | HTML tag name to be passed to `content_tag`. |
+    # | test_selector | String | Adds `data-test-selector='given value'` in non-Production environments for testing purposes. |
     def initialize(tag:, classes: nil, **system_arguments)
       @tag = tag
       @result = Primer::Classify.call(**system_arguments.merge(classes: classes))

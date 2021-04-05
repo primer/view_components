@@ -5,21 +5,21 @@ module Primer
   class StateComponent < Primer::Component
     status :beta
 
-    COLOR_DEFAULT = :default
-    NEW_COLOR_MAPPINGS = {
+    SCHEME_DEFAULT = :default
+    NEW_SCHEME_MAPPINGS = {
       open: "State--open",
       closed: "State--closed",
       merged: "State--merged"
     }.freeze
 
-    DEPRECATED_COLOR_MAPPINGS = {
-      COLOR_DEFAULT => "",
+    DEPRECATED_SCHEME_MAPPINGS = {
+      SCHEME_DEFAULT => "",
       :green => "State--open",
       :red => "State--closed",
       :purple => "State--merged"
     }.freeze
-    COLOR_MAPPINGS = NEW_COLOR_MAPPINGS.merge(DEPRECATED_COLOR_MAPPINGS)
-    COLOR_OPTIONS = COLOR_MAPPINGS.keys
+    SCHEME_MAPPINGS = NEW_SCHEME_MAPPINGS.merge(DEPRECATED_SCHEME_MAPPINGS)
+    SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
     SIZE_DEFAULT = :default
     SIZE_MAPPINGS = {
@@ -34,24 +34,24 @@ module Primer
     # @example Default
     #   <%= render(Primer::StateComponent.new(title: "title")) { "State" } %>
     #
-    # @example Colors
+    # @example Schemes
     #   <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
-    #   <%= render(Primer::StateComponent.new(title: "title", color: :open)) { "Open" } %>
-    #   <%= render(Primer::StateComponent.new(title: "title", color: :closed)) { "Closed" } %>
-    #   <%= render(Primer::StateComponent.new(title: "title", color: :merged)) { "Merged" } %>
+    #   <%= render(Primer::StateComponent.new(title: "title", scheme: :open)) { "Open" } %>
+    #   <%= render(Primer::StateComponent.new(title: "title", scheme: :closed)) { "Closed" } %>
+    #   <%= render(Primer::StateComponent.new(title: "title", scheme: :merged)) { "Merged" } %>
     #
     # @example Sizes
     #   <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
     #   <%= render(Primer::StateComponent.new(title: "title", size: :small)) { "Small" } %>
     #
     # @param title [String] `title` HTML attribute.
-    # @param color [Symbol] Background color. <%= one_of(Primer::StateComponent::COLOR_OPTIONS) %>
+    # @param scheme [Symbol] Background color. <%= one_of(Primer::StateComponent::SCHEME_OPTIONS) %>
     # @param tag [Symbol] HTML tag for element. <%= one_of(Primer::StateComponent::TAG_OPTIONS) %>
     # @param size [Symbol] <%= one_of(Primer::StateComponent::SIZE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       title:,
-      color: COLOR_DEFAULT,
+      scheme: SCHEME_DEFAULT,
       tag: TAG_DEFAULT,
       size: SIZE_DEFAULT,
       **system_arguments
@@ -62,7 +62,7 @@ module Primer
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "State",
-        COLOR_MAPPINGS[fetch_or_fallback(COLOR_OPTIONS, color, COLOR_DEFAULT)],
+        SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, SCHEME_DEFAULT)],
         SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
       )
     end
