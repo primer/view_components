@@ -36,7 +36,7 @@ module Primer
     #   </div>
     #
     # @param direction [Symbol] <%= one_of(Primer::DropdownMenuComponent::DIRECTION_OPTIONS) %>
-    # @param scheme [Symbol] Pass :dark for dark mode theming
+    # @param scheme [Symbol] Pass `:dark` for dark mode theming
     # @param header [String] Optional string to display as the header
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(direction: DIRECTION_DEFAULT, scheme: SCHEME_DEFAULT, header: nil, **system_arguments)

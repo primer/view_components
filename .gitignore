@@ -20,3 +20,4 @@ primer_view_components*.gem
 .DS_Store
 app/components/**/*.js
 app/components/**/*.d.ts
+/.idea
