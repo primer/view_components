@@ -2,6 +2,10 @@
 
 ## main
 
+* Promote `AvatarStackComponent` to beta.
+
+    *Manuel Puyol*
+
 * Allow `UnderlineNav` tabs to be rendered as a `<ul><li>` list.
 
     *Manuel Puyol*

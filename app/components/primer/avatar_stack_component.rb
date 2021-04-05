@@ -3,6 +3,8 @@
 module Primer
   # Use AvatarStack to stack multiple avatars together.
   class AvatarStackComponent < Primer::Component
+    status :beta
+
     ALIGN_DEFAULT = :left
     ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
 

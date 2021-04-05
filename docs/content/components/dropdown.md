@@ -81,6 +81,6 @@ Required context menu for the dropdown
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `direction` | `Symbol` | N/A | One of `:se`, `:sw`, `:w`, `:e`, `:ne`, or `:s`. |
-| `scheme` | `Symbol` | N/A | Pass :dark for dark mode theming |
+| `scheme` | `Symbol` | N/A | Pass `:dark` for dark mode theming |
 | `header` | `String` | N/A | Optional string to display as the header |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

@@ -301,7 +301,7 @@
   - name: scheme
     type: Symbol
     default: "`:default`"
-    description: Pass :dark for dark mode theming
+    description: Pass `:dark` for dark mode theming
   - name: header
     type: String
     default: "`nil`"
