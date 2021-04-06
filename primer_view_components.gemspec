@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.files         = Dir["CHANGELOG.md", "LICENSE.txt", "README.md", "lib/**/*", "app/**/*", "static/statuses.json"]
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency     "octicons_helper", [">= 9.0.0", "< 13.0.0"]
+  spec.add_runtime_dependency     "octicons_helper", [">= 9.0.0", "< 14.0.0"]
   spec.add_runtime_dependency     "rails", [">= 5.0.0", "< 7.0"]
   spec.add_runtime_dependency     "view_component", [">= 2.0.0", "< 3.0"]
 
