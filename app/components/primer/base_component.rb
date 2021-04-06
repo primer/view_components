@@ -25,8 +25,6 @@ module Primer
   class BaseComponent < Primer::Component
     status :beta
 
-    include TestSelectorHelper
-
     # ## HTML attributes
     #
     # System arguments include most HTML attributes. For example:

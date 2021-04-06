@@ -10,6 +10,7 @@ module Primer
     include ClassNameHelper
     include FetchOrFallbackHelper
     include OcticonsHelper
+    include TestSelectorHelper
     include JoinStyleArgumentsHelper
     include ViewHelper
     include Status::Dsl

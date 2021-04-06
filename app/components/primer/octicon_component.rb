@@ -5,10 +5,6 @@ module Primer
   class OcticonComponent < Primer::Component
     status :beta
 
-    include ClassNameHelper
-    include TestSelectorHelper
-    include OcticonsHelper
-
     SIZE_DEFAULT = :small
     SIZE_MAPPINGS = {
       SIZE_DEFAULT => 16,
