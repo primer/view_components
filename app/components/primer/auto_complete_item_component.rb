@@ -3,6 +3,8 @@
 module Primer
   # Use AutoCompleteItem to list results of an auto-completed search.
   class AutoCompleteItemComponent < Primer::Component
+    status :beta
+
     # @example Default
     #   <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
     #     Selected
