@@ -8,7 +8,23 @@ rails_version = (ENV["RAILS_VERSION"] || "6.1.1").to_s
 gem "rack-cors"
 gem "rake", "~> 12.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", rails_version == "main" ? { git: "https://github.com/rails/rails", ref: "main" } : rails_version
+if rails_version != "main"
+  gem "actionview", rails_version
+  gem "activemodel", rails_version
+  gem "activesupport", rails_version
+  gem "railties", rails_version
+else
+  git "https://github.com/rails/rails", ref: "main" do
+    # rubocop:disable Bundler/DuplicatedGem
+    gem "actionview"
+    gem "activemodel"
+    gem "activerecord"
+    gem "activesupport"
+    gem "railties"
+    # rubocop:enable Bundler/DuplicatedGem
+  end
+end
+
 # Use Puma as the app server
 gem "puma", "~> 4.3.6"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -19,22 +35,3 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
 gem "view_component_storybook", "~> 0.8.0"
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem "minitest", "~> 5.0"
-  gem "pry-rails"
-end
-
-group :development do
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
-end
-
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem "capybara", "~> 3"
-
-  gem "cuprite", "0.11"
-end
