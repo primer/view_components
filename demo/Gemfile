@@ -6,6 +6,8 @@ rails_version = (ENV["RAILS_VERSION"] || "6.1.1").to_s
 
 gem "rake", "~> 12.0"
 gem "rack-cors"
+gem "sprockets"
+gem "sprockets-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 if rails_version != "main"
   gem "actionview", rails_version
@@ -32,12 +34,6 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 gem "primer_view_components", path: "../"
 gem "view_component_storybook", "~> 0.8.0"
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem "sprockets"
-  gem "sprockets-rails"
-end
 
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
