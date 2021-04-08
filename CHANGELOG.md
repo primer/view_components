@@ -14,7 +14,7 @@
 
     *Manuel Puyol*
 
-* **Breaking change**: Make `id` and `label` required for `UnderlineNav` and `TabNav`.
+* **Breaking change**: Make `label` required for `UnderlineNav` and `TabNav`.
 
     *Manuel Puyol*
 
