@@ -28,8 +28,6 @@ module Primer
         selected: selected,
         with_panel: @with_panel,
         icon_classes: "UnderlineNav-octicon",
-        parent_id: @id,
-        index: tabs.size,
         **system_arguments
       )
     }

@@ -18,8 +18,6 @@ module Primer
       Primer::Navigation::TabComponent.new(
         selected: selected,
         with_panel: @with_panel,
-        parent_id: @id,
-        index: tabs.size,
         **system_arguments
       )
     }
