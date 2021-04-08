@@ -1,7 +1,7 @@
 module Primer
   class UnderlineNavComponentPreview < ViewComponent::Preview
     def default
-      render(Primer::UnderlineNavComponent.new(id: "underlinenav", label: "Test navigation", with_panel: true)) do |c|
+      render(Primer::UnderlineNavComponent.new(label: "Test navigation", with_panel: true)) do |c|
         c.tab(selected: true) do |t|
           t.panel { "Panel 1" }
           t.text { "Tab 1" }

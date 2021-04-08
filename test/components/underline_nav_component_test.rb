@@ -7,7 +7,7 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
   def test_raises_if_multiple_tabs_are_selected
     err = assert_raises Primer::TabbedComponentHelper::MultipleSelectedTabsError do
-      render_inline(Primer::UnderlineNavComponent.new(id: "id", label: "label")) do |c|
+      render_inline(Primer::UnderlineNavComponent.new(label: "label")) do |c|
         c.tab(selected: true) do
           "Tab 1"
         end
@@ -21,8 +21,8 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     assert_equal("only one tab can be selected", err.message)
   end
 
-  def test_does_not_add_tab_roles_if_not_with_panel
-    render_inline(Primer::UnderlineNavComponent.new(id: "id", label: "label")) do |component|
+  def test_does_not_add_tab_roles_and_does_not_render_panels_if_with_panel_is_false
+    render_inline(Primer::UnderlineNavComponent.new(label: "label")) do |component|
       component.tab(selected: true, href: "#") do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
@@ -49,13 +49,11 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
   def test_align_falls_back_to_default
     without_fetch_or_fallback_raises do
-      render_inline(Primer::UnderlineNavComponent.new(id: "id", label: "label", align: :foo)) do |component|
+      render_inline(Primer::UnderlineNavComponent.new(label: "label", align: :foo)) do |component|
         component.tab(selected: true, href: "#") do |t|
-          t.panel { "Panel 1" }
           t.text { "Tab 1" }
         end
         component.tab(href: "#") do |t|
-          t.panel { "Panel 2" }
           t.text { "Tab 2" }
         end
         component.actions do
@@ -78,13 +76,11 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
   end
 
   def test_adds_underline_nav_right_when_align_right_is_set
-    render_inline(Primer::UnderlineNavComponent.new(id: "id", label: "label", align: :right)) do |component|
+    render_inline(Primer::UnderlineNavComponent.new(label: "label", align: :right)) do |component|
       component.tab(selected: true, href: "#") do |t|
-        t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end
       component.tab(href: "#") do |t|
-        t.panel { "Panel 2" }
         t.text { "Tab 2" }
       end
       component.actions do
@@ -104,13 +100,11 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
   end
 
   def test_puts_actions_first_if_align_right_and_actions_exist
-    render_inline(Primer::UnderlineNavComponent.new(id: "id", label: "label", align: :right)) do |component|
+    render_inline(Primer::UnderlineNavComponent.new(label: "label", align: :right)) do |component|
       component.tab(selected: true, href: "#") do |t|
-        t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end
       component.tab(href: "#") do |t|
-        t.panel { "Panel 2" }
         t.text { "Tab 2" }
       end
       component.actions do
@@ -122,7 +116,7 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
   end
 
   def test_renders_panels_and_tab_container
-    render_inline(Primer::UnderlineNavComponent.new(id: "id", label: "label", with_panel: true)) do |component|
+    render_inline(Primer::UnderlineNavComponent.new(label: "label", with_panel: true)) do |component|
       component.tab(selected: true) do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
@@ -150,7 +144,7 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
   end
 
   def test_renders_tab_icon_with_correct_classes
-    render_inline(Primer::UnderlineNavComponent.new(id: "id", label: "label", align: :right)) do |component|
+    render_inline(Primer::UnderlineNavComponent.new(label: "label", align: :right)) do |component|
       component.tab(selected: true, href: "#") do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
@@ -161,14 +155,12 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     assert_selector(".UnderlineNav-octicon.octicon.octicon-star")
   end
 
-  def test_renders_tabs_in_a_list
-    render_inline(Primer::UnderlineNavComponent.new(id: "id", label: "label", body_arguments: { tag: :ul })) do |component|
+  def test_renders_navigation_links_in_a_list
+    render_inline(Primer::UnderlineNavComponent.new(label: "label", body_arguments: { tag: :ul })) do |component|
       component.tab(selected: true, href: "#") do |t|
-        t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end
       component.tab(href: "#") do |t|
-        t.panel { "Panel 2" }
         t.text { "Tab 2" }
       end
       component.actions do

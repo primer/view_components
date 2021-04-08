@@ -57,7 +57,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::TooltipComponent, { label: "More" }],
-    [Primer::UnderlineNavComponent, { id: "id", label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }]
+    [Primer::UnderlineNavComponent, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }]
   ].freeze
 
   def test_registered_components
