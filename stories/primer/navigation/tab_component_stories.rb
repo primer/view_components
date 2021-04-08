@@ -8,6 +8,7 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
   story(:tab) do
     controls do
       selected true
+      list false
       with_panel false
       select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
     end
@@ -20,6 +21,7 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
   story(:with_icon) do
     controls do
       selected true
+      list false
       with_panel false
       select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
     end
@@ -33,6 +35,7 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
   story(:with_counter) do
     controls do
       selected true
+      list false
       with_panel false
       select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
     end
@@ -46,6 +49,7 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
   story(:full) do
     controls do
       selected true
+      list false
       with_panel false
       select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
     end
@@ -60,6 +64,7 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
   story(:with_custom_html) do
     controls do
       selected true
+      list false
       with_panel false
       select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
     end

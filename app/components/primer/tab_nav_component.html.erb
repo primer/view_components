@@ -1,10 +1,10 @@
 <%= wrapper do %>
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-    <nav role="tablist" aria-label="<%= @aria_label %>" class="tabnav-tabs">
+    <%= render Primer::BaseComponent.new(**@body_arguments) do %>
       <% tabs.each do |tab| %>
         <%= tab %>
       <% end %>
-    </nav>
+    <% end %>
   <% end %>
 
   <% if @with_panel %>

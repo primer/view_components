@@ -6,7 +6,7 @@ class IntegrationTabNavComponentTest < ApplicationSystemTestCase
   def assert_tab_nav_rendered
     assert_selector("tab-container") do
       assert_selector(".tabnav") do
-        assert_selector("nav.tabnav-tabs[role='tablist']") do
+        assert_selector("div.tabnav-tabs[role='tablist']") do
           assert_selector("button.tabnav-tab[aria-selected='true'][role='tab']", text: "Tab 1")
           assert_selector("button.tabnav-tab[role='tab']", text: "Tab 2")
           assert_selector("button.tabnav-tab[role='tab']", text: "Tab 3")

@@ -14,18 +14,23 @@ module Primer
         "tabnav-tab",
         system_arguments[:classes]
       )
-      Primer::Navigation::TabComponent.new(selected: selected, with_panel: @with_panel, **system_arguments)
+
+      Primer::Navigation::TabComponent.new(
+        selected: selected,
+        with_panel: @with_panel,
+        **system_arguments
+      )
     }
 
     # @example Default
-    #   <%= render(Primer::TabNavComponent.new) do |c| %>
+    #   <%= render(Primer::TabNavComponent.new(label: "Default")) do |c| %>
     #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
     #     <% c.tab(href: "#") { "Tab 2" } %>
     #     <% c.tab(href: "#") { "Tab 3" } %>
     #   <% end %>
     #
     # @example With icons and counters
-    #   <%= render(Primer::TabNavComponent.new) do |component| %>
+    #   <%= render(Primer::TabNavComponent.new(label: "With icons and counters")) do |component| %>
     #     <% component.tab(href: "#", selected: true) do |t| %>
     #       <% t.icon(icon: :star) %>
     #       <% t.text { "Item 1" } %>
@@ -42,7 +47,7 @@ module Primer
     #   <% end %>
     #
     # @example With panels
-    #   <%= render(Primer::TabNavComponent.new(with_panel: true)) do |c| %>
+    #   <%= render(Primer::TabNavComponent.new(label: "With panels", with_panel: true)) do |c| %>
     #     <% c.tab(selected: true) do |t| %>
     #       <% t.text { "Tab 1" } %>
     #       <% t.panel do %>
@@ -63,19 +68,28 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @param aria_label [String] Used to set the `aria-label` on the top level `<nav>` element.
+    # @param label [String] Used to set the `aria-label` on the top level `<nav>` element.
     # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(aria_label: nil, with_panel: false, **system_arguments)
-      @aria_label = aria_label
+    def initialize(label:, with_panel: false, **system_arguments)
       @with_panel = with_panel
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :div
 
+      @system_arguments[:tag] ||= :div
       @system_arguments[:classes] = class_names(
         "tabnav",
         system_arguments[:classes]
       )
+
+      @body_arguments = {
+        tag: navigation_tag(with_panel),
+        classes: "tabnav-tabs",
+        aria: {
+          label: label
+        }
+      }
+
+      @body_arguments[:role] = :tablist if @with_panel
     end
   end
 end

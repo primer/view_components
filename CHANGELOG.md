@@ -6,6 +6,18 @@
 
     *Manuel Puyol*
 
+* Allow `UnderlineNav` tabs to be rendered as a `<ul><li>` list.
+
+    *Manuel Puyol*
+
+* _Accessibility:_ Don't add tab roles when `UnderlineNav` or `TabNav` use link redirects.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Make `id` and `label` required for `UnderlineNav` and `TabNav`.
+
+    *Manuel Puyol*
+
 ## 0.0.34
 
 * Add `p: :responsive` and `m: :auto` system arguments.

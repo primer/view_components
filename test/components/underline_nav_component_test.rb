@@ -7,7 +7,7 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
   def test_raises_if_multiple_tabs_are_selected
     err = assert_raises Primer::TabbedComponentHelper::MultipleSelectedTabsError do
-      render_inline(Primer::UnderlineNavComponent.new) do |c|
+      render_inline(Primer::UnderlineNavComponent.new(label: "label")) do |c|
         c.tab(selected: true) do
           "Tab 1"
         end
@@ -21,15 +21,39 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     assert_equal("only one tab can be selected", err.message)
   end
 
+  def test_does_not_add_tab_roles_and_does_not_render_panels_if_with_panel_is_false
+    render_inline(Primer::UnderlineNavComponent.new(label: "label")) do |component|
+      component.tab(selected: true, href: "#") do |t|
+        t.panel { "Panel 1" }
+        t.text { "Tab 1" }
+      end
+      component.tab(href: "#") do |t|
+        t.panel { "Panel 2" }
+        t.text { "Tab 2" }
+      end
+      component.actions do
+        "Actions content"
+      end
+    end
+
+    assert_selector("nav.UnderlineNav[aria-label='label']") do
+      assert_selector("div.UnderlineNav-body") do
+        assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
+        assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
+      end
+      assert_selector("div.UnderlineNav-actions", text: "Actions content")
+    end
+    refute_selector("div[role='tablist']")
+    refute_selector("a[role='tab']")
+  end
+
   def test_align_falls_back_to_default
     without_fetch_or_fallback_raises do
-      render_inline(Primer::UnderlineNavComponent.new(align: :foo)) do |component|
+      render_inline(Primer::UnderlineNavComponent.new(label: "label", align: :foo)) do |component|
         component.tab(selected: true, href: "#") do |t|
-          t.panel { "Panel 1" }
           t.text { "Tab 1" }
         end
         component.tab(href: "#") do |t|
-          t.panel { "Panel 2" }
           t.text { "Tab 2" }
         end
         component.actions do
@@ -42,23 +66,21 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     refute_selector("div[role='tabpanel']")
     refute_selector("tab-container")
 
-    assert_selector("nav.UnderlineNav[role='tablist']") do
+    assert_selector("nav.UnderlineNav[aria-label='label']") do
       assert_selector("div.UnderlineNav-body") do
-        assert_selector("a.UnderlineNav-item[role='tab'][href='#'][aria-current='page']", text: "Tab 1")
-        assert_selector("a.UnderlineNav-item[role='tab'][href='#']", text: "Tab 2")
+        assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
+        assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
       end
       assert_selector("div.UnderlineNav-actions", text: "Actions content")
     end
   end
 
   def test_adds_underline_nav_right_when_align_right_is_set
-    render_inline(Primer::UnderlineNavComponent.new(align: :right)) do |component|
+    render_inline(Primer::UnderlineNavComponent.new(label: "label", align: :right)) do |component|
       component.tab(selected: true, href: "#") do |t|
-        t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end
       component.tab(href: "#") do |t|
-        t.panel { "Panel 2" }
         t.text { "Tab 2" }
       end
       component.actions do
@@ -68,23 +90,21 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
     refute_selector("div[role='tabpanel']")
     refute_selector("tab-container")
-    assert_selector("nav.UnderlineNav.UnderlineNav--right[role='tablist']") do
+    assert_selector("nav.UnderlineNav.UnderlineNav--right[aria-label='label']") do
       assert_selector("div.UnderlineNav-body") do
-        assert_selector("a.UnderlineNav-item[role='tab'][href='#'][aria-current='page']", text: "Tab 1")
-        assert_selector("a.UnderlineNav-item[role='tab'][href='#']", text: "Tab 2")
+        assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
+        assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
       end
       assert_selector("div.UnderlineNav-actions", text: "Actions content")
     end
   end
 
   def test_puts_actions_first_if_align_right_and_actions_exist
-    render_inline(Primer::UnderlineNavComponent.new(align: :right)) do |component|
+    render_inline(Primer::UnderlineNavComponent.new(label: "label", align: :right)) do |component|
       component.tab(selected: true, href: "#") do |t|
-        t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end
       component.tab(href: "#") do |t|
-        t.panel { "Panel 2" }
         t.text { "Tab 2" }
       end
       component.actions do
@@ -96,7 +116,7 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
   end
 
   def test_renders_panels_and_tab_container
-    render_inline(Primer::UnderlineNavComponent.new(with_panel: true)) do |component|
+    render_inline(Primer::UnderlineNavComponent.new(label: "label", with_panel: true)) do |component|
       component.tab(selected: true) do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
@@ -111,8 +131,8 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     end
 
     assert_selector("tab-container") do
-      assert_selector("nav.UnderlineNav[role='tablist']") do
-        assert_selector("div.UnderlineNav-body") do
+      assert_selector("div.UnderlineNav") do
+        assert_selector("div.UnderlineNav-body[role='tablist'][aria-label='label']") do
           assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
           assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 2")
         end
@@ -124,7 +144,7 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
   end
 
   def test_renders_tab_icon_with_correct_classes
-    render_inline(Primer::UnderlineNavComponent.new(align: :right)) do |component|
+    render_inline(Primer::UnderlineNavComponent.new(label: "label", align: :right)) do |component|
       component.tab(selected: true, href: "#") do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
@@ -133,5 +153,33 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     end
 
     assert_selector(".UnderlineNav-octicon.octicon.octicon-star")
+  end
+
+  def test_renders_navigation_links_in_a_list
+    render_inline(Primer::UnderlineNavComponent.new(label: "label", body_arguments: { tag: :ul })) do |component|
+      component.tab(selected: true, href: "#") do |t|
+        t.text { "Tab 1" }
+      end
+      component.tab(href: "#") do |t|
+        t.text { "Tab 2" }
+      end
+      component.actions do
+        "Actions content"
+      end
+    end
+
+    assert_selector("nav.UnderlineNav[aria-label='label']") do
+      assert_selector("ul.UnderlineNav-body.list-style-none") do
+        assert_selector("li") do
+          assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
+        end
+        assert_selector("li") do
+          assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
+        end
+      end
+      assert_selector("div.UnderlineNav-actions", text: "Actions content")
+    end
+    refute_selector("div[role='tablist']")
+    refute_selector("a[role='tab']")
   end
 end
