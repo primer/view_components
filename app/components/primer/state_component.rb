@@ -29,7 +29,7 @@ module Primer
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
     TAG_DEFAULT = :span
-    TAG_OPTIONS = [TAG_DEFAULT, :div, :a].freeze
+    TAG_OPTIONS = [TAG_DEFAULT, :div].freeze
 
     # @example Default
     #   <%= render(Primer::StateComponent.new(title: "title")) { "State" } %>
