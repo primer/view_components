@@ -23,14 +23,14 @@ module Primer
     }
 
     # @example Default
-    #   <%= render(Primer::TabNavComponent.new(id: "default", label: "Default")) do |c| %>
+    #   <%= render(Primer::TabNavComponent.new(label: "Default")) do |c| %>
     #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
     #     <% c.tab(href: "#") { "Tab 2" } %>
     #     <% c.tab(href: "#") { "Tab 3" } %>
     #   <% end %>
     #
     # @example With icons and counters
-    #   <%= render(Primer::TabNavComponent.new(id: "with-icons-and-counters", label: "With icons and counters")) do |component| %>
+    #   <%= render(Primer::TabNavComponent.new(label: "With icons and counters")) do |component| %>
     #     <% component.tab(href: "#", selected: true) do |t| %>
     #       <% t.icon(icon: :star) %>
     #       <% t.text { "Item 1" } %>
@@ -47,7 +47,7 @@ module Primer
     #   <% end %>
     #
     # @example With panels
-    #   <%= render(Primer::TabNavComponent.new(id: "with-panels", label: "With panels", with_panel: true)) do |c| %>
+    #   <%= render(Primer::TabNavComponent.new(label: "With panels", with_panel: true)) do |c| %>
     #     <% c.tab(selected: true) do |t| %>
     #       <% t.text { "Tab 1" } %>
     #       <% t.panel do %>
@@ -68,17 +68,14 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @param id [String] The element id.
     # @param label [String] Used to set the `aria-label` on the top level `<nav>` element.
     # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(id:, label:, with_panel: false, **system_arguments)
+    def initialize(label:, with_panel: false, **system_arguments)
       @with_panel = with_panel
-      @id = id
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :div
-      @system_arguments[:id] = id
 
+      @system_arguments[:tag] ||= :div
       @system_arguments[:classes] = class_names(
         "tabnav",
         system_arguments[:classes]

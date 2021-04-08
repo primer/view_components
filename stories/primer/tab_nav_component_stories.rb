@@ -5,7 +5,6 @@ class Primer::TabNavComponentStories < ViewComponent::Storybook::Stories
 
   story(:tab_nav) do
     controls do
-      id "id"
       label "aria label"
       with_panel true
     end

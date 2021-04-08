@@ -51,7 +51,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.heading { "Foo" } }],
     [Primer::TabContainerComponent, {}, proc { "Foo" }],
-    [Primer::TabNavComponent, { id: "id", label: "aria label" }, proc { |c| c.tab(title: "Foo", selected: true) }],
+    [Primer::TabNavComponent, { label: "aria label" }, proc { |c| c.tab(title: "Foo", selected: true) }],
     [Primer::TextComponent, {}],
     [Primer::TruncateComponent, {}],
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
