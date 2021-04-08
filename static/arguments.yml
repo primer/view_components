@@ -473,14 +473,6 @@
 - component: Tab
   source: https://github.com/primer/view_components/tree/main/app/components/primer/tab_component.rb
   parameters:
-  - name: parent_id
-    type: Boolean
-    default: N/A
-    description: The id of the parent element.
-  - name: index
-    type: Int
-    default: N/A
-    description: Index of the tab.
   - name: list
     type: Boolean
     default: "`false`"
@@ -595,10 +587,6 @@
 - component: TabNav
   source: https://github.com/primer/view_components/tree/main/app/components/primer/tab_nav_component.rb
   parameters:
-  - name: id
-    type: String
-    default: N/A
-    description: The element id.
   - name: label
     type: String
     default: N/A
@@ -700,10 +688,6 @@
 - component: UnderlineNav
   source: https://github.com/primer/view_components/tree/main/app/components/primer/underline_nav_component.rb
   parameters:
-  - name: id
-    type: String
-    default: N/A
-    description: The element id.
   - name: label
     type: String
     default: N/A

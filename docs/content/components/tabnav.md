@@ -18,10 +18,10 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 
 ### Default
 
-<Example src="  <div id='default' class='tabnav '>    <nav aria-label='Default' class='tabnav-tabs '>          <a href='#' id='default-0' aria-current='page' class='tabnav-tab '>          Tab 1    </a>          <a href='#' id='default-1' class='tabnav-tab '>          Tab 2    </a>          <a href='#' id='default-2' class='tabnav-tab '>          Tab 3    </a></nav></div>" />
+<Example src="  <div class='tabnav '>    <nav aria-label='Default' class='tabnav-tabs '>          <a href='#' aria-current='page' class='tabnav-tab '>          Tab 1    </a>          <a href='#' class='tabnav-tab '>          Tab 2    </a>          <a href='#' class='tabnav-tab '>          Tab 3    </a></nav></div>" />
 
 ```erb
-<%= render(Primer::TabNavComponent.new(id: "default", label: "Default")) do |c| %>
+<%= render(Primer::TabNavComponent.new(label: "Default")) do |c| %>
   <% c.tab(selected: true, href: "#") { "Tab 1" }%>
   <% c.tab(href: "#") { "Tab 2" } %>
   <% c.tab(href: "#") { "Tab 3" } %>
@@ -30,10 +30,10 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 
 ### With icons and counters
 
-<Example src="  <div id='with-icons-and-counters' class='tabnav '>    <nav aria-label='With icons and counters' class='tabnav-tabs '>          <a href='#' id='with-icons-and-counters-0' aria-current='page' class='tabnav-tab '>    <svg class='octicon octicon-star' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z'></path></svg>      <span>Item 1</span>    </a>          <a href='#' id='with-icons-and-counters-1' class='tabnav-tab '>    <svg class='octicon octicon-star' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z'></path></svg>      <span>Item 2</span>    <span title='10' class='Counter '>10</span></a>          <a href='#' id='with-icons-and-counters-2' class='tabnav-tab '>          <span>Item 3</span>    <span title='10' class='Counter '>10</span></a></nav></div>" />
+<Example src="  <div class='tabnav '>    <nav aria-label='With icons and counters' class='tabnav-tabs '>          <a href='#' aria-current='page' class='tabnav-tab '>    <svg class='octicon octicon-star' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z'></path></svg>      <span>Item 1</span>    </a>          <a href='#' class='tabnav-tab '>    <svg class='octicon octicon-star' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z'></path></svg>      <span>Item 2</span>    <span title='10' class='Counter '>10</span></a>          <a href='#' class='tabnav-tab '>          <span>Item 3</span>    <span title='10' class='Counter '>10</span></a></nav></div>" />
 
 ```erb
-<%= render(Primer::TabNavComponent.new(id: "with-icons-and-counters", label: "With icons and counters")) do |component| %>
+<%= render(Primer::TabNavComponent.new(label: "With icons and counters")) do |component| %>
   <% component.tab(href: "#", selected: true) do |t| %>
     <% t.icon(icon: :star) %>
     <% t.text { "Item 1" } %>
@@ -52,10 +52,10 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 
 ### With panels
 
-<Example src="<tab-container>  <div id='with-panels' class='tabnav '>    <div aria-label='With panels' role='tablist' class='tabnav-tabs '>          <button id='with-panels-0' type='button' role='tab' aria-controls='with-panels-0-panel' aria-selected='true' class='tabnav-tab '>          <span>Tab 1</span>    </button>          <button id='with-panels-1' type='button' role='tab' aria-controls='with-panels-1-panel' class='tabnav-tab '>          <span>Tab 2</span>    </button>          <button id='with-panels-2' type='button' role='tab' aria-controls='with-panels-2-panel' class='tabnav-tab '>          <span>Tab 3</span>    </button></div></div>      <div role='tabpanel' aria-labelledby='with-panels-0' id='with-panels-0-panel'>      Panel 1</div>      <div role='tabpanel' hidden='hidden' aria-labelledby='with-panels-1' id='with-panels-1-panel'>      Panel 2</div>      <div role='tabpanel' hidden='hidden' aria-labelledby='with-panels-2' id='with-panels-2-panel'>      Panel 3</div></tab-container>" />
+<Example src="<tab-container>  <div class='tabnav '>    <div aria-label='With panels' role='tablist' class='tabnav-tabs '>          <button type='button' role='tab' aria-selected='true' class='tabnav-tab '>          <span>Tab 1</span>    </button>          <button type='button' role='tab' class='tabnav-tab '>          <span>Tab 2</span>    </button>          <button type='button' role='tab' class='tabnav-tab '>          <span>Tab 3</span>    </button></div></div>      <div role='tabpanel'>      Panel 1</div>      <div role='tabpanel' hidden='hidden'>      Panel 2</div>      <div role='tabpanel' hidden='hidden'>      Panel 3</div></tab-container>" />
 
 ```erb
-<%= render(Primer::TabNavComponent.new(id: "with-panels", label: "With panels", with_panel: true)) do |c| %>
+<%= render(Primer::TabNavComponent.new(label: "With panels", with_panel: true)) do |c| %>
   <% c.tab(selected: true) do |t| %>
     <% t.text { "Tab 1" } %>
     <% t.panel do %>
@@ -81,7 +81,6 @@ Use TabNav to style navigation with a tab-based selected state, typically used f
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `id` | `String` | N/A | The element id. |
 | `label` | `String` | N/A | Used to set the `aria-label` on the top level `<nav>` element. |
 | `with_panel` | `Boolean` | `false` | Whether the TabNav should navigate through pages or panels. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

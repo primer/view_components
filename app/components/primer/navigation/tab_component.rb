@@ -51,16 +51,16 @@ module Primer
       #   <% end %>
       #
       # @example With icons and counters
-      #   <%= render(Primer::Navigation::TabComponent.new do |c| %>
+      #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
       #     <% c.icon(:star) %>
       #     <% c.text { "Tab" } %>
       #   <% end %>
-      #   <%= render(Primer::Navigation::TabComponent.new do |c| %>
+      #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
       #     <% c.icon(:star) %>
       #     <% c.text { "Tab" } %>
       #     <% c.counter(count: 10) %>
       #   <% end %>
-      #   <%= render(Primer::Navigation::TabComponent.new do |c| %>
+      #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
       #     <% c.text { "Tab" } %>
       #     <% c.counter(count: 10) %>
       #   <% end %>
