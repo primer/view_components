@@ -2,7 +2,7 @@
 
 require "application_system_test_case"
 
-class IntegrationAutoCompleteComponentTest < ApplicationSystemTestCase
+class IntegrationAutoCompleteTest < ApplicationSystemTestCase
   def test_renders_component
     with_preview(:default)
 

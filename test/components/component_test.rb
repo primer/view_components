@@ -7,7 +7,7 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
-    [Primer::AutoCompleteComponent, { src: "Foo", id: "Bar" }, proc { |c| c.input(classes: "Baz") }],
+    [Primer::AutoComplete, { src: "Foo", id: "Bar" }, proc { |c| c.input(classes: "Baz") }],
     [Primer::AutoCompleteItemComponent, { value: "Foo" }],
     [Primer::AvatarComponent, { alt: "github", src: "https://github.com/github.png" }],
     [Primer::AvatarStackComponent, {}, lambda do |component|
@@ -63,7 +63,7 @@ class PrimerComponentTest < Minitest::Test
   def test_registered_components
     ignored_components = ["Primer::Component"]
 
-    primer_component_files_count = Dir["app/**/*component.rb"].count
+    primer_component_files_count = Dir["app/components/**/*.rb"].count
     assert_equal primer_component_files_count, COMPONENTS_WITH_ARGS.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"
   end
 

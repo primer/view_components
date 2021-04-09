@@ -2,7 +2,7 @@
 
 module Primer
   # Use AutoComplete to populate input values from server search results.
-  class AutoCompleteComponent < Primer::Component
+  class AutoComplete < Primer::Component
     status :beta
 
     DEFAULT_INPUT_TYPE = :text
@@ -10,7 +10,7 @@ module Primer
 
     # Required input used to search for results
     #
-    # @param type [Symbol] <%= one_of(Primer::AutoCompleteComponent::INPUT_TYPE_OPTIONS) %>
+    # @param type [Symbol] <%= one_of(Primer::AutoComplete::INPUT_TYPE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :input, lambda { |type: DEFAULT_INPUT_TYPE, classes: "form-control", **system_arguments|
       system_arguments[:tag] = :input
@@ -37,7 +37,7 @@ module Primer
     }
 
     # @example Default
-    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
+    #   <%= render(Primer::AutoComplete.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
     #     <% c.input(type: :text, name: "input") %>
     #     <% c.results do %>
     #       <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
@@ -50,7 +50,7 @@ module Primer
     #   <% end %>
     #
     # @example With custom classes for the results
-    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
+    #   <%= render(Primer::AutoComplete.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
     #     <% c.input(type: :text, name: "input") %>
     #     <% c.results(classes: "my-custom-class") do %>
     #       <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
@@ -63,7 +63,7 @@ module Primer
     #   <% end %>
     #
     # @example With Icon
-    #   <%= render(Primer::AutoCompleteComponent.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
+    #   <%= render(Primer::AutoComplete.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
     #     <% c.input(type: :text, name: "input") %>
     #     <% c.icon(icon: :search) %>
     #     <% c.results do %>
