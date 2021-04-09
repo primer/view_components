@@ -40,6 +40,8 @@
       url: /components/counter
     - title: Details
       url: /components/details
+    - title: DetailsMenu
+      url: /components/detailsmenu
     - title: Dropdown
       url: /components/dropdown
     - title: DropdownMenu

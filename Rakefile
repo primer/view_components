@@ -137,6 +137,7 @@ namespace :docs do
       Primer::CloseButton,
       Primer::CounterComponent,
       Primer::DetailsComponent,
+      Primer::DetailsMenuComponent,
       Primer::DropdownComponent,
       Primer::DropdownMenuComponent,
       Primer::FlashComponent,
@@ -168,6 +169,7 @@ namespace :docs do
 
     js_components = [
       Primer::AutoComplete,
+      Primer::DetailsMenuComponent,
       Primer::TimeAgoComponent,
       Primer::TabContainerComponent,
       Primer::TabNavComponent,

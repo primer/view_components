@@ -288,6 +288,9 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: DetailsMenu
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/details_menu_component.rb
+  parameters: []
 - component: Dropdown
   source: https://github.com/primer/view_components/tree/main/app/components/primer/dropdown_component.rb
   parameters:

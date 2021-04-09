@@ -11,6 +11,27 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use DetailsComponent to reveal content after clicking a button.
 
+## Examples
+
+### Default
+
+<Example src="<details>  <summary role='button' type='button' class='btn '>    <span data-menu-button>None</span></summary>  <div>    <details-menu role='menu'>      <button type='button' role='menuitem' data-menu-button-contents>Item 1</button>      <button type='button' role='menuitem' data-menu-button-contents>Item 2</button>      <button type='button' role='menuitem' data-menu-button-contents>Item 3</button></details-menu></div></details>" />
+
+```erb
+<%= render(Primer::DetailsComponent.new) do |c| %>
+  <% c.summary do %>
+    <span data-menu-button>None</span>
+  <% end %>
+  <% c.body do %>
+    <%= render(Primer::DetailsMenuComponent.new) do %>
+      <button type="button" role="menuitem" data-menu-button-contents>Item 1</button>
+      <button type="button" role="menuitem" data-menu-button-contents>Item 2</button>
+      <button type="button" role="menuitem" data-menu-button-contents>Item 3</button>
+    <% end %>
+  <% end %>
+<% end %>
+```
+
 ## Arguments
 
 | Name | Type | Default | Description |
