@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.35
+
 * Promote `AutoCompleteComponent`, `AutoCompleteItemComponent`, `AvatarStackComponent` and `ButtonComponent` to beta.
 
     *Manuel Puyol*
