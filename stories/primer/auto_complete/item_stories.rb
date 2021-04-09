@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Primer::AutoCompleteItemComponentStories < ViewComponent::Storybook::Stories
+class Primer::AutoComplete::ItemStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:auto_complete_item) do

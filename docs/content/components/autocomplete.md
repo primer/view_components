@@ -24,10 +24,10 @@ Use AutoComplete to populate input values from server search results.
 <%= render(Primer::AutoComplete.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
   <% c.input(type: :text, name: "input") %>
   <% c.results do %>
-    <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
+    <%= render(Primer::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
       Selected
     <% end %>
-    <%= render(Primer::AutoCompleteItemComponent.new(value: "value")) do |c| %>
+    <%= render(Primer::AutoComplete::Item.new(value: "value")) do |c| %>
       Not selected
     <% end %>
   <% end %>
@@ -42,10 +42,10 @@ Use AutoComplete to populate input values from server search results.
 <%= render(Primer::AutoComplete.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
   <% c.input(type: :text, name: "input") %>
   <% c.results(classes: "my-custom-class") do %>
-    <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
+    <%= render(Primer::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
       Selected
     <% end %>
-    <%= render(Primer::AutoCompleteItemComponent.new(value: "value")) do |c| %>
+    <%= render(Primer::AutoComplete::Item.new(value: "value")) do |c| %>
       Not selected
     <% end %>
   <% end %>
@@ -61,10 +61,10 @@ Use AutoComplete to populate input values from server search results.
   <% c.input(type: :text, name: "input") %>
   <% c.icon(icon: :search) %>
   <% c.results do %>
-    <%= render(Primer::AutoCompleteItemComponent.new(selected: true, value: "value")) do |c| %>
+    <%= render(Primer::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
       Selected
     <% end %>
-    <%= render(Primer::AutoCompleteItemComponent.new(value: "value")) do |c| %>
+    <%= render(Primer::AutoComplete::Item.new(value: "value")) do |c| %>
       Not selected
     <% end %>
   <% end %>

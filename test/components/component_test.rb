@@ -8,7 +8,7 @@ class PrimerComponentTest < Minitest::Test
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
     [Primer::AutoComplete, { src: "Foo", id: "Bar" }, proc { |c| c.input(classes: "Baz") }],
-    [Primer::AutoCompleteItemComponent, { value: "Foo" }],
+    [Primer::AutoComplete::Item, { value: "Foo" }],
     [Primer::AvatarComponent, { alt: "github", src: "https://github.com/github.png" }],
     [Primer::AvatarStackComponent, {}, lambda do |component|
       component.avatar(alt: "github", src: "https://github.com/github.png")

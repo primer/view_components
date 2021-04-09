@@ -123,7 +123,7 @@ namespace :docs do
     registry.load!(".yardoc")
     components = [
       Primer::AutoComplete,
-      Primer::AutoCompleteItemComponent,
+      Primer::AutoComplete::Item,
       Primer::AvatarComponent,
       Primer::AvatarStackComponent,
       Primer::BlankslateComponent,
