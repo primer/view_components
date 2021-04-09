@@ -6,6 +6,7 @@ require "yard"
 require "yard/renders_one_handler"
 require "yard/renders_many_handler"
 require "yaml"
+require 'pathname'
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
@@ -88,7 +89,7 @@ namespace :docs do
   end
 
   def link_to_component(component)
-    short_name = component.name.demodulize.gsub("Component", "")
+    short_name = component.name.gsub(/Primer|::|Component/, "")
     "[#{short_name}](/components/#{short_name.downcase})"
   end
 
@@ -181,9 +182,11 @@ namespace :docs do
       documentation = registry.get(component.name)
 
       # Primer::AvatarComponent => Avatar
-      short_name = component.name.demodulize.gsub("Component", "")
+      short_name = component.name.gsub(/Primer|::|Component/, "")
 
-      File.open("docs/content/components/#{short_name.downcase}.md", "w") do |f|
+      path = Pathname.new("docs/content/components/#{short_name.downcase}.md")
+      path.dirname.mkdir unless path.dirname.exist?
+      File.open(path, "w") do |f|
         f.puts("---")
         f.puts("title: #{short_name}")
         f.puts("status: #{component.status.to_s.capitalize}")

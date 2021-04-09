@@ -1,7 +1,7 @@
 ---
 title: AutoCompleteItem
 status: Beta
-source: https://github.com/primer/view_components/tree/main/app/components/primer/auto_complete_item_component.rb
+source: https://github.com/primer/view_components/tree/main/app/components/primer/item.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-auto-complete-item-component
 ---
 
@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use AutoCompleteItem to list results of an auto-completed search.
+
 
 ## Examples
 

@@ -131,7 +131,7 @@ of the page.
 
 ### `Tabs`
 
-Use the tabs to list navigation items. For more information, refer to [Tab](/components/tab).
+Use the tabs to list navigation items. For more information, refer to [NavigationTab](/components/navigationtab).
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |

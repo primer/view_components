@@ -1,7 +1,7 @@
 ---
 title: AutoComplete
 status: Beta
-source: https://github.com/primer/view_components/tree/main/app/components/primer/auto_complete_component.rb
+source: https://github.com/primer/view_components/tree/main/app/components/primer/auto_complete.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-auto-complete-component
 ---
 
@@ -12,7 +12,7 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use AutoComplete to populate input values from server search results.
+Use AutoCompleteItem to list results of an auto-completed search.
 
 ## Examples
 
