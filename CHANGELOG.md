@@ -2,6 +2,10 @@
 
 ## main
 
+* **Breaking change**: Rename `AutoCompleteComponent` to `AutoComplete` and `AutoCompleteItemComponent` to `AutoComplete::Item`.
+
+    *Manuel Puyol*
+
 ## 0.0.35
 
 * Promote `AutoCompleteComponent`, `AutoCompleteItemComponent`, `AvatarStackComponent` and `ButtonComponent` to beta.

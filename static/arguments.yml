@@ -1,6 +1,6 @@
 ---
 - component: AutoComplete
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/auto_complete_component.rb
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/auto_complete.rb
   parameters:
   - name: src
     type: String
@@ -15,7 +15,7 @@
     default: N/A
     description: "[System arguments](/system-arguments)"
 - component: AutoCompleteItem
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/auto_complete_item_component.rb
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/item.rb
   parameters:
   - name: value
     type: String
@@ -470,7 +470,7 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: Tab
+- component: NavigationTab
   source: https://github.com/primer/view_components/tree/main/app/components/primer/tab_component.rb
   parameters:
   - name: list
