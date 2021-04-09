@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use AutoCompleteItem to list results of an auto-completed search.
   class AutoComplete
+    # Use AutoCompleteItem to list results of an auto-completed search.
     class Item < Primer::Component
       status :beta
 

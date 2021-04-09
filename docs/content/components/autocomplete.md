@@ -12,7 +12,7 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use AutoCompleteItem to list results of an auto-completed search.
+Use AutoComplete to populate input values from server search results.
 
 ## Examples
 

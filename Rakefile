@@ -6,7 +6,7 @@ require "yard"
 require "yard/renders_one_handler"
 require "yard/renders_many_handler"
 require "yaml"
-require 'pathname'
+require "pathname"
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
