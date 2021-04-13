@@ -55,10 +55,10 @@ module Primer
       @system_arguments = system_arguments
       @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
 
-      if @system_arguments[:tag] == :a
-        @system_arguments[:role] = :button
-      else
+      if @system_arguments[:tag] == :button
         @system_arguments[:type] = type
+      else
+        @system_arguments[:role] = :button
       end
 
       @system_arguments[:classes] = class_names(

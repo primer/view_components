@@ -21,6 +21,14 @@ class PrimerButtonComponentTest < Minitest::Test
     render_inline(Primer::ButtonComponent.new(tag: :a)) { "content" }
 
     assert_selector("a.btn[role='button']")
+    refute_selector("a[type]")
+  end
+
+  def test_renders_summary_as_a_button
+    render_inline(Primer::ButtonComponent.new(tag: :summary)) { "content" }
+
+    assert_selector("summary.btn[role='button']")
+    refute_selector("summary[type]")
   end
 
   def test_renders_href
