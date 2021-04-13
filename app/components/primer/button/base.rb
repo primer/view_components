@@ -23,7 +23,6 @@ module Primer
       def initialize(
         tag: DEFAULT_TAG,
         type: DEFAULT_TYPE,
-        group_item: false,
         block: false,
         **system_arguments
       )
@@ -38,7 +37,7 @@ module Primer
 
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
-          "btn-block" => block,
+          "btn-block" => block
         )
       end
 
