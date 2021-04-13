@@ -6,6 +6,10 @@
 
     *Manuel Puyol*
 
+* Create `CloseButton` component.
+
+    *Manuel Puyol*
+
 * **Breaking change**: Rename `AutoCompleteComponent` to `AutoComplete` and `AutoCompleteItemComponent` to `AutoComplete::Item`.
 
     *Manuel Puyol*
