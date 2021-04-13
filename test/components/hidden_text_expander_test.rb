@@ -1,0 +1,37 @@
+# frozen_string_literal: true
+
+require "test_helper"
+
+class PrimerHiddenTextExpanderTest < Minitest::Test
+  include Primer::ComponentTestHelpers
+
+  def test_renders
+    render_inline(Primer::HiddenTextExpander.new)
+
+    assert_selector("span.hidden-text-expander") do
+      assert_selector("button[type='button'][aria-expanded='false'].ellipsis-expander", text: "&hellip;")
+    end
+  end
+
+  def test_renders_inline
+    render_inline(Primer::HiddenTextExpander.new(inline: true))
+
+    assert_selector("span.hidden-text-expander.inline") do
+      assert_selector("button[type='button'][aria-expanded='false'].ellipsis-expander", text: "&hellip;")
+    end
+  end
+
+  def test_renders_button_custom_classes
+    render_inline(Primer::HiddenTextExpander.new(button_arguments: { classes: "custom-class" }))
+
+    assert_selector("span.hidden-text-expander") do
+      assert_selector("button[type='button'][aria-expanded='false'].ellipsis-expander.custom-class", text: "&hellip;")
+    end
+  end
+
+  def test_does_not_render_content
+    render_inline(Primer::HiddenTextExpander.new) { "content" }
+
+    refute_text("content")
+  end
+end

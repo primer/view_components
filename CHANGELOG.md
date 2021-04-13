@@ -2,7 +2,7 @@
 
 ## main
 
-* Create `CloseButton` component.
+* Create `CloseButton` and `HiddenTextExpander` components.
 
     *Manuel Puyol*
 
