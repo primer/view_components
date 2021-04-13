@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use buttons for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
   module Button
+    # Use Button::Base to render an unstyles `<button>` tag that can be customized.
     class Base < Primer::Component
       status :beta
 

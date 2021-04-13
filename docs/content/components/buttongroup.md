@@ -15,7 +15,7 @@ Use ButtonGroupComponent to render a series of buttons.
 
 ### Default
 
-<Example src="<div class='BtnGroup '>    <button type='button' class='btn BtnGroup-item '>Default</button>    <button type='button' class='btn-primary btn BtnGroup-item '>Primary</button>    <button type='button' class='btn-danger btn BtnGroup-item '>Danger</button>    <button type='button' class='btn-outline btn BtnGroup-item '>Outline</button>    <button type='button' class='my-class btn BtnGroup-item '>Custom class</button></div>" />
+<Example src="<div class='BtnGroup '>    <button type='button' class='btn BtnGroup-item '>Default</button>    <button type='button' class='btn btn-primary BtnGroup-item '>Primary</button>    <button type='button' class='btn btn-danger BtnGroup-item '>Danger</button>    <button type='button' class='btn btn-outline BtnGroup-item '>Outline</button>    <button type='button' class='btn my-class BtnGroup-item '>Custom class</button></div>" />
 
 ```erb
 <%= render(Primer::ButtonGroupComponent.new) do |component|

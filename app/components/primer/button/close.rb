@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use Button::Close to render an `×` without default button styles.
   module Button
+    # Use Button::Close to render an `×` without default button styles.
     class Close < Primer::Component
       DEFAULT_TYPE = :button
       TYPE_OPTIONS = [DEFAULT_TYPE, :submit].freeze

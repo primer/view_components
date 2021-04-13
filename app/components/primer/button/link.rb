@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use buttons for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
   module Button
+    # Use Button::Link to create a button that looks like a link.
     class Link < Primer::Component
       # @example Default
       #   <%= render(Primer::Button::Link.new) { "Link" } %>
@@ -19,7 +19,7 @@ module Primer
         @system_arguments[:group_item] = false
         @system_arguments[:classes] = class_names(
           "btn-link",
-          system_arguments[:classes],
+          system_arguments[:classes]
         )
       end
 

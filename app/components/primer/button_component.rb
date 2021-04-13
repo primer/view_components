@@ -11,7 +11,7 @@ module Primer
       :primary => "btn-primary",
       :danger => "btn-danger",
       :outline => "btn-outline",
-      :invisible => "btn-invisible",
+      :invisible => "btn-invisible"
     }.freeze
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
@@ -21,7 +21,6 @@ module Primer
     #   <%= render(Primer::ButtonComponent.new(scheme: :danger)) { "Danger" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :outline)) { "Outline" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :invisible)) { "Invisible" } %>
-    #   <%= render(Primer::ButtonComponent.new(scheme: :link)) { "Link" } %>
     #
     # @example Variants
     #   <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>
@@ -46,7 +45,7 @@ module Primer
       @system_arguments[:classes] = class_names(
         "btn",
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
-        system_arguments[:classes],
+        system_arguments[:classes]
       )
     end
 
