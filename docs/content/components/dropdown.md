@@ -16,7 +16,7 @@ They're great for instances where you don't need the full power (and code) of th
 
 ### Default
 
-<Example src="<div>  <details class='dropdown details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>          Dropdown</summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-se '>    <div class='dropdown-header'>      Options    </div>  <ul>      <li class='dropdown-item '>Item 1</li>      <li class='dropdown-item '>Item 2</li>      <li role='none' class='dropdown-divider '></li>      <li class='dropdown-item '>Item 3</li>      <li class='dropdown-item '>Item 4</li>  </ul></details-menu></div></details></div>" />
+<Example src="<div>  <details class='dropdown details-overlay details-reset position-relative'>  <summary role='button' class='btn '>          Dropdown</summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-se '>    <div class='dropdown-header'>      Options    </div>  <ul>      <li class='dropdown-item '>Item 1</li>      <li class='dropdown-item '>Item 2</li>      <li role='none' class='dropdown-divider '></li>      <li class='dropdown-item '>Item 3</li>      <li class='dropdown-item '>Item 4</li>  </ul></details-menu></div></details></div>" />
 
 ```erb
 <div>
@@ -38,7 +38,7 @@ They're great for instances where you don't need the full power (and code) of th
 
 ### With Direction
 
-<Example src="<div>  <details class='dropdown details-overlay details-reset position-relative'>  <summary role='button' type='button' class='btn '>          Dropdown</summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-s '>    <div class='dropdown-header'>      Options    </div>  <ul>      <li class='dropdown-item '>Item 1</li>      <li class='dropdown-item '>Item 2</li>      <li role='none' class='dropdown-divider '></li>      <li class='dropdown-item '>Item 3</li>      <li class='dropdown-item '>Item 4</li>  </ul></details-menu></div></details></div>" />
+<Example src="<div>  <details class='dropdown details-overlay details-reset position-relative'>  <summary role='button' class='btn '>          Dropdown</summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-s '>    <div class='dropdown-header'>      Options    </div>  <ul>      <li class='dropdown-item '>Item 1</li>      <li class='dropdown-item '>Item 2</li>      <li role='none' class='dropdown-divider '></li>      <li class='dropdown-item '>Item 3</li>      <li class='dropdown-item '>Item 4</li>  </ul></details-menu></div></details></div>" />
 
 ```erb
 <div>
