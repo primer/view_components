@@ -20,10 +20,10 @@ class PrimerComponentTest < Minitest::Test
     [Primer::BreadcrumbComponent, {}, proc { |component| component.item { "Foo" } }],
     [Primer::ButtonComponent, {}],
     [Primer::ButtonGroupComponent, {}, proc { |component| component.button { "Button" } }],
-    [Primer::ButtonMarketingComponent, {}],
     [Primer::Button::Base, {}],
     [Primer::Button::Close, {}],
     [Primer::Button::Link, {}],
+    [Primer::Button::Marketing, {}],
     [Primer::CounterComponent, { count: 1 }],
     [Primer::DetailsComponent, {}, lambda do |component|
       component.summary { "Foo" }
