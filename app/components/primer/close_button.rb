@@ -9,6 +9,7 @@ module Primer
     # @example Default
     #   <%= render(Primer::CloseButton.new) %>
     #
+    # @param type [Symbol] <%= one_of(Primer::CloseButton::TYPE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(type: DEFAULT_TYPE, **system_arguments)
       @system_arguments = system_arguments

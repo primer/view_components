@@ -25,4 +25,5 @@ Use close button to render a `×` without default button styles.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `type` | `Symbol` | `:button` | One of `:button` and `:submit`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

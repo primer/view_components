@@ -225,6 +225,10 @@
 - component: CloseButton
   source: https://github.com/primer/view_components/tree/main/app/components/primer/close_button.rb
   parameters:
+  - name: type
+    type: Symbol
+    default: "`:button`"
+    description: One of `:button` and `:submit`.
   - name: system_arguments
     type: Hash
     default: N/A
