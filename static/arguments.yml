@@ -175,7 +175,8 @@
   - name: scheme
     type: Symbol
     default: "`:default`"
-    description: One of `:default`, `:primary`, `:danger`, or `:outline`.
+    description: One of `:default`, `:primary`, `:danger`, `:outline`, `:block`, `:invisible`,
+      or `:link`.
   - name: variant
     type: Symbol
     default: "`:medium`"
