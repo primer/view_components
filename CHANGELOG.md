@@ -2,6 +2,10 @@
 
 ## main
 
+* Add `link`, `block` and `invisible` schemes to Button.
+
+    *Manuel Puyol*
+
 * **Breaking change**: Rename `AutoCompleteComponent` to `AutoComplete` and `AutoCompleteItemComponent` to `AutoComplete::Item`.
 
     *Manuel Puyol*
