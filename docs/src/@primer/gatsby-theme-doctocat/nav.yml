@@ -30,12 +30,14 @@
       url: /components/breadcrumb
     - title: Button
       url: /components/button
+    - title: ButtonClose
+      url: /components/buttonclose
     - title: ButtonGroup
       url: /components/buttongroup
+    - title: ButtonLink
+      url: /components/buttonlink
     - title: ButtonMarketing
       url: /components/buttonmarketing
-    - title: CloseButton
-      url: /components/closebutton
     - title: Counter
       url: /components/counter
     - title: Details
