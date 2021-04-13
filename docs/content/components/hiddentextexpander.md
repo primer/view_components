@@ -15,7 +15,7 @@ Use HiddenTextExpander to indicate and toggle hidden text.
 
 ### Default
 
-<Example src="<span class='hidden-text-expander '><button type='button' aria-expanded='false' class='ellipsis-expander '>&amp;hellip;</button></span>" />
+<Example src="<span class='hidden-text-expander '><button aria-expanded='false' type='button' class='ellipsis-expander '>&amp;hellip;</button></span>" />
 
 ```erb
 <%= render(Primer::HiddenTextExpander.new) %>
@@ -23,7 +23,7 @@ Use HiddenTextExpander to indicate and toggle hidden text.
 
 ### Inline
 
-<Example src="<span class='hidden-text-expander inline '><button type='button' aria-expanded='false' class='ellipsis-expander '>&amp;hellip;</button></span>" />
+<Example src="<span class='hidden-text-expander inline '><button aria-expanded='false' type='button' class='ellipsis-expander '>&amp;hellip;</button></span>" />
 
 ```erb
 <%= render(Primer::HiddenTextExpander.new(inline: true)) %>
@@ -31,7 +31,7 @@ Use HiddenTextExpander to indicate and toggle hidden text.
 
 ### Styling the button
 
-<Example src="<span class='hidden-text-expander '><button type='button' aria-expanded='false' class='ellipsis-expander my-custom-class p-1'>&amp;hellip;</button></span>" />
+<Example src="<span class='hidden-text-expander '><button aria-expanded='false' type='button' class='ellipsis-expander my-custom-class p-1'>&amp;hellip;</button></span>" />
 
 ```erb
 <%= render(Primer::HiddenTextExpander.new(button_arguments: { p: 1, classes: "my-custom-class" })) %>

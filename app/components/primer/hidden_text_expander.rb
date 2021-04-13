@@ -25,8 +25,6 @@ module Primer
       )
 
       @button_arguments = button_arguments
-      @button_arguments[:tag] = :button
-      @button_arguments[:type] = :button
       @button_arguments[:"aria-expanded"] = false
       @button_arguments[:classes] = class_names(
         "ellipsis-expander",
@@ -36,7 +34,7 @@ module Primer
 
     def call
       render(Primer::BaseComponent.new(**@system_arguments)) do
-        render(Primer::BaseComponent.new(**@button_arguments)) { "&hellip;" }
+        render(Primer::Button::Base.new(**@button_arguments)) { "&hellip;" }
       end
     end
   end
