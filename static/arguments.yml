@@ -406,6 +406,10 @@
     type: Boolean
     default: "`false`"
     description: Whether or not the expander is inline.
+  - name: button_arguments
+    type: Hash
+    default: "`{}`"
+    description: "[System arguments](/system-arguments) for the button element."
   - name: system_arguments
     type: Hash
     default: N/A

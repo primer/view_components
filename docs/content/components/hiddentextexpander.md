@@ -42,4 +42,5 @@ Use HiddenTextExpander to indicate and toggle hidden text.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `inline` | `Boolean` | `false` | Whether or not the expander is inline. |
+| `button_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the button element. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
