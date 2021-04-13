@@ -45,3 +45,6 @@ Rails/OutputSafety:
   Enabled: true
   Exclude:
     - "stories/**/*"
+
+Style/AsciiComments:
+  Enabled: false

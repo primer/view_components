@@ -34,6 +34,8 @@
       url: /components/buttongroup
     - title: ButtonMarketing
       url: /components/buttonmarketing
+    - title: CloseButton
+      url: /components/closebutton
     - title: Counter
       url: /components/counter
     - title: Details
