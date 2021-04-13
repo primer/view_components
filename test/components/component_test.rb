@@ -21,7 +21,9 @@ class PrimerComponentTest < Minitest::Test
     [Primer::ButtonComponent, {}],
     [Primer::ButtonGroupComponent, {}, proc { |component| component.button { "Button" } }],
     [Primer::ButtonMarketingComponent, {}],
-    [Primer::CloseButton, {}],
+    [Primer::Button::Base, {}],
+    [Primer::Button::Close, {}],
+    [Primer::Button::Link, {}],
     [Primer::CounterComponent, { count: 1 }],
     [Primer::DetailsComponent, {}, lambda do |component|
       component.summary { "Foo" }
@@ -149,7 +151,8 @@ class PrimerComponentTest < Minitest::Test
         "flex_item_component",
         "dropdown_menu_component",
         "base_component",
-        "flex_component"
+        "flex_component",
+        "base"
       ]
 
     components_missing_stories = components - stories - expected_missing_stories

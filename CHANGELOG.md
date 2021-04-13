@@ -6,11 +6,11 @@
 
     *Manuel Puyol*
 
-* Add `link` and `invisible` schemes to `ButtonComponent`.
+* Add `invisible` scheme to `ButtonComponent`.
 
     *Manuel Puyol*
 
-* Create `CloseButton` and `HiddenTextExpander` component.
+* Create `Button::Close`, `Button::Link` `HiddenTextExpander` component.
 
     *Manuel Puyol*
 
