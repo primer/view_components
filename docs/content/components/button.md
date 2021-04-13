@@ -15,16 +15,16 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ### Schemes
 
-<Example src="<button type='button' class='btn '>Default</button><button type='button' class='btn-primary btn '>Primary</button><button type='button' class='btn-danger btn '>Danger</button><button type='button' class='btn-outline btn '>Outline</button><button type='button' class='btn-block btn '>Block</button><button type='button' class='btn-invisible btn '>Invisible</button><button type='button' class='btn-link '>Link</button>" />
+<Example src="<button type='button' class='btn '>Default</button><button type='button' class='btn-primary btn '>Primary</button><button type='button' class='btn-danger btn '>Danger</button><button type='button' class='btn-outline btn '>Outline</button><button type='button' class='btn-invisible btn '>Invisible</button><button type='button' class='btn-link '>Link</button><button type='button' class='btn-block btn '>Block</button>" />
 
 ```erb
 <%= render(Primer::ButtonComponent.new) { "Default" } %>
 <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
 <%= render(Primer::ButtonComponent.new(scheme: :danger)) { "Danger" } %>
 <%= render(Primer::ButtonComponent.new(scheme: :outline)) { "Outline" } %>
-<%= render(Primer::ButtonComponent.new(scheme: :block)) { "Block" } %>
 <%= render(Primer::ButtonComponent.new(scheme: :invisible)) { "Invisible" } %>
 <%= render(Primer::ButtonComponent.new(scheme: :link)) { "Link" } %>
+<%= render(Primer::ButtonComponent.new(scheme: :block)) { "Block" } %>
 ```
 
 ### Variants

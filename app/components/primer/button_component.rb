@@ -37,9 +37,9 @@ module Primer
     #   <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :danger)) { "Danger" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :outline)) { "Outline" } %>
-    #   <%= render(Primer::ButtonComponent.new(scheme: :block)) { "Block" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :invisible)) { "Invisible" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :link)) { "Link" } %>
+    #   <%= render(Primer::ButtonComponent.new(scheme: :block)) { "Block" } %>
     #
     # @example Variants
     #   <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>
