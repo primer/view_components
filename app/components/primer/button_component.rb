@@ -6,11 +6,14 @@ module Primer
     status :beta
 
     DEFAULT_SCHEME = :default
+    LINK_SCHEME = :link
     SCHEME_MAPPINGS = {
       DEFAULT_SCHEME => "",
       :primary => "btn-primary",
       :danger => "btn-danger",
-      :outline => "btn-outline"
+      :outline => "btn-outline",
+      :invisible => "btn-invisible",
+      LINK_SCHEME => "btn-link"
     }.freeze
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
@@ -33,25 +36,34 @@ module Primer
     #   <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :danger)) { "Danger" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :outline)) { "Outline" } %>
+    #   <%= render(Primer::ButtonComponent.new(scheme: :invisible)) { "Invisible" } %>
+    #   <%= render(Primer::ButtonComponent.new(scheme: :link)) { "Link" } %>
     #
     # @example Variants
     #   <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>
     #   <%= render(Primer::ButtonComponent.new(variant: :medium)) { "Medium" } %>
     #   <%= render(Primer::ButtonComponent.new(variant: :large)) { "Large" } %>
     #
+    # @example Block
+    #   <%= render(Primer::ButtonComponent.new(block: :true)) { "Block" } %>
+    #   <%= render(Primer::ButtonComponent.new(block: :true, scheme: :primary)) { "Primary block" } %>
+    #
     # @param scheme [Symbol] <%= one_of(Primer::ButtonComponent::SCHEME_OPTIONS) %>
     # @param variant [Symbol] <%= one_of(Primer::ButtonComponent::VARIANT_OPTIONS) %>
     # @param tag [Symbol] <%= one_of(Primer::ButtonComponent::TAG_OPTIONS) %>
     # @param type [Symbol] <%= one_of(Primer::ButtonComponent::TYPE_OPTIONS) %>
     # @param group_item [Boolean] Whether button is part of a ButtonGroup.
+    # @param block [Boolean] Whether button is full-width with `display: block`.
     def initialize(
       scheme: DEFAULT_SCHEME,
       variant: DEFAULT_VARIANT,
       tag: DEFAULT_TAG,
       type: DEFAULT_TYPE,
       group_item: false,
+      block: false,
       **system_arguments
     )
+      @scheme = scheme
       @system_arguments = system_arguments
       @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
 
@@ -62,16 +74,23 @@ module Primer
       end
 
       @system_arguments[:classes] = class_names(
-        "btn",
         system_arguments[:classes],
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
         VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)],
+        "btn" => !link?,
+        "btn-block" => block,
         "BtnGroup-item" => group_item
       )
     end
 
     def call
       render(Primer::BaseComponent.new(**@system_arguments)) { content }
+    end
+
+    private
+
+    def link?
+      @scheme == LINK_SCHEME
     end
   end
 end

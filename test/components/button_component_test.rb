@@ -70,4 +70,23 @@ class PrimerButtonComponentTest < Minitest::Test
 
     assert_selector(".btn.btn-sm")
   end
+
+  def test_does_not_add_btn_class_if_link
+    render_inline(Primer::ButtonComponent.new(scheme: :link)) { "content" }
+
+    assert_selector(".btn-link")
+    refute_selector(".btn")
+  end
+
+  def test_renders_button_block
+    render_inline(Primer::ButtonComponent.new(block: true)) { "content" }
+
+    assert_selector(".btn.btn-block")
+  end
+
+  def test_renders_button_block_with_scheme
+    render_inline(Primer::ButtonComponent.new(block: true, scheme: :primary)) { "content" }
+
+    assert_selector(".btn.btn-primary.btn-block")
+  end
 end

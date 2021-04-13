@@ -2,6 +2,14 @@
 
 ## main
 
+* Add `block` flag to `ButtonComponent`.
+
+    *Manuel Puyol*
+
+* Add `link` and `invisible` schemes to `ButtonComponent`.
+
+    *Manuel Puyol*
+
 * Create `CloseButton` component.
 
     *Manuel Puyol*
