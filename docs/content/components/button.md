@@ -15,18 +15,20 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ### Schemes
 
-<Example src="<button type='button' class='btn '>Default</button><button type='button' class='btn btn-primary '>Primary</button><button type='button' class='btn btn-danger '>Danger</button><button type='button' class='btn btn-outline '>Outline</button>" />
+<Example src="<button type='button' class='btn '>Default</button><button type='button' class='btn-primary btn '>Primary</button><button type='button' class='btn-danger btn '>Danger</button><button type='button' class='btn-outline btn '>Outline</button><button type='button' class='btn-invisible btn '>Invisible</button><button type='button' class='btn-link '>Link</button>" />
 
 ```erb
 <%= render(Primer::ButtonComponent.new) { "Default" } %>
 <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
 <%= render(Primer::ButtonComponent.new(scheme: :danger)) { "Danger" } %>
 <%= render(Primer::ButtonComponent.new(scheme: :outline)) { "Outline" } %>
+<%= render(Primer::ButtonComponent.new(scheme: :invisible)) { "Invisible" } %>
+<%= render(Primer::ButtonComponent.new(scheme: :link)) { "Link" } %>
 ```
 
 ### Variants
 
-<Example src="<button type='button' class='btn btn-sm '>Small</button><button type='button' class='btn '>Medium</button><button type='button' class='btn btn-large '>Large</button>" />
+<Example src="<button type='button' class='btn-sm btn '>Small</button><button type='button' class='btn '>Medium</button><button type='button' class='btn-large btn '>Large</button>" />
 
 ```erb
 <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>
@@ -34,12 +36,22 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 <%= render(Primer::ButtonComponent.new(variant: :large)) { "Large" } %>
 ```
 
+### Block
+
+<Example src="<button type='button' class='btn btn-block '>Block</button><button type='button' class='btn-primary btn btn-block '>Primary block</button>" />
+
+```erb
+<%= render(Primer::ButtonComponent.new(block: :true)) { "Block" } %>
+<%= render(Primer::ButtonComponent.new(block: :true, scheme: :primary)) { "Primary block" } %>
+```
+
 ## Arguments
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `scheme` | `Symbol` | `:default` | One of `:default`, `:primary`, `:danger`, or `:outline`. |
+| `scheme` | `Symbol` | `:default` | One of `:default`, `:primary`, `:danger`, `:outline`, `:invisible`, or `:link`. |
 | `variant` | `Symbol` | `:medium` | One of `:small`, `:medium`, or `:large`. |
 | `tag` | `Symbol` | `:button` | One of `:button`, `:a`, or `:summary`. |
 | `type` | `Symbol` | `:button` | One of `:button`, `:reset`, or `:submit`. |
 | `group_item` | `Boolean` | `false` | Whether button is part of a ButtonGroup. |
+| `block` | `Boolean` | `false` | Whether button is full-width with `display: block`. |
