@@ -2,7 +2,11 @@
 
 ## main
 
-* Add `link`, `block` and `invisible` schemes to Button.
+* Add `block` flag to `ButtonComponent`.
+
+    *Manuel Puyol*
+
+* Add `link` and `invisible` schemes to `ButtonComponent`.
 
     *Manuel Puyol*
 

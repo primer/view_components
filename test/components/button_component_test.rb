@@ -77,4 +77,16 @@ class PrimerButtonComponentTest < Minitest::Test
     assert_selector(".btn-link")
     refute_selector(".btn")
   end
+
+  def test_renders_button_block
+    render_inline(Primer::ButtonComponent.new(block: true)) { "content" }
+
+    assert_selector(".btn.btn-block")
+  end
+
+  def test_renders_button_block_with_scheme
+    render_inline(Primer::ButtonComponent.new(block: true, scheme: :primary)) { "content" }
+
+    assert_selector(".btn.btn-primary.btn-block")
+  end
 end
