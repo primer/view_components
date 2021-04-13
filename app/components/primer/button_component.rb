@@ -15,6 +15,14 @@ module Primer
     }.freeze
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
+    DEFAULT_VARIANT = :medium
+    VARIANT_MAPPINGS = {
+      :small => "btn-sm",
+      DEFAULT_VARIANT => "",
+      :large => "btn-large"
+    }.freeze
+    VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
+
     # @example Schemes
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
@@ -32,20 +40,24 @@ module Primer
     #   <%= render(Primer::ButtonComponent.new(block: :true, scheme: :primary)) { "Primary block" } %>
     #
     # @param scheme [Symbol] <%= one_of(Primer::ButtonComponent::SCHEME_OPTIONS) %>
-    # @param variant [Symbol] <%= one_of(Primer::Button::Base::VARIANT_OPTIONS) %>
+    # @param variant [Symbol] <%= one_of(Primer::ButtonComponent::VARIANT_OPTIONS) %>
     # @param tag [Symbol] <%= one_of(Primer::Button::Base::TAG_OPTIONS) %>
     # @param type [Symbol] <%= one_of(Primer::Button::Base::TYPE_OPTIONS) %>
     # @param group_item [Boolean] Whether button is part of a ButtonGroup.
     # @param block [Boolean] Whether button is full-width with `display: block`.
     def initialize(
       scheme: DEFAULT_SCHEME,
+      variant: DEFAULT_VARIANT,
+      group_item: false,
       **system_arguments
     )
       @system_arguments = system_arguments
       @system_arguments[:classes] = class_names(
         "btn",
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
-        system_arguments[:classes]
+        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)],
+        system_arguments[:classes],
+        "BtnGroup-item" => group_item
       )
     end
 

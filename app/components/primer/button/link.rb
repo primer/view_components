@@ -13,10 +13,9 @@ module Primer
       # @param tag [Symbol] <%= one_of(Primer::Button::Base::TAG_OPTIONS) %>
       # @param type [Symbol] <%= one_of(Primer::Button::Base::TYPE_OPTIONS) %>
       # @param block [Boolean] Whether button is full-width with `display: block`.
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = system_arguments
-        @system_arguments[:variant] = :medium
-        @system_arguments[:group_item] = false
         @system_arguments[:classes] = class_names(
           "btn-link",
           system_arguments[:classes]

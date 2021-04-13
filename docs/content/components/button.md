@@ -49,8 +49,8 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `scheme` | `Symbol` | `:default` | One of `:default`, `:primary`, `:danger`, `:outline`, or `:invisible`. |
-| `variant` | `Symbol` | N/A | One of `:small`, `:medium`, or `:large`. |
+| `variant` | `Symbol` | `:medium` | One of `:small`, `:medium`, or `:large`. |
 | `tag` | `Symbol` | N/A | One of `:button`, `:a`, or `:summary`. |
 | `type` | `Symbol` | N/A | One of `:button`, `:reset`, or `:submit`. |
-| `group_item` | `Boolean` | N/A | Whether button is part of a ButtonGroup. |
+| `group_item` | `Boolean` | `false` | Whether button is part of a ButtonGroup. |
 | `block` | `Boolean` | N/A | Whether button is full-width with `display: block`. |

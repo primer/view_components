@@ -42,16 +42,4 @@ class PrimerButtonCloseTest < Minitest::Test
 
     refute_selector(".btn-block")
   end
-
-  def test_does_not_render_as_button_group
-    render_inline(Primer::Button::Close.new(group_item: true))
-
-    refute_selector(".BtnGroup-item")
-  end
-
-  def test_does_not_render_variants
-    render_inline(Primer::Button::Close.new(variant: :large))
-
-    refute_selector(".btn-large")
-  end
 end

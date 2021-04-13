@@ -13,16 +13,6 @@ Use Button::Base to render an unstyles `<button>` tag that can be customized.
 
 ## Examples
 
-### Variants
-
-<Example src="<button type='button' class='btn-sm '>Small</button><button type='button'>Medium</button><button type='button' class='btn-large '>Large</button>" />
-
-```erb
-<%= render(Primer::Button::Base.new(variant: :small)) { "Small" } %>
-<%= render(Primer::Button::Base.new(variant: :medium)) { "Medium" } %>
-<%= render(Primer::Button::Base.new(variant: :large)) { "Large" } %>
-```
-
 ### Block
 
 <Example src="<button type='button' class='btn-block '>Block</button><button scheme='primary' type='button' class='btn-block '>Primary block</button>" />
@@ -36,8 +26,7 @@ Use Button::Base to render an unstyles `<button>` tag that can be customized.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `variant` | `Symbol` | `:medium` | One of `:small`, `:medium`, or `:large`. |
 | `tag` | `Symbol` | `:button` | One of `:button`, `:a`, or `:summary`. |
 | `type` | `Symbol` | `:button` | One of `:button`, `:reset`, or `:submit`. |
-| `group_item` | `Boolean` | `false` | Whether button is part of a ButtonGroup. |
 | `block` | `Boolean` | `false` | Whether button is full-width with `display: block`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

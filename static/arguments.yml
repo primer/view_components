@@ -172,10 +172,6 @@
 - component: ButtonBase
   source: https://github.com/primer/view_components/tree/main/app/components/primer/base.rb
   parameters:
-  - name: variant
-    type: Symbol
-    default: "`:medium`"
-    description: One of `:small`, `:medium`, or `:large`.
   - name: tag
     type: Symbol
     default: "`:button`"
@@ -184,14 +180,14 @@
     type: Symbol
     default: "`:button`"
     description: One of `:button`, `:reset`, or `:submit`.
-  - name: group_item
-    type: Boolean
-    default: "`false`"
-    description: Whether button is part of a ButtonGroup.
   - name: block
     type: Boolean
     default: "`false`"
     description: 'Whether button is full-width with `display: block`.'
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: ButtonClose
   source: https://github.com/primer/view_components/tree/main/app/components/primer/close.rb
   parameters:
@@ -218,6 +214,10 @@
     type: Boolean
     default: N/A
     description: 'Whether button is full-width with `display: block`.'
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: ButtonMarketing
   source: https://github.com/primer/view_components/tree/main/app/components/primer/marketing.rb
   parameters:
@@ -250,7 +250,7 @@
     description: One of `:default`, `:primary`, `:danger`, `:outline`, or `:invisible`.
   - name: variant
     type: Symbol
-    default: N/A
+    default: "`:medium`"
     description: One of `:small`, `:medium`, or `:large`.
   - name: tag
     type: Symbol
@@ -262,7 +262,7 @@
     description: One of `:button`, `:reset`, or `:submit`.
   - name: group_item
     type: Boolean
-    default: N/A
+    default: "`false`"
     description: Whether button is part of a ButtonGroup.
   - name: block
     type: Boolean

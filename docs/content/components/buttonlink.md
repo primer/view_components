@@ -36,3 +36,4 @@ Use Button::Link to create a button that looks like a link.
 | `tag` | `Symbol` | N/A | One of `:button`, `:a`, or `:summary`. |
 | `type` | `Symbol` | N/A | One of `:button`, `:reset`, or `:submit`. |
 | `block` | `Boolean` | N/A | Whether button is full-width with `display: block`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

@@ -15,8 +15,6 @@ module Primer
       def initialize(type: DEFAULT_TYPE, **system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] = :button
-        @system_arguments[:variant] = :medium
-        @system_arguments[:group_item] = false
         @system_arguments[:block] = false
         @system_arguments[:type] = fetch_or_fallback(TYPE_OPTIONS, type, DEFAULT_TYPE)
         @system_arguments[:classes] = class_names(
