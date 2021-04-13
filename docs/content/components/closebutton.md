@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use close button to render a `×` without default button styles.
+Use close button to render an `×` without default button styles.
 
 ## Examples
 
