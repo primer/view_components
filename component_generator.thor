@@ -38,10 +38,7 @@ class ComponentGenerator < Thor::Group
 
   def add_to_rakefile
     insert_into_file("Rakefile", "      Primer::#{class_name},\n", after: "    components = [\n")
-
-    return unless js_package_name
-
-    insert_into_file("Rakefile", "      Primer::#{class_name},\n", after: "js_components = [\n", force: true)
+    insert_into_file("Rakefile", "      Primer::#{class_name},\n", after: "js_components = [\n", force: true) if js_package_name
   end
 
   def add_to_component_test
@@ -58,21 +55,15 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_ts_file
-    return unless js_package_name
-
-    template("templates/component.ts.tt", "app/components/primer/#{underscore_name}.ts")
+    template("templates/component.ts.tt", "app/components/primer/#{underscore_name}.ts") if js_package_name
   end
 
   def import_in_primer_ts
-    return unless js_package_name
-
-    append_to_file("app/components/primer/primer.ts", "import './#{underscore_name}'")
+    append_to_file("app/components/primer/primer.ts", "import './#{underscore_name}'") if js_package_name
   end
 
   def install_js_package
-    return unless js_package_name
-
-    run "yarn add #{js_package_name}"
+    run "yarn add #{js_package_name}" if js_package_name
   end
 
   private
