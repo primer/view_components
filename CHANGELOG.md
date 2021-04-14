@@ -10,7 +10,7 @@
 
     *Manuel Puyol*
 
-* Create `CloseButton` component.
+* Create `CloseButton` and `HiddenTextExpander` component.
 
     *Manuel Puyol*
 
