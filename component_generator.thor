@@ -3,6 +3,12 @@
 require "thor"
 require "active_support/core_ext/string/inflections"
 
+# Generates component adding them to the necessary files.
+#
+# Usage:
+#
+# bundle exec thor component_generator my_component_name
+# bundle exec thor component_generator my_component_name -js=some-npm-package
 class ComponentGenerator < Thor::Group
   include Thor::Actions
 
