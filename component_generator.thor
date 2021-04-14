@@ -41,6 +41,15 @@ class ComponentGenerator < Thor::Group
     insert_into_file("test/components/component_test.rb", "    [Primer::#{class_name}, {}],\n", after: "COMPONENTS_WITH_ARGS = [\n")
   end
 
+  def add_to_nav
+    append_to_file("docs/src/@primer/gatsby-theme-doctocat/nav.yml") do
+      <<-HEREDOC
+    - title: #{class_name}
+      url: /components/#{short_name}
+      HEREDOC
+    end
+  end
+
   def create_ts_file
     return unless js_package_name
     template('templates/component.ts.tt', "app/components/primer/#{underscore_name}.ts")
@@ -64,6 +73,10 @@ class ComponentGenerator < Thor::Group
 
   def underscore_name
     name.underscore
+  end
+
+  def short_name
+    class_name.gsub("Component", "").downcase
   end
 
   def js_package_name
