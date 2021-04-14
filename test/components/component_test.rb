@@ -136,35 +136,6 @@ class PrimerComponentTest < Minitest::Test
     assert_component_state(Primer::Component, :alpha)
   end
 
-  def test_components_storybook_coverage
-    components = Dir[Rails.root.join("../app/components/primer/**/*.rb")].map { |path| path.gsub(".rb", "").split("/").last }
-    stories = Dir[Rails.root.join("../stories/primer/**/*.rb")].map { |path| path.gsub("_stories.rb", "").split("/").last }
-
-    # TODO: Remove these exceptions as we add stories
-    expected_missing_stories =
-      [
-        "component", # No story needed
-        "view_components", # No story needed
-        "slot", "component", # No story needed
-        "flex_item_component",
-        "dropdown_menu_component",
-        "base_component",
-        "flex_component"
-      ]
-
-    components_missing_stories = components - stories - expected_missing_stories
-
-    message =
-      if components_missing_stories.any?
-        "It looks like you've added #{components_missing_stories.map(&:camelize).to_sentence} " \
-        "without adding #{components_missing_stories.length > 1 ? 'corresponding stories' : 'a corresponding story'}"
-      else
-        ""
-      end
-
-    assert_empty(components_missing_stories, message)
-  end
-
   def render_component(component, args, proc)
     render_inline(component.new(**args)) do |c|
       proc.call(c) if proc.present?
