@@ -27,8 +27,14 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_stories
-    return unless js_package_name
     template('templates/stories.tt', "stories/primer/#{underscore_name}_stories.rb")
+  end
+
+  def add_to_rakefile
+    insert_into_file "Rakefile", "      Primer::#{class_name},\n", after: "    components = [\n"
+
+    return unless js_package_name
+    insert_into_file "Rakefile", "      Primer::#{class_name},\n", after: "js_components = [\n", force: true
   end
 
   def create_ts_file
@@ -36,12 +42,12 @@ class ComponentGenerator < Thor::Group
     template('templates/component.ts.tt', "app/components/primer/#{underscore_name}.ts")
   end
 
-  def add_to_primer_ts
+  def import_in_primer_ts
     return unless js_package_name
     append_to_file("app/components/primer/primer.ts", "import './#{underscore_name}'")
   end
 
-  def add_js_package
+  def install_js_package
     return unless js_package_name
     run "yarn add #{js_package_name}"
   end
