@@ -5,8 +5,7 @@ require "test_helper"
 class AllComponentsHaveStoriesTest < Minitest::Test
   EXCLUDED_COMPONENTS = [
     Primer::BaseComponent,
-    Primer::FlexItemComponent,
-    Primer::Button::Base
+    Primer::FlexItemComponent
   ].freeze
 
   COMPONENTS = Primer::Component.descendants - EXCLUDED_COMPONENTS

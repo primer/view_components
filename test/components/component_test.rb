@@ -151,8 +151,7 @@ class PrimerComponentTest < Minitest::Test
         "flex_item_component",
         "dropdown_menu_component",
         "base_component",
-        "flex_component",
-        "base"
+        "flex_component"
       ]
 
     components_missing_stories = components - stories - expected_missing_stories
