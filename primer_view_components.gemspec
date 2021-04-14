@@ -47,5 +47,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "simplecov-console", "~> 0.7.2"
   spec.add_development_dependency "sprockets"
   spec.add_development_dependency "sprockets-rails"
+  spec.add_development_dependency "thor"
   spec.add_development_dependency "yard", "~> 0.9.25"
 end

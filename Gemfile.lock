@@ -212,6 +212,7 @@ DEPENDENCIES
   simplecov-console (~> 0.7.2)
   sprockets
   sprockets-rails
+  thor
   view_component_storybook (~> 0.8.0)
   webpacker (~> 5.0)
   yard (~> 0.9.25)
