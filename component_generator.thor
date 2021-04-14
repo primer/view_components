@@ -14,8 +14,12 @@ class ComponentGenerator < Thor::Group
     File.dirname(__FILE__)
   end
 
-  def create_lib_file
+  def create_controller
     template('templates/component.tt', "app/components/primer/#{name.underscore}.rb")
+  end
+
+  def create_template
+    template('templates/component.html.tt', "app/components/primer/#{name.underscore}.html.erb")
   end
 
   private
