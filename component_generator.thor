@@ -36,6 +36,11 @@ class ComponentGenerator < Thor::Group
     template('templates/component.ts.tt', "app/components/primer/#{underscore_name}.ts")
   end
 
+  def add_to_primer_ts
+    return unless js_package_name
+    append_to_file("app/components/primer/primer.ts", "import './#{underscore_name}'")
+  end
+
   def add_js_package
     return unless js_package_name
     run "yarn add #{js_package_name}"
