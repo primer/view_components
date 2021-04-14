@@ -282,7 +282,7 @@
   - name: reset
     type: Boolean
     default: "`false`"
-    description: Defatuls to false. If set to true, it will remove the default caret
+    description: Defaults to false. If set to true, it will remove the default caret
       and remove style from the summary element
   - name: system_arguments
     type: Hash
@@ -290,7 +290,11 @@
     description: "[System arguments](/system-arguments)"
 - component: DetailsMenu
   source: https://github.com/primer/view_components/tree/main/app/components/primer/details_menu_component.rb
-  parameters: []
+  parameters:
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Dropdown
   source: https://github.com/primer/view_components/tree/main/app/components/primer/dropdown_component.rb
   parameters:

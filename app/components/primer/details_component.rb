@@ -20,40 +20,37 @@ module Primer
     # @param button [Boolean] Whether to render the Summary as a button or not.
     # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
     renders_one :summary, lambda { |button: true, **system_arguments|
-                            system_arguments[:tag] = :summary
-                            system_arguments[:role] = "button"
+      system_arguments[:tag] = :summary
+      system_arguments[:role] = "button"
 
-                            return Primer::BaseComponent.new(**system_arguments) unless button
+      return Primer::BaseComponent.new(**system_arguments) unless button
 
-                            Primer::ButtonComponent.new(**system_arguments)
-                          }
+      Primer::ButtonComponent.new(**system_arguments)
+    }
 
     # Use the Body slot as the main content to be shown when triggered by the Summary.
+    # The tag can be set to `details-menu` which render the [DetailsMenuComponent](https://primer.style/view-components/components/detailsmenu).
     #
     # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
     renders_one :body, lambda { |**system_arguments|
-                         system_arguments[:tag] ||= :div
-                         
-                         return Primer::BaseComponent.new(**system_arguments) unless system_arguments[:tag] == "details-menu"
+      system_arguments[:tag] ||= :div
 
-                         Primer::DetailsMenuComponent.new(**system_arguments)
-                       }
+      return Primer::BaseComponent.new(**system_arguments) unless system_arguments[:tag] == :'details-menu'
+
+      Primer::DetailsMenuComponent.new(**system_arguments)
+    }
 
     # @example Default
     #   <%= render(Primer::DetailsComponent.new) do |c| %>
     #     <% c.summary do %>
     #       <span data-menu-button>None</span>
     #     <% end %>
-    #     <% c.body do %>
-    #       <%= render(Primer::DetailsMenuComponent.new) do %>
-    #         <button type="button" role="menuitem" data-menu-button-contents>Item 1</button>
-    #         <button type="button" role="menuitem" data-menu-button-contents>Item 2</button>
-    #         <button type="button" role="menuitem" data-menu-button-contents>Item 3</button>
-    #       <% end %>
+    #     <% c.body(tag: :'details-menu') do %>
+    #       Hello
     #     <% end %>
     #   <% end %>
     # @param overlay [Symbol] Dictates the type of overlay to render with. <%= one_of(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys) %>
-    # @param reset [Boolean] Defatuls to false. If set to true, it will remove the default caret and remove style from the summary element
+    # @param reset [Boolean] Defaults to false. If set to true, it will remove the default caret and remove style from the summary element
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(overlay: NO_OVERLAY, reset: false, **system_arguments)
       @system_arguments = system_arguments

@@ -43,10 +43,6 @@ module Primer
       @header = header
       @direction = direction
       @system_arguments = system_arguments
-
-      @system_arguments[:tag] = "details-menu"
-      @system_arguments[:role] = "menu"
-
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "dropdown-menu",

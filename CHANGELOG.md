@@ -18,6 +18,9 @@
 
     *Manuel Puyol*
 
+* Create `DetailsMenu` component.
+    *Kate Higa*
+
 ## 0.0.35
 
 * Promote `AutoCompleteComponent`, `AutoCompleteItemComponent`, `AvatarStackComponent` and `ButtonComponent` to beta.

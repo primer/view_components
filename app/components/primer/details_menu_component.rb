@@ -1,26 +1,17 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use DetailsMenuComponent for a menu that is opened with a <details> button and includes enhanced javascript behavior.
-  # This is not a stand alone component and should always be used with a [DetailsComponent](http://localhost:5400/components/details).
+  # This component is used by [DetailsComponent][1] and [Dropdown::MenuComponent][1],
+  # and should not be used as a standalone component.
   #
-  # For guidance on usage, [see this](https://github.com/github/details-menu-element).
-  # @example Default
-  #   <%= render(Primer::DetailsComponent.new) do |c| %>
-  #     <% c.summary do %>
-  #       <span data-menu-button>None</span>
-  #     <% end %>
-  #     <% c.body do %>
-  #       <%= render(Primer::DetailsMenuComponent.new) do %>
-  #         <button type="button" role="menuitem" data-menu-button-contents>Item 1</button>
-  #         <button type="button" role="menuitem" data-menu-button-contents>Item 2</button>
-  #         <button type="button" role="menuitem" data-menu-button-contents>Item 3</button>
-  #       <% end %>
-  #     <% end %>
-  #   <% end %>
+  # This can be used to provide `<details>` with a menu that has enhanced keyboard navigations as well as
+  # configurable [javascript][2] behaviors. For further guidance on usage, please see [details-menu-element][1].
   #
-  # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+  # [1]: https://primer.style/view-components/components/details
+  # [2]: https://github.com/github/details-menu-element
+  #
   class DetailsMenuComponent < Primer::Component
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = "details-menu"

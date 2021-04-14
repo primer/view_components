@@ -15,19 +15,15 @@ Use DetailsComponent to reveal content after clicking a button.
 
 ### Default
 
-<Example src="<details>  <summary role='button' type='button' class='btn '>    <span data-menu-button>None</span></summary>  <div>    <details-menu role='menu'>      <button type='button' role='menuitem' data-menu-button-contents>Item 1</button>      <button type='button' role='menuitem' data-menu-button-contents>Item 2</button>      <button type='button' role='menuitem' data-menu-button-contents>Item 3</button></details-menu></div></details>" />
+<Example src="<details>  <summary role='button' class='btn '>    <span data-menu-button>None</span></summary>  <details-menu role='menu'>    Hello</details-menu></details>" />
 
 ```erb
 <%= render(Primer::DetailsComponent.new) do |c| %>
   <% c.summary do %>
     <span data-menu-button>None</span>
   <% end %>
-  <% c.body do %>
-    <%= render(Primer::DetailsMenuComponent.new) do %>
-      <button type="button" role="menuitem" data-menu-button-contents>Item 1</button>
-      <button type="button" role="menuitem" data-menu-button-contents>Item 2</button>
-      <button type="button" role="menuitem" data-menu-button-contents>Item 3</button>
-    <% end %>
+  <% c.body(tag: :'details-menu') do %>
+    Hello
   <% end %>
 <% end %>
 ```
@@ -37,7 +33,7 @@ Use DetailsComponent to reveal content after clicking a button.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `overlay` | `Symbol` | `:none` | Dictates the type of overlay to render with. One of `:none`, `:default`, or `:dark`. |
-| `reset` | `Boolean` | `false` | Defatuls to false. If set to true, it will remove the default caret and remove style from the summary element |
+| `reset` | `Boolean` | `false` | Defaults to false. If set to true, it will remove the default caret and remove style from the summary element |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
@@ -54,6 +50,7 @@ Use the Summary slot as a trigger to reveal the content.
 ### `Body`
 
 Use the Body slot as the main content to be shown when triggered by the Summary.
+The tag can be set to `details-menu` which render the [DetailsMenuComponent](https://primer.style/view-components/components/detailsmenu).
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
