@@ -8,6 +8,20 @@ Contributions to this project are [released](https://help.github.com/articles/gi
 
 Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
+## Creating a component
+
+You can use a generator to create a component and add it to all the necessary files.
+
+```sh
+bundle exec thor component_generator my_component_name
+```
+
+If your component requires a JS package, you can pass the `js` flag to the generator.
+
+```sh
+bundle exec thor component_generator my_component_name --js=some-npm-package-name
+```
+
 ## Submitting a pull request
 
 0. [Fork](https://github.com/primer/view_components/fork) and clone the repository
