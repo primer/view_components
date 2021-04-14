@@ -27,12 +27,18 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_stories
+    return unless js_package_name
     template('templates/stories.tt', "stories/primer/#{underscore_name}_stories.rb")
   end
 
+  def create_ts_file
+    return unless js_package_name
+    template('templates/component.ts.tt', "app/components/primer/#{underscore_name}.ts")
+  end
+
   def add_js_package
-    return unless options[:js]
-    run "yarn add #{options[:js]}"
+    return unless js_package_name
+    run "yarn add #{js_package_name}"
   end
 
   private
@@ -43,5 +49,9 @@ class ComponentGenerator < Thor::Group
 
   def underscore_name
     name.underscore
+  end
+
+  def js_package_name
+    options[:js]
   end
 end
