@@ -8,15 +8,15 @@ Contributions to this project are [released](https://help.github.com/articles/gi
 
 Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-## Creating a component
+## Adding a new component
 
-You can use a generator to create a component and add it to all the necessary files.
+Use the provided generator to create a component:
 
 ```sh
 bundle exec thor component_generator my_component_name
 ```
 
-If your component requires a JS package, you can pass the `js` flag to the generator.
+To declare a dependency on an `npm` package, pass `js` to the generator:
 
 ```sh
 bundle exec thor component_generator my_component_name --js=some-npm-package-name
