@@ -8,7 +8,7 @@ class ComponentGenerator < Thor::Group
 
   # Define arguments and options
   argument :name
-  # class_option :js, default: nil
+  class_option :js, default: nil
 
   def self.source_root
     File.dirname(__FILE__)
@@ -28,6 +28,11 @@ class ComponentGenerator < Thor::Group
 
   def create_stories
     template('templates/stories.tt', "stories/primer/#{underscore_name}_stories.rb")
+  end
+
+  def add_js_package
+    return unless options[:js]
+    run "yarn add #{options[:js]}"
   end
 
   private
