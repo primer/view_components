@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Primer
   # Add a description gere
   class FooBar < Primer::Component

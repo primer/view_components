@@ -22,6 +22,10 @@ class ComponentGenerator < Thor::Group
     template('templates/component.html.tt', "app/components/primer/#{name.underscore}.html.erb")
   end
 
+  def create_test
+    template('templates/test.tt', "test/components/#{name.underscore}_test.rb")
+  end
+
   private
 
   def class_name
