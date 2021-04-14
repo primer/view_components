@@ -44,7 +44,7 @@ class ComponentGenerator < Thor::Group
   def add_to_nav
     append_to_file("docs/src/@primer/gatsby-theme-doctocat/nav.yml") do
       <<-HEREDOC
-    - title: #{class_name}
+    - title: #{class_name} - Fix my order in docs/src/@primer/gatsby-theme-doctocat/nav.yml
       url: /components/#{short_name}
       HEREDOC
     end
