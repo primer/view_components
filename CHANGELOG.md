@@ -2,6 +2,10 @@
 
 ## main
 
+* Promote `TruncateComponent` to beta.
+
+    *Manuel Puyol*
+
 * Add `block` flag to `ButtonComponent`.
 
     *Manuel Puyol*

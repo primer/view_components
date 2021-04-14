@@ -3,6 +3,8 @@
 module Primer
   # Use TruncateComponent to shorten overflowing text with an ellipsis.
   class TruncateComponent < Primer::Component
+    status :beta
+
     # @example Default
     #   <div class="col-2">
     #     <%= render(Primer::TruncateComponent.new(tag: :p)) { "branch-name-that-is-really-long" } %>
