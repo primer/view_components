@@ -31,10 +31,14 @@ class ComponentGenerator < Thor::Group
   end
 
   def add_to_rakefile
-    insert_into_file "Rakefile", "      Primer::#{class_name},\n", after: "    components = [\n"
+    insert_into_file("Rakefile", "      Primer::#{class_name},\n", after: "    components = [\n")
 
     return unless js_package_name
-    insert_into_file "Rakefile", "      Primer::#{class_name},\n", after: "js_components = [\n", force: true
+    insert_into_file("Rakefile", "      Primer::#{class_name},\n", after: "js_components = [\n", force: true)
+  end
+
+  def add_to_component_test
+    insert_into_file("test/components/component_test.rb", "    [Primer::#{class_name}, {}],\n", after: "COMPONENTS_WITH_ARGS = [\n")
   end
 
   def create_ts_file
