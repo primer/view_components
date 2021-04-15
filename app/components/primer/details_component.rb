@@ -13,7 +13,7 @@ module Primer
     }.freeze
 
     BODY_TAG_DEFAULT = :div
-    BODY_TAG_OPTIONS = [BODY_TAG_DEFAULT, "details-menu"].freeze
+    BODY_TAG_OPTIONS = [BODY_TAG_DEFAULT, :"details-menu"].freeze
 
     # Use the Summary slot as a trigger to reveal the content.
     #
@@ -36,7 +36,7 @@ module Primer
       system_arguments[:tag] ||= :div
 
       return Primer::BaseComponent.new(**system_arguments) unless system_arguments[:tag] == :'details-menu'
-
+      
       Primer::DetailsMenuComponent.new(**system_arguments)
     }
 

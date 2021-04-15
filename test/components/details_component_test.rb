@@ -57,6 +57,19 @@ class PrimerDetailsComponentTest < Minitest::Test
     assert_selector("summary.btn")
   end
 
+  def test_renders_details_menu_if_tag_is_set
+    render_inline(Primer::DetailsComponent.new) do |component|
+      component.summary do
+        "Summary"
+      end
+      component.body(tag: :'details-menu') do
+        "Body"
+      end
+    end
+
+    assert_selector("details-menu")
+  end
+
   def test_does_not_render_btn_if_button_false
     render_inline(Primer::DetailsComponent.new) do |component|
       component.summary(button: false) do
