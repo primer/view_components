@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Primer::TruncateComponentStories < ViewComponent::Storybook::Stories
+class Primer::TruncateStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:truncate) do

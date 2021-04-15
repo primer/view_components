@@ -162,7 +162,7 @@ namespace :docs do
       Primer::TimeAgoComponent,
       Primer::TimelineItemComponent,
       Primer::TooltipComponent,
-      Primer::TruncateComponent,
+      Primer::Truncate,
       Primer::UnderlineNavComponent
     ]
 

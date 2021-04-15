@@ -1,7 +1,7 @@
 ---
 title: Truncate
 status: Beta
-source: https://github.com/primer/view_components/tree/main/app/components/primer/truncate_component.rb
+source: https://github.com/primer/view_components/tree/main/app/components/primer/truncate.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-truncate-component
 ---
 
@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use TruncateComponent to shorten overflowing text with an ellipsis.
+Use Truncate to shorten overflowing text with an ellipsis.
 
 ## Examples
 
@@ -19,7 +19,7 @@ Use TruncateComponent to shorten overflowing text with an ellipsis.
 
 ```erb
 <div class="col-2">
-  <%= render(Primer::TruncateComponent.new(tag: :p)) { "branch-name-that-is-really-long" } %>
+  <%= render(Primer::Truncate.new(tag: :p)) { "branch-name-that-is-really-long" } %>
 </div>
 ```
 
@@ -28,7 +28,7 @@ Use TruncateComponent to shorten overflowing text with an ellipsis.
 <Example src="<span class='css-truncate css-truncate-target '>branch-name-that-is-really-long</span>" />
 
 ```erb
-<%= render(Primer::TruncateComponent.new(tag: :span, inline: true)) { "branch-name-that-is-really-long" } %>
+<%= render(Primer::Truncate.new(tag: :span, inline: true)) { "branch-name-that-is-really-long" } %>
 ```
 
 ### Expandable
@@ -36,7 +36,7 @@ Use TruncateComponent to shorten overflowing text with an ellipsis.
 <Example src="<span class='css-truncate css-truncate-target expandable '>branch-name-that-is-really-long</span>" />
 
 ```erb
-<%= render(Primer::TruncateComponent.new(tag: :span, inline: true, expandable: true)) { "branch-name-that-is-really-long" } %>
+<%= render(Primer::Truncate.new(tag: :span, inline: true, expandable: true)) { "branch-name-that-is-really-long" } %>
 ```
 
 ### Custom size
@@ -44,7 +44,7 @@ Use TruncateComponent to shorten overflowing text with an ellipsis.
 <Example src="<span style='max-width: 100px;' class='css-truncate css-truncate-target expandable '>branch-name-that-is-really-long</span>" />
 
 ```erb
-<%= render(Primer::TruncateComponent.new(tag: :span, inline: true, expandable: true, max_width: 100)) { "branch-name-that-is-really-long" } %>
+<%= render(Primer::Truncate.new(tag: :span, inline: true, expandable: true, max_width: 100)) { "branch-name-that-is-really-long" } %>
 ```
 
 ## Arguments

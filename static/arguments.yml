@@ -697,7 +697,7 @@
     default: N/A
     description: "[System arguments](/system-arguments)"
 - component: Truncate
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/truncate_component.rb
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/truncate.rb
   parameters:
   - name: inline
     type: Boolean

@@ -1,23 +1,23 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use TruncateComponent to shorten overflowing text with an ellipsis.
-  class TruncateComponent < Primer::Component
+  # Use Truncate to shorten overflowing text with an ellipsis.
+  class Truncate < Primer::Component
     status :beta
 
     # @example Default
     #   <div class="col-2">
-    #     <%= render(Primer::TruncateComponent.new(tag: :p)) { "branch-name-that-is-really-long" } %>
+    #     <%= render(Primer::Truncate.new(tag: :p)) { "branch-name-that-is-really-long" } %>
     #   </div>
     #
     # @example Inline
-    #   <%= render(Primer::TruncateComponent.new(tag: :span, inline: true)) { "branch-name-that-is-really-long" } %>
+    #   <%= render(Primer::Truncate.new(tag: :span, inline: true)) { "branch-name-that-is-really-long" } %>
     #
     # @example Expandable
-    #   <%= render(Primer::TruncateComponent.new(tag: :span, inline: true, expandable: true)) { "branch-name-that-is-really-long" } %>
+    #   <%= render(Primer::Truncate.new(tag: :span, inline: true, expandable: true)) { "branch-name-that-is-really-long" } %>
     #
     # @example Custom size
-    #   <%= render(Primer::TruncateComponent.new(tag: :span, inline: true, expandable: true, max_width: 100)) { "branch-name-that-is-really-long" } %>
+    #   <%= render(Primer::Truncate.new(tag: :span, inline: true, expandable: true, max_width: 100)) { "branch-name-that-is-really-long" } %>
     #
     # @param inline [Boolean] Whether the element is inline (or inline-block).
     # @param expandable [Boolean] Whether the entire string should be revealed on hover. Can only be used in conjunction with `inline`.

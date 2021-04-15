@@ -2,10 +2,6 @@
 
 ## main
 
-* Promote `TruncateComponent` to beta.
-
-    *Manuel Puyol*
-
 * Add `block` flag to `ButtonComponent`.
 
     *Manuel Puyol*
@@ -19,6 +15,10 @@
     *Manuel Puyol*
 
 * **Breaking change**: Rename `AutoCompleteComponent` to `AutoComplete` and `AutoCompleteItemComponent` to `AutoComplete::Item`.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Rename `TruncateComponent` to `Truncate` and promote it to beta.
 
     *Manuel Puyol*
 
