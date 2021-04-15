@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.36
+
 * Add `block` flag to `ButtonComponent`.
 
     *Manuel Puyol*
