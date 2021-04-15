@@ -2,6 +2,12 @@
 
 ## main
 
+## 0.0.37
+
+* Update NPM package to include subdirectory JS files.
+
+    *Manuel Puyol*
+
 ## 0.0.36
 
 * Add `block` flag to `ButtonComponent`.
