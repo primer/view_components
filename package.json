@@ -20,8 +20,8 @@
     "url": "https://github.com/primer/view_components/issues"
   },
   "files": [
-    "app/components/primer/*.js",
-    "app/components/primer/*.d.ts"
+    "app/components/primer/**/*.js",
+    "app/components/primer/**/*.d.ts"
   ],
   "scripts": {
     "prepare": "tsc && rollup -c",
