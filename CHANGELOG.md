@@ -18,6 +18,10 @@
 
     *Manuel Puyol*
 
+* **Breaking change**: Rename `TruncateComponent` to `Truncate` and promote it to beta.
+
+    *Manuel Puyol*
+
 ## 0.0.35
 
 * Promote `AutoCompleteComponent`, `AutoCompleteItemComponent`, `AvatarStackComponent` and `ButtonComponent` to beta.
