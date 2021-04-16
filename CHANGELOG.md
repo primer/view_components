@@ -2,6 +2,10 @@
 
 ## main
 
+* **Breaking change**: Don't allow `StateComponent` to be a link.
+
+    *Kate Higa*
+
 ## 0.0.37
 
 * Update NPM package to include subdirectory JS files.

@@ -577,7 +577,7 @@
   - name: tag
     type: Symbol
     default: "`:span`"
-    description: HTML tag for element. One of `:span`, `:div`, or `:a`.
+    description: HTML tag for element. One of `:span` and `:div`.
   - name: size
     type: Symbol
     default: "`:default`"
