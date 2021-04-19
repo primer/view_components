@@ -15,7 +15,7 @@ module Primer
     CONCAT_KEYS = SPACING_KEYS + %i[hide position v float col text box_shadow].freeze
 
     INVALID_CLASS_NAME_PREFIXES =
-      (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "text-", "box-shadow-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
+      (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "box-shadow-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
 
     COLOR_KEY = :color
     BG_KEY = :bg
