@@ -6,6 +6,10 @@
 
     *Kate Higa*
 
+* Add default `aria-label` of "Close" to `CloseButton` component.
+
+    *Kate Higa*
+
 ## 0.0.37
 
 * Update NPM package to include subdirectory JS files.

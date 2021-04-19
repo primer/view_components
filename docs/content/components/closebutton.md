@@ -11,11 +11,17 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use CloseButton to render an `×` without default button styles.
 
+## Accessibility
+
+- This component has a default `aria-label` of "Close" which provides assistive technologies with an accessible label. You may override this label with [system_arguments][0].
+
+[0]: https://primer.style/view-components/system-arguments#html-attributes
+
 ## Examples
 
 ### Default
 
-<Example src="<button type='button' class='close-button '><svg class='octicon octicon-x' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg></button>" />
+<Example src="<button type='button' aria-label='Close' class='close-button '><svg class='octicon octicon-x' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg></button>" />
 
 ```erb
 <%= render(Primer::CloseButton.new) %>
