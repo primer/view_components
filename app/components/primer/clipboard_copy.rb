@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # Use ClipboardCopy to populate copy values from the DOM
   class ClipboardCopy < Primer::Component
     status :alpha
 
