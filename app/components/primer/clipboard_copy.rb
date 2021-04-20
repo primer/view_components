@@ -47,7 +47,6 @@ module Primer
     def initialize(**system_arguments)
       @id = system_arguments[:id]
       system_arguments[:id] = nil
-      @text = system_arguments[:text]
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = "clipboard-copy"
