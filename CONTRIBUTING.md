@@ -27,8 +27,7 @@ bundle exec thor component_generator my_component_name --js=some-npm-package-nam
 0. [Fork](https://github.com/primer/view_components/fork) and clone the repository
 0. Configure and install the dependencies: `./script/setup`
 0. Make sure the tests pass on your machine: `bundle exec rake`
-  - You can restrict the test runner to only run your changes by supplying a filename or glob to the test command: `TESTS="test/components/YOUR_COMPONENT_test.rb" bundle exec rake`
-
+   - You can restrict the test runner to only run your changes by supplying a filename or glob to the test command: `TESTS="test/components/YOUR_COMPONENT_test.rb" bundle exec rake`
 0. Create a new branch: `git checkout -b my-branch-name`
 0. Make your change, add tests, and make sure the tests still pass
 0. Add an entry to the top of `CHANGELOG.md` for your changes
