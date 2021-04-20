@@ -5,9 +5,7 @@ class Primer::ClipboardCopyStories < ViewComponent::Storybook::Stories
 
   story(:clipboard_copy_simple) do
     controls do
-      text(:id, "id")
       text(:value, "Text to copy")
-      text(:classes, "btn btn-sm")
     end
 
     content do
