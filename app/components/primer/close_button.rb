@@ -2,6 +2,12 @@
 
 module Primer
   # Use CloseButton to render an `×` without default button styles.
+  #
+  # ## Accessibility
+  #
+  # - This component has a default `aria-label` of "Close" which provides assistive technologies with an accessible label. You may override this label with [system_arguments][0].
+  #
+  # [0]: https://primer.style/view-components/system-arguments#html-attributes
   class CloseButton < Primer::Component
     DEFAULT_TYPE = :button
     TYPE_OPTIONS = [DEFAULT_TYPE, :submit].freeze
@@ -19,6 +25,7 @@ module Primer
         "close-button",
         system_arguments[:classes]
       )
+      @system_arguments[:"aria-label"] ||= "Close"
     end
 
     def call
