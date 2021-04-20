@@ -59,4 +59,21 @@ class PrimerClipboardCopyTest < Minitest::Test
     end
     assert_selector("a[id=\"foo\"][href=\"/path/to/copy\"]")
   end
+
+  def test_renders_with_random_id_if_one_isnt_supplied
+    render_inline Primer::ClipboardCopy.new do |component|
+      component.target do
+        "Text to copy"
+      end
+
+      "Click to copy!"
+    end
+
+    assert_selector("clipboard-copy[for^=\"clipboard-copy-\"]") do |node|
+      assert_equal(node.text.strip, "Click to copy!")
+    end
+    assert_selector("div[id^=\"clipboard-copy-\"]") do |node|
+      assert_equal(node.text.strip, "Text to copy")
+    end
+  end
 end

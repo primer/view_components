@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+def random_string(size = 10)
+  ("a".."z").to_a.sample(size).join
+end
+
 module Primer
   # Use ClipboardCopy to copy element text content or input values to the clipboard.
   class ClipboardCopy < Primer::Component
@@ -45,7 +49,7 @@ module Primer
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)
-      @id = system_arguments[:id]
+      @id = system_arguments[:id] || "clipboard-copy-#{random_string(20)}"
       system_arguments[:id] = nil
 
       @system_arguments = system_arguments
