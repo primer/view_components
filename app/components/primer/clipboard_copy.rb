@@ -66,6 +66,7 @@ module Primer
     #     Click to copy!
     #   <% end %>
     #
+    # @param value [String] Text to copy into the users clipboard when they click the component
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)
       @id = system_arguments[:id] || "clipboard-copy-#{random_string(20)}"
