@@ -13,11 +13,14 @@ module Primer
     #     "Click to copy!"
     #   <% end %>
     #
+    # @param label [String] String that will be read to screenreaders when the component is focused
     # @param value [String] Text to copy into the users clipboard when they click the component
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(**system_arguments)
+    def initialize(label:, value:, **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = "clipboard-copy"
+      @system_arguments[:value] = value
+      @system_arguments[:"aria-label"] = label
     end
   end
 end
