@@ -6,6 +6,22 @@ class PrimerClipboardCopyTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_simple
+    render_inline Primer::ClipboardCopy.new do |component|
+      component.target do
+        "Text to copy"
+      end
+    end
+
+    assert_selector("div[id^=\"clipboard-copy-\"]") do |node|
+      assert_equal(node.text.strip, "Text to copy")
+    end
+    assert_selector("clipboard-copy[for^=\"clipboard-copy-\"]") do
+      assert_selector("svg[class=\"octicon octicon-clippy\"]")
+      assert_selector("svg[style=\"display: none;\"][class=\"octicon octicon-check color-icon-success\"]", { visible: false })
+    end
+  end
+
+  def test_renders_with_text_contents
     render_inline Primer::ClipboardCopy.new(value: "Text to copy") do
       "Click to copy!"
     end

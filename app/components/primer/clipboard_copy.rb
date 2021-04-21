@@ -9,6 +9,25 @@ module Primer
   class ClipboardCopy < Primer::Component
     status :alpha
 
+    # Optional icon to show for the element, defaults to a "clippy" icon
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    renders_one :copy_icon, lambda { |**system_arguments|
+      system_arguments[:icon] ||= "clippy"
+
+      Primer::OcticonComponent.new(**system_arguments)
+    }
+
+    # Optional icon to show for 2 seconds after the copy icon has been clicked, defaults to a "check" icon.
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    renders_one :check_icon, lambda { |**system_arguments|
+      system_arguments[:icon] ||= "check"
+      system_arguments[:style] ||= "display: none;"
+
+      Primer::OcticonComponent.new(**system_arguments)
+    }
+
     # Optional target element that holds the data the user will copy.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

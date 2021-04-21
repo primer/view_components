@@ -8,6 +8,14 @@ class Primer::ClipboardCopyStories < ViewComponent::Storybook::Stories
       text(:value, "Text to copy")
     end
 
+    content
+  end
+
+  story(:clipboard_copy_text_contents) do
+    controls do
+      text(:value, "Text to copy")
+    end
+
     content do
       "Click to copy!"
     end
