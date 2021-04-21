@@ -21,7 +21,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::ButtonComponent, {}],
     [Primer::ButtonGroupComponent, {}, proc { |component| component.button { "Button" } }],
     [Primer::ButtonMarketingComponent, {}],
-    [Primer::ClipboardCopy, {}],
+    [Primer::ClipboardCopy, { label: "Sting that will be read to screenreaders", value: "String that will be copied" }],
     [Primer::CloseButton, {}],
     [Primer::CounterComponent, { count: 1 }],
     [Primer::DetailsComponent, {}, lambda do |component|
