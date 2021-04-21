@@ -40,7 +40,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::FlexComponent, {}],
     [Primer::FlashComponent, {}],
     [Primer::FlexItemComponent, { flex_auto: true }],
-    [Primer::HeadingComponent, {}],
+    [Primer::HeadingComponent, { tag: :h1 }],
     [Primer::HiddenTextExpander, {}],
     [Primer::LabelComponent, { title: "Hello!" }],
     [Primer::LayoutComponent, {}],
