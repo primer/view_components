@@ -130,6 +130,7 @@ namespace :docs do
     registry = YARD::RegistryStore.new
     registry.load!(".yardoc")
     components = [
+      Primer::ImageCrop,
       Primer::AutoComplete,
       Primer::AutoComplete::Item,
       Primer::AvatarComponent,
@@ -176,6 +177,7 @@ namespace :docs do
     ]
 
     js_components = [
+      Primer::ImageCrop,
       Primer::AutoComplete,
       Primer::TimeAgoComponent,
       Primer::TabContainerComponent,

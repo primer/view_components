@@ -1,0 +1,14 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <% if loading.present? %>
+    <%= loading %>
+  <% else %>
+    <div data-loading-slot>
+      <%= render(Primer::SpinnerComponent.new(size: :large, classes: "flex-1")) %>
+    </div>
+  <% end %>
+
+  <input type="hidden" data-image-crop-input="x" name="cropped_x">
+  <input type="hidden" data-image-crop-input="y" name="cropped_y">
+  <input type="hidden" data-image-crop-input="width" name="cropped_width">
+  <input type="hidden" data-image-crop-input="height" name="cropped_height">
+<% end %>
