@@ -11,55 +11,12 @@ class Primer::ClipboardCopyStories < ViewComponent::Storybook::Stories
     content
   end
 
-  story(:clipboard_copy_text_contents) do
+  story(:clipboard_copy_text) do
     controls do
       text(:value, "Text to copy")
     end
 
     content do
-      "Click to copy!"
-    end
-  end
-
-  story(:clipboard_copy_with_target) do
-    controls do
-      text(:id, "id")
-      text(:classes, "btn btn-sm")
-    end
-
-    content do |component|
-      component.target do
-        "Text to copy"
-      end
-
-      "Click to copy!"
-    end
-  end
-
-  story(:clipboard_copy_with_form_target) do
-    controls do
-      text(:id, "id")
-      text(:classes, "btn btn-sm")
-    end
-
-    content do |component|
-      component.target(tag: :input, value: "Text to copy")
-
-      "Click to copy!"
-    end
-  end
-
-  story(:clipboard_copy_with_link_target) do
-    controls do
-      text(:id, "id")
-      text(:classes, "btn btn-sm")
-    end
-
-    content do |component|
-      component.target(tag: :a, href: "/path/to/copy") do
-        "Link whos href will be copied"
-      end
-
       "Click to copy!"
     end
   end

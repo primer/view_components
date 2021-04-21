@@ -1,12 +1,8 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <% if content.present? %>
     <%= content %>
-  <% elsif copy_icon.present? %>
-    <%= copy_icon %>
-    <%= check_icon %>
   <% else %>
     <%= render Primer::OcticonComponent.new("clippy") %>
     <%= render Primer::OcticonComponent.new("check", color: :icon_success, style: "display: none;") %>
   <% end %>
 <% end %>
-<%= target %>
