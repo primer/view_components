@@ -200,6 +200,10 @@
 - component: ButtonGroup
   source: https://github.com/primer/view_components/tree/main/app/components/primer/button_group_component.rb
   parameters:
+  - name: variant
+    type: Symbol
+    default: "`Primer::ButtonComponent::DEFAULT_VARIANT`"
+    description: One of `:small`, `:medium`, or `:large`.
   - name: system_arguments
     type: Hash
     default: N/A
