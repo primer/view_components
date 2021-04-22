@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module Primer
-  # Add a description gere
+  # Add a description here
   class <%= class_name %> < Primer::Component
     # @example Example goes here
     #
-    #   <%%= render(<%= class_name %>.new) { "Example" } %>
+    #   <%%= render(Primer::<%= class_name %>.new) { "Example" } %>
     #
     # @param system_arguments [Hash] <%%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)
