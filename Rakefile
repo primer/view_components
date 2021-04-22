@@ -22,6 +22,9 @@ end
 
 YARD::Rake::YardocTask.new
 
+# Custom tags for yard
+YARD::Tags::Library.define_tag("Accessibility", :accessibility)
+
 namespace :coverage do
   task :report do
     require "simplecov"
@@ -210,6 +213,15 @@ namespace :docs do
         f.puts
         f.puts(view_context.render(inline: documentation.base_docstring))
         f.puts
+
+        if documentation.tags(:accessibility).any?
+          f.puts("## Accessibility")
+          f.puts
+          documentation.tags(:accessibility).each do |tag|
+            f.puts view_context.render(inline: tag.text)
+            f.puts
+          end
+        end
 
         initialize_method = documentation.meths.find(&:constructor?)
 
