@@ -34,6 +34,8 @@
       url: /components/buttongroup
     - title: ButtonMarketing
       url: /components/buttonmarketing
+    - title: ClipboardCopy
+      url: /components/clipboardcopy
     - title: CloseButton
       url: /components/closebutton
     - title: Counter
