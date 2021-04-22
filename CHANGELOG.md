@@ -2,11 +2,15 @@
 
 ## main
 
-* **Breaking change**: Don't allow `StateComponent` to be a link.
+* Extract `BaseButton` component.
+
+    *Manuel Puyol*
+
+* Add default `aria-label` of "Close" to `CloseButton` component.
 
     *Kate Higa*
 
-* Add default `aria-label` of "Close" to `CloseButton` component.
+* **Breaking change**: Don't allow `StateComponent` to be a link.
 
     *Kate Higa*
 
