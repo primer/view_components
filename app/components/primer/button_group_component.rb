@@ -5,7 +5,7 @@ module Primer
   class ButtonGroupComponent < Primer::Component
     # Required list of buttons to be rendered.
     #
-    # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
+    # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %> except `variant` and `group_item`.
     renders_many :buttons, lambda { |**kwargs|
       kwargs[:group_item] = true
       kwargs[:variant] = @variant
