@@ -23,11 +23,11 @@ Use ClipboardCopy to copy element text content or input values to the clipboard.
 
 ### With text instead of icons
 
-<Example src="<clipboard-copy value='Text to copy' aria-label='Copy text to the system clipboard'>      'Click to copy!'</clipboard-copy>" />
+<Example src="<clipboard-copy value='Text to copy' aria-label='Copy text to the system clipboard'>      Click to copy!</clipboard-copy>" />
 
 ```erb
 <%= render(Primer::ClipboardCopy.new(value: "Text to copy", label: "Copy text to the system clipboard")) do %>
-  "Click to copy!"
+  Click to copy!
 <% end %>
 ```
 
