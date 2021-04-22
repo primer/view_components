@@ -11,11 +11,12 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use CloseButton to render an `×` without default button styles.
 
+[0]: https://primer.style/view-components/system-arguments#html-attributes
+
 ## Accessibility
 
-- This component has a default `aria-label` of "Close" which provides assistive technologies with an accessible label. You may override this label with [system_arguments][0].
-
-[0]: https://primer.style/view-components/system-arguments#html-attributes
+CloseButton has a default `aria-label` of "Close" to provides assistive technologies with an accessible label.
+You may choose to override this label with something more descriptive via [system_arguments][0].
 
 ## Examples
 
