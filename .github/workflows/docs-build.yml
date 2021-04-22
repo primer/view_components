@@ -1,13 +1,10 @@
 name: Docs Build
 
-on:
-  push:
-    branches-ignore:
-      - main
-
+on: [pull_request]
 
 jobs:
   build-docs:
+    if: github.actor!= 'dependabot[bot]'
     name: Build Docs
     runs-on: ubuntu-latest
     steps:
