@@ -1,0 +1,8 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <% if content.present? %>
+    <%= content %>
+  <% else %>
+    <%= render Primer::OcticonComponent.new("clippy") %>
+    <%= render Primer::OcticonComponent.new("check", color: :icon_success, style: "display: none;") %>
+  <% end %>
+<% end %>
