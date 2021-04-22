@@ -10,7 +10,7 @@ module Primer
     #
     # @example With text instead of icons
     #   <%= render(Primer::ClipboardCopy.new(value: "Text to copy", label: "Copy text to the system clipboard")) do %>
-    #     "Click to copy!"
+    #     Click to copy!
     #   <% end %>
     #
     # @param label [String] String that will be read to screenreaders when the component is focused
