@@ -5,7 +5,7 @@ require "capybara/rails"
 require "capybara/minitest"
 require "capybara/cuprite"
 
-Ferrum::Browser.new(process_timeout: 15)
+Ferrum::Browser.new(process_timeout: 60, timeout: 60)
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :cuprite, using: :chrome, screen_size: [1400, 1400]
