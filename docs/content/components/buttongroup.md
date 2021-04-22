@@ -64,4 +64,4 @@ Required list of buttons to be rendered.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | The same arguments as [Button](/components/button) except `variant` and `group_item`. |
+| `kwargs` | `Hash` | N/A | The same arguments as [Button](/components/button) except for `variant` and `group_item`. |
