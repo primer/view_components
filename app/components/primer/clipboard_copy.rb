@@ -6,10 +6,10 @@ module Primer
     status :alpha
 
     # @example Default
-    #   <%= render(Primer::ClipboardCopy.new(value: "Text to copy")) %>
+    #   <%= render(Primer::ClipboardCopy.new(value: "Text to copy", label: "Copy text to the system clipboard")) %>
     #
     # @example With text instead of icons
-    #   <%= render(Primer::ClipboardCopy.new(value: "Text to copy")) do %>
+    #   <%= render(Primer::ClipboardCopy.new(value: "Text to copy", label: "Copy text to the system clipboard")) do %>
     #     "Click to copy!"
     #   <% end %>
     #

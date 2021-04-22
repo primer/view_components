@@ -134,6 +134,7 @@ namespace :docs do
       Primer::ButtonComponent,
       Primer::ButtonGroupComponent,
       Primer::ButtonMarketingComponent,
+      Primer::ClipboardCopy,
       Primer::CloseButton,
       Primer::CounterComponent,
       Primer::DetailsComponent,
