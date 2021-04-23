@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use BaseButton to render an unstyles `<button>` tag that can be customized.
+  # Use BaseButton to render an unstyled `<button>` tag that can be customized.
   class BaseButton < Primer::Component
     status :beta
 
