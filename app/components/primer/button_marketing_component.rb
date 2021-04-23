@@ -50,14 +50,9 @@ module Primer
       **system_arguments
     )
       @system_arguments = system_arguments
+      @system_arguments[:block] = false
       @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
-
-      if @system_arguments[:tag] == :a
-        @system_arguments[:role] = :button
-      else
-        @system_arguments[:type] = fetch_or_fallback(TYPE_OPTIONS, type, DEFAULT_TYPE)
-      end
-
+      @system_arguments[:type] = fetch_or_fallback(TYPE_OPTIONS, type, DEFAULT_TYPE)
       @system_arguments[:classes] = class_names(
         "btn-mktg",
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
@@ -67,7 +62,7 @@ module Primer
     end
 
     def call
-      render(Primer::BaseComponent.new(**@system_arguments)) { content }
+      render(Primer::BaseButton.new(**@system_arguments)) { content }
     end
   end
 end

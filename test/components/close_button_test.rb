@@ -36,4 +36,10 @@ class PrimerCloseButtonTest < Minitest::Test
 
     refute_text("content")
   end
+
+  def test_does_not_render_as_block
+    render_inline(Primer::CloseButton.new(block: true))
+
+    refute_selector(".btn-block")
+  end
 end

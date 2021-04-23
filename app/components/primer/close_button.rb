@@ -19,6 +19,7 @@ module Primer
     def initialize(type: DEFAULT_TYPE, **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = :button
+      @system_arguments[:block] = false
       @system_arguments[:type] = fetch_or_fallback(TYPE_OPTIONS, type, DEFAULT_TYPE)
       @system_arguments[:classes] = class_names(
         "close-button",
@@ -28,7 +29,7 @@ module Primer
     end
 
     def call
-      render(Primer::BaseComponent.new(**@system_arguments)) do
+      render(Primer::BaseButton.new(**@system_arguments)) do
         render(Primer::OcticonComponent.new("x"))
       end
     end

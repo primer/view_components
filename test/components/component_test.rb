@@ -13,6 +13,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::AvatarStackComponent, {}, lambda do |component|
       component.avatar(alt: "github", src: "https://github.com/github.png")
     end],
+    [Primer::BaseButton, {}],
     [Primer::BaseComponent, { tag: :div }],
     [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::BorderBoxComponent, {}, proc { |component| component.header { "Foo" } }],
