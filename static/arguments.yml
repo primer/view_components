@@ -201,8 +201,7 @@
   - name: scheme
     type: Symbol
     default: "`:default`"
-    description: One of `:default`, `:primary`, `:danger`, `:outline`, `:invisible`,
-      or `:link`.
+    description: One of `:default`, `:primary`, `:danger`, `:outline`, or `:invisible`.
   - name: variant
     type: Symbol
     default: "`:medium`"
