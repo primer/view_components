@@ -6,11 +6,10 @@ module Primer
   # @accessibility
   #   IconButton requires a `label` which will set the element's `aria-label`, providing assistive technologies with an accessible label.
   class IconButton < Primer::Component
-
     DEFAULT_SCHEME = :default
     SCHEME_MAPPINGS = {
       DEFAULT_SCHEME => "",
-      :danger => "btn-octicon-danger",
+      :danger => "btn-octicon-danger"
     }.freeze
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
     # @example Default
