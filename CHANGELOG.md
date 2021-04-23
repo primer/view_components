@@ -2,6 +2,10 @@
 
 ## main
 
+* Add `icon` and `counter` slots to `ButtonComponent`.
+
+    *Manuel Puyol*
+
 * Extract `BaseButton` component.
 
     *Manuel Puyol*
