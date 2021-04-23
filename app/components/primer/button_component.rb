@@ -11,7 +11,7 @@ module Primer
       :primary => "btn-primary",
       :danger => "btn-danger",
       :outline => "btn-outline",
-      :invisible => "btn-invisible",
+      :invisible => "btn-invisible"
     }.freeze
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 

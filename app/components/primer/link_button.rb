@@ -4,7 +4,7 @@ module Primer
   # Use LinkButton to create a button that looks like a link rather than using an `<a>` to trigger JS.
   class LinkButton < Primer::Component
     # @example Default
-    #   <%= render(Primer::LinkButton.new) %>
+    #   <%= render(Primer::LinkButton.new) { "Link" } %>
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)

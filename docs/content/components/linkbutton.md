@@ -15,10 +15,10 @@ Use LinkButton to create a button that looks like a link rather than using an `<
 
 ### Default
 
-<Example src="<button type='button' class='btn-link '></button>" />
+<Example src="<button type='button' class='btn-link '>Link</button>" />
 
 ```erb
-<%= render(Primer::LinkButton.new) %>
+<%= render(Primer::LinkButton.new) { "Link" } %>
 ```
 
 ## Arguments
