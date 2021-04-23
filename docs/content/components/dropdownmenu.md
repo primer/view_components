@@ -17,7 +17,7 @@ of the select menu.
 
 ### With a header
 
-<Example src="<div>  <details class='details-overlay details-reset position-relative'>  <summary role='button' class='btn '>      Dropdown</summary>  <div>      <details-menu role='menu' class='dropdown-menu dropdown-menu-se '>    <div class='dropdown-header'>      Options    </div>          <ul>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>        </ul></details-menu></div></details></div>" />
+<Example src="<div>  <details class='details-overlay details-reset position-relative'>  <summary role='button' class='btn '>        Dropdown  </summary>  <div>      <details-menu role='menu' class='dropdown-menu dropdown-menu-se '>    <div class='dropdown-header'>      Options    </div>          <ul>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>        </ul></details-menu></div></details></div>" />
 
 ```erb
 <div>

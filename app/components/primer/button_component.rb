@@ -25,6 +25,24 @@ module Primer
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
+    DEFAULT_ICON_ALIGN = :left
+    ICON_ALIGN_OPTIONS = [DEFAULT_ICON_ALIGN, :right].freeze
+
+    # Icon to be rendered in the button.
+    #
+    # @param align [Symbol] <%= one_of(Primer::ButtonComponent::ICON_ALIGN_OPTIONS) %>
+    # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
+    renders_one :icon, lambda { |align: DEFAULT_ICON_ALIGN, **system_arguments|
+      @icon_align = fetch_or_fallback(ICON_ALIGN_OPTIONS, align, DEFAULT_ICON_ALIGN)
+
+      Primer::OcticonComponent.new(**system_arguments)
+    }
+
+    # Counter to be rendered in the button.
+    #
+    # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::CounterComponent) %>.
+    renders_one :counter, Primer::CounterComponent
+
     # @example Schemes
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
@@ -41,6 +59,34 @@ module Primer
     # @example Block
     #   <%= render(Primer::ButtonComponent.new(block: :true)) { "Block" } %>
     #   <%= render(Primer::ButtonComponent.new(block: :true, scheme: :primary)) { "Primary block" } %>
+    #
+    # @example With icons
+    #   <%= render(Primer::ButtonComponent.new) do |c| %>
+    #     <% c.icon(icon: :star) %>
+    #     Button
+    #   <% end %>
+    #   <%= render(Primer::ButtonComponent.new) do |c| %>
+    #     <% c.icon(icon: :star, align: :right) %>
+    #     Button
+    #   <% end %>
+    #
+    # @example With counter
+    #   <%= render(Primer::ButtonComponent.new) do |c| %>
+    #     <% c.counter(count: 15) %>
+    #     Button
+    #   <% end %>
+    #
+    # @example With icons and counter
+    #   <%= render(Primer::ButtonComponent.new) do |c| %>
+    #     <% c.icon(icon: :star) %>
+    #     <% c.counter(count: 15) %>
+    #     Button
+    #   <% end %>
+    #   <%= render(Primer::ButtonComponent.new) do |c| %>
+    #     <% c.icon(icon: :star, align: :right) %>
+    #     <% c.counter(count: 15) %>
+    #     Button
+    #   <% end %>
     #
     # @param scheme [Symbol] <%= one_of(Primer::ButtonComponent::SCHEME_OPTIONS) %>
     # @param variant [Symbol] <%= one_of(Primer::ButtonComponent::VARIANT_OPTIONS) %>
@@ -65,10 +111,6 @@ module Primer
         "btn-block" => block,
         "BtnGroup-item" => group_item
       )
-    end
-
-    def call
-      render(Primer::BaseButton.new(**@system_arguments)) { content }
     end
 
     private

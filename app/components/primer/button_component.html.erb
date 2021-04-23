@@ -1,0 +1,12 @@
+<%= render Primer::BaseButton.new(**@system_arguments) do %>
+  <% if icon.present? && @icon_align == :left %>
+    <%= icon %>
+  <% end %>
+
+  <%= content %>
+  <%= counter %>
+
+  <% if icon.present? && @icon_align == :right %>
+    <%= icon %>
+  <% end %>
+<% end %>
