@@ -14,6 +14,10 @@
 
     *Kate Higa*
 
+* **Breaking change**: Remove `ButtonComponent` `link` scheme in favor of `LinkButton` component.
+
+    *Manuel Puyol*
+
 ## 0.0.37
 
 * Update NPM package to include subdirectory JS files.
