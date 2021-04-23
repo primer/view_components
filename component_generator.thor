@@ -22,11 +22,7 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_controller
-    if inline?
-      template("templates/inline_component.tt", "app/components/primer/#{underscore_name}.rb")
-    else
-      template("templates/component.tt", "app/components/primer/#{underscore_name}.rb")
-    end
+    template("templates/component.tt", "app/components/primer/#{underscore_name}.rb")
   end
 
   def create_template
