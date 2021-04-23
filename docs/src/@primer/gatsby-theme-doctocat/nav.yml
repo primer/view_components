@@ -62,6 +62,8 @@
       url: /components/layout
     - title: Link
       url: /components/link
+    - title: LinkButton
+      url: /components/linkbutton
     - title: Menu
       url: /components/menu
     - title: Markdown
