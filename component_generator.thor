@@ -15,17 +15,22 @@ class ComponentGenerator < Thor::Group
   # Define arguments and options
   argument :name
   class_option :js, default: nil
+  class_option :inline, type: :boolean
 
   def self.source_root
     File.dirname(__FILE__)
   end
 
   def create_controller
-    template("templates/component.tt", "app/components/primer/#{underscore_name}.rb")
+    if inline?
+      template("templates/inline_component.tt", "app/components/primer/#{underscore_name}.rb")
+    else
+      template("templates/component.tt", "app/components/primer/#{underscore_name}.rb")
+    end
   end
 
   def create_template
-    template("templates/component.html.tt", "app/components/primer/#{underscore_name}.html.erb")
+    template("templates/component.html.tt", "app/components/primer/#{underscore_name}.html.erb") unless inline?
   end
 
   def create_test
@@ -82,5 +87,9 @@ class ComponentGenerator < Thor::Group
 
   def js_package_name
     options[:js]
+  end
+
+  def inline?
+    options[:inline]
   end
 end
