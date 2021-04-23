@@ -7,8 +7,8 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
     controls do
       select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
       select(:variant, Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
-      select(:tag, Primer::ButtonComponent::TAG_OPTIONS, :button)
-      select(:type, Primer::ButtonComponent::TYPE_OPTIONS, :button)
+      select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
+      select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
     end
     content do

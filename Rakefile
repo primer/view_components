@@ -130,6 +130,7 @@ namespace :docs do
       Primer::AutoComplete::Item,
       Primer::AvatarComponent,
       Primer::AvatarStackComponent,
+      Primer::BaseButton,
       Primer::BlankslateComponent,
       Primer::BorderBoxComponent,
       Primer::BoxComponent,
