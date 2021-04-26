@@ -13,7 +13,7 @@ Use IconButton to render Icon-only buttons without the default button styles.
 
 ## Accessibility
 
-IconButton requires a `label` which will set the element's `aria-label`, providing assistive technologies with an accessible label.
+IconButton requires an `aria-label`, which will provide assistive technologies with an accessible label.
 
 ## Examples
 
@@ -23,7 +23,7 @@ IconButton requires a `label` which will set the element's `aria-label`, providi
 
 ```erb
 
-<%= render(Primer::IconButton.new(icon: :search, label: "Search")) %>
+<%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search")) %>
 ```
 
 ### Schemes
@@ -32,8 +32,8 @@ IconButton requires a `label` which will set the element's `aria-label`, providi
 
 ```erb
 
-<%= render(Primer::IconButton.new(icon: :search, label: "Search")) %>
-<%= render(Primer::IconButton.new(icon: :trash, label: "Delete", scheme: :danger)) %>
+<%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search")) %>
+<%= render(Primer::IconButton.new(icon: :trash, "aria-label": "Delete", scheme: :danger)) %>
 ```
 
 ## Arguments
@@ -42,7 +42,6 @@ IconButton requires a `label` which will set the element's `aria-label`, providi
 | :- | :- | :- | :- |
 | `scheme` | `Symbol` | `:default` | One of `:default` and `:danger`. |
 | `icon` | `String` | N/A | Name of [Octicon](https://primer.style/octicons/) to use. |
-| `label` | `String` | N/A | String that will be read to screenreaders when the component is focused |
 | `tag` | `Symbol` | N/A | One of `:button`, `:a`, or `:summary`. |
 | `type` | `Symbol` | N/A | One of `:button`, `:reset`, or `:submit`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

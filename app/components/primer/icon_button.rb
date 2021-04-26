@@ -14,12 +14,12 @@ module Primer
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
     # @example Default
     #
-    #   <%= render(Primer::IconButton.new(icon: :search, label: "Search")) %>
+    #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search")) %>
     #
     # @example Schemes
     #
-    #   <%= render(Primer::IconButton.new(icon: :search, label: "Search")) %>
-    #   <%= render(Primer::IconButton.new(icon: :trash, label: "Delete", scheme: :danger)) %>
+    #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search")) %>
+    #   <%= render(Primer::IconButton.new(icon: :trash, "aria-label": "Delete", scheme: :danger)) %>
     #
     # @param scheme [Symbol] <%= one_of(Primer::IconButton::SCHEME_OPTIONS) %>
     # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.

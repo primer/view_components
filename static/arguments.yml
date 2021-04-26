@@ -10,10 +10,6 @@
     type: String
     default: N/A
     description: Name of [Octicon](https://primer.style/octicons/) to use.
-  - name: label
-    type: String
-    default: N/A
-    description: String that will be read to screenreaders when the component is focused
   - name: tag
     type: Symbol
     default: N/A
