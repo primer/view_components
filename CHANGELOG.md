@@ -6,6 +6,10 @@
 
     *Manuel Puyol*
 
+* Create `IconButton` component.
+
+    *Manuel Puyol*
+
 ## 0.0.38
 
 * Extract `BaseButton` component.

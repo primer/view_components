@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Renders an [Octicon](https://primer.style/octicons/) with <%= link_to_system_arguments_docs %>.
+  # Renders an <%= link_to_octicons %> with <%= link_to_system_arguments_docs %>.
   class OcticonComponent < Primer::Component
     status :beta
 
@@ -23,7 +23,7 @@ module Primer
     # @example Large
     #   <%= render(Primer::OcticonComponent.new("x", size: :large)) %>
     #
-    # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
+    # @param icon [String] Name of <%= link_to_octicons %> to use.
     # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, **system_arguments)
