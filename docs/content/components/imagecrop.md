@@ -56,4 +56,4 @@ A client-side mechanism to crop images
 
 ### `Loading`
 
-A loading indicator while that is shown while the image is loading.
+A loading indicator that is shown while the image is loading.
