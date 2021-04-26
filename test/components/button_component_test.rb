@@ -129,9 +129,7 @@ class PrimerButtonComponentTest < Minitest::Test
   end
 
   def test_renders_caret
-    render_inline(Primer::ButtonComponent.new(caret: true)) do |_c|
-      "Button"
-    end
+    render_inline(Primer::ButtonComponent.new(caret: true).with_content("Button"))
 
     assert_selector(".btn") do
       assert_text("Button")
