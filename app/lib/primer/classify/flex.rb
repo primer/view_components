@@ -20,11 +20,17 @@ module Primer
       GROW_KEY = :flex_grow
       GROW_VALUES = [0].freeze
 
+      ALIGN_SELF_KEY = :align_self
+      ALIGN_SELF_VALUES = [:auto, :start, :end, :center, :baseline, :stretch].freeze
+
       class << self
         def flex(value)
-          validate(value, FLEX_VALUES, FLEX_KEY)
-
-          "flex-#{value}"
+          generate(
+            value: value,
+            allowed_values: FLEX_VALUES,
+            key: FLEX_KEY,
+            prefix: "flex"
+          )
         end
 
         def wrap(value)
@@ -34,18 +40,39 @@ module Primer
         end
 
         def shrink(value)
-          validate(value, SHRINK_VALUES, SHRINK_KEY)
-
-          "flex-shrink-#{value}"
+          generate(
+            value: value,
+            allowed_values: SHRINK_VALUES,
+            key: SHRINK_KEY,
+            prefix: "flex-shrink"
+          )
         end
 
         def grow(value)
-          validate(value, GROW_VALUES, GROW_KEY)
+          generate(
+            value: value,
+            allowed_values: GROW_VALUES,
+            key: GROW_KEY,
+            prefix: "flex-grow"
+          )
+        end
 
-          "flex-grow-#{value}"
+        def align_self(value)
+          generate(
+            value: value,
+            allowed_values: ALIGN_SELF_VALUES,
+            key: ALIGN_SELF_KEY,
+            prefix: "flex-self"
+          )
         end
 
         private
+
+        def generate(value:, allowed_values:, key:, prefix:)
+          validate(value, allowed_values, key)
+
+          "#{prefix}-#{value}"
+        end
 
         def validate(val, allowed_values, key)
           return if Rails.env.production?

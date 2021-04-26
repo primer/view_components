@@ -565,6 +565,12 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-self-center",    { align_self: :center })
     assert_generated_class("flex-self-baseline",  { align_self: :baseline })
     assert_generated_class("flex-self-stretch",   { align_self: :stretch })
+
+    err = assert_raises ArgumentError do
+      Primer::Classify.call(align_self: :invalid_option)
+    end
+
+    assert_equal("invalid_option is not a valid value for :align_self. Use one of #{Primer::Classify::Flex::ALIGN_SELF_VALUES}", err.message)
   end
 
   def test_width_and_height
