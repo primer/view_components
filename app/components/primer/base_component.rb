@@ -69,7 +69,7 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `align_items` | Symbol | <%= one_of([:flex_start, :flex_end, :center, :baseline, :stretch]) %> |
+    # | `align_items` | Symbol | <%= one_of(Primer::Classify::Flex::ALIGN_ITEMS_VALUES) %> |
     # | `align_self` | Symbol | <%= one_of(Primer::Classify::Flex::ALIGN_SELF_VALUES) %> |
     # | `direction` | Symbol | <%= one_of(Primer::Classify::Flex::DIRECTION_VALUES) %> |
     # | `flex` | Integer, Symbol | <%= one_of(Primer::Classify::Flex::FLEX_VALUES) %> |

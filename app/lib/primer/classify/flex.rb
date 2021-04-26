@@ -29,6 +29,9 @@ module Primer
       JUSTIFY_CONTENT_KEY = :justify_content
       JUSTIFY_CONTENT_VALUES = [:flex_start, :flex_end, :center, :space_between, :space_around].freeze
 
+      ALIGN_ITEMS_KEY = :align_items
+      ALIGN_ITEMS_VALUES = [:flex_start, :flex_end, :center, :baseline, :stretch].freeze
+
       class << self
         def flex(value)
           generate(
@@ -83,6 +86,13 @@ module Primer
 
           formatted_value = value.to_s.gsub(/(flex\_|space\_)/, "")
           "flex#{breakpoint}-justify-#{formatted_value}"
+        end
+
+        def align_items(value, breakpoint)
+          validate(value, ALIGN_ITEMS_VALUES, ALIGN_ITEMS_KEY)
+
+          formatted_value = value.to_s.gsub('flex_', '')
+          "flex#{breakpoint}-items-#{formatted_value}"
         end
 
         private

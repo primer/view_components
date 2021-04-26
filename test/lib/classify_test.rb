@@ -502,6 +502,12 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-items-center", { align_items: :center })
     assert_generated_class("flex-items-baseline", { align_items: :baseline })
     assert_generated_class("flex-items-stretch", { align_items: :stretch })
+
+    err = assert_raises ArgumentError do
+      Primer::Classify.call(align_items: :invalid_option)
+    end
+
+    assert_equal("invalid_option is not a valid value for :align_items. Use one of #{Primer::Classify::Flex::ALIGN_ITEMS_VALUES}", err.message)
   end
 
   def test_flex_wrap
