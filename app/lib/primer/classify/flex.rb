@@ -23,6 +23,9 @@ module Primer
       ALIGN_SELF_KEY = :align_self
       ALIGN_SELF_VALUES = [:auto, :start, :end, :center, :baseline, :stretch].freeze
 
+      DIRECTION_KEY = :direction
+      DIRECTION_VALUES = [:column, :column_reverse, :row, :row_reverse].freeze
+
       class << self
         def flex(value)
           generate(
@@ -64,6 +67,12 @@ module Primer
             key: ALIGN_SELF_KEY,
             prefix: "flex-self"
           )
+        end
+
+        def direction(value, breakpoint)
+          validate(value, DIRECTION_VALUES, DIRECTION_KEY)
+
+          "flex#{breakpoint}-#{value.to_s.dasherize}"
         end
 
         private

@@ -510,6 +510,20 @@ class PrimerClassifyTest < Minitest::Test
     assert_equal("invalid_option is not a valid value for :flex_wrap. Use one of #{Primer::Classify::Flex::WRAP_MAPPINGS.keys}", err.message)
   end
 
+  def test_flex_direction
+    assert_generated_class("flex-column", { direction: :column })
+    assert_generated_class("flex-column-reverse", { direction: :column_reverse })
+    assert_generated_class("flex-row", { direction: :row })
+    assert_generated_class("flex-row-reverse", { direction: :row_reverse })
+    assert_generated_class("flex-row flex-sm-column flex-md-row-reverse flex-lg-column-reverse flex-xl-row", { direction: %i[row column row_reverse column_reverse row] })
+
+    err = assert_raises ArgumentError do
+      Primer::Classify.call(direction: :invalid_option)
+    end
+
+    assert_equal("invalid_option is not a valid value for :direction. Use one of #{Primer::Classify::Flex::DIRECTION_VALUES}", err.message)
+  end
+
   def test_word_break
     assert_generated_class("wb-break-all", { word_break: :break_all })
   end
