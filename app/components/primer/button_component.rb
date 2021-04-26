@@ -25,15 +25,15 @@ module Primer
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
-    DEFAULT_ICON_ALIGN = :left
-    ICON_ALIGN_OPTIONS = [DEFAULT_ICON_ALIGN, :right].freeze
+    DEFAULT_ICON_ALIGNMENT = :left
+    ICON_ALIGNMENT_OPTIONS = [DEFAULT_ICON_ALIGNMENT, :right].freeze
 
     # Icon to be rendered in the button.
     #
     # @param align [Symbol] <%= one_of(Primer::ButtonComponent::ICON_ALIGN_OPTIONS) %>
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
-    renders_one :icon, lambda { |align: DEFAULT_ICON_ALIGN, **system_arguments|
-      @icon_align = fetch_or_fallback(ICON_ALIGN_OPTIONS, align, DEFAULT_ICON_ALIGN)
+    renders_one :icon, lambda { |align: DEFAULT_ICON_ALIGNMENT, **system_arguments|
+      @icon_align = fetch_or_fallback(ICON_ALIGNMENT_OPTIONS, align, DEFAULT_ICON_ALIGNMENT)
 
       Primer::OcticonComponent.new(**system_arguments)
     }
