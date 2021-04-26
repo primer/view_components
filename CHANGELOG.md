@@ -10,6 +10,10 @@
 
     *Manuel Puyol*
 
+* Depreacate `FlexItem` component in favor of `BoxComponent`.
+
+    *Manuel Puyol*
+
 ## 0.0.38
 
 * Extract `BaseButton` component.

@@ -3,7 +3,11 @@
 module Primer
   # Use FlexItemComponent to specify the ability of a flex item to alter its
   # dimensions to fill available space
+  #
+  # **Deprecation note:** Use <%= link_to_component(Primer::BoxComponent) %> instead.
   class FlexItemComponent < Primer::Component
+    status :deprecated
+
     FLEX_AUTO_DEFAULT = false
     FLEX_AUTO_ALLOWED_VALUES = [FLEX_AUTO_DEFAULT, true].freeze
 
