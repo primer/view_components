@@ -2,8 +2,17 @@
 
 module Primer
   # Avatars are images used to represent users and organizations on GitHub.
-  # Use the default round avatar for users, and the `square` argument
+  # - Use the default round avatar for users, and the `square` argument
   # for organizations or any other non-human avatars.
+  # - By default, Avatar will render a static `<img>`. To have the Avatar function as a link, set the `href` which will wrap the `<img>` in a `<a>`.
+  # 
+  # @accessibility 
+  #
+  # Images should have text alternatives that describe the information or function represented.
+  # If the avatar functions as a link, provide an alt text that helps convey the function. For instance,
+  # if Avatar is a link to a user profile, the alt image should be "@kittenuser profile"
+  # rather than "@kittenuser".
+  # [Learn more about best image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/)
   class AvatarComponent < Primer::Component
     status :beta
 
@@ -16,7 +25,7 @@ module Primer
     #   <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", square: true)) %>
     #
     # @example Link
-    #   <%= render(Primer::AvatarComponent.new(href: "#", src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
+    #   <%= render(Primer::AvatarComponent.new(href: "#", src: "http://placekitten.com/200/200", alt: "@kittenuser profile")) %>
     #
     # @param src [String] The source url of the avatar image.
     # @param alt [String] Passed through to alt on img tag.
