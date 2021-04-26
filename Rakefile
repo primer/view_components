@@ -91,6 +91,10 @@ namespace :docs do
     "[System arguments](/system-arguments)"
   end
 
+  def link_to_typography_docs
+    "[Typography](/system-arguments#typography)"
+  end
+
   def link_to_component(component)
     short_name = component.name.gsub(/Primer|::|Component/, "")
     "[#{short_name}](/components/#{short_name.downcase})"
