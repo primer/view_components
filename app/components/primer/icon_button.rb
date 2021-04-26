@@ -4,7 +4,7 @@ module Primer
   # Use IconButton to render Icon-only buttons without the default button styles.
   #
   # @accessibility
-  #   IconButton requires a `label` which will set the element's `aria-label`, providing assistive technologies with an accessible label.
+  #   IconButton requires an `aria-label`, which will provide assistive technologies with an accessible label.
   class IconButton < Primer::Component
     DEFAULT_SCHEME = :default
     SCHEME_MAPPINGS = {
@@ -23,11 +23,10 @@ module Primer
     #
     # @param scheme [Symbol] <%= one_of(Primer::IconButton::SCHEME_OPTIONS) %>
     # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
-    # @param label [String] String that will be read to screenreaders when the component is focused
     # @param tag [Symbol] <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
     # @param type [Symbol] <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(scheme: DEFAULT_SCHEME, icon:, label:, **system_arguments)
+    def initialize(scheme: DEFAULT_SCHEME, icon:, **system_arguments)
       @icon = icon
 
       @system_arguments = system_arguments
@@ -36,7 +35,8 @@ module Primer
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
         system_arguments[:classes]
       )
-      @system_arguments[:"aria-label"] = label
+
+      raise ArgumentError, "`aria-label` is required." if @system_arguments[:"aria-label"].nil? && !Rails.env.production?
     end
 
     def call

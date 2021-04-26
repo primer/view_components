@@ -7,7 +7,7 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
-    [Primer::IconButton, { icon: :star, label: "Label" }],
+    [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
     [Primer::AutoComplete, { src: "Foo", id: "Bar" }, proc { |c| c.input(classes: "Baz") }],
     [Primer::AutoComplete::Item, { value: "Foo" }],
     [Primer::AvatarComponent, { alt: "github", src: "https://github.com/github.png" }],
