@@ -570,6 +570,12 @@ class PrimerClassifyTest < Minitest::Test
 
   def test_flex_grow
     assert_generated_class("flex-grow-0", { flex_grow: 0 })
+
+    err = assert_raises ArgumentError do
+      Primer::Classify.call(flex_grow: :invalid_option)
+    end
+
+    assert_equal("invalid_option is not a valid value for :flex_grow. Use one of #{Primer::Classify::Flex::GROW_VALUES}", err.message)
   end
 
   def test_flex_shrink

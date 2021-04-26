@@ -14,18 +14,26 @@ module Primer
       SHRINK_KEY = :flex_shrink
       SHRINK_VALUES = [0].freeze
 
+      GROW_KEY = :flex_grow
+      GROW_VALUES = [0].freeze
+
       class << self
-        def shrink(value)
-          validate(value, SHRINK_VALUES, SHRINK_KEY) unless Rails.env.production?
-
-          "flex-shrink-0"
-        end
-
-
         def wrap(value)
           validate(value, WRAP_MAPPINGS.keys, WRAP_KEY) unless Rails.env.production?
 
           WRAP_MAPPINGS[value]
+        end
+
+        def shrink(value)
+          validate(value, SHRINK_VALUES, SHRINK_KEY) unless Rails.env.production?
+
+          "flex-shrink-#{value}"
+        end
+
+        def grow(value)
+          validate(value, GROW_VALUES, GROW_KEY) unless Rails.env.production?
+
+          "flex-grow-#{value}"
         end
 
         private

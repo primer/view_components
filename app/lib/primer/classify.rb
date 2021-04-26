@@ -23,7 +23,7 @@ module Primer
     WORD_BREAK_KEY = :word_break
     TEXT_KEYS = %i[text_align font_weight].freeze
     FLEX_KEY = :flex
-    FLEX_GROW_KEY = :flex_grow
+    FLEX_GROW_KEY = Primer::Classify::Flex::GROW_KEY
     FLEX_SHRINK_KEY = Primer::Classify::Flex::SHRINK_KEY
     FLEX_WRAP_KEY = Primer::Classify::Flex::WRAP_KEY
     ALIGN_SELF_KEY = :align_self
@@ -228,7 +228,7 @@ module Primer
         elsif key == FLEX_KEY
           memo[:classes] << "flex-#{val}"
         elsif key == FLEX_GROW_KEY
-          memo[:classes] << "flex-grow-#{val}"
+          memo[:classes] << Primer::Classify::Flex.grow(val)
         elsif key == FLEX_SHRINK_KEY
           memo[:classes] << Primer::Classify::Flex.shrink(val)
         elsif key == FLEX_WRAP_KEY
