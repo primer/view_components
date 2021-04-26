@@ -2,6 +2,10 @@
 
 ## main
 
+* **Breaking change**: Do not provide default for `Heading` and improve documentation.
+
+    *Kate Higa*
+
 * Extract `BaseButton` component.
 
     *Manuel Puyol*
@@ -11,8 +15,6 @@
     *Kate Higa*
 
 * **Breaking change**: Don't allow `StateComponent` to be a link.
-
-    *Kate Higa*
 
 ## 0.0.37
 
