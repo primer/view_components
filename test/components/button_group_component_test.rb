@@ -42,4 +42,16 @@ class PrimerButtonGroupComponentTest < Minitest::Test
 
     refute_text("content")
   end
+
+  def test_all_buttons_with_same_variant
+    render_inline(Primer::ButtonGroupComponent.new(variant: :small)) do |c|
+      c.button(variant: :medium) { "Medium" }
+      c.button(variant: :large) { "Large" }
+    end
+
+    assert_selector("div.BtnGroup") do
+      assert_selector("button.btn.BtnGroup-item.btn-sm", text: "Medium")
+      assert_selector("button.btn.BtnGroup-item.btn-sm", text: "Large")
+    end
+  end
 end
