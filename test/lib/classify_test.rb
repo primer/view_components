@@ -574,6 +574,12 @@ class PrimerClassifyTest < Minitest::Test
 
   def test_flex_shrink
     assert_generated_class("flex-shrink-0", { flex_shrink: 0 })
+
+    err = assert_raises ArgumentError do
+      Primer::Classify.call(flex_shrink: :invalid_option)
+    end
+
+    assert_equal("invalid_option is not a valid value for :flex_shrink. Use one of #{Primer::Classify::Flex::SHRINK_VALUES}", err.message)
   end
 
   def test_animation

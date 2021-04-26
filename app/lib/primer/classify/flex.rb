@@ -11,7 +11,17 @@ module Primer
         reverse: "flex-wrap-reverse"
       }.freeze
 
+      SHRINK_KEY = :flex_shrink
+      SHRINK_VALUES = [0].freeze
+
       class << self
+        def shrink(value)
+          validate(value, SHRINK_VALUES, SHRINK_KEY) unless Rails.env.production?
+
+          "flex-shrink-0"
+        end
+
+
         def wrap(value)
           validate(value, WRAP_MAPPINGS.keys, WRAP_KEY) unless Rails.env.production?
 
