@@ -550,6 +550,12 @@ class PrimerClassifyTest < Minitest::Test
   def test_flex
     assert_generated_class("flex-1",    { flex: 1 })
     assert_generated_class("flex-auto", { flex: :auto })
+
+    err = assert_raises ArgumentError do
+      Primer::Classify.call(flex: :invalid_option)
+    end
+
+    assert_equal("invalid_option is not a valid value for :flex. Use one of #{Primer::Classify::Flex::FLEX_VALUES}", err.message)
   end
 
   def test_flex_align_self
