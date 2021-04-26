@@ -25,6 +25,7 @@ module Primer
     FLEX_KEY = :flex
     FLEX_GROW_KEY = :flex_grow
     FLEX_SHRINK_KEY = :flex_shrink
+    FLEX_WRAP_KEY = Primer::Classify::Flex::WRAP_KEY
     ALIGN_SELF_KEY = :align_self
     WIDTH_KEY = :width
     HEIGHT_KEY = :height
@@ -104,6 +105,7 @@ module Primer
         FLEX_KEY,
         FLEX_GROW_KEY,
         FLEX_SHRINK_KEY,
+        FLEX_WRAP_KEY,
         ALIGN_SELF_KEY,
         WIDTH_KEY,
         HEIGHT_KEY,
@@ -229,6 +231,8 @@ module Primer
           memo[:classes] << "flex-grow-#{val}"
         elsif key == FLEX_SHRINK_KEY
           memo[:classes] << "flex-shrink-#{val}"
+        elsif key == FLEX_WRAP_KEY
+          memo[:classes] << Primer::Classify::Flex.wrap(val)
         elsif key == ALIGN_SELF_KEY
           memo[:classes] << "flex-self-#{val}"
         elsif key == WIDTH_KEY || key == HEIGHT_KEY

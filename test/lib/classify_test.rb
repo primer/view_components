@@ -498,6 +498,18 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-items-stretch", { align_items: :stretch })
   end
 
+  def test_flex_wrap
+    assert_generated_class("flex-wrap", { flex_wrap: :wrap })
+    assert_generated_class("flex-nowrap", { flex_wrap: :nowrap })
+    assert_generated_class("flex-wrap-reverse", { flex_wrap: :reverse })
+
+    err = assert_raises ArgumentError do
+      Primer::Classify.call(flex_wrap: :invalid_option)
+    end
+
+    assert_equal("invalid_option is not a valid value for :flex_wrap. Use one of #{Primer::Classify::Flex::WRAP_MAPPINGS.keys}", err.message)
+  end
+
   def test_word_break
     assert_generated_class("wb-break-all", { word_break: :break_all })
   end
