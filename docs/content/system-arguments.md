@@ -72,6 +72,7 @@ System arguments include most HTML attributes. For example:
 | :- | :- | :- |
 | `align_items` | Symbol | One of `:flex_start`, `:flex_end`, `:center`, `:baseline`, or `:stretch`. |
 | `align_self` | Symbol | One of `:auto`, `:start`, `:end`, `:center`, `:baseline`, or `:stretch`. |
+| `direction` | Symbol | One of `:column`, `:column_reverse`, `:row`, `:row_reverse`. |
 | `flex_grow` | Integer | To enable, set to `0`. |
 | `flex_shrink` | Integer | To enable, set to `0`. |
 | `flex` | Integer, Symbol | One of `1` and `:auto`. |
@@ -88,7 +89,7 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `display` | Symbol | One of `:none`, `:block`, `:flex`, `:inline`, `:inline_block`, `:table`, or `:table_cell`. |
+| `display` | Symbol | One of `:none`, `:block`, `:flex`, `:inline`, `:inline_block`, `inline_flex`, `:table`, or `:table_cell`. |
 | `height` | Symbol | One of `:fit` and `:fill`. |
 | `hide` | Symbol | Hide the element at a specific breakpoint. One of `:sm`, `:md`, `:lg`, or `:xl`. |
 | `v` | Symbol | Visibility. One of `:hidden` and `:visible`. |
