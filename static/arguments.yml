@@ -239,6 +239,10 @@
     type: Boolean
     default: "`false`"
     description: 'Whether button is full-width with `display: block`.'
+  - name: caret
+    type: Boolean
+    default: "`false`"
+    description: Whether or not to render a caret.
 - component: ButtonGroup
   source: https://github.com/primer/view_components/tree/main/app/components/primer/button_group.rb
   parameters:

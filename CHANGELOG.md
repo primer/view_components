@@ -2,6 +2,10 @@
 
 ## main
 
+* Add `icon` and `counter` slots to `ButtonComponent`.
+
+    *Manuel Puyol*
+
 * Create `IconButton` component.
 
     *Manuel Puyol*
