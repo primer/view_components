@@ -488,6 +488,12 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-justify-center", { justify_content: :center })
     assert_generated_class("flex-justify-between", { justify_content: :space_between })
     assert_generated_class("flex-justify-around", { justify_content: :space_around })
+
+    err = assert_raises ArgumentError do
+      Primer::Classify.call(justify_content: :invalid_option)
+    end
+
+    assert_equal("invalid_option is not a valid value for :justify_content. Use one of #{Primer::Classify::Flex::JUSTIFY_CONTENT_VALUES}", err.message)
   end
 
   def test_align_items

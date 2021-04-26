@@ -26,6 +26,9 @@ module Primer
       DIRECTION_KEY = :direction
       DIRECTION_VALUES = [:column, :column_reverse, :row, :row_reverse].freeze
 
+      JUSTIFY_CONTENT_KEY = :justify_content
+      JUSTIFY_CONTENT_VALUES = [:flex_start, :flex_end, :center, :space_between, :space_around].freeze
+
       class << self
         def flex(value)
           generate(
@@ -73,6 +76,13 @@ module Primer
           validate(value, DIRECTION_VALUES, DIRECTION_KEY)
 
           "flex#{breakpoint}-#{value.to_s.dasherize}"
+        end
+
+        def justify_content(value, breakpoint)
+          validate(value, JUSTIFY_CONTENT_VALUES, JUSTIFY_CONTENT_KEY)
+
+          formatted_value = value.to_s.gsub(/(flex\_|space\_)/, "")
+          "flex#{breakpoint}-justify-#{formatted_value}"
         end
 
         private

@@ -25,7 +25,7 @@ module Primer
 
     # Flex related keys
     DIRECTION_KEY = Primer::Classify::Flex::DIRECTION_KEY
-    JUSTIFY_CONTENT_KEY = :justify_content
+    JUSTIFY_CONTENT_KEY = Primer::Classify::Flex::JUSTIFY_CONTENT_KEY
     ALIGN_ITEMS_KEY = :align_items
     FLEX_KEY = Primer::Classify::Flex::FLEX_KEY
     FLEX_GROW_KEY = Primer::Classify::Flex::GROW_KEY
@@ -224,8 +224,7 @@ module Primer
         elsif key == DIRECTION_KEY
           memo[:classes] << Primer::Classify::Flex.direction(val, breakpoint)
         elsif key == JUSTIFY_CONTENT_KEY
-          formatted_value = val.to_s.gsub(/(flex\_|space\_)/, "")
-          memo[:classes] << "flex#{breakpoint}-justify-#{formatted_value}"
+          memo[:classes] << Primer::Classify::Flex.justify_content(val, breakpoint)
         elsif key == ALIGN_ITEMS_KEY
           memo[:classes] << "flex#{breakpoint}-items-#{val.to_s.gsub('flex_', '')}"
         elsif key == FLEX_KEY

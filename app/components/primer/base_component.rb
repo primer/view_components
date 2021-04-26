@@ -76,7 +76,7 @@ module Primer
     # | `flex_grow` | Integer | To enable, set to `0`. |
     # | `flex_shrink` | Integer | To enable, set to `0`. |
     # | `flex_wrap` | Symbol | <%= one_of(Primer::Classify::Flex::WRAP_MAPPINGS.keys) %> |
-    # | `justify_content` | Symbol | <%= one_of([:flex_start, :flex_end, :center, :space_between, :space_around]) %> |
+    # | `justify_content` | Symbol | <%= one_of(Primer::Classify::Flex::JUSTIFY_CONTENT_VALUES) %> |
     # | `width` | Symbol | <%= one_of([:fit, :fill]) %> |
     #
     # ## Grid
