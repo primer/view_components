@@ -140,7 +140,7 @@ namespace :docs do
       Primer::BoxComponent,
       Primer::BreadcrumbComponent,
       Primer::ButtonComponent,
-      Primer::ButtonGroupComponent,
+      Primer::ButtonGroup,
       Primer::ButtonMarketingComponent,
       Primer::ClipboardCopy,
       Primer::CloseButton,
