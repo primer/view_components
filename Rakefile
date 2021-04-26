@@ -141,7 +141,7 @@ namespace :docs do
       Primer::BoxComponent,
       Primer::BreadcrumbComponent,
       Primer::ButtonComponent,
-      Primer::ButtonGroupComponent,
+      Primer::ButtonGroup,
       Primer::ButtonMarketingComponent,
       Primer::ClipboardCopy,
       Primer::CloseButton,
@@ -178,9 +178,10 @@ namespace :docs do
 
     js_components = [
       Primer::AutoComplete,
-      Primer::TimeAgoComponent,
+      Primer::ClipboardCopy,
       Primer::TabContainerComponent,
       Primer::TabNavComponent,
+      Primer::TimeAgoComponent,
       Primer::UnderlineNavComponent
     ]
 
