@@ -99,6 +99,7 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 | `type` | `Symbol` | N/A | One of `:button`, `:reset`, or `:submit`. |
 | `group_item` | `Boolean` | `false` | Whether button is part of a ButtonGroup. |
 | `block` | `Boolean` | `false` | Whether button is full-width with `display: block`. |
+| `caret` | `Boolean` | `false` | Whether or not to render a caret. |
 
 ## Slots
 
