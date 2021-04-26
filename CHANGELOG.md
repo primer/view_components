@@ -6,11 +6,25 @@
 
     *Manuel Puyol*
 
+## 0.0.38
+
 * Extract `BaseButton` component.
 
     *Manuel Puyol*
 
 * Add default `aria-label` of "Close" to `CloseButton` component.
+
+    *Kate Higa*
+
+* Set button variants in the `ButtonGroup` parent.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Rename `ButtonGroupComponent` to `ButtonGroup` and promote it to beta.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Do not provide default for `Heading` and improve documentation.
 
     *Kate Higa*
 

@@ -13,5 +13,11 @@ module Primer
     def initialize(**system_arguments)
       @system_arguments = system_arguments
     end
+<% if inline? -%>
+
+    def call
+      render(Primer::BaseComponent.new(**@system_arguments)) { content }
+    end
+<% end -%>
   end
 end
