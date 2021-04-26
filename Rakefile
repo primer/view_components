@@ -100,6 +100,10 @@ namespace :docs do
     "[#{short_name}](/components/#{short_name.downcase})"
   end
 
+  def link_to_octicons
+    "[Octicon](https://primer.style/octicons/)"
+  end
+
   def pretty_value(val)
     case val
     when nil

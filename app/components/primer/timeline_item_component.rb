@@ -19,7 +19,7 @@ module Primer
 
     # Badge that will be connected to other TimelineItems.
     #
-    # @param icon [String] Name of [Octicon](https://primer.style/octicons/) to use.
+    # @param icon [String] Name of <%= link_to_octicons %> to use.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :badge, "BadgeComponent"
 
