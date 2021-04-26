@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use ButtonGroupComponent to render a series of buttons.
-  class ButtonGroupComponent < Primer::Component
+  # Use ButtonGroup to render a series of buttons.
+  class ButtonGroup < Primer::Component
+    status :beta
+
     # Required list of buttons to be rendered.
     #
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %> except for `variant` and `group_item`.
@@ -15,7 +17,7 @@ module Primer
 
     # @example Default
     #
-    #   <%= render(Primer::ButtonGroupComponent.new) do |component| %>
+    #   <%= render(Primer::ButtonGroup.new) do |component| %>
     #     <% component.button { "Default" } %>
     #     <% component.button(scheme: :primary) { "Primary" } %>
     #     <% component.button(scheme: :danger) { "Danger" } %>
@@ -25,14 +27,14 @@ module Primer
     #
     # @example Variants
     #
-    #   <%= render(Primer::ButtonGroupComponent.new(variant: :small)) do |component| %>
+    #   <%= render(Primer::ButtonGroup.new(variant: :small)) do |component| %>
     #     <% component.button { "Default" } %>
     #     <% component.button(scheme: :primary) { "Primary" } %>
     #     <% component.button(scheme: :danger) { "Danger" } %>
     #     <% component.button(scheme: :outline) { "Outline" } %>
     #   <% end %>
     #
-    #   <%= render(Primer::ButtonGroupComponent.new(variant: :large)) do |component| %>
+    #   <%= render(Primer::ButtonGroup.new(variant: :large)) do |component| %>
     #     <% component.button { "Default" } %>
     #     <% component.button(scheme: :primary) { "Primary" } %>
     #     <% component.button(scheme: :danger) { "Danger" } %>

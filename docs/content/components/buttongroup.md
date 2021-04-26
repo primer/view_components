@@ -1,7 +1,7 @@
 ---
 title: ButtonGroup
-status: Alpha
-source: https://github.com/primer/view_components/tree/main/app/components/primer/button_group_component.rb
+status: Beta
+source: https://github.com/primer/view_components/tree/main/app/components/primer/button_group.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-button-group-component
 ---
 
@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use ButtonGroupComponent to render a series of buttons.
+Use ButtonGroup to render a series of buttons.
 
 ## Examples
 
@@ -19,7 +19,7 @@ Use ButtonGroupComponent to render a series of buttons.
 
 ```erb
 
-<%= render(Primer::ButtonGroupComponent.new) do |component| %>
+<%= render(Primer::ButtonGroup.new) do |component| %>
   <% component.button { "Default" } %>
   <% component.button(scheme: :primary) { "Primary" } %>
   <% component.button(scheme: :danger) { "Danger" } %>
@@ -34,14 +34,14 @@ Use ButtonGroupComponent to render a series of buttons.
 
 ```erb
 
-<%= render(Primer::ButtonGroupComponent.new(variant: :small)) do |component| %>
+<%= render(Primer::ButtonGroup.new(variant: :small)) do |component| %>
   <% component.button { "Default" } %>
   <% component.button(scheme: :primary) { "Primary" } %>
   <% component.button(scheme: :danger) { "Danger" } %>
   <% component.button(scheme: :outline) { "Outline" } %>
 <% end %>
 
-<%= render(Primer::ButtonGroupComponent.new(variant: :large)) do |component| %>
+<%= render(Primer::ButtonGroup.new(variant: :large)) do |component| %>
   <% component.button { "Default" } %>
   <% component.button(scheme: :primary) { "Primary" } %>
   <% component.button(scheme: :danger) { "Danger" } %>
