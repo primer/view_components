@@ -9,20 +9,21 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Avatars are images used to represent users and organizations on GitHub.
+`Avatar` can be used to represent users and organizations on GitHub.
+
 - Use the default round avatar for users, and the `square` argument
 for organizations or any other non-human avatars.
-- By default, Avatar will render a static `<img>`. To have the Avatar function as a link, set the `href` which will wrap the `<img>` in a `<a>`.
-
-Images should have text alternatives that describe the information or function represented.
-If the avatar functions as a link, provide an alt text that helps convey the function. For instance,
-if Avatar is a link to a user profile, the alt image should be "@kittenuser profile"
-rather than "@kittenuser".
-[Learn more about best image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/)
+- By default, `Avatar` will render a static `<img>`. To have `Avatar` function as a link, set the `href` which will wrap the `<img>` in a `<a>`.
+- Set `size` to update the height and width of the `Avatar` in pixels.
+- To stack multiple avatars together, use [AvatarStack](/components/avatarstack).
 
 ## Accessibility
 
-
+Images should have text alternatives that describe the information or function represented.
+If the avatar functions as a link, provide alt text that helps convey the function. For instance,
+if `Avatar` is a link to a user profile, the alt attribute should be `@kittenuser profile`
+rather than `@kittenuser`.
+[Learn more about best image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/)
 
 ## Examples
 
@@ -48,6 +49,19 @@ rather than "@kittenuser".
 
 ```erb
 <%= render(Primer::AvatarComponent.new(href: "#", src: "http://placekitten.com/200/200", alt: "@kittenuser profile")) %>
+```
+
+### With size
+
+<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='16' height='16' width='16' class='avatar avatar-small circle '></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small circle '></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='24' height='24' width='24' class='avatar circle '></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='28' height='28' width='28' class='avatar circle '></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='32' height='32' width='32' class='avatar circle '></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='36' height='36' width='36' class='avatar circle '></img>" />
+
+```erb
+<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 16)) %>
+<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 20)) %>
+<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 24)) %>
+<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 28)) %>
+<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 32)) %>
+<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 36)) %>
 ```
 
 ## Arguments
