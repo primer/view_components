@@ -1,12 +1,9 @@
 <%= render Primer::BaseButton.new(**@system_arguments) do %>
-  <% if icon.present? && @icon_align == :left %>
-    <%= icon %>
-  <% end %>
-
+  <%= icon %>
   <%= content %>
   <%= counter %>
 
-  <% if icon.present? && @icon_align == :right %>
-    <%= icon %>
+  <% if @caret %>
+    <%= primer_octicon(icon: "triangle-down") %>
   <% end %>
 <% end %>

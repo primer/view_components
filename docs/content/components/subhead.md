@@ -45,7 +45,7 @@ Use the Subhead component for page headings.
 
 ### With actions
 
-<Example src="<div class='Subhead hx_Subhead--responsive '>  <div class='Subhead-heading '>    My Heading</div>  <div class='Subhead-actions '>    <a href='http://www.google.com' role='button' class='btn-danger btn '>  Action  </a></div>  <div class='Subhead-description '>    My Description</div></div>" />
+<Example src="<div class='Subhead hx_Subhead--responsive '>  <div class='Subhead-heading '>    My Heading</div>  <div class='Subhead-actions '>    <a href='http://www.google.com' role='button' class='btn-danger btn '>    Action  </a></div>  <div class='Subhead-description '>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>

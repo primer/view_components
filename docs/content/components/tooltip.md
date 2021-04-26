@@ -25,7 +25,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### Wrapping another component
 
-<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n '>    <button type='button' class='btn '>  Bold Button  </button></span></div>" />
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n '>    <button type='button' class='btn '>    Bold Button  </button></span></div>" />
 
 ```erb
 <div class="pt-5">

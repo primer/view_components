@@ -127,4 +127,15 @@ class PrimerButtonComponentTest < Minitest::Test
       assert_text("Button")
     end
   end
+
+  def test_renders_caret
+    render_inline(Primer::ButtonComponent.new(caret: true)) do |_c|
+      "Button"
+    end
+
+    assert_selector(".btn") do
+      assert_text("Button")
+      assert_selector(".octicon.octicon-triangle-down")
+    end
+  end
 end

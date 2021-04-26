@@ -10,6 +10,7 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
       select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
+      caret false
     end
 
     content do
@@ -17,32 +18,18 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
     end
   end
 
-  story(:with_left_icon) do
+  story(:with_icon) do
     controls do
       select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
       select(:variant, Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
       select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
+      caret false
     end
 
     content do |c|
       c.icon(icon: :star)
-      "Click me"
-    end
-  end
-
-  story(:with_right_icon) do
-    controls do
-      select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
-      select(:variant, Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
-      select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
-      select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
-      group_item false
-    end
-
-    content do |c|
-      c.icon(icon: "chevron-down", align: :right)
       "Click me"
     end
   end
@@ -54,6 +41,7 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
       select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
+      caret false
     end
 
     content do |c|
@@ -69,6 +57,7 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
       select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
+      caret false
     end
 
     content do |c|

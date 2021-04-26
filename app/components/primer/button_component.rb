@@ -25,18 +25,10 @@ module Primer
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
-    DEFAULT_ICON_ALIGNMENT = :left
-    ICON_ALIGNMENT_OPTIONS = [DEFAULT_ICON_ALIGNMENT, :right].freeze
-
     # Icon to be rendered in the button.
     #
-    # @param align [Symbol] <%= one_of(Primer::ButtonComponent::ICON_ALIGN_OPTIONS) %>
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
-    renders_one :icon, lambda { |align: DEFAULT_ICON_ALIGNMENT, **system_arguments|
-      @icon_align = fetch_or_fallback(ICON_ALIGNMENT_OPTIONS, align, DEFAULT_ICON_ALIGNMENT)
-
-      Primer::OcticonComponent.new(**system_arguments)
-    }
+    renders_one :icon, Primer::OcticonComponent
 
     # Counter to be rendered in the button.
     #
@@ -65,10 +57,6 @@ module Primer
     #     <% c.icon(icon: :star) %>
     #     Button
     #   <% end %>
-    #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.icon(icon: :star, align: :right) %>
-    #     Button
-    #   <% end %>
     #
     # @example With counter
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
@@ -82,9 +70,9 @@ module Primer
     #     <% c.counter(count: 15) %>
     #     Button
     #   <% end %>
-    #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.icon(icon: :star, align: :right) %>
-    #     <% c.counter(count: 15) %>
+    #
+    # @example With caret
+    #   <%= render(Primer::ButtonComponent.new(caret: true)) do %>
     #     Button
     #   <% end %>
     #
@@ -99,9 +87,12 @@ module Primer
       variant: DEFAULT_VARIANT,
       group_item: false,
       block: false,
+      caret: false,
       **system_arguments
     )
       @scheme = scheme
+      @caret = caret
+
       @system_arguments = system_arguments
       @system_arguments[:classes] = class_names(
         system_arguments[:classes],
