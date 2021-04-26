@@ -177,9 +177,10 @@ namespace :docs do
 
     js_components = [
       Primer::AutoComplete,
-      Primer::TimeAgoComponent,
+      Primer::ClipboardCopy,
       Primer::TabContainerComponent,
       Primer::TabNavComponent,
+      Primer::TimeAgoComponent,
       Primer::UnderlineNavComponent
     ]
 
