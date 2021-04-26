@@ -32,8 +32,17 @@ module Primer
       ALIGN_ITEMS_KEY = :align_items
       ALIGN_ITEMS_VALUES = [:flex_start, :flex_end, :center, :baseline, :stretch].freeze
 
+      KEYS = [FLEX_KEY, WRAP_KEY, SHRINK_KEY, GROW_KEY, ALIGN_SELF_KEY, DIRECTION_KEY, JUSTIFY_CONTENT_KEY, ALIGN_ITEMS_KEY].freeze
+      RESPONSIVE_KEYS = [DIRECTION_KEY, JUSTIFY_CONTENT_KEY, ALIGN_ITEMS_KEY].freeze
+
       class << self
-        def flex(value)
+        def css(key, value, breakpoint)
+          send(key, value, breakpoint)
+        end
+
+        private
+
+        def flex(value, _breakpoint)
           generate(
             value: value,
             allowed_values: FLEX_VALUES,
@@ -42,13 +51,13 @@ module Primer
           )
         end
 
-        def wrap(value)
+        def flex_wrap(value, _breakpoint)
           validate(value, WRAP_MAPPINGS.keys, WRAP_KEY)
 
           WRAP_MAPPINGS[value]
         end
 
-        def shrink(value)
+        def flex_shrink(value, _breakpoint)
           generate(
             value: value,
             allowed_values: SHRINK_VALUES,
@@ -57,7 +66,7 @@ module Primer
           )
         end
 
-        def grow(value)
+        def flex_grow(value, _breakpoint)
           generate(
             value: value,
             allowed_values: GROW_VALUES,
@@ -66,7 +75,7 @@ module Primer
           )
         end
 
-        def align_self(value)
+        def align_self(value, _breakpoint)
           generate(
             value: value,
             allowed_values: ALIGN_SELF_VALUES,
@@ -91,11 +100,9 @@ module Primer
         def align_items(value, breakpoint)
           validate(value, ALIGN_ITEMS_VALUES, ALIGN_ITEMS_KEY)
 
-          formatted_value = value.to_s.gsub('flex_', '')
+          formatted_value = value.to_s.gsub("flex_", "")
           "flex#{breakpoint}-items-#{formatted_value}"
         end
-
-        private
 
         def generate(value:, allowed_values:, key:, prefix:)
           validate(value, allowed_values, key)
