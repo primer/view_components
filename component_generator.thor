@@ -14,8 +14,8 @@ class ComponentGenerator < Thor::Group
 
   # Define arguments and options
   argument :name
-  class_option :js, default: nil
-  class_option :inline, type: :boolean
+  class_option :js, default: nil, desc: "Name of the package to import for this component."
+  class_option :inline, type: :boolean, desc: "Use this option to create a #call method instead of generating an ERB template for the component."
 
   def self.source_root
     File.dirname(__FILE__)
