@@ -489,11 +489,9 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-justify-between", { justify_content: :space_between })
     assert_generated_class("flex-justify-around", { justify_content: :space_around })
 
-    err = assert_raises ArgumentError do
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
       Primer::Classify.call(justify_content: :invalid_option)
     end
-
-    assert_equal("invalid_option is not a valid value for :justify_content. Use one of #{Primer::Classify::Flex::JUSTIFY_CONTENT_VALUES}", err.message)
   end
 
   def test_align_items
@@ -503,11 +501,9 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-items-baseline", { align_items: :baseline })
     assert_generated_class("flex-items-stretch", { align_items: :stretch })
 
-    err = assert_raises ArgumentError do
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
       Primer::Classify.call(align_items: :invalid_option)
     end
-
-    assert_equal("invalid_option is not a valid value for :align_items. Use one of #{Primer::Classify::Flex::ALIGN_ITEMS_VALUES}", err.message)
   end
 
   def test_flex_wrap
@@ -515,11 +511,9 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-nowrap", { flex_wrap: :nowrap })
     assert_generated_class("flex-wrap-reverse", { flex_wrap: :reverse })
 
-    err = assert_raises ArgumentError do
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
       Primer::Classify.call(flex_wrap: :invalid_option)
     end
-
-    assert_equal("invalid_option is not a valid value for :flex_wrap. Use one of #{Primer::Classify::Flex::WRAP_MAPPINGS.keys}", err.message)
   end
 
   def test_flex_direction
@@ -529,11 +523,9 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-row-reverse", { direction: :row_reverse })
     assert_generated_class("flex-row flex-sm-column flex-md-row-reverse flex-lg-column-reverse flex-xl-row", { direction: %i[row column row_reverse column_reverse row] })
 
-    err = assert_raises ArgumentError do
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
       Primer::Classify.call(direction: :invalid_option)
     end
-
-    assert_equal("invalid_option is not a valid value for :direction. Use one of #{Primer::Classify::Flex::DIRECTION_VALUES}", err.message)
   end
 
   def test_word_break
@@ -577,11 +569,9 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-1",    { flex: 1 })
     assert_generated_class("flex-auto", { flex: :auto })
 
-    err = assert_raises ArgumentError do
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
       Primer::Classify.call(flex: :invalid_option)
     end
-
-    assert_equal("invalid_option is not a valid value for :flex. Use one of #{Primer::Classify::Flex::FLEX_VALUES}", err.message)
   end
 
   def test_flex_align_self
@@ -592,11 +582,9 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-self-baseline",  { align_self: :baseline })
     assert_generated_class("flex-self-stretch",   { align_self: :stretch })
 
-    err = assert_raises ArgumentError do
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
       Primer::Classify.call(align_self: :invalid_option)
     end
-
-    assert_equal("invalid_option is not a valid value for :align_self. Use one of #{Primer::Classify::Flex::ALIGN_SELF_VALUES}", err.message)
   end
 
   def test_width_and_height
@@ -609,21 +597,17 @@ class PrimerClassifyTest < Minitest::Test
   def test_flex_grow
     assert_generated_class("flex-grow-0", { flex_grow: 0 })
 
-    err = assert_raises ArgumentError do
+    err =assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
       Primer::Classify.call(flex_grow: :invalid_option)
     end
-
-    assert_equal("invalid_option is not a valid value for :flex_grow. Use one of #{Primer::Classify::Flex::GROW_VALUES}", err.message)
   end
 
   def test_flex_shrink
     assert_generated_class("flex-shrink-0", { flex_shrink: 0 })
 
-    err = assert_raises ArgumentError do
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
       Primer::Classify.call(flex_shrink: :invalid_option)
     end
-
-    assert_equal("invalid_option is not a valid value for :flex_shrink. Use one of #{Primer::Classify::Flex::SHRINK_VALUES}", err.message)
   end
 
   def test_animation
