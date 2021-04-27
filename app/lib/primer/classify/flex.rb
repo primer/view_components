@@ -36,7 +36,7 @@ module Primer
       RESPONSIVE_KEYS = [DIRECTION_KEY, JUSTIFY_CONTENT_KEY, ALIGN_ITEMS_KEY].freeze
 
       class << self
-        def css(key, value, breakpoint)
+        def classes(key, value, breakpoint)
           send(key, value, breakpoint)
         end
 

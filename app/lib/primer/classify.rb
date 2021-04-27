@@ -205,7 +205,7 @@ module Primer
         elsif key == BORDER_RADIUS_KEY
           memo[:classes] << "rounded-#{val}"
         elsif Primer::Classify::Flex::KEYS.include?(key)
-          memo[:classes] << Primer::Classify::Flex.css(key, val, breakpoint)
+          memo[:classes] << Primer::Classify::Flex.classes(key, val, breakpoint)
         elsif key == WIDTH_KEY || key == HEIGHT_KEY
           if val == :fit || val == :fill
             memo[:classes] << "#{key}-#{val}"
