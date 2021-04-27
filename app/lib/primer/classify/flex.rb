@@ -77,9 +77,7 @@ module Primer
         end
 
         def flex_wrap(value, _breakpoint)
-          val = fetch_or_fallback(WRAP_MAPPINGS.keys, value)
-
-          WRAP_MAPPINGS[value]
+          WRAP_MAPPINGS[fetch_or_fallback(WRAP_MAPPINGS.keys, value)]
         end
 
         def direction(value, breakpoint)
