@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use the UnderlineNav component to style navigation with a minimal
+  # Use `UnderlineNav` to style navigation with a minimal
   # underlined selected state, typically used for navigation placed at the top
   # of the page.
   class UnderlineNavComponent < Primer::Component

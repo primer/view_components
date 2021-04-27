@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use Primer::BlankslateComponent when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.
+  # Use `Blankslate` when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.
   class BlankslateComponent < Primer::Component
     status :beta
 

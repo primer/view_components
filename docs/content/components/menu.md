@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use menus to create vertical lists of navigational links.
+Use `Menu` to create vertical lists of navigational links.
 
 ## Examples
 

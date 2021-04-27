@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use labels to add contextual metadata to a design.
+  # Use `Label` to add contextual metadata to a design.
   class LabelComponent < Primer::Component
     status :beta
 

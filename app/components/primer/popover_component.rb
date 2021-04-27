@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use popovers to bring attention to specific user interface elements, typically to suggest an action or to guide users through a new experience.
+  # Use `Popover` to bring attention to specific user interface elements, typically to suggest an action or to guide users through a new experience.
   #
   # By default, the popover renders with absolute positioning, meaning it should usually be wrapped in an element with a relative position in order to be positioned properly. To render the popover with relative positioning, use the relative property.
   class PopoverComponent < Primer::Component

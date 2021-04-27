@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use labels to add contextual metadata to a design.
+Use `Label` to add contextual metadata to a design.
 
 ## Examples
 

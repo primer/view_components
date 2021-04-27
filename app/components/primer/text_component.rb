@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # The Text component is a wrapper component that will apply typography styles to the text inside.
+  # `Text` is a wrapper component that will apply typography styles to the text inside.
   class TextComponent < Primer::Component
     status :beta
 

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use IconButton to render Icon-only buttons without the default button styles.
+  # Use `IconButton` to render Icon-only buttons without the default button styles.
   #
   # @accessibility
-  #   IconButton requires an `aria-label`, which will provide assistive technologies with an accessible label.
+  #   `IconButton` requires an `aria-label`, which will provide assistive technologies with an accessible label.
   class IconButton < Primer::Component
     DEFAULT_SCHEME = :default
     SCHEME_MAPPINGS = {

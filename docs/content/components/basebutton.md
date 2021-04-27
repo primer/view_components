@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use BaseButton to render an unstyled `<button>` tag that can be customized.
+Use `BaseButton` to render an unstyled `<button>` tag that can be customized.
 
 ## Examples
 
