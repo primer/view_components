@@ -15,7 +15,7 @@ Use `Breadcrumb` to display page hierarchy within a section of the site. All of 
 
 ### Basic
 
-<Example src="<nav aria-label='Breadcrumb'>  <ol>      <li class='breadcrumb-item  '><a href='/'>Home</a></li>      <li class='breadcrumb-item  '><a href='/about'>About</a></li>      <li aria-current='page' class='breadcrumb-item  '>Team</li>  </ol></nav>" />
+<Example src="<nav aria-label='Breadcrumb'>  <ol>      <li class='breadcrumb-item'><a href='/'>Home</a></li>      <li class='breadcrumb-item'><a href='/about'>About</a></li>      <li aria-current='page' class='breadcrumb-item'>Team</li>  </ol></nav>" />
 
 ```erb
 <%= render(Primer::BreadcrumbComponent.new) do |component| %>

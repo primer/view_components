@@ -15,7 +15,7 @@ Use `CounterComponent` to add a count to navigational elements and buttons.
 
 ### Default
 
-<Example src="<span title='25' class='Counter '>25</span>" />
+<Example src="<span title='25' class='Counter'>25</span>" />
 
 ```erb
 <%= render(Primer::CounterComponent.new(count: 25)) %>
@@ -23,7 +23,7 @@ Use `CounterComponent` to add a count to navigational elements and buttons.
 
 ### Schemes
 
-<Example src="<span title='25' class='Counter Counter--primary '>25</span><span title='25' class='Counter Counter--secondary '>25</span>" />
+<Example src="<span title='25' class='Counter Counter--primary'>25</span><span title='25' class='Counter Counter--secondary'>25</span>" />
 
 ```erb
 <%= render(Primer::CounterComponent.new(count: 25, scheme: :primary)) %>
