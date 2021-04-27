@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "octicons"
 
 module Primer
@@ -44,7 +45,9 @@ module Primer
     end
 
     def call
+      # rubocop:disable Rails/OutputSafety
       render(Primer::BaseComponent.new(**@system_arguments)) { @icon.path.html_safe }
+      # rubocop:enable Rails/OutputSafety
     end
   end
 end

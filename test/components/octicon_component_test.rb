@@ -90,8 +90,8 @@ class PrimerOcticonComponentTest < Minitest::Test
   end
 
   def test_renders_path_data
-   render_inline(Primer::OcticonComponent.new(:star))
+    render_inline(Primer::OcticonComponent.new(:star))
 
-   assert_selector("svg.octicon-star path[d]")
+    assert_selector("svg.octicon-star path[d]")
   end
 end
