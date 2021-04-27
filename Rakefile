@@ -294,6 +294,15 @@ namespace :docs do
           f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
         end
 
+        # Default system_arguments settings
+        initialize_method.tags(:option).each do |option|
+          pair = option.pair
+          binding.pry
+          default = pair.defaults && pair.defaults[0]
+          binding.pry
+          f.puts("| `#{pair.name}` | `#{pair.types.join(', ')}` | #{view_context.render(inline: default)} | #{view_context.render(inline: pair.text)} |")
+        end
+
         component_args = {
           "component" => short_name,
           "source" => "https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb",
@@ -319,7 +328,9 @@ namespace :docs do
             end
 
             param_tags = slot_documentation.tags(:param)
-            if param_tags.any?
+            option_tags = slot_documentation.tags(:option)
+
+            if param_tags.any? || option_tags.any?
               f.puts
               f.puts("| Name | Type | Default | Description |")
               f.puts("| :- | :- | :- | :- |")
@@ -336,6 +347,13 @@ namespace :docs do
                 end
 
               f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
+            end
+
+            # Default system_arguments settings
+            option_tags.each do |option| 
+              pair = option.pair
+              default_value = pair.defaults && pair.defaults[0]
+              f.puts("| `#{pair.name.to_s}` | `#{pair.types.join(', ')}` | `#{view_context.render(inline: default_value)}` | #{view_context.render(inline: pair.text)} |")
             end
           end
         end

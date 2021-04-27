@@ -5,15 +5,24 @@ module Primer
   class AutoComplete < Primer::Component
     status :beta
 
+    DEFAULT_TAG = :ul 
+    TAG_OPTIONS = [DEFAULT_TAG].freeze
+
     DEFAULT_INPUT_TYPE = :text
     INPUT_TYPE_OPTIONS = [DEFAULT_INPUT_TYPE, :search].freeze
+    DEFAULT_INPUT_TAG = :input
+    INPUT_TAG_OPTIONS = [DEFAULT_INPUT_TAG].freeze
+
+    DEFAULT_RESULTS_TAG = :ul
+    RESULTS_TAG_OPTIONS = [DEFAULT_RESULTS_TAG].freeze
 
     # Required input used to search for results
     #
     # @param type [Symbol] <%= one_of(Primer::AutoComplete::INPUT_TYPE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    # @option system_arguments [Symbol] tag (<%= Primer::AutoComplete::DEFAULT_INPUT_TAG %>) <%= one_of(Primer::AutoComplete::INPUT_TAG_OPTIONS) %>
     renders_one :input, lambda { |type: DEFAULT_INPUT_TYPE, classes: "form-control", **system_arguments|
-      system_arguments[:tag] = :input
+      system_arguments[:tag] = DEFAULT_INPUT_TAG
       system_arguments[:type] = fetch_or_fallback(INPUT_TYPE_OPTIONS, type, DEFAULT_INPUT_TYPE)
       system_arguments[:classes] = classes
       Primer::BaseComponent.new(**system_arguments)
@@ -25,6 +34,7 @@ module Primer
     # Customizable results list.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    # @option system_arguments [Symbol] tag (<%= Primer::AutoComplete::DEFAULT_RESULTS_TAG %>) <%= one_of(Primer::AutoComplete::RESULTS_TAG_OPTIONS) %>
     renders_one :results, lambda { |**system_arguments|
       system_arguments[:tag] = :ul
       system_arguments[:id] = @id
@@ -79,6 +89,7 @@ module Primer
     # @param src [String] The route to query.
     # @param id [String] Id of the list element.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    # @option system_arguments [Symbol] tag (<%= Primer::AutoComplete::DEFAULT_TAG %>) <%= one_of(Primer::AutoComplete::TAG_OPTIONS) %>
     def initialize(src:, id:, **system_arguments)
       @id = id
 
