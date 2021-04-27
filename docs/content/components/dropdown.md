@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Dropdowns are lightweight context menus for housing navigation and actions.
+`Dropdown` is a lightweight context menu for housing navigation and actions.
 They're great for instances where you don't need the full power (and code) of the select menu.
 
 ## Examples

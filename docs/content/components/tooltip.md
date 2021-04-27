@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-The Tooltip component is a wrapper component that will apply a tooltip to the provided content.
+`Tooltip` is a wrapper component that will apply a tooltip to the provided content.
 
 ## Examples
 

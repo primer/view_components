@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use AvatarStack to stack multiple avatars together.
+  # Use `AvatarStack` to stack multiple avatars together.
   class AvatarStackComponent < Primer::Component
     status :beta
 

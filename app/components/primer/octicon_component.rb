@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Renders an <%= link_to_octicons %> with <%= link_to_system_arguments_docs %>.
+  # `Octicon` renders an <%= link_to_octicons %> with <%= link_to_system_arguments_docs %>.
   class OcticonComponent < Primer::Component
     status :beta
 

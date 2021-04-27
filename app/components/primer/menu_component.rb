@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use menus to create vertical lists of navigational links.
+  # Use `Menu` to create vertical lists of navigational links.
   class MenuComponent < Primer::Component
     # Optional menu heading
     #

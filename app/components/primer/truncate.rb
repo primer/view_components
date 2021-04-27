@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use Truncate to shorten overflowing text with an ellipsis.
+  # Use `Truncate` to shorten overflowing text with an ellipsis.
   class Truncate < Primer::Component
     status :beta
 

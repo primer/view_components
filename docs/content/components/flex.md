@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use FlexComponent to make an element lay out its content using the flexbox model.
+Use `Flex` to make an element lay out its content using the flexbox model.
 Before using these utilities, you should be familiar with CSS3 Flexible Box
 spec. If you are not, check out MDN's guide  [Using CSS Flexible
 Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox).

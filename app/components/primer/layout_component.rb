@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use Layout to build a main/sidebar layout.
+  # Use `Layout` to build a main/sidebar layout.
   class LayoutComponent < Primer::Component
     # The main content
     #

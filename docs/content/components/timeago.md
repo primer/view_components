@@ -12,7 +12,7 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use Primer::TimeAgoComponent to display a time relative to how long ago it was. This component requires JavaScript.
+Use `TimeAgo` to display a time relative to how long ago it was. This component requires JavaScript.
 
 ## Examples
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use HiddenTextExpander to indicate and toggle hidden text.
+  # Use `HiddenTextExpander` to indicate and toggle hidden text.
   class HiddenTextExpander < Primer::Component
     # @example Default
     #   <%= render(Primer::HiddenTextExpander.new) %>

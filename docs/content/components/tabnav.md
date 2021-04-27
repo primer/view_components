@@ -12,7 +12,7 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use TabNav to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.
+Use `TabNav` to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.
 
 ## Examples
 

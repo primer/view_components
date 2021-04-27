@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Component for rendering the status of an item.
+  # Use `State` for rendering the status of an item.
   class StateComponent < Primer::Component
     status :beta
 

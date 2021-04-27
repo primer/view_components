@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use links for moving from one page to another. The Link component styles anchor tags with default blue styling and hover text-decoration.
+  # Use `Link` for navigating from one page to another. `Link` styles anchor tags with default blue styling and hover text-decoration.
   class LinkComponent < Primer::Component
     status :beta
 

@@ -9,11 +9,11 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use IconButton to render Icon-only buttons without the default button styles.
+Use `IconButton` to render Icon-only buttons without the default button styles.
 
 ## Accessibility
 
-IconButton requires an `aria-label`, which will provide assistive technologies with an accessible label.
+`IconButton` requires an `aria-label`, which will provide assistive technologies with an accessible label.
 
 ## Examples
 

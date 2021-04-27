@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use FlexItemComponent to specify the ability of a flex item to alter its
+  # Use `FlexItem` to specify the ability of a flex item to alter its
   # dimensions to fill available space
   #
   # @deprecated
