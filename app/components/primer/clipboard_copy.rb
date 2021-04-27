@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use ClipboardCopy to copy element text content or input values to the clipboard.
+  # Use `ClipboardCopy` to copy element text content or input values to the clipboard.
   class ClipboardCopy < Primer::Component
     status :alpha
 

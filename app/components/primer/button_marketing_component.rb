@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use buttons for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
+  # Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
   class ButtonMarketingComponent < Primer::Component
     DEFAULT_SCHEME = :default
     SCHEME_MAPPINGS = {

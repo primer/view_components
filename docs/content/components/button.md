@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use buttons for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
+Use `Button` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
 
 ## Examples
 

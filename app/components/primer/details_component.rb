@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use DetailsComponent to reveal content after clicking a button.
+  # Use `DetailsComponent` to reveal content after clicking a button.
   class DetailsComponent < Primer::Component
     status :beta
 

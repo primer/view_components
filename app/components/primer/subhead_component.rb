@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use the Subhead component for page headings.
+  # Use `Subhead` for page headings.
   class SubheadComponent < Primer::Component
     status :beta
 

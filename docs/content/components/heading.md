@@ -9,12 +9,12 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Heading can be used to communicate page organization and hierarchy.
+`Heading` can be used to communicate page organization and hierarchy.
 
 - Set tag to one of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, `:h6` based on what is
   appropriate for the page context.
-- Use Heading as the title of a section or sub section.
-- Do not use Heading for styling alone. To style text without conveying heading semantics,
+- Use `Heading` as the title of a section or sub section.
+- Do not use `Heading` for styling alone. To style text without conveying heading semantics,
   consider using [Text](/components/text) with relevant [Typography](/system-arguments#typography).
 - Do not jump heading levels. For instance, do not follow a `<h1>` with an `<h3>`. Heading levels should
   increase by one in ascending order.
