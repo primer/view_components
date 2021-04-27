@@ -125,7 +125,7 @@ module Primer
         extracted_results[:style] = [
           extracted_results.delete(:styles),
           style
-        ].compact.join("").strip.presence
+        ].compact.join("").presence
 
         extracted_results
       end
