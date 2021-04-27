@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use the Flash component to inform users of successful or pending actions.
+  # Use `Flash` to inform users of successful or pending actions.
   class FlashComponent < Primer::Component
     status :beta
 

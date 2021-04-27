@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # BorderBox is a Box component with a border.
+  # `BorderBox` is a Box component with a border.
   class BorderBoxComponent < Primer::Component
     status :beta
 

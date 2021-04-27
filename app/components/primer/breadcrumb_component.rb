@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use breadcrumbs to display page hierarchy within a section of the site. All of the items in the breadcrumb "trail" are links except for the final item, which is a plain string indicating the current page.
+  # Use `Breadcrumb` to display page hierarchy within a section of the site. All of the items in the breadcrumb "trail" are links except for the final item, which is a plain string indicating the current page.
   class BreadcrumbComponent < Primer::Component
     status :beta
 

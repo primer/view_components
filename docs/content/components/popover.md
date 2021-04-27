@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use popovers to bring attention to specific user interface elements, typically to suggest an action or to guide users through a new experience.
+Use `Popover` to bring attention to specific user interface elements, typically to suggest an action or to guide users through a new experience.
 
 By default, the popover renders with absolute positioning, meaning it should usually be wrapped in an element with a relative position in order to be positioned properly. To render the popover with relative positioning, use the relative property.
 

@@ -12,7 +12,7 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use the UnderlineNav component to style navigation with a minimal
+Use `UnderlineNav` to style navigation with a minimal
 underlined selected state, typically used for navigation placed at the top
 of the page.
 

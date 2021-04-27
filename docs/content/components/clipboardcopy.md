@@ -12,7 +12,7 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use ClipboardCopy to copy element text content or input values to the clipboard.
+Use `ClipboardCopy` to copy element text content or input values to the clipboard.
 
 ## Examples
 

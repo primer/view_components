@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use ProgressBar to visualize task completion.
+  # Use `ProgressBar` to visualize task completion.
   class ProgressBarComponent < Primer::Component
     status :beta
 

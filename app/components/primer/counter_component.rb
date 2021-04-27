@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use Primer::CounterComponent to add a count to navigational elements and buttons.
+  # Use `CounterComponent` to add a count to navigational elements and buttons.
   class CounterComponent < Primer::Component
     status :beta
 

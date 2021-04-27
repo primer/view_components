@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use ButtonGroup to render a series of buttons.
+  # Use `ButtonGroup` to render a series of buttons.
   class ButtonGroup < Primer::Component
     status :beta
 

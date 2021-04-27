@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use TabNav to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.
+  # Use `TabNav` to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.
   class TabNavComponent < Primer::Component
     include Primer::TabbedComponentHelper
 

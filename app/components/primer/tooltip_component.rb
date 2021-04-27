@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # The Tooltip component is a wrapper component that will apply a tooltip to the provided content.
+  # `Tooltip` is a wrapper component that will apply a tooltip to the provided content.
   class TooltipComponent < Primer::Component
     DIRECTION_DEFAULT = :n
     ALIGN_DEFAULT = :default
