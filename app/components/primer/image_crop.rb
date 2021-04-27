@@ -5,7 +5,7 @@ module Primer
   class ImageCrop < Primer::Component
     # A loading indicator that is shown while the image is loading.
     renders_one :loading, lambda { |**system_arguments|
-      system_arguments[:tag] = :div
+      system_arguments[:tag] ||= :div
       system_arguments[:"data-loading-slot"] = true
 
       Primer::BaseComponent.new(**system_arguments)
