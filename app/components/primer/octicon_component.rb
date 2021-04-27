@@ -41,8 +41,6 @@ module Primer
 
       @system_arguments[:classes] = [@icon.options[:class], @system_arguments[:classes]].compact.join(" ")
       @system_arguments.merge!(@icon.options.reject { |k| [:class].include?(k) })
-      # puts octicon_options.inspect
-      # puts @system_arguments.inspect
     end
 
     def call
