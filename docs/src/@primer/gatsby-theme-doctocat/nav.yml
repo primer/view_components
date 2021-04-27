@@ -58,6 +58,8 @@
       url: /components/hiddentextexpander
     - title: ImageCrop
       url: /components/imagecrop
+    - title: IconButton
+      url: /components/iconbutton
     - title: Label
       url: /components/label
     - title: Layout

@@ -1,0 +1,9 @@
+<%= render Primer::BaseButton.new(**@system_arguments) do %>
+  <%= icon %>
+  <%= content %>
+  <%= counter %>
+
+  <% if @caret %>
+    <%= primer_octicon("triangle-down") %>
+  <% end %>
+<% end %>

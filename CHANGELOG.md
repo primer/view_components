@@ -2,9 +2,15 @@
 
 ## main
 
-* **Breaking change**: Do not provide default for `Heading` and improve documentation.
+* Add `icon` and `counter` slots to `ButtonComponent`.
 
-    *Kate Higa*
+    *Manuel Puyol*
+
+* Create `IconButton` component.
+
+    *Manuel Puyol*
+
+## 0.0.38
 
 * Extract `BaseButton` component.
 
@@ -14,7 +20,21 @@
 
     *Kate Higa*
 
+* Set button variants in the `ButtonGroup` parent.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Rename `ButtonGroupComponent` to `ButtonGroup` and promote it to beta.
+
+    *Manuel Puyol*
+
+* **Breaking change**: Do not provide default for `Heading` and improve documentation.
+
+    *Kate Higa*
+
 * **Breaking change**: Don't allow `StateComponent` to be a link.
+
+    *Kate Higa*
 
 ## 0.0.37
 

@@ -14,7 +14,8 @@ class ComponentGenerator < Thor::Group
 
   # Define arguments and options
   argument :name
-  class_option :js, default: nil
+  class_option :js, default: nil, desc: "Name of the package to import for this component."
+  class_option :inline, type: :boolean, desc: "Use this option to create a #call method instead of generating an ERB template for the component."
 
   def self.source_root
     File.dirname(__FILE__)
@@ -25,7 +26,7 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_template
-    template("templates/component.html.tt", "app/components/primer/#{underscore_name}.html.erb")
+    template("templates/component.html.tt", "app/components/primer/#{underscore_name}.html.erb") unless inline?
   end
 
   def create_test
@@ -82,5 +83,9 @@ class ComponentGenerator < Thor::Group
 
   def js_package_name
     options[:js]
+  end
+
+  def inline?
+    options[:inline]
   end
 end

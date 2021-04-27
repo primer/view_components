@@ -8,6 +8,7 @@ class PrimerComponentTest < Minitest::Test
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
     [Primer::ImageCrop, { src: "Foo" }],
+    [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
     [Primer::AutoComplete, { src: "Foo", id: "Bar" }, proc { |c| c.input(classes: "Baz") }],
     [Primer::AutoComplete::Item, { value: "Foo" }],
     [Primer::AvatarComponent, { alt: "github", src: "https://github.com/github.png" }],
@@ -21,7 +22,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::BoxComponent, {}],
     [Primer::BreadcrumbComponent, {}, proc { |component| component.item { "Foo" } }],
     [Primer::ButtonComponent, {}],
-    [Primer::ButtonGroupComponent, {}, proc { |component| component.button { "Button" } }],
+    [Primer::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
     [Primer::ButtonMarketingComponent, {}],
     [Primer::ClipboardCopy, { label: "String that will be read to screenreaders", value: "String that will be copied" }],
     [Primer::CloseButton, {}],

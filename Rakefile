@@ -100,6 +100,10 @@ namespace :docs do
     "[#{short_name}](/components/#{short_name.downcase})"
   end
 
+  def link_to_octicons
+    "[Octicon](https://primer.style/octicons/)"
+  end
+
   def pretty_value(val)
     case val
     when nil
@@ -131,6 +135,7 @@ namespace :docs do
     registry.load!(".yardoc")
     components = [
       Primer::ImageCrop,
+      Primer::IconButton,
       Primer::AutoComplete,
       Primer::AutoComplete::Item,
       Primer::AvatarComponent,
@@ -141,7 +146,7 @@ namespace :docs do
       Primer::BoxComponent,
       Primer::BreadcrumbComponent,
       Primer::ButtonComponent,
-      Primer::ButtonGroupComponent,
+      Primer::ButtonGroup,
       Primer::ButtonMarketingComponent,
       Primer::ClipboardCopy,
       Primer::CloseButton,
@@ -179,9 +184,10 @@ namespace :docs do
     js_components = [
       Primer::ImageCrop,
       Primer::AutoComplete,
-      Primer::TimeAgoComponent,
+      Primer::ClipboardCopy,
       Primer::TabContainerComponent,
       Primer::TabNavComponent,
+      Primer::TimeAgoComponent,
       Primer::UnderlineNavComponent
     ]
 

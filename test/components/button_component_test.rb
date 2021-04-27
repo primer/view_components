@@ -89,4 +89,51 @@ class PrimerButtonComponentTest < Minitest::Test
 
     assert_selector(".btn.btn-primary.btn-block")
   end
+
+  def test_renders_icon
+    render_inline(Primer::ButtonComponent.new) do |c|
+      c.icon(icon: :star)
+      "Button"
+    end
+
+    assert_selector(".btn") do
+      assert_selector(".octicon.octicon-star")
+      assert_text("Button")
+    end
+  end
+
+  def test_renders_counter
+    render_inline(Primer::ButtonComponent.new) do |c|
+      c.counter(count: 10)
+      "Button"
+    end
+
+    assert_selector(".btn") do
+      assert_selector(".Counter", text: "10")
+      assert_text("Button")
+    end
+  end
+
+  def test_renders_icon_and_counter
+    render_inline(Primer::ButtonComponent.new) do |c|
+      c.icon(icon: :star)
+      c.counter(count: 10)
+      "Button"
+    end
+
+    assert_selector(".btn") do
+      assert_selector(".octicon.octicon-star")
+      assert_selector(".Counter", text: "10")
+      assert_text("Button")
+    end
+  end
+
+  def test_renders_caret
+    render_inline(Primer::ButtonComponent.new(caret: true).with_content("Button"))
+
+    assert_selector(".btn") do
+      assert_text("Button")
+      assert_selector(".octicon.octicon-triangle-down")
+    end
+  end
 end

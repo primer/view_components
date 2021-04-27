@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.0.37)
+    primer_view_components (0.0.38)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons_helper (>= 13.0.0)
@@ -166,7 +166,7 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.7.0)
-    view_component (2.28.0)
+    view_component (2.31.0)
       activesupport (>= 5.0.0, < 7.0)
     view_component_storybook (0.8.0)
       view_component (>= 2.2)

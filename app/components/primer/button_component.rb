@@ -25,6 +25,16 @@ module Primer
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
+    # Icon to be rendered in the button.
+    #
+    # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
+    renders_one :icon, Primer::OcticonComponent
+
+    # Counter to be rendered in the button.
+    #
+    # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::CounterComponent) %>.
+    renders_one :counter, Primer::CounterComponent
+
     # @example Schemes
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
@@ -42,20 +52,48 @@ module Primer
     #   <%= render(Primer::ButtonComponent.new(block: :true)) { "Block" } %>
     #   <%= render(Primer::ButtonComponent.new(block: :true, scheme: :primary)) { "Primary block" } %>
     #
+    # @example With icons
+    #   <%= render(Primer::ButtonComponent.new) do |c| %>
+    #     <% c.icon(icon: :star) %>
+    #     Button
+    #   <% end %>
+    #
+    # @example With counter
+    #   <%= render(Primer::ButtonComponent.new) do |c| %>
+    #     <% c.counter(count: 15) %>
+    #     Button
+    #   <% end %>
+    #
+    # @example With icons and counter
+    #   <%= render(Primer::ButtonComponent.new) do |c| %>
+    #     <% c.icon(icon: :star) %>
+    #     <% c.counter(count: 15) %>
+    #     Button
+    #   <% end %>
+    #
+    # @example With caret
+    #   <%= render(Primer::ButtonComponent.new(caret: true)) do %>
+    #     Button
+    #   <% end %>
+    #
     # @param scheme [Symbol] <%= one_of(Primer::ButtonComponent::SCHEME_OPTIONS) %>
     # @param variant [Symbol] <%= one_of(Primer::ButtonComponent::VARIANT_OPTIONS) %>
     # @param tag [Symbol] <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
     # @param type [Symbol] <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
     # @param group_item [Boolean] Whether button is part of a ButtonGroup.
     # @param block [Boolean] Whether button is full-width with `display: block`.
+    # @param caret [Boolean] Whether or not to render a caret.
     def initialize(
       scheme: DEFAULT_SCHEME,
       variant: DEFAULT_VARIANT,
       group_item: false,
       block: false,
+      caret: false,
       **system_arguments
     )
       @scheme = scheme
+      @caret = caret
+
       @system_arguments = system_arguments
       @system_arguments[:classes] = class_names(
         system_arguments[:classes],
@@ -65,10 +103,6 @@ module Primer
         "btn-block" => block,
         "BtnGroup-item" => group_item
       )
-    end
-
-    def call
-      render(Primer::BaseButton.new(**@system_arguments)) { content }
     end
 
     private
