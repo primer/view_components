@@ -53,12 +53,6 @@ class PrimerOcticonComponentTest < Minitest::Test
     assert_selector("[height='64']")
   end
 
-  def test_renders_small_if_invalid_size_is_passed
-    render_inline(Primer::OcticonComponent.new(:star, size: :grande))
-
-    assert_selector("[height='16']")
-  end
-
   def test_renders_with_overridden_height_and_width_despite_given_a_size
     render_inline(Primer::OcticonComponent.new(:star, size: :large, height: 33, width: 47))
 
@@ -93,5 +87,11 @@ class PrimerOcticonComponentTest < Minitest::Test
 
     refute_selector("[test_selector='bar']")
     assert_selector("[data-test-selector='bar']")
+  end
+
+  def test_renders_path_data
+   render_inline(Primer::OcticonComponent.new(:star))
+
+   assert_selector("svg.octicon-star path[d]")
   end
 end
