@@ -8,7 +8,5 @@ class Primer::ImageCropStories < ViewComponent::Storybook::Stories
       text(:src, "https://github.com/koddsson.png")
       text(:style, "width: 500px")
     end
-
-    content
   end
 end
