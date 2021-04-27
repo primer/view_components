@@ -19,13 +19,13 @@ Use [Box](/components/box) instead.
 **Before**:
 
 ```erb
- <%= render Primer::FlexItemComponent.new(flex_auto: :auto) %>
+<%= render Primer::FlexItemComponent.new(flex_auto: :auto) %>
 ```
 
 **After**:
 
 ```erb
- <%= render Primer::BoxComponent.new(flex_auto: :auto) %>
+<%= render Primer::BoxComponent.new(flex_auto: :auto) %>
 ```
 
 ## Examples
