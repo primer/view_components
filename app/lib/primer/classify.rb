@@ -120,12 +120,12 @@ module Primer
         extracted_results[:class] = [
           validated_class_names(classes),
           extracted_results.delete(:classes)
-        ].compact.join(" ").presence
+        ].compact.join(" ").strip.presence
 
         extracted_results[:style] = [
           extracted_results.delete(:styles),
           style
-        ].compact.join("").presence
+        ].compact.join("").strip.presence
 
         extracted_results
       end
