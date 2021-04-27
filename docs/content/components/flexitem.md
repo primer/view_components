@@ -12,7 +12,21 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 Use FlexItemComponent to specify the ability of a flex item to alter its
 dimensions to fill available space
 
-**Deprecation note:** Use [Box](/components/box) instead.
+## Deprecation
+
+Use [Box](/components/box) instead.
+
+**Before**:
+
+```erb
+ <%= render Primer::FlexItemComponent.new(flex_auto: :auto) %>
+```
+
+**After**:
+
+```erb
+ <%= render Primer::BoxComponent.new(flex_auto: :auto) %>
+```
 
 ## Examples
 
