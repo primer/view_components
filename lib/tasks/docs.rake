@@ -47,6 +47,7 @@ namespace :docs do
     registry = YARD::RegistryStore.new
     registry.load!(".yardoc")
     components = [
+      Primer::LocalTime,
       Primer::IconButton,
       Primer::AutoComplete,
       Primer::AutoComplete::Item,
@@ -94,6 +95,7 @@ namespace :docs do
     ]
 
     js_components = [
+      Primer::LocalTime,
       Primer::AutoComplete,
       Primer::ClipboardCopy,
       Primer::TabContainerComponent,
