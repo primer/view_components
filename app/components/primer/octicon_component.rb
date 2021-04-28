@@ -40,8 +40,11 @@ module Primer
 
       @icon = Octicons::Octicon.new(icon_name || icon, octicon_options)
 
-      @system_arguments[:classes] = [@icon.options[:class], @system_arguments[:classes]].compact.join(" ")
-      @system_arguments.merge!(@icon.options.reject { |k| [:class].include?(k) })
+      @system_arguments[:classes] = class_names(
+        @icon.options[:class],
+        @system_arguments[:classes]
+      )
+      @system_arguments.merge!(@icon.options.except(:class))
     end
 
     def call
