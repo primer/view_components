@@ -12,12 +12,10 @@ function toggleSVG(svg: SVGElement) {
 function toggleCopyButton(button: HTMLElement) {
   const [clippyIcon, checkIcon] = button.querySelectorAll<SVGElement>('.octicon')
 
-  if (clippyIcon) {
-    toggleSVG(clippyIcon)
-  }
-  if (checkIcon) {
-    toggleSVG(checkIcon)
-  }
+  if (!clippyIcon || !checkIcon) return
+
+  toggleSVG(clippyIcon)
+  toggleSVG(checkIcon)
 }
 
 document.addEventListener('clipboard-copy', function ({target}) {
