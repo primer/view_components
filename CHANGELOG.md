@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.39
+
 * Update `ClipboardCopy` to not toggle icons unless they both exist.
 
     *Kristjan Oddsson*
