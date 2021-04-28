@@ -83,7 +83,33 @@ module Primer
         def clear!
           LOOKUP.clear
         end
+
+        def preload!
+          # Preload the top 20 icons.
+          Primer::OcticonComponent.new(icon: :alert)
+          Primer::OcticonComponent.new(icon: :check)
+          Primer::OcticonComponent.new(icon: :"chevron-down")
+          Primer::OcticonComponent.new(icon: :clippy)
+          Primer::OcticonComponent.new(icon: :clock)
+          Primer::OcticonComponent.new(icon: :"dot-fill")
+          Primer::OcticonComponent.new(icon: :info)
+          Primer::OcticonComponent.new(icon: :"kebab-horizontal")
+          Primer::OcticonComponent.new(icon: :link)
+          Primer::OcticonComponent.new(icon: :lock)
+          Primer::OcticonComponent.new(icon: :mail)
+          Primer::OcticonComponent.new(icon: :pencil)
+          Primer::OcticonComponent.new(icon: :plus)
+          Primer::OcticonComponent.new(icon: :question)
+          Primer::OcticonComponent.new(icon: :repo)
+          Primer::OcticonComponent.new(icon: :search)
+          Primer::OcticonComponent.new(icon: :"shield-lock")
+          Primer::OcticonComponent.new(icon: :star)
+          Primer::OcticonComponent.new(icon: :trash)
+          Primer::OcticonComponent.new(icon: :x)
+        end
       end
     end
+
+    Cache.preload!
   end
 end
