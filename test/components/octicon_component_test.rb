@@ -32,7 +32,8 @@ class PrimerOcticonComponentTest < Minitest::Test
   def test_renders_aria_label_attribute
     render_inline(Primer::OcticonComponent.new(:star, aria: { label: "star-label" }))
 
-    assert_selector("[aria-label='star-label']")
+    assert_selector("[aria-label='star-label'][role='img']")
+    refute_selector("[aria-hidden='true']")
   end
 
   def test_renders_style_argument

@@ -34,6 +34,13 @@ module Primer
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = :svg
+      @system_arguments[:aria] ||= {}
+
+      if @system_arguments[:aria][:label]
+        @system_arguments[:role] = "img"
+      else
+        @system_arguments[:aria][:hidden] = true
+      end
 
       if (cache_icon = Primer::OcticonComponent::Cache.read(cache_key))
         @icon = cache_icon
@@ -52,7 +59,7 @@ module Primer
         @icon.options[:class],
         @system_arguments[:classes]
       )
-      @system_arguments.merge!(@icon.options.except(:class))
+      @system_arguments.merge!(@icon.options.except(:class, :'aria-hidden'))
     end
 
     def call
