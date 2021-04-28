@@ -34,13 +34,11 @@ A client-side mechanism to crop images
 
 ### Cropper with a custom loader
 
-<Example src="<image-crop src='https://github.com/koddsson.png' rounded='false'>    <div style='width: 120px' data-loading-slot='true'>    <img src='spinner.gif /></div>  <input type='hidden' data-image-crop-input='x' name='cropped_x'>  <input type='hidden' data-image-crop-input='y' name='cropped_y'>  <input type='hidden' data-image-crop-input='width' name='cropped_width'>  <input type='hidden' data-image-crop-input='height' name='cropped_height'></image-crop>" />
+<Example src="<image-crop src='https://github.com/koddsson.png' rounded='false'>    <img style='width: 120px' src='spinner.gif' data-loading-slot='true'></img>  <input type='hidden' data-image-crop-input='x' name='cropped_x'>  <input type='hidden' data-image-crop-input='y' name='cropped_y'>  <input type='hidden' data-image-crop-input='width' name='cropped_width'>  <input type='hidden' data-image-crop-input='height' name='cropped_height'></image-crop>" />
 
 ```erb
 <%= render(Primer::ImageCrop.new(src: "https://github.com/koddsson.png", rounded: false)) do |cropper| %>
-  <% cropper.loading(style: "width: 120px") do %>
-    <img src="spinner.gif />
-  <% end %>
+  <% cropper.loading(style: "width: 120px", tag: :img, src: "spinner.gif") %>
 <% end %>
 ```
 
