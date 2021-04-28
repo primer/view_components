@@ -2,6 +2,10 @@
 
 ## main
 
+* Update `ClipboardCopy` to not toggle icons unless they both exist.
+
+    *Kristjan Oddsson*
+
 * Add `icon` and `counter` slots to `ButtonComponent`.
 
     *Manuel Puyol*
@@ -31,6 +35,10 @@
 * Set button variants in the `ButtonGroup` parent.
 
     *Manuel Puyol*
+
+* Create `ClipboardCopy` component.
+
+    *Kristjan Oddsson*
 
 * **Breaking change:** Rename `ButtonGroupComponent` to `ButtonGroup` and promote it to beta.
 

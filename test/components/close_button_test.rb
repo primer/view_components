@@ -8,7 +8,7 @@ class PrimerCloseButtonTest < Minitest::Test
   def test_renders
     render_inline(Primer::CloseButton.new)
 
-    assert_selector("button[type='button'].close-button") do
+    assert_selector("button[type='button'][aria-label='Close'].close-button") do
       assert_selector(".octicon.octicon-x")
     end
   end
@@ -41,5 +41,11 @@ class PrimerCloseButtonTest < Minitest::Test
     render_inline(Primer::CloseButton.new(block: true))
 
     refute_selector(".btn-block")
+  end
+
+  def test_can_override_aria_label
+    render_inline(Primer::CloseButton.new(aria: { label: "Label" }))
+
+    assert_selector("button[type='button'][aria-label='Label'].close-button")
   end
 end
