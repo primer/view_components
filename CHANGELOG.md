@@ -10,6 +10,10 @@
 
     *Manuel Puyol*
 
+* Removing trailing whitespace from output of `class=""` Classify generation.
+
+    *Jon Rohan*
+
 * Depreacate `FlexItem` component in favor of `BoxComponent`.
 
     *Manuel Puyol*

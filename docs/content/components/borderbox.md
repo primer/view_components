@@ -15,7 +15,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ### Header, body, rows, and footer
 
-<Example src="<div class='Box '>  <div class='Box-header '>    Header</div>  <div class='Box-body '>    Body</div>    <ul>        <li class='Box-row '>      Row one</li>        <li class='Box-row '>    Row two</li>    </ul>  <div class='Box-footer '>    Footer</div></div>" />
+<Example src="<div class='Box'>  <div class='Box-header'>    Header</div>  <div class='Box-body'>    Body</div>    <ul>        <li class='Box-row'>      Row one</li>        <li class='Box-row'>    Row two</li>    </ul>  <div class='Box-footer'>    Footer</div></div>" />
 
 ```erb
 <%= render(Primer::BorderBoxComponent.new) do |component| %>
@@ -41,7 +41,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ### Padding density
 
-<Example src="<div class='Box Box--condensed '>  <div class='Box-header '>    Header</div>  <div class='Box-body '>    Body</div>    <ul>        <li class='Box-row '>    Row two</li>    </ul>  <div class='Box-footer '>    Footer</div></div>" />
+<Example src="<div class='Box Box--condensed'>  <div class='Box-header'>    Header</div>  <div class='Box-body'>    Body</div>    <ul>        <li class='Box-row'>    Row two</li>    </ul>  <div class='Box-footer'>    Footer</div></div>" />
 
 ```erb
 <%= render(Primer::BorderBoxComponent.new(padding: :condensed)) do |component| %>
