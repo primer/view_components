@@ -42,7 +42,7 @@ module Primer
         # Note height and width are both classify options and valid html attributes.
         octicon_options = {
           height: SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
-        }.merge(@system_arguments.slice(:height, :width, :class))
+        }.merge(@system_arguments.slice(:height, :width))
 
         @icon = Octicons::Octicon.new(icon_key, octicon_options)
 
