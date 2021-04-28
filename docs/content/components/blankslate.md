@@ -11,6 +11,11 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `Blankslate` when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.
 
+## Accessibility
+
+`BlankSlate` renders an `<h3>` element for the title by default. Update the heading level based on what is appropriate for your page hierarchy by setting `title_tag`.
+[Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)
+
 ## Examples
 
 ### Basic
