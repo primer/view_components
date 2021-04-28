@@ -13,8 +13,7 @@ module Primer
         success: :success,
         warning: :warning,
         danger: :danger,
-        inverse: :inverse,
-        overlay: :overlay
+        inverse: :inverse
       }.freeze
 
       MAPPINGS = {

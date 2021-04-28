@@ -62,8 +62,8 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `bg` | String, Symbol | Background color. Accepts either a hex value as a String or one of `:primary`, `:secondary`, `:tertiary`, `:info`, `:success`, `:warning`, `:danger`, `:inverse`, or `:overlay`. |
-| `border_color` | Symbol | Border color. One of `:primary`, `:secondary`, `:tertiary`, `:info`, `:success`, `:warning`, `:danger`, `:inverse`, or `:overlay`. |
+| `bg` | String, Symbol | Background color. Accepts either a hex value as a String or one of `:primary`, `:secondary`, `:tertiary`, `:info`, `:success`, `:warning`, `:danger`, or `:inverse`. |
+| `border_color` | Symbol | Border color. One of `:primary`, `:secondary`, `:tertiary`, `:info`, `:success`, `:warning`, `:danger`, or `:inverse`. |
 | `color` | Symbol | Text color. One of `:icon_primary`, `:icon_secondary`, `:icon_tertiary`, `:icon_info`, `:icon_success`, `:icon_warning`, `:icon_danger`, `:text_primary`, `:text_secondary`, `:text_tertiary`, `:text_link`, `:text_success`, `:text_warning`, `:text_danger`, `:text_white`, or `:text_inverse`. |
 
 ## Flex
