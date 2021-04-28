@@ -13,6 +13,12 @@ class PrimerImageCropTest < Minitest::Test
     end
   end
 
+  def test_square_cropper
+    render_inline Primer::ImageCrop.new(src: "image.png", rounded: false)
+
+    assert_selector("image-crop[src=\"image.png\"][rounded]")
+  end
+
   def test_custom_loading_element
     render_inline Primer::ImageCrop.new(src: "image.png") do |crop|
       crop.loading do
