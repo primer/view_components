@@ -632,7 +632,13 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_does_not_raise_error_when_passing_in_a_primer_css_class_otherwise
-    assert_generated_class("bg-blue text-center float-left ml-1 ", { classes: "bg-blue text-center float-left ml-1" })
+    assert_generated_class("bg-blue text-center float-left ml-1", { classes: "bg-blue text-center float-left ml-1" })
+  end
+
+  def test_does_include_leading_trailing_whitespace_in_class
+    generated_class = Primer::Classify.call({ classes: "foo-class" })[:class]
+    refute(generated_class.start_with?(" "))
+    refute(generated_class.end_with?(" "))
   end
 
   private

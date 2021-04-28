@@ -16,7 +16,7 @@ dimensions to fill available space
 
 ### Default
 
-<Example src="<div class='d-flex'>  <div>    Item 1</div>  <div class='flex-auto '>    Item 2</div></div>" />
+<Example src="<div class='d-flex'>  <div>    Item 1</div>  <div class='flex-auto'>    Item 2</div></div>" />
 
 ```erb
 <%= render(Primer::FlexComponent.new) do %>
