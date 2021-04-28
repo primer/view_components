@@ -30,14 +30,14 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, **system_arguments)
       icon_key = icon_name || icon
-      cache_key = [icon_key, size, system_arguments].to_s
+      cache_key = [icon_key, size, system_arguments.slice(:height, :width)].to_s
+
+      @system_arguments = system_arguments
+      @system_arguments[:tag] = :svg
 
       if (cache_icon = Primer::OcticonComponent::Cache.read(cache_key))
-        @icon, @system_arguments = cache_icon
+        @icon = cache_icon
       else
-        @system_arguments = system_arguments
-        @system_arguments[:tag] = :svg
-
         # Filter out classify options to prevent them from becoming invalid html attributes.
         # Note height and width are both classify options and valid html attributes.
         octicon_options = {
@@ -45,15 +45,14 @@ module Primer
         }.merge(@system_arguments.slice(:height, :width))
 
         @icon = Octicons::Octicon.new(icon_key, octicon_options)
-
-        @system_arguments[:classes] = class_names(
-          @icon.options[:class],
-          @system_arguments[:classes]
-        )
-        @system_arguments.merge!(@icon.options.except(:class))
-
-        Primer::OcticonComponent::Cache.set(cache_key, [@icon, @system_arguments])
+        Primer::OcticonComponent::Cache.set(cache_key, @icon)
       end
+
+      @system_arguments[:classes] = class_names(
+        @icon.options[:class],
+        @system_arguments[:classes]
+      )
+      @system_arguments.merge!(@icon.options.except(:class))
     end
 
     def call
