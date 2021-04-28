@@ -2,7 +2,7 @@
 
 ## main
 
-* Create `ClipboardCopy` component.
+* Update `ClipboardCopy` to not toggle icons unless they both exist.
 
     *Kristjan Oddsson*
 
