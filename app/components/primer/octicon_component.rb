@@ -62,11 +62,9 @@ module Primer
 
     # :nodoc:
     class Cache
-      # rubocop:disable Style/MutableConstant
-      LOOKUP = {}
-      # rubocop:enable Style/MutableConstant
+      LOOKUP = {} # rubocop:disable Style/MutableConstant
 
-      class <<self
+      class << self
         def read(key)
           LOOKUP[key]
         end
