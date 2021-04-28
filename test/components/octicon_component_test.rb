@@ -94,4 +94,20 @@ class PrimerOcticonComponentTest < Minitest::Test
 
     assert_selector("svg.octicon-star path[d]")
   end
+
+  def test_cache_evacuates_after_limit_reached
+    Primer::OcticonComponent::Cache.clear!
+    Primer::OcticonComponent::Cache.stub :limit, 3 do
+      # Assert the limit is stubbed properly
+      assert_equal Primer::OcticonComponent::Cache.limit, 3
+      # Assert the cache is empty
+      assert_equal 0, Primer::OcticonComponent::Cache::LOOKUP.size
+
+      # Preload the cache should be 20 items
+      Primer::OcticonComponent::Cache.preload!
+
+      # Assert the cache size is 3 because the limit is 3
+      assert_equal 3, Primer::OcticonComponent::Cache::LOOKUP.size
+    end
+  end
 end

@@ -63,19 +63,21 @@ module Primer
     class Cache
       LOOKUP = {} # rubocop:disable Style/MutableConstant
 
-      # Cache size limit.
-      LIMIT = 500
-
       class << self
         def read(key)
           LOOKUP[key]
+        end
+
+        # Cache size limit.
+        def limit
+          500
         end
 
         def set(key, value)
           LOOKUP[key] = value
 
           # Remove first item when the cache is too large.
-          LOOKUP.shift if LOOKUP.size > LIMIT
+          LOOKUP.shift if LOOKUP.size > limit
         end
 
         def clear!
