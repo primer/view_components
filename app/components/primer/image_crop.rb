@@ -19,9 +19,7 @@ module Primer
     #
     # @example Cropper with a custom loader
     #   <%= render(Primer::ImageCrop.new(src: "https://github.com/koddsson.png", rounded: false)) do |cropper| %>
-    #     <% cropper.loading(style: "width: 120px") do %>
-    #       <img src="spinner.gif />
-    #     <% end %>
+    #     <% cropper.loading(style: "width: 120px", tag: :img, src: "spinner.gif") %>
     #   <% end %>
     #
     # @param src [String] The path of the image to crop.
