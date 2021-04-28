@@ -33,6 +33,10 @@ class ComponentGenerator < Thor::Group
     template("templates/test.tt", "test/components/#{underscore_name}_test.rb")
   end
 
+  def create_integration_test
+    template("templates/integration_test.rb.tt", "test/integration/#{underscore_name}_test.rb") if js_package_name
+  end
+
   def create_stories
     template("templates/stories.tt", "stories/primer/#{underscore_name}_stories.rb")
   end
@@ -75,6 +79,10 @@ class ComponentGenerator < Thor::Group
 
   def underscore_name
     name.underscore
+  end
+
+  def custom_element_name
+    underscore_name.tr("_", "-")
   end
 
   def short_name
