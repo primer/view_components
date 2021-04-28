@@ -32,7 +32,7 @@ module Primer
       icon_key = icon_name || icon
       cache_key = [icon_key, size, system_arguments].to_s
 
-      if cache_icon = Primer::OcticonComponent::Cache.read(cache_key)
+      if (cache_icon = Primer::OcticonComponent::Cache.read(cache_key))
         @icon, @system_arguments = cache_icon
       else
         @system_arguments = system_arguments
