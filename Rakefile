@@ -24,6 +24,7 @@ YARD::Rake::YardocTask.new
 
 # Custom tags for yard
 YARD::Tags::Library.define_tag("Accessibility", :accessibility)
+YARD::Tags::Library.define_tag("Parameter", :param, :with_types_name_and_default)
 
 namespace :coverage do
   task :report do
@@ -102,6 +103,10 @@ namespace :docs do
 
   def link_to_octicons
     "[Octicon](https://primer.style/octicons/)"
+  end
+
+  def locked_tag_text
+    "Cannot be modified"
   end
 
   def pretty_value(val)
@@ -270,9 +275,10 @@ namespace :docs do
         args = []
         initialize_method.tags(:param).each do |tag|
           params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
-
           default =
-            if params && params[1]
+            if tag.defaults
+              view_context.render(inline: tag.defaults[0])
+            elsif params && params[1]
               constant_name = "#{component.name}::#{params[1]}"
               constant_value = constant_name.safe_constantize
               if constant_value.nil?
@@ -292,15 +298,6 @@ namespace :docs do
           }
 
           f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
-        end
-
-        # Default system_arguments settings
-        initialize_method.tags(:option).each do |option|
-          pair = option.pair
-          binding.pry
-          default = pair.defaults && pair.defaults[0]
-          binding.pry
-          f.puts("| `#{pair.name}` | `#{pair.types.join(', ')}` | #{view_context.render(inline: default)} | #{view_context.render(inline: pair.text)} |")
         end
 
         component_args = {
@@ -328,9 +325,8 @@ namespace :docs do
             end
 
             param_tags = slot_documentation.tags(:param)
-            option_tags = slot_documentation.tags(:option)
 
-            if param_tags.any? || option_tags.any?
+            if param_tags.any?
               f.puts
               f.puts("| Name | Type | Default | Description |")
               f.puts("| :- | :- | :- | :- |")
@@ -338,22 +334,16 @@ namespace :docs do
 
             param_tags.each do |tag|
               params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
-
               default =
-                if params && params[1]
+                if tag.defaults
+                  view_context.render(inline: tag.defaults[0])
+                elsif params && params[1]
                   "`#{params[1]}`"
                 else
                   "N/A"
                 end
 
               f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
-            end
-
-            # Default system_arguments settings
-            option_tags.each do |option| 
-              pair = option.pair
-              default_value = pair.defaults && pair.defaults[0]
-              f.puts("| `#{pair.name.to_s}` | `#{pair.types.join(', ')}` | `#{view_context.render(inline: default_value)}` | #{view_context.render(inline: pair.text)} |")
             end
           end
         end

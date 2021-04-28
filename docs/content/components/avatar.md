@@ -73,4 +73,5 @@ rather than `@kittenuser`.
 | `size` | `Integer` | `20` | Adds the avatar-small class if less than 24. |
 | `square` | `Boolean` | `false` | Used to create a square avatar. |
 | `href` | `String` | `nil` | The URL to link to. If used, component will be wrapped by an `<a>` tag. |
+| `tag` | `Symbol` | `:img` | If `href` is set, component will be wrapped by an `<a>` tag |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

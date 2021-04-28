@@ -77,8 +77,8 @@ Use `AutoComplete` to populate input values from server search results.
 | :- | :- | :- | :- |
 | `src` | `String` | N/A | The route to query. |
 | `id` | `String` | N/A | Id of the list element. |
+| `tag` | `Symbol` | `:auto-complete` | Cannot be modified |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-| `tag` | `Symbol` | ul | One of `:ul`. |
 
 ## Slots
 
@@ -88,9 +88,9 @@ Required input used to search for results
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `type` | `Symbol` | N/A | One of `:text` and `:search`. |
+| `type` | `Symbol` | `:text` | One of `:text` and `:search`. |
+| `tag` | `Symbol` | `:input` | Cannot be modified |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-| `tag` | `Symbol` | `input` | One of `:input`. |
 
 ### `Icon`
 
@@ -102,5 +102,5 @@ Customizable results list.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `tag` | `Symbol` | `:ul` | Cannot be modified |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-| `tag` | `Symbol` | `ul` | One of `:ul`. |

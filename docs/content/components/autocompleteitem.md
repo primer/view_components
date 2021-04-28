@@ -33,4 +33,5 @@ Use AutoCompleteItem to list results of an auto-completed search.
 | `value` | `String` | N/A | Value of the item. |
 | `selected` | `Boolean` | `false` | Whether the item is selected. |
 | `disabled` | `Boolean` | `false` | Whether the item is disabled. |
+| `tag` | `Symbol` | `:li` | Cannot be modified |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

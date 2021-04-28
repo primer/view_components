@@ -95,8 +95,8 @@ Use `Button` for actions (e.g. in forms). Use links for destinations, or moving 
 | :- | :- | :- | :- |
 | `scheme` | `Symbol` | `:default` | One of `:default`, `:primary`, `:danger`, `:outline`, `:invisible`, or `:link`. |
 | `variant` | `Symbol` | `:medium` | One of `:small`, `:medium`, or `:large`. |
-| `tag` | `Symbol` | N/A | One of `:button`, `:a`, or `:summary`. |
-| `type` | `Symbol` | N/A | One of `:button`, `:reset`, or `:submit`. |
+| `tag` | `Symbol` | `:button` | One of `:button`, `:a`, or `:summary`. |
+| `type` | `Symbol` | `:button` | One of `:button`, `:reset`, or `:submit`. |
 | `group_item` | `Boolean` | `false` | Whether button is part of a ButtonGroup. |
 | `block` | `Boolean` | `false` | Whether button is full-width with `display: block`. |
 | `caret` | `Boolean` | `false` | Whether or not to render a caret. |

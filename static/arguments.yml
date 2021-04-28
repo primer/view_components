@@ -33,6 +33,10 @@
     type: String
     default: N/A
     description: Id of the list element.
+  - name: tag
+    type: Symbol
+    default: "`:auto-complete`"
+    description: Cannot be modified
   - name: system_arguments
     type: Hash
     default: N/A
@@ -52,6 +56,10 @@
     type: Boolean
     default: "`false`"
     description: Whether the item is disabled.
+  - name: tag
+    type: Symbol
+    default: "`:li`"
+    description: Cannot be modified
   - name: system_arguments
     type: Hash
     default: N/A
@@ -80,6 +88,10 @@
     default: "`nil`"
     description: The URL to link to. If used, component will be wrapped by an `<a>`
       tag.
+  - name: tag
+    type: Symbol
+    default: "`:img`"
+    description: If `href` is set, component will be wrapped by an `<a>` tag
   - name: system_arguments
     type: Hash
     default: N/A
@@ -225,11 +237,11 @@
     description: One of `:small`, `:medium`, or `:large`.
   - name: tag
     type: Symbol
-    default: N/A
+    default: "`:button`"
     description: One of `:button`, `:a`, or `:summary`.
   - name: type
     type: Symbol
-    default: N/A
+    default: "`:button`"
     description: One of `:button`, `:reset`, or `:submit`.
   - name: group_item
     type: Boolean

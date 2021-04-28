@@ -19,6 +19,7 @@ module Primer
     status :beta
 
     SMALL_THRESHOLD = 24
+    DEFAULT_TAG = :img
 
     # @example Default
     #   <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
@@ -42,11 +43,12 @@ module Primer
     # @param size [Integer] Adds the avatar-small class if less than 24.
     # @param square [Boolean] Used to create a square avatar.
     # @param href [String] The URL to link to. If used, component will be wrapped by an `<a>` tag.
+    # @param tag [Symbol] (<%= pretty_value(Primer::AvatarComponent::DEFAULT_TAG) %>) If `href` is set, component will be wrapped by an `<a>` tag
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(src:, alt:, size: 20, square: false, href: nil, **system_arguments)
       @href = href
       @system_arguments = system_arguments
-      @system_arguments[:tag] = :img
+      @system_arguments[:tag] = DEFAULT_TAG
       @system_arguments[:src] = src
       @system_arguments[:alt] = alt
       @system_arguments[:size] = size
