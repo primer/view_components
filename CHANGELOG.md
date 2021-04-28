@@ -10,6 +10,10 @@
 
     *Manuel Puyol*
 
+* Removing trailing whitespace from output of `class=""` Classify generation.
+
+    *Jon Rohan*
+
 ## 0.0.38
 
 * Extract `BaseButton` component.
