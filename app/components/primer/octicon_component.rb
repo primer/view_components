@@ -63,6 +63,10 @@ module Primer
     # :nodoc:
     class Cache
       LOOKUP = {} # rubocop:disable Style/MutableConstant
+      KEY_ORDER = [] # rubocop:disable Style/MutableConstant
+
+      # Cache size limit.
+      LIMIT = 500
 
       class << self
         def read(key)
@@ -71,6 +75,10 @@ module Primer
 
         def set(key, value)
           LOOKUP[key] = value
+          KEY_ORDER.push(key)
+
+          # Clear when the cache is too large.
+          LOOKUP.delete(KEY_ORDER.shift) if KEY_ORDER.size > LIMIT
         end
 
         def clear!
