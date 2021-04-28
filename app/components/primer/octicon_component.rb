@@ -29,28 +29,56 @@ module Primer
     # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, **system_arguments)
-      @system_arguments = system_arguments
-      @system_arguments[:tag] = :svg
+      icon_key = icon_name || icon
+      cache_key = [icon_key, size, system_arguments].to_s
 
-      # Filter out classify options to prevent them from becoming invalid html attributes.
-      # Note height and width are both classify options and valid html attributes.
-      octicon_options = {
-        height: SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
-      }.merge(@system_arguments.slice(:height, :width, :class))
+      if cache_icon = Primer::OcticonComponent::Cache.read(cache_key)
+        @icon, @system_arguments = cache_icon
+      else
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :svg
 
-      @icon = Octicons::Octicon.new(icon_name || icon, octicon_options)
+        # Filter out classify options to prevent them from becoming invalid html attributes.
+        # Note height and width are both classify options and valid html attributes.
+        octicon_options = {
+          height: SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
+        }.merge(@system_arguments.slice(:height, :width, :class))
 
-      @system_arguments[:classes] = class_names(
-        @icon.options[:class],
-        @system_arguments[:classes]
-      )
-      @system_arguments.merge!(@icon.options.except(:class))
+        @icon = Octicons::Octicon.new(icon_key, octicon_options)
+
+        @system_arguments[:classes] = class_names(
+          @icon.options[:class],
+          @system_arguments[:classes]
+        )
+        @system_arguments.merge!(@icon.options.except(:class))
+
+        Primer::OcticonComponent::Cache.set(cache_key, [@icon, @system_arguments])
+      end
     end
 
     def call
-      # rubocop:disable Rails/OutputSafety
-      render(Primer::BaseComponent.new(**@system_arguments)) { @icon.path.html_safe }
-      # rubocop:enable Rails/OutputSafety
+      render(Primer::BaseComponent.new(**@system_arguments)) { @icon.path.html_safe } # rubocop:disable Rails/OutputSafety
+    end
+
+    # :nodoc:
+    class Cache
+      # rubocop:disable Style/MutableConstant
+      LOOKUP = {}
+      # rubocop:enable Style/MutableConstant
+
+      class <<self
+        def read(key)
+          LOOKUP[key]
+        end
+
+        def set(key, value)
+          LOOKUP[key] = value
+        end
+
+        def clear!
+          LOOKUP.clear
+        end
+      end
     end
   end
 end
