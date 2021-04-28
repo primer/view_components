@@ -14,6 +14,10 @@
 
     *Jon Rohan*
 
+* Dropping requirement of `octicons_helper` and updating `OcticonComponent` to use `octicon` gem directly.
+
+    *Jon Rohan*
+
 ## 0.0.38
 
 * Extract `BaseButton` component.
