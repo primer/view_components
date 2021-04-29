@@ -69,6 +69,8 @@ module Primer
     # :nodoc:
     class Cache
       LOOKUP = {} # rubocop:disable Style/MutableConstant
+      # Preload the top 20 used icons.
+      PRELOADED_ICONS = [:alert, :check, :"chevron-down", :clippy, :clock, :"dot-fill", :info, :"kebab-horizontal", :link, :lock, :mail, :pencil, :plus, :question, :repo, :search, :"shield-lock", :star, :trash, :x].freeze
 
       class << self
         def read(key)
@@ -92,27 +94,7 @@ module Primer
         end
 
         def preload!
-          # Preload the top 20 icons.
-          Primer::OcticonComponent.new(icon: :alert)
-          Primer::OcticonComponent.new(icon: :check)
-          Primer::OcticonComponent.new(icon: :"chevron-down")
-          Primer::OcticonComponent.new(icon: :clippy)
-          Primer::OcticonComponent.new(icon: :clock)
-          Primer::OcticonComponent.new(icon: :"dot-fill")
-          Primer::OcticonComponent.new(icon: :info)
-          Primer::OcticonComponent.new(icon: :"kebab-horizontal")
-          Primer::OcticonComponent.new(icon: :link)
-          Primer::OcticonComponent.new(icon: :lock)
-          Primer::OcticonComponent.new(icon: :mail)
-          Primer::OcticonComponent.new(icon: :pencil)
-          Primer::OcticonComponent.new(icon: :plus)
-          Primer::OcticonComponent.new(icon: :question)
-          Primer::OcticonComponent.new(icon: :repo)
-          Primer::OcticonComponent.new(icon: :search)
-          Primer::OcticonComponent.new(icon: :"shield-lock")
-          Primer::OcticonComponent.new(icon: :star)
-          Primer::OcticonComponent.new(icon: :trash)
-          Primer::OcticonComponent.new(icon: :x)
+          PRELOADED_ICONS.each { |icon| Primer::OcticonComponent.new(icon: icon) }
         end
       end
     end
