@@ -32,8 +32,6 @@ Primer ViewComponents utilizes Cuprite for system testing. System testing is use
 
 The system tests run in a headless Chrome browser. Passing the `HEADLESS=false` environment variable to the test command will run the system tests in a normal browser on the desktop.
 
-https://github.com/rubycdp/cuprite
-
 ## Submitting a pull request
 
 0. [Fork](https://github.com/primer/view_components/fork) and clone the repository
