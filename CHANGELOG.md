@@ -22,6 +22,10 @@
 
     *Jon Rohan*
 
+* Deprecate `FlexItem` in favor of `BoxComponent`.
+
+    *Manuel Puyol*
+
 * Dropping requirement of `octicons_helper` and updating `OcticonComponent` to use `octicon` gem directly.
 
     *Jon Rohan*
