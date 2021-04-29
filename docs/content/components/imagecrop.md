@@ -55,3 +55,7 @@ A client-side mechanism to crop images.
 ### `Loading`
 
 A loading indicator that is shown while the image is loading.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
