@@ -87,6 +87,10 @@
 - component: AvatarStack
   source: https://github.com/primer/view_components/tree/main/app/components/primer/avatar_stack_component.rb
   parameters:
+  - name: tag
+    type: Symbol
+    default: "`:div`"
+    description: One of `:div` and `:span`.
   - name: align
     type: Symbol
     default: "`:left`"
