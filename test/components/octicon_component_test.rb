@@ -104,18 +104,18 @@ class PrimerOcticonComponentTest < Minitest::Test
   end
 
   def test_cache_evacuates_after_limit_reached
-    Primer::OcticonComponent::Cache.clear!
-    Primer::OcticonComponent::Cache.stub :limit, 3 do
+    Primer::Octicon::Cache.clear!
+    Primer::Octicon::Cache.stub :limit, 3 do
       # Assert the limit is stubbed properly
-      assert_equal Primer::OcticonComponent::Cache.limit, 3
+      assert_equal Primer::Octicon::Cache.limit, 3
       # Assert the cache is empty
-      assert_equal 0, Primer::OcticonComponent::Cache::LOOKUP.size
+      assert_equal 0, Primer::Octicon::Cache::LOOKUP.size
 
       # Preload the cache should be 20 items
-      Primer::OcticonComponent::Cache.preload!
+      Primer::Octicon::Cache.preload!
 
       # Assert the cache size is 3 because the limit is 3
-      assert_equal 3, Primer::OcticonComponent::Cache::LOOKUP.size
+      assert_equal 3, Primer::Octicon::Cache::LOOKUP.size
     end
   end
 end

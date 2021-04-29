@@ -42,7 +42,7 @@ module Primer
         @system_arguments[:aria][:hidden] = true
       end
 
-      if (cache_icon = Primer::OcticonComponent::Cache.read(cache_key))
+      if (cache_icon = Primer::Octicon::Cache.read(cache_key))
         @icon = cache_icon
       else
         # Filter out classify options to prevent them from becoming invalid html attributes.
@@ -52,7 +52,7 @@ module Primer
         }.merge(@system_arguments.slice(:height, :width))
 
         @icon = Octicons::Octicon.new(icon_key, octicon_options)
-        Primer::OcticonComponent::Cache.set(cache_key, @icon)
+        Primer::Octicon::Cache.set(cache_key, @icon)
       end
 
       @system_arguments[:classes] = class_names(
@@ -66,39 +66,6 @@ module Primer
       render(Primer::BaseComponent.new(**@system_arguments)) { @icon.path.html_safe } # rubocop:disable Rails/OutputSafety
     end
 
-    # :nodoc:
-    class Cache
-      LOOKUP = {} # rubocop:disable Style/MutableConstant
-      # Preload the top 20 used icons.
-      PRELOADED_ICONS = [:alert, :check, :"chevron-down", :clippy, :clock, :"dot-fill", :info, :"kebab-horizontal", :link, :lock, :mail, :pencil, :plus, :question, :repo, :search, :"shield-lock", :star, :trash, :x].freeze
-
-      class << self
-        def read(key)
-          LOOKUP[key]
-        end
-
-        # Cache size limit.
-        def limit
-          500
-        end
-
-        def set(key, value)
-          LOOKUP[key] = value
-
-          # Remove first item when the cache is too large.
-          LOOKUP.shift if LOOKUP.size > limit
-        end
-
-        def clear!
-          LOOKUP.clear
-        end
-
-        def preload!
-          PRELOADED_ICONS.each { |icon| Primer::OcticonComponent.new(icon: icon) }
-        end
-      end
-    end
-
-    Cache.preload!
+    Primer::Octicon::Cache.preload!
   end
 end
