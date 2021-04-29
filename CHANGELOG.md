@@ -2,6 +2,10 @@
 
 ## main
 
+* Promote `CloseButton` to beta.
+
+    *Manuel Puyol*
+
 * Update `ClipboardCopy` to not toggle icons unless they both exist.
 
     *Kristjan Oddsson*
