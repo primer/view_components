@@ -7,7 +7,7 @@
     default: N/A
     description: The path of the image to crop.
   - name: rounded
-    type: String
+    type: Boolean
     default: "`true`"
     description: If the crop mask should be a circle. Defaults to true.
   - name: system_arguments

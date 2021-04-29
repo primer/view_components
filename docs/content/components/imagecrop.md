@@ -12,7 +12,7 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-A client-side mechanism to crop images
+A client-side mechanism to crop images.
 
 ## Examples
 
@@ -47,7 +47,7 @@ A client-side mechanism to crop images
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `src` | `String` | N/A | The path of the image to crop. |
-| `rounded` | `String` | `true` | If the crop mask should be a circle. Defaults to true. |
+| `rounded` | `Boolean` | `true` | If the crop mask should be a circle. Defaults to true. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
