@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "octicons"
+
 module Primer
   # `Octicon` renders an <%= link_to_octicons %> with <%= link_to_system_arguments_docs %>.
   class OcticonComponent < Primer::Component
@@ -27,20 +29,76 @@ module Primer
     # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, **system_arguments)
-      @icon = icon_name || icon
+      icon_key = icon_name || icon
+      cache_key = [icon_key, size, system_arguments.slice(:height, :width)].join("_")
+
       @system_arguments = system_arguments
+      @system_arguments[:tag] = :svg
+      @system_arguments[:aria] ||= {}
 
-      @system_arguments[:class] = Primer::Classify.call(**@system_arguments)[:class]
-      @system_arguments[:height] ||= SIZE_MAPPINGS[size]
+      if @system_arguments[:aria][:label] || @system_arguments[:"aria-label"]
+        @system_arguments[:role] = "img"
+      else
+        @system_arguments[:aria][:hidden] = true
+      end
 
-      # Filter out classify options to prevent them from becoming invalid html attributes.
-      # Note height and width are both classify options and valid html attributes.
-      octicon_helper_options = @system_arguments.slice(:height, :width)
-      @system_arguments = add_test_selector(@system_arguments).except(*Primer::Classify::VALID_KEYS, :classes).merge(octicon_helper_options)
+      if (cache_icon = Primer::OcticonComponent::Cache.read(cache_key))
+        @icon = cache_icon
+      else
+        # Filter out classify options to prevent them from becoming invalid html attributes.
+        # Note height and width are both classify options and valid html attributes.
+        octicon_options = {
+          height: SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
+        }.merge(@system_arguments.slice(:height, :width))
+
+        @icon = Octicons::Octicon.new(icon_key, octicon_options)
+        Primer::OcticonComponent::Cache.set(cache_key, @icon)
+      end
+
+      @system_arguments[:classes] = class_names(
+        @icon.options[:class],
+        @system_arguments[:classes]
+      )
+      @system_arguments.merge!(@icon.options.except(:class, :'aria-hidden'))
     end
 
     def call
-      octicon(@icon, { **@system_arguments })
+      render(Primer::BaseComponent.new(**@system_arguments)) { @icon.path.html_safe } # rubocop:disable Rails/OutputSafety
     end
+
+    # :nodoc:
+    class Cache
+      LOOKUP = {} # rubocop:disable Style/MutableConstant
+      # Preload the top 20 used icons.
+      PRELOADED_ICONS = [:alert, :check, :"chevron-down", :clippy, :clock, :"dot-fill", :info, :"kebab-horizontal", :link, :lock, :mail, :pencil, :plus, :question, :repo, :search, :"shield-lock", :star, :trash, :x].freeze
+
+      class << self
+        def read(key)
+          LOOKUP[key]
+        end
+
+        # Cache size limit.
+        def limit
+          500
+        end
+
+        def set(key, value)
+          LOOKUP[key] = value
+
+          # Remove first item when the cache is too large.
+          LOOKUP.shift if LOOKUP.size > limit
+        end
+
+        def clear!
+          LOOKUP.clear
+        end
+
+        def preload!
+          PRELOADED_ICONS.each { |icon| Primer::OcticonComponent.new(icon: icon) }
+        end
+      end
+    end
+
+    Cache.preload!
   end
 end
