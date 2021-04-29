@@ -22,7 +22,7 @@
 
     *Jon Rohan*
 
-* Depreacate `FlexItem` component in favor of `BoxComponent`.
+* Deprecate `FlexItem` in favor of `BoxComponent`.
 
     *Manuel Puyol*
 
