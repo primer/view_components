@@ -25,10 +25,10 @@ module Primer
 
     InvalidValueError = Class.new(StandardError)
 
-    def fetch_or_fallback(allowed_values, given_value, fallback = nil, deprecated_values: [])
+    def fetch_or_fallback(allowed_values, given_value, fallback = nil, deprecated_values: nil)
       if allowed_values.include?(given_value)
         given_value
-      elsif deprecated_values.include?(given_value)
+      elsif deprecated_values&.include?(given_value)
         ActiveSupport::Deprecation.warn("#{given_value} is deprecated and will be removed in a future version.") unless Rails.env.production? || silence_deprecations?
 
         given_value
