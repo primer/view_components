@@ -25,7 +25,7 @@ Use [Box](/components/box) instead.
 **After**:
 
 ```erb
-<%= render Primer::BoxComponent.new(flex_auto: :auto) %>
+<%= render Primer::BoxComponent.new(flex: :auto) %>
 ```
 
 ## Examples

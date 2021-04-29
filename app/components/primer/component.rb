@@ -17,14 +17,12 @@ module Primer
 
     private
 
-    def deprecated_component_warning(new_class: nil)
+    def deprecated_component_warning(new_class: nil, version: nil)
       return if Rails.env.production? || silence_deprecations?
 
-      message = if new_class
-                  "#{self.class.name} is deprecated, please use #{new_class.name} instead."
-                else
-                  "#{self.class.name} is deprecated and should not be used."
-      end
+      message = "#{self.class.name} is deprecated"
+      message += " and will be removed in v#{version}." if version
+      message += " Use #{new_class.name} instead." if new_class
 
       ActiveSupport::Deprecation.warn(message)
     end
