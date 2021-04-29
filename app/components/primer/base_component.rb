@@ -140,7 +140,6 @@ module Primer
     # | Name | Type | Description |
     # | :- | :- | :- |
     # | classes | String | CSS class name value to be concatenated with generated Primer CSS classes. |
-    # | tag | Symbol | HTML tag name to be passed to `content_tag`. |
     # | test_selector | String | Adds `data-test-selector='given value'` in non-Production environments for testing purposes. |
     def initialize(tag:, classes: nil, **system_arguments)
       @tag = tag
