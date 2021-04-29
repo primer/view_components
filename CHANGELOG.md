@@ -22,6 +22,10 @@
 
     *Jon Rohan*
 
+* Dropping requirement of `octicons_helper` and updating `OcticonComponent` to use `octicon` gem directly.
+
+    *Jon Rohan*
+
 * **Breaking change:** Remove `:overlay` option from `border_color`.
 
     *Simon Luthi*

@@ -54,7 +54,7 @@ Use `AutoComplete` to populate input values from server search results.
 
 ### With Icon
 
-<Example src="<auto-complete src='/users/search' for='user-popup' class='position-relative'>  <input name='input' type='text' class='form-control'></input>  <svg class='octicon octicon-search' height='16' viewBox='0 0 16 16' version='1.1' width='16' aria-hidden='true'><path fill-rule='evenodd' d='M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z'></path></svg>  <ul id='user-popup' class='autocomplete-results'>    <li role='option' data-autocomplete-value='value' aria-selected='true' class='autocomplete-item'>      Selected</li>    <li role='option' data-autocomplete-value='value' class='autocomplete-item'>      Not selected</li></ul></auto-complete>" />
+<Example src="<auto-complete src='/users/search' for='user-popup' class='position-relative'>  <input name='input' type='text' class='form-control'></input>  <svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' height='16' width='16' class='octicon octicon-search'><path fill-rule='evenodd' d='M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z'></path></svg>  <ul id='user-popup' class='autocomplete-results'>    <li role='option' data-autocomplete-value='value' aria-selected='true' class='autocomplete-item'>      Selected</li>    <li role='option' data-autocomplete-value='value' class='autocomplete-item'>      Not selected</li></ul></auto-complete>" />
 
 ```erb
 <%= render(Primer::AutoComplete.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
