@@ -72,9 +72,11 @@ System arguments include most HTML attributes. For example:
 | :- | :- | :- |
 | `align_items` | Symbol | One of `:flex_start`, `:flex_end`, `:center`, `:baseline`, or `:stretch`. |
 | `align_self` | Symbol | One of `:auto`, `:start`, `:end`, `:center`, `:baseline`, or `:stretch`. |
+| `direction` | Symbol | One of `:column`, `:column_reverse`, `:row`, or `:row_reverse`. |
+| `flex` | Integer, Symbol | One of `1` and `:auto`. |
 | `flex_grow` | Integer | To enable, set to `0`. |
 | `flex_shrink` | Integer | To enable, set to `0`. |
-| `flex` | Integer, Symbol | One of `1` and `:auto`. |
+| `flex_wrap` | Symbol | One of `:wrap`, `:nowrap`, or `:reverse`. |
 | `justify_content` | Symbol | One of `:flex_start`, `:flex_end`, `:center`, `:space_between`, or `:space_around`. |
 | `width` | Symbol | One of `:fit` and `:fill`. |
 
@@ -88,7 +90,7 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `display` | Symbol | One of `:none`, `:block`, `:flex`, `:inline`, `:inline_block`, `:table`, or `:table_cell`. |
+| `display` | Symbol | One of `:none`, `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:table`, or `:table_cell`. |
 | `height` | Symbol | One of `:fit` and `:fill`. |
 | `hide` | Symbol | Hide the element at a specific breakpoint. One of `:sm`, `:md`, `:lg`, or `:xl`. |
 | `v` | Symbol | Visibility. One of `:hidden` and `:visible`. |
@@ -139,5 +141,4 @@ System arguments include most HTML attributes. For example:
 | Name | Type | Description |
 | :- | :- | :- |
 | classes | String | CSS class name value to be concatenated with generated Primer CSS classes. |
-| tag | Symbol | HTML tag name to be passed to `content_tag`. |
 | test_selector | String | Adds `data-test-selector='given value'` in non-Production environments for testing purposes. |
