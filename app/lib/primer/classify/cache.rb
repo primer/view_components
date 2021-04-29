@@ -40,18 +40,18 @@ module Primer
           )
 
           preload(
-            keys: Primer::Classify::DIRECTION_KEY,
-            values: [:row, :column]
+            keys: Primer::Classify::Flex::DIRECTION_KEY,
+            values: Primer::Classify::Flex::DIRECTION_VALUES
           )
 
           preload(
-            keys: Primer::Classify::JUSTIFY_CONTENT_KEY,
-            values: [:flex_start, :flex_end, :center, :space_between, :space_around]
+            keys: Primer::Classify::Flex::JUSTIFY_CONTENT_KEY,
+            values: Primer::Classify::Flex::JUSTIFY_CONTENT_VALUES
           )
 
           preload(
-            keys: Primer::Classify::ALIGN_ITEMS_KEY,
-            values: [:flex_start, :flex_end, :center, :baseline, :stretch]
+            keys: Primer::Classify::Flex::ALIGN_ITEMS_KEY,
+            values: Primer::Classify::Flex::ALIGN_ITEMS_VALUES
           )
 
           preload(
@@ -90,18 +90,23 @@ module Primer
           )
 
           preload(
-            keys: Primer::Classify::FLEX_KEY,
-            values: [1, :auto]
+            keys: Primer::Classify::Flex::FLEX_KEY,
+            values: Primer::Classify::Flex::FLEX_VALUES
           )
 
           preload(
-            keys: [Primer::Classify::FLEX_GROW_KEY, Primer::Classify::FLEX_SHRINK_KEY],
-            values: [0]
+            keys: Primer::Classify::Flex::GROW_KEY,
+            values: Primer::Classify::Flex::GROW_VALUES
           )
 
           preload(
-            keys: [Primer::Classify::ALIGN_SELF_KEY],
-            values: [:auto, :start, :end, :center, :baseline, :stretch]
+            keys: Primer::Classify::Flex::SHRINK_KEY,
+            values: Primer::Classify::Flex::SHRINK_VALUES
+          )
+
+          preload(
+            keys: Primer::Classify::Flex::ALIGN_SELF_KEY,
+            values: Primer::Classify::Flex::ALIGN_SELF_VALUES
           )
 
           preload(

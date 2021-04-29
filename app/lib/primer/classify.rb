@@ -3,13 +3,8 @@
 module Primer
   # :nodoc:
   class Classify
-    DIRECTION_KEY = :direction
-    JUSTIFY_CONTENT_KEY = :justify_content
-    ALIGN_ITEMS_KEY = :align_items
     DISPLAY_KEY = :display
     SPACING_KEYS = Primer::Classify::Spacing::KEYS
-    RESPONSIVE_KEYS = ([DISPLAY_KEY, DIRECTION_KEY, JUSTIFY_CONTENT_KEY, ALIGN_ITEMS_KEY, :col, :float] + SPACING_KEYS).freeze
-    BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
 
     # Keys where we can simply translate { key: value } into ".key-value"
     CONCAT_KEYS = SPACING_KEYS + %i[hide position v float col text box_shadow].freeze
@@ -22,15 +17,14 @@ module Primer
     VERTICAL_ALIGN_KEY = :vertical_align
     WORD_BREAK_KEY = :word_break
     TEXT_KEYS = %i[text_align font_weight].freeze
-    FLEX_KEY = :flex
-    FLEX_GROW_KEY = :flex_grow
-    FLEX_SHRINK_KEY = :flex_shrink
-    ALIGN_SELF_KEY = :align_self
     WIDTH_KEY = :width
     HEIGHT_KEY = :height
     BOX_SHADOW_KEY = :box_shadow
     VISIBILITY_KEY = :visibility
     ANIMATION_KEY = :animation
+
+    BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
+    RESPONSIVE_KEYS = ([DISPLAY_KEY, :col, :float] + SPACING_KEYS + Primer::Classify::Flex::RESPONSIVE_KEYS).freeze
 
     BOOLEAN_MAPPINGS = {
       underline: {
@@ -89,6 +83,7 @@ module Primer
       BORDER_MARGIN_KEYS +
       TYPOGRAPHY_KEYS +
       TEXT_KEYS +
+      Primer::Classify::Flex::KEYS +
       [
         BORDER_KEY,
         BORDER_COLOR_KEY,
@@ -98,13 +93,6 @@ module Primer
         DISPLAY_KEY,
         VERTICAL_ALIGN_KEY,
         WORD_BREAK_KEY,
-        DIRECTION_KEY,
-        JUSTIFY_CONTENT_KEY,
-        ALIGN_ITEMS_KEY,
-        FLEX_KEY,
-        FLEX_GROW_KEY,
-        FLEX_SHRINK_KEY,
-        ALIGN_SELF_KEY,
         WIDTH_KEY,
         HEIGHT_KEY,
         BOX_SHADOW_KEY,
@@ -216,21 +204,8 @@ module Primer
           memo[:classes] << "#{key.to_s.dasherize}-#{val}"
         elsif key == BORDER_RADIUS_KEY
           memo[:classes] << "rounded-#{val}"
-        elsif key == DIRECTION_KEY
-          memo[:classes] << "flex#{breakpoint}-#{val.to_s.dasherize}"
-        elsif key == JUSTIFY_CONTENT_KEY
-          formatted_value = val.to_s.gsub(/(flex\_|space\_)/, "")
-          memo[:classes] << "flex#{breakpoint}-justify-#{formatted_value}"
-        elsif key == ALIGN_ITEMS_KEY
-          memo[:classes] << "flex#{breakpoint}-items-#{val.to_s.gsub('flex_', '')}"
-        elsif key == FLEX_KEY
-          memo[:classes] << "flex-#{val}"
-        elsif key == FLEX_GROW_KEY
-          memo[:classes] << "flex-grow-#{val}"
-        elsif key == FLEX_SHRINK_KEY
-          memo[:classes] << "flex-shrink-#{val}"
-        elsif key == ALIGN_SELF_KEY
-          memo[:classes] << "flex-self-#{val}"
+        elsif Primer::Classify::Flex::KEYS.include?(key)
+          memo[:classes] << Primer::Classify::Flex.classes(key, val, breakpoint)
         elsif key == WIDTH_KEY || key == HEIGHT_KEY
           if val == :fit || val == :fill
             memo[:classes] << "#{key}-#{val}"
