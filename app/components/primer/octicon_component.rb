@@ -36,7 +36,7 @@ module Primer
       @system_arguments[:tag] = :svg
       @system_arguments[:aria] ||= {}
 
-      if @system_arguments[:aria][:label]
+      if @system_arguments[:aria][:label] || @system_arguments[:"aria-label"]
         @system_arguments[:role] = "img"
       else
         @system_arguments[:aria][:hidden] = true
