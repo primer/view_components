@@ -69,12 +69,14 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `align_items` | Symbol | <%= one_of([:flex_start, :flex_end, :center, :baseline, :stretch]) %> |
-    # | `align_self` | Symbol | <%= one_of([:auto, :start, :end, :center, :baseline, :stretch]) %> |
+    # | `align_items` | Symbol | <%= one_of(Primer::Classify::Flex::ALIGN_ITEMS_VALUES) %> |
+    # | `align_self` | Symbol | <%= one_of(Primer::Classify::Flex::ALIGN_SELF_VALUES) %> |
+    # | `direction` | Symbol | <%= one_of(Primer::Classify::Flex::DIRECTION_VALUES) %> |
+    # | `flex` | Integer, Symbol | <%= one_of(Primer::Classify::Flex::FLEX_VALUES) %> |
     # | `flex_grow` | Integer | To enable, set to `0`. |
     # | `flex_shrink` | Integer | To enable, set to `0`. |
-    # | `flex` | Integer, Symbol | <%= one_of([1, :auto]) %> |
-    # | `justify_content` | Symbol | <%= one_of([:flex_start, :flex_end, :center, :space_between, :space_around]) %> |
+    # | `flex_wrap` | Symbol | <%= one_of(Primer::Classify::Flex::WRAP_MAPPINGS.keys) %> |
+    # | `justify_content` | Symbol | <%= one_of(Primer::Classify::Flex::JUSTIFY_CONTENT_VALUES) %> |
     # | `width` | Symbol | <%= one_of([:fit, :fill]) %> |
     #
     # ## Grid
@@ -87,7 +89,7 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `display` | Symbol | <%= one_of([:none, :block, :flex, :inline, :inline_block, :table, :table_cell]) %> |
+    # | `display` | Symbol | <%= one_of([:none, :block, :flex, :inline, :inline_block, :inline_flex, :table, :table_cell]) %> |
     # | `height` | Symbol | <%= one_of([:fit, :fill]) %> |
     # | `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of([:sm, :md, :lg, :xl]) %> |
     # | `v` | Symbol | Visibility. <%= one_of([:hidden, :visible]) %> |
