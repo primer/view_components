@@ -33,8 +33,8 @@ class ComponentGenerator < Thor::Group
     template("templates/test.tt", "test/components/#{underscore_name}_test.rb")
   end
 
-  def create_integration_test
-    template("templates/integration_test.rb.tt", "test/integration/#{underscore_name}_test.rb") if js_package_name
+  def create_system_test
+    template("templates/system_test.rb.tt", "test/integration/#{underscore_name}_test.rb") if js_package_name
   end
 
   def create_stories
