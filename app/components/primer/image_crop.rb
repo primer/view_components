@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # A client-side mechanism to crop images
+  # A client-side mechanism to crop images.
   class ImageCrop < Primer::Component
     # A loading indicator that is shown while the image is loading.
     renders_one :loading, lambda { |**system_arguments|
@@ -23,7 +23,7 @@ module Primer
     #   <% end %>
     #
     # @param src [String] The path of the image to crop.
-    # @param rounded [String] If the crop mask should be a circle. Defaults to true.
+    # @param rounded [Boolean] If the crop mask should be a circle. Defaults to true.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(src:, rounded: true, **system_arguments)
       @system_arguments = system_arguments
