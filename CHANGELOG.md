@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.39
+
 * Promote `CloseButton` to beta.
 
     *Manuel Puyol*
