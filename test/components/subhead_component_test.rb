@@ -19,6 +19,16 @@ class SubheadComponentTest < Minitest::Test
     assert_selector(".Subhead h2.Subhead-heading", text: "Hello World")
   end
 
+  def test_heading_tag_falls_back_to_default
+    without_fetch_or_fallback_raises do
+      render_inline(Primer::SubheadComponent.new) do |component|
+        component.heading(tag: :span) { "Hello World" }
+      end
+    end
+
+    assert_selector("div.Subhead-heading", text: "Hello World")
+  end
+
   def test_render_dangerous_heading
     render_inline(Primer::SubheadComponent.new) do |component|
       component.heading(danger: true) { "Hello World" }

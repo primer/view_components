@@ -2,6 +2,10 @@
 
 ## main
 
+* **Breaking change:** Restrict `Subhead` `heading` slot tag to `div` and `h1`-`h6`.
+
+    *Kate Higa*
+
 * Deprecate `Flex` in favor of `BoxComponent`.
 
     *Manuel Puyol*
