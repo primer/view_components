@@ -273,46 +273,48 @@ namespace :docs do
           f.puts("```")
           f.puts
         end
+        params = initialize_method.tags(:param)
+        if params.any?
+          f.puts("## Arguments")
+          f.puts
+          f.puts("| Name | Type | Default | Description |")
+          f.puts("| :- | :- | :- | :- |")
 
-        f.puts("## Arguments")
-        f.puts
-        f.puts("| Name | Type | Default | Description |")
-        f.puts("| :- | :- | :- | :- |")
+          args = []
+          params.each do |tag|
+            params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
 
-        args = []
-        initialize_method.tags(:param).each do |tag|
-          params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
-
-          default =
-            if params && params[1]
-              constant_name = "#{component.name}::#{params[1]}"
-              constant_value = constant_name.safe_constantize
-              if constant_value.nil?
-                pretty_value(params[1])
+            default =
+              if params && params[1]
+                constant_name = "#{component.name}::#{params[1]}"
+                constant_value = constant_name.safe_constantize
+                if constant_value.nil?
+                  pretty_value(params[1])
+                else
+                  pretty_value(constant_value)
+                end
               else
-                pretty_value(constant_value)
+                "N/A"
               end
-            else
-              "N/A"
-            end
 
-          args << {
-            "name" => tag.name,
-            "type" => tag.types.join(", "),
-            "default" => default,
-            "description" => view_context.render(inline: tag.text)
+            args << {
+              "name" => tag.name,
+              "type" => tag.types.join(", "),
+              "default" => default,
+              "description" => view_context.render(inline: tag.text)
+            }
+
+            f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
+          end
+
+          component_args = {
+            "component" => short_name,
+            "source" => "https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb",
+            "parameters" => args
           }
 
-          f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
+          args_for_components << component_args
         end
-
-        component_args = {
-          "component" => short_name,
-          "source" => "https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb",
-          "parameters" => args
-        }
-
-        args_for_components << component_args
 
         # Slots V2 docs
         slot_v2_methods = documentation.meths.select { |x| x[:renders_one] || x[:renders_many] }
