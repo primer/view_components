@@ -2,6 +2,10 @@
 
 ## main
 
+* Deprecate `Flex` in favor of `BoxComponent`.
+
+    *Manuel Puyol*
+
 * **Breaking change:** Restrict `Blankslate` tag to `div`.
 
     *Kate Higa*
@@ -32,7 +36,7 @@
 
     *Jon Rohan*
 
-* Deprecate `FlexItem` and `Flex` in favor of `BoxComponent`.
+* Deprecate `FlexItem` in favor of `BoxComponent`.
 
     *Manuel Puyol*
 
