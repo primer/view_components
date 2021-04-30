@@ -636,7 +636,7 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_does_include_leading_trailing_whitespace_in_class
-    generated_class = Primer::Classify.call({ classes: "foo-class" })[:class]
+    generated_class = Primer::Classify.call(classes: "foo-class")[:class]
     refute(generated_class.start_with?(" "))
     refute(generated_class.end_with?(" "))
   end

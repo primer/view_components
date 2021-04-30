@@ -35,7 +35,7 @@ module Primer
       attr_reader :icon
 
       def initialize(name:, size: Primer::OcticonComponent::SIZE_DEFAULT)
-        cache_key = Primer::Octicon::Cache.get_key({ name: name, size: size })
+        cache_key = Primer::Octicon::Cache.get_key(name: name, size: size)
 
         if (cache_icon = Primer::Octicon::Cache.read(cache_key))
           @icon = cache_icon
