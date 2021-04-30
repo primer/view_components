@@ -76,6 +76,7 @@ Optional Header.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ### `Body`
 
 Optional Body.
@@ -83,6 +84,7 @@ Optional Body.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ### `Footer`
 
 Optional Footer.
@@ -90,6 +92,7 @@ Optional Footer.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ### `Rows`
 
 Use Rows to add rows with borders and maintain the same padding.

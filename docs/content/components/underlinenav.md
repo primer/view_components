@@ -137,6 +137,7 @@ Use the tabs to list navigation items. For more information, refer to [Navigatio
 | :- | :- | :- | :- |
 | `selected` | `Boolean` | N/A | Whether the tab is selected. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ### `Actions`
 
 Use actions for a call to action.

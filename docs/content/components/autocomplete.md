@@ -89,9 +89,11 @@ Required input used to search for results
 | :- | :- | :- | :- |
 | `type` | `Symbol` | N/A | One of `:text` and `:search`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ### `Icon`
 
 Optional icon to be rendered before the input. Has the same arguments as [Octicon](/components/octicon).
+
 ### `Results`
 
 Customizable results list.

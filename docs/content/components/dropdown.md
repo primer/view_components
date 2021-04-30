@@ -73,6 +73,7 @@ They're great for instances where you don't need the full power (and code) of th
 
 Required trigger for the dropdown. Only accepts a content.
 Its classes can be customized by the `summary_classes` param in the parent component
+
 ### `Menu`
 
 Required context menu for the dropdown

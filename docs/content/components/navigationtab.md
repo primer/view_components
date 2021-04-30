@@ -92,6 +92,7 @@ Refer to `UnderlineNavComponent` and `TabNavComponent` implementations for examp
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ### `Icon`
 
 Icon to be rendered in the Tab left.
@@ -99,6 +100,7 @@ Icon to be rendered in the Tab left.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | The same arguments as [Octicon](/components/octicon). |
+
 ### `Text`
 
 The Tab's text.
@@ -106,6 +108,7 @@ The Tab's text.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | The same arguments as [Text](/components/text). |
+
 ### `Counter`
 
 Counter to be rendered in the Tab right.

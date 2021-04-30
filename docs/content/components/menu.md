@@ -52,6 +52,7 @@ Optional menu heading
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ### `Items`
 
 Required list of navigational links

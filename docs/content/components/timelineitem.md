@@ -43,6 +43,7 @@ Avatar to be rendered to the left of the Badge.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | The same arguments as [Avatar](/components/avatar). |
+
 ### `Badge`
 
 Badge that will be connected to other TimelineItems.
@@ -51,6 +52,7 @@ Badge that will be connected to other TimelineItems.
 | :- | :- | :- | :- |
 | `icon` | `String` | N/A | Name of [Octicon](https://primer.style/octicons/) to use. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ### `Body`
 
 Body to be rendered to the left of the Badge.
