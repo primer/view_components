@@ -105,6 +105,10 @@ namespace :docs do
     "[Octicon](https://primer.style/octicons/)"
   end
 
+  def link_to_heading_practices
+    "[Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)"
+  end
+
   def pretty_value(val)
     case val
     when nil

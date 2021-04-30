@@ -14,7 +14,7 @@ module Primer
   # @accessibility
   #   Headings convey semantic meaning. Assistive technology users rely on headings to quickly navigate and scan information on a page.
   #   Inappropriate use of headings can lead to a confusing experience.
-  #   [Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)
+  #   <%= link_to_heading_practices %>
   class HeadingComponent < Primer::Component
     status :beta
 
