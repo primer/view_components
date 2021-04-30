@@ -5,7 +5,7 @@ require "test_helper"
 class PrimerOcticonCacheTest < Minitest::Test
   def test_preload_loads_octicon_cache
     Primer::Octicon::Cache.clear!
-    assert_equal 0, Primer::Octicon::Cache::LOOKUP.size
+    assert_empty Primer::Octicon::Cache::LOOKUP
     Primer::Octicon::Cache.preload!
     assert_equal 20, Primer::Octicon::Cache::LOOKUP.size
   end
@@ -29,8 +29,7 @@ class PrimerOcticonCacheTest < Minitest::Test
     Primer::Octicon::Cache.stub :limit, 3 do
       # Assert the limit is stubbed properly
       assert_equal 3, Primer::Octicon::Cache.limit
-      # Assert the cache is empty
-      assert_equal 0, Primer::Octicon::Cache::LOOKUP.size
+      assert_empty Primer::Octicon::Cache::LOOKUP
 
       # Preload the cache should be 20 items
       Primer::Octicon::Cache.preload!
