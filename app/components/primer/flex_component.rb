@@ -5,7 +5,32 @@ module Primer
   # Before using these utilities, you should be familiar with CSS3 Flexible Box
   # spec. If you are not, check out MDN's guide  [Using CSS Flexible
   # Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox).
+  #
+  # @deprecated
+  #   Use <%= link_to_component(Primer::BoxComponent) %> instead.
+  #
+  #   **Before**:
+  #
+  #   ```erb
+  #   <%%= render Primer::FlexComponent.new(justify_content: :center) %>
+  #   <%%= render Primer::FlexComponent.new(inline: true) %>
+  #   <%%= render Primer::FlexComponent.new(flex_wrap: true) %>
+  #   <%%= render Primer::FlexComponent.new(align_items: :start) %>
+  #   <%%= render Primer::FlexComponent.new(direction: :column) %>
+  #   ```
+  #
+  #   **After**:
+  #
+  #   ```erb
+  #   <%%= render Primer::BoxComponent.new(display: :flex, justify_content: :center) %>
+  #   <%%= render Primer::BoxComponent.new(display: :inline_flex) %>
+  #   <%%= render Primer::BoxComponent.new(display: :flex, flex_wrap: :wrap) %>
+  #   <%%= render Primer::BoxComponent.new(display: :flex, align_items: :start) %>
+  #   <%%= render Primer::BoxComponent.new(display: :flex, direction: :column) %>
+  #   ```
   class FlexComponent < Primer::Component
+    status :deprecated
+
     JUSTIFY_CONTENT_DEFAULT = nil
     JUSTIFY_CONTENT_MAPPINGS = {
       flex_start: "flex-justify-start",
@@ -77,6 +102,8 @@ module Primer
       direction: nil,
       **system_arguments
     )
+      deprecated_component_warning(new_class: Primer::BoxComponent, version: "0.0.40")
+
       @align_items = fetch_or_fallback(ALIGN_ITEMS_OPTIONS, align_items, ALIGN_ITEMS_DEFAULT)
       @justify_content = fetch_or_fallback(JUSTIFY_CONTENT_OPTIONS, justify_content, JUSTIFY_CONTENT_DEFAULT)
       @flex_wrap = fetch_or_fallback(FLEX_WRAP_OPTIONS, flex_wrap, FLEX_WRAP_DEFAULT)
