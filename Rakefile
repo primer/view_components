@@ -135,6 +135,7 @@ namespace :docs do
     registry = YARD::RegistryStore.new
     registry.load!(".yardoc")
     components = [
+      Primer::OcticonSymbolComponent,
       Primer::IconButton,
       Primer::AutoComplete,
       Primer::AutoComplete::Item,
