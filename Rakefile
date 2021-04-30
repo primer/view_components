@@ -121,6 +121,7 @@ namespace :docs do
     require "primer/view_components"
     require "view_component/test_helpers"
     include ViewComponent::TestHelpers
+    include Primer::ViewHelper
 
     Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
 
