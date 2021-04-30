@@ -2,6 +2,10 @@
 
 ## main
 
+* **Breaking change:** Explicitly limit tag for `AvatarStack` to `:div` and `:span`
+
+    *Kate Higa*
+
 ## 0.0.39
 
 * Promote `CloseButton` to beta.
