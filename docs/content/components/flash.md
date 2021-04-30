@@ -81,3 +81,4 @@ Optional action content showed on the right side of the component.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+

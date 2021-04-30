@@ -116,3 +116,4 @@ Counter to be rendered in the Tab right.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | The same arguments as [Counter](/components/counter). |
+

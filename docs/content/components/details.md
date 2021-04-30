@@ -37,3 +37,4 @@ Use the Body slot as the main content to be shown when triggered by the Summary.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | The same arguments as [System arguments](/system-arguments). |
+

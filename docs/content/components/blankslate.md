@@ -151,3 +151,4 @@ Optional Spinner.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |
+

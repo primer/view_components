@@ -118,3 +118,4 @@ Counter to be rendered in the button.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | Same arguments as [Counter](/components/counter). |
+

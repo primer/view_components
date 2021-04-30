@@ -327,9 +327,9 @@ namespace :docs do
 
         if slot_v2_methods.any?
           f.puts("## Slots")
+          f.puts
 
           slot_v2_methods.each do |slot_documentation|
-            f.puts
             f.puts("### `#{slot_documentation.name.to_s.capitalize}`")
 
             if slot_documentation.base_docstring.present?
@@ -356,6 +356,7 @@ namespace :docs do
 
               f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
             end
+            f.puts
           end
         end
       end

@@ -60,3 +60,4 @@ Body to be rendered to the left of the Badge.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+

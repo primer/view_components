@@ -95,3 +95,4 @@ Tabs to be rendered. For more information, refer to [NavigationTab](/components/
 | :- | :- | :- | :- |
 | `selected` | `Boolean` | N/A | Whether the tab is selected. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+

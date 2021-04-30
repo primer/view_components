@@ -37,3 +37,4 @@ Required list of icons. These will be the icons that are rendered.
 | :- | :- | :- | :- |
 | `symbol` | `String` | N/A | Name of [Octicon](https://primer.style/octicons/) to use. |
 | `size` | `Symbol` | N/A | One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`). |
+
