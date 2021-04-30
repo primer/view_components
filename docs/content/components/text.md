@@ -27,4 +27,3 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-

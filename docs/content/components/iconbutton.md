@@ -45,4 +45,3 @@ Use `IconButton` to render Icon-only buttons without the default button styles.
 | `tag` | `Symbol` | N/A | One of `:button`, `:a`, or `:summary`. |
 | `type` | `Symbol` | N/A | One of `:button`, `:reset`, or `:submit`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-

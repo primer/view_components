@@ -98,4 +98,3 @@ Use [Box](/components/box) instead.
 | `align_items` | `Symbol` | `ALIGN_ITEMS_DEFAULT` | Use this param to align items on the cross axis. One of `nil`, `:start`, `:end`, `:center`, `:baseline`, or `:stretch`. |
 | `direction` | `Symbol` | `nil` | Use this param to define the orientation of the main axis (row or column). By default, flex items will display in a row. One of `nil`, `:column`, `:column_reverse`, `:row`, or `:row_reverse`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-

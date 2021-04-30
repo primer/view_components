@@ -47,4 +47,3 @@ of the select menu.
 | `scheme` | `Symbol` | `:default` | Pass `:dark` for dark mode theming |
 | `header` | `String` | `nil` | Optional string to display as the header |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-

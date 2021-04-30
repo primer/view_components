@@ -230,38 +230,37 @@ namespace :docs do
         f.puts("<!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->")
         f.puts
         f.puts(view_context.render(inline: documentation.base_docstring))
-        f.puts
 
         if documentation.tags(:accessibility).any?
-          f.puts("## Accessibility")
           f.puts
+          f.puts("## Accessibility")
           documentation.tags(:accessibility).each do |tag|
-            f.puts view_context.render(inline: tag.text)
             f.puts
+            f.puts view_context.render(inline: tag.text)
           end
         end
 
         if documentation.tags(:deprecated).any?
-          f.puts("## Deprecation")
           f.puts
+          f.puts("## Deprecation")
           documentation.tags(:deprecated).each do |tag|
-            f.puts view_context.render(inline: tag.text)
             f.puts
+            f.puts view_context.render(inline: tag.text)
           end
         end
 
         initialize_method = documentation.meths.find(&:constructor?)
 
         if initialize_method.tags(:example).any?
-          f.puts("## Examples")
           f.puts
+          f.puts("## Examples")
         else
           components_without_examples << component
         end
 
         initialize_method.tags(:example).each do |tag|
           (name, description) = tag.name.split("|")
-
+          f.puts
           f.puts("### #{name}")
           if description
             f.puts
@@ -275,11 +274,11 @@ namespace :docs do
           f.puts("```erb")
           f.puts(tag.text.to_s)
           f.puts("```")
-          f.puts
         end
 
         params = initialize_method.tags(:param)
         if params.any?
+          f.puts
           f.puts("## Arguments")
           f.puts
           f.puts("| Name | Type | Default | Description |")
@@ -311,7 +310,6 @@ namespace :docs do
 
             f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
           end
-          f.puts
 
           component_args = {
             "component" => short_name,
@@ -326,6 +324,7 @@ namespace :docs do
         slot_v2_methods = documentation.meths.select { |x| x[:renders_one] || x[:renders_many] }
 
         if slot_v2_methods.any?
+          f.puts
           f.puts("## Slots")
 
           slot_v2_methods.each do |slot_documentation|

@@ -75,4 +75,3 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 | `multiline` | `Boolean` | `false` | Use this when you have long content |
 | `no_delay` | `Boolean` | `false` | By default the tooltips have a slight delay before appearing. Set true to override this |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-

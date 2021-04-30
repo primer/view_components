@@ -55,4 +55,3 @@ Use `Truncate` to shorten overflowing text with an ellipsis.
 | `expandable` | `Boolean` | `false` | Whether the entire string should be revealed on hover. Can only be used in conjunction with `inline`. |
 | `max_width` | `Integer` | `nil` | Sets the max-width of the text. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-

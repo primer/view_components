@@ -34,4 +34,3 @@ Use `AutoCompleteItem` to list results of an auto-completed search.
 | `selected` | `Boolean` | `false` | Whether the item is selected. |
 | `disabled` | `Boolean` | `false` | Whether the item is disabled. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-

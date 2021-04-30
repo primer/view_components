@@ -52,4 +52,3 @@ Use [Box](/components/box) instead.
 | :- | :- | :- | :- |
 | `flex_auto` | `Boolean` | `false` | Fills available space and auto-sizes based on the content. Defaults to false |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
