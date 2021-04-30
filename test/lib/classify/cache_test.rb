@@ -31,6 +31,6 @@ class PrimerClassifyCacheTest < Minitest::Test
         )
       )
 
-    assert_empty (classes_from_classify_cache - css_data["selectors"]["values"])
+    assert_empty(classes_from_classify_cache - css_data["selectors"]["values"])
   end
 end
