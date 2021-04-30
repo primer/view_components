@@ -31,7 +31,7 @@ class PrimerClassifyCacheTest < Minitest::Test
         )
       )
 
-    # TODO remove these
+    # TODO: remove these
     allowed_missing_classes_for_now = [
       ".m-sm-auto",
       ".p-sm-responsive",
