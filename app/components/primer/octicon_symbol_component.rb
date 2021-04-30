@@ -5,10 +5,6 @@ require "octicons"
 module Primer
   # OcticonSymbol renders a symbol dictionary using a list of <%= link_to_octicons %>.
   class OcticonSymbolComponent < Primer::Component
-    # Required list of icons. These will be the icons that are rendered.
-    #
-    # @param symbol [String] Name of <%= link_to_octicons %> to use.
-    # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
     renders_many :icons, "Symbol"
 
     # @example Symbol dictionary
@@ -30,6 +26,10 @@ module Primer
     class Symbol < Primer::Component
       attr_reader :icon
 
+      # Required list of icons. These will be the icons that are rendered.
+      #
+      # @param symbol [String] Name of <%= link_to_octicons %> to use.
+      # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
       def initialize(symbol:, size: Primer::OcticonComponent::SIZE_DEFAULT)
         cache_key = Primer::Octicon::Cache.get_key(symbol: symbol, size: size)
 
