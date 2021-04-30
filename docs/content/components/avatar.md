@@ -74,3 +74,4 @@ rather than `@kittenuser`.
 | `square` | `Boolean` | `false` | Used to create a square avatar. |
 | `href` | `String` | `nil` | The URL to link to. If used, component will be wrapped by an `<a>` tag. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+

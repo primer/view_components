@@ -44,3 +44,4 @@ Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, o
 | `tag` | `Symbol` | `:button` | One of `:button` and `:a`. |
 | `type` | `Symbol` | `:button` | One of `:button` and `:submit`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+

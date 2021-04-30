@@ -30,3 +30,4 @@ Use `BaseButton` to render an unstyled `<button>` tag that can be customized.
 | `type` | `Symbol` | `:button` | One of `:button`, `:reset`, or `:submit`. |
 | `block` | `Boolean` | `false` | Whether button is full-width with `display: block`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+

@@ -64,3 +64,4 @@ Use `Link` for navigating from one page to another. `Link` styles anchor tags wi
 | `muted` | `Boolean` | `false` | Uses light gray for Link color, and blue on hover. |
 | `underline` | `Boolean` | `true` | Whether or not to underline the link. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+

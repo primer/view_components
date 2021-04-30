@@ -50,3 +50,4 @@ Use `State` for rendering the status of an item.
 | `tag` | `Symbol` | `:span` | HTML tag for element. One of `:span` and `:div`. |
 | `size` | `Symbol` | `:default` | One of `:default` and `:small`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+

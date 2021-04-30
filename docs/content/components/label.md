@@ -44,3 +44,4 @@ Use `Label` to add contextual metadata to a design.
 | `scheme` | `Symbol` | `nil` | One of `:primary`, `:secondary`, `:info`, `:success`, `:warning`, `:danger`, `:orange`, or `:purple`. |
 | `variant` | `Symbol` | `nil` | One of `:large`, `:inline`, or `nil`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+

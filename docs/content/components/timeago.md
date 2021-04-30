@@ -31,3 +31,4 @@ Use `TimeAgo` to display a time relative to how long ago it was. This component 
 | `time` | `Time` | N/A | The time to be formatted |
 | `micro` | `Boolean` | `false` | If true then the text will be formatted in "micro" mode, using as few characters as possible |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+

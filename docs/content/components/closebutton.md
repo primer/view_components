@@ -34,3 +34,4 @@ You may choose to override this label with something more descriptive via [syste
 | :- | :- | :- | :- |
 | `type` | `Symbol` | `:button` | One of `:button` and `:submit`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+

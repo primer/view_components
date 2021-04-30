@@ -42,3 +42,4 @@ Use `Spinner` to let users know that content is being loaded.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `size` | `Symbol` | `:medium` | One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`). |
+

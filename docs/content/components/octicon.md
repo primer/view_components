@@ -55,3 +55,4 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 | `size` | `Symbol` | `:small` | One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`). |
 | `use_symbol` | `Boolean` | `false` | Set to true when you setup a symbol dictionary using [OcticonSymbol](/components/octiconsymbol) on the page. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+

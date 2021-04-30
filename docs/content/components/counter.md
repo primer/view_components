@@ -41,3 +41,4 @@ Use `CounterComponent` to add a count to navigational elements and buttons.
 | `text` | `String` | `""` | Text to display instead of count. |
 | `round` | `Boolean` | `false` | Whether to apply our standard rounding logic to value. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+

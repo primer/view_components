@@ -27,7 +27,6 @@ OcticonSymbol renders a symbol dictionary using a list of [Octicon](https://prim
 <% end %>
 ```
 
-
 ## Slots
 
 ### `Icons`
