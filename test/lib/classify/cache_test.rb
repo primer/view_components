@@ -17,8 +17,8 @@ class PrimerClassifyCacheTest < Minitest::Test
     classes_from_classify_cache =
       Primer::Classify::Cache::LOOKUP
       .values
-      .flat_map { |k| k.values }
-      .flat_map { |k| k.values }
+      .flat_map(&:values)
+      .flat_map(&:values)
       .map { |k| ".#{k}" }
       .uniq
 
