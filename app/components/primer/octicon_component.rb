@@ -30,7 +30,7 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, **system_arguments)
       icon_key = icon_name || icon
-      cache_key = [icon_key, size, system_arguments.slice(:height, :width)].join("_")
+      cache_key = Primer::Octicon::Cache.get_key({ name: icon_key, size: size, **system_arguments.slice(:height, :width) })
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = :svg
