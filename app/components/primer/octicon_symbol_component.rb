@@ -28,7 +28,6 @@ module Primer
     # This component is part of `Primer::OcticonSymbolComponent` and should not be
     # used as a standalone component.
     class Symbol < Primer::Component
-
       attr_reader :icon
 
       def initialize(symbol:, size: Primer::OcticonComponent::SIZE_DEFAULT)
