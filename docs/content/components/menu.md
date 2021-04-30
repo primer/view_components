@@ -52,7 +52,6 @@ Optional menu heading
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
 ### `Items`
 
 Required list of navigational links
@@ -62,4 +61,3 @@ Required list of navigational links
 | `href` | `String` | N/A | URL to be used for the Link |
 | `selected` | `Boolean` | N/A | Whether the item is the current selection |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-

@@ -29,7 +29,6 @@ Use the Summary slot as a trigger to reveal the content.
 | :- | :- | :- | :- |
 | `button` | `Boolean` | N/A | Whether to render the Summary as a button or not. |
 | `kwargs` | `Hash` | N/A | The same arguments as [System arguments](/system-arguments). |
-
 ### `Body`
 
 Use the Body slot as the main content to be shown when triggered by the Summary.
@@ -37,4 +36,3 @@ Use the Body slot as the main content to be shown when triggered by the Summary.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | The same arguments as [System arguments](/system-arguments). |
-

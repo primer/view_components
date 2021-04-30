@@ -73,4 +73,3 @@ Use the Item slot to add an item to the progress bas
 | `percentage` | `Integer` | N/A | The percent complete |
 | `bg` | `Symbol` | N/A | The background color |
 | `kwargs` | `Hash` | N/A | The same arguments as [System arguments](/system-arguments). |
-

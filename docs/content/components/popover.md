@@ -97,7 +97,6 @@ The heading
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
 ### `Body`
 
 The body
@@ -107,4 +106,3 @@ The body
 | `caret` | `Symbol` | N/A | One of `:top`, `:bottom`, `:bottom_right`, `:bottom_left`, `:left`, `:left_bottom`, `:left_top`, `:right`, `:right_bottom`, `:right_top`, `:top_left`, or `:top_right`. |
 | `large` | `Boolean` | N/A | Whether to use the large version of the component. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-

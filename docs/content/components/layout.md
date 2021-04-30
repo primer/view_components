@@ -53,7 +53,6 @@ The main content
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
 ### `Sidebar`
 
 The sidebar content
@@ -61,4 +60,3 @@ The sidebar content
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-

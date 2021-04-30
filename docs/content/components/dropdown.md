@@ -73,7 +73,6 @@ They're great for instances where you don't need the full power (and code) of th
 
 Required trigger for the dropdown. Only accepts a content.
 Its classes can be customized by the `summary_classes` param in the parent component
-
 ### `Menu`
 
 Required context menu for the dropdown
@@ -84,4 +83,3 @@ Required context menu for the dropdown
 | `scheme` | `Symbol` | N/A | Pass `:dark` for dark mode theming |
 | `header` | `String` | N/A | Optional string to display as the header |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-

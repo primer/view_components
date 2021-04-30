@@ -356,7 +356,6 @@ namespace :docs do
 
               f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
             end
-            f.puts
           end
         end
       end

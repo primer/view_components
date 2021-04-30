@@ -121,7 +121,6 @@ The heading
 | `tag` | `Symbol` | N/A | One of `:div`, `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`. |
 | `danger` | `Boolean` | N/A | Whether to style the heading as dangerous. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
 ### `Actions`
 
 Actions
@@ -129,7 +128,6 @@ Actions
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
 ### `Description`
 
 The description
@@ -137,4 +135,3 @@ The description
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
