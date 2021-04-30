@@ -3,19 +3,19 @@
 require "octicons"
 
 module Primer
-  # Add a general description of component here
-  # Add additional usage considerations or best practices that may aid the user to use the component correctly.
-  # @accessibility Add any accessibility considerations
+  # OcticonSymbol renders a symbol dictionary using a list of <%= link_to_octicons %>.
   class OcticonSymbolComponent < Primer::Component
-    # Required list of icons
+    # Required list of icons. These will be the icons that are rendered.
     #
     # @param symbol [String] Name of <%= link_to_octicons %> to use.
     # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
     renders_many :icons, "Symbol"
 
-    # @example Example goes here
+    # @example Symbol dictionary
     #
-    #   <%= render(Primer::OcticonSymbolComponent.new) %>
+    #   <%= render(Primer::OcticonSymbolComponent.new) do |c| %>
+    #     <%= c.icon(symbol: :check, size: :small) %>
+    #   <% end %>
     def before_render
       # Make sure we don't have any duplicate icons
       icons.uniq! { |icon| "#{icon.icon.symbol}#{icon.icon.height}" }
