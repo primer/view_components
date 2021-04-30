@@ -22,15 +22,15 @@ To declare a dependency on an `npm` package, pass `js` to the generator:
 bundle exec thor component_generator my_component_name --js=some-npm-package-name
 ```
 
-## Running and writing tests
+## Testing
 
-Run the whole test suite with Rake: `bundle exec rake` and only execute some tests by supplying a file glob to the test command: `TESTS="test/components/YOUR_COMPONENT_test.rb" bundle exec rake`
+Run the whole test suite with Rake: `bundle exec rake`. Run a subset of tests by supplying a file glob to the test command: `TESTS="test/components/YOUR_COMPONENT_test.rb" bundle exec rake`
 
 ### System tests
 
-Primer ViewComponents utilizes Cuprite for system testing. System testing is useful for components that rely on JavaScript functionality since Curpite runs the tests in a real browser.
+Primer ViewComponents utilizes Cuprite for system testing components that rely on JavaScript functionality.
 
-The system tests run in a headless Chrome browser. Passing the `HEADLESS=false` environment variable to the test command will run the system tests in a normal browser on the desktop.
+By default, the system tests run in a headless Chrome browser. Prefix the test command with `HEADLESS=false` to run the system tests in a normal browser.
 
 ## Submitting a pull request
 
