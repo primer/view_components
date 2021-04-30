@@ -2,6 +2,10 @@
 
 ## main
 
+* **Breaking change:** Restrict `Blankslate` tag to `div`.
+
+    *Kate Higa*
+
 * **Breaking change:** Explicitly limit tag for `AvatarStack` to `:div` and `:span`
 
     *Kate Higa*
