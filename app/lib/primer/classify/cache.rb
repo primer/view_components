@@ -111,7 +111,7 @@ module Primer
 
           preload(
             keys: [Primer::Classify::WIDTH_KEY, Primer::Classify::HEIGHT_KEY],
-            values: [:fit, :fill]
+            values: [:fit]
           )
 
           preload(
