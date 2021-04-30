@@ -2,6 +2,12 @@
 
 ## main
 
+## 0.0.39
+
+* Promote `CloseButton` to beta.
+
+    *Manuel Puyol*
+
 * Update `ClipboardCopy` to not toggle icons unless they both exist.
 
     *Kristjan Oddsson*
@@ -15,6 +21,14 @@
     *Manuel Puyol*
 
 * Removing trailing whitespace from output of `class=""` Classify generation.
+
+    *Jon Rohan*
+
+* Deprecate `FlexItem` in favor of `BoxComponent`.
+
+    *Manuel Puyol*
+
+* Dropping requirement of `octicons_helper` and updating `OcticonComponent` to use `octicon` gem directly.
 
     *Jon Rohan*
 

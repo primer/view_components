@@ -1,6 +1,6 @@
 ---
 title: FlexItem
-status: Alpha
+status: Deprecated
 source: https://github.com/primer/view_components/tree/main/app/components/primer/flex_item_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-flex-item-component
 ---
@@ -11,6 +11,22 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `FlexItem` to specify the ability of a flex item to alter its
 dimensions to fill available space
+
+## Deprecation
+
+Use [Box](/components/box) instead.
+
+**Before**:
+
+```erb
+<%= render Primer::FlexItemComponent.new(flex_auto: :auto) %>
+```
+
+**After**:
+
+```erb
+<%= render Primer::BoxComponent.new(flex: :auto) %>
+```
 
 ## Examples
 
