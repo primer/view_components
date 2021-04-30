@@ -32,7 +32,15 @@ class PrimerOcticonComponentTest < Minitest::Test
   def test_renders_aria_label_attribute
     render_inline(Primer::OcticonComponent.new(:star, aria: { label: "star-label" }))
 
-    assert_selector("[aria-label='star-label']")
+    assert_selector("[aria-label='star-label'][role='img']")
+    refute_selector("[aria-hidden='true']")
+  end
+
+  def test_renders_aria_label_as_string_argument
+    render_inline(Primer::OcticonComponent.new(:star, "aria-label": "star-label"))
+
+    assert_selector("[aria-label='star-label'][role='img']")
+    refute_selector("[aria-hidden='true']")
   end
 
   def test_renders_style_argument
@@ -51,12 +59,6 @@ class PrimerOcticonComponentTest < Minitest::Test
     render_inline(Primer::OcticonComponent.new(:star, size: :large))
 
     assert_selector("[height='64']")
-  end
-
-  def test_renders_small_if_invalid_size_is_passed
-    render_inline(Primer::OcticonComponent.new(:star, size: :grande))
-
-    assert_selector("[height='16']")
   end
 
   def test_renders_with_overridden_height_and_width_despite_given_a_size
@@ -93,5 +95,27 @@ class PrimerOcticonComponentTest < Minitest::Test
 
     refute_selector("[test_selector='bar']")
     assert_selector("[data-test-selector='bar']")
+  end
+
+  def test_renders_path_data
+    render_inline(Primer::OcticonComponent.new(:star))
+
+    assert_selector("svg.octicon-star path[d]")
+  end
+
+  def test_cache_evacuates_after_limit_reached
+    Primer::Octicon::Cache.clear!
+    Primer::Octicon::Cache.stub :limit, 3 do
+      # Assert the limit is stubbed properly
+      assert_equal Primer::Octicon::Cache.limit, 3
+      # Assert the cache is empty
+      assert_equal 0, Primer::Octicon::Cache::LOOKUP.size
+
+      # Preload the cache should be 20 items
+      Primer::Octicon::Cache.preload!
+
+      # Assert the cache size is 3 because the limit is 3
+      assert_equal 3, Primer::Octicon::Cache::LOOKUP.size
+    end
   end
 end

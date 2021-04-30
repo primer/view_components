@@ -2,6 +2,28 @@
 
 ## main
 
+* Deprecate `Flex` in favor of `BoxComponent`.
+
+    *Manuel Puyol*
+
+* **Breaking change:** Restrict `Blankslate` tag to `div`.
+
+    *Kate Higa*
+
+* **Breaking change:** Explicitly limit tag for `AvatarStack` to `:div` and `:span`
+
+    *Kate Higa*
+
+## 0.0.39
+
+* Promote `CloseButton` to beta.
+
+    *Manuel Puyol*
+
+* Update `ClipboardCopy` to not toggle icons unless they both exist.
+
+    *Kristjan Oddsson*
+
 * Add `icon` and `counter` slots to `ButtonComponent`.
 
     *Manuel Puyol*
@@ -13,6 +35,18 @@
 * Removing trailing whitespace from output of `class=""` Classify generation.
 
     *Jon Rohan*
+
+* Deprecate `FlexItem` in favor of `BoxComponent`.
+
+    *Manuel Puyol*
+
+* Dropping requirement of `octicons_helper` and updating `OcticonComponent` to use `octicon` gem directly.
+
+    *Jon Rohan*
+
+* **Breaking change:** Remove `:overlay` option from `border_color`.
+
+    *Simon Luthi*
 
 ## 0.0.38
 
@@ -28,15 +62,19 @@
 
     *Manuel Puyol*
 
-* **Breaking change**: Rename `ButtonGroupComponent` to `ButtonGroup` and promote it to beta.
+* Create `ClipboardCopy` component.
+
+    *Kristjan Oddsson*
+
+* **Breaking change:** Rename `ButtonGroupComponent` to `ButtonGroup` and promote it to beta.
 
     *Manuel Puyol*
 
-* **Breaking change**: Do not provide default for `Heading` and improve documentation.
+* **Breaking change:** Do not provide default for `Heading` and improve documentation.
 
     *Kate Higa*
 
-* **Breaking change**: Don't allow `StateComponent` to be a link.
+* **Breaking change:** Don't allow `StateComponent` to be a link.
 
     *Kate Higa*
 
@@ -60,11 +98,11 @@
 
     *Manuel Puyol*
 
-* **Breaking change**: Rename `AutoCompleteComponent` to `AutoComplete` and `AutoCompleteItemComponent` to `AutoComplete::Item`.
+* **Breaking change:** Rename `AutoCompleteComponent` to `AutoComplete` and `AutoCompleteItemComponent` to `AutoComplete::Item`.
 
     *Manuel Puyol*
 
-* **Breaking change**: Rename `TruncateComponent` to `Truncate` and promote it to beta.
+* **Breaking change:** Rename `TruncateComponent` to `Truncate` and promote it to beta.
 
     *Manuel Puyol*
 
@@ -82,7 +120,7 @@
 
     *Manuel Puyol*
 
-* **Breaking change**: Make `label` required for `UnderlineNav` and `TabNav`.
+* **Breaking change:** Make `label` required for `UnderlineNav` and `TabNav`.
 
     *Manuel Puyol*
 
@@ -96,23 +134,23 @@
 
     *Manuel Puyol*
 
-* **Breaking change**: Rename `FlashComponent` `variant` argument to `scheme`.
+* **Breaking change:** Rename `FlashComponent` `variant` argument to `scheme`.
 
     *Manuel Puyol*
 
-* **Breaking change**: Rename `LinkComponent` `variant` argument to `scheme`.
+* **Breaking change:** Rename `LinkComponent` `variant` argument to `scheme`.
 
     *Manuel Puyol*
 
-* **Breaking change**: Rename `ButtonComponent` `button_type` argument to `scheme`.
+* **Breaking change:** Rename `ButtonComponent` `button_type` argument to `scheme`.
 
     *Manuel Puyol*
 
-* **Breaking change**: Rename `ButtonMarketingComponent` `button_type` argument to `scheme`.
+* **Breaking change:** Rename `ButtonMarketingComponent` `button_type` argument to `scheme`.
 
     *Manuel Puyol*
 
-* **Breaking change**: Rename `StateComponent` `color` argument to `scheme`.
+* **Breaking change:** Rename `StateComponent` `color` argument to `scheme`.
 
     *Manuel Puyol*
 
@@ -132,11 +170,11 @@
 
     *Manuel Puyol*
 
-* **Breaking change**: Update `TabNav#tab` API to accept the tab content as a block and panel content as a slot.
+* **Breaking change:** Update `TabNav#tab` API to accept the tab content as a block and panel content as a slot.
 
     *Manuel Puyol*
 
-* **Breaking change**: Update `UnderlineNavComponent` API be more strict and support `TabContainer`.
+* **Breaking change:** Update `UnderlineNavComponent` API be more strict and support `TabContainer`.
 
     *Manuel Puyol*
 
@@ -200,7 +238,7 @@
 
     *Steve Richert*
 
-* **Breaking change**: Updates `PopoverComponent` to use Slots V2.
+* **Breaking change:** Updates `PopoverComponent` to use Slots V2.
 
     *Manuel Puyol*
 
@@ -218,11 +256,11 @@
 
     *Keith Cirkel*
 
-* **Breaking change**: Updates `UnderlineNavComponent` to use Slots V2.
+* **Breaking change:** Updates `UnderlineNavComponent` to use Slots V2.
 
     *Simon Taranto*
 
-* **Breaking change**: Upgrade `LayoutComponent` to use Slots V2.
+* **Breaking change:** Upgrade `LayoutComponent` to use Slots V2.
 
     *Simon Taranto*
 
@@ -252,11 +290,11 @@
 
     *Manuel Puyol*
 
-* **Breaking change**: Upgrade `ProgressBarComponent` to use Slots V2.
+* **Breaking change:** Upgrade `ProgressBarComponent` to use Slots V2.
 
     *Simon Taranto*
 
-* **Breaking change**: Upgrade `BreadcrumbComponent` to use Slots V2.
+* **Breaking change:** Upgrade `BreadcrumbComponent` to use Slots V2.
 
     *Manuel Puyol*
 
@@ -266,11 +304,11 @@
 
   *Manuel Puyol*
 
-* **Breaking change**: Upgrade `SubheadComponent` to use Slots V2.
+* **Breaking change:** Upgrade `SubheadComponent` to use Slots V2.
 
     *Simon Taranto*
 
-* **Breaking change**: Update `LabelComponent` to use only functional color
+* **Breaking change:** Update `LabelComponent` to use only functional color
   supportive scheme keys. The component no longer accepts colors (`:gray`, for
   example) but only functional schemes (`primary`, for example).
   `LabelComponent` is promoted to beta status.
@@ -291,29 +329,29 @@
 
     *Simon Taranto*
 
-* **Breaking change**: Upgrade `BorderBoxComponent` to use Slots V2.
+* **Breaking change:** Upgrade `BorderBoxComponent` to use Slots V2.
 
     *Manuel Puyol*
 
-* **Breaking change**: Upgrade `StateComponent` to support functional colors. This change requires using [@primer/css-next](https://www.npmjs.com/package/@primer/css-next). The required changes will be upstreamed to @primer/css at a later date.
+* **Breaking change:** Upgrade `StateComponent` to support functional colors. This change requires using [@primer/css-next](https://www.npmjs.com/package/@primer/css-next). The required changes will be upstreamed to @primer/css at a later date.
 
     *Simon Taranto*
 
-* **Breaking change**: Upgrade `DetailsComponent` to use Slots V2.
+* **Breaking change:** Upgrade `DetailsComponent` to use Slots V2.
 
     *Simon Taranto*
 
 ## 0.0.21
 
-* **Breaking change**: Upgrade `FlashComponent` to use Slots V2.
+* **Breaking change:** Upgrade `FlashComponent` to use Slots V2.
 
     *Joel Hawksley, Simon Taranto*
 
-* **Breaking change**: Upgrade `BlankslateComponent` to use Slots V2.
+* **Breaking change:** Upgrade `BlankslateComponent` to use Slots V2.
 
     *Manuel Puyol*
 
-* **Breaking change**: Upgrade `TimelineItemComponent` to use Slots V2.
+* **Breaking change:** Upgrade `TimelineItemComponent` to use Slots V2.
 
     *Manuel Puyol*
 
@@ -357,7 +395,7 @@
 
     *Simon Taranto*
 
-* **Breaking change**: Drop support for Ruby 2.4.
+* **Breaking change:** Drop support for Ruby 2.4.
 
     *Simon Taranto*
 

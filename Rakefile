@@ -24,6 +24,7 @@ YARD::Rake::YardocTask.new
 
 # Custom tags for yard
 YARD::Tags::Library.define_tag("Accessibility", :accessibility)
+YARD::Tags::Library.define_tag("Deprecation", :deprecation)
 
 namespace :coverage do
   task :report do
@@ -120,6 +121,7 @@ namespace :docs do
     require "primer/view_components"
     require "view_component/test_helpers"
     include ViewComponent::TestHelpers
+    include Primer::ViewHelper
 
     Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
 
@@ -229,6 +231,15 @@ namespace :docs do
           f.puts("## Accessibility")
           f.puts
           documentation.tags(:accessibility).each do |tag|
+            f.puts view_context.render(inline: tag.text)
+            f.puts
+          end
+        end
+
+        if documentation.tags(:deprecated).any?
+          f.puts("## Deprecation")
+          f.puts
+          documentation.tags(:deprecated).each do |tag|
             f.puts view_context.render(inline: tag.text)
             f.puts
           end

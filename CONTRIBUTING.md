@@ -22,12 +22,21 @@ To declare a dependency on an `npm` package, pass `js` to the generator:
 bundle exec thor component_generator my_component_name --js=some-npm-package-name
 ```
 
+## Testing
+
+Run the whole test suite with Rake: `bundle exec rake`. Run a subset of tests by supplying a file glob to the test command: `TESTS="test/components/YOUR_COMPONENT_test.rb" bundle exec rake`
+
+### System tests
+
+Primer ViewComponents utilizes Cuprite for system testing components that rely on JavaScript functionality.
+
+By default, the system tests run in a headless Chrome browser. Prefix the test command with `HEADLESS=false` to run the system tests in a normal browser.
+
 ## Submitting a pull request
 
 0. [Fork](https://github.com/primer/view_components/fork) and clone the repository
 0. Configure and install the dependencies: `./script/setup`
-0. Make sure the tests pass on your machine: `bundle exec rake`
-   - You can restrict the test runner to only run your changes by supplying a filename or glob to the test command: `TESTS="test/components/YOUR_COMPONENT_test.rb" bundle exec rake`
+0. Make sure the tests pass on your machine
 0. Create a new branch: `git checkout -b my-branch-name`
 0. Make your change, add tests, and make sure the tests still pass
 0. Add an entry to the top of `CHANGELOG.md` for your changes

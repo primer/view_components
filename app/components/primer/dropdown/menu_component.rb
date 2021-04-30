@@ -2,7 +2,7 @@
 
 module Primer
   module Dropdown
-    # This component is part of `Primer::DropdownComponent` and should not be
+    # This component is part of `Dropdown` and should not be
     # used as a standalone component.
     class MenuComponent < Primer::Component
       SCHEME_DEFAULT = :default

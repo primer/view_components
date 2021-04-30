@@ -8,6 +8,8 @@ module Primer
     ALIGN_DEFAULT = :left
     ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
 
+    DEFAULT_TAG = :div
+    TAG_OPTIONS = [DEFAULT_TAG, :span].freeze
     # Required list of stacked avatars.
     #
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::AvatarComponent) %>.
@@ -34,11 +36,12 @@ module Primer
     #     <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
     #   <% end  %>
     #
+    # @param tag [Symbol] <%= one_of(Primer::AvatarStackComponent::TAG_OPTIONS) %>
     # @param align [Symbol] <%= one_of(Primer::AvatarStackComponent::ALIGN_OPTIONS) %>
     # @param tooltipped [Boolean] Whether to add a tooltip to the stack or not.
     # @param body_arguments [Hash] Parameters to add to the Body. If `tooltipped` is set, has the same arguments as <%= link_to_component(Primer::TooltipComponent) %>.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(align: ALIGN_DEFAULT, tooltipped: false, body_arguments: {}, **system_arguments)
+    def initialize(tag: DEFAULT_TAG, align: ALIGN_DEFAULT, tooltipped: false, body_arguments: {}, **system_arguments)
       @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
       @system_arguments = system_arguments
       @tooltipped = tooltipped
@@ -50,7 +53,7 @@ module Primer
         @body_arguments[:classes]
       )
 
-      @system_arguments[:tag] ||= :div
+      @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
       @system_arguments[:classes] = class_names(
         "AvatarStack",
         system_arguments[:classes],

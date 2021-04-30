@@ -3,7 +3,8 @@
 require "test_helper"
 require "capybara/rails"
 require "capybara/minitest"
-require "capybara/cuprite"
+
+require "test_helpers/cuprite_setup"
 
 Ferrum::Browser.new(process_timeout: 60, timeout: 60)
 

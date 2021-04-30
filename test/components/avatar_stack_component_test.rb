@@ -5,6 +5,30 @@ require "test_helper"
 class PrimerAvatarStackComponentTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
+  def test_renders_as_a_div_by_default
+    render_inline(Primer::AvatarStackComponent.new) do |c|
+      c.avatar(src: "Foo", alt: "Bar")
+    end
+
+    assert_selector("div.AvatarStack")
+  end
+
+  def test_renders_as_a_span
+    render_inline(Primer::AvatarStackComponent.new(tag: :span)) do |c|
+      c.avatar(src: "Foo", alt: "Bar")
+    end
+    assert_selector("span.AvatarStack")
+  end
+
+  def test_falls_back_when_tag_isnt_valid
+    without_fetch_or_fallback_raises do
+      render_inline(Primer::AvatarStackComponent.new(tag: :h1)) do |c|
+        c.avatar(src: "Foo", alt: "Bar")
+      end
+      assert_selector("div.AvatarStack")
+    end
+  end
+
   def test_does_not_render_without_avatars
     render_inline(Primer::AvatarStackComponent.new)
 
