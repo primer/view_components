@@ -273,6 +273,7 @@ namespace :docs do
           f.puts("```")
           f.puts
         end
+
         params = initialize_method.tags(:param)
         if params.any?
           f.puts("## Arguments")
@@ -306,6 +307,7 @@ namespace :docs do
 
             f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
           end
+          f.puts
 
           component_args = {
             "component" => short_name,
@@ -320,7 +322,6 @@ namespace :docs do
         slot_v2_methods = documentation.meths.select { |x| x[:renders_one] || x[:renders_many] }
 
         if slot_v2_methods.any?
-          f.puts
           f.puts("## Slots")
 
           slot_v2_methods.each do |slot_documentation|
