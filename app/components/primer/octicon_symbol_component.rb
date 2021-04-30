@@ -5,9 +5,6 @@ require "octicons"
 module Primer
   # OcticonSymbol renders a symbol dictionary using a list of <%= link_to_octicons %>.
   class OcticonSymbolComponent < Primer::Component
-
-    attr_reader :icon, :use_symbol
-
     # Required list of icons. These will be the icons that are rendered.
     #
     # @param symbol [String] Name of <%= link_to_octicons %> to use.
