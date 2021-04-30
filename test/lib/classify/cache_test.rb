@@ -15,12 +15,12 @@ class PrimerClassifyCacheTest < Minitest::Test
     Primer::Classify::Cache.preload!
 
     classes_from_classify_cache =
-      Primer::Classify::Cache::LOOKUP.
-        values.
-        flat_map { _1.values }.
-        flat_map { _1.values }.
-        map { ".#{_1}" }.
-        uniq
+      Primer::Classify::Cache::LOOKUP
+      .values
+      .flat_map { _1.values }
+      .flat_map { _1.values }
+      .map { ".#{_1}" }
+      .uniq
 
     css_data =
       JSON.parse(
