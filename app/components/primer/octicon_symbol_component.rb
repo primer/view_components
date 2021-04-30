@@ -9,16 +9,13 @@ module Primer
   class OcticonSymbolComponent < Primer::Component
     # Required list of icons
     #
-    # @param name [String] Name of <%= link_to_octicons %> to use.
+    # @param symbol [String] Name of <%= link_to_octicons %> to use.
     # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
     renders_many :icons, "Symbol"
 
     # @example Example goes here
     #
     #   <%= render(Primer::OcticonSymbolComponent.new) %>
-    def initialize
-    end
-
     def before_render
       # Make sure we don't have any duplicate icons
       icons.uniq! { |icon| "#{icon.icon.symbol}#{icon.icon.height}" }
@@ -34,13 +31,13 @@ module Primer
 
       attr_reader :icon
 
-      def initialize(name:, size: Primer::OcticonComponent::SIZE_DEFAULT)
-        cache_key = Primer::Octicon::Cache.get_key(name: name, size: size)
+      def initialize(symbol:, size: Primer::OcticonComponent::SIZE_DEFAULT)
+        cache_key = Primer::Octicon::Cache.get_key(symbol: symbol, size: size)
 
         if (cache_icon = Primer::Octicon::Cache.read(cache_key))
           @icon = cache_icon
         else
-          @icon = Octicons::Octicon.new(name, height: Primer::OcticonComponent::SIZE_MAPPINGS[fetch_or_fallback(Primer::OcticonComponent::SIZE_OPTIONS, size, Primer::OcticonComponent::SIZE_DEFAULT)])
+          @icon = Octicons::Octicon.new(symbol, height: Primer::OcticonComponent::SIZE_MAPPINGS[fetch_or_fallback(Primer::OcticonComponent::SIZE_OPTIONS, size, Primer::OcticonComponent::SIZE_DEFAULT)])
           Primer::Octicon::Cache.set(cache_key, @icon)
         end
 

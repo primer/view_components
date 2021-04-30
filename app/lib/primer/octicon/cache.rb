@@ -9,8 +9,8 @@ module Primer
       PRELOADED_ICONS = [:alert, :check, :"chevron-down", :clippy, :clock, :"dot-fill", :info, :"kebab-horizontal", :link, :lock, :mail, :pencil, :plus, :question, :repo, :search, :"shield-lock", :star, :trash, :x].freeze
 
       class << self
-        def get_key(name:, size:, width: nil, height: nil)
-          [name, size, width, height].join("_")
+        def get_key(symbol:, size:, width: nil, height: nil)
+          [symbol, size, width, height].join("_")
         end
 
         def read(key)

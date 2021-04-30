@@ -7,7 +7,7 @@ class PrimerOcticonSymbolComponentTest < Minitest::Test
 
   def test_renders_one_octicon
     render_inline(Primer::OcticonSymbolComponent.new) do |c|
-      c.icon(name: :alert)
+      c.icon(symbol: :alert)
     end
 
     assert_selector("svg defs symbol#octicon-alert-16 path")
@@ -21,8 +21,8 @@ class PrimerOcticonSymbolComponentTest < Minitest::Test
 
   def test_renders_octicon_with_alternate_sizes
     render_inline(Primer::OcticonSymbolComponent.new) do |c|
-      c.icon(name: :alert)
-      c.icon(name: :alert, size: :medium)
+      c.icon(symbol: :alert)
+      c.icon(symbol: :alert, size: :medium)
     end
 
     assert_selector("symbol#octicon-alert-16")
@@ -31,8 +31,8 @@ class PrimerOcticonSymbolComponentTest < Minitest::Test
 
   def test_renders_one_octicon_when_only_one_size_exists
     render_inline(Primer::OcticonSymbolComponent.new) do |c|
-      c.icon(name: :markdown)
-      c.icon(name: :markdown, size: :medium)
+      c.icon(symbol: :markdown)
+      c.icon(symbol: :markdown, size: :medium)
     end
 
     assert_selector("symbol#octicon-markdown-16", count: 1)
