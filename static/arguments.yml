@@ -613,6 +613,11 @@
     type: Symbol
     default: "`:small`"
     description: One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`).
+  - name: use_symbol
+    type: Boolean
+    default: "`false`"
+    description: Set to true when you setup a symbol dictionary using [OcticonSymbol](/components/octiconsymbol)
+      on the page.
   - name: system_arguments
     type: Hash
     default: N/A

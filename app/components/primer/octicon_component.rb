@@ -31,14 +31,16 @@ module Primer
     #
     # @param icon [String] Name of <%= link_to_octicons %> to use.
     # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
+    # @param use_symbol [Boolean] Set to true when you setup a symbol dictionary using <%= link_to_component(Primer::OcticonSymbolComponent) %> on the page.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, **system_arguments)
+    def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, use_symbol: false, **system_arguments)
       icon_key = icon_name || icon
       cache_key = Primer::Octicon::Cache.get_key(symbol: icon_key, size: size, **system_arguments.slice(:height, :width))
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = :svg
       @system_arguments[:aria] ||= {}
+      @use_symbol = use_symbol
 
       if @system_arguments[:aria][:label] || @system_arguments[:"aria-label"]
         @system_arguments[:role] = "img"
@@ -64,10 +66,6 @@ module Primer
         @system_arguments[:classes]
       )
       @system_arguments.merge!(@icon.options.except(:class, :'aria-hidden'))
-    end
-
-    def call
-      render(Primer::BaseComponent.new(**@system_arguments)) { @icon.path.html_safe } # rubocop:disable Rails/OutputSafety
     end
 
     Primer::Octicon::Cache.preload!
