@@ -2,6 +2,20 @@
 
 ## main
 
+* Deprecate `Flex` in favor of `BoxComponent`.
+
+    *Manuel Puyol*
+
+* **Breaking change:** Restrict `Blankslate` tag to `div`.
+
+    *Kate Higa*
+
+* **Breaking change:** Explicitly limit tag for `AvatarStack` to `:div` and `:span`
+
+    *Kate Higa*
+
+## 0.0.39
+
 * Promote `CloseButton` to beta.
 
     *Manuel Puyol*

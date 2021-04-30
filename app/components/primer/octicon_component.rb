@@ -4,6 +4,7 @@ require "octicons"
 
 module Primer
   # `Octicon` renders an <%= link_to_octicons %> with <%= link_to_system_arguments_docs %>.
+  # `Octicon` can also be rendered with the `primer_octicon` helper, which accepts the same arguments.
   class OcticonComponent < Primer::Component
     status :beta
 
@@ -24,6 +25,9 @@ module Primer
     #
     # @example Large
     #   <%= render(Primer::OcticonComponent.new("x", size: :large)) %>
+    #
+    # @example Helper
+    #   <%= primer_octicon("check") %>
     #
     # @param icon [String] Name of <%= link_to_octicons %> to use.
     # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
