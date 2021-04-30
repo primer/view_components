@@ -10,6 +10,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 `Octicon` renders an [Octicon](https://primer.style/octicons/) with [System arguments](/system-arguments).
+`Octicon` can also be rendered with the `primer_octicon` helper, which accepts the same arguments.
 
 ## Examples
 
@@ -36,6 +37,14 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ```erb
 <%= render(Primer::OcticonComponent.new("x", size: :large)) %>
+```
+
+### Helper
+
+<Example src="<svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' height='16' width='16' class='octicon octicon-check'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>" />
+
+```erb
+<%= primer_octicon("check") %>
 ```
 
 ## Arguments
