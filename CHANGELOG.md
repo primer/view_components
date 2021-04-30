@@ -2,6 +2,10 @@
 
 ## main
 
+* **Breaking change:** Remove non-functional `width` and `height` `:fill` option.
+
+    *Jon Rohan*, *Joel Hawksley*
+
 * Deprecate `Flex` in favor of `BoxComponent`.
 
     *Manuel Puyol*
