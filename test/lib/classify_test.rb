@@ -10,7 +10,6 @@ class PrimerClassifyTest < Minitest::Test
 
   def test_font_size
     assert_generated_class("f00", { font_size: "00" })
-    assert_generated_class("f0",  { font_size: 0 })
     assert_generated_class("f1",  { font_size: 1 })
     assert_generated_class("f2",  { font_size: 2 })
     assert_generated_class("f3",  { font_size: 3 })
