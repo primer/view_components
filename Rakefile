@@ -270,7 +270,7 @@ namespace :docs do
           f.puts
           html = view_context.render(inline: tag.text)
           html.match(/class="([^"]*)"/) do |classnames|
-            classes_found_in_examples.concat(classnames[1].split(" ").map { ".#{_1}"})
+            classes_found_in_examples.concat(classnames[1].split(" ").reject { |c| c.starts_with?("octicon") }.map { ".#{_1}"})
           end
           f.puts("<Example src=\"#{html.tr('"', "\'").delete("\n")}\" />")
           f.puts

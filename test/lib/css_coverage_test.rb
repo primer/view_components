@@ -51,7 +51,11 @@ class CssCoverageTest < Minitest::Test
                 .uniq
   end
 
-  def test_does_not_generate_primer_css_classes_that_do_not_exist
+  def test_classify_does_not_generate_primer_css_classes_that_do_not_exist
     assert_empty(@classes_from_classify_cache - @css_data - @allowed_missing_classes_for_now)
+  end
+
+  def test_docs_do_not_generate_primer_css_classes_that_do_not_exist
+    assert_empty(@classes_from_docs_build - @css_data - @allowed_missing_classes_for_now)
   end
 end
