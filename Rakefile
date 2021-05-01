@@ -269,8 +269,8 @@ namespace :docs do
           end
           f.puts
           html = view_context.render(inline: tag.text)
-          html.match(/class="([^"]*)"/) do |classnames|
-            classes_found_in_examples.concat(classnames[1].split(" ").reject { |c| c.starts_with?("octicon") }.map { ".#{_1}"})
+          html.scan(/class="([^"]*)"/) do |classnames|
+            classes_found_in_examples.concat(classnames[0].split(" ").reject { |c| c.starts_with?("octicon", "js", "my-") }.map { ".#{_1}"})
           end
           f.puts("<Example src=\"#{html.tr('"', "\'").delete("\n")}\" />")
           f.puts
