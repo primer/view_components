@@ -32,7 +32,8 @@ class CssCoverageTest < Minitest::Test
       ".m-lg-auto",
       ".p-lg-responsive",
       ".m-xl-auto",
-      ".p-xl-responsive"
+      ".p-xl-responsive",
+      ".hx_Subhead--responsive"
     ]
 
     @css_data =
