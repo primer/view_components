@@ -15,7 +15,7 @@ class CssCoverageTest < Minitest::Test
       .uniq
 
     @classes_from_docs_build =
-      YAML.load(
+      YAML.safe_load(
         File.read(
           File.join(
             __FILE__.split("test")[0], "/static/classes.yml"
