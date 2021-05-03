@@ -8,6 +8,10 @@
 
     *Manuel Puyol*
 
+* Add `box` argument to `IconButton`.
+
+    *Manuel Puyol*
+
 ### Bug fixes
 
 * Fix `IconButton` raising when `aria-label` was provided using an object.

@@ -18,6 +18,11 @@
     type: Symbol
     default: N/A
     description: One of `:button`, `:reset`, or `:submit`.
+  - name: box
+    type: Boolean
+    default: "`false`"
+    description: Whether the button is in a [BorderBox](/components/borderbox). If
+      `true`, the button will have the `Box-btn-octicon` class.
   - name: system_arguments
     type: Hash
     default: N/A

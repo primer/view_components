@@ -23,19 +23,30 @@ module Primer
     #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search")) %>
     #   <%= render(Primer::IconButton.new(icon: :trash, "aria-label": "Delete", scheme: :danger)) %>
     #
+    # @example In a BorderBox
+    #
+    #   <%= render(Primer::BorderBoxComponent.new) do |component| %>
+    #     <% component.body do %>
+    #       <%= render(Primer::TextComponent.new(pr: 2)) { "Body" } %>
+    #       <%= render(Primer::IconButton.new(icon: :pencil, box: true, "aria-label": "Edit")) %>
+    #     <% end %>
+    #   <% end %>
+    #
     # @param scheme [Symbol] <%= one_of(Primer::IconButton::SCHEME_OPTIONS) %>
     # @param icon [String] Name of <%= link_to_octicons %> to use.
     # @param tag [Symbol] <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
     # @param type [Symbol] <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
+    # @param box [Boolean] Whether the button is in a <%= link_to_component(Primer::BorderBoxComponent) %>. If `true`, the button will have the `Box-btn-octicon` class.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(scheme: DEFAULT_SCHEME, icon:, **system_arguments)
+    def initialize(scheme: DEFAULT_SCHEME, icon:, box: false, **system_arguments)
       @icon = icon
 
       @system_arguments = system_arguments
       @system_arguments[:classes] = class_names(
         "btn-octicon",
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
-        system_arguments[:classes]
+        system_arguments[:classes],
+        "Box-btn-octicon" => box
       )
 
       validate_aria_label
