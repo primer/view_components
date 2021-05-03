@@ -16,7 +16,7 @@ class PrimerOcticonSymbolComponentTest < Minitest::Test
   def test_does_not_render_if_there_are_no_icons
     render_inline(Primer::OcticonSymbolComponent.new)
 
-    refute_selector("svg")
+    refute_selector("svg", visible: false)
   end
 
   def test_renders_octicon_with_alternate_sizes
@@ -25,8 +25,8 @@ class PrimerOcticonSymbolComponentTest < Minitest::Test
       c.icon(symbol: :alert, size: :medium)
     end
 
-    assert_selector("symbol#octicon-alert-16")
-    assert_selector("symbol#octicon-alert-24")
+    assert_selector("symbol#octicon-alert-16", visible: false)
+    assert_selector("symbol#octicon-alert-24", visible: false)
   end
 
   def test_renders_one_octicon_when_only_one_size_exists
@@ -35,6 +35,6 @@ class PrimerOcticonSymbolComponentTest < Minitest::Test
       c.icon(symbol: :markdown, size: :medium)
     end
 
-    assert_selector("symbol#octicon-markdown-16", count: 1)
+    assert_selector("symbol#octicon-markdown-16", count: 1, visible: false)
   end
 end
