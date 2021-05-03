@@ -10,7 +10,6 @@ class PrimerClassifyTest < Minitest::Test
 
   def test_font_size
     assert_generated_class("f00", { font_size: "00" })
-    assert_generated_class("f0",  { font_size: 0 })
     assert_generated_class("f1",  { font_size: 1 })
     assert_generated_class("f2",  { font_size: 2 })
     assert_generated_class("f3",  { font_size: 3 })
@@ -556,13 +555,11 @@ class PrimerClassifyTest < Minitest::Test
   def test_height
     assert_equal(10, Primer::Classify.call(height: 10)[:height])
     assert_nil(Primer::Classify.call(height: :fit)[:height])
-    assert_nil(Primer::Classify.call(height: :fill)[:height])
   end
 
   def test_width
     assert_equal(10, Primer::Classify.call(width: 10)[:width])
     assert_nil(Primer::Classify.call(width: :fit)[:width])
-    assert_nil(Primer::Classify.call(width: :fill)[:width])
   end
 
   def test_flex
@@ -589,9 +586,7 @@ class PrimerClassifyTest < Minitest::Test
 
   def test_width_and_height
     assert_generated_class("width-fit",   { width: :fit })
-    assert_generated_class("width-fill",  { width: :fill })
     assert_generated_class("height-fit",  { height: :fit })
-    assert_generated_class("height-fill", { height: :fill })
   end
 
   def test_flex_grow

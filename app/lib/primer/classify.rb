@@ -207,7 +207,7 @@ module Primer
         elsif Primer::Classify::Flex::KEYS.include?(key)
           memo[:classes] << Primer::Classify::Flex.classes(key, val, breakpoint)
         elsif key == WIDTH_KEY || key == HEIGHT_KEY
-          if val == :fit || val == :fill
+          if val == :fit
             memo[:classes] << "#{key}-#{val}"
           else
             memo[key] = val
