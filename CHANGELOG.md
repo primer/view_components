@@ -30,6 +30,10 @@
 
 ### Breaking Changes
 
+* Restrict `ButtonGroup` tag to `:div` and update docs for `Text` tag.
+
+    *Kate Higa*
+
 * Remove non-functional `width` and `height` `:fill` option.
 
     *Jon Rohan*, *Joel Hawksley*
