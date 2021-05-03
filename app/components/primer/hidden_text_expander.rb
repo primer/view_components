@@ -34,7 +34,7 @@ module Primer
 
     def call
       render(Primer::BaseComponent.new(**@system_arguments)) do
-        render(Primer::BaseButton.new(**@button_arguments)) { "&hellip;" }
+        render(Primer::BaseButton.new(**@button_arguments)) { "&hellip;".html_safe }
       end
     end
   end
