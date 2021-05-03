@@ -1,4 +1,6 @@
 ---
+- ".color-icon-success"
+- ".color-text-danger"
 - ".btn-octicon"
 - ".btn-octicon-danger"
 - ".position-relative"
@@ -52,7 +54,6 @@
 - ".color-bg-canvas-inverse"
 - ".btn-transparent"
 - ".btn-large-mktg"
-- ".color-icon-success"
 - ".close-button"
 - ".Counter--primary"
 - ".Counter--secondary"
@@ -147,7 +148,6 @@
 - ".tabnav-tabs"
 - ".tabnav-tab"
 - ".text-bold"
-- ".color-text-danger"
 - ".no-wrap"
 - ".TimelineItem"
 - ".TimelineItem-avatar"
