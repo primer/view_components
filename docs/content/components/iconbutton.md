@@ -1,6 +1,6 @@
 ---
 title: IconButton
-status: Alpha
+status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/icon_button.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-icon-button-component
 ---
@@ -36,6 +36,20 @@ Use `IconButton` to render Icon-only buttons without the default button styles.
 <%= render(Primer::IconButton.new(icon: :trash, "aria-label": "Delete", scheme: :danger)) %>
 ```
 
+### In a BorderBox
+
+<Example src="<div class='Box'>    <div class='Box-body'>    <span class='pr-2'>Body</span>    <button aria-label='Edit' type='button' class='btn-octicon Box-btn-octicon'><svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' height='16' width='16' class='octicon octicon-pencil'><path fill-rule='evenodd' d='M11.013 1.427a1.75 1.75 0 012.474 0l1.086 1.086a1.75 1.75 0 010 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 01-.927-.928l.929-3.25a1.75 1.75 0 01.445-.758l8.61-8.61zm1.414 1.06a.25.25 0 00-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 000-.354l-1.086-1.086zM11.189 6.25L9.75 4.81l-6.286 6.287a.25.25 0 00-.064.108l-.558 1.953 1.953-.558a.249.249 0 00.108-.064l6.286-6.286z'></path></svg></button></div>  </div>" />
+
+```erb
+
+<%= render(Primer::BorderBoxComponent.new) do |component| %>
+  <% component.body do %>
+    <%= render(Primer::TextComponent.new(pr: 2)) { "Body" } %>
+    <%= render(Primer::IconButton.new(icon: :pencil, box: true, "aria-label": "Edit")) %>
+  <% end %>
+<% end %>
+```
+
 ## Arguments
 
 | Name | Type | Default | Description |
@@ -44,4 +58,5 @@ Use `IconButton` to render Icon-only buttons without the default button styles.
 | `icon` | `String` | N/A | Name of [Octicon](https://primer.style/octicons/) to use. |
 | `tag` | `Symbol` | N/A | One of `:button`, `:a`, or `:summary`. |
 | `type` | `Symbol` | N/A | One of `:button`, `:reset`, or `:submit`. |
+| `box` | `Boolean` | `false` | Whether the button is in a [BorderBox](/components/borderbox). If `true`, the button will have the `Box-btn-octicon` class. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

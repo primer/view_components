@@ -4,6 +4,14 @@
 
 ### Changes
 
+* Promote `IconButton` to beta.
+
+    *Manuel Puyol*
+
+* Add `box` argument to `IconButton`.
+
+    *Manuel Puyol*
+
 * Promote `Markdown` to beta.
 
     *Manuel Puyol*
