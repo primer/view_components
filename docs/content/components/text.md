@@ -26,4 +26,5 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `tag` | `Symbol` | `:span` |  |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
