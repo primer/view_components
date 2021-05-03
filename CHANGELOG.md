@@ -2,23 +2,33 @@
 
 ## main
 
-* **Breaking change:** Remove non-functional `width` and `height` `:fill` option.
+### Bug fixes
 
-    *Jon Rohan*, *Joel Hawksley*
+* Fix `IconButton` raising when `aria-label` was provided using an object.
 
-* **Breaking change:** Restrict `Subhead` `heading` slot tag to `div` and `h1`-`h6`.
+    *Manuel Puyol*
 
-    *Kate Higa*
+### Deprecations
 
 * Deprecate `Flex` in favor of `BoxComponent`.
 
     *Manuel Puyol*
 
-* **Breaking change:** Restrict `Blankslate` tag to `div`.
+### Breaking Changes
+
+* Remove non-functional `width` and `height` `:fill` option.
+
+    *Jon Rohan*, *Joel Hawksley*
+
+* Restrict `Subhead` `heading` slot tag to `div` and `h1`-`h6`.
 
     *Kate Higa*
 
-* **Breaking change:** Explicitly limit tag for `AvatarStack` to `:div` and `:span`
+* Restrict `Blankslate` tag to `div`.
+
+    *Kate Higa*
+
+* Explicitly limit tag for `AvatarStack` to `:div` and `:span`
 
     *Kate Higa*
 

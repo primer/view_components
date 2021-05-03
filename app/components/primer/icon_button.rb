@@ -36,7 +36,7 @@ module Primer
         system_arguments[:classes]
       )
 
-      raise ArgumentError, "`aria-label` is required." if @system_arguments[:"aria-label"].nil? && !Rails.env.production?
+      validate_aria_label
     end
 
     def call
