@@ -69,7 +69,7 @@ module Primer
     def call
       render(Primer::BaseComponent.new(**@system_arguments)) { @icon.path.html_safe } # rubocop:disable Rails/OutputSafety
     end
-    
+
     def self._after_compile
       Primer::Octicon::Cache.preload!
     end
