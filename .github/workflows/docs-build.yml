@@ -33,8 +33,6 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "Actions Auto Build"
-          git add -f docs static/statuses.json
-          git add -f docs static/classes.yml
-          git add -f docs static/arguments.yml
+          git add -f docs static/statuses.json static/arguments.yml static/classes.yml
           git commit -m "docs: build docs" || true
           git push
