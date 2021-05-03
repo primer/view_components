@@ -68,6 +68,8 @@ module Primer
       @system_arguments.merge!(@icon.options.except(:class, :'aria-hidden'))
     end
 
-    Primer::Octicon::Cache.preload!
+    def self._after_compile
+      Primer::Octicon::Cache.preload!
+    end
   end
 end

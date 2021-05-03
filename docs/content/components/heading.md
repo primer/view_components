@@ -42,13 +42,12 @@ Inappropriate use of headings can lead to a confusing experience.
 
 ### With `font_size`
 
-<Example src="<h1 class='f6'>h1 tag, font_size 6</h1><h2 class='f3'>h2 tag, font_size 3</h2><h3 class='f2'>h3 tag, font_size 2</h3><h4 class='f0'>h4 tag, font_size 0</h4><h5 class='f1'>h5 tag, font_size 1</h5><h6 class='f4'>h6 tag, font_size 4</h6>" />
+<Example src="<h1 class='f6'>h1 tag, font_size 6</h1><h2 class='f3'>h2 tag, font_size 3</h2><h3 class='f2'>h3 tag, font_size 2</h3><h5 class='f1'>h5 tag, font_size 1</h5><h6 class='f4'>h6 tag, font_size 4</h6>" />
 
 ```erb
 <%= render(Primer::HeadingComponent.new(tag: :h1, font_size: 6)) { "h1 tag, font_size 6" } %>
 <%= render(Primer::HeadingComponent.new(tag: :h2, font_size: 3)) { "h2 tag, font_size 3" } %>
 <%= render(Primer::HeadingComponent.new(tag: :h3, font_size: 2)) { "h3 tag, font_size 2" } %>
-<%= render(Primer::HeadingComponent.new(tag: :h4, font_size: 0)) { "h4 tag, font_size 0" } %>
 <%= render(Primer::HeadingComponent.new(tag: :h5, font_size: 1)) { "h5 tag, font_size 1" } %>
 <%= render(Primer::HeadingComponent.new(tag: :h6, font_size: 4)) { "h6 tag, font_size 4" } %>
 ```
