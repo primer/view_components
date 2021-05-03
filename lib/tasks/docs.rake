@@ -20,13 +20,21 @@ namespace :docs do
   end
 
   task :build do
-    require File.expand_path("demo/config/environment.rb", __dir__)
+    require File.expand_path("./../../demo/config/environment.rb", __dir__)
+    require "yard/docs_helper"
     require "primer/view_components"
     require "view_component/test_helpers"
     include ViewComponent::TestHelpers
     include Primer::ViewHelper
+    include YARD::DocsHelper
 
     Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
+
+    YARD::Rake::YardocTask.new
+
+    # Custom tags for yard
+    YARD::Tags::Library.define_tag("Accessibility", :accessibility)
+    YARD::Tags::Library.define_tag("Deprecation", :deprecation)
 
     puts "Building YARD documentation."
     Rake::Task["yard"].execute
@@ -100,6 +108,7 @@ namespace :docs do
 
     components_without_examples = []
     args_for_components = []
+    classes_found_in_examples = []
 
     components.each do |component|
       documentation = registry.get(component.name)
@@ -259,6 +268,10 @@ namespace :docs do
           end
         end
       end
+    end
+
+    File.open("static/classes.yml", "w") do |f|
+      f.puts YAML.dump(classes_found_in_examples.uniq)
     end
 
     File.open("static/arguments.yml", "w") do |f|
