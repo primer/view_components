@@ -21,8 +21,8 @@ namespace :docs do
 
   task :build do
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
-    require "yard/docs_helper"
     require "primer/view_components"
+    require "yard/docs_helper"
     require "view_component/test_helpers"
     include ViewComponent::TestHelpers
     include Primer::ViewHelper
