@@ -10,7 +10,7 @@ class PrimerOcticonSymbolComponentTest < Minitest::Test
       c.icon(symbol: :alert)
     end
 
-    assert_selector("svg defs symbol#octicon-alert-16 path")
+    assert_selector("svg defs symbol#octicon-alert-16 path", visible: false)
   end
 
   def test_does_not_render_if_there_are_no_icons
