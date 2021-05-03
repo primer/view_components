@@ -52,7 +52,6 @@ module Primer
         end
 
         @system_arguments = {
-          tag: :symbol,
           id: "octicon-#{@icon.symbol}-#{@icon.height}",
           viewBox: @icon.options[:viewBox],
           width: @icon.width,
@@ -61,7 +60,7 @@ module Primer
       end
 
       def call
-        render(Primer::BaseComponent.new(**@system_arguments)) { @icon.path.html_safe } # rubocop:disable Rails/OutputSafety
+        content_tag(:symbol, @icon.path.html_safe, @system_arguments) # rubocop:disable Rails/OutputSafety
       end
     end
   end
