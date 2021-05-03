@@ -22,7 +22,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   def assert_accessible(page)
     matcher = Axe::Matchers::BeAxeClean.new
-    binding.pry
+    # binding.pry
     matcher.matches?(page)
 # config = Axe::Configuration.instance
 # config.page = Capybara::Selenium::Driver.new(:cuprite)
