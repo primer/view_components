@@ -9,6 +9,7 @@ require "rails/test_help"
 require "view_component/test_helpers"
 require "test_helpers/component_test_helpers"
 require "pry"
+require "yaml"
 
 require File.expand_path("../demo/config/environment.rb", __dir__)
 

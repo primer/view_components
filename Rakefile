@@ -200,6 +200,7 @@ namespace :docs do
 
     components_without_examples = []
     args_for_components = []
+    classes_found_in_examples = []
 
     components.each do |component|
       documentation = registry.get(component.name)
@@ -268,7 +269,9 @@ namespace :docs do
           end
           f.puts
           html = view_context.render(inline: tag.text)
-
+          html.scan(/class="([^"]*)"/) do |classnames|
+            classes_found_in_examples.concat(classnames[0].split(" ").reject { |c| c.starts_with?("octicon", "js", "my-") }.map { ".#{_1}"})
+          end
           f.puts("<Example src=\"#{html.tr('"', "\'").delete("\n")}\" />")
           f.puts
           f.puts("```erb")
@@ -355,6 +358,10 @@ namespace :docs do
           end
         end
       end
+    end
+
+    File.open("static/classes.yml", "w") do |f|
+      f.puts YAML.dump(classes_found_in_examples.uniq)
     end
 
     File.open("static/arguments.yml", "w") do |f|

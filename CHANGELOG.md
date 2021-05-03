@@ -2,6 +2,10 @@
 
 ## main
 
+* **Breaking change:** Remove non-functional `width` and `height` `:fill` option.
+
+    *Jon Rohan*, *Joel Hawksley*
+
 * **Breaking change:** Restrict `Subhead` `heading` slot tag to `div` and `h1`-`h6`.
 
     *Kate Higa*
