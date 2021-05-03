@@ -2,6 +2,12 @@
 
 ## main
 
+### Changes
+
+* Promote `IconButton` to beta.
+
+    *Manuel Puyol*
+
 ### Bug fixes
 
 * Fix `IconButton` raising when `aria-label` was provided using an object.

@@ -6,6 +6,8 @@ module Primer
   # @accessibility
   #   `IconButton` requires an `aria-label`, which will provide assistive technologies with an accessible label.
   class IconButton < Primer::Component
+    status :beta
+
     DEFAULT_SCHEME = :default
     SCHEME_MAPPINGS = {
       DEFAULT_SCHEME => "",
