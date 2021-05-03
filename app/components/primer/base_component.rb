@@ -77,7 +77,7 @@ module Primer
     # | `flex_shrink` | Integer | To enable, set to `0`. |
     # | `flex_wrap` | Symbol | <%= one_of(Primer::Classify::Flex::WRAP_MAPPINGS.keys) %> |
     # | `justify_content` | Symbol | <%= one_of(Primer::Classify::Flex::JUSTIFY_CONTENT_VALUES) %> |
-    # | `width` | Symbol | <%= one_of([:fit, :fill]) %> |
+    # | `width` | Symbol | <%= one_of([:fit]) %> |
     #
     # ## Grid
     #
@@ -90,7 +90,7 @@ module Primer
     # | Name | Type | Description |
     # | :- | :- | :- |
     # | `display` | Symbol | <%= one_of([:none, :block, :flex, :inline, :inline_block, :inline_flex, :table, :table_cell]) %> |
-    # | `height` | Symbol | <%= one_of([:fit, :fill]) %> |
+    # | `height` | Symbol | <%= one_of([:fit]) %> |
     # | `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of([:sm, :md, :lg, :xl]) %> |
     # | `v` | Symbol | Visibility. <%= one_of([:hidden, :visible]) %> |
     # | `vertical_align` | Symbol | <%= one_of([:baseline, :top, :middle, :bottom, :text_top, :text_bottom]) %> |

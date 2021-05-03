@@ -2,9 +2,10 @@
 
 module Primer
   # Use `Markdown` to wrap markdown content
-  class MarkdownComponent < Primer::Component
+  class Markdown < Primer::Component
+    status :beta
     # @example Default
-    #   <%= render(Primer::MarkdownComponent.new) do %>
+    #   <%= render(Primer::Markdown.new) do %>
     #     <p>Text can be <b>bold</b>, <i>italic</i>, or <s>strikethrough</s>. <a href="https://github.com">Links </a> should be blue with no underlines (unless hovered over).</p>
     #
     #     <p>There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.</p>
@@ -235,11 +236,11 @@ module Primer
     #
     #     <p>Code can also use syntax highlighting.</p>
     #
-    #     <pre><code class="prism-code language-javascript">var foo = "bar";</code></pre>
+    #     <pre><code>var foo = "bar";</code></pre>
     #
     #     <pre><code>Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.</code></pre>
     #
-    #     <pre><code class="prism-code language-javascript">var foo = "The same thing is true for code with syntax highlighting. A single line of code should horizontally scroll if it is really long.";</code></pre>
+    #     <pre><code>var foo = "The same thing is true for code with syntax highlighting. A single line of code should horizontally scroll if it is really long.";</code></pre>
     #
     #     <p>Inline code inside table cells should still be distinguishable.</p>
     #

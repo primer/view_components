@@ -46,7 +46,7 @@ module Primer
     def initialize(variant: Primer::ButtonComponent::DEFAULT_VARIANT, **system_arguments)
       @variant = variant
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :div
+      @system_arguments[:tag] = :div
 
       @system_arguments[:classes] = class_names(
         "BtnGroup",

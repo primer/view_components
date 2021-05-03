@@ -2,17 +2,49 @@
 
 ## main
 
+### Changes
+
+* Promote `Markdown` to beta.
+
+    *Manuel Puyol*
+
+### Bug fixes
+
+* Fix `IconButton` raising when `aria-label` was provided using an object.
+
+    *Manuel Puyol*
+
+### Deprecations
+
 * Deprecate `Flex` in favor of `BoxComponent`.
 
     *Manuel Puyol*
 
-* **Breaking change:** Restrict `Blankslate` tag to `div`.
+### Breaking Changes
+
+* Restrict `ButtonGroup` tag to `:div` and update docs for `Text` tag.
 
     *Kate Higa*
 
-* **Breaking change:** Explicitly limit tag for `AvatarStack` to `:div` and `:span`
+* Remove non-functional `width` and `height` `:fill` option.
+
+    *Jon Rohan*, *Joel Hawksley*
+
+* Restrict `Subhead` `heading` slot tag to `div` and `h1`-`h6`.
 
     *Kate Higa*
+
+* Restrict `Blankslate` tag to `div`.
+
+    *Kate Higa*
+
+* Explicitly limit tag for `AvatarStack` to `:div` and `:span`.
+
+    *Kate Higa*
+
+* Rename `MarkdownComponent` to `Markdown`.
+
+    *Manuel Puyol*
 
 ## 0.0.39
 
