@@ -50,4 +50,12 @@ class PrimerIconButtonTest < Minitest::Test
 
     assert_equal("`aria-label` is required.", err.message)
   end
+
+  def test_does_not_raise_if_aria_label_is_provided_as_an_object
+    render_inline(Primer::IconButton.new(icon: :star, aria: { label: "Label" }))
+
+    assert_selector("button[aria-label='Label'].btn-octicon") do
+      assert_selector(".octicon.octicon-star")
+    end
+  end
 end
