@@ -12,6 +12,10 @@
 
     *Manuel Puyol*
 
+* Promote `Markdown` to beta.
+
+    *Manuel Puyol*
+
 ### Bug fixes
 
 * Fix `IconButton` raising when `aria-label` was provided using an object.
@@ -38,9 +42,13 @@
 
     *Kate Higa*
 
-* Explicitly limit tag for `AvatarStack` to `:div` and `:span`
+* Explicitly limit tag for `AvatarStack` to `:div` and `:span`.
 
     *Kate Higa*
+
+* Rename `MarkdownComponent` to `Markdown`.
+
+    *Manuel Puyol*
 
 ## 0.0.39
 
