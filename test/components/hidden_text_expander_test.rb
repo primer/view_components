@@ -9,7 +9,7 @@ class PrimerHiddenTextExpanderTest < Minitest::Test
     render_inline(Primer::HiddenTextExpander.new)
 
     assert_selector("span.hidden-text-expander") do
-      assert_selector("button[type='button'][aria-expanded='false'].ellipsis-expander", text: "&hellip;")
+      assert_selector("button[type='button'][aria-expanded='false'].ellipsis-expander", text: "…")
     end
   end
 
@@ -17,7 +17,7 @@ class PrimerHiddenTextExpanderTest < Minitest::Test
     render_inline(Primer::HiddenTextExpander.new(inline: true))
 
     assert_selector("span.hidden-text-expander.inline") do
-      assert_selector("button[type='button'][aria-expanded='false'].ellipsis-expander", text: "&hellip;")
+      assert_selector("button[type='button'][aria-expanded='false'].ellipsis-expander", text: "…")
     end
   end
 
@@ -25,7 +25,7 @@ class PrimerHiddenTextExpanderTest < Minitest::Test
     render_inline(Primer::HiddenTextExpander.new(button_arguments: { classes: "custom-class" }))
 
     assert_selector("span.hidden-text-expander") do
-      assert_selector("button[type='button'][aria-expanded='false'].ellipsis-expander.custom-class", text: "&hellip;")
+      assert_selector("button[type='button'][aria-expanded='false'].ellipsis-expander.custom-class", text: "…")
     end
   end
 
