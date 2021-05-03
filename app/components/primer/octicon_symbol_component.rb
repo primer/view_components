@@ -32,6 +32,10 @@ module Primer
       icons.any?
     end
 
+    def self._after_compile
+      Primer::Octicon::Cache.preload!
+    end
+
     # This component is part of `Primer::OcticonSymbolComponent` and should not be
     # used as a standalone component.
     class Symbol < Primer::Component
@@ -60,7 +64,5 @@ module Primer
         render(Primer::BaseComponent.new(**@system_arguments)) { @icon.path.html_safe } # rubocop:disable Rails/OutputSafety
       end
     end
-
-    Primer::Octicon::Cache.preload!
   end
 end
