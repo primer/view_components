@@ -2,9 +2,10 @@
 
 module Primer
   # Use `Markdown` to wrap markdown content
-  class MarkdownComponent < Primer::Component
+  class Markdown < Primer::Component
+    status :beta
     # @example Default
-    #   <%= render(Primer::MarkdownComponent.new) do %>
+    #   <%= render(Primer::Markdown.new) do %>
     #     <p>Text can be <b>bold</b>, <i>italic</i>, or <s>strikethrough</s>. <a href="https://github.com">Links </a> should be blue with no underlines (unless hovered over).</p>
     #
     #     <p>There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.</p>
