@@ -31,7 +31,7 @@ module Primer
     #
     # @param icon [String] Name of <%= link_to_octicons %> to use.
     # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
-    # @param use_symbol [Boolean] Set to true when you setup a symbol dictionary using <%= link_to_component(Primer::OcticonSymbolComponent) %> on the page.
+    # @param use_symbol [Boolean] Set to true when you setup a symbol dictionary using Primer::OcticonSymbolComponent on the same page.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, use_symbol: false, **system_arguments)
       icon_key = icon_name || icon
