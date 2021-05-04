@@ -23,7 +23,7 @@ module Primer
     #     2014/06/01 13:05
     #   <% end %>
     #
-    # @param datetime [DateTime]
+    # @param datetime [DateTime] The date to parse
     # @param weekday [Symbol] <%= one_of(Primer::LocalTime::TEXT_TYPE_OPTIONS) %>
     # @param year [Symbol] <%= one_of(Primer::LocalTime::DIGIT_TYPE_OPTIONS) %>
     # @param month [Symbol] <%= one_of(Primer::LocalTime::TEXT_TYPE_OPTIONS) %>
