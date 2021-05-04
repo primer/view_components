@@ -23,7 +23,7 @@ Add any accessibility considerations
 
 ### Example goes here
 
-<Example src="<local-time datetime='2014-06-01T13:05:07Z' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric'>    June 1, 2014 13:05 +00:00</local-time>" />
+<Example src="<local-time datetime='2014-06-01T13:05:07Z' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>    June 1, 2014 13:05 +00:00</local-time>" />
 
 ```erb
 
