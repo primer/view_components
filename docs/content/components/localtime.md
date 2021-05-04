@@ -23,7 +23,7 @@ Add any accessibility considerations
 
 ### Default
 
-<Example src="<local-time datetime='2021-05-04T13:21:04+00:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>    May 4, 2021 13:21 +00:00</local-time>" />
+<Example src="<local-time datetime='2021-05-04T13:23:53+00:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>    May 4, 2021 13:23 +00:00</local-time>" />
 
 ```erb
 <%= render(Primer::LocalTime.new(datetime: DateTime.now)) %>
@@ -31,7 +31,7 @@ Add any accessibility considerations
 
 ### All the options
 
-<Example src="<local-time datetime='2021-05-04T13:21:04+00:00' weekday='long' year='2-digit' month='long' day='2-digit' hour='2-digit' minute='2-digit' second='2-digit' time-zone-name='long'>    May 4, 2021 13:21 +00:00</local-time>" />
+<Example src="<local-time datetime='2021-05-04T13:23:53+00:00' weekday='long' year='2-digit' month='long' day='2-digit' hour='2-digit' minute='2-digit' second='2-digit' time-zone-name='long'>    May 4, 2021 13:23 +00:00</local-time>" />
 
 ```erb
 <%= render(Primer::LocalTime.new(datetime: DateTime.now, weekday: "long", year: "2-digit", month: "long", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", time_zone_name: "long")) %>
@@ -39,7 +39,7 @@ Add any accessibility considerations
 
 ### With initial content
 
-<Example src="<local-time datetime='2021-05-04T13:21:04+00:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>      <!-- This content will be replaced once the component connects -->  2014/06/01 13:05</local-time>" />
+<Example src="<local-time datetime='2021-05-04T13:23:53+00:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>      <!-- This content will be replaced once the component connects -->  2014/06/01 13:05</local-time>" />
 
 ```erb
 <%= render(Primer::LocalTime.new(datetime: DateTime.now)) do %>
@@ -52,7 +52,7 @@ Add any accessibility considerations
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `datetime` | `DateTime` | N/A |  |
+| `datetime` | `DateTime` | N/A | The date to parse |
 | `weekday` | `Symbol` | `short` | One of `short` and `long`. |
 | `year` | `Symbol` | `numeric` | One of `numeric` and `2-digit`. |
 | `month` | `Symbol` | `short` | One of `short` and `long`. |

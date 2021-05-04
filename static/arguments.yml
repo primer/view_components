@@ -5,7 +5,7 @@
   - name: datetime
     type: DateTime
     default: N/A
-    description: ''
+    description: The date to parse
   - name: weekday
     type: Symbol
     default: "`short`"
