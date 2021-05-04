@@ -4,6 +4,10 @@
 
 ### Changes
 
+* Create `ImageCrop` component.
+
+    *Kristján Oddsson*
+
 * Promote `IconButton` to beta.
 
     *Manuel Puyol*
