@@ -11,10 +11,27 @@ module Primer
     DEFAULT_TEXT_TYPE = "short"
     TEXT_TYPE_OPTIONS = [DEFAULT_TEXT_TYPE, "long"].freeze
 
-    # @example Example goes here
-    #
+    # @example Default
     #   <%= render(Primer::LocalTime.new(datetime: "2014-06-01T13:05:07Z")) %>
     #
+    # @example All the options
+    #   <%= render(Primer::LocalTime.new(datetime: "2016-06-01T13:05:07Z", weekday: "long", year: "2-digit", month: "long", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", time_zone_name: "long")) %>
+    #
+    # @example With initial content
+    #   <%= render(Primer::LocalTime.new(datetime: "2014-06-01T13:05:07Z")) %>
+    #     <!-- This content will be replaced once the component connects -->
+    #     2014/06/01 13:05
+    #   <% end %>
+    #
+    # @param datetime [String]
+    # @param weekday [Symbol] <%= one_of(Primer::LocalTime::TEXT_TYPE_OPTIONS) %>
+    # @param year [Symbol] <%= one_of(Primer::LocalTime::DIGIT_TYPE_OPTIONS) %>
+    # @param month [Symbol] <%= one_of(Primer::LocalTime::TEXT_TYPE_OPTIONS) %>
+    # @param day [Symbol] <%= one_of(Primer::LocalTime::DIGIT_TYPE_OPTIONS) %>
+    # @param hour [Symbol] <%= one_of(Primer::LocalTime::DIGIT_TYPE_OPTIONS) %>
+    # @param minute [Symbol] <%= one_of(Primer::LocalTime::DIGIT_TYPE_OPTIONS) %>
+    # @param second [Symbol] <%= one_of(Primer::LocalTime::DIGIT_TYPE_OPTIONS) %>
+    # @param time_zone_name [Symbol] <%= one_of(Primer::LocalTime::TEXT_TYPE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(datetime:, weekday: DEFAULT_TEXT_TYPE, year: DEFAULT_DIGIT_TYPE, month: DEFAULT_TEXT_TYPE, day: DEFAULT_DIGIT_TYPE, hour: DEFAULT_DIGIT_TYPE, minute: DEFAULT_DIGIT_TYPE, second: DEFAULT_DIGIT_TYPE, time_zone_name: DEFAULT_TEXT_TYPE, **system_arguments)
       @system_arguments = system_arguments
