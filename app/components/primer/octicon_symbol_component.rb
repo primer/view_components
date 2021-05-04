@@ -50,17 +50,10 @@ module Primer
           @icon = Octicons::Octicon.new(symbol, height: Primer::OcticonComponent::SIZE_MAPPINGS[fetch_or_fallback(Primer::OcticonComponent::SIZE_OPTIONS, size, Primer::OcticonComponent::SIZE_DEFAULT)])
           Primer::Octicon::Cache.set(cache_key, @icon)
         end
-
-        @system_arguments = {
-          id: "octicon-#{@icon.symbol}-#{@icon.height}",
-          viewBox: @icon.options[:viewBox],
-          width: @icon.width,
-          height: @icon.height
-        }
       end
 
       def call
-        content_tag(:symbol, @icon.path.html_safe, @system_arguments) # rubocop:disable Rails/OutputSafety
+        content_tag(:symbol, @icon.path.html_safe, id: "octicon-#{@icon.symbol}-#{@icon.height}", viewBox: @icon.options[:viewBox], width: @icon.width, height: @icon.height) # rubocop:disable Rails/OutputSafety
       end
     end
   end
