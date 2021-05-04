@@ -273,7 +273,7 @@ namespace :docs do
     end
 
     File.open("static/classes.yml", "w") do |f|
-      f.puts YAML.dump(classes_found_in_examples.uniq)
+      f.puts YAML.dump(classes_found_in_examples.sort.uniq)
     end
 
     File.open("static/arguments.yml", "w") do |f|
