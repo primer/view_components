@@ -26,6 +26,7 @@
   "Primer::HeadingComponent": "beta",
   "Primer::HiddenTextExpander": "alpha",
   "Primer::IconButton": "beta",
+  "Primer::ImageCrop": "alpha",
   "Primer::LabelComponent": "beta",
   "Primer::LayoutComponent": "alpha",
   "Primer::LinkComponent": "beta",
