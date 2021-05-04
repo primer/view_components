@@ -48,6 +48,7 @@ namespace :docs do
     registry.load!(".yardoc")
     components = [
       Primer::OcticonSymbolComponent,
+      Primer::ImageCrop,
       Primer::IconButton,
       Primer::AutoComplete,
       Primer::AutoComplete::Item,
@@ -95,6 +96,7 @@ namespace :docs do
     ]
 
     js_components = [
+      Primer::ImageCrop,
       Primer::AutoComplete,
       Primer::ClipboardCopy,
       Primer::TabContainerComponent,
