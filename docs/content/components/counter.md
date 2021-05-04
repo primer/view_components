@@ -9,7 +9,12 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use `CounterComponent` to add a count to navigational elements and buttons.
+Use `Counter` to add a count to navigational elements and buttons.
+
+## Accessibility
+
+Always use `Counter` with adjacent text that provides supplementary information regarding what the count is for. For instance, `Counter`
+should be accompanied with text such as `issues` or `pull requests`.
 
 ## Examples
 

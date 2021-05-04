@@ -14,6 +14,10 @@ Use `IconButton` to render Icon-only buttons without the default button styles.
 ## Accessibility
 
 `IconButton` requires an `aria-label`, which will provide assistive technologies with an accessible label.
+The `aria-label` should describe the action to be invoked rather than the icon itself. For instance,
+if your `IconButton` renders a magnifying glass icon and invokves a search action, the `aria-label` should be
+`"Search"` instead of `"Magnifying glass"`.
+[Learn more about best functional image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/functional)
 
 ## Examples
 
