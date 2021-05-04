@@ -14,8 +14,7 @@ class Primer::LocalTimeStories < ViewComponent::Storybook::Stories
       select(:hour, Primer::LocalTime::DIGIT_TYPE_OPTIONS, Primer::LocalTime::DEFAULT_DIGIT_TYPE)
       select(:minute, Primer::LocalTime::DIGIT_TYPE_OPTIONS, Primer::LocalTime::DEFAULT_DIGIT_TYPE)
       select(:second, Primer::LocalTime::DIGIT_TYPE_OPTIONS, Primer::LocalTime::DEFAULT_DIGIT_TYPE)
-
-      text(:time_zone_name, "")
+      select(:time_zone_name, Primer::LocalTime::TEXT_TYPE_OPTIONS, Primer::LocalTime::DEFAULT_TEXT_TYPE)
     end
   end
 end

@@ -16,7 +16,7 @@ module Primer
     #   <%= render(Primer::LocalTime.new(datetime: "2014-06-01T13:05:07Z")) %>
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(datetime:, weekday: DEFAULT_TEXT_TYPE, year: DEFAULT_DIGIT_TYPE, month: DEFAULT_TEXT_TYPE, day: DEFAULT_DIGIT_TYPE, hour: DEFAULT_DIGIT_TYPE, minute: DEFAULT_DIGIT_TYPE, second: DEFAULT_DIGIT_TYPE, time_zone_name: nil, **system_arguments)
+    def initialize(datetime:, weekday: DEFAULT_TEXT_TYPE, year: DEFAULT_DIGIT_TYPE, month: DEFAULT_TEXT_TYPE, day: DEFAULT_DIGIT_TYPE, hour: DEFAULT_DIGIT_TYPE, minute: DEFAULT_DIGIT_TYPE, second: DEFAULT_DIGIT_TYPE, time_zone_name: DEFAULT_TEXT_TYPE, **system_arguments)
       @system_arguments = system_arguments
 
       @datetime = datetime
@@ -31,8 +31,7 @@ module Primer
       @system_arguments[:hour] = fetch_or_fallback(DIGIT_TYPE_OPTIONS, hour, DEFAULT_DIGIT_TYPE)
       @system_arguments[:minute] = fetch_or_fallback(DIGIT_TYPE_OPTIONS, minute, DEFAULT_DIGIT_TYPE)
       @system_arguments[:second] = fetch_or_fallback(DIGIT_TYPE_OPTIONS, second, DEFAULT_DIGIT_TYPE)
-
-      @system_arguments[:"time-zone-name"] = time_zone_name
+      @system_arguments[:"time-zone-name"] = fetch_or_fallback(TEXT_TYPE_OPTIONS, time_zone_name, DEFAULT_TEXT_TYPE)
     end
   end
 end
