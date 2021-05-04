@@ -4,6 +4,10 @@
 
 ### Changes
 
+* Create `LocalTime` component.
+
+    *Kristján Oddsson*
+
 * Promote `IconButton` to beta.
 
     *Manuel Puyol*
