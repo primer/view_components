@@ -12,18 +12,18 @@ module Primer
     TEXT_TYPE_OPTIONS = [DEFAULT_TEXT_TYPE, "long"].freeze
 
     # @example Default
-    #   <%= render(Primer::LocalTime.new(datetime: "2014-06-01T13:05:07Z")) %>
+    #   <%= render(Primer::LocalTime.new(datetime: DateTime.now)) %>
     #
     # @example All the options
-    #   <%= render(Primer::LocalTime.new(datetime: "2016-06-01T13:05:07Z", weekday: "long", year: "2-digit", month: "long", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", time_zone_name: "long")) %>
+    #   <%= render(Primer::LocalTime.new(datetime: DateTime.now, weekday: "long", year: "2-digit", month: "long", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", time_zone_name: "long")) %>
     #
     # @example With initial content
-    #   <%= render(Primer::LocalTime.new(datetime: "2014-06-01T13:05:07Z")) %>
+    #   <%= render(Primer::LocalTime.new(datetime: DateTime.now)) %>
     #     <!-- This content will be replaced once the component connects -->
     #     2014/06/01 13:05
     #   <% end %>
     #
-    # @param datetime [String]
+    # @param datetime [DateTime]
     # @param weekday [Symbol] <%= one_of(Primer::LocalTime::TEXT_TYPE_OPTIONS) %>
     # @param year [Symbol] <%= one_of(Primer::LocalTime::DIGIT_TYPE_OPTIONS) %>
     # @param month [Symbol] <%= one_of(Primer::LocalTime::TEXT_TYPE_OPTIONS) %>

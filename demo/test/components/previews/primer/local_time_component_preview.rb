@@ -1,12 +1,12 @@
 module Primer
   class LocalTimeComponentPreview < ViewComponent::Preview
     def default
-      render(Primer::LocalTime.new(datetime: "2014-04-01T16:30:00-08:00"))
+      render(Primer::LocalTime.new(datetime: DateTime.parse("2014-04-01T16:30:00-08:00")))
     end
 
     def with_all_the_options
       render(Primer::LocalTime.new(
-        datetime: "2016-06-01T13:05:07Z",
+        datetime: DateTime.parse("2016-06-01T13:05:07Z"),
         weekday: "long",
         year: "2-digit",
         month: "long",
@@ -19,7 +19,7 @@ module Primer
     end
 
     def with_contents
-      render Primer::LocalTime.new(datetime: "2014-04-01T16:30:00-08:00") do
+      render Primer::LocalTime.new(datetime: DateTime.parse("2014-04-01T16:30:00-08:00")) do
         "This will be replaced"
       end
     end

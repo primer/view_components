@@ -2,6 +2,6 @@
   <% if content.present? %>
     <%= content %>
   <% else %>
-    <%= DateTime.parse(@datetime).strftime("%B %-d, %Y %H:%M %Z") %>
+    <%= @datetime.strftime("%B %-d, %Y %H:%M %Z") %>
   <% end %>
 <% end %>
