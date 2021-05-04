@@ -42,9 +42,6 @@ GEM
       selenium-webdriver
       virtus
       watir
-    axe-core-capybara (4.1.0)
-      axe-core-api
-      dumb_delegator
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -223,7 +220,6 @@ DEPENDENCIES
   activesupport (= 6.1.1)
   allocation_tracer (~> 0.6.3)
   axe-core-api (~> 4.1)
-  axe-core-capybara
   benchmark-ips (~> 2.8.4)
   bootsnap (>= 1.4.2)
   capybara (~> 3)
