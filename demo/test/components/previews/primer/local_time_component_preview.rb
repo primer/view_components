@@ -17,5 +17,11 @@ module Primer
         time_zone_name: "long"
       ))
     end
+
+    def with_contents
+      render Primer::LocalTime.new(datetime: "2014-04-01T16:30:00-08:00") do
+        "This will be replaced"
+      end
+    end
   end
 end
