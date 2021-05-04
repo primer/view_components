@@ -35,7 +35,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "allocation_tracer", "~> 0.6.3"
   spec.add_development_dependency "benchmark-ips", "~> 2.8.4"
   spec.add_development_dependency "capybara", "~> 3"
-  spec.add_development_dependency "cuprite", "= 0.11"
+  spec.add_development_dependency "cuprite", "= 0.13"
   spec.add_development_dependency "listen", "~> 3.0"
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "mocha"

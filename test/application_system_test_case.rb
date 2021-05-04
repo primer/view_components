@@ -3,7 +3,8 @@
 require "test_helper"
 require "capybara/rails"
 require "capybara/minitest"
-require 'axe-capybara'
+
+require "axe/configuration"
 require 'axe/matchers/be_axe_clean'
 require 'axe/expectation'
 
@@ -18,13 +19,35 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     component_uri = self.class.name.gsub("Test", "").gsub("Integration", "").underscore
 
     visit("/rails/view_components/primer/#{component_uri}/#{preview_name}")
+
+    assert_accessible(page, within: 'body')
   end
 
-  def assert_accessible(page)
-    matcher = Axe::Matchers::BeAxeClean.new
-    # binding.pry
-    matcher.matches?(page)
-# config = Axe::Configuration.instance
-# config.page = Capybara::Selenium::Driver.new(:cuprite)
+# Experimental override so accessibility checks are run after action
+
+  def fill_in(locator, **kwargs)
+    fill_in(locator, **kwargs)
+
+    assert_accessible(page, within: 'body')
   end
+
+  def click_button(locator, **kwargs)
+    click_button(locator, **kwargs)
+
+    assert_accessible(page, within: 'body')
+  end
+
+# Accessibility assertion
+
+  def assert_accessible(page, **options)
+    is_axe_clean = Axe::Matchers::BeAxeClean.new.tap do |a|
+      options.each do |option|
+        key, value = option
+        a.send(key, value)
+      end
+    end
+
+    Axe::AccessibleExpectation.new.assert page, is_axe_clean
+  end
+
 end
