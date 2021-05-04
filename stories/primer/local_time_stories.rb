@@ -5,11 +5,17 @@ class Primer::LocalTimeStories < ViewComponent::Storybook::Stories
 
   story(:local_time) do
     controls do
-      classes "custom-class"
-    end
+      text(:datetime, "2014-06-01T13:05:07Z")
 
-    content do
-      "Update your stories!"
+      select(:weekday, Primer::LocalTime::TEXT_TYPE_OPTIONS, Primer::LocalTime::DEFAULT_TEXT_TYPE)
+      select(:year, Primer::LocalTime::DIGIT_TYPE_OPTIONS, Primer::LocalTime::DEFAULT_DIGIT_TYPE)
+      select(:month, Primer::LocalTime::TEXT_TYPE_OPTIONS, Primer::LocalTime::DEFAULT_TEXT_TYPE)
+      select(:day, Primer::LocalTime::DIGIT_TYPE_OPTIONS, Primer::LocalTime::DEFAULT_DIGIT_TYPE)
+      select(:hour, Primer::LocalTime::DIGIT_TYPE_OPTIONS, Primer::LocalTime::DEFAULT_DIGIT_TYPE)
+      select(:minute, Primer::LocalTime::DIGIT_TYPE_OPTIONS, Primer::LocalTime::DEFAULT_DIGIT_TYPE)
+      select(:second, Primer::LocalTime::DIGIT_TYPE_OPTIONS, Primer::LocalTime::DEFAULT_DIGIT_TYPE)
+
+      text(:time_zone_name, "")
     end
   end
 end
