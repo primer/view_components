@@ -24,8 +24,6 @@ class PrimerLocalTimeTest < Minitest::Test
       time_zone_name: "long"
     )
 
-    puts @rendered_component
-
     assert_selector("local-time[weekday=\"long\"][datetime=\"2016-06-01T13:05:07+00:00\"][year=\"2-digit\"][month=\"long\"][day=\"2-digit\"][hour=\"2-digit\"][minute=\"2-digit\"][second=\"2-digit\"][time-zone-name=\"long\"]", text: "June 1, 2016 13:05 +00:00")
   end
 
