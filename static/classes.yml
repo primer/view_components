@@ -1,4 +1,6 @@
 ---
+- ".flex-1"
+- ".anim-rotate"
 - ".btn-octicon"
 - ".btn-octicon-danger"
 - ".Box"
@@ -25,7 +27,6 @@
 - ".mb-1"
 - ".blankslate-icon"
 - ".mb-3"
-- ".anim-rotate"
 - ".btn"
 - ".btn-primary"
 - ".blankslate-narrow"
