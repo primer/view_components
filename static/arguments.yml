@@ -636,8 +636,8 @@
   - name: use_symbol
     type: Boolean
     default: "`false`"
-    description: Set to true when you setup a symbol dictionary using [OcticonSymbol](/components/octiconsymbol)
-      on the page.
+    description: EXPERIMENTAL (May change or be removed) - Set to true when using
+      with [OcticonSymbol](/components/octiconsymbol).
   - name: system_arguments
     type: Hash
     default: N/A
