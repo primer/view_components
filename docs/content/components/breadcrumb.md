@@ -9,13 +9,13 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use breadcrumbs to display page hierarchy within a section of the site. All of the items in the breadcrumb "trail" are links except for the final item, which is a plain string indicating the current page.
+Use `Breadcrumb` to display page hierarchy within a section of the site. All of the items in the breadcrumb "trail" are links except for the final item, which is a plain string indicating the current page.
 
 ## Examples
 
 ### Basic
 
-<Example src="<nav aria-label='Breadcrumb'>  <ol>      <li class='breadcrumb-item  '><a href='/'>Home</a></li>      <li class='breadcrumb-item  '><a href='/about'>About</a></li>      <li aria-current='page' class='breadcrumb-item  '>Team</li>  </ol></nav>" />
+<Example src="<nav aria-label='Breadcrumb'>  <ol>      <li class='breadcrumb-item'><a href='/'>Home</a></li>      <li class='breadcrumb-item'><a href='/about'>About</a></li>      <li aria-current='page' class='breadcrumb-item'>Team</li>  </ol></nav>" />
 
 ```erb
 <%= render(Primer::BreadcrumbComponent.new) do |component| %>

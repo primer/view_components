@@ -9,13 +9,13 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use labels to add contextual metadata to a design.
+Use `Label` to add contextual metadata to a design.
 
 ## Examples
 
 ### Schemes
 
-<Example src="<span title='Label: Label' class='Label '>Default</span><span title='Label: Label' class='Label Label--primary '>Primary</span><span title='Label: Label' class='Label Label--secondary '>Secondary</span><span title='Label: Label' class='Label Label--info '>Info</span><span title='Label: Label' class='Label Label--success '>Success</span><span title='Label: Label' class='Label Label--warning '>Warning</span><span title='Label: Label' class='Label Label--danger '>Danger</span>" />
+<Example src="<span title='Label: Label' class='Label'>Default</span><span title='Label: Label' class='Label Label--primary'>Primary</span><span title='Label: Label' class='Label Label--secondary'>Secondary</span><span title='Label: Label' class='Label Label--info'>Info</span><span title='Label: Label' class='Label Label--success'>Success</span><span title='Label: Label' class='Label Label--warning'>Warning</span><span title='Label: Label' class='Label Label--danger'>Danger</span>" />
 
 ```erb
 <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>
@@ -29,7 +29,7 @@ Use labels to add contextual metadata to a design.
 
 ### Variants
 
-<Example src="<span title='Label: Label' class='Label '>Default</span><span title='Label: Label' class='Label Label--large '>Large</span>" />
+<Example src="<span title='Label: Label' class='Label'>Default</span><span title='Label: Label' class='Label Label--large'>Large</span>" />
 
 ```erb
 <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>

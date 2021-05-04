@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-The Text component is a wrapper component that will apply typography styles to the text inside.
+`Text` is a wrapper component that will apply typography styles to the text inside.
 
 ## Examples
 
@@ -26,4 +26,5 @@ The Text component is a wrapper component that will apply typography styles to t
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `tag` | `Symbol` | `:span` |  |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

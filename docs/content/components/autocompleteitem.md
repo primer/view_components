@@ -9,13 +9,13 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use AutoCompleteItem to list results of an auto-completed search.
+Use `AutoCompleteItem` to list results of an auto-completed search.
 
 ## Examples
 
 ### Default
 
-<Example src="<li role='option' data-autocomplete-value='value' aria-selected='true' class='autocomplete-item '>  Selected</li><li role='option' data-autocomplete-value='value' class='autocomplete-item '>  Not selected</li>" />
+<Example src="<li role='option' data-autocomplete-value='value' aria-selected='true' class='autocomplete-item'>  Selected</li><li role='option' data-autocomplete-value='value' class='autocomplete-item'>  Not selected</li>" />
 
 ```erb
 <%= render(Primer::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>

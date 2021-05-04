@@ -9,13 +9,13 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Component for rendering the status of an item.
+Use `State` for rendering the status of an item.
 
 ## Examples
 
 ### Default
 
-<Example src="<span title='title' class='State '>State</span>" />
+<Example src="<span title='title' class='State'>State</span>" />
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "State" } %>
@@ -23,7 +23,7 @@ Component for rendering the status of an item.
 
 ### Schemes
 
-<Example src="<span title='title' class='State '>Default</span><span title='title' class='State State--open '>Open</span><span title='title' class='State State--closed '>Closed</span><span title='title' class='State State--merged '>Merged</span>" />
+<Example src="<span title='title' class='State'>Default</span><span title='title' class='State State--open'>Open</span><span title='title' class='State State--closed'>Closed</span><span title='title' class='State State--merged'>Merged</span>" />
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
@@ -34,7 +34,7 @@ Component for rendering the status of an item.
 
 ### Sizes
 
-<Example src="<span title='title' class='State '>Default</span><span title='title' class='State State--small '>Small</span>" />
+<Example src="<span title='title' class='State'>Default</span><span title='title' class='State State--small'>Small</span>" />
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>

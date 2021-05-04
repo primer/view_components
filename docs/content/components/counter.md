@@ -9,13 +9,13 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use Primer::CounterComponent to add a count to navigational elements and buttons.
+Use `CounterComponent` to add a count to navigational elements and buttons.
 
 ## Examples
 
 ### Default
 
-<Example src="<span title='25' class='Counter '>25</span>" />
+<Example src="<span title='25' class='Counter'>25</span>" />
 
 ```erb
 <%= render(Primer::CounterComponent.new(count: 25)) %>
@@ -23,7 +23,7 @@ Use Primer::CounterComponent to add a count to navigational elements and buttons
 
 ### Schemes
 
-<Example src="<span title='25' class='Counter Counter--primary '>25</span><span title='25' class='Counter Counter--secondary '>25</span>" />
+<Example src="<span title='25' class='Counter Counter--primary'>25</span><span title='25' class='Counter Counter--secondary'>25</span>" />
 
 ```erb
 <%= render(Primer::CounterComponent.new(count: 25, scheme: :primary)) %>

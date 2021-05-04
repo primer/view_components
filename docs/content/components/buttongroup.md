@@ -9,13 +9,13 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use ButtonGroup to render a series of buttons.
+Use `ButtonGroup` to render a series of buttons.
 
 ## Examples
 
 ### Default
 
-<Example src="<div class='BtnGroup '>    <button type='button' class='btn BtnGroup-item '>    Default  </button>    <button type='button' class='btn-primary btn BtnGroup-item '>    Primary  </button>    <button type='button' class='btn-danger btn BtnGroup-item '>    Danger  </button>    <button type='button' class='btn-outline btn BtnGroup-item '>    Outline  </button>    <button type='button' class='my-class btn BtnGroup-item '>    Custom class  </button></div>" />
+<Example src="<div class='BtnGroup'>    <button type='button' class='btn BtnGroup-item'>    Default  </button>    <button type='button' class='btn-primary btn BtnGroup-item'>    Primary  </button>    <button type='button' class='btn-danger btn BtnGroup-item'>    Danger  </button>    <button type='button' class='btn-outline btn BtnGroup-item'>    Outline  </button>    <button type='button' class='my-class btn BtnGroup-item'>    Custom class  </button></div>" />
 
 ```erb
 
@@ -30,7 +30,7 @@ Use ButtonGroup to render a series of buttons.
 
 ### Variants
 
-<Example src="<div class='BtnGroup '>    <button type='button' class='btn-sm btn BtnGroup-item '>    Default  </button>    <button type='button' class='btn-primary btn-sm btn BtnGroup-item '>    Primary  </button>    <button type='button' class='btn-danger btn-sm btn BtnGroup-item '>    Danger  </button>    <button type='button' class='btn-outline btn-sm btn BtnGroup-item '>    Outline  </button></div><div class='BtnGroup '>    <button type='button' class='btn-large btn BtnGroup-item '>    Default  </button>    <button type='button' class='btn-primary btn-large btn BtnGroup-item '>    Primary  </button>    <button type='button' class='btn-danger btn-large btn BtnGroup-item '>    Danger  </button>    <button type='button' class='btn-outline btn-large btn BtnGroup-item '>    Outline  </button></div>" />
+<Example src="<div class='BtnGroup'>    <button type='button' class='btn-sm btn BtnGroup-item'>    Default  </button>    <button type='button' class='btn-primary btn-sm btn BtnGroup-item'>    Primary  </button>    <button type='button' class='btn-danger btn-sm btn BtnGroup-item'>    Danger  </button>    <button type='button' class='btn-outline btn-sm btn BtnGroup-item'>    Outline  </button></div><div class='BtnGroup'>    <button type='button' class='btn-large btn BtnGroup-item'>    Default  </button>    <button type='button' class='btn-primary btn-large btn BtnGroup-item'>    Primary  </button>    <button type='button' class='btn-danger btn-large btn BtnGroup-item'>    Danger  </button>    <button type='button' class='btn-outline btn-large btn BtnGroup-item'>    Outline  </button></div>" />
 
 ```erb
 

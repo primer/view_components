@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use links for moving from one page to another. The Link component styles anchor tags with default blue styling and hover text-decoration.
+Use `Link` for navigating from one page to another. `Link` styles anchor tags with default blue styling and hover text-decoration.
 
 ## Examples
 
@@ -23,7 +23,7 @@ Use links for moving from one page to another. The Link component styles anchor 
 
 ### Muted
 
-<Example src="<a href='#' class='Link--muted '>Link</a>" />
+<Example src="<a href='#' class='Link--muted'>Link</a>" />
 
 ```erb
 <%= render(Primer::LinkComponent.new(href: "#", muted: true)) { "Link" } %>
@@ -31,7 +31,7 @@ Use links for moving from one page to another. The Link component styles anchor 
 
 ### Schemes
 
-<Example src="<a href='#' class='Link--primary '>Primary</a><a href='#' class='Link--secondary '>Secondary</a>" />
+<Example src="<a href='#' class='Link--primary'>Primary</a><a href='#' class='Link--secondary'>Secondary</a>" />
 
 ```erb
 <%= render(Primer::LinkComponent.new(href: "#", scheme: :primary)) { "Primary" } %>
@@ -40,7 +40,7 @@ Use links for moving from one page to another. The Link component styles anchor 
 
 ### Without underline
 
-<Example src="<a href='#' class='no-underline '>Link</a>" />
+<Example src="<a href='#' class='no-underline'>Link</a>" />
 
 ```erb
 <%= render(Primer::LinkComponent.new(href: "#", underline: false)) { "Link" } %>
@@ -48,7 +48,7 @@ Use links for moving from one page to another. The Link component styles anchor 
 
 ### Span as link
 
-<Example src="<span class='Link '>Span as a link</span>" />
+<Example src="<span class='Link'>Span as a link</span>" />
 
 ```erb
 <%= render(Primer::LinkComponent.new(tag: :span)) { "Span as a link" } %>

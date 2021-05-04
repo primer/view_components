@@ -62,8 +62,8 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `bg` | String, Symbol | Background color. Accepts either a hex value as a String or one of `:primary`, `:secondary`, `:tertiary`, `:info`, `:success`, `:warning`, `:danger`, `:inverse`, or `:overlay`. |
-| `border_color` | Symbol | Border color. One of `:primary`, `:secondary`, `:tertiary`, `:info`, `:success`, `:warning`, `:danger`, `:inverse`, or `:overlay`. |
+| `bg` | String, Symbol | Background color. Accepts either a hex value as a String or one of `:primary`, `:secondary`, `:tertiary`, `:info`, `:success`, `:warning`, `:danger`, or `:inverse`. |
+| `border_color` | Symbol | Border color. One of `:primary`, `:secondary`, `:tertiary`, `:info`, `:success`, `:warning`, `:danger`, or `:inverse`. |
 | `color` | Symbol | Text color. One of `:icon_primary`, `:icon_secondary`, `:icon_tertiary`, `:icon_info`, `:icon_success`, `:icon_warning`, `:icon_danger`, `:text_primary`, `:text_secondary`, `:text_tertiary`, `:text_link`, `:text_success`, `:text_warning`, `:text_danger`, `:text_white`, or `:text_inverse`. |
 
 ## Flex
@@ -72,11 +72,13 @@ System arguments include most HTML attributes. For example:
 | :- | :- | :- |
 | `align_items` | Symbol | One of `:flex_start`, `:flex_end`, `:center`, `:baseline`, or `:stretch`. |
 | `align_self` | Symbol | One of `:auto`, `:start`, `:end`, `:center`, `:baseline`, or `:stretch`. |
+| `direction` | Symbol | One of `:column`, `:column_reverse`, `:row`, or `:row_reverse`. |
+| `flex` | Integer, Symbol | One of `1` and `:auto`. |
 | `flex_grow` | Integer | To enable, set to `0`. |
 | `flex_shrink` | Integer | To enable, set to `0`. |
-| `flex` | Integer, Symbol | One of `1` and `:auto`. |
+| `flex_wrap` | Symbol | One of `:wrap`, `:nowrap`, or `:reverse`. |
 | `justify_content` | Symbol | One of `:flex_start`, `:flex_end`, `:center`, `:space_between`, or `:space_around`. |
-| `width` | Symbol | One of `:fit` and `:fill`. |
+| `width` | Symbol | One of `:fit`. |
 
 ## Grid
 
@@ -88,8 +90,8 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `display` | Symbol | One of `:none`, `:block`, `:flex`, `:inline`, `:inline_block`, `:table`, or `:table_cell`. |
-| `height` | Symbol | One of `:fit` and `:fill`. |
+| `display` | Symbol | One of `:none`, `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:table`, or `:table_cell`. |
+| `height` | Symbol | One of `:fit`. |
 | `hide` | Symbol | Hide the element at a specific breakpoint. One of `:sm`, `:md`, `:lg`, or `:xl`. |
 | `v` | Symbol | Visibility. One of `:hidden` and `:visible`. |
 | `vertical_align` | Symbol | One of `:baseline`, `:top`, `:middle`, `:bottom`, `:text_top`, or `:text_bottom`. |
@@ -139,5 +141,4 @@ System arguments include most HTML attributes. For example:
 | Name | Type | Description |
 | :- | :- | :- |
 | classes | String | CSS class name value to be concatenated with generated Primer CSS classes. |
-| tag | Symbol | HTML tag name to be passed to `content_tag`. |
 | test_selector | String | Adds `data-test-selector='given value'` in non-Production environments for testing purposes. |

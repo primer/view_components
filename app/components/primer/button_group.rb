@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use ButtonGroup to render a series of buttons.
+  # Use `ButtonGroup` to render a series of buttons.
   class ButtonGroup < Primer::Component
     status :beta
 
@@ -46,7 +46,7 @@ module Primer
     def initialize(variant: Primer::ButtonComponent::DEFAULT_VARIANT, **system_arguments)
       @variant = variant
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :div
+      @system_arguments[:tag] = :div
 
       @system_arguments[:classes] = class_names(
         "BtnGroup",

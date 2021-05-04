@@ -9,13 +9,13 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use buttons for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
+Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
 
 ## Examples
 
 ### Schemes
 
-<Example src="<button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-primary-mktg mr-2'>Primary</button><button type='button' class='btn-mktg btn-outline-mktg '>Outline</button><div class='color-bg-canvas-inverse'>  <button type='button' class='btn-mktg btn-transparent '>Transparent</button></div>" />
+<Example src="<button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-primary-mktg mr-2'>Primary</button><button type='button' class='btn-mktg btn-outline-mktg'>Outline</button><div class='color-bg-canvas-inverse'>  <button type='button' class='btn-mktg btn-transparent'>Transparent</button></div>" />
 
 ```erb
 <%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>
@@ -28,7 +28,7 @@ Use buttons for actions (e.g. in forms). Use links for destinations, or moving f
 
 ### Sizes
 
-<Example src="<button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-large-mktg '>Large</button>" />
+<Example src="<button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-large-mktg'>Large</button>" />
 
 ```erb
 <%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>

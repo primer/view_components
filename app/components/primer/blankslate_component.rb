@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use Primer::BlankslateComponent when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.
+  # Use `Blankslate` when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.
+  # @accessibility
+  #   `BlankSlate` renders an `<h3>` element for the title by default. Update the heading level based on what is appropriate for your page hierarchy by setting `title_tag`.
+  #   <%= link_to_heading_practices %>
   class BlankslateComponent < Primer::Component
     status :beta
 
@@ -108,7 +111,7 @@ module Primer
       **system_arguments
     )
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :div
+      @system_arguments[:tag] = :div
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "blankslate",

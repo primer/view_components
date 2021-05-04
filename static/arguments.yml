@@ -33,6 +33,11 @@
     type: Symbol
     default: N/A
     description: One of `:button`, `:reset`, or `:submit`.
+  - name: box
+    type: Boolean
+    default: "`false`"
+    description: Whether the button is in a [BorderBox](/components/borderbox). If
+      `true`, the button will have the `Box-btn-octicon` class.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -102,6 +107,10 @@
 - component: AvatarStack
   source: https://github.com/primer/view_components/tree/main/app/components/primer/avatar_stack_component.rb
   parameters:
+  - name: tag
+    type: Symbol
+    default: "`:div`"
+    description: One of `:div` and `:span`.
   - name: align
     type: Symbol
     default: "`:left`"
@@ -572,7 +581,7 @@
     default: N/A
     description: "[System arguments](/system-arguments)"
 - component: Markdown
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/markdown_component.rb
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/markdown.rb
   parameters:
   - name: system_arguments
     type: Hash
@@ -717,6 +726,10 @@
 - component: Text
   source: https://github.com/primer/view_components/tree/main/app/components/primer/text_component.rb
   parameters:
+  - name: tag
+    type: Symbol
+    default: "`:span`"
+    description: ''
   - name: system_arguments
     type: Hash
     default: N/A

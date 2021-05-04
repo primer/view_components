@@ -9,13 +9,13 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-The Tooltip component is a wrapper component that will apply a tooltip to the provided content.
+`Tooltip` is a wrapper component that will apply a tooltip to the provided content.
 
 ## Examples
 
 ### Default
 
-<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n '>Default Bold Text</span></div>" />
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n'>Default Bold Text</span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -25,7 +25,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### Wrapping another component
 
-<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n '>    <button type='button' class='btn '>    Bold Button  </button></span></div>" />
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n'>    <button type='button' class='btn'>    Bold Button  </button></span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -37,7 +37,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### With a direction
 
-<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s '>Bold Text With a Direction</span></div>" />
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s'>Bold Text With a Direction</span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -47,7 +47,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### With an alignment
 
-<Example src="<div class='pt-5'>  <span alignment='right_1' aria-label='Even bolder' class='tooltipped tooltipped-s '>Bold Text With an Alignment</span></div>" />
+<Example src="<div class='pt-5'>  <span alignment='right_1' aria-label='Even bolder' class='tooltipped tooltipped-s'>Bold Text With an Alignment</span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -57,7 +57,7 @@ The Tooltip component is a wrapper component that will apply a tooltip to the pr
 
 ### Without a delay
 
-<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s tooltipped-no-delay '>Bold Text without a delay</span></div>" />
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s tooltipped-no-delay'>Bold Text without a delay</span></div>" />
 
 ```erb
 <div class="pt-5">

@@ -9,13 +9,13 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use HiddenTextExpander to indicate and toggle hidden text.
+Use `HiddenTextExpander` to indicate and toggle hidden text.
 
 ## Examples
 
 ### Default
 
-<Example src="<span class='hidden-text-expander '><button aria-expanded='false' type='button' class='ellipsis-expander '>&amp;hellip;</button></span>" />
+<Example src="<span class='hidden-text-expander'><button aria-expanded='false' type='button' class='ellipsis-expander'>&hellip;</button></span>" />
 
 ```erb
 <%= render(Primer::HiddenTextExpander.new) %>
@@ -23,7 +23,7 @@ Use HiddenTextExpander to indicate and toggle hidden text.
 
 ### Inline
 
-<Example src="<span class='hidden-text-expander inline '><button aria-expanded='false' type='button' class='ellipsis-expander '>&amp;hellip;</button></span>" />
+<Example src="<span class='hidden-text-expander inline'><button aria-expanded='false' type='button' class='ellipsis-expander'>&hellip;</button></span>" />
 
 ```erb
 <%= render(Primer::HiddenTextExpander.new(inline: true)) %>
@@ -31,7 +31,7 @@ Use HiddenTextExpander to indicate and toggle hidden text.
 
 ### Styling the button
 
-<Example src="<span class='hidden-text-expander '><button aria-expanded='false' type='button' class='ellipsis-expander my-custom-class p-1'>&amp;hellip;</button></span>" />
+<Example src="<span class='hidden-text-expander'><button aria-expanded='false' type='button' class='ellipsis-expander my-custom-class p-1'>&hellip;</button></span>" />
 
 ```erb
 <%= render(Primer::HiddenTextExpander.new(button_arguments: { p: 1, classes: "my-custom-class" })) %>

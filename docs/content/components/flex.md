@@ -1,6 +1,6 @@
 ---
 title: Flex
-status: Alpha
+status: Deprecated
 source: https://github.com/primer/view_components/tree/main/app/components/primer/flex_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-flex-component
 ---
@@ -9,10 +9,34 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use FlexComponent to make an element lay out its content using the flexbox model.
+Use `Flex` to make an element lay out its content using the flexbox model.
 Before using these utilities, you should be familiar with CSS3 Flexible Box
 spec. If you are not, check out MDN's guide  [Using CSS Flexible
 Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox).
+
+## Deprecation
+
+Use [Box](/components/box) instead.
+
+**Before**:
+
+```erb
+<%= render Primer::FlexComponent.new(justify_content: :center) %>
+<%= render Primer::FlexComponent.new(inline: true) %>
+<%= render Primer::FlexComponent.new(flex_wrap: true) %>
+<%= render Primer::FlexComponent.new(align_items: :start) %>
+<%= render Primer::FlexComponent.new(direction: :column) %>
+```
+
+**After**:
+
+```erb
+<%= render Primer::BoxComponent.new(display: :flex, justify_content: :center) %>
+<%= render Primer::BoxComponent.new(display: :inline_flex) %>
+<%= render Primer::BoxComponent.new(display: :flex, flex_wrap: :wrap) %>
+<%= render Primer::BoxComponent.new(display: :flex, align_items: :start) %>
+<%= render Primer::BoxComponent.new(display: :flex, direction: :column) %>
+```
 
 ## Examples
 

@@ -10,7 +10,6 @@ class PrimerClassifyTest < Minitest::Test
 
   def test_font_size
     assert_generated_class("f00", { font_size: "00" })
-    assert_generated_class("f0",  { font_size: 0 })
     assert_generated_class("f1",  { font_size: 1 })
     assert_generated_class("f2",  { font_size: 2 })
     assert_generated_class("f3",  { font_size: 3 })
@@ -488,6 +487,10 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-justify-center", { justify_content: :center })
     assert_generated_class("flex-justify-between", { justify_content: :space_between })
     assert_generated_class("flex-justify-around", { justify_content: :space_around })
+
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+      Primer::Classify.call(justify_content: :invalid_option)
+    end
   end
 
   def test_align_items
@@ -496,6 +499,32 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-items-center", { align_items: :center })
     assert_generated_class("flex-items-baseline", { align_items: :baseline })
     assert_generated_class("flex-items-stretch", { align_items: :stretch })
+
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+      Primer::Classify.call(align_items: :invalid_option)
+    end
+  end
+
+  def test_flex_wrap
+    assert_generated_class("flex-wrap", { flex_wrap: :wrap })
+    assert_generated_class("flex-nowrap", { flex_wrap: :nowrap })
+    assert_generated_class("flex-wrap-reverse", { flex_wrap: :reverse })
+
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+      Primer::Classify.call(flex_wrap: :invalid_option)
+    end
+  end
+
+  def test_flex_direction
+    assert_generated_class("flex-column", { direction: :column })
+    assert_generated_class("flex-column-reverse", { direction: :column_reverse })
+    assert_generated_class("flex-row", { direction: :row })
+    assert_generated_class("flex-row-reverse", { direction: :row_reverse })
+    assert_generated_class("flex-row flex-sm-column flex-md-row-reverse flex-lg-column-reverse flex-xl-row", { direction: %i[row column row_reverse column_reverse row] })
+
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+      Primer::Classify.call(direction: :invalid_option)
+    end
   end
 
   def test_word_break
@@ -526,18 +555,20 @@ class PrimerClassifyTest < Minitest::Test
   def test_height
     assert_equal(10, Primer::Classify.call(height: 10)[:height])
     assert_nil(Primer::Classify.call(height: :fit)[:height])
-    assert_nil(Primer::Classify.call(height: :fill)[:height])
   end
 
   def test_width
     assert_equal(10, Primer::Classify.call(width: 10)[:width])
     assert_nil(Primer::Classify.call(width: :fit)[:width])
-    assert_nil(Primer::Classify.call(width: :fill)[:width])
   end
 
   def test_flex
     assert_generated_class("flex-1",    { flex: 1 })
     assert_generated_class("flex-auto", { flex: :auto })
+
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+      Primer::Classify.call(flex: :invalid_option)
+    end
   end
 
   def test_flex_align_self
@@ -547,21 +578,31 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-self-center",    { align_self: :center })
     assert_generated_class("flex-self-baseline",  { align_self: :baseline })
     assert_generated_class("flex-self-stretch",   { align_self: :stretch })
+
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+      Primer::Classify.call(align_self: :invalid_option)
+    end
   end
 
   def test_width_and_height
     assert_generated_class("width-fit",   { width: :fit })
-    assert_generated_class("width-fill",  { width: :fill })
     assert_generated_class("height-fit",  { height: :fit })
-    assert_generated_class("height-fill", { height: :fill })
   end
 
   def test_flex_grow
     assert_generated_class("flex-grow-0", { flex_grow: 0 })
+
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+      Primer::Classify.call(flex_grow: :invalid_option)
+    end
   end
 
   def test_flex_shrink
     assert_generated_class("flex-shrink-0", { flex_shrink: 0 })
+
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+      Primer::Classify.call(flex_shrink: :invalid_option)
+    end
   end
 
   def test_animation
@@ -586,7 +627,13 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_does_not_raise_error_when_passing_in_a_primer_css_class_otherwise
-    assert_generated_class("bg-blue text-center float-left ml-1 ", { classes: "bg-blue text-center float-left ml-1" })
+    assert_generated_class("bg-blue text-center float-left ml-1", { classes: "bg-blue text-center float-left ml-1" })
+  end
+
+  def test_does_include_leading_trailing_whitespace_in_class
+    generated_class = Primer::Classify.call(classes: "foo-class")[:class]
+    refute(generated_class.start_with?(" "))
+    refute(generated_class.end_with?(" "))
   end
 
   private

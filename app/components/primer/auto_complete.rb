@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use AutoComplete to populate input values from server search results.
+  # Use `AutoComplete` to populate input values from server search results.
   class AutoComplete < Primer::Component
     status :beta
 
