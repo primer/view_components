@@ -21,17 +21,44 @@ Add any accessibility considerations
 
 ## Examples
 
-### Example goes here
+### Default
 
-<Example src="<local-time datetime='2014-06-01T13:05:07Z' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>    June 1, 2014 13:05 +00:00</local-time>" />
+<Example src="<local-time datetime='2021-05-04T14:19:53+01:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>    May 4, 2021 14:19 +01:00</local-time>" />
 
 ```erb
+<%= render(Primer::LocalTime.new(datetime: DateTime.now)) %>
+```
 
-<%= render(Primer::LocalTime.new(datetime: "2014-06-01T13:05:07Z")) %>
+### All the options
+
+<Example src="<local-time datetime='2021-05-04T14:19:53+01:00' weekday='long' year='2-digit' month='long' day='2-digit' hour='2-digit' minute='2-digit' second='2-digit' time-zone-name='long'>    May 4, 2021 14:19 +01:00</local-time>" />
+
+```erb
+<%= render(Primer::LocalTime.new(datetime: DateTime.now, weekday: "long", year: "2-digit", month: "long", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", time_zone_name: "long")) %>
+```
+
+### With initial content
+
+<Example src="<local-time datetime='2021-05-04T14:19:53+01:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>      <!-- This content will be replaced once the component connects -->  2014/06/01 13:05</local-time>" />
+
+```erb
+<%= render(Primer::LocalTime.new(datetime: DateTime.now)) do %>
+  <!-- This content will be replaced once the component connects -->
+  2014/06/01 13:05
+<% end %>
 ```
 
 ## Arguments
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `datetime` | `DateTime` | N/A |  |
+| `weekday` | `Symbol` | `short` | One of `short` and `long`. |
+| `year` | `Symbol` | `numeric` | One of `numeric` and `2-digit`. |
+| `month` | `Symbol` | `short` | One of `short` and `long`. |
+| `day` | `Symbol` | `numeric` | One of `numeric` and `2-digit`. |
+| `hour` | `Symbol` | `numeric` | One of `numeric` and `2-digit`. |
+| `minute` | `Symbol` | `numeric` | One of `numeric` and `2-digit`. |
+| `second` | `Symbol` | `numeric` | One of `numeric` and `2-digit`. |
+| `time_zone_name` | `Symbol` | `short` | One of `short` and `long`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
