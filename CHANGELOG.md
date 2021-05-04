@@ -9,6 +9,7 @@
     *Kristján Oddsson*
 
 ### Changes
+
 * Promote `IconButton` to beta.
 
     *Manuel Puyol*
