@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use `CounterComponent` to add a count to navigational elements and buttons.
+  # Use `Counter` to add a count to navigational elements and buttons.
+  #
+  # @accessibility
+  #   Always use `Counter` with adjacent text that provides supplementary information regarding what the count is for. For instance, `Counter`
+  #   should be accompanied with text such as `issues` or `pull requests`.
+  #
   class CounterComponent < Primer::Component
     status :beta
 
