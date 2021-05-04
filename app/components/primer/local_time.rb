@@ -18,7 +18,7 @@ module Primer
     #   <%= render(Primer::LocalTime.new(datetime: DateTime.now, weekday: "long", year: "2-digit", month: "long", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", time_zone_name: "long")) %>
     #
     # @example With initial content
-    #   <%= render(Primer::LocalTime.new(datetime: DateTime.now)) %>
+    #   <%= render(Primer::LocalTime.new(datetime: DateTime.now)) do %>
     #     <!-- This content will be replaced once the component connects -->
     #     2014/06/01 13:05
     #   <% end %>
