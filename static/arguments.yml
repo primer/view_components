@@ -1,4 +1,11 @@
 ---
+- component: LocalTime
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/local_time.rb
+  parameters:
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: IconButton
   source: https://github.com/primer/view_components/tree/main/app/components/primer/icon_button.rb
   parameters:
