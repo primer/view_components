@@ -60,6 +60,10 @@
 
     *Manuel Puyol*
 
+* Remove `:large` size option from `OcticonComponent`
+
+    *Jon Rohan*
+
 ## 0.0.39
 
 * Promote `CloseButton` to beta.

@@ -11,8 +11,7 @@ module Primer
     SIZE_DEFAULT = :small
     SIZE_MAPPINGS = {
       SIZE_DEFAULT => 16,
-      :medium => 32,
-      :large => 64
+      :medium => 32
     }.freeze
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
@@ -22,9 +21,6 @@ module Primer
     #
     # @example Medium
     #   <%= render(Primer::OcticonComponent.new("people", size: :medium)) %>
-    #
-    # @example Large
-    #   <%= render(Primer::OcticonComponent.new("x", size: :large)) %>
     #
     # @example Helper
     #   <%= primer_octicon("check") %>

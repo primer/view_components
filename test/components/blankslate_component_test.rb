@@ -60,11 +60,11 @@ class BlankslateComponentTest < Minitest::Test
   def test_renders_a_blankslate_component_with_an_icon_with_a_custom_size
     render_inline(Primer::BlankslateComponent.new(
                     icon: "octoface",
-                    icon_size: :large,
+                    icon_size: :medium,
                     title: "Title"
                   ))
 
-    assert_selector(".blankslate-icon[height=64]")
+    assert_selector(".blankslate-icon[height=32]")
   end
 
   def test_renders_a_blankslate_component_with_an_image
