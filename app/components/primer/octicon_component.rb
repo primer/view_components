@@ -9,10 +9,13 @@ module Primer
     status :beta
 
     SIZE_DEFAULT = :small
+    SIZE_MEDIUM = :medium
+    SIZE_LARGE = :large
+
     SIZE_MAPPINGS = {
       SIZE_DEFAULT => 16,
-      :medium => 32,
-      :large => 64
+      SIZE_MEDIUM => 32,
+      SIZE_LARGE => 64
     }.freeze
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
@@ -31,7 +34,7 @@ module Primer
     #
     # @param icon [String] Name of <%= link_to_octicons %> to use.
     # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
-    # @param use_symbol [Boolean] EXPERIMENTAL (May change or be removed) - Set to true when using with <%= link_to_component(Primer::OcticonSymbolComponent) %>.
+    # @param use_symbol [Boolean] EXPERIMENTAL (May change or be removed) - Set to true when using with <%= link_to_component(Primer::OcticonSymbolsComponent) %>.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, use_symbol: false, **system_arguments)
       icon_key = icon_name || icon

@@ -21,7 +21,7 @@ OcticonSymbol renders a symbol dictionary using a list of [Octicon](https://prim
 <%= render(Primer::OcticonComponent.new(icon: :check, use_symbol: true, color: :icon_success)) %>
 <%= render(Primer::OcticonComponent.new(icon: :check, use_symbol: true, color: :text_danger)) %>
 <%= render(Primer::OcticonComponent.new(icon: :check, use_symbol: true, size: :medium)) %>
-<%= render(Primer::OcticonSymbolComponent.new) do |c| %>
+<%= render(Primer::OcticonSymbolsComponent.new) do |c| %>
   <%= c.icon(symbol: :check) %>
   <%= c.icon(symbol: :check, size: :medium) %>
 <% end %>
