@@ -31,14 +31,6 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 <%= render(Primer::OcticonComponent.new("people", size: :medium)) %>
 ```
 
-### Large
-
-<Example src="<svg aria-hidden='true' viewBox='0 0 24 24' version='1.1' height='64' width='64' class='octicon octicon-x'><path fill-rule='evenodd' d='M5.72 5.72a.75.75 0 011.06 0L12 10.94l5.22-5.22a.75.75 0 111.06 1.06L13.06 12l5.22 5.22a.75.75 0 11-1.06 1.06L12 13.06l-5.22 5.22a.75.75 0 01-1.06-1.06L10.94 12 5.72 6.78a.75.75 0 010-1.06z'></path></svg>" />
-
-```erb
-<%= render(Primer::OcticonComponent.new("x", size: :large)) %>
-```
-
 ### Helper
 
 <Example src="<svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' height='16' width='16' class='octicon octicon-check'><path fill-rule='evenodd' d='M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z'></path></svg>" />
@@ -52,5 +44,5 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `icon` | `String` | `nil` | Name of [Octicon](https://primer.style/octicons/) to use. |
-| `size` | `Symbol` | `:small` | One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`). |
+| `size` | `Symbol` | `:small` | One of `:small` (`16`) and `:medium` (`32`). |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

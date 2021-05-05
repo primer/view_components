@@ -165,7 +165,7 @@
   - name: icon_size
     type: Symbol
     default: "`:medium`"
-    description: One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`).
+    description: One of `:small` (`16`) and `:medium` (`32`).
   - name: image_src
     type: String
     default: '`""`'
@@ -632,7 +632,7 @@
   - name: size
     type: Symbol
     default: "`:small`"
-    description: One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`).
+    description: One of `:small` (`16`) and `:medium` (`32`).
   - name: system_arguments
     type: Hash
     default: N/A
