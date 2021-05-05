@@ -159,6 +159,7 @@ GEM
     terminal-table (2.0.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     thor (1.1.0)
+    timecop (0.9.4)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.7.0)
@@ -209,6 +210,7 @@ DEPENDENCIES
   sprockets
   sprockets-rails
   thor
+  timecop
   view_component_storybook (~> 0.8.0)
   webpacker (~> 5.0)
   yard (~> 0.9.25)
