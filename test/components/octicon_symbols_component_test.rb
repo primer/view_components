@@ -14,7 +14,7 @@ class PrimerOcticonSymbolsComponentTest < Minitest::Test
 
     render_inline(Primer::OcticonSymbolsComponent.new(icons: icons))
 
-    assert_selector("svg defs symbol#octicon_alert_16 path", visible: false)
+    assert_selector("svg symbol#octicon_alert_16 path", visible: false)
   end
 
   def test_does_not_render_if_there_are_no_icons

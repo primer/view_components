@@ -13,7 +13,26 @@ module Primer
     #
     # @param icons [Array<Hash>] List of icons to render, in the format { symbol: :icon_name }
     def initialize(icons: [])
-      @icons = icons
+      @icons = {}
+      icons.each do |icon|
+        symbol = icon[:symbol]
+        size = Primer::OcticonComponent::SIZE_MAPPINGS[
+          fetch_or_fallback(Primer::OcticonComponent::SIZE_OPTIONS, icon[:size] || Primer::OcticonComponent::SIZE_DEFAULT, Primer::OcticonComponent::SIZE_DEFAULT)
+        ]
+
+        cache_key = Primer::Octicon::Cache.get_key(symbol: symbol, size: size)
+
+        if (cache_icon = Primer::Octicon::Cache.read(cache_key))
+          icon_instance = cache_icon
+        else
+          icon_instance = Octicons::Octicon.new(symbol, height: size)
+
+          Primer::Octicon::Cache.set(cache_key, icon_instance)
+        end
+
+        # Don't put the same icon twice
+        @icons[[symbol, icon_instance.height]] = icon_instance if @icons[[symbol, icon_instance.height]].nil?
+      end
     end
 
     def render?
@@ -26,29 +45,14 @@ module Primer
 
     def symbol_tags
       safe_join(
-        @icons.map do |icon|
-          symbol = icon[:symbol]
-          size = Primer::OcticonComponent::SIZE_MAPPINGS[
-            fetch_or_fallback(Primer::OcticonComponent::SIZE_OPTIONS, icon[:size] || Primer::OcticonComponent::SIZE_DEFAULT, Primer::OcticonComponent::SIZE_DEFAULT)
-          ]
-
-          cache_key = Primer::Octicon::Cache.get_key(symbol: symbol, size: size)
-
-          if (cache_icon = Primer::Octicon::Cache.read(cache_key))
-            icon_instance = cache_icon
-          else
-            icon_instance = Octicons::Octicon.new(symbol, height: size)
-
-            Primer::Octicon::Cache.set(cache_key, icon_instance)
-          end
-
+        @icons.values.map do |icon|
           content_tag(
             :symbol,
-            icon_instance.path.html_safe, # rubocop:disable Rails/OutputSafety
-            id: "octicon_#{icon_instance.symbol}_#{icon_instance.height}",
-            viewBox: icon_instance.options[:viewBox],
-            width: icon_instance.width,
-            height: icon_instance.height
+            icon.path.html_safe, # rubocop:disable Rails/OutputSafety
+            id: "octicon_#{icon.symbol}_#{icon.height}",
+            viewBox: icon.options[:viewBox],
+            width: icon.width,
+            height: icon.height
           )
         end
       )
