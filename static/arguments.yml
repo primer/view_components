@@ -42,6 +42,21 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: ImageCrop
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/image_crop.rb
+  parameters:
+  - name: src
+    type: String
+    default: N/A
+    description: The path of the image to crop.
+  - name: rounded
+    type: Boolean
+    default: "`true`"
+    description: If the crop mask should be a circle. Defaults to true.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: IconButton
   source: https://github.com/primer/view_components/tree/main/app/components/primer/icon_button.rb
   parameters:

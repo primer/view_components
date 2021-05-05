@@ -2,6 +2,12 @@
 
 ## main
 
+### New
+
+* Create `ImageCrop` component.
+
+    *Kristján Oddsson*
+
 ### Changes
 
 * Create `LocalTime` component.
@@ -66,7 +72,7 @@
 
 * Update `ClipboardCopy` to not toggle icons unless they both exist.
 
-    *Kristjan Oddsson*
+    *Kristján Oddsson*
 
 * Add `icon` and `counter` slots to `ButtonComponent`.
 
@@ -108,7 +114,7 @@
 
 * Create `ClipboardCopy` component.
 
-    *Kristjan Oddsson*
+    *Kristján Oddsson*
 
 * **Breaking change:** Rename `ButtonGroupComponent` to `ButtonGroup` and promote it to beta.
 
