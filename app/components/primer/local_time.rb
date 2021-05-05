@@ -3,7 +3,6 @@
 module Primer
   # Add a general description of component here
   # Add additional usage considerations or best practices that may aid the user to use the component correctly.
-  # @accessibility Add any accessibility considerations
   class LocalTime < Primer::Component
     DEFAULT_DIGIT_TYPE = "numeric"
     DIGIT_TYPE_OPTIONS = [DEFAULT_DIGIT_TYPE, "2-digit"].freeze
