@@ -11,7 +11,7 @@ module Primer
     SIZE_DEFAULT = :small
     SIZE_MAPPINGS = {
       SIZE_DEFAULT => 16,
-      :medium => 32
+      :medium => 24
     }.freeze
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 

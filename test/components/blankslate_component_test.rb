@@ -54,7 +54,7 @@ class BlankslateComponentTest < Minitest::Test
                     title: "Title"
                   ))
 
-    assert_selector(".blankslate-icon[height=32]")
+    assert_selector(".blankslate-icon[height=24]")
   end
 
   def test_renders_a_blankslate_component_with_an_icon_with_a_custom_size
@@ -64,7 +64,7 @@ class BlankslateComponentTest < Minitest::Test
                     title: "Title"
                   ))
 
-    assert_selector(".blankslate-icon[height=32]")
+    assert_selector(".blankslate-icon[height=24]")
   end
 
   def test_renders_a_blankslate_component_with_an_image
