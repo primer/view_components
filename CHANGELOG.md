@@ -60,7 +60,7 @@
 
     *Manuel Puyol*
 
-* Remove `:large` size option from `OcticonComponent`
+* Remove `:large` size option from `OcticonComponent` and change `:medium` to 24px
 
     *Jon Rohan*
 
