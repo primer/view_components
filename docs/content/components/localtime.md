@@ -19,7 +19,7 @@ Add additional usage considerations or best practices that may aid the user to u
 
 ### Default
 
-<Example src="<local-time datetime='2021-05-05T12:33:54+00:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>    May 5, 2021 12:33 +00:00</local-time>" />
+<Example src="<local-time datetime='2021-05-05T12:38:17+00:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>    May 5, 2021 12:38 +00:00</local-time>" />
 
 ```erb
 <%= render(Primer::LocalTime.new(datetime: DateTime.now)) %>
@@ -27,7 +27,7 @@ Add additional usage considerations or best practices that may aid the user to u
 
 ### All the options
 
-<Example src="<local-time datetime='2021-05-05T12:33:54+00:00' weekday='long' year='2-digit' month='long' day='2-digit' hour='2-digit' minute='2-digit' second='2-digit' time-zone-name='long'>    May 5, 2021 12:33 +00:00</local-time>" />
+<Example src="<local-time datetime='2021-05-05T12:38:17+00:00' weekday='long' year='2-digit' month='long' day='2-digit' hour='2-digit' minute='2-digit' second='2-digit' time-zone-name='long'>    May 5, 2021 12:38 +00:00</local-time>" />
 
 ```erb
 <%= render(Primer::LocalTime.new(datetime: DateTime.now, weekday: "long", year: "2-digit", month: "long", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", time_zone_name: "long")) %>
@@ -35,7 +35,7 @@ Add additional usage considerations or best practices that may aid the user to u
 
 ### With initial content
 
-<Example src="<local-time datetime='2021-05-05T12:33:54+00:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>      <!-- This content will be replaced once the component connects -->  2014/06/01 13:05</local-time>" />
+<Example src="<local-time datetime='2021-05-05T12:38:17+00:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>      <!-- This content will be replaced once the component connects -->  2014/06/01 13:05</local-time>" />
 
 ```erb
 <%= render(Primer::LocalTime.new(datetime: DateTime.now)) do %>
