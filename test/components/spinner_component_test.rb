@@ -38,7 +38,7 @@ class PrimerSpinnerComponentTest < Minitest::Test
   def test_no_box_sizing_style
     render_inline(Primer::SpinnerComponent.new(style: nil))
 
-    assert_no_selector("style")
+    assert_no_selector("[style]")
   end
 
   def test_status

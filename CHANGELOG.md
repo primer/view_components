@@ -28,6 +28,10 @@
 
     *Manuel Puyol*
 
+* Fix disabling of default styles for `SpinnerComponent` via `nil` style parameter.
+
+    *Chris Wilson*
+
 ### Deprecations
 
 * Deprecate `Flex` in favor of `BoxComponent`.

@@ -102,4 +102,10 @@ class PrimerOcticonComponentTest < Minitest::Test
 
     assert_selector("svg.octicon-star path[d]")
   end
+
+  def test_renders_use_tag
+    render_inline(Primer::OcticonComponent.new(:star, use_symbol: true))
+
+    assert_selector("svg.octicon-star use[href='#octicon_star_16']")
+  end
 end
