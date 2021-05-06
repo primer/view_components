@@ -28,4 +28,4 @@ OcticonSymbols renders a symbol dictionary using a list of [Octicon](https://pri
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `icons` | `Array<Hash>` | `[]` | List of icons to render, in the format { symbol: :icon_name } |
+| `icons` | `Array<Hash>` | `[]` | List of icons to render, in the format { symbol: :icon_name, size: :small } |

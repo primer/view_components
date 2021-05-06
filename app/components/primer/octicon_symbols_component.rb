@@ -11,7 +11,7 @@ module Primer
     #   <%= render(Primer::OcticonComponent.new(icon: :check, use_symbol: true, size: :medium)) %>
     #   <%= render(Primer::OcticonSymbolsComponent.new(icons: [{ symbol: :check }, { symbol: :check, size: :medium }])) %>
     #
-    # @param icons [Array<Hash>] List of icons to render, in the format { symbol: :icon_name }
+    # @param icons [Array<Hash>] List of icons to render, in the format { symbol: :icon_name, size: :small }
     def initialize(icons: [])
       @icons = {}
       icons.each do |icon|

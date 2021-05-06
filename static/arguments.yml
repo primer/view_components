@@ -5,7 +5,8 @@
   - name: icons
     type: Array<Hash>
     default: "`[]`"
-    description: 'List of icons to render, in the format { symbol: :icon_name }'
+    description: 'List of icons to render, in the format { symbol: :icon_name, size:
+      :small }'
 - component: ImageCrop
   source: https://github.com/primer/view_components/tree/main/app/components/primer/image_crop.rb
   parameters:
