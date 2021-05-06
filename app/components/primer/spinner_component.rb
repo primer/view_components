@@ -27,10 +27,10 @@ module Primer
     #   <%= render(Primer::SpinnerComponent.new(size: :large)) %>
     #
     # @param size [Symbol] <%= one_of(Primer::SpinnerComponent::SIZE_MAPPINGS) %>
-    def initialize(size: DEFAULT_SIZE, **system_arguments)
+    def initialize(size: DEFAULT_SIZE, style: DEFAULT_STYLE, **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = :svg
-      @system_arguments[:style] ||= DEFAULT_STYLE
+      @system_arguments[:style] ||= style
       @system_arguments[:animation] = :rotate
       @system_arguments[:width] = SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
       @system_arguments[:height] = SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
