@@ -88,6 +88,20 @@ jobs:
         bundle config path vendor/bundle
         bundle update
         bin/rails view_component_storybook:write_stories_json
+    - name: Set up Node.js
+      uses: actions/setup-node@master
+      with:
+        node-version: 15
+    - uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: node-modules-main-${{ hashFiles('yarn.lock') }}
+    - name: Generate storybook a11y report
+      run: |
+        cd demo
+        yarn add storybook-a11y-report
+        STORYBOOK=true bin/rails s -p 4000 & yarn wait-on http://localhost:4000 & yarn storybook
+        yarn wait-on http://localhost:5000 & yarn storybook-a11y-report --storybookUrl http://localhost:5000 --exit
   test:
     needs: lint
     runs-on: ubuntu-latest
