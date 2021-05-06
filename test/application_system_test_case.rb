@@ -14,6 +14,7 @@ Ferrum::Browser.new(process_timeout: 60, timeout: 60)
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :cuprite, using: :chrome, screen_size: [1400, 1400]
 
+  # Skip `:region` which relates to preview page structure rather than individual component.
   AXE_RULES_TO_SKIP = [:region].freeze
   AXE_WITHIN_SELECTOR = "body"
 
@@ -39,8 +40,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     Axe::AccessibleExpectation.new.assert page, is_axe_clean
   end
 
-  # Capybara Overrides
-  # From axe-core docs- "insert calls at each point in your tests where a new piece of UI becomes visible or exposed"
+  # Capybara Overrides to run accessibility checks when UI changes.
   def fill_in(locator = nil, **kwargs)
     super
 
