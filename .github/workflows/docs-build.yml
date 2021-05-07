@@ -36,12 +36,17 @@ jobs:
           git add -f docs static/statuses.json static/arguments.yml static/classes.yml
           git commit -m "docs: build docs" || true
           git push
+      - name: Set up node js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
       - name: Run docs
         run: |
           cd docs
-          yarn global add @axe-core/cli
           yarn
           yarn develop & npx wait-on http://localhost:8000
       - name: Run axe on examples for changed components
         run: |
+          yarn global add @axe-core/cli
+          echo "$(yarn global bin)" >> $GITHUB_PATH
           axe http://localhost:8000/components/autocompleteitem -i .frame-example --exit
