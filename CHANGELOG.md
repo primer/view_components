@@ -2,6 +2,10 @@
 
 ## main
 
+* Don't set boolean attribute to false
+
+    *Kristján Oddsson*
+
 ## 0.0.40
 
 ### New
