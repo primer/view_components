@@ -5,7 +5,7 @@ class Primer::LocalTimeStories < ViewComponent::Storybook::Stories
 
   story(:local_time) do
     controls do
-      text(:datetime, "2014-06-01T13:05:07Z")
+      date(:datetime, DateTime.now)
 
       select(:weekday, Primer::LocalTime::TEXT_TYPE_OPTIONS, Primer::LocalTime::DEFAULT_TEXT_TYPE)
       select(:year, Primer::LocalTime::DIGIT_TYPE_OPTIONS, Primer::LocalTime::DEFAULT_DIGIT_TYPE)
