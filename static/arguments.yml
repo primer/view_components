@@ -50,10 +50,6 @@
     default: "`[]`"
     description: 'List of icons to render, in the format { symbol: :icon_name, size:
       :small }'
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
 - component: ImageCrop
   source: https://github.com/primer/view_components/tree/main/app/components/primer/image_crop.rb
   parameters:
