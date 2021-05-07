@@ -42,6 +42,18 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: OcticonSymbols
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/octicon_symbols_component.rb
+  parameters:
+  - name: icons
+    type: Array<Hash>
+    default: "`[]`"
+    description: 'List of icons to render, in the format { symbol: :icon_name, size:
+      :small }'
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: ImageCrop
   source: https://github.com/primer/view_components/tree/main/app/components/primer/image_crop.rb
   parameters:
@@ -676,6 +688,11 @@
     type: Symbol
     default: "`:small`"
     description: One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`).
+  - name: use_symbol
+    type: Boolean
+    default: "`false`"
+    description: EXPERIMENTAL (May change or be removed) - Set to true when using
+      with [OcticonSymbols](/components/octiconsymbols).
   - name: system_arguments
     type: Hash
     default: N/A

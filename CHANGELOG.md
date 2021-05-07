@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.40
+
 ### New
 
 * Create `ImageCrop` component.
@@ -31,6 +33,10 @@
 * Fix `IconButton` raising when `aria-label` was provided using an object.
 
     *Manuel Puyol*
+
+* Fix disabling of default styles for `SpinnerComponent` via `nil` style parameter.
+
+    *Chris Wilson*
 
 ### Deprecations
 

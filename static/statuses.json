@@ -35,6 +35,7 @@
   "Primer::MenuComponent": "alpha",
   "Primer::Navigation::TabComponent": "alpha",
   "Primer::OcticonComponent": "beta",
+  "Primer::OcticonSymbolsComponent": "alpha",
   "Primer::PopoverComponent": "beta",
   "Primer::ProgressBarComponent": "beta",
   "Primer::SpinnerComponent": "beta",

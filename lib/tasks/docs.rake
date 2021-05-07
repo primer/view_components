@@ -48,6 +48,7 @@ namespace :docs do
     registry.load!(".yardoc")
     components = [
       Primer::LocalTime,
+      Primer::OcticonSymbolsComponent,
       Primer::ImageCrop,
       Primer::IconButton,
       Primer::AutoComplete,

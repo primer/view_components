@@ -72,6 +72,8 @@
       url: /components/markdown
     - title: Octicon
       url: /components/octicon
+    - title: OcticonSymbols
+      url: /components/octiconsymbols
     - title: Popover
       url: /components/popover
     - title: ProgressBar
