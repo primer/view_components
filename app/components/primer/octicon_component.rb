@@ -33,6 +33,13 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, use_symbol: false, **system_arguments)
       icon_key = icon_name || icon
+
+      # Don't allow sizes under 16px
+      if system_arguments[:height].present? && system_arguments[:height] < 16 || system_arguments[:width].present? && system_arguments[:width] < 16
+        system_arguments.delete(:height)
+        system_arguments.delete(:width)
+      end
+
       cache_key = Primer::Octicon::Cache.get_key(symbol: icon_key, size: size, **system_arguments.slice(:height, :width))
 
       @system_arguments = system_arguments
