@@ -45,7 +45,7 @@ Use `Flash` to inform users of successful or pending actions.
 <Example src="<div class='flash'>  <svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' height='16' width='16' class='octicon octicon-people'>    <path fill-rule='evenodd' d='M5.5 3.5a2 2 0 100 4 2 2 0 000-4zM2 5.5a3.5 3.5 0 115.898 2.549 5.507 5.507 0 013.034 4.084.75.75 0 11-1.482.235 4.001 4.001 0 00-7.9 0 .75.75 0 01-1.482-.236A5.507 5.507 0 013.102 8.05 3.49 3.49 0 012 5.5zM11 4a.75.75 0 100 1.5 1.5 1.5 0 01.666 2.844.75.75 0 00-.416.672v.352a.75.75 0 00.574.73c1.2.289 2.162 1.2 2.522 2.372a.75.75 0 101.434-.44 5.01 5.01 0 00-2.56-3.012A3 3 0 0011 4z'></path></svg>  This is a flash message with an icon!  </div>" />
 
 ```erb
-<%= render(Primer::FlashComponent.new(icon: "people")) { "This is a flash message with an icon!" } %>
+<%= render(Primer::FlashComponent.new(icon: :people)) { "This is a flash message with an icon!" } %>
 ```
 
 ### With actions
@@ -68,7 +68,7 @@ Use `Flash` to inform users of successful or pending actions.
 | `full` | `Boolean` | `false` | Whether the component should take up the full width of the screen. |
 | `spacious` | `Boolean` | `false` | Whether to add margin to the bottom of the component. |
 | `dismissible` | `Boolean` | `false` | Whether the component can be dismissed with an X button. |
-| `icon` | `String` | `nil` | Name of Octicon icon to use. |
+| `icon` | `Symbol` | `nil` | Name of Octicon icon to use. |
 | `scheme` | `Symbol` | `:default` | One of `:default`, `:warning`, `:danger`, or `:success`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 

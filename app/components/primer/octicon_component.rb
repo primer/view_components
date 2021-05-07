@@ -10,29 +10,24 @@ module Primer
 
     SIZE_DEFAULT = :small
     SIZE_MEDIUM = :medium
-    SIZE_LARGE = :large
 
     SIZE_MAPPINGS = {
       SIZE_DEFAULT => 16,
-      SIZE_MEDIUM => 32,
-      SIZE_LARGE => 64
+      SIZE_MEDIUM => 24
     }.freeze
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
     # @example Default
-    #   <%= render(Primer::OcticonComponent.new("check")) %>
-    #   <%= render(Primer::OcticonComponent.new(icon: "check")) %>
+    #   <%= render(Primer::OcticonComponent.new(:check)) %>
+    #   <%= render(Primer::OcticonComponent.new(icon: :check)) %>
     #
     # @example Medium
-    #   <%= render(Primer::OcticonComponent.new("people", size: :medium)) %>
-    #
-    # @example Large
-    #   <%= render(Primer::OcticonComponent.new("x", size: :large)) %>
+    #   <%= render(Primer::OcticonComponent.new(:people, size: :medium)) %>
     #
     # @example Helper
-    #   <%= primer_octicon("check") %>
+    #   <%= primer_octicon(:check) %>
     #
-    # @param icon [String] Name of <%= link_to_octicons %> to use.
+    # @param icon [Symbol] Name of <%= link_to_octicons %> to use.
     # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
     # @param use_symbol [Boolean] EXPERIMENTAL (May change or be removed) - Set to true when using with <%= link_to_component(Primer::OcticonSymbolsComponent) %>.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
