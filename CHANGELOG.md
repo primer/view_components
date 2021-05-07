@@ -2,6 +2,12 @@
 
 ## main
 
+### Breaking Changes
+
+* Remove `:large` size option from `OcticonComponent` and change `:medium` to 24px
+
+    *Jon Rohan*
+
 ## 0.0.40
 
 ### New
@@ -65,10 +71,6 @@
 * Rename `MarkdownComponent` to `Markdown`.
 
     *Manuel Puyol*
-
-* Remove `:large` size option from `OcticonComponent` and change `:medium` to 24px
-
-    *Jon Rohan*
 
 ## 0.0.39
 
