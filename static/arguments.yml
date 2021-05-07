@@ -634,7 +634,7 @@
   source: https://github.com/primer/view_components/tree/main/app/components/primer/octicon_component.rb
   parameters:
   - name: icon
-    type: String
+    type: Symbol
     default: "`nil`"
     description: Name of [Octicon](https://primer.style/octicons/) to use.
   - name: size
