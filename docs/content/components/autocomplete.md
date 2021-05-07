@@ -14,6 +14,10 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 Use `AutoComplete` to populate input values from server search results.
 
+## Accessibility
+
+Always provide a label for the `Autocomplete` component.
+
 ## Examples
 
 ### Default
