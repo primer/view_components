@@ -2,6 +2,8 @@
 
 module Primer
   # Use `AutoComplete` to populate input values from server search results.
+  # @accessibility
+  #   Always provide a label for the `Autocomplete` component.
   class AutoComplete < Primer::Component
     status :beta
 
