@@ -2,8 +2,6 @@
 
 ## main
 
-### Breaking Changes
-
 * Remove `:large` size option from `OcticonComponent` and change `:medium` to 24px
 
     *Jon Rohan*
