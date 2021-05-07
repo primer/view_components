@@ -50,7 +50,7 @@ class BlankslateComponentTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_an_icon
     render_inline(Primer::BlankslateComponent.new(
-                    icon: "octoface",
+                    icon: :octoface,
                     title: "Title"
                   ))
 
@@ -59,7 +59,7 @@ class BlankslateComponentTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_an_icon_with_a_custom_size
     render_inline(Primer::BlankslateComponent.new(
-                    icon: "octoface",
+                    icon: :octoface,
                     icon_size: :medium,
                     title: "Title"
                   ))
@@ -89,7 +89,7 @@ class BlankslateComponentTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_custom_content
     render_inline(Primer::BlankslateComponent.new(
-                    icon: "octoface",
+                    icon: :octoface,
                     title: "Title"
                   )) { "Custom content" }
 

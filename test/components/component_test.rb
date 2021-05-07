@@ -50,7 +50,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Markdown, {}],
     [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],
     [Primer::Navigation::TabComponent, {}],
-    [Primer::OcticonComponent, { icon: "people" }],
+    [Primer::OcticonComponent, { icon: :people }],
     [Primer::PopoverComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::ProgressBarComponent, {}, proc { |component| component.item }],
     [Primer::SpinnerComponent, {}],

@@ -18,14 +18,14 @@ module Primer
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
     # @example Default
-    #   <%= render(Primer::OcticonComponent.new("check")) %>
-    #   <%= render(Primer::OcticonComponent.new(icon: "check")) %>
+    #   <%= render(Primer::OcticonComponent.new(:check)) %>
+    #   <%= render(Primer::OcticonComponent.new(icon: :check)) %>
     #
     # @example Medium
-    #   <%= render(Primer::OcticonComponent.new("people", size: :medium)) %>
+    #   <%= render(Primer::OcticonComponent.new(:people, size: :medium)) %>
     #
     # @example Helper
-    #   <%= primer_octicon("check") %>
+    #   <%= primer_octicon(:check) %>
     #
     # @param icon [Symbol] Name of <%= link_to_octicons %> to use.
     # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>

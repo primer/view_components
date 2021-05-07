@@ -13,7 +13,7 @@ class Primer::Utilities::AnimationStories < ViewComponent::Storybook::Stories
     end
 
     content do |c|
-      c.render Primer::OcticonComponent.new(icon: "mark-github", size: :medium)
+      c.render Primer::OcticonComponent.new(icon: :"mark-github", size: :medium)
     end
   end
 end
