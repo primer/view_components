@@ -14,14 +14,14 @@ class PrimerLocalTimeTest < Minitest::Test
   def test_all_options
     render_inline Primer::LocalTime.new(
       datetime: DateTime.parse("2016-06-01T13:05:07Z"),
-      weekday: "long",
-      year: "2-digit",
-      month: "long",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      time_zone_name: "long"
+      weekday: :long,
+      year: :"2-digit",
+      month: :long,
+      day: :"2-digit",
+      hour: :"2-digit",
+      minute: :"2-digit",
+      second: :"2-digit",
+      time_zone_name: :long
     )
 
     assert_selector("local-time[weekday=\"long\"][datetime=\"2016-06-01T13:05:07+00:00\"][year=\"2-digit\"][month=\"long\"][day=\"2-digit\"][hour=\"2-digit\"][minute=\"2-digit\"][second=\"2-digit\"][time-zone-name=\"long\"]", text: "June 1, 2016 13:05 +00:00")
