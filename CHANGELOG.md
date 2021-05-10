@@ -6,6 +6,10 @@
 
     *Kristján Oddsson*
 
+* Remove `:large` size option from `OcticonComponent` and change `:medium` to 24px
+
+    *Jon Rohan*
+
 ## 0.0.40
 
 ### New
