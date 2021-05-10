@@ -30,7 +30,7 @@ module Primer
       @system_arguments = system_arguments
       @system_arguments[:tag] = "image-crop"
       @system_arguments[:src] = src
-      @system_arguments[:rounded] = rounded
+      @system_arguments[:rounded] = true if rounded
     end
   end
 end

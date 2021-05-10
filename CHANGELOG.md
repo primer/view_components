@@ -2,6 +2,10 @@
 
 ## main
 
+* Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.
+
+    *Kristján Oddsson*
+
 * Remove `:large` size option from `OcticonComponent` and change `:medium` to 24px
 
     *Jon Rohan*
