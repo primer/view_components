@@ -2,7 +2,7 @@
 
 ## main
 
-* Don't set boolean attribute to false
+* Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.
 
     *Kristján Oddsson*
 
