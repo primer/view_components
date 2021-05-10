@@ -3,11 +3,11 @@
 module Primer
   # Use `LocalTime` to format a date and time in the user's preferred locale format. This component requires JavaScript.
   class LocalTime < Primer::Component
-    DEFAULT_DIGIT_TYPE = "numeric"
-    DIGIT_TYPE_OPTIONS = [DEFAULT_DIGIT_TYPE, "2-digit"].freeze
+    DEFAULT_DIGIT_TYPE = :numeric
+    DIGIT_TYPE_OPTIONS = [DEFAULT_DIGIT_TYPE, :2_digit].freeze
 
-    DEFAULT_TEXT_TYPE = "short"
-    TEXT_TYPE_OPTIONS = [DEFAULT_TEXT_TYPE, "long"].freeze
+    DEFAULT_TEXT_TYPE = :short
+    TEXT_TYPE_OPTIONS = [DEFAULT_TEXT_TYPE, :long].freeze
 
     # @example Default
     #   <%= render(Primer::LocalTime.new(datetime: DateTime.parse("2014-06-01T13:05:07Z"))) %>
