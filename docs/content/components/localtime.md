@@ -29,7 +29,7 @@ Use `LocalTime` to format a date and time in the user's preferred locale format.
 <Example src="<local-time datetime='2014-06-01T13:05:07+00:00' weekday='long' year='2-digit' month='long' day='2-digit' hour='2-digit' minute='2-digit' second='2-digit' time-zone-name='long'>    June 1, 2014 13:05 +00:00</local-time>" />
 
 ```erb
-<%= render(Primer::LocalTime.new(datetime: DateTime.parse("2014-06-01T13:05:07Z"), weekday: "long", year: "2-digit", month: "long", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", time_zone_name: "long")) %>
+<%= render(Primer::LocalTime.new(datetime: DateTime.parse("2014-06-01T13:05:07Z"), weekday: :long, year: :"2-digit", month: :long, day: :"2-digit", hour: :"2-digit", minute: :"2-digit", second: :"2-digit", time_zone_name: :long)) %>
 ```
 
 ### With initial content
@@ -48,12 +48,12 @@ Use `LocalTime` to format a date and time in the user's preferred locale format.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `datetime` | `DateTime` | N/A | The date to parse |
-| `weekday` | `Symbol` | `short` | One of `short` and `long`. |
-| `year` | `Symbol` | `numeric` | One of `numeric` and `2-digit`. |
-| `month` | `Symbol` | `short` | One of `short` and `long`. |
-| `day` | `Symbol` | `numeric` | One of `numeric` and `2-digit`. |
-| `hour` | `Symbol` | `numeric` | One of `numeric` and `2-digit`. |
-| `minute` | `Symbol` | `numeric` | One of `numeric` and `2-digit`. |
-| `second` | `Symbol` | `numeric` | One of `numeric` and `2-digit`. |
-| `time_zone_name` | `Symbol` | `short` | One of `short` and `long`. |
+| `weekday` | `Symbol` | `:short` | One of `:short` and `:long`. |
+| `year` | `Symbol` | `:numeric` | One of `:numeric` and `:2-digit`. |
+| `month` | `Symbol` | `:short` | One of `:short` and `:long`. |
+| `day` | `Symbol` | `:numeric` | One of `:numeric` and `:2-digit`. |
+| `hour` | `Symbol` | `:numeric` | One of `:numeric` and `:2-digit`. |
+| `minute` | `Symbol` | `:numeric` | One of `:numeric` and `:2-digit`. |
+| `second` | `Symbol` | `:numeric` | One of `:numeric` and `:2-digit`. |
+| `time_zone_name` | `Symbol` | `:short` | One of `:short` and `:long`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

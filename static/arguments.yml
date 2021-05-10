@@ -8,36 +8,36 @@
     description: The date to parse
   - name: weekday
     type: Symbol
-    default: "`short`"
-    description: One of `short` and `long`.
+    default: "`:short`"
+    description: One of `:short` and `:long`.
   - name: year
     type: Symbol
-    default: "`numeric`"
-    description: One of `numeric` and `2-digit`.
+    default: "`:numeric`"
+    description: One of `:numeric` and `:2-digit`.
   - name: month
     type: Symbol
-    default: "`short`"
-    description: One of `short` and `long`.
+    default: "`:short`"
+    description: One of `:short` and `:long`.
   - name: day
     type: Symbol
-    default: "`numeric`"
-    description: One of `numeric` and `2-digit`.
+    default: "`:numeric`"
+    description: One of `:numeric` and `:2-digit`.
   - name: hour
     type: Symbol
-    default: "`numeric`"
-    description: One of `numeric` and `2-digit`.
+    default: "`:numeric`"
+    description: One of `:numeric` and `:2-digit`.
   - name: minute
     type: Symbol
-    default: "`numeric`"
-    description: One of `numeric` and `2-digit`.
+    default: "`:numeric`"
+    description: One of `:numeric` and `:2-digit`.
   - name: second
     type: Symbol
-    default: "`numeric`"
-    description: One of `numeric` and `2-digit`.
+    default: "`:numeric`"
+    description: One of `:numeric` and `:2-digit`.
   - name: time_zone_name
     type: Symbol
-    default: "`short`"
-    description: One of `short` and `long`.
+    default: "`:short`"
+    description: One of `:short` and `:long`.
   - name: system_arguments
     type: Hash
     default: N/A
