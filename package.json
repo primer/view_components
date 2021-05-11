@@ -33,6 +33,7 @@
     "@github/clipboard-copy-element": "^1.1.2",
     "@github/image-crop-element": "^5.0.0",
     "@github/tab-container-element": "^3.1.0",
+    "@github/task-lists-element": "^2.0.0",
     "@github/time-elements": "^3.1.2"
   },
   "devDependencies": {

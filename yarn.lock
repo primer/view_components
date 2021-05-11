@@ -71,6 +71,11 @@
   resolved "https://registry.npmjs.org/@github/tab-container-element/-/tab-container-element-3.1.0.tgz"
   integrity sha512-C/HmAxRieqQK1MR58cT3M+GuuuqGIZdCzWd8UiOayLixpnOMSkiWDrGVJe1LpFWWOHKAcwA0LGilcIb+SJ5ZWw==
 
+"@github/task-lists-element@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@github/task-lists-element/-/task-lists-element-2.0.0.tgz#fee374424536b3316cc1c519340aac725dcc9749"
+  integrity sha512-6PZoVoDASesHKSEXV22+2yPlNDsxyPqfon3VyUj5s+/bYqsgCJPfQxkuw4m+vei21qVP3MJigBsi7voyRe328w==
+
 "@github/time-elements@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@github/time-elements/-/time-elements-3.1.2.tgz#cc36d7a34ff2033d7f0b216f1a724405b8fbc201"
