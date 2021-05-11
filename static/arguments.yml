@@ -210,13 +210,13 @@
     default: "`:h3`"
     description: HTML tag to use for title.
   - name: icon
-    type: String
+    type: Symbol
     default: '`""`'
     description: Octicon icon to use at top of component.
   - name: icon_size
     type: Symbol
     default: "`:medium`"
-    description: One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`).
+    description: One of `:small` (`16`) and `:medium` (`24`).
   - name: image_src
     type: String
     default: '`""`'
@@ -482,7 +482,7 @@
     default: "`false`"
     description: Whether the component can be dismissed with an X button.
   - name: icon
-    type: String
+    type: Symbol
     default: "`nil`"
     description: Name of Octicon icon to use.
   - name: scheme
@@ -677,13 +677,13 @@
   source: https://github.com/primer/view_components/tree/main/app/components/primer/octicon_component.rb
   parameters:
   - name: icon
-    type: String
+    type: Symbol
     default: "`nil`"
     description: Name of [Octicon](https://primer.style/octicons/) to use.
   - name: size
     type: Symbol
     default: "`:small`"
-    description: One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`).
+    description: One of `:small` (`16`) and `:medium` (`24`).
   - name: use_symbol
     type: Boolean
     default: "`false`"

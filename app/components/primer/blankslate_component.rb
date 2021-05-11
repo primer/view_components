@@ -25,7 +25,7 @@ module Primer
     #
     # @example Icon|Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
     #   <%= render Primer::BlankslateComponent.new(
-    #     icon: "octoface",
+    #     icon: :globe,
     #     title: "Title",
     #     description: "Description",
     #   ) %>
@@ -47,7 +47,7 @@ module Primer
     #
     # @example Action button|Provide a button to guide users to take action from the blankslate. The button appears below the description and custom content.
     #   <%= render Primer::BlankslateComponent.new(
-    #     icon: "book",
+    #     icon: :book,
     #     title: "Welcome to the mona wiki!",
     #     description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
     #
@@ -57,7 +57,7 @@ module Primer
     #
     # @example Link|Add an additional link to help users learn more about a feature. The link will be shown at the very bottom:
     #   <%= render Primer::BlankslateComponent.new(
-    #     icon: "book",
+    #     icon: :book,
     #     title: "Welcome to the mona wiki!",
     #     description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
     #     link_text: "Learn more about wikis",
@@ -66,7 +66,7 @@ module Primer
     #
     # @example Variations|There are a few variations of how the Blankslate appears: `narrow` adds a maximum width, `large` increases the font size, and `spacious` adds extra padding.
     #   <%= render Primer::BlankslateComponent.new(
-    #     icon: "book",
+    #     icon: :book,
     #     title: "Welcome to the mona wiki!",
     #     description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
     #     narrow: true,
@@ -76,7 +76,7 @@ module Primer
     #
     # @param title [String] Text that appears in a larger bold font.
     # @param title_tag [Symbol] HTML tag to use for title.
-    # @param icon [String] Octicon icon to use at top of component.
+    # @param icon [Symbol] Octicon icon to use at top of component.
     # @param icon_size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
     # @param image_src [String] Image to display.
     # @param image_alt [String] Alt text for image.
