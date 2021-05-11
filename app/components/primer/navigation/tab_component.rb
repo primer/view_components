@@ -5,6 +5,8 @@ module Primer
     # This component is part of navigation components such as `Primer::TabNavComponent`
     # and `Primer::UnderlineNavComponent` and should not be used by itself.
     class TabComponent < Primer::Component
+      DEFAULT_ARIA_CURRENT = :page
+      ARIA_CURRENT_OPTIONS = [true, DEFAULT_ARIA_CURRENT].freeze
       # Panel controlled by the Tab. This will not render anything in the tab itself.
       # It will provide a accessor for the Tab's parent to call and render the panel
       # content in the appropriate place.
@@ -105,7 +107,8 @@ module Primer
         return unless @selected
 
         if @system_arguments[:tag] == :a
-          @system_arguments[:"aria-current"] = :page
+          aria_current = @system_arguments[:"aria-current"] || @system_arguments.dig(:aria, :current) || DEFAULT_ARIA_CURRENT
+          @system_arguments[:"aria-current"] = fetch_or_fallback(ARIA_CURRENT_OPTIONS, aria_current, DEFAULT_ARIA_CURRENT)
         else
           @system_arguments[:"aria-selected"] = true
         end

@@ -122,4 +122,26 @@ class PrimerNavigationTabComponentTest < Minitest::Test
     end
     refute_selector("a[role='tab']")
   end
+
+  def test_accepts_aria_current_true
+    render_inline Primer::Navigation::TabComponent.new(selected: true, "aria-current": true) do |c|
+      c.text { "Title" }
+    end
+
+    assert_selector("a[aria-current='true']") do
+      assert_selector("span", text: "Title")
+    end
+    refute_selector("a[role='tab']")
+  end
+
+  def test_accepts_aria_current_true_as_object
+    render_inline Primer::Navigation::TabComponent.new(selected: true, aria: { current: true }) do |c|
+      c.text { "Title" }
+    end
+
+    assert_selector("a[aria-current='true']") do
+      assert_selector("span", text: "Title")
+    end
+    refute_selector("a[role='tab']")
+  end
 end

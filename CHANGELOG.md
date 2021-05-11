@@ -2,9 +2,19 @@
 
 ## main
 
+### Accessibility
+
+* Accept `aria-current="true"` in tabbed components.
+
+    *Manuel Puyol*
+
+### Bug fixes
+
 * Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.
 
     *Kristján Oddsson*
+
+### Breaking changes
 
 * Remove `:large` size option from `OcticonComponent` and change `:medium` to 24px
 
