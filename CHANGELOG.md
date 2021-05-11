@@ -2,6 +2,10 @@
 
 ## main
 
+* Create `LocalTime` component.
+
+    *Kristján Oddsson*
+
 ## 0.0.40
 
 ### New
@@ -11,10 +15,6 @@
     *Kristján Oddsson*
 
 ### Changes
-
-* Create `LocalTime` component.
-
-    *Kristján Oddsson*
 
 * Promote `IconButton` to beta.
 
