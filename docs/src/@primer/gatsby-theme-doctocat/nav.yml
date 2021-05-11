@@ -66,6 +66,8 @@
       url: /components/layout
     - title: Link
       url: /components/link
+    - title: LocalTime
+      url: /components/localtime
     - title: Menu
       url: /components/menu
     - title: Markdown
@@ -100,5 +102,3 @@
       url: /components/truncate
     - title: UnderlineNav
       url: /components/underlinenav
-    - title: LocalTime - Fix my order in docs/src/@primer/gatsby-theme-doctocat/nav.yml
-      url: /components/localtime
