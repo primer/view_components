@@ -1,7 +1,0 @@
-<%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <% if content.present? %>
-    <%= content %>
-  <% else %>
-    <%= @datetime.strftime("%B %-d, %Y %H:%M %Z") %>
-  <% end %>
-<% end %>

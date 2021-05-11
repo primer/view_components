@@ -48,5 +48,11 @@ module Primer
       @system_arguments[:second] = fetch_or_fallback(DIGIT_TYPE_OPTIONS, second, DEFAULT_DIGIT_TYPE)
       @system_arguments[:"time-zone-name"] = fetch_or_fallback(TEXT_TYPE_OPTIONS, time_zone_name, DEFAULT_TEXT_TYPE)
     end
+
+    def call
+      render(Primer::BaseComponent.new(**@system_arguments)) do
+        content || @datetime.strftime("%B %-d, %Y %H:%M %Z")
+      end
+    end
   end
 end
