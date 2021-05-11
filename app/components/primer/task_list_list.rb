@@ -4,22 +4,19 @@ module Primer
   # Add a general description of component here
   # Add additional usage considerations or best practices that may aid the user to use the component correctly.
   # @accessibility Add any accessibility considerations
-  class TaskList < Primer::Component
-    renders_many :lists, Primer::TaskListList
+  class TaskListList < Primer::Component
+    renders_many :items, Primer::TaskListItem
 
     # @example Example goes here
     #
-    #   <%= render(Primer::TaskList.new) do |component| %>
-    #     <% component.lists([{content: "Item"}]) %>
-    #   <% end %>
-    #
-    # @param sortable [Boolean] TODO
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(sortable: false, **system_arguments)
+    def initialize(**system_arguments)
       @system_arguments = system_arguments
 
-      @system_arguments[:tag] = :"task-lists"
-      @system_arguments[:sortable] = true if sortable
+      @system_arguments[:tag] = :ul
+      @system_arguments[:classes] = class_names(system_arguments[:classes], "contains-task-list")
+
+      Primer::BaseComponent.new(**@system_arguments)
     end
   end
 end
