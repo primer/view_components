@@ -45,6 +45,7 @@
   "Primer::TabNavComponent": "alpha",
   "Primer::TaskList": "alpha",
   "Primer::TaskListItem": "alpha",
+  "Primer::TaskListList": "alpha",
   "Primer::TextComponent": "beta",
   "Primer::TimeAgoComponent": "beta",
   "Primer::TimelineItemComponent": "beta",
