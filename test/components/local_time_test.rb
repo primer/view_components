@@ -28,9 +28,7 @@ class PrimerLocalTimeTest < Minitest::Test
   end
 
   def test_contents
-    render_inline Primer::LocalTime.new(datetime: DateTime.parse("2014-06-01T13:05:07Z")) do
-      "2014/06/01 13:05"
-    end
+    render_inline Primer::LocalTime.new(datetime: DateTime.parse("2014-06-01T13:05:07Z"), initial_text: "2014/06/01 13:05")
 
     assert_selector("local-time[datetime=\"2014-06-01T13:05:07+00:00\"][year=\"numeric\"][month=\"short\"][day=\"numeric\"][hour=\"numeric\"][minute=\"numeric\"][second=\"numeric\"]", text: "2014/06/01 13:05")
   end

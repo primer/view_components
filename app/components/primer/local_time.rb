@@ -22,6 +22,7 @@ module Primer
     #   <% end %>
     #
     # @param datetime [DateTime] The date to parse
+    # @param initial_text [String] Text to render before component is initialized
     # @param weekday [Symbol] <%= one_of(Primer::LocalTime::TEXT_TYPE_OPTIONS) %>
     # @param year [Symbol] <%= one_of(Primer::LocalTime::DIGIT_TYPE_OPTIONS) %>
     # @param month [Symbol] <%= one_of(Primer::LocalTime::TEXT_TYPE_OPTIONS) %>
@@ -31,13 +32,15 @@ module Primer
     # @param second [Symbol] <%= one_of(Primer::LocalTime::DIGIT_TYPE_OPTIONS) %>
     # @param time_zone_name [Symbol] <%= one_of(Primer::LocalTime::TEXT_TYPE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(datetime:, weekday: DEFAULT_TEXT_TYPE, year: DEFAULT_DIGIT_TYPE, month: DEFAULT_TEXT_TYPE, day: DEFAULT_DIGIT_TYPE, hour: DEFAULT_DIGIT_TYPE, minute: DEFAULT_DIGIT_TYPE, second: DEFAULT_DIGIT_TYPE, time_zone_name: DEFAULT_TEXT_TYPE, **system_arguments)
+    def initialize(datetime:, initial_text: nil, weekday: DEFAULT_TEXT_TYPE, year: DEFAULT_DIGIT_TYPE, month: DEFAULT_TEXT_TYPE, day: DEFAULT_DIGIT_TYPE, hour: DEFAULT_DIGIT_TYPE, minute: DEFAULT_DIGIT_TYPE, second: DEFAULT_DIGIT_TYPE, time_zone_name: DEFAULT_TEXT_TYPE, **system_arguments)
       @system_arguments = system_arguments
 
       @datetime = datetime
 
       @system_arguments[:tag] = "local-time"
       @system_arguments[:datetime] = datetime
+
+      @initial_text = initial_text
 
       @system_arguments[:weekday] = fetch_or_fallback(TEXT_TYPE_OPTIONS, weekday, DEFAULT_TEXT_TYPE)
       @system_arguments[:year] = fetch_or_fallback(DIGIT_TYPE_OPTIONS, year, DEFAULT_DIGIT_TYPE)
@@ -50,9 +53,7 @@ module Primer
     end
 
     def call
-      render(Primer::BaseComponent.new(**@system_arguments)) do
-        content || @datetime.strftime("%B %-d, %Y %H:%M %Z")
-      end
+      render(Primer::BaseComponent.new(**@system_arguments).with_content(@initial_text || @datetime.strftime("%B %-d, %Y %H:%M %Z")))
     end
   end
 end
