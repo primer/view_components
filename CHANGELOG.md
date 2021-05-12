@@ -14,6 +14,12 @@
 
     *Jon Rohan*
 
+### Breaking Changes
+
+* Restrict `Label` tag to `span`, `div`, `a`, `summary`.
+
+    *Kate Higa*
+
 ## 0.0.40
 
 ### New

@@ -570,6 +570,10 @@
 - component: Label
   source: https://github.com/primer/view_components/tree/main/app/components/primer/label_component.rb
   parameters:
+  - name: tag
+    type: Symbol
+    default: "`:span`"
+    description: One of `:span`, `:summary`, `:a`, or `:div`.
   - name: title
     type: String
     default: N/A
