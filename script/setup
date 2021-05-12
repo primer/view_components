@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Gems
 bundle install --path vendor/bundle
