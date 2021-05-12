@@ -40,6 +40,7 @@ Use `Label` to add contextual metadata to a design.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `tag` | `Symbol` | `:span` | One of `:span`, `:summary`, `:a`, or `:div`. |
 | `title` | `String` | N/A | `title` attribute for the component element. |
 | `scheme` | `Symbol` | `nil` | One of `:primary`, `:secondary`, `:info`, `:success`, `:warning`, `:danger`, `:orange`, or `:purple`. |
 | `variant` | `Symbol` | `nil` | One of `:large`, `:inline`, or `nil`. |
