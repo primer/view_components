@@ -34,7 +34,7 @@ Use `LocalTime` to format a date and time in the user's preferred locale format.
 
 ### With initial content
 
-<Example src="<local-time datetime='2014-06-01T13:05:07+00:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>  <!-- This content will be replaced once the component connects -->  2014/06/01 13:05</local-time>" />
+<Example src="<local-time datetime='2014-06-01T13:05:07+00:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>June 1, 2014 13:05 +00:00</local-time>" />
 
 ```erb
 <%= render(Primer::LocalTime.new(datetime: DateTime.parse("2014-06-01T13:05:07Z"))) do %>
@@ -48,6 +48,7 @@ Use `LocalTime` to format a date and time in the user's preferred locale format.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `datetime` | `DateTime` | N/A | The date to parse |
+| `initial_text` | `String` | `nil` | Text to render before component is initialized |
 | `weekday` | `Symbol` | `:short` | One of `:short` and `:long`. |
 | `year` | `Symbol` | `:numeric` | One of `:numeric` and `:2-digit`. |
 | `month` | `Symbol` | `:short` | One of `:short` and `:long`. |

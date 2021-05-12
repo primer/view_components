@@ -6,6 +6,10 @@
     type: DateTime
     default: N/A
     description: The date to parse
+  - name: initial_text
+    type: String
+    default: "`nil`"
+    description: Text to render before component is initialized
   - name: weekday
     type: Symbol
     default: "`:short`"
