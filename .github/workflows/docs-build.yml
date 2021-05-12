@@ -40,13 +40,15 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+      - name: Install @axe-core/cli globally
+        run: |
+          yarn global add @axe-core/cli
+          echo "$(yarn global bin)" >> $GITHUB_PATH
       - name: Run docs
         run: |
           cd docs
           yarn
           yarn develop & npx wait-on http://localhost:8000
-      - name: Run axe on examples for changed components
+      - name: Run axe for examples for changed components
         run: |
-          yarn global add @axe-core/cli
-          echo "$(yarn global bin)" >> $GITHUB_PATH
-          axe http://localhost:8000/components/autocompleteitem -i .frame-example --exit
+          axe http://localhost:8000/components/autocompleteitem --exit
