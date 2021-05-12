@@ -40,9 +40,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-      - name: Install @axe-core/cli globally
-        run: |
-          sudo yarn global add @axe-core/cli
       - name: Run docs
         run: |
           cd docs
@@ -50,4 +47,5 @@ jobs:
           yarn develop & npx wait-on http://localhost:8000
       - name: Run axe for examples for changed components
         run: |
+          npm install -g @axe-core/cli
           axe http://localhost:8000/components/autocompleteitem --exit
