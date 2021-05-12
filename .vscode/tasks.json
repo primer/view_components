@@ -4,8 +4,6 @@
 // to stop using defaults: git update-index --skip-worktree .vscode/tasks.json
 // go back to using defaults: git update-index --no-skip-worktree .vscode/tasks.json
 {
-  // See https://go.microsoft.com/fwlink/?LinkId=733558
-  // for the documentation about the tasks.json format
   "version": "2.0.0",
   "tasks": [
     {
