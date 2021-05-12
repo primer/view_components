@@ -5,7 +5,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/ruby:0-${VARIANT}
 ARG INSTALL_NODE="true"
 ARG NODE_VERSION="lts/*"
 
-# OS packages required for chrome
+# OS packages required to run the application
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \
       fonts-liberation \
@@ -30,14 +30,20 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
       libxkbcommon0 \
       libxrandr2 \
       libxshmfence1 \
-      xdg-utils
+      xdg-utils \
+      tmux
+
+# Install overmind
+RUN curl --fail --location --output /usr/bin/overmind.gz https://github.com/DarthSim/overmind/releases/download/v2.1.0/overmind-v2.1.0-linux-amd64.gz && \
+      gunzip /usr/bin/overmind.gz && \
+      chmod +x /usr/bin/overmind
 
 # Install Node.js
 RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
-# Install bundler
+# Install gems
 ARG BUNDLER_VERSION=2.2.11
-RUN gem install bundler:${BUNDLER_VERSION}
+RUN gem install bundler:${BUNDLER_VERSION} solargraph
 
 # Install yarn
 RUN npm install -g yarn
@@ -49,6 +55,3 @@ RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-
       && sudo sed -i 's|HERE/chrome"|HERE/chrome" --disable-setuid-sandbox --no-sandbox|g' \
            "/opt/google/chrome/google-chrome" \
       && google-chrome --version
-
-RUN ls
-RUN ls /
