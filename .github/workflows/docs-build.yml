@@ -42,8 +42,7 @@ jobs:
           node-version: 14
       - name: Install @axe-core/cli globally
         run: |
-          yarn global add @axe-core/cli
-          echo "$(yarn global bin)" >> $GITHUB_PATH
+          sudo yarn global add @axe-core/cli
       - name: Run docs
         run: |
           cd docs
