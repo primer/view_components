@@ -2,6 +2,10 @@
 
 ## main
 
+* Add `extra` slot to `TabNav`.
+
+    *Manuel Puyol*
+
 * Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.
 
     *Kristján Oddsson*
