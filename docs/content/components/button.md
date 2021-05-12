@@ -18,7 +18,6 @@ Use `Button` for actions (e.g. in forms). Use links for destinations, or moving 
 <Example src="<button type='button' data-view-component='true' class='btn'>    Default  </button><button type='button' data-view-component='true' class='btn-primary btn'>    Primary  </button><button type='button' data-view-component='true' class='btn-danger btn'>    Danger  </button><button type='button' data-view-component='true' class='btn-outline btn'>    Outline  </button><button type='button' data-view-component='true' class='btn-invisible btn'>    Invisible  </button><button type='button' data-view-component='true' class='btn-link'>    Link  </button>" />
 
 ```erb
-<%= render(Primer::ButtonComponent.new) { "Default" } %>
 <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
 <%= render(Primer::ButtonComponent.new(scheme: :danger)) { "Danger" } %>
 <%= render(Primer::ButtonComponent.new(scheme: :outline)) { "Outline" } %>

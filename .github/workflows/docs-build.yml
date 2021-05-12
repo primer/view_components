@@ -39,13 +39,22 @@ jobs:
       - name: Set up node js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 15
       - name: Run docs
         run: |
           cd docs
           yarn
           yarn develop & npx wait-on http://localhost:8000
-      - name: Run axe for examples for changed components
+      - name: Run axe on examples on updated component docs
         run: |
           npm install -g @axe-core/cli
-          axe http://localhost:8000/components/autocompleteitem --exit
+          updated_doc_files=`git diff --name-only -- docs/content/components/  main...`
+          files=$(basename -- "$updated_doc_files")
+          components="${files%.*}"
+          doc_urls=("${components[@]/#/http://localhost:8000/components/}")
+          axe $doc_urls -i .frame-example --save docs-check.json
+      - name: Upload @axe-core/cli check results
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          path: docs-check.json
