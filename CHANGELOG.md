@@ -2,6 +2,10 @@
 
 ## main
 
+* Add a CI check for changes to the CHANGELOG file.
+
+    *Kristján Oddsson*
+
 * Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.
 
     *Kristján Oddsson*
