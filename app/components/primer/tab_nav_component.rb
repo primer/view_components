@@ -22,6 +22,9 @@ module Primer
       )
     }
 
+    # Renders extra content to the `TabNav`. This will be rendered after the tabs.
+    renders_one :extra
+
     # @example Default
     #   <%= render(Primer::TabNavComponent.new(label: "Default")) do |c| %>
     #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
@@ -65,6 +68,16 @@ module Primer
     #       <% t.panel do %>
     #         Panel 3
     #       <% end %>
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example With extra content
+    #   <%= render(Primer::TabNavComponent.new(label: "Default")) do |c| %>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(href: "#") { "Tab 2" } %>
+    #     <% c.tab(href: "#") { "Tab 3" } %>
+    #     <% c.extra do %>
+    #       <%= render(Primer::ButtonComponent.new(float: :right)) { "Button" } %>
     #     <% end %>
     #   <% end %>
     #
