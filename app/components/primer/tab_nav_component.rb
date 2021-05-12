@@ -71,9 +71,10 @@ module Primer
     # @param label [String] Used to set the `aria-label` on the top level `<nav>` element.
     # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(label:, with_panel: false, **system_arguments)
+    def initialize(label:, with_panel: false, body_arguments: {}, **system_arguments)
       @with_panel = with_panel
       @system_arguments = system_arguments
+      @body_arguments = body_arguments
 
       @system_arguments[:tag] ||= :div
       @system_arguments[:classes] = class_names(
@@ -81,15 +82,13 @@ module Primer
         system_arguments[:classes]
       )
 
-      @body_arguments = {
-        tag: navigation_tag(with_panel),
-        classes: "tabnav-tabs",
-        aria: {
-          label: label
-        }
-      }
-
+      @body_arguments[:tag] = navigation_tag(with_panel)
+      @body_arguments[:"aria-label"] = label
       @body_arguments[:role] = :tablist if @with_panel
+      @body_arguments[:classes] = class_names(
+        "tabnav-tabs",
+        body_arguments[:classes]
+      )
     end
   end
 end
