@@ -83,6 +83,7 @@ module Primer
     #
     # @param label [String] Used to set the `aria-label` on the top level `<nav>` element.
     # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
+    # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(label:, with_panel: false, body_arguments: {}, **system_arguments)
       @with_panel = with_panel
