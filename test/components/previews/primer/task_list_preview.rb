@@ -6,7 +6,7 @@ module Primer
       render(Primer::TaskList.new) do |component|
         component.list do |list|
           list.item do
-            "Foobar"
+            "Item 1"
           end
         end
       end

@@ -15,8 +15,6 @@ module Primer
 
       @system_arguments[:tag] = :ul
       @system_arguments[:classes] = class_names(system_arguments[:classes], "contains-task-list")
-
-      Primer::BaseComponent.new(**@system_arguments)
     end
   end
 end
