@@ -8,6 +8,10 @@
 
     *Kristján Oddsson*
 
+* Create `Image` component.
+
+    *Manuel Puyol*
+
 ### Bug fixes
 
 * Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.
