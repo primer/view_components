@@ -14,8 +14,8 @@ and `Primer::UnderlineNavComponent` and should not be used by itself.
 
 ## Accessibility
 
-`TabComponent` renders the selected anchor tab with `aria-current="page"` by default. When using nested
-tabs, make sure to use `aria-current="true"` on the inner tabs.
+`TabComponent` renders the selected anchor tab with `aria-current="page"` by default.
+ When the selected tab does not correspond to the current page, such as in a nested inner tab, make sure to use aria-current="true"
 
 ## Examples
 
