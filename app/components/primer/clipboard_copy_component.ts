@@ -23,7 +23,6 @@ function toggleCopyButton(button: HTMLElement) {
 const clipboardCopyElementTimers = new WeakMap<HTMLElement, number>()
 
 document.addEventListener('clipboard-copy[data-view-component]', function ({target}) {
-  console.log("lol")
   if (!(target instanceof HTMLElement)) return
 
   const currentTimeout = clipboardCopyElementTimers.get(target)
