@@ -102,3 +102,5 @@
       url: /components/truncate
     - title: UnderlineNav
       url: /components/underlinenav
+    - title: Image - Fix my order in docs/src/@primer/gatsby-theme-doctocat/nav.yml
+      url: /components/image
