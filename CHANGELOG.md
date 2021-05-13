@@ -2,6 +2,12 @@
 
 ## main
 
+### New
+
+* Create `LocalTime` component.
+
+    *Kristján Oddsson*
+
 ### Accessibility
 
 * Accept `aria-current="true"` in tabbed components.
@@ -19,6 +25,18 @@
 * Remove `:large` size option from `OcticonComponent` and change `:medium` to 24px
 
     *Jon Rohan*
+
+### Breaking Changes
+
+* Restrict `Label` tag to `span`, `div`, `a`, `summary`.
+
+    *Kate Higa*
+
+### Misc
+
+* Add a CI check for changes to the CHANGELOG file.
+
+    *Kristján Oddsson*
 
 ## 0.0.40
 

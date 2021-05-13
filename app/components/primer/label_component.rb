@@ -5,6 +5,9 @@ module Primer
   class LabelComponent < Primer::Component
     status :beta
 
+    DEFAULT_TAG = :span
+    TAG_OPTIONS = [DEFAULT_TAG, :summary, :a, :div].freeze
+
     SCHEME_MAPPINGS = {
       primary: "Label--primary",
       secondary: "Label--secondary",
@@ -38,13 +41,14 @@ module Primer
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>
     #   <%= render(Primer::LabelComponent.new(title: "Label: Label", variant: :large)) { "Large" } %>
     #
+    # @param tag [Symbol] <%= one_of(Primer::LabelComponent::TAG_OPTIONS) %>
     # @param title [String] `title` attribute for the component element.
     # @param scheme [Symbol] <%= one_of(Primer::LabelComponent::SCHEME_MAPPINGS.keys) %>
     # @param variant [Symbol] <%= one_of(Primer::LabelComponent::VARIANT_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(title:, scheme: nil, variant: nil, **system_arguments)
+    def initialize(tag: DEFAULT_TAG, title:, scheme: nil, variant: nil, **system_arguments)
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :span
+      @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
       @system_arguments[:title] = title
       @system_arguments[:classes] = class_names(
         "Label",
