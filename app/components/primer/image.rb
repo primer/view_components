@@ -13,5 +13,9 @@ module Primer
     def initialize(**system_arguments)
       @system_arguments = system_arguments
     end
+
+    def call
+      render(Primer::BaseComponent.new(**@system_arguments))
+    end
   end
 end
