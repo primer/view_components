@@ -1,4 +1,51 @@
 ---
+- component: LocalTime
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/local_time.rb
+  parameters:
+  - name: datetime
+    type: DateTime
+    default: N/A
+    description: The date to parse
+  - name: initial_text
+    type: String
+    default: "`nil`"
+    description: Text to render before component is initialized
+  - name: weekday
+    type: Symbol
+    default: "`:short`"
+    description: One of `:short` and `:long`.
+  - name: year
+    type: Symbol
+    default: "`:numeric`"
+    description: One of `:numeric` and `:2-digit`.
+  - name: month
+    type: Symbol
+    default: "`:short`"
+    description: One of `:short` and `:long`.
+  - name: day
+    type: Symbol
+    default: "`:numeric`"
+    description: One of `:numeric` and `:2-digit`.
+  - name: hour
+    type: Symbol
+    default: "`:numeric`"
+    description: One of `:numeric` and `:2-digit`.
+  - name: minute
+    type: Symbol
+    default: "`:numeric`"
+    description: One of `:numeric` and `:2-digit`.
+  - name: second
+    type: Symbol
+    default: "`:numeric`"
+    description: One of `:numeric` and `:2-digit`.
+  - name: time_zone_name
+    type: Symbol
+    default: "`:short`"
+    description: One of `:short` and `:long`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: OcticonSymbols
   source: https://github.com/primer/view_components/tree/main/app/components/primer/octicon_symbols_component.rb
   parameters:
