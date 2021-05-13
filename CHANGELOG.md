@@ -2,17 +2,37 @@
 
 ## main
 
+### New
+
+* Create `LocalTime` component.
+
+    *Kristján Oddsson*
+
 * Add `extra` slot to `TabNav`.
 
     *Manuel Puyol*
+
+### Bug fixes
 
 * Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.
 
     *Kristján Oddsson*
 
+### Breaking changes
+
 * Remove `:large` size option from `OcticonComponent` and change `:medium` to 24px
 
     *Jon Rohan*
+
+* Restrict `Label` tag to `span`, `div`, `a`, `summary`.
+
+    *Kate Higa*
+
+### Misc
+
+* Add a CI check for changes to the CHANGELOG file.
+
+    *Kristján Oddsson*
 
 ## 0.0.40
 

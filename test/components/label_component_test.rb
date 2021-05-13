@@ -11,6 +11,13 @@ class PrimerLabelComponentTest < Minitest::Test
     assert_text("private")
   end
 
+  def test_falls_back_when_tag_isnt_valid
+    without_fetch_or_fallback_raises do
+      render_inline(Primer::LabelComponent.new(title: "foo", tag: :h1))
+      assert_selector("span.Label")
+    end
+  end
+
   def test_supports_functional_schemes
     render_inline(Primer::LabelComponent.new(title: "foo", scheme: :danger)) { "private" }
 
