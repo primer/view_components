@@ -109,5 +109,19 @@
       },
       "problemMatcher": []
     },
+    {
+      "label": "yarn: build assets",
+      "type": "shell",
+      "group": "build",
+      "command": "yarn",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "runOptions": {
+        "reevaluateOnRerun": false
+      },
+      "problemMatcher": []
+    },
   ]
 }
