@@ -6,6 +6,8 @@ class Primer<%= class_name %>Test < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders
+    render_inline(Primer::<%= class_name %>.new)
+
     assert_text("Add a test here")
   end
 end
