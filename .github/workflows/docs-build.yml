@@ -55,7 +55,7 @@ jobs:
             files[$i]="http://localhost:8000/components/""${filename%.*}"
           done
           printf -v joined '%s, ' "${files[@]}"
-          axe $joined -i .frame-example --save docs-example-accessibility.json --exit
+          axe $joined -i .frame-example --save docs-example-accessibility.json
       - name: Upload @axe-core/cli check results
         uses: actions/upload-artifact@master
         if: always()
