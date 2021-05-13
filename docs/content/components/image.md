@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use `Image` to render images.
+Use `Image` to render images. It can be rendered using the `primer_image` helper.
 
 ## Accessibility
 
@@ -24,6 +24,15 @@ Always provide a meaningful `alt` for your images.
 ```erb
 
 <%= render(Primer::Image.new(src: "https://github.com/github.png", alt: "GitHub")) %>
+```
+
+### Helper
+
+<Example src="<img src='https://github.com/github.png' alt='GitHub' loading='eager'></img>" />
+
+```erb
+
+<%= primer_image(src: "https://github.com/github.png", alt: "GitHub") %>
 ```
 
 ### Lazy loading

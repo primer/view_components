@@ -1,16 +1,21 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use `Image` to render images.
+  # Use `Image` to render images. It can be rendered using the `primer_image` helper.
   #
   # @accessibility
   #   Always provide a meaningful `alt` for your images.
   class Image < Primer::Component
     DEFAULT_LOADING = :eager
     LOADING_OPTIONS = [DEFAULT_LOADING, :lazy].freeze
+
     # @example Default
     #
     #   <%= render(Primer::Image.new(src: "https://github.com/github.png", alt: "GitHub")) %>
+    #
+    # @example Helper
+    #
+    #   <%= primer_image(src: "https://github.com/github.png", alt: "GitHub") %>
     #
     # @example Lazy loading
     #
