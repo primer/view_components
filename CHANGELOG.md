@@ -2,6 +2,10 @@
 
 ## main
 
+* Create `LocalTime` component.
+
+    *Kristján Oddsson*
+
 * Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.
 
     *Kristján Oddsson*
