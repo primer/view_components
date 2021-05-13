@@ -10,8 +10,6 @@ module Primer
 
       @system_arguments[:tag] = :li
       @system_arguments[:classes] = class_names(@system_arguments[:classes], "task-list-item")
-
-      Primer::BaseComponent.new(**@system_arguments)
     end
   end
 end
