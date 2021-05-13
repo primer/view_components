@@ -31,6 +31,8 @@ module Primer
       @system_arguments[:tag] = "image-crop"
       @system_arguments[:src] = src
       @system_arguments[:rounded] = true if rounded
+
+      add_js_data_attributes(@system_arguments)
     end
   end
 end

@@ -28,6 +28,8 @@ module Primer
     def initialize(**system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = "tab-container"
+
+      add_js_data_attributes(@system_arguments)
     end
 
     def call
