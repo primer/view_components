@@ -45,7 +45,7 @@ jobs:
           cd docs
           yarn
           yarn develop & npx wait-on http://localhost:8000
-      - name: Run axe on examples of component docs
+      - name: Run axe checks on examples of component docs
         run: |
           npm install -g @axe-core/cli
           files=($(grep -r -l "Examples" docs/content/components))
@@ -55,7 +55,7 @@ jobs:
             files[$i]="http://localhost:8000/components/""${filename%.*}"
           done
           printf -v joined '%s, ' "${files[@]}"
-          axe $joined -i .frame-example --save docs-example-accessibility.json
+          axe $joined -i .frame-example --save docs-example-accessibility.json --exit
       - name: Upload @axe-core/cli check results
         uses: actions/upload-artifact@master
         if: always()
