@@ -95,7 +95,7 @@ of the page.
 
 ### With panels
 
-<Example src="<tab-container>  <div class='UnderlineNav'>    <div role='tablist' aria-label='With panels' class='UnderlineNav-body'>          <button type='button' role='tab' aria-selected='true' class='UnderlineNav-item'>          <span>Item 1</span>    </button>          <button type='button' role='tab' class='UnderlineNav-item'>          <span>Item 2</span>    </button></div>      <div class='UnderlineNav-actions'>    <button type='button' class='btn'>    Button!  </button></div></div>      <div role='tabpanel'>      Panel 1</div>      <div role='tabpanel' hidden='hidden'>      Panel 2</div></tab-container>" />
+<Example src="<tab-container data-view-component='true'>  <div class='UnderlineNav'>    <div role='tablist' aria-label='With panels' class='UnderlineNav-body'>          <button type='button' role='tab' aria-selected='true' class='UnderlineNav-item'>          <span>Item 1</span>    </button>          <button type='button' role='tab' class='UnderlineNav-item'>          <span>Item 2</span>    </button></div>      <div class='UnderlineNav-actions'>    <button type='button' class='btn'>    Button!  </button></div></div>      <div role='tabpanel'>      Panel 1</div>      <div role='tabpanel' hidden='hidden'>      Panel 2</div></tab-container>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(label: "With panels", with_panel: true)) do |component| %>

@@ -52,7 +52,7 @@ Use `TabNav` to style navigation with a tab-based selected state, typically used
 
 ### With panels
 
-<Example src="<tab-container>  <div class='tabnav'>    <div aria-label='With panels' role='tablist' class='tabnav-tabs'>          <button type='button' role='tab' aria-selected='true' class='tabnav-tab'>          <span>Tab 1</span>    </button>          <button type='button' role='tab' class='tabnav-tab'>          <span>Tab 2</span>    </button>          <button type='button' role='tab' class='tabnav-tab'>          <span>Tab 3</span>    </button></div></div>      <div role='tabpanel'>      Panel 1</div>      <div role='tabpanel' hidden='hidden'>      Panel 2</div>      <div role='tabpanel' hidden='hidden'>      Panel 3</div></tab-container>" />
+<Example src="<tab-container data-view-component='true'>  <div class='tabnav'>    <div aria-label='With panels' role='tablist' class='tabnav-tabs'>          <button type='button' role='tab' aria-selected='true' class='tabnav-tab'>          <span>Tab 1</span>    </button>          <button type='button' role='tab' class='tabnav-tab'>          <span>Tab 2</span>    </button>          <button type='button' role='tab' class='tabnav-tab'>          <span>Tab 3</span>    </button></div></div>      <div role='tabpanel'>      Panel 1</div>      <div role='tabpanel' hidden='hidden'>      Panel 2</div>      <div role='tabpanel' hidden='hidden'>      Panel 3</div></tab-container>" />
 
 ```erb
 <%= render(Primer::TabNavComponent.new(label: "With panels", with_panel: true)) do |c| %>
