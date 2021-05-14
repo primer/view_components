@@ -9,6 +9,9 @@ class IntegrationTaskListTest < ApplicationSystemTestCase
     assert_selector("task-lists[sortable]") do
       assert_selector("ul.contains-task-list") do
         assert_selector("li.task-list-item") do
+          assert_selector(".handle") do
+            assert_selector("svg")
+          end
           assert_selector("input[type=checkbox].task-list-item-checkbox")
           assert_text("Apple")
         end
