@@ -4,10 +4,20 @@ class Primer::TaskListStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:task_list) do
-    content do |c|
-      c.list do |list|
+    controls do
+      boolean(:sortable, true)
+    end
+
+    content do |component|
+      component.list do |list|
         list.item do
-          "Item 1"
+          "Apple"
+        end
+        list.item do
+          "Kiwi"
+        end
+        list.item do
+          "Banana"
         end
       end
     end

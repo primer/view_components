@@ -14,7 +14,7 @@ module Primer
       @system_arguments = system_arguments
 
       @system_arguments[:tag] = :ul
-      @system_arguments[:classes] = class_names(system_arguments[:classes], "contains-task-list")
+      @system_arguments[:classes] = class_names(system_arguments[:classes], "contains-task-list", "list-style-none")
     end
   end
 end
