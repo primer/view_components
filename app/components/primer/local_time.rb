@@ -50,8 +50,6 @@ module Primer
       @system_arguments[:minute] = fetch_or_fallback(DIGIT_TYPE_OPTIONS, minute, DEFAULT_DIGIT_TYPE)
       @system_arguments[:second] = fetch_or_fallback(DIGIT_TYPE_OPTIONS, second, DEFAULT_DIGIT_TYPE)
       @system_arguments[:"time-zone-name"] = fetch_or_fallback(TEXT_TYPE_OPTIONS, time_zone_name, DEFAULT_TEXT_TYPE)
-
-      add_js_data_attributes(@system_arguments)
     end
 
     def call

@@ -21,8 +21,6 @@ module Primer
       @system_arguments[:tag] = "clipboard-copy"
       @system_arguments[:value] = value
       @system_arguments[:"aria-label"] = label
-
-      add_js_data_attributes(@system_arguments)
     end
   end
 end

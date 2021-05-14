@@ -19,8 +19,6 @@ module Primer
       @system_arguments[:format] = "micro" if micro
       @time = time
       @micro = micro
-
-      add_js_data_attributes(@system_arguments)
     end
 
     def call

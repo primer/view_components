@@ -15,7 +15,7 @@ Use `AutoCompleteItem` to list results of an auto-completed search.
 
 ### Default
 
-<Example src="<li role='option' data-autocomplete-value='value' aria-selected='true' class='autocomplete-item'>  Selected</li><li role='option' data-autocomplete-value='value' class='autocomplete-item'>  Not selected</li>" />
+<Example src="<li role='option' data-autocomplete-value='value' aria-selected='true' data-view-component='true' class='autocomplete-item'>  Selected</li><li role='option' data-autocomplete-value='value' data-view-component='true' class='autocomplete-item'>  Not selected</li>" />
 
 ```erb
 <%= render(Primer::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>

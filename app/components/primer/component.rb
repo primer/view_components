@@ -15,10 +15,6 @@ module Primer
 
     private
 
-    def add_js_data_attributes(args)
-      args[:"data-view-component"] = true
-    end
-
     def deprecated_component_warning(new_class: nil, version: nil)
       return if Rails.env.production? || silence_deprecations?
 

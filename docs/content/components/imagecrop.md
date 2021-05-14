@@ -18,7 +18,7 @@ A client-side mechanism to crop images.
 
 ### Simple cropper
 
-<Example src="<image-crop src='https://github.com/koddsson.png' rounded='true' data-view-component='true'>    <svg data-loading-slot='true' style='box-sizing: content-box; color: var(--color-icon-primary);' viewBox='0 0 16 16' fill='none' width='64' height='64' class='flex-1 anim-rotate'>  <circle cx='8' cy='8' r='7' stroke='currentColor' stroke-opacity='0.25' stroke-width='2' vector-effect='non-scaling-stroke' />  <path d='M15 8a7.002 7.002 0 00-7-7' stroke='currentColor' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke' /></svg>  <input type='hidden' data-image-crop-input='x' name='cropped_x'>  <input type='hidden' data-image-crop-input='y' name='cropped_y'>  <input type='hidden' data-image-crop-input='width' name='cropped_width'>  <input type='hidden' data-image-crop-input='height' name='cropped_height'></image-crop>" />
+<Example src="<image-crop src='https://github.com/koddsson.png' rounded='true' data-view-component='true'>    <svg data-loading-slot='true' style='box-sizing: content-box; color: var(--color-icon-primary);' viewBox='0 0 16 16' fill='none' data-view-component='true' width='64' height='64' class='flex-1 anim-rotate'>  <circle cx='8' cy='8' r='7' stroke='currentColor' stroke-opacity='0.25' stroke-width='2' vector-effect='non-scaling-stroke' />  <path d='M15 8a7.002 7.002 0 00-7-7' stroke='currentColor' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke' /></svg>  <input type='hidden' data-image-crop-input='x' name='cropped_x'>  <input type='hidden' data-image-crop-input='y' name='cropped_y'>  <input type='hidden' data-image-crop-input='width' name='cropped_width'>  <input type='hidden' data-image-crop-input='height' name='cropped_height'></image-crop>" />
 
 ```erb
 <%= render(Primer::ImageCrop.new(src: "https://github.com/koddsson.png")) %>
@@ -26,7 +26,7 @@ A client-side mechanism to crop images.
 
 ### Square cropper
 
-<Example src="<image-crop src='https://github.com/koddsson.png' data-view-component='true'>    <svg data-loading-slot='true' style='box-sizing: content-box; color: var(--color-icon-primary);' viewBox='0 0 16 16' fill='none' width='64' height='64' class='flex-1 anim-rotate'>  <circle cx='8' cy='8' r='7' stroke='currentColor' stroke-opacity='0.25' stroke-width='2' vector-effect='non-scaling-stroke' />  <path d='M15 8a7.002 7.002 0 00-7-7' stroke='currentColor' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke' /></svg>  <input type='hidden' data-image-crop-input='x' name='cropped_x'>  <input type='hidden' data-image-crop-input='y' name='cropped_y'>  <input type='hidden' data-image-crop-input='width' name='cropped_width'>  <input type='hidden' data-image-crop-input='height' name='cropped_height'></image-crop>" />
+<Example src="<image-crop src='https://github.com/koddsson.png' data-view-component='true'>    <svg data-loading-slot='true' style='box-sizing: content-box; color: var(--color-icon-primary);' viewBox='0 0 16 16' fill='none' data-view-component='true' width='64' height='64' class='flex-1 anim-rotate'>  <circle cx='8' cy='8' r='7' stroke='currentColor' stroke-opacity='0.25' stroke-width='2' vector-effect='non-scaling-stroke' />  <path d='M15 8a7.002 7.002 0 00-7-7' stroke='currentColor' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke' /></svg>  <input type='hidden' data-image-crop-input='x' name='cropped_x'>  <input type='hidden' data-image-crop-input='y' name='cropped_y'>  <input type='hidden' data-image-crop-input='width' name='cropped_width'>  <input type='hidden' data-image-crop-input='height' name='cropped_height'></image-crop>" />
 
 ```erb
 <%= render(Primer::ImageCrop.new(src: "https://github.com/koddsson.png", rounded: false)) %>
@@ -34,7 +34,7 @@ A client-side mechanism to crop images.
 
 ### Cropper with a custom loader
 
-<Example src="<image-crop src='https://github.com/koddsson.png' data-view-component='true'>    <img style='width: 120px' src='spinner.gif' data-loading-slot='true'></img>  <input type='hidden' data-image-crop-input='x' name='cropped_x'>  <input type='hidden' data-image-crop-input='y' name='cropped_y'>  <input type='hidden' data-image-crop-input='width' name='cropped_width'>  <input type='hidden' data-image-crop-input='height' name='cropped_height'></image-crop>" />
+<Example src="<image-crop src='https://github.com/koddsson.png' data-view-component='true'>    <img style='width: 120px' src='spinner.gif' data-loading-slot='true' data-view-component='true'></img>  <input type='hidden' data-image-crop-input='x' name='cropped_x'>  <input type='hidden' data-image-crop-input='y' name='cropped_y'>  <input type='hidden' data-image-crop-input='width' name='cropped_width'>  <input type='hidden' data-image-crop-input='height' name='cropped_height'></image-crop>" />
 
 ```erb
 <%= render(Primer::ImageCrop.new(src: "https://github.com/koddsson.png", rounded: false)) do |cropper| %>
