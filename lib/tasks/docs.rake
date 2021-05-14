@@ -92,7 +92,7 @@ namespace :docs do
       Primer::TextComponent,
       Primer::TimeAgoComponent,
       Primer::TimelineItemComponent,
-      Primer::TooltipComponent,
+      Primer::Tooltip,
       Primer::Truncate,
       Primer::UnderlineNavComponent
     ]

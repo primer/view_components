@@ -10,6 +10,10 @@
 
 * Create `Image` component.
 
+### Changes
+
+* Promote `Tooltip` component to beta.
+
     *Manuel Puyol*
 
 ### Bug fixes
