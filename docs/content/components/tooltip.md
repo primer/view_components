@@ -1,7 +1,7 @@
 ---
 title: Tooltip
-status: Alpha
-source: https://github.com/primer/view_components/tree/main/app/components/primer/tooltip_component.rb
+status: Beta
+source: https://github.com/primer/view_components/tree/main/app/components/primer/tooltip.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-tooltip-component
 ---
 
@@ -19,7 +19,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ```erb
 <div class="pt-5">
-  <%= render(Primer::TooltipComponent.new(label: "Even bolder")) { "Default Bold Text" } %>
+  <%= render(Primer::Tooltip.new(label: "Even bolder")) { "Default Bold Text" } %>
 </div>
 ```
 
@@ -29,7 +29,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ```erb
 <div class="pt-5">
-  <%= render(Primer::TooltipComponent.new(label: "Even bolder")) do %>
+  <%= render(Primer::Tooltip.new(label: "Even bolder")) do %>
     <%= render(Primer::ButtonComponent.new) { "Bold Button" } %>
   <% end %>
 </div>
@@ -41,7 +41,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ```erb
 <div class="pt-5">
-  <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s)) { "Bold Text With a Direction" } %>
+  <%= render(Primer::Tooltip.new(label: "Even bolder", direction: :s)) { "Bold Text With a Direction" } %>
 </div>
 ```
 
@@ -51,7 +51,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ```erb
 <div class="pt-5">
-  <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s, alignment: :right_1)) { "Bold Text With an Alignment" } %>
+  <%= render(Primer::Tooltip.new(label: "Even bolder", direction: :s, alignment: :right_1)) { "Bold Text With an Alignment" } %>
 </div>
 ```
 
@@ -61,7 +61,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ```erb
 <div class="pt-5">
-  <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s, no_delay: true)) { "Bold Text without a delay" } %>
+  <%= render(Primer::Tooltip.new(label: "Even bolder", direction: :s, no_delay: true)) { "Bold Text without a delay" } %>
 </div>
 ```
 
