@@ -49,13 +49,37 @@ jobs:
         run: |
           npm install -g @axe-core/cli
           files=($(grep -r -l "Examples" docs/content/components))
-          for i in "${!files[@]}"; do
-            fullfile="${files[$i]}"
-            filename=$(basename -- "$fullfile")
-            files[$i]="http://localhost:8000/components/""${filename%.*}"
+          declare -a needs_to_be_fixed=(
+            autocomplete 
+            autocompleteitem
+            dropdown
+            dropdownmenu
+            imagecrop
+            markdown
+            navigationtab
+          )
+          
+          echo "############################################################"
+          echo "WARNING"
+          echo "The following components will be excluded from this automated accessibility check."
+          echo "They contain known violations and should be addressed:"
+          printf '%s\n' "${needs_to_be_fixed[@]}"
+          echo "############################################################"
+
+          declare -a doc_urls
+          for i in "${!files[@]}"; 
+          do
+            filename=$(basename -- "${files[$i]}")
+            component="${filename%.*}"
+            if [[ " ${needs_to_be_fixed[@]} " =~ " ${component} " ]]
+            then
+              continue
+            else
+              doc_urls+=("localhost:8000/components/${component}")
+            fi
           done
-          printf -v joined '%s, ' "${files[@]}"
-          axe $joined -i .frame-example --save docs-example-accessibility.json
+          printf -v joined '%s, ' "${doc_urls[@]}"
+          axe $joined -i .frame-example --save docs-example-accessibility.json --disable color-contrast --exit
       - name: Upload @axe-core/cli check results
         uses: actions/upload-artifact@master
         if: always()

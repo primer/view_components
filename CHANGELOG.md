@@ -4,6 +4,10 @@
 
 ### New
 
+* Add automated `axe-core` checks for documentation examples.
+
+    *Kate Higa*
+
 * Create `LocalTime` component.
 
     *Kristján Oddsson*
