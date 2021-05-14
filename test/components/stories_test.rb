@@ -6,7 +6,9 @@ class AllComponentsHaveStoriesTest < Minitest::Test
   EXCLUDED_COMPONENTS = [
     Primer::BaseComponent,
     Primer::FlexItemComponent,
-    Primer::OcticonSymbolsComponent
+    Primer::OcticonSymbolsComponent,
+    Primer::TaskListList,
+    Primer::TaskListItem
   ].freeze
 
   COMPONENTS = Primer::Component.descendants - EXCLUDED_COMPONENTS
