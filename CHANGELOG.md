@@ -8,6 +8,12 @@
 
     *Kristján Oddsson*
 
+### Changes
+
+* Promote `Tooltip` component to beta.
+
+    *Manuel Puyol*
+
 ### Bug fixes
 
 * Ensure that `ClipboardCopy` behaviors only target ViewComponents.
