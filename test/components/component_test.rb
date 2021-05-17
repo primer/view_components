@@ -7,6 +7,7 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
     [Primer::AutoComplete, { src: "Foo", id: "Bar" }, proc { |c| c.input(classes: "Baz") }],
@@ -62,7 +63,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Truncate, {}],
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
-    [Primer::TooltipComponent, { label: "More" }],
+    [Primer::Tooltip, { label: "More" }],
     [Primer::UnderlineNavComponent, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }]
   ].freeze
 

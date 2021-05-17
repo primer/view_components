@@ -39,7 +39,7 @@ module Primer
     # @param tag [Symbol] <%= one_of(Primer::AvatarStackComponent::TAG_OPTIONS) %>
     # @param align [Symbol] <%= one_of(Primer::AvatarStackComponent::ALIGN_OPTIONS) %>
     # @param tooltipped [Boolean] Whether to add a tooltip to the stack or not.
-    # @param body_arguments [Hash] Parameters to add to the Body. If `tooltipped` is set, has the same arguments as <%= link_to_component(Primer::TooltipComponent) %>.
+    # @param body_arguments [Hash] Parameters to add to the Body. If `tooltipped` is set, has the same arguments as <%= link_to_component(Primer::Tooltip) %>.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(tag: DEFAULT_TAG, align: ALIGN_DEFAULT, tooltipped: false, body_arguments: {}, **system_arguments)
       @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
@@ -63,7 +63,7 @@ module Primer
 
     def body_component
       if @tooltipped
-        Primer::TooltipComponent.new(**@body_arguments)
+        Primer::Tooltip.new(**@body_arguments)
       else
         Primer::BaseComponent.new(**@body_arguments)
       end

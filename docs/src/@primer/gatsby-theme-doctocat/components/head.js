@@ -16,6 +16,14 @@ function Head(props) {
     : siteMetadata.title
   const description = props.description || siteMetadata.description
 
+  let primerViewComponentsSrc
+
+  if(process.env.NODE_ENV == 'development') {
+    primerViewComponentsSrc = "http://localhost:4000/assets/primer_view_components.js"
+  } else {
+    primerViewComponentsSrc = "https://unpkg.com/@primer/view-components@latest/app/assets/javascripts/primer_view_components.js"
+  }
+
   return (
     <Helmet>
       <title>{title}</title>
@@ -25,7 +33,7 @@ function Head(props) {
       <meta property="og:image" content={siteMetadata.imageUrl} />
       <meta property="twitter:card" content="summary_large_image" />
       <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
-      <script src="https://unpkg.com/@primer/view-components@latest/app/assets/javascripts/primer_view_components.js"></script>
+      <script src={primerViewComponentsSrc}></script>
       <style>{bodyStyle}</style>
     </Helmet>
   )

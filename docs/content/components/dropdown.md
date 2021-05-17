@@ -16,7 +16,7 @@ They're great for instances where you don't need the full power (and code) of th
 
 ### Default
 
-<Example src="<div>  <details class='dropdown details-overlay details-reset position-relative'>  <summary role='button' class='btn'>              Dropdown  </summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>  <ul>      <li class='dropdown-item'>Item 1</li>      <li class='dropdown-item'>Item 2</li>      <li role='none' class='dropdown-divider'></li>      <li class='dropdown-item'>Item 3</li>      <li class='dropdown-item'>Item 4</li>  </ul></details-menu></div></details></div>" />
+<Example src="<div>  <details data-view-component='true' class='dropdown details-overlay details-reset position-relative'>  <summary role='button' data-view-component='true' class='btn'>              Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>  <ul>      <li data-view-component='true' class='dropdown-item'>Item 1</li>      <li data-view-component='true' class='dropdown-item'>Item 2</li>      <li role='none' data-view-component='true' class='dropdown-divider'></li>      <li data-view-component='true' class='dropdown-item'>Item 3</li>      <li data-view-component='true' class='dropdown-item'>Item 4</li>  </ul></details-menu></div></details></div>" />
 
 ```erb
 <div>
@@ -38,7 +38,7 @@ They're great for instances where you don't need the full power (and code) of th
 
 ### With Direction
 
-<Example src="<div>  <details class='dropdown details-overlay details-reset position-relative'>  <summary role='button' class='btn'>              Dropdown  </summary>  <div>    <details-menu role='menu' class='dropdown-menu dropdown-menu-s'>    <div class='dropdown-header'>      Options    </div>  <ul>      <li class='dropdown-item'>Item 1</li>      <li class='dropdown-item'>Item 2</li>      <li role='none' class='dropdown-divider'></li>      <li class='dropdown-item'>Item 3</li>      <li class='dropdown-item'>Item 4</li>  </ul></details-menu></div></details></div>" />
+<Example src="<div>  <details data-view-component='true' class='dropdown details-overlay details-reset position-relative'>  <summary role='button' data-view-component='true' class='btn'>              Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-s'>    <div class='dropdown-header'>      Options    </div>  <ul>      <li data-view-component='true' class='dropdown-item'>Item 1</li>      <li data-view-component='true' class='dropdown-item'>Item 2</li>      <li role='none' data-view-component='true' class='dropdown-divider'></li>      <li data-view-component='true' class='dropdown-item'>Item 3</li>      <li data-view-component='true' class='dropdown-item'>Item 4</li>  </ul></details-menu></div></details></div>" />
 
 ```erb
 <div>

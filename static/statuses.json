@@ -30,6 +30,7 @@
   "Primer::LabelComponent": "beta",
   "Primer::LayoutComponent": "alpha",
   "Primer::LinkComponent": "beta",
+  "Primer::LocalTime": "alpha",
   "Primer::Markdown": "beta",
   "Primer::MenuComponent": "alpha",
   "Primer::Navigation::TabComponent": "alpha",
@@ -46,7 +47,7 @@
   "Primer::TimeAgoComponent": "beta",
   "Primer::TimelineItemComponent": "beta",
   "Primer::TimelineItemComponent::BadgeComponent": "alpha",
-  "Primer::TooltipComponent": "alpha",
+  "Primer::Tooltip": "beta",
   "Primer::Truncate": "beta",
   "Primer::UnderlineNavComponent": "alpha"
 }

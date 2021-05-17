@@ -24,7 +24,7 @@ The `:heading` slot defaults to rendering a `<div>`. Update the tag to a heading
 
 ### Default
 
-<Example src="<div class='Subhead hx_Subhead--responsive'>  <h3 class='Subhead-heading'>    My Heading</h3>    <div class='Subhead-description'>    My Description</div></div>" />
+<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive'>  <h3 data-view-component='true' class='Subhead-heading'>    My Heading</h3>    <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>
@@ -39,7 +39,7 @@ The `:heading` slot defaults to rendering a `<div>`. Update the tag to a heading
 
 ### With dangerous heading
 
-<Example src="<div class='Subhead hx_Subhead--responsive'>  <h3 class='Subhead-heading Subhead-heading--danger'>    My Heading</h3>    <div class='Subhead-description'>    My Description</div></div>" />
+<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive'>  <h3 data-view-component='true' class='Subhead-heading Subhead-heading--danger'>    My Heading</h3>    <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>
@@ -54,7 +54,7 @@ The `:heading` slot defaults to rendering a `<div>`. Update the tag to a heading
 
 ### With long description
 
-<Example src="<div class='Subhead hx_Subhead--responsive'>  <h3 class='Subhead-heading'>    My Heading</h3>    </div><p> This is a longer description that is sitting below the Subhead. It's much longer than a description that could sit comfortably in the Subhead. </p>" />
+<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive'>  <h3 data-view-component='true' class='Subhead-heading'>    My Heading</h3>    </div><p> This is a longer description that is sitting below the Subhead. It's much longer than a description that could sit comfortably in the Subhead. </p>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>
@@ -67,7 +67,7 @@ The `:heading` slot defaults to rendering a `<div>`. Update the tag to a heading
 
 ### Without border
 
-<Example src="<div class='Subhead hx_Subhead--responsive border-bottom-0 mb-0'>  <div class='Subhead-heading'>    My Heading</div>    <div class='Subhead-description'>    My Description</div></div>" />
+<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive border-bottom-0 mb-0'>  <div data-view-component='true' class='Subhead-heading'>    My Heading</div>    <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new(hide_border: true)) do |component| %>
@@ -82,7 +82,7 @@ The `:heading` slot defaults to rendering a `<div>`. Update the tag to a heading
 
 ### With actions
 
-<Example src="<div class='Subhead hx_Subhead--responsive'>  <div class='Subhead-heading'>    My Heading</div>  <div class='Subhead-actions'>    <a href='http://www.google.com' role='button' class='btn-danger btn'>    Action  </a></div>  <div class='Subhead-description'>    My Description</div></div>" />
+<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive'>  <div data-view-component='true' class='Subhead-heading'>    My Heading</div>  <div data-view-component='true' class='Subhead-actions'>    <a href='http://www.google.com' role='button' data-view-component='true' class='btn-danger btn'>    Action  </a></div>  <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>

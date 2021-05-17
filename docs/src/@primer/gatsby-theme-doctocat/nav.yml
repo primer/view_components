@@ -66,6 +66,8 @@
       url: /components/layout
     - title: Link
       url: /components/link
+    - title: LocalTime
+      url: /components/localtime
     - title: Menu
       url: /components/menu
     - title: Markdown

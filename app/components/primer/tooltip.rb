@@ -2,7 +2,9 @@
 
 module Primer
   # `Tooltip` is a wrapper component that will apply a tooltip to the provided content.
-  class TooltipComponent < Primer::Component
+  class Tooltip < Primer::Component
+    status :beta
+
     DIRECTION_DEFAULT = :n
     ALIGN_DEFAULT = :default
     MULTILINE_DEFAULT = false
@@ -28,34 +30,34 @@ module Primer
 
     # @example Default
     #   <div class="pt-5">
-    #     <%= render(Primer::TooltipComponent.new(label: "Even bolder")) { "Default Bold Text" } %>
+    #     <%= render(Primer::Tooltip.new(label: "Even bolder")) { "Default Bold Text" } %>
     #   </div>
     #
     # @example Wrapping another component
     #   <div class="pt-5">
-    #     <%= render(Primer::TooltipComponent.new(label: "Even bolder")) do %>
+    #     <%= render(Primer::Tooltip.new(label: "Even bolder")) do %>
     #       <%= render(Primer::ButtonComponent.new) { "Bold Button" } %>
     #     <% end %>
     #   </div>
     #
     # @example With a direction
     #   <div class="pt-5">
-    #     <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s)) { "Bold Text With a Direction" } %>
+    #     <%= render(Primer::Tooltip.new(label: "Even bolder", direction: :s)) { "Bold Text With a Direction" } %>
     #   </div>
     #
     # @example With an alignment
     #   <div class="pt-5">
-    #     <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s, alignment: :right_1)) { "Bold Text With an Alignment" } %>
+    #     <%= render(Primer::Tooltip.new(label: "Even bolder", direction: :s, alignment: :right_1)) { "Bold Text With an Alignment" } %>
     #   </div>
     #
     # @example Without a delay
     #   <div class="pt-5">
-    #     <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s, no_delay: true)) { "Bold Text without a delay" } %>
+    #     <%= render(Primer::Tooltip.new(label: "Even bolder", direction: :s, no_delay: true)) { "Bold Text without a delay" } %>
     #   </div>
     #
     # @param label [String] the text to appear in the tooltip
-    # @param direction [String] Direction of the tooltip. <%= one_of(Primer::TooltipComponent::DIRECTION_OPTIONS) %>
-    # @param align [String] Align tooltips to the left or right of an element, combined with a `direction` to specify north or south. <%= one_of(Primer::TooltipComponent::ALIGN_MAPPING.keys) %>
+    # @param direction [String] Direction of the tooltip. <%= one_of(Primer::Tooltip::DIRECTION_OPTIONS) %>
+    # @param align [String] Align tooltips to the left or right of an element, combined with a `direction` to specify north or south. <%= one_of(Primer::Tooltip::ALIGN_MAPPING.keys) %>
     # @param multiline [Boolean] Use this when you have long content
     # @param no_delay [Boolean] By default the tooltips have a slight delay before appearing. Set true to override this
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

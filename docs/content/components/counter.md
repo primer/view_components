@@ -20,7 +20,7 @@ should be accompanied with text such as `issues` or `pull requests`.
 
 ### Default
 
-<Example src="<span title='25' class='Counter'>25</span>" />
+<Example src="<span title='25' data-view-component='true' class='Counter'>25</span>" />
 
 ```erb
 <%= render(Primer::CounterComponent.new(count: 25)) %>
@@ -28,7 +28,7 @@ should be accompanied with text such as `issues` or `pull requests`.
 
 ### Schemes
 
-<Example src="<span title='25' class='Counter Counter--primary'>25</span><span title='25' class='Counter Counter--secondary'>25</span>" />
+<Example src="<span title='25' data-view-component='true' class='Counter Counter--primary'>25</span><span title='25' data-view-component='true' class='Counter Counter--secondary'>25</span>" />
 
 ```erb
 <%= render(Primer::CounterComponent.new(count: 25, scheme: :primary)) %>

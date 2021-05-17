@@ -1,7 +1,7 @@
 ---
 title: Tooltip
-status: Alpha
-source: https://github.com/primer/view_components/tree/main/app/components/primer/tooltip_component.rb
+status: Beta
+source: https://github.com/primer/view_components/tree/main/app/components/primer/tooltip.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-tooltip-component
 ---
 
@@ -15,21 +15,21 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ### Default
 
-<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n'>Default Bold Text</span></div>" />
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' data-view-component='true' class='tooltipped tooltipped-n'>Default Bold Text</span></div>" />
 
 ```erb
 <div class="pt-5">
-  <%= render(Primer::TooltipComponent.new(label: "Even bolder")) { "Default Bold Text" } %>
+  <%= render(Primer::Tooltip.new(label: "Even bolder")) { "Default Bold Text" } %>
 </div>
 ```
 
 ### Wrapping another component
 
-<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-n'>    <button type='button' class='btn'>    Bold Button  </button></span></div>" />
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' data-view-component='true' class='tooltipped tooltipped-n'>    <button type='button' data-view-component='true' class='btn'>    Bold Button  </button></span></div>" />
 
 ```erb
 <div class="pt-5">
-  <%= render(Primer::TooltipComponent.new(label: "Even bolder")) do %>
+  <%= render(Primer::Tooltip.new(label: "Even bolder")) do %>
     <%= render(Primer::ButtonComponent.new) { "Bold Button" } %>
   <% end %>
 </div>
@@ -37,31 +37,31 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ### With a direction
 
-<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s'>Bold Text With a Direction</span></div>" />
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' data-view-component='true' class='tooltipped tooltipped-s'>Bold Text With a Direction</span></div>" />
 
 ```erb
 <div class="pt-5">
-  <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s)) { "Bold Text With a Direction" } %>
+  <%= render(Primer::Tooltip.new(label: "Even bolder", direction: :s)) { "Bold Text With a Direction" } %>
 </div>
 ```
 
 ### With an alignment
 
-<Example src="<div class='pt-5'>  <span alignment='right_1' aria-label='Even bolder' class='tooltipped tooltipped-s'>Bold Text With an Alignment</span></div>" />
+<Example src="<div class='pt-5'>  <span alignment='right_1' aria-label='Even bolder' data-view-component='true' class='tooltipped tooltipped-s'>Bold Text With an Alignment</span></div>" />
 
 ```erb
 <div class="pt-5">
-  <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s, alignment: :right_1)) { "Bold Text With an Alignment" } %>
+  <%= render(Primer::Tooltip.new(label: "Even bolder", direction: :s, alignment: :right_1)) { "Bold Text With an Alignment" } %>
 </div>
 ```
 
 ### Without a delay
 
-<Example src="<div class='pt-5'>  <span aria-label='Even bolder' class='tooltipped tooltipped-s tooltipped-no-delay'>Bold Text without a delay</span></div>" />
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' data-view-component='true' class='tooltipped tooltipped-s tooltipped-no-delay'>Bold Text without a delay</span></div>" />
 
 ```erb
 <div class="pt-5">
-  <%= render(Primer::TooltipComponent.new(label: "Even bolder", direction: :s, no_delay: true)) { "Bold Text without a delay" } %>
+  <%= render(Primer::Tooltip.new(label: "Even bolder", direction: :s, no_delay: true)) { "Bold Text without a delay" } %>
 </div>
 ```
 
