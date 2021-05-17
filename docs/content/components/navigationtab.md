@@ -12,6 +12,11 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 This component is part of navigation components such as `Primer::TabNavComponent`
 and `Primer::UnderlineNavComponent` and should not be used by itself.
 
+## Accessibility
+
+`TabComponent` renders the selected anchor tab with `aria-current="page"` by default.
+ When the selected tab does not correspond to the current page, such as in a nested inner tab, make sure to use aria-current="true"
+
 ## Examples
 
 ### Default

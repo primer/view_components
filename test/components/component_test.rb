@@ -63,7 +63,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Truncate, {}],
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
-    [Primer::TooltipComponent, { label: "More" }],
+    [Primer::Tooltip, { label: "More" }],
     [Primer::UnderlineNavComponent, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }]
   ].freeze
 

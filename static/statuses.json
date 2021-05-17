@@ -47,7 +47,7 @@
   "Primer::TimeAgoComponent": "beta",
   "Primer::TimelineItemComponent": "beta",
   "Primer::TimelineItemComponent::BadgeComponent": "alpha",
-  "Primer::TooltipComponent": "alpha",
+  "Primer::Tooltip": "beta",
   "Primer::Truncate": "beta",
   "Primer::UnderlineNavComponent": "alpha"
 }

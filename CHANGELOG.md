@@ -12,6 +12,18 @@
 
     *Manuel Puyol*
 
+### Accessibility
+
+* Accept `aria-current="true"` in tabbed components.
+
+    *Manuel Puyol*
+
+### Changes
+
+* Promote `Tooltip` component to beta.
+
+    *Manuel Puyol*
+
 ### Bug fixes
 
 * Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.

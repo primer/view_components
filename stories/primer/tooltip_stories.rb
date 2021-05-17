@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-class Primer::TooltipComponentStories < ViewComponent::Storybook::Stories
+class Primer::TooltipStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:tooltip_default) do
     controls do
       label "Now you know more"
-      select(:direction, Primer::TooltipComponent::DIRECTION_OPTIONS, :nw)
-      select(:align, Primer::TooltipComponent::ALIGN_MAPPING.keys, :default)
+      select(:direction, Primer::Tooltip::DIRECTION_OPTIONS, :nw)
+      select(:align, Primer::Tooltip::ALIGN_MAPPING.keys, :default)
       no_delay false
       multiline false
     end

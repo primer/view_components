@@ -831,7 +831,7 @@
     default: N/A
     description: "[System arguments](/system-arguments)"
 - component: Tooltip
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/tooltip_component.rb
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/tooltip.rb
   parameters:
   - name: label
     type: String
