@@ -13,7 +13,7 @@ Use `Image` to render images. It can be rendered using the `primer_image` helper
 
 ## Accessibility
 
-Always provide a meaningful `alt` for your images.
+Always provide a meaningful `alt`.
 
 ## Examples
 
