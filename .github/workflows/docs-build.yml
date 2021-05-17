@@ -40,14 +40,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 15
-      - name: Run Rails server
-        run: |
-          cd demo
-          bundle install 
-          STORYBOOK=true bin/rails s -p 4000
       - name: Run docs
         run: |
-          bundle exec overmind start -l rails, doctocat
+          sudo apt-get install tmux 
+          curl --fail --location --output /usr/bin/overmind.gz https://github.com/DarthSim/overmind/releases/download/v2.1.0/overmind-v2.1.0-linux-amd64.gz && \
+            gunzip /usr/bin/overmind.gz && \
+            chmod +x /usr/bin/overmind
+          bundle exec overmind start -l rails,doctocat
           npx wait-on http://localhost:5400
       - name: Run axe checks on examples of component docs
         run: script/axe-docs
