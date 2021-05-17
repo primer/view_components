@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use `Image` to render images. It can be rendered using the `primer_image` helper.
+  # Use `Image` to render images.
   #
   # @accessibility
   #   Always provide a meaningful `alt`.
