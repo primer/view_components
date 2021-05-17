@@ -36,6 +36,10 @@
 
 ### Breaking changes
 
+* Don't allow `OcticonComponent` height/width values under 16px
+
+   *Jon Rohan*
+
 * Remove `:large` size option from `OcticonComponent` and change `:medium` to 24px
 
     *Jon Rohan*
