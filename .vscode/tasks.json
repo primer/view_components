@@ -109,5 +109,33 @@
       },
       "problemMatcher": []
     },
+    {
+      "label": "yarn: build assets",
+      "type": "shell",
+      "group": "build",
+      "command": "yarn",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "runOptions": {
+        "reevaluateOnRerun": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "lint:fix: fix eslint errors",
+      "type": "shell",
+      "group": "build",
+      "command": "yarn lint:fix",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "runOptions": {
+        "reevaluateOnRerun": false
+      },
+      "problemMatcher": []
+    },
   ]
 }

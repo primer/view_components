@@ -30,11 +30,19 @@
 
 ### Bug fixes
 
+* Ensure that `ClipboardCopy` behaviors only target ViewComponents.
+
+    *Manuel Puyol*
+
 * Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.
 
     *Kristján Oddsson*
 
 ### Breaking changes
+
+* Don't allow `OcticonComponent` height/width values under 16px
+
+   *Jon Rohan*
 
 * Remove `:large` size option from `OcticonComponent` and change `:medium` to 24px
 
