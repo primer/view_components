@@ -12,6 +12,16 @@
 
     *Manuel Puyol*
 
+* Add `extra` slot to `TabNav`.
+
+    *Manuel Puyol*
+
+### Accessibility
+
+* Accept `aria-current="true"` in tabbed components.
+
+    *Manuel Puyol*
+
 ### Changes
 
 * Promote `Tooltip` component to beta.
