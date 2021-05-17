@@ -632,7 +632,7 @@ class PrimerClassifyTest < Minitest::Test
 
     assert_generated_class("bg-blue text-center float-left ml-1", { classes: "bg-blue text-center float-left ml-1" })
   ensure
-    ENV["PRIMER_WARNINGS_DISABLED"] = "0"
+    ENV["PRIMER_WARNINGS_DISABLED"] = nil
     ENV["RAILS_ENV"] = "test"
   end
 
