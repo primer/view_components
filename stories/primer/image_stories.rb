@@ -12,9 +12,5 @@ class Primer::ImageStories < ViewComponent::Storybook::Stories
       width 100
       select(:loading, Primer::Image::LOADING_OPTIONS, Primer::Image::DEFAULT_LOADING)
     end
-
-    content do
-      "Update your stories!"
-    end
   end
 end
