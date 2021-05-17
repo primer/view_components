@@ -9,7 +9,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use `Image` to render images. It can be rendered using the `primer_image` helper.
+Use `Image` to render images.
 
 ## Accessibility
 
