@@ -8,6 +8,10 @@
 
     *Kristján Oddsson*
 
+* Create `Image` component.
+
+    *Manuel Puyol*
+
 * Add `extra` slot to `TabNav`.
 
     *Manuel Puyol*
