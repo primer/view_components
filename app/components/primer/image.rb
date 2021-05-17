@@ -4,7 +4,7 @@ module Primer
   # Use `Image` to render images. It can be rendered using the `primer_image` helper.
   #
   # @accessibility
-  #   Always provide a meaningful `alt` for your images.
+  #   Always provide a meaningful `alt`.
   class Image < Primer::Component
     DEFAULT_LOADING = :eager
     LOADING_OPTIONS = [DEFAULT_LOADING, :lazy].freeze
