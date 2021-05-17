@@ -19,7 +19,7 @@ Always provide a meaningful `alt`.
 
 ### Default
 
-<Example src="<img src='https://github.com/github.png' alt='GitHub'></img>" />
+<Example src="<img src='https://github.com/github.png' alt='GitHub' data-view-component='true'></img>" />
 
 ```erb
 
@@ -28,7 +28,7 @@ Always provide a meaningful `alt`.
 
 ### Helper
 
-<Example src="<img src='https://github.com/github.png' alt='GitHub'></img>" />
+<Example src="<img src='https://github.com/github.png' alt='GitHub' data-view-component='true'></img>" />
 
 ```erb
 
@@ -37,7 +37,7 @@ Always provide a meaningful `alt`.
 
 ### Lazy loading
 
-<Example src="<img src='https://github.com/github.png' alt='GitHub' loading='lazy' decoding='async'></img>" />
+<Example src="<img src='https://github.com/github.png' alt='GitHub' loading='lazy' decoding='async' data-view-component='true'></img>" />
 
 ```erb
 
@@ -46,7 +46,7 @@ Always provide a meaningful `alt`.
 
 ### Custom size
 
-<Example src="<img src='https://github.com/github.png' alt='GitHub' height='100' width='100'></img>" />
+<Example src="<img src='https://github.com/github.png' alt='GitHub' data-view-component='true' height='100' width='100'></img>" />
 
 ```erb
 
