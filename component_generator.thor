@@ -42,9 +42,9 @@ class ComponentGenerator < Thor::Group
     template("templates/stories.tt", "stories/primer/#{underscore_name}_stories.rb")
   end
 
-  def add_to_docs_rakefile
-    insert_into_file("lib/tasks/docs.rake", "      Primer::#{class_name},\n", after: "    components = [\n")
-    insert_into_file("lib/tasks/docs.rake", "      Primer::#{class_name},\n", after: "js_components = [\n", force: true) if js_package_name
+  def add_to_rakefile
+    insert_into_file("Rakefile", "      Primer::#{class_name},\n", after: "    components = [\n")
+    insert_into_file("Rakefile", "      Primer::#{class_name},\n", after: "js_components = [\n", force: true) if js_package_name
   end
 
   def add_to_component_test
