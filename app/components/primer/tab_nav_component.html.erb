@@ -1,5 +1,7 @@
 <%= wrapper do %>
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
+    <%= extra %>
+
     <%= render Primer::BaseComponent.new(**@body_arguments) do %>
       <% tabs.each do |tab| %>
         <%= tab %>

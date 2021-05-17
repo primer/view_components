@@ -22,6 +22,9 @@ class Primer::TabNavComponentStories < ViewComponent::Storybook::Stories
         t.panel { "Panel 3" }
         t.text { "Tab 3" }
       end
+      c.extra do
+        "<button class=\"btn btn-sm float-right\">Button</a>".html_safe
+      end
     end
   end
 end
