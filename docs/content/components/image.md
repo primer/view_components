@@ -19,7 +19,7 @@ Always provide a meaningful `alt` for your images.
 
 ### Default
 
-<Example src="<img src='https://github.com/github.png' alt='GitHub' loading='eager'></img>" />
+<Example src="<img src='https://github.com/github.png' alt='GitHub'></img>" />
 
 ```erb
 
@@ -28,7 +28,7 @@ Always provide a meaningful `alt` for your images.
 
 ### Helper
 
-<Example src="<img src='https://github.com/github.png' alt='GitHub' loading='eager'></img>" />
+<Example src="<img src='https://github.com/github.png' alt='GitHub'></img>" />
 
 ```erb
 
@@ -46,7 +46,7 @@ Always provide a meaningful `alt` for your images.
 
 ### Custom size
 
-<Example src="<img src='https://github.com/github.png' alt='GitHub' loading='eager' height='100' width='100'></img>" />
+<Example src="<img src='https://github.com/github.png' alt='GitHub' height='100' width='100'></img>" />
 
 ```erb
 
