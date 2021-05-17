@@ -1,0 +1,5 @@
+<%= render(Primer::BreadcrumbComponent.new) do |component| %>
+  <% component.item(href: "/") do %>Home<% end %>
+  <% component.item(href: "/about") do %>About<% end %>
+  <% component.item(selected: true) do %>Team<% end %>
+<% end %>
