@@ -12,6 +12,10 @@
 
 * Accept `aria-current="true"` in tabbed components.
 
+### Changes
+
+* Promote `Tooltip` component to beta.
+
     *Manuel Puyol*
 
 ### Bug fixes
