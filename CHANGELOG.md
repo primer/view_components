@@ -26,6 +26,10 @@
 
 ### Bug fixes
 
+* Ensure that `ClipboardCopy` behaviors only target ViewComponents.
+
+    *Manuel Puyol*
+
 * Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.
 
     *Kristján Oddsson*
