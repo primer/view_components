@@ -32,4 +32,10 @@ class Primer::ViewHelperTest < Minitest::Test
 
     assert_selector(".octicon.octicon-star")
   end
+
+  def test_renders_image_helper
+    primer_image(src: "src", alt: "alt")
+
+    assert_selector("img[src='src'][alt='alt']")
+  end
 end
