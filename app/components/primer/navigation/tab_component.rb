@@ -4,7 +4,13 @@ module Primer
   module Navigation
     # This component is part of navigation components such as `Primer::TabNavComponent`
     # and `Primer::UnderlineNavComponent` and should not be used by itself.
+    #
+    # @accessibility
+    #   `TabComponent` renders the selected anchor tab with `aria-current="page"` by default.
+    #    When the selected tab does not correspond to the current page, such as in a nested inner tab, make sure to use aria-current="true"
     class TabComponent < Primer::Component
+      DEFAULT_ARIA_CURRENT_FOR_ANCHOR = :page
+      ARIA_CURRENT_OPTIONS_FOR_ANCHOR = [true, DEFAULT_ARIA_CURRENT_FOR_ANCHOR].freeze
       # Panel controlled by the Tab. This will not render anything in the tab itself.
       # It will provide a accessor for the Tab's parent to call and render the panel
       # content in the appropriate place.
@@ -105,7 +111,8 @@ module Primer
         return unless @selected
 
         if @system_arguments[:tag] == :a
-          @system_arguments[:"aria-current"] = :page
+          aria_current = @system_arguments[:"aria-current"] || @system_arguments.dig(:aria, :current) || DEFAULT_ARIA_CURRENT_FOR_ANCHOR
+          @system_arguments[:"aria-current"] = fetch_or_fallback(ARIA_CURRENT_OPTIONS_FOR_ANCHOR, aria_current, DEFAULT_ARIA_CURRENT_FOR_ANCHOR)
         else
           @system_arguments[:"aria-selected"] = true
         end
