@@ -22,7 +22,6 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     component_uri = self.class.name.gsub("Test", "").gsub("Integration", "").underscore
 
     visit("/rails/view_components/primer/#{component_uri}/#{preview_name}")
-
     assert_accessible(page)
   end
 
