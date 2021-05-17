@@ -2,6 +2,10 @@
 
 ## main
 
+### Breaking changes
+
+* Restrict allowed tags for `Truncate`, `Markdown`, and `HiddenTextExpander`.
+
 ## 0.0.41
 
 ### New
@@ -21,9 +25,6 @@
 * Do not raise error if Primer CSS class name is passed to component if `PRIMER_WARNINGS_DISABLED` is set.
 
     *Joel Hawksley*
-### Breaking changes
-
-* Restrict allowed tags for `Truncate` and `HiddenTextExpander` components.
 
 ### Accessibility
 
