@@ -6,9 +6,6 @@ module Primer
   # @accessibility
   #   Always provide a meaningful `alt`.
   class Image < Primer::Component
-    DEFAULT_LOADING = :eager
-    LOADING_OPTIONS = [DEFAULT_LOADING, :lazy].freeze
-
     # @example Default
     #
     #   <%= render(Primer::Image.new(src: "https://github.com/github.png", alt: "GitHub")) %>
@@ -19,7 +16,7 @@ module Primer
     #
     # @example Lazy loading
     #
-    #   <%= render(Primer::Image.new(src: "https://github.com/github.png", alt: "GitHub", loading: :lazy)) %>
+    #   <%= render(Primer::Image.new(src: "https://github.com/github.png", alt: "GitHub", lazy: true)) %>
     #
     # @example Custom size
     #
@@ -27,18 +24,19 @@ module Primer
     #
     # @param src [String] The source url of the image.
     # @param alt [String] Specifies an alternate text for the image.
-    # @param loading [Symbol] <%= one_of(Primer::Image::LOADING_OPTIONS) %>
+    # @param lazy [Boolean] Whether or not to lazily load the image.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(src:, alt:, loading: DEFAULT_LOADING, **system_arguments)
+    def initialize(src:, alt:, lazy: false, **system_arguments)
       @system_arguments = system_arguments
-      @loading = fetch_or_fallback(LOADING_OPTIONS, loading, DEFAULT_LOADING)
 
       @system_arguments[:tag] = :img
       @system_arguments[:src] = src
       @system_arguments[:alt] = alt
 
+      return unless lazy
 
-      @system_arguments[:loading] = @loading if @loading == :lazy
+      @system_arguments[:loading] = :lazy
+      @system_arguments[:decoding] = :async
     end
 
     def call

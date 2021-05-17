@@ -10,7 +10,7 @@ class Primer::ImageStories < ViewComponent::Storybook::Stories
       alt "The GitHub logo"
       height 100
       width 100
-      select(:loading, Primer::Image::LOADING_OPTIONS, Primer::Image::DEFAULT_LOADING)
+      lazy false
     end
   end
 end
