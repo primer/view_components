@@ -57,4 +57,7 @@ Always provide a meaningful `alt` for your images.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `src` | `String` | N/A | The source url of the image. |
+| `alt` | `String` | N/A | Specifies an alternate text for the image. |
+| `loading` | `Symbol` | `:eager` | One of `:eager` and `:lazy`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
