@@ -10,10 +10,10 @@
     type: String
     default: N/A
     description: Specifies an alternate text for the image.
-  - name: loading
-    type: Symbol
-    default: "`:eager`"
-    description: One of `:eager` and `:lazy`.
+  - name: lazy
+    type: Boolean
+    default: "`false`"
+    description: Whether or not to lazily load the image.
   - name: system_arguments
     type: Hash
     default: N/A

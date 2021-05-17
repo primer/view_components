@@ -37,11 +37,11 @@ Always provide a meaningful `alt`.
 
 ### Lazy loading
 
-<Example src="<img src='https://github.com/github.png' alt='GitHub' loading='lazy'></img>" />
+<Example src="<img src='https://github.com/github.png' alt='GitHub' loading='lazy' decoding='async'></img>" />
 
 ```erb
 
-<%= render(Primer::Image.new(src: "https://github.com/github.png", alt: "GitHub", loading: :lazy)) %>
+<%= render(Primer::Image.new(src: "https://github.com/github.png", alt: "GitHub", lazy: true)) %>
 ```
 
 ### Custom size
@@ -59,5 +59,5 @@ Always provide a meaningful `alt`.
 | :- | :- | :- | :- |
 | `src` | `String` | N/A | The source url of the image. |
 | `alt` | `String` | N/A | Specifies an alternate text for the image. |
-| `loading` | `Symbol` | `:eager` | One of `:eager` and `:lazy`. |
+| `lazy` | `Boolean` | `false` | Whether or not to lazily load the image. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
