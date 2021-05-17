@@ -12,6 +12,10 @@
 
     *Manuel Puyol*
 
+* Do not raise error if Primer CSS class name is passed to component if `PRIMER_WARNINGS_DISABLED` is set.
+
+    *Joel Hawksley*
+
 ### Accessibility
 
 * Accept `aria-current="true"` in tabbed components.

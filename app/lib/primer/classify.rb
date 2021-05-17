@@ -123,13 +123,13 @@ module Primer
       def validated_class_names(classes)
         return if classes.blank?
 
-        if ENV["RAILS_ENV"] == "development"
+        if ENV["RAILS_ENV"] == "development" && !ENV["PRIMER_WARNINGS_DISABLED"]
           invalid_class_names =
             classes.split(" ").each_with_object([]) do |class_name, memo|
               memo << class_name if INVALID_CLASS_NAME_PREFIXES.any? { |prefix| class_name.start_with?(prefix) }
             end
 
-          raise ArgumentError, "Use System Arguments (https://primer.style/view-components/system-arguments) instead of Primer CSS class #{'name'.pluralize(invalid_class_names.length)} #{invalid_class_names.to_sentence}. This warning will not be raised in production." if invalid_class_names.any?
+          raise ArgumentError, "Use System Arguments (https://primer.style/view-components/system-arguments) instead of Primer CSS class #{'name'.pluralize(invalid_class_names.length)} #{invalid_class_names.to_sentence}. This warning will not be raised in production. Set PRIMER_WARNINGS_DISABLED=1 to disable this warning." if invalid_class_names.any?
         end
 
         classes
