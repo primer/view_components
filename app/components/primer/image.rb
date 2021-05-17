@@ -31,11 +31,14 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(src:, alt:, loading: DEFAULT_LOADING, **system_arguments)
       @system_arguments = system_arguments
+      @loading = fetch_or_fallback(LOADING_OPTIONS, loading, DEFAULT_LOADING)
 
       @system_arguments[:tag] = :img
       @system_arguments[:src] = src
       @system_arguments[:alt] = alt
-      @system_arguments[:loading] = fetch_or_fallback(LOADING_OPTIONS, loading, DEFAULT_LOADING)
+
+
+      @system_arguments[:loading] = @loading if @loading == :lazy
     end
 
     def call
