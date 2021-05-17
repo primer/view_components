@@ -5,9 +5,9 @@ class Primer::ImageStories < ViewComponent::Storybook::Stories
 
   story(:image) do
     controls do
-      classes "custom-class"
+      classes ""
       src "https://github.com/github.png"
-      alt "image description"
+      alt "The GitHub logo"
       height 100
       width 100
       select(:loading, Primer::Image::LOADING_OPTIONS, Primer::Image::DEFAULT_LOADING)
