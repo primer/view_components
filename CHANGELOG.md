@@ -50,6 +50,10 @@
 
 ### Breaking changes
 
+* Rename `TooltipComponent` to `Tooltip`.
+
+    *Manuel Puyol*
+
 * Don't allow `OcticonComponent` height/width values under 16px
 
    *Jon Rohan*
