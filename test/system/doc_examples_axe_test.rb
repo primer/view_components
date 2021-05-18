@@ -3,14 +3,14 @@
 require "application_system_test_case"
 
 class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
-  # Skip components that make sense to test as part of a larger component.
+  # Skip components that should be tested as part of a larger component.
   NOT_STANDALONE = [:AutoCompleteItemPreview].freeze
 
-  # Starting point violations to be addressed. No new components should be added to this list.
+  # Starting point violations to be addressed. Do not add to this list!
   STARTING_POINT_VIOLATIONS = [:MarkdownPreview, :AutoCompletePreview, :TabComponentPreview, :NavigationTabComponentPreview].freeze
 
   def test_accessibility_of_doc_examples
-    puts "============================================================================="
+    puts "\n============================================================================="
     puts "Running axe-core checks on previews generated from documentation examples..."
     puts "============================================================================="
 
@@ -21,7 +21,6 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
       component_uri = klass.to_s.underscore.gsub("_preview", "")
       component_previews.each do |preview|
         visit("/rails/view_components/primer/docs/#{component_uri}/#{preview}")
-
         begin
           assert_accessible(page)
         rescue RuntimeError => e
@@ -35,7 +34,7 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
       end
     end
     puts "=========================================================================="
-    puts "The following component previews contain axe violation. Please open a fix for them"
+    puts "The following component previews contain axe violation. Please open a fix for them:"
     puts STARTING_POINT_VIOLATIONS.join("\n")
     puts "=========================================================================="
   end

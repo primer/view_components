@@ -302,6 +302,7 @@ namespace :docs do
 
     puts "Markdown compiled."
 
+    # Generate previews from documentation examples
     components.each do |component|
       documentation = registry.get(component.name)
       short_name = component.name.gsub(/Primer|::/, "")
