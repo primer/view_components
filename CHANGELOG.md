@@ -4,6 +4,10 @@
 
 ### Misc
 
+* Auto-generate component previews from doc examples and run integration test checks.
+
+    *Kate Higa, Joel Hawksley*
+
 * Configure previews controller to allow view helper usage in preview template.
 
     *Kate Higa*

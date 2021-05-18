@@ -1,6 +1,6 @@
 module Primer
   module Docs
-    class TabComponentPreview < ViewComponent::Preview
+    class NavigationTabComponentPreview < ViewComponent::Preview
       def default; end
 
       def with_icons_and_counters; end

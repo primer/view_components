@@ -1,6 +1,6 @@
 module Primer
   module Docs
-    class ItemPreview < ViewComponent::Preview
+    class AutoCompleteItemPreview < ViewComponent::Preview
       def default; end
 
     end

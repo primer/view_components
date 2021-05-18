@@ -304,26 +304,27 @@ namespace :docs do
 
     components.each do |component|
       documentation = registry.get(component.name)
+      short_name = component.name.gsub(/Primer|::/, "")
       initialize_method = documentation.meths.find(&:constructor?)
 
       next unless initialize_method.tags(:example).any?
 
-      path = Pathname.new("demo/test/components/previews/primer/docs/#{component.name.demodulize.underscore}_preview.rb")
+      path = Pathname.new("demo/test/components/previews/primer/docs/#{short_name.underscore}_preview.rb")
       path.dirname.mkdir unless path.dirname.exist?
 
       File.open(path, "w") do |f|
         f.puts("module Primer")
         f.puts("  module Docs")
-        f.puts("    class #{component.name.demodulize}Preview < ViewComponent::Preview")
+        f.puts("    class #{short_name}Preview < ViewComponent::Preview")
 
         initialize_method.tags(:example).each do |tag|
           method_name = tag.name.split("|").first.downcase.parameterize.underscore
           f.puts("      def #{method_name}; end")
           f.puts
-          path = Pathname.new("demo/test/components/previews/primer/docs/#{component.name.demodulize.underscore}_preview/#{method_name}.html.erb")
+          path = Pathname.new("demo/test/components/previews/primer/docs/#{short_name.underscore}_preview/#{method_name}.html.erb")
           path.dirname.mkdir unless path.dirname.exist?
-          File.open(path, "w") do |f|
-            f.puts(tag.text.to_s)
+          File.open(path, "w") do |view_file|
+            view_file.puts(tag.text.to_s)
           end
         end
 
