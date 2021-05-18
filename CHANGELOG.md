@@ -2,6 +2,10 @@
 
 ## main
 
+### Breaking changes
+
+* Restrict allowed tags for `Truncate`, `Markdown`, and `HiddenTextExpander`.
+
 ## 0.0.41
 
 ### New

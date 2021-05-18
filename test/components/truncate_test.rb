@@ -17,6 +17,13 @@ class PrimerTruncateTest < Minitest::Test
     assert_selector("span.css-truncate.css-truncate-overflow", text: "content")
   end
 
+  def test_falls_back_when_tag_isnt_valid
+    without_fetch_or_fallback_raises do
+      render_inline(Primer::Truncate.new(tag: :ul)) { "content" }
+      assert_selector("div.css-truncate")
+    end
+  end
+
   def test_renders_truncated_inline
     render_inline(Primer::Truncate.new(inline: true)) { "content" }
 

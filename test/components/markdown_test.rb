@@ -11,9 +11,22 @@ class PrimerMarkdownTest < Minitest::Test
     assert_selector(".markdown-body", text: "Content")
   end
 
-  def test_renders_different_tags
+  def test_renders_with_article
+    render_inline(Primer::Markdown.new(tag: :article)) { "Content" }
+
+    assert_selector("article.markdown-body", text: "Content")
+  end
+
+  def test_renders_with_td
     render_inline(Primer::Markdown.new(tag: :td)) { "Content" }
 
     assert_selector("td.markdown-body", text: "Content")
+  end
+
+  def test_falls_back_when_tag_isnt_valid
+    without_fetch_or_fallback_raises do
+      render_inline(Primer::Markdown.new(tag: :h3)) { "Content" }
+      assert_selector("div.markdown-body")
+    end
   end
 end

@@ -661,6 +661,10 @@
 - component: Markdown
   source: https://github.com/primer/view_components/tree/main/app/components/primer/markdown.rb
   parameters:
+  - name: tag
+    type: Symbol
+    default: "`:div`"
+    description: One of `:div`, `:article`, or `:td`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -883,6 +887,10 @@
 - component: Truncate
   source: https://github.com/primer/view_components/tree/main/app/components/primer/truncate.rb
   parameters:
+  - name: tag
+    type: Symbol
+    default: "`:div`"
+    description: One of `:div`, `:span`, or `:p`.
   - name: inline
     type: Boolean
     default: "`false`"
