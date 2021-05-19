@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Primer
-  module TaskList
-    # This component is part of `TaskList` and should not be
+  module TaskLists
+    # This component is part of `TaskLists` and should not be
     # used as a standalone component.
     class Item < Primer::Component
       def initialize(**system_arguments)

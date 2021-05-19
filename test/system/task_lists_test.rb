@@ -2,7 +2,7 @@
 
 require "application_system_test_case"
 
-class IntegrationTaskListTest < ApplicationSystemTestCase
+class IntegrationTaskListsTest < ApplicationSystemTestCase
   def test_renders_component
     with_preview(:default)
 

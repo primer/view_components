@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Primer
-  class TaskListPreview < ViewComponent::Preview
+  class TaskListsPreview < ViewComponent::Preview
     def default
-      render(Primer::TaskListComponent.new(sortable: true)) do |component|
+      render(Primer::TaskListsComponent.new(sortable: true)) do |component|
         component.list do |list|
           list.item do
             "Apple"

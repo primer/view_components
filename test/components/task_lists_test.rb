@@ -2,11 +2,11 @@
 
 require "test_helper"
 
-class PrimerTaskListTest < Minitest::Test
+class PrimerTaskListsTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders
-    render_inline Primer::TaskListComponent.new do |component|
+    render_inline Primer::TaskListsComponent.new do |component|
       component.list do |list|
         list.item do
           "Foobar"

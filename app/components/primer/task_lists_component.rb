@@ -2,12 +2,12 @@
 
 module Primer
   # Drag and droppable task list items.
-  class TaskListComponent < Primer::Component
-    renders_many :lists, Primer::TaskList::List
+  class TaskListsComponent < Primer::Component
+    renders_many :lists, Primer::TaskLists::List
 
     # @example Simple
     #
-    #   <%= render(Primer::TaskListComponent.new) do |component| %>
+    #   <%= render(Primer::TaskListsComponent.new) do |component| %>
     #     <% component.lists([{content: "Item"}]) %>
     #   <% end %>
     #

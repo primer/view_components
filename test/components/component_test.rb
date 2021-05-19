@@ -7,9 +7,9 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
-    [Primer::TaskListComponent, {}],
-    [Primer::TaskList::List, {}],
-    [Primer::TaskList::Item, {}],
+    [Primer::TaskListsComponent, {}],
+    [Primer::TaskLists::List, {}],
+    [Primer::TaskLists::Item, {}],
     [Primer::Image, { src: "src", alt: "alt" }],
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],

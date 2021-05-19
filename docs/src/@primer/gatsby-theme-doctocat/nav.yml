@@ -92,8 +92,8 @@
       url: /components/tabcontainer
     - title: TabNav
       url: /components/tabnav
-    - title: TaskList
-      url: /components/tasklist
+    - title: TaskLists
+      url: /components/tasklists
     - title: Text
       url: /components/text
     - title: TimeAgo
