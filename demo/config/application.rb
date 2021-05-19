@@ -20,6 +20,7 @@ module Demo
     # Initialize configuration defaults for originally generated Rails version.
     config.view_component_storybook.show_stories = true
     config.view_component.show_previews = true
+    config.view_component.preview_controller = "PreviewController"
 
     config.action_dispatch.default_headers.clear
 

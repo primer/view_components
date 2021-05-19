@@ -2,9 +2,17 @@
 
 ## main
 
+### Misc
+
+* Configure previews controller to allow view helper usage in preview template.
+
+    *Kate Higa*
+
 ### Breaking changes
 
 * Restrict allowed tags for `Truncate`, `Markdown`, and `HiddenTextExpander`.
+
+    *Kate Higa*
 
 ## 0.0.41
 
