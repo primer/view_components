@@ -6,7 +6,6 @@ module Primer
       def schemes; end
 
       def in_a_borderbox; end
-
     end
   end
 end

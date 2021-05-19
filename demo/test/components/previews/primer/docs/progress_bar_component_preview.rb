@@ -8,7 +8,6 @@ module Primer
       def large; end
 
       def multiple_items; end
-
     end
   end
 end

@@ -6,7 +6,6 @@ module Primer
       def align_right; end
 
       def with_tooltip; end
-
     end
   end
 end

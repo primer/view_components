@@ -4,7 +4,6 @@ module Primer
       def schemes; end
 
       def sizes; end
-
     end
   end
 end

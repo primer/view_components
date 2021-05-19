@@ -4,7 +4,6 @@ module Primer
       def default; end
 
       def left_sidebar; end
-
     end
   end
 end

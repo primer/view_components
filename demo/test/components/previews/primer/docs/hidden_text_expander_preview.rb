@@ -6,7 +6,6 @@ module Primer
       def inline; end
 
       def styling_the_button; end
-
     end
   end
 end

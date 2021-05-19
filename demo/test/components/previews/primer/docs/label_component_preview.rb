@@ -4,7 +4,6 @@ module Primer
       def schemes; end
 
       def variants; end
-
     end
   end
 end

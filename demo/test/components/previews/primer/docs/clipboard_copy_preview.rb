@@ -4,7 +4,6 @@ module Primer
       def default; end
 
       def with_text_instead_of_icons; end
-
     end
   end
 end

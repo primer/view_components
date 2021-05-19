@@ -4,7 +4,6 @@ module Primer
       def default; end
 
       def schemes; end
-
     end
   end
 end

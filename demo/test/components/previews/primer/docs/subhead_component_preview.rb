@@ -10,7 +10,6 @@ module Primer
       def without_border; end
 
       def with_actions; end
-
     end
   end
 end

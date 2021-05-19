@@ -8,7 +8,6 @@ module Primer
       def inside_a_list; end
 
       def with_custom_html; end
-
     end
   end
 end

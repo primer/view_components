@@ -8,7 +8,6 @@ module Primer
       def lazy_loading; end
 
       def custom_size; end
-
     end
   end
 end

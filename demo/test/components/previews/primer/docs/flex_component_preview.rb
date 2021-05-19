@@ -8,7 +8,6 @@ module Primer
       def align_end; end
 
       def direction_column; end
-
     end
   end
 end

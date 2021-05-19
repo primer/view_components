@@ -4,7 +4,6 @@ module Primer
       def default; end
 
       def variants; end
-
     end
   end
 end

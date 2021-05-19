@@ -8,7 +8,6 @@ module Primer
       def caret_position; end
 
       def with_html_body; end
-
     end
   end
 end

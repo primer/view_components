@@ -4,7 +4,6 @@ module Primer
       def default; end
 
       def with_direction; end
-
     end
   end
 end

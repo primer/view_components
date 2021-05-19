@@ -8,7 +8,6 @@ module Primer
       def expandable; end
 
       def custom_size; end
-
     end
   end
 end

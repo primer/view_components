@@ -8,7 +8,6 @@ module Primer
       def with_panels; end
 
       def with_extra_content; end
-
     end
   end
 end

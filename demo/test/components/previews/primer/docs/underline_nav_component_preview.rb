@@ -10,7 +10,6 @@ module Primer
       def as_a_list; end
 
       def with_panels; end
-
     end
   end
 end

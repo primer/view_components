@@ -10,7 +10,6 @@ module Primer
       def with_an_alignment; end
 
       def without_a_delay; end
-
     end
   end
 end

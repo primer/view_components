@@ -10,7 +10,6 @@ module Primer
       def icon; end
 
       def with_actions; end
-
     end
   end
 end

@@ -10,7 +10,6 @@ module Primer
       def without_underline; end
 
       def span_as_link; end
-
     end
   end
 end

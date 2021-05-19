@@ -6,7 +6,6 @@ module Primer
       def medium; end
 
       def helper; end
-
     end
   end
 end

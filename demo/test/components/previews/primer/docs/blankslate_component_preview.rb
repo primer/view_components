@@ -14,7 +14,6 @@ module Primer
       def link; end
 
       def variations; end
-
     end
   end
 end

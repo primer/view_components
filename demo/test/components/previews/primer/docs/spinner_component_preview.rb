@@ -6,7 +6,6 @@ module Primer
       def small; end
 
       def large; end
-
     end
   end
 end

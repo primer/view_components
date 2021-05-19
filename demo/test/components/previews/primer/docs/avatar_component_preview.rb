@@ -8,7 +8,6 @@ module Primer
       def link; end
 
       def with_size; end
-
     end
   end
 end

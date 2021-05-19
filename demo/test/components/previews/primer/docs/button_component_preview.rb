@@ -14,7 +14,6 @@ module Primer
       def with_icons_and_counter; end
 
       def with_caret; end
-
     end
   end
 end
