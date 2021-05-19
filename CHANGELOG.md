@@ -2,11 +2,11 @@
 
 ## main
 
+- Create `TaskList` component.
+
+  _Kristján Oddsson_
+
 ### New
-
-* Create `TaskList` component.
-
-    *Kristján Oddsson*
 
 * Create `LocalTime` component.
 
