@@ -2,6 +2,12 @@
 
 ## main
 
+### Updates
+
+* Add `align` option to the `TabNav` extra slot to allow HTML ordering.
+
+    *Manuel Puyol*
+
 ### Misc
 
 * Configure previews controller to allow view helper usage in preview template.

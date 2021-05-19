@@ -5,6 +5,9 @@ module Primer
   class TabNavComponent < Primer::Component
     include Primer::TabbedComponentHelper
 
+    DEFAULT_ALIGN = :left
+    ALIGN_OPTIONS = [DEFAULT_ALIGN, :extra].freeze
+
     # Tabs to be rendered. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
     # @param selected [Boolean] Whether the tab is selected.
@@ -23,7 +26,13 @@ module Primer
     }
 
     # Renders extra content to the `TabNav`. This will be rendered after the tabs.
-    renders_one :extra
+    #
+    # @param align [Symbol] <%= one_of(Primer::TabNavComponent::ALIGN_OPTIONS) %>
+    renders_one :extra, lambda { |align: DEFAULT_ALIGN, &block|
+      @align = fetch_or_fallback(ALIGN_OPTIONS, align, DEFAULT_ALIGN)
+
+      view_context.capture { block&.call }
+    }
 
     # @example Default
     #   <%= render(Primer::TabNavComponent.new(label: "Default")) do |c| %>
