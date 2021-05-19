@@ -626,6 +626,16 @@ class PrimerClassifyTest < Minitest::Test
     ENV["RAILS_ENV"] = "test"
   end
 
+  def test_raises_does_not_raise_error_when_passing_in_a_primer_css_class_name_in_development_and_flag_is_set
+    ENV["RAILS_ENV"] = "development"
+    ENV["PRIMER_WARNINGS_DISABLED"] = "1"
+
+    assert_generated_class("bg-blue text-center float-left ml-1", { classes: "bg-blue text-center float-left ml-1" })
+  ensure
+    ENV["PRIMER_WARNINGS_DISABLED"] = nil
+    ENV["RAILS_ENV"] = "test"
+  end
+
   def test_does_not_raise_error_when_passing_in_a_primer_css_class_otherwise
     assert_generated_class("bg-blue text-center float-left ml-1", { classes: "bg-blue text-center float-left ml-1" })
   end

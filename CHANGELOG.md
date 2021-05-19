@@ -6,11 +6,35 @@
 
   _Kristján Oddsson_
 
+### Breaking changes
+
+* Restrict allowed tags for `Truncate`, `Markdown`, and `HiddenTextExpander`.
+
+## 0.0.41
+
 ### New
 
 * Create `LocalTime` component.
 
     *Kristján Oddsson*
+
+* Create `Image` component.
+
+    *Manuel Puyol*
+
+* Add `extra` slot to `TabNav`.
+
+    *Manuel Puyol*
+
+* Do not raise error if Primer CSS class name is passed to component if `PRIMER_WARNINGS_DISABLED` is set.
+
+    *Joel Hawksley*
+
+### Accessibility
+
+* Accept `aria-current="true"` in tabbed components.
+
+    *Manuel Puyol*
 
 ### Changes
 
@@ -20,11 +44,23 @@
 
 ### Bug fixes
 
+* Ensure that `ClipboardCopy` behaviors only target ViewComponents.
+
+    *Manuel Puyol*
+
 * Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.
 
     *Kristján Oddsson*
 
 ### Breaking changes
+
+* Rename `TooltipComponent` to `Tooltip`.
+
+    *Manuel Puyol*
+
+* Don't allow `OcticonComponent` height/width values under 16px
+
+   *Jon Rohan*
 
 * Remove `:large` size option from `OcticonComponent` and change `:medium` to 24px
 

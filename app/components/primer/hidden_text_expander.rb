@@ -17,7 +17,7 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(inline: false, button_arguments: {}, **system_arguments)
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :span
+      @system_arguments[:tag] = :span
       @system_arguments[:classes] = class_names(
         "hidden-text-expander",
         @system_arguments[:classes],

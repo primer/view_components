@@ -5,6 +5,12 @@ require "test_helper"
 class PrimerBaseComponentTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
+  def test_renders_data_view_component
+    render_inline(Primer::BaseComponent.new(tag: :div))
+
+    assert_selector("div[data-view-component]")
+  end
+
   def test_renders_title
     render_inline(Primer::BaseComponent.new(tag: :div, title: "title"))
 

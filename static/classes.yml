@@ -128,6 +128,7 @@
 - ".flex-items-end"
 - ".flex-justify-center"
 - ".flex-shrink-0"
+- ".float-right"
 - ".form-control"
 - ".gutter-condensed"
 - ".gutter-lg"

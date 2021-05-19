@@ -1,5 +1,7 @@
 import '@github/clipboard-copy-element'
 
+const CLIPBOARD_COPY_TIMER_DURATION = 2000
+
 function toggleSVG(svg: SVGElement) {
   if (svg.style.display === '' || svg.style.display === 'block') {
     svg.style.display = 'none'
@@ -18,9 +20,20 @@ function toggleCopyButton(button: HTMLElement) {
   toggleSVG(checkIcon)
 }
 
+const clipboardCopyElementTimers = new WeakMap<HTMLElement, number>()
+
 document.addEventListener('clipboard-copy', function ({target}) {
   if (!(target instanceof HTMLElement)) return
-  toggleCopyButton(target)
+  if (!target.hasAttribute('data-view-component')) return
 
-  setTimeout(toggleCopyButton, 2000, target)
+  const currentTimeout = clipboardCopyElementTimers.get(target)
+
+  if (currentTimeout) {
+    clearTimeout(currentTimeout)
+    clipboardCopyElementTimers.delete(target)
+  } else {
+    toggleCopyButton(target)
+  }
+
+  clipboardCopyElementTimers.set(target, setTimeout(toggleCopyButton, CLIPBOARD_COPY_TIMER_DURATION, target))
 })

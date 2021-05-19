@@ -22,6 +22,9 @@ module Primer
       )
     }
 
+    # Renders extra content to the `TabNav`. This will be rendered after the tabs.
+    renders_one :extra
+
     # @example Default
     #   <%= render(Primer::TabNavComponent.new(label: "Default")) do |c| %>
     #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
@@ -68,12 +71,24 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
+    # @example With extra content
+    #   <%= render(Primer::TabNavComponent.new(label: "Default")) do |c| %>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(href: "#") { "Tab 2" } %>
+    #     <% c.tab(href: "#") { "Tab 3" } %>
+    #     <% c.extra do %>
+    #       <%= render(Primer::ButtonComponent.new(float: :right)) { "Button" } %>
+    #     <% end %>
+    #   <% end %>
+    #
     # @param label [String] Used to set the `aria-label` on the top level `<nav>` element.
     # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
+    # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(label:, with_panel: false, **system_arguments)
+    def initialize(label:, with_panel: false, body_arguments: {}, **system_arguments)
       @with_panel = with_panel
       @system_arguments = system_arguments
+      @body_arguments = body_arguments
 
       @system_arguments[:tag] ||= :div
       @system_arguments[:classes] = class_names(
@@ -81,15 +96,13 @@ module Primer
         system_arguments[:classes]
       )
 
-      @body_arguments = {
-        tag: navigation_tag(with_panel),
-        classes: "tabnav-tabs",
-        aria: {
-          label: label
-        }
-      }
-
+      @body_arguments[:tag] = navigation_tag(with_panel)
+      @body_arguments[:"aria-label"] = label
       @body_arguments[:role] = :tablist if @with_panel
+      @body_arguments[:classes] = class_names(
+        "tabnav-tabs",
+        body_arguments[:classes]
+      )
     end
   end
 end

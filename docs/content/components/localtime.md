@@ -18,7 +18,7 @@ Use `LocalTime` to format a date and time in the user's preferred locale format.
 
 ### Default
 
-<Example src="<local-time datetime='2014-06-01T13:05:07+00:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>June 1, 2014 13:05 +00:00</local-time>" />
+<Example src="<local-time datetime='2014-06-01T13:05:07+00:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short' data-view-component='true'>June 1, 2014 13:05 +00:00</local-time>" />
 
 ```erb
 <%= render(Primer::LocalTime.new(datetime: DateTime.parse("2014-06-01T13:05:07Z"))) %>
@@ -26,7 +26,7 @@ Use `LocalTime` to format a date and time in the user's preferred locale format.
 
 ### All the options
 
-<Example src="<local-time datetime='2014-06-01T13:05:07+00:00' weekday='long' year='2-digit' month='long' day='2-digit' hour='2-digit' minute='2-digit' second='2-digit' time-zone-name='long'>June 1, 2014 13:05 +00:00</local-time>" />
+<Example src="<local-time datetime='2014-06-01T13:05:07+00:00' weekday='long' year='2-digit' month='long' day='2-digit' hour='2-digit' minute='2-digit' second='2-digit' time-zone-name='long' data-view-component='true'>June 1, 2014 13:05 +00:00</local-time>" />
 
 ```erb
 <%= render(Primer::LocalTime.new(datetime: DateTime.parse("2014-06-01T13:05:07Z"), weekday: :long, year: :"2-digit", month: :long, day: :"2-digit", hour: :"2-digit", minute: :"2-digit", second: :"2-digit", time_zone_name: :long)) %>
@@ -34,7 +34,7 @@ Use `LocalTime` to format a date and time in the user's preferred locale format.
 
 ### With initial content
 
-<Example src="<local-time datetime='2014-06-01T13:05:07+00:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short'>June 1, 2014 13:05 +00:00</local-time>" />
+<Example src="<local-time datetime='2014-06-01T13:05:07+00:00' weekday='short' year='numeric' month='short' day='numeric' hour='numeric' minute='numeric' second='numeric' time-zone-name='short' data-view-component='true'>June 1, 2014 13:05 +00:00</local-time>" />
 
 ```erb
 <%= render(Primer::LocalTime.new(datetime: DateTime.parse("2014-06-01T13:05:07Z"))) do %>

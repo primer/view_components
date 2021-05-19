@@ -10,6 +10,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::TaskListComponent, {}],
     [Primer::TaskList::List, {}],
     [Primer::TaskList::Item, {}],
+    [Primer::Image, { src: "src", alt: "alt" }],
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],

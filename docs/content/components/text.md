@@ -15,7 +15,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ### Default
 
-<Example src="<p class='text-bold'>Bold Text</p><p class='color-text-danger'>Danger Text</p>" />
+<Example src="<p data-view-component='true' class='text-bold'>Bold Text</p><p data-view-component='true' class='color-text-danger'>Danger Text</p>" />
 
 ```erb
 <%= render(Primer::TextComponent.new(tag: :p, font_weight: :bold)) { "Bold Text" } %>
