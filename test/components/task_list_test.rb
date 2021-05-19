@@ -6,7 +6,7 @@ class PrimerTaskListTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders
-    render_inline Primer::TaskList.new do |component|
+    render_inline Primer::TaskListComponent.new do |component|
       component.list do |list|
         list.item do
           "Foobar"

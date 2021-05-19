@@ -3,7 +3,7 @@
 module Primer
   class TaskListPreview < ViewComponent::Preview
     def default
-      render(Primer::TaskList.new(sortable: true)) do |component|
+      render(Primer::TaskListComponent.new(sortable: true)) do |component|
         component.list do |list|
           list.item do
             "Apple"
