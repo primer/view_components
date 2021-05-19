@@ -2,7 +2,7 @@
 
 ## main
 
-- Create `TaskList` component.
+* Create `TaskList` component.
 
   _Kristján Oddsson_
 
