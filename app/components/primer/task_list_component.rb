@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 module Primer
-  # Add a general description of component here
-  # Add additional usage considerations or best practices that may aid the user to use the component correctly.
-  # @accessibility Add any accessibility considerations
+  # Drag and droppable task list items.
   class TaskListComponent < Primer::Component
     renders_many :lists, Primer::TaskList::List
 
-    # @example Example goes here
+    # @example Simple
     #
     #   <%= render(Primer::TaskListComponent.new) do |component| %>
     #     <% component.lists([{content: "Item"}]) %>
