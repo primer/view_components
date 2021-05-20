@@ -1,0 +1,15 @@
+<div>
+  <%= render(Primer::DropdownComponent.new) do |c| %>
+    <% c.button do %>
+      Dropdown
+    <% end %>
+
+    <%= c.menu(header: "Options") do |menu|
+      menu.item { "Item 1" }
+      menu.item { "Item 2" }
+      menu.item(divider: true)
+      menu.item { "Item 3" }
+      menu.item { "Item 4" }
+    end %>
+  <% end %>
+</div>
