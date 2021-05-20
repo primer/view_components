@@ -1,0 +1,11 @@
+<%= render(Primer::UnderlineNavComponent.new(label: "Align right", align: :right)) do |component| %>
+  <% component.tab(href: "#", selected: true) do |t| %>
+    <% t.text { "Item 1" } %>
+  <% end %>
+  <% component.tab(href: "#") do |t| %>
+    <% t.text { "Item 2" } %>
+  <% end %>
+  <% component.actions do %>
+    <%= render(Primer::ButtonComponent.new) { "Button!" } %>
+  <% end %>
+<% end %>

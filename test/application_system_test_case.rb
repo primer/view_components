@@ -15,7 +15,8 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :cuprite, using: :chrome, screen_size: [1400, 1400]
 
   # Skip `:region` which relates to preview page structure rather than individual component.
-  AXE_RULES_TO_SKIP = [:region].freeze
+  # Skip `:color-contrast` which requires primer design-level change.
+  AXE_RULES_TO_SKIP = [:region, :"color-contrast"].freeze
   AXE_WITHIN_SELECTOR = "body"
 
   def with_preview(preview_name)
