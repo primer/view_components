@@ -14,6 +14,9 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
     puts "Running axe-core checks on previews generated from documentation examples..."
     puts "============================================================================="
 
+    # Workaround to ensure that all component previews are loaded.
+    visit("/rails/view_components")
+
     Primer::Docs.constants.each do |klass|
       next if NOT_STANDALONE.include?(klass) || STARTING_POINT_VIOLATIONS.include?(klass)
 
