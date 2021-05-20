@@ -1,0 +1,10 @@
+<%= render(Primer::TabNavComponent.new(label: "Adding extra content after the tabs", display: :flex, body_arguments: { flex: 1 })) do |c| %>
+  <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+  <% c.tab(href: "#") { "Tab 2" } %>
+  <% c.tab(href: "#") { "Tab 3" } %>
+  <% c.extra(align: :right) do %>
+    <div>
+      <%= render(Primer::ButtonComponent.new) { "Button" } %>
+    </div>
+  <% end %>
+<% end %>

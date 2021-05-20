@@ -5,8 +5,8 @@ module Primer
   class TabNavComponent < Primer::Component
     include Primer::TabbedComponentHelper
 
-    DEFAULT_ALIGN = :left
-    ALIGN_OPTIONS = [DEFAULT_ALIGN, :extra].freeze
+    DEFAULT_EXTRA_ALIGN = :left
+    EXTRA_ALIGN_OPTIONS = [DEFAULT_EXTRA_ALIGN, :right].freeze
 
     # Tabs to be rendered. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
@@ -27,9 +27,9 @@ module Primer
 
     # Renders extra content to the `TabNav`. This will be rendered after the tabs.
     #
-    # @param align [Symbol] <%= one_of(Primer::TabNavComponent::ALIGN_OPTIONS) %>
-    renders_one :extra, lambda { |align: DEFAULT_ALIGN, &block|
-      @align = fetch_or_fallback(ALIGN_OPTIONS, align, DEFAULT_ALIGN)
+    # @param align [Symbol] <%= one_of(Primer::TabNavComponent::EXTRA_ALIGN_OPTIONS) %>
+    renders_one :extra, lambda { |align: DEFAULT_EXTRA_ALIGN, &block|
+      @align = fetch_or_fallback(EXTRA_ALIGN_OPTIONS, align, DEFAULT_EXTRA_ALIGN)
 
       view_context.capture { block&.call }
     }
@@ -81,12 +81,24 @@ module Primer
     #   <% end %>
     #
     # @example With extra content
-    #   <%= render(Primer::TabNavComponent.new(label: "Default")) do |c| %>
+    #   <%= render(Primer::TabNavComponent.new(label: "With extra content")) do |c| %>
     #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
     #     <% c.tab(href: "#") { "Tab 2" } %>
     #     <% c.tab(href: "#") { "Tab 3" } %>
     #     <% c.extra do %>
     #       <%= render(Primer::ButtonComponent.new(float: :right)) { "Button" } %>
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example Adding extra content after the tabs
+    #   <%= render(Primer::TabNavComponent.new(label: "Adding extra content after the tabs", display: :flex, body_arguments: { flex: 1 })) do |c| %>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(href: "#") { "Tab 2" } %>
+    #     <% c.tab(href: "#") { "Tab 3" } %>
+    #     <% c.extra(align: :right) do %>
+    #       <div>
+    #         <%= render(Primer::ButtonComponent.new) { "Button" } %>
+    #       </div>
     #     <% end %>
     #   <% end %>
     #

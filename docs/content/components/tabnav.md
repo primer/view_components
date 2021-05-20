@@ -79,15 +79,32 @@ Use `TabNav` to style navigation with a tab-based selected state, typically used
 
 ### With extra content
 
-<Example src="  <div data-view-component='true' class='tabnav'>        <button type='button' data-view-component='true' class='btn float-right'>    Button  </button>    <nav aria-label='Default' data-view-component='true' class='tabnav-tabs'>          <a href='#' aria-current='page' data-view-component='true' class='tabnav-tab'>          Tab 1    </a>          <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 2    </a>          <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 3    </a></nav>    </div>" />
+<Example src="  <div data-view-component='true' class='tabnav'>        <button type='button' data-view-component='true' class='btn float-right'>    Button  </button>    <nav aria-label='With extra content' data-view-component='true' class='tabnav-tabs'>          <a href='#' aria-current='page' data-view-component='true' class='tabnav-tab'>          Tab 1    </a>          <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 2    </a>          <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 3    </a></nav>    </div>" />
 
 ```erb
-<%= render(Primer::TabNavComponent.new(label: "Default")) do |c| %>
+<%= render(Primer::TabNavComponent.new(label: "With extra content")) do |c| %>
   <% c.tab(selected: true, href: "#") { "Tab 1" }%>
   <% c.tab(href: "#") { "Tab 2" } %>
   <% c.tab(href: "#") { "Tab 3" } %>
   <% c.extra do %>
     <%= render(Primer::ButtonComponent.new(float: :right)) { "Button" } %>
+  <% end %>
+<% end %>
+```
+
+### Adding extra content after the tabs
+
+<Example src="  <div data-view-component='true' class='tabnav d-flex'>        <nav aria-label='Adding extra content after the tabs' data-view-component='true' class='tabnav-tabs flex-1'>          <a href='#' aria-current='page' data-view-component='true' class='tabnav-tab'>          Tab 1    </a>          <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 2    </a>          <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 3    </a></nav>        <div>      <button type='button' data-view-component='true' class='btn'>    Button  </button>    </div></div>" />
+
+```erb
+<%= render(Primer::TabNavComponent.new(label: "Adding extra content after the tabs", display: :flex, body_arguments: { flex: 1 })) do |c| %>
+  <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+  <% c.tab(href: "#") { "Tab 2" } %>
+  <% c.tab(href: "#") { "Tab 3" } %>
+  <% c.extra(align: :right) do %>
+    <div>
+      <%= render(Primer::ButtonComponent.new) { "Button" } %>
+    </div>
   <% end %>
 <% end %>
 ```
@@ -118,4 +135,4 @@ Renders extra content to the `TabNav`. This will be rendered after the tabs.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `align` | `Symbol` | N/A | One of `:left` and `:extra`. |
+| `align` | `Symbol` | N/A | One of `:left` and `:right`. |
