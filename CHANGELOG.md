@@ -4,6 +4,10 @@
 
 ### Breaking changes
 
+* Require a label or `aria-label` to be provided for `AutoComplete` component.
+
+    *Kate Higa*
+
 * Renames:
   * `Primer::ButtonMarketingComponent` to `Primer::Alpha::ButtonMarketing`.
   * `Primer::TextComponent` to `Primer::Beta::Text`.

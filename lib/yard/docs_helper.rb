@@ -28,6 +28,10 @@ module YARD
       "#{prefix} #{values.to_sentence(last_word_connector: ', or ')}."
     end
 
+    def link_to_accessibility
+      "[Accessibility](#system-arguments)"
+    end
+
     def link_to_system_arguments_docs
       "[System arguments](/system-arguments)"
     end

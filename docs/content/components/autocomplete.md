@@ -12,45 +12,56 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use `AutoComplete` to populate input values from server search results.
+Use `AutoComplete` to provide a user with a list of selectable suggestions that appear when they type into the
+input field. This list is populated by server search results.
 
 ## Accessibility
 
-Always provide a label for the `Autocomplete` component.
+Always provide an accessible label to help the user interact with the input element and listbox popup.
+
+To show a visible label, set the `label` slot. The`for` attribute must be set to the `id` of
+`input` in order for the `<label>` to be properly linked.
+
+If you do not wish to provide a visible label, you must set an `aria-label` attribute. You may set
+`:"aria-label"` directly on `AutoComplete` instead of the slots and Primer will apply it to the correct elements.
 
 ## Examples
 
 ### Default
 
-<Example src="<auto-complete src='/users/search' for='user-popup' data-view-component='true' class='position-relative'>  <input name='input' type='text' data-view-component='true' class='form-control'></input>    <ul id='user-popup' data-view-component='true' class='autocomplete-results'>    <li role='option' data-autocomplete-value='value' aria-selected='true' data-view-component='true' class='autocomplete-item'>      Selected</li>    <li role='option' data-autocomplete-value='value' data-view-component='true' class='autocomplete-item'>      Not selected</li></ul></auto-complete>" />
+<Example src="<label for='example-input' data-view-component='true'>Fruits</label><auto-complete src='/auto_complete' for='fruits-popup-1' data-view-component='true' class='position-relative'>  <input id='example-input' name='input' type='text' data-view-component='true' class='form-control'></input>    <ul id='fruits-popup-1' data-view-component='true' class='autocomplete-results'></ul></auto-complete>" />
 
 ```erb
-<%= render(Primer::AutoComplete.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
+<%= render(Primer::AutoComplete.new(src: "/auto_complete", id: "fruits-popup-1", position: :relative)) do |c| %>
+  <% c.label(for: "example-input").with_content("Fruits") %>
+  <% c.input(id: "example-input", type: :text, name: "input") %>
+<% end %>
+```
+
+### With `aria-label`
+
+<Example src="<auto-complete src='/auto_complete' for='fruits-popup-2' data-view-component='true' class='position-relative'>  <input name='input' aria-label='Fruits' type='text' data-view-component='true' class='form-control'></input>    <ul id='fruits-popup-2' aria-label='Fruits' data-view-component='true' class='autocomplete-results'></ul></auto-complete>" />
+
+```erb
+<%= render(Primer::AutoComplete.new("aria-label": "Fruits", src: "/auto_complete", id: "fruits-popup-2", position: :relative)) do |c| %>
   <% c.input(type: :text, name: "input") %>
-  <% c.results do %>
-    <%= render(Primer::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
-      Selected
-    <% end %>
-    <%= render(Primer::AutoComplete::Item.new(value: "value")) do |c| %>
-      Not selected
-    <% end %>
-  <% end %>
 <% end %>
 ```
 
 ### With custom classes for the results
 
-<Example src="<auto-complete src='/users/search' for='user-popup' data-view-component='true' class='position-relative'>  <input name='input' type='text' data-view-component='true' class='form-control'></input>    <ul id='user-popup' data-view-component='true' class='autocomplete-results custom-class'>    <li role='option' data-autocomplete-value='value' aria-selected='true' data-view-component='true' class='autocomplete-item'>      Selected</li>    <li role='option' data-autocomplete-value='value' data-view-component='true' class='autocomplete-item'>      Not selected</li></ul></auto-complete>" />
+<Example src="<label for='example-input-2' data-view-component='true'>Fruits</label><auto-complete src='/auto_complete' for='fruits-popup-3' data-view-component='true' class='position-relative'>  <input id='example-input-2' name='input' type='text' data-view-component='true' class='form-control'></input>    <ul id='fruits-popup-3' data-view-component='true' class='autocomplete-results custom-class'>    <li role='option' data-autocomplete-value='apple' aria-selected='true' data-view-component='true' class='autocomplete-item'>      Apple</li>    <li role='option' data-autocomplete-value='orange' data-view-component='true' class='autocomplete-item'>      Orange</li></ul></auto-complete>" />
 
 ```erb
-<%= render(Primer::AutoComplete.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
-  <% c.input(type: :text, name: "input") %>
+<%= render(Primer::AutoComplete.new(src: "/auto_complete", id: "fruits-popup-3", position: :relative)) do |c| %>
+  <% c.label(for: "example-input-2").with_content("Fruits") %>
+  <% c.input(id: 'example-input-2', type: :text, name: "input") %>
   <% c.results(classes: "custom-class") do %>
-    <%= render(Primer::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
-      Selected
+    <%= render(Primer::AutoComplete::Item.new(selected: true, value: "apple")) do |c| %>
+      Apple
     <% end %>
-    <%= render(Primer::AutoComplete::Item.new(value: "value")) do |c| %>
-      Not selected
+    <%= render(Primer::AutoComplete::Item.new(value: "orange")) do |c| %>
+      Orange
     <% end %>
   <% end %>
 <% end %>
@@ -58,20 +69,13 @@ Always provide a label for the `Autocomplete` component.
 
 ### With Icon
 
-<Example src="<auto-complete src='/users/search' for='user-popup' data-view-component='true' class='position-relative'>  <input name='input' type='text' data-view-component='true' class='form-control'></input>  <svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' data-view-component='true' height='16' width='16' class='octicon octicon-search'>    <path fill-rule='evenodd' d='M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z'></path></svg>  <ul id='user-popup' data-view-component='true' class='autocomplete-results'>    <li role='option' data-autocomplete-value='value' aria-selected='true' data-view-component='true' class='autocomplete-item'>      Selected</li>    <li role='option' data-autocomplete-value='value' data-view-component='true' class='autocomplete-item'>      Not selected</li></ul></auto-complete>" />
+<Example src="<label for='example-input-3' data-view-component='true'>Fruits</label><auto-complete src='/auto_complete' for='fruits-popup-4' data-view-component='true' class='position-relative'>  <input id='example-input-3' name='input' type='text' data-view-component='true' class='form-control'></input>  <svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' data-view-component='true' height='16' width='16' class='octicon octicon-search'>    <path fill-rule='evenodd' d='M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z'></path></svg>  <ul id='fruits-popup-4' data-view-component='true' class='autocomplete-results'></ul></auto-complete>" />
 
 ```erb
-<%= render(Primer::AutoComplete.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
-  <% c.input(type: :text, name: "input") %>
+<%= render(Primer::AutoComplete.new(src: "/auto_complete", id: "fruits-popup-4", position: :relative)) do |c| %>
+  <% c.label(for: "example-input-3").with_content("Fruits") %>
+  <% c.input(id: "example-input-3", name: "input", ) %>
   <% c.icon(icon: :search) %>
-  <% c.results do %>
-    <%= render(Primer::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
-      Selected
-    <% end %>
-    <%= render(Primer::AutoComplete::Item.new(value: "value")) do |c| %>
-      Not selected
-    <% end %>
-  <% end %>
 <% end %>
 ```
 
@@ -84,6 +88,15 @@ Always provide a label for the `Autocomplete` component.
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
+
+### `Label`
+
+Optionally render a visible label. See [Accessibility](#system-arguments)
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `for` | `Symbol` | N/A | id of input |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `Input`
 
