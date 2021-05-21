@@ -35,7 +35,7 @@ module Primer
       icon_key = icon_name || icon
 
       # Don't allow sizes under 16px
-      if system_arguments[:height].present? && system_arguments[:height] < 16 || system_arguments[:width].present? && system_arguments[:width] < 16
+      if system_arguments[:height].present? && system_arguments[:height].to_i < 16 || system_arguments[:width].present? && system_arguments[:width].to_i < 16
         system_arguments.delete(:height)
         system_arguments.delete(:width)
       end
