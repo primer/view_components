@@ -215,7 +215,7 @@ module Primer
         elsif TEXT_KEYS.include?(key)
           memo[:classes] << "text-#{val.to_s.dasherize}"
         elsif TYPOGRAPHY_KEYS.include?(key)
-          memo[:classes] << if value == :small || val == :normal
+          memo[:classes] << if val == :small || val == :normal
                               "text-#{val.to_s.dasherize}"
                             else
                               "f#{val.to_s.dasherize}"
