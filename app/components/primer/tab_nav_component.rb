@@ -107,6 +107,7 @@ module Primer
     # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(label:, with_panel: false, body_arguments: {}, **system_arguments)
+      @align = DEFAULT_EXTRA_ALIGN
       @with_panel = with_panel
       @system_arguments = system_arguments
       @body_arguments = body_arguments
