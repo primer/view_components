@@ -2,6 +2,16 @@
 
 ## main
 
+### New
+
+* Add `font_family`, `font_style` and `text_transform` system arguments.
+
+    *Manuel Puyol*
+
+* Add more options for `font_size` and `font_weight`.
+
+    *Manuel Puyol*
+
 ### Misc
 
 * Auto-generate component previews from doc examples and run integration test checks.
