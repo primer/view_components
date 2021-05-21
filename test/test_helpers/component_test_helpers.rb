@@ -16,6 +16,14 @@ module Primer
       FetchOrFallbackHelper.fallback_raises = true
     end
 
+    def with_force_system_arguments(new_value)
+      old_value = Rails.application.config.primer_view_components.force_system_arguments
+      Rails.application.config.primer_view_components.force_system_arguments = new_value
+      yield
+    ensure
+      Rails.application.config.primer_view_components.force_system_arguments = old_value
+    end
+
     def with_force_functional_colors(new_value)
       old_value = Rails.application.config.primer_view_components.force_functional_colors
       Rails.application.config.primer_view_components.force_functional_colors = new_value
