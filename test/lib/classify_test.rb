@@ -16,7 +16,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("f4",  { font_size: 4 })
     assert_generated_class("f5",  { font_size: 5 })
     assert_generated_class("f6",  { font_size: 6 })
-    assert_generated_class("text-small",  { font_size: :small })
+    assert_generated_class("text-small", { font_size: :small })
     assert_generated_class("text-normal",  { font_size: :normal })
   end
 
