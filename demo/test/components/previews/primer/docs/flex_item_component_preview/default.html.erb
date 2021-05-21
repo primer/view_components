@@ -1,0 +1,9 @@
+<%= render(Primer::FlexComponent.new) do %>
+  <%= render(Primer::FlexItemComponent.new) do %>
+    Item 1
+  <% end %>
+
+  <%= render(Primer::FlexItemComponent.new(flex_auto: true)) do %>
+    Item 2
+  <% end %>
+<% end %>

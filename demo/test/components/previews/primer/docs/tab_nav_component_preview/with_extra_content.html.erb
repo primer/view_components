@@ -1,0 +1,8 @@
+<%= render(Primer::TabNavComponent.new(label: "Default")) do |c| %>
+  <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+  <% c.tab(href: "#") { "Tab 2" } %>
+  <% c.tab(href: "#") { "Tab 3" } %>
+  <% c.extra do %>
+    <%= render(Primer::ButtonComponent.new(float: :right)) { "Button" } %>
+  <% end %>
+<% end %>
