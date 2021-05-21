@@ -12,6 +12,10 @@
 
     *Kate Higa*
 
+* Only include `ViewComponent::SlotableV2` if `ViewComponent::Base` does not already include it.
+
+    *Manuel Puyol*
+
 ### Breaking changes
 
 * Restrict allowed tags for `Truncate`, `Markdown`, and `HiddenTextExpander`.
