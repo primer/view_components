@@ -130,9 +130,12 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `font_size` | String, Integer | One of `00`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `font_weight` | Symbol | Font weight. One of `:light`, `:normal`, or `:bold`. |
+| `font_family` | Symbol | Font weight. One of `:mono`. |
+| `font_size` | String, Integer, Symbol | One of `00`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, `:small`, or `:normal`. |
+| `font_style` | Symbol | Font weight. One of `:italic`. |
+| `font_weight` | Symbol | Font weight. One of `:light`, `:normal`, `:bold`, or `:emphasized`. |
 | `text_align` | Symbol | Text alignment. One of `:left`, `:right`, or `:center`. |
+| `text_transform` | Symbol | Text alignment. One of `:uppercase`. |
 | `underline` | Boolean | Whether text should be underlined. |
 | `word_break` | Symbol | Whether to break words on line breaks. Can only be `:break_all`. |
 
