@@ -10,7 +10,7 @@ module Primer
     #   <%= render(Primer::HiddenTextExpander.new(inline: true)) %>
     #
     # @example Styling the button
-    #   <%= render(Primer::HiddenTextExpander.new(button_arguments: { p: 1, classes: "my-custom-class" })) %>
+    #   <%= render(Primer::HiddenTextExpander.new(button_arguments: { p: 1, classes: "custom-class" })) %>
     #
     # @param inline [Boolean] Whether or not the expander is inline.
     # @param button_arguments [Hash] <%= link_to_system_arguments_docs %> for the button element.
