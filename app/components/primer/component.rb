@@ -5,7 +5,7 @@ require "view_component/version"
 module Primer
   # @private
   class Component < ViewComponent::Base
-    include ViewComponent::SlotableV2 unless ViewComponent::VERSION::STRING.to_f >= 2.28
+    include ViewComponent::SlotableV2 unless ViewComponent::Base < ViewComponent::SlotableV2
     include ClassNameHelper
     include FetchOrFallbackHelper
     include TestSelectorHelper
