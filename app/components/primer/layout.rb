@@ -173,6 +173,18 @@ module Primer
     #     <% c.sidebar { "Sidebar" } %>
     #   <% end %>
     #
+    # @example 3-column layout
+    #
+    #   <%= render(Primer::Layout.new) do |c| %>
+    #     <% c.main do %>
+    #       <%= render(Primer::Layout.new) do |l| %>
+    #         <% l.main { "Main" } %>
+    #         <% l.sidebar { "Metadata" } %>
+    #       <% end %>
+    #     <% end %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #
     # @param container [Symbol] Container to wrap the `Layout` in. <%= one_of(Primer::Layout::CONTAINER_OPTIONS) %>
     # @param gutter [Symbol] Space between `main` and `sidebar`. <%= one_of(Primer::Layout::GUTTER_OPTIONS) %>
     # @param divider [Boolean] Wether or not to add a divider between `main` and `sidebar`.

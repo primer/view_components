@@ -16,6 +16,8 @@ module Primer
       def using_containers; end
 
       def flow_row_until; end
+
+      def 3_column_layout; end
     end
   end
 end

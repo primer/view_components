@@ -174,6 +174,23 @@ Add any accessibility considerations
 <% end %>
 ```
 
+### 3-column layout
+
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>      <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Metadata</div></div></div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+
+```erb
+
+<%= render(Primer::Layout.new) do |c| %>
+  <% c.main do %>
+    <%= render(Primer::Layout.new) do |l| %>
+      <% l.main { "Main" } %>
+      <% l.sidebar { "Metadata" } %>
+    <% end %>
+  <% end %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+```
+
 ## Arguments
 
 | Name | Type | Default | Description |
