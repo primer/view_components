@@ -2,6 +2,12 @@
 
 ## main
 
+### Updates
+
+* Add `align` option to the `TabNav` extra slot to allow HTML ordering.
+
+    *Manuel Puyol*
+
 ### Misc
 
 * Auto-generate component previews from doc examples and run integration test checks.
