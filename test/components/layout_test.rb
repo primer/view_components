@@ -115,4 +115,31 @@ class PrimerLayoutTest < Minitest::Test
       assert_selector(".Layout-sidebar", text: "Sidebar")
     end
   end
+
+  def test_density_compact
+    render_inline(Primer::Layout.new(density: :compact)) do |c|
+      c.main { "Main" }
+      c.sidebar { "Sidebar" }
+    end
+
+    assert_selector(".Layout.m-3")
+  end
+
+  def test_density_normal
+    render_inline(Primer::Layout.new(density: :normal)) do |c|
+      c.main { "Main" }
+      c.sidebar { "Sidebar" }
+    end
+
+    assert_selector(".Layout.m-sm-3.m-lg-4")
+  end
+
+  def test_density_relaxed
+    render_inline(Primer::Layout.new(density: :relaxed)) do |c|
+      c.main { "Main" }
+      c.sidebar { "Sidebar" }
+    end
+
+    assert_selector(".Layout.m-sm-3.m-lg-4.m-xl-5")
+  end
 end

@@ -17,6 +17,8 @@ module Primer
 
       def flow_row_until; end
 
+      def density; end
+
       def 3_column_layout; end
     end
   end

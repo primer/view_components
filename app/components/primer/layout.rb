@@ -8,6 +8,15 @@ module Primer
     CONTAINER_DEFAULT = :full
     CONTAINER_OPTIONS = [:full, :xl, :lg, :md].freeze
 
+    DENSITY_DEFAULT = :none
+    DENSITY_MAPPINGS = {
+      DENSITY_DEFAULT => 0,
+      :compact => 3,
+      :normal => [nil, 3, nil, 4],
+      :relaxed => [nil, 3, nil, 4, 5]
+    }.freeze
+    DENSITY_OPTIONS = DENSITY_MAPPINGS.keys.freeze
+
     SIDEBAR_WIDTH_DEFAULT = :default
     SIDEBAR_WIDTH_MAPPINGS = {
       SIDEBAR_WIDTH_DEFAULT => "",
@@ -173,6 +182,25 @@ module Primer
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #
+    # @example Density
+    #
+    #   <%= render(Primer::Layout.new(density: :none)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(density: :compact)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(density: :normal)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(density: :relaxed)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
+    #   <% end %>
+    #
     # @example 3-column layout
     #
     #   <%= render(Primer::Layout.new) do |c| %>
@@ -185,18 +213,20 @@ module Primer
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #
+    # @param divider [Boolean] Wether or not to add a divider between `main` and `sidebar`.
+    # @param density [Symbol] Margin around the `Layout`.
     # @param container [Symbol] Container to wrap the `Layout` in. <%= one_of(Primer::Layout::CONTAINER_OPTIONS) %>
     # @param gutter [Symbol] Space between `main` and `sidebar`. <%= one_of(Primer::Layout::GUTTER_OPTIONS) %>
-    # @param divider [Boolean] Wether or not to add a divider between `main` and `sidebar`.
     # @param flow_row_until [Symbol] When the `Layout` should change from a row flow into a column flow. <%= one_of(Primer::Layout::FLOW_ROW_UNTIL_OPTIONS) %>
     # @param sidebar_width [Symbol] <%= one_of(Primer::Layout::SIDEBAR_WIDTH_OPTIONS) %>
     # @param sidebar_placement [Symbol] <%= one_of(Primer::Layout::SIDEBAR_PLACEMENT_OPTIONS) %>
     # @param main_width [Symbol] <%= one_of(Primer::Layout::MAIN_WIDTH_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
+      divider: false,
+      density: DENSITY_DEFAULT,
       container: CONTAINER_DEFAULT,
       gutter: GUTTER_DEFAULT,
-      divider: false,
       flow_row_until: FLOW_ROW_UNTIL_DEFAULT,
       sidebar_width: SIDEBAR_WIDTH_DEFAULT,
       sidebar_placement: SIDEBAR_PLACEMENT_DEFAULT,
@@ -210,6 +240,7 @@ module Primer
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
+      @system_arguments[:m] = DENSITY_MAPPINGS[fetch_or_fallback(DENSITY_OPTIONS, density, DENSITY_DEFAULT)]
       @system_arguments[:classes] = class_names(
         "Layout",
         "Layout--sidebarPosition-#{@sidebar_placement}",

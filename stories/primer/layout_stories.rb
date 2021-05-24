@@ -6,6 +6,7 @@ class Primer::LayoutStories < ViewComponent::Storybook::Stories
   story(:layout) do
     controls do
       divider false
+      select(:density, Primer::Layout::DENSITY_OPTIONS, Primer::Layout::DENSITY_DEFAULT)
       select(:container, Primer::Layout::CONTAINER_OPTIONS, Primer::Layout::CONTAINER_DEFAULT)
       select(:gutter, Primer::Layout::GUTTER_OPTIONS, Primer::Layout::GUTTER_DEFAULT)
       select(:flow_row_until, Primer::Layout::FLOW_ROW_UNTIL_OPTIONS, Primer::Layout::FLOW_ROW_UNTIL_DEFAULT)

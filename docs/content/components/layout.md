@@ -20,7 +20,7 @@ Add any accessibility considerations
 
 ### Default
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
@@ -32,7 +32,7 @@ Add any accessibility considerations
 
 ### With divider
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--divided'>    <div data-view-component='true' class='Layout-main border'>Main</div>    <div class='Layout-divider'></div>    <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--divided m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>    <div class='Layout-divider'></div>    <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
@@ -44,7 +44,7 @@ Add any accessibility considerations
 
 ### Sidebar placement
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-end mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-end mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
@@ -60,7 +60,7 @@ Add any accessibility considerations
 
 ### Sidebar widths
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebar-narrow mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebar-wide mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebar-narrow mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebar-wide mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
@@ -80,7 +80,7 @@ Add any accessibility considerations
 
 ### Main widths
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-sm'><div data-view-component='true' class='container-sm'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-md'><div data-view-component='true' class='container-md'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-lg'><div data-view-component='true' class='container-lg'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-xl'><div data-view-component='true' class='container-xl'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-sm'><div data-view-component='true' class='container-sm'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-md'><div data-view-component='true' class='container-md'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-lg'><div data-view-component='true' class='container-lg'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-xl'><div data-view-component='true' class='container-xl'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
@@ -108,7 +108,7 @@ Add any accessibility considerations
 
 ### Gutters
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-none mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-condensed mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-spacious mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-none mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-condensed mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-spacious mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
@@ -132,7 +132,7 @@ Add any accessibility considerations
 
 ### Using containers
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div><div data-view-component='true' class='container-xl'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div></div><div data-view-component='true' class='container-lg'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div></div><div data-view-component='true' class='container-md'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div><div data-view-component='true' class='container-xl'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div></div><div data-view-component='true' class='container-lg'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div></div><div data-view-component='true' class='container-md'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div></div>" />
 
 ```erb
 
@@ -156,7 +156,7 @@ Add any accessibility considerations
 
 ### Flow row until
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--flowRow-until-md mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--flowRow-until-lg mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--flowRow-until-md mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--flowRow-until-lg mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
@@ -174,9 +174,33 @@ Add any accessibility considerations
 <% end %>
 ```
 
+### Density
+
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-3'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-sm-3 m-lg-4'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-sm-3 m-lg-4 m-xl-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+
+```erb
+
+<%= render(Primer::Layout.new(density: :none)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(density: :compact)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(density: :normal)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(density: :relaxed)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
+<% end %>
+```
+
 ### 3-column layout
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>      <div data-view-component='true' class='Layout Layout--sidebarPosition-end'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Metadata</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-0'>    <div data-view-component='true' class='Layout-main border'>      <div data-view-component='true' class='Layout Layout--sidebarPosition-end m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Metadata</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
@@ -195,9 +219,10 @@ Add any accessibility considerations
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `divider` | `Boolean` | `false` | Wether or not to add a divider between `main` and `sidebar`. |
+| `density` | `Symbol` | `:none` | Margin around the `Layout`. |
 | `container` | `Symbol` | `:full` | Container to wrap the `Layout` in. One of `:full`, `:xl`, `:lg`, or `:md`. |
 | `gutter` | `Symbol` | `:default` | Space between `main` and `sidebar`. One of `:default`, `:none`, `:condensed`, or `:spacious`. |
-| `divider` | `Boolean` | `false` | Wether or not to add a divider between `main` and `sidebar`. |
 | `flow_row_until` | `Symbol` | `:sm` | When the `Layout` should change from a row flow into a column flow. One of `:sm`, `:md`, or `:lg`. |
 | `sidebar_width` | `Symbol` | `:default` | One of `:default`, `:narrow`, or `:wide`. |
 | `sidebar_placement` | `Symbol` | `:start` | One of `:start` and `:end`. |
