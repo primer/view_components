@@ -18,9 +18,20 @@ Add any accessibility considerations
 
 ## Examples
 
+### Sidebar widths
+
+<Example src="  <div data-view-component='true' class='Layout'>    Example</div>  <div data-view-component='true' class='Layout Layout--sidebar-narrow'>    Example</div>  <div data-view-component='true' class='Layout Layout--sidebar-wide'>    Example</div>" />
+
+```erb
+
+<%= render(Primer::Layout.new(sidebar_width: :default)) { "Example" } %>
+<%= render(Primer::Layout.new(sidebar_width: :narrow)) { "Example" } %>
+<%= render(Primer::Layout.new(sidebar_width: :wide)) { "Example" } %>
+```
+
 ### Using containers
 
-<Example src="  <div data-view-component='true'>    Example</div><div data-view-component='true' class='container-xl'>  <div data-view-component='true'>    Example</div></div><div data-view-component='true' class='container-lg'>  <div data-view-component='true'>    Example</div></div><div data-view-component='true' class='container-md'>  <div data-view-component='true'>    Example</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout'>    Example</div><div data-view-component='true' class='container-xl'>  <div data-view-component='true' class='Layout'>    Example</div></div><div data-view-component='true' class='container-lg'>  <div data-view-component='true' class='Layout'>    Example</div></div><div data-view-component='true' class='container-md'>  <div data-view-component='true' class='Layout'>    Example</div></div>" />
 
 ```erb
 
@@ -34,4 +45,6 @@ Add any accessibility considerations
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `container` | `Symbol` | `:full` | Container to wrap the layout in. One of `:full`, `:xl`, `:lg`, or `:md`. |
+| `sidebar_width` | `Symbol` | `:default` | One of `:default`, `:narrow`, or `:wide`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

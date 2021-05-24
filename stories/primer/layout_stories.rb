@@ -5,7 +5,8 @@ class Primer::LayoutStories < ViewComponent::Storybook::Stories
 
   story(:layout) do
     controls do
-      classes "custom-class"
+      select(:container, Primer::Layout::CONTAINER_OPTIONS, Primer::Layout::CONTAINER_DEFAULT)
+      select(:sidebar_width, Primer::Layout::SIDEBAR_WIDTH_OPTIONS, Primer::Layout::SIDEBAR_WIDTH_DEFAULT)
     end
 
     content do
