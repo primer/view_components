@@ -68,4 +68,17 @@ class PrimerLayoutTest < Minitest::Test
 
     assert_selector(".Layout.Layout--gutter-condensed")
   end
+
+  def test_divider
+    render_inline(Primer::Layout.new(divider: true)) do |c|
+      c.main { "Main" }
+      c.sidebar { "Sidebar" }
+    end
+
+    assert_selector(".Layout") do
+      assert_selector(".Layout-main", text: "Main")
+      assert_selector(".Layout-divider")
+      assert_selector(".Layout-sidebar", text: "Sidebar")
+    end
+  end
 end

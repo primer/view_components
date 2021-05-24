@@ -51,6 +51,20 @@ module Primer
       Primer::BaseComponent.new(**system_arguments)
     }
 
+    # @example Default
+    #
+    #   <%= render(Primer::Layout.new) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #
+    # @example With divider
+    #
+    #   <%= render(Primer::Layout.new(divider: true)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #
     # @example Sidebar widths
     #
     #   <%= render(Primer::Layout.new(sidebar_width: :default)) do |c| %>
@@ -107,14 +121,17 @@ module Primer
     # @param container [Symbol] Container to wrap the layout in. <%= one_of(Primer::Layout::CONTAINER_OPTIONS) %>
     # @param sidebar_width [Symbol] <%= one_of(Primer::Layout::SIDEBAR_WIDTH_OPTIONS) %>
     # @param gutter [Symbol] Space between `main` and `sidebar`. <%= one_of(Primer::Layout::GUTTER_OPTIONS) %>
+    # @param divider [Boolean] Wether or not to add a divider between `main` and `sidebar`.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       container: CONTAINER_DEFAULT,
       sidebar_width: SIDEBAR_WIDTH_DEFAULT,
       gutter: GUTTER_DEFAULT,
+      divider: false,
       **system_arguments
     )
       @container = container
+      @divider = divider
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
@@ -122,7 +139,8 @@ module Primer
         "Layout",
         system_arguments[:classes],
         SIDEBAR_WIDTH_MAPPINGS[fetch_or_fallback(SIDEBAR_WIDTH_OPTIONS, sidebar_width, SIDEBAR_WIDTH_DEFAULT)],
-        GUTTER_MAPPINGS[fetch_or_fallback(GUTTER_OPTIONS, gutter, GUTTER_DEFAULT)]
+        GUTTER_MAPPINGS[fetch_or_fallback(GUTTER_OPTIONS, gutter, GUTTER_DEFAULT)],
+        "Layout--divided" => divider
       )
     end
 

@@ -1,5 +1,17 @@
 
-<%= render(Primer::Layout.new(container: :full)) { "Example" } %>
-<%= render(Primer::Layout.new(container: :xl)) { "Example" } %>
-<%= render(Primer::Layout.new(container: :lg)) { "Example" } %>
-<%= render(Primer::Layout.new(container: :md)) { "Example" } %>
+<%= render(Primer::Layout.new(container: :full)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(container: :xl)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(container: :lg)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(container: :md)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>

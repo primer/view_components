@@ -1,5 +1,17 @@
 
-<%= render(Primer::Layout.new(gutter: :default)) { "Example" } %>
-<%= render(Primer::Layout.new(gutter: :none)) { "Example" } %>
-<%= render(Primer::Layout.new(gutter: :condensed)) { "Example" } %>
-<%= render(Primer::Layout.new(gutter: :spacious)) { "Example" } %>
+<%= render(Primer::Layout.new(gutter: :default)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(gutter: :none)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(gutter: :condensed)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(gutter: :spacious)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>

@@ -1,6 +1,10 @@
 module Primer
   module Docs
     class LayoutPreview < ViewComponent::Preview
+      def default; end
+
+      def with_divider; end
+
       def sidebar_widths; end
 
       def gutters; end

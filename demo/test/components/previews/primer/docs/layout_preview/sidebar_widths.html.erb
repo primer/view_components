@@ -1,4 +1,13 @@
 
-<%= render(Primer::Layout.new(sidebar_width: :default)) { "Example" } %>
-<%= render(Primer::Layout.new(sidebar_width: :narrow)) { "Example" } %>
-<%= render(Primer::Layout.new(sidebar_width: :wide)) { "Example" } %>
+<%= render(Primer::Layout.new(sidebar_width: :default)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(sidebar_width: :narrow)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(sidebar_width: :wide)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>

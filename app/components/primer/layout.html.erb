@@ -1,6 +1,7 @@
 <%= wrapper do %>
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
     <%= main %>
+    <% if @divider %><div class="Layout-divider"></div><% end %>
     <%= sidebar %>
   <% end %>
 <% end %>
