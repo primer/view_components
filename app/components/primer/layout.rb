@@ -25,25 +25,84 @@ module Primer
     }.freeze
     GUTTER_OPTIONS = GUTTER_MAPPINGS.keys.freeze
 
+    # The layout's main content.
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    renders_one :main, lambda { |**system_arguments|
+      system_arguments[:tag] = :div
+      system_arguments[:classes] = class_names(
+        "Layout-main",
+        system_arguments[:classes]
+      )
+
+      Primer::BaseComponent.new(**system_arguments)
+    }
+
+    # The layout's sidebar.
+    #
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    renders_one :sidebar, lambda { |**system_arguments|
+      system_arguments[:tag] = :div
+      system_arguments[:classes] = class_names(
+        "Layout-sidebar",
+        system_arguments[:classes]
+      )
+
+      Primer::BaseComponent.new(**system_arguments)
+    }
+
     # @example Sidebar widths
     #
-    #   <%= render(Primer::Layout.new(sidebar_width: :default)) { "Example" } %>
-    #   <%= render(Primer::Layout.new(sidebar_width: :narrow)) { "Example" } %>
-    #   <%= render(Primer::Layout.new(sidebar_width: :wide)) { "Example" } %>
+    #   <%= render(Primer::Layout.new(sidebar_width: :default)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(sidebar_width: :narrow)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(sidebar_width: :wide)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
     #
     # @example Gutters
     #
-    #   <%= render(Primer::Layout.new(gutter: :default)) { "Example" } %>
-    #   <%= render(Primer::Layout.new(gutter: :none)) { "Example" } %>
-    #   <%= render(Primer::Layout.new(gutter: :condensed)) { "Example" } %>
-    #   <%= render(Primer::Layout.new(gutter: :spacious)) { "Example" } %>
+    #   <%= render(Primer::Layout.new(gutter: :default)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(gutter: :none)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(gutter: :condensed)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(gutter: :spacious)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
     #
     # @example Using containers
     #
-    #   <%= render(Primer::Layout.new(container: :full)) { "Example" } %>
-    #   <%= render(Primer::Layout.new(container: :xl)) { "Example" } %>
-    #   <%= render(Primer::Layout.new(container: :lg)) { "Example" } %>
-    #   <%= render(Primer::Layout.new(container: :md)) { "Example" } %>
+    #   <%= render(Primer::Layout.new(container: :full)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(container: :xl)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(container: :lg)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(container: :md)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
     #
     # @param container [Symbol] Container to wrap the layout in. <%= one_of(Primer::Layout::CONTAINER_OPTIONS) %>
     # @param sidebar_width [Symbol] <%= one_of(Primer::Layout::SIDEBAR_WIDTH_OPTIONS) %>
@@ -65,6 +124,10 @@ module Primer
         SIDEBAR_WIDTH_MAPPINGS[fetch_or_fallback(SIDEBAR_WIDTH_OPTIONS, sidebar_width, SIDEBAR_WIDTH_DEFAULT)],
         GUTTER_MAPPINGS[fetch_or_fallback(GUTTER_OPTIONS, gutter, GUTTER_DEFAULT)]
       )
+    end
+
+    def render?
+      main.present? && sidebar.present?
     end
 
     private

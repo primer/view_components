@@ -10,8 +10,9 @@ class Primer::LayoutStories < ViewComponent::Storybook::Stories
       select(:gutter, Primer::Layout::GUTTER_OPTIONS, Primer::Layout::GUTTER_DEFAULT)
     end
 
-    content do
-      "Update your stories!"
+    content do |c|
+      c.main { "Main" }
+      c.sidebar { "Sidebar" }
     end
   end
 end
