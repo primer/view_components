@@ -1,5 +1,5 @@
 
 <%= render(Primer::Layout.new(divider: true)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>

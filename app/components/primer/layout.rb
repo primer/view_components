@@ -60,129 +60,129 @@ module Primer
     # @example Default
     #
     #   <%= render(Primer::Layout.new) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #
     # @example With divider
     #
     #   <%= render(Primer::Layout.new(divider: true)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #
     # @example Sidebar placement
     #
     #   <%= render(Primer::Layout.new(sidebar_placement: :start)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(sidebar_placement: :end)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(sidebar_placement: :end, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #
     # @example Sidebar widths
     #
     #   <%= render(Primer::Layout.new(sidebar_width: :default)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(sidebar_width: :narrow)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(sidebar_width: :narrow, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(sidebar_width: :wide)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(sidebar_width: :wide, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #
     # @example Main widths
     #
-    #   <%= render(Primer::Layout.new) do |c| %>
-    #     <% c.main(width: :full) { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(main_width: :full)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new) do |c| %>
-    #     <% c.main(width: :sm) { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(main_width: :sm, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new) do |c| %>
-    #     <% c.main(width: :md) { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(main_width: :md, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new) do |c| %>
-    #     <% c.main(width: :lg) { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(main_width: :lg, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new) do |c| %>
-    #     <% c.main(width: :xl) { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(main_width: :xl, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #
     # @example Gutters
     #
     #   <%= render(Primer::Layout.new(gutter: :default)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(gutter: :none)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(gutter: :none, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(gutter: :condensed)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(gutter: :condensed, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(gutter: :spacious)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(gutter: :spacious, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #
     # @example Using containers
     #
     #   <%= render(Primer::Layout.new(container: :full)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(container: :xl)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(container: :xl, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(container: :lg)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(container: :lg, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(container: :md)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(container: :md, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #
     # @example Flow row until
     #
     #   <%= render(Primer::Layout.new(flow_row_until: :sm)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(flow_row_until: :md)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(flow_row_until: :md, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(flow_row_until: :lg)) do |c| %>
-    #     <% c.main { "Main" } %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #   <%= render(Primer::Layout.new(flow_row_until: :lg, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #
     # @example 3-column layout
     #
     #   <%= render(Primer::Layout.new) do |c| %>
-    #     <% c.main do %>
-    #       <%= render(Primer::Layout.new) do |l| %>
-    #         <% l.main { "Main" } %>
-    #         <% l.sidebar { "Metadata" } %>
+    #     <% c.main(border: true) do %>
+    #       <%= render(Primer::Layout.new(sidebar_placement: :end)) do |l| %>
+    #         <% l.main(border: true) { "Main" } %>
+    #         <% l.sidebar(border: true) { "Metadata" } %>
     #       <% end %>
     #     <% end %>
-    #     <% c.sidebar { "Sidebar" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #
     # @param container [Symbol] Container to wrap the `Layout` in. <%= one_of(Primer::Layout::CONTAINER_OPTIONS) %>

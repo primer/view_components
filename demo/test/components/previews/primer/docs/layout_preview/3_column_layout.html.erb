@@ -1,10 +1,10 @@
 
 <%= render(Primer::Layout.new) do |c| %>
-  <% c.main do %>
-    <%= render(Primer::Layout.new) do |l| %>
-      <% l.main { "Main" } %>
-      <% l.sidebar { "Metadata" } %>
+  <% c.main(border: true) do %>
+    <%= render(Primer::Layout.new(sidebar_placement: :end)) do |l| %>
+      <% l.main(border: true) { "Main" } %>
+      <% l.sidebar(border: true) { "Metadata" } %>
     <% end %>
   <% end %>
-  <% c.sidebar { "Sidebar" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>

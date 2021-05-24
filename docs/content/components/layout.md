@@ -20,174 +20,174 @@ Add any accessibility considerations
 
 ### Default
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
 <%= render(Primer::Layout.new) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
 ```
 
 ### With divider
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--divided'>    <div data-view-component='true' class='Layout-main'>Main</div>    <div class='Layout-divider'></div>    <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--divided'>    <div data-view-component='true' class='Layout-main border'>Main</div>    <div class='Layout-divider'></div>    <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
 <%= render(Primer::Layout.new(divider: true)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
 ```
 
 ### Sidebar placement
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-end'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-end mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
 <%= render(Primer::Layout.new(sidebar_placement: :start)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(sidebar_placement: :end)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(sidebar_placement: :end, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
 ```
 
 ### Sidebar widths
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebar-narrow'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebar-wide'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebar-narrow mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebar-wide mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
 <%= render(Primer::Layout.new(sidebar_width: :default)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(sidebar_width: :narrow)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(sidebar_width: :narrow, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(sidebar_width: :wide)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(sidebar_width: :wide, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
 ```
 
 ### Main widths
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'><div data-view-component='true' class='Layout-main-centered-sm'><div data-view-component='true' class='container-sm'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'><div data-view-component='true' class='Layout-main-centered-md'><div data-view-component='true' class='container-md'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'><div data-view-component='true' class='Layout-main-centered-lg'><div data-view-component='true' class='container-lg'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'><div data-view-component='true' class='Layout-main-centered-xl'><div data-view-component='true' class='container-xl'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-sm'><div data-view-component='true' class='container-sm'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-md'><div data-view-component='true' class='container-md'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-lg'><div data-view-component='true' class='container-lg'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-xl'><div data-view-component='true' class='container-xl'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
-<%= render(Primer::Layout.new) do |c| %>
-  <% c.main(width: :full) { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(main_width: :full)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new) do |c| %>
-  <% c.main(width: :sm) { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(main_width: :sm, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new) do |c| %>
-  <% c.main(width: :md) { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(main_width: :md, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new) do |c| %>
-  <% c.main(width: :lg) { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(main_width: :lg, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new) do |c| %>
-  <% c.main(width: :xl) { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(main_width: :xl, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
 ```
 
 ### Gutters
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-none'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-condensed'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-spacious'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-none mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-condensed mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-spacious mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
 <%= render(Primer::Layout.new(gutter: :default)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(gutter: :none)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(gutter: :none, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(gutter: :condensed)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(gutter: :condensed, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(gutter: :spacious)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(gutter: :spacious, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
 ```
 
 ### Using containers
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div><div data-view-component='true' class='container-xl'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div></div><div data-view-component='true' class='container-lg'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div></div><div data-view-component='true' class='container-md'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div><div data-view-component='true' class='container-xl'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div></div><div data-view-component='true' class='container-lg'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div></div><div data-view-component='true' class='container-md'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div></div>" />
 
 ```erb
 
 <%= render(Primer::Layout.new(container: :full)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(container: :xl)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(container: :xl, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(container: :lg)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(container: :lg, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(container: :md)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(container: :md, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
 ```
 
 ### Flow row until
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--flowRow-until-md'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--flowRow-until-lg'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--flowRow-until-md mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--flowRow-until-lg mt-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
 <%= render(Primer::Layout.new(flow_row_until: :sm)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(flow_row_until: :md)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(flow_row_until: :md, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(flow_row_until: :lg)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(flow_row_until: :lg, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
 ```
 
 ### 3-column layout
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>      <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Metadata</div></div></div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main border'>      <div data-view-component='true' class='Layout Layout--sidebarPosition-end'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Metadata</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
 <%= render(Primer::Layout.new) do |c| %>
-  <% c.main do %>
-    <%= render(Primer::Layout.new) do |l| %>
-      <% l.main { "Main" } %>
-      <% l.sidebar { "Metadata" } %>
+  <% c.main(border: true) do %>
+    <%= render(Primer::Layout.new(sidebar_placement: :end)) do |l| %>
+      <% l.main(border: true) { "Main" } %>
+      <% l.sidebar(border: true) { "Metadata" } %>
     <% end %>
   <% end %>
-  <% c.sidebar { "Sidebar" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
 ```
 

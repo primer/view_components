@@ -1,21 +1,21 @@
 
-<%= render(Primer::Layout.new) do |c| %>
-  <% c.main(width: :full) { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(main_width: :full)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new) do |c| %>
-  <% c.main(width: :sm) { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(main_width: :sm, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new) do |c| %>
-  <% c.main(width: :md) { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(main_width: :md, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new) do |c| %>
-  <% c.main(width: :lg) { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(main_width: :lg, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new) do |c| %>
-  <% c.main(width: :xl) { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(main_width: :xl, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>

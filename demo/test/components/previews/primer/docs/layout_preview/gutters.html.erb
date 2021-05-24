@@ -1,17 +1,17 @@
 
 <%= render(Primer::Layout.new(gutter: :default)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(gutter: :none)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(gutter: :none, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(gutter: :condensed)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(gutter: :condensed, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(gutter: :spacious)) do |c| %>
-  <% c.main { "Main" } %>
-  <% c.sidebar { "Sidebar" } %>
+<%= render(Primer::Layout.new(gutter: :spacious, mt: 5)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
