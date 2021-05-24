@@ -13,14 +13,30 @@ module Primer
       SIDEBAR_WIDTH_DEFAULT => "",
       :narrow => "Layout--sidebar-narrow",
       :wide => "Layout--sidebar-wide"
-    }
+    }.freeze
     SIDEBAR_WIDTH_OPTIONS = SIDEBAR_WIDTH_MAPPINGS.keys.freeze
+
+    GUTTER_DEFAULT = :default
+    GUTTER_MAPPINGS = {
+      GUTTER_DEFAULT => "",
+      :none => "Layout--gutter-none",
+      :condensed => "Layout--gutter-condensed",
+      :spacious => "Layout--gutter-spacious"
+    }.freeze
+    GUTTER_OPTIONS = GUTTER_MAPPINGS.keys.freeze
 
     # @example Sidebar widths
     #
     #   <%= render(Primer::Layout.new(sidebar_width: :default)) { "Example" } %>
     #   <%= render(Primer::Layout.new(sidebar_width: :narrow)) { "Example" } %>
     #   <%= render(Primer::Layout.new(sidebar_width: :wide)) { "Example" } %>
+    #
+    # @example Gutters
+    #
+    #   <%= render(Primer::Layout.new(gutter: :default)) { "Example" } %>
+    #   <%= render(Primer::Layout.new(gutter: :none)) { "Example" } %>
+    #   <%= render(Primer::Layout.new(gutter: :condensed)) { "Example" } %>
+    #   <%= render(Primer::Layout.new(gutter: :spacious)) { "Example" } %>
     #
     # @example Using containers
     #
@@ -31,19 +47,23 @@ module Primer
     #
     # @param container [Symbol] Container to wrap the layout in. <%= one_of(Primer::Layout::CONTAINER_OPTIONS) %>
     # @param sidebar_width [Symbol] <%= one_of(Primer::Layout::SIDEBAR_WIDTH_OPTIONS) %>
+    # @param gutter [Symbol] Space between `main` and `sidebar`. <%= one_of(Primer::Layout::GUTTER_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       container: CONTAINER_DEFAULT,
       sidebar_width: SIDEBAR_WIDTH_DEFAULT,
+      gutter: GUTTER_DEFAULT,
       **system_arguments
     )
       @container = container
+
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
       @system_arguments[:classes] = class_names(
         "Layout",
         system_arguments[:classes],
-        SIDEBAR_WIDTH_MAPPINGS[fetch_or_fallback(SIDEBAR_WIDTH_OPTIONS, sidebar_width, SIDEBAR_WIDTH_DEFAULT)]
+        SIDEBAR_WIDTH_MAPPINGS[fetch_or_fallback(SIDEBAR_WIDTH_OPTIONS, sidebar_width, SIDEBAR_WIDTH_DEFAULT)],
+        GUTTER_MAPPINGS[fetch_or_fallback(GUTTER_OPTIONS, gutter, GUTTER_DEFAULT)]
       )
     end
 

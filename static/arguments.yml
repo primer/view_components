@@ -11,6 +11,11 @@
     type: Symbol
     default: "`:default`"
     description: One of `:default`, `:narrow`, or `:wide`.
+  - name: gutter
+    type: Symbol
+    default: "`:default`"
+    description: Space between `main` and `sidebar`. One of `:default`, `:none`, `:condensed`,
+      or `:spacious`.
   - name: system_arguments
     type: Hash
     default: N/A

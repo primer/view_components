@@ -29,6 +29,18 @@ Add any accessibility considerations
 <%= render(Primer::Layout.new(sidebar_width: :wide)) { "Example" } %>
 ```
 
+### Gutters
+
+<Example src="  <div data-view-component='true' class='Layout'>    Example</div>  <div data-view-component='true' class='Layout Layout--gutter-none'>    Example</div>  <div data-view-component='true' class='Layout Layout--gutter-condensed'>    Example</div>  <div data-view-component='true' class='Layout Layout--gutter-spacious'>    Example</div>" />
+
+```erb
+
+<%= render(Primer::Layout.new(gutter: :default)) { "Example" } %>
+<%= render(Primer::Layout.new(gutter: :none)) { "Example" } %>
+<%= render(Primer::Layout.new(gutter: :condensed)) { "Example" } %>
+<%= render(Primer::Layout.new(gutter: :spacious)) { "Example" } %>
+```
+
 ### Using containers
 
 <Example src="  <div data-view-component='true' class='Layout'>    Example</div><div data-view-component='true' class='container-xl'>  <div data-view-component='true' class='Layout'>    Example</div></div><div data-view-component='true' class='container-lg'>  <div data-view-component='true' class='Layout'>    Example</div></div><div data-view-component='true' class='container-md'>  <div data-view-component='true' class='Layout'>    Example</div></div>" />
@@ -47,4 +59,5 @@ Add any accessibility considerations
 | :- | :- | :- | :- |
 | `container` | `Symbol` | `:full` | Container to wrap the layout in. One of `:full`, `:xl`, `:lg`, or `:md`. |
 | `sidebar_width` | `Symbol` | `:default` | One of `:default`, `:narrow`, or `:wide`. |
+| `gutter` | `Symbol` | `:default` | Space between `main` and `sidebar`. One of `:default`, `:none`, `:condensed`, or `:spacious`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
