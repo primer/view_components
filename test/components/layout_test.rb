@@ -90,4 +90,13 @@ class PrimerLayoutTest < Minitest::Test
 
     assert_selector(".Layout.Layout--sidebarPosition-end")
   end
+
+  def test_flow_row_until
+    render_inline(Primer::Layout.new(flow_row_until: :md)) do |c|
+      c.main { "Main" }
+      c.sidebar { "Sidebar" }
+    end
+
+    assert_selector(".Layout.Layout--flowRow-until-md")
+  end
 end

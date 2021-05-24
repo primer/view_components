@@ -126,13 +126,34 @@ Add any accessibility considerations
 <% end %>
 ```
 
+### Flow row until
+
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--flowRow-until-md'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--flowRow-until-lg'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+
+```erb
+
+<%= render(Primer::Layout.new(flow_row_until: :sm)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(flow_row_until: :md)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(flow_row_until: :lg)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+```
+
 ## Arguments
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `container` | `Symbol` | `:full` | Container to wrap the layout in. One of `:full`, `:xl`, `:lg`, or `:md`. |
+| `container` | `Symbol` | `:full` | Container to wrap the `Layout` in. One of `:full`, `:xl`, `:lg`, or `:md`. |
 | `gutter` | `Symbol` | `:default` | Space between `main` and `sidebar`. One of `:default`, `:none`, `:condensed`, or `:spacious`. |
 | `divider` | `Boolean` | `false` | Wether or not to add a divider between `main` and `sidebar`. |
+| `flow_row_until` | `Symbol` | `:sm` | When the `Layout` should change from a row flow into a column flow. One of `:sm`, `:md`, or `:lg`. |
 | `sidebar_width` | `Symbol` | `:default` | One of `:default`, `:narrow`, or `:wide`. |
 | `sidebar_placement` | `Symbol` | `:start` | One of `:start` and `:end`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

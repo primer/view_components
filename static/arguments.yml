@@ -5,8 +5,8 @@
   - name: container
     type: Symbol
     default: "`:full`"
-    description: Container to wrap the layout in. One of `:full`, `:xl`, `:lg`, or
-      `:md`.
+    description: Container to wrap the `Layout` in. One of `:full`, `:xl`, `:lg`,
+      or `:md`.
   - name: gutter
     type: Symbol
     default: "`:default`"
@@ -16,6 +16,11 @@
     type: Boolean
     default: "`false`"
     description: Wether or not to add a divider between `main` and `sidebar`.
+  - name: flow_row_until
+    type: Symbol
+    default: "`:sm`"
+    description: When the `Layout` should change from a row flow into a column flow.
+      One of `:sm`, `:md`, or `:lg`.
   - name: sidebar_width
     type: Symbol
     default: "`:default`"

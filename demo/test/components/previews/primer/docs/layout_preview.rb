@@ -12,6 +12,8 @@ module Primer
       def gutters; end
 
       def using_containers; end
+
+      def flow_row_until; end
     end
   end
 end

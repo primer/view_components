@@ -25,6 +25,8 @@
 - ".Label--warning"
 - ".Layout"
 - ".Layout--divided"
+- ".Layout--flowRow-until-lg"
+- ".Layout--flowRow-until-md"
 - ".Layout--gutter-condensed"
 - ".Layout--gutter-none"
 - ".Layout--gutter-spacious"

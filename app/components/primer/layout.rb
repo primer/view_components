@@ -28,6 +28,14 @@ module Primer
     SIDEBAR_PLACEMENT_DEFAULT = :start
     SIDEBAR_PLACEMENT_OPTIONS = [SIDEBAR_PLACEMENT_DEFAULT, :end].freeze
 
+    FLOW_ROW_UNTIL_DEFAULT = :sm
+    FLOW_ROW_UNTIL_MAPPINGS = {
+      FLOW_ROW_UNTIL_DEFAULT => "",
+      :md => "Layout--flowRow-until-md",
+      :lg => "Layout--flowRow-until-lg"
+    }.freeze
+    FLOW_ROW_UNTIL_OPTIONS = FLOW_ROW_UNTIL_MAPPINGS.keys.freeze
+
     # The layout's main content.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -132,9 +140,25 @@ module Primer
     #     <% c.sidebar { "Sidebar" } %>
     #   <% end %>
     #
-    # @param container [Symbol] Container to wrap the layout in. <%= one_of(Primer::Layout::CONTAINER_OPTIONS) %>
+    # @example Flow row until
+    #
+    #   <%= render(Primer::Layout.new(flow_row_until: :sm)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(flow_row_until: :md)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(flow_row_until: :lg)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #
+    # @param container [Symbol] Container to wrap the `Layout` in. <%= one_of(Primer::Layout::CONTAINER_OPTIONS) %>
     # @param gutter [Symbol] Space between `main` and `sidebar`. <%= one_of(Primer::Layout::GUTTER_OPTIONS) %>
     # @param divider [Boolean] Wether or not to add a divider between `main` and `sidebar`.
+    # @param flow_row_until [Symbol] When the `Layout` should change from a row flow into a column flow. <%= one_of(Primer::Layout::FLOW_ROW_UNTIL_OPTIONS) %>
     # @param sidebar_width [Symbol] <%= one_of(Primer::Layout::SIDEBAR_WIDTH_OPTIONS) %>
     # @param sidebar_placement [Symbol] <%= one_of(Primer::Layout::SIDEBAR_PLACEMENT_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -142,6 +166,7 @@ module Primer
       container: CONTAINER_DEFAULT,
       gutter: GUTTER_DEFAULT,
       divider: false,
+      flow_row_until: FLOW_ROW_UNTIL_DEFAULT,
       sidebar_width: SIDEBAR_WIDTH_DEFAULT,
       sidebar_placement: SIDEBAR_PLACEMENT_DEFAULT,
       **system_arguments
@@ -158,6 +183,7 @@ module Primer
         system_arguments[:classes],
         SIDEBAR_WIDTH_MAPPINGS[fetch_or_fallback(SIDEBAR_WIDTH_OPTIONS, sidebar_width, SIDEBAR_WIDTH_DEFAULT)],
         GUTTER_MAPPINGS[fetch_or_fallback(GUTTER_OPTIONS, gutter, GUTTER_DEFAULT)],
+        FLOW_ROW_UNTIL_MAPPINGS[fetch_or_fallback(FLOW_ROW_UNTIL_OPTIONS, flow_row_until, FLOW_ROW_UNTIL_DEFAULT)],
         "Layout--divided" => divider
       )
     end
