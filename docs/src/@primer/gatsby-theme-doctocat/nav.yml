@@ -66,6 +66,8 @@
       url: /components/label
     - title: Layout
       url: /components/layout
+    - title: Layout - deprecated
+      url: /components/layoutdeprecated
     - title: Link
       url: /components/link
     - title: LocalTime

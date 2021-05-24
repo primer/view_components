@@ -3,6 +3,8 @@
 module Primer
   # Use `Layout` to build a main/sidebar layout.
   class LayoutComponent < Primer::Component
+    status :deprecated
+
     # The main content
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

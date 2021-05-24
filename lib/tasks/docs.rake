@@ -47,6 +47,7 @@ namespace :docs do
     registry = YARD::RegistryStore.new
     registry.load!(".yardoc")
     components = [
+      Primer::Layout,
       Primer::Image,
       Primer::LocalTime,
       Primer::OcticonSymbolsComponent,
@@ -122,6 +123,7 @@ namespace :docs do
       short_name = component.name.gsub(/Primer|::|Component/, "")
 
       path = Pathname.new("docs/content/components/#{short_name.downcase}.md")
+      path = Pathname.new("docs/content/components/layoutdeprecated.md") if component == Primer::LayoutComponent
       path.dirname.mkdir unless path.dirname.exist?
       File.open(path, "w") do |f|
         f.puts("---")

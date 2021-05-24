@@ -1,4 +1,11 @@
 ---
+- component: Layout
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/layout.rb
+  parameters:
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Image
   source: https://github.com/primer/view_components/tree/main/app/components/primer/image.rb
   parameters:
