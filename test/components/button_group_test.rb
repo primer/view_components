@@ -25,7 +25,7 @@ class PrimerButtonGroupTest < Minitest::Test
       c.button(scheme: :primary) { "Primary" }
       c.button(scheme: :danger) { "Danger" }
       c.button(scheme: :outline) { "Outline" }
-      c.button(classes: "my-class") { "Custom class" }
+      c.button(classes: "custom-class") { "Custom class" }
     end
 
     assert_selector("div.BtnGroup") do
@@ -33,7 +33,7 @@ class PrimerButtonGroupTest < Minitest::Test
       assert_selector("button.btn.BtnGroup-item.btn-primary", text: "Primary")
       assert_selector("button.btn.BtnGroup-item.btn-danger", text: "Danger")
       assert_selector("button.btn.BtnGroup-item.btn-outline", text: "Outline")
-      assert_selector("button.btn.BtnGroup-item.my-class", text: "Custom class")
+      assert_selector("button.btn.BtnGroup-item.custom-class", text: "Custom class")
     end
   end
 

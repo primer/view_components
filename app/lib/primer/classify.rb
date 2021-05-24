@@ -123,7 +123,7 @@ module Primer
       def validated_class_names(classes)
         return if classes.blank?
 
-        if ENV["RAILS_ENV"] == "development" && !ENV["PRIMER_WARNINGS_DISABLED"]
+        if force_system_arguments? && !ENV["PRIMER_WARNINGS_DISABLED"]
           invalid_class_names =
             classes.split(" ").each_with_object([]) do |class_name, memo|
               memo << class_name if INVALID_CLASS_NAME_PREFIXES.any? { |prefix| class_name.start_with?(prefix) }
@@ -235,6 +235,10 @@ module Primer
         else
           memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{val.to_s.dasherize}"
         end
+      end
+
+      def force_system_arguments?
+        Rails.application.config.primer_view_components.force_system_arguments
       end
     end
 

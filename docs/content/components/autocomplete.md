@@ -40,12 +40,12 @@ Always provide a label for the `Autocomplete` component.
 
 ### With custom classes for the results
 
-<Example src="<auto-complete src='/users/search' for='user-popup' data-view-component='true' class='position-relative'>  <input name='input' type='text' data-view-component='true' class='form-control'></input>    <ul id='user-popup' data-view-component='true' class='autocomplete-results my-custom-class'>    <li role='option' data-autocomplete-value='value' aria-selected='true' data-view-component='true' class='autocomplete-item'>      Selected</li>    <li role='option' data-autocomplete-value='value' data-view-component='true' class='autocomplete-item'>      Not selected</li></ul></auto-complete>" />
+<Example src="<auto-complete src='/users/search' for='user-popup' data-view-component='true' class='position-relative'>  <input name='input' type='text' data-view-component='true' class='form-control'></input>    <ul id='user-popup' data-view-component='true' class='autocomplete-results custom-class'>    <li role='option' data-autocomplete-value='value' aria-selected='true' data-view-component='true' class='autocomplete-item'>      Selected</li>    <li role='option' data-autocomplete-value='value' data-view-component='true' class='autocomplete-item'>      Not selected</li></ul></auto-complete>" />
 
 ```erb
 <%= render(Primer::AutoComplete.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
   <% c.input(type: :text, name: "input") %>
-  <% c.results(classes: "my-custom-class") do %>
+  <% c.results(classes: "custom-class") do %>
     <%= render(Primer::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
       Selected
     <% end %>

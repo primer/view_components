@@ -103,6 +103,7 @@
 - ".css-truncate"
 - ".css-truncate-overflow"
 - ".css-truncate-target"
+- ".custom-class"
 - ".d-flex"
 - ".details-overlay"
 - ".details-reset"
