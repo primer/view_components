@@ -2,6 +2,12 @@
 
 ## main
 
+### New
+
+* Add `clearfix` and `container` system arguments.
+
+    *Manuel Puyol*
+
 ### Updates
 
 * Add `align` option to the `TabNav` extra slot to allow HTML ordering.
@@ -27,6 +33,10 @@
 * Restrict allowed tags for `Truncate`, `Markdown`, and `HiddenTextExpander`.
 
     *Kate Higa*
+
+* Restrict `col` system arguments to only accept values between 1 and 12.
+
+    *Manuel Puyol*
 
 ## 0.0.41
 

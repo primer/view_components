@@ -83,7 +83,9 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `col` | Integer | Number of columns. |
+    # | `clearfix` | Boolean | Wether to assign the `clearfix` class. |
+    # | `col` | Integer | Number of columns. <%= one_of(Primer::Classify::Grid::COL_VALUES) %> |
+    # | `container` | Symbol | Size of the container. <%= one_of(Primer::Classify::Grid::CONTAINER_VALUES) %> |
     #
     # ## Layout
     #
