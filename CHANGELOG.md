@@ -18,6 +18,10 @@
 
     *Kate Higa*
 
+* Add `force_system_arguments` option to raise an error if a class is used instead of using System Arguments.
+
+    *Manuel Puyol*
+
 ### Breaking changes
 
 * Restrict allowed tags for `Truncate`, `Markdown`, and `HiddenTextExpander`.

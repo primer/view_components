@@ -26,7 +26,7 @@ else
 end
 
 # Use Puma as the app server
-gem "puma", "~> 4.3.6"
+gem "puma", "~> 5.3.1"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem "webpacker", "~> 5.0"
 

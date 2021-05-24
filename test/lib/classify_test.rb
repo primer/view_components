@@ -615,25 +615,13 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("hover-grow", { animation: :grow })
   end
 
-  def test_raises_error_when_passing_in_a_primer_css_class_name_in_development
-    ENV["RAILS_ENV"] = "development"
-    exception = assert_raises ArgumentError do
-      Primer::Classify.call(classes: "bg-blue text-center float-left ml-1")
-    end
-
-    assert_includes exception.message, "Primer CSS class names"
-  ensure
-    ENV["RAILS_ENV"] = "test"
-  end
-
   def test_raises_does_not_raise_error_when_passing_in_a_primer_css_class_name_in_development_and_flag_is_set
-    ENV["RAILS_ENV"] = "development"
     ENV["PRIMER_WARNINGS_DISABLED"] = "1"
-
-    assert_generated_class("bg-blue text-center float-left ml-1", { classes: "bg-blue text-center float-left ml-1" })
+    with_force_system_arguments(true) do
+      assert_generated_class("bg-blue text-center float-left ml-1", { classes: "bg-blue text-center float-left ml-1" })
+    end
   ensure
     ENV["PRIMER_WARNINGS_DISABLED"] = nil
-    ENV["RAILS_ENV"] = "test"
   end
 
   def test_does_not_raise_error_when_passing_in_a_primer_css_class_otherwise
@@ -644,6 +632,22 @@ class PrimerClassifyTest < Minitest::Test
     generated_class = Primer::Classify.call(classes: "foo-class")[:class]
     refute(generated_class.start_with?(" "))
     refute(generated_class.end_with?(" "))
+  end
+
+  def test_raises_if_not_using_system_arguments_when_force_system_arguments_is_true
+    with_force_system_arguments(true) do
+      exception = assert_raises ArgumentError do
+        Primer::Classify.call(classes: "d-block")
+      end
+
+      assert_includes exception.message, "Use System Arguments (https://primer.style/view-components/system-arguments) instead of Primer CSS class"
+    end
+  end
+
+  def test_does_not_raise_if_not_using_system_arguments_when_force_system_arguments_is_false
+    with_force_system_arguments(false) do
+      assert_generated_class("d-block", { classes: "d-block" })
+    end
   end
 
   private

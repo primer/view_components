@@ -54,7 +54,7 @@ module Primer
     # @example With custom classes for the results
     #   <%= render(Primer::AutoComplete.new(src: "/users/search", id: "user-popup", position: :relative)) do |c| %>
     #     <% c.input(type: :text, name: "input") %>
-    #     <% c.results(classes: "my-custom-class") do %>
+    #     <% c.results(classes: "custom-class") do %>
     #       <%= render(Primer::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
     #         Selected
     #       <% end %>
