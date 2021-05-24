@@ -1,0 +1,21 @@
+
+<%= render(Primer::Layout.new) do |c| %>
+  <% c.main(width: :full) { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new) do |c| %>
+  <% c.main(width: :sm) { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new) do |c| %>
+  <% c.main(width: :md) { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new) do |c| %>
+  <% c.main(width: :lg) { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new) do |c| %>
+  <% c.main(width: :xl) { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>

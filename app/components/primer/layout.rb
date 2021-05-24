@@ -36,18 +36,13 @@ module Primer
     }.freeze
     FLOW_ROW_UNTIL_OPTIONS = FLOW_ROW_UNTIL_MAPPINGS.keys.freeze
 
+    MAIN_WIDTH_DEFAULT = :full
+    MAIN_WIDTH_OPTIONS = [MAIN_WIDTH_DEFAULT, :sm, :md, :lg, :xl].freeze
+
     # The layout's main content.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_one :main, lambda { |**system_arguments|
-      system_arguments[:tag] = :div
-      system_arguments[:classes] = class_names(
-        "Layout-main",
-        system_arguments[:classes]
-      )
-
-      Primer::BaseComponent.new(**system_arguments)
-    }
+    renders_one :main, ->(**system_arguments) { Primer::Layout::Main.new(width: @main_width, **system_arguments) }
 
     # The layout's sidebar.
     #
@@ -99,6 +94,29 @@ module Primer
     #   <% end %>
     #   <%= render(Primer::Layout.new(sidebar_width: :wide)) do |c| %>
     #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #
+    # @example Main widths
+    #
+    #   <%= render(Primer::Layout.new) do |c| %>
+    #     <% c.main(width: :full) { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new) do |c| %>
+    #     <% c.main(width: :sm) { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new) do |c| %>
+    #     <% c.main(width: :md) { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new) do |c| %>
+    #     <% c.main(width: :lg) { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new) do |c| %>
+    #     <% c.main(width: :xl) { "Main" } %>
     #     <% c.sidebar { "Sidebar" } %>
     #   <% end %>
     #
@@ -161,6 +179,7 @@ module Primer
     # @param flow_row_until [Symbol] When the `Layout` should change from a row flow into a column flow. <%= one_of(Primer::Layout::FLOW_ROW_UNTIL_OPTIONS) %>
     # @param sidebar_width [Symbol] <%= one_of(Primer::Layout::SIDEBAR_WIDTH_OPTIONS) %>
     # @param sidebar_placement [Symbol] <%= one_of(Primer::Layout::SIDEBAR_PLACEMENT_OPTIONS) %>
+    # @param main_width [Symbol] <%= one_of(Primer::Layout::MAIN_WIDTH_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       container: CONTAINER_DEFAULT,
@@ -169,11 +188,13 @@ module Primer
       flow_row_until: FLOW_ROW_UNTIL_DEFAULT,
       sidebar_width: SIDEBAR_WIDTH_DEFAULT,
       sidebar_placement: SIDEBAR_PLACEMENT_DEFAULT,
+      main_width: MAIN_WIDTH_DEFAULT,
       **system_arguments
     )
       @container = container
       @divider = divider
       @sidebar_placement = fetch_or_fallback(SIDEBAR_PLACEMENT_OPTIONS, sidebar_placement, SIDEBAR_PLACEMENT_DEFAULT)
+      @main_width = fetch_or_fallback(MAIN_WIDTH_OPTIONS, main_width, MAIN_WIDTH_DEFAULT)
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
@@ -202,6 +223,33 @@ module Primer
 
       render Primer::BaseComponent.new(tag: :div, container: @container) do
         yield
+      end
+    end
+
+    # The layout's main content.
+    class Main < Primer::Component
+      def initialize(width:, **system_arguments)
+        @width = width
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :div
+        @system_arguments[:classes] = class_names(
+          "Layout-main",
+          system_arguments[:classes]
+        )
+      end
+
+      def call
+        render(Primer::BaseComponent.new(**@system_arguments)) do
+          if @width == :full
+            content
+          else
+            render(Primer::BaseComponent.new(tag: :div, classes: "Layout-main-centered-#{@width}")) do
+              render(Primer::BaseComponent.new(tag: :div, container: @width)) do
+                content
+              end
+            end
+          end
+        end
       end
     end
   end

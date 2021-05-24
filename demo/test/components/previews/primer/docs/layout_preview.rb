@@ -9,6 +9,8 @@ module Primer
 
       def sidebar_widths; end
 
+      def main_widths; end
+
       def gutters; end
 
       def using_containers; end

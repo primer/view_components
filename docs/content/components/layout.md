@@ -78,6 +78,34 @@ Add any accessibility considerations
 <% end %>
 ```
 
+### Main widths
+
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'><div data-view-component='true' class='Layout-main-centered-sm'><div data-view-component='true' class='container-sm'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'><div data-view-component='true' class='Layout-main-centered-md'><div data-view-component='true' class='container-md'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'><div data-view-component='true' class='Layout-main-centered-lg'><div data-view-component='true' class='container-lg'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'><div data-view-component='true' class='Layout-main-centered-xl'><div data-view-component='true' class='container-xl'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+
+```erb
+
+<%= render(Primer::Layout.new) do |c| %>
+  <% c.main(width: :full) { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new) do |c| %>
+  <% c.main(width: :sm) { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new) do |c| %>
+  <% c.main(width: :md) { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new) do |c| %>
+  <% c.main(width: :lg) { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new) do |c| %>
+  <% c.main(width: :xl) { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+```
+
 ### Gutters
 
 <Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-none'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-condensed'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-spacious'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
@@ -156,6 +184,7 @@ Add any accessibility considerations
 | `flow_row_until` | `Symbol` | `:sm` | When the `Layout` should change from a row flow into a column flow. One of `:sm`, `:md`, or `:lg`. |
 | `sidebar_width` | `Symbol` | `:default` | One of `:default`, `:narrow`, or `:wide`. |
 | `sidebar_placement` | `Symbol` | `:start` | One of `:start` and `:end`. |
+| `main_width` | `Symbol` | `:full` | One of `:full`, `:sm`, `:md`, `:lg`, or `:xl`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
