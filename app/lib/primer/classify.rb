@@ -22,6 +22,7 @@ module Primer
     BOX_SHADOW_KEY = :box_shadow
     VISIBILITY_KEY = :visibility
     ANIMATION_KEY = :animation
+    CONTAINER_KEY = :container
 
     BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
     RESPONSIVE_KEYS = ([DISPLAY_KEY, :col, :float] + SPACING_KEYS + Primer::Classify::Flex::RESPONSIVE_KEYS).freeze
@@ -97,7 +98,8 @@ module Primer
         HEIGHT_KEY,
         BOX_SHADOW_KEY,
         VISIBILITY_KEY,
-        ANIMATION_KEY
+        ANIMATION_KEY,
+        CONTAINER_KEY
       ]
     ).freeze
 
@@ -232,6 +234,8 @@ module Primer
                             else
                               "anim-#{val.to_s.dasherize}"
                             end
+        elsif key == CONTAINER_KEY
+          memo[:classes] << "container-#{val.to_s.dasherize}"
         else
           memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{val.to_s.dasherize}"
         end
