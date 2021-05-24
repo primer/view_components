@@ -1,7 +1,7 @@
 module Primer
   module Docs
     class LayoutPreview < ViewComponent::Preview
-      def example_goes_here; end
+      def using_containers; end
     end
   end
 end

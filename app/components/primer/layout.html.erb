@@ -1,3 +1,5 @@
-<%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <%= content %>
+<%= wrapper do %>
+  <%= render Primer::BaseComponent.new(**@system_arguments) do %>
+    <%= content %>
+  <% end %>
 <% end %>
