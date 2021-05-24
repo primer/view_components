@@ -22,7 +22,7 @@ class PrimerLayoutTest < Minitest::Test
       c.sidebar { "Sidebar" }
     end
 
-    assert_selector(".Layout") do
+    assert_selector(".Layout.Layout--sidebarPosition-start") do
       assert_selector(".Layout-main", text: "Main")
       assert_selector(".Layout-sidebar", text: "Sidebar")
     end
@@ -80,5 +80,14 @@ class PrimerLayoutTest < Minitest::Test
       assert_selector(".Layout-divider")
       assert_selector(".Layout-sidebar", text: "Sidebar")
     end
+  end
+
+  def test_sidebar_placement
+    render_inline(Primer::Layout.new(sidebar_placement: :end)) do |c|
+      c.main { "Main" }
+      c.sidebar { "Sidebar" }
+    end
+
+    assert_selector(".Layout.Layout--sidebarPosition-end")
   end
 end

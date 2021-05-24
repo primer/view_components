@@ -30,6 +30,8 @@
 - ".Layout--gutter-spacious"
 - ".Layout--sidebar-narrow"
 - ".Layout--sidebar-wide"
+- ".Layout--sidebarPosition-end"
+- ".Layout--sidebarPosition-start"
 - ".Layout-divider"
 - ".Layout-main"
 - ".Layout-sidebar"

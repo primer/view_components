@@ -20,7 +20,7 @@ Add any accessibility considerations
 
 ### Default
 
-<Example src="  <div data-view-component='true' class='Layout'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
 
 ```erb
 
@@ -32,7 +32,7 @@ Add any accessibility considerations
 
 ### With divider
 
-<Example src="  <div data-view-component='true' class='Layout Layout--divided'>    <div data-view-component='true' class='Layout-main'>Main</div>    <div class='Layout-divider'></div>    <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--divided'>    <div data-view-component='true' class='Layout-main'>Main</div>    <div class='Layout-divider'></div>    <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
 
 ```erb
 
@@ -42,9 +42,25 @@ Add any accessibility considerations
 <% end %>
 ```
 
+### Sidebar placement
+
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-end'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+
+```erb
+
+<%= render(Primer::Layout.new(sidebar_placement: :start)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(sidebar_placement: :end)) do |c| %>
+  <% c.main { "Main" } %>
+  <% c.sidebar { "Sidebar" } %>
+<% end %>
+```
+
 ### Sidebar widths
 
-<Example src="  <div data-view-component='true' class='Layout'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebar-narrow'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebar-wide'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebar-narrow'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebar-wide'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
 
 ```erb
 
@@ -64,7 +80,7 @@ Add any accessibility considerations
 
 ### Gutters
 
-<Example src="  <div data-view-component='true' class='Layout'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--gutter-none'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--gutter-condensed'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--gutter-spacious'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-none'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-condensed'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--gutter-spacious'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div>" />
 
 ```erb
 
@@ -88,7 +104,7 @@ Add any accessibility considerations
 
 ### Using containers
 
-<Example src="  <div data-view-component='true' class='Layout'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div><div data-view-component='true' class='container-xl'>  <div data-view-component='true' class='Layout'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div></div><div data-view-component='true' class='container-lg'>  <div data-view-component='true' class='Layout'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div></div><div data-view-component='true' class='container-md'>  <div data-view-component='true' class='Layout'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div><div data-view-component='true' class='container-xl'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div></div><div data-view-component='true' class='container-lg'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div></div><div data-view-component='true' class='container-md'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start'>    <div data-view-component='true' class='Layout-main'>Main</div>        <div data-view-component='true' class='Layout-sidebar'>Sidebar</div></div></div>" />
 
 ```erb
 
@@ -115,9 +131,10 @@ Add any accessibility considerations
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `container` | `Symbol` | `:full` | Container to wrap the layout in. One of `:full`, `:xl`, `:lg`, or `:md`. |
-| `sidebar_width` | `Symbol` | `:default` | One of `:default`, `:narrow`, or `:wide`. |
 | `gutter` | `Symbol` | `:default` | Space between `main` and `sidebar`. One of `:default`, `:none`, `:condensed`, or `:spacious`. |
 | `divider` | `Boolean` | `false` | Wether or not to add a divider between `main` and `sidebar`. |
+| `sidebar_width` | `Symbol` | `:default` | One of `:default`, `:narrow`, or `:wide`. |
+| `sidebar_placement` | `Symbol` | `:start` | One of `:start` and `:end`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots

@@ -5,6 +5,8 @@ module Primer
 
       def with_divider; end
 
+      def sidebar_placement; end
+
       def sidebar_widths; end
 
       def gutters; end

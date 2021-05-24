@@ -25,6 +25,9 @@ module Primer
     }.freeze
     GUTTER_OPTIONS = GUTTER_MAPPINGS.keys.freeze
 
+    SIDEBAR_PLACEMENT_DEFAULT = :start
+    SIDEBAR_PLACEMENT_OPTIONS = [SIDEBAR_PLACEMENT_DEFAULT, :end].freeze
+
     # The layout's main content.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -61,6 +64,17 @@ module Primer
     # @example With divider
     #
     #   <%= render(Primer::Layout.new(divider: true)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #
+    # @example Sidebar placement
+    #
+    #   <%= render(Primer::Layout.new(sidebar_placement: :start)) do |c| %>
+    #     <% c.main { "Main" } %>
+    #     <% c.sidebar { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(sidebar_placement: :end)) do |c| %>
     #     <% c.main { "Main" } %>
     #     <% c.sidebar { "Sidebar" } %>
     #   <% end %>
@@ -119,24 +133,28 @@ module Primer
     #   <% end %>
     #
     # @param container [Symbol] Container to wrap the layout in. <%= one_of(Primer::Layout::CONTAINER_OPTIONS) %>
-    # @param sidebar_width [Symbol] <%= one_of(Primer::Layout::SIDEBAR_WIDTH_OPTIONS) %>
     # @param gutter [Symbol] Space between `main` and `sidebar`. <%= one_of(Primer::Layout::GUTTER_OPTIONS) %>
     # @param divider [Boolean] Wether or not to add a divider between `main` and `sidebar`.
+    # @param sidebar_width [Symbol] <%= one_of(Primer::Layout::SIDEBAR_WIDTH_OPTIONS) %>
+    # @param sidebar_placement [Symbol] <%= one_of(Primer::Layout::SIDEBAR_PLACEMENT_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       container: CONTAINER_DEFAULT,
-      sidebar_width: SIDEBAR_WIDTH_DEFAULT,
       gutter: GUTTER_DEFAULT,
       divider: false,
+      sidebar_width: SIDEBAR_WIDTH_DEFAULT,
+      sidebar_placement: SIDEBAR_PLACEMENT_DEFAULT,
       **system_arguments
     )
       @container = container
       @divider = divider
+      @sidebar_placement = fetch_or_fallback(SIDEBAR_PLACEMENT_OPTIONS, sidebar_placement, SIDEBAR_PLACEMENT_DEFAULT)
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div
       @system_arguments[:classes] = class_names(
         "Layout",
+        "Layout--sidebarPosition-#{@sidebar_placement}",
         system_arguments[:classes],
         SIDEBAR_WIDTH_MAPPINGS[fetch_or_fallback(SIDEBAR_WIDTH_OPTIONS, sidebar_width, SIDEBAR_WIDTH_DEFAULT)],
         GUTTER_MAPPINGS[fetch_or_fallback(GUTTER_OPTIONS, gutter, GUTTER_DEFAULT)],
