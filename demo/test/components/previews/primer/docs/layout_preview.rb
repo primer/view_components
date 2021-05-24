@@ -19,7 +19,7 @@ module Primer
 
       def density; end
 
-      def 3_column_layout; end
+      def three_column_layout; end
     end
   end
 end

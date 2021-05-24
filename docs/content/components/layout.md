@@ -198,7 +198,7 @@ Add any accessibility considerations
 <% end %>
 ```
 
-### 3-column layout
+### Three column layout
 
 <Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-0'>    <div data-view-component='true' class='Layout-main border'>      <div data-view-component='true' class='Layout Layout--sidebarPosition-end m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Metadata</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 

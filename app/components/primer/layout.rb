@@ -201,7 +201,7 @@ module Primer
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #
-    # @example 3-column layout
+    # @example Three column layout
     #
     #   <%= render(Primer::Layout.new) do |c| %>
     #     <% c.main(border: true) do %>
