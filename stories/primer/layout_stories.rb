@@ -5,6 +5,7 @@ class Primer::LayoutStories < ViewComponent::Storybook::Stories
 
   story(:layout) do
     controls do
+      border true
       divider false
       select(:container, Primer::Layout::CONTAINER_OPTIONS, Primer::Layout::CONTAINER_DEFAULT)
       select(:gutter, Primer::Layout::GUTTER_OPTIONS, Primer::Layout::GUTTER_DEFAULT)
