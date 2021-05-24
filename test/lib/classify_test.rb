@@ -8,6 +8,13 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("m-4 py-2", { m: 4, py: 2 })
   end
 
+  def test_container
+    assert_generated_class("container-xl", { container: :xl })
+    assert_generated_class("container-lg", { container: :lg })
+    assert_generated_class("container-md", { container: :md })
+    assert_generated_class("container-sm", { container: :sm })
+  end
+
   def test_font_size
     assert_generated_class("f00", { font_size: "00" })
     assert_generated_class("f1",  { font_size: 1 })
