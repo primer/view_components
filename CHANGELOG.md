@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.42
+
 ### New
 
 * Add `clearfix` and `container` system arguments.
@@ -31,6 +33,10 @@
 * Configure previews controller to allow view helper usage in preview template.
 
     *Kate Higa*
+
+* Only include `ViewComponent::SlotableV2` if `ViewComponent::Base` does not already include it.
+
+    *Manuel Puyol*
 
 * Add `force_system_arguments` option to raise an error if a class is used instead of using System Arguments.
 
