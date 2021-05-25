@@ -12,6 +12,16 @@
 
     *Manuel Puyol*
 
+### Breaking changes
+
+* Restrict `col` system arguments to only accept values between 1 and 12.
+
+    *Manuel Puyol*
+
+## 0.0.42
+
+### New
+
 * Add `font_family`, `font_style` and `text_transform` system arguments.
 
     *Manuel Puyol*
@@ -40,6 +50,10 @@
 
     *Kate Higa*
 
+* Only include `ViewComponent::SlotableV2` if `ViewComponent::Base` does not already include it.
+
+    *Manuel Puyol*
+
 * Add `force_system_arguments` option to raise an error if a class is used instead of using System Arguments.
 
     *Manuel Puyol*
@@ -49,10 +63,6 @@
 * Restrict allowed tags for `Truncate`, `Markdown`, and `HiddenTextExpander`.
 
     *Kate Higa*
-
-* Restrict `col` system arguments to only accept values between 1 and 12.
-
-    *Manuel Puyol*
 
 ## 0.0.41
 

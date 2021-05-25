@@ -5,7 +5,7 @@ module Primer
     module VERSION
       MAJOR = 0
       MINOR = 0
-      PATCH = 41
+      PATCH = 42
 
       STRING = [MAJOR, MINOR, PATCH].join(".")
     end
