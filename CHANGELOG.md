@@ -2,13 +2,21 @@
 
 ## main
 
-## 0.0.42
-
 ### New
 
 * Add `clearfix` and `container` system arguments.
 
     *Manuel Puyol*
+
+### Breaking changes
+
+* Restrict `col` system arguments to only accept values between 1 and 12.
+
+    *Manuel Puyol*
+
+## 0.0.42
+
+### New
 
 * Add `font_family`, `font_style` and `text_transform` system arguments.
 
@@ -47,10 +55,6 @@
 * Restrict allowed tags for `Truncate`, `Markdown`, and `HiddenTextExpander`.
 
     *Kate Higa*
-
-* Restrict `col` system arguments to only accept values between 1 and 12.
-
-    *Manuel Puyol*
 
 ## 0.0.41
 
