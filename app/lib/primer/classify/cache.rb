@@ -61,7 +61,7 @@ module Primer
 
           preload(
             keys: Primer::Classify::Grid::CLEARFIX_KEY,
-            values: Primer::Classify::Grid::CLEARFIX_VALUES
+            values: [true]
           )
 
           preload(
