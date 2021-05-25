@@ -28,6 +28,10 @@
 
     *Kate Higa*
 
+* Only include `ViewComponent::SlotableV2` if `ViewComponent::Base` does not already include it.
+
+    *Manuel Puyol*
+
 * Add `force_system_arguments` option to raise an error if a class is used instead of using System Arguments.
 
     *Manuel Puyol*
