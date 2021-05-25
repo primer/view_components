@@ -97,25 +97,17 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@primer/css@^16.3.0":
-  version "16.3.0"
-  resolved "https://registry.npmjs.org/@primer/css/-/css-16.3.0.tgz"
-  integrity sha512-nfgvRLPVGS1cdEh/Y1cak17gwEVI8HtQpbGQHvBcWrVQ78sbS3EHvdRUGpFM/Lyi/WKVZInAAwIXG9RWKukOag==
+"@primer/css@^17.1.1":
+  version "17.1.1"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-17.1.1.tgz#4ebd4383fc3c7d0f73c1dbfe516c916a536d08c3"
+  integrity sha512-/SET0U0s3zWlnCLIm5X4zeKD3iUi0CxIcR17hP/Ee4TOn5C/y+gKKohJQQKZCUPK3ZqoLv3oU/sA9hUdpNn2yA==
   dependencies:
-    "@primer/octicons" "13.0.0"
-    "@primer/primitives" "4.2.1"
+    "@primer/primitives" "4.3.5"
 
-"@primer/octicons@13.0.0":
-  version "13.0.0"
-  resolved "https://registry.npmjs.org/@primer/octicons/-/octicons-13.0.0.tgz"
-  integrity sha512-kMNu3Ny3eocOTl2hxRC0YX0na7zJwpSIQNiZqmyqbLMKp2YwNAwk5Tan4RLGe35f30st+EbNq15dEjiMzslAcw==
-  dependencies:
-    object-assign "^4.1.1"
-
-"@primer/primitives@4.2.1":
-  version "4.2.1"
-  resolved "https://registry.npmjs.org/@primer/primitives/-/primitives-4.2.1.tgz"
-  integrity sha512-sI0Bw/PMCZ1kfPX1MRwoNYD6RWdvU0sGk9YYD8euYASwrr4E6aNH9dutMmHTRVe/N3/coBN7QUkV79GMt0UKyQ==
+"@primer/primitives@4.3.5":
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-4.3.5.tgz#9fff5a55b3a201bd7eb92dd1f17818f132dca939"
+  integrity sha512-SL9YSLjUy7qRmoFjUtHO2t0vcyv+9x/7LwFweIzL8IUTzm43DuYXzBQ3LH8HbbUjSBWVyjAm9zGz6jIaU9HadQ==
 
 "@rollup/plugin-node-resolve@^11.2.0":
   version "11.2.0"
@@ -1361,11 +1353,6 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/normalize-path/-/normalize-path-3.0.0.tgz"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
-
-object-assign@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz"
-  integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
 
 object-inspect@^1.9.0:
   version "1.9.0"
