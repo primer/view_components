@@ -112,10 +112,6 @@ module Primer
     #     <% c.main(border: true) { "Main" } %>
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(main_width: :sm, mt: 5)) do |c| %>
-    #     <% c.main(border: true) { "Main" } %>
-    #     <% c.sidebar(border: true) { "Sidebar" } %>
-    #   <% end %>
     #   <%= render(Primer::Layout.new(main_width: :md, mt: 5)) do |c| %>
     #     <% c.main(border: true) { "Main" } %>
     #     <% c.sidebar(border: true) { "Sidebar" } %>

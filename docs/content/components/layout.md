@@ -80,15 +80,11 @@ Add any accessibility considerations
 
 ### Main widths
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-sm'><div data-view-component='true' class='container-sm'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-md'><div data-view-component='true' class='container-md'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-lg'><div data-view-component='true' class='container-lg'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-xl'><div data-view-component='true' class='container-xl'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-md'><div data-view-component='true' class='container-md'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-lg'><div data-view-component='true' class='container-lg'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-xl'><div data-view-component='true' class='container-xl'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
 
 ```erb
 
 <%= render(Primer::Layout.new(main_width: :full)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.sidebar(border: true) { "Sidebar" } %>
-<% end %>
-<%= render(Primer::Layout.new(main_width: :sm, mt: 5)) do |c| %>
   <% c.main(border: true) { "Main" } %>
   <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
@@ -226,7 +222,7 @@ Add any accessibility considerations
 | `flow_row_until` | `Symbol` | `:sm` | When the `Layout` should change from a row flow into a column flow. One of `:sm`, `:md`, or `:lg`. |
 | `sidebar_width` | `Symbol` | `:default` | One of `:default`, `:narrow`, or `:wide`. |
 | `sidebar_placement` | `Symbol` | `:start` | One of `:start` and `:end`. |
-| `main_width` | `Symbol` | `:full` | One of `:full`, `:sm`, `:md`, `:lg`, or `:xl`. |
+| `main_width` | `Symbol` | `:full` | One of `:full`, `:md`, `:lg`, or `:xl`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots

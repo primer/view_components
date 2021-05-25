@@ -36,7 +36,7 @@
   - name: main_width
     type: Symbol
     default: "`:full`"
-    description: One of `:full`, `:sm`, `:md`, `:lg`, or `:xl`.
+    description: One of `:full`, `:md`, `:lg`, or `:xl`.
   - name: system_arguments
     type: Hash
     default: N/A
