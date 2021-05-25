@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.0.41)
+    primer_view_components (0.0.42)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 13.0.0)

@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.42
+
 ### New
 
 * Add `font_family`, `font_style` and `text_transform` system arguments.
