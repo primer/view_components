@@ -92,6 +92,12 @@
 
     *Kristján Oddsson*
 
+### Deprecations
+
+* Deprecate `LayoutComponent` in favor of `Layout`.
+
+    *Manuel Puyol*
+
 ### Breaking changes
 
 * Rename `TooltipComponent` to `Tooltip`.
