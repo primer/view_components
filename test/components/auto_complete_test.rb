@@ -40,12 +40,12 @@ class PrimerAutoCompleteTest < Minitest::Test
   def test_renders_results_with_custom_classes
     render_inline Primer::AutoComplete.new(src: "/url", id: "my-id") do |component|
       component.input(classes: "custom-class")
-      component.results(classes: "my-class")
+      component.results(classes: "custom-class")
     end
 
     assert_selector("auto-complete[for=\"my-id\"][src=\"/url\"]") do
       assert_selector("input.custom-class")
-      assert_selector("ul[id=\"my-id\"].autocomplete-results.my-class")
+      assert_selector("ul[id=\"my-id\"].autocomplete-results.custom-class")
     end
   end
 end

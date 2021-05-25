@@ -15,7 +15,7 @@ Use `ButtonGroup` to render a series of buttons.
 
 ### Default
 
-<Example src="<div data-view-component='true' class='BtnGroup'>    <button type='button' data-view-component='true' class='btn BtnGroup-item'>    Default  </button>    <button type='button' data-view-component='true' class='btn-primary btn BtnGroup-item'>    Primary  </button>    <button type='button' data-view-component='true' class='btn-danger btn BtnGroup-item'>    Danger  </button>    <button type='button' data-view-component='true' class='btn-outline btn BtnGroup-item'>    Outline  </button>    <button type='button' data-view-component='true' class='my-class btn BtnGroup-item'>    Custom class  </button></div>" />
+<Example src="<div data-view-component='true' class='BtnGroup'>    <button type='button' data-view-component='true' class='btn BtnGroup-item'>    Default  </button>    <button type='button' data-view-component='true' class='btn-primary btn BtnGroup-item'>    Primary  </button>    <button type='button' data-view-component='true' class='btn-danger btn BtnGroup-item'>    Danger  </button>    <button type='button' data-view-component='true' class='btn-outline btn BtnGroup-item'>    Outline  </button>    <button type='button' data-view-component='true' class='custom-class btn BtnGroup-item'>    Custom class  </button></div>" />
 
 ```erb
 
@@ -24,7 +24,7 @@ Use `ButtonGroup` to render a series of buttons.
   <% component.button(scheme: :primary) { "Primary" } %>
   <% component.button(scheme: :danger) { "Danger" } %>
   <% component.button(scheme: :outline) { "Outline" } %>
-  <% component.button(classes: "my-class") { "Custom class" } %>
+  <% component.button(classes: "custom-class") { "Custom class" } %>
 <% end %>
 ```
 
