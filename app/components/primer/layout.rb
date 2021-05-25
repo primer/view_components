@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+Layout-main-centered-md# frozen_string_literal: true
 
 module Primer
   # Add a general description of component here
@@ -46,7 +46,7 @@ module Primer
     FLOW_ROW_UNTIL_OPTIONS = FLOW_ROW_UNTIL_MAPPINGS.keys.freeze
 
     MAIN_WIDTH_DEFAULT = :full
-    MAIN_WIDTH_OPTIONS = [MAIN_WIDTH_DEFAULT, :sm, :md, :lg, :xl].freeze
+    MAIN_WIDTH_OPTIONS = [MAIN_WIDTH_DEFAULT, :md, :lg, :xl].freeze
 
     # The layout's main content.
     #
