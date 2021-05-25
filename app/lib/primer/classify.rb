@@ -16,7 +16,7 @@ module Primer
     BG_KEY = :bg
     VERTICAL_ALIGN_KEY = :vertical_align
     WORD_BREAK_KEY = :word_break
-    TEXT_KEYS = %i[text_align font_weight].freeze
+    TEXT_KEYS = %i[font_family font_style font_weight text_align text_transform].freeze
     WIDTH_KEY = :width
     HEIGHT_KEY = :height
     BOX_SHADOW_KEY = :box_shadow
@@ -220,7 +220,11 @@ module Primer
         elsif TEXT_KEYS.include?(key)
           memo[:classes] << "text-#{val.to_s.dasherize}"
         elsif TYPOGRAPHY_KEYS.include?(key)
-          memo[:classes] << "f#{val.to_s.dasherize}"
+          memo[:classes] << if val == :small || val == :normal
+                              "text-#{val.to_s.dasherize}"
+                            else
+                              "f#{val.to_s.dasherize}"
+                            end
         elsif key == BOX_SHADOW_KEY
           memo[:classes] << if val == true
                               "color-shadow-small"
