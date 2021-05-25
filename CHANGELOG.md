@@ -4,6 +4,10 @@
 
 ### New
 
+* Create new `Layout` component.
+
+    *Manuel Puyol*
+
 * Add `font_family`, `font_style` and `text_transform` system arguments.
 
     *Manuel Puyol*
