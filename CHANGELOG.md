@@ -12,6 +12,12 @@
 
     *Manuel Puyol*
 
+### Deprecations
+
+* Deprecate `LayoutComponent` in favor of `Layout`.
+
+    *Manuel Puyol*
+
 ### Breaking changes
 
 * Restrict `col` system arguments to only accept values between 1 and 12.
@@ -27,10 +33,6 @@
     *Manuel Puyol*
 
 * Add more options for `font_size` and `font_weight`.
-
-    *Manuel Puyol*
-
-* Add `clearfix` and `container` system arguments.
 
     *Manuel Puyol*
 
@@ -105,12 +107,6 @@
 * Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.
 
     *Kristján Oddsson*
-
-### Deprecations
-
-* Deprecate `LayoutComponent` in favor of `Layout`.
-
-    *Manuel Puyol*
 
 ### Breaking changes
 
