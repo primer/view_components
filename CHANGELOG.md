@@ -8,6 +8,10 @@
 
     *Manuel Puyol*
 
+* Add `clearfix` and `container` system arguments.
+
+    *Manuel Puyol*
+
 * Add `font_family`, `font_style` and `text_transform` system arguments.
 
     *Manuel Puyol*
