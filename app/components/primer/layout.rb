@@ -1,4 +1,4 @@
-Layout-main-centered-md# frozen_string_literal: true
+# frozen_string_literal: true
 
 module Primer
   # Add a general description of component here
