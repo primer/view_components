@@ -16,6 +16,8 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("f4",  { font_size: 4 })
     assert_generated_class("f5",  { font_size: 5 })
     assert_generated_class("f6",  { font_size: 6 })
+    assert_generated_class("text-small", { font_size: :small })
+    assert_generated_class("text-normal",  { font_size: :normal })
   end
 
   def test_m
@@ -359,10 +361,23 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("text-left",       { text_align: :left })
   end
 
+  def test_font_family
+    assert_generated_class("text-mono", { font_family: :mono })
+  end
+
+  def test_font_style
+    assert_generated_class("text-italic", { font_style: :italic })
+  end
+
+  def test_text_transform
+    assert_generated_class("text-uppercase", { text_transform: :uppercase })
+  end
+
   def test_font_weight
-    assert_generated_class("text-light",    { font_weight: :light })
-    assert_generated_class("text-normal",   { font_weight: :normal })
-    assert_generated_class("text-bold",     { font_weight: :bold })
+    assert_generated_class("text-light",      { font_weight: :light })
+    assert_generated_class("text-normal",     { font_weight: :normal })
+    assert_generated_class("text-bold",       { font_weight: :bold })
+    assert_generated_class("text-emphasized", { font_weight: :emphasized })
   end
 
   def test_box_shadow

@@ -2,6 +2,16 @@
 
 ## main
 
+### New
+
+* Add `font_family`, `font_style` and `text_transform` system arguments.
+
+    *Manuel Puyol*
+
+* Add more options for `font_size` and `font_weight`.
+
+    *Manuel Puyol*
+
 ### Updates
 
 * Add `align` option to the `TabNav` extra slot to allow HTML ordering.
