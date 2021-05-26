@@ -152,13 +152,14 @@ jobs:
       with:
         node-version: 14
     - run: yarn
-    - name: Generate previews
-      run: bundle exec rake docs:build
-    - name: Build and test with Rake
+    - name: Build and Generate previews
       run: |
         gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle update actionview activemodel activesupport railties
+        bundle exec rake docs:preview
+    - name: Test with Rake
+      run: |
         bundle exec rake
       env:
         RAILS_VERSION: ${{ matrix.rails_version }}

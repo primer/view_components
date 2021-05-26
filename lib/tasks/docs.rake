@@ -313,7 +313,7 @@ namespace :docs do
     end
   end
 
-  task :previews do
+  task :preview do
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
     require "primer/view_components"
     require "yard/docs_helper"
@@ -323,9 +323,13 @@ namespace :docs do
     include YARD::DocsHelper
 
     Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
-    components = Primer::Component.descendants
+
+    YARD::Rake::YardocTask.new
+    Rake::Task["yard"].execute
     registry = YARD::RegistryStore.new
     registry.load!(".yardoc")
+
+    components = Primer::Component.descendants
 
     # Generate previews from documentation examples
     components.each do |component|
