@@ -1,13 +1,13 @@
 
-<%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :visible)) do |c| %>
+<%= render(Primer::Layout.new(sidebar_flow_row_placement: :start)) do |c| %>
   <% c.main(border: true) { "Main" } %>
   <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :hidden, mt: 5)) do |c| %>
+<%= render(Primer::Layout.new(sidebar_flow_row_placement: :end, mt: 5)) do |c| %>
   <% c.main(border: true) { "Main" } %>
   <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :shallow, mt: 5)) do |c| %>
+<%= render(Primer::Layout.new(sidebar_flow_row_placement: :none, mt: 5)) do |c| %>
   <% c.main(border: true) { "Main" } %>
   <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>

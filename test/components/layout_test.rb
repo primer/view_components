@@ -155,4 +155,13 @@ class PrimerLayoutTest < Minitest::Test
       assert_selector(".Layout-sidebar", text: "Sidebar")
     end
   end
+
+  def test_sidebar_flow_row_placement
+    render_inline(Primer::Layout.new(sidebar_flow_row_placement: :end)) do |c|
+      c.main { "Main" }
+      c.sidebar { "Sidebar" }
+    end
+
+    assert_selector(".Layout.Layout--sidebarPosition-flowRow-end")
+  end
 end

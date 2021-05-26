@@ -29,6 +29,11 @@
     type: Symbol
     default: "`:start`"
     description: One of `:start` and `:end`.
+  - name: sidebar_flow_row_placement
+    type: Symbol
+    default: "`:start`"
+    description: Sidebar placement when `Layout` is flowing as row. One of `:start`,
+      `:end`, or `:none`.
   - name: main_width
     type: Symbol
     default: "`:full`"

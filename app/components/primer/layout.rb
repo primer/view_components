@@ -37,6 +37,9 @@ module Primer
     SIDEBAR_PLACEMENT_DEFAULT = :start
     SIDEBAR_PLACEMENT_OPTIONS = [SIDEBAR_PLACEMENT_DEFAULT, :end].freeze
 
+    SIDEBAR_FLOW_ROW_PLACEMENT_DEFAULT = :start
+    SIDEBAR_FLOW_ROW_PLACEMENT_OPTIONS = [SIDEBAR_FLOW_ROW_PLACEMENT_DEFAULT, :end, :none].freeze
+
     FLOW_ROW_UNTIL_DEFAULT = :sm
     FLOW_ROW_UNTIL_MAPPINGS = {
       FLOW_ROW_UNTIL_DEFAULT => "",
@@ -94,11 +97,11 @@ module Primer
     #     <% c.main(border: true) { "Main" } %>
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :hidden)) do |c| %>
+    #   <%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :hidden, mt: 5)) do |c| %>
     #     <% c.main(border: true) { "Main" } %>
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :shallow)) do |c| %>
+    #   <%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :shallow, mt: 5)) do |c| %>
     #     <% c.main(border: true) { "Main" } %>
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
@@ -110,6 +113,21 @@ module Primer
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #   <%= render(Primer::Layout.new(sidebar_placement: :end, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
+    #   <% end %>
+    #
+    # @example Sidebar placement as row
+    #
+    #   <%= render(Primer::Layout.new(sidebar_flow_row_placement: :start)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(sidebar_flow_row_placement: :end, mt: 5)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(sidebar_flow_row_placement: :none, mt: 5)) do |c| %>
     #     <% c.main(border: true) { "Main" } %>
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
@@ -238,6 +256,7 @@ module Primer
     # @param flow_row_until [Symbol] When the `Layout` should change from a row flow into a column flow. <%= one_of(Primer::Layout::FLOW_ROW_UNTIL_OPTIONS) %>
     # @param sidebar_width [Symbol] <%= one_of(Primer::Layout::SIDEBAR_WIDTH_OPTIONS) %>
     # @param sidebar_placement [Symbol] <%= one_of(Primer::Layout::SIDEBAR_PLACEMENT_OPTIONS) %>
+    # @param sidebar_flow_row_placement [Symbol] Sidebar placement when `Layout` is flowing as row. <%= one_of(Primer::Layout::SIDEBAR_FLOW_ROW_PLACEMENT_OPTIONS) %>
     # @param main_width [Symbol] <%= one_of(Primer::Layout::MAIN_WIDTH_OPTIONS) %>
     # @param divider [Boolean] Wether or not to add a divider between `main` and `sidebar`.
     # @param divider_flow_row_variant [Symbol] Variants for the divider when `Layout` is flowing as row. <%= one_of(Primer::Layout::DIVIDER_FLOW_ROW_VARIANT_OPTIONS) %>
@@ -249,6 +268,7 @@ module Primer
       flow_row_until: FLOW_ROW_UNTIL_DEFAULT,
       sidebar_width: SIDEBAR_WIDTH_DEFAULT,
       sidebar_placement: SIDEBAR_PLACEMENT_DEFAULT,
+      sidebar_flow_row_placement: SIDEBAR_FLOW_ROW_PLACEMENT_DEFAULT,
       main_width: MAIN_WIDTH_DEFAULT,
       divider: false,
       divider_flow_row_variant: DIVIDER_FLOW_ROW_VARIANT_DEFAULT,
@@ -257,6 +277,7 @@ module Primer
       @container = container
       @divider = divider
       @sidebar_placement = fetch_or_fallback(SIDEBAR_PLACEMENT_OPTIONS, sidebar_placement, SIDEBAR_PLACEMENT_DEFAULT)
+      @sidebar_flow_row_placement = fetch_or_fallback(SIDEBAR_FLOW_ROW_PLACEMENT_OPTIONS, sidebar_flow_row_placement, SIDEBAR_FLOW_ROW_PLACEMENT_DEFAULT)
       @main_width = fetch_or_fallback(MAIN_WIDTH_OPTIONS, main_width, MAIN_WIDTH_DEFAULT)
 
       @divider_classes = class_names(
@@ -270,6 +291,7 @@ module Primer
       @system_arguments[:classes] = class_names(
         "Layout",
         "Layout--sidebarPosition-#{@sidebar_placement}",
+        "Layout--sidebarPosition-flowRow-#{@sidebar_flow_row_placement}",
         system_arguments[:classes],
         SIDEBAR_WIDTH_MAPPINGS[fetch_or_fallback(SIDEBAR_WIDTH_OPTIONS, sidebar_width, SIDEBAR_WIDTH_DEFAULT)],
         GUTTER_MAPPINGS[fetch_or_fallback(GUTTER_OPTIONS, gutter, GUTTER_DEFAULT)],

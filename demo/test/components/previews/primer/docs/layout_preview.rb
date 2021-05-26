@@ -9,6 +9,8 @@ module Primer
 
       def sidebar_placement; end
 
+      def sidebar_placement_as_row; end
+
       def sidebar_widths; end
 
       def main_widths; end

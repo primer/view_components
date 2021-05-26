@@ -11,6 +11,7 @@ class Primer::LayoutStories < ViewComponent::Storybook::Stories
       select(:flow_row_until, Primer::Layout::FLOW_ROW_UNTIL_OPTIONS, Primer::Layout::FLOW_ROW_UNTIL_DEFAULT)
       select(:sidebar_width, Primer::Layout::SIDEBAR_WIDTH_OPTIONS, Primer::Layout::SIDEBAR_WIDTH_DEFAULT)
       select(:sidebar_placement, Primer::Layout::SIDEBAR_PLACEMENT_OPTIONS, Primer::Layout::SIDEBAR_PLACEMENT_DEFAULT)
+      select(:sidebar_flow_row_placement, Primer::Layout::SIDEBAR_FLOW_ROW_PLACEMENT_OPTIONS, Primer::Layout::SIDEBAR_FLOW_ROW_PLACEMENT_DEFAULT)
       select(:main_width, Primer::Layout::MAIN_WIDTH_OPTIONS, Primer::Layout::MAIN_WIDTH_DEFAULT)
       divider false
       select(:divider_flow_row_variant, Primer::Layout::DIVIDER_FLOW_ROW_VARIANT_OPTIONS, Primer::Layout::DIVIDER_FLOW_ROW_VARIANT_DEFAULT)
