@@ -35,6 +35,8 @@
 - ".Layout--sidebarPosition-end"
 - ".Layout--sidebarPosition-start"
 - ".Layout-divider"
+- ".Layout-divider--flowRow-hidden"
+- ".Layout-divider--flowRow-shallow"
 - ".Layout-main"
 - ".Layout-main-centered-lg"
 - ".Layout-main-centered-md"

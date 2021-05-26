@@ -5,7 +5,6 @@ class Primer::LayoutStories < ViewComponent::Storybook::Stories
 
   story(:layout) do
     controls do
-      divider false
       select(:density, Primer::Layout::DENSITY_OPTIONS, Primer::Layout::DENSITY_DEFAULT)
       select(:container, Primer::Layout::CONTAINER_OPTIONS, Primer::Layout::CONTAINER_DEFAULT)
       select(:gutter, Primer::Layout::GUTTER_OPTIONS, Primer::Layout::GUTTER_DEFAULT)
@@ -13,6 +12,8 @@ class Primer::LayoutStories < ViewComponent::Storybook::Stories
       select(:sidebar_width, Primer::Layout::SIDEBAR_WIDTH_OPTIONS, Primer::Layout::SIDEBAR_WIDTH_DEFAULT)
       select(:sidebar_placement, Primer::Layout::SIDEBAR_PLACEMENT_OPTIONS, Primer::Layout::SIDEBAR_PLACEMENT_DEFAULT)
       select(:main_width, Primer::Layout::MAIN_WIDTH_OPTIONS, Primer::Layout::MAIN_WIDTH_DEFAULT)
+      divider false
+      select(:divider_flow_row_variant, Primer::Layout::DIVIDER_FLOW_ROW_VARIANT_OPTIONS, Primer::Layout::DIVIDER_FLOW_ROW_VARIANT_DEFAULT)
     end
 
     content do |c|

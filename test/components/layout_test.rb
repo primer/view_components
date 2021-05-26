@@ -142,4 +142,17 @@ class PrimerLayoutTest < Minitest::Test
 
     assert_selector(".Layout.m-sm-3.m-lg-4.m-xl-5")
   end
+
+  def test_divider_flow_row_variant
+    render_inline(Primer::Layout.new(divider: true, divider_flow_row_variant: :shallow)) do |c|
+      c.main { "Main" }
+      c.sidebar { "Sidebar" }
+    end
+
+    assert_selector(".Layout") do
+      assert_selector(".Layout-main", text: "Main")
+      assert_selector(".Layout-divider.Layout-divider--flowRow-shallow")
+      assert_selector(".Layout-sidebar", text: "Sidebar")
+    end
+  end
 end

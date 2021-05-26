@@ -48,6 +48,14 @@ module Primer
     MAIN_WIDTH_DEFAULT = :full
     MAIN_WIDTH_OPTIONS = [MAIN_WIDTH_DEFAULT, :md, :lg, :xl].freeze
 
+    DIVIDER_FLOW_ROW_VARIANT_DEFAULT = :visible
+    DIVIDER_FLOW_ROW_VARIANT_MAPPINGS = {
+      DIVIDER_FLOW_ROW_VARIANT_DEFAULT => "",
+      :hidden => "Layout-divider--flowRow-hidden",
+      :shallow => "Layout-divider--flowRow-shallow"
+    }.freeze
+    DIVIDER_FLOW_ROW_VARIANT_OPTIONS = DIVIDER_FLOW_ROW_VARIANT_MAPPINGS.keys
+
     # The layout's main content.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -76,6 +84,21 @@ module Primer
     # @example With divider
     #
     #   <%= render(Primer::Layout.new(divider: true)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
+    #   <% end %>
+    #
+    # @example Divider variants
+    #
+    #   <%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :visible)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :hidden)) do |c| %>
+    #     <% c.main(border: true) { "Main" } %>
+    #     <% c.sidebar(border: true) { "Sidebar" } %>
+    #   <% end %>
+    #   <%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :shallow)) do |c| %>
     #     <% c.main(border: true) { "Main" } %>
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
@@ -209,7 +232,6 @@ module Primer
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #
-    # @param divider [Boolean] Wether or not to add a divider between `main` and `sidebar`.
     # @param density [Symbol] Margin around the `Layout`.
     # @param container [Symbol] Container to wrap the `Layout` in. <%= one_of(Primer::Layout::CONTAINER_OPTIONS) %>
     # @param gutter [Symbol] Space between `main` and `sidebar`. <%= one_of(Primer::Layout::GUTTER_OPTIONS) %>
@@ -217,9 +239,10 @@ module Primer
     # @param sidebar_width [Symbol] <%= one_of(Primer::Layout::SIDEBAR_WIDTH_OPTIONS) %>
     # @param sidebar_placement [Symbol] <%= one_of(Primer::Layout::SIDEBAR_PLACEMENT_OPTIONS) %>
     # @param main_width [Symbol] <%= one_of(Primer::Layout::MAIN_WIDTH_OPTIONS) %>
+    # @param divider [Boolean] Wether or not to add a divider between `main` and `sidebar`.
+    # @param divider_flow_row_variant [Symbol] Variants for the divider when `Layout` is flowing as row. <%= one_of(Primer::Layout::DIVIDER_FLOW_ROW_VARIANT_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
-      divider: false,
       density: DENSITY_DEFAULT,
       container: CONTAINER_DEFAULT,
       gutter: GUTTER_DEFAULT,
@@ -227,12 +250,19 @@ module Primer
       sidebar_width: SIDEBAR_WIDTH_DEFAULT,
       sidebar_placement: SIDEBAR_PLACEMENT_DEFAULT,
       main_width: MAIN_WIDTH_DEFAULT,
+      divider: false,
+      divider_flow_row_variant: DIVIDER_FLOW_ROW_VARIANT_DEFAULT,
       **system_arguments
     )
       @container = container
       @divider = divider
       @sidebar_placement = fetch_or_fallback(SIDEBAR_PLACEMENT_OPTIONS, sidebar_placement, SIDEBAR_PLACEMENT_DEFAULT)
       @main_width = fetch_or_fallback(MAIN_WIDTH_OPTIONS, main_width, MAIN_WIDTH_DEFAULT)
+
+      @divider_classes = class_names(
+        "Layout-divider",
+        DIVIDER_FLOW_ROW_VARIANT_MAPPINGS[fetch_or_fallback(DIVIDER_FLOW_ROW_VARIANT_OPTIONS, divider_flow_row_variant, DIVIDER_FLOW_ROW_VARIANT_DEFAULT)]
+      )
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = :div

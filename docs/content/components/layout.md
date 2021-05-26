@@ -42,6 +42,26 @@ Add any accessibility considerations
 <% end %>
 ```
 
+### Divider variants
+
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--divided m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>    <div class='Layout-divider'></div>    <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--divided m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>    <div class='Layout-divider Layout-divider--flowRow-hidden'></div>    <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--divided m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>    <div class='Layout-divider Layout-divider--flowRow-shallow'></div>    <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+
+```erb
+
+<%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :visible)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :hidden)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
+<% end %>
+<%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :shallow)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.sidebar(border: true) { "Sidebar" } %>
+<% end %>
+```
+
 ### Sidebar placement
 
 <Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-end mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
@@ -215,7 +235,6 @@ Add any accessibility considerations
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `divider` | `Boolean` | `false` | Wether or not to add a divider between `main` and `sidebar`. |
 | `density` | `Symbol` | `:none` | Margin around the `Layout`. |
 | `container` | `Symbol` | `:full` | Container to wrap the `Layout` in. One of `:full`, `:xl`, `:lg`, or `:md`. |
 | `gutter` | `Symbol` | `:default` | Space between `main` and `sidebar`. One of `:default`, `:none`, `:condensed`, or `:spacious`. |
@@ -223,6 +242,8 @@ Add any accessibility considerations
 | `sidebar_width` | `Symbol` | `:default` | One of `:default`, `:narrow`, or `:wide`. |
 | `sidebar_placement` | `Symbol` | `:start` | One of `:start` and `:end`. |
 | `main_width` | `Symbol` | `:full` | One of `:full`, `:md`, `:lg`, or `:xl`. |
+| `divider` | `Boolean` | `false` | Wether or not to add a divider between `main` and `sidebar`. |
+| `divider_flow_row_variant` | `Symbol` | `:visible` | Variants for the divider when `Layout` is flowing as row. One of `:visible`, `:hidden`, or `:shallow`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots

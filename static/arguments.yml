@@ -2,10 +2,6 @@
 - component: Layout
   source: https://github.com/primer/view_components/tree/main/app/components/primer/layout.rb
   parameters:
-  - name: divider
-    type: Boolean
-    default: "`false`"
-    description: Wether or not to add a divider between `main` and `sidebar`.
   - name: density
     type: Symbol
     default: "`:none`"
@@ -37,6 +33,15 @@
     type: Symbol
     default: "`:full`"
     description: One of `:full`, `:md`, `:lg`, or `:xl`.
+  - name: divider
+    type: Boolean
+    default: "`false`"
+    description: Wether or not to add a divider between `main` and `sidebar`.
+  - name: divider_flow_row_variant
+    type: Symbol
+    default: "`:visible`"
+    description: Variants for the divider when `Layout` is flowing as row. One of
+      `:visible`, `:hidden`, or `:shallow`.
   - name: system_arguments
     type: Hash
     default: N/A
