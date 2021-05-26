@@ -152,6 +152,8 @@ jobs:
       with:
         node-version: 14
     - run: yarn
+    - name: Generate previews
+      run: bundle exec rake docs:build
     - name: Build and test with Rake
       run: |
         gem install bundler:2.2.9

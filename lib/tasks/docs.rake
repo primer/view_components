@@ -302,6 +302,31 @@ namespace :docs do
 
     puts "Markdown compiled."
 
+    if components_without_examples.any?
+      puts
+      puts "The following components have no examples defined: #{components_without_examples.map(&:name).join(', ')}. Consider adding an example?"
+    end
+
+    if components_needing_docs.any?
+      puts
+      puts "The following components needs docs. Care to contribute them? #{components_needing_docs.map(&:name).join(', ')}"
+    end
+  end
+
+  task :previews do
+    require File.expand_path("./../../demo/config/environment.rb", __dir__)
+    require "primer/view_components"
+    require "yard/docs_helper"
+    require "view_component/test_helpers"
+    include ViewComponent::TestHelpers
+    include Primer::ViewHelper
+    include YARD::DocsHelper
+
+    Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
+    components = Primer::Component.descendants
+    registry = YARD::RegistryStore.new
+    registry.load!(".yardoc")
+
     # Generate previews from documentation examples
     components.each do |component|
       documentation = registry.get(component.name)
@@ -335,16 +360,6 @@ namespace :docs do
         f.puts("  end")
         f.puts("end")
       end
-    end
-
-    if components_without_examples.any?
-      puts
-      puts "The following components have no examples defined: #{components_without_examples.map(&:name).join(', ')}. Consider adding an example?"
-    end
-
-    if components_needing_docs.any?
-      puts
-      puts "The following components needs docs. Care to contribute them? #{components_needing_docs.map(&:name).join(', ')}"
     end
   end
 end
