@@ -1,0 +1,6 @@
+<%= render Primer::BlankslateComponent.new(
+  title: "Title",
+  description: "Description",
+) do |component| %>
+  <% component.spinner(size: :large) %>
+<% end %>

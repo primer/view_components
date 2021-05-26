@@ -1,0 +1,15 @@
+<%= render Primer::PopoverComponent.new do |component| %>
+  <% component.heading do %>
+    Activity feed
+  <% end %>
+  <% component.body(caret: :left) do %>
+    <p> This is the Popover body.</p>
+    <div>
+      This is using HTML.
+      <ul>
+        <li>Thing #1</li>
+        <li>Thing #2</li>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

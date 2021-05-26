@@ -1,0 +1,5 @@
+<%= render(Primer::FlexComponent.new(direction: :column, bg: :tertiary)) do %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 1" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 2" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 3" } %>
+<% end %>
