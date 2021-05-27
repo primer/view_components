@@ -10,7 +10,7 @@ module ERBLint
 
       TAGS = %w[button summary a].freeze
       CLASS = "btn"
-      MESSAGE = "We are migrating buttons to use [Primer::ButtonComponent](https://primer.style/view-components/components/button), please try to use that instead of raw HTML. Reach out to `@github/view-component-reviewers` or #view-component with any questions!"
+      MESSAGE = "We are migrating buttons to use [Primer::ButtonComponent](https://primer.style/view-components/components/button), please try to use that instead of raw HTML."
     end
   end
 end
