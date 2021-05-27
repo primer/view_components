@@ -2,6 +2,12 @@
 
 ## main
 
+### Updates
+
+* Promote `TabNav` component to beta.
+
+    *Manuel Puyol*
+
 ## 0.0.42
 
 ### New

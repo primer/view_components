@@ -43,7 +43,7 @@
   "Primer::StateComponent": "beta",
   "Primer::SubheadComponent": "beta",
   "Primer::TabContainerComponent": "alpha",
-  "Primer::TabNavComponent": "alpha",
+  "Primer::TabNavComponent": "beta",
   "Primer::TextComponent": "beta",
   "Primer::TimeAgoComponent": "beta",
   "Primer::TimelineItemComponent": "beta",
