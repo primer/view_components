@@ -1,4 +1,0 @@
-#!/bin/bash
-
-bundle exec rake docs:preview
-bundle exec rake
