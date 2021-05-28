@@ -15,11 +15,11 @@ module Primer
 
     # Required context menu for the dropdown
     #
-    # @param direction [Symbol] <%= one_of(Primer::Dropdown::MenuComponent::DIRECTION_OPTIONS) %>
+    # @param direction [Symbol] <%= one_of(Primer::Dropdown::Menu::DIRECTION_OPTIONS) %>
     # @param scheme [Symbol] Pass `:dark` for dark mode theming
     # @param header [String] Optional string to display as the header
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_one :menu, "Primer::Dropdown::MenuComponent"
+    renders_one :menu, "Primer::Dropdown::Menu"
 
     # @example Default
     #   <div>

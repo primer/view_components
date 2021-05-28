@@ -39,7 +39,7 @@ class PrimerComponentTest < Minitest::Test
         m.item { "Baz" }
       end
     end],
-    [Primer::Dropdown::MenuComponent, {}],
+    [Primer::Dropdown::Menu, {}],
     [Primer::DropdownMenuComponent, {}],
     [Primer::FlexComponent, {}],
     [Primer::FlashComponent, {}],

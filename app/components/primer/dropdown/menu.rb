@@ -4,7 +4,7 @@ module Primer
   class Dropdown
     # This component is part of `Dropdown` and should not be
     # used as a standalone component.
-    class MenuComponent < Primer::Component
+    class Menu < Primer::Component
       SCHEME_DEFAULT = :default
       SCHEME_MAPPINGS = {
         SCHEME_DEFAULT => "",
