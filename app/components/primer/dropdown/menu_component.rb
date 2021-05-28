@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  module Dropdown
+  class Dropdown
     # This component is part of `Dropdown` and should not be
     # used as a standalone component.
     class MenuComponent < Primer::Component

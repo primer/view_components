@@ -68,7 +68,7 @@ namespace :docs do
       Primer::CloseButton,
       Primer::CounterComponent,
       Primer::DetailsComponent,
-      Primer::DropdownComponent,
+      Primer::Dropdown,
       Primer::DropdownMenuComponent,
       Primer::FlashComponent,
       Primer::FlexComponent,

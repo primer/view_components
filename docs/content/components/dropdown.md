@@ -1,7 +1,7 @@
 ---
 title: Dropdown
 status: Alpha
-source: https://github.com/primer/view_components/tree/main/app/components/primer/dropdown_component.rb
+source: https://github.com/primer/view_components/tree/main/app/components/primer/dropdown.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-dropdown-component
 ---
 
@@ -20,7 +20,7 @@ They're great for instances where you don't need the full power (and code) of th
 
 ```erb
 <div>
-  <%= render(Primer::DropdownComponent.new) do |c| %>
+  <%= render(Primer::Dropdown.new) do |c| %>
     <% c.button do %>
       Dropdown
     <% end %>
@@ -42,7 +42,7 @@ They're great for instances where you don't need the full power (and code) of th
 
 ```erb
 <div>
-  <%= render(Primer::DropdownComponent.new) do |c| %>
+  <%= render(Primer::Dropdown.new) do |c| %>
     <% c.button do %>
       Dropdown
     <% end %>

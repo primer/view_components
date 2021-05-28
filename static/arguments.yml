@@ -452,7 +452,7 @@
     default: N/A
     description: "[System arguments](/system-arguments)"
 - component: Dropdown
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/dropdown_component.rb
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/dropdown.rb
   parameters:
   - name: overlay
     type: Symbol

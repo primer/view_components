@@ -3,7 +3,7 @@
 module Primer
   # `Dropdown` is a lightweight context menu for housing navigation and actions.
   # They're great for instances where you don't need the full power (and code) of the select menu.
-  class DropdownComponent < Primer::Component
+  class Dropdown < Primer::Component
     # Required trigger for the dropdown. Only accepts a content.
     # Its classes can be customized by the `summary_classes` param in the parent component
     renders_one :button
@@ -18,7 +18,7 @@ module Primer
 
     # @example Default
     #   <div>
-    #     <%= render(Primer::DropdownComponent.new) do |c| %>
+    #     <%= render(Primer::Dropdown.new) do |c| %>
     #       <% c.button do %>
     #         Dropdown
     #       <% end %>
@@ -35,7 +35,7 @@ module Primer
     #
     # @example With Direction
     #   <div>
-    #     <%= render(Primer::DropdownComponent.new) do |c| %>
+    #     <%= render(Primer::Dropdown.new) do |c| %>
     #       <% c.button do %>
     #         Dropdown
     #       <% end %>
