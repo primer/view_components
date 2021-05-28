@@ -19,7 +19,7 @@ module Primer
     # @param scheme [Symbol] Pass `:dark` for dark mode theming
     # @param header [String] Optional string to display as the header
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_one :menu, Primer::Dropdown::MenuComponent
+    renders_one :menu, "Primer::Dropdown::MenuComponent"
 
     # @example Default
     #   <div>
@@ -40,7 +40,7 @@ module Primer
     #
     # @example With Direction
     #   <div>
-    #     <%= render(Primer::Dropdown.new) do |c| %>
+    #     <%= render(Primer::Dropdown.new(display: :inline_block)) do |c| %>
     #       <% c.summary do %>
     #         Dropdown
     #       <% end %>
@@ -62,7 +62,7 @@ module Primer
     #         Dropdown
     #       <% end %>
     #
-    #       <%= c.menu(header: "Options", direction: :s) do |menu|
+    #       <%= c.menu(header: "Options") do |menu|
     #         menu.item { "Item 1" }
     #         menu.item { "Item 2" }
     #         menu.item(divider: true)
@@ -79,7 +79,6 @@ module Primer
       @system_arguments = system_arguments
       @system_arguments[:overlay] = overlay
       @system_arguments[:reset] = reset
-      @system_arguments[:position] = :relative
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "dropdown"

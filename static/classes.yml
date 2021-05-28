@@ -105,6 +105,7 @@
 - ".css-truncate-target"
 - ".custom-class"
 - ".d-flex"
+- ".d-inline-block"
 - ".details-overlay"
 - ".details-reset"
 - ".dropdown"

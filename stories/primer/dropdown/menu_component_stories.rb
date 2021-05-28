@@ -5,8 +5,6 @@ require "primer/dropdown/menu_component"
 class Primer::Dropdown::MenuComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_centered_preview"
 
-  self.title = "Primer/Dropdown Component/Menu"
-
   story(:with_items) do
     controls do
       select(:direction, Primer::Dropdown::MenuComponent::DIRECTION_OPTIONS, Primer::Dropdown::MenuComponent::DIRECTION_DEFAULT)
