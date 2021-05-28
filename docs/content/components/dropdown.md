@@ -21,7 +21,7 @@ They're great for instances where you don't need the full power (and code) of th
 ```erb
 <div>
   <%= render(Primer::Dropdown.new) do |c| %>
-    <% c.button do %>
+    <% c.summary do %>
       Dropdown
     <% end %>
 
@@ -43,7 +43,29 @@ They're great for instances where you don't need the full power (and code) of th
 ```erb
 <div>
   <%= render(Primer::Dropdown.new) do |c| %>
-    <% c.button do %>
+    <% c.summary do %>
+      Dropdown
+    <% end %>
+
+    <%= c.menu(header: "Options", direction: :s) do |menu|
+      menu.item { "Item 1" }
+      menu.item { "Item 2" }
+      menu.item(divider: true)
+      menu.item { "Item 3" }
+      menu.item { "Item 4" }
+    end %>
+  <% end %>
+</div>
+```
+
+### Customizing the button
+
+<Example src="<div>  <details data-view-component='true' class='dropdown details-overlay details-reset position-relative'>  <summary role='button' data-view-component='true' class='btn-primary btn-sm btn'>              Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-s'>    <div class='dropdown-header'>      Options    </div>  <ul>      <li data-view-component='true' class='dropdown-item'>Item 1</li>      <li data-view-component='true' class='dropdown-item'>Item 2</li>      <li role='none' data-view-component='true' class='dropdown-divider'></li>      <li data-view-component='true' class='dropdown-item'>Item 3</li>      <li data-view-component='true' class='dropdown-item'>Item 4</li>  </ul></details-menu></div></details></div>" />
+
+```erb
+<div>
+  <%= render(Primer::Dropdown.new) do |c| %>
+    <% c.summary(scheme: :primary, variant: :small) do %>
       Dropdown
     <% end %>
 
@@ -64,15 +86,14 @@ They're great for instances where you don't need the full power (and code) of th
 | :- | :- | :- | :- |
 | `overlay` | `Symbol` | `:default` | One of `:none`, `:default`, or `:dark`. |
 | `reset` | `Boolean` | `true` | Whether to hide the default caret on the button |
-| `summary_classes` | `String` | `""` | Custom classes to add to the button |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
 
-### `Button`
+### `Summary`
 
-Required trigger for the dropdown. Only accepts a content.
-Its classes can be customized by the `summary_classes` param in the parent component
+Required trigger for the dropdown. Has the same arguments as [Button](/components/button),
+but it is locked as a `summary` tag.
 
 ### `Menu`
 

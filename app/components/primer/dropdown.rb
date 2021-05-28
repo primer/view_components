@@ -4,9 +4,14 @@ module Primer
   # `Dropdown` is a lightweight context menu for housing navigation and actions.
   # They're great for instances where you don't need the full power (and code) of the select menu.
   class Dropdown < Primer::Component
-    # Required trigger for the dropdown. Only accepts a content.
-    # Its classes can be customized by the `summary_classes` param in the parent component
-    renders_one :button
+    # Required trigger for the dropdown. Has the same arguments as <%= link_to_component(Primer::ButtonComponent) %>,
+    # but it is locked as a `summary` tag.
+    renders_one :summary, lambda { |**system_arguments, &block|
+      @summary_arguments = system_arguments
+      @summary_arguments[:button] = true
+
+      view_context.capture { block&.call }
+    }
 
     # Required context menu for the dropdown
     #
@@ -19,7 +24,7 @@ module Primer
     # @example Default
     #   <div>
     #     <%= render(Primer::Dropdown.new) do |c| %>
-    #       <% c.button do %>
+    #       <% c.summary do %>
     #         Dropdown
     #       <% end %>
     #
@@ -36,7 +41,24 @@ module Primer
     # @example With Direction
     #   <div>
     #     <%= render(Primer::Dropdown.new) do |c| %>
-    #       <% c.button do %>
+    #       <% c.summary do %>
+    #         Dropdown
+    #       <% end %>
+    #
+    #       <%= c.menu(header: "Options", direction: :s) do |menu|
+    #         menu.item { "Item 1" }
+    #         menu.item { "Item 2" }
+    #         menu.item(divider: true)
+    #         menu.item { "Item 3" }
+    #         menu.item { "Item 4" }
+    #       end %>
+    #     <% end %>
+    #   </div>
+    #
+    # @example Customizing the button
+    #   <div>
+    #     <%= render(Primer::Dropdown.new) do |c| %>
+    #       <% c.summary(scheme: :primary, variant: :small) do %>
     #         Dropdown
     #       <% end %>
     #
@@ -52,9 +74,8 @@ module Primer
     #
     # @param overlay [Symbol] <%= one_of(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys) %>
     # @param reset [Boolean] Whether to hide the default caret on the button
-    # @param summary_classes [String] Custom classes to add to the button
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(overlay: :default, reset: true, summary_classes: "", **system_arguments)
+    def initialize(overlay: :default, reset: true, **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:overlay] = overlay
       @system_arguments[:reset] = reset
@@ -63,11 +84,10 @@ module Primer
         @system_arguments[:classes],
         "dropdown"
       )
-      @summary_classes = summary_classes
     end
 
     def render?
-      button.present? && menu.present?
+      summary.present? && menu.present?
     end
   end
 end

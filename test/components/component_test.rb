@@ -34,7 +34,7 @@ class PrimerComponentTest < Minitest::Test
       component.body { "Bar" }
     end],
     [Primer::Dropdown, {}, lambda do |component|
-      component.button { "Foo" }
+      component.summary { "Foo" }
       component.menu do |m|
         m.item { "Baz" }
       end

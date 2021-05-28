@@ -7,11 +7,10 @@ class Primer::DropdownStories < ViewComponent::Storybook::Stories
     controls do
       select(:overlay, Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :default)
       reset true
-      summary_classes "some-class"
     end
 
     content do |c|
-      c.button { "Dropdown" }
+      c.summary { "Dropdown" }
       c.menu(header: "Header") do |m|
         m.item { "Item 1" }
         m.item { "Item 2" }
