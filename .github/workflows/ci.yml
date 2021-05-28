@@ -158,6 +158,7 @@ jobs:
         bundle config path vendor/bundle
         bundle update actionview activemodel activesupport railties
         bundle exec rake
+        rm -rf demo/test/components/previews/primer/docs/
       env:
         RAILS_VERSION: ${{ matrix.rails_version }}
         COVERAGE: 1
