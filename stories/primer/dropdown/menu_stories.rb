@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "primer/dropdown/menu_component"
+require "primer/dropdown/menu"
 
 class Primer::Dropdown::MenuStories < ViewComponent::Storybook::Stories
   layout "storybook_centered_preview"
