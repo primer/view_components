@@ -2,6 +2,19 @@
 
 ## main
 
+### Breaking changes
+
+* Renames:
+  * `DropdownComponent` to `Dropdown`.
+  * `Dropdown` `button` slot to `summary`.
+  * `Dropdown::MenuComponent` to `Dropdown::Menu`.
+
+    *Manuel Puyol*
+
+* Removes `summary_classes` attribute in favor of the `summary` slot in `Dropdown`.
+
+    *Manuel Puyol*
+
 ## 0.0.42
 
 ### New
