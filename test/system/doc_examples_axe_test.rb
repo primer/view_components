@@ -11,9 +11,6 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
   STARTING_POINT_VIOLATIONS = [:MarkdownPreview, :AutoCompletePreview, :TabComponentPreview, :NavigationTabComponentPreview].freeze
 
   def test_accessibility_of_doc_examples
-    # Generate previews
-    YARD::DocsPreviewGenerator.call
-
     puts "\n============================================================================="
     puts "Running axe-core checks on previews generated from documentation examples..."
     puts "============================================================================="

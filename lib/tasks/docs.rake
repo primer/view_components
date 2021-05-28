@@ -19,11 +19,6 @@ namespace :docs do
     sleep
   end
 
-  task :preview do
-    require "yard/docs_preview_generator"
-    YARD::DocsPreviewGenerator.call
-  end
-
   task :build do
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
     require "primer/view_components"
@@ -316,5 +311,31 @@ namespace :docs do
       puts
       puts "The following components needs docs. Care to contribute them? #{components_needing_docs.map(&:name).join(', ')}"
     end
+  end
+
+  task :preview do
+    require "yard/docs_preview_generator"
+    YARD::DocsPreviewGenerator.new.call
+  end
+
+  task :yard do 
+    require File.expand_path("./../../demo/config/environment.rb", __dir__)
+    require "primer/view_components"
+    require "yard/docs_helper"
+    require "view_component/test_helpers"
+    include ViewComponent::TestHelpers
+    include Primer::ViewHelper
+    include YARD::DocsHelper
+
+    Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
+
+    YARD::Rake::YardocTask.new
+
+    # Custom tags for yard
+    YARD::Tags::Library.define_tag("Accessibility", :accessibility)
+    YARD::Tags::Library.define_tag("Deprecation", :deprecation)
+
+    puts "Building YARD documentation."
+    Rake::Task["yard"].execute
   end
 end

@@ -2,13 +2,13 @@
 
 require File.expand_path("./../../demo/config/environment.rb", __dir__)
 require "primer/view_components"
-require "yard"
+
 Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
 
 module YARD
   # Generate ViewComponent previews from yard examples
   class DocsPreviewGenerator
-    def self.call
+    def call
       registry = YARD::RegistryStore.new
       registry.load!(".yardoc")
 

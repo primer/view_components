@@ -6,10 +6,6 @@
     type: String
     default: N/A
     description: The source url of the image.
-  - name: alt
-    type: String
-    default: N/A
-    description: Specifies an alternate text for the image.
   - name: lazy
     type: Boolean
     default: "`false`"
