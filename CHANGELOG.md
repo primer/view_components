@@ -8,6 +8,12 @@
 
     *Manuel Puyol*
 
+### Misc
+
+* Provide linters for component migrations.
+
+    *Manuel Puyol*
+
 ## 0.0.42
 
 ### New

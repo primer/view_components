@@ -110,6 +110,20 @@
       "problemMatcher": []
     },
     {
+      "label": "erblint: autofix erblint errors",
+      "type": "shell",
+      "group": "build",
+      "command": "bundle exec erblint -a app/components",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "runOptions": {
+        "reevaluateOnRerun": false
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "yarn: build assets",
       "type": "shell",
       "group": "build",
