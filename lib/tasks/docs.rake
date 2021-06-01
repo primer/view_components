@@ -20,24 +20,7 @@ namespace :docs do
   end
 
   task :build do
-    require File.expand_path("./../../demo/config/environment.rb", __dir__)
-    require "primer/view_components"
-    require "yard/docs_helper"
-    require "view_component/test_helpers"
-    include ViewComponent::TestHelpers
-    include Primer::ViewHelper
-    include YARD::DocsHelper
-
-    Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
-
-    YARD::Rake::YardocTask.new
-
-    # Custom tags for yard
-    YARD::Tags::Library.define_tag("Accessibility", :accessibility)
-    YARD::Tags::Library.define_tag("Deprecation", :deprecation)
-
-    puts "Building YARD documentation."
-    Rake::Task["yard"].execute
+    Rake::Task["docs:yard"].execute
 
     puts "Converting YARD documentation to Markdown files."
 
@@ -314,11 +297,13 @@ namespace :docs do
   end
 
   task :preview do
+    Rake::Task["docs:yard"].execute
+
     require "yard/docs_preview_generator"
     YARD::DocsPreviewGenerator.new.call
   end
 
-  task :yard do 
+  task :yard do
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
     require "primer/view_components"
     require "yard/docs_helper"

@@ -7,6 +7,7 @@
 * Promote `TabNav` component to beta.
 
     *Manuel Puyol*
+
 ### Misc
 
 * Don't commit auto-generated comopnent previews.
