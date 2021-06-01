@@ -17,7 +17,7 @@ module Primer
       DIRECTION_DEFAULT = :se
       DIRECTION_OPTIONS = [DIRECTION_DEFAULT, :sw, :w, :e, :ne, :s].freeze
 
-      # @param tag [Symbol] <%= one_of(Primer::Dropdown::Menu::Item::TAG_DEFAULT) %>.
+      # @param tag [Symbol] <%= one_of(Primer::Dropdown::Menu::Item::TAG_OPTIONS) %>.
       # @param divider [Boolean] Whether the item is a divider without any function.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :items, lambda { |divider: false, **system_arguments|

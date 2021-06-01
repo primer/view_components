@@ -15,6 +15,7 @@ module Primer
 
     # Required context menu for the dropdown
     #
+    # @param as [Symbol] When `as` is `:list`, wraps the menu in a `<ul>` with a `<li>` for each item.
     # @param direction [Symbol] <%= one_of(Primer::Dropdown::Menu::DIRECTION_OPTIONS) %>
     # @param scheme [Symbol] Pass `:dark` for dark mode theming
     # @param header [String] Optional string to display as the header
@@ -67,6 +68,40 @@ module Primer
     #         menu.item { "Item 2" }
     #         menu.item(divider: true)
     #         menu.item { "Item 3" }
+    #         menu.item { "Item 4" }
+    #       end %>
+    #     <% end %>
+    #   </div>
+    #
+    # @example Menu as list
+    #   <div>
+    #     <%= render(Primer::Dropdown.new) do |c| %>
+    #       <% c.summary do %>
+    #         Dropdown
+    #       <% end %>
+    #
+    #       <%= c.menu(as: :list, header: "Options") do |menu|
+    #         menu.item { "Item 1" }
+    #         menu.item { "Item 2" }
+    #         menu.item(divider: true)
+    #         menu.item { "Item 3" }
+    #         menu.item { "Item 4" }
+    #       end %>
+    #     <% end %>
+    #   </div>
+    #
+    # @example Customizing menu items
+    #   <div>
+    #     <%= render(Primer::Dropdown.new) do |c| %>
+    #       <% c.summary do %>
+    #         Dropdown
+    #       <% end %>
+    #
+    #       <%= c.menu(header: "Options") do |menu|
+    #         menu.item(tag: :summary) { "Item 1" }
+    #         menu.item(tag: :button) { "Item 2" }
+    #         menu.item(divider: true)
+    #         menu.item(classes: "custom-class") { "Item 3" }
     #         menu.item { "Item 4" }
     #       end %>
     #     <% end %>

@@ -7,6 +7,7 @@ class Primer::Dropdown::MenuStories < ViewComponent::Storybook::Stories
 
   story(:with_items) do
     controls do
+      select(:as, Primer::Dropdown::Menu::AS_OPTIONS, Primer::Dropdown::Menu::AS_DEFAULT)
       select(:direction, Primer::Dropdown::Menu::DIRECTION_OPTIONS, Primer::Dropdown::Menu::DIRECTION_DEFAULT)
       select(:scheme, Primer::Dropdown::Menu::SCHEME_MAPPINGS.keys, Primer::Dropdown::Menu::SCHEME_DEFAULT)
       header "Header"
@@ -22,6 +23,7 @@ class Primer::Dropdown::MenuStories < ViewComponent::Storybook::Stories
 
   story(:with_divider) do
     controls do
+      select(:as, Primer::Dropdown::Menu::AS_OPTIONS, Primer::Dropdown::Menu::AS_DEFAULT)
       select(:direction, Primer::Dropdown::Menu::DIRECTION_OPTIONS, Primer::Dropdown::Menu::DIRECTION_DEFAULT)
       select(:scheme, Primer::Dropdown::Menu::SCHEME_MAPPINGS.keys, Primer::Dropdown::Menu::SCHEME_DEFAULT)
       header "Header"

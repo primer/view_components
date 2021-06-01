@@ -19,6 +19,7 @@
   "Primer::DetailsComponent": "beta",
   "Primer::Dropdown": "alpha",
   "Primer::Dropdown::Menu": "alpha",
+  "Primer::Dropdown::Menu::Item": "alpha",
   "Primer::DropdownMenuComponent": "deprecated",
   "Primer::FlashComponent": "beta",
   "Primer::FlexComponent": "deprecated",

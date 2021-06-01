@@ -6,6 +6,10 @@ module Primer
       def with_direction; end
 
       def customizing_the_button; end
+
+      def menu_as_list; end
+
+      def customizing_menu_items; end
     end
   end
 end
