@@ -2,6 +2,12 @@
 
 ## main
 
+### Updates
+
+* Promote `TabNav` component to beta.
+
+    *Manuel Puyol*
+
 ### Breaking changes
 
 * Renames:
