@@ -8,6 +8,10 @@
 
     *Manuel Puyol*
 
+* Allow `Dropdown` menu items to be rendered outside a list.
+
+    *Manuel Puyol*
+
 ### Breaking changes
 
 * Renames:
