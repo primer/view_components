@@ -8,6 +8,10 @@
 
     *Manuel Puyol*
 
+* Allow customizing `TabContainer` when using `TabNav` and `UnderlineNav` components.
+
+    *Manuel Puyol*
+
 ## 0.0.42
 
 ### New
