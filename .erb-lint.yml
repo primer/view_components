@@ -1,0 +1,7 @@
+---
+EnableDefaultLinters: true
+linters:
+  ButtonComponentMigrationCounter:
+    enabled: true
+  FlashComponentMigrationCounter:
+    enabled: true

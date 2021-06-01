@@ -5,6 +5,8 @@ module Primer
   class TabNavComponent < Primer::Component
     include Primer::TabbedComponentHelper
 
+    status :beta
+
     DEFAULT_EXTRA_ALIGN = :left
     EXTRA_ALIGN_OPTIONS = [DEFAULT_EXTRA_ALIGN, :right].freeze
 
