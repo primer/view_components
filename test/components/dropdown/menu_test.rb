@@ -37,8 +37,8 @@ class Primer::Dropdown::MenuTest < Minitest::Test
       c.item { "Item 2" }
     end
 
-    assert_selector(".dropdown-item", text: "Item 1")
-    assert_selector(".dropdown-item", text: "Item 2")
+    assert_selector(".dropdown-item[role='menuitem']", text: "Item 1")
+    assert_selector(".dropdown-item[role='menuitem']", text: "Item 2")
   end
 
   def test_renders_dividers
@@ -46,6 +46,6 @@ class Primer::Dropdown::MenuTest < Minitest::Test
       c.item(divider: true)
     end
 
-    assert_selector(".dropdown-divider")
+    assert_selector(".dropdown-divider[role='none']")
   end
 end
