@@ -12,7 +12,7 @@ class Primer::Dropdown::Menu::ItemStories < ViewComponent::Storybook::Stories
       divider false
     end
 
-    content do |c|
+    content do
       "Content"
     end
   end
