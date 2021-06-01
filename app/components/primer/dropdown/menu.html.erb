@@ -4,9 +4,22 @@
       <%= @header %>
     </div>
   <% end %>
-  <ul>
+
+  <% if list? %>
+    <ul>
+      <% items.each do |item| %>
+        <% if item.divider? %>
+          <%= item %>
+        <% else %>
+          <li>
+            <%= item %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% else %>
     <% items.each do |item| %>
       <%= item %>
     <% end %>
-  </ul>
+  <% end %>
 <% end %>

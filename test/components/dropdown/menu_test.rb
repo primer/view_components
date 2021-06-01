@@ -46,6 +46,26 @@ class Primer::Dropdown::MenuTest < Minitest::Test
       c.item(divider: true)
     end
 
-    assert_selector(".dropdown-divider[role='none']")
+    assert_selector(".dropdown-divider[role='separator']")
+  end
+
+  def test_renders_as_list
+    render_inline(Primer::Dropdown::Menu.new(as: :list, header: "Header")) do |c|
+      c.item { "Item 1" }
+      c.item(divider: true)
+      c.item { "Item 2" }
+    end
+
+    assert_selector("details-menu.dropdown-menu") do
+      assert_selector("ul") do
+        assert_selector("li") do
+          assert_selector(".dropdown-item[role='menuitem']", text: "Item 1")
+        end
+        assert_selector("li.dropdown-divider[role='separator']")
+        assert_selector("li") do
+          assert_selector(".dropdown-item[role='menuitem']", text: "Item 2")
+        end
+      end
+    end
   end
 end
