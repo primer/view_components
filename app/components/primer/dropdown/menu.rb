@@ -57,7 +57,7 @@ module Primer
         BUTTON_TAGS = [:button, :summary].freeze
         TAG_OPTIONS = [TAG_DEFAULT, *BUTTON_TAGS].freeze
 
-        def initialize(as: :default, tag: TAG_DEFAULT, divider: false, **system_arguments)
+        def initialize(as:, tag: TAG_DEFAULT, divider: false, **system_arguments)
           @divider = divider
           @as = as
 
