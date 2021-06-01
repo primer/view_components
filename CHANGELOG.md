@@ -10,7 +10,7 @@
 
 ### Misc
 
-* Don't commit auto-generated comopnent previews.
+* Don't commit auto-generated component previews.
 
 ### Misc
 

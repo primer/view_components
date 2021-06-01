@@ -19,7 +19,7 @@ To install all necessary dependencies.
 To run the full test suite:
 
 ```bash
-script/test
+bundle exec rake
 ```
 
 ## Writing documentation

@@ -1,22 +1,23 @@
 # frozen_string_literal: true
 
 require "application_system_test_case"
-require "yard/docs_preview_generator"
 
 class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
-  # Skip components that should be tested as part of a larger component.
+  # Skip components that should be tested as part of a lartest/system/doc_examples_axe_test.rbger component.
   NOT_STANDALONE = [:AutoCompleteItemPreview].freeze
 
   # Starting point violations to be addressed. Do not add to this list!
   STARTING_POINT_VIOLATIONS = [:MarkdownPreview, :AutoCompletePreview, :TabComponentPreview, :NavigationTabComponentPreview].freeze
 
   def test_accessibility_of_doc_examples
+    # Workaround to ensure that all component previews are loaded.
+    visit("/rails/view_components")
+
+    raise "You must generate previews with `bundle exec rake docs:preview` before running this test" unless defined? Primer::Docs
+
     puts "\n============================================================================="
     puts "Running axe-core checks on previews generated from documentation examples..."
     puts "============================================================================="
-
-    # Workaround to ensure that all component previews are loaded.
-    visit("/rails/view_components")
 
     Primer::Docs.constants.each do |klass|
       next if NOT_STANDALONE.include?(klass) || STARTING_POINT_VIOLATIONS.include?(klass)
