@@ -116,6 +116,7 @@ Use `TabNav` to style navigation with a tab-based selected state, typically used
 | `label` | `String` | N/A | Used to set the `aria-label` on the top level `<nav>` element. |
 | `with_panel` | `Boolean` | `false` | Whether the TabNav should navigate through pages or panels. |
 | `body_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the body wrapper. |
+| `wrapper_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the `TabContainer` wrapper. Only applies if `with_panel` is `true`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots

@@ -125,6 +125,7 @@ of the page.
 | `with_panel` | `Boolean` | `false` | Whether the TabNav should navigate through pages or panels. |
 | `align` | `Symbol` | `:left` | One of `:left` and `:right`. - Defaults to left |
 | `body_arguments` | `Hash` | `{ tag: BODY_TAG_DEFAULT }` | [System arguments](/system-arguments) for the body wrapper. |
+| `wrapper_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the `TabContainer` wrapper. Only applies if `with_panel` is `true`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots

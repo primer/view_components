@@ -810,6 +810,11 @@
     type: Hash
     default: "`{}`"
     description: "[System arguments](/system-arguments) for the body wrapper."
+  - name: wrapper_arguments
+    type: Hash
+    default: "`{}`"
+    description: "[System arguments](/system-arguments) for the `TabContainer` wrapper.
+      Only applies if `with_panel` is `true`."
   - name: system_arguments
     type: Hash
     default: N/A
@@ -927,6 +932,11 @@
     type: Hash
     default: "`{ tag: BODY_TAG_DEFAULT }`"
     description: "[System arguments](/system-arguments) for the body wrapper."
+  - name: wrapper_arguments
+    type: Hash
+    default: "`{}`"
+    description: "[System arguments](/system-arguments) for the `TabContainer` wrapper.
+      Only applies if `with_panel` is `true`."
   - name: system_arguments
     type: Hash
     default: N/A
