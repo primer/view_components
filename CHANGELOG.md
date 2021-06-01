@@ -7,7 +7,7 @@
 * Promote `TabNav` component to beta.
 
     *Manuel Puyol*
-    
+
 ### Misc
 
 * Provide linters for component migrations.
