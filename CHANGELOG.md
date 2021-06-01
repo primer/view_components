@@ -8,6 +8,12 @@
 
     *Manuel Puyol*
 
+### Misc
+
+* Raise an error if `class` is used as a system argument.
+
+    *Manuel Puyol*
+
 ## 0.0.42
 
 ### New
