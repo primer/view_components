@@ -16,7 +16,8 @@ module Primer
 
       renders_many :items, lambda { |divider: false, **system_arguments|
         system_arguments[:tag] = :li
-        system_arguments[:role] = divider ? :none : :menuitem
+        system_arguments[:role] ||= :menuitem
+        system_arguments[:role] ||= :none if divider
         system_arguments[:classes] = class_names(
           system_arguments[:classes],
           "dropdown-item" => !divider,
