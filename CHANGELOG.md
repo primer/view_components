@@ -2,6 +2,12 @@
 
 ## main
 
+### New
+
+* Add `clearfix` and `container` system arguments.
+
+    *Manuel Puyol*
+
 ### Updates
 
 * Promote `TabNav` component to beta.
@@ -22,6 +28,10 @@
     *Manuel Puyol*
 
 * Removes `summary_classes` attribute in favor of the `summary` slot in `Dropdown`.
+
+    *Manuel Puyol*
+
+* Restrict `col` system arguments to only accept values between 1 and 12.
 
     *Manuel Puyol*
 
