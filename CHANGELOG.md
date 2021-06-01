@@ -2,6 +2,10 @@
 
 ## main
 
+* Upgrade primer/css to 17.2.1
+
+  *Jon Rohan*
+
 ### New
 
 * Add `clearfix` and `container` system arguments.
