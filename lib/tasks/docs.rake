@@ -78,6 +78,7 @@ namespace :docs do
     ]
 
     js_components = [
+      Primer::Dropdown,
       Primer::LocalTime,
       Primer::ImageCrop,
       Primer::AutoComplete,

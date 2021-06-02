@@ -6,6 +6,9 @@ storybook: https://primer.style/view-components/stories/?path=/story/primer-drop
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
+import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash'
+
+<RequiresJSFlash />
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
