@@ -109,6 +109,30 @@ Use `TabNav` to style navigation with a tab-based selected state, typically used
 <% end %>
 ```
 
+### Customizing the body
+
+<Example src="  <div data-view-component='true' class='tabnav'>        <nav aria-label='Default' data-view-component='true' class='tabnav-tabs custom-class border color-border-info'>          <a href='#' aria-current='page' data-view-component='true' class='tabnav-tab'>          Tab 1    </a>          <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 2    </a>          <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 3    </a></nav>    </div>" />
+
+```erb
+<%= render(Primer::TabNavComponent.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :info })) do |c| %>
+  <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+  <% c.tab(href: "#") { "Tab 2" } %>
+  <% c.tab(href: "#") { "Tab 3" } %>
+<% end %>
+```
+
+### Customizing the wrapper
+
+<Example src="  <div data-view-component='true' class='tabnav'>        <nav aria-label='Default' data-view-component='true' class='tabnav-tabs'>          <a href='#' aria-current='page' data-view-component='true' class='tabnav-tab'>          Tab 1    </a>          <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 2    </a>          <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 3    </a></nav>    </div>" />
+
+```erb
+<%= render(Primer::TabNavComponent.new(label: "Default", wrapper_arguments: { classes: "custom-class", border: true, border_color: :info })) do |c| %>
+  <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+  <% c.tab(href: "#") { "Tab 2" } %>
+  <% c.tab(href: "#") { "Tab 3" } %>
+<% end %>
+```
+
 ## Arguments
 
 | Name | Type | Default | Description |

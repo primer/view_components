@@ -104,6 +104,20 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
+    # @example Customizing the body
+    #   <%= render(Primer::TabNavComponent.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :info })) do |c| %>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(href: "#") { "Tab 2" } %>
+    #     <% c.tab(href: "#") { "Tab 3" } %>
+    #   <% end %>
+    #
+    # @example Customizing the wrapper
+    #   <%= render(Primer::TabNavComponent.new(label: "Default", wrapper_arguments: { classes: "custom-class", border: true, border_color: :info })) do |c| %>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(href: "#") { "Tab 2" } %>
+    #     <% c.tab(href: "#") { "Tab 3" } %>
+    #   <% end %>
+    #
     # @param label [String] Used to set the `aria-label` on the top level `<nav>` element.
     # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
     # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.

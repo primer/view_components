@@ -116,6 +116,20 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
+    # @example Customizing the body
+    #   <%= render(Primer::UnderlineNavComponent.new(label: "Default", body_arguments: { tag: :ul, classes: "custom-class", border: true, border_color: :info })) do |c| %>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(href: "#") { "Tab 2" } %>
+    #     <% c.tab(href: "#") { "Tab 3" } %>
+    #   <% end %>
+    #
+    # @example Customizing the wrapper
+    #   <%= render(Primer::UnderlineNavComponent.new(label: "Default", wrapper_arguments: { classes: "custom-class", border: true, border_color: :info })) do |c| %>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(href: "#") { "Tab 2" } %>
+    #     <% c.tab(href: "#") { "Tab 3" } %>
+    #   <% end %>
+    #
     # @param label [String] The `aria-label` on top level `<nav>` element.
     # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
     # @param align [Symbol] <%= one_of(Primer::UnderlineNavComponent::ALIGN_OPTIONS) %> - Defaults to <%= Primer::UnderlineNavComponent::ALIGN_DEFAULT %>
