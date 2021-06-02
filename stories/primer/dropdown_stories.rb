@@ -10,7 +10,7 @@ class Primer::DropdownStories < ViewComponent::Storybook::Stories
     end
 
     content do |c|
-      c.summary { "Dropdown" }
+      c.button { "Dropdown" }
       c.menu(header: "Header") do |m|
         m.item { "Item 1" }
         m.item { "Item 2" }

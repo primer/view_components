@@ -12,14 +12,14 @@ class PrimerDropdownTest < Minitest::Test
   end
 
   def test_does_not_render_without_menu
-    render_inline(Primer::Dropdown.new) { |c| c.summary { "Button" } }
+    render_inline(Primer::Dropdown.new) { |c| c.button { "Button" } }
 
     refute_selector(".dropdown")
   end
 
   def test_renders_dropdown
     render_inline(Primer::Dropdown.new) do |c|
-      c.summary { "Button" }
+      c.button { "Button" }
       c.menu do |m|
         m.item { "Item" }
       end
@@ -35,7 +35,7 @@ class PrimerDropdownTest < Minitest::Test
 
   def test_renders_dropdown_with_header
     render_inline(Primer::Dropdown.new) do |c|
-      c.summary { "Button" }
+      c.button { "Button" }
       c.menu(header: "Header") do |m|
         m.item { "Item" }
       end
@@ -52,7 +52,7 @@ class PrimerDropdownTest < Minitest::Test
 
   def test_renders_dropdown_with_divider
     render_inline(Primer::Dropdown.new) do |c|
-      c.summary { "Button" }
+      c.button { "Button" }
       c.menu do |m|
         m.item { "Item" }
         m.item(divider: true)
@@ -70,7 +70,7 @@ class PrimerDropdownTest < Minitest::Test
 
   def test_renders_dropdown_with_direcation
     render_inline(Primer::Dropdown.new) do |c|
-      c.summary { "Button" }
+      c.button { "Button" }
       c.menu(direction: :s) do |m|
         m.item { "Item" }
       end
