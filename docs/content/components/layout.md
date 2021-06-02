@@ -36,7 +36,7 @@ Add any accessibility considerations
 
 ```erb
 
-<%= render(Primer::Layout.new(divider: true)) do |c| %>
+<%= render(Primer::Layout.new(with_divider: true)) do |c| %>
   <% c.main(border: true) { "Main" } %>
   <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
@@ -48,15 +48,15 @@ Add any accessibility considerations
 
 ```erb
 
-<%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :visible)) do |c| %>
+<%= render(Primer::Layout.new(with_divider: true, divider_flow_row_variant: :visible)) do |c| %>
   <% c.main(border: true) { "Main" } %>
   <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :hidden, mt: 5)) do |c| %>
+<%= render(Primer::Layout.new(with_divider: true, divider_flow_row_variant: :hidden, mt: 5)) do |c| %>
   <% c.main(border: true) { "Main" } %>
   <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
-<%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :shallow, mt: 5)) do |c| %>
+<%= render(Primer::Layout.new(with_divider: true, divider_flow_row_variant: :shallow, mt: 5)) do |c| %>
   <% c.main(border: true) { "Main" } %>
   <% c.sidebar(border: true) { "Sidebar" } %>
 <% end %>
@@ -263,7 +263,7 @@ Add any accessibility considerations
 | `sidebar_placement` | `Symbol` | `:start` | One of `:start` and `:end`. |
 | `sidebar_flow_row_placement` | `Symbol` | `:start` | Sidebar placement when `Layout` is flowing as row. One of `:start`, `:end`, or `:none`. |
 | `main_width` | `Symbol` | `:full` | One of `:full`, `:md`, `:lg`, or `:xl`. |
-| `divider` | `Boolean` | `false` | Wether or not to add a divider between `main` and `sidebar`. |
+| `with_divider` | `Boolean` | `false` | Wether or not to add a divider between `main` and `sidebar`. |
 | `divider_flow_row_variant` | `Symbol` | `:visible` | Variants for the divider when `Layout` is flowing as row. One of `:visible`, `:hidden`, or `:shallow`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 

@@ -38,7 +38,7 @@
     type: Symbol
     default: "`:full`"
     description: One of `:full`, `:md`, `:lg`, or `:xl`.
-  - name: divider
+  - name: with_divider
     type: Boolean
     default: "`false`"
     description: Wether or not to add a divider between `main` and `sidebar`.
