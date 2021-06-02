@@ -17,6 +17,16 @@ You can also see the status of all Primer ViewComponents on [this project board]
 
 ## Criteria for changing component status
 
+### Promote from internal application to alpha
+
+We recommend building new Primer ViewComponents in the application that needs them, upstreaming them when:
+
+- The Design Systems team has approved the component for inclusion in Primer.
+- The CSS for the component has been added in a release of Primer CSS.
+- The component is used in production, using all proposed APIs and their permutations.
+- The component is compatible with [System arguments](/system-arguments) as appropriate.
+- The API is consistent with existing components.
+-
 ### Promote from alpha to beta
 
 - The component does not use any deprecated `view_component` framework features, such as Slots v1.
