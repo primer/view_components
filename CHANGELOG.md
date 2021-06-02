@@ -26,6 +26,10 @@
 
 ### Misc
 
+* Don't commit auto-generated component previews.
+
+### Misc
+
 * Provide linters for component migrations.
 
     *Manuel Puyol*
