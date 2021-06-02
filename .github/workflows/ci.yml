@@ -58,6 +58,7 @@ jobs:
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
         bundle exec rubocop
+        bundle exec erblint app/components
   lint_js:
     runs-on: ubuntu-latest
     steps:
@@ -156,6 +157,7 @@ jobs:
         gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle update actionview activemodel activesupport railties
+        bundle exec rake docs:preview
         bundle exec rake
       env:
         RAILS_VERSION: ${{ matrix.rails_version }}

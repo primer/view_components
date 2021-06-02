@@ -12,6 +12,12 @@
 
     *Manuel Puyol*
 
+### Updates
+
+* Promote `TabNav` component to beta.
+
+    *Manuel Puyol*
+
 ### Deprecations
 
 * Deprecate `LayoutComponent` in favor of `Layout`.
@@ -21,6 +27,16 @@
 ### Breaking changes
 
 * Restrict `col` system arguments to only accept values between 1 and 12.
+
+    *Manuel Puyol*
+
+### Misc
+
+* Don't commit auto-generated component previews.
+
+    *Kate Higa*
+
+* Provide linters for component migrations.
 
     *Manuel Puyol*
 
