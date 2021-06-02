@@ -2,6 +2,10 @@
 
 ## main
 
+* Upgrade primer/css to 17.2.1
+
+  *Jon Rohan*
+
 ### New
 
 * Add `clearfix` and `container` system arguments.
@@ -26,11 +30,19 @@
 
 ### Misc
 
+* Raise an error if `class` is used as a system argument.
+
+    *Manuel Puyol*
+
 * Don't commit auto-generated component previews.
 
     *Kate Higa*
 
 * Provide linters for component migrations.
+
+    *Manuel Puyol*
+
+* Update docs to accept multiline descriptions.
 
     *Manuel Puyol*
 
