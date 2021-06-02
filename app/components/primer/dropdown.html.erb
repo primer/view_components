@@ -1,6 +1,6 @@
 <%= render(Primer::DetailsComponent.new(**@system_arguments)) do |c| %>
-  <% c.summary(**@summary_arguments) do %>
-    <%= summary %>
+  <% c.summary(**@button_arguments) do %>
+    <%= button %>
   <% end %>
 
   <% c.body do %>

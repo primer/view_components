@@ -6,9 +6,9 @@ module Primer
   class Dropdown < Primer::Component
     # Required trigger for the dropdown. Has the same arguments as <%= link_to_component(Primer::ButtonComponent) %>,
     # but it is locked as a `summary` tag.
-    renders_one :summary, lambda { |**system_arguments, &block|
-      @summary_arguments = system_arguments
-      @summary_arguments[:button] = true
+    renders_one :button, lambda { |**system_arguments, &block|
+      @button_arguments = system_arguments
+      @button_arguments[:button] = true
 
       view_context.capture { block&.call }
     }
@@ -25,7 +25,7 @@ module Primer
     # @example Default
     #   <div>
     #     <%= render(Primer::Dropdown.new) do |c| %>
-    #       <% c.summary do %>
+    #       <% c.button do %>
     #         Dropdown
     #       <% end %>
     #
@@ -42,7 +42,7 @@ module Primer
     # @example With direction
     #   <div>
     #     <%= render(Primer::Dropdown.new(display: :inline_block)) do |c| %>
-    #       <% c.summary do %>
+    #       <% c.button do %>
     #         Dropdown
     #       <% end %>
     #
@@ -59,7 +59,7 @@ module Primer
     # @example Customizing the button
     #   <div>
     #     <%= render(Primer::Dropdown.new) do |c| %>
-    #       <% c.summary(scheme: :primary, variant: :small) do %>
+    #       <% c.button(scheme: :primary, variant: :small) do %>
     #         Dropdown
     #       <% end %>
     #
@@ -76,7 +76,7 @@ module Primer
     # @example Menu as list
     #   <div>
     #     <%= render(Primer::Dropdown.new) do |c| %>
-    #       <% c.summary do %>
+    #       <% c.button do %>
     #         Dropdown
     #       <% end %>
     #
@@ -93,7 +93,7 @@ module Primer
     # @example Customizing menu items
     #   <div>
     #     <%= render(Primer::Dropdown.new) do |c| %>
-    #       <% c.summary do %>
+    #       <% c.button do %>
     #         Dropdown
     #       <% end %>
     #
@@ -121,7 +121,7 @@ module Primer
     end
 
     def render?
-      summary.present? && menu.present?
+      button.present? && menu.present?
     end
   end
 end

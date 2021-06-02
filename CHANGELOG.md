@@ -22,7 +22,6 @@
 
 * Renames:
   * `DropdownComponent` to `Dropdown`.
-  * `Dropdown` `button` slot to `summary`.
   * `Dropdown::MenuComponent` to `Dropdown::Menu`.
 
     *Manuel Puyol*
