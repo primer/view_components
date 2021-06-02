@@ -2,10 +2,6 @@
 
 ## main
 
-* Upgrade primer/css to 17.2.1
-
-  *Jon Rohan*
-
 ### New
 
 * Add `clearfix` and `container` system arguments.
@@ -34,6 +30,10 @@
 
     *Manuel Puyol*
 
+* Removes `reset` attribute in `Dropdown`.
+
+    *Manuel Puyol*
+
 * Restrict `col` system arguments to only accept values between 1 and 12.
 
     *Manuel Puyol*
@@ -51,6 +51,10 @@
 * Update docs to accept multiline descriptions.
 
     *Manuel Puyol*
+
+* Upgrade primer/css to 17.2.1
+
+  *Jon Rohan*
 
 ## 0.0.42
 
