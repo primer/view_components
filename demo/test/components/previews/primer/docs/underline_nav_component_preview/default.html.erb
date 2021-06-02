@@ -1,7 +1,0 @@
-<%= render(Primer::UnderlineNavComponent.new(label: "Default")) do |component| %>
-  <% component.tab(href: "#", selected: true) { "Item 1" } %>
-  <% component.tab(href: "#") { "Item 2" } %>
-  <% component.actions do %>
-    <%= render(Primer::ButtonComponent.new) { "Button!" } %>
-  <% end %>
-<% end %>
