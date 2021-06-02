@@ -10,7 +10,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 `Dropdown` is a lightweight context menu for housing navigation and actions.
-They're great for instances where you don't need the full power (and code) of the select menu.
+They're great for instances where you don't need the full power (and code) of the SelectMenu.
 
 ## Examples
 
@@ -36,7 +36,7 @@ They're great for instances where you don't need the full power (and code) of th
 </div>
 ```
 
-### With Direction
+### With direction
 
 <Example src="<div>  <details data-view-component='true' class='dropdown details-overlay details-reset d-inline-block'>  <summary role='button' data-view-component='true' class='btn'>              Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-s'>    <div class='dropdown-header'>      Options    </div>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 1</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 2</a>      <a role='separator' data-view-component='true' class='dropdown-divider'></a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 3</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a></details-menu></div></details></div>" />
 
@@ -141,7 +141,7 @@ but it is locked as a `summary` tag.
 
 ### `Menu`
 
-Required context menu for the dropdown
+Required context menu for the dropdown.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
