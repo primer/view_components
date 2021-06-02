@@ -105,9 +105,9 @@
     "@primer/primitives" "^4.3.5"
 
 "@primer/primitives@^4.3.5":
-  version "4.3.6"
-  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-4.3.6.tgz#ffb10cab775fc368290c35f38eff53ce6189e0ac"
-  integrity sha512-kdbpENgaC1loyH6q9hjsG12dqgBNoZkBXDevjOdeRG+cIE6IDdYrqSEbS7eFH2yJexjPBbFilndcKmE2NW7SGA==
+  version "4.3.7"
+  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-4.3.7.tgz#34bfb156c47c417bf30bcb634e63afabd2edf96e"
+  integrity sha512-NlQhIPtnwAyVd34I9K7+E4uOzTKcR1J8VMd6j0PZY7FyV4jvx7IIl8/ayQe6CmhME5XN8dmYDk94LDkPRM44ug==
 
 "@rollup/plugin-node-resolve@^11.2.0":
   version "11.2.0"
