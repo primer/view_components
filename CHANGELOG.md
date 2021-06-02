@@ -26,6 +26,10 @@
 
 ### Misc
 
+* Raise an error if `class` is used as a system argument.
+
+    *Manuel Puyol*
+
 * Don't commit auto-generated component previews.
 
     *Kate Higa*

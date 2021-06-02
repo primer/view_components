@@ -150,6 +150,8 @@ module Primer
       @tag = tag
       @system_arguments = system_arguments
 
+      raise ArgumentError, "`class` is an invalid argument. Use `classes` instead." if system_arguments.key?(:class) && !Rails.env.production?
+
       @result = Primer::Classify.call(**@system_arguments.merge(classes: classes))
 
       @system_arguments[:"data-view-component"] = true
