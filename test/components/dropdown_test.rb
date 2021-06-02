@@ -83,4 +83,19 @@ class PrimerDropdownTest < Minitest::Test
       end
     end
   end
+
+  def test_renders_caret
+    render_inline(Primer::Dropdown.new(with_caret: true)) do |c|
+      c.button { "Button" }
+      c.menu do |m|
+        m.item { "Item" }
+      end
+    end
+
+    assert_selector("details.dropdown") do
+      assert_selector("summary.btn") do
+        assert_selector(".dropdown-caret")
+      end
+    end
+  end
 end

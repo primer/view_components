@@ -458,6 +458,10 @@
     type: Symbol
     default: "`:default`"
     description: One of `:none`, `:default`, or `:dark`.
+  - name: With_caret
+    type: Boolean
+    default: N/A
+    description: Whether or not a caret should be rendered in the button.
   - name: system_arguments
     type: Hash
     default: N/A

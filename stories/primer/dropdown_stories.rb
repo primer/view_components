@@ -6,7 +6,7 @@ class Primer::DropdownStories < ViewComponent::Storybook::Stories
   story(:dropdown) do
     controls do
       select(:overlay, Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :default)
-      reset true
+      with_caret false
     end
 
     content do |c|

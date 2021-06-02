@@ -52,6 +52,21 @@ module Primer
     #     end %>
     #   <% end %>
     #
+    # @example With caret
+    #   <%= render(Primer::Dropdown.new(with_caret: true)) do |c| %>
+    #     <% c.button do %>
+    #       Dropdown
+    #     <% end %>
+    #
+    #     <%= c.menu(header: "Options") do |menu|
+    #       menu.item { "Item 1" }
+    #       menu.item { "Item 2" }
+    #       menu.item(divider: true)
+    #       menu.item { "Item 3" }
+    #       menu.item { "Item 4" }
+    #     end %>
+    #   <% end %>
+    #
     # @example Customizing the button
     #   <%= render(Primer::Dropdown.new) do |c| %>
     #     <% c.button(scheme: :primary, variant: :small) do %>
@@ -98,8 +113,11 @@ module Primer
     #   <% end %>
     #
     # @param overlay [Symbol] <%= one_of(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys) %>
+    # @param With_caret [Boolean] Whether or not a caret should be rendered in the button.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(overlay: :default, **system_arguments)
+    def initialize(overlay: :default, with_caret: false, **system_arguments)
+      @with_caret = with_caret
+
       @system_arguments = system_arguments
       @system_arguments[:overlay] = overlay
       @system_arguments[:reset] = true

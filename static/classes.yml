@@ -109,6 +109,7 @@
 - ".details-overlay"
 - ".details-reset"
 - ".dropdown"
+- ".dropdown-caret"
 - ".dropdown-divider"
 - ".dropdown-header"
 - ".dropdown-item"

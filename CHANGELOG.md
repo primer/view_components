@@ -30,10 +30,6 @@
 
     *Manuel Puyol*
 
-* Removes `reset` attribute in `Dropdown`.
-
-    *Manuel Puyol*
-
 * Restrict `col` system arguments to only accept values between 1 and 12.
 
     *Manuel Puyol*
