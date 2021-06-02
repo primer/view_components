@@ -154,7 +154,18 @@ namespace :docs do
         end
 
         initialize_method.tags(:example).each do |tag|
-          (name, description) = tag.name.split("|")
+          name = tag.name
+          description = nil
+          code = nil
+
+          if tag.text.include?("@description")
+            splitted = tag.text.split(/@description|@code/)
+            description = splitted.second.gsub(/^[ \t]{2}/, "").strip
+            code = splitted.last.gsub(/^[ \t]{2}/, "").strip
+          else
+            code = tag.text
+          end
+
           f.puts
           f.puts("### #{name}")
           if description
@@ -162,14 +173,14 @@ namespace :docs do
             f.puts(description)
           end
           f.puts
-          html = view_context.render(inline: tag.text)
+          html = view_context.render(inline: code)
           html.scan(/class="([^"]*)"/) do |classnames|
             classes_found_in_examples.concat(classnames[0].split(" ").reject { |c| c.starts_with?("octicon", "js", "my-") }.map { |c| ".#{c}" })
           end
           f.puts("<Example src=\"#{html.tr('"', "\'").delete("\n")}\" />")
           f.puts
           f.puts("```erb")
-          f.puts(tag.text.to_s)
+          f.puts(code.to_s)
           f.puts("```")
         end
 

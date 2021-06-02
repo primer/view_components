@@ -40,6 +40,10 @@
 
     *Manuel Puyol*
 
+* Update docs to accept multiline descriptions.
+
+    *Manuel Puyol*
+
 ## 0.0.42
 
 ### New
