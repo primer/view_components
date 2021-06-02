@@ -292,6 +292,7 @@ module Primer
     #
     #   @description
     #     Sets the outside margin of the `Layout` component.
+    #
     #     - `none`: 0
     #     - `compact`: 16px
     #     - `normal`: [sm: 16px, lg: 24px]

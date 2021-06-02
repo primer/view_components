@@ -250,6 +250,7 @@ You can specify when the `Layout` should change from column into row.
 ### Density
 
 Sets the outside margin of the `Layout` component.
+
 - `none`: 0
 - `compact`: 16px
 - `normal`: [sm: 16px, lg: 24px]
