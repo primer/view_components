@@ -31,4 +31,5 @@ We recommend building new Primer ViewComponents in an application that uses them
 
 - The component does not use any deprecated `view_component` framework features, such as Slots v1.
 - Documentation and storybook stories are complete.
-- The API is expected to be stable and the component is used in dotcom at least 3 times.
+- The API is approaching a point of stability.
+- The component is used in production at least 3 times.
