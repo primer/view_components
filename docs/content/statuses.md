@@ -13,7 +13,7 @@ Each component is assigned a status for its maturity level:
 
 We expect many components to move from alpha to beta and from beta to stable soon. Watch for releases in the [repo](https://github.com/primer/view_components).
 
-You can also see the status of all Primer ViewComponents on [this project board](https://github.com/primer/view_components/projects/3).
+You can also see the status of all Primer ViewComponents at once on [this project board](https://github.com/primer/view_components/projects/3).
 
 ## Criteria for changing component status
 
