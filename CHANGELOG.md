@@ -18,6 +18,10 @@
 
     *Manuel Puyol*
 
+* Allow customizing `TabContainer` when using `TabNav` and `UnderlineNav` components.
+
+    *Manuel Puyol*
+
 ### Breaking changes
 
 * Restrict `col` system arguments to only accept values between 1 and 12.

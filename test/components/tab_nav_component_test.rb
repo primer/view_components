@@ -141,4 +141,15 @@ class PrimerTabNavComponentTest < Minitest::Test
       assert_text("Extra")
     end
   end
+
+  def test_customizes_tab_container
+    render_inline(Primer::TabNavComponent.new(label: "label", with_panel: true, wrapper_arguments: { m: 2, classes: "custom-class" })) do |component|
+      component.tab(selected: true) do |t|
+        t.panel { "Panel 1" }
+        t.text { "Tab 1" }
+      end
+    end
+
+    assert_selector("tab-container.m-2.custom-class")
+  end
 end

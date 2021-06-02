@@ -20,10 +20,10 @@ module Primer
       with_panel ? :div : :nav
     end
 
-    def wrapper
+    def wrapper(**system_arguments)
       return yield unless @with_panel
 
-      render Primer::TabContainerComponent.new do
+      render Primer::TabContainerComponent.new(**system_arguments) do
         yield
       end
     end
