@@ -6,7 +6,7 @@ module Primer
   # @accessibility Add any accessibility considerations
   class Layout < Primer::Component
     CONTAINER_DEFAULT = :full
-    CONTAINER_OPTIONS = [:full, :xl, :lg, :md].freeze
+    CONTAINER_OPTIONS = [CONTAINER_DEFAULT, :xl, :lg, :md].freeze
 
     DENSITY_DEFAULT = :none
     DENSITY_MAPPINGS = {
