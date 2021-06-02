@@ -24,9 +24,13 @@
 
 * Don't commit auto-generated component previews.
 
-### Misc
+    *Kate Higa*
 
 * Provide linters for component migrations.
+
+    *Manuel Puyol*
+
+* Update docs to accept multiline descriptions.
 
     *Manuel Puyol*
 
