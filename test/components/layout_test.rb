@@ -70,7 +70,7 @@ class PrimerLayoutTest < Minitest::Test
   end
 
   def test_divider
-    render_inline(Primer::Layout.new(divider: true)) do |c|
+    render_inline(Primer::Layout.new(with_divider: true)) do |c|
       c.main { "Main" }
       c.sidebar { "Sidebar" }
     end
@@ -144,7 +144,7 @@ class PrimerLayoutTest < Minitest::Test
   end
 
   def test_divider_flow_row_variant
-    render_inline(Primer::Layout.new(divider: true, divider_flow_row_variant: :shallow)) do |c|
+    render_inline(Primer::Layout.new(with_divider: true, divider_flow_row_variant: :shallow)) do |c|
       c.main { "Main" }
       c.sidebar { "Sidebar" }
     end

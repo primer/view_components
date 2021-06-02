@@ -1,7 +1,7 @@
 <%= wrapper do %>
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
     <%= main %>
-    <% if @divider %><div class="<%= @divider_classes %>"></div><% end %>
+    <% if @with_divider %><div class="<%= @divider_classes %>"></div><% end %>
     <%= sidebar %>
   <% end %>
 <% end %>

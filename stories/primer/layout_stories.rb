@@ -13,7 +13,7 @@ class Primer::LayoutStories < ViewComponent::Storybook::Stories
       select(:sidebar_placement, Primer::Layout::SIDEBAR_PLACEMENT_OPTIONS, Primer::Layout::SIDEBAR_PLACEMENT_DEFAULT)
       select(:sidebar_flow_row_placement, Primer::Layout::SIDEBAR_FLOW_ROW_PLACEMENT_OPTIONS, Primer::Layout::SIDEBAR_FLOW_ROW_PLACEMENT_DEFAULT)
       select(:main_width, Primer::Layout::MAIN_WIDTH_OPTIONS, Primer::Layout::MAIN_WIDTH_DEFAULT)
-      divider false
+      with_divider false
       select(:divider_flow_row_variant, Primer::Layout::DIVIDER_FLOW_ROW_VARIANT_OPTIONS, Primer::Layout::DIVIDER_FLOW_ROW_VARIANT_DEFAULT)
     end
 

@@ -86,22 +86,22 @@ module Primer
     #
     # @example With divider
     #
-    #   <%= render(Primer::Layout.new(divider: true)) do |c| %>
+    #   <%= render(Primer::Layout.new(with_divider: true)) do |c| %>
     #     <% c.main(border: true) { "Main" } %>
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
     #
     # @example Divider variants
     #
-    #   <%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :visible)) do |c| %>
+    #   <%= render(Primer::Layout.new(with_divider: true, divider_flow_row_variant: :visible)) do |c| %>
     #     <% c.main(border: true) { "Main" } %>
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :hidden, mt: 5)) do |c| %>
+    #   <%= render(Primer::Layout.new(with_divider: true, divider_flow_row_variant: :hidden, mt: 5)) do |c| %>
     #     <% c.main(border: true) { "Main" } %>
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
-    #   <%= render(Primer::Layout.new(divider: true, divider_flow_row_variant: :shallow, mt: 5)) do |c| %>
+    #   <%= render(Primer::Layout.new(with_divider: true, divider_flow_row_variant: :shallow, mt: 5)) do |c| %>
     #     <% c.main(border: true) { "Main" } %>
     #     <% c.sidebar(border: true) { "Sidebar" } %>
     #   <% end %>
@@ -258,7 +258,7 @@ module Primer
     # @param sidebar_placement [Symbol] <%= one_of(Primer::Layout::SIDEBAR_PLACEMENT_OPTIONS) %>
     # @param sidebar_flow_row_placement [Symbol] Sidebar placement when `Layout` is flowing as row. <%= one_of(Primer::Layout::SIDEBAR_FLOW_ROW_PLACEMENT_OPTIONS) %>
     # @param main_width [Symbol] <%= one_of(Primer::Layout::MAIN_WIDTH_OPTIONS) %>
-    # @param divider [Boolean] Wether or not to add a divider between `main` and `sidebar`.
+    # @param with_divider [Boolean] Wether or not to add a divider between `main` and `sidebar`.
     # @param divider_flow_row_variant [Symbol] Variants for the divider when `Layout` is flowing as row. <%= one_of(Primer::Layout::DIVIDER_FLOW_ROW_VARIANT_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
@@ -270,12 +270,12 @@ module Primer
       sidebar_placement: SIDEBAR_PLACEMENT_DEFAULT,
       sidebar_flow_row_placement: SIDEBAR_FLOW_ROW_PLACEMENT_DEFAULT,
       main_width: MAIN_WIDTH_DEFAULT,
-      divider: false,
+      with_divider: false,
       divider_flow_row_variant: DIVIDER_FLOW_ROW_VARIANT_DEFAULT,
       **system_arguments
     )
       @container = container
-      @divider = divider
+      @with_divider = with_divider
       @sidebar_placement = fetch_or_fallback(SIDEBAR_PLACEMENT_OPTIONS, sidebar_placement, SIDEBAR_PLACEMENT_DEFAULT)
       @sidebar_flow_row_placement = fetch_or_fallback(SIDEBAR_FLOW_ROW_PLACEMENT_OPTIONS, sidebar_flow_row_placement, SIDEBAR_FLOW_ROW_PLACEMENT_DEFAULT)
       @main_width = fetch_or_fallback(MAIN_WIDTH_OPTIONS, main_width, MAIN_WIDTH_DEFAULT)
@@ -296,7 +296,7 @@ module Primer
         SIDEBAR_WIDTH_MAPPINGS[fetch_or_fallback(SIDEBAR_WIDTH_OPTIONS, sidebar_width, SIDEBAR_WIDTH_DEFAULT)],
         GUTTER_MAPPINGS[fetch_or_fallback(GUTTER_OPTIONS, gutter, GUTTER_DEFAULT)],
         FLOW_ROW_UNTIL_MAPPINGS[fetch_or_fallback(FLOW_ROW_UNTIL_OPTIONS, flow_row_until, FLOW_ROW_UNTIL_DEFAULT)],
-        "Layout--divided" => divider
+        "Layout--divided" => with_divider
       )
     end
 
