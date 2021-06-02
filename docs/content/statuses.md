@@ -11,7 +11,7 @@ Each component is assigned a status for its maturity level:
 | `Stable`       | Usage expected.                                                        |
 | `Deprecated`   | Usage not allowed. May be removed at any time.                         |
 
-We expect many components to move from alpha to beta and from beta to stable soon. Feel free to watch for releases in the [repo](https://github.com/primer/view_components).
+We expect many components to move from alpha to beta and from beta to stable soon. Watch for releases in the [repo](https://github.com/primer/view_components).
 
 You can also see component status at a glance on [this project board](https://github.com/primer/view_components/projects/3).
 
