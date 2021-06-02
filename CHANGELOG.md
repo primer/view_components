@@ -18,6 +18,10 @@
 
     *Manuel Puyol*
 
+* Allow customizing `TabContainer` when using `TabNav` and `UnderlineNav` components.
+
+    *Manuel Puyol*
+
 ### Breaking changes
 
 * Renames:
@@ -35,6 +39,10 @@
     *Manuel Puyol*
 
 ### Misc
+
+* Raise an error if `class` is used as a system argument.
+
+    *Manuel Puyol*
 
 * Don't commit auto-generated component previews.
 

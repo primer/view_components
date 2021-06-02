@@ -116,14 +116,30 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
+    # @example Customizing the body
+    #   <%= render(Primer::UnderlineNavComponent.new(label: "Default", body_arguments: { tag: :ul, classes: "custom-class", border: true, border_color: :info })) do |c| %>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(href: "#") { "Tab 2" } %>
+    #     <% c.tab(href: "#") { "Tab 3" } %>
+    #   <% end %>
+    #
+    # @example Customizing the wrapper
+    #   <%= render(Primer::UnderlineNavComponent.new(label: "Default", wrapper_arguments: { classes: "custom-class", border: true, border_color: :info })) do |c| %>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(href: "#") { "Tab 2" } %>
+    #     <% c.tab(href: "#") { "Tab 3" } %>
+    #   <% end %>
+    #
     # @param label [String] The `aria-label` on top level `<nav>` element.
     # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
     # @param align [Symbol] <%= one_of(Primer::UnderlineNavComponent::ALIGN_OPTIONS) %> - Defaults to <%= Primer::UnderlineNavComponent::ALIGN_DEFAULT %>
     # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
+    # @param wrapper_arguments [Hash] <%= link_to_system_arguments_docs %> for the `TabContainer` wrapper. Only applies if `with_panel` is `true`.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(label:, with_panel: false, align: ALIGN_DEFAULT, body_arguments: { tag: BODY_TAG_DEFAULT }, **system_arguments)
+    def initialize(label:, with_panel: false, align: ALIGN_DEFAULT, body_arguments: { tag: BODY_TAG_DEFAULT }, wrapper_arguments: {}, **system_arguments)
       @with_panel = with_panel
       @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
+      @wrapper_arguments = wrapper_arguments
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = navigation_tag(with_panel)
