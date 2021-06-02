@@ -70,12 +70,18 @@ module Primer
     # The layout's main content.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_one :main, ->(**system_arguments) { Primer::Layout::Main.new(width: @main_width, **system_arguments) }
+    renders_one :main, lambda { |**system_arguments|
+      @first_slot ||= :main
+
+      Primer::Layout::Main.new(width: @main_width, **system_arguments)
+    }
 
     # The layout's sidebar.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :sidebar, lambda { |**system_arguments|
+      @first_slot ||= :sidebar
+
       system_arguments[:tag] = :div
       system_arguments[:classes] = class_names(
         "Layout-sidebar",
@@ -161,9 +167,9 @@ module Primer
     #   @description
     #     Sets the sidebar width. The width is predetermined according to the breakpoint instead of it being percentage-based.
     #
-    #     - default: [md: 256px, lg: 296px, xl: 320px]
-    #     - narrow: [md: 240px, lg: 256px, xl: 296px]
-    #     - wide: [md: 296px, lg: 320px, xl: 344px]
+    #     - `default`: [md: 256px, lg: 296px, xl: 320px]
+    #     - `narrow`: [md: 240px, lg: 256px, xl: 296px]
+    #     - `wide`: [md: 296px, lg: 320px, xl: 344px]
     #
     #     When flowing as a row, `Sidebar` takes the full width.
     #
@@ -214,10 +220,10 @@ module Primer
     #   @description
     #     How much spacing to include between `Main` and `Sidebar` when flowing as columns.
     #
-    #     - :default: [md: 16px, lg: 24px]
-    #     - :none: 0px
-    #     - :condensed 16px
-    #     - :spacious [md: 16px, lg: 32px, xl: 40px]
+    #     - `default`: [md: 16px, lg: 24px]
+    #     - `none`: 0px
+    #     - `condensed` 16px
+    #     - `spacious` [md: 16px, lg: 32px, xl: 40px]
     #
     #   @code
     #     <%= render(Primer::Layout.new(gutter: :default)) do |c| %>
@@ -329,6 +335,23 @@ module Primer
     #       <% c.sidebar(border: true) { "Sidebar" } %>
     #     <% end %>
     #
+    # @example HTML ordering
+    #
+    #   @description
+    #     The order in which slots are called matter to define their order in the resulting HTML.
+    #     This affects keyboard navigation, since the keyboard focus follows the element order.
+    #     The resulting visual position is not affected.
+    #
+    #   @code
+    #     <%= render(Primer::Layout.new) do |c| %>
+    #       <% c.main(border: true) { "Main first" } %>
+    #       <% c.sidebar(border: true) { "Sidebar second" } %>
+    #     <% end %>
+    #     <%= render(Primer::Layout.new(mt: 3)) do |c| %>
+    #       <% c.sidebar(border: true) { "Sidebar first" } %>
+    #       <% c.main(border: true) { "Main second" } %>
+    #     <% end %>
+    #
     # @param density [Symbol] Margin around the `Layout`.
     # @param container [Symbol] Container to wrap the `Layout` in. <%= one_of(Primer::Layout::CONTAINER_OPTIONS) %>
     # @param gutter [Symbol] Space between `main` and `sidebar`. <%= one_of(Primer::Layout::GUTTER_OPTIONS) %>
@@ -358,6 +381,7 @@ module Primer
       @sidebar_placement = fetch_or_fallback(SIDEBAR_PLACEMENT_OPTIONS, sidebar_placement, SIDEBAR_PLACEMENT_DEFAULT)
       @sidebar_flow_row_placement = fetch_or_fallback(SIDEBAR_FLOW_ROW_PLACEMENT_OPTIONS, sidebar_flow_row_placement, SIDEBAR_FLOW_ROW_PLACEMENT_DEFAULT)
       @main_width = fetch_or_fallback(MAIN_WIDTH_OPTIONS, main_width, MAIN_WIDTH_DEFAULT)
+      @first_slot = nil
 
       @divider_classes = class_names(
         "Layout-divider",
@@ -400,6 +424,7 @@ module Primer
     class Main < Primer::Component
       def initialize(width:, **system_arguments)
         @width = width
+
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
         @system_arguments[:classes] = class_names(

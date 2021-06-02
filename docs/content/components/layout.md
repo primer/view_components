@@ -13,7 +13,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 `Layout` can be used for simple two-column pages, or it can be nested to provide flexible 3-column experiences.
  On smaller screens, `Layout` uses vertically stacked rows to display content.
 
-Layout flows as both column, when there's enough horizontal space to render both `Main` and `Sidebar`side-by-side (on a desktop of tablet device, per instance);
+`Layout` flows as both column, when there's enough horizontal space to render both `Main` and `Sidebar`side-by-side (on a desktop of tablet device, per instance);
 or it flows as a row, when `Main` and `Sidebar` are stacked vertically (e.g. on a mobile device).
 `Layout` should always work in any screen size.
 
@@ -26,7 +26,7 @@ Keyboard navigation follows the markup order. Decide carefully how the focus ord
 
 ### Default
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>" />
 
 ```erb
 
@@ -40,7 +40,7 @@ Keyboard navigation follows the markup order. Decide carefully how the focus ord
 
 If `gutter` is present, its spacing is presented before and after the divider.
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--divided m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>    <div class='Layout-divider'></div>    <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--divided m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>    <div class='Layout-divider'></div>    <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>" />
 
 ```erb
 <%= render(Primer::Layout.new(with_divider: true)) do |c| %>
@@ -51,7 +51,7 @@ If `gutter` is present, its spacing is presented before and after the divider.
 
 ### Divider variants
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--divided m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>    <div class='Layout-divider'></div>    <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--divided mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>    <div class='Layout-divider Layout-divider--flowRow-hidden'></div>    <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--divided mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>    <div class='Layout-divider Layout-divider--flowRow-shallow'></div>    <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--divided m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>    <div class='Layout-divider'></div>    <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--divided mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>    <div class='Layout-divider Layout-divider--flowRow-hidden'></div>    <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--divided mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>    <div class='Layout-divider Layout-divider--flowRow-shallow'></div>    <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>" />
 
 ```erb
 
@@ -73,7 +73,7 @@ If `gutter` is present, its spacing is presented before and after the divider.
 
 Use `start` for sidebars that manipulate local navigation, while right-aligned `end` is useful for metadata and other auxiliary information.
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-end Layout--sidebarPosition-flowRow-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-end Layout--sidebarPosition-flowRow-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>" />
 
 ```erb
 <%= render(Primer::Layout.new(sidebar_placement: :start)) do |c| %>
@@ -94,7 +94,7 @@ When `hidden`, make sure the experience is not degraded on smaller screens, and 
 For instance, the user may not see a Settings navigation sidebar when drilled down on a page, but they can still navigate to the Settings
 landing page to interact with the local navigation.
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-end mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-none mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-end mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-none mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>" />
 
 ```erb
 <%= render(Primer::Layout.new(sidebar_flow_row_placement: :start)) do |c| %>
@@ -115,13 +115,13 @@ landing page to interact with the local navigation.
 
 Sets the sidebar width. The width is predetermined according to the breakpoint instead of it being percentage-based.
 
-- default: [md: 256px, lg: 296px, xl: 320px]
-- narrow: [md: 240px, lg: 256px, xl: 296px]
-- wide: [md: 296px, lg: 320px, xl: 344px]
+- `default`: [md: 256px, lg: 296px, xl: 320px]
+- `narrow`: [md: 240px, lg: 256px, xl: 296px]
+- `wide`: [md: 296px, lg: 320px, xl: 344px]
 
 When flowing as a row, `Sidebar` takes the full width.
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--sidebar-narrow mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--sidebar-wide mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--sidebar-narrow mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--sidebar-wide mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>" />
 
 ```erb
 <%= render(Primer::Layout.new(sidebar_width: :default)) do |c| %>
@@ -147,7 +147,7 @@ Use smaller maximum widths in the main column to facilitate interface scanning a
 
 When flowing as a row, `Main` takes the full width.
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-md'><div data-view-component='true' class='container-md'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-lg'><div data-view-component='true' class='container-lg'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-xl'><div data-view-component='true' class='container-xl'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-md'><div data-view-component='true' class='container-md'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-lg'><div data-view-component='true' class='container-lg'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'><div data-view-component='true' class='Layout-main-centered-xl'><div data-view-component='true' class='container-xl'>Main</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>" />
 
 ```erb
 <%= render(Primer::Layout.new(main_width: :full)) do |c| %>
@@ -172,12 +172,12 @@ When flowing as a row, `Main` takes the full width.
 
 How much spacing to include between `Main` and `Sidebar` when flowing as columns.
 
-- :default: [md: 16px, lg: 24px]
-- :none: 0px
-- :condensed 16px
-- :spacious [md: 16px, lg: 32px, xl: 40px]
+- `default`: [md: 16px, lg: 24px]
+- `none`: 0px
+- `condensed` 16px
+- `spacious` [md: 16px, lg: 32px, xl: 40px]
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--gutter-none mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--gutter-condensed mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--gutter-spacious mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--gutter-none mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--gutter-condensed mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--gutter-spacious mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>" />
 
 ```erb
 <%= render(Primer::Layout.new(gutter: :default)) do |c| %>
@@ -200,12 +200,12 @@ How much spacing to include between `Main` and `Sidebar` when flowing as columns
 
 ### Using containers
 
-If `full`, the Layout component is applied edge-to-edge.
+If `full`, the `Layout` component is applied edge-to-edge.
 Otherwise, the output is wrapped on a `container-**` class that centers `Layout` on the page and limits its maximum width.
 See [containers reference](https://primer.style/css/objects/grid#containers) for more details.
 When flowing as a row, `Container` always takes the full width.
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div><div data-view-component='true' class='container-xl'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div></div><div data-view-component='true' class='container-lg'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div></div><div data-view-component='true' class='container-md'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div><div data-view-component='true' class='container-xl'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div></div><div data-view-component='true' class='container-lg'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div></div><div data-view-component='true' class='container-md'>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div></div>" />
 
 ```erb
 <%= render(Primer::Layout.new(container: :full)) do |c| %>
@@ -230,7 +230,7 @@ When flowing as a row, `Container` always takes the full width.
 
 You can specify when the `Layout` should change from column into row.
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--flowRow-until-md mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--flowRow-until-lg mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--flowRow-until-md mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start Layout--flowRow-until-lg mt-5 m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>" />
 
 ```erb
 <%= render(Primer::Layout.new(flow_row_until: :sm)) do |c| %>
@@ -249,7 +249,7 @@ You can specify when the `Layout` should change from column into row.
 
 ### Density
 
-Sets the outside margin of the Layout component.
+Sets the outside margin of the `Layout` component.
 - `none`: 0
 - `compact`: 16px
 - `normal`: [sm: 16px, lg: 24px]
@@ -259,7 +259,7 @@ Use a value other than `none` when `Layout` is a top-level container for the ent
 
 When flowing as a row, `margin` always uses `16px` if not set to `none`.
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-3'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-sm-3 m-lg-4'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-sm-3 m-lg-4 m-xl-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-3'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-sm-3 m-lg-4'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-sm-3 m-lg-4 m-xl-5'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>" />
 
 ```erb
 <%= render(Primer::Layout.new(density: :none)) do |c| %>
@@ -284,7 +284,7 @@ When flowing as a row, `margin` always uses `16px` if not set to `none`.
 
 `Layouts` can be nested to create 3-column pages.
 
-<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>      <div data-view-component='true' class='Layout Layout--sidebarPosition-end Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Metadata</div></div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div></div>" />
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>      <div data-view-component='true' class='Layout Layout--sidebarPosition-end Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main</div>        <div data-view-component='true' class='Layout-sidebar border'>Metadata</div>    </div></div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar</div>    </div>" />
 
 ```erb
 <%= render(Primer::Layout.new) do |c| %>
@@ -295,6 +295,25 @@ When flowing as a row, `margin` always uses `16px` if not set to `none`.
     <% end %>
   <% end %>
   <% c.sidebar(border: true) { "Sidebar" } %>
+<% end %>
+```
+
+### HTML ordering
+
+The order in which slots are called matter to define their order in the resulting HTML.
+This affects keyboard navigation, since the keyboard focus follows the element order.
+The resulting visual position is not affected.
+
+<Example src="  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start m-0'>    <div data-view-component='true' class='Layout-main border'>Main first</div>        <div data-view-component='true' class='Layout-sidebar border'>Sidebar second</div>    </div>  <div data-view-component='true' class='Layout Layout--sidebarPosition-start Layout--sidebarPosition-flowRow-start mt-3 m-0'>            <div data-view-component='true' class='Layout-sidebar border'>Sidebar first</div>    <div data-view-component='true' class='Layout-main border'>Main second</div></div>" />
+
+```erb
+<%= render(Primer::Layout.new) do |c| %>
+  <% c.main(border: true) { "Main first" } %>
+  <% c.sidebar(border: true) { "Sidebar second" } %>
+<% end %>
+<%= render(Primer::Layout.new(mt: 3)) do |c| %>
+  <% c.sidebar(border: true) { "Sidebar first" } %>
+  <% c.main(border: true) { "Main second" } %>
 <% end %>
 ```
 

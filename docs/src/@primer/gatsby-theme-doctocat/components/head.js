@@ -18,7 +18,7 @@ function Head(props) {
 
   let primerViewComponentsSrc
 
-  if(process.env.NODE_ENV == 'development') {
+  if(process.env.NODE_ENV === 'development') {
     primerViewComponentsSrc = "http://localhost:4000/assets/primer_view_components.js"
   } else {
     primerViewComponentsSrc = "https://unpkg.com/@primer/view-components@latest/app/assets/javascripts/primer_view_components.js"
