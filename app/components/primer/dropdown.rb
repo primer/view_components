@@ -23,97 +23,102 @@ module Primer
     renders_one :menu, "Primer::Dropdown::Menu"
 
     # @example Default
-    #   <div>
-    #     <%= render(Primer::Dropdown.new) do |c| %>
-    #       <% c.button do %>
-    #         Dropdown
-    #       <% end %>
-    #
-    #       <%= c.menu(header: "Options") do |menu|
-    #         menu.item { "Item 1" }
-    #         menu.item { "Item 2" }
-    #         menu.item(divider: true)
-    #         menu.item { "Item 3" }
-    #         menu.item { "Item 4" }
-    #       end %>
+    #   <%= render(Primer::Dropdown.new) do |c| %>
+    #     <% c.button do %>
+    #       Dropdown
     #     <% end %>
-    #   </div>
+    #
+    #     <%= c.menu(header: "Options") do |menu|
+    #       menu.item { "Item 1" }
+    #       menu.item { "Item 2" }
+    #       menu.item(divider: true)
+    #       menu.item { "Item 3" }
+    #       menu.item { "Item 4" }
+    #     end %>
+    #   <% end %>
     #
     # @example With direction
-    #   <div>
-    #     <%= render(Primer::Dropdown.new(display: :inline_block)) do |c| %>
-    #       <% c.button do %>
-    #         Dropdown
-    #       <% end %>
-    #
-    #       <%= c.menu(header: "Options", direction: :s) do |menu|
-    #         menu.item { "Item 1" }
-    #         menu.item { "Item 2" }
-    #         menu.item(divider: true)
-    #         menu.item { "Item 3" }
-    #         menu.item { "Item 4" }
-    #       end %>
+    #   <%= render(Primer::Dropdown.new(display: :inline_block)) do |c| %>
+    #     <% c.button do %>
+    #       Dropdown
     #     <% end %>
-    #   </div>
+    #
+    #     <%= c.menu(header: "Options", direction: :s) do |menu|
+    #       menu.item { "Item 1" }
+    #       menu.item { "Item 2" }
+    #       menu.item(divider: true)
+    #       menu.item { "Item 3" }
+    #       menu.item { "Item 4" }
+    #     end %>
+    #   <% end %>
+    #
+    # @example Showing the button caret
+    #   <%= render(Primer::Dropdown.new(show_caret: true)) do |c| %>
+    #     <% c.button do %>
+    #       Dropdown
+    #     <% end %>
+    #
+    #     <%= c.menu(header: "Options") do |menu|
+    #       menu.item(tag: :summary) { "Item 1" }
+    #       menu.item(tag: :button) { "Item 2" }
+    #       menu.item(divider: true)
+    #       menu.item(classes: "custom-class") { "Item 3" }
+    #       menu.item { "Item 4" }
+    #     end %>
+    #   <% end %>
     #
     # @example Customizing the button
-    #   <div>
-    #     <%= render(Primer::Dropdown.new) do |c| %>
-    #       <% c.button(scheme: :primary, variant: :small) do %>
-    #         Dropdown
-    #       <% end %>
-    #
-    #       <%= c.menu(header: "Options") do |menu|
-    #         menu.item { "Item 1" }
-    #         menu.item { "Item 2" }
-    #         menu.item(divider: true)
-    #         menu.item { "Item 3" }
-    #         menu.item { "Item 4" }
-    #       end %>
+    #   <%= render(Primer::Dropdown.new) do |c| %>
+    #     <% c.button(scheme: :primary, variant: :small) do %>
+    #       Dropdown
     #     <% end %>
-    #   </div>
+    #
+    #     <%= c.menu(header: "Options") do |menu|
+    #       menu.item { "Item 1" }
+    #       menu.item { "Item 2" }
+    #       menu.item(divider: true)
+    #       menu.item { "Item 3" }
+    #       menu.item { "Item 4" }
+    #     end %>
+    #   <% end %>
     #
     # @example Menu as list
-    #   <div>
-    #     <%= render(Primer::Dropdown.new) do |c| %>
-    #       <% c.button do %>
-    #         Dropdown
-    #       <% end %>
-    #
-    #       <%= c.menu(as: :list, header: "Options") do |menu|
-    #         menu.item { "Item 1" }
-    #         menu.item { "Item 2" }
-    #         menu.item(divider: true)
-    #         menu.item { "Item 3" }
-    #         menu.item { "Item 4" }
-    #       end %>
+    #   <%= render(Primer::Dropdown.new) do |c| %>
+    #     <% c.button do %>
+    #       Dropdown
     #     <% end %>
-    #   </div>
+    #
+    #     <%= c.menu(as: :list, header: "Options") do |menu|
+    #       menu.item { "Item 1" }
+    #       menu.item { "Item 2" }
+    #       menu.item(divider: true)
+    #       menu.item { "Item 3" }
+    #       menu.item { "Item 4" }
+    #     end %>
+    #   <% end %>
     #
     # @example Customizing menu items
-    #   <div>
-    #     <%= render(Primer::Dropdown.new) do |c| %>
-    #       <% c.button do %>
-    #         Dropdown
-    #       <% end %>
-    #
-    #       <%= c.menu(header: "Options") do |menu|
-    #         menu.item(tag: :summary) { "Item 1" }
-    #         menu.item(tag: :button) { "Item 2" }
-    #         menu.item(divider: true)
-    #         menu.item(classes: "custom-class") { "Item 3" }
-    #         menu.item { "Item 4" }
-    #       end %>
+    #   <%= render(Primer::Dropdown.new) do |c| %>
+    #     <% c.button do %>
+    #       Dropdown
     #     <% end %>
-    #   </div>
+    #
+    #     <%= c.menu(header: "Options") do |menu|
+    #       menu.item(tag: :summary) { "Item 1" }
+    #       menu.item(tag: :button) { "Item 2" }
+    #       menu.item(divider: true)
+    #       menu.item(classes: "custom-class") { "Item 3" }
+    #       menu.item { "Item 4" }
+    #     end %>
+    #   <% end %>
     #
     # @param overlay [Symbol] <%= one_of(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys) %>
-    # @param reset [Boolean] Whether to hide the default caret on the button
+    # @param show_caret [Boolean] Whether to hide the caret on the button
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(overlay: :default, reset: true, **system_arguments)
+    def initialize(overlay: :default, show_caret: false, **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:overlay] = overlay
-      @system_arguments[:reset] = reset
+      @system_arguments[:reset] = !show_caret
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "dropdown"

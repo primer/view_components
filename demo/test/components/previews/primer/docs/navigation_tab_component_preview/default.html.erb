@@ -1,0 +1,6 @@
+<%= render(Primer::Navigation::TabComponent.new(selected: true)) do |c| %>
+  <% c.text { "Selected" } %>
+<% end %>
+<%= render(Primer::Navigation::TabComponent.new) do |c| %>
+  <% c.text { "Not selected" } %>
+<% end %>

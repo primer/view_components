@@ -458,10 +458,10 @@
     type: Symbol
     default: "`:default`"
     description: One of `:none`, `:default`, or `:dark`.
-  - name: reset
+  - name: show_caret
     type: Boolean
-    default: "`true`"
-    description: Whether to hide the default caret on the button
+    default: "`false`"
+    description: Whether to hide the caret on the button
   - name: system_arguments
     type: Hash
     default: N/A

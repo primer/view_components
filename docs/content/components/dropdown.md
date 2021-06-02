@@ -16,112 +16,122 @@ They're great for instances where you don't need the full power (and code) of th
 
 ### Default
 
-<Example src="<div>  <details data-view-component='true' class='dropdown details-overlay details-reset'>  <summary role='button' data-view-component='true' class='btn'>              Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 1</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 2</a>      <a role='separator' data-view-component='true' class='dropdown-divider'></a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 3</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a></details-menu></div></details></div>" />
+<Example src="<details data-view-component='true' class='dropdown details-overlay details-reset'>  <summary role='button' data-view-component='true' class='btn'>            Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 1</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 2</a>      <a role='separator' data-view-component='true' class='dropdown-divider'></a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 3</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a></details-menu></div></details>" />
 
 ```erb
-<div>
-  <%= render(Primer::Dropdown.new) do |c| %>
-    <% c.summary do %>
-      Dropdown
-    <% end %>
-
-    <%= c.menu(header: "Options") do |menu|
-      menu.item { "Item 1" }
-      menu.item { "Item 2" }
-      menu.item(divider: true)
-      menu.item { "Item 3" }
-      menu.item { "Item 4" }
-    end %>
+<%= render(Primer::Dropdown.new) do |c| %>
+  <% c.button do %>
+    Dropdown
   <% end %>
-</div>
+
+  <%= c.menu(header: "Options") do |menu|
+    menu.item { "Item 1" }
+    menu.item { "Item 2" }
+    menu.item(divider: true)
+    menu.item { "Item 3" }
+    menu.item { "Item 4" }
+  end %>
+<% end %>
 ```
 
 ### With direction
 
-<Example src="<div>  <details data-view-component='true' class='dropdown details-overlay details-reset d-inline-block'>  <summary role='button' data-view-component='true' class='btn'>              Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-s'>    <div class='dropdown-header'>      Options    </div>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 1</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 2</a>      <a role='separator' data-view-component='true' class='dropdown-divider'></a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 3</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a></details-menu></div></details></div>" />
+<Example src="<details data-view-component='true' class='dropdown details-overlay details-reset d-inline-block'>  <summary role='button' data-view-component='true' class='btn'>            Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-s'>    <div class='dropdown-header'>      Options    </div>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 1</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 2</a>      <a role='separator' data-view-component='true' class='dropdown-divider'></a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 3</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a></details-menu></div></details>" />
 
 ```erb
-<div>
-  <%= render(Primer::Dropdown.new(display: :inline_block)) do |c| %>
-    <% c.summary do %>
-      Dropdown
-    <% end %>
-
-    <%= c.menu(header: "Options", direction: :s) do |menu|
-      menu.item { "Item 1" }
-      menu.item { "Item 2" }
-      menu.item(divider: true)
-      menu.item { "Item 3" }
-      menu.item { "Item 4" }
-    end %>
+<%= render(Primer::Dropdown.new(display: :inline_block)) do |c| %>
+  <% c.button do %>
+    Dropdown
   <% end %>
-</div>
+
+  <%= c.menu(header: "Options", direction: :s) do |menu|
+    menu.item { "Item 1" }
+    menu.item { "Item 2" }
+    menu.item(divider: true)
+    menu.item { "Item 3" }
+    menu.item { "Item 4" }
+  end %>
+<% end %>
+```
+
+### Showing the button caret
+
+<Example src="<details show_caret='true' data-view-component='true' class='dropdown details-overlay details-reset'>  <summary role='button' data-view-component='true' class='btn'>            Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>      <summary role='button' data-view-component='true' class='dropdown-item btn-link'>    Item 1  </summary>      <button role='menuitem' type='button' data-view-component='true' class='dropdown-item btn-link'>    Item 2  </button>      <a role='separator' data-view-component='true' class='dropdown-divider'></a>      <a role='menuitem' data-view-component='true' class='custom-class dropdown-item'>Item 3</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a></details-menu></div></details>" />
+
+```erb
+<%= render(Primer::Dropdown.new(show_caret: true)) do |c| %>
+  <% c.button do %>
+    Dropdown
+  <% end %>
+
+  <%= c.menu(header: "Options") do |menu|
+    menu.item(tag: :summary) { "Item 1" }
+    menu.item(tag: :button) { "Item 2" }
+    menu.item(divider: true)
+    menu.item(classes: "custom-class") { "Item 3" }
+    menu.item { "Item 4" }
+  end %>
+<% end %>
 ```
 
 ### Customizing the button
 
-<Example src="<div>  <details data-view-component='true' class='dropdown details-overlay details-reset'>  <summary role='button' data-view-component='true' class='btn-primary btn-sm btn'>              Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 1</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 2</a>      <a role='separator' data-view-component='true' class='dropdown-divider'></a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 3</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a></details-menu></div></details></div>" />
+<Example src="<details data-view-component='true' class='dropdown details-overlay details-reset'>  <summary role='button' data-view-component='true' class='btn-primary btn-sm btn'>            Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 1</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 2</a>      <a role='separator' data-view-component='true' class='dropdown-divider'></a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 3</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a></details-menu></div></details>" />
 
 ```erb
-<div>
-  <%= render(Primer::Dropdown.new) do |c| %>
-    <% c.summary(scheme: :primary, variant: :small) do %>
-      Dropdown
-    <% end %>
-
-    <%= c.menu(header: "Options") do |menu|
-      menu.item { "Item 1" }
-      menu.item { "Item 2" }
-      menu.item(divider: true)
-      menu.item { "Item 3" }
-      menu.item { "Item 4" }
-    end %>
+<%= render(Primer::Dropdown.new) do |c| %>
+  <% c.button(scheme: :primary, variant: :small) do %>
+    Dropdown
   <% end %>
-</div>
+
+  <%= c.menu(header: "Options") do |menu|
+    menu.item { "Item 1" }
+    menu.item { "Item 2" }
+    menu.item(divider: true)
+    menu.item { "Item 3" }
+    menu.item { "Item 4" }
+  end %>
+<% end %>
 ```
 
 ### Menu as list
 
-<Example src="<div>  <details data-view-component='true' class='dropdown details-overlay details-reset'>  <summary role='button' data-view-component='true' class='btn'>              Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>    <ul>          <li>            <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 1</a>          </li>          <li>            <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 2</a>          </li>          <li role='separator' data-view-component='true' class='dropdown-divider'></li>          <li>            <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 3</a>          </li>          <li>            <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a>          </li>    </ul></details-menu></div></details></div>" />
+<Example src="<details data-view-component='true' class='dropdown details-overlay details-reset'>  <summary role='button' data-view-component='true' class='btn'>            Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>    <ul>          <li>            <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 1</a>          </li>          <li>            <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 2</a>          </li>          <li role='separator' data-view-component='true' class='dropdown-divider'></li>          <li>            <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 3</a>          </li>          <li>            <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a>          </li>    </ul></details-menu></div></details>" />
 
 ```erb
-<div>
-  <%= render(Primer::Dropdown.new) do |c| %>
-    <% c.summary do %>
-      Dropdown
-    <% end %>
-
-    <%= c.menu(as: :list, header: "Options") do |menu|
-      menu.item { "Item 1" }
-      menu.item { "Item 2" }
-      menu.item(divider: true)
-      menu.item { "Item 3" }
-      menu.item { "Item 4" }
-    end %>
+<%= render(Primer::Dropdown.new) do |c| %>
+  <% c.button do %>
+    Dropdown
   <% end %>
-</div>
+
+  <%= c.menu(as: :list, header: "Options") do |menu|
+    menu.item { "Item 1" }
+    menu.item { "Item 2" }
+    menu.item(divider: true)
+    menu.item { "Item 3" }
+    menu.item { "Item 4" }
+  end %>
+<% end %>
 ```
 
 ### Customizing menu items
 
-<Example src="<div>  <details data-view-component='true' class='dropdown details-overlay details-reset'>  <summary role='button' data-view-component='true' class='btn'>              Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>      <summary role='button' data-view-component='true' class='dropdown-item btn-link'>    Item 1  </summary>      <button role='menuitem' type='button' data-view-component='true' class='dropdown-item btn-link'>    Item 2  </button>      <a role='separator' data-view-component='true' class='dropdown-divider'></a>      <a role='menuitem' data-view-component='true' class='custom-class dropdown-item'>Item 3</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a></details-menu></div></details></div>" />
+<Example src="<details data-view-component='true' class='dropdown details-overlay details-reset'>  <summary role='button' data-view-component='true' class='btn'>            Dropdown  </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>      <summary role='button' data-view-component='true' class='dropdown-item btn-link'>    Item 1  </summary>      <button role='menuitem' type='button' data-view-component='true' class='dropdown-item btn-link'>    Item 2  </button>      <a role='separator' data-view-component='true' class='dropdown-divider'></a>      <a role='menuitem' data-view-component='true' class='custom-class dropdown-item'>Item 3</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a></details-menu></div></details>" />
 
 ```erb
-<div>
-  <%= render(Primer::Dropdown.new) do |c| %>
-    <% c.summary do %>
-      Dropdown
-    <% end %>
-
-    <%= c.menu(header: "Options") do |menu|
-      menu.item(tag: :summary) { "Item 1" }
-      menu.item(tag: :button) { "Item 2" }
-      menu.item(divider: true)
-      menu.item(classes: "custom-class") { "Item 3" }
-      menu.item { "Item 4" }
-    end %>
+<%= render(Primer::Dropdown.new) do |c| %>
+  <% c.button do %>
+    Dropdown
   <% end %>
-</div>
+
+  <%= c.menu(header: "Options") do |menu|
+    menu.item(tag: :summary) { "Item 1" }
+    menu.item(tag: :button) { "Item 2" }
+    menu.item(divider: true)
+    menu.item(classes: "custom-class") { "Item 3" }
+    menu.item { "Item 4" }
+  end %>
+<% end %>
 ```
 
 ## Arguments
@@ -129,12 +139,12 @@ They're great for instances where you don't need the full power (and code) of th
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `overlay` | `Symbol` | `:default` | One of `:none`, `:default`, or `:dark`. |
-| `reset` | `Boolean` | `true` | Whether to hide the default caret on the button |
+| `show_caret` | `Boolean` | `false` | Whether to hide the caret on the button |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
 
-### `Summary`
+### `Button`
 
 Required trigger for the dropdown. Has the same arguments as [Button](/components/button),
 but it is locked as a `summary` tag.
