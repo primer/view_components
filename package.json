@@ -31,6 +31,7 @@
   "dependencies": {
     "@github/auto-complete-element": "^3.0.2",
     "@github/clipboard-copy-element": "^1.1.2",
+    "@github/details-menu-element": "^1.0.9",
     "@github/image-crop-element": "^5.0.0",
     "@github/tab-container-element": "^3.1.0",
     "@github/time-elements": "^3.1.2"
