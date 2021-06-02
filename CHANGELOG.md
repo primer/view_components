@@ -8,6 +8,10 @@
 
 ### New
 
+* Create new `Layout` component.
+
+    *Manuel Puyol*
+
 * Add `clearfix` and `container` system arguments.
 
     *Manuel Puyol*
@@ -15,6 +19,12 @@
 ### Updates
 
 * Promote `TabNav` component to beta.
+
+    *Manuel Puyol*
+
+### Deprecations
+
+* Deprecate `LayoutComponent` in favor of `Layout`.
 
     *Manuel Puyol*
 
