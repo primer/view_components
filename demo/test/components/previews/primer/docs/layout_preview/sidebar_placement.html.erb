@@ -1,9 +1,0 @@
-
-<%= render(Primer::Layout.new(sidebar_placement: :start)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.sidebar(border: true) { "Sidebar" } %>
-<% end %>
-<%= render(Primer::Layout.new(sidebar_placement: :end, mt: 5)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.sidebar(border: true) { "Sidebar" } %>
-<% end %>
