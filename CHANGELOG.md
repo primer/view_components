@@ -2,6 +2,12 @@
 
 ## main
 
+### New
+
+* Add `clearfix` and `container` system arguments.
+
+    *Manuel Puyol*
+
 ### Updates
 
 * Promote `TabNav` component to beta.
@@ -12,7 +18,17 @@
 
     *Manuel Puyol*
 
+### Breaking changes
+
+* Restrict `col` system arguments to only accept values between 1 and 12.
+
+    *Manuel Puyol*
+
 ### Misc
+
+* Don't commit auto-generated component previews.
+
+    *Kate Higa*
 
 * Provide linters for component migrations.
 

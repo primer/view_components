@@ -7,7 +7,7 @@ module Primer
     SPACING_KEYS = Primer::Classify::Spacing::KEYS
 
     # Keys where we can simply translate { key: value } into ".key-value"
-    CONCAT_KEYS = SPACING_KEYS + %i[hide position v float col text box_shadow].freeze
+    CONCAT_KEYS = SPACING_KEYS + %i[hide position v float text box_shadow].freeze
 
     INVALID_CLASS_NAME_PREFIXES =
       (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "box-shadow-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
@@ -22,9 +22,10 @@ module Primer
     BOX_SHADOW_KEY = :box_shadow
     VISIBILITY_KEY = :visibility
     ANIMATION_KEY = :animation
+    CONTAINER_KEY = :container
 
     BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
-    RESPONSIVE_KEYS = ([DISPLAY_KEY, :col, :float] + SPACING_KEYS + Primer::Classify::Flex::RESPONSIVE_KEYS).freeze
+    RESPONSIVE_KEYS = ([DISPLAY_KEY, :float, Primer::Classify::Grid::COL_KEY] + SPACING_KEYS + Primer::Classify::Flex::RESPONSIVE_KEYS).freeze
 
     BOOLEAN_MAPPINGS = {
       underline: {
@@ -84,6 +85,7 @@ module Primer
       TYPOGRAPHY_KEYS +
       TEXT_KEYS +
       Primer::Classify::Flex::KEYS +
+      Primer::Classify::Grid::KEYS +
       [
         BORDER_KEY,
         BORDER_COLOR_KEY,
@@ -97,7 +99,8 @@ module Primer
         HEIGHT_KEY,
         BOX_SHADOW_KEY,
         VISIBILITY_KEY,
-        ANIMATION_KEY
+        ANIMATION_KEY,
+        CONTAINER_KEY
       ]
     ).freeze
 
@@ -206,6 +209,8 @@ module Primer
           memo[:classes] << "rounded-#{val}"
         elsif Primer::Classify::Flex::KEYS.include?(key)
           memo[:classes] << Primer::Classify::Flex.classes(key, val, breakpoint)
+        elsif Primer::Classify::Grid::KEYS.include?(key)
+          memo[:classes] << Primer::Classify::Grid.classes(key, val, breakpoint)
         elsif key == WIDTH_KEY || key == HEIGHT_KEY
           if val == :fit
             memo[:classes] << "#{key}-#{val}"
