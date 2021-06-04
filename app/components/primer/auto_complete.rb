@@ -5,6 +5,7 @@ module Primer
   # input field. This list is populated by server search results.
   # @accessibility
   #   Always set an accessible label to help the user interact with the component.
+  #
   #   * Set the `label` slot to render a visible label.
   #   * If you must use a non-visible label, set `:"aria-label"` on `AutoComplete` and Primer
   #   will apply it to the correct elements. However, please note that a visible label should almost

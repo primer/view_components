@@ -123,7 +123,11 @@
     type: String
     default: N/A
     description: The route to query.
-  - name: id
+  - name: input_id
+    type: String
+    default: N/A
+    description: Id of the input element.
+  - name: list_id
     type: String
     default: N/A
     description: Id of the list element.
