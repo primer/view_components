@@ -819,8 +819,8 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: Text
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/text_component.rb
+- component: BetaText
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/text.rb
   parameters:
   - name: tag
     type: Symbol

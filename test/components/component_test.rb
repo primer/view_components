@@ -60,7 +60,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.heading { "Foo" } }],
     [Primer::TabContainerComponent, {}, proc { "Foo" }],
     [Primer::TabNavComponent, { label: "aria label" }, proc { |c| c.tab(title: "Foo", selected: true) }],
-    [Primer::TextComponent, {}],
+    [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],

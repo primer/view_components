@@ -5,7 +5,8 @@
 ### Breaking changes
 
 * Renames:
-  * `Primer::ButtonMarketing` to `Primer::Alpha::ButtonMarketing`.
+  * `Primer::ButtonMarketingComponent` to `Primer::Alpha::ButtonMarketing`.
+  * `Primer::TextComponent` to `Primer::Beta::Text`.
 
     *Manuel Puyol*
 
