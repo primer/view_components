@@ -2,12 +2,6 @@
 
 ## main
 
-### New
-
-* Add `clearfix` and `container` system arguments.
-
-    *Manuel Puyol*
-
 ### Updates
 
 * Promote `TabNav` component to beta.
@@ -15,10 +9,6 @@
     *Manuel Puyol*
 
 * Allow `Dropdown` menu items to be rendered outside a list.
-
-    *Manuel Puyol*
-
-* Allow customizing `TabContainer` when using `TabNav` and `UnderlineNav` components.
 
     *Manuel Puyol*
 
@@ -33,6 +23,27 @@
 * Removes `summary_classes` attribute in favor of the `summary` slot in `Dropdown`.
 
     *Manuel Puyol*
+
+## 0.0.43
+
+### New
+
+* Add `clearfix` and `container` system arguments.
+
+    *Manuel Puyol*
+
+### Updates
+
+* Promote `TabNav` component to beta.
+
+    *Manuel Puyol*
+
+* Allow customizing `TabContainer` when using `TabNav` and `UnderlineNav` components.
+
+    *Manuel Puyol*
+
+### Breaking changes
+
 
 * Restrict `col` system arguments to only accept values between 1 and 12.
 
