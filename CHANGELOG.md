@@ -5,7 +5,7 @@
 ### Breaking changes
 
 * Renames:
-  * `Primer::ButtonMarketingComponent` to `Primer::Alpha::ButtonMarketingComponent`.
+  * `Primer::ButtonMarketing` to `Primer::Alpha::ButtonMarketing`.
 
     *Manuel Puyol*
 
@@ -363,7 +363,7 @@
 
     *Manuel Puyol*
 
-* **Breaking change:** Rename `ButtonMarketingComponent` `button_type` argument to `scheme`.
+* **Breaking change:** Rename `ButtonMarketing` `button_type` argument to `scheme`.
 
     *Manuel Puyol*
 

@@ -3,7 +3,7 @@
 module Primer
   module Alpha
     # Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
-    class ButtonMarketingComponent < Primer::Component
+    class ButtonMarketing < Primer::Component
       DEFAULT_SCHEME = :default
       SCHEME_MAPPINGS = {
         DEFAULT_SCHEME => "",
@@ -27,21 +27,21 @@ module Primer
       TYPE_OPTIONS = [DEFAULT_TYPE, :submit].freeze
 
       # @example Schemes
-      #   <%= render(Primer::Alpha::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>
-      #   <%= render(Primer::Alpha::ButtonMarketingComponent.new(scheme: :primary, mr: 2)) { "Primary" } %>
-      #   <%= render(Primer::Alpha::ButtonMarketingComponent.new(scheme: :outline)) { "Outline" } %>
+      #   <%= render(Primer::Alpha::ButtonMarketing.new(mr: 2)) { "Default" } %>
+      #   <%= render(Primer::Alpha::ButtonMarketing.new(scheme: :primary, mr: 2)) { "Primary" } %>
+      #   <%= render(Primer::Alpha::ButtonMarketing.new(scheme: :outline)) { "Outline" } %>
       #   <div class="color-bg-canvas-inverse">
-      #     <%= render(Primer::Alpha::ButtonMarketingComponent.new(scheme: :transparent)) { "Transparent" } %>
+      #     <%= render(Primer::Alpha::ButtonMarketing.new(scheme: :transparent)) { "Transparent" } %>
       #   </div>
       #
       # @example Sizes
-      #   <%= render(Primer::Alpha::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>
-      #   <%= render(Primer::Alpha::ButtonMarketingComponent.new(variant: :large)) { "Large" } %>
+      #   <%= render(Primer::Alpha::ButtonMarketing.new(mr: 2)) { "Default" } %>
+      #   <%= render(Primer::Alpha::ButtonMarketing.new(variant: :large)) { "Large" } %>
       #
-      # @param scheme [Symbol] <%= one_of(Primer::Alpha::ButtonMarketingComponent::SCHEME_OPTIONS) %>
-      # @param variant [Symbol] <%= one_of(Primer::Alpha::ButtonMarketingComponent::VARIANT_OPTIONS) %>
-      # @param tag [Symbol] <%= one_of(Primer::Alpha::ButtonMarketingComponent::TAG_OPTIONS) %>
-      # @param type [Symbol] <%= one_of(Primer::Alpha::ButtonMarketingComponent::TYPE_OPTIONS) %>
+      # @param scheme [Symbol] <%= one_of(Primer::Alpha::ButtonMarketing::SCHEME_OPTIONS) %>
+      # @param variant [Symbol] <%= one_of(Primer::Alpha::ButtonMarketing::VARIANT_OPTIONS) %>
+      # @param tag [Symbol] <%= one_of(Primer::Alpha::ButtonMarketing::TAG_OPTIONS) %>
+      # @param type [Symbol] <%= one_of(Primer::Alpha::ButtonMarketing::TYPE_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         scheme: DEFAULT_SCHEME,
