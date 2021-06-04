@@ -4,10 +4,6 @@
 
 ### Updates
 
-* Promote `TabNav` component to beta.
-
-    *Manuel Puyol*
-
 * Allow `Dropdown` menu items to be rendered outside a list.
 
     *Manuel Puyol*
