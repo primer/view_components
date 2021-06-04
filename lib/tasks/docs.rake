@@ -69,7 +69,7 @@ namespace :docs do
       Primer::SubheadComponent,
       Primer::TabContainerComponent,
       Primer::TabNavComponent,
-      Primer::TextComponent,
+      Primer::Beta::Text,
       Primer::TimeAgoComponent,
       Primer::TimelineItemComponent,
       Primer::Tooltip,
@@ -306,6 +306,8 @@ namespace :docs do
 
   task :preview do
     registry = generate_yard_registry
+
+    FileUtils.rm_rf("demo/test/components/previews/primer/docs/")
 
     components = Primer::Component.descendants
 
