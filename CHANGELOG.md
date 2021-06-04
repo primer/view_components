@@ -40,7 +40,6 @@
 
 ### Breaking changes
 
-
 * Restrict `col` system arguments to only accept values between 1 and 12.
 
     *Manuel Puyol*
