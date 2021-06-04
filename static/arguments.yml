@@ -352,7 +352,7 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: ButtonMarketing
+- component: AlphaButtonMarketing
   source: https://github.com/primer/view_components/tree/main/app/components/primer/button_marketing_component.rb
   parameters:
   - name: scheme

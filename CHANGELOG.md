@@ -2,6 +2,13 @@
 
 ## main
 
+### Breaking changes
+
+* Renames:
+  * `Primer::ButtonMarketingComponent` to `Primer::Alpha::ButtonMarketingComponent`.
+
+    *Manuel Puyol*
+
 ## 0.0.43
 
 * Upgrade primer/css to 17.2.1

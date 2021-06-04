@@ -1,4 +1,5 @@
 {
+  "Primer::Alpha::ButtonMarketingComponent": "alpha",
   "Primer::AutoComplete": "beta",
   "Primer::AutoComplete::Item": "beta",
   "Primer::AvatarComponent": "beta",
@@ -12,7 +13,6 @@
   "Primer::BreadcrumbComponent::ItemComponent": "alpha",
   "Primer::ButtonComponent": "beta",
   "Primer::ButtonGroup": "beta",
-  "Primer::ButtonMarketingComponent": "alpha",
   "Primer::ClipboardCopy": "alpha",
   "Primer::CloseButton": "beta",
   "Primer::CounterComponent": "beta",
