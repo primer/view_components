@@ -48,6 +48,10 @@
 
     *Manuel Puyol*
 
+* Add preliminary criteria for new `alpha` components.
+
+    *Joel Hawksley*
+
 ## 0.0.42
 
 ### New
