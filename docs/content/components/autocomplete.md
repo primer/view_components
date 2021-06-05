@@ -19,7 +19,8 @@ input field. This list is populated by server search results.
 
 Always set an accessible label to help the user interact with the component.
 
-* Set the `label` slot to render a visible label.
+* Set the `label` slot to render a visible label. Alternatively, associate an existing visible text element
+as a label by setting `aria-labelledby`.
 * If you must use a non-visible label, set `:"aria-label"` on `AutoComplete` and Primer
 will apply it to the correct elements. However, please note that a visible label should almost
 always be used unless there is compelling reason not to. A placeholder is not a label.

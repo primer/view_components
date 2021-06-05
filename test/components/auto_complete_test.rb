@@ -78,7 +78,7 @@ class PrimerAutoCompleteTest < Minitest::Test
     end
 
     assert_selector("auto-complete[for=\"my-list-id\"][src=\"/url\"]") do
-      assert_selector("input[aria-label=\"Fruits\"].custom-class")
+      assert_selector("input[aria-label=\"Fruits\"].custom-class.form-control")
       assert_selector("ul[id=\"my-list-id\"][aria-label=\"Fruits\"].autocomplete-results.my-class")
     end
   end

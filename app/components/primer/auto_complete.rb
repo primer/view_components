@@ -6,7 +6,8 @@ module Primer
   # @accessibility
   #   Always set an accessible label to help the user interact with the component.
   #
-  #   * Set the `label` slot to render a visible label.
+  #   * Set the `label` slot to render a visible label. Alternatively, associate an existing visible text element
+  #   as a label by setting `aria-labelledby`.
   #   * If you must use a non-visible label, set `:"aria-label"` on `AutoComplete` and Primer
   #   will apply it to the correct elements. However, please note that a visible label should almost
   #   always be used unless there is compelling reason not to. A placeholder is not a label.
@@ -35,34 +36,6 @@ module Primer
 
       Input.new(id: @input_id, **system_arguments)
     }
-
-    # This component is part of `Primer::AutoCompleteComponent` and should not be
-    # used as a standalone component.
-    class Input < Primer::Component
-      DEFAULT_TYPE = :text
-      TYPE_OPTIONS = [DEFAULT_TYPE, :search].freeze
-
-      # @param type [Symbol]
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(type: DEFAULT_TYPE, classes: "form-control", **system_arguments)
-        @system_arguments = system_arguments
-        @system_arguments[:tag] = :input
-
-        @aria_label = system_arguments[:"aria-label"]
-        @aria_labelledby = system_arguments[:"aria-labelledby"] || system_arguments.dig(:aria, :labelledby)
-
-        @system_arguments[:type] = fetch_or_fallback(TYPE_OPTIONS, type, DEFAULT_TYPE)
-        @system_arguments[:classes] = classes
-      end
-
-      def missing_label?
-        @aria_label.blank? && @aria_labelledby.blank?
-      end
-
-      def call
-        render(Primer::BaseComponent.new(**@system_arguments))
-      end
-    end
 
     # Optional icon to be rendered before the input. Has the same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
     #
@@ -147,6 +120,37 @@ module Primer
       raise ArgumentError, "Accessible label is required." if label.blank? && input.missing_label?
 
       results(classes: "") unless results
+    end
+
+    # This component is part of `Primer::AutoCompleteComponent` and should not be
+    # used as a standalone component.
+    class Input < Primer::Component
+      DEFAULT_TYPE = :text
+      TYPE_OPTIONS = [DEFAULT_TYPE, :search].freeze
+
+      # @param type [Symbol] <%= one_of(Primer::AutoComplete::Input::TYPE_OPTIONS) %>
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      def initialize(type: DEFAULT_TYPE, **system_arguments)
+        @system_arguments = system_arguments
+        @system_arguments[:tag] = :input
+
+        @aria_label = system_arguments[:"aria-label"]
+        @aria_labelledby = system_arguments[:"aria-labelledby"] || system_arguments.dig(:aria, :labelledby)
+
+        @system_arguments[:type] = fetch_or_fallback(TYPE_OPTIONS, type, DEFAULT_TYPE)
+        @system_arguments[:classes] = class_names(
+          "form-control",
+          system_arguments[:classes]
+        )
+      end
+
+      def missing_label?
+        @aria_label.blank? && @aria_labelledby.blank?
+      end
+
+      def call
+        render(Primer::BaseComponent.new(**@system_arguments))
+      end
     end
   end
 end
