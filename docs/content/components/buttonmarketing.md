@@ -39,8 +39,8 @@ Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, o
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `scheme` | `Symbol` | `:default` | One of `:default`, `:primary`, `:outline`, or `:transparent`. |
+| `scheme` | `Symbol` | `:default` | One of `:default`, `:outline`, `:primary`, or `:transparent`. |
 | `variant` | `Symbol` | `:default` | One of `:default` and `:large`. |
-| `tag` | `Symbol` | `:button` | One of `:button` and `:a`. |
+| `tag` | `Symbol` | `:button` | One of `:a` and `:button`. |
 | `type` | `Symbol` | `:button` | One of `:button` and `:submit`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
