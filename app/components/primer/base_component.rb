@@ -156,7 +156,7 @@ module Primer
 
       @system_arguments[:"data-view-component"] = true
       # Filter out Primer keys so they don't get assigned as HTML attributes
-      @content_tag_args = add_test_selector(@system_arguments).except(*(Primer::Classify::VALID_KEYS + Primer::Classify::UTILITIES.keys))
+      @content_tag_args = add_test_selector(@system_arguments).except(*Primer::Classify::VALID_KEYS)
     end
 
     def call
