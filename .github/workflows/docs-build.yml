@@ -18,6 +18,10 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.7.x
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - run: yarn
       - uses: actions/cache@v2
         with:
           path: vendor/bundle
@@ -29,6 +33,7 @@ jobs:
           bundle install --jobs 4 --retry 3
           bundle exec rake docs:build
           bundle exec rake statuses:dump
+          bundle exec rake utilities:build
       - name: Commit & Push Docs Data
         run: |
           git config --local user.email "actions@github.com"

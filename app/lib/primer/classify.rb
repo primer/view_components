@@ -3,11 +3,20 @@
 module Primer
   # :nodoc:
   class Classify
+    # Load the utilities.yml file.
+    # Disabling because we want to load symbols, strings, and integers from the .yml file
+    # rubocop:disable Security/YAMLLoad
+    UTILITIES = YAML.load(
+      File.read(
+        File.join(File.dirname(__FILE__), "./classify/utilities.yml")
+      )
+    ).freeze
+    # rubocop:enable Security/YAMLLoad
+
     DISPLAY_KEY = :display
-    SPACING_KEYS = Primer::Classify::Spacing::KEYS
 
     # Keys where we can simply translate { key: value } into ".key-value"
-    CONCAT_KEYS = SPACING_KEYS + %i[hide position v float text box_shadow].freeze
+    CONCAT_KEYS = UTILITIES.keys + %i[hide position v float text box_shadow].freeze
 
     INVALID_CLASS_NAME_PREFIXES =
       (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "box-shadow-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
@@ -25,7 +34,7 @@ module Primer
     CONTAINER_KEY = :container
 
     BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
-    RESPONSIVE_KEYS = ([DISPLAY_KEY, :float, Primer::Classify::Grid::COL_KEY] + SPACING_KEYS + Primer::Classify::Flex::RESPONSIVE_KEYS).freeze
+    RESPONSIVE_KEYS = ([DISPLAY_KEY, :float, Primer::Classify::Grid::COL_KEY] + Primer::Classify::Flex::RESPONSIVE_KEYS).freeze
 
     BOOLEAN_MAPPINGS = {
       underline: {
@@ -152,10 +161,10 @@ module Primer
       def extract_hash(styles_hash)
         memo = { classes: [], styles: +"" }
         styles_hash.each do |key, value|
-          next unless VALID_KEYS.include?(key)
+          next unless (VALID_KEYS + Primer::Classify::UTILITIES.keys).include?(key)
 
           if value.is_a?(Array)
-            raise ArgumentError, "#{key} does not support responsive values" unless RESPONSIVE_KEYS.include?(key)
+            raise ArgumentError, "#{key} does not support responsive values" unless RESPONSIVE_KEYS.include?(key) || Primer::Classify::Utilities.supported_key?(key)
 
             value.each_with_index do |val, index|
               Primer::Classify::Cache.read(memo, key, val, BREAKPOINTS[index]) || extract_value(memo, key, val, BREAKPOINTS[index])
@@ -173,8 +182,8 @@ module Primer
       def extract_value(memo, key, val, breakpoint)
         return if val.nil? || val == ""
 
-        if SPACING_KEYS.include?(key)
-          memo[:classes] << Primer::Classify::Spacing.spacing(key, val, breakpoint)
+        if Primer::Classify::Utilities.supported_key?(key)
+          memo[:classes] << Primer::Classify::Utilities.classname(key, val, breakpoint)
         elsif BOOLEAN_MAPPINGS.key?(key)
           BOOLEAN_MAPPINGS[key][:mappings].each do |m|
             memo[:classes] << m[:css_class] if m[:value] == val && m[:css_class].present?

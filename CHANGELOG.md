@@ -2,6 +2,10 @@
 
 ## main
 
+* Replacing Classify::Spacing class with primer utilities class and generation
+
+  *Jon Rohan*
+
 ## 0.0.43
 
 * Upgrade primer/css to 17.2.1

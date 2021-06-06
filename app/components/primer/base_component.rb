@@ -93,7 +93,7 @@ module Primer
     # | :- | :- | :- |
     # | `display` | Symbol | <%= one_of([:none, :block, :flex, :inline, :inline_block, :inline_flex, :table, :table_cell]) %> |
     # | `height` | Symbol | <%= one_of([:fit]) %> |
-    # | `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of([:sm, :md, :lg, :xl]) %> |
+    # | `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of(Primer::Classify::Utilities.mappings(:hide)) %> |
     # | `v` | Symbol | Visibility. <%= one_of([:hidden, :visible]) %> |
     # | `vertical_align` | Symbol | <%= one_of([:baseline, :top, :middle, :bottom, :text_top, :text_bottom]) %> |
     #
@@ -102,7 +102,7 @@ module Primer
     # | Name | Type | Description |
     # | :- | :- | :- |
     # | `bottom` | Boolean | If `false`, sets `bottom: 0`. |
-    # | `float` | Symbol | <%= one_of([:left, :right]) %> |
+    # | `float` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:float)) %> |
     # | `left` | Boolean | If `false`, sets `left: 0`. |
     # | `position` | Symbol | <%= one_of([:relative, :absolute, :fixed]) %> |
     # | `right` | Boolean | If `false`, sets `right: 0`. |
@@ -112,21 +112,20 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `m` | Integer | Margin. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:m]) %> |
-    # | `mb` | Integer | Margin bottom. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mb]) %> |
-    # | `ml` | Integer | Margin left. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:ml]) %> |
-    # | `mr` | Integer | Margin right. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mr]) %> |
-    # | `mt` | Integer | Margin top. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mt]) %> |
-    # | `mx` | Integer | Horizontal margins. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mx]) %> |
-    # | `my` | Integer | Vertical margins. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:my]) %> |
-    # | `p` | Integer | Padding. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:p]) %> |
-    # | `pb` | Integer | Padding bottom. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pb]) %> |
-    # | `pl` | Integer | Padding left. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pl]) %> |
-    # | `pr` | Integer | Padding right. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pr]) %> |
-    # | `pt` | Integer | Padding left. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pt]) %> |
-    # | `px` | Integer | Horizontal padding. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:px]) %> |
-    # | `py` | Integer | Vertical padding. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:py]) %> |
-    #
+    # | `m` | Symbol | Margin. <%= one_of(Primer::Classify::Utilities.mappings(:m)) %> |
+    # | `mb` | Symbol | Margin bottom. <%= one_of(Primer::Classify::Utilities.mappings(:mb)) %> |
+    # | `ml` | Symbol | Margin left. <%= one_of(Primer::Classify::Utilities.mappings(:ml)) %> |
+    # | `mr` | Symbol | Margin right. <%= one_of(Primer::Classify::Utilities.mappings(:mr)) %> |
+    # | `mt` | Symbol | Margin top. <%= one_of(Primer::Classify::Utilities.mappings(:mt)) %> |
+    # | `mx` | Symbol | Horizontal margins. <%= one_of(Primer::Classify::Utilities.mappings(:mx)) %> |
+    # | `my` | Symbol | Vertical margins. <%= one_of(Primer::Classify::Utilities.mappings(:my)) %> |
+    # | `p` | Symbol | Padding. <%= one_of(Primer::Classify::Utilities.mappings(:p)) %> |
+    # | `pb` | Symbol | Padding bottom. <%= one_of(Primer::Classify::Utilities.mappings(:pb)) %> |
+    # | `pl` | Symbol | Padding left. <%= one_of(Primer::Classify::Utilities.mappings(:pl)) %> |
+    # | `pr` | Symbol | Padding right. <%= one_of(Primer::Classify::Utilities.mappings(:pr)) %> |
+    # | `pt` | Symbol | Padding left. <%= one_of(Primer::Classify::Utilities.mappings(:pt)) %> |
+    # | `px` | Symbol | Horizontal padding. <%= one_of(Primer::Classify::Utilities.mappings(:px)) %> |
+    # | `py` | Symbol | Vertical padding. <%= one_of(Primer::Classify::Utilities.mappings(:py)) %> |    #
     # ## Typography
     #
     # | Name | Type | Description |
@@ -156,7 +155,7 @@ module Primer
 
       @system_arguments[:"data-view-component"] = true
       # Filter out Primer keys so they don't get assigned as HTML attributes
-      @content_tag_args = add_test_selector(@system_arguments).except(*Primer::Classify::VALID_KEYS)
+      @content_tag_args = add_test_selector(@system_arguments).except(*(Primer::Classify::VALID_KEYS + Primer::Classify::UTILITIES.keys))
     end
 
     def call
