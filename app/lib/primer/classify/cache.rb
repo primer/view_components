@@ -50,6 +50,11 @@ module Primer
           )
 
           preload(
+            keys: Primer::Classify::DISPLAY_KEY,
+            values: [:flex, :block, :inline_block, :inline_flex, :none, :table, :table_cell]
+          )
+
+          preload(
             keys: [Primer::Classify::COLOR_KEY],
             values: Primer::Classify::FunctionalTextColors::OPTIONS
           )
@@ -57,6 +62,16 @@ module Primer
           preload(
             keys: [Primer::Classify::BG_KEY],
             values: Primer::Classify::FunctionalBackgroundColors::OPTIONS
+          )
+
+          preload(
+            keys: Primer::Classify::VERTICAL_ALIGN_KEY,
+            values: [:baseline, :top, :middle, :bottom, :text_top, :text_bottom]
+          )
+
+          preload(
+            keys: Primer::Classify::WORD_BREAK_KEY,
+            values: [:break_all]
           )
 
           preload(
@@ -97,6 +112,11 @@ module Primer
           preload(
             keys: Primer::Classify::BOX_SHADOW_KEY,
             values: [true, :small, :medium, :large, :extra_large, :none]
+          )
+
+          preload(
+            keys: Primer::Classify::VISIBILITY_KEY,
+            values: [:hidden, :visible]
           )
         end
 

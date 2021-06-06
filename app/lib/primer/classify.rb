@@ -161,7 +161,7 @@ module Primer
       def extract_hash(styles_hash)
         memo = { classes: [], styles: +"" }
         styles_hash.each do |key, value|
-          next unless (VALID_KEYS + Primer::Classify::UTILITIES.keys).include?(key)
+          next unless VALID_KEYS.include?(key)
 
           if value.is_a?(Array)
             raise ArgumentError, "#{key} does not support responsive values" unless RESPONSIVE_KEYS.include?(key) || Primer::Classify::Utilities.supported_key?(key)
