@@ -10,7 +10,8 @@ module Primer
           if (valid = validate(key, val, breakpoint))
             valid
           else
-            get_selector(key, val, breakpoint)
+            # Get selector
+            Primer::Classify::UTILITIES[key][val][Primer::Classify::BREAKPOINTS.index(breakpoint)]
           end
         end
 
@@ -84,10 +85,6 @@ module Primer
           end
 
           nil
-        end
-
-        def get_selector(key, val, breakpoint)
-          Primer::Classify::UTILITIES[key][val][Primer::Classify::BREAKPOINTS.index(breakpoint)]
         end
 
         def validate(key, val, breakpoint)
