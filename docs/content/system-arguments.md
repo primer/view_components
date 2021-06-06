@@ -92,11 +92,11 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `display` | Symbol | One of `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:none`, `:table`, or `:table_cell`. |
+| `display` | Symbol | One of `:none`, `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:table`, or `:table_cell`. |
 | `height` | Symbol | One of `:fit`. |
 | `hide` | Symbol | Hide the element at a specific breakpoint. One of `:sm`, `:md`, `:lg`, or `:xl`. |
-| `visibility` | Symbol | Visibility. One of `:hidden` and `:visible`. |
-| `vertical_align` | Symbol | One of `:middle`, `:top`, `:bottom`, `:text_top`, `:text_bottom`, or `:baseline`. |
+| `v` | Symbol | Visibility. One of `:hidden` and `:visible`. |
+| `vertical_align` | Symbol | One of `:baseline`, `:top`, `:middle`, `:bottom`, `:text_top`, or `:text_bottom`. |
 
 ## Position
 
@@ -105,7 +105,7 @@ System arguments include most HTML attributes. For example:
 | `bottom` | Boolean | If `false`, sets `bottom: 0`. |
 | `float` | Symbol | One of `:left`, `:right`, or `:none`. |
 | `left` | Boolean | If `false`, sets `left: 0`. |
-| `position` | Symbol | One of `:static`, `:relative`, `:absolute`, `:fixed`, or `:sticky`. |
+| `position` | Symbol | One of `:relative`, `:absolute`, or `:fixed`. |
 | `right` | Boolean | If `false`, sets `right: 0`. |
 | `top` | Boolean | If `false`, sets `top: 0`. |
 
@@ -126,8 +126,7 @@ System arguments include most HTML attributes. For example:
 | `pr` | Symbol | Padding right. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
 | `pt` | Symbol | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
 | `px` | Symbol | Horizontal padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `py` | Symbol | Vertical padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
-
+| `py` | Symbol | Vertical padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |    #
 ## Typography
 
 | Name | Type | Description |
@@ -139,7 +138,7 @@ System arguments include most HTML attributes. For example:
 | `text_align` | Symbol | Text alignment. One of `:left`, `:right`, or `:center`. |
 | `text_transform` | Symbol | Text alignment. One of `:uppercase`. |
 | `underline` | Boolean | Whether text should be underlined. |
-| `word_break` | Symbol | Whether to break words on line breaks. One of `:break_all`.. |
+| `word_break` | Symbol | Whether to break words on line breaks. Can only be `:break_all`. |
 
 ## Other
 
