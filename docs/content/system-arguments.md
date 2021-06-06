@@ -126,7 +126,8 @@ System arguments include most HTML attributes. For example:
 | `pr` | Symbol | Padding right. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
 | `pt` | Symbol | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
 | `px` | Symbol | Horizontal padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `py` | Symbol | Vertical padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |    #
+| `py` | Symbol | Vertical padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
+
 ## Typography
 
 | Name | Type | Description |
