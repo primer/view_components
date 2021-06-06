@@ -112,20 +112,20 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `m` | Symbol | Margin. <%= one_of(Primer::Classify::Utilities.mappings(:m)) %> |
-    # | `mb` | Symbol | Margin bottom. <%= one_of(Primer::Classify::Utilities.mappings(:mb)) %> |
-    # | `ml` | Symbol | Margin left. <%= one_of(Primer::Classify::Utilities.mappings(:ml)) %> |
-    # | `mr` | Symbol | Margin right. <%= one_of(Primer::Classify::Utilities.mappings(:mr)) %> |
-    # | `mt` | Symbol | Margin top. <%= one_of(Primer::Classify::Utilities.mappings(:mt)) %> |
-    # | `mx` | Symbol | Horizontal margins. <%= one_of(Primer::Classify::Utilities.mappings(:mx)) %> |
-    # | `my` | Symbol | Vertical margins. <%= one_of(Primer::Classify::Utilities.mappings(:my)) %> |
-    # | `p` | Symbol | Padding. <%= one_of(Primer::Classify::Utilities.mappings(:p)) %> |
-    # | `pb` | Symbol | Padding bottom. <%= one_of(Primer::Classify::Utilities.mappings(:pb)) %> |
-    # | `pl` | Symbol | Padding left. <%= one_of(Primer::Classify::Utilities.mappings(:pl)) %> |
-    # | `pr` | Symbol | Padding right. <%= one_of(Primer::Classify::Utilities.mappings(:pr)) %> |
-    # | `pt` | Symbol | Padding left. <%= one_of(Primer::Classify::Utilities.mappings(:pt)) %> |
-    # | `px` | Symbol | Horizontal padding. <%= one_of(Primer::Classify::Utilities.mappings(:px)) %> |
-    # | `py` | Symbol | Vertical padding. <%= one_of(Primer::Classify::Utilities.mappings(:py)) %> |
+    # | `m` | Integer | Margin. <%= one_of(Primer::Classify::Utilities.mappings(:m)) %> |
+    # | `mb` | Integer | Margin bottom. <%= one_of(Primer::Classify::Utilities.mappings(:mb)) %> |
+    # | `ml` | Integer | Margin left. <%= one_of(Primer::Classify::Utilities.mappings(:ml)) %> |
+    # | `mr` | Integer | Margin right. <%= one_of(Primer::Classify::Utilities.mappings(:mr)) %> |
+    # | `mt` | Integer | Margin top. <%= one_of(Primer::Classify::Utilities.mappings(:mt)) %> |
+    # | `mx` | Integer | Horizontal margins. <%= one_of(Primer::Classify::Utilities.mappings(:mx)) %> |
+    # | `my` | Integer | Vertical margins. <%= one_of(Primer::Classify::Utilities.mappings(:my)) %> |
+    # | `p` | Integer | Padding. <%= one_of(Primer::Classify::Utilities.mappings(:p)) %> |
+    # | `pb` | Integer | Padding bottom. <%= one_of(Primer::Classify::Utilities.mappings(:pb)) %> |
+    # | `pl` | Integer | Padding left. <%= one_of(Primer::Classify::Utilities.mappings(:pl)) %> |
+    # | `pr` | Integer | Padding right. <%= one_of(Primer::Classify::Utilities.mappings(:pr)) %> |
+    # | `pt` | Integer | Padding left. <%= one_of(Primer::Classify::Utilities.mappings(:pt)) %> |
+    # | `px` | Integer | Horizontal padding. <%= one_of(Primer::Classify::Utilities.mappings(:px)) %> |
+    # | `py` | Integer | Vertical padding. <%= one_of(Primer::Classify::Utilities.mappings(:py)) %> |
     #
     # ## Typography
     #
