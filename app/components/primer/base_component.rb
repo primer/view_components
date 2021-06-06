@@ -125,7 +125,8 @@ module Primer
     # | `pr` | Symbol | Padding right. <%= one_of(Primer::Classify::Utilities.mappings(:pr)) %> |
     # | `pt` | Symbol | Padding left. <%= one_of(Primer::Classify::Utilities.mappings(:pt)) %> |
     # | `px` | Symbol | Horizontal padding. <%= one_of(Primer::Classify::Utilities.mappings(:px)) %> |
-    # | `py` | Symbol | Vertical padding. <%= one_of(Primer::Classify::Utilities.mappings(:py)) %> |    #
+    # | `py` | Symbol | Vertical padding. <%= one_of(Primer::Classify::Utilities.mappings(:py)) %> |
+    #
     # ## Typography
     #
     # | Name | Type | Description |
