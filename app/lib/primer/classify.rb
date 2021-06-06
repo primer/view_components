@@ -16,7 +16,7 @@ module Primer
     DISPLAY_KEY = :display
 
     # Keys where we can simply translate { key: value } into ".key-value"
-    CONCAT_KEYS = UTILITIES.keys + %i[hide position v float text box_shadow].freeze
+    CONCAT_KEYS = UTILITIES.keys + %i[position v text box_shadow].freeze
 
     INVALID_CLASS_NAME_PREFIXES =
       (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "box-shadow-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
@@ -34,7 +34,7 @@ module Primer
     CONTAINER_KEY = :container
 
     BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
-    RESPONSIVE_KEYS = ([DISPLAY_KEY, :float, Primer::Classify::Grid::COL_KEY] + Primer::Classify::Flex::RESPONSIVE_KEYS).freeze
+    RESPONSIVE_KEYS = ([DISPLAY_KEY, Primer::Classify::Grid::COL_KEY] + Primer::Classify::Flex::RESPONSIVE_KEYS).freeze
 
     BOOLEAN_MAPPINGS = {
       underline: {
