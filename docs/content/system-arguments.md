@@ -113,20 +113,20 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `m` | Symbol | Margin. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |
-| `mb` | Symbol | Margin bottom. One of `0`, `1`, `-1`, `2`, `-2`, `3`, `-3`, `4`, `-4`, `5`, `-5`, `6`, `-6`, `7`, `-7`, `8`, `-8`, `9`, `-9`, `10`, `-10`, `11`, `-11`, `12`, or `-12`. |
-| `ml` | Symbol | Margin left. One of `0`, `1`, `-1`, `2`, `-2`, `3`, `-3`, `4`, `-4`, `5`, `-5`, `6`, or `-6`. |
-| `mr` | Symbol | Margin right. One of `0`, `1`, `-1`, `2`, `-2`, `3`, `-3`, `4`, `-4`, `5`, `-5`, `6`, or `-6`. |
-| `mt` | Symbol | Margin top. One of `0`, `1`, `-1`, `2`, `-2`, `3`, `-3`, `4`, `-4`, `5`, `-5`, `6`, `-6`, `7`, `-7`, `8`, `-8`, `9`, `-9`, `10`, `-10`, `11`, `-11`, `12`, `-12`, or `:auto`. |
-| `mx` | Symbol | Horizontal margins. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |
-| `my` | Symbol | Vertical margins. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
-| `p` | Symbol | Padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:responsive`. |
-| `pb` | Symbol | Padding bottom. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
-| `pl` | Symbol | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
-| `pr` | Symbol | Padding right. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
-| `pt` | Symbol | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
-| `px` | Symbol | Horizontal padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `py` | Symbol | Vertical padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
+| `m` | Integer | Margin. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |
+| `mb` | Integer | Margin bottom. One of `0`, `1`, `-1`, `2`, `-2`, `3`, `-3`, `4`, `-4`, `5`, `-5`, `6`, `-6`, `7`, `-7`, `8`, `-8`, `9`, `-9`, `10`, `-10`, `11`, `-11`, `12`, or `-12`. |
+| `ml` | Integer | Margin left. One of `0`, `1`, `-1`, `2`, `-2`, `3`, `-3`, `4`, `-4`, `5`, `-5`, `6`, or `-6`. |
+| `mr` | Integer | Margin right. One of `0`, `1`, `-1`, `2`, `-2`, `3`, `-3`, `4`, `-4`, `5`, `-5`, `6`, or `-6`. |
+| `mt` | Integer | Margin top. One of `0`, `1`, `-1`, `2`, `-2`, `3`, `-3`, `4`, `-4`, `5`, `-5`, `6`, `-6`, `7`, `-7`, `8`, `-8`, `9`, `-9`, `10`, `-10`, `11`, `-11`, `12`, `-12`, or `:auto`. |
+| `mx` | Integer | Horizontal margins. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |
+| `my` | Integer | Vertical margins. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
+| `p` | Integer | Padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:responsive`. |
+| `pb` | Integer | Padding bottom. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
+| `pl` | Integer | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
+| `pr` | Integer | Padding right. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
+| `pt` | Integer | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
+| `px` | Integer | Horizontal padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `py` | Integer | Vertical padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
 
 ## Typography
 
