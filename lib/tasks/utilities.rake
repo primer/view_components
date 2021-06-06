@@ -5,11 +5,17 @@ namespace :utilities do
     require "yaml"
     require "json"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
-    require "primer/view_components"
 
-    SUPPORTED_KEYS = %i[hide float m mt mr mb ml mx my p pt pr pb pl px py].freeze
+    # Keys that are looked for to be included in the utilities.yml file
+    SUPPORTED_KEYS = %i[
+      hide
+      float
+      m mt mr mb ml mx my
+      p pt pr pb pl px py
+    ].freeze
 
-    KEYS = {
+    # Replacements for some classnames that end up being a different argument key
+    REPLACEMENT_KEYS = {
       "^v-align" => "vertical_align",
       "^d" => "display",
       "^wb" => "word_break",
@@ -35,30 +41,34 @@ namespace :utilities do
       next if selector.match?(/[:><~\[\.]/)
       next unless SUPPORTED_KEYS.any? { |key| selector.start_with?("#{key}-") }
 
+      # Dupe so we still have the selector at the end of slicing it up
       classname = selector.dup
+      key = ""
 
-      key = classname.split("-").first
-
-      KEYS.each do |k, v|
+      # Look for a replacement key
+      REPLACEMENT_KEYS.each do |k, v|
         next unless classname.match?(Regexp.new(k))
 
         key = v
         classname.sub!(Regexp.new(k + "-"), "")
       end
 
+      # If we didn't find a replacement, grab the first text before hyphen
       if classname == selector
-        dash_index = classname.index("-") || 0
-        key = classname[0..dash_index - 1]
+        key = classname.split("-").first
         classname.sub!(/^[^-]+-/, "")
       end
 
+      # Check if the next bit of the classname is a breakpoint
       if classname.match?(/^(sm-|md-|lg-|xl-)/)
-        breakpoint = classname[0..classname.index("-") - 1]
+        breakpoint = classname.split("-").first
         classname.sub!(/^[^-]+-/, "")
       end
 
+      # Change the rest from hypens to underscores
       classname.sub!(/\-/, "_")
-      # convert n7 to -7
+
+      # convert padding/margin negative values ie n7 to -7
       classname.sub!(/^n/, "-") if classname.match?(/^n[0-9]/)
 
       key = key.to_sym
