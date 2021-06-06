@@ -24,10 +24,10 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
   end
 
   def test_classname_returns_empty_string_when_incorrect_value_in_production
-    ENV["RAILS_ENV"] = "production"
-
-    assert_equal "mr-1", Primer::Classify::Utilities.classname(:mr, 1)
-    assert_equal "", Primer::Classify::Utilities.classname(:mr, :foo)
+    Rails.stub(:env, ActiveSupport::StringInquirer.new("production")) do
+      assert_equal "mr-1", Primer::Classify::Utilities.classname(:mr, 1)
+      assert_equal "", Primer::Classify::Utilities.classname(:mr, :foo)
+    end
   end
 
   def test_classes_to_hash
