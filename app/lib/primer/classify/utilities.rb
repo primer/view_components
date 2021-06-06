@@ -6,7 +6,7 @@ module Primer
     # Handler for PrimerCSS utility classes loaded from utilities.rake
     class Utilities
       class << self
-        def classname(key, val, breakpoint)
+        def classname(key, val, breakpoint = "")
           if (valid = validate(key, val, breakpoint))
             valid
           else
