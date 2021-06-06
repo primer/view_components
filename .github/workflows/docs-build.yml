@@ -31,9 +31,9 @@ jobs:
           gem install bundler:2.2.9
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
+          bundle exec rake utilities:build
           bundle exec rake docs:build
           bundle exec rake statuses:dump
-          bundle exec rake utilities:build
       - name: Commit & Push Docs Data
         run: |
           git config --local user.email "actions@github.com"

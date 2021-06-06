@@ -23,6 +23,13 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     refute Primer::Classify::Utilities.responsive?(:hide, :sm)
   end
 
+  def test_classname_returns_empty_string_when_incorrect_value_in_production
+    ENV["RAILS_ENV"] = "production"
+
+    assert_equal "mr-1", Primer::Classify::Utilities.classname(:mr, 1)
+    assert_equal "", Primer::Classify::Utilities.classname(:mr, :foo)
+  end
+
   def test_classes_to_hash
     assert_equal({ mr: 1, mb: 2, classes: "foo" }, Primer::Classify::Utilities.classes_to_hash("mr-1 mb-2 foo"))
     assert_equal({ classes: "foo" }, Primer::Classify::Utilities.classes_to_hash("foo"))

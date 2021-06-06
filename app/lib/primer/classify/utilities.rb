@@ -7,9 +7,11 @@ module Primer
     class Utilities
       class << self
         def classname(key, val, breakpoint)
-          validate(key, val, breakpoint) unless Rails.env.production?
-
-          get_selector(key, val, breakpoint)
+          if (valid = validate(key, val, breakpoint))
+            valid
+          else
+            get_selector(key, val, breakpoint)
+          end
         end
 
         # Does the Utilitiy class support the given key
@@ -89,9 +91,25 @@ module Primer
         end
 
         def validate(key, val, breakpoint)
-          raise ArgumentError, "#{key} is not a valid Primer utility key" unless supported_key?(key)
-          raise ArgumentError, "#{key} does not support responsive values" unless breakpoint.empty? || responsive?(key, val)
-          raise ArgumentError, "#{val} is not a valid value for :#{key}. Use one of #{mappings(key)}" unless supported_value?(key, val)
+          unless supported_key?(key)
+            raise ArgumentError, "#{key} is not a valid Primer utility key" unless Rails.env.production?
+
+            return ""
+          end
+
+          unless breakpoint.empty? || responsive?(key, val)
+            raise ArgumentError, "#{key} does not support responsive values" unless Rails.env.production?
+
+            return ""
+          end
+
+          unless supported_value?(key, val)
+            raise ArgumentError, "#{val} is not a valid value for :#{key}. Use one of #{mappings(key)}" unless Rails.env.production?
+
+            return ""
+          end
+
+          nil
         end
       end
     end
