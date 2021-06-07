@@ -14,6 +14,13 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
     refute_empty @linter.offenses
   end
 
+  def test_warns_if_there_is_a_html_link_button
+    @file = "<button class=\"btn-link\">Button</button>"
+    @linter.run(processed_source)
+
+    refute_empty @linter.offenses
+  end
+
   def test_suggests_ignoring_with_correct_number_of_buttons
     @file = "<button class=\"btn\">Button</button><button class=\"btn\">Button</button><button class=\"not-a-btn\">Button</button>"
     @linter.run(processed_source)
@@ -33,6 +40,13 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
     @linter.run(processed_source)
 
     assert_includes(@linter.offenses.first.message, "render Primer::ButtonComponent.new(variant: :small, scheme: :primary)")
+  end
+
+  def test_suggests_how_to_use_the_component_as_link
+    @file = "<button class=\"btn-link\">Button</button>"
+    @linter.run(processed_source)
+
+    assert_includes(@linter.offenses.first.message, "render Primer::ButtonComponent.new(scheme: :link)")
   end
 
   def test_suggests_how_to_use_the_component_with_aria_arguments

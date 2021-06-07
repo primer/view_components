@@ -10,17 +10,17 @@ module Primer
         include Helpers
 
         TAGS = %w[button summary a].freeze
-        CLASS = "btn"
+        CLASSES = %w[btn btn-link].freeze
         MESSAGE = "We are migrating buttons to use [Primer::ButtonComponent](https://primer.style/view-components/components/button), please try to use that instead of raw HTML."
 
         def run(processed_source)
           tags(processed_source).each do |tag|
             next if tag.closing?
-            next unless self.class::TAGS&.include?(tag.name)
+            next unless TAGS&.include?(tag.name)
 
             classes = tag.attributes["class"]&.value&.split(" ")
 
-            next unless !self.class::CLASS || classes&.include?(self.class::CLASS)
+            next unless classes&.intersection(CLASSES)&.any?
 
             args = begin
                      ArgumentMapper.new(tag).to_args
@@ -29,11 +29,11 @@ module Primer
                    end
 
             message = if args.nil?
-                        self.class::MESSAGE
+                        MESSAGE
                       elsif args.empty?
-                        self.class::MESSAGE + "\n<%= render Primer::ButtonComponent.new %>"
+                        MESSAGE + "\n<%= render Primer::ButtonComponent.new %>"
                       else
-                        self.class::MESSAGE + "\n<%= render Primer::ButtonComponent.new(#{args}) %>"
+                        MESSAGE + "\n<%= render Primer::ButtonComponent.new(#{args}) %>"
                       end
 
             generate_offense(self.class, processed_source, tag, message)
