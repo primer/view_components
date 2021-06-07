@@ -22,7 +22,7 @@ module Primer
 
             next unless !self.class::CLASS || classes&.include?(self.class::CLASS)
 
-            args = ArgumentMapper.new(classes).to_args
+            args = ArgumentMapper.new(tag).to_args
 
             message = if args.nil?
                         self.class::MESSAGE
@@ -53,11 +53,15 @@ module Primer
             "btn-large" => ":large"
           }.freeze
 
-          def initialize(classes)
-            @classes = classes
+          def initialize(tag)
+            @tag = tag
+            @classes = tag.attributes["class"]
           end
 
           def to_args
+            # We currently only know how to convert simple buttons.
+            return nil if @tag.attributes_node.to_a > 1
+
             hash = @classes.each_with_object({}) do |class_name, acc|
               next if class_name == "btn"
 
@@ -65,6 +69,8 @@ module Primer
                 acc[:scheme] = SCHEME_MAPPINGS[class_name]
               elsif VARIANT_MAPPINGS[class_name] && acc[:variant].nil?
                 acc[:variant] = VARIANT_MAPPINGS[class_name]
+              elsif class_name == "btn-block"
+                acc[:block] = true
               else
                 acc[:conversion_error] = true
                 break
