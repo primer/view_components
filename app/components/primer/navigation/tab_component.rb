@@ -38,8 +38,8 @@ module Primer
 
       # The Tab's text.
       #
-      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::TextComponent) %>.
-      renders_one :text, Primer::TextComponent
+      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Text) %>.
+      renders_one :text, Primer::Beta::Text
 
       # Counter to be rendered in the Tab right.
       #

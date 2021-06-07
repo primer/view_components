@@ -1,8 +1,8 @@
 ---
-title: ButtonMarketing
+title: AlphaButtonMarketing
 status: Alpha
-source: https://github.com/primer/view_components/tree/main/app/components/primer/button_marketing_component.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-button-marketing-component
+source: https://github.com/primer/view_components/tree/main/app/components/primer/button_marketing.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-alpha-button-marketing-component
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

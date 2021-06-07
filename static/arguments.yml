@@ -352,8 +352,8 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: ButtonMarketing
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/button_marketing_component.rb
+- component: AlphaButtonMarketing
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/button_marketing.rb
   parameters:
   - name: scheme
     type: Symbol
@@ -815,8 +815,8 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: Text
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/text_component.rb
+- component: BetaText
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/text.rb
   parameters:
   - name: tag
     type: Symbol

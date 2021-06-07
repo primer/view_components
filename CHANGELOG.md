@@ -13,6 +13,8 @@
 * Renames:
   * `DropdownComponent` to `Dropdown`.
   * `Dropdown::MenuComponent` to `Dropdown::Menu`.
+  * `Primer::ButtonMarketingComponent` to `Primer::Alpha::ButtonMarketing`.
+  * `Primer::TextComponent` to `Primer::Beta::Text`.
 
     *Manuel Puyol*
 
@@ -376,7 +378,7 @@
 
     *Manuel Puyol*
 
-* **Breaking change:** Rename `ButtonMarketingComponent` `button_type` argument to `scheme`.
+* **Breaking change:** Rename `ButtonMarketing` `button_type` argument to `scheme`.
 
     *Manuel Puyol*
 
