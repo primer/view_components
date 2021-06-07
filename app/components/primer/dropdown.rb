@@ -31,11 +31,31 @@ module Primer
     #     <%= c.menu(header: "Options") do |menu|
     #       menu.item { "Item 1" }
     #       menu.item { "Item 2" }
-    #       menu.item(divider: true)
     #       menu.item { "Item 3" }
-    #       menu.item { "Item 4" }
     #     end %>
     #   <% end %>
+    #
+    # @example With dividers
+    #
+    #   @description
+    #     Dividers can be used to separate a group of items. They don't have any content.
+    #   @code
+    #     <%= render(Primer::Dropdown.new) do |c| %>
+    #       <% c.button do %>
+    #         Dropdown
+    #       <% end %>
+    #
+    #       <%= c.menu(header: "Options") do |menu|
+    #         menu.item { "Item 1" }
+    #         menu.item { "Item 2" }
+    #         menu.item(divider: true)
+    #         menu.item { "Item 3" }
+    #         menu.item { "Item 4" }
+    #         menu.item(divider: true)
+    #         menu.item { "Item 5" }
+    #         menu.item { "Item 6" }
+    #       end %>
+    #     <% end %>
     #
     # @example With direction
     #   <%= render(Primer::Dropdown.new(display: :inline_block)) do |c| %>
@@ -46,7 +66,6 @@ module Primer
     #     <%= c.menu(header: "Options", direction: :s) do |menu|
     #       menu.item { "Item 1" }
     #       menu.item { "Item 2" }
-    #       menu.item(divider: true)
     #       menu.item { "Item 3" }
     #       menu.item { "Item 4" }
     #     end %>
@@ -61,7 +80,6 @@ module Primer
     #     <%= c.menu(header: "Options") do |menu|
     #       menu.item { "Item 1" }
     #       menu.item { "Item 2" }
-    #       menu.item(divider: true)
     #       menu.item { "Item 3" }
     #       menu.item { "Item 4" }
     #     end %>
@@ -76,7 +94,6 @@ module Primer
     #     <%= c.menu(header: "Options") do |menu|
     #       menu.item { "Item 1" }
     #       menu.item { "Item 2" }
-    #       menu.item(divider: true)
     #       menu.item { "Item 3" }
     #       menu.item { "Item 4" }
     #     end %>
@@ -104,11 +121,9 @@ module Primer
     #     <% end %>
     #
     #     <%= c.menu(header: "Options") do |menu|
-    #       menu.item(tag: :summary) { "Item 1" }
-    #       menu.item(tag: :button) { "Item 2" }
-    #       menu.item(divider: true)
-    #       menu.item(classes: "custom-class") { "Item 3" }
-    #       menu.item { "Item 4" }
+    #       menu.item(tag: :button) { "Item 1" }
+    #       menu.item(classes: "custom-class") { "Item 2" }
+    #       menu.item { "Item 3" }
     #     end %>
     #   <% end %>
     #
