@@ -2,6 +2,14 @@
 
 ## main
 
+### Breaking changes
+
+* Renames:
+  * `Primer::ButtonMarketingComponent` to `Primer::Alpha::ButtonMarketing`.
+  * `Primer::TextComponent` to `Primer::Beta::Text`.
+
+    *Manuel Puyol*
+
 ## 0.0.43
 
 * Upgrade primer/css to 17.2.1
@@ -356,7 +364,7 @@
 
     *Manuel Puyol*
 
-* **Breaking change:** Rename `ButtonMarketingComponent` `button_type` argument to `scheme`.
+* **Breaking change:** Rename `ButtonMarketing` `button_type` argument to `scheme`.
 
     *Manuel Puyol*
 

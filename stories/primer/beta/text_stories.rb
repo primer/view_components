@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Primer::TextComponentStories < ViewComponent::Storybook::Stories
+require "primer/beta/text"
+
+class Primer::Beta::TextStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:text) do
