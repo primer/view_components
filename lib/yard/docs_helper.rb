@@ -3,18 +3,21 @@
 module YARD
   # Helper methods to use for yard documentation
   module DocsHelper
-    def one_of(enumerable, lower: false)
-      compare = ->(a, b) { a.class == b.class ? a <=> b : a.class.to_s <=> b.class.to_s }
-      sorted_enumerable = enumerable.sort { |a, b| compare.call(a, b) }
+    def one_of(enumerable, lower: false, sort: false)
+      
+      if sort
+        compare = ->(a, b) { a.class == b.class ? a <=> b : a.class.to_s <=> b.class.to_s }
+        enumerable = enumerable.sort { |a, b| compare.call(a, b) }
+      end
 
       values =
         case enumerable
         when Hash
-          sorted_enumerable.map do |key, value|
+          enumerable.map do |key, value|
             "#{pretty_value(key)} (#{pretty_value(value)})"
           end
         else
-          sorted_enumerable.map do |key|
+          enumerable.map do |key|
             pretty_value(key)
           end
           end
