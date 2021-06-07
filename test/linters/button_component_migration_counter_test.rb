@@ -34,4 +34,39 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
 
     assert_includes(@linter.offenses.first.message, "render Primer::ButtonComponent.new(variant: :small, scheme: :primary)")
   end
+
+  def test_suggests_how_to_use_the_component_with_aria_arguments
+    @file = "<button class=\"btn\" aria-label=\"Some label\">Button</button>"
+    @linter.run(processed_source)
+
+    assert_includes(@linter.offenses.first.message, "render Primer::ButtonComponent.new(\"aria-label\": \"Some label\")")
+  end
+
+  def test_suggests_how_to_use_the_component_with_data_arguments
+    @file = "<button class=\"btn\" data-confirm=\"Some confirmation\">Button</button>"
+    @linter.run(processed_source)
+
+    assert_includes(@linter.offenses.first.message, "render Primer::ButtonComponent.new(\"data-confirm\": \"Some confirmation\")")
+  end
+
+  def test_suggest_when_button_is_disabled
+    @file = "<button class=\"btn\" disabled>Button</button>"
+    @linter.run(processed_source)
+
+    assert_includes(@linter.offenses.first.message, "render Primer::ButtonComponent.new(disabled: true)")
+  end
+
+  def test_does_not_suggest_if_using_unsupported_arguments
+    @file = "<button class=\"btn\" onclick>Button</button>"
+    @linter.run(processed_source)
+
+    refute_includes(@linter.offenses.first.message, "render Primer::ButtonComponent.new")
+  end
+
+  def test_does_not_suggest_if_using_unsupported_classes
+    @file = "<button class=\"btn some-custom-class\">Button</button>"
+    @linter.run(processed_source)
+
+    refute_includes(@linter.offenses.first.message, "render Primer::ButtonComponent.new")
+  end
 end
