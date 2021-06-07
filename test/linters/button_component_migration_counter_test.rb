@@ -4,7 +4,7 @@ require "linter_test_case"
 
 class ButtonComponentMigrationCounterTest < LinterTestCase
   def linter_class
-    ERBLint::Linters::ButtonComponentMigrationCounter
+    Primer::ViewComponents::Linters::ButtonComponentMigrationCounter
   end
 
   def test_warns_if_there_is_a_html_button
@@ -26,5 +26,12 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
     @linter.run(processed_source)
 
     assert_empty @linter.offenses
+  end
+
+  def test_suggests_how_to_use_the_component_with_arguments
+    @file = "<button class=\"btn btn-sm btn-primary\">Button</button>"
+    @linter.run(processed_source)
+
+    assert_includes(@linter.offenses.first.message, "render Primer::ButtonComponent.new(variant: :small, scheme: :primary)")
   end
 end
