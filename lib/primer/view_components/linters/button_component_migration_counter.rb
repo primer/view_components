@@ -22,7 +22,11 @@ module Primer
 
             next unless !self.class::CLASS || classes&.include?(self.class::CLASS)
 
-            args = ArgumentMapper.new(tag).to_args
+            args = begin
+                     ArgumentMapper.new(tag).to_args
+                   rescue ArgumentMapper::ConversionError
+                     nil
+                   end
 
             message = if args.nil?
                         self.class::MESSAGE
@@ -40,6 +44,8 @@ module Primer
 
         # Maps from classes to arguments.
         class ArgumentMapper
+          class ConversionError < StandardError; end
+
           SCHEME_MAPPINGS = {
             "btn-primary" => ":primary",
             "btn-danger" => ":danger",
@@ -55,14 +61,30 @@ module Primer
 
           def initialize(tag)
             @tag = tag
-            @classes = tag.attributes["class"]
           end
 
           def to_args
-            # We currently only know how to convert simple buttons.
-            return nil if @tag.attributes_node.to_a > 1
+            args = {}
 
-            hash = @classes.each_with_object({}) do |class_name, acc|
+            @tag.attributes.each do |attribute|
+              attr_name = attribute.name
+
+              if attr_name == "class"
+                args = args.merge(classes_to_args(attribute))
+              elsif attr_name == "disabled"
+                args[:disabled] = true
+              elsif attr_name.start_with?("aria-", "data-")
+                args["\"#{attr_name}\""] = "\"#{attribute.value}\""
+              else
+                raise ConversionError, "Cannot convert attribute #{attr_name}"
+              end
+            end
+
+            args.map { |k, v| "#{k}: #{v}" }.join(", ")
+          end
+
+          def classes_to_args(classes)
+            hash = classes.value.split(" ").each_with_object({}) do |class_name, acc|
               next if class_name == "btn"
 
               if SCHEME_MAPPINGS[class_name] && acc[:scheme].nil?
@@ -71,15 +93,14 @@ module Primer
                 acc[:variant] = VARIANT_MAPPINGS[class_name]
               elsif class_name == "btn-block"
                 acc[:block] = true
+              elsif class_name == "BtnGroup-item"
+                acc[:group_item] = true
               else
-                acc[:conversion_error] = true
-                break
+                raise ConversionError, "Cannot convert class #{class_name}"
               end
             end
 
-            return nil if hash[:conversion_error]
-
-            hash.map { |k, v| "#{k}: #{v}" }.join(", ")
+            hash
           end
         end
       end
