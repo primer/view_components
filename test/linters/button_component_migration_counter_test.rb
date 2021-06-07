@@ -70,6 +70,13 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
     assert_includes(@linter.offenses.first.message, "render Primer::ButtonComponent.new(disabled: true)")
   end
 
+  def test_suggest_using_the_tag_system_argument
+    @file = "<a class=\"btn\">Button</a>"
+    @linter.run(processed_source)
+
+    assert_includes(@linter.offenses.first.message, "render Primer::ButtonComponent.new(tag: :a)")
+  end
+
   def test_does_not_suggest_if_using_unsupported_arguments
     @file = "<button class=\"btn\" onclick>Button</button>"
     @linter.run(processed_source)

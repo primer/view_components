@@ -66,6 +66,8 @@ module Primer
           def to_args
             args = {}
 
+            args[:tag] = ":#{@tag.name}" unless @tag.name == "button"
+
             @tag.attributes.each do |attribute|
               attr_name = attribute.name
 
