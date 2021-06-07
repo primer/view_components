@@ -104,6 +104,6 @@ The body
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `caret` | `Symbol` | N/A | One of `:bottom`, `:bottom_left`, `:bottom_right`, `:left`, `:left_bottom`, `:left_top`, `:right`, `:right_bottom`, `:right_top`, `:top`, `:top_left`, or `:top_right`. |
+| `caret` | `Symbol` | N/A | One of `:top`, `:bottom`, `:bottom_right`, `:bottom_left`, `:left`, `:left_bottom`, `:left_top`, `:right`, `:right_bottom`, `:right_top`, `:top_left`, or `:top_right`. |
 | `large` | `Boolean` | N/A | Whether to use the large version of the component. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

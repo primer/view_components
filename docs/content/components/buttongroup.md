@@ -53,7 +53,7 @@ Use `ButtonGroup` to render a series of buttons.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `variant` | `Symbol` | `Primer::ButtonComponent::DEFAULT_VARIANT` | One of `:large`, `:medium`, or `:small`. |
+| `variant` | `Symbol` | `Primer::ButtonComponent::DEFAULT_VARIANT` | One of `:small`, `:medium`, or `:large`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots

@@ -46,7 +46,7 @@ Use `State` for rendering the status of an item.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `title` | `String` | N/A | `title` HTML attribute. |
-| `scheme` | `Symbol` | `:default` | Background color. One of `:closed`, `:default`, `:green`, `:merged`, `:open`, `:purple`, or `:red`. |
-| `tag` | `Symbol` | `:span` | HTML tag for element. One of `:div` and `:span`. |
+| `scheme` | `Symbol` | `:default` | Background color. One of `:open`, `:closed`, `:merged`, `:default`, `:green`, `:red`, or `:purple`. |
+| `tag` | `Symbol` | `:span` | HTML tag for element. One of `:span` and `:div`. |
 | `size` | `Symbol` | `:default` | One of `:default` and `:small`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

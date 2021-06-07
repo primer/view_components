@@ -40,8 +40,8 @@ Use `Label` to add contextual metadata to a design.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `tag` | `Symbol` | `:span` | One of `:a`, `:div`, `:span`, or `:summary`. |
+| `tag` | `Symbol` | `:span` | One of `:span`, `:summary`, `:a`, or `:div`. |
 | `title` | `String` | N/A | `title` attribute for the component element. |
-| `scheme` | `Symbol` | `nil` | One of `:danger`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`, `:success`, or `:warning`. |
-| `variant` | `Symbol` | `nil` | One of `nil`, `:inline`, or `:large`. |
+| `scheme` | `Symbol` | `nil` | One of `:primary`, `:secondary`, `:info`, `:success`, `:warning`, `:danger`, `:orange`, or `:purple`. |
+| `variant` | `Symbol` | `nil` | One of `:large`, `:inline`, or `nil`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
