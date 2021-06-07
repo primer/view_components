@@ -82,6 +82,20 @@
       "problemMatcher": []
     },
     {
+      "label": "docs:preview: build previews",
+      "type": "shell",
+      "group": "build",
+      "command": "bundle exec rake docs:preview",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "runOptions": {
+        "reevaluateOnRerun": false
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "statuses:dump: dump static files",
       "type": "shell",
       "group": "build",

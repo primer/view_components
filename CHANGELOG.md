@@ -2,6 +2,16 @@
 
 ## main
 
+### Breaking changes
+
+* Renames:
+  * `Primer::ButtonMarketingComponent` to `Primer::Alpha::ButtonMarketing`.
+  * `Primer::TextComponent` to `Primer::Beta::Text`.
+
+    *Manuel Puyol*
+
+### Misc
+
 * Sort the docs arguments
 
   *Jon Rohan*
@@ -360,7 +370,7 @@
 
     *Manuel Puyol*
 
-* **Breaking change:** Rename `ButtonMarketingComponent` `button_type` argument to `scheme`.
+* **Breaking change:** Rename `ButtonMarketing` `button_type` argument to `scheme`.
 
     *Manuel Puyol*
 

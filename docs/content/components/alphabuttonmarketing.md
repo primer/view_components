@@ -1,8 +1,8 @@
 ---
-title: ButtonMarketing
+title: AlphaButtonMarketing
 status: Alpha
-source: https://github.com/primer/view_components/tree/main/app/components/primer/button_marketing_component.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-button-marketing-component
+source: https://github.com/primer/view_components/tree/main/app/components/primer/button_marketing.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-alpha-button-marketing-component
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
@@ -39,8 +39,8 @@ Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, o
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `scheme` | `Symbol` | `:default` | One of `:default`, `:outline`, `:primary`, or `:transparent`. |
+| `scheme` | `Symbol` | `:default` | One of `:default`, `:primary`, `:outline`, or `:transparent`. |
 | `variant` | `Symbol` | `:default` | One of `:default` and `:large`. |
-| `tag` | `Symbol` | `:button` | One of `:a` and `:button`. |
+| `tag` | `Symbol` | `:button` | One of `:button` and `:a`. |
 | `type` | `Symbol` | `:button` | One of `:button` and `:submit`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
