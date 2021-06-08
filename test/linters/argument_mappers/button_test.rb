@@ -124,4 +124,37 @@ class ArgumentMappersButtonTest < LinterTestCase
 
     assert_equal "test_selector: \"some-selector\"", args
   end
+
+  def test_converts_erb_test_selector_call
+    @file = "<button class=\"btn\" <%= test_selector('some-selector') %>>Button</button>"
+    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
+
+    assert_equal "test_selector: \"some-selector\"", args
+  end
+
+  def test_raises_if_unsupported_erb_block
+    @file = "<button class=\"btn\" <%= some_method('some-selector') %>>Button</button>"
+    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
+      ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
+    end
+
+    assert_equal "Cannot convert erb block", err.message
+  end
+
+  def test_complex_case
+    @file = '
+      <button
+        class="btn btn-primary btn-sm btn-block BtnGroup-item"
+        aria-label="some label"
+        data-pjax
+        data-click="click"
+        <%= test_selector("some_selector") %>
+        disabled
+        type="submit"
+      >Button</button>'
+
+    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
+
+    assert_equal 'scheme: :primary, variant: :small, block: true, group_item: true, "aria-label": "some label", "data-pjax": true, "data-click": "click", test_selector: "some_selector", disabled: true, type: :submit', args
+  end
 end
