@@ -1,8 +1,8 @@
 ---
-title: Text
+title: BetaText
 status: Beta
-source: https://github.com/primer/view_components/tree/main/app/components/primer/text_component.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-text-component
+source: https://github.com/primer/view_components/tree/main/app/components/primer/text.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-beta-text-component
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

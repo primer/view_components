@@ -31,7 +31,7 @@ module Primer
     #
     #   <%= render(Primer::BorderBoxComponent.new) do |component| %>
     #     <% component.body do %>
-    #       <%= render(Primer::TextComponent.new(pr: 2)) { "Body" } %>
+    #       <%= render(Primer::Beta::Text.new(pr: 2)) { "Body" } %>
     #       <%= render(Primer::IconButton.new(icon: :pencil, box: true, "aria-label": "Edit")) %>
     #     <% end %>
     #   <% end %>

@@ -2,7 +2,21 @@
 
 ## main
 
+### Breaking changes
+
+* Renames:
+  * `Primer::ButtonMarketingComponent` to `Primer::Alpha::ButtonMarketing`.
+  * `Primer::TextComponent` to `Primer::Beta::Text`.
+
+    *Manuel Puyol*
+
+### Misc
+
 * Replace Classify::Spacing class with pre-generated mappings.
+
+  *Jon Rohan*
+
+* Sort documentation arguments.
 
   *Jon Rohan*
 
@@ -51,6 +65,10 @@
 * Update docs to accept multiline descriptions.
 
     *Manuel Puyol*
+
+* Add preliminary criteria for new `alpha` components.
+
+    *Joel Hawksley*
 
 ## 0.0.42
 
@@ -356,7 +374,7 @@
 
     *Manuel Puyol*
 
-* **Breaking change:** Rename `ButtonMarketingComponent` `button_type` argument to `scheme`.
+* **Breaking change:** Rename `ButtonMarketing` `button_type` argument to `scheme`.
 
     *Manuel Puyol*
 

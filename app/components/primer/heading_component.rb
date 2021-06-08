@@ -5,7 +5,7 @@ module Primer
   #
   # - Set tag to one of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, `:h6` based on what is appropriate for the page context.
   # - Use `Heading` as the title of a section or sub section.
-  # - Do not use `Heading` for styling alone. For simply styling text, consider using <%= link_to_component(Primer::TextComponent) %> with relevant <%= link_to_typography_docs %>
+  # - Do not use `Heading` for styling alone. For simply styling text, consider using <%= link_to_component(Primer::Beta::Text) %> with relevant <%= link_to_typography_docs %>
   #   such as `font_size` and `font_weight`.
   # - Do not jump heading levels. For instance, do not follow a `<h1>` with an `<h3>`. Heading levels should increase by one in ascending order.
   #
