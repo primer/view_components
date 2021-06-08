@@ -47,28 +47,35 @@ module Primer
 
         # Extract hash from classes ie. "mr-1 mb-2 foo" => { mr: 1, mb: 2, classes: "foo" }
         def classes_to_hash(classes)
+          # This method is too slow to run in production
+          return { classes: classes } if Rails.env.production?
+
           obj = {}
           classes = classes.split(" ")
-          classes.reject! do |c|
-            key, value, index = find_selector(c)
+          # Loop through all classes supplied and reject ones we find a match for
+          # So when we're at the end of the loop we have classes left with any non-system classes.
+          classes.reject! do |classname|
+            key, value, index = find_selector(classname)
             next false if key.nil?
 
             # Create array if nil
             obj[key] = Array.new(5, nil) if obj[key].nil?
+            # Place the arguments in the responsive array based on index mr: [nil, 2]
             obj[key][index] = value
             next true
           end
 
-          # Transform responsive arrays into arrays without trailing nil
-          obj.transform_values! do |v|
-            v = v.reverse.drop_while(&:nil?).reverse
-            if v.count == 1
-              v.first
+          # Transform responsive arrays into arrays without trailing nil, so `mr: [1, nil, nil, nil, nil]` becomes `mr: 1`
+          obj.transform_values! do |value|
+            value = value.reverse.drop_while(&:nil?).reverse
+            if value.count == 1
+              value.first
             else
-              v
+              value
             end
           end
 
+          # Add back the non-system classes
           obj[:classes] = classes.join(" ") if classes.any?
           obj
         end
@@ -76,11 +83,17 @@ module Primer
         private
 
         def find_selector(selector)
-          Primer::Classify::UTILITIES.each do |k, v|
-            v.each do |vk, vv|
-              next unless vv.include?(selector)
+          # Search each key/value_hash pair, eg. key `:mr` and value_hash `{ 0 => [ "mr-0", "mr-sm-0", "mr-md-0", "mr-lg-0", "mr-xl-0" ] }`
+          Primer::Classify::UTILITIES.each do |key, value_hash|
+            # Each value hash will also contain an array of classnames for breakpoints
+            # Key argument `0`, classes `[ "mr-0", "mr-sm-0", "mr-md-0", "mr-lg-0", "mr-xl-0" ]`
+            value_hash.each do |key_argument, classnames|
+              # Skip each value hash until we get one with the selector
+              next unless classnames.include?(selector)
 
-              return [k, vk, vv.index(selector)]
+              # Return [:mr, 0, 1]
+              # has index of classname, so we can match it up with responsvie array `mr: [nil, 0]`
+              return [key, key_argument, classnames.index(selector)]
             end
           end
 

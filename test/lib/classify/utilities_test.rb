@@ -37,4 +37,10 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     assert_equal({ mr: [1, 2], classes: "baz bin" }, Primer::Classify::Utilities.classes_to_hash("mr-1 mr-sm-2 baz bin"))
     assert_equal({ mr: [1, nil, 2], classes: "foo bar" }, Primer::Classify::Utilities.classes_to_hash("mr-1 mr-md-2 foo bar"))
   end
+
+  def test_classes_to_hash_returns_classes_when_run_in_production
+    Rails.stub(:env, ActiveSupport::StringInquirer.new("production")) do
+      assert_equal({ classes: "mr-1 mr-md-2 foo bar" }, Primer::Classify::Utilities.classes_to_hash("mr-1 mr-md-2 foo bar"))
+    end
+  end
 end
