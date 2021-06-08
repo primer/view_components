@@ -60,7 +60,7 @@ module ERBLint
         end
 
         def classes_to_args(classes)
-          hash = classes.value.split(" ").each_with_object({}) do |class_name, acc|
+          classes.value.split(" ").each_with_object({}) do |class_name, acc|
             next if class_name == "btn"
 
             if SCHEME_MAPPINGS[class_name] && acc[:scheme].nil?
@@ -75,8 +75,6 @@ module ERBLint
               raise ConversionError, "Cannot convert class \"#{class_name}\""
             end
           end
-
-          hash
         end
       end
     end

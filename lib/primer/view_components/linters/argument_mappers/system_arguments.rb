@@ -17,7 +17,7 @@ module ERBLint
 
         def to_args
           if attribute.erb?
-            _, _, code_node, = *attribute.node
+            _, _, code_node = *attribute.node
 
             raise ConversionError, "Cannot convert erb block" if code_node.nil?
 
