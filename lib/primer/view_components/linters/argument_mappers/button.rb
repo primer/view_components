@@ -27,6 +27,10 @@ module ERBLint
           @tag = tag
         end
 
+        def to_s
+          to_args.map { |k, v| "#{k}: #{v}" }.join(", ")
+        end
+
         def to_args
           args = {}
 
@@ -52,7 +56,7 @@ module ERBLint
             end
           end
 
-          args.map { |k, v| "#{k}: #{v}" }.join(", ")
+          args
         end
 
         def classes_to_args(classes)

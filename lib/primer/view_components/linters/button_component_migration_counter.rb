@@ -16,7 +16,7 @@ module ERBLint
       private
 
       def map_arguments(tag)
-        ArgumentMappers::Button.new(tag).to_args
+        ArgumentMappers::Button.new(tag).to_s
       rescue ArgumentMappers::ConversionError
         nil
       end
