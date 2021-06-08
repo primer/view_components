@@ -79,6 +79,27 @@ class ArgumentMappersButtonTest < LinterTestCase
     end
   end
 
+  def test_returns_type_argument
+    Primer::BaseButton::TYPE_OPTIONS.each do |type|
+      # button is the default, so it does not require a `type` argument
+      next if type == :button
+
+      @file = "<button class=\"btn\" type=\"#{type}\">Button</button>"
+      args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
+
+      assert_equal "type: :#{type}", args
+    end
+  end
+
+  def test_raises_if_type_is_not_supported
+    @file = "<button class=\"btn\" type=\"some-type\">Button</button>"
+    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
+      ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
+    end
+
+    assert_equal "Button component does not support type \"some-type\"", err.message
+  end
+
   def test_raises_if_cannot_map_class
     @file = "<button class=\"some-class\">Button</button>"
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do

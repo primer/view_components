@@ -20,6 +20,8 @@ module ERBLint
           "btn-large" => ":large"
         }.freeze
 
+        TYPE_OPTIONS = %w[button reset submit].freeze
+
         def initialize(tag)
           @tag = tag
         end
@@ -36,6 +38,13 @@ module ERBLint
               args = args.merge(classes_to_args(attribute))
             elsif attr_name == "disabled"
               args[:disabled] = true
+            elsif attr_name == "type"
+              # button is the default type, so we don't need to do anything.
+              next if attribute.value == "button"
+
+              raise ConversionError, "Button component does not support type \"#{attribute.value}\"" unless TYPE_OPTIONS.include?(attribute.value)
+
+              args[:type] = ":#{attribute.value}"
             elsif attr_name.start_with?("aria-", "data-")
               # if attribute has no value_node, it means it is a boolean attribute.
               args["\"#{attr_name}\""] = attribute.value_node ? "\"#{attribute.value}\"" : true
