@@ -5,7 +5,7 @@ require_relative "conversion_error"
 module ERBLint
   module Linters
     module ArgumentMappers
-      # Maps classes in a button element to arguments for the Button component.
+      # Maps element attributes to system arguments.
       class SystemArguments
         STRING_PARAETERS = %w[aria- data-].freeze
         TEST_SELECTOR_REGEX = /test_selector\((?<selector>.+)\)$/.freeze
