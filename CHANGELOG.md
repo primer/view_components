@@ -12,7 +12,7 @@
 
 ### Misc
 
-* Sort the docs arguments
+* Sort documentation arguments.
 
   *Jon Rohan*
 
