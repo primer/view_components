@@ -40,7 +40,7 @@ Use `Layout` to build a main/sidebar layout.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `responsive` | `Boolean` | `false` | Whether to collapse layout to a single column at smaller widths. |
-| `side` | `Symbol` | `:right` | Which side to display the sidebar on. One of `:right` and `:left`. |
+| `side` | `Symbol` | `:right` | Which side to display the sidebar on. One of `:left` and `:right`. |
 | `sidebar_col` | `Integer` | `3` | Sidebar column width. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 

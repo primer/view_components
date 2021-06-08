@@ -43,7 +43,7 @@ of the select menu.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `direction` | `Symbol` | `:se` | One of `:se`, `:sw`, `:w`, `:e`, `:ne`, or `:s`. |
+| `direction` | `Symbol` | `:se` | One of `:e`, `:ne`, `:s`, `:se`, `:sw`, or `:w`. |
 | `scheme` | `Symbol` | `:default` | Pass `:dark` for dark mode theming |
 | `header` | `String` | `nil` | Optional string to display as the header |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

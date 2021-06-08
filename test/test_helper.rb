@@ -9,6 +9,7 @@ require "rails"
 require "rails/test_help"
 require "view_component/test_helpers"
 require "test_helpers/component_test_helpers"
+require "yard/docs_helper"
 require "pry"
 require "yaml"
 
