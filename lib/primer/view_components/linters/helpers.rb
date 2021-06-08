@@ -43,7 +43,7 @@ module Primer
 
         private
 
-        def message(tag)
+        def message(_tag)
           self.class::MESSAGE
         end
 
