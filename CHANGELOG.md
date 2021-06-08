@@ -2,7 +2,7 @@
 
 ## main
 
-* Replacing Classify::Spacing class with primer utilities class and generation
+* Replace Classify::Spacing class with pre-generated mappings.
 
   *Jon Rohan*
 
