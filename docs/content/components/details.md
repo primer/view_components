@@ -15,7 +15,7 @@ Use `DetailsComponent` to reveal content after clicking a button.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `overlay` | `Symbol` | `:none` | Dictates the type of overlay to render with. One of `:none`, `:default`, or `:dark`. |
+| `overlay` | `Symbol` | `:none` | Dictates the type of overlay to render with. One of `:dark`, `:default`, or `:none`. |
 | `reset` | `Boolean` | `false` | Defatuls to false. If set to true, it will remove the default caret and remove style from the summary element |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 

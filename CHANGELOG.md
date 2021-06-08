@@ -10,6 +10,12 @@
 
     *Manuel Puyol*
 
+### Misc
+
+* Sort documentation arguments.
+
+  *Jon Rohan*
+
 ## 0.0.43
 
 * Upgrade primer/css to 17.2.1
