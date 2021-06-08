@@ -20,7 +20,7 @@ module YARD
           enumerable.map do |key|
             pretty_value(key)
           end
-          end
+        end
 
       prefix = "One of"
       prefix = prefix.downcase if lower
