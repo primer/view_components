@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require "test_helper"
-require "erb_lint"
-require "primer/view_components/linters"
 
 class LinterTestCase < Minitest::Test
   def setup
@@ -10,6 +8,10 @@ class LinterTestCase < Minitest::Test
   end
 
   def linter_class; end
+
+  def offenses
+    @linter.offenses
+  end
 
   def file_loader
     ERBLint::FileLoader.new(".")
