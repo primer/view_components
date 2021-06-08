@@ -17,7 +17,7 @@ module ERBLint
 
             classes = tag.attributes["class"]&.value&.split(" ")
 
-            next if self.class::CLASSES.any? && classes&.intersection(self.class::CLASSES).blank?
+            next if self.class::CLASSES.any? && (classes & self.class::CLASSES).blank?
 
             generate_offense(self.class, processed_source, tag, message(tag))
           end
