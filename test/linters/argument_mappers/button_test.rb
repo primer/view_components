@@ -5,42 +5,42 @@ require "linter_test_case"
 class ArgumentMappersButtonTest < LinterTestCase
   def test_returns_no_arguments_if_only_btn
     @file = "<button class=\"btn\">Button</button>"
-    args = Primer::ViewComponents::Linters::ArgumentMappers::Button.new(tags.first).to_args
+    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
 
     assert_equal "", args
   end
 
   def test_returns_aria_arguments_as_string_symbols
     @file = "<button aria-label=\"label\" aria-disabled=\"true\" aria-boolean>Button</button>"
-    args = Primer::ViewComponents::Linters::ArgumentMappers::Button.new(tags.first).to_args
+    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
 
     assert_equal "\"aria-label\": \"label\", \"aria-disabled\": \"true\", \"aria-boolean\": true", args
   end
 
   def test_returns_data_arguments_as_string_symbols
     @file = "<button data-action=\"click\" data-pjax>Button</button>"
-    args = Primer::ViewComponents::Linters::ArgumentMappers::Button.new(tags.first).to_args
+    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
 
     assert_equal "\"data-action\": \"click\", \"data-pjax\": true", args
   end
 
   def test_returns_disabled_argument_as_boolean
     @file = "<button disabled>Button</button>"
-    args = Primer::ViewComponents::Linters::ArgumentMappers::Button.new(tags.first).to_args
+    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
 
     assert_equal "disabled: true", args
   end
 
   def test_returns_block_argument
     @file = "<button class=\"btn-block\">Button</button>"
-    args = Primer::ViewComponents::Linters::ArgumentMappers::Button.new(tags.first).to_args
+    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
 
     assert_equal "block: true", args
   end
 
   def test_returns_group_item_argument
     @file = "<button class=\"BtnGroup-item\">Button</button>"
-    args = Primer::ViewComponents::Linters::ArgumentMappers::Button.new(tags.first).to_args
+    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
 
     assert_equal "group_item: true", args
   end
@@ -50,7 +50,7 @@ class ArgumentMappersButtonTest < LinterTestCase
       next if class_name.blank?
 
       @file = "<button class=\"#{class_name}\">Button</button>"
-      args = Primer::ViewComponents::Linters::ArgumentMappers::Button.new(tags.first).to_args
+      args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
 
       assert_equal "scheme: :#{value}", args
     end
@@ -61,7 +61,7 @@ class ArgumentMappersButtonTest < LinterTestCase
       next if class_name.blank?
 
       @file = "<button class=\"#{class_name}\">Button</button>"
-      args = Primer::ViewComponents::Linters::ArgumentMappers::Button.new(tags.first).to_args
+      args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
 
       assert_equal "variant: :#{value}", args
     end
@@ -69,8 +69,8 @@ class ArgumentMappersButtonTest < LinterTestCase
 
   def test_raises_if_cannot_map_class
     @file = "<button class=\"some-class\">Button</button>"
-    err = assert_raises Primer::ViewComponents::Linters::ArgumentMappers::ConversionError do
-      Primer::ViewComponents::Linters::ArgumentMappers::Button.new(tags.first).to_args
+    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
+      ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
     end
 
     assert_equal "Cannot convert class \"some-class\"", err.message
@@ -78,8 +78,8 @@ class ArgumentMappersButtonTest < LinterTestCase
 
   def test_raises_if_cannot_map_attribute
     @file = "<button some-attribute=\"some-value\">Button</button>"
-    err = assert_raises Primer::ViewComponents::Linters::ArgumentMappers::ConversionError do
-      Primer::ViewComponents::Linters::ArgumentMappers::Button.new(tags.first).to_args
+    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
+      ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
     end
 
     assert_equal "Cannot convert attribute \"some-attribute\"", err.message

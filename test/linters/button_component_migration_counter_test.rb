@@ -4,7 +4,7 @@ require "linter_test_case"
 
 class ButtonComponentMigrationCounterTest < LinterTestCase
   def linter_class
-    Primer::ViewComponents::Linters::ButtonComponentMigrationCounter
+    ERBLint::Linters::ButtonComponentMigrationCounter
   end
 
   def test_warns_if_there_is_a_html_button
