@@ -10,6 +10,12 @@
 
     *Manuel Puyol*
 
+### Misc
+
+* Add linter suggestions for `Button` component.
+
+    *Manuel Puyol*
+
 ## 0.0.43
 
 * Upgrade primer/css to 17.2.1
