@@ -18,7 +18,7 @@ module Primer
 
               classes = tag.attributes["class"]&.value&.split(" ")
 
-              next unless !self.class::CLASS || classes&.include?(self.class::CLASS)
+              next if self.class::CLASSES.any? && classes&.intersection(self.class::CLASSES).blank?
 
               generate_offense(self.class, processed_source, tag, self.class::MESSAGE)
             end

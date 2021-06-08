@@ -20,7 +20,7 @@ module Primer
 
             classes = tag.attributes["class"]&.value&.split(" ")
 
-            next unless classes&.intersection(CLASSES)&.any?
+            next if classes&.intersection(CLASSES).blank?
 
             args = begin
                      ArgumentMapper.new(tag).to_args
