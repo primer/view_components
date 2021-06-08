@@ -4,7 +4,6 @@ module YARD
   # Helper methods to use for yard documentation
   module DocsHelper
     def one_of(enumerable, lower: false, sort: true)
-
       if sort
         compare = ->(a, b) { a.class == b.class ? a <=> b : a.class.to_s <=> b.class.to_s }
         enumerable = enumerable.sort { |a, b| compare.call(a, b) }
