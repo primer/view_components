@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "conversion_error"
+require_relative "system_arguments"
 
 module ERBLint
   module Linters
@@ -45,11 +46,9 @@ module ERBLint
               raise ConversionError, "Button component does not support type \"#{attribute.value}\"" unless TYPE_OPTIONS.include?(attribute.value)
 
               args[:type] = ":#{attribute.value}"
-            elsif attr_name.start_with?("aria-", "data-")
-              # if attribute has no value_node, it means it is a boolean attribute.
-              args["\"#{attr_name}\""] = attribute.value_node ? "\"#{attribute.value}\"" : true
             else
-              raise ConversionError, "Cannot convert attribute \"#{attr_name}\""
+              # Assume the attribute is a system argument.
+              args.merge!(SystemArguments.new(attribute).to_args)
             end
           end
 

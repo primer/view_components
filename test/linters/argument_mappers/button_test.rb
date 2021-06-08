@@ -117,4 +117,11 @@ class ArgumentMappersButtonTest < LinterTestCase
 
     assert_equal "Cannot convert attribute \"some-attribute\"", err.message
   end
+
+  def test_converts_data_test_selector
+    @file = "<button data-test-selector=\"some-selector\">Button</button>"
+    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
+
+    assert_equal "test_selector: \"some-selector\"", args
+  end
 end
