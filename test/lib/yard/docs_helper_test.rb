@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "test_helper"
-require "yard/docs_helper"
 
 class YardDocsHelperTest < Minitest::Test
   include YARD::DocsHelper
