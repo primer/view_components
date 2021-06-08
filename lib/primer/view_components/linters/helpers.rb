@@ -20,7 +20,7 @@ module Primer
 
               next if self.class::CLASSES.any? && classes&.intersection(self.class::CLASSES).blank?
 
-              generate_offense(self.class, processed_source, tag, self.class::MESSAGE)
+              generate_offense(self.class, processed_source, tag, message(tag))
             end
 
             counter_correct?(processed_source)
@@ -42,6 +42,10 @@ module Primer
         end
 
         private
+
+        def message(tag)
+          self.class::MESSAGE
+        end
 
         def tags(processed_source)
           processed_source.parser.nodes_with_type(:tag).map { |tag_node| BetterHtml::Tree::Tag.from_node(tag_node) }
