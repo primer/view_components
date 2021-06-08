@@ -4,7 +4,7 @@ require "linter_test_case"
 
 class FlashComponentMigrationCounterTest < LinterTestCase
   def linter_class
-    ERBLint::Linters::FlashComponentMigrationCounter
+    Primer::ViewComponents::Linters::FlashComponentMigrationCounter
   end
 
   def test_warns_if_there_is_a_html_flash
