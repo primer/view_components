@@ -26,7 +26,7 @@ module ERBLint
 
             raise ConversionError, "Cannot convert erb block" if m.blank?
 
-            { test_selector: m[:selector].gsub("'", '"') }
+            { test_selector: m[:selector].tr("'", '"') }
           elsif attr_name == "data-test-selector"
             { test_selector: attribute.value.to_json }
           elsif attr_name.start_with?(*STRING_PARAETERS)

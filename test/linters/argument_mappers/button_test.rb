@@ -15,10 +15,10 @@ class ArgumentMappersButtonTest < LinterTestCase
     args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
 
     assert_equal({
-      '"aria-label"' => '"label"',
-      '"aria-disabled"' => '"true"',
-      '"aria-boolean"' => true
-    }, args)
+                   '"aria-label"' => '"label"',
+                   '"aria-disabled"' => '"true"',
+                   '"aria-boolean"' => true
+                 }, args)
   end
 
   def test_returns_data_arguments_as_string_symbols
@@ -26,9 +26,9 @@ class ArgumentMappersButtonTest < LinterTestCase
     args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
 
     assert_equal({
-      '"data-action"' => '"click"',
-      '"data-pjax"' => true
-    }, args)
+                   '"data-action"' => '"click"',
+                   '"data-pjax"' => true
+                 }, args)
   end
 
   def test_returns_disabled_argument_as_boolean
@@ -163,17 +163,17 @@ class ArgumentMappersButtonTest < LinterTestCase
     args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
 
     assert_equal({
-      :scheme => ":primary",
-      :variant => ":small",
-      :block => true,
-      :group_item => true,
-      '"aria-label"' => '"some label"',
-      '"data-pjax"' => true,
-      '"data-click"' => '"click"',
-      :test_selector => '"some_selector"',
-      :disabled => true,
-      :type => ":submit"
-    }, args)
+                   :scheme => ":primary",
+                   :variant => ":small",
+                   :block => true,
+                   :group_item => true,
+                   '"aria-label"' => '"some label"',
+                   '"data-pjax"' => true,
+                   '"data-click"' => '"click"',
+                   :test_selector => '"some_selector"',
+                   :disabled => true,
+                   :type => ":submit"
+                 }, args)
   end
 
   def test_returns_arguments_as_string
