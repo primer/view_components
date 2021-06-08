@@ -67,6 +67,18 @@ class ArgumentMappersButtonTest < LinterTestCase
     end
   end
 
+  def test_returns_tag_argument
+    Primer::BaseButton::TAG_OPTIONS.each do |tag|
+      # button is the default, so it does not require a `tag` argument
+      next if tag == :button
+
+      @file = "<#{tag} class=\"btn\">Button</#{tag}>"
+      args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
+
+      assert_equal "tag: :#{tag}", args
+    end
+  end
+
   def test_raises_if_cannot_map_class
     @file = "<button class=\"some-class\">Button</button>"
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
