@@ -6,8 +6,10 @@ require "primer/view_components/linters"
 
 class LinterTestCase < Minitest::Test
   def setup
-    @linter = linter_class.new(file_loader, linter_class.config_schema.new)
+    @linter = linter_class&.new(file_loader, linter_class.config_schema.new)
   end
+
+  def linter_class; end
 
   def file_loader
     ERBLint::FileLoader.new(".")
@@ -15,6 +17,10 @@ class LinterTestCase < Minitest::Test
 
   def processed_source
     ERBLint::ProcessedSource.new("file.rb", @file)
+  end
+
+  def tags
+    processed_source.parser.nodes_with_type(:tag).map { |tag_node| BetterHtml::Tree::Tag.from_node(tag_node) }
   end
 
   def corrector

@@ -38,9 +38,10 @@ module Primer
               elsif attr_name == "disabled"
                 args[:disabled] = true
               elsif attr_name.start_with?("aria-", "data-")
-                args["\"#{attr_name}\""] = "\"#{attribute.value}\""
+                # if attribute has no value_node, it means it is a boolean attribute.
+                args["\"#{attr_name}\""] = attribute.value_node ? "\"#{attribute.value}\"" : true
               else
-                raise ConversionError, "Cannot convert attribute #{attr_name}"
+                raise ConversionError, "Cannot convert attribute \"#{attr_name}\""
               end
             end
 
@@ -60,7 +61,7 @@ module Primer
               elsif class_name == "BtnGroup-item"
                 acc[:group_item] = true
               else
-                raise ConversionError, "Cannot convert class #{class_name}"
+                raise ConversionError, "Cannot convert class \"#{class_name}\""
               end
             end
 

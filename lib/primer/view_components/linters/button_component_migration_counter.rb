@@ -14,21 +14,6 @@ module Primer
         CLASSES = %w[btn btn-link].freeze
         MESSAGE = "We are migrating buttons to use [Primer::ButtonComponent](https://primer.style/view-components/components/button), please try to use that instead of raw HTML."
 
-        # def run(processed_source)
-        #   tags(processed_source).each do |tag|
-        #     next if tag.closing?
-        #     next unless TAGS&.include?(tag.name)
-
-        #     classes = tag.attributes["class"]&.value&.split(" ")
-
-        #     next if classes&.intersection(CLASSES).blank?
-
-        #     generate_offense(self.class, processed_source, tag, message(tag))
-        #   end
-
-        #   counter_correct?(processed_source)
-        # end
-
         private
 
         def map_arguments(tag)
