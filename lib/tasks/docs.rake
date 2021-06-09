@@ -154,23 +154,7 @@ namespace :docs do
 
           args = []
           params.each do |tag|
-            params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
-
-            default = tag.defaults&.first || params&.second
-
-            default_value =
-              if default
-                constant_name = "#{component.name}::#{default}"
-                constant_value = default.safe_constantize || constant_name.safe_constantize
-
-                if constant_value.nil?
-                  pretty_value(default)
-                else
-                  pretty_value(constant_value)
-                end
-              else
-                "N/A"
-              end
+            default_value = pretty_default_value(tag, component)
 
             args << {
               "name" => tag.name,
@@ -215,18 +199,7 @@ namespace :docs do
             end
 
             param_tags.each do |tag|
-              params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
-
-              default = tag.defaults&.first || params&.second
-
-              default_value =
-                if default
-                  "`#{default}`"
-                else
-                  "N/A"
-                end
-
-              f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default_value} | #{view_context.render(inline: tag.text)} |")
+              f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{pretty_default_value(tag, component)} | #{view_context.render(inline: tag.text)} |")
             end
           end
         end
@@ -376,5 +349,19 @@ namespace :docs do
     registry = YARD::RegistryStore.new
     registry.load!(".yardoc")
     registry
+  end
+
+  def pretty_default_value(tag, component)
+    params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
+    default = tag.defaults&.first || params&.second
+
+    return "N/A" unless default
+
+    constant_name = "#{component.name}::#{default}"
+    constant_value = default.safe_constantize || constant_name.safe_constantize
+
+    return pretty_value(default) if constant_value.nil?
+
+    pretty_value(constant_value)
   end
 end
