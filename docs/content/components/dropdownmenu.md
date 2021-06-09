@@ -13,6 +13,15 @@ DropdownMenus are lightweight context menus for housing navigation and actions.
 They're great for instances where you don't need the full power (and code)
 of the select menu.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `direction` | `Symbol` | `:se` | One of `:e`, `:ne`, `:s`, `:se`, `:sw`, or `:w`. |
+| `scheme` | `Symbol` | `:default` | Pass `:dark` for dark mode theming |
+| `header` | `String` | `nil` | Optional string to display as the header |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### With a header
@@ -38,12 +47,3 @@ of the select menu.
   <% end %>
 </div>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `direction` | `Symbol` | `:se` | One of `:e`, `:ne`, `:s`, `:se`, `:sw`, or `:w`. |
-| `scheme` | `Symbol` | `:default` | Pass `:dark` for dark mode theming |
-| `header` | `String` | `nil` | Optional string to display as the header |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

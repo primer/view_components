@@ -15,6 +15,15 @@ Use `Image` to render images.
 
 Always provide a meaningful `alt`.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `src` | `String` | N/A | The source url of the image. |
+| `alt` | `String` | N/A | Specifies an alternate text for the image. |
+| `lazy` | `Boolean` | `false` | Whether or not to lazily load the image. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -52,12 +61,3 @@ Always provide a meaningful `alt`.
 
 <%= render(Primer::Image.new(src: "https://github.com/github.png", alt: "GitHub", height: 100, width: 100)) %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `src` | `String` | N/A | The source url of the image. |
-| `alt` | `String` | N/A | Specifies an alternate text for the image. |
-| `lazy` | `Boolean` | `false` | Whether or not to lazily load the image. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

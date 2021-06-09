@@ -14,6 +14,14 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 Use `TimeAgo` to display a time relative to how long ago it was. This component requires JavaScript.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `time` | `Time` | N/A | The time to be formatted |
+| `micro` | `Boolean` | `false` | If true then the text will be formatted in "micro" mode, using as few characters as possible |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -23,11 +31,3 @@ Use `TimeAgo` to display a time relative to how long ago it was. This component 
 ```erb
 <%= render(Primer::TimeAgoComponent.new(time: Time.at(628232400))) %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `time` | `Time` | N/A | The time to be formatted |
-| `micro` | `Boolean` | `false` | If true then the text will be formatted in "micro" mode, using as few characters as possible |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

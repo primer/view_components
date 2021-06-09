@@ -327,11 +327,11 @@
     description: One of `:large`, `:medium`, or `:small`.
   - name: tag
     type: Symbol
-    default: N/A
+    default: "`:button`"
     description: One of `:a`, `:button`, or `:summary`.
   - name: type
     type: Symbol
-    default: N/A
+    default: "`:button`"
     description: One of `:button`, `:reset`, or `:submit`.
   - name: group_item
     type: Boolean
@@ -350,7 +350,7 @@
   parameters:
   - name: variant
     type: Symbol
-    default: "`Primer::ButtonComponent::DEFAULT_VARIANT`"
+    default: "`:medium`"
     description: One of `:large`, `:medium`, or `:small`.
   - name: system_arguments
     type: Hash

@@ -13,6 +13,32 @@ Use `Popover` to bring attention to specific user interface elements, typically 
 
 By default, the popover renders with absolute positioning, meaning it should usually be wrapped in an element with a relative position in order to be positioned properly. To render the popover with relative positioning, use the relative property.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Heading`
+
+The heading
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Body`
+
+The body
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `caret` | `Symbol` | N/A | One of `:bottom`, `:bottom_left`, `:bottom_right`, `:left`, `:left_bottom`, `:left_top`, `:right`, `:right_bottom`, `:right_top`, `:top`, `:top_left`, or `:top_right`. |
+| `large` | `Boolean` | N/A | Whether to use the large version of the component. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -81,29 +107,3 @@ By default, the popover renders with absolute positioning, meaning it should usu
   <% end %>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-## Slots
-
-### `Heading`
-
-The heading
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-### `Body`
-
-The body
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `caret` | `Symbol` | N/A | One of `:bottom`, `:bottom_left`, `:bottom_right`, `:left`, `:left_bottom`, `:left_top`, `:right`, `:right_bottom`, `:right_top`, `:top`, `:top_left`, or `:top_right`. |
-| `large` | `Boolean` | N/A | Whether to use the large version of the component. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

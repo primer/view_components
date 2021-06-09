@@ -25,6 +25,17 @@ if `Avatar` is a link to a user profile, the alt attribute should be `@kittenuse
 rather than `@kittenuser`.
 [Learn more about best image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/)
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `src` | `String` | N/A | The source url of the avatar image. |
+| `alt` | `String` | N/A | Passed through to alt on img tag. |
+| `size` | `Integer` | `20` | Adds the avatar-small class if less than 24. |
+| `square` | `Boolean` | `false` | Used to create a square avatar. |
+| `href` | `String` | `nil` | The URL to link to. If used, component will be wrapped by an `<a>` tag. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -63,14 +74,3 @@ rather than `@kittenuser`.
 <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 32)) %>
 <%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 36)) %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `src` | `String` | N/A | The source url of the avatar image. |
-| `alt` | `String` | N/A | Passed through to alt on img tag. |
-| `size` | `Integer` | `20` | Adds the avatar-small class if less than 24. |
-| `square` | `Boolean` | `false` | Used to create a square avatar. |
-| `href` | `String` | `nil` | The URL to link to. If used, component will be wrapped by an `<a>` tag. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

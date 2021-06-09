@@ -11,6 +11,15 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `AutoCompleteItem` to list results of an auto-completed search.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `value` | `String` | N/A | Value of the item. |
+| `selected` | `Boolean` | `false` | Whether the item is selected. |
+| `disabled` | `Boolean` | `false` | Whether the item is disabled. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -25,12 +34,3 @@ Use `AutoCompleteItem` to list results of an auto-completed search.
   Not selected
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `value` | `String` | N/A | Value of the item. |
-| `selected` | `Boolean` | `false` | Whether the item is selected. |
-| `disabled` | `Boolean` | `false` | Whether the item is disabled. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

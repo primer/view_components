@@ -113,6 +113,8 @@ namespace :docs do
         f.puts
         f.puts("import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'")
 
+        initialize_method = documentation.meths.find(&:constructor?)
+
         if js_components.include?(component)
           f.puts("import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash'")
           f.puts
@@ -124,15 +126,6 @@ namespace :docs do
         f.puts
         f.puts(view_context.render(inline: documentation.base_docstring))
 
-        if documentation.tags(:accessibility).any?
-          f.puts
-          f.puts("## Accessibility")
-          documentation.tags(:accessibility).each do |tag|
-            f.puts
-            f.puts view_context.render(inline: tag.text)
-          end
-        end
-
         if documentation.tags(:deprecated).any?
           f.puts
           f.puts("## Deprecation")
@@ -142,7 +135,74 @@ namespace :docs do
           end
         end
 
-        initialize_method = documentation.meths.find(&:constructor?)
+        if documentation.tags(:accessibility).any?
+          f.puts
+          f.puts("## Accessibility")
+          documentation.tags(:accessibility).each do |tag|
+            f.puts
+            f.puts view_context.render(inline: tag.text)
+          end
+        end
+
+        params = initialize_method.tags(:param)
+        if params.any?
+          f.puts
+          f.puts("## Arguments")
+          f.puts
+          f.puts("| Name | Type | Default | Description |")
+          f.puts("| :- | :- | :- | :- |")
+
+          args = []
+          params.each do |tag|
+            default_value = pretty_default_value(tag, component)
+
+            args << {
+              "name" => tag.name,
+              "type" => tag.types.join(", "),
+              "default" => default_value,
+              "description" => view_context.render(inline: tag.text)
+            }
+
+            f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default_value} | #{view_context.render(inline: tag.text)} |")
+          end
+
+          component_args = {
+            "component" => short_name,
+            "source" => "https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb",
+            "parameters" => args
+          }
+
+          args_for_components << component_args
+        end
+
+        # Slots V2 docs
+        slot_v2_methods = documentation.meths.select { |x| x[:renders_one] || x[:renders_many] }
+
+        if slot_v2_methods.any?
+          f.puts
+          f.puts("## Slots")
+
+          slot_v2_methods.each do |slot_documentation|
+            f.puts
+            f.puts("### `#{slot_documentation.name.to_s.capitalize}`")
+
+            if slot_documentation.base_docstring.present?
+              f.puts
+              f.puts(view_context.render(inline: slot_documentation.base_docstring))
+            end
+
+            param_tags = slot_documentation.tags(:param)
+            if param_tags.any?
+              f.puts
+              f.puts("| Name | Type | Default | Description |")
+              f.puts("| :- | :- | :- | :- |")
+            end
+
+            param_tags.each do |tag|
+              f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{pretty_default_value(tag, component)} | #{view_context.render(inline: tag.text)} |")
+            end
+          end
+        end
 
         if initialize_method.tags(:example).any?
           f.puts
@@ -180,88 +240,6 @@ namespace :docs do
           f.puts("```erb")
           f.puts(code.to_s)
           f.puts("```")
-        end
-
-        params = initialize_method.tags(:param)
-        if params.any?
-          f.puts
-          f.puts("## Arguments")
-          f.puts
-          f.puts("| Name | Type | Default | Description |")
-          f.puts("| :- | :- | :- | :- |")
-
-          args = []
-          params.each do |tag|
-            params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
-
-            default =
-              if params && params[1]
-                constant_name = "#{component.name}::#{params[1]}"
-                constant_value = constant_name.safe_constantize
-                if constant_value.nil?
-                  pretty_value(params[1])
-                else
-                  pretty_value(constant_value)
-                end
-              else
-                "N/A"
-              end
-
-            args << {
-              "name" => tag.name,
-              "type" => tag.types.join(", "),
-              "default" => default,
-              "description" => view_context.render(inline: tag.text)
-            }
-
-            f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
-          end
-
-          component_args = {
-            "component" => short_name,
-            "source" => "https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb",
-            "parameters" => args
-          }
-
-          args_for_components << component_args
-        end
-
-        # Slots V2 docs
-        slot_v2_methods = documentation.meths.select { |x| x[:renders_one] || x[:renders_many] }
-
-        if slot_v2_methods.any?
-          f.puts
-          f.puts("## Slots")
-
-          slot_v2_methods.each do |slot_documentation|
-            f.puts
-            f.puts("### `#{slot_documentation.name.to_s.capitalize}`")
-
-            if slot_documentation.base_docstring.present?
-              f.puts
-              f.puts(view_context.render(inline: slot_documentation.base_docstring))
-            end
-
-            param_tags = slot_documentation.tags(:param)
-            if param_tags.any?
-              f.puts
-              f.puts("| Name | Type | Default | Description |")
-              f.puts("| :- | :- | :- | :- |")
-            end
-
-            param_tags.each do |tag|
-              params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
-
-              default =
-                if params && params[1]
-                  "`#{params[1]}`"
-                else
-                  "N/A"
-                end
-
-              f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
-            end
-          end
         end
       end
     end
@@ -363,6 +341,7 @@ namespace :docs do
     # Custom tags for yard
     YARD::Tags::Library.define_tag("Accessibility", :accessibility)
     YARD::Tags::Library.define_tag("Deprecation", :deprecation)
+    YARD::Tags::Library.define_tag("Parameter", :param, :with_types_name_and_default)
 
     puts "Building YARD documentation."
     Rake::Task["yard"].execute
@@ -370,5 +349,19 @@ namespace :docs do
     registry = YARD::RegistryStore.new
     registry.load!(".yardoc")
     registry
+  end
+
+  def pretty_default_value(tag, component)
+    params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
+    default = tag.defaults&.first || params&.second
+
+    return "N/A" unless default
+
+    constant_name = "#{component.name}::#{default}"
+    constant_value = default.safe_constantize || constant_name.safe_constantize
+
+    return pretty_value(default) if constant_value.nil?
+
+    pretty_value(constant_value)
   end
 end

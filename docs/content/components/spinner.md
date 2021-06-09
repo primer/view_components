@@ -11,6 +11,12 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `Spinner` to let users know that content is being loaded.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `size` | `Symbol` | `:medium` | One of `[:large, 64]`, `[:medium, 32]`, or `[:small, 16]`. |
+
 ## Examples
 
 ### Default
@@ -36,9 +42,3 @@ Use `Spinner` to let users know that content is being loaded.
 ```erb
 <%= render(Primer::SpinnerComponent.new(size: :large)) %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `size` | `Symbol` | `:medium` | One of `[:large, 64]`, `[:medium, 32]`, or `[:small, 16]`. |

@@ -14,7 +14,7 @@ module Primer
 
     # Use the Summary slot as a trigger to reveal the content.
     #
-    # @param button [Boolean] Whether to render the Summary as a button or not.
+    # @param button [Boolean] (true) Whether to render the Summary as a button or not.
     # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
     renders_one :summary, lambda { |button: true, **system_arguments|
       system_arguments[:tag] = :summary

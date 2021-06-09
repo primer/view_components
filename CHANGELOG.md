@@ -24,6 +24,10 @@
 
   *Jon Rohan*
 
+* Change docs header order.
+
+    *Manuel Puyol, Kate Higa*
+
 ## 0.0.43
 
 * Upgrade primer/css to 17.2.1
