@@ -83,6 +83,7 @@ module Primer
     # @param group_item [Boolean] Whether button is part of a ButtonGroup.
     # @param block [Boolean] Whether button is full-width with `display: block`.
     # @param caret [Boolean] Whether or not to render a caret.
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       scheme: DEFAULT_SCHEME,
       variant: DEFAULT_VARIANT,

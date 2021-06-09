@@ -141,6 +141,7 @@ There are a few variations of how the Blankslate appears: `narrow` adds a maximu
 | `narrow` | `Boolean` | `false` | Adds a maximum width. |
 | `large` | `Boolean` | `false` | Increases the font size. |
 | `spacious` | `Boolean` | `false` | Adds extra padding. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
 

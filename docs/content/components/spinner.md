@@ -42,3 +42,5 @@ Use `Spinner` to let users know that content is being loaded.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `size` | `Symbol` | `:medium` | One of `[:large, 64]`, `[:medium, 32]`, or `[:small, 16]`. |
+| `style` | `String` | `box-sizing: content-box; color: var(--color-icon-primary);` | Custom element styles. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
