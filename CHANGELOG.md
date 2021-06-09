@@ -22,7 +22,11 @@
 
 * Sort documentation arguments.
 
-  *Jon Rohan*
+    *Jon Rohan*
+
+* Add validations for docs generation.
+
+    *Manuel Puyol, Kate Higa*
 
 ## 0.0.43
 
