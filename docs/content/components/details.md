@@ -11,29 +11,20 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `DetailsComponent` to reveal content after clicking a button.
 
-## Arguments
+## Examples
 
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `overlay` | `Symbol` | `:none` | Dictates the type of overlay to render with. One of `:dark`, `:default`, or `:none`. |
-| `reset` | `Boolean` | `false` | Defatuls to false. If set to true, it will remove the default caret and remove style from the summary element |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+### Default
 
-## Slots
+<Example src="" />
 
-### `Summary`
+```erb
 
-Use the Summary slot as a trigger to reveal the content.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `button` | `Boolean` | N/A | Whether to render the Summary as a button or not. |
-| `kwargs` | `Hash` | N/A | The same arguments as [System arguments](/system-arguments). |
-
-### `Body`
-
-Use the Body slot as the main content to be shown when triggered by the Summary.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | The same arguments as [System arguments](/system-arguments). |
+<%= render Primer::DetailsComponent.new do |c| %>
+  component.summary do
+    "Summary"
+  end
+  component.body do
+    "Body"
+  end
+<% end %>
+```

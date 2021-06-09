@@ -33,6 +33,17 @@ module Primer
       Primer::BaseComponent.new(**system_arguments)
     }
 
+    # @example Default
+    #
+    #   <%= render Primer::DetailsComponent.new do |c| %>
+    #     component.summary do
+    #       "Summary"
+    #     end
+    #     component.body do
+    #       "Body"
+    #     end
+    #   <% end %>
+    #
     # @param overlay [Symbol] Dictates the type of overlay to render with. <%= one_of(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys) %>
     # @param reset [Boolean] Defatuls to false. If set to true, it will remove the default caret and remove style from the summary element
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
