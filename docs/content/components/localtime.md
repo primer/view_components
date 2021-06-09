@@ -14,6 +14,22 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 Use `LocalTime` to format a date and time in the user's preferred locale format. This component requires JavaScript.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `datetime` | `DateTime` | N/A | The date to parse |
+| `initial_text` | `String` | `nil` | Text to render before component is initialized |
+| `weekday` | `Symbol` | `:short` | One of `:long` and `:short`. |
+| `year` | `Symbol` | `:numeric` | One of `:2-digit` and `:numeric`. |
+| `month` | `Symbol` | `:short` | One of `:long` and `:short`. |
+| `day` | `Symbol` | `:numeric` | One of `:2-digit` and `:numeric`. |
+| `hour` | `Symbol` | `:numeric` | One of `:2-digit` and `:numeric`. |
+| `minute` | `Symbol` | `:numeric` | One of `:2-digit` and `:numeric`. |
+| `second` | `Symbol` | `:numeric` | One of `:2-digit` and `:numeric`. |
+| `time_zone_name` | `Symbol` | `:short` | One of `:long` and `:short`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -42,19 +58,3 @@ Use `LocalTime` to format a date and time in the user's preferred locale format.
   2014/06/01 13:05
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `datetime` | `DateTime` | N/A | The date to parse |
-| `initial_text` | `String` | `nil` | Text to render before component is initialized |
-| `weekday` | `Symbol` | `:short` | One of `:long` and `:short`. |
-| `year` | `Symbol` | `:numeric` | One of `:2-digit` and `:numeric`. |
-| `month` | `Symbol` | `:short` | One of `:long` and `:short`. |
-| `day` | `Symbol` | `:numeric` | One of `:2-digit` and `:numeric`. |
-| `hour` | `Symbol` | `:numeric` | One of `:2-digit` and `:numeric`. |
-| `minute` | `Symbol` | `:numeric` | One of `:2-digit` and `:numeric`. |
-| `second` | `Symbol` | `:numeric` | One of `:2-digit` and `:numeric`. |
-| `time_zone_name` | `Symbol` | `:short` | One of `:long` and `:short`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

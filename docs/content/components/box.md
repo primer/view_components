@@ -11,6 +11,12 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 `Box` is a basic wrapper component for most layout related needs.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -28,9 +34,3 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 ```erb
 <%= render(Primer::BoxComponent.new(bg: :tertiary, p: 3)) { "Hello world" } %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

@@ -11,6 +11,23 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `ButtonGroup` to render a series of buttons.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `variant` | `Symbol` | `Primer::ButtonComponent::DEFAULT_VARIANT` | One of `:large`, `:medium`, or `:small`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Buttons`
+
+Required list of buttons to be rendered.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `kwargs` | `Hash` | N/A | The same arguments as [Button](/components/button) except for `variant` and `group_item`. |
+
 ## Examples
 
 ### Default
@@ -48,20 +65,3 @@ Use `ButtonGroup` to render a series of buttons.
   <% component.button(scheme: :outline) { "Outline" } %>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `variant` | `Symbol` | `Primer::ButtonComponent::DEFAULT_VARIANT` | One of `:large`, `:medium`, or `:small`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-## Slots
-
-### `Buttons`
-
-Required list of buttons to be rendered.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | The same arguments as [Button](/components/button) except for `variant` and `group_item`. |

@@ -20,6 +20,42 @@ Use `Subhead` as the start of a section. The `:heading` slot will render an `<h2
 The `:heading` slot defaults to rendering a `<div>`. Update the tag to a heading element with the appropriate level to improve page navigation for assistive technologies.
 [Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `spacious` | `Boolean` | `false` | Whether to add spacing to the Subhead. |
+| `hide_border` | `Boolean` | `false` | Whether to hide the border under the heading. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Heading`
+
+The heading
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `tag` | `Symbol` | N/A | One of `:div`, `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`. |
+| `danger` | `Boolean` | N/A | Whether to style the heading as dangerous. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Actions`
+
+Actions
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Description`
+
+The description
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -101,39 +137,3 @@ The `:heading` slot defaults to rendering a `<div>`. Update the tag to a heading
   <% end %>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `spacious` | `Boolean` | `false` | Whether to add spacing to the Subhead. |
-| `hide_border` | `Boolean` | `false` | Whether to hide the border under the heading. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-## Slots
-
-### `Heading`
-
-The heading
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `tag` | `Symbol` | N/A | One of `:div`, `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`. |
-| `danger` | `Boolean` | N/A | Whether to style the heading as dangerous. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-### `Actions`
-
-Actions
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-### `Description`
-
-The description
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

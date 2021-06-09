@@ -17,6 +17,54 @@ and `Primer::UnderlineNavComponent` and should not be used by itself.
 `TabComponent` renders the selected anchor tab with `aria-current="page"` by default.
  When the selected tab does not correspond to the current page, such as in a nested inner tab, make sure to use aria-current="true"
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `list` | `Boolean` | `false` | Whether the Tab is an item in a `<ul>` list. |
+| `selected` | `Boolean` | `false` | Whether the Tab is selected or not. |
+| `with_panel` | `Boolean` | `false` | Whether the Tab has an associated panel. |
+| `icon_classes` | `Boolean` | `""` | Classes that must always be applied to icons. |
+| `wrapper_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) to be used in the `<li>` wrapper when the tab is an item in a list. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Panel`
+
+Panel controlled by the Tab. This will not render anything in the tab itself.
+It will provide a accessor for the Tab's parent to call and render the panel
+content in the appropriate place.
+Refer to `UnderlineNavComponent` and `TabNavComponent` implementations for examples.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Icon`
+
+Icon to be rendered in the Tab left.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `kwargs` | `Hash` | N/A | The same arguments as [Octicon](/components/octicon). |
+
+### `Text`
+
+The Tab's text.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `kwargs` | `Hash` | N/A | The same arguments as [BetaText](/components/betatext). |
+
+### `Counter`
+
+Counter to be rendered in the Tab right.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `kwargs` | `Hash` | N/A | The same arguments as [Counter](/components/counter). |
+
 ## Examples
 
 ### Default
@@ -73,51 +121,3 @@ and `Primer::UnderlineNavComponent` and should not be used by itself.
   </div>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `list` | `Boolean` | `false` | Whether the Tab is an item in a `<ul>` list. |
-| `selected` | `Boolean` | `false` | Whether the Tab is selected or not. |
-| `with_panel` | `Boolean` | `false` | Whether the Tab has an associated panel. |
-| `icon_classes` | `Boolean` | `""` | Classes that must always be applied to icons. |
-| `wrapper_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) to be used in the `<li>` wrapper when the tab is an item in a list. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-## Slots
-
-### `Panel`
-
-Panel controlled by the Tab. This will not render anything in the tab itself.
-It will provide a accessor for the Tab's parent to call and render the panel
-content in the appropriate place.
-Refer to `UnderlineNavComponent` and `TabNavComponent` implementations for examples.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-### `Icon`
-
-Icon to be rendered in the Tab left.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | The same arguments as [Octicon](/components/octicon). |
-
-### `Text`
-
-The Tab's text.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | The same arguments as [BetaText](/components/betatext). |
-
-### `Counter`
-
-Counter to be rendered in the Tab right.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | The same arguments as [Counter](/components/counter). |

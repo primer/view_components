@@ -11,20 +11,6 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `Breadcrumb` to display page hierarchy within a section of the site. All of the items in the breadcrumb "trail" are links except for the final item, which is a plain string indicating the current page.
 
-## Examples
-
-### Basic
-
-<Example src="<nav aria-label='Breadcrumb' data-view-component='true'>  <ol>      <li data-view-component='true' class='breadcrumb-item'><a href='/' data-view-component='true'>Home</a></li>      <li data-view-component='true' class='breadcrumb-item'><a href='/about' data-view-component='true'>About</a></li>      <li aria-current='page' data-view-component='true' class='breadcrumb-item'>Team</li>  </ol></nav>" />
-
-```erb
-<%= render(Primer::BreadcrumbComponent.new) do |component| %>
-  <% component.item(href: "/") do %>Home<% end %>
-  <% component.item(href: "/about") do %>About<% end %>
-  <% component.item(selected: true) do %>Team<% end %>
-<% end %>
-```
-
 ## Arguments
 
 | Name | Type | Default | Description |
@@ -42,3 +28,17 @@ _Note: if both `href` and `selected: true` are passed in, `href` will be ignored
 | `href` | `String` | N/A | The URL to link to. |
 | `selected` | `Boolean` | N/A | Whether or not the item is selected and not rendered as a link. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Examples
+
+### Basic
+
+<Example src="<nav aria-label='Breadcrumb' data-view-component='true'>  <ol>      <li data-view-component='true' class='breadcrumb-item'><a href='/' data-view-component='true'>Home</a></li>      <li data-view-component='true' class='breadcrumb-item'><a href='/about' data-view-component='true'>About</a></li>      <li aria-current='page' data-view-component='true' class='breadcrumb-item'>Team</li>  </ol></nav>" />
+
+```erb
+<%= render(Primer::BreadcrumbComponent.new) do |component| %>
+  <% component.item(href: "/") do %>Home<% end %>
+  <% component.item(href: "/about") do %>About<% end %>
+  <% component.item(selected: true) do %>Team<% end %>
+<% end %>
+```

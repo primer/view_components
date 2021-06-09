@@ -113,6 +113,8 @@ namespace :docs do
         f.puts
         f.puts("import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'")
 
+        initialize_method = documentation.meths.find(&:constructor?)
+
         if js_components.include?(component)
           f.puts("import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash'")
           f.puts
@@ -224,7 +226,6 @@ namespace :docs do
           end
         end
 
-        initialize_method = documentation.meths.find(&:constructor?)
         if initialize_method.tags(:example).any?
           f.puts
           f.puts("## Examples")

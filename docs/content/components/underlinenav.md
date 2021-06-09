@@ -16,6 +16,36 @@ Use `UnderlineNav` to style navigation with a minimal
 underlined selected state, typically used for navigation placed at the top
 of the page.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `label` | `String` | N/A | The `aria-label` on top level `<nav>` element. |
+| `with_panel` | `Boolean` | `false` | Whether the TabNav should navigate through pages or panels. |
+| `align` | `Symbol` | `:left` | One of `:left` and `:right`. - Defaults to left |
+| `body_arguments` | `Hash` | `{ tag: BODY_TAG_DEFAULT }` | [System arguments](/system-arguments) for the body wrapper. |
+| `wrapper_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the `TabContainer` wrapper. Only applies if `with_panel` is `true`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Tabs`
+
+Use the tabs to list navigation items. For more information, refer to [NavigationTab](/components/navigationtab).
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `selected` | `Boolean` | N/A | Whether the tab is selected. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Actions`
+
+Use actions for a call to action.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -140,33 +170,3 @@ of the page.
   <% c.tab(href: "#") { "Tab 3" } %>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `label` | `String` | N/A | The `aria-label` on top level `<nav>` element. |
-| `with_panel` | `Boolean` | `false` | Whether the TabNav should navigate through pages or panels. |
-| `align` | `Symbol` | `:left` | One of `:left` and `:right`. - Defaults to left |
-| `body_arguments` | `Hash` | `{ tag: BODY_TAG_DEFAULT }` | [System arguments](/system-arguments) for the body wrapper. |
-| `wrapper_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the `TabContainer` wrapper. Only applies if `with_panel` is `true`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-## Slots
-
-### `Tabs`
-
-Use the tabs to list navigation items. For more information, refer to [NavigationTab](/components/navigationtab).
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `selected` | `Boolean` | N/A | Whether the tab is selected. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-### `Actions`
-
-Use actions for a call to action.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

@@ -11,6 +11,13 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 `Text` is a wrapper component that will apply typography styles to the text inside.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `tag` | `Symbol` | `:span` |  |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -21,10 +28,3 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 <%= render(Primer::Beta::Text.new(tag: :p, font_weight: :bold)) { "Bold Text" } %>
 <%= render(Primer::Beta::Text.new(tag: :p, color: :text_danger)) { "Danger Text" } %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `tag` | `Symbol` | `:span` |  |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
