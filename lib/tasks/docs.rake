@@ -124,15 +124,6 @@ namespace :docs do
         f.puts
         f.puts(view_context.render(inline: documentation.base_docstring))
 
-        if documentation.tags(:accessibility).any?
-          f.puts
-          f.puts("## Accessibility")
-          documentation.tags(:accessibility).each do |tag|
-            f.puts
-            f.puts view_context.render(inline: tag.text)
-          end
-        end
-
         if documentation.tags(:deprecated).any?
           f.puts
           f.puts("## Deprecation")
@@ -142,44 +133,13 @@ namespace :docs do
           end
         end
 
-        initialize_method = documentation.meths.find(&:constructor?)
-
-        if initialize_method.tags(:example).any?
+        if documentation.tags(:accessibility).any?
           f.puts
-          f.puts("## Examples")
-        else
-          components_without_examples << component
-        end
-
-        initialize_method.tags(:example).each do |tag|
-          name = tag.name
-          description = nil
-          code = nil
-
-          if tag.text.include?("@description")
-            splitted = tag.text.split(/@description|@code/)
-            description = splitted.second.gsub(/^[ \t]{2}/, "").strip
-            code = splitted.last.gsub(/^[ \t]{2}/, "").strip
-          else
-            code = tag.text
-          end
-
-          f.puts
-          f.puts("### #{name}")
-          if description
+          f.puts("## Accessibility")
+          documentation.tags(:accessibility).each do |tag|
             f.puts
-            f.puts(description)
+            f.puts view_context.render(inline: tag.text)
           end
-          f.puts
-          html = view_context.render(inline: code)
-          html.scan(/class="([^"]*)"/) do |classnames|
-            classes_found_in_examples.concat(classnames[0].split(" ").reject { |c| c.starts_with?("octicon", "js", "my-") }.map { ".#{_1}"})
-          end
-          f.puts("<Example src=\"#{html.tr('"', "\'").delete("\n")}\" />")
-          f.puts
-          f.puts("```erb")
-          f.puts(code.to_s)
-          f.puts("```")
         end
 
         params = initialize_method.tags(:param)
@@ -262,6 +222,45 @@ namespace :docs do
               f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
             end
           end
+        end
+
+        initialize_method = documentation.meths.find(&:constructor?)
+        if initialize_method.tags(:example).any?
+          f.puts
+          f.puts("## Examples")
+        else
+          components_without_examples << component
+        end
+
+        initialize_method.tags(:example).each do |tag|
+          name = tag.name
+          description = nil
+          code = nil
+
+          if tag.text.include?("@description")
+            splitted = tag.text.split(/@description|@code/)
+            description = splitted.second.gsub(/^[ \t]{2}/, "").strip
+            code = splitted.last.gsub(/^[ \t]{2}/, "").strip
+          else
+            code = tag.text
+          end
+
+          f.puts
+          f.puts("### #{name}")
+          if description
+            f.puts
+            f.puts(description)
+          end
+          f.puts
+          html = view_context.render(inline: code)
+          html.scan(/class="([^"]*)"/) do |classnames|
+            classes_found_in_examples.concat(classnames[0].split(" ").reject { |c| c.starts_with?("octicon", "js", "my-") }.map { ".#{_1}"})
+          end
+          f.puts("<Example src=\"#{html.tr('"', "\'").delete("\n")}\" />")
+          f.puts
+          f.puts("```erb")
+          f.puts(code.to_s)
+          f.puts("```")
         end
       end
     end
