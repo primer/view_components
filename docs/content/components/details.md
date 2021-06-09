@@ -27,7 +27,7 @@ Use the Summary slot as a trigger to reveal the content.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `button` | `Boolean` | N/A | Whether to render the Summary as a button or not. |
+| `button` | `Boolean` | `true` | Whether to render the Summary as a button or not. |
 | `kwargs` | `Hash` | N/A | The same arguments as [System arguments](/system-arguments). |
 
 ### `Body`

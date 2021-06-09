@@ -217,14 +217,16 @@ namespace :docs do
             param_tags.each do |tag|
               params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
 
-              default =
-                if params && params[1]
-                  "`#{params[1]}`"
+              default = tag.defaults&.first || params&.second
+
+              default_value =
+                if default
+                  "`#{default}`"
                 else
                   "N/A"
                 end
 
-              f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
+              f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default_value} | #{view_context.render(inline: tag.text)} |")
             end
           end
         end
