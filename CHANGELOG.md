@@ -12,6 +12,10 @@
 
 ### Misc
 
+* Add linter suggestions for `Button` component.
+
+    *Manuel Puyol*
+
 * Sort documentation arguments.
 
   *Jon Rohan*
