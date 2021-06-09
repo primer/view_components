@@ -9,7 +9,7 @@ module ERBLint
       include Helpers
 
       TAGS = %w[div].freeze
-      CLASS = "flash"
+      CLASSES = %w[flash].freeze
       MESSAGE = "We are migrating flashes to use [Primer::FlashComponent](https://primer.style/view-components/components/flash), please try to use that instead of raw HTML."
     end
   end
