@@ -156,12 +156,15 @@ namespace :docs do
           params.each do |tag|
             params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
 
-            default =
-              if params && params[1]
-                constant_name = "#{component.name}::#{params[1]}"
-                constant_value = constant_name.safe_constantize
+            default = tag.defaults&.first || params&.second
+
+            default_value =
+              if default
+                constant_name = "#{component.name}::#{default}"
+                constant_value = default.safe_constantize || constant_name.safe_constantize
+
                 if constant_value.nil?
-                  pretty_value(params[1])
+                  pretty_value(default)
                 else
                   pretty_value(constant_value)
                 end
@@ -172,11 +175,11 @@ namespace :docs do
             args << {
               "name" => tag.name,
               "type" => tag.types.join(", "),
-              "default" => default,
+              "default" => default_value,
               "description" => view_context.render(inline: tag.text)
             }
 
-            f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default} | #{view_context.render(inline: tag.text)} |")
+            f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default_value} | #{view_context.render(inline: tag.text)} |")
           end
 
           component_args = {
@@ -363,6 +366,7 @@ namespace :docs do
     # Custom tags for yard
     YARD::Tags::Library.define_tag("Accessibility", :accessibility)
     YARD::Tags::Library.define_tag("Deprecation", :deprecation)
+    YARD::Tags::Library.define_tag("Parameter", :param, :with_types_name_and_default)
 
     puts "Building YARD documentation."
     Rake::Task["yard"].execute
