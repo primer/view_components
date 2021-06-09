@@ -95,6 +95,8 @@ namespace :docs do
     args_for_components = []
     classes_found_in_examples = []
 
+    errors = []
+
     components.each do |component|
       documentation = registry.get(component.name)
 
@@ -144,7 +146,7 @@ namespace :docs do
 
         initialize_method = documentation.meths.find(&:constructor?)
 
-        raise "No examples found for #{component.name}" unless initialize_method.tags(:example).any?
+        errors << { component.name => { example: "No examples found" } } unless initialize_method.tags(:example).any?
 
         f.puts
         f.puts("## Examples")
@@ -181,13 +183,25 @@ namespace :docs do
         end
 
         params = initialize_method.tags(:param)
-        raise "No arguments found for #{component.name}" unless params.any?
+        errors << { component.name => { arguments: "No argument documentation found" } } unless params.any?
 
         f.puts
         f.puts("## Arguments")
         f.puts
         f.puts("| Name | Type | Default | Description |")
         f.puts("| :- | :- | :- | :- |")
+
+        docummented_params = params.map(&:name)
+        component_params = component.instance_method(:initialize).parameters.map { |p| p.last.to_s }
+
+        if (docummented_params & component_params).size != component_params.size
+          err = { arguments: {} }
+          (component_params - docummented_params).each do |arg|
+            err[:arguments][arg] = "Not documented"
+          end
+
+          errors << { component.name => err }
+        end
 
         args = []
         params.each do |tag|
@@ -262,6 +276,18 @@ namespace :docs do
           end
         end
       end
+    end
+
+    unless errors.empty?
+      puts "==============================================="
+      puts "===================== ERRORS =================="
+      puts "===============================================\n\n"
+      puts JSON.pretty_generate(errors)
+      puts "\n\n==============================================="
+      puts "==============================================="
+      puts "==============================================="
+
+      raise
     end
 
     File.open("static/classes.yml", "w") do |f|
