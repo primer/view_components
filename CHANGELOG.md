@@ -2,6 +2,12 @@
 
 ## main
 
+### Updates
+
+* Allow `Dropdown` menu items to be rendered outside a list.
+
+    *Manuel Puyol*
+
 ### Breaking changes
 
 * Require a label or `aria-label` to be provided for `AutoComplete` component.
@@ -9,8 +15,14 @@
     *Kate Higa*
 
 * Renames:
+  * `DropdownComponent` to `Dropdown`.
+  * `Dropdown::MenuComponent` to `Dropdown::Menu`.
   * `Primer::ButtonMarketingComponent` to `Primer::Alpha::ButtonMarketing`.
   * `Primer::TextComponent` to `Primer::Beta::Text`.
+
+    *Manuel Puyol*
+
+* Removes `summary_classes` attribute in favor of the `summary` slot in `Dropdown`.
 
     *Manuel Puyol*
 
@@ -32,11 +44,11 @@
 
     *Manuel Puyol, Kate Higa*
 
+* Add preliminary criteria for new `alpha` components.
+
+    *Joel Hawksley*
+
 ## 0.0.43
-
-* Upgrade primer/css to 17.2.1
-
-  *Jon Rohan*
 
 ### New
 
@@ -78,9 +90,9 @@
 
     *Manuel Puyol*
 
-* Add preliminary criteria for new `alpha` components.
+* Upgrade primer/css to 17.2.1
 
-    *Joel Hawksley*
+  *Jon Rohan*
 
 ## 0.0.42
 
