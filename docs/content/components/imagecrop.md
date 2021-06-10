@@ -14,6 +14,24 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 A client-side mechanism to crop images.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `src` | `String` | N/A | The path of the image to crop. |
+| `rounded` | `Boolean` | `true` | If the crop mask should be a circle. Defaults to true. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Loading`
+
+A loading indicator that is shown while the image is loading.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Simple cropper
@@ -41,21 +59,3 @@ A client-side mechanism to crop images.
   <% cropper.loading(style: "width: 120px").with_content("Loading...") %>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `src` | `String` | N/A | The path of the image to crop. |
-| `rounded` | `Boolean` | `true` | If the crop mask should be a circle. Defaults to true. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-## Slots
-
-### `Loading`
-
-A loading indicator that is shown while the image is loading.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

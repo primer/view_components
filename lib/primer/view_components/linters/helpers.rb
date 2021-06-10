@@ -8,7 +8,7 @@ module ERBLint
     # Helper methods for linting ERB.
     module Helpers
       def self.included(base)
-        base.include(LinterRegistry)
+        base.include(ERBLint::LinterRegistry)
 
         define_method "run" do |processed_source|
           tags(processed_source).each do |tag|
@@ -17,9 +17,9 @@ module ERBLint
 
             classes = tag.attributes["class"]&.value&.split(" ")
 
-            next unless !self.class::CLASS || classes&.include?(self.class::CLASS)
+            next if self.class::CLASSES.any? && (classes & self.class::CLASSES).blank?
 
-            generate_offense(self.class, processed_source, tag, self.class::MESSAGE)
+            generate_offense(self.class, processed_source, tag, message(tag))
           end
 
           counter_correct?(processed_source)
@@ -41,6 +41,10 @@ module ERBLint
       end
 
       private
+
+      def message(_tag)
+        self.class::MESSAGE
+      end
 
       def tags(processed_source)
         processed_source.parser.nodes_with_type(:tag).map { |tag_node| BetterHtml::Tree::Tag.from_node(tag_node) }

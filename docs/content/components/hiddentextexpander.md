@@ -11,6 +11,14 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `HiddenTextExpander` to indicate and toggle hidden text.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `inline` | `Boolean` | `false` | Whether or not the expander is inline. |
+| `button_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the button element. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -36,11 +44,3 @@ Use `HiddenTextExpander` to indicate and toggle hidden text.
 ```erb
 <%= render(Primer::HiddenTextExpander.new(button_arguments: { p: 1, classes: "custom-class" })) %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `inline` | `Boolean` | `false` | Whether or not the expander is inline. |
-| `button_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the button element. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

@@ -16,6 +16,37 @@ Use `Blankslate` when there is a lack of content within a page or section. Use a
 `Blankslate` renders an `<h3>` element for the title by default. Update the heading level based on what is appropriate for your page hierarchy by setting `title_tag`.
 [Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `title` | `String` | `""` | Text that appears in a larger bold font. |
+| `title_tag` | `Symbol` | `:h3` | HTML tag to use for title. |
+| `icon` | `Symbol` | `""` | Octicon icon to use at top of component. |
+| `icon_size` | `Symbol` | `:medium` | One of `:small` (`16`) and `:medium` (`24`). |
+| `image_src` | `String` | `""` | Image to display. |
+| `image_alt` | `String` | `" "` | Alt text for image. |
+| `description` | `String` | `""` | Text that appears below the title. Typically a whole sentence. |
+| `button_text` | `String` | `""` | The text of the button. |
+| `button_url` | `String` | `""` | The URL where the user will be taken after clicking the button. |
+| `button_classes` | `String` | `"btn-primary my-3"` | Classes to apply to action button |
+| `link_text` | `String` | `""` | The text of the link. |
+| `link_url` | `String` | `""` | The URL where the user will be taken after clicking the link. |
+| `narrow` | `Boolean` | `false` | Adds a maximum width. |
+| `large` | `Boolean` | `false` | Increases the font size. |
+| `spacious` | `Boolean` | `false` | Adds extra padding. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Spinner`
+
+Optional Spinner.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `kwargs` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |
+
 ## Examples
 
 ### Basic
@@ -121,33 +152,3 @@ There are a few variations of how the Blankslate appears: `narrow` adds a maximu
   spacious: true,
 ) %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `title` | `String` | `""` | Text that appears in a larger bold font. |
-| `title_tag` | `Symbol` | `:h3` | HTML tag to use for title. |
-| `icon` | `Symbol` | `""` | Octicon icon to use at top of component. |
-| `icon_size` | `Symbol` | `:medium` | One of `:small` (`16`) and `:medium` (`24`). |
-| `image_src` | `String` | `""` | Image to display. |
-| `image_alt` | `String` | `" "` | Alt text for image. |
-| `description` | `String` | `""` | Text that appears below the title. Typically a whole sentence. |
-| `button_text` | `String` | `""` | The text of the button. |
-| `button_url` | `String` | `""` | The URL where the user will be taken after clicking the button. |
-| `button_classes` | `String` | `"btn-primary my-3"` | Classes to apply to action button |
-| `link_text` | `String` | `""` | The text of the link. |
-| `link_url` | `String` | `""` | The URL where the user will be taken after clicking the link. |
-| `narrow` | `Boolean` | `false` | Adds a maximum width. |
-| `large` | `Boolean` | `false` | Increases the font size. |
-| `spacious` | `Boolean` | `false` | Adds extra padding. |
-
-## Slots
-
-### `Spinner`
-
-Optional Spinner.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |

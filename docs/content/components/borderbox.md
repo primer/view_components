@@ -11,6 +11,47 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 `BorderBox` is a Box component with a border.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `padding` | `Symbol` | `:default` | One of `:condensed`, `:default`, or `:spacious`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Header`
+
+Optional Header.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Body`
+
+Optional Body.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Footer`
+
+Optional Footer.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Rows`
+
+Use Rows to add rows with borders and maintain the same padding.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Header, body, rows, and footer
@@ -59,44 +100,3 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
   <% end %>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `padding` | `Symbol` | `:default` | One of `:condensed`, `:default`, or `:spacious`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-## Slots
-
-### `Header`
-
-Optional Header.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-### `Body`
-
-Optional Body.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-### `Footer`
-
-Optional Footer.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-### `Rows`
-
-Use Rows to add rows with borders and maintain the same padding.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

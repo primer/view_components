@@ -11,30 +11,6 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `Layout` to build a main/sidebar layout.
 
-## Examples
-
-### Default
-
-<Example src="<div data-view-component='true' class='gutter-condensed gutter-lg d-flex'>  <div data-view-component='true' class='flex-shrink-0 col-9'>Main</div>    <div data-view-component='true' class='flex-shrink-0 col-3'>Sidebar</div></div>" />
-
-```erb
-<%= render(Primer::LayoutComponent.new) do |component| %>
-  <% component.sidebar { "Sidebar" } %>
-  <% component.main { "Main" } %>
-<% end %>
-```
-
-### Left sidebar
-
-<Example src="<div data-view-component='true' class='gutter-condensed gutter-lg d-flex'>    <div data-view-component='true' class='flex-shrink-0 col-3'>Sidebar</div>  <div data-view-component='true' class='flex-shrink-0 col-9'>Main</div></div>" />
-
-```erb
-<%= render(Primer::LayoutComponent.new(side: :left)) do |component| %>
-  <% component.sidebar { "Sidebar" } %>
-  <% component.main { "Main" } %>
-<% end %>
-```
-
 ## Arguments
 
 | Name | Type | Default | Description |
@@ -61,3 +37,27 @@ The sidebar content
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Examples
+
+### Default
+
+<Example src="<div data-view-component='true' class='gutter-condensed gutter-lg d-flex'>  <div data-view-component='true' class='flex-shrink-0 col-9'>Main</div>    <div data-view-component='true' class='flex-shrink-0 col-3'>Sidebar</div></div>" />
+
+```erb
+<%= render(Primer::LayoutComponent.new) do |component| %>
+  <% component.sidebar { "Sidebar" } %>
+  <% component.main { "Main" } %>
+<% end %>
+```
+
+### Left sidebar
+
+<Example src="<div data-view-component='true' class='gutter-condensed gutter-lg d-flex'>    <div data-view-component='true' class='flex-shrink-0 col-3'>Sidebar</div>  <div data-view-component='true' class='flex-shrink-0 col-9'>Main</div></div>" />
+
+```erb
+<%= render(Primer::LayoutComponent.new(side: :left)) do |component| %>
+  <% component.sidebar { "Sidebar" } %>
+  <% component.main { "Main" } %>
+<% end %>
+```

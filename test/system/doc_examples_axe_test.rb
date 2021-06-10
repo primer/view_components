@@ -7,7 +7,7 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
   NOT_STANDALONE = [:AutoCompleteItemPreview].freeze
 
   # Starting point violations to be addressed. Do not add to this list!
-  STARTING_POINT_VIOLATIONS = [:MarkdownPreview, :AutoCompletePreview, :TabComponentPreview, :NavigationTabComponentPreview].freeze
+  STARTING_POINT_VIOLATIONS = [:MarkdownPreview, :TabComponentPreview, :NavigationTabComponentPreview].freeze
 
   def test_accessibility_of_doc_examples
     # Workaround to ensure that all component previews are loaded.

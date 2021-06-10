@@ -4,6 +4,10 @@
 
 ### Breaking changes
 
+* Require a label or `aria-label` to be provided for `AutoComplete` component.
+
+    *Kate Higa*
+
 * Renames:
   * `Primer::ButtonMarketingComponent` to `Primer::Alpha::ButtonMarketing`.
   * `Primer::TextComponent` to `Primer::Beta::Text`.
@@ -16,9 +20,21 @@
 
   *Jon Rohan*
 
+* Add linter suggestions for `Button` component.
+
+    *Manuel Puyol*
+
 * Sort documentation arguments.
 
-  *Jon Rohan*
+    *Jon Rohan*
+
+* Add validations for docs generation.
+
+    *Manuel Puyol, Kate Higa*
+
+* Change docs header order.
+
+    *Manuel Puyol, Kate Higa*
 
 ## 0.0.43
 

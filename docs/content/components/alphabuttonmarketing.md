@@ -11,6 +11,16 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `scheme` | `Symbol` | `:default` | One of `:default`, `:outline`, `:primary`, or `:transparent`. |
+| `variant` | `Symbol` | `:default` | One of `:default` and `:large`. |
+| `tag` | `Symbol` | `:button` | One of `:a` and `:button`. |
+| `type` | `Symbol` | `:button` | One of `:button` and `:submit`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Schemes
@@ -34,13 +44,3 @@ Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, o
 <%= render(Primer::Alpha::ButtonMarketing.new(mr: 2)) { "Default" } %>
 <%= render(Primer::Alpha::ButtonMarketing.new(variant: :large)) { "Large" } %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `scheme` | `Symbol` | `:default` | One of `:default`, `:outline`, `:primary`, or `:transparent`. |
-| `variant` | `Symbol` | `:default` | One of `:default` and `:large`. |
-| `tag` | `Symbol` | `:button` | One of `:a` and `:button`. |
-| `type` | `Symbol` | `:button` | One of `:button` and `:submit`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

@@ -107,6 +107,7 @@ module Primer
     # @param narrow [Boolean] Adds a maximum width.
     # @param large [Boolean] Increases the font size.
     # @param spacious [Boolean] Adds extra padding.
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       title: "",
       title_tag: :h3,
