@@ -11,6 +11,7 @@ module ERBLint
         base.include(ERBLint::LinterRegistry)
 
         define_method "run" do |processed_source|
+          @offenses_not_corrected = 0
           tags = tags(processed_source)
           tag_tree = build_tag_tree(tags)
 
@@ -39,6 +40,7 @@ module ERBLint
               add_offense(tag.loc, h[:message], h[:correction])
               add_offense(h[:closing].loc, h[:message], "<% end %>")
             else
+              @offenses_not_corrected += 1
               generate_offense(self.class, processed_source, tag, h[:message])
             end
           end
@@ -120,7 +122,6 @@ module ERBLint
         comment_node = nil
         expected_count = 0
         rule_name = self.class.name.match(/:?:?(\w+)\Z/)[1]
-        offenses_count = @offenses.length
 
         processed_source.parser.ast.descendants(:erb).each do |node|
           indicator_node, _, code_node, = *node
@@ -133,7 +134,7 @@ module ERBLint
           end
         end
 
-        if offenses_count.zero?
+        if @offenses_not_corrected.zero?
           # have to adjust to get `\n` so we delete the whole line
           add_offense(processed_source.to_source_range(comment_node.loc.adjust(end_pos: 1)), "Unused erblint:count comment for #{rule_name}", "") if comment_node
           return
@@ -142,16 +143,16 @@ module ERBLint
         first_offense = @offenses[0]
 
         if comment_node.nil?
-          add_offense(processed_source.to_source_range(first_offense.source_range), "#{rule_name}: If you must, add <%# erblint:counter #{rule_name} #{offenses_count} %> to bypass this check.", "<%# erblint:counter #{rule_name} #{offenses_count} %>")
+          add_offense(processed_source.to_source_range(first_offense.source_range), "#{rule_name}: If you must, add <%# erblint:counter #{rule_name} #{@offenses_not_corrected} %> to bypass this check.", "<%# erblint:counter #{rule_name} #{@offenses_not_corrected} %>")
         else
           clear_offenses
-          add_offense(processed_source.to_source_range(comment_node.loc), "Incorrect erblint:counter number for #{rule_name}. Expected: #{expected_count}, actual: #{offenses_count}.", "<%# erblint:counter #{rule_name} #{offenses_count} %>") if expected_count != offenses_count
+          add_offense(processed_source.to_source_range(comment_node.loc), "Incorrect erblint:counter number for #{rule_name}. Expected: #{expected_count}, actual: #{@offenses_not_corrected}.", "<%# erblint:counter #{rule_name} #{@offenses_not_corrected} %>") if expected_count != @offenses_not_corrected
         end
       end
 
       def generate_offense(klass, processed_source, tag, message = nil, replacement = nil)
         message ||= klass::MESSAGE
-        klass_name = klass.name.split("::")[-1]
+        klass_name = klass.name.demodulize
         offense = ["#{klass_name}:#{message}", tag.node.loc.source].join("\n")
         add_offense(processed_source.to_source_range(tag.loc), offense, replacement)
       end
