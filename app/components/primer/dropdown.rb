@@ -128,7 +128,7 @@ module Primer
     #   <% end %>
     #
     # @param overlay [Symbol] <%= one_of(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys) %>
-    # @param With_caret [Boolean] Whether or not a caret should be rendered in the button.
+    # @param with_caret [Boolean] Whether or not a caret should be rendered in the button.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(overlay: :default, with_caret: false, **system_arguments)
       @with_caret = with_caret

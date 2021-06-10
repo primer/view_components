@@ -11,6 +11,26 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `AvatarStack` to stack multiple avatars together.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `tag` | `Symbol` | `:div` | One of `:div` and `:span`. |
+| `align` | `Symbol` | `:left` | One of `:left` and `:right`. |
+| `tooltipped` | `Boolean` | `false` | Whether to add a tooltip to the stack or not. |
+| `body_arguments` | `Hash` | `{}` | Parameters to add to the Body. If `tooltipped` is set, has the same arguments as [Tooltip](/components/tooltip). |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Avatars`
+
+Required list of stacked avatars.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `kwargs` | `Hash` | N/A | The same arguments as [Avatar](/components/avatar). |
+
 ## Examples
 
 ### Default
@@ -48,23 +68,3 @@ Use `AvatarStack` to stack multiple avatars together.
   <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
 <% end  %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `tag` | `Symbol` | `:div` | One of `:div` and `:span`. |
-| `align` | `Symbol` | `:left` | One of `:left` and `:right`. |
-| `tooltipped` | `Boolean` | `false` | Whether to add a tooltip to the stack or not. |
-| `body_arguments` | `Hash` | `{}` | Parameters to add to the Body. If `tooltipped` is set, has the same arguments as [Tooltip](/components/tooltip). |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-## Slots
-
-### `Avatars`
-
-Required list of stacked avatars.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | The same arguments as [Avatar](/components/avatar). |

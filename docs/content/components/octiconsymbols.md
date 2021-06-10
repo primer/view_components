@@ -11,6 +11,12 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 OcticonSymbols renders a symbol dictionary using a list of [Octicon](https://primer.style/octicons/).
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `icons` | `Array<Hash>` | `[]` | List of icons to render, in the format { symbol: :icon_name, size: :small } |
+
 ## Examples
 
 ### Symbol dictionary
@@ -23,9 +29,3 @@ OcticonSymbols renders a symbol dictionary using a list of [Octicon](https://pri
 <%= render(Primer::OcticonComponent.new(icon: :check, use_symbol: true, size: :medium)) %>
 <%= render(Primer::OcticonSymbolsComponent.new(icons: [{ symbol: :check }, { symbol: :check, size: :medium }])) %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `icons` | `Array<Hash>` | `[]` | List of icons to render, in the format { symbol: :icon_name, size: :small } |

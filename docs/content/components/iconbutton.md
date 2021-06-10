@@ -19,6 +19,17 @@ if your `IconButton` renders a magnifying glass icon and invokves a search actio
 `"Search"` instead of `"Magnifying glass"`.
 [Learn more about best functional image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/functional)
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `scheme` | `Symbol` | `:default` | One of `:danger` and `:default`. |
+| `icon` | `String` | N/A | Name of [Octicon](https://primer.style/octicons/) to use. |
+| `tag` | `Symbol` | N/A | One of `:a`, `:button`, or `:summary`. |
+| `type` | `Symbol` | N/A | One of `:button`, `:reset`, or `:submit`. |
+| `box` | `Boolean` | `false` | Whether the button is in a [BorderBox](/components/borderbox). If `true`, the button will have the `Box-btn-octicon` class. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -53,14 +64,3 @@ if your `IconButton` renders a magnifying glass icon and invokves a search actio
   <% end %>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `scheme` | `Symbol` | `:default` | One of `:default` and `:danger`. |
-| `icon` | `String` | N/A | Name of [Octicon](https://primer.style/octicons/) to use. |
-| `tag` | `Symbol` | N/A | One of `:button`, `:a`, or `:summary`. |
-| `type` | `Symbol` | N/A | One of `:button`, `:reset`, or `:submit`. |
-| `box` | `Boolean` | `false` | Whether the button is in a [BorderBox](/components/borderbox). If `true`, the button will have the `Box-btn-octicon` class. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

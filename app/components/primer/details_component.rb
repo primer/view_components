@@ -14,7 +14,7 @@ module Primer
 
     # Use the Summary slot as a trigger to reveal the content.
     #
-    # @param button [Boolean] Whether to render the Summary as a button or not.
+    # @param button [Boolean] (true) Whether to render the Summary as a button or not.
     # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
     renders_one :summary, lambda { |button: true, **system_arguments|
       system_arguments[:tag] = :summary
@@ -33,6 +33,17 @@ module Primer
       Primer::BaseComponent.new(**system_arguments)
     }
 
+    # @example Default
+    #
+    #   <%= render Primer::DetailsComponent.new do |c| %>
+    #     component.summary do
+    #       "Summary"
+    #     end
+    #     component.body do
+    #       "Body"
+    #     end
+    #   <% end %>
+    #
     # @param overlay [Symbol] Dictates the type of overlay to render with. <%= one_of(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys) %>
     # @param reset [Boolean] Defatuls to false. If set to true, it will remove the default caret and remove style from the summary element
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

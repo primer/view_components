@@ -38,6 +38,17 @@ Use [Box](/components/box) instead.
 <%= render Primer::BoxComponent.new(display: :flex, direction: :column) %>
 ```
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `justify_content` | `Symbol` | `JUSTIFY_CONTENT_DEFAULT` | Use this param to distribute space between and around flex items along the main axis of the container. One of `nil`, `:center`, `:flex_end`, `:flex_start`, `:space_around`, or `:space_between`. |
+| `inline` | `Boolean` | `false` | Defaults to false. |
+| `flex_wrap` | `Boolean` | `FLEX_WRAP_DEFAULT` | Defaults to nil. |
+| `align_items` | `Symbol` | `ALIGN_ITEMS_DEFAULT` | Use this param to align items on the cross axis. One of `nil`, `:baseline`, `:center`, `:end`, `:start`, or `:stretch`. |
+| `direction` | `Symbol` | `nil` | Use this param to define the orientation of the main axis (row or column). By default, flex items will display in a row. One of `nil`, `:column`, `:column_reverse`, `:row`, or `:row_reverse`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -87,14 +98,3 @@ Use [Box](/components/box) instead.
   <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 3" } %>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `justify_content` | `Symbol` | `JUSTIFY_CONTENT_DEFAULT` | Use this param to distribute space between and around flex items along the main axis of the container. One of `nil`, `:flex_start`, `:flex_end`, `:center`, `:space_between`, or `:space_around`. |
-| `inline` | `Boolean` | `false` | Defaults to false. |
-| `flex_wrap` | `Boolean` | `FLEX_WRAP_DEFAULT` | Defaults to nil. |
-| `align_items` | `Symbol` | `ALIGN_ITEMS_DEFAULT` | Use this param to align items on the cross axis. One of `nil`, `:start`, `:end`, `:center`, `:baseline`, or `:stretch`. |
-| `direction` | `Symbol` | `nil` | Use this param to define the orientation of the main axis (row or column). By default, flex items will display in a row. One of `nil`, `:column`, `:column_reverse`, `:row`, or `:row_reverse`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

@@ -11,6 +11,15 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `BaseButton` to render an unstyled `<button>` tag that can be customized.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `tag` | `Symbol` | `:button` | One of `:a`, `:button`, or `:summary`. |
+| `type` | `Symbol` | `:button` | One of `:button`, `:reset`, or `:submit`. |
+| `block` | `Boolean` | `false` | Whether button is full-width with `display: block`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Block
@@ -21,12 +30,3 @@ Use `BaseButton` to render an unstyled `<button>` tag that can be customized.
 <%= render(Primer::BaseButton.new(block: :true)) { "Block" } %>
 <%= render(Primer::BaseButton.new(block: :true, scheme: :primary)) { "Primary block" } %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `tag` | `Symbol` | `:button` | One of `:button`, `:a`, or `:summary`. |
-| `type` | `Symbol` | `:button` | One of `:button`, `:reset`, or `:submit`. |
-| `block` | `Boolean` | `false` | Whether button is full-width with `display: block`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

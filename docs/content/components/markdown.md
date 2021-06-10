@@ -11,6 +11,13 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `Markdown` to wrap markdown content
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `tag` | `Symbol` | `:div` | One of `:article`, `:div`, or `:td`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -289,10 +296,3 @@ Use `Markdown` to wrap markdown content
   <pre><code>This is the final element on the page and there should be no margin below this.</code></pre>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `tag` | `Symbol` | `:div` | One of `:div`, `:article`, or `:td`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

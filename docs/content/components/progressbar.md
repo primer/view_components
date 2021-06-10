@@ -11,6 +11,25 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `ProgressBar` to visualize task completion.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `size` | `Symbol` | `:default` | One of `:default`, `:large`, or `:small`. Increases height. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Items`
+
+Use the Item slot to add an item to the progress bas
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `percentage` | `Integer` | N/A | The percent complete |
+| `bg` | `Symbol` | N/A | The background color |
+| `kwargs` | `Hash` | N/A | The same arguments as [System arguments](/system-arguments). |
+
 ## Examples
 
 ### Default
@@ -54,22 +73,3 @@ Use `ProgressBar` to visualize task completion.
   <% component.item(bg: :danger_inverse, percentage: 30) %>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `size` | `Symbol` | `:default` | One of `:default`, `:small`, or `:large`. Increases height. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-## Slots
-
-### `Items`
-
-Use the Item slot to add an item to the progress bas
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `percentage` | `Integer` | N/A | The percent complete |
-| `bg` | `Symbol` | N/A | The background color |
-| `kwargs` | `Hash` | N/A | The same arguments as [System arguments](/system-arguments). |

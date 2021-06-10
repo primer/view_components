@@ -14,6 +14,35 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 Use `TabNav` to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `label` | `String` | N/A | Used to set the `aria-label` on the top level `<nav>` element. |
+| `with_panel` | `Boolean` | `false` | Whether the TabNav should navigate through pages or panels. |
+| `body_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the body wrapper. |
+| `wrapper_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the `TabContainer` wrapper. Only applies if `with_panel` is `true`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Tabs`
+
+Tabs to be rendered. For more information, refer to [NavigationTab](/components/navigationtab).
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `selected` | `Boolean` | N/A | Whether the tab is selected. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Extra`
+
+Renders extra content to the `TabNav`. This will be rendered after the tabs.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `align` | `Symbol` | N/A | One of `:left` and `:right`. |
+
 ## Examples
 
 ### Default
@@ -132,32 +161,3 @@ Use `TabNav` to style navigation with a tab-based selected state, typically used
   <% c.tab(href: "#") { "Tab 3" } %>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `label` | `String` | N/A | Used to set the `aria-label` on the top level `<nav>` element. |
-| `with_panel` | `Boolean` | `false` | Whether the TabNav should navigate through pages or panels. |
-| `body_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the body wrapper. |
-| `wrapper_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the `TabContainer` wrapper. Only applies if `with_panel` is `true`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-## Slots
-
-### `Tabs`
-
-Tabs to be rendered. For more information, refer to [NavigationTab](/components/navigationtab).
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `selected` | `Boolean` | N/A | Whether the tab is selected. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-### `Extra`
-
-Renders extra content to the `TabNav`. This will be rendered after the tabs.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `align` | `Symbol` | N/A | One of `:left` and `:right`. |

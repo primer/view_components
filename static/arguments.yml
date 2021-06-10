@@ -32,35 +32,35 @@
   - name: weekday
     type: Symbol
     default: "`:short`"
-    description: One of `:short` and `:long`.
+    description: One of `:long` and `:short`.
   - name: year
     type: Symbol
     default: "`:numeric`"
-    description: One of `:numeric` and `:2-digit`.
+    description: One of `:2-digit` and `:numeric`.
   - name: month
     type: Symbol
     default: "`:short`"
-    description: One of `:short` and `:long`.
+    description: One of `:long` and `:short`.
   - name: day
     type: Symbol
     default: "`:numeric`"
-    description: One of `:numeric` and `:2-digit`.
+    description: One of `:2-digit` and `:numeric`.
   - name: hour
     type: Symbol
     default: "`:numeric`"
-    description: One of `:numeric` and `:2-digit`.
+    description: One of `:2-digit` and `:numeric`.
   - name: minute
     type: Symbol
     default: "`:numeric`"
-    description: One of `:numeric` and `:2-digit`.
+    description: One of `:2-digit` and `:numeric`.
   - name: second
     type: Symbol
     default: "`:numeric`"
-    description: One of `:numeric` and `:2-digit`.
+    description: One of `:2-digit` and `:numeric`.
   - name: time_zone_name
     type: Symbol
     default: "`:short`"
-    description: One of `:short` and `:long`.
+    description: One of `:long` and `:short`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -94,7 +94,7 @@
   - name: scheme
     type: Symbol
     default: "`:default`"
-    description: One of `:default` and `:danger`.
+    description: One of `:danger` and `:default`.
   - name: icon
     type: String
     default: N/A
@@ -102,7 +102,7 @@
   - name: tag
     type: Symbol
     default: N/A
-    description: One of `:button`, `:a`, or `:summary`.
+    description: One of `:a`, `:button`, or `:summary`.
   - name: type
     type: Symbol
     default: N/A
@@ -123,7 +123,11 @@
     type: String
     default: N/A
     description: The route to query.
-  - name: id
+  - name: input_id
+    type: String
+    default: N/A
+    description: Id of the input element.
+  - name: list_id
     type: String
     default: N/A
     description: Id of the list element.
@@ -208,7 +212,7 @@
   - name: tag
     type: Symbol
     default: "`:button`"
-    description: One of `:button`, `:a`, or `:summary`.
+    description: One of `:a`, `:button`, or `:summary`.
   - name: type
     type: Symbol
     default: "`:button`"
@@ -284,13 +288,17 @@
     type: Boolean
     default: "`false`"
     description: Adds extra padding.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: BorderBox
   source: https://github.com/primer/view_components/tree/main/app/components/primer/border_box_component.rb
   parameters:
   - name: padding
     type: Symbol
     default: "`:default`"
-    description: One of `:default`, `:condensed`, or `:spacious`.
+    description: One of `:condensed`, `:default`, or `:spacious`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -315,19 +323,19 @@
   - name: scheme
     type: Symbol
     default: "`:default`"
-    description: One of `:default`, `:primary`, `:danger`, `:outline`, `:invisible`,
-      or `:link`.
+    description: One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`,
+      or `:primary`.
   - name: variant
     type: Symbol
     default: "`:medium`"
-    description: One of `:small`, `:medium`, or `:large`.
+    description: One of `:large`, `:medium`, or `:small`.
   - name: tag
     type: Symbol
-    default: N/A
-    description: One of `:button`, `:a`, or `:summary`.
+    default: "`:button`"
+    description: One of `:a`, `:button`, or `:summary`.
   - name: type
     type: Symbol
-    default: N/A
+    default: "`:button`"
     description: One of `:button`, `:reset`, or `:submit`.
   - name: group_item
     type: Boolean
@@ -341,13 +349,17 @@
     type: Boolean
     default: "`false`"
     description: Whether or not to render a caret.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: ButtonGroup
   source: https://github.com/primer/view_components/tree/main/app/components/primer/button_group.rb
   parameters:
   - name: variant
     type: Symbol
-    default: "`Primer::ButtonComponent::DEFAULT_VARIANT`"
-    description: One of `:small`, `:medium`, or `:large`.
+    default: "`:medium`"
+    description: One of `:large`, `:medium`, or `:small`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -358,7 +370,7 @@
   - name: scheme
     type: Symbol
     default: "`:default`"
-    description: One of `:default`, `:primary`, `:outline`, or `:transparent`.
+    description: One of `:default`, `:outline`, `:primary`, or `:transparent`.
   - name: variant
     type: Symbol
     default: "`:default`"
@@ -366,7 +378,7 @@
   - name: tag
     type: Symbol
     default: "`:button`"
-    description: One of `:button` and `:a`.
+    description: One of `:a` and `:button`.
   - name: type
     type: Symbol
     default: "`:button`"
@@ -440,8 +452,8 @@
   - name: overlay
     type: Symbol
     default: "`:none`"
-    description: Dictates the type of overlay to render with. One of `:none`, `:default`,
-      or `:dark`.
+    description: Dictates the type of overlay to render with. One of `:dark`, `:default`,
+      or `:none`.
   - name: reset
     type: Boolean
     default: "`false`"
@@ -457,10 +469,10 @@
   - name: overlay
     type: Symbol
     default: "`:default`"
-    description: One of `:none`, `:default`, or `:dark`.
-  - name: With_caret
+    description: One of `:dark`, `:default`, or `:none`.
+  - name: with_caret
     type: Boolean
-    default: N/A
+    default: "`false`"
     description: Whether or not a caret should be rendered in the button.
   - name: system_arguments
     type: Hash
@@ -472,7 +484,7 @@
   - name: direction
     type: Symbol
     default: "`:se`"
-    description: One of `:se`, `:sw`, `:w`, `:e`, `:ne`, or `:s`.
+    description: One of `:e`, `:ne`, `:s`, `:se`, `:sw`, or `:w`.
   - name: scheme
     type: Symbol
     default: "`:default`"
@@ -507,7 +519,7 @@
   - name: scheme
     type: Symbol
     default: "`:default`"
-    description: One of `:default`, `:warning`, `:danger`, or `:success`.
+    description: One of `:danger`, `:default`, `:success`, or `:warning`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -519,8 +531,8 @@
     type: Symbol
     default: "`JUSTIFY_CONTENT_DEFAULT`"
     description: Use this param to distribute space between and around flex items
-      along the main axis of the container. One of `nil`, `:flex_start`, `:flex_end`,
-      `:center`, `:space_between`, or `:space_around`.
+      along the main axis of the container. One of `nil`, `:center`, `:flex_end`,
+      `:flex_start`, `:space_around`, or `:space_between`.
   - name: inline
     type: Boolean
     default: "`false`"
@@ -532,8 +544,8 @@
   - name: align_items
     type: Symbol
     default: "`ALIGN_ITEMS_DEFAULT`"
-    description: Use this param to align items on the cross axis. One of `nil`, `:start`,
-      `:end`, `:center`, `:baseline`, or `:stretch`.
+    description: Use this param to align items on the cross axis. One of `nil`, `:baseline`,
+      `:center`, `:end`, `:start`, or `:stretch`.
   - name: direction
     type: Symbol
     default: "`nil`"
@@ -588,7 +600,7 @@
   - name: tag
     type: Symbol
     default: "`:span`"
-    description: One of `:span`, `:summary`, `:a`, or `:div`.
+    description: One of `:a`, `:div`, `:span`, or `:summary`.
   - name: title
     type: String
     default: N/A
@@ -596,12 +608,12 @@
   - name: scheme
     type: Symbol
     default: "`nil`"
-    description: One of `:primary`, `:secondary`, `:info`, `:success`, `:warning`,
-      `:danger`, `:orange`, or `:purple`.
+    description: One of `:danger`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`,
+      `:success`, or `:warning`.
   - name: variant
     type: Symbol
     default: "`nil`"
-    description: One of `:large`, `:inline`, or `nil`.
+    description: One of `nil`, `:inline`, or `:large`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -616,7 +628,7 @@
   - name: side
     type: Symbol
     default: "`:right`"
-    description: Which side to display the sidebar on. One of `:right` and `:left`.
+    description: Which side to display the sidebar on. One of `:left` and `:right`.
   - name: sidebar_col
     type: Integer
     default: "`3`"
@@ -660,7 +672,7 @@
   - name: tag
     type: Symbol
     default: "`:div`"
-    description: One of `:div`, `:article`, or `:td`.
+    description: One of `:article`, `:div`, or `:td`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -703,8 +715,12 @@
 - component: Octicon
   source: https://github.com/primer/view_components/tree/main/app/components/primer/octicon_component.rb
   parameters:
+  - name: icon_name
+    type: Symbol, String
+    default: "`nil`"
+    description: Name of [Octicon](https://primer.style/octicons/) to use.
   - name: icon
-    type: Symbol
+    type: Symbol, String
     default: "`nil`"
     description: Name of [Octicon](https://primer.style/octicons/) to use.
   - name: size
@@ -733,7 +749,7 @@
   - name: size
     type: Symbol
     default: "`:default`"
-    description: One of `:default`, `:small`, or `:large`. Increases height.
+    description: One of `:default`, `:large`, or `:small`. Increases height.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -748,12 +764,12 @@
   - name: scheme
     type: Symbol
     default: "`:default`"
-    description: Background color. One of `:open`, `:closed`, `:merged`, `:default`,
-      `:green`, `:red`, or `:purple`.
+    description: Background color. One of `:closed`, `:default`, `:green`, `:merged`,
+      `:open`, `:purple`, or `:red`.
   - name: tag
     type: Symbol
     default: "`:span`"
-    description: HTML tag for element. One of `:span` and `:div`.
+    description: HTML tag for element. One of `:div` and `:span`.
   - name: size
     type: Symbol
     default: "`:default`"
@@ -768,7 +784,15 @@
   - name: size
     type: Symbol
     default: "`:medium`"
-    description: One of `:small` (`16`), `:medium` (`32`), or `:large` (`64`).
+    description: One of `[:large, 64]`, `[:medium, 32]`, or `[:small, 16]`.
+  - name: style
+    type: String
+    default: "`box-sizing: content-box; color: var(--color-icon-primary);`"
+    description: Custom element styles.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Subhead
   source: https://github.com/primer/view_components/tree/main/app/components/primer/subhead_component.rb
   parameters:
@@ -864,14 +888,14 @@
   - name: direction
     type: String
     default: "`:n`"
-    description: Direction of the tooltip. One of `:n`, `:nw`, `:ne`, `:w`, `:e`,
-      `:sw`, `:s`, or `:se`.
+    description: Direction of the tooltip. One of `:e`, `:n`, `:ne`, `:nw`, `:s`,
+      `:se`, `:sw`, or `:w`.
   - name: align
     type: String
     default: "`:default`"
     description: Align tooltips to the left or right of an element, combined with
-      a `direction` to specify north or south. One of `:default`, `:left_1`, `:right_1`,
-      `:left_2`, or `:right_2`.
+      a `direction` to specify north or south. One of `:default`, `:left_1`, `:left_2`,
+      `:right_1`, or `:right_2`.
   - name: multiline
     type: Boolean
     default: "`false`"
@@ -891,7 +915,7 @@
   - name: tag
     type: Symbol
     default: "`:div`"
-    description: One of `:div`, `:span`, or `:p`.
+    description: One of `:div`, `:p`, or `:span`.
   - name: inline
     type: Boolean
     default: "`false`"

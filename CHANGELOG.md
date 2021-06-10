@@ -10,6 +10,10 @@
 
 ### Breaking changes
 
+* Require a label or `aria-label` to be provided for `AutoComplete` component.
+
+    *Kate Higa*
+
 * Renames:
   * `DropdownComponent` to `Dropdown`.
   * `Dropdown::MenuComponent` to `Dropdown::Menu`.
@@ -19,6 +23,29 @@
     *Manuel Puyol*
 
 * Removes `summary_classes` attribute in favor of the `summary` slot in `Dropdown`.
+
+    *Manuel Puyol*
+
+### Misc
+
+* Add linter suggestions for `Button` component.
+
+    *Manuel Puyol*
+
+* Sort documentation arguments.
+
+    *Jon Rohan*
+
+* Add validations for docs generation.
+
+    *Manuel Puyol, Kate Higa*
+
+* Change docs header order.
+
+    *Manuel Puyol, Kate Higa*
+
+## 0.0.43
+>>>>>>> main
 
     *Manuel Puyol*
 

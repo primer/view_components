@@ -26,6 +26,13 @@ consistent. [See WCAG success criteria: 1.3.1: Info and Relationships](https://w
 Headings allow assistive technology users to quickly navigate around a page. Navigation to text that is not meant to be a heading can be a confusing experience.
 [Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `tag` | `String` | N/A | One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -40,10 +47,3 @@ Headings allow assistive technology users to quickly navigate around a page. Nav
 <%= render(Primer::HeadingComponent.new(tag: :h5)) { "H5 Text" } %>
 <%= render(Primer::HeadingComponent.new(tag: :h6)) { "H6 Text" } %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `tag` | `String` | N/A | One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

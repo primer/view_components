@@ -11,6 +11,16 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `Truncate` to shorten overflowing text with an ellipsis.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `tag` | `Symbol` | `:div` | One of `:div`, `:p`, or `:span`. |
+| `inline` | `Boolean` | `false` | Whether the element is inline (or inline-block). |
+| `expandable` | `Boolean` | `false` | Whether the entire string should be revealed on hover. Can only be used in conjunction with `inline`. |
+| `max_width` | `Integer` | `nil` | Sets the max-width of the text. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -46,13 +56,3 @@ Use `Truncate` to shorten overflowing text with an ellipsis.
 ```erb
 <%= render(Primer::Truncate.new(tag: :span, inline: true, expandable: true, max_width: 100)) { "branch-name-that-is-really-long" } %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `tag` | `Symbol` | `:div` | One of `:div`, `:span`, or `:p`. |
-| `inline` | `Boolean` | `false` | Whether the element is inline (or inline-block). |
-| `expandable` | `Boolean` | `false` | Whether the entire string should be revealed on hover. Can only be used in conjunction with `inline`. |
-| `max_width` | `Integer` | `nil` | Sets the max-width of the text. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

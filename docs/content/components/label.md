@@ -11,6 +11,16 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `Label` to add contextual metadata to a design.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `tag` | `Symbol` | `:span` | One of `:a`, `:div`, `:span`, or `:summary`. |
+| `title` | `String` | N/A | `title` attribute for the component element. |
+| `scheme` | `Symbol` | `nil` | One of `:danger`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`, `:success`, or `:warning`. |
+| `variant` | `Symbol` | `nil` | One of `nil`, `:inline`, or `:large`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Schemes
@@ -35,13 +45,3 @@ Use `Label` to add contextual metadata to a design.
 <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>
 <%= render(Primer::LabelComponent.new(title: "Label: Label", variant: :large)) { "Large" } %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `tag` | `Symbol` | `:span` | One of `:span`, `:summary`, `:a`, or `:div`. |
-| `title` | `String` | N/A | `title` attribute for the component element. |
-| `scheme` | `Symbol` | `nil` | One of `:primary`, `:secondary`, `:info`, `:success`, `:warning`, `:danger`, `:orange`, or `:purple`. |
-| `variant` | `Symbol` | `nil` | One of `:large`, `:inline`, or `nil`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

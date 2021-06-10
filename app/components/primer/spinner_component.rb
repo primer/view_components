@@ -27,6 +27,8 @@ module Primer
     #   <%= render(Primer::SpinnerComponent.new(size: :large)) %>
     #
     # @param size [Symbol] <%= one_of(Primer::SpinnerComponent::SIZE_MAPPINGS) %>
+    # @param style [String] Custom element styles.
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(size: DEFAULT_SIZE, style: DEFAULT_STYLE, **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = :svg
