@@ -15,63 +15,35 @@ module ERBLint
       MESSAGE = "We are migrating buttons to use [Primer::ButtonComponent](https://primer.style/view-components/components/button), please try to use that instead of raw HTML."
 
       def run(processed_source)
-        aux = {}
-        curr = nil
+        tags = tags(processed_source)
+        tag_tree = build_tag_tree(tags)
 
-        tags(processed_source).each do |tag|
+        tags.each do |tag|
+          next if tag.closing?
           next unless self.class::TAGS&.include?(tag.name)
-
-          if tag.closing?
-            if curr && tag.name == curr.name
-              aux[curr][:closing] = tag
-              curr = aux[curr][:parent]
-            end
-
-            next
-          end
 
           classes = tag.attributes["class"]&.value&.split(" ") || []
 
-          aux[tag] = {
-            offense: false,
-            closing: nil,
-            parent: curr
-          }
+          tag_tree[tag][:offense] = false
 
-          if self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
-            args = map_arguments(tag)
+          next unless self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
 
-            aux[tag][:offense] = true
-            aux[tag][:args] = args
-            aux[tag][:message] = message(args)
-            aux[tag][:correction] = correction(args)
-          end
+          args = map_arguments(tag)
 
-          curr = tag
+          tag_tree[tag][:offense] = true
+          tag_tree[tag][:correctable] = args.present?
+          tag_tree[tag][:message] = message(args)
+          tag_tree[tag][:correction] = correction(args)
         end
 
-        aux.each do |tag, err|
-          next if !err[:offense] || err[:args].nil?
+        tag_tree.each do |tag, err|
+          next unless err[:offense] && err[:correctable]
 
           add_offense(tag.loc, err[:message], err[:correction])
           add_offense(err[:closing].loc, err[:message], "<% end %>")
         end
 
-        # counter_correct?(processed_source)
-      end
-
-      def autocorrect(_, offense)
-        return unless offense.context
-
-        lambda do |corrector|
-          # if processed_source.file_content.include?("erblint:counter #{self.class.name.demodulize}")
-          #   # update the counter if exists
-          corrector.replace(offense.source_range, offense.context)
-          # else
-          #   # add comment with counter if none
-          #   corrector.insert_before(processed_source.source_buffer.source_range, "#{offense.context}\n")
-          # end
-        end
+        counter_correct?(processed_source)
       end
 
       private

@@ -29,18 +29,59 @@ module ERBLint
           return unless offense.context
 
           lambda do |corrector|
-            if processed_source.file_content.include?("erblint:counter #{self.class.name.demodulize}")
-              # update the counter if exists
-              corrector.replace(offense.source_range, offense.context)
+            if offense.context.include?(self.class.name.demodulize)
+              correct_counter(corrector, processed_source, offense)
             else
-              # add comment with counter if none
-              corrector.insert_before(processed_source.source_buffer.source_range, "#{offense.context}\n")
+              corrector.replace(offense.source_range, offense.context)
             end
           end
         end
       end
 
       private
+
+      def correct_counter(corrector, processed_source, offense)
+        if processed_source.file_content.include?("erblint:counter #{self.class.name.demodulize}")
+          # update the counter if exists
+          corrector.replace(offense.source_range, offense.context)
+        else
+          # add comment with counter if none
+          corrector.insert_before(processed_source.source_buffer.source_range, "#{offense.context}\n")
+        end
+      end
+
+      def build_tag_tree(tags)
+        tag_tree = {}
+        current_opened_tag = nil
+
+        tags.each do |tag|
+          if tag.closing?
+            if current_opened_tag && tag.name == current_opened_tag.name
+              tag_tree[current_opened_tag][:closing] = tag
+              current_opened_tag = tag_tree[current_opened_tag][:parent]
+            end
+
+            next
+          end
+
+          tag_tree[tag] = {
+            closing: nil,
+            parent: current_opened_tag
+          }
+
+          current_opened_tag = tag
+        end
+
+        tag_tree
+      end
+
+      def map_arguments(_tag)
+        nil
+      end
+
+      def correction(_tag)
+        nil
+      end
 
       def message(_tag)
         self.class::MESSAGE
@@ -62,13 +103,14 @@ module ERBLint
           comment = code_node&.loc&.source&.strip
 
           if indicator == "#" && comment.start_with?("erblint:count") && comment.match(rule_name)
-            comment_node = code_node
+            comment_node = node
             expected_count = comment.match(/\s(\d+)\s?$/)[1].to_i
           end
         end
 
         if offenses_count.zero?
-          add_offense(processed_source.to_source_range(comment_node.loc), "Unused erblint:count comment for #{rule_name}") if comment_node
+          # have to adjust to get `\n` so we delete the whole line
+          add_offense(processed_source.to_source_range(comment_node.loc.adjust(end_pos: 1)), "Unused erblint:count comment for #{rule_name}", "") if comment_node
           return
         end
 
