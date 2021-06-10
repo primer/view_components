@@ -8,6 +8,7 @@ require "axe/matchers/be_axe_clean"
 require "axe/expectation"
 
 require "test_helpers/cuprite_setup"
+require "test_helpers/retry"
 
 Ferrum::Browser.new(process_timeout: 60, timeout: 60)
 
