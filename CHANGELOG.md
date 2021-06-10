@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.44
+
 ### Updates
 
 * Allow `Dropdown` menu items to be rendered outside a list.
