@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Primer
   # All Primer ViewComponents accept a standard set of options called system arguments, mimicking the [styled-system API](https://styled-system.com/table) used by [Primer React](https://primer.style/components/system-props).
   #
@@ -151,6 +149,29 @@ module Primer
       @system_arguments = system_arguments
 
       raise ArgumentError, "`class` is an invalid argument. Use `classes` instead." if system_arguments.key?(:class) && !Rails.env.production?
+
+      if denylist = system_arguments[:system_arguments_denylist]
+        if Rails.application.config.primer_view_components.force_system_arguments && !ENV["PRIMER_WARNINGS_DISABLED"]
+          # Convert denylist from:
+          # { [:p, :pt] => "message" } to:
+          # { p: "message", pt: "message" }
+          unpacked_denylist =
+            denylist.each_with_object({}) { |(keys, value), memo| keys.each { |key| memo[key] = value }; memo }
+
+          violations = unpacked_denylist.keys & @system_arguments.keys
+
+          if violations.any?
+            message = "Found #{violations.count} #{'violation'.pluralize(violations)}:"
+            violations.each do |violation|
+              message << "\n The #{violation} system argument is not allowed here. #{unpacked_denylist[violation]}"
+            end
+
+            raise(ArgumentError.new(message))
+          end
+        end
+
+        @system_arguments.except!(*denylist.keys.flatten)
+      end
 
       @result = Primer::Classify.call(**@system_arguments.merge(classes: classes))
 
