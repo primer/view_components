@@ -15,7 +15,7 @@ module Minitest
         return result if !should_retry?(result.failures) || result.skipped?
 
         Minitest::Retry::RETRY_MAX.times do |count|
-          puts "Retrying '#{method_name}' #{count + 1} of #{Minitest::Retry::RETRY_MAX}. Error: #{result.failures.map(&:message).join(",")}"
+          puts "Retrying '#{method_name}' #{count + 1} of #{Minitest::Retry::RETRY_MAX}. Error: #{result.failures.map(&:message).join(',')}"
 
           result = super(klass, method_name)
           break if result.failures.empty?

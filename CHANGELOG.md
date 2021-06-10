@@ -2,6 +2,12 @@
 
 ## main
 
+### Misc
+
+* Rerun flaky system tests.
+
+    *Manuel Puyol*
+
 ## 0.0.44
 
 ### Updates
@@ -49,10 +55,6 @@
 * Add preliminary criteria for new `alpha` components.
 
     *Joel Hawksley*
-
-* Rerun flaky system tests.
-
-    *Manuel Puyol*
 
 ## 0.0.43
 
