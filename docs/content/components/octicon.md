@@ -16,7 +16,8 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `icon` | `Symbol` | `nil` | Name of [Octicon](https://primer.style/octicons/) to use. |
+| `icon_name` | `Symbol, String` | `nil` | Name of [Octicon](https://primer.style/octicons/) to use. |
+| `icon` | `Symbol, String` | `nil` | Name of [Octicon](https://primer.style/octicons/) to use. |
 | `size` | `Symbol` | `:small` | One of `:small` (`16`) and `:medium` (`24`). |
 | `use_symbol` | `Boolean` | `false` | EXPERIMENTAL (May change or be removed) - Set to true when using with [OcticonSymbols](/components/octiconsymbols). |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

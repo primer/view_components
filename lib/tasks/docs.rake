@@ -91,9 +91,10 @@ namespace :docs do
     all_components = Primer::Component.descendants - [Primer::BaseComponent]
     components_needing_docs = all_components - components
 
-    components_without_examples = []
     args_for_components = []
     classes_found_in_examples = []
+
+    errors = []
 
     components.each do |component|
       documentation = registry.get(component.name)
@@ -145,35 +146,48 @@ namespace :docs do
         end
 
         params = initialize_method.tags(:param)
-        if params.any?
-          f.puts
-          f.puts("## Arguments")
-          f.puts
-          f.puts("| Name | Type | Default | Description |")
-          f.puts("| :- | :- | :- | :- |")
 
-          args = []
-          params.each do |tag|
-            default_value = pretty_default_value(tag, component)
+        errors << { component.name => { arguments: "No argument documentation found" } } unless params.any?
 
-            args << {
-              "name" => tag.name,
-              "type" => tag.types.join(", "),
-              "default" => default_value,
-              "description" => view_context.render(inline: tag.text)
-            }
+        f.puts
+        f.puts("## Arguments")
+        f.puts
+        f.puts("| Name | Type | Default | Description |")
+        f.puts("| :- | :- | :- | :- |")
 
-            f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default_value} | #{view_context.render(inline: tag.text)} |")
+        docummented_params = params.map(&:name)
+        component_params = component.instance_method(:initialize).parameters.map { |p| p.last.to_s }
+
+        if (docummented_params & component_params).size != component_params.size
+          err = { arguments: {} }
+          (component_params - docummented_params).each do |arg|
+            err[:arguments][arg] = "Not documented"
           end
 
-          component_args = {
-            "component" => short_name,
-            "source" => "https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb",
-            "parameters" => args
+          errors << { component.name => err }
+        end
+
+        args = []
+        params.each do |tag|
+          default_value = pretty_default_value(tag, component)
+
+          args << {
+            "name" => tag.name,
+            "type" => tag.types.join(", "),
+            "default" => default_value,
+            "description" => view_context.render(inline: tag.text)
           }
 
-          args_for_components << component_args
+          f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default_value} | #{view_context.render(inline: tag.text)} |")
         end
+
+        component_args = {
+          "component" => short_name,
+          "source" => "https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb",
+          "parameters" => args
+        }
+
+        args_for_components << component_args
 
         # Slots V2 docs
         slot_v2_methods = documentation.meths.select { |x| x[:renders_one] || x[:renders_many] }
@@ -204,12 +218,10 @@ namespace :docs do
           end
         end
 
-        if initialize_method.tags(:example).any?
-          f.puts
-          f.puts("## Examples")
-        else
-          components_without_examples << component
-        end
+        errors << { component.name => { example: "No examples found" } } unless initialize_method.tags(:example).any?
+
+        f.puts
+        f.puts("## Examples")
 
         initialize_method.tags(:example).each do |tag|
           name = tag.name
@@ -244,6 +256,18 @@ namespace :docs do
       end
     end
 
+    unless errors.empty?
+      puts "==============================================="
+      puts "===================== ERRORS =================="
+      puts "===============================================\n\n"
+      puts JSON.pretty_generate(errors)
+      puts "\n\n==============================================="
+      puts "==============================================="
+      puts "==============================================="
+
+      raise
+    end
+
     File.open("static/classes.yml", "w") do |f|
       f.puts YAML.dump(classes_found_in_examples.sort.uniq)
     end
@@ -270,11 +294,6 @@ namespace :docs do
     end
 
     puts "Markdown compiled."
-
-    if components_without_examples.any?
-      puts
-      puts "The following components have no examples defined: #{components_without_examples.map(&:name).join(', ')}. Consider adding an example?"
-    end
 
     if components_needing_docs.any?
       puts

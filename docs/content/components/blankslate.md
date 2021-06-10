@@ -35,6 +35,7 @@ Use `Blankslate` when there is a lack of content within a page or section. Use a
 | `narrow` | `Boolean` | `false` | Adds a maximum width. |
 | `large` | `Boolean` | `false` | Increases the font size. |
 | `spacious` | `Boolean` | `false` | Adds extra padding. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
 

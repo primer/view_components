@@ -37,3 +37,21 @@ Use the Body slot as the main content to be shown when triggered by the Summary.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | The same arguments as [System arguments](/system-arguments). |
+
+## Examples
+
+### Default
+
+<Example src="" />
+
+```erb
+
+<%= render Primer::DetailsComponent.new do |c| %>
+  component.summary do
+    "Summary"
+  end
+  component.body do
+    "Body"
+  end
+<% end %>
+```
