@@ -48,6 +48,10 @@
 
     *Joel Hawksley*
 
+* Rerun flaky system tests.
+
+    *Manuel Puyol*
+
 ## 0.0.43
 
 ### New
