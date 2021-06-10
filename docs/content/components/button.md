@@ -11,6 +11,37 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `Button` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `scheme` | `Symbol` | `:default` | One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`, or `:primary`. |
+| `variant` | `Symbol` | `:medium` | One of `:large`, `:medium`, or `:small`. |
+| `tag` | `Symbol` | `:button` | One of `:a`, `:button`, or `:summary`. |
+| `type` | `Symbol` | `:button` | One of `:button`, `:reset`, or `:submit`. |
+| `group_item` | `Boolean` | `false` | Whether button is part of a ButtonGroup. |
+| `block` | `Boolean` | `false` | Whether button is full-width with `display: block`. |
+| `caret` | `Boolean` | `false` | Whether or not to render a caret. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Icon`
+
+Icon to be rendered in the button.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | Same arguments as [Octicon](/components/octicon). |
+
+### `Counter`
+
+Counter to be rendered in the button.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | Same arguments as [Counter](/components/counter). |
+
 ## Examples
 
 ### Schemes
@@ -88,34 +119,3 @@ Use `Button` for actions (e.g. in forms). Use links for destinations, or moving 
   Button
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `scheme` | `Symbol` | `:default` | One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`, or `:primary`. |
-| `variant` | `Symbol` | `:medium` | One of `:large`, `:medium`, or `:small`. |
-| `tag` | `Symbol` | N/A | One of `:a`, `:button`, or `:summary`. |
-| `type` | `Symbol` | N/A | One of `:button`, `:reset`, or `:submit`. |
-| `group_item` | `Boolean` | `false` | Whether button is part of a ButtonGroup. |
-| `block` | `Boolean` | `false` | Whether button is full-width with `display: block`. |
-| `caret` | `Boolean` | `false` | Whether or not to render a caret. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-## Slots
-
-### `Icon`
-
-Icon to be rendered in the button.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | Same arguments as [Octicon](/components/octicon). |
-
-### `Counter`
-
-Counter to be rendered in the button.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | Same arguments as [Counter](/components/counter). |

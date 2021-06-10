@@ -25,6 +25,46 @@ as a label by setting `aria-labelledby`.
 will apply it to the correct elements. However, please note that a visible label should almost
 always be used unless there is compelling reason not to. A placeholder is not a label.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `src` | `String` | N/A | The route to query. |
+| `input_id` | `String` | N/A | Id of the input element. |
+| `list_id` | `String` | N/A | Id of the list element. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Label`
+
+Optionally render a visible label. See [Accessibility](#system-arguments)
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Input`
+
+Required input used to search for results
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `type` | `Symbol` | N/A | One of `:search` and `:text`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Icon`
+
+Optional icon to be rendered before the input. Has the same arguments as [Octicon](/components/octicon).
+
+### `Results`
+
+Customizable results list.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -89,43 +129,3 @@ always be used unless there is compelling reason not to. A placeholder is not a 
   <% c.icon(icon: :search) %>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `src` | `String` | N/A | The route to query. |
-| `input_id` | `String` | N/A | Id of the input element. |
-| `list_id` | `String` | N/A | Id of the list element. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-## Slots
-
-### `Label`
-
-Optionally render a visible label. See [Accessibility](#system-arguments)
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-### `Input`
-
-Required input used to search for results
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `type` | `Symbol` | N/A | One of `:search` and `:text`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-### `Icon`
-
-Optional icon to be rendered before the input. Has the same arguments as [Octicon](/components/octicon).
-
-### `Results`
-
-Customizable results list.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

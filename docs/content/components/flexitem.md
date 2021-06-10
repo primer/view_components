@@ -28,6 +28,13 @@ Use [Box](/components/box) instead.
 <%= render Primer::BoxComponent.new(flex: :auto) %>
 ```
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `flex_auto` | `Boolean` | `false` | Fills available space and auto-sizes based on the content. Defaults to false |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -45,10 +52,3 @@ Use [Box](/components/box) instead.
   <% end %>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `flex_auto` | `Boolean` | `false` | Fills available space and auto-sizes based on the content. Defaults to false |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

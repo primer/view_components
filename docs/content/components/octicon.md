@@ -12,6 +12,16 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 `Octicon` renders an [Octicon](https://primer.style/octicons/) with [System arguments](/system-arguments).
 `Octicon` can also be rendered with the `primer_octicon` helper, which accepts the same arguments.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `icon_name` | `Symbol, String` | `nil` | Name of [Octicon](https://primer.style/octicons/) to use. |
+| `icon` | `Symbol, String` | `nil` | Name of [Octicon](https://primer.style/octicons/) to use. |
+| `size` | `Symbol` | `:small` | One of `:small` (`16`) and `:medium` (`24`). |
+| `use_symbol` | `Boolean` | `false` | EXPERIMENTAL (May change or be removed) - Set to true when using with [OcticonSymbols](/components/octiconsymbols). |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -38,13 +48,3 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 ```erb
 <%= primer_octicon(:check) %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `icon_name` | `Symbol, String` | `nil` | Name of [Octicon](https://primer.style/octicons/) to use. |
-| `icon` | `Symbol, String` | `nil` | Name of [Octicon](https://primer.style/octicons/) to use. |
-| `size` | `Symbol` | `:small` | One of `:small` (`16`) and `:medium` (`24`). |
-| `use_symbol` | `Boolean` | `false` | EXPERIMENTAL (May change or be removed) - Set to true when using with [OcticonSymbols](/components/octiconsymbols). |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

@@ -14,6 +14,14 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 Use `ClipboardCopy` to copy element text content or input values to the clipboard.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `label` | `String` | N/A | String that will be read to screenreaders when the component is focused |
+| `value` | `String` | N/A | Text to copy into the users clipboard when they click the component |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -33,11 +41,3 @@ Use `ClipboardCopy` to copy element text content or input values to the clipboar
   Click to copy!
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `label` | `String` | N/A | String that will be read to screenreaders when the component is focused |
-| `value` | `String` | N/A | Text to copy into the users clipboard when they click the component |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

@@ -11,6 +11,27 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `Flash` to inform users of successful or pending actions.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `full` | `Boolean` | `false` | Whether the component should take up the full width of the screen. |
+| `spacious` | `Boolean` | `false` | Whether to add margin to the bottom of the component. |
+| `dismissible` | `Boolean` | `false` | Whether the component can be dismissed with an X button. |
+| `icon` | `Symbol` | `nil` | Name of Octicon icon to use. |
+| `scheme` | `Symbol` | `:default` | One of `:danger`, `:default`, `:success`, or `:warning`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Action`
+
+Optional action content showed on the right side of the component.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Schemes
@@ -60,24 +81,3 @@ Use `Flash` to inform users of successful or pending actions.
   <% end %>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `full` | `Boolean` | `false` | Whether the component should take up the full width of the screen. |
-| `spacious` | `Boolean` | `false` | Whether to add margin to the bottom of the component. |
-| `dismissible` | `Boolean` | `false` | Whether the component can be dismissed with an X button. |
-| `icon` | `Symbol` | `nil` | Name of Octicon icon to use. |
-| `scheme` | `Symbol` | `:default` | One of `:danger`, `:default`, `:success`, or `:warning`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-## Slots
-
-### `Action`
-
-Optional action content showed on the right side of the component.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

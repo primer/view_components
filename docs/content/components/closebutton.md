@@ -18,6 +18,13 @@ Use `CloseButton` to render an `×` without default button styles.
 `CloseButton` has a default `aria-label` of "Close" to provides assistive technologies with an accessible label.
 You may choose to override this label with something more descriptive via [system_arguments][0].
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `type` | `Symbol` | `:button` | One of `:button` and `:submit`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
@@ -27,10 +34,3 @@ You may choose to override this label with something more descriptive via [syste
 ```erb
 <%= render(Primer::CloseButton.new) %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `type` | `Symbol` | `:button` | One of `:button` and `:submit`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
