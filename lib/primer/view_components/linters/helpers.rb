@@ -11,15 +11,36 @@ module ERBLint
         base.include(ERBLint::LinterRegistry)
 
         define_method "run" do |processed_source|
-          tags(processed_source).each do |tag|
+          tags = tags(processed_source)
+          tag_tree = build_tag_tree(tags)
+
+          tags.each do |tag|
             next if tag.closing?
             next unless self.class::TAGS&.include?(tag.name)
 
-            classes = tag.attributes["class"]&.value&.split(" ")
+            classes = tag.attributes["class"]&.value&.split(" ") || []
 
-            next if self.class::CLASSES.any? && (classes & self.class::CLASSES).blank?
+            tag_tree[tag][:offense] = false
 
-            generate_offense(self.class, processed_source, tag, message(tag))
+            next unless self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
+
+            args = map_arguments(tag)
+
+            tag_tree[tag][:offense] = true
+            tag_tree[tag][:correctable] = !args.nil?
+            tag_tree[tag][:message] = message(args)
+            tag_tree[tag][:correction] = correction(args)
+          end
+
+          tag_tree.each do |tag, h|
+            next unless h[:offense]
+
+            if h[:correctable]
+              add_offense(tag.loc, h[:message], h[:correction])
+              add_offense(h[:closing].loc, h[:message], "<% end %>")
+            else
+              generate_offense(self.class, processed_source, tag, h[:message])
+            end
           end
 
           counter_correct?(processed_source)
@@ -29,7 +50,7 @@ module ERBLint
           return unless offense.context
 
           lambda do |corrector|
-            if offense.context.include?(self.class.name.demodulize)
+            if offense.context.include?(counter_disable)
               correct_counter(corrector, processed_source, offense)
             else
               corrector.replace(offense.source_range, offense.context)
@@ -40,8 +61,12 @@ module ERBLint
 
       private
 
+      def counter_disable
+        "erblint:counter #{self.class.name.demodulize}"
+      end
+
       def correct_counter(corrector, processed_source, offense)
-        if processed_source.file_content.include?("erblint:counter #{self.class.name.demodulize}")
+        if processed_source.file_content.include?(counter_disable)
           # update the counter if exists
           corrector.replace(offense.source_range, offense.context)
         else
@@ -120,7 +145,7 @@ module ERBLint
           add_offense(processed_source.to_source_range(first_offense.source_range), "#{rule_name}: If you must, add <%# erblint:counter #{rule_name} #{offenses_count} %> to bypass this check.", "<%# erblint:counter #{rule_name} #{offenses_count} %>")
         else
           clear_offenses
-          add_offense(processed_source.to_source_range(comment_node.loc), "Incorrect erblint:counter number for #{rule_name}. Expected: #{expected_count}, actual: #{offenses_count}.", " erblint:counter #{rule_name} #{offenses_count} ") if expected_count != offenses_count
+          add_offense(processed_source.to_source_range(comment_node.loc), "Incorrect erblint:counter number for #{rule_name}. Expected: #{expected_count}, actual: #{offenses_count}.", "<%# erblint:counter #{rule_name} #{offenses_count} %>") if expected_count != offenses_count
         end
       end
 
