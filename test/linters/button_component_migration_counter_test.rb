@@ -31,7 +31,7 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
     @file = "<%# erblint:counter ButtonComponentMigrationCounter 1 %>\n<button class=\"btn custom\">Button</button><button class=\"btn custom\">Button</button><button class=\"not-a-btn\">Button</button>"
     @linter.run(processed_source)
 
-    assert_equal "<%# erblint:counter ButtonComponentMigrationCounter 2 %>", offenses.first.context
+    assert_equal "<%# erblint:counter ButtonComponentMigrationCounter 2 %>", offenses.last.context
   end
 
   def test_does_not_warn_if_wrong_tag

@@ -2,7 +2,6 @@
 
 require_relative "helpers"
 require_relative "argument_mappers/button"
-require "pry"
 
 module ERBLint
   module Linters
@@ -23,7 +22,7 @@ module ERBLint
       end
 
       def correction(args)
-        return if args.nil?
+        return nil if args.nil?
 
         correction = "<%= render Primer::ButtonComponent.new"
         correction += "(#{args})" if args.present?

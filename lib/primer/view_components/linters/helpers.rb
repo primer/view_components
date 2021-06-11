@@ -7,6 +7,12 @@ module ERBLint
   module Linters
     # Helper methods for linting ERB.
     module Helpers
+      # from https://github.com/Shopify/erb-lint/blob/6179ee2d9d681a6ec4dd02351a1e30eefa748d3d/lib/erb_lint/linters/self_closing_tag.rb
+      SELF_CLOSING_TAGS = %w[
+        area base br col command embed hr input keygen
+        link menuitem meta param source track wbr img
+      ].freeze
+
       def self.included(base)
         base.include(ERBLint::LinterRegistry)
 
@@ -26,11 +32,12 @@ module ERBLint
             next unless self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
 
             args = map_arguments(tag)
+            correction = correction(args)
 
             tag_tree[tag][:offense] = true
-            tag_tree[tag][:correctable] = !args.nil?
+            tag_tree[tag][:correctable] = !correction.nil?
             tag_tree[tag][:message] = message(args)
-            tag_tree[tag][:correction] = correction(args)
+            tag_tree[tag][:correction] = correction
           end
 
           tag_tree.each do |tag, h|
@@ -64,6 +71,29 @@ module ERBLint
 
       private
 
+      # Override this function to convert the HTML element attributes to argument for a component.
+      #
+      # @return [Hash] if possible to map all attributes to arguments.
+      # @return [Nil] if cannot map to arguments.
+      def map_arguments(_tag)
+        nil
+      end
+
+      # Override this function to define how to autocorrect an element to a component.
+      #
+      # @return [String] with the text to replace the HTML element if possible to correct.
+      # @return [Nil] if cannot correct element.
+      def correction(_tag)
+        nil
+      end
+
+      # Override this function to customize the linter message.
+      #
+      # @return [String] message to show on linter error.
+      def message(_tag)
+        self.class::MESSAGE
+      end
+
       def counter_disable
         "erblint:counter #{self.class.name.demodulize}"
       end
@@ -95,27 +125,21 @@ module ERBLint
             next
           end
 
+          self_closing = self_closing?(tag)
+
           tag_tree[tag] = {
-            closing: nil,
+            closing: self_closing ? tag : nil,
             parent: current_opened_tag
           }
 
-          current_opened_tag = tag
+          current_opened_tag = tag unless self_closing
         end
 
         tag_tree
       end
 
-      def map_arguments(_tag)
-        nil
-      end
-
-      def correction(_tag)
-        nil
-      end
-
-      def message(_tag)
-        self.class::MESSAGE
+      def self_closing?(tag)
+        tag.self_closing? || SELF_CLOSING_TAGS.include?(tag.name)
       end
 
       def tags(processed_source)
@@ -148,9 +172,8 @@ module ERBLint
 
         if comment_node.nil?
           add_offense(processed_source.to_source_range(first_offense.source_range), "#{rule_name}: If you must, add <%# erblint:counter #{rule_name} #{@offenses_not_corrected} %> to bypass this check.", "<%# erblint:counter #{rule_name} #{@offenses_not_corrected} %>")
-        else
-          clear_offenses
-          add_offense(processed_source.to_source_range(comment_node.loc), "Incorrect erblint:counter number for #{rule_name}. Expected: #{expected_count}, actual: #{@offenses_not_corrected}.", "<%# erblint:counter #{rule_name} #{@offenses_not_corrected} %>") if expected_count != @offenses_not_corrected
+        elsif expected_count != @offenses_not_corrected
+          add_offense(processed_source.to_source_range(comment_node.loc), "Incorrect erblint:counter number for #{rule_name}. Expected: #{expected_count}, actual: #{@offenses_not_corrected}.", "<%# erblint:counter #{rule_name} #{@offenses_not_corrected} %>")
         end
       end
 
