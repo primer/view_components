@@ -7,7 +7,7 @@ module ERBLint
     module ArgumentMappers
       # Maps element attributes to system arguments.
       class SystemArguments
-        STRING_PARAETERS = %w[aria- data-].freeze
+        STRING_PARAMETERS = %w[aria- data-].freeze
         TEST_SELECTOR_REGEX = /test_selector\((?<selector>.+)\)$/.freeze
 
         attr_reader :attribute
@@ -29,7 +29,9 @@ module ERBLint
             { test_selector: m[:selector].tr("'", '"') }
           elsif attr_name == "data-test-selector"
             { test_selector: attribute.value.to_json }
-          elsif attr_name.start_with?(*STRING_PARAETERS)
+          elsif attr_name.start_with?(*STRING_PARAMETERS)
+            raise ConversionError, "Cannot convert attribute \"#{attr_name}\" because its value contains an erb block" if attribute.value_node&.children&.any? { |n| n.try(:type) == :erb }
+
             # if attribute has no value_node, it means it is a boolean attribute.
             { "\"#{attr_name}\"" => attribute.value_node ? attribute.value.to_json : true }
           else
