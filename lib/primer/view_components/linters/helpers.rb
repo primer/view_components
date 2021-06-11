@@ -36,6 +36,7 @@ module ERBLint
           tag_tree.each do |tag, h|
             next unless h[:offense]
 
+            # We always fix the offenses using blocks. The closing tag corresponds to `<% end %>`.
             if h[:correctable]
               add_offense(tag.loc, h[:message], h[:correction])
               add_offense(h[:closing].loc, h[:message], "<% end %>")
@@ -77,6 +78,9 @@ module ERBLint
         end
       end
 
+      # This assumes that the AST provided represents valid HTML, where each tag has a corresponding closing tag.
+      # From the tags, we build a structured tree which represents the tag hierarchy.
+      # With this, we are able to know where the tags start and end.
       def build_tag_tree(tags)
         tag_tree = {}
         current_opened_tag = nil
