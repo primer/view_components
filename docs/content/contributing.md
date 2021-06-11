@@ -24,6 +24,16 @@ To declare a dependency on an `npm` package, pass `js` to the generator:
 bundle exec thor component_generator my_component_name --js=some-npm-package-name
 ```
 
+### Tag considerations
+
+When adding a new component, consider what HTML tags make sense for the component to be rendered as. For instance, it probably doesn't make sense for an `Image` component to ever be rendered as an `<h1>`.
+
+In Primer ViewComponents, we advocate components to have tag restrictions that are enforced with code. Your component will likely fall under one of the following categories:
+
+1) Having a fixed tag that cannot be updated by the consumer.
+
+2) Having an allowed list of tags that are set by the consumer via the `tag:` argument.
+
 ## Testing
 
 Before running the whole test suite with Rake: `bundle exec rake`, you must run `bundle exec docs:preview`.
