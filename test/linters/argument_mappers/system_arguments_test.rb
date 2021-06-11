@@ -7,10 +7,10 @@ class ArgumentMappersSystemArgumentsTest < LinterTestCase
     @file = '<div aria-label="label" aria-boolean>'
 
     args = ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes["aria-label"]).to_args
-    assert_equal({ '"aria-label"' => '"label"', }, args)
+    assert_equal({ '"aria-label"' => '"label"' }, args)
 
     args = ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes["aria-boolean"]).to_args
-    assert_equal({ '"aria-boolean"' => true, }, args)
+    assert_equal({ '"aria-boolean"' => true }, args)
   end
 
   def test_returns_data_arguments_as_string_symbols
@@ -41,7 +41,7 @@ class ArgumentMappersSystemArgumentsTest < LinterTestCase
 
   def test_converts_erb_test_selector_call
     @file = '<div <%= test_selector("some-selector") %>>'
-    args = ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes.each{|x| x}.first).to_args
+    args = ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes.each.first).to_args
 
     assert_equal({ test_selector: '"some-selector"' }, args)
   end
@@ -49,7 +49,7 @@ class ArgumentMappersSystemArgumentsTest < LinterTestCase
   def test_raises_if_unsupported_erb_block
     @file = '<div <%= some_method("some-selector") %>>'
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
-      ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes.each{|x| x}.first).to_args
+      ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes.each.first).to_args
     end
 
     assert_equal "Cannot convert erb block", err.message
