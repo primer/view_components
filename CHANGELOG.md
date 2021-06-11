@@ -4,6 +4,10 @@
 
 ### Misc
 
+* Unify contributing guidelines.
+
+    *Kate Higa*
+
 * Rerun flaky system tests.
 
     *Manuel Puyol*
