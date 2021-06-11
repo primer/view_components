@@ -174,6 +174,9 @@ module ERBLint
           add_offense(processed_source.to_source_range(first_offense.source_range), "#{rule_name}: If you must, add <%# erblint:counter #{rule_name} #{@offenses_not_corrected} %> to bypass this check.", "<%# erblint:counter #{rule_name} #{@offenses_not_corrected} %>")
         elsif expected_count != @offenses_not_corrected
           add_offense(processed_source.to_source_range(comment_node.loc), "Incorrect erblint:counter number for #{rule_name}. Expected: #{expected_count}, actual: #{@offenses_not_corrected}.", "<%# erblint:counter #{rule_name} #{@offenses_not_corrected} %>")
+        # the only offenses remaining are not autocorrectable, so we can ignore them
+        elsif expected_count == @offenses_not_corrected && @offenses.size == @offenses_not_corrected
+          clear_offenses
         end
       end
 

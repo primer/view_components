@@ -97,8 +97,8 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
     refute_includes(offenses.first.message, "render Primer::ButtonComponent.new")
   end
 
-  def test_autocorrect
-    @file = '
+  def test_autocorrects
+    @file = <<~HTML
       <button class="btn btn-primary">
         button 1
         <button class="btn custom-class">
@@ -119,9 +119,10 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
         </button>
         <button>not a button</button>
       </button>
-    '
-    expected = '<%# erblint:counter ButtonComponentMigrationCounter 1 %>
+    HTML
 
+    expected = <<~HTML
+      <%# erblint:counter ButtonComponentMigrationCounter 1 %>
       <%= render Primer::ButtonComponent.new(scheme: :primary) do %>
         button 1
         <button class="btn custom-class">
@@ -142,10 +143,75 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
         <% end %>
         <button>not a button</button>
       <% end %>
-    '
+    HTML
 
     result = corrected_content
 
     assert_equal expected, result
+  end
+
+  def test_autocorrects_removing_unnecessary_ignores
+    @file = <<~HTML
+      <%# erblint:counter ButtonComponentMigrationCounter 1 %>
+      <button class="btn btn-primary">
+        button 1
+      </button>
+    HTML
+
+    expected = <<~HTML
+      <%= render Primer::ButtonComponent.new(scheme: :primary) do %>
+        button 1
+      <% end %>
+    HTML
+
+    assert_equal expected, corrected_content
+  end
+
+  def test_autocorrects_ignore_counts
+    @file = <<~HTML
+      <%# erblint:counter ButtonComponentMigrationCounter 2 %>
+      <button class="btn btn-primary">
+        button 1
+      </button>
+      <button class="btn custom">
+        button 1
+      </button>
+    HTML
+
+    expected = <<~HTML
+      <%# erblint:counter ButtonComponentMigrationCounter 1 %>
+      <%= render Primer::ButtonComponent.new(scheme: :primary) do %>
+        button 1
+      <% end %>
+      <button class="btn custom">
+        button 1
+      </button>
+    HTML
+
+    assert_equal expected, corrected_content
+  end
+
+  def test_autocorrects_even_with_correct_ignores
+    @file = <<~HTML
+      <%# erblint:counter ButtonComponentMigrationCounter 1 %>
+      <button class="btn btn-primary">
+        button 1
+      </button>
+      <button class="btn custom">
+        button 1
+      </button>
+    HTML
+
+    expected = <<~HTML
+      <%# erblint:counter ButtonComponentMigrationCounter 1 %>
+      <%= render Primer::ButtonComponent.new(scheme: :primary) do %>
+        button 1
+      <% end %>
+      <button class="btn custom">
+        button 1
+      </button>
+    HTML
+
+    assert_equal expected, corrected_content
   end
 end
