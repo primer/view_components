@@ -113,9 +113,7 @@ module Primer
         system_arguments[:classes]
       )
 
-      @system_arguments[:system_arguments_denylist] = {
-        [:p, :pt, :pb, :pr, :pl] => PADDING_SUGGESTION,
-      }
+      @system_arguments[:system_arguments_denylist] = { [:p, :pt, :pb, :pr, :pl] => PADDING_SUGGESTION }
     end
 
     def render?

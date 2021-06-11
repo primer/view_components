@@ -150,13 +150,17 @@ module Primer
 
       raise ArgumentError, "`class` is an invalid argument. Use `classes` instead." if system_arguments.key?(:class) && !Rails.env.production?
 
-      if denylist = system_arguments[:system_arguments_denylist]
+      if (denylist = system_arguments[:system_arguments_denylist])
         if Rails.application.config.primer_view_components.force_system_arguments && !ENV["PRIMER_WARNINGS_DISABLED"]
           # Convert denylist from:
           # { [:p, :pt] => "message" } to:
           # { p: "message", pt: "message" }
           unpacked_denylist =
-            denylist.each_with_object({}) { |(keys, value), memo| keys.each { |key| memo[key] = value }; memo }
+            denylist.each_with_object({}) do |(keys, value), memo|
+              keys.each { |key| memo[key] = value }
+
+              memo
+            end
 
           violations = unpacked_denylist.keys & @system_arguments.keys
 
@@ -166,7 +170,7 @@ module Primer
               message << "\n The #{violation} system argument is not allowed here. #{unpacked_denylist[violation]}"
             end
 
-            raise(ArgumentError.new(message))
+            raise(ArgumentError, message)
           end
         end
 
