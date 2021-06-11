@@ -56,7 +56,7 @@ Use Rows to add rows with borders and maintain the same padding.
 
 ### Header, body, rows, and footer
 
-<Example src="<div system_arguments_denylist='[:p, :pt, :pb, :pr, :pl] Perhaps you could consider using :padding options of default, condensed, and spacious?' data-view-component='true' class='Box'>  <div data-view-component='true' class='Box-header'>    Header</div>  <div data-view-component='true' class='Box-body'>    Body</div>    <ul>        <li data-view-component='true' class='Box-row'>      Row one</li>        <li data-view-component='true' class='Box-row'>    Row two</li>    </ul>  <div data-view-component='true' class='Box-footer'>    Footer</div></div>" />
+<Example src="<div data-view-component='true' class='Box'>  <div data-view-component='true' class='Box-header'>    Header</div>  <div data-view-component='true' class='Box-body'>    Body</div>    <ul>        <li data-view-component='true' class='Box-row'>      Row one</li>        <li data-view-component='true' class='Box-row'>    Row two</li>    </ul>  <div data-view-component='true' class='Box-footer'>    Footer</div></div>" />
 
 ```erb
 <%= render(Primer::BorderBoxComponent.new) do |component| %>
@@ -82,7 +82,7 @@ Use Rows to add rows with borders and maintain the same padding.
 
 ### Padding density
 
-<Example src="<div system_arguments_denylist='[:p, :pt, :pb, :pr, :pl] Perhaps you could consider using :padding options of default, condensed, and spacious?' data-view-component='true' class='Box Box--condensed'>  <div data-view-component='true' class='Box-header'>    Header</div>  <div data-view-component='true' class='Box-body'>    Body</div>    <ul>        <li data-view-component='true' class='Box-row'>    Row two</li>    </ul>  <div data-view-component='true' class='Box-footer'>    Footer</div></div>" />
+<Example src="<div data-view-component='true' class='Box Box--condensed'>  <div data-view-component='true' class='Box-header'>    Header</div>  <div data-view-component='true' class='Box-body'>    Body</div>    <ul>        <li data-view-component='true' class='Box-row'>    Row two</li>    </ul>  <div data-view-component='true' class='Box-footer'>    Footer</div></div>" />
 
 ```erb
 <%= render(Primer::BorderBoxComponent.new(padding: :condensed)) do |component| %>

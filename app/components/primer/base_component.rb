@@ -170,6 +170,8 @@ module Primer
           end
         end
 
+        # Remove :system_arguments_denylist key and any denied keys from system arguments
+        @system_arguments.except!(:system_arguments_denylist)
         @system_arguments.except!(*denylist.keys.flatten)
       end
 

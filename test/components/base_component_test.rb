@@ -152,6 +152,7 @@ class PrimerBaseComponentTest < Minitest::Test
       )
     end
 
+    refute_selector("div[system_arguments_denylist]")
     refute_selector(".p-4")
   end
 
