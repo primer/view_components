@@ -26,13 +26,21 @@ bundle exec thor component_generator my_component_name --js=some-npm-package-nam
 
 ### Tag considerations
 
-When adding a new component, consider what HTML tags make sense for the component to be rendered as. For instance, it probably doesn't make sense for an `Image` component to ever be rendered as an `<h1>`.
+Components and slots should restrict which HTML tags they will render. For example, an `Image` component should never be rendered as an `<h1>`.
 
-In Primer ViewComponents, we advocate components to have tag restrictions that are enforced with code. Your component will likely fall under one of the following categories:
+Consider which HTML tags make sense. Components typically fall under one of the following patterns:
 
-1) Having a fixed tag that cannot be updated by the consumer.
+1) Fixed tag that cannot be updated by the consumer:
 
-2) Having an allowed list of tags that are set by the consumer via the `tag:` argument.
+```rb
+system_arguments[:tag] = :h1
+```
+
+2) Allowed list of tags that are set with the `tag:` argument using the `fetch_or_fallback` helper.
+
+```rb
+system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
+```
 
 ## Testing
 

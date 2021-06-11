@@ -2,6 +2,12 @@
 
 ## main
 
+### Misc
+
+* Prevent flexible tag syntax with rubocop rule.
+
+    *Kate Higa*
+
 ## 0.0.45
 
 ### Updates

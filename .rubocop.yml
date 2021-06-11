@@ -4,6 +4,7 @@ inherit_gem:
     - config/rails_edge.yml
 require:
   - ./rubocop/cop/primer/no_tag_memoize.rb
+
 AllCops:
   NewCops: enable
   Exclude:

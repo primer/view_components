@@ -7,7 +7,7 @@ module Primer
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :heading, lambda { |**system_arguments|
-      system_arguments[:tag] ||= :span
+      system_arguments[:tag] ||= :span # rubocop:disable Primer/NoTagMemoize
       system_arguments[:classes] = class_names(
         "menu-heading",
         system_arguments[:classes]

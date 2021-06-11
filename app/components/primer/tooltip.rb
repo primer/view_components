@@ -70,7 +70,7 @@ module Primer
       **system_arguments
     )
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :span
+      @system_arguments[:tag] ||= :span # rubocop:disable Primer/NoTagMemoize
       @system_arguments[:aria] = { label: label }
 
       @system_arguments[:classes] = class_names(

@@ -11,12 +11,16 @@ module RuboCop
       # @system_arguments[:tag] ||= :h1
       #
       # good
-      # @system_arguments = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
+      # @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
       #
       # good
-      # @system_arguments = :h2
+      # @system_arguments[:tag] = :h2
       class NoTagMemoize < RuboCop::Cop::Cop
-        INVALID_MESSAGE = "It looks like you're being pretty loosey goosey with tags."
+        INVALID_MESSAGE = <<~STR
+          Avoid `[:tag] ||=`. Instead, try one of the following:
+            - Don't allow consumers to update the tag by having a fixed tag (e.g. `system_arguments[:tag] = :div`)
+            - Use the `fetch_or_fallback` helper to only allow a tag from a restricted list.
+        STR
 
         def_node_search :tag_memoized?, <<~PATTERN
           (or-asgn
@@ -29,18 +33,8 @@ module RuboCop
           )
         PATTERN
 
-        def on_block(node)
-          memoized_node = tag_memoized?(node)
-          return if memoized_node.nil?
-
-          add_offense(node, message: INVALID_MESSAGE)
-        end
-
-        def on_def(node)
-          memoized_node = tag_memoized?(node)
-          return if memoized_node.nil?
-
-          add_offense(node, message: INVALID_MESSAGE)
+        def on_or_asgn(node)
+          add_offense(node, message: INVALID_MESSAGE) if tag_memoized?(node)
         end
       end
     end

@@ -29,7 +29,7 @@ module Primer
     #
     # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
     renders_one :body, lambda { |**system_arguments|
-      system_arguments[:tag] ||= :div
+      system_arguments[:tag] ||= :div # rubocop:disable Primer/NoTagMemoize
       Primer::BaseComponent.new(**system_arguments)
     }
 
