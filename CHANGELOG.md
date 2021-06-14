@@ -40,6 +40,10 @@
 
 ### Misc
 
+* Replace Classify::Spacing class with pre-generated mappings.
+
+  *Jon Rohan*
+
 * Add linter suggestions for `Button` component.
 
     *Manuel Puyol*

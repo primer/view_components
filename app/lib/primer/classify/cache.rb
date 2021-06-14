@@ -20,26 +20,6 @@ module Primer
 
         def preload!
           preload(
-            keys: Primer::Classify::Spacing::MARGIN_DIRECTION_MAPPINGS.keys,
-            values: Primer::Classify::Spacing::MARGIN_DIRECTION_OPTIONS
-          )
-
-          preload(
-            keys: Primer::Classify::Spacing::BASE_MAPPINGS.keys,
-            values: Primer::Classify::Spacing::BASE_OPTIONS
-          )
-
-          preload(
-            keys: Primer::Classify::Spacing::AUTO_MAPPINGS.keys,
-            values: Primer::Classify::Spacing::AUTO_OPTIONS
-          )
-
-          preload(
-            keys: Primer::Classify::Spacing::RESPONSIVE_MAPPINGS.keys,
-            values: Primer::Classify::Spacing::RESPONSIVE_OPTIONS
-          )
-
-          preload(
             keys: Primer::Classify::Flex::DIRECTION_KEY,
             values: Primer::Classify::Flex::DIRECTION_VALUES
           )
