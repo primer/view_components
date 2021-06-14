@@ -4,6 +4,10 @@
 
 ### Misc
 
+* Add autocorrect for button linters.
+
+    *Manuel Puyol*
+
 * Unify contributing guidelines.
 
     *Kate Higa*
