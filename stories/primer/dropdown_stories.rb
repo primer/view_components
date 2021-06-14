@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-class Primer::DropdownComponentStories < ViewComponent::Storybook::Stories
+class Primer::DropdownStories < ViewComponent::Storybook::Stories
   layout "storybook_centered_preview"
 
   story(:dropdown) do
     controls do
       select(:overlay, Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :default)
-      reset true
-      summary_classes "some-class"
+      with_caret false
     end
 
     content do |c|

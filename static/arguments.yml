@@ -464,20 +464,16 @@
     default: N/A
     description: "[System arguments](/system-arguments)"
 - component: Dropdown
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/dropdown_component.rb
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/dropdown.rb
   parameters:
   - name: overlay
     type: Symbol
     default: "`:default`"
     description: One of `:dark`, `:default`, or `:none`.
-  - name: reset
+  - name: with_caret
     type: Boolean
-    default: "`true`"
-    description: Whether to hide the default caret on the button
-  - name: summary_classes
-    type: String
-    default: '`""`'
-    description: Custom classes to add to the button
+    default: "`false`"
+    description: Whether or not a caret should be rendered in the button.
   - name: system_arguments
     type: Hash
     default: N/A
