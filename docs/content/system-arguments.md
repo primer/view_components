@@ -103,7 +103,7 @@ System arguments include most HTML attributes. For example:
 | Name | Type | Description |
 | :- | :- | :- |
 | `bottom` | Boolean | If `false`, sets `bottom: 0`. |
-| `float` | Symbol | One of `:left` and `:right`. |
+| `float` | Symbol | One of `:left`, `:none`, or `:right`. |
 | `left` | Boolean | If `false`, sets `left: 0`. |
 | `position` | Symbol | One of `:absolute`, `:fixed`, or `:relative`. |
 | `right` | Boolean | If `false`, sets `right: 0`. |
@@ -114,19 +114,19 @@ System arguments include most HTML attributes. For example:
 | Name | Type | Description |
 | :- | :- | :- |
 | `m` | Integer | Margin. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |
-| `mb` | Integer | Margin bottom. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mb` | Integer | Margin bottom. One of `-12`, `-11`, `-10`, `-9`, `-8`, `-7`, `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
 | `ml` | Integer | Margin left. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
 | `mr` | Integer | Margin right. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `mt` | Integer | Margin top. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `mt` | Integer | Margin top. One of `-12`, `-11`, `-10`, `-9`, `-8`, `-7`, `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, or `:auto`. |
 | `mx` | Integer | Horizontal margins. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |
-| `my` | Integer | Vertical margins. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `my` | Integer | Vertical margins. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
 | `p` | Integer | Padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:responsive`. |
-| `pb` | Integer | Padding bottom. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `pl` | Integer | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `pr` | Integer | Padding right. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `pt` | Integer | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `pb` | Integer | Padding bottom. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
+| `pl` | Integer | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
+| `pr` | Integer | Padding right. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
+| `pt` | Integer | Padding left. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
 | `px` | Integer | Horizontal padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `py` | Integer | Vertical padding. One of `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
+| `py` | Integer | Vertical padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
 
 ## Typography
 

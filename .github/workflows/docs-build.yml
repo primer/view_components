@@ -18,6 +18,10 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.7.x
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - run: yarn
       - uses: actions/cache@v2
         with:
           path: vendor/bundle
@@ -27,6 +31,7 @@ jobs:
           gem install bundler:2.2.9
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
+          bundle exec rake utilities:build
           bundle exec rake docs:build
           bundle exec rake statuses:dump
       - name: Commit & Push Docs Data
