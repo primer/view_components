@@ -2,31 +2,45 @@
 title: Contributing
 ---
 
-Bug reports and pull requests are welcome on GitHub at [https://github.com/primer/view_components](https://github.com/primer/view_components). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Hi there! We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great.
 
-## Setting up
+If you have any substantial changes that you would like to make, please [open an issue](http://github.com/primer/view_components/issues/new) first to discuss them with us.
 
-Run
+Contributions to this project are [released](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license) to the public under the [project's open source license](LICENSE.txt).
 
-```bash
-script/setup
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+## Adding a new component
+
+Use the provided generator to create a component:
+
+```sh
+bundle exec thor component_generator my_component_name
 ```
 
-To install all necessary dependencies.
+To declare a dependency on an `npm` package, pass `js` to the generator:
 
-## Running tests
-
-To run the full test suite:
-
-```bash
-bundle exec rake
+```sh
+bundle exec thor component_generator my_component_name --js=some-npm-package-name
 ```
+
+## Testing
+
+Before running the whole test suite with Rake: `bundle exec rake`, you must run `bundle exec docs:preview`.
+
+Run a subset of tests by supplying a file glob to the test command: `TESTS="test/components/YOUR_COMPONENT_test.rb" bundle exec rake`
+
+### System tests
+
+Primer ViewComponents utilizes Cuprite for system testing components that rely on JavaScript functionality.
+
+By default, the system tests run in a headless Chrome browser. Prefix the test command with `HEADLESS=false` to run the system tests in a normal browser.
 
 ## Writing documentation
 
 Documentation is written as [YARD](https://yardoc.org/) comments directly in the source code, compiled into Markdown via `rake docs:build` and served by [Doctocat](https://github.com/primer/doctocat).
 
-## Storybook / Documentation
+### Storybook / Documentation
 
 To run Storybook and the documentation site, run:
 
@@ -53,8 +67,26 @@ gem "primer_view_components", path: "path_to_the_gem" # e.g. path: "~/primer/vie
 Then, `bundle install` to update references. You'll now be able to see changes from the gem without having to build it.
 Remember that restarting the Rails server is necessary to see changes, as the gem is loaded at boot time.
 
-To minimize the number of restarts, we recommend checking the component in Storybook first, and then when it's in a good state,
-you can check it in your app.
+To minimize the number of restarts, we recommend checking the component in Storybook first, and then when it's in a good state, you can check it in your app.
+
+## Submitting a pull request
+
+0. [Fork](https://github.com/primer/view_components/fork) and clone the repository
+0. Configure and install the dependencies: `./script/setup`
+0. Make sure the tests pass on your machine
+0. Create a new branch: `git checkout -b my-branch-name`
+0. Make your change, add tests, and make sure the tests still pass
+0. Add an entry to the top of `CHANGELOG.md` for your changes
+0. Push to your fork and [submit a pull request](https://github.com/primer/view_components/compare)
+0. Pat yourself on the back and wait for your pull request to be reviewed and merged.
+
+Here are a few things you can do that will increase the likelihood of your pull request being accepted:
+
+- Write tests.
+- Write [YARD comments](https://yardoc.org/) for component and slot initializers. Please document the purpose and general use of new components or slots you add, as well as the parameters they accept. See for example the comment style in app/components/primer/counter_component.rb.
+- Add new components to the `components` list in Rakefile in the `docs:build` task, so that Markdown documentation is generated for them within docs/content/components/.
+- Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
+- Write a descriptive pull request message.
 
 ## Deploying to Heroku
 
