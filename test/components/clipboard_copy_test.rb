@@ -27,7 +27,7 @@ class PrimerClipboardCopyTest < Minitest::Test
   def test_renders_with_for
     render_inline Primer::ClipboardCopy.new(for: "element-id", "aria-label": "Copy branch name to clipboard")
 
-    assert_selector("clipboard-copy[data-view-component][for=\"element-id\"]") do |node|
+    assert_selector("clipboard-copy[data-view-component][for=\"element-id\"]") do
       assert_selector("svg[class=\"octicon octicon-clippy\"]")
       assert_selector("svg[style=\"display: none;\"][class=\"octicon octicon-check color-icon-success\"]", { visible: false })
     end
