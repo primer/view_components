@@ -16,7 +16,7 @@ module Primer
     DISPLAY_KEY = :display
 
     # Keys where we can simply translate { key: value } into ".key-value"
-    CONCAT_KEYS = UTILITIES.keys + %i[position v text box_shadow].freeze
+    CONCAT_KEYS = %i[position v text box_shadow].freeze
 
     INVALID_CLASS_NAME_PREFIXES =
       (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "box-shadow-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
@@ -88,6 +88,7 @@ module Primer
     BORDER_RADIUS_KEY = :border_radius
     TYPOGRAPHY_KEYS = [:font_size].freeze
     VALID_KEYS = (
+      UTILITIES[:mappings].keys +
       CONCAT_KEYS +
       BOOLEAN_MAPPINGS.keys +
       BORDER_MARGIN_KEYS +
