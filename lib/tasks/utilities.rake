@@ -33,13 +33,18 @@ namespace :utilities do
         )
       )["selectors"]["values"]
 
-    output = {}
+    output = {
+      mappings: {},
+      selectors: []
+    }
 
     css_data.each do |selector|
       selector.sub!(/^./, "")
       # Next if selector has ancestors or sibling selectors
       next if selector.match?(/[:><~\[\.]/)
       next unless SUPPORTED_KEYS.any? { |key| selector.start_with?("#{key}-") }
+
+      output[:selectors] << selector
 
       # Dupe so we still have the selector at the end of slicing it up
       classname = selector.dup
@@ -79,18 +84,20 @@ namespace :utilities do
                     classname.to_sym
                   end
 
-      if output[key].nil?
-        output[key] = { classname => Array.new(5, nil) }
-      elsif output[key][classname].nil?
-        output[key][classname] = Array.new(5, nil)
+      if output[:mappings][key].nil?
+        output[:mappings][key] = { classname => Array.new(5, nil) }
+      elsif output[:mappings][key][classname].nil?
+        output[:mappings][key][classname] = Array.new(5, nil)
       end
 
-      output[key][classname][BREAKPOINTS.index(breakpoint)] = selector
+      output[:mappings][key][classname][BREAKPOINTS.index(breakpoint)] = selector
     end
 
-    output.transform_values! do |x|
+    output[:mappings].transform_values! do |x|
       x.transform_values { |y| y.reverse.drop_while(&:nil?).reverse }
     end
+
+    output[:selectors].uniq!.sort!
 
     File.open("app/lib/primer/classify/utilities.yml", "w") do |f|
       f.puts YAML.dump(output)
