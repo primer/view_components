@@ -88,7 +88,7 @@ module Primer
     BORDER_RADIUS_KEY = :border_radius
     TYPOGRAPHY_KEYS = [:font_size].freeze
     VALID_KEYS = (
-      UTILITIES[:mappings].keys +
+      UTILITIES.keys +
       CONCAT_KEYS +
       BOOLEAN_MAPPINGS.keys +
       BORDER_MARGIN_KEYS +

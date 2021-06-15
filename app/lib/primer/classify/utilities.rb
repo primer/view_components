@@ -11,7 +11,7 @@ module Primer
             valid
           else
             # Get selector
-            Primer::Classify::UTILITIES[:mappings][key][val][Primer::Classify::BREAKPOINTS.index(breakpoint)]
+            Primer::Classify::UTILITIES[key][val][Primer::Classify::BREAKPOINTS.index(breakpoint)]
           end
         end
 
@@ -19,28 +19,31 @@ module Primer
         #
         # returns Boolean
         def supported_key?(key)
-          Primer::Classify::UTILITIES[:mappings][key].present?
+          Primer::Classify::UTILITIES[key].present?
         end
 
         # Does the Utilitiy class support the given key and value
         #
         # returns Boolean
         def supported_value?(key, val)
-          supported_key?(key) && Primer::Classify::UTILITIES[:mappings][key][val].present?
+          supported_key?(key) && Primer::Classify::UTILITIES[key][val].present?
         end
 
         # Does the given selector exist in the utilities file
         #
         # returns Boolean
         def supported_selector?(selector)
-          Primer::Classify::UTILITIES[:selectors][selector].present?
+          # This method is too slow to run in production
+          return if Rails.env.production?
+
+          find_selector(selector)
         end
 
         # Is the key and value responsive
         #
         # returns Boolean
         def responsive?(key, val)
-          supported_value?(key, val) && Primer::Classify::UTILITIES[:mappings][key][val].count > 1
+          supported_value?(key, val) && Primer::Classify::UTILITIES[key][val].count > 1
         end
 
         # Get the options for the given key
@@ -49,7 +52,7 @@ module Primer
         def mappings(key)
           return unless supported_key?(key)
 
-          Primer::Classify::UTILITIES[:mappings][key].keys
+          Primer::Classify::UTILITIES[key].keys
         end
 
         # Extract hash from classes ie. "mr-1 mb-2 foo" => { mr: 1, mb: 2, classes: "foo" }
@@ -91,7 +94,7 @@ module Primer
 
         def find_selector(selector)
           # Search each key/value_hash pair, eg. key `:mr` and value_hash `{ 0 => [ "mr-0", "mr-sm-0", "mr-md-0", "mr-lg-0", "mr-xl-0" ] }`
-          Primer::Classify::UTILITIES[:mappings].each do |key, value_hash|
+          Primer::Classify::UTILITIES.each do |key, value_hash|
             # Each value hash will also contain an array of classnames for breakpoints
             # Key argument `0`, classes `[ "mr-0", "mr-sm-0", "mr-md-0", "mr-lg-0", "mr-xl-0" ]`
             value_hash.each do |key_argument, classnames|
