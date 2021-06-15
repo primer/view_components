@@ -21,14 +21,18 @@ module ERBLint
         nil
       end
 
-      def message(tag)
-        args = map_arguments(tag)
+      def correction(args)
+        return nil if args.nil?
 
+        correction = "<%= render Primer::ButtonComponent.new"
+        correction += "(#{args})" if args.present?
+        "#{correction} do %>"
+      end
+
+      def message(args)
         return MESSAGE if args.nil?
 
-        msg = "#{MESSAGE}\n\nTry using:\n\n<%= render Primer::ButtonComponent.new"
-        msg += "(#{args})" if args.present?
-        "#{msg} %>\n\nInstead of:\n"
+        "#{MESSAGE}\n\nTry using:\n\n#{correction(args)}\n\nInstead of:\n"
       end
     end
   end

@@ -4,6 +4,14 @@
 
 ### Misc
 
+* Add autocorrect for button linters.
+
+    *Manuel Puyol*
+
+* Unify contributing guidelines.
+
+    *Kate Higa*
+
 * Rerun flaky system tests.
 
     *Manuel Puyol*
@@ -35,6 +43,10 @@
     *Manuel Puyol*
 
 ### Misc
+
+* Replace Classify::Spacing class with pre-generated mappings.
+
+  *Jon Rohan*
 
 * Add linter suggestions for `Button` component.
 

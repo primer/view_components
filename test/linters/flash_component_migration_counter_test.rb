@@ -16,7 +16,6 @@ class FlashComponentMigrationCounterTest < LinterTestCase
 
   def test_suggests_ignoring_with_correct_number_of_flashes
     @file = "<div class=\"flash\">flash</div><div class=\"flash\">flash</div><div class=\"not-a-flash\">flash</div>"
-    @linter.run(processed_source)
 
     assert_equal "<%# erblint:counter FlashComponentMigrationCounter 2 %>\n#{@file}", corrected_content
   end
