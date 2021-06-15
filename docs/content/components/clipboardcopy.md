@@ -14,10 +14,15 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 
 Use `ClipboardCopy` to copy element text content or input values to the clipboard.
 
+## Accessibility
+
+Always set an accessible label to help the user interact with the component.
+
 ## Arguments
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `aria-label` | `String` | N/A | String that will be read to screenreaders when the component is focused |
 | `value` | `String` | `nil` | Text to copy into the users clipboard when they click the component. |
 | `for` | `String` | N/A | Element id from where to get the copied value. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
