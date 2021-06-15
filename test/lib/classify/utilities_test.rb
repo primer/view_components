@@ -18,6 +18,13 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     refute Primer::Classify::Utilities.supported_selector?("foo")
   end
 
+  def test_supported_selector_returns_nil_in_production
+    Rails.stub(:env, ActiveSupport::StringInquirer.new("production")) do
+      refute Primer::Classify::Utilities.supported_selector?("m-1")
+      refute Primer::Classify::Utilities.supported_selector?("foo")
+    end
+  end
+
   def test_mappings
     assert_equal [:left, :right, :none], Primer::Classify::Utilities.mappings(:float)
     refute_includes Primer::Classify::Utilities.mappings(:float), :sm
