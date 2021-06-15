@@ -1,4 +1,27 @@
 ---
+:animation:
+  :fade_in:
+  - anim-fade-in
+  :fade_out:
+  - anim-fade-out
+  :fade_up:
+  - anim-fade-up
+  :fade_down:
+  - anim-fade-down
+  :grow_x:
+  - anim-grow-x
+  :shrink_x:
+  - anim-shrink-x
+  :scale_in:
+  - anim-scale-in
+  :pulse:
+  - anim-pulse
+  :pulse_in:
+  - anim-pulse-in
+  :hover_grow:
+  - anim-hover-grow
+  :rotate:
+  - anim-rotate
 :float:
   :left:
   - float-left

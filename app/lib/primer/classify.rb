@@ -30,7 +30,6 @@ module Primer
     HEIGHT_KEY = :height
     BOX_SHADOW_KEY = :box_shadow
     VISIBILITY_KEY = :visibility
-    ANIMATION_KEY = :animation
     CONTAINER_KEY = :container
 
     BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
@@ -108,7 +107,6 @@ module Primer
         HEIGHT_KEY,
         BOX_SHADOW_KEY,
         VISIBILITY_KEY,
-        ANIMATION_KEY,
         CONTAINER_KEY
       ]
     ).freeze
@@ -244,12 +242,6 @@ module Primer
                             end
         elsif key == VISIBILITY_KEY
           memo[:classes] << "v-#{val.to_s.dasherize}"
-        elsif key == ANIMATION_KEY
-          memo[:classes] << if val == :grow
-                              "hover-grow"
-                            else
-                              "anim-#{val.to_s.dasherize}"
-                            end
         else
           memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{val.to_s.dasherize}"
         end
