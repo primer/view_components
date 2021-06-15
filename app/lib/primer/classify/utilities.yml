@@ -22,6 +22,37 @@
   - anim-hover-grow
   :rotate:
   - anim-rotate
+:position:
+  :static:
+  - position-static
+  - position-sm-static
+  - position-md-static
+  - position-lg-static
+  - position-xl-static
+  :relative:
+  - position-relative
+  - position-sm-relative
+  - position-md-relative
+  - position-lg-relative
+  - position-xl-relative
+  :absolute:
+  - position-absolute
+  - position-sm-absolute
+  - position-md-absolute
+  - position-lg-absolute
+  - position-xl-absolute
+  :fixed:
+  - position-fixed
+  - position-sm-fixed
+  - position-md-fixed
+  - position-lg-fixed
+  - position-xl-fixed
+  :sticky:
+  - position-sticky
+  - position-sm-sticky
+  - position-md-sticky
+  - position-lg-sticky
+  - position-xl-sticky
 :float:
   :left:
   - float-left

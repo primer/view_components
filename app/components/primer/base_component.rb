@@ -104,7 +104,7 @@ module Primer
     # | `bottom` | Boolean | If `false`, sets `bottom: 0`. |
     # | `float` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:float)) %> |
     # | `left` | Boolean | If `false`, sets `left: 0`. |
-    # | `position` | Symbol | <%= one_of([:relative, :absolute, :fixed]) %> |
+    # | `position` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:position)) %> |
     # | `right` | Boolean | If `false`, sets `right: 0`. |
     # | `top` | Boolean | If `false`, sets `top: 0`. |
     #

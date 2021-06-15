@@ -13,6 +13,7 @@ namespace :utilities do
       hide
       m mt mr mb ml mx my
       p pt pr pb pl px py
+      position
     ].freeze
 
     # Replacements for some classnames that end up being a different argument key
