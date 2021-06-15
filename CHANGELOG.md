@@ -2,6 +2,11 @@
 
 ## main
 
+### Updates
+
+* Restrict usage of padding system arguments on BorderBox, recommending use of `padding` density instead.
+
+    *Joel Hawksley*
 ### Misc
 
 * Add autocorrect for button linters.

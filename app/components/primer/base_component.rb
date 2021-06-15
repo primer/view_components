@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Primer
   # All Primer ViewComponents accept a standard set of options called system arguments, mimicking the [styled-system API](https://styled-system.com/table) used by [Primer React](https://primer.style/components/system-props).
   #
@@ -167,7 +169,7 @@ module Primer
           if violations.any?
             message = "Found #{violations.count} #{'violation'.pluralize(violations)}:"
             violations.each do |violation|
-              message << "\n The #{violation} system argument is not allowed here. #{unpacked_denylist[violation]}"
+              message += "\n The #{violation} system argument is not allowed here. #{unpacked_denylist[violation]}"
             end
 
             raise(ArgumentError, message)
