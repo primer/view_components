@@ -20,8 +20,8 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
 
   def test_supported_selector_returns_nil_in_production
     Rails.stub(:env, ActiveSupport::StringInquirer.new("production")) do
-      refute Primer::Classify::Utilities.supported_selector?("m-1")
-      refute Primer::Classify::Utilities.supported_selector?("foo")
+      assert_nil Primer::Classify::Utilities.supported_selector?("m-1")
+      assert_nil Primer::Classify::Utilities.supported_selector?("foo")
     end
   end
 
