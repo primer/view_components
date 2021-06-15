@@ -139,7 +139,7 @@ module Primer
         if force_system_arguments? && !ENV["PRIMER_WARNINGS_DISABLED"]
           invalid_class_names =
             classes.split(" ").each_with_object([]) do |class_name, memo|
-              memo << class_name if INVALID_CLASS_NAME_PREFIXES.any? { |prefix| class_name.start_with?(prefix) }
+              memo << class_name if INVALID_CLASS_NAME_PREFIXES.any? { |prefix| class_name.start_with?(prefix) } || Primer::Classify::Utilities.supported_selector?(class_name)
             end
 
           raise ArgumentError, "Use System Arguments (https://primer.style/view-components/system-arguments) instead of Primer CSS class #{'name'.pluralize(invalid_class_names.length)} #{invalid_class_names.to_sentence}. This warning will not be raised in production. Set PRIMER_WARNINGS_DISABLED=1 to disable this warning." if invalid_class_names.any?

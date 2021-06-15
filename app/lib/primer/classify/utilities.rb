@@ -29,6 +29,13 @@ module Primer
           supported_key?(key) && Primer::Classify::UTILITIES[:mappings][key][val].present?
         end
 
+        # Does the given selector exist in the utilities file
+        #
+        # returns Boolean
+        def supported_selector?(selector)
+          Primer::Classify::UTILITIES[:selectors][selector].present?
+        end
+
         # Is the key and value responsive
         #
         # returns Boolean
