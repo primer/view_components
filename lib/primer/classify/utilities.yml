@@ -18,8 +18,6 @@
   - anim-pulse
   :pulse_in:
   - anim-pulse-in
-  :hover_grow:
-  - anim-hover-grow
   :rotate:
   - anim-rotate
 :position:
