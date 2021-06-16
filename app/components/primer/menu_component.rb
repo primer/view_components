@@ -3,11 +3,15 @@
 module Primer
   # Use `Menu` to create vertical lists of navigational links.
   class MenuComponent < Primer::Component
+    HEADING_TAG_OPTIONS = [:h1, :h2, :h3, :h4, :h5, :h6].freeze
+    HEADING_TAG_FALLBACK = :h2
+
     # Optional menu heading
     #
+    # @param tag [Symbol] <%= one_of(Primer::MenuComponent::HEADING_TAG_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_one :heading, lambda { |**system_arguments|
-      system_arguments[:tag] ||= :span # rubocop:disable Primer/NoTagMemoize
+    renders_one :heading, lambda { |tag:, **system_arguments|
+      system_arguments[:tag] = fetch_or_fallback(HEADING_TAG_OPTIONS, tag, HEADING_TAG_FALLBACK)
       system_arguments[:classes] = class_names(
         "menu-heading",
         system_arguments[:classes]
@@ -35,7 +39,7 @@ module Primer
 
     # @example Default
     #   <%= render(Primer::MenuComponent.new) do |c| %>
-    #     <% c.heading do %>
+    #     <% c.heading(tag: :h2) do %>
     #       Heading
     #     <% end %>
     #     <% c.item(selected: true, href: "#url") do %>

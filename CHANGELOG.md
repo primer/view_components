@@ -10,6 +10,10 @@
 
 ### Breaking changes
 
+* Restrict `Menu` heading slot tags to heading tags and require `tag` argument.
+
+    *Kate Higa*
+
 * Adding animation, vertical_align, word_break, display, visibility, & position arguments to the utilities class. `animation: :grow` is now `animation: :hover_grow` this was a change because we changed the class name in primer.
 
     *Jon Rohan*
