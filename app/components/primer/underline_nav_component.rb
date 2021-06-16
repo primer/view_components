@@ -13,6 +13,9 @@ module Primer
     BODY_TAG_DEFAULT = :div
     BODY_TAG_OPTIONS = [BODY_TAG_DEFAULT, :ul].freeze
 
+    ACTIONS_TAG_DEFAULT = :div
+    ACTIONS_TAG_OPTIONS = [ACTIONS_TAG_DEFAULT, :span].freeze
+
     # Use the tabs to list navigation items. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
     # @param selected [Boolean] Whether the tab is selected.
@@ -34,9 +37,10 @@ module Primer
 
     # Use actions for a call to action.
     #
+    # @param tag [String] (Primer::UnderlineNavComponent::ACTIONS_TAG_DEFAULT) <%= one_of(Primer::UnderlineNavComponent::ACTIONS_TAG_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_one :actions, lambda { |**system_arguments|
-      system_arguments[:tag] ||= :div # rubocop:disable Primer/NoTagMemoize
+    renders_one :actions, lambda { |tag: ACTIONS_TAG_DEFAULT, **system_arguments|
+      system_arguments[:tag] = fetch_or_fallback(ACTIONS_TAG_OPTIONS, tag, ACTIONS_TAG_DEFAULT)
       system_arguments[:classes] = class_names("UnderlineNav-actions", system_arguments[:classes])
 
       Primer::BaseComponent.new(**system_arguments)

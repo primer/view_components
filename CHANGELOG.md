@@ -10,7 +10,7 @@
 
 ### Breaking changes
 
-* Restrict `Details` body slot tags to `:div`, `:ul`, `:details-dialog`, or `:details-menu`.
+* Restrict `Details` body slot tags and `UnderlineNav` body slot tags.
 
     *Kate Higa*
 
