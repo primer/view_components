@@ -10,6 +10,10 @@
 
 ### Breaking changes
 
+* Restrict `Details` body slot tags to `:div`, `:ul`, `:details-dialog`, or `:details-menu`.
+
+    *Kate Higa*
+
 * Move Primer::Classify from `app/lib/` to `lib/`. This requires an extra `require "primer/classify"` statement for anywhere Classify is needed.
 
     *Manuel Puyol, Jon Rohan*

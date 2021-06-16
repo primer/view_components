@@ -5,6 +5,8 @@ module Primer
   class DetailsComponent < Primer::Component
     status :beta
 
+    BODY_TAG_DEFAULT = :div
+    BODY_TAG_OPTIONS = [:ul, :"details-menu", :"details-dialog", BODY_TAG_DEFAULT].freeze
     NO_OVERLAY = :none
     OVERLAY_MAPPINGS = {
       NO_OVERLAY => "",
@@ -28,8 +30,9 @@ module Primer
     # Use the Body slot as the main content to be shown when triggered by the Summary.
     #
     # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
-    renders_one :body, lambda { |**system_arguments|
-      system_arguments[:tag] ||= :div # rubocop:disable Primer/NoTagMemoize
+    renders_one :body, lambda { |tag: BODY_TAG_DEFAULT, **system_arguments|
+      system_arguments[:tag] = fetch_or_fallback(BODY_TAG_OPTIONS, tag, BODY_TAG_DEFAULT)
+
       Primer::BaseComponent.new(**system_arguments)
     }
 
