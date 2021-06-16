@@ -660,7 +660,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("anim-fade-out", { animation: :fade_out })
     assert_generated_class("anim-fade-up", { animation: :fade_up })
     assert_generated_class("anim-fade-down", { animation: :fade_down })
-    assert_generated_class("anim-fade-scale-in", { animation: :fade_scale_in })
+    assert_generated_class("anim-scale-in", { animation: :scale_in })
     assert_generated_class("anim-grow-x", { animation: :grow_x })
     assert_generated_class("hover-grow", { animation: :hover_grow })
   end

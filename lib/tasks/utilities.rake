@@ -9,11 +9,14 @@ namespace :utilities do
     # Keys that are looked for to be included in the utilities.yml file
     SUPPORTED_KEYS = %i[
       anim
+      d
       float
       hide
       m mt mr mb ml mx my
       p pt pr pb pl px py
       position
+      wb
+      v
     ].freeze
 
     # Replacements for some classnames that end up being a different argument key

@@ -14,7 +14,7 @@
 
     *Manuel Puyol*
 
-* Adding animation & position arguments to the utilities class.
+* Adding animation, vertical_align, word_break, display, visibility, & position arguments to the utilities class.
 
     *Jon Rohan*
 
