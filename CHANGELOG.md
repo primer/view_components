@@ -14,6 +14,10 @@
 
 ### Misc
 
+* Update contributing guidelines with release instructions.
+
+    *Kate Higa*
+
 * Prevent flexible tag syntax with rubocop rule.
 
     *Kate Higa*
