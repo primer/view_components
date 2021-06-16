@@ -15,6 +15,10 @@ module Primer
 
     private
 
+    def force_system_arguments?
+      Rails.application.config.primer_view_components.force_system_arguments
+    end
+
     def deprecated_component_warning(new_class: nil, version: nil)
       return if Rails.env.production? || silence_deprecations?
 

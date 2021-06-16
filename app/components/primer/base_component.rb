@@ -153,7 +153,7 @@ module Primer
       raise ArgumentError, "`class` is an invalid argument. Use `classes` instead." if system_arguments.key?(:class) && !Rails.env.production?
 
       if (denylist = system_arguments[:system_arguments_denylist])
-        if Rails.application.config.primer_view_components.force_system_arguments && !ENV["PRIMER_WARNINGS_DISABLED"]
+        if force_system_arguments? && !ENV["PRIMER_WARNINGS_DISABLED"]
           # Convert denylist from:
           # { [:p, :pt] => "message" } to:
           # { p: "message", pt: "message" }
