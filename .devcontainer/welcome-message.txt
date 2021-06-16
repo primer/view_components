@@ -3,8 +3,8 @@
 
 👢 Your environment is all set up and bootstrapped.
 
-🚀 To get started, start the server with the VS code task (⇧⌘B) or run
-   script/dev. This will start the Rails server at http://localhost:4000,
-   Storybook at http://localhost:5000 and docs at  http://localhost:5400.
+🚀 To begin, start the server with the VS code task (⇧⌘B) or run
+   script/dev, which will start the Rails server at http://localhost:4000,
+   Storybook at http://localhost:5000 and documentation at http://localhost:5400.
 
-❔ Having other troubles? Open an issue in the repo for support!
+❔ Having other problems? Open an issue in the repo for support!
