@@ -2,6 +2,8 @@
 
 ## main
 
+## 0.0.45
+
 ### Updates
 
 * Allow copying from elements using `for` in `ClipboardCopy`.
