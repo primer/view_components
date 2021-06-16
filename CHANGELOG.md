@@ -2,6 +2,12 @@
 
 ## main
 
+### Updates
+
+* Restrict usage of padding system arguments on BorderBox, recommending use of `padding` density instead.
+
+    *Joel Hawksley*
+
 ### Breaking changes
 
 * Restrict `Menu` heading slot tags to heading tags and require `tag` argument.
