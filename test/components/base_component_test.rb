@@ -121,6 +121,41 @@ class PrimerBaseComponentTest < Minitest::Test
     assert_selector("div.width-fit")
   end
 
+  def test_restricts_allowed_system_arguments
+    with_force_system_arguments(true) do
+      error = assert_raises(ArgumentError) do
+        render_inline(
+          Primer::BaseComponent.new(
+            tag: :div,
+            p: 4,
+            system_arguments_denylist: {
+              [:p] => "Perhaps you could consider using :padding options of :foo, :bar, or :baz?"
+            }
+          )
+        )
+      end
+
+      assert_includes(error.message, "Perhaps you could consider using")
+    end
+  end
+
+  def test_strips_denied_system_arguments
+    with_force_system_arguments(false) do
+      render_inline(
+        Primer::BaseComponent.new(
+          tag: :div,
+          p: 4,
+          system_arguments_denylist: {
+            [:p] => "Perhaps you could consider using :padding options of :foo, :bar, or :baz?"
+          }
+        )
+      )
+    end
+
+    refute_selector("div[system_arguments_denylist]")
+    refute_selector(".p-4")
+  end
+
   def test_status
     assert_component_state(Primer::BaseComponent, :beta)
   end
