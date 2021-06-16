@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "functional_colors"
+
 module Primer
   class Classify
     # Text specific functional colors.

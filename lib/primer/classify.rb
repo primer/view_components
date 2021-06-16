@@ -1,5 +1,13 @@
 # frozen_string_literal: true
 
+require_relative "classify/cache"
+require_relative "classify/flex"
+require_relative "classify/functional_background_colors"
+require_relative "classify/functional_border_colors"
+require_relative "classify/functional_text_colors"
+require_relative "classify/grid"
+require_relative "classify/utilities"
+
 module Primer
   # :nodoc:
   class Classify

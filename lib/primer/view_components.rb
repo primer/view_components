@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "primer/classify"
 require "primer/view_components/version"
 require "primer/view_components/engine"
 

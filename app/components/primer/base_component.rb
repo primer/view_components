@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "primer/classify"
+
 module Primer
   # All Primer ViewComponents accept a standard set of options called system arguments, mimicking the [styled-system API](https://styled-system.com/table) used by [Primer React](https://primer.style/components/system-props).
   #
