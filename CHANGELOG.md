@@ -14,6 +14,10 @@
 
     *Manuel Puyol*
 
+* Adding animation & position arguments to the utilities class.
+
+    *Jon Rohan*
+
 ### Misc
 
 * Add autocorrect for button linters.
