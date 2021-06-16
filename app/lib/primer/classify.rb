@@ -16,7 +16,7 @@ module Primer
     DISPLAY_KEY = :display
 
     # Keys where we can simply translate { key: value } into ".key-value"
-    CONCAT_KEYS = UTILITIES.keys + %i[v text box_shadow].freeze
+    CONCAT_KEYS = %i[v text box_shadow].freeze
 
     INVALID_CLASS_NAME_PREFIXES =
       (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "box-shadow-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
@@ -87,6 +87,7 @@ module Primer
     BORDER_RADIUS_KEY = :border_radius
     TYPOGRAPHY_KEYS = [:font_size].freeze
     VALID_KEYS = (
+      UTILITIES.keys +
       CONCAT_KEYS +
       BOOLEAN_MAPPINGS.keys +
       BORDER_MARGIN_KEYS +
@@ -136,7 +137,7 @@ module Primer
         if force_system_arguments? && !ENV["PRIMER_WARNINGS_DISABLED"]
           invalid_class_names =
             classes.split(" ").each_with_object([]) do |class_name, memo|
-              memo << class_name if INVALID_CLASS_NAME_PREFIXES.any? { |prefix| class_name.start_with?(prefix) }
+              memo << class_name if INVALID_CLASS_NAME_PREFIXES.any? { |prefix| class_name.start_with?(prefix) } || Primer::Classify::Utilities.supported_selector?(class_name)
             end
 
           raise ArgumentError, "Use System Arguments (https://primer.style/view-components/system-arguments) instead of Primer CSS class #{'name'.pluralize(invalid_class_names.length)} #{invalid_class_names.to_sentence}. This warning will not be raised in production. Set PRIMER_WARNINGS_DISABLED=1 to disable this warning." if invalid_class_names.any?

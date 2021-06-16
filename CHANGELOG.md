@@ -2,6 +2,18 @@
 
 ## main
 
+### Updates
+
+* Allow copying from elements using `for` in `ClipboardCopy`.
+
+    *Manuel Puyol*
+
+### Breaking changes
+
+* Remove `label` argument in favor of `aria-label` in `ClipboardCopy`.
+
+    *Manuel Puyol*
+
 ### Misc
 
 * Add autocorrect for button linters.
@@ -15,6 +27,10 @@
 * Rerun flaky system tests.
 
     *Manuel Puyol*
+
+* Check if selector is a classify class in Utilities.
+
+   *Jon Rohan*
 
 ## 0.0.44
 
