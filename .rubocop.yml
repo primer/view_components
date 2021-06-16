@@ -2,6 +2,8 @@ inherit_gem:
   rubocop-github:
     - config/default_edge.yml
     - config/rails_edge.yml
+require:
+  - ./rubocop/cop/primer/no_tag_memoize.rb
 
 AllCops:
   NewCops: enable
@@ -48,3 +50,8 @@ Rails/OutputSafety:
 
 Style/AsciiComments:
   Enabled: false
+
+Primer/NoTagMemoize:
+  Enabled: true
+  include:
+    - "app/components/**/*"

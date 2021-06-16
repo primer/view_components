@@ -18,7 +18,7 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :panel, lambda { |**system_arguments|
-        system_arguments[:tag] ||= :div
+        system_arguments[:tag] ||= :div # rubocop:disable Primer/NoTagMemoize
         system_arguments[:role] ||= :tabpanel
         system_arguments[:hidden] = true unless @selected
 
@@ -97,11 +97,11 @@ module Primer
         @system_arguments = system_arguments
 
         if with_panel
-          @system_arguments[:tag] ||= :button
+          @system_arguments[:tag] ||= :button # rubocop:disable Primer/NoTagMemoize
           @system_arguments[:type] = :button
           @system_arguments[:role] = :tab
         else
-          @system_arguments[:tag] ||= :a
+          @system_arguments[:tag] ||= :a # rubocop:disable Primer/NoTagMemoize
         end
 
         @wrapper_arguments = wrapper_arguments

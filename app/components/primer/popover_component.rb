@@ -28,7 +28,7 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :heading, lambda { |**system_arguments|
       system_arguments[:mb] ||= 2
-      system_arguments[:tag] ||= :h4
+      system_arguments[:tag] ||= :h4 # rubocop:disable Primer/NoTagMemoize
 
       Primer::HeadingComponent.new(**system_arguments)
     }
@@ -106,7 +106,7 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :div
+      @system_arguments[:tag] ||= :div # rubocop:disable Primer/NoTagMemoize
       @system_arguments[:classes] = class_names(
         system_arguments[:classes],
         "Popover"
