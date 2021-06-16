@@ -95,7 +95,7 @@ System arguments include most HTML attributes. For example:
 | `display` | Symbol | One of `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:none`, `:table`, or `:table_cell`. |
 | `height` | Symbol | One of `:fit`. |
 | `hide` | Symbol | Hide the element at a specific breakpoint. One of `:lg`, `:md`, `:sm`, or `:xl`. |
-| `v` | Symbol | Visibility. One of `:hidden` and `:visible`. |
+| `visibility` | Symbol | Visibility. One of `:hidden` and `:visible`. |
 | `vertical_align` | Symbol | One of `:baseline`, `:bottom`, `:middle`, `:text_bottom`, `:text_top`, or `:top`. |
 
 ## Position
@@ -139,7 +139,7 @@ System arguments include most HTML attributes. For example:
 | `text_align` | Symbol | Text alignment. One of `:center`, `:left`, or `:right`. |
 | `text_transform` | Symbol | Text alignment. One of `:uppercase`. |
 | `underline` | Boolean | Whether text should be underlined. |
-| `word_break` | Symbol | Whether to break words on line breaks. Can only be `:break_all`. |
+| `word_break` | Symbol | Whether to break words on line breaks. One of `:break_all`. |
 
 ## Other
 
