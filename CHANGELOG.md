@@ -16,7 +16,7 @@
 
     *Manuel Puyol*
 
-* Check if selector is a classify class in Utilities
+* Check if selector is a classify class in Utilities.
 
    *Jon Rohan*
 
