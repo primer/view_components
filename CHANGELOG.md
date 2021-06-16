@@ -28,6 +28,10 @@
 
     *Manuel Puyol*
 
+* Check if selector is a classify class in Utilities.
+
+   *Jon Rohan*
+
 ## 0.0.44
 
 ### Updates
