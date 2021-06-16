@@ -69,4 +69,26 @@ class PrimerBorderBoxComponentTest < Minitest::Test
   def test_status
     assert_component_state(Primer::BorderBoxComponent, :beta)
   end
+
+  def test_restricts_allowed_system_arguments
+    with_force_system_arguments(true) do
+      error = assert_raises(ArgumentError) do
+        render_inline(Primer::BorderBoxComponent.new(p: 4)) do |component|
+          component.body { "Body" }
+        end
+      end
+
+      assert_includes(error.message, "Perhaps you could consider using")
+    end
+  end
+
+  def test_strips_denied_system_arguments
+    with_force_system_arguments(false) do
+      render_inline(Primer::BorderBoxComponent.new(p: 4)) do |component|
+        component.body { "Body" }
+      end
+    end
+
+    refute_selector(".p-4")
+  end
 end
