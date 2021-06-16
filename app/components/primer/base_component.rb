@@ -91,7 +91,7 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `display` | Symbol | <%= one_of([:none, :block, :flex, :inline, :inline_block, :inline_flex, :table, :table_cell]) %> |
+    # | `display` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:display)) %> |
     # | `height` | Symbol | <%= one_of([:fit]) %> |
     # | `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of(Primer::Classify::Utilities.mappings(:hide)) %> |
     # | `visibility` | Symbol | Visibility. <%= one_of(Primer::Classify::Utilities.mappings(:visibility)) %> |
