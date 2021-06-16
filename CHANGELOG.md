@@ -2,6 +2,12 @@
 
 ## main
 
+### Breaking changes
+
+* Adding animation, vertical_align, word_break, display, visibility, & position arguments to the utilities class.
+
+    *Jon Rohan*
+
 ## 0.0.45
 
 ### Updates
@@ -15,10 +21,6 @@
 * Remove `label` argument in favor of `aria-label` in `ClipboardCopy`.
 
     *Manuel Puyol*
-
-* Adding animation, vertical_align, word_break, display, visibility, & position arguments to the utilities class.
-
-    *Jon Rohan*
 
 ### Misc
 
