@@ -34,9 +34,9 @@ module Primer
         # returns Boolean
         def supported_selector?(selector)
           # This method is too slow to run in production
-          return if Rails.env.production?
+          return false if Rails.env.production?
 
-          find_selector(selector)
+          find_selector(selector).present?
         end
 
         # Is the key and value responsive
