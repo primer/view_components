@@ -94,8 +94,8 @@ module Primer
     # | `display` | Symbol | <%= one_of([:none, :block, :flex, :inline, :inline_block, :inline_flex, :table, :table_cell]) %> |
     # | `height` | Symbol | <%= one_of([:fit]) %> |
     # | `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of(Primer::Classify::Utilities.mappings(:hide)) %> |
-    # | `v` | Symbol | Visibility. <%= one_of([:hidden, :visible]) %> |
-    # | `vertical_align` | Symbol | <%= one_of([:baseline, :top, :middle, :bottom, :text_top, :text_bottom]) %> |
+    # | `visibility` | Symbol | Visibility. <%= one_of(Primer::Classify::Utilities.mappings(:visibility)) %> |
+    # | `vertical_align` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:vertical_align)) %> |
     #
     # ## Position
     #
@@ -138,7 +138,7 @@ module Primer
     # | `text_align` | Symbol | Text alignment. <%= one_of([:left, :right, :center]) %> |
     # | `text_transform` | Symbol | Text alignment. <%= one_of([:uppercase]) %> |
     # | `underline` | Boolean | Whether text should be underlined. |
-    # | `word_break` | Symbol | Whether to break words on line breaks. Can only be `:break_all`. |
+    # | `word_break` | Symbol | Whether to break words on line breaks. <%= one_of(Primer::Classify::Utilities.mappings(:word_break)) %> |
     #
     # ## Other
     #
