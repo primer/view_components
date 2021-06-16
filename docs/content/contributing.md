@@ -24,6 +24,24 @@ To declare a dependency on an `npm` package, pass `js` to the generator:
 bundle exec thor component_generator my_component_name --js=some-npm-package-name
 ```
 
+### Tag considerations
+
+Components and slots should restrict which HTML tags they will render. For example, an `Image` component should never be rendered as an `<h1>`.
+
+Consider which HTML tags make sense. Components typically fall under one of the following patterns:
+
+1) Fixed tag that cannot be updated by the consumer:
+
+```rb
+system_arguments[:tag] = :h1
+```
+
+2) Allowed list of tags that are set with the `tag:` argument using the `fetch_or_fallback` helper.
+
+```rb
+system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
+```
+
 ## Testing
 
 Before running the whole test suite with Rake: `bundle exec rake`, you must run `bundle exec docs:preview`.
