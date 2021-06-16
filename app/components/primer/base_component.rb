@@ -160,8 +160,6 @@ module Primer
           unpacked_denylist =
             denylist.each_with_object({}) do |(keys, value), memo|
               keys.each { |key| memo[key] = value }
-
-              memo
             end
 
           violations = unpacked_denylist.keys & @system_arguments.keys
