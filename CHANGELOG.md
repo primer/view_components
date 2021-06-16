@@ -2,6 +2,12 @@
 
 ## main
 
+### Updates
+
+* Restrict usage of padding system arguments on BorderBox, recommending use of `padding` density instead.
+
+    *Joel Hawksley*
+
 ### Breaking changes
 
 * Adding animation, vertical_align, word_break, display, visibility, & position arguments to the utilities class. `animation: :grow` is now `animation: :hover_grow` this was a change because we changed the class name in primer.
@@ -21,10 +27,6 @@
 ## 0.0.45
 
 ### Updates
-
-* Restrict usage of padding system arguments on BorderBox, recommending use of `padding` density instead.
-
-    *Joel Hawksley*
 
 * Allow copying from elements using `for` in `ClipboardCopy`.
 
