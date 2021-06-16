@@ -662,7 +662,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("anim-fade-down", { animation: :fade_down })
     assert_generated_class("anim-scale-in", { animation: :scale_in })
     assert_generated_class("anim-grow-x", { animation: :grow_x })
-    assert_generated_class("hover-grow", { animation: :hover_grow })
+    assert_generated_class("anim-hover-grow", { animation: :hover_grow })
   end
 
   def test_raises_does_not_raise_error_when_passing_in_a_primer_css_class_name_in_development_and_flag_is_set
