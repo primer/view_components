@@ -130,7 +130,7 @@ module Primer
       @body_arguments = body_arguments
       @wrapper_arguments = wrapper_arguments
 
-      @system_arguments[:tag] ||= :div
+      @system_arguments[:tag] ||= :div # rubocop:disable Primer/NoTagMemoize
       @system_arguments[:classes] = class_names(
         "tabnav",
         system_arguments[:classes]

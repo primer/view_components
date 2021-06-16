@@ -47,7 +47,7 @@ module Primer
       @tooltipped = tooltipped
       @body_arguments = body_arguments
 
-      @body_arguments[:tag] ||= :div
+      @body_arguments[:tag] ||= :div # rubocop:disable Primer/NoTagMemoize
       @body_arguments[:classes] = class_names(
         "AvatarStack-body",
         @body_arguments[:classes]

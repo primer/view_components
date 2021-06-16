@@ -1,4 +1,71 @@
 ---
+:animation:
+  :fade_in:
+  - anim-fade-in
+  :fade_out:
+  - anim-fade-out
+  :fade_up:
+  - anim-fade-up
+  :fade_down:
+  - anim-fade-down
+  :grow_x:
+  - anim-grow-x
+  :shrink_x:
+  - anim-shrink-x
+  :scale_in:
+  - anim-scale-in
+  :pulse:
+  - anim-pulse
+  :pulse_in:
+  - anim-pulse-in
+  :hover_grow:
+  - anim-hover-grow
+  :rotate:
+  - anim-rotate
+:position:
+  :static:
+  - position-static
+  - position-sm-static
+  - position-md-static
+  - position-lg-static
+  - position-xl-static
+  :relative:
+  - position-relative
+  - position-sm-relative
+  - position-md-relative
+  - position-lg-relative
+  - position-xl-relative
+  :absolute:
+  - position-absolute
+  - position-sm-absolute
+  - position-md-absolute
+  - position-lg-absolute
+  - position-xl-absolute
+  :fixed:
+  - position-fixed
+  - position-sm-fixed
+  - position-md-fixed
+  - position-lg-fixed
+  - position-xl-fixed
+  :sticky:
+  - position-sticky
+  - position-sm-sticky
+  - position-md-sticky
+  - position-lg-sticky
+  - position-xl-sticky
+:vertical_align:
+  :middle:
+  - v-align-middle
+  :top:
+  - v-align-top
+  :bottom:
+  - v-align-bottom
+  :text_top:
+  - v-align-text-top
+  :text_bottom:
+  - v-align-text-bottom
+  :baseline:
+  - v-align-baseline
 :float:
   :left:
   - float-left
@@ -1136,6 +1203,63 @@
   - py-md-12
   - py-lg-12
   - py-xl-12
+:word_break:
+  :break_all:
+  - wb-break-all
+:display:
+  :block:
+  - d-block
+  - d-sm-block
+  - d-md-block
+  - d-lg-block
+  - d-xl-block
+  :flex:
+  - d-flex
+  - d-sm-flex
+  - d-md-flex
+  - d-lg-flex
+  - d-xl-flex
+  :inline:
+  - d-inline
+  - d-sm-inline
+  - d-md-inline
+  - d-lg-inline
+  - d-xl-inline
+  :inline_block:
+  - d-inline-block
+  - d-sm-inline-block
+  - d-md-inline-block
+  - d-lg-inline-block
+  - d-xl-inline-block
+  :inline_flex:
+  - d-inline-flex
+  - d-sm-inline-flex
+  - d-md-inline-flex
+  - d-lg-inline-flex
+  - d-xl-inline-flex
+  :none:
+  - d-none
+  - d-sm-none
+  - d-md-none
+  - d-lg-none
+  - d-xl-none
+  :table:
+  - d-table
+  - d-sm-table
+  - d-md-table
+  - d-lg-table
+  - d-xl-table
+  :table_cell:
+  - d-table-cell
+  - d-sm-table-cell
+  - d-md-table-cell
+  - d-lg-table-cell
+  - d-xl-table-cell
+:visibility:
+  :hidden:
+  - v-hidden
+  :visible:
+  - v-visible
 :hide:
   :sm:
   - hide-sm

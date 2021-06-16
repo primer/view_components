@@ -2,6 +2,24 @@
 
 ## main
 
+### Breaking changes
+
+* Adding animation, vertical_align, word_break, display, visibility, & position arguments to the utilities class. `animation: :grow` is now `animation: :hover_grow` this was a change because we changed the class name in primer.
+
+    *Jon Rohan*
+
+### Misc
+
+* Update contributing guidelines with release instructions.
+
+    *Kate Higa*
+
+* Prevent flexible tag syntax with rubocop rule.
+
+    *Kate Higa*
+
+## 0.0.45
+
 ### Updates
 
 * Restrict usage of padding system arguments on BorderBox, recommending use of `padding` density instead.
@@ -31,6 +49,10 @@
 * Rerun flaky system tests.
 
     *Manuel Puyol*
+
+* Check if selector is a classify class in Utilities.
+
+   *Jon Rohan*
 
 ## 0.0.44
 

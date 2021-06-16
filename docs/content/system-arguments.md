@@ -44,7 +44,7 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `animation` | Symbol | One of `:fade_down`, `:fade_in`, `:fade_out`, `:fade_up`, `:grow`, `:grow_x`, `:pulse`, or `:scale_in`. |
+| `animation` | Symbol | One of `:fade_down`, `:fade_in`, `:fade_out`, `:fade_up`, `:grow_x`, `:hover_grow`, `:pulse`, `:pulse_in`, `:rotate`, `:scale_in`, or `:shrink_x`. |
 
 ## Border
 
@@ -95,7 +95,7 @@ System arguments include most HTML attributes. For example:
 | `display` | Symbol | One of `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:none`, `:table`, or `:table_cell`. |
 | `height` | Symbol | One of `:fit`. |
 | `hide` | Symbol | Hide the element at a specific breakpoint. One of `:lg`, `:md`, `:sm`, or `:xl`. |
-| `v` | Symbol | Visibility. One of `:hidden` and `:visible`. |
+| `visibility` | Symbol | Visibility. One of `:hidden` and `:visible`. |
 | `vertical_align` | Symbol | One of `:baseline`, `:bottom`, `:middle`, `:text_bottom`, `:text_top`, or `:top`. |
 
 ## Position
@@ -105,7 +105,7 @@ System arguments include most HTML attributes. For example:
 | `bottom` | Boolean | If `false`, sets `bottom: 0`. |
 | `float` | Symbol | One of `:left`, `:none`, or `:right`. |
 | `left` | Boolean | If `false`, sets `left: 0`. |
-| `position` | Symbol | One of `:absolute`, `:fixed`, or `:relative`. |
+| `position` | Symbol | One of `:absolute`, `:fixed`, `:relative`, `:static`, or `:sticky`. |
 | `right` | Boolean | If `false`, sets `right: 0`. |
 | `top` | Boolean | If `false`, sets `top: 0`. |
 
@@ -139,7 +139,7 @@ System arguments include most HTML attributes. For example:
 | `text_align` | Symbol | Text alignment. One of `:center`, `:left`, or `:right`. |
 | `text_transform` | Symbol | Text alignment. One of `:uppercase`. |
 | `underline` | Boolean | Whether text should be underlined. |
-| `word_break` | Symbol | Whether to break words on line breaks. Can only be `:break_all`. |
+| `word_break` | Symbol | Whether to break words on line breaks. One of `:break_all`. |
 
 ## Other
 

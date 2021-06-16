@@ -29,6 +29,16 @@ module Primer
           supported_key?(key) && Primer::Classify::UTILITIES[key][val].present?
         end
 
+        # Does the given selector exist in the utilities file
+        #
+        # returns Boolean
+        def supported_selector?(selector)
+          # This method is too slow to run in production
+          return false if Rails.env.production?
+
+          find_selector(selector).present?
+        end
+
         # Is the key and value responsive
         #
         # returns Boolean

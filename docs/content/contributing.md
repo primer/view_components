@@ -24,6 +24,24 @@ To declare a dependency on an `npm` package, pass `js` to the generator:
 bundle exec thor component_generator my_component_name --js=some-npm-package-name
 ```
 
+### Tag considerations
+
+Components and slots should restrict which HTML tags they will render. For example, an `Image` component should never be rendered as an `<h1>`.
+
+Consider which HTML tags make sense. Components typically fall under one of the following patterns:
+
+1) Fixed tag that cannot be updated by the consumer:
+
+```rb
+system_arguments[:tag] = :h1
+```
+
+2) Allowed list of tags that are set with the `tag:` argument using the `fetch_or_fallback` helper.
+
+```rb
+system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
+```
+
 ## Testing
 
 Before running the whole test suite with Rake: `bundle exec rake`, you must run `bundle exec docs:preview`.
@@ -97,3 +115,13 @@ We have both `staging` and `production` environments. To deploy Storybook to Her
 ```
 
 If no `branch` is passed, `main` will be deployed.
+
+## Publishing a Release
+
+To publish a release, you must have an account on [rubygems](https://rubygems.org/) and [npmjs](https://www.npmjs.com/). Additionally, you must have been added as a maintainer
+to the project. Please verify that you have 2FA enabled on both accounts.
+
+1. Make sure you are on the main branch and have pulled in the latest changes.
+1. Run `script/release` and follow the instructions.
+1. Once your release PR has been approved and merged, run `script/publish`. You may be prompted to log into your rubygem and npm account.
+1. Lastly, draft a new release from the [releases page](https://github.com/primer/view_components/releases). The tag version should be updated to the newest version. The description should be updated to the relevant CHANGELOG descriptions. Press the `Publish release` button and you're good to go!
