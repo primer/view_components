@@ -29,6 +29,15 @@ class PrimerAvatarStackComponentTest < Minitest::Test
     end
   end
 
+  def test_falls_back_when_body_tag_isnt_valid
+    without_fetch_or_fallback_raises do
+      render_inline(Primer::AvatarStackComponent.new(body_arguments: { tag: :h1 })) do |c|
+        c.avatar(src: "Foo", alt: "Bar")
+      end
+      assert_selector("div.AvatarStack-body")
+    end
+  end
+
   def test_does_not_render_without_avatars
     render_inline(Primer::AvatarStackComponent.new)
 

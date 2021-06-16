@@ -178,8 +178,8 @@ namespace :docs do
             "default" => default_value,
             "description" => view_context.render(inline: tag.text)
           }
-
-          f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default_value} | #{view_context.render(inline: tag.text)} |")
+          
+          f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default_value} | #{view_context.render(inline: tag.text.squish)} |")
         end
 
         component_args = {

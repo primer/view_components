@@ -18,7 +18,7 @@ Use `AvatarStack` to stack multiple avatars together.
 | `tag` | `Symbol` | `:div` | One of `:div` and `:span`. |
 | `align` | `Symbol` | `:left` | One of `:left` and `:right`. |
 | `tooltipped` | `Boolean` | `false` | Whether to add a tooltip to the stack or not. |
-| `body_arguments` | `Hash` | `{}` | Parameters to add to the Body. If `tooltipped` is set, has the same arguments as [Tooltip](/components/tooltip). |
+| `body_arguments` | `Hash` | `{}` | Parameters to add to the Body. If `tooltipped` is set, has the same arguments as [Tooltip](/components/tooltip). The default tag is `:div` but can be changed using `tag:` to one of `:div` and `:span`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots

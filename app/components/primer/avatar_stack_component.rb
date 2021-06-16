@@ -10,6 +10,9 @@ module Primer
 
     DEFAULT_TAG = :div
     TAG_OPTIONS = [DEFAULT_TAG, :span].freeze
+
+    DEFAULT_BODY_TAG = :div
+    BODY_TAG_OPTIONS = TAG_OPTIONS = [DEFAULT_TAG, :span].freeze
     # Required list of stacked avatars.
     #
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::AvatarComponent) %>.
@@ -40,6 +43,8 @@ module Primer
     # @param align [Symbol] <%= one_of(Primer::AvatarStackComponent::ALIGN_OPTIONS) %>
     # @param tooltipped [Boolean] Whether to add a tooltip to the stack or not.
     # @param body_arguments [Hash] Parameters to add to the Body. If `tooltipped` is set, has the same arguments as <%= link_to_component(Primer::Tooltip) %>.
+    #   The default tag is <%= pretty_value(Primer::AvatarStackComponent::DEFAULT_BODY_TAG) %> but can be changed using `tag:` to 
+    #    <%= one_of(Primer::AvatarStackComponent::BODY_TAG_OPTIONS).downcase %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(tag: DEFAULT_TAG, align: ALIGN_DEFAULT, tooltipped: false, body_arguments: {}, **system_arguments)
       @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
@@ -47,7 +52,8 @@ module Primer
       @tooltipped = tooltipped
       @body_arguments = body_arguments
 
-      @body_arguments[:tag] ||= :div # rubocop:disable Primer/NoTagMemoize
+      body_tag = @body_arguments[:tag] || DEFAULT_BODY_TAG
+      @body_arguments[:tag] = fetch_or_fallback(BODY_TAG_OPTIONS, body_tag, DEFAULT_BODY_TAG)
       @body_arguments[:classes] = class_names(
         "AvatarStack-body",
         @body_arguments[:classes]
