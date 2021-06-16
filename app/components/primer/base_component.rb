@@ -43,7 +43,7 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `animation` | Symbol | <%= one_of([:fade_in, :fade_out, :fade_up, :fade_down, :scale_in, :pulse, :grow_x, :grow]) %> |
+    # | `animation` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:animation)) %> |
     #
     # ## Border
     #
@@ -91,11 +91,11 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `display` | Symbol | <%= one_of([:none, :block, :flex, :inline, :inline_block, :inline_flex, :table, :table_cell]) %> |
+    # | `display` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:display)) %> |
     # | `height` | Symbol | <%= one_of([:fit]) %> |
     # | `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of(Primer::Classify::Utilities.mappings(:hide)) %> |
-    # | `v` | Symbol | Visibility. <%= one_of([:hidden, :visible]) %> |
-    # | `vertical_align` | Symbol | <%= one_of([:baseline, :top, :middle, :bottom, :text_top, :text_bottom]) %> |
+    # | `visibility` | Symbol | Visibility. <%= one_of(Primer::Classify::Utilities.mappings(:visibility)) %> |
+    # | `vertical_align` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:vertical_align)) %> |
     #
     # ## Position
     #
@@ -104,7 +104,7 @@ module Primer
     # | `bottom` | Boolean | If `false`, sets `bottom: 0`. |
     # | `float` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:float)) %> |
     # | `left` | Boolean | If `false`, sets `left: 0`. |
-    # | `position` | Symbol | <%= one_of([:relative, :absolute, :fixed]) %> |
+    # | `position` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:position)) %> |
     # | `right` | Boolean | If `false`, sets `right: 0`. |
     # | `top` | Boolean | If `false`, sets `top: 0`. |
     #
@@ -138,7 +138,7 @@ module Primer
     # | `text_align` | Symbol | Text alignment. <%= one_of([:left, :right, :center]) %> |
     # | `text_transform` | Symbol | Text alignment. <%= one_of([:uppercase]) %> |
     # | `underline` | Boolean | Whether text should be underlined. |
-    # | `word_break` | Symbol | Whether to break words on line breaks. Can only be `:break_all`. |
+    # | `word_break` | Symbol | Whether to break words on line breaks. <%= one_of(Primer::Classify::Utilities.mappings(:word_break)) %> |
     #
     # ## Other
     #

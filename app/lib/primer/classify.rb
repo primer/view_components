@@ -13,28 +13,22 @@ module Primer
     ).freeze
     # rubocop:enable Security/YAMLLoad
 
-    DISPLAY_KEY = :display
-
     # Keys where we can simply translate { key: value } into ".key-value"
-    CONCAT_KEYS = %i[position v text box_shadow].freeze
+    CONCAT_KEYS = %i[text box_shadow].freeze
 
     INVALID_CLASS_NAME_PREFIXES =
-      (["bg-", "color-", "text-", "d-", "v-align-", "wb-", "box-shadow-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
+      (["bg-", "color-", "text-", "box-shadow-"] + CONCAT_KEYS.map { |k| "#{k}-" }).freeze
 
     COLOR_KEY = :color
     BG_KEY = :bg
-    VERTICAL_ALIGN_KEY = :vertical_align
-    WORD_BREAK_KEY = :word_break
     TEXT_KEYS = %i[font_family font_style font_weight text_align text_transform].freeze
     WIDTH_KEY = :width
     HEIGHT_KEY = :height
     BOX_SHADOW_KEY = :box_shadow
-    VISIBILITY_KEY = :visibility
-    ANIMATION_KEY = :animation
     CONTAINER_KEY = :container
 
     BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
-    RESPONSIVE_KEYS = ([DISPLAY_KEY, Primer::Classify::Grid::COL_KEY] + Primer::Classify::Flex::RESPONSIVE_KEYS).freeze
+    RESPONSIVE_KEYS = ([Primer::Classify::Grid::COL_KEY] + Primer::Classify::Flex::RESPONSIVE_KEYS).freeze
 
     BOOLEAN_MAPPINGS = {
       underline: {
@@ -102,14 +96,9 @@ module Primer
         BORDER_RADIUS_KEY,
         COLOR_KEY,
         BG_KEY,
-        DISPLAY_KEY,
-        VERTICAL_ALIGN_KEY,
-        WORD_BREAK_KEY,
         WIDTH_KEY,
         HEIGHT_KEY,
         BOX_SHADOW_KEY,
-        VISIBILITY_KEY,
-        ANIMATION_KEY,
         CONTAINER_KEY
       ]
     ).freeze
@@ -197,12 +186,6 @@ module Primer
           end
         elsif key == COLOR_KEY
           memo[:classes] << Primer::Classify::FunctionalTextColors.color(val)
-        elsif key == DISPLAY_KEY
-          memo[:classes] << "d#{breakpoint}-#{val.to_s.dasherize}"
-        elsif key == VERTICAL_ALIGN_KEY
-          memo[:classes] << "v-align-#{val.to_s.dasherize}"
-        elsif key == WORD_BREAK_KEY
-          memo[:classes] << "wb-#{val.to_s.dasherize}"
         elsif key == BORDER_KEY
           border_value = if val == true
                            "border"
@@ -242,14 +225,6 @@ module Primer
                               "box-shadow-none"
                             else
                               "color-shadow-#{val.to_s.dasherize}"
-                            end
-        elsif key == VISIBILITY_KEY
-          memo[:classes] << "v-#{val.to_s.dasherize}"
-        elsif key == ANIMATION_KEY
-          memo[:classes] << if val == :grow
-                              "hover-grow"
-                            else
-                              "anim-#{val.to_s.dasherize}"
                             end
         else
           memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{val.to_s.dasherize}"
