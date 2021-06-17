@@ -10,6 +10,10 @@
 
 ### Breaking changes
 
+* Move Primer::Classify from `app/lib/` to `lib/`. This requires an extra `require "primer/classify"` statement for anywhere Classify is needed.
+
+    *Manuel Puyol, Jon Rohan*
+
 * Restrict `Menu` heading slot tags to heading tags and require `tag` argument.
 
     *Kate Higa*
