@@ -98,7 +98,7 @@ namespace :utilities do
       x.transform_values { |y| y.reverse.drop_while(&:nil?).reverse }
     end
 
-    File.open("app/lib/primer/classify/utilities.yml", "w") do |f|
+    File.open("lib/primer/classify/utilities.yml", "w") do |f|
       f.puts YAML.dump(output)
     end
   end

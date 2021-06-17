@@ -35,7 +35,7 @@ Rails/RefuteMethods:
 Style/MultipleComparison:
   Enabled: true
   Exclude:
-    - app/lib/primer/classify.rb
+    - lib/primer/classify.rb
 
 Rails/RakeEnvironment:
   Enabled: false
