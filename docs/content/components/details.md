@@ -36,6 +36,7 @@ Use the Body slot as the main content to be shown when triggered by the Summary.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `tag` | `String` | `:div` | One of `:details-dialog`, `:details-menu`, `:div`, or `:ul`. |
 | `kwargs` | `Hash` | N/A | The same arguments as [System arguments](/system-arguments). |
 
 ## Examples
