@@ -28,6 +28,10 @@
 
     *Kate Higa*
 
+* Update the `Truncate` component to accept `:strong` as a tag.
+
+    *Amélia Chavot*
+
 ## 0.0.45
 
 ### Updates
