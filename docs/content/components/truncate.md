@@ -15,7 +15,7 @@ Use `Truncate` to shorten overflowing text with an ellipsis.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `tag` | `Symbol` | `:div` | One of `:div`, `:p`, or `:span`. |
+| `tag` | `Symbol` | `:div` | One of `:div`, `:p`, `:span`, or `:strong`. |
 | `inline` | `Boolean` | `false` | Whether the element is inline (or inline-block). |
 | `expandable` | `Boolean` | `false` | Whether the entire string should be revealed on hover. Can only be used in conjunction with `inline`. |
 | `max_width` | `Integer` | `nil` | Sets the max-width of the text. |
