@@ -10,6 +10,14 @@
 
 ### Breaking changes
 
+* Restrict `Details` body slot tags and `UnderlineNav` body slot tags.
+
+    *Kate Higa*
+
+* Move Primer::Classify from `app/lib/` to `lib/`. This requires an extra `require "primer/classify"` statement for anywhere Classify is needed.
+
+    *Manuel Puyol, Jon Rohan*
+
 * Restrict `Menu` heading slot tags to heading tags and require `tag` argument.
 
     *Kate Higa*
