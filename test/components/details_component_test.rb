@@ -83,6 +83,18 @@ class PrimerDetailsComponentTest < Minitest::Test
     assert_selector(".btn")
   end
 
+  def test_falls_back_to_default_body_tag_when_invalid_body_tag_is_passed
+    without_fetch_or_fallback_raises do
+      render_inline(Primer::DetailsComponent.new) do |component|
+        component.summary { "Summary" }
+        component.body(tag: :img) { "Body" }
+      end
+    end
+
+    assert_selector("div", text: "Body", visible: false)
+    refute_selector("img", text: "Body", visible: false)
+  end
+
   def test_passes_props_to_button
     render_inline(Primer::DetailsComponent.new) do |component|
       component.summary(variant: :small, scheme: :primary) do

@@ -47,6 +47,25 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     refute_selector("a[role='tab']")
   end
 
+  def test_actions_tag_falls_back_to_default
+    without_fetch_or_fallback_raises do
+      render_inline(Primer::UnderlineNavComponent.new(label: "label")) do |component|
+        component.tab(selected: true, href: "#") do |t|
+          t.text { "Tab 1" }
+        end
+        component.tab(href: "#") do |t|
+          t.text { "Tab 2" }
+        end
+        component.actions(tag: :h2) do
+          "Actions content"
+        end
+      end
+    end
+
+    assert_selector("div.UnderlineNav-actions")
+    refute_selector("h2.UnderlineNav-actions")
+  end
+
   def test_align_falls_back_to_default
     without_fetch_or_fallback_raises do
       render_inline(Primer::UnderlineNavComponent.new(label: "label", align: :foo)) do |component|
