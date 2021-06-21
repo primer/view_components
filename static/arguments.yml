@@ -200,9 +200,9 @@
   - name: body_arguments
     type: Hash
     default: "`{}`"
-    description: "Parameters to add to the Body. If `tooltipped` is set, has the same
-      arguments as [Tooltip](/components/tooltip).\nThe default tag is `:div` but
-      can be changed using `tag:` to \n one of `:div` and `:span`."
+    description: Parameters to add to the Body. If `tooltipped` is set, has the same
+      arguments as [Tooltip](/components/tooltip). The default tag is `:div` but can
+      be changed using `tag:` to one of `:div` and `:span`.
   - name: system_arguments
     type: Hash
     default: N/A

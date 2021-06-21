@@ -176,9 +176,9 @@ namespace :docs do
             "name" => tag.name,
             "type" => tag.types.join(", "),
             "default" => default_value,
-            "description" => view_context.render(inline: tag.text)
+            "description" => view_context.render(inline: tag.text.squish)
           }
-          
+
           f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{default_value} | #{view_context.render(inline: tag.text.squish)} |")
         end
 
