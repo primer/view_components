@@ -16,7 +16,8 @@ module Primer
     ACTIONS_TAG_DEFAULT = :div
     ACTIONS_TAG_OPTIONS = [ACTIONS_TAG_DEFAULT, :span].freeze
 
-    # Use the tabs to list navigation items. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
+    # Use the tabs to list navigation items. Set `with_panel` on the parent to render these as a button for panel navigation. Otherwise,
+    # these are rendered as an anchor tag for page navigation. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
     # @param selected [Boolean] Whether the tab is selected.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

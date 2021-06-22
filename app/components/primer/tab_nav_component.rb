@@ -10,7 +10,8 @@ module Primer
     DEFAULT_EXTRA_ALIGN = :left
     EXTRA_ALIGN_OPTIONS = [DEFAULT_EXTRA_ALIGN, :right].freeze
 
-    # Tabs to be rendered. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
+    # Tabs to be rendered.  Set `with_panel` on the parent to render these as a button for panel navigation. Otherwise,
+    # this renders as an anchor tag for page navigation. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
     # @param selected [Boolean] Whether the tab is selected.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

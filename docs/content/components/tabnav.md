@@ -28,7 +28,8 @@ Use `TabNav` to style navigation with a tab-based selected state, typically used
 
 ### `Tabs`
 
-Tabs to be rendered. For more information, refer to [NavigationTab](/components/navigationtab).
+Tabs to be rendered.  Set `with_panel` on the parent to render these as a button for panel navigation. Otherwise,
+this renders as an anchor tag for page navigation. For more information, refer to [NavigationTab](/components/navigationtab).
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |

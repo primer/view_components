@@ -31,7 +31,8 @@ of the page.
 
 ### `Tabs`
 
-Use the tabs to list navigation items. For more information, refer to [NavigationTab](/components/navigationtab).
+Use the tabs to list navigation items. Set `with_panel` on the parent to render these as a button for panel navigation. Otherwise,
+these are rendered as an anchor tag for page navigation. For more information, refer to [NavigationTab](/components/navigationtab).
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
