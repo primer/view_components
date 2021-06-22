@@ -96,7 +96,7 @@ module Primer
 
         @system_arguments = system_arguments
 
-        if with_panel
+        if with_panel || @system_arguments[:tag] == :button
           @system_arguments[:tag] = :button
           @system_arguments[:type] = :button
           @system_arguments[:role] = :tab

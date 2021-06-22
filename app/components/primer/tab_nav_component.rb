@@ -10,8 +10,8 @@ module Primer
     DEFAULT_EXTRA_ALIGN = :left
     EXTRA_ALIGN_OPTIONS = [DEFAULT_EXTRA_ALIGN, :right].freeze
 
-    # Tabs to be rendered.  Set `with_panel` on the parent to render these as a button for panel navigation. Otherwise,
-    # this renders as an anchor tag for page navigation. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
+    # Tabs to be rendered. When `with_panel` is set on the parent, a button is rendered for panel navigation. Otherwise,
+    # an anchor tag is rendered for page navigation. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
     # @param selected [Boolean] Whether the tab is selected.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -120,7 +120,8 @@ module Primer
     #   <% end %>
     #
     # @param label [String] Used to set the `aria-label` on the top level `<nav>` element.
-    # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
+    # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels. When true, <%= link_to_component(Primer::TabContainerComponent) %>
+    #   is rendered along with JavaScript behavior. Additionally, the `tab` slot will render as a button as opposed to an anchor.
     # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
     # @param wrapper_arguments [Hash] <%= link_to_system_arguments_docs %> for the `TabContainer` wrapper. Only applies if `with_panel` is `true`.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
