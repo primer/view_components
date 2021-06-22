@@ -17,7 +17,7 @@ class ArgumentMappersButtonTest < LinterTestCase
     assert_equal({
                    '"aria-label"' => '"label"',
                    '"aria-disabled"' => '"true"',
-                   '"aria-boolean"' => true
+                   '"aria-boolean"' => '""'
                  }, args)
   end
 
@@ -27,7 +27,7 @@ class ArgumentMappersButtonTest < LinterTestCase
 
     assert_equal({
                    '"data-action"' => '"click"',
-                   '"data-pjax"' => true
+                   '"data-pjax"' => '""'
                  }, args)
   end
 
@@ -168,7 +168,7 @@ class ArgumentMappersButtonTest < LinterTestCase
                    :block => true,
                    :group_item => true,
                    '"aria-label"' => '"some label"',
-                   '"data-pjax"' => true,
+                   '"data-pjax"' => '""',
                    '"data-click"' => '"click"',
                    :test_selector => '"some_selector"',
                    :disabled => true,
