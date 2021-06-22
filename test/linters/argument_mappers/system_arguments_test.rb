@@ -10,7 +10,7 @@ class ArgumentMappersSystemArgumentsTest < LinterTestCase
     assert_equal({ '"aria-label"' => '"label"' }, args)
 
     args = ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes["aria-boolean"]).to_args
-    assert_equal({ '"aria-boolean"' => true }, args)
+    assert_equal({ '"aria-boolean"' => "" }, args)
   end
 
   def test_returns_data_arguments_as_string_symbols
@@ -20,7 +20,7 @@ class ArgumentMappersSystemArgumentsTest < LinterTestCase
     assert_equal({ '"data-action"' => '"click"' }, args)
 
     args = ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes["data-pjax"]).to_args
-    assert_equal({ '"data-pjax"' => true }, args)
+    assert_equal({ '"data-pjax"' => "" }, args)
   end
 
   def test_raises_if_cannot_map_attribute

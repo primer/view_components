@@ -33,7 +33,7 @@ module ERBLint
             raise ConversionError, "Cannot convert attribute \"#{attr_name}\" because its value contains an erb block" if attribute.value_node&.children&.any? { |n| n.try(:type) == :erb }
 
             # if attribute has no value_node, it means it is a boolean attribute.
-            { "\"#{attr_name}\"" => attribute.value_node ? attribute.value.to_json : true }
+            { "\"#{attr_name}\"" => attribute.value_node ? attribute.value.to_json : "" }
           else
             raise ConversionError, "Cannot convert attribute \"#{attr_name}\""
           end
