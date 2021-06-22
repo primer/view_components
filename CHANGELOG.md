@@ -10,6 +10,10 @@
 
 ### Breaking changes
 
+* Restrict `TabNav`and `Tab` tags.
+
+    *Kate Higa*
+
 * Restrict `AvatarStack` body slot tag and `ImageCrop` spinner tag.
 
     *Kate Higa*
