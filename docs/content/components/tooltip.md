@@ -15,6 +15,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `tag` | `Symbol` | `:span` | One of `:div` and `:span`. |
 | `label` | `String` | N/A | the text to appear in the tooltip |
 | `direction` | `String` | `:n` | Direction of the tooltip. One of `:e`, `:n`, `:ne`, `:nw`, `:s`, `:se`, `:sw`, or `:w`. |
 | `align` | `String` | `:default` | Align tooltips to the left or right of an element, combined with a `direction` to specify north or south. One of `:default`, `:left_1`, `:left_2`, `:right_1`, or `:right_2`. |

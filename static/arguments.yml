@@ -889,6 +889,10 @@
 - component: Tooltip
   source: https://github.com/primer/view_components/tree/main/app/components/primer/tooltip.rb
   parameters:
+  - name: tag
+    type: Symbol
+    default: "`:span`"
+    description: One of `:div` and `:span`.
   - name: label
     type: String
     default: N/A

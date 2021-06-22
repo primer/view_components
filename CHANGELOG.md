@@ -44,6 +44,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Breaking changes
 
+* Restrict tag for `Popover` to `:div`.
+
+    *Kate Higa*
+
 * Restrict `TabNav`and `Tab` tags.
 
     *Kate Higa*

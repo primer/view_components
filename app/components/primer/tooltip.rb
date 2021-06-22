@@ -10,6 +10,9 @@ module Primer
     MULTILINE_DEFAULT = false
     DELAY_DEFAULT = false
 
+    TAG_DEFAULT = :span
+    TAG_OPTIONS = [TAG_DEFAULT, :div].freeze
+
     ALIGN_MAPPING = {
       ALIGN_DEFAULT => "",
       :left_1 => "tooltipped-align-left-1",
@@ -55,6 +58,7 @@ module Primer
     #     <%= render(Primer::Tooltip.new(label: "Even bolder", direction: :s, no_delay: true)) { "Bold Text without a delay" } %>
     #   </div>
     #
+    # @param tag [Symbol] <%= one_of(Primer::Tooltip::TAG_OPTIONS) %>
     # @param label [String] the text to appear in the tooltip
     # @param direction [String] Direction of the tooltip. <%= one_of(Primer::Tooltip::DIRECTION_OPTIONS) %>
     # @param align [String] Align tooltips to the left or right of an element, combined with a `direction` to specify north or south. <%= one_of(Primer::Tooltip::ALIGN_MAPPING.keys) %>
@@ -62,6 +66,7 @@ module Primer
     # @param no_delay [Boolean] By default the tooltips have a slight delay before appearing. Set true to override this
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
+      tag: TAG_DEFAULT,
       label:,
       direction: DIRECTION_DEFAULT,
       align: ALIGN_DEFAULT,
@@ -70,7 +75,7 @@ module Primer
       **system_arguments
     )
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :span # rubocop:disable Primer/NoTagMemoize
+      @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
       @system_arguments[:aria] = { label: label }
 
       @system_arguments[:classes] = class_names(
