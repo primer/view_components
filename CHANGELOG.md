@@ -36,6 +36,10 @@
 
     *Kate Higa*
 
+* Update linter autocorrection to use `""` instead of `true` for boolean attributes.
+
+    *Manuel Puyol*
+
 ## 0.0.45
 
 ### Updates
