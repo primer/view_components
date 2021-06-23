@@ -8,6 +8,10 @@
 
     *Joel Hawksley*
 
+* Update the `Truncate` component to accept `:strong` as a tag.
+
+    *Amélia Chavot*
+
 ### Breaking changes
 
 * Restrict `Details` body slot tags and `UnderlineNav` body slot tags.
@@ -35,10 +39,6 @@
 * Prevent flexible tag syntax with rubocop rule.
 
     *Kate Higa*
-
-* Update the `Truncate` component to accept `:strong` as a tag.
-
-    *Amélia Chavot*
 
 * Update linter autocorrection to use `""` instead of `true` for boolean attributes.
 
