@@ -159,4 +159,11 @@ class PrimerBaseComponentTest < Minitest::Test
   def test_status
     assert_component_state(Primer::BaseComponent, :beta)
   end
+
+  def test_does_not_assign_value_if_attribute_is_boolean
+    render_inline(Primer::BaseComponent.new(tag: :div, "data-value": true))
+
+    assert_selector("div[data-value]",)
+    refute_selector("[data-value=\"true\"]")
+  end
 end

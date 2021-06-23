@@ -4,6 +4,10 @@
 
 ### Updates
 
+* Update `BaseComponent` to correctly handle boolean attributes, not giving them a `"true"` value.
+
+    *Manuel Puyol*
+
 * Restrict usage of padding system arguments on BorderBox, recommending use of `padding` density instead.
 
     *Joel Hawksley*
