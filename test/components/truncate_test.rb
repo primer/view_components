@@ -11,22 +11,12 @@ class PrimerTruncateTest < Minitest::Test
     assert_selector(".css-truncate.css-truncate-overflow", text: "content")
   end
 
-  def test_renders_truncated_span
-    render_inline(Primer::Truncate.new(tag: :span)) { "content" }
+  def test_renders_truncated_tag_options
+    Primer::Truncate::TAG_OPTIONS.each do |tag|
+      render_inline(Primer::Truncate.new(tag: tag)) { "content" }
 
-    assert_selector("span.css-truncate.css-truncate-overflow", text: "content")
-  end
-
-  def test_renders_truncated_p
-    render_inline(Primer::Truncate.new(tag: :p)) { "content" }
-
-    assert_selector("p.css-truncate.css-truncate-overflow", text: "content")
-  end
-
-  def test_renders_truncated_strong
-    render_inline(Primer::Truncate.new(tag: :strong)) { "content" }
-
-    assert_selector("strong.css-truncate.css-truncate-overflow", text: "content")
+      assert_selector("#{tag}.css-truncate.css-truncate-overflow", text: "content")
+    end
   end
 
   def test_falls_back_when_tag_isnt_valid
