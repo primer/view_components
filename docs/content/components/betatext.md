@@ -22,7 +22,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ### Default
 
-<Example src="<p data-view-component='true' class='text-bold'>Bold Text</p><p data-view-component='true' class='color-text-danger'>Danger Text</p>" />
+<Example src="<p data-view-component='' class='text-bold'>Bold Text</p><p data-view-component='' class='color-text-danger'>Danger Text</p>" />
 
 ```erb
 <%= render(Primer::Beta::Text.new(tag: :p, font_weight: :bold)) { "Bold Text" } %>

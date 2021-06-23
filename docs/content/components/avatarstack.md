@@ -35,7 +35,7 @@ Required list of stacked avatars.
 
 ### Default
 
-<Example src="<div data-view-component='true' class='AvatarStack AvatarStack--three-plus'>  <div data-view-component='true' class='AvatarStack-body'>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img></div></div>" />
+<Example src="<div data-view-component='' class='AvatarStack AvatarStack--three-plus'>  <div data-view-component='' class='AvatarStack-body'>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='' height='20' width='20' class='avatar avatar-small circle'></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='' height='20' width='20' class='avatar avatar-small circle'></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='' height='20' width='20' class='avatar avatar-small circle'></img></div></div>" />
 
 ```erb
 <%= render(Primer::AvatarStackComponent.new) do |c| %>
@@ -47,7 +47,7 @@ Required list of stacked avatars.
 
 ### Align right
 
-<Example src="<div data-view-component='true' class='AvatarStack AvatarStack--right AvatarStack--three-plus'>  <div data-view-component='true' class='AvatarStack-body'>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img></div></div>" />
+<Example src="<div data-view-component='' class='AvatarStack AvatarStack--right AvatarStack--three-plus'>  <div data-view-component='' class='AvatarStack-body'>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='' height='20' width='20' class='avatar avatar-small circle'></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='' height='20' width='20' class='avatar avatar-small circle'></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='' height='20' width='20' class='avatar avatar-small circle'></img></div></div>" />
 
 ```erb
 <%= render(Primer::AvatarStackComponent.new(align: :right)) do |c| %>
@@ -59,7 +59,7 @@ Required list of stacked avatars.
 
 ### With tooltip
 
-<Example src="<div data-view-component='true' class='AvatarStack AvatarStack--three-plus'>  <div aria-label='This is a tooltip!' data-view-component='true' class='AvatarStack-body tooltipped tooltipped-n'>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img></div></div>" />
+<Example src="<div data-view-component='' class='AvatarStack AvatarStack--three-plus'>  <div aria-label='This is a tooltip!' data-view-component='' class='AvatarStack-body tooltipped tooltipped-n'>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='' height='20' width='20' class='avatar avatar-small circle'></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='' height='20' width='20' class='avatar avatar-small circle'></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='' height='20' width='20' class='avatar avatar-small circle'></img></div></div>" />
 
 ```erb
 <%= render(Primer::AvatarStackComponent.new(tooltipped: true, body_arguments: { label: 'This is a tooltip!' })) do |c| %>

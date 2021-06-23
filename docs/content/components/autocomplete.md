@@ -69,7 +69,7 @@ Customizable results list.
 
 ### Default
 
-<Example src="<label for='fruits-input-1' data-view-component='true'>Fruits</label><auto-complete src='/auto_complete' for='fruits-popup-1' data-view-component='true' class='position-relative'>  <input id='fruits-input-1' type='text' data-view-component='true' class='form-control'></input>    <ul id='fruits-popup-1' data-view-component='true' class='autocomplete-results'></ul></auto-complete>" />
+<Example src="<label for='fruits-input-1' data-view-component=''>Fruits</label><auto-complete src='/auto_complete' for='fruits-popup-1' data-view-component='' class='position-relative'>  <input id='fruits-input-1' type='text' data-view-component='' class='form-control'></input>    <ul id='fruits-popup-1' data-view-component='' class='autocomplete-results'></ul></auto-complete>" />
 
 ```erb
 <%= render(Primer::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-1", list_id: "fruits-popup-1", position: :relative)) do |c| %>
@@ -80,7 +80,7 @@ Customizable results list.
 
 ### With `aria-label`
 
-<Example src="<auto-complete src='/auto_complete' for='fruits-popup-2' data-view-component='true' class='position-relative'>  <input id='fruits-input-2' aria-label='Fruits' type='text' data-view-component='true' class='form-control'></input>    <ul id='fruits-popup-2' aria-label='Fruits' data-view-component='true' class='autocomplete-results'></ul></auto-complete>" />
+<Example src="<auto-complete src='/auto_complete' for='fruits-popup-2' data-view-component='' class='position-relative'>  <input id='fruits-input-2' aria-label='Fruits' type='text' data-view-component='' class='form-control'></input>    <ul id='fruits-popup-2' aria-label='Fruits' data-view-component='' class='autocomplete-results'></ul></auto-complete>" />
 
 ```erb
 <%= render(Primer::AutoComplete.new("aria-label": "Fruits", src: "/auto_complete", input_id: "fruits-input-2", list_id: "fruits-popup-2", position: :relative)) do |c| %>
@@ -90,7 +90,7 @@ Customizable results list.
 
 ### With `aria-labelledby`
 
-<Example src="<h2 id='search-1' data-view-component='true'>Search</h2><auto-complete src='/auto_complete' for='fruits-popup-2' data-view-component='true' class='position-relative'>  <input id='fruits-input-3' aria-labelledby='search-1' type='text' data-view-component='true' class='form-control'></input>    <ul id='fruits-popup-2' data-view-component='true' class='autocomplete-results'></ul></auto-complete>" />
+<Example src="<h2 id='search-1' data-view-component=''>Search</h2><auto-complete src='/auto_complete' for='fruits-popup-2' data-view-component='' class='position-relative'>  <input id='fruits-input-3' aria-labelledby='search-1' type='text' data-view-component='' class='form-control'></input>    <ul id='fruits-popup-2' data-view-component='' class='autocomplete-results'></ul></auto-complete>" />
 
 ```erb
 <%= render(Primer::HeadingComponent.new(tag: :h2, id: "search-1")) { "Search" } %>
@@ -101,7 +101,7 @@ Customizable results list.
 
 ### With custom classes for the results
 
-<Example src="<label for='fruits-input-4' data-view-component='true'>Fruits</label><auto-complete src='/auto_complete' for='fruits-popup-3' data-view-component='true' class='position-relative'>  <input id='fruits-input-4' type='text' data-view-component='true' class='form-control'></input>    <ul id='fruits-popup-3' data-view-component='true' class='autocomplete-results custom-class'>    <li role='option' data-autocomplete-value='apple' aria-selected='true' data-view-component='true' class='autocomplete-item'>      Apple</li>    <li role='option' data-autocomplete-value='orange' data-view-component='true' class='autocomplete-item'>      Orange</li></ul></auto-complete>" />
+<Example src="<label for='fruits-input-4' data-view-component=''>Fruits</label><auto-complete src='/auto_complete' for='fruits-popup-3' data-view-component='' class='position-relative'>  <input id='fruits-input-4' type='text' data-view-component='' class='form-control'></input>    <ul id='fruits-popup-3' data-view-component='' class='autocomplete-results custom-class'>    <li role='option' data-autocomplete-value='apple' aria-selected='' data-view-component='' class='autocomplete-item'>      Apple</li>    <li role='option' data-autocomplete-value='orange' data-view-component='' class='autocomplete-item'>      Orange</li></ul></auto-complete>" />
 
 ```erb
 <%= render(Primer::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-4", list_id: "fruits-popup-3", position: :relative)) do |c| %>
@@ -120,7 +120,7 @@ Customizable results list.
 
 ### With Icon
 
-<Example src="<label for='fruits-input-4' data-view-component='true'>Fruits</label><auto-complete src='/auto_complete' for='fruits-popup-4' data-view-component='true' class='position-relative'>  <input id='fruits-input-4' type='text' data-view-component='true' class='form-control'></input>  <svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' data-view-component='true' height='16' width='16' class='octicon octicon-search'>    <path fill-rule='evenodd' d='M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z'></path></svg>  <ul id='fruits-popup-4' data-view-component='true' class='autocomplete-results'></ul></auto-complete>" />
+<Example src="<label for='fruits-input-4' data-view-component=''>Fruits</label><auto-complete src='/auto_complete' for='fruits-popup-4' data-view-component='' class='position-relative'>  <input id='fruits-input-4' type='text' data-view-component='' class='form-control'></input>  <svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' data-view-component='' height='16' width='16' class='octicon octicon-search'>    <path fill-rule='evenodd' d='M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z'></path></svg>  <ul id='fruits-popup-4' data-view-component='' class='autocomplete-results'></ul></auto-complete>" />
 
 ```erb
 <%= render(Primer::AutoComplete.new(src: "/auto_complete", list_id: "fruits-popup-4", input_id: "fruits-input-4", position: :relative)) do |c| %>

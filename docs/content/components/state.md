@@ -25,7 +25,7 @@ Use `State` for rendering the status of an item.
 
 ### Default
 
-<Example src="<span title='title' data-view-component='true' class='State'>State</span>" />
+<Example src="<span title='title' data-view-component='' class='State'>State</span>" />
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "State" } %>
@@ -33,7 +33,7 @@ Use `State` for rendering the status of an item.
 
 ### Schemes
 
-<Example src="<span title='title' data-view-component='true' class='State'>Default</span><span title='title' data-view-component='true' class='State State--open'>Open</span><span title='title' data-view-component='true' class='State State--closed'>Closed</span><span title='title' data-view-component='true' class='State State--merged'>Merged</span>" />
+<Example src="<span title='title' data-view-component='' class='State'>Default</span><span title='title' data-view-component='' class='State State--open'>Open</span><span title='title' data-view-component='' class='State State--closed'>Closed</span><span title='title' data-view-component='' class='State State--merged'>Merged</span>" />
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
@@ -44,7 +44,7 @@ Use `State` for rendering the status of an item.
 
 ### Sizes
 
-<Example src="<span title='title' data-view-component='true' class='State'>Default</span><span title='title' data-view-component='true' class='State State--small'>Small</span>" />
+<Example src="<span title='title' data-view-component='' class='State'>Default</span><span title='title' data-view-component='' class='State State--small'>Small</span>" />
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>

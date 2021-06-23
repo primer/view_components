@@ -24,7 +24,7 @@ Use `BaseButton` to render an unstyled `<button>` tag that can be customized.
 
 ### Block
 
-<Example src="<button type='button' data-view-component='true' class='btn-block'>Block</button><button scheme='primary' type='button' data-view-component='true' class='btn-block'>Primary block</button>" />
+<Example src="<button type='button' data-view-component='' class='btn-block'>Block</button><button scheme='primary' type='button' data-view-component='' class='btn-block'>Primary block</button>" />
 
 ```erb
 <%= render(Primer::BaseButton.new(block: :true)) { "Block" } %>

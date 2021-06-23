@@ -26,7 +26,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ### Default
 
-<Example src="<div class='pt-5'>  <span aria-label='Even bolder' data-view-component='true' class='tooltipped tooltipped-n'>Default Bold Text</span></div>" />
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' data-view-component='' class='tooltipped tooltipped-n'>Default Bold Text</span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -36,7 +36,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ### Wrapping another component
 
-<Example src="<div class='pt-5'>  <span aria-label='Even bolder' data-view-component='true' class='tooltipped tooltipped-n'>    <button type='button' data-view-component='true' class='btn'>    Bold Button  </button></span></div>" />
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' data-view-component='' class='tooltipped tooltipped-n'>    <button type='button' data-view-component='' class='btn'>    Bold Button  </button></span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -48,7 +48,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ### With a direction
 
-<Example src="<div class='pt-5'>  <span aria-label='Even bolder' data-view-component='true' class='tooltipped tooltipped-s'>Bold Text With a Direction</span></div>" />
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' data-view-component='' class='tooltipped tooltipped-s'>Bold Text With a Direction</span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -58,7 +58,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ### With an alignment
 
-<Example src="<div class='pt-5'>  <span alignment='right_1' aria-label='Even bolder' data-view-component='true' class='tooltipped tooltipped-s'>Bold Text With an Alignment</span></div>" />
+<Example src="<div class='pt-5'>  <span alignment='right_1' aria-label='Even bolder' data-view-component='' class='tooltipped tooltipped-s'>Bold Text With an Alignment</span></div>" />
 
 ```erb
 <div class="pt-5">
@@ -68,7 +68,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ### Without a delay
 
-<Example src="<div class='pt-5'>  <span aria-label='Even bolder' data-view-component='true' class='tooltipped tooltipped-s tooltipped-no-delay'>Bold Text without a delay</span></div>" />
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' data-view-component='' class='tooltipped tooltipped-s tooltipped-no-delay'>Bold Text without a delay</span></div>" />
 
 ```erb
 <div class="pt-5">

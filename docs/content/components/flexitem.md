@@ -39,7 +39,7 @@ Use [Box](/components/box) instead.
 
 ### Default
 
-<Example src="<div data-view-component='true' class='d-flex'>  <div data-view-component='true'>    Item 1</div>  <div data-view-component='true' class='flex-auto'>    Item 2</div></div>" />
+<Example src="<div data-view-component='' class='d-flex'>  <div data-view-component=''>    Item 1</div>  <div data-view-component='' class='flex-auto'>    Item 2</div></div>" />
 
 ```erb
 <%= render(Primer::FlexComponent.new) do %>

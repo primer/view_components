@@ -25,7 +25,7 @@ Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, o
 
 ### Schemes
 
-<Example src="<button type='button' data-view-component='true' class='btn-mktg mr-2'>Default</button><button type='button' data-view-component='true' class='btn-mktg btn-primary-mktg mr-2'>Primary</button><button type='button' data-view-component='true' class='btn-mktg btn-outline-mktg'>Outline</button><div class='color-bg-canvas-inverse'>  <button type='button' data-view-component='true' class='btn-mktg btn-transparent'>Transparent</button></div>" />
+<Example src="<button type='button' data-view-component='' class='btn-mktg mr-2'>Default</button><button type='button' data-view-component='' class='btn-mktg btn-primary-mktg mr-2'>Primary</button><button type='button' data-view-component='' class='btn-mktg btn-outline-mktg'>Outline</button><div class='color-bg-canvas-inverse'>  <button type='button' data-view-component='' class='btn-mktg btn-transparent'>Transparent</button></div>" />
 
 ```erb
 <%= render(Primer::Alpha::ButtonMarketing.new(mr: 2)) { "Default" } %>
@@ -38,7 +38,7 @@ Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, o
 
 ### Sizes
 
-<Example src="<button type='button' data-view-component='true' class='btn-mktg mr-2'>Default</button><button type='button' data-view-component='true' class='btn-mktg btn-large-mktg'>Large</button>" />
+<Example src="<button type='button' data-view-component='' class='btn-mktg mr-2'>Default</button><button type='button' data-view-component='' class='btn-mktg btn-large-mktg'>Large</button>" />
 
 ```erb
 <%= render(Primer::Alpha::ButtonMarketing.new(mr: 2)) { "Default" } %>

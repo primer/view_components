@@ -36,7 +36,7 @@ Optional action content showed on the right side of the component.
 
 ### Schemes
 
-<Example src="<div data-view-component='true' class='flash'>    This is a flash message!  </div><div data-view-component='true' class='flash flash-warn'>    This is a warning flash message!  </div><div data-view-component='true' class='flash flash-error'>    This is a danger flash message!  </div><div data-view-component='true' class='flash flash-success'>    This is a success flash message!  </div>" />
+<Example src="<div data-view-component='' class='flash'>    This is a flash message!  </div><div data-view-component='' class='flash flash-warn'>    This is a warning flash message!  </div><div data-view-component='' class='flash flash-error'>    This is a danger flash message!  </div><div data-view-component='' class='flash flash-success'>    This is a success flash message!  </div>" />
 
 ```erb
 <%= render(Primer::FlashComponent.new) { "This is a flash message!" } %>
@@ -47,7 +47,7 @@ Optional action content showed on the right side of the component.
 
 ### Full width
 
-<Example src="<div data-view-component='true' class='flash flash-full'>    This is a full width flash message!  </div>" />
+<Example src="<div data-view-component='' class='flash flash-full'>    This is a full width flash message!  </div>" />
 
 ```erb
 <%= render(Primer::FlashComponent.new(full: true)) { "This is a full width flash message!" } %>
@@ -55,7 +55,7 @@ Optional action content showed on the right side of the component.
 
 ### Dismissible
 
-<Example src="<div data-view-component='true' class='flash'>    This is a dismissible flash message!    <button class='flash-close js-flash-close' type='button' aria-label='Close'>      <svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' data-view-component='true' height='16' width='16' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg>    </button>  </div>" />
+<Example src="<div data-view-component='' class='flash'>    This is a dismissible flash message!    <button class='flash-close js-flash-close' type='button' aria-label='Close'>      <svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' data-view-component='' height='16' width='16' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg>    </button>  </div>" />
 
 ```erb
 <%= render(Primer::FlashComponent.new(dismissible: true)) { "This is a dismissible flash message!" } %>
@@ -63,7 +63,7 @@ Optional action content showed on the right side of the component.
 
 ### Icon
 
-<Example src="<div data-view-component='true' class='flash'>  <svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' data-view-component='true' height='16' width='16' class='octicon octicon-people'>    <path fill-rule='evenodd' d='M5.5 3.5a2 2 0 100 4 2 2 0 000-4zM2 5.5a3.5 3.5 0 115.898 2.549 5.507 5.507 0 013.034 4.084.75.75 0 11-1.482.235 4.001 4.001 0 00-7.9 0 .75.75 0 01-1.482-.236A5.507 5.507 0 013.102 8.05 3.49 3.49 0 012 5.5zM11 4a.75.75 0 100 1.5 1.5 1.5 0 01.666 2.844.75.75 0 00-.416.672v.352a.75.75 0 00.574.73c1.2.289 2.162 1.2 2.522 2.372a.75.75 0 101.434-.44 5.01 5.01 0 00-2.56-3.012A3 3 0 0011 4z'></path></svg>  This is a flash message with an icon!  </div>" />
+<Example src="<div data-view-component='' class='flash'>  <svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' data-view-component='' height='16' width='16' class='octicon octicon-people'>    <path fill-rule='evenodd' d='M5.5 3.5a2 2 0 100 4 2 2 0 000-4zM2 5.5a3.5 3.5 0 115.898 2.549 5.507 5.507 0 013.034 4.084.75.75 0 11-1.482.235 4.001 4.001 0 00-7.9 0 .75.75 0 01-1.482-.236A5.507 5.507 0 013.102 8.05 3.49 3.49 0 012 5.5zM11 4a.75.75 0 100 1.5 1.5 1.5 0 01.666 2.844.75.75 0 00-.416.672v.352a.75.75 0 00.574.73c1.2.289 2.162 1.2 2.522 2.372a.75.75 0 101.434-.44 5.01 5.01 0 00-2.56-3.012A3 3 0 0011 4z'></path></svg>  This is a flash message with an icon!  </div>" />
 
 ```erb
 <%= render(Primer::FlashComponent.new(icon: :people)) { "This is a flash message with an icon!" } %>
@@ -71,7 +71,7 @@ Optional action content showed on the right side of the component.
 
 ### With actions
 
-<Example src="<div data-view-component='true' class='flash'>      This is a flash message with actions!  <div data-view-component='true' class='flash-action'>    <button type='button' data-view-component='true' class='btn-sm btn'>    Take action  </button></div></div>" />
+<Example src="<div data-view-component='' class='flash'>      This is a flash message with actions!  <div data-view-component='' class='flash-action'>    <button type='button' data-view-component='' class='btn-sm btn'>    Take action  </button></div></div>" />
 
 ```erb
 <%= render(Primer::FlashComponent.new) do |component| %>

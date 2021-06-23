@@ -25,7 +25,7 @@ Use `Label` to add contextual metadata to a design.
 
 ### Schemes
 
-<Example src="<span title='Label: Label' data-view-component='true' class='Label'>Default</span><span title='Label: Label' data-view-component='true' class='Label Label--primary'>Primary</span><span title='Label: Label' data-view-component='true' class='Label Label--secondary'>Secondary</span><span title='Label: Label' data-view-component='true' class='Label Label--info'>Info</span><span title='Label: Label' data-view-component='true' class='Label Label--success'>Success</span><span title='Label: Label' data-view-component='true' class='Label Label--warning'>Warning</span><span title='Label: Label' data-view-component='true' class='Label Label--danger'>Danger</span>" />
+<Example src="<span title='Label: Label' data-view-component='' class='Label'>Default</span><span title='Label: Label' data-view-component='' class='Label Label--primary'>Primary</span><span title='Label: Label' data-view-component='' class='Label Label--secondary'>Secondary</span><span title='Label: Label' data-view-component='' class='Label Label--info'>Info</span><span title='Label: Label' data-view-component='' class='Label Label--success'>Success</span><span title='Label: Label' data-view-component='' class='Label Label--warning'>Warning</span><span title='Label: Label' data-view-component='' class='Label Label--danger'>Danger</span>" />
 
 ```erb
 <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>
@@ -39,7 +39,7 @@ Use `Label` to add contextual metadata to a design.
 
 ### Variants
 
-<Example src="<span title='Label: Label' data-view-component='true' class='Label'>Default</span><span title='Label: Label' data-view-component='true' class='Label Label--large'>Large</span>" />
+<Example src="<span title='Label: Label' data-view-component='' class='Label'>Default</span><span title='Label: Label' data-view-component='' class='Label Label--large'>Large</span>" />
 
 ```erb
 <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>

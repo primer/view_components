@@ -26,7 +26,7 @@ Use `Link` for navigating from one page to another. `Link` styles anchor tags wi
 
 ### Default
 
-<Example src="<a href='#' data-view-component='true'>Link</a>" />
+<Example src="<a href='#' data-view-component=''>Link</a>" />
 
 ```erb
 <%= render(Primer::LinkComponent.new(href: "#")) { "Link" } %>
@@ -34,7 +34,7 @@ Use `Link` for navigating from one page to another. `Link` styles anchor tags wi
 
 ### Muted
 
-<Example src="<a href='#' data-view-component='true' class='Link--muted'>Link</a>" />
+<Example src="<a href='#' data-view-component='' class='Link--muted'>Link</a>" />
 
 ```erb
 <%= render(Primer::LinkComponent.new(href: "#", muted: true)) { "Link" } %>
@@ -42,7 +42,7 @@ Use `Link` for navigating from one page to another. `Link` styles anchor tags wi
 
 ### Schemes
 
-<Example src="<a href='#' data-view-component='true' class='Link--primary'>Primary</a><a href='#' data-view-component='true' class='Link--secondary'>Secondary</a>" />
+<Example src="<a href='#' data-view-component='' class='Link--primary'>Primary</a><a href='#' data-view-component='' class='Link--secondary'>Secondary</a>" />
 
 ```erb
 <%= render(Primer::LinkComponent.new(href: "#", scheme: :primary)) { "Primary" } %>
@@ -51,7 +51,7 @@ Use `Link` for navigating from one page to another. `Link` styles anchor tags wi
 
 ### Without underline
 
-<Example src="<a href='#' data-view-component='true' class='no-underline'>Link</a>" />
+<Example src="<a href='#' data-view-component='' class='no-underline'>Link</a>" />
 
 ```erb
 <%= render(Primer::LinkComponent.new(href: "#", underline: false)) { "Link" } %>
@@ -59,7 +59,7 @@ Use `Link` for navigating from one page to another. `Link` styles anchor tags wi
 
 ### Span as link
 
-<Example src="<span data-view-component='true' class='Link'>Span as a link</span>" />
+<Example src="<span data-view-component='' class='Link'>Span as a link</span>" />
 
 ```erb
 <%= render(Primer::LinkComponent.new(tag: :span)) { "Span as a link" } %>

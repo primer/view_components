@@ -37,7 +37,7 @@ Headings allow assistive technology users to quickly navigate around a page. Nav
 
 ### Default
 
-<Example src="<h1 data-view-component='true'>H1 Text</h1><h2 data-view-component='true'>H2 Text</h2><h3 data-view-component='true'>H3 Text</h3><h4 data-view-component='true'>H4 Text</h4><h5 data-view-component='true'>H5 Text</h5><h6 data-view-component='true'>H6 Text</h6>" />
+<Example src="<h1 data-view-component=''>H1 Text</h1><h2 data-view-component=''>H2 Text</h2><h3 data-view-component=''>H3 Text</h3><h4 data-view-component=''>H4 Text</h4><h5 data-view-component=''>H5 Text</h5><h6 data-view-component=''>H6 Text</h6>" />
 
 ```erb
 <%= render(Primer::HeadingComponent.new(tag: :h1)) { "H1 Text" } %>

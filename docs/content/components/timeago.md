@@ -26,7 +26,7 @@ Use `TimeAgo` to display a time relative to how long ago it was. This component 
 
 ### Default
 
-<Example src="<time-ago datetime='1989-11-28T05:00:00Z' data-view-component='true' class='no-wrap'>Nov 28, 1989</time-ago>" />
+<Example src="<time-ago datetime='1989-11-28T05:00:00Z' data-view-component='' class='no-wrap'>Nov 28, 1989</time-ago>" />
 
 ```erb
 <%= render(Primer::TimeAgoComponent.new(time: Time.at(628232400))) %>

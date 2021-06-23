@@ -34,7 +34,7 @@ Use the Item slot to add an item to the progress bas
 
 ### Default
 
-<Example src="<span data-view-component='true' class='Progress'>    <span style='width: 25%;' data-view-component='true' class='Progress-item color-bg-success-inverse'></span></span>" />
+<Example src="<span data-view-component='' class='Progress'>    <span style='width: 25%;' data-view-component='' class='Progress-item color-bg-success-inverse'></span></span>" />
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new) do |component| %>
@@ -44,7 +44,7 @@ Use the Item slot to add an item to the progress bas
 
 ### Small
 
-<Example src="<span data-view-component='true' class='Progress Progress--small'>    <span style='width: 50%;' data-view-component='true' class='Progress-item color-bg-info-inverse'></span></span>" />
+<Example src="<span data-view-component='' class='Progress Progress--small'>    <span style='width: 50%;' data-view-component='' class='Progress-item color-bg-info-inverse'></span></span>" />
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new(size: :small)) do |component| %>
@@ -54,7 +54,7 @@ Use the Item slot to add an item to the progress bas
 
 ### Large
 
-<Example src="<span data-view-component='true' class='Progress Progress--large'>    <span style='width: 75%;' data-view-component='true' class='Progress-item color-bg-danger-inverse'></span></span>" />
+<Example src="<span data-view-component='' class='Progress Progress--large'>    <span style='width: 75%;' data-view-component='' class='Progress-item color-bg-danger-inverse'></span></span>" />
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new(size: :large)) do |component| %>
@@ -64,7 +64,7 @@ Use the Item slot to add an item to the progress bas
 
 ### Multiple items
 
-<Example src="<span data-view-component='true' class='Progress'>    <span style='width: 10%;' data-view-component='true' class='Progress-item color-bg-success-inverse'></span>    <span style='width: 20%;' data-view-component='true' class='Progress-item color-bg-info-inverse'></span>    <span style='width: 30%;' data-view-component='true' class='Progress-item color-bg-danger-inverse'></span></span>" />
+<Example src="<span data-view-component='' class='Progress'>    <span style='width: 10%;' data-view-component='' class='Progress-item color-bg-success-inverse'></span>    <span style='width: 20%;' data-view-component='' class='Progress-item color-bg-info-inverse'></span>    <span style='width: 30%;' data-view-component='' class='Progress-item color-bg-danger-inverse'></span></span>" />
 
 ```erb
 <%= render(Primer::ProgressBarComponent.new) do |component| %>

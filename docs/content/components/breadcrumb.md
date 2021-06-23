@@ -33,7 +33,7 @@ _Note: if both `href` and `selected: true` are passed in, `href` will be ignored
 
 ### Basic
 
-<Example src="<nav aria-label='Breadcrumb' data-view-component='true'>  <ol>      <li data-view-component='true' class='breadcrumb-item'><a href='/' data-view-component='true'>Home</a></li>      <li data-view-component='true' class='breadcrumb-item'><a href='/about' data-view-component='true'>About</a></li>      <li aria-current='page' data-view-component='true' class='breadcrumb-item'>Team</li>  </ol></nav>" />
+<Example src="<nav aria-label='Breadcrumb' data-view-component=''>  <ol>      <li data-view-component='' class='breadcrumb-item'><a href='/' data-view-component=''>Home</a></li>      <li data-view-component='' class='breadcrumb-item'><a href='/about' data-view-component=''>About</a></li>      <li aria-current='page' data-view-component='' class='breadcrumb-item'>Team</li>  </ol></nav>" />
 
 ```erb
 <%= render(Primer::BreadcrumbComponent.new) do |component| %>

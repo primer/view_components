@@ -23,7 +23,7 @@ Use `HiddenTextExpander` to indicate and toggle hidden text.
 
 ### Default
 
-<Example src="<span data-view-component='true' class='hidden-text-expander'><button aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander'>&hellip;</button></span>" />
+<Example src="<span data-view-component='' class='hidden-text-expander'><button aria-expanded='false' type='button' data-view-component='' class='ellipsis-expander'>&hellip;</button></span>" />
 
 ```erb
 <%= render(Primer::HiddenTextExpander.new) %>
@@ -31,7 +31,7 @@ Use `HiddenTextExpander` to indicate and toggle hidden text.
 
 ### Inline
 
-<Example src="<span data-view-component='true' class='hidden-text-expander inline'><button aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander'>&hellip;</button></span>" />
+<Example src="<span data-view-component='' class='hidden-text-expander inline'><button aria-expanded='false' type='button' data-view-component='' class='ellipsis-expander'>&hellip;</button></span>" />
 
 ```erb
 <%= render(Primer::HiddenTextExpander.new(inline: true)) %>
@@ -39,7 +39,7 @@ Use `HiddenTextExpander` to indicate and toggle hidden text.
 
 ### Styling the button
 
-<Example src="<span data-view-component='true' class='hidden-text-expander'><button aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander custom-class p-1'>&hellip;</button></span>" />
+<Example src="<span data-view-component='' class='hidden-text-expander'><button aria-expanded='false' type='button' data-view-component='' class='ellipsis-expander custom-class p-1'>&hellip;</button></span>" />
 
 ```erb
 <%= render(Primer::HiddenTextExpander.new(button_arguments: { p: 1, classes: "custom-class" })) %>
