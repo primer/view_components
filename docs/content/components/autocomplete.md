@@ -101,7 +101,7 @@ Customizable results list.
 
 ### With custom classes for the results
 
-<Example src="<label for='fruits-input-4' data-view-component=''>Fruits</label><auto-complete src='/auto_complete' for='fruits-popup-3' data-view-component='' class='position-relative'>  <input id='fruits-input-4' type='text' data-view-component='' class='form-control'></input>    <ul id='fruits-popup-3' data-view-component='' class='autocomplete-results custom-class'>    <li role='option' data-autocomplete-value='apple' aria-selected='' data-view-component='' class='autocomplete-item'>      Apple</li>    <li role='option' data-autocomplete-value='orange' data-view-component='' class='autocomplete-item'>      Orange</li></ul></auto-complete>" />
+<Example src="<label for='fruits-input-4' data-view-component=''>Fruits</label><auto-complete src='/auto_complete' for='fruits-popup-3' data-view-component='' class='position-relative'>  <input id='fruits-input-4' type='text' data-view-component='' class='form-control'></input>    <ul id='fruits-popup-3' data-view-component='' class='autocomplete-results custom-class'>    <li role='option' data-autocomplete-value='apple' aria-selected='true' data-view-component='' class='autocomplete-item'>      Apple</li>    <li role='option' data-autocomplete-value='orange' data-view-component='' class='autocomplete-item'>      Orange</li></ul></auto-complete>" />
 
 ```erb
 <%= render(Primer::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-4", list_id: "fruits-popup-3", position: :relative)) do |c| %>

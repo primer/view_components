@@ -186,8 +186,9 @@ module Primer
       @system_arguments[:"data-view-component"] = true
       # Filter out Primer keys so they don't get assigned as HTML attributes
       # Transforn `true` to `""` so `content_tag` doesn't assign `"true"` as the attribute value.
-      @content_tag_args = add_test_selector(@system_arguments).except(*Primer::Classify::VALID_KEYS).transform_values do |value|
-        value == true ? "" : value
+      # `aria-` attributes are not transformed, since there isn't any boolean aria attribute.
+      @content_tag_args = add_test_selector(@system_arguments).except(*Primer::Classify::VALID_KEYS).each_with_object({}) do |(key, value), memo|
+        memo[key] = value == true && !key.starts_with?("aria-") ? "" : value
       end
     end
 

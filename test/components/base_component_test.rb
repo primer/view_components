@@ -166,4 +166,10 @@ class PrimerBaseComponentTest < Minitest::Test
     assert_selector("div[data-value]")
     refute_selector("[data-value=\"true\"]")
   end
+
+  def test_does_not_transform_true_value_if_aria
+    render_inline(Primer::BaseComponent.new(tag: :div, "aria-value": true))
+
+    assert_selector("div[aria-value=\"true\"]")
+  end
 end
