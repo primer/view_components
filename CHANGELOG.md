@@ -10,6 +10,10 @@
 
 ### Breaking changes
 
+* Restrict `AvatarStack` body slot tag and `ImageCrop` spinner tag.
+
+    *Kate Higa*
+
 * Restrict `Details` body slot tags and `UnderlineNav` body slot tags.
 
     *Kate Higa*
