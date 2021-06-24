@@ -44,6 +44,10 @@
 
     *Manuel Puyol*
 
+* Update Storybook version.
+
+    *Manuel Puyol*
+
 ## 0.0.45
 
 ### Updates
