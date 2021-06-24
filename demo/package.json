@@ -8,16 +8,16 @@
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^v6.2.9",
-    "@storybook/addon-actions": "^v6.2.9",
-    "@storybook/addon-controls": "^v6.2.9",
-    "@storybook/addon-docs": "^v6.2.9",
-    "@storybook/server": "^v6.2.9",
+    "@storybook/addon-a11y": "^v6.3.0",
+    "@storybook/addon-actions": "^v6.3.0",
+    "@storybook/addon-controls": "^v6.3.0",
+    "@storybook/addon-docs": "^v6.3.0",
+    "@storybook/server": "^v6.3.0",
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
     "storybook": "start-storybook -p 5000",
-    "build-storybook": "build-storybook -o public/view-components/stories --preview-url=/view-components/stories/iframe.html",
+    "build-storybook": "build-storybook -o public/view-components/stories --preview-url=/view-components/stories/iframe.html --force-build-preview",
     "build": "yarn build-storybook"
   },
   "engines": {
