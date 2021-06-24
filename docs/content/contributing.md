@@ -94,7 +94,7 @@ To minimize the number of restarts, we recommend checking the component in Story
 0. Make sure the tests pass on your machine
 0. Create a new branch: `git checkout -b my-branch-name`
 0. Make your change, add tests, and make sure the tests still pass
-0. Add an entry to the top of `CHANGELOG.md` for your changes
+0. Add an entry to the top of `CHANGELOG.md` for your change. Follow our [writing guideline](https://primer.style/view-components/contributing#writing-changes-in-changelog.md)
 0. Push to your fork and [submit a pull request](https://github.com/primer/view_components/compare)
 0. Pat yourself on the back and wait for your pull request to be reviewed and merged.
 
@@ -125,3 +125,23 @@ to the project. Please verify that you have 2FA enabled on both accounts.
 1. Run `script/release` and follow the instructions.
 1. Once your release PR has been approved and merged, run `script/publish`. You may be prompted to log into your rubygem and npm account.
 1. Lastly, draft a new release from the [releases page](https://github.com/primer/view_components/releases). The tag version should be updated to the newest version. The description should be updated to the relevant CHANGELOG descriptions. Press the `Publish release` button and you're good to go!
+
+## Writing changes in CHANGELOG.MD
+This file holds all the changes made in previous versions of Primer View Components and the ones coming to the next version.
+
+To add yours, you need to find in which category to write it under the `main` section. `Main` is the first section on top of the document.
+
+There are three categories currently in use, `Updates`, `Breaking changes` and `Misc`.
+
+### Updates
+Every new component and non-breaking changes to the source code goes there.
+
+### Breaking Changes
+The category for changes creating incompatibilities to code written with previous versions.
+
+It includes any changes to components name, signature and behaviour. Also, include removing tags options or changing file location.
+
+If you are not sure you made breaking changes, ask us in your pull request.
+
+### Misc
+The category for changes related to documentation, testing and tooling. Also for pull request that can't fit in other categories.
