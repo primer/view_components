@@ -29,7 +29,7 @@ class PrimerPopoverComponentTest < Minitest::Test
       end
     end
 
-    assert_selector(".Popover.position-absolute.custom-class", text: "Hi there")
+    assert_selector("div.Popover.position-absolute.custom-class", text: "Hi there")
   end
 
   def test_respects_message_caret_option
