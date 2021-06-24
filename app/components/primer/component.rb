@@ -5,7 +5,7 @@ require "view_component/version"
 module Primer
   # @private
   class Component < ViewComponent::Base
-    include ViewComponent::SlotableV2 unless ViewComponent::VERSION::STRING.to_f >= 2.28
+    include ViewComponent::SlotableV2 unless ViewComponent::Base < ViewComponent::SlotableV2
     include ClassNameHelper
     include FetchOrFallbackHelper
     include TestSelectorHelper
@@ -14,6 +14,10 @@ module Primer
     include Status::Dsl
 
     private
+
+    def force_system_arguments?
+      Rails.application.config.primer_view_components.force_system_arguments
+    end
 
     def deprecated_component_warning(new_class: nil, version: nil)
       return if Rails.env.production? || silence_deprecations?

@@ -11,6 +11,7 @@ module Primer
       :condensed => "Box--condensed",
       :spacious => "Box--spacious"
     }.freeze
+    PADDING_SUGGESTION = "Perhaps you could consider using :padding options of #{PADDING_MAPPINGS.keys.to_sentence}?"
 
     # Optional Header.
     #
@@ -111,6 +112,8 @@ module Primer
         PADDING_MAPPINGS[fetch_or_fallback(PADDING_MAPPINGS.keys, padding, DEFAULT_PADDING)],
         system_arguments[:classes]
       )
+
+      @system_arguments[:system_arguments_denylist] = { [:p, :pt, :pb, :pr, :pl] => PADDING_SUGGESTION }
     end
 
     def render?

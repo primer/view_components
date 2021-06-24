@@ -35,7 +35,7 @@ module Primer
     #   <%= render(Primer::FlashComponent.new(dismissible: true)) { "This is a dismissible flash message!" } %>
     #
     # @example Icon
-    #   <%= render(Primer::FlashComponent.new(icon: "people")) { "This is a flash message with an icon!" } %>
+    #   <%= render(Primer::FlashComponent.new(icon: :people)) { "This is a flash message with an icon!" } %>
     #
     # @example With actions
     #   <%= render(Primer::FlashComponent.new) do |component| %>
@@ -48,7 +48,7 @@ module Primer
     # @param full [Boolean] Whether the component should take up the full width of the screen.
     # @param spacious [Boolean] Whether to add margin to the bottom of the component.
     # @param dismissible [Boolean] Whether the component can be dismissed with an X button.
-    # @param icon [String] Name of Octicon icon to use.
+    # @param icon [Symbol] Name of Octicon icon to use.
     # @param scheme [Symbol] <%= one_of(Primer::FlashComponent::SCHEME_MAPPINGS.keys) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(full: false, spacious: false, dismissible: false, icon: nil, scheme: DEFAULT_SCHEME, **system_arguments)

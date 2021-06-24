@@ -49,6 +49,18 @@ class PrimerOcticonComponentTest < Minitest::Test
     assert_selector("[style='margin-left: 100px']")
   end
 
+  def test_renders_size_small_when_height_is_less_than_small
+    render_inline(Primer::OcticonComponent.new(:star, height: 12))
+
+    assert_selector("[height='16']")
+  end
+
+  def test_renders_size_small_when_width_is_less_than_small
+    render_inline(Primer::OcticonComponent.new(:star, width: 12))
+
+    assert_selector("[height='16']")
+  end
+
   def test_renders_default_size_small
     render_inline(Primer::OcticonComponent.new(:star))
 
@@ -56,13 +68,13 @@ class PrimerOcticonComponentTest < Minitest::Test
   end
 
   def test_renders_the_provided_size
-    render_inline(Primer::OcticonComponent.new(:star, size: :large))
+    render_inline(Primer::OcticonComponent.new(:star, size: :medium))
 
-    assert_selector("[height='64']")
+    assert_selector("[height='24']")
   end
 
   def test_renders_with_overridden_height_and_width_despite_given_a_size
-    render_inline(Primer::OcticonComponent.new(:star, size: :large, height: 33, width: 47))
+    render_inline(Primer::OcticonComponent.new(:star, size: :medium, height: 33, width: 47))
 
     assert_selector('[height="33"][width="47"]')
   end
@@ -101,5 +113,11 @@ class PrimerOcticonComponentTest < Minitest::Test
     render_inline(Primer::OcticonComponent.new(:star))
 
     assert_selector("svg.octicon-star path[d]")
+  end
+
+  def test_renders_use_tag
+    render_inline(Primer::OcticonComponent.new(:star, use_symbol: true))
+
+    assert_selector("svg.octicon-star use[href='#octicon_star_16']")
   end
 end

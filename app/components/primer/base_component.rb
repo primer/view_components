@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "primer/classify"
+
 module Primer
   # All Primer ViewComponents accept a standard set of options called system arguments, mimicking the [styled-system API](https://styled-system.com/table) used by [Primer React](https://primer.style/components/system-props).
   #
@@ -43,7 +45,7 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `animation` | Symbol | <%= one_of([:fade_in, :fade_out, :fade_up, :fade_down, :scale_in, :pulse, :grow_x, :grow]) %> |
+    # | `animation` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:animation)) %> |
     #
     # ## Border
     #
@@ -61,7 +63,7 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `bg` | String, Symbol | Background color. Accepts either a hex value as a String or <%= one_of(Primer::Classify::FunctionalBorderColors::OPTIONS, lower: true) %> |
+    # | `bg` | String, Symbol | Background color. Accepts either a hex value as a String or <%= one_of(Primer::Classify::FunctionalBackgroundColors::OPTIONS, lower: true) %> |
     # | `border_color` | Symbol | Border color. <%= one_of(Primer::Classify::FunctionalBorderColors::OPTIONS) %> |
     # | `color` | Symbol | Text color. <%= one_of(Primer::Classify::FunctionalTextColors::OPTIONS) %> |
     #
@@ -83,26 +85,28 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `col` | Integer | Number of columns. |
+    # | `clearfix` | Boolean | Wether to assign the `clearfix` class. |
+    # | `col` | Integer | Number of columns. <%= one_of(Primer::Classify::Grid::COL_VALUES) %> |
+    # | `container` | Symbol | Size of the container. <%= one_of(Primer::Classify::Grid::CONTAINER_VALUES) %> |
     #
     # ## Layout
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `display` | Symbol | <%= one_of([:none, :block, :flex, :inline, :inline_block, :inline_flex, :table, :table_cell]) %> |
+    # | `display` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:display)) %> |
     # | `height` | Symbol | <%= one_of([:fit]) %> |
-    # | `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of([:sm, :md, :lg, :xl]) %> |
-    # | `v` | Symbol | Visibility. <%= one_of([:hidden, :visible]) %> |
-    # | `vertical_align` | Symbol | <%= one_of([:baseline, :top, :middle, :bottom, :text_top, :text_bottom]) %> |
+    # | `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of(Primer::Classify::Utilities.mappings(:hide)) %> |
+    # | `visibility` | Symbol | Visibility. <%= one_of(Primer::Classify::Utilities.mappings(:visibility)) %> |
+    # | `vertical_align` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:vertical_align)) %> |
     #
     # ## Position
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
     # | `bottom` | Boolean | If `false`, sets `bottom: 0`. |
-    # | `float` | Symbol | <%= one_of([:left, :right]) %> |
+    # | `float` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:float)) %> |
     # | `left` | Boolean | If `false`, sets `left: 0`. |
-    # | `position` | Symbol | <%= one_of([:relative, :absolute, :fixed]) %> |
+    # | `position` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:position)) %> |
     # | `right` | Boolean | If `false`, sets `right: 0`. |
     # | `top` | Boolean | If `false`, sets `top: 0`. |
     #
@@ -110,30 +114,33 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `m` | Integer | Margin. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:m]) %> |
-    # | `mb` | Integer | Margin bottom. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mb]) %> |
-    # | `ml` | Integer | Margin left. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:ml]) %> |
-    # | `mr` | Integer | Margin right. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mr]) %> |
-    # | `mt` | Integer | Margin top. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mt]) %> |
-    # | `mx` | Integer | Horizontal margins. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:mx]) %> |
-    # | `my` | Integer | Vertical margins. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:my]) %> |
-    # | `p` | Integer | Padding. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:p]) %> |
-    # | `pb` | Integer | Padding bottom. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pb]) %> |
-    # | `pl` | Integer | Padding left. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pl]) %> |
-    # | `pr` | Integer | Padding right. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pr]) %> |
-    # | `pt` | Integer | Padding left. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:pt]) %> |
-    # | `px` | Integer | Horizontal padding. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:px]) %> |
-    # | `py` | Integer | Vertical padding. <%= one_of(Primer::Classify::Spacing::MAPPINGS[:py]) %> |
+    # | `m` | Integer | Margin. <%= one_of(Primer::Classify::Utilities.mappings(:m)) %> |
+    # | `mb` | Integer | Margin bottom. <%= one_of(Primer::Classify::Utilities.mappings(:mb)) %> |
+    # | `ml` | Integer | Margin left. <%= one_of(Primer::Classify::Utilities.mappings(:ml)) %> |
+    # | `mr` | Integer | Margin right. <%= one_of(Primer::Classify::Utilities.mappings(:mr)) %> |
+    # | `mt` | Integer | Margin top. <%= one_of(Primer::Classify::Utilities.mappings(:mt)) %> |
+    # | `mx` | Integer | Horizontal margins. <%= one_of(Primer::Classify::Utilities.mappings(:mx)) %> |
+    # | `my` | Integer | Vertical margins. <%= one_of(Primer::Classify::Utilities.mappings(:my)) %> |
+    # | `p` | Integer | Padding. <%= one_of(Primer::Classify::Utilities.mappings(:p)) %> |
+    # | `pb` | Integer | Padding bottom. <%= one_of(Primer::Classify::Utilities.mappings(:pb)) %> |
+    # | `pl` | Integer | Padding left. <%= one_of(Primer::Classify::Utilities.mappings(:pl)) %> |
+    # | `pr` | Integer | Padding right. <%= one_of(Primer::Classify::Utilities.mappings(:pr)) %> |
+    # | `pt` | Integer | Padding left. <%= one_of(Primer::Classify::Utilities.mappings(:pt)) %> |
+    # | `px` | Integer | Horizontal padding. <%= one_of(Primer::Classify::Utilities.mappings(:px)) %> |
+    # | `py` | Integer | Vertical padding. <%= one_of(Primer::Classify::Utilities.mappings(:py)) %> |
     #
     # ## Typography
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `font_size` | String, Integer | <%= one_of(["00", 0, 1, 2, 3, 4, 5, 6]) %> |
-    # | `font_weight` | Symbol | Font weight. <%= one_of([:light, :normal, :bold]) %> |
+    # | `font_family` | Symbol | Font weight. <%= one_of([:mono]) %> |
+    # | `font_size` | String, Integer, Symbol | <%= one_of(["00", 0, 1, 2, 3, 4, 5, 6, :small, :normal]) %> |
+    # | `font_style` | Symbol | Font weight. <%= one_of([:italic]) %> |
+    # | `font_weight` | Symbol | Font weight. <%= one_of([:light, :normal, :bold, :emphasized]) %> |
     # | `text_align` | Symbol | Text alignment. <%= one_of([:left, :right, :center]) %> |
+    # | `text_transform` | Symbol | Text alignment. <%= one_of([:uppercase]) %> |
     # | `underline` | Boolean | Whether text should be underlined. |
-    # | `word_break` | Symbol | Whether to break words on line breaks. Can only be `:break_all`. |
+    # | `word_break` | Symbol | Whether to break words on line breaks. <%= one_of(Primer::Classify::Utilities.mappings(:word_break)) %> |
     #
     # ## Other
     #
@@ -143,10 +150,42 @@ module Primer
     # | test_selector | String | Adds `data-test-selector='given value'` in non-Production environments for testing purposes. |
     def initialize(tag:, classes: nil, **system_arguments)
       @tag = tag
-      @result = Primer::Classify.call(**system_arguments.merge(classes: classes))
+      @system_arguments = system_arguments
 
+      raise ArgumentError, "`class` is an invalid argument. Use `classes` instead." if system_arguments.key?(:class) && !Rails.env.production?
+
+      if (denylist = system_arguments[:system_arguments_denylist])
+        if force_system_arguments? && !ENV["PRIMER_WARNINGS_DISABLED"]
+          # Convert denylist from:
+          # { [:p, :pt] => "message" } to:
+          # { p: "message", pt: "message" }
+          unpacked_denylist =
+            denylist.each_with_object({}) do |(keys, value), memo|
+              keys.each { |key| memo[key] = value }
+            end
+
+          violations = unpacked_denylist.keys & @system_arguments.keys
+
+          if violations.any?
+            message = "Found #{violations.count} #{'violation'.pluralize(violations)}:"
+            violations.each do |violation|
+              message += "\n The #{violation} system argument is not allowed here. #{unpacked_denylist[violation]}"
+            end
+
+            raise(ArgumentError, message)
+          end
+        end
+
+        # Remove :system_arguments_denylist key and any denied keys from system arguments
+        @system_arguments.except!(:system_arguments_denylist)
+        @system_arguments.except!(*denylist.keys.flatten)
+      end
+
+      @result = Primer::Classify.call(**@system_arguments.merge(classes: classes))
+
+      @system_arguments[:"data-view-component"] = true
       # Filter out Primer keys so they don't get assigned as HTML attributes
-      @content_tag_args = add_test_selector(system_arguments).except(*Primer::Classify::VALID_KEYS)
+      @content_tag_args = add_test_selector(@system_arguments).except(*Primer::Classify::VALID_KEYS)
     end
 
     def call

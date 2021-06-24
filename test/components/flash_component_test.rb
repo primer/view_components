@@ -37,7 +37,7 @@ class PrimerFlashComponentTest < Minitest::Test
   end
 
   def test_renders_octicon_component
-    render_inline(Primer::FlashComponent.new(icon: "alert")) { "foo" }
+    render_inline(Primer::FlashComponent.new(icon: :alert)) { "foo" }
 
     assert_selector(".flash .octicon.octicon-alert")
   end

@@ -5,6 +5,11 @@ module Primer
   class TabNavComponent < Primer::Component
     include Primer::TabbedComponentHelper
 
+    status :beta
+
+    DEFAULT_EXTRA_ALIGN = :left
+    EXTRA_ALIGN_OPTIONS = [DEFAULT_EXTRA_ALIGN, :right].freeze
+
     # Tabs to be rendered. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
     # @param selected [Boolean] Whether the tab is selected.
@@ -20,6 +25,15 @@ module Primer
         with_panel: @with_panel,
         **system_arguments
       )
+    }
+
+    # Renders extra content to the `TabNav`. This will be rendered after the tabs.
+    #
+    # @param align [Symbol] <%= one_of(Primer::TabNavComponent::EXTRA_ALIGN_OPTIONS) %>
+    renders_one :extra, lambda { |align: DEFAULT_EXTRA_ALIGN, &block|
+      @align = fetch_or_fallback(EXTRA_ALIGN_OPTIONS, align, DEFAULT_EXTRA_ALIGN)
+
+      view_context.capture { block&.call }
     }
 
     # @example Default
@@ -68,28 +82,67 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
+    # @example With extra content
+    #   <%= render(Primer::TabNavComponent.new(label: "With extra content")) do |c| %>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(href: "#") { "Tab 2" } %>
+    #     <% c.tab(href: "#") { "Tab 3" } %>
+    #     <% c.extra do %>
+    #       <%= render(Primer::ButtonComponent.new(float: :right)) { "Button" } %>
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example Adding extra content after the tabs
+    #   <%= render(Primer::TabNavComponent.new(label: "Adding extra content after the tabs", display: :flex, body_arguments: { flex: 1 })) do |c| %>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(href: "#") { "Tab 2" } %>
+    #     <% c.tab(href: "#") { "Tab 3" } %>
+    #     <% c.extra(align: :right) do %>
+    #       <div>
+    #         <%= render(Primer::ButtonComponent.new) { "Button" } %>
+    #       </div>
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example Customizing the body
+    #   <%= render(Primer::TabNavComponent.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :info })) do |c| %>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(href: "#") { "Tab 2" } %>
+    #     <% c.tab(href: "#") { "Tab 3" } %>
+    #   <% end %>
+    #
+    # @example Customizing the wrapper
+    #   <%= render(Primer::TabNavComponent.new(label: "Default", wrapper_arguments: { classes: "custom-class", border: true, border_color: :info })) do |c| %>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(href: "#") { "Tab 2" } %>
+    #     <% c.tab(href: "#") { "Tab 3" } %>
+    #   <% end %>
+    #
     # @param label [String] Used to set the `aria-label` on the top level `<nav>` element.
     # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
+    # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
+    # @param wrapper_arguments [Hash] <%= link_to_system_arguments_docs %> for the `TabContainer` wrapper. Only applies if `with_panel` is `true`.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(label:, with_panel: false, **system_arguments)
+    def initialize(label:, with_panel: false, body_arguments: {}, wrapper_arguments: {}, **system_arguments)
+      @align = DEFAULT_EXTRA_ALIGN
       @with_panel = with_panel
       @system_arguments = system_arguments
+      @body_arguments = body_arguments
+      @wrapper_arguments = wrapper_arguments
 
-      @system_arguments[:tag] ||= :div
+      @system_arguments[:tag] ||= :div # rubocop:disable Primer/NoTagMemoize
       @system_arguments[:classes] = class_names(
         "tabnav",
         system_arguments[:classes]
       )
 
-      @body_arguments = {
-        tag: navigation_tag(with_panel),
-        classes: "tabnav-tabs",
-        aria: {
-          label: label
-        }
-      }
-
+      @body_arguments[:tag] = navigation_tag(with_panel)
+      @body_arguments[:"aria-label"] = label
       @body_arguments[:role] = :tablist if @with_panel
+      @body_arguments[:classes] = class_names(
+        "tabnav-tabs",
+        body_arguments[:classes]
+      )
     end
   end
 end

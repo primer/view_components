@@ -2,18 +2,21 @@
 
 ENV["RAILS_ENV"] = "test"
 
+require "erb_lint"
 require "minitest/autorun"
 require "mocha/minitest"
 require "rails"
 require "rails/test_help"
 require "view_component/test_helpers"
 require "test_helpers/component_test_helpers"
+require "yard/docs_helper"
 require "pry"
 require "yaml"
 
 require File.expand_path("../demo/config/environment.rb", __dir__)
 
 require "primer/view_components"
+require "primer/view_components/linters"
 
 if ENV["COVERAGE"] == "1"
   require "simplecov"

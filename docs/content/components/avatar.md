@@ -25,45 +25,6 @@ if `Avatar` is a link to a user profile, the alt attribute should be `@kittenuse
 rather than `@kittenuser`.
 [Learn more about best image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/)
 
-## Examples
-
-### Default
-
-<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small circle'></img>" />
-
-```erb
-<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
-```
-
-### Square
-
-<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small'></img>" />
-
-```erb
-<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", square: true)) %>
-```
-
-### Link
-
-<Example src="<a href='#' class='avatar avatar-small circle lh-0'><img src='http://placekitten.com/200/200' alt='@kittenuser profile' size='20' height='20' width='20'></img></a>" />
-
-```erb
-<%= render(Primer::AvatarComponent.new(href: "#", src: "http://placekitten.com/200/200", alt: "@kittenuser profile")) %>
-```
-
-### With size
-
-<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='16' height='16' width='16' class='avatar avatar-small circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='24' height='24' width='24' class='avatar circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='28' height='28' width='28' class='avatar circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='32' height='32' width='32' class='avatar circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='36' height='36' width='36' class='avatar circle'></img>" />
-
-```erb
-<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 16)) %>
-<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 20)) %>
-<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 24)) %>
-<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 28)) %>
-<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 32)) %>
-<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 36)) %>
-```
-
 ## Arguments
 
 | Name | Type | Default | Description |
@@ -74,3 +35,42 @@ rather than `@kittenuser`.
 | `square` | `Boolean` | `false` | Used to create a square avatar. |
 | `href` | `String` | `nil` | The URL to link to. If used, component will be wrapped by an `<a>` tag. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Examples
+
+### Default
+
+<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img>" />
+
+```erb
+<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
+```
+
+### Square
+
+<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small'></img>" />
+
+```erb
+<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", square: true)) %>
+```
+
+### Link
+
+<Example src="<a href='#' data-view-component='true' class='avatar avatar-small circle lh-0'><img src='http://placekitten.com/200/200' alt='@kittenuser profile' size='20' data-view-component='true' height='20' width='20'></img></a>" />
+
+```erb
+<%= render(Primer::AvatarComponent.new(href: "#", src: "http://placekitten.com/200/200", alt: "@kittenuser profile")) %>
+```
+
+### With size
+
+<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='16' data-view-component='true' height='16' width='16' class='avatar avatar-small circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='24' data-view-component='true' height='24' width='24' class='avatar circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='28' data-view-component='true' height='28' width='28' class='avatar circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='32' data-view-component='true' height='32' width='32' class='avatar circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='36' data-view-component='true' height='36' width='36' class='avatar circle'></img>" />
+
+```erb
+<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 16)) %>
+<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 20)) %>
+<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 24)) %>
+<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 28)) %>
+<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 32)) %>
+<%= render(Primer::AvatarComponent.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 36)) %>
+```

@@ -9,11 +9,11 @@ class Primer::Utilities::AnimationStories < ViewComponent::Storybook::Stories
 
   story(:animation) do
     controls do
-      select(:animation, [:fade_in, :fade_out, :fade_up, :fade_down, :scale_in, :pulse, :grow_x, :grow], :fade_in)
+      select(:animation, [:fade_in, :fade_out, :fade_up, :fade_down, :scale_in, :pulse, :grow_x, :hover_grow], :fade_in)
     end
 
     content do |c|
-      c.render Primer::OcticonComponent.new(icon: "mark-github", size: :large)
+      c.render Primer::OcticonComponent.new(icon: :"mark-github", size: :medium)
     end
   end
 end

@@ -15,32 +15,32 @@ Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, o
 
 ### Schemes
 
-<Example src="<button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-primary-mktg mr-2'>Primary</button><button type='button' class='btn-mktg btn-outline-mktg'>Outline</button><div class='color-bg-canvas-inverse'>  <button type='button' class='btn-mktg btn-transparent'>Transparent</button></div>" />
+<Example src="<button type='button' data-view-component='true' class='btn-mktg mr-2'>Default</button><button type='button' data-view-component='true' class='btn-mktg btn-primary-mktg mr-2'>Primary</button><button type='button' data-view-component='true' class='btn-mktg btn-outline-mktg'>Outline</button><div class='color-bg-canvas-inverse'>  <button type='button' data-view-component='true' class='btn-mktg btn-transparent'>Transparent</button></div>" />
 
 ```erb
-<%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>
-<%= render(Primer::ButtonMarketingComponent.new(scheme: :primary, mr: 2)) { "Primary" } %>
-<%= render(Primer::ButtonMarketingComponent.new(scheme: :outline)) { "Outline" } %>
+<%= render(Primer::Alpha::ButtonMarketing.new(mr: 2)) { "Default" } %>
+<%= render(Primer::Alpha::ButtonMarketing.new(scheme: :primary, mr: 2)) { "Primary" } %>
+<%= render(Primer::Alpha::ButtonMarketing.new(scheme: :outline)) { "Outline" } %>
 <div class="color-bg-canvas-inverse">
-  <%= render(Primer::ButtonMarketingComponent.new(scheme: :transparent)) { "Transparent" } %>
+  <%= render(Primer::Alpha::ButtonMarketing.new(scheme: :transparent)) { "Transparent" } %>
 </div>
 ```
 
 ### Sizes
 
-<Example src="<button type='button' class='btn-mktg mr-2'>Default</button><button type='button' class='btn-mktg btn-large-mktg'>Large</button>" />
+<Example src="<button type='button' data-view-component='true' class='btn-mktg mr-2'>Default</button><button type='button' data-view-component='true' class='btn-mktg btn-large-mktg'>Large</button>" />
 
 ```erb
-<%= render(Primer::ButtonMarketingComponent.new(mr: 2)) { "Default" } %>
-<%= render(Primer::ButtonMarketingComponent.new(variant: :large)) { "Large" } %>
+<%= render(Primer::Alpha::ButtonMarketing.new(mr: 2)) { "Default" } %>
+<%= render(Primer::Alpha::ButtonMarketing.new(variant: :large)) { "Large" } %>
 ```
 
 ## Arguments
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `scheme` | `Symbol` | `:default` | One of `:default`, `:primary`, `:outline`, or `:transparent`. |
+| `scheme` | `Symbol` | `:default` | One of `:default`, `:outline`, `:primary`, or `:transparent`. |
 | `variant` | `Symbol` | `:default` | One of `:default` and `:large`. |
-| `tag` | `Symbol` | `:button` | One of `:button` and `:a`. |
+| `tag` | `Symbol` | `:button` | One of `:a` and `:button`. |
 | `type` | `Symbol` | `:button` | One of `:button` and `:submit`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

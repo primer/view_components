@@ -109,4 +109,47 @@ class PrimerTabNavComponentTest < Minitest::Test
     end
     refute_selector("div[role='tabpanel']")
   end
+
+  def test_renders_extra_content
+    render_inline(Primer::TabNavComponent.new(label: "label")) do |c|
+      c.tab(selected: true) { "Tab 1" }
+      c.tab { "Tab 2" }
+      c.extra { "Extra" }
+    end
+
+    assert_selector(".tabnav") do
+      assert_selector("nav.tabnav-tabs[aria-label='label']") do
+        assert_selector("a.tabnav-tab[aria-current='page']", text: "Tab 1")
+        assert_selector("a.tabnav-tab", text: "Tab 2")
+      end
+      assert_text("Extra")
+    end
+  end
+
+  def test_renders_extra_content_after_the_tabs
+    render_inline(Primer::TabNavComponent.new(label: "label")) do |c|
+      c.tab(selected: true) { "Tab 1" }
+      c.tab { "Tab 2" }
+      c.extra(align: :right) { "Extra" }
+    end
+
+    assert_selector(".tabnav") do
+      assert_selector("nav.tabnav-tabs[aria-label='label']") do
+        assert_selector("a.tabnav-tab[aria-current='page']", text: "Tab 1")
+        assert_selector("a.tabnav-tab", text: "Tab 2")
+      end
+      assert_text("Extra")
+    end
+  end
+
+  def test_customizes_tab_container
+    render_inline(Primer::TabNavComponent.new(label: "label", with_panel: true, wrapper_arguments: { m: 2, classes: "custom-class" })) do |component|
+      component.tab(selected: true) do |t|
+        t.panel { "Panel 1" }
+        t.text { "Tab 1" }
+      end
+    end
+
+    assert_selector("tab-container.m-2.custom-class")
+  end
 end

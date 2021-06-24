@@ -2,7 +2,303 @@
 
 ## main
 
+### Updates
+
+* Restrict usage of padding system arguments on BorderBox, recommending use of `padding` density instead.
+
+    *Joel Hawksley*
+
+### Breaking changes
+
+* Restrict `AvatarStack` body slot tag and `ImageCrop` spinner tag.
+
+    *Kate Higa*
+
+* Restrict `Details` body slot tags and `UnderlineNav` body slot tags.
+
+    *Kate Higa*
+
+* Move Primer::Classify from `app/lib/` to `lib/`. This requires an extra `require "primer/classify"` statement for anywhere Classify is needed.
+
+    *Manuel Puyol, Jon Rohan*
+
+* Restrict `Menu` heading slot tags to heading tags and require `tag` argument.
+
+    *Kate Higa*
+
+* Adding animation, vertical_align, word_break, display, visibility, & position arguments to the utilities class. `animation: :grow` is now `animation: :hover_grow` this was a change because we changed the class name in primer.
+
+    *Jon Rohan*
+
+### Misc
+
+* Update contributing guidelines with release instructions.
+
+    *Kate Higa*
+
+* Prevent flexible tag syntax with rubocop rule.
+
+    *Kate Higa*
+
+* Update linter autocorrection to use `""` instead of `true` for boolean attributes.
+
+    *Manuel Puyol*
+
+## 0.0.45
+
+### Updates
+
+* Allow copying from elements using `for` in `ClipboardCopy`.
+
+    *Manuel Puyol*
+
+### Breaking changes
+
+* Remove `label` argument in favor of `aria-label` in `ClipboardCopy`.
+
+    *Manuel Puyol*
+
+### Misc
+
+* Add autocorrect for button linters.
+
+    *Manuel Puyol*
+
+* Unify contributing guidelines.
+
+    *Kate Higa*
+
+* Rerun flaky system tests.
+
+    *Manuel Puyol*
+
+* Check if selector is a classify class in Utilities.
+
+   *Jon Rohan*
+
+## 0.0.44
+
+### Updates
+
+* Allow `Dropdown` menu items to be rendered outside a list.
+
+    *Manuel Puyol*
+
+### Breaking changes
+
+* Require a label or `aria-label` to be provided for `AutoComplete` component.
+
+    *Kate Higa*
+
+* Renames:
+  * `DropdownComponent` to `Dropdown`.
+  * `Dropdown::MenuComponent` to `Dropdown::Menu`.
+  * `Primer::ButtonMarketingComponent` to `Primer::Alpha::ButtonMarketing`.
+  * `Primer::TextComponent` to `Primer::Beta::Text`.
+
+    *Manuel Puyol*
+
+* Removes `summary_classes` attribute in favor of the `summary` slot in `Dropdown`.
+
+    *Manuel Puyol*
+
+### Misc
+
+* Replace Classify::Spacing class with pre-generated mappings.
+
+  *Jon Rohan*
+
+* Add linter suggestions for `Button` component.
+
+    *Manuel Puyol*
+
+* Sort documentation arguments.
+
+    *Jon Rohan*
+
+* Add validations for docs generation.
+
+    *Manuel Puyol, Kate Higa*
+
+* Change docs header order.
+
+    *Manuel Puyol, Kate Higa*
+
+* Add preliminary criteria for new `alpha` components.
+
+    *Joel Hawksley*
+
+## 0.0.43
+
+### New
+
+* Add `clearfix` and `container` system arguments.
+
+    *Manuel Puyol*
+
+### Updates
+
+* Promote `TabNav` component to beta.
+
+    *Manuel Puyol*
+
+* Allow customizing `TabContainer` when using `TabNav` and `UnderlineNav` components.
+
+    *Manuel Puyol*
+
+### Breaking changes
+
+* Restrict `col` system arguments to only accept values between 1 and 12.
+
+    *Manuel Puyol*
+
+### Misc
+
+* Raise an error if `class` is used as a system argument.
+
+    *Manuel Puyol*
+
+* Don't commit auto-generated component previews.
+
+    *Kate Higa*
+
+* Provide linters for component migrations.
+
+    *Manuel Puyol*
+
+* Update docs to accept multiline descriptions.
+
+    *Manuel Puyol*
+
+* Upgrade primer/css to 17.2.1
+
+  *Jon Rohan*
+
+## 0.0.42
+
+### New
+
+* Add `font_family`, `font_style` and `text_transform` system arguments.
+
+    *Manuel Puyol*
+
+* Add more options for `font_size` and `font_weight`.
+
+    *Manuel Puyol*
+
+### Updates
+
+* Add `align` option to the `TabNav` extra slot to allow HTML ordering.
+
+    *Manuel Puyol*
+
+### Misc
+
+* Auto-generate component previews from doc examples and run integration test checks.
+
+    *Kate Higa, Joel Hawksley*
+
+* Configure previews controller to allow view helper usage in preview template.
+
+    *Kate Higa*
+
+* Only include `ViewComponent::SlotableV2` if `ViewComponent::Base` does not already include it.
+
+    *Manuel Puyol*
+
+* Add `force_system_arguments` option to raise an error if a class is used instead of using System Arguments.
+
+    *Manuel Puyol*
+
+### Breaking changes
+
+* Restrict allowed tags for `Truncate`, `Markdown`, and `HiddenTextExpander`.
+
+    *Kate Higa*
+
+## 0.0.41
+
+### New
+
+* Create `LocalTime` component.
+
+    *Kristján Oddsson*
+
+* Create `Image` component.
+
+    *Manuel Puyol*
+
+* Add `extra` slot to `TabNav`.
+
+    *Manuel Puyol*
+
+* Do not raise error if Primer CSS class name is passed to component if `PRIMER_WARNINGS_DISABLED` is set.
+
+    *Joel Hawksley*
+
+### Accessibility
+
+* Accept `aria-current="true"` in tabbed components.
+
+    *Manuel Puyol*
+
 ### Changes
+
+* Promote `Tooltip` component to beta.
+
+    *Manuel Puyol*
+
+### Bug fixes
+
+* Ensure that `ClipboardCopy` behaviors only target ViewComponents.
+
+    *Manuel Puyol*
+
+* Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.
+
+    *Kristján Oddsson*
+
+### Breaking changes
+
+* Rename `TooltipComponent` to `Tooltip`.
+
+    *Manuel Puyol*
+
+* Don't allow `OcticonComponent` height/width values under 16px
+
+   *Jon Rohan*
+
+* Remove `:large` size option from `OcticonComponent` and change `:medium` to 24px
+
+    *Jon Rohan*
+
+* Restrict `Label` tag to `span`, `div`, `a`, `summary`.
+
+    *Kate Higa*
+
+### Misc
+
+* Add a CI check for changes to the CHANGELOG file.
+
+    *Kristján Oddsson*
+
+## 0.0.40
+
+### New
+
+* Create `ImageCrop` component.
+
+    *Kristján Oddsson*
+
+### Changes
+
+* Promote `IconButton` to beta.
+
+    *Manuel Puyol*
+
+* Add `box` argument to `IconButton`.
+
+    *Manuel Puyol*
 
 * Promote `Markdown` to beta.
 
@@ -13,6 +309,10 @@
 * Fix `IconButton` raising when `aria-label` was provided using an object.
 
     *Manuel Puyol*
+
+* Fix disabling of default styles for `SpinnerComponent` via `nil` style parameter.
+
+    *Chris Wilson*
 
 ### Deprecations
 
@@ -54,7 +354,7 @@
 
 * Update `ClipboardCopy` to not toggle icons unless they both exist.
 
-    *Kristjan Oddsson*
+    *Kristján Oddsson*
 
 * Add `icon` and `counter` slots to `ButtonComponent`.
 
@@ -96,7 +396,7 @@
 
 * Create `ClipboardCopy` component.
 
-    *Kristjan Oddsson*
+    *Kristján Oddsson*
 
 * **Breaking change:** Rename `ButtonGroupComponent` to `ButtonGroup` and promote it to beta.
 
@@ -178,7 +478,7 @@
 
     *Manuel Puyol*
 
-* **Breaking change:** Rename `ButtonMarketingComponent` `button_type` argument to `scheme`.
+* **Breaking change:** Rename `ButtonMarketing` `button_type` argument to `scheme`.
 
     *Manuel Puyol*
 

@@ -11,60 +11,11 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 `BorderBox` is a Box component with a border.
 
-## Examples
-
-### Header, body, rows, and footer
-
-<Example src="<div class='Box'>  <div class='Box-header'>    Header</div>  <div class='Box-body'>    Body</div>    <ul>        <li class='Box-row'>      Row one</li>        <li class='Box-row'>    Row two</li>    </ul>  <div class='Box-footer'>    Footer</div></div>" />
-
-```erb
-<%= render(Primer::BorderBoxComponent.new) do |component| %>
-  <% component.header do %>
-    Header
-  <% end %>
-  <% component.body do %>
-    Body
-  <% end %>
-  <% component.row do %>
-    <% if true %>
-      Row one
-    <% end %>
-  <% end %>
-  <% component.row do %>
-    Row two
-  <% end %>
-  <% component.footer do %>
-    Footer
-  <% end %>
-<% end %>
-```
-
-### Padding density
-
-<Example src="<div class='Box Box--condensed'>  <div class='Box-header'>    Header</div>  <div class='Box-body'>    Body</div>    <ul>        <li class='Box-row'>    Row two</li>    </ul>  <div class='Box-footer'>    Footer</div></div>" />
-
-```erb
-<%= render(Primer::BorderBoxComponent.new(padding: :condensed)) do |component| %>
-  <% component.header do %>
-    Header
-  <% end %>
-  <% component.body do %>
-    Body
-  <% end %>
-  <% component.row do %>
-    Row two
-  <% end %>
-  <% component.footer do %>
-    Footer
-  <% end %>
-<% end %>
-```
-
 ## Arguments
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `padding` | `Symbol` | `:default` | One of `:default`, `:condensed`, or `:spacious`. |
+| `padding` | `Symbol` | `:default` | One of `:condensed`, `:default`, or `:spacious`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
@@ -100,3 +51,52 @@ Use Rows to add rows with borders and maintain the same padding.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Examples
+
+### Header, body, rows, and footer
+
+<Example src="<div data-view-component='true' class='Box'>  <div data-view-component='true' class='Box-header'>    Header</div>  <div data-view-component='true' class='Box-body'>    Body</div>    <ul>        <li data-view-component='true' class='Box-row'>      Row one</li>        <li data-view-component='true' class='Box-row'>    Row two</li>    </ul>  <div data-view-component='true' class='Box-footer'>    Footer</div></div>" />
+
+```erb
+<%= render(Primer::BorderBoxComponent.new) do |component| %>
+  <% component.header do %>
+    Header
+  <% end %>
+  <% component.body do %>
+    Body
+  <% end %>
+  <% component.row do %>
+    <% if true %>
+      Row one
+    <% end %>
+  <% end %>
+  <% component.row do %>
+    Row two
+  <% end %>
+  <% component.footer do %>
+    Footer
+  <% end %>
+<% end %>
+```
+
+### Padding density
+
+<Example src="<div data-view-component='true' class='Box Box--condensed'>  <div data-view-component='true' class='Box-header'>    Header</div>  <div data-view-component='true' class='Box-body'>    Body</div>    <ul>        <li data-view-component='true' class='Box-row'>    Row two</li>    </ul>  <div data-view-component='true' class='Box-footer'>    Footer</div></div>" />
+
+```erb
+<%= render(Primer::BorderBoxComponent.new(padding: :condensed)) do |component| %>
+  <% component.header do %>
+    Header
+  <% end %>
+  <% component.body do %>
+    Body
+  <% end %>
+  <% component.row do %>
+    Row two
+  <% end %>
+  <% component.footer do %>
+    Footer
+  <% end %>
+<% end %>
+```

@@ -3,7 +3,7 @@
 module Primer
   # Use `Blankslate` when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.
   # @accessibility
-  #   `BlankSlate` renders an `<h3>` element for the title by default. Update the heading level based on what is appropriate for your page hierarchy by setting `title_tag`.
+  #   `Blankslate` renders an `<h3>` element for the title by default. Update the heading level based on what is appropriate for your page hierarchy by setting `title_tag`.
   #   <%= link_to_heading_practices %>
   class BlankslateComponent < Primer::Component
     status :beta
@@ -23,61 +23,79 @@ module Primer
     #     description: "Description",
     #   ) %>
     #
-    # @example Icon|Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
-    #   <%= render Primer::BlankslateComponent.new(
-    #     icon: "octoface",
-    #     title: "Title",
-    #     description: "Description",
-    #   ) %>
+    # @example Icon
+    #   @description
+    #     Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
+    #   @code
+    #     <%= render Primer::BlankslateComponent.new(
+    #       icon: :globe,
+    #       title: "Title",
+    #       description: "Description",
+    #     ) %>
     #
-    # @example Loading|Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
-    #   <%= render Primer::BlankslateComponent.new(
-    #     title: "Title",
-    #     description: "Description",
-    #   ) do |component| %>
-    #     <% component.spinner(size: :large) %>
-    #   <% end %>
+    # @example Loading
+    #   @description
+    #     Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
+    #   @code
+    #     <%= render Primer::BlankslateComponent.new(
+    #       title: "Title",
+    #       description: "Description",
+    #     ) do |component| %>
+    #       <% component.spinner(size: :large) %>
+    #     <% end %>
     #
-    # @example Custom content|Pass custom content as a block in place of `description`.
-    #   <%= render Primer::BlankslateComponent.new(
-    #     title: "Title",
-    #   ) do %>
-    #     <em>Your custom content here</em>
-    #   <% end %>
+    # @example Custom content
+    #   @description
+    #     Pass custom content as a block in place of `description`.
+    #   @code
+    #     <%= render Primer::BlankslateComponent.new(
+    #       title: "Title",
+    #     ) do %>
+    #       <em>Your custom content here</em>
+    #     <% end %>
     #
-    # @example Action button|Provide a button to guide users to take action from the blankslate. The button appears below the description and custom content.
-    #   <%= render Primer::BlankslateComponent.new(
-    #     icon: "book",
-    #     title: "Welcome to the mona wiki!",
-    #     description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
+    # @example Action button
+    #   @description
+    #     Provide a button to guide users to take action from the blankslate. The button appears below the description and custom content.
+    #   @code
+    #     <%= render Primer::BlankslateComponent.new(
+    #       icon: :book,
+    #       title: "Welcome to the mona wiki!",
+    #       description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
     #
-    #     button_text: "Create the first page",
-    #     button_url: "https://github.com/monalisa/mona/wiki/_new",
-    #   ) %>
+    #       button_text: "Create the first page",
+    #       button_url: "https://github.com/monalisa/mona/wiki/_new",
+    #     ) %>
     #
-    # @example Link|Add an additional link to help users learn more about a feature. The link will be shown at the very bottom:
-    #   <%= render Primer::BlankslateComponent.new(
-    #     icon: "book",
-    #     title: "Welcome to the mona wiki!",
-    #     description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
-    #     link_text: "Learn more about wikis",
-    #     link_url: "https://docs.github.com/en/github/building-a-strong-community/about-wikis",
-    #   ) %>
+    # @example Link
+    #   @description
+    #     Add an additional link to help users learn more about a feature. The link will be shown at the very bottom:
+    #   @code
+    #     <%= render Primer::BlankslateComponent.new(
+    #       icon: :book,
+    #       title: "Welcome to the mona wiki!",
+    #       description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
+    #       link_text: "Learn more about wikis",
+    #       link_url: "https://docs.github.com/en/github/building-a-strong-community/about-wikis",
+    #     ) %>
     #
-    # @example Variations|There are a few variations of how the Blankslate appears: `narrow` adds a maximum width, `large` increases the font size, and `spacious` adds extra padding.
-    #   <%= render Primer::BlankslateComponent.new(
-    #     icon: "book",
-    #     title: "Welcome to the mona wiki!",
-    #     description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
-    #     narrow: true,
-    #     large: true,
-    #     spacious: true,
-    #   ) %>
+    # @example Variations
+    #   @description
+    #     There are a few variations of how the Blankslate appears: `narrow` adds a maximum width, `large` increases the font size, and `spacious` adds extra padding.
+    #   @code
+    #     <%= render Primer::BlankslateComponent.new(
+    #       icon: :book,
+    #       title: "Welcome to the mona wiki!",
+    #       description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
+    #       narrow: true,
+    #       large: true,
+    #       spacious: true,
+    #     ) %>
     #
     # @param title [String] Text that appears in a larger bold font.
     # @param title_tag [Symbol] HTML tag to use for title.
-    # @param icon [String] Octicon icon to use at top of component.
-    # @param icon_size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
+    # @param icon [Symbol] Octicon icon to use at top of component.
+    # @param icon_size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS, sort: false) %>
     # @param image_src [String] Image to display.
     # @param image_alt [String] Alt text for image.
     # @param description [String] Text that appears below the title. Typically a whole sentence.
@@ -89,6 +107,7 @@ module Primer
     # @param narrow [Boolean] Adds a maximum width.
     # @param large [Boolean] Increases the font size.
     # @param spacious [Boolean] Adds extra padding.
+    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       title: "",
       title_tag: :h3,

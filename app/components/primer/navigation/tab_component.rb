@@ -4,7 +4,13 @@ module Primer
   module Navigation
     # This component is part of navigation components such as `Primer::TabNavComponent`
     # and `Primer::UnderlineNavComponent` and should not be used by itself.
+    #
+    # @accessibility
+    #   `TabComponent` renders the selected anchor tab with `aria-current="page"` by default.
+    #    When the selected tab does not correspond to the current page, such as in a nested inner tab, make sure to use aria-current="true"
     class TabComponent < Primer::Component
+      DEFAULT_ARIA_CURRENT_FOR_ANCHOR = :page
+      ARIA_CURRENT_OPTIONS_FOR_ANCHOR = [true, DEFAULT_ARIA_CURRENT_FOR_ANCHOR].freeze
       # Panel controlled by the Tab. This will not render anything in the tab itself.
       # It will provide a accessor for the Tab's parent to call and render the panel
       # content in the appropriate place.
@@ -12,7 +18,7 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :panel, lambda { |**system_arguments|
-        system_arguments[:tag] ||= :div
+        system_arguments[:tag] ||= :div # rubocop:disable Primer/NoTagMemoize
         system_arguments[:role] ||= :tabpanel
         system_arguments[:hidden] = true unless @selected
 
@@ -32,8 +38,8 @@ module Primer
 
       # The Tab's text.
       #
-      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::TextComponent) %>.
-      renders_one :text, Primer::TextComponent
+      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Text) %>.
+      renders_one :text, Primer::Beta::Text
 
       # Counter to be rendered in the Tab right.
       #
@@ -91,11 +97,11 @@ module Primer
         @system_arguments = system_arguments
 
         if with_panel
-          @system_arguments[:tag] ||= :button
+          @system_arguments[:tag] ||= :button # rubocop:disable Primer/NoTagMemoize
           @system_arguments[:type] = :button
           @system_arguments[:role] = :tab
         else
-          @system_arguments[:tag] ||= :a
+          @system_arguments[:tag] ||= :a # rubocop:disable Primer/NoTagMemoize
         end
 
         @wrapper_arguments = wrapper_arguments
@@ -105,7 +111,8 @@ module Primer
         return unless @selected
 
         if @system_arguments[:tag] == :a
-          @system_arguments[:"aria-current"] = :page
+          aria_current = @system_arguments[:"aria-current"] || @system_arguments.dig(:aria, :current) || DEFAULT_ARIA_CURRENT_FOR_ANCHOR
+          @system_arguments[:"aria-current"] = fetch_or_fallback(ARIA_CURRENT_OPTIONS_FOR_ANCHOR, aria_current, DEFAULT_ARIA_CURRENT_FOR_ANCHOR)
         else
           @system_arguments[:"aria-selected"] = true
         end

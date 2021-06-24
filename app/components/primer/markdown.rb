@@ -4,6 +4,9 @@ module Primer
   # Use `Markdown` to wrap markdown content
   class Markdown < Primer::Component
     status :beta
+
+    DEFAULT_TAG = :div
+    TAG_OPTIONS = [DEFAULT_TAG, :article, :td].freeze
     # @example Default
     #   <%= render(Primer::Markdown.new) do %>
     #     <p>Text can be <b>bold</b>, <i>italic</i>, or <s>strikethrough</s>. <a href="https://github.com">Links </a> should be blue with no underlines (unless hovered over).</p>
@@ -276,10 +279,11 @@ module Primer
     #     <pre><code>This is the final element on the page and there should be no margin below this.</code></pre>
     #   <% end %>
     #
+    # @param tag [Symbol] <%= one_of(Primer::Markdown::TAG_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(**system_arguments)
+    def initialize(tag: DEFAULT_TAG, **system_arguments)
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :div
+      @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
 
       @system_arguments[:classes] = class_names(
         "markdown-body",

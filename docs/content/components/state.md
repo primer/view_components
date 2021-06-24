@@ -11,11 +11,21 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `State` for rendering the status of an item.
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `title` | `String` | N/A | `title` HTML attribute. |
+| `scheme` | `Symbol` | `:default` | Background color. One of `:closed`, `:default`, `:green`, `:merged`, `:open`, `:purple`, or `:red`. |
+| `tag` | `Symbol` | `:span` | HTML tag for element. One of `:div` and `:span`. |
+| `size` | `Symbol` | `:default` | One of `:default` and `:small`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
 
-<Example src="<span title='title' class='State'>State</span>" />
+<Example src="<span title='title' data-view-component='true' class='State'>State</span>" />
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "State" } %>
@@ -23,7 +33,7 @@ Use `State` for rendering the status of an item.
 
 ### Schemes
 
-<Example src="<span title='title' class='State'>Default</span><span title='title' class='State State--open'>Open</span><span title='title' class='State State--closed'>Closed</span><span title='title' class='State State--merged'>Merged</span>" />
+<Example src="<span title='title' data-view-component='true' class='State'>Default</span><span title='title' data-view-component='true' class='State State--open'>Open</span><span title='title' data-view-component='true' class='State State--closed'>Closed</span><span title='title' data-view-component='true' class='State State--merged'>Merged</span>" />
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
@@ -34,19 +44,9 @@ Use `State` for rendering the status of an item.
 
 ### Sizes
 
-<Example src="<span title='title' class='State'>Default</span><span title='title' class='State State--small'>Small</span>" />
+<Example src="<span title='title' data-view-component='true' class='State'>Default</span><span title='title' data-view-component='true' class='State State--small'>Small</span>" />
 
 ```erb
 <%= render(Primer::StateComponent.new(title: "title")) { "Default" } %>
 <%= render(Primer::StateComponent.new(title: "title", size: :small)) { "Small" } %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `title` | `String` | N/A | `title` HTML attribute. |
-| `scheme` | `Symbol` | `:default` | Background color. One of `:open`, `:closed`, `:merged`, `:default`, `:green`, `:red`, or `:purple`. |
-| `tag` | `Symbol` | `:span` | HTML tag for element. One of `:span` and `:div`. |
-| `size` | `Symbol` | `:default` | One of `:default` and `:small`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

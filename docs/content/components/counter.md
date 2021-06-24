@@ -9,26 +9,12 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use `CounterComponent` to add a count to navigational elements and buttons.
+Use `Counter` to add a count to navigational elements and buttons.
 
-## Examples
+## Accessibility
 
-### Default
-
-<Example src="<span title='25' class='Counter'>25</span>" />
-
-```erb
-<%= render(Primer::CounterComponent.new(count: 25)) %>
-```
-
-### Schemes
-
-<Example src="<span title='25' class='Counter Counter--primary'>25</span><span title='25' class='Counter Counter--secondary'>25</span>" />
-
-```erb
-<%= render(Primer::CounterComponent.new(count: 25, scheme: :primary)) %>
-<%= render(Primer::CounterComponent.new(count: 25, scheme: :secondary)) %>
-```
+Always use `Counter` with adjacent text that provides supplementary information regarding what the count is for. For instance, `Counter`
+should be accompanied with text such as `issues` or `pull requests`.
 
 ## Arguments
 
@@ -41,3 +27,22 @@ Use `CounterComponent` to add a count to navigational elements and buttons.
 | `text` | `String` | `""` | Text to display instead of count. |
 | `round` | `Boolean` | `false` | Whether to apply our standard rounding logic to value. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Examples
+
+### Default
+
+<Example src="<span title='25' data-view-component='true' class='Counter'>25</span>" />
+
+```erb
+<%= render(Primer::CounterComponent.new(count: 25)) %>
+```
+
+### Schemes
+
+<Example src="<span title='25' data-view-component='true' class='Counter Counter--primary'>25</span><span title='25' data-view-component='true' class='Counter Counter--secondary'>25</span>" />
+
+```erb
+<%= render(Primer::CounterComponent.new(count: 25, scheme: :primary)) %>
+<%= render(Primer::CounterComponent.new(count: 25, scheme: :secondary)) %>
+```

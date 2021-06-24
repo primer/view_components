@@ -11,49 +11,6 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `Link` for navigating from one page to another. `Link` styles anchor tags with default blue styling and hover text-decoration.
 
-## Examples
-
-### Default
-
-<Example src="<a href='#'>Link</a>" />
-
-```erb
-<%= render(Primer::LinkComponent.new(href: "#")) { "Link" } %>
-```
-
-### Muted
-
-<Example src="<a href='#' class='Link--muted'>Link</a>" />
-
-```erb
-<%= render(Primer::LinkComponent.new(href: "#", muted: true)) { "Link" } %>
-```
-
-### Schemes
-
-<Example src="<a href='#' class='Link--primary'>Primary</a><a href='#' class='Link--secondary'>Secondary</a>" />
-
-```erb
-<%= render(Primer::LinkComponent.new(href: "#", scheme: :primary)) { "Primary" } %>
-<%= render(Primer::LinkComponent.new(href: "#", scheme: :secondary)) { "Secondary" } %>
-```
-
-### Without underline
-
-<Example src="<a href='#' class='no-underline'>Link</a>" />
-
-```erb
-<%= render(Primer::LinkComponent.new(href: "#", underline: false)) { "Link" } %>
-```
-
-### Span as link
-
-<Example src="<span class='Link'>Span as a link</span>" />
-
-```erb
-<%= render(Primer::LinkComponent.new(tag: :span)) { "Span as a link" } %>
-```
-
 ## Arguments
 
 | Name | Type | Default | Description |
@@ -64,3 +21,46 @@ Use `Link` for navigating from one page to another. `Link` styles anchor tags wi
 | `muted` | `Boolean` | `false` | Uses light gray for Link color, and blue on hover. |
 | `underline` | `Boolean` | `true` | Whether or not to underline the link. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Examples
+
+### Default
+
+<Example src="<a href='#' data-view-component='true'>Link</a>" />
+
+```erb
+<%= render(Primer::LinkComponent.new(href: "#")) { "Link" } %>
+```
+
+### Muted
+
+<Example src="<a href='#' data-view-component='true' class='Link--muted'>Link</a>" />
+
+```erb
+<%= render(Primer::LinkComponent.new(href: "#", muted: true)) { "Link" } %>
+```
+
+### Schemes
+
+<Example src="<a href='#' data-view-component='true' class='Link--primary'>Primary</a><a href='#' data-view-component='true' class='Link--secondary'>Secondary</a>" />
+
+```erb
+<%= render(Primer::LinkComponent.new(href: "#", scheme: :primary)) { "Primary" } %>
+<%= render(Primer::LinkComponent.new(href: "#", scheme: :secondary)) { "Secondary" } %>
+```
+
+### Without underline
+
+<Example src="<a href='#' data-view-component='true' class='no-underline'>Link</a>" />
+
+```erb
+<%= render(Primer::LinkComponent.new(href: "#", underline: false)) { "Link" } %>
+```
+
+### Span as link
+
+<Example src="<span data-view-component='true' class='Link'>Span as a link</span>" />
+
+```erb
+<%= render(Primer::LinkComponent.new(tag: :span)) { "Span as a link" } %>
+```

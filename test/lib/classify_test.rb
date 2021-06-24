@@ -8,6 +8,26 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("m-4 py-2", { m: 4, py: 2 })
   end
 
+  def test_container
+    assert_generated_class("container-xl", { container: :xl })
+    assert_generated_class("container-lg", { container: :lg })
+    assert_generated_class("container-md", { container: :md })
+    assert_generated_class("container-sm", { container: :sm })
+
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+      Primer::Classify.call(container: :foo)
+    end
+  end
+
+  def test_clearfix
+    assert_generated_class("clearfix", { clearfix: true })
+    refute_generated_class({ clearfix: false })
+
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+      Primer::Classify.call(clearfix: :foo)
+    end
+  end
+
   def test_font_size
     assert_generated_class("f00", { font_size: "00" })
     assert_generated_class("f1",  { font_size: 1 })
@@ -16,6 +36,8 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("f4",  { font_size: 4 })
     assert_generated_class("f5",  { font_size: 5 })
     assert_generated_class("f6",  { font_size: 6 })
+    assert_generated_class("text-small", { font_size: :small })
+    assert_generated_class("text-normal",  { font_size: :normal })
   end
 
   def test_m
@@ -359,10 +381,23 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("text-left",       { text_align: :left })
   end
 
+  def test_font_family
+    assert_generated_class("text-mono", { font_family: :mono })
+  end
+
+  def test_font_style
+    assert_generated_class("text-italic", { font_style: :italic })
+  end
+
+  def test_text_transform
+    assert_generated_class("text-uppercase", { text_transform: :uppercase })
+  end
+
   def test_font_weight
-    assert_generated_class("text-light",    { font_weight: :light })
-    assert_generated_class("text-normal",   { font_weight: :normal })
-    assert_generated_class("text-bold",     { font_weight: :bold })
+    assert_generated_class("text-light",      { font_weight: :light })
+    assert_generated_class("text-normal",     { font_weight: :normal })
+    assert_generated_class("text-bold",       { font_weight: :bold })
+    assert_generated_class("text-emphasized", { font_weight: :emphasized })
   end
 
   def test_box_shadow
@@ -377,6 +412,21 @@ class PrimerClassifyTest < Minitest::Test
 
   def test_col
     assert_generated_class("col-1", { col: 1 })
+    assert_generated_class("col-2", { col: 2 })
+    assert_generated_class("col-3", { col: 3 })
+    assert_generated_class("col-4", { col: 4 })
+    assert_generated_class("col-5", { col: 5 })
+    assert_generated_class("col-6", { col: 6 })
+    assert_generated_class("col-7", { col: 7 })
+    assert_generated_class("col-8", { col: 8 })
+    assert_generated_class("col-9", { col: 9 })
+    assert_generated_class("col-10", { col: 10 })
+    assert_generated_class("col-11", { col: 11 })
+    assert_generated_class("col-12", { col: 12 })
+
+    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+      Primer::Classify.call(col: 13)
+    end
   end
 
   def test_border
@@ -610,20 +660,18 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("anim-fade-out", { animation: :fade_out })
     assert_generated_class("anim-fade-up", { animation: :fade_up })
     assert_generated_class("anim-fade-down", { animation: :fade_down })
-    assert_generated_class("anim-fade-scale-in", { animation: :fade_scale_in })
+    assert_generated_class("anim-scale-in", { animation: :scale_in })
     assert_generated_class("anim-grow-x", { animation: :grow_x })
-    assert_generated_class("hover-grow", { animation: :grow })
+    assert_generated_class("anim-hover-grow", { animation: :hover_grow })
   end
 
-  def test_raises_error_when_passing_in_a_primer_css_class_name_in_development
-    ENV["RAILS_ENV"] = "development"
-    exception = assert_raises ArgumentError do
-      Primer::Classify.call(classes: "bg-blue text-center float-left ml-1")
+  def test_raises_does_not_raise_error_when_passing_in_a_primer_css_class_name_in_development_and_flag_is_set
+    ENV["PRIMER_WARNINGS_DISABLED"] = "1"
+    with_force_system_arguments(true) do
+      assert_generated_class("bg-blue text-center float-left ml-1", { classes: "bg-blue text-center float-left ml-1" })
     end
-
-    assert_includes exception.message, "Primer CSS class names"
   ensure
-    ENV["RAILS_ENV"] = "test"
+    ENV["PRIMER_WARNINGS_DISABLED"] = nil
   end
 
   def test_does_not_raise_error_when_passing_in_a_primer_css_class_otherwise
@@ -634,6 +682,22 @@ class PrimerClassifyTest < Minitest::Test
     generated_class = Primer::Classify.call(classes: "foo-class")[:class]
     refute(generated_class.start_with?(" "))
     refute(generated_class.end_with?(" "))
+  end
+
+  def test_raises_if_not_using_system_arguments_when_force_system_arguments_is_true
+    with_force_system_arguments(true) do
+      exception = assert_raises ArgumentError do
+        Primer::Classify.call(classes: "d-block")
+      end
+
+      assert_includes exception.message, "Use System Arguments (https://primer.style/view-components/system-arguments) instead of Primer CSS class"
+    end
+  end
+
+  def test_does_not_raise_if_not_using_system_arguments_when_force_system_arguments_is_false
+    with_force_system_arguments(false) do
+      assert_generated_class("d-block", { classes: "d-block" })
+    end
   end
 
   private

@@ -11,32 +11,6 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `HiddenTextExpander` to indicate and toggle hidden text.
 
-## Examples
-
-### Default
-
-<Example src="<span class='hidden-text-expander'><button aria-expanded='false' type='button' class='ellipsis-expander'>&hellip;</button></span>" />
-
-```erb
-<%= render(Primer::HiddenTextExpander.new) %>
-```
-
-### Inline
-
-<Example src="<span class='hidden-text-expander inline'><button aria-expanded='false' type='button' class='ellipsis-expander'>&hellip;</button></span>" />
-
-```erb
-<%= render(Primer::HiddenTextExpander.new(inline: true)) %>
-```
-
-### Styling the button
-
-<Example src="<span class='hidden-text-expander'><button aria-expanded='false' type='button' class='ellipsis-expander my-custom-class p-1'>&hellip;</button></span>" />
-
-```erb
-<%= render(Primer::HiddenTextExpander.new(button_arguments: { p: 1, classes: "my-custom-class" })) %>
-```
-
 ## Arguments
 
 | Name | Type | Default | Description |
@@ -44,3 +18,29 @@ Use `HiddenTextExpander` to indicate and toggle hidden text.
 | `inline` | `Boolean` | `false` | Whether or not the expander is inline. |
 | `button_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the button element. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Examples
+
+### Default
+
+<Example src="<span data-view-component='true' class='hidden-text-expander'><button aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander'>&hellip;</button></span>" />
+
+```erb
+<%= render(Primer::HiddenTextExpander.new) %>
+```
+
+### Inline
+
+<Example src="<span data-view-component='true' class='hidden-text-expander inline'><button aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander'>&hellip;</button></span>" />
+
+```erb
+<%= render(Primer::HiddenTextExpander.new(inline: true)) %>
+```
+
+### Styling the button
+
+<Example src="<span data-view-component='true' class='hidden-text-expander'><button aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander custom-class p-1'>&hellip;</button></span>" />
+
+```erb
+<%= render(Primer::HiddenTextExpander.new(button_arguments: { p: 1, classes: "custom-class" })) %>
+```

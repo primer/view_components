@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "primer/classify"
 require "primer/view_components/version"
 require "primer/view_components/engine"
 
@@ -27,7 +28,7 @@ module Primer
       statuses = generate_statuses
 
       File.open(File.join(path, DEFAULT_STATUS_FILE_NAME), "w") do |f|
-        f.write(statuses.to_json)
+        f.write(JSON.pretty_generate(statuses))
         f.write($INPUT_RECORD_SEPARATOR)
       end
     end

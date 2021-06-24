@@ -28,11 +28,18 @@ Use [Box](/components/box) instead.
 <%= render Primer::BoxComponent.new(flex: :auto) %>
 ```
 
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `flex_auto` | `Boolean` | `false` | Fills available space and auto-sizes based on the content. Defaults to false |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
 
-<Example src="<div class='d-flex'>  <div>    Item 1</div>  <div class='flex-auto'>    Item 2</div></div>" />
+<Example src="<div data-view-component='true' class='d-flex'>  <div data-view-component='true'>    Item 1</div>  <div data-view-component='true' class='flex-auto'>    Item 2</div></div>" />
 
 ```erb
 <%= render(Primer::FlexComponent.new) do %>
@@ -45,10 +52,3 @@ Use [Box](/components/box) instead.
   <% end %>
 <% end %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `flex_auto` | `Boolean` | `false` | Fills available space and auto-sizes based on the content. Defaults to false |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

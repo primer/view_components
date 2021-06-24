@@ -3,7 +3,13 @@
 module YARD
   # Helper methods to use for yard documentation
   module DocsHelper
-    def one_of(enumerable, lower: false)
+    def one_of(enumerable, lower: false, sort: true)
+      # Sort the array if requested
+      if sort
+        compare = ->(a, b) { a.class == b.class ? a <=> b : a.class.to_s <=> b.class.to_s }
+        enumerable = enumerable.sort { |a, b| compare.call(a, b) }
+      end
+
       values =
         case enumerable
         when Hash
@@ -14,12 +20,16 @@ module YARD
           enumerable.map do |key|
             pretty_value(key)
           end
-          end
+        end
 
       prefix = "One of"
       prefix = prefix.downcase if lower
 
       "#{prefix} #{values.to_sentence(last_word_connector: ', or ')}."
+    end
+
+    def link_to_accessibility
+      "[Accessibility](#system-arguments)"
     end
 
     def link_to_system_arguments_docs

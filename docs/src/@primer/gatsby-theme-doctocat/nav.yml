@@ -56,6 +56,10 @@
       url: /components/heading
     - title: HiddenTextExpander
       url: /components/hiddentextexpander
+    - title: Image
+      url: /components/image
+    - title: ImageCrop
+      url: /components/imagecrop
     - title: IconButton
       url: /components/iconbutton
     - title: Label
@@ -64,12 +68,16 @@
       url: /components/layout
     - title: Link
       url: /components/link
+    - title: LocalTime
+      url: /components/localtime
     - title: Menu
       url: /components/menu
     - title: Markdown
       url: /components/markdown
     - title: Octicon
       url: /components/octicon
+    - title: OcticonSymbols
+      url: /components/octiconsymbols
     - title: Popover
       url: /components/popover
     - title: ProgressBar

@@ -11,44 +11,6 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Use `AvatarStack` to stack multiple avatars together.
 
-## Examples
-
-### Default
-
-<Example src="<div class='AvatarStack AvatarStack--three-plus'>  <div class='AvatarStack-body'>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small circle'></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small circle'></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small circle'></img></div></div>" />
-
-```erb
-<%= render(Primer::AvatarStackComponent.new) do |c| %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-<% end  %>
-```
-
-### Align right
-
-<Example src="<div class='AvatarStack AvatarStack--right AvatarStack--three-plus'>  <div class='AvatarStack-body'>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small circle'></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small circle'></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small circle'></img></div></div>" />
-
-```erb
-<%= render(Primer::AvatarStackComponent.new(align: :right)) do |c| %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-<% end  %>
-```
-
-### With tooltip
-
-<Example src="<div class='AvatarStack AvatarStack--three-plus'>  <div aria-label='This is a tooltip!' class='AvatarStack-body tooltipped tooltipped-n'>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small circle'></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small circle'></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' class='avatar avatar-small circle'></img></div></div>" />
-
-```erb
-<%= render(Primer::AvatarStackComponent.new(tooltipped: true, body_arguments: { label: 'This is a tooltip!' })) do |c| %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-<% end  %>
-```
-
 ## Arguments
 
 | Name | Type | Default | Description |
@@ -56,7 +18,7 @@ Use `AvatarStack` to stack multiple avatars together.
 | `tag` | `Symbol` | `:div` | One of `:div` and `:span`. |
 | `align` | `Symbol` | `:left` | One of `:left` and `:right`. |
 | `tooltipped` | `Boolean` | `false` | Whether to add a tooltip to the stack or not. |
-| `body_arguments` | `Hash` | `{}` | Parameters to add to the Body. If `tooltipped` is set, has the same arguments as [Tooltip](/components/tooltip). |
+| `body_arguments` | `Hash` | `{}` | Parameters to add to the Body. If `tooltipped` is set, has the same arguments as [Tooltip](/components/tooltip). The default tag is `:div` but can be changed using `tag:` to one of `:div` and `:span`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
@@ -68,3 +30,41 @@ Required list of stacked avatars.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `kwargs` | `Hash` | N/A | The same arguments as [Avatar](/components/avatar). |
+
+## Examples
+
+### Default
+
+<Example src="<div data-view-component='true' class='AvatarStack AvatarStack--three-plus'>  <div data-view-component='true' class='AvatarStack-body'>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img></div></div>" />
+
+```erb
+<%= render(Primer::AvatarStackComponent.new) do |c| %>
+  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+<% end  %>
+```
+
+### Align right
+
+<Example src="<div data-view-component='true' class='AvatarStack AvatarStack--right AvatarStack--three-plus'>  <div data-view-component='true' class='AvatarStack-body'>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img></div></div>" />
+
+```erb
+<%= render(Primer::AvatarStackComponent.new(align: :right)) do |c| %>
+  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+<% end  %>
+```
+
+### With tooltip
+
+<Example src="<div data-view-component='true' class='AvatarStack AvatarStack--three-plus'>  <div aria-label='This is a tooltip!' data-view-component='true' class='AvatarStack-body tooltipped tooltipped-n'>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img>        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' data-view-component='true' height='20' width='20' class='avatar avatar-small circle'></img></div></div>" />
+
+```erb
+<%= render(Primer::AvatarStackComponent.new(tooltipped: true, body_arguments: { label: 'This is a tooltip!' })) do |c| %>
+  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+<% end  %>
+```

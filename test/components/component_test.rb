@@ -7,8 +7,11 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Image, { src: "src", alt: "alt" }],
+    [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
+    [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
-    [Primer::AutoComplete, { src: "Foo", id: "Bar" }, proc { |c| c.input(classes: "Baz") }],
+    [Primer::AutoComplete, { src: "Foo", list_id: "Bar", "aria-label": "Label", input_id: "input-id" }, proc { |c| c.input(classes: "Baz") }],
     [Primer::AutoComplete::Item, { value: "Foo" }],
     [Primer::AvatarComponent, { alt: "github", src: "https://github.com/github.png" }],
     [Primer::AvatarStackComponent, {}, lambda do |component|
@@ -22,21 +25,21 @@ class PrimerComponentTest < Minitest::Test
     [Primer::BreadcrumbComponent, {}, proc { |component| component.item { "Foo" } }],
     [Primer::ButtonComponent, {}],
     [Primer::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
-    [Primer::ButtonMarketingComponent, {}],
-    [Primer::ClipboardCopy, { label: "String that will be read to screenreaders", value: "String that will be copied" }],
+    [Primer::Alpha::ButtonMarketing, {}],
+    [Primer::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
     [Primer::CloseButton, {}],
     [Primer::CounterComponent, { count: 1 }],
     [Primer::DetailsComponent, {}, lambda do |component|
       component.summary { "Foo" }
       component.body { "Bar" }
     end],
-    [Primer::DropdownComponent, {}, lambda do |component|
+    [Primer::Dropdown, {}, lambda do |component|
       component.button { "Foo" }
       component.menu do |m|
         m.item { "Baz" }
       end
     end],
-    [Primer::Dropdown::MenuComponent, {}],
+    [Primer::Dropdown::Menu, {}],
     [Primer::DropdownMenuComponent, {}],
     [Primer::FlexComponent, {}],
     [Primer::FlashComponent, {}],
@@ -49,7 +52,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Markdown, {}],
     [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],
     [Primer::Navigation::TabComponent, {}],
-    [Primer::OcticonComponent, { icon: "people" }],
+    [Primer::OcticonComponent, { icon: :people }],
     [Primer::PopoverComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::ProgressBarComponent, {}, proc { |component| component.item }],
     [Primer::SpinnerComponent, {}],
@@ -57,16 +60,16 @@ class PrimerComponentTest < Minitest::Test
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.heading { "Foo" } }],
     [Primer::TabContainerComponent, {}, proc { "Foo" }],
     [Primer::TabNavComponent, { label: "aria label" }, proc { |c| c.tab(title: "Foo", selected: true) }],
-    [Primer::TextComponent, {}],
+    [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
-    [Primer::TooltipComponent, { label: "More" }],
+    [Primer::Tooltip, { label: "More" }],
     [Primer::UnderlineNavComponent, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }]
   ].freeze
 
   def test_registered_components
-    ignored_components = ["Primer::Component"]
+    ignored_components = ["Primer::Component", "Primer::OcticonsSymbolComponent"]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count
     assert_equal primer_component_files_count, COMPONENTS_WITH_ARGS.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"

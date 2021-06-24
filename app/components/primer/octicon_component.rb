@@ -9,36 +9,44 @@ module Primer
     status :beta
 
     SIZE_DEFAULT = :small
+    SIZE_MEDIUM = :medium
+
     SIZE_MAPPINGS = {
       SIZE_DEFAULT => 16,
-      :medium => 32,
-      :large => 64
+      SIZE_MEDIUM => 24
     }.freeze
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
     # @example Default
-    #   <%= render(Primer::OcticonComponent.new("check")) %>
-    #   <%= render(Primer::OcticonComponent.new(icon: "check")) %>
+    #   <%= render(Primer::OcticonComponent.new(:check)) %>
+    #   <%= render(Primer::OcticonComponent.new(icon: :check)) %>
     #
     # @example Medium
-    #   <%= render(Primer::OcticonComponent.new("people", size: :medium)) %>
-    #
-    # @example Large
-    #   <%= render(Primer::OcticonComponent.new("x", size: :large)) %>
+    #   <%= render(Primer::OcticonComponent.new(:people, size: :medium)) %>
     #
     # @example Helper
-    #   <%= primer_octicon("check") %>
+    #   <%= primer_octicon(:check) %>
     #
-    # @param icon [String] Name of <%= link_to_octicons %> to use.
-    # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS) %>
+    # @param icon_name [Symbol, String] Name of <%= link_to_octicons %> to use.
+    # @param icon [Symbol, String] Name of <%= link_to_octicons %> to use.
+    # @param size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS, sort: false) %>
+    # @param use_symbol [Boolean] EXPERIMENTAL (May change or be removed) - Set to true when using with <%= link_to_component(Primer::OcticonSymbolsComponent) %>.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, **system_arguments)
+    def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, use_symbol: false, **system_arguments)
       icon_key = icon_name || icon
+
+      # Don't allow sizes under 16px
+      if system_arguments[:height].present? && system_arguments[:height].to_i < 16 || system_arguments[:width].present? && system_arguments[:width].to_i < 16
+        system_arguments.delete(:height)
+        system_arguments.delete(:width)
+      end
+
       cache_key = Primer::Octicon::Cache.get_key(symbol: icon_key, size: size, **system_arguments.slice(:height, :width))
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = :svg
       @system_arguments[:aria] ||= {}
+      @use_symbol = use_symbol
 
       if @system_arguments[:aria][:label] || @system_arguments[:"aria-label"]
         @system_arguments[:role] = "img"
@@ -64,10 +72,6 @@ module Primer
         @system_arguments[:classes]
       )
       @system_arguments.merge!(@icon.options.except(:class, :'aria-hidden'))
-    end
-
-    def call
-      render(Primer::BaseComponent.new(**@system_arguments)) { @icon.path.html_safe } # rubocop:disable Rails/OutputSafety
     end
 
     def self._after_compile

@@ -22,7 +22,7 @@ module Primer
     #     <% component.button(scheme: :primary) { "Primary" } %>
     #     <% component.button(scheme: :danger) { "Danger" } %>
     #     <% component.button(scheme: :outline) { "Outline" } %>
-    #     <% component.button(classes: "my-class") { "Custom class" } %>
+    #     <% component.button(classes: "custom-class") { "Custom class" } %>
     #   <% end %>
     #
     # @example Variants

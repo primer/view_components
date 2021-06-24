@@ -9,6 +9,8 @@ require "yaml"
 require "pathname"
 
 Rake::TestTask.new(:test) do |t|
+  ENV["TZ"] = "Asia/Taipei"
+
   t.libs << "test"
   t.libs << "lib"
   t.test_files = FileList.new(ENV["TESTS"] || "test/**/*_test.rb")

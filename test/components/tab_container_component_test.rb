@@ -14,6 +14,6 @@ class PrimerTabContainerComponentTest < Minitest::Test
   def test_renders_content
     render_inline(Primer::TabContainerComponent.new) { "content" }
 
-    assert_selector("tab-container", text: "content")
+    assert_selector("tab-container[data-view-component]", text: "content")
   end
 end

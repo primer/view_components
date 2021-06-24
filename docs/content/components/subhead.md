@@ -20,88 +20,6 @@ Use `Subhead` as the start of a section. The `:heading` slot will render an `<h2
 The `:heading` slot defaults to rendering a `<div>`. Update the tag to a heading element with the appropriate level to improve page navigation for assistive technologies.
 [Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)
 
-## Examples
-
-### Default
-
-<Example src="<div class='Subhead hx_Subhead--responsive'>  <h3 class='Subhead-heading'>    My Heading</h3>    <div class='Subhead-description'>    My Description</div></div>" />
-
-```erb
-<%= render(Primer::SubheadComponent.new) do |component| %>
-  <% component.heading(tag: :h3) do %>
-    My Heading
-  <% end %>
-  <% component.description do %>
-    My Description
-  <% end %>
-<% end %>
-```
-
-### With dangerous heading
-
-<Example src="<div class='Subhead hx_Subhead--responsive'>  <h3 class='Subhead-heading Subhead-heading--danger'>    My Heading</h3>    <div class='Subhead-description'>    My Description</div></div>" />
-
-```erb
-<%= render(Primer::SubheadComponent.new) do |component| %>
-  <% component.heading(tag: :h3, danger: true) do %>
-    My Heading
-  <% end %>
-  <% component.description do %>
-    My Description
-  <% end %>
-<% end %>
-```
-
-### With long description
-
-<Example src="<div class='Subhead hx_Subhead--responsive'>  <h3 class='Subhead-heading'>    My Heading</h3>    </div><p> This is a longer description that is sitting below the Subhead. It's much longer than a description that could sit comfortably in the Subhead. </p>" />
-
-```erb
-<%= render(Primer::SubheadComponent.new) do |component| %>
-  <% component.heading(tag: :h3) do %>
-    My Heading
-  <% end %>
-<% end %>
-<p> This is a longer description that is sitting below the Subhead. It's much longer than a description that could sit comfortably in the Subhead. </p>
-```
-
-### Without border
-
-<Example src="<div class='Subhead hx_Subhead--responsive border-bottom-0 mb-0'>  <div class='Subhead-heading'>    My Heading</div>    <div class='Subhead-description'>    My Description</div></div>" />
-
-```erb
-<%= render(Primer::SubheadComponent.new(hide_border: true)) do |component| %>
-  <% component.heading do %>
-    My Heading
-  <% end %>
-  <% component.description do %>
-    My Description
-  <% end %>
-<% end %>
-```
-
-### With actions
-
-<Example src="<div class='Subhead hx_Subhead--responsive'>  <div class='Subhead-heading'>    My Heading</div>  <div class='Subhead-actions'>    <a href='http://www.google.com' role='button' class='btn-danger btn'>    Action  </a></div>  <div class='Subhead-description'>    My Description</div></div>" />
-
-```erb
-<%= render(Primer::SubheadComponent.new) do |component| %>
-  <% component.heading do %>
-    My Heading
-  <% end %>
-  <% component.description do %>
-    My Description
-  <% end %>
-  <% component.actions do %>
-    <%= render(
-      Primer::ButtonComponent.new(
-        tag: :a, href: "http://www.google.com", scheme: :danger
-      )
-    ) { "Action" } %>
-  <% end %>
-<% end %>
-```
-
 ## Arguments
 
 | Name | Type | Default | Description |
@@ -137,3 +55,85 @@ The description
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Examples
+
+### Default
+
+<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive'>  <h3 data-view-component='true' class='Subhead-heading'>    My Heading</h3>    <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
+
+```erb
+<%= render(Primer::SubheadComponent.new) do |component| %>
+  <% component.heading(tag: :h3) do %>
+    My Heading
+  <% end %>
+  <% component.description do %>
+    My Description
+  <% end %>
+<% end %>
+```
+
+### With dangerous heading
+
+<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive'>  <h3 data-view-component='true' class='Subhead-heading Subhead-heading--danger'>    My Heading</h3>    <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
+
+```erb
+<%= render(Primer::SubheadComponent.new) do |component| %>
+  <% component.heading(tag: :h3, danger: true) do %>
+    My Heading
+  <% end %>
+  <% component.description do %>
+    My Description
+  <% end %>
+<% end %>
+```
+
+### With long description
+
+<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive'>  <h3 data-view-component='true' class='Subhead-heading'>    My Heading</h3>    </div><p> This is a longer description that is sitting below the Subhead. It's much longer than a description that could sit comfortably in the Subhead. </p>" />
+
+```erb
+<%= render(Primer::SubheadComponent.new) do |component| %>
+  <% component.heading(tag: :h3) do %>
+    My Heading
+  <% end %>
+<% end %>
+<p> This is a longer description that is sitting below the Subhead. It's much longer than a description that could sit comfortably in the Subhead. </p>
+```
+
+### Without border
+
+<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive border-bottom-0 mb-0'>  <div data-view-component='true' class='Subhead-heading'>    My Heading</div>    <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
+
+```erb
+<%= render(Primer::SubheadComponent.new(hide_border: true)) do |component| %>
+  <% component.heading do %>
+    My Heading
+  <% end %>
+  <% component.description do %>
+    My Description
+  <% end %>
+<% end %>
+```
+
+### With actions
+
+<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive'>  <div data-view-component='true' class='Subhead-heading'>    My Heading</div>  <div data-view-component='true' class='Subhead-actions'>    <a href='http://www.google.com' role='button' data-view-component='true' class='btn-danger btn'>    Action  </a></div>  <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
+
+```erb
+<%= render(Primer::SubheadComponent.new) do |component| %>
+  <% component.heading do %>
+    My Heading
+  <% end %>
+  <% component.description do %>
+    My Description
+  <% end %>
+  <% component.actions do %>
+    <%= render(
+      Primer::ButtonComponent.new(
+        tag: :a, href: "http://www.google.com", scheme: :danger
+      )
+    ) { "Action" } %>
+  <% end %>
+<% end %>
+```
