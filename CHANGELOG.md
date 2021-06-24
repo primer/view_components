@@ -40,7 +40,7 @@
 
     *Manuel Puyol*
 
-* Update contributing guidelines with change log writting guide.
+* Update contributing guidelines with changelog authoring guide.
 
     *Amélia Chavot*
 
