@@ -132,7 +132,7 @@ This file holds all the changes made in previous versions of Primer View Compone
 
 To add yours, you need to find in which category to write it under the `main` section. `Main` is the first section on top of the document.
 
-There are five categories currently in use, `New`, `Updates`, `Breaking changes`, `Deprecations` and `Misc`.
+There are six categories currently in use, `New`, `Updates`, `Bug fixes`, `Breaking changes`, `Deprecations` and `Misc`.
 
 ### New
 
@@ -140,7 +140,11 @@ Category for new components, system behaviours, options and arguments changes
 
 ### Updates
 
-Every non-breaking changes to the source code goes there.
+Every non-breaking change to the source code go there.
+
+### Bug Fixes
+
+Non-breaking bug fixes to existing code.
 
 ### Breaking Changes
 
@@ -156,4 +160,4 @@ For changes that explicitly deprecate part of the code base.
 
 ### Misc
 
-The category for changes related to documentation, testing and tooling. Also for pull request that can't fit in other categories.
+The category for changes related to documentation, testing and tooling. Also, for pull requests that can't fit in other sections.
