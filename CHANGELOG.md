@@ -76,7 +76,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
-* Update contributing guidelines with change log authoring guide.
+* Added a changelog authoring guide to `CHANGELOG.md`.
 
     *Amélia Chavot*
 
