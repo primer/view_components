@@ -48,6 +48,10 @@
 
     *Manuel Puyol*
 
+* Update action to build the docs on the `pull_request` event instead of the `push` event.
+
+   *Kristján Oddsson & Amélia Chavot*
+
 ## 0.0.45
 
 ### Updates
@@ -79,10 +83,6 @@
 * Check if selector is a classify class in Utilities.
 
    *Jon Rohan*
-   
-* Update action to build the docs on the `pull_request` event instead of the `push` event.
-
-   *Kristján Oddsson & Amélia Chavot*
 
 ## 0.0.44
 
