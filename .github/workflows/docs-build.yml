@@ -1,10 +1,6 @@
 name: Docs Build
 
-on:
-  push:
-    branches-ignore:
-      - main
-
+on: [pull_request]
 
 jobs:
   build-docs:
@@ -40,4 +36,4 @@ jobs:
           git config --local user.name "Actions Auto Build"
           git add -f lib/primer/classify/utilities.yml docs static/statuses.json static/arguments.yml static/classes.yml
           git commit -m "docs: build docs" || true
-          git push
+          git push origin HEAD:$GITHUB_HEAD_REF
