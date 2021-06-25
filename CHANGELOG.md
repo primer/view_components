@@ -14,6 +14,10 @@
 
 ### Breaking changes
 
+* Restrict `AvatarStack` body slot tag and `ImageCrop` spinner tag.
+
+    *Kate Higa*
+
 * Restrict `Details` body slot tags and `UnderlineNav` body slot tags.
 
     *Kate Higa*
@@ -41,6 +45,10 @@
     *Kate Higa*
 
 * Update linter autocorrection to use `""` instead of `true` for boolean attributes.
+
+    *Manuel Puyol*
+
+* Update Storybook version.
 
     *Manuel Puyol*
 
