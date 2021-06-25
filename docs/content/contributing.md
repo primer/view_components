@@ -128,7 +128,7 @@ to the project. Please verify that you have 2FA enabled on both accounts.
 
 ## Authoring changelog entries
 
-This file holds all the changes made in previous versions of Primer View Components and the ones coming to the next version.
+`CHANGELOG.md` holds all the changes made in previous versions of Primer View Components and the ones coming to the next version.
 
 To add yours, you need to find in which category to write it under the `main` section. `Main` is the first section on top of the document.
 
