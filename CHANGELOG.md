@@ -44,6 +44,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Breaking changes
 
+* Always generate `TabNav` and `UnderlineNav` as a list.
+
+    *Kate Higa*
+
 * Restrict `TabNav`and `Tab` tags.
 
     *Kate Higa*

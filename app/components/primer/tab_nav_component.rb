@@ -132,13 +132,13 @@ module Primer
       @body_arguments = body_arguments
       @wrapper_arguments = wrapper_arguments
 
-      @system_arguments[:tag] = :div
+      @system_arguments[:tag] = navigation_tag(with_panel)
       @system_arguments[:classes] = class_names(
         "tabnav",
         system_arguments[:classes]
       )
 
-      @body_arguments[:tag] = navigation_tag(with_panel)
+      @body_arguments[:tag] = :ul
       @body_arguments[:"aria-label"] = label
       @body_arguments[:role] = :tablist if @with_panel
       @body_arguments[:classes] = class_names(

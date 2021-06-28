@@ -28,7 +28,6 @@ module Primer
       )
 
       Primer::Navigation::TabComponent.new(
-        list: list?,
         selected: selected,
         with_panel: @with_panel,
         icon_classes: "UnderlineNav-octicon",
@@ -156,13 +155,11 @@ module Primer
       )
 
       @body_arguments = body_arguments
-      @body_tag = fetch_or_fallback(BODY_TAG_OPTIONS, body_arguments[:tag]&.to_sym, BODY_TAG_DEFAULT)
-
-      @body_arguments[:tag] = @body_tag
+      @body_arguments[:tag] = :ul
       @body_arguments[:classes] = class_names(
         "UnderlineNav-body",
         @body_arguments[:classes],
-        "list-style-none" => list?
+        "list-style-none"
       )
 
       if with_panel
@@ -174,10 +171,6 @@ module Primer
     end
 
     private
-
-    def list?
-      @body_tag == :ul
-    end
 
     def body
       Primer::BaseComponent.new(**@body_arguments)

@@ -692,10 +692,6 @@
 - component: NavigationTab
   source: https://github.com/primer/view_components/tree/main/app/components/primer/tab_component.rb
   parameters:
-  - name: list
-    type: Boolean
-    default: "`false`"
-    description: Whether the Tab is an item in a `<ul>` list.
   - name: selected
     type: Boolean
     default: "`false`"
