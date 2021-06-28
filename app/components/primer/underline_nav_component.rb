@@ -16,7 +16,8 @@ module Primer
     ACTIONS_TAG_DEFAULT = :div
     ACTIONS_TAG_OPTIONS = [ACTIONS_TAG_DEFAULT, :span].freeze
 
-    # Use the tabs to list navigation items. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
+    # Use the tabs to list navigation items. When `with_panel` is set on the parent, a button is rendered for panel navigation. Otherwise,
+    # an anchor tag is rendered for page navigation. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
     # @param selected [Boolean] Whether the tab is selected.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -135,7 +136,8 @@ module Primer
     #   <% end %>
     #
     # @param label [String] The `aria-label` on top level `<nav>` element.
-    # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels.
+    # @param with_panel [Boolean] Whether the `UnderlineNav` should navigate through pages or panels. When true, <%= link_to_component(Primer::TabContainerComponent) %> is
+    #   rendered along with JavaScript behavior.
     # @param align [Symbol] <%= one_of(Primer::UnderlineNavComponent::ALIGN_OPTIONS) %> - Defaults to <%= Primer::UnderlineNavComponent::ALIGN_DEFAULT %>
     # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
     # @param wrapper_arguments [Hash] <%= link_to_system_arguments_docs %> for the `TabContainer` wrapper. Only applies if `with_panel` is `true`.
