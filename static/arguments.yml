@@ -951,8 +951,8 @@
   - name: with_panel
     type: Boolean
     default: "`false`"
-    description: Whether the `TabNav` should navigate through pages or panels. When
-      true, [TabContainer](/components/tabcontainer) is rendered along with JavaScript
+    description: Whether the `UnderlineNav` should navigate through pages or panels.
+      When true, [TabContainer](/components/tabcontainer) is rendered along with JavaScript
       behavior.
   - name: align
     type: Symbol

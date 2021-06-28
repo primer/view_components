@@ -21,7 +21,7 @@ of the page.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `label` | `String` | N/A | The `aria-label` on top level `<nav>` element. |
-| `with_panel` | `Boolean` | `false` | Whether the `TabNav` should navigate through pages or panels. When true, [TabContainer](/components/tabcontainer) is rendered along with JavaScript behavior. |
+| `with_panel` | `Boolean` | `false` | Whether the `UnderlineNav` should navigate through pages or panels. When true, [TabContainer](/components/tabcontainer) is rendered along with JavaScript behavior. |
 | `align` | `Symbol` | `:left` | One of `:left` and `:right`. - Defaults to left |
 | `body_arguments` | `Hash` | `{ tag: BODY_TAG_DEFAULT }` | [System arguments](/system-arguments) for the body wrapper. |
 | `wrapper_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the `TabContainer` wrapper. Only applies if `with_panel` is `true`. |

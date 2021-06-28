@@ -136,7 +136,7 @@ module Primer
     #   <% end %>
     #
     # @param label [String] The `aria-label` on top level `<nav>` element.
-    # @param with_panel [Boolean] Whether the `TabNav` should navigate through pages or panels. When true, <%= link_to_component(Primer::TabContainerComponent) %> is
+    # @param with_panel [Boolean] Whether the `UnderlineNav` should navigate through pages or panels. When true, <%= link_to_component(Primer::TabContainerComponent) %> is
     #   rendered along with JavaScript behavior.
     # @param align [Symbol] <%= one_of(Primer::UnderlineNavComponent::ALIGN_OPTIONS) %> - Defaults to <%= Primer::UnderlineNavComponent::ALIGN_DEFAULT %>
     # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
