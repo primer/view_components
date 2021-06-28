@@ -4,6 +4,10 @@
 
 ### Updates
 
+* Default to matching `name` and `id` of `input`.
+
+    *Kate Higa*
+
 * Restrict usage of padding system arguments on BorderBox, recommending use of `padding` density instead.
 
     *Joel Hawksley*
@@ -45,6 +49,10 @@
     *Kate Higa*
 
 * Update linter autocorrection to use `""` instead of `true` for boolean attributes.
+
+    *Manuel Puyol*
+
+* Update Storybook version.
 
     *Manuel Puyol*
 
