@@ -4,6 +4,10 @@
 
 ### Updates
 
+* Default to matching `name` and `id` of `input`.
+
+    *Kate Higa*
+
 * Restrict usage of padding system arguments on BorderBox, recommending use of `padding` density instead.
 
     *Joel Hawksley*
