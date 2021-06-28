@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Breaking changes
 
+* Always generate `TabNav` and `UnderlineNav` as a list and deprecate `list:` from `Navigation::Tab`.
+
+    *Kate Higa*
+
 * Restrict tag for `Popover` to `:div` and `Popover` heading slot to headings.
 
     *Kate Higa*

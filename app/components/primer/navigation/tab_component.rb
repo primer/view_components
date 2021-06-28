@@ -71,11 +71,6 @@ module Primer
       #     <% c.counter(count: 10) %>
       #   <% end %>
       #
-      # @example Inside a list
-      #   <%= render(Primer::Navigation::TabComponent.new(list: true)) do |c| %>
-      #     <% c.text { "Tab" } %>
-      #   <% end %>
-      #
       # @example With custom HTML
       #   <%= render(Primer::Navigation::TabComponent.new) do %>
       #     <div>
@@ -83,30 +78,30 @@ module Primer
       #     </div>
       #   <% end %>
       #
-      # @param list [Boolean] Whether the Tab is an item in a `<ul>` list.
       # @param selected [Boolean] Whether the Tab is selected or not.
       # @param with_panel [Boolean] Whether the Tab has an associated panel.
       # @param icon_classes [Boolean] Classes that must always be applied to icons.
-      # @param wrapper_arguments [Hash] <%= link_to_system_arguments_docs %> to be used in the `<li>` wrapper when the tab is an item in a list.
+      # @param wrapper_arguments [Hash] <%= link_to_system_arguments_docs %> to be used in the `<li>` wrapper.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(list: false, selected: false, with_panel: false, icon_classes: "", wrapper_arguments: {}, **system_arguments)
+      def initialize(selected: false, with_panel: false, icon_classes: "", wrapper_arguments: {}, **system_arguments)
         @selected = selected
         @icon_classes = icon_classes
-        @list = list
 
         @system_arguments = system_arguments
+        @wrapper_arguments = wrapper_arguments
 
         if with_panel || @system_arguments[:tag] == :button
           @system_arguments[:tag] = :button
           @system_arguments[:type] = :button
           @system_arguments[:role] = :tab
+          # https://www.w3.org/TR/wai-aria-practices/#presentation_role
+          @wrapper_arguments[:role] = :presentation
         else
           @system_arguments[:tag] = :a
         end
 
-        @wrapper_arguments = wrapper_arguments
         @wrapper_arguments[:tag] = :li
-        @wrapper_arguments[:display] ||= :flex
+        @wrapper_arguments[:display] ||= :inline_flex
 
         return unless @selected
 
@@ -119,11 +114,6 @@ module Primer
       end
 
       def wrapper
-        unless @list
-          yield
-          return # returning `yield` caused a double render
-        end
-
         render(Primer::BaseComponent.new(**@wrapper_arguments)) do
           yield
         end

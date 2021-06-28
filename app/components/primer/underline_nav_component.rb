@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use `UnderlineNav` to style navigation with a minimal
-  # underlined selected state, typically used for navigation placed at the top
-  # of the page.
+  # Use `UnderlineNav` to style navigation with a minimal underlined selected state. There are two main ways this component can be rendered:
+  #
+  # - With tabs that hold links for page navigation. This is the default.
+  # - With tabs that hold buttons and a configurable panel for panel navigation. This is configured with `with_panel` and has associated JavaScript behavior.
   class UnderlineNavComponent < Primer::Component
     include Primer::TabbedComponentHelper
 
@@ -16,8 +17,8 @@ module Primer
     ACTIONS_TAG_DEFAULT = :div
     ACTIONS_TAG_OPTIONS = [ACTIONS_TAG_DEFAULT, :span].freeze
 
-    # Use the tabs to list navigation items. When `with_panel` is set on the parent, a button is rendered for panel navigation. Otherwise,
-    # an anchor tag is rendered for page navigation. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
+    # Use the tabs to list navigation items. By default, an anchor tag is rendered for page navigation. When `with_panel` is set on the parent, this renders as a button
+    # with a configurable panel slot. See the example below or refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
     # @param selected [Boolean] Whether the tab is selected.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -28,7 +29,6 @@ module Primer
       )
 
       Primer::Navigation::TabComponent.new(
-        list: list?,
         selected: selected,
         with_panel: @with_panel,
         icon_classes: "UnderlineNav-octicon",
@@ -51,6 +51,25 @@ module Primer
     #   <%= render(Primer::UnderlineNavComponent.new(label: "Default")) do |component| %>
     #     <% component.tab(href: "#", selected: true) { "Item 1" } %>
     #     <% component.tab(href: "#") { "Item 2" } %>
+    #     <% component.actions do %>
+    #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example With panels
+    #   <%= render(Primer::UnderlineNavComponent.new(label: "With panels", with_panel: true)) do |component| %>
+    #     <% component.tab(selected: true) do |t| %>
+    #       <% t.text { "Item 1" } %>
+    #       <% t.panel do %>
+    #         Panel 1
+    #       <% end %>
+    #     <% end %>
+    #     <% component.tab do |t| %>
+    #       <% t.text { "Item 2" } %>
+    #       <% t.panel do %>
+    #         Panel 2
+    #       <% end %>
+    #     <% end %>
     #     <% component.actions do %>
     #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
     #     <% end %>
@@ -89,40 +108,8 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example As a list
-    #   <%= render(Primer::UnderlineNavComponent.new(label: "As a list", body_arguments: { tag: :ul })) do |component| %>
-    #     <% component.tab(href: "#", selected: true) do |t| %>
-    #       <% t.text { "Item 1" } %>
-    #     <% end %>
-    #     <% component.tab(href: "#") do |t| %>
-    #       <% t.text { "Item 2" } %>
-    #     <% end %>
-    #     <% component.actions do %>
-    #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
-    #     <% end %>
-    #   <% end %>
-    #
-    # @example With panels
-    #   <%= render(Primer::UnderlineNavComponent.new(label: "With panels", with_panel: true)) do |component| %>
-    #     <% component.tab(selected: true) do |t| %>
-    #       <% t.text { "Item 1" } %>
-    #       <% t.panel do %>
-    #         Panel 1
-    #       <% end %>
-    #     <% end %>
-    #     <% component.tab do |t| %>
-    #       <% t.text { "Item 2" } %>
-    #       <% t.panel do %>
-    #         Panel 2
-    #       <% end %>
-    #     <% end %>
-    #     <% component.actions do %>
-    #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
-    #     <% end %>
-    #   <% end %>
-    #
     # @example Customizing the body
-    #   <%= render(Primer::UnderlineNavComponent.new(label: "Default", body_arguments: { tag: :ul, classes: "custom-class", border: true, border_color: :info })) do |c| %>
+    #   <%= render(Primer::UnderlineNavComponent.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :info })) do |c| %>
     #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
     #     <% c.tab(href: "#") { "Tab 2" } %>
     #     <% c.tab(href: "#") { "Tab 3" } %>
@@ -135,7 +122,7 @@ module Primer
     #     <% c.tab(href: "#") { "Tab 3" } %>
     #   <% end %>
     #
-    # @param label [String] The `aria-label` on top level `<nav>` element.
+    # @param label [String] Used to set the `aria-label` on top level element.
     # @param with_panel [Boolean] Whether the `UnderlineNav` should navigate through pages or panels. When true, <%= link_to_component(Primer::TabContainerComponent) %> is
     #   rendered along with JavaScript behavior.
     # @param align [Symbol] <%= one_of(Primer::UnderlineNavComponent::ALIGN_OPTIONS) %> - Defaults to <%= Primer::UnderlineNavComponent::ALIGN_DEFAULT %>
@@ -156,13 +143,11 @@ module Primer
       )
 
       @body_arguments = body_arguments
-      @body_tag = fetch_or_fallback(BODY_TAG_OPTIONS, body_arguments[:tag]&.to_sym, BODY_TAG_DEFAULT)
-
-      @body_arguments[:tag] = @body_tag
+      @body_arguments[:tag] = :ul
       @body_arguments[:classes] = class_names(
         "UnderlineNav-body",
         @body_arguments[:classes],
-        "list-style-none" => list?
+        "list-style-none"
       )
 
       if with_panel
@@ -174,10 +159,6 @@ module Primer
     end
 
     private
-
-    def list?
-      @body_tag == :ul
-    end
 
     def body
       Primer::BaseComponent.new(**@body_arguments)

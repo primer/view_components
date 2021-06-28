@@ -692,10 +692,6 @@
 - component: NavigationTab
   source: https://github.com/primer/view_components/tree/main/app/components/primer/tab_component.rb
   parameters:
-  - name: list
-    type: Boolean
-    default: "`false`"
-    description: Whether the Tab is an item in a `<ul>` list.
   - name: selected
     type: Boolean
     default: "`false`"
@@ -711,8 +707,7 @@
   - name: wrapper_arguments
     type: Hash
     default: "`{}`"
-    description: "[System arguments](/system-arguments) to be used in the `<li>` wrapper
-      when the tab is an item in a list."
+    description: "[System arguments](/system-arguments) to be used in the `<li>` wrapper."
   - name: system_arguments
     type: Hash
     default: N/A
@@ -826,7 +821,7 @@
   - name: label
     type: String
     default: N/A
-    description: Used to set the `aria-label` on the top level `<nav>` element.
+    description: Used to set the `aria-label` on the top level element.
   - name: with_panel
     type: Boolean
     default: "`false`"
@@ -947,7 +942,7 @@
   - name: label
     type: String
     default: N/A
-    description: The `aria-label` on top level `<nav>` element.
+    description: Used to set the `aria-label` on top level element.
   - name: with_panel
     type: Boolean
     default: "`false`"

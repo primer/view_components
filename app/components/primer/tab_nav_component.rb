@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use `TabNav` to style navigation with a tab-based selected state, typically used for navigation placed at the top of the page.
+  # Use `TabNav` to style navigation with a tab-based selected state. There are two main ways this component can be rendered:
+  #
+  # - With tabs that hold links for page navigation. This is the default.
+  # - With tabs that hold buttons and a configurable panel for panel navigation. This is configured with `with_panel` and has associated JavaScript behavior.
   class TabNavComponent < Primer::Component
     include Primer::TabbedComponentHelper
 
@@ -10,8 +13,8 @@ module Primer
     DEFAULT_EXTRA_ALIGN = :left
     EXTRA_ALIGN_OPTIONS = [DEFAULT_EXTRA_ALIGN, :right].freeze
 
-    # Tabs to be rendered. When `with_panel` is set on the parent, a button is rendered for panel navigation. Otherwise,
-    # an anchor tag is rendered for page navigation. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
+    # Use the tabs to list navigation items. By default, an anchor tag is rendered for page navigation. When `with_panel` is set on the parent, this renders as a button
+    # with a configurable panel slot. See the example below or refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
     # @param selected [Boolean] Whether the tab is selected.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -44,23 +47,6 @@ module Primer
     #     <% c.tab(href: "#") { "Tab 3" } %>
     #   <% end %>
     #
-    # @example With icons and counters
-    #   <%= render(Primer::TabNavComponent.new(label: "With icons and counters")) do |component| %>
-    #     <% component.tab(href: "#", selected: true) do |t| %>
-    #       <% t.icon(icon: :star) %>
-    #       <% t.text { "Item 1" } %>
-    #     <% end %>
-    #     <% component.tab(href: "#") do |t| %>
-    #       <% t.icon(icon: :star) %>
-    #       <% t.text { "Item 2" } %>
-    #       <% t.counter(count: 10) %>
-    #     <% end %>
-    #     <% component.tab(href: "#") do |t| %>
-    #       <% t.text { "Item 3" } %>
-    #       <% t.counter(count: 10) %>
-    #     <% end %>
-    #   <% end %>
-    #
     # @example With panels
     #   <%= render(Primer::TabNavComponent.new(label: "With panels", with_panel: true)) do |c| %>
     #     <% c.tab(selected: true) do |t| %>
@@ -80,6 +66,23 @@ module Primer
     #       <% t.panel do %>
     #         Panel 3
     #       <% end %>
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example With icons and counters
+    #   <%= render(Primer::TabNavComponent.new(label: "With icons and counters")) do |component| %>
+    #     <% component.tab(href: "#", selected: true) do |t| %>
+    #       <% t.icon(icon: :star) %>
+    #       <% t.text { "Item 1" } %>
+    #     <% end %>
+    #     <% component.tab(href: "#") do |t| %>
+    #       <% t.icon(icon: :star) %>
+    #       <% t.text { "Item 2" } %>
+    #       <% t.counter(count: 10) %>
+    #     <% end %>
+    #     <% component.tab(href: "#") do |t| %>
+    #       <% t.text { "Item 3" } %>
+    #       <% t.counter(count: 10) %>
     #     <% end %>
     #   <% end %>
     #
@@ -119,7 +122,7 @@ module Primer
     #     <% c.tab(href: "#") { "Tab 3" } %>
     #   <% end %>
     #
-    # @param label [String] Used to set the `aria-label` on the top level `<nav>` element.
+    # @param label [String] Used to set the `aria-label` on the top level element.
     # @param with_panel [Boolean] Whether the TabNav should navigate through pages or panels. When true, <%= link_to_component(Primer::TabContainerComponent) %>
     #   is rendered along with JavaScript behavior. Additionally, the `tab` slot will render as a button as opposed to an anchor.
     # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
@@ -132,19 +135,23 @@ module Primer
       @body_arguments = body_arguments
       @wrapper_arguments = wrapper_arguments
 
-      @system_arguments[:tag] = :div
+      @system_arguments[:tag] = navigation_tag(with_panel)
       @system_arguments[:classes] = class_names(
         "tabnav",
         system_arguments[:classes]
       )
 
-      @body_arguments[:tag] = navigation_tag(with_panel)
-      @body_arguments[:"aria-label"] = label
-      @body_arguments[:role] = :tablist if @with_panel
+      @body_arguments[:tag] = :ul
       @body_arguments[:classes] = class_names(
         "tabnav-tabs",
         body_arguments[:classes]
       )
+      if @with_panel
+        @body_arguments[:role] = :tablist
+        @body_arguments[:"aria-label"] = label
+      else
+        @system_arguments[:"aria-label"] = label
+      end
     end
   end
 end
