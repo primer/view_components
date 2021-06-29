@@ -822,7 +822,7 @@
   - name: label
     type: String
     default: N/A
-    description: Used to set the `aria-label` on the top level `<nav>` element.
+    description: Used to set the `aria-label` on the top level element.
   - name: with_panel
     type: Boolean
     default: "`false`"
@@ -943,7 +943,7 @@
   - name: label
     type: String
     default: N/A
-    description: The `aria-label` on top level `<nav>` element.
+    description: Used to set the `aria-label` on top level element.
   - name: with_panel
     type: Boolean
     default: "`false`"

@@ -37,9 +37,13 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     end
 
     assert_selector("nav.UnderlineNav[aria-label='label']") do
-      assert_selector("div.UnderlineNav-body") do
-        assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
-        assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
+      assert_selector("ul.UnderlineNav-body") do
+        assert_selector("li") do
+          assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
+        end
+        assert_selector("li") do
+          assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
+        end
       end
       assert_selector("div.UnderlineNav-actions", text: "Actions content")
     end
@@ -86,9 +90,13 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     refute_selector("tab-container")
 
     assert_selector("nav.UnderlineNav[aria-label='label']") do
-      assert_selector("div.UnderlineNav-body") do
-        assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
-        assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
+      assert_selector("ul.UnderlineNav-body") do
+        assert_selector("li") do
+          assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
+        end
+        assert_selector("li") do
+          assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
+        end
       end
       assert_selector("div.UnderlineNav-actions", text: "Actions content")
     end
@@ -110,9 +118,13 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     refute_selector("div[role='tabpanel']")
     refute_selector("tab-container")
     assert_selector("nav.UnderlineNav.UnderlineNav--right[aria-label='label']") do
-      assert_selector("div.UnderlineNav-body") do
-        assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
-        assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
+      assert_selector("ul.UnderlineNav-body") do
+        assert_selector("li") do
+          assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
+        end
+        assert_selector("li") do
+          assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
+        end
       end
       assert_selector("div.UnderlineNav-actions", text: "Actions content")
     end
@@ -151,9 +163,13 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
     assert_selector("tab-container") do
       assert_selector("div.UnderlineNav") do
-        assert_selector("div.UnderlineNav-body[role='tablist'][aria-label='label']") do
-          assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
-          assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 2")
+        assert_selector("ul.UnderlineNav-body[role='tablist'][aria-label='label']") do
+          assert_selector("li[role='presentation']") do
+            assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
+          end
+          assert_selector("li[role='presentation']") do
+            assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 2")
+          end
         end
         assert_selector("div.UnderlineNav-actions", text: "Actions content")
       end
@@ -172,34 +188,6 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     end
 
     assert_selector(".UnderlineNav-octicon.octicon.octicon-star")
-  end
-
-  def test_renders_navigation_links_in_a_list
-    render_inline(Primer::UnderlineNavComponent.new(label: "label", body_arguments: { tag: :ul })) do |component|
-      component.tab(selected: true, href: "#") do |t|
-        t.text { "Tab 1" }
-      end
-      component.tab(href: "#") do |t|
-        t.text { "Tab 2" }
-      end
-      component.actions do
-        "Actions content"
-      end
-    end
-
-    assert_selector("nav.UnderlineNav[aria-label='label']") do
-      assert_selector("ul.UnderlineNav-body.list-style-none") do
-        assert_selector("li") do
-          assert_selector("a.UnderlineNav-item[href='#'][aria-current='page']", text: "Tab 1")
-        end
-        assert_selector("li") do
-          assert_selector("a.UnderlineNav-item[href='#']", text: "Tab 2")
-        end
-      end
-      assert_selector("div.UnderlineNav-actions", text: "Actions content")
-    end
-    refute_selector("div[role='tablist']")
-    refute_selector("a[role='tab']")
   end
 
   def test_customizes_tab_container

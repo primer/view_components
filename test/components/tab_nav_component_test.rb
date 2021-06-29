@@ -27,8 +27,8 @@ class PrimerTabNavComponentTest < Minitest::Test
       c.tab { "Tab 2" }
     end
 
-    assert_selector(".tabnav") do
-      assert_selector("nav.tabnav-tabs[aria-label='label']") do
+    assert_selector("nav.tabnav[aria-label='label']") do
+      assert_selector("ul.tabnav-tabs") do
         assert_selector("a.tabnav-tab[aria-current='page']", text: "Tab 1")
         assert_selector("a.tabnav-tab", text: "Tab 2")
       end
@@ -41,8 +41,8 @@ class PrimerTabNavComponentTest < Minitest::Test
       c.tab(tag: :button) { "Tab 2" }
     end
 
-    assert_selector(".tabnav") do
-      assert_selector("nav.tabnav-tabs[aria-label='label']") do
+    assert_selector("nav.tabnav[aria-label='label']") do
+      assert_selector("ul.tabnav-tabs") do
         assert_selector("button.tabnav-tab[aria-selected='true']", text: "Tab 1")
         assert_selector("button.tabnav-tab", text: "Tab 2")
       end
@@ -62,9 +62,13 @@ class PrimerTabNavComponentTest < Minitest::Test
     end
 
     assert_selector(".tabnav") do
-      assert_selector("div.tabnav-tabs[role='tablist'][aria-label='label']") do
-        assert_selector("button.tabnav-tab[aria-selected='true'][role='tab']", text: "Tab 1")
-        assert_selector("button.tabnav-tab[role='tab']", text: "Tab 2")
+      assert_selector("ul.tabnav-tabs[role='tablist'][aria-label='label']") do
+        assert_selector("li") do
+          assert_selector("button.tabnav-tab[aria-selected='true'][role='tab']", text: "Tab 1")
+        end
+        assert_selector("li") do
+          assert_selector("button.tabnav-tab[role='tab']", text: "Tab 2")
+        end
       end
     end
     assert_selector("div[role='tabpanel']", text: "Panel 1")
@@ -81,9 +85,13 @@ class PrimerTabNavComponentTest < Minitest::Test
     end
 
     assert_selector(".tabnav") do
-      assert_selector("div.tabnav-tabs[role='tablist']") do
-        assert_selector("button.tabnav-tab[aria-selected='true'][role='tab']", text: "Tab 1")
-        assert_selector("button.tabnav-tab[role='tab']", text: "Tab 2")
+      assert_selector("ul.tabnav-tabs[role='tablist']") do
+        assert_selector("li[role='presentation']") do
+          assert_selector("button.tabnav-tab[aria-selected='true'][role='tab']", text: "Tab 1")
+        end
+        assert_selector("li[role='presentation']") do
+          assert_selector("button.tabnav-tab[role='tab']", text: "Tab 2")
+        end
       end
     end
     assert_selector("div[role='tabpanel']", count: 1)
@@ -101,10 +109,14 @@ class PrimerTabNavComponentTest < Minitest::Test
       end
     end
 
-    assert_selector(".tabnav") do
-      assert_selector("nav.tabnav-tabs[aria-label='label']") do
-        assert_selector("a.tabnav-tab[aria-current='page']", text: "Tab 1")
-        assert_selector("a.tabnav-tab", text: "Tab 2")
+    assert_selector("nav.tabnav[aria-label='label']") do
+      assert_selector("ul.tabnav-tabs") do
+        assert_selector("li") do
+          assert_selector("a.tabnav-tab[aria-current='page']", text: "Tab 1")
+        end
+        assert_selector("li") do
+          assert_selector("a.tabnav-tab", text: "Tab 2")
+        end
       end
     end
     refute_selector("div[role='tabpanel']")
@@ -117,10 +129,14 @@ class PrimerTabNavComponentTest < Minitest::Test
       c.extra { "Extra" }
     end
 
-    assert_selector(".tabnav") do
-      assert_selector("nav.tabnav-tabs[aria-label='label']") do
-        assert_selector("a.tabnav-tab[aria-current='page']", text: "Tab 1")
-        assert_selector("a.tabnav-tab", text: "Tab 2")
+    assert_selector("nav.tabnav[aria-label='label']") do
+      assert_selector("ul.tabnav-tabs") do
+        assert_selector("li") do
+          assert_selector("a.tabnav-tab[aria-current='page']", text: "Tab 1")
+        end
+        assert_selector("li") do
+          assert_selector("a.tabnav-tab", text: "Tab 2")
+        end
       end
       assert_text("Extra")
     end
@@ -133,10 +149,14 @@ class PrimerTabNavComponentTest < Minitest::Test
       c.extra(align: :right) { "Extra" }
     end
 
-    assert_selector(".tabnav") do
-      assert_selector("nav.tabnav-tabs[aria-label='label']") do
-        assert_selector("a.tabnav-tab[aria-current='page']", text: "Tab 1")
-        assert_selector("a.tabnav-tab", text: "Tab 2")
+    assert_selector("nav.tabnav[aria-label='label']") do
+      assert_selector("ul.tabnav-tabs") do
+        assert_selector("li") do
+          assert_selector("a.tabnav-tab[aria-current='page']", text: "Tab 1")
+        end
+        assert_selector("li") do
+          assert_selector("a.tabnav-tab", text: "Tab 2")
+        end
       end
       assert_text("Extra")
     end

@@ -19,7 +19,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :panel, lambda { |**system_arguments|
         system_arguments[:tag] = :div
-        system_arguments[:role] ||= :tabpanel
+        system_arguments[:role] = :tabpanel
         system_arguments[:hidden] = true unless @selected
 
         Primer::BaseComponent.new(**system_arguments)
