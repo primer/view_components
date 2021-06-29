@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.46
+
 ### Updates
 
 * Default to matching `name` and `id` of `input`.
