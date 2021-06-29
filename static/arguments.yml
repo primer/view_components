@@ -830,7 +830,10 @@
   - name: with_panel
     type: Boolean
     default: "`false`"
-    description: Whether the TabNav should navigate through pages or panels.
+    description: Whether the TabNav should navigate through pages or panels. When
+      true, [TabContainer](/components/tabcontainer) is rendered along with JavaScript
+      behavior. Additionally, the `tab` slot will render as a button as opposed to
+      an anchor.
   - name: body_arguments
     type: Hash
     default: "`{}`"
@@ -948,7 +951,9 @@
   - name: with_panel
     type: Boolean
     default: "`false`"
-    description: Whether the TabNav should navigate through pages or panels.
+    description: Whether the `UnderlineNav` should navigate through pages or panels.
+      When true, [TabContainer](/components/tabcontainer) is rendered along with JavaScript
+      behavior.
   - name: align
     type: Symbol
     default: "`:left`"

@@ -32,11 +32,19 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+* Default to matching `name` and `id` of `input`.
+
+    *Kate Higa*
+
 * Restrict usage of padding system arguments on BorderBox, recommending use of `padding` density instead.
 
     *Joel Hawksley*
 
 ### Breaking changes
+
+* Restrict `TabNav`and `Tab` tags.
+
+    *Kate Higa*
 
 * Restrict `AvatarStack` body slot tag and `ImageCrop` spinner tag.
 

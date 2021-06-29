@@ -26,6 +26,24 @@ class PrimerAutoCompleteTest < Minitest::Test
     end
   end
 
+  def test_forwards_input_id_on_parent_to_input_slot_id
+    render_inline Primer::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
+      component.label(classes: "") { "Fruits" }
+      component.input(name: "something")
+    end
+
+    assert_selector("input[id=\"test-input\"]")
+  end
+
+  def test_forwards_input_id_on_parent_to_input_slot_id_and_name
+    render_inline Primer::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
+      component.label(classes: "") { "Fruits" }
+      component.input(classes: "")
+    end
+
+    assert_selector("input[id=\"test-input\"][name=\"test-input\"]")
+  end
+
   def test_applies_parent_aria_label_on_relevant_child_slots
     render_inline Primer::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id", "aria-label": "Fruits") do |component|
       component.input(name: "input")

@@ -19,7 +19,7 @@ Use `TabNav` to style navigation with a tab-based selected state, typically used
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `label` | `String` | N/A | Used to set the `aria-label` on the top level `<nav>` element. |
-| `with_panel` | `Boolean` | `false` | Whether the TabNav should navigate through pages or panels. |
+| `with_panel` | `Boolean` | `false` | Whether the TabNav should navigate through pages or panels. When true, [TabContainer](/components/tabcontainer) is rendered along with JavaScript behavior. Additionally, the `tab` slot will render as a button as opposed to an anchor. |
 | `body_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the body wrapper. |
 | `wrapper_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the `TabContainer` wrapper. Only applies if `with_panel` is `true`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
@@ -28,7 +28,8 @@ Use `TabNav` to style navigation with a tab-based selected state, typically used
 
 ### `Tabs`
 
-Tabs to be rendered. For more information, refer to [NavigationTab](/components/navigationtab).
+Tabs to be rendered. When `with_panel` is set on the parent, a button is rendered for panel navigation. Otherwise,
+an anchor tag is rendered for page navigation. For more information, refer to [NavigationTab](/components/navigationtab).
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |

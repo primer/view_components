@@ -34,7 +34,8 @@ module Primer
         system_arguments[:aria]&.delete(:label)
       end
 
-      Input.new(id: @input_id, **system_arguments)
+      name = system_arguments[:name] || @input_id
+      Input.new(id: @input_id, name: name, **system_arguments)
     }
 
     # Optional icon to be rendered before the input. Has the same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
