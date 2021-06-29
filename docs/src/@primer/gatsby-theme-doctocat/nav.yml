@@ -104,3 +104,5 @@
       url: /components/truncate
     - title: UnderlineNav
       url: /components/underlinenav
+    - title: HellipButton - Fix my order in docs/src/@primer/gatsby-theme-doctocat/nav.yml
+      url: /components/hellipbutton
