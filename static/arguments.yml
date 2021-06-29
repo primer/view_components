@@ -692,6 +692,11 @@
 - component: NavigationTab
   source: https://github.com/primer/view_components/tree/main/app/components/primer/tab_component.rb
   parameters:
+  - name: id
+    type: Symbol
+    default: N/A
+    description: Required when `with_panel` is set. Allows panel to be associated
+      with tab.
   - name: selected
     type: Boolean
     default: "`false`"

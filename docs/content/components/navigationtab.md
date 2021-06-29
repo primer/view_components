@@ -9,18 +9,19 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-This component is part of navigation components such as `Primer::TabNavComponent`
-and `Primer::UnderlineNavComponent` and should not be used by itself.
+This component is part of navigation components such as [TabNav](/components/tabnav)
+and [UnderlineNav](/components/underlinenav) and should not be used by itself.
 
 ## Accessibility
 
-`TabComponent` renders the selected anchor tab with `aria-current="page"` by default.
+`Navigation::Tab` renders the selected anchor tab with `aria-current="page"` by default.
  When the selected tab does not correspond to the current page, such as in a nested inner tab, make sure to use aria-current="true"
 
 ## Arguments
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `id` | `Symbol` | N/A | Required when `with_panel` is set. Allows panel to be associated with tab. |
 | `selected` | `Boolean` | `false` | Whether the Tab is selected or not. |
 | `with_panel` | `Boolean` | `false` | Whether the Tab has an associated panel. |
 | `icon_classes` | `Boolean` | `""` | Classes that must always be applied to icons. |
@@ -34,7 +35,7 @@ and `Primer::UnderlineNavComponent` and should not be used by itself.
 Panel controlled by the Tab. This will not render anything in the tab itself.
 It will provide a accessor for the Tab's parent to call and render the panel
 content in the appropriate place.
-Refer to `UnderlineNavComponent` and `TabNavComponent` implementations for examples.
+Refer to [UnderlineNav](/components/underlinenav) and [TabNav](/components/tabnav) implementations for examples.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |

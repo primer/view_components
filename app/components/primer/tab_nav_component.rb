@@ -16,6 +16,7 @@ module Primer
     # Use the tabs to list navigation items. By default, an anchor tag is rendered for page navigation. When `with_panel` is set on the parent, this renders as a button
     # with a configurable panel slot. See the example below or refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
+    # @param id [Symbol] Unique identifier for tab. Required when `with_panel` is set.
     # @param selected [Boolean] Whether the tab is selected.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_many :tabs, lambda { |selected: false, **system_arguments|
@@ -49,19 +50,19 @@ module Primer
     #
     # @example With panels
     #   <%= render(Primer::TabNavComponent.new(label: "With panels", with_panel: true)) do |c| %>
-    #     <% c.tab(selected: true) do |t| %>
+    #     <% c.tab(id: "tab-1", selected: true) do |t| %>
     #       <% t.text { "Tab 1" } %>
     #       <% t.panel do %>
     #         Panel 1
     #       <% end %>
     #     <% end %>
-    #     <% c.tab do |t| %>
+    #     <% c.tab(id: "tab-2") do |t| %>
     #       <% t.text { "Tab 2" } %>
     #       <% t.panel do %>
     #         Panel 2
     #       <% end %>
     #     <% end %>
-    #     <% c.tab do |t| %>
+    #     <% c.tab(id: "tab-3") do |t| %>
     #       <% t.text { "Tab 3" } %>
     #       <% t.panel do %>
     #         Panel 3

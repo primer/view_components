@@ -51,11 +51,11 @@ class PrimerTabNavComponentTest < Minitest::Test
 
   def test_renders_tab_panels_with_tabs_as_button
     render_inline(Primer::TabNavComponent.new(label: "label", with_panel: true)) do |c|
-      c.tab(selected: true) do |t|
+      c.tab(id: "tab-1", selected: true) do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end
-      c.tab do |t|
+      c.tab(id: "tab-2") do |t|
         t.panel { "Panel 2" }
         t.text { "Tab 2" }
       end
@@ -77,7 +77,7 @@ class PrimerTabNavComponentTest < Minitest::Test
 
   def test_only_renders_panels_for_tabs_with_content
     render_inline(Primer::TabNavComponent.new(label: "label", with_panel: true)) do |c|
-      c.tab(tag: :button, selected: true) do |t|
+      c.tab(id: "tab-1", tag: :button, selected: true) do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end
@@ -164,7 +164,7 @@ class PrimerTabNavComponentTest < Minitest::Test
 
   def test_customizes_tab_container
     render_inline(Primer::TabNavComponent.new(label: "label", with_panel: true, wrapper_arguments: { m: 2, classes: "custom-class" })) do |component|
-      component.tab(selected: true) do |t|
+      component.tab(id: "tab-1", selected: true) do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end

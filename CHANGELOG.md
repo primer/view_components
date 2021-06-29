@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Breaking changes
 
+* Ensure tab panels have label and proper tabindex.
+
+    *Kate Higa*
+
 * Always generate `TabNav` and `UnderlineNav` as a list and deprecate `list:` from `Navigation::Tab`.
 
     *Kate Higa*

@@ -23,11 +23,11 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
   def test_does_not_add_tab_roles_and_does_not_render_panels_if_with_panel_is_false
     render_inline(Primer::UnderlineNavComponent.new(label: "label")) do |component|
-      component.tab(selected: true, href: "#") do |t|
+      component.tab(id: "tab-1", selected: true, href: "#") do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end
-      component.tab(href: "#") do |t|
+      component.tab(id: "tab-2", href: "#") do |t|
         t.panel { "Panel 2" }
         t.text { "Tab 2" }
       end
@@ -148,11 +148,11 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
   def test_renders_panels_and_tab_container
     render_inline(Primer::UnderlineNavComponent.new(label: "label", with_panel: true)) do |component|
-      component.tab(selected: true) do |t|
+      component.tab(id: "tab-1", selected: true) do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end
-      component.tab do |t|
+      component.tab(id: "tab-2") do |t|
         t.panel { "Panel 2" }
         t.text { "Tab 2" }
       end
@@ -180,7 +180,7 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
   def test_renders_tab_icon_with_correct_classes
     render_inline(Primer::UnderlineNavComponent.new(label: "label", align: :right)) do |component|
-      component.tab(selected: true, href: "#") do |t|
+      component.tab(id: "tab-1", selected: true, href: "#") do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
         t.icon(icon: :star)
@@ -192,7 +192,7 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
   def test_customizes_tab_container
     render_inline(Primer::UnderlineNavComponent.new(label: "label", with_panel: true, wrapper_arguments: { m: 2, classes: "custom-class" })) do |component|
-      component.tab(selected: true) do |t|
+      component.tab(id: "tab-1", selected: true) do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end

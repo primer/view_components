@@ -2,11 +2,11 @@
 
 module Primer
   module Navigation
-    # This component is part of navigation components such as `Primer::TabNavComponent`
-    # and `Primer::UnderlineNavComponent` and should not be used by itself.
+    # This component is part of navigation components such as <%= link_to_component(Primer::TabNavComponent) %>
+    # and <%= link_to_component(Primer::UnderlineNavComponent) %> and should not be used by itself.
     #
     # @accessibility
-    #   `TabComponent` renders the selected anchor tab with `aria-current="page"` by default.
+    #   `Navigation::Tab` renders the selected anchor tab with `aria-current="page"` by default.
     #    When the selected tab does not correspond to the current page, such as in a nested inner tab, make sure to use aria-current="true"
     class TabComponent < Primer::Component
       DEFAULT_ARIA_CURRENT_FOR_ANCHOR = :page
@@ -14,13 +14,25 @@ module Primer
       # Panel controlled by the Tab. This will not render anything in the tab itself.
       # It will provide a accessor for the Tab's parent to call and render the panel
       # content in the appropriate place.
-      # Refer to `UnderlineNavComponent` and `TabNavComponent` implementations for examples.
+      # Refer to <%= link_to_component(Primer::UnderlineNavComponent) %> and <%= link_to_component(Primer::TabNavComponent) %> implementations for examples.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :panel, lambda { |**system_arguments|
+        return unless @with_panel
+
         system_arguments[:tag] = :div
         system_arguments[:role] = :tabpanel
+        system_arguments[:tabindex] = 0
         system_arguments[:hidden] = true unless @selected
+
+        aria_label = system_arguments[:"aria-label"]
+        aria_labelledby = system_arguments[:"aria-labelledby"] || system_arguments.dig(:aria, :labelledby)
+        label_present = aria_label && aria_labelledby
+        if !label_present && @id.present?
+          system_arguments[:"aria-labelledby"] = @id
+        else
+          raise "set `id` on tab so the panel can be labeled by the button text" unless Rails.env.production?
+        end
 
         Primer::BaseComponent.new(**system_arguments)
       }
@@ -78,6 +90,7 @@ module Primer
       #     </div>
       #   <% end %>
       #
+      # @param id [Symbol] Required when `with_panel` is set. Allows panel to be associated with tab.
       # @param selected [Boolean] Whether the Tab is selected or not.
       # @param with_panel [Boolean] Whether the Tab has an associated panel.
       # @param icon_classes [Boolean] Classes that must always be applied to icons.
@@ -86,10 +99,12 @@ module Primer
       def initialize(selected: false, with_panel: false, icon_classes: "", wrapper_arguments: {}, **system_arguments)
         @selected = selected
         @icon_classes = icon_classes
+        @with_panel = with_panel
 
         @system_arguments = system_arguments
+        @id = @system_arguments[:id]
 
-        if with_panel || @system_arguments[:tag] == :button
+        if @with_panel || @system_arguments[:tag] == :button
           @system_arguments[:tag] = :button
           @system_arguments[:type] = :button
           @system_arguments[:role] = :tab
@@ -99,7 +114,7 @@ module Primer
 
         @wrapper_arguments = wrapper_arguments
         @wrapper_arguments[:tag] = :li
-        @wrapper_arguments[:role] = :presentation if with_panel
+        @wrapper_arguments[:role] = :presentation if @with_panel
         @wrapper_arguments[:display] ||= :flex
 
         return unless @selected

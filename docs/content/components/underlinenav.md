@@ -37,6 +37,7 @@ with a configurable panel slot. See the example below or refer to [NavigationTab
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `id` | `Symbol` | N/A | Unique identifier for tab. Required when `with_panel` is set. |
 | `selected` | `Boolean` | N/A | Whether the tab is selected. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
@@ -67,17 +68,17 @@ Use actions for a call to action.
 
 ### With panels
 
-<Example src="<tab-container data-view-component='true'>  <div data-view-component='true' class='UnderlineNav'>    <ul role='tablist' aria-label='With panels' data-view-component='true' class='UnderlineNav-body list-style-none'>        <li role='presentation' data-view-component='true' class='d-flex'>  <button type='button' role='tab' aria-selected='true' data-view-component='true' class='UnderlineNav-item'>          <span data-view-component='true'>Item 1</span>    </button></li>        <li role='presentation' data-view-component='true' class='d-flex'>  <button type='button' role='tab' data-view-component='true' class='UnderlineNav-item'>          <span data-view-component='true'>Item 2</span>    </button></li></ul>      <div data-view-component='true' class='UnderlineNav-actions'>    <button type='button' data-view-component='true' class='btn'>    Button!  </button></div></div>      <div role='tabpanel' data-view-component='true'>      Panel 1</div>      <div role='tabpanel' hidden='hidden' data-view-component='true'>      Panel 2</div></tab-container>" />
+<Example src="<tab-container data-view-component='true'>  <div data-view-component='true' class='UnderlineNav'>    <ul role='tablist' aria-label='With panels' data-view-component='true' class='UnderlineNav-body list-style-none'>        <li role='presentation' data-view-component='true' class='d-flex'>  <button id='item-1' type='button' role='tab' aria-selected='true' data-view-component='true' class='UnderlineNav-item'>          <span data-view-component='true'>Item 1</span>    </button></li>        <li role='presentation' data-view-component='true' class='d-flex'>  <button id='item-2' type='button' role='tab' data-view-component='true' class='UnderlineNav-item'>          <span data-view-component='true'>Item 2</span>    </button></li></ul>      <div data-view-component='true' class='UnderlineNav-actions'>    <button type='button' data-view-component='true' class='btn'>    Button!  </button></div></div>      <div role='tabpanel' tabindex='0' aria-labelledby='item-1' data-view-component='true'>      Panel 1</div>      <div role='tabpanel' tabindex='0' hidden='hidden' aria-labelledby='item-2' data-view-component='true'>      Panel 2</div></tab-container>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(label: "With panels", with_panel: true)) do |component| %>
-  <% component.tab(selected: true) do |t| %>
+  <% component.tab(id: "item-1", selected: true) do |t| %>
     <% t.text { "Item 1" } %>
     <% t.panel do %>
       Panel 1
     <% end %>
   <% end %>
-  <% component.tab do |t| %>
+  <% component.tab(id: "item-2") do |t| %>
     <% t.text { "Item 2" } %>
     <% t.panel do %>
       Panel 2
