@@ -106,7 +106,7 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)
       @system_arguments = system_arguments
-      @system_arguments[:tag] ||= :div # rubocop:disable Primer/NoTagMemoize
+      @system_arguments[:tag] = :div
       @system_arguments[:classes] = class_names(
         system_arguments[:classes],
         "Popover"
