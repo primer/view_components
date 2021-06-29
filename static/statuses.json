@@ -27,7 +27,7 @@
   "Primer::FlexComponent": "deprecated",
   "Primer::FlexItemComponent": "deprecated",
   "Primer::HeadingComponent": "beta",
-  "Primer::HellipButton": "deprecated",
+  "Primer::HellipButton": "alpha",
   "Primer::HiddenTextExpander": "alpha",
   "Primer::IconButton": "beta",
   "Primer::Image": "alpha",
