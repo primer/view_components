@@ -35,7 +35,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Restrict tag for `Popover` to `:div`.
 
     *Kate Higa*
-    
+
 ### Misc
 
 * Update `doc_examples_axe_test` to exclude non-standalone components and fix `Markdown` example.
