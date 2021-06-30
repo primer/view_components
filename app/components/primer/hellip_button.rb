@@ -27,7 +27,6 @@ module Primer
       @system_arguments[:tag] = :button
       @system_arguments[:"aria-expanded"] = false
       @system_arguments[:classes] = class_names(
-        "hellip-button",
         @system_arguments[:classes],
         "inline" => inline
       )

@@ -15,7 +15,7 @@ Use `HellipButton` to render a button with an hellip. Often used for hidden text
 
 Always set an accessible label to help the user interact with the component.
 
-* This button is displaying an hellip as its content (The three dot character). Therefor a label is needed for screen readers.
+* This button is displaying an hellip as its content (The three dots character). Therefore a label is needed for screen readers.
 * Set the attribute `aria-label` on the system arguments. E.g. `Primer::HellipButton.new("aria-label": "Expend next part")`
 
 ## Arguments
@@ -29,7 +29,7 @@ Always set an accessible label to help the user interact with the component.
 
 ### Default
 
-<Example src="<button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true' class='hellip-button'>&hellip;</button>" />
+<Example src="<button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true'>&hellip;</button>" />
 
 ```erb
 <%= render(Primer::HellipButton.new("aria-label": "No effect")) %>
@@ -37,7 +37,7 @@ Always set an accessible label to help the user interact with the component.
 
 ### Inline
 
-<Example src="<button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true' class='hellip-button inline'>&hellip;</button>" />
+<Example src="<button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true' class='inline'>&hellip;</button>" />
 
 ```erb
 <%= render(Primer::HellipButton.new(inline: true, "aria-label": "No effect")) %>
@@ -45,7 +45,7 @@ Always set an accessible label to help the user interact with the component.
 
 ### Styling the button
 
-<Example src="<button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true' class='hellip-button custom-class p-1'>&hellip;</button>" />
+<Example src="<button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true' class='custom-class p-1'>&hellip;</button>" />
 
 ```erb
 <%= render(Primer::HellipButton.new(p: 1, classes: "custom-class", "aria-label": "No effect")) %>
