@@ -54,6 +54,8 @@
       url: /components/flexitem
     - title: Heading
       url: /components/heading
+    - title: HellipButton
+      url: /components/hellipbutton
     - title: HiddenTextExpander
       url: /components/hiddentextexpander
     - title: Image
@@ -104,5 +106,3 @@
       url: /components/truncate
     - title: UnderlineNav
       url: /components/underlinenav
-    - title: HellipButton - Fix my order in docs/src/@primer/gatsby-theme-doctocat/nav.yml
-      url: /components/hellipbutton
