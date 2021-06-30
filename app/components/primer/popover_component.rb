@@ -23,12 +23,15 @@ module Primer
       :top_right => "Popover-message--top-right"
     }.freeze
 
+    DEFAULT_HEADING_TAG = :h4
+
     # The heading
     #
+    # @param tag [Symbol] (Primer::PopoverComponent::DEFAULT_HEADING_TAG) <%= one_of(Primer::HeadingComponent::TAG_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_one :heading, lambda { |**system_arguments|
+    renders_one :heading, lambda { |tag: DEFAULT_HEADING_TAG, **system_arguments|
+      system_arguments[:tag] = tag
       system_arguments[:mb] ||= 2
-      system_arguments[:tag] ||= :h4 # rubocop:disable Primer/NoTagMemoize
 
       Primer::HeadingComponent.new(**system_arguments)
     }

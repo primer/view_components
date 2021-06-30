@@ -32,7 +32,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Breaking changes
 
-* Restrict tag for `Popover` to `:div`.
+* Restrict tag for `Popover` to `:div` and `Popover` heading slot to headings.
 
     *Kate Higa*
 

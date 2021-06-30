@@ -29,7 +29,7 @@ module Primer
 
     # Use the Body slot as the main content to be shown when triggered by the Summary.
     #
-    # @param tag [String] (Primer::DetailsComponent::BODY_TAG_DEFAULT) <%= one_of(Primer::DetailsComponent::BODY_TAG_OPTIONS) %>
+    # @param tag [Symbol] (Primer::DetailsComponent::BODY_TAG_DEFAULT) <%= one_of(Primer::DetailsComponent::BODY_TAG_OPTIONS) %>
     # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
     renders_one :body, lambda { |tag: BODY_TAG_DEFAULT, **system_arguments|
       system_arguments[:tag] = fetch_or_fallback(BODY_TAG_OPTIONS, tag, BODY_TAG_DEFAULT)
