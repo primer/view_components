@@ -41,10 +41,10 @@ module Primer
     #
     #   <%= render Primer::DetailsComponent.new do |c| %>
     #     <% c.summary do %>
-    #       "Summary"
+    #       Summary
     #     <% end %>
     #     <% c.body do %>
-    #       "Body"
+    #       Body
     #     <% end %>
     #   <% end %>
     #
