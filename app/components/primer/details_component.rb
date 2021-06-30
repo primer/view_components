@@ -40,12 +40,12 @@ module Primer
     # @example Default
     #
     #   <%= render Primer::DetailsComponent.new do |c| %>
-    #     component.summary do
+    #     <% c.summary do %>
     #       "Summary"
-    #     end
-    #     component.body do
+    #     <% end %>
+    #     <% c.body do %>
     #       "Body"
-    #     end
+    #     <% end %>
     #   <% end %>
     #
     # @param overlay [Symbol] Dictates the type of overlay to render with. <%= one_of(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys) %>

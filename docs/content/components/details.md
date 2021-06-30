@@ -43,16 +43,16 @@ Use the Body slot as the main content to be shown when triggered by the Summary.
 
 ### Default
 
-<Example src="" />
+<Example src="<details data-view-component='true'>  <summary role='button' data-view-component='true' class='btn'>        'Summary'  </summary>  <div data-view-component='true'>    'Body'</div></details>" />
 
 ```erb
 
 <%= render Primer::DetailsComponent.new do |c| %>
-  component.summary do
+  <% c.summary do %>
     "Summary"
-  end
-  component.body do
+  <% end %>
+  <% c.body do %>
     "Body"
-  end
+  <% end %>
 <% end %>
 ```
