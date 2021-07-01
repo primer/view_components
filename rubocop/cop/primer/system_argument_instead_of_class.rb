@@ -2,6 +2,7 @@
 
 require "rubocop"
 require "primer/classify/utilities"
+require "primer/view_components/statuses"
 
 module RuboCop
   module Cop
@@ -20,7 +21,7 @@ module RuboCop
 
         def on_send(node)
           return unless node.method_name == :new
-          return unless node.receiver.const_name == "Primer::ButtonComponent"
+          return unless ::Primer::ViewComponents::STATUSES.key?(node.receiver.const_name)
           return unless node.arguments?
 
           # we are looking for hash arguments and they are always last
@@ -35,8 +36,6 @@ module RuboCop
 
           # get actual classes
           classes = classes_arg.value.value
-
-          require "pry"
 
           system_arguments = ::Primer::Classify::Utilities.classes_to_hash(classes)
 
