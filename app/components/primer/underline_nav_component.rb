@@ -38,7 +38,7 @@ module Primer
 
     # Use actions for a call to action.
     #
-    # @param tag [String] (Primer::UnderlineNavComponent::ACTIONS_TAG_DEFAULT) <%= one_of(Primer::UnderlineNavComponent::ACTIONS_TAG_OPTIONS) %>
+    # @param tag [Symbol] (Primer::UnderlineNavComponent::ACTIONS_TAG_DEFAULT) <%= one_of(Primer::UnderlineNavComponent::ACTIONS_TAG_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :actions, lambda { |tag: ACTIONS_TAG_DEFAULT, **system_arguments|
       system_arguments[:tag] = fetch_or_fallback(ACTIONS_TAG_OPTIONS, tag, ACTIONS_TAG_DEFAULT)

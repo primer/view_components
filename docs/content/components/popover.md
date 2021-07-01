@@ -27,6 +27,7 @@ The heading
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `tag` | `Symbol` | `:h4` | One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `Body`

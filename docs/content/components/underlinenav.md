@@ -45,7 +45,7 @@ Use actions for a call to action.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `tag` | `String` | `:div` | One of `:div` and `:span`. |
+| `tag` | `Symbol` | `:div` | One of `:div` and `:span`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Examples
