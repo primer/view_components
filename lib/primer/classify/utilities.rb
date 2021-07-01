@@ -5,13 +5,24 @@ module Primer
   class Classify
     # Handler for PrimerCSS utility classes loaded from utilities.rake
     class Utilities
+      # Load the utilities.yml file.
+      # Disabling because we want to load symbols, strings, and integers from the .yml file
+      # rubocop:disable Security/YAMLLoad
+      UTILITIES = YAML.load(
+        File.read(
+          File.join(File.dirname(__FILE__), "./utilities.yml")
+        )
+      ).freeze
+      # rubocop:enable Security/YAMLLoad
+      BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
+
       class << self
         def classname(key, val, breakpoint = "")
           if (valid = validate(key, val, breakpoint))
             valid
           else
             # Get selector
-            Primer::Classify::UTILITIES[key][val][Primer::Classify::BREAKPOINTS.index(breakpoint)]
+            UTILITIES[key][val][BREAKPOINTS.index(breakpoint)]
           end
         end
 
@@ -19,14 +30,14 @@ module Primer
         #
         # returns Boolean
         def supported_key?(key)
-          Primer::Classify::UTILITIES[key].present?
+          UTILITIES[key].present?
         end
 
         # Does the Utilitiy class support the given key and value
         #
         # returns Boolean
         def supported_value?(key, val)
-          supported_key?(key) && Primer::Classify::UTILITIES[key][val].present?
+          supported_key?(key) && UTILITIES[key][val].present?
         end
 
         # Does the given selector exist in the utilities file
@@ -34,7 +45,7 @@ module Primer
         # returns Boolean
         def supported_selector?(selector)
           # This method is too slow to run in production
-          return false if Rails.env.production?
+          return false if ENV["RAILS_ENV"] == "production"
 
           find_selector(selector).present?
         end
@@ -43,7 +54,7 @@ module Primer
         #
         # returns Boolean
         def responsive?(key, val)
-          supported_value?(key, val) && Primer::Classify::UTILITIES[key][val].count > 1
+          supported_value?(key, val) && UTILITIES[key][val].count > 1
         end
 
         # Get the options for the given key
@@ -52,13 +63,13 @@ module Primer
         def mappings(key)
           return unless supported_key?(key)
 
-          Primer::Classify::UTILITIES[key].keys
+          UTILITIES[key].keys
         end
 
         # Extract hash from classes ie. "mr-1 mb-2 foo" => { mr: 1, mb: 2, classes: "foo" }
         def classes_to_hash(classes)
           # This method is too slow to run in production
-          return { classes: classes } if Rails.env.production?
+          return { classes: classes } if ENV["RAILS_ENV"] == "production"
 
           obj = {}
           classes = classes.split(" ")
@@ -94,7 +105,7 @@ module Primer
 
         def find_selector(selector)
           # Search each key/value_hash pair, eg. key `:mr` and value_hash `{ 0 => [ "mr-0", "mr-sm-0", "mr-md-0", "mr-lg-0", "mr-xl-0" ] }`
-          Primer::Classify::UTILITIES.each do |key, value_hash|
+          UTILITIES.each do |key, value_hash|
             # Each value hash will also contain an array of classnames for breakpoints
             # Key argument `0`, classes `[ "mr-0", "mr-sm-0", "mr-md-0", "mr-lg-0", "mr-xl-0" ]`
             value_hash.each do |key_argument, classnames|
@@ -112,19 +123,19 @@ module Primer
 
         def validate(key, val, breakpoint)
           unless supported_key?(key)
-            raise ArgumentError, "#{key} is not a valid Primer utility key" unless Rails.env.production?
+            raise ArgumentError, "#{key} is not a valid Primer utility key" unless ENV["RAILS_ENV"] == "production"
 
             return ""
           end
 
           unless breakpoint.empty? || responsive?(key, val)
-            raise ArgumentError, "#{key} does not support responsive values" unless Rails.env.production?
+            raise ArgumentError, "#{key} does not support responsive values" unless ENV["RAILS_ENV"] == "production"
 
             return ""
           end
 
           unless supported_value?(key, val)
-            raise ArgumentError, "#{val} is not a valid value for :#{key}. Use one of #{mappings(key)}" unless Rails.env.production?
+            raise ArgumentError, "#{val} is not a valid value for :#{key}. Use one of #{mappings(key)}" unless ENV["RAILS_ENV"] == "production"
 
             return ""
           end

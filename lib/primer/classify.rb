@@ -11,16 +11,6 @@ require_relative "classify/utilities"
 module Primer
   # :nodoc:
   class Classify
-    # Load the utilities.yml file.
-    # Disabling because we want to load symbols, strings, and integers from the .yml file
-    # rubocop:disable Security/YAMLLoad
-    UTILITIES = YAML.load(
-      File.read(
-        File.join(File.dirname(__FILE__), "./classify/utilities.yml")
-      )
-    ).freeze
-    # rubocop:enable Security/YAMLLoad
-
     # Keys where we can simply translate { key: value } into ".key-value"
     CONCAT_KEYS = %i[text box_shadow].freeze
 
@@ -90,7 +80,7 @@ module Primer
     BORDER_RADIUS_KEY = :border_radius
     TYPOGRAPHY_KEYS = [:font_size].freeze
     VALID_KEYS = (
-      UTILITIES.keys +
+      Primer::Classify::Utilities::UTILITIES.keys +
       CONCAT_KEYS +
       BOOLEAN_MAPPINGS.keys +
       BORDER_MARGIN_KEYS +
