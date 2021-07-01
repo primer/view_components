@@ -10,7 +10,7 @@ module Primer
         yield
       end
     ensure
-      ENV["RAILS_ENV"] == old_env
+      ENV["RAILS_ENV"] = old_env
     end
   end
 end
