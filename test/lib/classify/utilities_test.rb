@@ -3,6 +3,7 @@
 require "test_helper"
 
 class PrimerClassifyUtilitiesTest < Minitest::Test
+  include Primer::EnvHelper
   def test_supported_key
     assert Primer::Classify::Utilities.supported_key?(:m)
     refute Primer::Classify::Utilities.supported_key?(:flex)
@@ -19,7 +20,7 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
   end
 
   def test_supported_selector_returns_nil_in_production
-    Rails.stub(:env, ActiveSupport::StringInquirer.new("production")) do
+    with_env("production") do
       refute Primer::Classify::Utilities.supported_selector?("m-1")
       refute Primer::Classify::Utilities.supported_selector?("foo")
     end
@@ -36,7 +37,7 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
   end
 
   def test_classname_returns_empty_string_when_incorrect_value_in_production
-    Rails.stub(:env, ActiveSupport::StringInquirer.new("production")) do
+    with_env("production") do
       assert_equal "mr-1", Primer::Classify::Utilities.classname(:mr, 1)
       assert_equal "", Primer::Classify::Utilities.classname(:mr, :foo)
     end
@@ -51,7 +52,7 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
   end
 
   def test_classes_to_hash_returns_classes_when_run_in_production
-    Rails.stub(:env, ActiveSupport::StringInquirer.new("production")) do
+    with_env("production") do
       assert_equal({ classes: "mr-1 mr-md-2 foo bar" }, Primer::Classify::Utilities.classes_to_hash("mr-1 mr-md-2 foo bar"))
     end
   end
