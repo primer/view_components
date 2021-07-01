@@ -5,3 +5,12 @@ linters:
     enabled: true
   FlashComponentMigrationCounter:
     enabled: true
+  Rubocop:
+    enabled: true
+    rubocop_config:
+      require:
+        - ./rubocop/cop/primer/system_argument_instead_of_class.rb
+      AllCops:
+        DisabledByDefault: true
+      Primer/SystemArgumentInsteadOfClass:
+        Enabled: true
