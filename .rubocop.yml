@@ -56,3 +56,6 @@ Primer/NoTagMemoize:
   Enabled: true
   Include:
     - "app/components/**/*"
+
+Primer/SystemArgumentInsteadOfClass:
+  Enabled: true
