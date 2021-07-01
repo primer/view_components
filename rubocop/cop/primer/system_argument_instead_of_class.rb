@@ -33,6 +33,7 @@ module RuboCop
           classes_arg = kwargs.pairs.find { |kwarg| kwarg.key.value == :classes }
 
           return if classes_arg.nil?
+          return unless classes_arg.value.type == :str
 
           # get actual classes
           classes = classes_arg.value.value

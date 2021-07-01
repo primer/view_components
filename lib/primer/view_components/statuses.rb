@@ -5,7 +5,7 @@ require "json"
 module Primer
   # :nodoc:
   module ViewComponents
-    STATUSES = UTILITIES = JSON.parse(
+    STATUSES = JSON.parse(
       File.read(
         File.join(File.dirname(__FILE__), "../../../static/statuses.json")
       )
