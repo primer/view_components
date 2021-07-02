@@ -66,7 +66,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Amélia Chavot* & *Manuel Puyol*
 
-* Fix a typo on a command on the contributiong page.
+* Fix a typo on a command on the contribution page.
 
     *Amélia Chavot*
 
