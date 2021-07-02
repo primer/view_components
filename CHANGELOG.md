@@ -1,6 +1,52 @@
 # CHANGELOG
 
+<!--
+Authoring changelog entries
+
+This file holds all the changes made in previous versions of Primer View Components and the ones coming to the next version.
+To add yours, you need to find in which category to write it under the `main` section. `Main` is the first section on top of the document.
+There are six categories currently in use, `New`, `Updates`, `Bug fixes`, `Breaking changes`, `Deprecations` and `Misc`.
+
+- New
+Category for new components, system behaviours, options and arguments changes
+
+- Updates
+Every non-breaking change to the source code go there.
+
+- Bug Fixes
+Non-breaking bug fixes to existing code.
+
+- Breaking Changes
+The category for changes creating incompatibilities to code written with previous versions.
+It includes any changes to components name, signature and behaviour. Also, include removing tags options or changing file location.
+If you are not sure you made breaking changes, ask us in your pull request.
+
+- Deprecations
+For changes that explicitly deprecate part of the code base.
+
+- Misc
+The category for changes related to documentation, testing and tooling. Also, for pull requests that can't fit in other sections.
+-->
+
 ## main
+
+### Breaking changes
+
+* Restrict tag for `Popover` to `:div` and `Popover` heading slot to headings.
+
+    *Kate Higa*
+
+### Misc
+
+* Update `doc_examples_axe_test` to exclude non-standalone components and fix `Markdown` example.
+
+    *Kate Higa*
+
+* Update `DetailsComponent` examples.
+
+    *Manuel Puyol*
+
+## 0.0.46
 
 ### Updates
 
@@ -13,6 +59,10 @@
     *Joel Hawksley*
 
 ### Breaking changes
+
+* Restrict `TabNav`and `Tab` tags.
+
+    *Kate Higa*
 
 * Restrict `AvatarStack` body slot tag and `ImageCrop` spinner tag.
 
@@ -51,6 +101,10 @@
 * Update Storybook version.
 
     *Manuel Puyol*
+
+* Added a changelog authoring guide to `CHANGELOG.md`.
+
+    *Amélia Chavot*
 
 ## 0.0.45
 

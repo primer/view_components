@@ -3,11 +3,9 @@
 require "application_system_test_case"
 
 class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
-  # Skip components that should be tested as part of a lartest/system/doc_examples_axe_test.rbger component.
-  NOT_STANDALONE = [:AutoCompleteItemPreview].freeze
-
-  # Starting point violations to be addressed. Do not add to this list!
-  STARTING_POINT_VIOLATIONS = [:MarkdownPreview, :TabComponentPreview, :NavigationTabComponentPreview].freeze
+  # Skip components that should be tested as part of a larger component.
+  # Do not add to this list for any other reason!
+  NOT_STANDALONE = [:AutoCompleteItemPreview, :NavigationTabComponentPreview].freeze
 
   def test_accessibility_of_doc_examples
     # Workaround to ensure that all component previews are loaded.
@@ -20,7 +18,7 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
     puts "============================================================================="
 
     Primer::Docs.constants.each do |klass|
-      next if NOT_STANDALONE.include?(klass) || STARTING_POINT_VIOLATIONS.include?(klass)
+      next if NOT_STANDALONE.include?(klass)
 
       component_previews = Primer::Docs.const_get(klass).instance_methods(false)
       component_uri = klass.to_s.underscore.gsub("_preview", "")
@@ -38,9 +36,5 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
         end
       end
     end
-    puts "=========================================================================="
-    puts "The following component previews contain axe violation. Please open a fix for them:"
-    puts STARTING_POINT_VIOLATIONS.join("\n")
-    puts "=========================================================================="
   end
 end

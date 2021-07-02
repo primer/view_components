@@ -36,23 +36,23 @@ Use the Body slot as the main content to be shown when triggered by the Summary.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `tag` | `String` | `:div` | One of `:details-dialog`, `:details-menu`, `:div`, or `:ul`. |
+| `tag` | `Symbol` | `:div` | One of `:details-dialog`, `:details-menu`, `:div`, or `:ul`. |
 | `kwargs` | `Hash` | N/A | The same arguments as [System arguments](/system-arguments). |
 
 ## Examples
 
 ### Default
 
-<Example src="" />
+<Example src="<details data-view-component='true'>  <summary role='button' data-view-component='true' class='btn'>        Summary  </summary>  <div data-view-component='true'>    Body</div></details>" />
 
 ```erb
 
 <%= render Primer::DetailsComponent.new do |c| %>
-  component.summary do
-    "Summary"
-  end
-  component.body do
-    "Body"
-  end
+  <% c.summary do %>
+    Summary
+  <% end %>
+  <% c.body do %>
+    Body
+  <% end %>
 <% end %>
 ```
