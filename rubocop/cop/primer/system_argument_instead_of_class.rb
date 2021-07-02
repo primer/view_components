@@ -16,7 +16,7 @@ module RuboCop
       # Component.new(mr: 1)
       class SystemArgumentInsteadOfClass < RuboCop::Cop::Cop
         INVALID_MESSAGE = <<~STR
-          Avoid using CSS classes when you can use System Arguments.
+          Avoid using CSS classes when you can use System Arguments: https://primer.style/view-components/system-arguments.
         STR
 
         def on_send(node)
