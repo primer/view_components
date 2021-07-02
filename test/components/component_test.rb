@@ -46,7 +46,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::FlashComponent, {}],
     [Primer::FlexItemComponent, { flex_auto: true }],
     [Primer::HeadingComponent, { tag: :h1 }],
-    [Primer::HiddenTextExpander, {}],
+    [Primer::HiddenTextExpander, { "aria-label": "No action" }],
     [Primer::LabelComponent, { title: "Hello!" }],
     [Primer::LayoutComponent, {}],
     [Primer::LinkComponent, { href: "https://www.google.com" }],

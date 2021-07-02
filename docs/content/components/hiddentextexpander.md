@@ -23,24 +23,24 @@ Use `HiddenTextExpander` to indicate and toggle hidden text.
 
 ### Default
 
-<Example src="<span data-view-component='true' class='hidden-text-expander'><button aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander'>&hellip;</button></span>" />
+<Example src="<span aria-label='No effect' data-view-component='true' class='hidden-text-expander'><button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander'>&hellip;</button></span>" />
 
 ```erb
-<%= render(Primer::HiddenTextExpander.new) %>
+<%= render(Primer::HiddenTextExpander.new("aria-label": "No effect")) %>
 ```
 
 ### Inline
 
-<Example src="<span data-view-component='true' class='hidden-text-expander inline'><button aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander'>&hellip;</button></span>" />
+<Example src="<span aria-label='No effect' data-view-component='true' class='hidden-text-expander inline'><button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander'>&hellip;</button></span>" />
 
 ```erb
-<%= render(Primer::HiddenTextExpander.new(inline: true)) %>
+<%= render(Primer::HiddenTextExpander.new(inline: true, "aria-label": "No effect")) %>
 ```
 
 ### Styling the button
 
-<Example src="<span data-view-component='true' class='hidden-text-expander'><button aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander custom-class p-1'>&hellip;</button></span>" />
+<Example src="<span aria-label='No effect' data-view-component='true' class='hidden-text-expander'><button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true' class='custom-class ellipsis-expander p-1'>&hellip;</button></span>" />
 
 ```erb
-<%= render(Primer::HiddenTextExpander.new(button_arguments: { p: 1, classes: "custom-class" })) %>
+<%= render(Primer::HiddenTextExpander.new("aria-label": "No effect", button_arguments: { p: 1, classes: "custom-class" })) %>
 ```
