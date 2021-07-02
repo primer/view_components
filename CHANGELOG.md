@@ -46,6 +46,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Add linter to suggest system arguments instead of classes.
+
+    *Manuel Puyol*
+
 ## 0.0.46
 
 ### Updates
