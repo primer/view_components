@@ -6,6 +6,7 @@ class Primer::HellipButtonStories < ViewComponent::Storybook::Stories
   story(:hellip_button) do
     controls do
       inline false
+      aria(label: "No action")
     end
   end
 end

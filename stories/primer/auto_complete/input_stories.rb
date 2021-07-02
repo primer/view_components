@@ -6,7 +6,7 @@ class Primer::AutoComplete::InputStories < ViewComponent::Storybook::Stories
   story(:auto_complete_input) do
     controls do
       text(:type, "text")
-      text(:"aria-label", "Search fruits")
+      aria(label: "Search fruits")
     end
   end
 end
