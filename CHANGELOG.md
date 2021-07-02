@@ -30,11 +30,27 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Add the `HellipButton` component
+
+    *Amélia Chavot*
+
+### Update
+
+* Update the `HiddenTextExpander` component to use the `HellipButton`.
+
+    *Amélia Chavot*
+
 ### Breaking changes
 
 * Restrict tag for `Popover` to `:div` and `Popover` heading slot to headings.
 
     *Kate Higa*
+
+* Require an `aria-label` to be provided for the `HiddenTextExpander` component.
+
+    *Amélia Chavot*
 
 ### Misc
 
@@ -45,6 +61,14 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Update `DetailsComponent` examples.
 
     *Manuel Puyol*
+
+* Fix components not rendering in Storybook because of kebab case arguments.
+
+    *Amélia Chavot* & *Manuel Puyol*
+
+* Fix a typo on a command on the contributiong page.
+
+    *Amélia Chavot*
 
 ## 0.0.46
 
@@ -102,7 +126,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
-* Added a changelog authoring guide to `CHANGELOG.md`.
+* Add a changelog authoring guide to `CHANGELOG.md`.
 
     *Amélia Chavot*
 
