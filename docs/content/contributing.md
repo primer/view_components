@@ -44,7 +44,7 @@ system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
 
 ## Testing
 
-Before running the whole test suite with Rake: `bundle exec rake`, you must run `bundle exec docs:preview`.
+Before running the whole test suite with Rake: `bundle exec rake`, you must run `bundle exec rake docs:preview`.
 
 Run a subset of tests by supplying a file glob to the test command: `TESTS="test/components/YOUR_COMPONENT_test.rb" bundle exec rake`
 

@@ -54,6 +54,8 @@
       url: /components/flexitem
     - title: Heading
       url: /components/heading
+    - title: HellipButton
+      url: /components/hellipbutton
     - title: HiddenTextExpander
       url: /components/hiddentextexpander
     - title: Image

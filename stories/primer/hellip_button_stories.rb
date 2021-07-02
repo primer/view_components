@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class Primer::HiddenTextExpanderStories < ViewComponent::Storybook::Stories
+class Primer::HellipButtonStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
-  story(:hidden_text_expander) do
+  story(:hellip_button) do
     controls do
       inline false
       aria(label: "No action")
