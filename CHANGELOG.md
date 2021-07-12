@@ -37,8 +37,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
     *Kate Higa*
 
 * Renames:
-    * `Primer::AutoComplete` to `Primer::Beta::AutoComplete`
-    * `Primer::AutoComplete::Item` to `Primer::Beta::AutoComplete::Item`
+  * `Primer::AutoComplete` to `Primer::Beta::AutoComplete`
+  * `Primer::AutoComplete::Item` to `Primer::Beta::AutoComplete::Item`
 
     *Manuel Puyol*
 
