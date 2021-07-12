@@ -346,6 +346,7 @@ namespace :docs do
   end
 
   def generate_yard_registry
+    ENV["SKIP_STORYBOOK_PRELOAD"] = "1"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
     require "primer/view_components"
     require "yard/docs_helper"
@@ -354,6 +355,7 @@ namespace :docs do
     include Primer::ViewHelper
     include YARD::DocsHelper
 
+    binding.irb
     Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
 
     YARD::Rake::YardocTask.new
