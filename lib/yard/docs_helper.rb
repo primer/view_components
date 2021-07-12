@@ -41,7 +41,7 @@ module YARD
     end
 
     def link_to_component(component)
-      short_name = component.name.gsub(/Primer|::|Component/, "")
+      short_name = component.name.gsub(/Primer|::|Alpha|Beta|Component/, "")
       "[#{short_name}](/components/#{short_name.downcase})"
     end
 

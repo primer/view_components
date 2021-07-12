@@ -32,8 +32,8 @@ namespace :docs do
       Primer::OcticonSymbolsComponent,
       Primer::ImageCrop,
       Primer::IconButton,
-      Primer::AutoComplete,
-      Primer::AutoComplete::Item,
+      Primer::Beta::AutoComplete,
+      Primer::Beta::AutoComplete::Item,
       Primer::AvatarComponent,
       Primer::AvatarStackComponent,
       Primer::BaseButton,
@@ -81,7 +81,7 @@ namespace :docs do
       Primer::Dropdown,
       Primer::LocalTime,
       Primer::ImageCrop,
-      Primer::AutoComplete,
+      Primer::Beta::AutoComplete,
       Primer::ClipboardCopy,
       Primer::TabContainerComponent,
       Primer::TabNavComponent,
@@ -355,7 +355,6 @@ namespace :docs do
     include Primer::ViewHelper
     include YARD::DocsHelper
 
-    binding.irb
     Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
 
     YARD::Rake::YardocTask.new
