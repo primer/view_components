@@ -1,8 +1,8 @@
 {
   "Primer::Alpha::ButtonMarketing": "alpha",
-  "Primer::AutoComplete": "beta",
-  "Primer::AutoComplete::Input": "alpha",
-  "Primer::AutoComplete::Item": "beta",
+  "Primer::Beta::AutoComplete": "beta",
+  "Primer::Beta::AutoComplete::Input": "alpha",
+  "Primer::Beta::AutoComplete::Item": "beta",
   "Primer::AvatarComponent": "beta",
   "Primer::AvatarStackComponent": "beta",
   "Primer::BaseButton": "beta",

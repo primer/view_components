@@ -13,9 +13,9 @@
   url: /components
   children:
     - title: AutoComplete
-      url: /components/autocomplete
+      url: /components/betaautocomplete
     - title: AutoCompleteItem
-      url: /components/autocompleteitem
+      url: /components/betaautocompleteitem
     - title: Avatar
       url: /components/avatar
     - title: AvatarStack

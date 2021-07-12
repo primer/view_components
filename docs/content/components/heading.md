@@ -13,7 +13,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 - Set tag to one of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, `:h6` based on what is appropriate for the page context.
 - Use `Heading` as the title of a section or sub section.
-- Do not use `Heading` for styling alone. For simply styling text, consider using [BetaText](/components/betatext) with relevant [Typography](/system-arguments#typography)
+- Do not use `Heading` for styling alone. For simply styling text, consider using [Text](/components/text) with relevant [Typography](/system-arguments#typography)
   such as `font_size` and `font_weight`.
 - Do not jump heading levels. For instance, do not follow a `<h1>` with an `<h3>`. Heading levels should increase by one in ascending order.
 
