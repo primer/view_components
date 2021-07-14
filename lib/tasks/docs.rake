@@ -32,8 +32,8 @@ namespace :docs do
       Primer::OcticonSymbolsComponent,
       Primer::ImageCrop,
       Primer::IconButton,
-      Primer::AutoComplete,
-      Primer::AutoComplete::Item,
+      Primer::Beta::AutoComplete,
+      Primer::Beta::AutoComplete::Item,
       Primer::AvatarComponent,
       Primer::AvatarStackComponent,
       Primer::BaseButton,
@@ -81,7 +81,7 @@ namespace :docs do
       Primer::Dropdown,
       Primer::LocalTime,
       Primer::ImageCrop,
-      Primer::AutoComplete,
+      Primer::Beta::AutoComplete,
       Primer::ClipboardCopy,
       Primer::TabContainerComponent,
       Primer::TabNavComponent,
@@ -346,6 +346,7 @@ namespace :docs do
   end
 
   def generate_yard_registry
+    ENV["SKIP_STORYBOOK_PRELOAD"] = "1"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
     require "primer/view_components"
     require "yard/docs_helper"

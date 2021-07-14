@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "primer/auto_complete/item"
+require "primer/beta/auto_complete/item"
 
-class Primer::AutoComplete::ItemStories < ViewComponent::Storybook::Stories
+class Primer::Beta::AutoComplete::ItemStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:auto_complete_item) do

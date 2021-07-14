@@ -116,7 +116,7 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: AutoComplete
+- component: BetaAutoComplete
   source: https://github.com/primer/view_components/tree/main/app/components/primer/auto_complete.rb
   parameters:
   - name: src
@@ -135,7 +135,7 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: AutoCompleteItem
+- component: BetaAutoCompleteItem
   source: https://github.com/primer/view_components/tree/main/app/components/primer/item.rb
   parameters:
   - name: value
