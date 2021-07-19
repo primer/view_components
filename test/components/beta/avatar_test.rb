@@ -2,61 +2,61 @@
 
 require "test_helper"
 
-class PrimerAvatarComponentTest < Minitest::Test
+class PrimerBetaAvatarTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_an_avatar
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github"))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github"))
 
     assert_selector("img.avatar")
   end
 
   def test_defaults_to_size_20
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github"))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github"))
 
     assert_selector("img.avatar[size=20][height=20][width=20]")
   end
 
   def test_defaults_to_circle_avatar
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github"))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github"))
 
     assert_selector("img.avatar.circle")
   end
 
   def test_defaults_adds_small_modifier_when_size_is_less_than_threshold
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", size: Primer::AvatarComponent::SMALL_THRESHOLD - 1))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", size: Primer::Beta::Avatar::SMALL_THRESHOLD - 1))
 
     assert_selector("img.avatar.avatar-small")
   end
 
   def test_defaults_does_not_add_small_modifier_when_size_is_greater_than_threshold
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", size: Primer::AvatarComponent::SMALL_THRESHOLD + 1))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", size: Primer::Beta::Avatar::SMALL_THRESHOLD + 1))
 
     assert_selector("img.avatar")
     refute_selector(".avatar-small")
   end
 
   def test_adds_custom_classes
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", classes: "custom-class"))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", classes: "custom-class"))
 
     assert_selector("img.avatar.custom-class")
   end
 
   def test_sets_size_height_and_width
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", size: 50))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", size: 50))
 
     assert_selector("img.avatar[size=50][height=50][width=50]")
   end
 
   def test_squared_avatar
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", square: true))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", square: true))
 
     assert_selector("img.avatar")
     refute_selector(".circle")
   end
 
   def test_renders_link_wrapper
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#given-href"))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#given-href"))
 
     assert_selector("a.avatar") do |(a)|
       assert_equal("#given-href", a["href"])
@@ -66,7 +66,7 @@ class PrimerAvatarComponentTest < Minitest::Test
   end
 
   def test_defaults_circle_link_wrapper
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#"))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#"))
 
     assert_selector("a.avatar.circle") do
       assert_selector("img")
@@ -75,7 +75,7 @@ class PrimerAvatarComponentTest < Minitest::Test
   end
 
   def test_squared_link_wrapper
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#", square: true))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#", square: true))
 
     assert_selector("a.avatar") do
       assert_selector("img")
@@ -84,7 +84,7 @@ class PrimerAvatarComponentTest < Minitest::Test
   end
 
   def test_adds_small_modifier_to_link_wrapper_when_size_is_less_than_threshold
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#", size: Primer::AvatarComponent::SMALL_THRESHOLD - 1))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#", size: Primer::Beta::Avatar::SMALL_THRESHOLD - 1))
 
     assert_selector("a.avatar.avatar-small") do
       assert_selector("img")
@@ -93,7 +93,7 @@ class PrimerAvatarComponentTest < Minitest::Test
   end
 
   def test_does_not_add_small_modifier_to_link_wrapper_when_size_is_greater_than_threshold
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#", size: Primer::AvatarComponent::SMALL_THRESHOLD + 1))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#", size: Primer::Beta::Avatar::SMALL_THRESHOLD + 1))
 
     assert_selector("a.avatar") do
       assert_selector("img")
@@ -102,7 +102,7 @@ class PrimerAvatarComponentTest < Minitest::Test
   end
 
   def test_adds_custom_classes_to_link_wrapper
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#", classes: "custom-class"))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#", classes: "custom-class"))
 
     assert_selector("a.avatar.custom-class") do
       assert_selector("img")
@@ -111,7 +111,7 @@ class PrimerAvatarComponentTest < Minitest::Test
   end
 
   def test_clears_link_wrapper_line_height
-    render_inline(Primer::AvatarComponent.new(src: "https://github.com/github.png", alt: "github", href: "#"))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#"))
 
     assert_selector("a.lh-0") do
       assert_selector("img")
@@ -120,6 +120,6 @@ class PrimerAvatarComponentTest < Minitest::Test
   end
 
   def test_status
-    assert_component_state(Primer::AvatarComponent, :beta)
+    assert_component_state(Primer::Beta::Avatar, :beta)
   end
 end

@@ -39,6 +39,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Renames:
   * `Primer::AutoComplete` to `Primer::Beta::AutoComplete`
   * `Primer::AutoComplete::Item` to `Primer::Beta::AutoComplete::Item`
+  * `Primer::AvatarComponent` to `Primer::Beta::Avatar`
 
     *Manuel Puyol*
 

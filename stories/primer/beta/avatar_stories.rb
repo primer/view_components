@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Primer::AvatarComponentStories < ViewComponent::Storybook::Stories
+require "primer/beta/avatar"
+
+class Primer::Beta::AvatarStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:avatar) do
