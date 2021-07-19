@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "../../app/lib/primer/fetch_or_fallback_helper"
 require_relative "classify/cache"
 require_relative "classify/flex"
 require_relative "classify/functional_background_colors"
