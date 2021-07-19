@@ -112,15 +112,12 @@ namespace :docs do
         f.puts("storybook: #{data[:storybook]}")
         f.puts("---")
         f.puts
-        f.puts("import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'")
+        f.puts("import Example from '#{data[:example_path]}'")
 
         initialize_method = documentation.meths.find(&:constructor?)
 
         if js_components.include?(component)
-          require_js_path = "../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash"
-          require_js_path = "../#{require_js_path}" if status_module?(component)
-
-          f.puts("import RequiresJSFlash from '#{require_js_path}'")
+          f.puts("import RequiresJSFlash from '#{data[:require_js_path]}'")
           f.puts
           f.puts("<RequiresJSFlash />")
         end
@@ -405,7 +402,9 @@ namespace :docs do
       status: status.capitalize,
       source: source_url(component),
       storybook: storybook_url(component),
-      path: "docs/content/components/#{status_path}#{short_name.downcase}.md"
+      path: "docs/content/components/#{status_path}#{short_name.downcase}.md",
+      example_path: example_path(component),
+      require_js_path: require_js_path(component)
     }
   end
 
@@ -419,6 +418,18 @@ namespace :docs do
     path = component.name.split("::").map { |n| n.underscore.dasherize }.join("-")
 
     "https://primer.style/view-components/stories/?path=/story/#{path}"
+  end
+
+  def example_path(component)
+    example_path = "../../src/@primer/gatsby-theme-doctocat/components/example"
+    example_path = "../#{example_path}" if status_module?(component)
+    example_path
+  end
+
+  def require_js_path(component)
+    require_js_path = "../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash"
+    require_js_path = "../#{require_js_path}" if status_module?(component)
+    require_js_path
   end
 
   def status_module?(component)

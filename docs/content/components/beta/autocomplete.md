@@ -5,7 +5,7 @@ source: https://github.com/primer/view_components/tree/main/app/components/prime
 storybook: https://primer.style/view-components/stories/?path=/story/primer-beta-auto-complete
 ---
 
-import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
+import Example from '../../../src/@primer/gatsby-theme-doctocat/components/example'
 import RequiresJSFlash from '../../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash'
 
 <RequiresJSFlash />
