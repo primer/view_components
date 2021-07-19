@@ -1,8 +1,8 @@
 ---
 title: ButtonMarketing
 status: Alpha
-source: https://github.com/primer/view_components/tree/main/app/components/primer/button_marketing_component.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-button-marketing-component
+source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/button_marketing.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-alpha-button-marketing
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
@@ -10,6 +10,16 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
+
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `scheme` | `Symbol` | `:default` | One of `:default`, `:outline`, `:primary`, or `:transparent`. |
+| `variant` | `Symbol` | `:default` | One of `:default` and `:large`. |
+| `tag` | `Symbol` | `:button` | One of `:a` and `:button`. |
+| `type` | `Symbol` | `:button` | One of `:button` and `:submit`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Examples
 
@@ -34,13 +44,3 @@ Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, o
 <%= render(Primer::Alpha::ButtonMarketing.new(mr: 2)) { "Default" } %>
 <%= render(Primer::Alpha::ButtonMarketing.new(variant: :large)) { "Large" } %>
 ```
-
-## Arguments
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `scheme` | `Symbol` | `:default` | One of `:default`, `:outline`, `:primary`, or `:transparent`. |
-| `variant` | `Symbol` | `:default` | One of `:default` and `:large`. |
-| `tag` | `Symbol` | `:button` | One of `:a` and `:button`. |
-| `type` | `Symbol` | `:button` | One of `:button` and `:submit`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

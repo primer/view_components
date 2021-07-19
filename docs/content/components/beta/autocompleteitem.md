@@ -1,8 +1,8 @@
 ---
-title: BetaAutoCompleteItem
+title: AutoCompleteItem
 status: Beta
-source: https://github.com/primer/view_components/tree/main/app/components/primer/item.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-beta-auto-complete-item-component
+source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/item.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-beta-auto-complete-item
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

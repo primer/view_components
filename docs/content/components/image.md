@@ -2,7 +2,7 @@
 title: Image
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/image.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-image-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-image
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

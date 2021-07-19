@@ -1,8 +1,8 @@
 ---
 title: Avatar
 status: Beta
-source: https://github.com/primer/view_components/tree/main/app/components/primer/avatar_component.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-avatar-component
+source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/avatar.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-beta-avatar
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

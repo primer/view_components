@@ -2,7 +2,7 @@
 title: Markdown
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/markdown.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-markdown-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-markdown
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

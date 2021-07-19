@@ -2,7 +2,7 @@
 title: Dropdown
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/dropdown.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-dropdown-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-dropdown
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

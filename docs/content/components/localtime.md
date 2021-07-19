@@ -2,7 +2,7 @@
 title: LocalTime
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/local_time.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-local-time-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-local-time
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

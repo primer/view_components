@@ -2,7 +2,7 @@
 title: ClipboardCopy
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/clipboard_copy.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-clipboard-copy-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-clipboard-copy
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
