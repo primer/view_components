@@ -8,12 +8,14 @@ require "active_support/core_ext/string/inflections"
 # Usage:
 #
 # bundle exec thor component_generator my_component_name
-# bundle exec thor component_generator my_component_name -js=some-npm-package
+# bundle exec thor component_generator my_component_name --js some-npm-package
+# bundle exec thor component_generator my_component_name --status beta
 class ComponentGenerator < Thor::Group
   include Thor::Actions
 
   # Define arguments and options
   argument :name
+  class_option :status, default: "alpha", desc: "Status of the component. One of alpha, beta or stable"
   class_option :js, default: nil, desc: "Name of the package to import for this component."
   class_option :inline, type: :boolean, desc: "Use this option to create a #call method instead of generating an ERB template for the component."
 
@@ -22,11 +24,11 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_controller
-    template("templates/component.tt", "app/components/primer/#{underscore_name}.rb")
+    template("templates/component.tt", "#{base_path}/#{underscore_name}.rb")
   end
 
   def create_template
-    template("templates/component.html.tt", "app/components/primer/#{underscore_name}.html.erb") unless inline?
+    template("templates/component.html.tt", "#{base_path}/#{underscore_name}.html.erb") unless inline?
   end
 
   def create_test
@@ -61,11 +63,11 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_ts_file
-    template("templates/component.ts.tt", "app/components/primer/#{underscore_name}.ts") if js_package_name
+    template("templates/component.ts.tt", "#{base_path}/#{underscore_name}.ts") if js_package_name
   end
 
   def import_in_primer_ts
-    append_to_file("app/components/primer/primer.ts", "import './#{underscore_name}'") if js_package_name
+    append_to_file("app/components/primer/primer.ts", "import '#{import_path}/#{underscore_name}'") if js_package_name
   end
 
   def install_js_package
@@ -73,6 +75,22 @@ class ComponentGenerator < Thor::Group
   end
 
   private
+
+  def base_path
+    path = "app/components/primer"
+
+    return path if status == "stable"
+
+    "#{path}/#{status}"
+  end
+
+  def import_path
+    path = "."
+
+    return path if status == "stable"
+
+    "#{path}/#{status}"
+  end
 
   def class_name
     name.camelize
@@ -87,7 +105,7 @@ class ComponentGenerator < Thor::Group
   end
 
   def short_name
-    class_name.gsub("Component", "").downcase
+    class_name.gsub(/Primer|::|Component/, "").downcase
   end
 
   def js_package_name
@@ -96,5 +114,9 @@ class ComponentGenerator < Thor::Group
 
   def inline?
     options[:inline]
+  end
+
+  def status
+    options[:status]
   end
 end
