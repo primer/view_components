@@ -56,6 +56,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Add example for truncating HTML to `Truncate`.
+
+    *Joel Hawksley*
+
 ## 0.0.46
 
 ### Updates
