@@ -24,33 +24,33 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_controller
-    template(controller_template, "#{base_path}/#{underscore_name}.rb")
+    template(controller_template, "app/components/primer/#{status_path}#{underscore_name}.rb")
   end
 
   def create_template
-    template("templates/component.html.tt", "#{base_path}/#{underscore_name}.html.erb") unless inline?
+    template("templates/component.html.tt", "app/components/primer/#{status_path}#{underscore_name}.html.erb") unless inline?
   end
 
   def create_test
-    template("templates/test.tt", "test/components/#{underscore_name}_test.rb")
+    template("templates/test.tt", "#test/components/primer/#{status_path}#{underscore_name}_test.rb")
   end
 
   def create_system_test
-    template("templates/system_test.rb.tt", "test/system/#{underscore_name}_test.rb") if js_package_name
-    template("templates/system_test_preview.rb.tt", "test/components/previews/primer/#{underscore_name}_preview.rb") if js_package_name
+    template("templates/system_test.rb.tt", "test/system/#{status_path}#{underscore_name}_test.rb") if js_package_name
+    template("templates/system_test_preview.rb.tt", "test/components/previews/primer/#{status_path}#{underscore_name}_preview.rb") if js_package_name
   end
 
   def create_stories
-    template("templates/stories.tt", "stories/primer/#{underscore_name}_stories.rb")
+    template("templates/stories.tt", "stories/primer/#{status_path}#{underscore_name}_stories.rb")
   end
 
   def add_to_docs_rakefile
-    insert_into_file("lib/tasks/docs.rake", "      Primer::#{class_name},\n", after: "    components = [\n")
-    insert_into_file("lib/tasks/docs.rake", "      Primer::#{class_name},\n", after: "js_components = [\n", force: true) if js_package_name
+    insert_into_file("lib/tasks/docs.rake", "      Primer::#{status_module}#{class_name},\n", after: "    components = [\n")
+    insert_into_file("lib/tasks/docs.rake", "      Primer::#{status_module}#{class_name},\n", after: "js_components = [\n", force: true) if js_package_name
   end
 
   def add_to_component_test
-    insert_into_file("test/components/component_test.rb", "    [Primer::#{class_name}, {}],\n", after: "COMPONENTS_WITH_ARGS = [\n")
+    insert_into_file("test/components/component_test.rb", "    [Primer::#{status_module}#{class_name}, {}],\n", after: "COMPONENTS_WITH_ARGS = [\n")
   end
 
   def add_to_nav
@@ -63,11 +63,11 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_ts_file
-    template("templates/component.ts.tt", "#{base_path}/#{underscore_name}.ts") if js_package_name
+    template("templates/component.ts.tt", "app/components/primer/#{status_path}#{underscore_name}.ts") if js_package_name
   end
 
   def import_in_primer_ts
-    append_to_file("app/components/primer/primer.ts", "import '#{import_path}/#{underscore_name}'") if js_package_name
+    append_to_file("app/components/primer/primer.ts", "import './#{status_path}#{underscore_name}'") if js_package_name
   end
 
   def install_js_package
@@ -82,21 +82,16 @@ class ComponentGenerator < Thor::Group
     "templates/component.tt"
   end
 
+  def status_path
+    return if status == "stable"
 
-  def base_path
-    path = "app/components/primer"
-
-    return path if status == "stable"
-
-    "#{path}/#{status}"
+    "#{status}/"
   end
 
-  def import_path
-    path = "."
+  def status_module
+    return if status == "stable"
 
-    return path if status == "stable"
-
-    "#{path}/#{status}"
+    "#{status.camelize}::"
   end
 
   def class_name
