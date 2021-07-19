@@ -18,9 +18,21 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :panel, lambda { |**system_arguments|
+        return unless @with_panel
+
         system_arguments[:tag] = :div
         system_arguments[:role] ||= :tabpanel
+        system_arguments[:tabindex] = 0
         system_arguments[:hidden] = true unless @selected
+
+        label_present = system_arguments[:"aria-label"] || system_arguments.dig(:aria, :label) || system_arguments[:"aria-labelledby"] || system_arguments.dig(:aria, :labelledby)
+        unless label_present
+          if @id.present?
+            system_arguments[:"aria-labelledby"] = @id
+          elsif !Rails.env.production?
+            raise ArgumentError, "Panels must be labelled. Either set a unique `id` on the tab, or set an `aria-label` directly on the panel"
+          end
+        end
 
         Primer::BaseComponent.new(**system_arguments)
       }
@@ -93,8 +105,10 @@ module Primer
         @selected = selected
         @icon_classes = icon_classes
         @list = list
+        @with_panel = with_panel
 
         @system_arguments = system_arguments
+        @id = @system_arguments[:id]
 
         if with_panel || @system_arguments[:tag] == :button
           @system_arguments[:tag] = :button
