@@ -24,7 +24,7 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_controller
-    template("templates/component.tt", "#{base_path}/#{underscore_name}.rb")
+    template(controller_template, "#{base_path}/#{underscore_name}.rb")
   end
 
   def create_template
@@ -75,6 +75,13 @@ class ComponentGenerator < Thor::Group
   end
 
   private
+
+  def controller_template
+    "templates/stable_component.tt" if status == "stable"
+
+    "templates/component.tt"
+  end
+
 
   def base_path
     path = "app/components/primer"
