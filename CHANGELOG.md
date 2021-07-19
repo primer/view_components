@@ -60,6 +60,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Joel Hawksley*
 
+* Require fetch_or_fallback helper in classify
+
+    *Jon Rohan*
+
 ## 0.0.46
 
 ### Updates
