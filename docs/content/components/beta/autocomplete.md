@@ -6,7 +6,7 @@ storybook: https://primer.style/view-components/stories/?path=/story/primer-beta
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
-import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash'
+import RequiresJSFlash from '../../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash'
 
 <RequiresJSFlash />
 

@@ -117,7 +117,10 @@ namespace :docs do
         initialize_method = documentation.meths.find(&:constructor?)
 
         if js_components.include?(component)
-          f.puts("import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash'")
+          require_js_path = "../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash"
+          require_js_path = "../#{require_js_path}" if status_module?(component)
+
+          f.puts("import RequiresJSFlash from '#{require_js_path}'")
           f.puts
           f.puts("<RequiresJSFlash />")
         end
@@ -416,5 +419,9 @@ namespace :docs do
     path = component.name.split("::").map { |n| n.underscore.dasherize }.join("-")
 
     "https://primer.style/view-components/stories/?path=/story/#{path}"
+  end
+
+  def status_module?(component)
+    (%w[Alpha Beta] & component.name.split("::")).any?
   end
 end
