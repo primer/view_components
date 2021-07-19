@@ -56,6 +56,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Update component generator to create components in the right status module.
+
+    *Manuel Puyol*
+
 * Add example for truncating HTML to `Truncate`.
 
     *Joel Hawksley*
