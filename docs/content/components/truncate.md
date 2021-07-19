@@ -56,3 +56,13 @@ Use `Truncate` to shorten overflowing text with an ellipsis.
 ```erb
 <%= render(Primer::Truncate.new(tag: :span, inline: true, expandable: true, max_width: 100)) { "branch-name-that-is-really-long" } %>
 ```
+
+### With HTML content
+
+<Example src="<span style='max-width: 100px;' data-view-component='true' class='css-truncate css-truncate-target expandable'>  <span>branch-name-that-is-really-long</span></span>" />
+
+```erb
+<%= render(Primer::Truncate.new(tag: :span, inline: true, expandable: true, max_width: 100)) do %>
+  <span>branch-name-that-is-really-long</span>
+<% end %>
+```
