@@ -154,8 +154,8 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: Avatar
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/avatar_component.rb
+- component: BetaAvatar
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/avatar.rb
   parameters:
   - name: src
     type: String

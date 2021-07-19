@@ -34,7 +34,7 @@ namespace :docs do
       Primer::IconButton,
       Primer::Beta::AutoComplete,
       Primer::Beta::AutoComplete::Item,
-      Primer::AvatarComponent,
+      Primer::Beta::Avatar,
       Primer::AvatarStackComponent,
       Primer::BaseButton,
       Primer::BlankslateComponent,
@@ -100,7 +100,7 @@ namespace :docs do
     components.each do |component|
       documentation = registry.get(component.name)
 
-      # Primer::AvatarComponent => Avatar
+      # Primer::Beta::Avatar => Avatar
       short_name = component.name.gsub(/Primer|::|Component/, "")
 
       path = Pathname.new("docs/content/components/#{short_name.downcase}.md")
