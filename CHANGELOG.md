@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Misc
+
+* Expose custom cops and default config for erblint.
+
+    *Manuel Puyol*
+
 ## 0.0.47
 
 ### Breaking changes
