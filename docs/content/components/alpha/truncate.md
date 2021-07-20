@@ -21,7 +21,7 @@ Use `Truncate` to shorten overflowing text with an ellipsis.
 
 ### `Texts`
 
-
+Text slot used for the truncated text.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |

@@ -6,6 +6,8 @@ module Primer
     class Truncate < Primer::Component
       status :alpha
 
+      # Text slot used for the truncated text.
+      #
       # @param primary [Boolean] if true, the text will be treated as primary
       # @param expandable [Boolean] if true, the text will expand on hover or focus
       # @param max_width [Integer] if provided, the text will be truncated at a maximum width
