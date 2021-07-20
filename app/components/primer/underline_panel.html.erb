@@ -1,19 +1,21 @@
 <%= tab_container_wrapper(**@wrapper_arguments) do %>
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-    <%= extra if @align == :left %>
+    <% if @align == :right %>
+      <%= actions %>
+    <% end %>
 
-    <%= render Primer::BaseComponent.new(**@body_arguments) do %>
+    <%= render body do %>
       <% tabs.each do |tab| %>
         <%= tab %>
       <% end %>
     <% end %>
 
-    <%= extra if @align == :right %>
+    <% if @align == :left %>
+      <%= actions %>
+    <% end %>
   <% end %>
 
-  <% if @with_panel %>
-    <% tabs.each do |tab| %>
-      <%= tab.panel %>
-    <% end %>
+  <% tabs.each do |tab| %>
+    <%= tab.panel %>
   <% end %>
 <% end %>

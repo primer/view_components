@@ -48,6 +48,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Breaking changes
 
+* Break `TabNav` into `TabNav` for page navigation and `TabPanel` for panel navigation.
+
+    *Kate Higa
+
 * Ensure panels in `Navigation::Tab` have a label.
 
     *Kate Higa*

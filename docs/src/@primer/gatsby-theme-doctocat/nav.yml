@@ -106,3 +106,5 @@
       url: /components/truncate
     - title: UnderlineNav
       url: /components/underlinenav
+    - title: UnderlinePanel
+      url: /components/underlinepanel
