@@ -26,6 +26,17 @@ class PrimerNavigationTabComponentTest < Minitest::Test
     end
   end
 
+  def test_raises_if_panel_has_no_label
+    err = assert_raises ArgumentError do
+      render_inline Primer::Navigation::TabComponent.new(with_panel: true) do |c|
+        c.text { "Title" }
+        c.panel { "content" }
+      end
+    end
+
+    assert_equal("Panels must be labelled. Either set a unique `id` on the tab, or set an `aria-label` directly on the panel", err.message)
+  end
+
   def test_renders_octicon
     render_inline Primer::Navigation::TabComponent.new do |c|
       c.icon(icon: :star)

@@ -127,17 +127,17 @@ Use actions for a call to action.
 
 ### With panels
 
-<Example src="<tab-container data-view-component='true'>  <div data-view-component='true' class='UnderlineNav'>    <div role='tablist' aria-label='With panels' data-view-component='true' class='UnderlineNav-body'>          <button type='button' role='tab' aria-selected='true' data-view-component='true' class='UnderlineNav-item'>          <span data-view-component='true'>Item 1</span>    </button>          <button type='button' role='tab' data-view-component='true' class='UnderlineNav-item'>          <span data-view-component='true'>Item 2</span>    </button></div>      <div data-view-component='true' class='UnderlineNav-actions'>    <button type='button' data-view-component='true' class='btn'>    Button!  </button></div></div>      <div role='tabpanel' data-view-component='true'>      Panel 1</div>      <div role='tabpanel' hidden='hidden' data-view-component='true'>      Panel 2</div></tab-container>" />
+<Example src="<tab-container data-view-component='true'>  <div data-view-component='true' class='UnderlineNav'>    <div role='tablist' aria-label='With panels' data-view-component='true' class='UnderlineNav-body'>          <button id='tab-1' type='button' role='tab' aria-selected='true' data-view-component='true' class='UnderlineNav-item'>          <span data-view-component='true'>Item 1</span>    </button>          <button id='tab-2' type='button' role='tab' data-view-component='true' class='UnderlineNav-item'>          <span data-view-component='true'>Item 2</span>    </button></div>      <div data-view-component='true' class='UnderlineNav-actions'>    <button type='button' data-view-component='true' class='btn'>    Button!  </button></div></div>      <div role='tabpanel' tabindex='0' aria-labelledby='tab-1' data-view-component='true'>      Panel 1</div>      <div role='tabpanel' tabindex='0' hidden='hidden' aria-labelledby='tab-2' data-view-component='true'>      Panel 2</div></tab-container>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(label: "With panels", with_panel: true)) do |component| %>
-  <% component.tab(selected: true) do |t| %>
+  <% component.tab(selected: true, id: "tab-1") do |t| %>
     <% t.text { "Item 1" } %>
     <% t.panel do %>
       Panel 1
     <% end %>
   <% end %>
-  <% component.tab do |t| %>
+  <% component.tab(id: "tab-2") do |t| %>
     <% t.text { "Item 2" } %>
     <% t.panel do %>
       Panel 2

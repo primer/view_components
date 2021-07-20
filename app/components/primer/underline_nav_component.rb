@@ -104,13 +104,13 @@ module Primer
     #
     # @example With panels
     #   <%= render(Primer::UnderlineNavComponent.new(label: "With panels", with_panel: true)) do |component| %>
-    #     <% component.tab(selected: true) do |t| %>
+    #     <% component.tab(selected: true, id: "tab-1") do |t| %>
     #       <% t.text { "Item 1" } %>
     #       <% t.panel do %>
     #         Panel 1
     #       <% end %>
     #     <% end %>
-    #     <% component.tab do |t| %>
+    #     <% component.tab(id: "tab-2") do |t| %>
     #       <% t.text { "Item 2" } %>
     #       <% t.panel do %>
     #         Panel 2
