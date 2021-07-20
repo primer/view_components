@@ -30,11 +30,13 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
-## Updates
+### Updates
 
 * Adding `Primer::Alpha::Truncate` component to reflect changes in primer/css component https://primer.style/css/components/truncate.
 
     *Jon Rohan*
+
+## 0.0.47
 
 ### Breaking changes
 
@@ -72,6 +74,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
     *Joel Hawksley*
 
 * Update docs generation to point to the correct file sources.
+
+    *Manuel Puyol*
+
+* Add ENV flag to dump linter data into a file.
 
     *Manuel Puyol*
 
