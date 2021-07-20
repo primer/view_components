@@ -25,7 +25,7 @@ module Primer
         system_arguments[:tabindex] = 0
         system_arguments[:hidden] = true unless @selected
 
-        label_present = system_arguments[:"aria-label"] || system_arguments.dig(:aria, :label) || system_arguments[:"aria-labelledby"] || system_arguments.dig(:aria, :labelledby)
+        label_present = aria("label", system_arguments) || system_arguments[:"aria-labelledby"] || system_arguments.dig(:aria, :labelledby)
         unless label_present
           if @id.present?
             system_arguments[:"aria-labelledby"] = @id
@@ -125,7 +125,7 @@ module Primer
         return unless @selected
 
         if @system_arguments[:tag] == :a
-          aria_current = @system_arguments[:"aria-current"] || @system_arguments.dig(:aria, :current) || DEFAULT_ARIA_CURRENT_FOR_ANCHOR
+          aria_current = aria("current", system_arguments) || DEFAULT_ARIA_CURRENT_FOR_ANCHOR
           @system_arguments[:"aria-current"] = fetch_or_fallback(ARIA_CURRENT_OPTIONS_FOR_ANCHOR, aria_current, DEFAULT_ARIA_CURRENT_FOR_ANCHOR)
         else
           @system_arguments[:"aria-selected"] = true
