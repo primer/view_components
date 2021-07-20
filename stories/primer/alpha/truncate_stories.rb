@@ -7,7 +7,7 @@ class Primer::Alpha::TruncateStories < ViewComponent::Storybook::Stories
 
   story(:truncate) do
     content do |component|
-      component.text() { "Truncate text" }
+      component.text { "Truncate text" }
     end
   end
 end
