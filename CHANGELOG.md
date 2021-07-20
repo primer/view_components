@@ -65,6 +65,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Joel Hawksley*
 
+* Update docs generation to point to the correct file sources.
+
+    *Manuel Puyol*
+
 ## 0.0.46
 
 ### Updates
