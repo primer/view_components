@@ -97,6 +97,9 @@ namespace :docs do
 
     errors = []
 
+    # Deletes docs before regenerating them, guaranteeing that we don't keep stale docs.
+    FileUtils.rm_rf(Dir.glob("docs/content/components/**/*.md"))
+
     components.sort_by(&:name).each do |component|
       documentation = registry.get(component.name)
 
@@ -388,7 +391,7 @@ namespace :docs do
   def status_module_and_short_name(component)
     name_with_status = component.name.gsub(/Primer::|Component/, "")
 
-    m = name_with_status.match(/(?<status>Beta|Alpha)?(::)?(?<name>.*)/)
+    m = name_with_status.match(/(?<status>Beta|Alpha|Deprecated)?(::)?(?<name>.*)/)
     [m[:status]&.downcase, m[:name].gsub("::", "")]
   end
 
