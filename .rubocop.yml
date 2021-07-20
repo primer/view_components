@@ -3,8 +3,7 @@ inherit_gem:
     - config/default_edge.yml
     - config/rails_edge.yml
 require:
-  - ./rubocop/cop/primer/no_tag_memoize.rb
-  - ./rubocop/cop/primer/system_argument_instead_of_class.rb
+  - rubocop/cop/primer
 
 AllCops:
   NewCops: enable

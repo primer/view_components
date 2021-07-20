@@ -8,8 +8,8 @@ linters:
   Rubocop:
     enabled: true
     rubocop_config:
-      require:
-        - ./rubocop/cop/primer/system_argument_instead_of_class.rb
+      inherit_from:
+        - lib/rubocop/config/default.yml
       AllCops:
         DisabledByDefault: true
       Primer/SystemArgumentInsteadOfClass:

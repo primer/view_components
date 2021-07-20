@@ -1,0 +1,12 @@
+require:
+  - rubocop/cop/primer
+
+AllCops:
+  DisabledByDefault: true
+
+Primer/SystemArgumentInsteadOfClass:
+  Enabled: true
+
+Primer/NoTagMemoize:
+  Enabled: false
+
