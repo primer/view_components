@@ -1,0 +1,5 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <% texts.each do |text| %>
+    <%= text %>
+  <% end %>
+<% end %>

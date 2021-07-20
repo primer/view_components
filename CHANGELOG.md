@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## Updates
+
+* Adding `Primer::Alpha::Truncate` component to reflect changes in primer/css component https://primer.style/css/components/truncate.
+
+    *Jon Rohan*
+
 ### Breaking changes
 
 * Restrict tag for `Popover` to `:div` and `Popover` heading slot to headings.
