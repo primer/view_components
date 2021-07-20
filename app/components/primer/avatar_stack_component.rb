@@ -12,7 +12,7 @@ module Primer
     TAG_OPTIONS = [DEFAULT_TAG, :span].freeze
 
     DEFAULT_BODY_TAG = :div
-    BODY_TAG_OPTIONS = TAG_OPTIONS = [DEFAULT_TAG, :span].freeze
+    BODY_TAG_OPTIONS = [DEFAULT_BODY_TAG, :span].freeze
     # Required list of stacked avatars.
     #
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Avatar) %>.
