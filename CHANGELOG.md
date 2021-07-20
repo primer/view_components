@@ -69,6 +69,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Add ENV flag to dump linter data into a file.
+
+    *Manuel Puyol*
+
 ## 0.0.46
 
 ### Updates

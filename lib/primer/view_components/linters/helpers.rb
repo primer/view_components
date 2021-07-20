@@ -13,10 +13,13 @@ module ERBLint
         link menuitem meta param source track wbr img
       ].freeze
 
+      DUMP_FILE = ".erblint-counter-ignore.json"
+
       def self.included(base)
         base.include(ERBLint::LinterRegistry)
 
         define_method "run" do |processed_source|
+          @total_offenses = 0
           @offenses_not_corrected = 0
           tags = tags(processed_source)
           tag_tree = build_tag_tree(tags)
@@ -43,6 +46,7 @@ module ERBLint
           tag_tree.each do |tag, h|
             next unless h[:offense]
 
+            @total_offenses += 1
             # We always fix the offenses using blocks. The closing tag corresponds to `<% end %>`.
             if h[:correctable]
               add_offense(tag.loc, h[:message], h[:correction])
@@ -54,6 +58,8 @@ module ERBLint
           end
 
           counter_correct?(processed_source)
+
+          dump_data(processed_source) if ENV["DUMP_LINT_DATA"] == "1"
         end
 
         define_method "autocorrect" do |processed_source, offense|
@@ -185,6 +191,17 @@ module ERBLint
         klass_name = klass.name.demodulize
         offense = ["#{klass_name}:#{message}", tag.node.loc.source].join("\n")
         add_offense(processed_source.to_source_range(tag.loc), offense, replacement)
+      end
+
+      def dump_data(processed_source)
+        return if @total_offenses.zero?
+
+        data = File.exist?(DUMP_FILE) ? JSON.parse(File.read(DUMP_FILE)) : {}
+
+        data[processed_source.filename] ||= {}
+        data[processed_source.filename][self.class.name.demodulize] = @total_offenses
+
+        File.write(DUMP_FILE, JSON.pretty_generate(data))
       end
     end
   end
