@@ -1,4 +1,4 @@
-<%= wrapper(**@wrapper_arguments) do %>
+<%= wrapper(with_panel: @with_panel, **@wrapper_arguments) do %>
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
     <%= extra if @align == :left %>
 

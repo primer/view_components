@@ -114,6 +114,7 @@
 - ".custom-class"
 - ".d-flex"
 - ".d-inline-block"
+- ".d-inline-flex"
 - ".details-overlay"
 - ".details-reset"
 - ".dropdown"

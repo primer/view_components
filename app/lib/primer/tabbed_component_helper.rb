@@ -20,8 +20,8 @@ module Primer
       with_panel ? :div : :nav
     end
 
-    def wrapper(**system_arguments)
-      return yield unless @with_panel
+    def wrapper(with_panel:, **system_arguments)
+      return yield unless with_panel
 
       render Primer::TabContainerComponent.new(**system_arguments) do
         yield if block_given?
