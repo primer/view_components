@@ -25,7 +25,7 @@ module Primer
         system_arguments[:tabindex] = 0
         system_arguments[:hidden] = true unless @selected
 
-        label_present = aria("label", system_arguments) || system_arguments[:"aria-labelledby"] || system_arguments.dig(:aria, :labelledby)
+        label_present = aria("label", system_arguments) || aria("labelledby", system_arguments)
         unless label_present
           if @id.present?
             system_arguments[:"aria-labelledby"] = @id
