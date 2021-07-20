@@ -6,7 +6,7 @@ module Primer
     status :beta
 
     DEFAULT_TAG = :div
-    TAG_OPTIONS = [DEFAULT_TAG, :span, :p].freeze
+    TAG_OPTIONS = [DEFAULT_TAG, :span, :p, :strong].freeze
 
     # @example Default
     #   <div class="col-2">

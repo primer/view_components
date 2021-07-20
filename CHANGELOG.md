@@ -97,6 +97,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Joel Hawksley*
 
+* Update the `Truncate` component to accept `:strong` as a tag.
+
+    *Amélia Chavot*
+
 ### Breaking changes
 
 * Restrict `TabNav`and `Tab` tags.

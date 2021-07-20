@@ -923,7 +923,7 @@
   - name: tag
     type: Symbol
     default: "`:div`"
-    description: One of `:div`, `:p`, or `:span`.
+    description: One of `:div`, `:p`, `:span`, or `:strong`.
   - name: inline
     type: Boolean
     default: "`false`"
