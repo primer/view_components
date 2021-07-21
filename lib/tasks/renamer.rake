@@ -30,6 +30,7 @@ namespace :renamer do
 
     puts "adding module <status> line"
     lines.insert(module_primer_line_index+1, "module #{target_status.capitalize}")
+    lines.push("end")
 
     File.open(filepath, mode: "w") do |f|
       lines.each { |line| f.puts(line) }
@@ -37,21 +38,25 @@ namespace :renamer do
 
     filepath_with_status = filepath.gsub("/primer/", "/primer/#{target_status}/")
 
+    # drop component suffix in filepath if presen't
+    if filepath_with_status.end_with?("component.rb")
+        filepath_with_status.gsub!("_component.rb", ".rb")
+    end
+
+    # TODO: rename test file too
+    # TODO: rename template filename too
+
     puts "moving from #{filepath} to #{filepath_with_status}"
     mv_result = %x(`git mv #{filepath} #{filepath_with_status}`)
     puts mv_result
-
-    # drop component suffix in filepath if presen't
-    if filepath_with_status.end_with?("component.rb")
-        filepath_with_status.gsub!("component.rb", ".rb")
-    end
 
     # rename in codebase for status and suffix
     if target_component_name.end_with?("Component")
       updated_component_name = target_component_name.gsub("Component", "")
       
+      # TODO: don't add Beta:: in class definition
       puts "greping to drop Component suffix"
-      rename_result = %x(`grep -rl #{target_component_name} | xargs sed -i 's/#{target_component_name}/#{updated_component_name}/g'`)
+      rename_result = %x(`grep -rl #{target_component_name} . --exclude=CHANGELOG.md | xargs sed -i 's/#{target_component_name}/#{target_status.capitalize}::#{updated_component_name}/g'`)
       puts rename_result
     end
 
