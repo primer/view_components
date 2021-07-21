@@ -1,5 +1,6 @@
 ---
 title: Menu
+componentId: menu
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/menu_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-menu-component

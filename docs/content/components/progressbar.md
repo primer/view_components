@@ -1,5 +1,6 @@
 ---
 title: ProgressBar
+componentId: progress_bar
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/progress_bar_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-progress-bar-component
@@ -9,7 +10,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use `ProgressBar` to visualize task completion.
+
 
 ## Arguments
 

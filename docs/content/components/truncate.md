@@ -1,5 +1,6 @@
 ---
 title: Truncate
+componentId: truncate
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/truncate.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-truncate-component

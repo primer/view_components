@@ -108,6 +108,7 @@ namespace :docs do
       File.open(path, "w") do |f|
         f.puts("---")
         f.puts("title: #{short_name}")
+        f.puts("componentId: #{short_name.underscore}")
         f.puts("status: #{component.status.to_s.capitalize}")
         f.puts("source: https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb")
         f.puts("storybook: https://primer.style/view-components/stories/?path=/story/primer-#{short_name.underscore.dasherize}-component")

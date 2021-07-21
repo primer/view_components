@@ -1,5 +1,6 @@
 ---
 title: BetaAutoCompleteItem
+componentId: beta_auto_complete_item
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/item.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-beta-auto-complete-item-component
