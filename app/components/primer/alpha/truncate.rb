@@ -15,9 +15,7 @@ module Primer
       renders_many :items, "TruncateText"
 
       # @example Default
-      #   <%= render(Primer::Alpha::Truncate.new) do |component| %>
-      #     <% component.text do %>branch-name-that-is-really-long<% end %>
-      #   <% end %>
+      #   <%= render(Primer::Alpha::Truncate.new) { "branch-name-that-is-really-long" } %>
       #
       # @example Multiple items
       #   <%= render(Primer::Alpha::Truncate.new) do |component| %>
@@ -70,10 +68,22 @@ module Primer
       def initialize(**system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] = system_arguments[:tag] || :span
-        @system_arguments[:classes] = class_names(
-          "Truncate",
-          system_arguments[:classes]
-        )
+        @system_arguments[:classes] = "Truncate"
+      end
+
+      def before_render
+        if content.present? && items.empty?
+          # Get the tag and classes out of the system arguments
+          args = @system_arguments.slice(:tag, :classes)
+          @system_arguments.delete(:tag)
+          @system_arguments.delete(:classes)
+
+          # Duplicate to slot arguments
+          slot_arguments = @system_arguments.dup
+
+          @system_arguments = args
+          self.set_slot(:items, **slot_arguments) { content }
+        end
       end
 
       def render?
