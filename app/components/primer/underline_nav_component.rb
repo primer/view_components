@@ -4,7 +4,7 @@ module Primer
   # Use `UnderlineNav` to style navigation links with a minimal
   # underlined selected state, typically placed at the top
   # of the page.
-  # For panel navigation, see <%= link_to_component(Primer::UnderlinePanel) %>.
+  # For panel navigation, use <%= link_to_component(Primer::UnderlinePanel) %>.
   #
   # @accessibility
   #   By default, this renders a list of links within a `<nav>` element.
@@ -37,7 +37,6 @@ module Primer
       Primer::Navigation::TabComponent.new(
         list: true,
         selected: selected,
-        with_panel: @with_panel,
         icon_classes: "UnderlineNav-octicon",
         **system_arguments
       )
@@ -56,7 +55,7 @@ module Primer
 
     # @example Default with `<nav>`
     #   @description
-    #     This should be reserved for main navigation links. See <%= link_to_accessibility %> 
+    #     This should be reserved for main navigation links. See <%= link_to_accessibility %>
     #   @code
     #     <%= render(Primer::UnderlineNavComponent.new(label: "Default with nav element")) do |component| %>
     #       <% component.tab(href: "#", selected: true) { "Item 1" } %>
@@ -138,7 +137,7 @@ module Primer
         @body_arguments[:classes],
         "list-style-none"
       )
-      
+
       @system_arguments[:tag] == :nav ? @system_arguments[:"aria-label"] = label : @body_arguments[:"aria-label"] = label
     end
 

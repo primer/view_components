@@ -2,7 +2,7 @@
 title: UnderlinePanel
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/underline_panel.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-underline-panel-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-underline-panel
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

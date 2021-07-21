@@ -52,5 +52,6 @@
   "Primer::TimelineItemComponent::BadgeComponent": "alpha",
   "Primer::Tooltip": "beta",
   "Primer::Truncate": "beta",
-  "Primer::UnderlineNavComponent": "alpha"
+  "Primer::UnderlineNavComponent": "alpha",
+  "Primer::UnderlinePanel": "alpha"
 }

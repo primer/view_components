@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## Breaking changes
+
+* Break `TabNav` into `TabNav` for page navigation and `TabPanel` for panel navigation.
+
+    *Kate Higa
+
 ### Misc
 
 * Extract example tag parsing into helper.
@@ -47,10 +53,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 ## 0.0.47
 
 ### Breaking changes
-
-* Break `TabNav` into `TabNav` for page navigation and `TabPanel` for panel navigation.
-
-    *Kate Higa
 
 * Ensure panels in `Navigation::Tab` have a label.
 

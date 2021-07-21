@@ -12,7 +12,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 Use `UnderlineNav` to style navigation links with a minimal
 underlined selected state, typically placed at the top
 of the page.
-For panel navigation, see [UnderlinePanel](/components/underlinepanel).
+For panel navigation, use [UnderlinePanel](/components/underlinepanel).
 
 ## Accessibility
 
@@ -28,7 +28,6 @@ main navigation. For regular set of links, set tag to `:div`.
 | `label` | `String` | N/A | The `aria-label` on top level element. |
 | `align` | `Symbol` | `:left` | One of `:left` and `:right`. - Defaults to left |
 | `body_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the body wrapper. |
-| `wrapper_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the `TabContainer` wrapper. Only applies if `with_panel` is `true`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
@@ -55,7 +54,7 @@ Use actions for a call to action.
 
 ### Default with `<nav>`
 
-This should be reserved for main navigation links. See <%= link_to_accessibility %>
+This should be reserved for main navigation links. See [Accessibility](#accessibility)
 
 <Example src="<nav aria-label='Default with nav element' data-view-component='true' class='UnderlineNav'>  <ul data-view-component='true' class='UnderlineNav-body list-style-none'>      <li data-view-component='true' class='d-inline-flex'>  <a href='#' aria-current='page' data-view-component='true' class='UnderlineNav-item'>          Item 1    </a></li>      <li data-view-component='true' class='d-inline-flex'>  <a href='#' data-view-component='true' class='UnderlineNav-item'>          Item 2    </a></li></ul>    <div data-view-component='true' class='UnderlineNav-actions'>    <button type='button' data-view-component='true' class='btn'>    Button!  </button></div></nav>" />
 

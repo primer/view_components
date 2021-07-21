@@ -75,7 +75,7 @@ namespace :docs do
       Primer::Tooltip,
       Primer::Truncate,
       Primer::UnderlineNavComponent,
-      Primer::UnderlinePanel,
+      Primer::UnderlinePanel
     ]
 
     js_components = [
@@ -87,7 +87,7 @@ namespace :docs do
       Primer::TabContainerComponent,
       Primer::TabNavComponent,
       Primer::TimeAgoComponent,
-      Primer::UnderlinePanel,
+      Primer::UnderlinePanel
     ]
 
     all_components = Primer::Component.descendants - [Primer::BaseComponent]
