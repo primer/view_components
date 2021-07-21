@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Add linter suggestions for `Label` component.
+
+    *Manuel Puyol*
+
 ### Updates
 
 * Improve `Primer::Classify::Utilities.classes_to_hash` performance.
