@@ -131,7 +131,7 @@ class ArgumentMappersLabelTest < LinterTestCase
                    '"aria-label"' => '"some label"',
                    '"data-pjax"' => '""',
                    '"data-click"' => '"click"',
-                   :test_selector => '"some_selector"',
+                   :test_selector => '"some_selector"'
                  }, args)
   end
 
