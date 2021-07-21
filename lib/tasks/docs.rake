@@ -110,7 +110,7 @@ namespace :docs do
       File.open(path, "w") do |f|
         f.puts("---")
         f.puts("title: #{data[:title]}")
-        f.puts("componentId: #{data[:component_id}")
+        f.puts("componentId: #{data[:component_id]}")
         f.puts("status: #{data[:status]}")
         f.puts("source: #{data[:source]}")
         f.puts("storybook: #{data[:storybook]}")
