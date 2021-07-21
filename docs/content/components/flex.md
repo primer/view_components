@@ -1,5 +1,6 @@
 ---
 title: Flex
+componentId: flex
 status: Deprecated
 source: https://github.com/primer/view_components/tree/main/app/components/primer/flex_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-flex-component

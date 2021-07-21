@@ -1,5 +1,6 @@
 ---
 title: TabContainer
+componentId: tab_container
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/tab_container_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-tab-container-component

@@ -1,5 +1,6 @@
 ---
 title: Avatar
+componentId: avatar
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/avatar.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-beta-avatar

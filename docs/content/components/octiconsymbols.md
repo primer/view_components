@@ -1,5 +1,6 @@
 ---
 title: OcticonSymbols
+componentId: octicon_symbols
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/octicon_symbols_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-octicon-symbols-component

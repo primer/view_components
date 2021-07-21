@@ -1,5 +1,6 @@
 ---
 title: Label
+componentId: label
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/label_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-label-component

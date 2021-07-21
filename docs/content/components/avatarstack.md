@@ -1,5 +1,6 @@
 ---
 title: AvatarStack
+componentId: avatar_stack
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/avatar_stack_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-avatar-stack-component

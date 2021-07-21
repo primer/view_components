@@ -1,5 +1,6 @@
 ---
 title: Image
+componentId: image
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/image.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-image
