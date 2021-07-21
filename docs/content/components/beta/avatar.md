@@ -13,7 +13,7 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
 `Avatar` can be used to represent users and organizations on GitHub.
 
 - Use the default round avatar for users, and the `square` argument
-  for organizations or any other non-human avatars.
+for organizations or any other non-human avatars.
 - By default, `Avatar` will render a static `<img>`. To have `Avatar` function as a link, set the `href` which will wrap the `<img>` in a `<a>`.
 - Set `size` to update the height and width of the `Avatar` in pixels.
 - To stack multiple avatars together, use [AvatarStack](/components/avatarstack).
@@ -28,14 +28,14 @@ rather than `@kittenuser`.
 
 ## Arguments
 
-| Name               | Type      | Default | Description                                                             |
-| :----------------- | :-------- | :------ | :---------------------------------------------------------------------- |
-| `src`              | `String`  | N/A     | The source url of the avatar image.                                     |
-| `alt`              | `String`  | N/A     | Passed through to alt on img tag.                                       |
-| `size`             | `Integer` | `20`    | Adds the avatar-small class if less than 24.                            |
-| `square`           | `Boolean` | `false` | Used to create a square avatar.                                         |
-| `href`             | `String`  | `nil`   | The URL to link to. If used, component will be wrapped by an `<a>` tag. |
-| `system_arguments` | `Hash`    | N/A     | [System arguments](/system-arguments)                                   |
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `src` | `String` | N/A | The source url of the avatar image. |
+| `alt` | `String` | N/A | Passed through to alt on img tag. |
+| `size` | `Integer` | `20` | Adds the avatar-small class if less than 24. |
+| `square` | `Boolean` | `false` | Used to create a square avatar. |
+| `href` | `String` | `nil` | The URL to link to. If used, component will be wrapped by an `<a>` tag. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Examples
 
