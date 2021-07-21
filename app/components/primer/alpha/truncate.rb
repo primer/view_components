@@ -8,7 +8,7 @@ module Primer
 
       # Text slot used for the truncated text.
       #
-      # @param primary [Boolean] if true, the text will be treated as primary
+      # @param priority [Boolean] if true, the text will be given priority
       # @param expandable [Boolean] if true, the text will expand on hover or focus
       # @param max_width [Integer] if provided, the text will be truncated at a maximum width
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -28,10 +28,10 @@ module Primer
       # @example Advanced multiple items
       #   <%= render(Primer::Alpha::Truncate.new(tag: :ol)) do |component| %>
       #     <% component.item(tag: :li) do %>primer<% end %>
-      #     <% component.item(tag: :li, primary: true) do %>/ css<% end %>
+      #     <% component.item(tag: :li, priority: true) do %>/ css<% end %>
       #     <% component.item(tag: :li) do %>/ Issues<% end %>
       #     <% component.item(tag: :li) do %>/ #123 —<% end %>
-      #     <% component.item(tag: :li, primary: true) do %>
+      #     <% component.item(tag: :li, priority: true) do %>
       #       Visual bug on primer.style found in lists
       #     <% end %>
       #   <% end %>
@@ -93,12 +93,12 @@ module Primer
       # This component is part of `Primer::Alpha::Truncate` and should not be
       # used as a standalone component.
       class TruncateText < Primer::Component
-        def initialize(primary: false, expandable: false, max_width: nil, **system_arguments)
+        def initialize(priority: false, expandable: false, max_width: nil, **system_arguments)
           @system_arguments = system_arguments
           @system_arguments[:tag] = system_arguments[:tag] || :span
           @system_arguments[:classes] = class_names(
             "Truncate-text",
-            "Truncate-text--primary": primary,
+            "Truncate-text--primary": priority,
             "Truncate-text--expandable": expandable
           )
 

@@ -12,7 +12,7 @@ class PrimerAlphaTruncateTest < Minitest::Test
   end
 
   def test_truncate_supports_block_with_arguments
-    render_inline(Primer::Alpha::Truncate.new(tag: :button, primary: true, expandable: true, max_width: 1337)) { "content" }
+    render_inline(Primer::Alpha::Truncate.new(tag: :button, priority: true, expandable: true, max_width: 1337)) { "content" }
 
     assert_selector("button.Truncate > span.Truncate-text.Truncate-text--primary.Truncate-text--expandable[style='max-width: 1337px;']", text: "content")
   end
@@ -33,13 +33,13 @@ class PrimerAlphaTruncateTest < Minitest::Test
     assert_selector(".Truncate > .Truncate-text", text: "content")
   end
 
-  def test_truncate_with_primary
+  def test_truncate_with_priority
     render_inline(Primer::Alpha::Truncate.new) do |component|
       component.item { "content" }
-      component.item(primary: true) { "primary content" }
+      component.item(priority: true) { "priority content" }
     end
 
-    assert_selector(".Truncate > .Truncate-text.Truncate-text--primary", text: "primary content")
+    assert_selector(".Truncate > .Truncate-text.Truncate-text--primary", text: "priority content")
   end
 
   def test_truncate_with_expandable
