@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Misc
 
+* Extract example tag parsing into helper.
+
+    *Kate Higa*
+
 * Expose custom cops and default config for erblint.
 
     *Manuel Puyol*
