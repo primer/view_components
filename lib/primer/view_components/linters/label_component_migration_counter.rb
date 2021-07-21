@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "helpers"
+require_relative "argument_mappers/label"
 
 module ERBLint
   module Linters
@@ -11,6 +12,14 @@ module ERBLint
       TAGS = %w[span summary a div].freeze
       CLASSES = %w[Label].freeze
       MESSAGE = "We are migrating labels to use [Primer::LabelComponent](https://primer.style/view-components/components/label), please try to use that instead of raw HTML."
+
+      private
+
+      def map_arguments(tag)
+        ArgumentMappers::Label.new(tag).to_s
+      rescue ArgumentMappers::ConversionError
+        nil
+      end
     end
   end
 end
