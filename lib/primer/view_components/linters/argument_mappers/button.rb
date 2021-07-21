@@ -21,33 +21,26 @@ module ERBLint
         }.freeze
 
         TYPE_OPTIONS = %w[button reset submit].freeze
+        DEFAULT_TAG = "button"
 
-        def to_args
-          args = {}
+        def attribute_to_args(attribute)
+          attr_name = attribute.name
 
-          args[:tag] = ":#{@tag.name}" unless @tag.name == "button"
+          if attr_name == "class"
+            classes_to_args(attribute)
+          elsif attr_name == "disabled"
+            { disabled: true }
+          elsif attr_name == "type"
+            # button is the default type, so we don't need to do anything.
+            return {} if attribute.value == "button"
 
-          @tag.attributes.each do |attribute|
-            attr_name = attribute.name
+            raise ConversionError, "Button component does not support type \"#{attribute.value}\"" unless TYPE_OPTIONS.include?(attribute.value)
 
-            if attr_name == "class"
-              args = args.merge(classes_to_args(attribute))
-            elsif attr_name == "disabled"
-              args[:disabled] = true
-            elsif attr_name == "type"
-              # button is the default type, so we don't need to do anything.
-              next if attribute.value == "button"
-
-              raise ConversionError, "Button component does not support type \"#{attribute.value}\"" unless TYPE_OPTIONS.include?(attribute.value)
-
-              args[:type] = ":#{attribute.value}"
-            else
-              # Assume the attribute is a system argument.
-              args.merge!(SystemArguments.new(attribute).to_args)
-            end
+            { type: ":#{attribute.value}" }
+          else
+            # Assume the attribute is a system argument.
+            SystemArguments.new(attribute).to_args
           end
-
-          args
         end
 
         def classes_to_args(classes)
