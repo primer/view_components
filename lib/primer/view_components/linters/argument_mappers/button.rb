@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-require_relative "conversion_error"
-require_relative "system_arguments"
+require_relative "base"
 
 module ERBLint
   module Linters
     module ArgumentMappers
       # Maps classes in a button element to arguments for the Button component.
-      class Button
+      class Button < Base
         SCHEME_MAPPINGS = {
           "btn-primary" => ":primary",
           "btn-danger" => ":danger",
@@ -22,14 +21,6 @@ module ERBLint
         }.freeze
 
         TYPE_OPTIONS = %w[button reset submit].freeze
-
-        def initialize(tag)
-          @tag = tag
-        end
-
-        def to_s
-          to_args.map { |k, v| "#{k}: #{v}" }.join(", ")
-        end
 
         def to_args
           args = {}
