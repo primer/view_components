@@ -16,6 +16,15 @@ module Primer
       # rubocop:enable Security/YAMLLoad
       BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
 
+      # Replacements for some classnames that end up being a different argument key
+      REPLACEMENT_KEYS = {
+        "^anim" => "animation",
+        "^v-align" => "vertical_align",
+        "^d" => "display",
+        "^wb" => "word_break",
+        "^v" => "visibility"
+      }.freeze
+
       class << self
         def classname(key, val, breakpoint = "")
           if (valid = validate(key, val, breakpoint))
@@ -104,21 +113,31 @@ module Primer
         private
 
         def find_selector(selector)
-          # Search each key/value_hash pair, eg. key `:mr` and value_hash `{ 0 => [ "mr-0", "mr-sm-0", "mr-md-0", "mr-lg-0", "mr-xl-0" ] }`
-          UTILITIES.each do |key, value_hash|
-            # Each value hash will also contain an array of classnames for breakpoints
-            # Key argument `0`, classes `[ "mr-0", "mr-sm-0", "mr-md-0", "mr-lg-0", "mr-xl-0" ]`
-            value_hash.each do |key_argument, classnames|
-              # Skip each value hash until we get one with the selector
-              next unless classnames.include?(selector)
+          key = infer_selector_key(selector)
+          value_hash = UTILITIES[key]
 
-              # Return [:mr, 0, 1]
-              # has index of classname, so we can match it up with responsvie array `mr: [nil, 0]`
-              return [key, key_argument, classnames.index(selector)]
-            end
+          return nil if value_hash.blank?
+
+          # Each value hash will also contain an array of classnames for breakpoints
+          # Key argument `0`, classes `[ "mr-0", "mr-sm-0", "mr-md-0", "mr-lg-0", "mr-xl-0" ]`
+          value_hash.each do |key_argument, classnames|
+            # Skip each value hash until we get one with the selector
+            next unless classnames.include?(selector)
+
+            # Return [:mr, 0, 1]
+            # has index of classname, so we can match it up with responsvie array `mr: [nil, 0]`
+            return [key, key_argument, classnames.index(selector)]
           end
 
           nil
+        end
+
+        def infer_selector_key(selector)
+          REPLACEMENT_KEYS.each do |k, v|
+            return v.to_sym if selector.match?(Regexp.new(k))
+          end
+
+          selector.split("-").first.to_sym
         end
 
         def validate(key, val, breakpoint)
