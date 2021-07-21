@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Breaking changes
+
+* Require tab with panels to have `panel_id` so `aria-controls` can be set.
+
+    *Kate Higa*
+
 ### Updates
 
 * Update the `Truncate` component to accept `:strong` as a tag.
@@ -40,6 +46,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+### Misc
+
+* Extract example tag parsing into helper.
+
+    *Kate Higa*
+
 ## 0.0.48
 
 ### Breaking changes
@@ -49,10 +61,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
     *Kate Higa*
 
 ### Misc
-
-* Extract example tag parsing into helper.
-
-    *Kate Higa*
 
 * Expose custom cops and default config for erblint.
 

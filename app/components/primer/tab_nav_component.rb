@@ -13,6 +13,7 @@ module Primer
     # Tabs to be rendered. When `with_panel` is set on the parent, a button is rendered for panel navigation. Otherwise,
     # an anchor tag is rendered for page navigation. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
     #
+    # @param panel_id [String] Only applies if `with_panel` is `true`. Unique id of panel.
     # @param selected [Boolean] Whether the tab is selected.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_many :tabs, lambda { |selected: false, **system_arguments|
@@ -63,19 +64,19 @@ module Primer
     #
     # @example With panels
     #   <%= render(Primer::TabNavComponent.new(label: "With panels", with_panel: true)) do |c| %>
-    #     <% c.tab(selected: true, id: "tab-1") do |t| %>
+    #     <% c.tab(selected: true, panel_id: "panel-1", id: "tab-1") do |t| %>
     #       <% t.text { "Tab 1" } %>
     #       <% t.panel do %>
     #         Panel 1
     #       <% end %>
     #     <% end %>
-    #     <% c.tab(id: "tab-2") do |t| %>
+    #     <% c.tab(id: "tab-2", panel_id: "panel-2") do |t| %>
     #       <% t.text { "Tab 2" } %>
     #       <% t.panel do %>
     #         Panel 2
     #       <% end %>
     #     <% end %>
-    #     <% c.tab(id: "tab-3") do |t| %>
+    #     <% c.tab(id: "tab-3", panel_id: "panel-3") do |t| %>
     #       <% t.text { "Tab 3" } %>
     #       <% t.panel do %>
     #         Panel 3
