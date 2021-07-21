@@ -31,7 +31,7 @@ module ERBLint
           if attr_name == "class"
             classes_to_args(attribute)
           elsif attr_name == "title"
-            { title: attribute.value }
+            { title: attribute.value.to_json }
           else
             # Assume the attribute is a system argument.
             SystemArguments.new(attribute).to_args

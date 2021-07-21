@@ -31,6 +31,13 @@ class ArgumentMappersLabelTest < LinterTestCase
                  }, args)
   end
 
+  def test_returns_title_argument
+    @file = "<span title=\"some title\">Label</span>"
+    args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
+
+    assert_equal({ title: '"some title"' }, args)
+  end
+
   def test_returns_scheme_argument
     Primer::LabelComponent::SCHEME_MAPPINGS.each do |value, class_name|
       next if class_name.blank?
