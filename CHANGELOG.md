@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Updates
+
+* Improve `Primer::Classify::Utilities.classes_to_hash` performance.
+
+    *Manuel Puyol*
+
 ## 0.0.48
 
 ### Breaking changes
