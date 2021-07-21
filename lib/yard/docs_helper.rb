@@ -29,7 +29,7 @@ module YARD
     end
 
     def link_to_accessibility
-      "[Accessibility](#system-arguments)"
+      "[Accessibility](#accessibility)"
     end
 
     def link_to_system_arguments_docs

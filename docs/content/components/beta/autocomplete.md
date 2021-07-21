@@ -38,7 +38,7 @@ always be used unless there is compelling reason not to. A placeholder is not a 
 
 ### `Label`
 
-Optionally render a visible label. See [Accessibility](#system-arguments)
+Optionally render a visible label. See [Accessibility](#accessibility)
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |

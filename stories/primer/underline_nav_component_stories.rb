@@ -7,21 +7,16 @@ class Primer::UnderlineNavComponentStories < ViewComponent::Storybook::Stories
     controls do
       label "aria label"
       select(:align, Primer::UnderlineNavComponent::ALIGN_OPTIONS, :left)
-      with_panel false
-      body_arguments(tag: :ul)
     end
 
     content do |c|
-      c.tab(selected: true, id: "tab-1") do |t|
-        t.panel { "Panel 1" }
+      c.tab(href: "#", selected: true, id: "tab-1") do |t|
         t.text { "Tab 1" }
       end
-      c.tab(id: "tab-2") do |t|
-        t.panel { "Panel 2" }
+      c.tab(href: "#", id: "tab-2") do |t|
         t.text { "Tab 2" }
       end
-      c.tab(id: "tab-3") do |t|
-        t.panel { "Panel 3" }
+      c.tab(href: "#", id: "tab-3") do |t|
         t.text { "Tab 3" }
       end
     end
