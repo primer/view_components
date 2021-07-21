@@ -43,7 +43,7 @@ namespace :renamer do
         filepath_with_status.gsub!("_component.rb", ".rb")
     end
 
-    # TODO: rename test file too
+    # TODO: rename test filename too
     # TODO: rename template filename too
 
     puts "moving from #{filepath} to #{filepath_with_status}"
