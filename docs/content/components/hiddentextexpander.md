@@ -3,7 +3,7 @@ title: HiddenTextExpander
 componentId: hidden_text_expander
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/hidden_text_expander.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-hidden-text-expander-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-hidden-text-expander
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

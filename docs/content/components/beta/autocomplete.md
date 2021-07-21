@@ -1,13 +1,12 @@
 ---
-title: BetaAutoComplete
-componentId: beta_auto_complete
+title: AutoComplete
 status: Beta
-source: https://github.com/primer/view_components/tree/main/app/components/primer/auto_complete.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-beta-auto-complete-component
+source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-beta-auto-complete
 ---
 
-import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
-import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash'
+import Example from '../../../src/@primer/gatsby-theme-doctocat/components/example'
+import RequiresJSFlash from '../../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash'
 
 <RequiresJSFlash />
 

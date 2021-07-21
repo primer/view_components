@@ -3,7 +3,7 @@ title: IconButton
 componentId: icon_button
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/icon_button.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-icon-button-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-icon-button
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

@@ -34,7 +34,7 @@ namespace :docs do
       Primer::IconButton,
       Primer::Beta::AutoComplete,
       Primer::Beta::AutoComplete::Item,
-      Primer::AvatarComponent,
+      Primer::Beta::Avatar,
       Primer::AvatarStackComponent,
       Primer::BaseButton,
       Primer::BlankslateComponent,
@@ -97,29 +97,31 @@ namespace :docs do
 
     errors = []
 
-    components.each do |component|
+    # Deletes docs before regenerating them, guaranteeing that we don't keep stale docs.
+    FileUtils.rm_rf(Dir.glob("docs/content/components/**/*.md"))
+
+    components.sort_by(&:name).each do |component|
       documentation = registry.get(component.name)
 
-      # Primer::AvatarComponent => Avatar
-      short_name = component.name.gsub(/Primer|::|Component/, "")
+      data = docs_metadata(component)
 
-      path = Pathname.new("docs/content/components/#{short_name.downcase}.md")
+      path = Pathname.new(data[:path])
       path.dirname.mkdir unless path.dirname.exist?
       File.open(path, "w") do |f|
         f.puts("---")
-        f.puts("title: #{short_name}")
-        f.puts("componentId: #{short_name.underscore}")
-        f.puts("status: #{component.status.to_s.capitalize}")
-        f.puts("source: https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb")
-        f.puts("storybook: https://primer.style/view-components/stories/?path=/story/primer-#{short_name.underscore.dasherize}-component")
+        f.puts("title: #{data[:title]}")
+        f.puts("componentId: #{data[:component_id}")
+        f.puts("status: #{data[:status]}")
+        f.puts("source: #{data[:source]}")
+        f.puts("storybook: #{data[:storybook]}")
         f.puts("---")
         f.puts
-        f.puts("import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'")
+        f.puts("import Example from '#{data[:example_path]}'")
 
         initialize_method = documentation.meths.find(&:constructor?)
 
         if js_components.include?(component)
-          f.puts("import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash'")
+          f.puts("import RequiresJSFlash from '#{data[:require_js_path]}'")
           f.puts
           f.puts("<RequiresJSFlash />")
         end
@@ -184,8 +186,8 @@ namespace :docs do
         end
 
         component_args = {
-          "component" => short_name,
-          "source" => "https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb",
+          "component" => data[:title],
+          "source" => data[:source],
           "parameters" => args
         }
 
@@ -385,5 +387,57 @@ namespace :docs do
     return pretty_value(default) if constant_value.nil?
 
     pretty_value(constant_value)
+  end
+
+  def status_module_and_short_name(component)
+    name_with_status = component.name.gsub(/Primer::|Component/, "")
+
+    m = name_with_status.match(/(?<status>Beta|Alpha|Deprecated)?(::)?(?<name>.*)/)
+    [m[:status]&.downcase, m[:name].gsub("::", "")]
+  end
+
+  def docs_metadata(component)
+    (status_module, short_name) = status_module_and_short_name(component)
+    status_path = status_module.nil? ? "" : "#{status_module}/"
+    status = component.status.to_s
+
+    {
+      title: short_name,
+      component_id: short_name.underscore,
+      status: status.capitalize,
+      source: source_url(component),
+      storybook: storybook_url(component),
+      path: "docs/content/components/#{status_path}#{short_name.downcase}.md",
+      example_path: example_path(component),
+      require_js_path: require_js_path(component)
+    }
+  end
+
+  def source_url(component)
+    path = component.name.split("::").map(&:underscore).join("/")
+
+    "https://github.com/primer/view_components/tree/main/app/components/#{path}.rb"
+  end
+
+  def storybook_url(component)
+    path = component.name.split("::").map { |n| n.underscore.dasherize }.join("-")
+
+    "https://primer.style/view-components/stories/?path=/story/#{path}"
+  end
+
+  def example_path(component)
+    example_path = "../../src/@primer/gatsby-theme-doctocat/components/example"
+    example_path = "../#{example_path}" if status_module?(component)
+    example_path
+  end
+
+  def require_js_path(component)
+    require_js_path = "../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash"
+    require_js_path = "../#{require_js_path}" if status_module?(component)
+    require_js_path
+  end
+
+  def status_module?(component)
+    (%w[Alpha Beta] & component.name.split("::")).any?
   end
 end

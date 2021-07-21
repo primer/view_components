@@ -5,6 +5,8 @@
       url: /contributing
     - title: System arguments
       url: /system-arguments
+    - title: Linting
+      url: /linting
     - title: Migration
       url: /migration
     - title: Statuses
@@ -13,11 +15,11 @@
   url: /components
   children:
     - title: AutoComplete
-      url: /components/betaautocomplete
+      url: /components/beta/autocomplete
     - title: AutoCompleteItem
-      url: /components/betaautocompleteitem
+      url: /components/beta/autocompleteitem
     - title: Avatar
-      url: /components/avatar
+      url: /components/beta/avatar
     - title: AvatarStack
       url: /components/avatarstack
     - title: Blankslate
@@ -33,7 +35,7 @@
     - title: ButtonGroup
       url: /components/buttongroup
     - title: ButtonMarketing
-      url: /components/buttonmarketing
+      url: /components/alpha/buttonmarketing
     - title: ClipboardCopy
       url: /components/clipboardcopy
     - title: CloseButton

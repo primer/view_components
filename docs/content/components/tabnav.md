@@ -83,23 +83,23 @@ Renders extra content to the `TabNav`. This will be rendered after the tabs.
 
 ### With panels
 
-<Example src="<tab-container data-view-component='true'>  <div data-view-component='true' class='tabnav'>        <div aria-label='With panels' role='tablist' data-view-component='true' class='tabnav-tabs'>          <button type='button' role='tab' aria-selected='true' data-view-component='true' class='tabnav-tab'>          <span data-view-component='true'>Tab 1</span>    </button>          <button type='button' role='tab' data-view-component='true' class='tabnav-tab'>          <span data-view-component='true'>Tab 2</span>    </button>          <button type='button' role='tab' data-view-component='true' class='tabnav-tab'>          <span data-view-component='true'>Tab 3</span>    </button></div>    </div>      <div role='tabpanel' data-view-component='true'>      Panel 1</div>      <div role='tabpanel' hidden='hidden' data-view-component='true'>      Panel 2</div>      <div role='tabpanel' hidden='hidden' data-view-component='true'>      Panel 3</div></tab-container>" />
+<Example src="<tab-container data-view-component='true'>  <div data-view-component='true' class='tabnav'>        <div aria-label='With panels' role='tablist' data-view-component='true' class='tabnav-tabs'>          <button id='tab-1' type='button' role='tab' aria-selected='true' data-view-component='true' class='tabnav-tab'>          <span data-view-component='true'>Tab 1</span>    </button>          <button id='tab-2' type='button' role='tab' data-view-component='true' class='tabnav-tab'>          <span data-view-component='true'>Tab 2</span>    </button>          <button id='tab-3' type='button' role='tab' data-view-component='true' class='tabnav-tab'>          <span data-view-component='true'>Tab 3</span>    </button></div>    </div>      <div role='tabpanel' tabindex='0' aria-labelledby='tab-1' data-view-component='true'>      Panel 1</div>      <div role='tabpanel' tabindex='0' hidden='hidden' aria-labelledby='tab-2' data-view-component='true'>      Panel 2</div>      <div role='tabpanel' tabindex='0' hidden='hidden' aria-labelledby='tab-3' data-view-component='true'>      Panel 3</div></tab-container>" />
 
 ```erb
 <%= render(Primer::TabNavComponent.new(label: "With panels", with_panel: true)) do |c| %>
-  <% c.tab(selected: true) do |t| %>
+  <% c.tab(selected: true, id: "tab-1") do |t| %>
     <% t.text { "Tab 1" } %>
     <% t.panel do %>
       Panel 1
     <% end %>
   <% end %>
-  <% c.tab do |t| %>
+  <% c.tab(id: "tab-2") do |t| %>
     <% t.text { "Tab 2" } %>
     <% t.panel do %>
       Panel 2
     <% end %>
   <% end %>
-  <% c.tab do |t| %>
+  <% c.tab(id: "tab-3") do |t| %>
     <% t.text { "Tab 3" } %>
     <% t.panel do %>
       Panel 3

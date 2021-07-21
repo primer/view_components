@@ -29,8 +29,12 @@ module Primer
       ActiveSupport::Deprecation.warn(message)
     end
 
+    def aria(val, system_arguments)
+      system_arguments[:"aria-#{val}"] || system_arguments.dig(:aria, val.to_sym)
+    end
+
     def validate_aria_label
-      aria_label = @system_arguments[:"aria-label"] || @system_arguments.dig(:aria, :label)
+      aria_label = aria("label", @system_arguments)
       raise ArgumentError, "`aria-label` is required." if aria_label.nil? && !Rails.env.production?
     end
 

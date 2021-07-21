@@ -30,6 +30,26 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.48
+
+### Breaking changes
+
+* Ensure panels in `Navigation::Tab` have a label.
+
+    *Kate Higa*
+
+### Misc
+
+* Expose custom cops and default config for erblint.
+
+    *Manuel Puyol*
+
+* Fix double constant assign.
+
+    *Manuel Puyol*
+
+## 0.0.47
+
 ### Breaking changes
 
 * Restrict tag for `Popover` to `:div` and `Popover` heading slot to headings.
@@ -39,6 +59,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Renames:
   * `Primer::AutoComplete` to `Primer::Beta::AutoComplete`
   * `Primer::AutoComplete::Item` to `Primer::Beta::AutoComplete::Item`
+  * `Primer::AvatarComponent` to `Primer::Beta::Avatar`
 
     *Manuel Puyol*
 
@@ -53,6 +74,22 @@ The category for changes related to documentation, testing and tooling. Also, fo
     *Manuel Puyol*
 
 * Add linter to suggest system arguments instead of classes.
+
+    *Manuel Puyol*
+
+* Update component generator to create components in the right status module.
+
+    *Manuel Puyol*
+
+* Add example for truncating HTML to `Truncate`.
+
+    *Joel Hawksley*
+
+* Update docs generation to point to the correct file sources.
+
+    *Manuel Puyol*
+
+* Add ENV flag to dump linter data into a file.
 
     *Manuel Puyol*
 

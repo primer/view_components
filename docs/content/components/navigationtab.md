@@ -2,7 +2,7 @@
 title: NavigationTab
 componentId: navigation_tab
 status: Alpha
-source: https://github.com/primer/view_components/tree/main/app/components/primer/tab_component.rb
+source: https://github.com/primer/view_components/tree/main/app/components/primer/navigation/tab_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-navigation-tab-component
 ---
 
