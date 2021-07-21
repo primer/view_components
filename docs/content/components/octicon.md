@@ -1,5 +1,6 @@
 ---
 title: Octicon
+componentId: octicon
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/octicon_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-octicon-component

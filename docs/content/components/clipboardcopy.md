@@ -1,5 +1,6 @@
 ---
 title: ClipboardCopy
+componentId: clipboard_copy
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/clipboard_copy.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-clipboard-copy
