@@ -58,9 +58,9 @@ namespace :renamer do
 
     # TODO: rename template filename too
     # TODO: rename story too
-    # TODO: rename nav.yml
 
     # rename in codebase for status and suffix
+    updated_component_name = target_component_name
     if target_component_name.end_with?("Component")
       updated_component_name = target_component_name.gsub("Component", "")
 
@@ -69,6 +69,11 @@ namespace :renamer do
       rename_result = %x(`grep -rl #{target_component_name} . --exclude=CHANGELOG.md | xargs sed -i 's/#{target_component_name}/#{target_status.capitalize}::#{updated_component_name}/g'`)
       puts rename_result
     end
+
+    # rename nav.yml entry
+    sed_cmd = "'s/components\/#{updated_component_name.downcase}/components\/#{target_status.downcase}\/#{updated_component_name.downcase}/g' ./docs/src/@primer/gatsby-theme-doctocat/nav.yml"
+    puts "running sed with #{sed_cmd}"
+    %x(`sed -i #{sed_cmd}`)
 
     puts "updates done"
 
