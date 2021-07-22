@@ -14,10 +14,13 @@ namespace :renamer do
     # find the file
     filepath = File.join("app/components/primer/#{target_component_name.underscore}.rb")
     test_filepath = File.join("test/components/#{target_component_name.underscore}_test.rb")
+    template_filepath = File.join("app/components/primer/#{target_component_name.underscore}.html.erb")
+    story_filepath = File.join("stories/primer/#{target_component_name.underscore}_stories.rb")
 
     exists = File.file?(filepath)
-
     raise "can't find component file" unless exists
+
+    template_file_exists = File.file?(template_filepath)
 
     # add module <status>
     component_file = File.open(filepath, "r")
@@ -56,8 +59,29 @@ namespace :renamer do
     mv_result = %x(`git mv #{test_filepath} #{test_filepath_with_status}`)
     puts mv_result
 
-    # TODO: rename template filename too
-    # TODO: rename story too
+    # rename template filename too
+    if template_file_exists
+      template_filepath_with_status = template_filepath.gsub("/primer/", "/primer/#{target_status}/")
+
+      # drop component suffix in filepath if presen't
+      template_filepath_with_status.gsub!("_component.html.erb", ".html.erb") if filepath_with_status.end_with?("component.html.erb")
+
+      puts "moving from #{template_filepath} to #{template_filepath_with_status}"
+      mv_result = %x(`git mv #{template_filepath} #{template_filepath_with_status}`)
+      puts mv_result
+    end
+
+    # rename story too
+    if story_filepath
+      story_filepath_with_status = story_filepath.gsub("/primer/", "/primer/#{target_status}/")
+
+      # drop component suffix in filepath if presen't
+      story_filepath_with_status.gsub!("_component_stories", "_stories") if filepath_with_status.end_with?("component_stories.rb")
+
+      puts "moving from #{story_filepath} to #{story_filepath_with_status}"
+      mv_result = %x(`git mv #{story_filepath} #{story_filepath_with_status}`)
+      puts mv_result
+    end
 
     # rename in codebase for status and suffix
     updated_component_name = target_component_name
