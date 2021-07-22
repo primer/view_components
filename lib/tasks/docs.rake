@@ -395,13 +395,6 @@ namespace :docs do
     pretty_value(constant_value)
   end
 
-  def status_module_and_short_name(component)
-    name_with_status = component.name.gsub(/Primer::|Component/, "")
-
-    m = name_with_status.match(/(?<status>Beta|Alpha|Deprecated)?(::)?(?<name>.*)/)
-    [m[:status]&.downcase, m[:name].gsub("::", "")]
-  end
-
   def docs_metadata(component)
     (status_module, short_name) = status_module_and_short_name(component)
     status_path = status_module.nil? ? "" : "#{status_module}/"
