@@ -56,7 +56,7 @@ The Tab's text.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | The same arguments as [Text](/components/text). |
+| `kwargs` | `Hash` | N/A | The same arguments as [Text](/components/beta/text). |
 
 ### `Counter`
 

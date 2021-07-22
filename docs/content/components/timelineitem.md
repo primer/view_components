@@ -27,7 +27,7 @@ Avatar to be rendered to the left of the Badge.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | The same arguments as [Avatar](/components/avatar). |
+| `kwargs` | `Hash` | N/A | The same arguments as [Avatar](/components/beta/avatar). |
 
 ### `Badge`
 
