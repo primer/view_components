@@ -64,7 +64,7 @@ namespace :renamer do
       template_filepath_with_status = template_filepath.gsub("/primer/", "/primer/#{target_status}/")
 
       # drop component suffix in filepath if presen't
-      template_filepath_with_status.gsub!("_component.html.erb", ".html.erb") if filepath_with_status.end_with?("component.html.erb")
+      template_filepath_with_status.gsub!("_component.html.erb", ".html.erb") if template_filepath_with_status.end_with?("component.html.erb")
 
       puts "moving from #{template_filepath} to #{template_filepath_with_status}"
       mv_result = %x(`git mv #{template_filepath} #{template_filepath_with_status}`)
@@ -76,7 +76,7 @@ namespace :renamer do
       story_filepath_with_status = story_filepath.gsub("/primer/", "/primer/#{target_status}/")
 
       # drop component suffix in filepath if presen't
-      story_filepath_with_status.gsub!("_component_stories", "_stories") if filepath_with_status.end_with?("component_stories.rb")
+      story_filepath_with_status.gsub!("_component_stories", "_stories") if story_filepath_with_status.end_with?("component_stories.rb")
 
       puts "moving from #{story_filepath} to #{story_filepath_with_status}"
       mv_result = %x(`git mv #{story_filepath} #{story_filepath_with_status}`)
@@ -89,6 +89,7 @@ namespace :renamer do
       updated_component_name = target_component_name.gsub("Component", "")
 
       # TODO: don't add Beta:: in class definition
+      # TODO: don't mangle test class declaration
       puts "greping to drop Component suffix"
       rename_result = %x(`grep -rl #{target_component_name} . --exclude=CHANGELOG.md | xargs sed -i 's/#{target_component_name}/#{target_status.capitalize}::#{updated_component_name}/g'`)
       puts rename_result
