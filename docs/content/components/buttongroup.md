@@ -1,8 +1,9 @@
 ---
 title: ButtonGroup
+componentId: button_group
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/button_group.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-button-group-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-button-group
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

@@ -5,3 +5,8 @@ linters:
     enabled: true
   FlashComponentMigrationCounter:
     enabled: true
+  Rubocop:
+    enabled: true
+    rubocop_config:
+      inherit_from:
+        - lib/rubocop/config/default.yml

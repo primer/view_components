@@ -1,8 +1,9 @@
 ---
 title: Truncate
+componentId: truncate
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/truncate.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-truncate-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-truncate
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
@@ -55,4 +56,14 @@ Use `Truncate` to shorten overflowing text with an ellipsis.
 
 ```erb
 <%= render(Primer::Truncate.new(tag: :span, inline: true, expandable: true, max_width: 100)) { "branch-name-that-is-really-long" } %>
+```
+
+### With HTML content
+
+<Example src="<span style='max-width: 100px;' data-view-component='true' class='css-truncate css-truncate-target expandable'>  <span>branch-name-that-is-really-long</span></span>" />
+
+```erb
+<%= render(Primer::Truncate.new(tag: :span, inline: true, expandable: true, max_width: 100)) do %>
+  <span>branch-name-that-is-really-long</span>
+<% end %>
 ```

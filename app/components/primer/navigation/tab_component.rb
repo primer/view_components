@@ -18,9 +18,21 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :panel, lambda { |**system_arguments|
-        system_arguments[:tag] ||= :div # rubocop:disable Primer/NoTagMemoize
+        return unless @with_panel
+
+        system_arguments[:tag] = :div
         system_arguments[:role] ||= :tabpanel
+        system_arguments[:tabindex] = 0
         system_arguments[:hidden] = true unless @selected
+
+        label_present = aria("label", system_arguments) || aria("labelledby", system_arguments)
+        unless label_present
+          if @id.present?
+            system_arguments[:"aria-labelledby"] = @id
+          elsif !Rails.env.production?
+            raise ArgumentError, "Panels must be labelled. Either set a unique `id` on the tab, or set an `aria-label` directly on the panel"
+          end
+        end
 
         Primer::BaseComponent.new(**system_arguments)
       }
@@ -93,15 +105,17 @@ module Primer
         @selected = selected
         @icon_classes = icon_classes
         @list = list
+        @with_panel = with_panel
 
         @system_arguments = system_arguments
+        @id = @system_arguments[:id]
 
-        if with_panel
-          @system_arguments[:tag] ||= :button # rubocop:disable Primer/NoTagMemoize
+        if with_panel || @system_arguments[:tag] == :button
+          @system_arguments[:tag] = :button
           @system_arguments[:type] = :button
           @system_arguments[:role] = :tab
         else
-          @system_arguments[:tag] ||= :a # rubocop:disable Primer/NoTagMemoize
+          @system_arguments[:tag] = :a
         end
 
         @wrapper_arguments = wrapper_arguments
@@ -111,7 +125,7 @@ module Primer
         return unless @selected
 
         if @system_arguments[:tag] == :a
-          aria_current = @system_arguments[:"aria-current"] || @system_arguments.dig(:aria, :current) || DEFAULT_ARIA_CURRENT_FOR_ANCHOR
+          aria_current = aria("current", system_arguments) || DEFAULT_ARIA_CURRENT_FOR_ANCHOR
           @system_arguments[:"aria-current"] = fetch_or_fallback(ARIA_CURRENT_OPTIONS_FOR_ANCHOR, aria_current, DEFAULT_ARIA_CURRENT_FOR_ANCHOR)
         else
           @system_arguments[:"aria-selected"] = true

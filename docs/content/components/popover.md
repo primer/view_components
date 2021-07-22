@@ -1,5 +1,6 @@
 ---
 title: Popover
+componentId: popover
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/popover_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-popover-component
@@ -27,6 +28,7 @@ The heading
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `tag` | `Symbol` | `:h4` | One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `Body`

@@ -1,5 +1,6 @@
 ---
 title: Button
+componentId: button
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/button_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-button-component

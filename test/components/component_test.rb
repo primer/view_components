@@ -11,9 +11,9 @@ class PrimerComponentTest < Minitest::Test
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
-    [Primer::AutoComplete, { src: "Foo", list_id: "Bar", "aria-label": "Label", input_id: "input-id" }, proc { |c| c.input(classes: "Baz") }],
-    [Primer::AutoComplete::Item, { value: "Foo" }],
-    [Primer::AvatarComponent, { alt: "github", src: "https://github.com/github.png" }],
+    [Primer::Beta::AutoComplete, { src: "Foo", list_id: "Bar", "aria-label": "Label", input_id: "input-id" }, proc { |c| c.input(classes: "Baz") }],
+    [Primer::Beta::AutoComplete::Item, { value: "Foo" }],
+    [Primer::Beta::Avatar, { alt: "github", src: "https://github.com/github.png" }],
     [Primer::AvatarStackComponent, {}, lambda do |component|
       component.avatar(alt: "github", src: "https://github.com/github.png")
     end],

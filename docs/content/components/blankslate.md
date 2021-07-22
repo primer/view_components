@@ -1,5 +1,6 @@
 ---
 title: Blankslate
+componentId: blankslate
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/blankslate_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-blankslate-component

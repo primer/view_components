@@ -22,6 +22,11 @@ module Primer
     # @example Custom size
     #   <%= render(Primer::Truncate.new(tag: :span, inline: true, expandable: true, max_width: 100)) { "branch-name-that-is-really-long" } %>
     #
+    # @example With HTML content
+    #   <%= render(Primer::Truncate.new(tag: :span, inline: true, expandable: true, max_width: 100)) do %>
+    #     <span>branch-name-that-is-really-long</span>
+    #   <% end %>
+    #
     # @param tag [Symbol] <%= one_of(Primer::Truncate::TAG_OPTIONS) %>
     # @param inline [Boolean] Whether the element is inline (or inline-block).
     # @param expandable [Boolean] Whether the entire string should be revealed on hover. Can only be used in conjunction with `inline`.

@@ -1,8 +1,115 @@
 # CHANGELOG
 
+<!--
+Authoring changelog entries
+
+This file holds all the changes made in previous versions of Primer View Components and the ones coming to the next version.
+To add yours, you need to find in which category to write it under the `main` section. `Main` is the first section on top of the document.
+There are six categories currently in use, `New`, `Updates`, `Bug fixes`, `Breaking changes`, `Deprecations` and `Misc`.
+
+- New
+Category for new components, system behaviours, options and arguments changes
+
+- Updates
+Every non-breaking change to the source code go there.
+
+- Bug Fixes
+Non-breaking bug fixes to existing code.
+
+- Breaking Changes
+The category for changes creating incompatibilities to code written with previous versions.
+It includes any changes to components name, signature and behaviour. Also, include removing tags options or changing file location.
+If you are not sure you made breaking changes, ask us in your pull request.
+
+- Deprecations
+For changes that explicitly deprecate part of the code base.
+
+- Misc
+The category for changes related to documentation, testing and tooling. Also, for pull requests that can't fit in other sections.
+-->
+
 ## main
 
 ### Updates
+
+* Improve `Primer::Classify::Utilities.classes_to_hash` performance.
+
+    *Manuel Puyol*
+
+## 0.0.48
+
+### Breaking changes
+
+* Ensure panels in `Navigation::Tab` have a label.
+
+    *Kate Higa*
+
+### Misc
+
+* Extract example tag parsing into helper.
+
+    *Kate Higa*
+
+* Expose custom cops and default config for erblint.
+
+    *Manuel Puyol*
+
+* Fix double constant assign.
+
+    *Manuel Puyol*
+
+## 0.0.47
+
+### Breaking changes
+
+* Restrict tag for `Popover` to `:div` and `Popover` heading slot to headings.
+
+    *Kate Higa*
+
+* Renames:
+  * `Primer::AutoComplete` to `Primer::Beta::AutoComplete`
+  * `Primer::AutoComplete::Item` to `Primer::Beta::AutoComplete::Item`
+  * `Primer::AvatarComponent` to `Primer::Beta::Avatar`
+
+    *Manuel Puyol*
+
+### Misc
+
+* Update `doc_examples_axe_test` to exclude non-standalone components and fix `Markdown` example.
+
+    *Kate Higa*
+
+* Update `DetailsComponent` examples.
+
+    *Manuel Puyol*
+
+* Add linter to suggest system arguments instead of classes.
+
+    *Manuel Puyol*
+
+* Update component generator to create components in the right status module.
+
+    *Manuel Puyol*
+
+* Add example for truncating HTML to `Truncate`.
+
+    *Joel Hawksley*
+
+* Update docs generation to point to the correct file sources.
+
+    *Manuel Puyol*
+
+* Add ENV flag to dump linter data into a file.
+
+    *Manuel Puyol*
+
+## 0.0.46
+
+### Updates
+
+* Default to matching `name` and `id` of `input`.
+
+    *Kate Higa*
 
 * Restrict usage of padding system arguments on BorderBox, recommending use of `padding` density instead.
 
@@ -13,6 +120,10 @@
     *Amélia Chavot*
 
 ### Breaking changes
+
+* Restrict `TabNav`and `Tab` tags.
+
+    *Kate Higa*
 
 * Restrict `AvatarStack` body slot tag and `ImageCrop` spinner tag.
 
@@ -51,6 +162,10 @@
 * Update Storybook version.
 
     *Manuel Puyol*
+
+* Added a changelog authoring guide to `CHANGELOG.md`.
+
+    *Amélia Chavot*
 
 ## 0.0.45
 

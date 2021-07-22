@@ -1,8 +1,9 @@
 ---
 title: BaseButton
+componentId: base_button
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/base_button.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-base-button-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-base-button
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

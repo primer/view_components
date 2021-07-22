@@ -1,8 +1,9 @@
 ---
 title: ImageCrop
+componentId: image_crop
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/image_crop.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-image-crop-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-image-crop
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

@@ -1,11 +1,12 @@
 ---
 title: AutoCompleteItem
+componentId: auto_complete_item
 status: Beta
-source: https://github.com/primer/view_components/tree/main/app/components/primer/item.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-auto-complete-item-component
+source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/item.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-beta-auto-complete-item
 ---
 
-import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
+import Example from '../../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -27,10 +28,10 @@ Use `AutoCompleteItem` to list results of an auto-completed search.
 <Example src="<li role='option' data-autocomplete-value='value' aria-selected='true' data-view-component='true' class='autocomplete-item'>  Selected</li><li role='option' data-autocomplete-value='value' data-view-component='true' class='autocomplete-item'>  Not selected</li>" />
 
 ```erb
-<%= render(Primer::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
+<%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
   Selected
 <% end %>
-<%= render(Primer::AutoComplete::Item.new(value: "value")) do |c| %>
+<%= render(Primer::Beta::AutoComplete::Item.new(value: "value")) do |c| %>
   Not selected
 <% end %>
 ```

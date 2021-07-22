@@ -3,7 +3,7 @@ inherit_gem:
     - config/default_edge.yml
     - config/rails_edge.yml
 require:
-  - ./rubocop/cop/primer/no_tag_memoize.rb
+  - rubocop/cop/primer
 
 AllCops:
   NewCops: enable
@@ -53,5 +53,8 @@ Style/AsciiComments:
 
 Primer/NoTagMemoize:
   Enabled: true
-  include:
+  Include:
     - "app/components/**/*"
+
+Primer/SystemArgumentInsteadOfClass:
+  Enabled: true

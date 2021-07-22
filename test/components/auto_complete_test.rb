@@ -7,14 +7,14 @@ class PrimerAutoCompleteTest < Minitest::Test
 
   def test_raises_if_no_input_is_defined
     assert_raises ArgumentError do
-      render_inline Primer::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
+      render_inline Primer::Beta::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
         component.icon(icon: :person)
       end
     end
   end
 
   def test_renders_results_without_explicitly_calling_it
-    render_inline Primer::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
+    render_inline Primer::Beta::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
       component.label(classes: "")
       component.input(id: "test-input", name: "input")
     end
@@ -26,8 +26,26 @@ class PrimerAutoCompleteTest < Minitest::Test
     end
   end
 
+  def test_forwards_input_id_on_parent_to_input_slot_id
+    render_inline Primer::Beta::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
+      component.label(classes: "") { "Fruits" }
+      component.input(name: "something")
+    end
+
+    assert_selector("input[id=\"test-input\"]")
+  end
+
+  def test_forwards_input_id_on_parent_to_input_slot_id_and_name
+    render_inline Primer::Beta::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
+      component.label(classes: "") { "Fruits" }
+      component.input(classes: "")
+    end
+
+    assert_selector("input[id=\"test-input\"][name=\"test-input\"]")
+  end
+
   def test_applies_parent_aria_label_on_relevant_child_slots
-    render_inline Primer::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id", "aria-label": "Fruits") do |component|
+    render_inline Primer::Beta::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id", "aria-label": "Fruits") do |component|
       component.input(name: "input")
     end
 
@@ -38,7 +56,7 @@ class PrimerAutoCompleteTest < Minitest::Test
   end
 
   def test_overrides_parent_aria_label_if_also_set_on_slot
-    render_inline Primer::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id", "aria-label": "Fruits") do |component|
+    render_inline Primer::Beta::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id", "aria-label": "Fruits") do |component|
       component.input("aria-label": "Select your favorite fruit", name: "input")
       component.results("aria-label": "Fruits!")
     end
@@ -51,7 +69,7 @@ class PrimerAutoCompleteTest < Minitest::Test
 
   def test_raises_if_no_label_or_aria_label_or_aria_labelled_by_provided_for_input
     err = assert_raises ArgumentError do
-      render_inline Primer::AutoComplete.new(src: "/url", list_id: "my-list-id", input_id: "test-input") do |component|
+      render_inline Primer::Beta::AutoComplete.new(src: "/url", list_id: "my-list-id", input_id: "test-input") do |component|
         component.input(name: "input")
       end
     end
@@ -60,7 +78,7 @@ class PrimerAutoCompleteTest < Minitest::Test
   end
 
   def test_renders_with_icon
-    render_inline Primer::AutoComplete.new(src: "/url", list_id: "my-list-id", "aria-label": "Fruits", input_id: "test-input") do |component|
+    render_inline Primer::Beta::AutoComplete.new(src: "/url", list_id: "my-list-id", "aria-label": "Fruits", input_id: "test-input") do |component|
       component.input(name: "input")
       component.icon(icon: :person)
     end
@@ -72,7 +90,7 @@ class PrimerAutoCompleteTest < Minitest::Test
   end
 
   def test_renders_results_with_custom_classes
-    render_inline Primer::AutoComplete.new(src: "/url", list_id: "my-list-id", "aria-label": "Fruits", input_id: "test-input") do |component|
+    render_inline Primer::Beta::AutoComplete.new(src: "/url", list_id: "my-list-id", "aria-label": "Fruits", input_id: "test-input") do |component|
       component.input(classes: "custom-class")
       component.results(classes: "my-class")
     end
