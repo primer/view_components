@@ -13,6 +13,7 @@ namespace :renamer do
 
     # find the file
     filepath = File.join("app/components/primer/#{target_component_name.underscore}.rb")
+    test_filepath = File.join("test/components/#{target_component_name.underscore}_test.rb")
 
     exists = File.file?(filepath)
 
@@ -43,12 +44,23 @@ namespace :renamer do
         filepath_with_status.gsub!("_component.rb", ".rb")
     end
 
-    # TODO: rename test filename too
-    # TODO: rename template filename too
-
     puts "moving from #{filepath} to #{filepath_with_status}"
     mv_result = %x(`git mv #{filepath} #{filepath_with_status}`)
     puts mv_result
+
+    # rename test filename too
+    test_filepath_with_status = test_filepath.gsub("/components/", "/components/#{target_status}/")
+
+    # drop component suffix in filepath if presen't
+    if test_filepath_with_status.end_with?("component_test.rb")
+      test_filepath_with_status.gsub!("_component_test.rb", "_test.rb")
+    end
+
+    puts "moving from #{test_filepath} to #{test_filepath_with_status}"
+    mv_result = %x(`git mv #{test_filepath} #{test_filepath_with_status}`)
+    puts mv_result
+
+    # TODO: rename template filename too
 
     # rename in codebase for status and suffix
     if target_component_name.end_with?("Component")
