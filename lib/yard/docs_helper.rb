@@ -41,8 +41,10 @@ module YARD
     end
 
     def link_to_component(component)
-      short_name = component.name.gsub(/Primer|::|Alpha|Beta|Component/, "")
-      "[#{short_name}](/components/#{short_name.downcase})"
+      (status_module, short_name) = status_module_and_short_name(component)
+      status_path = status_module.nil? ? "" : "#{status_module}/"
+
+      "[#{short_name}](/components/#{status_path}#{short_name.downcase})"
     end
 
     def link_to_octicons
@@ -51,6 +53,13 @@ module YARD
 
     def link_to_heading_practices
       "[Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)"
+    end
+
+    def status_module_and_short_name(component)
+      name_with_status = component.name.gsub(/Primer::|Component/, "")
+
+      m = name_with_status.match(/(?<status>Beta|Alpha|Deprecated)?(::)?(?<name>.*)/)
+      [m[:status]&.downcase, m[:name].gsub("::", "")]
     end
 
     def pretty_value(val)
