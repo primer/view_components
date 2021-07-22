@@ -57,6 +57,8 @@ namespace :renamer do
     puts mv_result
 
     # TODO: rename template filename too
+    # TODO: rename story too
+    # TODO: rename nav.yml
 
     # rename in codebase for status and suffix
     if target_component_name.end_with?("Component")
