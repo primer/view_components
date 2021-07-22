@@ -2,7 +2,7 @@
 
 require "primer/alpha/button_marketing"
 
-class Primer::Alpha::TruncateStories < ViewComponent::Storybook::Stories
+class Primer::Beta::TruncateStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:truncate) do

@@ -101,8 +101,6 @@
     - title: Tooltip
       url: /components/tooltip
     - title: Truncate
-      url: /components/truncate
-    - title: Alpha::Truncate
-      url: /components/alpha/truncate
+      url: /components/beta/truncate
     - title: UnderlineNav
       url: /components/underlinenav

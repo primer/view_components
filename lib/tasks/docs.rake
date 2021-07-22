@@ -74,7 +74,7 @@ namespace :docs do
       Primer::TimelineItemComponent,
       Primer::Tooltip,
       Primer::Truncate,
-      Primer::Alpha::Truncate,
+      Primer::Beta::Truncate,
       Primer::UnderlineNavComponent
     ]
 

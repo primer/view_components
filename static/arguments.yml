@@ -22,13 +22,6 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: Truncate
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/truncate.rb
-  parameters:
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
 - component: AvatarStack
   source: https://github.com/primer/view_components/tree/main/app/components/primer/avatar_stack_component.rb
   parameters:
@@ -146,6 +139,13 @@
     type: Symbol
     default: "`:span`"
     description: ''
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: Truncate
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate.rb
+  parameters:
   - name: system_arguments
     type: Hash
     default: N/A

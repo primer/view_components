@@ -32,7 +32,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
-* Adding `Primer::Alpha::Truncate` component to reflect changes in primer/css component [Truncate](https://primer.style/css/components/truncate).
+* Adding `Primer::Beta::Truncate` component to reflect changes in primer/css component [Truncate](https://primer.style/css/components/truncate).
 
     *Jon Rohan*
 
