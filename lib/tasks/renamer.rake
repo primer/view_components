@@ -88,14 +88,12 @@ namespace :renamer do
     if target_component_name.end_with?("Component")
       updated_component_name = target_component_name.gsub("Component", "")
 
+      # TODO: don't add Beta:: in class definition
+      # TODO: don't mangle test class declaration
       puts "greping to drop Component suffix"
-      rename_result = %x(`grep -rl #{target_component_name} . --exclude=CHANGELOG.md | xargs sed -i 's/#{target_component_name}/#{updated_component_name}/g'`)
+      rename_result = %x(`grep -rl #{target_component_name} . --exclude=CHANGELOG.md | xargs sed -i 's/#{target_component_name}/#{target_status.capitalize}::#{updated_component_name}/g'`)
       puts rename_result
     end
-
-    puts "grepping to add status prefix"
-    rename_result = %x(`grep -rl (?<!class |Primer)#{updated_component_name} . --exclude=CHANGELOG.md | xargs sed -i 's/#{updated_component_name}/#{target_status.capitalize}::#{updated_component_name}/g'`)
-    puts rename_result
 
     # rename nav.yml entry
     sed_cmd = "'s/components\\\/#{updated_component_name.downcase}/components\\\/#{target_status.downcase}\\\/#{updated_component_name.downcase}/g' ./docs/src/@primer/gatsby-theme-doctocat/nav.yml"
