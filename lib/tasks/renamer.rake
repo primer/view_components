@@ -71,7 +71,7 @@ namespace :renamer do
     end
 
     # rename nav.yml entry
-    sed_cmd = "'s/components\/#{updated_component_name.downcase}/components\/#{target_status.downcase}\/#{updated_component_name.downcase}/g' ./docs/src/@primer/gatsby-theme-doctocat/nav.yml"
+    sed_cmd = "'s/components\\\/#{updated_component_name.downcase}/components\\\/#{target_status.downcase}\\\/#{updated_component_name.downcase}/g' ./docs/src/@primer/gatsby-theme-doctocat/nav.yml"
     puts "running sed with #{sed_cmd}"
     %x(`sed -i #{sed_cmd}`)
 
