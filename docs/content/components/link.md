@@ -1,5 +1,6 @@
 ---
 title: Link
+componentId: link
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/link_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-link-component

@@ -29,7 +29,7 @@ module Primer
       # @param type [Symbol] <%= one_of(Primer::Beta::AutoComplete::Input::TYPE_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :input, lambda { |**system_arguments|
-        aria_label = system_arguments[:"aria-label"] || system_arguments.dig(:aria, :label) || @aria_label
+        aria_label = aria("label", system_arguments) || @aria_label
         if aria_label.present?
           system_arguments[:"aria-label"] = aria_label
           system_arguments[:aria]&.delete(:label)
@@ -106,7 +106,7 @@ module Primer
       def initialize(src:, list_id:, input_id:, **system_arguments)
         @list_id = list_id
         @input_id = input_id
-        @aria_label = system_arguments[:"aria-label"] || system_arguments.dig(:aria, :label)
+        @aria_label = aria("label", system_arguments)
 
         system_arguments.delete(:"aria-label") && system_arguments[:aria]&.delete(:label)
 

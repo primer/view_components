@@ -36,6 +36,32 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan*
 
+* Improve `Primer::Classify::Utilities.classes_to_hash` performance.
+
+    *Manuel Puyol*
+
+## 0.0.48
+
+### Breaking changes
+
+* Ensure panels in `Navigation::Tab` have a label.
+
+    *Kate Higa*
+
+### Misc
+
+* Extract example tag parsing into helper.
+
+    *Kate Higa*
+
+* Expose custom cops and default config for erblint.
+
+    *Manuel Puyol*
+
+* Fix double constant assign.
+
+    *Manuel Puyol*
+
 ## 0.0.47
 
 ### Breaking changes

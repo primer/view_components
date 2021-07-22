@@ -63,19 +63,19 @@ module Primer
     #
     # @example With panels
     #   <%= render(Primer::TabNavComponent.new(label: "With panels", with_panel: true)) do |c| %>
-    #     <% c.tab(selected: true) do |t| %>
+    #     <% c.tab(selected: true, id: "tab-1") do |t| %>
     #       <% t.text { "Tab 1" } %>
     #       <% t.panel do %>
     #         Panel 1
     #       <% end %>
     #     <% end %>
-    #     <% c.tab do |t| %>
+    #     <% c.tab(id: "tab-2") do |t| %>
     #       <% t.text { "Tab 2" } %>
     #       <% t.panel do %>
     #         Panel 2
     #       <% end %>
     #     <% end %>
-    #     <% c.tab do |t| %>
+    #     <% c.tab(id: "tab-3") do |t| %>
     #       <% t.text { "Tab 3" } %>
     #       <% t.panel do %>
     #         Panel 3

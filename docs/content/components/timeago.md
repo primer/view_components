@@ -1,5 +1,6 @@
 ---
 title: TimeAgo
+componentId: time_ago
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/time_ago_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-time-ago-component
