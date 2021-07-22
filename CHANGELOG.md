@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+* Update the `Truncate` component to accept `:strong` as a tag.
+
+    *Amélia Chavot*
+
 * Improve `Primer::Classify::Utilities.classes_to_hash` performance.
 
     *Manuel Puyol*
