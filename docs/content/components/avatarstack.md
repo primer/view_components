@@ -30,7 +30,7 @@ Required list of stacked avatars.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | The same arguments as [Avatar](/components/avatar). |
+| `kwargs` | `Hash` | N/A | The same arguments as [Avatar](/components/beta/avatar). |
 
 ## Examples
 
