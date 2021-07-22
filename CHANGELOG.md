@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+* Update the `Truncate` component to accept `:strong` as a tag.
+
+    *Amélia Chavot*
+
 * Improve `Primer::Classify::Utilities.classes_to_hash` performance.
 
     *Manuel Puyol*
@@ -114,10 +118,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Restrict usage of padding system arguments on BorderBox, recommending use of `padding` density instead.
 
     *Joel Hawksley*
-
-* Update the `Truncate` component to accept `:strong` as a tag.
-
-    *Amélia Chavot*
 
 ### Breaking changes
 
