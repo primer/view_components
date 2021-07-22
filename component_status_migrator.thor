@@ -78,7 +78,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def update_all_references
-    run("grep -rl #{name} . --exclude=CHANGELOG.md | xargs sed -i 's/Primer::#{name}/#{status.capitalize}::#{name_without_suffix}/g'")
+    run("grep -rl #{name} . --exclude=CHANGELOG.md | xargs sed -i 's/Primer::#{name}/Primer::#{status.capitalize}::#{name_without_suffix}/g'")
   end
 
   def run_rubocop
