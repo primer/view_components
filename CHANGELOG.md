@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+* Update the `Truncate` component to accept `:strong` as a tag.
+
+    *Amélia Chavot*
+
 * Adding `Primer::Beta::Truncate` component to reflect changes in primer/css component [Truncate](https://primer.style/css/components/truncate).
 
     *Jon Rohan*
