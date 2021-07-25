@@ -34,7 +34,7 @@ an anchor tag is rendered for page navigation. For more information, refer to [N
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `panel_id` | `String` | N/A | Only applies if `with_panel` is `true`. Unique id of panel. |
+| `panel_id` | `String` | N/A | Only applies if `with_panel` is `true`. Unique ID of panel. |
 | `selected` | `Boolean` | N/A | Whether the tab is selected. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
