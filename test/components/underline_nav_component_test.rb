@@ -136,11 +136,11 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
   def test_renders_panels_and_tab_container
     render_inline(Primer::UnderlineNavComponent.new(label: "label", with_panel: true)) do |component|
-      component.tab(selected: true, id: "tab-1") do |t|
+      component.tab(selected: true, id: "tab-1", panel_id: "panel-1") do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end
-      component.tab(id: "tab-2") do |t|
+      component.tab(id: "tab-2", panel_id: "panel-2") do |t|
         t.panel { "Panel 2" }
         t.text { "Tab 2" }
       end
@@ -152,13 +152,13 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     assert_selector("tab-container") do
       assert_selector("div.UnderlineNav") do
         assert_selector("div.UnderlineNav-body[role='tablist'][aria-label='label']") do
-          assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true']", text: "Tab 1")
-          assert_selector("button.UnderlineNav-item[role='tab']", text: "Tab 2")
+          assert_selector("button.UnderlineNav-item[role='tab'][aria-selected='true'][aria-controls='panel-1']", text: "Tab 1")
+          assert_selector("button.UnderlineNav-item[role='tab'][aria-controls='panel-2']", text: "Tab 2")
         end
         assert_selector("div.UnderlineNav-actions", text: "Actions content")
       end
-      assert_selector("div[role='tabpanel']", text: "Panel 1")
-      assert_selector("div[role='tabpanel']", text: "Panel 2", visible: false)
+      assert_selector("div[id='panel-1'][role='tabpanel']", text: "Panel 1")
+      assert_selector("div[id='panel-2'][role='tabpanel']", text: "Panel 2", visible: false)
     end
   end
 
@@ -204,7 +204,7 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
 
   def test_customizes_tab_container
     render_inline(Primer::UnderlineNavComponent.new(label: "label", with_panel: true, wrapper_arguments: { m: 2, classes: "custom-class" })) do |component|
-      component.tab(selected: true, id: "tab-1") do |t|
+      component.tab(selected: true, id: "tab-1", panel_id: "panel-1") do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end

@@ -707,6 +707,10 @@
     type: Boolean
     default: "`false`"
     description: Whether the Tab has an associated panel.
+  - name: panel_id
+    type: String
+    default: '`""`'
+    description: Only applies if `with_panel` is `true`. Unique id of panel.
   - name: icon_classes
     type: Boolean
     default: '`""`'
