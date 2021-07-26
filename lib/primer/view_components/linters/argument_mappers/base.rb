@@ -7,8 +7,10 @@ module ERBLint
   module Linters
     module ArgumentMappers
       # Provides the base interface to implement an `ArgumentMapper`.
-      # To use, inherit this class and implement a `attribute_to_args(attribute)` method.
+      # Override attribute_to_args in a child class to customize its mapping behavior.
       class Base
+        DEFAULT_TAG = nil
+
         def initialize(tag)
           @tag = tag
         end
@@ -20,7 +22,7 @@ module ERBLint
         def to_args
           args = {}
 
-          args[:tag] = ":#{@tag.name}" unless @tag.name == self.class::DEFAULT_TAG
+          args[:tag] = ":#{@tag.name}" unless self.class::DEFAULT_TAG.nil? || @tag.name == self.class::DEFAULT_TAG
 
           @tag.attributes.each do |attribute|
             args.merge!(attribute_to_args(attribute))
@@ -29,7 +31,9 @@ module ERBLint
           args
         end
 
-        def attribute_to_args(attribute); end
+        def attribute_to_args(attribute)
+          SystemArguments.new(attribute).to_args
+        end
       end
     end
   end
