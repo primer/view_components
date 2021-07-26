@@ -73,7 +73,7 @@ module Primer
 
       def before_render
         return unless content.present? && items.empty?
-        
+
         # Get the tag and classes out of the system arguments
         args = @system_arguments.slice(:tag, :classes)
         @system_arguments.delete(:tag)
