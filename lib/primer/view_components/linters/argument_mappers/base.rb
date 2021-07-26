@@ -31,9 +31,7 @@ module ERBLint
           args
         end
 
-        def attribute_to_args(attribute)
-          SystemArguments.new(attribute).to_args
-        end
+        def attribute_to_args(attribute); end
       end
     end
   end
