@@ -77,13 +77,7 @@ module Primer
       def before_render
         return unless content.present? && items.empty?
 
-        # Get the slot arguments out of the system arguments
-        slot_arguments = @system_arguments.slice(:priority, :expandable, :max_width)
-        @system_arguments.delete(:priority)
-        @system_arguments.delete(:expandable)
-        @system_arguments.delete(:max_width)
-
-        item(**slot_arguments) { content }
+        item { content }
       end
 
       def render?

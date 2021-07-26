@@ -12,9 +12,9 @@ class PrimerBetaTruncateTest < Minitest::Test
   end
 
   def test_truncate_supports_block_with_arguments
-    render_inline(Primer::Beta::Truncate.new(tag: :button, priority: true, expandable: true, max_width: 1337)) { "content" }
+    render_inline(Primer::Beta::Truncate.new(tag: :button, classes: "foo")) { "content" }
 
-    assert_selector("button.Truncate > span.Truncate-text.Truncate-text--primary.Truncate-text--expandable[style='max-width: 1337px;']", text: "content")
+    assert_selector("button.Truncate.foo > span.Truncate-text", text: "content")
   end
 
   def test_truncate_wrapper_and_text_tag
