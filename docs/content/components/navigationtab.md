@@ -1,5 +1,6 @@
 ---
 title: NavigationTab
+componentId: navigation_tab
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/navigation/tab_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-navigation-tab-component
@@ -24,6 +25,7 @@ and `Primer::UnderlineNavComponent` and should not be used by itself.
 | `list` | `Boolean` | `false` | Whether the Tab is an item in a `<ul>` list. |
 | `selected` | `Boolean` | `false` | Whether the Tab is selected or not. |
 | `with_panel` | `Boolean` | `false` | Whether the Tab has an associated panel. |
+| `panel_id` | `String` | `""` | Only applies if `with_panel` is `true`. Unique id of panel. |
 | `icon_classes` | `Boolean` | `""` | Classes that must always be applied to icons. |
 | `wrapper_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) to be used in the `<li>` wrapper when the tab is an item in a list. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
@@ -55,7 +57,7 @@ The Tab's text.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | The same arguments as [Text](/components/text). |
+| `kwargs` | `Hash` | N/A | The same arguments as [Text](/components/beta/text). |
 
 ### `Counter`
 

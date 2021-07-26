@@ -110,6 +110,7 @@ namespace :docs do
       File.open(path, "w") do |f|
         f.puts("---")
         f.puts("title: #{data[:title]}")
+        f.puts("componentId: #{data[:component_id]}")
         f.puts("status: #{data[:status]}")
         f.puts("source: #{data[:source]}")
         f.puts("storybook: #{data[:storybook]}")
@@ -227,23 +228,12 @@ namespace :docs do
         f.puts("## Examples")
 
         initialize_method.tags(:example).each do |tag|
-          name = tag.name
-          description = nil
-          code = nil
-
-          if tag.text.include?("@description")
-            splitted = tag.text.split(/@description|@code/)
-            description = splitted.second.gsub(/^[ \t]{2}/, "").strip
-            code = splitted.last.gsub(/^[ \t]{2}/, "").strip
-          else
-            code = tag.text
-          end
-
+          name, description, code = parse_example_tag(tag)
           f.puts
           f.puts("### #{name}")
           if description
             f.puts
-            f.puts(description)
+            f.puts(view_context.render(inline: description.squish))
           end
           f.puts
           html = view_context.render(inline: code)
@@ -330,13 +320,14 @@ namespace :docs do
         f.puts("    class #{short_name}Preview < ViewComponent::Preview")
 
         yard_example_tags.each_with_index do |tag, index|
-          method_name = tag.name.split("|").first.downcase.parameterize.underscore
+          name, _, code = parse_example_tag(tag)
+          method_name = name.split("|").first.downcase.parameterize.underscore
           f.puts("      def #{method_name}; end")
           f.puts unless index == yard_example_tags.size - 1
           path = Pathname.new("demo/test/components/previews/primer/docs/#{short_name.underscore}_preview/#{method_name}.html.erb")
           path.dirname.mkdir unless path.dirname.exist?
           File.open(path, "w") do |view_file|
-            view_file.puts(tag.text.to_s)
+            view_file.puts(code.to_s)
           end
         end
 
@@ -374,6 +365,22 @@ namespace :docs do
     registry
   end
 
+  def parse_example_tag(tag)
+    name = tag.name
+    description = nil
+    code = nil
+
+    if tag.text.include?("@description")
+      splitted = tag.text.split(/@description|@code/)
+      description = splitted.second.gsub(/^[ \t]{2}/, "").strip
+      code = splitted.last.gsub(/^[ \t]{2}/, "").strip
+    else
+      code = tag.text
+    end
+
+    [name, description, code]
+  end
+
   def pretty_default_value(tag, component)
     params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
     default = tag.defaults&.first || params&.second
@@ -388,13 +395,6 @@ namespace :docs do
     pretty_value(constant_value)
   end
 
-  def status_module_and_short_name(component)
-    name_with_status = component.name.gsub(/Primer::|Component/, "")
-
-    m = name_with_status.match(/(?<status>Beta|Alpha|Deprecated)?(::)?(?<name>.*)/)
-    [m[:status]&.downcase, m[:name].gsub("::", "")]
-  end
-
   def docs_metadata(component)
     (status_module, short_name) = status_module_and_short_name(component)
     status_path = status_module.nil? ? "" : "#{status_module}/"
@@ -402,6 +402,7 @@ namespace :docs do
 
     {
       title: short_name,
+      component_id: short_name.underscore,
       status: status.capitalize,
       source: source_url(component),
       storybook: storybook_url(component),

@@ -20,6 +20,7 @@ module Primer
       renders_one :panel, lambda { |**system_arguments|
         return unless @with_panel
 
+        system_arguments[:id] = @panel_id
         system_arguments[:tag] = :div
         system_arguments[:role] ||= :tabpanel
         system_arguments[:tabindex] = 0
@@ -98,10 +99,11 @@ module Primer
       # @param list [Boolean] Whether the Tab is an item in a `<ul>` list.
       # @param selected [Boolean] Whether the Tab is selected or not.
       # @param with_panel [Boolean] Whether the Tab has an associated panel.
+      # @param panel_id [String] Only applies if `with_panel` is `true`. Unique id of panel.
       # @param icon_classes [Boolean] Classes that must always be applied to icons.
       # @param wrapper_arguments [Hash] <%= link_to_system_arguments_docs %> to be used in the `<li>` wrapper when the tab is an item in a list.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(list: false, selected: false, with_panel: false, icon_classes: "", wrapper_arguments: {}, **system_arguments)
+      def initialize(list: false, selected: false, with_panel: false, panel_id: "", icon_classes: "", wrapper_arguments: {}, **system_arguments)
         @selected = selected
         @icon_classes = icon_classes
         @list = list
@@ -114,6 +116,7 @@ module Primer
           @system_arguments[:tag] = :button
           @system_arguments[:type] = :button
           @system_arguments[:role] = :tab
+          panel_id(panel_id)
         else
           @system_arguments[:tag] = :a
         end
@@ -140,6 +143,17 @@ module Primer
 
         render(Primer::BaseComponent.new(**@wrapper_arguments)) do
           yield
+        end
+      end
+
+      private
+
+      def panel_id(panel_id)
+        if panel_id.blank?
+          raise ArgumentError, "`panel_id` is required" unless Rails.env.production?
+        else
+          @panel_id = panel_id
+          @system_arguments[:"aria-controls"] = @panel_id
         end
       end
     end

@@ -37,25 +37,25 @@ class PrimerTabNavComponentTest < Minitest::Test
 
   def test_renders_tabs_as_buttons
     render_inline(Primer::TabNavComponent.new(label: "label")) do |c|
-      c.tab(tag: :button, selected: true) { "Tab 1" }
-      c.tab(tag: :button) { "Tab 2" }
+      c.tab(tag: :button, selected: true, panel_id: "panel-1") { "Tab 1" }
+      c.tab(tag: :button, panel_id: "panel-2") { "Tab 2" }
     end
 
     assert_selector(".tabnav") do
       assert_selector("nav.tabnav-tabs[aria-label='label']") do
-        assert_selector("button.tabnav-tab[aria-selected='true']", text: "Tab 1")
-        assert_selector("button.tabnav-tab", text: "Tab 2")
+        assert_selector("button.tabnav-tab[aria-selected='true'][aria-controls='panel-1']", text: "Tab 1")
+        assert_selector("button.tabnav-tab[aria-controls='panel-2']", text: "Tab 2")
       end
     end
   end
 
   def test_renders_tab_panels_with_tabs_as_button
     render_inline(Primer::TabNavComponent.new(label: "label", with_panel: true)) do |c|
-      c.tab(selected: true, id: "tab-1") do |t|
+      c.tab(selected: true, id: "tab-1", panel_id: "panel-1") do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end
-      c.tab(id: "tab-2") do |t|
+      c.tab(id: "tab-2", panel_id: "panel-2") do |t|
         t.panel { "Panel 2" }
         t.text { "Tab 2" }
       end
@@ -73,20 +73,20 @@ class PrimerTabNavComponentTest < Minitest::Test
 
   def test_only_renders_panels_for_tabs_with_content
     render_inline(Primer::TabNavComponent.new(label: "label", with_panel: true)) do |c|
-      c.tab(tag: :button, selected: true, id: "tab-1") do |t|
+      c.tab(tag: :button, selected: true, id: "tab-1", panel_id: "panel-1") do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end
-      c.tab(tag: :button, id: "tab-2") { "Tab 2" }
+      c.tab(tag: :button, id: "tab-2", panel_id: "panel-2") { "Tab 2" }
     end
 
     assert_selector(".tabnav") do
       assert_selector("div.tabnav-tabs[role='tablist']") do
-        assert_selector("button.tabnav-tab[aria-selected='true'][role='tab']", text: "Tab 1")
-        assert_selector("button.tabnav-tab[role='tab']", text: "Tab 2")
+        assert_selector("button.tabnav-tab[aria-selected='true'][role='tab'][aria-controls='panel-1']", text: "Tab 1")
+        assert_selector("button.tabnav-tab[role='tab'][aria-controls='panel-2']", text: "Tab 2")
       end
     end
-    assert_selector("div[role='tabpanel']", count: 1)
+    assert_selector("div[id='panel-1'][role='tabpanel']", count: 1)
   end
 
   def test_does_not_render_panels_when_with_panel_is_false
@@ -144,7 +144,7 @@ class PrimerTabNavComponentTest < Minitest::Test
 
   def test_customizes_tab_container
     render_inline(Primer::TabNavComponent.new(label: "label", with_panel: true, wrapper_arguments: { m: 2, classes: "custom-class" })) do |component|
-      component.tab(selected: true, id: "tab-1") do |t|
+      component.tab(selected: true, id: "tab-1", panel_id: "panel-1") do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
       end

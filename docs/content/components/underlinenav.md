@@ -1,5 +1,6 @@
 ---
 title: UnderlineNav
+componentId: underline_nav
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/underline_nav_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-underline-nav-component
@@ -36,6 +37,7 @@ an anchor tag is rendered for page navigation. For more information, refer to [N
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `panel_id` | `String` | N/A | Only applies if `with_panel` is `true`. Unique id of panel. |
 | `selected` | `Boolean` | N/A | Whether the tab is selected. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
@@ -127,17 +129,17 @@ Use actions for a call to action.
 
 ### With panels
 
-<Example src="<tab-container data-view-component='true'>  <div data-view-component='true' class='UnderlineNav'>    <div role='tablist' aria-label='With panels' data-view-component='true' class='UnderlineNav-body'>          <button id='tab-1' type='button' role='tab' aria-selected='true' data-view-component='true' class='UnderlineNav-item'>          <span data-view-component='true'>Item 1</span>    </button>          <button id='tab-2' type='button' role='tab' data-view-component='true' class='UnderlineNav-item'>          <span data-view-component='true'>Item 2</span>    </button></div>      <div data-view-component='true' class='UnderlineNav-actions'>    <button type='button' data-view-component='true' class='btn'>    Button!  </button></div></div>      <div role='tabpanel' tabindex='0' aria-labelledby='tab-1' data-view-component='true'>      Panel 1</div>      <div role='tabpanel' tabindex='0' hidden='hidden' aria-labelledby='tab-2' data-view-component='true'>      Panel 2</div></tab-container>" />
+<Example src="<tab-container data-view-component='true'>  <div data-view-component='true' class='UnderlineNav'>    <div role='tablist' aria-label='With panels' data-view-component='true' class='UnderlineNav-body'>          <button id='tab-1' type='button' role='tab' aria-controls='panel-1' aria-selected='true' data-view-component='true' class='UnderlineNav-item'>          <span data-view-component='true'>Item 1</span>    </button>          <button id='tab-2' type='button' role='tab' aria-controls='panel-2' data-view-component='true' class='UnderlineNav-item'>          <span data-view-component='true'>Item 2</span>    </button></div>      <div data-view-component='true' class='UnderlineNav-actions'>    <button type='button' data-view-component='true' class='btn'>    Button!  </button></div></div>      <div id='panel-1' role='tabpanel' tabindex='0' aria-labelledby='tab-1' data-view-component='true'>      Panel 1</div>      <div id='panel-2' role='tabpanel' tabindex='0' hidden='hidden' aria-labelledby='tab-2' data-view-component='true'>      Panel 2</div></tab-container>" />
 
 ```erb
 <%= render(Primer::UnderlineNavComponent.new(label: "With panels", with_panel: true)) do |component| %>
-  <% component.tab(selected: true, id: "tab-1") do |t| %>
+  <% component.tab(selected: true, id: "tab-1", panel_id: "panel-1") do |t| %>
     <% t.text { "Item 1" } %>
     <% t.panel do %>
       Panel 1
     <% end %>
   <% end %>
-  <% component.tab(id: "tab-2") do |t| %>
+  <% component.tab(id: "tab-2", panel_id: "panel-2") do |t| %>
     <% t.text { "Item 2" } %>
     <% t.panel do %>
       Panel 2

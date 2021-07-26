@@ -1,5 +1,6 @@
 ---
 title: AvatarStack
+componentId: avatar_stack
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/avatar_stack_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-avatar-stack-component
@@ -29,7 +30,7 @@ Required list of stacked avatars.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | The same arguments as [Avatar](/components/avatar). |
+| `kwargs` | `Hash` | N/A | The same arguments as [Avatar](/components/beta/avatar). |
 
 ## Examples
 

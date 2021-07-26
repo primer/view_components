@@ -1,5 +1,6 @@
 ---
 title: FlexItem
+componentId: flex_item
 status: Deprecated
 source: https://github.com/primer/view_components/tree/main/app/components/primer/flex_item_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-flex-item-component
