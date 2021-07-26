@@ -2,7 +2,7 @@
 
 ENV["RAILS_ENV"] = "test"
 
-require "erb_lint"
+require "erb_lint/all"
 require "minitest/autorun"
 require "mocha/minitest"
 require "rails"
