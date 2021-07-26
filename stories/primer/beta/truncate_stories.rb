@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "primer/alpha/button_marketing"
+require "primer/beta/truncate"
 
 class Primer::Beta::TruncateStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
