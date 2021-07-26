@@ -2,11 +2,11 @@
 
 require "test_helper"
 
-class PrimerAvatarStackComponentTest < Minitest::Test
+class PrimerAvatarStackTest
   include Primer::ComponentTestHelpers
 
   def test_renders_as_a_div_by_default
-    render_inline(Primer::AvatarStackComponent.new) do |c|
+    render_inline(Primer::Beta::AvatarStack.new) do |c|
       c.avatar(src: "Foo", alt: "Bar")
     end
 
@@ -14,7 +14,7 @@ class PrimerAvatarStackComponentTest < Minitest::Test
   end
 
   def test_renders_as_a_span
-    render_inline(Primer::AvatarStackComponent.new(tag: :span)) do |c|
+    render_inline(Primer::Beta::AvatarStack.new(tag: :span)) do |c|
       c.avatar(src: "Foo", alt: "Bar")
     end
     assert_selector("span.AvatarStack")
@@ -22,7 +22,7 @@ class PrimerAvatarStackComponentTest < Minitest::Test
 
   def test_falls_back_when_tag_isnt_valid
     without_fetch_or_fallback_raises do
-      render_inline(Primer::AvatarStackComponent.new(tag: :h1)) do |c|
+      render_inline(Primer::Beta::AvatarStack.new(tag: :h1)) do |c|
         c.avatar(src: "Foo", alt: "Bar")
       end
       assert_selector("div.AvatarStack")
@@ -31,7 +31,7 @@ class PrimerAvatarStackComponentTest < Minitest::Test
 
   def test_falls_back_when_body_tag_isnt_valid
     without_fetch_or_fallback_raises do
-      render_inline(Primer::AvatarStackComponent.new(body_arguments: { tag: :h1 })) do |c|
+      render_inline(Primer::Beta::AvatarStack.new(body_arguments: { tag: :h1 })) do |c|
         c.avatar(src: "Foo", alt: "Bar")
       end
       assert_selector("div.AvatarStack-body")
@@ -39,13 +39,13 @@ class PrimerAvatarStackComponentTest < Minitest::Test
   end
 
   def test_does_not_render_without_avatars
-    render_inline(Primer::AvatarStackComponent.new)
+    render_inline(Primer::Beta::AvatarStack.new)
 
     refute_component_rendered
   end
 
   def test_renders_default_body
-    render_inline(Primer::AvatarStackComponent.new) do |c|
+    render_inline(Primer::Beta::AvatarStack.new) do |c|
       c.avatar(src: "Foo", alt: "Bar")
     end
 
@@ -58,7 +58,7 @@ class PrimerAvatarStackComponentTest < Minitest::Test
   end
 
   def test_renders_tooltipped_body
-    render_inline(Primer::AvatarStackComponent.new(tooltipped: true, body_arguments: { label: "Tooltip" })) do |c|
+    render_inline(Primer::Beta::AvatarStack.new(tooltipped: true, body_arguments: { label: "Tooltip" })) do |c|
       c.avatar(src: "Foo", alt: "Bar")
     end
 
@@ -70,7 +70,7 @@ class PrimerAvatarStackComponentTest < Minitest::Test
   end
 
   def test_renders_right_aligned
-    render_inline(Primer::AvatarStackComponent.new(align: :right)) do |c|
+    render_inline(Primer::Beta::AvatarStack.new(align: :right)) do |c|
       c.avatar(src: "Foo", alt: "Bar")
     end
 
@@ -83,7 +83,7 @@ class PrimerAvatarStackComponentTest < Minitest::Test
   end
 
   def test_renders_two_avatar_stack
-    render_inline(Primer::AvatarStackComponent.new) do |c|
+    render_inline(Primer::Beta::AvatarStack.new) do |c|
       c.avatar(src: "Foo", alt: "Bar")
       c.avatar(src: "Foo", alt: "Bar")
     end
@@ -96,7 +96,7 @@ class PrimerAvatarStackComponentTest < Minitest::Test
   end
 
   def test_renders_three_plus_avatar_stack
-    render_inline(Primer::AvatarStackComponent.new) do |c|
+    render_inline(Primer::Beta::AvatarStack.new) do |c|
       c.avatar(src: "Foo", alt: "Bar")
       c.avatar(src: "Foo", alt: "Bar")
       c.avatar(src: "Foo", alt: "Bar")

@@ -14,7 +14,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::AutoComplete, { src: "Foo", list_id: "Bar", "aria-label": "Label", input_id: "input-id" }, proc { |c| c.input(classes: "Baz") }],
     [Primer::Beta::AutoComplete::Item, { value: "Foo" }],
     [Primer::Beta::Avatar, { alt: "github", src: "https://github.com/github.png" }],
-    [Primer::AvatarStackComponent, {}, lambda do |component|
+    [Primer::Beta::AvatarStack, {}, lambda do |component|
       component.avatar(alt: "github", src: "https://github.com/github.png")
     end],
     [Primer::BaseButton, {}],
