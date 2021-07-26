@@ -6,7 +6,8 @@ require_relative "system_arguments"
 module ERBLint
   module Linters
     module ArgumentMappers
-      # Maps classes in a label element to arguments for the Label component.
+      # Provides the base interface to implement an `ArgumentMapper`.
+      # To use, inherit this class and implement a `attribute_to_args(attribute)` method.
       class Base
         def initialize(tag)
           @tag = tag
@@ -27,6 +28,8 @@ module ERBLint
 
           args
         end
+        
+        def attribute_to_args(attribute); end
       end
     end
   end
