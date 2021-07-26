@@ -83,7 +83,7 @@ module Primer
         @system_arguments.delete(:expandable)
         @system_arguments.delete(:max_width)
 
-        set_slot(:items, **slot_arguments) { content }
+        item(**slot_arguments) { content }
       end
 
       def render?
