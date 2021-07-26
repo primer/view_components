@@ -68,21 +68,21 @@ module Primer
       def initialize(**system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] = system_arguments[:tag] || :span
-        @system_arguments[:classes] = "Truncate"
+        @system_arguments[:classes] = class_names(
+          "Truncate",
+          system_arguments[:classes]
+        )
       end
 
       def before_render
         return unless content.present? && items.empty?
 
-        # Get the tag and classes out of the system arguments
-        args = @system_arguments.slice(:tag, :classes)
-        @system_arguments.delete(:tag)
-        @system_arguments.delete(:classes)
+        # Get the slot arguments out of the system arguments
+        slot_arguments = @system_arguments.slice(:priority, :expandable, :max_width)
+        @system_arguments.delete(:priority)
+        @system_arguments.delete(:expandable)
+        @system_arguments.delete(:max_width)
 
-        # Duplicate to slot arguments
-        slot_arguments = @system_arguments.dup
-
-        @system_arguments = args
         set_slot(:items, **slot_arguments) { content }
       end
 
