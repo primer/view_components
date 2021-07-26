@@ -16,7 +16,7 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
 for organizations or any other non-human avatars.
 - By default, `Avatar` will render a static `<img>`. To have `Avatar` function as a link, set the `href` which will wrap the `<img>` in a `<a>`.
 - Set `size` to update the height and width of the `Avatar` in pixels.
-- To stack multiple avatars together, use [AvatarStack](/components/avatarstack).
+- To stack multiple avatars together, use [AvatarStack](/components/beta/avatarstack).
 
 ## Accessibility
 
