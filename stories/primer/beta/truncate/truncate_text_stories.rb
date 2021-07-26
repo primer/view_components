@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "primer/beta/truncate"
+
 class Primer::Beta::Truncate::TruncateTextStories < ViewComponent::Storybook::Stories
   layout "storybook_centered_preview"
 
