@@ -72,18 +72,18 @@ module Primer
       end
 
       def before_render
-        if content.present? && items.empty?
-          # Get the tag and classes out of the system arguments
-          args = @system_arguments.slice(:tag, :classes)
-          @system_arguments.delete(:tag)
-          @system_arguments.delete(:classes)
+        return unless content.present? && items.empty?
+        
+        # Get the tag and classes out of the system arguments
+        args = @system_arguments.slice(:tag, :classes)
+        @system_arguments.delete(:tag)
+        @system_arguments.delete(:classes)
 
-          # Duplicate to slot arguments
-          slot_arguments = @system_arguments.dup
+        # Duplicate to slot arguments
+        slot_arguments = @system_arguments.dup
 
-          @system_arguments = args
-          self.set_slot(:items, **slot_arguments) { content }
-        end
+        @system_arguments = args
+        set_slot(:items, **slot_arguments) { content }
       end
 
       def render?
