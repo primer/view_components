@@ -45,7 +45,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Improve `Primer::Classify::Utilities.classes_to_hash` performance.
 
     *Manuel Puyol*
-    
+
 ### Breaking changes
 
 * Require tab with panels to have `panel_id` so `aria-controls` can be set.
