@@ -33,7 +33,7 @@ module Primer
           # remove defaults
           val = val.except("", nil)
 
-          return val.transform_values {|v| symbolize_value(v) } if symbolize
+          return val.transform_values { |v| symbolize_value(v) } if symbolize
 
           val
         end
