@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-require_relative "conversion_error"
-require_relative "system_arguments"
+require_relative "base"
 
 module ERBLint
   module Linters
     module ArgumentMappers
       # Maps classes in a button element to arguments for the Button component.
-      class Button
+      class Button < Base
         SCHEME_MAPPINGS = {
           "btn-primary" => ":primary",
           "btn-danger" => ":danger",
@@ -22,41 +21,26 @@ module ERBLint
         }.freeze
 
         TYPE_OPTIONS = %w[button reset submit].freeze
+        DEFAULT_TAG = "button"
 
-        def initialize(tag)
-          @tag = tag
-        end
+        def attribute_to_args(attribute)
+          attr_name = attribute.name
 
-        def to_s
-          to_args.map { |k, v| "#{k}: #{v}" }.join(", ")
-        end
+          if attr_name == "class"
+            classes_to_args(attribute)
+          elsif attr_name == "disabled"
+            { disabled: true }
+          elsif attr_name == "type"
+            # button is the default type, so we don't need to do anything.
+            return {} if attribute.value == "button"
 
-        def to_args
-          args = {}
+            raise ConversionError, "Button component does not support type \"#{attribute.value}\"" unless TYPE_OPTIONS.include?(attribute.value)
 
-          args[:tag] = ":#{@tag.name}" unless @tag.name == "button"
-
-          @tag.attributes.each do |attribute|
-            attr_name = attribute.name
-
-            if attr_name == "class"
-              args = args.merge(classes_to_args(attribute))
-            elsif attr_name == "disabled"
-              args[:disabled] = true
-            elsif attr_name == "type"
-              # button is the default type, so we don't need to do anything.
-              next if attribute.value == "button"
-
-              raise ConversionError, "Button component does not support type \"#{attribute.value}\"" unless TYPE_OPTIONS.include?(attribute.value)
-
-              args[:type] = ":#{attribute.value}"
-            else
-              # Assume the attribute is a system argument.
-              args.merge!(SystemArguments.new(attribute).to_args)
-            end
+            { type: ":#{attribute.value}" }
+          else
+            # Assume the attribute is a system argument.
+            SystemArguments.new(attribute).to_args
           end
-
-          args
         end
 
         def classes_to_args(classes)

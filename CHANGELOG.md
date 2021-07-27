@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Add linter suggestions for `Label` component.
+
+    *Manuel Puyol*
+
 ### Updates
 
 * Update the `Truncate` component to accept `:strong` as a tag.

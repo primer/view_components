@@ -17,60 +17,60 @@ module ERBLint
 
       def self.included(base)
         base.include(ERBLint::LinterRegistry)
+      end
 
-        define_method "run" do |processed_source|
-          @total_offenses = 0
-          @offenses_not_corrected = 0
-          tags = tags(processed_source)
-          tag_tree = build_tag_tree(tags)
+      def run(processed_source)
+        @total_offenses = 0
+        @offenses_not_corrected = 0
+        tags = tags(processed_source)
+        tag_tree = build_tag_tree(tags)
 
-          tags.each do |tag|
-            next if tag.closing?
-            next unless self.class::TAGS&.include?(tag.name)
+        tags.each do |tag|
+          next if tag.closing?
+          next unless self.class::TAGS&.include?(tag.name)
 
-            classes = tag.attributes["class"]&.value&.split(" ") || []
+          classes = tag.attributes["class"]&.value&.split(" ") || []
 
-            tag_tree[tag][:offense] = false
+          tag_tree[tag][:offense] = false
 
-            next unless self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
+          next unless self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
 
-            args = map_arguments(tag)
-            correction = correction(args)
+          args = map_arguments(tag)
+          correction = correction(args)
 
-            tag_tree[tag][:offense] = true
-            tag_tree[tag][:correctable] = !correction.nil?
-            tag_tree[tag][:message] = message(args)
-            tag_tree[tag][:correction] = correction
-          end
-
-          tag_tree.each do |tag, h|
-            next unless h[:offense]
-
-            @total_offenses += 1
-            # We always fix the offenses using blocks. The closing tag corresponds to `<% end %>`.
-            if h[:correctable]
-              add_offense(tag.loc, h[:message], h[:correction])
-              add_offense(h[:closing].loc, h[:message], "<% end %>")
-            else
-              @offenses_not_corrected += 1
-              generate_offense(self.class, processed_source, tag, h[:message])
-            end
-          end
-
-          counter_correct?(processed_source)
-
-          dump_data(processed_source) if ENV["DUMP_LINT_DATA"] == "1"
+          tag_tree[tag][:offense] = true
+          tag_tree[tag][:correctable] = !correction.nil?
+          tag_tree[tag][:message] = message(args)
+          tag_tree[tag][:correction] = correction
         end
 
-        define_method "autocorrect" do |processed_source, offense|
-          return unless offense.context
+        tag_tree.each do |tag, h|
+          next unless h[:offense]
 
-          lambda do |corrector|
-            if offense.context.include?(counter_disable)
-              correct_counter(corrector, processed_source, offense)
-            else
-              corrector.replace(offense.source_range, offense.context)
-            end
+          @total_offenses += 1
+          # We always fix the offenses using blocks. The closing tag corresponds to `<% end %>`.
+          if h[:correctable]
+            add_offense(tag.loc, h[:message], h[:correction])
+            add_offense(h[:closing].loc, h[:message], "<% end %>")
+          else
+            @offenses_not_corrected += 1
+            generate_offense(self.class, processed_source, tag, h[:message])
+          end
+        end
+
+        counter_correct?(processed_source)
+
+        dump_data(processed_source) if ENV["DUMP_LINT_DATA"] == "1"
+      end
+
+      def autocorrect(processed_source, offense)
+        return unless offense.context
+
+        lambda do |corrector|
+          if offense.context.include?(counter_disable)
+            correct_counter(corrector, processed_source, offense)
+          else
+            corrector.replace(offense.source_range, offense.context)
           end
         end
       end
