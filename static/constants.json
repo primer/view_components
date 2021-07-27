@@ -1,12 +1,29 @@
 {
   "Primer::Alpha::ButtonMarketing": {
+    "DEFAULT_SCHEME": "default",
+    "DEFAULT_TAG": "button",
+    "DEFAULT_TYPE": "button",
+    "DEFAULT_VARIANT": "default",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "primary": "btn-primary-mktg",
+      "outline": "btn-outline-mktg",
+      "transparent": "btn-transparent"
+    },
     "SCHEME_OPTIONS": [
       "default",
       "primary",
       "outline",
       "transparent"
     ],
-    "DEFAULT_VARIANT": "default",
+    "TAG_OPTIONS": [
+      "button",
+      "a"
+    ],
+    "TYPE_OPTIONS": [
+      "button",
+      "submit"
+    ],
     "VARIANT_MAPPINGS": {
       "default": "",
       "large": "btn-large-mktg"
@@ -14,33 +31,16 @@
     "VARIANT_OPTIONS": [
       "default",
       "large"
-    ],
-    "DEFAULT_TAG": "button",
-    "TAG_OPTIONS": [
-      "button",
-      "a"
-    ],
-    "DEFAULT_TYPE": "button",
-    "TYPE_OPTIONS": [
-      "button",
-      "submit"
-    ],
-    "DEFAULT_SCHEME": "default",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "primary": "btn-primary-mktg",
-      "outline": "btn-outline-mktg",
-      "transparent": "btn-transparent"
-    }
+    ]
   },
   "Primer::BaseButton": {
     "DEFAULT_TAG": "button",
+    "DEFAULT_TYPE": "button",
     "TAG_OPTIONS": [
       "button",
       "a",
       "summary"
     ],
-    "DEFAULT_TYPE": "button",
     "TYPE_OPTIONS": [
       "button",
       "reset",
@@ -50,10 +50,10 @@
   "Primer::BaseComponent": {
   },
   "Primer::Beta::AutoComplete": {
-    "ItemStories": "Primer::Beta::AutoComplete::ItemStories",
-    "InputStories": "Primer::Beta::AutoComplete::InputStories",
     "Input": "Primer::Beta::AutoComplete::Input",
-    "Item": "Primer::Beta::AutoComplete::Item"
+    "InputStories": "Primer::Beta::AutoComplete::InputStories",
+    "Item": "Primer::Beta::AutoComplete::Item",
+    "ItemStories": "Primer::Beta::AutoComplete::ItemStories"
   },
   "Primer::Beta::AutoComplete::Input": {
     "DEFAULT_TYPE": "text",
@@ -73,16 +73,16 @@
       "left",
       "right"
     ],
-    "DEFAULT_TAG": "div",
-    "TAG_OPTIONS": [
-      "div",
-      "span"
-    ],
     "BODY_TAG_OPTIONS": [
       "div",
       "span"
     ],
-    "DEFAULT_BODY_TAG": "div"
+    "DEFAULT_BODY_TAG": "div",
+    "DEFAULT_TAG": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "span"
+    ]
   },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
@@ -90,13 +90,13 @@
   "Primer::BlankslateComponent": {
   },
   "Primer::BorderBoxComponent": {
+    "DEFAULT_PADDING": "default",
     "PADDING_MAPPINGS": {
       "default": "",
       "condensed": "Box--condensed",
       "spacious": "Box--spacious"
     },
-    "PADDING_SUGGESTION": "Perhaps you could consider using :padding options of default, condensed, and spacious?",
-    "DEFAULT_PADDING": "default"
+    "PADDING_SUGGESTION": "Perhaps you could consider using :padding options of default, condensed, and spacious?"
   },
   "Primer::BoxComponent": {
   },
@@ -106,6 +106,17 @@
   "Primer::BreadcrumbComponent::ItemComponent": {
   },
   "Primer::ButtonComponent": {
+    "DEFAULT_SCHEME": "default",
+    "DEFAULT_VARIANT": "medium",
+    "LINK_SCHEME": "link",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "primary": "btn-primary",
+      "danger": "btn-danger",
+      "outline": "btn-outline",
+      "invisible": "btn-invisible",
+      "link": "btn-link"
+    },
     "SCHEME_OPTIONS": [
       "default",
       "primary",
@@ -114,7 +125,6 @@
       "invisible",
       "link"
     ],
-    "DEFAULT_VARIANT": "medium",
     "VARIANT_MAPPINGS": {
       "small": "btn-sm",
       "medium": "",
@@ -124,17 +134,7 @@
       "small",
       "medium",
       "large"
-    ],
-    "LINK_SCHEME": "link",
-    "DEFAULT_SCHEME": "default",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "primary": "btn-primary",
-      "danger": "btn-danger",
-      "outline": "btn-outline",
-      "invisible": "btn-invisible",
-      "link": "btn-link"
-    }
+    ]
   },
   "Primer::ButtonGroup": {
   },
@@ -148,6 +148,11 @@
     ]
   },
   "Primer::CounterComponent": {
+    "DEFAULT_SCHEME": "default",
+    "DEPRECATED_SCHEME_OPTIONS": [
+      "gray",
+      "light_gray"
+    ],
     "SCHEME_MAPPINGS": {
       "default": "",
       "primary": "Counter--primary",
@@ -159,22 +164,17 @@
       "default",
       "primary",
       "secondary"
-    ],
-    "DEFAULT_SCHEME": "default",
-    "DEPRECATED_SCHEME_OPTIONS": [
-      "gray",
-      "light_gray"
     ]
   },
   "Primer::DetailsComponent": {
     "BODY_TAG_DEFAULT": "div",
-    "NO_OVERLAY": "none",
     "BODY_TAG_OPTIONS": [
       "ul",
       "details-menu",
       "details-dialog",
       "div"
     ],
+    "NO_OVERLAY": "none",
     "OVERLAY_MAPPINGS": {
       "none": "",
       "default": "details-overlay",
@@ -185,13 +185,11 @@
     "Menu": "Primer::Dropdown::Menu"
   },
   "Primer::Dropdown::Menu": {
-    "Item": "Primer::Dropdown::Menu::Item",
     "AS_DEFAULT": "default",
     "AS_OPTIONS": [
       "default",
       "list"
     ],
-    "SCHEME_DEFAULT": "default",
     "DIRECTION_DEFAULT": "se",
     "DIRECTION_OPTIONS": [
       "se",
@@ -201,25 +199,26 @@
       "ne",
       "s"
     ],
+    "Item": "Primer::Dropdown::Menu::Item",
+    "SCHEME_DEFAULT": "default",
     "SCHEME_MAPPINGS": {
       "default": "",
       "dark": "dropdown-menu-dark"
     }
   },
   "Primer::Dropdown::Menu::Item": {
-    "TAG_OPTIONS": [
-      "a",
+    "BUTTON_TAGS": [
       "button",
       "summary"
     ],
     "TAG_DEFAULT": "a",
-    "BUTTON_TAGS": [
+    "TAG_OPTIONS": [
+      "a",
       "button",
       "summary"
     ]
   },
   "Primer::DropdownMenuComponent": {
-    "SCHEME_DEFAULT": "default",
     "DIRECTION_DEFAULT": "se",
     "DIRECTION_OPTIONS": [
       "se",
@@ -229,6 +228,7 @@
       "ne",
       "s"
     ],
+    "SCHEME_DEFAULT": "default",
     "SCHEME_MAPPINGS": {
       "default": "",
       "dark": "dropdown-menu-dark"
@@ -244,36 +244,6 @@
     }
   },
   "Primer::FlexComponent": {
-    "FLEX_WRAP_DEFAULT": null,
-    "FLEX_WRAP_OPTIONS": [
-      null,
-      true,
-      false
-    ],
-    "DEFAULT_DIRECTION": null,
-    "ALLOWED_DIRECTIONS": [
-      null,
-      "column",
-      "column_reverse",
-      "row",
-      "row_reverse"
-    ],
-    "JUSTIFY_CONTENT_DEFAULT": null,
-    "JUSTIFY_CONTENT_MAPPINGS": {
-      "flex_start": "flex-justify-start",
-      "flex_end": "flex-justify-end",
-      "center": "flex-justify-center",
-      "space_between": "flex-justify-between",
-      "space_around": "flex-justify-around"
-    },
-    "JUSTIFY_CONTENT_OPTIONS": [
-      null,
-      "flex_start",
-      "flex_end",
-      "center",
-      "space_between",
-      "space_around"
-    ],
     "ALIGN_ITEMS_DEFAULT": null,
     "ALIGN_ITEMS_MAPPINGS": {
       "start": "flex-items-start",
@@ -290,18 +260,48 @@
       "baseline",
       "stretch"
     ],
+    "ALLOWED_DIRECTIONS": [
+      null,
+      "column",
+      "column_reverse",
+      "row",
+      "row_reverse"
+    ],
+    "DEFAULT_DIRECTION": null,
+    "FLEX_WRAP_DEFAULT": null,
+    "FLEX_WRAP_OPTIONS": [
+      null,
+      true,
+      false
+    ],
     "INLINE_DEFAULT": false,
     "INLINE_OPTIONS": [
       false,
       true
+    ],
+    "JUSTIFY_CONTENT_DEFAULT": null,
+    "JUSTIFY_CONTENT_MAPPINGS": {
+      "flex_start": "flex-justify-start",
+      "flex_end": "flex-justify-end",
+      "center": "flex-justify-center",
+      "space_between": "flex-justify-between",
+      "space_around": "flex-justify-around"
+    },
+    "JUSTIFY_CONTENT_OPTIONS": [
+      null,
+      "flex_start",
+      "flex_end",
+      "center",
+      "space_between",
+      "space_around"
     ]
   },
   "Primer::FlexItemComponent": {
-    "FLEX_AUTO_DEFAULT": false,
     "FLEX_AUTO_ALLOWED_VALUES": [
       false,
       true
-    ]
+    ],
+    "FLEX_AUTO_DEFAULT": false
   },
   "Primer::HeadingComponent": {
     "TAG_FALLBACK": "h2",
@@ -318,44 +318,24 @@
   },
   "Primer::IconButton": {
     "DEFAULT_SCHEME": "default",
-    "SCHEME_OPTIONS": [
-      "default",
-      "danger"
-    ],
     "SCHEME_MAPPINGS": {
       "default": "",
       "danger": "btn-octicon-danger"
-    }
+    },
+    "SCHEME_OPTIONS": [
+      "default",
+      "danger"
+    ]
   },
   "Primer::Image": {
   },
   "Primer::ImageCrop": {
   },
   "Primer::LabelComponent": {
-    "SCHEME_OPTIONS": [
-      "primary",
-      "secondary",
-      "info",
-      "success",
-      "warning",
-      "danger",
-      null
-    ],
-    "VARIANT_MAPPINGS": {
-      "large": "Label--large",
-      "inline": "Label--inline"
-    },
-    "VARIANT_OPTIONS": [
-      "large",
-      "inline",
-      null
-    ],
     "DEFAULT_TAG": "span",
-    "TAG_OPTIONS": [
-      "span",
-      "summary",
-      "a",
-      "div"
+    "DEPRECATED_SCHEME_OPTIONS": [
+      "orange",
+      "purple"
     ],
     "SCHEME_MAPPINGS": {
       "primary": "Label--primary",
@@ -367,13 +347,32 @@
       "orange": "Label--orange",
       "purple": "Label--purple"
     },
-    "DEPRECATED_SCHEME_OPTIONS": [
-      "orange",
-      "purple"
+    "SCHEME_OPTIONS": [
+      "primary",
+      "secondary",
+      "info",
+      "success",
+      "warning",
+      "danger",
+      null
+    ],
+    "TAG_OPTIONS": [
+      "span",
+      "summary",
+      "a",
+      "div"
+    ],
+    "VARIANT_MAPPINGS": {
+      "large": "Label--large",
+      "inline": "Label--inline"
+    },
+    "VARIANT_OPTIONS": [
+      "large",
+      "inline",
+      null
     ]
   },
   "Primer::LayoutComponent": {
-    "DEFAULT_SIDEBAR_COL": 3,
     "ALLOWED_SIDEBAR_COLS": [
       1,
       2,
@@ -387,37 +386,38 @@
       10,
       11
     ],
-    "DEFAULT_SIDE": "right",
     "ALLOWED_SIDES": [
       "right",
       "left"
     ],
+    "DEFAULT_SIDE": "right",
+    "DEFAULT_SIDEBAR_COL": 3,
     "MAX_COL": 12
   },
   "Primer::LinkComponent": {
     "DEFAULT_SCHEME": "default",
     "DEFAULT_TAG": "a",
-    "TAG_OPTIONS": [
-      "a",
-      "span"
-    ],
     "SCHEME_MAPPINGS": {
       "default": "",
       "primary": "Link--primary",
       "secondary": "Link--secondary"
-    }
+    },
+    "TAG_OPTIONS": [
+      "a",
+      "span"
+    ]
   },
   "Primer::LocalTime": {
+    "DEFAULT_DIGIT_TYPE": "numeric",
+    "DEFAULT_TEXT_TYPE": "short",
     "DIGIT_TYPE_OPTIONS": [
       "numeric",
       "2-digit"
     ],
-    "DEFAULT_TEXT_TYPE": "short",
     "TEXT_TYPE_OPTIONS": [
       "short",
       "long"
-    ],
-    "DEFAULT_DIGIT_TYPE": "numeric"
+    ]
   },
   "Primer::Markdown": {
     "DEFAULT_TAG": "div",
@@ -428,6 +428,7 @@
     ]
   },
   "Primer::MenuComponent": {
+    "HEADING_TAG_FALLBACK": "h2",
     "HEADING_TAG_OPTIONS": [
       "h1",
       "h2",
@@ -435,8 +436,7 @@
       "h4",
       "h5",
       "h6"
-    ],
-    "HEADING_TAG_FALLBACK": "h2"
+    ]
   },
   "Primer::Navigation::TabComponent": {
     "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [
@@ -447,11 +447,11 @@
   },
   "Primer::OcticonComponent": {
     "SIZE_DEFAULT": "small",
-    "SIZE_MEDIUM": "medium",
     "SIZE_MAPPINGS": {
       "small": 16,
       "medium": 24
     },
+    "SIZE_MEDIUM": "medium",
     "SIZE_OPTIONS": [
       "small",
       "medium"
@@ -460,7 +460,6 @@
   "Primer::OcticonSymbolsComponent": {
   },
   "Primer::PopoverComponent": {
-    "DEFAULT_HEADING_TAG": "h4",
     "CARET_DEFAULT": "top",
     "CARET_MAPPINGS": {
       "top": "",
@@ -475,7 +474,8 @@
       "right_top": "Popover-message--right-top",
       "top_left": "Popover-message--top-left",
       "top_right": "Popover-message--top-right"
-    }
+    },
+    "DEFAULT_HEADING_TAG": "h4"
   },
   "Primer::ProgressBarComponent": {
     "SIZE_DEFAULT": "default",
@@ -491,6 +491,7 @@
     ]
   },
   "Primer::SpinnerComponent": {
+    "DEFAULT_SIZE": "medium",
     "DEFAULT_STYLE": "box-sizing: content-box; color: var(--color-icon-primary);",
     "SIZE_MAPPINGS": {
       "small": 16,
@@ -501,10 +502,30 @@
       "small",
       "medium",
       "large"
-    ],
-    "DEFAULT_SIZE": "medium"
+    ]
   },
   "Primer::StateComponent": {
+    "DEPRECATED_SCHEME_MAPPINGS": {
+      "default": "",
+      "green": "State--open",
+      "red": "State--closed",
+      "purple": "State--merged"
+    },
+    "NEW_SCHEME_MAPPINGS": {
+      "open": "State--open",
+      "closed": "State--closed",
+      "merged": "State--merged"
+    },
+    "SCHEME_DEFAULT": "default",
+    "SCHEME_MAPPINGS": {
+      "open": "State--open",
+      "closed": "State--closed",
+      "merged": "State--merged",
+      "default": "",
+      "green": "State--open",
+      "red": "State--closed",
+      "purple": "State--merged"
+    },
     "SCHEME_OPTIONS": [
       "open",
       "closed",
@@ -523,32 +544,11 @@
       "default",
       "small"
     ],
+    "TAG_DEFAULT": "span",
     "TAG_OPTIONS": [
       "span",
       "div"
-    ],
-    "SCHEME_DEFAULT": "default",
-    "NEW_SCHEME_MAPPINGS": {
-      "open": "State--open",
-      "closed": "State--closed",
-      "merged": "State--merged"
-    },
-    "DEPRECATED_SCHEME_MAPPINGS": {
-      "default": "",
-      "green": "State--open",
-      "red": "State--closed",
-      "purple": "State--merged"
-    },
-    "TAG_DEFAULT": "span",
-    "SCHEME_MAPPINGS": {
-      "open": "State--open",
-      "closed": "State--closed",
-      "merged": "State--merged",
-      "default": "",
-      "green": "State--open",
-      "red": "State--closed",
-      "purple": "State--merged"
-    }
+    ]
   },
   "Primer::SubheadComponent": {
     "DEFAULT_HEADING_TAG": "div",
@@ -565,11 +565,11 @@
   "Primer::TabContainerComponent": {
   },
   "Primer::TabNavComponent": {
+    "DEFAULT_EXTRA_ALIGN": "left",
     "EXTRA_ALIGN_OPTIONS": [
       "left",
       "right"
-    ],
-    "DEFAULT_EXTRA_ALIGN": "left"
+    ]
   },
   "Primer::TimeAgoComponent": {
   },
@@ -580,7 +580,6 @@
   },
   "Primer::Tooltip": {
     "ALIGN_DEFAULT": "default",
-    "DIRECTION_DEFAULT": "n",
     "ALIGN_MAPPING": {
       "default": "",
       "left_1": "tooltipped-align-left-1",
@@ -588,8 +587,8 @@
       "left_2": "tooltipped-align-left-2",
       "right_2": "tooltipped-align-right-2"
     },
-    "MULTILINE_DEFAULT": false,
     "DELAY_DEFAULT": false,
+    "DIRECTION_DEFAULT": "n",
     "DIRECTION_OPTIONS": [
       "n",
       "nw",
@@ -599,7 +598,8 @@
       "sw",
       "s",
       "se"
-    ]
+    ],
+    "MULTILINE_DEFAULT": false
   },
   "Primer::Truncate": {
     "DEFAULT_TAG": "div",
@@ -611,6 +611,7 @@
     ]
   },
   "Primer::UnderlineNavComponent": {
+    "ACTIONS_TAG_DEFAULT": "div",
     "ACTIONS_TAG_OPTIONS": [
       "div",
       "span"
@@ -624,7 +625,6 @@
     "BODY_TAG_OPTIONS": [
       "div",
       "ul"
-    ],
-    "ACTIONS_TAG_DEFAULT": "div"
+    ]
   }
 }

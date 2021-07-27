@@ -42,7 +42,7 @@ module Primer
     # all of its constants.
     def self.generate_constants
       Primer::Component.descendants.sort_by(&:name).each_with_object({}) do |component, mem|
-        mem[component.to_s] = component.constants(false).each_with_object({}) do |constant, h|
+        mem[component.to_s] = component.constants(false).sort.each_with_object({}) do |constant, h|
           h[constant] = component.const_get(constant)
         end
       end
