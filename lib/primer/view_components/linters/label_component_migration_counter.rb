@@ -11,7 +11,11 @@ module ERBLint
       include Helpers
       include Autocorrectable
 
-      TAGS = %w[span summary a div].freeze
+      TAGS = Primer::ViewComponents::Constants.get(
+        component: "Primer::LabelComponent",
+        constant: "TAG_OPTIONS"
+      ).freeze
+
       CLASSES = %w[Label].freeze
       MESSAGE = "We are migrating labels to use [Primer::LabelComponent](https://primer.style/view-components/components/label), please try to use that instead of raw HTML."
       ARGUMENT_MAPPER = ArgumentMappers::Label

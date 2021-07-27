@@ -11,7 +11,11 @@ module ERBLint
       include Helpers
       include Autocorrectable
 
-      TAGS = %w[button summary a].freeze
+      TAGS = Primer::ViewComponents::Constants.get(
+        component: "Primer::BaseButton",
+        constant: "TAG_OPTIONS"
+      ).freeze
+
       CLASSES = %w[btn btn-link].freeze
       MESSAGE = "We are migrating buttons to use [Primer::ButtonComponent](https://primer.style/view-components/components/button), please try to use that instead of raw HTML."
       ARGUMENT_MAPPER = ArgumentMappers::Button
