@@ -51,9 +51,7 @@
   },
   "Primer::Beta::AutoComplete": {
     "Input": "Primer::Beta::AutoComplete::Input",
-    "InputStories": "Primer::Beta::AutoComplete::InputStories",
-    "Item": "Primer::Beta::AutoComplete::Item",
-    "ItemStories": "Primer::Beta::AutoComplete::ItemStories"
+    "Item": "Primer::Beta::AutoComplete::Item"
   },
   "Primer::Beta::AutoComplete::Input": {
     "DEFAULT_TYPE": "text",
