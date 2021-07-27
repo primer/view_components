@@ -48,7 +48,7 @@ module Primer
       end
     end
 
-    # dump_constants generates the constnas hash and then serializes
+    # dump_constants generates the constants hash and then serializes
     # it as json at the given path
     def self.dump_constants(path: DEFAULT_STATIC_PATH)
       require "json"
