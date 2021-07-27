@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
       "public gem pushes."
   end
 
-  spec.files         = Dir["CHANGELOG.md", "LICENSE.txt", "README.md", "lib/**/*", "app/**/*", "static/statuses.json"]
+  spec.files         = Dir["CHANGELOG.md", "LICENSE.txt", "README.md", "lib/**/*", "app/**/*", "static/**/*"]
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency     "actionview", ">= 5.0.0"

@@ -2,6 +2,7 @@
 
 require "json"
 require "openssl"
+require "primer/view_components/constants"
 
 module ERBLint
   module Linters

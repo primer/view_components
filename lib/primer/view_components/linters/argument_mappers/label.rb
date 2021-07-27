@@ -7,23 +7,22 @@ module ERBLint
     module ArgumentMappers
       # Maps classes in a label element to arguments for the Label component.
       class Label < Base
-        SCHEME_MAPPINGS = {
-          "Label--primary" => ":primary",
-          "Label--secondary" => ":secondary",
-          "Label--info" => ":info",
-          "Label--success" => ":success",
-          "Label--warning" => ":warning",
-          "Label--danger" => ":danger",
-          "Label--orange" => ":orange",
-          "Label--purple" => ":purple"
-        }.freeze
+        SCHEME_MAPPINGS = Primer::ViewComponents::Constants.get(
+          component: "Primer::LabelComponent",
+          constant: "SCHEME_MAPPINGS",
+          symbolize: true
+        ).freeze
 
-        VARIANT_MAPPINGS = {
-          "Label--inline" => ":inline",
-          "Label--large" => ":large"
-        }.freeze
+        VARIANT_MAPPINGS = Primer::ViewComponents::Constants.get(
+          component: "Primer::LabelComponent",
+          constant: "VARIANT_MAPPINGS",
+          symbolize: true
+        ).freeze
 
-        DEFAULT_TAG = "span"
+        DEFAULT_TAG = Primer::ViewComponents::Constants.get(
+          component: "Primer::LabelComponent",
+          constant: "DEFAULT_TAG"
+        ).freeze
 
         def attribute_to_args(attribute)
           attr_name = attribute.name

@@ -108,6 +108,20 @@
         "reevaluateOnRerun": false
       },
       "problemMatcher": []
+    }
+    {
+      "label": "constants:dump: dump static files",
+      "type": "shell",
+      "group": "build",
+      "command": "bundle exec rake constants:dump",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "runOptions": {
+        "reevaluateOnRerun": false
+      },
+      "problemMatcher": []
     },
     {
       "label": "rubocop: autofix rubocop errors",

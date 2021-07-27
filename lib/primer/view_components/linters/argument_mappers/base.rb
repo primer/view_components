@@ -2,6 +2,7 @@
 
 require_relative "conversion_error"
 require_relative "system_arguments"
+require "primer/view_components/constants"
 
 module ERBLint
   module Linters

@@ -1,0 +1,628 @@
+{
+  "Primer::Alpha::ButtonMarketing": {
+    "DEFAULT_SCHEME": "default",
+    "DEFAULT_TAG": "button",
+    "DEFAULT_TYPE": "button",
+    "DEFAULT_VARIANT": "default",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "primary": "btn-primary-mktg",
+      "outline": "btn-outline-mktg",
+      "transparent": "btn-transparent"
+    },
+    "SCHEME_OPTIONS": [
+      "default",
+      "primary",
+      "outline",
+      "transparent"
+    ],
+    "TAG_OPTIONS": [
+      "button",
+      "a"
+    ],
+    "TYPE_OPTIONS": [
+      "button",
+      "submit"
+    ],
+    "VARIANT_MAPPINGS": {
+      "default": "",
+      "large": "btn-large-mktg"
+    },
+    "VARIANT_OPTIONS": [
+      "default",
+      "large"
+    ]
+  },
+  "Primer::BaseButton": {
+    "DEFAULT_TAG": "button",
+    "DEFAULT_TYPE": "button",
+    "TAG_OPTIONS": [
+      "button",
+      "a",
+      "summary"
+    ],
+    "TYPE_OPTIONS": [
+      "button",
+      "reset",
+      "submit"
+    ]
+  },
+  "Primer::BaseComponent": {
+  },
+  "Primer::Beta::AutoComplete": {
+    "Input": "Primer::Beta::AutoComplete::Input",
+    "Item": "Primer::Beta::AutoComplete::Item"
+  },
+  "Primer::Beta::AutoComplete::Input": {
+    "DEFAULT_TYPE": "text",
+    "TYPE_OPTIONS": [
+      "text",
+      "search"
+    ]
+  },
+  "Primer::Beta::AutoComplete::Item": {
+  },
+  "Primer::Beta::Avatar": {
+    "SMALL_THRESHOLD": 24
+  },
+  "Primer::Beta::AvatarStack": {
+    "ALIGN_DEFAULT": "left",
+    "ALIGN_OPTIONS": [
+      "left",
+      "right"
+    ],
+    "BODY_TAG_OPTIONS": [
+      "div",
+      "span"
+    ],
+    "DEFAULT_BODY_TAG": "div",
+    "DEFAULT_TAG": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "span"
+    ]
+  },
+  "Primer::Beta::Text": {
+    "DEFAULT_TAG": "span"
+  },
+  "Primer::BlankslateComponent": {
+  },
+  "Primer::BorderBoxComponent": {
+    "DEFAULT_PADDING": "default",
+    "PADDING_MAPPINGS": {
+      "default": "",
+      "condensed": "Box--condensed",
+      "spacious": "Box--spacious"
+    },
+    "PADDING_SUGGESTION": "Perhaps you could consider using :padding options of default, condensed, and spacious?"
+  },
+  "Primer::BoxComponent": {
+  },
+  "Primer::BreadcrumbComponent": {
+    "ItemComponent": "Primer::BreadcrumbComponent::ItemComponent"
+  },
+  "Primer::BreadcrumbComponent::ItemComponent": {
+  },
+  "Primer::ButtonComponent": {
+    "DEFAULT_SCHEME": "default",
+    "DEFAULT_VARIANT": "medium",
+    "LINK_SCHEME": "link",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "primary": "btn-primary",
+      "danger": "btn-danger",
+      "outline": "btn-outline",
+      "invisible": "btn-invisible",
+      "link": "btn-link"
+    },
+    "SCHEME_OPTIONS": [
+      "default",
+      "primary",
+      "danger",
+      "outline",
+      "invisible",
+      "link"
+    ],
+    "VARIANT_MAPPINGS": {
+      "small": "btn-sm",
+      "medium": "",
+      "large": "btn-large"
+    },
+    "VARIANT_OPTIONS": [
+      "small",
+      "medium",
+      "large"
+    ]
+  },
+  "Primer::ButtonGroup": {
+  },
+  "Primer::ClipboardCopy": {
+  },
+  "Primer::CloseButton": {
+    "DEFAULT_TYPE": "button",
+    "TYPE_OPTIONS": [
+      "button",
+      "submit"
+    ]
+  },
+  "Primer::CounterComponent": {
+    "DEFAULT_SCHEME": "default",
+    "DEPRECATED_SCHEME_OPTIONS": [
+      "gray",
+      "light_gray"
+    ],
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "primary": "Counter--primary",
+      "secondary": "Counter--secondary",
+      "gray": "Counter--primary",
+      "light_gray": "Counter--secondary"
+    },
+    "SCHEME_OPTIONS": [
+      "default",
+      "primary",
+      "secondary"
+    ]
+  },
+  "Primer::DetailsComponent": {
+    "BODY_TAG_DEFAULT": "div",
+    "BODY_TAG_OPTIONS": [
+      "ul",
+      "details-menu",
+      "details-dialog",
+      "div"
+    ],
+    "NO_OVERLAY": "none",
+    "OVERLAY_MAPPINGS": {
+      "none": "",
+      "default": "details-overlay",
+      "dark": "details-overlay details-overlay-dark"
+    }
+  },
+  "Primer::Dropdown": {
+    "Menu": "Primer::Dropdown::Menu"
+  },
+  "Primer::Dropdown::Menu": {
+    "AS_DEFAULT": "default",
+    "AS_OPTIONS": [
+      "default",
+      "list"
+    ],
+    "DIRECTION_DEFAULT": "se",
+    "DIRECTION_OPTIONS": [
+      "se",
+      "sw",
+      "w",
+      "e",
+      "ne",
+      "s"
+    ],
+    "Item": "Primer::Dropdown::Menu::Item",
+    "SCHEME_DEFAULT": "default",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "dark": "dropdown-menu-dark"
+    }
+  },
+  "Primer::Dropdown::Menu::Item": {
+    "BUTTON_TAGS": [
+      "button",
+      "summary"
+    ],
+    "TAG_DEFAULT": "a",
+    "TAG_OPTIONS": [
+      "a",
+      "button",
+      "summary"
+    ]
+  },
+  "Primer::DropdownMenuComponent": {
+    "DIRECTION_DEFAULT": "se",
+    "DIRECTION_OPTIONS": [
+      "se",
+      "sw",
+      "w",
+      "e",
+      "ne",
+      "s"
+    ],
+    "SCHEME_DEFAULT": "default",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "dark": "dropdown-menu-dark"
+    }
+  },
+  "Primer::FlashComponent": {
+    "DEFAULT_SCHEME": "default",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "warning": "flash-warn",
+      "danger": "flash-error",
+      "success": "flash-success"
+    }
+  },
+  "Primer::FlexComponent": {
+    "ALIGN_ITEMS_DEFAULT": null,
+    "ALIGN_ITEMS_MAPPINGS": {
+      "start": "flex-items-start",
+      "end": "flex-items-end",
+      "center": "flex-items-center",
+      "baseline": "flex-items-baseline",
+      "stretch": "flex-items-stretch"
+    },
+    "ALIGN_ITEMS_OPTIONS": [
+      null,
+      "start",
+      "end",
+      "center",
+      "baseline",
+      "stretch"
+    ],
+    "ALLOWED_DIRECTIONS": [
+      null,
+      "column",
+      "column_reverse",
+      "row",
+      "row_reverse"
+    ],
+    "DEFAULT_DIRECTION": null,
+    "FLEX_WRAP_DEFAULT": null,
+    "FLEX_WRAP_OPTIONS": [
+      null,
+      true,
+      false
+    ],
+    "INLINE_DEFAULT": false,
+    "INLINE_OPTIONS": [
+      false,
+      true
+    ],
+    "JUSTIFY_CONTENT_DEFAULT": null,
+    "JUSTIFY_CONTENT_MAPPINGS": {
+      "flex_start": "flex-justify-start",
+      "flex_end": "flex-justify-end",
+      "center": "flex-justify-center",
+      "space_between": "flex-justify-between",
+      "space_around": "flex-justify-around"
+    },
+    "JUSTIFY_CONTENT_OPTIONS": [
+      null,
+      "flex_start",
+      "flex_end",
+      "center",
+      "space_between",
+      "space_around"
+    ]
+  },
+  "Primer::FlexItemComponent": {
+    "FLEX_AUTO_ALLOWED_VALUES": [
+      false,
+      true
+    ],
+    "FLEX_AUTO_DEFAULT": false
+  },
+  "Primer::HeadingComponent": {
+    "TAG_FALLBACK": "h2",
+    "TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
+  "Primer::HiddenTextExpander": {
+  },
+  "Primer::IconButton": {
+    "DEFAULT_SCHEME": "default",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "danger": "btn-octicon-danger"
+    },
+    "SCHEME_OPTIONS": [
+      "default",
+      "danger"
+    ]
+  },
+  "Primer::Image": {
+  },
+  "Primer::ImageCrop": {
+  },
+  "Primer::LabelComponent": {
+    "DEFAULT_TAG": "span",
+    "DEPRECATED_SCHEME_OPTIONS": [
+      "orange",
+      "purple"
+    ],
+    "SCHEME_MAPPINGS": {
+      "primary": "Label--primary",
+      "secondary": "Label--secondary",
+      "info": "Label--info",
+      "success": "Label--success",
+      "warning": "Label--warning",
+      "danger": "Label--danger",
+      "orange": "Label--orange",
+      "purple": "Label--purple"
+    },
+    "SCHEME_OPTIONS": [
+      "primary",
+      "secondary",
+      "info",
+      "success",
+      "warning",
+      "danger",
+      null
+    ],
+    "TAG_OPTIONS": [
+      "span",
+      "summary",
+      "a",
+      "div"
+    ],
+    "VARIANT_MAPPINGS": {
+      "large": "Label--large",
+      "inline": "Label--inline"
+    },
+    "VARIANT_OPTIONS": [
+      "large",
+      "inline",
+      null
+    ]
+  },
+  "Primer::LayoutComponent": {
+    "ALLOWED_SIDEBAR_COLS": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "ALLOWED_SIDES": [
+      "right",
+      "left"
+    ],
+    "DEFAULT_SIDE": "right",
+    "DEFAULT_SIDEBAR_COL": 3,
+    "MAX_COL": 12
+  },
+  "Primer::LinkComponent": {
+    "DEFAULT_SCHEME": "default",
+    "DEFAULT_TAG": "a",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "primary": "Link--primary",
+      "secondary": "Link--secondary"
+    },
+    "TAG_OPTIONS": [
+      "a",
+      "span"
+    ]
+  },
+  "Primer::LocalTime": {
+    "DEFAULT_DIGIT_TYPE": "numeric",
+    "DEFAULT_TEXT_TYPE": "short",
+    "DIGIT_TYPE_OPTIONS": [
+      "numeric",
+      "2-digit"
+    ],
+    "TEXT_TYPE_OPTIONS": [
+      "short",
+      "long"
+    ]
+  },
+  "Primer::Markdown": {
+    "DEFAULT_TAG": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "article",
+      "td"
+    ]
+  },
+  "Primer::MenuComponent": {
+    "HEADING_TAG_FALLBACK": "h2",
+    "HEADING_TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
+  "Primer::Navigation::TabComponent": {
+    "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [
+      true,
+      "page"
+    ],
+    "DEFAULT_ARIA_CURRENT_FOR_ANCHOR": "page"
+  },
+  "Primer::OcticonComponent": {
+    "SIZE_DEFAULT": "small",
+    "SIZE_MAPPINGS": {
+      "small": 16,
+      "medium": 24
+    },
+    "SIZE_MEDIUM": "medium",
+    "SIZE_OPTIONS": [
+      "small",
+      "medium"
+    ]
+  },
+  "Primer::OcticonSymbolsComponent": {
+  },
+  "Primer::PopoverComponent": {
+    "CARET_DEFAULT": "top",
+    "CARET_MAPPINGS": {
+      "top": "",
+      "bottom": "Popover-message--bottom",
+      "bottom_right": "Popover-message--bottom-right",
+      "bottom_left": "Popover-message--bottom-left",
+      "left": "Popover-message--left",
+      "left_bottom": "Popover-message--left-bottom",
+      "left_top": "Popover-message--left-top",
+      "right": "Popover-message--right",
+      "right_bottom": "Popover-message--right-bottom",
+      "right_top": "Popover-message--right-top",
+      "top_left": "Popover-message--top-left",
+      "top_right": "Popover-message--top-right"
+    },
+    "DEFAULT_HEADING_TAG": "h4"
+  },
+  "Primer::ProgressBarComponent": {
+    "SIZE_DEFAULT": "default",
+    "SIZE_MAPPINGS": {
+      "default": "",
+      "small": "Progress--small",
+      "large": "Progress--large"
+    },
+    "SIZE_OPTIONS": [
+      "default",
+      "small",
+      "large"
+    ]
+  },
+  "Primer::SpinnerComponent": {
+    "DEFAULT_SIZE": "medium",
+    "DEFAULT_STYLE": "box-sizing: content-box; color: var(--color-icon-primary);",
+    "SIZE_MAPPINGS": {
+      "small": 16,
+      "medium": 32,
+      "large": 64
+    },
+    "SIZE_OPTIONS": [
+      "small",
+      "medium",
+      "large"
+    ]
+  },
+  "Primer::StateComponent": {
+    "DEPRECATED_SCHEME_MAPPINGS": {
+      "default": "",
+      "green": "State--open",
+      "red": "State--closed",
+      "purple": "State--merged"
+    },
+    "NEW_SCHEME_MAPPINGS": {
+      "open": "State--open",
+      "closed": "State--closed",
+      "merged": "State--merged"
+    },
+    "SCHEME_DEFAULT": "default",
+    "SCHEME_MAPPINGS": {
+      "open": "State--open",
+      "closed": "State--closed",
+      "merged": "State--merged",
+      "default": "",
+      "green": "State--open",
+      "red": "State--closed",
+      "purple": "State--merged"
+    },
+    "SCHEME_OPTIONS": [
+      "open",
+      "closed",
+      "merged",
+      "default",
+      "green",
+      "red",
+      "purple"
+    ],
+    "SIZE_DEFAULT": "default",
+    "SIZE_MAPPINGS": {
+      "default": "",
+      "small": "State--small"
+    },
+    "SIZE_OPTIONS": [
+      "default",
+      "small"
+    ],
+    "TAG_DEFAULT": "span",
+    "TAG_OPTIONS": [
+      "span",
+      "div"
+    ]
+  },
+  "Primer::SubheadComponent": {
+    "DEFAULT_HEADING_TAG": "div",
+    "HEADING_TAG_OPTIONS": [
+      "div",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
+  "Primer::TabContainerComponent": {
+  },
+  "Primer::TabNavComponent": {
+    "DEFAULT_EXTRA_ALIGN": "left",
+    "EXTRA_ALIGN_OPTIONS": [
+      "left",
+      "right"
+    ]
+  },
+  "Primer::TimeAgoComponent": {
+  },
+  "Primer::TimelineItemComponent": {
+    "BadgeComponent": "Primer::TimelineItemComponent::BadgeComponent"
+  },
+  "Primer::TimelineItemComponent::BadgeComponent": {
+  },
+  "Primer::Tooltip": {
+    "ALIGN_DEFAULT": "default",
+    "ALIGN_MAPPING": {
+      "default": "",
+      "left_1": "tooltipped-align-left-1",
+      "right_1": "tooltipped-align-right-1",
+      "left_2": "tooltipped-align-left-2",
+      "right_2": "tooltipped-align-right-2"
+    },
+    "DELAY_DEFAULT": false,
+    "DIRECTION_DEFAULT": "n",
+    "DIRECTION_OPTIONS": [
+      "n",
+      "nw",
+      "ne",
+      "w",
+      "e",
+      "sw",
+      "s",
+      "se"
+    ],
+    "MULTILINE_DEFAULT": false
+  },
+  "Primer::Truncate": {
+    "DEFAULT_TAG": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "span",
+      "p",
+      "strong"
+    ]
+  },
+  "Primer::UnderlineNavComponent": {
+    "ACTIONS_TAG_DEFAULT": "div",
+    "ACTIONS_TAG_OPTIONS": [
+      "div",
+      "span"
+    ],
+    "ALIGN_DEFAULT": "left",
+    "ALIGN_OPTIONS": [
+      "left",
+      "right"
+    ],
+    "BODY_TAG_DEFAULT": "div",
+    "BODY_TAG_OPTIONS": [
+      "div",
+      "ul"
+    ]
+  }
+}
