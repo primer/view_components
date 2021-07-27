@@ -14,7 +14,7 @@ class ArgumentMappersClipboardCopyTest < LinterTestCase
     @file = '<clipboard-copy aria-label="label" aria-boolean>'
 
     args = ERBLint::Linters::ArgumentMappers::ClipboardCopy.new(tags.first).to_args
-    assert_equal({ '"aria-label"' => '"label"', '"aria-boolean"' => '""'  }, args)
+    assert_equal({ '"aria-label"' => '"label"', '"aria-boolean"' => '""' }, args)
   end
 
   def test_returns_data_arguments_as_string_symbols
