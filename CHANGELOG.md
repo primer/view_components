@@ -56,6 +56,11 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Kate Higa*
 
+* Renames:
+  * `Primer::AvatarStackComponent` to `Primer::Beta::AvatarStack`.
+
+    *Manuel Puyol*
+
 ### Misc
 
 * Extract example tag parsing into helper.
