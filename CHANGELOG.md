@@ -63,6 +63,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Kate Higa*
 
+* Generate a static constant JSON and use it when defining linters.
+
+    *Manuel Puyol*
+
 ## 0.0.48
 
 ### Breaking changes
