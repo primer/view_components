@@ -7,21 +7,28 @@ module ERBLint
     module ArgumentMappers
       # Maps classes in a button element to arguments for the Button component.
       class Button < Base
-        SCHEME_MAPPINGS = {
-          "btn-primary" => ":primary",
-          "btn-danger" => ":danger",
-          "btn-outline" => ":outline",
-          "btn-invisible" => ":invisible",
-          "btn-link" => ":link"
-        }.freeze
+        require "pry"
 
-        VARIANT_MAPPINGS = {
-          "btn-sm" => ":small",
-          "btn-large" => ":large"
-        }.freeze
+        SCHEME_MAPPINGS = Primer::ViewComponents::Constants.get(
+          component: "Primer::ButtonComponent",
+          constant: "SCHEME_MAPPINGS",
+          symbolize: true
+        ).freeze
 
-        TYPE_OPTIONS = %w[button reset submit].freeze
-        DEFAULT_TAG = "button"
+        VARIANT_MAPPINGS = Primer::ViewComponents::Constants.get(
+          component: "Primer::ButtonComponent",
+          constant: "VARIANT_MAPPINGS",
+          symbolize: true
+        ).freeze
+
+        TYPE_OPTIONS = Primer::ViewComponents::Constants.get(
+          component: "Primer::BaseButton",
+          constant: "TYPE_OPTIONS"
+        ).freeze
+        DEFAULT_TAG = Primer::ViewComponents::Constants.get(
+          component: "Primer::BaseButton",
+          constant: "DEFAULT_TAG"
+        ).freeze
 
         def attribute_to_args(attribute)
           attr_name = attribute.name
