@@ -36,6 +36,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Add linter suggestions for `ClipboardCopy` component.
+
+    *Manuel Puyol*
+
 ### Updates
 
 * Update the `Truncate` component to accept `:strong` as a tag.
