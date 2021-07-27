@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.49
+
 ### New
 
 * Add linter suggestions for `Label` component.
