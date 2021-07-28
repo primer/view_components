@@ -27,9 +27,7 @@ module ERBLint
         def attribute_to_args(attribute)
           attr_name = attribute.name
 
-          if attr_name == "class"
-            classes_to_args(attribute)
-          elsif attr_name == "title"
+          if attr_name == "title"
             { title: attribute.value.to_json }
           else
             # Assume the attribute is a system argument.
@@ -38,7 +36,7 @@ module ERBLint
         end
 
         def classes_to_args(classes)
-          classes.value.split(" ").each_with_object({}) do |class_name, acc|
+          classes.split(" ").each_with_object({}) do |class_name, acc|
             next if class_name == "Label"
 
             if SCHEME_MAPPINGS[class_name] && acc[:scheme].nil?
