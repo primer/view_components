@@ -12,6 +12,7 @@ module ERBLint
       # Override attribute_to_args in a child class to customize its mapping behavior.
       class Base
         DEFAULT_TAG = nil
+        ATTRIBUTES = [].freeze
 
         def initialize(tag)
           @tag = tag
@@ -27,10 +28,15 @@ module ERBLint
           args[:tag] = ":#{@tag.name}" unless self.class::DEFAULT_TAG.nil? || @tag.name == self.class::DEFAULT_TAG
 
           @tag.attributes.each do |attribute|
-            if attribute.name == "class"
+            attr_name = attribute.name
+
+            if attr_name == "class"
               args.merge!(map_classes(attribute))
-            else
+            elsif self.class::ATTRIBUTES.include?(attr_name)
               args.merge!(attribute_to_args(attribute))
+            else
+              # Assume the attribute is a system argument.
+              args.merge!(SystemArguments.new(attribute).to_args)
             end
           end
 

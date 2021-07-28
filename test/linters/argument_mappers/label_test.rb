@@ -10,27 +10,6 @@ class ArgumentMappersLabelTest < LinterTestCase
     assert_empty args
   end
 
-  def test_returns_aria_arguments_as_string_symbols
-    @file = '<span aria-label="label" aria-disabled="true" aria-boolean>Label</span>'
-    args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
-
-    assert_equal({
-                   '"aria-label"' => '"label"',
-                   '"aria-disabled"' => '"true"',
-                   '"aria-boolean"' => '""'
-                 }, args)
-  end
-
-  def test_returns_data_arguments_as_string_symbols
-    @file = '<span data-action="click" data-pjax>Label</span>'
-    args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
-
-    assert_equal({
-                   '"data-action"' => '"click"',
-                   '"data-pjax"' => '""'
-                 }, args)
-  end
-
   def test_returns_title_argument
     @file = "<span title=\"some title\">Label</span>"
     args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
@@ -81,64 +60,10 @@ class ArgumentMappersLabelTest < LinterTestCase
     assert_equal "Cannot convert class \"some-class\"", err.message
   end
 
-  def test_raises_if_cannot_map_attribute
-    @file = '<span some-attribute="some-value">Label</span>'
-    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
-      ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
-    end
-
-    assert_equal "Cannot convert attribute \"some-attribute\"", err.message
-  end
-
-  def test_converts_data_test_selector
-    @file = '<span data-test-selector="some-selector">Label</span>'
-    args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
-
-    assert_equal({ test_selector: '"some-selector"' }, args)
-  end
-
-  def test_converts_erb_test_selector_call
-    @file = '<span class="Label" <%= test_selector("some-selector") %>>Label</span>'
-    args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
-
-    assert_equal({ test_selector: '"some-selector"' }, args)
-  end
-
-  def test_raises_if_unsupported_erb_block
-    @file = '<span class="Label" <%= some_method("some-selector") %>>Label</span>'
-    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
-      ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
-    end
-
-    assert_equal "Cannot convert erb block", err.message
-  end
-
-  def test_complex_case
-    @file = '
-      <span
-        class="Label Label--primary Label--large"
-        aria-label="some label"
-        data-pjax
-        data-click="click"
-        <%= test_selector("some_selector") %>
-      >Label</span>'
-
-    args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
-
-    assert_equal({
-                   :scheme => ":primary",
-                   :variant => ":large",
-                   '"aria-label"' => '"some label"',
-                   '"data-pjax"' => '""',
-                   '"data-click"' => '"click"',
-                   :test_selector => '"some_selector"'
-                 }, args)
-  end
-
   def test_returns_arguments_as_string
-    @file = '<div class="Label Label--primary" aria-label="some label">Link</div>'
+    @file = '<div class="Label Label--primary">Link</div>'
     args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_s
 
-    assert_equal 'tag: :div, scheme: :primary, "aria-label": "some label"', args
+    assert_equal 'tag: :div, scheme: :primary', args
   end
 end
