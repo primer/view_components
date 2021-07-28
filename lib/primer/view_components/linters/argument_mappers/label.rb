@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "base"
+require_relative "helpers/erb_block"
 
 module ERBLint
   module Linters
@@ -30,6 +31,8 @@ module ERBLint
           if attr_name == "class"
             classes_to_args(attribute)
           elsif attr_name == "title"
+            Helpers::ErbBlock.raise_if_erb_block(attribute)
+
             { title: attribute.value.to_json }
           else
             # Assume the attribute is a system argument.

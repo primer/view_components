@@ -13,6 +13,8 @@ module ERBLint
           attr_name = attribute.name
 
           if attr_name == "value"
+            Helpers::ErbBlock.raise_if_erb_block(attribute)
+
             { value: attribute.value.to_json }
           else
             # Assume the attribute is a system argument.
