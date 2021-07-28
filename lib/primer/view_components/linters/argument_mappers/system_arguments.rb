@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "conversion_error"
+require_relative "helpers/erb_block"
 
 module ERBLint
   module Linters
@@ -30,7 +31,7 @@ module ERBLint
           elsif attr_name == "data-test-selector"
             { test_selector: attribute.value.to_json }
           elsif attr_name.start_with?(*STRING_PARAMETERS)
-            raise ConversionError, "Cannot convert attribute \"#{attr_name}\" because its value contains an erb block" if attribute.value_node&.children&.any? { |n| n.try(:type) == :erb }
+            raise ConversionError, "Cannot convert attribute \"#{attr_name}\" because its value contains an erb block" if Helpers::ErbBlock.any?(attribute)
 
             { "\"#{attr_name}\"" => attribute.value.to_json }
           else
