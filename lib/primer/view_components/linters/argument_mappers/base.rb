@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
+require "primer/view_components/constants"
 require_relative "conversion_error"
 require_relative "system_arguments"
-require "primer/view_components/constants"
+require_relative "helpers/erb_block"
 
 module ERBLint
   module Linters

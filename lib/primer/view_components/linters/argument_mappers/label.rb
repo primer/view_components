@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "base"
-require_relative "helpers/erb_block"
 
 module ERBLint
   module Linters
