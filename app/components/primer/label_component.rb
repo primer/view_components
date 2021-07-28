@@ -2,6 +2,9 @@
 
 module Primer
   # Use `Label` to add contextual metadata to a design.
+  #
+  # @accessibility
+  #   Use `aria-label` if the `Label` or the context around it don't explain the label.
   class LabelComponent < Primer::Component
     status :beta
 
@@ -29,27 +32,25 @@ module Primer
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys << nil
 
     # @example Schemes
-    #   <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>
-    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :primary)) { "Primary" } %>
-    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :secondary)) { "Secondary" } %>
-    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :info)) { "Info" } %>
-    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :success)) { "Success" } %>
-    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :warning)) { "Warning" } %>
-    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", scheme: :danger)) { "Danger" } %>
+    #   <%= render(Primer::LabelComponent.new) { "Default" } %>
+    #   <%= render(Primer::LabelComponent.new( scheme: :primary)) { "Primary" } %>
+    #   <%= render(Primer::LabelComponent.new( scheme: :secondary)) { "Secondary" } %>
+    #   <%= render(Primer::LabelComponent.new( scheme: :info)) { "Info" } %>
+    #   <%= render(Primer::LabelComponent.new( scheme: :success)) { "Success" } %>
+    #   <%= render(Primer::LabelComponent.new( scheme: :warning)) { "Warning" } %>
+    #   <%= render(Primer::LabelComponent.new( scheme: :danger)) { "Danger" } %>
     #
     # @example Variants
-    #   <%= render(Primer::LabelComponent.new(title: "Label: Label")) { "Default" } %>
-    #   <%= render(Primer::LabelComponent.new(title: "Label: Label", variant: :large)) { "Large" } %>
+    #   <%= render(Primer::LabelComponent.new) { "Default" } %>
+    #   <%= render(Primer::LabelComponent.new( variant: :large)) { "Large" } %>
     #
     # @param tag [Symbol] <%= one_of(Primer::LabelComponent::TAG_OPTIONS) %>
-    # @param title [String] `title` attribute for the component element.
     # @param scheme [Symbol] <%= one_of(Primer::LabelComponent::SCHEME_MAPPINGS.keys) %>
     # @param variant [Symbol] <%= one_of(Primer::LabelComponent::VARIANT_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(tag: DEFAULT_TAG, title:, scheme: nil, variant: nil, **system_arguments)
+    def initialize(tag: DEFAULT_TAG, scheme: nil, variant: nil, **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
-      @system_arguments[:title] = title
       @system_arguments[:classes] = class_names(
         "Label",
         system_arguments[:classes],

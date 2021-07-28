@@ -562,10 +562,6 @@
     type: Symbol
     default: "`:span`"
     description: One of `:a`, `:div`, `:span`, or `:summary`.
-  - name: title
-    type: String
-    default: N/A
-    description: "`title` attribute for the component element."
   - name: scheme
     type: Symbol
     default: "`nil`"

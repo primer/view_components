@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Updates
+
+* Don't require `title` for `Label`.
+
+    *Manuel Puyol*
+
 ## 0.0.49
 
 ### New
