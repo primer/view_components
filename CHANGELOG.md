@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+* Don't require `title` for `Label`.
+
+    *Manuel Puyol*
+
 * Improve autocorrectable linters to convert known SystemArgument classes.
 
     *Manuel Puyol*
