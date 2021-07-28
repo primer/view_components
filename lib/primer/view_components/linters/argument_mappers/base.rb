@@ -43,7 +43,7 @@ module ERBLint
           system_arguments = system_arguments_to_args(classes.value)
           args = classes_to_args(system_arguments[:classes])
 
-          system_arguments.except(:classes).merge(args)
+          args.merge(system_arguments.except(:classes))
         end
 
         # Override this with your component's mappings

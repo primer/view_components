@@ -159,4 +159,27 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
 
     assert_equal expected, corrected_content
   end
+
+  def test_autocorrects_known_system_arguments
+    @file = <<~HTML
+      <clipboard-copy class="mr-1 p-3 d-none d-md-block anim-fade-in">
+        clipboard-copy 1
+      </clipboard-copy>
+      <clipboard-copy class="mr-1 p-3 d-none d-md-block anim-fade-in custom">
+        clipboard-copy 2
+      </clipboard-copy>
+    HTML
+
+    expected = <<~HTML
+      <%# erblint:counter ClipboardCopyComponentMigrationCounter 1 %>
+      <%= render Primer::ClipboardCopy.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in) do %>
+        clipboard-copy 1
+      <% end %>
+      <clipboard-copy class="mr-1 p-3 d-none d-md-block anim-fade-in custom">
+        clipboard-copy 2
+      </clipboard-copy>
+    HTML
+
+    assert_equal expected, corrected_content
+  end
 end
