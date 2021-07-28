@@ -30,12 +30,12 @@ module ERBLint
           constant: "DEFAULT_TAG"
         ).freeze
 
+        ATTRIBUTES = %w[disabled type].freeze
+
         def attribute_to_args(attribute)
           attr_name = attribute.name
 
-          if attr_name == "class"
-            classes_to_args(attribute)
-          elsif attr_name == "disabled"
+          if attr_name == "disabled"
             { disabled: true }
           elsif attr_name == "type"
             # button is the default type, so we don't need to do anything.
@@ -44,14 +44,11 @@ module ERBLint
             raise ConversionError, "Button component does not support type \"#{attribute.value}\"" unless TYPE_OPTIONS.include?(attribute.value)
 
             { type: ":#{attribute.value}" }
-          else
-            # Assume the attribute is a system argument.
-            SystemArguments.new(attribute).to_args
           end
         end
 
         def classes_to_args(classes)
-          classes.value.split(" ").each_with_object({}) do |class_name, acc|
+          classes.split(" ").each_with_object({}) do |class_name, acc|
             next if class_name == "btn"
 
             if SCHEME_MAPPINGS[class_name] && acc[:scheme].nil?
