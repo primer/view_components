@@ -31,10 +31,10 @@ module ERBLint
           @tag.attributes.each do |attribute|
             attr_name = attribute.name
 
-            if attr_name == "class"
-              args.merge!(map_classes(attribute))
-            elsif self.class::ATTRIBUTES.include?(attr_name)
+            if self.class::ATTRIBUTES.include?(attr_name)
               args.merge!(attribute_to_args(attribute))
+            elsif attr_name == "class"
+              args.merge!(map_classes(attribute))
             else
               # Assume the attribute is a system argument.
               args.merge!(SystemArguments.new(attribute).to_args)

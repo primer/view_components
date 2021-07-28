@@ -120,10 +120,10 @@ class ArgumentMappersButtonTest < LinterTestCase
     assert_equal "Cannot convert erb block", err.message
   end
 
-  def test_complex_case
+  def test_with_system_arguments
     @file = '
       <button
-        class="btn btn-primary btn-sm btn-block BtnGroup-item"
+        class="btn btn-primary btn-sm btn-block BtnGroup-item mr-1 p-3 d-md-block d-none anim-fade-in"
         disabled
         type="submit"
       >Button</button>'
@@ -135,6 +135,10 @@ class ArgumentMappersButtonTest < LinterTestCase
                    variant: ":small",
                    block: true,
                    group_item: true,
+                   mr: 1,
+                   p: 3,
+                   display: [:none, nil, :block],
+                   animation: ":fade_in",
                    disabled: true,
                    type: ":submit"
                  }, args)

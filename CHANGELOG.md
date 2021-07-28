@@ -30,15 +30,15 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
-### Bug fixes
-
-* Update linters to not autocorrect attributes with ERB blocks.
-
-    *Manuel Puyol*
-
 ### Updates
 
 * Improve autocorrectable linters to convert known SystemArgument classes.
+
+    *Manuel Puyol*
+
+### Bug fixes
+
+* Update linters to not autocorrect attributes with ERB blocks.
 
     *Manuel Puyol*
 

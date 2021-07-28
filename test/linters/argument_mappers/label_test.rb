@@ -60,19 +60,30 @@ class ArgumentMappersLabelTest < LinterTestCase
     assert_equal "Cannot convert class \"some-class\"", err.message
   end
 
+  def test_complex_case
+    @file = '
+      <span
+        class="Label Label--primary Label--large mr-1 p-3 d-md-block d-none anim-fade-in"
+        title="some title"
+      >Label</span>'
+
+    args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
+
+    assert_equal({
+                   scheme: ":primary",
+                   variant: ":large",
+                   title: '"some title"',
+                   mr: 1,
+                   p: 3,
+                   display: [:none, nil, :block],
+                   animation: ":fade_in"
+                 }, args)
+  end
+
   def test_returns_arguments_as_string
-    @file = '<div class="Label Label--primary">Label</div>'
+    @file = '<div class="Label Label--primary">Link</div>'
     args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_s
 
     assert_equal "tag: :div, scheme: :primary", args
-  end
-
-  def test_raises_if_title_has_erb_value
-    @file = '<span class="Label" title="<%= some_call %>">Label</span>'
-    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
-      ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
-    end
-
-    assert_equal "Cannot convert attribute \"title\" because its value contains an erb block", err.message
   end
 end
