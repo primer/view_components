@@ -36,6 +36,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Improve autocorrectable linters to convert known SystemArgument classes.
+
+    *Manuel Puyol*
+
 ## 0.0.49
 
 ### New

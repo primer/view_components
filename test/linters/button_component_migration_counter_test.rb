@@ -214,4 +214,27 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
 
     assert_equal expected, corrected_content
   end
+
+  def test_autocorrects_known_system_arguments
+    @file = <<~HTML
+      <button class="btn btn-primary mr-1 p-3 d-none d-md-block anim-fade-in">
+        button 1
+      </button>
+      <button class="btn btn-primary mr-1 p-3 d-none d-md-block anim-fade-in custom">
+        button 2
+      </button>
+    HTML
+
+    expected = <<~HTML
+      <%# erblint:counter ButtonComponentMigrationCounter 1 %>
+      <%= render Primer::ButtonComponent.new(scheme: :primary, mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in) do %>
+        button 1
+      <% end %>
+      <button class="btn btn-primary mr-1 p-3 d-none d-md-block anim-fade-in custom">
+        button 2
+      </button>
+    HTML
+
+    assert_equal expected, corrected_content
+  end
 end
