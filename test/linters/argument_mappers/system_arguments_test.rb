@@ -46,6 +46,15 @@ class ArgumentMappersSystemArgumentsTest < LinterTestCase
     assert_equal({ test_selector: '"some-selector"' }, args)
   end
 
+  def test_raises_if_test_selector_has_erb_value
+    @file = '<div data-test-selector="<%= some_call %>">'
+    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
+      args = ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes.each.first).to_args
+    end
+
+    assert_equal "Cannot convert attribute \"data-test-selector\" because its value contains an erb block", err.message
+  end
+
   def test_raises_if_unsupported_erb_block
     @file = '<div <%= some_method("some-selector") %>>'
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do

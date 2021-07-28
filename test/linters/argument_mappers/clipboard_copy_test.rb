@@ -80,4 +80,13 @@ class ArgumentMappersClipboardCopyTest < LinterTestCase
 
     assert_equal '"aria-label": "some label", "aria-boolean": "", "data-pjax": "", "data-action": "click"', args
   end
+
+  def test_raises_if_value_has_erb_value
+    @file = '<clipboard-copy value="<%= some_call %>">'
+    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
+      ERBLint::Linters::ArgumentMappers::ClipboardCopy.new(tags.first).to_args
+    end
+
+    assert_equal "Cannot convert attribute \"value\" because its value contains an erb block", err.message
+  end
 end

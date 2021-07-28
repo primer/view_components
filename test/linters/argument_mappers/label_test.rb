@@ -136,9 +136,18 @@ class ArgumentMappersLabelTest < LinterTestCase
   end
 
   def test_returns_arguments_as_string
-    @file = '<div class="Label Label--primary" aria-label="some label">Link</div>'
+    @file = '<div class="Label Label--primary" aria-label="some label">Label</div>'
     args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_s
 
     assert_equal 'tag: :div, scheme: :primary, "aria-label": "some label"', args
+  end
+
+  def test_raises_if_title_has_erb_value
+    @file = '<span class="Label" title="<%= some_call %>">Label</span>'
+    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
+      ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
+    end
+
+    assert_equal "Cannot convert attribute \"title\" because its value contains an erb block", err.message
   end
 end
