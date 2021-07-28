@@ -200,4 +200,27 @@ class LabelComponentMigrationCounterTest < LinterTestCase
 
     assert_equal expected, corrected_content
   end
+
+  def test_autocorrects_known_system_arguments
+    @file = <<~HTML
+      <span class="Label Label--primary mr-1 p-3 d-none d-md-block anim-fade-in">
+        Label 1
+      </span>
+      <span class="Label Label--primary mr-1 p-3 d-none d-md-block anim-fade-in custom">
+        Label 2
+      </span>
+    HTML
+
+    expected = <<~HTML
+      <%# erblint:counter LabelComponentMigrationCounter 1 %>
+      <%= render Primer::LabelComponent.new(scheme: :primary, mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in) do %>
+        Label 1
+      <% end %>
+      <span class="Label Label--primary mr-1 p-3 d-none d-md-block anim-fade-in custom">
+        Label 2
+      </span>
+    HTML
+
+    assert_equal expected, corrected_content
+  end
 end
