@@ -144,6 +144,6 @@ class ArgumentMappersButtonTest < LinterTestCase
     @file = '<a class="btn btn-primary">Link</a>'
     args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_s
 
-    assert_equal 'tag: :a, scheme: :primary', args
+    assert_equal "tag: :a, scheme: :primary", args
   end
 end

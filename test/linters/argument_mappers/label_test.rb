@@ -64,7 +64,7 @@ class ArgumentMappersLabelTest < LinterTestCase
     @file = '<div class="Label Label--primary">Label</div>'
     args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_s
 
-    assert_equal 'tag: :div, scheme: :primary', args
+    assert_equal "tag: :div, scheme: :primary", args
   end
 
   def test_raises_if_title_has_erb_value
