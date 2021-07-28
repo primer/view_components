@@ -48,7 +48,7 @@ module ERBLint
 
         # Override this with your component's mappings
         def classes_to_args(classes)
-          raise ConversionError, "Cannot convert classes" if classes.present?
+          raise ConversionError, "Cannot convert classes `#{classes}`" if classes.present?
 
           {}
         end
