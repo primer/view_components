@@ -635,11 +635,11 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_width_and_height
-    assert_generated_class("width-fit",   { width: :fit })
-    assert_generated_class("width-full",  { width: :full })
+    assert_generated_class("width-fit", { width: :fit })
+    assert_generated_class("width-full", { width: :full })
 
-    assert_generated_class("height-fit",  { height: :fit })
-    assert_generated_class("height-full",  { height: :full })
+    assert_generated_class("height-fit", { height: :fit })
+    assert_generated_class("height-full", { height: :full })
   end
 
   def test_flex_grow
