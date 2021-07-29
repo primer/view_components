@@ -96,11 +96,6 @@ module Primer
           )
 
           preload(
-            keys: [Primer::Classify::HEIGHT_KEY, Primer::Classify::WIDTH_KEY],
-            values: [:fit, :full]
-          )
-
-          preload(
             keys: Primer::Classify::BOX_SHADOW_KEY,
             values: [true, :small, :medium, :large, :extra_large, :none]
           )

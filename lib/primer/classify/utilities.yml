@@ -1269,3 +1269,13 @@
   - hide-lg
   :xl:
   - hide-xl
+:height:
+  :fit:
+  - height-fit
+  :full:
+  - height-full
+:width:
+  :fit:
+  - width-fit
+  :full:
+  - width-full
