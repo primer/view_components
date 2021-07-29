@@ -18,6 +18,8 @@
   - anim-pulse
   :pulse_in:
   - anim-pulse-in
+  :hover_grow:
+  - anim-hover-grow
   :rotate:
   - anim-rotate
 :position:
@@ -142,6 +144,8 @@
   - m-md-6
   - m-lg-6
   - m-xl-6
+  :auto:
+  - m-auto
 :mt:
   0:
   - mt-0
@@ -221,85 +225,80 @@
   - mt-md-n6
   - mt-lg-n6
   - mt-xl-n6
-:mr:
-  0:
-  - mr-0
-  - mr-sm-0
-  - mr-md-0
-  - mr-lg-0
-  - mr-xl-0
-  1:
-  - mr-1
-  - mr-sm-1
-  - mr-md-1
-  - mr-lg-1
-  - mr-xl-1
-  -1:
-  - mr-n1
-  - mr-sm-n1
-  - mr-md-n1
-  - mr-lg-n1
-  - mr-xl-n1
-  2:
-  - mr-2
-  - mr-sm-2
-  - mr-md-2
-  - mr-lg-2
-  - mr-xl-2
-  -2:
-  - mr-n2
-  - mr-sm-n2
-  - mr-md-n2
-  - mr-lg-n2
-  - mr-xl-n2
-  3:
-  - mr-3
-  - mr-sm-3
-  - mr-md-3
-  - mr-lg-3
-  - mr-xl-3
-  -3:
-  - mr-n3
-  - mr-sm-n3
-  - mr-md-n3
-  - mr-lg-n3
-  - mr-xl-n3
-  4:
-  - mr-4
-  - mr-sm-4
-  - mr-md-4
-  - mr-lg-4
-  - mr-xl-4
-  -4:
-  - mr-n4
-  - mr-sm-n4
-  - mr-md-n4
-  - mr-lg-n4
-  - mr-xl-n4
-  5:
-  - mr-5
-  - mr-sm-5
-  - mr-md-5
-  - mr-lg-5
-  - mr-xl-5
-  -5:
-  - mr-n5
-  - mr-sm-n5
-  - mr-md-n5
-  - mr-lg-n5
-  - mr-xl-n5
-  6:
-  - mr-6
-  - mr-sm-6
-  - mr-md-6
-  - mr-lg-6
-  - mr-xl-6
-  -6:
-  - mr-n6
-  - mr-sm-n6
-  - mr-md-n6
-  - mr-lg-n6
-  - mr-xl-n6
+  7:
+  - mt-7
+  - mt-sm-7
+  - mt-md-7
+  - mt-lg-7
+  - mt-xl-7
+  -7:
+  - mt-n7
+  - mt-sm-n7
+  - mt-md-n7
+  - mt-lg-n7
+  - mt-xl-n7
+  8:
+  - mt-8
+  - mt-sm-8
+  - mt-md-8
+  - mt-lg-8
+  - mt-xl-8
+  -8:
+  - mt-n8
+  - mt-sm-n8
+  - mt-md-n8
+  - mt-lg-n8
+  - mt-xl-n8
+  9:
+  - mt-9
+  - mt-sm-9
+  - mt-md-9
+  - mt-lg-9
+  - mt-xl-9
+  -9:
+  - mt-n9
+  - mt-sm-n9
+  - mt-md-n9
+  - mt-lg-n9
+  - mt-xl-n9
+  10:
+  - mt-10
+  - mt-sm-10
+  - mt-md-10
+  - mt-lg-10
+  - mt-xl-10
+  -10:
+  - mt-n10
+  - mt-sm-n10
+  - mt-md-n10
+  - mt-lg-n10
+  - mt-xl-n10
+  11:
+  - mt-11
+  - mt-sm-11
+  - mt-md-11
+  - mt-lg-11
+  - mt-xl-11
+  -11:
+  - mt-n11
+  - mt-sm-n11
+  - mt-md-n11
+  - mt-lg-n11
+  - mt-xl-n11
+  12:
+  - mt-12
+  - mt-sm-12
+  - mt-md-12
+  - mt-lg-12
+  - mt-xl-12
+  -12:
+  - mt-n12
+  - mt-sm-n12
+  - mt-md-n12
+  - mt-lg-n12
+  - mt-xl-n12
+  :auto:
+  - mt-auto
 :mb:
   0:
   - mb-0
@@ -379,6 +378,157 @@
   - mb-md-n6
   - mb-lg-n6
   - mb-xl-n6
+  7:
+  - mb-7
+  - mb-sm-7
+  - mb-md-7
+  - mb-lg-7
+  - mb-xl-7
+  -7:
+  - mb-n7
+  - mb-sm-n7
+  - mb-md-n7
+  - mb-lg-n7
+  - mb-xl-n7
+  8:
+  - mb-8
+  - mb-sm-8
+  - mb-md-8
+  - mb-lg-8
+  - mb-xl-8
+  -8:
+  - mb-n8
+  - mb-sm-n8
+  - mb-md-n8
+  - mb-lg-n8
+  - mb-xl-n8
+  9:
+  - mb-9
+  - mb-sm-9
+  - mb-md-9
+  - mb-lg-9
+  - mb-xl-9
+  -9:
+  - mb-n9
+  - mb-sm-n9
+  - mb-md-n9
+  - mb-lg-n9
+  - mb-xl-n9
+  10:
+  - mb-10
+  - mb-sm-10
+  - mb-md-10
+  - mb-lg-10
+  - mb-xl-10
+  -10:
+  - mb-n10
+  - mb-sm-n10
+  - mb-md-n10
+  - mb-lg-n10
+  - mb-xl-n10
+  11:
+  - mb-11
+  - mb-sm-11
+  - mb-md-11
+  - mb-lg-11
+  - mb-xl-11
+  -11:
+  - mb-n11
+  - mb-sm-n11
+  - mb-md-n11
+  - mb-lg-n11
+  - mb-xl-n11
+  12:
+  - mb-12
+  - mb-sm-12
+  - mb-md-12
+  - mb-lg-12
+  - mb-xl-12
+  -12:
+  - mb-n12
+  - mb-sm-n12
+  - mb-md-n12
+  - mb-lg-n12
+  - mb-xl-n12
+:mr:
+  0:
+  - mr-0
+  - mr-sm-0
+  - mr-md-0
+  - mr-lg-0
+  - mr-xl-0
+  1:
+  - mr-1
+  - mr-sm-1
+  - mr-md-1
+  - mr-lg-1
+  - mr-xl-1
+  -1:
+  - mr-n1
+  - mr-sm-n1
+  - mr-md-n1
+  - mr-lg-n1
+  - mr-xl-n1
+  2:
+  - mr-2
+  - mr-sm-2
+  - mr-md-2
+  - mr-lg-2
+  - mr-xl-2
+  -2:
+  - mr-n2
+  - mr-sm-n2
+  - mr-md-n2
+  - mr-lg-n2
+  - mr-xl-n2
+  3:
+  - mr-3
+  - mr-sm-3
+  - mr-md-3
+  - mr-lg-3
+  - mr-xl-3
+  -3:
+  - mr-n3
+  - mr-sm-n3
+  - mr-md-n3
+  - mr-lg-n3
+  - mr-xl-n3
+  4:
+  - mr-4
+  - mr-sm-4
+  - mr-md-4
+  - mr-lg-4
+  - mr-xl-4
+  -4:
+  - mr-n4
+  - mr-sm-n4
+  - mr-md-n4
+  - mr-lg-n4
+  - mr-xl-n4
+  5:
+  - mr-5
+  - mr-sm-5
+  - mr-md-5
+  - mr-lg-5
+  - mr-xl-5
+  -5:
+  - mr-n5
+  - mr-sm-n5
+  - mr-md-n5
+  - mr-lg-n5
+  - mr-xl-n5
+  6:
+  - mr-6
+  - mr-sm-6
+  - mr-md-6
+  - mr-lg-6
+  - mr-xl-6
+  -6:
+  - mr-n6
+  - mr-sm-n6
+  - mr-md-n6
+  - mr-lg-n6
+  - mr-xl-n6
 :ml:
   0:
   - ml-0
@@ -550,6 +700,42 @@
   - my-md-6
   - my-lg-6
   - my-xl-6
+  7:
+  - my-7
+  - my-sm-7
+  - my-md-7
+  - my-lg-7
+  - my-xl-7
+  8:
+  - my-8
+  - my-sm-8
+  - my-md-8
+  - my-lg-8
+  - my-xl-8
+  9:
+  - my-9
+  - my-sm-9
+  - my-md-9
+  - my-lg-9
+  - my-xl-9
+  10:
+  - my-10
+  - my-sm-10
+  - my-md-10
+  - my-lg-10
+  - my-xl-10
+  11:
+  - my-11
+  - my-sm-11
+  - my-md-11
+  - my-lg-11
+  - my-xl-11
+  12:
+  - my-12
+  - my-sm-12
+  - my-md-12
+  - my-lg-12
+  - my-xl-12
 :p:
   0:
   - p-0
@@ -638,6 +824,42 @@
   - pt-md-6
   - pt-lg-6
   - pt-xl-6
+  7:
+  - pt-7
+  - pt-sm-7
+  - pt-md-7
+  - pt-lg-7
+  - pt-xl-7
+  8:
+  - pt-8
+  - pt-sm-8
+  - pt-md-8
+  - pt-lg-8
+  - pt-xl-8
+  9:
+  - pt-9
+  - pt-sm-9
+  - pt-md-9
+  - pt-lg-9
+  - pt-xl-9
+  10:
+  - pt-10
+  - pt-sm-10
+  - pt-md-10
+  - pt-lg-10
+  - pt-xl-10
+  11:
+  - pt-11
+  - pt-sm-11
+  - pt-md-11
+  - pt-lg-11
+  - pt-xl-11
+  12:
+  - pt-12
+  - pt-sm-12
+  - pt-md-12
+  - pt-lg-12
+  - pt-xl-12
 :pr:
   0:
   - pr-0
@@ -681,6 +903,42 @@
   - pr-md-6
   - pr-lg-6
   - pr-xl-6
+  7:
+  - pr-7
+  - pr-sm-7
+  - pr-md-7
+  - pr-lg-7
+  - pr-xl-7
+  8:
+  - pr-8
+  - pr-sm-8
+  - pr-md-8
+  - pr-lg-8
+  - pr-xl-8
+  9:
+  - pr-9
+  - pr-sm-9
+  - pr-md-9
+  - pr-lg-9
+  - pr-xl-9
+  10:
+  - pr-10
+  - pr-sm-10
+  - pr-md-10
+  - pr-lg-10
+  - pr-xl-10
+  11:
+  - pr-11
+  - pr-sm-11
+  - pr-md-11
+  - pr-lg-11
+  - pr-xl-11
+  12:
+  - pr-12
+  - pr-sm-12
+  - pr-md-12
+  - pr-lg-12
+  - pr-xl-12
 :pb:
   0:
   - pb-0
@@ -724,6 +982,42 @@
   - pb-md-6
   - pb-lg-6
   - pb-xl-6
+  7:
+  - pb-7
+  - pb-sm-7
+  - pb-md-7
+  - pb-lg-7
+  - pb-xl-7
+  8:
+  - pb-8
+  - pb-sm-8
+  - pb-md-8
+  - pb-lg-8
+  - pb-xl-8
+  9:
+  - pb-9
+  - pb-sm-9
+  - pb-md-9
+  - pb-lg-9
+  - pb-xl-9
+  10:
+  - pb-10
+  - pb-sm-10
+  - pb-md-10
+  - pb-lg-10
+  - pb-xl-10
+  11:
+  - pb-11
+  - pb-sm-11
+  - pb-md-11
+  - pb-lg-11
+  - pb-xl-11
+  12:
+  - pb-12
+  - pb-sm-12
+  - pb-md-12
+  - pb-lg-12
+  - pb-xl-12
 :pl:
   0:
   - pl-0
@@ -767,6 +1061,42 @@
   - pl-md-6
   - pl-lg-6
   - pl-xl-6
+  7:
+  - pl-7
+  - pl-sm-7
+  - pl-md-7
+  - pl-lg-7
+  - pl-xl-7
+  8:
+  - pl-8
+  - pl-sm-8
+  - pl-md-8
+  - pl-lg-8
+  - pl-xl-8
+  9:
+  - pl-9
+  - pl-sm-9
+  - pl-md-9
+  - pl-lg-9
+  - pl-xl-9
+  10:
+  - pl-10
+  - pl-sm-10
+  - pl-md-10
+  - pl-lg-10
+  - pl-xl-10
+  11:
+  - pl-11
+  - pl-sm-11
+  - pl-md-11
+  - pl-lg-11
+  - pl-xl-11
+  12:
+  - pl-12
+  - pl-sm-12
+  - pl-md-12
+  - pl-lg-12
+  - pl-xl-12
 :px:
   0:
   - px-0
@@ -853,6 +1183,42 @@
   - py-md-6
   - py-lg-6
   - py-xl-6
+  7:
+  - py-7
+  - py-sm-7
+  - py-md-7
+  - py-lg-7
+  - py-xl-7
+  8:
+  - py-8
+  - py-sm-8
+  - py-md-8
+  - py-lg-8
+  - py-xl-8
+  9:
+  - py-9
+  - py-sm-9
+  - py-md-9
+  - py-lg-9
+  - py-xl-9
+  10:
+  - py-10
+  - py-sm-10
+  - py-md-10
+  - py-lg-10
+  - py-xl-10
+  11:
+  - py-11
+  - py-sm-11
+  - py-md-11
+  - py-lg-11
+  - py-xl-11
+  12:
+  - py-12
+  - py-sm-12
+  - py-md-12
+  - py-lg-12
+  - py-xl-12
 :word_break:
   :break_all:
   - wb-break-all
