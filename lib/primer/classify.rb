@@ -202,14 +202,8 @@ module Primer
           memo[:classes] << Primer::Classify::Flex.classes(key, val, breakpoint)
         elsif Primer::Classify::Grid::KEYS.include?(key)
           memo[:classes] << Primer::Classify::Grid.classes(key, val, breakpoint)
-        elsif key == WIDTH_KEY
+        elsif key == WIDTH_KEY || key == HEIGHT_KEY
           if val == :fit || val == :full
-            memo[:classes] << "#{key}-#{val}"
-          else
-            memo[key] = val
-          end
-        elsif key == HEIGHT_KEY
-          if val == :fit
             memo[:classes] << "#{key}-#{val}"
           else
             memo[key] = val
