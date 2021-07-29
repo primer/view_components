@@ -79,7 +79,7 @@ module Primer
     # | `flex_shrink` | Integer | To enable, set to `0`. |
     # | `flex_wrap` | Symbol | <%= one_of(Primer::Classify::Flex::WRAP_MAPPINGS.keys) %> |
     # | `justify_content` | Symbol | <%= one_of(Primer::Classify::Flex::JUSTIFY_CONTENT_VALUES) %> |
-    # | `width` | Symbol | <%= one_of([:fit]) %> |
+    # | `width` | Symbol | <%= one_of([:fit, :full]) %> |
     #
     # ## Grid
     #

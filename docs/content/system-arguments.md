@@ -78,7 +78,7 @@ System arguments include most HTML attributes. For example:
 | `flex_shrink` | Integer | To enable, set to `0`. |
 | `flex_wrap` | Symbol | One of `:nowrap`, `:reverse`, or `:wrap`. |
 | `justify_content` | Symbol | One of `:center`, `:flex_end`, `:flex_start`, `:space_around`, or `:space_between`. |
-| `width` | Symbol | One of `:fit`. |
+| `width` | Symbol | One of `:fit` and `:full`. |
 
 ## Grid
 

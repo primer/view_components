@@ -40,6 +40,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Add support for width: :full to System Arguments.
+
+    *Joel Hawksley*
+
 ## 0.0.49
 
 ### New
