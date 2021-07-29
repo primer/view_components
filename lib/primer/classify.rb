@@ -170,7 +170,9 @@ module Primer
       def extract_value(memo, key, val, breakpoint)
         return if val.nil? || val == ""
 
-        if Primer::Classify::Utilities.supported_key?(key)
+        if (key == WIDTH_KEY || key == HEIGHT_KEY) && !val.is_a?(Symbol)
+          memo[key] = val
+        elsif Primer::Classify::Utilities.supported_key?(key)
           memo[:classes] << Primer::Classify::Utilities.classname(key, val, breakpoint)
         elsif BOOLEAN_MAPPINGS.key?(key)
           BOOLEAN_MAPPINGS[key][:mappings].each do |m|
@@ -202,12 +204,6 @@ module Primer
           memo[:classes] << Primer::Classify::Flex.classes(key, val, breakpoint)
         elsif Primer::Classify::Grid::KEYS.include?(key)
           memo[:classes] << Primer::Classify::Grid.classes(key, val, breakpoint)
-        elsif key == WIDTH_KEY || key == HEIGHT_KEY
-          if val == :fit
-            memo[:classes] << "#{key}-#{val}"
-          else
-            memo[key] = val
-          end
         elsif TEXT_KEYS.include?(key)
           memo[:classes] << "text-#{val.to_s.dasherize}"
         elsif TYPOGRAPHY_KEYS.include?(key)

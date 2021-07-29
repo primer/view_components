@@ -78,7 +78,6 @@ System arguments include most HTML attributes. For example:
 | `flex_shrink` | Integer | To enable, set to `0`. |
 | `flex_wrap` | Symbol | One of `:nowrap`, `:reverse`, or `:wrap`. |
 | `justify_content` | Symbol | One of `:center`, `:flex_end`, `:flex_start`, `:space_around`, or `:space_between`. |
-| `width` | Symbol | One of `:fit`. |
 
 ## Grid
 
@@ -93,7 +92,8 @@ System arguments include most HTML attributes. For example:
 | Name | Type | Description |
 | :- | :- | :- |
 | `display` | Symbol | One of `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:none`, `:table`, or `:table_cell`. |
-| `height` | Symbol | One of `:fit`. |
+| `width` | Symbol | One of `:fit` and `:full`.. Also supports integer values. |
+| `height` | Symbol | One of `:fit` and `:full`.. Also supports integer values. |
 | `hide` | Symbol | Hide the element at a specific breakpoint. One of `:lg`, `:md`, `:sm`, or `:xl`. |
 | `visibility` | Symbol | Visibility. One of `:hidden` and `:visible`. |
 | `vertical_align` | Symbol | One of `:baseline`, `:bottom`, `:middle`, `:text_bottom`, `:text_top`, or `:top`. |
