@@ -44,6 +44,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Joel Hawksley*
 
+* Update to `octicons` `v15`, removing open-ended dependency.
+
+    *Joel Hawksley*
+
 ### Bug fixes
 
 * Update linters to not autocorrect attributes with ERB blocks.
