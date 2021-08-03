@@ -56,6 +56,7 @@ namespace :docs do
       Primer::HeadingComponent,
       Primer::HiddenTextExpander,
       Primer::LabelComponent,
+      Primer::Alpha::Layout,
       Primer::LayoutComponent,
       Primer::LinkComponent,
       Primer::Markdown,
