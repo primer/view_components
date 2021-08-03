@@ -1,5 +1,8 @@
 {
   "Primer::Alpha::ButtonMarketing": "alpha",
+  "Primer::Alpha::Layout": "alpha",
+  "Primer::Alpha::Layout::Main": "alpha",
+  "Primer::Alpha::Layout::Sidebar": "alpha",
   "Primer::BaseButton": "beta",
   "Primer::BaseComponent": "beta",
   "Primer::Beta::AutoComplete": "beta",
