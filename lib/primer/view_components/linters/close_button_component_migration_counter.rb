@@ -10,7 +10,7 @@ module ERBLint
 
       TAGS = %w[button].freeze
       CLASSES = %w[close-button].freeze
-      MESSAGE = "We are migrating clipboard-copy to use [Primer::CloseButton](https://primer.style/view-components/components/closebutton), please try to use that instead of raw HTML."
+      MESSAGE = "We are migrating close-button to use [Primer::CloseButton](https://primer.style/view-components/components/closebutton), please try to use that instead of raw HTML."
     end
   end
 end
