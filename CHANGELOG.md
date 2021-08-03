@@ -56,6 +56,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Fix `:height` and `:width` docs to pull from Utilities
+
+    *Jon Rohan*
+
 ## 0.0.49
 
 ### New
