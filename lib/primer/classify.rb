@@ -20,8 +20,6 @@ module Primer
     COLOR_KEY = :color
     BG_KEY = :bg
     TEXT_KEYS = %i[font_family font_style font_weight text_align text_transform].freeze
-    WIDTH_KEY = :width
-    HEIGHT_KEY = :height
     BOX_SHADOW_KEY = :box_shadow
     CONTAINER_KEY = :container
 
@@ -94,8 +92,6 @@ module Primer
         BORDER_RADIUS_KEY,
         COLOR_KEY,
         BG_KEY,
-        WIDTH_KEY,
-        HEIGHT_KEY,
         BOX_SHADOW_KEY,
         CONTAINER_KEY
       ]
@@ -202,12 +198,6 @@ module Primer
           memo[:classes] << Primer::Classify::Flex.classes(key, val, breakpoint)
         elsif Primer::Classify::Grid::KEYS.include?(key)
           memo[:classes] << Primer::Classify::Grid.classes(key, val, breakpoint)
-        elsif key == WIDTH_KEY || key == HEIGHT_KEY
-          if val == :fit
-            memo[:classes] << "#{key}-#{val}"
-          else
-            memo[key] = val
-          end
         elsif TEXT_KEYS.include?(key)
           memo[:classes] << "text-#{val.to_s.dasherize}"
         elsif TYPOGRAPHY_KEYS.include?(key)

@@ -8,7 +8,7 @@ module Primer
     # for organizations or any other non-human avatars.
     # - By default, `Avatar` will render a static `<img>`. To have `Avatar` function as a link, set the `href` which will wrap the `<img>` in a `<a>`.
     # - Set `size` to update the height and width of the `Avatar` in pixels.
-    # - To stack multiple avatars together, use <%= link_to_component(Primer::AvatarStackComponent) %>.
+    # - To stack multiple avatars together, use <%= link_to_component(Primer::Beta::AvatarStack) %>.
     #
     # @accessibility
     #   Images should have text alternatives that describe the information or function represented.

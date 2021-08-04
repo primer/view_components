@@ -5,6 +5,8 @@ linters:
     enabled: true
   FlashComponentMigrationCounter:
     enabled: true
+  LabelComponentMigrationCounter:
+    enabled: true
   Rubocop:
     enabled: true
     rubocop_config:

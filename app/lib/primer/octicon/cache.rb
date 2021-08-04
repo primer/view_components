@@ -6,7 +6,7 @@ module Primer
     class Cache
       LOOKUP = {} # rubocop:disable Style/MutableConstant
       # Preload the top 20 used icons.
-      PRELOADED_ICONS = [:alert, :check, :"chevron-down", :clippy, :clock, :"dot-fill", :info, :"kebab-horizontal", :link, :lock, :mail, :pencil, :plus, :question, :repo, :search, :"shield-lock", :star, :trash, :x].freeze
+      PRELOADED_ICONS = [:alert, :check, :"chevron-down", :paste, :clock, :"dot-fill", :info, :"kebab-horizontal", :link, :lock, :mail, :pencil, :plus, :question, :repo, :search, :"shield-lock", :star, :trash, :x].freeze
 
       class << self
         def get_key(symbol:, size:, width: nil, height: nil)

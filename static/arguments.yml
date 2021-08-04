@@ -22,31 +22,6 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: AvatarStack
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/avatar_stack_component.rb
-  parameters:
-  - name: tag
-    type: Symbol
-    default: "`:div`"
-    description: One of `:div` and `:span`.
-  - name: align
-    type: Symbol
-    default: "`:left`"
-    description: One of `:left` and `:right`.
-  - name: tooltipped
-    type: Boolean
-    default: "`false`"
-    description: Whether to add a tooltip to the stack or not.
-  - name: body_arguments
-    type: Hash
-    default: "`{}`"
-    description: Parameters to add to the Body. If `tooltipped` is set, has the same
-      arguments as [Tooltip](/components/tooltip). The default tag is `:div` but can
-      be changed using `tag:` to one of `:div` and `:span`.
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
 - component: BaseButton
   source: https://github.com/primer/view_components/tree/main/app/components/primer/base_button.rb
   parameters:
@@ -128,6 +103,31 @@
     default: "`nil`"
     description: The URL to link to. If used, component will be wrapped by an `<a>`
       tag.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: AvatarStack
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/avatar_stack.rb
+  parameters:
+  - name: tag
+    type: Symbol
+    default: "`:div`"
+    description: One of `:div` and `:span`.
+  - name: align
+    type: Symbol
+    default: "`:left`"
+    description: One of `:left` and `:right`.
+  - name: tooltipped
+    type: Boolean
+    default: "`false`"
+    description: Whether to add a tooltip to the stack or not.
+  - name: body_arguments
+    type: Hash
+    default: "`{}`"
+    description: Parameters to add to the Body. If `tooltipped` is set, has the same
+      arguments as [Tooltip](/components/tooltip). The default tag is `:div` but can
+      be changed using `tag:` to one of `:div` and `:span`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -569,10 +569,6 @@
     type: Symbol
     default: "`:span`"
     description: One of `:a`, `:div`, `:span`, or `:summary`.
-  - name: title
-    type: String
-    default: N/A
-    description: "`title` attribute for the component element."
   - name: scheme
     type: Symbol
     default: "`nil`"
@@ -714,6 +710,10 @@
     type: Boolean
     default: "`false`"
     description: Whether the Tab has an associated panel.
+  - name: panel_id
+    type: String
+    default: '`""`'
+    description: Only applies if `with_panel` is `true`. Unique id of panel.
   - name: icon_classes
     type: Boolean
     default: '`""`'

@@ -35,7 +35,7 @@ namespace :docs do
       Primer::Beta::AutoComplete,
       Primer::Beta::AutoComplete::Item,
       Primer::Beta::Avatar,
-      Primer::AvatarStackComponent,
+      Primer::Beta::AvatarStack,
       Primer::BaseButton,
       Primer::BlankslateComponent,
       Primer::BorderBoxComponent,

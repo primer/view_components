@@ -30,6 +30,62 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Breaking changes
+
+* Rename `width` and `height` System Arguments to `w` and `h`, resolving conflict with HTML attribute names.
+
+    *Manuel Puyol*
+
+## 0.0.50
+
+### New
+
+* Add linter suggestions for `CloseButton` component.
+
+    *Manuel Puyol*
+
+### Breaking changes
+
+* Update to `octicons` `v15`, removing open-ended dependency. See [https://github.com/primer/octicons/releases/tag/v15.0.0] for icon name changes in release.
+
+    *Joel Hawksley*
+
+### Updates
+
+* Don't require `title` for `Label`.
+
+    *Manuel Puyol*
+
+* Improve autocorrectable linters to convert known SystemArgument classes.
+
+    *Manuel Puyol*
+
+* Add support for `width: :full` and `height: :full` to System Arguments.
+
+    *Joel Hawksley*
+
+### Bug fixes
+
+* Update linters to not autocorrect attributes with ERB blocks.
+
+    *Manuel Puyol*
+
+* Fix `:height` and `:width` docs to pull from Utilities
+
+    *Jon Rohan*
+
+## 0.0.49
+
+### New
+
+* Add linter suggestions for `Label` component.
+
+    *Manuel Puyol*
+
+* Add linter suggestions for `ClipboardCopy` component.
+
+    *Manuel Puyol*
+
 ### Updates
 
 * Update the `Truncate` component to accept `:strong` as a tag.
@@ -44,6 +100,27 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+### Breaking changes
+
+* Require tab with panels to have `panel_id` so `aria-controls` can be set.
+
+    *Kate Higa*
+
+* Renames:
+  * `Primer::AvatarStackComponent` to `Primer::Beta::AvatarStack`.
+
+    *Manuel Puyol*
+
+### Misc
+
+* Extract example tag parsing into helper.
+
+    *Kate Higa*
+
+* Generate a static constant JSON and use it when defining linters.
+
+    *Manuel Puyol*
+
 ## 0.0.48
 
 ### Breaking changes
@@ -53,10 +130,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
     *Kate Higa*
 
 ### Misc
-
-* Extract example tag parsing into helper.
-
-    *Kate Higa*
 
 * Expose custom cops and default config for erblint.
 

@@ -17,14 +17,14 @@ class BenchClassify < Minitest::Benchmark
       float: :left,
       font_weight: :bold,
       font_size: 1,
-      height: :fit,
+      h: :fit,
       justify_content: :flex_start,
       m: 1,
       p: 4,
       position: :relative,
       text_align: :left,
       visibility: :hidden,
-      width: :fit,
+      w: :fit,
       underline: true,
       vertical_align: :baseline,
       direction: [:row, :column],
@@ -40,7 +40,7 @@ class BenchClassify < Minitest::Benchmark
     Primer::Classify::Cache.clear!
     Primer::Classify.call(**@values)
 
-    assert_allocations 74 do
+    assert_allocations 68 do
       Primer::Classify.call(**@values)
     end
   ensure

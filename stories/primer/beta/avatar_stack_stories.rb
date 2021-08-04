@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
-class Primer::AvatarStackComponentStories < ViewComponent::Storybook::Stories
+require "primer/beta/avatar_stack"
+
+class Primer::Beta::AvatarStackStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:avatar_stack) do
     controls do
-      select(:align, Primer::AvatarStackComponent::ALIGN_OPTIONS, Primer::AvatarStackComponent::ALIGN_DEFAULT)
+      select(:align, Primer::Beta::AvatarStack::ALIGN_OPTIONS, Primer::Beta::AvatarStack::ALIGN_DEFAULT)
     end
 
     content do |component|
@@ -16,7 +18,7 @@ class Primer::AvatarStackComponentStories < ViewComponent::Storybook::Stories
 
   story(:three_plus) do
     controls do
-      select(:align, Primer::AvatarStackComponent::ALIGN_OPTIONS, Primer::AvatarStackComponent::ALIGN_DEFAULT)
+      select(:align, Primer::Beta::AvatarStack::ALIGN_OPTIONS, Primer::Beta::AvatarStack::ALIGN_DEFAULT)
     end
 
     content do |component|
@@ -29,7 +31,7 @@ class Primer::AvatarStackComponentStories < ViewComponent::Storybook::Stories
 
   story(:tooltipped_body) do
     controls do
-      select(:align, Primer::AvatarStackComponent::ALIGN_OPTIONS, Primer::AvatarStackComponent::ALIGN_DEFAULT)
+      select(:align, Primer::Beta::AvatarStack::ALIGN_OPTIONS, Primer::Beta::AvatarStack::ALIGN_DEFAULT)
       tooltipped true
       body_arguments(label: "This is a tooltip")
     end
@@ -42,7 +44,7 @@ class Primer::AvatarStackComponentStories < ViewComponent::Storybook::Stories
 
   story(:linked) do
     controls do
-      select(:align, Primer::AvatarStackComponent::ALIGN_OPTIONS, Primer::AvatarStackComponent::ALIGN_DEFAULT)
+      select(:align, Primer::Beta::AvatarStack::ALIGN_OPTIONS, Primer::Beta::AvatarStack::ALIGN_DEFAULT)
     end
 
     content do |component|

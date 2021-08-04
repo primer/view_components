@@ -91,6 +91,7 @@ class ComponentStatusMigrator < Thor::Group
 
   def dump_static_files
     run("bundle exec rake statuses:dump")
+    run("bundle exec rake constants:dump")
   end
 
   private

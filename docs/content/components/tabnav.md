@@ -34,6 +34,7 @@ an anchor tag is rendered for page navigation. For more information, refer to [N
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `panel_id` | `String` | N/A | Only applies if `with_panel` is `true`. Unique ID of panel. |
 | `selected` | `Boolean` | N/A | Whether the tab is selected. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
@@ -61,7 +62,7 @@ Renders extra content to the `TabNav`. This will be rendered after the tabs.
 
 ### With icons and counters
 
-<Example src="  <div data-view-component='true' class='tabnav'>        <nav aria-label='With icons and counters' data-view-component='true' class='tabnav-tabs'>          <a href='#' aria-current='page' data-view-component='true' class='tabnav-tab'>    <svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' data-view-component='true' height='16' width='16' class='octicon octicon-star'>    <path fill-rule='evenodd' d='M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z'></path></svg>      <span data-view-component='true'>Item 1</span>    </a>          <a href='#' data-view-component='true' class='tabnav-tab'>    <svg aria-hidden='true' viewBox='0 0 16 16' version='1.1' data-view-component='true' height='16' width='16' class='octicon octicon-star'>    <path fill-rule='evenodd' d='M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z'></path></svg>      <span data-view-component='true'>Item 2</span>    <span title='10' data-view-component='true' class='Counter'>10</span></a>          <a href='#' data-view-component='true' class='tabnav-tab'>          <span data-view-component='true'>Item 3</span>    <span title='10' data-view-component='true' class='Counter'>10</span></a></nav>    </div>" />
+<Example src="  <div data-view-component='true' class='tabnav'>        <nav aria-label='With icons and counters' data-view-component='true' class='tabnav-tabs'>          <a href='#' aria-current='page' data-view-component='true' class='tabnav-tab'>    <svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-star'>    <path fill-rule='evenodd' d='M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z'></path></svg>      <span data-view-component='true'>Item 1</span>    </a>          <a href='#' data-view-component='true' class='tabnav-tab'>    <svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-star'>    <path fill-rule='evenodd' d='M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z'></path></svg>      <span data-view-component='true'>Item 2</span>    <span title='10' data-view-component='true' class='Counter'>10</span></a>          <a href='#' data-view-component='true' class='tabnav-tab'>          <span data-view-component='true'>Item 3</span>    <span title='10' data-view-component='true' class='Counter'>10</span></a></nav>    </div>" />
 
 ```erb
 <%= render(Primer::TabNavComponent.new(label: "With icons and counters")) do |component| %>
@@ -83,23 +84,23 @@ Renders extra content to the `TabNav`. This will be rendered after the tabs.
 
 ### With panels
 
-<Example src="<tab-container data-view-component='true'>  <div data-view-component='true' class='tabnav'>        <div aria-label='With panels' role='tablist' data-view-component='true' class='tabnav-tabs'>          <button id='tab-1' type='button' role='tab' aria-selected='true' data-view-component='true' class='tabnav-tab'>          <span data-view-component='true'>Tab 1</span>    </button>          <button id='tab-2' type='button' role='tab' data-view-component='true' class='tabnav-tab'>          <span data-view-component='true'>Tab 2</span>    </button>          <button id='tab-3' type='button' role='tab' data-view-component='true' class='tabnav-tab'>          <span data-view-component='true'>Tab 3</span>    </button></div>    </div>      <div role='tabpanel' tabindex='0' aria-labelledby='tab-1' data-view-component='true'>      Panel 1</div>      <div role='tabpanel' tabindex='0' hidden='hidden' aria-labelledby='tab-2' data-view-component='true'>      Panel 2</div>      <div role='tabpanel' tabindex='0' hidden='hidden' aria-labelledby='tab-3' data-view-component='true'>      Panel 3</div></tab-container>" />
+<Example src="<tab-container data-view-component='true'>  <div data-view-component='true' class='tabnav'>        <div aria-label='With panels' role='tablist' data-view-component='true' class='tabnav-tabs'>          <button id='tab-1' type='button' role='tab' aria-controls='panel-1' aria-selected='true' data-view-component='true' class='tabnav-tab'>          <span data-view-component='true'>Tab 1</span>    </button>          <button id='tab-2' type='button' role='tab' aria-controls='panel-2' data-view-component='true' class='tabnav-tab'>          <span data-view-component='true'>Tab 2</span>    </button>          <button id='tab-3' type='button' role='tab' aria-controls='panel-3' data-view-component='true' class='tabnav-tab'>          <span data-view-component='true'>Tab 3</span>    </button></div>    </div>      <div id='panel-1' role='tabpanel' tabindex='0' aria-labelledby='tab-1' data-view-component='true'>      Panel 1</div>      <div id='panel-2' role='tabpanel' tabindex='0' hidden='hidden' aria-labelledby='tab-2' data-view-component='true'>      Panel 2</div>      <div id='panel-3' role='tabpanel' tabindex='0' hidden='hidden' aria-labelledby='tab-3' data-view-component='true'>      Panel 3</div></tab-container>" />
 
 ```erb
 <%= render(Primer::TabNavComponent.new(label: "With panels", with_panel: true)) do |c| %>
-  <% c.tab(selected: true, id: "tab-1") do |t| %>
+  <% c.tab(selected: true, panel_id: "panel-1", id: "tab-1") do |t| %>
     <% t.text { "Tab 1" } %>
     <% t.panel do %>
       Panel 1
     <% end %>
   <% end %>
-  <% c.tab(id: "tab-2") do |t| %>
+  <% c.tab(id: "tab-2", panel_id: "panel-2") do |t| %>
     <% t.text { "Tab 2" } %>
     <% t.panel do %>
       Panel 2
     <% end %>
   <% end %>
-  <% c.tab(id: "tab-3") do |t| %>
+  <% c.tab(id: "tab-3", panel_id: "panel-3") do |t| %>
     <% t.text { "Tab 3" } %>
     <% t.panel do %>
       Panel 3

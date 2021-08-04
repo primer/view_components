@@ -85,6 +85,22 @@
   - float-md-none
   - float-lg-none
   - float-xl-none
+:w:
+  :fit:
+  - width-fit
+  :full:
+  - width-full
+  :auto:
+  - width-auto
+  - width-sm-auto
+  - width-md-auto
+  - width-lg-auto
+  - width-xl-auto
+:h:
+  :fit:
+  - height-fit
+  :full:
+  - height-full
 :m:
   0:
   - m-0
