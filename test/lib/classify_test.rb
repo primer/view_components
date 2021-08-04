@@ -604,12 +604,12 @@ class PrimerClassifyTest < Minitest::Test
 
   def test_height
     assert_equal(10, Primer::Classify.call(height: 10)[:height])
-    assert_nil(Primer::Classify.call(height: :fit)[:height])
+    assert_nil(Primer::Classify.call(h: :fit)[:height])
   end
 
   def test_width
     assert_equal(10, Primer::Classify.call(width: 10)[:width])
-    assert_nil(Primer::Classify.call(width: :fit)[:width])
+    assert_nil(Primer::Classify.call(w: :fit)[:width])
   end
 
   def test_flex
@@ -635,11 +635,11 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_width_and_height
-    assert_generated_class("width-fit", { width: :fit })
-    assert_generated_class("width-full", { width: :full })
+    assert_generated_class("width-fit", { w: :fit })
+    assert_generated_class("width-full", { w: :full })
 
-    assert_generated_class("height-fit", { height: :fit })
-    assert_generated_class("height-full", { height: :full })
+    assert_generated_class("height-fit", { h: :fit })
+    assert_generated_class("height-full", { h: :full })
   end
 
   def test_flex_grow
