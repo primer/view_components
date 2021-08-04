@@ -36,6 +36,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+### Updates
+
+* Adding `Primer::Beta::Truncate` component to reflect changes in primer/css component [Truncate](https://primer.style/css/components/truncate).
+
+    *Jon Rohan*
+
 ## 0.0.50
 
 ### New
@@ -91,10 +97,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Update the `Truncate` component to accept `:strong` as a tag.
 
     *Amélia Chavot*
-
-* Adding `Primer::Beta::Truncate` component to reflect changes in primer/css component [Truncate](https://primer.style/css/components/truncate).
-
-    *Jon Rohan*
 
 * Improve `Primer::Classify::Utilities.classes_to_hash` performance.
 
