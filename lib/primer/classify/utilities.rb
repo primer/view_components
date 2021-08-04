@@ -24,7 +24,9 @@ module Primer
         "^v-align" => "vertical_align",
         "^d" => "display",
         "^wb" => "word_break",
-        "^v" => "visibility"
+        "^v" => "visibility",
+        "^width" => "w",
+        "^height" => "h"
       }.freeze
 
       class << self

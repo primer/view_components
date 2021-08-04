@@ -20,8 +20,6 @@ module Primer
     COLOR_KEY = :color
     BG_KEY = :bg
     TEXT_KEYS = %i[font_family font_style font_weight text_align text_transform].freeze
-    WIDTH_KEY = :width
-    HEIGHT_KEY = :height
     BOX_SHADOW_KEY = :box_shadow
     CONTAINER_KEY = :container
 
@@ -94,8 +92,6 @@ module Primer
         BORDER_RADIUS_KEY,
         COLOR_KEY,
         BG_KEY,
-        WIDTH_KEY,
-        HEIGHT_KEY,
         BOX_SHADOW_KEY,
         CONTAINER_KEY
       ]
@@ -170,9 +166,7 @@ module Primer
       def extract_value(memo, key, val, breakpoint)
         return if val.nil? || val == ""
 
-        if (key == WIDTH_KEY || key == HEIGHT_KEY) && !val.is_a?(Symbol)
-          memo[key] = val
-        elsif Primer::Classify::Utilities.supported_key?(key)
+        if Primer::Classify::Utilities.supported_key?(key)
           memo[:classes] << Primer::Classify::Utilities.classname(key, val, breakpoint)
         elsif BOOLEAN_MAPPINGS.key?(key)
           BOOLEAN_MAPPINGS[key][:mappings].each do |m|
