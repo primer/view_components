@@ -3,7 +3,7 @@
 require "rubocop"
 require "primer/classify/utilities"
 require "primer/view_components/statuses"
-require "primer/view_helper"
+require_relative "../../../../app/lib/primer/view_helper"
 
 module RuboCop
   module Cop
