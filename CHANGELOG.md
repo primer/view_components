@@ -32,7 +32,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Breaking changes
 
-* Rename `width` and `height` System Arguments to `w` and `h` respectively.
+* Rename `width` and `height` System Arguments to `w` and `h`, resolving conflict with HTML attribute names.
 
     *Manuel Puyol*
 

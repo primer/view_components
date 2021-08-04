@@ -94,7 +94,7 @@ module Primer
     # | :- | :- | :- |
     # | `display` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:display)) %> |
     # | `w` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:w)) %> Also supports integer values. |
-    # | `h` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:h)) %>q Also supports integer values. |
+    # | `h` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:h)) %> Also supports integer values. |
     # | `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of(Primer::Classify::Utilities.mappings(:hide)) %> |
     # | `visibility` | Symbol | Visibility. <%= one_of(Primer::Classify::Utilities.mappings(:visibility)) %> |
     # | `vertical_align` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:vertical_align)) %> |
