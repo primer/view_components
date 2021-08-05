@@ -3,6 +3,7 @@
 require "rubocop"
 require "primer/classify/utilities"
 require "primer/view_components/statuses"
+require_relative "../../../../app/lib/primer/view_helper"
 
 module RuboCop
   module Cop
@@ -20,8 +21,7 @@ module RuboCop
         STR
 
         def on_send(node)
-          return unless node.method_name == :new
-          return unless ::Primer::ViewComponents::STATUSES.key?(node.receiver.const_name)
+          return unless valid_node?(node)
           return unless node.arguments?
 
           # we are looking for hash arguments and they are always last
@@ -54,6 +54,16 @@ module RuboCop
         end
 
         private
+
+        # We only verify SystemArguments if it's a `.new` call on a component or
+        # a ViewHleper call.
+        def valid_node?(node)
+          view_helpers.include?(node.method_name) || (node.method_name == :new && ::Primer::ViewComponents::STATUSES.key?(node.receiver.const_name))
+        end
+
+        def view_helpers
+          ::Primer::ViewHelper::HELPERS.keys.map { |key| "primer_#{key}".to_sym }
+        end
 
         def arguments_as_string(system_arguments)
           system_arguments.map do |key, value|

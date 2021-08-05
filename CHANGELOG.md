@@ -36,6 +36,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+### Updates
+
+* `SystemArgumentInsteadOfClass` linter will check for arguments in ViewHelpers.
+
+    *Manuel Puyol*
+
 ## 0.0.50
 
 ### New
