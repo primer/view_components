@@ -27,4 +27,10 @@ if ENV["COVERAGE"] == "1"
     command_name "rails#{ENV['RAILS_VERSION']}-ruby#{ENV['RUBY_VERSION']}" if ENV["RUBY_VERSION"]
     formatter SimpleCov::Formatter::Console
   end
+
+  # Eager load all files for coverage
+  Dir[Rails.root.parent.join("app/components/primer/**/*.rb")].sort.each { |f| require f }
+  Dir[Rails.root.parent.join("app/lib/primer/**/*.rb")].sort.each { |f| require f }
+  Dir[Rails.root.parent.join("lib/primer/**/*.rb")].sort.each { |f| require f }
+  Dir[Rails.root.parent.join("lib/rubocop/**/*.rb")].sort.each { |f| require f }
 end
