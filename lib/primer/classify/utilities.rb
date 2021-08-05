@@ -114,6 +114,21 @@ module Primer
           obj
         end
 
+        def classes_to_args(classes)
+          classes_to_hash(classes).map do |key, value|
+            val = case value
+                  when Symbol
+                    ":#{value}"
+                  when String
+                    value.to_json
+                  else
+                    value
+                  end
+
+            "#{key}: #{val}"
+          end.join(", ")
+        end
+
         private
 
         def find_selector(selector)
