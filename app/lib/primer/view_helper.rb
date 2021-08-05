@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nocov:
 module Primer
   # Module to allow shorthand calls for Primer components
   module ViewHelper
