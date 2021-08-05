@@ -2,6 +2,7 @@
 
 require "rubocop"
 
+# :nocov:
 module RuboCop
   module Cop
     module Primer

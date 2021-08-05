@@ -3,6 +3,7 @@
 require "rubocop"
 require "primer/classify/utilities"
 
+# :nocov:
 module RuboCop
   module Cop
     module Primer
