@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Add cop to use `primer_octicon` in favor of `octicon`.
+
+    *Manuel Puyol*
+
 ### Breaking changes
 
 * Rename `width` and `height` System Arguments to `w` and `h`, resolving conflict with HTML attribute names.
