@@ -26,7 +26,7 @@ module RuboCop
           return unless node.method_name == :octicon
           return unless node.arguments?
 
-          kwargs = node.arguments.last
+          kwargs = kwargs(node)
           attributes = kwargs.keys.map(&:value)
 
           # Don't convert unknown attributes
@@ -43,8 +43,8 @@ module RuboCop
           if classes.present?
             system_arguments = ::Primer::Classify::Utilities.classes_to_hash(classes)
 
-            # no classes are fixable
-            return if system_arguments[:classes] == classes
+            # Uses custom classes
+            return if system_arguments[:classes].present?
           end
 
           add_offense(node, message: INVALID_MESSAGE)
@@ -122,6 +122,12 @@ module RuboCop
           size_attributes.map do |key, value|
             "#{key}: #{value}"
           end.join(", ")
+        end
+
+        def kwargs(node)
+          return node.arguments.last if node.arguments.size > 1
+
+          OpenStruct.new(keys: [], pairs: [])
         end
       end
     end
