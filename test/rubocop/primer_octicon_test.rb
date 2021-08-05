@@ -37,8 +37,9 @@ class RubocopPrimerOcticonTest < CopTest
   end
 
   def test_octicon_with_invalid_size
-    investigate(cop, <<-RUBY)
+    investigate(cop, <<-'RUBY')
       octicon(:icon, size: some_call)
+      octicon(:icon, size: "interpolation-#{aux}")
     RUBY
 
     assert_empty cop.offenses
@@ -57,8 +58,9 @@ class RubocopPrimerOcticonTest < CopTest
   end
 
   def test_octicon_with_invalid_width
-    investigate(cop, <<-RUBY)
+    investigate(cop, <<-'RUBY')
       octicon(:icon, width: some_call)
+      octicon(:icon, width: "interpolation-#{aux}")
     RUBY
 
     assert_empty cop.offenses
@@ -77,8 +79,9 @@ class RubocopPrimerOcticonTest < CopTest
   end
 
   def test_octicon_with_invalid_height
-    investigate(cop, <<-RUBY)
+    investigate(cop, <<-'RUBY')
       octicon(:icon, height: some_call)
+      octicon(:icon, height: "interpolation-#{aux}")
     RUBY
 
     assert_empty cop.offenses
@@ -96,6 +99,14 @@ class RubocopPrimerOcticonTest < CopTest
   def test_octicon_with_custom_class
     investigate(cop, <<-RUBY)
       octicon(:icon, class: "mr-1 custom")
+    RUBY
+
+    assert_empty cop.offenses
+  end
+
+  def test_octicon_with_class_interpolation
+    investigate(cop, <<-'RUBY')
+      octicon(:icon, class: "mr-1 #{aux}")
     RUBY
 
     assert_empty cop.offenses
