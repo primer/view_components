@@ -20,7 +20,7 @@ module RuboCop
 
         SIZE_ATTRIBUTES = %i[height width size].freeze
         VALID_ATTRIBUTES = [*SIZE_ATTRIBUTES, :class].freeze
-        INVALID_CLASSES = -1
+        INVALID_ATTRIBUTE = -1
 
         def on_send(node)
           return unless node.method_name == :octicon
@@ -32,12 +32,12 @@ module RuboCop
           # Don't convert unknown attributes
           return unless (attributes - VALID_ATTRIBUTES).empty?
           # Can't convert size
-          return if (SIZE_ATTRIBUTES & attributes).any? && octicon_size(kwargs).nil?
+          return if octicon_size_attributes(kwargs) == INVALID_ATTRIBUTE
 
           # find class pair
           classes = classes(kwargs)
 
-          return if classes == INVALID_CLASSES
+          return if classes == INVALID_ATTRIBUTE
 
           # check if classes are convertible
           if classes.present?
@@ -57,8 +57,8 @@ module RuboCop
 
             # Converting arguments for the component
             classes = classes(kwargs)
-            size = transform_size(kwargs)
-            args = arguments_as_string(icon, size, classes)
+            size_attributes = transform_sizes(kwargs)
+            args = arguments_as_string(icon, size_attributes, classes)
 
             corrector.replace(node.loc.expression, "primer_octicon(#{args})")
           end
@@ -66,26 +66,29 @@ module RuboCop
 
         private
 
-        def transform_size(kwargs)
-          size = octicon_size(kwargs)
+        def transform_sizes(kwargs)
+          attributes = octicon_size_attributes(kwargs)
 
-          return "" if size.between?(10, 16)
-          return ":medium" if size.between?(22, 26)
-
-          size
-        end
-
-        def octicon_size(kwargs)
-          size = nil
-
-          kwargs.pairs.each do |pair|
-            if SIZE_ATTRIBUTES.include?(pair.key.value) && (pair.value.type == :str || pair.value.type == :int)
-              size = pair.value.source.to_i
-              break
+          attributes.transform_values do |size|
+            if size.between?(10, 16)
+              ""
+            elsif size.between?(22, 26)
+              ":medium"
+            else
+              size
             end
           end
+        end
 
-          size
+        def octicon_size_attributes(kwargs)
+          kwargs.pairs.each_with_object({}) do |pair, h|
+            next unless SIZE_ATTRIBUTES.include?(pair.key.value)
+
+            # We only support string or int values.
+            return INVALID_ATTRIBUTE if pair.value.type != :str && pair.value.type != :int
+
+            h[pair.key.value] = pair.value.source.to_i
+          end
         end
 
         def classes(kwargs)
@@ -93,21 +96,32 @@ module RuboCop
           class_arg = kwargs.pairs.find { |kwarg| kwarg.key.value == :class }
 
           return if class_arg.blank?
-          return INVALID_CLASSES unless class_arg.value.type == :str
+          return INVALID_ATTRIBUTE unless class_arg.value.type == :str
 
           class_arg.value.value
         end
 
-        def arguments_as_string(icon, size, classes)
+        def arguments_as_string(icon, size_attributes, classes)
           args = icon
 
-          args += ", size: #{size}" if size.present?
+          size_args = size_attributes_to_string(size_attributes)
+          args = "#{args}, #{size_args}" if size_args.present?
 
           return args if classes.blank?
 
           system_args = ::Primer::Classify::Utilities.classes_to_args(classes)
-
           "#{args}, #{system_args}"
+        end
+
+        def size_attributes_to_string(size_attributes)
+          # No arguments if they map to the default size
+          return if size_attributes.blank? || size_attributes.values.all?(&:blank?)
+          # Return mapped argument to `size`
+          return "size: :medium" if size_attributes.values.any? { |val| val == ":medium" }
+
+          size_attributes.map do |key, value|
+            "#{key}: #{value}"
+          end.join(", ")
         end
       end
     end
