@@ -30,6 +30,26 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Add cop to use `primer_octicon` in favor of `octicon`.
+
+    *Manuel Puyol*
+
+## 0.0.51
+
+### Breaking changes
+
+* Rename `width` and `height` System Arguments to `w` and `h`, resolving conflict with HTML attribute names.
+
+    *Manuel Puyol*
+
+### Updates
+
+* `SystemArgumentInsteadOfClass` linter will check for arguments in ViewHelpers.
+
+    *Manuel Puyol*
+
 ## 0.0.50
 
 ### Updates

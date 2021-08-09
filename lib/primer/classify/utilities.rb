@@ -24,7 +24,9 @@ module Primer
         "^v-align" => "vertical_align",
         "^d" => "display",
         "^wb" => "word_break",
-        "^v" => "visibility"
+        "^v" => "visibility",
+        "^width" => "w",
+        "^height" => "h"
       }.freeze
 
       class << self
@@ -110,6 +112,21 @@ module Primer
           # Add back the non-system classes
           obj[:classes] = classes.join(" ") if classes.any?
           obj
+        end
+
+        def classes_to_args(classes)
+          classes_to_hash(classes).map do |key, value|
+            val = case value
+                  when Symbol
+                    ":#{value}"
+                  when String
+                    value.to_json
+                  else
+                    value
+                  end
+
+            "#{key}: #{val}"
+          end.join(", ")
         end
 
         private
