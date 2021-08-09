@@ -40,9 +40,9 @@ Required list of stacked avatars.
 
 ```erb
 <%= render(Primer::Beta::AvatarStack.new) do |c| %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <% c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <% c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <% c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
 <% end  %>
 ```
 
@@ -52,9 +52,9 @@ Required list of stacked avatars.
 
 ```erb
 <%= render(Primer::Beta::AvatarStack.new(align: :right)) do |c| %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <% c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <% c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <% c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
 <% end  %>
 ```
 
@@ -64,8 +64,8 @@ Required list of stacked avatars.
 
 ```erb
 <%= render(Primer::Beta::AvatarStack.new(tooltipped: true, body_arguments: { label: 'This is a tooltip!' })) do |c| %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-  <%= c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <% c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <% c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+  <% c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
 <% end  %>
 ```

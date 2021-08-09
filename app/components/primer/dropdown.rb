@@ -28,7 +28,7 @@ module Primer
     #       Dropdown
     #     <% end %>
     #
-    #     <%= c.menu(header: "Options") do |menu|
+    #     <% c.menu(header: "Options") do |menu|
     #       menu.item { "Item 1" }
     #       menu.item { "Item 2" }
     #       menu.item { "Item 3" }
@@ -45,7 +45,7 @@ module Primer
     #         Dropdown
     #       <% end %>
     #
-    #       <%= c.menu(header: "Options") do |menu|
+    #       <% c.menu(header: "Options") do |menu|
     #         menu.item { "Item 1" }
     #         menu.item { "Item 2" }
     #         menu.item(divider: true)
@@ -63,7 +63,7 @@ module Primer
     #       Dropdown
     #     <% end %>
     #
-    #     <%= c.menu(header: "Options", direction: :s) do |menu|
+    #     <% c.menu(header: "Options", direction: :s) do |menu|
     #       menu.item { "Item 1" }
     #       menu.item { "Item 2" }
     #       menu.item { "Item 3" }
@@ -77,7 +77,7 @@ module Primer
     #       Dropdown
     #     <% end %>
     #
-    #     <%= c.menu(header: "Options") do |menu|
+    #     <% c.menu(header: "Options") do |menu|
     #       menu.item { "Item 1" }
     #       menu.item { "Item 2" }
     #       menu.item { "Item 3" }
@@ -91,7 +91,7 @@ module Primer
     #       Dropdown
     #     <% end %>
     #
-    #     <%= c.menu(header: "Options") do |menu|
+    #     <% c.menu(header: "Options") do |menu|
     #       menu.item { "Item 1" }
     #       menu.item { "Item 2" }
     #       menu.item { "Item 3" }
@@ -105,7 +105,7 @@ module Primer
     #       Dropdown
     #     <% end %>
     #
-    #     <%= c.menu(as: :list, header: "Options") do |menu|
+    #     <% c.menu(as: :list, header: "Options") do |menu|
     #       menu.item { "Item 1" }
     #       menu.item { "Item 2" }
     #       menu.item(divider: true)
@@ -120,7 +120,7 @@ module Primer
     #       Dropdown
     #     <% end %>
     #
-    #     <%= c.menu(header: "Options") do |menu|
+    #     <% c.menu(header: "Options") do |menu|
     #       menu.item(tag: :button) { "Item 1" }
     #       menu.item(classes: "custom-class") { "Item 2" }
     #       menu.item { "Item 3" }

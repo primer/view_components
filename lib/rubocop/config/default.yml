@@ -10,3 +10,5 @@ Primer/SystemArgumentInsteadOfClass:
 Primer/NoTagMemoize:
   Enabled: false
 
+Primer/PrimerOcticon:
+  Enabled: true
