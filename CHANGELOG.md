@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Add cop to use `primer_octicon` in favor of `octicon`.
+
+    *Manuel Puyol*
+
 ## 0.0.51
 
 ### Breaking changes

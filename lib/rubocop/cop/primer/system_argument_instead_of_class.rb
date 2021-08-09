@@ -5,6 +5,7 @@ require "primer/classify/utilities"
 require "primer/view_components/statuses"
 require_relative "../../../../app/lib/primer/view_helper"
 
+# :nocov:
 module RuboCop
   module Cop
     module Primer
@@ -48,8 +49,8 @@ module RuboCop
 
         def autocorrect(node)
           lambda do |corrector|
-            system_arguments = ::Primer::Classify::Utilities.classes_to_hash(node.value.value)
-            corrector.replace(node.loc.expression, arguments_as_string(system_arguments))
+            args = ::Primer::Classify::Utilities.classes_to_args(node.value.value)
+            corrector.replace(node.loc.expression, args)
           end
         end
 
@@ -63,21 +64,6 @@ module RuboCop
 
         def view_helpers
           ::Primer::ViewHelper::HELPERS.keys.map { |key| "primer_#{key}".to_sym }
-        end
-
-        def arguments_as_string(system_arguments)
-          system_arguments.map do |key, value|
-            val = case value
-                  when Symbol
-                    ":#{value}"
-                  when String
-                    value.to_json
-                  else
-                    value
-                  end
-
-            "#{key}: #{val}"
-          end.join(", ")
         end
       end
     end
