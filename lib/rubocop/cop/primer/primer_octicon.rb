@@ -10,10 +10,17 @@ module RuboCop
       # This cop ensures that components use System Arguments instead of CSS classes.
       #
       # bad
+      # octicon(:icon)
       # octicon("icon")
+      # octicon("icon-with-daashes")
+      # octicon(@ivar)
+      # octicon(condition > "icon" : "other-icon")
       #
       # good
-      # primer_octicon("icon")
+      # primer_octicon(:icon)
+      # primer_octicon(:"icon-with-daashes")
+      # primer_octicon(@ivar)
+      # primer_octicon(condition > "icon" : "other-icon")
       class PrimerOcticon < RuboCop::Cop::Cop
         INVALID_MESSAGE = <<~STR
           Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.
@@ -53,13 +60,13 @@ module RuboCop
 
         def autocorrect(node)
           lambda do |corrector|
-            icon = node.arguments.first.source
-            kwargs = node.arguments.last
+            icon_node = node.arguments.first
+            kwargs = kwargs(node)
 
             # Converting arguments for the component
             classes = classes(kwargs)
             size_attributes = transform_sizes(kwargs)
-            args = arguments_as_string(icon, size_attributes, classes)
+            args = arguments_as_string(icon_node, size_attributes, classes)
 
             corrector.replace(node.loc.expression, "primer_octicon(#{args})")
           end
@@ -102,8 +109,8 @@ module RuboCop
           class_arg.value.value
         end
 
-        def arguments_as_string(icon, size_attributes, classes)
-          args = icon
+        def arguments_as_string(icon_node, size_attributes, classes)
+          args = icon(icon_node)
 
           size_args = size_attributes_to_string(size_attributes)
           args = "#{args}, #{size_args}" if size_args.present?
@@ -129,6 +136,15 @@ module RuboCop
           return node.arguments.last if node.arguments.size > 1
 
           OpenStruct.new(keys: [], pairs: [])
+        end
+
+        def icon(node)
+          return node.source unless node.type == :str
+          return ":#{node.value}" unless node.value.include?("-")
+
+          # If the icon contains `-` we need to cast the string as a symbole
+          # E.g: `arrow-down` becomes `:"arrow-down"`
+          ":#{node.source}"
         end
       end
     end
