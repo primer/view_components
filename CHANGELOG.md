@@ -32,6 +32,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## 0.0.50
 
+### Updates
+
+* Fix incorrect slots syntax in docs.
+
+    *Joel Hawksley*, *Blake Williams*
+
 ### New
 
 * Add linter suggestions for `CloseButton` component.
