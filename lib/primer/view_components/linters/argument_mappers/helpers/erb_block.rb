@@ -14,6 +14,14 @@ module ERBLint
             raise ERBLint::Linters::ArgumentMappers::ConversionError, "Cannot convert attribute \"#{attribute.name}\" because its value contains an erb block" if any?(attribute)
           end
 
+          def convert(attribute)
+            if any?(attribute)
+              convert_interpolation(attribute)
+            else
+              attribute.value.to_json
+            end
+          end
+
           def any?(attribute)
             erb_blocks(attribute).any?
           end

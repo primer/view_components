@@ -27,8 +27,7 @@ module ERBLint
         ATTRIBUTES = %w[title].freeze
 
         def attribute_to_args(attribute)
-          erb_helper.raise_if_erb_block(attribute)
-          { title: attribute.value.to_json }
+          { title: erb_helper.convert(attribute) }
         end
 
         def classes_to_args(classes)

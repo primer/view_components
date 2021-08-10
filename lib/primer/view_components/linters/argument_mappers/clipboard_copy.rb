@@ -11,11 +11,7 @@ module ERBLint
         ATTRIBUTES = %w[value].freeze
 
         def attribute_to_args(attribute)
-          if erb_helper.any?(attribute)
-            { value: erb_helper.convert_interpolation(attribute) }
-          else
-            { value: attribute.value.to_json }
-          end
+          { value: erb_helper.convert(attribute) }
         end
       end
     end
