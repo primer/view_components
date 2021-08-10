@@ -35,6 +35,9 @@ module RuboCop
           return unless node.arguments?
 
           kwargs = kwargs(node)
+
+          return unless kwargs.type == :hash
+
           attributes = kwargs.keys.map(&:value)
 
           # Don't convert unknown attributes
@@ -135,7 +138,7 @@ module RuboCop
         def kwargs(node)
           return node.arguments.last if node.arguments.size > 1
 
-          OpenStruct.new(keys: [], pairs: [])
+          OpenStruct.new(keys: [], pairs: [], type: :hash)
         end
 
         def icon(node)

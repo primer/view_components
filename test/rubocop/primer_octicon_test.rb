@@ -137,4 +137,12 @@ class RubocopPrimerOcticonTest < CopTest
 
     assert_empty cop.offenses
   end
+
+  def test_octicon_kwargs_as_method_call
+    investigate(cop, <<-RUBY)
+      octicon(:icon, some_call)
+    RUBY
+
+    assert_empty cop.offenses
+  end
 end
