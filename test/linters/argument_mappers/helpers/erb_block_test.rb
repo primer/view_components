@@ -33,6 +33,13 @@ class ArgumentMappersButtonTest < LinterTestCase
     assert_equal("\"string-\#{ some_call }\#{ other_call }-more-\#{ another_call }\"", args)
   end
 
+  def test_converts_ternary_interpolations
+    @file = '<div attribute="string-<%= condition ? "Yes" : "No" %>">'
+    args = ERBLint::Linters::ArgumentMappers::Helpers::ErbBlock.new.convert(tags.first.attributes["attribute"])
+
+    assert_equal("\"string-\#{ condition ? \"Yes\" : \"No\" }\"", args)
+  end
+
   def test_converts_to_json_if_no_interpolation
     @file = '<div attribute="some_value">'
     args = ERBLint::Linters::ArgumentMappers::Helpers::ErbBlock.new.convert(tags.first.attributes["attribute"])

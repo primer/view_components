@@ -57,7 +57,8 @@ module ERBLint
               return m[:rb].strip
             end
 
-            attribute.value.gsub("<%=", '#{').gsub("%>", "}").to_json
+            # wrap the result in `""` so it is printed as a string
+            "\"#{attribute.value.gsub('<%=', '#{').gsub('%>', '}')}\""
           end
         end
       end
