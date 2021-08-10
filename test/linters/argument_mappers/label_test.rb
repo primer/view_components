@@ -81,18 +81,30 @@ class ArgumentMappersLabelTest < LinterTestCase
   end
 
   def test_returns_arguments_as_string
-    @file = '<div class="Label Label--primary">Link</div>'
+    @file = '<div class="Label Label--primary">Label</div>'
     args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_s
 
     assert_equal "tag: :div, scheme: :primary", args
   end
 
-  def test_raises_if_title_has_erb_value
+  def test_converts_basic_interpolation
     @file = '<span class="Label" title="<%= some_call %>">Label</span>'
-    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
-      ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
-    end
+    args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
 
-    assert_equal "Cannot convert attribute \"title\" because its value contains an erb block", err.message
+    assert_equal({ title: "some_call" }, args)
+  end
+
+  def test_converts_interpolation_with_string
+    @file = '<span class="Label" title="string-<%= some_call %>">Label</span>'
+    args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
+
+    assert_equal({ title: "\"string-\#{ some_call }\"" }, args)
+  end
+
+  def test_converts_multiple_interpolations
+    @file = '<span class="Label" title="string-<%= some_call %><%= other_call %>-more-<%= another_call %>">Label</span>'
+    args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
+
+    assert_equal({ title: "\"string-\#{ some_call }\#{ other_call }-more-\#{ another_call }\"" }, args)
   end
 end

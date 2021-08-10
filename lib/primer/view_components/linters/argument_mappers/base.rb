@@ -68,6 +68,12 @@ module ERBLint
             v.is_a?(Symbol) ? ":#{v}" : v
           end
         end
+
+        private
+
+        def erb_helper
+          @erb_helper ||= Helpers::ErbBlock.new
+        end
       end
     end
   end
