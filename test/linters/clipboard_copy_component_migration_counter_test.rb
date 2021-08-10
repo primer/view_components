@@ -182,4 +182,52 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
 
     assert_equal expected, corrected_content
   end
+
+  def test_autocorrects_basic_erb_interpolation
+    @file = <<~HTML
+      <clipboard-copy value="<%= some_call %>">
+        clipboard-copy
+      </clipboard-copy>
+    HTML
+
+    expected = <<~HTML
+      <%= render Primer::ClipboardCopy.new(value: some_call) do %>
+        clipboard-copy
+      <% end %>
+    HTML
+
+    assert_equal expected, corrected_content
+  end
+
+  def test_autocorrects_interpolation_with_string
+    @file = <<~HTML
+      <clipboard-copy value="string-<%= some_call %>">
+        clipboard-copy
+      </clipboard-copy>
+    HTML
+
+    expected = <<~'HTML'
+      <%= render Primer::ClipboardCopy.new(value: "string-#{ some_call }") do %>
+        clipboard-copy
+      <% end %>
+    HTML
+
+    assert_equal expected, corrected_content
+  end
+
+  def test_autocorrects_multiple_interpolations
+    @file = <<~HTML
+      <clipboard-copy value="string-<%= some_call %><%= other_call %>-more-<%= another_call %>">
+        clipboard-copy
+      </clipboard-copy>
+    HTML
+
+    expected = <<~'HTML'
+      <%= render Primer::ClipboardCopy.new(value: "string-#{ some_call }#{ other_call }-more-#{ another_call }") do %>
+        clipboard-copy
+      <% end %>
+    HTML
+
+    assert_equal expected, corrected_content
+  end
 end
