@@ -11,9 +11,10 @@ module ERBLint
         STRING_PARAMETERS = %w[aria- data-].freeze
         TEST_SELECTOR_REGEX = /test_selector\((?<selector>.+)\)$/.freeze
 
-        attr_reader :attribute
+        attr_reader :attribute, :erb_helper
         def initialize(attribute)
           @attribute = attribute
+          @erb_helper = Helpers::ErbBlock.new
         end
 
         def to_args
@@ -29,11 +30,11 @@ module ERBLint
 
             { test_selector: m[:selector].tr("'", '"') }
           elsif attr_name == "data-test-selector"
-            Helpers::ErbBlock.raise_if_erb_block(attribute)
+            erb_helper.raise_if_erb_block(attribute)
 
             { test_selector: attribute.value.to_json }
           elsif attr_name.start_with?(*STRING_PARAMETERS)
-            Helpers::ErbBlock.raise_if_erb_block(attribute)
+            erb_helper.raise_if_erb_block(attribute)
 
             { "\"#{attr_name}\"" => attribute.value.to_json }
           else

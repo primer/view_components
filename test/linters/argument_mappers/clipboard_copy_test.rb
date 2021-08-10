@@ -35,12 +35,10 @@ class ArgumentMappersClipboardCopyTest < LinterTestCase
                  }, args)
   end
 
-  def test_raises_if_value_has_erb_value
+  def test_converts_basic_interpolation
     @file = '<clipboard-copy value="<%= some_call %>">'
-    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
-      ERBLint::Linters::ArgumentMappers::ClipboardCopy.new(tags.first).to_args
-    end
+    args = ERBLint::Linters::ArgumentMappers::ClipboardCopy.new(tags.first).to_args
 
-    assert_equal "Cannot convert attribute \"value\" because its value contains an erb block", err.message
+    assert_equal({ value: "some_call" }, args)
   end
 end
