@@ -28,9 +28,10 @@ class RubocopPrimerOcticonTest < CopTest
     investigate(cop, <<-RUBY)
       octicon(:icon, size: 10)
       octicon(:icon, size: '10')
+      octicon(:icon, size: '10px')
     RUBY
 
-    assert_equal 2, cop.offenses.count
+    assert_equal 3, cop.offenses.count
     cop.offenses.each do |offense|
       assert_equal "Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.\n", offense.message
     end
@@ -49,9 +50,10 @@ class RubocopPrimerOcticonTest < CopTest
     investigate(cop, <<-RUBY)
       octicon(:icon, width: 10)
       octicon(:icon, width: '10')
+      octicon(:icon, width: '10px')
     RUBY
 
-    assert_equal 2, cop.offenses.count
+    assert_equal 3, cop.offenses.count
     cop.offenses.each do |offense|
       assert_equal "Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.\n", offense.message
     end
@@ -70,9 +72,10 @@ class RubocopPrimerOcticonTest < CopTest
     investigate(cop, <<-RUBY)
       octicon(:icon, height: 10)
       octicon(:icon, height: '10')
+      octicon(:icon, height: '10px')
     RUBY
 
-    assert_equal 2, cop.offenses.count
+    assert_equal 3, cop.offenses.count
     cop.offenses.each do |offense|
       assert_equal "Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.\n", offense.message
     end
@@ -133,6 +136,14 @@ class RubocopPrimerOcticonTest < CopTest
   def test_octicon_with_unknown_attribute
     investigate(cop, <<-RUBY)
       octicon(:icon, some_attribute: :value)
+    RUBY
+
+    assert_empty cop.offenses
+  end
+
+  def test_octicon_kwargs_as_method_call
+    investigate(cop, <<-RUBY)
+      octicon(:icon, some_call)
     RUBY
 
     assert_empty cop.offenses
