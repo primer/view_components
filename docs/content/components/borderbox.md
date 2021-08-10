@@ -51,6 +51,7 @@ Use Rows to add rows with borders and maintain the same padding.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `scheme` | `Symbol` | N/A | Color scheme. One of `:blue`, `:default`, `:gray`, or `:yellow`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Examples

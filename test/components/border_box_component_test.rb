@@ -91,4 +91,12 @@ class PrimerBorderBoxComponentTest < Minitest::Test
 
     refute_selector(".p-4")
   end
+
+  def test_renders_row_with_scheme
+    render_inline(Primer::BorderBoxComponent.new) do |component|
+      component.row(scheme: :yellow) { "Row row row your boat" }
+    end
+
+    assert_selector(".Box .Box-row--yellow")
+  end
 end
