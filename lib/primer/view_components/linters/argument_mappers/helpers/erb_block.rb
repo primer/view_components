@@ -22,6 +22,8 @@ module ERBLint
             end
           end
 
+          private
+
           def any?(attribute)
             erb_blocks(attribute).any?
           end
