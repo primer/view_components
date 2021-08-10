@@ -8,7 +8,7 @@ module ERBLint
       module Helpers
         # provides helpers to identify and deal with ERB blocks.
         class ErbBlock
-          INTERPOLATION_REGEX = /<%=(?<rb>.*)%>/.freeze
+          INTERPOLATION_REGEX = /^<%=(?<rb>.*)%>$/.freeze
 
           def raise_if_erb_block(attribute)
             raise ERBLint::Linters::ArgumentMappers::ConversionError, "Cannot convert attribute \"#{attribute.name}\" because its value contains an erb block" if any?(attribute)
@@ -29,8 +29,12 @@ module ERBLint
           end
 
           def convert_interpolation(attribute)
-            m = attribute.value.match(INTERPOLATION_REGEX)
-            m[:rb].strip
+            if basic?(attribute)
+              m = attribute.value.match(INTERPOLATION_REGEX)
+              return m[:rb].strip
+            end
+
+            attribute.value.gsub("<%=", '#{').gsub("%>", "}").to_json
           end
         end
       end

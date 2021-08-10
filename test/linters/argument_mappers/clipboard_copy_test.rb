@@ -41,4 +41,18 @@ class ArgumentMappersClipboardCopyTest < LinterTestCase
 
     assert_equal({ value: "some_call" }, args)
   end
+
+  def test_converts_interpolation_with_string
+    @file = '<clipboard-copy value="string-<%= some_call %>">'
+    args = ERBLint::Linters::ArgumentMappers::ClipboardCopy.new(tags.first).to_args
+
+    assert_equal({ value: "\"string-\#{ some_call }\"" }, args)
+  end
+
+  def test_converts_multiple_interpolations
+    @file = '<clipboard-copy value="string-<%= some_call %><%= other_call %>-more-<%= another_call %>">'
+    args = ERBLint::Linters::ArgumentMappers::ClipboardCopy.new(tags.first).to_args
+
+    assert_equal({ value: "\"string-\#{ some_call }\#{ other_call }-more-\#{ another_call }\"" }, args)
+  end
 end
