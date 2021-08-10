@@ -94,12 +94,19 @@
   },
   "Primer::BorderBoxComponent": {
     "DEFAULT_PADDING": "default",
+    "DEFAULT_ROW_SCHEME": "default",
     "PADDING_MAPPINGS": {
       "default": "",
       "condensed": "Box--condensed",
       "spacious": "Box--spacious"
     },
-    "PADDING_SUGGESTION": "Perhaps you could consider using :padding options of default, condensed, and spacious?"
+    "PADDING_SUGGESTION": "Perhaps you could consider using :padding options of default, condensed, and spacious?",
+    "ROW_SCHEME_MAPPINGS": {
+      "default": "",
+      "yellow": "Box-row--yellow",
+      "blue": "Box-row--blue",
+      "gray": "Box-row--gray"
+    }
   },
   "Primer::BoxComponent": {
   },
