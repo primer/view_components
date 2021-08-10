@@ -58,7 +58,7 @@ Use Rows to add rows with borders and maintain the same padding.
 
 ### Header, body, rows, and footer
 
-<Example src="<div data-view-component='true' class='Box'>  <div data-view-component='true' class='Box-header'>    Header</div>  <div data-view-component='true' class='Box-body'>    Body</div>    <ul>        <li data-view-component='true' class='Box-row'>      Row one</li>        <li data-view-component='true' class='Box-row'>    Row two</li>    </ul>  <div data-view-component='true' class='Box-footer'>    Footer</div></div>" />
+<Example src="<div data-view-component='true' class='Box'>  <div data-view-component='true' class='Box-header'>    Header</div>  <div data-view-component='true' class='Box-body'>    Body</div>    <ul>        <li data-view-component='true' class='Box-row'>      Row one</li>        <li data-view-component='true' class='Box-row Box-row--yellow'>    Row two</li>    </ul>  <div data-view-component='true' class='Box-footer'>    Footer</div></div>" />
 
 ```erb
 <%= render(Primer::BorderBoxComponent.new) do |component| %>
@@ -73,7 +73,7 @@ Use Rows to add rows with borders and maintain the same padding.
       Row one
     <% end %>
   <% end %>
-  <% component.row do %>
+  <% component.row(scheme: :yellow) do %>
     Row two
   <% end %>
   <% component.footer do %>

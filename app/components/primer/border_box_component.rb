@@ -88,7 +88,7 @@ module Primer
     #         Row one
     #       <% end %>
     #     <% end %>
-    #     <% component.row do %>
+    #     <% component.row(scheme: :yellow) do %>
     #       Row two
     #     <% end %>
     #     <% component.footer do %>
