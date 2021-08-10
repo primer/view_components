@@ -46,13 +46,32 @@ class ArgumentMappersSystemArgumentsTest < LinterTestCase
     assert_equal({ test_selector: '"some-selector"' }, args)
   end
 
-  def test_raises_if_test_selector_has_erb_value
-    @file = '<div data-test-selector="<%= some_call %>">'
-    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
-      ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes.each.first).to_args
-    end
+  def test_converts_erb_test_selector_call_with_interpolation
+    @file = "<div <%= test_selector(\"some-selector-\#{some_call}\") %>>"
+    args = ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes.each.first).to_args
 
-    assert_equal "Cannot convert attribute \"data-test-selector\" because its value contains an erb block", err.message
+    assert_equal({ test_selector: "\"some-selector-\#{some_call}\"" }, args)
+  end
+
+  def test_converts_data_test_selector_with_basic_interpolation
+    @file = '<div data-test-selector="<%= some_call %>">'
+    args = ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes.each.first).to_args
+
+    assert_equal({ test_selector: "some_call" }, args)
+  end
+
+  def test_converts_data_test_selector_with_interpolation_with_string
+    @file = '<div data-test-selector="string-<%= some_call %>">'
+    args = ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes.each.first).to_args
+
+    assert_equal({ test_selector: "\"string-\#{ some_call }\"" }, args)
+  end
+
+  def test_converts_data_test_selector_with_multiple_interpolations
+    @file = '<div data-test-selector="string-<%= some_call %><%= other_call %>-more-<%= another_call %>">'
+    args = ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes.each.first).to_args
+
+    assert_equal({ test_selector: "\"string-\#{ some_call }\#{ other_call }-more-\#{ another_call }\"" }, args)
   end
 
   def test_raises_if_unsupported_erb_block
@@ -64,21 +83,24 @@ class ArgumentMappersSystemArgumentsTest < LinterTestCase
     assert_equal "Cannot convert erb block", err.message
   end
 
-  def test_raises_if_attribute_has_erb_value
+  def test_converts_aria_label_with_basic_interpolation
     @file = '<div aria-label="<%= some_call %>">'
-    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
-      ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes["aria-label"]).to_args
-    end
+    args = ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes["aria-label"]).to_args
 
-    assert_equal "Cannot convert attribute \"aria-label\" because its value contains an erb block", err.message
+    assert_equal({ '"aria-label"' => "some_call" }, args)
   end
 
-  def test_raises_if_attribute_has_erb_interpolation
-    @file = '<div aria-label="interpolating <%= some_call %>">'
-    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
-      ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes["aria-label"]).to_args
-    end
+  def test_converts_aria_label_with_interpolation_with_string
+    @file = '<div aria-label="string-<%= some_call %>">'
+    args = ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes["aria-label"]).to_args
 
-    assert_equal "Cannot convert attribute \"aria-label\" because its value contains an erb block", err.message
+    assert_equal({ '"aria-label"' => "\"string-\#{ some_call }\"" }, args)
+  end
+
+  def test_converts_aria_label_with_multiple_interpolations
+    @file = '<div aria-label="string-<%= some_call %><%= other_call %>-more-<%= another_call %>">'
+    args = ERBLint::Linters::ArgumentMappers::SystemArguments.new(tags.first.attributes["aria-label"]).to_args
+
+    assert_equal({ '"aria-label"' => "\"string-\#{ some_call }\#{ other_call }-more-\#{ another_call }\"" }, args)
   end
 end

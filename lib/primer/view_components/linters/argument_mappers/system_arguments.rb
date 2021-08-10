@@ -30,13 +30,9 @@ module ERBLint
 
             { test_selector: m[:selector].tr("'", '"') }
           elsif attr_name == "data-test-selector"
-            erb_helper.raise_if_erb_block(attribute)
-
-            { test_selector: attribute.value.to_json }
+            { test_selector: erb_helper.convert(attribute) }
           elsif attr_name.start_with?(*STRING_PARAMETERS)
-            erb_helper.raise_if_erb_block(attribute)
-
-            { "\"#{attr_name}\"" => attribute.value.to_json }
+            { "\"#{attr_name}\"" => erb_helper.convert(attribute) }
           else
             raise ConversionError, "Cannot convert attribute \"#{attr_name}\""
           end
