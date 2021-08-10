@@ -3,6 +3,15 @@
 require "linter_test_case"
 
 class ArgumentMappersButtonTest < LinterTestCase
+  def test_does_not_convert_interpolation_with_if
+    @file = '<div attribute="<% if condition %>Yes<% else %>No<% end %>">'
+    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
+      ERBLint::Linters::ArgumentMappers::Helpers::ErbBlock.new.convert(tags.first.attributes["attribute"])
+    end
+
+    assert_equal("Cannot convert attribute \"attribute\" because its value contains an erb block", err.message)
+  end
+
   def test_converts_basic_interpolation
     @file = '<div attribute="<%= some_call %>">'
     args = ERBLint::Linters::ArgumentMappers::Helpers::ErbBlock.new.convert(tags.first.attributes["attribute"])

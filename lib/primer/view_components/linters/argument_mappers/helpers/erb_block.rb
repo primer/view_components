@@ -11,10 +11,12 @@ module ERBLint
           INTERPOLATION_REGEX = /^<%=(?<rb>.*)%>$/.freeze
 
           def raise_if_erb_block(attribute)
-            raise ERBLint::Linters::ArgumentMappers::ConversionError, "Cannot convert attribute \"#{attribute.name}\" because its value contains an erb block" if any?(attribute)
+            raise_error(attribute) if any?(attribute)
           end
 
           def convert(attribute)
+            raise_error(attribute) unless interpolation?(attribute)
+
             if any?(attribute)
               convert_interpolation(attribute)
             else
@@ -23,6 +25,17 @@ module ERBLint
           end
 
           private
+
+          def interpolation?(attribute)
+            erb_blocks(attribute).all? do |erb|
+              # If the blocks does not have an indicator, it's not an interpolation.
+              erb.children.to_a.compact.any? { |node| node.type == :indicator }
+            end
+          end
+
+          def raise_error(attribute)
+            raise ERBLint::Linters::ArgumentMappers::ConversionError, "Cannot convert attribute \"#{attribute.name}\" because its value contains an erb block"
+          end
 
           def any?(attribute)
             erb_blocks(attribute).any?
