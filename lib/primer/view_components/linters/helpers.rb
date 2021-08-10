@@ -41,7 +41,7 @@ module ERBLint
 
           tag_tree[tag][:offense] = true
           tag_tree[tag][:correctable] = !correction.nil?
-          tag_tree[tag][:message] = message(args)
+          tag_tree[tag][:message] = message(args, processed_source)
           tag_tree[tag][:correction] = correction
         end
 
@@ -97,7 +97,7 @@ module ERBLint
       # Override this function to customize the linter message.
       #
       # @return [String] message to show on linter error.
-      def message(_tag)
+      def message(_tag, _processed_source)
         self.class::MESSAGE
       end
 
