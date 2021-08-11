@@ -31,7 +31,9 @@ module ERBLint
         end
 
         def classes_to_args(classes)
-          classes.split(" ").each_with_object({}) do |class_name, acc|
+          res = { classes: [] }
+
+          res[:args] = classes.split(" ").each_with_object({}) do |class_name, acc|
             next if class_name == "Label"
 
             if SCHEME_MAPPINGS[class_name] && acc[:scheme].nil?
@@ -39,9 +41,11 @@ module ERBLint
             elsif VARIANT_MAPPINGS[class_name] && acc[:variant].nil?
               acc[:variant] = VARIANT_MAPPINGS[class_name]
             else
-              raise ConversionError, "Cannot convert class \"#{class_name}\""
+              res[:classes] << class_name
             end
           end
+
+          res
         end
       end
     end
