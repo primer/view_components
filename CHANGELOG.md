@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### New
 
+* Adding `Primer::Beta::Truncate` component to reflect changes in primer/css component [Truncate](https://primer.style/css/components/truncate).
+
+    *Jon Rohan*
+
 * Add cop to use `primer_octicon` in favor of `octicon`.
 
     *Manuel Puyol*
