@@ -2,6 +2,7 @@
 
 require "rubocop"
 require "primer/classify/utilities"
+require "primer/classify/validation"
 
 # :nocov:
 module RuboCop
@@ -53,9 +54,10 @@ module RuboCop
           # check if classes are convertible
           if classes.present?
             system_arguments = ::Primer::Classify::Utilities.classes_to_hash(classes)
+            invalid_classes = (system_arguments[:classes]&.split(" ") || []).select { |class_name| ::Primer::Classify::Validation.invalid?(class_name) }
 
-            # Uses custom classes
-            return if system_arguments[:classes].present?
+            # Uses system argument that can't be converted
+            return if invalid_classes.present?
           end
 
           add_offense(node, message: INVALID_MESSAGE)

@@ -2,6 +2,7 @@
 
 require "primer/view_components/constants"
 require "primer/classify/utilities"
+require "primer/classify/validation"
 require_relative "conversion_error"
 require_relative "system_arguments"
 require_relative "helpers/erb_block"
@@ -50,14 +51,31 @@ module ERBLint
           system_arguments = system_arguments_to_args(classes.value)
           args = classes_to_args(system_arguments[:classes])
 
-          args.merge(system_arguments.except(:classes))
+          invalid_classes = args[:classes].select { |class_name| Primer::Classify::Validation.invalid?(class_name) }
+
+          raise ConversionError, "Cannot convert #{'class'.pluralize(invalid_classes.size)} #{invalid_classes.join(',')}" if invalid_classes.present?
+
+          # Using splat to order the arguments in Component's args -> System Args -> custom classes
+          res = {
+            **args.except(:classes),
+            **system_arguments.except(:classes)
+          }
+
+          if args[:classes].present?
+            res = {
+              **res,
+              classes: args[:classes].join(" ").to_json
+            }
+          end
+
+          res
         end
 
-        # Override this with your component's mappings
+        # Override this with your component's mappings, it should return a hash with the component's arguments,
+        # including a `classes` key that will contain all classes that the mapper couldn't handle.
+        # @returns { classes: Array, ... }
         def classes_to_args(classes)
-          raise ConversionError, "Cannot convert classes `#{classes}`" if classes.present?
-
-          {}
+          { classes: classes&.split(" ") || [] }
         end
 
         def system_arguments_to_args(classes)

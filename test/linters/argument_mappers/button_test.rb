@@ -87,12 +87,12 @@ class ArgumentMappersButtonTest < LinterTestCase
   end
 
   def test_raises_if_cannot_map_class
-    @file = '<button class="some-class">Button</button>'
+    @file = '<button class="text-center">Button</button>'
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
       ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
     end
 
-    assert_equal "Cannot convert class \"some-class\"", err.message
+    assert_equal "Cannot convert class text-center", err.message
   end
 
   def test_raises_if_cannot_map_attribute
@@ -149,5 +149,12 @@ class ArgumentMappersButtonTest < LinterTestCase
     args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_s
 
     assert_equal "tag: :a, scheme: :primary", args
+  end
+
+  def test_returns_custom_classes_as_string
+    @file = '<button class="btn custom-1 custom-2">button</button>'
+    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
+
+    assert_equal({ classes: "\"custom-1 custom-2\"" }, args)
   end
 end
