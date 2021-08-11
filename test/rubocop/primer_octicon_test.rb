@@ -104,6 +104,15 @@ class RubocopPrimerOcticonTest < CopTest
       octicon(:icon, class: "mr-1 custom")
     RUBY
 
+    assert_equal 1, cop.offenses.count
+    assert_equal "Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.\n", cop.offenses.first.message
+  end
+
+  def test_octicon_with_class_that_cant_be_converted
+    investigate(cop, <<-'RUBY')
+      octicon(:icon, class: "mr-1 text-center")
+    RUBY
+
     assert_empty cop.offenses
   end
 
