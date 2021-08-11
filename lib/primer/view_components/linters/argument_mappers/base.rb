@@ -2,6 +2,7 @@
 
 require "primer/view_components/constants"
 require "primer/classify/utilities"
+require "primer/classify/validation"
 require_relative "conversion_error"
 require_relative "system_arguments"
 require_relative "helpers/erb_block"
@@ -50,7 +51,7 @@ module ERBLint
           system_arguments = system_arguments_to_args(classes.value)
           args = classes_to_args(system_arguments[:classes])
 
-          invalid_classes = args[:classes].select { |class_name| Primer::Classify.invalid?(class_name) }
+          invalid_classes = args[:classes].select { |class_name| Primer::Classify::Validation.invalid?(class_name) }
 
           raise ConversionError, "Cannot convert #{'class'.pluralize(invalid_classes.size)} #{invalid_classes.join(',')}" if invalid_classes.present?
 
