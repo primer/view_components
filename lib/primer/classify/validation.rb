@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "utilities"
+
 module Primer
   class Classify
     # :nodoc:
