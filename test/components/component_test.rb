@@ -62,6 +62,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::TabNavComponent, { label: "aria label" }, proc { |c| c.tab(title: "Foo", selected: true) }],
     [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
+    [Primer::Beta::Truncate, {}, proc { |component| component.item { "Foo" } }],
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],

@@ -143,6 +143,13 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Truncate
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate.rb
+  parameters:
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Blankslate
   source: https://github.com/primer/view_components/tree/main/app/components/primer/blankslate_component.rb
   parameters:
