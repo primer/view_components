@@ -150,4 +150,11 @@ class ArgumentMappersButtonTest < LinterTestCase
 
     assert_equal "tag: :a, scheme: :primary", args
   end
+
+  def test_returns_custom_classes_as_string
+    @file = '<button class="btn custom-1 custom-2">button</button>'
+    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
+
+    assert_equal({ classes: "\"custom-1 custom-2\"" }, args)
+  end
 end

@@ -29,13 +29,13 @@ class ArgumentMappersBaseTest < LinterTestCase
     assert_equal("mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in", args)
   end
 
-  def test_raises_if_a_class_is_unknown
-    @file = '<div class="mr-1 p-3 d-none d-md-block anim-fade-in custom"></div>'
+  def test_raises_if_a_class_cannot_be_converted
+    @file = '<div class="mr-1 p-3 d-none d-md-block anim-fade-in text-center"></div>'
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
       ERBLint::Linters::ArgumentMappers::Base.new(tags.first).to_s
     end
 
-    assert_equal("Cannot convert classes `custom`", err.message)
+    assert_equal("Cannot convert class text-center", err.message)
   end
 
   def test_returns_aria_arguments_as_string_symbols
@@ -110,5 +110,12 @@ class ArgumentMappersBaseTest < LinterTestCase
     end
 
     assert_equal "Cannot convert attribute \"some-attribute\"", err.message
+  end
+
+  def test_returns_custom_classes_as_string
+    @file = '<div class="custom-1 custom-2">'
+    args = ERBLint::Linters::ArgumentMappers::Base.new(tags.first).to_args
+
+    assert_equal({ classes: "\"custom-1 custom-2\"" }, args)
   end
 end

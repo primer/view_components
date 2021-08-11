@@ -54,15 +54,20 @@ module ERBLint
 
           raise ConversionError, "Cannot convert #{'class'.pluralize(invalid_classes.size)} #{invalid_classes.join(',')}" if invalid_classes.present?
 
-          args[:classes] = args[:classes].join(" ").to_json
-          args.merge(system_arguments.except(:classes))
+          if args[:classes].present?
+            args[:classes] = args[:classes].join(" ").to_json
+            return args.merge(system_arguments.except(:classes))
+          end
+
+          # don't add an empty `classes` key
+          args.except(:classes).merge(system_arguments.except(:classes))
         end
 
         # Override this with your component's mappings, it should return a hash with the component's arguments,
         # including a `classes` key that will contain all classes that the mapper couldn't handle.
         # @returns { classes: Array, ... }
         def classes_to_args(classes)
-          { classes: classes.split(" ") }
+          { classes: classes&.split(" ") || [] }
         end
 
         def system_arguments_to_args(classes)
