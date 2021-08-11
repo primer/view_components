@@ -693,6 +693,12 @@ class PrimerClassifyTest < Minitest::Test
     end
   end
 
+  def test_invalid?
+    assert_invalid("d-block")
+    assert_invalid("color-text-primary")
+    assert_valid("custom-class")
+  end
+
   private
 
   def assert_generated_class(generated_class_name, input)
@@ -701,5 +707,13 @@ class PrimerClassifyTest < Minitest::Test
 
   def refute_generated_class(input)
     assert_nil(Primer::Classify.call(**input)[:class])
+  end
+
+  def assert_invalid(class_name)
+    assert(Primer::Classify.invalid?(class_name))
+  end
+
+  def assert_valid(class_name)
+    refute(Primer::Classify.invalid?(class_name))
   end
 end
