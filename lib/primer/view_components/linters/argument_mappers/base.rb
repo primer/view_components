@@ -48,20 +48,21 @@ module ERBLint
 
         def map_classes(classes)
           system_arguments = system_arguments_to_args(classes.value)
-          res = classes_to_args(system_arguments[:classes])
+          args = classes_to_args(system_arguments[:classes])
 
-          invalid_classes = res[:classes].select { |class_name| Primer::Classify.invalid?(class_name) }
+          invalid_classes = args[:classes].select { |class_name| Primer::Classify.invalid?(class_name) }
 
           raise ConversionError, "Cannot convert #{'class'.pluralize(invalid_classes.size)} #{invalid_classes.join(',')}" if invalid_classes.present?
 
-          res[:args].merge(system_arguments.except(:classes))
+          args[:classes] = args[:classes].join(" ").to_json
+          args.merge(system_arguments.except(:classes))
         end
 
-        # Override this with your component's mappings, it should return a hash with the component's arguments
-        # and a list of classes the mapper couldn't handle.
-        # @returns { args : Hash, classes: Array }
+        # Override this with your component's mappings, it should return a hash with the component's arguments,
+        # including a `classes` key that will contain all classes that the mapper couldn't handle.
+        # @returns { classes: Array, ... }
         def classes_to_args(classes)
-          { args: {}, classes: classes }
+          { classes: classes.split(" ") }
         end
 
         def system_arguments_to_args(classes)
