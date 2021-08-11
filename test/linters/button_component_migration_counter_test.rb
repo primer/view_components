@@ -22,13 +22,13 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
   end
 
   def test_suggests_ignoring_with_correct_number_of_buttons
-    @file = "<button class=\"btn custom\">Button</button><button class=\"btn custom\">Button</button><button class=\"not-a-btn\">Button</button>"
+    @file = "<button invalid-attr class=\"btn\">Button</button><button invalid-attr class=\"btn\">Button</button><button class=\"not-a-btn\">Button</button>"
 
     assert_equal "<%# erblint:counter ButtonComponentMigrationCounter 2 %>\n#{@file}", corrected_content
   end
 
   def test_suggests_updating_the_number_of_ignored_buttons
-    @file = "<%# erblint:counter ButtonComponentMigrationCounter 1 %>\n<button class=\"btn custom\">Button</button><button class=\"btn custom\">Button</button><button class=\"not-a-btn\">Button</button>"
+    @file = "<%# erblint:counter ButtonComponentMigrationCounter 1 %>\n<button invalid-attr class=\"btn\">Button</button><button invalid-attr class=\"btn\">Button</button><button class=\"not-a-btn\">Button</button>"
     @linter.run(processed_source)
 
     assert_equal "<%# erblint:counter ButtonComponentMigrationCounter 2 %>", offenses.last.context
@@ -90,8 +90,8 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
     refute_includes(offenses.first.message, "render Primer::ButtonComponent.new")
   end
 
-  def test_does_not_suggest_if_using_unsupported_classes
-    @file = "<button class=\"btn some-custom-class\">Button</button>"
+  def test_does_not_suggest_if_cannot_convert_class
+    @file = "<button class=\"btn text-center\">Button</button>"
     @linter.run(processed_source)
 
     refute_includes(offenses.first.message, "render Primer::ButtonComponent.new")
@@ -101,7 +101,7 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
     @file = <<~HTML
       <button class="btn btn-primary">
         button 1
-        <button class="btn custom-class">
+        <button invalid-attr class="btn">
           Can\'t be autocorrected
         </button>
         <button class="btn btn-danger">
@@ -125,8 +125,8 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
       <%# erblint:counter ButtonComponentMigrationCounter 1 %>
       <%= render Primer::ButtonComponent.new(scheme: :primary) do %>
         button 1
-        <button class="btn custom-class">
-          Can\'t be autocorrected
+        <button invalid-attr class="btn">
+          Can't be autocorrected
         </button>
         <%= render Primer::ButtonComponent.new(scheme: :danger) do %>
           button 2
@@ -173,7 +173,7 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
       <button class="btn btn-primary">
         button 1
       </button>
-      <button class="btn custom">
+      <button invalid-attr class="btn">
         button 1
       </button>
     HTML
@@ -183,7 +183,7 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
       <%= render Primer::ButtonComponent.new(scheme: :primary) do %>
         button 1
       <% end %>
-      <button class="btn custom">
+      <button invalid-attr class="btn">
         button 1
       </button>
     HTML
@@ -197,7 +197,7 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
       <button class="btn btn-primary">
         button 1
       </button>
-      <button class="btn custom">
+      <button invalid-attr class="btn">
         button 1
       </button>
     HTML
@@ -207,7 +207,7 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
       <%= render Primer::ButtonComponent.new(scheme: :primary) do %>
         button 1
       <% end %>
-      <button class="btn custom">
+      <button invalid-attr class="btn">
         button 1
       </button>
     HTML
@@ -220,7 +220,7 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
       <button class="btn btn-primary mr-1 p-3 d-none d-md-block anim-fade-in">
         button 1
       </button>
-      <button class="btn btn-primary mr-1 p-3 d-none d-md-block anim-fade-in custom">
+      <button invalid-attr class="btn btn-primary mr-1 p-3 d-none d-md-block anim-fade-in">
         button 2
       </button>
     HTML
@@ -230,7 +230,7 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
       <%= render Primer::ButtonComponent.new(scheme: :primary, mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in) do %>
         button 1
       <% end %>
-      <button class="btn btn-primary mr-1 p-3 d-none d-md-block anim-fade-in custom">
+      <button invalid-attr class="btn btn-primary mr-1 p-3 d-none d-md-block anim-fade-in">
         button 2
       </button>
     HTML

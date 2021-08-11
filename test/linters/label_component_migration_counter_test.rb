@@ -15,13 +15,13 @@ class LabelComponentMigrationCounterTest < LinterTestCase
   end
 
   def test_suggests_ignoring_with_correct_number_of_labels
-    @file = "<div class=\"Label custom\">label</div><div class=\"Label custom\">label</div><div class=\"not-a-label\">label</div>"
+    @file = "<div invalid-attr class=\"Label\">label</div><div invalid-attr class=\"Label\">label</div><div class=\"not-a-label\">label</div>"
 
     assert_equal "<%# erblint:counter LabelComponentMigrationCounter 2 %>\n#{@file}", corrected_content
   end
 
   def test_suggests_updating_the_number_of_ignored_labels
-    @file = "<%# erblint:counter LabelComponentMigrationCounter 1 %>\n<span class=\"Label custom\">Label</span><span class=\"Label custom\">Label</span><span class=\"not-a-Label\">Label</span>"
+    @file = "<%# erblint:counter LabelComponentMigrationCounter 1 %>\n<span invalid-attr class=\"Label\">Label</span><span invalid-attr class=\"Label\">Label</span><span class=\"not-a-Label\">Label</span>"
     @linter.run(processed_source)
 
     assert_equal "<%# erblint:counter LabelComponentMigrationCounter 2 %>", offenses.last.context
@@ -76,8 +76,8 @@ class LabelComponentMigrationCounterTest < LinterTestCase
     refute_includes(offenses.first.message, "render Primer::LabelComponent.new")
   end
 
-  def test_does_not_suggest_if_using_unsupported_classes
-    @file = "<span class=\"Label some-custom-class\">Label</span>"
+  def test_does_not_suggest_if_cannot_convert_class
+    @file = "<span class=\"Label text-center\">Label</span>"
     @linter.run(processed_source)
 
     refute_includes(offenses.first.message, "render Primer::LabelComponent.new")
@@ -87,7 +87,7 @@ class LabelComponentMigrationCounterTest < LinterTestCase
     @file = <<~HTML
       <span class="Label Label--primary">
         Label 1
-        <span class="Label custom-class">
+        <span invalid-attr class="Label">
           Can\'t be autocorrected
         </span>
         <span class="Label Label--danger">
@@ -111,7 +111,7 @@ class LabelComponentMigrationCounterTest < LinterTestCase
       <%# erblint:counter LabelComponentMigrationCounter 1 %>
       <%= render Primer::LabelComponent.new(scheme: :primary) do %>
         Label 1
-        <span class="Label custom-class">
+        <span invalid-attr class="Label">
           Can\'t be autocorrected
         </span>
         <%= render Primer::LabelComponent.new(scheme: :danger) do %>
@@ -159,7 +159,7 @@ class LabelComponentMigrationCounterTest < LinterTestCase
       <span class="Label Label--primary">
         Label 1
       </span>
-      <span class="Label custom">
+      <span invalid-attr class="Label">
         Label 1
       </span>
     HTML
@@ -169,7 +169,7 @@ class LabelComponentMigrationCounterTest < LinterTestCase
       <%= render Primer::LabelComponent.new(scheme: :primary) do %>
         Label 1
       <% end %>
-      <span class="Label custom">
+      <span invalid-attr class="Label">
         Label 1
       </span>
     HTML
@@ -183,7 +183,7 @@ class LabelComponentMigrationCounterTest < LinterTestCase
       <span class="Label Label--primary">
         Label 1
       </span>
-      <span class="Label custom">
+      <span invalid-attr class="Label">
         Label 1
       </span>
     HTML
@@ -193,7 +193,7 @@ class LabelComponentMigrationCounterTest < LinterTestCase
       <%= render Primer::LabelComponent.new(scheme: :primary) do %>
         Label 1
       <% end %>
-      <span class="Label custom">
+      <span invalid-attr class="Label">
         Label 1
       </span>
     HTML
@@ -206,7 +206,7 @@ class LabelComponentMigrationCounterTest < LinterTestCase
       <span class="Label Label--primary mr-1 p-3 d-none d-md-block anim-fade-in">
         Label 1
       </span>
-      <span class="Label Label--primary mr-1 p-3 d-none d-md-block anim-fade-in custom">
+      <span invalid-attr class="Label Label--primary mr-1 p-3 d-none d-md-block anim-fade-in">
         Label 2
       </span>
     HTML
@@ -216,7 +216,7 @@ class LabelComponentMigrationCounterTest < LinterTestCase
       <%= render Primer::LabelComponent.new(scheme: :primary, mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in) do %>
         Label 1
       <% end %>
-      <span class="Label Label--primary mr-1 p-3 d-none d-md-block anim-fade-in custom">
+      <span invalid-attr class="Label Label--primary mr-1 p-3 d-none d-md-block anim-fade-in">
         Label 2
       </span>
     HTML

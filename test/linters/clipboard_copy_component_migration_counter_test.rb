@@ -15,7 +15,7 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
   end
 
   def test_suggests_ignoring_with_correct_number_of_clipboard_copies
-    @file = "<clipboard-copy class=\"custom\">clipboard-copy</clipboard-copy><clipboard-copy class=\"custom\">clipboard-copy</clipboard-copy><div>not-a-clipboard-copy</div>"
+    @file = "<clipboard-copy invalid-attr>clipboard-copy</clipboard-copy><clipboard-copy invalid-attr>clipboard-copy</clipboard-copy><div>not-a-clipboard-copy</div>"
 
     assert_equal "<%# erblint:counter ClipboardCopyComponentMigrationCounter 2 %>\n#{@file}", corrected_content
   end
@@ -55,8 +55,8 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
     refute_includes(offenses.first.message, "render Primer::ClipboardCopy.new")
   end
 
-  def test_does_not_suggest_if_using_unsupported_classes
-    @file = "<clipboard-copy class=\"some-custom-class\">ClipboardCopy</clipboard-copy>"
+  def test_does_not_suggest_if_cannot_convert_class
+    @file = "<clipboard-copy class=\"text-center\">ClipboardCopy</clipboard-copy>"
     @linter.run(processed_source)
 
     refute_includes(offenses.first.message, "render Primer::ClipboardCopy.new")
@@ -66,7 +66,7 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
     @file = <<~HTML
       <clipboard-copy>
         ClipboardCopy 1
-        <clipboard-copy class="custom-class">
+        <clipboard-copy invalid-attr>
           Can\'t be autocorrected
         </clipboard-copy>
         <clipboard-copy value="some value">
@@ -80,7 +80,7 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
       <%# erblint:counter ClipboardCopyComponentMigrationCounter 1 %>
       <%= render Primer::ClipboardCopy.new do %>
         ClipboardCopy 1
-        <clipboard-copy class="custom-class">
+        <clipboard-copy invalid-attr>
           Can\'t be autocorrected
         </clipboard-copy>
         <%= render Primer::ClipboardCopy.new(value: "some value") do %>
@@ -118,7 +118,7 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
       <clipboard-copy>
         ClipboardCopy 1
       </clipboard-copy>
-      <clipboard-copy class="custom">
+      <clipboard-copy invalid-attr>
         ClipboardCopy 2
       </clipboard-copy>
     HTML
@@ -128,7 +128,7 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
       <%= render Primer::ClipboardCopy.new do %>
         ClipboardCopy 1
       <% end %>
-      <clipboard-copy class="custom">
+      <clipboard-copy invalid-attr>
         ClipboardCopy 2
       </clipboard-copy>
     HTML
@@ -142,7 +142,7 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
       <clipboard-copy>
         ClipboardCopy 1
       </clipboard-copy>
-      <clipboard-copy class="custom">
+      <clipboard-copy invalid-attr>
         ClipboardCopy 2
       </clipboard-copy>
     HTML
@@ -152,7 +152,7 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
       <%= render Primer::ClipboardCopy.new do %>
         ClipboardCopy 1
       <% end %>
-      <clipboard-copy class="custom">
+      <clipboard-copy invalid-attr>
         ClipboardCopy 2
       </clipboard-copy>
     HTML
@@ -165,7 +165,7 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
       <clipboard-copy class="mr-1 p-3 d-none d-md-block anim-fade-in">
         clipboard-copy 1
       </clipboard-copy>
-      <clipboard-copy class="mr-1 p-3 d-none d-md-block anim-fade-in custom">
+      <clipboard-copy invalid-attr class="mr-1 p-3 d-none d-md-block anim-fade-in">
         clipboard-copy 2
       </clipboard-copy>
     HTML
@@ -175,7 +175,7 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
       <%= render Primer::ClipboardCopy.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in) do %>
         clipboard-copy 1
       <% end %>
-      <clipboard-copy class="mr-1 p-3 d-none d-md-block anim-fade-in custom">
+      <clipboard-copy invalid-attr class="mr-1 p-3 d-none d-md-block anim-fade-in">
         clipboard-copy 2
       </clipboard-copy>
     HTML
