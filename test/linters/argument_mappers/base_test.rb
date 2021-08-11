@@ -118,4 +118,14 @@ class ArgumentMappersBaseTest < LinterTestCase
 
     assert_equal({ classes: "\"custom-1 custom-2\"" }, args)
   end
+
+  def test_raises_if_class_contains_an_erb_block
+    @file = '<div class="string-<%= some_call %>">'
+
+    err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
+      ERBLint::Linters::ArgumentMappers::Base.new(tags.first).to_args
+    end
+
+    assert_equal("Cannot convert attribute \"class\" because its value contains an erb block", err.message)
+  end
 end
