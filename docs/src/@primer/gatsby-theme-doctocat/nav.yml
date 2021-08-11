@@ -103,6 +103,6 @@
     - title: Tooltip
       url: /components/tooltip
     - title: Truncate
-      url: /components/truncate
+      url: /components/beta/truncate
     - title: UnderlineNav
       url: /components/underlinenav

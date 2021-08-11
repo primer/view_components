@@ -85,6 +85,11 @@
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
+  "Primer::Beta::Truncate": {
+    "TruncateText": "Primer::Beta::Truncate::TruncateText"
+  },
+  "Primer::Beta::Truncate::TruncateText": {
+  },
   "Primer::BlankslateComponent": {
   },
   "Primer::BorderBoxComponent": {
