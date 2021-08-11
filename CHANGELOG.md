@@ -42,11 +42,9 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
-* Linters can convert values with ERB interpolations.
-
-    *Manuel Puyol*
-
-* Linters can autocorrect cases with custom classes.
+* Linters can:
+    - convert values with ERB interpolations.
+    - autocorrect cases with custom classes.
 
     *Manuel Puyol*
 
