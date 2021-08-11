@@ -16,9 +16,9 @@ module Primer
     DEFAULT_ROW_SCHEME = :default
     ROW_SCHEME_MAPPINGS = {
       DEFAULT_ROW_SCHEME => "",
-      :yellow => "Box-row--yellow",
-      :blue => "Box-row--blue",
-      :gray => "Box-row--gray"
+      :neutral => "Box-row--gray",
+      :info => "Box-row--blue",
+      :warning => "Box-row--yellow"
     }.freeze
 
     # Optional Header.
@@ -88,7 +88,7 @@ module Primer
     #         Row one
     #       <% end %>
     #     <% end %>
-    #     <% component.row(scheme: :yellow) do %>
+    #     <% component.row do %>
     #       Row two
     #     <% end %>
     #     <% component.footer do %>
@@ -109,6 +109,22 @@ module Primer
     #     <% end %>
     #     <% component.footer do %>
     #       Footer
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example Row colors
+    #   <%= render(Primer::BorderBoxComponent.new) do |component| %>
+    #     <% component.row do %>
+    #       Default
+    #     <% end %>
+    #     <% component.row(scheme: :neutral) do %>
+    #       Neutral
+    #     <% end %>
+    #     <% component.row(scheme: :info) do %>
+    #       Info
+    #     <% end %>
+    #     <% component.row(scheme: :warning) do %>
+    #       Warning
     #     <% end %>
     #   <% end %>
     #

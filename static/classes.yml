@@ -10,6 +10,8 @@
 - ".Box-footer"
 - ".Box-header"
 - ".Box-row"
+- ".Box-row--blue"
+- ".Box-row--gray"
 - ".Box-row--yellow"
 - ".BtnGroup"
 - ".BtnGroup-item"

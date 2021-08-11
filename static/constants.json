@@ -103,9 +103,9 @@
     "PADDING_SUGGESTION": "Perhaps you could consider using :padding options of default, condensed, and spacious?",
     "ROW_SCHEME_MAPPINGS": {
       "default": "",
-      "yellow": "Box-row--yellow",
-      "blue": "Box-row--blue",
-      "gray": "Box-row--gray"
+      "neutral": "Box-row--gray",
+      "info": "Box-row--blue",
+      "warning": "Box-row--yellow"
     }
   },
   "Primer::BoxComponent": {
