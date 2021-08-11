@@ -15,7 +15,7 @@
   "Primer::BreadcrumbComponent::ItemComponent": "alpha",
   "Primer::ButtonComponent": "beta",
   "Primer::ButtonGroup": "beta",
-  "Primer::ClipboardCopy": "alpha",
+  "Primer::ClipboardCopy": "beta",
   "Primer::CloseButton": "beta",
   "Primer::CounterComponent": "beta",
   "Primer::DetailsComponent": "beta",
