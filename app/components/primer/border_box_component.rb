@@ -68,8 +68,8 @@ module Primer
       system_arguments[:tag] = :li
       system_arguments[:classes] = class_names(
         "Box-row",
-        system_arguments[:classes],
-        ROW_SCHEME_MAPPINGS[fetch_or_fallback(ROW_SCHEME_MAPPINGS.keys, scheme, DEFAULT_ROW_SCHEME)]
+        ROW_SCHEME_MAPPINGS[fetch_or_fallback(ROW_SCHEME_MAPPINGS.keys, scheme, DEFAULT_ROW_SCHEME)],
+        system_arguments[:classes]
       )
 
       Primer::BaseComponent.new(**system_arguments)
