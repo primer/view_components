@@ -52,12 +52,12 @@ class ArgumentMappersLabelTest < LinterTestCase
   end
 
   def test_raises_if_cannot_map_class
-    @file = '<span class="some-class">Label</span>'
+    @file = '<span class="text-center">Label</span>'
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
       ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
     end
 
-    assert_equal "Cannot convert class \"some-class\"", err.message
+    assert_equal "Cannot convert class text-center", err.message
   end
 
   def test_complex_case
@@ -106,5 +106,12 @@ class ArgumentMappersLabelTest < LinterTestCase
     args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
 
     assert_equal({ title: "\"string-\#{ some_call }\#{ other_call }-more-\#{ another_call }\"" }, args)
+  end
+
+  def test_returns_custom_classes_as_string
+    @file = '<span class="Label custom-1 custom-2">Label</span>'
+    args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
+
+    assert_equal({ classes: "\"custom-1 custom-2\"" }, args)
   end
 end
