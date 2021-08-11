@@ -183,6 +183,22 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
     assert_equal expected, corrected_content
   end
 
+  def test_autocorrects_with_custom_classes
+    @file = <<~HTML
+      <clipboard-copy class="mr-1 p-3 d-none d-md-block anim-fade-in custom-1 custom-2">
+        clipboard-copy
+      </clipboard-copy>
+    HTML
+
+    expected = <<~HTML
+      <%= render Primer::ClipboardCopy.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, classes: "custom-1 custom-2") do %>
+        clipboard-copy
+      <% end %>
+    HTML
+
+    assert_equal expected, corrected_content
+  end
+
   def test_autocorrects_basic_erb_interpolation
     @file = <<~HTML
       <clipboard-copy value="<%= some_call %>">

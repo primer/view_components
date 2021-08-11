@@ -223,4 +223,20 @@ class LabelComponentMigrationCounterTest < LinterTestCase
 
     assert_equal expected, corrected_content
   end
+
+  def test_autocorrects_with_custom_classes
+    @file = <<~HTML
+      <span class="Label Label--primary mr-1 p-3 d-none d-md-block anim-fade-in custom-1 custom-2">
+        Label 1
+      </span>
+    HTML
+
+    expected = <<~HTML
+      <%= render Primer::LabelComponent.new(scheme: :primary, mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, classes: "custom-1 custom-2") do %>
+        Label 1
+      <% end %>
+    HTML
+
+    assert_equal expected, corrected_content
+  end
 end
