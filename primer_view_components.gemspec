@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "ViewComponents for the Primer Design System"
   spec.homepage      = "https://github.com/primer/view_components"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.5.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -42,8 +42,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "mocha"
   spec.add_development_dependency "pry"
-  spec.add_development_dependency "rubocop", "= 0.82"
-  spec.add_development_dependency "rubocop-github", "~> 0.16.0"
+  spec.add_development_dependency "rubocop", "~> 1.13"
+  spec.add_development_dependency "rubocop-github", "~> 0.16"
   spec.add_development_dependency "rubocop-performance", "~> 1.7"
   spec.add_development_dependency "simplecov", "~> 0.18.0"
   spec.add_development_dependency "simplecov-console", "~> 0.7.2"

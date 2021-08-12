@@ -89,7 +89,7 @@ module Primer
         def justify_content(value, breakpoint)
           val = fetch_or_fallback(JUSTIFY_CONTENT_VALUES, value)
 
-          formatted_value = val.to_s.gsub(/(flex\_|space\_)/, "")
+          formatted_value = val.to_s.gsub(/(flex_|space_)/, "")
           "flex#{breakpoint}-justify-#{formatted_value}"
         end
 

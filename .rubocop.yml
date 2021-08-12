@@ -58,3 +58,9 @@ Primer/NoTagMemoize:
 
 Primer/SystemArgumentInsteadOfClass:
   Enabled: true
+
+Lint/MissingSuper:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false

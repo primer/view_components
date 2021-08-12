@@ -48,6 +48,7 @@ module Primer
       end
     end
 
+    # rubocop:disable Style/OptionalBooleanParameter
     def fetch_or_fallback_boolean(given_value, fallback = false)
       if [true, false].include?(given_value)
         given_value
@@ -55,6 +56,7 @@ module Primer
         fallback
       end
     end
+    # rubocop:enable Style/OptionalBooleanParameter
 
     def silence_deprecations?
       Rails.application.config.primer_view_components.silence_deprecations

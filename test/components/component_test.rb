@@ -77,36 +77,41 @@ class PrimerComponentTest < Minitest::Test
   end
 
   def test_all_components_support_system_arguments
+    default_args = { my: 4 }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
-      render_component(component, { my: 4 }.merge(args), proc)
+      render_component(component, default_args.merge(args), proc)
       assert_selector(".my-4")
     end
   end
 
   def test_all_components_pass_through_classes
+    default_args = { classes: "foo" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
-      render_component(component, { classes: "foo" }.merge(args), proc)
+      render_component(component, default_args.merge(args), proc)
       assert_selector(".foo")
     end
   end
 
   def test_all_components_support_inline_styles
+    default_args = { style: "width: 100%;" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
-      render_component(component, { style: "width: 100%;" }.merge(args), proc)
+      render_component(component, default_args.merge(args), proc)
       assert_selector("[style='width: 100%;']")
     end
   end
 
   def test_all_components_support_content_tag_arguments
+    default_args = { hidden: true }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
-      render_component(component, { hidden: true }.merge(args), proc)
+      render_component(component, default_args.merge(args), proc)
       assert_selector("[hidden]", visible: false)
     end
   end
 
   def test_all_components_support_data_tag_arguments
+    default_args = { "data-ga-click": "Foo,bar" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
-      render_component(component, { "data-ga-click": "Foo,bar" }.merge(args), proc)
+      render_component(component, default_args.merge(args), proc)
       assert_selector("[data-ga-click='Foo,bar']", visible: false)
     end
   end

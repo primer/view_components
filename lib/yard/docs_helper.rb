@@ -6,7 +6,7 @@ module YARD
     def one_of(enumerable, lower: false, sort: true)
       # Sort the array if requested
       if sort
-        compare = ->(a, b) { a.class == b.class ? a <=> b : a.class.to_s <=> b.class.to_s }
+        compare = ->(a, b) { a.class.instance_of?(b.class) ? a <=> b : a.class.to_s <=> b.class.to_s }
         enumerable = enumerable.sort { |a, b| compare.call(a, b) }
       end
 
@@ -58,7 +58,7 @@ module YARD
     def status_module_and_short_name(component)
       name_with_status = component.name.gsub(/Primer::|Component/, "")
 
-      m = name_with_status.match(/(?<status>Beta|Alpha|Deprecated)?(::)?(?<name>.*)/)
+      m = name_with_status.match(/(?<status>Beta|Alpha|Deprecated)?(?<_colons>::)?(?<name>.*)/)
       [m[:status]&.downcase, m[:name].gsub("::", "")]
     end
 
