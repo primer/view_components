@@ -54,6 +54,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Cameron Dutro*
 
+* Upgrade rubocop and support Ruby 3.0.
+
+    *Cameron Dutro*
+
 ## 0.0.51
 
 ### Breaking changes
