@@ -16,7 +16,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `padding` | `Symbol` | `:default` | One of `:condensed`, `:default`, or `:spacious`. |
+| `padding` | `Symbol` | `:default` | One of `:default`, `:condensed`, or `:spacious`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots

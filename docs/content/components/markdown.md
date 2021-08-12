@@ -16,7 +16,7 @@ Use `Markdown` to wrap markdown content
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `tag` | `Symbol` | `:div` | One of `:article`, `:div`, or `:td`. |
+| `tag` | `Symbol` | `:div` | One of `:div`, `:article`, or `:td`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Examples

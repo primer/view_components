@@ -44,7 +44,7 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `animation` | Symbol | One of `:fade_down`, `:fade_in`, `:fade_out`, `:fade_up`, `:grow_x`, `:hover_grow`, `:pulse`, `:pulse_in`, `:rotate`, `:scale_in`, or `:shrink_x`. |
+| `animation` | Symbol | One of `:fade_in`, `:fade_out`, `:fade_up`, `:fade_down`, `:grow_x`, `:shrink_x`, `:scale_in`, `:pulse`, `:pulse_in`, `:hover_grow`, or `:rotate`. |
 
 ## Border
 
@@ -55,29 +55,29 @@ System arguments include most HTML attributes. For example:
 | `border_radius` | Integer | One of `0`, `1`, `2`, or `3`. |
 | `border_right` | Integer | Set to `0` to remove the right border. |
 | `border_top` | Integer | Set to `0` to remove the top border. |
-| `border` | Symbol | One of `:bottom`, `:left`, `:right`, `:top`, `:x`, `:y`, or `true`. |
-| `box_shadow` | Boolean, Symbol | Box shadow. One of `:extra_large`, `:large`, `:medium`, `:none`, or `true`. |
+| `border` | Symbol | One of `:left`, `:top`, `:bottom`, `:right`, `:y`, `:x`, or `true`. |
+| `box_shadow` | Boolean, Symbol | Box shadow. One of `:medium`, `:large`, `:extra_large`, `:none`, or `true`. |
 
 ## Color
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `bg` | String, Symbol | Background color. Accepts either a hex value as a String or one of `:canvas`, `:canvas_inset`, `:canvas_inverse`, `:danger`, `:danger_inverse`, `:info`, `:info_inverse`, `:overlay`, `:primary`, `:secondary`, `:success`, `:success_inverse`, `:tertiary`, `:warning`, or `:warning_inverse`. |
-| `border_color` | Symbol | Border color. One of `:danger`, `:info`, `:inverse`, `:primary`, `:secondary`, `:success`, `:tertiary`, or `:warning`. |
-| `color` | Symbol | Text color. One of `:icon_danger`, `:icon_info`, `:icon_primary`, `:icon_secondary`, `:icon_success`, `:icon_tertiary`, `:icon_warning`, `:text_danger`, `:text_inverse`, `:text_link`, `:text_primary`, `:text_secondary`, `:text_success`, `:text_tertiary`, `:text_warning`, or `:text_white`. |
+| `bg` | String, Symbol | Background color. Accepts either a hex value as a String or one of `:primary`, `:secondary`, `:tertiary`, `:canvas`, `:canvas_inset`, `:canvas_inverse`, `:info`, `:info_inverse`, `:success`, `:success_inverse`, `:warning`, `:warning_inverse`, `:danger`, `:danger_inverse`, or `:overlay`. |
+| `border_color` | Symbol | Border color. One of `:primary`, `:secondary`, `:tertiary`, `:info`, `:success`, `:warning`, `:danger`, or `:inverse`. |
+| `color` | Symbol | Text color. One of `:icon_primary`, `:icon_secondary`, `:icon_tertiary`, `:icon_info`, `:icon_success`, `:icon_warning`, `:icon_danger`, `:text_primary`, `:text_secondary`, `:text_tertiary`, `:text_link`, `:text_success`, `:text_warning`, `:text_danger`, `:text_white`, or `:text_inverse`. |
 
 ## Flex
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `align_items` | Symbol | One of `:baseline`, `:center`, `:flex_end`, `:flex_start`, or `:stretch`. |
-| `align_self` | Symbol | One of `:auto`, `:baseline`, `:center`, `:end`, `:start`, or `:stretch`. |
+| `align_items` | Symbol | One of `:flex_start`, `:flex_end`, `:center`, `:baseline`, or `:stretch`. |
+| `align_self` | Symbol | One of `:auto`, `:start`, `:end`, `:center`, `:baseline`, or `:stretch`. |
 | `direction` | Symbol | One of `:column`, `:column_reverse`, `:row`, or `:row_reverse`. |
 | `flex` | Integer, Symbol | One of `1` and `:auto`. |
 | `flex_grow` | Integer | To enable, set to `0`. |
 | `flex_shrink` | Integer | To enable, set to `0`. |
-| `flex_wrap` | Symbol | One of `:nowrap`, `:reverse`, or `:wrap`. |
-| `justify_content` | Symbol | One of `:center`, `:flex_end`, `:flex_start`, `:space_around`, or `:space_between`. |
+| `flex_wrap` | Symbol | One of `:wrap`, `:nowrap`, or `:reverse`. |
+| `justify_content` | Symbol | One of `:flex_start`, `:flex_end`, `:center`, `:space_between`, or `:space_around`. |
 
 ## Grid
 
@@ -85,27 +85,27 @@ System arguments include most HTML attributes. For example:
 | :- | :- | :- |
 | `clearfix` | Boolean | Wether to assign the `clearfix` class. |
 | `col` | Integer | Number of columns. One of `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
-| `container` | Symbol | Size of the container. One of `:lg`, `:md`, `:sm`, or `:xl`. |
+| `container` | Symbol | Size of the container. One of `:xl`, `:lg`, `:md`, or `:sm`. |
 
 ## Layout
 
 | Name | Type | Description |
 | :- | :- | :- |
 | `display` | Symbol | One of `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:none`, `:table`, or `:table_cell`. |
-| `w` | Symbol | One of `:auto`, `:fit`, or `:full`. Also supports integer values. |
+| `w` | Symbol | One of `:fit`, `:full`, or `:auto`. Also supports integer values. |
 | `h` | Symbol | One of `:fit` and `:full`. Also supports integer values. |
-| `hide` | Symbol | Hide the element at a specific breakpoint. One of `:lg`, `:md`, `:sm`, or `:xl`. |
+| `hide` | Symbol | Hide the element at a specific breakpoint. One of `:sm`, `:md`, `:lg`, or `:xl`. |
 | `visibility` | Symbol | Visibility. One of `:hidden` and `:visible`. |
-| `vertical_align` | Symbol | One of `:baseline`, `:bottom`, `:middle`, `:text_bottom`, `:text_top`, or `:top`. |
+| `vertical_align` | Symbol | One of `:middle`, `:top`, `:bottom`, `:text_top`, `:text_bottom`, or `:baseline`. |
 
 ## Position
 
 | Name | Type | Description |
 | :- | :- | :- |
 | `bottom` | Boolean | If `false`, sets `bottom: 0`. |
-| `float` | Symbol | One of `:left`, `:none`, or `:right`. |
+| `float` | Symbol | One of `:left`, `:right`, or `:none`. |
 | `left` | Boolean | If `false`, sets `left: 0`. |
-| `position` | Symbol | One of `:absolute`, `:fixed`, `:relative`, `:static`, or `:sticky`. |
+| `position` | Symbol | One of `:static`, `:relative`, `:absolute`, `:fixed`, or `:sticky`. |
 | `right` | Boolean | If `false`, sets `right: 0`. |
 | `top` | Boolean | If `false`, sets `top: 0`. |
 
@@ -114,10 +114,10 @@ System arguments include most HTML attributes. For example:
 | Name | Type | Description |
 | :- | :- | :- |
 | `m` | Integer | Margin. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |
-| `mb` | Integer | Margin bottom. One of `-12`, `-11`, `-10`, `-9`, `-8`, `-7`, `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
-| `ml` | Integer | Margin left. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `mr` | Integer | Margin right. One of `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, or `6`. |
-| `mt` | Integer | Margin top. One of `-12`, `-11`, `-10`, `-9`, `-8`, `-7`, `-6`, `-5`, `-4`, `-3`, `-2`, `-1`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, or `:auto`. |
+| `mb` | Integer | Margin bottom. One of `0`, `1`, `-1`, `2`, `-2`, `3`, `-3`, `4`, `-4`, `5`, `-5`, `6`, `-6`, `7`, `-7`, `8`, `-8`, `9`, `-9`, `10`, `-10`, `11`, `-11`, `12`, or `-12`. |
+| `ml` | Integer | Margin left. One of `0`, `1`, `-1`, `2`, `-2`, `3`, `-3`, `4`, `-4`, `5`, `-5`, `6`, or `-6`. |
+| `mr` | Integer | Margin right. One of `0`, `1`, `-1`, `2`, `-2`, `3`, `-3`, `4`, `-4`, `5`, `-5`, `6`, or `-6`. |
+| `mt` | Integer | Margin top. One of `0`, `1`, `-1`, `2`, `-2`, `3`, `-3`, `4`, `-4`, `5`, `-5`, `6`, `-6`, `7`, `-7`, `8`, `-8`, `9`, `-9`, `10`, `-10`, `11`, `-11`, `12`, `-12`, or `:auto`. |
 | `mx` | Integer | Horizontal margins. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:auto`. |
 | `my` | Integer | Vertical margins. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
 | `p` | Integer | Padding. One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, or `:responsive`. |
@@ -133,10 +133,10 @@ System arguments include most HTML attributes. For example:
 | Name | Type | Description |
 | :- | :- | :- |
 | `font_family` | Symbol | Font weight. One of `:mono`. |
-| `font_size` | String, Integer, Symbol | One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `00`, `:normal`, or `:small`. |
+| `font_size` | String, Integer, Symbol | One of `0`, `1`, `2`, `3`, `4`, `5`, `6`, `00`, `:small`, or `:normal`. |
 | `font_style` | Symbol | Font weight. One of `:italic`. |
-| `font_weight` | Symbol | Font weight. One of `:bold`, `:emphasized`, `:light`, or `:normal`. |
-| `text_align` | Symbol | Text alignment. One of `:center`, `:left`, or `:right`. |
+| `font_weight` | Symbol | Font weight. One of `:light`, `:normal`, `:bold`, or `:emphasized`. |
+| `text_align` | Symbol | Text alignment. One of `:left`, `:right`, or `:center`. |
 | `text_transform` | Symbol | Text alignment. One of `:uppercase`. |
 | `underline` | Boolean | Whether text should be underlined. |
 | `word_break` | Symbol | Whether to break words on line breaks. One of `:break_all`. |

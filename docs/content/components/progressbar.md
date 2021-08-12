@@ -16,7 +16,7 @@ Use `ProgressBar` to visualize task completion.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `size` | `Symbol` | `:default` | One of `:default`, `:large`, or `:small`. Increases height. |
+| `size` | `Symbol` | `:default` | One of `:default`, `:small`, or `:large`. Increases height. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots

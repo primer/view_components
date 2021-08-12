@@ -20,7 +20,7 @@ They're great for instances where you don't need the full power (and code) of th
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `overlay` | `Symbol` | `:default` | One of `:dark`, `:default`, or `:none`. |
+| `overlay` | `Symbol` | `:default` | One of `:none`, `:default`, or `:dark`. |
 | `with_caret` | `Boolean` | `false` | Whether or not a caret should be rendered in the button. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
@@ -38,7 +38,7 @@ Required context menu for the dropdown.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `as` | `Symbol` | N/A | When `as` is `:list`, wraps the menu in a `<ul>` with a `<li>` for each item. |
-| `direction` | `Symbol` | N/A | One of `:e`, `:ne`, `:s`, `:se`, `:sw`, or `:w`. |
+| `direction` | `Symbol` | N/A | One of `:se`, `:sw`, `:w`, `:e`, `:ne`, or `:s`. |
 | `scheme` | `Symbol` | N/A | Pass `:dark` for dark mode theming |
 | `header` | `String` | N/A | Optional string to display as the header |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |

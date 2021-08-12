@@ -24,9 +24,9 @@ if your `IconButton` renders a magnifying glass icon and invokves a search actio
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `scheme` | `Symbol` | `:default` | One of `:danger` and `:default`. |
+| `scheme` | `Symbol` | `:default` | One of `:default` and `:danger`. |
 | `icon` | `String` | N/A | Name of [Octicon](https://primer.style/octicons/) to use. |
-| `tag` | `Symbol` | N/A | One of `:a`, `:button`, or `:summary`. |
+| `tag` | `Symbol` | N/A | One of `:button`, `:a`, or `:summary`. |
 | `type` | `Symbol` | N/A | One of `:button`, `:reset`, or `:submit`. |
 | `box` | `Boolean` | `false` | Whether the button is in a [BorderBox](/components/borderbox). If `true`, the button will have the `Box-btn-octicon` class. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
