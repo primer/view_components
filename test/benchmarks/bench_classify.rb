@@ -4,6 +4,8 @@ require "minitest/benchmark"
 require "test_helper"
 
 class BenchClassify < Minitest::Benchmark
+  include Primer::AssertAllocationsHelper
+
   def setup
     @values = {
       align_items: :center,
@@ -54,19 +56,5 @@ class BenchClassify < Minitest::Benchmark
     assert_allocations 27 do
       Primer::Classify.call(**@values)
     end
-  end
-
-  private
-
-  def assert_allocations(count)
-    GC.disable
-    total_start = GC.stat[:total_allocated_objects]
-    yield
-    total_end = GC.stat[:total_allocated_objects]
-    GC.enable
-
-    total = total_end - total_start
-
-    assert_equal count, total, "Expected between #{count} allocations, got #{total} allocations."
   end
 end
