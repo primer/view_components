@@ -24,7 +24,7 @@ class BenchOcticons < Minitest::Benchmark
 
   def bench_allocations_with_cache
     Primer::Octicon::Cache.preload!
-    assert_allocations 21 do
+    assert_allocations 19..21 do
       Primer::OcticonComponent.new(**@options)
     end
   end
