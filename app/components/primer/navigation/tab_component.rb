@@ -142,7 +142,7 @@ module Primer
         end
 
         render(Primer::BaseComponent.new(**@wrapper_arguments)) do
-          yield
+          yield if block_given?
         end
       end
 

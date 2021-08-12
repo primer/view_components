@@ -35,9 +35,10 @@ module ERBLint
         def attribute_to_args(attribute)
           attr_name = attribute.name
 
-          if attr_name == "disabled"
+          case attr_name
+          when "disabled"
             { disabled: true }
-          elsif attr_name == "type"
+          when "type"
             # button is the default type, so we don't need to do anything.
             return {} if attribute.value == "button"
 
@@ -48,7 +49,7 @@ module ERBLint
         end
 
         def classes_to_args(classes)
-          classes.split(" ").each_with_object({ classes: [] }) do |class_name, acc|
+          classes.split.each_with_object({ classes: [] }) do |class_name, acc|
             next if class_name == "btn"
 
             if SCHEME_MAPPINGS[class_name] && acc[:scheme].nil?

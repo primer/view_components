@@ -130,10 +130,10 @@ statuses_json.each do |component_name, component_status|
   card = get_card(name_prefix: component_name)
 
   if card
-    if !on_correct_column?(card_id: card.id, status: component_status)
-      move_card(card_id: card.id, status: component_status)
-    else
+    if on_correct_column?(card_id: card.id, status: component_status)
       puts "#{card.id} is on the right column. noop"
+    else
+      move_card(card_id: card.id, status: component_status)
     end
   else
     create_card(component_name: component_name, status: component_status)

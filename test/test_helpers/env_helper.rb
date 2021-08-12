@@ -7,7 +7,7 @@ module Primer
       ENV["RAILS_ENV"] = env
 
       Rails.stub(:env, ActiveSupport::StringInquirer.new(env)) do
-        yield
+        yield if block_given?
       end
     ensure
       ENV["RAILS_ENV"] = old_env
