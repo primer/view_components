@@ -81,10 +81,15 @@ push() {
   git push origin release-v$1-$2-$3
 
   echo "####################################################"
-  echo "Now, open a PR with this branch and merge it to main"
-  echo "Then, run script/publish on main to release the gem and the NPM package"
+  echo "Now, open a PR with this branch and merge it to main."
+  echo "When it's merged, press any key to publish the gem and the NPM package."
+  echo "Alternatively, press Ctrl+C and run script/publish to publish manually."
   echo "Finally, create a GitHub release https://github.com/primer/view_components/releases/new with the changes from CHANGELOG"
   echo "####################################################"
+
+  # make the prompt look like the select prompt
+  echo -n "?# "
+  read
 }
 
 main() {
@@ -159,6 +164,11 @@ main() {
     add_changed_files $major $minor $patch
     commit $major $minor $patch
     push $major $minor $patch
+
+    # publish artifacts
+    script/publish
+
+    break
   done
 }
 
