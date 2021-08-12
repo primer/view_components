@@ -12,6 +12,7 @@ AllCops:
     - "demo/**/*"
     - "vendor/**/*"
     - "**/node_modules/**/*"
+  TargetRubyVersion: 2.5
 
 Style/ClassAndModuleChildren:
   Enabled: true
