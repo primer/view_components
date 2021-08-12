@@ -20,9 +20,9 @@ Use `aria-label` if the `Label` or the context around it don't explain the label
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `tag` | `Symbol` | `:span` | One of `:span`, `:summary`, `:a`, or `:div`. |
-| `scheme` | `Symbol` | `nil` | One of `:primary`, `:secondary`, `:info`, `:success`, `:warning`, `:danger`, `:orange`, or `:purple`. |
-| `variant` | `Symbol` | `nil` | One of `nil`, `:large`, or `:inline`. |
+| `tag` | `Symbol` | `:span` | One of `:a`, `:div`, `:span`, or `:summary`. |
+| `scheme` | `Symbol` | `nil` | One of `:danger`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`, `:success`, or `:warning`. |
+| `variant` | `Symbol` | `nil` | One of `nil`, `:inline`, or `:large`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Examples

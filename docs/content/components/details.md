@@ -16,7 +16,7 @@ Use `DetailsComponent` to reveal content after clicking a button.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `overlay` | `Symbol` | `:none` | Dictates the type of overlay to render with. One of `:none`, `:default`, or `:dark`. |
+| `overlay` | `Symbol` | `:none` | Dictates the type of overlay to render with. One of `:dark`, `:default`, or `:none`. |
 | `reset` | `Boolean` | `false` | Defatuls to false. If set to true, it will remove the default caret and remove style from the summary element |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
@@ -37,7 +37,7 @@ Use the Body slot as the main content to be shown when triggered by the Summary.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `tag` | `Symbol` | `:div` | One of `:ul`, `:details-menu`, `:details-dialog`, or `:div`. |
+| `tag` | `Symbol` | `:div` | One of `:details-dialog`, `:details-menu`, `:div`, or `:ul`. |
 | `kwargs` | `Hash` | N/A | The same arguments as [System arguments](/system-arguments). |
 
 ## Examples

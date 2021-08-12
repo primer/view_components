@@ -20,7 +20,7 @@ Use `Flash` to inform users of successful or pending actions.
 | `spacious` | `Boolean` | `false` | Whether to add margin to the bottom of the component. |
 | `dismissible` | `Boolean` | `false` | Whether the component can be dismissed with an X button. |
 | `icon` | `Symbol` | `nil` | Name of Octicon icon to use. |
-| `scheme` | `Symbol` | `:default` | One of `:default`, `:warning`, `:danger`, or `:success`. |
+| `scheme` | `Symbol` | `:default` | One of `:danger`, `:default`, `:success`, or `:warning`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots

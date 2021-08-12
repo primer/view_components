@@ -51,7 +51,7 @@ Required input used to search for results
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `type` | `Symbol` | N/A | One of `:text` and `:search`. |
+| `type` | `Symbol` | N/A | One of `:search` and `:text`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `Icon`

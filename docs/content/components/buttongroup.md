@@ -16,7 +16,7 @@ Use `ButtonGroup` to render a series of buttons.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `variant` | `Symbol` | `:medium` | One of `:small`, `:medium`, or `:large`. |
+| `variant` | `Symbol` | `:medium` | One of `:large`, `:medium`, or `:small`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
