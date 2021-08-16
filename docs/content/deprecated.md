@@ -2,9 +2,9 @@
 title: Deprecated
 ---
 
-# System Arguments
+## System Arguments
 
-## Deprecated in v0.0.28
+### Deprecated in v0.0.28
 
 These presentational system arguments were deprecated in favor of functional color names.
 
