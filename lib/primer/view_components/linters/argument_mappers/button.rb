@@ -7,8 +7,6 @@ module ERBLint
     module ArgumentMappers
       # Maps classes in a button element to arguments for the Button component.
       class Button < Base
-        require "pry"
-
         SCHEME_MAPPINGS = Primer::ViewComponents::Constants.get(
           component: "Primer::ButtonComponent",
           constant: "SCHEME_MAPPINGS",
