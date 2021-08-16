@@ -37,9 +37,6 @@ module ERBLint
 
           next unless self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
 
-          attributes = tag.attributes.each.map(&:name).join(" ")
-          matches_required_attributes = self.class::REQUIRED_ARGUMENTS.blank? || self.class::REQUIRED_ARGUMENTS.all? { |arg| attributes.match?(arg) }
-
           args = map_arguments(tag)
           correction = correction(args)
 
