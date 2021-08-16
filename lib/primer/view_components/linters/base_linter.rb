@@ -43,6 +43,9 @@ module ERBLint
           args = map_arguments(tag)
           correction = correction(args)
 
+          attributes = tag.attributes.each.map(&:name).join(" ")
+          matches_required_attributes = self.class::REQUIRED_ARGUMENTS.blank? || self.class::REQUIRED_ARGUMENTS.all? { |arg| attributes.match?(arg) }
+
           tag_tree[tag][:offense] = true
           tag_tree[tag][:correctable] = matches_required_attributes && !correction.nil?
           tag_tree[tag][:message] = message(args, processed_source)
