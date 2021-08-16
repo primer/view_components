@@ -65,3 +65,15 @@ Lint/MissingSuper:
 
 Naming/VariableNumber:
   Enabled: false
+
+Primer/DeprecatedArguments:
+  Enabled: true
+  Deprecated:
+    color:
+      blue: ":link"
+      gray_dark: ":primary"
+      gray: ":secondary"
+      gray_light: ":tertiary"
+      green: ":success"
+      yellow: ":warning"
+      red: ":danger"

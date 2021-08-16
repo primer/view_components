@@ -12,3 +12,15 @@ Primer/NoTagMemoize:
 
 Primer/PrimerOcticon:
   Enabled: true
+
+Primer/DeprecatedArguments:
+  Enabled: true
+  Deprecated:
+    color:
+      blue: ":link"
+      gray_dark: ":primary"
+      gray: ":secondary"
+      gray_light: ":tertiary"
+      green: ":success"
+      yellow: ":warning"
+      red: ":danger"
