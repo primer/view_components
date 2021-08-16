@@ -7,7 +7,7 @@ require "primer/view_components/constants"
 module ERBLint
   module Linters
     # Helper methods for linting ERB.
-    module Helpers
+    module BaseLinter
       # from https://github.com/Shopify/erb-lint/blob/6179ee2d9d681a6ec4dd02351a1e30eefa748d3d/lib/erb_lint/linters/self_closing_tag.rb
       SELF_CLOSING_TAGS = %w[
         area base br col command embed hr input keygen

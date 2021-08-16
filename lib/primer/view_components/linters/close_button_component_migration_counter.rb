@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require_relative "helpers"
+require_relative "base_linter"
 
 module ERBLint
   module Linters
     # Counts the number of times a HTML clipboard-copy is used instead of the component.
     class CloseButtonComponentMigrationCounter < Linter
-      include Helpers
+      include BaseLinter
 
       TAGS = %w[button].freeze
       CLASSES = %w[close-button].freeze

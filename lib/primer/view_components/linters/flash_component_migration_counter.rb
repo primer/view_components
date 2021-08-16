@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require_relative "helpers"
+require_relative "base_linter"
 
 module ERBLint
   module Linters
     # Counts the number of times a HTML flash is used instead of the component.
     class FlashComponentMigrationCounter < Linter
-      include Helpers
+      include BaseLinter
 
       TAGS = %w[div].freeze
       CLASSES = %w[flash].freeze

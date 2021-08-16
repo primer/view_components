@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "helpers"
+require_relative "base_linter"
 require_relative "autocorrectable"
 require_relative "argument_mappers/clipboard_copy"
 
@@ -8,7 +8,7 @@ module ERBLint
   module Linters
     # Counts the number of times a HTML clipboard-copy is used instead of the component.
     class ClipboardCopyComponentMigrationCounter < Linter
-      include Helpers
+      include BaseLinter
       include Autocorrectable
 
       TAGS = %w[clipboard-copy].freeze
