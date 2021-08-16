@@ -51,7 +51,7 @@ module ERBLint
           erb_helper.raise_if_erb_block(classes_node)
 
           system_arguments = system_arguments_to_args(classes_node.value)
-          args = classes_to_args(system_arguments[:classes].split)
+          args = classes_to_args(system_arguments[:classes]&.split || [])
 
           invalid_classes = args[:classes].select { |class_name| Primer::Classify::Validation.invalid?(class_name) }
 
