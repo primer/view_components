@@ -22,6 +22,39 @@
   - anim-hover-grow
   :rotate:
   - anim-rotate
+:color:
+  :text_primary:
+  - color-text-primary
+  :text_secondary:
+  - color-text-secondary
+  :text_tertiary:
+  - color-text-tertiary
+  :text_link:
+  - color-text-link
+  :text_success:
+  - color-text-success
+  :text_warning:
+  - color-text-warning
+  :text_danger:
+  - color-text-danger
+  :text_inverse:
+  - color-text-inverse
+  :text_white:
+  - color-text-white
+  :icon_primary:
+  - color-icon-primary
+  :icon_secondary:
+  - color-icon-secondary
+  :icon_tertiary:
+  - color-icon-tertiary
+  :icon_info:
+  - color-icon-info
+  :icon_danger:
+  - color-icon-danger
+  :icon_success:
+  - color-icon-success
+  :icon_warning:
+  - color-icon-warning
 :position:
   :static:
   - position-static

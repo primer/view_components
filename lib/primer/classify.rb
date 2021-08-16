@@ -4,7 +4,6 @@ require_relative "classify/cache"
 require_relative "classify/flex"
 require_relative "classify/functional_background_colors"
 require_relative "classify/functional_border_colors"
-require_relative "classify/functional_text_colors"
 require_relative "classify/grid"
 require_relative "classify/utilities"
 require_relative "classify/validation"
@@ -15,7 +14,6 @@ module Primer
     # Keys where we can simply translate { key: value } into ".key-value"
     CONCAT_KEYS = %i[text box_shadow].freeze
 
-    COLOR_KEY = :color
     BG_KEY = :bg
     TEXT_KEYS = %i[font_family font_style font_weight text_align text_transform].freeze
     BOX_SHADOW_KEY = :box_shadow
@@ -88,7 +86,6 @@ module Primer
         BORDER_KEY,
         BORDER_COLOR_KEY,
         BORDER_RADIUS_KEY,
-        COLOR_KEY,
         BG_KEY,
         BOX_SHADOW_KEY,
         CONTAINER_KEY
@@ -176,8 +173,6 @@ module Primer
           else
             memo[:classes] << Primer::Classify::FunctionalBackgroundColors.color(val)
           end
-        elsif key == COLOR_KEY
-          memo[:classes] << Primer::Classify::FunctionalTextColors.color(val)
         elsif key == BORDER_KEY
           border_value = if val == true
                            "border"
