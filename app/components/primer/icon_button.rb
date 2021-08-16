@@ -42,7 +42,7 @@ module Primer
     # @param type [Symbol] <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
     # @param box [Boolean] Whether the button is in a <%= link_to_component(Primer::BorderBoxComponent) %>. If `true`, the button will have the `Box-btn-octicon` class.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(scheme: DEFAULT_SCHEME, icon:, box: false, **system_arguments)
+    def initialize(icon:, scheme: DEFAULT_SCHEME, box: false, **system_arguments)
       @icon = icon
 
       @system_arguments = system_arguments

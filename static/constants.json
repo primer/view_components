@@ -85,16 +85,28 @@
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
+  "Primer::Beta::Truncate": {
+    "TruncateText": "Primer::Beta::Truncate::TruncateText"
+  },
+  "Primer::Beta::Truncate::TruncateText": {
+  },
   "Primer::BlankslateComponent": {
   },
   "Primer::BorderBoxComponent": {
     "DEFAULT_PADDING": "default",
+    "DEFAULT_ROW_SCHEME": "default",
     "PADDING_MAPPINGS": {
       "default": "",
       "condensed": "Box--condensed",
       "spacious": "Box--spacious"
     },
-    "PADDING_SUGGESTION": "Perhaps you could consider using :padding options of default, condensed, and spacious?"
+    "PADDING_SUGGESTION": "Perhaps you could consider using :padding options of default, condensed, and spacious?",
+    "ROW_SCHEME_MAPPINGS": {
+      "default": "",
+      "neutral": "Box-row--gray",
+      "info": "Box-row--blue",
+      "warning": "Box-row--yellow"
+    }
   },
   "Primer::BoxComponent": {
   },

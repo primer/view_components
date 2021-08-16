@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### New
 
+* Adding `Primer::Beta::Truncate` component to reflect changes in primer/css component [Truncate](https://primer.style/css/components/truncate).
+
+    *Jon Rohan*
+
 * Add cop to use `primer_octicon` in favor of `octicon`.
 
     *Manuel Puyol*
@@ -42,9 +46,19 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
-* Linters can convert values with ERB interpolations.
+* Linters can:
+  * convert values with ERB interpolations.
+  * autocorrect cases with custom classes.
 
     *Manuel Puyol*
+
+* Add a `scheme` option to `BorderBoxComponent` rows.
+
+    *Cameron Dutro*
+
+* Upgrade rubocop and support Ruby 3.0.
+
+    *Cameron Dutro*
 
 ## 0.0.51
 

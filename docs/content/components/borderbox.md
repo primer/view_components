@@ -51,6 +51,7 @@ Use Rows to add rows with borders and maintain the same padding.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `scheme` | `Symbol` | N/A | Color scheme. One of `:default`, `:info`, `:neutral`, or `:warning`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Examples
@@ -98,6 +99,27 @@ Use Rows to add rows with borders and maintain the same padding.
   <% end %>
   <% component.footer do %>
     Footer
+  <% end %>
+<% end %>
+```
+
+### Row colors
+
+<Example src="<div data-view-component='true' class='Box'>        <ul>        <li data-view-component='true' class='Box-row'>    Default</li>        <li data-view-component='true' class='Box-row Box-row--gray'>    Neutral</li>        <li data-view-component='true' class='Box-row Box-row--blue'>    Info</li>        <li data-view-component='true' class='Box-row Box-row--yellow'>    Warning</li>    </ul>  </div>" />
+
+```erb
+<%= render(Primer::BorderBoxComponent.new) do |component| %>
+  <% component.row do %>
+    Default
+  <% end %>
+  <% component.row(scheme: :neutral) do %>
+    Neutral
+  <% end %>
+  <% component.row(scheme: :info) do %>
+    Info
+  <% end %>
+  <% component.row(scheme: :warning) do %>
+    Warning
   <% end %>
 <% end %>
 ```

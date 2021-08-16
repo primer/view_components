@@ -24,9 +24,9 @@ module Primer
           value:,
           mappings:,
           non_functional_prefix:,
+          functional_options:,
           functional_prefix: "",
           number_prefix: "",
-          functional_options:,
           options_without_mappigs: []
         )
           sym_value = value.to_sym

@@ -42,7 +42,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "mocha"
   spec.add_development_dependency "pry"
-  spec.add_development_dependency "rubocop", "= 0.82"
+  spec.add_development_dependency "rubocop", "= 1.13.0"
   spec.add_development_dependency "rubocop-github", "~> 0.16.0"
   spec.add_development_dependency "rubocop-performance", "~> 1.7"
   spec.add_development_dependency "simplecov", "~> 0.18.0"

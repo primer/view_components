@@ -12,6 +12,7 @@ module ERBLint
         TEST_SELECTOR_REGEX = /test_selector\((?<selector>.+)\)$/.freeze
 
         attr_reader :attribute, :erb_helper
+
         def initialize(attribute)
           @attribute = attribute
           @erb_helper = Helpers::ErbBlock.new
