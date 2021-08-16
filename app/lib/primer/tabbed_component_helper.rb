@@ -24,7 +24,7 @@ module Primer
       return yield unless @with_panel
 
       render Primer::TabContainerComponent.new(**system_arguments) do
-        yield
+        yield if block_given?
       end
     end
 

@@ -239,7 +239,7 @@ namespace :docs do
           f.puts
           html = view_context.render(inline: code)
           html.scan(/class="([^"]*)"/) do |classnames|
-            classes_found_in_examples.concat(classnames[0].split(" ").reject { |c| c.starts_with?("octicon", "js", "my-") }.map { ".#{_1}"})
+            classes_found_in_examples.concat(classnames[0].split.reject { |c| c.starts_with?("octicon", "js", "my-") }.map { ".#{_1}" })
           end
           f.puts("<Example src=\"#{html.tr('"', "\'").delete("\n")}\" />")
           f.puts
@@ -383,7 +383,7 @@ namespace :docs do
   end
 
   def pretty_default_value(tag, component)
-    params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
+    params = tag.object.parameters.find { |param| [tag.name.to_s, "#{tag.name}:"].include?(param[0]) }
     default = tag.defaults&.first || params&.second
 
     return "N/A" unless default

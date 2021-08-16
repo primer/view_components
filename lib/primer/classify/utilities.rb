@@ -85,7 +85,7 @@ module Primer
           return { classes: classes } if ENV["RAILS_ENV"] == "production"
 
           obj = {}
-          classes = classes.split(" ")
+          classes = classes.split
           # Loop through all classes supplied and reject ones we find a match for
           # So when we're at the end of the loop we have classes left with any non-system classes.
           classes.reject! do |classname|

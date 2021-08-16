@@ -13,6 +13,14 @@ module Primer
     }.freeze
     PADDING_SUGGESTION = "Perhaps you could consider using :padding options of #{PADDING_MAPPINGS.keys.to_sentence}?"
 
+    DEFAULT_ROW_SCHEME = :default
+    ROW_SCHEME_MAPPINGS = {
+      DEFAULT_ROW_SCHEME => "",
+      :neutral => "Box-row--gray",
+      :info => "Box-row--blue",
+      :warning => "Box-row--yellow"
+    }.freeze
+
     # Optional Header.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -54,11 +62,13 @@ module Primer
 
     # Use Rows to add rows with borders and maintain the same padding.
     #
+    # @param scheme [Symbol] Color scheme. <%= one_of(Primer::BorderBoxComponent::ROW_SCHEME_MAPPINGS.keys) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_many :rows, lambda { |**system_arguments|
+    renders_many :rows, lambda { |scheme: DEFAULT_ROW_SCHEME, **system_arguments|
       system_arguments[:tag] = :li
       system_arguments[:classes] = class_names(
         "Box-row",
+        ROW_SCHEME_MAPPINGS[fetch_or_fallback(ROW_SCHEME_MAPPINGS.keys, scheme, DEFAULT_ROW_SCHEME)],
         system_arguments[:classes]
       )
 
@@ -99,6 +109,22 @@ module Primer
     #     <% end %>
     #     <% component.footer do %>
     #       Footer
+    #     <% end %>
+    #   <% end %>
+    #
+    # @example Row colors
+    #   <%= render(Primer::BorderBoxComponent.new) do |component| %>
+    #     <% component.row do %>
+    #       Default
+    #     <% end %>
+    #     <% component.row(scheme: :neutral) do %>
+    #       Neutral
+    #     <% end %>
+    #     <% component.row(scheme: :info) do %>
+    #       Info
+    #     <% end %>
+    #     <% component.row(scheme: :warning) do %>
+    #       Warning
     #     <% end %>
     #   <% end %>
     #

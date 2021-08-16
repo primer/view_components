@@ -135,7 +135,7 @@ module RuboCop
           # No arguments if they map to the default size
           return if size_attributes.blank? || size_attributes.values.all?(&:blank?)
           # Return mapped argument to `size`
-          return "size: :medium" if size_attributes.values.any? { |val| val == ":medium" }
+          return "size: :medium" if size_attributes.values.any?(":medium")
 
           size_attributes.map do |key, value|
             "#{key}: #{value}"

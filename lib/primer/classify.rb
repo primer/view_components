@@ -107,7 +107,7 @@ module Primer
         extracted_results[:style] = [
           extracted_results.delete(:styles),
           style
-        ].compact.join("").presence
+        ].compact.join.presence
 
         extracted_results
       end
@@ -119,7 +119,7 @@ module Primer
 
         if force_system_arguments? && !ENV["PRIMER_WARNINGS_DISABLED"]
           invalid_class_names =
-            classes.split(" ").each_with_object([]) do |class_name, memo|
+            classes.split.each_with_object([]) do |class_name, memo|
               memo << class_name if Primer::Classify::Validation.invalid?(class_name)
             end
 

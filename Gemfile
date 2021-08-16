@@ -7,23 +7,25 @@ rails_version = (ENV["RAILS_VERSION"] || "6.1.1").to_s
 
 gem "rack-cors"
 gem "rake", "~> 12.0"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-if rails_version != "main"
-  gem "actionview", rails_version
-  gem "activemodel", rails_version
-  gem "activesupport", rails_version
-  gem "railties", rails_version
-else
+
+# rubocop:disable Bundler/DuplicatedGem
+if rails_version == "main"
   git "https://github.com/rails/rails", ref: "main" do
-    # rubocop:disable Bundler/DuplicatedGem
     gem "actionview"
     gem "activemodel"
     gem "activerecord"
     gem "activesupport"
     gem "railties"
-    # rubocop:enable Bundler/DuplicatedGem
   end
+else
+  gem "actionview", rails_version
+  gem "activemodel", rails_version
+  gem "activesupport", rails_version
+  gem "railties", rails_version
 end
+# rubocop:enable Bundler/DuplicatedGem
 
 # Use Puma as the app server
 gem "puma", "~> 5.3.1"

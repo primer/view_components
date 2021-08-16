@@ -50,7 +50,7 @@ class CssCoverageTest < Minitest::Test
 
     # Cleanup the data to make sure it's only one selector per item
     @css_data = @css_data
-                .flat_map { |c| c.gsub(/(\w)\./, '\1 .').split(/[\s:\[\+>]+/) }
+                .flat_map { |c| c.gsub(/(\w)\./, '\1 .').split(/[\s:\[+>]+/) }
                 .select { |c| c.starts_with?(".") }
                 .uniq
   end

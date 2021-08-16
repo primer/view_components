@@ -8,6 +8,7 @@ namespace :utilities do
     require "primer/classify/utilities"
 
     # Keys that are looked for to be included in the utilities.yml file
+    # rubocop:disable Lint/ConstantDefinitionInBlock
     SUPPORTED_KEYS = %i[
       anim
       d
@@ -23,6 +24,7 @@ namespace :utilities do
     ].freeze
 
     BREAKPOINTS = [nil, "sm", "md", "lg", "xl"].freeze
+    # rubocop:enable Lint/ConstantDefinitionInBlock
 
     css_data =
       JSON.parse(
@@ -38,7 +40,7 @@ namespace :utilities do
     css_data.each do |selector|
       selector.sub!(/^./, "")
       # Next if selector has ancestors or sibling selectors
-      next if selector.match?(/[:><~\[\.]/)
+      next if selector.match?(/[:><~\[.]/)
       next unless SUPPORTED_KEYS.any? { |key| selector.start_with?("#{key}-") }
 
       # Dupe so we still have the selector at the end of slicing it up
@@ -50,7 +52,7 @@ namespace :utilities do
         next unless classname.match?(Regexp.new(k))
 
         key = v
-        classname.sub!(Regexp.new(k + "-"), "")
+        classname.sub!(Regexp.new("#{k}-"), "")
       end
 
       # If we didn't find a replacement, grab the first text before hyphen
@@ -66,7 +68,7 @@ namespace :utilities do
       end
 
       # Change the rest from hypens to underscores
-      classname.sub!(/\-/, "_")
+      classname.sub!(/-/, "_")
 
       # convert padding/margin negative values ie n7 to -7
       classname.sub!(/^n/, "-") if classname.match?(/^n[0-9]/)
