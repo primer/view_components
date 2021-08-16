@@ -77,7 +77,7 @@ module ERBLint
         # including a `classes` key that will contain all classes that the mapper couldn't handle.
         # @returns { classes: Array, ... }
         def classes_to_args(classes)
-          { classes: classes || [] }
+          { classes: classes }
         end
 
         def system_arguments_to_args(classes)
