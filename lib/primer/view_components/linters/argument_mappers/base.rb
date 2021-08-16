@@ -51,7 +51,7 @@ module ERBLint
           erb_helper.raise_if_erb_block(classes_node)
 
           system_arguments = system_arguments_to_args(classes_node.value)
-          args = classes_to_args(system_arguments[:classes])
+          args = classes_to_args(system_arguments[:classes].split)
 
           invalid_classes = args[:classes].select { |class_name| Primer::Classify::Validation.invalid?(class_name) }
 
@@ -77,7 +77,7 @@ module ERBLint
         # including a `classes` key that will contain all classes that the mapper couldn't handle.
         # @returns { classes: Array, ... }
         def classes_to_args(classes)
-          { classes: classes&.split(" ") || [] }
+          { classes: classes || [] }
         end
 
         def system_arguments_to_args(classes)

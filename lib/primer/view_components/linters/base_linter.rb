@@ -37,11 +37,11 @@ module ERBLint
 
           next unless self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
 
-          args = map_arguments(tag)
-          correction = correction(args)
-
           attributes = tag.attributes.each.map(&:name).join(" ")
           matches_required_attributes = self.class::REQUIRED_ARGUMENTS.blank? || self.class::REQUIRED_ARGUMENTS.all? { |arg| attributes.match?(arg) }
+
+          args = map_arguments(tag)
+          correction = correction(args)
 
           tag_tree[tag][:offense] = true
           tag_tree[tag][:correctable] = matches_required_attributes && !correction.nil?
