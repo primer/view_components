@@ -47,8 +47,10 @@ module ERBLint
 
         def attribute_to_args(attribute); end
 
-        def map_classes(classes)
-          system_arguments = system_arguments_to_args(classes.value)
+        def map_classes(classes_node)
+          erb_helper.raise_if_erb_block(classes_node)
+
+          system_arguments = system_arguments_to_args(classes_node.value)
           args = classes_to_args(system_arguments[:classes])
 
           invalid_classes = args[:classes].select { |class_name| Primer::Classify::Validation.invalid?(class_name) }
