@@ -12,6 +12,23 @@ class RubocopDeprecatedArgumentsTest < CopTest
     @cop = cop_class.new(config)
   end
 
+  def test_no_deprecated_arguments
+    investigate(cop, <<-RUBY)
+      Primer::BaseComponent.new(foo: :new_arguement)
+    RUBY
+
+    assert_empty cop.offenses
+  end
+
+  def test_argument_not_a_symbol
+    investigate(cop, <<-RUBY)
+      @val = "deprecated"
+      Primer::BaseComponent.new(foo: @val)
+    RUBY
+
+    assert_empty cop.offenses
+  end
+
   def test_deprecated_argument
     investigate(cop, <<-RUBY)
       Primer::BaseComponent.new(foo: :deprecated)

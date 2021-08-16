@@ -33,6 +33,10 @@ module RuboCop
           @deprecated_arguments = cop_config["Deprecated"] || {}
 
           kwargs.pairs.each do |pair|
+            # Skip if we're not dealing with a symbol
+            next if pair.key.type != :sym
+            next if pair.value.type != :sym
+
             key = pair.key.value
             value = pair.value.value
             next unless @deprecated_arguments.key?(key) && @deprecated_arguments[key].key?(value)
