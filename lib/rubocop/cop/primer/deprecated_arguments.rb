@@ -22,9 +22,10 @@ module RuboCop
 
         # This is a hash of deprecated arguments and their replacements.
         #
-        # * The top level key is the argument.
-        # * The second level key is the value.
-        # * The seceond level value is a string of the full replacement. e.g. "new_argument: :new_value"
+        #   * The top level key is the argument.
+        #   * The second level key is the value.
+        #   * The seceond level value is a string of the full replacement. e.g. "new_argument: :new_value"
+        #     If the value is nil, then there is no replacement.
         #
         # e.g.
         # DEPRECATED = {
