@@ -6,7 +6,11 @@ require "primer/view_components/constants"
 
 module ERBLint
   module Linters
-    # Helper methods for linting ERB.
+    # Provides the base interface for all component linters. Once included, you should define the following constants:
+    # * `TAGS` - required - The HTML tags that the component supports.
+    # * `MESSAGE` - required - The message that will be displayed when there is an offense.
+    # * `CLASSES` -  optional - The CSS classes that indicate that an HTML node corresponds to the component.
+    # * `REQUIRED_ARGUMENTS` optional - The arguments that are required by the component.
     module BaseLinter
       # from https://github.com/Shopify/erb-lint/blob/6179ee2d9d681a6ec4dd02351a1e30eefa748d3d/lib/erb_lint/linters/self_closing_tag.rb
       SELF_CLOSING_TAGS = %w[
