@@ -15,6 +15,8 @@ module ERBLint
       ].freeze
 
       DUMP_FILE = ".erblint-counter-ignore.json"
+      CLASSES = [].freeze
+      REQUIRED_ARGUMENTS = [].freeze
 
       def self.included(base)
         base.include(ERBLint::LinterRegistry)
@@ -31,7 +33,6 @@ module ERBLint
           next unless self.class::TAGS&.include?(tag.name)
 
           classes = tag.attributes["class"]&.value&.split(" ") || []
-
           tag_tree[tag][:offense] = false
 
           next unless self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
@@ -39,8 +40,11 @@ module ERBLint
           args = map_arguments(tag)
           correction = correction(args)
 
+          attributes = tag.attributes.each.map(&:name).join(" ")
+          matches_required_attributes = self.class::REQUIRED_ARGUMENTS.blank? || self.class::REQUIRED_ARGUMENTS.all? { |arg| attributes.match?(arg) }
+
           tag_tree[tag][:offense] = true
-          tag_tree[tag][:correctable] = !correction.nil?
+          tag_tree[tag][:correctable] = matches_required_attributes && !correction.nil?
           tag_tree[tag][:message] = message(args, processed_source)
           tag_tree[tag][:correction] = correction
         end
