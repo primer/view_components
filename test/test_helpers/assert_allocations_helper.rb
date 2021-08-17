@@ -26,5 +26,18 @@ module Primer
 
       assert_includes range, total, msg
     end
+
+    def expectations_for(type)
+      self.class::EXPECTATIONS[ruby_version][type]
+    end
+
+    def ruby_version
+      return @ruby_version if defined? @ruby_version
+
+      @ruby_version = ENV["RUBY_VERSION"].dup
+      @ruby_version.gsub!("ruby-", "")
+      @ruby_version[-1] = "x"
+      @ruby_version
+    end
   end
 end
