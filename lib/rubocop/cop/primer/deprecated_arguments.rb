@@ -36,13 +36,13 @@ module RuboCop
         #
         DEPRECATED = {
           color: {
-            blue: "color: :link",
-            gray_dark: "color: :primary",
-            gray: "color: :secondary",
-            gray_light: "color: :tertiary",
-            green: "color: :success",
-            yellow: "color: :warning",
-            red: "color: :danger",
+            blue: "color: :text_link",
+            gray_dark: "color: :text_primary",
+            gray: "color: :text_secondary",
+            gray_light: "color: :text_tertiary",
+            green: "color: :text_success",
+            yellow: "color: :text_warning",
+            red: "color: :text_danger",
             gray_0: nil,
             gray_1: nil,
             gray_2: nil,
