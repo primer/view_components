@@ -11,9 +11,9 @@ These presentational system arguments were deprecated in favor of functional col
 | argument | value | replacement |
 | :- | :- | :- |
 | `color:` | `:blue` | `:link` |
-| `color:` | `gray_dark:` | `:primary` |
-| `color:` | `gray:` | `:secondary` |
-| `color:` | `gray_light:` | `:tertiary` |
-| `color:` | `green:` | `:success` |
-| `color:` | `yellow:` | `:warning` |
-| `color:` | `red:` | `:danger` |
+| `color:` | `:gray_dark` | `:primary` |
+| `color:` | `:gray` | `:secondary` |
+| `color:` | `:gray_light` | `:tertiary` |
+| `color:` | `:green` | `:success` |
+| `color:` | `:yellow` | `:warning` |
+| `color:` | `:red` | `:danger` |
