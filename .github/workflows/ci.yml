@@ -78,8 +78,9 @@ jobs:
   benchmark:
     needs: lint
     runs-on: ubuntu-latest
-    matrix:
-      ruby_version: [2.5.x, 2.6.x, 2.7.x, 3.0.x]
+    strategy:
+      matrix:
+        ruby_version: [2.5.x, 2.6.x, 2.7.x, 3.0.x]
     steps:
     - uses: actions/checkout@master
     - name: Setup Ruby
