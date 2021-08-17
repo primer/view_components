@@ -10,10 +10,10 @@ These presentational system arguments were deprecated in favor of functional col
 
 | argument | value | replacement |
 | :- | :- | :- |
-| `color:` | `:blue` | `:link` |
-| `color:` | `:gray_dark` | `:primary` |
-| `color:` | `:gray` | `:secondary` |
-| `color:` | `:gray_light` | `:tertiary` |
-| `color:` | `:green` | `:success` |
-| `color:` | `:yellow` | `:warning` |
-| `color:` | `:red` | `:danger` |
+| `color:` | `:blue` | `:text_link` |
+| `color:` | `:gray_dark` | `:text_primary` |
+| `color:` | `:gray` | `:text_secondary` |
+| `color:` | `:gray_light` | `:text_tertiary` |
+| `color:` | `:green` | `:text_success` |
+| `color:` | `:yellow` | `:text_warning` |
+| `color:` | `:red` | `:text_danger` |
