@@ -38,7 +38,7 @@ class RubocopDeprecatedArgumentsTest < CopTest
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Primer::BaseComponent.new(color: :link)", cop.offenses.first.corrector.rewrite.strip
+    assert_equal "Primer::BaseComponent.new(color: :text_link)", cop.offenses.first.corrector.rewrite.strip
   end
 
   def test_deprecated_argument_autocorrected
@@ -47,7 +47,7 @@ class RubocopDeprecatedArgumentsTest < CopTest
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Primer::BaseComponent.new(color: :link)", cop.offenses.first.corrector.rewrite.strip
+    assert_equal "Primer::BaseComponent.new(color: :text_link)", cop.offenses.first.corrector.rewrite.strip
   end
 
   def test_deprecated_argument_with_nil_not_autocorrected
