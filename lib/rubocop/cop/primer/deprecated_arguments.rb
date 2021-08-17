@@ -20,6 +20,19 @@ module RuboCop
           Avoid using deprecated arguments: https://primer.style/view-components/deprecated.
         STR
 
+        # This is a hash of deprecated arguments and their replacements.
+        #
+        # * The top level key is the argument.
+        # * The second level key is the value.
+        # * The seceond level value is a string of the full replacement. e.g. "new_argument: :new_value"
+        #
+        # e.g.
+        # DEPRECATED = {
+        #   argument: {
+        #     value: "new_argument: :new_value"
+        #   }
+        # }
+        #
         DEPRECATED = {
           color: {
             blue: "color: :link",
