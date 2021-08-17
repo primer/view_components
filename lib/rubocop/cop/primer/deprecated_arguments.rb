@@ -22,13 +22,13 @@ module RuboCop
 
         DEPRECATED = {
           color: {
-            blue: ":link",
-            gray_dark: ":primary",
-            gray: ":secondary",
-            gray_light: ":tertiary",
-            green: ":success",
-            yellow: ":warning",
-            red: ":danger",
+            blue: "color: :link",
+            gray_dark: "color: :primary",
+            gray: "color: :secondary",
+            gray_light: "color: :tertiary",
+            green: "color: :success",
+            yellow: "color: :warning",
+            red: "color: :danger",
             gray_0: nil,
             gray_1: nil,
             gray_2: nil,
@@ -138,7 +138,7 @@ module RuboCop
         def autocorrect(node)
           lambda do |corrector|
             replacement = DEPRECATED[node.key.value][node.value.value.to_sym]
-            corrector.replace(node, "#{node.key.value}: #{replacement}") if replacement.present?
+            corrector.replace(node, replacement) if replacement.present?
           end
         end
 
