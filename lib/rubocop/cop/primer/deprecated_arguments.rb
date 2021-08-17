@@ -35,10 +35,11 @@ module RuboCop
           kwargs.pairs.each do |pair|
             # Skip if we're not dealing with a symbol
             next if pair.key.type != :sym
-            next if pair.value.type != :sym
+            next unless pair.value.type == :sym || pair.value.type == :str
 
             key = pair.key.value
-            value = pair.value.value
+            value = pair.value.value.to_sym
+
             next unless @deprecated_arguments.key?(key) && @deprecated_arguments[key].key?(value)
 
             add_offense(pair, message: INVALID_MESSAGE)
@@ -47,7 +48,7 @@ module RuboCop
 
         def autocorrect(node)
           lambda do |corrector|
-            replacement = @deprecated_arguments[node.key.value][node.value.value]
+            replacement = @deprecated_arguments[node.key.value][node.value.value.to_sym]
             corrector.replace(node, "#{node.key.value}: #{replacement}") if replacement.present?
           end
         end

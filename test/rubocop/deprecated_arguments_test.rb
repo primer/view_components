@@ -37,6 +37,15 @@ class RubocopDeprecatedArgumentsTest < CopTest
     assert_equal 1, cop.offenses.count
   end
 
+  def test_deprecated_argument_as_a_string
+    investigate(cop, <<-RUBY)
+      Primer::BaseComponent.new(foo: "deprecated")
+    RUBY
+
+    assert_equal 1, cop.offenses.count
+    assert_equal "Primer::BaseComponent.new(foo: :new_argument)", cop.offenses.first.corrector.rewrite.strip
+  end
+
   def test_multiple_deprecated_argument
     investigate(cop, <<-RUBY)
       Primer::BaseComponent.new(foo: :deprecated, bar: :deprecated, baz: :bin)
