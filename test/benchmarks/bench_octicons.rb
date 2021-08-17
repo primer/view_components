@@ -16,7 +16,7 @@ class BenchOcticons < Minitest::Benchmark
       with_cache: 24
     },
     "2.7.x" => {
-      without_cache: 43..45,
+      without_cache: 42..45,
       with_cache: 19..21
     },
     "3.0.x" => {
