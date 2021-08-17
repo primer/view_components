@@ -36,6 +36,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan*
 
+* Add cop to look for deprecated system arguments and suggest replacements.
+
+    *Jon Rohan*
+
 * Add cop to use `primer_octicon` in favor of `octicon`.
 
     *Manuel Puyol*
