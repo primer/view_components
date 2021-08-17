@@ -7,9 +7,21 @@ class BenchClassify < Minitest::Benchmark
   include Primer::AssertAllocationsHelper
 
   EXPECTATIONS = {
-    "2.7.3" => {
+    "2.5.x" => {
+      without_cache: 70,
+      with_cache: 27
+    },
+    "2.6.x" => {
+      without_cache: 69,
+      with_cache: 26
+    },
+    "2.7.x" => {
       without_cache: 68,
       with_cache: 25
+    },
+    "3.0.x" => {
+      without_cache: 69..70,
+      with_cache: 26
     }
   }.freeze
 
@@ -63,11 +75,5 @@ class BenchClassify < Minitest::Benchmark
     assert_allocations expectations_for(:with_cache) do
       Primer::Classify.call(**@values)
     end
-  end
-
-  private
-
-  def expectations_for(type)
-    EXPECTATIONS[ENV["RUBY_VERSION"]][type]
   end
 end

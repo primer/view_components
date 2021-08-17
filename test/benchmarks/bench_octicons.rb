@@ -7,8 +7,20 @@ class BenchOcticons < Minitest::Benchmark
   include Primer::AssertAllocationsHelper
 
   EXPECTATIONS = {
-    "2.7.3" => {
-      without_cache: 43,
+    "2.5.x" => {
+      without_cache: 53,
+      with_cache: 27
+    },
+    "2.6.x" => {
+      without_cache: 49,
+      with_cache: 24
+    },
+    "2.7.x" => {
+      without_cache: 43..45,
+      with_cache: 19..21
+    },
+    "3.0.x" => {
+      without_cache: 50..51,
       with_cache: 19..21
     }
   }.freeze
@@ -34,11 +46,5 @@ class BenchOcticons < Minitest::Benchmark
     assert_allocations expectations_for(:with_cache) do
       Primer::OcticonComponent.new(**@options)
     end
-  end
-
-  private
-
-  def expectations_for(type)
-    EXPECTATIONS[ENV["RUBY_VERSION"]][type]
   end
 end
