@@ -7,14 +7,9 @@ class RubocopDeprecatedArgumentsTest < CopTest
     RuboCop::Cop::Primer::DeprecatedArguments
   end
 
-  def setup
-    config = RuboCop::Config.new({ "Primer/DeprecatedArguments" => { "Enabled" => true, "Deprecated" => { foo: { deprecated: ":new_argument" }, bar: { deprecated: nil } } } })
-    @cop = cop_class.new(config)
-  end
-
   def test_no_deprecated_arguments
     investigate(cop, <<-RUBY)
-      Primer::BaseComponent.new(foo: :new_arguement)
+      Primer::BaseComponent.new(color: :danger)
     RUBY
 
     assert_empty cop.offenses
@@ -22,8 +17,8 @@ class RubocopDeprecatedArgumentsTest < CopTest
 
   def test_argument_not_a_symbol
     investigate(cop, <<-RUBY)
-      @val = "deprecated"
-      Primer::BaseComponent.new(foo: @val)
+      @val = "blue"
+      Primer::BaseComponent.new(color: @val)
     RUBY
 
     assert_empty cop.offenses
@@ -31,7 +26,7 @@ class RubocopDeprecatedArgumentsTest < CopTest
 
   def test_deprecated_argument
     investigate(cop, <<-RUBY)
-      Primer::BaseComponent.new(foo: :deprecated)
+      Primer::BaseComponent.new(color: :blue)
     RUBY
 
     assert_equal 1, cop.offenses.count
@@ -39,33 +34,25 @@ class RubocopDeprecatedArgumentsTest < CopTest
 
   def test_deprecated_argument_as_a_string
     investigate(cop, <<-RUBY)
-      Primer::BaseComponent.new(foo: "deprecated")
+      Primer::BaseComponent.new(color: "blue")
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Primer::BaseComponent.new(foo: :new_argument)", cop.offenses.first.corrector.rewrite.strip
-  end
-
-  def test_multiple_deprecated_argument
-    investigate(cop, <<-RUBY)
-      Primer::BaseComponent.new(foo: :deprecated, bar: :deprecated, baz: :bin)
-    RUBY
-
-    assert_equal 2, cop.offenses.count
+    assert_equal "Primer::BaseComponent.new(color: :link)", cop.offenses.first.corrector.rewrite.strip
   end
 
   def test_deprecated_argument_autocorrected
     investigate(cop, <<-RUBY)
-      Primer::BaseComponent.new(foo: :deprecated)
+      Primer::BaseComponent.new(color: :blue)
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Primer::BaseComponent.new(foo: :new_argument)", cop.offenses.first.corrector.rewrite.strip
+    assert_equal "Primer::BaseComponent.new(color: :link)", cop.offenses.first.corrector.rewrite.strip
   end
 
   def test_deprecated_argument_with_nil_not_autocorrected
     investigate(cop, <<-RUBY)
-      Primer::BaseComponent.new(bar: :deprecated)
+      Primer::BaseComponent.new(color: :pink_0)
     RUBY
 
     assert_equal 1, cop.offenses.count
