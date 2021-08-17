@@ -85,11 +85,11 @@ jobs:
     - name: Setup Ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 3.0
+        ruby-version: ${{ matrix.ruby_version }}
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
-        key: gems-build-bench-ruby-3.0-${{ hashFiles('**/Gemfile.lock') }}
+        key: gems-build-bench-ruby-${{ matrix.ruby_version }}-${{ hashFiles('**/Gemfile.lock') }}
     - name: Build and test with Rake
       run: |
         gem install bundler:2.2.9
