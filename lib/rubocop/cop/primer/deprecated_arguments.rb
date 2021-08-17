@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "rubocop"
-require "primer/classify/utilities"
 require "primer/view_components/statuses"
 require_relative "../../../../app/lib/primer/view_helper"
 
