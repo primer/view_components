@@ -7,8 +7,7 @@ require_relative "argument_mappers/label"
 module ERBLint
   module Linters
     # Counts the number of times a HTML label is used instead of the component.
-    class LabelComponentMigrationCounter < Linter
-      include BaseLinter
+    class LabelComponentMigrationCounter < BaseLinter
       include Autocorrectable
 
       TAGS = Primer::ViewComponents::Constants.get(

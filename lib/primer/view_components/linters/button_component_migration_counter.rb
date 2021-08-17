@@ -7,8 +7,7 @@ require_relative "argument_mappers/button"
 module ERBLint
   module Linters
     # Counts the number of times a HTML button is used instead of the component.
-    class ButtonComponentMigrationCounter < Linter
-      include BaseLinter
+    class ButtonComponentMigrationCounter < BaseLinter
       include Autocorrectable
 
       TAGS = Primer::ViewComponents::Constants.get(

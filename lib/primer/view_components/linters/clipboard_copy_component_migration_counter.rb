@@ -7,8 +7,7 @@ require_relative "argument_mappers/clipboard_copy"
 module ERBLint
   module Linters
     # Counts the number of times a HTML clipboard-copy is used instead of the component.
-    class ClipboardCopyComponentMigrationCounter < Linter
-      include BaseLinter
+    class ClipboardCopyComponentMigrationCounter < BaseLinter
       include Autocorrectable
 
       TAGS = %w[clipboard-copy].freeze
