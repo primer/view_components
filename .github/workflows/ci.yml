@@ -79,7 +79,6 @@ jobs:
     needs: lint
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
       matrix:
         rails_version: [5.2.3, 6.1.1, main]
         ruby_version: [2.5.x, 2.6.x, 2.7.x, 3.0.x]
