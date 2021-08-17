@@ -8,8 +8,8 @@ class BenchOcticons < Minitest::Benchmark
 
   EXPECTATIONS = {
     "2.5.x" => {
-      without_cache: 53,
-      with_cache: 27
+      without_cache: 54,
+      with_cache: 28
     },
     "2.6.x" => {
       without_cache: 49,
@@ -20,7 +20,7 @@ class BenchOcticons < Minitest::Benchmark
       with_cache: 19..21
     },
     "3.0.x" => {
-      without_cache: 50..51,
+      without_cache: 43,
       with_cache: 19..21
     }
   }.freeze
