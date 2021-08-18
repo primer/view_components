@@ -36,6 +36,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan*
 
+* Add cop to look for deprecated system arguments and suggest replacements.
+
+    *Jon Rohan*
+
 * Add cop to use `primer_octicon` in favor of `octicon`.
 
     *Manuel Puyol*
@@ -57,6 +61,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
     *Cameron Dutro*
 
 * Linters will not autocorrect cases where a required argument is missing.
+
+    *Manuel Puyol*
+
+### Misc
+
+* Update benchmarks to run in every supported Ruby version.
 
     *Manuel Puyol*
 
