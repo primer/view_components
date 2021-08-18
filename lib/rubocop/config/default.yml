@@ -12,3 +12,6 @@ Primer/NoTagMemoize:
 
 Primer/PrimerOcticon:
   Enabled: true
+
+Primer/DeprecatedArguments:
+  Enabled: true
