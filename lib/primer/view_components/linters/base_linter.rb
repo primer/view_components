@@ -146,9 +146,11 @@ module ERBLint
 
           tag_tree[tag] = {
             closing: self_closing ? tag : nil,
-            parent: current_opened_tag
+            parent: current_opened_tag,
+            children: []
           }
 
+          tag_tree[current_opened_tag][:children] << tag_tree[tag] if current_opened_tag
           current_opened_tag = tag unless self_closing
         end
 
