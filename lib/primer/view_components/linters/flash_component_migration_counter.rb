@@ -14,6 +14,7 @@ module ERBLint
       CLASSES = %w[flash].freeze
       MESSAGE = "We are migrating flashes to use [Primer::FlashComponent](https://primer.style/view-components/components/flash), please try to use that instead of raw HTML."
       ARGUMENT_MAPPER = ArgumentMappers::Flash
+      COMPONENT = "Primer::FlashComponent"
 
       def map_arguments(tag, tag_tree)
         # We can only autocorrect elements with simple text as content.
