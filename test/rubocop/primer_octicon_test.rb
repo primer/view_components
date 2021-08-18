@@ -20,21 +20,31 @@ class RubocopPrimerOcticonTest < CopTest
       octicon(:icon)
     RUBY
 
-    assert_equal 1, cop.offenses.count
-    assert_equal "Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.\n", cop.offenses.first.message
+    assert_correction "primer_octicon(:icon)"
   end
 
-  def test_octicon_with_size
+  def test_octicon_with_number_size
     investigate(cop, <<-RUBY)
-      octicon(:icon, size: 10)
-      octicon(:icon, size: '10')
-      octicon(:icon, size: '10px')
+      octicon(:icon, size: 30)
     RUBY
 
-    assert_equal 3, cop.offenses.count
-    cop.offenses.each do |offense|
-      assert_equal "Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.\n", offense.message
-    end
+    assert_correction "primer_octicon(:icon, size: 30)"
+  end
+
+  def test_octicon_with_string_size
+    investigate(cop, <<-RUBY)
+      octicon(:icon, size: '30')
+    RUBY
+
+    assert_correction "primer_octicon(:icon, size: 30)"
+  end
+
+  def test_octicon_with_px_size
+    investigate(cop, <<-RUBY)
+      octicon(:icon, size: '30px')
+    RUBY
+
+    assert_correction "primer_octicon(:icon, size: 30)"
   end
 
   def test_octicon_with_invalid_size
@@ -46,17 +56,28 @@ class RubocopPrimerOcticonTest < CopTest
     assert_empty cop.offenses
   end
 
-  def test_octicon_with_width
+  def test_octicon_with_number_width
     investigate(cop, <<-RUBY)
-      octicon(:icon, width: 10)
-      octicon(:icon, width: '10')
-      octicon(:icon, width: '10px')
+      octicon(:icon, width: 30)
     RUBY
 
-    assert_equal 3, cop.offenses.count
-    cop.offenses.each do |offense|
-      assert_equal "Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.\n", offense.message
-    end
+    assert_correction "primer_octicon(:icon, width: 30)"
+  end
+
+  def test_octicon_with_string_width
+    investigate(cop, <<-RUBY)
+      octicon(:icon, width: '30')
+    RUBY
+
+    assert_correction "primer_octicon(:icon, width: 30)"
+  end
+
+  def test_octicon_with_px_width
+    investigate(cop, <<-RUBY)
+      octicon(:icon, width: '30px')
+    RUBY
+
+    assert_correction "primer_octicon(:icon, width: 30)"
   end
 
   def test_octicon_with_invalid_width
@@ -68,17 +89,28 @@ class RubocopPrimerOcticonTest < CopTest
     assert_empty cop.offenses
   end
 
-  def test_octicon_with_height
+  def test_octicon_with_number_height
     investigate(cop, <<-RUBY)
-      octicon(:icon, height: 10)
-      octicon(:icon, height: '10')
-      octicon(:icon, height: '10px')
+      octicon(:icon, height: 30)
     RUBY
 
-    assert_equal 3, cop.offenses.count
-    cop.offenses.each do |offense|
-      assert_equal "Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.\n", offense.message
-    end
+    assert_correction "primer_octicon(:icon, height: 30)"
+  end
+
+  def test_octicon_with_string_height
+    investigate(cop, <<-RUBY)
+      octicon(:icon, height: '30')
+    RUBY
+
+    assert_correction "primer_octicon(:icon, height: 30)"
+  end
+
+  def test_octicon_with_px_height
+    investigate(cop, <<-RUBY)
+      octicon(:icon, height: '30px')
+    RUBY
+
+    assert_correction "primer_octicon(:icon, height: 30)"
   end
 
   def test_octicon_with_invalid_height
@@ -95,8 +127,7 @@ class RubocopPrimerOcticonTest < CopTest
       octicon(:icon, class: "mr-1")
     RUBY
 
-    assert_equal 1, cop.offenses.count
-    assert_equal "Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.\n", cop.offenses.first.message
+    assert_correction "primer_octicon(:icon, mr: 1)"
   end
 
   def test_octicon_with_custom_class
@@ -104,8 +135,7 @@ class RubocopPrimerOcticonTest < CopTest
       octicon(:icon, class: "mr-1 custom")
     RUBY
 
-    assert_equal 1, cop.offenses.count
-    assert_equal "Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.\n", cop.offenses.first.message
+    assert_correction "primer_octicon(:icon, mr: 1, classes: \"custom\")"
   end
 
   def test_octicon_with_class_that_cant_be_converted
@@ -129,8 +159,7 @@ class RubocopPrimerOcticonTest < CopTest
       octicon("icon")
     RUBY
 
-    assert_equal 1, cop.offenses.count
-    assert_equal "Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.\n", cop.offenses.first.message
+    assert_correction "primer_octicon(:icon)"
   end
 
   def test_octicon_with_icon_block
@@ -138,8 +167,7 @@ class RubocopPrimerOcticonTest < CopTest
       octicon(some_call ? :icon : :other_icon)
     RUBY
 
-    assert_equal 1, cop.offenses.count
-    assert_equal "Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.\n", cop.offenses.first.message
+    assert_correction "primer_octicon(some_call ? :icon : :other_icon)"
   end
 
   def test_octicon_with_unknown_attribute
@@ -156,5 +184,29 @@ class RubocopPrimerOcticonTest < CopTest
     RUBY
 
     assert_empty cop.offenses
+  end
+
+  def test_octicon_with_aria_attribute
+    investigate(cop, <<-RUBY)
+      octicon(:icon, "aria-label": "label")
+    RUBY
+
+    assert_correction "primer_octicon(:icon, \"aria-label\": \"label\")"
+  end
+
+  def test_remove_size
+    investigate(cop, <<-RUBY)
+      octicon(:icon, size: 10)
+    RUBY
+
+    assert_correction "primer_octicon(:icon)"
+  end
+
+  def test_medium_size
+    investigate(cop, <<-RUBY)
+      octicon(:icon, height: 22)
+    RUBY
+
+    assert_correction "primer_octicon(:icon, size: :medium)"
   end
 end
