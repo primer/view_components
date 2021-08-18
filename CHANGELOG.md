@@ -30,9 +30,15 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.52
+
 ### New
 
 * Adding `Primer::Beta::Truncate` component to reflect changes in primer/css component [Truncate](https://primer.style/css/components/truncate).
+
+    *Jon Rohan*
+
+* Add cop to look for deprecated system arguments and suggest replacements.
 
     *Jon Rohan*
 
@@ -40,7 +46,19 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Fix release script so it doesn't loop continuously.
+
+    *Cameron Dutro*
+
 ### Updates
+
+* Promote `ClipboardCopy` to beta.
+
+    *Manuel Puyol*
+
+* PrimerOcticon linter supports `aria-` and `data-` attributes.
+
+    *Manuel Puyol*
 
 * Linters can:
   * convert values with ERB interpolations.
@@ -55,6 +73,16 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Upgrade rubocop and support Ruby 3.0.
 
     *Cameron Dutro*
+
+* Linters will not autocorrect cases where a required argument is missing.
+
+    *Manuel Puyol*
+
+### Misc
+
+* Update benchmarks to run in every supported Ruby version.
+
+    *Manuel Puyol*
 
 ## 0.0.51
 

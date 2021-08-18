@@ -12,7 +12,7 @@ module ERBLint
       include Autocorrectable
 
       TAGS = %w[clipboard-copy].freeze
-      CLASSES = %w[].freeze
+      REQUIRED_ARGUMENTS = [/for|value/, "aria-label"].freeze
       MESSAGE = "We are migrating clipboard-copy to use [Primer::ClipboardCopy](https://primer.style/view-components/components/clipboardcopy), please try to use that instead of raw HTML."
       ARGUMENT_MAPPER = ArgumentMappers::ClipboardCopy
       COMPONENT = "Primer::ClipboardCopy"

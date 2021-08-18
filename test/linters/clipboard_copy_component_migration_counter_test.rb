@@ -8,14 +8,14 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
   end
 
   def test_warns_if_there_is_a_html_clipboard_copy
-    @file = "<clipboard-copy>clipboard-copy</clipboard-copy>"
+    @file = "<clipboard-copy value=\"value\" aria-label=\"label\">clipboard-copy</clipboard-copy>"
     @linter.run(processed_source)
 
     refute_empty @linter.offenses
   end
 
   def test_suggests_ignoring_with_correct_number_of_clipboard_copies
-    @file = "<clipboard-copy invalid-attr>clipboard-copy</clipboard-copy><clipboard-copy invalid-attr>clipboard-copy</clipboard-copy><div>not-a-clipboard-copy</div>"
+    @file = "<clipboard-copy>clipboard-copy</clipboard-copy><clipboard-copy>clipboard-copy</clipboard-copy><div>not-a-clipboard-copy</div>"
 
     assert_equal "<%# erblint:counter ClipboardCopyComponentMigrationCounter 2 %>\n#{@file}", corrected_content
   end
@@ -28,35 +28,28 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
   end
 
   def test_suggests_how_to_use_the_component_with_arguments
-    @file = "<clipboard-copy value=\"value\">ClipboardCopy</clipboard-copy>"
+    @file = "<clipboard-copy value=\"value\" aria-label=\"label\">ClipboardCopy</clipboard-copy>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::ClipboardCopy.new(value: \"value\")")
-  end
-
-  def test_suggests_how_to_use_the_component_with_aria_arguments
-    @file = "<clipboard-copy aria-label=\"Some ClipboardCopy\">ClipboardCopy</clipboard-copy>"
-    @linter.run(processed_source)
-
-    assert_includes(offenses.first.message, "render Primer::ClipboardCopy.new(\"aria-label\": \"Some ClipboardCopy\")")
+    assert_includes(offenses.first.message, "render Primer::ClipboardCopy.new(value: \"value\", \"aria-label\": \"label\")")
   end
 
   def test_suggests_how_to_use_the_component_with_data_arguments
-    @file = "<clipboard-copy data-confirm=\"Some confirmation\">ClipboardCopy</clipboard-copy>"
+    @file = "<clipboard-copy value=\"value\" aria-label=\"label\" data-confirm=\"Some confirmation\">ClipboardCopy</clipboard-copy>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::ClipboardCopy.new(\"data-confirm\": \"Some confirmation\")")
+    assert_includes(offenses.first.message, "render Primer::ClipboardCopy.new(value: \"value\", \"aria-label\": \"label\", \"data-confirm\": \"Some confirmation\")")
   end
 
   def test_does_not_suggest_if_using_unsupported_arguments
-    @file = "<clipboard-copy onclick>ClipboardCopy</clipboard-copy>"
+    @file = "<clipboard-copy value=\"value\" aria-label=\"label\" onclick>ClipboardCopy</clipboard-copy>"
     @linter.run(processed_source)
 
     refute_includes(offenses.first.message, "render Primer::ClipboardCopy.new")
   end
 
   def test_does_not_suggest_if_cannot_convert_class
-    @file = "<clipboard-copy class=\"text-center\">ClipboardCopy</clipboard-copy>"
+    @file = "<clipboard-copy value=\"value\" aria-label=\"label\" class=\"text-center\">ClipboardCopy</clipboard-copy>"
     @linter.run(processed_source)
 
     refute_includes(offenses.first.message, "render Primer::ClipboardCopy.new")
@@ -64,12 +57,12 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
 
   def test_autocorrects
     @file = <<~HTML
-      <clipboard-copy>
+      <clipboard-copy value="value" aria-label="label">
         ClipboardCopy 1
-        <clipboard-copy invalid-attr>
+        <clipboard-copy value="value" aria-label="label" invalid-attr>
           Can\'t be autocorrected
         </clipboard-copy>
-        <clipboard-copy value="some value">
+        <clipboard-copy value="value" aria-label="label">
           ClipboardCopy 2
           <a>not a ClipboardCopy</a>
         </clipboard-copy>
@@ -78,12 +71,12 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
 
     expected = <<~HTML
       <%# erblint:counter ClipboardCopyComponentMigrationCounter 1 %>
-      <%= render Primer::ClipboardCopy.new do %>
+      <%= render Primer::ClipboardCopy.new(value: "value", "aria-label": "label") do %>
         ClipboardCopy 1
-        <clipboard-copy invalid-attr>
+        <clipboard-copy value="value" aria-label="label" invalid-attr>
           Can\'t be autocorrected
         </clipboard-copy>
-        <%= render Primer::ClipboardCopy.new(value: "some value") do %>
+        <%= render Primer::ClipboardCopy.new(value: "value", "aria-label": "label") do %>
           ClipboardCopy 2
           <a>not a ClipboardCopy</a>
         <% end %>
@@ -98,13 +91,13 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
   def test_autocorrects_removing_unnecessary_ignores
     @file = <<~HTML
       <%# erblint:counter ClipboardCopyComponentMigrationCounter 1 %>
-      <clipboard-copy>
+      <clipboard-copy value="value" aria-label="label">
         ClipboardCopy 1
       </clipboard-copy>
     HTML
 
     expected = <<~HTML
-      <%= render Primer::ClipboardCopy.new do %>
+      <%= render Primer::ClipboardCopy.new(value: "value", "aria-label": "label") do %>
         ClipboardCopy 1
       <% end %>
     HTML
@@ -115,20 +108,20 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
   def test_autocorrects_ignore_counts
     @file = <<~HTML
       <%# erblint:counter ClipboardCopyComponentMigrationCounter 2 %>
-      <clipboard-copy>
+      <clipboard-copy value="value" aria-label="label">
         ClipboardCopy 1
       </clipboard-copy>
-      <clipboard-copy invalid-attr>
+      <clipboard-copy value="value" aria-label="label" invalid-attr>
         ClipboardCopy 2
       </clipboard-copy>
     HTML
 
     expected = <<~HTML
       <%# erblint:counter ClipboardCopyComponentMigrationCounter 1 %>
-      <%= render Primer::ClipboardCopy.new do %>
+      <%= render Primer::ClipboardCopy.new(value: "value", "aria-label": "label") do %>
         ClipboardCopy 1
       <% end %>
-      <clipboard-copy invalid-attr>
+      <clipboard-copy value="value" aria-label="label" invalid-attr>
         ClipboardCopy 2
       </clipboard-copy>
     HTML
@@ -139,20 +132,20 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
   def test_autocorrects_even_with_correct_ignores
     @file = <<~HTML
       <%# erblint:counter ClipboardCopyComponentMigrationCounter 1 %>
-      <clipboard-copy>
+      <clipboard-copy value="value" aria-label="label">
         ClipboardCopy 1
       </clipboard-copy>
-      <clipboard-copy invalid-attr>
+      <clipboard-copy value="value" aria-label="label" invalid-attr>
         ClipboardCopy 2
       </clipboard-copy>
     HTML
 
     expected = <<~HTML
       <%# erblint:counter ClipboardCopyComponentMigrationCounter 1 %>
-      <%= render Primer::ClipboardCopy.new do %>
+      <%= render Primer::ClipboardCopy.new(value: "value", "aria-label": "label") do %>
         ClipboardCopy 1
       <% end %>
-      <clipboard-copy invalid-attr>
+      <clipboard-copy value="value" aria-label="label" invalid-attr>
         ClipboardCopy 2
       </clipboard-copy>
     HTML
@@ -162,20 +155,20 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
 
   def test_autocorrects_known_system_arguments
     @file = <<~HTML
-      <clipboard-copy class="mr-1 p-3 d-none d-md-block anim-fade-in">
+      <clipboard-copy value="value" aria-label="label" class="mr-1 p-3 d-none d-md-block anim-fade-in">
         clipboard-copy 1
       </clipboard-copy>
-      <clipboard-copy invalid-attr class="mr-1 p-3 d-none d-md-block anim-fade-in">
+      <clipboard-copy invalid-attr value="value" aria-label="label" class="mr-1 p-3 d-none d-md-block anim-fade-in">
         clipboard-copy 2
       </clipboard-copy>
     HTML
 
     expected = <<~HTML
       <%# erblint:counter ClipboardCopyComponentMigrationCounter 1 %>
-      <%= render Primer::ClipboardCopy.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in) do %>
+      <%= render Primer::ClipboardCopy.new(value: "value", "aria-label": "label", mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in) do %>
         clipboard-copy 1
       <% end %>
-      <clipboard-copy invalid-attr class="mr-1 p-3 d-none d-md-block anim-fade-in">
+      <clipboard-copy invalid-attr value="value" aria-label="label" class="mr-1 p-3 d-none d-md-block anim-fade-in">
         clipboard-copy 2
       </clipboard-copy>
     HTML
@@ -185,13 +178,13 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
 
   def test_autocorrects_with_custom_classes
     @file = <<~HTML
-      <clipboard-copy class="mr-1 p-3 d-none d-md-block anim-fade-in custom-1 custom-2">
+      <clipboard-copy value="value" aria-label="label" class="mr-1 p-3 d-none d-md-block anim-fade-in custom-1 custom-2">
         clipboard-copy
       </clipboard-copy>
     HTML
 
     expected = <<~HTML
-      <%= render Primer::ClipboardCopy.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, classes: "custom-1 custom-2") do %>
+      <%= render Primer::ClipboardCopy.new(value: "value", "aria-label": "label", mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, classes: "custom-1 custom-2") do %>
         clipboard-copy
       <% end %>
     HTML
@@ -201,13 +194,13 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
 
   def test_autocorrects_basic_erb_interpolation
     @file = <<~HTML
-      <clipboard-copy value="<%= some_call %>">
+      <clipboard-copy value="<%= some_call %>" aria-label="label">
         clipboard-copy
       </clipboard-copy>
     HTML
 
     expected = <<~HTML
-      <%= render Primer::ClipboardCopy.new(value: some_call) do %>
+      <%= render Primer::ClipboardCopy.new(value: some_call, "aria-label": "label") do %>
         clipboard-copy
       <% end %>
     HTML
@@ -217,13 +210,13 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
 
   def test_autocorrects_interpolation_with_string
     @file = <<~HTML
-      <clipboard-copy value="string-<%= some_call %>">
+      <clipboard-copy value="string-<%= some_call %>" aria-label="label">
         clipboard-copy
       </clipboard-copy>
     HTML
 
     expected = <<~'HTML'
-      <%= render Primer::ClipboardCopy.new(value: "string-#{ some_call }") do %>
+      <%= render Primer::ClipboardCopy.new(value: "string-#{ some_call }", "aria-label": "label") do %>
         clipboard-copy
       <% end %>
     HTML
@@ -233,13 +226,13 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
 
   def test_autocorrects_multiple_interpolations
     @file = <<~HTML
-      <clipboard-copy value="string-<%= some_call %><%= other_call %>-more-<%= another_call %>">
+      <clipboard-copy value="string-<%= some_call %><%= other_call %>-more-<%= another_call %>" aria-label="label">
         clipboard-copy
       </clipboard-copy>
     HTML
 
     expected = <<~'HTML'
-      <%= render Primer::ClipboardCopy.new(value: "string-#{ some_call }#{ other_call }-more-#{ another_call }") do %>
+      <%= render Primer::ClipboardCopy.new(value: "string-#{ some_call }#{ other_call }-more-#{ another_call }", "aria-label": "label") do %>
         clipboard-copy
       <% end %>
     HTML
