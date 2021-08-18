@@ -44,6 +44,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Fix release script so it doesn't loop continuously.
+
+    *Cameron Dutro*
+
 ### Updates
 
 * PrimerOcticon linter supports `aria-` and `data-` attributes.
