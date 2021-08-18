@@ -18,9 +18,14 @@ module ERBLint
       CLASSES = [].freeze
       REQUIRED_ARGUMENTS = [].freeze
 
+      class ConfigSchema < LinterConfig
+        property :override_ignores_if_correctable, accepts: [true, false], default: false, reader: :override_ignores_if_correctable?
+      end
+
       def self.inherited(base)
         super
         base.include(ERBLint::LinterRegistry)
+        base.config_schema = ConfigSchema
       end
 
       def run(processed_source)
@@ -177,6 +182,12 @@ module ERBLint
         if @offenses_not_corrected.zero?
           # have to adjust to get `\n` so we delete the whole line
           add_offense(processed_source.to_source_range(comment_node.loc.adjust(end_pos: 1)), "Unused erblint:count comment for #{rule_name}", "") if comment_node
+          return
+        end
+
+        # Unless explicitly set, we don't want to mark correctable offenses if the counter is correct.
+        if !@config.override_ignores_if_correctable? && expected_count == @total_offenses
+          clear_offenses
           return
         end
 
