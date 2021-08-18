@@ -43,7 +43,7 @@ module ERBLint
 
           next unless self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
 
-          args = map_arguments(tag)
+          args = map_arguments(tag, tag_tree[tag])
           correction = correction(args)
 
           attributes = tag.attributes.each.map(&:name).join(" ")

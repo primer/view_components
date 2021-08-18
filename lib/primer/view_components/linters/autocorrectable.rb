@@ -8,7 +8,7 @@ module ERBLint
     # * `ARGUMENT_MAPPER` - required - The class responsible for transforming classes and attributes into arguments for the component.
     # * `COMPONENT` - required - The component name for the linter. It will be used to generate the correction.
     module Autocorrectable
-      def map_arguments(tag)
+      def map_arguments(tag, _tag_tree)
         self.class::ARGUMENT_MAPPER.new(tag).to_s
       rescue ArgumentMappers::ConversionError
         nil
