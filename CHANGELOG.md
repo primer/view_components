@@ -50,6 +50,14 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+* Promote `ClipboardCopy` to beta.
+
+    *Manuel Puyol*
+
+* PrimerOcticon linter supports `aria-` and `data-` attributes.
+
+    *Manuel Puyol*
+
 * Linters can:
   * convert values with ERB interpolations.
   * autocorrect cases with custom classes.
