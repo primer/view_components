@@ -47,6 +47,22 @@ class BaseLinterTest < LinterTestCase
     assert_equal [tree[processed_tags.second]], tree[processed_tags.first][:children]
   end
 
+  def test_tree_with_children_between_text
+    @file = <<~HTML
+      <div>
+        some <strong>bold</strong> text
+      </div>
+    HTML
+
+    processed_tags = tags
+    tree = build_tag_tree(processed_tags)
+
+    assert_equal [processed_tags.first, processed_tags.second], tree.keys
+    assert_equal processed_tags.last, tree[processed_tags.first][:closing]
+    assert_equal processed_tags.third, tree[processed_tags.second][:closing]
+    assert_equal [tree[processed_tags.second]], tree[processed_tags.first][:children]
+  end
+
   def test_tree_with_multiple_children
     @file = <<~HTML
       <div>

@@ -92,7 +92,7 @@ module ERBLint
       #
       # @return [Hash] if possible to map all attributes to arguments.
       # @return [Nil] if cannot map to arguments.
-      def map_arguments(_tag)
+      def map_arguments(_tag, _tag_tree)
         nil
       end
 
