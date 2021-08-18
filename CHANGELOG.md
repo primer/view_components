@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Updates
+
+* Linters won't mark offenses when the ignore count is correct unless explicitly configured to do so.
+
+    *Manuel Puyol*
+
 ## 0.0.52
 
 ### New
