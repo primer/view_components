@@ -88,24 +88,22 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
     assert_equal expected, result
   end
 
-  def test_autocorrects_removing_unnecessary_ignores
+  def test_does_not_autocorrects_when_ignores_are_correct
     @file = <<~HTML
-      <%# erblint:counter ClipboardCopyComponentMigrationCounter 1 %>
+      <%# erblint:counter ClipboardCopyComponentMigrationCounter 2 %>
       <clipboard-copy value="value" aria-label="label">
         ClipboardCopy 1
       </clipboard-copy>
+      <clipboard-copy value="value" aria-label="label" invalid-attr>
+        ClipboardCopy 2
+      </clipboard-copy>
     HTML
 
-    expected = <<~HTML
-      <%= render Primer::ClipboardCopy.new(value: "value", "aria-label": "label") do %>
-        ClipboardCopy 1
-      <% end %>
-    HTML
-
-    assert_equal expected, corrected_content
+    assert_equal @file, corrected_content
   end
 
-  def test_autocorrects_ignore_counts
+  def test_autocorrects_ignore_counts_if_override_enabled
+    @linter = linter_with_override
     @file = <<~HTML
       <%# erblint:counter ClipboardCopyComponentMigrationCounter 2 %>
       <clipboard-copy value="value" aria-label="label">
