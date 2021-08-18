@@ -47,7 +47,7 @@ module ERBLint
         end
 
         def classes_to_args(classes)
-          classes.split.each_with_object({ classes: [] }) do |class_name, acc|
+          classes.each_with_object({ classes: [] }) do |class_name, acc|
             next if class_name == "btn"
 
             if SCHEME_MAPPINGS[class_name] && acc[:scheme].nil?
