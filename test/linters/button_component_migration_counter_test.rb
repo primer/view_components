@@ -3,15 +3,18 @@
 require "linter_test_case"
 
 class ButtonComponentMigrationCounterTest < LinterTestCase
+  include Primer::BasicLinterSharedTests
+
   def linter_class
     ERBLint::Linters::ButtonComponentMigrationCounter
   end
 
-  def test_warns_if_there_is_a_html_button
-    @file = "<button class=\"btn\">Button</button>"
-    @linter.run(processed_source)
+  def default_tag
+    "button"
+  end
 
-    refute_empty @linter.offenses
+  def default_class
+    "btn"
   end
 
   def test_warns_if_there_is_a_html_link_button
@@ -19,26 +22,6 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
     @linter.run(processed_source)
 
     refute_empty @linter.offenses
-  end
-
-  def test_suggests_ignoring_with_correct_number_of_buttons
-    @file = "<button invalid-attr class=\"btn\">Button</button><button invalid-attr class=\"btn\">Button</button><button class=\"not-a-btn\">Button</button>"
-
-    assert_equal "<%# erblint:counter ButtonComponentMigrationCounter 2 %>\n#{@file}", corrected_content
-  end
-
-  def test_suggests_updating_the_number_of_ignored_buttons
-    @file = "<%# erblint:counter ButtonComponentMigrationCounter 1 %>\n<button invalid-attr class=\"btn\">Button</button><button invalid-attr class=\"btn\">Button</button><button class=\"not-a-btn\">Button</button>"
-    @linter.run(processed_source)
-
-    assert_equal "<%# erblint:counter ButtonComponentMigrationCounter 2 %>", offenses.last.context
-  end
-
-  def test_does_not_warn_if_wrong_tag
-    @file = "<span class=\"btn\">Button</span>"
-    @linter.run(processed_source)
-
-    assert_empty @linter.offenses
   end
 
   def test_suggests_how_to_use_the_component_with_arguments
