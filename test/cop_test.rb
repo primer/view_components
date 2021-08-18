@@ -21,4 +21,9 @@ class CopTest < MiniTest::Test
     commissioner.investigate(processed_source)
     commissioner
   end
+
+  def assert_correction(correction)
+    refute_empty cop.offenses
+    assert_equal correction, cop.offenses.first.corrector.rewrite.strip
+  end
 end

@@ -27,8 +27,12 @@ module RuboCop
           Replace the octicon helper with primer_octicon. See https://primer.style/view-components/components/octicon for details.
         STR
 
-        SIZE_ATTRIBUTES = %i[height width size].freeze
-        VALID_ATTRIBUTES = [*SIZE_ATTRIBUTES, :class].freeze
+        SIZE_ATTRIBUTES = %w[height width size].freeze
+        STRING_ATTRIBUTES = %w[aria- data-].freeze
+        VALID_ATTRIBUTES = [*SIZE_ATTRIBUTES, *STRING_ATTRIBUTES, "class"].freeze
+
+        STRING_ATTRIBUTE_REGEX = Regexp.union(STRING_ATTRIBUTES).freeze
+        ATTRIBUTE_REGEX = Regexp.union(VALID_ATTRIBUTES).freeze
         INVALID_ATTRIBUTE = -1
 
         def on_send(node)
@@ -42,7 +46,7 @@ module RuboCop
           attributes = kwargs.keys.map(&:value)
 
           # Don't convert unknown attributes
-          return unless (attributes - VALID_ATTRIBUTES).empty?
+          return unless attributes.all? { |attribute| attribute.match?(ATTRIBUTE_REGEX) }
           # Can't convert size
           return if octicon_size_attributes(kwargs) == INVALID_ATTRIBUTE
 
@@ -65,13 +69,12 @@ module RuboCop
 
         def autocorrect(node)
           lambda do |corrector|
-            icon_node = node.arguments.first
             kwargs = kwargs(node)
 
             # Converting arguments for the component
             classes = classes(kwargs)
             size_attributes = transform_sizes(kwargs)
-            args = arguments_as_string(icon_node, size_attributes, classes)
+            args = arguments_as_string(node, size_attributes, classes)
 
             corrector.replace(node.loc.expression, "primer_octicon(#{args})")
           end
@@ -95,7 +98,7 @@ module RuboCop
 
         def octicon_size_attributes(kwargs)
           kwargs.pairs.each_with_object({}) do |pair, h|
-            next unless SIZE_ATTRIBUTES.include?(pair.key.value)
+            next unless SIZE_ATTRIBUTES.include?(pair.key.value.to_s)
 
             # We only support string or int values.
             case pair.value.type
@@ -119,16 +122,16 @@ module RuboCop
           class_arg.value.value
         end
 
-        def arguments_as_string(icon_node, size_attributes, classes)
-          args = icon(icon_node)
-
+        def arguments_as_string(node, size_attributes, classes)
+          args = icon(node.arguments.first)
           size_args = size_attributes_to_string(size_attributes)
-          args = "#{args}, #{size_args}" if size_args.present?
+          string_args = string_args_to_string(node)
 
-          return args if classes.blank?
+          args = "#{args}, #{size_attributes_to_string(size_attributes)}" if size_args.present?
+          args = "#{args}, #{::Primer::Classify::Utilities.classes_to_args(classes)}" if classes.present?
+          args = "#{args}, #{string_args}" if string_args.present?
 
-          system_args = ::Primer::Classify::Utilities.classes_to_args(classes)
-          "#{args}, #{system_args}"
+          args
         end
 
         def size_attributes_to_string(size_attributes)
@@ -140,6 +143,19 @@ module RuboCop
           size_attributes.map do |key, value|
             "#{key}: #{value}"
           end.join(", ")
+        end
+
+        def string_args_to_string(node)
+          kwargs = kwargs(node)
+
+          args = kwargs.pairs.each_with_object([]) do |pair, acc|
+            next unless pair.key.value.to_s.match?(STRING_ATTRIBUTE_REGEX)
+
+            key =  pair.key.value.to_s == "data-test-selector" ? "test_selector" : "\"#{pair.key.value}\""
+            acc << "#{key}: #{pair.value.source}"
+          end
+
+          args.join(",")
         end
 
         def kwargs(node)
