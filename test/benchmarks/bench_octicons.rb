@@ -15,7 +15,7 @@ class BenchOcticons < Minitest::Benchmark
   def bench_allocations_without_cache
     Primer::OcticonComponent.new(**@options)
     Primer::Octicon::Cache.clear!
-    assert_allocations "3.0" => 60, "2.7" => 44, "2.6" => 50, "2.5" => 54 do
+    assert_allocations "3.0" => 60, "2.7" => 43, "2.6" => 50, "2.5" => 54 do
       Primer::OcticonComponent.new(**@options)
     end
   ensure
