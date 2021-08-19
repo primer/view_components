@@ -9,11 +9,15 @@ class PrimerUnderlineNavComponentTest < Minitest::Test
     err = assert_raises Primer::TabbedComponentHelper::MultipleSelectedTabsError do
       render_inline(Primer::UnderlineNavComponent.new(label: "label")) do |c|
         c.tab(selected: true) do
+          # :nocov:
           "Tab 1"
+          # :nocov:
         end
         c.tab { "Tab 2" }
         c.tab(selected: true) do
+          # :nocov:
           "Tab 3"
+          # :nocov:
         end
       end
     end

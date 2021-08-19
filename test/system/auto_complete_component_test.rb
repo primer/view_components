@@ -22,4 +22,16 @@ class IntegrationAutoCompleteTest < ApplicationSystemTestCase
     assert_selector("ul[id=\"test-id\"].autocomplete-results", visible: true)
     assert_selector(".autocomplete-item")
   end
+
+  def test_renders_label
+    with_preview(:with_visible_label)
+
+    assert_selector("label[for=\"input-id\"]", text: "This is a label", visible: true)
+  end
+
+  def test_renders_icon
+    with_preview(:with_icon)
+
+    assert_selector("svg.octicon.octicon-search")
+  end
 end

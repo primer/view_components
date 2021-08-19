@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nocov:
 # based on https://github.com/y-yagi/minitest-retry/blob/master/lib/minitest/retry.rb
 module Minitest
   module Retry
