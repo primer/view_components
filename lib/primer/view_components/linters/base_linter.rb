@@ -183,6 +183,7 @@ module ERBLint
           end
         end
 
+        # Unless explicitly set, we don't want to mark correctable offenses if the counter is correct.
         if !@config.override_ignores_if_correctable? && expected_count == @total_offenses
           clear_offenses
           return
