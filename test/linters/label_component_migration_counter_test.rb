@@ -38,6 +38,7 @@ class LabelComponentMigrationCounterTest < LinterTestCase
 
     assert_includes(offenses.first.message, "render Primer::LabelComponent.new(tag: :div)")
   end
+
   def test_autocorrects
     @file = <<~HTML
       <span class="Label Label--primary">
