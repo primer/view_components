@@ -40,6 +40,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Kristján Oddsson*
 
+### Misc
+
+* Only run CHANGELOG CI on pull requests.
+
+    *Manuel Puyol*
+
 * Run CI actions on pushes to main.
 
     *Cameron Dutro*
