@@ -13,7 +13,10 @@ Rake::TestTask.new(:test) do |t|
 
   t.libs << "test"
   t.libs << "lib"
-  t.test_files = FileList.new(ENV["TESTS"] || "test/**/*_test.rb")
+  t.test_files = FileList[
+    ENV["TESTS"] || "test/**/*_test.rb",
+    "test/benchmarks/**/bench_*.rb"
+  ]
 end
 
 Rake::TestTask.new(:bench) do |t|
