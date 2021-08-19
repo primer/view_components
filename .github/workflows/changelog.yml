@@ -3,7 +3,7 @@ name: CHANGELOG
 on: [pull_request]
 
 jobs:
-  changedfiles:
+  changed_files:
     runs-on: ubuntu-latest
     # Map a step output to a job output
     outputs:
@@ -21,7 +21,7 @@ jobs:
         run: |
           echo "::set-output name=all::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | xargs)"
           echo "::set-output name=markdown::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | grep .md$ | xargs)"
-  checkforchangelog:
+  check_for_changes:
     runs-on: ubuntu-latest
     # require the first job to have ran
     needs: changedfiles
