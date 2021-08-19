@@ -6,25 +6,6 @@ require "test_helper"
 class BenchClassify < Minitest::Benchmark
   include Primer::AssertAllocationsHelper
 
-  EXPECTATIONS = {
-    "2.5.x" => {
-      without_cache: 70,
-      with_cache: 27
-    },
-    "2.6.x" => {
-      without_cache: 69,
-      with_cache: 26
-    },
-    "2.7.x" => {
-      without_cache: 68,
-      with_cache: 25
-    },
-    "3.0.x" => {
-      without_cache: 69..70,
-      with_cache: 26
-    }
-  }.freeze
-
   def setup
     @values = {
       align_items: :center,
@@ -61,7 +42,7 @@ class BenchClassify < Minitest::Benchmark
     Primer::Classify::Cache.clear!
     Primer::Classify.call(**@values)
 
-    assert_allocations expectations_for(:without_cache) do
+    assert_allocations '3.0' => 127, '2.7' => 68, '2.6' => 69, '2.5' => 70 do
       Primer::Classify.call(**@values)
     end
   ensure
@@ -72,7 +53,7 @@ class BenchClassify < Minitest::Benchmark
     Primer::Classify::Cache.preload!
     Primer::Classify.call(**@values)
 
-    assert_allocations expectations_for(:with_cache) do
+    assert_allocations '3.0' => 65, '2.7' => 25, '2.6' => 26, '2.5' => 27 do
       Primer::Classify.call(**@values)
     end
   end
