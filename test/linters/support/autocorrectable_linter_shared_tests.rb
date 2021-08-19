@@ -104,7 +104,7 @@ module Primer
 
     def test_autocorrects_if_ignore_is_incorrect
       @file = <<~HTML
-        <%# erblint:counter LabelComponentMigrationCounter 3 %>
+        <%# erblint:counter #{linter_class.name.demodulize} 3 %>
         <#{default_tag} class="#{default_class}" #{required_attributes}>
           #{linter_class.name.demodulize}
         </#{default_tag}>
