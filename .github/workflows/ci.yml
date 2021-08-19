@@ -169,7 +169,7 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: simplecov-resultset-v2-rails${{matrix.rails_version}}-ruby${{matrix.ruby_version}}
+        name: simplecov-resultset-rails${{matrix.rails_version}}-ruby${{matrix.ruby_version}}
         path: coverage
   coverage:
     needs: test
