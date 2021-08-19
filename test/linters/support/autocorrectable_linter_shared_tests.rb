@@ -9,13 +9,13 @@ module Primer
   module AutocorrectableLinterSharedTests
     def test_suggests_how_to_use_the_component_with_aria_arguments
       @file = <<~HTML
-        <#{default_tag} class="#{default_class}" #{required_attributes} aria-label=\"Some label\">
+        <#{default_tag} class="#{default_class}" #{required_attributes} aria-value=\"Some value\">
           #{linter_class.name.demodulize}
         </#{default_tag}>
       HTML
 
       expected = <<~HTML
-        <%= render #{linter_class::COMPONENT}.new(\"aria-label\": \"Some label\") do %>
+        <%= render #{linter_class::COMPONENT}.new(#{"#{required_arguments}, " if required_arguments}\"aria-value\": \"Some value\") do %>
           #{linter_class.name.demodulize}
         <% end %>
       HTML
@@ -31,7 +31,7 @@ module Primer
       HTML
 
       expected = <<~HTML
-        <%= render #{linter_class::COMPONENT}.new(\"data-confirm\": \"Some confirmation\") do %>
+        <%= render #{linter_class::COMPONENT}.new(#{"#{required_arguments}, " if required_arguments}\"data-confirm\": \"Some confirmation\") do %>
           #{linter_class.name.demodulize}
         <% end %>
       HTML
@@ -91,7 +91,7 @@ module Primer
 
       expected = <<~HTML
         <%# erblint:counter #{linter_class.name.demodulize} 1 %>
-        <%= render #{linter_class::COMPONENT}.new do %>
+        <%= render #{linter_class::COMPONENT}.new#{"(#{required_arguments})" if required_arguments} do %>
           #{linter_class.name.demodulize}
         <% end %>
         <#{default_tag} class="#{default_class}" #{required_attributes} invalid-attr>
@@ -115,7 +115,7 @@ module Primer
 
       expected = <<~HTML
         <%# erblint:counter #{linter_class.name.demodulize} 1 %>
-        <%= render #{linter_class::COMPONENT}.new do %>
+        <%= render #{linter_class::COMPONENT}.new#{"(#{required_arguments})" if required_arguments} do %>
           #{linter_class.name.demodulize}
         <% end %>
         <#{default_tag} class="#{default_class}" #{required_attributes} invalid-attr>
@@ -134,7 +134,7 @@ module Primer
       HTML
 
       expected = <<~HTML
-        <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in) do %>
+        <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in#{", #{required_arguments}" if required_arguments}) do %>
           #{linter_class.name.demodulize}
         <% end %>
       HTML
@@ -150,7 +150,7 @@ module Primer
       HTML
 
       expected = <<~HTML
-        <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, classes: "custom-1 custom-2") do %>
+        <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, classes: "custom-1 custom-2"#{", #{required_arguments}" if required_arguments}) do %>
           #{linter_class.name.demodulize}
         <% end %>
       HTML
