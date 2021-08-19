@@ -49,41 +49,41 @@ linters:
         primer_view_components: lib/rubocop/config/default.yml
 ```
 
-# Building linters
+## Building linters
 
 Linters have been extremely helpful tools to migrate code from old HTML to components. It keeps human errors like typos out of the migrations and can surface many cases at once.
 We want to build linters for **all** of our components, so it's a good idea to explain how to do it.
 
-## Linter structure
+### Linter structure
 
 Before building a new linter, we need to understand their structure and how they work.
 
 ![diagram](https://user-images.githubusercontent.com/11280312/129609992-04791ef1-95f3-4593-8929-7bcce9ede06c.png)
 
-### BaseLinter
+#### BaseLinter
 
 This class holds the main linter logic, interpreting the AST and building a "tag tree", linking each tag with its closing tag. Knowing where each block starts and ends allows us to apply autocorrections using `do/end` blocks.
 
-### Autocorrectable
+#### Autocorrectable
 
 This module has the autocorrection logic, which will transform HTML attributes into component arguments. It will also build the replacement code for said HTML.
 
-### ArgumentMappers
+#### ArgumentMappers
 
 These are classes that define which attributes and classes should be converted into arguments. They all should inherit `ERBLint::Linters::ArgumentMappers::Base`, which provides an interface to return the arguments as a hash or string.
 The `Base` class will also make sure that all autocorrections take SystemArguments into consideration.
 
-## Configuration
+### Configuration
 
 Since all the logic matching is extracted to `BaseLinter`, we need to set some parameters in our class to create a linter.
 
 To help keep arguments in sync, we provide a `Primer::ViewComponents::Constants.get` helper, which can get constant values from our components. This will guarantee that when we update our components, it will also update the linters.
 
-### Basic configuration
+#### Basic configuration
 
 If a linter does not provide autocorrection, you only need to inherit from `BaseLinter` and set the following constants:
 
-#### TAGS
+##### TAGS
 
 **required**
 
@@ -91,13 +91,13 @@ The `TAGS` constant holds an array of all the valid HTML tags for this component
 
 E.g.: `button, summary, a` for a `ButtonComponent`.
 
-#### MESSAGE
+##### MESSAGE
 
 **required**
 
 This is the message that will be displayed when there is an offense. Most of them follow the same template but can be customized.
 
-#### CLASSES
+##### CLASSES
 
 _optional_
 
@@ -105,7 +105,7 @@ The `CLASSES` constant will have a list of classes that may indicate that an HTM
 
 E.g.: `btn, btn-link` for a `ButtonComponent`.
 
-#### REQUIRED_ARGUMENTS
+##### REQUIRED_ARGUMENTS
 
 _optional_
 
@@ -113,23 +113,23 @@ A list of arguments that are required for a component. Each item in the list can
 
 E.g.: `/for|value/, "aria-label"` for `ClipboardCopy`.
 
-### Autocorrectable
+#### Autocorrectable
 
 To enable autocorrection in a linter, make sure to include the `Autocorrectable` module and set the following constants:
 
-#### ARGUMENT_MAPPER
+##### ARGUMENT_MAPPER
 
 **required**
 
 The class responsible for transforming classes and attributes into arguments for the component. See [ArgumentMapper](#argumentmapper) section on how to create a mapper.
 
-#### COMPONENT
+##### COMPONENT
 
 **required**
 
 The component name for the linter. It will be used on autocorrection to set `COMPONENT.new(arguments)` as a suggestion.
 
-## ArgumentMapper
+### ArgumentMapper
 
 All mappers follow the same interface provided by `ERBLint::Linters::ArgumentMappers::Base`.
 The base logic will transform:
@@ -142,18 +142,18 @@ The base logic will transform:
 
 If the linter needs to transform more attributes or classes into specific values, you'll need to create a new class that inherits `Base`.
 
-### Custom mapper
+#### Custom mapper
 
 Custom mappers have two methods:
 
-#### attribute_to_args
+##### attribute_to_args
 
 If you need to transform attributes into arguments, you'll need to set a `ATTRIBUTES` constant with the list you want to convert and then implement the `attribute_to_args`.
 That method will be called for each attribute in the constant and must return a hash with the arguments you want.
 
 [Example](https://github.com/primer/view_components/blob/1f2ab39f7dbd21f55b2183607105249df1ccac97/lib/primer/view_components/linters/argument_mappers/button.rb#L35-L49)
 
-#### classes_to_args
+##### classes_to_args
 
 This method will receive a list of all the classes and must return a Hash with all the arguments. The hash must also have `classes` key with all the classes that couldn't be mapped (or an empty array).
 
