@@ -20,7 +20,7 @@ module Primer
     private
 
     def ruby_version
-      @ruby_version ||= RUBY_VERSION.split('.').take(2).join('.')
+      @ruby_version ||= RUBY_VERSION.split(".").take(2).join(".")
     end
   end
 end
