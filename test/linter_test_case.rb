@@ -33,4 +33,8 @@ class LinterTestCase < Minitest::Test
 
     corrector.corrected_content
   end
+
+  def linter_with_override
+    linter_class&.new(file_loader, linter_class.config_schema.new(override_ignores_if_correctable: true))
+  end
 end

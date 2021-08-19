@@ -6,7 +6,7 @@ module Primer
   # @accessibility
   #   Always set an accessible label to help the user interact with the component.
   class ClipboardCopy < Primer::Component
-    status :alpha
+    status :beta
 
     # @example Default
     #   <%= render(Primer::ClipboardCopy.new(value: "Text to copy", "aria-label": "Copy text to the system clipboard")) %>

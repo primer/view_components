@@ -136,24 +136,22 @@ class LabelComponentMigrationCounterTest < LinterTestCase
     assert_equal expected, result
   end
 
-  def test_autocorrects_removing_unnecessary_ignores
+  def test_does_not_autocorrects_when_ignores_are_correct
     @file = <<~HTML
-      <%# erblint:counter LabelComponentMigrationCounter 1 %>
+      <%# erblint:counter LabelComponentMigrationCounter 2 %>
       <span class="Label Label--primary">
+        Label 1
+      </span>
+      <span class="Label">
         Label 1
       </span>
     HTML
 
-    expected = <<~HTML
-      <%= render Primer::LabelComponent.new(scheme: :primary) do %>
-        Label 1
-      <% end %>
-    HTML
-
-    assert_equal expected, corrected_content
+    assert_equal @file, corrected_content
   end
 
-  def test_autocorrects_ignore_counts
+  def test_autocorrects_ignore_counts_if_override_enabled
+    @linter = linter_with_override
     @file = <<~HTML
       <%# erblint:counter LabelComponentMigrationCounter 2 %>
       <span class="Label Label--primary">

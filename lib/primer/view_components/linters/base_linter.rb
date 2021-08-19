@@ -6,7 +6,11 @@ require "primer/view_components/constants"
 
 module ERBLint
   module Linters
-    # Helper methods for linting ERB.
+    # Provides the basic linter logic. When inherited, you should define:
+    # * `TAGS` - required - The HTML tags that the component supports. It will be used by the linter to match elements.
+    # * `MESSAGE` - required - The message shown when there's an offense.
+    # * `CLASSES` - optional - The CSS classes that the component needs. The linter will only match elements with one of those classes.
+    # * `REQUIRED_ARGUMENTS` - optional - A list of HTML attributes that are required by the component.
     class BaseLinter < Linter
       # from https://github.com/Shopify/erb-lint/blob/6179ee2d9d681a6ec4dd02351a1e30eefa748d3d/lib/erb_lint/linters/self_closing_tag.rb
       SELF_CLOSING_TAGS = %w[
@@ -18,9 +22,14 @@ module ERBLint
       CLASSES = [].freeze
       REQUIRED_ARGUMENTS = [].freeze
 
+      class ConfigSchema < LinterConfig
+        property :override_ignores_if_correctable, accepts: [true, false], default: false, reader: :override_ignores_if_correctable?
+      end
+
       def self.inherited(base)
         super
         base.include(ERBLint::LinterRegistry)
+        base.config_schema = ConfigSchema
       end
 
       def run(processed_source)
@@ -172,6 +181,11 @@ module ERBLint
             comment_node = node
             expected_count = comment.match(/\s(\d+)\s?$/)[1].to_i
           end
+        end
+
+        if !@config.override_ignores_if_correctable? && expected_count == @total_offenses
+          clear_offenses
+          return
         end
 
         if @offenses_not_corrected.zero?
