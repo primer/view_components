@@ -11,7 +11,9 @@ module ERBLint
         ATTRIBUTES = %w[for value].freeze
 
         def attribute_to_args(attribute)
-          { value: erb_helper.convert(attribute) }
+          attr_name = attribute.name
+
+          {attr_name.to_sym => erb_helper.convert(attribute)}
         end
       end
     end
