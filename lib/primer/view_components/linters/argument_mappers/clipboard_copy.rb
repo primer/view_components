@@ -8,10 +8,12 @@ module ERBLint
       # Maps attributes in the clipboard-copy element to arguments for the ClipboardCopy component.
       class ClipboardCopy < Base
         DEFAULT_TAG = "clipboard-copy"
-        ATTRIBUTES = %w[value].freeze
+        ATTRIBUTES = %w[for value].freeze
 
         def attribute_to_args(attribute)
-          { value: erb_helper.convert(attribute) }
+          attr_name = attribute.name
+
+          { attr_name.to_sym => erb_helper.convert(attribute) }
         end
       end
     end

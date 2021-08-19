@@ -42,6 +42,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Map the `for` argument when autofixing `ClipboardCopy` migrations.
+
+    *Kristján Oddsson*
+
 ## 0.0.52
 
 ### New
