@@ -2,6 +2,7 @@
 
 require "test_helper"
 require "linters/support/basic_linter_shared_tests"
+require "linters/support/autocorrectable_linter_shared_tests"
 
 class LinterTestCase < Minitest::Test
   def setup
