@@ -5,7 +5,7 @@ namespace :coverage do
     require "simplecov"
     require "simplecov-console"
 
-    SimpleCov.minimum_coverage 99.5
+    SimpleCov.minimum_coverage 99.2
 
     SimpleCov.collate Dir["simplecov-resultset-*/.resultset.json"], "rails" do
       formatter SimpleCov::Formatter::Console
