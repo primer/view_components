@@ -40,7 +40,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Kristján Oddsson*
 
-* Run CI actions on pushes to main*
+* Run CI actions on pushes to main.
 
     *Cameron Dutro*
 
