@@ -19,6 +19,8 @@ class LinterTestCase < Minitest::Test
 
   def required_attributes; end
 
+  def required_arguments; end
+
   def offenses
     @linter.offenses
   end

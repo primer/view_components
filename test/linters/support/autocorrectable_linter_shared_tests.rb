@@ -6,6 +6,7 @@ module Primer
   # * `default_tag` - returns the default tag to be matched by the linter
   # * `default_class` - returns the class to be matched by the linter. Return `nil` if no class is necessary.
   # * `required_attributes` - returns the HTML attributes required for the linter to run.
+  # * `required_arguments` - returns base arguments used by autocorrection.
   module AutocorrectableLinterSharedTests
     def test_suggests_how_to_use_the_component_with_aria_arguments
       @file = <<~HTML
