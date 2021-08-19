@@ -58,7 +58,7 @@ We want to build linters for **all** of our components, so it's a good idea to e
 
 Before building a new linter, we need to understand their structure and how they work.
 
-![diagram](https://user-images.githubusercontent.com/11280312/129609992-04791ef1-95f3-4593-8929-7bcce9ede06c.png)
+![diagram](https://user-images.githubusercontent.com/11280312/130091242-e47b1b51-9fde-4880-a885-e6cb3098ad74.png)
 
 #### BaseLinter
 
