@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Primer::BreadcrumbComponentStories < ViewComponent::Storybook::Stories
+class Primer::BreadcrumbsStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:breadcrumb) do

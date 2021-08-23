@@ -2,7 +2,7 @@
 
 module Primer
   # Use `Breadcrumb` to display page hierarchy within a section of the site. All of the items in the breadcrumb "trail" are links except for the final item, which is a plain string indicating the current page.
-  class BreadcrumbComponent < Primer::Component
+  class Breadcrumbs < Primer::Component
     status :beta
 
     # _Note: if both `href` and `selected: true` are passed in, `href` will be ignored and the item will not be rendered as a link._
@@ -13,7 +13,7 @@ module Primer
     renders_many :items, "ItemComponent"
 
     # @example Basic
-    #   <%= render(Primer::BreadcrumbComponent.new) do |component| %>
+    #   <%= render(Primer::Breadcrumbs.new) do |component| %>
     #     <% component.item(href: "/") do %>Home<% end %>
     #     <% component.item(href: "/about") do %>About<% end %>
     #     <% component.item(selected: true) do %>Team<% end %>
@@ -30,7 +30,7 @@ module Primer
       items.any?
     end
 
-    # This component is part of `Primer::BreadcrumbComponent` and should not be
+    # This component is part of `Primer::Breadcrumbs` and should not be
     # used as a standalone component.
     class ItemComponent < Primer::Component
       def initialize(href: nil, selected: false, **system_arguments)

@@ -235,8 +235,8 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: Breadcrumb
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/breadcrumb_component.rb
+- component: Breadcrumbs
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/breadcrumbs.rb
   parameters:
   - name: system_arguments
     type: Hash

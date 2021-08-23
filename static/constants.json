@@ -110,10 +110,10 @@
   },
   "Primer::BoxComponent": {
   },
-  "Primer::BreadcrumbComponent": {
-    "ItemComponent": "Primer::BreadcrumbComponent::ItemComponent"
+  "Primer::Breadcrumbs": {
+    "ItemComponent": "Primer::Breadcrumbs::ItemComponent"
   },
-  "Primer::BreadcrumbComponent::ItemComponent": {
+  "Primer::Breadcrumbs::ItemComponent": {
   },
   "Primer::ButtonComponent": {
     "DEFAULT_SCHEME": "default",

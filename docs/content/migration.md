@@ -11,7 +11,7 @@ stable status.
 | Primer CSS Class | ViewComponent |
 |------------------|---------------|
 | [`State`](https://primer.style/css/components/labels#states)             | [`Primer::StateComponent`](https://primer.style/view-components/components/state)              |
-| [`breadcrumb-item`](https://primer.style/css/components/breadcrumb)      | [`Primer::BreadcrumbComponent`](https://primer.style/view-components/components/breadcrumb)    |
+| [`breadcrumb-item`](https://primer.style/css/components/breadcrumb)      | [`Primer::Breadcrumbs`](https://primer.style/view-components/components/breadcrumbs)    |
 | [`Counter`](https://primer.style/css/stickersheet/labels#counters)       | [`Primer::CounterComponent`](https://primer.style/view-components/components/counter)          |
 | [`Subhead`](https://primer.style/css/components/subhead)                 | [`Primer::SubheadComponent`](https://primer.style/view-components/components/subhead)          |
 | [`blankslate`](https://primer.style/css/components/blankslate)           | [`Primer::BlankslateComponent`](https://primer.style/view-components/components/blankslate)    |
