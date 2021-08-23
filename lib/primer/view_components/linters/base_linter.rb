@@ -32,7 +32,7 @@ module ERBLint
         @total_offenses = 0
         @offenses_not_corrected = 0
         tags = tags(processed_source)
-        tag_tree = build_tag_tree(tags)
+        tag_tree = build_tag_tree(processed_source, tags)
 
         tags.each do |tag|
           next if tag.closing?
@@ -128,30 +128,41 @@ module ERBLint
       # This assumes that the AST provided represents valid HTML, where each tag has a corresponding closing tag.
       # From the tags, we build a structured tree which represents the tag hierarchy.
       # With this, we are able to know where the tags start and end.
-      def build_tag_tree(tags)
+      def build_tag_tree(processed_source, tags)
+        nodes = ast_nodes(processed_source)
         tag_tree = {}
+        idx = 0
         current_opened_tag = nil
 
-        tags.each do |tag|
-          if tag.closing?
-            if current_opened_tag && tag.name == current_opened_tag.name
-              tag_tree[current_opened_tag][:closing] = tag
-              current_opened_tag = tag_tree[current_opened_tag][:parent]
+        nodes.each do |node|
+          if node.type == :tag
+            # get the tag from previously calculated list so the references are the same
+            tag = tags[idx]
+            idx += 1
+
+            if tag.closing?
+              if current_opened_tag && tag.name == current_opened_tag.name
+                tag_tree[current_opened_tag][:closing] = tag
+                current_opened_tag = tag_tree[current_opened_tag][:parent]
+              end
+
+              next
             end
 
-            next
+            self_closing = self_closing?(tag)
+
+            tag_tree[tag] = {
+              tag: tag,
+              closing: self_closing ? tag : nil,
+              parent: current_opened_tag,
+              children: []
+            }
+
+            tag_tree[current_opened_tag][:children] << tag_tree[tag] if current_opened_tag
+            current_opened_tag = tag unless self_closing
+          elsif current_opened_tag
+            tag_tree[current_opened_tag][:children] << node
           end
-
-          self_closing = self_closing?(tag)
-
-          tag_tree[tag] = {
-            closing: self_closing ? tag : nil,
-            parent: current_opened_tag,
-            children: []
-          }
-
-          tag_tree[current_opened_tag][:children] << tag_tree[tag] if current_opened_tag
-          current_opened_tag = tag unless self_closing
         end
 
         tag_tree
@@ -163,6 +174,10 @@ module ERBLint
 
       def tags(processed_source)
         processed_source.parser.nodes_with_type(:tag).map { |tag_node| BetterHtml::Tree::Tag.from_node(tag_node) }
+      end
+
+      def ast_nodes(processed_source)
+        processed_source.ast.children
       end
 
       def counter_correct?(processed_source)
