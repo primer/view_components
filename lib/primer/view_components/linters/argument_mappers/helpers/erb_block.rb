@@ -58,7 +58,7 @@ module ERBLint
             end
 
             # we use `source` instead of `value` because it does not convert encoded HTML entities.
-            attribute.value_node.loc.source.gsub('<%=', '#{').gsub('%>', '}')
+            attribute.value_node.loc.source.gsub("<%=", '#{').gsub("%>", "}")
           end
         end
       end
