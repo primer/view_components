@@ -6,25 +6,6 @@ require "test_helper"
 class BenchOcticons < Minitest::Benchmark
   include Primer::AssertAllocationsHelper
 
-  EXPECTATIONS = {
-    "2.5.x" => {
-      without_cache: 54,
-      with_cache: 28
-    },
-    "2.6.x" => {
-      without_cache: 49,
-      with_cache: 24
-    },
-    "2.7.x" => {
-      without_cache: 42..45,
-      with_cache: 19..21
-    },
-    "3.0.x" => {
-      without_cache: 43,
-      with_cache: 19..21
-    }
-  }.freeze
-
   def setup
     @options = {
       icon: :alert
@@ -34,7 +15,7 @@ class BenchOcticons < Minitest::Benchmark
   def bench_allocations_without_cache
     Primer::OcticonComponent.new(**@options)
     Primer::Octicon::Cache.clear!
-    assert_allocations expectations_for(:without_cache) do
+    assert_allocations "3.0" => 60, "2.7" => 43, "2.6" => 50, "2.5" => 54 do
       Primer::OcticonComponent.new(**@options)
     end
   ensure
@@ -43,7 +24,7 @@ class BenchOcticons < Minitest::Benchmark
 
   def bench_allocations_with_cache
     Primer::Octicon::Cache.preload!
-    assert_allocations expectations_for(:with_cache) do
+    assert_allocations "3.0" => 29, "2.7" => 20, "2.6" => 24, "2.5" => 28 do
       Primer::OcticonComponent.new(**@options)
     end
   end
