@@ -40,6 +40,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Kristján Oddsson*
 
+### Bug fixes
+
+* Linters won't convert HTML special elements.
+
+    *Manuel Puyol*
+
 ### Misc
 
 * Only run CHANGELOG CI on pull requests.
