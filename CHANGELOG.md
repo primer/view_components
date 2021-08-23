@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Add autocorrection to `FlashComponent` linter when the context is basic text.
+
+    *Manuel Puyol*
+
 ### Updates
 
 * Linters won't mark offenses when the ignore count is correct unless explicitly configured to do so.
