@@ -62,6 +62,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Cameron Dutro*
 
+* Get to 100% code coverage.
+
+    *Cameron Dutro*
+
 ## 0.0.52
 
 ### New

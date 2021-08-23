@@ -212,8 +212,6 @@ module Primer
                             else
                               "color-shadow-#{val.to_s.dasherize}"
                             end
-        else
-          memo[:classes] << "#{key.to_s.dasherize}#{breakpoint}-#{val.to_s.dasherize}"
         end
       end
 
