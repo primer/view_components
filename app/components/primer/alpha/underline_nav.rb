@@ -120,7 +120,7 @@ module Primer
       # @param align [Symbol] <%= one_of(Primer::Alpha::UnderlineNav::ALIGN_OPTIONS) %> - Defaults to <%= Primer::Alpha::UnderlineNav::ALIGN_DEFAULT %>
       # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(tag: TAG_DEFAULT, label:, align: ALIGN_DEFAULT, body_arguments: {}, **system_arguments)
+      def initialize(label:, tag: TAG_DEFAULT, align: ALIGN_DEFAULT, body_arguments: {}, **system_arguments)
         @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
 
         @system_arguments = system_arguments

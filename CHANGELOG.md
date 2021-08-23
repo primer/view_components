@@ -58,6 +58,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+### Breaking Changes
+
+* Split `UnderlineNavComponent` into `Alpha::UnderlineNav` and `Alpha::UnderlinePanel`.
+
+    *Kate Higa*
+
 ### Misc
 
 * Only run CHANGELOG CI on pull requests.
@@ -211,10 +217,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
     *Manuel Puyol*
 
 ### Breaking changes
-
-* Split `UnderlineNavComponent` into `UnderlineNav` and `UnderlinePanel`.
-
-    *Kate Higa*
 
 * Require tab with panels to have `panel_id` so `aria-controls` can be set.
 

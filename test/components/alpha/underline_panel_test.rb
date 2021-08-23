@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class PrimerUnderlinePanelTest
+class PrimerUnderlinePanelTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_panels_and_tab_container
