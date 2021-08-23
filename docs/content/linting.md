@@ -83,31 +83,23 @@ To help keep arguments in sync, we provide a `Primer::ViewComponents::Constants.
 
 If a linter does not provide autocorrection, you only need to inherit from `BaseLinter` and set the following constants:
 
-##### TAGS
-
-**required**
+##### TAGS (required)
 
 The `TAGS` constant holds an array of all the valid HTML tags for this component. This will be used by `BaseLinter` to check if a node is a candidate for a component.
 
 E.g.: `button, summary, a` for a `ButtonComponent`.
 
-##### MESSAGE
-
-**required**
+##### MESSAGE (required)
 
 This is the message that will be displayed when there is an offense. Most of them follow the same template but can be customized.
 
-##### CLASSES
-
-_optional_
+##### CLASSES (optional)
 
 The `CLASSES` constant will have a list of classes that may indicate that an HTML node corresponds to a component. This will only be checked if the node passed the `TAGS` check.
 
 E.g.: `btn, btn-link` for a `ButtonComponent`.
 
-##### REQUIRED_ARGUMENTS
-
-_optional_
+##### REQUIRED_ARGUMENTS (optional)
 
 A list of arguments that are required for a component. Each item in the list can be either a string or a regex.
 
@@ -117,15 +109,11 @@ E.g.: `/for|value/, "aria-label"` for `ClipboardCopy`.
 
 To enable autocorrection in a linter, make sure to include the `Autocorrectable` module and set the following constants:
 
-##### ARGUMENT_MAPPER
-
-**required**
+##### ARGUMENT_MAPPER (required)
 
 The class responsible for transforming classes and attributes into arguments for the component. See [ArgumentMapper](#argumentmapper) section on how to create a mapper.
 
-##### COMPONENT
-
-**required**
+##### COMPONENT (required)
 
 The component name for the linter. It will be used on autocorrection to set `COMPONENT.new(arguments)` as a suggestion.
 
