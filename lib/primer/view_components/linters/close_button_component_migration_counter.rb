@@ -16,6 +16,8 @@ module ERBLint
       ARGUMENT_MAPPER = ArgumentMappers::CloseButton
       COMPONENT = "Primer::CloseButton"
 
+      private
+
       def map_arguments(tag, tag_tree)
         # We can only autocorrect cases where the tag only has an octicon as content.
         return nil if tag_tree[:children].size != 1
@@ -48,7 +50,18 @@ module ERBLint
         nil
       end
 
-      private
+      def correction(args)
+        return nil if args.nil?
+
+        correction = "<%= render #{self.class::COMPONENT}.new"
+        correction += "(#{args})" if args.present?
+        "#{correction} %>"
+      end
+
+      def add_correction(tag, tag_tree)
+        offense_loc = tag.loc.with(end_pos: tag_tree[:closing].loc.to_range.last)
+        add_offense(offense_loc, tag_tree[:message], tag_tree[:correction])
+      end
 
       def erb_ast(code)
         RuboCop::AST::ProcessedSource.new(code, RUBY_VERSION.to_f).ast

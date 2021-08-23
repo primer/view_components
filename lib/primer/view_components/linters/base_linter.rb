@@ -61,8 +61,7 @@ module ERBLint
           @total_offenses += 1
           # We always fix the offenses using blocks. The closing tag corresponds to `<% end %>`.
           if h[:correctable]
-            add_offense(tag.loc, h[:message], h[:correction])
-            add_offense(h[:closing].loc, h[:message], "<% end %>")
+            add_correction(tag, h)
           else
             @offenses_not_corrected += 1
             generate_offense(self.class, processed_source, tag, h[:message])
@@ -87,6 +86,11 @@ module ERBLint
       end
 
       private
+
+      def add_correction(tag, tag_tree)
+        add_offense(tag.loc, tag_tree[:message], tag_tree[:correction])
+        add_offense(tag_tree[:closing].loc, tag_tree[:message], "<% end %>")
+      end
 
       # Override this function to convert the HTML element attributes to argument for a component.
       #
