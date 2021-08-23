@@ -57,8 +57,8 @@ module ERBLint
               return m[:rb].strip
             end
 
-            # wrap the result in `""` so it is printed as a string
-            "\"#{attribute.value.gsub('<%=', '#{').gsub('%>', '}')}\""
+            # we use `source` instead of `value` because it does not convert encoded HTML entities.
+            attribute.value_node.loc.source.gsub("<%=", '#{').gsub("%>", "}")
           end
         end
       end
