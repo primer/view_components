@@ -34,7 +34,7 @@ module ERBLint
 
         # We'll only autocorrect cases where the only content is an octicon.
         if ast.method_name == :primer_octicon || ast.method_name == :octicon
-          octicon_kwargs = ast.arguments.second
+          octicon_kwargs = ast.arguments[1]
         elsif ast.method_name == :render && code.include?("Primer::OcticonComponent")
           octicon_kwargs = ast.arguments.first.arguments.last
         else
@@ -79,16 +79,19 @@ module ERBLint
       # Extracts the aria-label value from the octicon kwargs.
       # It can either be in `"aria-label": "value"`` or `aria: { label: "value" } }`.
       def aria_label_from_octicon(kwargs)
-        return if kwargs.blank? || kwargs&.pairs.blank?
+        return if kwargs.blank? || kwargs.type != :hash || kwargs.pairs.blank?
 
         aria_label = kwargs.pairs.find { |x| x.key.value == :"aria-label" }
 
         return aria_label.value.source if aria_label
 
         aria_hash = kwargs.pairs.find { |x| x.key.value == :aria }
+
+        return if aria_hash.blank?
+
         aria_label = aria_hash.value.pairs.find { |x| x.key.value == :label }
 
-        aria_label.value.source
+        aria_label&.value&.source
       end
 
       def erb_ast(code)
