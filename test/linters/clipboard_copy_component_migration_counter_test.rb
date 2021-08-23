@@ -88,6 +88,24 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
     assert_equal expected, result
   end
 
+  def test_more_autocorrect
+    @file = <<~HTML
+      <clipboard-copy for="clone-help-step-2" aria-label="Copy to clipboard" class="btn btn-sm zeroclipboard-button">
+        <%= render(Primer::OcticonComponent.new(icon: "paste")) %>
+      </clipboard-copy>
+    HTML
+
+    expected = <<~HTML
+      <%= render Primer::ClipboardCopy.new(for: "clone-help-step-2", "aria-label": "Copy to clipboard", classes: "btn btn-sm zeroclipboard-button") do %>
+        <%= render(Primer::OcticonComponent.new(icon: "paste")) %>
+      <% end %>
+    HTML
+
+    result = corrected_content
+
+    assert_equal expected, result
+  end
+
   def test_does_not_autocorrects_when_ignores_are_correct
     @file = <<~HTML
       <%# erblint:counter ClipboardCopyComponentMigrationCounter 2 %>

@@ -36,6 +36,20 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Map the `for` argument when autofixing `ClipboardCopy` migrations.
+
+    *Kristján Oddsson*
+
+### Misc
+
+* Only run CHANGELOG CI on pull requests.
+
+    *Manuel Puyol*
+
+* Run CI actions on pushes to main.
+
+    *Cameron Dutro*
+
 ## 0.0.52
 
 ### New
