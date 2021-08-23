@@ -16,6 +16,8 @@ module ERBLint
       ARGUMENT_MAPPER = ArgumentMappers::CloseButton
       COMPONENT = "Primer::CloseButton"
 
+      ALLOWED_OCTICON_ARGS = %w[icon aria-label aria].freeze
+
       private
 
       def map_arguments(tag, tag_tree)
@@ -40,6 +42,9 @@ module ERBLint
         else
           return
         end
+
+        # Don't autocorrect if the octicon has custom arguments
+        return if custom_attributes?(octicon_kwargs)
 
         octicon_aria_label = aria_label_from_octicon(octicon_kwargs)
         tag_aria_label = tag.attributes.each.find { |a| a.name == "aria-label" }
@@ -92,6 +97,12 @@ module ERBLint
         aria_label = aria_hash.value.pairs.find { |x| x.key.value == :label }
 
         aria_label&.value&.source
+      end
+
+      def custom_attributes?(kwargs)
+        return false if kwargs.blank? || kwargs.type != :hash || kwargs.pairs.blank?
+
+        (kwargs.keys.map { |key| key.value.to_s } - ALLOWED_OCTICON_ARGS).present?
       end
 
       def erb_ast(code)

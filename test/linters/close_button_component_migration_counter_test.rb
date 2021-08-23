@@ -118,4 +118,12 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
 
     assert_equal "<%# erblint:counter CloseButtonComponentMigrationCounter 1 %>\n#{@file}", corrected_content
   end
+
+  def test_does_not_autocorrect_when_octicon_has_multiple_arguments
+    @file = <<~HTML
+      <button class="close-button"><%= octicon(:x, class: "custom", "aria-label": "label") %></button>
+    HTML
+
+    assert_equal "<%# erblint:counter CloseButtonComponentMigrationCounter 1 %>\n#{@file}", corrected_content
+  end
 end
