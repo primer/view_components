@@ -26,4 +26,12 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
 
     assert_empty @linter.offenses
   end
+
+  def test_does_not_autocorrect_with_html_content
+    @file = <<~HTML
+      <button class="close-button"><%= primer_octicon(:x, "aria-label": "Close menu") %></button>
+    HTML
+
+    assert_equal "<%# erblint:counter CloseButtonComponentMigrationCounter 1 %>\n#{@file}", corrected_content
+  end
 end
