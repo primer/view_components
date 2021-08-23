@@ -20,28 +20,39 @@ module ERBLint
 
       def map_arguments(tag, tag_tree)
         # We can only autocorrect cases where the tag only has an octicon as content.
-        return nil if tag_tree[:children].size != 1
+        return if tag_tree[:children].size != 1
 
         nodes = tag_tree[:children].first.children
         erb_nodes = nodes.select { |node| node.try(:type) == :erb }
 
         # Don't correct if there are multiple ERB nodes.
-        return nil if erb_nodes.size != 1
+        return if erb_nodes.size != 1
 
         _, _, code_node = *erb_nodes.first
         code = code_node.children.first.strip
         ast = erb_ast(code)
 
-        return unless ast.method_name == :primer_octicon || ast.method_name == :octicon
+        # We'll only autocorrect cases where the only content is an octicon.
+        if ast.method_name == :primer_octicon || ast.method_name == :octicon
+          octicon_kwargs = ast.arguments.second
+        elsif ast.method_name == :render && code.include?("Primer::OcticonComponent")
+          octicon_kwargs = ast.arguments.first.arguments.last
+        else
+          return
+        end
 
-        octicon_kwargs = ast.arguments.second
-        aria_label = octicon_kwargs&.pairs&.find { |x| x.key.value == :"aria-label" }
+        octicon_aria_label = aria_label_from_octicon(octicon_kwargs)
+        tag_aria_label = tag.attributes.each.find { |a| a.name == "aria-label" }
+
+        # Can't autocorrect if there is no aria-label.
+        return if octicon_aria_label.blank? && tag_aria_label.blank?
 
         args = ARGUMENT_MAPPER.new(tag).to_s
 
-        return args if aria_label.blank?
+        # Argument mapper will add the `aria-label` if the tag has it.
+        return args if tag_aria_label.present?
 
-        aria_label_arg = "\"aria-label\": #{aria_label.value.source}"
+        aria_label_arg = "\"aria-label\": #{octicon_aria_label}"
 
         return aria_label_arg if args.blank?
 
@@ -50,17 +61,34 @@ module ERBLint
         nil
       end
 
+      # Overriding the basic correction since this component does not uses content blocks.
       def correction(args)
-        return nil if args.nil?
+        return if args.nil?
 
         correction = "<%= render #{self.class::COMPONENT}.new"
         correction += "(#{args})" if args.present?
         "#{correction} %>"
       end
 
+      # Overriding the basic correction since this component will rewrite the whole tag block.
       def add_correction(tag, tag_tree)
         offense_loc = tag.loc.with(end_pos: tag_tree[:closing].loc.to_range.last)
         add_offense(offense_loc, tag_tree[:message], tag_tree[:correction])
+      end
+
+      # Extracts the aria-label value from the octicon kwargs.
+      # It can either be in `"aria-label": "value"`` or `aria: { label: "value" } }`.
+      def aria_label_from_octicon(kwargs)
+        return if kwargs.blank? || kwargs&.pairs.blank?
+
+        aria_label = kwargs.pairs.find { |x| x.key.value == :"aria-label" }
+
+        return aria_label.value.source if aria_label
+
+        aria_hash = kwargs.pairs.find { |x| x.key.value == :aria }
+        aria_label = aria_hash.value.pairs.find { |x| x.key.value == :label }
+
+        aria_label.value.source
       end
 
       def erb_ast(code)
