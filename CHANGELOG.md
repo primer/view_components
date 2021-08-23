@@ -46,6 +46,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Kristján Oddsson*
 
+* Add autocorrection for `CloseButton` linter.
+
+    *Manuel Puyol*
+
 ### Misc
 
 * Only run CHANGELOG CI on pull requests.
