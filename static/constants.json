@@ -82,6 +82,11 @@
       "span"
     ]
   },
+  "Primer::Beta::Breadcrumbs": {
+    "ItemComponent": "Primer::Beta::Breadcrumbs::ItemComponent"
+  },
+  "Primer::Beta::Breadcrumbs::ItemComponent": {
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
@@ -109,11 +114,6 @@
     }
   },
   "Primer::BoxComponent": {
-  },
-  "Primer::Breadcrumbs": {
-    "ItemComponent": "Primer::Breadcrumbs::ItemComponent"
-  },
-  "Primer::Breadcrumbs::ItemComponent": {
   },
   "Primer::ButtonComponent": {
     "DEFAULT_SCHEME": "default",
@@ -192,7 +192,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",

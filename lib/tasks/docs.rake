@@ -40,7 +40,7 @@ namespace :docs do
       Primer::BlankslateComponent,
       Primer::BorderBoxComponent,
       Primer::BoxComponent,
-      Primer::Breadcrumbs,
+      Primer::Beta::Breadcrumbs,
       Primer::ButtonComponent,
       Primer::ButtonGroup,
       Primer::Alpha::ButtonMarketing,

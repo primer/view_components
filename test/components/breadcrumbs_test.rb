@@ -6,13 +6,13 @@ class PrimerBreadcrumbsTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_does_not_render_if_no_items_provided
-    render_inline(Primer::Breadcrumbs.new)
+    render_inline(Primer::Beta::Breadcrumbs.new)
 
     refute_component_rendered
   end
 
   def test_renders_single_item
-    render_inline(Primer::Breadcrumbs.new) do |component|
+    render_inline(Primer::Beta::Breadcrumbs.new) do |component|
       component.item { "Home" }
     end
 
@@ -20,7 +20,7 @@ class PrimerBreadcrumbsTest < Minitest::Test
   end
 
   def test_renders_multiple_items
-    render_inline(Primer::Breadcrumbs.new) do |component|
+    render_inline(Primer::Beta::Breadcrumbs.new) do |component|
       component.item { "Home" }
       component.item { "About" }
       component.item { "Team" }
@@ -30,7 +30,7 @@ class PrimerBreadcrumbsTest < Minitest::Test
   end
 
   def test_renders_links_when_specified
-    render_inline(Primer::Breadcrumbs.new) do |component|
+    render_inline(Primer::Beta::Breadcrumbs.new) do |component|
       component.item(href: "/") { "Home" }
       component.item { "About" }
     end
@@ -40,7 +40,7 @@ class PrimerBreadcrumbsTest < Minitest::Test
   end
 
   def test_does_not_render_a_link_when_item_is_selected
-    render_inline(Primer::Breadcrumbs.new) do |component|
+    render_inline(Primer::Beta::Breadcrumbs.new) do |component|
       component.item(href: "/", selected: true) { "Home" }
       component.item { "About" }
     end
@@ -49,6 +49,6 @@ class PrimerBreadcrumbsTest < Minitest::Test
   end
 
   def test_status
-    assert_component_state(Primer::Breadcrumbs, :beta)
+    assert_component_state(Primer::Beta::Breadcrumbs, :beta)
   end
 end
