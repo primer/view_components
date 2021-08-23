@@ -43,7 +43,7 @@ module ERBLint
 
           next unless self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
 
-          args = map_arguments(tag)
+          args = map_arguments(tag, tag_tree[tag])
           correction = correction(args)
 
           attributes = tag.attributes.each.map(&:name).join(" ")
@@ -92,7 +92,7 @@ module ERBLint
       #
       # @return [Hash] if possible to map all attributes to arguments.
       # @return [Nil] if cannot map to arguments.
-      def map_arguments(_tag)
+      def map_arguments(_tag, _tag_tree)
         nil
       end
 
@@ -146,9 +146,11 @@ module ERBLint
 
           tag_tree[tag] = {
             closing: self_closing ? tag : nil,
-            parent: current_opened_tag
+            parent: current_opened_tag,
+            children: []
           }
 
+          tag_tree[current_opened_tag][:children] << tag_tree[tag] if current_opened_tag
           current_opened_tag = tag unless self_closing
         end
 

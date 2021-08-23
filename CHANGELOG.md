@@ -36,6 +36,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Joel Hawksley*
 
+### New
+
+* Add autocorrection to `FlashComponent` linter when the context is basic text.
+
+    *Manuel Puyol*
+
 ### Updates
 
 * Linters won't mark offenses when the ignore count is correct unless explicitly configured to do so.
@@ -45,6 +51,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Map the `for` argument when autofixing `ClipboardCopy` migrations.
 
     *Kristján Oddsson*
+
+### Bug fixes
+
+* Linters won't convert HTML special elements.
+
+    *Manuel Puyol*
 
 ### Misc
 
