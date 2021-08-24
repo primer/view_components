@@ -32,6 +32,8 @@ class AllComponentsHaveStoriesTest < Minitest::Test
 
     return if components_with_stories_names.include?(component_name)
 
+    # :nocov:
     missing_accumulator << component
+    # :nocov:
   end
 end

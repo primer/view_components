@@ -46,6 +46,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Kristján Oddsson*
 
+### Bug fixes
+
+* Linters won't convert HTML special elements.
+
+    *Manuel Puyol*
+
 ### Misc
 
 * Only run CHANGELOG CI on pull requests.
@@ -53,6 +59,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
     *Manuel Puyol*
 
 * Run CI actions on pushes to main.
+
+    *Cameron Dutro*
+
+* Get to 100% code coverage.
 
     *Cameron Dutro*
 

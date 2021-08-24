@@ -54,7 +54,7 @@ Renders extra content to the `TabNav`. This will be rendered after the tabs.
 
 ```erb
 <%= render(Primer::TabNavComponent.new(label: "Default")) do |c| %>
-  <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+  <% c.tab(selected: true, href: "#") { "Tab 1" } %>
   <% c.tab(href: "#") { "Tab 2" } %>
   <% c.tab(href: "#") { "Tab 3" } %>
 <% end %>
