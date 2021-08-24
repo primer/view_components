@@ -35,13 +35,6 @@ class FlashComponentMigrationCounterTest < LinterTestCase
     assert_equal "<%# erblint:counter FlashComponentMigrationCounter 1 %>\n#{@file}", corrected_content
   end
 
-  def test_suggests_how_to_use_the_component_with_arguments
-    @file = "<div class=\"flash flash-warn flash-full\">flash</div>"
-    @linter.run(processed_source)
-
-    assert_includes(offenses.first.message, "render Primer::FlashComponent.new(scheme: :warning, full: true)")
-  end
-
   def test_suggests_how_to_use_the_component_with_aria_arguments
     @file = "<div class=\"flash\" aria-label=\"Some label\">flash</div>"
     @linter.run(processed_source)
@@ -146,15 +139,5 @@ class FlashComponentMigrationCounterTest < LinterTestCase
     HTML
 
     assert_equal expected, corrected_content
-  end
-
-  def test_does_not_autocorrect_with_html_content
-    @file = <<~HTML
-      <div class="flash">
-        <div>some content</div>
-      </div>
-    HTML
-
-    assert_equal "<%# erblint:counter FlashComponentMigrationCounter 1 %>\n#{@file}", corrected_content
   end
 end
