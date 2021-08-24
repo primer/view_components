@@ -98,6 +98,26 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
     assert_equal "<%# erblint:counter CloseButtonComponentMigrationCounter 1 %>\n#{@file}", corrected_content
   end
 
+  def test_does_not_autocorrect_with_unknown_erb_call
+    @file = <<~HTML
+      <button class="close-button"><%= some_call %></button>
+    HTML
+
+    assert_equal "<%# erblint:counter CloseButtonComponentMigrationCounter 1 %>\n#{@file}", corrected_content
+  end
+
+  def test_autocorrects_mixing_button_args_and_octicon_aria_label
+    @file = <<~HTML
+      <button class="close-button ml-1" aria-value="some value"><%= primer_octicon(:x, "aria-label": "Close menu") %></button>
+    HTML
+
+    expected = <<~HTML
+      <%= render Primer::CloseButton.new(ml: 1, \"aria-value\": \"some value\", \"aria-label\": \"Close menu\") %>
+    HTML
+
+    assert_equal expected, corrected_content
+  end
+
   private
 
   def default_tag
