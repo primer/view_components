@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# :nocov:
+
 module YARD
   # Helper methods to use for yard documentation
   module DocsHelper

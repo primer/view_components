@@ -48,4 +48,13 @@ class Primer::FetchOrFallbackHelperTest < Minitest::Test
     assert_match(/Got: 0/, error.message)
     assert_match(/This will not raise in production, but will instead fallback to: 1/, error.message)
   end
+
+  def test_fetch_boolean
+    assert_equal true, fetch_or_fallback_boolean(true, :fallback_value)
+    assert_equal false, fetch_or_fallback_boolean(false, :fallback_value)
+  end
+
+  def test_fetch_boolean_fallback
+    assert_equal :fallback_value, fetch_or_fallback_boolean("foo", :fallback_value)
+  end
 end

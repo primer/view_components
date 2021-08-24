@@ -4,6 +4,8 @@ require "json"
 require "openssl"
 require "primer/view_components/constants"
 
+# :nocov:
+
 module ERBLint
   module Linters
     # Helper methods for linting ERB.
