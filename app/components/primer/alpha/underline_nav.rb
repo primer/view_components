@@ -15,7 +15,6 @@ module Primer
     #     accessibility considerations.
     class UnderlineNav < Primer::Component
       include Primer::TabbedComponentHelper
-      include Primer::UnderlineNavHelper
 
       ALIGN_DEFAULT = :left
       ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
@@ -33,8 +32,7 @@ module Primer
       # @param selected [Boolean] Whether the tab is selected.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :tabs, lambda { |selected: false, **system_arguments|
-        system_arguments[:classes] = underline_nav_tab_classes(system_arguments[:classes])
-
+        system_arguments[:classes] = class_names("UnderlineNav-item", system_arguments[:classes])
         Primer::Navigation::TabComponent.new(
           list: true,
           selected: selected,
@@ -49,7 +47,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :actions, lambda { |tag: ACTIONS_TAG_DEFAULT, **system_arguments|
         system_arguments[:tag] = fetch_or_fallback(ACTIONS_TAG_OPTIONS, tag, ACTIONS_TAG_DEFAULT)
-        system_arguments[:classes] = underline_nav_action_classes(system_arguments[:classes])
+        system_arguments[:classes] = class_names("UnderlineNav-actions", system_arguments[:classes])
 
         Primer::BaseComponent.new(**system_arguments)
       }
@@ -125,11 +123,19 @@ module Primer
 
         @system_arguments = system_arguments
         @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
-        @system_arguments[:classes] = underline_nav_classes(@system_arguments[:classes], @align)
+        @system_arguments[:classes] = class_names(
+          system_arguments[:classes],
+          "UnderlineNav",
+          "UnderlineNav--right" => align == :right
+        )
 
         @body_arguments = body_arguments
         @body_arguments[:tag] = :ul
-        @body_arguments[:classes] = underline_nav_body_classes(@body_arguments[:classes])
+        @body_arguments[:classes] = class_names(
+          "UnderlineNav-body",
+          body_arguments[:classes],
+          "list-style-none"
+        )
 
         @system_arguments[:tag] == :nav ? @system_arguments[:"aria-label"] = label : @body_arguments[:"aria-label"] = label
       end

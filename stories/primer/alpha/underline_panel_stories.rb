@@ -8,7 +8,7 @@ class Primer::Alpha::UnderlinePanelStories < ViewComponent::Storybook::Stories
   story(:underline_panel) do
     controls do
       label "aria label"
-      select(:align, Primer::Alpha::UnderlinePanel::ALIGN_OPTIONS, :left)
+      select(:align, Primer::Alpha::UnderlineNav::ALIGN_OPTIONS, :left)
     end
 
     content do |c|

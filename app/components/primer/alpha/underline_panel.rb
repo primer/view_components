@@ -5,7 +5,6 @@ module Primer
     # Use `UnderlinePanel` to style tabs with an associated panel and an underlined selected state.
     class UnderlinePanel < Primer::Component
       include Primer::TabbedComponentHelper
-      include Primer::UnderlineNavHelper
       # Use to render a button and an associated panel slot. See the example below or refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
       #
       # @param id [String] Unique ID of tab.
@@ -13,8 +12,6 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :tabs, lambda { |id:, selected: false, **system_arguments, &block|
         system_arguments[:id] = id
-        system_arguments[:classes] = underline_nav_tab_classes(system_arguments[:classes])
-
         @underline_nav.tab(
           selected: selected,
           with_panel: true,
@@ -28,9 +25,9 @@ module Primer
 
       # Use actions for a call to action.
       #
-      # @param tag [Symbol] (Primer::Alpha::UnderlinePanel::ACTIONS_TAG_DEFAULT) <%= one_of(Primer::Alpha::UnderlinePanel::ACTIONS_TAG_OPTIONS) %>
+      # @param tag [Symbol] (Primer::Alpha::UnderlineNav::ACTIONS_TAG_DEFAULT) <%= one_of(Primer::Alpha::UnderlineNav::ACTIONS_TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :actions, lambda { |tag: ACTIONS_TAG_DEFAULT, **system_arguments, &block|
+      renders_one :actions, lambda { |tag: Primer::Alpha::UnderlineNav::ACTIONS_TAG_DEFAULT, **system_arguments, &block|
         @underline_nav.actions(tag: tag, **system_arguments, &block)
       }
 
@@ -54,21 +51,19 @@ module Primer
       #   <% end %>
       #
       # @param label [String] Used to set the `aria-label` on top level element.
-      # @param align [Symbol] <%= one_of(Primer::Alpha::UnderlinePanel::ALIGN_OPTIONS) %> - Defaults to <%= Primer::Alpha::UnderlinePanel::ALIGN_DEFAULT %>
+      # @param align [Symbol] <%= one_of(Primer::Alpha::UnderlineNav::ALIGN_OPTIONS) %> - Defaults to <%= Primer::Alpha::UnderlineNav::ALIGN_DEFAULT %>
       # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
       # @param wrapper_arguments [Hash] <%= link_to_system_arguments_docs %> for the `TabContainer` wrapper.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(label:, align: ALIGN_DEFAULT, body_arguments: {}, wrapper_arguments: {}, **system_arguments)
-        @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
+      def initialize(label:, align: Primer::Alpha::UnderlineNav::ALIGN_DEFAULT, body_arguments: {}, wrapper_arguments: {}, **system_arguments)
+        @align = fetch_or_fallback(Primer::Alpha::UnderlineNav::ALIGN_OPTIONS, align, Primer::Alpha::UnderlineNav::ALIGN_DEFAULT)
         @wrapper_arguments = wrapper_arguments
 
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
-        @system_arguments[:classes] = underline_nav_classes(@system_arguments[:classes], @align)
 
         @body_arguments = body_arguments
         @body_arguments[:tag] = :ul
-        @body_arguments[:classes] = underline_nav_body_classes(@body_arguments[:classes])
 
         @body_arguments[:role] = :tablist
         @body_arguments[:"aria-label"] = label
@@ -80,12 +75,6 @@ module Primer
           body_arguments: @body_arguments,
           **@system_arguments
         )
-      end
-
-      private
-
-      def body
-        Primer::BaseComponent.new(**@body_arguments)
       end
     end
   end
