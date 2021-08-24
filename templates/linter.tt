@@ -3,7 +3,7 @@
 require_relative "base_linter"
 <%- if @autocorrectable -%>
 require_relative "autocorrectable"
-require_relative "argument_mappers/button"
+require_relative "argument_mappers/<%= component_short_name.underscore %>"
 <% end %>
 
 module ERBLint

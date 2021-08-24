@@ -8,6 +8,10 @@ class <%= component_short_name %>ComponentMigrationCounterTest < LinterTestCase
   include Primer::AutocorrectableLinterSharedTests
   <%- end -%>
 
+  def test_add_linter_specific_tests
+    raise StandardError, "The test helpers will add basic tests for your linter, but you should add specific test cases too."
+  end
+
   private
 
   def linter_class
