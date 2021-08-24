@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Add autocorrection to `FlashComponent` linter when the context is basic text.
+
+    *Manuel Puyol*
+
 ### Updates
 
 * Linters won't mark offenses when the ignore count is correct unless explicitly configured to do so.
@@ -40,6 +46,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Kristján Oddsson*
 
+### Bug fixes
+
+* Linters won't convert HTML special elements.
+
+    *Manuel Puyol*
+
 ### Misc
 
 * Only run CHANGELOG CI on pull requests.
@@ -47,6 +59,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
     *Manuel Puyol*
 
 * Run CI actions on pushes to main.
+
+    *Cameron Dutro*
+
+* Get to 100% code coverage.
 
     *Cameron Dutro*
 

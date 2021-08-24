@@ -128,4 +128,11 @@ class ArgumentMappersBaseTest < LinterTestCase
 
     assert_equal("Cannot convert attribute \"class\" because its value contains an erb block", err.message)
   end
+
+  def test_does_not_convert_special_elements
+    @file = '<div aria-label="&quot;<%= some_call %>&quot;">'
+    args = ERBLint::Linters::ArgumentMappers::Base.new(tags.first).to_args
+
+    assert_equal({ '"aria-label"' => "\"&quot;\#{ some_call }&quot;\"" }, args)
+  end
 end

@@ -20,7 +20,9 @@ module Primer
 
     def with_contents
       render Primer::LocalTime.new(datetime: DateTime.parse("2014-04-01T16:30:00-08:00")) do
+        # :nocov:
         "This will be replaced"
+        # :nocov:
       end
     end
   end
