@@ -6,22 +6,6 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
   include Primer::BasicLinterSharedTests
   include Primer::AutocorrectableLinterSharedTests
 
-  def linter_class
-    ERBLint::Linters::ClipboardCopyComponentMigrationCounter
-  end
-
-  def default_tag
-    "clipboard-copy"
-  end
-
-  def required_attributes
-    'value="value" aria-label="label"'
-  end
-
-  def required_arguments
-    "value: \"value\", \"aria-label\": \"label\""
-  end
-
   def test_suggests_how_to_use_the_component_with_arguments
     @file = "<clipboard-copy value=\"value\" aria-label=\"label\">ClipboardCopy</clipboard-copy>"
     @linter.run(processed_source)
@@ -122,5 +106,23 @@ class ClipboardCopyComponentMigrationCounterTest < LinterTestCase
     HTML
 
     assert_equal expected, corrected_content
+  end
+
+  private
+
+  def linter_class
+    ERBLint::Linters::ClipboardCopyComponentMigrationCounter
+  end
+
+  def default_tag
+    "clipboard-copy"
+  end
+
+  def required_attributes
+    'value="value" aria-label="label"'
+  end
+
+  def required_arguments
+    "value: \"value\", \"aria-label\": \"label\""
   end
 end
