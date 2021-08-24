@@ -6,18 +6,6 @@ class FlashComponentMigrationCounterTest < LinterTestCase
   include Primer::BasicLinterSharedTests
   include Primer::AutocorrectableLinterSharedTests
 
-  def linter_class
-    ERBLint::Linters::FlashComponentMigrationCounter
-  end
-
-  def default_tag
-    "div"
-  end
-
-  def default_class
-    "flash"
-  end
-
   def test_suggests_how_to_use_the_component_with_arguments
     @file = "<div class=\"flash flash-warn flash-full\">flash</div>"
     @linter.run(processed_source)
@@ -139,5 +127,19 @@ class FlashComponentMigrationCounterTest < LinterTestCase
     HTML
 
     assert_equal expected, corrected_content
+  end
+
+  private
+
+  def linter_class
+    ERBLint::Linters::FlashComponentMigrationCounter
+  end
+
+  def default_tag
+    "div"
+  end
+
+  def default_class
+    "flash"
   end
 end

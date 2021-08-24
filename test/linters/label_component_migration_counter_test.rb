@@ -6,18 +6,6 @@ class LabelComponentMigrationCounterTest < LinterTestCase
   include Primer::BasicLinterSharedTests
   include Primer::AutocorrectableLinterSharedTests
 
-  def linter_class
-    ERBLint::Linters::LabelComponentMigrationCounter
-  end
-
-  def default_tag
-    "span"
-  end
-
-  def default_class
-    "Label"
-  end
-
   def test_suggests_how_to_use_the_component_with_arguments
     @file = "<span class=\"Label Label--large Label--primary\">Label</span>"
     @linter.run(processed_source)
@@ -88,5 +76,19 @@ class LabelComponentMigrationCounterTest < LinterTestCase
     HTML
 
     assert_equal expected, corrected_content
+  end
+
+  private
+
+  def linter_class
+    ERBLint::Linters::LabelComponentMigrationCounter
+  end
+
+  def default_tag
+    "span"
+  end
+
+  def default_class
+    "Label"
   end
 end

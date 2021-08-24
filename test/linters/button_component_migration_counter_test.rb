@@ -6,18 +6,6 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
   include Primer::BasicLinterSharedTests
   include Primer::AutocorrectableLinterSharedTests
 
-  def linter_class
-    ERBLint::Linters::ButtonComponentMigrationCounter
-  end
-
-  def default_tag
-    "button"
-  end
-
-  def default_class
-    "btn"
-  end
-
   def test_warns_if_there_is_a_html_link_button
     @file = "<button class=\"btn-link\">Button</button>"
     @linter.run(processed_source)
@@ -102,5 +90,19 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
     HTML
 
     assert_equal expected, corrected_content
+  end
+
+  private
+
+  def linter_class
+    ERBLint::Linters::ButtonComponentMigrationCounter
+  end
+
+  def default_tag
+    "button"
+  end
+
+  def default_class
+    "btn"
   end
 end
