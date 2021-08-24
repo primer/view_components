@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "base_linter"
-<% if @autocorrectable %>
+<%- if @autocorrectable -%>
 require_relative "autocorrectable"
 require_relative "argument_mappers/button"
 <% end %>
@@ -16,6 +16,9 @@ module ERBLint
       MESSAGE = "We are migrating buttons to use [<%= component_full_name %>](<%= component_docs_path %>), please try to use that instead of raw HTML."
       <%- if @classes && @classes != "" -%>
       CLASSES = %w[<%= @classes %>].freeze
+      <%- end -%>
+      <%- if @required_arguments && @required_arguments != "" -%>
+      REQUIRED_ARGUMENTS = %w[<%= @required_arguments %>].freeze
       <%- end -%>
       <%- if @tags_from_constant -%>
       TAGS = Primer::ViewComponents::Constants.get(
