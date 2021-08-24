@@ -4,20 +4,13 @@ require "linter_test_case"
 
 class CloseButtonComponentMigrationCounterTest < LinterTestCase
   include Primer::BasicLinterSharedTests
+  include Primer::AutocorrectableLinterSharedTests
 
   def linter_class
     ERBLint::Linters::CloseButtonComponentMigrationCounter
   end
 
-  def default_tag
-    "button"
-  end
-
-  def default_class
-    "close-button"
-  end
-
-  def test_autocorrects_with_primer_octicon
+  def test_autocorrects_using_primer_octicon_aria_label
     @file = <<~HTML
       <button class="close-button"><%= primer_octicon(:x, "aria-label": "Close menu") %></button>
     HTML
@@ -29,19 +22,7 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
     assert_equal expected, corrected_content
   end
 
-  def test_autocorrects_with_aria_label
-    @file = <<~HTML
-      <button class="close-button" aria-label="Close menu"><%= primer_octicon(:x) %></button>
-    HTML
-
-    expected = <<~HTML
-      <%= render Primer::CloseButton.new(\"aria-label\": \"Close menu\") %>
-    HTML
-
-    assert_equal expected, corrected_content
-  end
-
-  def test_autocorrects_with_octicon
+  def test_autocorrects_using_octicon_aria_label
     @file = <<~HTML
       <button class="close-button"><%= octicon(:x, "aria-label": "Close menu") %></button>
     HTML
@@ -53,7 +34,7 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
     assert_equal expected, corrected_content
   end
 
-  def test_autocorrects_with_primer_octicon_hash_aria_label
+  def test_autocorrects_using_primer_octicon_hash_aria_label
     @file = <<~HTML
       <button class="close-button"><%= primer_octicon(:x, aria: { label: "Close menu" }) %></button>
     HTML
@@ -65,7 +46,7 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
     assert_equal expected, corrected_content
   end
 
-  def test_autocorrects_with_primer_octicon_class
+  def test_autocorrects_usin_primer_octicon_class_aria_label
     @file = <<~HTML
       <button class="close-button">
         <%= render Primer::OcticonComponent(icon: :x, aria: { label: "Close menu" }) %>
@@ -115,5 +96,31 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
     HTML
 
     assert_equal "<%# erblint:counter CloseButtonComponentMigrationCounter 1 %>\n#{@file}", corrected_content
+  end
+
+  private
+
+  def default_tag
+    "button"
+  end
+
+  def default_class
+    "close-button"
+  end
+
+  def default_content
+    "<%= primer_octicon(:x) %>"
+  end
+
+  def required_attributes
+    'aria-label="label"'
+  end
+
+  def required_arguments
+    "\"aria-label\": \"label\""
+  end
+
+  def block_correction?
+    false
   end
 end
