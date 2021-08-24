@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
+require "timecop"
 
 class PrimerTimeAgoComponentTest < Minitest::Test
   include Primer::ComponentTestHelpers
@@ -11,13 +12,13 @@ class PrimerTimeAgoComponentTest < Minitest::Test
     assert_selector("time-ago[data-view-component][datetime][class]", count: 1)
   end
 
-  def reflects_datetime_attr_and_contents_based_on_date
+  def test_reflects_datetime_attr_and_contents_based_on_date
     render_inline(Primer::TimeAgoComponent.new(time: Time.utc(2021, 1, 1, 9, 10)))
 
     assert_selector("time-ago[data-view-component][datetime=\"2021-01-01T09:10:00Z\"]", count: 1, text: "Jan 1, 2021")
   end
 
-  def sets_contents_to_short_representation_with_micro_eq_true
+  def test_sets_contents_to_short_representation_with_micro_eq_true
     Timecop.freeze("2021-01-30T15:00:00Z") do
       render_inline(Primer::TimeAgoComponent.new(time: Time.utc(2021, 1, 1, 9, 10), micro: true))
 
@@ -25,7 +26,7 @@ class PrimerTimeAgoComponentTest < Minitest::Test
     end
   end
 
-  def returns_number_of_mins_ago_in_micro_format
+  def test_returns_number_of_mins_ago_in_micro_format
     Timecop.freeze("2021-01-01T09:50:00Z") do
       render_inline(Primer::TimeAgoComponent.new(time: Time.utc(2021, 1, 1, 9, 10), micro: true))
 
@@ -33,7 +34,7 @@ class PrimerTimeAgoComponentTest < Minitest::Test
     end
   end
 
-  def returns_number_of_hours_ago_in_micro_format
+  def test_returns_number_of_hours_ago_in_micro_format
     Timecop.freeze("2021-01-01T15:00:00Z") do
       render_inline(Primer::TimeAgoComponent.new(time: Time.utc(2021, 1, 1, 9, 10), micro: true))
 
@@ -41,7 +42,7 @@ class PrimerTimeAgoComponentTest < Minitest::Test
     end
   end
 
-  def returns_number_of_days_ago_in_micro_format
+  def test_returns_number_of_days_ago_in_micro_format
     Timecop.freeze("2021-09-30T15:00:00Z") do
       render_inline(Primer::TimeAgoComponent.new(time: Time.utc(2021, 1, 1, 9, 10), micro: true))
 
@@ -49,7 +50,7 @@ class PrimerTimeAgoComponentTest < Minitest::Test
     end
   end
 
-  def returns_number_of_years_ago_in_micro_format
+  def test_returns_number_of_years_ago_in_micro_format
     Timecop.freeze("2037-09-30T15:00:00Z") do
       render_inline(Primer::TimeAgoComponent.new(time: Time.utc(2021, 1, 1, 9, 10), micro: true))
 

@@ -29,7 +29,7 @@ module Primer
         private
 
         def format_hash(values, invert, symbolize)
-          val = values.invert if invert
+          val = invert ? values.invert : values
           # remove defaults
           val = val.except("", nil)
 

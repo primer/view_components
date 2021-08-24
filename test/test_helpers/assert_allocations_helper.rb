@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# This code is exercised by rake bench
+# :nocov:
+
 module Primer
   module AssertAllocationsHelper
     def assert_allocations(count_map)

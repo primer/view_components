@@ -116,34 +116,6 @@ class PrimerComponentTest < Minitest::Test
     end
   end
 
-  def test_all_slots_support_system_arguments
-    COMPONENTS_WITH_ARGS.each do |component, args|
-      next unless component.respond_to?(:slots) && component.slots.any?
-
-      result = render_inline(component.new(**args)) do |c|
-        component.slots.each do |slot_name, _slot_attributes|
-          c.slot(
-            slot_name,
-            classes: "test-#{slot_name}",
-            my: 1,
-            hidden: true,
-            style: "height: 100%;",
-            "data-ga-click": "Foo,bar"
-          ) { "foo" }
-        end
-      end
-
-      component.slots.each do |slot_name, _attrs|
-        assert_selector(
-          ".test-#{slot_name}.my-1[hidden][data-ga-click='Foo,bar']",
-          visible: false
-        )
-
-        assert_includes result.to_html, "height: 100%;"
-      end
-    end
-  end
-
   def test_status_has_a_default
     assert_component_state(Primer::Component, :alpha)
   end

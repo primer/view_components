@@ -40,7 +40,7 @@ module Primer
 
     # @example Default
     #   <%= render(Primer::TabNavComponent.new(label: "Default")) do |c| %>
-    #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
+    #     <% c.tab(selected: true, href: "#") { "Tab 1" } %>
     #     <% c.tab(href: "#") { "Tab 2" } %>
     #     <% c.tab(href: "#") { "Tab 3" } %>
     #   <% end %>

@@ -5,7 +5,9 @@ require "rubocop/cop/primer"
 
 class CopTest < MiniTest::Test
   def cop_class
+    # :nocov:
     raise NotImplementedError
+    # :nocov:
   end
 
   attr_reader :cop
