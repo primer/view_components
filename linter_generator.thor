@@ -53,8 +53,12 @@ class LinterGenerator < Thor::Group
     template("templates/argument_mapper.tt", mapper_path)
   end
 
+  def create_argument_mapper_test
+    template("templates/argument_mapper_test.tt", argument_mapper_test_path)
+  end
+
   def run_rubocop
-    run "bundle exec rubocop -a #{linter_path} #{linter_test_path} #{mapper_path if @autocorrectable}"
+    run "bundle exec rubocop -a #{linter_path} #{linter_test_path} #{mapper_path if @autocorrectable} #{argument_mapper_test_path if @autocorrectable}"
   end
 
   private
@@ -63,12 +67,16 @@ class LinterGenerator < Thor::Group
     "lib/primer/view_components/linters/#{component_short_name.underscore}_component_migration_counter.rb"
   end
 
+  def linter_test_path
+    "test/linters/#{component_short_name.underscore}_component_migration_counter_test.rb"
+  end
+
   def mapper_path
     "lib/primer/view_components/linters/argument_mappers/#{component_short_name.underscore}.rb"
   end
 
-  def linter_test_path
-    "test/linters/#{component_short_name.underscore}_test.rb"
+  def argument_mapper_test_path
+    "test/linters/argument_mappers/#{component_short_name.underscore}_test.rb"
   end
 
   def status_module_and_short_name
