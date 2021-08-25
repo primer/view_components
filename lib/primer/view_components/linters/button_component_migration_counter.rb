@@ -16,7 +16,7 @@ module ERBLint
       ).freeze
 
       # CloseButton component has preference when this class is seen in conjuction with `btn`.
-      DISALOWED_CLASSES = %w[close-button].freeze
+      DISALLOWED_CLASSES = %w[close-button].freeze
       CLASSES = %w[btn btn-link].freeze
       MESSAGE = "We are migrating buttons to use [Primer::ButtonComponent](https://primer.style/view-components/components/button), please try to use that instead of raw HTML."
       ARGUMENT_MAPPER = ArgumentMappers::Button

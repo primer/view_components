@@ -6,7 +6,7 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
   include Primer::BasicLinterSharedTests
   include Primer::AutocorrectableLinterSharedTests
 
-  def test_does_not_want_if_close_button
+  def test_does_not_warn_if_close_button
     @file = "<button class=\"btn close-button\">Button</button>"
     @linter.run(processed_source)
 
