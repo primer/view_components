@@ -185,10 +185,6 @@ module ERBLint
         processed_source.parser.nodes_with_type(:tag).map { |tag_node| BetterHtml::Tree::Tag.from_node(tag_node) }
       end
 
-      def ast_nodes(processed_source)
-        processed_source.ast.children
-      end
-
       def counter_correct?(processed_source)
         comment_node = nil
         expected_count = 0
