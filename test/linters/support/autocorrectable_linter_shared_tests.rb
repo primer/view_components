@@ -11,15 +11,21 @@ module Primer
     def test_suggests_how_to_use_the_component_with_aria_arguments
       @file = <<~HTML
         <#{default_tag} class="#{default_class}" #{required_attributes} aria-value=\"Some value\">
-          #{linter_class.name.demodulize}
+          #{default_content}
         </#{default_tag}>
       HTML
 
-      expected = <<~HTML
-        <%= render #{linter_class::COMPONENT}.new(#{"#{required_arguments}, " if required_arguments}\"aria-value\": \"Some value\") do %>
-          #{linter_class.name.demodulize}
-        <% end %>
-      HTML
+      expected = if block_correction?
+                   <<~HTML
+                     <%= render #{linter_class::COMPONENT}.new(#{"#{required_arguments}, " if required_arguments}\"aria-value\": \"Some value\") do %>
+                       #{default_content}
+                     <% end %>
+                   HTML
+                 else
+                   <<~HTML
+                     <%= render #{linter_class::COMPONENT}.new(#{"#{required_arguments}, " if required_arguments}\"aria-value\": \"Some value\") %>
+                   HTML
+                 end
 
       assert_equal expected, corrected_content
     end
@@ -27,15 +33,21 @@ module Primer
     def test_suggests_how_to_use_the_component_with_data_arguments
       @file = <<~HTML
         <#{default_tag} class="#{default_class}" #{required_attributes} data-confirm=\"Some confirmation\">
-          #{linter_class.name.demodulize}
+          #{default_content}
         </#{default_tag}>
       HTML
 
-      expected = <<~HTML
-        <%= render #{linter_class::COMPONENT}.new(#{"#{required_arguments}, " if required_arguments}\"data-confirm\": \"Some confirmation\") do %>
-          #{linter_class.name.demodulize}
-        <% end %>
-      HTML
+      expected = if block_correction?
+                   <<~HTML
+                     <%= render #{linter_class::COMPONENT}.new(#{"#{required_arguments}, " if required_arguments}\"data-confirm\": \"Some confirmation\") do %>
+                       #{default_content}
+                     <% end %>
+                   HTML
+                 else
+                   <<~HTML
+                     <%= render #{linter_class::COMPONENT}.new(#{"#{required_arguments}, " if required_arguments}\"data-confirm\": \"Some confirmation\") %>
+                   HTML
+                 end
 
       assert_equal expected, corrected_content
     end
@@ -43,7 +55,7 @@ module Primer
     def test_ignores_if_using_unsupported_arguments
       @file = <<~HTML
         <#{default_tag} class="#{default_class}" #{required_attributes} invalid-attr>
-          #{linter_class.name.demodulize}
+          #{default_content}
         </#{default_tag}>
       HTML
 
@@ -55,7 +67,7 @@ module Primer
     def test_ignores_if_cannot_convert_class
       @file = <<~HTML
         <#{default_tag} class="#{default_class} text-center" #{required_attributes}>
-          #{linter_class.name.demodulize}
+          #{default_content}
         </#{default_tag}>
       HTML
 
@@ -68,10 +80,10 @@ module Primer
       @file = <<~HTML
         <%# erblint:counter #{linter_class.name.demodulize} 2 %>
         <#{default_tag} class="#{default_class}" #{required_attributes}>
-          #{linter_class.name.demodulize}
+          #{default_content}
         </#{default_tag}>
         <#{default_tag} class="#{default_class}" #{required_attributes}>
-          #{linter_class.name.demodulize}
+          #{default_content}
         </#{default_tag}>
       HTML
 
@@ -83,22 +95,32 @@ module Primer
       @file = <<~HTML
         <%# erblint:counter #{linter_class.name.demodulize} 2 %>
         <#{default_tag} class="#{default_class}" #{required_attributes}>
-          #{linter_class.name.demodulize}
+          #{default_content}
         </#{default_tag}>
         <#{default_tag} class="#{default_class}" #{required_attributes} invalid-attr>
-          #{linter_class.name.demodulize}
+          #{default_content}
         </#{default_tag}>
       HTML
 
-      expected = <<~HTML
-        <%# erblint:counter #{linter_class.name.demodulize} 1 %>
-        <%= render #{linter_class::COMPONENT}.new#{"(#{required_arguments})" if required_arguments} do %>
-          #{linter_class.name.demodulize}
-        <% end %>
-        <#{default_tag} class="#{default_class}" #{required_attributes} invalid-attr>
-          #{linter_class.name.demodulize}
-        </#{default_tag}>
-      HTML
+      expected = if block_correction?
+                   <<~HTML
+                     <%# erblint:counter #{linter_class.name.demodulize} 1 %>
+                     <%= render #{linter_class::COMPONENT}.new#{"(#{required_arguments})" if required_arguments} do %>
+                       #{default_content}
+                     <% end %>
+                     <#{default_tag} class="#{default_class}" #{required_attributes} invalid-attr>
+                       #{default_content}
+                     </#{default_tag}>
+                   HTML
+                 else
+                   <<~HTML
+                     <%# erblint:counter #{linter_class.name.demodulize} 1 %>
+                     <%= render #{linter_class::COMPONENT}.new#{"(#{required_arguments})" if required_arguments} %>
+                     <#{default_tag} class="#{default_class}" #{required_attributes} invalid-attr>
+                       #{default_content}
+                     </#{default_tag}>
+                   HTML
+                 end
 
       assert_equal expected, corrected_content
     end
@@ -107,22 +129,32 @@ module Primer
       @file = <<~HTML
         <%# erblint:counter #{linter_class.name.demodulize} 3 %>
         <#{default_tag} class="#{default_class}" #{required_attributes}>
-          #{linter_class.name.demodulize}
+          #{default_content}
         </#{default_tag}>
         <#{default_tag} class="#{default_class}" #{required_attributes} invalid-attr>
-          #{linter_class.name.demodulize}
+          #{default_content}
         </#{default_tag}>
       HTML
 
-      expected = <<~HTML
-        <%# erblint:counter #{linter_class.name.demodulize} 1 %>
-        <%= render #{linter_class::COMPONENT}.new#{"(#{required_arguments})" if required_arguments} do %>
-          #{linter_class.name.demodulize}
-        <% end %>
-        <#{default_tag} class="#{default_class}" #{required_attributes} invalid-attr>
-          #{linter_class.name.demodulize}
-        </#{default_tag}>
-      HTML
+      expected = if block_correction?
+                   <<~HTML
+                     <%# erblint:counter #{linter_class.name.demodulize} 1 %>
+                     <%= render #{linter_class::COMPONENT}.new#{"(#{required_arguments})" if required_arguments} do %>
+                       #{default_content}
+                     <% end %>
+                     <#{default_tag} class="#{default_class}" #{required_attributes} invalid-attr>
+                       #{default_content}
+                     </#{default_tag}>
+                   HTML
+                 else
+                   <<~HTML
+                     <%# erblint:counter #{linter_class.name.demodulize} 1 %>
+                     <%= render #{linter_class::COMPONENT}.new#{"(#{required_arguments})" if required_arguments} %>
+                     <#{default_tag} class="#{default_class}" #{required_attributes} invalid-attr>
+                       #{default_content}
+                     </#{default_tag}>
+                   HTML
+                 end
 
       assert_equal expected, corrected_content
     end
@@ -130,15 +162,21 @@ module Primer
     def test_autocorrects_known_system_arguments
       @file = <<~HTML
         <#{default_tag} class="#{default_class} mr-1 p-3 d-none d-md-block anim-fade-in" #{required_attributes}>
-          #{linter_class.name.demodulize}
+          #{default_content}
         </#{default_tag}>
       HTML
 
-      expected = <<~HTML
-        <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in#{", #{required_arguments}" if required_arguments}) do %>
-          #{linter_class.name.demodulize}
-        <% end %>
-      HTML
+      expected = if block_correction?
+                   <<~HTML
+                     <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in#{", #{required_arguments}" if required_arguments}) do %>
+                       #{default_content}
+                     <% end %>
+                   HTML
+                 else
+                   <<~HTML
+                     <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in#{", #{required_arguments}" if required_arguments}) %>
+                   HTML
+                 end
 
       assert_equal expected, corrected_content
     end
@@ -146,15 +184,21 @@ module Primer
     def test_autocorrects_with_custom_classes
       @file = <<~HTML
         <#{default_tag} class="#{default_class} mr-1 p-3 d-none d-md-block anim-fade-in custom-1 custom-2" #{required_attributes}>
-          #{linter_class.name.demodulize}
+          #{default_content}
         </#{default_tag}>
       HTML
 
-      expected = <<~HTML
-        <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, classes: "custom-1 custom-2"#{", #{required_arguments}" if required_arguments}) do %>
-          #{linter_class.name.demodulize}
-        <% end %>
-      HTML
+      expected = if block_correction?
+                   <<~HTML
+                     <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, classes: "custom-1 custom-2"#{", #{required_arguments}" if required_arguments}) do %>
+                       #{default_content}
+                     <% end %>
+                   HTML
+                 else
+                   <<~HTML
+                     <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, classes: "custom-1 custom-2"#{", #{required_arguments}" if required_arguments}) %>
+                   HTML
+                 end
 
       assert_equal expected, corrected_content
     end
