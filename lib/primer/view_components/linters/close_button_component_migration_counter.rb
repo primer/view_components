@@ -37,12 +37,16 @@ module ERBLint
         # We'll only autocorrect cases where the only content is an octicon.
         if ast.method_name == :primer_octicon || ast.method_name == :octicon
           octicon_kwargs = ast.arguments[1]
+          icon = icon(ast.arguments)
         elsif ast.method_name == :render && code.include?("Primer::OcticonComponent")
           octicon_kwargs = ast.arguments.first.arguments.last
+          icon = icon(ast.arguments.first.arguments)
         else
           return
         end
 
+        # Don't autocorrect if using a custom icon
+        return unless icon == :x
         # Don't autocorrect if the octicon has custom arguments
         return if custom_attributes?(octicon_kwargs)
 
@@ -107,6 +111,12 @@ module ERBLint
 
       def erb_ast(code)
         RuboCop::AST::ProcessedSource.new(code, RUBY_VERSION.to_f).ast
+      end
+
+      def icon(args)
+        return args.first.value.to_sym if(args.first.type == :sym || args.first.type == :str)
+
+        args.last.pairs.find { |x| x.key.value == :icon }.value.value.to_sym
       end
     end
   end
