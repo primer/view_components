@@ -8,7 +8,7 @@
   "Primer::Beta::Avatar": "beta",
   "Primer::Beta::AvatarStack": "beta",
   "Primer::Beta::Breadcrumbs": "beta",
-  "Primer::Beta::Breadcrumbs::ItemComponent": "alpha",
+  "Primer::Beta::Breadcrumbs::Item": "alpha",
   "Primer::Beta::Text": "beta",
   "Primer::Beta::Truncate": "beta",
   "Primer::Beta::Truncate::TruncateText": "alpha",
