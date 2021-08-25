@@ -11,7 +11,7 @@ module Primer
       # @param href [String] The URL to link to.
       # @param selected [Boolean] Whether or not the item is selected and not rendered as a link.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_many :items, "ItemComponent"
+      renders_many :items, "Item"
 
       # @example Basic
       #   <%= render(Primer::Beta::Breadcrumbs.new) do |component| %>
@@ -33,7 +33,7 @@ module Primer
 
       # This component is part of `Primer::Beta::Breadcrumbs` and should not be
       # used as a standalone component.
-      class ItemComponent < Primer::Component
+      class Item < Primer::Component
         def initialize(href: nil, selected: false, **system_arguments)
           @href = href
           @system_arguments = system_arguments
