@@ -22,7 +22,7 @@ class BaseLinterTest < LinterTestCase
       </div>
     HTML
 
-    (tags, tree)= build_tag_tree
+    (tags, tree) = build_tag_tree
 
     assert_equal [tags.first], tree.keys
     assert_equal tags.last, tree[tags.first][:closing]

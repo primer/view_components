@@ -114,7 +114,7 @@ module ERBLint
       end
 
       def icon(args)
-        return args.first.value.to_sym if(args.first.type == :sym || args.first.type == :str)
+        return args.first.value.to_sym if args.first.type == :sym || args.first.type == :str
 
         args.last.pairs.find { |x| x.key.value == :icon }.value.value.to_sym
       end
