@@ -45,7 +45,7 @@ module ERBLint
           tag_tree[tag][:offense] = false
 
           next if (classes & self.class::DISALOWED_CLASSES).any?
-          next unless self.class::CLASSES.blank? ||(classes & self.class::CLASSES).any?
+          next unless self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
 
           args = map_arguments(tag, tag_tree[tag])
           correction = correction(args)
