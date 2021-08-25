@@ -21,6 +21,14 @@ class LinterTestCase < Minitest::Test
 
   def required_arguments; end
 
+  def default_content
+    linter_class.name.demodulize
+  end
+
+  def block_correction?
+    true
+  end
+
   def offenses
     @linter.offenses
   end

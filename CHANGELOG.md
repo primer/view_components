@@ -52,6 +52,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Kristján Oddsson*
 
+* Add autocorrection for `CloseButton` linter.
+
+    *Manuel Puyol*
+
 ### Bug fixes
 
 * Linters won't convert HTML special elements.
@@ -123,6 +127,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 ### Misc
 
 * Update benchmarks to run in every supported Ruby version.
+
+    *Manuel Puyol*
+
+* Add a linter generator.
 
     *Manuel Puyol*
 
