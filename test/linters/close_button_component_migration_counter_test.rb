@@ -118,6 +118,38 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
     assert_equal expected, corrected_content
   end
 
+  def test_does_not_autocorrect_with_custom_octicon
+    @file = <<~HTML
+      <button class="close-button" aria-label="label"><%= octicon(:icon) %></button>
+    HTML
+
+    assert_equal "<%# erblint:counter CloseButtonComponentMigrationCounter 1 %>\n#{@file}", corrected_content
+  end
+
+  def test_does_not_autocorrect_with_custom_primer_octicon
+    @file = <<~HTML
+      <button class="close-button" aria-label="label"><%= primer_octicon(:icon) %></button>
+    HTML
+
+    assert_equal "<%# erblint:counter CloseButtonComponentMigrationCounter 1 %>\n#{@file}", corrected_content
+  end
+
+  def test_does_not_autocorrect_with_custom_primer_octicon_class
+    @file = <<~HTML
+      <button class="close-button" aria-label="label"><%= render Primer::OcticonComponent.new(:icon) %></button>
+    HTML
+
+    assert_equal "<%# erblint:counter CloseButtonComponentMigrationCounter 1 %>\n#{@file}", corrected_content
+  end
+
+  def test_does_not_autocorrect_with_custom_primer_octicon_class_with_kwargs
+    @file = <<~HTML
+      <button class="close-button" aria-label="label"><%= render Primer::OcticonComponent.new(icon: :icon) %></button>
+    HTML
+
+    assert_equal "<%# erblint:counter CloseButtonComponentMigrationCounter 1 %>\n#{@file}", corrected_content
+  end
+
   private
 
   def default_tag
