@@ -18,7 +18,9 @@ module ERBLint
 
       def map_arguments(tag, tag_tree)
         # We can only autocorrect elements with simple text as content.
-        return nil if tag_tree[:children].any?
+        return nil if tag_tree[:children].size != 1
+        # Hash children indicates that there are tags in the content.
+        return nil if tag_tree[:children].first.is_a?(Hash)
 
         ARGUMENT_MAPPER.new(tag).to_s
       rescue ArgumentMappers::ConversionError
