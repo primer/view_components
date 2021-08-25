@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Breaking Changes
+
+* Split `UnderlineNavComponent` into `Alpha::UnderlineNav` and `Alpha::UnderlinePanel`.
+
+    *Kate Higa*
+
 ## 0.0.53
 
 ### New
@@ -57,12 +63,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Linters won't convert HTML special elements.
 
     *Manuel Puyol*
-
-### Breaking Changes
-
-* Split `UnderlineNavComponent` into `Alpha::UnderlineNav` and `Alpha::UnderlinePanel`.
-
-    *Kate Higa*
 
 ### Misc
 

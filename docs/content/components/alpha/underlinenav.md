@@ -28,7 +28,7 @@ For panel navigation, use [UnderlinePanel](/components/alpha/underlinepanel) ins
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `tag` | `Symbol` | `:nav` | One of `:div` and `:nav`. |
-| `label` | `String` | N/A | The `aria-label` on top level element. |
+| `label` | `String` | N/A | Sets an `aria-label` that helps assistive technology users understand the purpose of the links, and distinguish it from similar elements. |
 | `align` | `Symbol` | `:left` | One of `:left` and `:right`. - Defaults to left |
 | `body_arguments` | `Hash` | `{}` | [System arguments](/system-arguments) for the body wrapper. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
@@ -57,7 +57,7 @@ Use actions for a call to action.
 
 ### Default with `<nav>`
 
-This should be reserved for main navigation links. See [Accessibility](#accessibility).
+`<nav>` is a landmark and should be reserved for main navigation links. See [Accessibility](#accessibility).
 
 <Example src="<nav aria-label='Default with nav element' data-view-component='true' class='UnderlineNav'>  <ul data-view-component='true' class='UnderlineNav-body list-style-none'>      <li data-view-component='true' class='d-inline-flex'>  <a href='#' aria-current='page' data-view-component='true' class='UnderlineNav-item'>          Item 1    </a></li>      <li data-view-component='true' class='d-inline-flex'>  <a href='#' data-view-component='true' class='UnderlineNav-item'>          Item 2    </a></li></ul>    <div data-view-component='true' class='UnderlineNav-actions'>    <button type='button' data-view-component='true' class='btn'>    Button!  </button></div></nav>" />
 

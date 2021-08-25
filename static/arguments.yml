@@ -32,7 +32,8 @@
   - name: label
     type: String
     default: N/A
-    description: The `aria-label` on top level element.
+    description: Sets an `aria-label` that helps assistive technology users understand
+      the purpose of the links, and distinguish it from similar elements.
   - name: align
     type: Symbol
     default: "`:left`"
@@ -51,7 +52,8 @@
   - name: label
     type: String
     default: N/A
-    description: Used to set the `aria-label` on top level element.
+    description: Sets an `aria-label` that helps assistive technology users understand
+      the purpose of the tabs.
   - name: align
     type: Symbol
     default: "`:left`"

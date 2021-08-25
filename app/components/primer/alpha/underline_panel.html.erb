@@ -1,5 +1,17 @@
 <%= wrapper(with_panel: true, **@wrapper_arguments) do %>
-  <%= render @underline_nav %>
+  <%= render Primer::BaseComponent.new(**@system_arguments) do %>
+    <% if @align == :right %>
+      <%= actions %>
+    <% end %>
+    <%= render body do %>
+      <% tabs.each do |tab| %>
+        <%= tab %>
+      <% end %>
+    <% end %>
+    <% if @align == :left %>
+      <%= actions %>
+    <% end %>
+  <% end %>
   <% tabs.each do |tab| %>
     <%= tab.panel %>
   <% end %>

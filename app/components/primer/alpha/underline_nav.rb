@@ -15,6 +15,7 @@ module Primer
     #     accessibility considerations.
     class UnderlineNav < Primer::Component
       include Primer::TabbedComponentHelper
+      include Primer::UnderlineNavHelper
 
       ALIGN_DEFAULT = :left
       ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
@@ -32,7 +33,7 @@ module Primer
       # @param selected [Boolean] Whether the tab is selected.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :tabs, lambda { |selected: false, **system_arguments|
-        system_arguments[:classes] = class_names("UnderlineNav-item", system_arguments[:classes])
+        system_arguments[:classes] = underline_nav_tab_classes(system_arguments[:classes])
         Primer::Navigation::TabComponent.new(
           list: true,
           selected: selected,
@@ -43,18 +44,18 @@ module Primer
 
       # Use actions for a call to action.
       #
-      # @param tag [Symbol] (Primer::Alpha::UnderlineNav::ACTIONS_TAG_DEFAULT) <%= one_of(Primer::Alpha::UnderlineNav::ACTIONS_TAG_OPTIONS) %>
+      # @param tag [Symbol] (Primer::UnderlineNavHelper::ACTIONS_TAG_DEFAULT) <%= one_of(Primer::UnderlineNavHelper::ACTIONS_TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :actions, lambda { |tag: ACTIONS_TAG_DEFAULT, **system_arguments|
         system_arguments[:tag] = fetch_or_fallback(ACTIONS_TAG_OPTIONS, tag, ACTIONS_TAG_DEFAULT)
-        system_arguments[:classes] = class_names("UnderlineNav-actions", system_arguments[:classes])
+        system_arguments[:classes] = underline_nav_action_classes(system_arguments[:classes])
 
         Primer::BaseComponent.new(**system_arguments)
       }
 
       # @example Default with `<nav>`
       #   @description
-      #     This should be reserved for main navigation links. See <%= link_to_accessibility %>.
+      #     `<nav>` is a landmark and should be reserved for main navigation links. See <%= link_to_accessibility %>.
       #   @code
       #     <%= render(Primer::Alpha::UnderlineNav.new(label: "Default with nav element")) do |component| %>
       #       <% component.tab(href: "#", selected: true) { "Item 1" } %>
@@ -114,8 +115,8 @@ module Primer
       #   <% end %>
       #
       # @param tag [Symbol] <%= one_of(Primer::Alpha::UnderlineNav::TAG_OPTIONS) %>
-      # @param label [String] The `aria-label` on top level element.
-      # @param align [Symbol] <%= one_of(Primer::Alpha::UnderlineNav::ALIGN_OPTIONS) %> - Defaults to <%= Primer::Alpha::UnderlineNav::ALIGN_DEFAULT %>
+      # @param label [String] Sets an `aria-label` that helps assistive technology users understand the purpose of the links, and distinguish it from similar elements.
+      # @param align [Symbol] <%= one_of(Primer::UnderlineNavHelper::ALIGN_OPTIONS) %> - Defaults to <%= Primer::UnderlineNavHelper::ALIGN_DEFAULT %>
       # @param body_arguments [Hash] <%= link_to_system_arguments_docs %> for the body wrapper.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(label:, tag: TAG_DEFAULT, align: ALIGN_DEFAULT, body_arguments: {}, **system_arguments)
@@ -123,19 +124,11 @@ module Primer
 
         @system_arguments = system_arguments
         @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
-        @system_arguments[:classes] = class_names(
-          system_arguments[:classes],
-          "UnderlineNav",
-          "UnderlineNav--right" => align == :right
-        )
+        @system_arguments[:classes] = underline_nav_classes(@system_arguments[:classes], @align)
 
         @body_arguments = body_arguments
         @body_arguments[:tag] = :ul
-        @body_arguments[:classes] = class_names(
-          "UnderlineNav-body",
-          body_arguments[:classes],
-          "list-style-none"
-        )
+        @body_arguments[:classes] = underline_nav_body_classes(@body_arguments[:classes])
 
         @system_arguments[:tag] == :nav ? @system_arguments[:"aria-label"] = label : @body_arguments[:"aria-label"] = label
       end
