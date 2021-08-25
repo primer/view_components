@@ -40,8 +40,10 @@ class PrimerNavigationTabComponentTest < Minitest::Test
   def test_raises_if_with_panel_and_no_panel_id
     err = assert_raises ArgumentError do
       render_inline Primer::Navigation::TabComponent.new(with_panel: true) do |c|
+        # :nocov:
         c.text { "Title" }
         c.panel { "content" }
+        # :nocov:
       end
     end
 

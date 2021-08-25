@@ -4,9 +4,15 @@ require "json"
 require "openssl"
 require "primer/view_components/constants"
 
+# :nocov:
+
 module ERBLint
   module Linters
-    # Helper methods for linting ERB.
+    # Provides the basic linter logic. When inherited, you should define:
+    # * `TAGS` - required - The HTML tags that the component supports. It will be used by the linter to match elements.
+    # * `MESSAGE` - required - The message shown when there's an offense.
+    # * `CLASSES` - optional - The CSS classes that the component needs. The linter will only match elements with one of those classes.
+    # * `REQUIRED_ARGUMENTS` - optional - A list of HTML attributes that are required by the component.
     class BaseLinter < Linter
       # from https://github.com/Shopify/erb-lint/blob/6179ee2d9d681a6ec4dd02351a1e30eefa748d3d/lib/erb_lint/linters/self_closing_tag.rb
       SELF_CLOSING_TAGS = %w[
