@@ -135,7 +135,7 @@ module ERBLint
       # From the tags, we build a structured tree which represents the tag hierarchy.
       # With this, we are able to know where the tags start and end.
       def build_tag_tree(processed_source, tags)
-        nodes = ast_nodes(processed_source)
+        nodes = processed_source.ast.children
         tag_tree = {}
         idx = 0
         current_opened_tag = nil
@@ -180,10 +180,6 @@ module ERBLint
 
       def tags(processed_source)
         processed_source.parser.nodes_with_type(:tag).map { |tag_node| BetterHtml::Tree::Tag.from_node(tag_node) }
-      end
-
-      def ast_nodes(processed_source)
-        processed_source.ast.children
       end
 
       def counter_correct?(processed_source)
