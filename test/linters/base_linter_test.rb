@@ -7,12 +7,8 @@ class BaseLinterTest < LinterTestCase
     ERBLint::Linters::BaseLinter
   end
 
-  def tags
-    @linter.send(:tags, processed_source)
-  end
-
-  def build_tag_tree(tags)
-    @linter.send(:build_tag_tree, processed_source, tags)
+  def build_tag_tree
+    @linter.send(:build_tag_tree, processed_source)
   end
 
   def tag_children(tree)
@@ -26,12 +22,11 @@ class BaseLinterTest < LinterTestCase
       </div>
     HTML
 
-    processed_tags = tags
-    tree = build_tag_tree(processed_tags)
+    (tags, tree)= build_tag_tree
 
-    assert_equal [processed_tags.first], tree.keys
-    assert_equal processed_tags.last, tree[processed_tags.first][:closing]
-    assert_equal tree[processed_tags.first][:children].size, 1
+    assert_equal [tags.first], tree.keys
+    assert_equal tags.last, tree[tags.first][:closing]
+    assert_equal tree[tags.first][:children].size, 1
   end
 
   def test_tree_with_children
@@ -42,13 +37,12 @@ class BaseLinterTest < LinterTestCase
       </div>
     HTML
 
-    processed_tags = tags
-    tree = build_tag_tree(processed_tags)
+    (tags, tree) = build_tag_tree
 
-    assert_equal [processed_tags.first, processed_tags.second], tree.keys
-    assert_equal processed_tags.last, tree[processed_tags.first][:closing]
-    assert_equal processed_tags.third, tree[processed_tags.second][:closing]
-    assert_equal [tree[processed_tags.second]], tag_children(tree[processed_tags.first])
+    assert_equal [tags.first, tags.second], tree.keys
+    assert_equal tags.last, tree[tags.first][:closing]
+    assert_equal tags.third, tree[tags.second][:closing]
+    assert_equal [tree[tags.second]], tag_children(tree[tags.first])
   end
 
   def test_tree_with_children_between_text
@@ -58,13 +52,12 @@ class BaseLinterTest < LinterTestCase
       </div>
     HTML
 
-    processed_tags = tags
-    tree = build_tag_tree(processed_tags)
+    (tags, tree) = build_tag_tree
 
-    assert_equal [processed_tags.first, processed_tags.second], tree.keys
-    assert_equal processed_tags.last, tree[processed_tags.first][:closing]
-    assert_equal processed_tags.third, tree[processed_tags.second][:closing]
-    assert_equal [tree[processed_tags.second]], tag_children(tree[processed_tags.first])
+    assert_equal [tags.first, tags.second], tree.keys
+    assert_equal tags.last, tree[tags.first][:closing]
+    assert_equal tags.third, tree[tags.second][:closing]
+    assert_equal [tree[tags.second]], tag_children(tree[tags.first])
   end
 
   def test_tree_with_multiple_children
@@ -76,9 +69,8 @@ class BaseLinterTest < LinterTestCase
       </div>
     HTML
 
-    processed_tags = tags
-    tree = build_tag_tree(processed_tags)
+    (tags, tree) = build_tag_tree
 
-    assert_equal 3, tag_children(tree[processed_tags.first]).size
+    assert_equal 3, tag_children(tree[tags.first]).size
   end
 end

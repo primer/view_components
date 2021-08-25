@@ -33,8 +33,7 @@ module ERBLint
       def run(processed_source)
         @total_offenses = 0
         @offenses_not_corrected = 0
-        tags = tags(processed_source)
-        tag_tree = build_tag_tree(processed_source, tags)
+        (tags, tag_tree) = build_tag_tree(processed_source)
 
         tags.each do |tag|
           next if tag.closing?
@@ -134,17 +133,17 @@ module ERBLint
       # This assumes that the AST provided represents valid HTML, where each tag has a corresponding closing tag.
       # From the tags, we build a structured tree which represents the tag hierarchy.
       # With this, we are able to know where the tags start and end.
-      def build_tag_tree(processed_source, tags)
+      def build_tag_tree(processed_source)
         nodes = processed_source.ast.children
         tag_tree = {}
-        idx = 0
+        tags = []
         current_opened_tag = nil
 
         nodes.each do |node|
           if node.type == :tag
             # get the tag from previously calculated list so the references are the same
-            tag = tags[idx]
-            idx += 1
+            tag = BetterHtml::Tree::Tag.from_node(node)
+            tags << tag
 
             if tag.closing?
               if current_opened_tag && tag.name == current_opened_tag.name
@@ -171,7 +170,7 @@ module ERBLint
           end
         end
 
-        tag_tree
+        [tags, tag_tree]
       end
 
       def self_closing?(tag)
