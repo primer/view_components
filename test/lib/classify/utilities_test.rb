@@ -36,10 +36,11 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     refute Primer::Classify::Utilities.responsive?(:hide, :sm)
   end
 
-  def test_classname_returns_empty_string_when_incorrect_value_in_production
+  def test_classname_returns_key_value_when_incorrect_value_in_production
     with_env("production") do
       assert_equal "mr-1", Primer::Classify::Utilities.classname(:mr, 1)
-      assert_equal "", Primer::Classify::Utilities.classname(:mr, :foo)
+      assert_equal "mr-foo", Primer::Classify::Utilities.classname(:mr, :foo)
+      assert_equal "color-yellow-0", Primer::Classify::Utilities.classname(:color, :yellow_0)
     end
   end
 
