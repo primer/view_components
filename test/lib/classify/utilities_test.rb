@@ -80,9 +80,9 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     assert_includes error.message, "foo is not a valid value for :w"
   end
 
-  def test_classname_empty_on_unsupported_value_in_prod
+  def test_classname_on_unsupported_value_in_prod
     with_env("production") do
-      assert_equal "", Primer::Classify::Utilities.classname(:w, :foo)
+      assert_equal "w-foo", Primer::Classify::Utilities.classname(:w, :foo)
     end
   end
 
