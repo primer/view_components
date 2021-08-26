@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.53
+
 ### New
 
 * Add autocorrection to `FlashComponent` linter when the context is basic text.
