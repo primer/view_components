@@ -27,10 +27,12 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
         begin
           assert_accessible(page)
         rescue RuntimeError => e
+          # :nocov:
           puts "=========================================================================="
           puts "#{component_uri}##{preview} failed check."
           puts "=========================================================================="
           raise e
+          # :nocov:
         else
           puts "#{component_uri}##{preview} passed check."
         end

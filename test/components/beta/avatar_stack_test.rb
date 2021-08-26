@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class PrimerAvatarStackTest
+class PrimerAvatarStackTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_as_a_div_by_default

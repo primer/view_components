@@ -10,6 +10,13 @@ class ArgumentMappersClipboardCopyTest < LinterTestCase
     assert_equal({ value: '"some value"' }, args)
   end
 
+  def test_returns_for_argument
+    @file = "<clipboard-copy for=\"some value\"></clipboard-copy>"
+    args = ERBLint::Linters::ArgumentMappers::ClipboardCopy.new(tags.first).to_args
+
+    assert_equal({ for: '"some value"' }, args)
+  end
+
   def test_returns_arguments_as_string
     @file = "<clipboard-copy value=\"some value\"></clipboard-copy>"
     args = ERBLint::Linters::ArgumentMappers::ClipboardCopy.new(tags.first).to_s

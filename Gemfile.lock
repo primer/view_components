@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.0.52)
+    primer_view_components (0.0.53)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (~> 15)
@@ -202,6 +202,7 @@ GEM
       unicode-display_width (~> 1.1, >= 1.1.1)
     thor (1.1.0)
     thread_safe (0.3.6)
+    timecop (0.9.4)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.7.0)
@@ -262,6 +263,7 @@ DEPENDENCIES
   sprockets
   sprockets-rails
   thor
+  timecop
   view_component_storybook (~> 0.8.0)
   webpacker (~> 5.0)
   yard (~> 0.9.25)
