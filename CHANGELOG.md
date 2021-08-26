@@ -52,6 +52,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Moving text color variables to Utilities class
+
+    *Jon Rohan*
+
 ### Bug fixes
 
 * Linters won't convert HTML special elements.
