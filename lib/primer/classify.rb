@@ -164,7 +164,8 @@ module Primer
       def extract_value(memo, key, val, breakpoint)
         return if val.nil? || val == ""
 
-        if Primer::Classify::Utilities.supported_key?(key)
+        # We still have to support old colors for system arguments.
+        if Primer::Classify::Utilities.supported_key?(key) && key != COLOR_KEY
           memo[:classes] << Primer::Classify::Utilities.classname(key, val, breakpoint)
         elsif BOOLEAN_MAPPINGS.key?(key)
           BOOLEAN_MAPPINGS[key][:mappings].each do |m|
