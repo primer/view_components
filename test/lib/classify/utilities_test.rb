@@ -91,8 +91,8 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     assert_equal({ mx: :auto }, Primer::Classify::Utilities.classes_to_hash("mx-auto"))
     assert_equal({ mr: [1, 2], classes: "baz bin" }, Primer::Classify::Utilities.classes_to_hash("mr-1 mr-sm-2 baz bin"))
     assert_equal({ mr: [1, nil, 2], classes: "foo bar" }, Primer::Classify::Utilities.classes_to_hash("mr-1 mr-md-2 foo bar"))
-    assert_equal({ color: :text_tertiary}, Primer::Classify::Utilities.classes_to_hash("color-text-tertiary"))
-    assert_equal({ color: :icon_tertiary}, Primer::Classify::Utilities.classes_to_hash("color-icon-tertiary"))
+    assert_equal({ color: :text_tertiary }, Primer::Classify::Utilities.classes_to_hash("color-text-tertiary"))
+    assert_equal({ color: :icon_tertiary }, Primer::Classify::Utilities.classes_to_hash("color-icon-tertiary"))
   end
 
   def test_classes_to_args
@@ -101,6 +101,14 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     assert_equal("mx: :auto", Primer::Classify::Utilities.classes_to_args("mx-auto"))
     assert_equal('mr: [1, 2], classes: "baz bin"', Primer::Classify::Utilities.classes_to_args("mr-1 mr-sm-2 baz bin"))
     assert_equal('mr: [1, nil, 2], classes: "foo bar"', Primer::Classify::Utilities.classes_to_args("mr-1 mr-md-2 foo bar"))
+  end
+
+  def test_hash_to_args
+    assert_equal('mr: 1, mb: 2, classes: "foo"', Primer::Classify::Utilities.hash_to_args({ mr: 1, mb: 2, classes: "foo" }))
+    assert_equal('classes: "foo"', Primer::Classify::Utilities.hash_to_args({ classes: "foo" }))
+    assert_equal("mx: :auto", Primer::Classify::Utilities.hash_to_args({ mx: :auto }))
+    assert_equal('mr: [1, 2], classes: "baz bin"', Primer::Classify::Utilities.hash_to_args({ mr: [1, 2], classes: "baz bin" }))
+    assert_equal('mr: [1, nil, 2], classes: "foo bar"', Primer::Classify::Utilities.hash_to_args({ mr: [1, nil, 2], classes: "foo bar" }))
   end
 
   def test_classes_to_hash_returns_classes_when_run_in_production

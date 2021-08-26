@@ -138,6 +138,22 @@ class RubocopPrimerOcticonTest < CopTest
     assert_correction "primer_octicon(:icon, mr: 1, color: :icon_primary, classes: \"custom\")"
   end
 
+  def test_converts_text_color_into_icon_color
+    investigate(cop, <<-RUBY)
+      octicon(:icon, class: "mr-1 color-text-primary")
+    RUBY
+
+    assert_correction "primer_octicon(:icon, mr: 1, color: :icon_primary)"
+  end
+
+  def test_converts_text_link_into_icon_info
+    investigate(cop, <<-RUBY)
+      octicon(:icon, class: "mr-1 color-text-link")
+    RUBY
+
+    assert_correction "primer_octicon(:icon, mr: 1, color: :icon_info)"
+  end
+
   def test_octicon_with_class_that_cant_be_converted
     investigate(cop, <<-'RUBY')
       octicon(:icon, class: "mr-1 text-center")
