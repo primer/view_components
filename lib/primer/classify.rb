@@ -165,7 +165,9 @@ module Primer
         return if val.nil? || val == ""
 
         # We still have to support old colors for system arguments.
-        if Primer::Classify::Utilities.supported_key?(key) && key != COLOR_KEY
+        if key == COLOR_KEY
+          memo[:classes] << Primer::Classify::FunctionalTextColors.color(val)
+        elsif Primer::Classify::Utilities.supported_key?(key)
           memo[:classes] << Primer::Classify::Utilities.classname(key, val, breakpoint)
         elsif BOOLEAN_MAPPINGS.key?(key)
           BOOLEAN_MAPPINGS[key][:mappings].each do |m|
@@ -177,8 +179,6 @@ module Primer
           else
             memo[:classes] << Primer::Classify::FunctionalBackgroundColors.color(val)
           end
-        elsif key == COLOR_KEY
-          memo[:classes] << Primer::Classify::FunctionalTextColors.color(val)
         elsif key == BORDER_KEY
           border_value = if val == true
                            "border"
