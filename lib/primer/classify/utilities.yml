@@ -1222,6 +1222,8 @@
 :word_break:
   :break_all:
   - wb-break-all
+  :break_word:
+  - break-word
 :display:
   :block:
   - d-block

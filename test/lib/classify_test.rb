@@ -579,6 +579,7 @@ class PrimerClassifyTest < Minitest::Test
 
   def test_word_break
     assert_generated_class("wb-break-all", { word_break: :break_all })
+    assert_generated_class("break-word", { word_break: :break_word })
   end
 
   def test_responsive
