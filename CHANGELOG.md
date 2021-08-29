@@ -30,9 +30,9 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
-### New
+### Updates
 
-* Add `break_word` as an option for the `word_break` system argument.
+* Add support for `word_break: :break_word` to System Arguments.
 
     *antn*
 
