@@ -3,7 +3,7 @@
 module Primer
   module Navigation
     # This component is part of navigation components such as `Primer::TabNavComponent`
-    # and `Primer::UnderlineNavComponent` and should not be used by itself.
+    # and `Primer::Alpha::UnderlineNav` and should not be used by itself.
     #
     # @accessibility
     #   `TabComponent` renders the selected anchor tab with `aria-current="page"` by default.
@@ -14,7 +14,7 @@ module Primer
       # Panel controlled by the Tab. This will not render anything in the tab itself.
       # It will provide a accessor for the Tab's parent to call and render the panel
       # content in the appropriate place.
-      # Refer to `UnderlineNavComponent` and `TabNavComponent` implementations for examples.
+      # Refer to `UnderlineNav` and `TabNavComponent` implementations for examples.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :panel, lambda { |**system_arguments|
@@ -111,19 +111,21 @@ module Primer
 
         @system_arguments = system_arguments
         @id = @system_arguments[:id]
+        @wrapper_arguments = wrapper_arguments
 
         if with_panel || @system_arguments[:tag] == :button
           @system_arguments[:tag] = :button
           @system_arguments[:type] = :button
           @system_arguments[:role] = :tab
           panel_id(panel_id)
+          # https://www.w3.org/TR/wai-aria-practices/#presentation_role
+          @wrapper_arguments[:role] = :presentation
         else
           @system_arguments[:tag] = :a
         end
 
-        @wrapper_arguments = wrapper_arguments
         @wrapper_arguments[:tag] = :li
-        @wrapper_arguments[:display] ||= :flex
+        @wrapper_arguments[:display] ||= :inline_flex
 
         return unless @selected
 

@@ -6,7 +6,8 @@ class AllComponentsHaveStoriesTest < Minitest::Test
   EXCLUDED_COMPONENTS = [
     Primer::BaseComponent,
     Primer::FlexItemComponent,
-    Primer::OcticonSymbolsComponent
+    Primer::OcticonSymbolsComponent,
+    Primer::Beta::Breadcrumbs::Item
   ].freeze
 
   COMPONENTS = Primer::Component.descendants - EXCLUDED_COMPONENTS
@@ -32,6 +33,8 @@ class AllComponentsHaveStoriesTest < Minitest::Test
 
     return if components_with_stories_names.include?(component_name)
 
+    # :nocov:
     missing_accumulator << component
+    # :nocov:
   end
 end

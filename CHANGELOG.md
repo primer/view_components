@@ -30,6 +30,24 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Breaking changes
+
+* Rename `BreadcrumbComponent` to `Beta::Breadcrumbs`.
+
+    *Joel Hawksley*
+
+* Split `UnderlineNavComponent` into `Alpha::UnderlineNav` and `Alpha::UnderlinePanels`.
+
+    *Kate Higa*
+
+## 0.0.53
+
+### New
+
+* Add autocorrection to `FlashComponent` linter when the context is basic text.
+
+    *Manuel Puyol*
+
 ### Updates
 
 * Linters won't mark offenses when the ignore count is correct unless explicitly configured to do so.
@@ -39,6 +57,34 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Deprecating background and border color presentational arguments
 
     *Jon Rohan*
+
+* Map the `for` argument when autofixing `ClipboardCopy` migrations.
+
+    *Kristján Oddsson*
+
+* Add autocorrection for `CloseButton` linter.
+
+    *Manuel Puyol*
+
+### Bug fixes
+
+* Linters won't convert HTML special elements.
+
+    *Manuel Puyol*
+
+### Misc
+
+* Only run CHANGELOG CI on pull requests.
+
+    *Manuel Puyol*
+
+* Run CI actions on pushes to main.
+
+    *Cameron Dutro*
+
+* Get to 100% code coverage.
+
+    *Cameron Dutro*
 
 ## 0.0.52
 
@@ -91,6 +137,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 ### Misc
 
 * Update benchmarks to run in every supported Ruby version.
+
+    *Manuel Puyol*
+
+* Add a linter generator.
 
     *Manuel Puyol*
 

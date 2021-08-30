@@ -1,12 +1,12 @@
 ---
-title: Breadcrumb
-componentId: breadcrumb
+title: Breadcrumbs
+componentId: breadcrumbs
 status: Beta
-source: https://github.com/primer/view_components/tree/main/app/components/primer/breadcrumb_component.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-breadcrumb-component
+source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/breadcrumbs.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-beta-breadcrumbs
 ---
 
-import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
+import Example from '../../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
@@ -37,7 +37,7 @@ _Note: if both `href` and `selected: true` are passed in, `href` will be ignored
 <Example src="<nav aria-label='Breadcrumb' data-view-component='true'>  <ol>      <li data-view-component='true' class='breadcrumb-item'><a href='/' data-view-component='true'>Home</a></li>      <li data-view-component='true' class='breadcrumb-item'><a href='/about' data-view-component='true'>About</a></li>      <li aria-current='page' data-view-component='true' class='breadcrumb-item'>Team</li>  </ol></nav>" />
 
 ```erb
-<%= render(Primer::BreadcrumbComponent.new) do |component| %>
+<%= render(Primer::Beta::Breadcrumbs.new) do |component| %>
   <% component.item(href: "/") do %>Home<% end %>
   <% component.item(href: "/about") do %>About<% end %>
   <% component.item(selected: true) do %>Team<% end %>

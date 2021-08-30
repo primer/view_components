@@ -4,9 +4,15 @@ require "json"
 require "openssl"
 require "primer/view_components/constants"
 
+# :nocov:
+
 module ERBLint
   module Linters
-    # Helper methods for linting ERB.
+    # Provides the basic linter logic. When inherited, you should define:
+    # * `TAGS` - required - The HTML tags that the component supports. It will be used by the linter to match elements.
+    # * `MESSAGE` - required - The message shown when there's an offense.
+    # * `CLASSES` - optional - The CSS classes that the component needs. The linter will only match elements with one of those classes.
+    # * `REQUIRED_ARGUMENTS` - optional - A list of HTML attributes that are required by the component.
     class BaseLinter < Linter
       # from https://github.com/Shopify/erb-lint/blob/6179ee2d9d681a6ec4dd02351a1e30eefa748d3d/lib/erb_lint/linters/self_closing_tag.rb
       SELF_CLOSING_TAGS = %w[
@@ -15,6 +21,7 @@ module ERBLint
       ].freeze
 
       DUMP_FILE = ".erblint-counter-ignore.json"
+      DISALLOWED_CLASSES = [].freeze
       CLASSES = [].freeze
       REQUIRED_ARGUMENTS = [].freeze
 
@@ -31,8 +38,7 @@ module ERBLint
       def run(processed_source)
         @total_offenses = 0
         @offenses_not_corrected = 0
-        tags = tags(processed_source)
-        tag_tree = build_tag_tree(tags)
+        (tags, tag_tree) = build_tag_tree(processed_source)
 
         tags.each do |tag|
           next if tag.closing?
@@ -41,9 +47,10 @@ module ERBLint
           classes = tag.attributes["class"]&.value&.split(" ") || []
           tag_tree[tag][:offense] = false
 
+          next if (classes & self.class::DISALLOWED_CLASSES).any?
           next unless self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
 
-          args = map_arguments(tag)
+          args = map_arguments(tag, tag_tree[tag])
           correction = correction(args)
 
           attributes = tag.attributes.each.map(&:name).join(" ")
@@ -61,8 +68,7 @@ module ERBLint
           @total_offenses += 1
           # We always fix the offenses using blocks. The closing tag corresponds to `<% end %>`.
           if h[:correctable]
-            add_offense(tag.loc, h[:message], h[:correction])
-            add_offense(h[:closing].loc, h[:message], "<% end %>")
+            add_correction(tag, h)
           else
             @offenses_not_corrected += 1
             generate_offense(self.class, processed_source, tag, h[:message])
@@ -88,11 +94,16 @@ module ERBLint
 
       private
 
+      def add_correction(tag, tag_tree)
+        add_offense(tag.loc, tag_tree[:message], tag_tree[:correction])
+        add_offense(tag_tree[:closing].loc, tag_tree[:message], "<% end %>")
+      end
+
       # Override this function to convert the HTML element attributes to argument for a component.
       #
       # @return [Hash] if possible to map all attributes to arguments.
       # @return [Nil] if cannot map to arguments.
-      def map_arguments(_tag)
+      def map_arguments(_tag, _tag_tree)
         nil
       end
 
@@ -128,31 +139,44 @@ module ERBLint
       # This assumes that the AST provided represents valid HTML, where each tag has a corresponding closing tag.
       # From the tags, we build a structured tree which represents the tag hierarchy.
       # With this, we are able to know where the tags start and end.
-      def build_tag_tree(tags)
+      def build_tag_tree(processed_source)
+        nodes = processed_source.ast.children
         tag_tree = {}
+        tags = []
         current_opened_tag = nil
 
-        tags.each do |tag|
-          if tag.closing?
-            if current_opened_tag && tag.name == current_opened_tag.name
-              tag_tree[current_opened_tag][:closing] = tag
-              current_opened_tag = tag_tree[current_opened_tag][:parent]
+        nodes.each do |node|
+          if node.type == :tag
+            # get the tag from previously calculated list so the references are the same
+            tag = BetterHtml::Tree::Tag.from_node(node)
+            tags << tag
+
+            if tag.closing?
+              if current_opened_tag && tag.name == current_opened_tag.name
+                tag_tree[current_opened_tag][:closing] = tag
+                current_opened_tag = tag_tree[current_opened_tag][:parent]
+              end
+
+              next
             end
 
-            next
+            self_closing = self_closing?(tag)
+
+            tag_tree[tag] = {
+              tag: tag,
+              closing: self_closing ? tag : nil,
+              parent: current_opened_tag,
+              children: []
+            }
+
+            tag_tree[current_opened_tag][:children] << tag_tree[tag] if current_opened_tag
+            current_opened_tag = tag unless self_closing
+          elsif current_opened_tag
+            tag_tree[current_opened_tag][:children] << node
           end
-
-          self_closing = self_closing?(tag)
-
-          tag_tree[tag] = {
-            closing: self_closing ? tag : nil,
-            parent: current_opened_tag
-          }
-
-          current_opened_tag = tag unless self_closing
         end
 
-        tag_tree
+        [tags, tag_tree]
       end
 
       def self_closing?(tag)
