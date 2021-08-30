@@ -21,6 +21,7 @@ module ERBLint
       ].freeze
 
       DUMP_FILE = ".erblint-counter-ignore.json"
+      DISALLOWED_CLASSES = [].freeze
       CLASSES = [].freeze
       REQUIRED_ARGUMENTS = [].freeze
 
@@ -46,6 +47,7 @@ module ERBLint
           classes = tag.attributes["class"]&.value&.split(" ") || []
           tag_tree[tag][:offense] = false
 
+          next if (classes & self.class::DISALLOWED_CLASSES).any?
           next unless self.class::CLASSES.blank? || (classes & self.class::CLASSES).any?
 
           args = map_arguments(tag, tag_tree[tag])

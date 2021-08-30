@@ -30,11 +30,14 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+
 ### Breaking changes
 
 * Rename `BreadcrumbComponent` to `Beta::Breadcrumbs`.
 
     *Joel Hawksley*
+
+## 0.0.53
 
 ### New
 
