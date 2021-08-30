@@ -30,12 +30,15 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
-
 ### Breaking changes
 
 * Rename `BreadcrumbComponent` to `Beta::Breadcrumbs`.
 
     *Joel Hawksley*
+
+* Split `UnderlineNavComponent` into `Alpha::UnderlineNav` and `Alpha::UnderlinePanels`.
+
+    *Kate Higa*
 
 ## 0.0.53
 
