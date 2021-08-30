@@ -106,5 +106,5 @@
       url: /components/beta/truncate
     - title: UnderlineNav
       url: /components/alpha/underlinenav
-    - title: UnderlinePanel
-      url: /components/alpha/underlinepanel
+    - title: UnderlinePanels
+      url: /components/alpha/UnderlinePanels

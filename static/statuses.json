@@ -1,7 +1,7 @@
 {
   "Primer::Alpha::ButtonMarketing": "alpha",
   "Primer::Alpha::UnderlineNav": "alpha",
-  "Primer::Alpha::UnderlinePanel": "alpha",
+  "Primer::Alpha::UnderlinePanels": "alpha",
   "Primer::BaseButton": "beta",
   "Primer::BaseComponent": "beta",
   "Primer::Beta::AutoComplete": "beta",

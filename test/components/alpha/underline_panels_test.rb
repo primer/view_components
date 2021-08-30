@@ -2,11 +2,11 @@
 
 require "test_helper"
 
-class PrimerUnderlinePanelTest < Minitest::Test
+class PrimerUnderlinePanelsTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_panels_and_tab_container
-    render_inline(Primer::Alpha::UnderlinePanel.new(label: "label")) do |component|
+    render_inline(Primer::Alpha::UnderlinePanels.new(label: "label")) do |component|
       component.tab(selected: true, id: "tab-1") do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
@@ -38,7 +38,7 @@ class PrimerUnderlinePanelTest < Minitest::Test
   end
 
   def test_customizes_tab_container
-    render_inline(Primer::Alpha::UnderlinePanel.new(label: "label", with_panel: true, wrapper_arguments: { m: 2, classes: "custom-class" })) do |component|
+    render_inline(Primer::Alpha::UnderlinePanels.new(label: "label", with_panel: true, wrapper_arguments: { m: 2, classes: "custom-class" })) do |component|
       component.tab(selected: true, id: "tab-1") do |t|
         t.panel { "Panel 1" }
         t.text { "Tab 1" }
@@ -50,7 +50,7 @@ class PrimerUnderlinePanelTest < Minitest::Test
 
   def test_raises_if_multiple_tabs_are_selected
     err = assert_raises Primer::TabbedComponentHelper::MultipleSelectedTabsError do
-      render_inline(Primer::Alpha::UnderlinePanel.new(label: "label")) do |c|
+      render_inline(Primer::Alpha::UnderlinePanels.new(label: "label")) do |c|
         c.tab(selected: true, id: "tab-1") do |t|
           t.panel { "Panel 1" }
           t.text { "Tab 1" }
@@ -71,7 +71,7 @@ class PrimerUnderlinePanelTest < Minitest::Test
 
   def test_actions_tag_falls_back_to_default
     without_fetch_or_fallback_raises do
-      render_inline(Primer::Alpha::UnderlinePanel.new(label: "label")) do |component|
+      render_inline(Primer::Alpha::UnderlinePanels.new(label: "label")) do |component|
         component.tab(selected: true, id: "tab-1") do |t|
           t.text { "Tab 1" }
           t.panel { "Panel 1" }
@@ -92,7 +92,7 @@ class PrimerUnderlinePanelTest < Minitest::Test
 
   def test_align_falls_back_to_default
     without_fetch_or_fallback_raises do
-      render_inline(Primer::Alpha::UnderlinePanel.new(label: "label", align: :foo)) do |component|
+      render_inline(Primer::Alpha::UnderlinePanels.new(label: "label", align: :foo)) do |component|
         component.tab(selected: true, id: "tab-1") do |t|
           t.text { "Tab 1" }
           t.panel { "Panel 2" }
@@ -123,7 +123,7 @@ class PrimerUnderlinePanelTest < Minitest::Test
   end
 
   def test_adds_underline_nav_right_when_align_right_is_set
-    render_inline(Primer::Alpha::UnderlinePanel.new(label: "label", align: :right)) do |component|
+    render_inline(Primer::Alpha::UnderlinePanels.new(label: "label", align: :right)) do |component|
       component.tab(selected: true, id: "tab-1") do |t|
         t.text { "Tab 1" }
         t.panel { "Panel 2" }
@@ -151,7 +151,7 @@ class PrimerUnderlinePanelTest < Minitest::Test
   end
 
   def test_puts_actions_first_if_align_right_and_actions_exist
-    render_inline(Primer::Alpha::UnderlinePanel.new(label: "label", align: :right)) do |component|
+    render_inline(Primer::Alpha::UnderlinePanels.new(label: "label", align: :right)) do |component|
       component.tab(selected: true, id: "tab-1") do |t|
         t.text { "Tab 1" }
         t.panel { "Panel 2" }
@@ -169,7 +169,7 @@ class PrimerUnderlinePanelTest < Minitest::Test
   end
 
   def test_renders_tab_icon_with_correct_classes
-    render_inline(Primer::Alpha::UnderlinePanel.new(label: "label", align: :right)) do |component|
+    render_inline(Primer::Alpha::UnderlinePanels.new(label: "label", align: :right)) do |component|
       component.tab(selected: true, id: "tab-1") do |t|
         t.text { "Tab 1" }
         t.panel { "Panel 1" }

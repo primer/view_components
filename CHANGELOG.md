@@ -32,7 +32,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Breaking Changes
 
-* Split `UnderlineNavComponent` into `Alpha::UnderlineNav` and `Alpha::UnderlinePanel`.
+* Split `UnderlineNavComponent` into `Alpha::UnderlineNav` and `Alpha::UnderlinePanels`.
 
     *Kate Higa*
 

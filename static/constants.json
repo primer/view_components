@@ -51,7 +51,7 @@
       "div"
     ]
   },
-  "Primer::Alpha::UnderlinePanel": {
+  "Primer::Alpha::UnderlinePanels": {
   },
   "Primer::BaseButton": {
     "DEFAULT_TAG": "button",

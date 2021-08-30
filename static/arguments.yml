@@ -46,8 +46,8 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: UnderlinePanel
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/underline_panel.rb
+- component: UnderlinePanels
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/underline_panels.rb
   parameters:
   - name: label
     type: String
