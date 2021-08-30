@@ -102,6 +102,11 @@
       "span"
     ]
   },
+  "Primer::Beta::Breadcrumbs": {
+    "Item": "Primer::Beta::Breadcrumbs::Item"
+  },
+  "Primer::Beta::Breadcrumbs::Item": {
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
@@ -129,11 +134,6 @@
     }
   },
   "Primer::BoxComponent": {
-  },
-  "Primer::BreadcrumbComponent": {
-    "ItemComponent": "Primer::BreadcrumbComponent::ItemComponent"
-  },
-  "Primer::BreadcrumbComponent::ItemComponent": {
   },
   "Primer::ButtonComponent": {
     "DEFAULT_SCHEME": "default",

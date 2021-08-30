@@ -28,8 +28,8 @@
       url: /components/borderbox
     - title: Box
       url: /components/box
-    - title: Breadcrumb
-      url: /components/breadcrumb
+    - title: Breadcrumbs
+      url: /components/beta/breadcrumbs
     - title: Button
       url: /components/button
     - title: ButtonGroup
