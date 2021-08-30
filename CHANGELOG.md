@@ -35,7 +35,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Linters won't mark offenses when the ignore count is correct unless explicitly configured to do so.
 
     *Manuel Puyol*
-    
+
 * Deprecating background and border color presentational arguments
 
     *Jon Rohan*
