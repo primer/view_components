@@ -7,6 +7,7 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
     [Primer::Image, { src: "src", alt: "alt" }],
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
@@ -66,7 +67,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],
-    [Primer::UnderlineNavComponent, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }]
+    [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }]
   ].freeze
 
   def test_registered_components

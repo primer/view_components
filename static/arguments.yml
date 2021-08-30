@@ -22,6 +22,54 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: UnderlineNav
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/underline_nav.rb
+  parameters:
+  - name: tag
+    type: Symbol
+    default: "`:nav`"
+    description: One of `:div` and `:nav`.
+  - name: label
+    type: String
+    default: N/A
+    description: Sets an `aria-label` that helps assistive technology users understand
+      the purpose of the links, and distinguish it from similar elements.
+  - name: align
+    type: Symbol
+    default: "`:left`"
+    description: One of `:left` and `:right`. - Defaults to left
+  - name: body_arguments
+    type: Hash
+    default: "`{}`"
+    description: "[System arguments](/system-arguments) for the body wrapper."
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: UnderlinePanels
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/underline_panels.rb
+  parameters:
+  - name: label
+    type: String
+    default: N/A
+    description: Sets an `aria-label` that helps assistive technology users understand
+      the purpose of the tabs.
+  - name: align
+    type: Symbol
+    default: "`:left`"
+    description: One of `:left` and `:right`. - Defaults to left
+  - name: body_arguments
+    type: Hash
+    default: "`{}`"
+    description: "[System arguments](/system-arguments) for the body wrapper."
+  - name: wrapper_arguments
+    type: Hash
+    default: "`{}`"
+    description: "[System arguments](/system-arguments) for the `TabContainer` wrapper."
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: BaseButton
   source: https://github.com/primer/view_components/tree/main/app/components/primer/base_button.rb
   parameters:
@@ -944,36 +992,6 @@
     type: Integer
     default: "`nil`"
     description: Sets the max-width of the text.
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: UnderlineNav
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/underline_nav_component.rb
-  parameters:
-  - name: label
-    type: String
-    default: N/A
-    description: The `aria-label` on top level `<nav>` element.
-  - name: with_panel
-    type: Boolean
-    default: "`false`"
-    description: Whether the `UnderlineNav` should navigate through pages or panels.
-      When true, [TabContainer](/components/tabcontainer) is rendered along with JavaScript
-      behavior.
-  - name: align
-    type: Symbol
-    default: "`:left`"
-    description: One of `:left` and `:right`. - Defaults to left
-  - name: body_arguments
-    type: Hash
-    default: "`{ tag: BODY_TAG_DEFAULT }`"
-    description: "[System arguments](/system-arguments) for the body wrapper."
-  - name: wrapper_arguments
-    type: Hash
-    default: "`{}`"
-    description: "[System arguments](/system-arguments) for the `TabContainer` wrapper.
-      Only applies if `with_panel` is `true`."
   - name: system_arguments
     type: Hash
     default: N/A
