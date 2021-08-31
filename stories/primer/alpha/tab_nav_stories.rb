@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Primer::TabNavComponentStories < ViewComponent::Storybook::Stories
+class Primer::Alpha::TabNavStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:tab_nav) do

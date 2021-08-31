@@ -1,4 +1,4 @@
-<%= wrapper(with_panel: @with_panel, **@wrapper_arguments) do %>
+<%= wrapper(with_panel: true, **@wrapper_arguments) do %>
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
     <%= extra if @align == :left %>
 
@@ -11,9 +11,7 @@
     <%= extra if @align == :right %>
   <% end %>
 
-  <% if @with_panel %>
-    <% tabs.each do |tab| %>
-      <%= tab.panel %>
-    <% end %>
+  <% tabs.each do |tab| %>
+    <%= tab.panel %>
   <% end %>
 <% end %>

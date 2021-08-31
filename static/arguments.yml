@@ -22,6 +22,26 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: TabNav
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tab_nav.rb
+  parameters:
+  - name: tag
+    type: Symbol
+    default: "`:nav`"
+    description: One of `:div` and `:nav`.
+  - name: label
+    type: String
+    default: N/A
+    description: Sets an `aria-label` that helps assistive technology users understand
+      the purpose of the links, and distinguish it from similar elements.
+  - name: body_arguments
+    type: Hash
+    default: "`{}`"
+    description: "[System arguments](/system-arguments) for the body wrapper."
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: UnderlineNav
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/underline_nav.rb
   parameters:
@@ -42,30 +62,6 @@
     type: Hash
     default: "`{}`"
     description: "[System arguments](/system-arguments) for the body wrapper."
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: UnderlinePanels
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/underline_panels.rb
-  parameters:
-  - name: label
-    type: String
-    default: N/A
-    description: Sets an `aria-label` that helps assistive technology users understand
-      the purpose of the tabs.
-  - name: align
-    type: Symbol
-    default: "`:left`"
-    description: One of `:left` and `:right`. - Defaults to left
-  - name: body_arguments
-    type: Hash
-    default: "`{}`"
-    description: "[System arguments](/system-arguments) for the body wrapper."
-  - name: wrapper_arguments
-    type: Hash
-    default: "`{}`"
-    description: "[System arguments](/system-arguments) for the `TabContainer` wrapper."
   - name: system_arguments
     type: Hash
     default: N/A
@@ -882,33 +878,6 @@
 - component: TabContainer
   source: https://github.com/primer/view_components/tree/main/app/components/primer/tab_container_component.rb
   parameters:
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: TabNav
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/tab_nav_component.rb
-  parameters:
-  - name: label
-    type: String
-    default: N/A
-    description: Used to set the `aria-label` on the top level `<nav>` element.
-  - name: with_panel
-    type: Boolean
-    default: "`false`"
-    description: Whether the TabNav should navigate through pages or panels. When
-      true, [TabContainer](/components/tabcontainer) is rendered along with JavaScript
-      behavior. Additionally, the `tab` slot will render as a button as opposed to
-      an anchor.
-  - name: body_arguments
-    type: Hash
-    default: "`{}`"
-    description: "[System arguments](/system-arguments) for the body wrapper."
-  - name: wrapper_arguments
-    type: Hash
-    default: "`{}`"
-    description: "[System arguments](/system-arguments) for the `TabContainer` wrapper.
-      Only applies if `with_panel` is `true`."
   - name: system_arguments
     type: Hash
     default: N/A

@@ -33,6 +33,21 @@
       "large"
     ]
   },
+  "Primer::Alpha::TabNav": {
+    "BODY_TAG_DEFAULT": "ul",
+    "DEFAULT_EXTRA_ALIGN": "left",
+    "EXTRA_ALIGN_OPTIONS": [
+      "left",
+      "right"
+    ],
+    "TAG_DEFAULT": "nav",
+    "TAG_OPTIONS": [
+      "nav",
+      "div"
+    ]
+  },
+  "Primer::Alpha::TabPanels": {
+  },
   "Primer::Alpha::UnderlineNav": {
     "BODY_TAG_DEFAULT": "ul",
     "TAG_DEFAULT": "nav",
@@ -61,7 +76,9 @@
   },
   "Primer::Beta::AutoComplete": {
     "Input": "Primer::Beta::AutoComplete::Input",
-    "Item": "Primer::Beta::AutoComplete::Item"
+    "InputStories": "Primer::Beta::AutoComplete::InputStories",
+    "Item": "Primer::Beta::AutoComplete::Item",
+    "ItemStories": "Primer::Beta::AutoComplete::ItemStories"
   },
   "Primer::Beta::AutoComplete::Input": {
     "DEFAULT_TYPE": "text",
@@ -101,7 +118,8 @@
     "DEFAULT_TAG": "span"
   },
   "Primer::Beta::Truncate": {
-    "TruncateText": "Primer::Beta::Truncate::TruncateText"
+    "TruncateText": "Primer::Beta::Truncate::TruncateText",
+    "TruncateTextStories": "Primer::Beta::Truncate::TruncateTextStories"
   },
   "Primer::Beta::Truncate::TruncateText": {
   },
@@ -583,13 +601,6 @@
     ]
   },
   "Primer::TabContainerComponent": {
-  },
-  "Primer::TabNavComponent": {
-    "DEFAULT_EXTRA_ALIGN": "left",
-    "EXTRA_ALIGN_OPTIONS": [
-      "left",
-      "right"
-    ]
   },
   "Primer::TimeAgoComponent": {
   },

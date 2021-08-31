@@ -2,7 +2,7 @@
 
 require "application_system_test_case"
 
-class IntegrationTabNavComponentTest < ApplicationSystemTestCase
+class IntegrationTabPanelsTest < ApplicationSystemTestCase
   def assert_tab_nav_rendered
     assert_selector("tab-container") do
       assert_selector(".tabnav") do
