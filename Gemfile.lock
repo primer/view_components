@@ -176,6 +176,7 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 0.87.0)
+    ruby-prof (1.4.3)
     ruby-progressbar (1.11.0)
     rubyzip (2.3.0)
     selenium-webdriver (3.142.7)
@@ -258,6 +259,7 @@ DEPENDENCIES
   rubocop (= 1.13.0)
   rubocop-github (~> 0.16.0)
   rubocop-performance (~> 1.7)
+  ruby-prof
   simplecov (~> 0.18.0)
   simplecov-console (~> 0.7.2)
   sprockets
