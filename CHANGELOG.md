@@ -54,6 +54,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Deprecating background and border color presentational arguments
+
+    *Jon Rohan*
+
 * Map the `for` argument when autofixing `ClipboardCopy` migrations.
 
     *Kristján Oddsson*
