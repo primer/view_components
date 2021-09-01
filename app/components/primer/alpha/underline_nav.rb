@@ -17,16 +17,10 @@ module Primer
       include Primer::TabbedComponentHelper
       include Primer::UnderlineNavHelper
 
-      ALIGN_DEFAULT = :left
-      ALIGN_OPTIONS = [ALIGN_DEFAULT, :right].freeze
-
       BODY_TAG_DEFAULT = :ul
 
       TAG_DEFAULT = :nav
       TAG_OPTIONS = [TAG_DEFAULT, :div].freeze
-
-      ACTIONS_TAG_DEFAULT = :div
-      ACTIONS_TAG_OPTIONS = [ACTIONS_TAG_DEFAULT, :span].freeze
 
       # Use the tabs to list page links.
       #

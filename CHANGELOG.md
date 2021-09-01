@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Misc
+
+* Clean up extra constants in `UnderlineNav`.
+
+    *Kate Higa*
+
 ## 0.0.54
 
 ### Breaking changes

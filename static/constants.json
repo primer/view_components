@@ -34,16 +34,6 @@
     ]
   },
   "Primer::Alpha::UnderlineNav": {
-    "ACTIONS_TAG_DEFAULT": "div",
-    "ACTIONS_TAG_OPTIONS": [
-      "div",
-      "span"
-    ],
-    "ALIGN_DEFAULT": "left",
-    "ALIGN_OPTIONS": [
-      "left",
-      "right"
-    ],
     "BODY_TAG_DEFAULT": "ul",
     "TAG_DEFAULT": "nav",
     "TAG_OPTIONS": [
