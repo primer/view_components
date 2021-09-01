@@ -16,8 +16,8 @@ module Primer
 
     private
 
-    def navigation_tag(with_panel)
-      with_panel ? :div : :nav
+    def aria_label_for_page_nav(label)
+      @system_arguments[:tag] == :nav ? @system_arguments[:"aria-label"] = label : @body_arguments[:"aria-label"] = label
     end
 
     def wrapper(with_panel:, **system_arguments)

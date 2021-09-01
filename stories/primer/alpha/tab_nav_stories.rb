@@ -1,26 +1,24 @@
 # frozen_string_literal: true
 
+require "primer/alpha/tab_nav"
+
 class Primer::Alpha::TabNavStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:tab_nav) do
     controls do
-      label "aria label"
-      with_panel true
+      label "Repository"
     end
 
     content do |c|
-      c.tab(selected: true, id: "tab-1") do |t|
-        t.panel { "Panel 1" }
-        t.text { "Tab 1" }
+      c.tab(href: "#", selected: true, id: "tab-1") do |_t|
+        "Tab 1"
       end
-      c.tab(id: "tab-2") do |t|
-        t.panel { "Panel 2" }
-        t.text { "Tab 2" }
+      c.tab(href: "#", id: "tab-2") do |_t|
+        "Tab 2"
       end
-      c.tab(id: "tab-3") do |t|
-        t.panel { "Panel 3" }
-        t.text { "Tab 3" }
+      c.tab(href: "#", id: "tab-3") do |_t|
+        "Tab 3"
       end
       c.extra do
         "<button class=\"btn btn-sm float-right\">Button</a>".html_safe

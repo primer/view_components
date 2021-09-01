@@ -1,7 +1,7 @@
 module Primer
   class TabPanelsPreview < ViewComponent::Preview
     def default
-      render(Primer::TabPanels.new(label: "label")) do |c|
+      render(Primer::Alpha::TabPanels.new(label: "label")) do |c|
         c.tab(selected: true, id: "tab-1") do |t|
           t.panel { "Panel 1" }
           t.text { "Tab 1" }

@@ -27,7 +27,6 @@ namespace :docs do
     # Rails controller for rendering arbitrary ERB
     view_context = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context
     components = [
-      Primer::Alpha::TabNav,
       Primer::Image,
       Primer::LocalTime,
       Primer::OcticonSymbolsComponent,
@@ -75,7 +74,9 @@ namespace :docs do
       Primer::Tooltip,
       Primer::Truncate,
       Primer::Beta::Truncate,
-      Primer::Alpha::UnderlineNav
+      Primer::Alpha::UnderlineNav,
+      Primer::Alpha::TabNav,
+      Primer::Alpha::TabPanels
     ]
 
     js_components = [
@@ -86,7 +87,8 @@ namespace :docs do
       Primer::ClipboardCopy,
       Primer::TabContainerComponent,
       Primer::TimeAgoComponent,
-      Primer::Alpha::UnderlinePanels
+      Primer::Alpha::UnderlinePanels,
+      Primer::Alpha::TabPanels
     ]
 
     all_components = Primer::Component.descendants - [Primer::BaseComponent]

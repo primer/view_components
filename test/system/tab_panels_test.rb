@@ -3,18 +3,24 @@
 require "application_system_test_case"
 
 class IntegrationTabPanelsTest < ApplicationSystemTestCase
-  def assert_tab_nav_rendered
+  def assert_tab_panels_rendered
     assert_selector("tab-container") do
-      assert_selector(".tabnav") do
-        assert_selector("div.tabnav-tabs[role='tablist']") do
-          assert_selector("button.tabnav-tab[aria-selected='true'][role='tab']", text: "Tab 1")
-          assert_selector("button.tabnav-tab[role='tab']", text: "Tab 2")
-          assert_selector("button.tabnav-tab[role='tab']", text: "Tab 3")
+      assert_selector("div.tabnav") do
+        assert_selector("ul.tabnav-tabs[role='tablist']") do
+          assert_selector("li[role='presentation']") do
+            assert_selector("button#tab-1.tabnav-tab[role='tab'][aria-selected='true']", text: "Tab 1")
+          end
+          assert_selector("li[role='presentation']") do
+            assert_selector("button#tab-2.tabnav-tab[role='tab']", text: "Tab 2")
+          end
+          assert_selector("li[role='presentation']") do
+            assert_selector("button#tab-3.tabnav-tab[role='tab']", text: "Tab 3")
+          end
         end
       end
-      assert_selector("div[role='tabpanel']", text: "Panel 1")
-      assert_selector("div[role='tabpanel'][hidden]", text: "Panel 2", visible: false)
-      assert_selector("div[role='tabpanel'][hidden]", text: "Panel 3", visible: false)
+      assert_selector("div#panel-tab-1[role='tabpanel']", text: "Panel 1")
+      assert_selector("div#panel-tab-2[role='tabpanel']", text: "Panel 2", visible: false)
+      assert_selector("div#panel-tab-3[role='tabpanel']", text: "Panel 3", visible: false)
     end
   end
 
@@ -37,13 +43,13 @@ class IntegrationTabPanelsTest < ApplicationSystemTestCase
   def test_renders_component
     with_preview(:default)
 
-    assert_tab_nav_rendered
+    assert_tab_panels_rendered
   end
 
   def test_changes_tabs_on_click
     with_preview(:default)
 
-    assert_tab_nav_rendered
+    assert_tab_panels_rendered
 
     assert_selects_tab(2)
     assert_selects_tab(3)
