@@ -36,6 +36,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Kate Higa*
 
+* Use the allocation_stats gem to count object allocations in our benchmarks.
+
+    *Cameron Dutro*
+
 ## 0.0.54
 
 ### Breaking changes
