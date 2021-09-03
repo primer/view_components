@@ -6,6 +6,10 @@ require "test_helper"
 class BenchOcticons < Minitest::Benchmark
   include Primer::AssertAllocationsHelper
 
+  def test_order
+    "random"
+  end
+
   def setup
     @options = {
       icon: :alert

@@ -6,6 +6,10 @@ require "test_helper"
 class BenchClassify < Minitest::Benchmark
   include Primer::AssertAllocationsHelper
 
+  def test_order
+    "random"
+  end
+
   def setup
     @values = {
       align_items: :center,
