@@ -6,9 +6,8 @@
 module Primer
   module AssertAllocationsHelper
     def assert_allocations(count_map)
+      yield
       GC.disable
-      GC.start
-      GC.compact if GC.respond_to?(:compact)
       total_start = GC.stat[:total_allocated_objects]
       yield
       total_end = GC.stat[:total_allocated_objects]
