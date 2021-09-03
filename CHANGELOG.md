@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Update `@primer/css` to `17.7.0` which includes a new argument for `word_break`
+
+    *Jon Rohan*
+
 ### Misc
 
 * Clean up extra constants in `UnderlineNav`.
