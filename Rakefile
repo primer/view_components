@@ -17,6 +17,8 @@ Rake::TestTask.new(:test) do |t|
 end
 
 Rake::TestTask.new(:bench) do |t|
+  # Disable parallel tests since it can interfere with benchmark results and allocation counts
+  ENV["MT_CPU"] = "0"
   t.libs << "test"
   t.test_files = FileList["test/benchmarks/**/bench_*.rb"]
   t.verbose = true
