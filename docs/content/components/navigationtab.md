@@ -11,7 +11,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 This component is part of navigation components such as `Primer::TabNavComponent`
-and `Primer::UnderlineNavComponent` and should not be used by itself.
+and `Primer::Alpha::UnderlineNav` and should not be used by itself.
 
 ## Accessibility
 
@@ -37,7 +37,7 @@ and `Primer::UnderlineNavComponent` and should not be used by itself.
 Panel controlled by the Tab. This will not render anything in the tab itself.
 It will provide a accessor for the Tab's parent to call and render the panel
 content in the appropriate place.
-Refer to `UnderlineNavComponent` and `TabNavComponent` implementations for examples.
+Refer to `UnderlineNav` and `TabNavComponent` implementations for examples.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
@@ -104,7 +104,7 @@ Counter to be rendered in the Tab right.
 
 ### Inside a list
 
-<Example src="<li data-view-component='true' class='d-flex'>  <a data-view-component='true'>          <span data-view-component='true'>Tab</span>    </a></li>" />
+<Example src="<li data-view-component='true' class='d-inline-flex'>  <a data-view-component='true'>          <span data-view-component='true'>Tab</span>    </a></li>" />
 
 ```erb
 <%= render(Primer::Navigation::TabComponent.new(list: true)) do |c| %>

@@ -33,6 +33,16 @@
       "large"
     ]
   },
+  "Primer::Alpha::UnderlineNav": {
+    "BODY_TAG_DEFAULT": "ul",
+    "TAG_DEFAULT": "nav",
+    "TAG_OPTIONS": [
+      "nav",
+      "div"
+    ]
+  },
+  "Primer::Alpha::UnderlinePanels": {
+  },
   "Primer::BaseButton": {
     "DEFAULT_TAG": "button",
     "DEFAULT_TYPE": "button",
@@ -82,6 +92,11 @@
       "span"
     ]
   },
+  "Primer::Beta::Breadcrumbs": {
+    "Item": "Primer::Beta::Breadcrumbs::Item"
+  },
+  "Primer::Beta::Breadcrumbs::Item": {
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
@@ -109,11 +124,6 @@
     }
   },
   "Primer::BoxComponent": {
-  },
-  "Primer::BreadcrumbComponent": {
-    "ItemComponent": "Primer::BreadcrumbComponent::ItemComponent"
-  },
-  "Primer::BreadcrumbComponent::ItemComponent": {
   },
   "Primer::ButtonComponent": {
     "DEFAULT_SCHEME": "default",
@@ -618,23 +628,6 @@
       "span",
       "p",
       "strong"
-    ]
-  },
-  "Primer::UnderlineNavComponent": {
-    "ACTIONS_TAG_DEFAULT": "div",
-    "ACTIONS_TAG_OPTIONS": [
-      "div",
-      "span"
-    ],
-    "ALIGN_DEFAULT": "left",
-    "ALIGN_OPTIONS": [
-      "left",
-      "right"
-    ],
-    "BODY_TAG_DEFAULT": "div",
-    "BODY_TAG_OPTIONS": [
-      "div",
-      "ul"
     ]
   }
 }
