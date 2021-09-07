@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency     "octicons", "~> 15"
   spec.add_runtime_dependency     "view_component", [">= 2.0.0", "< 3.0"]
 
+  spec.add_development_dependency "allocation_stats", "~> 0.1"
   spec.add_development_dependency "allocation_tracer", "~> 0.6.3"
   spec.add_development_dependency "axe-core-api", "~> 4.1"
   spec.add_development_dependency "benchmark-ips", "~> 2.8.4"

@@ -1220,6 +1220,8 @@
   - py-lg-12
   - py-xl-12
 :word_break:
+  :break_word:
+  - wb-break-word
   :break_all:
   - wb-break-all
 :display:

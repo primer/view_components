@@ -28,8 +28,8 @@
       url: /components/borderbox
     - title: Box
       url: /components/box
-    - title: Breadcrumb
-      url: /components/breadcrumb
+    - title: Breadcrumbs
+      url: /components/beta/breadcrumbs
     - title: Button
       url: /components/button
     - title: ButtonGroup
@@ -105,4 +105,6 @@
     - title: Truncate
       url: /components/beta/truncate
     - title: UnderlineNav
-      url: /components/underlinenav
+      url: /components/alpha/underlinenav
+    - title: UnderlinePanels
+      url: /components/alpha/underlinepanels

@@ -30,6 +30,35 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Update `@primer/css` to `17.7.0` which includes a new argument for `word_break`
+
+    *Jon Rohan*
+
+### Misc
+
+* Clean up extra constants in `UnderlineNav`.
+
+    *Kate Higa*
+
+* Use the allocation_stats gem to count object allocations in our benchmarks.
+* Improve performance of Octicon cache key construction.
+
+    *Cameron Dutro*
+
+## 0.0.54
+
+### Breaking changes
+
+* Rename `BreadcrumbComponent` to `Beta::Breadcrumbs`.
+
+    *Joel Hawksley*
+
+* Split `UnderlineNavComponent` into `Alpha::UnderlineNav` and `Alpha::UnderlinePanels`.
+
+    *Kate Higa*
+
 ## 0.0.53
 
 ### New
@@ -43,6 +72,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Linters won't mark offenses when the ignore count is correct unless explicitly configured to do so.
 
     *Manuel Puyol*
+
+* Deprecating background and border color presentational arguments
+
+    *Jon Rohan*
 
 * Map the `for` argument when autofixing `ClipboardCopy` migrations.
 

@@ -139,7 +139,7 @@ System arguments include most HTML attributes. For example:
 | `text_align` | Symbol | Text alignment. One of `:center`, `:left`, or `:right`. |
 | `text_transform` | Symbol | Text alignment. One of `:uppercase`. |
 | `underline` | Boolean | Whether text should be underlined. |
-| `word_break` | Symbol | Whether to break words on line breaks. One of `:break_all`. |
+| `word_break` | Symbol | Whether to break words on line breaks. One of `:break_all` and `:break_word`. |
 
 ## Other
 
