@@ -30,6 +30,16 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Updates
+
+* `Octicon` linter will autocorrect colors.
+
+    *Manuel Puyol*
+
+* Moving text color variables to Utilities class
+
+    *Jon Rohan*
+
 ### New
 
 * Update `@primer/css` to `17.7.0` which includes a new argument for `word_break`
@@ -84,10 +94,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Add autocorrection for `CloseButton` linter.
 
     *Manuel Puyol*
-
-* Moving text color variables to Utilities class
-
-    *Jon Rohan*
 
 ### Bug fixes
 
