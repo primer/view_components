@@ -154,6 +154,14 @@ class RubocopPrimerOcticonTest < CopTest
     assert_correction "primer_octicon(:icon, mr: 1, color: :icon_info)"
   end
 
+  def test_converts_keeps_text_white
+    investigate(cop, <<-RUBY)
+      octicon(:icon, class: "mr-1 color-text-white")
+    RUBY
+
+    assert_correction "primer_octicon(:icon, mr: 1, color: :text_white)"
+  end
+
   def test_octicon_with_class_that_cant_be_converted
     investigate(cop, <<-'RUBY')
       octicon(:icon, class: "mr-1 text-center")
