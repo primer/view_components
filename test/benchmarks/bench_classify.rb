@@ -42,7 +42,7 @@ class BenchClassify < Minitest::Benchmark
     Primer::Classify::Cache.clear!
     Primer::Classify.call(**@values)
 
-    assert_allocations "3.0" => 61, "2.7" => 61, "2.6" => 62, "2.5" => 62 do
+    assert_allocations "3.0" => 57, "2.7" => 57, "2.6" => 58, "2.5" => 58 do
       Primer::Classify.call(**@values)
     end
   ensure
