@@ -36,6 +36,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan*
 
+### Updates
+
+* `Button` component linter will autocorrect when button uses `href`, `name`, `value` or `tabindex`.
+
+    *Manuel Puyol*
+
 ### Misc
 
 * Clean up extra constants in `UnderlineNav`.
