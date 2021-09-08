@@ -36,11 +36,23 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Joel Hawksley*
 
+### New
+
+* Update `@primer/css` to `17.7.0` which includes a new argument for `word_break`
+
+    *Jon Rohan*
+
 ### Misc
 
 * Clean up extra constants in `UnderlineNav`.
 
     *Kate Higa*
+
+* Use the allocation_stats gem to count object allocations in our benchmarks.
+* Improve performance of Octicon cache key construction.
+
+    *Cameron Dutro*
+
 ## 0.0.54
 
 ### Breaking changes
@@ -78,6 +90,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Add autocorrection for `CloseButton` linter.
 
     *Manuel Puyol*
+
+* Moving text color variables to Utilities class
+
+    *Jon Rohan*
 
 ### Bug fixes
 

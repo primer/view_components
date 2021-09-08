@@ -3,7 +3,6 @@
 require_relative "flex"
 require_relative "functional_background_colors"
 require_relative "functional_border_colors"
-require_relative "functional_text_colors"
 require_relative "grid"
 
 module Primer
@@ -53,11 +52,6 @@ module Primer
           preload(
             keys: Primer::Classify::Grid::COL_KEY,
             values: Primer::Classify::Grid::COL_VALUES
-          )
-
-          preload(
-            keys: [Primer::Classify::COLOR_KEY],
-            values: Primer::Classify::FunctionalTextColors::OPTIONS
           )
 
           preload(

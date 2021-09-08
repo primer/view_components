@@ -175,7 +175,7 @@ module Primer
           unless supported_value?(key, val)
             raise ArgumentError, "#{val} is not a valid value for :#{key}. Use one of #{mappings(key)}" unless ENV["RAILS_ENV"] == "production"
 
-            return ""
+            return "#{key.to_s.dasherize}-#{val.to_s.dasherize}"
           end
 
           nil
