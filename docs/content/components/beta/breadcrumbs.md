@@ -22,6 +22,8 @@ Use `Breadcrumbs` to display page hierarchy.
 
 ### `Items`
 
+
+
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `href` | `String` | N/A | The URL to link to. |
@@ -31,7 +33,7 @@ Use `Breadcrumbs` to display page hierarchy.
 
 ### Basic
 
-<Example src="<nav aria-label='Breadcrumb' data-view-component='true'>  <ol>      <li data-view-component='true' class='breadcrumb-item'><a href='/' data-view-component='true'>Home</a></li>      <li data-view-component='true' class='breadcrumb-item'><a href='/about' data-view-component='true'>About</a></li>      <li aria-current='page' data-view-component='true' class='breadcrumb-item'><a href='/about/team' data-view-component='true' class='breadcrumb-item-selected'>Team</a></li>  </ol></nav>" />
+<Example src="<nav aria-label='Breadcrumb' data-view-component='true'>  <ol>      <li data-view-component='true' class='breadcrumb-item'><a href='/' data-view-component='true'>Home</a></li>      <li data-view-component='true' class='breadcrumb-item'><a href='/about' data-view-component='true'>About</a></li>      <li data-view-component='true' class='breadcrumb-item'><a aria-current='page' href='/about/team' data-view-component='true' class='breadcrumb-item-selected'>Team</a></li>  </ol></nav>" />
 
 ```erb
 <%= render(Primer::Beta::Breadcrumbs.new) do |component| %>
