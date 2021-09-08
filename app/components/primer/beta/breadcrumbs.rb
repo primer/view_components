@@ -31,8 +31,7 @@ module Primer
       # This component is part of `Primer::Beta::Breadcrumbs` and should not be
       # used as a standalone component.
       class Item < Primer::Component
-        attr_accessor :selected
-        attr_accessor :href
+        attr_accessor :selected, :href
 
         def initialize(href:, **system_arguments)
           @href = href
