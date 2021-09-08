@@ -76,6 +76,7 @@
 - ".border"
 - ".border-bottom-0"
 - ".breadcrumb-item"
+- ".breadcrumb-item-selected"
 - ".btn"
 - ".btn-block"
 - ".btn-danger"

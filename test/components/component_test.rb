@@ -23,7 +23,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::BorderBoxComponent, {}, proc { |component| component.header { "Foo" } }],
     [Primer::BoxComponent, {}],
-    [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item { "Foo" } }],
+    [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
     [Primer::ButtonComponent, {}],
     [Primer::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
     [Primer::Alpha::ButtonMarketing, {}],

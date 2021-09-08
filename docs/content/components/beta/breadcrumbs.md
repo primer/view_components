@@ -10,7 +10,7 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use `Breadcrumb` to display page hierarchy within a section of the site. All of the items in the breadcrumb "trail" are links except for the final item, which is a plain string indicating the current page.
+Use `Breadcrumbs` to display page hierarchy.
 
 ## Arguments
 
@@ -22,24 +22,23 @@ Use `Breadcrumb` to display page hierarchy within a section of the site. All of 
 
 ### `Items`
 
-_Note: if both `href` and `selected: true` are passed in, `href` will be ignored and the item will not be rendered as a link._
+
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `href` | `String` | N/A | The URL to link to. |
-| `selected` | `Boolean` | N/A | Whether or not the item is selected and not rendered as a link. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Examples
 
 ### Basic
 
-<Example src="<nav aria-label='Breadcrumb' data-view-component='true'>  <ol>      <li data-view-component='true' class='breadcrumb-item'><a href='/' data-view-component='true'>Home</a></li>      <li data-view-component='true' class='breadcrumb-item'><a href='/about' data-view-component='true'>About</a></li>      <li aria-current='page' data-view-component='true' class='breadcrumb-item'>Team</li>  </ol></nav>" />
+<Example src="<nav aria-label='Breadcrumb' data-view-component='true'>  <ol>      <li data-view-component='true' class='breadcrumb-item'><a href='/' data-view-component='true'>Home</a></li>      <li data-view-component='true' class='breadcrumb-item'><a href='/about' data-view-component='true'>About</a></li>      <li aria-current='page' data-view-component='true' class='breadcrumb-item'><a href='/about/team' data-view-component='true' class='breadcrumb-item-selected'>Team</a></li>  </ol></nav>" />
 
 ```erb
 <%= render(Primer::Beta::Breadcrumbs.new) do |component| %>
   <% component.item(href: "/") do %>Home<% end %>
   <% component.item(href: "/about") do %>About<% end %>
-  <% component.item(selected: true) do %>Team<% end %>
+  <% component.item(href: "/about/team") do %>Team<% end %>
 <% end %>
 ```
