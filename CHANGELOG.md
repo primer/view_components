@@ -38,7 +38,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Joel Hawksley*
 
-
 * Split `TabNav` into `TabNav` and `TabPanels`.
 
     *Kate Higa*
