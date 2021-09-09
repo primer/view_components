@@ -10,7 +10,7 @@ module RuboCop
       # :nodoc:
       class BaseCop < RuboCop::Cop::Cop
         # We only verify SystemArguments if it's a `.new` call on a component or
-        # a ViewHleper call.
+        # a ViewHeleper call.
         def valid_node?(node)
           return if node.nil?
 

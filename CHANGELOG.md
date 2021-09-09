@@ -47,6 +47,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Cameron Dutro*
 
+* Refactor some of the rubocop valid_node? logic into BaseCop class.
+
+    *Jon Rohan*
+
 ## 0.0.54
 
 ### Breaking changes
