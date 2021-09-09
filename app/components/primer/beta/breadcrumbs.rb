@@ -2,14 +2,11 @@
 
 module Primer
   module Beta
-    # Use `Breadcrumb` to display page hierarchy within a section of the site. All of the items in the breadcrumb "trail" are links except for the final item, which is a plain string indicating the current page.
+    # Use `Breadcrumbs` to display page hierarchy.
     class Breadcrumbs < Primer::Component
       status :beta
 
-      # _Note: if both `href` and `selected: true` are passed in, `href` will be ignored and the item will not be rendered as a link._
-      #
       # @param href [String] The URL to link to.
-      # @param selected [Boolean] Whether or not the item is selected and not rendered as a link.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :items, "Item"
 
@@ -17,7 +14,7 @@ module Primer
       #   <%= render(Primer::Beta::Breadcrumbs.new) do |component| %>
       #     <% component.item(href: "/") do %>Home<% end %>
       #     <% component.item(href: "/about") do %>About<% end %>
-      #     <% component.item(selected: true) do %>Team<% end %>
+      #     <% component.item(href: "/about/team") do %>Team<% end %>
       #   <% end %>
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -34,23 +31,28 @@ module Primer
       # This component is part of `Primer::Beta::Breadcrumbs` and should not be
       # used as a standalone component.
       class Item < Primer::Component
-        def initialize(href: nil, selected: false, **system_arguments)
+        attr_accessor :selected, :href
+
+        def initialize(href:, **system_arguments)
           @href = href
           @system_arguments = system_arguments
+          @selected = false
 
-          @href = nil if selected
           @system_arguments[:tag] = :li
-          @system_arguments[:"aria-current"] = "page" if selected
           @system_arguments[:classes] = "breadcrumb-item #{@system_arguments[:classes]}"
         end
 
         def call
+          link_arguments = { href: @href }
+
+          if selected
+            link_arguments[:"aria-current"] = "page"
+            link_arguments[:classes] = "breadcrumb-item-selected"
+            @system_arguments[:classes] = "#{@system_arguments[:classes]} breadcrumb-item-selected"
+          end
+
           render(Primer::BaseComponent.new(**@system_arguments)) do
-            if @href.present?
-              render(Primer::LinkComponent.new(href: @href)) { content }
-            else
-              content
-            end
+            render(Primer::LinkComponent.new(**link_arguments)) { content }
           end
         end
       end
