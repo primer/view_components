@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Misc
+
+* Refactor some of the rubocop valid_node? logic into BaseCop class.
+
+    *Jon Rohan*
+
 ## 0.0.55
 
 ### Breaking changes
@@ -58,10 +64,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Clean up extra constants in `UnderlineNav`.
 
     *Kate Higa*
-
-* Refactor some of the rubocop valid_node? logic into BaseCop class.
-
-    *Jon Rohan*
 
 ## 0.0.54
 
