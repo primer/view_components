@@ -30,28 +30,42 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
-### New
-
-* Update `@primer/css` to `17.7.0` which includes a new argument for `word_break`
-
-    *Jon Rohan*
-
 ### Updates
+
+* `Octicon` linter will autocorrect colors.
+
+    *Manuel Puyol*
 
 * `Button` component linter will autocorrect when button uses `href`, `name`, `value` or `tabindex`.
 
     *Manuel Puyol*
 
+### Misc
+
+* Refactor some of the rubocop valid_node? logic into BaseCop class.
+
+    *Jon Rohan*
+
 ### Breaking changes
+
+* `Primer::Breadcrumbs` requires `href`s for all items and no longer accepts the `selected` argument.
+
+    *Joel Hawksley*
 
 * Split `TabNav` into `TabNav` and `TabPanels`.
 
     *Kate Higa*
 
+### New
+
 * Use the allocation_stats gem to count object allocations in our benchmarks.
 * Improve performance of Octicon cache key construction.
 
     *Cameron Dutro*
+
+* Update `@primer/css` to `17.7.0` which includes a new argument for `word_break`
+
+    *Jon Rohan*
 
 ### Misc
 

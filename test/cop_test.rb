@@ -18,10 +18,14 @@ class CopTest < MiniTest::Test
   end
 
   def investigate(cop, src, filename = nil)
-    processed_source = RuboCop::ProcessedSource.new(src, RUBY_VERSION.to_f, filename)
+    processed_source = processed_source(src, filename)
     commissioner = RuboCop::Cop::Commissioner.new([cop], [], raise_error: true)
     commissioner.investigate(processed_source)
     commissioner
+  end
+
+  def processed_source(src, filename = nil)
+    RuboCop::ProcessedSource.new(src, RUBY_VERSION.to_f, filename)
   end
 
   def assert_correction(correction)

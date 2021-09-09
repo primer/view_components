@@ -115,7 +115,11 @@ module Primer
         end
 
         def classes_to_args(classes)
-          classes_to_hash(classes).map do |key, value|
+          hash_to_args(classes_to_hash(classes))
+        end
+
+        def hash_to_args(hash)
+          hash.map do |key, value|
             val = case value
                   when Symbol
                     ":#{value}"

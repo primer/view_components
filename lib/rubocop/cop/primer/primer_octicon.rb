@@ -128,10 +128,27 @@ module RuboCop
           string_args = string_args_to_string(node)
 
           args = "#{args}, #{size_attributes_to_string(size_attributes)}" if size_args.present?
-          args = "#{args}, #{::Primer::Classify::Utilities.classes_to_args(classes)}" if classes.present?
+          args = "#{args}, #{utilities_args(classes)}" if classes.present?
           args = "#{args}, #{string_args}" if string_args.present?
 
           args
+        end
+
+        def utilities_args(classes)
+          args = ::Primer::Classify::Utilities.classes_to_hash(classes)
+
+          color = case args[:color]
+                  when :text_white
+                    :text_white
+                  when :text_link
+                    :icon_info
+                  else
+                    args[:color].to_s.gsub("text_", "icon_").to_sym
+                  end
+
+          args[:color] = color
+
+          ::Primer::Classify::Utilities.hash_to_args(args)
         end
 
         def size_attributes_to_string(size_attributes)
