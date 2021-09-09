@@ -23,6 +23,14 @@ class BaseCopTest < CopTest
     refute cop.valid_node?(source.ast)
   end
 
+  def test_no_method_name_valid_node
+    source = processed_source(<<-RUBY)
+      Primer::BaseComponent()
+    RUBY
+
+    refute cop.valid_node?(source.ast)
+  end
+
   def test_no_reciever_valid_node
     source = processed_source(<<-RUBY)
       new(true)
