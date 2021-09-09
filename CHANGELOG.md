@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.55
+
 ### Breaking changes
 
 * `Primer::Breadcrumbs` requires `href`s for all items and no longer accepts the `selected` argument.
