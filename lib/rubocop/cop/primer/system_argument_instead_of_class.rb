@@ -2,8 +2,6 @@
 
 require "rubocop"
 require "primer/classify/utilities"
-require "primer/view_components/statuses"
-require_relative "../../../../app/lib/primer/view_helper"
 
 # :nocov:
 module RuboCop
@@ -16,7 +14,7 @@ module RuboCop
       #
       # good
       # Component.new(mr: 1)
-      class SystemArgumentInsteadOfClass < RuboCop::Cop::Cop
+      class SystemArgumentInsteadOfClass < BaseCop
         INVALID_MESSAGE = <<~STR
           Avoid using CSS classes when you can use System Arguments: https://primer.style/view-components/system-arguments.
         STR
@@ -52,18 +50,6 @@ module RuboCop
             args = ::Primer::Classify::Utilities.classes_to_args(node.value.value)
             corrector.replace(node.loc.expression, args)
           end
-        end
-
-        private
-
-        # We only verify SystemArguments if it's a `.new` call on a component or
-        # a ViewHleper call.
-        def valid_node?(node)
-          view_helpers.include?(node.method_name) || (node.method_name == :new && ::Primer::ViewComponents::STATUSES.key?(node.receiver.const_name))
-        end
-
-        def view_helpers
-          ::Primer::ViewHelper::HELPERS.keys.map { |key| "primer_#{key}".to_sym }
         end
       end
     end
