@@ -38,22 +38,21 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Joel Hawksley*
 
-### New
-
-* Update `@primer/css` to `17.7.0` which includes a new argument for `word_break`
-
-    *Jon Rohan*
-
-### Breaking changes
 
 * Split `TabNav` into `TabNav` and `TabPanels`.
 
     *Kate Higa*
 
+### New
+
 * Use the allocation_stats gem to count object allocations in our benchmarks.
 * Improve performance of Octicon cache key construction.
 
     *Cameron Dutro*
+
+* Update `@primer/css` to `17.7.0` which includes a new argument for `word_break`
+
+    *Jon Rohan*
 
 ### Misc
 
