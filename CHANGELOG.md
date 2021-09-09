@@ -30,15 +30,21 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Breaking changes
+
+* `Primer::Breadcrumbs` requires `href`s for all items and no longer accepts the `selected` argument.
+
+    *Joel Hawksley*
+
 ### New
 
 * Update `@primer/css` to `17.7.0` which includes a new argument for `word_break`
 
     *Jon Rohan*
 
-### Misc
+### Breaking changes
 
-* Clean up extra constants in `UnderlineNav`.
+* Split `TabNav` into `TabNav` and `TabPanels`.
 
     *Kate Higa*
 
@@ -46,6 +52,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Improve performance of Octicon cache key construction.
 
     *Cameron Dutro*
+
+### Misc
+
+* Clean up extra constants in `UnderlineNav`.
+
+    *Kate Higa*
 
 * Refactor some of the rubocop valid_node? logic into BaseCop class.
 

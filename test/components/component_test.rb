@@ -7,6 +7,8 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Alpha::TabPanels, { label: "label" }],
+    [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
     [Primer::Image, { src: "src", alt: "alt" }],
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
@@ -23,7 +25,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::BorderBoxComponent, {}, proc { |component| component.header { "Foo" } }],
     [Primer::BoxComponent, {}],
-    [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item { "Foo" } }],
+    [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
     [Primer::ButtonComponent, {}],
     [Primer::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
     [Primer::Alpha::ButtonMarketing, {}],
@@ -60,7 +62,6 @@ class PrimerComponentTest < Minitest::Test
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.heading { "Foo" } }],
     [Primer::TabContainerComponent, {}, proc { "Foo" }],
-    [Primer::TabNavComponent, { label: "aria label" }, proc { |c| c.tab(title: "Foo", selected: true) }],
     [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
     [Primer::Beta::Truncate, {}, proc { |component| component.item { "Foo" } }],
