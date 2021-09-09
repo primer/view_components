@@ -8,7 +8,7 @@ class Primer::Beta::BreadcrumbsStories < ViewComponent::Storybook::Stories
   story(:breadcrumbs) do
     content do |component|
       component.item(href: "https://github.com/") { "Breadcrumb Item one" }
-      component.item(selected: false) { "Breadcrumb Item two" }
+      component.item(href: "/home") { "Breadcrumb Item two" }
     end
   end
 end
