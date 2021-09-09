@@ -2,7 +2,7 @@
 
 module Primer
   module Navigation
-    # This component is part of navigation components such as `Primer::TabNavComponent`
+    # This component is part of navigation components such as `Primer::Alpha::TabNav`
     # and `Primer::Alpha::UnderlineNav` and should not be used by itself.
     #
     # @accessibility
@@ -14,7 +14,7 @@ module Primer
       # Panel controlled by the Tab. This will not render anything in the tab itself.
       # It will provide a accessor for the Tab's parent to call and render the panel
       # content in the appropriate place.
-      # Refer to `UnderlineNav` and `TabNavComponent` implementations for examples.
+      # Refer to `UnderlineNav` and `TabNav` implementations for examples.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :panel, lambda { |**system_arguments|
