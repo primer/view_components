@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require "rubocop"
-require "primer/view_components/statuses"
-require_relative "../../../../app/lib/primer/view_helper"
 
 # :nocov:
 module RuboCop
@@ -15,7 +13,7 @@ module RuboCop
       #
       # good
       # Component.new(foo: :bar)
-      class DeprecatedArguments < RuboCop::Cop::Cop
+      class DeprecatedArguments < BaseCop
         INVALID_MESSAGE = <<~STR
           Avoid using deprecated arguments: https://primer.style/view-components/deprecated.
         STR
@@ -258,18 +256,6 @@ module RuboCop
             replacement = DEPRECATED[node.key.value][node.value.value.to_sym]
             corrector.replace(node, replacement) if replacement.present?
           end
-        end
-
-        private
-
-        # We only verify SystemArguments if it's a `.new` call on a component or
-        # a ViewHleper call.
-        def valid_node?(node)
-          view_helpers.include?(node.method_name) || (node.method_name == :new && ::Primer::ViewComponents::STATUSES.key?(node.receiver.const_name))
-        end
-
-        def view_helpers
-          ::Primer::ViewHelper::HELPERS.keys.map { |key| "primer_#{key}".to_sym }
         end
       end
     end
