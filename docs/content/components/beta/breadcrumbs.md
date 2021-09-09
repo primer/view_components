@@ -22,8 +22,6 @@ Use `Breadcrumbs` to display page hierarchy.
 
 ### `Items`
 
-
-
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `href` | `String` | N/A | The URL to link to. |

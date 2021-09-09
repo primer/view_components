@@ -206,7 +206,7 @@ namespace :docs do
             f.puts
             f.puts("### `#{slot_documentation.name.to_s.capitalize}`")
 
-            if slot_documentation.base_docstring.present?
+            if slot_documentation.base_docstring.to_s.present?
               f.puts
               f.puts(view_context.render(inline: slot_documentation.base_docstring))
             end
