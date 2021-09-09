@@ -46,9 +46,9 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan*
 
-### Misc
+### Breaking changes
 
-* Clean up extra constants in `UnderlineNav`.
+* Split `TabNav` into `TabNav` and `TabPanels`.
 
     *Kate Higa*
 
@@ -56,6 +56,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Improve performance of Octicon cache key construction.
 
     *Cameron Dutro*
+
+### Misc
+
+* Clean up extra constants in `UnderlineNav`.
+
+    *Kate Higa*
 
 ## 0.0.54
 
