@@ -124,7 +124,7 @@ module Primer
         @body_arguments[:tag] = :ul
         @body_arguments[:classes] = underline_nav_body_classes(@body_arguments[:classes])
 
-        @system_arguments[:tag] == :nav ? @system_arguments[:"aria-label"] = label : @body_arguments[:"aria-label"] = label
+        aria_label_for_page_nav(label)
       end
 
       private

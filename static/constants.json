@@ -33,6 +33,22 @@
       "large"
     ]
   },
+  "Primer::Alpha::TabNav": {
+    "BODY_TAG_DEFAULT": "ul",
+    "TAG_DEFAULT": "nav",
+    "TAG_OPTIONS": [
+      "nav",
+      "div"
+    ]
+  },
+  "Primer::Alpha::TabPanels": {
+    "BODY_TAG_DEFAULT": "ul",
+    "TAG_DEFAULT": "nav",
+    "TAG_OPTIONS": [
+      "nav",
+      "div"
+    ]
+  },
   "Primer::Alpha::UnderlineNav": {
     "BODY_TAG_DEFAULT": "ul",
     "TAG_DEFAULT": "nav",
@@ -583,13 +599,6 @@
     ]
   },
   "Primer::TabContainerComponent": {
-  },
-  "Primer::TabNavComponent": {
-    "DEFAULT_EXTRA_ALIGN": "left",
-    "EXTRA_ALIGN_OPTIONS": [
-      "left",
-      "right"
-    ]
   },
   "Primer::TimeAgoComponent": {
   },
