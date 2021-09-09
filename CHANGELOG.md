@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Breaking changes
+
+* `Primer::Breadcrumbs` requires `href`s for all items and no longer accepts the `selected` argument.
+
+    *Joel Hawksley*
+
 ### New
 
 * Update `@primer/css` to `17.7.0` which includes a new argument for `word_break`
