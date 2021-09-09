@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Updates
+
+* `Octicon` linter will autocorrect colors.
+
+    *Manuel Puyol*
+
 ### Misc
 
 * Refactor some of the rubocop valid_node? logic into BaseCop class.
