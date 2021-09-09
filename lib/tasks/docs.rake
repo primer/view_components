@@ -68,7 +68,6 @@ namespace :docs do
       Primer::SpinnerComponent,
       Primer::SubheadComponent,
       Primer::TabContainerComponent,
-      Primer::TabNavComponent,
       Primer::Beta::Text,
       Primer::TimeAgoComponent,
       Primer::TimelineItemComponent,
@@ -76,7 +75,8 @@ namespace :docs do
       Primer::Truncate,
       Primer::Beta::Truncate,
       Primer::Alpha::UnderlineNav,
-      Primer::Alpha::UnderlinePanels
+      Primer::Alpha::TabNav,
+      Primer::Alpha::TabPanels
     ]
 
     js_components = [
@@ -86,9 +86,9 @@ namespace :docs do
       Primer::Beta::AutoComplete,
       Primer::ClipboardCopy,
       Primer::TabContainerComponent,
-      Primer::TabNavComponent,
       Primer::TimeAgoComponent,
-      Primer::Alpha::UnderlinePanels
+      Primer::Alpha::UnderlinePanels,
+      Primer::Alpha::TabPanels
     ]
 
     all_components = Primer::Component.descendants - [Primer::BaseComponent]
