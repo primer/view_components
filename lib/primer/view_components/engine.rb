@@ -7,7 +7,7 @@ module Primer
     # :nodoc:
     class Engine < ::Rails::Engine
       isolate_namespace Primer::ViewComponents
-      config.autoload_once_paths = %W[
+      config.eager_load_paths = %W[
         #{root}/app/components
         #{root}/app/lib
       ]
