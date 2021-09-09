@@ -22,6 +22,11 @@ module ERBLint
         # Hash children indicates that there are tags in the content.
         return nil if tag_tree[:children].first.is_a?(Hash)
 
+        content = tag_tree[:children].first
+
+        # Don't accept content with ERB blocks
+        return nil if content.type != :text || content.children&.any? { |n| n.try(:type) == :erb }
+
         ARGUMENT_MAPPER.new(tag).to_s
       rescue ArgumentMappers::ConversionError
         nil
