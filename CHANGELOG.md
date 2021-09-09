@@ -36,6 +36,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* `Button` component linter will autocorrect when button uses `href`, `name`, `value` or `tabindex`.
+
+    *Manuel Puyol*
+
 ### Misc
 
 * Refactor some of the rubocop valid_node? logic into BaseCop class.

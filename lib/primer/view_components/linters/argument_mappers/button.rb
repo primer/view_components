@@ -23,12 +23,13 @@ module ERBLint
           component: "Primer::BaseButton",
           constant: "TYPE_OPTIONS"
         ).freeze
+
         DEFAULT_TAG = Primer::ViewComponents::Constants.get(
           component: "Primer::BaseButton",
           constant: "DEFAULT_TAG"
         ).freeze
 
-        ATTRIBUTES = %w[disabled type].freeze
+        ATTRIBUTES = %w[disabled type href name value tabindex].freeze
 
         def attribute_to_args(attribute)
           attr_name = attribute.name
@@ -43,6 +44,8 @@ module ERBLint
             raise ConversionError, "Button component does not support type \"#{attribute.value}\"" unless TYPE_OPTIONS.include?(attribute.value)
 
             { type: ":#{attribute.value}" }
+          else
+            { attr_name.to_sym => erb_helper.convert(attribute) }
           end
         end
 
