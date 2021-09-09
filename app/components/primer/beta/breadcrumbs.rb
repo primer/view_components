@@ -48,6 +48,7 @@ module Primer
           if selected
             link_arguments[:"aria-current"] = "page"
             link_arguments[:classes] = "breadcrumb-item-selected"
+            @system_arguments[:classes] = "#{@system_arguments[:classes]} breadcrumb-item-selected"
           end
 
           render(Primer::BaseComponent.new(**@system_arguments)) do
