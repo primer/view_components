@@ -36,7 +36,11 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
-* `Button` component linter will autocorrect when button uses `href`, `name`, `value` or `tabindex`.
+* `Button` linter will autocorrect when button uses `href`, `name`, `value` or `tabindex`.
+
+    *Manuel Puyol*
+
+* `Flash` linter won't autocorrect flashes with ERB in their content.
 
     *Manuel Puyol*
 
