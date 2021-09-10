@@ -50,6 +50,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan*
 
+* Fix validation checker to use Utilities for color-* classes.
+
+    *Jon Rohan*
+
 ## 0.0.55
 
 ### Breaking changes
