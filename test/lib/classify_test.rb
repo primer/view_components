@@ -431,7 +431,7 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_style
-    assert_equal("background-color: #fff;", Primer::Classify.call(bg: "#fff")[:style])
+    assert_equal("background-color: #fff;", Primer::Classify.call(style: "background-color: #fff;")[:style])
   end
 
   def test_flex
