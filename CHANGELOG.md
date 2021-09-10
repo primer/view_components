@@ -44,9 +44,17 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Eager load components.
+
+    *Cameron Dutro*
+
 ### Misc
 
 * Refactor some of the rubocop valid_node? logic into BaseCop class.
+
+    *Jon Rohan*
+
+* Fix validation checker to use Utilities for color-* classes.
 
     *Jon Rohan*
 
