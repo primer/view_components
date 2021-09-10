@@ -93,7 +93,9 @@
     - title: TabContainer
       url: /components/tabcontainer
     - title: TabNav
-      url: /components/tabnav
+      url: /components/alpha/tabnav
+    - title: TabPanels
+      url: /components/alpha/tabpanels
     - title: Text
       url: /components/beta/text
     - title: TimeAgo

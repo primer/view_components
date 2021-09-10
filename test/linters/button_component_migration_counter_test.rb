@@ -99,6 +99,22 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
     assert_equal expected, corrected_content
   end
 
+  def test_autocorrects_attributes
+    @file = <<~HTML
+      <button class="btn" href="href" value="value" name="name" tabindex="tabindex">
+        button
+      </button>
+    HTML
+
+    expected = <<~HTML
+      <%= render Primer::ButtonComponent.new(href: "href", value: "value", name: "name", tabindex: "tabindex") do %>
+        button
+      <% end %>
+    HTML
+
+    assert_equal expected, corrected_content
+  end
+
   private
 
   def linter_class

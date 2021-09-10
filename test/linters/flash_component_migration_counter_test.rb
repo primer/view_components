@@ -23,6 +23,26 @@ class FlashComponentMigrationCounterTest < LinterTestCase
     assert_equal "<%# erblint:counter FlashComponentMigrationCounter 1 %>\n#{@file}", corrected_content
   end
 
+  def test_does_not_autocorrect_with_erb_content
+    @file = <<~HTML
+      <div class="flash">
+        <%= primer_octicon(:icon) %> some text
+      </div>
+    HTML
+
+    assert_equal "<%# erblint:counter FlashComponentMigrationCounter 1 %>\n#{@file}", corrected_content
+  end
+
+  def test_does_not_autocorrect_with_interpolation
+    @file = <<~HTML
+      <div class="flash">
+        some <%= interpolation %>
+      </div>
+    HTML
+
+    assert_equal "<%# erblint:counter FlashComponentMigrationCounter 1 %>\n#{@file}", corrected_content
+  end
+
   private
 
   def linter_class
