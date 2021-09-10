@@ -63,7 +63,7 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `bg` | String, Symbol | Background color. Accepts either a hex value as a String or <%= one_of(Primer::Classify::FunctionalBackgroundColors::OPTIONS, lower: true) %> |
+    # | `bg` | Symbol | Background color. <%= one_of(Primer::Classify::Utilities.mappings(:bg)) %> |
     # | `border_color` | Symbol | Border color. <%= one_of(Primer::Classify::FunctionalBorderColors::OPTIONS) %> |
     # | `color` | Symbol | Text color. <%= one_of(Primer::Classify::Utilities.mappings(:color)) %> |
     #

@@ -55,11 +55,6 @@ module Primer
           )
 
           preload(
-            keys: [Primer::Classify::BG_KEY],
-            values: Primer::Classify::FunctionalBackgroundColors::OPTIONS
-          )
-
-          preload(
             keys: :text_align,
             values: [:left, :center, :right]
           )

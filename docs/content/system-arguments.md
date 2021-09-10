@@ -62,7 +62,7 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `bg` | String, Symbol | Background color. Accepts either a hex value as a String or one of `:canvas`, `:canvas_inset`, `:canvas_inverse`, `:danger`, `:danger_inverse`, `:info`, `:info_inverse`, `:overlay`, `:primary`, `:secondary`, `:success`, `:success_inverse`, `:tertiary`, `:warning`, or `:warning_inverse`. |
+| `bg` | String, Symbol | Background color. One of `:canvas`, `:canvas_inset`, `:canvas_inverse`, `:danger`, `:danger_inverse`, `:info`, `:info_inverse`, `:overlay`, `:primary`, `:secondary`, `:success`, `:success_inverse`, `:tertiary`, `:warning`, or `:warning_inverse`. |
 | `border_color` | Symbol | Border color. One of `:danger`, `:info`, `:inverse`, `:primary`, `:secondary`, `:success`, `:tertiary`, or `:warning`. |
 | `color` | Symbol | Text color. One of `:icon_danger`, `:icon_info`, `:icon_primary`, `:icon_secondary`, `:icon_success`, `:icon_tertiary`, `:icon_warning`, `:text_danger`, `:text_inverse`, `:text_link`, `:text_primary`, `:text_secondary`, `:text_success`, `:text_tertiary`, `:text_warning`, or `:text_white`. |
 

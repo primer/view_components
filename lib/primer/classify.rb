@@ -14,7 +14,6 @@ module Primer
     # Keys where we can simply translate { key: value } into ".key-value"
     CONCAT_KEYS = %i[text box_shadow].freeze
 
-    BG_KEY = :bg
     TEXT_KEYS = %i[font_family font_style font_weight text_align text_transform].freeze
     BOX_SHADOW_KEY = :box_shadow
     CONTAINER_KEY = :container
@@ -86,7 +85,6 @@ module Primer
         BORDER_KEY,
         BORDER_COLOR_KEY,
         BORDER_RADIUS_KEY,
-        BG_KEY,
         BOX_SHADOW_KEY,
         CONTAINER_KEY
       ]
@@ -166,12 +164,6 @@ module Primer
         elsif BOOLEAN_MAPPINGS.key?(key)
           BOOLEAN_MAPPINGS[key][:mappings].each do |m|
             memo[:classes] << m[:css_class] if m[:value] == val && m[:css_class].present?
-          end
-        elsif key == BG_KEY
-          if val.to_s.start_with?("#")
-            memo[:styles] << "background-color: #{val};"
-          else
-            memo[:classes] << Primer::Classify::FunctionalBackgroundColors.color(val)
           end
         elsif key == BORDER_KEY
           border_value = if val == true

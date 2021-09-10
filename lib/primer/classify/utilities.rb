@@ -26,7 +26,8 @@ module Primer
         "^wb" => "word_break",
         "^v" => "visibility",
         "^width" => "w",
-        "^height" => "h"
+        "^height" => "h",
+        "^color-bg" => "bg"
       }.freeze
 
       class << self
