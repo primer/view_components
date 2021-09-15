@@ -97,7 +97,7 @@ main() {
     exit 1
   fi
 
-  if [ "$(branch_name)" !== "main" ]; then
+  if [[ "$(branch_name)" != "main" ]]; then
     echo "Error: can only make a release on the main branch"
     exit 1
   fi
@@ -118,8 +118,11 @@ main() {
   do
     if [ "$bump" == "Major" ]; then
       major=$((major + 1))
+      minor=0
+      patch=0
     elif [ "$bump" == "Minor" ]; then
       minor=$((minor + 1))
+      patch=0
     elif [ "$bump" == "Patch" ]; then
       patch=$((patch + 1))
     else

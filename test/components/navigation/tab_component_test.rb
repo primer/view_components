@@ -139,7 +139,7 @@ class PrimerNavigationTabComponentTest < Minitest::Test
       c.text { "Title" }
     end
 
-    assert_selector("li.d-flex") do
+    assert_selector("li.d-inline-flex") do
       assert_selector("a") do
         assert_selector("span", text: "Title")
       end

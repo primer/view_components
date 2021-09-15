@@ -40,7 +40,7 @@ namespace :docs do
       Primer::BlankslateComponent,
       Primer::BorderBoxComponent,
       Primer::BoxComponent,
-      Primer::BreadcrumbComponent,
+      Primer::Beta::Breadcrumbs,
       Primer::ButtonComponent,
       Primer::ButtonGroup,
       Primer::Alpha::ButtonMarketing,
@@ -68,14 +68,15 @@ namespace :docs do
       Primer::SpinnerComponent,
       Primer::SubheadComponent,
       Primer::TabContainerComponent,
-      Primer::TabNavComponent,
       Primer::Beta::Text,
       Primer::TimeAgoComponent,
       Primer::TimelineItemComponent,
       Primer::Tooltip,
       Primer::Truncate,
       Primer::Beta::Truncate,
-      Primer::UnderlineNavComponent
+      Primer::Alpha::UnderlineNav,
+      Primer::Alpha::TabNav,
+      Primer::Alpha::TabPanels
     ]
 
     js_components = [
@@ -85,9 +86,9 @@ namespace :docs do
       Primer::Beta::AutoComplete,
       Primer::ClipboardCopy,
       Primer::TabContainerComponent,
-      Primer::TabNavComponent,
       Primer::TimeAgoComponent,
-      Primer::UnderlineNavComponent
+      Primer::Alpha::UnderlinePanels,
+      Primer::Alpha::TabPanels
     ]
 
     all_components = Primer::Component.descendants - [Primer::BaseComponent]
@@ -205,7 +206,7 @@ namespace :docs do
             f.puts
             f.puts("### `#{slot_documentation.name.to_s.capitalize}`")
 
-            if slot_documentation.base_docstring.present?
+            if slot_documentation.base_docstring.to_s.present?
               f.puts
               f.puts(view_context.render(inline: slot_documentation.base_docstring))
             end

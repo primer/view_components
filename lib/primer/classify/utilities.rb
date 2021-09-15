@@ -115,7 +115,11 @@ module Primer
         end
 
         def classes_to_args(classes)
-          classes_to_hash(classes).map do |key, value|
+          hash_to_args(classes_to_hash(classes))
+        end
+
+        def hash_to_args(hash)
+          hash.map do |key, value|
             val = case value
                   when Symbol
                     ":#{value}"
@@ -175,7 +179,7 @@ module Primer
           unless supported_value?(key, val)
             raise ArgumentError, "#{val} is not a valid value for :#{key}. Use one of #{mappings(key)}" unless ENV["RAILS_ENV"] == "production"
 
-            return ""
+            return "#{key.to_s.dasherize}-#{val.to_s.dasherize}"
           end
 
           nil

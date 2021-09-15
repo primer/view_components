@@ -102,10 +102,10 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@primer/css@^17.3.0":
-  version "17.3.0"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-17.3.0.tgz#992d6724db287bb4c5947b798007d6f46bce0ad7"
-  integrity sha512-fKxMh6CixHxRI/0zQmEkQ2eP0960TeIsHsc2oKFvGVDwaIi7Dm1BOC10lrC9aEMxsvRG3rfCW2HXgsaua+iGKA==
+"@primer/css@^17.7.0":
+  version "17.7.0"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-17.7.0.tgz#d8a704f77abcb99bedc584c95e3cc469f6607f20"
+  integrity sha512-rv44O7Kj6gieAUTmNCHFnIxIbdjUBCFg605vJxCQCJTpp1JVXalJXpFl+wxcjP6yC0ghOLRs8GNgJZ6Blmxgwg==
   dependencies:
     "@primer/primitives" "^4.3.5"
 

@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
-class Primer::TabNavComponentStories < ViewComponent::Storybook::Stories
+require "primer/alpha/underline_panels"
+
+class Primer::Alpha::UnderlinePanelsStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
-  story(:tab_nav) do
+  story(:underline_panels) do
     controls do
       label "aria label"
-      with_panel true
+      select(:align, Primer::Alpha::UnderlineNav::ALIGN_OPTIONS, :left)
     end
 
     content do |c|
@@ -21,9 +23,6 @@ class Primer::TabNavComponentStories < ViewComponent::Storybook::Stories
       c.tab(id: "tab-3") do |t|
         t.panel { "Panel 3" }
         t.text { "Tab 3" }
-      end
-      c.extra do
-        "<button class=\"btn btn-sm float-right\">Button</a>".html_safe
       end
     end
   end

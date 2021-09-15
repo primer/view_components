@@ -41,7 +41,12 @@ module Primer
         system_arguments.delete(:width)
       end
 
-      cache_key = Primer::Octicon::Cache.get_key(symbol: icon_key, size: size, **system_arguments.slice(:height, :width))
+      cache_key = Primer::Octicon::Cache.get_key(
+        symbol: icon_key,
+        size: size,
+        height: system_arguments[:height],
+        width: system_arguments[:width]
+      )
 
       @system_arguments = system_arguments
       @system_arguments[:tag] = :svg

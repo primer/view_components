@@ -16,12 +16,12 @@ module Primer
 
     private
 
-    def navigation_tag(with_panel)
-      with_panel ? :div : :nav
+    def aria_label_for_page_nav(label)
+      @system_arguments[:tag] == :nav ? @system_arguments[:"aria-label"] = label : @body_arguments[:"aria-label"] = label
     end
 
-    def wrapper(**system_arguments)
-      return yield unless @with_panel
+    def tab_container_wrapper(with_panel:, **system_arguments)
+      return yield unless with_panel
 
       render Primer::TabContainerComponent.new(**system_arguments) do
         yield if block_given?

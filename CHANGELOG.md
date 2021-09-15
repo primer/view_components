@@ -30,6 +30,77 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.56
+
+### Updates
+
+* `Octicon` linter will autocorrect colors.
+
+    *Manuel Puyol*
+
+* `Button` linter will autocorrect when button uses `href`, `name`, `value` or `tabindex`.
+
+    *Manuel Puyol*
+
+* `Flash` linter won't autocorrect flashes with ERB in their content.
+
+    *Manuel Puyol*
+
+* Eager load components.
+
+    *Cameron Dutro*
+
+### Misc
+
+* Refactor some of the rubocop valid_node? logic into BaseCop class.
+
+    *Jon Rohan*
+
+* Fix validation checker to use Utilities for color-* classes.
+
+    *Jon Rohan*
+
+## 0.0.55
+
+### Breaking changes
+
+* `Primer::Breadcrumbs` requires `href`s for all items and no longer accepts the `selected` argument.
+
+    *Joel Hawksley*
+
+* Split `TabNav` into `TabNav` and `TabPanels`.
+
+    *Kate Higa*
+
+### New
+
+* Use the allocation_stats gem to count object allocations in our benchmarks.
+* Improve performance of Octicon cache key construction.
+
+    *Cameron Dutro*
+
+* Update `@primer/css` to `17.7.0` which includes a new argument for `word_break`
+
+    *Jon Rohan*
+
+### Misc
+
+* Clean up extra constants in `UnderlineNav`.
+
+    *Kate Higa*
+
+## 0.0.54
+
+### Breaking changes
+
+* Rename `BreadcrumbComponent` to `Beta::Breadcrumbs`.
+
+    *Joel Hawksley*
+
+* Split `UnderlineNavComponent` into `Alpha::UnderlineNav` and `Alpha::UnderlinePanels`.
+
+    *Kate Higa*
+
 ## 0.0.53
 
 ### New
@@ -44,6 +115,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Deprecating background and border color presentational arguments
+
+    *Jon Rohan*
+
 * Map the `for` argument when autofixing `ClipboardCopy` migrations.
 
     *Kristján Oddsson*
@@ -51,6 +126,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Add autocorrection for `CloseButton` linter.
 
     *Manuel Puyol*
+
+* Moving text color variables to Utilities class
+
+    *Jon Rohan*
 
 ### Bug fixes
 

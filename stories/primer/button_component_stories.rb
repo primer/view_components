@@ -11,6 +11,7 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
       caret false
+      disabled false
     end
 
     content do
@@ -26,6 +27,7 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
       caret false
+      disabled false
     end
 
     content do |c|
@@ -42,6 +44,7 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
       caret false
+      disabled false
     end
 
     content do |c|
@@ -58,6 +61,7 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
       caret false
+      disabled false
     end
 
     content do |c|
