@@ -93,50 +93,20 @@ module Primer
     ).freeze
 
     class << self
-      def call_orig(classes: "", style: nil, **args)
-        extracted_results = extract_hash_orig(args)
-
-        extracted_results[:class] = [
-          validated_class_names(classes),
-          extracted_results.delete(:classes)
-        ].compact.join(" ").strip.presence
-
-        extracted_results[:style] = [
-          extracted_results.delete(:styles),
-          style
-        ].compact.join.presence
-
-        extracted_results
-      end
-
       def call(classes: "", style: nil, **args)
-        extract_hash_improved(args).tap do |extracted_results|
+        extract_css_attrs(args).tap do |extracted_results|
           classes = +"#{validated_class_names(classes)} #{extracted_results[:class]}"
           classes.squeeze!(" ")
           classes.strip!
+          # rubocop:disable Rails/Blank
+          # do this instead of using presence/blank?, which are a lot slower
           extracted_results[:class] = !classes || classes.empty? ? nil : classes
 
           styles = "#{extracted_results[:style]}#{style}"
+          # do this instead of using presence/blank?, which is a lot slower
           extracted_results[:style] = !styles || styles.empty? ? nil : styles
+          # rubocop:enable Rails/Blank
         end
-      end
-
-      def call_old(classes: "", style: nil, **args)
-        extracted_results = extract_hash_improved(args)
-
-        klass = [
-          validated_class_names(classes),
-          extracted_results.delete(:classes)
-        ].compact.join(" ").strip
-        extracted_results[:class] = !klass || klass.empty? ? nil : klass
-
-        style = [
-          extracted_results.delete(:styles),
-          style
-        ].compact.join
-        extracted_results[:style] = !style || style.empty? ? nil : style
-
-        extracted_results
       end
 
       private
@@ -150,7 +120,11 @@ module Primer
               memo << class_name if Primer::Classify::Validation.invalid?(class_name)
             end
 
-          raise ArgumentError, "Use System Arguments (https://primer.style/view-components/system-arguments) instead of Primer CSS class #{'name'.pluralize(invalid_class_names.length)} #{invalid_class_names.to_sentence}. This warning will not be raised in production. Set PRIMER_WARNINGS_DISABLED=1 to disable this warning." if invalid_class_names.any?
+          if invalid_class_names.any?
+            raise ArgumentError, "Use System Arguments (https://primer.style/view-components/system-arguments) "\
+              "instead of Primer CSS class #{'name'.pluralize(invalid_class_names.length)} #{invalid_class_names.to_sentence}. "\
+              "This warning will not be raised in production. Set PRIMER_WARNINGS_DISABLED=1 to disable this warning."
+          end
         end
 
         classes
@@ -163,46 +137,23 @@ module Primer
       #
       # styles_hash - A hash with utility keys that mimic the interface used by https://github.com/primer/components
       #
-      # Returns a string of Primer CSS class names to be added to an HTML class attribute
+      # Returns a string of Primer CSS class names and style attributes to be added to an HTML tag.
       #
       # Example usage:
-      # extract_hash({ mt: 4, py: 2 }) => "mt-4 py-2"
-      def extract_hash_orig(styles_hash)
-        memo = { classes: [], styles: +"" }
-        styles_hash.each do |key, value|
-          next unless VALID_KEYS.include?(key)
-
-          if value.is_a?(Array)
-            raise ArgumentError, "#{key} does not support responsive values" unless RESPONSIVE_KEYS.include?(key) || Primer::Classify::Utilities.supported_key?(key)
-
-            value.each_with_index do |val, index|
-              Primer::Classify::Cache.orig_instance.read(memo, key, val, BREAKPOINTS[index]) || extract_value_orig(memo, key, val, BREAKPOINTS[index])
-            end
-          else
-            Primer::Classify::Cache.orig_instance.read(memo, key, value, BREAKPOINTS[0]) || extract_value_orig(memo, key, value, BREAKPOINTS[0])
-          end
-        end
-
-        memo[:classes] = memo[:classes].join(" ")
-
-        memo
-      end
-
-      def extract_hash_improved(styles_hash)
+      # extract_css_attrs({ mt: 4, py: 2 }) => "mt-4 py-2"
+      def extract_css_attrs(styles_hash)
         classes = []
         styles = +""
 
         styles_hash.each do |key, value|
           if value.is_a?(Array)
-            unless RESPONSIVE_KEYS.include?(key) || Primer::Classify::Utilities.supported_key?(key)
-              raise ArgumentError, "#{key} does not support responsive values"
-            end
+            raise ArgumentError, "#{key} does not support responsive values" unless RESPONSIVE_KEYS.include?(key) || Primer::Classify::Utilities.supported_key?(key)
 
             value.each_with_index do |val, index|
-              extract_into(classes, styles, key, val, BREAKPOINTS[index])
+              extract_css_attrs_into(classes, styles, key, val, BREAKPOINTS[index])
             end
           else
-            extract_into(classes, styles, key, value, BREAKPOINTS[0])
+            extract_css_attrs_into(classes, styles, key, value, BREAKPOINTS[0])
           end
         end
 
@@ -212,26 +163,24 @@ module Primer
         }
       end
 
-      def extract_into(classes, styles, key, val, breakpoint)
+      def extract_css_attrs_into(classes, styles, key, val, breakpoint)
         found_classes = Primer::Classify::Cache.instance.fetch(breakpoint, key, val) do
-          extract_classes_improved(key, val, breakpoint)
+          classes_from(key, val, breakpoint)
         end
 
         classes << found_classes if found_classes
 
-        found_styles = extract_styles_improved(key, val, breakpoint)
+        found_styles = styles_from(key, val, breakpoint)
         styles << found_styles if found_styles
       end
 
-      def extract_styles_improved(key, val, breakpoint)
-        if key == BG_KEY
-          if val.to_s.start_with?("#")
-            "background-color: #{val};"
-          end
-        end
+      def styles_from(key, val, _breakpoint)
+        # Turn this into an if/else like classes_from when we have more branches.
+        # Could be that way now, but it makes Rubocop unhappy.
+        "background-color: #{val};" if key == BG_KEY && val.to_s.start_with?("#")
       end
 
-      def extract_classes_improved(key, val, breakpoint)
+      def classes_from(key, val, breakpoint)
         return if val.nil? || val == ""
 
         if Primer::Classify::Utilities.supported_key?(key)
@@ -243,9 +192,7 @@ module Primer
 
           bools.empty? ? nil : bools.join(" ")
         elsif key == BG_KEY
-          unless val.to_s.start_with?("#")
-            Primer::Classify::FunctionalBackgroundColors.color(val)
-          end
+          Primer::Classify::FunctionalBackgroundColors.color(val) unless val.to_s.start_with?("#")
         elsif key == BORDER_KEY
           if val == true
             "border"
@@ -278,58 +225,6 @@ module Primer
           else
             "color-shadow-#{val.to_s.dasherize}"
           end
-        end
-      end
-
-      def extract_value_orig(memo, key, val, breakpoint)
-        return if val.nil? || val == ""
-
-        if Primer::Classify::Utilities.supported_key?(key)
-          memo[:classes] << Primer::Classify::Utilities.classname(key, val, breakpoint)
-        elsif BOOLEAN_MAPPINGS.key?(key)
-          BOOLEAN_MAPPINGS[key][:mappings].each do |m|
-            memo[:classes] << m[:css_class] if m[:value] == val && m[:css_class].present?
-          end
-        elsif key == BG_KEY
-          if val.to_s.start_with?("#")
-            memo[:styles] << "background-color: #{val};"
-          else
-            memo[:classes] << Primer::Classify::FunctionalBackgroundColors.color(val)
-          end
-        elsif key == BORDER_KEY
-          border_value = if val == true
-                           "border"
-                         else
-                           "border-#{val.to_s.dasherize}"
-                         end
-
-          memo[:classes] << border_value
-        elsif key == BORDER_COLOR_KEY
-          memo[:classes] << Primer::Classify::FunctionalBorderColors.color(val)
-        elsif BORDER_MARGIN_KEYS.include?(key)
-          memo[:classes] << "#{key.to_s.dasherize}-#{val}"
-        elsif key == BORDER_RADIUS_KEY
-          memo[:classes] << "rounded-#{val}"
-        elsif Primer::Classify::Flex::KEYS.include?(key)
-          memo[:classes] << Primer::Classify::Flex.classes(key, val, breakpoint)
-        elsif Primer::Classify::Grid::KEYS.include?(key)
-          memo[:classes] << Primer::Classify::Grid.classes(key, val, breakpoint)
-        elsif TEXT_KEYS.include?(key)
-          memo[:classes] << "text-#{val.to_s.dasherize}"
-        elsif TYPOGRAPHY_KEYS.include?(key)
-          memo[:classes] << if val == :small || val == :normal
-                              "text-#{val.to_s.dasherize}"
-                            else
-                              "f#{val.to_s.dasherize}"
-                            end
-        elsif key == BOX_SHADOW_KEY
-          memo[:classes] << if val == true
-                              "color-shadow-small"
-                            elsif val == :none || val.blank?
-                              "box-shadow-none"
-                            else
-                              "color-shadow-#{val.to_s.dasherize}"
-                            end
         end
       end
 

@@ -16,29 +16,20 @@ module Primer
         @lookup = {}
       end
 
-      def self.orig_instance
-        @orig_instance ||= new
-      end
-
       private :initialize
 
-      def read(memo, key, val, breakpoint)
-        value = @lookup.dig(breakpoint, key, val)
-        memo[:classes] << value if value
-      end
-
-      def fetch(breakpoint, key, val, &block)
+      def fetch(breakpoint, key, val)
         found = @lookup.dig(breakpoint, key, val)
         return found if found
 
-        block.call.tap do |result|
+        yield.tap do |result|
           set(result, breakpoint, key, val) if @cache_enabled
         end
       end
 
-      def disable(&block)
+      def disable
         @cache_enabled = false
-        block.call
+        yield
         @cache_enabled = true
       end
 
@@ -124,7 +115,7 @@ module Primer
         BREAKPOINTS.each do |breakpoint|
           Array(keys).each do |key|
             values.each do |value|
-              classes = Primer::Classify.send(:extract_classes_improved, key, value, breakpoint)
+              classes = Primer::Classify.send(:classes_from, key, value, breakpoint)
               set(classes, breakpoint, key, value)
             end
           end

@@ -29,7 +29,7 @@ module Primer
         "^height" => "h"
       }.freeze
 
-      SUPPORTED_KEY_CACHE = Hash.new { |h, k| h[k] = !!UTILITIES[k] }
+      SUPPORTED_KEY_CACHE = Hash.new { |h, k| h[k] = !UTILITIES[k].nil? }
       BREAKPOINT_INDEX_CACHE = Hash.new { |h, k| h[k] = BREAKPOINTS.index(k) }
 
       class << self
@@ -38,11 +38,7 @@ module Primer
             valid
           else
             # Get selector
-            if $improved
-              UTILITIES[key][val][BREAKPOINT_INDEX_CACHE[breakpoint]]
-            else
-              UTILITIES[key][val][BREAKPOINTS.index(breakpoint)]
-            end
+            UTILITIES[key][val][BREAKPOINT_INDEX_CACHE[breakpoint]]
           end
         end
 
@@ -50,22 +46,14 @@ module Primer
         #
         # returns Boolean
         def supported_key?(key)
-          if $improved
-            SUPPORTED_KEY_CACHE[key]
-          else
-            UTILITIES[key].present?
-          end
+          SUPPORTED_KEY_CACHE[key]
         end
 
         # Does the Utility class support the given key and value
         #
         # returns Boolean
         def supported_value?(key, val)
-          if $improved
-            supported_key?(key) && !!UTILITIES[key][val]
-          else
-            supported_key?(key) && UTILITIES[key][val].present?
-          end
+          supported_key?(key) && !UTILITIES[key][val].nil?
         end
 
         # Does the given selector exist in the utilities file
