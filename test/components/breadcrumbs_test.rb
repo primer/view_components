@@ -45,7 +45,7 @@ class PrimerBreadcrumbsTest < Minitest::Test
       component.item(href: "/about") { "About" }
     end
 
-    assert_selector("li a[aria-current='page'].breadcrumb-item-selected", text: "About")
+    assert_selector("li.breadcrumb-item-selected a[aria-current='page']", text: "About")
   end
 
   def test_status
