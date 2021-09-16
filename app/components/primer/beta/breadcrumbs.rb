@@ -6,6 +6,11 @@ module Primer
     class Breadcrumbs < Primer::Component
       status :beta
 
+      PADDING_MESSAGE = "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead."
+      FONT_SIZE_MESSAGE =
+        "Breadcrumbs does not support the font_size system argument.\n" \
+        "Need a hand? File an issue here: https://github.com/primer/view_components/issues/new."
+
       # @param href [String] The URL to link to.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :items, "Item"
@@ -22,6 +27,10 @@ module Primer
         @system_arguments = system_arguments
         @system_arguments[:tag] = :nav
         @system_arguments[:aria] = { label: "Breadcrumb" }
+        @system_arguments[:system_arguments_denylist] = {
+          [:p, :pt, :pb, :pr, :pl, :px, :py] => PADDING_MESSAGE,
+          [:font_size] => FONT_SIZE_MESSAGE
+        }
       end
 
       def render?

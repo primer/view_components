@@ -11,6 +11,26 @@ class PrimerBreadcrumbsTest < Minitest::Test
     refute_component_rendered
   end
 
+  def test_system_argument_restriction
+    with_force_system_arguments(true) do
+      error = assert_raises(ArgumentError) do
+        render_inline(Primer::Beta::Breadcrumbs.new(p: 0)) do |component|
+          component.item(href: "/") { "Home" }
+        end
+      end
+
+      assert_includes(error.message, "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead.")
+
+      error = assert_raises(ArgumentError) do
+        render_inline(Primer::Beta::Breadcrumbs.new(font_size: 4)) do |component|
+          component.item(href: "/") { "Home" }
+        end
+      end
+
+      assert_includes(error.message, "not support the font_size system argument.")
+    end
+  end
+
   def test_renders_single_item
     render_inline(Primer::Beta::Breadcrumbs.new) do |component|
       component.item(href: "/") { "Home" }
