@@ -40,7 +40,7 @@ class BenchClassify < Minitest::Benchmark
   def bench_allocations_with_cache_disabled
     Primer::Classify::Cache.instance.clear!
 
-    assert_allocations "3.0" => 60, "2.7" => 60, "2.6" => 61, "2.5" => 92 do
+    assert_allocations "3.0" => 54, "2.7" => 54, "2.6" => 57, "2.5" => 58 do
       Primer::Classify::Cache.instance.disable do
         Primer::Classify.call(**@values)
       end
@@ -53,7 +53,7 @@ class BenchClassify < Minitest::Benchmark
     Primer::Classify::Cache.instance.clear!
     Primer::Classify::Cache.instance.preload!
 
-    assert_allocations "3.0" => 48, "2.7" => 40, "2.6" => 41, "2.5" => 58 do
+    assert_allocations "3.0" => 41, "2.7" => 34, "2.6" => 37, "2.5" => 38 do
       Primer::Classify.call(**@values)
     end
   end
@@ -63,7 +63,7 @@ class BenchClassify < Minitest::Benchmark
     Primer::Classify::Cache.instance.preload!
     Primer::Classify.call(**@values)
 
-    assert_allocations "3.0" => 15, "2.7" => 15, "2.6" => 16, "2.5" => 17 do
+    assert_allocations "3.0" => 9, "2.7" => 9, "2.6" => 12, "2.5" => 13 do
       Primer::Classify.call(**@values)
     end
   end
