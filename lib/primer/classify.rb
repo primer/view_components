@@ -96,7 +96,6 @@ module Primer
       def call(classes: "", style: nil, **args)
         extract_css_attrs(args).tap do |extracted_results|
           classes = +"#{validated_class_names(classes)} #{extracted_results[:class]}"
-          classes.squeeze!(" ")
           classes.strip!
           # rubocop:disable Rails/Blank
           # do this instead of using presence/blank?, which are a lot slower
