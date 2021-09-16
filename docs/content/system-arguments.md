@@ -92,8 +92,8 @@ System arguments include most HTML attributes. For example:
 | Name | Type | Description |
 | :- | :- | :- |
 | `display` | Symbol | One of `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:none`, `:table`, or `:table_cell`. |
-| `w` | Symbol | One of `:auto`, `:fit`, or `:full`. Also supports integer values. |
-| `h` | Symbol | One of `:fit` and `:full`. Also supports integer values. |
+| `w` | Symbol | One of `:auto`, `:fit`, or `:full`. |
+| `h` | Symbol | One of `:fit` and `:full`. |
 | `hide` | Symbol | Hide the element at a specific breakpoint. One of `:lg`, `:md`, `:sm`, or `:xl`. |
 | `visibility` | Symbol | Visibility. One of `:hidden` and `:visible`. |
 | `vertical_align` | Symbol | One of `:baseline`, `:bottom`, `:middle`, `:text_bottom`, `:text_top`, or `:top`. |
