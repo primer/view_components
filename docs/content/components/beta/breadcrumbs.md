@@ -31,7 +31,7 @@ Use `Breadcrumbs` to display page hierarchy.
 
 ### Basic
 
-<Example src="<nav aria-label='Breadcrumb' data-view-component='true'>  <ol>      <li data-view-component='true' class='breadcrumb-item'><a href='/' data-view-component='true'>Home</a></li>      <li data-view-component='true' class='breadcrumb-item'><a href='/about' data-view-component='true'>About</a></li>      <li data-view-component='true' class='breadcrumb-item  breadcrumb-item-selected'><a aria-current='page' href='/about/team' data-view-component='true' class='breadcrumb-item-selected'>Team</a></li>  </ol></nav>" />
+<Example src="<nav aria-label='Breadcrumb' data-view-component='true'>  <ol>      <li data-view-component='true' class='breadcrumb-item'><a href='/' data-view-component='true'>Home</a></li>      <li data-view-component='true' class='breadcrumb-item'><a href='/about' data-view-component='true'>About</a></li>      <li data-view-component='true' class='breadcrumb-item  breadcrumb-item-selected'><a aria-current='page' href='/about/team' data-view-component='true'>Team</a></li>  </ol></nav>" />
 
 ```erb
 <%= render(Primer::Beta::Breadcrumbs.new) do |component| %>

@@ -109,7 +109,9 @@
     ]
   },
   "Primer::Beta::Breadcrumbs": {
-    "Item": "Primer::Beta::Breadcrumbs::Item"
+    "FONT_SIZE_MESSAGE": "Breadcrumbs does not support the font_size system argument.\nNeed a hand? File an issue here: https://github.com/primer/view_components/issues/new.",
+    "Item": "Primer::Beta::Breadcrumbs::Item",
+    "PADDING_MESSAGE": "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead."
   },
   "Primer::Beta::Breadcrumbs::Item": {
   },
