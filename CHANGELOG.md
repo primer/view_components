@@ -36,6 +36,14 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Cameron Dutro*
 
+## 0.0.57
+
+### Bug fixes
+
+* Don't suggest empty colors for Octicons when autocorrecting.
+
+    *Manuel Puyol*
+
 ## 0.0.56
 
 ### Updates

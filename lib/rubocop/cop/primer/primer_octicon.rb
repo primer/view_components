@@ -142,11 +142,11 @@ module RuboCop
                     :text_white
                   when :text_link
                     :icon_info
-                  else
+                  when Symbol
                     args[:color].to_s.gsub("text_", "icon_").to_sym
                   end
 
-          args[:color] = color
+          args[:color] = color if color
 
           ::Primer::Classify::Utilities.hash_to_args(args)
         end
