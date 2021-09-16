@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+$improved = true
+
 ENV["RAILS_ENV"] = "test"
 
 if ENV["COVERAGE"] == "1"

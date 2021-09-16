@@ -93,8 +93,8 @@ module Primer
     ).freeze
 
     class << self
-      def call(classes: "", style: nil, **args)
-        extracted_results = extract_hash(args)
+      def call_orig(classes: "", style: nil, **args)
+        extracted_results = extract_hash_orig(args)
 
         extracted_results[:class] = [
           validated_class_names(classes),
@@ -105,6 +105,36 @@ module Primer
           extracted_results.delete(:styles),
           style
         ].compact.join.presence
+
+        extracted_results
+      end
+
+      def call(classes: "", style: nil, **args)
+        extract_hash_improved(args).tap do |extracted_results|
+          classes = +"#{validated_class_names(classes)} #{extracted_results[:class]}"
+          classes.squeeze!(" ")
+          classes.strip!
+          extracted_results[:class] = !classes || classes.empty? ? nil : classes
+
+          styles = "#{extracted_results[:style]}#{style}"
+          extracted_results[:style] = !styles || styles.empty? ? nil : styles
+        end
+      end
+
+      def call_old(classes: "", style: nil, **args)
+        extracted_results = extract_hash_improved(args)
+
+        klass = [
+          validated_class_names(classes),
+          extracted_results.delete(:classes)
+        ].compact.join(" ").strip
+        extracted_results[:class] = !klass || klass.empty? ? nil : klass
+
+        style = [
+          extracted_results.delete(:styles),
+          style
+        ].compact.join
+        extracted_results[:style] = !style || style.empty? ? nil : style
 
         extracted_results
       end
@@ -137,7 +167,7 @@ module Primer
       #
       # Example usage:
       # extract_hash({ mt: 4, py: 2 }) => "mt-4 py-2"
-      def extract_hash(styles_hash)
+      def extract_hash_orig(styles_hash)
         memo = { classes: [], styles: +"" }
         styles_hash.each do |key, value|
           next unless VALID_KEYS.include?(key)
@@ -146,10 +176,10 @@ module Primer
             raise ArgumentError, "#{key} does not support responsive values" unless RESPONSIVE_KEYS.include?(key) || Primer::Classify::Utilities.supported_key?(key)
 
             value.each_with_index do |val, index|
-              Primer::Classify::Cache.read(memo, key, val, BREAKPOINTS[index]) || extract_value(memo, key, val, BREAKPOINTS[index])
+              Primer::Classify::Cache.orig_instance.read(memo, key, val, BREAKPOINTS[index]) || extract_value_orig(memo, key, val, BREAKPOINTS[index])
             end
           else
-            Primer::Classify::Cache.read(memo, key, value, BREAKPOINTS[0]) || extract_value(memo, key, value, BREAKPOINTS[0])
+            Primer::Classify::Cache.orig_instance.read(memo, key, value, BREAKPOINTS[0]) || extract_value_orig(memo, key, value, BREAKPOINTS[0])
           end
         end
 
@@ -158,7 +188,100 @@ module Primer
         memo
       end
 
-      def extract_value(memo, key, val, breakpoint)
+      def extract_hash_improved(styles_hash)
+        classes = []
+        styles = +""
+
+        styles_hash.each do |key, value|
+          if value.is_a?(Array)
+            unless RESPONSIVE_KEYS.include?(key) || Primer::Classify::Utilities.supported_key?(key)
+              raise ArgumentError, "#{key} does not support responsive values"
+            end
+
+            value.each_with_index do |val, index|
+              extract_into(classes, styles, key, val, BREAKPOINTS[index])
+            end
+          else
+            extract_into(classes, styles, key, value, BREAKPOINTS[0])
+          end
+        end
+
+        {
+          class: classes.join(" "),
+          style: styles
+        }
+      end
+
+      def extract_into(classes, styles, key, val, breakpoint)
+        found_classes = Primer::Classify::Cache.instance.fetch(breakpoint, key, val) do
+          extract_classes_improved(key, val, breakpoint)
+        end
+
+        classes << found_classes if found_classes
+
+        found_styles = extract_styles_improved(key, val, breakpoint)
+        styles << found_styles if found_styles
+      end
+
+      def extract_styles_improved(key, val, breakpoint)
+        if key == BG_KEY
+          if val.to_s.start_with?("#")
+            "background-color: #{val};"
+          end
+        end
+      end
+
+      def extract_classes_improved(key, val, breakpoint)
+        return if val.nil? || val == ""
+
+        if Primer::Classify::Utilities.supported_key?(key)
+          Primer::Classify::Utilities.classname(key, val, breakpoint)
+        elsif BOOLEAN_MAPPINGS.key?(key)
+          bools = BOOLEAN_MAPPINGS[key][:mappings].each_with_object([]) do |m, memo|
+            memo << m[:css_class] if m[:value] == val && m[:css_class].present?
+          end
+
+          bools.empty? ? nil : bools.join(" ")
+        elsif key == BG_KEY
+          unless val.to_s.start_with?("#")
+            Primer::Classify::FunctionalBackgroundColors.color(val)
+          end
+        elsif key == BORDER_KEY
+          if val == true
+            "border"
+          else
+            "border-#{val.to_s.dasherize}"
+          end
+        elsif key == BORDER_COLOR_KEY
+          Primer::Classify::FunctionalBorderColors.color(val)
+        elsif BORDER_MARGIN_KEYS.include?(key)
+          "#{key.to_s.dasherize}-#{val}"
+        elsif key == BORDER_RADIUS_KEY
+          "rounded-#{val}"
+        elsif Primer::Classify::Flex::KEYS.include?(key)
+          Primer::Classify::Flex.classes(key, val, breakpoint)
+        elsif Primer::Classify::Grid::KEYS.include?(key)
+          Primer::Classify::Grid.classes(key, val, breakpoint)
+        elsif TEXT_KEYS.include?(key)
+          "text-#{val.to_s.dasherize}"
+        elsif TYPOGRAPHY_KEYS.include?(key)
+          if val == :small || val == :normal
+            "text-#{val.to_s.dasherize}"
+          else
+            "f#{val.to_s.dasherize}"
+          end
+        elsif key == BOX_SHADOW_KEY
+          if val == true
+            "color-shadow-small"
+          elsif val == :none || val.blank?
+            "box-shadow-none"
+          else
+            "color-shadow-#{val.to_s.dasherize}"
+          end
+        end
+      end
+
+      def extract_value_orig(memo, key, val, breakpoint)
         return if val.nil? || val == ""
 
         if Primer::Classify::Utilities.supported_key?(key)
@@ -215,6 +338,6 @@ module Primer
       end
     end
 
-    Cache.preload!
+    Cache.instance.preload!
   end
 end

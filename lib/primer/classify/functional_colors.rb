@@ -9,6 +9,10 @@ module Primer
           # Implemented by class' childrens.
         end
 
+        def force_functional_colors?
+          Rails.application.config.primer_view_components.force_functional_colors
+        end
+
         private
 
         # @param key [String|Symbol] Option name.
@@ -53,10 +57,6 @@ module Primer
         def ends_with_number?(val)
           char_code = val[-1].ord
           char_code >= 48 && char_code <= 57
-        end
-
-        def force_functional_colors?
-          Rails.application.config.primer_view_components.force_functional_colors
         end
 
         def silence_deprecations?
