@@ -21,13 +21,13 @@ Render Primer ViewComponents from templates:
 In `Gemfile`, add:
 
 ```ruby
-gem "view_component"
 gem "primer_view_components"
 ```
 
 In `config/application.rb`, add **after the application definition**:
 
 ```ruby
+require "view_component/engine"
 require "primer/view_components/engine"
 ```
 
