@@ -170,6 +170,22 @@ class RubocopPrimerOcticonTest < CopTest
     assert_empty cop.offenses
   end
 
+  def test_autocorrects_unknown_color_to_class
+    investigate(cop, <<-'RUBY')
+      octicon(:icon, class: "mr-1 color-unknown-color")
+    RUBY
+
+    assert_correction "primer_octicon(:icon, mr: 1, classes: \"color-unknown-color\")"
+  end
+
+  def test_corrects_without_color
+    investigate(cop, <<-'RUBY')
+      octicon(:icon, class: "mr-1")
+    RUBY
+
+    assert_correction "primer_octicon(:icon, mr: 1)"
+  end
+
   def test_octicon_with_class_interpolation
     investigate(cop, <<-'RUBY')
       octicon(:icon, class: "mr-1 #{aux}")
