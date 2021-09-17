@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "flex"
-require_relative "functional_background_colors"
 require_relative "functional_border_colors"
 require_relative "grid"
 
@@ -66,11 +65,6 @@ module Primer
         preload(
           keys: Primer::Classify::Grid::COL_KEY,
           values: Primer::Classify::Grid::COL_VALUES
-        )
-
-        preload(
-          keys: [Primer::Classify::BG_KEY],
-          values: Primer::Classify::FunctionalBackgroundColors::OPTIONS
         )
 
         preload(

@@ -125,7 +125,12 @@ module RuboCop
             orange_6: nil,
             orange_7: nil,
             orange_8: nil,
-            orange_9: nil
+            orange_9: nil,
+            purple_light: nil,
+            purple: nil,
+            yellow_dark: nil,
+            orange: nil,
+            pink: nil
           },
           border_color: {
             gray: "border_color: :primary",

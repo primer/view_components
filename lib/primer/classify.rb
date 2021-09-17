@@ -2,7 +2,6 @@
 
 require_relative "classify/cache"
 require_relative "classify/flex"
-require_relative "classify/functional_background_colors"
 require_relative "classify/functional_border_colors"
 require_relative "classify/grid"
 require_relative "classify/utilities"
@@ -14,7 +13,6 @@ module Primer
     # Keys where we can simply translate { key: value } into ".key-value"
     CONCAT_KEYS = %i[text box_shadow].freeze
 
-    BG_KEY = :bg
     TEXT_KEYS = %i[font_family font_style font_weight text_align text_transform].freeze
     BOX_SHADOW_KEY = :box_shadow
     CONTAINER_KEY = :container
@@ -86,7 +84,6 @@ module Primer
         BORDER_KEY,
         BORDER_COLOR_KEY,
         BORDER_RADIUS_KEY,
-        BG_KEY,
         BOX_SHADOW_KEY,
         CONTAINER_KEY
       ]
@@ -176,7 +173,6 @@ module Primer
       def styles_from(key, val, _breakpoint)
         # Turn this into an if/else like classes_from when we have more branches.
         # Could be that way now, but it makes Rubocop unhappy.
-        "background-color: #{val};" if key == BG_KEY && val.to_s.start_with?("#")
       end
 
       def classes_from(key, val, breakpoint)
@@ -188,10 +184,7 @@ module Primer
           bools = BOOLEAN_MAPPINGS[key][:mappings].each_with_object([]) do |m, memo|
             memo << m[:css_class] if m[:value] == val && m[:css_class].present?
           end
-
           bools.empty? ? nil : bools.join(" ")
-        elsif key == BG_KEY
-          Primer::Classify::FunctionalBackgroundColors.color(val) unless val.to_s.start_with?("#")
         elsif key == BORDER_KEY
           if val == true
             "border"
