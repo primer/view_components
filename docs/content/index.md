@@ -21,6 +21,7 @@ Render Primer ViewComponents from templates:
 In `Gemfile`, add:
 
 ```ruby
+gem "view_component"
 gem "primer_view_components"
 ```
 
@@ -50,4 +51,4 @@ import '@primer/view-components/tab_container'
 
 ## Dependencies
 
-In addition to the dependencies declared in the `gemspec`, Primer ViewComponents assumes the presence of Primer CSS.
+In addition to the dependencies declared in the `gemspec`, Primer ViewComponents assumes the presence of [Primer CSS](https://primer.style/css/getting-started).
