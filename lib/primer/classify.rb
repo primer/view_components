@@ -2,7 +2,6 @@
 
 require_relative "classify/cache"
 require_relative "classify/flex"
-require_relative "classify/functional_border_colors"
 require_relative "classify/grid"
 require_relative "classify/utilities"
 require_relative "classify/validation"
@@ -67,7 +66,6 @@ module Primer
       }
     }.freeze
     BORDER_KEY = :border
-    BORDER_COLOR_KEY = :border_color
     BORDER_MARGIN_KEYS = %i[border_top border_bottom border_left border_right].freeze
     BORDER_RADIUS_KEY = :border_radius
     TYPOGRAPHY_KEYS = [:font_size].freeze
@@ -82,7 +80,6 @@ module Primer
       Primer::Classify::Grid::KEYS +
       [
         BORDER_KEY,
-        BORDER_COLOR_KEY,
         BORDER_RADIUS_KEY,
         BOX_SHADOW_KEY,
         CONTAINER_KEY
@@ -172,8 +169,6 @@ module Primer
                          end
 
           memo[:classes] << border_value
-        elsif key == BORDER_COLOR_KEY
-          memo[:classes] << Primer::Classify::FunctionalBorderColors.color(val)
         elsif BORDER_MARGIN_KEYS.include?(key)
           memo[:classes] << "#{key.to_s.dasherize}-#{val}"
         elsif key == BORDER_RADIUS_KEY

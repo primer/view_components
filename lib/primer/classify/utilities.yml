@@ -55,6 +55,23 @@
   - color-icon-success
   :icon_warning:
   - color-icon-warning
+:border_color:
+  :primary:
+  - color-border-primary
+  :secondary:
+  - color-border-secondary
+  :tertiary:
+  - color-border-tertiary
+  :inverse:
+  - color-border-inverse
+  :info:
+  - color-border-info
+  :success:
+  - color-border-success
+  :danger:
+  - color-border-danger
+  :warning:
+  - color-border-warning
 :bg:
   :canvas:
   - color-bg-canvas
