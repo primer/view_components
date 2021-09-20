@@ -8,7 +8,7 @@ require "primer/view_components/constants"
 #
 # Usage:
 #
-# bundle exec thor linter_generator my_component_name
+# bundle exec thor linter_generator Primer::Beta::Breadcrumbs
 class LinterGenerator < Thor::Group
   include Thor::Actions
 
@@ -54,6 +54,8 @@ class LinterGenerator < Thor::Group
   end
 
   def create_argument_mapper_test
+    return unless @autocorrectable
+
     template("templates/argument_mapper_test.tt", argument_mapper_test_path)
   end
 
