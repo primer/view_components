@@ -14,7 +14,6 @@ module Primer
 
       config.primer_view_components = ActiveSupport::OrderedOptions.new
 
-      config.primer_view_components.force_functional_colors = true
       config.primer_view_components.force_system_arguments = false
       config.primer_view_components.silence_deprecations = false
 

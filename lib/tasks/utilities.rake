@@ -12,6 +12,7 @@ namespace :utilities do
     SUPPORTED_KEYS = %i[
       anim
       color-bg
+      color-border
       color-icon
       color-text
       d

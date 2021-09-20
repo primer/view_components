@@ -27,7 +27,8 @@ module Primer
         "^v" => "visibility",
         "^width" => "w",
         "^height" => "h",
-        "^color-bg" => "bg"
+        "^color-bg" => "bg",
+        "^color-border" => "border_color"
       }.freeze
 
       class << self

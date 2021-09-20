@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "flex"
-require_relative "functional_border_colors"
 require_relative "grid"
 
 module Primer
