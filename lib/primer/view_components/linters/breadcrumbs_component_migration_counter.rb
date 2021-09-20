@@ -2,7 +2,6 @@
 
 require_relative "base_linter"
 
-
 module ERBLint
   module Linters
     # Counts the number of times a HTML breadcrumbs is used instead of the component.
