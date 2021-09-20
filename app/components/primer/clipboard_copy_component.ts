@@ -35,5 +35,8 @@ document.addEventListener('clipboard-copy', function ({target}) {
     toggleCopyButton(target)
   }
 
-  clipboardCopyElementTimers.set(target, setTimeout(toggleCopyButton, CLIPBOARD_COPY_TIMER_DURATION, target))
+  clipboardCopyElementTimers.set(target, setTimeout(() => {
+    toggleCopyButton(target)
+    clipboardCopyElementTimers.delete(target)
+  }, CLIPBOARD_COPY_TIMER_DURATION))
 })
