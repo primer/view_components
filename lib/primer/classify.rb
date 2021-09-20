@@ -98,17 +98,21 @@ module Primer
           classes = +"#{validated_class_names(classes)} #{extracted_results[:class]}"
           classes.strip!
           # rubocop:disable Rails/Blank
-          # do this instead of using presence/blank?, which are a lot slower
-          extracted_results[:class] = !classes || classes.empty? ? nil : classes
+          # do this instead of using Rails' presence/blank?, which are a lot slower
+          extracted_results[:class] = presence(classes)
 
           styles = "#{extracted_results[:style]}#{style}"
-          # do this instead of using presence/blank?, which is a lot slower
-          extracted_results[:style] = !styles || styles.empty? ? nil : styles
+          # do this instead of using Rails' presence/blank?, which are a lot slower
+          extracted_results[:style] = presence(styles)
           # rubocop:enable Rails/Blank
         end
       end
 
       private
+
+      def presence(obj)
+        !obj || obj.empty? ? nil : obj
+      end
 
       def validated_class_names(classes)
         return if classes.blank?
@@ -149,10 +153,10 @@ module Primer
             raise ArgumentError, "#{key} does not support responsive values" unless RESPONSIVE_KEYS.include?(key) || Primer::Classify::Utilities.supported_key?(key)
 
             value.each_with_index do |val, index|
-              extract_css_attrs_into(classes, styles, key, val, BREAKPOINTS[index])
+              extract_one_css_attr(classes, styles, key, val, BREAKPOINTS[index])
             end
           else
-            extract_css_attrs_into(classes, styles, key, value, BREAKPOINTS[0])
+            extract_one_css_attr(classes, styles, key, value, BREAKPOINTS[0])
           end
         end
 
@@ -162,7 +166,7 @@ module Primer
         }
       end
 
-      def extract_css_attrs_into(classes, styles, key, val, breakpoint)
+      def extract_one_css_attr(classes, styles, key, val, breakpoint)
         found_classes = Primer::Classify::Cache.instance.fetch(breakpoint, key, val) do
           classes_from(key, val, breakpoint)
         end
