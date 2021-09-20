@@ -458,6 +458,12 @@ class PrimerClassifyTest < Minitest::Test
     end
   end
 
+  def test_works_when_cache_disabled
+    Primer::Classify::Cache.instance.disable do
+      assert_generated_class("d-block", { classes: "d-block" })
+    end
+  end
+
   private
 
   def assert_generated_class(generated_class_name, input)
