@@ -64,7 +64,7 @@ module Primer
     # | Name | Type | Description |
     # | :- | :- | :- |
     # | `bg` | Symbol | Background color. <%= one_of(Primer::Classify::Utilities.mappings(:bg)) %> |
-    # | `border_color` | Symbol | Border color. <%= one_of(Primer::Classify::FunctionalBorderColors::OPTIONS) %> |
+    # | `border_color` | Symbol | Border color. <%= one_of(Primer::Classify::Utilities.mappings(:border_color)) %> |
     # | `color` | Symbol | Text color. <%= one_of(Primer::Classify::Utilities.mappings(:color)) %> |
     #
     # ## Flex

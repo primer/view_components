@@ -27,7 +27,8 @@ module Primer
         "^v" => "visibility",
         "^width" => "w",
         "^height" => "h",
-        "^color-bg" => "bg"
+        "^color-bg" => "bg",
+        "^color-border" => "border_color"
       }.freeze
 
       SUPPORTED_KEY_CACHE = Hash.new { |h, k| h[k] = !UTILITIES[k].nil? }

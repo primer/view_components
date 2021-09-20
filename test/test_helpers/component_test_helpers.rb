@@ -24,18 +24,6 @@ module Primer
       Rails.application.config.primer_view_components.force_system_arguments = old_value
     end
 
-    def with_force_functional_colors(new_value)
-      old_value = Rails.application.config.primer_view_components.force_functional_colors
-      Rails.application.config.primer_view_components.force_functional_colors = new_value
-      Primer::Classify::Cache.instance.clear!
-      Primer::Classify::Cache.instance.preload!
-      yield
-    ensure
-      Rails.application.config.primer_view_components.force_functional_colors = old_value
-      Primer::Classify::Cache.instance.clear!
-      Primer::Classify::Cache.instance.preload!
-    end
-
     def with_silence_deprecations(new_value)
       old_value = Rails.application.config.primer_view_components.silence_deprecations
       Rails.application.config.primer_view_components.silence_deprecations = new_value
