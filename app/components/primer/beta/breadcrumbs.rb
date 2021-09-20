@@ -7,9 +7,7 @@ module Primer
       status :beta
 
       PADDING_MESSAGE = "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead."
-      FONT_SIZE_MESSAGE =
-        "Breadcrumbs does not support the font_size system argument.\n" \
-        "Need a hand? File an issue here: https://github.com/primer/view_components/issues/new."
+      FONT_SIZE_MESSAGE = "Breadcrumbs does not support the font_size system argument."
 
       # @param href [String] The URL to link to.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
