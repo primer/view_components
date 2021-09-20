@@ -7,7 +7,12 @@ module Primer
       status :beta
 
       PADDING_MESSAGE = "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead."
-      FONT_SIZE_MESSAGE = "Breadcrumbs does not support the font_size system argument."
+      FONT_SIZE_MESSAGE = "Breadcrumbs do not support the font_size system argument."
+      ARIA_LABEL = { label: "Breadcrumb" }
+      ARGS_DENYLIST = {
+        [:p, :pt, :pb, :pr, :pl, :px, :py] => PADDING_MESSAGE,
+        [:font_size] => FONT_SIZE_MESSAGE
+      }
 
       # @param href [String] The URL to link to.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -24,11 +29,8 @@ module Primer
       def initialize(**system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] = :nav
-        @system_arguments[:aria] = { label: "Breadcrumb" }
-        @system_arguments[:system_arguments_denylist] = {
-          [:p, :pt, :pb, :pr, :pl, :px, :py] => PADDING_MESSAGE,
-          [:font_size] => FONT_SIZE_MESSAGE
-        }
+        @system_arguments[:aria] = ARIA_LABEL
+        @system_arguments[:system_arguments_denylist] = ARGS_DENYLIST
       end
 
       def render?
