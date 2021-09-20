@@ -26,8 +26,13 @@ module Primer
         "^wb" => "word_break",
         "^v" => "visibility",
         "^width" => "w",
-        "^height" => "h"
+        "^height" => "h",
+        "^color-bg" => "bg",
+        "^color-border" => "border_color"
       }.freeze
+
+      SUPPORTED_KEY_CACHE = Hash.new { |h, k| h[k] = !UTILITIES[k].nil? }
+      BREAKPOINT_INDEX_CACHE = Hash.new { |h, k| h[k] = BREAKPOINTS.index(k) }
 
       class << self
         def classname(key, val, breakpoint = "")
@@ -35,22 +40,22 @@ module Primer
             valid
           else
             # Get selector
-            UTILITIES[key][val][BREAKPOINTS.index(breakpoint)]
+            UTILITIES[key][val][BREAKPOINT_INDEX_CACHE[breakpoint]]
           end
         end
 
-        # Does the Utilitiy class support the given key
+        # Does the Utility class support the given key
         #
         # returns Boolean
         def supported_key?(key)
-          UTILITIES[key].present?
+          SUPPORTED_KEY_CACHE[key]
         end
 
-        # Does the Utilitiy class support the given key and value
+        # Does the Utility class support the given key and value
         #
         # returns Boolean
         def supported_value?(key, val)
-          supported_key?(key) && UTILITIES[key][val].present?
+          supported_key?(key) && !UTILITIES[key][val].nil?
         end
 
         # Does the given selector exist in the utilities file

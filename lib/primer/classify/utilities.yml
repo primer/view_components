@@ -55,6 +55,54 @@
   - color-icon-success
   :icon_warning:
   - color-icon-warning
+:border_color:
+  :primary:
+  - color-border-primary
+  :secondary:
+  - color-border-secondary
+  :tertiary:
+  - color-border-tertiary
+  :inverse:
+  - color-border-inverse
+  :info:
+  - color-border-info
+  :success:
+  - color-border-success
+  :danger:
+  - color-border-danger
+  :warning:
+  - color-border-warning
+:bg:
+  :canvas:
+  - color-bg-canvas
+  :canvas_inverse:
+  - color-bg-canvas-inverse
+  :canvas_inset:
+  - color-bg-canvas-inset
+  :primary:
+  - color-bg-primary
+  :secondary:
+  - color-bg-secondary
+  :tertiary:
+  - color-bg-tertiary
+  :overlay:
+  - color-bg-overlay
+  :info:
+  - color-bg-info
+  :info_inverse:
+  - color-bg-info-inverse
+  :danger:
+  - color-bg-danger
+  :danger_inverse:
+  - color-bg-danger-inverse
+  :success:
+  - color-bg-success
+  :success_inverse:
+  - color-bg-success-inverse
+  :warning:
+  - color-bg-warning
+  :warning_inverse:
+  - color-bg-warning-inverse
 :position:
   :static:
   - position-static

@@ -62,7 +62,7 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `bg` | String, Symbol | Background color. Accepts either a hex value as a String or one of `:canvas`, `:canvas_inset`, `:canvas_inverse`, `:danger`, `:danger_inverse`, `:info`, `:info_inverse`, `:overlay`, `:primary`, `:secondary`, `:success`, `:success_inverse`, `:tertiary`, `:warning`, or `:warning_inverse`. |
+| `bg` | Symbol | Background color. One of `:canvas`, `:canvas_inset`, `:canvas_inverse`, `:danger`, `:danger_inverse`, `:info`, `:info_inverse`, `:overlay`, `:primary`, `:secondary`, `:success`, `:success_inverse`, `:tertiary`, `:warning`, or `:warning_inverse`. |
 | `border_color` | Symbol | Border color. One of `:danger`, `:info`, `:inverse`, `:primary`, `:secondary`, `:success`, `:tertiary`, or `:warning`. |
 | `color` | Symbol | Text color. One of `:icon_danger`, `:icon_info`, `:icon_primary`, `:icon_secondary`, `:icon_success`, `:icon_tertiary`, `:icon_warning`, `:text_danger`, `:text_inverse`, `:text_link`, `:text_primary`, `:text_secondary`, `:text_success`, `:text_tertiary`, `:text_warning`, or `:text_white`. |
 
@@ -92,8 +92,8 @@ System arguments include most HTML attributes. For example:
 | Name | Type | Description |
 | :- | :- | :- |
 | `display` | Symbol | One of `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:none`, `:table`, or `:table_cell`. |
-| `w` | Symbol | One of `:auto`, `:fit`, or `:full`. Also supports integer values. |
-| `h` | Symbol | One of `:fit` and `:full`. Also supports integer values. |
+| `w` | Symbol | One of `:auto`, `:fit`, or `:full`. |
+| `h` | Symbol | One of `:fit` and `:full`. |
 | `hide` | Symbol | Hide the element at a specific breakpoint. One of `:lg`, `:md`, `:sm`, or `:xl`. |
 | `visibility` | Symbol | Visibility. One of `:hidden` and `:visible`. |
 | `vertical_align` | Symbol | One of `:baseline`, `:bottom`, `:middle`, `:text_bottom`, `:text_top`, or `:top`. |

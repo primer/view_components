@@ -27,6 +27,7 @@ gem "primer_view_components"
 In `config/application.rb`, add **after the application definition**:
 
 ```ruby
+require "view_component/engine"
 require "primer/view_components/engine"
 ```
 
@@ -50,4 +51,4 @@ import '@primer/view-components/tab_container'
 
 ## Dependencies
 
-In addition to the dependencies declared in the `gemspec`, Primer ViewComponents assumes the presence of Primer CSS.
+In addition to the dependencies declared in the `gemspec`, Primer ViewComponents assumes the presence of [Primer CSS](https://primer.style/css/getting-started).

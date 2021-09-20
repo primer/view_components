@@ -6,7 +6,7 @@ module Primer
   class Classify
     # :nodoc:
     class Validation
-      INVALID_CLASS_NAME_PREFIXES = /bg-|color-bg-|text-|box-shadow-|box_shadow-/.freeze
+      INVALID_CLASS_NAME_PREFIXES = /text-|box-shadow-|box_shadow-/.freeze
 
       class << self
         def invalid?(class_name)

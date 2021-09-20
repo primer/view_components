@@ -30,6 +30,26 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Updates
+
+* Improve performance of the Classify module, i.e. `Classify.call`.
+
+    *Cameron Dutro*
+
+* Background arguments are now pulled in through the utilities class.
+
+    *Jon Rohan*
+
+* Border arguments are now pulled in through the utilities class.
+
+    *Jon Rohan*
+
+### Breaking changes
+
+* `bg:` system argument will no longer accept hex color strings, and deprecated color scale.
+
+    *Jon Rohan*
+
 ## 0.0.57
 
 ### Bug fixes
