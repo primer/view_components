@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+* Improve performance of the Classify module, i.e. `Classify.call`.
+
+    *Cameron Dutro*
+
 * Background arguments are now pulled in through the utilities class.
 
     *Jon Rohan*
