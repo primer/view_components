@@ -94,21 +94,20 @@ module Primer
         extract_css_attrs(args).tap do |extracted_results|
           classes = +"#{validated_class_names(classes)} #{extracted_results[:class]}"
           classes.strip!
-          # rubocop:disable Rails/Blank
-          # do this instead of using Rails' presence/blank?, which are a lot slower
           extracted_results[:class] = presence(classes)
 
           styles = "#{extracted_results[:style]}#{style}"
-          # do this instead of using Rails' presence/blank?, which are a lot slower
           extracted_results[:style] = presence(styles)
-          # rubocop:enable Rails/Blank
         end
       end
 
       private
 
+      # do this instead of using Rails' presence/blank?, which are a lot slower
       def presence(obj)
+        # rubocop:disable Rails/Blank
         !obj || obj.empty? ? nil : obj
+        # rubocop:enable Rails/Blank
       end
 
       def validated_class_names(classes)
