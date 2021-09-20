@@ -109,7 +109,14 @@
     ]
   },
   "Primer::Beta::Breadcrumbs": {
-    "FONT_SIZE_MESSAGE": "Breadcrumbs does not support the font_size system argument.\nNeed a hand? File an issue here: https://github.com/primer/view_components/issues/new.",
+    "ARGS_DENYLIST": {
+      "[:p, :pt, :pb, :pr, :pl, :px, :py]": "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead.",
+      "[:font_size]": "Breadcrumbs do not support the font_size system argument."
+    },
+    "ARIA_LABEL": {
+      "label": "Breadcrumb"
+    },
+    "FONT_SIZE_MESSAGE": "Breadcrumbs do not support the font_size system argument.",
     "Item": "Primer::Beta::Breadcrumbs::Item",
     "PADDING_MESSAGE": "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead."
   },
