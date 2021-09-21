@@ -54,6 +54,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan*
 
+### Bug fixes
+
+* Fix `ClipboardCopy` octicons not toggling correctly after first click.
+
+    *Manuel Puyol, Kristján Oddsson*
+
 ## 0.0.57
 
 ### Bug fixes
