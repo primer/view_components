@@ -14,11 +14,11 @@ module Primer
 
       PADDING_MESSAGE = "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead."
       FONT_SIZE_MESSAGE = "Breadcrumbs do not support the font_size system argument."
-      ARIA_LABEL = { label: "Breadcrumb" }
+      ARIA_LABEL = { label: "Breadcrumb" }.freeze
       ARGS_DENYLIST = {
         [:p, :pt, :pb, :pr, :pl, :px, :py] => PADDING_MESSAGE,
         [:font_size] => FONT_SIZE_MESSAGE
-      }
+      }.freeze
 
       # @param href [String] The URL to link to.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
