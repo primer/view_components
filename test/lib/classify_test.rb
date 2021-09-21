@@ -279,81 +279,14 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_border_color
-    with_force_functional_colors(false) do
-      assert_generated_class("border-gray", { border_color: :gray })
-      assert_generated_class("border-gray-light", { border_color: :gray_light })
-      assert_generated_class("border-gray-dark", { border_color: :gray_dark })
-      assert_generated_class("border-blue", { border_color: :blue })
-      assert_generated_class("border-green", { border_color: :green })
-      assert_generated_class("border-yellow", { border_color: :yellow })
-      assert_generated_class("border-red", { border_color: :red })
-      assert_generated_class("border-white", { border_color: :white })
-      assert_generated_class("border-gray-darker", { border_color: :gray_darker })
-      assert_generated_class("border-blue-light", { border_color: :blue_light })
-      assert_generated_class("border-red-light", { border_color: :red_light })
-      assert_generated_class("border-purple", { border_color: :purple })
-      assert_generated_class("border-black-fade", { border_color: :black_fade })
-      assert_generated_class("border-white-fade", { border_color: :white_fade })
-      assert_generated_class("color-border-primary", { border_color: :primary })
-      assert_generated_class("color-border-secondary", { border_color: :secondary })
-      assert_generated_class("color-border-tertiary", { border_color: :tertiary })
-      assert_generated_class("color-border-info", { border_color: :info })
-      assert_generated_class("color-border-success", { border_color: :success })
-      assert_generated_class("color-border-warning", { border_color: :warning })
-      assert_generated_class("color-border-danger", { border_color: :danger })
-      assert_generated_class("color-border-inverse", { border_color: :inverse })
-    end
-  end
-
-  def test_border_color_enforcing_functional_colors
-    assert_generated_class("color-border-primary", { border_color: :gray })
     assert_generated_class("color-border-primary", { border_color: :primary })
-
-    assert_generated_class("color-border-secondary", { border_color: :gray_light })
     assert_generated_class("color-border-secondary", { border_color: :secondary })
-
-    assert_generated_class("color-border-tertiary", { border_color: :gray_dark })
     assert_generated_class("color-border-tertiary", { border_color: :tertiary })
-
-    assert_generated_class("color-border-info", { border_color: :blue })
     assert_generated_class("color-border-info", { border_color: :info })
-
-    assert_generated_class("color-border-success", { border_color: :green })
     assert_generated_class("color-border-success", { border_color: :success })
-
-    assert_generated_class("color-border-warning", { border_color: :yellow })
     assert_generated_class("color-border-warning", { border_color: :warning })
-
-    assert_generated_class("color-border-danger", { border_color: :red })
     assert_generated_class("color-border-danger", { border_color: :danger })
-
-    assert_generated_class("color-border-inverse", { border_color: :white })
     assert_generated_class("color-border-inverse", { border_color: :inverse })
-
-    assert_generated_class("border-gray-darker", { border_color: :gray_darker })
-    assert_generated_class("border-blue-light", { border_color: :blue_light })
-    assert_generated_class("border-red-light", { border_color: :red_light })
-    assert_generated_class("border-purple", { border_color: :purple })
-    assert_generated_class("border-black-fade", { border_color: :black_fade })
-    assert_generated_class("border-white-fade", { border_color: :white_fade })
-
-    err = assert_raises ArgumentError do
-      Primer::Classify.call(border_color: :not_a_color)
-    end
-
-    assert_equal("border not_a_color does not exist.", err.message)
-  end
-
-  def test_border_color_accepts_string_values
-    assert_generated_class("border-gray-darker", { border_color: "gray_darker" })
-    assert_generated_class("color-border-primary", { border_color: "gray" })
-    assert_generated_class("color-border-primary", { border_color: "primary" })
-
-    err = assert_raises ArgumentError do
-      Primer::Classify.call(border_color: "not_a_color")
-    end
-
-    assert_equal("border not_a_color does not exist.", err.message)
   end
 
   def test_rounded
@@ -521,6 +454,12 @@ class PrimerClassifyTest < Minitest::Test
 
   def test_does_not_raise_if_not_using_system_arguments_when_force_system_arguments_is_false
     with_force_system_arguments(false) do
+      assert_generated_class("d-block", { classes: "d-block" })
+    end
+  end
+
+  def test_works_when_cache_disabled
+    Primer::Classify::Cache.instance.disable do
       assert_generated_class("d-block", { classes: "d-block" })
     end
   end

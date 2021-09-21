@@ -37,23 +37,33 @@ class BenchClassify < Minitest::Benchmark
     }
   end
 
-  def bench_allocations_without_cache
-    # Preload cache, warm up benchmark
-    Primer::Classify::Cache.clear!
-    Primer::Classify.call(**@values)
+  def bench_allocations_with_cache_disabled
+    Primer::Classify::Cache.instance.clear!
 
-    assert_allocations "3.0" => 52, "2.7" => 52, "2.6" => 53, "2.5" => 53 do
-      Primer::Classify.call(**@values)
+    assert_allocations "3.0" => 48, "2.7" => 48, "2.6" => 51, "2.5" => 52 do
+      Primer::Classify::Cache.instance.disable do
+        Primer::Classify.call(**@values)
+      end
     end
   ensure
-    Primer::Classify::Cache.preload!
+    Primer::Classify::Cache.instance.preload!
   end
 
-  def bench_allocations_with_cache
-    Primer::Classify::Cache.preload!
+  def bench_allocations_with_cache_preloaded
+    Primer::Classify::Cache.instance.clear!
+    Primer::Classify::Cache.instance.preload!
+
+    assert_allocations "3.0" => 41, "2.7" => 34, "2.6" => 37, "2.5" => 38 do
+      Primer::Classify.call(**@values)
+    end
+  end
+
+  def bench_allocations_with_cache_preloaded_and_warmed
+    Primer::Classify::Cache.instance.clear!
+    Primer::Classify::Cache.instance.preload!
     Primer::Classify.call(**@values)
 
-    assert_allocations "3.0" => 20, "2.7" => 20, "2.6" => 21, "2.5" => 21 do
+    assert_allocations "3.0" => 8, "2.7" => 8, "2.6" => 11, "2.5" => 12 do
       Primer::Classify.call(**@values)
     end
   end
