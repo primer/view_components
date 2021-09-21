@@ -12,21 +12,21 @@ function hideSVG(svg: SVGElement) {
 
 // Toggle a copy button.
 function showCopy(button: HTMLElement) {
-  const [clippyIcon, checkIcon] = button.querySelectorAll<SVGElement>('.octicon')
+  const [copyIcon, checkIcon] = button.querySelectorAll<SVGElement>('.octicon')
 
-  if (!clippyIcon || !checkIcon) return
+  if (!copyIcon || !checkIcon) return
 
-  showSVG(clippyIcon)
+  showSVG(copyIcon)
   hideSVG(checkIcon)
 }
 
 // Toggle a copy button.
 function showCheck(button: HTMLElement) {
-  const [clippyIcon, checkIcon] = button.querySelectorAll<SVGElement>('.octicon')
+  const [copyIcon, checkIcon] = button.querySelectorAll<SVGElement>('.octicon')
 
-  if (!clippyIcon || !checkIcon) return
+  if (!copyIcon || !checkIcon) return
 
-  hideSVG(clippyIcon)
+  hideSVG(copyIcon)
   showSVG(checkIcon)
 }
 
