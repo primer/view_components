@@ -30,7 +30,13 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.58
+
 ### Updates
+
+* Add accessibility section to `Breadcrumbs` page.
+
+    *Kate Higa*
 
 * Improve performance of the Classify module, i.e. `Classify.call`.
 
@@ -49,6 +55,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * `bg:` system argument will no longer accept hex color strings, and deprecated color scale.
 
     *Jon Rohan*
+
+### Bug fixes
+
+* Fix `ClipboardCopy` octicons not toggling correctly after first click.
+
+    *Manuel Puyol, Kristján Oddsson*
 
 ## 0.0.57
 

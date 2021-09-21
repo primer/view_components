@@ -12,6 +12,14 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
 
 Use `Breadcrumbs` to display page hierarchy.
 
+## Accessibility
+
+`Breadcrumbs` renders a list of links within a `nav` element and has an implicit landmark role of `navigation`.
+By default, the component labels the `nav` element with "Breadcrumbs" which helps distinguish the type of navigation.
+Additionally, the component will always render the last link, which should represent the current page, with an `aria-current="page"` attribute.
+
+For more information on the breadcrumbs pattern implemented by this component, see [WAI-ARIA 1.1 Breadcrumb](https://www.w3.org/TR/wai-aria-practices-1.1/#breadcrumb).
+
 ## Arguments
 
 | Name | Type | Default | Description |
