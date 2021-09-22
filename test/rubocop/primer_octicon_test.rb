@@ -15,6 +15,14 @@ class RubocopPrimerOcticonTest < CopTest
     assert_empty cop.offenses.map(&:message)
   end
 
+  def test_octicon_method_call
+    investigate(cop, <<-RUBY)
+      helpers.octicon(:icon)
+    RUBY
+
+    assert_correction "helpers.primer_octicon(:icon)"
+  end
+
   def test_octicon
     investigate(cop, <<-RUBY)
       octicon(:icon)
