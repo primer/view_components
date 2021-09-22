@@ -12,6 +12,14 @@ module Primer
     class Breadcrumbs < Primer::Component
       status :beta
 
+      PADDING_MESSAGE = "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead."
+      FONT_SIZE_MESSAGE = "Breadcrumbs do not support the font_size system argument."
+      ARIA_LABEL = { label: "Breadcrumb" }.freeze
+      ARGS_DENYLIST = {
+        [:p, :pt, :pb, :pr, :pl, :px, :py] => PADDING_MESSAGE,
+        [:font_size] => FONT_SIZE_MESSAGE
+      }.freeze
+
       # @param href [String] The URL to link to.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :items, "Item"
@@ -27,7 +35,8 @@ module Primer
       def initialize(**system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] = :nav
-        @system_arguments[:aria] = { label: "Breadcrumb" }
+        @system_arguments[:aria] = ARIA_LABEL
+        @system_arguments[:system_arguments_denylist] = ARGS_DENYLIST
       end
 
       def render?
@@ -53,7 +62,6 @@ module Primer
 
           if selected
             link_arguments[:"aria-current"] = "page"
-            link_arguments[:classes] = "breadcrumb-item-selected"
             @system_arguments[:classes] = "#{@system_arguments[:classes]} breadcrumb-item-selected"
           end
 

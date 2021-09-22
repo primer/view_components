@@ -109,7 +109,16 @@
     ]
   },
   "Primer::Beta::Breadcrumbs": {
-    "Item": "Primer::Beta::Breadcrumbs::Item"
+    "ARGS_DENYLIST": {
+      "[:p, :pt, :pb, :pr, :pl, :px, :py]": "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead.",
+      "[:font_size]": "Breadcrumbs do not support the font_size system argument."
+    },
+    "ARIA_LABEL": {
+      "label": "Breadcrumb"
+    },
+    "FONT_SIZE_MESSAGE": "Breadcrumbs do not support the font_size system argument.",
+    "Item": "Primer::Beta::Breadcrumbs::Item",
+    "PADDING_MESSAGE": "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead."
   },
   "Primer::Beta::Breadcrumbs::Item": {
   },
