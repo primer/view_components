@@ -75,8 +75,11 @@ module RuboCop
             classes = classes(kwargs)
             size_attributes = transform_sizes(kwargs)
             args = arguments_as_string(node, size_attributes, classes)
-
-            corrector.replace(node.loc.expression, "primer_octicon(#{args})")
+            if node.dot?
+              corrector.replace(node.loc.expression, "#{node.receiver.source}.primer_octicon(#{args})")
+            else
+              corrector.replace(node.loc.expression, "primer_octicon(#{args})")
+            end
           end
         end
 
