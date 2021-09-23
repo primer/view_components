@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.59
+
 ### Breaking changes
 
 * `Breadcrumbs` no longer accepts padding and font size system arguments.
