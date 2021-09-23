@@ -32,6 +32,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## 0.0.59
 
+### Updates
+
+* Changed `ClipboardCopy` to use `copy` instead of `paste` icon.
+
+    *Cole Bemis*
+
 ### Breaking changes
 
 * `Breadcrumbs` no longer accepts padding and font size system arguments.
