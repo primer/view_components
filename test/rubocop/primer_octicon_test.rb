@@ -31,6 +31,14 @@ class RubocopPrimerOcticonTest < CopTest
     assert_correction "primer_octicon(:icon)"
   end
 
+  def test_octicon_with_title
+    investigate(cop, <<-RUBY)
+      octicon(:icon, title: "hello")
+    RUBY
+
+    assert_correction "primer_octicon(:icon, title: \"hello\")"
+  end
+
   def test_octicon_with_number_size
     investigate(cop, <<-RUBY)
       octicon(:icon, size: 30)
