@@ -12,8 +12,14 @@ class Primer::Alpha::SideNavStories < ViewComponent::Storybook::Stories
     end
 
     content do |c|
-      c.item(href: "#url") { "Item 1" }
-      c.item(href: "#url") { "Item 2" }
+      c.item(href: "#url") do |i|
+        i.leading_visual(src: "https://github.com/github.png", alt: "@github")
+        "With avatar"
+      end
+      c.item(href: "#url") do |i|
+        i.leading_visual(icon: :"mark-github")
+        "With icon"
+      end
       c.item(href: "#url", selected: true) { "Item 3" }
       c.item(href: "#url") { "Item 4" }
       c.item(href: "#url") { "Item 5" }

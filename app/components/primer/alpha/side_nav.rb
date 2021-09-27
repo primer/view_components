@@ -25,25 +25,6 @@ module Primer
           system_arguments[:classes]
         )
       end
-
-      # Doc this at some point
-      class Item < Primer::Component
-        def initialize(href:, selected: false, **system_arguments)
-          @system_arguments = system_arguments
-          @system_arguments[:tag] = :a
-          @system_arguments[:href] = href
-          @system_arguments[:"aria-current"] = :page if selected
-
-          @system_arguments[:classes] = class_names(
-            "SideNav-item",
-            system_arguments[:classes]
-          )
-        end
-
-        def call
-          render(Primer::BaseComponent.new(**@system_arguments)) { content }
-        end
-      end
     end
   end
 end
