@@ -8,21 +8,28 @@ module Primer
     class SideNav
       # Doc this at some point
       class Item < Primer::Component
-        renders_one :leading_visual, lambda { |src: nil, alt: nil, icon: nil, **system_arguments|
-          if icon
-            Primer::OcticonComponent.new(icon: icon, **system_arguments)
+        LEADING_VISUAL_COMPONENTS = [Primer::Beta::Avatar, Primer::OcticonComponent].freeze
+
+        # @param component [Primer::Beta::Avatar|Primer::OcticonComponent] Instance of one of those components.
+        renders_one :leading_visual, lambda { |component|
+          case component
+          when *LEADING_VISUAL_COMPONENTS
+            component
           else
-            Primer::Beta::Avatar.new(src: src, alt: alt, size: 16, **system_arguments)
+            raise ArgumentError, "Leading visual only accepts either Octicon or Avatar"
           end
         }
 
-        renders_one :trailing_visual, lambda { |icon: nil, label: nil, count: nil, **system_arguments|
-          if icon
-            Primer::OcticonComponent.new(icon: icon, **system_arguments)
-          elsif label
-            Primer::LabelComponent.new(**system_arguments).with_content(label)
+        # @param component_name [String] One of Octicon, Label or Counter
+        # @param kwargs [Hash] The arguments of <%= link_to_component(Primer::OcticonComponent) %>, <%= link_to_component(Primer::LabelComponent) %> or  <%= link_to_component(Primer::CounterComponent) %>.
+        renders_one :trailing_visual, lambda { |component_name, **kwargs|
+          case component_name
+          when "Octicon"
+            Primer::OcticonComponent.new(**kwargs)
+          when "Label"
+            Primer::LabelComponent.new(**kwargs)
           else
-            Primer::CounterComponent.new(count: count)
+            Primer::CounterComponent.new(**kwargs)
           end
         }
 

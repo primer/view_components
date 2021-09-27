@@ -13,28 +13,32 @@ class Primer::Alpha::SideNavStories < ViewComponent::Storybook::Stories
 
     content do |c|
       c.item(href: "#url") do |i|
-        i.leading_visual(src: "https://github.com/github.png", alt: "@github")
+        i.leading_visual(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "@github"))
         "With avatar"
       end
       c.item(href: "#url") do |i|
-        i.leading_visual(icon: :"mark-github")
+        i.leading_visual(Primer::OcticonComponent.new(icon: :"mark-github"))
         "With icon"
       end
       c.item(href: "#url", selected: true) do |i|
-        i.trailing_visual(icon: :"dot-fill")
+        i.trailing_visual("Octicon", icon: :"dot-fill")
         "With status icon"
       end
       c.item(href: "#url") do |i|
-        i.trailing_visual(count: 10)
+        i.trailing_visual("Counter", count: 10)
         "With counter"
       end
       c.item(href: "#url") do |i|
-        i.trailing_visual(label: "Label")
+        i.trailing_visual("Label") do
+          "Label"
+        end
         "With label"
       end
       c.item(href: "#url") do |i|
-        i.leading_visual(icon: :"mark-github")
-        i.trailing_visual(label: "Label")
+        i.leading_visual(Primer::OcticonComponent.new(icon: :"mark-github"))
+        i.trailing_visual("Label") do
+          "Label"
+        end
         "With icon and label"
       end
     end
