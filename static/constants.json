@@ -33,6 +33,15 @@
       "large"
     ]
   },
+  "Primer::Alpha::SideNav": {
+    "Item": "Primer::Alpha::SideNav::Item"
+  },
+  "Primer::Alpha::SideNav::Item": {
+    "LEADING_VISUAL_COMPONENTS": [
+      "Primer::Beta::Avatar",
+      "Primer::OcticonComponent"
+    ]
+  },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",
     "TAG_DEFAULT": "nav",

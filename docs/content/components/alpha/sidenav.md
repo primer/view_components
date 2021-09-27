@@ -21,9 +21,20 @@ Add any accessibility considerations
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `bordered` | `Boolean` | `true` | Whether or not to render a bordered version of the component. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+## Slots
+
+### `Items`
 
 ## Examples
 
 ### Example goes here
 
+<Example src="<nav data-view-component='true' class='SideNav border rounded-2'></nav>" />
+
+```erb
+
+<%= render(Primer::Alpha::SideNav.new) { "Example" } %>
+```
