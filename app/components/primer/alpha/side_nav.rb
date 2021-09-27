@@ -6,15 +6,7 @@ module Primer
     # Add additional usage considerations or best practices that may aid the user to use the component correctly.
     # @accessibility Add any accessibility considerations
     class SideNav < Primer::Component
-      renders_many :items, lambda { |href:, selected: false, **system_arguments|
-        system_arguments["aria-current"] = :page if selected
-        system_arguments[:classes] = class_names(
-          "SideNav-item",
-          system_arguments[:classes]
-        )
-
-        Primer::BaseComponent.new(tag: :a, href: href, **system_arguments)
-      }
+      renders_many :items, "Item"
 
       # @example Example goes here
       #
@@ -32,6 +24,25 @@ module Primer
           "SideNav",
           system_arguments[:classes]
         )
+      end
+
+      # Doc this at some point
+      class Item < Primer::Component
+        def initialize(href:, selected: false, **system_arguments)
+          @system_arguments = system_arguments
+          @system_arguments[:tag] = :a
+          @system_arguments[:href] = href
+          @system_arguments[:"aria-current"] = :page if selected
+
+          @system_arguments[:classes] = class_names(
+            "SideNav-item",
+            system_arguments[:classes]
+          )
+        end
+
+        def call
+          render(Primer::BaseComponent.new(**@system_arguments)) { content }
+        end
       end
     end
   end
