@@ -29,7 +29,8 @@ module RuboCop
 
         SIZE_ATTRIBUTES = %w[height width size].freeze
         STRING_ATTRIBUTES = %w[aria- data-].freeze
-        VALID_ATTRIBUTES = [*SIZE_ATTRIBUTES, *STRING_ATTRIBUTES, "class"].freeze
+        REST_ATTRIBUTES = %w[title].freeze
+        VALID_ATTRIBUTES = [*SIZE_ATTRIBUTES, *STRING_ATTRIBUTES, *REST_ATTRIBUTES, "class"].freeze
 
         STRING_ATTRIBUTE_REGEX = Regexp.union(STRING_ATTRIBUTES).freeze
         ATTRIBUTE_REGEX = Regexp.union(VALID_ATTRIBUTES).freeze
@@ -74,7 +75,9 @@ module RuboCop
             # Converting arguments for the component
             classes = classes(kwargs)
             size_attributes = transform_sizes(kwargs)
-            args = arguments_as_string(node, size_attributes, classes)
+            rest_attributes = rest_args(kwargs)
+
+            args = arguments_as_string(node, size_attributes, rest_attributes, classes)
             if node.dot?
               corrector.replace(node.loc.expression, "#{node.receiver.source}.primer_octicon(#{args})")
             else
@@ -96,6 +99,14 @@ module RuboCop
             else
               size
             end
+          end
+        end
+
+        def rest_args(kwargs)
+          kwargs.pairs.each_with_object({}) do |pair, h|
+            next unless REST_ATTRIBUTES.include?(pair.key.value.to_s)
+
+            h[pair.key.value] = pair.value.source
           end
         end
 
@@ -125,16 +136,26 @@ module RuboCop
           class_arg.value.value
         end
 
-        def arguments_as_string(node, size_attributes, classes)
+        def arguments_as_string(node, size_attributes, rest_attributes, classes)
           args = icon(node.arguments.first)
           size_args = size_attributes_to_string(size_attributes)
           string_args = string_args_to_string(node)
+          rest_args = rest_args_to_string(rest_attributes)
 
-          args = "#{args}, #{size_attributes_to_string(size_attributes)}" if size_args.present?
+          args = "#{args}, #{size_args}" if size_args.present?
+          args = "#{args}, #{rest_args}" if rest_args.present?
           args = "#{args}, #{utilities_args(classes)}" if classes.present?
           args = "#{args}, #{string_args}" if string_args.present?
 
           args
+        end
+
+        def rest_args_to_string(attrs)
+          return if attrs.blank?
+
+          attrs.map do |key, value|
+            "#{key}: #{value}"
+          end.join(", ")
         end
 
         def utilities_args(classes)
