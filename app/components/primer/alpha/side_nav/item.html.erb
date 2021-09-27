@@ -1,4 +1,7 @@
 <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
-  <%= leading_visual %>
-  <%= content %>
+  <div>
+    <%= leading_visual %>
+    <%= content %>
+  </div>
+  <%= trailing_visual %>
 <% end %>

@@ -20,9 +20,23 @@ class Primer::Alpha::SideNavStories < ViewComponent::Storybook::Stories
         i.leading_visual(icon: :"mark-github")
         "With icon"
       end
-      c.item(href: "#url", selected: true) { "Item 3" }
-      c.item(href: "#url") { "Item 4" }
-      c.item(href: "#url") { "Item 5" }
+      c.item(href: "#url", selected: true) do |i|
+        i.trailing_visual(icon: :"dot-fill")
+        "With status icon"
+      end
+      c.item(href: "#url") do |i|
+        i.trailing_visual(count: 10)
+        "With counter"
+      end
+      c.item(href: "#url") do |i|
+        i.trailing_visual(label: "Label")
+        "With label"
+      end
+      c.item(href: "#url") do |i|
+        i.leading_visual(icon: :"mark-github")
+        i.trailing_visual(label: "Label")
+        "With icon and label"
+      end
     end
   end
 end
