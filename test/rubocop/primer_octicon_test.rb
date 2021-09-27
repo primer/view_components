@@ -32,11 +32,27 @@ class RubocopPrimerOcticonTest < CopTest
   end
 
   def test_octicon_with_title
-    investigate(cop, <<-RUBY)
+    investigate(cop, <<-'RUBY')
       octicon(:icon, title: "hello")
     RUBY
 
     assert_correction "primer_octicon(:icon, title: \"hello\")"
+  end
+
+  def test_octicon_with_title_interpolation
+    investigate(cop, <<-'RUBY')
+      octicon(:icon, title: "hello <%= interpolation %>")
+    RUBY
+
+    assert_correction "primer_octicon(:icon, title: \"hello <%= interpolation %>\")"
+  end
+
+  def test_octicon_with_title_method
+    investigate(cop, <<-'RUBY')
+      octicon(:icon, title: some_method)
+    RUBY
+
+    assert_correction "primer_octicon(:icon, title: some_method)"
   end
 
   def test_octicon_with_number_size
