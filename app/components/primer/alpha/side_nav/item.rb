@@ -8,29 +8,35 @@ module Primer
     class SideNav
       # Doc this at some point
       class Item < Primer::Component
-        LEADING_VISUAL_COMPONENTS = [Primer::Beta::Avatar, Primer::OcticonComponent].freeze
+        LEADING_VISUAL_OPTIONS = %i(avatar icon).freeze
+        TRAILING_VISUAL_OPTIONS = %i(icon label counter).freeze
 
-        # @param component [Primer::Beta::Avatar|Primer::OcticonComponent] Instance of one of those components.
-        renders_one :leading_visual, lambda { |component|
-          case component
-          when *LEADING_VISUAL_COMPONENTS
-            component
+        # @param component_name [Symbol] <%= one_of(Primer::Alpha::SideNav::Item::LEADING_VISUAL_OPTIONS) %>
+        # @param kwargs [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %> or <%= link_to_component(Primer::OcticonComponent) %>
+        renders_one :leading_visual, lambda { |component_name, **kwargs|
+          case component_name
+          when :avatar
+            Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
+          when :icon
+            Primer::OcticonComponent.new(**kwargs)
           else
-            raise ArgumentError, "Leading visual only accepts either Octicon or Avatar"
+            raise ArgumentError, "Leading visual must be one of #{LEADING_VISUAL_OPTIONS.map(&:inspect).join(', ')}, got #{component_name.inspect} instead"
           end
         }
 
-        # @param component_name [String] One of Octicon, Label or Counter
-        # @param kwargs [Hash] The arguments of <%= link_to_component(Primer::OcticonComponent) %>, <%= link_to_component(Primer::LabelComponent) %> or  <%= link_to_component(Primer::CounterComponent) %>.
+        # @param component_name [Symbol] <%= one_of(Primer::Alpha::SideNav::Item::TRAILING_VISUAL_OPTIONS) %>
+        # @param kwargs [Hash] The arguments accepted by <%= link_to_component(Primer::OcticonComponent) %>, <%= link_to_component(Primer::LabelComponent) %> or  <%= link_to_component(Primer::CounterComponent) %>.
         renders_one :trailing_visual, lambda { |component_name, **kwargs|
           case component_name
-          when "Octicon"
+          when :icon
             Primer::OcticonComponent.new(**kwargs)
-          when "Label"
+          when :label
             Primer::LabelComponent.new(**kwargs)
-          else
+          when :counter
             Primer::CounterComponent.new(**kwargs)
-          end
+          else
+            raise ArgumentError, "Trailing visual must be one of #{TRAILING_VISUAL_OPTIONS.map(&:inspect).join(', ')}, got #{component_name.inspect} instead"
+        end
         }
 
         def initialize(href:, selected: false, **system_arguments)
