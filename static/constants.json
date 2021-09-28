@@ -37,9 +37,14 @@
     "Item": "Primer::Alpha::SideNav::Item"
   },
   "Primer::Alpha::SideNav::Item": {
-    "LEADING_VISUAL_COMPONENTS": [
-      "Primer::Beta::Avatar",
-      "Primer::OcticonComponent"
+    "LEADING_VISUAL_OPTIONS": [
+      "avatar",
+      "icon"
+    ],
+    "TRAILING_VISUAL_OPTIONS": [
+      "icon",
+      "label",
+      "counter"
     ]
   },
   "Primer::Alpha::TabNav": {
