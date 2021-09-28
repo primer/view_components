@@ -36,6 +36,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan, Manuel Puyol*
 
+* Improvements to the Procfile so script/dev works as expected.
+
+    *Cameron Dutro*
+
 ## 0.0.59
 
 ### Updates
