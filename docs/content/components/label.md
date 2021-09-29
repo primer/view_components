@@ -33,12 +33,12 @@ Use `aria-label` if the `Label` or the context around it don't explain the label
 
 ```erb
 <%= render(Primer::LabelComponent.new) { "Default" } %>
-<%= render(Primer::LabelComponent.new( scheme: :primary)) { "Primary" } %>
-<%= render(Primer::LabelComponent.new( scheme: :secondary)) { "Secondary" } %>
-<%= render(Primer::LabelComponent.new( scheme: :info)) { "Info" } %>
-<%= render(Primer::LabelComponent.new( scheme: :success)) { "Success" } %>
-<%= render(Primer::LabelComponent.new( scheme: :warning)) { "Warning" } %>
-<%= render(Primer::LabelComponent.new( scheme: :danger)) { "Danger" } %>
+<%= render(Primer::LabelComponent.new(scheme: :primary)) { "Primary" } %>
+<%= render(Primer::LabelComponent.new(scheme: :secondary)) { "Secondary" } %>
+<%= render(Primer::LabelComponent.new(scheme: :info)) { "Info" } %>
+<%= render(Primer::LabelComponent.new(scheme: :success)) { "Success" } %>
+<%= render(Primer::LabelComponent.new(scheme: :warning)) { "Warning" } %>
+<%= render(Primer::LabelComponent.new(scheme: :danger)) { "Danger" } %>
 ```
 
 ### Variants
@@ -47,5 +47,5 @@ Use `aria-label` if the `Label` or the context around it don't explain the label
 
 ```erb
 <%= render(Primer::LabelComponent.new) { "Default" } %>
-<%= render(Primer::LabelComponent.new( variant: :large)) { "Large" } %>
+<%= render(Primer::LabelComponent.new(variant: :large)) { "Large" } %>
 ```
