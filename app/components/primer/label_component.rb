@@ -33,12 +33,12 @@ module Primer
 
     # @example Schemes
     #   <%= render(Primer::LabelComponent.new) { "Default" } %>
-    #   <%= render(Primer::LabelComponent.new( scheme: :primary)) { "Primary" } %>
-    #   <%= render(Primer::LabelComponent.new( scheme: :secondary)) { "Secondary" } %>
-    #   <%= render(Primer::LabelComponent.new( scheme: :info)) { "Info" } %>
-    #   <%= render(Primer::LabelComponent.new( scheme: :success)) { "Success" } %>
-    #   <%= render(Primer::LabelComponent.new( scheme: :warning)) { "Warning" } %>
-    #   <%= render(Primer::LabelComponent.new( scheme: :danger)) { "Danger" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :primary)) { "Primary" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :secondary)) { "Secondary" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :info)) { "Info" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :success)) { "Success" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :warning)) { "Warning" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :danger)) { "Danger" } %>
     #
     # @example Variants
     #   <%= render(Primer::LabelComponent.new) { "Default" } %>
