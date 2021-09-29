@@ -42,7 +42,7 @@ module Primer
     #
     # @example Variants
     #   <%= render(Primer::LabelComponent.new) { "Default" } %>
-    #   <%= render(Primer::LabelComponent.new( variant: :large)) { "Large" } %>
+    #   <%= render(Primer::LabelComponent.new(variant: :large)) { "Large" } %>
     #
     # @param tag [Symbol] <%= one_of(Primer::LabelComponent::TAG_OPTIONS) %>
     # @param scheme [Symbol] <%= one_of(Primer::LabelComponent::SCHEME_MAPPINGS.keys) %>
