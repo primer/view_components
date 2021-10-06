@@ -18,7 +18,7 @@ module Primer
         private
 
         def all_components
-          @all_components ||= Dir[File.join(__dir__, "../../../app/components/**/*.rb")]
+          @all_components ||= Dir[File.expand_path(File.join(*%w(.. .. .. app components ** *.rb)), __dir__)]
         end
       end
     end
