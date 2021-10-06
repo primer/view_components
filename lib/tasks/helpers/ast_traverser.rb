@@ -48,7 +48,7 @@ class AstTraverser
     kwargs = args.last
     if kwargs.respond_to?(:pairs)
       res = kwargs.pairs.each_with_object({}) do |pair, h|
-        h[pair.key.value] = pair.value.source
+        h.merge!(extract_values(pair))
       end
     end
 
@@ -56,5 +56,21 @@ class AstTraverser
     res[:icon] = args.first.source if name == "Primer::OcticonComponent" && args.size > 1
 
     res
+  end
+
+  def extract_values(pair)
+    return { pair.key.value => pair.value.source } unless pair.value.type == :hash
+
+    flatten_pairs(pair, prefix: "#{pair.key.value}-")
+  end
+
+  def flatten_pairs(pair, prefix: "")
+    pair.value.pairs.each_with_object({}) do |value_pair, h|
+      if value_pair.value.type == :hash
+        h.merge!(flatten_pairs(value_pair, prefix: "#{prefix}#{value_pair.key.value}-"))
+      else
+        h.merge!("#{prefix}#{value_pair.key.value}" => value_pair.value.source)
+      end
+    end
   end
 end
