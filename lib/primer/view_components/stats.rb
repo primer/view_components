@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Primer
-  # :nodoc:
   module ViewComponents
+    # Class to provide stats helpers for PVC.
     class Stats
       class << self
         def accessibility_tags_count
