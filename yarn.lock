@@ -56,10 +56,10 @@
   resolved "https://registry.npmjs.org/@github/combobox-nav/-/combobox-nav-2.0.2.tgz"
   integrity sha512-xVnncEyRjIFKWT1Bw0R51/V/13vwYrqg6v7rc8HNfsa5pstVqHx/L2ai8eX/3iK98uk6JxGJDzm8ryTo86S+nQ==
 
-"@github/details-menu-element@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@github/details-menu-element/-/details-menu-element-1.0.9.tgz#3b40ff5e928131d3049a0a23b2d6df66eaad2cff"
-  integrity sha512-wa6hgqbUH/3BJIrhGZNZN3o7a4Pxw87Ba4QypZs350ww9H0l4qCc4tcJdlIVRzwxsxb4rVo0kXDMRqDPJsSgNg==
+"@github/details-menu-element@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@github/details-menu-element/-/details-menu-element-1.0.12.tgz#baf9cd5bcf8e40621a085380364090921eb3fae4"
+  integrity sha512-Icbq+xw7Qjb6byfRtC5cjk/eAxb+Wc4F/WS+L6VTHLYEfi8q/akDtHgViGeu854IMiJ/qDosfOGXGgSrleud2w==
 
 "@github/image-crop-element@^5.0.0":
   version "5.0.0"
