@@ -37,7 +37,7 @@ module Primer
       class << self
         def classname(key, val, breakpoint = "")
           # For cases when `argument: false` is passed in, treat like we would nil
-          return "" unless val
+          return nil unless val
 
           if (valid = validate(key, val, breakpoint))
             valid
