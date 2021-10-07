@@ -2,8 +2,7 @@
 
 ERB_GLOB = "**/*.html{+*,}.erb"
 RB_GLOB = "**/*.rb"
-# copied from Rails: action_view/template/handlers/erb/erubi.rb
-BLOCK_EXPR = /\s*((\s+|\))do|\{)(\s*\|[^|]*\|)?\s*\Z/.freeze
+BLOCK_EXPR = /\s*((\s+|\))do|\{)(\s*\|[^|]*\|)?\s*\Z/.freeze # copied from Rails: action_view/template/handlers/erb/erubi.rb
 
 namespace :primer_view_components do
   desc "Report arguments used in each component"
