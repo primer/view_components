@@ -84,7 +84,7 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `clearfix` | Boolean | Wether to assign the `clearfix` class. <%= one_of(Primer::Classify::Utilities.mappings(:clearfix)) %> |
+    # | `clearfix` | Boolean | Wether to assign the `clearfix` class. |
     # | `col` | Integer | Number of columns. <%= one_of(Primer::Classify::Utilities.mappings(:col)) %> |
     # | `container` | Symbol | Size of the container. <%= one_of(Primer::Classify::Utilities.mappings(:container)) %> |
     #
