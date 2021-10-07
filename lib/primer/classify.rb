@@ -137,6 +137,8 @@ module Primer
         styles = +""
 
         styles_hash.each do |key, value|
+          raise ArgumentError, "#{key} does not support responsive values" unless Primer::Classify::Flex::RESPONSIVE_KEYS.include?(key) || Primer::Classify::Utilities.supported_key?(key)
+
           if value.is_a?(Array)
             value.each_with_index do |val, index|
               extract_one_css_attr(classes, styles, key, val, BREAKPOINTS[index])
