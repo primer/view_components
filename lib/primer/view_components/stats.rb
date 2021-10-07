@@ -11,10 +11,6 @@ module Primer
           end
         end
 
-        def components_count
-          all_components.size
-        end
-
         private
 
         def all_components
