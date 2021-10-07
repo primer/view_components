@@ -81,7 +81,7 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
   end
 
   def test_nil_classname_when_argument_value_is_false
-    assert_equal nil, Primer::Classify::Utilities.classname(:clearfix, false)
+    refute Primer::Classify::Utilities.classname(:clearfix, false)
   end
 
   def test_classname_on_unsupported_value_in_prod
