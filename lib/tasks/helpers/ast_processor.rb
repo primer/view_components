@@ -6,8 +6,8 @@ require_relative "ast_traverser"
 class AstProcessor
   class << self
     def increment(stats, component, arg_name, value)
-      stats[component][arg_name][value] = 0 unless stats[component][arg_name][value]
-      stats[component][arg_name][value] += 1
+      stats[component][:arguments][arg_name][value] = 0 unless stats[component][:arguments][arg_name][value]
+      stats[component][:arguments][arg_name][value] += 1
     end
 
     def process_ast(ast, stats)
@@ -16,12 +16,18 @@ class AstProcessor
 
       return if traverser.stats.empty?
 
-      traverser.stats.each do |component, component_args|
-        stats[component] ||= {}
+      traverser.stats.each do |component, component_info|
+        stats[component] ||= {
+          paths: []
+        }
 
-        component_args.each do |arg, value|
+        stats[component][:paths] << component_info[:path]
+        stats[component][:paths].uniq!
+        stats[component][:arguments] ||= {}
+
+        component_info[:arguments]&.each do |arg, value|
           arg_name = arg.to_s
-          stats[component][arg_name] ||= {}
+          stats[component][:arguments][arg_name] ||= {}
 
           # we want to count each class separately
           if arg_name == "classes"

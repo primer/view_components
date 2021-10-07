@@ -13,7 +13,7 @@ BLOCK_EXPR = /\s*((\s+|\))do|\{)(\s*\|[^|]*\|)?\s*\Z/.freeze
 
 namespace :primer_view_components do
   desc "Report arguments used in each component"
-  task :report, [:paths] do |t, args|
+  task :report, [:paths] do |_, args|
     paths = args[:paths].split
     stats = {}
 

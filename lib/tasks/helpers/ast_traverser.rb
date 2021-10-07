@@ -19,7 +19,8 @@ class AstTraverser
     name = component_name(node)
     args = extract_arguments(node, name)
 
-    @stats[name] = args unless args.empty?
+    @stats[name] = { path: node.loc.expression.source_buffer.name }
+    @stats[name][:arguments] = args unless args.empty?
 
     super(node) # recursively iterate over children
   end
