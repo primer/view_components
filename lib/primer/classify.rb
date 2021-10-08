@@ -2,7 +2,6 @@
 
 require_relative "classify/cache"
 require_relative "classify/flex"
-require_relative "classify/grid"
 require_relative "classify/utilities"
 require_relative "classify/validation"
 
@@ -14,10 +13,8 @@ module Primer
 
     TEXT_KEYS = %i[font_family font_style font_weight text_align text_transform].freeze
     BOX_SHADOW_KEY = :box_shadow
-    CONTAINER_KEY = :container
 
     BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
-    RESPONSIVE_KEYS = ([Primer::Classify::Grid::COL_KEY] + Primer::Classify::Flex::RESPONSIVE_KEYS).freeze
 
     BOOLEAN_MAPPINGS = {
       underline: {
@@ -77,12 +74,10 @@ module Primer
       TYPOGRAPHY_KEYS +
       TEXT_KEYS +
       Primer::Classify::Flex::KEYS +
-      Primer::Classify::Grid::KEYS +
       [
         BORDER_KEY,
         BORDER_RADIUS_KEY,
-        BOX_SHADOW_KEY,
-        CONTAINER_KEY
+        BOX_SHADOW_KEY
       ]
     ).freeze
 
@@ -143,7 +138,7 @@ module Primer
 
         styles_hash.each do |key, value|
           if value.is_a?(Array)
-            raise ArgumentError, "#{key} does not support responsive values" unless RESPONSIVE_KEYS.include?(key) || Primer::Classify::Utilities.supported_key?(key)
+            raise ArgumentError, "#{key} does not support responsive values" unless Primer::Classify::Flex::RESPONSIVE_KEYS.include?(key) || Primer::Classify::Utilities.supported_key?(key)
 
             value.each_with_index do |val, index|
               extract_one_css_attr(classes, styles, key, val, BREAKPOINTS[index])
@@ -197,8 +192,6 @@ module Primer
           "rounded-#{val}"
         elsif Primer::Classify::Flex::KEYS.include?(key)
           Primer::Classify::Flex.classes(key, val, breakpoint)
-        elsif Primer::Classify::Grid::KEYS.include?(key)
-          Primer::Classify::Grid.classes(key, val, breakpoint)
         elsif TEXT_KEYS.include?(key)
           "text-#{val.to_s.dasherize}"
         elsif TYPOGRAPHY_KEYS.include?(key)

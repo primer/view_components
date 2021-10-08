@@ -9,43 +9,55 @@ namespace :utilities do
 
     # Keys that are looked for to be included in the utilities.yml file
     # rubocop:disable Lint/ConstantDefinitionInBlock
-    SUPPORTED_KEYS = %i[
-      anim
-      color-bg
-      color-border
-      color-icon
-      color-text
-      d
-      float
-      height
-      hide
-      m mt mr mb ml mx my
-      p pt pr pb pl px py
-      position
-      wb
-      width
-      v
+    SUPPORTED_KEYS = [
+      /^anim\b/,
+      /^color-bg\b/,
+      /^color-border\b/,
+      /^color-icon\b/,
+      /^color-text\b/,
+      /^col\b/,
+      /^container\b/,
+      /^clearfix\b/,
+      /^d\b/,
+      /^float\b/,
+      /^height\b/,
+      /^hide\b/,
+      /^m[trblxy]?\b/,
+      /^p[trblxy]?\b/,
+      /^position\b/,
+      /^wb\b/,
+      /^width\b/,
+      /^v\b/
     ].freeze
 
     BREAKPOINTS = [nil, "sm", "md", "lg", "xl"].freeze
     # rubocop:enable Lint/ConstantDefinitionInBlock
 
-    css_data =
+    utility_data =
       JSON.parse(
         File.read(
-          File.join(
-            __FILE__.split("lib/tasks/utilities.rake")[0], "/node_modules/@primer/css/dist/stats/utilities.json"
-          )
+          File.expand_path(File.join(*%w[.. .. node_modules @primer css dist stats utilities.json]), __dir__)
         )
       )["selectors"]["values"]
+
+    layout_data =
+      JSON.parse(
+        File.read(
+          File.expand_path(File.join(*%w[.. .. node_modules @primer css dist stats layout.json]), __dir__)
+        )
+      )["selectors"]["values"]
+
+    css_data = utility_data + layout_data
 
     output = {}
 
     css_data.each do |selector|
       selector.sub!(/^./, "")
+      selector.sub!(/:[^\s]*$/, "")
+
       # Next if selector has ancestors or sibling selectors
       next if selector.match?(/[:><~\[.]/)
-      next unless SUPPORTED_KEYS.any? { |key| selector.start_with?("#{key}-") }
+      next unless SUPPORTED_KEYS.any? { |key| selector =~ key }
 
       # Dupe so we still have the selector at the end of slicing it up
       classname = selector.dup
@@ -77,13 +89,14 @@ namespace :utilities do
       # convert padding/margin negative values ie n7 to -7
       classname.sub!(/^n/, "-") if classname.match?(/^n[0-9]/)
 
+      # If key and classname are equal, then classname is boolean
+      classname = true if key == classname
+
       key = key.to_sym
 
-      classname = if classname.match?(/\A[-+]?[0-9]+\z/)
-                    classname.to_i
-                  else
-                    classname.to_sym
-                  end
+      if classname.is_a?(String)
+        classname = classname.match?(/\A[-+]?[0-9]+\z/) ? classname.to_i : classname.to_sym
+      end
 
       if output[key].nil?
         output[key] = { classname => Array.new(5, nil) }

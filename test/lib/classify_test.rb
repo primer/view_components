@@ -14,7 +14,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("container-md", { container: :md })
     assert_generated_class("container-sm", { container: :sm })
 
-    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+    assert_raises ArgumentError do
       Primer::Classify.call(container: :foo)
     end
   end
@@ -23,7 +23,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("clearfix", { clearfix: true })
     refute_generated_class({ clearfix: false })
 
-    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+    assert_raises ArgumentError do
       Primer::Classify.call(clearfix: :foo)
     end
   end
@@ -256,7 +256,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("col-11", { col: 11 })
     assert_generated_class("col-12", { col: 12 })
 
-    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+    assert_raises ArgumentError do
       Primer::Classify.call(col: 13)
     end
   end

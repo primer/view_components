@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "flex"
-require_relative "grid"
 
 module Primer
   class Classify
@@ -49,21 +48,6 @@ module Primer
         preload(
           keys: Primer::Classify::Flex::ALIGN_ITEMS_KEY,
           values: Primer::Classify::Flex::ALIGN_ITEMS_VALUES
-        )
-
-        preload(
-          keys: Primer::Classify::Grid::CONTAINER_KEY,
-          values: Primer::Classify::Grid::CONTAINER_VALUES
-        )
-
-        preload(
-          keys: Primer::Classify::Grid::CLEARFIX_KEY,
-          values: [true]
-        )
-
-        preload(
-          keys: Primer::Classify::Grid::COL_KEY,
-          values: Primer::Classify::Grid::COL_VALUES
         )
 
         preload(
