@@ -266,16 +266,6 @@ module Primer
     #       </tbody>
     #     </table>
     #
-    #     <hr />
-    #
-    #     <p>Small images should be shown at their actual size.</p>
-    #
-    #     <p><img alt="kitten" src="http://placekitten.com/g/300/200/"/></p>
-    #
-    #     <p>Large images should always scale down and fit in the content container.</p>
-    #
-    #     <p><img alt="kitten" src="http://placekitten.com/g/1200/800/"/></p>
-    #
     #     <pre><code>This is the final element on the page and there should be no margin below this.</code></pre>
     #   <% end %>
     #
