@@ -36,14 +36,14 @@ namespace :utilities do
     utility_data =
       JSON.parse(
         File.read(
-          File.expand_path(File.join(*%w(.. .. node_modules @primer css dist stats utilities.json)), __dir__)
+          File.expand_path(File.join(*%w[.. .. node_modules @primer css dist stats utilities.json]), __dir__)
         )
       )["selectors"]["values"]
 
     layout_data =
       JSON.parse(
         File.read(
-          File.expand_path(File.join(*%w(.. .. node_modules @primer css dist stats layout.json)), __dir__)
+          File.expand_path(File.join(*%w[.. .. node_modules @primer css dist stats layout.json]), __dir__)
         )
       )["selectors"]["values"]
 
