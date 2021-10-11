@@ -45,7 +45,7 @@ class PrimerTimelineItemComponentTest < Minitest::Test
 
   def test_renders_circle_avatar
     render_inline(Primer::TimelineItemComponent.new) do |component|
-      component.avatar(alt: "mock", src: "mock", square: false)
+      component.avatar(alt: "mock", src: "mock", shape: :circle)
     end
 
     assert_selector(".TimelineItem-avatar")
