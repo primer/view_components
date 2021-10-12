@@ -83,14 +83,15 @@ module Primer
 
     class << self
       def call(classes: "", style: nil, **args)
-        extract_css_attrs(args).tap do |extracted_results|
-          classes = +"#{validated_class_names(classes)} #{extracted_results[:class]}"
-          classes.strip!
-          extracted_results[:class] = presence(classes)
+        extracted_classes = extract_css_attrs(args)
 
-          styles = "#{extracted_results[:style]}#{style}"
-          extracted_results[:style] = presence(styles)
-        end
+        classes = +"#{validated_class_names(classes)} #{extracted_classes}"
+        classes.strip!
+
+        {
+          class: presence(classes),
+          style: presence(style)
+        }
       end
 
       private
@@ -134,40 +135,28 @@ module Primer
       # extract_css_attrs({ mt: 4, py: 2 }) => "mt-4 py-2"
       def extract_css_attrs(styles_hash)
         classes = []
-        styles = +""
 
         styles_hash.each do |key, value|
           if value.is_a?(Array)
             raise ArgumentError, "#{key} does not support responsive values" unless Primer::Classify::Flex::RESPONSIVE_KEYS.include?(key) || Primer::Classify::Utilities.supported_key?(key)
 
             value.each_with_index do |val, index|
-              extract_one_css_attr(classes, styles, key, val, BREAKPOINTS[index])
+              extract_one_css_attr(classes, key, val, BREAKPOINTS[index])
             end
           else
-            extract_one_css_attr(classes, styles, key, value, BREAKPOINTS[0])
+            extract_one_css_attr(classes, key, value, BREAKPOINTS[0])
           end
         end
 
-        {
-          class: classes.join(" "),
-          style: styles
-        }
+        classes.join(" ")
       end
 
-      def extract_one_css_attr(classes, styles, key, val, breakpoint)
+      def extract_one_css_attr(classes, key, val, breakpoint)
         found_classes = Primer::Classify::Cache.instance.fetch(breakpoint, key, val) do
           classes_from(key, val, breakpoint)
         end
 
         classes << found_classes if found_classes
-
-        found_styles = styles_from(key, val, breakpoint)
-        styles << found_styles if found_styles
-      end
-
-      def styles_from(key, val, _breakpoint)
-        # Turn this into an if/else like classes_from when we have more branches.
-        # Could be that way now, but it makes Rubocop unhappy.
       end
 
       def classes_from(key, val, breakpoint)
