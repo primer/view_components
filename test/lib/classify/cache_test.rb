@@ -10,6 +10,7 @@ class PrimerClassifyCacheTest < Minitest::Test
   end
 
   def test_evicts_entries
+    # rubocop:disable Style/RedundantFetchBlock
     cache = Primer::Classify::Cache.instance
     lookup = cache.instance_variable_get(:@lookup)
 
@@ -31,5 +32,6 @@ class PrimerClassifyCacheTest < Minitest::Test
     refute_includes lookup, [:foo].hash
 
     cache.max_size = Rails.application.config.primer_view_components.max_classify_cache_size
+    # rubocop:enable Style/RedundantFetchBlock
   end
 end
