@@ -49,7 +49,7 @@ class PrimerBetaAvatarTest < Minitest::Test
   end
 
   def test_squared_avatar
-    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", square: true))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", shape: :square))
 
     assert_selector("img.avatar")
     refute_selector(".circle")
@@ -75,7 +75,7 @@ class PrimerBetaAvatarTest < Minitest::Test
   end
 
   def test_squared_link_wrapper
-    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#", square: true))
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#", shape: :square))
 
     assert_selector("a.avatar") do
       assert_selector("img")

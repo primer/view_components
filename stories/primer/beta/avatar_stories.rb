@@ -10,7 +10,7 @@ class Primer::Beta::AvatarStories < ViewComponent::Storybook::Stories
       text(:alt, "github")
       text(:src, "https://github.com/github.png")
       size 20
-      square false
+      select(:shape, Primer::Beta::Avatar::SHAPE_OPTIONS, Primer::Beta::Avatar::DEFAULT_SHAPE)
       text(:href, "#")
     end
   end

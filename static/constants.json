@@ -89,6 +89,11 @@
   "Primer::Beta::AutoComplete::Item": {
   },
   "Primer::Beta::Avatar": {
+    "DEFAULT_SHAPE": "circle",
+    "SHAPE_OPTIONS": [
+      "circle",
+      "square"
+    ],
     "SMALL_THRESHOLD": 24
   },
   "Primer::Beta::AvatarStack": {

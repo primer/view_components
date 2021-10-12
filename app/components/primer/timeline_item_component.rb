@@ -8,13 +8,13 @@ module Primer
     # Avatar to be rendered to the left of the Badge.
     #
     # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Avatar) %>.
-    renders_one :avatar, lambda { |src:, size: 40, square: true, **system_arguments|
+    renders_one :avatar, lambda { |src:, size: 40, shape: :square, **system_arguments|
       system_arguments[:classes] = class_names(
         "TimelineItem-avatar",
         system_arguments[:classes]
       )
 
-      Primer::Beta::Avatar.new(src: src, size: size, square: square, **system_arguments)
+      Primer::Beta::Avatar.new(src: src, size: size, shape: shape, **system_arguments)
     }
 
     # Badge that will be connected to other TimelineItems.

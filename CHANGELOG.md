@@ -44,6 +44,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan*
 
+### Breaking changes
+
+* Remove `square` attribute from `Avatar` in favor of `shape`. This change also affects `TimelineItem` `avatar` slot.
+
+    *Manuel Puyol*
+
 ## 0.0.59
 
 ### Updates

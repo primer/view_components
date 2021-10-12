@@ -4,7 +4,7 @@ module Primer
   module Beta
     # `Avatar` can be used to represent users and organizations on GitHub.
     #
-    # - Use the default round avatar for users, and the `square` argument
+    # - Use the default circle avatar for users, and the square shape
     # for organizations or any other non-human avatars.
     # - By default, `Avatar` will render a static `<img>`. To have `Avatar` function as a link, set the `href` which will wrap the `<img>` in a `<a>`.
     # - Set `size` to update the height and width of the `Avatar` in pixels.
@@ -21,11 +21,14 @@ module Primer
 
       SMALL_THRESHOLD = 24
 
+      DEFAULT_SHAPE = :circle
+      SHAPE_OPTIONS = [DEFAULT_SHAPE, :square].freeze
+
       # @example Default
       #   <%= render(Primer::Beta::Avatar.new(src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
       #
       # @example Square
-      #   <%= render(Primer::Beta::Avatar.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", square: true)) %>
+      #   <%= render(Primer::Beta::Avatar.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", shape: :square)) %>
       #
       # @example Link
       #   <%= render(Primer::Beta::Avatar.new(href: "#", src: "http://placekitten.com/200/200", alt: "@kittenuser profile")) %>
@@ -41,10 +44,10 @@ module Primer
       # @param src [String] The source url of the avatar image.
       # @param alt [String] Passed through to alt on img tag.
       # @param size [Integer] Adds the avatar-small class if less than 24.
-      # @param square [Boolean] Used to create a square avatar.
+      # @param shape [Symbol] Shape of the avatar. <%= one_of(Primer::Beta::Avatar::SHAPE_OPTIONS) %>
       # @param href [String] The URL to link to. If used, component will be wrapped by an `<a>` tag.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(src:, alt:, size: 20, square: false, href: nil, **system_arguments)
+      def initialize(src:, alt:, size: 20, shape: DEFAULT_SHAPE, href: nil, **system_arguments)
         @href = href
         @system_arguments = system_arguments
         @system_arguments[:tag] = :img
@@ -58,7 +61,7 @@ module Primer
           system_arguments[:classes],
           "avatar",
           "avatar-small" => size < SMALL_THRESHOLD,
-          "circle" => !square,
+          "circle" => shape == DEFAULT_SHAPE,
           "lh-0" => href # Addresses an overflow issue with linked avatars
         )
       end

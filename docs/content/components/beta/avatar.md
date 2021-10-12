@@ -12,7 +12,7 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
 
 `Avatar` can be used to represent users and organizations on GitHub.
 
-- Use the default round avatar for users, and the `square` argument
+- Use the default circle avatar for users, and the square shape
 for organizations or any other non-human avatars.
 - By default, `Avatar` will render a static `<img>`. To have `Avatar` function as a link, set the `href` which will wrap the `<img>` in a `<a>`.
 - Set `size` to update the height and width of the `Avatar` in pixels.
@@ -33,7 +33,7 @@ rather than `@kittenuser`.
 | `src` | `String` | N/A | The source url of the avatar image. |
 | `alt` | `String` | N/A | Passed through to alt on img tag. |
 | `size` | `Integer` | `20` | Adds the avatar-small class if less than 24. |
-| `square` | `Boolean` | `false` | Used to create a square avatar. |
+| `shape` | `Symbol` | `:circle` | Shape of the avatar. One of `:circle` and `:square`. |
 | `href` | `String` | `nil` | The URL to link to. If used, component will be wrapped by an `<a>` tag. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
@@ -52,7 +52,7 @@ rather than `@kittenuser`.
 <Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' data-view-component='true' class='avatar avatar-small'></img>" />
 
 ```erb
-<%= render(Primer::Beta::Avatar.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", square: true)) %>
+<%= render(Primer::Beta::Avatar.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", shape: :square)) %>
 ```
 
 ### Link
