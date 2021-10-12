@@ -61,7 +61,7 @@ module Primer
           system_arguments[:classes],
           "avatar",
           "avatar-small" => size < SMALL_THRESHOLD,
-          "circle" => shape == :circle,
+          "circle" => shape == DEFAULT_SHAPE,
           "lh-0" => href # Addresses an overflow issue with linked avatars
         )
       end
