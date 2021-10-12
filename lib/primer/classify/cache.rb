@@ -46,7 +46,7 @@ module Primer
         else
           return unless block_given?
 
-          @lookup[key] = yield.tap do |val|
+          @lookup[key] = yield.tap do
             @lookup.shift if @lookup.length > @max_size
           end
         end

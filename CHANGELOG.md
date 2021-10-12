@@ -40,9 +40,13 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Cameron Dutro*
 
-* Migrating grid classes to utilities.yml process
+* Migrating grid classes to utilities.yml process.
 
     *Jon Rohan*
+
+* Further improvements to classify performance.
+
+    *Cameron Dutro*
 
 ### Breaking changes
 
