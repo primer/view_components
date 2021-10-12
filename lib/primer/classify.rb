@@ -83,13 +83,12 @@ module Primer
 
     class << self
       def call(classes: "", style: nil, **args)
-        extracted_classes = extract_css_attrs(args)
-
-        classes = +"#{validated_class_names(classes)} #{extracted_classes}"
-        classes.strip!
+        extracted_classes = Primer::Classify::Cache.instance.fetch(classes, args) do
+          "#{validated_class_names(classes)} #{extract_css_attrs(args)}".strip
+        end
 
         {
-          class: presence(classes),
+          class: presence(extracted_classes),
           style: presence(style)
         }
       end
@@ -152,10 +151,7 @@ module Primer
       end
 
       def extract_one_css_attr(classes, key, val, breakpoint)
-        found_classes = Primer::Classify::Cache.instance.fetch(breakpoint, key, val) do
-          classes_from(key, val, breakpoint)
-        end
-
+        found_classes = classes_from(key, val, breakpoint)
         classes << found_classes if found_classes
       end
 
@@ -204,7 +200,5 @@ module Primer
         Rails.application.config.primer_view_components.force_system_arguments
       end
     end
-
-    Cache.instance.preload!
   end
 end

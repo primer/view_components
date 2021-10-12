@@ -4,9 +4,7 @@ require "test_helper"
 
 class CssCoverageTest < Minitest::Test
   def setup
-    # we want only the preloadable classes
     Primer::Classify::Cache.instance.clear!
-    Primer::Classify::Cache.instance.preload!
 
     @classes_from_classify_cache =
       Primer::Classify::Cache

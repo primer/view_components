@@ -156,7 +156,7 @@ module Primer
             next unless classnames.include?(selector)
 
             # Return [:mr, 0, 1]
-            # has index of classname, so we can match it up with responsvie array `mr: [nil, 0]`
+            # has index of classname, so we can match it up with responsive array `mr: [nil, 0]`
             return [key, key_argument, classnames.index(selector)]
           end
 

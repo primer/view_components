@@ -444,11 +444,13 @@ class PrimerClassifyTest < Minitest::Test
 
   def test_raises_if_not_using_system_arguments_when_force_system_arguments_is_true
     with_force_system_arguments(true) do
-      exception = assert_raises ArgumentError do
-        Primer::Classify.call(classes: "d-block")
-      end
+      Primer::Classify::Cache.instance.disable do
+        exception = assert_raises ArgumentError do
+          Primer::Classify.call(classes: "d-block")
+        end
 
-      assert_includes exception.message, "Use System Arguments (https://primer.style/view-components/system-arguments) instead of Primer CSS class"
+        assert_includes exception.message, "Use System Arguments (https://primer.style/view-components/system-arguments) instead of Primer CSS class"
+      end
     end
   end
 
