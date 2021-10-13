@@ -32,7 +32,12 @@ class BlankslateComponentTest < Minitest::Test
       component.spinner(test_selector: "blankslate-spinner")
     end
 
-    assert_selector(".blankslate [data-test-selector='blankslate-spinner']")
+    assert_selector(".blankslate") do
+      assert_selector("span[role='status']") do
+        assert_selector(".sr-only", text: "Loading")
+        assert_selector("[data-test-selector='blankslate-spinner']")
+      end
+    end
   end
 
   def test_renders_a_narrow_large_and_spacious_blankslate_component
