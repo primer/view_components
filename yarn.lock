@@ -66,6 +66,11 @@
   resolved "https://registry.yarnpkg.com/@github/image-crop-element/-/image-crop-element-5.0.0.tgz#6ae2c31f1e7dc355c41c3140554fb76ca7a71ef7"
   integrity sha512-Vgm2OwWAs1ESoib/t5sjxsAYo6YTOxxAjWDRxswX7qrqoyCejTZ3hshdo4Ep5e+Mz/GVTZC3rdMtg06dk/eT4g==
 
+"@github/markdown-toolbar-element@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@github/markdown-toolbar-element/-/markdown-toolbar-element-2.0.0.tgz#06149f690aee2d342c02a92bd14e9fe041142e48"
+  integrity sha512-8Rf1Cgg9BgHru1y3XsE5kOkWkA+alshI/UbbY70UH8Qqg4gWwQTFl9p6ZnF5gx67WQoXamOs9ceCNjAdaoCJTA==
+
 "@github/prettier-config@0.0.4":
   version "0.0.4"
   resolved "https://registry.npmjs.org/@github/prettier-config/-/prettier-config-0.0.4.tgz"

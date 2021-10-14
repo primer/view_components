@@ -109,4 +109,5 @@
     - title: UnderlineNav
       url: /components/alpha/underlinenav
     - title: UnderlinePanels
-      url: /components/alpha/underlinepanels
+      url: /components/alpha/underlinepanels    - title: MarkdownToolbar - Fix my order in docs/src/@primer/gatsby-theme-doctocat/nav.yml
+      url: /components/markdowntoolbar

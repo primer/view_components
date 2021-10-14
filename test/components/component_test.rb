@@ -7,6 +7,7 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Alpha::MarkdownToolbar, {}],
     [Primer::Alpha::TabPanels, { label: "label" }],
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],

@@ -27,6 +27,7 @@ namespace :docs do
     # Rails controller for rendering arbitrary ERB
     view_context = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context
     components = [
+      Primer::Alpha::MarkdownToolbar,
       Primer::Image,
       Primer::LocalTime,
       Primer::OcticonSymbolsComponent,
@@ -80,6 +81,8 @@ namespace :docs do
     ]
 
     js_components = [
+      Primer::Alpha::MarkdownToolbar,
+      Primer::Alpha::MarkdownToolbar,
       Primer::Dropdown,
       Primer::LocalTime,
       Primer::ImageCrop,
