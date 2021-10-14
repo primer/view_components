@@ -79,7 +79,7 @@ Add an `icon` to give additional context. Refer to the [Octicons](https://primer
 
 Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
 
-<Example src="<div data-view-component='true' class='blankslate'>    <svg style='box-sizing: content-box; color: var(--color-icon-primary);' width='64' height='64' viewBox='0 0 16 16' fill='none' data-view-component='true' class='mb-3 anim-rotate'>  <circle cx='8' cy='8' r='7' stroke='currentColor' stroke-opacity='0.25' stroke-width='2' vector-effect='non-scaling-stroke' />  <path d='M15 8a7.002 7.002 0 00-7-7' stroke='currentColor' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke' /></svg>    <h3 data-view-component='true' class='mb-1'>Title</h3>    <p>Description</p>  </div>" />
+<Example src="<div data-view-component='true' class='blankslate'>    <span role='status'>  <span class='sr-only'>Loading</span>  <svg style='box-sizing: content-box; color: var(--color-icon-primary);' width='64' height='64' viewBox='0 0 16 16' fill='none' data-view-component='true' class='mb-3 anim-rotate'>    <circle cx='8' cy='8' r='7' stroke='currentColor' stroke-opacity='0.25' stroke-width='2' vector-effect='non-scaling-stroke' />    <path d='M15 8a7.002 7.002 0 00-7-7' stroke='currentColor' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke' /></svg></span>    <h3 data-view-component='true' class='mb-1'>Title</h3>    <p>Description</p>  </div>" />
 
 ```erb
 <%= render Primer::BlankslateComponent.new(
