@@ -44,7 +44,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan*
 
-* Make `Spinner` more accessible.
+* Make `Spinner` more accessible by adding `sr-only` loading text.
 
     *Manuel Puyol*
 
