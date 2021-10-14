@@ -1,10 +1,7 @@
 <%# erblint:counter ButtonComponentMigrationCounter 1 %>
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <% if spinner.present? %>
-    <span role="status">
-      <span class="sr-only">Loading</span>
-      <%= spinner %>
-    </span>
+    <%= spinner %>
   <% elsif @icon.present? %>
     <%= primer_octicon @icon, size: @icon_size, classes: "blankslate-icon" %>
   <% elsif @image_src.present? && @image_alt.present? %>

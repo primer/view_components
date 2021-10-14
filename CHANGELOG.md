@@ -44,7 +44,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan*
 
-* Make Blankslate spinner variation more accessible.
+* Make `Spinner` more accessible.
 
     *Manuel Puyol*
 
