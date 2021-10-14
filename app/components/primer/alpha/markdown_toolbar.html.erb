@@ -1,47 +1,40 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <% if responsive? %>
-    <div class="d-block d-md-none flex-auto">
-      <button data-md-button tabindex="-1" type="button" aria-label="Toggle text tools" aria-expanded="false" class="js-details-target btn-link toolbar-item no-underline py-2 mr-1">
-        <%= primer_octicon(:typography) %>
-        <%= primer_octicon(:"chevron-up", classes: "Details-content--shown") %>
-        <%= primer_octicon(:"chevron-down", classes: "Details-content--hidden") %>
-      </button>
-    </div>
-  <% end %>
+  <div class="d-block d-md-none flex-auto">
+    <button data-md-button tabindex="-1" type="button" aria-label="Toggle text tools" aria-expanded="false" class="js-details-target btn-link toolbar-item no-underline py-2 mr-1">
+      <%= primer_octicon(:typography) %>
+      <%= primer_octicon(:"chevron-up", classes: "Details-content--shown") %>
+      <%= primer_octicon(:"chevron-down", classes: "Details-content--hidden") %>
+    </button>
+  </div>
 
   <%= prepend_buttons %>
-  <% use_fragment_cache = GitHub.flipper[:markdown_toolbar_component_fragment_cache].enabled? %>
-  <% cache_if use_fragment_cache, "toolbar_buttons_responsive_#{responsive?}_1" do %>
-    <div class="flex-nowrap <% if responsive? %>d-none d-md-inline-block mr-md-0<% else %>d-inline-block<% end %> mr-3">
-      <md-header tabindex="-1" class="toolbar-item tooltipped tooltipped-sw mx-1" aria-label="Add header text" data-ga-click="Markdown Toolbar, click, header">
-        <%= render Primer::OcticonComponent.new(icon: "heading") %>
-      </md-header>
+  <div class="flex-nowrap d-none d-md-inline-block mr-md-0 mr-3">
+    <md-header tabindex="-1" class="toolbar-item tooltipped tooltipped-sw mx-1" aria-label="<%= label(:header) %>" data-ga-click="Markdown Toolbar, click, header">
+      <%= render Primer::OcticonComponent.new(icon: "heading") %>
+    </md-header>
 
-      <md-bold tabindex="-1" class="toolbar-item tooltipped tooltipped-sw mx-1 js-modifier-label-key" aria-label="Add bold text <ctrl+b>" data-ga-click="Markdown Toolbar, click, bold">
-        <%= render Primer::OcticonComponent.new(icon: "bold") %>
-      </md-bold>
+    <md-bold tabindex="-1" class="toolbar-item tooltipped tooltipped-sw mx-1 js-modifier-label-key" data-hotkey-scope="<%= textarea_id %>" data-hotkey="<%= hotkey(:bold) %>" aria-label="<%= label(:bold) %>"  data-ga-click="Markdown Toolbar, click, bold">
+      <%= render Primer::OcticonComponent.new(icon: "bold") %>
+    </md-bold>
 
-      <md-italic tabindex="-1" class="toolbar-item tooltipped tooltipped-sw mx-1 js-modifier-label-key" aria-label="Add italic text <ctrl+i>" data-ga-click="Markdown Toolbar, click, italic">
-        <%= render Primer::OcticonComponent.new(icon: "italic") %>
-      </md-italic>
-    </div>
+    <md-italic tabindex="-1" class="toolbar-item tooltipped tooltipped-sw mx-1 js-modifier-label-key" data-hotkey-scope="<%= textarea_id %>" data-hotkey="<%= hotkey(:italic) %>"  aria-label="<%= label(:italic) %>" data-ga-click="Markdown Toolbar, click, italic">
+      <%= render Primer::OcticonComponent.new(icon: "italic") %>
+    </md-italic>
+  </div>
 
-    <div class="<% if responsive? %>d-flex d-md-inline-block mr-0<% else %>d-inline-block mr-3<% end %>">
-      <md-quote tabindex="-1" class="toolbar-item tooltipped tooltipped-sw js-modifier-label-key <% if responsive? %>p-2 p-md-1<% else %>p-1<% end %> mx-1" aria-label="Insert a quote <ctrl+shift+.>" data-ga-click="Markdown Toolbar, click, quote">
-        <%= render Primer::OcticonComponent.new(icon: "quote") %>
-      </md-quote>
+  <div class="d-flex d-md-inline-block mr-0">
+    <md-quote tabindex="-1" class="toolbar-item tooltipped tooltipped-sw js-modifier-label-key p-2 p-md-1 mx-1" data-hotkey-scope="<%= textarea_id %>" data-hotkey="<%= hotkey(:quote) %>"   aria-label="<%= label(:quote) %>" data-ga-click="Markdown Toolbar, click, quote">
+      <%= render Primer::OcticonComponent.new(icon: "quote") %>
+    </md-quote>
 
-      <md-code tabindex="-1" class="toolbar-item tooltipped tooltipped-sw js-modifier-label-key <% if responsive? %>p-2 p-md-1<% else %>p-1<% end %> mx-1" aria-label="Insert code <ctrl+e>" data-ga-click="Markdown Toolbar, click, code">
-        <%= render Primer::OcticonComponent.new(icon: "code") %>
-      </md-code>
+    <md-code tabindex="-1" class="toolbar-item tooltipped tooltipped-sw js-modifier-label-key p-2 p-md-1 mx-1" data-hotkey-scope="<%= textarea_id %>" data-hotkey="<%= hotkey(:code) %>"  aria-label="<%= label(:code) %>" data-ga-click="Markdown Toolbar, click, code">
+      <%= render Primer::OcticonComponent.new(icon: "code") %>
+    </md-code>
 
-      <% if responsive? %>
-        <button type="button" data-md-button tabindex="-1" class="toolbar-item text-center menu-target p-2 mx-1 d-md-none js-markdown-link-button" aria-label="Add a link" data-ga-click="Markdown Toolbar, click, saved reply">
-          <%= render Primer::OcticonComponent.new(icon: "link") %>
-        </button>
-      <% end %>
-  <% end %>
-  <% if responsive? %>
+    <button type="button" data-md-button tabindex="-1" class="toolbar-item text-center menu-target p-2 mx-1 d-md-none js-markdown-link-button" aria-label="Add a link" data-ga-click="Markdown Toolbar, click, saved reply">
+      <%= render Primer::OcticonComponent.new(icon: "link") %>
+    </button>
+
     <template class="js-markdown-link-dialog">
       <div class="Box-header">
         <h3 class="Box-title">Insert Link</h3>
@@ -62,61 +55,52 @@
         </div>
       </div>
     </template>
-  <% end %>
 
-  <% cache_if use_fragment_cache, "toolbar_buttons_responsive_#{responsive?}_2" do %>
-    <md-link tabindex="-1" class="toolbar-item tooltipped tooltipped-sw <% if responsive? %>p-2 p-md-1 d-none d-md-block<% else %>p-1 d-inline-block<% end %> mx-1 js-modifier-label-key" aria-label="Add a link <ctrl+k>" data-ga-click="Markdown Toolbar, click, link">
+    <md-link tabindex="-1" class="toolbar-item tooltipped tooltipped-sw p-2 p-md-1 d-none d-md-block mx-1 js-modifier-label-key" data-hotkey-scope="<%= textarea_id %>" data-hotkey="<%= hotkey(:link) %>" aria-label="<%= label(:link) %>" data-ga-click="Markdown Toolbar, click, link">
       <%= render Primer::OcticonComponent.new(icon: "link") %>
     </md-link>
-    </div>
-  <% end %>
+  </div>
 
-  <div class="<% if responsive? %>d-none d-md-inline-block<% else %>d-inline-block<% end %> <% if append_buttons.present? %>mr-3<% end %>">
-    <% cache_if use_fragment_cache, "toolbar_buttons_responsive_#{responsive?}_3_1" do %>
-      <md-unordered-list tabindex="-1" class="toolbar-item tooltipped tooltipped-sw mx-1 js-modifier-label-key" aria-label="Add a bulleted list <ctrl+shift+8>" data-ga-click="Markdown Toolbar, click, unordered list">
-        <%= render Primer::OcticonComponent.new(icon: "list-unordered") %>
-      </md-unordered-list>
+  <div class="d-none d-md-inline-block <% if append_buttons.present? %>mr-3<% end %>">
+    <md-unordered-list tabindex="-1" class="toolbar-item tooltipped tooltipped-sw mx-1 js-modifier-label-key" data-hotkey-scope="<%= textarea_id %>" data-hotkey="<%= hotkey(:unordered_list) %>" aria-label="<%= label(:unordered_list) %>" data-ga-click="Markdown Toolbar, click, unordered list">
+      <%= render Primer::OcticonComponent.new(icon: "list-unordered") %>
+    </md-unordered-list>
 
-      <md-ordered-list tabindex="-1" class="toolbar-item tooltipped tooltipped-sw mx-1 js-modifier-label-key" aria-label="Add a numbered list <ctrl+shift+7>" data-ga-click="Markdown Toolbar, click, ordered list">
-        <%= render Primer::OcticonComponent.new(icon: "list-ordered") %>
-      </md-ordered-list>
+    <md-ordered-list tabindex="-1" class="toolbar-item tooltipped tooltipped-sw mx-1 js-modifier-label-key" data-hotkey-scope="<%= textarea_id %>" data-hotkey="<%= hotkey(:ordered_list) %>" aria-label="<%= label(:ordered_list) %>" data-ga-click="Markdown Toolbar, click, ordered list">
+      <%= render Primer::OcticonComponent.new(icon: "list-ordered") %>
+    </md-ordered-list>
 
-      <md-task-list tabindex="-1" class="toolbar-item tooltipped tooltipped-sw mx-1" aria-label="Add a task list" data-ga-click="Markdown Toolbar, click, task list">
-        <%= render Primer::OcticonComponent.new(icon: "tasklist") %>
-      </md-task-list>
-      </div>
-    <% end %>
+    <md-task-list tabindex="-1" class="toolbar-item tooltipped tooltipped-sw mx-1 js-modifier-label-key" data-hotkey-scope="<%= textarea_id %>" data-hotkey="<%= hotkey(:task_list) %>" aria-label="<%= label(:task_list) %>" data-ga-click="Markdown Toolbar, click, task list">
+      <%= render Primer::OcticonComponent.new(icon: "tasklist") %>
+    </md-task-list>
+  </div>
 
-    <%= append_buttons %>
+  <%= append_buttons %>
 
-    <% if responsive? %>
-      <% cache_if use_fragment_cache, "toolbar_buttons_responsive_3_2" do %>
-        <div class="Details-content--hidden d-block d-md-none width-full">
-          <md-header tabindex="-1" class="toolbar-item tooltipped tooltipped-sw py-2 pr-2 pl-1 mr-1" aria-label="Add header text" data-ga-click="Markdown Toolbar, click, header">
-            <%= render Primer::OcticonComponent.new(icon: "heading") %>
-          </md-header>
+  <div class="Details-content--hidden d-block d-md-none width-full">
+    <md-header tabindex="-1" class="toolbar-item tooltipped tooltipped-sw py-2 pr-2 pl-1 mr-1" aria-label="<%= label(:header) %>" data-ga-click="Markdown Toolbar, click, header">
+      <%= render Primer::OcticonComponent.new(icon: "heading") %>
+    </md-header>
 
-          <md-bold tabindex="-1" class="toolbar-item tooltipped tooltipped-sw p-2 mx-1 js-modifier-label-key" aria-label="Add bold text <ctrl+b>" data-ga-click="Markdown Toolbar, click, bold">
-            <%= render Primer::OcticonComponent.new(icon: "bold") %>
-          </md-bold>
+    <md-bold tabindex="-1" class="toolbar-item tooltipped tooltipped-sw p-2 mx-1 js-modifier-label-key" data-hotkey-scope="<%= textarea_id %>" data-hotkey="<%= hotkey(:bold) %>" aria-label="<%= label(:bold) %>" data-ga-click="Markdown Toolbar, click, bold">
+      <%= render Primer::OcticonComponent.new(icon: "bold") %>
+    </md-bold>
 
-          <md-italic tabindex="-1" class="toolbar-item tooltipped tooltipped-sw p-2 mx-1 js-modifier-label-key" aria-label="Add italic text <ctrl+i>" data-ga-click="Markdown Toolbar, click, italic">
-            <%= render Primer::OcticonComponent.new(icon: "italic") %>
-          </md-italic>
+    <md-italic tabindex="-1" class="toolbar-item tooltipped tooltipped-sw p-2 mx-1 js-modifier-label-key" data-hotkey-scope="<%= textarea_id %>" data-hotkey="<%= hotkey(:italic) %>" aria-label="<%= label(:italic) %>" data-ga-click="Markdown Toolbar, click, italic">
+      <%= render Primer::OcticonComponent.new(icon: "italic") %>
+    </md-italic>
 
-          <md-unordered-list tabindex="-1" class="toolbar-item tooltipped tooltipped-sw p-2 mx-1" aria-label="Add a bulleted list <ctrl+shift+8>" data-ga-click="Markdown Toolbar, click, unordered list">
-            <%= render Primer::OcticonComponent.new(icon: "list-unordered") %>
-          </md-unordered-list>
+    <md-unordered-list tabindex="-1" class="toolbar-item tooltipped tooltipped-sw p-2 mx-1 js-modifier-label-key" data-hotkey-scope="<%= textarea_id %>" data-hotkey="<%= hotkey(:unordered_list) %>" aria-label="<%= label(:unordered_list) %>" data-ga-click="Markdown Toolbar, click, unordered list">
+      <%= render Primer::OcticonComponent.new(icon: "list-unordered") %>
+    </md-unordered-list>
 
-          <md-ordered-list tabindex="-1" class="toolbar-item tooltipped tooltipped-sw p-2 mx-1" aria-label="Add a numbered list <ctrl+shift+7>" data-ga-click="Markdown Toolbar, click, ordered list">
-            <%= render Primer::OcticonComponent.new(icon: "list-ordered") %>
-          </md-ordered-list>
+    <md-ordered-list tabindex="-1" class="toolbar-item tooltipped tooltipped-sw p-2 mx-1 js-modifier-label-key" data-hotkey-scope="<%= textarea_id %>" data-hotkey="<%= hotkey(:ordered_list) %>" aria-label="<%= label(:ordered_list) %>" data-ga-click="Markdown Toolbar, click, ordered list">
+      <%= render Primer::OcticonComponent.new(icon: "list-ordered") %>
+    </md-ordered-list>
 
-          <md-task-list tabindex="-1" class="toolbar-item tooltipped tooltipped-sw p-2 mx-1" aria-label="Add a task list" data-ga-click="Markdown Toolbar, click, task list">
-            <%= render Primer::OcticonComponent.new(icon: "tasklist") %>
-          </md-task-list>
-        </div>
-      <% end %>
-    <% end %>
+    <md-task-list tabindex="-1" class="toolbar-item tooltipped tooltipped-sw p-2 mx-1 js-modifier-label-key" data-hotkey-scope="<%= textarea_id %>" data-hotkey="<%= hotkey(:task_list) %>" aria-label="<%= label(:task_list) %>" data-ga-click="Markdown Toolbar, click, task list">
+      <%= render Primer::OcticonComponent.new(icon: "tasklist") %>
+    </md-task-list>
+  </div>
 <% end %>
 
