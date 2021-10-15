@@ -2,9 +2,12 @@
 
 module Primer
   module Alpha
-    # Add a general description of component here
-    # Add additional usage considerations or best practices that may aid the user to use the component correctly.
-    # @accessibility Add any accessibility considerations
+    # Use `MarkdownToolbar` to add a text-formatting toolbar to a textarea.
+    # You can use the prepend_buttons and append_buttons slots for adding additional elements to the defaults if needed.
+    # Use md_*_arguments to customize each of the default buttons (md_header, md_bold, md_italic, etc.), such as ga_events, etc.
+    # ------
+    # @accessibility
+    # Add any accessibility considerations
     class MarkdownToolbar < Primer::Component
       attr_reader :textarea_id
 
