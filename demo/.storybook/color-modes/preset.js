@@ -1,4 +1,4 @@
-function managerEntries(entry = [], options) {
+function managerEntries(entry = []) {
   return [...entry, require.resolve('./register')];
 }
 

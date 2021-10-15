@@ -25,8 +25,8 @@
   ],
   "scripts": {
     "prepare": "tsc && rollup -c",
-    "lint": "eslint app/components",
-    "lint:fix": "eslint app/components --fix"
+    "lint": "eslint app/components demo/.storybook",
+    "lint:fix": "eslint app/components demo/.storybook --fix"
   },
   "dependencies": {
     "@github/auto-complete-element": "^3.0.2",

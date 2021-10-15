@@ -1,21 +1,8 @@
-import React, { memo, useState } from 'react';
-import { useGlobals } from '@storybook/api';
-import { Icons, IconButton, WithTooltip, TooltipLinkList, TooltipMessage, Trigger } from '@storybook/components';
+import React, { useState } from 'react';
+import { Icons, IconButton, WithTooltip, TooltipLinkList } from '@storybook/components';
 import { THEMES } from '../constants';
 
-const getColorList = (active, set) => [
-  THEMES.map((theme) => ({
-    id: theme,
-    title: theme,
-    onClick: () => {
-      set(theme);
-    },
-    right: <div>{theme}</div>,
-    active: active === theme,
-  })),
-];
-
-export const ColorModeSelector = memo(() => {
+export const ColorModeSelector = () => {
   const [colorMode, setColorMode] = useState('light');
   const [expanded, setExpanded] = useState(false);
   const iframe = document.getElementById('storybook-preview-iframe')
@@ -50,4 +37,4 @@ export const ColorModeSelector = memo(() => {
       </IconButton>
     </WithTooltip>
   );
-});
+};
