@@ -32,7 +32,7 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_test
-    template("templates/test.tt", "#test/components/primer/#{status_path}#{underscore_name}_test.rb")
+    template("templates/test.tt", "test/components/primer/#{status_path}#{underscore_name}_test.rb")
   end
 
   def create_system_test
