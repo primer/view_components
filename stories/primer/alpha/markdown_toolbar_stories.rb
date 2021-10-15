@@ -10,8 +10,9 @@ class Primer::Alpha::MarkdownToolbarStories < ViewComponent::Storybook::Stories
       classes "custom-class"
     end
 
-    content do
-      "Update your stories!"
+    content do |c|
+      c.prepend_buttons()
+      c.append_buttons()
     end
   end
 end
