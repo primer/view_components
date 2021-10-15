@@ -2,7 +2,7 @@
 
 module Primer
   module Alpha
-    # Use `MarkdownToolbar` to add a text-formatting toolbar to a textarea.
+    # Use `MarkdownToolbar` to add a Markdown-formatting toolbar to a textarea.
     # You can use the prepend_buttons and append_buttons slots for adding additional elements to the defaults if needed.
     # Use md_*_arguments to customize each of the default buttons (md_header, md_bold, md_italic, etc.), such as ga_events, etc.
     # ------
@@ -47,18 +47,18 @@ module Primer
           "js-details-container Details toolbar-commenting no-wrap",
           "border-md-top border-lg-top-0"
         )
-  
+
         @textarea_id = textarea_id
       end
-  
+
       def label(key)
         label = LABEL_AND_HOTKEY_MAP.dig(key, :label)
         hotkey = LABEL_AND_HOTKEY_MAP.dig(key, :hotkey)
-  
+
         label += " <ctrl+#{hotkey}>".downcase unless hotkey.blank?
         label
       end
-  
+
       def hotkey(key)
         hotkey = LABEL_AND_HOTKEY_MAP.dig(key, :hotkey)
         unless hotkey.blank?
