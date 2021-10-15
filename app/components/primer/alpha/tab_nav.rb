@@ -113,7 +113,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(label:, tag: TAG_DEFAULT, body_arguments: {}, **system_arguments)
         @align = EXTRA_ALIGN_DEFAULT
-        @system_arguments = system_arguments
+        @system_arguments = system_arguments.clone
         @body_arguments = body_arguments
 
         @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
