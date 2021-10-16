@@ -15,6 +15,7 @@ namespace :utilities do
       /^color-border\b/,
       /^color-icon\b/,
       /^color-text\b/,
+      /^color-fg\b/,
       /^col\b/,
       /^container\b/,
       /^clearfix\b/,
