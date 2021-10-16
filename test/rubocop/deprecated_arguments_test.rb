@@ -32,6 +32,15 @@ class RubocopDeprecatedArgumentsTest < CopTest
     assert_equal 1, cop.offenses.count
   end
 
+  def test_disabled_rubocop
+    investigate(cop, <<-RUBY)
+      # rubocop:disable Primer/DeprecatedArguments
+      Primer::BaseComponent.new(color: :blue)
+    RUBY
+
+    assert_empty cop.offenses
+  end
+
   def test_deprecated_argument_as_a_string
     investigate(cop, <<-RUBY)
       Primer::BaseComponent.new(color: "blue")

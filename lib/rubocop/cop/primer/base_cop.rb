@@ -17,6 +17,13 @@ module RuboCop
           view_helpers.include?(node.method_name) || (node.method_name == :new && !node.receiver.nil? && ::Primer::ViewComponents::STATUSES.key?(node.receiver.const_name))
         end
 
+        def add_offense(node_or_range, message: nil, severity: nil, &block)
+          range = range_from_node_or_range(node_or_range)
+          return unless enabled_line?(range.line)
+
+          super(node_or_range, message: message, severity: severity, &block)
+        end
+
         private
 
         def view_helpers
