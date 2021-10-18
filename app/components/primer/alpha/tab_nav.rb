@@ -113,14 +113,14 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(label:, tag: TAG_DEFAULT, body_arguments: {}, **system_arguments)
         @align = EXTRA_ALIGN_DEFAULT
-        @system_arguments = system_arguments.clone
-        @body_arguments = body_arguments.clone
+        @system_arguments = system_arguments
+        @body_arguments = body_arguments
 
         @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
         @system_arguments[:classes] = tab_nav_classes(system_arguments[:classes])
 
         @body_arguments[:tag] = BODY_TAG_DEFAULT
-        @body_arguments[:classes] = tab_nav_body_classes(system_arguments[:classes])
+        @body_arguments[:classes] = tab_nav_body_classes(body_arguments[:classes])
 
         aria_label_for_page_nav(label)
       end
