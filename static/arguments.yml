@@ -203,14 +203,6 @@
 - component: Blankslate
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/blankslate.rb
   parameters:
-  - name: title
-    type: String
-    default: '`""`'
-    description: Text that appears in a larger bold font.
-  - name: title_tag
-    type: Symbol
-    default: "`:h3`"
-    description: HTML tag to use for title.
   - name: icon
     type: Symbol
     default: '`""`'

@@ -17,41 +17,47 @@ module Primer
         Primer::SpinnerComponent.new(**system_arguments)
       }
 
+      # Required Title.
+      #
+      # @param tag [String]  <%= one_of(Primer::HeadingComponent::TAG_OPTIONS) %>
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      renders_one :title, lambda { |tag:, **system_arguments|
+        system_arguments[:tag] = tag
+        system_arguments[:mb] = 1
+        system_arguments[:classes] = class_names("h2", system_arguments[:classes])
+
+        Primer::HeadingComponent.new(**system_arguments)
+      }
+
       #
       # @example Basic
-      #   <%= render Primer::Beta::Blankslate.new(
-      #     title: "Title",
-      #     description: "Description",
-      #   ) %>
+      #   <%= render Primer::Beta::Blankslate.new(description: "Description") do |c| %>
+      #     <% c.title(tag: :h2).with_content("Title") %>
+      #   <% end %>
       #
       # @example Icon
       #   @description
       #     Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
       #   @code
-      #     <%= render Primer::Beta::Blankslate.new(
-      #       icon: :globe,
-      #       title: "Title",
-      #       description: "Description",
-      #     ) %>
+      #     <%= render Primer::Beta::Blankslate.new(icon: :globe, description: "Description") do |c| %>
+      #       <% c.title(tag: :h2).with_content("Title") %>
+      #     <% end %>
       #
       # @example Loading
       #   @description
       #     Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
       #   @code
-      #     <%= render Primer::Beta::Blankslate.new(
-      #       title: "Title",
-      #       description: "Description",
-      #     ) do |component| %>
-      #       <% component.spinner(size: :large) %>
+      #     <%= render Primer::Beta::Blankslate.new(description: "Description") do |c| %>
+      #       <% c.title(tag: :h2).with_content("Title") %>
+      #       <% c.spinner(size: :large) %>
       #     <% end %>
       #
       # @example Custom content
       #   @description
       #     Pass custom content as a block in place of `description`.
       #   @code
-      #     <%= render Primer::Beta::Blankslate.new(
-      #       title: "Title",
-      #     ) do %>
+      #     <%= render Primer::Beta::Blankslate.new do |c| %>
+      #       <% c.title(tag: :h2).with_content("Title") %>
       #       <em>Your custom content here</em>
       #     <% end %>
       #
@@ -61,12 +67,12 @@ module Primer
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(
       #       icon: :book,
-      #       title: "Welcome to the mona wiki!",
       #       description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
-      #
       #       button_text: "Create the first page",
       #       button_url: "https://github.com/monalisa/mona/wiki/_new",
-      #     ) %>
+      #     ) do |c| %>
+      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #     <% end %>
       #
       # @example Link
       #   @description
@@ -74,11 +80,12 @@ module Primer
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(
       #       icon: :book,
-      #       title: "Welcome to the mona wiki!",
       #       description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
       #       link_text: "Learn more about wikis",
       #       link_url: "https://docs.github.com/en/github/building-a-strong-community/about-wikis",
-      #     ) %>
+      #     ) do |c| %>
+      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #     <% end %>
       #
       # @example Variations
       #   @description
@@ -86,15 +93,14 @@ module Primer
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(
       #       icon: :book,
-      #       title: "Welcome to the mona wiki!",
       #       description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
       #       narrow: true,
       #       large: true,
       #       spacious: true,
-      #     ) %>
+      #     ) do |c| %>
+      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #     <% end %>
       #
-      # @param title [String] Text that appears in a larger bold font.
-      # @param title_tag [Symbol] HTML tag to use for title.
       # @param icon [Symbol] Octicon icon to use at top of component.
       # @param icon_size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS, sort: false) %>
       # @param image_src [String] Image to display.
@@ -110,8 +116,6 @@ module Primer
       # @param spacious [Boolean] Adds extra padding.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
-        title: "",
-        title_tag: :h3,
         icon: "",
         icon_size: :medium,
         image_src: "",
@@ -140,18 +144,20 @@ module Primer
           "blankslate-spacious": spacious
         )
 
-        @title_tag = title_tag
         @icon = icon
         @icon_size = icon_size
         @image_src = image_src
         @image_alt = image_alt
-        @title = title
         @description = description
         @button_text = button_text
         @button_url = button_url
         @button_classes = button_classes
         @link_text = link_text
         @link_url = link_url
+      end
+
+      def render?
+        title.present?
       end
     end
   end
