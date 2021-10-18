@@ -6,12 +6,8 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:icon) do
-    controls do
-      icon "shield"
-      select(:icon_size, Primer::OcticonComponent::SIZE_MAPPINGS.keys, :medium)
-    end
-
     content do |c|
+      c.icon(icon: :shield)
       c.title(tag: :h2).with_content("It looks like we have discovered a vulnerability")
     end
   end

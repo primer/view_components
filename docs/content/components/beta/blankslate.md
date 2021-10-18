@@ -21,8 +21,6 @@ Use `Blankslate` when there is a lack of content within a page or section. Use a
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `icon` | `Symbol` | `""` | Octicon icon to use at top of component. |
-| `icon_size` | `Symbol` | `:medium` | One of `:small` (`16`) and `:medium` (`24`). |
 | `image_src` | `String` | `""` | Image to display. |
 | `image_alt` | `String` | `" "` | Alt text for image. |
 | `button_text` | `String` | `""` | The text of the button. |
@@ -43,7 +41,7 @@ Optional Spinner.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `kwargs` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |
+| `system_arguments` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |
 
 ### `Title`
 
@@ -62,6 +60,15 @@ Optional Description.
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
+### `Icon`
+
+Optional Icon.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `icon` | `Symbol, String` | N/A | Name of [Octicon](https://primer.style/octicons/) to use. |
+| `system_arguments` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |
+
 ## Examples
 
 ### Basic
@@ -79,10 +86,11 @@ Optional Description.
 
 Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
 
-<Example src="<div data-view-component='true' class='blankslate'>    <svg aria-hidden='true' height='24' viewBox='0 0 24 24' version='1.1' width='24' data-view-component='true' class='octicon octicon-globe blankslate-icon'>    <path fill-rule='evenodd' d='M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zM2.513 11.5h4.745c.1-3.037 1.1-5.49 2.093-7.204.39-.672.78-1.233 1.119-1.673C6.11 3.329 2.746 7 2.513 11.5zm4.77 1.5H2.552a9.505 9.505 0 007.918 8.377 15.698 15.698 0 01-1.119-1.673C8.413 18.085 7.47 15.807 7.283 13zm1.504 0h6.426c-.183 2.48-1.02 4.5-1.862 5.951-.476.82-.95 1.455-1.304 1.88L12 20.89l-.047-.057a13.888 13.888 0 01-1.304-1.88C9.807 17.5 8.969 15.478 8.787 13zm6.454-1.5H8.759c.1-2.708.992-4.904 1.89-6.451.476-.82.95-1.455 1.304-1.88L12 3.11l.047.057c.353.426.828 1.06 1.304 1.88.898 1.548 1.79 3.744 1.89 6.452zm1.476 1.5c-.186 2.807-1.13 5.085-2.068 6.704-.39.672-.78 1.233-1.118 1.673A9.505 9.505 0 0021.447 13h-4.731zm4.77-1.5h-4.745c-.1-3.037-1.1-5.49-2.093-7.204-.39-.672-.78-1.233-1.119-1.673 4.36.706 7.724 4.377 7.957 8.877z'></path></svg>  <h2 data-view-component='true' class='h2 mb-1'>Title</h2>  <p data-view-component='true'>Description</p>  </div>" />
+<Example src="<div icon='globe' data-view-component='true' class='blankslate'>    <svg aria-hidden='true' height='24' viewBox='0 0 24 24' version='1.1' width='24' data-view-component='true' class='octicon octicon-globe blankslate-icon'>    <path fill-rule='evenodd' d='M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zM2.513 11.5h4.745c.1-3.037 1.1-5.49 2.093-7.204.39-.672.78-1.233 1.119-1.673C6.11 3.329 2.746 7 2.513 11.5zm4.77 1.5H2.552a9.505 9.505 0 007.918 8.377 15.698 15.698 0 01-1.119-1.673C8.413 18.085 7.47 15.807 7.283 13zm1.504 0h6.426c-.183 2.48-1.02 4.5-1.862 5.951-.476.82-.95 1.455-1.304 1.88L12 20.89l-.047-.057a13.888 13.888 0 01-1.304-1.88C9.807 17.5 8.969 15.478 8.787 13zm6.454-1.5H8.759c.1-2.708.992-4.904 1.89-6.451.476-.82.95-1.455 1.304-1.88L12 3.11l.047.057c.353.426.828 1.06 1.304 1.88.898 1.548 1.79 3.744 1.89 6.452zm1.476 1.5c-.186 2.807-1.13 5.085-2.068 6.704-.39.672-.78 1.233-1.118 1.673A9.505 9.505 0 0021.447 13h-4.731zm4.77-1.5h-4.745c-.1-3.037-1.1-5.49-2.093-7.204-.39-.672-.78-1.233-1.119-1.673 4.36.706 7.724 4.377 7.957 8.877z'></path></svg>  <h2 data-view-component='true' class='h2 mb-1'>Title</h2>  <p data-view-component='true'>Description</p>  </div>" />
 
 ```erb
 <%= render Primer::Beta::Blankslate.new(icon: :globe) do |c| %>
+  <% c.icon(icon: :globe) %>
   <% c.title(tag: :h2).with_content("Title") %>
   <% c.description { "Description"} %>
 <% end %>
@@ -123,10 +131,10 @@ Provide a button to guide users to take action from the blankslate. The button a
 
 ```erb
 <%= render Primer::Beta::Blankslate.new(
-  icon: :book,
   button_text: "Create the first page",
   button_url: "https://github.com/monalisa/mona/wiki/_new",
 ) do |c| %>
+  <% c.icon(icon: :book) %>
   <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
   <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
 <% end %>
@@ -140,10 +148,10 @@ Add an additional link to help users learn more about a feature. The link will b
 
 ```erb
 <%= render Primer::Beta::Blankslate.new(
-  icon: :book,
   link_text: "Learn more about wikis",
   link_url: "https://docs.github.com/en/github/building-a-strong-community/about-wikis",
 ) do |c| %>
+  <% c.icon(icon: :book) %>
   <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
   <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
 <% end %>
@@ -157,11 +165,11 @@ There are a few variations of how the Blankslate appears: `narrow` adds a maximu
 
 ```erb
 <%= render Primer::Beta::Blankslate.new(
-  icon: :book,
   narrow: true,
   large: true,
   spacious: true,
 ) do |c| %>
+  <% c.icon(icon: :book) %>
   <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
   <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
 <% end %>

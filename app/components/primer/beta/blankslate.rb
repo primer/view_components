@@ -11,10 +11,22 @@ module Primer
 
       # Optional Spinner.
       #
-      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::SpinnerComponent) %>.
+      # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::SpinnerComponent) %>.
       renders_one :spinner, lambda { |**system_arguments|
         system_arguments[:mb] ||= 3
         Primer::SpinnerComponent.new(**system_arguments)
+      }
+
+      # Optional Icon.
+      #
+      # @param icon [Symbol, String] Name of <%= link_to_octicons %> to use.
+      # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::SpinnerComponent) %>.
+      renders_one :icon, lambda { |icon:, **system_arguments|
+        system_arguments[:icon] = icon
+        system_arguments[:size] ||= :medium
+        system_arguments[:classes] = class_names("blankslate-icon", system_arguments[:classes])
+
+        Primer::OcticonComponent.new(**system_arguments)
       }
 
       # Required Title.
@@ -50,6 +62,7 @@ module Primer
       #     Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(icon: :globe) do |c| %>
+      #       <% c.icon(icon: :globe) %>
       #       <% c.title(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
@@ -78,10 +91,10 @@ module Primer
       #     Provide a button to guide users to take action from the blankslate. The button appears below the description and custom content.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(
-      #       icon: :book,
       #       button_text: "Create the first page",
       #       button_url: "https://github.com/monalisa/mona/wiki/_new",
       #     ) do |c| %>
+      #       <% c.icon(icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
@@ -91,10 +104,10 @@ module Primer
       #     Add an additional link to help users learn more about a feature. The link will be shown at the very bottom:
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(
-      #       icon: :book,
       #       link_text: "Learn more about wikis",
       #       link_url: "https://docs.github.com/en/github/building-a-strong-community/about-wikis",
       #     ) do |c| %>
+      #       <% c.icon(icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
@@ -104,17 +117,15 @@ module Primer
       #     There are a few variations of how the Blankslate appears: `narrow` adds a maximum width, `large` increases the font size, and `spacious` adds extra padding.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(
-      #       icon: :book,
       #       narrow: true,
       #       large: true,
       #       spacious: true,
       #     ) do |c| %>
+      #       <% c.icon(icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
       #
-      # @param icon [Symbol] Octicon icon to use at top of component.
-      # @param icon_size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS, sort: false) %>
       # @param image_src [String] Image to display.
       # @param image_alt [String] Alt text for image.
       # @param button_text [String] The text of the button.
@@ -127,8 +138,6 @@ module Primer
       # @param spacious [Boolean] Adds extra padding.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
-        icon: "",
-        icon_size: :medium,
         image_src: "",
         image_alt: " ",
         button_text: "",
@@ -154,8 +163,6 @@ module Primer
           "blankslate-spacious": spacious
         )
 
-        @icon = icon
-        @icon_size = icon_size
         @image_src = image_src
         @image_alt = image_alt
         @button_text = button_text

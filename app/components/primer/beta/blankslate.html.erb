@@ -2,8 +2,8 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <% if spinner.present? %>
     <%= spinner %>
-  <% elsif @icon.present? %>
-    <%= primer_octicon @icon, size: @icon_size, classes: "blankslate-icon" %>
+  <% elsif icon.present? %>
+    <%= icon %>
   <% elsif @image_src.present? && @image_alt.present? %>
     <%= image_tag "#{@image_src}", class: "mb-3", size: "56x56", alt: "#{@image_alt}" %>
   <% end %>

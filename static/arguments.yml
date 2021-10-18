@@ -203,14 +203,6 @@
 - component: Blankslate
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/blankslate.rb
   parameters:
-  - name: icon
-    type: Symbol
-    default: '`""`'
-    description: Octicon icon to use at top of component.
-  - name: icon_size
-    type: Symbol
-    default: "`:medium`"
-    description: One of `:small` (`16`) and `:medium` (`24`).
   - name: image_src
     type: String
     default: '`""`'
