@@ -4,8 +4,8 @@
     <%= spinner %>
   <% elsif icon.present? %>
     <%= icon %>
-  <% elsif @image_src.present? && @image_alt.present? %>
-    <%= image_tag "#{@image_src}", class: "mb-3", size: "56x56", alt: "#{@image_alt}" %>
+  <% elsif image.present? %>
+    <%= image %>
   <% end %>
 
   <%= title %>

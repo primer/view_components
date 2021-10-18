@@ -12,14 +12,10 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
     end
   end
 
-  story(:image_src) do
-    controls do
-      image_src "https://github.githubassets.com/images/modules/site/features/security-icon.svg"
-      image_alt "Security - secure vault"
-    end
-
+  story(:image) do
     content do |c|
       c.title(tag: :h2).with_content("Millions of teams trust GitHub to keep their work safe")
+      c.image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault")
     end
   end
 

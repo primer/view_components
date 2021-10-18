@@ -203,14 +203,6 @@
 - component: Blankslate
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/blankslate.rb
   parameters:
-  - name: image_src
-    type: String
-    default: '`""`'
-    description: Image to display.
-  - name: image_alt
-    type: String
-    default: '`" "`'
-    description: Alt text for image.
   - name: button_text
     type: String
     default: '`""`'

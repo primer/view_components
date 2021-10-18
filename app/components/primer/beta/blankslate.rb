@@ -29,6 +29,20 @@ module Primer
         Primer::OcticonComponent.new(**system_arguments)
       }
 
+      # Optional Image.
+      #
+      # @param src [String] The source url of the image.
+      # @param alt [String] Specifies an alternate text for the image.
+      # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::SpinnerComponent) %>.
+      renders_one :image, lambda { |src:, alt:, **system_arguments|
+        system_arguments[:src] = src
+        system_arguments[:alt] = alt
+        system_arguments[:size] = "56x56"
+        system_arguments[:mb] = 3
+
+        Primer::Image.new(**system_arguments)
+      }
+
       # Required Title.
       #
       # @param tag [String]  <%= one_of(Primer::HeadingComponent::TAG_OPTIONS) %>
@@ -75,6 +89,16 @@ module Primer
       #       <% c.title(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #       <% c.spinner(size: :large) %>
+      #     <% end %>
+      #
+      # @example Using an image
+      #   @description
+      #     Add an `image` to give context that an Octicon couldn't.
+      #   @code
+      #     <%= render Primer::Beta::Blankslate.new do |c| %>
+      #       <% c.title(tag: :h2).with_content("Title") %>
+      #       <% c.description { "Description"} %>
+      #       <% c.image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
       #     <% end %>
       #
       # @example Custom content
@@ -126,8 +150,6 @@ module Primer
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
       #
-      # @param image_src [String] Image to display.
-      # @param image_alt [String] Alt text for image.
       # @param button_text [String] The text of the button.
       # @param button_url [String] The URL where the user will be taken after clicking the button.
       # @param button_classes [String] Classes to apply to action button
@@ -138,8 +160,6 @@ module Primer
       # @param spacious [Boolean] Adds extra padding.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
-        image_src: "",
-        image_alt: " ",
         button_text: "",
         button_url: "",
         button_classes: "btn-primary my-3",
@@ -163,8 +183,6 @@ module Primer
           "blankslate-spacious": spacious
         )
 
-        @image_src = image_src
-        @image_alt = image_alt
         @button_text = button_text
         @button_url = button_url
         @button_classes = button_classes

@@ -21,8 +21,6 @@ Use `Blankslate` when there is a lack of content within a page or section. Use a
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `image_src` | `String` | `""` | Image to display. |
-| `image_alt` | `String` | `" "` | Alt text for image. |
 | `button_text` | `String` | `""` | The text of the button. |
 | `button_url` | `String` | `""` | The URL where the user will be taken after clicking the button. |
 | `button_classes` | `String` | `"btn-primary my-3"` | Classes to apply to action button |
@@ -43,6 +41,25 @@ Optional Spinner.
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |
 
+### `Icon`
+
+Optional Icon.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `icon` | `Symbol, String` | N/A | Name of [Octicon](https://primer.style/octicons/) to use. |
+| `system_arguments` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |
+
+### `Image`
+
+Optional Image.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `src` | `String` | N/A | The source url of the image. |
+| `alt` | `String` | N/A | Specifies an alternate text for the image. |
+| `system_arguments` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |
+
 ### `Title`
 
 Required Title.
@@ -59,15 +76,6 @@ Optional Description.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-### `Icon`
-
-Optional Icon.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `icon` | `Symbol, String` | N/A | Name of [Octicon](https://primer.style/octicons/) to use. |
-| `system_arguments` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |
 
 ## Examples
 
@@ -107,6 +115,20 @@ Add a [SpinnerComponent](https://primer.style/view-components/components/spinner
   <% c.title(tag: :h2).with_content("Title") %>
   <% c.description { "Description"} %>
   <% c.spinner(size: :large) %>
+<% end %>
+```
+
+### Using an image
+
+Add an `image` to give context that an Octicon couldn't.
+
+<Example src="<div data-view-component='true' class='blankslate'>    <img size='56x56' src='https://github.githubassets.com/images/modules/site/features/security-icon.svg' alt='Security - secure vault' data-view-component='true' class='mb-3'></img>  <h2 data-view-component='true' class='h2 mb-1'>Title</h2>  <p data-view-component='true'>Description</p>  </div>" />
+
+```erb
+<%= render Primer::Beta::Blankslate.new do |c| %>
+  <% c.title(tag: :h2).with_content("Title") %>
+  <% c.description { "Description"} %>
+  <% c.image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
 <% end %>
 ```
 

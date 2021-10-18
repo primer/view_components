@@ -65,8 +65,9 @@ class PrimerBetaBlankslateTest < Minitest::Test
   end
 
   def test_renders_a_blankslate_component_with_an_image
-    render_inline(Primer::Beta::Blankslate.new(image_src: "/some_image", image_alt: "Alt text")) do |c|
+    render_inline(Primer::Beta::Blankslate.new) do |c|
       c.title(tag: :h3).with_content("Title")
+      c.image(src: "/some_image", alt: "Alt text")
     end
 
     assert_selector(".blankslate > img[src$='/some_image']")
