@@ -24,12 +24,23 @@ module Primer
     # Optional Header.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+    # @accessibility
+    # When using header.title, the recommended tag is a heading tag, such as h1, h2, h3, etc.
     renders_one :header, lambda { |**system_arguments|
       system_arguments[:tag] = :div
       system_arguments[:classes] = class_names(
         "Box-header",
         system_arguments[:classes]
       )
+      Primer::Alpha::BorderBoxTitle.new()
+      # renders_one :title, lamba { |**system_arguments|
+      #   system_arguments[:tag] = :div
+      #   system_arguments[:classes] = class_names(
+      #     "Box-header",
+      #     system_arguments[:classes]
+      #   )
+      #   Primer::BaseComponent.new(**system_arguments)
+      # }
 
       Primer::BaseComponent.new(**system_arguments)
     }
@@ -75,10 +86,12 @@ module Primer
       Primer::BaseComponent.new(**system_arguments)
     }
 
-    # @example Header, body, rows, and footer
+    # @example Header with title, body, rows, and footer
     #   <%= render(Primer::BorderBoxComponent.new) do |component| %>
-    #     <% component.header do %>
-    #       Header
+    #     <% component.header do |h| %>
+    #       <% h.title do %>
+    #         Header
+    #       <% end %>
     #     <% end %>
     #     <% component.body do %>
     #       Body
@@ -143,7 +156,7 @@ module Primer
     end
 
     def render?
-      rows.any? || header.present? || body.present? || footer.present?
+      rows.any? || header.present? || title.present? || body.present? || footer.present?
     end
   end
 end
