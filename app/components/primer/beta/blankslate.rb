@@ -29,26 +29,38 @@ module Primer
         Primer::HeadingComponent.new(**system_arguments)
       }
 
+      # Optional Description.
+      #
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      renders_one :description, lambda { |**system_arguments|
+        system_arguments[:tag] = :p
+
+        Primer::BaseComponent.new(**system_arguments)
+      }
+
       #
       # @example Basic
-      #   <%= render Primer::Beta::Blankslate.new(description: "Description") do |c| %>
+      #   <%= render Primer::Beta::Blankslate.new do |c| %>
       #     <% c.title(tag: :h2).with_content("Title") %>
+      #     <% c.description { "Description"} %>
       #   <% end %>
       #
       # @example Icon
       #   @description
       #     Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
       #   @code
-      #     <%= render Primer::Beta::Blankslate.new(icon: :globe, description: "Description") do |c| %>
+      #     <%= render Primer::Beta::Blankslate.new(icon: :globe) do |c| %>
       #       <% c.title(tag: :h2).with_content("Title") %>
+      #       <% c.description { "Description"} %>
       #     <% end %>
       #
       # @example Loading
       #   @description
       #     Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
       #   @code
-      #     <%= render Primer::Beta::Blankslate.new(description: "Description") do |c| %>
+      #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.title(tag: :h2).with_content("Title") %>
+      #       <% c.description { "Description"} %>
       #       <% c.spinner(size: :large) %>
       #     <% end %>
       #
@@ -67,11 +79,11 @@ module Primer
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(
       #       icon: :book,
-      #       description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
       #       button_text: "Create the first page",
       #       button_url: "https://github.com/monalisa/mona/wiki/_new",
       #     ) do |c| %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
       #
       # @example Link
@@ -80,11 +92,11 @@ module Primer
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(
       #       icon: :book,
-      #       description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
       #       link_text: "Learn more about wikis",
       #       link_url: "https://docs.github.com/en/github/building-a-strong-community/about-wikis",
       #     ) do |c| %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
       #
       # @example Variations
@@ -93,19 +105,18 @@ module Primer
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(
       #       icon: :book,
-      #       description: "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.",
       #       narrow: true,
       #       large: true,
       #       spacious: true,
       #     ) do |c| %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
       #
       # @param icon [Symbol] Octicon icon to use at top of component.
       # @param icon_size [Symbol] <%= one_of(Primer::OcticonComponent::SIZE_MAPPINGS, sort: false) %>
       # @param image_src [String] Image to display.
       # @param image_alt [String] Alt text for image.
-      # @param description [String] Text that appears below the title. Typically a whole sentence.
       # @param button_text [String] The text of the button.
       # @param button_url [String] The URL where the user will be taken after clicking the button.
       # @param button_classes [String] Classes to apply to action button
@@ -120,7 +131,6 @@ module Primer
         icon_size: :medium,
         image_src: "",
         image_alt: " ",
-        description: "",
         button_text: "",
         button_url: "",
         button_classes: "btn-primary my-3",
@@ -148,7 +158,6 @@ module Primer
         @icon_size = icon_size
         @image_src = image_src
         @image_alt = image_alt
-        @description = description
         @button_text = button_text
         @button_url = button_url
         @button_classes = button_classes

@@ -28,23 +28,17 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
   end
 
   story(:loading) do
-    controls do
-      description "We’re currently mirroring this repository. It should take anywhere from a few minutes to a couple of hours depending on the size of the repository."
-    end
-
     content do |c|
       c.title(tag: :h2).with_content("Mirroring your repository")
+      c.description { "We’re currently mirroring this repository. It should take anywhere from a few minutes to a couple of hours depending on the size of the repository." }
       c.spinner(size: :large)
     end
   end
 
   story(:description) do
-    controls do
-      description "Millions of teams trust GitHub to keep their work safe"
-    end
-
     content do |c|
       c.title(tag: :h2).with_content("It looks like we have discovered a vulnerability")
+      c.description { "Millions of teams trust GitHub to keep their work safe" }
     end
   end
 

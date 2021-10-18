@@ -219,10 +219,6 @@
     type: String
     default: '`" "`'
     description: Alt text for image.
-  - name: description
-    type: String
-    default: '`""`'
-    description: Text that appears below the title. Typically a whole sentence.
   - name: button_text
     type: String
     default: '`""`'
