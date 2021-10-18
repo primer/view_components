@@ -43,7 +43,7 @@ Optional Icon.
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `icon` | `Symbol, String` | N/A | Name of [Octicon](https://primer.style/octicons/) to use. |
-| `system_arguments` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `Image`
 
@@ -53,7 +53,7 @@ Optional Image.
 | :- | :- | :- | :- |
 | `src` | `String` | N/A | The source url of the image. |
 | `alt` | `String` | N/A | Specifies an alternate text for the image. |
-| `system_arguments` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `Title`
 

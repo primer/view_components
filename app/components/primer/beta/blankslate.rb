@@ -13,14 +13,14 @@ module Primer
       #
       # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::SpinnerComponent) %>.
       renders_one :spinner, lambda { |**system_arguments|
-        system_arguments[:mb] ||= 3
+        system_arguments[:mb] = 3
         Primer::SpinnerComponent.new(**system_arguments)
       }
 
       # Optional Icon.
       #
       # @param icon [Symbol, String] Name of <%= link_to_octicons %> to use.
-      # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::SpinnerComponent) %>.
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :icon, lambda { |icon:, **system_arguments|
         system_arguments[:icon] = icon
         system_arguments[:size] ||= :medium
@@ -33,7 +33,7 @@ module Primer
       #
       # @param src [String] The source url of the image.
       # @param alt [String] Specifies an alternate text for the image.
-      # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::SpinnerComponent) %>.
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :image, lambda { |src:, alt:, **system_arguments|
         system_arguments[:src] = src
         system_arguments[:alt] = alt
