@@ -76,6 +76,16 @@ module Primer
         Primer::ButtonComponent.new(**system_arguments)
       }
 
+      # Optional Link
+      #
+      # @param href [String] URL to be used for the link.
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      renders_one :link, lambda { |href:, **system_arguments|
+        system_arguments[:href] = href
+
+        Primer::LinkComponent.new(**system_arguments)
+      }
+
       #
       # @example Basic
       #   <%= render Primer::Beta::Blankslate.new do |c| %>
@@ -137,13 +147,11 @@ module Primer
       #   @description
       #     Add an additional link to help users learn more about a feature. The link will be shown at the very bottom:
       #   @code
-      #     <%= render Primer::Beta::Blankslate.new(
-      #       link_text: "Learn more about wikis",
-      #       link_url: "https://docs.github.com/en/github/building-a-strong-community/about-wikis",
-      #     ) do |c| %>
+      #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.icon(icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
+      #       <% c.link(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
       #     <% end %>
       #
       # @example Variations
@@ -160,17 +168,11 @@ module Primer
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
       #
-      # @param link_text [String] The text of the link.
-      # @param link_url [String] The URL where the user will be taken after clicking the link.
       # @param narrow [Boolean] Adds a maximum width.
       # @param large [Boolean] Increases the font size.
       # @param spacious [Boolean] Adds extra padding.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
-        link_text: "",
-        link_url: "",
-
-        # variations
         narrow: false,
         large: false,
         spacious: false,
@@ -186,9 +188,6 @@ module Primer
           "blankslate-large": large,
           "blankslate-spacious": spacious
         )
-
-        @link_text = link_text
-        @link_url = link_url
       end
 
       def render?

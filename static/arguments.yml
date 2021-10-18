@@ -203,14 +203,6 @@
 - component: Blankslate
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/blankslate.rb
   parameters:
-  - name: link_text
-    type: String
-    default: '`""`'
-    description: The text of the link.
-  - name: link_url
-    type: String
-    default: '`""`'
-    description: The URL where the user will be taken after clicking the link.
   - name: narrow
     type: Boolean
     default: "`false`"

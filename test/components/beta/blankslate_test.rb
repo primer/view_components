@@ -111,8 +111,9 @@ class PrimerBetaBlankslateTest < Minitest::Test
   end
 
   def test_renders_a_blankslate_component_with_a_link
-    render_inline(Primer::Beta::Blankslate.new(link_text: "Link", link_url: "https://docs.github.com")) do |c|
+    render_inline(Primer::Beta::Blankslate.new) do |c|
       c.title(tag: :h2).with_content("Title")
+      c.link(href: "https://docs.github.com").with_content("Link")
     end
 
     assert_selector("a[href='https://docs.github.com']", text: "Link")

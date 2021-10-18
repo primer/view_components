@@ -14,10 +14,9 @@
   <%= content %>
 
   <%= button %>
-
-  <% if @link_text.present? && @link_url.present? %>
+  <% if link.present? %>
     <p>
-      <%= link_to "#{@link_url}" do %><%= @link_text %><% end %>
+      <%= link %>
     </p>
   <% end %>
 <% end %>

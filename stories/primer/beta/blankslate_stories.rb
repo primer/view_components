@@ -42,13 +42,9 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
   end
 
   story(:link) do
-    controls do
-      link_text "Fix issue"
-      link_url "#"
-    end
-
     content do |c|
       c.title(tag: :h2).with_content("It looks like we have discovered a vulnerability")
+      c.link(href: "#").with_content("Fix issue")
     end
   end
 end
