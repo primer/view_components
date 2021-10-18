@@ -113,6 +113,8 @@
       "span"
     ]
   },
+  "Primer::Beta::Blankslate": {
+  },
   "Primer::Beta::Breadcrumbs": {
     "ARGS_DENYLIST": {
       "[:p, :pt, :pb, :pr, :pl, :px, :py]": "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead.",
@@ -232,7 +234,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",

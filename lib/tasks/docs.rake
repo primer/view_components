@@ -37,7 +37,7 @@ namespace :docs do
       Primer::Beta::Avatar,
       Primer::Beta::AvatarStack,
       Primer::BaseButton,
-      Primer::BlankslateComponent,
+      Primer::Beta::Blankslate,
       Primer::BorderBoxComponent,
       Primer::BoxComponent,
       Primer::Beta::Breadcrumbs,
