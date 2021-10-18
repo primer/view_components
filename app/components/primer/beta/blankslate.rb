@@ -64,6 +64,18 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
+      # Optional Button
+      #
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      renders_one :button, lambda { |href:, **system_arguments|
+        system_arguments[:tag] = :a
+        system_arguments[:href] = href
+        system_arguments[:my] = 3
+        system_arguments[:scheme] ||= :primary
+
+        Primer::ButtonComponent.new(**system_arguments)
+      }
+
       #
       # @example Basic
       #   <%= render Primer::Beta::Blankslate.new do |c| %>
@@ -114,13 +126,11 @@ module Primer
       #   @description
       #     Provide a button to guide users to take action from the blankslate. The button appears below the description and custom content.
       #   @code
-      #     <%= render Primer::Beta::Blankslate.new(
-      #       button_text: "Create the first page",
-      #       button_url: "https://github.com/monalisa/mona/wiki/_new",
-      #     ) do |c| %>
+      #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.icon(icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
+      #       <% c.button(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
       #     <% end %>
       #
       # @example Link
@@ -150,9 +160,6 @@ module Primer
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
       #
-      # @param button_text [String] The text of the button.
-      # @param button_url [String] The URL where the user will be taken after clicking the button.
-      # @param button_classes [String] Classes to apply to action button
       # @param link_text [String] The text of the link.
       # @param link_url [String] The URL where the user will be taken after clicking the link.
       # @param narrow [Boolean] Adds a maximum width.
@@ -160,9 +167,6 @@ module Primer
       # @param spacious [Boolean] Adds extra padding.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
-        button_text: "",
-        button_url: "",
-        button_classes: "btn-primary my-3",
         link_text: "",
         link_url: "",
 
@@ -183,9 +187,6 @@ module Primer
           "blankslate-spacious": spacious
         )
 
-        @button_text = button_text
-        @button_url = button_url
-        @button_classes = button_classes
         @link_text = link_text
         @link_url = link_url
       end

@@ -93,21 +93,19 @@ class PrimerBetaBlankslateTest < Minitest::Test
   end
 
   def test_renders_a_blankslate_component_with_a_button
-    render_inline(Primer::Beta::Blankslate.new(button_text: "Button", button_url: "https://github.com")) do |c|
+    render_inline(Primer::Beta::Blankslate.new) do |c|
       c.title(tag: :h2).with_content("Title")
+      c.button(href: "https://github.com").with_content("Button")
     end
 
     assert_selector("a.btn[href='https://github.com']", text: "Button")
   end
 
   def test_renders_a_blankslate_component_with_a_button_with_custom_classes
-    render_inline(Primer::Beta::Blankslate.new(
-                    button_text: "Button",
-                    button_url: "https://github.com",
-                    button_classes: "btn-outline"
-                  )) do |c|
-                    c.title(tag: :h2).with_content("Title")
-                  end
+    render_inline(Primer::Beta::Blankslate.new) do |c|
+      c.title(tag: :h2).with_content("Title")
+      c.button(href: "https://github.com", scheme: :outline).with_content("Button")
+    end
 
     assert_selector("a.btn.btn-outline[href='https://github.com']", text: "Button")
   end

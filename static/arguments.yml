@@ -203,18 +203,6 @@
 - component: Blankslate
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/blankslate.rb
   parameters:
-  - name: button_text
-    type: String
-    default: '`""`'
-    description: The text of the button.
-  - name: button_url
-    type: String
-    default: '`""`'
-    description: The URL where the user will be taken after clicking the button.
-  - name: button_classes
-    type: String
-    default: '`"btn-primary my-3"`'
-    description: Classes to apply to action button
   - name: link_text
     type: String
     default: '`""`'

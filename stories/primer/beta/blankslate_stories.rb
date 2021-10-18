@@ -35,13 +35,9 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
   end
 
   story(:button) do
-    controls do
-      button_text "Fix issue"
-      button_url "#"
-    end
-
     content do |c|
       c.title(tag: :h2).with_content("It looks like we have discovered a vulnerability")
+      c.button(href: "#").with_content("Fix issue")
     end
   end
 
