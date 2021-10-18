@@ -36,23 +36,6 @@ Optional Spinner.
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |
 
-### `Title`
-
-Required Title.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `tag` | `String` | N/A | One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`. |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
-### `Description`
-
-Optional Description.
-
-| Name | Type | Default | Description |
-| :- | :- | :- | :- |
-| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
-
 ### `Icon`
 
 Optional Icon.
@@ -71,6 +54,23 @@ Optional Image.
 | `src` | `String` | N/A | The source url of the image. |
 | `alt` | `String` | N/A | Specifies an alternate text for the image. |
 | `system_arguments` | `Hash` | N/A | The same arguments as [Spinner](/components/spinner). |
+
+### `Title`
+
+Required Title.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `tag` | `String` | N/A | One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`. |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Description`
+
+Optional Description.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `Button`
 
