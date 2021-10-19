@@ -102,17 +102,17 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@primer/css@^17.7.0":
-  version "17.7.0"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-17.7.0.tgz#d8a704f77abcb99bedc584c95e3cc469f6607f20"
-  integrity sha512-rv44O7Kj6gieAUTmNCHFnIxIbdjUBCFg605vJxCQCJTpp1JVXalJXpFl+wxcjP6yC0ghOLRs8GNgJZ6Blmxgwg==
+"@primer/css@^18.0.0":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-18.0.1.tgz#74ce5659ea48c3b13d1be7129670d3fcc0c663be"
+  integrity sha512-6xc0SAQGFDNl7Lc1ETOl5CIaLP4P3Vo+soWisoCNGWlLbJlHUAJGCSyLR1nZpoIS7vbZeSmwULUzOXzpnFpTFg==
   dependencies:
-    "@primer/primitives" "^4.3.5"
+    "@primer/primitives" "^5.0.0"
 
-"@primer/primitives@^4.3.5":
-  version "4.3.7"
-  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-4.3.7.tgz#34bfb156c47c417bf30bcb634e63afabd2edf96e"
-  integrity sha512-NlQhIPtnwAyVd34I9K7+E4uOzTKcR1J8VMd6j0PZY7FyV4jvx7IIl8/ayQe6CmhME5XN8dmYDk94LDkPRM44ug==
+"@primer/primitives@^5.0.0", "@primer/primitives@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-5.1.0.tgz#698ad3a173f3a1d7090651cce0a7088e4b93da39"
+  integrity sha512-pW8DIh6rZV0/R7lxHnVRJ/tdN4kDVSpAtdcCecxKsvtgK5d9haekt3ERpM6i93xKwB5CJYy9ouuC9C0UqWPI0A==
 
 "@rollup/plugin-node-resolve@^11.2.0":
   version "11.2.0"
