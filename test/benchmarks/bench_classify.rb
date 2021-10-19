@@ -10,7 +10,7 @@ class BenchClassify < Minitest::Benchmark
     @values = {
       align_items: :center,
       align_self: :center,
-      bg: :info,
+      bg: :accent,
       border: :top,
       box_shadow: true,
       col: 1,
