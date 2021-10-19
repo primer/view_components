@@ -3,12 +3,14 @@
 require_relative "base_linter"
 require_relative "autocorrectable"
 require_relative "argument_mappers/close_button"
+require_relative "helpers/rubocop_helpers"
 
 module ERBLint
   module Linters
     # Counts the number of times a HTML clipboard-copy is used instead of the component.
     class CloseButtonComponentMigrationCounter < BaseLinter
       include Autocorrectable
+      include Helpers::RubocopHelpers
 
       TAGS = %w[button].freeze
       CLASSES = %w[close-button].freeze
@@ -107,10 +109,6 @@ module ERBLint
         return false if kwargs.blank? || kwargs.type != :hash || kwargs.pairs.blank?
 
         (kwargs.keys.map { |key| key.value.to_s } - ALLOWED_OCTICON_ARGS).present?
-      end
-
-      def erb_ast(code)
-        RuboCop::AST::ProcessedSource.new(code, RUBY_VERSION.to_f).ast
       end
 
       def icon(args)
