@@ -5,13 +5,15 @@ require "primer/alpha/border_box_header"
 class Primer::Alpha::BorderBoxHeaderStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
-  story(:border_box_header) do
-    controls do
-      classes "custom-class"
-    end
-
+  story(:default) do
     content do
-      "Update your stories!"
+      "Header"
+    end
+  end
+
+  story(:with_title) do
+    content do |component|
+      component.title { "Title" }
     end
   end
 end
