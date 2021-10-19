@@ -12,11 +12,10 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
 
 BorderBoxHeader: used inside the BorderBoxComponent to render its header slot
 Optional title slot
-When using header.title, the recommended tag is a heading tag, such as h1, h2, h3, etc.
 
 ## Accessibility
 
-
+When using header.title, the recommended tag is a heading tag, such as h1, h2, h3, etc.
 
 ## Arguments
 
