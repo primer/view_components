@@ -51,7 +51,7 @@ class Primer::ProgressBarComponentTest < Minitest::Test
 
   def test_renders_background_colors
     render_inline(Primer::ProgressBarComponent.new) do |component|
-      component.item(bg: :danger_emphasis)
+      component.item(bg: :danger)
     end
 
     assert_selector("span.Progress .Progress-item.color-bg-danger")
