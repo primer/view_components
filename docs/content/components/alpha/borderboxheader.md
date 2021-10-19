@@ -37,7 +37,7 @@ Optional Title.
 
 ### default use case
 
-<Example src="<div data-view-component='true' class='Box-header'>    Header</div>" />
+<Example src="<div data-view-component='true' class='Box-header'>      Header</div>" />
 
 ```erb
 
@@ -48,7 +48,7 @@ Optional Title.
 
 ### with title
 
-<Example src="<div data-view-component='true' class='Box-header'></div>" />
+<Example src="<div data-view-component='true' class='Box-header'>  <div data-view-component='true' class='Box-title'>I am a title</div>  </div>" />
 
 ```erb
 <%= render(Primer::Alpha::BorderBoxHeader.new) do |h| %>
