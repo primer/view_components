@@ -2,7 +2,8 @@ module.exports = {
   stories: ['../../**/*.stories.json'],
   addons: [
     '@storybook/addon-a11y',
-    '@storybook/addon-controls'
+    '@storybook/addon-controls',
+    './color-modes/preset'
   ],
   webpackFinal: async (config, { configType }) => {
     if(configType == 'PRODUCTION')
