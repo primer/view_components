@@ -75,6 +75,7 @@ namespace :docs do
       Primer::Truncate,
       Primer::Beta::Truncate,
       Primer::Alpha::UnderlineNav,
+      Primer::Alpha::UnderlinePanels,
       Primer::Alpha::TabNav,
       Primer::Alpha::TabPanels
     ]
