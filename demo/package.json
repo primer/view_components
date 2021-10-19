@@ -8,11 +8,11 @@
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^v6.3.0",
-    "@storybook/addon-actions": "^v6.3.0",
-    "@storybook/addon-controls": "^v6.3.0",
-    "@storybook/addon-docs": "^v6.3.0",
-    "@storybook/server": "^v6.3.0",
+    "@storybook/addon-a11y": "^v6.3.12",
+    "@storybook/addon-actions": "^v6.3.12",
+    "@storybook/addon-controls": "^v6.3.12",
+    "@storybook/addon-docs": "^v6.3.12",
+    "@storybook/server": "^v6.3.12",
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {

@@ -44,6 +44,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan*
 
+* Adding new system color arguments, and deprecating old arguments.
+
+    *Jon Rohan*
+
 * Make `Spinner` more accessible by adding `sr-only` loading text.
 
     *Manuel Puyol*
