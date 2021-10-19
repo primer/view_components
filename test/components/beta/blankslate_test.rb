@@ -33,13 +33,9 @@ class PrimerBetaBlankslateTest < Minitest::Test
   end
 
   def test_renders_a_narrow_large_and_spacious_blankslate_component
-    render_inline(Primer::Beta::Blankslate.new(
-                    narrow: true,
-                    large: true,
-                    spacious: true
-                  )) do |c|
-                    c.title(tag: :h2).with_content("Title")
-                  end
+    render_inline(Primer::Beta::Blankslate.new(narrow: true, large: true, spacious: true)) do |c|
+      c.title(tag: :h2).with_content("Title")
+    end
 
     assert_selector(".blankslate.blankslate-narrow")
     assert_selector(".blankslate.blankslate-large")
@@ -81,15 +77,6 @@ class PrimerBetaBlankslateTest < Minitest::Test
     end
 
     assert_selector("p", text: "Description")
-  end
-
-  def test_renders_a_blankslate_component_with_custom_content
-    render_inline(Primer::Beta::Blankslate.new) do |c|
-      c.icon(icon: :star)
-      c.title(tag: :h3).with_content("Title")
-
-      "Custom content"
-    end
   end
 
   def test_renders_a_blankslate_component_with_a_button

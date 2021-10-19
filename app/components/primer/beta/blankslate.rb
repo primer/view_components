@@ -125,11 +125,13 @@ module Primer
       #
       # @example Custom content
       #   @description
-      #     Pass custom content as a block in place of `description`.
+      #     Pass custom content to `description`.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.title(tag: :h2).with_content("Title") %>
-      #       <em>Your custom content here</em>
+      #       <% c.description do %>
+      #         <em>Your custom content here</em>
+      #       <% end %>
       #     <% end %>
       #
       # @example Action button
