@@ -14,7 +14,7 @@ class BenchClassify < Minitest::Benchmark
       border: :top,
       box_shadow: true,
       col: 1,
-      color: :text_danger,
+      color: :danger,
       flex: 1,
       float: :left,
       font_weight: :bold,

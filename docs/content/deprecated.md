@@ -10,13 +10,15 @@ These color system arguments are deprecated in favor of a new system.
 
 | argument | value | replacement |
 | :- | :- | :- |
-| `color:` | `:primary` | `:default` |
-| `color:` | `:secondary` | `:muted` |
-| `color:` | `:tertiary` | `:muted` |
-| `color:` | `:link` | `:accent` |
-| `color:` | `:warning` | `:attention` |
-| `color:` | `:inverse` | `:on_emphasis` |
-| `color:` | `:white` | `:on_emphasis` |
+| `color:` | `:text_primary` | `:default` |
+| `color:` | `:text_secondary` | `:muted` |
+| `color:` | `:text_tertiary` | `:muted` |
+| `color:` | `:text_link` | `:accent` |
+| `color:` | `:text_success` | `:success` |
+| `color:` | `:text_warning` | `:attention` |
+| `color:` | `:text_danger` | `:danger` |
+| `color:` | `:text_inverse` | `:on_emphasis` |
+| `color:` | `:text_white` | `:on_emphasis` |
 | `color:` | `:icon_primary` | `:default` |
 | `color:` | `:icon_secondary` | `:muted` |
 | `color:` | `:icon_tertiary` | `:muted` |
