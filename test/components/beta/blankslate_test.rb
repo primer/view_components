@@ -21,7 +21,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
   def test_renders_a_blankslate_component_with_a_spinner_component
     render_inline(Primer::Beta::Blankslate.new) do |c|
       c.title(tag: :h2).with_content("Title")
-      c.spinner(test_selector: "blankslate-spinner")
+      c.graphic(:spinner, test_selector: "blankslate-spinner")
     end
 
     assert_selector(".blankslate") do
@@ -44,7 +44,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_an_icon
     render_inline(Primer::Beta::Blankslate.new) do |c|
-      c.icon(icon: :star)
+      c.graphic(:icon, icon: :star)
       c.title(tag: :h2).with_content("Title")
     end
 
@@ -53,7 +53,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_an_icon_with_a_custom_size
     render_inline(Primer::Beta::Blankslate.new) do |c|
-      c.icon(icon: :star, size: :small)
+      c.graphic(:icon, icon: :star, size: :small)
       c.title(tag: :h3).with_content("Title")
     end
 
@@ -63,7 +63,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
   def test_renders_a_blankslate_component_with_an_image
     render_inline(Primer::Beta::Blankslate.new) do |c|
       c.title(tag: :h3).with_content("Title")
-      c.image(src: "/some_image", alt: "Alt text")
+      c.graphic(:image, src: "/some_image", alt: "Alt text")
     end
 
     assert_selector(".blankslate > img[src$='/some_image']")
@@ -104,5 +104,16 @@ class PrimerBetaBlankslateTest < Minitest::Test
     end
 
     assert_selector("a[href='https://docs.github.com']", text: "Link")
+  end
+
+  def test_raises_error_if_invalid_grpahic_type
+    err = assert_raises ArgumentError do
+      render_inline(Primer::Beta::Blankslate.new) do |c|
+        c.title(tag: :h2).with_content("Title")
+        c.graphic(:invalid)
+      end
+    end
+
+    assert_equal("`type` must be one of #{Primer::Beta::Blankslate::GRAPHIC_OPTIONS.join(',')}.", err.message)
   end
 end

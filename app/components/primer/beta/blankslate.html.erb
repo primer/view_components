@@ -1,11 +1,5 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <% if spinner.present? %>
-    <%= spinner %>
-  <% elsif icon.present? %>
-    <%= icon %>
-  <% elsif image.present? %>
-    <%= image %>
-  <% end %>
+  <%= graphic %>
 
   <%= title %>
   <%= description %>

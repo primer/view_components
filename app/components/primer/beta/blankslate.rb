@@ -9,38 +9,30 @@ module Primer
     class Blankslate < Primer::Component
       status :beta
 
-      # Optional Spinner.
-      #
-      # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::SpinnerComponent) %>.
-      renders_one :spinner, lambda { |**system_arguments|
-        system_arguments[:mb] = 3
-        Primer::SpinnerComponent.new(**system_arguments)
-      }
+      GRAPHIC_OPTIONS = %i[icon spinner image].freeze
 
-      # Optional Icon.
+      # Optional graphic visual.
       #
-      # @param icon [Symbol, String] Name of <%= link_to_octicons %> to use.
+      # @param type [Symbol]  <%= one_of(Primer::Beta::Blankslate::GRAPHIC_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :icon, lambda { |icon:, **system_arguments|
-        system_arguments[:icon] = icon
-        system_arguments[:size] ||= :medium
-        system_arguments[:classes] = class_names("blankslate-icon", system_arguments[:classes])
-
-        Primer::OcticonComponent.new(**system_arguments)
-      }
-
-      # Optional Image.
-      #
-      # @param src [String] The source url of the image.
-      # @param alt [String] Specifies an alternate text for the image.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :image, lambda { |src:, alt:, **system_arguments|
-        system_arguments[:src] = src
-        system_arguments[:alt] = alt
-        system_arguments[:size] = "56x56"
+      renders_one :graphic, lambda { |type, **system_arguments|
         system_arguments[:mb] = 3
 
-        Primer::Image.new(**system_arguments)
+        case type
+        when :icon
+          system_arguments[:size] ||= :medium
+          system_arguments[:classes] = class_names("blankslate-icon", system_arguments[:classes])
+
+          Primer::OcticonComponent.new(**system_arguments)
+        when :spinner
+          Primer::SpinnerComponent.new(**system_arguments)
+        when :image
+          system_arguments[:size] = "56x56"
+
+          Primer::Image.new(**system_arguments)
+        else
+          raise ArgumentError, "`type` must be one of #{GRAPHIC_OPTIONS.join(',')}."
+        end
       }
 
       # Required Title.
@@ -94,7 +86,7 @@ module Primer
       #     Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(icon: :globe) do |c| %>
-      #       <% c.icon(icon: :globe) %>
+      #       <% c.graphic(:icon, icon: :globe) %>
       #       <% c.title(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
@@ -104,9 +96,9 @@ module Primer
       #     Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
+      #       <% c.graphic(:spinner, size: :large) %>
       #       <% c.title(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
-      #       <% c.spinner(size: :large) %>
       #     <% end %>
       #
       # @example Using an image
@@ -114,9 +106,9 @@ module Primer
       #     Add an `image` to give context that an Octicon couldn't.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
+      #       <% c.graphic(:image, src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
       #       <% c.title(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
-      #       <% c.image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
       #     <% end %>
       #
       # @example Custom content
@@ -135,7 +127,7 @@ module Primer
       #     Provide a button to guide users to take action from the blankslate. The button appears below the description and custom content.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.icon(icon: :book) %>
+      #       <% c.graphic(:icon, icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #       <% c.button(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
@@ -146,7 +138,7 @@ module Primer
       #     Add an additional link to help users learn more about a feature. The link will be shown at the very bottom:
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.icon(icon: :book) %>
+      #       <% c.graphic(:icon, icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #       <% c.link(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
@@ -161,7 +153,7 @@ module Primer
       #       large: true,
       #       spacious: true,
       #     ) do |c| %>
-      #       <% c.icon(icon: :book) %>
+      #       <% c.graphic(:icon, icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
