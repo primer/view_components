@@ -32,17 +32,18 @@ module Primer
         "Box-header",
         system_arguments[:classes]
       )
-      Primer::Alpha::BorderBoxTitle.new()
-      # renders_one :title, lamba { |**system_arguments|
-      #   system_arguments[:tag] = :div
-      #   system_arguments[:classes] = class_names(
-      #     "Box-header",
-      #     system_arguments[:classes]
-      #   )
-      #   Primer::BaseComponent.new(**system_arguments)
-      # }
-
-      Primer::BaseComponent.new(**system_arguments)
+      if :title
+        renders_one :title, lamba { |**system_arguments|
+          system_arguments[:tag] = :div
+          system_arguments[:classes] = class_names(
+            "Box-title",
+            system_arguments[:classes]
+          )
+          Primer::BaseComponent.new(**system_arguments)
+        }
+      else
+        Primer::BaseComponent.new(**system_arguments)
+      end
     }
 
     # Optional Body.
