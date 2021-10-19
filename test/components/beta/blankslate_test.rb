@@ -8,7 +8,6 @@ class PrimerBetaBlankslateTest < Minitest::Test
   def test_renders_a_basic_blankslate_component_with_a_title
     render_inline(Primer::Beta::Blankslate.new) do |c|
       c.title(tag: :h3).with_content("Title")
-      c.description { "Description" }
     end
 
     assert_selector("div.blankslate")

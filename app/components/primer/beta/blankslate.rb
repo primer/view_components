@@ -50,7 +50,11 @@ module Primer
       # Optional Description.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :description, -> { Primer::BaseComponent.new(tag: :p) }
+      renders_one :description, lambda { |**system_arguments|
+        system_arguments[:tag] = :p
+
+        Primer::BaseComponent.new(**system_arguments)
+      }
 
       # Optional Button
       #
