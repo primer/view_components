@@ -26,25 +26,7 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     # @accessibility
     # When using header.title, the recommended tag is a heading tag, such as h1, h2, h3, etc.
-    renders_one :header, lambda { |**system_arguments|
-      system_arguments[:tag] = :div
-      system_arguments[:classes] = class_names(
-        "Box-header",
-        system_arguments[:classes]
-      )
-      if :title
-        renders_one :title, lamba { |**system_arguments|
-          system_arguments[:tag] = :div
-          system_arguments[:classes] = class_names(
-            "Box-title",
-            system_arguments[:classes]
-          )
-          Primer::BaseComponent.new(**system_arguments)
-        }
-      else
-        Primer::BaseComponent.new(**system_arguments)
-      end
-    }
+    renders_one :header, "Primer::Alpha::BorderBoxHeader"
 
     # Optional Body.
     #
