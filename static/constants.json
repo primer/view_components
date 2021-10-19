@@ -77,7 +77,9 @@
   },
   "Primer::Beta::AutoComplete": {
     "Input": "Primer::Beta::AutoComplete::Input",
-    "Item": "Primer::Beta::AutoComplete::Item"
+    "InputStories": "Primer::Beta::AutoComplete::InputStories",
+    "Item": "Primer::Beta::AutoComplete::Item",
+    "ItemStories": "Primer::Beta::AutoComplete::ItemStories"
   },
   "Primer::Beta::AutoComplete::Input": {
     "DEFAULT_TYPE": "text",
@@ -114,6 +116,11 @@
     ]
   },
   "Primer::Beta::Blankslate": {
+    "GRAPHIC_OPTIONS": [
+      "icon",
+      "spinner",
+      "image"
+    ]
   },
   "Primer::Beta::Breadcrumbs": {
     "ARGS_DENYLIST": {
@@ -133,7 +140,8 @@
     "DEFAULT_TAG": "span"
   },
   "Primer::Beta::Truncate": {
-    "TruncateText": "Primer::Beta::Truncate::TruncateText"
+    "TruncateText": "Primer::Beta::Truncate::TruncateText",
+    "TruncateTextStories": "Primer::Beta::Truncate::TruncateTextStories"
   },
   "Primer::Beta::Truncate::TruncateText": {
   },
@@ -234,7 +242,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuStories": "Primer::Dropdown::MenuStories"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",
@@ -252,6 +261,7 @@
       "s"
     ],
     "Item": "Primer::Dropdown::Menu::Item",
+    "ItemStories": "Primer::Dropdown::Menu::ItemStories",
     "SCHEME_DEFAULT": "default",
     "SCHEME_MAPPINGS": {
       "default": "",
@@ -619,7 +629,8 @@
   "Primer::TimeAgoComponent": {
   },
   "Primer::TimelineItemComponent": {
-    "BadgeComponent": "Primer::TimelineItemComponent::BadgeComponent"
+    "BadgeComponent": "Primer::TimelineItemComponent::BadgeComponent",
+    "BadgeComponentStories": "Primer::TimelineItemComponent::BadgeComponentStories"
   },
   "Primer::TimelineItemComponent::BadgeComponent": {
   },
