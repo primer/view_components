@@ -139,7 +139,7 @@ module Primer
     end
 
     def render?
-      rows.any? || header.present? || title.present? || body.present? || footer.present?
+      rows.any? || header.present? || body.present? || footer.present?
     end
   end
 end
