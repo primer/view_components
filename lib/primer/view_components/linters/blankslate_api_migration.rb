@@ -45,17 +45,17 @@ module ERBLint
         new_blankslate = {
           arguments: {},
           slots: {
-            title: {
-              tag: :h2
-            },
             graphic: {},
+            title: {
+              tag: ":h2"
+            },
             description: {},
             button: {},
             link: {}
           }
         }
 
-        kwargs.pairs.each do |pair|
+        kwargs&.pairs&.each do |pair|
           source_value = pair.value.source
 
           case pair.key.value.to_sym
@@ -99,8 +99,8 @@ module ERBLint
         data = build_blankslate_arguments(kwargs)
         component_args = args_to_s(data[:arguments])
 
-        # No slots
-        return "<%= Primer::Beta::Blankslate.new#{component_args} %>" unless data[:slots].values.any?(&:present?)
+        # If Blankslate has no title, we don't update it.
+        return if data[:slots][:title][:content].nil?
 
         slots = data[:slots].map do |slot, slot_data|
           next if slot_data.empty?
@@ -115,7 +115,9 @@ module ERBLint
               <% end %>
             HTML
           else
-            "  <% c.#{slot}#{slot_args} %>"
+            <<~HTML.indent(2)
+              <% c.#{slot}#{slot_args} %>
+            HTML
           end
         end.compact.join("\n").chomp
 
@@ -126,7 +128,7 @@ module ERBLint
         HTML
 
         # The render call will always be aligned.
-        "<%= Primer::Beta::Blankslate.new#{component_args} do |c| %>\n#{body}"
+        "<%= render Primer::Beta::Blankslate.new#{component_args} do |c| %>\n#{body}"
       end
 
       def args_to_s(args)
