@@ -143,7 +143,7 @@ Pass custom content to `description`.
 
 ### Action button
 
-Provide a button to guide users to take action from the blankslate. The button appears below the description and custom content.
+Provide a `button` to guide users to take action from the blankslate. The `button` appears below the description and custom content.
 
 <Example src="<div data-view-component='true' class='blankslate'>  <svg aria-hidden='true' height='24' viewBox='0 0 24 24' version='1.1' width='24' data-view-component='true' class='octicon octicon-book blankslate-icon mb-3'>    <path fill-rule='evenodd' d='M0 3.75A.75.75 0 01.75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.496 4.496 0 0115.75 3h7.5a.75.75 0 01.75.75v15.063a.75.75 0 01-.755.75l-7.682-.052a3 3 0 00-2.142.878l-.89.891a.75.75 0 01-1.061 0l-.902-.901a3 3 0 00-2.121-.879H.75a.75.75 0 01-.75-.75v-15zm11.247 3.747a3 3 0 00-3-2.997H1.5V18h6.947a4.5 4.5 0 012.803.98l-.003-11.483zm1.503 11.485V7.5a3 3 0 013-3h6.75v13.558l-6.927-.047a4.5 4.5 0 00-2.823.971z'></path></svg>  <h2 data-view-component='true' class='h2 mb-1'>Welcome to the mona wiki!</h2>  <p data-view-component='true'>Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.</p>  <a href='https://github.com/monalisa/mona/wiki/_new' role='button' data-view-component='true' class='btn-primary btn-large btn my-3'>    Create the first page  </a></div>" />
 
@@ -158,7 +158,7 @@ Provide a button to guide users to take action from the blankslate. The button a
 
 ### Link
 
-Add an additional link to help users learn more about a feature. The link will be shown at the very bottom:
+Add an additional `link` to help users learn more about a feature. The `link` will be shown at the very bottom:
 
 <Example src="<div data-view-component='true' class='blankslate'>  <svg aria-hidden='true' height='24' viewBox='0 0 24 24' version='1.1' width='24' data-view-component='true' class='octicon octicon-book blankslate-icon mb-3'>    <path fill-rule='evenodd' d='M0 3.75A.75.75 0 01.75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.496 4.496 0 0115.75 3h7.5a.75.75 0 01.75.75v15.063a.75.75 0 01-.755.75l-7.682-.052a3 3 0 00-2.142.878l-.89.891a.75.75 0 01-1.061 0l-.902-.901a3 3 0 00-2.121-.879H.75a.75.75 0 01-.75-.75v-15zm11.247 3.747a3 3 0 00-3-2.997H1.5V18h6.947a4.5 4.5 0 012.803.98l-.003-11.483zm1.503 11.485V7.5a3 3 0 013-3h6.75v13.558l-6.927-.047a4.5 4.5 0 00-2.823.971z'></path></svg>  <h2 data-view-component='true' class='h2 mb-1'>Welcome to the mona wiki!</h2>  <p data-view-component='true'>Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.</p>      <p>      <a href='https://docs.github.com/en/github/building-a-strong-community/about-wikis' data-view-component='true' class='p-3'>Learn more about wikis</a>    </p></div>" />
 
@@ -167,6 +167,22 @@ Add an additional link to help users learn more about a feature. The link will b
   <% c.graphic(:icon, icon: :book) %>
   <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
   <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
+  <% c.link(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
+<% end %>
+```
+
+### Button and link
+
+`Button` and `link` can also be used together. The `button` will always be rendered before the `link`:
+
+<Example src="<div data-view-component='true' class='blankslate'>  <svg aria-hidden='true' height='24' viewBox='0 0 24 24' version='1.1' width='24' data-view-component='true' class='octicon octicon-book blankslate-icon mb-3'>    <path fill-rule='evenodd' d='M0 3.75A.75.75 0 01.75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.496 4.496 0 0115.75 3h7.5a.75.75 0 01.75.75v15.063a.75.75 0 01-.755.75l-7.682-.052a3 3 0 00-2.142.878l-.89.891a.75.75 0 01-1.061 0l-.902-.901a3 3 0 00-2.121-.879H.75a.75.75 0 01-.75-.75v-15zm11.247 3.747a3 3 0 00-3-2.997H1.5V18h6.947a4.5 4.5 0 012.803.98l-.003-11.483zm1.503 11.485V7.5a3 3 0 013-3h6.75v13.558l-6.927-.047a4.5 4.5 0 00-2.823.971z'></path></svg>  <h2 data-view-component='true' class='h2 mb-1'>Welcome to the mona wiki!</h2>  <p data-view-component='true'>Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.</p>  <a href='https://github.com/monalisa/mona/wiki/_new' role='button' data-view-component='true' class='btn-primary btn-large btn my-3'>    Create the first page  </a>    <p>      <a href='https://docs.github.com/en/github/building-a-strong-community/about-wikis' data-view-component='true' class='p-3'>Learn more about wikis</a>    </p></div>" />
+
+```erb
+<%= render Primer::Beta::Blankslate.new do |c| %>
+  <% c.graphic(:icon, icon: :book) %>
+  <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+  <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
+  <% c.button(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
   <% c.link(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
 <% end %>
 ```

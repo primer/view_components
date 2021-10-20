@@ -132,7 +132,7 @@ module Primer
       #
       # @example Action button
       #   @description
-      #     Provide a button to guide users to take action from the blankslate. The button appears below the description and custom content.
+      #     Provide a `button` to guide users to take action from the blankslate. The `button` appears below the description and custom content.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.graphic(:icon, icon: :book) %>
@@ -143,12 +143,24 @@ module Primer
       #
       # @example Link
       #   @description
-      #     Add an additional link to help users learn more about a feature. The link will be shown at the very bottom:
+      #     Add an additional `link` to help users learn more about a feature. The `link` will be shown at the very bottom:
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.graphic(:icon, icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
+      #       <% c.link(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
+      #     <% end %>
+      #
+      # @example Button and link
+      #   @description
+      #     `Button` and `link` can also be used together. The `button` will always be rendered before the `link`:
+      #   @code
+      #     <%= render Primer::Beta::Blankslate.new do |c| %>
+      #       <% c.graphic(:icon, icon: :book) %>
+      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
+      #       <% c.button(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
       #       <% c.link(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
       #     <% end %>
       #
