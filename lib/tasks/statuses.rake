@@ -7,6 +7,6 @@ namespace :statuses do
     # Loads all components for `.descendants` to work properly
     Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
 
-    Primer::ViewComponents.dump_statuses
+    Primer::ViewComponents.dump(:statuses)
   end
 end

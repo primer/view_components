@@ -12,15 +12,15 @@ class Primer::ViewComponentsTest < Minitest::Test
 
   def test_writing_and_reading_statuses
     # we make sure that we can dump to disk and then read back again
-    Primer::ViewComponents.dump_statuses
+    Primer::ViewComponents.dump(:statuses)
 
-    assert_equal JSON.pretty_generate(Primer::ViewComponents.generate_statuses), Primer::ViewComponents.read_statuses.chomp
+    assert_equal JSON.pretty_generate(Primer::ViewComponents.generate_statuses), Primer::ViewComponents.read(:statuses).chomp
   end
 
   def test_writing_and_reading_constants
     # we make sure that we can dump to disk and then read back again
-    Primer::ViewComponents.dump_constants
+    Primer::ViewComponents.dump(:constants)
 
-    assert_equal JSON.pretty_generate(Primer::ViewComponents.generate_constants), Primer::ViewComponents.read_constants.chomp
+    assert_equal JSON.pretty_generate(Primer::ViewComponents.generate_constants), Primer::ViewComponents.read(:constants).chomp
   end
 end

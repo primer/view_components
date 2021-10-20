@@ -7,6 +7,6 @@ namespace :constants do
     # Loads all components for `.descendants` to work properly
     Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
 
-    Primer::ViewComponents.dump_constants
+    Primer::ViewComponents.dump(:constants)
   end
 end
