@@ -2,7 +2,7 @@
 title: BorderBoxHeader
 componentId: border_box_header
 status: Alpha
-source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/border_box_header.rb
+source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/border_box/header.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-alpha-border-box-header
 ---
 
@@ -10,7 +10,7 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-BorderBoxHeader: used inside the BorderBoxComponent to render its header slot
+BorderBox Header: used inside the BorderBoxComponent to render its header slot
 Optional title slot
 
 ## Accessibility
@@ -41,7 +41,7 @@ Optional Title.
 
 ```erb
 
-<%= render(Primer::Alpha::BorderBoxHeader.new) do %>
+<%= render(Primer::Alpha::BorderBox::Header.new) do %>
   Header
 <% end %>
 ```
@@ -51,7 +51,7 @@ Optional Title.
 <Example src="<div data-view-component='true' class='Box-header'>  <div data-view-component='true' class='Box-title'>I am a title</div>  </div>" />
 
 ```erb
-<%= render(Primer::Alpha::BorderBoxHeader.new) do |h| %>
+<%= render(Primer::Alpha::BorderBox::Header.new) do |h| %>
   <% h.title do %>I am a title<% end %>
 <% end %>
 ```

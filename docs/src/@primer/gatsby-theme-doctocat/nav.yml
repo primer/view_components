@@ -26,6 +26,8 @@
       url: /components/blankslate
     - title: BorderBox
       url: /components/borderbox
+    - title: BorderBox::Header
+      url: /components/borderboxheader
     - title: Box
       url: /components/box
     - title: Breadcrumbs
@@ -110,5 +112,3 @@
       url: /components/alpha/underlinenav
     - title: UnderlinePanels
       url: /components/alpha/underlinepanels
-    - title: BorderBoxHeader - Fix my order in docs/src/@primer/gatsby-theme-doctocat/nav.yml
-      url: /components/borderboxheader

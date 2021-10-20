@@ -26,7 +26,7 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     # @accessibility
     # When using header.title, the recommended tag is a heading tag, such as h1, h2, h3, etc.
-    renders_one :header, "Primer::Alpha::BorderBoxHeader"
+    renders_one :header, "Primer::Alpha::BorderBox::Header"
 
     # Optional Body.
     #

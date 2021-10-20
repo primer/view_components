@@ -1,6 +1,6 @@
 ---
 - component: BorderBoxHeader
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/border_box_header.rb
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/border_box/header.rb
   parameters:
   - name: system_arguments
     type: Hash
