@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+* Adding new Alpha component: BorderBox Header with optional `title` slot
+
+    *Katie Foster @inkblotty*
+
 * Handling arguments that aren't system arguments or string arguments in primer_octicon.
 
     *Jon Rohan, Manuel Puyol*
