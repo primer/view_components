@@ -133,6 +133,6 @@ class BlankslateComponentTest < Minitest::Test
   end
 
   def test_status
-    assert_component_state(Primer::BlankslateComponent, :beta)
+    assert_component_state(Primer::BlankslateComponent, :deprecated)
   end
 end
