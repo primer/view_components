@@ -54,6 +54,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Breaking changes
 
+* Add size restriction to `Avatar`.
+
+    *Kate Higa*
+
 * Remove `square` attribute from `Avatar` in favor of `shape`. This change also affects `TimelineItem` `avatar` slot.
 
     *Manuel Puyol*
