@@ -3,7 +3,7 @@
 module Primer
   module Alpha
     module BorderBox
-      # BorderBox Header: used inside the BorderBoxComponent to render its header slot
+      # BorderBox::Header: used inside the BorderBoxComponent to render its header slot
       # Optional title slot
       #
       # @accessibility When using header.title, the recommended tag is a heading tag, such as h1, h2, h3, etc.

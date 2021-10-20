@@ -27,7 +27,7 @@
     - title: BorderBox
       url: /components/borderbox
     - title: BorderBox::Header
-      url: /components/borderboxheader
+      url: /components/borderbox/header
     - title: Box
       url: /components/box
     - title: Breadcrumbs
