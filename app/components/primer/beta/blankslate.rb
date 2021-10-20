@@ -64,6 +64,7 @@ module Primer
         system_arguments[:tag] = :a
         system_arguments[:href] = href
         system_arguments[:my] = 3
+        system_arguments[:variant] = :large
         system_arguments[:scheme] ||= :primary
 
         Primer::ButtonComponent.new(**system_arguments)
