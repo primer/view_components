@@ -21,10 +21,10 @@ module Primer
       end
 
       class_methods do
-        def audited_at(datestring = nil)
-          return audit_date if datestring.nil?
+        def audited_at(date = nil)
+          return audit_date if date.nil?
 
-          self.audit_date = Date.parse(datestring)
+          self.audit_date = date
         end
       end
     end

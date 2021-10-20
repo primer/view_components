@@ -10,7 +10,8 @@ module Primer
     DEFAULT_STATIC_PATH = File.expand_path("static")
     FILE_NAMES = {
       statuses: "statuses.json",
-      constants: "constants.json"
+      constants: "constants.json",
+      audited_at: "audited_at.json"
     }.freeze
 
     # generate_statuses returns a hash mapping component name to
@@ -18,6 +19,14 @@ module Primer
     def self.generate_statuses
       Primer::Component.descendants.sort_by(&:name).each_with_object({}) do |component, mem|
         mem[component.to_s] = component.status.to_s
+      end
+    end
+
+    # generate_audited_at returns a hash mapping component name to
+    # the day the component has passed an accessibility audit.
+    def self.generate_audited_at
+      Primer::Component.descendants.sort_by(&:name).each_with_object({}) do |component, mem|
+        mem[component.to_s] = component.audited_at.to_s
       end
     end
 
