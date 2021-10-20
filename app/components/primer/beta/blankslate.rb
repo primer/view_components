@@ -74,6 +74,8 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :link, lambda { |href:, **system_arguments|
         system_arguments[:href] = href
+        # Padding is needed to increase touch area.
+        system_arguments[:p] = 3
 
         Primer::LinkComponent.new(**system_arguments)
       }
