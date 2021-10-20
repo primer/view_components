@@ -101,7 +101,7 @@ class PrimerAlphaTabNavTest < Minitest::Test
 
     assert_selector("nav.tabnav[aria-label='label']") do
       assert_selector("ul.tabnav-tabs.custom-body-class")
-      assert_selector("ul.tabnav-tabs.tabnav", count: 0)
+      refute_selector("ul.tabnav-tabs.tabnav")
     end
   end
 end
