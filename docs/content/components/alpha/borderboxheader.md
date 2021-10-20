@@ -15,7 +15,7 @@ Optional title slot
 
 ## Accessibility
 
-When using header.title, the recommended tag is a heading tag, such as h1, h2, h3, etc.
+When using `header.title`, set `tag` to one of `h1`, `h2`, `h3`, etc. based on what is appropriate for the page context. [Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)
 
 ## Arguments
 
