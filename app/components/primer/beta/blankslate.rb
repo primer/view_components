@@ -6,7 +6,8 @@ module Primer
     #
     # @accessibility
     #   - Set the `title` heading level based on what is appropriate for your page hierarchy. <%= link_to_heading_practices %>
-    #   - Only use `links` as a way to access more information. The `link` must always be written with descriptive text.
+    #   - `link` can be set to provide more information that is relevant in the context of the `Blankslate`.
+    #   - `link` text should be meaningful out of context and clearly describe the destination. Avoid using vague text like, "Learn more" or "Click here".
     class Blankslate < Primer::Component
       status :beta
 
@@ -143,7 +144,7 @@ module Primer
       #
       # @example Link
       #   @description
-      #     Add an additional `link` to help users learn more about a feature. The `link` will be shown at the very bottom:
+      #     Add an additional `link` to help users learn more about a feature. See <%= link_to_accessibility %>. `link` will be shown at the very bottom:
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.graphic(:icon, icon: :book) %>
