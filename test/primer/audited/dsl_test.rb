@@ -14,6 +14,6 @@ class Primer::Audited::DslTest < Minitest::Test
   def test_sets_audited_date
     TestComponent.audited_at "2021-10-20"
 
-    assert_equal Date.parse("2021-10-20"), TestComponent.audited_at
+    assert_equal "2021-10-20", TestComponent.audited_at
   end
 end
