@@ -45,7 +45,9 @@ module ERBLint
         new_blankslate = {
           arguments: {},
           slots: {
-            title: {},
+            title: {
+              tag: :h2
+            },
             graphic: {},
             description: {},
             button: {},
