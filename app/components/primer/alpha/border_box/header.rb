@@ -6,7 +6,7 @@ module Primer
       # BorderBox::Header: used inside the BorderBoxComponent to render its header slot
       # Optional title slot
       #
-      # @accessibility When using header.title, the recommended tag is a heading tag, such as h1, h2, h3, etc.
+      # @accessibility When using `header.title`, set `tag` to one of `h1`, `h2`, `h3`, etc. based on what is appropriate for the page context. <%= link_to_heading_practices %>
       class Header < Primer::Component
         # Optional Title.
         #
