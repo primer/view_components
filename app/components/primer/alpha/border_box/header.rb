@@ -33,7 +33,7 @@ module Primer
         #
         # @example with title
         #   <%= render(Primer::Alpha::BorderBox::Header.new) do |h| %>
-        #     <% h.title(tag: :h4) do %>I am a title<% end %>
+        #     <% h.title(tag: :h3) do %>I am a title<% end %>
         #   <% end %>
         #
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
