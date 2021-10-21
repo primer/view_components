@@ -31,7 +31,7 @@ Optional Title.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `tag` | `String` | N/A | One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`. |
+| `tag` | `Symbol` | N/A | One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Examples
