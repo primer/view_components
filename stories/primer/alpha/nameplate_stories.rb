@@ -7,11 +7,13 @@ class Primer::Alpha::NameplateStories < ViewComponent::Storybook::Stories
 
   story(:nameplate) do
     controls do
-      classes "custom-class"
+      name "github"
+      select(:tag, Primer::Alpha::Nameplate::TAG_OPTIONS, Primer::Alpha::Nameplate::DEFAULT_TAG)
+      href "#"
     end
 
-    content do
-      "Update your stories!"
+    content do |c|
+      c.avatar(src: "https://github.com/github.png")
     end
   end
 end
