@@ -49,10 +49,10 @@ Optional Title.
 
 ### with title
 
-<Example src="<div data-view-component='true' class='Box-header'>  <h4 data-view-component='true' class='Box-title'>I am a title</h4>  </div>" />
+<Example src="<div data-view-component='true' class='Box-header'>  <h3 data-view-component='true' class='Box-title'>I am a title</h3>  </div>" />
 
 ```erb
 <%= render(Primer::Alpha::BorderBox::Header.new) do |h| %>
-  <% h.title(tag: :h4) do %>I am a title<% end %>
+  <% h.title(tag: :h3) do %>I am a title<% end %>
 <% end %>
 ```
