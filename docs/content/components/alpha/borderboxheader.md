@@ -31,6 +31,7 @@ Optional Title.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `tag` | `String` | N/A | One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Examples
@@ -48,10 +49,10 @@ Optional Title.
 
 ### with title
 
-<Example src="<div data-view-component='true' class='Box-header'>  <div data-view-component='true' class='Box-title'>I am a title</div>  </div>" />
+<Example src="<div data-view-component='true' class='Box-header'>  <h4 data-view-component='true' class='Box-title'>I am a title</h4>  </div>" />
 
 ```erb
 <%= render(Primer::Alpha::BorderBox::Header.new) do |h| %>
-  <% h.title do %>I am a title<% end %>
+  <% h.title(tag: :h4) do %>I am a title<% end %>
 <% end %>
 ```

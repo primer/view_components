@@ -13,7 +13,7 @@ class Primer::Alpha::BorderBox::HeaderStories < ViewComponent::Storybook::Storie
 
   story(:with_title) do
     content do |component|
-      component.title { "Title" }
+      component.title(tag: :h2) { "Title" }
     end
   end
 end

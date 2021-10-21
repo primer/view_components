@@ -13,7 +13,7 @@ class Primer::Alpha::BorderBox::HeaderTest < Minitest::Test
 
   def test_renders_title
     render_inline(Primer::Alpha::BorderBox::Header.new) do |h|
-      h.title { "Title" }
+      h.title(tag: :h3) { "Title" }
     end
 
     assert_text("Title")
