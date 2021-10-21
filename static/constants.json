@@ -77,9 +77,7 @@
   },
   "Primer::Beta::AutoComplete": {
     "Input": "Primer::Beta::AutoComplete::Input",
-    "InputStories": "Primer::Beta::AutoComplete::InputStories",
-    "Item": "Primer::Beta::AutoComplete::Item",
-    "ItemStories": "Primer::Beta::AutoComplete::ItemStories"
+    "Item": "Primer::Beta::AutoComplete::Item"
   },
   "Primer::Beta::AutoComplete::Input": {
     "DEFAULT_TYPE": "text",
@@ -143,8 +141,7 @@
     "DEFAULT_TAG": "span"
   },
   "Primer::Beta::Truncate": {
-    "TruncateText": "Primer::Beta::Truncate::TruncateText",
-    "TruncateTextStories": "Primer::Beta::Truncate::TruncateTextStories"
+    "TruncateText": "Primer::Beta::Truncate::TruncateText"
   },
   "Primer::Beta::Truncate::TruncateText": {
   },
@@ -245,8 +242,7 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu",
-    "MenuStories": "Primer::Dropdown::MenuStories"
+    "Menu": "Primer::Dropdown::Menu"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",
@@ -264,7 +260,6 @@
       "s"
     ],
     "Item": "Primer::Dropdown::Menu::Item",
-    "ItemStories": "Primer::Dropdown::Menu::ItemStories",
     "SCHEME_DEFAULT": "default",
     "SCHEME_MAPPINGS": {
       "default": "",
@@ -632,8 +627,7 @@
   "Primer::TimeAgoComponent": {
   },
   "Primer::TimelineItemComponent": {
-    "BadgeComponent": "Primer::TimelineItemComponent::BadgeComponent",
-    "BadgeComponentStories": "Primer::TimelineItemComponent::BadgeComponentStories"
+    "BadgeComponent": "Primer::TimelineItemComponent::BadgeComponent"
   },
   "Primer::TimelineItemComponent::BadgeComponent": {
   },
