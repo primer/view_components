@@ -182,15 +182,16 @@ module Primer
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
       #
-      # @param narrow [Boolean] Adds a maximum width.
-      # @param large [Boolean] Increases the font size.
-      # @param spacious [Boolean] Adds extra padding.
+      # @param narrow [Boolean] Adds a maximum width to the Blankslate.
+      # @param large [Boolean] Increases the font size in the Blankslate.
+      # @param spacious [Boolean] Increases the vertical padding.
+      # @param border [Boolean] Adds a border around the Blankslate.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         narrow: false,
         large: false,
         spacious: false,
-
+        border: false,
         **system_arguments
       )
         @system_arguments = system_arguments

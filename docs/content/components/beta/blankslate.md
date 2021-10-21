@@ -22,9 +22,10 @@ Use `Blankslate` when there is a lack of content within a page or section. Use a
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `narrow` | `Boolean` | `false` | Adds a maximum width. |
-| `large` | `Boolean` | `false` | Increases the font size. |
-| `spacious` | `Boolean` | `false` | Adds extra padding. |
+| `narrow` | `Boolean` | `false` | Adds a maximum width to the Blankslate. |
+| `large` | `Boolean` | `false` | Increases the font size in the Blankslate. |
+| `spacious` | `Boolean` | `false` | Increases the vertical padding. |
+| `border` | `Boolean` | `false` | Adds a border around the Blankslate. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots

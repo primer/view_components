@@ -230,15 +230,19 @@
   - name: narrow
     type: Boolean
     default: "`false`"
-    description: Adds a maximum width.
+    description: Adds a maximum width to the Blankslate.
   - name: large
     type: Boolean
     default: "`false`"
-    description: Increases the font size.
+    description: Increases the font size in the Blankslate.
   - name: spacious
     type: Boolean
     default: "`false`"
-    description: Adds extra padding.
+    description: Increases the vertical padding.
+  - name: border
+    type: Boolean
+    default: "`false`"
+    description: Adds a border around the Blankslate.
   - name: system_arguments
     type: Hash
     default: N/A
