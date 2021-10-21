@@ -36,6 +36,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Katie Foster @inkblotty*
 
+* Add note about `Breadcrumbs` not being responsive.
+
+    *Joel Hawksley*
+
 * Handling arguments that aren't system arguments or string arguments in primer_octicon.
 
     *Jon Rohan, Manuel Puyol*
