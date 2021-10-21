@@ -72,7 +72,7 @@ module Primer
     # @example Header with title, body, rows, and footer
     #   <%= render(Primer::BorderBoxComponent.new) do |component| %>
     #     <% component.header do |h| %>
-    #       <% h.title do %>
+    #       <% h.title(tag: :h2) do %>
     #         Header
     #       <% end %>
     #     <% end %>
