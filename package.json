@@ -39,7 +39,7 @@
   "devDependencies": {
     "@github/prettier-config": "0.0.4",
     "@primer/css": "^18.0.0",
-    "@primer/primitives": "^5.1.0",
+    "@primer/primitives": "^6.0.0",
     "@rollup/plugin-node-resolve": "^11.2.0",
     "@rollup/plugin-typescript": "^8.2.0",
     "@typescript-eslint/eslint-plugin": "^4.15.2",

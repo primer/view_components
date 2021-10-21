@@ -8,7 +8,7 @@
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "@primer/primitives": "^5.1.0",
+    "@primer/primitives": "^6.0.0",
     "@storybook/addon-a11y": "^v6.3.12",
     "@storybook/addon-actions": "^v6.3.12",
     "@storybook/addon-controls": "^v6.3.12",

@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@primer/gatsby-theme-doctocat": "^2.0.0",
-    "@primer/primitives": "^5.1.0",
+    "@primer/primitives": "^6.0.0",
     "gatsby": "^2.24.63",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
