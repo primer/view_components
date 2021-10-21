@@ -32,6 +32,14 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+* Adding new Alpha component: BorderBox Header with optional `title` slot
+
+    *Katie Foster @inkblotty*
+
+* Add note about `Breadcrumbs` not being responsive.
+
+    *Joel Hawksley*
+
 * Handling arguments that aren't system arguments or string arguments in primer_octicon.
 
     *Jon Rohan, Manuel Puyol*
@@ -41,6 +49,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
     *Cameron Dutro*
 
 * Migrating grid classes to utilities.yml process
+
+    *Jon Rohan*
+
+* Adding new system color arguments, and deprecating old arguments.
 
     *Jon Rohan*
 

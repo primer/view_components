@@ -12,6 +12,7 @@ module Primer
     include JoinStyleArgumentsHelper
     include ViewHelper
     include Status::Dsl
+    include Audited::Dsl
 
     private
 

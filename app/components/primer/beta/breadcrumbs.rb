@@ -3,6 +3,13 @@
 module Primer
   module Beta
     # Use `Breadcrumbs` to display page hierarchy.
+    #
+    # #### Known issues
+    #
+    # ##### Responsiveness
+    #
+    # `Breadcrumbs` is not optimized for responsive designs.
+    #
     # @accessibility
     #   `Breadcrumbs` renders a list of links within a `nav` element and has an implicit landmark role of `navigation`.
     #   By default, the component labels the `nav` element with "Breadcrumbs" which helps distinguish the type of navigation.
