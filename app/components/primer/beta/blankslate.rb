@@ -51,6 +51,9 @@ module Primer
 
       # Optional Description.
       #
+      # - The description should always be informative and actionable.
+      # - Don't use phrases like "You can".
+      #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :description, lambda { |**system_arguments|
         system_arguments[:tag] = :p

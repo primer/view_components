@@ -51,6 +51,9 @@ Required Title.
 
 Optional Description.
 
+- The description should always be informative and actionable.
+- Don't use phrases like "You can".
+
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
