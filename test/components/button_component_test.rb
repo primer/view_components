@@ -78,6 +78,12 @@ class PrimerButtonComponentTest < Minitest::Test
     refute_selector(".btn")
   end
 
+  def test_applies_text_small_for_link_button
+    render_inline(Primer::ButtonComponent.new(scheme: :link, variant: :small)) { "content" }
+
+    assert_selector(".text-small.btn-link")
+  end
+
   def test_renders_button_block
     render_inline(Primer::ButtonComponent.new(block: true)) { "content" }
 
