@@ -12,6 +12,12 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
 
 Use `Breadcrumbs` to display page hierarchy.
 
+#### Known issues
+
+##### Responsiveness
+
+`Breadcrumbs` is not optimized for responsive designs.
+
 ## Accessibility
 
 `Breadcrumbs` renders a list of links within a `nav` element and has an implicit landmark role of `navigation`.
