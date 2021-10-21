@@ -24,7 +24,7 @@ module Primer
       :large => "btn-large"
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
-    
+
     LINK_VARIANT_MAPPINGS = {
       :small => "text-small",
       DEFAULT_VARIANT => ""
@@ -118,7 +118,7 @@ module Primer
     def link?
       @scheme == LINK_SCHEME
     end
-    
+
     def variant_class_names
       if link?
         LINK_VARIANT_MAPPINGS[fetch_or_fallback(LINK_VARIANT_OPTIONS, @variant, DEFAULT_VARIANT)]
