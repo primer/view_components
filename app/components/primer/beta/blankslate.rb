@@ -182,18 +182,23 @@ module Primer
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
       #
+      # @example With border
+      #   @description
+      #     It's possible to add a border around the Blankslate. This will wrap the Blankslate in a BorderBox.
+      #   @code
+      #     <%= render Primer::Beta::Blankslate.new(border: true) do |c| %>
+      #       <% c.graphic(:icon, icon: :book) %>
+      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
+      #     <% end %>
+      #
       # @param narrow [Boolean] Adds a maximum width to the Blankslate.
       # @param large [Boolean] Increases the font size in the Blankslate.
       # @param spacious [Boolean] Increases the vertical padding.
       # @param border [Boolean] Adds a border around the Blankslate.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(
-        narrow: false,
-        large: false,
-        spacious: false,
-        border: false,
-        **system_arguments
-      )
+      def initialize(narrow: false, large: false, spacious: false, border: false, **system_arguments)
+        @border = border
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
         @system_arguments[:classes] = class_names(
@@ -207,6 +212,17 @@ module Primer
 
       def render?
         title.present?
+      end
+
+      def wrapper
+        unless @border
+          yield
+          return # returning `yield` caused a double render
+        end
+
+        content_tag(:div, class: "Box") do
+          yield if block_given?
+        end
       end
     end
   end

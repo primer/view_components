@@ -1,13 +1,15 @@
-<%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <%= graphic %>
+<%= wrapper do %>
+  <%= render Primer::BaseComponent.new(**@system_arguments) do %>
+    <%= graphic %>
 
-  <%= title %>
-  <%= description %>
+    <%= title %>
+    <%= description %>
 
-  <%= button %>
-  <% if link.present? %>
-    <p>
-      <%= link %>
-    </p>
+    <%= button %>
+    <% if link.present? %>
+      <p>
+        <%= link %>
+      </p>
+    <% end %>
   <% end %>
 <% end %>

@@ -105,7 +105,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
     assert_selector("a[href='https://docs.github.com']", text: "Link")
   end
 
-  def test_raises_error_if_invalid_grpahic_type
+  def test_raises_error_if_invalid_graphic_type
     err = assert_raises ArgumentError do
       render_inline(Primer::Beta::Blankslate.new) do |c|
         c.title(tag: :h2).with_content("Title")
@@ -114,5 +114,17 @@ class PrimerBetaBlankslateTest < Minitest::Test
     end
 
     assert_equal("`type` must be one of #{Primer::Beta::Blankslate::GRAPHIC_OPTIONS.join(',')}.", err.message)
+  end
+
+  def test_wraps_in_a_box_when_border_true
+    render_inline(Primer::Beta::Blankslate.new(border: true)) do |c|
+      c.title(tag: :h2) { "Title" }
+    end
+
+    assert_selector(".Box") do
+      assert_selector(".blankslate") do
+        assert_selector("h2", text: "Title")
+      end
+    end
   end
 end
