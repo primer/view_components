@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+* Adding new Alpha component: BorderBox Header with optional `title` slot
+
+    *Katie Foster @inkblotty*
+
 * Add note about `Breadcrumbs` not being responsive.
 
     *Joel Hawksley*
