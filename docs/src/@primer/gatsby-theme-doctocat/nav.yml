@@ -76,6 +76,8 @@
       url: /components/menu
     - title: Markdown
       url: /components/markdown
+    - title: Nameplate
+      url: /components/nameplate
     - title: Octicon
       url: /components/octicon
     - title: OcticonSymbols
