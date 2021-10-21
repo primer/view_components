@@ -24,6 +24,12 @@ module Primer
       :large => "btn-large"
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
+    
+    LINK_VARIANT_MAPPINGS = {
+      :small => "text-small",
+      DEFAULT_VARIANT => ""
+    }.freeze
+    LINK_VARIANT_OPTIONS = LINK_VARIANT_MAPPINGS.keys
 
     # Icon to be rendered in the button.
     #
@@ -99,7 +105,7 @@ module Primer
       @system_arguments[:classes] = class_names(
         system_arguments[:classes],
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
-        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)],
+        variant_class_names,
         "btn" => !link?,
         "btn-block" => block,
         "BtnGroup-item" => group_item
@@ -110,6 +116,14 @@ module Primer
 
     def link?
       @scheme == LINK_SCHEME
+    end
+    
+    def variant_class_names
+      if link?
+        LINK_VARIANT_MAPPINGS[fetch_or_fallback(LINK_VARIANT_OPTIONS, variant, DEFAULT_VARIANT)]
+      else
+        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)]
+      end
     end
   end
 end
