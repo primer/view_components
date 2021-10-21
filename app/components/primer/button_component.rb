@@ -100,6 +100,7 @@ module Primer
     )
       @scheme = scheme
       @caret = caret
+      @variant = variant
 
       @system_arguments = system_arguments
       @system_arguments[:classes] = class_names(
@@ -120,9 +121,9 @@ module Primer
     
     def variant_class_names
       if link?
-        LINK_VARIANT_MAPPINGS[fetch_or_fallback(LINK_VARIANT_OPTIONS, variant, DEFAULT_VARIANT)]
+        LINK_VARIANT_MAPPINGS[fetch_or_fallback(LINK_VARIANT_OPTIONS, @variant, DEFAULT_VARIANT)]
       else
-        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)]
+        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, @variant, DEFAULT_VARIANT)]
       end
     end
   end
