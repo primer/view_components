@@ -59,19 +59,17 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Make `Spinner` more accessible by adding `sr-only` loading text.
 
     *Manuel Puyol*
-
-### Breaking changes
-
-* Remove `square` attribute from `Avatar` in favor of `shape`. This change also affects `TimelineItem` `avatar` slot.
-
-    *Manuel Puyol*
-
 ### Bug Fixes
 
 * Removes unwanted bottom border from active tab of `Alpha::TabNav`.
 
     *Ned Schwartz*
 
+### Breaking changes
+
+* Remove `square` attribute from `Avatar` in favor of `shape`. This change also affects `TimelineItem` `avatar` slot.
+
+    *Manuel Puyol*
 
 ## 0.0.59
 
