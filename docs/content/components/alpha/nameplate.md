@@ -21,7 +21,8 @@ Add any accessibility considerations
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `name` | `String` | N/A | Name to be rendered beside the Avatar. |
+| `username` | `String` | N/A | Username to be rendered beside the Avatar. |
+| `full_name` | `String` | `""` | Full name of user to be rendered below the username. |
 | `tag` | `Symbol` | `:span` |  |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
@@ -39,22 +40,22 @@ Required Avatar
 
 ### Default
 
-<Example src="<span data-view-component='true' class='d-flex flex-items-center text-bold'>  <img aria-disabled='true' src='https://github.com/github.png' alt='' size='24' height='24' width='24' data-view-component='true' class='avatar circle mr-1'></img>  github</span>" />
+<Example src="<span data-view-component='true' class='d-flex flex-items-center text-bold'>  <img aria-disabled='true' src='https://github.com/github.png' alt='' size='24' height='24' width='24' data-view-component='true' class='avatar circle mr-1'></img>  <div class='d-flex flex-column'>    <span data-view-component='true' class='text-bold'>github</span>    <span data-view-component='true' class='color-fg-muted f6 no-underline'></span>  </div></span>" />
 
 ```erb
 
-<%= render(Primer::Alpha::Nameplate.new(name: "github")) do |c| %>
+<%= render(Primer::Alpha::Nameplate.new(username: "github")) do |c| %>
   <% c.avatar(src: "https://github.com/github.png") %>
 <% end %>
 ```
 
 ### As a link
 
-<Example src="<a href='#' data-view-component='true' class='d-flex flex-items-center text-bold'>  <img aria-disabled='true' src='https://github.com/github.png' alt='' size='24' height='24' width='24' data-view-component='true' class='avatar circle mr-1'></img>  github</a>" />
+<Example src="<a href='#' data-view-component='true' class='d-flex flex-items-center text-bold'>  <img aria-disabled='true' src='https://github.com/github.png' alt='' size='24' height='24' width='24' data-view-component='true' class='avatar circle mr-1'></img>  <div class='d-flex flex-column'>    <span data-view-component='true' class='text-bold'>github</span>    <span data-view-component='true' class='color-fg-muted f6 no-underline'></span>  </div></a>" />
 
 ```erb
 
-<%= render(Primer::Alpha::Nameplate.new(tag: :a, name: "github", href: "#")) do |c| %>
+<%= render(Primer::Alpha::Nameplate.new(tag: :a, username: "github", href: "#")) do |c| %>
   <% c.avatar(src: "https://github.com/github.png") %>
 <% end %>
 ```

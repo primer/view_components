@@ -1,4 +1,7 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <%= avatar %>
-  <%= @name %>
+  <div class="d-flex flex-column">
+    <%= username %>
+    <%= full_name %>
+  </div>
 <% end %>
