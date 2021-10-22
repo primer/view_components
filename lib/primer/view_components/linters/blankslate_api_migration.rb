@@ -45,7 +45,8 @@ module ERBLint
         new_blankslate = {
           arguments: {},
           slots: {
-            graphic: {},
+            graphic_icon: {},
+            graphic_image: {},
             title: {
               tag: ":h2"
             },
@@ -64,17 +65,13 @@ module ERBLint
           when :title_tag
             new_blankslate[:slots][:title][:tag] = source_value
           when :icon
-            new_blankslate[:slots][:graphic][:__polymorphic_type] = :icon
-            new_blankslate[:slots][:graphic][:icon] = source_value
+            new_blankslate[:slots][:graphic_icon][:icon] = source_value
           when :icon_size
-            new_blankslate[:slots][:graphic][:__polymorphic_type] = :icon
-            new_blankslate[:slots][:graphic][:size] = source_value
+            new_blankslate[:slots][:graphic_icon][:size] = source_value
           when :image_src
-            new_blankslate[:slots][:graphic][:__polymorphic_type] = :image
-            new_blankslate[:slots][:graphic][:src] = source_value
+            new_blankslate[:slots][:graphic_image][:src] = source_value
           when :image_alt
-            new_blankslate[:slots][:graphic][:__polymorphic_type] = :image
-            new_blankslate[:slots][:graphic][:alt] = source_value
+            new_blankslate[:slots][:graphic_image][:alt] = source_value
           when :description
             new_blankslate[:slots][:description][:content] = pair.value.value
           when :button_text
@@ -101,6 +98,8 @@ module ERBLint
 
         # If Blankslate has no title, we don't update it.
         return if data[:slots][:title][:content].nil?
+        # If Blankslate sets both image and icon. don't update it.
+        return if data[:slots][:graphic_icon].present? && data[:slots][:graphic_image].present?
 
         slots = data[:slots].map do |slot, slot_data|
           next if slot_data.empty?

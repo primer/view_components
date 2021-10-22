@@ -3,14 +3,14 @@
 require "linter_test_case"
 
 class BlankslateApiMigrationTest < LinterTestCase
-  def test_does_not_warn_if_no_blankslate
+  def test_does_not_migrate_if_no_blankslate
     @file = "<div></div>"
     @linter.run(processed_source)
 
     assert_empty @linter.offenses
   end
 
-  def test_does_not_warn_when_blankslate_has_a_block
+  def test_does_not_migrate_when_blankslate_has_a_block
     @file = <<~ERB
       <%= render Primer::BlankslateComponent.new(title: "Some title") do %>
         Custom content
@@ -24,6 +24,18 @@ class BlankslateApiMigrationTest < LinterTestCase
   def test_does_not_migrate_when_blankslate_has_no_title
     @file = <<~ERB
       <%= render Primer::BlankslateComponent.new %>
+    ERB
+
+    assert_equal @file, corrected_content
+  end
+
+  def test_does_not_migrate_when_blankslate_has_both_icon_and_image
+    @file = <<~ERB
+      <%= render Primer::BlankslateComponent.new(
+        title: "Some title",
+        icon: :x,
+        image_src: "image.png"
+      ) %>
     ERB
 
     assert_equal @file, corrected_content
@@ -122,7 +134,7 @@ class BlankslateApiMigrationTest < LinterTestCase
 
     expected = <<~ERB
       <%= render Primer::Beta::Blankslate.new do |c| %>
-        <% c.graphic(:icon, icon: :x, size: :large) %>
+        <% c.graphic_icon(icon: :x, size: :large) %>
 
         <% c.title(tag: :h2) do %>
           Some title
@@ -144,7 +156,7 @@ class BlankslateApiMigrationTest < LinterTestCase
 
     expected = <<~ERB
       <%= render Primer::Beta::Blankslate.new do |c| %>
-        <% c.graphic(:image, src: "image.png", alt: "image alt") %>
+        <% c.graphic_image(src: "image.png", alt: "image alt") %>
 
         <% c.title(tag: :h2) do %>
           Some title
@@ -227,7 +239,7 @@ class BlankslateApiMigrationTest < LinterTestCase
 
     expected = <<~ERB
       <%= render Primer::Beta::Blankslate.new(narrow: true, large: true, spacious: true, px: 3, display: :flex, "aria-label": "label") do |c| %>
-        <% c.graphic(:icon, icon: :x, size: :large) %>
+        <% c.graphic_icon(icon: :x, size: :large) %>
 
         <% c.title(tag: :h2) do %>
           Some title
@@ -273,7 +285,7 @@ class BlankslateApiMigrationTest < LinterTestCase
 
     expected = <<~ERB
       <%= render Primer::Beta::Blankslate.new(narrow: true, large: true, spacious: true, px: 3, display: :flex, "aria-label": "label") do |c| %>
-        <% c.graphic(:image, src: "image.png", alt: "image alt") %>
+        <% c.graphic_image(src: "image.png", alt: "image alt") %>
 
         <% c.title(tag: :h2) do %>
           Some title
