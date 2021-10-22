@@ -9,6 +9,9 @@ module Primer
       DEFAULT_TAG = :span
       TAG_OPTIONS = [DEFAULT_TAG, :a].freeze
 
+      # Required Avatar
+      #
+      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Avatar) %>.
       renders_one :avatar, lambda { |**system_arguments|
         system_arguments[:mr] ||= 1
         system_arguments[:size] = 24
@@ -18,10 +21,20 @@ module Primer
         Primer::Beta::Avatar.new(**system_arguments)
       }
 
-      # @example Example goes here
+      # @example Default
       #
-      #   <%= render(Primer::Nameplate.new) { "Example" } %>
+      #   <%= render(Primer::Alpha::Nameplate.new(name: "github")) do |c| %>
+      #     <% c.avatar(src: "https://github.com/github.png") %>
+      #   <% end %>
       #
+      # @example As a link
+      #
+      #   <%= render(Primer::Alpha::Nameplate.new(tag: :a, name: "github", href: "#")) do |c| %>
+      #     <% c.avatar(src: "https://github.com/github.png") %>
+      #   <% end %>
+      #
+      # @param name [String] Name to be rendered beside the Avatar.
+      # @param tag [Symbol] <% one_of(Primer::Alpha::Nameplate::TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(name:, tag: DEFAULT_TAG, **system_arguments)
         @name = name
@@ -34,9 +47,9 @@ module Primer
       end
 
       def wrapper
-        return Primer::BaseComponent.new(**@system_arguments) if @system_arguments[:tag] == :span
+        return Primer::LinkComponent.new(**@system_arguments) if @system_arguments[:tag] == :a
 
-        Primer::LinkComponent.new(**@system_arguments)
+        Primer::BaseComponent.new(**@system_arguments)
       end
     end
   end
