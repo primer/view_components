@@ -47,7 +47,7 @@ module Primer
       #
       # @param src [String] The source url of the avatar image.
       # @param alt [String] Passed through to alt on img tag.
-      # @param size [Integer] Adds the avatar-small class if less than 24. <%= one_of(Primer::Beta::Avatar::SIZE_OPTIONS) %>
+      # @param size [Integer] <%= one_of(Primer::Beta::Avatar::SIZE_OPTIONS) %>
       # @param shape [Symbol] Shape of the avatar. <%= one_of(Primer::Beta::Avatar::SHAPE_OPTIONS) %>
       # @param href [String] The URL to link to. If used, component will be wrapped by an `<a>` tag.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
