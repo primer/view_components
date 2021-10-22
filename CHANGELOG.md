@@ -32,6 +32,14 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+* Adding new Alpha component: BorderBox Header with optional `title` slot
+
+    *Katie Foster @inkblotty*
+
+* Add note about `Breadcrumbs` not being responsive.
+
+    *Joel Hawksley*
+
 * Handling arguments that aren't system arguments or string arguments in primer_octicon.
 
     *Jon Rohan, Manuel Puyol*
@@ -51,6 +59,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Make `Spinner` more accessible by adding `sr-only` loading text.
 
     *Manuel Puyol*
+
+### Bug Fixes
+
+* Removes unwanted bottom border from active tab of `Alpha::TabNav`.
+
+    *Ned Schwartz*
 
 ### Breaking changes
 

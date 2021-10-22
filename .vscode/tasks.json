@@ -96,24 +96,10 @@
       "problemMatcher": []
     },
     {
-      "label": "statuses:dump: dump static files",
+      "label": "static:dump: dump static files",
       "type": "shell",
       "group": "build",
-      "command": "bundle exec rake statuses:dump",
-      "presentation": {
-        "reveal": "always",
-        "panel": "dedicated"
-      },
-      "runOptions": {
-        "reevaluateOnRerun": false
-      },
-      "problemMatcher": []
-    }
-    {
-      "label": "constants:dump: dump static files",
-      "type": "shell",
-      "group": "build",
-      "command": "bundle exec rake constants:dump",
+      "command": "bundle exec rake static:dump",
       "presentation": {
         "reveal": "always",
         "panel": "dedicated"
