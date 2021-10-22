@@ -119,9 +119,8 @@ module Primer
         @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
         @system_arguments[:classes] = tab_nav_classes(system_arguments[:classes])
 
-        @body_arguments = body_arguments
         @body_arguments[:tag] = BODY_TAG_DEFAULT
-        @body_arguments[:classes] = tab_nav_body_classes(system_arguments[:classes])
+        @body_arguments[:classes] = tab_nav_body_classes(body_arguments[:classes])
 
         aria_label_for_page_nav(label)
       end
