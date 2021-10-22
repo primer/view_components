@@ -192,7 +192,7 @@
   - name: size
     type: Integer
     default: "`20`"
-    description: Adds the avatar-small class if less than 24.
+    description: One of `16`, `20`, `24`, `32`, `40`, `48`, or `80`.
   - name: shape
     type: Symbol
     default: "`:circle`"
