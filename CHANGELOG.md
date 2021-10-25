@@ -60,6 +60,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+### Bug Fixes
+
+* Removes unwanted bottom border from active tab of `Alpha::TabNav`.
+
+    *Ned Schwartz*
+
 ### Deprecations
 
 * Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
@@ -67,6 +73,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
     *Manuel Puyol*
 
 ### Breaking changes
+
+* Add size restriction to `Avatar`.
+
+    *Kate Higa*
 
 * Remove `square` attribute from `Avatar` in favor of `shape`. This change also affects `TimelineItem` `avatar` slot.
 

@@ -101,9 +101,19 @@
   },
   "Primer::Beta::Avatar": {
     "DEFAULT_SHAPE": "circle",
+    "DEFAULT_SIZE": 20,
     "SHAPE_OPTIONS": [
       "circle",
       "square"
+    ],
+    "SIZE_OPTIONS": [
+      16,
+      20,
+      24,
+      32,
+      40,
+      48,
+      80
     ],
     "SMALL_THRESHOLD": 24
   },
