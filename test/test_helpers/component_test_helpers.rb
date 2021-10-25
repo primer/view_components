@@ -33,11 +33,11 @@ module Primer
     end
 
     def with_validate_class_names(new_value)
-      old_value = Rails.application.config.primer_view_components.validate_class_names
-      Rails.application.config.primer_view_components.validate_class_names = new_value
+      old_value = Primer::Classify::Utilities.validate_class_names
+      Primer::Classify::Utilities.validate_class_names = new_value
       yield
     ensure
-      Rails.application.config.primer_view_components.validate_class_names = old_value
+      Primer::Classify::Utilities.validate_class_names = old_value
     end
 
     def assert_component_state(component, state)

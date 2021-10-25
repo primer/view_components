@@ -36,6 +36,9 @@ module Primer
       BREAKPOINT_INDEX_CACHE = Hash.new { |h, k| h[k] = BREAKPOINTS.index(k) }
 
       class << self
+        attr_accessor :validate_class_names
+        alias validate_class_names? validate_class_names
+
         def classname(key, val, breakpoint = "")
           # For cases when `argument: false` is passed in, treat like we would nil
           return nil unless val
@@ -140,13 +143,6 @@ module Primer
 
             "#{key}: #{val}"
           end.join(", ")
-        end
-
-        # Whether or not CSS class names will be validated
-        #
-        # returns Boolean
-        def validate_class_names?
-          Rails.application.config.primer_view_components.validate_class_names
         end
 
         private
