@@ -60,6 +60,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Make class name validation configurable instead of relying on the Rails env.
+
+    *Cameron Dutro*
+
 ### Bug Fixes
 
 * Removes unwanted bottom border from active tab of `Alpha::TabNav`.
