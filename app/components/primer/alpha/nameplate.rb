@@ -55,6 +55,12 @@ module Primer
         @system_arguments[:"aria-label"] = "#{title} (#{description})" if @description.present?
       end
 
+      private
+
+      def render?
+        avatar.present?
+      end
+
       def wrapper
         return Primer::LinkComponent.new(**@system_arguments) if @system_arguments[:tag] == :a
 
