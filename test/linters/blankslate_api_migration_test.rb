@@ -167,7 +167,7 @@ class BlankslateApiMigrationTest < LinterTestCase
     assert_equal expected, corrected_content
   end
 
-  def test_sets_button_slot
+  def test_sets_primary_action_slot
     @file = <<~ERB
       <%= render Primer::BlankslateComponent.new(
         title: "Some title",
@@ -183,7 +183,7 @@ class BlankslateApiMigrationTest < LinterTestCase
           Some title
         <% end %>
 
-        <% c.button(href: "button url", classes: "button classes") do %>
+        <% c.primary_action(href: "button url", classes: "button classes") do %>
           button
         <% end %>
       <% end %>
@@ -192,7 +192,7 @@ class BlankslateApiMigrationTest < LinterTestCase
     assert_equal expected, corrected_content
   end
 
-  def test_sets_link_slot
+  def test_sets_secondary_action_slot
     @file = <<~ERB
       <%= render Primer::BlankslateComponent.new(
         title: "Some title",
@@ -207,7 +207,7 @@ class BlankslateApiMigrationTest < LinterTestCase
           Some title
         <% end %>
 
-        <% c.link(href: "link url") do %>
+        <% c.secondary_action(href: "link url") do %>
           link
         <% end %>
       <% end %>
@@ -249,11 +249,11 @@ class BlankslateApiMigrationTest < LinterTestCase
           Some description
         <% end %>
 
-        <% c.button(href: "button url", classes: "button classes") do %>
+        <% c.primary_action(href: "button url", classes: "button classes") do %>
           button
         <% end %>
 
-        <% c.link(href: "link url") do %>
+        <% c.secondary_action(href: "link url") do %>
           link
         <% end %>
       <% end %>
@@ -295,11 +295,11 @@ class BlankslateApiMigrationTest < LinterTestCase
           Some description
         <% end %>
 
-        <% c.button(href: "button url", classes: "button classes") do %>
+        <% c.primary_action(href: "button url", classes: "button classes") do %>
           button
         <% end %>
 
-        <% c.link(href: "link url") do %>
+        <% c.secondary_action(href: "link url") do %>
           link
         <% end %>
       <% end %>

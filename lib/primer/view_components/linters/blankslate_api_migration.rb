@@ -51,8 +51,8 @@ module ERBLint
               tag: ":h2"
             },
             description: {},
-            button: {},
-            link: {}
+            primary_action: {},
+            secondary_action: {}
           }
         }
 
@@ -75,15 +75,15 @@ module ERBLint
           when :description
             new_blankslate[:slots][:description][:content] = pair.value.value
           when :button_text
-            new_blankslate[:slots][:button][:content] = pair.value.value
+            new_blankslate[:slots][:primary_action][:content] = pair.value.value
           when :button_url
-            new_blankslate[:slots][:button][:href] = source_value
+            new_blankslate[:slots][:primary_action][:href] = source_value
           when :button_classes
-            new_blankslate[:slots][:button][:classes] = source_value
+            new_blankslate[:slots][:primary_action][:classes] = source_value
           when :link_text
-            new_blankslate[:slots][:link][:content] = pair.value.value
+            new_blankslate[:slots][:secondary_action][:content] = pair.value.value
           when :link_url
-            new_blankslate[:slots][:link][:href] = source_value
+            new_blankslate[:slots][:secondary_action][:href] = source_value
           else
             new_blankslate[:arguments][pair.key.source] = source_value
           end
