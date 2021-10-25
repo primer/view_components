@@ -32,14 +32,14 @@
 - component: Nameplate
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nameplate.rb
   parameters:
-  - name: username
+  - name: title
     type: String
     default: N/A
-    description: Username to be rendered beside the Avatar.
-  - name: full_name
+    description: Title to be rendered beside the Avatar.
+  - name: description
     type: String
     default: '`""`'
-    description: Full name of user to be rendered below the username.
+    description: Description to be rendered below the title.
   - name: tag
     type: Symbol
     default: "`:span`"

@@ -14,7 +14,7 @@ module Primer
       # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Avatar) %>.
       renders_one :avatar, lambda { |**system_arguments|
         system_arguments[:mr] ||= 1
-        system_arguments[:size] = @full_name.present? ? 32 : 24
+        system_arguments[:size] = @description.present? ? 32 : 24
         system_arguments[:alt] = ""
         system_arguments[:"aria-disabled"] = "true"
 
@@ -23,30 +23,36 @@ module Primer
 
       # @example Default
       #
-      #   <%= render(Primer::Alpha::Nameplate.new(username: "github")) do |c| %>
+      #   <%= render(Primer::Alpha::Nameplate.new(title: "github")) do |c| %>
       #     <% c.avatar(src: "https://github.com/github.png") %>
       #   <% end %>
       #
       # @example As a link
       #
-      #   <%= render(Primer::Alpha::Nameplate.new(tag: :a, username: "github", href: "#")) do |c| %>
+      #   <%= render(Primer::Alpha::Nameplate.new(tag: :a, title: "github", href: "#")) do |c| %>
       #     <% c.avatar(src: "https://github.com/github.png") %>
       #   <% end %>
       #
-      # @param username [String] Username to be rendered beside the Avatar.
-      # @param full_name [String] Full name of user to be rendered below the username.
+      # @example With description
+      #
+      #   <%= render(Primer::Alpha::Nameplate.new(title: "github", description: "GitHub Inc.")) do |c| %>
+      #     <% c.avatar(src: "https://github.com/github.png") %>
+      #   <% end %>
+      #
+      # @param title [String] Title to be rendered beside the Avatar.
+      # @param description [String] Description to be rendered below the title.
       # @param tag [Symbol] <% one_of(Primer::Alpha::Nameplate::TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(username:, full_name: "", tag: DEFAULT_TAG, **system_arguments)
-        @username = username
-        @full_name = full_name
+      def initialize(title:, description: "", tag: DEFAULT_TAG, **system_arguments)
+        @title = title
+        @description = description
 
         @system_arguments = system_arguments
         @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
         @system_arguments[:display] = :flex
         @system_arguments[:align_items] = :center
         @system_arguments[:font_weight] = :bold
-        @system_arguments[:"aria-label"] = "#{username} (#{full_name})" if @full_name.present?
+        @system_arguments[:"aria-label"] = "#{title} (#{description})" if @description.present?
       end
 
       def wrapper
@@ -55,12 +61,12 @@ module Primer
         Primer::BaseComponent.new(**@system_arguments)
       end
 
-      def username
-        render(Primer::Beta::Text.new(font_weight: :bold)) { @username }
+      def title
+        render(Primer::Beta::Text.new(font_weight: :bold)) { @title }
       end
 
-      def full_name
-        render(Primer::Beta::Text.new(color: :muted, font_size: 6, underline: false)) { @full_name }
+      def description
+        render(Primer::Beta::Text.new(color: :muted, font_size: 6, underline: false)) { @description }
       end
     end
   end

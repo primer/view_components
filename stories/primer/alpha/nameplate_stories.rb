@@ -7,8 +7,8 @@ class Primer::Alpha::NameplateStories < ViewComponent::Storybook::Stories
 
   story(:nameplate) do
     controls do
-      username "github"
-      full_name ""
+      title "github"
+      description ""
       select(:tag, Primer::Alpha::Nameplate::TAG_OPTIONS, Primer::Alpha::Nameplate::DEFAULT_TAG)
       href "#"
     end
