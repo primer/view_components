@@ -32,6 +32,14 @@ module Primer
       Rails.application.config.primer_view_components.silence_deprecations = old_value
     end
 
+    def with_validate_class_names(new_value)
+      old_value = Rails.application.config.primer_view_components.validate_class_names
+      Rails.application.config.primer_view_components.validate_class_names = new_value
+      yield
+    ensure
+      Rails.application.config.primer_view_components.validate_class_names = old_value
+    end
+
     def assert_component_state(component, state)
       assert_equal component.status, Primer::Component::STATUSES[state]
     end
