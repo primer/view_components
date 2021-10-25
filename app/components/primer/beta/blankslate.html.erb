@@ -5,10 +5,10 @@
     <%= title %>
     <%= description %>
 
-    <%= button %>
-    <% if link.present? %>
+    <%= primary_action %>
+    <% if secondary_action.present? %>
       <p>
-        <%= link %>
+        <%= secondary_action %>
       </p>
     <% end %>
   <% end %>

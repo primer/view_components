@@ -78,28 +78,28 @@ class PrimerBetaBlankslateTest < Minitest::Test
     assert_selector("p", text: "Description")
   end
 
-  def test_renders_a_blankslate_component_with_a_button
+  def test_renders_a_blankslate_component_with_a_priamry_action
     render_inline(Primer::Beta::Blankslate.new) do |c|
       c.title(tag: :h2).with_content("Title")
-      c.button(href: "https://github.com").with_content("Button")
+      c.primary_action(href: "https://github.com").with_content("Button")
     end
 
     assert_selector("a.btn[href='https://github.com']", text: "Button")
   end
 
-  def test_renders_a_blankslate_component_with_a_button_with_custom_classes
+  def test_renders_a_blankslate_component_with_a_priamry_action_with_custom_classes
     render_inline(Primer::Beta::Blankslate.new) do |c|
       c.title(tag: :h2).with_content("Title")
-      c.button(href: "https://github.com", scheme: :outline).with_content("Button")
+      c.primary_action(href: "https://github.com", scheme: :outline).with_content("Button")
     end
 
     assert_selector("a.btn.btn-outline[href='https://github.com']", text: "Button")
   end
 
-  def test_renders_a_blankslate_component_with_a_link
+  def test_renders_a_blankslate_component_with_a_secondary_action
     render_inline(Primer::Beta::Blankslate.new) do |c|
       c.title(tag: :h2).with_content("Title")
-      c.link(href: "https://docs.github.com").with_content("Link")
+      c.secondary_action(href: "https://docs.github.com").with_content("Link")
     end
 
     assert_selector("a[href='https://docs.github.com']", text: "Link")

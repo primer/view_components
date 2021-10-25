@@ -34,17 +34,26 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
     end
   end
 
-  story(:button) do
+  story(:primary_action) do
     content do |c|
       c.title(tag: :h2).with_content("It looks like we have discovered a vulnerability")
-      c.button(href: "#").with_content("Fix issue")
+      c.primary_action(href: "#").with_content("Fix issue")
     end
   end
 
-  story(:link) do
+  story(:secondary_action) do
     content do |c|
       c.title(tag: :h2).with_content("It looks like we have discovered a vulnerability")
-      c.link(href: "#").with_content("Fix issue")
+      c.secondary_action(href: "#").with_content("Fix issue")
+    end
+  end
+
+  story(:full) do
+    content do |c|
+      c.title(tag: :h2).with_content("It looks like we have discovered a vulnerability")
+      c.description { "Millions of teams trust GitHub to keep their work safe" }
+      c.primary_action(href: "#").with_content("Fix issue")
+      c.secondary_action(href: "#").with_content("Learn more about vulnerabilities")
     end
   end
 end

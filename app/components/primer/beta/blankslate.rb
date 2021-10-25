@@ -6,8 +6,8 @@ module Primer
     #
     # @accessibility
     #   - Set the `title` heading level based on what is appropriate for your page hierarchy. <%= link_to_heading_practices %>
-    #   - `link` can be set to provide more information that is relevant in the context of the `Blankslate`.
-    #   - `link` text should be meaningful out of context and clearly describe the destination. Avoid using vague text like, "Learn more" or "Click here".
+    #   - `secondary_action` can be set to provide more information that is relevant in the context of the `Blankslate`.
+    #   - `secondary_action` text should be meaningful out of context and clearly describe the destination. Avoid using vague text like, "Learn more" or "Click here".
     class Blankslate < Primer::Component
       status :beta
 
@@ -61,10 +61,12 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # Optional Button
+      # Optional Primary action
+      #
+      # Use this slot to set a call to action for users.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :button, lambda { |href:, **system_arguments|
+      renders_one :primary_action, lambda { |href:, **system_arguments|
         system_arguments[:tag] = :a
         system_arguments[:href] = href
         system_arguments[:my] = 3
@@ -74,11 +76,13 @@ module Primer
         Primer::ButtonComponent.new(**system_arguments)
       }
 
-      # Optional Link
+      # Optional Secondary action
+      #
+      # Use this slot to provide more information for the user.
       #
       # @param href [String] URL to be used for the link.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :link, lambda { |href:, **system_arguments|
+      renders_one :secondary_action, lambda { |href:, **system_arguments|
         system_arguments[:href] = href
         # Padding is needed to increase touch area.
         system_arguments[:p] = 3
@@ -134,38 +138,38 @@ module Primer
       #       <% end %>
       #     <% end %>
       #
-      # @example Action button
+      # @example Primary action
       #   @description
-      #     Provide a `button` to guide users to take action from the blankslate. The `button` appears below the description and custom content.
+      #     Provide a `primary_action` to guide users to take action from the blankslate. The `primary_action` appears below the description and custom content.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.graphic(:icon, icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
-      #       <% c.button(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
+      #       <% c.primary_action(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
       #     <% end %>
       #
-      # @example Link
+      # @example Secondary action
       #   @description
-      #     Add an additional `link` to help users learn more about a feature. See <%= link_to_accessibility %>. `link` will be shown at the very bottom:
+      #     Add an additional `secondary_action` to help users learn more about a feature. See <%= link_to_accessibility %>. `secondary_action` will be shown at the very bottom:
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.graphic(:icon, icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
-      #       <% c.link(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
+      #       <% c.secondary_action(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
       #     <% end %>
       #
-      # @example Button and link
+      # @example Primary and secondary actions
       #   @description
-      #     `Button` and `link` can also be used together. The `button` will always be rendered before the `link`:
+      #     `primary_action` and `secondary_action` can also be used together. The `primary_action` will always be rendered before the `secondary_action`:
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.graphic(:icon, icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
-      #       <% c.button(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
-      #       <% c.link(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
+      #       <% c.primary_action(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
+      #       <% c.secondary_action(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
       #     <% end %>
       #
       # @example Variations
