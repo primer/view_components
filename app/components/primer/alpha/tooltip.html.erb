@@ -1,0 +1,6 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <%= render Primer::BaseComponent.new(**@content_system_arguments) do %>
+    <%= content %>
+  <% end %>
+  <%= render Primer::BaseComponent.new(**@tooltip_system_arguments).with_content(@text) %>
+<% end %>

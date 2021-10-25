@@ -63,6 +63,8 @@
 - ".UnderlineNav-body"
 - ".UnderlineNav-item"
 - ".UnderlineNav-octicon"
+- ".alpha-tooltipped"
+- ".alpha-tooltipped-container"
 - ".anim-rotate"
 - ".autocomplete-item"
 - ".autocomplete-results"

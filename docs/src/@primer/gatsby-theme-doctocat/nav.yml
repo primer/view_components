@@ -110,3 +110,5 @@
       url: /components/alpha/underlinenav
     - title: UnderlinePanels
       url: /components/alpha/underlinepanels
+    - title: Alpha Tooltip
+      url: /components/alpha/tooltip

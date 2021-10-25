@@ -27,6 +27,7 @@ namespace :docs do
     # Rails controller for rendering arbitrary ERB
     view_context = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context
     components = [
+      Primer::Alpha::Tooltip,
       Primer::Alpha::BorderBox::Header,
       Primer::Image,
       Primer::LocalTime,
@@ -90,7 +91,8 @@ namespace :docs do
       Primer::TabContainerComponent,
       Primer::TimeAgoComponent,
       Primer::Alpha::UnderlinePanels,
-      Primer::Alpha::TabPanels
+      Primer::Alpha::TabPanels,
+      Primer::Alpha::Tooltip
     ]
 
     all_components = Primer::Component.descendants - [Primer::BaseComponent]

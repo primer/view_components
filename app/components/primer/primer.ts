@@ -1,3 +1,4 @@
+import './alpha/tooltip'
 import './beta/auto_complete/auto_complete'
 import './clipboard_copy_component'
 import './tab_container_component'
