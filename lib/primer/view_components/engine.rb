@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rails/engine"
+require "primer/classify/utilities"
 
 module Primer
   module ViewComponents
