@@ -16,7 +16,7 @@ module Primer
         system_arguments[:mr] ||= 1
         system_arguments[:size] = @description.present? ? 32 : 24
         system_arguments[:alt] = ""
-        system_arguments[:"aria-disabled"] = "true"
+        system_arguments[:"aria-hidden"] = "true"
 
         Primer::Beta::Avatar.new(**system_arguments)
       }

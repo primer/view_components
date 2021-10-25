@@ -17,7 +17,7 @@ class PrimerAlphaNameplateTest < Minitest::Test
     end
 
     assert_selector("span.d-flex") do
-      assert_selector(".avatar[src='image.png']")
+      assert_selector(".avatar[src='image.png'][alt=''][aria-hidden='true']")
       assert_selector(".d-flex.flex-column") do
         assert_selector("span.text-bold", text: "title")
       end
@@ -38,7 +38,7 @@ class PrimerAlphaNameplateTest < Minitest::Test
     end
 
     assert_selector("span.d-flex[aria-label='title (description)']") do
-      assert_selector(".avatar[src='image.png']")
+      assert_selector(".avatar[src='image.png'][alt=''][aria-hidden='true']")
       assert_selector(".d-flex.flex-column") do
         assert_selector("span.text-bold", text: "title")
         assert_selector("span.text-bold", text: "description")
