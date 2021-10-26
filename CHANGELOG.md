@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.60
+
 ### Updates
 
 * Adding new Alpha component: BorderBox Header with optional `title` slot
