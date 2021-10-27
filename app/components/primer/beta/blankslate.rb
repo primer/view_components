@@ -9,6 +9,8 @@ module Primer
     #   - `secondary_action` can be set to provide more information that is relevant in the context of the `Blankslate`.
     #   - `secondary_action` text should be meaningful out of context and clearly describe the destination. Avoid using vague text like, "Learn more" or "Click here".
     class Blankslate < Primer::Component
+      include ViewComponent::PolymorphicSlots
+
       status :beta
 
       GRAPHIC_OPTIONS = %i[icon spinner image].freeze
@@ -17,24 +19,25 @@ module Primer
       #
       # @param type [Symbol]  <%= one_of(Primer::Beta::Blankslate::GRAPHIC_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :graphic, lambda { |type, **system_arguments|
-        system_arguments[:mb] = 3
-
-        case type
-        when :icon
+      renders_one :graphic, types: {
+        icon: lambda { |**system_arguments|
+          system_arguments[:mb] = 3
           system_arguments[:size] ||= :medium
           system_arguments[:classes] = class_names("blankslate-icon", system_arguments[:classes])
 
           Primer::OcticonComponent.new(**system_arguments)
-        when :spinner
+        },
+        spinner: lambda { |**system_arguments|
+          system_arguments[:mb] = 3
+
           Primer::SpinnerComponent.new(**system_arguments)
-        when :image
+        },
+        image: lambda { |**system_arguments|
+          system_arguments[:mb] = 3
           system_arguments[:size] = "56x56"
 
           Primer::Image.new(**system_arguments)
-        else
-          raise ArgumentError, "`type` must be one of #{GRAPHIC_OPTIONS.join(',')}."
-        end
+        }
       }
 
       # Required Title.
@@ -102,7 +105,7 @@ module Primer
       #     Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(icon: :globe) do |c| %>
-      #       <% c.graphic(:icon, icon: :globe) %>
+      #       <% c.graphic_icon(icon: :globe) %>
       #       <% c.title(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
@@ -112,7 +115,7 @@ module Primer
       #     Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic(:spinner, size: :large) %>
+      #       <% c.graphic_spinner(size: :large) %>
       #       <% c.title(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
@@ -122,7 +125,7 @@ module Primer
       #     Add an `image` to give context that an Octicon couldn't.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic(:image, src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
+      #       <% c.graphic_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
       #       <% c.title(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
@@ -143,7 +146,7 @@ module Primer
       #     Provide a `primary_action` to guide users to take action from the blankslate. The `primary_action` appears below the description and custom content.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic(:icon, icon: :book) %>
+      #       <% c.graphic_icon(icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #       <% c.primary_action(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
@@ -154,7 +157,7 @@ module Primer
       #     Add an additional `secondary_action` to help users learn more about a feature. See <%= link_to_accessibility %>. `secondary_action` will be shown at the very bottom:
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic(:icon, icon: :book) %>
+      #       <% c.graphic_icon(icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #       <% c.secondary_action(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
@@ -165,7 +168,7 @@ module Primer
       #     `primary_action` and `secondary_action` can also be used together. The `primary_action` will always be rendered before the `secondary_action`:
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic(:icon, icon: :book) %>
+      #       <% c.graphic_icon(icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #       <% c.primary_action(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
@@ -181,7 +184,7 @@ module Primer
       #       large: true,
       #       spacious: true,
       #     ) do |c| %>
-      #       <% c.graphic(:icon, icon: :book) %>
+      #       <% c.graphic_icon(icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
@@ -191,7 +194,7 @@ module Primer
       #     It's possible to add a border around the Blankslate. This will wrap the Blankslate in a BorderBox.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(border: true) do |c| %>
-      #       <% c.graphic(:icon, icon: :book) %>
+      #       <% c.graphic_icon(icon: :book) %>
       #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>

@@ -101,7 +101,7 @@ Add an `icon` to give additional context. Refer to the [Octicons](https://primer
 
 ```erb
 <%= render Primer::Beta::Blankslate.new(icon: :globe) do |c| %>
-  <% c.graphic(:icon, icon: :globe) %>
+  <% c.graphic_icon(icon: :globe) %>
   <% c.title(tag: :h2).with_content("Title") %>
   <% c.description { "Description"} %>
 <% end %>
@@ -115,7 +115,7 @@ Add a [SpinnerComponent](https://primer.style/view-components/components/spinner
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>
-  <% c.graphic(:spinner, size: :large) %>
+  <% c.graphic_spinner(size: :large) %>
   <% c.title(tag: :h2).with_content("Title") %>
   <% c.description { "Description"} %>
 <% end %>
@@ -129,7 +129,7 @@ Add an `image` to give context that an Octicon couldn't.
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>
-  <% c.graphic(:image, src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
+  <% c.graphic_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
   <% c.title(tag: :h2).with_content("Title") %>
   <% c.description { "Description"} %>
 <% end %>
@@ -158,7 +158,7 @@ Provide a `primary_action` to guide users to take action from the blankslate. Th
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>
-  <% c.graphic(:icon, icon: :book) %>
+  <% c.graphic_icon(icon: :book) %>
   <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
   <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
   <% c.primary_action(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
@@ -173,7 +173,7 @@ Add an additional `secondary_action` to help users learn more about a feature. S
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>
-  <% c.graphic(:icon, icon: :book) %>
+  <% c.graphic_icon(icon: :book) %>
   <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
   <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
   <% c.secondary_action(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
@@ -188,7 +188,7 @@ Add an additional `secondary_action` to help users learn more about a feature. S
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>
-  <% c.graphic(:icon, icon: :book) %>
+  <% c.graphic_icon(icon: :book) %>
   <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
   <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
   <% c.primary_action(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
@@ -208,7 +208,7 @@ There are a few variations of how the Blankslate appears: `narrow` adds a maximu
   large: true,
   spacious: true,
 ) do |c| %>
-  <% c.graphic(:icon, icon: :book) %>
+  <% c.graphic_icon(icon: :book) %>
   <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
   <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
 <% end %>
@@ -222,7 +222,7 @@ It's possible to add a border around the Blankslate. This will wrap the Blanksla
 
 ```erb
 <%= render Primer::Beta::Blankslate.new(border: true) do |c| %>
-  <% c.graphic(:icon, icon: :book) %>
+  <% c.graphic_icon(icon: :book) %>
   <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
   <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
 <% end %>
