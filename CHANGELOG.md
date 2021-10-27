@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.60
+
 ### Updates
 
 * Adding new Alpha component: BorderBox Header with optional `title` slot
@@ -59,6 +61,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Make `Spinner` more accessible by adding `sr-only` loading text.
 
     *Manuel Puyol*
+
+* Make class name validation configurable instead of relying on the Rails env.
+
+    *Cameron Dutro*
 
 ### Bug Fixes
 
