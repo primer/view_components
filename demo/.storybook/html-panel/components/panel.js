@@ -21,10 +21,7 @@ export const Panel = () => {
   useChannel({
     [STORY_RENDERED]: () => {
       const iframe = document.getElementById('storybook-preview-iframe')
-      console.log(1)
-      debugger
       const html = iframe.contentWindow.document.getElementById(STORY_ID).innerHTML
-      console.log(html)
       setHTML(html)
     },
   });
