@@ -8,8 +8,8 @@ class Primer::CacheableTest < Minitest::Test
   class CachedComponent < ViewComponent::Base
     include Primer::Cacheable
 
-    def initialize(*args)
-      @delegate = Primer::OcticonComponent.new(*args)
+    def initialize(**args)
+      @delegate = Primer::OcticonComponent.new(**args)
     end
 
     def call
