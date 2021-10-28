@@ -44,9 +44,10 @@ module Primer
   module Cacheable
     extend ActiveSupport::Concern
 
+    # @private
     module CacheCall
       def call
-        @__vc_cached_call ||= super
+        @__pvc_cached_call ||= super # rubocop:disable Naming/MemoizedInstanceVariableName
       end
     end
 

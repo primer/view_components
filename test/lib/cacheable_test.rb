@@ -17,7 +17,7 @@ class Primer::CacheableTest < Minitest::Test
     end
 
     def self.cache_container
-      @_cache_container ||= {}
+      @cache_container ||= {}
     end
   end
 
@@ -52,8 +52,6 @@ class Primer::CacheableTest < Minitest::Test
     def initialize(value)
       @value = value
     end
-
-    private
 
     def self.cache_container
       Current.primer_cache ||= {}
