@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "classify/attr_cache"
 require_relative "classify/cache"
 require_relative "classify/flex"
 require_relative "classify/utilities"
@@ -121,9 +122,6 @@ module Primer
         classes
       end
 
-      # NOTE: This is a fairly naive implementation that we're building as we go.
-      # Feel free to refactor as this is thoroughly tested.
-      #
       # Utility for mapping component configuration into Primer CSS class names
       #
       # styles_hash - A hash with utility keys that mimic the interface used by https://github.com/primer/components
@@ -151,7 +149,10 @@ module Primer
       end
 
       def extract_one_css_attr(classes, key, val, breakpoint)
-        found_classes = classes_from(key, val, breakpoint)
+        found_classes = Primer::Classify::AttrCache.instance.fetch(breakpoint, key, val) do
+          classes_from(key, val, breakpoint)
+        end
+
         classes << found_classes if found_classes
       end
 
@@ -200,5 +201,7 @@ module Primer
         Rails.application.config.primer_view_components.force_system_arguments
       end
     end
+
+    AttrCache.instance.preload!
   end
 end

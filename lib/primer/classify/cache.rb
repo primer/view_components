@@ -42,8 +42,10 @@ module Primer
         value = @lookup.delete(key) { found = false }
 
         if found
+          ActiveSupport::Notifications.instrument("primer_view_components.classify_cache.hit")
           @lookup[key] = value
         else
+          ActiveSupport::Notifications.instrument("primer_view_components.classify_cache.miss")
           return unless block_given?
 
           new_value = @lookup[key] = yield

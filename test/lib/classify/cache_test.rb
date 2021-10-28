@@ -5,8 +5,12 @@ require "test_helper"
 class PrimerClassifyCacheTest < Minitest::Test
   def test_clear_clears_the_cache
     Primer::Classify::Cache.instance.clear!
+    Primer::Classify::AttrCache.instance.clear!
 
     assert Primer::Classify::Cache.instance.empty?
+    assert Primer::Classify::AttrCache.instance.empty?
+  ensure
+    Primer::Classify::AttrCache.instance.preload!
   end
 
   def test_evicts_entries
