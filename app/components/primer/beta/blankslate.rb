@@ -18,6 +18,7 @@ module Primer
       # Optional graphic visual.
       #
       # Use:
+      #
       # - `graphic_icon` for an <%= link_to_component(Primer::OcticonComponent) %>.
       # - `graphic_image` for an <%= link_to_component(Primer::Image) %>.
       # - `graphic_spinner` for a <%= link_to_component(Primer::SpinnerComponent) %>.
