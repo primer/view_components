@@ -34,9 +34,13 @@ Use `Blankslate` when there is a lack of content within a page or section. Use a
 
 Optional graphic visual.
 
+Use:
+- `graphic_icon` for an [Octicon](/components/octicon).
+- `graphic_image` for an [Image](/components/image).
+- `graphic_spinner` for a [Spinner](/components/spinner).
+
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `type` | `Symbol` | N/A | One of `:icon`, `:image`, or `:spinner`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `Title`

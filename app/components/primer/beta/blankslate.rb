@@ -17,7 +17,11 @@ module Primer
 
       # Optional graphic visual.
       #
-      # @param type [Symbol]  <%= one_of(Primer::Beta::Blankslate::GRAPHIC_OPTIONS) %>
+      # Use:
+      # - `graphic_icon` for an <%= link_to_component(Primer::OcticonComponent) %>.
+      # - `graphic_image` for an <%= link_to_component(Primer::Image) %>.
+      # - `graphic_spinner` for a <%= link_to_component(Primer::SpinnerComponent) %>.
+      #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :graphic, types: {
         icon: lambda { |**system_arguments|
