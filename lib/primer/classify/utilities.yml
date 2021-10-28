@@ -23,6 +23,30 @@
   :rotate:
   - anim-rotate
 :color:
+  :default:
+  - color-fg-default
+  :muted:
+  - color-fg-muted
+  :subtle:
+  - color-fg-subtle
+  :accent:
+  - color-fg-accent
+  :success:
+  - color-fg-success
+  :attention:
+  - color-fg-attention
+  :severe:
+  - color-fg-severe
+  :danger:
+  - color-fg-danger
+  :done:
+  - color-fg-done
+  :sponsors:
+  - color-fg-sponsors
+  :on_emphasis:
+  - color-fg-on-emphasis
+  :inherit:
+  - color-fg-inherit
   :text_primary:
   - color-text-primary
   :text_secondary:
@@ -55,24 +79,45 @@
   - color-icon-success
   :icon_warning:
   - color-icon-warning
-:border_color:
-  :primary:
-  - color-border-primary
-  :secondary:
-  - color-border-secondary
-  :tertiary:
-  - color-border-tertiary
-  :inverse:
-  - color-border-inverse
-  :info:
-  - color-border-info
-  :success:
-  - color-border-success
-  :danger:
-  - color-border-danger
-  :warning:
-  - color-border-warning
 :bg:
+  :default:
+  - color-bg-default
+  :overlay:
+  - color-bg-overlay
+  :inset:
+  - color-bg-inset
+  :subtle:
+  - color-bg-subtle
+  :emphasis:
+  - color-bg-emphasis
+  :accent:
+  - color-bg-accent
+  :accent_emphasis:
+  - color-bg-accent-emphasis
+  :success:
+  - color-bg-success
+  :success_emphasis:
+  - color-bg-success-emphasis
+  :attention:
+  - color-bg-attention
+  :attention_emphasis:
+  - color-bg-attention-emphasis
+  :severe:
+  - color-bg-severe
+  :severe_emphasis:
+  - color-bg-severe-emphasis
+  :danger:
+  - color-bg-danger
+  :danger_emphasis:
+  - color-bg-danger-emphasis
+  :done:
+  - color-bg-done
+  :done_emphasis:
+  - color-bg-done-emphasis
+  :sponsors:
+  - color-bg-sponsors
+  :sponsors_emphasis:
+  - color-bg-sponsors-emphasis
   :canvas:
   - color-bg-canvas
   :canvas_inverse:
@@ -85,24 +130,65 @@
   - color-bg-secondary
   :tertiary:
   - color-bg-tertiary
-  :overlay:
-  - color-bg-overlay
   :info:
   - color-bg-info
   :info_inverse:
   - color-bg-info-inverse
-  :danger:
-  - color-bg-danger
   :danger_inverse:
   - color-bg-danger-inverse
-  :success:
-  - color-bg-success
   :success_inverse:
   - color-bg-success-inverse
   :warning:
   - color-bg-warning
   :warning_inverse:
   - color-bg-warning-inverse
+:border_color:
+  :default:
+  - color-border-default
+  :muted:
+  - color-border-muted
+  :subtle:
+  - color-border-subtle
+  :accent:
+  - color-border-accent
+  :accent_emphasis:
+  - color-border-accent-emphasis
+  :success:
+  - color-border-success
+  :success_emphasis:
+  - color-border-success-emphasis
+  :attention:
+  - color-border-attention
+  :attention_emphasis:
+  - color-border-attention-emphasis
+  :severe:
+  - color-border-severe
+  :severe_emphasis:
+  - color-border-severe-emphasis
+  :danger:
+  - color-border-danger
+  :danger_emphasis:
+  - color-border-danger-emphasis
+  :done:
+  - color-border-done
+  :done_emphasis:
+  - color-border-done-emphasis
+  :sponsors:
+  - color-border-sponsors
+  :sponsors_emphasis:
+  - color-border-sponsors-emphasis
+  :primary:
+  - color-border-primary
+  :secondary:
+  - color-border-secondary
+  :tertiary:
+  - color-border-tertiary
+  :inverse:
+  - color-border-inverse
+  :info:
+  - color-border-info
+  :warning:
+  - color-border-warning
 :position:
   :static:
   - position-static
@@ -534,6 +620,8 @@
   - mb-md-n12
   - mb-lg-n12
   - mb-xl-n12
+  :auto:
+  - mb-auto
 :mr:
   0:
   - mr-0
@@ -613,6 +701,8 @@
   - mr-md-n6
   - mr-lg-n6
   - mr-xl-n6
+  :auto:
+  - mr-auto
 :ml:
   0:
   - ml-0
@@ -692,6 +782,8 @@
   - ml-md-n6
   - ml-lg-n6
   - ml-xl-n6
+  :auto:
+  - ml-auto
 :mx:
   0:
   - mx-0

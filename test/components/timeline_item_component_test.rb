@@ -54,11 +54,11 @@ class PrimerTimelineItemComponentTest < Minitest::Test
 
   def test_renders_avatar_with_custom_size
     render_inline(Primer::TimelineItemComponent.new) do |component|
-      component.avatar(alt: "mock", src: "mock", size: 30)
+      component.avatar(alt: "mock", src: "mock", size: 20)
     end
 
     assert_selector(".TimelineItem-avatar")
-    assert_selector(".avatar[size=30][width=30][height=30]")
+    assert_selector(".avatar[size=20][width=20][height=20]")
   end
 
   def test_renders_body

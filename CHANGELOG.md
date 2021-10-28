@@ -30,7 +30,21 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+* Further improvements to classify performance.
+
+    *Cameron Dutro*
+
+## 0.0.60
+
 ### Updates
+
+* Adding new Alpha component: BorderBox Header with optional `title` slot
+
+    *Katie Foster @inkblotty*
+
+* Add note about `Breadcrumbs` not being responsive.
+
+    *Joel Hawksley*
 
 * Handling arguments that aren't system arguments or string arguments in primer_octicon.
 
@@ -44,11 +58,29 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan*
 
-* Further improvements to classify performance.
+* Adding new system color arguments, and deprecating old arguments.
+
+    *Jon Rohan*
+
+* Make `Spinner` more accessible by adding `sr-only` loading text.
+
+    *Manuel Puyol*
+
+* Make class name validation configurable instead of relying on the Rails env.
 
     *Cameron Dutro*
 
+### Bug Fixes
+
+* Removes unwanted bottom border from active tab of `Alpha::TabNav`.
+
+    *Ned Schwartz*
+
 ### Breaking changes
+
+* Add size restriction to `Avatar`.
+
+    *Kate Higa*
 
 * Remove `square` attribute from `Avatar` in favor of `shape`. This change also affects `TimelineItem` `avatar` slot.
 

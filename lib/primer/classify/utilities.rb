@@ -28,13 +28,17 @@ module Primer
         "^width" => "w",
         "^height" => "h",
         "^color-bg" => "bg",
-        "^color-border" => "border_color"
+        "^color-border" => "border_color",
+        "^color-fg" => "color"
       }.freeze
 
       SUPPORTED_KEY_CACHE = Hash.new { |h, k| h[k] = !UTILITIES[k].nil? }
       BREAKPOINT_INDEX_CACHE = Hash.new { |h, k| h[k] = BREAKPOINTS.index(k) }
 
       class << self
+        attr_accessor :validate_class_names
+        alias validate_class_names? validate_class_names
+
         def classname(key, val, breakpoint = "")
           # For cases when `argument: false` is passed in, treat like we would nil
           return nil unless val
@@ -66,7 +70,7 @@ module Primer
         # returns Boolean
         def supported_selector?(selector)
           # This method is too slow to run in production
-          return false if ENV["RAILS_ENV"] == "production"
+          return false unless validate_class_names?
 
           find_selector(selector).present?
         end
@@ -90,7 +94,7 @@ module Primer
         # Extract hash from classes ie. "mr-1 mb-2 foo" => { mr: 1, mb: 2, classes: "foo" }
         def classes_to_hash(classes)
           # This method is too slow to run in production
-          return { classes: classes } if ENV["RAILS_ENV"] == "production"
+          return { classes: classes } unless validate_class_names?
 
           obj = {}
           classes = classes.split
@@ -173,19 +177,19 @@ module Primer
 
         def validate(key, val, breakpoint)
           unless supported_key?(key)
-            raise ArgumentError, "#{key} is not a valid Primer utility key" unless ENV["RAILS_ENV"] == "production"
+            raise ArgumentError, "#{key} is not a valid Primer utility key" if validate_class_names?
 
             return ""
           end
 
           unless breakpoint.empty? || responsive?(key, val)
-            raise ArgumentError, "#{key} does not support responsive values" unless ENV["RAILS_ENV"] == "production"
+            raise ArgumentError, "#{key} does not support responsive values" if validate_class_names?
 
             return ""
           end
 
           unless supported_value?(key, val)
-            raise ArgumentError, "#{val} is not a valid value for :#{key}. Use one of #{mappings(key)}" unless ENV["RAILS_ENV"] == "production"
+            raise ArgumentError, "#{val} is not a valid value for :#{key}. Use one of #{mappings(key)}" if validate_class_names?
 
             return "#{key.to_s.dasherize}-#{val.to_s.dasherize}"
           end

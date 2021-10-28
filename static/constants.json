@@ -1,4 +1,15 @@
 {
+  "Primer::Alpha::BorderBox::Header": {
+    "TITLE_TAG_FALLBACK": "h2",
+    "TITLE_TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
   "Primer::Alpha::ButtonMarketing": {
     "DEFAULT_SCHEME": "default",
     "DEFAULT_TAG": "button",
@@ -90,9 +101,19 @@
   },
   "Primer::Beta::Avatar": {
     "DEFAULT_SHAPE": "circle",
+    "DEFAULT_SIZE": 20,
     "SHAPE_OPTIONS": [
       "circle",
       "square"
+    ],
+    "SIZE_OPTIONS": [
+      16,
+      20,
+      24,
+      32,
+      40,
+      48,
+      80
     ],
     "SMALL_THRESHOLD": 24
   },
