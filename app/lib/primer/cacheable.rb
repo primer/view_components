@@ -56,11 +56,12 @@ module Primer
     end
 
     class_methods do
-      def with(*args, **kwargs, &block)
-        key = [args, kwargs, block]
+      def with(*args, &block)
+        key = [args, block]
 
-        cache_container[key] ||= new(*args, **kwargs, &block)
+        cache_container[key] ||= new(*args, &block)
       end
+      ruby2_keywords(:with) if respond_to?(:ruby2_keywords, true)
     end
   end
 end
