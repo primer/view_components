@@ -14,7 +14,7 @@ module Primer
       # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Avatar) %>.
       renders_one :avatar, lambda { |**system_arguments|
         system_arguments[:mr] ||= 1
-        system_arguments[:size] = @description.present? ? 32 : 24
+        system_arguments[:size] ||= @description.present? ? 32 : 24
         system_arguments[:alt] = ""
         system_arguments[:"aria-hidden"] = "true"
 
@@ -37,6 +37,12 @@ module Primer
       #
       #   <%= render(Primer::Alpha::Nameplate.new(title: "github", description: "GitHub Inc.")) do |c| %>
       #     <% c.avatar(src: "https://github.com/github.png") %>
+      #   <% end %>
+      #
+      # @example Custom avatar size
+      #
+      #   <%= render(Primer::Alpha::Nameplate.new(title: "github", description: "GitHub Inc.")) do |c| %>
+      #     <% c.avatar(src: "https://github.com/github.png", size: 16) %>
       #   <% end %>
       #
       # @param title [String] Title to be rendered beside the Avatar.
@@ -72,7 +78,7 @@ module Primer
       end
 
       def description
-        render(Primer::Beta::Text.new(color: :muted, font_size: 6, underline: false)) { @description }
+        render(Primer::Beta::Text.new(color: :text_secondary, font_size: 6, underline: false)) { @description } if @description.present?
       end
     end
   end

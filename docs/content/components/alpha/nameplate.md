@@ -40,7 +40,7 @@ Required Avatar
 
 ### Default
 
-<Example src="<span data-view-component='true' class='d-flex flex-items-center text-bold'>  <img aria-hidden='true' src='https://github.com/github.png' alt='' size='24' height='24' width='24' data-view-component='true' class='avatar circle mr-1'></img>  <div class='d-flex flex-column'>    <span data-view-component='true' class='text-bold'>github</span>    <span data-view-component='true' class='color-fg-muted f6 no-underline'></span>  </div></span>" />
+<Example src="<span data-view-component='true' class='d-flex flex-items-center text-bold'>  <img aria-hidden='true' src='https://github.com/github.png' alt='' size='24' height='24' width='24' data-view-component='true' class='avatar circle mr-1'></img>  <div class='d-flex flex-column'>    <span data-view-component='true' class='text-bold'>github</span>      </div></span>" />
 
 ```erb
 
@@ -51,7 +51,7 @@ Required Avatar
 
 ### As a link
 
-<Example src="<a href='#' data-view-component='true' class='d-flex flex-items-center text-bold'>  <img aria-hidden='true' src='https://github.com/github.png' alt='' size='24' height='24' width='24' data-view-component='true' class='avatar circle mr-1'></img>  <div class='d-flex flex-column'>    <span data-view-component='true' class='text-bold'>github</span>    <span data-view-component='true' class='color-fg-muted f6 no-underline'></span>  </div></a>" />
+<Example src="<a href='#' data-view-component='true' class='d-flex flex-items-center text-bold'>  <img aria-hidden='true' src='https://github.com/github.png' alt='' size='24' height='24' width='24' data-view-component='true' class='avatar circle mr-1'></img>  <div class='d-flex flex-column'>    <span data-view-component='true' class='text-bold'>github</span>      </div></a>" />
 
 ```erb
 
@@ -62,11 +62,22 @@ Required Avatar
 
 ### With description
 
-<Example src="<span aria-label='github (GitHub Inc.)' data-view-component='true' class='d-flex flex-items-center text-bold'>  <img aria-hidden='true' src='https://github.com/github.png' alt='' size='32' height='32' width='32' data-view-component='true' class='avatar circle mr-1'></img>  <div class='d-flex flex-column'>    <span data-view-component='true' class='text-bold'>github</span>    <span data-view-component='true' class='color-fg-muted f6 no-underline'>GitHub Inc.</span>  </div></span>" />
+<Example src="<span aria-label='github (GitHub Inc.)' data-view-component='true' class='d-flex flex-items-center text-bold'>  <img aria-hidden='true' src='https://github.com/github.png' alt='' size='32' height='32' width='32' data-view-component='true' class='avatar circle mr-1'></img>  <div class='d-flex flex-column'>    <span data-view-component='true' class='text-bold'>github</span>    <span data-view-component='true' class='color-text-secondary f6 no-underline'>GitHub Inc.</span>  </div></span>" />
 
 ```erb
 
 <%= render(Primer::Alpha::Nameplate.new(title: "github", description: "GitHub Inc.")) do |c| %>
   <% c.avatar(src: "https://github.com/github.png") %>
+<% end %>
+```
+
+### Custom avatar size
+
+<Example src="<span aria-label='github (GitHub Inc.)' data-view-component='true' class='d-flex flex-items-center text-bold'>  <img aria-hidden='true' src='https://github.com/github.png' alt='' size='16' height='16' width='16' data-view-component='true' class='avatar avatar-small circle mr-1'></img>  <div class='d-flex flex-column'>    <span data-view-component='true' class='text-bold'>github</span>    <span data-view-component='true' class='color-text-secondary f6 no-underline'>GitHub Inc.</span>  </div></span>" />
+
+```erb
+
+<%= render(Primer::Alpha::Nameplate.new(title: "github", description: "GitHub Inc.")) do |c| %>
+  <% c.avatar(src: "https://github.com/github.png", size: 16) %>
 <% end %>
 ```
