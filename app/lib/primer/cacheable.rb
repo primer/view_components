@@ -23,7 +23,7 @@ module Primer
   #
   #   private
   #
-  #   def cache_container
+  #   def self.cache_container
   #     Current.primer_cache ||= {}
   #     Current.primer_cache[name] ||= {}
   #   end
@@ -34,7 +34,7 @@ module Primer
   # render MyComponent.new(2) # Instantiates and renders a new instance
   # ```
   #
-  # Components utilizing this method must implement a method called
+  # Components utilizing this method must implement a class method called
   # `cache_container` that exposes a mutable hash. For most use-cases
   # `ActiveSupport::CurrentAttributes` is sufficient and will reset the cache
   # after each render.
