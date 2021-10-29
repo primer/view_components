@@ -16,8 +16,7 @@ module Primer
       config.primer_view_components = ActiveSupport::OrderedOptions.new
 
       config.primer_view_components.force_system_arguments = false
-      config.primer_view_components.silence_d
-      eprecations = false
+      config.primer_view_components.silence_deprecations = false
       config.primer_view_components.max_classify_cache_size = 500
       config.primer_view_components.validate_class_names = !Rails.env.production?
 
