@@ -25,9 +25,11 @@ module Primer
       end
 
       def disable
+        # :nocov:
         @cache_enabled = false
         yield
         @cache_enabled = true
+        # :nocov:
       end
 
       def clear!
