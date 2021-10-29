@@ -34,6 +34,10 @@ module Primer
         @lookup.clear
       end
 
+      def empty?
+        @lookup.empty?
+      end
+
       def preload!
         preload(
           keys: Primer::Classify::Flex::DIRECTION_KEY,
