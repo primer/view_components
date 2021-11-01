@@ -11,7 +11,7 @@ module ERBLint
 
       TAGS = %w[div].freeze
       CLASSES = %w[container-xl container-lg container-md container-sm].freeze
-      MESSAGE = "We are migrating two-column layouts to use [Primer::Alpha::Layout](https://primer.style/view-components/components/closebutton), please use that instead of raw HTML."
+      MESSAGE = "We are migrating two-column layouts to use [Primer::Alpha::Layout](https://primer.style/view-components/components/layout), please use that instead of raw HTML."
       COMPONENT = "Primer::Alpha::Layout"
 
       class Breakpoints
@@ -121,7 +121,7 @@ module ERBLint
             :none
           else
             if (gtr = gutters.min_value)
-              gtr
+              gtr.to_sym
             else
               Primer::Alpha::Layout::GUTTER_DEFAULT
             end
@@ -204,17 +204,34 @@ module ERBLint
       private
 
       def map_arguments(tag, tag_tree)
-        columns = columns_from(tag_tree)
+        tags = tag_tree[:children].select { |c| c.is_a?(Hash) }
+
+        if d_flex?(tags)
+          args_from(tag_tree, tags.first)
+        else
+          args_from(tag_tree, tag_tree)
+        end
+      end
+
+      def d_flex?(tags)
+        tags.size == 1 && classes_from(tags.first[:tag]).include?("d-flex")
+      end
+
+      def args_from(container_tag_tree, columns_tag_tree)
+        columns = columns_from(columns_tag_tree)
         return unless columns.size == 2
 
-        gutters = gutters_from(tag)
-        container = Container.new(columns, gutters, tag)
+        container_tag = container_tag_tree[:tag]
+        gutters = gutters_from(container_tag)
+        container = Container.new(columns, gutters, container_tag)
         return unless container.sidebar.widths.min_value && container.main.widths.min_value
 
         ContainerArgs.new(container)
       end
 
       def correction(args)
+        return unless args
+
         <<~ERB.strip
           <%= render Primer::Alpha::Layout.new#{hash_as_args(args.component_args)} do |component| %>
             <% component.sidebar#{hash_as_args(args.sidebar_args)} do %>
