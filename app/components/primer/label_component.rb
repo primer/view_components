@@ -14,15 +14,20 @@ module Primer
     SCHEME_MAPPINGS = {
       primary: "Label--primary",
       secondary: "Label--secondary",
-      info: "Label--info",
+      accent: "Label--accent",
       success: "Label--success",
-      warning: "Label--warning",
+      attention: "Label--attention",
+      severe: "Label--severe",
       danger: "Label--danger",
+      done: "Label--done",
+      sponsors: "Label--sponsors",
       # deprecated
+      info: "Label--info",
+      warning: "Label--warning",
       orange: "Label--orange",
       purple: "Label--purple"
     }.freeze
-    DEPRECATED_SCHEME_OPTIONS = [:orange, :purple].freeze
+    DEPRECATED_SCHEME_OPTIONS = [:info, :warning, :orange, :purple].freeze
     SCHEME_OPTIONS = ([*SCHEME_MAPPINGS.keys, nil] - DEPRECATED_SCHEME_OPTIONS).freeze
 
     VARIANT_MAPPINGS = {
@@ -35,10 +40,13 @@ module Primer
     #   <%= render(Primer::LabelComponent.new) { "Default" } %>
     #   <%= render(Primer::LabelComponent.new(scheme: :primary)) { "Primary" } %>
     #   <%= render(Primer::LabelComponent.new(scheme: :secondary)) { "Secondary" } %>
-    #   <%= render(Primer::LabelComponent.new(scheme: :info)) { "Info" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :accent)) { "Accent" } %>
     #   <%= render(Primer::LabelComponent.new(scheme: :success)) { "Success" } %>
-    #   <%= render(Primer::LabelComponent.new(scheme: :warning)) { "Warning" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :attention)) { "Attention" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :severe)) { "Severe" } %>
     #   <%= render(Primer::LabelComponent.new(scheme: :danger)) { "Danger" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :done)) { "Done" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :sponsors)) { "Sponsors" } %>
     #
     # @example Variants
     #   <%= render(Primer::LabelComponent.new) { "Default" } %>
