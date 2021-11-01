@@ -109,7 +109,7 @@ module Primer
       #   @description
       #     Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
       #   @code
-      #     <%= render Primer::Beta::Blankslate.new(icon: :globe) do |c| %>
+      #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.graphic_icon(icon: :globe) %>
       #       <% c.title(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
