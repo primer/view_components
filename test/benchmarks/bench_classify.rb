@@ -50,7 +50,17 @@ class BenchClassify < Minitest::Benchmark
     end
   end
 
-  def bench_allocations_with_cache_warmed
+  def bench_allocations_with_attr_cache_warmed
+    Primer::Classify::AttrCache.instance.clear!
+    Primer::Classify::AttrCache.instance.preload!
+    Primer::Classify::Cache.instance.clear!
+
+    assert_allocations "3.0" => 47, "2.7" => 46, "2.6" => 41, "2.5" => 42 do
+      Primer::Classify.call(**@values)
+    end
+  end
+
+  def bench_allocations_with_both_caches_warmed
     Primer::Classify::AttrCache.instance.clear!
     Primer::Classify::AttrCache.instance.preload!
 

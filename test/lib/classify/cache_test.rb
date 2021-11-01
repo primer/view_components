@@ -3,6 +3,14 @@
 require "test_helper"
 
 class PrimerClassifyCacheTest < Minitest::Test
+  def setup
+    @original_max_size = Rails.application.config.primer_view_components.max_classify_cache_size
+  end
+
+  def teardown
+    Rails.application.config.primer_view_components.max_classify_cache_size = @original_max_size
+  end
+
   def test_clear_clears_the_cache
     Primer::Classify::Cache.instance.clear!
     Primer::Classify::AttrCache.instance.clear!
@@ -34,31 +42,26 @@ class PrimerClassifyCacheTest < Minitest::Test
     assert_includes lookup, [:baz].hash
     assert_includes lookup, [:boo].hash
     refute_includes lookup, [:foo].hash
-
-    cache.max_size = Rails.application.config.primer_view_components.max_classify_cache_size
     # rubocop:enable Style/RedundantFetchBlock
   end
 
+  HIT_EVENT = "primer_view_components.classify_cache.hit"
+  MISS_EVENT = "primer_view_components.classify_cache.miss"
+
   def test_notifies_on_cache_hits_and_misses
+    Primer::Classify::Cache.instance.clear!
+
     hits = 0
     misses = 0
 
-    hit_sub = ActiveSupport::Notifications.subscribe("primer_view_components.classify_cache.hit") do
-      hits += 1
+    ActiveSupport::Notifications.subscribed(-> (*) { hits += 1 }, HIT_EVENT) do
+      ActiveSupport::Notifications.subscribed(-> (*) { misses += 1 }, MISS_EVENT) do
+        Primer::Classify.call(classes: "m-1")
+        Primer::Classify.call(classes: "m-1")
+      end
     end
-
-    miss_sub = ActiveSupport::Notifications.subscribe("primer_view_components.classify_cache.miss") do
-      misses += 1
-    end
-
-    Primer::Classify::Cache.instance.clear!
-    Primer::Classify.call(classes: "m-1")
-    Primer::Classify.call(classes: "m-1")
 
     assert_equal hits, 1
     assert_equal misses, 1
-  ensure
-    ActiveSupport::Notifications.unsubscribe(hit_sub) if hit_sub
-    ActiveSupport::Notifications.unsubscribe(miss_sub) if miss_sub
   end
 end
