@@ -7,6 +7,8 @@ linters:
     enabled: true
   LabelComponentMigrationCounter:
     enabled: true
+  LayoutComponentMigrationCounter:
+    enabled: true
   Rubocop:
     enabled: true
     rubocop_config:
