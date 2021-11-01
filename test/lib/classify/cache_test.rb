@@ -54,8 +54,8 @@ class PrimerClassifyCacheTest < Minitest::Test
     hits = 0
     misses = 0
 
-    ActiveSupport::Notifications.subscribed(-> (*) { hits += 1 }, HIT_EVENT) do
-      ActiveSupport::Notifications.subscribed(-> (*) { misses += 1 }, MISS_EVENT) do
+    ActiveSupport::Notifications.subscribed(->(*) { hits += 1 }, HIT_EVENT) do
+      ActiveSupport::Notifications.subscribed(->(*) { misses += 1 }, MISS_EVENT) do
         Primer::Classify.call(classes: "m-1")
         Primer::Classify.call(classes: "m-1")
       end
