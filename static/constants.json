@@ -134,6 +134,13 @@
       "span"
     ]
   },
+  "Primer::Beta::Blankslate": {
+    "GRAPHIC_OPTIONS": [
+      "icon",
+      "spinner",
+      "image"
+    ]
+  },
   "Primer::Beta::Breadcrumbs": {
     "ARGS_DENYLIST": {
       "[:p, :pt, :pb, :pr, :pl, :px, :py]": "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead.",
