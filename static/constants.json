@@ -405,26 +405,36 @@
   "Primer::LabelComponent": {
     "DEFAULT_TAG": "span",
     "DEPRECATED_SCHEME_OPTIONS": [
+      "info",
+      "warning",
       "orange",
       "purple"
     ],
     "SCHEME_MAPPINGS": {
       "primary": "Label--primary",
       "secondary": "Label--secondary",
-      "info": "Label--info",
+      "accent": "Label--accent",
       "success": "Label--success",
-      "warning": "Label--warning",
+      "attention": "Label--attention",
+      "severe": "Label--severe",
       "danger": "Label--danger",
+      "done": "Label--done",
+      "sponsors": "Label--sponsors",
+      "info": "Label--info",
+      "warning": "Label--warning",
       "orange": "Label--orange",
       "purple": "Label--purple"
     },
     "SCHEME_OPTIONS": [
       "primary",
       "secondary",
-      "info",
+      "accent",
       "success",
-      "warning",
+      "attention",
+      "severe",
       "danger",
+      "done",
+      "sponsors",
       null
     ],
     "TAG_OPTIONS": [

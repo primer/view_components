@@ -671,8 +671,9 @@
   - name: scheme
     type: Symbol
     default: "`nil`"
-    description: One of `:danger`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`,
-      `:success`, or `:warning`.
+    description: One of `:accent`, `:attention`, `:danger`, `:done`, `:info`, `:orange`,
+      `:primary`, `:purple`, `:secondary`, `:severe`, `:sponsors`, `:success`, or
+      `:warning`.
   - name: variant
     type: Symbol
     default: "`nil`"
