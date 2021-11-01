@@ -7,6 +7,13 @@ module ERBLint
   module Linters
     # Counts the number of times a two-column layout in HTML is used instead of the component.
     class LayoutComponentMigrationCounter < BaseLinter
+      SIDEBAR_WIDTH_DEFAULT = :default
+      GUTTER_DEFAULT = :default
+      STACKING_BREAKPOINT_DEFAULT = :md
+      FIRST_IN_SOURCE_DEFAULT = :sidebar
+      WIDTH_DEFAULT = :full
+      SIDEBAR_WIDTH_DEFAULT = :default
+
       include Autocorrectable
 
       TAGS = %w[div].freeze
@@ -112,7 +119,7 @@ module ERBLint
             when 4
               :wide
             else
-              Primer::Alpha::Layout::SIDEBAR_WIDTH_DEFAULT
+              SIDEBAR_WIDTH_DEFAULT
           end
         end
 
@@ -123,7 +130,7 @@ module ERBLint
             if (gtr = gutters.min_value)
               gtr.to_sym
             else
-              Primer::Alpha::Layout::GUTTER_DEFAULT
+              GUTTER_DEFAULT
             end
           end
         end
@@ -140,31 +147,31 @@ module ERBLint
 
         def stacking_breakpoint
           container.stacking_breakpoint.tap do |breakpoint|
-            return if breakpoint == Primer::Alpha::Layout::STACKING_BREAKPOINT_DEFAULT
+            return if breakpoint == STACKING_BREAKPOINT_DEFAULT
           end
         end
 
         def gutter
           container.gutter.tap do |gtr|
-            return if gtr == Primer::Alpha::Layout::GUTTER_DEFAULT
+            return if gtr == GUTTER_DEFAULT
           end
         end
 
         def first_in_source
           container.first_in_source.tap do |fis|
-            return if fis == Primer::Alpha::Layout::FIRST_IN_SOURCE_DEFAULT
+            return if fis == FIRST_IN_SOURCE_DEFAULT
           end
         end
 
         def main_width
           container.main_width.tap do |width|
-            return if width == Primer::Alpha::Layout::Main::WIDTH_DEFAULT
+            return if width == WIDTH_DEFAULT
           end
         end
 
         def sidebar_width
           container.sidebar_width.tap do |width|
-            return if width == Primer::Alpha::Layout::SIDEBAR_WIDTH_DEFAULT
+            return if width == SIDEBAR_WIDTH_DEFAULT
           end
         end
 
