@@ -13,7 +13,7 @@ class PrimerClassifyCacheTest < Minitest::Test
     Primer::Classify::AttrCache.instance.preload!
   end
 
-  def test_evicts_entries
+  def test_evicts_lru_entries
     # rubocop:disable Style/RedundantFetchBlock
     cache = Primer::Classify::Cache.instance
     lookup = cache.instance_variable_get(:@lookup)
