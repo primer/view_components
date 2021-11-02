@@ -231,6 +231,29 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Blankslate
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/blankslate.rb
+  parameters:
+  - name: narrow
+    type: Boolean
+    default: "`false`"
+    description: Adds a maximum width to the Blankslate.
+  - name: large
+    type: Boolean
+    default: "`false`"
+    description: Increases the font size in the Blankslate.
+  - name: spacious
+    type: Boolean
+    default: "`false`"
+    description: Increases the vertical padding.
+  - name: border
+    type: Boolean
+    default: "`false`"
+    description: Adds a border around the Blankslate.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Breadcrumbs
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/breadcrumbs.rb
   parameters:
@@ -252,73 +275,6 @@
 - component: Truncate
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate.rb
   parameters:
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: Blankslate
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/blankslate_component.rb
-  parameters:
-  - name: title
-    type: String
-    default: '`""`'
-    description: Text that appears in a larger bold font.
-  - name: title_tag
-    type: Symbol
-    default: "`:h3`"
-    description: HTML tag to use for title.
-  - name: icon
-    type: Symbol
-    default: '`""`'
-    description: Octicon icon to use at top of component.
-  - name: icon_size
-    type: Symbol
-    default: "`:medium`"
-    description: One of `:small` (`16`) and `:medium` (`24`).
-  - name: image_src
-    type: String
-    default: '`""`'
-    description: Image to display.
-  - name: image_alt
-    type: String
-    default: '`" "`'
-    description: Alt text for image.
-  - name: description
-    type: String
-    default: '`""`'
-    description: Text that appears below the title. Typically a whole sentence.
-  - name: button_text
-    type: String
-    default: '`""`'
-    description: The text of the button.
-  - name: button_url
-    type: String
-    default: '`""`'
-    description: The URL where the user will be taken after clicking the button.
-  - name: button_classes
-    type: String
-    default: '`"btn-primary my-3"`'
-    description: Classes to apply to action button
-  - name: link_text
-    type: String
-    default: '`""`'
-    description: The text of the link.
-  - name: link_url
-    type: String
-    default: '`""`'
-    description: The URL where the user will be taken after clicking the link.
-  - name: narrow
-    type: Boolean
-    default: "`false`"
-    description: Adds a maximum width.
-  - name: large
-    type: Boolean
-    default: "`false`"
-    description: Increases the font size.
-  - name: spacious
-    type: Boolean
-    default: "`false`"
-    description: Adds extra padding.
   - name: system_arguments
     type: Hash
     default: N/A

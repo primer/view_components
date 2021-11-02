@@ -76,6 +76,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Ned Schwartz*
 
+### Deprecations
+
+* Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
+
+    *Manuel Puyol*
+
 ### Breaking changes
 
 * Add size restriction to `Avatar`.
