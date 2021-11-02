@@ -1,25 +1,25 @@
 # frozen_string_literal: true
 
-require_relative "base_linter"
-require_relative "autocorrectable"
+require_relative "tag_tree_helpers"
 
 module ERBLint
   module Linters
-    # Counts the number of times a two-column layout in HTML is used instead of the component.
-    class LayoutComponentMigrationCounter < BaseLinter
+    # Identifies two column layouts using col-* CSS classes instead of the layout component.
+    class TwoColumnLayouts < Linter
+      include LinterRegistry
+      include TagTreeHelpers
+
       SIDEBAR_WIDTH_DEFAULT = :default
       GUTTER_DEFAULT = :default
       STACKING_BREAKPOINT_DEFAULT = :md
       FIRST_IN_SOURCE_DEFAULT = :sidebar
       WIDTH_DEFAULT = :full
-      SIDEBAR_WIDTH_DEFAULT = :default
 
-      include Autocorrectable
+      WIDTH_RANGE = (8..11).freeze
+      SIDEBAR_WIDTH_RANGE = (1..4).freeze
 
-      TAGS = %w[div].freeze
-      CLASSES = %w[container-xl container-lg container-md container-sm].freeze
+      CONTAINER_CLASSES = %w[container-xl container-lg container-md container-sm].freeze
       MESSAGE = "We are migrating two-column layouts to use [Primer::Alpha::Layout](https://primer.style/view-components/components/layout), please use that instead of raw HTML."
-      COMPONENT = "Primer::Alpha::Layout"
 
       class Breakpoints
         LABELS = %i(all sm md lg xl)
@@ -59,23 +59,35 @@ module ERBLint
         end
 
         def content
-          tag_tree[:children].map do |child|
-            if child.is_a?(Hash)
-              child[:tag].location.source
-            else
-              child.location.source
-            end
-          end.join
+          start_pos = tag_tree[:tag].node.location.end_pos + 1
+          end_pos = tag_tree[:closing].node.location.begin_pos - 1
+          tag_tree[:tag].node.location.source_buffer.slice(start_pos..end_pos)
+        end
+
+        def tag
+          tag_tree[:tag]
+        end
+
+        def closing
+          tag_tree[:closing]
         end
       end
 
       class Container
-        attr_reader :columns, :gutters, :tag
+        attr_reader :columns, :gutters, :tag_tree
 
-        def initialize(columns, gutters, tag)
+        def initialize(columns, gutters, tag_tree)
           @columns = columns
           @gutters = gutters
-          @tag = tag
+          @tag_tree = tag_tree
+        end
+
+        def tag
+          tag_tree[:tag]
+        end
+
+        def closing
+          tag_tree[:closing]
         end
 
         def sidebar
@@ -88,7 +100,7 @@ module ERBLint
 
         def sorted_columns
           @sorted_columns ||= columns.sort_by do |col|
-            col.widths.min_value
+            col.widths.min_value || 0
           end
         end
 
@@ -208,9 +220,52 @@ module ERBLint
         end
       end
 
+      def run(processed_source)
+        tags, tag_tree = build_tag_tree(processed_source)
+
+        tags.each do |tag|
+          next if tag.closing?
+          next unless tag.name == "div"
+
+          classes = classes_from(tag)
+          next unless CONTAINER_CLASSES.any? { |c| classes.include?(c) }
+
+          metadata = metadata_from(tag_tree[tag])
+          next unless metadata
+
+          add_offenses_for(
+            metadata.container,
+            "<%= render Primer::Alpha::Layout.new#{hash_as_args(metadata.component_args)} do |component| %>"
+          )
+
+          add_offenses_for(
+            metadata.container.sidebar,
+            "<% component.sidebar#{hash_as_args(metadata.sidebar_args)} %>"
+          )
+
+          add_offenses_for(
+            metadata.container.main,
+            "<% component.main#{hash_as_args(metadata.main_args)} %>"
+          )
+        end
+      end
+
+      def autocorrect(_processed_source, offense)
+        return unless offense.context
+
+        lambda do |corrector|
+          corrector.replace(offense.source_range, offense.context)
+        end
+      end
+
       private
 
-      def map_arguments(tag, tag_tree)
+      def add_offenses_for(element, replacement)
+        add_offense(element.tag.node.location, MESSAGE, replacement)
+        add_offense(element.closing.loc, MESSAGE, "<% end %>")
+      end
+
+      def metadata_from(tag_tree)
         tags = tag_tree[:children].select { |c| c.is_a?(Hash) }
 
         if d_flex?(tags)
@@ -228,34 +283,16 @@ module ERBLint
         columns = columns_from(columns_tag_tree)
         return unless columns.size == 2
 
-        container_tag = container_tag_tree[:tag]
-        gutters = gutters_from(container_tag)
-        container = Container.new(columns, gutters, container_tag)
-        return unless container.sidebar.widths.min_value && container.main.widths.min_value
+        gutters = gutters_from(container_tag_tree[:tag])
+        container = Container.new(columns, gutters, container_tag_tree)
+
+        main_min = container.main.widths.min_value
+        sidebar_min = container.sidebar.widths.min_value
+        return unless sidebar_min && main_min
+        return unless WIDTH_RANGE.include?(main_min)
+        return unless SIDEBAR_WIDTH_RANGE.include?(sidebar_min)
 
         ContainerArgs.new(container)
-      end
-
-      def correction(args)
-        return unless args
-
-        <<~ERB.strip
-          <%= render Primer::Alpha::Layout.new#{hash_as_args(args.component_args)} do |component| %>
-            <% component.sidebar#{hash_as_args(args.sidebar_args)} do %>
-              #{args.sidebar.content}
-            <% end %>
-
-            <% component.main#{hash_as_args(args.main_args)} do %>
-              #{args.main.content}
-            <% end %>
-          <% end %>
-        ERB
-      end
-
-      def add_correction(tag, tag_tree)
-        # replace the whole darn thing
-        loc = tag_tree[:tag].node.loc.with(end_pos: tag_tree[:closing].node.loc.end_pos)
-        add_offense(loc, tag_tree[:message], tag_tree[:correction])
       end
 
       def hash_as_args(hash)
@@ -276,7 +313,7 @@ module ERBLint
           floats = Breakpoints.new
 
           classes.each do |cls|
-            if (match = cls.match(/\Acol(?:-(xl|lg|md|sm))?-(\d{1,2})\z/))
+            if (match = cls.match(/\Acol(?:-(xl|lg|md|sm))?-(\d{1,2})(?:-max)?\z/))
               breakpoint, width = match.captures
               breakpoint ||= :all
               col_sizes.set(breakpoint.to_sym, width.to_i)

@@ -7,7 +7,7 @@ linters:
     enabled: true
   LabelComponentMigrationCounter:
     enabled: true
-  LayoutComponentMigrationCounter:
+  TwoColumnLayouts:
     enabled: true
   Rubocop:
     enabled: true
