@@ -79,20 +79,22 @@
   - name: id
     type: String
     default: N/A
-    description: unique id
+    description: unique tooltip id
   - name: type
     type: Symbol
     default: N/A
-    description: type of tooltip
+    description: One of `:describe` and `:label`.. `:describe` indicates the tooltip
+      provides supplementary information, while `:label` indicates the tooltip provides
+      an accessible label.
   - name: text
     type: String
     default: N/A
     description: the text to appear in the tooltip
   - name: direction
     type: String
-    default: N/A
-    description: Direction of the tooltip. One of `:e`, `:n`, `:ne`, `:nw`, `:s`,
-      `:se`, `:sw`, or `:w`.
+    default: "`:n`"
+    description: Direction of the tooltip. One of `:e`, `:n`, `:n`, `:ne`, `:nw`,
+      `:s`, `:se`, `:sw`, or `:w`.
   - name: align
     type: String
     default: N/A
@@ -101,13 +103,12 @@
       `:right_1`, or `:right_2`.
   - name: multiline
     type: Boolean
-    default: N/A
+    default: "`false`"
     description: Use this when you have long content
-  - name: no_delay
-    type: Boolean
-    default: N/A
-    description: By default the tooltips have a slight delay before appearing. Set
-      true to override this
+  - name: tooltip_arguments
+    type: Hash
+    default: "`{}`"
+    description: System arguments for the tooltip element
   - name: system_arguments
     type: Hash
     default: N/A

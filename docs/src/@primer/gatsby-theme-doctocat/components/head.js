@@ -7,22 +7,17 @@ const bodyStyle = `
   body {
     font-size: 16px;
   }
-  tooltip-container {
+  .hx-tooltip-container{
     position:relative;
     display:inline-block
-  }
-  .alpha-tooltipped {
-    z-index: 100000001;
+}
+.hx-tooltip{
     position:absolute;
-    top:100%;
-    left:50%;
-    transform:
-    translateX(-50%);
-    padding:.5em 1em;
-    font:normal normal 11px/1.5 -apple-system,
-    BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    z-index:1000000;
+    padding:.5em .75em;
+    font:normal normal 11px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
     -webkit-font-smoothing:subpixel-antialiased;
-    color:var(--color-fg-on-emphasis);
+    color:white;
     text-align:center;
     text-decoration:none;
     text-shadow:none;
@@ -30,25 +25,127 @@ const bodyStyle = `
     letter-spacing:normal;
     word-wrap:break-word;
     white-space:pre;
-    background:var(--color-neutral-emphasis-plus);
-    border-radius:6px
-  }
-    
-    .alpha-tooltipped::before{
-       position:absolute;
-       bottom:100%;
-       left:50%;
-       transform:translateX(-50%);
-       content:"";
-       border: 0.5em solid transparent;
-       border-bottom-color:var(--color-neutral-emphasis-plus)}
-    
-    .alpha-tooltipped::after{
-      position:absolute;
-      right:0;bottom:100%;left:0;
-      display:block;
-      height: 1em;
-      content:""}
+    background:black;;
+    border-radius:6px;
+    opacity:0
+}
+.hx-tooltip::before{
+    position:absolute;
+    z-index:1000001;
+    color:black;;
+    content:"";
+    border:6px solid transparent;
+    opacity:0
+}
+.hx-tooltip::after{
+    position:absolute;
+    display:block;
+    right:0;
+    left:0;
+    height:12px;
+    content:""
+}
+.hx-tooltip-visible,.hx-tooltip-visible::before{
+    animation-name:tooltip-appear;
+    animation-duration:.1s;
+    animation-fill-mode:forwards;
+    animation-timing-function:ease-in;
+    animation-delay:.4s
+}
+.hx-tooltip-s,.hx-tooltip-se,.hx-tooltip-sw{
+    top:100%;
+    right:50%;
+    margin-top:6px
+}
+.hx-tooltip-s::before,.hx-tooltip-se::before,.hx-tooltip-sw::before{
+    right:50%;
+    bottom:100%;
+    margin-right:-6px;
+    border-bottom-color:black;
+}
+.hx-tooltip-s::after,.hx-tooltip-se::after,.hx-tooltip-sw::after{
+    bottom:100%
+}
+.hx-tooltip-n,.hx-tooltip-ne,.hx-tooltip-nw{
+    right:50%;
+    bottom:100%;
+    margin-bottom:6px
+}
+.hx-tooltip-n::before,.hx-tooltip-ne::before,.hx-tooltip-nw::before{
+    top:100%;
+    right:50%;
+    margin-right:-6px;
+    border-top-color:black;
+}
+.hx-tooltip-n::after,.hx-tooltip-ne::after,.hx-tooltip-nw::after{
+    top:100%
+}
+.hx-tooltip-s,.hx-tooltip-n{
+    transform:translateX(50%)
+}
+.hx-tooltip-se,.hx-tooltip-ne{
+    right:auto
+}
+.hx-tooltip-se::before,.hx-tooltip-ne::before{
+    right:auto
+}
+.hx-tooltip-sw,.hx-tooltip-nw{
+    right: 0
+}
+.hx-tooltip-sw::before,.hx-tooltip-nw::before{
+    right:0;
+    margin-right:6px
+}
+.hx-tooltip-w{
+    right:100%;
+    margin-right:6px;
+    top:50%;
+    transform:translateY(-50%)
+}
+.hx-tooltip-w::before{
+    top:50%;
+    bottom:50%;
+    left:100%;
+    margin-top:-6px;
+    border-left-color:black;
+}
+.hx-tooltip-e{
+    left:100%;
+    margin-left:6px;
+    top:50%;
+    transform:translateY(-50%)
+}
+.hx-tooltip-e::before{
+    top:50%;
+    right:100%;
+    bottom:50%;
+    margin-top:-6px;
+    border-right-color:black;
+}
+.hx-tooltip-multiline{
+    width:max-content;
+    max-width:250px;
+    word-wrap:break-word;
+    white-space:pre-line;
+    border-collapse:separate
+}
+.hx-tooltip-multiline.hx-tooltip-s,.hx-tooltip-multiline.hx-tooltip-n{
+    right:auto;
+    left:50%;
+    transform:translateX(-50%)
+}
+.hx-tooltip-multiline.hx-tooltip-w,.hx-tooltip-multiline.hx-tooltip-e{
+    right:100%
+}
+@media screen and (max-width: 544px){
+    .hx-tooltip{
+        max-width:250px;
+        word-wrap:break-word;
+        white-space:normal
+    }
+}
+ 
+
 `
 
 function Head(props) {
