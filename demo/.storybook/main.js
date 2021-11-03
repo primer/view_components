@@ -3,7 +3,8 @@ module.exports = {
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-controls',
-    './color-modes/preset'
+    './color-modes/preset',
+    './html-panel/preset'
   ],
   webpackFinal: async (config, { configType }) => {
     if(configType == 'PRODUCTION')

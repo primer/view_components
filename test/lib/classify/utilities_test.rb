@@ -3,7 +3,8 @@
 require "test_helper"
 
 class PrimerClassifyUtilitiesTest < Minitest::Test
-  include Primer::EnvHelper
+  include Primer::ComponentTestHelpers
+
   def test_supported_key
     assert Primer::Classify::Utilities.supported_key?(:m)
     refute Primer::Classify::Utilities.supported_key?(:flex)
@@ -19,8 +20,8 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     refute Primer::Classify::Utilities.supported_selector?("foo")
   end
 
-  def test_supported_selector_returns_nil_in_production
-    with_env("production") do
+  def test_supported_selector_returns_nil_when_validation_disabled
+    with_validate_class_names(false) do
       refute Primer::Classify::Utilities.supported_selector?("m-1")
       refute Primer::Classify::Utilities.supported_selector?("foo")
     end
@@ -36,8 +37,8 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     refute Primer::Classify::Utilities.responsive?(:hide, :sm)
   end
 
-  def test_classname_returns_key_value_when_incorrect_value_in_production
-    with_env("production") do
+  def test_classname_returns_key_value_when_incorrect_value_and_validation_disabled
+    with_validate_class_names(false) do
       assert_equal "mr-1", Primer::Classify::Utilities.classname(:mr, 1)
       assert_equal "mr-foo", Primer::Classify::Utilities.classname(:mr, :foo)
       assert_equal "color-yellow-0", Primer::Classify::Utilities.classname(:color, :yellow_0)
@@ -52,8 +53,8 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     assert_equal "foo is not a valid Primer utility key", error.message
   end
 
-  def test_classname_empty_on_unsupported_key_in_prod
-    with_env("production") do
+  def test_classname_empty_on_unsupported_key_when_validation_disabled
+    with_validate_class_names(false) do
       assert_equal "", Primer::Classify::Utilities.classname(:foo, :bar)
     end
   end
@@ -66,8 +67,8 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     assert_equal "w does not support responsive values", error.message
   end
 
-  def test_classname_empty_on_non_responsive_utility_in_prod
-    with_env("production") do
+  def test_classname_empty_on_non_responsive_utility_when_validation_disabled
+    with_validate_class_names(false) do
       assert_equal "", Primer::Classify::Utilities.classname(:w, :fit, :sm)
     end
   end
@@ -84,8 +85,8 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     refute Primer::Classify::Utilities.classname(:clearfix, false)
   end
 
-  def test_classname_on_unsupported_value_in_prod
-    with_env("production") do
+  def test_classname_on_unsupported_value_when_validation_disabled
+    with_validate_class_names(false) do
       assert_equal "w-foo", Primer::Classify::Utilities.classname(:w, :foo)
     end
   end
@@ -116,8 +117,8 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     assert_equal('mr: [1, nil, 2], classes: "foo bar"', Primer::Classify::Utilities.hash_to_args({ mr: [1, nil, 2], classes: "foo bar" }))
   end
 
-  def test_classes_to_hash_returns_classes_when_run_in_production
-    with_env("production") do
+  def test_classes_to_hash_returns_classes_when_run_with_validation_disabled
+    with_validate_class_names(false) do
       assert_equal({ classes: "mr-1 mr-md-2 foo bar" }, Primer::Classify::Utilities.classes_to_hash("mr-1 mr-md-2 foo bar"))
     end
   end
