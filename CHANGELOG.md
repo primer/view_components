@@ -34,16 +34,29 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Add the `HellipButton` component
 
-    *Amélia Chavot*
-    *Owen Niblock @owenniblock*
+    *Amélia Chavot* & *Owen Niblock*
 
 ### Update
 
 * Update the `HiddenTextExpander` component to use the `HellipButton`.
 
-    *Amélia Chavot*
-    *Owen Niblock @owenniblock*
+    *Amélia Chavot* & *Owen Niblock*
 
+### Breaking changes
+
+* Require an `aria-label` to be provided for the `HiddenTextExpander` component.
+
+    *Amélia Chavot* & *Owen Niblock*
+
+### Misc
+
+* Fix components not rendering in Storybook because of kebab case arguments.
+
+    *Amélia Chavot, Manuel Puyol* & *Owen Niblock*
+
+* Fix a typo on a command on the contribution page.
+
+    *Amélia Chavot* & *Owen Niblock*
 
 ## 0.0.60
 
@@ -457,25 +470,18 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## 0.0.47
 
->>>>>>> main
 ### Breaking changes
 
 * Restrict tag for `Popover` to `:div` and `Popover` heading slot to headings.
 
     *Kate Higa*
 
-<<<<<<< HEAD
-* Require an `aria-label` to be provided for the `HiddenTextExpander` component.
-
-    *Amélia Chavot*
-=======
 * Renames:
   * `Primer::AutoComplete` to `Primer::Beta::AutoComplete`
   * `Primer::AutoComplete::Item` to `Primer::Beta::AutoComplete::Item`
   * `Primer::AvatarComponent` to `Primer::Beta::Avatar`
 
     *Manuel Puyol*
->>>>>>> main
 
 ### Misc
 
@@ -487,15 +493,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
-<<<<<<< HEAD
-* Fix components not rendering in Storybook because of kebab case arguments.
-
-    *Amélia Chavot* & *Manuel Puyol*
-
-* Fix a typo on a command on the contribution page.
-
-    *Amélia Chavot*
-=======
 * Add linter to suggest system arguments instead of classes.
 
     *Manuel Puyol*
@@ -515,7 +512,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Add ENV flag to dump linter data into a file.
 
     *Manuel Puyol*
->>>>>>> main
 
 ## 0.0.46
 

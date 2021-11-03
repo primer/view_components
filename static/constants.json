@@ -260,7 +260,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",
@@ -391,6 +392,8 @@
       "h5",
       "h6"
     ]
+  },
+  "Primer::HellipButton": {
   },
   "Primer::HiddenTextExpander": {
   },
