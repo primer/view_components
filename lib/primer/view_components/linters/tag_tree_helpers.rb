@@ -2,6 +2,7 @@
 
 module ERBLint
   module Linters
+    # Helpers used by linters to organize HTML tags into abstract syntax trees.
     module TagTreeHelpers
       # from https://github.com/Shopify/erb-lint/blob/6179ee2d9d681a6ec4dd02351a1e30eefa748d3d/lib/erb_lint/linters/self_closing_tag.rb
       SELF_CLOSING_TAGS = %w[

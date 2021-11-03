@@ -208,7 +208,7 @@ module Primer
           "Layout",
           STACKING_BREAKPOINT_MAPPINGS[fetch_or_fallback(STACKING_BREAKPOINT_OPTIONS, stacking_breakpoint, STACKING_BREAKPOINT_DEFAULT)],
           GUTTER_MAPPINGS[fetch_or_fallback(GUTTER_OPTIONS, gutter, GUTTER_DEFAULT)],
-          system_arguments[:classes],
+          system_arguments[:classes]
         )
       end
 
