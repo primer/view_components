@@ -1,15 +1,4 @@
 ---
-- component: HellipButton
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/hellip_button.rb
-  parameters:
-  - name: inline
-    type: Boolean
-    default: "`false`"
-    description: Whether or not the button is inline.
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
 - component: BorderBoxHeader
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/border_box/header.rb
   parameters:
@@ -547,6 +536,17 @@
     type: String
     default: N/A
     description: One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: HellipButton
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/hellip_button.rb
+  parameters:
+  - name: inline
+    type: Boolean
+    default: "`false`"
+    description: Whether or not the button is inline.
   - name: system_arguments
     type: Hash
     default: N/A

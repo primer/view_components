@@ -1,8 +1,9 @@
 ---
 title: HellipButton
+componentId: hellip_button
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/hellip_button.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-hellip-button-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-hellip-button
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
