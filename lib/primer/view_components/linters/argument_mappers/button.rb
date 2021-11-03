@@ -1,66 +1,56 @@
 # frozen_string_literal: true
 
-require_relative "conversion_error"
-require_relative "system_arguments"
+require_relative "base"
 
 module ERBLint
   module Linters
     module ArgumentMappers
       # Maps classes in a button element to arguments for the Button component.
-      class Button
-        SCHEME_MAPPINGS = {
-          "btn-primary" => ":primary",
-          "btn-danger" => ":danger",
-          "btn-outline" => ":outline",
-          "btn-invisible" => ":invisible",
-          "btn-link" => ":link"
-        }.freeze
+      class Button < Base
+        SCHEME_MAPPINGS = Primer::ViewComponents::Constants.get(
+          component: "Primer::ButtonComponent",
+          constant: "SCHEME_MAPPINGS",
+          symbolize: true
+        ).freeze
 
-        VARIANT_MAPPINGS = {
-          "btn-sm" => ":small",
-          "btn-large" => ":large"
-        }.freeze
+        VARIANT_MAPPINGS = Primer::ViewComponents::Constants.get(
+          component: "Primer::ButtonComponent",
+          constant: "VARIANT_MAPPINGS",
+          symbolize: true
+        ).freeze
 
-        TYPE_OPTIONS = %w[button reset submit].freeze
+        TYPE_OPTIONS = Primer::ViewComponents::Constants.get(
+          component: "Primer::BaseButton",
+          constant: "TYPE_OPTIONS"
+        ).freeze
 
-        def initialize(tag)
-          @tag = tag
-        end
+        DEFAULT_TAG = Primer::ViewComponents::Constants.get(
+          component: "Primer::BaseButton",
+          constant: "DEFAULT_TAG"
+        ).freeze
 
-        def to_s
-          to_args.map { |k, v| "#{k}: #{v}" }.join(", ")
-        end
+        ATTRIBUTES = %w[disabled type href name value tabindex].freeze
 
-        def to_args
-          args = {}
+        def attribute_to_args(attribute)
+          attr_name = attribute.name
 
-          args[:tag] = ":#{@tag.name}" unless @tag.name == "button"
+          case attr_name
+          when "disabled"
+            { disabled: true }
+          when "type"
+            # button is the default type, so we don't need to do anything.
+            return {} if attribute.value == "button"
 
-          @tag.attributes.each do |attribute|
-            attr_name = attribute.name
+            raise ConversionError, "Button component does not support type \"#{attribute.value}\"" unless TYPE_OPTIONS.include?(attribute.value)
 
-            if attr_name == "class"
-              args = args.merge(classes_to_args(attribute))
-            elsif attr_name == "disabled"
-              args[:disabled] = true
-            elsif attr_name == "type"
-              # button is the default type, so we don't need to do anything.
-              next if attribute.value == "button"
-
-              raise ConversionError, "Button component does not support type \"#{attribute.value}\"" unless TYPE_OPTIONS.include?(attribute.value)
-
-              args[:type] = ":#{attribute.value}"
-            else
-              # Assume the attribute is a system argument.
-              args.merge!(SystemArguments.new(attribute).to_args)
-            end
+            { type: ":#{attribute.value}" }
+          else
+            { attr_name.to_sym => erb_helper.convert(attribute) }
           end
-
-          args
         end
 
         def classes_to_args(classes)
-          classes.value.split(" ").each_with_object({}) do |class_name, acc|
+          classes.each_with_object({ classes: [] }) do |class_name, acc|
             next if class_name == "btn"
 
             if SCHEME_MAPPINGS[class_name] && acc[:scheme].nil?
@@ -72,7 +62,7 @@ module ERBLint
             elsif class_name == "BtnGroup-item"
               acc[:group_item] = true
             else
-              raise ConversionError, "Cannot convert class \"#{class_name}\""
+              acc[:classes] << class_name
             end
           end
         end

@@ -96,10 +96,10 @@
       "problemMatcher": []
     },
     {
-      "label": "statuses:dump: dump static files",
+      "label": "static:dump: dump static files",
       "type": "shell",
       "group": "build",
-      "command": "bundle exec rake statuses:dump",
+      "command": "bundle exec rake static:dump",
       "presentation": {
         "reveal": "always",
         "panel": "dedicated"

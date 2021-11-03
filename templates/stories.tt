@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Primer::<%= class_name %>Stories < ViewComponent::Storybook::Stories
+require "primer/<%= status_path %><%= underscore_name %>"
+
+class Primer::<%= status_module %><%= class_name %>Stories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:<%= underscore_name %>) do

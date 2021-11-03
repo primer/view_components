@@ -63,9 +63,9 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `bg` | String, Symbol | Background color. Accepts either a hex value as a String or <%= one_of(Primer::Classify::FunctionalBackgroundColors::OPTIONS, lower: true) %> |
-    # | `border_color` | Symbol | Border color. <%= one_of(Primer::Classify::FunctionalBorderColors::OPTIONS) %> |
-    # | `color` | Symbol | Text color. <%= one_of(Primer::Classify::FunctionalTextColors::OPTIONS) %> |
+    # | `bg` | Symbol | Background color. <%= one_of(Primer::Classify::Utilities.mappings(:bg)) %> |
+    # | `border_color` | Symbol | Border color. <%= one_of(Primer::Classify::Utilities.mappings(:border_color)) %> |
+    # | `color` | Symbol | Text color. <%= one_of(Primer::Classify::Utilities.mappings(:color)) %> |
     #
     # ## Flex
     #
@@ -79,22 +79,22 @@ module Primer
     # | `flex_shrink` | Integer | To enable, set to `0`. |
     # | `flex_wrap` | Symbol | <%= one_of(Primer::Classify::Flex::WRAP_MAPPINGS.keys) %> |
     # | `justify_content` | Symbol | <%= one_of(Primer::Classify::Flex::JUSTIFY_CONTENT_VALUES) %> |
-    # | `width` | Symbol | <%= one_of([:fit]) %> |
     #
     # ## Grid
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
     # | `clearfix` | Boolean | Wether to assign the `clearfix` class. |
-    # | `col` | Integer | Number of columns. <%= one_of(Primer::Classify::Grid::COL_VALUES) %> |
-    # | `container` | Symbol | Size of the container. <%= one_of(Primer::Classify::Grid::CONTAINER_VALUES) %> |
+    # | `col` | Integer | Number of columns. <%= one_of(Primer::Classify::Utilities.mappings(:col)) %> |
+    # | `container` | Symbol | Size of the container. <%= one_of(Primer::Classify::Utilities.mappings(:container)) %> |
     #
     # ## Layout
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
     # | `display` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:display)) %> |
-    # | `height` | Symbol | <%= one_of([:fit]) %> |
+    # | `w` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:w)) %> |
+    # | `h` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:h)) %> |
     # | `hide` | Symbol | Hide the element at a specific breakpoint. <%= one_of(Primer::Classify::Utilities.mappings(:hide)) %> |
     # | `visibility` | Symbol | Visibility. <%= one_of(Primer::Classify::Utilities.mappings(:visibility)) %> |
     # | `vertical_align` | Symbol | <%= one_of(Primer::Classify::Utilities.mappings(:vertical_align)) %> |

@@ -1,8 +1,9 @@
 ---
 title: Image
+componentId: image
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/image.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-image-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-image
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
@@ -55,7 +56,7 @@ Always provide a meaningful `alt`.
 
 ### Custom size
 
-<Example src="<img src='https://github.com/github.png' alt='GitHub' data-view-component='true' height='100' width='100'></img>" />
+<Example src="<img height='100' width='100' src='https://github.com/github.png' alt='GitHub' data-view-component='true'></img>" />
 
 ```erb
 

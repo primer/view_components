@@ -24,22 +24,20 @@ module Primer
       Rails.application.config.primer_view_components.force_system_arguments = old_value
     end
 
-    def with_force_functional_colors(new_value)
-      old_value = Rails.application.config.primer_view_components.force_functional_colors
-      Rails.application.config.primer_view_components.force_functional_colors = new_value
-      Primer::Classify::Cache.preload!
-      yield
-    ensure
-      Rails.application.config.primer_view_components.force_functional_colors = old_value
-      Primer::Classify::Cache.preload!
-    end
-
     def with_silence_deprecations(new_value)
       old_value = Rails.application.config.primer_view_components.silence_deprecations
       Rails.application.config.primer_view_components.silence_deprecations = new_value
       yield
     ensure
       Rails.application.config.primer_view_components.silence_deprecations = old_value
+    end
+
+    def with_validate_class_names(new_value)
+      old_value = Primer::Classify::Utilities.validate_class_names
+      Primer::Classify::Utilities.validate_class_names = new_value
+      yield
+    ensure
+      Primer::Classify::Utilities.validate_class_names = old_value
     end
 
     def assert_component_state(component, state)

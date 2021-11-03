@@ -4,10 +4,14 @@ require "test_helper"
 
 class CssCoverageTest < Minitest::Test
   def setup
-    Primer::Classify::Cache.preload!
+    # we want only the preloadable classes
+    Primer::Classify::Cache.instance.clear!
+    Primer::Classify::Cache.instance.preload!
 
     @classes_from_classify_cache =
-      Primer::Classify::Cache::LOOKUP
+      Primer::Classify::Cache
+      .instance
+      .instance_variable_get(:@lookup)
       .values
       .flat_map(&:values)
       .flat_map(&:values)
@@ -50,7 +54,7 @@ class CssCoverageTest < Minitest::Test
 
     # Cleanup the data to make sure it's only one selector per item
     @css_data = @css_data
-                .flat_map { |c| c.gsub(/(\w)\./, '\1 .').split(/[\s:\[\+>]+/) }
+                .flat_map { |c| c.gsub(/(\w)\./, '\1 .').split(/[\s:\[+>]+/) }
                 .select { |c| c.starts_with?(".") }
                 .uniq
   end

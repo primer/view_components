@@ -5,58 +5,71 @@ namespace :utilities do
     require "yaml"
     require "json"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
+    require "primer/classify/utilities"
 
     # Keys that are looked for to be included in the utilities.yml file
-    SUPPORTED_KEYS = %i[
-      anim
-      d
-      float
-      hide
-      m mt mr mb ml mx my
-      p pt pr pb pl px py
-      position
-      wb
-      v
+    # rubocop:disable Lint/ConstantDefinitionInBlock
+    SUPPORTED_KEYS = [
+      /^anim\b/,
+      /^color-bg\b/,
+      /^color-border\b/,
+      /^color-icon\b/,
+      /^color-text\b/,
+      /^color-fg\b/,
+      /^col\b/,
+      /^container\b/,
+      /^clearfix\b/,
+      /^d\b/,
+      /^float\b/,
+      /^height\b/,
+      /^hide\b/,
+      /^m[trblxy]?\b/,
+      /^p[trblxy]?\b/,
+      /^position\b/,
+      /^wb\b/,
+      /^width\b/,
+      /^v\b/
     ].freeze
 
-    # Replacements for some classnames that end up being a different argument key
-    REPLACEMENT_KEYS = {
-      "^anim" => "animation",
-      "^v-align" => "vertical_align",
-      "^d" => "display",
-      "^wb" => "word_break",
-      "^v" => "visibility"
-    }.freeze
-
     BREAKPOINTS = [nil, "sm", "md", "lg", "xl"].freeze
+    # rubocop:enable Lint/ConstantDefinitionInBlock
 
-    css_data =
+    utility_data =
       JSON.parse(
         File.read(
-          File.join(
-            __FILE__.split("lib/tasks/utilities.rake")[0], "/node_modules/@primer/css/dist/stats/utilities.json"
-          )
+          File.expand_path(File.join(*%w[.. .. node_modules @primer css dist stats utilities.json]), __dir__)
         )
       )["selectors"]["values"]
+
+    layout_data =
+      JSON.parse(
+        File.read(
+          File.expand_path(File.join(*%w[.. .. node_modules @primer css dist stats layout.json]), __dir__)
+        )
+      )["selectors"]["values"]
+
+    css_data = utility_data + layout_data
 
     output = {}
 
     css_data.each do |selector|
       selector.sub!(/^./, "")
+      selector.sub!(/:[^\s]*$/, "")
+
       # Next if selector has ancestors or sibling selectors
-      next if selector.match?(/[:><~\[\.]/)
-      next unless SUPPORTED_KEYS.any? { |key| selector.start_with?("#{key}-") }
+      next if selector.match?(/[:><~\[.]/)
+      next unless SUPPORTED_KEYS.any? { |key| selector =~ key }
 
       # Dupe so we still have the selector at the end of slicing it up
       classname = selector.dup
       key = ""
 
       # Look for a replacement key
-      REPLACEMENT_KEYS.each do |k, v|
+      Primer::Classify::Utilities::REPLACEMENT_KEYS.each do |k, v|
         next unless classname.match?(Regexp.new(k))
 
         key = v
-        classname.sub!(Regexp.new(k + "-"), "")
+        classname.sub!(Regexp.new("#{k}-"), "")
       end
 
       # If we didn't find a replacement, grab the first text before hyphen
@@ -72,18 +85,19 @@ namespace :utilities do
       end
 
       # Change the rest from hypens to underscores
-      classname.sub!(/\-/, "_")
+      classname.sub!(/-/, "_")
 
       # convert padding/margin negative values ie n7 to -7
       classname.sub!(/^n/, "-") if classname.match?(/^n[0-9]/)
 
+      # If key and classname are equal, then classname is boolean
+      classname = true if key == classname
+
       key = key.to_sym
 
-      classname = if classname.match?(/\A[-+]?[0-9]+\z/)
-                    classname.to_i
-                  else
-                    classname.to_sym
-                  end
+      if classname.is_a?(String)
+        classname = classname.match?(/\A[-+]?[0-9]+\z/) ? classname.to_i : classname.to_sym
+      end
 
       if output[key].nil?
         output[key] = { classname => Array.new(5, nil) }

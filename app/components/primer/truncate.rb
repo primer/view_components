@@ -6,7 +6,7 @@ module Primer
     status :beta
 
     DEFAULT_TAG = :div
-    TAG_OPTIONS = [DEFAULT_TAG, :span, :p].freeze
+    TAG_OPTIONS = [DEFAULT_TAG, :span, :p, :strong].freeze
 
     # @example Default
     #   <div class="col-2">
@@ -21,6 +21,11 @@ module Primer
     #
     # @example Custom size
     #   <%= render(Primer::Truncate.new(tag: :span, inline: true, expandable: true, max_width: 100)) { "branch-name-that-is-really-long" } %>
+    #
+    # @example With HTML content
+    #   <%= render(Primer::Truncate.new(tag: :span, inline: true, expandable: true, max_width: 100)) do %>
+    #     <span>branch-name-that-is-really-long</span>
+    #   <% end %>
     #
     # @param tag [Symbol] <%= one_of(Primer::Truncate::TAG_OPTIONS) %>
     # @param inline [Boolean] Whether the element is inline (or inline-block).

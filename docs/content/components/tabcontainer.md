@@ -1,5 +1,6 @@
 ---
 title: TabContainer
+componentId: tab_container
 status: Alpha
 source: https://github.com/primer/view_components/tree/main/app/components/primer/tab_container_component.rb
 storybook: https://primer.style/view-components/stories/?path=/story/primer-tab-container-component
@@ -13,7 +14,7 @@ import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 Use `TabContainer` to create tabbed content with keyboard support. This component does not add any styles.
-It only provides the tab functionality. If you want styled Tabs you can look at [TabNav](/components/tabnav).
+It only provides the tab functionality. If you want styled Tabs you can look at [TabNav](/components/alpha/tabnav).
 
 This component requires javascript.
 

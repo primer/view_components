@@ -28,20 +28,21 @@ namespace :docs do
     view_context = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context
     components = [
       Primer::HellipButton,
+      Primer::Alpha::BorderBox::Header,
       Primer::Image,
       Primer::LocalTime,
       Primer::OcticonSymbolsComponent,
       Primer::ImageCrop,
       Primer::IconButton,
-      Primer::AutoComplete,
-      Primer::AutoComplete::Item,
-      Primer::AvatarComponent,
-      Primer::AvatarStackComponent,
+      Primer::Beta::AutoComplete,
+      Primer::Beta::AutoComplete::Item,
+      Primer::Beta::Avatar,
+      Primer::Beta::AvatarStack,
       Primer::BaseButton,
-      Primer::BlankslateComponent,
+      Primer::Beta::Blankslate,
       Primer::BorderBoxComponent,
       Primer::BoxComponent,
-      Primer::BreadcrumbComponent,
+      Primer::Beta::Breadcrumbs,
       Primer::ButtonComponent,
       Primer::ButtonGroup,
       Primer::Alpha::ButtonMarketing,
@@ -69,25 +70,28 @@ namespace :docs do
       Primer::SpinnerComponent,
       Primer::SubheadComponent,
       Primer::TabContainerComponent,
-      Primer::TabNavComponent,
       Primer::Beta::Text,
       Primer::TimeAgoComponent,
       Primer::TimelineItemComponent,
       Primer::Tooltip,
       Primer::Truncate,
-      Primer::UnderlineNavComponent
+      Primer::Beta::Truncate,
+      Primer::Alpha::UnderlineNav,
+      Primer::Alpha::UnderlinePanels,
+      Primer::Alpha::TabNav,
+      Primer::Alpha::TabPanels
     ]
 
     js_components = [
       Primer::Dropdown,
       Primer::LocalTime,
       Primer::ImageCrop,
-      Primer::AutoComplete,
+      Primer::Beta::AutoComplete,
       Primer::ClipboardCopy,
       Primer::TabContainerComponent,
-      Primer::TabNavComponent,
       Primer::TimeAgoComponent,
-      Primer::UnderlineNavComponent
+      Primer::Alpha::UnderlinePanels,
+      Primer::Alpha::TabPanels
     ]
 
     all_components = Primer::Component.descendants - [Primer::BaseComponent]
@@ -98,28 +102,31 @@ namespace :docs do
 
     errors = []
 
-    components.each do |component|
+    # Deletes docs before regenerating them, guaranteeing that we don't keep stale docs.
+    FileUtils.rm_rf(Dir.glob("docs/content/components/**/*.md"))
+
+    components.sort_by(&:name).each do |component|
       documentation = registry.get(component.name)
 
-      # Primer::AvatarComponent => Avatar
-      short_name = component.name.gsub(/Primer|::|Component/, "")
+      data = docs_metadata(component)
 
-      path = Pathname.new("docs/content/components/#{short_name.downcase}.md")
+      path = Pathname.new(data[:path])
       path.dirname.mkdir unless path.dirname.exist?
       File.open(path, "w") do |f|
         f.puts("---")
-        f.puts("title: #{short_name}")
-        f.puts("status: #{component.status.to_s.capitalize}")
-        f.puts("source: https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb")
-        f.puts("storybook: https://primer.style/view-components/stories/?path=/story/primer-#{short_name.underscore.dasherize}-component")
+        f.puts("title: #{data[:title]}")
+        f.puts("componentId: #{data[:component_id]}")
+        f.puts("status: #{data[:status]}")
+        f.puts("source: #{data[:source]}")
+        f.puts("storybook: #{data[:storybook]}")
         f.puts("---")
         f.puts
-        f.puts("import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'")
+        f.puts("import Example from '#{data[:example_path]}'")
 
         initialize_method = documentation.meths.find(&:constructor?)
 
         if js_components.include?(component)
-          f.puts("import RequiresJSFlash from '../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash'")
+          f.puts("import RequiresJSFlash from '#{data[:require_js_path]}'")
           f.puts
           f.puts("<RequiresJSFlash />")
         end
@@ -184,8 +191,8 @@ namespace :docs do
         end
 
         component_args = {
-          "component" => short_name,
-          "source" => "https://github.com/primer/view_components/tree/main/app/components/primer/#{component.to_s.demodulize.underscore}.rb",
+          "component" => data[:title],
+          "source" => data[:source],
           "parameters" => args
         }
 
@@ -202,7 +209,7 @@ namespace :docs do
             f.puts
             f.puts("### `#{slot_documentation.name.to_s.capitalize}`")
 
-            if slot_documentation.base_docstring.present?
+            if slot_documentation.base_docstring.to_s.present?
               f.puts
               f.puts(view_context.render(inline: slot_documentation.base_docstring))
             end
@@ -226,28 +233,17 @@ namespace :docs do
         f.puts("## Examples")
 
         initialize_method.tags(:example).each do |tag|
-          name = tag.name
-          description = nil
-          code = nil
-
-          if tag.text.include?("@description")
-            splitted = tag.text.split(/@description|@code/)
-            description = splitted.second.gsub(/^[ \t]{2}/, "").strip
-            code = splitted.last.gsub(/^[ \t]{2}/, "").strip
-          else
-            code = tag.text
-          end
-
+          name, description, code = parse_example_tag(tag)
           f.puts
           f.puts("### #{name}")
           if description
             f.puts
-            f.puts(description)
+            f.puts(view_context.render(inline: description.squish))
           end
           f.puts
           html = view_context.render(inline: code)
           html.scan(/class="([^"]*)"/) do |classnames|
-            classes_found_in_examples.concat(classnames[0].split(" ").reject { |c| c.starts_with?("octicon", "js", "my-") }.map { ".#{_1}"})
+            classes_found_in_examples.concat(classnames[0].split.reject { |c| c.starts_with?("octicon", "js", "my-") }.map { ".#{_1}" })
           end
           f.puts("<Example src=\"#{html.tr('"', "\'").delete("\n")}\" />")
           f.puts
@@ -329,13 +325,14 @@ namespace :docs do
         f.puts("    class #{short_name}Preview < ViewComponent::Preview")
 
         yard_example_tags.each_with_index do |tag, index|
-          method_name = tag.name.split("|").first.downcase.parameterize.underscore
+          name, _, code = parse_example_tag(tag)
+          method_name = name.split("|").first.downcase.parameterize.underscore
           f.puts("      def #{method_name}; end")
           f.puts unless index == yard_example_tags.size - 1
           path = Pathname.new("demo/test/components/previews/primer/docs/#{short_name.underscore}_preview/#{method_name}.html.erb")
           path.dirname.mkdir unless path.dirname.exist?
           File.open(path, "w") do |view_file|
-            view_file.puts(tag.text.to_s)
+            view_file.puts(code.to_s)
           end
         end
 
@@ -347,6 +344,7 @@ namespace :docs do
   end
 
   def generate_yard_registry
+    ENV["SKIP_STORYBOOK_PRELOAD"] = "1"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
     require "primer/view_components"
     require "yard/docs_helper"
@@ -372,8 +370,24 @@ namespace :docs do
     registry
   end
 
+  def parse_example_tag(tag)
+    name = tag.name
+    description = nil
+    code = nil
+
+    if tag.text.include?("@description")
+      splitted = tag.text.split(/@description|@code/)
+      description = splitted.second.gsub(/^[ \t]{2}/, "").strip
+      code = splitted.last.gsub(/^[ \t]{2}/, "").strip
+    else
+      code = tag.text
+    end
+
+    [name, description, code]
+  end
+
   def pretty_default_value(tag, component)
-    params = tag.object.parameters.find { |param| [tag.name.to_s, tag.name.to_s + ":"].include?(param[0]) }
+    params = tag.object.parameters.find { |param| [tag.name.to_s, "#{tag.name}:"].include?(param[0]) }
     default = tag.defaults&.first || params&.second
 
     return "N/A" unless default
@@ -384,5 +398,50 @@ namespace :docs do
     return pretty_value(default) if constant_value.nil?
 
     pretty_value(constant_value)
+  end
+
+  def docs_metadata(component)
+    (status_module, short_name) = status_module_and_short_name(component)
+    status_path = status_module.nil? ? "" : "#{status_module}/"
+    status = component.status.to_s
+
+    {
+      title: short_name,
+      component_id: short_name.underscore,
+      status: status.capitalize,
+      source: source_url(component),
+      storybook: storybook_url(component),
+      path: "docs/content/components/#{status_path}#{short_name.downcase}.md",
+      example_path: example_path(component),
+      require_js_path: require_js_path(component)
+    }
+  end
+
+  def source_url(component)
+    path = component.name.split("::").map(&:underscore).join("/")
+
+    "https://github.com/primer/view_components/tree/main/app/components/#{path}.rb"
+  end
+
+  def storybook_url(component)
+    path = component.name.split("::").map { |n| n.underscore.dasherize }.join("-")
+
+    "https://primer.style/view-components/stories/?path=/story/#{path}"
+  end
+
+  def example_path(component)
+    example_path = "../../src/@primer/gatsby-theme-doctocat/components/example"
+    example_path = "../#{example_path}" if status_module?(component)
+    example_path
+  end
+
+  def require_js_path(component)
+    require_js_path = "../../src/@primer/gatsby-theme-doctocat/components/requires-js-flash"
+    require_js_path = "../#{require_js_path}" if status_module?(component)
+    require_js_path
+  end
+
+  def status_module?(component)
+    (%w[Alpha Beta] & component.name.split("::")).any?
   end
 end

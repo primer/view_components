@@ -2,22 +2,32 @@ import '@github/clipboard-copy-element'
 
 const CLIPBOARD_COPY_TIMER_DURATION = 2000
 
-function toggleSVG(svg: SVGElement) {
-  if (svg.style.display === '' || svg.style.display === 'block') {
-    svg.style.display = 'none'
-  } else {
-    svg.style.display = 'block'
-  }
+function showSVG(svg: SVGElement) {
+  svg.style.display = 'inline-block'
+}
+
+function hideSVG(svg: SVGElement) {
+  svg.style.display = 'none'
 }
 
 // Toggle a copy button.
-function toggleCopyButton(button: HTMLElement) {
-  const [clippyIcon, checkIcon] = button.querySelectorAll<SVGElement>('.octicon')
+function showCopy(button: HTMLElement) {
+  const [copyIcon, checkIcon] = button.querySelectorAll<SVGElement>('.octicon')
 
-  if (!clippyIcon || !checkIcon) return
+  if (!copyIcon || !checkIcon) return
 
-  toggleSVG(clippyIcon)
-  toggleSVG(checkIcon)
+  showSVG(copyIcon)
+  hideSVG(checkIcon)
+}
+
+// Toggle a copy button.
+function showCheck(button: HTMLElement) {
+  const [copyIcon, checkIcon] = button.querySelectorAll<SVGElement>('.octicon')
+
+  if (!copyIcon || !checkIcon) return
+
+  hideSVG(copyIcon)
+  showSVG(checkIcon)
 }
 
 const clipboardCopyElementTimers = new WeakMap<HTMLElement, number>()
@@ -32,8 +42,14 @@ document.addEventListener('clipboard-copy', function ({target}) {
     clearTimeout(currentTimeout)
     clipboardCopyElementTimers.delete(target)
   } else {
-    toggleCopyButton(target)
+    showCheck(target)
   }
 
-  clipboardCopyElementTimers.set(target, setTimeout(toggleCopyButton, CLIPBOARD_COPY_TIMER_DURATION, target))
+  clipboardCopyElementTimers.set(
+    target,
+    setTimeout(() => {
+      showCopy(target)
+      clipboardCopyElementTimers.delete(target)
+    }, CLIPBOARD_COPY_TIMER_DURATION)
+  )
 })

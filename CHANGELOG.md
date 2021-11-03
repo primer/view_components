@@ -35,22 +35,447 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Add the `HellipButton` component
 
     *Amélia Chavot*
+    *Owen Niblock @owenniblock*
 
 ### Update
 
 * Update the `HiddenTextExpander` component to use the `HellipButton`.
 
     *Amélia Chavot*
+    *Owen Niblock @owenniblock*
 
+
+## 0.0.60
+
+### Updates
+
+* Adding new Alpha component: BorderBox Header with optional `title` slot
+
+    *Katie Foster @inkblotty*
+
+* Add note about `Breadcrumbs` not being responsive.
+
+    *Joel Hawksley*
+
+* Handling arguments that aren't system arguments or string arguments in primer_octicon.
+
+    *Jon Rohan, Manuel Puyol*
+
+* Improvements to the Procfile so script/dev works as expected.
+
+    *Cameron Dutro*
+
+* Migrating grid classes to utilities.yml process
+
+    *Jon Rohan*
+
+* Adding new system color arguments, and deprecating old arguments.
+
+    *Jon Rohan*
+
+* Make `Spinner` more accessible by adding `sr-only` loading text.
+
+    *Manuel Puyol*
+
+* Make class name validation configurable instead of relying on the Rails env.
+
+    *Cameron Dutro*
+
+### Bug Fixes
+
+* Removes unwanted bottom border from active tab of `Alpha::TabNav`.
+
+    *Ned Schwartz*
+
+### Deprecations
+
+* Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
+
+    *Manuel Puyol*
+
+### Breaking changes
+
+* Add size restriction to `Avatar`.
+
+    *Kate Higa*
+
+* Remove `square` attribute from `Avatar` in favor of `shape`. This change also affects `TimelineItem` `avatar` slot.
+
+    *Manuel Puyol*
+
+## 0.0.59
+
+### Updates
+
+* Changed `ClipboardCopy` to use `copy` instead of `paste` icon.
+
+    *Cole Bemis*
+
+### Breaking changes
+
+* `Breadcrumbs` no longer accepts padding and font size system arguments.
+
+    *Joel Hawksley*
+
+## 0.0.58
+
+### Updates
+
+* Add accessibility section to `Breadcrumbs` page.
+
+    *Kate Higa*
+
+* Improve performance of the Classify module, i.e. `Classify.call`.
+
+    *Cameron Dutro*
+
+* Background arguments are now pulled in through the utilities class.
+
+    *Jon Rohan*
+
+* Border arguments are now pulled in through the utilities class.
+
+    *Jon Rohan*
+
+### Breaking changes
+
+* `bg:` system argument will no longer accept hex color strings, and deprecated color scale.
+
+    *Jon Rohan*
+
+### Bug fixes
+
+* Fix `ClipboardCopy` octicons not toggling correctly after first click.
+
+    *Manuel Puyol, Kristján Oddsson*
+
+## 0.0.57
+
+### Bug fixes
+
+* Don't suggest empty colors for Octicons when autocorrecting.
+
+    *Manuel Puyol*
+
+## 0.0.56
+
+### Updates
+
+* `Octicon` linter will autocorrect colors.
+
+    *Manuel Puyol*
+
+* `Button` linter will autocorrect when button uses `href`, `name`, `value` or `tabindex`.
+
+    *Manuel Puyol*
+
+* `Flash` linter won't autocorrect flashes with ERB in their content.
+
+    *Manuel Puyol*
+
+* Eager load components.
+
+    *Cameron Dutro*
+
+### Misc
+
+* Refactor some of the rubocop valid_node? logic into BaseCop class.
+
+    *Jon Rohan*
+
+* Fix validation checker to use Utilities for color-* classes.
+
+    *Jon Rohan*
+
+## 0.0.55
+
+### Breaking changes
+
+* `Primer::Breadcrumbs` requires `href`s for all items and no longer accepts the `selected` argument.
+
+    *Joel Hawksley*
+
+* Split `TabNav` into `TabNav` and `TabPanels`.
+
+    *Kate Higa*
+
+### New
+
+* Use the allocation_stats gem to count object allocations in our benchmarks.
+* Improve performance of Octicon cache key construction.
+
+    *Cameron Dutro*
+
+* Update `@primer/css` to `17.7.0` which includes a new argument for `word_break`
+
+    *Jon Rohan*
+
+### Misc
+
+* Clean up extra constants in `UnderlineNav`.
+
+    *Kate Higa*
+
+## 0.0.54
+
+### Breaking changes
+
+* Rename `BreadcrumbComponent` to `Beta::Breadcrumbs`.
+
+    *Joel Hawksley*
+
+* Split `UnderlineNavComponent` into `Alpha::UnderlineNav` and `Alpha::UnderlinePanels`.
+
+    *Kate Higa*
+
+## 0.0.53
+
+### New
+
+* Add autocorrection to `FlashComponent` linter when the context is basic text.
+
+    *Manuel Puyol*
+
+### Updates
+
+* Linters won't mark offenses when the ignore count is correct unless explicitly configured to do so.
+
+    *Manuel Puyol*
+
+* Deprecating background and border color presentational arguments
+
+    *Jon Rohan*
+
+* Map the `for` argument when autofixing `ClipboardCopy` migrations.
+
+    *Kristján Oddsson*
+
+* Add autocorrection for `CloseButton` linter.
+
+    *Manuel Puyol*
+
+* Moving text color variables to Utilities class
+
+    *Jon Rohan*
+
+### Bug fixes
+
+* Linters won't convert HTML special elements.
+
+    *Manuel Puyol*
+
+### Misc
+
+* Only run CHANGELOG CI on pull requests.
+
+    *Manuel Puyol*
+
+* Run CI actions on pushes to main.
+
+    *Cameron Dutro*
+
+* Get to 100% code coverage.
+
+    *Cameron Dutro*
+
+## 0.0.52
+
+### New
+
+* Adding `Primer::Beta::Truncate` component to reflect changes in primer/css component [Truncate](https://primer.style/css/components/truncate).
+
+    *Jon Rohan*
+
+* Add cop to look for deprecated system arguments and suggest replacements.
+
+    *Jon Rohan*
+
+* Add cop to use `primer_octicon` in favor of `octicon`.
+
+    *Manuel Puyol*
+
+* Fix release script so it doesn't loop continuously.
+
+    *Cameron Dutro*
+
+### Updates
+
+* Promote `ClipboardCopy` to beta.
+
+    *Manuel Puyol*
+
+* PrimerOcticon linter supports `aria-` and `data-` attributes.
+
+    *Manuel Puyol*
+
+* Linters can:
+  * convert values with ERB interpolations.
+  * autocorrect cases with custom classes.
+
+    *Manuel Puyol*
+
+* Add a `scheme` option to `BorderBoxComponent` rows.
+
+    *Cameron Dutro*
+
+* Upgrade rubocop and support Ruby 3.0.
+
+    *Cameron Dutro*
+
+* Linters will not autocorrect cases where a required argument is missing.
+
+    *Manuel Puyol*
+
+### Misc
+
+* Update benchmarks to run in every supported Ruby version.
+
+    *Manuel Puyol*
+
+* Add a linter generator.
+
+    *Manuel Puyol*
+
+## 0.0.51
+
+### Breaking changes
+
+* Rename `width` and `height` System Arguments to `w` and `h`, resolving conflict with HTML attribute names.
+
+    *Manuel Puyol*
+
+### Updates
+
+* `SystemArgumentInsteadOfClass` linter will check for arguments in ViewHelpers.
+
+    *Manuel Puyol*
+
+## 0.0.50
+
+### Updates
+
+* Fix incorrect slots syntax in docs.
+
+    *Joel Hawksley*, *Blake Williams*
+
+### New
+
+* Add linter suggestions for `CloseButton` component.
+
+    *Manuel Puyol*
+
+### Breaking changes
+
+* Update to `octicons` `v15`, removing open-ended dependency. See [https://github.com/primer/octicons/releases/tag/v15.0.0] for icon name changes in release.
+
+    *Joel Hawksley*
+
+### Updates
+
+* Don't require `title` for `Label`.
+
+    *Manuel Puyol*
+
+* Improve autocorrectable linters to convert known SystemArgument classes.
+
+    *Manuel Puyol*
+
+* Add support for `width: :full` and `height: :full` to System Arguments.
+
+    *Joel Hawksley*
+
+### Bug fixes
+
+* Update linters to not autocorrect attributes with ERB blocks.
+
+    *Manuel Puyol*
+
+* Fix `:height` and `:width` docs to pull from Utilities
+
+    *Jon Rohan*
+
+## 0.0.49
+
+### New
+
+* Add linter suggestions for `Label` component.
+
+    *Manuel Puyol*
+
+* Add linter suggestions for `ClipboardCopy` component.
+
+    *Manuel Puyol*
+
+### Updates
+
+* Update the `Truncate` component to accept `:strong` as a tag.
+
+    *Amélia Chavot*
+
+* Improve `Primer::Classify::Utilities.classes_to_hash` performance.
+
+    *Manuel Puyol*
+
+### Breaking changes
+
+* Require tab with panels to have `panel_id` so `aria-controls` can be set.
+
+    *Kate Higa*
+
+* Renames:
+  * `Primer::AvatarStackComponent` to `Primer::Beta::AvatarStack`.
+
+    *Manuel Puyol*
+
+### Misc
+
+* Extract example tag parsing into helper.
+
+    *Kate Higa*
+
+* Generate a static constant JSON and use it when defining linters.
+
+    *Manuel Puyol*
+
+## 0.0.48
+
+### Breaking changes
+
+* Ensure panels in `Navigation::Tab` have a label.
+
+    *Kate Higa*
+
+### Misc
+
+* Expose custom cops and default config for erblint.
+
+    *Manuel Puyol*
+
+* Fix double constant assign.
+
+    *Manuel Puyol*
+
+## 0.0.47
+
+>>>>>>> main
 ### Breaking changes
 
 * Restrict tag for `Popover` to `:div` and `Popover` heading slot to headings.
 
     *Kate Higa*
 
+<<<<<<< HEAD
 * Require an `aria-label` to be provided for the `HiddenTextExpander` component.
 
     *Amélia Chavot*
+=======
+* Renames:
+  * `Primer::AutoComplete` to `Primer::Beta::AutoComplete`
+  * `Primer::AutoComplete::Item` to `Primer::Beta::AutoComplete::Item`
+  * `Primer::AvatarComponent` to `Primer::Beta::Avatar`
+
+    *Manuel Puyol*
+>>>>>>> main
 
 ### Misc
 
@@ -62,6 +487,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+<<<<<<< HEAD
 * Fix components not rendering in Storybook because of kebab case arguments.
 
     *Amélia Chavot* & *Manuel Puyol*
@@ -69,6 +495,27 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Fix a typo on a command on the contribution page.
 
     *Amélia Chavot*
+=======
+* Add linter to suggest system arguments instead of classes.
+
+    *Manuel Puyol*
+
+* Update component generator to create components in the right status module.
+
+    *Manuel Puyol*
+
+* Add example for truncating HTML to `Truncate`.
+
+    *Joel Hawksley*
+
+* Update docs generation to point to the correct file sources.
+
+    *Manuel Puyol*
+
+* Add ENV flag to dump linter data into a file.
+
+    *Manuel Puyol*
+>>>>>>> main
 
 ## 0.0.46
 

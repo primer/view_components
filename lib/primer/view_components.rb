@@ -7,36 +7,52 @@ require "primer/view_components/engine"
 module Primer
   # :nodoc:
   module ViewComponents
-    DEFAULT_STATUSES_PATH = File.expand_path("static")
-    DEFAULT_STATUS_FILE_NAME = "statuses.json"
+    DEFAULT_STATIC_PATH = File.expand_path("static")
+    FILE_NAMES = {
+      statuses: "statuses.json",
+      constants: "constants.json",
+      audited_at: "audited_at.json"
+    }.freeze
 
     # generate_statuses returns a hash mapping component name to
     # the component's status sorted alphabetically by the component name.
     def self.generate_statuses
-      statuses = Primer::Component.descendants.each_with_object({}) do |component, mem|
+      Primer::Component.descendants.sort_by(&:name).each_with_object({}) do |component, mem|
         mem[component.to_s] = component.status.to_s
       end
-
-      statuses.sort_by { |k, _v| k }.to_h
     end
 
-    # dump_statuses generates the status hash and then serializes
-    # it as json at the given path
-    def self.dump_statuses(path: DEFAULT_STATUSES_PATH)
+    # generate_audited_at returns a hash mapping component name to
+    # the day the component has passed an accessibility audit.
+    def self.generate_audited_at
+      Primer::Component.descendants.sort_by(&:name).each_with_object({}) do |component, mem|
+        mem[component.to_s] = component.audited_at.to_s
+      end
+    end
+
+    # generate_constants returns a hash mapping component name to
+    # all of its constants.
+    def self.generate_constants
+      Primer::Component.descendants.sort_by(&:name).each_with_object({}) do |component, mem|
+        mem[component.to_s] = component.constants(false).sort.each_with_object({}) do |constant, h|
+          h[constant] = component.const_get(constant)
+        end
+      end
+    end
+
+    # dump generates the requested stat hash and outputs it to a file.
+    def self.dump(stats)
       require "json"
 
-      statuses = generate_statuses
-
-      File.open(File.join(path, DEFAULT_STATUS_FILE_NAME), "w") do |f|
-        f.write(JSON.pretty_generate(statuses))
+      File.open(File.join(DEFAULT_STATIC_PATH, FILE_NAMES[stats]), "w") do |f|
+        f.write(JSON.pretty_generate(send("generate_#{stats}")))
         f.write($INPUT_RECORD_SEPARATOR)
       end
     end
 
-    # read_statuses returns a JSON string matching the output of
-    # generate_statuses
-    def self.read_statuses(path: DEFAULT_STATUSES_PATH)
-      File.read(File.join(path, DEFAULT_STATUS_FILE_NAME))
+    # read returns a JSON string matching the output of the corresponding stat.
+    def self.read(stats)
+      File.read(File.join(DEFAULT_STATIC_PATH, FILE_NAMES[stats]))
     end
   end
 end

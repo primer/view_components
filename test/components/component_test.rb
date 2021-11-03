@@ -8,22 +8,29 @@ class PrimerComponentTest < Minitest::Test
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
     [Primer::HellipButton, { "aria-label": "No action" }],
+    [Primer::Alpha::BorderBox::Header, {}],
+    [Primer::Alpha::TabPanels, { label: "label" }],
+    [Primer::Alpha::TabNav, { label: "label" }],
+    [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
     [Primer::Image, { src: "src", alt: "alt" }],
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
-    [Primer::AutoComplete, { src: "Foo", list_id: "Bar", "aria-label": "Label", input_id: "input-id" }, proc { |c| c.input(classes: "Baz") }],
-    [Primer::AutoComplete::Item, { value: "Foo" }],
-    [Primer::AvatarComponent, { alt: "github", src: "https://github.com/github.png" }],
-    [Primer::AvatarStackComponent, {}, lambda do |component|
+    [Primer::Beta::AutoComplete, { src: "Foo", list_id: "Bar", "aria-label": "Label", input_id: "input-id" }, proc { |c| c.input(classes: "Baz") }],
+    [Primer::Beta::AutoComplete::Item, { value: "Foo" }],
+    [Primer::Beta::Avatar, { alt: "github", src: "https://github.com/github.png" }],
+    [Primer::Beta::AvatarStack, {}, lambda do |component|
       component.avatar(alt: "github", src: "https://github.com/github.png")
     end],
     [Primer::BaseButton, {}],
     [Primer::BaseComponent, { tag: :div }],
     [Primer::BlankslateComponent, { title: "Foo" }],
+    [Primer::Beta::Blankslate, {}, proc { |component|
+      component.title(tag: :h2) { "Foo" }
+    }],
     [Primer::BorderBoxComponent, {}, proc { |component| component.header { "Foo" } }],
     [Primer::BoxComponent, {}],
-    [Primer::BreadcrumbComponent, {}, proc { |component| component.item { "Foo" } }],
+    [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
     [Primer::ButtonComponent, {}],
     [Primer::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
     [Primer::Alpha::ButtonMarketing, {}],
@@ -47,7 +54,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::FlexItemComponent, { flex_auto: true }],
     [Primer::HeadingComponent, { tag: :h1 }],
     [Primer::HiddenTextExpander, { "aria-label": "No action" }],
-    [Primer::LabelComponent, { title: "Hello!" }],
+    [Primer::LabelComponent, {}],
     [Primer::LayoutComponent, {}],
     [Primer::LinkComponent, { href: "https://www.google.com" }],
     [Primer::Markdown, {}],
@@ -60,13 +67,13 @@ class PrimerComponentTest < Minitest::Test
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.heading { "Foo" } }],
     [Primer::TabContainerComponent, {}, proc { "Foo" }],
-    [Primer::TabNavComponent, { label: "aria label" }, proc { |c| c.tab(title: "Foo", selected: true) }],
     [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
+    [Primer::Beta::Truncate, {}, proc { |component| component.item { "Foo" } }],
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],
-    [Primer::UnderlineNavComponent, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }]
+    [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }]
   ].freeze
 
   def test_registered_components
@@ -77,65 +84,42 @@ class PrimerComponentTest < Minitest::Test
   end
 
   def test_all_components_support_system_arguments
+    default_args = { my: 4 }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
-      render_component(component, { my: 4 }.merge(args), proc)
+      render_component(component, default_args.merge(args), proc)
       assert_selector(".my-4")
     end
   end
 
   def test_all_components_pass_through_classes
+    default_args = { classes: "foo" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
-      render_component(component, { classes: "foo" }.merge(args), proc)
+      render_component(component, default_args.merge(args), proc)
       assert_selector(".foo")
     end
   end
 
   def test_all_components_support_inline_styles
+    default_args = { style: "width: 100%;" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
-      render_component(component, { style: "width: 100%;" }.merge(args), proc)
+      render_component(component, default_args.merge(args), proc)
       assert_selector("[style='width: 100%;']")
     end
   end
 
   def test_all_components_support_content_tag_arguments
+    default_args = { hidden: true }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
-      render_component(component, { hidden: true }.merge(args), proc)
+      render_component(component, default_args.merge(args), proc)
       assert_selector("[hidden]", visible: false)
     end
   end
 
   def test_all_components_support_data_tag_arguments
+    default_args = { "data-ga-click": "Foo,bar" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
-      render_component(component, { "data-ga-click": "Foo,bar" }.merge(args), proc)
+      render_component(component, default_args.merge(args), proc)
       assert_selector("[data-ga-click='Foo,bar']", visible: false)
-    end
-  end
-
-  def test_all_slots_support_system_arguments
-    COMPONENTS_WITH_ARGS.each do |component, args|
-      next unless component.respond_to?(:slots) && component.slots.any?
-
-      result = render_inline(component.new(**args)) do |c|
-        component.slots.each do |slot_name, _slot_attributes|
-          c.slot(
-            slot_name,
-            classes: "test-#{slot_name}",
-            my: 1,
-            hidden: true,
-            style: "height: 100%;",
-            "data-ga-click": "Foo,bar"
-          ) { "foo" }
-        end
-      end
-
-      component.slots.each do |slot_name, _attrs|
-        assert_selector(
-          ".test-#{slot_name}.my-1[hidden][data-ga-click='Foo,bar']",
-          visible: false
-        )
-
-        assert_includes result.to_html, "height: 100%;"
-      end
     end
   end
 

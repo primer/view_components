@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class Primer<%= class_name %>Test < Minitest::Test
+class Primer<%= module_name %><%= class_name %>Test < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders

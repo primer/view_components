@@ -1,6 +1,12 @@
 name: CI
 
-on: [pull_request]
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - main
 
 jobs:
   markdown:
@@ -11,35 +17,6 @@ jobs:
       with:
         config: '.github/lint/markdown.json'
         args: '**/*.md'
-  changedfiles:
-    runs-on: ubuntu-latest
-    # Map a step output to a job output
-    outputs:
-      all: ${{ steps.changes.outputs.all}}
-      markdown: ${{ steps.changes.outputs.markdown }}
-    steps:
-      # Make sure we have some code to diff.
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Get changed files
-        id: changes
-        # Set outputs using the command.
-        run: |
-          echo "::set-output name=all::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | xargs)"
-          echo "::set-output name=markdown::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | grep .md$ | xargs)"
-  checkforchangelog:
-    runs-on: ubuntu-latest
-    # require the first job to have ran
-    needs: changedfiles
-    steps:
-      - name: echo changed files
-        run: |
-          if [[ ! "${{needs.changedfiles.outputs.markdown}}" == *"CHANGELOG.md"* ]]; then
-            echo "::error file=CHANGELOG.md,line=1,col=1::Please make sure that you add a CHANGELOG entry to describe the changes in this pull request."
-            exit 1
-          fi
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -47,7 +24,7 @@ jobs:
     - name: Setup Ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.7.x
+        ruby-version: 3.0.x
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
@@ -66,7 +43,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@master
       with:
-        node-version: 15
+        node-version: 16
     - uses: actions/cache@v2
       with:
         path: node_modules
@@ -78,16 +55,37 @@ jobs:
   benchmark:
     needs: lint
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rails_version: [5.2.3, 6.1.1, main]
+        ruby_version: [2.5.x, 2.6.x, 2.7.x, 3.0.x]
+        exclude:
+          - rails_version: 5.2.3
+            ruby_version: 2.6.x
+          - rails_version: 5.2.3
+            ruby_version: 2.7.x
+          - rails_version: 5.2.3
+            ruby_version: 3.0.x
+          - rails_version: 6.1.1
+            ruby_version: 2.5.x
+          - rails_version: 6.1.1
+            ruby_version: 2.7.x
+          - rails_version: 6.1.1
+            ruby_version: 3.0.x
+          - rails_version: main
+            ruby_version: 2.5.x
+          - rails_version: main
+            ruby_version: 2.6.x
     steps:
     - uses: actions/checkout@master
     - name: Setup Ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.7
+        ruby-version: ${{ matrix.ruby_version }}
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
-        key: gems-build-bench-ruby-2.7-${{ hashFiles('**/Gemfile.lock') }}
+        key: gems-build-bench-rails-${{ matrix.rails_version }}-ruby-${{ matrix.ruby_version }}-${{ hashFiles('**/Gemfile.lock') }}
     - name: Build and test with Rake
       run: |
         gem install bundler:2.2.9
@@ -95,7 +93,8 @@ jobs:
         bundle update actionview activemodel activesupport railties
         bundle exec rake bench
       env:
-        RAILS_VERSION: main
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
   stories:
     needs: lint
     runs-on: ubuntu-latest
@@ -104,11 +103,11 @@ jobs:
     - name: Setup Ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.7
+        ruby-version: 3.0
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
-        key: gems-build-stories-ruby-2.7-${{ hashFiles('**/Gemfile.lock') }}
+        key: gems-build-stories-ruby-3.0-${{ hashFiles('**/Gemfile.lock') }}
     - name: Build gem
       run: |
         gem install bundler:2.2.9
@@ -124,16 +123,20 @@ jobs:
     strategy:
       matrix:
         rails_version: [5.2.3, 6.1.1, main]
-        ruby_version: [2.5.x, 2.6.x, 2.7.x]
+        ruby_version: [2.5.x, 2.6.x, 2.7.x, 3.0.x]
         exclude:
           - rails_version: 5.2.3
             ruby_version: 2.6.x
           - rails_version: 5.2.3
             ruby_version: 2.7.x
+          - rails_version: 5.2.3
+            ruby_version: 3.0.x
           - rails_version: 6.1.1
             ruby_version: 2.5.x
           - rails_version: 6.1.1
             ruby_version: 2.7.x
+          - rails_version: 6.1.1
+            ruby_version: 3.0.x
           - rails_version: main
             ruby_version: 2.5.x
           - rails_version: main
@@ -176,13 +179,13 @@ jobs:
     - name: Setup Ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.7.x
+        ruby-version: 3.0.x
     - name: Download coverage results
       uses: actions/download-artifact@v2
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
-        key: gems-build-rails-main-ruby-2.7.x-${{ hashFiles('**/Gemfile.lock') }}
+        key: gems-build-rails-main-ruby-3.0.x-${{ hashFiles('**/Gemfile.lock') }}
     - name: Collate simplecov
       run: |
         gem install bundler:2.2.9

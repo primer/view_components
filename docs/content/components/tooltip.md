@@ -1,8 +1,9 @@
 ---
 title: Tooltip
+componentId: tooltip
 status: Beta
 source: https://github.com/primer/view_components/tree/main/app/components/primer/tooltip.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-tooltip-component
+storybook: https://primer.style/view-components/stories/?path=/story/primer-tooltip
 ---
 
 import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'

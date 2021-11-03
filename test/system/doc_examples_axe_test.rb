@@ -5,7 +5,8 @@ require "application_system_test_case"
 class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
   # Skip components that should be tested as part of a larger component.
   # Do not add to this list for any other reason!
-  NOT_STANDALONE = [:AutoCompleteItemPreview, :NavigationTabComponentPreview].freeze
+  NOT_STANDALONE = [:BetaAutoCompleteItemPreview, :NavigationTabComponentPreview].freeze
+  IGNORE = [:MarkdownPreview].freeze
 
   def test_accessibility_of_doc_examples
     # Workaround to ensure that all component previews are loaded.
@@ -19,6 +20,7 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
 
     Primer::Docs.constants.each do |klass|
       next if NOT_STANDALONE.include?(klass)
+      next if IGNORE.include?(klass)
 
       component_previews = Primer::Docs.const_get(klass).instance_methods(false)
       component_uri = klass.to_s.underscore.gsub("_preview", "")
@@ -27,10 +29,12 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
         begin
           assert_accessible(page)
         rescue RuntimeError => e
+          # :nocov:
           puts "=========================================================================="
           puts "#{component_uri}##{preview} failed check."
           puts "=========================================================================="
           raise e
+          # :nocov:
         else
           puts "#{component_uri}##{preview} passed check."
         end

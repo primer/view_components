@@ -5,6 +5,8 @@
       url: /contributing
     - title: System arguments
       url: /system-arguments
+    - title: Linting
+      url: /linting
     - title: Migration
       url: /migration
     - title: Statuses
@@ -13,27 +15,27 @@
   url: /components
   children:
     - title: AutoComplete
-      url: /components/autocomplete
+      url: /components/beta/autocomplete
     - title: AutoCompleteItem
-      url: /components/autocompleteitem
+      url: /components/beta/autocompleteitem
     - title: Avatar
-      url: /components/avatar
+      url: /components/beta/avatar
     - title: AvatarStack
-      url: /components/avatarstack
+      url: /components/beta/avatarstack
     - title: Blankslate
-      url: /components/blankslate
+      url: /components/beta/blankslate
     - title: BorderBox
       url: /components/borderbox
     - title: Box
       url: /components/box
-    - title: Breadcrumb
-      url: /components/breadcrumb
+    - title: Breadcrumbs
+      url: /components/beta/breadcrumbs
     - title: Button
       url: /components/button
     - title: ButtonGroup
       url: /components/buttongroup
     - title: ButtonMarketing
-      url: /components/buttonmarketing
+      url: /components/alpha/buttonmarketing
     - title: ClipboardCopy
       url: /components/clipboardcopy
     - title: CloseButton
@@ -93,9 +95,11 @@
     - title: TabContainer
       url: /components/tabcontainer
     - title: TabNav
-      url: /components/tabnav
+      url: /components/alpha/tabnav
+    - title: TabPanels
+      url: /components/alpha/tabpanels
     - title: Text
-      url: /components/text
+      url: /components/beta/text
     - title: TimeAgo
       url: /components/timeago
     - title: TimelineItem
@@ -103,6 +107,8 @@
     - title: Tooltip
       url: /components/tooltip
     - title: Truncate
-      url: /components/truncate
+      url: /components/beta/truncate
     - title: UnderlineNav
-      url: /components/underlinenav
+      url: /components/alpha/underlinenav
+    - title: UnderlinePanels
+      url: /components/alpha/underlinepanels

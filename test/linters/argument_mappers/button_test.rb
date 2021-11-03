@@ -10,27 +10,6 @@ class ArgumentMappersButtonTest < LinterTestCase
     assert_empty args
   end
 
-  def test_returns_aria_arguments_as_string_symbols
-    @file = '<button aria-label="label" aria-disabled="true" aria-boolean>Button</button>'
-    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
-
-    assert_equal({
-                   '"aria-label"' => '"label"',
-                   '"aria-disabled"' => '"true"',
-                   '"aria-boolean"' => '""'
-                 }, args)
-  end
-
-  def test_returns_data_arguments_as_string_symbols
-    @file = '<button data-action="click" data-pjax>Button</button>'
-    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
-
-    assert_equal({
-                   '"data-action"' => '"click"',
-                   '"data-pjax"' => '""'
-                 }, args)
-  end
-
   def test_returns_disabled_argument_as_boolean
     @file = "<button disabled>Button</button>"
     args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
@@ -108,12 +87,12 @@ class ArgumentMappersButtonTest < LinterTestCase
   end
 
   def test_raises_if_cannot_map_class
-    @file = '<button class="some-class">Button</button>'
+    @file = '<button class="text-center">Button</button>'
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
       ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
     end
 
-    assert_equal "Cannot convert class \"some-class\"", err.message
+    assert_equal "Cannot convert class text-center", err.message
   end
 
   def test_raises_if_cannot_map_attribute
@@ -123,13 +102,6 @@ class ArgumentMappersButtonTest < LinterTestCase
     end
 
     assert_equal "Cannot convert attribute \"some-attribute\"", err.message
-  end
-
-  def test_converts_data_test_selector
-    @file = '<button data-test-selector="some-selector">Button</button>'
-    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
-
-    assert_equal({ test_selector: '"some-selector"' }, args)
   end
 
   def test_converts_erb_test_selector_call
@@ -148,14 +120,10 @@ class ArgumentMappersButtonTest < LinterTestCase
     assert_equal "Cannot convert erb block", err.message
   end
 
-  def test_complex_case
+  def test_with_system_arguments
     @file = '
       <button
-        class="btn btn-primary btn-sm btn-block BtnGroup-item"
-        aria-label="some label"
-        data-pjax
-        data-click="click"
-        <%= test_selector("some_selector") %>
+        class="btn btn-primary btn-sm btn-block BtnGroup-item mr-1 p-3 d-md-block d-none anim-fade-in"
         disabled
         type="submit"
       >Button</button>'
@@ -163,23 +131,30 @@ class ArgumentMappersButtonTest < LinterTestCase
     args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
 
     assert_equal({
-                   :scheme => ":primary",
-                   :variant => ":small",
-                   :block => true,
-                   :group_item => true,
-                   '"aria-label"' => '"some label"',
-                   '"data-pjax"' => '""',
-                   '"data-click"' => '"click"',
-                   :test_selector => '"some_selector"',
-                   :disabled => true,
-                   :type => ":submit"
+                   scheme: ":primary",
+                   variant: ":small",
+                   block: true,
+                   group_item: true,
+                   mr: 1,
+                   p: 3,
+                   display: [:none, nil, :block],
+                   animation: ":fade_in",
+                   disabled: true,
+                   type: ":submit"
                  }, args)
   end
 
   def test_returns_arguments_as_string
-    @file = '<a class="btn btn-primary" aria-label="some label">Link</a>'
+    @file = '<a class="btn btn-primary">Link</a>'
     args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_s
 
-    assert_equal 'tag: :a, scheme: :primary, "aria-label": "some label"', args
+    assert_equal "tag: :a, scheme: :primary", args
+  end
+
+  def test_returns_custom_classes_as_string
+    @file = '<button class="btn custom-1 custom-2">button</button>'
+    args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
+
+    assert_equal({ classes: "\"custom-1 custom-2\"" }, args)
   end
 end

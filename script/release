@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+if [ $(uname -s) = "Darwin" ]; then
+  SED_ARGS="-i ''"
+else
+  SED_ARGS="-i"
+fi
+
 fetch() {
   git fetch --all
 }
@@ -32,7 +38,7 @@ create_release_branch() {
 }
 
 update_readme() {
-  sed -i '' "/## main/ {a\
+  sed $SED_ARGS "/## main/ {a\
   \\
 \\
 ## $1.$2.$3
@@ -41,7 +47,7 @@ update_readme() {
 
 update_ruby_version() {
   # Update version file
-  sed -E -i '' \
+  sed -E $SED_ARGS \
       -e "s/MAJOR = [0-9]+/MAJOR = $1/g" \
       -e "s/MINOR = [0-9]+/MINOR = $2/g" \
       -e "s/PATCH = [0-9]+/PATCH = $3/g" \
@@ -79,12 +85,6 @@ commit() {
 
 push() {
   git push origin release-v$1-$2-$3
-
-  echo "####################################################"
-  echo "Now, open a PR with this branch and merge it to main"
-  echo "Then, run script/publish on main to release the gem and the NPM package"
-  echo "Finally, create a GitHub release https://github.com/primer/view_components/releases/new with the changes from CHANGELOG"
-  echo "####################################################"
 }
 
 main() {
@@ -103,7 +103,7 @@ main() {
     exit 1
   fi
 
-  if [ "$(branch_name)" !== "main" ]; then
+  if [[ "$(branch_name)" != "main" ]]; then
     echo "Error: can only make a release on the main branch"
     exit 1
   fi
@@ -124,8 +124,11 @@ main() {
   do
     if [ "$bump" == "Major" ]; then
       major=$((major + 1))
+      minor=0
+      patch=0
     elif [ "$bump" == "Minor" ]; then
       minor=$((minor + 1))
+      patch=0
     elif [ "$bump" == "Patch" ]; then
       patch=$((patch + 1))
     else
@@ -159,6 +162,14 @@ main() {
     add_changed_files $major $minor $patch
     commit $major $minor $patch
     push $major $minor $patch
+
+    echo "####################################################"
+    echo "Now, open a PR with this branch and merge it to main."
+    echo "When the PR has been merged, run script/publish to publish the gem."
+    echo "Finally, create a GitHub release https://github.com/primer/view_components/releases/new with the changes from CHANGELOG"
+    echo "####################################################"
+
+    break
   done
 }
 

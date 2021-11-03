@@ -17,13 +17,37 @@ class PrimerNavigationTabComponentTest < Minitest::Test
   end
 
   def test_renders_role_only_if_with_panel
-    render_inline Primer::Navigation::TabComponent.new(with_panel: true) do |c|
+    render_inline Primer::Navigation::TabComponent.new(with_panel: true, panel_id: "panel-1") do |c|
       c.text { "Title" }
     end
 
     assert_selector("button[role='tab']") do
       assert_selector("span", text: "Title")
     end
+  end
+
+  def test_raises_if_panel_has_no_label
+    err = assert_raises ArgumentError do
+      render_inline Primer::Navigation::TabComponent.new(with_panel: true, panel_id: "panel-1") do |c|
+        c.text { "Title" }
+        c.panel { "content" }
+      end
+    end
+
+    assert_equal("Panels must be labelled. Either set a unique `id` on the tab, or set an `aria-label` directly on the panel", err.message)
+  end
+
+  def test_raises_if_with_panel_and_no_panel_id
+    err = assert_raises ArgumentError do
+      render_inline Primer::Navigation::TabComponent.new(with_panel: true) do |c|
+        # :nocov:
+        c.text { "Title" }
+        c.panel { "content" }
+        # :nocov:
+      end
+    end
+
+    assert_equal("`panel_id` is required", err.message)
   end
 
   def test_renders_octicon
@@ -72,11 +96,11 @@ class PrimerNavigationTabComponentTest < Minitest::Test
   end
 
   def test_renders_as_button_if_has_panel
-    render_inline Primer::Navigation::TabComponent.new(with_panel: true) do |c|
+    render_inline Primer::Navigation::TabComponent.new(with_panel: true, panel_id: "panel-1") do |c|
       c.text { "Title" }
     end
 
-    assert_selector("button[role='tab'][type='button']") do
+    assert_selector("button[role='tab'][type='button'][aria-controls='panel-1']") do
       assert_selector("span", text: "Title")
     end
   end
@@ -93,7 +117,7 @@ class PrimerNavigationTabComponentTest < Minitest::Test
   end
 
   def test_renders_aria_selected_if_button_and_selected
-    render_inline Primer::Navigation::TabComponent.new(selected: true, with_panel: true) do |c|
+    render_inline Primer::Navigation::TabComponent.new(selected: true, with_panel: true, panel_id: "panel-1") do |c|
       c.text { "Title" }
     end
 
@@ -115,7 +139,7 @@ class PrimerNavigationTabComponentTest < Minitest::Test
       c.text { "Title" }
     end
 
-    assert_selector("li.d-flex") do
+    assert_selector("li.d-inline-flex") do
       assert_selector("a") do
         assert_selector("span", text: "Title")
       end

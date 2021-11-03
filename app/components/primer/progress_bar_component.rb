@@ -11,9 +11,6 @@ module Primer
     # @param bg [Symbol] The background color
     # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
     renders_many :items, lambda { |percentage: 0, bg: :success_inverse, **system_arguments|
-      percentage = percentage
-      system_arguments = system_arguments
-
       system_arguments[:tag] = :span
       system_arguments[:bg] = bg
       system_arguments[:style] = join_style_arguments(system_arguments[:style], "width: #{percentage}%;")
