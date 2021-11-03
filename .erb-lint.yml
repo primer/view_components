@@ -7,8 +7,6 @@ linters:
     enabled: true
   LabelComponentMigrationCounter:
     enabled: true
-  TwoColumnLayouts:
-    enabled: true
   Rubocop:
     enabled: true
     rubocop_config:
