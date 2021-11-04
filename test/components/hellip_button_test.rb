@@ -23,6 +23,26 @@ class PrimerHellipButtonTest < Minitest::Test
     assert_selector("button[type='button'][aria-expanded='false'].custom-class", text: "…")
   end
 
+  def test_renders_aria_label
+    render_inline(Primer::HellipButton.new("aria-label": "Custom aria label"))
+
+    assert_selector("button[aria-label='Custom aria label']")
+  end
+
+  def test_renders_aria_label_provided_as_object
+    render_inline(Primer::HellipButton.new(aria: { label: "Custom aria label" }))
+
+    assert_selector("button[aria-label='Custom aria label']")
+  end
+
+  def test_raises_if_no_aria_label_is_provided
+    err = assert_raises ArgumentError do
+      render_inline(Primer::HellipButton.new)
+    end
+
+    assert_equal("`aria-label` is required.", err.message)
+  end
+
   def test_does_not_render_content
     render_inline(Primer::HellipButton.new("aria-label": "No effect")) { "content" }
 

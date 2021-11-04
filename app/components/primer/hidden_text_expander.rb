@@ -2,6 +2,12 @@
 
 module Primer
   # Use `HiddenTextExpander` to indicate and toggle hidden text.
+  #
+  # @accessibility
+  #   `HiddenTextExpander` requires an `aria-label`, which will provide assistive technologies with an accessible label.
+  #   The `aria-label` should describe the action to be invoked by the `HiddenTextExpander`. For instance,
+  #   if your `HiddenTextExpander` expands a list of 5 comments, the `aria-label` should be
+  #   `"Expand 5 more comments"` instead of `"More"`.
   class HiddenTextExpander < Primer::Component
     # @example Default
     #   <%= render(Primer::HiddenTextExpander.new("aria-label": "No effect")) %>
