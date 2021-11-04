@@ -43,7 +43,7 @@ class PrimerHiddenTextExpanderTest < Minitest::Test
 
   def test_raises_if_no_aria_label_is_provided
     err = assert_raises ArgumentError do
-      render_inline(Primer::HiddenTextExpander.new())
+      render_inline(Primer::HiddenTextExpander.new)
     end
 
     assert_equal("`aria-label` is required.", err.message)
