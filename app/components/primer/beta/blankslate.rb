@@ -182,11 +182,10 @@ module Primer
       #
       # @example Variations
       #   @description
-      #     There are a few variations of how the Blankslate appears: `narrow` adds a maximum width, `large` increases the font size, and `spacious` adds extra padding.
+      #     There are a few variations of how the Blankslate appears: `narrow` adds a maximum width of `485px`, and `spacious` increases the padding from `32px` to `80px 40px`.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(
       #       narrow: true,
-      #       large: true,
       #       spacious: true,
       #     ) do |c| %>
       #       <% c.graphic_icon(icon: :book) %>
@@ -205,11 +204,10 @@ module Primer
       #     <% end %>
       #
       # @param narrow [Boolean] Adds a maximum width to the Blankslate.
-      # @param large [Boolean] Increases the font size in the Blankslate.
       # @param spacious [Boolean] Increases the vertical padding.
       # @param border [Boolean] Adds a border around the Blankslate.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(narrow: false, large: false, spacious: false, border: false, **system_arguments)
+      def initialize(narrow: false, spacious: false, border: false, **system_arguments)
         @border = border
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
@@ -217,7 +215,6 @@ module Primer
           @system_arguments[:classes],
           "blankslate",
           "blankslate-narrow": narrow,
-          "blankslate-large": large,
           "blankslate-spacious": spacious
         )
       end

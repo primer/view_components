@@ -13,7 +13,6 @@ class PrimerBetaBlankslateTest < Minitest::Test
     assert_selector("div.blankslate")
     assert_selector("h3.h2", text: "Title")
     refute_selector(".blankslate-narrow")
-    refute_selector(".blankslate-large")
     refute_selector(".blankslate-spacious")
   end
 
@@ -31,13 +30,12 @@ class PrimerBetaBlankslateTest < Minitest::Test
     end
   end
 
-  def test_renders_a_narrow_large_and_spacious_blankslate_component
-    render_inline(Primer::Beta::Blankslate.new(narrow: true, large: true, spacious: true)) do |c|
+  def test_renders_a_narrow_and_spacious_blankslate_component
+    render_inline(Primer::Beta::Blankslate.new(narrow: true, spacious: true)) do |c|
       c.heading(tag: :h2).with_content("Title")
     end
 
     assert_selector(".blankslate.blankslate-narrow")
-    assert_selector(".blankslate.blankslate-large")
     assert_selector(".blankslate.blankslate-spacious")
   end
 

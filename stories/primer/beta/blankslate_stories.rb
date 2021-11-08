@@ -8,7 +8,6 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
   story(:icon) do
     controls do
       narrow false
-      large false
       spacious false
       border false
     end
@@ -22,7 +21,6 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
   story(:image) do
     controls do
       narrow false
-      large false
       spacious false
       border false
     end
@@ -36,7 +34,6 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
   story(:loading) do
     controls do
       narrow false
-      large false
       spacious false
       border false
     end
@@ -51,7 +48,6 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
   story(:description) do
     controls do
       narrow false
-      large false
       spacious false
       border false
     end
@@ -65,7 +61,6 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
   story(:primary_action) do
     controls do
       narrow false
-      large false
       spacious false
       border false
     end
@@ -79,7 +74,6 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
   story(:secondary_action) do
     controls do
       narrow false
-      large false
       spacious false
       border false
     end
@@ -93,7 +87,6 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
   story(:full) do
     controls do
       narrow false
-      large false
       spacious false
       border false
     end
