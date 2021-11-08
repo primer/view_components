@@ -5,9 +5,9 @@ require "test_helper"
 class PrimerBetaBlankslateTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  def test_renders_a_basic_blankslate_component_with_a_title
+  def test_renders_a_basic_blankslate_component_with_a_heading
     render_inline(Primer::Beta::Blankslate.new) do |c|
-      c.title(tag: :h3).with_content("Title")
+      c.heading(tag: :h3).with_content("Title")
     end
 
     assert_selector("div.blankslate")
@@ -19,7 +19,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_a_spinner_component
     render_inline(Primer::Beta::Blankslate.new) do |c|
-      c.title(tag: :h2).with_content("Title")
+      c.heading(tag: :h2).with_content("Title")
       c.graphic_spinner(test_selector: "blankslate-spinner")
     end
 
@@ -33,7 +33,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
 
   def test_renders_a_narrow_large_and_spacious_blankslate_component
     render_inline(Primer::Beta::Blankslate.new(narrow: true, large: true, spacious: true)) do |c|
-      c.title(tag: :h2).with_content("Title")
+      c.heading(tag: :h2).with_content("Title")
     end
 
     assert_selector(".blankslate.blankslate-narrow")
@@ -44,7 +44,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
   def test_renders_a_blankslate_component_with_an_icon
     render_inline(Primer::Beta::Blankslate.new) do |c|
       c.graphic_icon(icon: :star)
-      c.title(tag: :h2).with_content("Title")
+      c.heading(tag: :h2).with_content("Title")
     end
 
     assert_selector(".blankslate-icon[height=24]")
@@ -53,7 +53,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
   def test_renders_a_blankslate_component_with_an_icon_with_a_custom_size
     render_inline(Primer::Beta::Blankslate.new) do |c|
       c.graphic_icon(icon: :star, size: :small)
-      c.title(tag: :h3).with_content("Title")
+      c.heading(tag: :h3).with_content("Title")
     end
 
     assert_selector(".blankslate-icon[height=16]")
@@ -61,7 +61,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_an_image
     render_inline(Primer::Beta::Blankslate.new) do |c|
-      c.title(tag: :h3).with_content("Title")
+      c.heading(tag: :h3).with_content("Title")
       c.graphic_image(src: "/some_image", alt: "Alt text")
     end
 
@@ -71,7 +71,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_a_description
     render_inline(Primer::Beta::Blankslate.new) do |c|
-      c.title(tag: :h3).with_content("Title")
+      c.heading(tag: :h3).with_content("Title")
       c.description { "Description" }
     end
 
@@ -80,7 +80,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_a_priamry_action
     render_inline(Primer::Beta::Blankslate.new) do |c|
-      c.title(tag: :h2).with_content("Title")
+      c.heading(tag: :h2).with_content("Title")
       c.primary_action(href: "https://github.com").with_content("Button")
     end
 
@@ -89,7 +89,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_a_priamry_action_with_custom_classes
     render_inline(Primer::Beta::Blankslate.new) do |c|
-      c.title(tag: :h2).with_content("Title")
+      c.heading(tag: :h2).with_content("Title")
       c.primary_action(href: "https://github.com", scheme: :outline).with_content("Button")
     end
 
@@ -98,7 +98,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_a_secondary_action
     render_inline(Primer::Beta::Blankslate.new) do |c|
-      c.title(tag: :h2).with_content("Title")
+      c.heading(tag: :h2).with_content("Title")
       c.secondary_action(href: "https://docs.github.com").with_content("Link")
     end
 
@@ -107,7 +107,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
 
   def test_wraps_in_a_box_when_border_true
     render_inline(Primer::Beta::Blankslate.new(border: true)) do |c|
-      c.title(tag: :h2) { "Title" }
+      c.heading(tag: :h2) { "Title" }
     end
 
     assert_selector(".Box") do

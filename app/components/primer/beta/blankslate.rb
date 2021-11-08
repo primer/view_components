@@ -5,7 +5,7 @@ module Primer
     # Use `Blankslate` when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.
     #
     # @accessibility
-    #   - Set the `title` heading level based on what is appropriate for your page hierarchy. <%= link_to_heading_practices %>
+    #   - Set the `heading` level based on what is appropriate for your page hierarchy. <%= link_to_heading_practices %>
     #   - `secondary_action` can be set to provide more information that is relevant in the context of the `Blankslate`.
     #   - `secondary_action` text should be meaningful out of context and clearly describe the destination. Avoid using vague text like, "Learn more" or "Click here".
     class Blankslate < Primer::Component
@@ -45,11 +45,11 @@ module Primer
         }
       }
 
-      # Required Title.
+      # Required Heading.
       #
       # @param tag [String]  <%= one_of(Primer::HeadingComponent::TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :title, lambda { |tag:, **system_arguments|
+      renders_one :heading, lambda { |tag:, **system_arguments|
         system_arguments[:tag] = tag
         system_arguments[:mb] = 1
         system_arguments[:classes] = class_names("h2", system_arguments[:classes])
@@ -101,7 +101,7 @@ module Primer
       #
       # @example Basic
       #   <%= render Primer::Beta::Blankslate.new do |c| %>
-      #     <% c.title(tag: :h2).with_content("Title") %>
+      #     <% c.heading(tag: :h2).with_content("Title") %>
       #     <% c.description { "Description"} %>
       #   <% end %>
       #
@@ -111,7 +111,7 @@ module Primer
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.graphic_icon(icon: :globe) %>
-      #       <% c.title(tag: :h2).with_content("Title") %>
+      #       <% c.heading(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
       #
@@ -121,7 +121,7 @@ module Primer
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.graphic_spinner(size: :large) %>
-      #       <% c.title(tag: :h2).with_content("Title") %>
+      #       <% c.heading(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
       #
@@ -131,7 +131,7 @@ module Primer
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.graphic_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
-      #       <% c.title(tag: :h2).with_content("Title") %>
+      #       <% c.heading(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
       #
@@ -140,7 +140,7 @@ module Primer
       #     Pass custom content to `description`.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.title(tag: :h2).with_content("Title") %>
+      #       <% c.heading(tag: :h2).with_content("Title") %>
       #       <% c.description do %>
       #         <em>Your custom content here</em>
       #       <% end %>
@@ -152,7 +152,7 @@ module Primer
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.graphic_icon(icon: :book) %>
-      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #       <% c.primary_action(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
       #     <% end %>
@@ -163,7 +163,7 @@ module Primer
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.graphic_icon(icon: :book) %>
-      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #       <% c.secondary_action(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
       #     <% end %>
@@ -174,7 +174,7 @@ module Primer
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
       #       <% c.graphic_icon(icon: :book) %>
-      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #       <% c.primary_action(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
       #       <% c.secondary_action(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
@@ -190,7 +190,7 @@ module Primer
       #       spacious: true,
       #     ) do |c| %>
       #       <% c.graphic_icon(icon: :book) %>
-      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
       #
@@ -200,7 +200,7 @@ module Primer
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(border: true) do |c| %>
       #       <% c.graphic_icon(icon: :book) %>
-      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
       #
@@ -223,7 +223,7 @@ module Primer
       end
 
       def render?
-        title.present?
+        heading.present?
       end
 
       def wrapper
