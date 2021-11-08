@@ -30,6 +30,16 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Breaking changes
+
+* Renamed `Blankslate` `title` slot to `heading.`
+
+    *Manuel Puyol*
+
+* Removed `Blankslate` `large` variant.
+
+    *Manuel Puyol*
+
 ## 0.0.60
 
 ### Updates
