@@ -22,8 +22,8 @@ Use `Blankslate` when there is a lack of content within a page or section. Use a
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `narrow` | `Boolean` | `false` | Adds a maximum width to the Blankslate. |
-| `spacious` | `Boolean` | `false` | Increases the vertical padding. |
+| `narrow` | `Boolean` | `false` | Adds a maximum width of `485px` to the Blankslate. |
+| `spacious` | `Boolean` | `false` | Increases the padding from `32px` to `80px 40px`. |
 | `border` | `Boolean` | `false` | Adds a border around the Blankslate. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 

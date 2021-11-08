@@ -203,8 +203,8 @@ module Primer
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
       #
-      # @param narrow [Boolean] Adds a maximum width to the Blankslate.
-      # @param spacious [Boolean] Increases the vertical padding.
+      # @param narrow [Boolean] Adds a maximum width of `485px` to the Blankslate.
+      # @param spacious [Boolean] Increases the padding from `32px` to `80px 40px`.
       # @param border [Boolean] Adds a border around the Blankslate.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(narrow: false, spacious: false, border: false, **system_arguments)
