@@ -22,7 +22,7 @@ module Primer
     def initialize(inline: false, **system_arguments)
       @system_arguments = system_arguments
 
-      validate!
+      validate_aria_label
 
       @system_arguments[:tag] = :button
       @system_arguments[:"aria-expanded"] = false
@@ -34,10 +34,6 @@ module Primer
 
     def call
       render(Primer::BaseButton.new(**@system_arguments)) { "&hellip;".html_safe }
-    end
-
-    def validate!
-      validate_aria_label
     end
   end
 end
