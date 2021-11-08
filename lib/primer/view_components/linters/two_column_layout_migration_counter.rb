@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "base_linter"
 require_relative "tag_tree_helpers"
 
 module ERBLint
@@ -84,7 +85,7 @@ module ERBLint
           next unless tag.name == "div"
 
           classes = classes_from(tag)
-          next unless CONTAINER_CLASSES.any? { |c| classes.include?(c) }
+          next if (CONTAINER_CLASSES & classes).empty?
 
           next unless metadata_from(tag_tree[tag])
 
