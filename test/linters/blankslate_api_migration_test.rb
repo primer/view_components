@@ -48,7 +48,7 @@ class BlankslateApiMigrationTest < LinterTestCase
 
     expected = <<~ERB
       <%= render Primer::Beta::Blankslate.new do |c| %>
-        <% c.title(tag: :h2) do %>
+        <% c.heading(tag: :h2) do %>
           Some title
         <% end %>
       <% end %>
@@ -62,7 +62,6 @@ class BlankslateApiMigrationTest < LinterTestCase
       <%= render Primer::BlankslateComponent.new(
         title: "Some title",
         narrow: true,
-        large: true,
         spacious: true,
         px: 3,
         display: :flex,
@@ -71,8 +70,27 @@ class BlankslateApiMigrationTest < LinterTestCase
     ERB
 
     expected = <<~ERB
-      <%= render Primer::Beta::Blankslate.new(narrow: true, large: true, spacious: true, px: 3, display: :flex, "aria-label": "label") do |c| %>
-        <% c.title(tag: :h2) do %>
+      <%= render Primer::Beta::Blankslate.new(narrow: true, spacious: true, px: 3, display: :flex, "aria-label": "label") do |c| %>
+        <% c.heading(tag: :h2) do %>
+          Some title
+        <% end %>
+      <% end %>
+    ERB
+
+    assert_equal expected, corrected_content
+  end
+
+  def test_does_not_set_large_attribute
+    @file = <<~ERB
+      <%= render Primer::BlankslateComponent.new(
+        title: "Some title",
+        large: true
+      ) %>
+    ERB
+
+    expected = <<~ERB
+      <%= render Primer::Beta::Blankslate.new do |c| %>
+        <% c.heading(tag: :h2) do %>
           Some title
         <% end %>
       <% end %>
@@ -91,7 +109,7 @@ class BlankslateApiMigrationTest < LinterTestCase
 
     expected = <<~ERB
       <%= render Primer::Beta::Blankslate.new do |c| %>
-        <% c.title(tag: :h3) do %>
+        <% c.heading(tag: :h3) do %>
           Some title
         <% end %>
       <% end %>
@@ -110,7 +128,7 @@ class BlankslateApiMigrationTest < LinterTestCase
 
     expected = <<~ERB
       <%= render Primer::Beta::Blankslate.new do |c| %>
-        <% c.title(tag: :h2) do %>
+        <% c.heading(tag: :h2) do %>
           Some title
         <% end %>
 
@@ -136,7 +154,7 @@ class BlankslateApiMigrationTest < LinterTestCase
       <%= render Primer::Beta::Blankslate.new do |c| %>
         <% c.graphic_icon(icon: :x, size: :large) %>
 
-        <% c.title(tag: :h2) do %>
+        <% c.heading(tag: :h2) do %>
           Some title
         <% end %>
       <% end %>
@@ -158,7 +176,7 @@ class BlankslateApiMigrationTest < LinterTestCase
       <%= render Primer::Beta::Blankslate.new do |c| %>
         <% c.graphic_image(src: "image.png", alt: "image alt") %>
 
-        <% c.title(tag: :h2) do %>
+        <% c.heading(tag: :h2) do %>
           Some title
         <% end %>
       <% end %>
@@ -179,7 +197,7 @@ class BlankslateApiMigrationTest < LinterTestCase
 
     expected = <<~ERB
       <%= render Primer::Beta::Blankslate.new do |c| %>
-        <% c.title(tag: :h2) do %>
+        <% c.heading(tag: :h2) do %>
           Some title
         <% end %>
 
@@ -203,7 +221,7 @@ class BlankslateApiMigrationTest < LinterTestCase
 
     expected = <<~ERB
       <%= render Primer::Beta::Blankslate.new do |c| %>
-        <% c.title(tag: :h2) do %>
+        <% c.heading(tag: :h2) do %>
           Some title
         <% end %>
 
@@ -229,7 +247,6 @@ class BlankslateApiMigrationTest < LinterTestCase
         link_text: "link",
         link_url: "link url",
         narrow: true,
-        large: true,
         spacious: true,
         px: 3,
         display: :flex,
@@ -238,10 +255,10 @@ class BlankslateApiMigrationTest < LinterTestCase
     ERB
 
     expected = <<~ERB
-      <%= render Primer::Beta::Blankslate.new(narrow: true, large: true, spacious: true, px: 3, display: :flex, "aria-label": "label") do |c| %>
+      <%= render Primer::Beta::Blankslate.new(narrow: true, spacious: true, px: 3, display: :flex, "aria-label": "label") do |c| %>
         <% c.graphic_icon(icon: :x, size: :large) %>
 
-        <% c.title(tag: :h2) do %>
+        <% c.heading(tag: :h2) do %>
           Some title
         <% end %>
 
@@ -275,7 +292,6 @@ class BlankslateApiMigrationTest < LinterTestCase
         link_text: "link",
         link_url: "link url",
         narrow: true,
-        large: true,
         spacious: true,
         px: 3,
         display: :flex,
@@ -284,10 +300,10 @@ class BlankslateApiMigrationTest < LinterTestCase
     ERB
 
     expected = <<~ERB
-      <%= render Primer::Beta::Blankslate.new(narrow: true, large: true, spacious: true, px: 3, display: :flex, "aria-label": "label") do |c| %>
+      <%= render Primer::Beta::Blankslate.new(narrow: true, spacious: true, px: 3, display: :flex, "aria-label": "label") do |c| %>
         <% c.graphic_image(src: "image.png", alt: "image alt") %>
 
-        <% c.title(tag: :h2) do %>
+        <% c.heading(tag: :h2) do %>
           Some title
         <% end %>
 

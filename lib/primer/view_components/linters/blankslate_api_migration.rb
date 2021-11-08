@@ -47,7 +47,7 @@ module ERBLint
           slots: {
             graphic_icon: {},
             graphic_image: {},
-            title: {
+            heading: {
               tag: ":h2"
             },
             description: {},
@@ -61,9 +61,9 @@ module ERBLint
 
           case pair.key.value.to_sym
           when :title
-            new_blankslate[:slots][:title][:content] = pair.value.value
+            new_blankslate[:slots][:heading][:content] = pair.value.value
           when :title_tag
-            new_blankslate[:slots][:title][:tag] = source_value
+            new_blankslate[:slots][:heading][:tag] = source_value
           when :icon
             new_blankslate[:slots][:graphic_icon][:icon] = source_value
           when :icon_size
@@ -84,6 +84,8 @@ module ERBLint
             new_blankslate[:slots][:secondary_action][:content] = pair.value.value
           when :link_url
             new_blankslate[:slots][:secondary_action][:href] = source_value
+          when :large
+            next # Large does not exist anymore
           else
             new_blankslate[:arguments][pair.key.source] = source_value
           end
@@ -96,8 +98,8 @@ module ERBLint
         data = build_blankslate_arguments(kwargs)
         component_args = args_to_s(data[:arguments])
 
-        # If Blankslate has no title, we don't update it.
-        return if data[:slots][:title][:content].nil?
+        # If Blankslate has no heading, we don't update it.
+        return if data[:slots][:heading][:content].nil?
         # If Blankslate sets both image and icon. don't update it.
         return if data[:slots][:graphic_icon].present? && data[:slots][:graphic_image].present?
 
