@@ -86,8 +86,7 @@ module ERBLint
           classes = classes_from(tag)
           next unless CONTAINER_CLASSES.any? { |c| classes.include?(c) }
 
-          metadata = metadata_from(tag_tree[tag])
-          next unless metadata
+          next unless metadata_from(tag_tree[tag])
 
           @total_offenses += 1
           @offenses_not_corrected += 1
