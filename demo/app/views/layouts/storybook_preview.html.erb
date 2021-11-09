@@ -7,11 +7,15 @@
     <% if Rails.env.development? %>
       <%= javascript_include_tag "primer_view_components", host: "localhost:4000" %>
     <% else %>
-      <%= javascript_include_tag "primer_view_components" %>
+      <%= javascript_include_tag "primer_view_components", host: "primer.style/rails" %>
     <% end %>
   </head>
 
   <body>
-    <%= yield %>
+    <div id="sb-root">
+      <div id="sb-story">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
