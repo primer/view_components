@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Add a two-column layout linter.
+
+    *Cameron Dutro*
+
 ### Breaking changes
 
 * Renamed `Blankslate` `title` slot to `heading.`
