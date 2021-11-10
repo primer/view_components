@@ -60,6 +60,41 @@
       "div"
     ]
   },
+  "Primer::Alpha::Tooltip": {
+    "DIRECTION_DEFAULT": "n",
+    "DIRECTION_OPTIONS": [
+      "n",
+      "n",
+      "w",
+      "e",
+      "s",
+      "ne",
+      "se",
+      "sw",
+      "nw"
+    ],
+    "MULTILINE_DEFAULT": false,
+    "TRIGGER_ELEMENT_FALLBACK_TAG": "button",
+    "TRIGGER_ELEMENT_TAG_OPTIONS": [
+      "button",
+      "a",
+      "summary",
+      "md-header",
+      "md-bold",
+      "md-italic",
+      "md-quote",
+      "md-code",
+      "md-link",
+      "md-ordered-list",
+      "md-task-list",
+      "md-unordered-list"
+    ],
+    "TYPE_FALLBACK": "describe",
+    "TYPE_OPTIONS": [
+      "describe",
+      "label"
+    ]
+  },
   "Primer::Alpha::UnderlineNav": {
     "BODY_TAG_DEFAULT": "ul",
     "TAG_DEFAULT": "nav",
