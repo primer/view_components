@@ -71,6 +71,7 @@ Use this slot to set a call to action for users.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `href` | `String` | N/A | URL to be used for the primary action. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `Secondary_action`
@@ -81,7 +82,7 @@ Use this slot to provide more information for the user.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `href` | `String` | N/A | URL to be used for the link. |
+| `href` | `String` | N/A | URL to be used for the secondary action. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Examples

@@ -73,6 +73,7 @@ module Primer
       #
       # Use this slot to set a call to action for users.
       #
+      # @param href [String] URL to be used for the primary action.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :primary_action, lambda { |href:, **system_arguments|
         system_arguments[:tag] = :a
@@ -88,7 +89,7 @@ module Primer
       #
       # Use this slot to provide more information for the user.
       #
-      # @param href [String] URL to be used for the link.
+      # @param href [String] URL to be used for the secondary action.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :secondary_action, lambda { |href:, **system_arguments|
         system_arguments[:href] = href
