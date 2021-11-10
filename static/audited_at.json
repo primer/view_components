@@ -1,6 +1,9 @@
 {
   "Primer::Alpha::BorderBox::Header": "",
   "Primer::Alpha::ButtonMarketing": "",
+  "Primer::Alpha::Layout": "",
+  "Primer::Alpha::Layout::Main": "",
+  "Primer::Alpha::Layout::Sidebar": "",
   "Primer::Alpha::TabNav": "",
   "Primer::Alpha::TabPanels": "",
   "Primer::Alpha::UnderlineNav": "",

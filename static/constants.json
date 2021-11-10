@@ -44,6 +44,84 @@
       "large"
     ]
   },
+  "Primer::Alpha::Layout": {
+    "FIRST_IN_SOURCE_DEFAULT": "sidebar",
+    "FIRST_IN_SOURCE_OPTIONS": [
+      "sidebar",
+      "main"
+    ],
+    "GUTTER_DEFAULT": "default",
+    "GUTTER_MAPPINGS": {
+      "none": "Layout--gutter-none",
+      "condensed": "Layout--gutter-condensed",
+      "spacious": "Layout--gutter-spacious",
+      "default": ""
+    },
+    "GUTTER_OPTIONS": [
+      "none",
+      "condensed",
+      "spacious",
+      "default"
+    ],
+    "Main": "Primer::Alpha::Layout::Main",
+    "SIDEBAR_COL_PLACEMENT_DEFAULT": "start",
+    "SIDEBAR_COL_PLACEMENT_OPTIONS": [
+      "start",
+      "end"
+    ],
+    "SIDEBAR_ROW_PLACEMENT_DEFAULT": "start",
+    "SIDEBAR_ROW_PLACEMENT_OPTIONS": [
+      "start",
+      "end",
+      "none"
+    ],
+    "SIDEBAR_WIDTH_DEFAULT": "default",
+    "SIDEBAR_WIDTH_MAPPINGS": {
+      "default": "",
+      "narrow": "Layout--sidebar-narrow",
+      "wide": "Layout--sidebar-wide"
+    },
+    "SIDEBAR_WIDTH_OPTIONS": [
+      "default",
+      "narrow",
+      "wide"
+    ],
+    "STACKING_BREAKPOINT_DEFAULT": "md",
+    "STACKING_BREAKPOINT_MAPPINGS": {
+      "sm": "",
+      "md": "Layout--flowRow-until-md",
+      "lg": "Layout--flowRow-until-lg"
+    },
+    "STACKING_BREAKPOINT_OPTIONS": [
+      "sm",
+      "md",
+      "lg"
+    ],
+    "Sidebar": "Primer::Alpha::Layout::Sidebar"
+  },
+  "Primer::Alpha::Layout::Main": {
+    "TAG_DEFAULT": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "main"
+    ],
+    "WIDTH_DEFAULT": "full",
+    "WIDTH_OPTIONS": [
+      "full",
+      "md",
+      "lg",
+      "xl"
+    ]
+  },
+  "Primer::Alpha::Layout::Sidebar": {
+    "TAG_DEFAULT": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "aside",
+      "nav",
+      "section"
+    ]
+  },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",
     "TAG_DEFAULT": "nav",
@@ -260,7 +338,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",
