@@ -41,6 +41,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Deprecate Label `info` and `warning` schemes
 
     *simurai*
+
 ## 0.0.60
 
 ### Updates
