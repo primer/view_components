@@ -22,10 +22,10 @@ module Primer
       done: "Label--done",
       sponsors: "Label--sponsors",
       # deprecated
-      info: "Label--info",
-      warning: "Label--warning",
-      orange: "Label--orange",
-      purple: "Label--purple"
+      info: "Label--accent",
+      warning: "Label--attention",
+      orange: "Label--severe",
+      purple: "Label--done"
     }.freeze
     DEPRECATED_SCHEME_OPTIONS = [:info, :warning, :orange, :purple].freeze
     SCHEME_OPTIONS = ([*SCHEME_MAPPINGS.keys, nil] - DEPRECATED_SCHEME_OPTIONS).freeze
