@@ -45,7 +45,7 @@ Use:
 
 ### `Heading`
 
-Required Heading.
+Required heading.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
@@ -54,7 +54,7 @@ Required Heading.
 
 ### `Description`
 
-Optional Description.
+Optional description.
 
 - The description should always be informative and actionable.
 - Don't use phrases like "You can".
@@ -65,7 +65,7 @@ Optional Description.
 
 ### `Primary_action`
 
-Optional Primary action
+Optional primary action
 
 Use this slot to set a call to action for users.
 
@@ -75,7 +75,7 @@ Use this slot to set a call to action for users.
 
 ### `Secondary_action`
 
-Optional Secondary action
+Optional secondary action
 
 Use this slot to provide more information for the user.
 

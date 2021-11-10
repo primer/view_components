@@ -45,7 +45,7 @@ module Primer
         }
       }
 
-      # Required Heading.
+      # Required heading.
       #
       # @param tag [String]  <%= one_of(Primer::HeadingComponent::TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -57,7 +57,7 @@ module Primer
         Primer::HeadingComponent.new(**system_arguments)
       }
 
-      # Optional Description.
+      # Optional description.
       #
       # - The description should always be informative and actionable.
       # - Don't use phrases like "You can".
@@ -69,7 +69,7 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # Optional Primary action
+      # Optional primary action
       #
       # Use this slot to set a call to action for users.
       #
@@ -84,7 +84,7 @@ module Primer
         Primer::ButtonComponent.new(**system_arguments)
       }
 
-      # Optional Secondary action
+      # Optional secondary action
       #
       # Use this slot to provide more information for the user.
       #
@@ -98,7 +98,6 @@ module Primer
         Primer::LinkComponent.new(**system_arguments)
       }
 
-      #
       # @example Basic
       #   <%= render Primer::Beta::Blankslate.new do |c| %>
       #     <% c.heading(tag: :h2).with_content("Title") %>
