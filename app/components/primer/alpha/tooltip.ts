@@ -13,16 +13,20 @@
 
 const states = new WeakMap()
 
-const tooltipDirectionClasses = [
-  'hx_tooltip-se',
+const LEFT_OVERFLOW_CLASS = 'hx_tooltip-se'
+const RIGHT_OVERFLOW_CLASS = 'hx_tooltip-sw'
+const TOOLTIP_DIRECTION_CLASSES = [
+  RIGHT_OVERFLOW_CLASS,
   'hx_tooltip-s',
   'hx_tooltip-ne',
   'hx_tooltip-n',
   'hx_tooltip-nw',
-  'hx_tooltip-sw',
+  LEFT_OVERFLOW_CLASS,
   'hx_tooltip-e',
   'hx_tooltip-w'
 ]
+
+const TOOLTIP_OPEN_CLASS = 'hx_tooltip-open'
 
 class TooltipContainerElement extends HTMLElement {
   constructor() {
@@ -41,7 +45,7 @@ class TooltipContainerElement extends HTMLElement {
     }
 
     const tooltipDirection = Array.from(tooltip.classList).filter(className =>
-      tooltipDirectionClasses.includes(className)
+      TOOLTIP_DIRECTION_CLASSES.includes(className)
     )[0]
     states.set(this, {tooltipDirection})
 
@@ -124,7 +128,7 @@ function closeTooltip(el: TooltipContainerElement) {
   const tooltip: HTMLElement | null = getTooltipElement(el)
   if (!tooltip) return
 
-  tooltip.classList.remove('hx_tooltip-open')
+  tooltip.classList.remove(TOOLTIP_OPEN_CLASS)
   removeDirectionClasses(tooltip)
   const state = states.get(el)
   if (state) {
@@ -151,20 +155,20 @@ function showTooltip(event: FocusEvent | MouseEvent, el: TooltipContainerElement
 
   // Hide all tooltips
   for (const tip of document.querySelectorAll('[role=tooltip]')) {
-    tip.classList.remove('hx_tooltip-open')
+    tip.classList.remove(TOOLTIP_OPEN_CLASS)
     tip.setAttribute('hidden', 'hidden')
   }
 
   const tooltip: HTMLElement | null = getTooltipElement(el)
   if (!tooltip) return
 
-  tooltip.classList.add('hx_tooltip-open')
+  tooltip.classList.add(TOOLTIP_OPEN_CLASS)
   tooltip.removeAttribute('hidden')
   checkBounds(tooltip)
 }
 
 function removeDirectionClasses(tooltip: HTMLElement) {
-  for (const directionClass of tooltipDirectionClasses) {
+  for (const directionClass of TOOLTIP_DIRECTION_CLASSES) {
     tooltip.classList.remove(directionClass)
   }
 }
@@ -177,8 +181,8 @@ function checkBounds(tooltip: HTMLElement) {
   removeDirectionClasses(tooltip)
 
   if (bounding.left < 0) {
-    tooltip.classList.add('hx_tooltip-se')
+    tooltip.classList.add(LEFT_OVERFLOW_CLASS)
   } else if (bounding.right < 0) {
-    tooltip.classList.add('hx_tooltip-sw')
+    tooltip.classList.add(RIGHT_OVERFLOW_CLASS)
   }
 }
