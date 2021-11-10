@@ -34,6 +34,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Katie Foster @inkblotty*
 
+* Add a two-column layout linter.
+
+    *Cameron Dutro*
+
 ## 0.0.60
 
 ### Updates
