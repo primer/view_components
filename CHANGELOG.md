@@ -30,6 +30,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+* Bump Storybook version to include Skip to Content links for keyboard auditors
+
+    *Katie Foster @inkblotty*
+
 * Add a two-column layout linter.
 
     *Cameron Dutro*
