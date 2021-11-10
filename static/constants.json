@@ -420,10 +420,10 @@
       "danger": "Label--danger",
       "done": "Label--done",
       "sponsors": "Label--sponsors",
-      "info": "Label--info",
-      "warning": "Label--warning",
-      "orange": "Label--orange",
-      "purple": "Label--purple"
+      "info": "Label--accent",
+      "warning": "Label--attention",
+      "orange": "Label--severe",
+      "purple": "Label--done"
     },
     "SCHEME_OPTIONS": [
       "primary",
