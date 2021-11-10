@@ -28,6 +28,8 @@ For changes that explicitly deprecate part of the code base.
 The category for changes related to documentation, testing and tooling. Also, for pull requests that can't fit in other sections.
 -->
 
+## main
+
 ### New
 
 * Add new schemes to Label
@@ -39,9 +41,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Deprecate Label `info` and `warning` schemes
 
     *simurai*
-
-## main
-
 ## 0.0.60
 
 ### Updates
