@@ -30,6 +30,13 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Adding ability for `border` system arguments to be responsive
+
+    *Josh Klina @jklina*
+
+
 ## 0.0.60
 
 ### Updates
