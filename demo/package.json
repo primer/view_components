@@ -5,6 +5,8 @@
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/ujs": "^6.0.0",
+    "prettier": "^2.4.1",
+    "react-syntax-highlighter": "^15.4.4",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
