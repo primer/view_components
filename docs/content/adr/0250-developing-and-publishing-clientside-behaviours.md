@@ -47,4 +47,3 @@ This library will be able to provide behaviours for higher fidelity components, 
 Contributors of Primer View Components will need to have an understanding of TypeScript if they wish to author behavioural components.
 
 There will be additional work for our consumers if they wish to use behavioural components. Consumers will need to use the `javascript_include_tag` helper, or otherwise import the npm bundle in order for these components to work in their projects.
-

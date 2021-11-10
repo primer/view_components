@@ -305,21 +305,21 @@ namespace :docs do
   end
 
   task :build_adrs do
-    adr_content_dir = File.join(*%w(docs content adr))
+    adr_content_dir = File.join(*%w[docs content adr])
 
     FileUtils.rm_rf(File.join(adr_content_dir))
     FileUtils.mkdir(adr_content_dir)
 
-    nav_entries = Dir[File.join(*%w(adr *.md))].map do |orig_path|
+    nav_entries = Dir[File.join(*%w[adr *.md])].map do |orig_path|
       orig_file_name = File.basename(orig_path)
       url_name = orig_file_name.chomp(".md")
       title = ActiveSupport::Inflector.titleize(url_name.sub(/\A\d+-/, ""))
 
       file_contents = File.read(orig_path)
-      file_contents = <<~END
+      file_contents = <<~CONTENTS.sub(/\n+\z/, "\n")
         <!-- Warning: AUTO-GENERATED file, do not edit. Make changes to the files in the adr/ directory instead. -->
         #{file_contents}
-      END
+      CONTENTS
 
       File.write(File.join(adr_content_dir, orig_file_name), file_contents)
       puts "Copied #{orig_path}"
@@ -327,7 +327,7 @@ namespace :docs do
       { "title" => title, "url" => "/adr/#{url_name}" }
     end
 
-    nav_yaml_file = File.join(*%w(docs src @primer gatsby-theme-doctocat nav.yml))
+    nav_yaml_file = File.join(*%w[docs src @primer gatsby-theme-doctocat nav.yml])
     nav_yaml = YAML.load_file(nav_yaml_file)
     adr_entry = {
       "title" => "Architecture Decisions",
