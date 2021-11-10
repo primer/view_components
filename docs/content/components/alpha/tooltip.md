@@ -55,7 +55,7 @@ The component that triggers the tooltip
 
 ### north direction
 
-<Example src="<tooltip-container data-view-component='true' class='hx-tooltip-container'>  <a aria-describedby='unique-1' data-view-component='true'>GitHub</a>    <p id='unique-1' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx-tooltip hx-tooltip-n'>An awesome place for developers</p></tooltip-container>" />
+<Example src="<tooltip-container data-view-component='true' class='hx_tooltip-container'>  <a aria-describedby='unique-1' data-view-component='true'>GitHub</a>    <p id='unique-1' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx_tooltip hx_tooltip-n'>An awesome place for developers</p></tooltip-container>" />
 
 ```erb
 <%= render(Primer::Alpha::Tooltip.new(id: "unique-1", type: :describe, text: "An awesome place for developers"))  do |component| %>
@@ -65,7 +65,7 @@ The component that triggers the tooltip
 
 ### south direction
 
-<Example src="<tooltip-container data-view-component='true' class='hx-tooltip-container'>  <button aria-describedby='unique-2' data-view-component='true'>GitHub</button>    <p id='unique-2' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx-tooltip hx-tooltip-s'>An awesome place for developers</p></tooltip-container>" />
+<Example src="<tooltip-container data-view-component='true' class='hx_tooltip-container'>  <button aria-describedby='unique-2' data-view-component='true'>GitHub</button>    <p id='unique-2' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx_tooltip hx_tooltip-s'>An awesome place for developers</p></tooltip-container>" />
 
 ```erb
 <%= render(Primer::Alpha::Tooltip.new(id: "unique-2", type: :describe, direction: :s, text: "An awesome place for developers"))  do |component| %>
@@ -75,7 +75,7 @@ The component that triggers the tooltip
 
 ### east direction
 
-<Example src="<tooltip-container data-view-component='true' class='hx-tooltip-container'>  <a aria-describedby='unique-3' data-view-component='true'>GitHub</a>    <p id='unique-3' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx-tooltip hx-tooltip-e'>An awesome place for developers</p></tooltip-container>" />
+<Example src="<tooltip-container data-view-component='true' class='hx_tooltip-container'>  <a aria-describedby='unique-3' data-view-component='true'>GitHub</a>    <p id='unique-3' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx_tooltip hx_tooltip-e'>An awesome place for developers</p></tooltip-container>" />
 
 ```erb
 <%= render(Primer::Alpha::Tooltip.new(id: "unique-3", type: :describe, direction: :e, text: "An awesome place for developers"))  do |component| %>
@@ -85,7 +85,7 @@ The component that triggers the tooltip
 
 ### west direction
 
-<Example src="<tooltip-container data-view-component='true' class='hx-tooltip-container'>  <a aria-describedby='unique-4' data-view-component='true'>GitHub</a>    <p id='unique-4' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx-tooltip hx-tooltip-w'>An awesome place for developers</p></tooltip-container>" />
+<Example src="<tooltip-container data-view-component='true' class='hx_tooltip-container'>  <a aria-describedby='unique-4' data-view-component='true'>GitHub</a>    <p id='unique-4' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx_tooltip hx_tooltip-w'>An awesome place for developers</p></tooltip-container>" />
 
 ```erb
 <%= render(Primer::Alpha::Tooltip.new(id: "unique-4", type: :describe, direction: :w, text: "An awesome place for developers"))  do |component| %>
@@ -95,7 +95,7 @@ The component that triggers the tooltip
 
 ### northeast direction
 
-<Example src="<tooltip-container data-view-component='true' class='hx-tooltip-container'>  <a aria-describedby='unique-5' data-view-component='true'>GitHub</a>    <p id='unique-5' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx-tooltip hx-tooltip-ne'>An awesome place for developers</p></tooltip-container>" />
+<Example src="<tooltip-container data-view-component='true' class='hx_tooltip-container'>  <a aria-describedby='unique-5' data-view-component='true'>GitHub</a>    <p id='unique-5' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx_tooltip hx_tooltip-ne'>An awesome place for developers</p></tooltip-container>" />
 
 ```erb
 <%= render(Primer::Alpha::Tooltip.new(id: "unique-5", type: :describe, direction: :ne, text: "An awesome place for developers"))  do |component| %>
@@ -105,7 +105,7 @@ The component that triggers the tooltip
 
 ### southeast direction
 
-<Example src="<tooltip-container data-view-component='true' class='hx-tooltip-container'>  <a aria-describedby='unique-6' data-view-component='true'>GitHub</a>    <p id='unique-6' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx-tooltip hx-tooltip-se'>An awesome place for developers</p></tooltip-container>" />
+<Example src="<tooltip-container data-view-component='true' class='hx_tooltip-container'>  <a aria-describedby='unique-6' data-view-component='true'>GitHub</a>    <p id='unique-6' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx_tooltip hx_tooltip-se'>An awesome place for developers</p></tooltip-container>" />
 
 ```erb
 <%= render(Primer::Alpha::Tooltip.new(id: "unique-6", type: :describe, direction: :se, text: "An awesome place for developers"))  do |component| %>
@@ -115,7 +115,7 @@ The component that triggers the tooltip
 
 ### northwest direction
 
-<Example src="<tooltip-container data-view-component='true' class='hx-tooltip-container'>  <a aria-describedby='unique-7' data-view-component='true'>GitHub</a>    <p id='unique-7' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx-tooltip hx-tooltip-nw'>An awesome place for developers</p></tooltip-container>" />
+<Example src="<tooltip-container data-view-component='true' class='hx_tooltip-container'>  <a aria-describedby='unique-7' data-view-component='true'>GitHub</a>    <p id='unique-7' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx_tooltip hx_tooltip-nw'>An awesome place for developers</p></tooltip-container>" />
 
 ```erb
 <%= render(Primer::Alpha::Tooltip.new(id: "unique-7", type: :describe, direction: :nw, text: "An awesome place for developers"))  do |component| %>
@@ -125,7 +125,7 @@ The component that triggers the tooltip
 
 ### southwest direction
 
-<Example src="<tooltip-container data-view-component='true' class='hx-tooltip-container'>  <a aria-describedby='unique-8' data-view-component='true'>GitHub</a>    <p id='unique-8' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx-tooltip hx-tooltip-sw'>An awesome place for developers</p></tooltip-container>" />
+<Example src="<tooltip-container data-view-component='true' class='hx_tooltip-container'>  <a aria-describedby='unique-8' data-view-component='true'>GitHub</a>    <p id='unique-8' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx_tooltip hx_tooltip-sw'>An awesome place for developers</p></tooltip-container>" />
 
 ```erb
 <%= render(Primer::Alpha::Tooltip.new(id: "unique-8", type: :describe, direction: :sw, text: "An awesome place for developers"))  do |component| %>
@@ -135,7 +135,7 @@ The component that triggers the tooltip
 
 ### multiple lines
 
-<Example src="<tooltip-container data-view-component='true' class='hx-tooltip-container'>  <a aria-describedby='unique-9' data-view-component='true'>GitHub</a>    <p id='unique-9' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx-tooltip hx-tooltip-n hx-tooltip-multiline'>This is the tooltip with multiple lines. This is the tooltip with multiple lines.</p></tooltip-container>" />
+<Example src="<tooltip-container data-view-component='true' class='hx_tooltip-container'>  <a aria-describedby='unique-9' data-view-component='true'>GitHub</a>    <p id='unique-9' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx_tooltip hx_tooltip-n hx_tooltip-multiline'>This is the tooltip with multiple lines. This is the tooltip with multiple lines.</p></tooltip-container>" />
 
 ```erb
 <%= render(Primer::Alpha::Tooltip.new(id: "unique-9", type: :describe, direction: :n, multiline: true, text: "This is the tooltip with multiple lines. This is the tooltip with multiple lines."))  do |component| %>
@@ -145,7 +145,7 @@ The component that triggers the tooltip
 
 ### tooltip on view component
 
-<Example src="<tooltip-container data-view-component='true' class='hx-tooltip-container'>    <button aria-labelledby='unique-10' type='button' data-view-component='true' class='btn-octicon Box-btn-octicon'><svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-pencil'>    <path fill-rule='evenodd' d='M11.013 1.427a1.75 1.75 0 012.474 0l1.086 1.086a1.75 1.75 0 010 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 01-.927-.928l.929-3.25a1.75 1.75 0 01.445-.758l8.61-8.61zm1.414 1.06a.25.25 0 00-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 000-.354l-1.086-1.086zM11.189 6.25L9.75 4.81l-6.286 6.287a.25.25 0 00-.064.108l-.558 1.953 1.953-.558a.249.249 0 00.108-.064l6.286-6.286z'></path></svg></button>  <p id='unique-10' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx-tooltip hx-tooltip-n'>Edit</p></tooltip-container>" />
+<Example src="<tooltip-container data-view-component='true' class='hx_tooltip-container'>    <button aria-labelledby='unique-10' type='button' data-view-component='true' class='btn-octicon Box-btn-octicon'><svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-pencil'>    <path fill-rule='evenodd' d='M11.013 1.427a1.75 1.75 0 012.474 0l1.086 1.086a1.75 1.75 0 010 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 01-.927-.928l.929-3.25a1.75 1.75 0 01.445-.758l8.61-8.61zm1.414 1.06a.25.25 0 00-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 000-.354l-1.086-1.086zM11.189 6.25L9.75 4.81l-6.286 6.287a.25.25 0 00-.064.108l-.558 1.953 1.953-.558a.249.249 0 00.108-.064l6.286-6.286z'></path></svg></button>  <p id='unique-10' role='tooltip' aria-hidden='true' hidden='hidden' data-view-component='true' class='hx_tooltip hx_tooltip-n'>Edit</p></tooltip-container>" />
 
 ```erb
 <%= render(Primer::Alpha::Tooltip.new(id: "unique-10", type: :label, text: "Edit"))  do |component| %>

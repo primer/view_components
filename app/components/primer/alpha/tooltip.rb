@@ -131,7 +131,7 @@ module Primer
         @system_arguments[:tag] = :"tooltip-container"
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          "hx-tooltip-container"
+          "hx_tooltip-container"
         )
         @text = text
         @type = fetch_or_fallback(TYPE_OPTIONS, type, TYPE_FALLBACK)
@@ -140,9 +140,9 @@ module Primer
         @tooltip_system_arguments = { tag: :p, id: @tooltip_id, role: "tooltip", "aria-hidden": true, hidden: true }.merge(tooltip_arguments)
         @tooltip_system_arguments[:classes] = class_names(
           @tooltip_system_arguments[:classes],
-          "hx-tooltip",
-          "hx-tooltip-#{fetch_or_fallback(DIRECTION_OPTIONS, direction, DIRECTION_DEFAULT)}",
-          "hx-tooltip-multiline" => fetch_or_fallback_boolean(multiline, MULTILINE_DEFAULT)
+          "hx_tooltip",
+          "hx_tooltip-#{fetch_or_fallback(DIRECTION_OPTIONS, direction, DIRECTION_DEFAULT)}",
+          "hx_tooltip-multiline" => fetch_or_fallback_boolean(multiline, MULTILINE_DEFAULT)
         )
       end
     end
