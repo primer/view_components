@@ -5,7 +5,7 @@ module Primer
   # @accessibility
   #   Always set an accessible label to help the user interact with the component.
   #
-  #   * This button is displaying an hellip as its content (The three dots character). Therefore a label is needed for screen readers.
+  #   * This button is displaying a hellip as its content (The three dots character). Therefore a label is needed for screen readers.
   #   * Set the attribute `aria-label` on the system arguments. E.g. `Primer::HellipButton.new("aria-label": "Expand next part")`
   class HellipButton < Primer::Component
     # @example Default
