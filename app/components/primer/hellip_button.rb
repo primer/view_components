@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use `HellipButton` to render a button with an hellip. Often used for hidden text expanders.
+  # Use `HellipButton` to render a button with a hellip. Often used for hidden text expanders.
   # @accessibility
   #   Always set an accessible label to help the user interact with the component.
   #
