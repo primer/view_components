@@ -24,6 +24,9 @@ class PrimerComponentTest < Minitest::Test
     [Primer::BaseButton, {}],
     [Primer::BaseComponent, { tag: :div }],
     [Primer::BlankslateComponent, { title: "Foo" }],
+    [Primer::Beta::Blankslate, {}, proc { |component|
+      component.title(tag: :h2) { "Foo" }
+    }],
     [Primer::BorderBoxComponent, {}, proc { |component| component.header { "Foo" } }],
     [Primer::BoxComponent, {}],
     [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
