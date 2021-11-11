@@ -10,13 +10,13 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Use `HellipButton` to render a button with an hellip. Often used for hidden text expanders.
+Use `HellipButton` to render a button with a hellip. Often used for hidden text expanders.
 
 ## Accessibility
 
 Always set an accessible label to help the user interact with the component.
 
-* This button is displaying an hellip as its content (The three dots character). Therefore a label is needed for screen readers.
+* This button is displaying a hellip as its content (The three dots character). Therefore a label is needed for screen readers.
 * Set the attribute `aria-label` on the system arguments. E.g. `Primer::HellipButton.new("aria-label": "Expand next part")`
 
 ## Arguments
