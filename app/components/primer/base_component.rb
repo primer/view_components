@@ -189,7 +189,11 @@ module Primer
     end
 
     def call
-      content_tag(@tag, content, @content_tag_args.merge(@result))
+      if content
+        content_tag(@tag, content, @content_tag_args.merge(@result))
+      else
+        tag(@tag, @content_tag_args.merge(@result))
+      end
     end
   end
 end
