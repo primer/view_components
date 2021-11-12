@@ -85,6 +85,22 @@
     ]
   },
   "Primer::BaseComponent": {
+    "SELF_CLOSING_TAGS": [
+      "area",
+      "base",
+      "br",
+      "col",
+      "embed",
+      "hr",
+      "img",
+      "input",
+      "link",
+      "meta",
+      "param",
+      "source",
+      "track",
+      "wbr"
+    ]
   },
   "Primer::Beta::AutoComplete": {
     "Input": "Primer::Beta::AutoComplete::Input",
@@ -260,7 +276,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",
