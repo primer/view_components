@@ -37,7 +37,6 @@ class CssCoverageTest < Minitest::Test
       ".p-lg-responsive",
       ".m-xl-auto",
       ".p-xl-responsive",
-      ".hx_Subhead--responsive",
       # used to showcase custom classes in component docs
       ".custom-class",
       "."
