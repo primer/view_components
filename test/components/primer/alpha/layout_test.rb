@@ -79,7 +79,7 @@ class PrimerAlphaLayoutTest < Minitest::Test
       end
 
       breakpoint_class = Primer::Alpha::Layout::STACKING_BREAKPOINT_MAPPINGS[stacking_breakpoint]
-      assert_selector("div.Layout#{breakpoint_class.empty? ? "" : ".#{breakpoint_class}"}")
+      assert_selector("div.Layout#{breakpoint_class.empty? ? '' : ".#{breakpoint_class}"}")
     end
   end
 
