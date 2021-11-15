@@ -38,13 +38,17 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
-* Bump Storybook version to include Skip to Content links for keyboard auditors
+* Bump Storybook version to include Skip to Content links for keyboard auditors.
 
     *Katie Foster @inkblotty*
 
+* Update `Button` spacing.
+
+    *Manuel Puyol*
+
 ### Bug Fixes
 
-* Fix issue where tags were not self-closing when they are void elements
+* Fix issue where tags were not self-closing when they are void elements.
 
     *Owen Niblock*
 
