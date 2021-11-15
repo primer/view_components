@@ -1,7 +1,6 @@
 <%= render(Primer::DetailsComponent.new(**@system_arguments)) do |c| %>
   <% c.summary(**@button_arguments) do %>
     <%= button %>
-    <% if @with_caret %><div class="dropdown-caret"></div><% end %>
   <% end %>
 
   <% c.body do %>

@@ -119,5 +119,10 @@ module Primer
     def link?
       @scheme == LINK_SCHEME
     end
+
+    def trimmed_content
+      # strip unsets `html_safe`, so we have to set it back again to guarantee that HTML blocks won't break
+      content.strip.html_safe # rubocop:disable Rails/OutputSafety
+    end
   end
 end
