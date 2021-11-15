@@ -30,9 +30,29 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
 * Add a two-column layout linter.
 
     *Cameron Dutro*
+
+### Updates
+
+* Bump Storybook version to include Skip to Content links for keyboard auditors
+
+    *Katie Foster @inkblotty*
+
+### Bug Fixes
+
+* Fix issue where tags were not self-closing when they are void elements
+
+    *Owen Niblock*
+
+### Deprecations
+
+* Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
+
+    *Manuel Puyol*
 
 ## 0.0.60
 
@@ -75,12 +95,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Removes unwanted bottom border from active tab of `Alpha::TabNav`.
 
     *Ned Schwartz*
-
-### Deprecations
-
-* Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
-
-    *Manuel Puyol*
 
 ### Breaking changes
 
