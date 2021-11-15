@@ -28,7 +28,7 @@ Keyboard navigation follows the markup order. Decide carefully how the focus ord
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `stacking_breakpoint` | `Symbol` | `:md` | When the `Layout` should change from rows into columns. One of `:lg`, `:md`, or `:sm`. |
-| `first_in_source` | `Symbol` | `:sidebar` | Which element to render first in the HTML. This will change the keyboard navigation order. |
+| `first_in_source` | `Symbol` | `:sidebar` | Which element to render first in the HTML. This will change the keyboard navigation order. One of `:main` and `:sidebar`. |
 | `gutter` | `Symbol` | `:default` | The amount of space between the main section and the sidebar. One of `:condensed`, `:default`, `:none`, or `:spacious`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 

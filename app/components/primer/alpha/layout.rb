@@ -196,7 +196,7 @@ module Primer
       #     <% end %>
       #
       # @param stacking_breakpoint [Symbol] When the `Layout` should change from rows into columns. <%= one_of(Primer::Alpha::Layout::STACKING_BREAKPOINT_OPTIONS) %>
-      # @param first_in_source [Symbol] Which element to render first in the HTML. This will change the keyboard navigation order.
+      # @param first_in_source [Symbol] Which element to render first in the HTML. This will change the keyboard navigation order. <%= one_of(Primer::Alpha::Layout::FIRST_IN_SOURCE_OPTIONS) %>
       # @param gutter [Symbol] The amount of space between the main section and the sidebar. <%= one_of(Primer::Alpha::Layout::GUTTER_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(stacking_breakpoint: STACKING_BREAKPOINT_DEFAULT, first_in_source: FIRST_IN_SOURCE_DEFAULT, gutter: :default, **system_arguments)

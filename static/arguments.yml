@@ -41,7 +41,7 @@
     type: Symbol
     default: "`:sidebar`"
     description: Which element to render first in the HTML. This will change the keyboard
-      navigation order.
+      navigation order. One of `:main` and `:sidebar`.
   - name: gutter
     type: Symbol
     default: "`:default`"
