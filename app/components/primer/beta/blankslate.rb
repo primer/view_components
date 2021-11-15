@@ -13,18 +13,18 @@ module Primer
 
       status :beta
 
-      GRAPHIC_OPTIONS = %i[icon spinner image].freeze
+      VISUAL_OPTIONS = %i[icon spinner image].freeze
 
-      # Optional graphic visual.
+      # Optional visual visual.
       #
       # Use:
       #
-      # - `graphic_icon` for an <%= link_to_component(Primer::OcticonComponent) %>.
-      # - `graphic_image` for an <%= link_to_component(Primer::Image) %>.
-      # - `graphic_spinner` for a <%= link_to_component(Primer::SpinnerComponent) %>.
+      # - `visual_icon` for an <%= link_to_component(Primer::OcticonComponent) %>.
+      # - `visual_image` for an <%= link_to_component(Primer::Image) %>.
+      # - `visual_spinner` for a <%= link_to_component(Primer::SpinnerComponent) %>.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :graphic, types: {
+      renders_one :visual, types: {
         icon: lambda { |**system_arguments|
           system_arguments[:mb] = 3
           system_arguments[:size] ||= :medium
@@ -110,7 +110,7 @@ module Primer
       #     Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic_icon(icon: :globe) %>
+      #       <% c.visual_icon(icon: :globe) %>
       #       <% c.heading(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
@@ -120,7 +120,7 @@ module Primer
       #     Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic_spinner(size: :large) %>
+      #       <% c.visual_spinner(size: :large) %>
       #       <% c.heading(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
@@ -130,7 +130,7 @@ module Primer
       #     Add an `image` to give context that an Octicon couldn't.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
+      #       <% c.visual_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
       #       <% c.heading(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
@@ -151,7 +151,7 @@ module Primer
       #     Provide a `primary_action` to guide users to take action from the blankslate. The `primary_action` appears below the description and custom content.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic_icon(icon: :book) %>
+      #       <% c.visual_icon(icon: :book) %>
       #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #       <% c.primary_action(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
@@ -162,7 +162,7 @@ module Primer
       #     Add an additional `secondary_action` to help users learn more about a feature. See <%= link_to_accessibility %>. `secondary_action` will be shown at the very bottom:
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic_icon(icon: :book) %>
+      #       <% c.visual_icon(icon: :book) %>
       #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #       <% c.secondary_action(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
@@ -173,7 +173,7 @@ module Primer
       #     `primary_action` and `secondary_action` can also be used together. The `primary_action` will always be rendered before the `secondary_action`:
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic_icon(icon: :book) %>
+      #       <% c.visual_icon(icon: :book) %>
       #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #       <% c.primary_action(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
@@ -188,7 +188,7 @@ module Primer
       #       narrow: true,
       #       spacious: true,
       #     ) do |c| %>
-      #       <% c.graphic_icon(icon: :book) %>
+      #       <% c.visual_icon(icon: :book) %>
       #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
@@ -198,7 +198,7 @@ module Primer
       #     It's possible to add a border around the Blankslate. This will wrap the Blankslate in a BorderBox.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(border: true) do |c| %>
-      #       <% c.graphic_icon(icon: :book) %>
+      #       <% c.visual_icon(icon: :book) %>
       #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>

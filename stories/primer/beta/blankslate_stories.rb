@@ -13,7 +13,7 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
     end
 
     content do |c|
-      c.graphic_icon(icon: :shield)
+      c.visual_icon(icon: :shield)
       c.heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
     end
   end
@@ -27,7 +27,7 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
 
     content do |c|
       c.heading(tag: :h2).with_content("Millions of teams trust GitHub to keep their work safe")
-      c.graphic_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault")
+      c.visual_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault")
     end
   end
 
@@ -41,7 +41,7 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
     content do |c|
       c.heading(tag: :h2).with_content("Mirroring your repository")
       c.description { "We’re currently mirroring this repository. It should take anywhere from a few minutes to a couple of hours depending on the size of the repository." }
-      c.graphic_spinner(size: :large)
+      c.visual_spinner(size: :large)
     end
   end
 
@@ -92,7 +92,7 @@ class Primer::Beta::BlankslateStories < ViewComponent::Storybook::Stories
     end
 
     content do |c|
-      c.graphic_icon(icon: :shield)
+      c.visual_icon(icon: :shield)
       c.heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
       c.description { "Millions of teams trust GitHub to keep their work safe" }
       c.primary_action(href: "#").with_content("Fix issue")

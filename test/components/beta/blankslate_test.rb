@@ -19,7 +19,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
   def test_renders_a_blankslate_component_with_a_spinner_component
     render_inline(Primer::Beta::Blankslate.new) do |c|
       c.heading(tag: :h2).with_content("Title")
-      c.graphic_spinner(test_selector: "blankslate-spinner")
+      c.visual_spinner(test_selector: "blankslate-spinner")
     end
 
     assert_selector(".blankslate") do
@@ -41,7 +41,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_an_icon
     render_inline(Primer::Beta::Blankslate.new) do |c|
-      c.graphic_icon(icon: :star)
+      c.visual_icon(icon: :star)
       c.heading(tag: :h2).with_content("Title")
     end
 
@@ -50,7 +50,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_an_icon_with_a_custom_size
     render_inline(Primer::Beta::Blankslate.new) do |c|
-      c.graphic_icon(icon: :star, size: :small)
+      c.visual_icon(icon: :star, size: :small)
       c.heading(tag: :h3).with_content("Title")
     end
 
@@ -60,7 +60,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
   def test_renders_a_blankslate_component_with_an_image
     render_inline(Primer::Beta::Blankslate.new) do |c|
       c.heading(tag: :h3).with_content("Title")
-      c.graphic_image(src: "/some_image", alt: "Alt text")
+      c.visual_image(src: "/some_image", alt: "Alt text")
     end
 
     assert_selector(".blankslate > img[src$='/some_image']")

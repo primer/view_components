@@ -151,7 +151,7 @@
     ]
   },
   "Primer::Beta::Blankslate": {
-    "GRAPHIC_OPTIONS": [
+    "VISUAL_OPTIONS": [
       "icon",
       "spinner",
       "image"
