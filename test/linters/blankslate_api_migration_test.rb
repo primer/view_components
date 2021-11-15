@@ -141,7 +141,7 @@ class BlankslateApiMigrationTest < LinterTestCase
     assert_equal expected, corrected_content
   end
 
-  def test_sets_graphic_icon_slot
+  def test_sets_visual_icon_slot
     @file = <<~ERB
       <%= render Primer::BlankslateComponent.new(
         title: "Some title",
@@ -152,7 +152,7 @@ class BlankslateApiMigrationTest < LinterTestCase
 
     expected = <<~ERB
       <%= render Primer::Beta::Blankslate.new do |c| %>
-        <% c.graphic_icon(icon: :x, size: :large) %>
+        <% c.visual_icon(icon: :x, size: :large) %>
 
         <% c.heading(tag: :h2) do %>
           Some title
@@ -163,7 +163,7 @@ class BlankslateApiMigrationTest < LinterTestCase
     assert_equal expected, corrected_content
   end
 
-  def test_sets_graphic_image_slot
+  def test_sets_visual_image_slot
     @file = <<~ERB
       <%= render Primer::BlankslateComponent.new(
         title: "Some title",
@@ -174,7 +174,7 @@ class BlankslateApiMigrationTest < LinterTestCase
 
     expected = <<~ERB
       <%= render Primer::Beta::Blankslate.new do |c| %>
-        <% c.graphic_image(src: "image.png", alt: "image alt") %>
+        <% c.visual_image(src: "image.png", alt: "image alt") %>
 
         <% c.heading(tag: :h2) do %>
           Some title
@@ -256,7 +256,7 @@ class BlankslateApiMigrationTest < LinterTestCase
 
     expected = <<~ERB
       <%= render Primer::Beta::Blankslate.new(narrow: true, spacious: true, px: 3, display: :flex, "aria-label": "label") do |c| %>
-        <% c.graphic_icon(icon: :x, size: :large) %>
+        <% c.visual_icon(icon: :x, size: :large) %>
 
         <% c.heading(tag: :h2) do %>
           Some title
@@ -301,7 +301,7 @@ class BlankslateApiMigrationTest < LinterTestCase
 
     expected = <<~ERB
       <%= render Primer::Beta::Blankslate.new(narrow: true, spacious: true, px: 3, display: :flex, "aria-label": "label") do |c| %>
-        <% c.graphic_image(src: "image.png", alt: "image alt") %>
+        <% c.visual_image(src: "image.png", alt: "image alt") %>
 
         <% c.heading(tag: :h2) do %>
           Some title
