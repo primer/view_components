@@ -114,7 +114,7 @@
 - title: Architecture Decisions
   url: "/adr"
   children:
-  - title: Developing And Publishing Clientside Behaviours
-    url: "/adr/0250-developing-and-publishing-clientside-behaviours"
   - title: Record Architecture Decisions
     url: "/adr/0246-record-architecture-decisions"
+  - title: Developing And Publishing Clientside Behaviours
+    url: "/adr/0250-developing-and-publishing-clientside-behaviours"
