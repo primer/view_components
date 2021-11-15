@@ -31,7 +31,7 @@ Use `Blankslate` when there is a lack of content within a page or section. Use a
 
 ### `Visual`
 
-Optional visual visual.
+Optional visual.
 
 Use:
 
@@ -67,7 +67,8 @@ Optional description.
 
 Optional primary action
 
-Use this slot to set a call to action for users.
+The `primary_action` slot renders an anchor link which is visually styled as a button to provide more emphasis to the
+Blankslate's primary action.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
@@ -78,7 +79,8 @@ Use this slot to set a call to action for users.
 
 Optional secondary action
 
-Use this slot to provide more information for the user.
+The `secondary_action` slot renders a normal anchor link, which can be used to redirect the user to additional information
+(e.g. Help documentation).
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |

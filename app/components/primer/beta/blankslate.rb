@@ -15,7 +15,7 @@ module Primer
 
       VISUAL_OPTIONS = %i[icon spinner image].freeze
 
-      # Optional visual visual.
+      # Optional visual.
       #
       # Use:
       #
@@ -71,7 +71,8 @@ module Primer
 
       # Optional primary action
       #
-      # Use this slot to set a call to action for users.
+      # The `primary_action` slot renders an anchor link which is visually styled as a button to provide more emphasis to the
+      # Blankslate's primary action.
       #
       # @param href [String] URL to be used for the primary action.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -87,7 +88,8 @@ module Primer
 
       # Optional secondary action
       #
-      # Use this slot to provide more information for the user.
+      # The `secondary_action` slot renders a normal anchor link, which can be used to redirect the user to additional information
+      # (e.g. Help documentation).
       #
       # @param href [String] URL to be used for the secondary action.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
