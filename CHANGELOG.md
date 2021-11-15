@@ -42,6 +42,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Katie Foster @inkblotty*
 
+### Bug Fixes
+
+* Fix issue where tags were not self-closing when they are void elements
+
+    *Owen Niblock*
+
 ### Deprecations
 
 * Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
