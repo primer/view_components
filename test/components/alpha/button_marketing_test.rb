@@ -17,10 +17,11 @@ class PrimerAlphaButtonMarketingTest < Minitest::Test
     assert_selector("button.btn-mktg[type='button']")
   end
 
-  def test_renders_a_as_a_button
+  def test_renders_a_without_button_role
     render_inline(Primer::Alpha::ButtonMarketing.new(tag: :a)) { "content" }
 
-    assert_selector("a.btn-mktg[role='button']")
+    assert_selector("a.btn-mktg")
+    refute_selector("a.btn-mktg[role='button']")
   end
 
   def test_renders_href
