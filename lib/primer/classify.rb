@@ -62,20 +62,16 @@ module Primer
         ]
       }
     }.freeze
-    BORDER_KEY = :border
-    BORDER_MARGIN_KEYS = %i[border_top border_bottom border_left border_right].freeze
     BORDER_RADIUS_KEY = :border_radius
     TYPOGRAPHY_KEYS = [:font_size].freeze
     VALID_KEYS = (
       Primer::Classify::Utilities::UTILITIES.keys +
       CONCAT_KEYS +
       BOOLEAN_MAPPINGS.keys +
-      BORDER_MARGIN_KEYS +
       TYPOGRAPHY_KEYS +
       TEXT_KEYS +
       Primer::Classify::Flex::KEYS +
       [
-        BORDER_KEY,
         BORDER_RADIUS_KEY,
         BOX_SHADOW_KEY
       ]
@@ -180,14 +176,6 @@ module Primer
             memo << m[:css_class] if m[:value] == val && m[:css_class].present?
           end
           bools.empty? ? nil : bools.join(" ")
-        elsif key == BORDER_KEY
-          if val == true
-            "border"
-          else
-            "border-#{val.to_s.dasherize}"
-          end
-        elsif BORDER_MARGIN_KEYS.include?(key)
-          "#{key.to_s.dasherize}-#{val}"
         elsif key == BORDER_RADIUS_KEY
           "rounded-#{val}"
         elsif Primer::Classify::Flex::KEYS.include?(key)
