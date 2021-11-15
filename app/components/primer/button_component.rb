@@ -28,12 +28,20 @@ module Primer
     # Icon to be rendered in the button.
     #
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
-    renders_one :icon, Primer::OcticonComponent
+    renders_one :icon, lambda { |**system_arguments|
+      system_arguments[:mr] = 2
+
+      Primer::OcticonComponent.new(**system_arguments)
+    }
 
     # Counter to be rendered in the button.
     #
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::CounterComponent) %>.
-    renders_one :counter, Primer::CounterComponent
+    renders_one :counter, lambda { |**system_arguments|
+      system_arguments[:ml] = 2
+
+      Primer::CounterComponent.new(**system_arguments)
+    }
 
     # @example Schemes
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
