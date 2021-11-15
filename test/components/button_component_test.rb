@@ -17,17 +17,19 @@ class PrimerButtonComponentTest < Minitest::Test
     assert_selector("button.btn[type='button']")
   end
 
-  def test_renders_a_as_a_button
+  def test_renders_a_without_button_role
     render_inline(Primer::ButtonComponent.new(tag: :a)) { "content" }
 
-    assert_selector("a.btn[role='button']")
+    assert_selector("a.btn")
+    refute_selector("a.btn[role='button']")
     refute_selector("a[type]")
   end
 
-  def test_renders_summary_as_a_button
+  def test_renders_summary_without_button_role
     render_inline(Primer::ButtonComponent.new(tag: :summary)) { "content" }
 
-    assert_selector("summary.btn[role='button']")
+    assert_selector("summary.btn")
+    refute_selector("summary.btn[role='button']")
     refute_selector("summary[type]")
   end
 
