@@ -41,7 +41,7 @@ rather than `@kittenuser`.
 
 ### Default
 
-<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' data-view-component='true' class='avatar avatar-small circle'></img>" />
+<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' data-view-component='true' class='avatar avatar-small circle' />" />
 
 ```erb
 <%= render(Primer::Beta::Avatar.new(src: "http://placekitten.com/200/200", alt: "@kittenuser")) %>
@@ -49,7 +49,7 @@ rather than `@kittenuser`.
 
 ### Square
 
-<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' data-view-component='true' class='avatar avatar-small'></img>" />
+<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' data-view-component='true' class='avatar avatar-small' />" />
 
 ```erb
 <%= render(Primer::Beta::Avatar.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", shape: :square)) %>
@@ -57,7 +57,7 @@ rather than `@kittenuser`.
 
 ### Link
 
-<Example src="<a href='#' data-view-component='true' class='avatar avatar-small circle lh-0'><img src='http://placekitten.com/200/200' alt='@kittenuser profile' size='20' height='20' width='20' data-view-component='true'></img></a>" />
+<Example src="<a href='#' data-view-component='true' class='avatar avatar-small circle lh-0'><img src='http://placekitten.com/200/200' alt='@kittenuser profile' size='20' height='20' width='20' data-view-component='true' /></a>" />
 
 ```erb
 <%= render(Primer::Beta::Avatar.new(href: "#", src: "http://placekitten.com/200/200", alt: "@kittenuser profile")) %>
@@ -65,7 +65,7 @@ rather than `@kittenuser`.
 
 ### With size
 
-<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='16' height='16' width='16' data-view-component='true' class='avatar avatar-small circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' data-view-component='true' class='avatar avatar-small circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='24' height='24' width='24' data-view-component='true' class='avatar circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='32' height='32' width='32' data-view-component='true' class='avatar circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='40' height='40' width='40' data-view-component='true' class='avatar circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='48' height='48' width='48' data-view-component='true' class='avatar circle'></img><img src='http://placekitten.com/200/200' alt='@kittenuser' size='80' height='80' width='80' data-view-component='true' class='avatar circle'></img>" />
+<Example src="<img src='http://placekitten.com/200/200' alt='@kittenuser' size='16' height='16' width='16' data-view-component='true' class='avatar avatar-small circle' /><img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' data-view-component='true' class='avatar avatar-small circle' /><img src='http://placekitten.com/200/200' alt='@kittenuser' size='24' height='24' width='24' data-view-component='true' class='avatar circle' /><img src='http://placekitten.com/200/200' alt='@kittenuser' size='32' height='32' width='32' data-view-component='true' class='avatar circle' /><img src='http://placekitten.com/200/200' alt='@kittenuser' size='40' height='40' width='40' data-view-component='true' class='avatar circle' /><img src='http://placekitten.com/200/200' alt='@kittenuser' size='48' height='48' width='48' data-view-component='true' class='avatar circle' /><img src='http://placekitten.com/200/200' alt='@kittenuser' size='80' height='80' width='80' data-view-component='true' class='avatar circle' />" />
 
 ```erb
 <%= render(Primer::Beta::Avatar.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 16)) %>
