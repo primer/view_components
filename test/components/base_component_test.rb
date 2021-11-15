@@ -25,6 +25,18 @@ class PrimerBaseComponentTest < Minitest::Test
     assert_text("content")
   end
 
+  def test_renders_self_closing
+    img = Primer::BaseComponent.new(tag: :img)
+    img.expects(:tag)
+    img.call
+  end
+
+  def test_does_not_render_self_closing
+    img = Primer::BaseComponent.new(tag: :div)
+    img.expects(:content_tag)
+    img.call
+  end
+
   def test_skips_rendering_primer_class_if_value_is_nil
     result = render_inline(Primer::BaseComponent.new(tag: :div, my: nil))
 

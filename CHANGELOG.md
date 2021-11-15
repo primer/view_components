@@ -32,11 +32,19 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### New
 
+* Add a two-column layout linter.
+
+    *Cameron Dutro*
+
 * Add the `HellipButton` component
 
     *Amélia Chavot* & *Owen Niblock*
 
-### Update
+### Updates
+
+* Bump Storybook version to include Skip to Content links for keyboard auditors
+
+    *Katie Foster @inkblotty*
 
 * Update the `HiddenTextExpander` component to use the `HellipButton`.
 
@@ -57,6 +65,18 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Fix a typo on a command on the contribution page.
 
     *Amélia Chavot* & *Owen Niblock*
+
+### Bug Fixes
+
+* Fix issue where tags were not self-closing when they are void elements
+
+    *Owen Niblock*
+    
+### Deprecations
+
+* Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
+
+    *Manuel Puyol*
 
 ## 0.0.60
 
@@ -99,12 +119,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Removes unwanted bottom border from active tab of `Alpha::TabNav`.
 
     *Ned Schwartz*
-
-### Deprecations
-
-* Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
-
-    *Manuel Puyol*
 
 ### Breaking changes
 
