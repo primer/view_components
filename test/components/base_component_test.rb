@@ -133,6 +133,16 @@ class PrimerBaseComponentTest < Minitest::Test
     assert_selector("div.width-fit")
   end
 
+  def test_renders_content_with_raise_on_invalid_options
+    with_raise_on_invalid_options(true) do
+      render_inline(Primer::BaseComponent.new(tag: :div)) do
+        "content"
+      end
+
+      assert_text("content")
+    end
+  end
+
   def test_restricts_allowed_system_arguments
     with_raise_on_invalid_options(true) do
       error = assert_raises(ArgumentError) do
