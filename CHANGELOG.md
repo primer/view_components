@@ -42,7 +42,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Katie Foster @inkblotty*
 
-* Update `Button` spacing.
+* Update `Button` to add `8px` spacing between icon, text and counter.
 
     *Manuel Puyol*
 
