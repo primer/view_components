@@ -48,6 +48,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Owen Niblock*
 
+### Breaking Changes
+
+* Rename `force_system_arguments` to `raise_on_invalid_options` to better reflect its functionality
+
+    *Owen Niblock*
+
 ### Deprecations
 
 * Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
