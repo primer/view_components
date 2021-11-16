@@ -44,7 +44,7 @@ module Primer
     end
 
     def check_no_user_tag(**arguments)
-      check_denylist({ [:tag] => "This component has a fixed tag." }, arguments)
+      check_denylist({ [:tag] => "This component has a fixed tag." }, **arguments)
     end
 
     def check_denylist(denylist = [], **arguments)
@@ -75,7 +75,7 @@ module Primer
 
     def validate_arguments(denylist_name: :system_arguments_denylist, **arguments)
       if (denylist = arguments[denylist_name])
-        check_denylist(denylist, arguments)
+        check_denylist(denylist, **arguments)
 
         # Remove :system_arguments_denylist key and any denied keys from system arguments
         arguments.except!(denylist_name)
