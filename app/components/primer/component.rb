@@ -42,5 +42,36 @@ module Primer
     def silence_deprecations?
       Rails.application.config.primer_view_components.silence_deprecations
     end
+
+    def validate_arguments(denylist_name: :system_arguments_denylist, **arguments)
+      if (denylist = arguments[denylist_name])
+        if raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
+          # Convert denylist from:
+          # { [:p, :pt] => "message" } to:
+          # { p: "message", pt: "message" }
+          unpacked_denylist =
+            denylist.each_with_object({}) do |(keys, value), memo|
+              keys.each { |key| memo[key] = value }
+            end
+
+          violations = unpacked_denylist.keys & arguments.keys
+
+          if violations.any?
+            message = "Found #{violations.count} #{'violation'.pluralize(violations)}:"
+            violations.each do |violation|
+              message += "\n The #{violation} argument is not allowed here. #{unpacked_denylist[violation]}"
+            end
+
+            raise(ArgumentError, message)
+          end
+        end
+
+        # Remove :system_arguments_denylist key and any denied keys from system arguments
+        arguments.except!(denylist_name)
+        arguments.except!(*denylist.keys.flatten)
+      end
+
+      arguments
+    end
   end
 end

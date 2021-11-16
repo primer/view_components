@@ -151,36 +151,9 @@ module Primer
     # | test_selector | String | Adds `data-test-selector='given value'` in non-Production environments for testing purposes. |
     def initialize(tag:, classes: nil, **system_arguments)
       @tag = tag
-      @system_arguments = system_arguments
+      @system_arguments = validate_arguments(system_arguments)
 
       raise ArgumentError, "`class` is an invalid argument. Use `classes` instead." if system_arguments.key?(:class) && !Rails.env.production?
-
-      if (denylist = system_arguments[:system_arguments_denylist])
-        if raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
-          # Convert denylist from:
-          # { [:p, :pt] => "message" } to:
-          # { p: "message", pt: "message" }
-          unpacked_denylist =
-            denylist.each_with_object({}) do |(keys, value), memo|
-              keys.each { |key| memo[key] = value }
-            end
-
-          violations = unpacked_denylist.keys & @system_arguments.keys
-
-          if violations.any?
-            message = "Found #{violations.count} #{'violation'.pluralize(violations)}:"
-            violations.each do |violation|
-              message += "\n The #{violation} system argument is not allowed here. #{unpacked_denylist[violation]}"
-            end
-
-            raise(ArgumentError, message)
-          end
-        end
-
-        # Remove :system_arguments_denylist key and any denied keys from system arguments
-        @system_arguments.except!(:system_arguments_denylist)
-        @system_arguments.except!(*denylist.keys.flatten)
-      end
 
       @result = Primer::Classify.call(**@system_arguments.merge(classes: classes))
 
