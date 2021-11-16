@@ -90,7 +90,7 @@ Dividers can be used to separate a group of items. They don't have any content.
 
 ### With direction
 
-<Example src="<details data-view-component='true' class='dropdown details-overlay details-reset d-inline-block'>  <summary role='button' data-view-component='true' class='btn'>            Dropdown      </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-s'>    <div class='dropdown-header'>      Options    </div>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 1</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 2</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 3</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a></details-menu></div></details>" />
+<Example src="<details data-view-component='true' class='d-inline-block dropdown details-overlay details-reset'>  <summary role='button' data-view-component='true' class='btn'>            Dropdown      </summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-s'>    <div class='dropdown-header'>      Options    </div>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 1</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 2</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 3</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a></details-menu></div></details>" />
 
 ```erb
 <%= render(Primer::Dropdown.new(display: :inline_block)) do |c| %>

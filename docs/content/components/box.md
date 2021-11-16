@@ -30,7 +30,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ### Color and padding
 
-<Example src="<div data-view-component='true' class='color-bg-tertiary p-3'>Hello world</div>" />
+<Example src="<div data-view-component='true' class='color-bg-tertiary p-3 '>Hello world</div>" />
 
 ```erb
 <%= render(Primer::BoxComponent.new(bg: :tertiary, p: 3)) { "Hello world" } %>

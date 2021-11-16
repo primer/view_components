@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require_relative "classify/flex"
+require_relative "classify/utilities"
+require_relative "classify/validation"
+
 module Primer
   # :nodoc:
   class Classify

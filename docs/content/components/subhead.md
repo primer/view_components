@@ -104,7 +104,7 @@ The description
 
 ### Without border
 
-<Example src="<div data-view-component='true' class='Subhead border-bottom-0 mb-0'>  <div data-view-component='true' class='Subhead-heading'>    My Heading</div>    <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
+<Example src="<div data-view-component='true' class='mb-0 Subhead border-bottom-0'>  <div data-view-component='true' class='Subhead-heading'>    My Heading</div>    <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new(hide_border: true)) do |component| %>

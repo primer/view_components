@@ -43,7 +43,7 @@ Text slot used for the truncated text.
 
 ### Multiple items
 
-<Example src="<span data-view-component='true' class='Truncate'>    <span data-view-component='true' class='Truncate-text'>really-long-repository-owner-name</span>    <span data-view-component='true' class='Truncate-text text-bold'>    <span data-view-component='true' class='text-normal'>/</span> really-long-repository-name</span></span>" />
+<Example src="<span data-view-component='true' class='Truncate'>    <span data-view-component='true' class='Truncate-text'>really-long-repository-owner-name</span>    <span data-view-component='true' class='text-bold Truncate-text'>    <span data-view-component='true' class='text-normal '>/</span> really-long-repository-name</span></span>" />
 
 ```erb
 <%= render(Primer::Beta::Truncate.new) do |component| %>

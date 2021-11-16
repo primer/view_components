@@ -104,7 +104,7 @@ Counter to be rendered in the Tab right.
 
 ### Inside a list
 
-<Example src="<li data-view-component='true' class='d-inline-flex'>  <a data-view-component='true'>          <span data-view-component='true'>Tab</span>    </a></li>" />
+<Example src="<li data-view-component='true' class='d-inline-flex '>  <a data-view-component='true'>          <span data-view-component='true'>Tab</span>    </a></li>" />
 
 ```erb
 <%= render(Primer::Navigation::TabComponent.new(list: true)) do |c| %>
