@@ -36,6 +36,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Cameron Dutro*
 
+* Add the `HellipButton` component
+
+    *Amélia Chavot*, *Owen Niblock*
+
 ### Updates
 
 * Bump Storybook version to include Skip to Content links for keyboard auditors.
@@ -45,6 +49,25 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Update `Button` to add `8px` spacing between icon, text and counter.
 
     *Manuel Puyol*
+* Update the `HiddenTextExpander` component to use the `HellipButton`.
+
+    *Amélia Chavot*, *Owen Niblock*
+
+### Breaking changes
+
+* Require an `aria-label` to be provided for the `HiddenTextExpander` component.
+
+    *Amélia Chavot*, *Owen Niblock*
+
+### Misc
+
+* Fix components not rendering in Storybook because of kebab case arguments.
+
+    *Amélia Chavot*, *Manuel Puyol*, *Owen Niblock*
+
+* Fix a typo on a command on the contribution page.
+
+    *Amélia Chavot*, *Owen Niblock*
 
 ### Bug Fixes
 
@@ -563,7 +586,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
-* Added a changelog authoring guide to `CHANGELOG.md`.
+* Add a changelog authoring guide to `CHANGELOG.md`.
 
     *Amélia Chavot*
 
