@@ -14,7 +14,7 @@ class PrimerHellipButtonTest < Minitest::Test
   def test_renders_inline
     render_inline(Primer::HellipButton.new(inline: true, "aria-label": "No effect"))
 
-    assert_selector("button[type='button'][aria-expanded='false']", text: "…")
+    assert_selector("button[type='button'][aria-expanded='false'].inline", text: "…")
   end
 
   def test_renders_button_custom_classes
