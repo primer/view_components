@@ -40,7 +40,7 @@ Use `HiddenTextExpander` to indicate and toggle hidden text.
 
 ### Styling the button
 
-<Example src="<span data-view-component='true' class='hidden-text-expander'><button aria-expanded='false' type='button' data-view-component='true' class='p-1 ellipsis-expander custom-class'>&hellip;</button></span>" />
+<Example src="<span data-view-component='true' class='hidden-text-expander'><button aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander custom-class p-1'>&hellip;</button></span>" />
 
 ```erb
 <%= render(Primer::HiddenTextExpander.new(button_arguments: { p: 1, classes: "custom-class" })) %>

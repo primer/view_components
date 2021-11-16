@@ -48,7 +48,8 @@ module Primer
           args.each do |key, val|
             case key
             when :classes
-              result << validated_class_names(val)
+              # insert :classes first to avoid huge doc diffs
+              result.unshift(validated_class_names(val))
               next
             when :style
               style = val

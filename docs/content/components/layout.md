@@ -43,7 +43,7 @@ The sidebar content
 
 ### Default
 
-<Example src="<div data-view-component='true' class='d-flex gutter-condensed gutter-lg'>  <div data-view-component='true' class='col-9 flex-shrink-0'>Main</div>    <div data-view-component='true' class='col-3 flex-shrink-0'>Sidebar</div></div>" />
+<Example src="<div data-view-component='true' class='gutter-condensed gutter-lg d-flex'>  <div data-view-component='true' class='flex-shrink-0 col-9'>Main</div>    <div data-view-component='true' class='flex-shrink-0 col-3'>Sidebar</div></div>" />
 
 ```erb
 <%= render(Primer::LayoutComponent.new) do |component| %>
@@ -54,7 +54,7 @@ The sidebar content
 
 ### Left sidebar
 
-<Example src="<div data-view-component='true' class='d-flex gutter-condensed gutter-lg'>    <div data-view-component='true' class='col-3 flex-shrink-0'>Sidebar</div>  <div data-view-component='true' class='col-9 flex-shrink-0'>Main</div></div>" />
+<Example src="<div data-view-component='true' class='gutter-condensed gutter-lg d-flex'>    <div data-view-component='true' class='flex-shrink-0 col-3'>Sidebar</div>  <div data-view-component='true' class='flex-shrink-0 col-9'>Main</div></div>" />
 
 ```erb
 <%= render(Primer::LayoutComponent.new(side: :left)) do |component| %>
