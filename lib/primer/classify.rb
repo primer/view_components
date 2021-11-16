@@ -1,12 +1,27 @@
 # frozen_string_literal: true
 
-require_relative "classify/flex"
 require_relative "classify/utilities"
 require_relative "classify/validation"
 
 module Primer
   # :nodoc:
   class Classify
+    FLEX_VALUES = [1, :auto].freeze
+
+    FLEX_WRAP_MAPPINGS = {
+      wrap: "flex-wrap",
+      nowrap: "flex-nowrap",
+      reverse: "flex-wrap-reverse"
+    }.freeze
+
+    FLEX_ALIGN_SELF_VALUES = [:auto, :start, :end, :center, :baseline, :stretch].freeze
+
+    FLEX_DIRECTION_VALUES = [:column, :column_reverse, :row, :row_reverse].freeze
+
+    FLEX_JUSTIFY_CONTENT_VALUES = [:flex_start, :flex_end, :center, :space_between, :space_around].freeze
+
+    FLEX_ALIGN_ITEMS_VALUES = [:flex_start, :flex_end, :center, :baseline, :stretch].freeze
+
     LOOKUP = Primer::Classify::Utilities::UTILITIES
 
     class << self
