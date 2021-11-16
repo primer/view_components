@@ -27,7 +27,7 @@ module Primer
     # @param lazy [Boolean] Whether or not to lazily load the image.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(src:, alt:, lazy: false, **system_arguments)
-      @system_arguments = check_no_user_tag!(system_arguments)
+      @system_arguments = check_no_user_tag(system_arguments)
 
       @system_arguments[:tag] = :img
       @system_arguments[:src] = src

@@ -43,11 +43,11 @@ module Primer
       Rails.application.config.primer_view_components.silence_deprecations
     end
 
-    def check_no_user_tag!(**arguments)
+    def check_no_user_tag(**arguments)
       check_denylist({ [:tag] => "This component has a fixed tag." }, arguments)
     end
 
-    def check_denylist(denylist, **arguments)
+    def check_denylist(denylist = [], **arguments)
       if raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
 
         # Convert denylist from:
@@ -73,7 +73,7 @@ module Primer
       arguments
     end
 
-    def validate_arguments!(denylist_name: :system_arguments_denylist, **arguments)
+    def validate_arguments(denylist_name: :system_arguments_denylist, **arguments)
       if (denylist = arguments[denylist_name])
         check_denylist(denylist, arguments)
 
