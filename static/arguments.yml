@@ -536,6 +536,17 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: HellipButton
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/hellip_button.rb
+  parameters:
+  - name: inline
+    type: Boolean
+    default: "`false`"
+    description: Whether or not the button is inline.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: HiddenTextExpander
   source: https://github.com/primer/view_components/tree/main/app/components/primer/hidden_text_expander.rb
   parameters:

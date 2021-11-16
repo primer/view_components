@@ -408,6 +408,8 @@
       "h6"
     ]
   },
+  "Primer::HellipButton": {
+  },
   "Primer::HiddenTextExpander": {
   },
   "Primer::IconButton": {
