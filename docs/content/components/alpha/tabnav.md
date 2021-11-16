@@ -116,7 +116,7 @@ Renders extra content to the `TabNav`. This will be rendered after the tabs.
 
 ### Adding extra content after the tabs
 
-<Example src="<nav aria-label='Adding extra content after the tabs' data-view-component='true' class='d-flex tabnav'>    <ul data-view-component='true' class='flex-1 tabnav-tabs'>      <li data-view-component='true' class='d-inline-flex '>  <a href='#' aria-current='page' data-view-component='true' class='tabnav-tab'>          Tab 1    </a></li>      <li data-view-component='true' class='d-inline-flex '>  <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 2    </a></li>      <li data-view-component='true' class='d-inline-flex '>  <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 3    </a></li></ul>      <div>      <button type='button' data-view-component='true' class='btn'>    Button  </button>    </div></nav>" />
+<Example src="<nav aria-label='Adding extra content after the tabs' data-view-component='true' class='d-flex tabnav'>    <ul flex='1' data-view-component='true' class='tabnav-tabs'>      <li data-view-component='true' class='d-inline-flex '>  <a href='#' aria-current='page' data-view-component='true' class='tabnav-tab'>          Tab 1    </a></li>      <li data-view-component='true' class='d-inline-flex '>  <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 2    </a></li>      <li data-view-component='true' class='d-inline-flex '>  <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 3    </a></li></ul>      <div>      <button type='button' data-view-component='true' class='btn'>    Button  </button>    </div></nav>" />
 
 ```erb
 <%= render(Primer::Alpha::TabNav.new(label: "Adding extra content after the tabs", display: :flex, body_arguments: { flex: 1 })) do |c| %>
@@ -133,7 +133,7 @@ Renders extra content to the `TabNav`. This will be rendered after the tabs.
 
 ### Customizing the body
 
-<Example src="<nav aria-label='Default' data-view-component='true' class='tabnav'>    <ul data-view-component='true' class='border color-border-info tabnav-tabs custom-class'>      <li data-view-component='true' class='d-inline-flex '>  <a href='#' aria-current='page' data-view-component='true' class='tabnav-tab'>          Tab 1    </a></li>      <li data-view-component='true' class='d-inline-flex '>  <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 2    </a></li>      <li data-view-component='true' class='d-inline-flex '>  <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 3    </a></li></ul>  </nav>" />
+<Example src="<nav aria-label='Default' data-view-component='true' class='tabnav'>    <ul border='true' data-view-component='true' class='color-border-info tabnav-tabs custom-class'>      <li data-view-component='true' class='d-inline-flex '>  <a href='#' aria-current='page' data-view-component='true' class='tabnav-tab'>          Tab 1    </a></li>      <li data-view-component='true' class='d-inline-flex '>  <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 2    </a></li>      <li data-view-component='true' class='d-inline-flex '>  <a href='#' data-view-component='true' class='tabnav-tab'>          Tab 3    </a></li></ul>  </nav>" />
 
 ```erb
 <%= render(Primer::Alpha::TabNav.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :info })) do |c| %>
