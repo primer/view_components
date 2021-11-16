@@ -48,7 +48,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Update the `HiddenTextExpander` component to use the `HellipButton`.
 
-    *Amélia Chavot* & *Owen Niblock*
+    *Amélia Chavot*, *Owen Niblock*
 
 ### Breaking changes
 
@@ -60,7 +60,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Fix components not rendering in Storybook because of kebab case arguments.
 
-    *Amélia Chavot, Manuel Puyol*, *Owen Niblock*
+    *Amélia Chavot*, *Manuel Puyol*, *Owen Niblock*
 
 * Fix a typo on a command on the contribution page.
 
