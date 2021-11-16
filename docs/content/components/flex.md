@@ -54,7 +54,7 @@ Use [Box](/components/box) instead.
 
 ### Default
 
-<Example src="<div data-view-component='true' class=' color-bg-tertiary d-flex'>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 1</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 2</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 3</div></div>" />
+<Example src="<div data-view-component='true' class='color-bg-tertiary d-flex'>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 1</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 2</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 3</div></div>" />
 
 ```erb
 <%= render(Primer::FlexComponent.new(bg: :tertiary)) do %>
@@ -90,7 +90,7 @@ Use [Box](/components/box) instead.
 
 ### Direction column
 
-<Example src="<div data-view-component='true' class=' color-bg-tertiary flex-column d-flex'>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 1</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 2</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 3</div></div>" />
+<Example src="<div data-view-component='true' class='color-bg-tertiary flex-column d-flex'>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 1</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 2</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 3</div></div>" />
 
 ```erb
 <%= render(Primer::FlexComponent.new(direction: :column, bg: :tertiary)) do %>
