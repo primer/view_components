@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### New
 
+* Improve performance of `Classify#call`.
+
+    *Cameron Dutro*
+
 * Add a two-column layout linter.
 
     *Cameron Dutro*
