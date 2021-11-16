@@ -43,28 +43,39 @@ module Primer
       Rails.application.config.primer_view_components.silence_deprecations
     end
 
-    def validate_arguments(denylist_name: :system_arguments_denylist, **arguments)
-      if (denylist = arguments[denylist_name])
-        if raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
-          # Convert denylist from:
-          # { [:p, :pt] => "message" } to:
-          # { p: "message", pt: "message" }
-          unpacked_denylist =
-            denylist.each_with_object({}) do |(keys, value), memo|
-              keys.each { |key| memo[key] = value }
-            end
+    def check_no_user_tag!(**arguments)
+      check_denylist({ [:tag] => "This component has a fixed tag." }, arguments)
+    end
 
-          violations = unpacked_denylist.keys & arguments.keys
+    def check_denylist(denylist, **arguments)
+      if raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
 
-          if violations.any?
-            message = "Found #{violations.count} #{'violation'.pluralize(violations)}:"
-            violations.each do |violation|
-              message += "\n The #{violation} argument is not allowed here. #{unpacked_denylist[violation]}"
-            end
-
-            raise(ArgumentError, message)
+        # Convert denylist from:
+        # { [:p, :pt] => "message" } to:
+        # { p: "message", pt: "message" }
+        unpacked_denylist =
+          denylist.each_with_object({}) do |(keys, value), memo|
+            keys.each { |key| memo[key] = value }
           end
+
+        violations = unpacked_denylist.keys & arguments.keys
+
+        if violations.any?
+          message = "Found #{violations.count} #{'violation'.pluralize(violations)}:"
+          violations.each do |violation|
+            message += "\n The #{violation} argument is not allowed here. #{unpacked_denylist[violation]}"
+          end
+
+          raise(ArgumentError, message)
         end
+      end
+
+      arguments
+    end
+
+    def validate_arguments!(denylist_name: :system_arguments_denylist, **arguments)
+      if (denylist = arguments[denylist_name])
+        check_denylist(denylist, arguments)
 
         # Remove :system_arguments_denylist key and any denied keys from system arguments
         arguments.except!(denylist_name)

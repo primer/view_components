@@ -151,7 +151,7 @@ module Primer
     # | test_selector | String | Adds `data-test-selector='given value'` in non-Production environments for testing purposes. |
     def initialize(tag:, classes: nil, **system_arguments)
       @tag = tag
-      @system_arguments = validate_arguments(system_arguments)
+      @system_arguments = validate_arguments!(system_arguments)
 
       raise ArgumentError, "`class` is an invalid argument. Use `classes` instead." if system_arguments.key?(:class) && !Rails.env.production?
 
