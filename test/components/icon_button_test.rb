@@ -23,7 +23,7 @@ class PrimerIconButtonTest < Minitest::Test
   def test_renders_as_a_tag
     render_inline(Primer::IconButton.new(tag: :a, icon: :star, "aria-label": "Label"))
 
-    assert_selector("a[role='button'][aria-label='Label'].btn-octicon") do
+    assert_selector("a[aria-label='Label'].btn-octicon") do
       assert_selector(".octicon.octicon-star")
     end
   end
