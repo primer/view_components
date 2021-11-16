@@ -90,7 +90,7 @@ Use [Box](/components/box) instead.
 
 ### Direction column
 
-<Example src="<div direction='column' data-view-component='true' class='color-bg-tertiary d-flex '>  <div data-view-component='true' class='p-5 color-bg-secondary border'>Item 1</div>  <div data-view-component='true' class='p-5 color-bg-secondary border'>Item 2</div>  <div data-view-component='true' class='p-5 color-bg-secondary border'>Item 3</div></div>" />
+<Example src="<div data-view-component='true' class='color-bg-tertiary flex-column d-flex '>  <div data-view-component='true' class='p-5 color-bg-secondary border'>Item 1</div>  <div data-view-component='true' class='p-5 color-bg-secondary border'>Item 2</div>  <div data-view-component='true' class='p-5 color-bg-secondary border'>Item 3</div></div>" />
 
 ```erb
 <%= render(Primer::FlexComponent.new(direction: :column, bg: :tertiary)) do %>
