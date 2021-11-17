@@ -134,7 +134,7 @@ class PrimerBaseComponentTest < Minitest::Test
   end
 
   def test_restricts_allowed_system_arguments
-    with_force_system_arguments(true) do
+    with_raise_on_invalid_options(true) do
       error = assert_raises(ArgumentError) do
         render_inline(
           Primer::BaseComponent.new(
@@ -152,7 +152,7 @@ class PrimerBaseComponentTest < Minitest::Test
   end
 
   def test_strips_denied_system_arguments
-    with_force_system_arguments(false) do
+    with_raise_on_invalid_options(false) do
       render_inline(
         Primer::BaseComponent.new(
           tag: :div,
