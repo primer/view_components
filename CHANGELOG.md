@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### New
 
+* Adding new Alpha component: `Layout` with `main` and `sidebar` slots
+
+    *Cameron Dutro*
+
 * Add a two-column layout linter.
 
     *Cameron Dutro*
