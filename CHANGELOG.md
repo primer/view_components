@@ -82,6 +82,18 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
 
+### Breaking changes
+
+* Renamed `Blankslate` `title` slot to `heading`.
+
+    *Manuel Puyol*
+
+* Removed `Blankslate` `large` variant.
+
+    *Manuel Puyol*
+
+* Renamed `Blankslate` `graphic` slot to `visual`.
+
     *Manuel Puyol*
 
 ## 0.0.60
