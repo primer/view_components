@@ -36,69 +36,69 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Adding new Alpha component: `Layout` with `main` and `sidebar` slots
 
-    *Cameron Dutro*
+    *@camertron*
 
 * Add a two-column layout linter.
 
-    *Cameron Dutro*
+    *@camertron*
 
 * Add the `HellipButton` component
 
-    *Amélia Chavot*, *Owen Niblock*
+    *@artemisia-absinthium*, *@owenniblock*
 
 ### Updates
 
 * Bump Storybook version to include Skip to Content links for keyboard auditors
 
-    *Katie Foster @inkblotty*
+    *@inkblotty*
 
 * Update the `HiddenTextExpander` component to use the `HellipButton`.
 
-    *Amélia Chavot*, *Owen Niblock*
+    *@artemisia-absinthium*, *@owenniblock*
 
 ### Misc
 
 * Fix components not rendering in Storybook because of kebab case arguments.
 
-    *Amélia Chavot*, *Manuel Puyol*, *Owen Niblock*
+    *@artemisia-absinthium*, *@manuelpuyol*, *@owenniblock*
 
 * Fix a typo on a command on the contribution page.
 
-    *Amélia Chavot*, *Owen Niblock*
+    *@artemisia-absinthium*, *@owenniblock*
 
 ### Bug Fixes
 
 * Fix issue where tags were not self-closing when they are void elements
 
-    *Owen Niblock*
+    *@owenniblock*
 
 ### Deprecations
 
 * Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Breaking Changes
 
 * Require an `aria-label` to be provided for the `HiddenTextExpander` component.
 
-    *Amélia Chavot*, *Owen Niblock*
+    *@artemisia-absinthium*, *@owenniblock*
 
 * Rename `force_system_arguments` to `raise_on_invalid_options` to better reflect its functionality
 
-    *Owen Niblock*
+    *@owenniblock*
 
 * Renamed `Blankslate` `title` slot to `heading`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Removed `Blankslate` `large` variant.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Renamed `Blankslate` `graphic` slot to `visual`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.60
 
@@ -106,51 +106,51 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Adding new Alpha component: BorderBox Header with optional `title` slot
 
-    *Katie Foster @inkblotty*
+    *@inkblotty*
 
 * Add note about `Breadcrumbs` not being responsive.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 * Handling arguments that aren't system arguments or string arguments in primer_octicon.
 
-    *Jon Rohan, Manuel Puyol*
+    *@jonrohan, @manuelpuyol*
 
 * Improvements to the Procfile so script/dev works as expected.
 
-    *Cameron Dutro*
+    *@camertron*
 
 * Migrating grid classes to utilities.yml process
 
-    *Jon Rohan*
+    *@jonrohan*
 
 * Adding new system color arguments, and deprecating old arguments.
 
-    *Jon Rohan*
+    *@jonrohan*
 
 * Make `Spinner` more accessible by adding `sr-only` loading text.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Make class name validation configurable instead of relying on the Rails env.
 
-    *Cameron Dutro*
+    *@camertron*
 
 ### Bug Fixes
 
 * Removes unwanted bottom border from active tab of `Alpha::TabNav`.
 
-    *Ned Schwartz*
+    *@theinterned*
 
 ### Breaking changes
 
 * Add size restriction to `Avatar`.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Remove `square` attribute from `Avatar` in favor of `shape`. This change also affects `TimelineItem` `avatar` slot.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.59
 
@@ -158,13 +158,13 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Changed `ClipboardCopy` to use `copy` instead of `paste` icon.
 
-    *Cole Bemis*
+    *@colebemis*
 
 ### Breaking changes
 
 * `Breadcrumbs` no longer accepts padding and font size system arguments.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 ## 0.0.58
 
@@ -172,31 +172,31 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Add accessibility section to `Breadcrumbs` page.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Improve performance of the Classify module, i.e. `Classify.call`.
 
-    *Cameron Dutro*
+    *@camertron*
 
 * Background arguments are now pulled in through the utilities class.
 
-    *Jon Rohan*
+    *@jonrohan*
 
 * Border arguments are now pulled in through the utilities class.
 
-    *Jon Rohan*
+    *@jonrohan*
 
 ### Breaking changes
 
 * `bg:` system argument will no longer accept hex color strings, and deprecated color scale.
 
-    *Jon Rohan*
+    *@jonrohan*
 
 ### Bug fixes
 
 * Fix `ClipboardCopy` octicons not toggling correctly after first click.
 
-    *Manuel Puyol, Kristján Oddsson*
+    *@manuelpuyol, @koddsson*
 
 ## 0.0.57
 
@@ -204,7 +204,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Don't suggest empty colors for Octicons when autocorrecting.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.56
 
@@ -212,29 +212,29 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * `Octicon` linter will autocorrect colors.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * `Button` linter will autocorrect when button uses `href`, `name`, `value` or `tabindex`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * `Flash` linter won't autocorrect flashes with ERB in their content.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Eager load components.
 
-    *Cameron Dutro*
+    *@camertron*
 
 ### Misc
 
 * Refactor some of the rubocop valid_node? logic into BaseCop class.
 
-    *Jon Rohan*
+    *@jonrohan*
 
 * Fix validation checker to use Utilities for color-* classes.
 
-    *Jon Rohan*
+    *@jonrohan*
 
 ## 0.0.55
 
@@ -242,28 +242,28 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * `Primer::Breadcrumbs` requires `href`s for all items and no longer accepts the `selected` argument.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 * Split `TabNav` into `TabNav` and `TabPanels`.
 
-    *Kate Higa*
+    *@khiga8*
 
 ### New
 
 * Use the allocation_stats gem to count object allocations in our benchmarks.
 * Improve performance of Octicon cache key construction.
 
-    *Cameron Dutro*
+    *@camertron*
 
 * Update `@primer/css` to `17.7.0` which includes a new argument for `word_break`
 
-    *Jon Rohan*
+    *@jonrohan*
 
 ### Misc
 
 * Clean up extra constants in `UnderlineNav`.
 
-    *Kate Higa*
+    *@khiga8*
 
 ## 0.0.54
 
@@ -271,11 +271,11 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Rename `BreadcrumbComponent` to `Beta::Breadcrumbs`.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 * Split `UnderlineNavComponent` into `Alpha::UnderlineNav` and `Alpha::UnderlinePanels`.
 
-    *Kate Higa*
+    *@khiga8*
 
 ## 0.0.53
 
@@ -283,49 +283,49 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Add autocorrection to `FlashComponent` linter when the context is basic text.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Updates
 
 * Linters won't mark offenses when the ignore count is correct unless explicitly configured to do so.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Deprecating background and border color presentational arguments
 
-    *Jon Rohan*
+    *@jonrohan*
 
 * Map the `for` argument when autofixing `ClipboardCopy` migrations.
 
-    *Kristján Oddsson*
+    *@koddsson*
 
 * Add autocorrection for `CloseButton` linter.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Moving text color variables to Utilities class
 
-    *Jon Rohan*
+    *@jonrohan*
 
 ### Bug fixes
 
 * Linters won't convert HTML special elements.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Misc
 
 * Only run CHANGELOG CI on pull requests.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Run CI actions on pushes to main.
 
-    *Cameron Dutro*
+    *@camertron*
 
 * Get to 100% code coverage.
 
-    *Cameron Dutro*
+    *@camertron*
 
 ## 0.0.52
 
@@ -333,57 +333,57 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Adding `Primer::Beta::Truncate` component to reflect changes in primer/css component [Truncate](https://primer.style/css/components/truncate).
 
-    *Jon Rohan*
+    *@jonrohan*
 
 * Add cop to look for deprecated system arguments and suggest replacements.
 
-    *Jon Rohan*
+    *@jonrohan*
 
 * Add cop to use `primer_octicon` in favor of `octicon`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Fix release script so it doesn't loop continuously.
 
-    *Cameron Dutro*
+    *@camertron*
 
 ### Updates
 
 * Promote `ClipboardCopy` to beta.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * PrimerOcticon linter supports `aria-` and `data-` attributes.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Linters can:
   * convert values with ERB interpolations.
   * autocorrect cases with custom classes.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add a `scheme` option to `BorderBoxComponent` rows.
 
-    *Cameron Dutro*
+    *@camertron*
 
 * Upgrade rubocop and support Ruby 3.0.
 
-    *Cameron Dutro*
+    *@camertron*
 
 * Linters will not autocorrect cases where a required argument is missing.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Misc
 
 * Update benchmarks to run in every supported Ruby version.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add a linter generator.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.51
 
@@ -391,13 +391,13 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Rename `width` and `height` System Arguments to `w` and `h`, resolving conflict with HTML attribute names.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Updates
 
 * `SystemArgumentInsteadOfClass` linter will check for arguments in ViewHelpers.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.50
 
@@ -405,43 +405,43 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Fix incorrect slots syntax in docs.
 
-    *Joel Hawksley*, *Blake Williams*
+    *@joelhawksley*, *@blakewilliams*
 
 ### New
 
 * Add linter suggestions for `CloseButton` component.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Breaking changes
 
 * Update to `octicons` `v15`, removing open-ended dependency. See [https://github.com/primer/octicons/releases/tag/v15.0.0] for icon name changes in release.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 ### Updates
 
 * Don't require `title` for `Label`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Improve autocorrectable linters to convert known SystemArgument classes.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add support for `width: :full` and `height: :full` to System Arguments.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 ### Bug fixes
 
 * Update linters to not autocorrect attributes with ERB blocks.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Fix `:height` and `:width` docs to pull from Utilities
 
-    *Jon Rohan*
+    *@jonrohan*
 
 ## 0.0.49
 
@@ -449,42 +449,42 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Add linter suggestions for `Label` component.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add linter suggestions for `ClipboardCopy` component.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Updates
 
 * Update the `Truncate` component to accept `:strong` as a tag.
 
-    *Amélia Chavot*
+    *@artemisia-absinthium*
 
 * Improve `Primer::Classify::Utilities.classes_to_hash` performance.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Breaking changes
 
 * Require tab with panels to have `panel_id` so `aria-controls` can be set.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Renames:
   * `Primer::AvatarStackComponent` to `Primer::Beta::AvatarStack`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Misc
 
 * Extract example tag parsing into helper.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Generate a static constant JSON and use it when defining linters.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.48
 
@@ -492,17 +492,17 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Ensure panels in `Navigation::Tab` have a label.
 
-    *Kate Higa*
+    *@khiga8*
 
 ### Misc
 
 * Expose custom cops and default config for erblint.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Fix double constant assign.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.47
 
@@ -510,44 +510,44 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Restrict tag for `Popover` to `:div` and `Popover` heading slot to headings.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Renames:
   * `Primer::AutoComplete` to `Primer::Beta::AutoComplete`
   * `Primer::AutoComplete::Item` to `Primer::Beta::AutoComplete::Item`
   * `Primer::AvatarComponent` to `Primer::Beta::Avatar`
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Misc
 
 * Update `doc_examples_axe_test` to exclude non-standalone components and fix `Markdown` example.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Update `DetailsComponent` examples.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add linter to suggest system arguments instead of classes.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Update component generator to create components in the right status module.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add example for truncating HTML to `Truncate`.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 * Update docs generation to point to the correct file sources.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add ENV flag to dump linter data into a file.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.46
 
@@ -555,59 +555,59 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Default to matching `name` and `id` of `input`.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Restrict usage of padding system arguments on BorderBox, recommending use of `padding` density instead.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 ### Breaking changes
 
 * Restrict `TabNav`and `Tab` tags.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Restrict `AvatarStack` body slot tag and `ImageCrop` spinner tag.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Restrict `Details` body slot tags and `UnderlineNav` body slot tags.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Move Primer::Classify from `app/lib/` to `lib/`. This requires an extra `require "primer/classify"` statement for anywhere Classify is needed.
 
-    *Manuel Puyol, Jon Rohan*
+    *@manuelpuyol, @jonrohan*
 
 * Restrict `Menu` heading slot tags to heading tags and require `tag` argument.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Adding animation, vertical_align, word_break, display, visibility, & position arguments to the utilities class. `animation: :grow` is now `animation: :hover_grow` this was a change because we changed the class name in primer.
 
-    *Jon Rohan*
+    *@jonrohan*
 
 ### Misc
 
 * Update contributing guidelines with release instructions.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Prevent flexible tag syntax with rubocop rule.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Update linter autocorrection to use `""` instead of `true` for boolean attributes.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Update Storybook version.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add a changelog authoring guide to `CHANGELOG.md`.
 
-    *Amélia Chavot*
+    *@artemisia-absinthium*
 
 ## 0.0.45
 
@@ -615,31 +615,31 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Allow copying from elements using `for` in `ClipboardCopy`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Breaking changes
 
 * Remove `label` argument in favor of `aria-label` in `ClipboardCopy`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Misc
 
 * Add autocorrect for button linters.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Unify contributing guidelines.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Rerun flaky system tests.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Check if selector is a classify class in Utilities.
 
-   *Jon Rohan*
+   *@jonrohan*
 
 ## 0.0.44
 
@@ -647,13 +647,13 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Allow `Dropdown` menu items to be rendered outside a list.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Breaking changes
 
 * Require a label or `aria-label` to be provided for `AutoComplete` component.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Renames:
   * `DropdownComponent` to `Dropdown`.
@@ -661,37 +661,37 @@ The category for changes related to documentation, testing and tooling. Also, fo
   * `Primer::ButtonMarketingComponent` to `Primer::Alpha::ButtonMarketing`.
   * `Primer::TextComponent` to `Primer::Beta::Text`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Removes `summary_classes` attribute in favor of the `summary` slot in `Dropdown`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Misc
 
 * Replace Classify::Spacing class with pre-generated mappings.
 
-  *Jon Rohan*
+  *@jonrohan*
 
 * Add linter suggestions for `Button` component.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Sort documentation arguments.
 
-    *Jon Rohan*
+    *@jonrohan*
 
 * Add validations for docs generation.
 
-    *Manuel Puyol, Kate Higa*
+    *@manuelpuyol, @khiga8*
 
 * Change docs header order.
 
-    *Manuel Puyol, Kate Higa*
+    *@manuelpuyol, @khiga8*
 
 * Add preliminary criteria for new `alpha` components.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 ## 0.0.43
 
@@ -699,45 +699,45 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Add `clearfix` and `container` system arguments.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Updates
 
 * Promote `TabNav` component to beta.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Allow customizing `TabContainer` when using `TabNav` and `UnderlineNav` components.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Breaking changes
 
 * Restrict `col` system arguments to only accept values between 1 and 12.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Misc
 
 * Raise an error if `class` is used as a system argument.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Don't commit auto-generated component previews.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Provide linters for component migrations.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Update docs to accept multiline descriptions.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Upgrade primer/css to 17.2.1
 
-  *Jon Rohan*
+    *@jonrohan*
 
 ## 0.0.42
 
@@ -745,41 +745,41 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Add `font_family`, `font_style` and `text_transform` system arguments.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add more options for `font_size` and `font_weight`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Updates
 
 * Add `align` option to the `TabNav` extra slot to allow HTML ordering.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Misc
 
 * Auto-generate component previews from doc examples and run integration test checks.
 
-    *Kate Higa, Joel Hawksley*
+    *@khiga8, @joelhawksley*
 
 * Configure previews controller to allow view helper usage in preview template.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Only include `ViewComponent::SlotableV2` if `ViewComponent::Base` does not already include it.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add `force_system_arguments` option to raise an error if a class is used instead of using System Arguments.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Breaking changes
 
 * Restrict allowed tags for `Truncate`, `Markdown`, and `HiddenTextExpander`.
 
-    *Kate Higa*
+    *@khiga8*
 
 ## 0.0.41
 
@@ -787,65 +787,65 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Create `LocalTime` component.
 
-    *Kristján Oddsson*
+    *@koddsson*
 
 * Create `Image` component.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add `extra` slot to `TabNav`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Do not raise error if Primer CSS class name is passed to component if `PRIMER_WARNINGS_DISABLED` is set.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 ### Accessibility
 
 * Accept `aria-current="true"` in tabbed components.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Changes
 
 * Promote `Tooltip` component to beta.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Bug fixes
 
 * Ensure that `ClipboardCopy` behaviors only target ViewComponents.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Ensure that the `rounded` attribute for `<image-crop>` is represented as a boolean attribute.
 
-    *Kristján Oddsson*
+    *@koddsson*
 
 ### Breaking changes
 
 * Rename `TooltipComponent` to `Tooltip`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Don't allow `OcticonComponent` height/width values under 16px
 
-   *Jon Rohan*
+   *@jonrohan*
 
 * Remove `:large` size option from `OcticonComponent` and change `:medium` to 24px
 
-    *Jon Rohan*
+    *@jonrohan*
 
 * Restrict `Label` tag to `span`, `div`, `a`, `summary`.
 
-    *Kate Higa*
+    *@khiga8*
 
 ### Misc
 
 * Add a CI check for changes to the CHANGELOG file.
 
-    *Kristján Oddsson*
+    *@koddsson*
 
 ## 0.0.40
 
@@ -853,570 +853,568 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Create `ImageCrop` component.
 
-    *Kristján Oddsson*
+    *@koddsson*
 
 ### Changes
 
 * Promote `IconButton` to beta.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add `box` argument to `IconButton`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Promote `Markdown` to beta.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Bug fixes
 
 * Fix `IconButton` raising when `aria-label` was provided using an object.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Fix disabling of default styles for `SpinnerComponent` via `nil` style parameter.
 
-    *Chris Wilson*
+    *@mrchrisw*
 
 ### Deprecations
 
 * Deprecate `Flex` in favor of `BoxComponent`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ### Breaking Changes
 
 * Restrict `ButtonGroup` tag to `:div` and update docs for `Text` tag.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Remove non-functional `width` and `height` `:fill` option.
 
-    *Jon Rohan*, *Joel Hawksley*
+    *@jonrohan*, *@joelhawksley*
 
 * Restrict `Subhead` `heading` slot tag to `div` and `h1`-`h6`.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Restrict `Blankslate` tag to `div`.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Explicitly limit tag for `AvatarStack` to `:div` and `:span`.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Rename `MarkdownComponent` to `Markdown`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.39
 
 * Promote `CloseButton` to beta.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Update `ClipboardCopy` to not toggle icons unless they both exist.
 
-    *Kristján Oddsson*
+    *@koddsson*
 
 * Add `icon` and `counter` slots to `ButtonComponent`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Create `IconButton` component.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Removing trailing whitespace from output of `class=""` Classify generation.
 
-    *Jon Rohan*
+    *@jonrohan*
 
 * Deprecate `FlexItem` in favor of `BoxComponent`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Dropping requirement of `octicons_helper` and updating `OcticonComponent` to use `octicon` gem directly.
 
-    *Jon Rohan*
+    *@jonrohan*
 
 * **Breaking change:** Remove `:overlay` option from `border_color`.
 
-    *Simon Luthi*
+    *@@simurai*
 
 ## 0.0.38
 
 * Extract `BaseButton` component.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add default `aria-label` of "Close" to `CloseButton` component.
 
-    *Kate Higa*
+    *@khiga8*
 
 * Set button variants in the `ButtonGroup` parent.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Create `ClipboardCopy` component.
 
-    *Kristján Oddsson*
+    *@koddsson*
 
 * **Breaking change:** Rename `ButtonGroupComponent` to `ButtonGroup` and promote it to beta.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * **Breaking change:** Do not provide default for `Heading` and improve documentation.
 
-    *Kate Higa*
+    *@khiga8*
 
 * **Breaking change:** Don't allow `StateComponent` to be a link.
 
-    *Kate Higa*
+    *@khiga8*
 
 ## 0.0.37
 
 * Update NPM package to include subdirectory JS files.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.36
 
 * Add `block` flag to `ButtonComponent`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add `link` and `invisible` schemes to `ButtonComponent`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Create `CloseButton` and `HiddenTextExpander` component.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * **Breaking change:** Rename `AutoCompleteComponent` to `AutoComplete` and `AutoCompleteItemComponent` to `AutoComplete::Item`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * **Breaking change:** Rename `TruncateComponent` to `Truncate` and promote it to beta.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.35
 
 * Promote `AutoCompleteComponent`, `AutoCompleteItemComponent`, `AvatarStackComponent` and `ButtonComponent` to beta.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Allow `UnderlineNav` tabs to be rendered as a `<ul><li>` list.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * _Accessibility:_ Don't add tab roles when `UnderlineNav` or `TabNav` use link redirects.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * **Breaking change:** Make `label` required for `UnderlineNav` and `TabNav`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.34
 
 * Add `p: :responsive` and `m: :auto` system arguments.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Remove `my: :auto` and negative `m:` system arguments.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * **Breaking change:** Rename `FlashComponent` `variant` argument to `scheme`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * **Breaking change:** Rename `LinkComponent` `variant` argument to `scheme`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * **Breaking change:** Rename `ButtonComponent` `button_type` argument to `scheme`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * **Breaking change:** Rename `ButtonMarketing` `button_type` argument to `scheme`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * **Breaking change:** Rename `StateComponent` `color` argument to `scheme`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.33
 
 * Remove `TabbedComponent` validation requiring a tab to be selected.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.32
 
 * Allow passing the icon name as a positional argument to `OcticonComponent`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Promote `TimeAgoComponent` to beta.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * **Breaking change:** Update `TabNav#tab` API to accept the tab content as a block and panel content as a slot.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * **Breaking change:** Update `UnderlineNavComponent` API be more strict and support `TabContainer`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.31
 
 * Fix `Popover` bug where body was only returning the last line of the HTML.
 
-    *Manuel Puyol, Blake Williams*
+    *@manuelpuyol, @blakewilliams*
 
 ## 0.0.30
 
 * Make `color:`, `bg:` and `border_color:` accept string values.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.29
 
 * Add `primer_time_ago` helper.
 
-    *Simon Taranto*
+    *@srt32*
 
 * Add `silence_deprecations` config to supress deprecation warnings.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.28
 
 * Update `CounterComponent` to accept functional schemes `primary` and `secondary`. Deprecate `gray` and `light_gray` schemes.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add `force_functional_colors` option to convert colors to functional. This change includes a deprecation warning in non-production environments that warns about non functional color usage.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Promote `DetailsComponent`, `HeadingComponent`, `TextComponent`, `TimelineItemComponent`, and
   `PopoverComponent` to beta status.
 
-    *Simon Taranto*
+    *@srt32*
 
 * Update `LinkComponent`:
   * use `Link--muted` instead of `muted-link`.
   * accept `variant` and `underline` options.
   * accept `:span` as a tag.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add `AutoComplete` and `AutoCompleteItem` components.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Publish types with npm package.
 
-    *Keith Cirkel* & *Clay Miller*
+    *@keithamus, @smockle*
 
 * Fix `AvatarComponent` to apply classes to the link wrapper if present.
 
-    *Steve Richert*
+    *@laserlemon*
 
 * Fix `AvatarComponent` to apply the `avatar-small` class rather than `avatar--small`.
 
-    *Steve Richert*
+    *@laserlemon*
 
 * **Breaking change:** Updates `PopoverComponent` to use Slots V2.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.27
 
 * Promote `BreadcrumbComponent` and `ProgressBarComponent` to beta status.
 
-    *Simon Taranto*
+    *@srt32*
 
 * Fix `OcticonComponent` not rendering `data-test-selector` correctly.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add `TimeAgo` component.
 
-    *Keith Cirkel*
+    *@keithamus, **Breaking change:** Updates `UnderlineNavComponent` to use Slots V2.
 
-* **Breaking change:** Updates `UnderlineNavComponent` to use Slots V2.
-
-    *Simon Taranto*
+    *@srt32*
 
 * **Breaking change:** Upgrade `LayoutComponent` to use Slots V2.
 
-    *Simon Taranto*
+    *@srt32*
 
 ## 0.0.26
 
 * Fix `DetailsComponent` summary always being rendered as a `btn`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Promote `BlankslateComponent` and `BaseComponent` to beta status.
 
-    *Simon Taranto*
+    *@srt32*
 
 ## 0.0.25
 
 * Promote `SubheadComponent` to beta.
 
-    *Simon Taranto*
+    *@srt32*
 
 * Add deprecated `orange` and `purple` schemes to `LabelComponent`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.24
 
 * Fix zeitwerk autoload integration.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * **Breaking change:** Upgrade `ProgressBarComponent` to use Slots V2.
 
-    *Simon Taranto*
+    *@srt32*
 
 * **Breaking change:** Upgrade `BreadcrumbComponent` to use Slots V2.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.23
 
 * Remove node and yarn version requirements from `@primer/view-components`.
 
-  *Manuel Puyol*
+  *@manuelpuyol*
 
 * **Breaking change:** Upgrade `SubheadComponent` to use Slots V2.
 
-    *Simon Taranto*
+    *@srt32*
 
 * **Breaking change:** Update `LabelComponent` to use only functional color
   supportive scheme keys. The component no longer accepts colors (`:gray`, for
   example) but only functional schemes (`primary`, for example).
   `LabelComponent` is promoted to beta status.
 
-  *Simon Taranto*
+    *@srt32*
 
 ## 0.0.22
 
 * Add view helpers to easily render Primer components.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add `TabContainer` and `TabNav` components.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Promote `StateComponent` to beta.
 
-    *Simon Taranto*
+    *@srt32*
 
 * **Breaking change:** Upgrade `BorderBoxComponent` to use Slots V2.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * **Breaking change:** Upgrade `StateComponent` to support functional colors. This change requires using [@primer/css-next](https://www.npmjs.com/package/@primer/css-next). The required changes will be upstreamed to @primer/css at a later date.
 
-    *Simon Taranto*
+    *@srt32*
 
 * **Breaking change:** Upgrade `DetailsComponent` to use Slots V2.
 
-    *Simon Taranto*
+    *@srt32*
 
 ## 0.0.21
 
 * **Breaking change:** Upgrade `FlashComponent` to use Slots V2.
 
-    *Joel Hawksley, Simon Taranto*
+    *@joelhawksley, @srt32*
 
 * **Breaking change:** Upgrade `BlankslateComponent` to use Slots V2.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * **Breaking change:** Upgrade `TimelineItemComponent` to use Slots V2.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.20
 
 * Fix bug when empty string was passed to Classify.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.19
 
 * Add support for functional colors to `color` system argument.
 
-    *Jake Shorty*
+    *@jshorty*
 
 * Add `AvatarStack`, `Dropdown`, `Markdown` and `Menu` components.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Deprecate `DropdownMenuComponent`.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Fix `Avatar` bug when used with links.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add cache for common Primer values.
 
-    *Blake Williams*
+    *@blakewilliams*
 
 * Add support for `octicons_helper` v12.
 
-    *Cole Bemis*
+    *@colebemis*
 
 * Add support for `border: true` to apply the `border` class.
 
-    *Simon Taranto*
+    *@srt32*
 
 * Promote `Avatar`, `Link`, and `Counter` components to beta.
 
-    *Simon Taranto*
+    *@srt32*
 
 * **Breaking change:** Drop support for Ruby 2.4.
 
-    *Simon Taranto*
+    *@srt32*
 
 ## 0.0.18
 
 * Add `border_radius` system argument.
 
-    *Ash Guillaume*
+    *@ashygee*
 
 * Add `animation` system argument.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add `Truncate`, `ButtonGroup` and `ButtonMarketing` components.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add `Tooltip` component.
 
-    *Simon Taranto*
+    *@srt32*
 
 ## 0.0.17
 
 * Ensure all components support inline styles.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 ## 0.0.16
 
 * Adding a `spinner` slot to the `BlankslateComponent` that uses the `SpinnerComponent` added in `0.0.10`.
 
-    *Jon Rohan*
+    *@jonrohan*
 
 * Bumping node engine to version `15.x`
 
-    *Jon Rohan*
+    *@jonrohan*
 
 ## 0.0.15
 
 * Add ability to disable `limit` on Counter.
 
-    *Christian Giordano*
+    *@nuthinking*
 
 * Rename `v` system argument to `visibility`.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 ## 0.0.14
 
 * Add functional colors to Label.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 ## 0.0.13
 
 * Add support for `xl` breakpoint.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 ## 0.0.12
 
 * Adds support for disabling inline box-sizing style for `SpinnerComponent` via style parameter `Primer::SpinnerComponent.new(style: nil)`.
 
-    *Chris Wilson*
+    *@mrchrisw*
 
 ## 0.0.11
 
 * Renames DetailsComponent::OVERLAY_DEFAULT to DetailsComponent::NO_OVERLAY to more correctly describe its value.
 
-    *Justin Kenyon*
+    *@kenyonj*
 
 ## 0.0.10
 
 * Add SpinnerComponent
 
-    *Cole Bemis*
+    *@colebemis*
 
 ## 0.0.9
 
 * BREAKING CHANGE: OcticonComponent no longer accepts `class` parameter; use `classes` instead.
 
-    *heynan0*
+    *@heynan0*
 
 ## 0.0.8
 
 * Add support for border margins, such as: `border_top: 0`.
 
-    *Natasha Umer*
+    *@natashau*
 
 * Add FlashComponent and OcticonComponent.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 * BREAKING CHANGE: BlankslateComponent accepts `icon_size` instead of `icon_height`.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 ## 0.0.7
 
 * Use `octicons_helper` v11.0.0.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 ## 0.0.6
 
 * Updated the invalid class name error message
 
-    *emplums*
+    *@emplums*
 
 * Updated README with testing instructions
 
-    *emplums*
+    *@emplums*
 
 * Add large and spacious option to BlankslateComponent
 
-    *simurai*
+    *@simurai*
 
 * Add option for `ButtonComponent` to render a `summary` tag
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * BREAKING CHANGE: Changed `DetailsComponent` summary and body to be slots
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.5
 
@@ -1424,43 +1422,43 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Add components:
   * Popover
 
-    *Sarah Vessels*
+    *@cheshire137*
 
 ## 0.0.4
 
 * Added support for mx: and my: :auto.
 
-    *Christian Giordano*
+    *@nuthinking*
 
 * Added support for custom layout sizes.
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 ## 0.0.3
 
 * Add support for responsive `float` system argument.
 
-    *Joel Hawksley*
+    *@joelhawksley*
 
 * Add components:
   * Avatar
   * Blankslate
 
-    *Manuel Puyol, Ben Emdon*
+    *@manuelpuyol, @benemdon*
 
 ## 0.0.1
 
 * Add initial gem configuration.
 
-    *Manuel Puyol, Joel Hawksley*
+    *@manuelpuyol, @joelhawksley*
 
 * Add demo app and storybook to test
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add Classify, FetchOrFallback and ClassName helpers
 
-    *Manuel Puyol*
+    *@manuelpuyol*
 
 * Add components:
   * BorderBox
@@ -1483,4 +1481,4 @@ The category for changes related to documentation, testing and tooling. Also, fo
   * TimelineItem
   * UnderlineNav
 
-    *Manuel Puyol*
+    *@manuelpuyol*
