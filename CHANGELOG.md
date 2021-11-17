@@ -56,12 +56,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Amélia Chavot*, *Owen Niblock*
 
-### Breaking changes
-
-* Require an `aria-label` to be provided for the `HiddenTextExpander` component.
-
-    *Amélia Chavot*, *Owen Niblock*
-
 ### Misc
 
 * Fix components not rendering in Storybook because of kebab case arguments.
@@ -85,6 +79,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
     *Manuel Puyol*
 
 ### Breaking Changes
+
+* Require an `aria-label` to be provided for the `HiddenTextExpander` component.
+
+    *Amélia Chavot*, *Owen Niblock*
 
 * Rename `force_system_arguments` to `raise_on_invalid_options` to better reflect its functionality
 
