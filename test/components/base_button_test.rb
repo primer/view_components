@@ -11,17 +11,19 @@ class PrimerBaseButtonTest < Minitest::Test
     assert_text("content")
   end
 
-  def test_renders_a_as_a_button
+  def test_renders_a_without_button_role
     render_inline(Primer::BaseButton.new(tag: :a)) { "content" }
 
-    assert_selector("a[role='button']")
+    assert_selector("a")
+    refute_selector("a[role='button']")
     refute_selector("a[type]")
   end
 
-  def test_renders_summary_as_a_button
+  def test_renders_summary_without_button_role
     render_inline(Primer::BaseButton.new(tag: :summary)) { "content" }
 
-    assert_selector("summary[role='button']")
+    assert_selector("summary")
+    refute_selector("summary[role='button']")
     refute_selector("summary[type]")
   end
 

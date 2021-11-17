@@ -85,6 +85,22 @@
     ]
   },
   "Primer::BaseComponent": {
+    "SELF_CLOSING_TAGS": [
+      "area",
+      "base",
+      "br",
+      "col",
+      "embed",
+      "hr",
+      "img",
+      "input",
+      "link",
+      "meta",
+      "param",
+      "source",
+      "track",
+      "wbr"
+    ]
   },
   "Primer::Beta::AutoComplete": {
     "Input": "Primer::Beta::AutoComplete::Input",
@@ -135,7 +151,7 @@
     ]
   },
   "Primer::Beta::Blankslate": {
-    "GRAPHIC_OPTIONS": [
+    "VISUAL_OPTIONS": [
       "icon",
       "spinner",
       "image"
@@ -391,6 +407,8 @@
       "h5",
       "h6"
     ]
+  },
+  "Primer::HellipButton": {
   },
   "Primer::HiddenTextExpander": {
   },

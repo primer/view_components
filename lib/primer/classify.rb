@@ -101,7 +101,7 @@ module Primer
       def validated_class_names(classes)
         return if classes.blank?
 
-        if force_system_arguments? && !ENV["PRIMER_WARNINGS_DISABLED"]
+        if raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
           invalid_class_names =
             classes.split.each_with_object([]) do |class_name, memo|
               memo << class_name if Primer::Classify::Validation.invalid?(class_name)
@@ -199,8 +199,8 @@ module Primer
         end
       end
 
-      def force_system_arguments?
-        Rails.application.config.primer_view_components.force_system_arguments
+      def raise_on_invalid_options?
+        Rails.application.config.primer_view_components.raise_on_invalid_options
       end
     end
 
