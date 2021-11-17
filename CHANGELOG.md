@@ -32,10 +32,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### New
 
-* Adding ability for `border` system arguments to be responsive
-
-    *Josh Klina @jklina*
-
 * Adding new Alpha component: `Layout` with `main` and `sidebar` slots
 
     *Cameron Dutro*
