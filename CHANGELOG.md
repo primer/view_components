@@ -33,8 +33,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 ### Updates
 
 * Change spacing in `Blankslate`:
-  - Between `description` and `primary_action` to `32px`.
-  - Between `primary_action` and `secondary_action` to `16px`.
+  * Between `description` and `primary_action` to `32px`.
+  * Between `primary_action` and `secondary_action` to `16px`.
 
     *Manuel Puyol*
 
