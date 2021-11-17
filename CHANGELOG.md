@@ -40,11 +40,35 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Cameron Dutro*
 
+* Add the `HellipButton` component
+
+    *Amélia Chavot*, *Owen Niblock*
+
 ### Updates
 
 * Bump Storybook version to include Skip to Content links for keyboard auditors
 
     *Katie Foster @inkblotty*
+
+* Update the `HiddenTextExpander` component to use the `HellipButton`.
+
+    *Amélia Chavot*, *Owen Niblock*
+
+### Breaking changes
+
+* Require an `aria-label` to be provided for the `HiddenTextExpander` component.
+
+    *Amélia Chavot*, *Owen Niblock*
+
+### Misc
+
+* Fix components not rendering in Storybook because of kebab case arguments.
+
+    *Amélia Chavot*, *Manuel Puyol*, *Owen Niblock*
+
+* Fix a typo on a command on the contribution page.
+
+    *Amélia Chavot*, *Owen Niblock*
 
 ### Bug Fixes
 
@@ -52,9 +76,27 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Owen Niblock*
 
+### Breaking Changes
+
+* Rename `force_system_arguments` to `raise_on_invalid_options` to better reflect its functionality
+
+    *Owen Niblock*
+
 ### Deprecations
 
 * Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
+
+### Breaking changes
+
+* Renamed `Blankslate` `title` slot to `heading`.
+
+    *Manuel Puyol*
+
+* Removed `Blankslate` `large` variant.
+
+    *Manuel Puyol*
+
+* Renamed `Blankslate` `graphic` slot to `visual`.
 
     *Manuel Puyol*
 
@@ -563,7 +605,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
-* Added a changelog authoring guide to `CHANGELOG.md`.
+* Add a changelog authoring guide to `CHANGELOG.md`.
 
     *Amélia Chavot*
 

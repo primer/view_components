@@ -11,6 +11,7 @@ class PrimerComponentTest < Minitest::Test
       component.main(tag: :div) { "Foo" }
       component.sidebar(tag: :div) { "Bar" }
     }],
+    [Primer::HellipButton, { "aria-label": "No action" }],
     [Primer::Alpha::BorderBox::Header, {}],
     [Primer::Alpha::TabPanels, { label: "label" }],
     [Primer::Alpha::TabNav, { label: "label" }],
@@ -29,7 +30,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::BaseComponent, { tag: :div }],
     [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::Beta::Blankslate, {}, proc { |component|
-      component.title(tag: :h2) { "Foo" }
+      component.heading(tag: :h2) { "Foo" }
     }],
     [Primer::BorderBoxComponent, {}, proc { |component| component.header { "Foo" } }],
     [Primer::BoxComponent, {}],
@@ -56,7 +57,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::FlashComponent, {}],
     [Primer::FlexItemComponent, { flex_auto: true }],
     [Primer::HeadingComponent, { tag: :h1 }],
-    [Primer::HiddenTextExpander, {}],
+    [Primer::HiddenTextExpander, { "aria-label": "No action" }],
     [Primer::LabelComponent, {}],
     [Primer::LayoutComponent, {}],
     [Primer::LinkComponent, { href: "https://www.google.com" }],

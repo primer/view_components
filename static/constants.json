@@ -229,7 +229,7 @@
     ]
   },
   "Primer::Beta::Blankslate": {
-    "GRAPHIC_OPTIONS": [
+    "VISUAL_OPTIONS": [
       "icon",
       "spinner",
       "image"
@@ -486,6 +486,8 @@
       "h5",
       "h6"
     ]
+  },
+  "Primer::HellipButton": {
   },
   "Primer::HiddenTextExpander": {
   },
