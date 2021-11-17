@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### New
 
+* Add linter for tracking deprecated `LayoutComponent` callsites
+
+    *Josh Klina*
+
 * Adding ability for `border` system arguments to be responsive
 
     *Josh Klina @jklina*
