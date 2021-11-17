@@ -6,7 +6,7 @@ class Primer::ClipboardCopyStories < ViewComponent::Storybook::Stories
   story(:clipboard_copy_simple) do
     controls do
       text(:value, "Text to copy")
-      text("aria-label", "Copy text to the system clipboard")
+      aria(label: "Copy text to the system clipboard")
     end
 
     content
@@ -15,7 +15,7 @@ class Primer::ClipboardCopyStories < ViewComponent::Storybook::Stories
   story(:clipboard_copy_text) do
     controls do
       text(:value, "Text to copy")
-      text("aria-label", "Copy text to the system clipboard")
+      aria(label: "Copy text to the system clipboard")
     end
 
     content do
