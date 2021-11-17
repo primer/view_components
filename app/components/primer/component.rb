@@ -43,10 +43,6 @@ module Primer
       Rails.application.config.primer_view_components.silence_deprecations
     end
 
-    def check_no_user_tag(**arguments)
-      check_denylist({ [:tag] => "This component has a fixed tag." }, **arguments)
-    end
-
     def check_denylist(denylist = [], **arguments)
       if raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
 
@@ -74,6 +70,8 @@ module Primer
     end
 
     def validate_arguments(denylist_name: :system_arguments_denylist, **arguments)
+      check_single_argument(:class, "Use `classes` instead.", **arguments)
+
       if (denylist = arguments[denylist_name])
         check_denylist(denylist, **arguments)
 
@@ -83,6 +81,13 @@ module Primer
       end
 
       arguments
+    end
+
+    def check_single_argument(key, help_text, **arguments)
+      raise ArgumentError, "`#{key}` is an invalid argument. #{help_text}" \
+        if arguments.key?(key) && raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
+
+      arguments.except!(key)
     end
   end
 end
