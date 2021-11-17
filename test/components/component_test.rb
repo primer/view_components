@@ -7,6 +7,10 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Alpha::Layout, {}, proc { |component|
+      component.main(tag: :div) { "Foo" }
+      component.sidebar(tag: :div) { "Bar" }
+    }],
     [Primer::HellipButton, { "aria-label": "No action" }],
     [Primer::Alpha::BorderBox::Header, {}],
     [Primer::Alpha::TabPanels, { label: "label" }],
