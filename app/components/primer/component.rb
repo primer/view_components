@@ -70,7 +70,7 @@ module Primer
     end
 
     def validate_arguments(denylist_name: :system_arguments_denylist, **arguments)
-      check_single_argument(:class, "Use `classes` instead.", **arguments)
+      deny_single_argument(:class, "Use `classes` instead.", **arguments)
 
       if (denylist = arguments[denylist_name])
         check_denylist(denylist, **arguments)
@@ -83,7 +83,7 @@ module Primer
       arguments
     end
 
-    def check_single_argument(key, help_text, **arguments)
+    def deny_single_argument(key, help_text, **arguments)
       raise ArgumentError, "`#{key}` is an invalid argument. #{help_text}" \
         if arguments.key?(key) && raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
 
