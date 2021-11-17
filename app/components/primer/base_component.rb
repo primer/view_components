@@ -52,12 +52,12 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `border_bottom` | Integer | Set to `0` to remove the bottom border. Set to `true` to add the bottom border. |
-    # | `border_left` | Integer | Set to `0` to remove the left border. Set to `true` to add the left border. |
+    # | `border_bottom` | Integer | Set to `0` to remove the bottom border. |
+    # | `border_left` | Integer | Set to `0` to remove the left border. |
     # | `border_radius` | Integer | <%= one_of([0, 1, 2, 3]) %> |
-    # | `border_right` | Integer | Set to `0` to remove the right border. Set to `true` to add the right border. |
-    # | `border_top` | Integer | Set to `0` to remove the top border. Set to `true` to add the top border. |
-    # | `border` | Symbol | <%= one_of([:left, :top, :bottom, :right, :y, :x, true, 0]) %> |
+    # | `border_right` | Integer | Set to `0` to remove the right border. |
+    # | `border_top` | Integer | Set to `0` to remove the top border. |
+    # | `border` | Symbol | <%= one_of([:left, :top, :bottom, :right, :y, :x, true]) %> |
     # | `box_shadow` | Boolean, Symbol | Box shadow. <%= one_of([true, :medium, :large, :extra_large, :none]) %> |
     #
     # ## Color
