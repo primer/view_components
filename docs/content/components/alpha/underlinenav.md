@@ -130,7 +130,7 @@ Use actions for a call to action.
 
 ### Customizing the body
 
-<Example src="<nav aria-label='Default' data-view-component='true' class='UnderlineNav'>  <ul data-view-component='true' class='UnderlineNav-body custom-class list-style-none border color-border-info'>      <li data-view-component='true' class='d-inline-flex'>  <a href='#' aria-current='page' data-view-component='true' class='UnderlineNav-item'>          Tab 1    </a></li>      <li data-view-component='true' class='d-inline-flex'>  <a href='#' data-view-component='true' class='UnderlineNav-item'>          Tab 2    </a></li>      <li data-view-component='true' class='d-inline-flex'>  <a href='#' data-view-component='true' class='UnderlineNav-item'>          Tab 3    </a></li></ul>    </nav>" />
+<Example src="<nav aria-label='Default' data-view-component='true' class='UnderlineNav'>  <ul border='true' data-view-component='true' class='UnderlineNav-body custom-class list-style-none color-border-info'>      <li data-view-component='true' class='d-inline-flex'>  <a href='#' aria-current='page' data-view-component='true' class='UnderlineNav-item'>          Tab 1    </a></li>      <li data-view-component='true' class='d-inline-flex'>  <a href='#' data-view-component='true' class='UnderlineNav-item'>          Tab 2    </a></li>      <li data-view-component='true' class='d-inline-flex'>  <a href='#' data-view-component='true' class='UnderlineNav-item'>          Tab 3    </a></li></ul>    </nav>" />
 
 ```erb
 <%= render(Primer::Alpha::UnderlineNav.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :info })) do |c| %>
