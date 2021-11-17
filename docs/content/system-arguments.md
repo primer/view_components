@@ -50,12 +50,12 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `border_bottom` | Integer | Set to `0` to remove the bottom border. Set to `true` to add the bottom border. |
-| `border_left` | Integer | Set to `0` to remove the left border. Set to `true` to add the left border. |
+| `border_bottom` | Integer | Set to `0` to remove the bottom border. |
+| `border_left` | Integer | Set to `0` to remove the left border. |
 | `border_radius` | Integer | One of `0`, `1`, `2`, or `3`. |
-| `border_right` | Integer | Set to `0` to remove the right border. Set to `true` to add the right border. |
-| `border_top` | Integer | Set to `0` to remove the top border. Set to `true` to add the top border. |
-| `border` | Symbol | One of `0`, `:bottom`, `:left`, `:right`, `:top`, `:x`, `:y`, or `true`. |
+| `border_right` | Integer | Set to `0` to remove the right border. |
+| `border_top` | Integer | Set to `0` to remove the top border. |
+| `border` | Symbol | One of `:bottom`, `:left`, `:right`, `:top`, `:x`, `:y`, or `true`. |
 | `box_shadow` | Boolean, Symbol | Box shadow. One of `:extra_large`, `:large`, `:medium`, `:none`, or `true`. |
 
 ## Color
