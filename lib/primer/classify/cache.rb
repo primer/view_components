@@ -84,16 +84,6 @@ module Primer
           keys: Primer::Classify::BOX_SHADOW_KEY,
           values: [true, :small, :medium, :large, :extra_large, :none]
         )
-
-        preload(
-          keys: [:border_top, :border_right, :border_bottom, :border_left],
-          values: [0, true]
-        )
-
-        preload(
-          keys: :border,
-          values: [0, true, :top, :right, :bottom, :left]
-        )
       end
 
       private

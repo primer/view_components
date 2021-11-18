@@ -36,9 +36,9 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Josh Klina*
 
-* Adding ability for `border` system arguments to be responsive
+## 0.0.61
 
-    *Josh Klina @jklina*
+### New
 
 * Adding new Alpha component: `Layout` with `main` and `sidebar` slots
 
@@ -62,12 +62,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Amélia Chavot*, *Owen Niblock*
 
-### Breaking changes
-
-* Require an `aria-label` to be provided for the `HiddenTextExpander` component.
-
-    *Amélia Chavot*, *Owen Niblock*
-
 ### Misc
 
 * Fix components not rendering in Storybook because of kebab case arguments.
@@ -84,17 +78,21 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Owen Niblock*
 
-### Breaking Changes
-
-* Rename `force_system_arguments` to `raise_on_invalid_options` to better reflect its functionality
-
-    *Owen Niblock*
-
 ### Deprecations
 
 * Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
 
-### Breaking changes
+    *Manuel Puyol*
+
+### Breaking Changes
+
+* Require an `aria-label` to be provided for the `HiddenTextExpander` component.
+
+    *Amélia Chavot*, *Owen Niblock*
+
+* Rename `force_system_arguments` to `raise_on_invalid_options` to better reflect its functionality
+
+    *Owen Niblock*
 
 * Renamed `Blankslate` `title` slot to `heading`.
 
