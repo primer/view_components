@@ -16,8 +16,8 @@ module Primer
 
     private
 
-    def force_system_arguments?
-      Rails.application.config.primer_view_components.force_system_arguments
+    def raise_on_invalid_options?
+      Rails.application.config.primer_view_components.raise_on_invalid_options
     end
 
     def deprecated_component_warning(new_class: nil, version: nil)

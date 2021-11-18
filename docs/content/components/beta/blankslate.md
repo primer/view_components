@@ -14,7 +14,7 @@ Use `Blankslate` when there is a lack of content within a page or section. Use a
 
 ## Accessibility
 
-- Set the `title` heading level based on what is appropriate for your page hierarchy. [Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)
+- Set the `heading` level based on what is appropriate for your page hierarchy. [Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)
 - `secondary_action` can be set to provide more information that is relevant in the context of the `Blankslate`.
 - `secondary_action` text should be meaningful out of context and clearly describe the destination. Avoid using vague text like, "Learn more" or "Click here".
 
@@ -22,31 +22,30 @@ Use `Blankslate` when there is a lack of content within a page or section. Use a
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `narrow` | `Boolean` | `false` | Adds a maximum width to the Blankslate. |
-| `large` | `Boolean` | `false` | Increases the font size in the Blankslate. |
-| `spacious` | `Boolean` | `false` | Increases the vertical padding. |
+| `narrow` | `Boolean` | `false` | Adds a maximum width of `485px` to the Blankslate. |
+| `spacious` | `Boolean` | `false` | Increases the padding from `32px` to `80px 40px`. |
 | `border` | `Boolean` | `false` | Adds a border around the Blankslate. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
 
-### `Graphic`
+### `Visual`
 
-Optional graphic visual.
+Optional visual.
 
 Use:
 
-- `graphic_icon` for an [Octicon](/components/octicon).
-- `graphic_image` for an [Image](/components/image).
-- `graphic_spinner` for a [Spinner](/components/spinner).
+- `visual_icon` for an [Octicon](/components/octicon).
+- `visual_image` for an [Image](/components/image).
+- `visual_spinner` for a [Spinner](/components/spinner).
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `Title`
+### `Heading`
 
-Required Title.
+Required heading.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
@@ -55,7 +54,7 @@ Required Title.
 
 ### `Description`
 
-Optional Description.
+Optional description.
 
 - The description should always be informative and actionable.
 - Don't use phrases like "You can".
@@ -66,23 +65,26 @@ Optional Description.
 
 ### `Primary_action`
 
-Optional Primary action
+Optional primary action
 
-Use this slot to set a call to action for users.
+The `primary_action` slot renders an anchor link which is visually styled as a button to provide more emphasis to the
+Blankslate's primary action.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
+| `href` | `String` | N/A | URL to be used for the primary action. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ### `Secondary_action`
 
-Optional Secondary action
+Optional secondary action
 
-Use this slot to provide more information for the user.
+The `secondary_action` slot renders a normal anchor link, which can be used to redirect the user to additional information
+(e.g. Help documentation).
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `href` | `String` | N/A | URL to be used for the link. |
+| `href` | `String` | N/A | URL to be used for the secondary action. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Examples
@@ -93,7 +95,7 @@ Use this slot to provide more information for the user.
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>
-  <% c.title(tag: :h2).with_content("Title") %>
+  <% c.heading(tag: :h2).with_content("Title") %>
   <% c.description { "Description"} %>
 <% end %>
 ```
@@ -106,8 +108,8 @@ Add an `icon` to give additional context. Refer to the [Octicons](https://primer
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>
-  <% c.graphic_icon(icon: :globe) %>
-  <% c.title(tag: :h2).with_content("Title") %>
+  <% c.visual_icon(icon: :globe) %>
+  <% c.heading(tag: :h2).with_content("Title") %>
   <% c.description { "Description"} %>
 <% end %>
 ```
@@ -120,8 +122,8 @@ Add a [SpinnerComponent](https://primer.style/view-components/components/spinner
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>
-  <% c.graphic_spinner(size: :large) %>
-  <% c.title(tag: :h2).with_content("Title") %>
+  <% c.visual_spinner(size: :large) %>
+  <% c.heading(tag: :h2).with_content("Title") %>
   <% c.description { "Description"} %>
 <% end %>
 ```
@@ -134,8 +136,8 @@ Add an `image` to give context that an Octicon couldn't.
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>
-  <% c.graphic_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
-  <% c.title(tag: :h2).with_content("Title") %>
+  <% c.visual_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
+  <% c.heading(tag: :h2).with_content("Title") %>
   <% c.description { "Description"} %>
 <% end %>
 ```
@@ -148,7 +150,7 @@ Pass custom content to `description`.
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>
-  <% c.title(tag: :h2).with_content("Title") %>
+  <% c.heading(tag: :h2).with_content("Title") %>
   <% c.description do %>
     <em>Your custom content here</em>
   <% end %>
@@ -159,12 +161,12 @@ Pass custom content to `description`.
 
 Provide a `primary_action` to guide users to take action from the blankslate. The `primary_action` appears below the description and custom content.
 
-<Example src="  <div data-view-component='true' class='blankslate'>    <svg aria-hidden='true' height='24' viewBox='0 0 24 24' version='1.1' width='24' data-view-component='true' class='octicon octicon-book blankslate-icon mb-3'>    <path fill-rule='evenodd' d='M0 3.75A.75.75 0 01.75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.496 4.496 0 0115.75 3h7.5a.75.75 0 01.75.75v15.063a.75.75 0 01-.755.75l-7.682-.052a3 3 0 00-2.142.878l-.89.891a.75.75 0 01-1.061 0l-.902-.901a3 3 0 00-2.121-.879H.75a.75.75 0 01-.75-.75v-15zm11.247 3.747a3 3 0 00-3-2.997H1.5V18h6.947a4.5 4.5 0 012.803.98l-.003-11.483zm1.503 11.485V7.5a3 3 0 013-3h6.75v13.558l-6.927-.047a4.5 4.5 0 00-2.823.971z'></path></svg>    <h2 data-view-component='true' class='h2 mb-1'>Welcome to the mona wiki!</h2>    <p data-view-component='true'>Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.</p>    <a href='https://github.com/monalisa/mona/wiki/_new' data-view-component='true' class='btn-primary btn-large btn my-3'>  Create the first page</a></div>" />
+<Example src="  <div data-view-component='true' class='blankslate'>    <svg aria-hidden='true' height='24' viewBox='0 0 24 24' version='1.1' width='24' data-view-component='true' class='octicon octicon-book blankslate-icon mb-3'>    <path fill-rule='evenodd' d='M0 3.75A.75.75 0 01.75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.496 4.496 0 0115.75 3h7.5a.75.75 0 01.75.75v15.063a.75.75 0 01-.755.75l-7.682-.052a3 3 0 00-2.142.878l-.89.891a.75.75 0 01-1.061 0l-.902-.901a3 3 0 00-2.121-.879H.75a.75.75 0 01-.75-.75v-15zm11.247 3.747a3 3 0 00-3-2.997H1.5V18h6.947a4.5 4.5 0 012.803.98l-.003-11.483zm1.503 11.485V7.5a3 3 0 013-3h6.75v13.558l-6.927-.047a4.5 4.5 0 00-2.823.971z'></path></svg>    <h2 data-view-component='true' class='h2 mb-1'>Welcome to the mona wiki!</h2>    <p data-view-component='true'>Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.</p>    <a href='https://github.com/monalisa/mona/wiki/_new' data-view-component='true' class='btn-primary btn my-3'>  Create the first page</a></div>" />
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>
-  <% c.graphic_icon(icon: :book) %>
-  <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+  <% c.visual_icon(icon: :book) %>
+  <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
   <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
   <% c.primary_action(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
 <% end %>
@@ -178,8 +180,8 @@ Add an additional `secondary_action` to help users learn more about a feature. S
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>
-  <% c.graphic_icon(icon: :book) %>
-  <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+  <% c.visual_icon(icon: :book) %>
+  <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
   <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
   <% c.secondary_action(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
 <% end %>
@@ -189,12 +191,12 @@ Add an additional `secondary_action` to help users learn more about a feature. S
 
 `primary_action` and `secondary_action` can also be used together. The `primary_action` will always be rendered before the `secondary_action`:
 
-<Example src="  <div data-view-component='true' class='blankslate'>    <svg aria-hidden='true' height='24' viewBox='0 0 24 24' version='1.1' width='24' data-view-component='true' class='octicon octicon-book blankslate-icon mb-3'>    <path fill-rule='evenodd' d='M0 3.75A.75.75 0 01.75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.496 4.496 0 0115.75 3h7.5a.75.75 0 01.75.75v15.063a.75.75 0 01-.755.75l-7.682-.052a3 3 0 00-2.142.878l-.89.891a.75.75 0 01-1.061 0l-.902-.901a3 3 0 00-2.121-.879H.75a.75.75 0 01-.75-.75v-15zm11.247 3.747a3 3 0 00-3-2.997H1.5V18h6.947a4.5 4.5 0 012.803.98l-.003-11.483zm1.503 11.485V7.5a3 3 0 013-3h6.75v13.558l-6.927-.047a4.5 4.5 0 00-2.823.971z'></path></svg>    <h2 data-view-component='true' class='h2 mb-1'>Welcome to the mona wiki!</h2>    <p data-view-component='true'>Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.</p>    <a href='https://github.com/monalisa/mona/wiki/_new' data-view-component='true' class='btn-primary btn-large btn my-3'>  Create the first page</a>      <p>        <a href='https://docs.github.com/en/github/building-a-strong-community/about-wikis' data-view-component='true' class='p-3'>Learn more about wikis</a>      </p></div>" />
+<Example src="  <div data-view-component='true' class='blankslate'>    <svg aria-hidden='true' height='24' viewBox='0 0 24 24' version='1.1' width='24' data-view-component='true' class='octicon octicon-book blankslate-icon mb-3'>    <path fill-rule='evenodd' d='M0 3.75A.75.75 0 01.75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.496 4.496 0 0115.75 3h7.5a.75.75 0 01.75.75v15.063a.75.75 0 01-.755.75l-7.682-.052a3 3 0 00-2.142.878l-.89.891a.75.75 0 01-1.061 0l-.902-.901a3 3 0 00-2.121-.879H.75a.75.75 0 01-.75-.75v-15zm11.247 3.747a3 3 0 00-3-2.997H1.5V18h6.947a4.5 4.5 0 012.803.98l-.003-11.483zm1.503 11.485V7.5a3 3 0 013-3h6.75v13.558l-6.927-.047a4.5 4.5 0 00-2.823.971z'></path></svg>    <h2 data-view-component='true' class='h2 mb-1'>Welcome to the mona wiki!</h2>    <p data-view-component='true'>Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.</p>    <a href='https://github.com/monalisa/mona/wiki/_new' data-view-component='true' class='btn-primary btn my-3'>  Create the first page</a>      <p>        <a href='https://docs.github.com/en/github/building-a-strong-community/about-wikis' data-view-component='true' class='p-3'>Learn more about wikis</a>      </p></div>" />
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>
-  <% c.graphic_icon(icon: :book) %>
-  <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+  <% c.visual_icon(icon: :book) %>
+  <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
   <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
   <% c.primary_action(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
   <% c.secondary_action(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
@@ -203,18 +205,17 @@ Add an additional `secondary_action` to help users learn more about a feature. S
 
 ### Variations
 
-There are a few variations of how the Blankslate appears: `narrow` adds a maximum width, `large` increases the font size, and `spacious` adds extra padding.
+There are a few variations of how the Blankslate appears: `narrow` adds a maximum width of `485px`, and `spacious` increases the padding from `32px` to `80px 40px`.
 
-<Example src="  <div data-view-component='true' class='blankslate blankslate-narrow blankslate-large blankslate-spacious'>    <svg aria-hidden='true' height='24' viewBox='0 0 24 24' version='1.1' width='24' data-view-component='true' class='octicon octicon-book blankslate-icon mb-3'>    <path fill-rule='evenodd' d='M0 3.75A.75.75 0 01.75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.496 4.496 0 0115.75 3h7.5a.75.75 0 01.75.75v15.063a.75.75 0 01-.755.75l-7.682-.052a3 3 0 00-2.142.878l-.89.891a.75.75 0 01-1.061 0l-.902-.901a3 3 0 00-2.121-.879H.75a.75.75 0 01-.75-.75v-15zm11.247 3.747a3 3 0 00-3-2.997H1.5V18h6.947a4.5 4.5 0 012.803.98l-.003-11.483zm1.503 11.485V7.5a3 3 0 013-3h6.75v13.558l-6.927-.047a4.5 4.5 0 00-2.823.971z'></path></svg>    <h2 data-view-component='true' class='h2 mb-1'>Welcome to the mona wiki!</h2>    <p data-view-component='true'>Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.</p>    </div>" />
+<Example src="  <div data-view-component='true' class='blankslate blankslate-narrow blankslate-spacious'>    <svg aria-hidden='true' height='24' viewBox='0 0 24 24' version='1.1' width='24' data-view-component='true' class='octicon octicon-book blankslate-icon mb-3'>    <path fill-rule='evenodd' d='M0 3.75A.75.75 0 01.75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.496 4.496 0 0115.75 3h7.5a.75.75 0 01.75.75v15.063a.75.75 0 01-.755.75l-7.682-.052a3 3 0 00-2.142.878l-.89.891a.75.75 0 01-1.061 0l-.902-.901a3 3 0 00-2.121-.879H.75a.75.75 0 01-.75-.75v-15zm11.247 3.747a3 3 0 00-3-2.997H1.5V18h6.947a4.5 4.5 0 012.803.98l-.003-11.483zm1.503 11.485V7.5a3 3 0 013-3h6.75v13.558l-6.927-.047a4.5 4.5 0 00-2.823.971z'></path></svg>    <h2 data-view-component='true' class='h2 mb-1'>Welcome to the mona wiki!</h2>    <p data-view-component='true'>Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together.</p>    </div>" />
 
 ```erb
 <%= render Primer::Beta::Blankslate.new(
   narrow: true,
-  large: true,
   spacious: true,
 ) do |c| %>
-  <% c.graphic_icon(icon: :book) %>
-  <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+  <% c.visual_icon(icon: :book) %>
+  <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
   <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
 <% end %>
 ```
@@ -227,8 +228,8 @@ It's possible to add a border around the Blankslate. This will wrap the Blanksla
 
 ```erb
 <%= render Primer::Beta::Blankslate.new(border: true) do |c| %>
-  <% c.graphic_icon(icon: :book) %>
-  <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+  <% c.visual_icon(icon: :book) %>
+  <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
   <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
 <% end %>
 ```

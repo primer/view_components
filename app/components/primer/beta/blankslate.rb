@@ -5,7 +5,7 @@ module Primer
     # Use `Blankslate` when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.
     #
     # @accessibility
-    #   - Set the `title` heading level based on what is appropriate for your page hierarchy. <%= link_to_heading_practices %>
+    #   - Set the `heading` level based on what is appropriate for your page hierarchy. <%= link_to_heading_practices %>
     #   - `secondary_action` can be set to provide more information that is relevant in the context of the `Blankslate`.
     #   - `secondary_action` text should be meaningful out of context and clearly describe the destination. Avoid using vague text like, "Learn more" or "Click here".
     class Blankslate < Primer::Component
@@ -13,18 +13,18 @@ module Primer
 
       status :beta
 
-      GRAPHIC_OPTIONS = %i[icon spinner image].freeze
+      VISUAL_OPTIONS = %i[icon spinner image].freeze
 
-      # Optional graphic visual.
+      # Optional visual.
       #
       # Use:
       #
-      # - `graphic_icon` for an <%= link_to_component(Primer::OcticonComponent) %>.
-      # - `graphic_image` for an <%= link_to_component(Primer::Image) %>.
-      # - `graphic_spinner` for a <%= link_to_component(Primer::SpinnerComponent) %>.
+      # - `visual_icon` for an <%= link_to_component(Primer::OcticonComponent) %>.
+      # - `visual_image` for an <%= link_to_component(Primer::Image) %>.
+      # - `visual_spinner` for a <%= link_to_component(Primer::SpinnerComponent) %>.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :graphic, types: {
+      renders_one :visual, types: {
         icon: lambda { |**system_arguments|
           system_arguments[:mb] = 3
           system_arguments[:size] ||= :medium
@@ -45,11 +45,11 @@ module Primer
         }
       }
 
-      # Required Title.
+      # Required heading.
       #
       # @param tag [String]  <%= one_of(Primer::HeadingComponent::TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :title, lambda { |tag:, **system_arguments|
+      renders_one :heading, lambda { |tag:, **system_arguments|
         system_arguments[:tag] = tag
         system_arguments[:mb] = 1
         system_arguments[:classes] = class_names("h2", system_arguments[:classes])
@@ -57,7 +57,7 @@ module Primer
         Primer::HeadingComponent.new(**system_arguments)
       }
 
-      # Optional Description.
+      # Optional description.
       #
       # - The description should always be informative and actionable.
       # - Don't use phrases like "You can".
@@ -69,26 +69,29 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # Optional Primary action
+      # Optional primary action
       #
-      # Use this slot to set a call to action for users.
+      # The `primary_action` slot renders an anchor link which is visually styled as a button to provide more emphasis to the
+      # Blankslate's primary action.
       #
+      # @param href [String] URL to be used for the primary action.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :primary_action, lambda { |href:, **system_arguments|
         system_arguments[:tag] = :a
         system_arguments[:href] = href
         system_arguments[:my] = 3
-        system_arguments[:variant] = :large
+        system_arguments[:variant] = :medium
         system_arguments[:scheme] ||= :primary
 
         Primer::ButtonComponent.new(**system_arguments)
       }
 
-      # Optional Secondary action
+      # Optional secondary action
       #
-      # Use this slot to provide more information for the user.
+      # The `secondary_action` slot renders a normal anchor link, which can be used to redirect the user to additional information
+      # (e.g. Help documentation).
       #
-      # @param href [String] URL to be used for the link.
+      # @param href [String] URL to be used for the secondary action.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :secondary_action, lambda { |href:, **system_arguments|
         system_arguments[:href] = href
@@ -98,10 +101,9 @@ module Primer
         Primer::LinkComponent.new(**system_arguments)
       }
 
-      #
       # @example Basic
       #   <%= render Primer::Beta::Blankslate.new do |c| %>
-      #     <% c.title(tag: :h2).with_content("Title") %>
+      #     <% c.heading(tag: :h2).with_content("Title") %>
       #     <% c.description { "Description"} %>
       #   <% end %>
       #
@@ -110,8 +112,8 @@ module Primer
       #     Add an `icon` to give additional context. Refer to the [Octicons](https://primer.style/octicons/) documentation to choose an icon.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic_icon(icon: :globe) %>
-      #       <% c.title(tag: :h2).with_content("Title") %>
+      #       <% c.visual_icon(icon: :globe) %>
+      #       <% c.heading(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
       #
@@ -120,8 +122,8 @@ module Primer
       #     Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic_spinner(size: :large) %>
-      #       <% c.title(tag: :h2).with_content("Title") %>
+      #       <% c.visual_spinner(size: :large) %>
+      #       <% c.heading(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
       #
@@ -130,8 +132,8 @@ module Primer
       #     Add an `image` to give context that an Octicon couldn't.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
-      #       <% c.title(tag: :h2).with_content("Title") %>
+      #       <% c.visual_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
+      #       <% c.heading(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
       #
@@ -140,7 +142,7 @@ module Primer
       #     Pass custom content to `description`.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.title(tag: :h2).with_content("Title") %>
+      #       <% c.heading(tag: :h2).with_content("Title") %>
       #       <% c.description do %>
       #         <em>Your custom content here</em>
       #       <% end %>
@@ -151,8 +153,8 @@ module Primer
       #     Provide a `primary_action` to guide users to take action from the blankslate. The `primary_action` appears below the description and custom content.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic_icon(icon: :book) %>
-      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.visual_icon(icon: :book) %>
+      #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #       <% c.primary_action(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
       #     <% end %>
@@ -162,8 +164,8 @@ module Primer
       #     Add an additional `secondary_action` to help users learn more about a feature. See <%= link_to_accessibility %>. `secondary_action` will be shown at the very bottom:
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic_icon(icon: :book) %>
-      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.visual_icon(icon: :book) %>
+      #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #       <% c.secondary_action(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
       #     <% end %>
@@ -173,8 +175,8 @@ module Primer
       #     `primary_action` and `secondary_action` can also be used together. The `primary_action` will always be rendered before the `secondary_action`:
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.graphic_icon(icon: :book) %>
-      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.visual_icon(icon: :book) %>
+      #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #       <% c.primary_action(href: "https://github.com/monalisa/mona/wiki/_new").with_content("Create the first page") %>
       #       <% c.secondary_action(href: "https://docs.github.com/en/github/building-a-strong-community/about-wikis").with_content("Learn more about wikis") %>
@@ -182,15 +184,14 @@ module Primer
       #
       # @example Variations
       #   @description
-      #     There are a few variations of how the Blankslate appears: `narrow` adds a maximum width, `large` increases the font size, and `spacious` adds extra padding.
+      #     There are a few variations of how the Blankslate appears: `narrow` adds a maximum width of `485px`, and `spacious` increases the padding from `32px` to `80px 40px`.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(
       #       narrow: true,
-      #       large: true,
       #       spacious: true,
       #     ) do |c| %>
-      #       <% c.graphic_icon(icon: :book) %>
-      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.visual_icon(icon: :book) %>
+      #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
       #
@@ -199,17 +200,16 @@ module Primer
       #     It's possible to add a border around the Blankslate. This will wrap the Blankslate in a BorderBox.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new(border: true) do |c| %>
-      #       <% c.graphic_icon(icon: :book) %>
-      #       <% c.title(tag: :h2).with_content("Welcome to the mona wiki!") %>
+      #       <% c.visual_icon(icon: :book) %>
+      #       <% c.heading(tag: :h2).with_content("Welcome to the mona wiki!") %>
       #       <% c.description { "Wikis provide a place in your repository to lay out the roadmap of your project, show the current status, and document software better, together."} %>
       #     <% end %>
       #
-      # @param narrow [Boolean] Adds a maximum width to the Blankslate.
-      # @param large [Boolean] Increases the font size in the Blankslate.
-      # @param spacious [Boolean] Increases the vertical padding.
+      # @param narrow [Boolean] Adds a maximum width of `485px` to the Blankslate.
+      # @param spacious [Boolean] Increases the padding from `32px` to `80px 40px`.
       # @param border [Boolean] Adds a border around the Blankslate.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(narrow: false, large: false, spacious: false, border: false, **system_arguments)
+      def initialize(narrow: false, spacious: false, border: false, **system_arguments)
         @border = border
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
@@ -217,13 +217,12 @@ module Primer
           @system_arguments[:classes],
           "blankslate",
           "blankslate-narrow": narrow,
-          "blankslate-large": large,
           "blankslate-spacious": spacious
         )
       end
 
       def render?
-        title.present?
+        heading.present?
       end
 
       def wrapper

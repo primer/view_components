@@ -30,7 +30,19 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Updates
+
+* Update `Button` to add `8px` spacing between icon, text and counter.
+
+    *Manuel Puyol*
+
+## 0.0.61
+
 ### New
+
+* Adding new Alpha component: `Layout` with `main` and `sidebar` slots
+
+    *Cameron Dutro*
 
 * Add a two-column layout linter.
 
@@ -46,16 +58,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Katie Foster @inkblotty*
 
-* Update `Button` to add `8px` spacing between icon, text and counter.
-
-    *Manuel Puyol*
 * Update the `HiddenTextExpander` component to use the `HellipButton`.
-
-    *Amélia Chavot*, *Owen Niblock*
-
-### Breaking changes
-
-* Require an `aria-label` to be provided for the `HiddenTextExpander` component.
 
     *Amélia Chavot*, *Owen Niblock*
 
@@ -78,6 +81,28 @@ The category for changes related to documentation, testing and tooling. Also, fo
 ### Deprecations
 
 * Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
+
+    *Manuel Puyol*
+
+### Breaking Changes
+
+* Require an `aria-label` to be provided for the `HiddenTextExpander` component.
+
+    *Amélia Chavot*, *Owen Niblock*
+
+* Rename `force_system_arguments` to `raise_on_invalid_options` to better reflect its functionality
+
+    *Owen Niblock*
+
+* Renamed `Blankslate` `title` slot to `heading`.
+
+    *Manuel Puyol*
+
+* Removed `Blankslate` `large` variant.
+
+    *Manuel Puyol*
+
+* Renamed `Blankslate` `graphic` slot to `visual`.
 
     *Manuel Puyol*
 
