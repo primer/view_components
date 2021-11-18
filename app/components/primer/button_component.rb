@@ -121,8 +121,12 @@ module Primer
     end
 
     def trimmed_content
+      trimmed_content = content.strip
+
+      return trimmed_content unless content.html_safe?
+
       # strip unsets `html_safe`, so we have to set it back again to guarantee that HTML blocks won't break
-      content.strip.html_safe # rubocop:disable Rails/OutputSafety
+      trimmed_content.html_safe # rubocop:disable Rails/OutputSafety
     end
   end
 end
