@@ -4,6 +4,7 @@ require "test_helper"
 
 class PrimerClassifyTest < Minitest::Test
   include Primer::ComponentTestHelpers
+
   def test_multiple_params
     assert_generated_class("m-4 py-2", { m: 4, py: 2 })
   end
@@ -134,10 +135,10 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_hide
-    assert_generated_class("hide-sm",                         { hide: :sm })
-    assert_generated_class("hide-md",                         { hide: :md })
-    assert_generated_class("hide-lg",                         { hide: :lg })
-    assert_generated_class("hide-xl",                         { hide: :xl })
+    assert_generated_class("hide-sm", { hide: :sm })
+    assert_generated_class("hide-md", { hide: :md })
+    assert_generated_class("hide-lg", { hide: :lg })
+    assert_generated_class("hide-xl", { hide: :xl })
   end
 
   def test_vertical_align
@@ -151,6 +152,7 @@ class PrimerClassifyTest < Minitest::Test
 
   def test_float
     assert_generated_class("float-left", { float: :left })
+    assert_generated_class("float-right", { float: :right })
   end
 
   def test_underline
@@ -209,8 +211,8 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_text_align
-    assert_generated_class("text-right",      { text_align: :right })
-    assert_generated_class("text-left",       { text_align: :left })
+    assert_generated_class("text-right", { text_align: :right })
+    assert_generated_class("text-left",  { text_align: :left })
   end
 
   def test_font_family
@@ -229,6 +231,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("text-light",      { font_weight: :light })
     assert_generated_class("text-normal",     { font_weight: :normal })
     assert_generated_class("text-bold",       { font_weight: :bold })
+    assert_generated_class("text-semibold",   { font_weight: :semibold })
     assert_generated_class("text-emphasized", { font_weight: :emphasized })
   end
 
@@ -279,14 +282,14 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_border_color
-    assert_generated_class("color-border-primary", { border_color: :primary })
+    assert_generated_class("color-border-primary",   { border_color: :primary })
     assert_generated_class("color-border-secondary", { border_color: :secondary })
-    assert_generated_class("color-border-tertiary", { border_color: :tertiary })
-    assert_generated_class("color-border-info", { border_color: :info })
-    assert_generated_class("color-border-success", { border_color: :success })
-    assert_generated_class("color-border-warning", { border_color: :warning })
-    assert_generated_class("color-border-danger", { border_color: :danger })
-    assert_generated_class("color-border-inverse", { border_color: :inverse })
+    assert_generated_class("color-border-tertiary",  { border_color: :tertiary })
+    assert_generated_class("color-border-info",      { border_color: :info })
+    assert_generated_class("color-border-success",   { border_color: :success })
+    assert_generated_class("color-border-warning",   { border_color: :warning })
+    assert_generated_class("color-border-danger",    { border_color: :danger })
+    assert_generated_class("color-border-inverse",   { border_color: :inverse })
   end
 
   def test_rounded
@@ -303,7 +306,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-justify-between", { justify_content: :space_between })
     assert_generated_class("flex-justify-around", { justify_content: :space_around })
 
-    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+    assert_raises ArgumentError do
       Primer::Classify.call(justify_content: :invalid_option)
     end
   end
@@ -315,7 +318,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-items-baseline", { align_items: :baseline })
     assert_generated_class("flex-items-stretch", { align_items: :stretch })
 
-    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+    assert_raises ArgumentError do
       Primer::Classify.call(align_items: :invalid_option)
     end
   end
@@ -325,7 +328,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-nowrap", { flex_wrap: :nowrap })
     assert_generated_class("flex-wrap-reverse", { flex_wrap: :reverse })
 
-    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+    assert_raises ArgumentError do
       Primer::Classify.call(flex_wrap: :invalid_option)
     end
   end
@@ -337,7 +340,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-row-reverse", { direction: :row_reverse })
     assert_generated_class("flex-row flex-sm-column flex-md-row-reverse flex-lg-column-reverse flex-xl-row", { direction: %i[row column row_reverse column_reverse row] })
 
-    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+    assert_raises ArgumentError do
       Primer::Classify.call(direction: :invalid_option)
     end
   end
@@ -371,7 +374,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-1",    { flex: 1 })
     assert_generated_class("flex-auto", { flex: :auto })
 
-    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+    assert_raises ArgumentError do
       Primer::Classify.call(flex: :invalid_option)
     end
   end
@@ -384,7 +387,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("flex-self-baseline",  { align_self: :baseline })
     assert_generated_class("flex-self-stretch",   { align_self: :stretch })
 
-    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+    assert_raises ArgumentError do
       Primer::Classify.call(align_self: :invalid_option)
     end
   end
@@ -400,7 +403,7 @@ class PrimerClassifyTest < Minitest::Test
   def test_flex_grow
     assert_generated_class("flex-grow-0", { flex_grow: 0 })
 
-    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+    assert_raises ArgumentError do
       Primer::Classify.call(flex_grow: :invalid_option)
     end
   end
@@ -408,7 +411,7 @@ class PrimerClassifyTest < Minitest::Test
   def test_flex_shrink
     assert_generated_class("flex-shrink-0", { flex_shrink: 0 })
 
-    assert_raises Primer::FetchOrFallbackHelper::InvalidValueError do
+    assert_raises ArgumentError do
       Primer::Classify.call(flex_shrink: :invalid_option)
     end
   end
@@ -423,7 +426,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("anim-hover-grow", { animation: :hover_grow })
   end
 
-  def test_raises_does_not_raise_error_when_passing_in_a_primer_css_class_name_in_development_and_flag_is_set
+  def test_does_not_raise_error_when_passing_in_a_primer_css_class_name_in_development_and_flag_is_set
     ENV["PRIMER_WARNINGS_DISABLED"] = "1"
     with_raise_on_invalid_options(true) do
       assert_generated_class("color-bg-primary text-center float-left ml-1", { classes: "color-bg-primary text-center float-left ml-1" })
@@ -458,12 +461,6 @@ class PrimerClassifyTest < Minitest::Test
     end
   end
 
-  def test_works_when_cache_disabled
-    Primer::Classify::Cache.instance.disable do
-      assert_generated_class("d-block", { classes: "d-block" })
-    end
-  end
-
   private
 
   def assert_generated_class(generated_class_name, input)
@@ -471,6 +468,8 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def refute_generated_class(input)
-    assert_nil(Primer::Classify.call(**input)[:class])
+    with_validate_class_names(false) do
+      assert_nil(Primer::Classify.call(**input)[:class])
+    end
   end
 end
