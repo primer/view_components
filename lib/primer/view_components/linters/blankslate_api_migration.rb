@@ -17,7 +17,7 @@ module ERBLint
 
           next unless code.include?("Primer::BlankslateComponent")
           # Don't fix custom blankslates
-          next if code.end_with?("do")
+          next if code.end_with?("do", "|")
 
           line = erb_node.loc.source_line
           indent = line.split("<%=").first.size
@@ -61,7 +61,7 @@ module ERBLint
 
           case pair.key.value.to_sym
           when :title
-            new_blankslate[:slots][:heading][:content] = pair.value.value
+            new_blankslate[:slots][:heading][:content] = extract_value(pair.value)
           when :title_tag
             new_blankslate[:slots][:heading][:tag] = source_value
           when :icon
@@ -73,15 +73,15 @@ module ERBLint
           when :image_alt
             new_blankslate[:slots][:visual_image][:alt] = source_value
           when :description
-            new_blankslate[:slots][:description][:content] = pair.value.value
+            new_blankslate[:slots][:description][:content] = extract_value(pair.value)
           when :button_text
-            new_blankslate[:slots][:primary_action][:content] = pair.value.value
+            new_blankslate[:slots][:primary_action][:content] = extract_value(pair.value)
           when :button_url
             new_blankslate[:slots][:primary_action][:href] = source_value
           when :button_classes
             new_blankslate[:slots][:primary_action][:classes] = source_value
           when :link_text
-            new_blankslate[:slots][:secondary_action][:content] = pair.value.value
+            new_blankslate[:slots][:secondary_action][:content] = extract_value(pair.value)
           when :link_url
             new_blankslate[:slots][:secondary_action][:href] = source_value
           when :large
@@ -140,6 +140,12 @@ module ERBLint
         return string_args if string_args.blank?
 
         "(#{string_args})"
+      end
+
+      def extract_value(value)
+        return value.value if value.type == :str
+
+        "<%= #{value.source} %>"
       end
     end
   end
