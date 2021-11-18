@@ -42,7 +42,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Cameron Dutro*
 
-
 ## 0.0.61
 
 ### New
