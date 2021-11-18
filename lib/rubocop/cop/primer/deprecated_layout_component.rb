@@ -13,7 +13,7 @@ module RuboCop
       # good
       # Primer::Alpha::Layout.new(foo: :deprecated)
       class DeprecatedLayoutComponent < BaseCop
-        MSG = "Use Primer::Alpha::Layout instead. If you have questions please ask in #primer-layout"
+        MSG = "Please try Primer::Alpha::Layout instead."
 
         def_node_matcher :legacy_component?, <<~PATTERN
           (send (const (const nil? :Primer) :LayoutComponent) :new ...)
