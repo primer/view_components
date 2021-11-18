@@ -41,7 +41,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Improve performance of `Classify#call`.
 
     *Cameron Dutro*
-    
+
 
 ## 0.0.61
 
