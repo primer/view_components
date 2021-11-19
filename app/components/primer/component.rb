@@ -89,5 +89,9 @@ module Primer
 
       arguments.except!(key)
     end
+
+    def deny_tag_argument(**arguments)
+      deny_single_argument(:tag, "This component has a fixed tag.", **arguments)
+    end
   end
 end
