@@ -36,6 +36,18 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Josh Klina*
 
+### Updates
+
+* Change spacing in `Blankslate`:
+  * Between `description` and `primary_action` to `32px`.
+  * Between `primary_action` and `secondary_action` to `16px`.
+
+    *Manuel Puyol*
+
+* Improve performance of `Classify#call`.
+
+    *Cameron Dutro*
+
 ## 0.0.61
 
 ### New
