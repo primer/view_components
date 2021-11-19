@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Add linter for tracking deprecated `LayoutComponent` callsites
+
+    *Josh Klina*
+
 ### Updates
 
 * Change spacing in `Blankslate`:
