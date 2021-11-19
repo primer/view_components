@@ -7,7 +7,9 @@ class AllComponentsHaveStoriesTest < Minitest::Test
     Primer::BaseComponent,
     Primer::FlexItemComponent,
     Primer::OcticonSymbolsComponent,
-    Primer::Beta::Breadcrumbs::Item
+    Primer::Beta::Breadcrumbs::Item,
+    Primer::Alpha::Layout::Main,
+    Primer::Alpha::Layout::Sidebar
   ].freeze
 
   COMPONENTS = Primer::Component.descendants - EXCLUDED_COMPONENTS

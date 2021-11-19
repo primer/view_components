@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.0.60)
+    primer_view_components (0.0.61)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (~> 15)
@@ -53,8 +53,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
-      racc (~> 1.4)
-    nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
     octicons (15.2.0)
     puma (5.5.1)

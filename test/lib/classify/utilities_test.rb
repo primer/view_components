@@ -7,7 +7,7 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
 
   def test_supported_key
     assert Primer::Classify::Utilities.supported_key?(:m)
-    refute Primer::Classify::Utilities.supported_key?(:flex)
+    refute Primer::Classify::Utilities.supported_key?(:foo)
   end
 
   def test_supported_value

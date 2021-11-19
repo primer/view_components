@@ -72,14 +72,14 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `align_items` | Symbol | <%= one_of(Primer::Classify::Flex::ALIGN_ITEMS_VALUES) %> |
-    # | `align_self` | Symbol | <%= one_of(Primer::Classify::Flex::ALIGN_SELF_VALUES) %> |
-    # | `direction` | Symbol | <%= one_of(Primer::Classify::Flex::DIRECTION_VALUES) %> |
-    # | `flex` | Integer, Symbol | <%= one_of(Primer::Classify::Flex::FLEX_VALUES) %> |
+    # | `align_items` | Symbol | <%= one_of(Primer::Classify::FLEX_ALIGN_ITEMS_VALUES) %> |
+    # | `align_self` | Symbol | <%= one_of(Primer::Classify::FLEX_ALIGN_SELF_VALUES) %> |
+    # | `direction` | Symbol | <%= one_of(Primer::Classify::FLEX_DIRECTION_VALUES) %> |
+    # | `flex` | Integer, Symbol | <%= one_of(Primer::Classify::FLEX_VALUES) %> |
     # | `flex_grow` | Integer | To enable, set to `0`. |
     # | `flex_shrink` | Integer | To enable, set to `0`. |
-    # | `flex_wrap` | Symbol | <%= one_of(Primer::Classify::Flex::WRAP_MAPPINGS.keys) %> |
-    # | `justify_content` | Symbol | <%= one_of(Primer::Classify::Flex::JUSTIFY_CONTENT_VALUES) %> |
+    # | `flex_wrap` | Symbol | <%= one_of(Primer::Classify::FLEX_WRAP_MAPPINGS.keys) %> |
+    # | `justify_content` | Symbol | <%= one_of(Primer::Classify::FLEX_JUSTIFY_CONTENT_VALUES) %> |
     #
     # ## Grid
     #
@@ -158,7 +158,7 @@ module Primer
 
       @system_arguments[:"data-view-component"] = true
       # Filter out Primer keys so they don't get assigned as HTML attributes
-      @content_tag_args = add_test_selector(@system_arguments).except(*Primer::Classify::VALID_KEYS)
+      @content_tag_args = add_test_selector(@system_arguments).except(*Primer::Classify::Utilities::UTILITIES.keys)
     end
 
     def call
