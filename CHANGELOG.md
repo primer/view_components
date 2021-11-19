@@ -38,6 +38,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+* Update `BlankslateApiMigration` linter to support interpolations.
+
+    *Manuel Puyol*
+
 * Change spacing in `Blankslate`:
   * Between `description` and `primary_action` to `32px`.
   * Between `primary_action` and `secondary_action` to `16px`.
