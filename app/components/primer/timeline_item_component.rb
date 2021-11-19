@@ -27,6 +27,7 @@ module Primer
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :body, lambda { |**system_arguments|
+      deny_tag_argument(**system_arguments)
       system_arguments[:tag] = :div
       system_arguments[:classes] = class_names(
         "TimelineItem-body",
@@ -48,7 +49,7 @@ module Primer
     # @param condensed [Boolean] Reduce the vertical padding and remove the background from the badge item. Most commonly used in commits.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(condensed: false, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:tag] = :div
       @system_arguments[:classes] = class_names(
         "TimelineItem",
@@ -67,7 +68,7 @@ module Primer
       def initialize(icon: nil, **system_arguments)
         @icon = icon
 
-        @system_arguments = system_arguments
+        @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :div
         @system_arguments[:classes] = class_names(
           "TimelineItem-badge",

@@ -22,7 +22,7 @@ module Primer
     # @param button_arguments [Hash] <%= link_to_system_arguments_docs %> for the button element.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(inline: false, button_arguments: {}, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @button_arguments = button_arguments
 
       @system_arguments[:tag] = :span
