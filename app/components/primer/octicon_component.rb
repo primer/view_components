@@ -48,7 +48,7 @@ module Primer
         width: system_arguments[:width]
       )
 
-      @system_arguments = deny_tag_argument(**system_arguments)
+      @system_arguments = system_arguments
       @system_arguments[:tag] = :svg
       @system_arguments[:aria] ||= {}
       @use_symbol = use_symbol
