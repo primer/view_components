@@ -41,6 +41,10 @@ namespace :utilities do
         )
       )["selectors"]["values"]
 
+    custom_utility_data = YAML.load_file(
+      File.join(__dir__, "custom_utilities.yml")
+    )
+
     layout_data =
       JSON.parse(
         File.read(
@@ -111,6 +115,8 @@ namespace :utilities do
     output.transform_values! do |x|
       x.transform_values { |y| y.reverse.drop_while(&:nil?).reverse }
     end
+
+    output.merge!(custom_utility_data)
 
     File.open("lib/primer/classify/utilities.yml", "w") do |f|
       f.puts YAML.dump(output)

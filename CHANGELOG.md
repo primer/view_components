@@ -30,11 +30,27 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Add linter for tracking deprecated `LayoutComponent` callsites
+
+    *Josh Klina*
+
 ### Updates
 
 * Update `BlankslateApiMigration` linter to support interpolations.
 
     *Manuel Puyol*
+
+* Change spacing in `Blankslate`:
+  * Between `description` and `primary_action` to `32px`.
+  * Between `primary_action` and `secondary_action` to `16px`.
+
+    *Manuel Puyol*
+
+* Improve performance of `Classify#call`.
+
+    *Cameron Dutro*
 
 ## 0.0.61
 

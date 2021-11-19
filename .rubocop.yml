@@ -68,3 +68,6 @@ Naming/VariableNumber:
 
 Primer/DeprecatedArguments:
   Enabled: false
+
+Primer/DeprecatedLayoutComponent:
+  Enabled: false
