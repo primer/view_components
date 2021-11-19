@@ -85,7 +85,7 @@ module Primer
 
     def deny_single_argument(key, help_text, **arguments)
       raise ArgumentError, "`#{key}` is an invalid argument. #{help_text}" \
-        if arguments.key?(key) && raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
+        if raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"] && arguments.key?(key)
 
       arguments.except!(key)
     end
