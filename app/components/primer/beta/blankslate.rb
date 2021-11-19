@@ -50,6 +50,7 @@ module Primer
       # @param tag [String]  <%= one_of(Primer::HeadingComponent::TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :title, lambda { |tag:, **system_arguments|
+        deny_tag_argument(**system_arguments)
         system_arguments[:tag] = tag
         system_arguments[:mb] = 1
         system_arguments[:classes] = class_names("h2", system_arguments[:classes])
@@ -64,6 +65,7 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :description, lambda { |**system_arguments|
+        deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :p
 
         Primer::BaseComponent.new(**system_arguments)
@@ -75,6 +77,7 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :primary_action, lambda { |href:, **system_arguments|
+        deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :a
         system_arguments[:href] = href
         system_arguments[:my] = 3
@@ -211,7 +214,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(narrow: false, large: false, spacious: false, border: false, **system_arguments)
         @border = border
-        @system_arguments = system_arguments
+        @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :div
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
