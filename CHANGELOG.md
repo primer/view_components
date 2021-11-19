@@ -42,6 +42,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Cameron Dutro*
 
+### Breaking Changes
+
+* Add a warning to users if they try to use `tag:` parameters on a component where the tag is fixed
+
+    *Owen Niblock*
+
 ## 0.0.61
 
 ### New
