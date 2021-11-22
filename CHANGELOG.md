@@ -52,6 +52,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Cameron Dutro*
 
+### Breaking Change
+
+* Updating to @primer/css@19.0.0 and @primer/primitives@7.1.0. Which removes support for deprecated system color arguments
+
+    *Jon Rohan*
+
 ## 0.0.61
 
 ### New
