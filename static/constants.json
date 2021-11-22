@@ -17,9 +17,9 @@
     "DEFAULT_VARIANT": "default",
     "SCHEME_MAPPINGS": {
       "default": "",
-      "primary": "btn-primary-mktg",
-      "outline": "btn-outline-mktg",
-      "transparent": "btn-transparent"
+      "primary": "btn-signup-mktg",
+      "outline": "btn-muted-mktg",
+      "transparent": "btn-subtle-mktg"
     },
     "SCHEME_OPTIONS": [
       "default",

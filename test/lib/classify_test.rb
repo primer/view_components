@@ -273,7 +273,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("color-border-muted",               { border_color: :muted })
     assert_generated_class("color-border-accent-emphasis",     { border_color: :accent_emphasis })
     assert_generated_class("color-border-success",             { border_color: :success })
-    assert_generated_class("color-border-atttention-emphasis", { border_color: :attention_emphasis })
+    assert_generated_class("color-border-attention-emphasis", { border_color: :attention_emphasis })
     assert_generated_class("color-border-danger",              { border_color: :danger })
   end
 
