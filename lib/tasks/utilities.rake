@@ -13,8 +13,6 @@ namespace :utilities do
       /^anim\b/,
       /^color-bg\b/,
       /^color-border\b/,
-      /^color-icon\b/,
-      /^color-text\b/,
       /^color-fg\b/,
       /^col\b/,
       /^container\b/,
@@ -40,6 +38,10 @@ namespace :utilities do
           File.expand_path(File.join(*%w[.. .. node_modules @primer css dist stats utilities.json]), __dir__)
         )
       )["selectors"]["values"]
+
+    custom_utility_data = YAML.load_file(
+      File.join(__dir__, "custom_utilities.yml")
+    )
 
     layout_data =
       JSON.parse(
@@ -111,6 +113,8 @@ namespace :utilities do
     output.transform_values! do |x|
       x.transform_values { |y| y.reverse.drop_while(&:nil?).reverse }
     end
+
+    output.merge!(custom_utility_data)
 
     File.open("lib/primer/classify/utilities.yml", "w") do |f|
       f.puts YAML.dump(output)

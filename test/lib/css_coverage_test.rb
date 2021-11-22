@@ -4,17 +4,9 @@ require "test_helper"
 
 class CssCoverageTest < Minitest::Test
   def setup
-    # we want only the preloadable classes
-    Primer::Classify::Cache.instance.clear!
-    Primer::Classify::Cache.instance.preload!
-
-    @classes_from_classify_cache =
-      Primer::Classify::Cache
-      .instance
-      .instance_variable_get(:@lookup)
-      .values
-      .flat_map(&:values)
-      .flat_map(&:values)
+    @classes_from_utilities =
+      Primer::Classify::Utilities::UTILITIES
+      .flat_map { |_, values| values.flat_map { |_, v| v } }
       .map { |k| ".#{k}" }
       .uniq
 
@@ -27,19 +19,10 @@ class CssCoverageTest < Minitest::Test
         )
       )
 
-    # TODO: remove these
     @allowed_missing_classes_for_now = [
-      ".m-sm-auto",
-      ".p-sm-responsive",
-      ".m-md-auto",
-      ".p-md-responsive",
-      ".m-lg-auto",
-      ".p-lg-responsive",
-      ".m-xl-auto",
-      ".p-xl-responsive",
-      ".hx_Subhead--responsive",
       # used to showcase custom classes in component docs
       ".custom-class",
+      ".f00",
       "."
     ]
 
@@ -60,7 +43,7 @@ class CssCoverageTest < Minitest::Test
   end
 
   def test_classify_does_not_generate_primer_css_classes_that_do_not_exist
-    assert_empty(@classes_from_classify_cache - @css_data - @allowed_missing_classes_for_now)
+    assert_empty(@classes_from_utilities - @css_data - @allowed_missing_classes_for_now)
   end
 
   def test_docs_do_not_generate_primer_css_classes_that_do_not_exist

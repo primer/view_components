@@ -32,6 +32,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### New
 
+<<<<<<< HEAD
 * Add new schemes to Label
 
     *simurai*
@@ -41,6 +42,103 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Deprecate Label `info` and `warning` schemes
 
     *simurai*
+=======
+* Add linter for tracking deprecated `LayoutComponent` callsites
+
+    *Josh Klina*
+
+### Updates
+
+* Update `BlankslateApiMigration` linter to support interpolations.
+
+    *Manuel Puyol*
+
+* Change spacing in `Blankslate`:
+  * Between `description` and `primary_action` to `32px`.
+  * Between `primary_action` and `secondary_action` to `16px`.
+
+    *Manuel Puyol*
+
+* Improve performance of `Classify#call`.
+
+    *Cameron Dutro*
+
+### Breaking Change
+
+* Updating to @primer/css@19.0.0 and @primer/primitives@7.1.0. Which removes support for deprecated system color arguments
+
+    *Jon Rohan*
+
+## 0.0.61
+
+### New
+
+* Adding new Alpha component: `Layout` with `main` and `sidebar` slots
+
+    *Cameron Dutro*
+
+* Add a two-column layout linter.
+
+    *Cameron Dutro*
+
+* Add the `HellipButton` component
+
+    *Amélia Chavot*, *Owen Niblock*
+
+### Updates
+
+* Bump Storybook version to include Skip to Content links for keyboard auditors
+
+    *Katie Foster @inkblotty*
+
+* Update the `HiddenTextExpander` component to use the `HellipButton`.
+
+    *Amélia Chavot*, *Owen Niblock*
+
+### Misc
+
+* Fix components not rendering in Storybook because of kebab case arguments.
+
+    *Amélia Chavot*, *Manuel Puyol*, *Owen Niblock*
+
+* Fix a typo on a command on the contribution page.
+
+    *Amélia Chavot*, *Owen Niblock*
+
+### Bug Fixes
+
+* Fix issue where tags were not self-closing when they are void elements
+
+    *Owen Niblock*
+
+### Deprecations
+
+* Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
+
+    *Manuel Puyol*
+
+### Breaking Changes
+
+* Require an `aria-label` to be provided for the `HiddenTextExpander` component.
+
+    *Amélia Chavot*, *Owen Niblock*
+
+* Rename `force_system_arguments` to `raise_on_invalid_options` to better reflect its functionality
+
+    *Owen Niblock*
+
+* Renamed `Blankslate` `title` slot to `heading`.
+
+    *Manuel Puyol*
+
+* Removed `Blankslate` `large` variant.
+
+    *Manuel Puyol*
+
+* Renamed `Blankslate` `graphic` slot to `visual`.
+
+    *Manuel Puyol*
+>>>>>>> main
 
 ## 0.0.60
 
@@ -83,12 +181,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Removes unwanted bottom border from active tab of `Alpha::TabNav`.
 
     *Ned Schwartz*
-
-### Deprecations
-
-* Deprecate `Primer::BlankslateComponent` in favor of `Primer::Beta::Blankslate`.
-
-    *Manuel Puyol*
 
 ### Breaking changes
 
@@ -553,7 +645,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
-* Added a changelog authoring guide to `CHANGELOG.md`.
+* Add a changelog authoring guide to `CHANGELOG.md`.
 
     *Amélia Chavot*
 

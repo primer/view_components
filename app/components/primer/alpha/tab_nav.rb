@@ -101,7 +101,7 @@ module Primer
       #   <% end %>
       #
       # @example Customizing the body
-      #   <%= render(Primer::Alpha::TabNav.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :info })) do |c| %>
+      #   <%= render(Primer::Alpha::TabNav.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :accent_emphasis })) do |c| %>
       #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
       #     <% c.tab(href: "#") { "Tab 2" } %>
       #     <% c.tab(href: "#") { "Tab 3" } %>

@@ -30,9 +30,9 @@ class Primer::ViewComponents::ConstantsTest < Minitest::Test
 
     assert_equal(
       scheme_mappings, {
-        "btn-primary-mktg" => "primary",
-        "btn-outline-mktg" => "outline",
-        "btn-transparent" => "transparent"
+        "btn-signup-mktg" => "primary",
+        "btn-muted-mktg" => "outline",
+        "btn-subtle-mktg" => "transparent"
       }
     )
   end
@@ -47,9 +47,9 @@ class Primer::ViewComponents::ConstantsTest < Minitest::Test
     assert_equal(
       scheme_mappings, {
         "default" => "",
-        "primary" => "btn-primary-mktg",
-        "outline" => "btn-outline-mktg",
-        "transparent" => "btn-transparent"
+        "primary" => "btn-signup-mktg",
+        "outline" => "btn-muted-mktg",
+        "transparent" => "btn-subtle-mktg"
       }
     )
   end
@@ -63,9 +63,9 @@ class Primer::ViewComponents::ConstantsTest < Minitest::Test
 
     assert_equal(
       scheme_mappings, {
-        "btn-primary-mktg" => ":primary",
-        "btn-outline-mktg" => ":outline",
-        "btn-transparent" => ":transparent"
+        "btn-signup-mktg" => ":primary",
+        "btn-muted-mktg" => ":outline",
+        "btn-subtle-mktg" => ":transparent"
       }
     )
   end

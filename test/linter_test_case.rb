@@ -46,12 +46,14 @@ class LinterTestCase < Minitest::Test
   end
 
   def corrected_content
-    source = processed_source
+    @corrected_content ||= begin
+      source = processed_source
 
-    @linter.run(source)
-    corrector = ERBLint::Corrector.new(source, offenses)
+      @linter.run(source)
+      corrector = ERBLint::Corrector.new(source, offenses)
 
-    corrector.corrected_content
+      corrector.corrected_content
+    end
   end
 
   def linter_with_override

@@ -62,9 +62,9 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `bg` | Symbol | Background color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:canvas`, `:canvas_inset`, `:canvas_inverse`, `:danger`, `:danger_emphasis`, `:danger_inverse`, `:default`, `:done`, `:done_emphasis`, `:emphasis`, `:info`, `:info_inverse`, `:inset`, `:overlay`, `:primary`, `:secondary`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, `:success_emphasis`, `:success_inverse`, `:tertiary`, `:warning`, or `:warning_inverse`. |
-| `border_color` | Symbol | Border color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:info`, `:inverse`, `:muted`, `:primary`, `:secondary`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, `:success_emphasis`, `:tertiary`, or `:warning`. |
-| `color` | Symbol | Text color. One of `:accent`, `:attention`, `:danger`, `:default`, `:done`, `:icon_danger`, `:icon_info`, `:icon_primary`, `:icon_secondary`, `:icon_success`, `:icon_tertiary`, `:icon_warning`, `:inherit`, `:muted`, `:on_emphasis`, `:severe`, `:sponsors`, `:subtle`, `:success`, `:text_danger`, `:text_inverse`, `:text_link`, `:text_primary`, `:text_secondary`, `:text_success`, `:text_tertiary`, `:text_warning`, or `:text_white`. |
+| `bg` | Symbol | Background color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:emphasis`, `:inset`, `:overlay`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, or `:success_emphasis`. |
+| `border_color` | Symbol | Border color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:muted`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, or `:success_emphasis`. |
+| `color` | Symbol | Text color. One of `:accent`, `:attention`, `:danger`, `:default`, `:done`, `:inherit`, `:muted`, `:on_emphasis`, `:severe`, `:sponsors`, `:subtle`, or `:success`. |
 
 ## Flex
 

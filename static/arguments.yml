@@ -29,6 +29,28 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Layout
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout.rb
+  parameters:
+  - name: stacking_breakpoint
+    type: Symbol
+    default: "`:md`"
+    description: When the `Layout` should change from rows into columns. One of `:lg`,
+      `:md`, or `:sm`.
+  - name: first_in_source
+    type: Symbol
+    default: "`:sidebar`"
+    description: Which element to render first in the HTML. This will change the keyboard
+      navigation order. One of `:main` and `:sidebar`.
+  - name: gutter
+    type: Symbol
+    default: "`:default`"
+    description: The amount of space between the main section and the sidebar. One
+      of `:condensed`, `:default`, `:none`, or `:spacious`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: TabNav
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tab_nav.rb
   parameters:
@@ -237,15 +259,11 @@
   - name: narrow
     type: Boolean
     default: "`false`"
-    description: Adds a maximum width to the Blankslate.
-  - name: large
-    type: Boolean
-    default: "`false`"
-    description: Increases the font size in the Blankslate.
+    description: Adds a maximum width of `485px` to the Blankslate.
   - name: spacious
     type: Boolean
     default: "`false`"
-    description: Increases the vertical padding.
+    description: Increases the padding from `32px` to `80px 40px`.
   - name: border
     type: Boolean
     default: "`false`"
@@ -536,6 +554,17 @@
     type: String
     default: N/A
     description: One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: HellipButton
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/hellip_button.rb
+  parameters:
+  - name: inline
+    type: Boolean
+    default: "`false`"
+    description: Whether or not the button is inline.
   - name: system_arguments
     type: Hash
     default: N/A
