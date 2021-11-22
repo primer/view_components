@@ -163,9 +163,9 @@ module RuboCop
 
           color = case args[:color]
                   when :text_white
-                    :text_white
+                    :on_emphasis
                   when :text_link
-                    :icon_info
+                    :accent
                   when Symbol
                     args[:color].to_s.gsub("text_", "icon_").to_sym
                   end

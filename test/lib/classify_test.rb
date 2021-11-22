@@ -161,23 +161,13 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_color
-    assert_generated_class("color-text-inverse",   { color: :text_inverse })
-    assert_generated_class("color-text-primary",   { color: :text_primary })
-    assert_generated_class("color-text-secondary", { color: :text_secondary })
-    assert_generated_class("color-text-tertiary",  { color: :text_tertiary })
-    assert_generated_class("color-text-link",      { color: :text_link })
-    assert_generated_class("color-text-success",   { color: :text_success })
-    assert_generated_class("color-text-warning",   { color: :text_warning })
-    assert_generated_class("color-text-danger",    { color: :text_danger })
-    assert_generated_class("color-text-white",     { color: :text_white })
-
-    assert_generated_class("color-icon-primary",   { color: :icon_primary })
-    assert_generated_class("color-icon-secondary", { color: :icon_secondary })
-    assert_generated_class("color-icon-tertiary",  { color: :icon_tertiary })
-    assert_generated_class("color-icon-info",      { color: :icon_info })
-    assert_generated_class("color-icon-success",   { color: :icon_success })
-    assert_generated_class("color-icon-warning",   { color: :icon_warning })
-    assert_generated_class("color-icon-danger",    { color: :icon_danger })
+    assert_generated_class("color-fg-on-emphasis", { color: :on_emphasis })
+    assert_generated_class("color-fg-default",     { color: :default })
+    assert_generated_class("color-fg-muted",       { color: :muted })
+    assert_generated_class("color-fg-accent",      { color: :accent })
+    assert_generated_class("color-fg-success",     { color: :success })
+    assert_generated_class("color-fg-attention",   { color: :attention })
+    assert_generated_class("color-fg-danger",      { color: :danger })
 
     err = assert_raises ArgumentError do
       Primer::Classify.call(color: :not_a_color)
@@ -187,21 +177,18 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_bg_colors
-    assert_generated_class("color-bg-primary", { bg: :primary })
-    assert_generated_class("color-bg-secondary", { bg: :secondary })
-    assert_generated_class("color-bg-tertiary", { bg: :tertiary })
-    assert_generated_class("color-bg-canvas-inverse", { bg: :canvas_inverse })
-    assert_generated_class("color-bg-info", { bg: :info })
-    assert_generated_class("color-bg-info-inverse", { bg: :info_inverse })
-    assert_generated_class("color-bg-success", { bg: :success })
-    assert_generated_class("color-bg-success-inverse", { bg: :success_inverse })
-    assert_generated_class("color-bg-warning", { bg: :warning })
-    assert_generated_class("color-bg-warning-inverse", { bg: :warning_inverse })
-    assert_generated_class("color-bg-danger", { bg: :danger })
-    assert_generated_class("color-bg-danger-inverse", { bg: :danger_inverse })
-    assert_generated_class("color-bg-canvas", { bg: :canvas })
-    assert_generated_class("color-bg-canvas-inset", { bg: :canvas_inset })
-    assert_generated_class("color-bg-overlay", { bg: :overlay })
+    assert_generated_class("color-bg-default",            { bg: :default })
+    assert_generated_class("color-bg-subtle",             { bg: :subtle })
+    assert_generated_class("color-bg-emphasis",           { bg: :emphasis })
+    assert_generated_class("color-bg-accent",             { bg: :accent })
+    assert_generated_class("color-bg-accent-emphasis",    { bg: :accent_ephasis })
+    assert_generated_class("color-bg-success",            { bg: :success })
+    assert_generated_class("color-bg-success-emphasis",   { bg: :success_emphasis })
+    assert_generated_class("color-bg-attention",          { bg: :attention })
+    assert_generated_class("color-bg-attention-emphasis", { bg: :attention_emphasis })
+    assert_generated_class("color-bg-danger",             { bg: :danger })
+    assert_generated_class("color-bg-danger-emphasis",    { bg: :danger_emphasis })
+    assert_generated_class("color-bg-overlay",            { bg: :overlay })
 
     err = assert_raises ArgumentError do
       Primer::Classify.call(bg: :not_a_color)
@@ -282,14 +269,12 @@ class PrimerClassifyTest < Minitest::Test
   end
 
   def test_border_color
-    assert_generated_class("color-border-primary",   { border_color: :primary })
-    assert_generated_class("color-border-secondary", { border_color: :secondary })
-    assert_generated_class("color-border-tertiary",  { border_color: :tertiary })
-    assert_generated_class("color-border-info",      { border_color: :info })
-    assert_generated_class("color-border-success",   { border_color: :success })
-    assert_generated_class("color-border-warning",   { border_color: :warning })
-    assert_generated_class("color-border-danger",    { border_color: :danger })
-    assert_generated_class("color-border-inverse",   { border_color: :inverse })
+    assert_generated_class("color-border-default",             { border_color: :default })
+    assert_generated_class("color-border-muted",               { border_color: :muted })
+    assert_generated_class("color-border-accent-emphasis",     { border_color: :accent_ephasis })
+    assert_generated_class("color-border-success",             { border_color: :success })
+    assert_generated_class("color-border-atttention-emphasis", { border_color: :attention_emphasis })
+    assert_generated_class("color-border-danger",              { border_color: :danger })
   end
 
   def test_rounded
