@@ -5,7 +5,7 @@ require "test_helper"
 class PrimerClassifyValidationTest < Minitest::Test
   def test_invalid?
     assert_invalid("d-block")
-    assert_invalid("color-text-primary")
+    assert_invalid("color-fg-default")
     assert_valid("custom-class")
   end
 

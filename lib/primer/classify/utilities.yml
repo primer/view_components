@@ -47,38 +47,6 @@
   - color-fg-on-emphasis
   :inherit:
   - color-fg-inherit
-  :text_primary:
-  - color-text-primary
-  :text_secondary:
-  - color-text-secondary
-  :text_tertiary:
-  - color-text-tertiary
-  :text_link:
-  - color-text-link
-  :text_success:
-  - color-text-success
-  :text_warning:
-  - color-text-warning
-  :text_danger:
-  - color-text-danger
-  :text_inverse:
-  - color-text-inverse
-  :text_white:
-  - color-text-white
-  :icon_primary:
-  - color-icon-primary
-  :icon_secondary:
-  - color-icon-secondary
-  :icon_tertiary:
-  - color-icon-tertiary
-  :icon_info:
-  - color-icon-info
-  :icon_danger:
-  - color-icon-danger
-  :icon_success:
-  - color-icon-success
-  :icon_warning:
-  - color-icon-warning
 :bg:
   :default:
   - color-bg-default
@@ -118,30 +86,6 @@
   - color-bg-sponsors
   :sponsors_emphasis:
   - color-bg-sponsors-emphasis
-  :canvas:
-  - color-bg-canvas
-  :canvas_inverse:
-  - color-bg-canvas-inverse
-  :canvas_inset:
-  - color-bg-canvas-inset
-  :primary:
-  - color-bg-primary
-  :secondary:
-  - color-bg-secondary
-  :tertiary:
-  - color-bg-tertiary
-  :info:
-  - color-bg-info
-  :info_inverse:
-  - color-bg-info-inverse
-  :danger_inverse:
-  - color-bg-danger-inverse
-  :success_inverse:
-  - color-bg-success-inverse
-  :warning:
-  - color-bg-warning
-  :warning_inverse:
-  - color-bg-warning-inverse
 :border_color:
   :default:
   - color-border-default
@@ -177,18 +121,6 @@
   - color-border-sponsors
   :sponsors_emphasis:
   - color-border-sponsors-emphasis
-  :primary:
-  - color-border-primary
-  :secondary:
-  - color-border-secondary
-  :tertiary:
-  - color-border-tertiary
-  :inverse:
-  - color-border-inverse
-  :info:
-  - color-border-info
-  :warning:
-  - color-border-warning
 :position:
   :static:
   - position-static

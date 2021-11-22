@@ -54,48 +54,48 @@ Use [Box](/components/box) instead.
 
 ### Default
 
-<Example src="<div data-view-component='true' class='color-bg-tertiary d-flex'>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 1</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 2</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 3</div></div>" />
+<Example src="<div data-view-component='true' class='color-bg-subtle d-flex'>  <div data-view-component='true' class='border p-5 color-bg-subtle'>Item 1</div>  <div data-view-component='true' class='border p-5 color-bg-subtle'>Item 2</div>  <div data-view-component='true' class='border p-5 color-bg-subtle'>Item 3</div></div>" />
 
 ```erb
-<%= render(Primer::FlexComponent.new(bg: :tertiary)) do %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 1" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 2" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 3" } %>
+<%= render(Primer::FlexComponent.new(bg: :subtle)) do %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 1" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 2" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 3" } %>
 <% end %>
 ```
 
 ### Justify center
 
-<Example src="<div data-view-component='true' class='flex-justify-center color-bg-tertiary d-flex'>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 1</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 2</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 3</div></div>" />
+<Example src="<div data-view-component='true' class='flex-justify-center color-bg-subtle d-flex'>  <div data-view-component='true' class='border p-5 color-bg-subtle'>Item 1</div>  <div data-view-component='true' class='border p-5 color-bg-subtle'>Item 2</div>  <div data-view-component='true' class='border p-5 color-bg-subtle'>Item 3</div></div>" />
 
 ```erb
-<%= render(Primer::FlexComponent.new(justify_content: :center, bg: :tertiary)) do %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 1" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 2" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 3" } %>
+<%= render(Primer::FlexComponent.new(justify_content: :center, bg: :subtle)) do %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 1" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 2" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 3" } %>
 <% end %>
 ```
 
 ### Align end
 
-<Example src="<div data-view-component='true' class='flex-items-end color-bg-tertiary d-flex'>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 1</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 2</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 3</div></div>" />
+<Example src="<div data-view-component='true' class='flex-items-end color-bg-subtle d-flex'>  <div data-view-component='true' class='border p-5 color-bg-subtle'>Item 1</div>  <div data-view-component='true' class='border p-5 color-bg-subtle'>Item 2</div>  <div data-view-component='true' class='border p-5 color-bg-subtle'>Item 3</div></div>" />
 
 ```erb
-<%= render(Primer::FlexComponent.new(align_items: :end, bg: :tertiary)) do %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 1" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 2" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 3" } %>
+<%= render(Primer::FlexComponent.new(align_items: :end, bg: :subtle)) do %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 1" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 2" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 3" } %>
 <% end %>
 ```
 
 ### Direction column
 
-<Example src="<div data-view-component='true' class='color-bg-tertiary flex-column d-flex'>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 1</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 2</div>  <div data-view-component='true' class='border p-5 color-bg-secondary'>Item 3</div></div>" />
+<Example src="<div data-view-component='true' class='color-bg-subtle flex-column d-flex'>  <div data-view-component='true' class='border p-5 color-bg-subtle'>Item 1</div>  <div data-view-component='true' class='border p-5 color-bg-subtle'>Item 2</div>  <div data-view-component='true' class='border p-5 color-bg-subtle'>Item 3</div></div>" />
 
 ```erb
-<%= render(Primer::FlexComponent.new(direction: :column, bg: :tertiary)) do %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 1" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 2" } %>
-  <%= render(Primer::BoxComponent.new(p: 5, bg: :secondary, classes: "border")) { "Item 3" } %>
+<%= render(Primer::FlexComponent.new(direction: :column, bg: :subtle)) do %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 1" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 2" } %>
+  <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 3" } %>
 <% end %>
 ```
