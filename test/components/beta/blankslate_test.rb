@@ -73,7 +73,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
       c.description { "Description" }
     end
 
-    assert_selector("p", text: "Description")
+    assert_selector("div", text: "Description")
   end
 
   def test_renders_a_blankslate_component_with_a_priamry_action

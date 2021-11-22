@@ -54,8 +54,6 @@ GEM
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
-    nokogiri (1.12.5-x86_64-darwin)
-      racc (~> 1.4)
     octicons (15.2.0)
     puma (5.5.1)
       nio4r (~> 2.0)

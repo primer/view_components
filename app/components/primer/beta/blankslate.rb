@@ -64,7 +64,7 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :description, lambda { |**system_arguments|
-        system_arguments[:tag] = :p
+        system_arguments[:tag] = :div
 
         Primer::BaseComponent.new(**system_arguments)
       }
@@ -79,7 +79,7 @@ module Primer
       renders_one :primary_action, lambda { |href:, **system_arguments|
         system_arguments[:tag] = :a
         system_arguments[:href] = href
-        system_arguments[:my] = 3
+        system_arguments[:mt] = 5
         system_arguments[:variant] = :medium
         system_arguments[:scheme] ||= :primary
 

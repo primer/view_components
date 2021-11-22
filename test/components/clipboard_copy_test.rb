@@ -9,8 +9,8 @@ class PrimerClipboardCopyTest < Minitest::Test
     render_inline Primer::ClipboardCopy.new(value: "my-branch-name", "aria-label": "Copy branch name to clipboard")
 
     assert_selector("clipboard-copy[data-view-component][value=\"my-branch-name\"]") do
-      assert_selector("svg[class=\"octicon octicon-copy\"]")
-      assert_selector("svg[style=\"display: none;\"][class=\"octicon octicon-check color-fg-success\"]", { visible: false })
+      assert_selector("svg.octicon.octicon-copy")
+      assert_selector("svg.octicon.octicon-check.color-fg-success", visible: false)
     end
   end
 
@@ -28,8 +28,8 @@ class PrimerClipboardCopyTest < Minitest::Test
     render_inline Primer::ClipboardCopy.new(for: "element-id", "aria-label": "Copy branch name to clipboard")
 
     assert_selector("clipboard-copy[data-view-component][for=\"element-id\"]") do
-      assert_selector("svg[class=\"octicon octicon-copy\"]")
-      assert_selector("svg[style=\"display: none;\"][class=\"octicon octicon-check color-fg-success\"]", { visible: false })
+      assert_selector("svg.octicon.octicon-copy")
+      assert_selector("svg.octicon.octicon-check.color-fg-success", visible: false)
     end
   end
 end
