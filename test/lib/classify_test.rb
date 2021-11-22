@@ -181,7 +181,7 @@ class PrimerClassifyTest < Minitest::Test
     assert_generated_class("color-bg-subtle",             { bg: :subtle })
     assert_generated_class("color-bg-emphasis",           { bg: :emphasis })
     assert_generated_class("color-bg-accent",             { bg: :accent })
-    assert_generated_class("color-bg-accent-emphasis",    { bg: :accent_ephasis })
+    assert_generated_class("color-bg-accent-emphasis",    { bg: :accent_emphasis })
     assert_generated_class("color-bg-success",            { bg: :success })
     assert_generated_class("color-bg-success-emphasis",   { bg: :success_emphasis })
     assert_generated_class("color-bg-attention",          { bg: :attention })
@@ -271,7 +271,7 @@ class PrimerClassifyTest < Minitest::Test
   def test_border_color
     assert_generated_class("color-border-default",             { border_color: :default })
     assert_generated_class("color-border-muted",               { border_color: :muted })
-    assert_generated_class("color-border-accent-emphasis",     { border_color: :accent_ephasis })
+    assert_generated_class("color-border-accent-emphasis",     { border_color: :accent_emphasis })
     assert_generated_class("color-border-success",             { border_color: :success })
     assert_generated_class("color-border-atttention-emphasis", { border_color: :attention_emphasis })
     assert_generated_class("color-border-danger",              { border_color: :danger })
