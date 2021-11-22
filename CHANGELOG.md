@@ -32,20 +32,13 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### New
 
-<<<<<<< HEAD
-* Add new schemes to Label
-
-    *simurai*
-
-### Deprecations
-
-* Deprecate Label `info` and `warning` schemes
-
-    *simurai*
-=======
 * Add linter for tracking deprecated `LayoutComponent` callsites
 
     *Josh Klina*
+
+* Add new schemes to Label
+
+    *simurai*
 
 ### Updates
 
@@ -68,6 +61,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Updating to @primer/css@19.0.0 and @primer/primitives@7.1.0. Which removes support for deprecated system color arguments
 
     *Jon Rohan*
+
+* Deprecate Label `info` and `warning` schemes
+
+    *simurai*
 
 ## 0.0.61
 
@@ -138,7 +135,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Renamed `Blankslate` `graphic` slot to `visual`.
 
     *Manuel Puyol*
->>>>>>> main
 
 ## 0.0.60
 
