@@ -525,10 +525,10 @@
       "severe": "Label--severe",
       "done": "Label--done",
       "sponsors": "Label--sponsors",
-      "info": "Label--accent",
-      "warning": "Label--attention",
-      "orange": "Label--severe",
-      "purple": "Label--done"
+      "info": "Label--info",
+      "warning": "Label--warning",
+      "orange": "Label--orange",
+      "purple": "Label--purple"
     },
     "SCHEME_OPTIONS": [
       "default",
