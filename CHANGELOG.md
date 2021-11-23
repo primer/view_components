@@ -38,7 +38,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Add functional `Label` schemes: `accent`, `attention`, `severe`, `done` and `sponsors`.
 
-    *Manuel Puyol*
+    *Manuel Puyol, Simon Luthi*
 
 * Add linter to migrate from deprecated `Label` schemes to the new ones.
 
@@ -74,7 +74,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 * Deprecate `Label` schemes `info` and `warning` in favor of `accent` and `attention`.
 
-    *Manuel Puyol*
+    *Manuel Puyol, Simon Luthi*
 
 ## 0.0.61
 
