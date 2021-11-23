@@ -20,7 +20,7 @@ module Primer
     # @param inline [Boolean] Whether or not the button is inline.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(inline: false, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
 
       validate_aria_label
 

@@ -52,7 +52,11 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Cameron Dutro*
 
-### Breaking Change
+### Breaking Changes
+
+* Add a warning to users if they try to use `tag:` parameters on a component where the tag is fixed
+
+    *Owen Niblock*
 
 * Updating to @primer/css@19.0.0 and @primer/primitives@7.1.0. Which removes support for deprecated system color arguments
 

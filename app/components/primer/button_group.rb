@@ -45,7 +45,7 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(variant: Primer::ButtonComponent::DEFAULT_VARIANT, **system_arguments)
       @variant = variant
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:tag] = :div
 
       @system_arguments[:classes] = class_names(

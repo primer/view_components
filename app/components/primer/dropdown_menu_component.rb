@@ -42,7 +42,7 @@ module Primer
     def initialize(direction: DIRECTION_DEFAULT, scheme: SCHEME_DEFAULT, header: nil, **system_arguments)
       @header = header
       @direction = direction
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
 
       @system_arguments[:tag] = "details-menu"
       @system_arguments[:role] = "menu"

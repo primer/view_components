@@ -11,6 +11,7 @@ module Primer
     # @param bg [Symbol] The background color
     # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
     renders_many :items, lambda { |percentage: 0, bg: :success_emphasis, **system_arguments|
+      deny_tag_argument(**system_arguments)
       system_arguments[:tag] = :span
       system_arguments[:bg] = bg
       system_arguments[:style] = join_style_arguments(system_arguments[:style], "width: #{percentage}%;")
@@ -53,7 +54,7 @@ module Primer
     # @param size [Symbol] <%= one_of(Primer::ProgressBarComponent::SIZE_OPTIONS) %> Increases height.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(size: SIZE_DEFAULT, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Progress",

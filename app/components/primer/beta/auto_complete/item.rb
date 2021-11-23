@@ -20,7 +20,7 @@ module Primer
         # @param disabled [Boolean] Whether the item is disabled.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(value:, selected: false, disabled: false, **system_arguments)
-          @system_arguments = system_arguments
+          @system_arguments = deny_tag_argument(**system_arguments)
           @system_arguments[:tag] = :li
           @system_arguments[:role] = :option
           @system_arguments[:"data-autocomplete-value"] = value

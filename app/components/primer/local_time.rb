@@ -33,7 +33,7 @@ module Primer
     # @param time_zone_name [Symbol] <%= one_of(Primer::LocalTime::TEXT_TYPE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(datetime:, initial_text: nil, weekday: DEFAULT_TEXT_TYPE, year: DEFAULT_DIGIT_TYPE, month: DEFAULT_TEXT_TYPE, day: DEFAULT_DIGIT_TYPE, hour: DEFAULT_DIGIT_TYPE, minute: DEFAULT_DIGIT_TYPE, second: DEFAULT_DIGIT_TYPE, time_zone_name: DEFAULT_TEXT_TYPE, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
 
       @datetime = datetime
 
