@@ -10,7 +10,8 @@ module Primer
     # @param percentage [Integer] The percent complete
     # @param bg [Symbol] The background color
     # @param kwargs [Hash] The same arguments as <%= link_to_system_arguments_docs %>.
-    renders_many :items, lambda { |percentage: 0, bg: :success_inverse, **system_arguments|
+    renders_many :items, lambda { |percentage: 0, bg: :success_emphasis, **system_arguments|
+      deny_tag_argument(**system_arguments)
       system_arguments[:tag] = :span
       system_arguments[:bg] = bg
       system_arguments[:style] = join_style_arguments(system_arguments[:style], "width: #{percentage}%;")
@@ -35,25 +36,25 @@ module Primer
     #
     # @example Small
     #   <%= render(Primer::ProgressBarComponent.new(size: :small)) do |component| %>
-    #     <% component.item(bg: :info_inverse, percentage: 50) %>
+    #     <% component.item(bg: :accent_emphasis, percentage: 50) %>
     #   <% end %>
     #
     # @example Large
     #   <%= render(Primer::ProgressBarComponent.new(size: :large)) do |component| %>
-    #     <% component.item(bg: :danger_inverse, percentage: 75) %>
+    #     <% component.item(bg: :danger_emphasis, percentage: 75) %>
     #   <% end %>
     #
     # @example Multiple items
     #   <%= render(Primer::ProgressBarComponent.new) do |component| %>
     #     <% component.item(percentage: 10) %>
-    #     <% component.item(bg: :info_inverse, percentage: 20) %>
-    #     <% component.item(bg: :danger_inverse, percentage: 30) %>
+    #     <% component.item(bg: :accent_emphasis, percentage: 20) %>
+    #     <% component.item(bg: :danger_emphasis, percentage: 30) %>
     #   <% end %>
     #
     # @param size [Symbol] <%= one_of(Primer::ProgressBarComponent::SIZE_OPTIONS) %> Increases height.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(size: SIZE_DEFAULT, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
         "Progress",

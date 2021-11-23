@@ -19,7 +19,7 @@ module Primer
     # @param type [Symbol] <%= one_of(Primer::CloseButton::TYPE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(type: DEFAULT_TYPE, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:tag] = :button
       @system_arguments[:block] = false
       @system_arguments[:type] = fetch_or_fallback(TYPE_OPTIONS, type, DEFAULT_TYPE)

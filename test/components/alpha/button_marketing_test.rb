@@ -33,7 +33,7 @@ class PrimerAlphaButtonMarketingTest < Minitest::Test
   def test_renders_with_the_css_class_mapping_to_the_provided_type
     render_inline(Primer::Alpha::ButtonMarketing.new(scheme: :primary)) { "content" }
 
-    assert_selector(".btn-mktg.btn-primary-mktg")
+    assert_selector(".btn-mktg.btn-signup-mktg")
   end
 
   def test_renders_with_the_css_class_variant_mapping_to_the_provided_variant

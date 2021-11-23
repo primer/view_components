@@ -12,7 +12,7 @@ module Primer
     # @param micro [Boolean] If true then the text will be formatted in "micro" mode, using as few characters as possible
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(time:, micro: false, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:datetime] = time.utc.iso8601
       @system_arguments[:classes] = class_names("no-wrap", @system_arguments[:classes])
       @system_arguments[:tag] = "time-ago"

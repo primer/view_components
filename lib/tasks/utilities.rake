@@ -13,8 +13,6 @@ namespace :utilities do
       /^anim\b/,
       /^color-bg\b/,
       /^color-border\b/,
-      /^color-icon\b/,
-      /^color-text\b/,
       /^color-fg\b/,
       /^col\b/,
       /^container\b/,

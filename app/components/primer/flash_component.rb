@@ -9,6 +9,7 @@ module Primer
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :action, lambda { |**system_arguments|
+      deny_tag_argument(**system_arguments)
       system_arguments[:tag] = :div
       system_arguments[:classes] = class_names(system_arguments[:classes], "flash-action")
 
@@ -54,7 +55,7 @@ module Primer
     def initialize(full: false, spacious: false, dismissible: false, icon: nil, scheme: DEFAULT_SCHEME, **system_arguments)
       @icon = icon
       @dismissible = dismissible
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:tag] = :div
       @system_arguments[:classes] = class_names(
         @system_arguments[:classes],
