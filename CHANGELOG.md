@@ -30,7 +30,17 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Add linter for tracking deprecated `LayoutComponent` callsites
+
+    *Josh Klina*
+
 ### Updates
+
+* Update `BlankslateApiMigration` linter to support interpolations.
+
+    *Manuel Puyol*
 
 * Change spacing in `Blankslate`:
   * Between `description` and `primary_action` to `32px`.
@@ -47,6 +57,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Add a warning to users if they try to use `tag:` parameters on a component where the tag is fixed
 
     *Owen Niblock*
+
+* Updating to @primer/css@19.0.0 and @primer/primitives@7.1.0. Which removes support for deprecated system color arguments
+
+    *Jon Rohan*
 
 ## 0.0.61
 

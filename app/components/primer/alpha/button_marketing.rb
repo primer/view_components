@@ -7,9 +7,9 @@ module Primer
       DEFAULT_SCHEME = :default
       SCHEME_MAPPINGS = {
         DEFAULT_SCHEME => "",
-        :primary => "btn-primary-mktg",
-        :outline => "btn-outline-mktg",
-        :transparent => "btn-transparent"
+        :primary => "btn-signup-mktg",
+        :outline => "btn-muted-mktg",
+        :transparent => "btn-subtle-mktg"
       }.freeze
       SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
@@ -30,7 +30,7 @@ module Primer
       #   <%= render(Primer::Alpha::ButtonMarketing.new(mr: 2)) { "Default" } %>
       #   <%= render(Primer::Alpha::ButtonMarketing.new(scheme: :primary, mr: 2)) { "Primary" } %>
       #   <%= render(Primer::Alpha::ButtonMarketing.new(scheme: :outline)) { "Outline" } %>
-      #   <div class="color-bg-canvas-inverse">
+      #   <div class="color-bg-emphasis">
       #     <%= render(Primer::Alpha::ButtonMarketing.new(scheme: :transparent)) { "Transparent" } %>
       #   </div>
       #

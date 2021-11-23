@@ -9,7 +9,7 @@ module Primer
     #   <%= render(Primer::BoxComponent.new) { "Your content here" } %>
     #
     # @example Color and padding
-    #   <%= render(Primer::BoxComponent.new(bg: :tertiary, p: 3)) { "Hello world" } %>
+    #   <%= render(Primer::BoxComponent.new(bg: :subtle, p: 3)) { "Hello world" } %>
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)

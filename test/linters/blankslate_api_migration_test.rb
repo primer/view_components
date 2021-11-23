@@ -21,6 +21,17 @@ class BlankslateApiMigrationTest < LinterTestCase
     assert_empty @linter.offenses
   end
 
+  def test_does_not_migrate_when_blankslate_has_a_spinner
+    @file = <<~ERB
+      <%= render Primer::BlankslateComponent.new(title: "Some title") do |c| %>
+        <% c.spinner(size: :large) %>
+      <% end %>
+    ERB
+    @linter.run(processed_source)
+
+    assert_empty @linter.offenses
+  end
+
   def test_does_not_migrate_when_blankslate_has_no_title
     @file = <<~ERB
       <%= render Primer::BlankslateComponent.new %>
@@ -65,12 +76,13 @@ class BlankslateApiMigrationTest < LinterTestCase
         spacious: true,
         px: 3,
         display: :flex,
-        "aria-label": "label"
+        "aria-label": "label",
+        test_selector: selector
       ) %>
     ERB
 
     expected = <<~ERB
-      <%= render Primer::Beta::Blankslate.new(narrow: true, spacious: true, px: 3, display: :flex, "aria-label": "label") do |c| %>
+      <%= render Primer::Beta::Blankslate.new(narrow: true, spacious: true, px: 3, display: :flex, "aria-label": "label", test_selector: selector) do |c| %>
         <% c.heading(tag: :h2) do %>
           Some title
         <% end %>
@@ -134,6 +146,29 @@ class BlankslateApiMigrationTest < LinterTestCase
 
         <% c.description do %>
           Some description
+        <% end %>
+      <% end %>
+    ERB
+
+    assert_equal expected, corrected_content
+  end
+
+  def test_sets_description_slot_with_erb
+    @file = <<~'ERB'
+      <%= render Primer::BlankslateComponent.new(
+        title: "Some title",
+        description: "Some description #{with_interpolation}" + "some erb"
+      ) %>
+    ERB
+
+    expected = <<~'ERB'
+      <%= render Primer::Beta::Blankslate.new do |c| %>
+        <% c.heading(tag: :h2) do %>
+          Some title
+        <% end %>
+
+        <% c.description do %>
+          <%= "Some description #{with_interpolation}" + "some erb" %>
         <% end %>
       <% end %>
     ERB

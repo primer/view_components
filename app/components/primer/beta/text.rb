@@ -10,7 +10,7 @@ module Primer
 
       # @example Default
       #   <%= render(Primer::Beta::Text.new(tag: :p, font_weight: :bold)) { "Bold Text" } %>
-      #   <%= render(Primer::Beta::Text.new(tag: :p, color: :text_danger)) { "Danger Text" } %>
+      #   <%= render(Primer::Beta::Text.new(tag: :p, color: :danger)) { "Danger Text" } %>
       #
       # @param tag [Symbol]
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
