@@ -121,6 +121,8 @@ module Primer
     end
 
     def trimmed_content
+      return if content.blank?
+
       trimmed_content = content.strip
 
       return trimmed_content unless content.html_safe?
