@@ -22,6 +22,7 @@ module Primer
       :danger => "Label--danger",
       :severe => "Label--severe",
       :done => "Label--done",
+      :sponsors => "Label--sponsors",
       # deprecated
       :info => "Label--accent",
       :warning => "Label--attention",
@@ -47,6 +48,7 @@ module Primer
     #   <%= render(Primer::LabelComponent.new(scheme: :danger)) { "Danger" } %>
     #   <%= render(Primer::LabelComponent.new(scheme: :severe)) { "Severe" } %>
     #   <%= render(Primer::LabelComponent.new(scheme: :done)) { "Done" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :sponsors)) { "Sponsors" } %>
     #
     # @example Variants
     #   <%= render(Primer::LabelComponent.new) { "Default" } %>
