@@ -36,6 +36,14 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Josh Klina*
 
+* Add functional `Label` schemes: `accent`, `attention`, `severe`, `done` and `sponsors`.
+
+    *Manuel Puyol*
+
+* Add linter to migrate from deprecated `Label` schemes to the new ones.
+
+    *Manuel Puyol*
+
 ### Updates
 
 * Update `BlankslateApiMigration` linter to support interpolations.
@@ -61,6 +69,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Updating to @primer/css@19.0.0 and @primer/primitives@7.1.0. Which removes support for deprecated system color arguments
 
     *Jon Rohan*
+
+### Deprecations
+
+* Deprecate `Label` schemes `info` and `warning` in favor of `accent` and `attention`.
+
+    *Manuel Puyol*
 
 ## 0.0.61
 
