@@ -15,7 +15,7 @@ module RuboCop
       # Primer::LabelComponent.new(scheme: :accent)
       class DeprecatedLabelSchemes < BaseCop
         INVALID_MESSAGE = <<~STR
-          Avoid using deprecated schemes: https://primer.style/view-components/components/label.
+          Avoid using deprecated schemes: https://primer.style/view-components/deprecated#labelcomponent.
         STR
 
         # This is a hash of deprecated schemes and their replacements.
