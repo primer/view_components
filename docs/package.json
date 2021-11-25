@@ -13,5 +13,10 @@
     "gatsby": "^2.24.63",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
-  }
+  },
+  "engines": {
+    "node": "^16.3.0",
+    "yarn": "^1.22.0"
+  },
+  "engineStrict": true
 }

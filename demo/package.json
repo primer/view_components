@@ -24,6 +24,8 @@
     "build": "yarn build-storybook"
   },
   "engines": {
-    "yarn": "1.22.x"
-  }
+    "node": "^16.3.0",
+    "yarn": "^1.22.0"
+  },
+  "engineStrict": true
 }

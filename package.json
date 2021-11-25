@@ -28,6 +28,11 @@
     "lint": "eslint app/components demo/.storybook",
     "lint:fix": "eslint app/components demo/.storybook --fix"
   },
+  "engines": {
+    "node": "^16.3.0",
+    "yarn": "^1.22.0"
+  },
+  "engineStrict": true,
   "dependencies": {
     "@github/auto-complete-element": "^3.0.2",
     "@github/clipboard-copy-element": "^1.1.2",
