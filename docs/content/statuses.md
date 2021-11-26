@@ -2,18 +2,11 @@
 title: Statuses
 ---
 
-Each component is assigned a status for its maturity level:
+import {ComponentStatuses} from '../src/component-statuses'
 
-| Status         | Meaning                                                                |
-| -------------- |------------------------------------------------------------------------|
-| `Alpha`        | Experimental. Breaking changes are likely.                             |
-| `Beta`         | Usage encouraged, but not required.                                    |
-| `Stable`       | Usage expected.                                                        |
-| `Deprecated`   | Usage not allowed. May be removed at any time.                         |
+See the [component lifecycle](https://primer.style/contribute/component-lifecycle) for more information about each status.
 
-We expect many components to move from alpha to beta and from beta to stable soon. Watch for releases in the [repo](https://github.com/primer/view_components).
-
-You can also see the status of all Primer ViewComponents at once on [this project board](https://github.com/primer/view_components/projects/3).
+<ComponentStatuses />
 
 ## Criteria for changing component status
 
