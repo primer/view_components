@@ -40,6 +40,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::ButtonMarketing, {}],
     [Primer::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
     [Primer::CloseButton, {}],
+    [Primer::Content, {}],
     [Primer::CounterComponent, { count: 1 }],
     [Primer::DetailsComponent, {}, lambda do |component|
       component.summary { "Foo" }

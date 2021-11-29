@@ -28,6 +28,7 @@
   "Primer::ButtonGroup": "beta",
   "Primer::ClipboardCopy": "beta",
   "Primer::CloseButton": "beta",
+  "Primer::Content": "stable",
   "Primer::CounterComponent": "beta",
   "Primer::DetailsComponent": "beta",
   "Primer::Dropdown": "alpha",
