@@ -95,6 +95,7 @@ module Primer
     end
 
     def deny_aria_label(tag:, arguments:)
+      return arguments.except!(:skip_aria_label_check) if arguments[:skip_aria_label_check]
       return if arguments[:role]
       return unless aria(:label, arguments)
       return unless INVALID_ARIA_LABEL_TAGS.include?(tag)

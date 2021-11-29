@@ -60,7 +60,7 @@ Required list of stacked avatars.
 
 ### With tooltip
 
-<Example src="<div data-view-component='true' class='AvatarStack AvatarStack--three-plus'>  <div data-view-component='true' class='AvatarStack-body tooltipped tooltipped-n'>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' data-view-component='true' class='avatar avatar-small circle' />      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' data-view-component='true' class='avatar avatar-small circle' />        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' data-view-component='true' class='avatar avatar-small circle' /></div></div>" />
+<Example src="<div data-view-component='true' class='AvatarStack AvatarStack--three-plus'>  <div aria-label='This is a tooltip!' data-view-component='true' class='AvatarStack-body tooltipped tooltipped-n'>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' data-view-component='true' class='avatar avatar-small circle' />      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' data-view-component='true' class='avatar avatar-small circle' />        <div class='avatar avatar-more'></div>      <img src='http://placekitten.com/200/200' alt='@kittenuser' size='20' height='20' width='20' data-view-component='true' class='avatar avatar-small circle' /></div></div>" />
 
 ```erb
 <%= render(Primer::Beta::AvatarStack.new(tooltipped: true, body_arguments: { label: 'This is a tooltip!' })) do |c| %>
