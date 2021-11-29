@@ -1,5 +1,6 @@
 ---
-title: Statuses
+title: Component status
+description: Check the current status of Primer ViewComponents
 ---
 
 import {ComponentStatuses} from '../src/component-statuses'
