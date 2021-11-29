@@ -40,7 +40,6 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::ButtonMarketing, {}],
     [Primer::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
     [Primer::CloseButton, {}],
-    [Primer::Content, {}],
     [Primer::CounterComponent, { count: 1 }],
     [Primer::DetailsComponent, {}, lambda do |component|
       component.summary { "Foo" }
@@ -82,7 +81,7 @@ class PrimerComponentTest < Minitest::Test
   ].freeze
 
   def test_registered_components
-    ignored_components = ["Primer::Component", "Primer::OcticonsSymbolComponent"]
+    ignored_components = ["Primer::Component", "Primer::OcticonsSymbolComponent", "Primer::Content"]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count
     assert_equal primer_component_files_count, COMPONENTS_WITH_ARGS.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"
