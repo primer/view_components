@@ -7,28 +7,36 @@ import React from 'react'
 export function ComponentStatuses() {
   const data = useStaticQuery(graphql`
     query ComponentStatuses {
-      allSitePage(
-        filter: {context: {frontmatter: {status: {ne: null}}}}
-        sort: {fields: context___frontmatter___title}
+      allMdx(
+        filter: {frontmatter: {status: {ne: null}}}
+        sort: {fields: frontmatter___title}
       ) {
         nodes {
-          context {
-            frontmatter {
-              title
-              status
-            }
+          slug
+          excerpt(pruneLength: 300)
+          frontmatter {
+            status
+            title
           }
-          path
         }
       }
     }
   `)
 
-  const components = data.allSitePage.nodes.map((node) => ({
-    title: node.context.frontmatter.title,
-    status: node.context.frontmatter.status,
-    pagePath: node.path,
-  }))
+  const components = data.allMdx.nodes.map((node) => {
+    // get first sentence of the excerpt
+    // search for a period space and capital letter to avoid splitting at e.g.
+    const excerptMatch = node.excerpt
+      .replace(/\n/g, ' ')
+      .match(/(^.+?\.)(\s+[A-Z])/, '.')
+
+    return {
+      slug: node.slug,
+      description: excerptMatch ? excerptMatch[1] : node.excerpt,
+      title: node.frontmatter.title,
+      status: node.frontmatter.status,
+    }
+  })
 
   return (
     <Table>
@@ -36,19 +44,21 @@ export function ComponentStatuses() {
         <tr>
           <th align="left">Component</th>
           <th align="left">Status</th>
+          <th align="left">Description</th>
         </tr>
       </thead>
       <tbody>
-        {components.map(({title, status, pagePath}) => (
-          <tr key={pagePath}>
+        {components.map(({slug, description, title, status}) => (
+          <tr key={slug}>
             <td valign="top">
-              <Link as={GatsbyLink} to={pagePath}>
+              <Link as={GatsbyLink} to={`/${slug}`}>
                 {title}
               </Link>
             </td>
             <td valign="top">
               <StatusLabel status={status} />
             </td>
+            <td valign="top">{description}</td>
           </tr>
         ))}
       </tbody>
