@@ -13,6 +13,7 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
 Use `UnderlineNav` to style navigation links with a minimal
 underlined selected state, typically placed at the top
 of the page.
+
 For panel navigation, use [UnderlinePanels](/components/alpha/underlinepanels) instead.
 
 ## Accessibility

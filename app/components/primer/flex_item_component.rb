@@ -2,7 +2,7 @@
 
 module Primer
   # Use `FlexItem` to specify the ability of a flex item to alter its
-  # dimensions to fill available space
+  # dimensions to fill available space.
   #
   # @deprecated
   #   Use <%= link_to_component(Primer::BoxComponent) %> instead.

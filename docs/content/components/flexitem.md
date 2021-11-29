@@ -11,7 +11,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
 Use `FlexItem` to specify the ability of a flex item to alter its
-dimensions to fill available space
+dimensions to fill available space.
 
 ## Deprecation
 
