@@ -7,6 +7,10 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Beta::Layout, {}, proc { |component|
+      component.main(tag: :div) { "Foo" }
+      component.sidebar(tag: :div) { "Bar" }
+    }],
     [Primer::Alpha::Layout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }
       component.sidebar(tag: :div) { "Bar" }
