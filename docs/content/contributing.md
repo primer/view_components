@@ -44,9 +44,14 @@ system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
 
 ## Testing
 
-Before running the whole test suite with Rake: `bundle exec rake`, you must run `bundle exec rake docs:preview`.
+Before running the whole test suite with: `script/test`, you must run `bundle exec rake docs:preview`.
 
-Run a subset of tests by supplying a file glob to the test command: `TESTS="test/components/YOUR_COMPONENT_test.rb" bundle exec rake`
+Run a subset of tests by supplying arguments to `script/test`:
+
+1. `script/test FILE` runs all tests in the file.
+1. `script/test FILE:LINE` runs test in specific line of the file.
+1. `script/test 'GLOB'` runs all tests for matching glob.
+    * make sure to wrap the `GLOB` in single quotes `''`.
 
 ### System tests
 
@@ -100,11 +105,11 @@ To minimize the number of restarts, we recommend checking the component in Story
 
 Here are a few things you can do that will increase the likelihood of your pull request being accepted:
 
-- Write tests.
-- Write [YARD comments](https://yardoc.org/) for component and slot initializers. Please document the purpose and general use of new components or slots you add, as well as the parameters they accept. See for example the comment style in app/components/primer/counter_component.rb.
-- Add new components to the `components` list in Rakefile in the `docs:build` task, so that Markdown documentation is generated for them within docs/content/components/.
-- Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
-- Write a descriptive pull request message.
+* Write tests.
+* Write [YARD comments](https://yardoc.org/) for component and slot initializers. Please document the purpose and general use of new components or slots you add, as well as the parameters they accept. See for example the comment style in app/components/primer/counter_component.rb.
+* Add new components to the `components` list in Rakefile in the `docs:build` task, so that Markdown documentation is generated for them within docs/content/components/.
+* Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
+* Write a descriptive pull request message.
 
 ## Deploying to Heroku
 
