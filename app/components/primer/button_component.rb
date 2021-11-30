@@ -20,8 +20,7 @@ module Primer
     DEFAULT_VARIANT = :medium
     VARIANT_MAPPINGS = {
       :small => "btn-sm",
-      DEFAULT_VARIANT => "",
-      :large => "btn-large"
+      DEFAULT_VARIANT => ""
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
@@ -54,7 +53,6 @@ module Primer
     # @example Variants
     #   <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>
     #   <%= render(Primer::ButtonComponent.new(variant: :medium)) { "Medium" } %>
-    #   <%= render(Primer::ButtonComponent.new(variant: :large)) { "Large" } %>
     #
     # @example Block
     #   <%= render(Primer::ButtonComponent.new(block: :true)) { "Block" } %>

@@ -299,13 +299,11 @@
     ],
     "VARIANT_MAPPINGS": {
       "small": "btn-sm",
-      "medium": "",
-      "large": "btn-large"
+      "medium": ""
     },
     "VARIANT_OPTIONS": [
       "small",
-      "medium",
-      "large"
+      "medium"
     ]
   },
   "Primer::ButtonGroup": {
@@ -354,8 +352,7 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu",
-    "MenuTest": "Primer::Dropdown::MenuTest"
+    "Menu": "Primer::Dropdown::Menu"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",

@@ -17,7 +17,7 @@ Use `Button` for actions (e.g. in forms). Use links for destinations, or moving 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `scheme` | `Symbol` | `:default` | One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`, or `:primary`. |
-| `variant` | `Symbol` | `:medium` | One of `:large`, `:medium`, or `:small`. |
+| `variant` | `Symbol` | `:medium` | One of `:medium` and `:small`. |
 | `tag` | `Symbol` | `:button` | One of `:a`, `:button`, or `:summary`. |
 | `type` | `Symbol` | `:button` | One of `:button`, `:reset`, or `:submit`. |
 | `group_item` | `Boolean` | `false` | Whether button is part of a ButtonGroup. |
@@ -60,12 +60,11 @@ Counter to be rendered in the button.
 
 ### Variants
 
-<Example src="<button type='button' data-view-component='true' class='btn-sm btn'>  Small</button><button type='button' data-view-component='true' class='btn'>  Medium</button><button type='button' data-view-component='true' class='btn-large btn'>  Large</button>" />
+<Example src="<button type='button' data-view-component='true' class='btn-sm btn'>  Small</button><button type='button' data-view-component='true' class='btn'>  Medium</button>" />
 
 ```erb
 <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>
 <%= render(Primer::ButtonComponent.new(variant: :medium)) { "Medium" } %>
-<%= render(Primer::ButtonComponent.new(variant: :large)) { "Large" } %>
 ```
 
 ### Block
