@@ -1,3 +1,3 @@
 <%= render Primer::BaseButton.new(**@system_arguments) do -%>
-  <%= icon %><%= trimmed_content %><%= counter %><%= primer_octicon("triangle-down", mr: -1) if @dropdown %>
+  <%= leading_visual %><%= trimmed_content %><%= trailing_visual %><%= primer_octicon("triangle-down", mr: -1) if @dropdown %>
 <% end -%>

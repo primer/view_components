@@ -92,9 +92,9 @@ class PrimerButtonComponentTest < Minitest::Test
     assert_selector(".btn.btn-primary.btn-block")
   end
 
-  def test_renders_icon
+  def test_renders_leading_visual
     render_inline(Primer::ButtonComponent.new) do |c|
-      c.icon(icon: :star)
+      c.leading_visual(icon: :star)
       "Button"
     end
 
@@ -104,9 +104,9 @@ class PrimerButtonComponentTest < Minitest::Test
     end
   end
 
-  def test_renders_counter
+  def test_renders_trailing_visual
     render_inline(Primer::ButtonComponent.new) do |c|
-      c.counter(count: 10)
+      c.trailing_visual(count: 10)
       "Button"
     end
 
@@ -116,7 +116,21 @@ class PrimerButtonComponentTest < Minitest::Test
     end
   end
 
-  def test_renders_icon_and_counter
+  def test_renders_leading_and_trailing_visuals
+    render_inline(Primer::ButtonComponent.new) do |c|
+      c.leading_visual(icon: :star)
+      c.trailing_visual(count: 10)
+      "Button"
+    end
+
+    assert_selector(".btn") do
+      assert_selector(".octicon.octicon-star")
+      assert_selector(".Counter", text: "10")
+      assert_text("Button")
+    end
+  end
+
+  def test_renders_using_icon_and_counter
     render_inline(Primer::ButtonComponent.new) do |c|
       c.icon(icon: :star)
       c.counter(count: 10)

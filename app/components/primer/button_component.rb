@@ -24,23 +24,25 @@ module Primer
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
-    # Icon to be rendered in the button.
+    # Leading visuals appear to the left of the button text and are set to <%= link_to_component(Primer::OcticonComponent) %>.
     #
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
-    renders_one :icon, lambda { |**system_arguments|
+    renders_one :leading_visual, lambda { |**system_arguments|
       system_arguments[:mr] = 2
 
       Primer::OcticonComponent.new(**system_arguments)
     }
+    alias icon leading_visual # remove alias when all buttons are migrated to new slot names
 
-    # Counter to be rendered in the button.
+    # Trailing visuals appear to the right of the button text and are set to <%= link_to_component(Primer::CounterComponent) %>.
     #
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::CounterComponent) %>.
-    renders_one :counter, lambda { |**system_arguments|
+    renders_one :trailing_visual, lambda { |**system_arguments|
       system_arguments[:ml] = 2
 
       Primer::CounterComponent.new(**system_arguments)
     }
+    alias counter trailing_visual # remove alias when all buttons are migrated to new slot names
 
     # @example Schemes
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
@@ -58,22 +60,22 @@ module Primer
     #   <%= render(Primer::ButtonComponent.new(block: :true)) { "Block" } %>
     #   <%= render(Primer::ButtonComponent.new(block: :true, scheme: :primary)) { "Primary block" } %>
     #
-    # @example With icons
+    # @example With leading visual
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.icon(icon: :star) %>
+    #     <% c.leading_visual(icon: :star) %>
     #     Button
     #   <% end %>
     #
-    # @example With counter
+    # @example With trailing visual
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.counter(count: 15) %>
+    #     <% c.trailing_visual(count: 15) %>
     #     Button
     #   <% end %>
     #
-    # @example With icons and counter
+    # @example With leading and trailing visuals
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.icon(icon: :star) %>
-    #     <% c.counter(count: 15) %>
+    #     <% c.leading_visual(icon: :star) %>
+    #     <% c.trailing_visual(count: 15) %>
     #     Button
     #   <% end %>
     #
