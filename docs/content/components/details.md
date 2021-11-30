@@ -44,7 +44,7 @@ Use the Body slot as the main content to be shown when triggered by the Summary.
 
 ### Default
 
-<Example src="<details data-view-component='true'>  <summary role='button' data-view-component='true' class='btn'>        Summary  </summary>  <div data-view-component='true'>    Body</div></details>" />
+<Example src="<details data-view-component='true'>  <summary role='button' data-view-component='true' class='btn'>  Summary</summary>  <div data-view-component='true'>    Body</div></details>" />
 
 ```erb
 

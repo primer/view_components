@@ -152,7 +152,7 @@ module Primer
     def initialize(tag:, classes: nil, **system_arguments)
       @tag = tag
 
-      @system_arguments = validate_arguments(**system_arguments)
+      @system_arguments = validate_arguments(tag: tag, **system_arguments)
 
       @result = Primer::Classify.call(**@system_arguments.merge(classes: classes))
 

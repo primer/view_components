@@ -119,7 +119,7 @@ The description
 
 ### With actions
 
-<Example src="<div data-view-component='true' class='Subhead'>  <div data-view-component='true' class='Subhead-heading'>    My Heading</div>  <div data-view-component='true' class='Subhead-actions'>    <a href='http://www.google.com' data-view-component='true' class='btn-danger btn'>    Action  </a></div>  <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
+<Example src="<div data-view-component='true' class='Subhead'>  <div data-view-component='true' class='Subhead-heading'>    My Heading</div>  <div data-view-component='true' class='Subhead-actions'>    <a href='http://www.google.com' data-view-component='true' class='btn-danger btn'>  Action</a></div>  <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>
