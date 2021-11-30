@@ -22,7 +22,7 @@ Use `Button` for actions (e.g. in forms). Use links for destinations, or moving 
 | `type` | `Symbol` | `:button` | One of `:button`, `:reset`, or `:submit`. |
 | `group_item` | `Boolean` | `false` | Whether button is part of a ButtonGroup. |
 | `block` | `Boolean` | `false` | Whether button is full-width with `display: block`. |
-| `caret` | `Boolean` | `false` | Whether or not to render a caret. |
+| `dropdown` | `Boolean` | `false` | Whether or not to render a dropdown caret. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
@@ -111,12 +111,12 @@ Counter to be rendered in the button.
 <% end %>
 ```
 
-### With caret
+### With dropdown caret
 
 <Example src="<button type='button' data-view-component='true' class='btn'>  Button<svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-triangle-down mr-n1'>    <path d='M4.427 7.427l3.396 3.396a.25.25 0 00.354 0l3.396-3.396A.25.25 0 0011.396 7H4.604a.25.25 0 00-.177.427z'></path></svg></button>" />
 
 ```erb
-<%= render(Primer::ButtonComponent.new(caret: true)) do %>
+<%= render(Primer::ButtonComponent.new(dropdown: true)) do %>
   Button
 <% end %>
 ```

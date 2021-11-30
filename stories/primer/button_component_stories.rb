@@ -10,7 +10,7 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
       select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
-      caret false
+      dropdown false
       disabled false
     end
 
@@ -26,7 +26,7 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
       select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
-      caret false
+      dropdown false
       disabled false
     end
 
@@ -43,7 +43,7 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
       select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
-      caret false
+      dropdown false
       disabled false
     end
 
@@ -60,7 +60,7 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
       select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
-      caret false
+      dropdown false
       disabled false
     end
 

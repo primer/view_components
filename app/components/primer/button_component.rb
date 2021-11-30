@@ -79,8 +79,8 @@ module Primer
     #     Button
     #   <% end %>
     #
-    # @example With caret
-    #   <%= render(Primer::ButtonComponent.new(caret: true)) do %>
+    # @example With dropdown caret
+    #   <%= render(Primer::ButtonComponent.new(dropdown: true)) do %>
     #     Button
     #   <% end %>
     #
@@ -90,18 +90,18 @@ module Primer
     # @param type [Symbol] (Primer::BaseButton::DEFAULT_TYPE) <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
     # @param group_item [Boolean] Whether button is part of a ButtonGroup.
     # @param block [Boolean] Whether button is full-width with `display: block`.
-    # @param caret [Boolean] Whether or not to render a caret.
+    # @param dropdown [Boolean] Whether or not to render a dropdown caret.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       scheme: DEFAULT_SCHEME,
       variant: DEFAULT_VARIANT,
       group_item: false,
       block: false,
-      caret: false,
+      dropdown: false,
       **system_arguments
     )
       @scheme = scheme
-      @caret = caret
+      @dropdown = dropdown
 
       @system_arguments = system_arguments
       @system_arguments[:classes] = class_names(
