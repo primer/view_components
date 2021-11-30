@@ -1,11 +1,13 @@
 import React from 'react'
-import {Flash, Link} from '@primer/components'
+import {Link} from 'gatsby'
+import Note from '@primer/gatsby-theme-doctocat/src/components/note'
 
 function RequiresJSFlash() {
   return (
-    <Flash mb={3}>
-      This component requires JavaScript to function. Please refer to the <Link href="/#installation">Installation section</Link> to set it up.
-    </Flash>
+    <Note>
+      This component requires JavaScript to function. Please refer to the{' '}
+      <Link to="/#installation">Installation section</Link> to set it up.
+    </Note>
   )
 }
 
