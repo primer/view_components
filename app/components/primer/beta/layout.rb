@@ -6,47 +6,79 @@ module Primer
     # `Layout` can be used for simple two-column pages, or it can be nested to provide flexible 3-column experiences.
     #  On smaller screens, `Layout` uses vertically stacked rows to display content.
     #
-    # `Layout` flows as both column, when there's enough horizontal space to render both `Main` and `Sidebar`side-by-side (on a desktop of tablet device, per instance);
-    # or it flows as a row, when `Main` and `Sidebar` are stacked vertically (e.g. on a mobile device).
+    # `Layout` flows as both column, when there's enough horizontal space to render both `Main` and `Pane`side-by-side (on a desktop of tablet device, per instance);
+    # or it flows as a row, when `Main` and `Pane` are stacked vertically (e.g. on a mobile device).
     # `Layout` should always work in any screen size.
     #
     # @accessibility
     #   Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether
     #   `main` or `sidebar` comes first in code. The code order won’t affect the visual position.
     class Layout < Primer::Component
-      FIRST_IN_SOURCE_DEFAULT = :sidebar
-      FIRST_IN_SOURCE_OPTIONS = [FIRST_IN_SOURCE_DEFAULT, :main].freeze
+      # WRAPPER_SIZING_DEFAULT = :fluid
+      # WRAPPER_SIZING_MAPPINGS = {
+      #   WRAPPER_SIZING_DEFAULT => "",
+      #   :md => "container-md",
+      #   :lg => "container-lg",
+      #   :xl => "container-xl"
+      # }.freeze
+      # WRAPPER_SIZING_OPTIONS = WRAPPER_SIZING_MAPPINGS.keys.freeze
 
-      SIDEBAR_COL_PLACEMENT_DEFAULT = :start
-      SIDEBAR_COL_PLACEMENT_OPTIONS = [SIDEBAR_COL_PLACEMENT_DEFAULT, :end].freeze
+      WRAPPER_SIZING_DEFAULT = :fluid
+      WRAPPER_SIZING_OPTIONS = [WRAPPER_SIZING_DEFAULT, :md, :lg, :xl].freeze
 
-      GUTTER_DEFAULT = :default
-      GUTTER_MAPPINGS = {
-        :none => "Layout--gutter-none",
-        :condensed => "Layout--gutter-condensed",
-        :spacious => "Layout--gutter-spacious",
-        GUTTER_DEFAULT => ""
+      OUTER_SPACING_DEFAULT = :none
+      OUTER_SPACING_MAPPINGS = {
+        OUTER_SPACING_DEFAULT => "",
+        :normal => "LayoutBeta--outer-spacing-normal",
+        :condensed => "LayoutBeta--outer-spacing-condensed"
       }.freeze
-      GUTTER_OPTIONS = GUTTER_MAPPINGS.keys.freeze
+      OUTER_SPACING_OPTIONS = OUTER_SPACING_MAPPINGS.keys.freeze
 
-      STACKING_BREAKPOINT_DEFAULT = :md
-      STACKING_BREAKPOINT_MAPPINGS = {
-        :sm => "",
-        STACKING_BREAKPOINT_DEFAULT => "Layout--flowRow-until-md",
-        :lg => "Layout--flowRow-until-lg"
+      INNER_SPACING_DEFAULT = :none
+      INNER_SPACING_MAPPINGS = {
+        INNER_SPACING_DEFAULT => "",
+        :normal => "LayoutBeta--inner-spacing-normal",
+        :condensed => "LayoutBeta--inner-spacing-condensed"
       }.freeze
-      STACKING_BREAKPOINT_OPTIONS = STACKING_BREAKPOINT_MAPPINGS.keys.freeze
+      INNER_SPACING_OPTIONS = INNER_SPACING_MAPPINGS.keys.freeze
 
-      SIDEBAR_ROW_PLACEMENT_DEFAULT = :start
-      SIDEBAR_ROW_PLACEMENT_OPTIONS = [SIDEBAR_ROW_PLACEMENT_DEFAULT, :end, :none].freeze
-
-      SIDEBAR_WIDTH_DEFAULT = :default
-      SIDEBAR_WIDTH_MAPPINGS = {
-        SIDEBAR_WIDTH_DEFAULT => "",
-        :narrow => "Layout--sidebar-narrow",
-        :wide => "Layout--sidebar-wide"
+      COLUMN_GAP_DEFAULT = :none
+      COLUMN_GAP_MAPPINGS = {
+        COLUMN_GAP_DEFAULT => "",
+        :normal => "LayoutBeta--column-gap-normal",
+        :condensed => "LayoutBeta--column-gap-condensed"
       }.freeze
-      SIDEBAR_WIDTH_OPTIONS = SIDEBAR_WIDTH_MAPPINGS.keys.freeze
+      COLUMN_GAP_OPTIONS = COLUMN_GAP_MAPPINGS.keys.freeze
+
+      ROW_GAP_DEFAULT = :none
+      ROW_GAP_MAPPINGS = {
+        ROW_GAP_DEFAULT => "",
+        :normal => "LayoutBeta--row-gap-normal",
+        :condensed => "LayoutBeta--row-gap-condensed"
+      }.freeze
+      ROW_GAP_OPTIONS = ROW_GAP_MAPPINGS.keys.freeze
+
+      PANE_WIDTH_DEFAULT = :default
+      PANE_WIDTH_MAPPINGS = {
+        PANE_WIDTH_DEFAULT => "",
+        :narrow => "LayoutBeta--pane-width-narrow",
+        :wide => "LayoutBeta--pane-width-wide"
+      }.freeze
+      PANE_WIDTH_OPTIONS = PANE_WIDTH_MAPPINGS.keys.freeze
+
+      PANE_POSITION_DEFAULT = :start
+      PANE_POSITION_MAPPINGS = {
+        PANE_POSITION_DEFAULT => "LayoutBeta--pane-position-start",
+        :end => "LayoutBeta--pane-position-start"
+      }.freeze
+      PANE_POSITION_OPTIONS = PANE_POSITION_MAPPINGS.keys.freeze
+
+      PANE_DIVIDER_DEFAULT = :start
+      PANE_DIVIDER_MAPPINGS = {
+        PANE_DIVIDER_DEFAULT => "LayoutBeta--pane-position-start",
+        :end => "LayoutBeta--pane-position-start"
+      }.freeze
+      PANE_DIVIDER_OPTIONS = PANE_DIVIDER_MAPPINGS.keys.freeze
 
       # The layout's main content.
       #
@@ -57,13 +89,36 @@ module Primer
       # The layout's sidebar.
       #
       # @param width [Symbol] <%= one_of(Primer::Beta::Layout::SIDEBAR_WIDTH_OPTIONS) %>
-      # @param col_placement [Symbol] Sidebar placement when `Layout` is in column modes. <%= one_of(Primer::Beta::Layout::SIDEBAR_COL_PLACEMENT_OPTIONS) %>
-      # @param row_placement [Symbol] Sidebar placement when `Layout` is in row mode. <%= one_of(Primer::Beta::Layout::SIDEBAR_ROW_PLACEMENT_OPTIONS) %>
+      # @param col_placement [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::Layout::SIDEBAR_COL_PLACEMENT_OPTIONS) %>
+      # @param row_placement [Symbol] Pane placement when `Layout` is in row mode. <%= one_of(Primer::Beta::Layout::SIDEBAR_ROW_PLACEMENT_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :sidebar, lambda { |
-        width: SIDEBAR_WIDTH_DEFAULT,
-        col_placement: SIDEBAR_COL_PLACEMENT_DEFAULT,
-        row_placement: SIDEBAR_ROW_PLACEMENT_DEFAULT,
+      renders_one :pane, lambda { |
+        width: PANE_WIDTH_DEFAULT,
+        position: PANE_POSITION_DEFAULT,
+        sticky: false,
+        divider: false,
+        **system_arguments
+      |
+        # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
+        @system_arguments[:classes] = class_names(
+          @system_arguments[:classes],
+          PANE_POSITION_MAPPINGS[fetch_or_fallback(PANE_POSITION_OPTIONS, position, PANE_POSITION_DEFAULT)],
+          PANE_WIDTH_MAPPINGS[fetch_or_fallback(PANE_WIDTH_OPTIONS, width, PANE_WIDTH_DEFAULT)],
+          { "LayoutBeta--pane-divider" => divider },
+          { "LayoutBeta--pane-is-sticky" => sticky }
+        )
+
+        Primer::Beta::Layout::Pane.new(**system_arguments)
+      }
+
+      # The layout's header.
+      #
+      # @param divider [Boolean] Whether to show a header divider
+      # @param responsive_divider [Boolean] Whether to show a divider below the `header` region if in responsive mode
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      renders_one :header, lambda { |
+        divider: false,
+        responsive_divider: false,
         **system_arguments
       |
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
@@ -74,14 +129,14 @@ module Primer
           SIDEBAR_WIDTH_MAPPINGS[fetch_or_fallback(SIDEBAR_WIDTH_OPTIONS, width, SIDEBAR_WIDTH_DEFAULT)]
         )
 
-        Primer::Beta::Layout::Sidebar.new(**system_arguments)
+        Primer::Beta::Layout::Pane.new(**system_arguments)
       }
 
       # @example Default
       #
       #   <%= render(Primer::Beta::Layout.new) do |c| %>
       #     <% c.main(border: true) { "Main" } %>
-      #     <% c.sidebar(border: true) { "Sidebar" } %>
+      #     <% c.sidebar(border: true) { "Pane" } %>
       #   <% end %>
       #
       # @example Main widths
@@ -97,22 +152,22 @@ module Primer
       #   @code
       #     <%= render(Primer::Beta::Layout.new) do |c| %>
       #       <% c.main(width: :full, border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Sidebar" } %>
+      #       <% c.sidebar(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::Layout.new(mt: 5)) do |c| %>
       #       <% c.main(width: :md, border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Sidebar" } %>
+      #       <% c.sidebar(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::Layout.new(mt: 5)) do |c| %>
       #       <% c.main(width: :lg, border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Sidebar" } %>
+      #       <% c.sidebar(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::Layout.new(mt: 5)) do |c| %>
       #       <% c.main(width: :xl, border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Sidebar" } %>
+      #       <% c.sidebar(border: true) { "Pane" } %>
       #     <% end %>
       #
-      # @example Sidebar widths
+      # @example Pane widths
       #
       #   @description
       #     Sets the sidebar width. The width is predetermined according to the breakpoint instead of it being percentage-based.
@@ -121,23 +176,23 @@ module Primer
       #     - `narrow`: [md: 240px, lg: 256px, xl: 296px]
       #     - `wide`: [md: 296px, lg: 320px, xl: 344px]
       #
-      #     When flowing as a row, `Sidebar` takes the full width.
+      #     When flowing as a row, `Pane` takes the full width.
       #
       #   @code
       #     <%= render(Primer::Beta::Layout.new) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(width: :default, border: true) { "Sidebar" } %>
+      #       <% c.sidebar(width: :default, border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::Layout.new(mt: 5)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(width: :narrow, border: true) { "Sidebar" } %>
+      #       <% c.sidebar(width: :narrow, border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::Layout.new(mt: 5)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(width: :wide, border: true) { "Sidebar" } %>
+      #       <% c.sidebar(width: :wide, border: true) { "Pane" } %>
       #     <% end %>
       #
-      # @example Sidebar placement
+      # @example Pane placement
       #
       #   @description
       #     Use `start` for sidebars that manipulate local navigation, while right-aligned `end` is useful for metadata and other auxiliary information.
@@ -145,14 +200,14 @@ module Primer
       #   @code
       #     <%= render(Primer::Beta::Layout.new) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(col_placement: :start, border: true) { "Sidebar" } %>
+      #       <% c.sidebar(col_placement: :start, border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::Layout.new( mt: 5)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(col_placement: :end, border: true) { "Sidebar" } %>
+      #       <% c.sidebar(col_placement: :end, border: true) { "Pane" } %>
       #     <% end %>
       #
-      # @example Sidebar placement as row
+      # @example Pane placement as row
       #
       #   @description
       #     When flowing as a row, whether the sidebar is rendered first or last in the layout, or, if it's entirely hidden from the user.
@@ -164,15 +219,15 @@ module Primer
       #   @code
       #     <%= render(Primer::Beta::Layout.new) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(row_placement: :start, border: true) { "Sidebar" } %>
+      #       <% c.sidebar(row_placement: :start, border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::Layout.new(mt: 5)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(row_placement: :end, border: true) { "Sidebar" } %>
+      #       <% c.sidebar(row_placement: :end, border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::Layout.new(mt: 5)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(row_placement: :none, border: true) { "Sidebar" } %>
+      #       <% c.sidebar(row_placement: :none, border: true) { "Pane" } %>
       #     <% end %>
       #
       # @example Changing when to render `Layout` as columns
@@ -184,36 +239,47 @@ module Primer
       #   @code
       #     <%= render(Primer::Beta::Layout.new(stacking_breakpoint: :sm)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Sidebar" } %>
+      #       <% c.sidebar(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::Layout.new(stacking_breakpoint: :md, mt: 5)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Sidebar" } %>
+      #       <% c.sidebar(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::Layout.new(stacking_breakpoint: :lg, mt: 5)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Sidebar" } %>
+      #       <% c.sidebar(border: true) { "Pane" } %>
       #     <% end %>
       #
-      # @param stacking_breakpoint [Symbol] When the `Layout` should change from rows into columns. <%= one_of(Primer::Beta::Layout::STACKING_BREAKPOINT_OPTIONS) %>
-      # @param first_in_source [Symbol] Which element to render first in the HTML. This will change the keyboard navigation order. <%= one_of(Primer::Beta::Layout::FIRST_IN_SOURCE_OPTIONS) %>
-      # @param gutter [Symbol] The amount of space between the main section and the sidebar. <%= one_of(Primer::Beta::Layout::GUTTER_OPTIONS) %>
+      # @param wrapper_sizing [Symbol] The size of the container wrapping `Layout`. <%= one_of(Primer::Beta::Layout::WRAPPER_SIZING_OPTIONS) %>
+      # @param outer_spacing [Symbol] Sets wrapper margins surrounding the component to distance itself from the viewport edges. <%= one_of(Primer::Beta::Layout::SPACING_OPTIONS) %>
+      # @param inner_spacing [Symbol] Sets padding to regions individually. <%= one_of(Primer::Beta::Layout::SPACING_OPTIONS) %>
+      # @param column_gap [Symbol] Sets gap between columns. <%= one_of(Primer::Beta::Layout::SPACING_OPTIONS) %>
+      # @param row_gap [Symbol] Sets the gap below the header and above the footer. <%= one_of(Primer::Beta::Layout::SPACING_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(stacking_breakpoint: STACKING_BREAKPOINT_DEFAULT, first_in_source: FIRST_IN_SOURCE_DEFAULT, gutter: :default, **system_arguments)
-        @first_in_source = fetch_or_fallback(FIRST_IN_SOURCE_OPTIONS, first_in_source, FIRST_IN_SOURCE_OPTIONS)
+      def initialize(
+        wrapper_sizing: WRAPPER_SIZING_DEFAULT,
+        outer_spacing: OUTER_SPACING_DEFAULT,
+        inner_spacing: INNER_SPACING_DEFAULT,
+        column_gap: COLUMN_GAP_DEFAULT,
+        row_gap: ROW_GAP_DEFAULT,
+        **system_arguments
+      )
+        @wrapper_sizing = fetch_or_fallback(WRAPPER_SIZING_OPTIONS, wrapper_sizing, WRAPPER_SIZING_DEFAULT)
 
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
         @system_arguments[:classes] = class_names(
-          "Layout",
-          STACKING_BREAKPOINT_MAPPINGS[fetch_or_fallback(STACKING_BREAKPOINT_OPTIONS, stacking_breakpoint, STACKING_BREAKPOINT_DEFAULT)],
-          GUTTER_MAPPINGS[fetch_or_fallback(GUTTER_OPTIONS, gutter, GUTTER_DEFAULT)],
+          "LayoutBeta",
+          OUTER_SPACING_MAPPINGS[fetch_or_fallback(OUTER_SPACING_OPTIONS, outer_spacing, OUTER_SPACING_DEFAULT)],
+          INNER_SPACING_MAPPINGS[fetch_or_fallback(INNER_SPACING_OPTIONS, inner_spacing, INNER_SPACING_DEFAULT)],
+          COLUMN_GAP_MAPPINGS[fetch_or_fallback(COLUMN_GAP_OPTIONS, column_gap, COLUMN_GAP_DEFAULT)],
+          ROW_GAP_MAPPINGS[fetch_or_fallback(ROW_GAP_OPTIONS, row_gap, ROW_GAP_DEFAULT)],
           system_arguments[:classes]
         )
       end
 
       def render?
-        main.present? && sidebar.present?
+        main.present? && pane.present?
       end
 
       # The layout's main content.
@@ -232,7 +298,7 @@ module Primer
           @system_arguments = system_arguments
           @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
           @system_arguments[:classes] = class_names(
-            "Layout-main",
+            "LayoutBeta-content",
             system_arguments[:classes]
           )
         end
@@ -253,7 +319,7 @@ module Primer
       end
 
       # The layout's sidebar content.
-      class Sidebar < Primer::Component
+      class Pane < Primer::Component
         TAG_DEFAULT = :div
         TAG_OPTIONS = [TAG_DEFAULT, :aside, :nav, :section].freeze
 
@@ -262,7 +328,7 @@ module Primer
 
           @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
           @system_arguments[:classes] = class_names(
-            "Layout-sidebar",
+            "LayoutBeta-pane",
             @system_arguments[:classes]
           )
         end
