@@ -58,15 +58,29 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Breaking Changes
 
-* Add a warning to users if they try to use `tag:` parameters on a component where the tag is fixed
+* Add a warning to users if they try to use `tag:` parameters on a component where the tag is fixed.
 
     *Owen Niblock*
 
-* Updating to @primer/css@19.0.0 and @primer/primitives@7.1.0. Which removes support for deprecated system color arguments
+* Updating to @primer/css@19.0.0 and @primer/primitives@7.1.0. Which removes support for deprecated system color arguments.
 
     *Jon Rohan*
 
 * Prevent `aria-label` to be used with `:div, :span, :p` tags without an explicit `role`.
+
+    *Manuel Puyol*
+
+* Rename `caret` argument to `dropdown` in `ButtonComponent`.
+
+    *Manuel Puyol*
+
+* Remove `:large` variant from `ButtonComponent`.
+
+    *Manuel Puyol*
+
+### Deprecations
+
+* Deprecate `icon` and `counter` slots in `ButtonComponent` in favor of `leading_visual` and `trailing_visual`.
 
     *Manuel Puyol*
 
