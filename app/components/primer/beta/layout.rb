@@ -14,15 +14,6 @@ module Primer
     #   Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether
     #   `main` or `sidebar` comes first in code. The code order won’t affect the visual position.
     class Layout < Primer::Component
-      # WRAPPER_SIZING_DEFAULT = :fluid
-      # WRAPPER_SIZING_MAPPINGS = {
-      #   WRAPPER_SIZING_DEFAULT => "",
-      #   :md => "container-md",
-      #   :lg => "container-lg",
-      #   :xl => "container-xl"
-      # }.freeze
-      # WRAPPER_SIZING_OPTIONS = WRAPPER_SIZING_MAPPINGS.keys.freeze
-
       WRAPPER_SIZING_DEFAULT = :fluid
       WRAPPER_SIZING_OPTIONS = [WRAPPER_SIZING_DEFAULT, :md, :lg, :xl].freeze
 
@@ -69,7 +60,7 @@ module Primer
       PANE_POSITION_DEFAULT = :start
       PANE_POSITION_MAPPINGS = {
         PANE_POSITION_DEFAULT => "LayoutBeta--pane-position-start",
-        :end => "LayoutBeta--pane-position-start"
+        :end => "LayoutBeta--pane-position-end"
       }.freeze
       PANE_POSITION_OPTIONS = PANE_POSITION_MAPPINGS.keys.freeze
 
@@ -117,19 +108,42 @@ module Primer
       # @param responsive_divider [Boolean] Whether to show a divider below the `header` region if in responsive mode
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :header, lambda { |
-        divider: false,
-        responsive_divider: false,
-        **system_arguments
+        divider: false, **header_system_arguments
       |
-        # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          "Layout--sidebarPosition-#{fetch_or_fallback(SIDEBAR_COL_PLACEMENT_OPTIONS, col_placement, SIDEBAR_COL_PLACEMENT_DEFAULT)}",
-          "Layout--sidebarPosition-flowRow-#{fetch_or_fallback(SIDEBAR_ROW_PLACEMENT_OPTIONS, row_placement, SIDEBAR_ROW_PLACEMENT_DEFAULT)}",
-          SIDEBAR_WIDTH_MAPPINGS[fetch_or_fallback(SIDEBAR_WIDTH_OPTIONS, width, SIDEBAR_WIDTH_DEFAULT)]
+          "LayoutBeta--has-header",
+          "LayoutBeta--header-divider" => divider
         )
 
-        Primer::Beta::Layout::Pane.new(**system_arguments)
+        header_system_arguments[:classes] = class_names(
+          header_system_arguments[:classes],
+          "LayoutBeta-header"
+        )
+
+        Primer::Beta::Layout::Bookend.new(divider: divider, **header_system_arguments)
+      }
+
+      # The layout's footer.
+      #
+      # @param divider [Boolean] Whether to show a header divider
+      # @param responsive_divider [Boolean] Whether to show a divider below the `header` region if in responsive mode
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      renders_one :footer, lambda { |
+        divider: false, **footer_system_arguments
+      |
+        @system_arguments[:classes] = class_names(
+          @system_arguments[:classes],
+          "LayoutBeta--has-footer",
+          "LayoutBeta--footer-divider" => divider
+        )
+
+        footer_system_arguments[:classes] = class_names(
+          footer_system_arguments[:classes],
+          "LayoutBeta-footer"
+        )
+
+        Primer::Beta::Layout::Bookend.new(divider: divider, **footer_system_arguments)
       }
 
       # @example Default
@@ -274,6 +288,7 @@ module Primer
           INNER_SPACING_MAPPINGS[fetch_or_fallback(INNER_SPACING_OPTIONS, inner_spacing, INNER_SPACING_DEFAULT)],
           COLUMN_GAP_MAPPINGS[fetch_or_fallback(COLUMN_GAP_OPTIONS, column_gap, COLUMN_GAP_DEFAULT)],
           ROW_GAP_MAPPINGS[fetch_or_fallback(ROW_GAP_OPTIONS, row_gap, ROW_GAP_DEFAULT)],
+          ROW_GAP_MAPPINGS[fetch_or_fallback(ROW_GAP_OPTIONS, row_gap, ROW_GAP_DEFAULT)],
           system_arguments[:classes]
         )
       end
@@ -315,6 +330,31 @@ module Primer
               end
             end
           end
+        end
+      end
+
+      # The layout's header or footer content.
+      class Bookend < Primer::Component
+        RESPONSIVE_DIVIDER_DEFAULT = :none
+        RESPONSIVE_DIVIDER_MAPPINGS = {
+          RESPONSIVE_DIVIDER_DEFAULT => "",
+          :line => "LayoutBeta-region--line-divider",
+          :shallow => "LayoutBeta-region--shallow-divider"
+        }.freeze
+        RESPONSIVE_DIVIDER_OPTIONS = RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
+        # @param width [Symbol] <%= one_of(Primer::Beta::Layout::Main::WIDTH_OPTIONS) %>
+        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+        def initialize(responsive_divider: RESPONSIVE_DIVIDER_DEFAULT, **system_arguments)
+          @system_arguments = system_arguments
+          @system_arguments[:classes] = class_names(
+            @system_arguments[:classes],
+            "LayoutBeta-region",
+            RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, RESPONSIVE_DIVIDER_DEFAULT)],
+          )
+        end
+
+        def call
+          render(Primer::BaseComponent.new(tag: :div, **@system_arguments)) { content }
         end
       end
 

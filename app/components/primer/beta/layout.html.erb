@@ -1,13 +1,17 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <% if @wrapper_sizing == WRAPPER_SIZING_DEFAULT %>
     <%= render(Primer::BaseComponent.new(tag: :div, classes: "LayoutBeta-regions")) do %>
+      <%= header %>
       <%= main %>
       <%= pane %>
+      <%= footer %>
     <% end %>
   <% else %>
     <%= render(Primer::BaseComponent.new(tag: :div, container: @wrapper_sizing, classes: "LayoutBeta-regions")) do %>
+      <%= header %>
       <%= main %>
       <%= pane %>
+      <%= footer %>
     <% end %>
   <% end %>
 <% end %>

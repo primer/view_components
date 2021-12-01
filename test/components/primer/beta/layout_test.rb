@@ -28,6 +28,20 @@ class PrimerBetaLayoutTest < Minitest::Test
     end
   end
 
+  def test_optionally_renders_header
+    render_inline(Primer::Beta::Layout.new) do |c|
+      c.header { "Header" }
+      c.main { "Main" }
+      c.pane { "Pane" }
+    end
+
+    assert_selector("div.LayoutBeta") do
+      assert_selector("div.LayoutBeta-header", text: "Header")
+      assert_selector("div.LayoutBeta-content", text: "Main")
+      assert_selector("div.LayoutBeta-pane", text: "Pane")
+    end
+  end
+
   def test_wrapper_sizing
     Primer::Beta::Layout::WRAPPER_SIZING_OPTIONS.each do |size|
       render_inline(Primer::Beta::Layout.new(wrapper_sizing: size)) do |c|
@@ -36,16 +50,9 @@ class PrimerBetaLayoutTest < Minitest::Test
       end
 
       assert_selector("div.LayoutBeta") do
-        if size == :fluid
-          assert_selector("div.LayoutBeta-regions") do
-            assert_selector("div.LayoutBeta-content", text: "Main")
-            assert_selector("div.LayoutBeta-pane", text: "Pane")
-          end
-        else
-          assert_selector("div.LayoutBeta-regions.container-#{size}") do
-            assert_selector("div.LayoutBeta-content", text: "Main")
-            assert_selector("div.LayoutBeta-pane", text: "Pane")
-          end
+        assert_selector("div.LayoutBeta-regions#{size == :fluid ? '' : ".container-#{size}"}") do
+          assert_selector("div.LayoutBeta-content", text: "Main")
+          assert_selector("div.LayoutBeta-pane", text: "Pane")
         end
       end
     end
@@ -58,18 +65,10 @@ class PrimerBetaLayoutTest < Minitest::Test
         c.pane { "Pane" }
       end
 
-      assert_selector("div.LayoutBeta") do
-        if size == :none
-          assert_selector("div.LayoutBeta") do
-            assert_selector("div.LayoutBeta-content", text: "Main")
-            assert_selector("div.LayoutBeta-pane", text: "Pane")
-          end
-        else
-          assert_selector("div.LayoutBeta.LayoutBeta--outer-spacing-#{size}") do
-            assert_selector("div.LayoutBeta-content", text: "Main")
-            assert_selector("div.LayoutBeta-pane", text: "Pane")
-          end
-        end
+      size_class = Primer::Beta::Layout::OUTER_SPACING_MAPPINGS[size]
+      assert_selector("div.LayoutBeta#{size_class.empty? ? '' : ".#{size_class}"}") do
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
       end
     end
   end
@@ -81,18 +80,10 @@ class PrimerBetaLayoutTest < Minitest::Test
         c.pane { "Pane" }
       end
 
-      assert_selector("div.LayoutBeta") do
-        if size == :none
-          assert_selector("div.LayoutBeta") do
-            assert_selector("div.LayoutBeta-content", text: "Main")
-            assert_selector("div.LayoutBeta-pane", text: "Pane")
-          end
-        else
-          assert_selector("div.LayoutBeta.LayoutBeta--inner-spacing-#{size}") do
-            assert_selector("div.LayoutBeta-content", text: "Main")
-            assert_selector("div.LayoutBeta-pane", text: "Pane")
-          end
-        end
+      size_class = Primer::Beta::Layout::INNER_SPACING_MAPPINGS[size]
+      assert_selector("div.LayoutBeta#{size_class.empty? ? '' : ".#{size_class}"}") do
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
       end
     end
   end
@@ -104,18 +95,10 @@ class PrimerBetaLayoutTest < Minitest::Test
         c.pane { "Pane" }
       end
 
-      assert_selector("div.LayoutBeta") do
-        if size == :none
-          assert_selector("div.LayoutBeta") do
-            assert_selector("div.LayoutBeta-content", text: "Main")
-            assert_selector("div.LayoutBeta-pane", text: "Pane")
-          end
-        else
-          assert_selector("div.LayoutBeta.LayoutBeta--column-gap-#{size}") do
-            assert_selector("div.LayoutBeta-content", text: "Main")
-            assert_selector("div.LayoutBeta-pane", text: "Pane")
-          end
-        end
+      size_class = Primer::Beta::Layout::COLUMN_GAP_MAPPINGS[size]
+      assert_selector("div.LayoutBeta#{size_class.empty? ? '' : ".#{size_class}"}") do
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
       end
     end
   end
@@ -127,143 +110,180 @@ class PrimerBetaLayoutTest < Minitest::Test
         c.pane { "Pane" }
       end
 
+      size_class = Primer::Beta::Layout::ROW_GAP_MAPPINGS[size]
+      assert_selector("div.LayoutBeta#{size_class.empty? ? '' : ".#{size_class}"}") do
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      end
+    end
+  end
+
+  def test_pane_position
+    Primer::Beta::Layout::PANE_POSITION_OPTIONS.each do |position|
+      render_inline(Primer::Beta::Layout.new) do |c|
+        c.main { "Main" }
+        c.pane(position: position) { "Pane" }
+      end
+
       assert_selector("div.LayoutBeta") do
-        if size == :none
-          assert_selector("div.LayoutBeta") do
-            assert_selector("div.LayoutBeta-content", text: "Main")
-            assert_selector("div.LayoutBeta-pane", text: "Pane")
-          end
-        else
-          assert_selector("div.LayoutBeta.LayoutBeta--row-gap-#{size}") do
-            assert_selector("div.LayoutBeta-content", text: "Main")
-            assert_selector("div.LayoutBeta-pane", text: "Pane")
-          end
+        assert_selector("div.LayoutBeta--pane-position-#{position}") do
+          assert_selector("div.LayoutBeta-content", text: "Main")
+          assert_selector("div.LayoutBeta-pane", text: "Pane")
         end
       end
     end
   end
-  # def test_main_width
-  #   Primer::Beta::Layout::Main::WIDTH_OPTIONS.each do |width|
-  #     render_inline(Primer::Beta::Layout.new) do |c|
-  #       c.main(width: width) { "Main" }
-  #       c.sidebar { "Sidebar" }
-  #     end
 
-  #     assert_selector("div.Layout.Layout--sidebarPosition-start") do
-  #       assert_selector("div.Layout-main") do
-  #         if width == :full
-  #           assert_text("Main")
-  #         else
-  #           assert_selector("div.Layout-main-centered-#{width}") do
-  #             assert_selector("div.container-#{width}", text: "Main")
-  #           end
-  #         end
-  #       end
-  #       assert_selector("div.Layout-sidebar", text: "Sidebar")
-  #     end
-  #   end
-  # end
+  def test_pane_width
+    Primer::Beta::Layout::PANE_WIDTH_OPTIONS.each do |size|
+      render_inline(Primer::Beta::Layout.new) do |c|
+        c.main { "Main" }
+        c.pane(width: size) { "Pane" }
+      end
 
-  # def test_sidebar_col_placement
-  #   render_inline(Primer::Beta::Layout.new) do |c|
-  #     c.main { "Main" }
-  #     c.sidebar(col_placement: :end) { "Sidebar" }
-  #   end
+      width_class = Primer::Beta::Layout::PANE_WIDTH_MAPPINGS[size]
+      assert_selector("div.LayoutBeta") do
+        assert_selector("div#{width_class.empty? ? '' : ".#{width_class}"}") do
+          assert_selector("div.LayoutBeta-content", text: "Main")
+          assert_selector("div.LayoutBeta-pane", text: "Pane")
+        end
+      end
+    end
+  end
 
-  #   assert_selector("div.Layout.Layout--sidebarPosition-end")
-  # end
+  def test_pane_divider_present_when_set
+    render_inline(Primer::Beta::Layout.new) do |c|
+      c.main { "Main" }
+      c.pane(divider: true) { "Pane" }
+    end
 
-  # def test_gutter
-  #   (Primer::Beta::Layout::GUTTER_OPTIONS - [Primer::Beta::Layout::GUTTER_DEFAULT]).each do |gutter|
-  #     render_inline(Primer::Beta::Layout.new(gutter: gutter)) do |c|
-  #       c.main { "Main" }
-  #       c.sidebar { "Sidebar" }
-  #     end
+    assert_selector("div.LayoutBeta.LayoutBeta--pane-divider") do
+      assert_selector("div.LayoutBeta-content", text: "Main")
+      assert_selector("div.LayoutBeta-pane", text: "Pane")
+    end
+  end
 
-  #     gutter_class = Primer::Beta::Layout::GUTTER_MAPPINGS[gutter]
-  #     assert_selector("div.#{gutter_class}")
-  #   end
-  # end
+  def test_pane_divider_absent_when_not_set
+    render_inline(Primer::Beta::Layout.new) do |c|
+      c.main { "Main" }
+      c.pane { "Pane" }
+    end
 
-  # def test_stacking_breakpoint
-  #   (Primer::Beta::Layout::STACKING_BREAKPOINT_OPTIONS - [Primer::Beta::Layout::STACKING_BREAKPOINT_DEFAULT]).each do |stacking_breakpoint|
-  #     render_inline(Primer::Beta::Layout.new(stacking_breakpoint: stacking_breakpoint)) do |c|
-  #       c.main { "Main" }
-  #       c.sidebar { "Sidebar" }
-  #     end
+    refute_selector("div.LayoutBeta.LayoutBeta--pane-divider")
+  end
 
-  #     breakpoint_class = Primer::Beta::Layout::STACKING_BREAKPOINT_MAPPINGS[stacking_breakpoint]
-  #     assert_selector("div.Layout#{breakpoint_class.empty? ? '' : ".#{breakpoint_class}"}")
-  #   end
-  # end
+  def test_pane_sticky_present_when_set
+    render_inline(Primer::Beta::Layout.new) do |c|
+      c.main { "Main" }
+      c.pane(sticky: true) { "Pane" }
+    end
 
-  # def test_sidebar_row_placement
-  #   Primer::Beta::Layout::SIDEBAR_ROW_PLACEMENT_OPTIONS.each do |row_placement|
-  #     render_inline(Primer::Beta::Layout.new) do |c|
-  #       c.main { "Main" }
-  #       c.sidebar(row_placement: row_placement) { "Sidebar" }
-  #     end
+    assert_selector("div.LayoutBeta.LayoutBeta--pane-is-sticky") do
+      assert_selector("div.LayoutBeta-content", text: "Main")
+      assert_selector("div.LayoutBeta-pane", text: "Pane")
+    end
+  end
 
-  #     assert_selector("div.Layout.Layout--sidebarPosition-flowRow-#{row_placement}")
-  #   end
-  # end
+  def test_pane_sticky_absent_when_not_set
+    render_inline(Primer::Beta::Layout.new) do |c|
+      c.main { "Main" }
+      c.pane { "Pane" }
+    end
 
-  # def test_sidebar_width
-  #   Primer::Beta::Layout::SIDEBAR_WIDTH_OPTIONS.each do |width|
-  #     next if width == :default
+    refute_selector("div.LayoutBeta.LayoutBeta--pane-divider")
+  end
 
-  #     render_inline(Primer::Beta::Layout.new) do |c|
-  #       c.main { "Main" }
-  #       c.sidebar(width: width) { "Sidebar" }
-  #     end
+  def test_header_class_present_when_header_present
+    render_inline(Primer::Beta::Layout.new) do |c|
+      c.header { "Header" }
+      c.main { "Main" }
+      c.pane { "Pane" }
+    end
 
-  #     assert_selector("div.Layout.Layout--sidebar-#{width}")
-  #   end
-  # end
+    assert_selector("div.LayoutBeta.LayoutBeta--has-header")
+  end
 
-  # def test_sidebar_first_in_html
-  #   render_inline(Primer::Beta::Layout.new) do |c|
-  #     c.main { "Main" }
-  #     c.sidebar { "Sidebar" }
-  #   end
+  def test_header_divider_present_when_set
+    render_inline(Primer::Beta::Layout.new) do |c|
+      c.header(divider: true) { "Header" }
+      c.main { "Main" }
+      c.pane { "Pane" }
+    end
 
-  #   assert_match(/Layout-sidebar.*Layout-main/m, @rendered_component)
-  # end
+    assert_selector("div.LayoutBeta.LayoutBeta--has-header.LayoutBeta--header-divider")
+  end
 
-  # def test_main_first_in_html
-  #   render_inline(Primer::Beta::Layout.new(first_in_source: :main)) do |c|
-  #     c.main { "Main" }
-  #     c.sidebar { "Sidebar" }
-  #   end
+  def test_header_divider_not_present_when_not_set
+    render_inline(Primer::Beta::Layout.new) do |c|
+      c.header { "Header" }
+      c.main { "Main" }
+      c.pane { "Pane" }
+    end
 
-  #   assert_match(/Layout-main.*Layout-sidebar/m, @rendered_component)
-  # end
+    refute_selector("div.LayoutBeta.LayoutBeta--has-header.LayoutBeta--header-divider")
+  end
 
-  # def test_renders_main_slot_as_different_elements
-  #   Primer::Beta::Layout::Main::TAG_OPTIONS.each do |tag|
-  #     render_inline(Primer::Beta::Layout.new) do |c|
-  #       c.main(tag: tag) { "Main" }
-  #       c.sidebar { "Sidebar" }
-  #     end
+  def test_header_responsive_divider
+    Primer::Beta::Layout::Bookend::RESPONSIVE_DIVIDER_OPTIONS.each do |opt|
+      render_inline(Primer::Beta::Layout.new) do |c|
+        c.header(responsive_divider: opt) { "Header" }
+        c.main { "Main" }
+        c.pane { "Pane" }
+      end
 
-  #     assert_selector("div.Layout.Layout--sidebarPosition-start") do
-  #       assert_selector("#{tag}.Layout-main", text: "Main")
-  #       assert_selector("div.Layout-sidebar", text: "Sidebar")
-  #     end
-  #   end
-  # end
+      divider_class = Primer::Beta::Layout::Bookend::RESPONSIVE_DIVIDER_MAPPINGS[opt]
+      assert_selector("div.LayoutBeta") do
+        assert_selector("div.LayoutBeta-header#{divider_class.empty? ? '' : ".#{divider_class}"}", text: "Header")
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      end
+    end
+  end
 
-  # def test_renders_sidebar_slot_as_different_elements
-  #   Primer::Beta::Layout::Sidebar::TAG_OPTIONS.each do |tag|
-  #     render_inline(Primer::Beta::Layout.new) do |c|
-  #       c.main { "Main" }
-  #       c.sidebar(tag: tag) { "Sidebar" }
-  #     end
+  def test_footer_class_present_when_footer_present
+    render_inline(Primer::Beta::Layout.new) do |c|
+      c.main { "Main" }
+      c.pane { "Pane" }
+      c.footer { "Footer" }
+    end
 
-  #     assert_selector("div.Layout.Layout--sidebarPosition-start") do
-  #       assert_selector("div.Layout-main", text: "Main")
-  #       assert_selector("#{tag}.Layout-sidebar", text: "Sidebar")
-  #     end
-  #   end
-  # end
+    assert_selector("div.LayoutBeta.LayoutBeta--has-footer")
+  end
+
+  def test_footer_divider_present_when_set
+    render_inline(Primer::Beta::Layout.new) do |c|
+      c.main { "Main" }
+      c.pane { "Pane" }
+      c.footer(divider: true) { "Footer" }
+    end
+
+    assert_selector("div.LayoutBeta.LayoutBeta--has-footer.LayoutBeta--footer-divider")
+  end
+
+  def test_footer_divider_not_present_when_not_set
+    render_inline(Primer::Beta::Layout.new) do |c|
+      c.main { "Main" }
+      c.pane { "Pane" }
+      c.footer { "Footer" }
+    end
+
+    refute_selector("div.LayoutBeta.LayoutBeta--has-footer.LayoutBeta--footer-divider")
+  end
+
+  def test_footer_responsive_divider
+    Primer::Beta::Layout::Bookend::RESPONSIVE_DIVIDER_OPTIONS.each do |opt|
+      render_inline(Primer::Beta::Layout.new) do |c|
+        c.main { "Main" }
+        c.pane { "Pane" }
+        c.footer(responsive_divider: opt) { "Footer" }
+      end
+
+      divider_class = Primer::Beta::Layout::Bookend::RESPONSIVE_DIVIDER_MAPPINGS[opt]
+      assert_selector("div.LayoutBeta") do
+        assert_selector("div.LayoutBeta-footer#{divider_class.empty? ? '' : ".#{divider_class}"}", text: "Footer")
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      end
+    end
+  end
 end
