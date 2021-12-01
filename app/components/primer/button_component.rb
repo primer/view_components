@@ -24,7 +24,11 @@ module Primer
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
-    # Leading visuals appear to the left of the button text and are set to <%= link_to_component(Primer::OcticonComponent) %>.
+    # Leading visuals appear to the left of the button text.
+    #
+    # Use:
+    #
+    # - `leading_visual_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
     #
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
     renders_one :leading_visual, types: {
@@ -36,7 +40,11 @@ module Primer
     }
     alias icon leading_visual_icon # remove alias when all buttons are migrated to new slot names
 
-    # Trailing visuals appear to the right of the button text and are set to <%= link_to_component(Primer::CounterComponent) %>.
+    # Trailing visuals appear to the right of the button text.
+    #
+    # Use:
+    #
+    # - `trailing_visual_counter` for a <%= link_to_component(Primer::CounterComponent) %>.
     #
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::CounterComponent) %>.
     renders_one :trailing_visual, types: {

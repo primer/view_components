@@ -29,7 +29,11 @@ Use `Button` for actions (e.g. in forms). Use links for destinations, or moving 
 
 ### `Leading_visual`
 
-Leading visuals appear to the left of the button text and are set to [Octicon](/components/octicon).
+Leading visuals appear to the left of the button text.
+
+Use:
+
+- `leading_visual_icon` for a [Octicon](/components/octicon).
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
@@ -37,7 +41,11 @@ Leading visuals appear to the left of the button text and are set to [Octicon](/
 
 ### `Trailing_visual`
 
-Trailing visuals appear to the right of the button text and are set to [Counter](/components/counter).
+Trailing visuals appear to the right of the button text.
+
+Use:
+
+- `trailing_visual_counter` for a [Counter](/components/counter).
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
