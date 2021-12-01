@@ -82,7 +82,7 @@ Trailing visuals appear to the right of the button text and are set to [Counter]
 
 ```erb
 <%= render(Primer::ButtonComponent.new) do |c| %>
-  <% c.leading_visual(icon: :star) %>
+  <% c.leading_visual_icon(icon: :star) %>
   Button
 <% end %>
 ```
@@ -93,7 +93,7 @@ Trailing visuals appear to the right of the button text and are set to [Counter]
 
 ```erb
 <%= render(Primer::ButtonComponent.new) do |c| %>
-  <% c.trailing_visual(count: 15) %>
+  <% c.trailing_visual_counter(count: 15) %>
   Button
 <% end %>
 ```
@@ -104,8 +104,8 @@ Trailing visuals appear to the right of the button text and are set to [Counter]
 
 ```erb
 <%= render(Primer::ButtonComponent.new) do |c| %>
-  <% c.leading_visual(icon: :star) %>
-  <% c.trailing_visual(count: 15) %>
+  <% c.leading_visual_icon(icon: :star) %>
+  <% c.trailing_visual_counter(count: 15) %>
   Button
 <% end %>
 ```

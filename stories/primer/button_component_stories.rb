@@ -31,7 +31,7 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |c|
-      c.leading_visual(icon: :star)
+      c.leading_visual_icon(icon: :star)
       "Click me"
     end
   end
@@ -48,7 +48,7 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |c|
-      c.trailing_visual(count: 10)
+      c.trailing_visual_counter(count: 10)
       "Click me"
     end
   end
@@ -65,8 +65,8 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |c|
-      c.leading_visual(icon: :star)
-      c.trailing_visual(count: 10)
+      c.leading_visual_icon(icon: :star)
+      c.trailing_visual_counter(count: 10)
       "Click me"
     end
   end

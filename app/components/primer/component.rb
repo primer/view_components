@@ -6,6 +6,7 @@ module Primer
   # @private
   class Component < ViewComponent::Base
     include ViewComponent::SlotableV2 unless ViewComponent::Base < ViewComponent::SlotableV2
+    include ViewComponent::PolymorphicSlots
     include ClassNameHelper
     include FetchOrFallbackHelper
     include TestSelectorHelper
