@@ -118,6 +118,21 @@ class PrimerBetaLayoutTest < Minitest::Test
     end
   end
 
+  def test_responsive_behaviour
+    Primer::Beta::Layout::RESPONSIVE_BEHAVIOR_OPTIONS.each do |behavior|
+      render_inline(Primer::Beta::Layout.new(responsive_behavior: behavior)) do |c|
+        c.main { "Main" }
+        c.pane { "Pane" }
+      end
+
+      behavior_class = Primer::Beta::Layout::RESPONSIVE_BEHAVIOR_MAPPINGS[behavior]
+      assert_selector("div.LayoutBeta#{behavior_class.empty? ? '' : ".#{behavior_class}"}") do
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      end
+    end
+  end
+
   def test_pane_position
     Primer::Beta::Layout::PANE_POSITION_OPTIONS.each do |position|
       render_inline(Primer::Beta::Layout.new) do |c|

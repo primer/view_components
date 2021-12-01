@@ -49,6 +49,13 @@ module Primer
       }.freeze
       ROW_GAP_OPTIONS = ROW_GAP_MAPPINGS.keys.freeze
 
+      RESPONSIVE_BEHAVIOR_DEFAULT = :flow_vertical
+      RESPONSIVE_BEHAVIOR_MAPPINGS = {
+        RESPONSIVE_BEHAVIOR_DEFAULT => "LayoutBeta--responsive-flowVertical",
+        :split_as_pages => "LayoutBeta--responsive-splitAsPages"
+      }.freeze
+      RESPONSIVE_BEHAVIOR_OPTIONS = RESPONSIVE_BEHAVIOR_MAPPINGS.keys.freeze
+
       PANE_WIDTH_DEFAULT = :default
       PANE_WIDTH_MAPPINGS = {
         PANE_WIDTH_DEFAULT => "",
@@ -276,6 +283,7 @@ module Primer
         inner_spacing: INNER_SPACING_DEFAULT,
         column_gap: COLUMN_GAP_DEFAULT,
         row_gap: ROW_GAP_DEFAULT,
+        responsive_behavior: RESPONSIVE_BEHAVIOR_DEFAULT,
         **system_arguments
       )
         @wrapper_sizing = fetch_or_fallback(WRAPPER_SIZING_OPTIONS, wrapper_sizing, WRAPPER_SIZING_DEFAULT)
@@ -288,7 +296,7 @@ module Primer
           INNER_SPACING_MAPPINGS[fetch_or_fallback(INNER_SPACING_OPTIONS, inner_spacing, INNER_SPACING_DEFAULT)],
           COLUMN_GAP_MAPPINGS[fetch_or_fallback(COLUMN_GAP_OPTIONS, column_gap, COLUMN_GAP_DEFAULT)],
           ROW_GAP_MAPPINGS[fetch_or_fallback(ROW_GAP_OPTIONS, row_gap, ROW_GAP_DEFAULT)],
-          ROW_GAP_MAPPINGS[fetch_or_fallback(ROW_GAP_OPTIONS, row_gap, ROW_GAP_DEFAULT)],
+          RESPONSIVE_BEHAVIOR_MAPPINGS[fetch_or_fallback(RESPONSIVE_BEHAVIOR_OPTIONS, responsive_behavior, RESPONSIVE_BEHAVIOR_DEFAULT)],
           system_arguments[:classes]
         )
       end
