@@ -134,7 +134,7 @@ class PrimerBetaLayoutTest < Minitest::Test
   end
 
   def test_responsive_show_pane_first
-    render_inline(Primer::Beta::Layout.new(responsive_pane_first: true)) do |c|
+    render_inline(Primer::Beta::Layout.new(responsive_show_pane_first: true)) do |c|
       c.main { "Main" }
       c.pane { "Pane" }
     end
@@ -165,6 +165,32 @@ class PrimerBetaLayoutTest < Minitest::Test
         assert_selector("div.LayoutBeta--pane-position-#{position}") do
           assert_selector("div.LayoutBeta-content", text: "Main")
           assert_selector("div.LayoutBeta-pane", text: "Pane")
+        end
+      end
+    end
+  end
+
+  def test_pane_responsive_position
+    Primer::Beta::Layout::PANE_RESPONSIVE_POSITION_OPTIONS.each do |position|
+      render_inline(Primer::Beta::Layout.new) do |c|
+        c.main { "Main" }
+        c.pane(responsive_position: position) { "Pane" }
+      end
+
+      # When set to `:inherit`, the responsive position is inherited from `position`
+      if position == Primer::Beta::Layout::PANE_RESPONSIVE_POSITION_DEFAULT
+        assert_selector("div.LayoutBeta") do
+          assert_selector("div.LayoutBeta--pane-responsive-position-start") do
+            assert_selector("div.LayoutBeta-content", text: "Main")
+            assert_selector("div.LayoutBeta-pane", text: "Pane")
+          end
+        end
+      else
+        assert_selector("div.LayoutBeta") do
+          assert_selector("div.LayoutBeta--pane-responsive-position-#{position}") do
+            assert_selector("div.LayoutBeta-content", text: "Main")
+            assert_selector("div.LayoutBeta-pane", text: "Pane")
+          end
         end
       end
     end
