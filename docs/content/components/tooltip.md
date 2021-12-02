@@ -37,7 +37,7 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 ### Wrapping another component
 
-<Example src="<div class='pt-5'>  <span aria-label='Even bolder' data-view-component='true' class='tooltipped tooltipped-n'>    <button type='button' data-view-component='true' class='btn'>    Bold Button  </button></span></div>" />
+<Example src="<div class='pt-5'>  <span aria-label='Even bolder' data-view-component='true' class='tooltipped tooltipped-n'>    <button type='button' data-view-component='true' class='btn'>  Bold Button</button></span></div>" />
 
 ```erb
 <div class="pt-5">

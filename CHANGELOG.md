@@ -38,6 +38,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+* Update `Button` to add `8px` spacing between icon, text and counter.
+
+    *Manuel Puyol*
+
 * Update `BlankslateApiMigration` linter to support interpolations.
 
     *Manuel Puyol*
@@ -62,6 +66,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan*
 
+* Prevent `aria-label` to be used with `:div, :span, :p` tags without an explicit `role`.
+
+    *Manuel Puyol*
+
 ## 0.0.61
 
 ### New
@@ -80,7 +88,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
-* Bump Storybook version to include Skip to Content links for keyboard auditors
+* Bump Storybook version to include Skip to Content links for keyboard auditors.
 
     *Katie Foster @inkblotty*
 
@@ -100,7 +108,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Bug Fixes
 
-* Fix issue where tags were not self-closing when they are void elements
+* Fix issue where tags were not self-closing when they are void elements.
 
     *Owen Niblock*
 

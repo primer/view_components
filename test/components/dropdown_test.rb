@@ -94,7 +94,7 @@ class PrimerDropdownTest < Minitest::Test
 
     assert_selector("details.dropdown") do
       assert_selector("summary.btn") do
-        assert_selector(".dropdown-caret")
+        assert_selector(".octicon.octicon-triangle-down")
       end
     end
   end

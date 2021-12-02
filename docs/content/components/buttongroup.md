@@ -33,7 +33,7 @@ Required list of buttons to be rendered.
 
 ### Default
 
-<Example src="<div data-view-component='true' class='BtnGroup'>    <button type='button' data-view-component='true' class='btn BtnGroup-item'>    Default  </button>    <button type='button' data-view-component='true' class='btn-primary btn BtnGroup-item'>    Primary  </button>    <button type='button' data-view-component='true' class='btn-danger btn BtnGroup-item'>    Danger  </button>    <button type='button' data-view-component='true' class='btn-outline btn BtnGroup-item'>    Outline  </button>    <button type='button' data-view-component='true' class='custom-class btn BtnGroup-item'>    Custom class  </button></div>" />
+<Example src="<div data-view-component='true' class='BtnGroup'>    <button type='button' data-view-component='true' class='btn BtnGroup-item'>  Default</button>    <button type='button' data-view-component='true' class='btn-primary btn BtnGroup-item'>  Primary</button>    <button type='button' data-view-component='true' class='btn-danger btn BtnGroup-item'>  Danger</button>    <button type='button' data-view-component='true' class='btn-outline btn BtnGroup-item'>  Outline</button>    <button type='button' data-view-component='true' class='custom-class btn BtnGroup-item'>  Custom class</button></div>" />
 
 ```erb
 
@@ -48,7 +48,7 @@ Required list of buttons to be rendered.
 
 ### Variants
 
-<Example src="<div data-view-component='true' class='BtnGroup'>    <button type='button' data-view-component='true' class='btn-sm btn BtnGroup-item'>    Default  </button>    <button type='button' data-view-component='true' class='btn-primary btn-sm btn BtnGroup-item'>    Primary  </button>    <button type='button' data-view-component='true' class='btn-danger btn-sm btn BtnGroup-item'>    Danger  </button>    <button type='button' data-view-component='true' class='btn-outline btn-sm btn BtnGroup-item'>    Outline  </button></div><div data-view-component='true' class='BtnGroup'>    <button type='button' data-view-component='true' class='btn-large btn BtnGroup-item'>    Default  </button>    <button type='button' data-view-component='true' class='btn-primary btn-large btn BtnGroup-item'>    Primary  </button>    <button type='button' data-view-component='true' class='btn-danger btn-large btn BtnGroup-item'>    Danger  </button>    <button type='button' data-view-component='true' class='btn-outline btn-large btn BtnGroup-item'>    Outline  </button></div>" />
+<Example src="<div data-view-component='true' class='BtnGroup'>    <button type='button' data-view-component='true' class='btn-sm btn BtnGroup-item'>  Default</button>    <button type='button' data-view-component='true' class='btn-primary btn-sm btn BtnGroup-item'>  Primary</button>    <button type='button' data-view-component='true' class='btn-danger btn-sm btn BtnGroup-item'>  Danger</button>    <button type='button' data-view-component='true' class='btn-outline btn-sm btn BtnGroup-item'>  Outline</button></div><div data-view-component='true' class='BtnGroup'>    <button type='button' data-view-component='true' class='btn-large btn BtnGroup-item'>  Default</button>    <button type='button' data-view-component='true' class='btn-primary btn-large btn BtnGroup-item'>  Primary</button>    <button type='button' data-view-component='true' class='btn-danger btn-large btn BtnGroup-item'>  Danger</button>    <button type='button' data-view-component='true' class='btn-outline btn-large btn BtnGroup-item'>  Outline</button></div>" />
 
 ```erb
 

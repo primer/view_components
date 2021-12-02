@@ -27,7 +27,7 @@ of the select menu.
 
 ### With a header
 
-<Example src="<div>  <details data-view-component='true' class='details-overlay details-reset position-relative'>  <summary role='button' data-view-component='true' class='btn'>          Dropdown  </summary>  <div data-view-component='true'>      <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>          <ul>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>        </ul></details-menu></div></details></div>" />
+<Example src="<div>  <details data-view-component='true' class='details-overlay details-reset position-relative'>  <summary role='button' data-view-component='true' class='btn'>  Dropdown</summary>  <div data-view-component='true'>      <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>          <ul>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>          <li><a class='dropdown-item' href='#url'>Dropdown item</a></li>        </ul></details-menu></div></details></div>" />
 
 ```erb
 <div>
