@@ -10,6 +10,8 @@ module Primer
     # or it flows as a row, when `Main` and `Pane` are stacked vertically (e.g. on a mobile device).
     # `Layout` should always work in any screen size.
     #
+    # `Layout` also provides `Header` and `Footer` slots, which can be used to provide a consistent header and footer across all pages.
+    #
     # @accessibility
     #   Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether
     #   `main` or `sidebar` comes first in code. The code order won’t affect the visual position.
@@ -284,6 +286,7 @@ module Primer
         column_gap: COLUMN_GAP_DEFAULT,
         row_gap: ROW_GAP_DEFAULT,
         responsive_behavior: RESPONSIVE_BEHAVIOR_DEFAULT,
+        responsive_pane_first: false,
         **system_arguments
       )
         @wrapper_sizing = fetch_or_fallback(WRAPPER_SIZING_OPTIONS, wrapper_sizing, WRAPPER_SIZING_DEFAULT)
@@ -297,6 +300,7 @@ module Primer
           COLUMN_GAP_MAPPINGS[fetch_or_fallback(COLUMN_GAP_OPTIONS, column_gap, COLUMN_GAP_DEFAULT)],
           ROW_GAP_MAPPINGS[fetch_or_fallback(ROW_GAP_OPTIONS, row_gap, ROW_GAP_DEFAULT)],
           RESPONSIVE_BEHAVIOR_MAPPINGS[fetch_or_fallback(RESPONSIVE_BEHAVIOR_OPTIONS, responsive_behavior, RESPONSIVE_BEHAVIOR_DEFAULT)],
+          { "LayoutBeta--responsive-pane-first" => responsive_pane_first },
           system_arguments[:classes]
         )
       end
@@ -314,6 +318,7 @@ module Primer
         TAG_OPTIONS = [TAG_DEFAULT, :main].freeze
 
         # @param width [Symbol] <%= one_of(Primer::Beta::Layout::Main::WIDTH_OPTIONS) %>
+        # @param tag [Symbol] <%= one_of(Primer::Beta::Layout::Main::TAG_OPTIONS) %>
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(tag: TAG_DEFAULT, width: WIDTH_DEFAULT, **system_arguments)
           @width = fetch_or_fallback(WIDTH_OPTIONS, width, WIDTH_DEFAULT)

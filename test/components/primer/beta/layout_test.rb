@@ -133,6 +133,27 @@ class PrimerBetaLayoutTest < Minitest::Test
     end
   end
 
+  def test_responsive_show_pane_first
+    render_inline(Primer::Beta::Layout.new(responsive_pane_first: true)) do |c|
+      c.main { "Main" }
+      c.pane { "Pane" }
+    end
+
+    assert_selector("div.LayoutBeta.LayoutBeta--responsive-pane-first") do
+      assert_selector("div.LayoutBeta-content", text: "Main")
+      assert_selector("div.LayoutBeta-pane", text: "Pane")
+    end
+  end
+
+  def test_responsive_show_pane_first_not_set_by_default
+    render_inline(Primer::Beta::Layout.new) do |c|
+      c.main { "Main" }
+      c.pane { "Pane" }
+    end
+
+    refute_selector("div.LayoutBeta.LayoutBeta--responsive-pane-first")
+  end
+
   def test_pane_position
     Primer::Beta::Layout::PANE_POSITION_OPTIONS.each do |position|
       render_inline(Primer::Beta::Layout.new) do |c|
