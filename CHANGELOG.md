@@ -30,6 +30,22 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Breaking Changes
+
+* Rename `caret` argument to `dropdown` in `ButtonComponent`.
+
+    *Manuel Puyol*
+
+* Remove `:large` variant from `ButtonComponent`.
+
+    *Manuel Puyol*
+
+### Deprecations
+
+* Deprecate `icon` and `counter` slots in `ButtonComponent` in favor of `leading_visual` and `trailing_visual`.
+
+    *Manuel Puyol*
+
 ## 0.0.62
 
 ### New
@@ -69,20 +85,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
     *Jon Rohan*
 
 * Prevent `aria-label` to be used with `:div, :span, :p` tags without an explicit `role`.
-
-    *Manuel Puyol*
-
-* Rename `caret` argument to `dropdown` in `ButtonComponent`.
-
-    *Manuel Puyol*
-
-* Remove `:large` variant from `ButtonComponent`.
-
-    *Manuel Puyol*
-
-### Deprecations
-
-* Deprecate `icon` and `counter` slots in `ButtonComponent` in favor of `leading_visual` and `trailing_visual`.
 
     *Manuel Puyol*
 
