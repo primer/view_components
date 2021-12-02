@@ -115,8 +115,8 @@ module Primer
         "Popover"
       )
       @system_arguments[:position] ||= :relative
-      @system_arguments[:right] = false unless system_arguments.delete(:right)
-      @system_arguments[:left] = false unless system_arguments.delete(:left)
+      @system_arguments[:right] = false unless @system_arguments.delete(:right)
+      @system_arguments[:left] = false unless @system_arguments.delete(:left)
     end
 
     def render?
