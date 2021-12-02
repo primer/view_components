@@ -131,6 +131,7 @@ module Primer
       # @param responsive_divider [Boolean] Whether to show a divider below the `header` region if in responsive mode
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :header, lambda { |divider: false, **header_system_arguments|
+        # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           "LayoutBeta--has-header",
@@ -151,6 +152,7 @@ module Primer
       # @param responsive_divider [Boolean] Whether to show a divider below the `footer` region if in responsive mode
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :footer, lambda { |divider: false, **footer_system_arguments|
+        # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           "LayoutBeta--has-footer",
