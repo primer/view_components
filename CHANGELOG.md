@@ -66,6 +66,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Jon Rohan*
 
+* Prevent `aria-label` to be used with `:div, :span, :p` tags without an explicit `role`.
+
+    *Manuel Puyol*
+
 ## 0.0.61
 
 ### New

@@ -31,7 +31,7 @@ if your `HiddenTextExpander` expands a list of 5 comments, the `aria-label` shou
 
 ### Default
 
-<Example src="<span aria-label='No effect' data-view-component='true' class='hidden-text-expander'><button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander'>&hellip;</button></span>" />
+<Example src="<span data-view-component='true' class='hidden-text-expander'><button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander'>&hellip;</button></span>" />
 
 ```erb
 <%= render(Primer::HiddenTextExpander.new("aria-label": "No effect")) %>
@@ -39,7 +39,7 @@ if your `HiddenTextExpander` expands a list of 5 comments, the `aria-label` shou
 
 ### Inline
 
-<Example src="<span aria-label='No effect' data-view-component='true' class='hidden-text-expander inline'><button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander'>&hellip;</button></span>" />
+<Example src="<span data-view-component='true' class='hidden-text-expander inline'><button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander'>&hellip;</button></span>" />
 
 ```erb
 <%= render(Primer::HiddenTextExpander.new(inline: true, "aria-label": "No effect")) %>
@@ -47,7 +47,7 @@ if your `HiddenTextExpander` expands a list of 5 comments, the `aria-label` shou
 
 ### Styling the button
 
-<Example src="<span aria-label='No effect' data-view-component='true' class='hidden-text-expander'><button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander custom-class p-1'>&hellip;</button></span>" />
+<Example src="<span data-view-component='true' class='hidden-text-expander'><button aria-label='No effect' aria-expanded='false' type='button' data-view-component='true' class='ellipsis-expander custom-class p-1'>&hellip;</button></span>" />
 
 ```erb
 <%= render(Primer::HiddenTextExpander.new("aria-label": "No effect", button_arguments: { p: 1, classes: "custom-class" })) %>
