@@ -34,13 +34,6 @@ module Primer
     #     <% component.button(scheme: :outline) { "Outline" } %>
     #   <% end %>
     #
-    #   <%= render(Primer::ButtonGroup.new(variant: :large)) do |component| %>
-    #     <% component.button { "Default" } %>
-    #     <% component.button(scheme: :primary) { "Primary" } %>
-    #     <% component.button(scheme: :danger) { "Danger" } %>
-    #     <% component.button(scheme: :outline) { "Outline" } %>
-    #   <% end %>
-    #
     # @param variant [Symbol] <%= one_of(Primer::ButtonComponent::VARIANT_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(variant: Primer::ButtonComponent::DEFAULT_VARIANT, **system_arguments)
