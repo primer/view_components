@@ -9,7 +9,7 @@ class PrimerComponentTest < Minitest::Test
   COMPONENTS_WITH_ARGS = [
     [Primer::Beta::Layout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }
-      component.sidebar(tag: :div) { "Bar" }
+      component.pane(tag: :div) { "Bar" }
     }],
     [Primer::Alpha::Layout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }

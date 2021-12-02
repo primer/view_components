@@ -14,7 +14,7 @@ module Primer
     #
     # @accessibility
     #   Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether
-    #   `main` or `sidebar` comes first in code. The code order won’t affect the visual position.
+    #   `main` or `pane` comes first in code. The code order won’t affect the visual position.
     class Layout < Primer::Component
       WRAPPER_SIZING_DEFAULT = :fluid
       WRAPPER_SIZING_OPTIONS = [WRAPPER_SIZING_DEFAULT, :md, :lg, :xl].freeze
@@ -96,7 +96,7 @@ module Primer
 
       # The layout's sidebar.
       #
-      # @param width [Symbol] <%= one_of(Primer::Beta::Layout::SIDEBAR_WIDTH_OPTIONS) %>
+      # @param width [Symbol] <%= one_of(Primer::Beta::Layout::PANE_WIDTH_OPTIONS) %>
       # @param position [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::Layout::PANE_POSITION_OPTIONS) %>
       # @param responsive_position [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::Layout::PANE_RESPONSIVE_POSITION_OPTIONS) %>
       # @param divider [Boolean] Whether to show a pane line divider.
@@ -306,7 +306,7 @@ module Primer
       # @example Pane widths
       #
       #   @description
-      #     Sets the sidebar width. The width is predetermined according to the breakpoint instead of it being percentage-based.
+      #     Sets the pane width. The width is predetermined according to the breakpoint instead of it being percentage-based.
       #
       #     - `default`:
       #     - `narrow`:
@@ -376,12 +376,12 @@ module Primer
       #     <%= render(Primer::Beta::Layout.new) do |c| %>
       #       <% c.header(border: true) { "Header" } %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Pane" } %>
+      #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::Layout.new) do |c| %>
       #       <% c.header(divider: true, border: true) { "Header" } %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Pane" } %>
+      #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
       #
       # @example Footer
@@ -393,12 +393,12 @@ module Primer
       #   @code
       #     <%= render(Primer::Beta::Layout.new) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Pane" } %>
+      #       <% c.pane(border: true) { "Pane" } %>
       #       <% c.footer(border: true) { "Header" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::Layout.new) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Pane" } %>
+      #       <% c.pane(border: true) { "Pane" } %>
       #       <% c.footer(divider: true, border: true) { "Header" } %>
       #     <% end %>
       #
