@@ -249,6 +249,147 @@
   },
   "Primer::Beta::Breadcrumbs::Item": {
   },
+  "Primer::Beta::Layout": {
+    "Bookend": "Primer::Beta::Layout::Bookend",
+    "COLUMN_GAP_DEFAULT": "none",
+    "COLUMN_GAP_MAPPINGS": {
+      "none": "",
+      "normal": "LayoutBeta--column-gap-normal",
+      "condensed": "LayoutBeta--column-gap-condensed"
+    },
+    "COLUMN_GAP_OPTIONS": [
+      "none",
+      "normal",
+      "condensed"
+    ],
+    "INNER_SPACING_DEFAULT": "none",
+    "INNER_SPACING_MAPPINGS": {
+      "none": "",
+      "normal": "LayoutBeta--inner-spacing-normal",
+      "condensed": "LayoutBeta--inner-spacing-condensed"
+    },
+    "INNER_SPACING_OPTIONS": [
+      "none",
+      "normal",
+      "condensed"
+    ],
+    "Main": "Primer::Beta::Layout::Main",
+    "OUTER_SPACING_DEFAULT": "none",
+    "OUTER_SPACING_MAPPINGS": {
+      "none": "",
+      "normal": "LayoutBeta--outer-spacing-normal",
+      "condensed": "LayoutBeta--outer-spacing-condensed"
+    },
+    "OUTER_SPACING_OPTIONS": [
+      "none",
+      "normal",
+      "condensed"
+    ],
+    "PANE_DIVIDER_DEFAULT": "start",
+    "PANE_DIVIDER_MAPPINGS": {
+      "start": "LayoutBeta--pane-position-start",
+      "end": "LayoutBeta--pane-position-start"
+    },
+    "PANE_DIVIDER_OPTIONS": [
+      "start",
+      "end"
+    ],
+    "PANE_POSITION_DEFAULT": "start",
+    "PANE_POSITION_MAPPINGS": {
+      "start": "LayoutBeta--pane-position-start",
+      "end": "LayoutBeta--pane-position-end"
+    },
+    "PANE_POSITION_OPTIONS": [
+      "start",
+      "end"
+    ],
+    "PANE_RESPONSIVE_POSITION_DEFAULT": "inherit",
+    "PANE_RESPONSIVE_POSITION_MAPPINGS": {
+      "inherit": "",
+      "start": "LayoutBeta--pane-responsive-position-start",
+      "end": "LayoutBeta--pane-responsive-position-end"
+    },
+    "PANE_RESPONSIVE_POSITION_OPTIONS": [
+      "inherit",
+      "start",
+      "end"
+    ],
+    "PANE_WIDTH_DEFAULT": "default",
+    "PANE_WIDTH_MAPPINGS": {
+      "default": "",
+      "narrow": "LayoutBeta--pane-width-narrow",
+      "wide": "LayoutBeta--pane-width-wide"
+    },
+    "PANE_WIDTH_OPTIONS": [
+      "default",
+      "narrow",
+      "wide"
+    ],
+    "Pane": "Primer::Beta::Layout::Pane",
+    "RESPONSIVE_BEHAVIOR_DEFAULT": "flow_vertical",
+    "RESPONSIVE_BEHAVIOR_MAPPINGS": {
+      "flow_vertical": "LayoutBeta--responsive-flowVertical",
+      "split_as_pages": "LayoutBeta--responsive-splitAsPages"
+    },
+    "RESPONSIVE_BEHAVIOR_OPTIONS": [
+      "flow_vertical",
+      "split_as_pages"
+    ],
+    "ROW_GAP_DEFAULT": "none",
+    "ROW_GAP_MAPPINGS": {
+      "none": "",
+      "normal": "LayoutBeta--row-gap-normal",
+      "condensed": "LayoutBeta--row-gap-condensed"
+    },
+    "ROW_GAP_OPTIONS": [
+      "none",
+      "normal",
+      "condensed"
+    ],
+    "WRAPPER_SIZING_DEFAULT": "fluid",
+    "WRAPPER_SIZING_OPTIONS": [
+      "fluid",
+      "md",
+      "lg",
+      "xl"
+    ]
+  },
+  "Primer::Beta::Layout::Bookend": {
+    "RESPONSIVE_DIVIDER_DEFAULT": "none",
+    "RESPONSIVE_DIVIDER_MAPPINGS": {
+      "none": "",
+      "line": "LayoutBeta-region--line-divider",
+      "shallow": "LayoutBeta-region--shallow-divider"
+    },
+    "RESPONSIVE_DIVIDER_OPTIONS": [
+      "none",
+      "line",
+      "shallow"
+    ]
+  },
+  "Primer::Beta::Layout::Main": {
+    "TAG_DEFAULT": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "main"
+    ],
+    "WIDTH_DEFAULT": "full",
+    "WIDTH_OPTIONS": [
+      "full",
+      "md",
+      "lg",
+      "xl"
+    ]
+  },
+  "Primer::Beta::Layout::Pane": {
+    "TAG_DEFAULT": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "aside",
+      "nav",
+      "section"
+    ]
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
@@ -354,7 +495,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",
