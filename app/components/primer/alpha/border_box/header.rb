@@ -3,8 +3,7 @@
 module Primer
   module Alpha
     module BorderBox
-      # BorderBox::Header: used inside the BorderBoxComponent to render its header slot
-      # Optional title slot
+      # `BorderBox::Header` is used inside `BorderBox` to render its header slot.
       #
       # @accessibility When using `header.title`, set `tag` to one of `h1`, `h2`, `h3`, etc. based on what is appropriate for the page context. <%= link_to_heading_practices %>
       class Header < Primer::Component

@@ -5,6 +5,7 @@ module Primer
     # Use `UnderlineNav` to style navigation links with a minimal
     # underlined selected state, typically placed at the top
     # of the page.
+    #
     # For panel navigation, use <%= link_to_component(Primer::Alpha::UnderlinePanels) %> instead.
     #
     # @accessibility
