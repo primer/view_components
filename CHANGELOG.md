@@ -30,6 +30,24 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Breaking Changes
+
+* Rename `caret` argument to `dropdown` in `ButtonComponent`.
+
+    *Manuel Puyol*
+
+* Remove `:large` variant from `ButtonComponent`.
+
+    *Manuel Puyol*
+
+### Deprecations
+
+* Deprecate `icon` and `counter` slots in `ButtonComponent` in favor of `leading_visual` and `trailing_visual`.
+
+    *Manuel Puyol*
+
+## 0.0.62
+
 ### New
 
 * Add linter for tracking deprecated `LayoutComponent` callsites
@@ -37,6 +55,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
     *Josh Klina*
 
 ### Updates
+
+* Update `Button` to add `8px` spacing between icon, text and counter.
+
+    *Manuel Puyol*
 
 * Update `BlankslateApiMigration` linter to support interpolations.
 
@@ -54,13 +76,17 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Breaking Changes
 
-* Add a warning to users if they try to use `tag:` parameters on a component where the tag is fixed
+* Add a warning to users if they try to use `tag:` parameters on a component where the tag is fixed.
 
     *Owen Niblock*
 
-* Updating to @primer/css@19.0.0 and @primer/primitives@7.1.0. Which removes support for deprecated system color arguments
+* Updating to @primer/css@19.0.0 and @primer/primitives@7.1.0. Which removes support for deprecated system color arguments.
 
     *Jon Rohan*
+
+* Prevent `aria-label` to be used with `:div, :span, :p` tags without an explicit `role`.
+
+    *Manuel Puyol*
 
 ## 0.0.61
 
@@ -80,7 +106,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
-* Bump Storybook version to include Skip to Content links for keyboard auditors
+* Bump Storybook version to include Skip to Content links for keyboard auditors.
 
     *Katie Foster @inkblotty*
 
@@ -100,7 +126,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Bug Fixes
 
-* Fix issue where tags were not self-closing when they are void elements
+* Fix issue where tags were not self-closing when they are void elements.
 
     *Owen Niblock*
 

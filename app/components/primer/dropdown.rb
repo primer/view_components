@@ -9,6 +9,7 @@ module Primer
     renders_one :button, lambda { |**system_arguments, &block|
       @button_arguments = system_arguments
       @button_arguments[:button] = true
+      @button_arguments[:dropdown] = @with_caret
 
       view_context.capture { block&.call }
     }

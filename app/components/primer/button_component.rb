@@ -20,20 +20,41 @@ module Primer
     DEFAULT_VARIANT = :medium
     VARIANT_MAPPINGS = {
       :small => "btn-sm",
-      DEFAULT_VARIANT => "",
-      :large => "btn-large"
+      DEFAULT_VARIANT => ""
     }.freeze
     VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
-    # Icon to be rendered in the button.
+    # Leading visuals appear to the left of the button text.
+    #
+    # Use:
+    #
+    # - `leading_visual_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
     #
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
-    renders_one :icon, Primer::OcticonComponent
+    renders_one :leading_visual, types: {
+      icon: lambda { |**system_arguments|
+        system_arguments[:mr] = 2
 
-    # Counter to be rendered in the button.
+        Primer::OcticonComponent.new(**system_arguments)
+      }
+    }
+    alias icon leading_visual_icon # remove alias when all buttons are migrated to new slot names
+
+    # Trailing visuals appear to the right of the button text.
+    #
+    # Use:
+    #
+    # - `trailing_visual_counter` for a <%= link_to_component(Primer::CounterComponent) %>.
     #
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::CounterComponent) %>.
-    renders_one :counter, Primer::CounterComponent
+    renders_one :trailing_visual, types: {
+      counter: lambda { |**system_arguments|
+        system_arguments[:ml] = 2
+
+        Primer::CounterComponent.new(**system_arguments)
+      }
+    }
+    alias counter trailing_visual_counter # remove alias when all buttons are migrated to new slot names
 
     # @example Schemes
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
@@ -46,33 +67,32 @@ module Primer
     # @example Variants
     #   <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>
     #   <%= render(Primer::ButtonComponent.new(variant: :medium)) { "Medium" } %>
-    #   <%= render(Primer::ButtonComponent.new(variant: :large)) { "Large" } %>
     #
     # @example Block
     #   <%= render(Primer::ButtonComponent.new(block: :true)) { "Block" } %>
     #   <%= render(Primer::ButtonComponent.new(block: :true, scheme: :primary)) { "Primary block" } %>
     #
-    # @example With icons
+    # @example With leading visual
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.icon(icon: :star) %>
+    #     <% c.leading_visual_icon(icon: :star) %>
     #     Button
     #   <% end %>
     #
-    # @example With counter
+    # @example With trailing visual
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.counter(count: 15) %>
+    #     <% c.trailing_visual_counter(count: 15) %>
     #     Button
     #   <% end %>
     #
-    # @example With icons and counter
+    # @example With leading and trailing visuals
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.icon(icon: :star) %>
-    #     <% c.counter(count: 15) %>
+    #     <% c.leading_visual_icon(icon: :star) %>
+    #     <% c.trailing_visual_counter(count: 15) %>
     #     Button
     #   <% end %>
     #
-    # @example With caret
-    #   <%= render(Primer::ButtonComponent.new(caret: true)) do %>
+    # @example With dropdown caret
+    #   <%= render(Primer::ButtonComponent.new(dropdown: true)) do %>
     #     Button
     #   <% end %>
     #
@@ -82,18 +102,18 @@ module Primer
     # @param type [Symbol] (Primer::BaseButton::DEFAULT_TYPE) <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
     # @param group_item [Boolean] Whether button is part of a ButtonGroup.
     # @param block [Boolean] Whether button is full-width with `display: block`.
-    # @param caret [Boolean] Whether or not to render a caret.
+    # @param dropdown [Boolean] Whether or not to render a dropdown caret.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       scheme: DEFAULT_SCHEME,
       variant: DEFAULT_VARIANT,
       group_item: false,
       block: false,
-      caret: false,
+      dropdown: false,
       **system_arguments
     )
       @scheme = scheme
-      @caret = caret
+      @dropdown = dropdown
 
       @system_arguments = system_arguments
       @system_arguments[:classes] = class_names(
@@ -110,6 +130,17 @@ module Primer
 
     def link?
       @scheme == LINK_SCHEME
+    end
+
+    def trimmed_content
+      return if content.blank?
+
+      trimmed_content = content.strip
+
+      return trimmed_content unless content.html_safe?
+
+      # strip unsets `html_safe`, so we have to set it back again to guarantee that HTML blocks won't break
+      trimmed_content.html_safe # rubocop:disable Rails/OutputSafety
     end
   end
 end

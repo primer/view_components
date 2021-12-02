@@ -6,6 +6,7 @@ module Primer
   # @private
   class Component < ViewComponent::Base
     include ViewComponent::SlotableV2 unless ViewComponent::Base < ViewComponent::SlotableV2
+    include ViewComponent::PolymorphicSlots
     include ClassNameHelper
     include FetchOrFallbackHelper
     include TestSelectorHelper
@@ -13,6 +14,8 @@ module Primer
     include ViewHelper
     include Status::Dsl
     include Audited::Dsl
+
+    INVALID_ARIA_LABEL_TAGS = [:div, :span, :p].freeze
 
     private
 
@@ -44,7 +47,7 @@ module Primer
     end
 
     def check_denylist(denylist = [], **arguments)
-      if raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
+      if should_raise_error?
 
         # Convert denylist from:
         # { [:p, :pt] => "message" } to:
@@ -69,7 +72,7 @@ module Primer
       arguments
     end
 
-    def validate_arguments(denylist_name: :system_arguments_denylist, **arguments)
+    def validate_arguments(tag:, denylist_name: :system_arguments_denylist, **arguments)
       deny_single_argument(:class, "Use `classes` instead.", **arguments)
 
       if (denylist = arguments[denylist_name])
@@ -80,18 +83,36 @@ module Primer
         arguments.except!(*denylist.keys.flatten)
       end
 
+      deny_aria_label(tag: tag, arguments: arguments)
+
       arguments
     end
 
     def deny_single_argument(key, help_text, **arguments)
       raise ArgumentError, "`#{key}` is an invalid argument. #{help_text}" \
-        if raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"] && arguments.key?(key)
+        if should_raise_error? && arguments.key?(key)
 
       arguments.except!(key)
     end
 
+    def deny_aria_label(tag:, arguments:)
+      return arguments.except!(:skip_aria_label_check) if arguments[:skip_aria_label_check]
+      return if arguments[:role]
+      return unless aria(:label, arguments)
+      return unless INVALID_ARIA_LABEL_TAGS.include?(tag)
+
+      raise ArgumentError, "Don't use `aria-label` on `#{tag}` elements. See https://www.tpgi.com/short-note-on-aria-label-aria-labelledby-and-aria-describedby/" if should_raise_error?
+
+      arguments.except!(:"aria-label")
+      arguments[:aria] = arguments[:aria].except!(:label) if arguments[:aria]
+    end
+
     def deny_tag_argument(**arguments)
       deny_single_argument(:tag, "This component has a fixed tag.", **arguments)
+    end
+
+    def should_raise_error?
+      raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
     end
   end
 end

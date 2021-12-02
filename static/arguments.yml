@@ -372,7 +372,7 @@
   - name: variant
     type: Symbol
     default: "`:medium`"
-    description: One of `:large`, `:medium`, or `:small`.
+    description: One of `:medium` and `:small`.
   - name: tag
     type: Symbol
     default: "`:button`"
@@ -389,10 +389,10 @@
     type: Boolean
     default: "`false`"
     description: 'Whether button is full-width with `display: block`.'
-  - name: caret
+  - name: dropdown
     type: Boolean
     default: "`false`"
-    description: Whether or not to render a caret.
+    description: Whether or not to render a dropdown caret.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -403,7 +403,7 @@
   - name: variant
     type: Symbol
     default: "`:medium`"
-    description: One of `:large`, `:medium`, or `:small`.
+    description: One of `:medium` and `:small`.
   - name: system_arguments
     type: Hash
     default: N/A
