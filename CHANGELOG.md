@@ -32,7 +32,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Deprecations
 
-* Deprecate `variant` in favor of `size` in `ButtonComponent`.
+* Deprecate `variant` in favor of `size` in `ButtonComponent` and `ButtonGroup`.
 
     *Manuel Puyol*
 
