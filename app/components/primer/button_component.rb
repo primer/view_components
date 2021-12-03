@@ -17,12 +17,12 @@ module Primer
     }.freeze
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
-    DEFAULT_VARIANT = :medium
-    VARIANT_MAPPINGS = {
+    DEFAULT_SIZE = :medium
+    SIZE_MAPPINGS = {
       :small => "btn-sm",
-      DEFAULT_VARIANT => ""
+      DEFAULT_SIZE => ""
     }.freeze
-    VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
+    SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
     # Leading visuals appear to the left of the button text.
     #
@@ -64,9 +64,9 @@ module Primer
     #   <%= render(Primer::ButtonComponent.new(scheme: :invisible)) { "Invisible" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :link)) { "Link" } %>
     #
-    # @example Variants
-    #   <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>
-    #   <%= render(Primer::ButtonComponent.new(variant: :medium)) { "Medium" } %>
+    # @example Sizes
+    #   <%= render(Primer::ButtonComponent.new(size: :small)) { "Small" } %>
+    #   <%= render(Primer::ButtonComponent.new(size: :medium)) { "Medium" } %>
     #
     # @example Block
     #   <%= render(Primer::ButtonComponent.new(block: :true)) { "Block" } %>
@@ -97,7 +97,8 @@ module Primer
     #   <% end %>
     #
     # @param scheme [Symbol] <%= one_of(Primer::ButtonComponent::SCHEME_OPTIONS) %>
-    # @param variant [Symbol] <%= one_of(Primer::ButtonComponent::VARIANT_OPTIONS) %>
+    # @param variant [Symbol] DEPRECATED. <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
+    # @param size [Symbol] <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
     # @param tag [Symbol] (Primer::BaseButton::DEFAULT_TAG) <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
     # @param type [Symbol] (Primer::BaseButton::DEFAULT_TYPE) <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
     # @param group_item [Boolean] Whether button is part of a ButtonGroup.
@@ -106,7 +107,8 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       scheme: DEFAULT_SCHEME,
-      variant: DEFAULT_VARIANT,
+      variant: nil,
+      size: DEFAULT_SIZE,
       group_item: false,
       block: false,
       dropdown: false,
@@ -119,7 +121,7 @@ module Primer
       @system_arguments[:classes] = class_names(
         system_arguments[:classes],
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
-        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)],
+        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, variant || size, DEFAULT_SIZE)],
         "btn" => !link?,
         "btn-block" => block,
         "BtnGroup-item" => group_item
