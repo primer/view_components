@@ -50,6 +50,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+### Bug Fixes
+
+* Fix `PopoverComponent`, allowing to reset `left` and `right` positioning.
+
+    *Manuel Puyol*
+
 ## 0.0.62
 
 ### New
