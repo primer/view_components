@@ -299,13 +299,11 @@
     ],
     "VARIANT_MAPPINGS": {
       "small": "btn-sm",
-      "medium": "",
-      "large": "btn-large"
+      "medium": ""
     },
     "VARIANT_OPTIONS": [
       "small",
-      "medium",
-      "large"
+      "medium"
     ]
   },
   "Primer::ButtonGroup": {

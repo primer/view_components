@@ -10,8 +10,8 @@
     url: "/linting"
   - title: Migration
     url: "/migration"
-  - title: Statuses
-    url: "/statuses"
+  - title: Component status
+    url: "/status"
 - title: Components
   url: "/components"
   children:

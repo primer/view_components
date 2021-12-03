@@ -13,7 +13,7 @@ class PublishCLI < Thor::Group
   include Thor::Actions
 
   def release_gem
-    run("bundle exec release")
+    run("bundle exec rake release")
   end
 
   def release_npm
