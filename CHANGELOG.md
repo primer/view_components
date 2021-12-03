@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.63
+
 ### Breaking Changes
 
 * Rename `caret` argument to `dropdown` in `ButtonComponent`.
