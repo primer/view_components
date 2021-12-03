@@ -1578,6 +1578,10 @@
   - border-x
   true:
   - border
+  0:
+  - border-0
+  false:
+  - border-0
 :border_top:
   0:
   - border-top-0
