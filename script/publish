@@ -21,7 +21,7 @@ class PublishCLI < Thor::Group
   end
 
   def github_release
-    run("gh release create v#{version} -n \"#{release_notes}\"")
+    run("gh release create v#{version} -n '#{release_notes}'")
   end
 
   private
