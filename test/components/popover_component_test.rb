@@ -20,6 +20,22 @@ class PrimerPopoverComponentTest < Minitest::Test
     assert_selector("div.Popover div.Popover-message.Box.color-shadow-large", text: "My body")
   end
 
+  def test_without_left_and_right_classes
+    render_inline(Primer::PopoverComponent.new(left: true, right: true)) do |component|
+      component.heading do
+        "My header"
+      end
+      component.body do
+        "My body"
+      end
+    end
+
+    assert_selector("div.Popover")
+    refute_selector(".right-0.left-0")
+    assert_selector("div.Popover div.Popover-message h4.mb-2", text: "My header")
+    assert_selector("div.Popover div.Popover-message.Box.color-shadow-large", text: "My body")
+  end
+
   def test_allows_customization
     render_inline(Primer::PopoverComponent.new(
                     position: :absolute, classes: "custom-class"

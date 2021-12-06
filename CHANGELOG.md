@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.63
+
 ### Breaking Changes
 
 * Rename `caret` argument to `dropdown` in `ButtonComponent`.
@@ -40,9 +42,19 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+* Update `Spinner` to add system arguments to outermost element
+
+    *Charlotte Dann*
+
 ### Deprecations
 
 * Deprecate `icon` and `counter` slots in `ButtonComponent` in favor of `leading_visual` and `trailing_visual`.
+
+    *Manuel Puyol*
+
+### Bug Fixes
+
+* Fix `PopoverComponent`, allowing to reset `left` and `right` positioning.
 
     *Manuel Puyol*
 

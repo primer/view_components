@@ -1497,15 +1497,23 @@
   :normal:
   - text-normal
 :top:
+  0:
+  - top-0
   false:
   - top-0
 :bottom:
+  0:
+  - bottom-0
   false:
   - bottom-0
 :left:
+  0:
+  - left-0
   false:
   - left-0
 :right:
+  0:
+  - right-0
   false:
   - right-0
 :underline:
