@@ -273,6 +273,15 @@
       "normal",
       "condensed"
     ],
+    "MULTI_COLUMNS_VARIANT_AT_DEFAULT": "md",
+    "MULTI_COLUMNS_VARIANT_AT_MAPPINGS": {
+      "md": "LayoutBeta--variant-stackRegions",
+      "lg": "LayoutBeta--variant-separateRegions"
+    },
+    "MULTI_COLUMNS_VARIANT_AT_OPTIONS": [
+      "md",
+      "lg"
+    ],
     "Main": "Primer::Beta::Layout::Main",
     "OUTER_SPACING_DEFAULT": "none",
     "OUTER_SPACING_MAPPINGS": {
@@ -294,20 +303,22 @@
       "start",
       "end"
     ],
-    "PANE_POSITION_DEFAULT": "start",
-    "PANE_POSITION_MAPPINGS": {
-      "start": "LayoutBeta--pane-position-start",
-      "end": "LayoutBeta--pane-position-end"
+    "PANE_RESPONSIVE_DIVIDER_DEFAULT": "none",
+    "PANE_RESPONSIVE_DIVIDER_MAPPINGS": {
+      "none": "",
+      "line": "LayoutBeta--divider-after",
+      "filled": "LayoutBeta--divider-after-filled"
     },
-    "PANE_POSITION_OPTIONS": [
-      "start",
-      "end"
+    "PANE_RESPONSIVE_DIVIDER_OPTIONS": [
+      "none",
+      "line",
+      "filled"
     ],
     "PANE_RESPONSIVE_POSITION_DEFAULT": "inherit",
     "PANE_RESPONSIVE_POSITION_MAPPINGS": {
       "inherit": "",
-      "start": "LayoutBeta--pane-responsive-position-start",
-      "end": "LayoutBeta--pane-responsive-position-end"
+      "start": "LayoutBeta--stackRegions-pane-position-start",
+      "end": "LayoutBeta--stackRegions-pane-position-end"
     },
     "PANE_RESPONSIVE_POSITION_OPTIONS": [
       "inherit",
@@ -326,14 +337,23 @@
       "wide"
     ],
     "Pane": "Primer::Beta::Layout::Pane",
-    "RESPONSIVE_BEHAVIOR_DEFAULT": "flow_vertical",
-    "RESPONSIVE_BEHAVIOR_MAPPINGS": {
-      "flow_vertical": "LayoutBeta--responsive-flowVertical",
-      "split_as_pages": "LayoutBeta--responsive-splitAsPages"
+    "RESPONSIVE_PRIMARY_REGION_DEFAULT": "content",
+    "RESPONSIVE_PRIMARY_REGION_MAPPINGS": {
+      "content": "LayoutBeta--primary-content",
+      "pane": "LayoutBeta--primary-pane"
     },
-    "RESPONSIVE_BEHAVIOR_OPTIONS": [
-      "flow_vertical",
-      "split_as_pages"
+    "RESPONSIVE_PRIMARY_REGION_OPTIONS": [
+      "content",
+      "pane"
+    ],
+    "RESPONSIVE_VARIANT_DEFAULT": "stack_regions",
+    "RESPONSIVE_VARIANT_MAPPINGS": {
+      "stack_regions": "LayoutBeta--variant-stackRegions",
+      "separate_regions": "LayoutBeta--variant-separateRegions"
+    },
+    "RESPONSIVE_VARIANT_OPTIONS": [
+      "stack_regions",
+      "separate_regions"
     ],
     "ROW_GAP_DEFAULT": "none",
     "ROW_GAP_MAPPINGS": {
@@ -347,6 +367,12 @@
       "condensed"
     ],
     "WRAPPER_SIZING_DEFAULT": "fluid",
+    "WRAPPER_SIZING_MAPPINGS": {
+      "fluid": "",
+      "md": "container-md",
+      "lg": "container-lg",
+      "xl": "container-xl"
+    },
     "WRAPPER_SIZING_OPTIONS": [
       "fluid",
       "md",
@@ -358,13 +384,13 @@
     "RESPONSIVE_DIVIDER_DEFAULT": "none",
     "RESPONSIVE_DIVIDER_MAPPINGS": {
       "none": "",
-      "line": "LayoutBeta-region--line-divider",
-      "shallow": "LayoutBeta-region--shallow-divider"
+      "line": "LayoutBeta--divider-after",
+      "filled": "LayoutBeta--divider-after-filled"
     },
     "RESPONSIVE_DIVIDER_OPTIONS": [
       "none",
       "line",
-      "shallow"
+      "filled"
     ]
   },
   "Primer::Beta::Layout::Main": {
@@ -373,15 +399,24 @@
       "div",
       "main"
     ],
-    "WIDTH_DEFAULT": "full",
+    "WIDTH_DEFAULT": "fluid",
     "WIDTH_OPTIONS": [
-      "full",
+      "fluid",
       "md",
       "lg",
       "xl"
     ]
   },
   "Primer::Beta::Layout::Pane": {
+    "POSITION_DEFAULT": "start",
+    "POSITION_MAPPINGS": {
+      "start": "LayoutBeta--pane-position-start",
+      "end": "LayoutBeta--pane-position-end"
+    },
+    "POSITION_OPTIONS": [
+      "start",
+      "end"
+    ],
     "TAG_DEFAULT": "div",
     "TAG_OPTIONS": [
       "div",
@@ -493,7 +528,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",

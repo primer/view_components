@@ -127,7 +127,7 @@ module Primer
       # The layout's sidebar.
       #
       # @param width [Symbol] <%= one_of(Primer::Beta::Layout::PANE_WIDTH_OPTIONS) %>
-      # @param position [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::Layout::PANE_POSITION_OPTIONS) %>
+      # @param position [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::Layout::Pane::POSITION_OPTIONS) %>
       # @param responsive_position [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::Layout::PANE_RESPONSIVE_POSITION_OPTIONS) %>
       # @param divider [Boolean] Whether to show a pane line divider.
       # @param sticky [Boolean] Whether to make the pane sticky. Don’t use it in the presence of footer regions.
