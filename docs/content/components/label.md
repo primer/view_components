@@ -22,7 +22,8 @@ Use `aria-label` if the `Label` or the context around it don't explain the label
 | :- | :- | :- | :- |
 | `tag` | `Symbol` | `:span` | One of `:a`, `:div`, `:span`, or `:summary`. |
 | `scheme` | `Symbol` | `nil` | One of `:danger`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`, `:success`, or `:warning`. |
-| `variant` | `Symbol` | `nil` | One of `nil`, `:inline`, or `:large`. |
+| `size` | `Symbol` | `:medium` | One of `:large` and `:medium`. |
+| `variant` | `Symbol` | `nil` | One of `nil` and `:inline`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Examples
@@ -41,11 +42,20 @@ Use `aria-label` if the `Label` or the context around it don't explain the label
 <%= render(Primer::LabelComponent.new(scheme: :danger)) { "Danger" } %>
 ```
 
+### Sizes
+
+<Example src="<span data-view-component='true' class='Label'>Medium</span><span data-view-component='true' class='Label Label--large'>Large</span>" />
+
+```erb
+<%= render(Primer::LabelComponent.new) { "Medium" } %>
+<%= render(Primer::LabelComponent.new(size: :large)) { "Large" } %>
+```
+
 ### Variants
 
-<Example src="<span data-view-component='true' class='Label'>Default</span><span data-view-component='true' class='Label Label--large'>Large</span>" />
+<Example src="<span data-view-component='true' class='Label'>Default</span><span data-view-component='true' class='Label Label--inline'>Inline</span>" />
 
 ```erb
 <%= render(Primer::LabelComponent.new) { "Default" } %>
-<%= render(Primer::LabelComponent.new(variant: :large)) { "Large" } %>
+<%= render(Primer::LabelComponent.new(variant: :inline)) { "Inline" } %>
 ```

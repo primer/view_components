@@ -528,6 +528,14 @@
       "danger",
       null
     ],
+    "SIZE_MAPPINGS": {
+      "medium": "",
+      "large": "Label--large"
+    },
+    "SIZE_OPTIONS": [
+      "medium",
+      "large"
+    ],
     "TAG_OPTIONS": [
       "span",
       "summary",
@@ -535,11 +543,9 @@
       "div"
     ],
     "VARIANT_MAPPINGS": {
-      "large": "Label--large",
       "inline": "Label--inline"
     },
     "VARIANT_OPTIONS": [
-      "large",
       "inline",
       null
     ]

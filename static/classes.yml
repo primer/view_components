@@ -22,6 +22,7 @@
 - ".Label"
 - ".Label--danger"
 - ".Label--info"
+- ".Label--inline"
 - ".Label--large"
 - ".Label--primary"
 - ".Label--secondary"

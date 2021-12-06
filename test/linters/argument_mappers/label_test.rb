@@ -71,7 +71,7 @@ class ArgumentMappersLabelTest < LinterTestCase
 
     assert_equal({
                    scheme: ":primary",
-                   variant: ":large",
+                   size: ":large",
                    title: '"some title"',
                    mr: 1,
                    p: 3,

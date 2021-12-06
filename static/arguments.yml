@@ -658,10 +658,14 @@
     default: "`nil`"
     description: One of `:danger`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`,
       `:success`, or `:warning`.
+  - name: size
+    type: Symbol
+    default: "`:medium`"
+    description: One of `:large` and `:medium`.
   - name: variant
     type: Symbol
     default: "`nil`"
-    description: One of `nil`, `:inline`, or `:large`.
+    description: One of `nil` and `:inline`.
   - name: system_arguments
     type: Hash
     default: N/A

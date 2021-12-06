@@ -10,7 +10,7 @@ class LabelComponentMigrationCounterTest < LinterTestCase
     @file = "<span class=\"Label Label--large Label--primary\">Label</span>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::LabelComponent.new(variant: :large, scheme: :primary)")
+    assert_includes(offenses.first.message, "render Primer::LabelComponent.new(size: :large, scheme: :primary)")
   end
 
   def test_suggest_title_argument
@@ -63,7 +63,7 @@ class LabelComponentMigrationCounterTest < LinterTestCase
           <%= render Primer::LabelComponent.new(scheme: :info) do %>
             Label 3
             <a>not a Label</a>
-            <%= render Primer::LabelComponent.new(tag: :summary, variant: :large) do %>
+            <%= render Primer::LabelComponent.new(tag: :summary, size: :large) do %>
               summary
               <%= render Primer::LabelComponent.new(tag: :div, test_selector: "test selector") do %>
                 div
