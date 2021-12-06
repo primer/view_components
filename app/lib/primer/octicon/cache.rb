@@ -9,9 +9,10 @@ module Primer
       PRELOADED_ICONS = [:alert, :check, :"chevron-down", :paste, :clock, :"dot-fill", :info, :"kebab-horizontal", :link, :lock, :mail, :pencil, :plus, :question, :repo, :search, :"shield-lock", :star, :trash, :x].freeze
 
       class << self
-        def get_key(**kwargs)
-          correct_key_args?(**kwargs)
-          kwargs.hash
+        def get_key(symbol:, size:, width: nil, height: nil)
+          attrs = { symbol: symbol, size: size, width: width, height: height }
+          attrs.compact!
+          attrs.hash
         end
 
         def read(key)
@@ -36,13 +37,6 @@ module Primer
 
         def preload!
           PRELOADED_ICONS.each { |icon| Primer::OcticonComponent.new(icon: icon) }
-        end
-
-        private
-
-        def correct_key_args?(symbol:, size:, width: nil, height: nil)
-          # This method does nothing but will raise an ArgumentError if the
-          # wrong args are passed.
         end
       end
     end
