@@ -105,6 +105,8 @@
   - border-0
   false:
   - border-0
+  :dashed:
+  - border-dashed
 :border_top:
   0:
   - border-top-0
