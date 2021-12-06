@@ -306,21 +306,22 @@
     default: "`:none`"
     description: Sets the gap below the header and above the footer. One of `:condensed`,
       `:none`, or `:normal`.
-  - name: responsive_behavior
+  - name: responsive_primary_region
     type: Symbol
-    default: "`:flow_vertical`"
-    description: "`responsive_behavior` defines how the layout component adapts to
-      smaller viewports. `:flow_vertical` presents the content in a vertical flow,
-      with pane and content vertically arranged. `:split_as_pages` presents pane and
-      content as different pages on smaller viewports. One of `:flow_vertical` and
-      `:split_as_pages`."
-  - name: responsive_show_pane_first
-    type: Boolean
-    default: "`false`"
-    description: Defines if the pane should be shown first in the responsive layout.
-      If `responsive_behavior` is set to `:flow_vertical`, pane appears above content.
-      If set to `split_as_pages`, pane will appear as a landing page. Use only in
-      the first page of the section.
+    default: "`:content`"
+    description: When `responsive_variant` is set to `:separate_regions`, defines
+      which region appears first on small viewports. `:content` is default.
+  - name: responsive_variant
+    type: Symbol
+    default: "`:stack_regions`"
+    description: Defines how the layout component adapts to smaller viewports. `:stack_regions`
+      presents the content in a vertical flow, with pane and content vertically arranged.
+      `:separate_regions` presents pane and content as different pages on smaller
+      viewports.
+  - name: multi_columns_variant_at
+    type: Symbol
+    default: "`:md`"
+    description: Defines in which breakpoint the two-column layout will kick in.
   - name: system_arguments
     type: Hash
     default: N/A

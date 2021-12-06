@@ -28,17 +28,19 @@ class PrimerBetaLayoutTest < Minitest::Test
     end
   end
 
-  def test_optionally_renders_header
+  def test_optionally_renders_header_and_footer
     render_inline(Primer::Beta::Layout.new) do |c|
       c.header { "Header" }
       c.main { "Main" }
       c.pane { "Pane" }
+      c.footer { "Footer" }
     end
 
     assert_selector("div.LayoutBeta") do
       assert_selector("div.LayoutBeta-header", text: "Header")
       assert_selector("div.LayoutBeta-content", text: "Main")
       assert_selector("div.LayoutBeta-pane", text: "Pane")
+      assert_selector("div.LayoutBeta-footer", text: "Footer")
     end
   end
 
@@ -50,7 +52,7 @@ class PrimerBetaLayoutTest < Minitest::Test
       end
 
       assert_selector("div.LayoutBeta") do
-        assert_selector("div.LayoutBeta-regions#{size == :fluid ? '' : ".container-#{size}"}") do
+        assert_selector("div.LayoutBeta-wrapper#{size == :fluid ? '' : ".container-#{size}"}") do
           assert_selector("div.LayoutBeta-content", text: "Main")
           assert_selector("div.LayoutBeta-pane", text: "Pane")
         end
@@ -117,45 +119,54 @@ class PrimerBetaLayoutTest < Minitest::Test
       end
     end
   end
-
-  def test_responsive_behaviour
-    Primer::Beta::Layout::RESPONSIVE_BEHAVIOR_OPTIONS.each do |behavior|
-      render_inline(Primer::Beta::Layout.new(responsive_behavior: behavior)) do |c|
+  
+  def test_responsive_primary_region
+    Primer::Beta::Layout::RESPONSIVE_PRIMARY_REGION_OPTIONS.each do |region|
+      render_inline(Primer::Beta::Layout.new(responsive_primary_region: region)) do |c|
         c.main { "Main" }
         c.pane { "Pane" }
       end
 
-      behavior_class = Primer::Beta::Layout::RESPONSIVE_BEHAVIOR_MAPPINGS[behavior]
-      assert_selector("div.LayoutBeta#{behavior_class.empty? ? '' : ".#{behavior_class}"}") do
+      region_class = Primer::Beta::Layout::RESPONSIVE_PRIMARY_REGION_MAPPINGS[region]
+      assert_selector("div.LayoutBeta#{region_class.empty? ? '' : ".#{region_class}"}") do
         assert_selector("div.LayoutBeta-content", text: "Main")
         assert_selector("div.LayoutBeta-pane", text: "Pane")
       end
     end
   end
 
-  def test_responsive_show_pane_first
-    render_inline(Primer::Beta::Layout.new(responsive_show_pane_first: true)) do |c|
-      c.main { "Main" }
-      c.pane { "Pane" }
-    end
+  def test_responsive_variant
+    Primer::Beta::Layout::RESPONSIVE_VARIANT_OPTIONS.each do |variant|
+      render_inline(Primer::Beta::Layout.new(responsive_variant: variant)) do |c|
+        c.main { "Main" }
+        c.pane { "Pane" }
+      end
 
-    assert_selector("div.LayoutBeta.LayoutBeta--responsive-pane-first") do
-      assert_selector("div.LayoutBeta-content", text: "Main")
-      assert_selector("div.LayoutBeta-pane", text: "Pane")
+      variant_class = Primer::Beta::Layout::RESPONSIVE_VARIANT_MAPPINGS[variant]
+      assert_selector("div.LayoutBeta#{variant_class.empty? ? '' : ".#{variant_class}"}") do
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      end
     end
   end
 
-  def test_responsive_show_pane_first_not_set_by_default
-    render_inline(Primer::Beta::Layout.new) do |c|
-      c.main { "Main" }
-      c.pane { "Pane" }
-    end
+  def test_multi_columns_variant_at
+    Primer::Beta::Layout::MULTI_COLUMNS_VARIANT_AT_OPTIONS.each do |variant|
+      render_inline(Primer::Beta::Layout.new(multi_columns_variant_at: variant)) do |c|
+        c.main { "Main" }
+        c.pane { "Pane" }
+      end
 
-    refute_selector("div.LayoutBeta.LayoutBeta--responsive-pane-first")
+      variant_class = Primer::Beta::Layout::MULTI_COLUMNS_VARIANT_AT_MAPPINGS[variant]
+      assert_selector("div.LayoutBeta#{variant_class.empty? ? '' : ".#{variant_class}"}") do
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      end
+    end
   end
 
-  def test_pane_position
-    Primer::Beta::Layout::PANE_POSITION_OPTIONS.each do |position|
+  def test_pane_position_add_correct_class
+    Primer::Beta::Layout::Pane::POSITION_OPTIONS.each do |position|
       render_inline(Primer::Beta::Layout.new) do |c|
         c.main { "Main" }
         c.pane(position: position) { "Pane" }
@@ -170,6 +181,24 @@ class PrimerBetaLayoutTest < Minitest::Test
     end
   end
 
+  def test_pane_position_renders_pane_first
+    render_inline(Primer::Beta::Layout.new) do |c|
+      c.main { "Main" }
+      c.pane(position: :start) { "Pane" }
+    end
+
+    assert_match(/LayoutBeta-pane.*LayoutBeta-content/m, @rendered_component)
+  end
+
+  def test_pane_position_renders_pane_last
+    render_inline(Primer::Beta::Layout.new) do |c|
+      c.main { "Main" }
+      c.pane(position: :end) { "Pane" }
+    end
+
+    assert_match(/LayoutBeta-content.*LayoutBeta-pane/m, @rendered_component)
+  end
+
   def test_pane_responsive_position
     Primer::Beta::Layout::PANE_RESPONSIVE_POSITION_OPTIONS.each do |position|
       render_inline(Primer::Beta::Layout.new) do |c|
@@ -177,21 +206,10 @@ class PrimerBetaLayoutTest < Minitest::Test
         c.pane(responsive_position: position) { "Pane" }
       end
 
-      # When set to `:inherit`, the responsive position is inherited from `position`
-      if position == Primer::Beta::Layout::PANE_RESPONSIVE_POSITION_DEFAULT
-        assert_selector("div.LayoutBeta") do
-          assert_selector("div.LayoutBeta--pane-responsive-position-start") do
-            assert_selector("div.LayoutBeta-content", text: "Main")
-            assert_selector("div.LayoutBeta-pane", text: "Pane")
-          end
-        end
-      else
-        assert_selector("div.LayoutBeta") do
-          assert_selector("div.LayoutBeta--pane-responsive-position-#{position}") do
-            assert_selector("div.LayoutBeta-content", text: "Main")
-            assert_selector("div.LayoutBeta-pane", text: "Pane")
-          end
-        end
+      position_class = Primer::Beta::Layout::PANE_RESPONSIVE_POSITION_MAPPINGS[position]
+      assert_selector("div.LayoutBeta#{position_class.empty? ? '' : ".#{position_class}"}") do
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
       end
     end
   end
@@ -209,6 +227,28 @@ class PrimerBetaLayoutTest < Minitest::Test
           assert_selector("div.LayoutBeta-content", text: "Main")
           assert_selector("div.LayoutBeta-pane", text: "Pane")
         end
+      end
+    end
+  end
+
+  def test_main_width
+    Primer::Beta::Layout::Main::WIDTH_OPTIONS.each do |width|
+      render_inline(Primer::Beta::Layout.new) do |c|
+        c.main(width: width) { "Main" }
+        c.pane { "Pane" }
+      end
+
+      assert_selector("div.LayoutBeta-regions") do
+        assert_selector("div.LayoutBeta-content") do
+          if width == :fluid
+            assert_text("Main")
+          else
+            assert_selector("div.LayoutBeta-content-centered-#{width}") do
+              assert_selector("div.container-#{width}", text: "Main")
+            end
+          end
+        end
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
       end
     end
   end
@@ -234,6 +274,21 @@ class PrimerBetaLayoutTest < Minitest::Test
     refute_selector("div.LayoutBeta.LayoutBeta--pane-divider")
   end
 
+  # def test_pane_responsive_divider
+  #   Primer::Beta::Layout::PANE_RESPONSIVE_DIVIDER_OPTIONS.each do |type|
+  #     render_inline(Primer::Beta::Layout.new) do |c|
+  #       c.main { "Main" }
+  #       c.pane(responsive_divider: type) { "Pane" }
+  #     end
+
+  #     type_class = Primer::Beta::Layout::PANE_RESPONSIVE_DIVIDER_MAPPINGS[type]
+  #     assert_selector("div.LayoutBeta") do
+  #       assert_selector("div.LayoutBeta-content", text: "Main")
+  #       assert_selector("div.LayoutBeta-pane#{type_class.empty? ? '' : ".#{type_class}"}", text: "Pane")
+  #     end
+  #   end
+  # end
+
   def test_pane_sticky_present_when_set
     render_inline(Primer::Beta::Layout.new) do |c|
       c.main { "Main" }
@@ -255,16 +310,6 @@ class PrimerBetaLayoutTest < Minitest::Test
     refute_selector("div.LayoutBeta.LayoutBeta--pane-divider")
   end
 
-  def test_header_class_present_when_header_present
-    render_inline(Primer::Beta::Layout.new) do |c|
-      c.header { "Header" }
-      c.main { "Main" }
-      c.pane { "Pane" }
-    end
-
-    assert_selector("div.LayoutBeta.LayoutBeta--has-header")
-  end
-
   def test_header_divider_present_when_set
     render_inline(Primer::Beta::Layout.new) do |c|
       c.header(divider: true) { "Header" }
@@ -272,7 +317,7 @@ class PrimerBetaLayoutTest < Minitest::Test
       c.pane { "Pane" }
     end
 
-    assert_selector("div.LayoutBeta.LayoutBeta--has-header.LayoutBeta--header-divider")
+    assert_selector("div.LayoutBeta.LayoutBeta--header-divider")
   end
 
   def test_header_divider_not_present_when_not_set
@@ -300,16 +345,6 @@ class PrimerBetaLayoutTest < Minitest::Test
         assert_selector("div.LayoutBeta-pane", text: "Pane")
       end
     end
-  end
-
-  def test_footer_class_present_when_footer_present
-    render_inline(Primer::Beta::Layout.new) do |c|
-      c.main { "Main" }
-      c.pane { "Pane" }
-      c.footer { "Footer" }
-    end
-
-    assert_selector("div.LayoutBeta.LayoutBeta--has-footer")
   end
 
   def test_footer_divider_present_when_set

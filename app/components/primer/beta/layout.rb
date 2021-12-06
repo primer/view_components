@@ -16,8 +16,16 @@ module Primer
     #   Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether
     #   `main` or `pane` comes first in code. The code order won’t affect the visual position.
     class Layout < Primer::Component
+      status :beta
+
       WRAPPER_SIZING_DEFAULT = :fluid
-      WRAPPER_SIZING_OPTIONS = [WRAPPER_SIZING_DEFAULT, :md, :lg, :xl].freeze
+      WRAPPER_SIZING_MAPPINGS = {
+        WRAPPER_SIZING_DEFAULT => "",
+        :md => "container-md",
+        :lg => "container-lg",
+        :xl => "container-xl",
+      }.freeze
+      WRAPPER_SIZING_OPTIONS = WRAPPER_SIZING_MAPPINGS.keys.freeze
 
       OUTER_SPACING_DEFAULT = :none
       OUTER_SPACING_MAPPINGS = {
@@ -51,12 +59,33 @@ module Primer
       }.freeze
       ROW_GAP_OPTIONS = ROW_GAP_MAPPINGS.keys.freeze
 
-      RESPONSIVE_BEHAVIOR_DEFAULT = :flow_vertical
-      RESPONSIVE_BEHAVIOR_MAPPINGS = {
-        RESPONSIVE_BEHAVIOR_DEFAULT => "LayoutBeta--responsive-flowVertical",
-        :split_as_pages => "LayoutBeta--responsive-splitAsPages"
+      # RESPONSIVE_BEHAVIOR_DEFAULT = :flow_vertical
+      # RESPONSIVE_BEHAVIOR_MAPPINGS = {
+      #   RESPONSIVE_BEHAVIOR_DEFAULT => "LayoutBeta--responsive-flowVertical",
+      #   :split_as_pages => "LayoutBeta--responsive-splitAsPages"
+      # }.freeze
+      # RESPONSIVE_BEHAVIOR_OPTIONS = RESPONSIVE_BEHAVIOR_MAPPINGS.keys.freeze
+
+      RESPONSIVE_VARIANT_DEFAULT = :stack_regions
+      RESPONSIVE_VARIANT_MAPPINGS = {
+        RESPONSIVE_VARIANT_DEFAULT => "LayoutBeta--variant-stackRegions",
+        :separate_regions => "LayoutBeta--variant-separateRegions"
       }.freeze
-      RESPONSIVE_BEHAVIOR_OPTIONS = RESPONSIVE_BEHAVIOR_MAPPINGS.keys.freeze
+      RESPONSIVE_VARIANT_OPTIONS = RESPONSIVE_VARIANT_MAPPINGS.keys.freeze
+
+      RESPONSIVE_PRIMARY_REGION_DEFAULT = :content
+      RESPONSIVE_PRIMARY_REGION_MAPPINGS = {
+        RESPONSIVE_PRIMARY_REGION_DEFAULT => "LayoutBeta--primary-content",
+        :pane => "LayoutBeta--primary-pane"
+      }.freeze
+      RESPONSIVE_PRIMARY_REGION_OPTIONS = RESPONSIVE_PRIMARY_REGION_MAPPINGS.keys.freeze
+
+      MULTI_COLUMNS_VARIANT_AT_DEFAULT = :md
+      MULTI_COLUMNS_VARIANT_AT_MAPPINGS = {
+        MULTI_COLUMNS_VARIANT_AT_DEFAULT => "LayoutBeta--variant-stackRegions",
+        :lg => "LayoutBeta--variant-separateRegions",
+      }.freeze
+      MULTI_COLUMNS_VARIANT_AT_OPTIONS = MULTI_COLUMNS_VARIANT_AT_MAPPINGS.keys.freeze
 
       PANE_WIDTH_DEFAULT = :default
       PANE_WIDTH_MAPPINGS = {
@@ -66,18 +95,11 @@ module Primer
       }.freeze
       PANE_WIDTH_OPTIONS = PANE_WIDTH_MAPPINGS.keys.freeze
 
-      PANE_POSITION_DEFAULT = :start
-      PANE_POSITION_MAPPINGS = {
-        PANE_POSITION_DEFAULT => "LayoutBeta--pane-position-start",
-        :end => "LayoutBeta--pane-position-end"
-      }.freeze
-      PANE_POSITION_OPTIONS = PANE_POSITION_MAPPINGS.keys.freeze
-
       PANE_RESPONSIVE_POSITION_DEFAULT = :inherit
       PANE_RESPONSIVE_POSITION_MAPPINGS = {
         PANE_RESPONSIVE_POSITION_DEFAULT => "",
-        :start => "LayoutBeta--pane-responsive-position-start",
-        :end => "LayoutBeta--pane-responsive-position-end"
+        :start => "LayoutBeta--stackRegions-pane-position-start",
+        :end => "LayoutBeta--stackRegions-pane-position-end"
       }.freeze
       PANE_RESPONSIVE_POSITION_OPTIONS = PANE_RESPONSIVE_POSITION_MAPPINGS.keys.freeze
 
@@ -87,6 +109,14 @@ module Primer
         :end => "LayoutBeta--pane-position-start"
       }.freeze
       PANE_DIVIDER_OPTIONS = PANE_DIVIDER_MAPPINGS.keys.freeze
+
+      PANE_RESPONSIVE_DIVIDER_DEFAULT = :none
+      PANE_RESPONSIVE_DIVIDER_MAPPINGS = {
+        PANE_RESPONSIVE_DIVIDER_DEFAULT => "",
+        :line => "LayoutBeta--divider-after",
+        :filled => "LayoutBeta--divider-after-filled"
+      }.freeze
+      PANE_RESPONSIVE_DIVIDER_OPTIONS = PANE_RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
 
       # The layout's main content.
       #
@@ -104,25 +134,26 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :pane, lambda { |
         width: PANE_WIDTH_DEFAULT,
-        position: PANE_POSITION_DEFAULT,
+        position: Pane::POSITION_DEFAULT,
         responsive_position: PANE_RESPONSIVE_POSITION_DEFAULT,
         sticky: false,
         divider: false,
+        responsive_divider: PANE_RESPONSIVE_DIVIDER_DEFAULT,
         **system_arguments
       |
-        responsive_position = position if responsive_position == :inherit
 
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          PANE_POSITION_MAPPINGS[fetch_or_fallback(PANE_POSITION_OPTIONS, position, PANE_POSITION_DEFAULT)],
+          Pane::POSITION_MAPPINGS[fetch_or_fallback(Pane::POSITION_OPTIONS, position, Pane::POSITION_DEFAULT)],
           PANE_RESPONSIVE_POSITION_MAPPINGS[fetch_or_fallback(PANE_RESPONSIVE_POSITION_OPTIONS, responsive_position, PANE_RESPONSIVE_POSITION_DEFAULT)],
+          PANE_RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(PANE_RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, PANE_RESPONSIVE_DIVIDER_DEFAULT)],
           PANE_WIDTH_MAPPINGS[fetch_or_fallback(PANE_WIDTH_OPTIONS, width, PANE_WIDTH_DEFAULT)],
           { "LayoutBeta--pane-divider" => divider },
           { "LayoutBeta--pane-is-sticky" => sticky }
         )
 
-        Primer::Beta::Layout::Pane.new(**system_arguments)
+        Primer::Beta::Layout::Pane.new(position: position, **system_arguments)
       }
 
       # The layout's header.
@@ -134,7 +165,6 @@ module Primer
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          "LayoutBeta--has-header",
           "LayoutBeta--header-divider" => divider
         )
 
@@ -407,8 +437,9 @@ module Primer
       # @param inner_spacing [Symbol] Sets padding to regions individually. <%= one_of(Primer::Beta::Layout::INNER_SPACING_OPTIONS) %>
       # @param column_gap [Symbol] Sets gap between columns. <%= one_of(Primer::Beta::Layout::COLUMN_GAP_OPTIONS) %>
       # @param row_gap [Symbol] Sets the gap below the header and above the footer. <%= one_of(Primer::Beta::Layout::ROW_GAP_OPTIONS) %>
-      # @param responsive_behavior [Symbol] `responsive_behavior` defines how the layout component adapts to smaller viewports. `:flow_vertical` presents the content in a vertical flow, with pane and content vertically arranged. `:split_as_pages` presents pane and content as different pages on smaller viewports. <%= one_of(Primer::Beta::Layout::RESPONSIVE_BEHAVIOR_OPTIONS) %>
-      # @param responsive_show_pane_first [Boolean] Defines if the pane should be shown first in the responsive layout. If `responsive_behavior` is set to `:flow_vertical`, pane appears above content. If set to `split_as_pages`, pane will appear as a landing page. Use only in the first page of the section.
+      # @param responsive_primary_region [Symbol] When `responsive_variant` is set to `:separate_regions`, defines which region appears first on small viewports. `:content` is default.
+      # @param responsive_variant [Symbol] Defines how the layout component adapts to smaller viewports. `:stack_regions` presents the content in a vertical flow, with pane and content vertically arranged. `:separate_regions` presents pane and content as different pages on smaller viewports.
+      # @param multi_columns_variant_at [Symbol] Defines in which breakpoint the two-column layout will kick in.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         wrapper_sizing: WRAPPER_SIZING_DEFAULT,
@@ -416,11 +447,12 @@ module Primer
         inner_spacing: INNER_SPACING_DEFAULT,
         column_gap: COLUMN_GAP_DEFAULT,
         row_gap: ROW_GAP_DEFAULT,
-        responsive_behavior: RESPONSIVE_BEHAVIOR_DEFAULT,
-        responsive_show_pane_first: false,
+        responsive_primary_region: RESPONSIVE_PRIMARY_REGION_DEFAULT,
+        responsive_variant: RESPONSIVE_VARIANT_DEFAULT,
+        multi_columns_variant_at: MULTI_COLUMNS_VARIANT_AT_DEFAULT,
         **system_arguments
       )
-        @wrapper_sizing = fetch_or_fallback(WRAPPER_SIZING_OPTIONS, wrapper_sizing, WRAPPER_SIZING_DEFAULT)
+        @wrapper_sizing_class = WRAPPER_SIZING_MAPPINGS[fetch_or_fallback(WRAPPER_SIZING_OPTIONS, wrapper_sizing, WRAPPER_SIZING_DEFAULT)]
 
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
@@ -430,8 +462,9 @@ module Primer
           INNER_SPACING_MAPPINGS[fetch_or_fallback(INNER_SPACING_OPTIONS, inner_spacing, INNER_SPACING_DEFAULT)],
           COLUMN_GAP_MAPPINGS[fetch_or_fallback(COLUMN_GAP_OPTIONS, column_gap, COLUMN_GAP_DEFAULT)],
           ROW_GAP_MAPPINGS[fetch_or_fallback(ROW_GAP_OPTIONS, row_gap, ROW_GAP_DEFAULT)],
-          RESPONSIVE_BEHAVIOR_MAPPINGS[fetch_or_fallback(RESPONSIVE_BEHAVIOR_OPTIONS, responsive_behavior, RESPONSIVE_BEHAVIOR_DEFAULT)],
-          { "LayoutBeta--responsive-pane-first" => responsive_show_pane_first },
+          RESPONSIVE_PRIMARY_REGION_MAPPINGS[fetch_or_fallback(RESPONSIVE_PRIMARY_REGION_OPTIONS, responsive_primary_region, RESPONSIVE_PRIMARY_REGION_DEFAULT)],
+          RESPONSIVE_VARIANT_MAPPINGS[fetch_or_fallback(RESPONSIVE_VARIANT_OPTIONS, responsive_variant, RESPONSIVE_VARIANT_DEFAULT)],
+          MULTI_COLUMNS_VARIANT_AT_MAPPINGS[fetch_or_fallback(MULTI_COLUMNS_VARIANT_AT_OPTIONS, multi_columns_variant_at, MULTI_COLUMNS_VARIANT_AT_DEFAULT)],
           system_arguments[:classes]
         )
       end
@@ -442,7 +475,7 @@ module Primer
 
       # The layout's main content.
       class Main < Primer::Component
-        WIDTH_DEFAULT = :full
+        WIDTH_DEFAULT = :fluid
         WIDTH_OPTIONS = [WIDTH_DEFAULT, :md, :lg, :xl].freeze
 
         TAG_DEFAULT = :div
@@ -457,6 +490,7 @@ module Primer
           @system_arguments = system_arguments
           @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
           @system_arguments[:classes] = class_names(
+            "LayoutBeta-region",
             "LayoutBeta-content",
             system_arguments[:classes]
           )
@@ -464,10 +498,10 @@ module Primer
 
         def call
           render(Primer::BaseComponent.new(**@system_arguments)) do
-            if @width == :full
+            if @width == :fluid
               content
             else
-              render(Primer::BaseComponent.new(tag: :div, classes: "Layout-main-centered-#{@width}")) do
+              render(Primer::BaseComponent.new(tag: :div, classes: "LayoutBeta-content-centered-#{@width}")) do
                 render(Primer::BaseComponent.new(tag: :div, container: @width)) do
                   content
                 end
@@ -482,8 +516,8 @@ module Primer
         RESPONSIVE_DIVIDER_DEFAULT = :none
         RESPONSIVE_DIVIDER_MAPPINGS = {
           RESPONSIVE_DIVIDER_DEFAULT => "",
-          :line => "LayoutBeta-region--line-divider",
-          :shallow => "LayoutBeta-region--shallow-divider"
+          :line => "LayoutBeta--divider-after",
+          :filled => "LayoutBeta--divider-after-filled"
         }.freeze
         RESPONSIVE_DIVIDER_OPTIONS = RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
         # @param responsive_divider [Symbol] <%= one_of(Primer::Beta::Layout::Bookend::RESPONSIVE_DIVIDER_OPTIONS) %>
@@ -492,7 +526,6 @@ module Primer
           @system_arguments = system_arguments
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
-            "LayoutBeta-region",
             RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, RESPONSIVE_DIVIDER_DEFAULT)]
           )
         end
@@ -504,18 +537,31 @@ module Primer
 
       # The layout's pane content. This is a secondary, smaller region that is paired with the `Main` region.
       class Pane < Primer::Component
+        POSITION_DEFAULT = :start
+        POSITION_MAPPINGS = {
+          POSITION_DEFAULT => "LayoutBeta--pane-position-start",
+          :end => "LayoutBeta--pane-position-end"
+        }.freeze
+        POSITION_OPTIONS = POSITION_MAPPINGS.keys.freeze
+
         TAG_DEFAULT = :div
         TAG_OPTIONS = [TAG_DEFAULT, :aside, :nav, :section].freeze
 
         # @param tag [Symbol] <%= one_of(Primer::Beta::Layout::Pane::TAG_OPTIONS) %>
-        def initialize(tag: TAG_DEFAULT, **system_arguments)
+        def initialize(position: POSITION_DEFAULT, tag: TAG_DEFAULT, **system_arguments)
           @system_arguments = system_arguments
+          @position = position
 
           @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
           @system_arguments[:classes] = class_names(
+            "LayoutBeta-region",
             "LayoutBeta-pane",
             @system_arguments[:classes]
           )
+        end
+
+        def render_first?
+          @position == :start
         end
 
         def call
