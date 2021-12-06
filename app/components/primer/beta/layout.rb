@@ -59,13 +59,6 @@ module Primer
       }.freeze
       ROW_GAP_OPTIONS = ROW_GAP_MAPPINGS.keys.freeze
 
-      # RESPONSIVE_BEHAVIOR_DEFAULT = :flow_vertical
-      # RESPONSIVE_BEHAVIOR_MAPPINGS = {
-      #   RESPONSIVE_BEHAVIOR_DEFAULT => "LayoutBeta--responsive-flowVertical",
-      #   :split_as_pages => "LayoutBeta--responsive-splitAsPages"
-      # }.freeze
-      # RESPONSIVE_BEHAVIOR_OPTIONS = RESPONSIVE_BEHAVIOR_MAPPINGS.keys.freeze
-
       RESPONSIVE_VARIANT_DEFAULT = :stack_regions
       RESPONSIVE_VARIANT_MAPPINGS = {
         RESPONSIVE_VARIANT_DEFAULT => "LayoutBeta--variant-stackRegions",
