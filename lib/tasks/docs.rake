@@ -29,7 +29,9 @@ namespace :docs do
     # Rails controller for rendering arbitrary ERB
     view_context = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context
     components = [
-      Primer::Beta::Layout,
+      Primer::Beta::SplitLayout,
+      Primer::Beta::PageLayout,
+      Primer::Beta::BaseLayout,
       Primer::Alpha::Layout,
       Primer::HellipButton,
       Primer::Alpha::BorderBox::Header,

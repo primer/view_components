@@ -10,9 +10,10 @@ class AllComponentsHaveStoriesTest < Minitest::Test
     Primer::Beta::Breadcrumbs::Item,
     Primer::Alpha::Layout::Main,
     Primer::Alpha::Layout::Sidebar,
-    Primer::Beta::Layout::Main,
-    Primer::Beta::Layout::Pane,
-    Primer::Beta::Layout::Bookend,
+    Primer::Beta::BaseLayout,
+    Primer::Beta::BaseLayout::Main,
+    Primer::Beta::BaseLayout::Pane,
+    Primer::Beta::BaseLayout::Bookend,
   ].freeze
 
   COMPONENTS = Primer::Component.descendants - EXCLUDED_COMPONENTS

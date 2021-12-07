@@ -7,7 +7,17 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
-    [Primer::Beta::Layout, {}, proc { |component|
+    [Primer::Beta::SplitLayout, {}],
+    [Primer::Beta::PageLayout, {}],
+    [Primer::Beta::BaseLayout, {}, proc { |component|
+      component.main(tag: :div) { "Foo" }
+      component.pane(tag: :div) { "Bar" }
+    }],
+    [Primer::Beta::PageLayout, {}, proc { |component|
+      component.main(tag: :div) { "Foo" }
+      component.pane(tag: :div) { "Bar" }
+    }],
+    [Primer::Beta::SplitLayout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }
       component.pane(tag: :div) { "Bar" }
     }],

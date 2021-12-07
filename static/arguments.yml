@@ -326,6 +326,48 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: PageLayout
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/page_layout.rb
+  parameters:
+  - name: wrapper_sizing
+    type: Symbol
+    default: "`Layout::WRAPPER_SIZING_DEFAULT`"
+    description: The size of the container wrapping `Layout`. One of `:fluid`, `:lg`,
+      `:md`, or `:xl`.
+  - name: outer_spacing
+    type: Symbol
+    default: "`Layout::OUTER_SPACING_DEFAULT`"
+    description: Sets wrapper margins surrounding the component to distance itself
+      from the viewport edges. One of `:condensed`, `:none`, or `:normal`.
+  - name: column_gap
+    type: Symbol
+    default: "`Layout::COLUMN_GAP_DEFAULT`"
+    description: Sets gap between columns. One of `:condensed`, `:none`, or `:normal`.
+  - name: row_gap
+    type: Symbol
+    default: "`Layout::ROW_GAP_DEFAULT`"
+    description: Sets the gap below the header and above the footer. One of `:condensed`,
+      `:none`, or `:normal`.
+  - name: responsive_primary_region
+    type: Symbol
+    default: "`Layout::RESPONSIVE_PRIMARY_REGION_DEFAULT`"
+    description: When `responsive_variant` is set to `:separate_regions`, defines
+      which region appears first on small viewports. `:content` is default.
+  - name: responsive_variant
+    type: Symbol
+    default: "`Layout::RESPONSIVE_VARIANT_DEFAULT`"
+    description: Defines how the layout component adapts to smaller viewports. `:stack_regions`
+      presents the content in a vertical flow, with pane and content vertically arranged.
+      `:separate_regions` presents pane and content as different pages on smaller
+      viewports.
+  - name: multi_columns_variant_at
+    type: Symbol
+    default: "`Layout::MULTI_COLUMNS_VARIANT_AT_DEFAULT`"
+    description: Defines in which breakpoint the two-column layout will kick in.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Text
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb
   parameters:

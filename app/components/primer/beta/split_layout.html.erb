@@ -1,0 +1,10 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <%= render(Primer::BaseComponent.new(tag: :div, classes: "LayoutBeta-wrapper")) do %>
+    <%= header %>
+    <%= render(Primer::BaseComponent.new(tag: :div, classes: "LayoutBeta-regions")) do %>
+      <%= pane %>
+      <%= main %>
+    <% end %>
+    <%= footer %>
+  <% end %>
+<% end %>
