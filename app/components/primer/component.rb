@@ -106,9 +106,6 @@ module Primer
       return unless INVALID_ARIA_LABEL_TAGS.include?(tag)
 
       raise ArgumentError, "Don't use `aria-label` on `#{tag}` elements. See https://www.tpgi.com/short-note-on-aria-label-aria-labelledby-and-aria-describedby/" if should_raise_aria_error?
-
-      arguments.except!(:"aria-label")
-      arguments[:aria] = arguments[:aria].except!(:label) if arguments[:aria]
     end
 
     def deny_tag_argument(**arguments)
