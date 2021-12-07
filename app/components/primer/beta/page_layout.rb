@@ -74,6 +74,14 @@ module Primer
         :pane => "LayoutBeta--primary-pane"
       }.freeze
       RESPONSIVE_PRIMARY_REGION_OPTIONS = RESPONSIVE_PRIMARY_REGION_MAPPINGS.keys.freeze
+
+      RESPONSIVE_VARIANT_DEFAULT = :stack_regions
+      RESPONSIVE_VARIANT_MAPPINGS = {
+        RESPONSIVE_VARIANT_DEFAULT => "LayoutBeta--variant-stackRegions",
+        :separate_regions => "LayoutBeta--variant-separateRegions"
+      }.freeze
+      RESPONSIVE_VARIANT_OPTIONS = RESPONSIVE_VARIANT_MAPPINGS.keys.freeze
+
       # The layout's main content.
       #
       # @param width [Symbol] <%= one_of(Primer::Beta::PageLayout::Main::WIDTH_OPTIONS) %>
@@ -192,6 +200,7 @@ module Primer
         outer_spacing: OUTER_SPACING_DEFAULT,
         column_gap: COLUMN_GAP_DEFAULT,
         row_gap: ROW_GAP_DEFAULT,
+        responsive_variant: RESPONSIVE_VARIANT_DEFAULT,
         responsive_primary_region: RESPONSIVE_PRIMARY_REGION_DEFAULT,
         **system_arguments
       )
@@ -205,12 +214,7 @@ module Primer
           COLUMN_GAP_MAPPINGS[fetch_or_fallback(COLUMN_GAP_OPTIONS, column_gap, COLUMN_GAP_DEFAULT)],
           ROW_GAP_MAPPINGS[fetch_or_fallback(ROW_GAP_OPTIONS, row_gap, ROW_GAP_DEFAULT)],
           RESPONSIVE_PRIMARY_REGION_MAPPINGS[fetch_or_fallback(RESPONSIVE_PRIMARY_REGION_OPTIONS, responsive_primary_region, RESPONSIVE_PRIMARY_REGION_DEFAULT)],
-          "LayoutBeta--variant-separateRegions",
-          "LayoutBeta--column-gap-none",
-          "LayoutBeta--row-gap-none",
-          "LayoutBeta--pane-position-start",
-          "LayoutBeta--pane-divider",
-          "LayoutBeta--variant-md-multiColumns",
+          RESPONSIVE_VARIANT_MAPPINGS[fetch_or_fallback(RESPONSIVE_VARIANT_OPTIONS, responsive_variant, RESPONSIVE_VARIANT_DEFAULT)],
           system_arguments[:classes]
         )
       end

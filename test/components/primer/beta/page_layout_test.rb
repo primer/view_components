@@ -143,6 +143,21 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     end
   end
 
+  def test_responsive_variant
+    Primer::Beta::PageLayout::RESPONSIVE_VARIANT_OPTIONS.each do |variant|
+      render_inline(Primer::Beta::PageLayout.new(responsive_variant: variant)) do |c|
+        c.main { "Main" }
+        c.pane { "Pane" }
+      end
+
+      variant_class = Primer::Beta::PageLayout::RESPONSIVE_VARIANT_MAPPINGS[variant]
+      assert_selector("div.LayoutBeta#{variant_class.empty? ? '' : ".#{variant_class}"}") do
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      end
+    end
+  end
+
   def test_pane_width
     Primer::Beta::PageLayout::PANE_WIDTH_OPTIONS.each do |size|
       render_inline(Primer::Beta::PageLayout.new) do |c|
