@@ -55,6 +55,26 @@ The layout's sidebar.
 | `tag` | `Symbol` | N/A | One of `:aside`, `:div`, `:nav`, or `:section`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
+### `Header`
+
+The layout's header.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `divider` | `Boolean` | N/A | Whether to show a header divider |
+| `responsive_divider` | `Boolean` | N/A | Whether to show a divider below the `header` region if in responsive mode |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
+### `Footer`
+
+The layout's footer.
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `divider` | `Boolean` | N/A | Whether to show a footer divider |
+| `responsive_divider` | `Boolean` | N/A | Whether to show a divider below the `footer` region if in responsive mode |
+| `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
+
 ## Examples
 
 ### Default
