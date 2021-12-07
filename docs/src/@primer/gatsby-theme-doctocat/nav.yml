@@ -87,6 +87,8 @@
     url: "/components/progressbar"
   - title: Spinner
     url: "/components/spinner"
+  - title: SplitLayout
+    url: /components/splitlayout
   - title: State
     url: "/components/state"
   - title: Subhead
