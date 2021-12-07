@@ -34,14 +34,6 @@ module Primer
       }.freeze
       OUTER_SPACING_OPTIONS = OUTER_SPACING_MAPPINGS.keys.freeze
 
-      INNER_SPACING_DEFAULT = :none
-      INNER_SPACING_MAPPINGS = {
-        INNER_SPACING_DEFAULT => "",
-        :normal => "LayoutBeta--inner-spacing-normal",
-        :condensed => "LayoutBeta--inner-spacing-condensed"
-      }.freeze
-      INNER_SPACING_OPTIONS = INNER_SPACING_MAPPINGS.keys.freeze
-
       COLUMN_GAP_DEFAULT = :none
       COLUMN_GAP_MAPPINGS = {
         COLUMN_GAP_DEFAULT => "",
@@ -197,7 +189,9 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         wrapper_sizing: WRAPPER_SIZING_DEFAULT,
-        inner_spacing: INNER_SPACING_DEFAULT,
+        outer_spacing: OUTER_SPACING_DEFAULT,
+        column_gap: COLUMN_GAP_DEFAULT,
+        row_gap: ROW_GAP_DEFAULT,
         responsive_primary_region: RESPONSIVE_PRIMARY_REGION_DEFAULT,
         **system_arguments
       )
@@ -207,7 +201,9 @@ module Primer
         @system_arguments[:tag] = :div
         @system_arguments[:classes] = class_names(
           "LayoutBeta",
-          INNER_SPACING_MAPPINGS[fetch_or_fallback(INNER_SPACING_OPTIONS, inner_spacing, INNER_SPACING_DEFAULT)],
+          OUTER_SPACING_MAPPINGS[fetch_or_fallback(OUTER_SPACING_OPTIONS, outer_spacing, OUTER_SPACING_DEFAULT)],
+          COLUMN_GAP_MAPPINGS[fetch_or_fallback(COLUMN_GAP_OPTIONS, column_gap, COLUMN_GAP_DEFAULT)],
+          ROW_GAP_MAPPINGS[fetch_or_fallback(ROW_GAP_OPTIONS, row_gap, ROW_GAP_DEFAULT)],
           RESPONSIVE_PRIMARY_REGION_MAPPINGS[fetch_or_fallback(RESPONSIVE_PRIMARY_REGION_OPTIONS, responsive_primary_region, RESPONSIVE_PRIMARY_REGION_DEFAULT)],
           "LayoutBeta--variant-separateRegions",
           "LayoutBeta--column-gap-none",
