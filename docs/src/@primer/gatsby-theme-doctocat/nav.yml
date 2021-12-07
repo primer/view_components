@@ -82,7 +82,7 @@
   - title: OcticonSymbols
     url: "/components/octiconsymbols"
   - title: PageLayout
-    url: /components/pagelayout
+    url: "/components/pagelayout"
   - title: Popover
     url: "/components/popover"
   - title: ProgressBar

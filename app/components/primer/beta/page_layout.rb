@@ -147,9 +147,9 @@ module Primer
 
       # The layout's sidebar.
       #
-      # @param width [Symbol] <%= one_of(Primer::Beta::BaseLayout::PANE_WIDTH_OPTIONS) %>
-      # @param position [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::BaseLayout::Pane::POSITION_OPTIONS) %>
-      # @param responsive_position [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::BaseLayout::PANE_RESPONSIVE_POSITION_OPTIONS) %>
+      # @param width [Symbol] <%= one_of(Primer::Beta::PageLayout::PANE_WIDTH_OPTIONS) %>
+      # @param position [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::PageLayout::Pane::POSITION_OPTIONS) %>
+      # @param responsive_position [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::PageLayout::PANE_RESPONSIVE_POSITION_OPTIONS) %>
       # @param divider [Boolean] Whether to show a pane line divider.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :pane, lambda { |
@@ -174,14 +174,14 @@ module Primer
 
       # @example Default
       #
-      #   <%= render(Primer::Beta::BaseLayout.new) do |c| %>
+      #   <%= render(Primer::Beta::PageLayout.new) do |c| %>
       #     <% c.main(border: true) { "Main" } %>
       #     <% c.pane(border: true) { "Pane" } %>
       #   <% end %>
       #
       # @example Header and footer
       #
-      #   <%= render(Primer::Beta::BaseLayout.new) do |c| %>
+      #   <%= render(Primer::Beta::PageLayout.new) do |c| %>
       #     <% c.header(border: true) { "Header" } %>
       #     <% c.main(border: true) { "Main" } %>
       #     <% c.pane(border: true) { "Pane" } %>
@@ -199,19 +199,19 @@ module Primer
       #     - `:xl`: max-width: 1280px
       #
       #   @code
-      #     <%= render(Primer::Beta::BaseLayout.new(wrapper_sizing: :fluid)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(wrapper_sizing: :fluid)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new(wrapper_sizing: :md)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(wrapper_sizing: :md)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new(wrapper_sizing: :lg)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(wrapper_sizing: :lg)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new(wrapper_sizing: :xl)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(wrapper_sizing: :xl)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
@@ -226,15 +226,15 @@ module Primer
       #     - `:normal`` sets the margin to 16px, and to 24px on lg breakpoints and above.
       #
       #   @code
-      #     <%= render(Primer::Beta::BaseLayout.new(outer_spacing: :none)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(outer_spacing: :none)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new(outer_spacing: :condensed)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(outer_spacing: :condensed)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new(outer_spacing: :normal)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(outer_spacing: :normal)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
@@ -249,15 +249,15 @@ module Primer
       #     - `:normal` sets the gap to 16px, and to 24px on lg breakpoints and above.
       #
       #   @code
-      #     <%= render(Primer::Beta::BaseLayout.new(column_gap: :none)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(column_gap: :none)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new(column_gap: :condensed)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(column_gap: :condensed)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new(column_gap: :normal)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(column_gap: :normal)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
@@ -272,15 +272,15 @@ module Primer
       #     - `:normal` sets the gap to 16px, and to 24px on lg breakpoints and above.
       #
       #   @code
-      #     <%= render(Primer::Beta::BaseLayout.new(row_gap: :none)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(row_gap: :none)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new(row_gap: :condensed)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(row_gap: :condensed)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new(row_gap: :normal)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(row_gap: :normal)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
@@ -297,15 +297,15 @@ module Primer
       #     When flowing as a row, `Pane` takes the full width.
       #
       #   @code
-      #     <%= render(Primer::Beta::BaseLayout.new) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(width: :default, border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new(mt: 5)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(mt: 5)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(width: :narrow, border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new(mt: 5)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(mt: 5)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(width: :wide, border: true) { "Pane" } %>
       #     <% end %>
@@ -316,11 +316,11 @@ module Primer
       #     Use `start` for sidebars that manipulate local navigation, while right-aligned `end` is useful for metadata and other auxiliary information.
       #
       #   @code
-      #     <%= render(Primer::Beta::BaseLayout.new) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(position: :start, border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new( mt: 5)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new( mt: 5)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(position: :end, border: true) { "Pane" } %>
       #     <% end %>
@@ -335,15 +335,15 @@ module Primer
       #     - `:inherit` uses the same value from `pane_position`
       #
       #   @code
-      #     <%= render(Primer::Beta::BaseLayout.new(mt: 5)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(mt: 5)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(pane_responsive_position: :inherit, border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(pane_responsive_position: :start, border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new(mt: 5)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(mt: 5)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(pane_responsive_position: :end, border: true) { "Pane" } %>
       #     <% end %>
@@ -355,12 +355,12 @@ module Primer
       #     You can optionally add a divider to the header.
       #
       #   @code
-      #     <%= render(Primer::Beta::BaseLayout.new) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
       #       <% c.header(border: true) { "Header" } %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
       #       <% c.header(divider: true, border: true) { "Header" } %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
@@ -373,21 +373,21 @@ module Primer
       #     You can optionally add a divider to the footer.
       #
       #   @code
-      #     <%= render(Primer::Beta::BaseLayout.new) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #       <% c.footer(border: true) { "Header" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::BaseLayout.new) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
       #       <% c.footer(divider: true, border: true) { "Header" } %>
       #     <% end %>
       #
-      # @param wrapper_sizing [Symbol] The size of the container wrapping `Layout`. <%= one_of(Primer::Beta::BaseLayout::WRAPPER_SIZING_OPTIONS) %>
-      # @param outer_spacing [Symbol] Sets wrapper margins surrounding the component to distance itself from the viewport edges. <%= one_of(Primer::Beta::BaseLayout::OUTER_SPACING_OPTIONS) %>
-      # @param column_gap [Symbol] Sets gap between columns. <%= one_of(Primer::Beta::BaseLayout::COLUMN_GAP_OPTIONS) %>
-      # @param row_gap [Symbol] Sets the gap below the header and above the footer. <%= one_of(Primer::Beta::BaseLayout::ROW_GAP_OPTIONS) %>
+      # @param wrapper_sizing [Symbol] The size of the container wrapping `Layout`. <%= one_of(Primer::Beta::PageLayout::WRAPPER_SIZING_OPTIONS) %>
+      # @param outer_spacing [Symbol] Sets wrapper margins surrounding the component to distance itself from the viewport edges. <%= one_of(Primer::Beta::PageLayout::OUTER_SPACING_OPTIONS) %>
+      # @param column_gap [Symbol] Sets gap between columns. <%= one_of(Primer::Beta::PageLayout::COLUMN_GAP_OPTIONS) %>
+      # @param row_gap [Symbol] Sets the gap below the header and above the footer. <%= one_of(Primer::Beta::PageLayout::ROW_GAP_OPTIONS) %>
       # @param responsive_variant [Symbol] Defines how the layout component adapts to smaller viewports. `:stack_regions` presents the content in a vertical flow, with pane and content vertically arranged. `:separate_regions` presents pane and content as different pages on smaller viewports.
       # @param responsive_primary_region [Symbol] When `responsive_variant` is set to `:separate_regions`, defines which region appears first on small viewports. `:content` is default.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -467,7 +467,7 @@ module Primer
         }.freeze
         RESPONSIVE_DIVIDER_OPTIONS = RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
 
-        # @param responsive_divider [Symbol] <%= one_of(Primer::Beta::BaseLayout::Bookend::RESPONSIVE_DIVIDER_OPTIONS) %>
+        # @param responsive_divider [Symbol] <%= one_of(Primer::Beta::PageLayout::Bookend::RESPONSIVE_DIVIDER_OPTIONS) %>
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(responsive_divider: RESPONSIVE_DIVIDER_DEFAULT, **system_arguments)
           @system_arguments = system_arguments

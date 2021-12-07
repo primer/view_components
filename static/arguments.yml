@@ -279,6 +279,44 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: PageLayout
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/page_layout.rb
+  parameters:
+  - name: wrapper_sizing
+    type: Symbol
+    default: "`:fluid`"
+    description: The size of the container wrapping `Layout`. One of `:fluid`, `:lg`,
+      `:md`, or `:xl`.
+  - name: outer_spacing
+    type: Symbol
+    default: "`:none`"
+    description: Sets wrapper margins surrounding the component to distance itself
+      from the viewport edges. One of `:condensed`, `:none`, or `:normal`.
+  - name: column_gap
+    type: Symbol
+    default: "`:none`"
+    description: Sets gap between columns. One of `:condensed`, `:none`, or `:normal`.
+  - name: row_gap
+    type: Symbol
+    default: "`:none`"
+    description: Sets the gap below the header and above the footer. One of `:condensed`,
+      `:none`, or `:normal`.
+  - name: responsive_variant
+    type: Symbol
+    default: "`:stack_regions`"
+    description: Defines how the layout component adapts to smaller viewports. `:stack_regions`
+      presents the content in a vertical flow, with pane and content vertically arranged.
+      `:separate_regions` presents pane and content as different pages on smaller
+      viewports.
+  - name: responsive_primary_region
+    type: Symbol
+    default: "`:content`"
+    description: When `responsive_variant` is set to `:separate_regions`, defines
+      which region appears first on small viewports. `:content` is default.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: SplitLayout
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/split_layout.rb
   parameters:
