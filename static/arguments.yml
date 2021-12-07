@@ -279,6 +279,23 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: SplitLayout
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/split_layout.rb
+  parameters:
+  - name: inner_spacing
+    type: Symbol
+    default: "`:normal`"
+    description: Sets padding to regions individually. One of `:condensed` and `:normal`.
+  - name: responsive_primary_region
+    type: Symbol
+    default: "`:content`"
+    description: When `responsive_variant` is set to `:separate_regions`, defines
+      which region appears first on small viewports. `:content` is default. One of
+      `:content` and `:pane`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Text
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb
   parameters:
