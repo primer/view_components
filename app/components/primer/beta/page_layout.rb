@@ -61,6 +61,21 @@ module Primer
       }.freeze
       PANE_WIDTH_OPTIONS = PANE_WIDTH_MAPPINGS.keys.freeze
 
+      PANE_RESPONSIVE_POSITION_DEFAULT = :inherit
+      PANE_RESPONSIVE_POSITION_MAPPINGS = {
+        PANE_RESPONSIVE_POSITION_DEFAULT => "",
+        :start => "LayoutBeta--stackRegions-pane-position-start",
+        :end => "LayoutBeta--stackRegions-pane-position-end"
+      }.freeze
+      PANE_RESPONSIVE_POSITION_OPTIONS = PANE_RESPONSIVE_POSITION_MAPPINGS.keys.freeze
+
+      PANE_DIVIDER_DEFAULT = :start
+      PANE_DIVIDER_MAPPINGS = {
+        PANE_DIVIDER_DEFAULT => "LayoutBeta--pane-position-start",
+        :end => "LayoutBeta--pane-position-start"
+      }.freeze
+      PANE_DIVIDER_OPTIONS = PANE_DIVIDER_MAPPINGS.keys.freeze
+
       INNER_SPACING_DEFAULT = :normal
       INNER_SPACING_MAPPINGS = {
         normal: "LayoutBeta--inner-spacing-normal",
@@ -132,31 +147,29 @@ module Primer
 
       # The layout's sidebar.
       #
-      # @param width [Symbol] <%= one_of(Primer::Beta::PageLayout::PANE_WIDTH_OPTIONS) %>
-      # @param tag [Symbol] <%= one_of(Primer::Beta::PageLayout::PANE_TAG_OPTIONS) %>
+      # @param width [Symbol] <%= one_of(Primer::Beta::BaseLayout::PANE_WIDTH_OPTIONS) %>
+      # @param position [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::BaseLayout::Pane::POSITION_OPTIONS) %>
+      # @param responsive_position [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::BaseLayout::PANE_RESPONSIVE_POSITION_OPTIONS) %>
+      # @param divider [Boolean] Whether to show a pane line divider.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :pane, lambda { |
         width: PANE_WIDTH_DEFAULT,
-        tag: PANE_TAG_DEFAULT,
+        position: Pane::POSITION_DEFAULT,
+        responsive_position: PANE_RESPONSIVE_POSITION_DEFAULT,
+        divider: false,
         **system_arguments
       |
-
-        @pane_system_arguments = system_arguments
-        @pane_system_arguments[:tag] = fetch_or_fallback(PANE_TAG_OPTIONS, tag, PANE_TAG_DEFAULT)
-        @pane_system_arguments[:classes] = class_names(
-          @pane_system_arguments[:classes],
-          "LayoutBeta-pane",
-        )
 
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          "LayoutBeta--pane-position-start",
+          Pane::POSITION_MAPPINGS[fetch_or_fallback(Pane::POSITION_OPTIONS, position, Pane::POSITION_DEFAULT)],
+          PANE_RESPONSIVE_POSITION_MAPPINGS[fetch_or_fallback(PANE_RESPONSIVE_POSITION_OPTIONS, responsive_position, PANE_RESPONSIVE_POSITION_DEFAULT)],
           PANE_WIDTH_MAPPINGS[fetch_or_fallback(PANE_WIDTH_OPTIONS, width, PANE_WIDTH_DEFAULT)],
-          "LayoutBeta--pane-divider"
+          { "LayoutBeta--pane-divider" => divider },
         )
 
-        Primer::BaseComponent.new(**@pane_system_arguments)
+        Pane.new(position: position, **system_arguments)
       }
 
       # @example Default
@@ -443,31 +456,74 @@ module Primer
           end
         end
       end
-    end
-  end
 
-  # The layout's header or footer content. This component is used by the `header` and `footer` slots and configured via those slots.
-  class Bookend < Primer::Component
-    RESPONSIVE_DIVIDER_DEFAULT = :none
-    RESPONSIVE_DIVIDER_MAPPINGS = {
-      RESPONSIVE_DIVIDER_DEFAULT => "",
-      :line => "LayoutBeta--divider-after",
-      :filled => "LayoutBeta--divider-after-filled"
-    }.freeze
-    RESPONSIVE_DIVIDER_OPTIONS = RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
+      # The layout's header or footer content. This component is used by the `header` and `footer` slots and configured via those slots.
+      class Bookend < Primer::Component
+        RESPONSIVE_DIVIDER_DEFAULT = :none
+        RESPONSIVE_DIVIDER_MAPPINGS = {
+          RESPONSIVE_DIVIDER_DEFAULT => "",
+          :line => "LayoutBeta--divider-after",
+          :filled => "LayoutBeta--divider-after-filled"
+        }.freeze
+        RESPONSIVE_DIVIDER_OPTIONS = RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
 
-    # @param responsive_divider [Symbol] <%= one_of(Primer::Beta::BaseLayout::Bookend::RESPONSIVE_DIVIDER_OPTIONS) %>
-    # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(responsive_divider: RESPONSIVE_DIVIDER_DEFAULT, **system_arguments)
-      @system_arguments = system_arguments
-      @system_arguments[:classes] = class_names(
-        @system_arguments[:classes],
-        RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, RESPONSIVE_DIVIDER_DEFAULT)]
-      )
-    end
+        # @param responsive_divider [Symbol] <%= one_of(Primer::Beta::BaseLayout::Bookend::RESPONSIVE_DIVIDER_OPTIONS) %>
+        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+        def initialize(responsive_divider: RESPONSIVE_DIVIDER_DEFAULT, **system_arguments)
+          @system_arguments = system_arguments
+          @system_arguments[:classes] = class_names(
+            @system_arguments[:classes],
+            RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, RESPONSIVE_DIVIDER_DEFAULT)]
+          )
+        end
 
-    def call
-      render(Primer::BaseComponent.new(tag: :div, **@system_arguments)) { content }
+        def call
+          render(Primer::BaseComponent.new(tag: :div, **@system_arguments)) { content }
+        end
+      end
+
+      # The layout's pane content. This is a secondary, smaller region that is paired with the `Main` region.
+      class Pane < Primer::Component
+        POSITION_DEFAULT = :start
+        POSITION_MAPPINGS = {
+          POSITION_DEFAULT => "LayoutBeta--pane-position-start",
+          :end => "LayoutBeta--pane-position-end"
+        }.freeze
+        POSITION_OPTIONS = POSITION_MAPPINGS.keys.freeze
+
+        RESPONSIVE_DIVIDER_DEFAULT = :none
+        RESPONSIVE_DIVIDER_MAPPINGS = {
+          RESPONSIVE_DIVIDER_DEFAULT => "",
+          :line => "LayoutBeta--divider-after",
+          :filled => "LayoutBeta--divider-after-filled"
+        }.freeze
+        RESPONSIVE_DIVIDER_OPTIONS = RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
+
+        TAG_DEFAULT = :div
+        TAG_OPTIONS = [TAG_DEFAULT, :aside, :nav, :section].freeze
+
+        # @param tag [Symbol] <%= one_of(Primer::Beta::PageLayout::Pane::TAG_OPTIONS) %>
+        def initialize(responsive_divider: RESPONSIVE_DIVIDER_DEFAULT, position: POSITION_DEFAULT, tag: TAG_DEFAULT, **system_arguments)
+          @system_arguments = system_arguments
+          @position = position
+
+          @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
+          @system_arguments[:classes] = class_names(
+            "LayoutBeta-region",
+            "LayoutBeta-pane",
+            RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, RESPONSIVE_DIVIDER_DEFAULT)],
+            @system_arguments[:classes]
+          )
+        end
+
+        def render_first?
+          @position == :start
+        end
+
+        def call
+          render(Primer::BaseComponent.new(**@system_arguments)) { content }
+        end
+      end
     end
   end
 end

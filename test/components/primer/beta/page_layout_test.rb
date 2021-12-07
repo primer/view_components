@@ -175,6 +175,72 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     end
   end
 
+  def test_pane_position_add_correct_class
+    Primer::Beta::PageLayout::Pane::POSITION_OPTIONS.each do |position|
+      render_inline(Primer::Beta::PageLayout.new) do |c|
+        c.main { "Main" }
+        c.pane(position: position) { "Pane" }
+      end
+
+      assert_selector("div.LayoutBeta") do
+        assert_selector("div.LayoutBeta--pane-position-#{position}") do
+          assert_selector("div.LayoutBeta-content", text: "Main")
+          assert_selector("div.LayoutBeta-pane", text: "Pane")
+        end
+      end
+    end
+  end
+
+  def test_pane_position_renders_pane_first
+    render_inline(Primer::Beta::PageLayout.new) do |c|
+      c.main { "Main" }
+      c.pane(position: :start) { "Pane" }
+    end
+
+    assert_match(/LayoutBeta-pane.*LayoutBeta-content/m, @rendered_component)
+  end
+
+  def test_pane_position_renders_pane_last
+    render_inline(Primer::Beta::PageLayout.new) do |c|
+      c.main { "Main" }
+      c.pane(position: :end) { "Pane" }
+    end
+
+    assert_match(/LayoutBeta-content.*LayoutBeta-pane/m, @rendered_component)
+  end
+
+  def test_pane_responsive_position
+    Primer::Beta::PageLayout::PANE_RESPONSIVE_POSITION_OPTIONS.each do |position|
+      render_inline(Primer::Beta::PageLayout.new) do |c|
+        c.main { "Main" }
+        c.pane(responsive_position: position) { "Pane" }
+      end
+
+      position_class = Primer::Beta::PageLayout::PANE_RESPONSIVE_POSITION_MAPPINGS[position]
+      assert_selector("div.LayoutBeta#{position_class.empty? ? '' : ".#{position_class}"}") do
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      end
+    end
+  end
+
+  def test_pane_width
+    Primer::Beta::PageLayout::PANE_WIDTH_OPTIONS.each do |size|
+      render_inline(Primer::Beta::PageLayout.new) do |c|
+        c.main { "Main" }
+        c.pane(width: size) { "Pane" }
+      end
+
+      width_class = Primer::Beta::PageLayout::PANE_WIDTH_MAPPINGS[size]
+      assert_selector("div.LayoutBeta") do
+        assert_selector("div#{width_class.empty? ? '' : ".#{width_class}"}") do
+          assert_selector("div.LayoutBeta-content", text: "Main")
+          assert_selector("div.LayoutBeta-pane", text: "Pane")
+        end
+      end
+    end
+  end
+
   def test_main_width
     Primer::Beta::PageLayout::Main::WIDTH_OPTIONS.each do |width|
       render_inline(Primer::Beta::PageLayout.new) do |c|

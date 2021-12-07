@@ -2,8 +2,13 @@
   <%= render(Primer::BaseComponent.new(tag: :div, classes: "LayoutBeta-wrapper #{@wrapper_sizing_class}")) do %>
     <%= header %>
     <%= render(Primer::BaseComponent.new(tag: :div, classes: "LayoutBeta-regions")) do %>
-      <%= pane %>
-      <%= main %>
+      <% if pane.render_first?%>
+        <%= pane %>
+        <%= main %>
+      <% else %>
+        <%= main %>
+        <%= pane %>
+      <% end %>
     <% end %>
     <%= footer %>
   <% end %>
