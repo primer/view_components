@@ -249,6 +249,231 @@
   },
   "Primer::Beta::Breadcrumbs::Item": {
   },
+  "Primer::Beta::PageLayout": {
+    "Bookend": "Primer::Beta::PageLayout::Bookend",
+    "COLUMN_GAP_DEFAULT": "none",
+    "COLUMN_GAP_MAPPINGS": {
+      "none": "",
+      "normal": "LayoutBeta--column-gap-normal",
+      "condensed": "LayoutBeta--column-gap-condensed"
+    },
+    "COLUMN_GAP_OPTIONS": [
+      "none",
+      "normal",
+      "condensed"
+    ],
+    "INNER_SPACING_DEFAULT": "normal",
+    "INNER_SPACING_MAPPINGS": {
+      "normal": "LayoutBeta--inner-spacing-normal",
+      "condensed": "LayoutBeta--inner-spacing-condensed"
+    },
+    "INNER_SPACING_OPTIONS": [
+      "normal",
+      "condensed"
+    ],
+    "Main": "Primer::Beta::PageLayout::Main",
+    "OUTER_SPACING_DEFAULT": "none",
+    "OUTER_SPACING_MAPPINGS": {
+      "none": "",
+      "normal": "LayoutBeta--outer-spacing-normal",
+      "condensed": "LayoutBeta--outer-spacing-condensed"
+    },
+    "OUTER_SPACING_OPTIONS": [
+      "none",
+      "normal",
+      "condensed"
+    ],
+    "PANE_DIVIDER_DEFAULT": "start",
+    "PANE_DIVIDER_MAPPINGS": {
+      "start": "LayoutBeta--pane-position-start",
+      "end": "LayoutBeta--pane-position-start"
+    },
+    "PANE_DIVIDER_OPTIONS": [
+      "start",
+      "end"
+    ],
+    "PANE_RESPONSIVE_POSITION_DEFAULT": "inherit",
+    "PANE_RESPONSIVE_POSITION_MAPPINGS": {
+      "inherit": "",
+      "start": "LayoutBeta--stackRegions-pane-position-start",
+      "end": "LayoutBeta--stackRegions-pane-position-end"
+    },
+    "PANE_RESPONSIVE_POSITION_OPTIONS": [
+      "inherit",
+      "start",
+      "end"
+    ],
+    "PANE_TAG_DEFAULT": "div",
+    "PANE_TAG_OPTIONS": [
+      "div",
+      "aside",
+      "nav",
+      "section"
+    ],
+    "PANE_WIDTH_DEFAULT": "default",
+    "PANE_WIDTH_MAPPINGS": {
+      "default": "",
+      "narrow": "LayoutBeta--pane-width-narrow",
+      "wide": "LayoutBeta--pane-width-wide"
+    },
+    "PANE_WIDTH_OPTIONS": [
+      "default",
+      "narrow",
+      "wide"
+    ],
+    "Pane": "Primer::Beta::PageLayout::Pane",
+    "RESPONSIVE_PRIMARY_REGION_DEFAULT": "content",
+    "RESPONSIVE_PRIMARY_REGION_MAPPINGS": {
+      "content": "LayoutBeta--primary-content",
+      "pane": "LayoutBeta--primary-pane"
+    },
+    "RESPONSIVE_PRIMARY_REGION_OPTIONS": [
+      "content",
+      "pane"
+    ],
+    "RESPONSIVE_VARIANT_DEFAULT": "stack_regions",
+    "RESPONSIVE_VARIANT_MAPPINGS": {
+      "stack_regions": "LayoutBeta--variant-stackRegions",
+      "separate_regions": "LayoutBeta--variant-separateRegions"
+    },
+    "RESPONSIVE_VARIANT_OPTIONS": [
+      "stack_regions",
+      "separate_regions"
+    ],
+    "ROW_GAP_DEFAULT": "none",
+    "ROW_GAP_MAPPINGS": {
+      "none": "",
+      "normal": "LayoutBeta--row-gap-normal",
+      "condensed": "LayoutBeta--row-gap-condensed"
+    },
+    "ROW_GAP_OPTIONS": [
+      "none",
+      "normal",
+      "condensed"
+    ],
+    "WRAPPER_SIZING_DEFAULT": "fluid",
+    "WRAPPER_SIZING_MAPPINGS": {
+      "fluid": "",
+      "md": "container-md",
+      "lg": "container-lg",
+      "xl": "container-xl"
+    },
+    "WRAPPER_SIZING_OPTIONS": [
+      "fluid",
+      "md",
+      "lg",
+      "xl"
+    ]
+  },
+  "Primer::Beta::PageLayout::Bookend": {
+    "RESPONSIVE_DIVIDER_DEFAULT": "none",
+    "RESPONSIVE_DIVIDER_MAPPINGS": {
+      "none": "",
+      "line": "LayoutBeta--divider-after",
+      "filled": "LayoutBeta--divider-after-filled"
+    },
+    "RESPONSIVE_DIVIDER_OPTIONS": [
+      "none",
+      "line",
+      "filled"
+    ]
+  },
+  "Primer::Beta::PageLayout::Main": {
+    "TAG_DEFAULT": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "main"
+    ],
+    "WIDTH_DEFAULT": "fluid",
+    "WIDTH_OPTIONS": [
+      "fluid",
+      "md",
+      "lg",
+      "xl"
+    ]
+  },
+  "Primer::Beta::PageLayout::Pane": {
+    "POSITION_DEFAULT": "start",
+    "POSITION_MAPPINGS": {
+      "start": "LayoutBeta--pane-position-start",
+      "end": "LayoutBeta--pane-position-end"
+    },
+    "POSITION_OPTIONS": [
+      "start",
+      "end"
+    ],
+    "RESPONSIVE_DIVIDER_DEFAULT": "none",
+    "RESPONSIVE_DIVIDER_MAPPINGS": {
+      "none": "",
+      "line": "LayoutBeta--divider-after",
+      "filled": "LayoutBeta--divider-after-filled"
+    },
+    "RESPONSIVE_DIVIDER_OPTIONS": [
+      "none",
+      "line",
+      "filled"
+    ],
+    "TAG_DEFAULT": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "aside",
+      "nav",
+      "section"
+    ]
+  },
+  "Primer::Beta::SplitLayout": {
+    "INNER_SPACING_DEFAULT": "normal",
+    "INNER_SPACING_MAPPINGS": {
+      "normal": "LayoutBeta--inner-spacing-normal",
+      "condensed": "LayoutBeta--inner-spacing-condensed"
+    },
+    "INNER_SPACING_OPTIONS": [
+      "normal",
+      "condensed"
+    ],
+    "Main": "Primer::Beta::SplitLayout::Main",
+    "PANE_TAG_DEFAULT": "div",
+    "PANE_TAG_OPTIONS": [
+      "div",
+      "aside",
+      "nav",
+      "section"
+    ],
+    "PANE_WIDTH_DEFAULT": "default",
+    "PANE_WIDTH_MAPPINGS": {
+      "default": "",
+      "narrow": "LayoutBeta--pane-width-narrow",
+      "wide": "LayoutBeta--pane-width-wide"
+    },
+    "PANE_WIDTH_OPTIONS": [
+      "default",
+      "narrow",
+      "wide"
+    ],
+    "RESPONSIVE_PRIMARY_REGION_DEFAULT": "content",
+    "RESPONSIVE_PRIMARY_REGION_MAPPINGS": {
+      "content": "LayoutBeta--primary-content",
+      "pane": "LayoutBeta--primary-pane"
+    },
+    "RESPONSIVE_PRIMARY_REGION_OPTIONS": [
+      "content",
+      "pane"
+    ]
+  },
+  "Primer::Beta::SplitLayout::Main": {
+    "TAG_DEFAULT": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "main"
+    ],
+    "WIDTH_DEFAULT": "fluid",
+    "WIDTH_OPTIONS": [
+      "fluid",
+      "md",
+      "lg",
+      "xl"
+    ]
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
