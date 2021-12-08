@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.64
+
 ### New
 
 * Add `raise_on_invalid_aria` config option to silence `aria-label` errors.
