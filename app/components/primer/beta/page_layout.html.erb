@@ -2,7 +2,7 @@
   <%= render(Primer::BaseComponent.new(tag: :div, classes: "LayoutBeta-wrapper #{@wrapper_sizing_class}")) do %>
     <%= header %>
     <%= render(Primer::BaseComponent.new(tag: :div, classes: "LayoutBeta-regions")) do %>
-      <% if pane.render_first?%>
+      <% if pane.render_first? %>
         <%= pane %>
         <%= main %>
       <% else %>
