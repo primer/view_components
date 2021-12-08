@@ -260,15 +260,6 @@
       "normal",
       "condensed"
     ],
-    "INNER_SPACING_DEFAULT": "normal",
-    "INNER_SPACING_MAPPINGS": {
-      "normal": "LayoutBeta--inner-spacing-normal",
-      "condensed": "LayoutBeta--inner-spacing-condensed"
-    },
-    "INNER_SPACING_OPTIONS": [
-      "normal",
-      "condensed"
-    ],
     "Main": "Primer::Beta::PageLayout::Main",
     "OUTER_SPACING_DEFAULT": "normal",
     "OUTER_SPACING_MAPPINGS": {
