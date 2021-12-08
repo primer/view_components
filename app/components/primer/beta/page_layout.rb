@@ -218,15 +218,10 @@ module Primer
       #   @description
       #     Sets wrapper margins surrounding the component to distance itself from the viewport edges.
       #
-      #     - `:none`` sets the margin to 0.
       #     - `:condensed` keeps the margin at 16px.
       #     - `:normal`` sets the margin to 16px, and to 24px on lg breakpoints and above.
       #
       #   @code
-      #     <%= render(Primer::Beta::PageLayout.new(outer_spacing: :none)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.pane(border: true) { "Pane" } %>
-      #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(outer_spacing: :condensed)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
@@ -241,15 +236,10 @@ module Primer
       #   @description
       #     Sets the gap between columns to distance them from each other.
       #
-      #     - `:none` sets the gap to 0.
       #     - `:condensed` keeps the gap always at 16px.
       #     - `:normal` sets the gap to 16px, and to 24px on lg breakpoints and above.
       #
       #   @code
-      #     <%= render(Primer::Beta::PageLayout.new(column_gap: :none)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.pane(border: true) { "Pane" } %>
-      #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(column_gap: :condensed)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
@@ -264,15 +254,10 @@ module Primer
       #   @description
       #     Sets the gap below the header and above the footer.
       #
-      #     - `:none` sets the gap to 0.
       #     - `:condensed` keeps the gap always at 16px.
       #     - `:normal` sets the gap to 16px, and to 24px on lg breakpoints and above.
       #
       #   @code
-      #     <%= render(Primer::Beta::PageLayout.new(row_gap: :none)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.pane(border: true) { "Pane" } %>
-      #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(row_gap: :condensed)) do |c| %>
       #       <% c.main(border: true) { "Main" } %>
       #       <% c.pane(border: true) { "Pane" } %>
