@@ -289,18 +289,18 @@
       `:md`, or `:xl`.
   - name: outer_spacing
     type: Symbol
-    default: "`:none`"
+    default: "`:normal`"
     description: Sets wrapper margins surrounding the component to distance itself
-      from the viewport edges. One of `:condensed`, `:none`, or `:normal`.
+      from the viewport edges. One of `:condensed` and `:normal`.
   - name: column_gap
     type: Symbol
-    default: "`:none`"
-    description: Sets gap between columns. One of `:condensed`, `:none`, or `:normal`.
+    default: "`:normal`"
+    description: Sets gap between columns. One of `:condensed` and `:normal`.
   - name: row_gap
     type: Symbol
-    default: "`:none`"
-    description: Sets the gap below the header and above the footer. One of `:condensed`,
-      `:none`, or `:normal`.
+    default: "`:normal`"
+    description: Sets the gap below the header and above the footer. One of `:condensed`
+      and `:normal`.
   - name: responsive_variant
     type: Symbol
     default: "`:stack_regions`"

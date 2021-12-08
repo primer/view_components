@@ -10,15 +10,13 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-`Layout` provides foundational patterns for responsive pages.
-`Layout` can be used for simple two-column pages, or it can be nested to provide flexible 3-column experiences.
- On smaller screens, `Layout` uses vertically stacked rows to display content.
+In the `SplitLayout`, changes in the Pane region are reflected in the Content region. This is also known as a "List/Detail" or "Master/Detail" pattern.
 
-`Layout` flows as both column, when there's enough horizontal space to render both `Main` and `Pane`side-by-side (on a desktop of tablet device, per instance);
-or it flows as a row, when `Main` and `Pane` are stacked vertically (e.g. on a mobile device).
-`Layout` should always work in any screen size.
+On larger screens, the user sees both regions side by side, with the Pane region appearing flushed to the left.
 
-`Layout` also provides `Header` and `Footer` slots, which can be used to provide a consistent header and footer across all pages.
+On smaller screens, the user only sees one of pane or content regions at a time.
+Pages may decide if it's more important to show the Pane region or the Content region first by the responsiveLandingRegion property.
+For example, opening "Repository settings" on mobile will have the user land on the Pane region, since in that case showing the menu options first is more important.
 
 ## Accessibility
 

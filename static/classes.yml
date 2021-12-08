@@ -61,6 +61,8 @@
 - ".LayoutBeta--row-gap-condensed"
 - ".LayoutBeta--row-gap-none"
 - ".LayoutBeta--row-gap-normal"
+- ".LayoutBeta--stackRegions-pane-position-end"
+- ".LayoutBeta--stackRegions-pane-position-start"
 - ".LayoutBeta--variant-md-multiColumns"
 - ".LayoutBeta--variant-separateRegions"
 - ".LayoutBeta--variant-stackRegions"
