@@ -44,22 +44,6 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     end
   end
 
-  def test_wrapper_sizing
-    Primer::Beta::PageLayout::WRAPPER_SIZING_OPTIONS.each do |size|
-      render_inline(Primer::Beta::PageLayout.new(wrapper_sizing: size)) do |c|
-        c.main { "Main" }
-        c.pane { "Pane" }
-      end
-
-      assert_selector("div.LayoutBeta") do
-        assert_selector("div.LayoutBeta-wrapper#{size == :fluid ? '' : ".container-#{size}"}") do
-          assert_selector("div.LayoutBeta-content", text: "Main")
-          assert_selector("div.LayoutBeta-pane", text: "Pane")
-        end
-      end
-    end
-  end
-
   def test_renders_layout_with_correct_default_classes
     render_inline(Primer::Beta::PageLayout.new) do |c|
       c.main { "Main" }
@@ -79,6 +63,22 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     assert_selector("div.#{expected_classes}") do
       assert_selector("div.LayoutBeta-content", text: "Main")
       assert_selector("div.LayoutBeta-pane", text: "Pane")
+    end
+  end
+
+  def test_wrapper_sizing
+    Primer::Beta::PageLayout::WRAPPER_SIZING_OPTIONS.each do |size|
+      render_inline(Primer::Beta::PageLayout.new(wrapper_sizing: size)) do |c|
+        c.main { "Main" }
+        c.pane { "Pane" }
+      end
+
+      assert_selector("div.LayoutBeta") do
+        assert_selector("div.LayoutBeta-wrapper#{size == :fluid ? '' : ".container-#{size}"}") do
+          assert_selector("div.LayoutBeta-content", text: "Main")
+          assert_selector("div.LayoutBeta-pane", text: "Pane")
+        end
+      end
     end
   end
 
@@ -127,21 +127,6 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     end
   end
 
-  def test_responsive_primary_region
-    Primer::Beta::PageLayout::RESPONSIVE_PRIMARY_REGION_OPTIONS.each do |region|
-      render_inline(Primer::Beta::PageLayout.new(responsive_primary_region: region)) do |c|
-        c.main { "Main" }
-        c.pane { "Pane" }
-      end
-
-      region_class = Primer::Beta::PageLayout::RESPONSIVE_PRIMARY_REGION_MAPPINGS[region]
-      assert_selector("div.LayoutBeta#{region_class.empty? ? '' : ".#{region_class}"}") do
-        assert_selector("div.LayoutBeta-content", text: "Main")
-        assert_selector("div.LayoutBeta-pane", text: "Pane")
-      end
-    end
-  end
-
   def test_responsive_variant
     Primer::Beta::PageLayout::RESPONSIVE_VARIANT_OPTIONS.each do |variant|
       render_inline(Primer::Beta::PageLayout.new(responsive_variant: variant)) do |c|
@@ -151,6 +136,21 @@ class PrimerBetaPageLayoutTest < Minitest::Test
 
       variant_class = Primer::Beta::PageLayout::RESPONSIVE_VARIANT_MAPPINGS[variant]
       assert_selector("div.LayoutBeta#{variant_class.empty? ? '' : ".#{variant_class}"}") do
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      end
+    end
+  end
+
+  def test_responsive_primary_region
+    Primer::Beta::PageLayout::RESPONSIVE_PRIMARY_REGION_OPTIONS.each do |region|
+      render_inline(Primer::Beta::PageLayout.new(responsive_primary_region: region)) do |c|
+        c.main { "Main" }
+        c.pane { "Pane" }
+      end
+
+      region_class = Primer::Beta::PageLayout::RESPONSIVE_PRIMARY_REGION_MAPPINGS[region]
+      assert_selector("div.LayoutBeta#{region_class.empty? ? '' : ".#{region_class}"}") do
         assert_selector("div.LayoutBeta-content", text: "Main")
         assert_selector("div.LayoutBeta-pane", text: "Pane")
       end
@@ -275,6 +275,20 @@ class PrimerBetaPageLayoutTest < Minitest::Test
             end
           end
         end
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      end
+    end
+  end
+
+  def test_main_tags
+    Primer::Beta::PageLayout::Main::TAG_OPTIONS.each do |tag|
+      render_inline(Primer::Beta::PageLayout.new) do |c|
+        c.main(tag: tag) { "Main" }
+        c.pane { "Pane" }
+      end
+
+      assert_selector("div.LayoutBeta") do
+        assert_selector("#{tag}.LayoutBeta-content", text: "Main")
         assert_selector("div.LayoutBeta-pane", text: "Pane")
       end
     end
