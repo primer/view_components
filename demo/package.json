@@ -11,11 +11,11 @@
   },
   "devDependencies": {
     "@primer/primitives": "^6.0.0",
-    "@storybook/addon-a11y": "^v6.4.0-beta.31",
-    "@storybook/addon-actions": "^v6.4.0-beta.31",
-    "@storybook/addon-controls": "^v6.4.0-beta.31",
-    "@storybook/addon-docs": "^v6.4.0-beta.31",
-    "@storybook/server": "^v6.4.0-beta.31",
+    "@storybook/addon-a11y": "^6.4.8",
+    "@storybook/addon-actions": "^6.4.8",
+    "@storybook/addon-controls": "^6.4.8",
+    "@storybook/addon-docs": "^6.4.8",
+    "@storybook/server": "^6.4.8",
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
