@@ -244,6 +244,20 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     end
   end
 
+  def test_pane_tags
+    Primer::Beta::PageLayout::PANE_TAG_OPTIONS.each do |tag|
+      render_inline(Primer::Beta::PageLayout.new) do |c|
+        c.main { "Main" }
+        c.pane(tag: tag) { "Pane" }
+      end
+
+      assert_selector("div.LayoutBeta") do
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("#{tag}.LayoutBeta-pane", text: "Pane")
+      end
+    end
+  end
+
   def test_main_width
     Primer::Beta::PageLayout::Main::WIDTH_OPTIONS.each do |width|
       render_inline(Primer::Beta::PageLayout.new) do |c|
