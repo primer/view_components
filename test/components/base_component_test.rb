@@ -192,7 +192,7 @@ class PrimerBaseComponentTest < Minitest::Test
 
   def test_does_not_raise_when_tag_has_role
     with_raise_on_invalid_aria(true) do
-        Primer::Component::INVALID_ARIA_LABEL_TAGS.each do |tag|
+      Primer::Component::INVALID_ARIA_LABEL_TAGS.each do |tag|
         render_inline(Primer::BaseComponent.new(tag: tag, role: :role, aria: { label: "label" }))
 
         assert_selector("#{tag}[aria-label='label']")
