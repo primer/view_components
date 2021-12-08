@@ -176,6 +176,8 @@ module Primer
 
       # The layout's main content.
       class Main < Primer::Component
+        status :beta
+
         WIDTH_DEFAULT = :fluid
         WIDTH_OPTIONS = [WIDTH_DEFAULT, :md, :lg, :xl].freeze
 

@@ -394,6 +394,8 @@ module Primer
 
       # The layout's main content.
       class Main < Primer::Component
+        status :beta
+
         WIDTH_DEFAULT = :fluid
         WIDTH_OPTIONS = [WIDTH_DEFAULT, :md, :lg, :xl].freeze
 
@@ -432,6 +434,8 @@ module Primer
 
       # The layout's header or footer content. This component is used by the `header` and `footer` slots and configured via those slots.
       class Bookend < Primer::Component
+        status :beta
+
         RESPONSIVE_DIVIDER_DEFAULT = :none
         RESPONSIVE_DIVIDER_MAPPINGS = {
           RESPONSIVE_DIVIDER_DEFAULT => "",
@@ -457,6 +461,8 @@ module Primer
 
       # The layout's pane content. This is a secondary, smaller region that is paired with the `Main` region.
       class Pane < Primer::Component
+        status :beta
+
         POSITION_DEFAULT = :start
         POSITION_MAPPINGS = {
           POSITION_DEFAULT => "LayoutBeta--pane-position-start",
