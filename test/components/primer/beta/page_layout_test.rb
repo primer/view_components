@@ -126,7 +126,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       end
     end
   end
-  
+
   def test_responsive_primary_region
     Primer::Beta::PageLayout::RESPONSIVE_PRIMARY_REGION_OPTIONS.each do |region|
       render_inline(Primer::Beta::PageLayout.new(responsive_primary_region: region)) do |c|
@@ -172,6 +172,27 @@ class PrimerBetaPageLayoutTest < Minitest::Test
         end
       end
     end
+  end
+
+  def test_pane_divider_present_when_set
+    render_inline(Primer::Beta::PageLayout.new) do |c|
+      c.main { "Main" }
+      c.pane(divider: true) { "Pane" }
+    end
+
+    assert_selector("div.LayoutBeta.LayoutBeta--pane-divider") do
+      assert_selector("div.LayoutBeta-content", text: "Main")
+      assert_selector("div.LayoutBeta-pane", text: "Pane")
+    end
+  end
+
+  def test_pane_divider_absent_when_not_set
+    render_inline(Primer::Beta::PageLayout.new) do |c|
+      c.main { "Main" }
+      c.pane { "Pane" }
+    end
+
+    refute_selector("div.LayoutBeta.LayoutBeta--pane-divider")
   end
 
   def test_pane_position_add_correct_class
@@ -240,6 +261,80 @@ class PrimerBetaPageLayoutTest < Minitest::Test
             end
           end
         end
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      end
+    end
+  end
+
+  def test_header_divider_present_when_set
+    render_inline(Primer::Beta::PageLayout.new) do |c|
+      c.header(divider: true) { "Header" }
+      c.main { "Main" }
+      c.pane { "Pane" }
+    end
+
+    assert_selector("div.LayoutBeta.LayoutBeta--header-divider")
+  end
+
+  def test_header_divider_not_present_when_not_set
+    render_inline(Primer::Beta::PageLayout.new) do |c|
+      c.header { "Header" }
+      c.main { "Main" }
+      c.pane { "Pane" }
+    end
+
+    refute_selector("div.LayoutBeta.LayoutBeta--has-header.LayoutBeta--header-divider")
+  end
+
+  def test_header_responsive_divider
+    Primer::Beta::PageLayout::Bookend::RESPONSIVE_DIVIDER_OPTIONS.each do |opt|
+      render_inline(Primer::Beta::PageLayout.new) do |c|
+        c.header(responsive_divider: opt) { "Header" }
+        c.main { "Main" }
+        c.pane { "Pane" }
+      end
+
+      divider_class = Primer::Beta::PageLayout::Bookend::RESPONSIVE_DIVIDER_MAPPINGS[opt]
+      assert_selector("div.LayoutBeta") do
+        assert_selector("div.LayoutBeta-header#{divider_class.empty? ? '' : ".#{divider_class}"}", text: "Header")
+        assert_selector("div.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      end
+    end
+  end
+
+  def test_footer_divider_present_when_set
+    render_inline(Primer::Beta::PageLayout.new) do |c|
+      c.main { "Main" }
+      c.pane { "Pane" }
+      c.footer(divider: true) { "Footer" }
+    end
+
+    assert_selector("div.LayoutBeta.LayoutBeta--has-footer.LayoutBeta--footer-divider")
+  end
+
+  def test_footer_divider_not_present_when_not_set
+    render_inline(Primer::Beta::PageLayout.new) do |c|
+      c.main { "Main" }
+      c.pane { "Pane" }
+      c.footer { "Footer" }
+    end
+
+    refute_selector("div.LayoutBeta.LayoutBeta--has-footer.LayoutBeta--footer-divider")
+  end
+
+  def test_footer_responsive_divider
+    Primer::Beta::PageLayout::Bookend::RESPONSIVE_DIVIDER_OPTIONS.each do |opt|
+      render_inline(Primer::Beta::PageLayout.new) do |c|
+        c.main { "Main" }
+        c.pane { "Pane" }
+        c.footer(responsive_divider: opt) { "Footer" }
+      end
+
+      divider_class = Primer::Beta::PageLayout::Bookend::RESPONSIVE_DIVIDER_MAPPINGS[opt]
+      assert_selector("div.LayoutBeta") do
+        assert_selector("div.LayoutBeta-footer#{divider_class.empty? ? '' : ".#{divider_class}"}", text: "Footer")
+        assert_selector("div.LayoutBeta-content", text: "Main")
         assert_selector("div.LayoutBeta-pane", text: "Pane")
       end
     end
