@@ -39,6 +39,7 @@ module Primer
         :pane => "LayoutBeta--primary-pane"
       }.freeze
       RESPONSIVE_PRIMARY_REGION_OPTIONS = RESPONSIVE_PRIMARY_REGION_MAPPINGS.keys.freeze
+
       # The layout's main content.
       #
       # @param width [Symbol] <%= one_of(Primer::Beta::SplitLayout::Main::WIDTH_OPTIONS) %>
