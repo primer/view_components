@@ -118,4 +118,18 @@ class PrimerBetaSplitLayoutTest < Minitest::Test
       end
     end
   end
+
+  def test_main_tags
+    Primer::Beta::SplitLayout::Main::TAG_OPTIONS.each do |tag|
+      render_inline(Primer::Beta::SplitLayout.new) do |c|
+        c.main(tag: tag) { "Main" }
+        c.pane { "Pane" }
+      end
+
+      assert_selector("div.LayoutBeta") do
+        assert_selector("#{tag}.LayoutBeta-content", text: "Main")
+        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      end
+    end
+  end
 end
