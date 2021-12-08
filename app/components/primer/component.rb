@@ -23,6 +23,10 @@ module Primer
       Rails.application.config.primer_view_components.raise_on_invalid_options
     end
 
+    def raise_on_invalid_aria?
+      Rails.application.config.primer_view_components.raise_on_invalid_aria
+    end
+
     def deprecated_component_warning(new_class: nil, version: nil)
       return if Rails.env.production? || silence_deprecations?
 
@@ -101,10 +105,7 @@ module Primer
       return unless aria(:label, arguments)
       return unless INVALID_ARIA_LABEL_TAGS.include?(tag)
 
-      raise ArgumentError, "Don't use `aria-label` on `#{tag}` elements. See https://www.tpgi.com/short-note-on-aria-label-aria-labelledby-and-aria-describedby/" if should_raise_error?
-
-      arguments.except!(:"aria-label")
-      arguments[:aria] = arguments[:aria].except!(:label) if arguments[:aria]
+      raise ArgumentError, "Don't use `aria-label` on `#{tag}` elements. See https://www.tpgi.com/short-note-on-aria-label-aria-labelledby-and-aria-describedby/" if should_raise_aria_error?
     end
 
     def deny_tag_argument(**arguments)
@@ -113,6 +114,10 @@ module Primer
 
     def should_raise_error?
       raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
+    end
+
+    def should_raise_aria_error?
+      raise_on_invalid_aria? && !ENV["PRIMER_WARNINGS_DISABLED"]
     end
   end
 end

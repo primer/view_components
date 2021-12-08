@@ -178,8 +178,8 @@ class PrimerBaseComponentTest < Minitest::Test
     refute_selector(".p-4")
   end
 
-  def test_does_not_render_aria_label_for_invalid_tags
-    with_raise_on_invalid_options(true) do
+  def test_raises_when_using_aria_label_for_invalid_tags_and_raise_on_invalid_aria
+    with_raise_on_invalid_aria(true) do
       Primer::Component::INVALID_ARIA_LABEL_TAGS.each do |tag|
         err = assert_raises ArgumentError do
           render_inline(Primer::BaseComponent.new(tag: tag, "aria-label": "label"))
@@ -190,27 +190,17 @@ class PrimerBaseComponentTest < Minitest::Test
     end
   end
 
-  def test_raises_when_using_aria_label_for_invalid_tags_and_raise_on_invalid_options
-    Primer::Component::INVALID_ARIA_LABEL_TAGS.each do |tag|
-      render_inline(Primer::BaseComponent.new(tag: tag, aria: { label: "label" }))
+  def test_does_not_raise_when_tag_has_role
+    with_raise_on_invalid_aria(true) do
+      Primer::Component::INVALID_ARIA_LABEL_TAGS.each do |tag|
+        render_inline(Primer::BaseComponent.new(tag: tag, role: :role, aria: { label: "label" }))
 
-      refute_selector("#{tag}[aria-label]")
+        assert_selector("#{tag}[aria-label='label']")
 
-      render_inline(Primer::BaseComponent.new(tag: tag, "aria-label": "label"))
+        render_inline(Primer::BaseComponent.new(tag: tag, role: :role, "aria-label": "label"))
 
-      refute_selector("#{tag}[aria-label]")
-    end
-  end
-
-  def test_renders_aria_label_when_invalid_tag_has_role
-    Primer::Component::INVALID_ARIA_LABEL_TAGS.each do |tag|
-      render_inline(Primer::BaseComponent.new(tag: tag, role: :role, aria: { label: "label" }))
-
-      assert_selector("#{tag}[aria-label='label']")
-
-      render_inline(Primer::BaseComponent.new(tag: tag, role: :role, "aria-label": "label"))
-
-      assert_selector("#{tag}[aria-label='label']")
+        assert_selector("#{tag}[aria-label='label']")
+      end
     end
   end
 
