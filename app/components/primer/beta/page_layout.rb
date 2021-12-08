@@ -26,26 +26,23 @@ module Primer
       }.freeze
       WRAPPER_SIZING_OPTIONS = WRAPPER_SIZING_MAPPINGS.keys.freeze
 
-      OUTER_SPACING_DEFAULT = :none
+      OUTER_SPACING_DEFAULT = :normal
       OUTER_SPACING_MAPPINGS = {
-        OUTER_SPACING_DEFAULT => "",
-        :normal => "LayoutBeta--outer-spacing-normal",
+        OUTER_SPACING_DEFAULT => "LayoutBeta--outer-spacing-normal",
         :condensed => "LayoutBeta--outer-spacing-condensed"
       }.freeze
       OUTER_SPACING_OPTIONS = OUTER_SPACING_MAPPINGS.keys.freeze
 
-      COLUMN_GAP_DEFAULT = :none
+      COLUMN_GAP_DEFAULT = :normal
       COLUMN_GAP_MAPPINGS = {
-        COLUMN_GAP_DEFAULT => "",
-        :normal => "LayoutBeta--column-gap-normal",
+        COLUMN_GAP_DEFAULT => "LayoutBeta--column-gap-normal",
         :condensed => "LayoutBeta--column-gap-condensed"
       }.freeze
       COLUMN_GAP_OPTIONS = COLUMN_GAP_MAPPINGS.keys.freeze
 
-      ROW_GAP_DEFAULT = :none
+      ROW_GAP_DEFAULT = :normal
       ROW_GAP_MAPPINGS = {
-        ROW_GAP_DEFAULT => "",
-        :normal => "LayoutBeta--row-gap-normal",
+        ROW_GAP_DEFAULT => "LayoutBeta--row-gap-normal",
         :condensed => "LayoutBeta--row-gap-condensed"
       }.freeze
       ROW_GAP_OPTIONS = ROW_GAP_MAPPINGS.keys.freeze
@@ -159,7 +156,7 @@ module Primer
         divider: false,
         **system_arguments
       |
-
+        responsive_position = position if responsive_position == PANE_RESPONSIVE_POSITION_DEFAULT
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
@@ -411,6 +408,7 @@ module Primer
           ROW_GAP_MAPPINGS[fetch_or_fallback(ROW_GAP_OPTIONS, row_gap, ROW_GAP_DEFAULT)],
           RESPONSIVE_PRIMARY_REGION_MAPPINGS[fetch_or_fallback(RESPONSIVE_PRIMARY_REGION_OPTIONS, responsive_primary_region, RESPONSIVE_PRIMARY_REGION_DEFAULT)],
           RESPONSIVE_VARIANT_MAPPINGS[fetch_or_fallback(RESPONSIVE_VARIANT_OPTIONS, responsive_variant, RESPONSIVE_VARIANT_DEFAULT)],
+          "LayoutBeta--variant-md-multiColumns",
           system_arguments[:classes]
         )
       end

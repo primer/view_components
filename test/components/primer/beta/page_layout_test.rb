@@ -60,28 +60,27 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     end
   end
 
-  # def test_renders_layout_with_correct_default_classes
-  #   render_inline(Primer::Beta::PageLayout.new) do |c|
-  #     c.main { "Main" }
-  #     c.pane { "Pane" }
-  #   end
+  def test_renders_layout_with_correct_default_classes
+    render_inline(Primer::Beta::PageLayout.new) do |c|
+      c.main { "Main" }
+      c.pane { "Pane" }
+    end
 
-  #   expected_classes = [
-  #     "LayoutBeta",
-  #     "LayoutBeta--variant-separateRegions",
-  #     "LayoutBeta--variant-md-multiColumns",
-  #     "LayoutBeta--primary-content",
-  #     "LayoutBeta--inner-spacing-normal",
-  #     "LayoutBeta--column-gap-none",
-  #     "LayoutBeta--row-gap-none",
-  #     "LayoutBeta--pane-position-start",
-  #     "LayoutBeta--pane-divider"
-  #   ].join(".")
-  #   assert_selector("div.#{expected_classes}") do
-  #     assert_selector("div.LayoutBeta-content", text: "Main")
-  #     assert_selector("div.LayoutBeta-pane", text: "Pane")
-  #   end
-  # end
+    expected_classes = [
+      "LayoutBeta",
+      "LayoutBeta--variant-stackRegions",
+      "LayoutBeta--variant-md-multiColumns",
+      "LayoutBeta--outer-spacing-normal",
+      "LayoutBeta--column-gap-normal",
+      "LayoutBeta--row-gap-normal",
+      "LayoutBeta--pane-position-start",
+      "LayoutBeta--stackRegions-pane-position-start"
+    ].join(".")
+    assert_selector("div.#{expected_classes}") do
+      assert_selector("div.LayoutBeta-content", text: "Main")
+      assert_selector("div.LayoutBeta-pane", text: "Pane")
+    end
+  end
 
   def test_outer_spacing
     Primer::Beta::PageLayout::OUTER_SPACING_OPTIONS.each do |size|
