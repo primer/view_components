@@ -47,9 +47,6 @@ module Primer
       }.freeze
       ROW_GAP_OPTIONS = ROW_GAP_MAPPINGS.keys.freeze
 
-      PANE_TAG_DEFAULT = :div
-      PANE_TAG_OPTIONS = [PANE_TAG_DEFAULT, :aside, :nav, :section].freeze
-
       PANE_WIDTH_DEFAULT = :default
       PANE_WIDTH_MAPPINGS = {
         PANE_WIDTH_DEFAULT => "",

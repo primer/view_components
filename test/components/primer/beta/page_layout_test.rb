@@ -245,7 +245,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
   end
 
   def test_pane_tags
-    Primer::Beta::PageLayout::PANE_TAG_OPTIONS.each do |tag|
+    Primer::Beta::PageLayout::Pane::TAG_OPTIONS.each do |tag|
       render_inline(Primer::Beta::PageLayout.new) do |c|
         c.main { "Main" }
         c.pane(tag: tag) { "Pane" }
