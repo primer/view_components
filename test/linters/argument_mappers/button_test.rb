@@ -42,14 +42,14 @@ class ArgumentMappersButtonTest < LinterTestCase
     end
   end
 
-  def test_returns_variant_argument
-    Primer::ButtonComponent::VARIANT_MAPPINGS.each do |value, class_name|
+  def test_returns_size_argument
+    Primer::ButtonComponent::SIZE_MAPPINGS.each do |value, class_name|
       next if class_name.blank?
 
       @file = "<button class=\"#{class_name}\">Button</button>"
       args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
 
-      assert_equal({ variant: ":#{value}" }, args)
+      assert_equal({ size: ":#{value}" }, args)
     end
   end
 
@@ -132,7 +132,7 @@ class ArgumentMappersButtonTest < LinterTestCase
 
     assert_equal({
                    scheme: ":primary",
-                   variant: ":small",
+                   size: ":small",
                    block: true,
                    group_item: true,
                    mr: 1,

@@ -88,7 +88,7 @@ module Primer
     #
     # @example Customizing the button
     #   <%= render(Primer::Dropdown.new) do |c| %>
-    #     <% c.button(scheme: :primary, variant: :small) do %>
+    #     <% c.button(scheme: :primary, size: :small) do %>
     #       Dropdown
     #     <% end %>
     #

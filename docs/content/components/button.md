@@ -17,7 +17,8 @@ Use `Button` for actions (e.g. in forms). Use links for destinations, or moving 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `scheme` | `Symbol` | `:default` | One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`, or `:primary`. |
-| `variant` | `Symbol` | `:medium` | One of `:medium` and `:small`. |
+| `variant` | `Symbol` | `nil` | DEPRECATED. One of `:medium` and `:small`. |
+| `size` | `Symbol` | `:medium` | One of `:medium` and `:small`. |
 | `tag` | `Symbol` | `:button` | One of `:a`, `:button`, or `:summary`. |
 | `type` | `Symbol` | `:button` | One of `:button`, `:reset`, or `:submit`. |
 | `group_item` | `Boolean` | `false` | Whether button is part of a ButtonGroup. |
@@ -66,13 +67,13 @@ Use:
 <%= render(Primer::ButtonComponent.new(scheme: :link)) { "Link" } %>
 ```
 
-### Variants
+### Sizes
 
 <Example src="<button type='button' data-view-component='true' class='btn-sm btn'>  Small</button><button type='button' data-view-component='true' class='btn'>  Medium</button>" />
 
 ```erb
-<%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>
-<%= render(Primer::ButtonComponent.new(variant: :medium)) { "Medium" } %>
+<%= render(Primer::ButtonComponent.new(size: :small)) { "Small" } %>
+<%= render(Primer::ButtonComponent.new(size: :medium)) { "Medium" } %>
 ```
 
 ### Block
@@ -120,7 +121,7 @@ Use:
 
 ### With dropdown caret
 
-<Example src="<button type='button' data-view-component='true' class='btn'>  Button<svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-triangle-down mr-n1'>    <path d='M4.427 7.427l3.396 3.396a.25.25 0 00.354 0l3.396-3.396A.25.25 0 0011.396 7H4.604a.25.25 0 00-.177.427z'></path></svg></button>" />
+<Example src="<button type='button' data-view-component='true' class='btn'>  Button<svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-triangle-down ml-2 mr-n1'>    <path d='M4.427 7.427l3.396 3.396a.25.25 0 00.354 0l3.396-3.396A.25.25 0 0011.396 7H4.604a.25.25 0 00-.177.427z'></path></svg></button>" />
 
 ```erb
 <%= render(Primer::ButtonComponent.new(dropdown: true)) do %>
