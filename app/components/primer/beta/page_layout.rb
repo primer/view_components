@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Primer
   module Beta
     # `PageLayout` provides foundational patterns for responsive pages.
@@ -153,7 +154,7 @@ module Primer
           Pane::POSITION_MAPPINGS[fetch_or_fallback(Pane::POSITION_OPTIONS, position, Pane::POSITION_DEFAULT)],
           PANE_RESPONSIVE_POSITION_MAPPINGS[fetch_or_fallback(PANE_RESPONSIVE_POSITION_OPTIONS, responsive_position, PANE_RESPONSIVE_POSITION_DEFAULT)],
           PANE_WIDTH_MAPPINGS[fetch_or_fallback(PANE_WIDTH_OPTIONS, width, PANE_WIDTH_DEFAULT)],
-          { "LayoutBeta--pane-divider" => divider },
+          { "LayoutBeta--pane-divider" => divider }
         )
 
         Pane.new(position: position, **system_arguments)

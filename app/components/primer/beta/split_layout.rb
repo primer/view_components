@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Primer
   module Beta
     # In the `SplitLayout`, changes in the Pane region are reflected in the Content region. This is also known as a "List/Detail" or "Master/Detail" pattern.
@@ -52,17 +53,12 @@ module Primer
       # @param width [Symbol] <%= one_of(Primer::Beta::SplitLayout::PANE_WIDTH_OPTIONS) %>
       # @param tag [Symbol] <%= one_of(Primer::Beta::SplitLayout::PANE_TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :pane, lambda { |
-        width: PANE_WIDTH_DEFAULT,
-        tag: PANE_TAG_DEFAULT,
-        **system_arguments
-      |
-
+      renders_one :pane, lambda { |width: PANE_WIDTH_DEFAULT, tag: PANE_TAG_DEFAULT, **system_arguments|
         @pane_system_arguments = system_arguments
         @pane_system_arguments[:tag] = fetch_or_fallback(PANE_TAG_OPTIONS, tag, PANE_TAG_DEFAULT)
         @pane_system_arguments[:classes] = class_names(
           @pane_system_arguments[:classes],
-          "LayoutBeta-pane",
+          "LayoutBeta-pane"
         )
 
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
