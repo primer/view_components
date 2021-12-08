@@ -83,6 +83,42 @@ module Primer
       #     <% c.pane(border: true) { "Pane" } %>
       #   <% end %>
       #
+      # @example Inner spacing
+      #
+      #   @description
+      #     Sets padding to regions individually.
+      #
+      #     - `:condensed` keeps the margin at 16px.
+      #     - `:normal`` sets the margin to 16px, and to 24px on lg breakpoints and above.
+      #
+      #   @code
+      #     <%= render(Primer::Beta::PageLayout.new(inner_spacing: :condensed)) do |c| %>
+      #       <% c.main(border: true) { "Main" } %>
+      #       <% c.pane(border: true) { "Pane" } %>
+      #     <% end %>
+      #     <%= render(Primer::Beta::PageLayout.new(inner_spacing: :normal)) do |c| %>
+      #       <% c.main(border: true) { "Main" } %>
+      #       <% c.pane(border: true) { "Pane" } %>
+      #     <% end %>
+      #
+      # @example Responsive primary region
+      #
+      #   @description
+      #     When responsiveVariant is set to separateRegions, defines which region appears first on small viewports. content is default.
+      #
+      #     - `:content`
+      #     - `:pane`
+      #
+      #   @code
+      #     <%= render(Primer::Beta::PageLayout.new(resposive_primary_region: :content)) do |c| %>
+      #       <% c.main(border: true) { "Main" } %>
+      #       <% c.pane(border: true) { "Pane" } %>
+      #     <% end %>
+      #     <%= render(Primer::Beta::PageLayout.new(responsive_primary_region: :pane)) do |c| %>
+      #       <% c.main(border: true) { "Main" } %>
+      #       <% c.pane(border: true) { "Pane" } %>
+      #     <% end %>
+      #
       # @example Pane widths
       #
       #   @description
