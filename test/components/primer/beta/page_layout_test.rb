@@ -223,23 +223,6 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     end
   end
 
-  def test_pane_width
-    Primer::Beta::PageLayout::PANE_WIDTH_OPTIONS.each do |size|
-      render_inline(Primer::Beta::PageLayout.new) do |c|
-        c.main { "Main" }
-        c.pane(width: size) { "Pane" }
-      end
-
-      width_class = Primer::Beta::PageLayout::PANE_WIDTH_MAPPINGS[size]
-      assert_selector("div.LayoutBeta") do
-        assert_selector("div#{width_class.empty? ? '' : ".#{width_class}"}") do
-          assert_selector("div.LayoutBeta-content", text: "Main")
-          assert_selector("div.LayoutBeta-pane", text: "Pane")
-        end
-      end
-    end
-  end
-
   def test_main_width
     Primer::Beta::PageLayout::Main::WIDTH_OPTIONS.each do |width|
       render_inline(Primer::Beta::PageLayout.new) do |c|
