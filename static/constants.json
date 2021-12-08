@@ -251,14 +251,12 @@
   },
   "Primer::Beta::PageLayout": {
     "Bookend": "Primer::Beta::PageLayout::Bookend",
-    "COLUMN_GAP_DEFAULT": "none",
+    "COLUMN_GAP_DEFAULT": "normal",
     "COLUMN_GAP_MAPPINGS": {
-      "none": "",
       "normal": "LayoutBeta--column-gap-normal",
       "condensed": "LayoutBeta--column-gap-condensed"
     },
     "COLUMN_GAP_OPTIONS": [
-      "none",
       "normal",
       "condensed"
     ],
@@ -272,14 +270,12 @@
       "condensed"
     ],
     "Main": "Primer::Beta::PageLayout::Main",
-    "OUTER_SPACING_DEFAULT": "none",
+    "OUTER_SPACING_DEFAULT": "normal",
     "OUTER_SPACING_MAPPINGS": {
-      "none": "",
       "normal": "LayoutBeta--outer-spacing-normal",
       "condensed": "LayoutBeta--outer-spacing-condensed"
     },
     "OUTER_SPACING_OPTIONS": [
-      "none",
       "normal",
       "condensed"
     ],
@@ -340,14 +336,12 @@
       "stack_regions",
       "separate_regions"
     ],
-    "ROW_GAP_DEFAULT": "none",
+    "ROW_GAP_DEFAULT": "normal",
     "ROW_GAP_MAPPINGS": {
-      "none": "",
       "normal": "LayoutBeta--row-gap-normal",
       "condensed": "LayoutBeta--row-gap-condensed"
     },
     "ROW_GAP_OPTIONS": [
-      "none",
       "normal",
       "condensed"
     ],
