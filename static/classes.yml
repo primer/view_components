@@ -58,6 +58,7 @@
 - ".LayoutBeta--pane-width-narrow"
 - ".LayoutBeta--pane-width-wide"
 - ".LayoutBeta--primary-content"
+- ".LayoutBeta--primary-pane"
 - ".LayoutBeta--row-gap-condensed"
 - ".LayoutBeta--row-gap-none"
 - ".LayoutBeta--row-gap-normal"

@@ -67,6 +67,40 @@ The layout's sidebar.
 <% end %>
 ```
 
+### Inner spacing
+
+Sets padding to regions individually. - `:condensed` keeps the margin at 16px. - `:normal`` sets the margin to 16px, and to 24px on lg breakpoints and above.
+
+<Example src="<div inner_spacing='condensed' data-view-component='true' class='LayoutBeta LayoutBeta--outer-spacing-normal LayoutBeta--column-gap-normal LayoutBeta--row-gap-normal LayoutBeta--primary-content LayoutBeta--variant-stackRegions LayoutBeta--variant-md-multiColumns LayoutBeta--pane-position-start LayoutBeta--stackRegions-pane-position-start'>  <div data-view-component='true' class='LayoutBeta-wrapper '>        <div data-view-component='true' class='LayoutBeta-regions'>        <div data-view-component='true' class='LayoutBeta-region LayoutBeta-pane border'>Pane</div>        <div data-view-component='true' class='LayoutBeta-region LayoutBeta-content border'>Main</div></div>    </div></div><div inner_spacing='normal' data-view-component='true' class='LayoutBeta LayoutBeta--outer-spacing-normal LayoutBeta--column-gap-normal LayoutBeta--row-gap-normal LayoutBeta--primary-content LayoutBeta--variant-stackRegions LayoutBeta--variant-md-multiColumns LayoutBeta--pane-position-start LayoutBeta--stackRegions-pane-position-start'>  <div data-view-component='true' class='LayoutBeta-wrapper '>        <div data-view-component='true' class='LayoutBeta-regions'>        <div data-view-component='true' class='LayoutBeta-region LayoutBeta-pane border'>Pane</div>        <div data-view-component='true' class='LayoutBeta-region LayoutBeta-content border'>Main</div></div>    </div></div>" />
+
+```erb
+<%= render(Primer::Beta::PageLayout.new(inner_spacing: :condensed)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.pane(border: true) { "Pane" } %>
+<% end %>
+<%= render(Primer::Beta::PageLayout.new(inner_spacing: :normal)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.pane(border: true) { "Pane" } %>
+<% end %>
+```
+
+### Responsive primary region
+
+When responsiveVariant is set to separateRegions, defines which region appears first on small viewports. content is default. - `:content` - `:pane`
+
+<Example src="<div resposive_primary_region='content' data-view-component='true' class='LayoutBeta LayoutBeta--outer-spacing-normal LayoutBeta--column-gap-normal LayoutBeta--row-gap-normal LayoutBeta--primary-content LayoutBeta--variant-stackRegions LayoutBeta--variant-md-multiColumns LayoutBeta--pane-position-start LayoutBeta--stackRegions-pane-position-start'>  <div data-view-component='true' class='LayoutBeta-wrapper '>        <div data-view-component='true' class='LayoutBeta-regions'>        <div data-view-component='true' class='LayoutBeta-region LayoutBeta-pane border'>Pane</div>        <div data-view-component='true' class='LayoutBeta-region LayoutBeta-content border'>Main</div></div>    </div></div><div data-view-component='true' class='LayoutBeta LayoutBeta--outer-spacing-normal LayoutBeta--column-gap-normal LayoutBeta--row-gap-normal LayoutBeta--primary-pane LayoutBeta--variant-stackRegions LayoutBeta--variant-md-multiColumns LayoutBeta--pane-position-start LayoutBeta--stackRegions-pane-position-start'>  <div data-view-component='true' class='LayoutBeta-wrapper '>        <div data-view-component='true' class='LayoutBeta-regions'>        <div data-view-component='true' class='LayoutBeta-region LayoutBeta-pane border'>Pane</div>        <div data-view-component='true' class='LayoutBeta-region LayoutBeta-content border'>Main</div></div>    </div></div>" />
+
+```erb
+<%= render(Primer::Beta::PageLayout.new(resposive_primary_region: :content)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.pane(border: true) { "Pane" } %>
+<% end %>
+<%= render(Primer::Beta::PageLayout.new(responsive_primary_region: :pane)) do |c| %>
+  <% c.main(border: true) { "Main" } %>
+  <% c.pane(border: true) { "Pane" } %>
+<% end %>
+```
+
 ### Pane widths
 
 Sets the pane width. The width is predetermined according to the breakpoint instead of it being percentage-based. - `default`: - `narrow`: - `wide`: When flowing as a row, `Pane` takes the full width.
