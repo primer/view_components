@@ -73,13 +73,6 @@ module Primer
       }.freeze
       PANE_DIVIDER_OPTIONS = PANE_DIVIDER_MAPPINGS.keys.freeze
 
-      INNER_SPACING_DEFAULT = :normal
-      INNER_SPACING_MAPPINGS = {
-        normal: "LayoutBeta--inner-spacing-normal",
-        condensed: "LayoutBeta--inner-spacing-condensed"
-      }.freeze
-      INNER_SPACING_OPTIONS = INNER_SPACING_MAPPINGS.keys.freeze
-
       RESPONSIVE_PRIMARY_REGION_DEFAULT = :content
       RESPONSIVE_PRIMARY_REGION_MAPPINGS = {
         RESPONSIVE_PRIMARY_REGION_DEFAULT => "LayoutBeta--primary-content",
