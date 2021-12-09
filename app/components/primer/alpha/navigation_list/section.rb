@@ -5,6 +5,7 @@ require "securerandom"
 module Primer
   module Alpha
     class NavigationList
+      # Sections contain any number of `Item`s and render an optional `heading`.
       class Section < Primer::Component
         attr_reader :id
 

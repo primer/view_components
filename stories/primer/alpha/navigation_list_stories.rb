@@ -30,7 +30,7 @@ class Primer::Alpha::NavigationListStories < ViewComponent::Storybook::Stories
         end
       end
 
-      c.section(aria: {label: "Section" }) do |section|
+      c.section(aria: { label: "Section" }) do |section|
         section.heading { "Section 2" }
 
         section.item(selected_by_ids: :link_a) do
