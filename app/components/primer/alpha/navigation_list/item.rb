@@ -59,7 +59,7 @@ module Primer
           )
 
           @content_arguments = {
-            tag: (!@href || disabled) ? :span : :a,
+            tag: !@href || disabled ? :span : :a,
             href: @href,
             classes: class_names(
               "ActionList-content",
@@ -92,13 +92,11 @@ module Primer
         #
         # @return [Boolean]
         def expanded?
-          @expanded || subitems.any? { |subitem| subitem.selected? }
+          @expanded || subitems.any?(&:selected?)
         end
 
         def before_render
-          if subitems.present? && trailing_visual.present?
-            raise RuntimeError, "Cannot render a trailing visual for an item with subitems"
-          end
+          raise "Cannot render a trailing visual for an item with subitems" if subitems.present? && trailing_visual.present?
 
           @system_arguments[:"aria-expanded"] = expanded?.to_s if subitems.present?
           @system_arguments[:"aria-haspopup"] = "true" if subitems.present?

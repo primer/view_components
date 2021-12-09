@@ -38,7 +38,7 @@ module Primer
           )
 
           @content_arguments = {
-            tag: (!href || disabled) ? :span : :a,
+            tag: !href || disabled ? :span : :a,
             href: href,
             classes: class_names(
               "ActionList-content",

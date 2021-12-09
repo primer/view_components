@@ -12,11 +12,10 @@ class Primer::Alpha::NavigationListStories < ViewComponent::Storybook::Stories
     end
 
     content do |c|
-
-      c.section(aria: {label: "Section" }) do |section|
+      c.section(aria: { label: "Section" }) do |section|
         section.heading { "Section 1" }
 
-        section.item(selected_by_ids: :link_1) do |item|
+        section.item(selected_by_ids: :link_1) do
           "Link 1"
         end
 
@@ -34,11 +33,11 @@ class Primer::Alpha::NavigationListStories < ViewComponent::Storybook::Stories
       c.section(aria: {label: "Section" }) do |section|
         section.heading { "Section 2" }
 
-        section.item(selected_by_ids: :link_a) do |item|
+        section.item(selected_by_ids: :link_a) do
           "Link a"
         end
 
-        section.item(selected_by_ids: :link_b) do |item|
+        section.item(selected_by_ids: :link_b) do
           "Link b"
         end
       end

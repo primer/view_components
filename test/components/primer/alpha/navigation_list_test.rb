@@ -7,7 +7,7 @@ class PrimerAlphaNavigationListTest < Minitest::Test
 
   def test_top_level_items
     render_inline(Primer::Alpha::NavigationList.new(aria: { label: "Items" })) do |component|
-      component.item(selected_by_ids: :item, href: "/item") do |item|
+      component.item(selected_by_ids: :item, href: "/item") do
         "Item"
       end
     end
@@ -21,7 +21,7 @@ class PrimerAlphaNavigationListTest < Minitest::Test
 
   def test_aria_label_for_nav
     render_inline(Primer::Alpha::NavigationList.new(aria: { label: "Items" })) do |component|
-      component.item(item_ids: :item, href: "/item") do |item|
+      component.item(item_ids: :item, href: "/item") do
         "Item"
       end
     end
@@ -144,7 +144,7 @@ class PrimerAlphaNavigationListTest < Minitest::Test
   def test_aria_label_for_section
     render_inline(Primer::Alpha::NavigationList.new(aria: { label: "Items" })) do |component|
       component.section(aria: { label: "Section" }) do |section|
-        section.item(item_ids: :item, href: "/item") do |item|
+        section.item(item_ids: :item, href: "/item") do
           "Item"
         end
       end
@@ -159,7 +159,7 @@ class PrimerAlphaNavigationListTest < Minitest::Test
     error = assert_raises ArgumentError do
       render_inline(Primer::Alpha::NavigationList.new(aria: { label: "Items" })) do |component|
         component.section do |section|
-          section.item(item_ids: :item, href: "/item") do |item|
+          section.item(item_ids: :item, href: "/item") do
             "Item"
           end
         end
@@ -311,5 +311,4 @@ class PrimerAlphaNavigationListTest < Minitest::Test
       end
     end
   end
-
 end
