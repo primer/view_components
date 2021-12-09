@@ -122,6 +122,20 @@
       "section"
     ]
   },
+  "Primer::Alpha::NavigationList": {
+    "Heading": "Primer::Alpha::NavigationList::Heading",
+    "Item": "Primer::Alpha::NavigationList::Item",
+    "Section": "Primer::Alpha::NavigationList::Section",
+    "SubItem": "Primer::Alpha::NavigationList::SubItem"
+  },
+  "Primer::Alpha::NavigationList::Heading": {
+  },
+  "Primer::Alpha::NavigationList::Item": {
+  },
+  "Primer::Alpha::NavigationList::Section": {
+  },
+  "Primer::Alpha::NavigationList::SubItem": {
+  },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",
     "TAG_DEFAULT": "nav",
