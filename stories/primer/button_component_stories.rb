@@ -6,11 +6,11 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
   story(:button) do
     controls do
       select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
-      select(:variant, Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
+      select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
       select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
-      caret false
+      dropdown false
       disabled false
     end
 
@@ -19,36 +19,36 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
     end
   end
 
-  story(:with_icon) do
+  story(:with_leading_visual) do
     controls do
       select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
-      select(:variant, Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
+      select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
       select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
-      caret false
+      dropdown false
       disabled false
     end
 
     content do |c|
-      c.icon(icon: :star)
+      c.leading_visual_icon(icon: :star)
       "Click me"
     end
   end
 
-  story(:with_counter) do
+  story(:with_trailing_visual) do
     controls do
       select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
-      select(:variant, Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
+      select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
       select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
-      caret false
+      dropdown false
       disabled false
     end
 
     content do |c|
-      c.counter(count: 10)
+      c.trailing_visual_counter(count: 10)
       "Click me"
     end
   end
@@ -56,17 +56,17 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
   story(:full) do
     controls do
       select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
-      select(:variant, Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
+      select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
       select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
       group_item false
-      caret false
+      dropdown false
       disabled false
     end
 
     content do |c|
-      c.icon(icon: :star)
-      c.counter(count: 10)
+      c.leading_visual_icon(icon: :star)
+      c.trailing_visual_counter(count: 10)
       "Click me"
     end
   end

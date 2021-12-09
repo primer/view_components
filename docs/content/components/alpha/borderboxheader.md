@@ -10,8 +10,7 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-BorderBox::Header: used inside the BorderBoxComponent to render its header slot
-Optional title slot
+`BorderBox::Header` is used inside `BorderBox` to render its header slot.
 
 ## Accessibility
 

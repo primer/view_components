@@ -109,7 +109,7 @@ Dividers can be used to separate a group of items. They don't have any content.
 
 ### With caret
 
-<Example src="<details data-view-component='true' class='dropdown details-overlay details-reset'>  <summary role='button' data-view-component='true' class='btn'>  Dropdown<svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-triangle-down mr-n1'>    <path d='M4.427 7.427l3.396 3.396a.25.25 0 00.354 0l3.396-3.396A.25.25 0 0011.396 7H4.604a.25.25 0 00-.177.427z'></path></svg></summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 1</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 2</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 3</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a></details-menu></div></details>" />
+<Example src="<details data-view-component='true' class='dropdown details-overlay details-reset'>  <summary role='button' data-view-component='true' class='btn'>  Dropdown<svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-triangle-down ml-2 mr-n1'>    <path d='M4.427 7.427l3.396 3.396a.25.25 0 00.354 0l3.396-3.396A.25.25 0 0011.396 7H4.604a.25.25 0 00-.177.427z'></path></svg></summary>  <div data-view-component='true'>    <details-menu role='menu' data-view-component='true' class='dropdown-menu dropdown-menu-se'>    <div class='dropdown-header'>      Options    </div>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 1</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 2</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 3</a>      <a role='menuitem' data-view-component='true' class='dropdown-item'>Item 4</a></details-menu></div></details>" />
 
 ```erb
 <%= render(Primer::Dropdown.new(with_caret: true)) do |c| %>
@@ -132,7 +132,7 @@ Dividers can be used to separate a group of items. They don't have any content.
 
 ```erb
 <%= render(Primer::Dropdown.new) do |c| %>
-  <% c.button(scheme: :primary, variant: :small) do %>
+  <% c.button(scheme: :primary, size: :small) do %>
     Dropdown
   <% end %>
 

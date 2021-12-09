@@ -9,7 +9,7 @@ module Primer
     renders_one :button, lambda { |**system_arguments, &block|
       @button_arguments = system_arguments
       @button_arguments[:button] = true
-      @button_arguments[:caret] = @with_caret
+      @button_arguments[:dropdown] = @with_caret
 
       view_context.capture { block&.call }
     }
@@ -88,7 +88,7 @@ module Primer
     #
     # @example Customizing the button
     #   <%= render(Primer::Dropdown.new) do |c| %>
-    #     <% c.button(scheme: :primary, variant: :small) do %>
+    #     <% c.button(scheme: :primary, size: :small) do %>
     #       Dropdown
     #     <% end %>
     #

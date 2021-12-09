@@ -99,7 +99,6 @@
 - ".btn-block"
 - ".btn-danger"
 - ".btn-invisible"
-- ".btn-large"
 - ".btn-large-mktg"
 - ".btn-link"
 - ".btn-mktg"
@@ -206,3 +205,4 @@
 - ".tooltipped-n"
 - ".tooltipped-no-delay"
 - ".tooltipped-s"
+- ".v-align-bottom"

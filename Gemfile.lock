@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.0.61)
+    primer_view_components (0.0.64)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (~> 15)
@@ -56,7 +56,7 @@ GEM
       html_tokenizer (~> 0.0.6)
       parser (>= 2.4)
       smart_properties
-    bootsnap (1.9.1)
+    bootsnap (1.9.3)
       msgpack (~> 1.0)
     builder (3.2.4)
     capybara (3.35.3)

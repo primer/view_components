@@ -17,31 +17,44 @@ module Primer
     }.freeze
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
-    DEFAULT_VARIANT = :medium
-    VARIANT_MAPPINGS = {
+    DEFAULT_SIZE = :medium
+    SIZE_MAPPINGS = {
       :small => "btn-sm",
-      DEFAULT_VARIANT => "",
-      :large => "btn-large"
+      DEFAULT_SIZE => ""
     }.freeze
-    VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
+    SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
-    # Icon to be rendered in the button.
+    # Leading visuals appear to the left of the button text.
+    #
+    # Use:
+    #
+    # - `leading_visual_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
     #
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
-    renders_one :icon, lambda { |**system_arguments|
-      system_arguments[:mr] = 2
+    renders_one :leading_visual, types: {
+      icon: lambda { |**system_arguments|
+        system_arguments[:mr] = 2
 
-      Primer::OcticonComponent.new(**system_arguments)
+        Primer::OcticonComponent.new(**system_arguments)
+      }
     }
+    alias icon leading_visual_icon # remove alias when all buttons are migrated to new slot names
 
-    # Counter to be rendered in the button.
+    # Trailing visuals appear to the right of the button text.
+    #
+    # Use:
+    #
+    # - `trailing_visual_counter` for a <%= link_to_component(Primer::CounterComponent) %>.
     #
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::CounterComponent) %>.
-    renders_one :counter, lambda { |**system_arguments|
-      system_arguments[:ml] = 2
+    renders_one :trailing_visual, types: {
+      counter: lambda { |**system_arguments|
+        system_arguments[:ml] = 2
 
-      Primer::CounterComponent.new(**system_arguments)
+        Primer::CounterComponent.new(**system_arguments)
+      }
     }
+    alias counter trailing_visual_counter # remove alias when all buttons are migrated to new slot names
 
     # @example Schemes
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
@@ -51,63 +64,64 @@ module Primer
     #   <%= render(Primer::ButtonComponent.new(scheme: :invisible)) { "Invisible" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :link)) { "Link" } %>
     #
-    # @example Variants
-    #   <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>
-    #   <%= render(Primer::ButtonComponent.new(variant: :medium)) { "Medium" } %>
-    #   <%= render(Primer::ButtonComponent.new(variant: :large)) { "Large" } %>
+    # @example Sizes
+    #   <%= render(Primer::ButtonComponent.new(size: :small)) { "Small" } %>
+    #   <%= render(Primer::ButtonComponent.new(size: :medium)) { "Medium" } %>
     #
     # @example Block
     #   <%= render(Primer::ButtonComponent.new(block: :true)) { "Block" } %>
     #   <%= render(Primer::ButtonComponent.new(block: :true, scheme: :primary)) { "Primary block" } %>
     #
-    # @example With icons
+    # @example With leading visual
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.icon(icon: :star) %>
+    #     <% c.leading_visual_icon(icon: :star) %>
     #     Button
     #   <% end %>
     #
-    # @example With counter
+    # @example With trailing visual
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.counter(count: 15) %>
+    #     <% c.trailing_visual_counter(count: 15) %>
     #     Button
     #   <% end %>
     #
-    # @example With icons and counter
+    # @example With leading and trailing visuals
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.icon(icon: :star) %>
-    #     <% c.counter(count: 15) %>
+    #     <% c.leading_visual_icon(icon: :star) %>
+    #     <% c.trailing_visual_counter(count: 15) %>
     #     Button
     #   <% end %>
     #
-    # @example With caret
-    #   <%= render(Primer::ButtonComponent.new(caret: true)) do %>
+    # @example With dropdown caret
+    #   <%= render(Primer::ButtonComponent.new(dropdown: true)) do %>
     #     Button
     #   <% end %>
     #
     # @param scheme [Symbol] <%= one_of(Primer::ButtonComponent::SCHEME_OPTIONS) %>
-    # @param variant [Symbol] <%= one_of(Primer::ButtonComponent::VARIANT_OPTIONS) %>
+    # @param variant [Symbol] DEPRECATED. <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
+    # @param size [Symbol] <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
     # @param tag [Symbol] (Primer::BaseButton::DEFAULT_TAG) <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
     # @param type [Symbol] (Primer::BaseButton::DEFAULT_TYPE) <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
     # @param group_item [Boolean] Whether button is part of a ButtonGroup.
     # @param block [Boolean] Whether button is full-width with `display: block`.
-    # @param caret [Boolean] Whether or not to render a caret.
+    # @param dropdown [Boolean] Whether or not to render a dropdown caret.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       scheme: DEFAULT_SCHEME,
-      variant: DEFAULT_VARIANT,
+      variant: nil,
+      size: DEFAULT_SIZE,
       group_item: false,
       block: false,
-      caret: false,
+      dropdown: false,
       **system_arguments
     )
       @scheme = scheme
-      @caret = caret
+      @dropdown = dropdown
 
       @system_arguments = system_arguments
       @system_arguments[:classes] = class_names(
         system_arguments[:classes],
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
-        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)],
+        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, variant || size, DEFAULT_SIZE)],
         "btn" => !link?,
         "btn-block" => block,
         "BtnGroup-item" => group_item

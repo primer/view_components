@@ -30,6 +30,56 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Deprecations
+
+* Deprecate `variant` in favor of `size` in `ButtonComponent` and `ButtonGroup`.
+
+    *Manuel Puyol*
+
+## 0.0.64
+
+### New
+
+* Add `raise_on_invalid_aria` config option to silence `aria-label` errors.
+
+    *Manuel Puyol*
+
+### Bug Fixes
+
+* Add missing `border: 0`, `font_size: 0` and responsive `flex` system arguments.
+
+    *Manuel Puyol*
+
+## 0.0.63
+
+### Breaking Changes
+
+* Rename `caret` argument to `dropdown` in `ButtonComponent`.
+
+    *Manuel Puyol*
+
+* Remove `:large` variant from `ButtonComponent`.
+
+    *Manuel Puyol*
+
+* Update `Spinner` to add system arguments to outermost element
+
+    *Charlotte Dann*
+
+### Deprecations
+
+* Deprecate `icon` and `counter` slots in `ButtonComponent` in favor of `leading_visual` and `trailing_visual`.
+
+    *Manuel Puyol*
+
+### Bug Fixes
+
+* Fix `PopoverComponent`, allowing to reset `left` and `right` positioning.
+
+    *Manuel Puyol*
+
+## 0.0.62
+
 ### New
 
 * Add linter for tracking deprecated `LayoutComponent` callsites
@@ -66,11 +116,11 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Breaking Changes
 
-* Add a warning to users if they try to use `tag:` parameters on a component where the tag is fixed
+* Add a warning to users if they try to use `tag:` parameters on a component where the tag is fixed.
 
     *Owen Niblock*
 
-* Updating to @primer/css@19.0.0 and @primer/primitives@7.1.0. Which removes support for deprecated system color arguments
+* Updating to @primer/css@19.0.0 and @primer/primitives@7.1.0. Which removes support for deprecated system color arguments.
 
     *Jon Rohan*
 

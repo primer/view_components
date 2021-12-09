@@ -13,9 +13,9 @@ module ERBLint
           symbolize: true
         ).freeze
 
-        VARIANT_MAPPINGS = Primer::ViewComponents::Constants.get(
+        SIZE_MAPPINGS = Primer::ViewComponents::Constants.get(
           component: "Primer::ButtonComponent",
-          constant: "VARIANT_MAPPINGS",
+          constant: "SIZE_MAPPINGS",
           symbolize: true
         ).freeze
 
@@ -55,8 +55,8 @@ module ERBLint
 
             if SCHEME_MAPPINGS[class_name] && acc[:scheme].nil?
               acc[:scheme] = SCHEME_MAPPINGS[class_name]
-            elsif VARIANT_MAPPINGS[class_name] && acc[:variant].nil?
-              acc[:variant] = VARIANT_MAPPINGS[class_name]
+            elsif SIZE_MAPPINGS[class_name] && acc[:size].nil?
+              acc[:size] = SIZE_MAPPINGS[class_name]
             elsif class_name == "btn-block"
               acc[:block] = true
             elsif class_name == "BtnGroup-item"
