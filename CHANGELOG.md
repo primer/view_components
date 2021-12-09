@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+* Adding new Alpha component: `NavigationList`
+
+    *Lee Quarella*
+
 ### Deprecations
 
 * Deprecate `variant` in favor of `size` in `ButtonComponent` and `ButtonGroup`.

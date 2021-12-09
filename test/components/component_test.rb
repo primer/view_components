@@ -7,6 +7,11 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Alpha::NavigationList, { "aria-label": "Navigation List" }],
+    [Primer::Alpha::NavigationList::Heading, { section_id: "heading" }],
+    [Primer::Alpha::NavigationList::Section, { "aria-label": "Navigation List Section", selected_by_ids: :an_id }],
+    [Primer::Alpha::NavigationList::Item, { selected_by_ids: :an_id }],
+    [Primer::Alpha::NavigationList::SubItem, { selected_by_ids: :an_id }],
     [Primer::Alpha::Layout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }
       component.sidebar(tag: :div) { "Bar" }

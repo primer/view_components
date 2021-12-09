@@ -1,0 +1,18 @@
+<action-list>
+  <%= render(Primer::BaseComponent.new(tag: :nav, **@nav_arguments)) do %>
+    <%= render(Primer::BaseComponent.new(tag: :ul, **@list_arguments)) do %>
+      <% items.each do |item| %>
+        <%= item %>
+      <% end %>
+      <% unless sections.empty? %>
+        <li class="ActionList-sectionDivider"></li>
+      <% end %>
+      <% sections.each_with_index do |section, idx| %>
+        <% if idx > 0 %>
+          <li class="ActionList-sectionDivider"></li>
+        <% end %>
+        <%= section %>
+      <% end %>
+    <% end %>
+  <% end %>
+</action-list>

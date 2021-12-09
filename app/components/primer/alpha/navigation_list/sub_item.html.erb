@@ -1,0 +1,12 @@
+<%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
+  <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
+    <span class="ActionList-item-label">
+      <%= content %>
+    </span>
+    <% if trailing_visual %>
+      <span class="ActionList-item-visual ActionList-item-visual--trailing">
+        <%= trailing_visual %>
+      </span>
+    <% end %>
+  <% end %>
+<% end %>

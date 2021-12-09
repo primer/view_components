@@ -51,6 +51,22 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: NavigationList
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/navigation_list.rb
+  parameters:
+  - name: selected_item_id
+    type: Symbol
+    default: "`nil`"
+    description: The id of the selected item. Should correspond to one of the item
+      ids in the list.
+  - name: item_classes
+    type: Array<String>
+    default: '`""`'
+    description: Additional classes to add to the list's items.
+  - name: list_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: TabNav
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tab_nav.rb
   parameters:
