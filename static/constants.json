@@ -253,8 +253,8 @@
     "Bookend": "Primer::Beta::PageLayout::Bookend",
     "COLUMN_GAP_DEFAULT": "normal",
     "COLUMN_GAP_MAPPINGS": {
-      "normal": "LayoutBeta--column-gap-normal",
-      "condensed": "LayoutBeta--column-gap-condensed"
+      "normal": "PageLayout--columnGap-normal",
+      "condensed": "PageLayout--columnGap-condensed"
     },
     "COLUMN_GAP_OPTIONS": [
       "normal",
@@ -263,8 +263,8 @@
     "Main": "Primer::Beta::PageLayout::Main",
     "OUTER_SPACING_DEFAULT": "normal",
     "OUTER_SPACING_MAPPINGS": {
-      "normal": "LayoutBeta--outer-spacing-normal",
-      "condensed": "LayoutBeta--outer-spacing-condensed"
+      "normal": "PageLayout--outerSpacing-normal",
+      "condensed": "PageLayout--outerSpacing-condensed"
     },
     "OUTER_SPACING_OPTIONS": [
       "normal",
@@ -273,8 +273,8 @@
     "Pane": "Primer::Beta::PageLayout::Pane",
     "RESPONSIVE_PRIMARY_REGION_DEFAULT": "content",
     "RESPONSIVE_PRIMARY_REGION_MAPPINGS": {
-      "content": "LayoutBeta--primary-content",
-      "pane": "LayoutBeta--primary-pane"
+      "content": "PageLayout--variant-separateRegions-primary-pane",
+      "pane": "PageLayout--variant-separateRegions-primary-pane"
     },
     "RESPONSIVE_PRIMARY_REGION_OPTIONS": [
       "content",
@@ -282,8 +282,8 @@
     ],
     "RESPONSIVE_VARIANT_DEFAULT": "stack_regions",
     "RESPONSIVE_VARIANT_MAPPINGS": {
-      "stack_regions": "LayoutBeta--variant-stackRegions",
-      "separate_regions": "LayoutBeta--variant-separateRegions"
+      "stack_regions": "PageLayout--variant-stackRegions",
+      "separate_regions": "PageLayout--variant-separateRegions"
     },
     "RESPONSIVE_VARIANT_OPTIONS": [
       "stack_regions",
@@ -291,8 +291,8 @@
     ],
     "ROW_GAP_DEFAULT": "normal",
     "ROW_GAP_MAPPINGS": {
-      "normal": "LayoutBeta--row-gap-normal",
-      "condensed": "LayoutBeta--row-gap-condensed"
+      "normal": "PageLayout--rowGap-normal",
+      "condensed": "PageLayout--rowGap-condensed"
     },
     "ROW_GAP_OPTIONS": [
       "normal",
@@ -316,8 +316,8 @@
     "RESPONSIVE_DIVIDER_DEFAULT": "none",
     "RESPONSIVE_DIVIDER_MAPPINGS": {
       "none": "",
-      "line": "LayoutBeta--divider-after",
-      "filled": "LayoutBeta--divider-after-filled"
+      "line": "PageLayout--divider-after",
+      "filled": "PageLayout--divider-after-filled"
     },
     "RESPONSIVE_DIVIDER_OPTIONS": [
       "none",
@@ -342,17 +342,21 @@
   "Primer::Beta::PageLayout::Pane": {
     "DIVIDER_DEFAULT": "start",
     "DIVIDER_MAPPINGS": {
-      "start": "LayoutBeta--pane-position-start",
-      "end": "LayoutBeta--pane-position-start"
+      "start": "PageLayout--panePos-start",
+      "end": "PageLayout--panePos-start"
     },
     "DIVIDER_OPTIONS": [
       "start",
       "end"
     ],
+    "HAS_DIVIDER_NONE_MAPPINGS": {
+      "start": "PageLayout-region--hasDivider-none-before",
+      "end": "PageLayout-region--hasDivider-none-after"
+    },
     "POSITION_DEFAULT": "start",
     "POSITION_MAPPINGS": {
-      "start": "LayoutBeta--pane-position-start",
-      "end": "LayoutBeta--pane-position-end"
+      "start": "PageLayout--panePos-start",
+      "end": "PageLayout--panePos-end"
     },
     "POSITION_OPTIONS": [
       "start",
@@ -361,8 +365,8 @@
     "RESPONSIVE_DIVIDER_DEFAULT": "none",
     "RESPONSIVE_DIVIDER_MAPPINGS": {
       "none": "",
-      "line": "LayoutBeta--divider-after",
-      "filled": "LayoutBeta--divider-after-filled"
+      "line": "PageLayout--divider-after",
+      "filled": "PageLayout--divider-after-filled"
     },
     "RESPONSIVE_DIVIDER_OPTIONS": [
       "none",
@@ -372,8 +376,8 @@
     "RESPONSIVE_POSITION_DEFAULT": "inherit",
     "RESPONSIVE_POSITION_MAPPINGS": {
       "inherit": "",
-      "start": "LayoutBeta--stackRegions-pane-position-start",
-      "end": "LayoutBeta--stackRegions-pane-position-end"
+      "start": "PageLayout--variant-stackRegions-panePos-start",
+      "end": "PageLayout--variant-stackRegions-panePos-end"
     },
     "RESPONSIVE_POSITION_OPTIONS": [
       "inherit",
@@ -390,8 +394,8 @@
     "WIDTH_DEFAULT": "default",
     "WIDTH_MAPPINGS": {
       "default": "",
-      "narrow": "LayoutBeta--pane-width-narrow",
-      "wide": "LayoutBeta--pane-width-wide"
+      "narrow": "PageLayout--paneWidth-narrow",
+      "wide": "PageLayout--paneWidth-wide"
     },
     "WIDTH_OPTIONS": [
       "default",
