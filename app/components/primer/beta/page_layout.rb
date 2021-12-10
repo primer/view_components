@@ -50,8 +50,8 @@ module Primer
 
       RESPONSIVE_PRIMARY_REGION_DEFAULT = :content
       RESPONSIVE_PRIMARY_REGION_MAPPINGS = {
-        RESPONSIVE_PRIMARY_REGION_DEFAULT => "PageLayout--primary-content",
-        :pane => "PageLayout--primary-pane"
+        RESPONSIVE_PRIMARY_REGION_DEFAULT => "PageLayout--variant-separateRegions-primary-pane",
+        :pane => "PageLayout--variant-separateRegions-primary-pane"
       }.freeze
       RESPONSIVE_PRIMARY_REGION_OPTIONS = RESPONSIVE_PRIMARY_REGION_MAPPINGS.keys.freeze
 
@@ -61,6 +61,13 @@ module Primer
         :separate_regions => "PageLayout--variant-separateRegions"
       }.freeze
       RESPONSIVE_VARIANT_OPTIONS = RESPONSIVE_VARIANT_MAPPINGS.keys.freeze
+
+      STACK_REGIONS_PANE_POSITION_DEFAULT = :start
+      STACK_REGIONS_PANE_POSITION_MAPPINGS = {
+        STACK_REGIONS_PANE_POSITION_DEFAULT => "PageLayout--variant-stackRegions-panePos-start",
+        :end => "PageLayout--variant-stackRegions-panePos-end"
+      }.freeze
+      STACK_REGIONS_PANE_POSITION_OPTIONS = STACK_REGIONS_PANE_POSITION_MAPPINGS.keys.freeze
 
       # The layout's main content.
       #
@@ -131,6 +138,7 @@ module Primer
           Pane::POSITION_MAPPINGS[fetch_or_fallback(Pane::POSITION_OPTIONS, position, Pane::POSITION_DEFAULT)],
           Pane::RESPONSIVE_POSITION_MAPPINGS[fetch_or_fallback(Pane::RESPONSIVE_POSITION_OPTIONS, responsive_position, Pane::RESPONSIVE_POSITION_DEFAULT)],
           Pane::WIDTH_MAPPINGS[fetch_or_fallback(Pane::WIDTH_OPTIONS, width, Pane::WIDTH_DEFAULT)],
+          { STACK_REGIONS_PANE_POSITION_MAPPINGS[fetch_or_fallback(STACK_REGIONS_PANE_POSITION_OPTIONS, position, STACK_REGIONS_PANE_POSITION_DEFAULT)] => @responsive_variant == :stack_regions },
           { "PageLayout--pane-divider" => divider }
         )
 
@@ -352,6 +360,7 @@ module Primer
       )
 
         @wrapper_sizing_class = WRAPPER_SIZING_MAPPINGS[fetch_or_fallback(WRAPPER_SIZING_OPTIONS, wrapper_sizing, WRAPPER_SIZING_DEFAULT)]
+        @responsive_variant = responsive_variant
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
         @system_arguments[:classes] = class_names(
@@ -359,8 +368,8 @@ module Primer
           OUTER_SPACING_MAPPINGS[fetch_or_fallback(OUTER_SPACING_OPTIONS, outer_spacing, OUTER_SPACING_DEFAULT)],
           COLUMN_GAP_MAPPINGS[fetch_or_fallback(COLUMN_GAP_OPTIONS, column_gap, COLUMN_GAP_DEFAULT)],
           ROW_GAP_MAPPINGS[fetch_or_fallback(ROW_GAP_OPTIONS, row_gap, ROW_GAP_DEFAULT)],
-          RESPONSIVE_PRIMARY_REGION_MAPPINGS[fetch_or_fallback(RESPONSIVE_PRIMARY_REGION_OPTIONS, responsive_primary_region, RESPONSIVE_PRIMARY_REGION_DEFAULT)],
-          RESPONSIVE_VARIANT_MAPPINGS[fetch_or_fallback(RESPONSIVE_VARIANT_OPTIONS, responsive_variant, RESPONSIVE_VARIANT_DEFAULT)],
+          RESPONSIVE_VARIANT_MAPPINGS[fetch_or_fallback(RESPONSIVE_VARIANT_OPTIONS, @responsive_variant, RESPONSIVE_VARIANT_DEFAULT)],
+          { RESPONSIVE_PRIMARY_REGION_MAPPINGS[fetch_or_fallback(RESPONSIVE_PRIMARY_REGION_OPTIONS, responsive_primary_region, RESPONSIVE_PRIMARY_REGION_DEFAULT)] => @responsive_variant == :separate_regions },
           "PageLayout--variant-md-multiColumns",
           system_arguments[:classes]
         )
@@ -452,22 +461,22 @@ module Primer
         RESPONSIVE_POSITION_DEFAULT = :inherit
         RESPONSIVE_POSITION_MAPPINGS = {
           RESPONSIVE_POSITION_DEFAULT => "",
-          :start => "PageLayout--stackRegions-pane-position-start",
-          :end => "PageLayout--stackRegions-pane-position-end"
+          :start => "PageLayout--stackRegions-panePos-start",
+          :end => "PageLayout--stackRegions-panePos-end"
         }.freeze
         RESPONSIVE_POSITION_OPTIONS = RESPONSIVE_POSITION_MAPPINGS.keys.freeze
 
         DIVIDER_DEFAULT = :start
         DIVIDER_MAPPINGS = {
-          DIVIDER_DEFAULT => "PageLayout--pane-position-start",
-          :end => "PageLayout--pane-position-start"
+          DIVIDER_DEFAULT => "PageLayout--panePos-start",
+          :end => "PageLayout--panePos-start"
         }.freeze
         DIVIDER_OPTIONS = DIVIDER_MAPPINGS.keys.freeze
 
         POSITION_DEFAULT = :start
         POSITION_MAPPINGS = {
-          POSITION_DEFAULT => "PageLayout--pane-position-start",
-          :end => "PageLayout--pane-position-end"
+          POSITION_DEFAULT => "PageLayout--panePos-start",
+          :end => "PageLayout--panePos-end"
         }.freeze
         POSITION_OPTIONS = POSITION_MAPPINGS.keys.freeze
 
