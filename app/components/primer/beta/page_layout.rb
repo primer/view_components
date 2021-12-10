@@ -62,6 +62,22 @@ module Primer
       }.freeze
       RESPONSIVE_VARIANT_OPTIONS = RESPONSIVE_VARIANT_MAPPINGS.keys.freeze
 
+      HEADER_RESPONSIVE_DIVIDER_DEFAULT = :none
+      HEADER_RESPONSIVE_DIVIDER_MAPPINGS = {
+        HEADER_RESPONSIVE_DIVIDER_DEFAULT => "",
+        :line => "PageLayout-region--hasDivider-line-before",
+        :filled => "PageLayout-region--hasDivider-filled-before"
+      }.freeze
+      HEADER_RESPONSIVE_DIVIDER_OPTIONS = HEADER_RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
+
+      FOOTER_RESPONSIVE_DIVIDER_DEFAULT = :none
+      FOOTER_RESPONSIVE_DIVIDER_MAPPINGS = {
+        FOOTER_RESPONSIVE_DIVIDER_DEFAULT => "",
+        :line => "PageLayout-region--hasDivider-line-before",
+        :filled => "PageLayout-region--hasDivider-filled-before"
+      }.freeze
+      FOOTER_RESPONSIVE_DIVIDER_OPTIONS = FOOTER_RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
+
       # The layout's main content.
       #
       # @param width [Symbol] <%= one_of(Primer::Beta::PageLayout::Main::WIDTH_OPTIONS) %>
@@ -72,29 +88,31 @@ module Primer
       # The layout's header.
       #
       # @param divider [Boolean] Whether to show a header divider
-      # @param responsive_divider [Boolean] Whether to show a divider below the `header` region if in responsive mode
+      # @param responsive_divider [Symbol] Whether to show a divider below the `header` region if in responsive mode. <%= one_of(Primer::Beta::PageLayout::HEADER_RESPONSIVE_DIVIDER_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :header, lambda { |divider: false, **header_system_arguments|
+      renders_one :header, lambda { |divider: false, responsive_divider: :line, **header_system_arguments|
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          "PageLayout--header-divider" => divider
+          "PageLayout--hasHeaderDivider" => divider
         )
 
         header_system_arguments[:classes] = class_names(
           header_system_arguments[:classes],
-          "PageLayout-header"
+          HEADER_RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(HEADER_RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, HEADER_RESPONSIVE_DIVIDER_DEFAULT)],
+          "PageLayout-header",
+          "PageLayout-region"
         )
 
-        Bookend.new(divider: divider, **header_system_arguments)
+        Primer::BaseComponent.new(tag: :div, **header_system_arguments)
       }
 
       # The layout's footer.
       #
       # @param divider [Boolean] Whether to show a footer divider
-      # @param responsive_divider [Boolean] Whether to show a divider below the `footer` region if in responsive mode
+      # @param responsive_divider [Symbol] Whether to show a divider below the `footer` region if in responsive mode. <%= one_of(Primer::Beta::PageLayout::FOOTER_RESPONSIVE_DIVIDER_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :footer, lambda { |divider: false, **footer_system_arguments|
+      renders_one :footer, lambda { |divider: false, responsive_divider: FOOTER_RESPONSIVE_DIVIDER_DEFAULT, **footer_system_arguments|
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
@@ -103,10 +121,12 @@ module Primer
 
         footer_system_arguments[:classes] = class_names(
           footer_system_arguments[:classes],
-          "PageLayout-footer"
+          FOOTER_RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(FOOTER_RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, FOOTER_RESPONSIVE_DIVIDER_DEFAULT)],
+          "PageLayout-footer",
+          "PageLayout-region"
         )
 
-        Bookend.new(divider: divider, **footer_system_arguments)
+        Primer::BaseComponent.new(tag: :div, **footer_system_arguments)
       }
 
       # The layout's sidebar.
@@ -338,7 +358,7 @@ module Primer
       #       <% c.footer(divider: true, border: true) { "Header" } %>
       #     <% end %>
       #
-      # @param wrapper_sizing [Symbol] The size of the container wrapping `Layout`. <%= one_of(Primer::Beta::PageLayout::WRAPPER_SIZING_OPTIONS) %>
+      # @param wrapper_sizing [Symbol] Define the maximum width of the component. `:fluid` sets it to full-width. Other values center Layout horizontally. <%= one_of(Primer::Beta::PageLayout::WRAPPER_SIZING_OPTIONS) %>
       # @param outer_spacing [Symbol] Sets wrapper margins surrounding the component to distance itself from the viewport edges. <%= one_of(Primer::Beta::PageLayout::OUTER_SPACING_OPTIONS) %>
       # @param column_gap [Symbol] Sets gap between columns. <%= one_of(Primer::Beta::PageLayout::COLUMN_GAP_OPTIONS) %>
       # @param row_gap [Symbol] Sets the gap below the header and above the footer. <%= one_of(Primer::Beta::PageLayout::ROW_GAP_OPTIONS) %>
@@ -412,34 +432,6 @@ module Primer
               end
             end
           end
-        end
-      end
-
-      # The layout's header or footer content. This component is used by the `header` and `footer` slots and configured via those slots.
-      class Bookend < Primer::Component
-        status :beta
-
-        RESPONSIVE_DIVIDER_DEFAULT = :none
-        RESPONSIVE_DIVIDER_MAPPINGS = {
-          RESPONSIVE_DIVIDER_DEFAULT => "",
-          :line => "PageLayout--divider-after",
-          :filled => "PageLayout--divider-after-filled"
-        }.freeze
-        RESPONSIVE_DIVIDER_OPTIONS = RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
-
-        # @param responsive_divider [Symbol] <%= one_of(Primer::Beta::PageLayout::Bookend::RESPONSIVE_DIVIDER_OPTIONS) %>
-        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(responsive_divider: RESPONSIVE_DIVIDER_DEFAULT, **system_arguments)
-          @system_arguments = system_arguments
-          @system_arguments[:classes] = class_names(
-            @system_arguments[:classes],
-            RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, RESPONSIVE_DIVIDER_DEFAULT)],
-            "PageLayout-region"
-          )
-        end
-
-        def call
-          render(Primer::BaseComponent.new(tag: :div, **@system_arguments)) { content }
         end
       end
 

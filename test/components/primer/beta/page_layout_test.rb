@@ -346,7 +346,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       c.pane { "Pane" }
     end
 
-    assert_selector("div.PageLayout.PageLayout--header-divider")
+    assert_selector("div.PageLayout.PageLayout--hasHeaderDivider")
   end
 
   def test_header_divider_not_present_when_not_set
@@ -356,18 +356,18 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       c.pane { "Pane" }
     end
 
-    refute_selector("div.PageLayout.PageLayout--has-header.PageLayout--header-divider")
+    refute_selector("div.PageLayout.PageLayout--hasHeaderDivider")
   end
 
   def test_header_responsive_divider
-    Primer::Beta::PageLayout::Bookend::RESPONSIVE_DIVIDER_OPTIONS.each do |opt|
+    Primer::Beta::PageLayout::HEADER_RESPONSIVE_DIVIDER_OPTIONS.each do |opt|
       render_inline(Primer::Beta::PageLayout.new) do |c|
         c.header(responsive_divider: opt) { "Header" }
         c.main { "Main" }
         c.pane { "Pane" }
       end
 
-      divider_class = Primer::Beta::PageLayout::Bookend::RESPONSIVE_DIVIDER_MAPPINGS[opt]
+      divider_class = Primer::Beta::PageLayout::HEADER_RESPONSIVE_DIVIDER_MAPPINGS[opt]
       assert_selector("div.PageLayout") do
         assert_selector("div.PageLayout-header#{divider_class.empty? ? '' : ".#{divider_class}"}", text: "Header")
         assert_selector("div.PageLayout-content", text: "Main")
@@ -397,14 +397,14 @@ class PrimerBetaPageLayoutTest < Minitest::Test
   end
 
   def test_footer_responsive_divider
-    Primer::Beta::PageLayout::Bookend::RESPONSIVE_DIVIDER_OPTIONS.each do |opt|
+    Primer::Beta::PageLayout::FOOTER_RESPONSIVE_DIVIDER_OPTIONS.each do |opt|
       render_inline(Primer::Beta::PageLayout.new) do |c|
         c.main { "Main" }
         c.pane { "Pane" }
         c.footer(responsive_divider: opt) { "Footer" }
       end
 
-      divider_class = Primer::Beta::PageLayout::Bookend::RESPONSIVE_DIVIDER_MAPPINGS[opt]
+      divider_class = Primer::Beta::PageLayout::FOOTER_RESPONSIVE_DIVIDER_MAPPINGS[opt]
       assert_selector("div.PageLayout") do
         assert_selector("div.PageLayout-footer#{divider_class.empty? ? '' : ".#{divider_class}"}", text: "Footer")
         assert_selector("div.PageLayout-content", text: "Main")
