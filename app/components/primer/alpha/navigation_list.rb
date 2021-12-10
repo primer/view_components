@@ -32,7 +32,10 @@ module Primer
       # @example Default
       #
       #   <%= render(Primer::Alpha::NavigationList.new(aria: { label: "Settings" }, selected_item_id: :personal_info)) do |component| %>
-      #     <% component.item(selected_by_ids: :general, href: "/settings/general") %>
+      #     <% component.item(selected_by_ids: :general, href: "/settings/general") do %>
+      #       General Settings
+      #     <% end %>
+      #
       #     <% component.section(aria: { label: "Account settings" }) do |section| %>
       #       <% section.heading do %>
       #         Account Settings
