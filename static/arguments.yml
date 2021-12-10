@@ -285,8 +285,8 @@
   - name: wrapper_sizing
     type: Symbol
     default: "`:fluid`"
-    description: The size of the container wrapping `Layout`. One of `:fluid`, `:lg`,
-      `:md`, or `:xl`.
+    description: Define the maximum width of the component. `:fluid` sets it to full-width.
+      Other values center Layout horizontally. One of `:fluid`, `:lg`, `:md`, or `:xl`.
   - name: outer_spacing
     type: Symbol
     default: "`:normal`"

@@ -19,7 +19,6 @@
   "Primer::Beta::Breadcrumbs": "beta",
   "Primer::Beta::Breadcrumbs::Item": "alpha",
   "Primer::Beta::PageLayout": "beta",
-  "Primer::Beta::PageLayout::Bookend": "beta",
   "Primer::Beta::PageLayout::Main": "beta",
   "Primer::Beta::PageLayout::Pane": "beta",
   "Primer::Beta::SplitLayout": "beta",

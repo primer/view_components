@@ -250,7 +250,6 @@
   "Primer::Beta::Breadcrumbs::Item": {
   },
   "Primer::Beta::PageLayout": {
-    "Bookend": "Primer::Beta::PageLayout::Bookend",
     "COLUMN_GAP_DEFAULT": "normal",
     "COLUMN_GAP_MAPPINGS": {
       "normal": "PageLayout--columnGap-normal",
@@ -259,6 +258,28 @@
     "COLUMN_GAP_OPTIONS": [
       "normal",
       "condensed"
+    ],
+    "FOOTER_RESPONSIVE_DIVIDER_DEFAULT": "none",
+    "FOOTER_RESPONSIVE_DIVIDER_MAPPINGS": {
+      "none": "",
+      "line": "PageLayout-region--hasDivider-line-before",
+      "filled": "PageLayout-region--hasDivider-filled-before"
+    },
+    "FOOTER_RESPONSIVE_DIVIDER_OPTIONS": [
+      "none",
+      "line",
+      "filled"
+    ],
+    "HEADER_RESPONSIVE_DIVIDER_DEFAULT": "none",
+    "HEADER_RESPONSIVE_DIVIDER_MAPPINGS": {
+      "none": "",
+      "line": "PageLayout-region--hasDivider-line-before",
+      "filled": "PageLayout-region--hasDivider-filled-before"
+    },
+    "HEADER_RESPONSIVE_DIVIDER_OPTIONS": [
+      "none",
+      "line",
+      "filled"
     ],
     "Main": "Primer::Beta::PageLayout::Main",
     "OUTER_SPACING_DEFAULT": "normal",
@@ -310,19 +331,6 @@
       "md",
       "lg",
       "xl"
-    ]
-  },
-  "Primer::Beta::PageLayout::Bookend": {
-    "RESPONSIVE_DIVIDER_DEFAULT": "none",
-    "RESPONSIVE_DIVIDER_MAPPINGS": {
-      "none": "",
-      "line": "PageLayout--divider-after",
-      "filled": "PageLayout--divider-after-filled"
-    },
-    "RESPONSIVE_DIVIDER_OPTIONS": [
-      "none",
-      "line",
-      "filled"
     ]
   },
   "Primer::Beta::PageLayout::Main": {
