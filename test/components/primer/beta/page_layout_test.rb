@@ -54,9 +54,9 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       "PageLayout",
       "PageLayout--variant-stackRegions",
       "PageLayout--variant-md-multiColumns",
-      "PageLayout--outer-spacing-normal",
-      "PageLayout--column-gap-normal",
-      "PageLayout--row-gap-normal",
+      "PageLayout--outerSpacing-normal",
+      "PageLayout--columnGap-normal",
+      "PageLayout--rowGap-normal",
       "PageLayout--pane-position-start",
       "PageLayout--stackRegions-pane-position-start"
     ].join(".")

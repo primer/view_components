@@ -29,22 +29,22 @@ module Primer
 
       OUTER_SPACING_DEFAULT = :normal
       OUTER_SPACING_MAPPINGS = {
-        OUTER_SPACING_DEFAULT => "PageLayout--outer-spacing-normal",
-        :condensed => "PageLayout--outer-spacing-condensed"
+        OUTER_SPACING_DEFAULT => "PageLayout--outerSpacing-normal",
+        :condensed => "PageLayout--outerSpacing-condensed"
       }.freeze
       OUTER_SPACING_OPTIONS = OUTER_SPACING_MAPPINGS.keys.freeze
 
       COLUMN_GAP_DEFAULT = :normal
       COLUMN_GAP_MAPPINGS = {
-        COLUMN_GAP_DEFAULT => "PageLayout--column-gap-normal",
-        :condensed => "PageLayout--column-gap-condensed"
+        COLUMN_GAP_DEFAULT => "PageLayout--columnGap-normal",
+        :condensed => "PageLayout--columnGap-condensed"
       }.freeze
       COLUMN_GAP_OPTIONS = COLUMN_GAP_MAPPINGS.keys.freeze
 
       ROW_GAP_DEFAULT = :normal
       ROW_GAP_MAPPINGS = {
-        ROW_GAP_DEFAULT => "PageLayout--row-gap-normal",
-        :condensed => "PageLayout--row-gap-condensed"
+        ROW_GAP_DEFAULT => "PageLayout--rowGap-normal",
+        :condensed => "PageLayout--rowGap-condensed"
       }.freeze
       ROW_GAP_OPTIONS = ROW_GAP_MAPPINGS.keys.freeze
 
