@@ -146,43 +146,6 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     end
   end
 
-  def test_stack_regions_variant_with_responsive_pane_position
-    Primer::Beta::PageLayout::Pane::POSITION_OPTIONS.each do |position|
-      Primer::Beta::PageLayout::Pane::RESPONSIVE_POSITION_OPTIONS.each do |responsive_position|
-        render_inline(Primer::Beta::PageLayout.new(responsive_variant: :stack_regions)) do |c|
-          c.main { "Main" }
-          c.pane(position: position, responsive_position: responsive_position) { "Pane" }
-        end
-
-        if responsive_position == :inherit
-          assert_selector("div.PageLayout") do
-            assert_selector("div.PageLayout--panePos-#{position}.PageLayout--variant-stackRegions-panePos-#{position}") do
-              assert_selector("div.PageLayout-content", text: "Main")
-              assert_selector("div.PageLayout-pane", text: "Pane")
-            end
-          end
-        else
-          assert_selector("div.PageLayout") do
-            assert_selector("div.PageLayout--panePos-#{position}.PageLayout--variant-stackRegions-panePos-#{responsive_position}") do
-              assert_selector("div.PageLayout-content", text: "Main")
-              assert_selector("div.PageLayout-pane", text: "Pane")
-            end
-          end
-        end
-      end
-    end
-  end
-
-  def test_variant_pane_position_not_set_when_separate_regions
-    render_inline(Primer::Beta::PageLayout.new(responsive_variant: :separate_regions)) do |c|
-      c.main { "Main" }
-      c.pane(position: :start) { "Pane" }
-    end
-
-    refute_selector("div.PageLayout--variant-stackRegions-panePos-end")
-    refute_selector("div.PageLayout--variant-stackRegions-panePos-start")
-  end
-
   def test_responsive_primary_region
     Primer::Beta::PageLayout::RESPONSIVE_PRIMARY_REGION_OPTIONS.each do |region|
       render_inline(Primer::Beta::PageLayout.new(responsive_variant: :separate_regions, responsive_primary_region: region)) do |c|
@@ -231,7 +194,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       c.pane(divider: true) { "Pane" }
     end
 
-    assert_selector("div.PageLayout.PageLayout--pane-divider") do
+    assert_selector("div.PageLayout.PageLayout--hasPaneDivider") do
       assert_selector("div.PageLayout-content", text: "Main")
       assert_selector("div.PageLayout-pane", text: "Pane")
     end
@@ -243,7 +206,24 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       c.pane { "Pane" }
     end
 
-    refute_selector("div.PageLayout.PageLayout--pane-divider")
+    refute_selector("div.PageLayout.PageLayout--hasPaneDivider")
+  end
+
+  def test_pane_responsive_divider
+    Primer::Beta::PageLayout::Pane::RESPONSIVE_DIVIDER_OPTIONS.each do |type|
+      render_inline(Primer::Beta::PageLayout.new) do |c|
+        c.main { "Main" }
+        c.pane(responsive_divider: type) { "Pane" }
+      end
+
+      type_class = Primer::Beta::PageLayout::Pane::RESPONSIVE_DIVIDER_MAPPINGS[type]
+      assert_selector("div.PageLayout") do
+        assert_selector("div#{type_class.empty? ? '' : ".#{type_class}"}") do
+          assert_selector("div.PageLayout-content", text: "Main")
+          assert_selector("div.PageLayout-pane", text: "Pane")
+        end
+      end
+    end
   end
 
   def test_pane_position_add_correct_class
@@ -280,19 +260,33 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     assert_match(/PageLayout-content.*PageLayout-pane/m, @rendered_component)
   end
 
-  def test_pane_responsive_position
-    Primer::Beta::PageLayout::Pane::RESPONSIVE_POSITION_OPTIONS.each do |position|
-      render_inline(Primer::Beta::PageLayout.new) do |c|
-        c.main { "Main" }
-        c.pane(responsive_position: position) { "Pane" }
-      end
+  def test_stack_regions_variant_with_responsive_pane_position
+    Primer::Beta::PageLayout::Pane::POSITION_OPTIONS.each do |position|
+      Primer::Beta::PageLayout::Pane::RESPONSIVE_POSITION_OPTIONS.each do |responsive_position|
+        render_inline(Primer::Beta::PageLayout.new(responsive_variant: :stack_regions)) do |c|
+          c.main { "Main" }
+          c.pane(position: position, responsive_position: responsive_position) { "Pane" }
+        end
 
-      position_class = Primer::Beta::PageLayout::Pane::RESPONSIVE_POSITION_MAPPINGS[position]
-      assert_selector("div.PageLayout#{position_class.empty? ? '' : ".#{position_class}"}") do
-        assert_selector("div.PageLayout-content", text: "Main")
-        assert_selector("div.PageLayout-pane", text: "Pane")
+        responsive_position = position if responsive_position == :inherit
+        assert_selector("div.PageLayout") do
+          assert_selector("div.PageLayout--panePos-#{position}.PageLayout--variant-stackRegions-panePos-#{responsive_position}") do
+            assert_selector("div.PageLayout-content", text: "Main")
+            assert_selector("div.PageLayout-pane", text: "Pane")
+          end
+        end
       end
     end
+  end
+
+  def test_variant_pane_position_not_set_when_separate_regions
+    render_inline(Primer::Beta::PageLayout.new(responsive_variant: :separate_regions)) do |c|
+      c.main { "Main" }
+      c.pane(position: :start) { "Pane" }
+    end
+
+    refute_selector("div.PageLayout--variant-stackRegions-panePos-end")
+    refute_selector("div.PageLayout--variant-stackRegions-panePos-start")
   end
 
   def test_pane_tags

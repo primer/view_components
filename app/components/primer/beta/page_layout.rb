@@ -130,7 +130,7 @@ module Primer
           Pane::POSITION_MAPPINGS[fetch_or_fallback(Pane::POSITION_OPTIONS, position, Pane::POSITION_DEFAULT)],
           Pane::WIDTH_MAPPINGS[fetch_or_fallback(Pane::WIDTH_OPTIONS, width, Pane::WIDTH_DEFAULT)],
           { Pane::RESPONSIVE_POSITION_MAPPINGS[fetch_or_fallback(Pane::RESPONSIVE_POSITION_OPTIONS, responsive_position, Pane::RESPONSIVE_POSITION_DEFAULT)] => @responsive_variant == :stack_regions },
-          { "PageLayout--pane-divider" => divider }
+          { "PageLayout--hasPaneDivider" => divider }
         )
 
         pane_system_arguments[:classes] = class_names(
@@ -450,8 +450,8 @@ module Primer
         WIDTH_DEFAULT = :default
         WIDTH_MAPPINGS = {
           WIDTH_DEFAULT => "",
-          :narrow => "PageLayout--pane-width-narrow",
-          :wide => "PageLayout--pane-width-wide"
+          :narrow => "PageLayout--paneWidth-narrow",
+          :wide => "PageLayout--paneWidth-wide"
         }.freeze
         WIDTH_OPTIONS = WIDTH_MAPPINGS.keys.freeze
 
