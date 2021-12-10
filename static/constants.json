@@ -270,37 +270,6 @@
       "normal",
       "condensed"
     ],
-    "PANE_DIVIDER_DEFAULT": "start",
-    "PANE_DIVIDER_MAPPINGS": {
-      "start": "LayoutBeta--pane-position-start",
-      "end": "LayoutBeta--pane-position-start"
-    },
-    "PANE_DIVIDER_OPTIONS": [
-      "start",
-      "end"
-    ],
-    "PANE_RESPONSIVE_POSITION_DEFAULT": "inherit",
-    "PANE_RESPONSIVE_POSITION_MAPPINGS": {
-      "inherit": "",
-      "start": "LayoutBeta--stackRegions-pane-position-start",
-      "end": "LayoutBeta--stackRegions-pane-position-end"
-    },
-    "PANE_RESPONSIVE_POSITION_OPTIONS": [
-      "inherit",
-      "start",
-      "end"
-    ],
-    "PANE_WIDTH_DEFAULT": "default",
-    "PANE_WIDTH_MAPPINGS": {
-      "default": "",
-      "narrow": "LayoutBeta--pane-width-narrow",
-      "wide": "LayoutBeta--pane-width-wide"
-    },
-    "PANE_WIDTH_OPTIONS": [
-      "default",
-      "narrow",
-      "wide"
-    ],
     "Pane": "Primer::Beta::PageLayout::Pane",
     "RESPONSIVE_PRIMARY_REGION_DEFAULT": "content",
     "RESPONSIVE_PRIMARY_REGION_MAPPINGS": {
@@ -371,6 +340,15 @@
     ]
   },
   "Primer::Beta::PageLayout::Pane": {
+    "DIVIDER_DEFAULT": "start",
+    "DIVIDER_MAPPINGS": {
+      "start": "LayoutBeta--pane-position-start",
+      "end": "LayoutBeta--pane-position-start"
+    },
+    "DIVIDER_OPTIONS": [
+      "start",
+      "end"
+    ],
     "POSITION_DEFAULT": "start",
     "POSITION_MAPPINGS": {
       "start": "LayoutBeta--pane-position-start",
@@ -391,12 +369,34 @@
       "line",
       "filled"
     ],
+    "RESPONSIVE_POSITION_DEFAULT": "inherit",
+    "RESPONSIVE_POSITION_MAPPINGS": {
+      "inherit": "",
+      "start": "LayoutBeta--stackRegions-pane-position-start",
+      "end": "LayoutBeta--stackRegions-pane-position-end"
+    },
+    "RESPONSIVE_POSITION_OPTIONS": [
+      "inherit",
+      "start",
+      "end"
+    ],
     "TAG_DEFAULT": "div",
     "TAG_OPTIONS": [
       "div",
       "aside",
       "nav",
       "section"
+    ],
+    "WIDTH_DEFAULT": "default",
+    "WIDTH_MAPPINGS": {
+      "default": "",
+      "narrow": "LayoutBeta--pane-width-narrow",
+      "wide": "LayoutBeta--pane-width-wide"
+    },
+    "WIDTH_OPTIONS": [
+      "default",
+      "narrow",
+      "wide"
     ]
   },
   "Primer::Beta::SplitLayout": {
