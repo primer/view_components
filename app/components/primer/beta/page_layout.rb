@@ -29,36 +29,36 @@ module Primer
 
       OUTER_SPACING_DEFAULT = :normal
       OUTER_SPACING_MAPPINGS = {
-        OUTER_SPACING_DEFAULT => "LayoutBeta--outer-spacing-normal",
-        :condensed => "LayoutBeta--outer-spacing-condensed"
+        OUTER_SPACING_DEFAULT => "PageLayout--outer-spacing-normal",
+        :condensed => "PageLayout--outer-spacing-condensed"
       }.freeze
       OUTER_SPACING_OPTIONS = OUTER_SPACING_MAPPINGS.keys.freeze
 
       COLUMN_GAP_DEFAULT = :normal
       COLUMN_GAP_MAPPINGS = {
-        COLUMN_GAP_DEFAULT => "LayoutBeta--column-gap-normal",
-        :condensed => "LayoutBeta--column-gap-condensed"
+        COLUMN_GAP_DEFAULT => "PageLayout--column-gap-normal",
+        :condensed => "PageLayout--column-gap-condensed"
       }.freeze
       COLUMN_GAP_OPTIONS = COLUMN_GAP_MAPPINGS.keys.freeze
 
       ROW_GAP_DEFAULT = :normal
       ROW_GAP_MAPPINGS = {
-        ROW_GAP_DEFAULT => "LayoutBeta--row-gap-normal",
-        :condensed => "LayoutBeta--row-gap-condensed"
+        ROW_GAP_DEFAULT => "PageLayout--row-gap-normal",
+        :condensed => "PageLayout--row-gap-condensed"
       }.freeze
       ROW_GAP_OPTIONS = ROW_GAP_MAPPINGS.keys.freeze
 
       RESPONSIVE_PRIMARY_REGION_DEFAULT = :content
       RESPONSIVE_PRIMARY_REGION_MAPPINGS = {
-        RESPONSIVE_PRIMARY_REGION_DEFAULT => "LayoutBeta--primary-content",
-        :pane => "LayoutBeta--primary-pane"
+        RESPONSIVE_PRIMARY_REGION_DEFAULT => "PageLayout--primary-content",
+        :pane => "PageLayout--primary-pane"
       }.freeze
       RESPONSIVE_PRIMARY_REGION_OPTIONS = RESPONSIVE_PRIMARY_REGION_MAPPINGS.keys.freeze
 
       RESPONSIVE_VARIANT_DEFAULT = :stack_regions
       RESPONSIVE_VARIANT_MAPPINGS = {
-        RESPONSIVE_VARIANT_DEFAULT => "LayoutBeta--variant-stackRegions",
-        :separate_regions => "LayoutBeta--variant-separateRegions"
+        RESPONSIVE_VARIANT_DEFAULT => "PageLayout--variant-stackRegions",
+        :separate_regions => "PageLayout--variant-separateRegions"
       }.freeze
       RESPONSIVE_VARIANT_OPTIONS = RESPONSIVE_VARIANT_MAPPINGS.keys.freeze
 
@@ -78,12 +78,12 @@ module Primer
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          "LayoutBeta--header-divider" => divider
+          "PageLayout--header-divider" => divider
         )
 
         header_system_arguments[:classes] = class_names(
           header_system_arguments[:classes],
-          "LayoutBeta-header"
+          "PageLayout-header"
         )
 
         Bookend.new(divider: divider, **header_system_arguments)
@@ -98,13 +98,13 @@ module Primer
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          "LayoutBeta--has-footer",
-          "LayoutBeta--footer-divider" => divider
+          "PageLayout--has-footer",
+          "PageLayout--footer-divider" => divider
         )
 
         footer_system_arguments[:classes] = class_names(
           footer_system_arguments[:classes],
-          "LayoutBeta-footer"
+          "PageLayout-footer"
         )
 
         Bookend.new(divider: divider, **footer_system_arguments)
@@ -131,7 +131,7 @@ module Primer
           Pane::POSITION_MAPPINGS[fetch_or_fallback(Pane::POSITION_OPTIONS, position, Pane::POSITION_DEFAULT)],
           Pane::RESPONSIVE_POSITION_MAPPINGS[fetch_or_fallback(Pane::RESPONSIVE_POSITION_OPTIONS, responsive_position, Pane::RESPONSIVE_POSITION_DEFAULT)],
           Pane::WIDTH_MAPPINGS[fetch_or_fallback(Pane::WIDTH_OPTIONS, width, Pane::WIDTH_DEFAULT)],
-          { "LayoutBeta--pane-divider" => divider }
+          { "PageLayout--pane-divider" => divider }
         )
 
         Pane.new(position: position, **system_arguments)
@@ -355,13 +355,13 @@ module Primer
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
         @system_arguments[:classes] = class_names(
-          "LayoutBeta",
+          "PageLayout",
           OUTER_SPACING_MAPPINGS[fetch_or_fallback(OUTER_SPACING_OPTIONS, outer_spacing, OUTER_SPACING_DEFAULT)],
           COLUMN_GAP_MAPPINGS[fetch_or_fallback(COLUMN_GAP_OPTIONS, column_gap, COLUMN_GAP_DEFAULT)],
           ROW_GAP_MAPPINGS[fetch_or_fallback(ROW_GAP_OPTIONS, row_gap, ROW_GAP_DEFAULT)],
           RESPONSIVE_PRIMARY_REGION_MAPPINGS[fetch_or_fallback(RESPONSIVE_PRIMARY_REGION_OPTIONS, responsive_primary_region, RESPONSIVE_PRIMARY_REGION_DEFAULT)],
           RESPONSIVE_VARIANT_MAPPINGS[fetch_or_fallback(RESPONSIVE_VARIANT_OPTIONS, responsive_variant, RESPONSIVE_VARIANT_DEFAULT)],
-          "LayoutBeta--variant-md-multiColumns",
+          "PageLayout--variant-md-multiColumns",
           system_arguments[:classes]
         )
       end
@@ -389,8 +389,8 @@ module Primer
           @system_arguments = system_arguments
           @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
           @system_arguments[:classes] = class_names(
-            "LayoutBeta-region",
-            "LayoutBeta-content",
+            "PageLayout-region",
+            "PageLayout-content",
             system_arguments[:classes]
           )
         end
@@ -400,7 +400,7 @@ module Primer
             if @width == :fluid
               content
             else
-              render(Primer::BaseComponent.new(tag: :div, classes: "LayoutBeta-content-centered-#{@width}")) do
+              render(Primer::BaseComponent.new(tag: :div, classes: "PageLayout-content-centered-#{@width}")) do
                 render(Primer::BaseComponent.new(tag: :div, container: @width)) do
                   content
                 end
@@ -417,8 +417,8 @@ module Primer
         RESPONSIVE_DIVIDER_DEFAULT = :none
         RESPONSIVE_DIVIDER_MAPPINGS = {
           RESPONSIVE_DIVIDER_DEFAULT => "",
-          :line => "LayoutBeta--divider-after",
-          :filled => "LayoutBeta--divider-after-filled"
+          :line => "PageLayout--divider-after",
+          :filled => "PageLayout--divider-after-filled"
         }.freeze
         RESPONSIVE_DIVIDER_OPTIONS = RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
 
@@ -444,38 +444,38 @@ module Primer
         WIDTH_DEFAULT = :default
         WIDTH_MAPPINGS = {
           WIDTH_DEFAULT => "",
-          :narrow => "LayoutBeta--pane-width-narrow",
-          :wide => "LayoutBeta--pane-width-wide"
+          :narrow => "PageLayout--pane-width-narrow",
+          :wide => "PageLayout--pane-width-wide"
         }.freeze
         WIDTH_OPTIONS = WIDTH_MAPPINGS.keys.freeze
 
         RESPONSIVE_POSITION_DEFAULT = :inherit
         RESPONSIVE_POSITION_MAPPINGS = {
           RESPONSIVE_POSITION_DEFAULT => "",
-          :start => "LayoutBeta--stackRegions-pane-position-start",
-          :end => "LayoutBeta--stackRegions-pane-position-end"
+          :start => "PageLayout--stackRegions-pane-position-start",
+          :end => "PageLayout--stackRegions-pane-position-end"
         }.freeze
         RESPONSIVE_POSITION_OPTIONS = RESPONSIVE_POSITION_MAPPINGS.keys.freeze
 
         DIVIDER_DEFAULT = :start
         DIVIDER_MAPPINGS = {
-          DIVIDER_DEFAULT => "LayoutBeta--pane-position-start",
-          :end => "LayoutBeta--pane-position-start"
+          DIVIDER_DEFAULT => "PageLayout--pane-position-start",
+          :end => "PageLayout--pane-position-start"
         }.freeze
         DIVIDER_OPTIONS = DIVIDER_MAPPINGS.keys.freeze
 
         POSITION_DEFAULT = :start
         POSITION_MAPPINGS = {
-          POSITION_DEFAULT => "LayoutBeta--pane-position-start",
-          :end => "LayoutBeta--pane-position-end"
+          POSITION_DEFAULT => "PageLayout--pane-position-start",
+          :end => "PageLayout--pane-position-end"
         }.freeze
         POSITION_OPTIONS = POSITION_MAPPINGS.keys.freeze
 
         RESPONSIVE_DIVIDER_DEFAULT = :none
         RESPONSIVE_DIVIDER_MAPPINGS = {
           RESPONSIVE_DIVIDER_DEFAULT => "",
-          :line => "LayoutBeta--divider-after",
-          :filled => "LayoutBeta--divider-after-filled"
+          :line => "PageLayout--divider-after",
+          :filled => "PageLayout--divider-after-filled"
         }.freeze
         RESPONSIVE_DIVIDER_OPTIONS = RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
 
@@ -489,8 +489,8 @@ module Primer
 
           @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
           @system_arguments[:classes] = class_names(
-            "LayoutBeta-region",
-            "LayoutBeta-pane",
+            "PageLayout-region",
+            "PageLayout-pane",
             RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, RESPONSIVE_DIVIDER_DEFAULT)],
             @system_arguments[:classes]
           )
