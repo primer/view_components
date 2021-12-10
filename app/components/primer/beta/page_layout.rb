@@ -62,13 +62,6 @@ module Primer
       }.freeze
       RESPONSIVE_VARIANT_OPTIONS = RESPONSIVE_VARIANT_MAPPINGS.keys.freeze
 
-      STACK_REGIONS_PANE_POSITION_DEFAULT = :start
-      STACK_REGIONS_PANE_POSITION_MAPPINGS = {
-        STACK_REGIONS_PANE_POSITION_DEFAULT => "PageLayout--variant-stackRegions-panePos-start",
-        :end => "PageLayout--variant-stackRegions-panePos-end"
-      }.freeze
-      STACK_REGIONS_PANE_POSITION_OPTIONS = STACK_REGIONS_PANE_POSITION_MAPPINGS.keys.freeze
-
       # The layout's main content.
       #
       # @param width [Symbol] <%= one_of(Primer::Beta::PageLayout::Main::WIDTH_OPTIONS) %>
@@ -105,8 +98,7 @@ module Primer
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          "PageLayout--has-footer",
-          "PageLayout--footer-divider" => divider
+          "PageLayout--hasFooterDivider" => divider
         )
 
         footer_system_arguments[:classes] = class_names(
@@ -129,20 +121,24 @@ module Primer
         position: Pane::POSITION_DEFAULT,
         responsive_position: Pane::RESPONSIVE_POSITION_DEFAULT,
         divider: false,
-        **system_arguments
+        **pane_system_arguments
       |
         responsive_position = position if responsive_position == Pane::RESPONSIVE_POSITION_DEFAULT
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           Pane::POSITION_MAPPINGS[fetch_or_fallback(Pane::POSITION_OPTIONS, position, Pane::POSITION_DEFAULT)],
-          Pane::RESPONSIVE_POSITION_MAPPINGS[fetch_or_fallback(Pane::RESPONSIVE_POSITION_OPTIONS, responsive_position, Pane::RESPONSIVE_POSITION_DEFAULT)],
           Pane::WIDTH_MAPPINGS[fetch_or_fallback(Pane::WIDTH_OPTIONS, width, Pane::WIDTH_DEFAULT)],
-          { STACK_REGIONS_PANE_POSITION_MAPPINGS[fetch_or_fallback(STACK_REGIONS_PANE_POSITION_OPTIONS, position, STACK_REGIONS_PANE_POSITION_DEFAULT)] => @responsive_variant == :stack_regions },
+          { Pane::RESPONSIVE_POSITION_MAPPINGS[fetch_or_fallback(Pane::RESPONSIVE_POSITION_OPTIONS, responsive_position, Pane::RESPONSIVE_POSITION_DEFAULT)] => @responsive_variant == :stack_regions },
           { "PageLayout--pane-divider" => divider }
         )
 
-        Pane.new(position: position, **system_arguments)
+        pane_system_arguments[:classes] = class_names(
+          pane_system_arguments[:classes],
+          Pane::HAS_DIVIDER_NONE_MAPPINGS[responsive_position]
+        )
+
+        Pane.new(position: position, **pane_system_arguments)
       }
 
       # @example Default
@@ -437,7 +433,8 @@ module Primer
           @system_arguments = system_arguments
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
-            RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, RESPONSIVE_DIVIDER_DEFAULT)]
+            RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, RESPONSIVE_DIVIDER_DEFAULT)],
+            "PageLayout-region"
           )
         end
 
@@ -461,8 +458,8 @@ module Primer
         RESPONSIVE_POSITION_DEFAULT = :inherit
         RESPONSIVE_POSITION_MAPPINGS = {
           RESPONSIVE_POSITION_DEFAULT => "",
-          :start => "PageLayout--stackRegions-panePos-start",
-          :end => "PageLayout--stackRegions-panePos-end"
+          :start => "PageLayout--variant-stackRegions-panePos-start",
+          :end => "PageLayout--variant-stackRegions-panePos-end"
         }.freeze
         RESPONSIVE_POSITION_OPTIONS = RESPONSIVE_POSITION_MAPPINGS.keys.freeze
 
@@ -487,6 +484,11 @@ module Primer
           :filled => "PageLayout--divider-after-filled"
         }.freeze
         RESPONSIVE_DIVIDER_OPTIONS = RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
+
+        HAS_DIVIDER_NONE_MAPPINGS = {
+          start: "PageLayout-region--hasDivider-none-before",
+          end: "PageLayout-region--hasDivider-none-after"
+        }.freeze
 
         TAG_DEFAULT = :div
         TAG_OPTIONS = [TAG_DEFAULT, :aside, :nav, :section].freeze

@@ -23,8 +23,10 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     end
 
     assert_selector("div.PageLayout") do
-      assert_selector("div.PageLayout-content", text: "Main")
-      assert_selector("div.PageLayout-pane", text: "Pane")
+      assert_selector("div.PageLayout-columns") do
+        assert_selector("div.PageLayout-region.PageLayout-content", text: "Main")
+        assert_selector("div.PageLayout-region.PageLayout-pane.PageLayout-region--hasDivider-none-before", text: "Pane")
+      end
     end
   end
 
@@ -37,10 +39,12 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     end
 
     assert_selector("div.PageLayout") do
-      assert_selector("div.PageLayout-header", text: "Header")
-      assert_selector("div.PageLayout-content", text: "Main")
-      assert_selector("div.PageLayout-pane", text: "Pane")
-      assert_selector("div.PageLayout-footer", text: "Footer")
+      assert_selector("div.PageLayout-header.PageLayout-region", text: "Header")
+      assert_selector("div.PageLayout-columns") do
+        assert_selector("div.PageLayout-region.PageLayout-content", text: "Main")
+        assert_selector("div.PageLayout-region.PageLayout-pane.PageLayout-region--hasDivider-none-before", text: "Pane")
+      end
+      assert_selector("div.PageLayout-footer.PageLayout-region", text: "Footer")
     end
   end
 
@@ -58,7 +62,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       "PageLayout--columnGap-normal",
       "PageLayout--rowGap-normal",
       "PageLayout--panePos-start",
-      "PageLayout--stackRegions-panePos-start"
+      "PageLayout--variant-stackRegions-panePos-start"
     ].join(".")
     assert_selector("div.#{expected_classes}") do
       assert_selector("div.PageLayout-content", text: "Main")
@@ -142,17 +146,28 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     end
   end
 
-  def test_stack_regions_variant_with_pane_position
+  def test_stack_regions_variant_with_responsive_pane_position
     Primer::Beta::PageLayout::Pane::POSITION_OPTIONS.each do |position|
-      render_inline(Primer::Beta::PageLayout.new(responsive_variant: :stack_regions)) do |c|
-        c.main { "Main" }
-        c.pane(position: position) { "Pane" }
-      end
+      Primer::Beta::PageLayout::Pane::RESPONSIVE_POSITION_OPTIONS.each do |responsive_position|
+        render_inline(Primer::Beta::PageLayout.new(responsive_variant: :stack_regions)) do |c|
+          c.main { "Main" }
+          c.pane(position: position, responsive_position: responsive_position) { "Pane" }
+        end
 
-      assert_selector("div.PageLayout") do
-        assert_selector("div.PageLayout--panePos-#{position}.PageLayout--variant-stackRegions-panePos-#{position}") do
-          assert_selector("div.PageLayout-content", text: "Main")
-          assert_selector("div.PageLayout-pane", text: "Pane")
+        if responsive_position == :inherit
+          assert_selector("div.PageLayout") do
+            assert_selector("div.PageLayout--panePos-#{position}.PageLayout--variant-stackRegions-panePos-#{position}") do
+              assert_selector("div.PageLayout-content", text: "Main")
+              assert_selector("div.PageLayout-pane", text: "Pane")
+            end
+          end
+        else
+          assert_selector("div.PageLayout") do
+            assert_selector("div.PageLayout--panePos-#{position}.PageLayout--variant-stackRegions-panePos-#{responsive_position}") do
+              assert_selector("div.PageLayout-content", text: "Main")
+              assert_selector("div.PageLayout-pane", text: "Pane")
+            end
+          end
         end
       end
     end
@@ -301,7 +316,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
         c.pane { "Pane" }
       end
 
-      assert_selector("div.PageLayout-regions") do
+      assert_selector("div.PageLayout-columns") do
         assert_selector("div.PageLayout-content") do
           if width == :fluid
             assert_text("Main")
@@ -374,7 +389,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       c.footer(divider: true) { "Footer" }
     end
 
-    assert_selector("div.PageLayout.PageLayout--has-footer.PageLayout--footer-divider")
+    assert_selector("div.PageLayout.PageLayout--hasFooterDivider")
   end
 
   def test_footer_divider_not_present_when_not_set
@@ -384,7 +399,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       c.footer { "Footer" }
     end
 
-    refute_selector("div.PageLayout.PageLayout--has-footer.PageLayout--footer-divider")
+    refute_selector("div.PageLayout.PageLayout--hasFooterDivider")
   end
 
   def test_footer_responsive_divider
