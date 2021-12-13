@@ -20,7 +20,7 @@ class Primer::Beta::PageLayoutStories < ViewComponent::Storybook::Stories
         "Main region"
       end
       c.pane(border: true) do
-        "Sidebar region"
+        "Pane region"
       end
     end
   end
