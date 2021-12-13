@@ -57,7 +57,6 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     expected_classes = [
       "PageLayout",
       "PageLayout--variant-stackRegions",
-      "PageLayout--variant-md-multiColumns",
       "PageLayout--outerSpacing-normal",
       "PageLayout--columnGap-normal",
       "PageLayout--rowGap-normal",

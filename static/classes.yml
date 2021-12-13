@@ -63,7 +63,6 @@
 - ".PageLayout--rowGap-condensed"
 - ".PageLayout--rowGap-none"
 - ".PageLayout--rowGap-normal"
-- ".PageLayout--variant-md-multiColumns"
 - ".PageLayout--variant-separateRegions"
 - ".PageLayout--variant-separateRegions-primary-content"
 - ".PageLayout--variant-stackRegions"
