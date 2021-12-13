@@ -42,7 +42,7 @@ class PrimerBetaSplitLayoutTest < Minitest::Test
       "PageLayout--panePos-start",
       "PageLayout--hasPaneDivider",
       "PageLayout--variant-separateRegions",
-      "PageLayout--variant-separateRegions-primary-content",
+      "PageLayout--variant-separateRegions-primary-content"
     ].join(".")
     assert_selector("div.#{expected_classes}") do
       assert_selector("div.PageLayout-wrapper") do
