@@ -5,12 +5,13 @@ module Primer
     # `PageLayout` provides foundational patterns for responsive pages.
     # `PageLayout` can be used for simple two-column pages, or it can be nested to provide flexible 3-column experiences.
     #  On smaller screens, `PageLayout` uses vertically stacked rows to display content.
+    #  `PageLayout` is responsible to determine the arrangement of the main regions that compose a page. This means anything after the global and local headers (i.e. repo or org headers), and anything before the global footer.
     #
-    # `PageLayout` flows as both column, when there's enough horizontal space to render both `Main` and `Pane`side-by-side (on a desktop of tablet device, per instance);
+    #  PageLayout controls the page spacings, supports header and footer regions, provides different styles of sidebars, and handles responsive strategies.
+    #
+    # `PageLayout` flows as both column, when there's enough horizontal space to render both `Main` and `Pane` side-by-side (on a desktop of tablet device, per instance);
     # or it flows as a row, when `Main` and `Pane` are stacked vertically (e.g. on a mobile device).
     # `PageLayout` should always work in any screen size.
-    #
-    # `PageLayout` also provides `Header` and `Footer` slots, which can be used to provide a consistent header and footer across all pages.
     #
     # @accessibility
     #   Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether
