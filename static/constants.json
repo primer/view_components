@@ -294,7 +294,7 @@
     "Pane": "Primer::Beta::PageLayout::Pane",
     "RESPONSIVE_PRIMARY_REGION_DEFAULT": "content",
     "RESPONSIVE_PRIMARY_REGION_MAPPINGS": {
-      "content": "PageLayout--variant-separateRegions-primary-pane",
+      "content": "PageLayout--variant-separateRegions-primary-content",
       "pane": "PageLayout--variant-separateRegions-primary-pane"
     },
     "RESPONSIVE_PRIMARY_REGION_OPTIONS": [
