@@ -24,6 +24,14 @@ module Primer
       Rails.application.config.primer_view_components.raise_on_invalid_options = old_value
     end
 
+    def with_raise_on_invalid_aria(new_value)
+      old_value = Rails.application.config.primer_view_components.raise_on_invalid_aria
+      Rails.application.config.primer_view_components.raise_on_invalid_aria = new_value
+      yield
+    ensure
+      Rails.application.config.primer_view_components.raise_on_invalid_aria = old_value
+    end
+
     def with_silence_deprecations(new_value)
       old_value = Rails.application.config.primer_view_components.silence_deprecations
       Rails.application.config.primer_view_components.silence_deprecations = new_value

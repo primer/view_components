@@ -81,7 +81,7 @@ module Primer
         system_arguments[:tag] = :a
         system_arguments[:href] = href
         system_arguments[:mt] = 5
-        system_arguments[:variant] = :medium
+        system_arguments[:size] = :medium
         system_arguments[:scheme] ||= :primary
 
         Primer::ButtonComponent.new(**system_arguments)

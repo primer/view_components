@@ -494,7 +494,7 @@
   },
   "Primer::ButtonComponent": {
     "DEFAULT_SCHEME": "default",
-    "DEFAULT_VARIANT": "medium",
+    "DEFAULT_SIZE": "medium",
     "LINK_SCHEME": "link",
     "SCHEME_MAPPINGS": {
       "default": "",
@@ -512,11 +512,11 @@
       "invisible",
       "link"
     ],
-    "VARIANT_MAPPINGS": {
+    "SIZE_MAPPINGS": {
       "small": "btn-sm",
       "medium": ""
     },
-    "VARIANT_OPTIONS": [
+    "SIZE_OPTIONS": [
       "small",
       "medium"
     ]

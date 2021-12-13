@@ -100,7 +100,7 @@ class ReleaseCLI < Thor::Group
   end
 
   def create_pull_request
-    @pr_url = run("gh pr create -b "" -t \"Release v#{new_version}\"", capture: true)
+    @pr_url = run("gh pr create -b \"\" -t \"Release v#{new_version}\"", capture: true)
   end
 
   def final_message

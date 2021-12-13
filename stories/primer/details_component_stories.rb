@@ -21,7 +21,7 @@ class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |component|
-      component.summary(variant: :small, scheme: :primary) { "Click me" }
+      component.summary(size: :small, scheme: :primary) { "Click me" }
       component.body { "Body" }
     end
   end

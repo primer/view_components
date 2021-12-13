@@ -30,6 +30,26 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Deprecations
+
+* Deprecate `variant` in favor of `size` in `ButtonComponent` and `ButtonGroup`.
+
+    *Manuel Puyol*
+
+## 0.0.64
+
+### New
+
+* Add `raise_on_invalid_aria` config option to silence `aria-label` errors.
+
+    *Manuel Puyol*
+
+### Bug Fixes
+
+* Add missing `border: 0`, `font_size: 0` and responsive `flex` system arguments.
+
+    *Manuel Puyol*
+
 ## 0.0.63
 
 ### Breaking Changes
