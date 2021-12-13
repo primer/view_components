@@ -59,16 +59,22 @@ class PrimerButtonComponentTest < Minitest::Test
     assert_selector(".btn.btn-primary")
   end
 
-  def test_falls_back_when_variant_isn_t_valid
+  def test_falls_back_when_size_isn_t_valid
     without_fetch_or_fallback_raises do
-      render_inline(Primer::ButtonComponent.new(variant: :invalid)) { "content" }
+      render_inline(Primer::ButtonComponent.new(size: :invalid)) { "content" }
 
       assert_selector(".btn")
     end
   end
 
-  def test_renders_with_the_css_class_variant_mapping_to_the_provided_variant
-    render_inline(Primer::ButtonComponent.new(variant: :small)) { "content" }
+  def test_renders_with_the_css_class_size_mapping_to_the_provided_size
+    render_inline(Primer::ButtonComponent.new(size: :small)) { "content" }
+
+    assert_selector(".btn.btn-sm")
+  end
+
+  def test_renders_with_the_css_class_size_mapping_to_the_provided_variant
+    render_inline(Primer::ButtonComponent.new(variant: :small)) { "content" } # rubocop:disable Primer/DeprecatedButtonArguments
 
     assert_selector(".btn.btn-sm")
   end

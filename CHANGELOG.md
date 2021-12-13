@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Deprecations
+
+* Deprecate `variant` in favor of `size` in `ButtonComponent` and `ButtonGroup`.
+
+    *Manuel Puyol*
+
 ### Bug Fixes
 
 * Call `image_path` on `Primer::Image#src`.
@@ -86,6 +92,14 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Josh Klina*
 
+* Add functional `Label` schemes: `accent`, `attention`, `severe`, `done` and `sponsors`.
+
+    *Manuel Puyol, Simon Luthi*
+
+* Add linter to migrate from deprecated `Label` schemes to the new ones.
+
+    *Manuel Puyol*
+
 ### Updates
 
 * Update `Button` to add `8px` spacing between icon, text and counter.
@@ -119,6 +133,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 * Prevent `aria-label` to be used with `:div, :span, :p` tags without an explicit `role`.
 
     *Manuel Puyol*
+
+### Deprecations
+
+* Deprecate `Label` schemes `info` and `warning` in favor of `accent` and `attention`.
+
+    *Manuel Puyol, Simon Luthi*
 
 ## 0.0.61
 

@@ -78,7 +78,7 @@ Optional action content showed on the right side of the component.
 <%= render(Primer::FlashComponent.new) do |component| %>
   This is a flash message with actions!
   <% component.action do %>
-    <%= render(Primer::ButtonComponent.new(variant: :small)) { "Take action" } %>
+    <%= render(Primer::ButtonComponent.new(size: :small)) { "Take action" } %>
   <% end %>
 <% end %>
 ```

@@ -325,6 +325,10 @@
       or `:primary`.
   - name: variant
     type: Symbol
+    default: "`nil`"
+    description: DEPRECATED. One of `:medium` and `:small`.
+  - name: size
+    type: Symbol
     default: "`:medium`"
     description: One of `:medium` and `:small`.
   - name: tag
@@ -355,6 +359,10 @@
   source: https://github.com/primer/view_components/tree/main/app/components/primer/button_group.rb
   parameters:
   - name: variant
+    type: Symbol
+    default: "`nil`"
+    description: DEPRECATED. One of `:medium` and `:small`.
+  - name: size
     type: Symbol
     default: "`:medium`"
     description: One of `:medium` and `:small`.
@@ -655,9 +663,10 @@
     description: One of `:a`, `:div`, `:span`, or `:summary`.
   - name: scheme
     type: Symbol
-    default: "`nil`"
-    description: One of `:danger`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`,
-      `:success`, or `:warning`.
+    default: "`:default`"
+    description: One of `:accent`, `:attention`, `:danger`, `:default`, `:done`, `:info`,
+      `:orange`, `:primary`, `:purple`, `:secondary`, `:severe`, `:sponsors`, `:success`,
+      or `:warning`.
   - name: variant
     type: Symbol
     default: "`nil`"

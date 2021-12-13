@@ -43,9 +43,19 @@ class PrimerButtonGroupTest < Minitest::Test
     refute_text("content")
   end
 
+  def test_all_buttons_with_same_size
+    render_inline(Primer::ButtonGroup.new(size: :small)) do |c|
+      c.button(size: :medium) { "Medium" }
+    end
+
+    assert_selector("div.BtnGroup") do
+      assert_selector("button.btn.BtnGroup-item.btn-sm", text: "Medium")
+    end
+  end
+
   def test_all_buttons_with_same_variant
     render_inline(Primer::ButtonGroup.new(variant: :small)) do |c|
-      c.button(variant: :medium) { "Medium" }
+      c.button(size: :medium) { "Medium" }
     end
 
     assert_selector("div.BtnGroup") do
