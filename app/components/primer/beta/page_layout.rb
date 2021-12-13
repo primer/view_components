@@ -50,7 +50,7 @@ module Primer
 
       RESPONSIVE_PRIMARY_REGION_DEFAULT = :content
       RESPONSIVE_PRIMARY_REGION_MAPPINGS = {
-        RESPONSIVE_PRIMARY_REGION_DEFAULT => "PageLayout--variant-separateRegions-primary-pane",
+        RESPONSIVE_PRIMARY_REGION_DEFAULT => "PageLayout--variant-separateRegions-primary-content",
         :pane => "PageLayout--variant-separateRegions-primary-pane"
       }.freeze
       RESPONSIVE_PRIMARY_REGION_OPTIONS = RESPONSIVE_PRIMARY_REGION_MAPPINGS.keys.freeze
@@ -386,7 +386,6 @@ module Primer
           ROW_GAP_MAPPINGS[fetch_or_fallback(ROW_GAP_OPTIONS, row_gap, ROW_GAP_DEFAULT)],
           RESPONSIVE_VARIANT_MAPPINGS[fetch_or_fallback(RESPONSIVE_VARIANT_OPTIONS, @responsive_variant, RESPONSIVE_VARIANT_DEFAULT)],
           { RESPONSIVE_PRIMARY_REGION_MAPPINGS[fetch_or_fallback(RESPONSIVE_PRIMARY_REGION_OPTIONS, responsive_primary_region, RESPONSIVE_PRIMARY_REGION_DEFAULT)] => @responsive_variant == :separate_regions },
-          "PageLayout--variant-md-multiColumns",
           system_arguments[:classes]
         )
       end
