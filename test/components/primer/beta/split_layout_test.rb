@@ -22,9 +22,9 @@ class PrimerBetaSplitLayoutTest < Minitest::Test
       c.pane { "Pane" }
     end
 
-    assert_selector("div.LayoutBeta") do
-      assert_selector("div.LayoutBeta-content", text: "Main")
-      assert_selector("div.LayoutBeta-pane", text: "Pane")
+    assert_selector("div.PageLayout") do
+      assert_selector("div.PageLayout-content", text: "Main")
+      assert_selector("div.PageLayout-pane", text: "Pane")
     end
   end
 
@@ -35,19 +35,22 @@ class PrimerBetaSplitLayoutTest < Minitest::Test
     end
 
     expected_classes = [
-      "LayoutBeta",
-      "LayoutBeta--variant-separateRegions",
-      "LayoutBeta--variant-md-multiColumns",
-      "LayoutBeta--primary-content",
-      "LayoutBeta--inner-spacing-normal",
-      "LayoutBeta--column-gap-none",
-      "LayoutBeta--row-gap-none",
-      "LayoutBeta--pane-position-start",
-      "LayoutBeta--pane-divider"
+      "PageLayout",
+      "PageLayout--innerSpacing-normal",
+      "PageLayout--columnGap-none",
+      "PageLayout--rowGap-none",
+      "PageLayout--panePos-start",
+      "PageLayout--hasPaneDivider",
+      "PageLayout--variant-separateRegions",
+      "PageLayout--variant-separateRegions-primary-content",
     ].join(".")
     assert_selector("div.#{expected_classes}") do
-      assert_selector("div.LayoutBeta-content", text: "Main")
-      assert_selector("div.LayoutBeta-pane", text: "Pane")
+      assert_selector("div.PageLayout-wrapper") do
+        assert_selector("div.PageLayout-columns") do
+          assert_selector("div.PageLayout-region.PageLayout-content", text: "Main")
+          assert_selector("div.PageLayout-region.PageLayout-pane", text: "Pane")
+        end
+      end
     end
   end
 
@@ -59,9 +62,9 @@ class PrimerBetaSplitLayoutTest < Minitest::Test
       end
 
       region_class = Primer::Beta::SplitLayout::RESPONSIVE_PRIMARY_REGION_MAPPINGS[region]
-      assert_selector("div.LayoutBeta#{region_class.empty? ? '' : ".#{region_class}"}") do
-        assert_selector("div.LayoutBeta-content", text: "Main")
-        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      assert_selector("div.PageLayout#{region_class.empty? ? '' : ".#{region_class}"}") do
+        assert_selector("div.PageLayout-content", text: "Main")
+        assert_selector("div.PageLayout-pane", text: "Pane")
       end
     end
   end
@@ -74,10 +77,10 @@ class PrimerBetaSplitLayoutTest < Minitest::Test
       end
 
       width_class = Primer::Beta::SplitLayout::PANE_WIDTH_MAPPINGS[size]
-      assert_selector("div.LayoutBeta") do
+      assert_selector("div.PageLayout") do
         assert_selector("div#{width_class.empty? ? '' : ".#{width_class}"}") do
-          assert_selector("div.LayoutBeta-content", text: "Main")
-          assert_selector("div.LayoutBeta-pane", text: "Pane")
+          assert_selector("div.PageLayout-content", text: "Main")
+          assert_selector("div.PageLayout-pane", text: "Pane")
         end
       end
     end
@@ -90,9 +93,9 @@ class PrimerBetaSplitLayoutTest < Minitest::Test
         c.pane(tag: tag) { "Pane" }
       end
 
-      assert_selector("div.LayoutBeta") do
-        assert_selector("div.LayoutBeta-content", text: "Main")
-        assert_selector("#{tag}.LayoutBeta-pane", text: "Pane")
+      assert_selector("div.PageLayout") do
+        assert_selector("div.PageLayout-content", text: "Main")
+        assert_selector("#{tag}.PageLayout-pane", text: "Pane")
       end
     end
   end
@@ -104,17 +107,17 @@ class PrimerBetaSplitLayoutTest < Minitest::Test
         c.pane { "Pane" }
       end
 
-      assert_selector("div.LayoutBeta-regions") do
-        assert_selector("div.LayoutBeta-content") do
+      assert_selector("div.PageLayout-columns") do
+        assert_selector("div.PageLayout-content") do
           if width == :fluid
             assert_text("Main")
           else
-            assert_selector("div.LayoutBeta-content-centered-#{width}") do
+            assert_selector("div.PageLayout-content-centered-#{width}") do
               assert_selector("div.container-#{width}", text: "Main")
             end
           end
         end
-        assert_selector("div.LayoutBeta-pane", text: "Pane")
+        assert_selector("div.PageLayout-pane", text: "Pane")
       end
     end
   end
@@ -126,9 +129,9 @@ class PrimerBetaSplitLayoutTest < Minitest::Test
         c.pane { "Pane" }
       end
 
-      assert_selector("div.LayoutBeta") do
-        assert_selector("#{tag}.LayoutBeta-content", text: "Main")
-        assert_selector("div.LayoutBeta-pane", text: "Pane")
+      assert_selector("div.PageLayout") do
+        assert_selector("#{tag}.PageLayout-content", text: "Main")
+        assert_selector("div.PageLayout-pane", text: "Pane")
       end
     end
   end

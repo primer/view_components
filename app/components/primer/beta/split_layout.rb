@@ -22,22 +22,22 @@ module Primer
       PANE_WIDTH_DEFAULT = :default
       PANE_WIDTH_MAPPINGS = {
         PANE_WIDTH_DEFAULT => "",
-        :narrow => "LayoutBeta--pane-width-narrow",
-        :wide => "LayoutBeta--pane-width-wide"
+        :narrow => "PageLayout--paneWidth-narrow",
+        :wide => "PageLayout--paneWidth-wide"
       }.freeze
       PANE_WIDTH_OPTIONS = PANE_WIDTH_MAPPINGS.keys.freeze
 
       INNER_SPACING_DEFAULT = :normal
       INNER_SPACING_MAPPINGS = {
-        normal: "LayoutBeta--inner-spacing-normal",
-        condensed: "LayoutBeta--inner-spacing-condensed"
+        normal: "PageLayout--innerSpacing-normal",
+        condensed: "PageLayout--innerSpacing-condensed"
       }.freeze
       INNER_SPACING_OPTIONS = INNER_SPACING_MAPPINGS.keys.freeze
 
       RESPONSIVE_PRIMARY_REGION_DEFAULT = :content
       RESPONSIVE_PRIMARY_REGION_MAPPINGS = {
-        RESPONSIVE_PRIMARY_REGION_DEFAULT => "LayoutBeta--primary-content",
-        :pane => "LayoutBeta--primary-pane"
+        RESPONSIVE_PRIMARY_REGION_DEFAULT => "PageLayout--variant-separateRegions-primary-content",
+        :pane => "PageLayout--variant-separateRegions-primary-pane"
       }.freeze
       RESPONSIVE_PRIMARY_REGION_OPTIONS = RESPONSIVE_PRIMARY_REGION_MAPPINGS.keys.freeze
 
@@ -58,15 +58,14 @@ module Primer
         @pane_system_arguments[:tag] = fetch_or_fallback(PANE_TAG_OPTIONS, tag, PANE_TAG_DEFAULT)
         @pane_system_arguments[:classes] = class_names(
           @pane_system_arguments[:classes],
-          "LayoutBeta-pane"
+          "PageLayout-region",
+          "PageLayout-pane"
         )
 
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          "LayoutBeta--pane-position-start",
           PANE_WIDTH_MAPPINGS[fetch_or_fallback(PANE_WIDTH_OPTIONS, width, PANE_WIDTH_DEFAULT)],
-          "LayoutBeta--pane-divider"
         )
 
         Primer::BaseComponent.new(**@pane_system_arguments)
@@ -153,15 +152,14 @@ module Primer
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
         @system_arguments[:classes] = class_names(
-          "LayoutBeta",
+          "PageLayout",
           INNER_SPACING_MAPPINGS[fetch_or_fallback(INNER_SPACING_OPTIONS, inner_spacing, INNER_SPACING_DEFAULT)],
           RESPONSIVE_PRIMARY_REGION_MAPPINGS[fetch_or_fallback(RESPONSIVE_PRIMARY_REGION_OPTIONS, responsive_primary_region, RESPONSIVE_PRIMARY_REGION_DEFAULT)],
-          "LayoutBeta--variant-separateRegions",
-          "LayoutBeta--column-gap-none",
-          "LayoutBeta--row-gap-none",
-          "LayoutBeta--pane-position-start",
-          "LayoutBeta--pane-divider",
-          "LayoutBeta--variant-md-multiColumns",
+          "PageLayout--variant-separateRegions",
+          "PageLayout--columnGap-none",
+          "PageLayout--rowGap-none",
+          "PageLayout--panePos-start",
+          "PageLayout--hasPaneDivider",
           system_arguments[:classes]
         )
       end
@@ -189,8 +187,8 @@ module Primer
           @system_arguments = system_arguments
           @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, TAG_DEFAULT)
           @system_arguments[:classes] = class_names(
-            "LayoutBeta-region",
-            "LayoutBeta-content",
+            "PageLayout-region",
+            "PageLayout-content",
             system_arguments[:classes]
           )
         end
@@ -200,7 +198,7 @@ module Primer
             if @width == :fluid
               content
             else
-              render(Primer::BaseComponent.new(tag: :div, classes: "LayoutBeta-content-centered-#{@width}")) do
+              render(Primer::BaseComponent.new(tag: :div, classes: "PageLayout-content-centered-#{@width}")) do
                 render(Primer::BaseComponent.new(tag: :div, container: @width)) do
                   content
                 end
