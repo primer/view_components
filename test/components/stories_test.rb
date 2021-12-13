@@ -8,7 +8,7 @@ class AllComponentsHaveStoriesTest < Minitest::Test
     Primer::FlexItemComponent,
     Primer::OcticonSymbolsComponent,
     Primer::Beta::Breadcrumbs::Item,
-    Primer::Beta::SplitLayout::Main,
+    Primer::Beta::SplitPageLayout::Main,
     Primer::Beta::PageLayout::Pane,
     Primer::Beta::PageLayout::Main,
     Primer::Alpha::Layout::Main,

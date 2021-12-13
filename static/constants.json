@@ -411,7 +411,7 @@
       "wide"
     ]
   },
-  "Primer::Beta::SplitLayout": {
+  "Primer::Beta::SplitPageLayout": {
     "INNER_SPACING_DEFAULT": "normal",
     "INNER_SPACING_MAPPINGS": {
       "normal": "PageLayout--innerSpacing-normal",
@@ -421,7 +421,7 @@
       "normal",
       "condensed"
     ],
-    "Main": "Primer::Beta::SplitLayout::Main",
+    "Main": "Primer::Beta::SplitPageLayout::Main",
     "PANE_TAG_DEFAULT": "div",
     "PANE_TAG_OPTIONS": [
       "div",
@@ -450,7 +450,7 @@
       "pane"
     ]
   },
-  "Primer::Beta::SplitLayout::Main": {
+  "Primer::Beta::SplitPageLayout::Main": {
     "TAG_DEFAULT": "div",
     "TAG_OPTIONS": [
       "div",
@@ -567,7 +567,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",

@@ -317,8 +317,8 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: SplitLayout
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/split_layout.rb
+- component: SplitPageLayout
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/split_page_layout.rb
   parameters:
   - name: inner_spacing
     type: Symbol

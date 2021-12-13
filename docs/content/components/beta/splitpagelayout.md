@@ -1,16 +1,16 @@
 ---
-title: SplitLayout
-componentId: split_layout
+title: SplitPageLayout
+componentId: split_page_layout
 status: Beta
-source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/split_layout.rb
-storybook: https://primer.style/view-components/stories/?path=/story/primer-beta-split-layout
+source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/split_page_layout.rb
+storybook: https://primer.style/view-components/stories/?path=/story/primer-beta-split-page-layout
 ---
 
 import Example from '../../../src/@primer/gatsby-theme-doctocat/components/example'
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-In the `SplitLayout`, changes in the Pane region are reflected in the Content region. This is also known as a "List/Detail" or "Master/Detail" pattern.
+In the `SplitPageLayout`, changes in the Pane region are reflected in the Content region. This is also known as a "List/Detail" or "Master/Detail" pattern.
 
 On larger screens, the user sees both regions side by side, with the Pane region appearing flushed to the left.
 
@@ -45,7 +45,7 @@ The layout's main content.
 
 ### `Pane`
 
-The layout's sidebar.
+The layout's pane.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
@@ -61,7 +61,7 @@ The layout's sidebar.
 
 ```erb
 
-<%= render(Primer::Beta::SplitLayout.new) do |c| %>
+<%= render(Primer::Beta::SplitPageLayout.new) do |c| %>
   <% c.main(border: true) { "Main" } %>
   <% c.pane(border: true) { "Pane" } %>
 <% end %>
@@ -108,15 +108,15 @@ Sets the pane width. The width is predetermined according to the breakpoint inst
 <Example src="<div data-view-component='true' class='PageLayout PageLayout--innerSpacing-normal PageLayout--variant-separateRegions-primary-content PageLayout--variant-separateRegions PageLayout--columnGap-none PageLayout--rowGap-none PageLayout--panePos-start PageLayout--hasPaneDivider'>  <div data-view-component='true' class='PageLayout-wrapper'>    <div data-view-component='true' class='PageLayout-columns'>      <div data-view-component='true' class='PageLayout-region PageLayout-pane border'>Pane</div>      <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Main</div></div></div></div><div data-view-component='true' class='PageLayout PageLayout--innerSpacing-normal PageLayout--variant-separateRegions-primary-content PageLayout--variant-separateRegions PageLayout--columnGap-none PageLayout--rowGap-none PageLayout--panePos-start PageLayout--hasPaneDivider PageLayout--paneWidth-narrow mt-5'>  <div data-view-component='true' class='PageLayout-wrapper'>    <div data-view-component='true' class='PageLayout-columns'>      <div data-view-component='true' class='PageLayout-region PageLayout-pane border'>Pane</div>      <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Main</div></div></div></div><div data-view-component='true' class='PageLayout PageLayout--innerSpacing-normal PageLayout--variant-separateRegions-primary-content PageLayout--variant-separateRegions PageLayout--columnGap-none PageLayout--rowGap-none PageLayout--panePos-start PageLayout--hasPaneDivider PageLayout--paneWidth-wide mt-5'>  <div data-view-component='true' class='PageLayout-wrapper'>    <div data-view-component='true' class='PageLayout-columns'>      <div data-view-component='true' class='PageLayout-region PageLayout-pane border'>Pane</div>      <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Main</div></div></div></div>" />
 
 ```erb
-<%= render(Primer::Beta::SplitLayout.new) do |c| %>
+<%= render(Primer::Beta::SplitPageLayout.new) do |c| %>
   <% c.main(border: true) { "Main" } %>
   <% c.pane(width: :default, border: true) { "Pane" } %>
 <% end %>
-<%= render(Primer::Beta::SplitLayout.new(mt: 5)) do |c| %>
+<%= render(Primer::Beta::SplitPageLayout.new(mt: 5)) do |c| %>
   <% c.main(border: true) { "Main" } %>
   <% c.pane(width: :narrow, border: true) { "Pane" } %>
 <% end %>
-<%= render(Primer::Beta::SplitLayout.new(mt: 5)) do |c| %>
+<%= render(Primer::Beta::SplitPageLayout.new(mt: 5)) do |c| %>
   <% c.main(border: true) { "Main" } %>
   <% c.pane(width: :wide, border: true) { "Pane" } %>
 <% end %>

@@ -15,7 +15,7 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
  On smaller screens, `PageLayout` uses vertically stacked rows to display content.
  `PageLayout` is responsible to determine the arrangement of the main regions that compose a page. This means anything after the global and local headers (i.e. repo or org headers), and anything before the global footer.
 
- PageLayout controls the page spacings, supports header and footer regions, provides different styles of sidebars, and handles responsive strategies.
+ PageLayout controls the page spacings, supports header and footer regions, provides different styles of panes, and handles responsive strategies.
 
 `PageLayout` flows as both column, when there's enough horizontal space to render both `Main` and `Pane` side-by-side (on a desktop of tablet device, per instance);
 or it flows as a row, when `Main` and `Pane` are stacked vertically (e.g. on a mobile device).
@@ -72,7 +72,7 @@ The layout's footer.
 
 ### `Pane`
 
-The layout's sidebar.
+The layout's pane.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
@@ -209,7 +209,7 @@ Sets the pane width. The width is predetermined according to the breakpoint inst
 
 ### Pane position
 
-Use `start` for sidebars that manipulate local navigation, while right-aligned `end` is useful for metadata and other auxiliary information.
+Use `start` for panes that manipulate local navigation, while right-aligned `end` is useful for metadata and other auxiliary information.
 
 <Example src="<div data-view-component='true' class='PageLayout PageLayout--outerSpacing-normal PageLayout--columnGap-normal PageLayout--rowGap-normal PageLayout--variant-stackRegions PageLayout--panePos-start PageLayout--variant-stackRegions-panePos-start'>  <div data-view-component='true' class='PageLayout-wrapper '>        <div data-view-component='true' class='PageLayout-columns'>        <div data-view-component='true' class='PageLayout-region PageLayout-pane PageLayout-region--hasDivider-none-before border'>Pane</div>        <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Main</div></div>    </div></div><div data-view-component='true' class='PageLayout PageLayout--outerSpacing-normal PageLayout--columnGap-normal PageLayout--rowGap-normal PageLayout--variant-stackRegions PageLayout--panePos-end PageLayout--variant-stackRegions-panePos-end mt-5'>  <div data-view-component='true' class='PageLayout-wrapper '>        <div data-view-component='true' class='PageLayout-columns'>        <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Main</div>        <div data-view-component='true' class='PageLayout-region PageLayout-pane PageLayout-region--hasDivider-none-after border'>Pane</div></div>    </div></div>" />
 

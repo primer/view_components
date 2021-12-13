@@ -11,7 +11,7 @@ class PrimerComponentTest < Minitest::Test
       component.main(tag: :div) { "Foo" }
       component.pane(tag: :div) { "Bar" }
     }],
-    [Primer::Beta::SplitLayout, {}, proc { |component|
+    [Primer::Beta::SplitPageLayout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }
       component.pane(tag: :div) { "Bar" }
     }],
