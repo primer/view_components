@@ -11,8 +11,7 @@ module Primer
     # For example, opening "Repository settings" on mobile will have the user land on the Pane region, since in that case showing the menu options first is more important.
     #
     # @accessibility
-    #   Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether
-    #   `main` or `pane` comes first in code. The code order won’t affect the visual position.
+    #   Keyboard navigation follows the markup order. In the case of the `SplitPageLayout`, the `Pane` region is the first region, and the `Content` region is the second.
     class SplitPageLayout < Primer::Component
       status :beta
 

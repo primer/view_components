@@ -15,7 +15,7 @@ module Primer
     #
     # @accessibility
     #   Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether
-    #   `main` or `pane` comes first in code. The code order won’t affect the visual position.
+    #   `main` or `pane` comes first in code. This is determined by the `position` argrument to the `pane` slot.
     class PageLayout < Primer::Component
       status :beta
 
