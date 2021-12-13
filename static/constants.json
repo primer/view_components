@@ -414,8 +414,8 @@
   "Primer::Beta::SplitLayout": {
     "INNER_SPACING_DEFAULT": "normal",
     "INNER_SPACING_MAPPINGS": {
-      "normal": "LayoutBeta--inner-spacing-normal",
-      "condensed": "LayoutBeta--inner-spacing-condensed"
+      "normal": "PageLayout--innerSpacing-normal",
+      "condensed": "PageLayout--innerSpacing-condensed"
     },
     "INNER_SPACING_OPTIONS": [
       "normal",
@@ -432,8 +432,8 @@
     "PANE_WIDTH_DEFAULT": "default",
     "PANE_WIDTH_MAPPINGS": {
       "default": "",
-      "narrow": "LayoutBeta--pane-width-narrow",
-      "wide": "LayoutBeta--pane-width-wide"
+      "narrow": "PageLayout--paneWidth-narrow",
+      "wide": "PageLayout--paneWidth-wide"
     },
     "PANE_WIDTH_OPTIONS": [
       "default",
@@ -442,8 +442,8 @@
     ],
     "RESPONSIVE_PRIMARY_REGION_DEFAULT": "content",
     "RESPONSIVE_PRIMARY_REGION_MAPPINGS": {
-      "content": "LayoutBeta--primary-content",
-      "pane": "LayoutBeta--primary-pane"
+      "content": "PageLayout--variant-separateRegions-primary-content",
+      "pane": "PageLayout--variant-separateRegions-primary-pane"
     },
     "RESPONSIVE_PRIMARY_REGION_OPTIONS": [
       "content",
