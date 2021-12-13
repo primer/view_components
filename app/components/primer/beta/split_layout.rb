@@ -48,7 +48,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :main, "Primer::Beta::SplitLayout::Main"
 
-      # The layout's sidebar.
+      # The layout's pane.
       #
       # @param width [Symbol] <%= one_of(Primer::Beta::SplitLayout::PANE_WIDTH_OPTIONS) %>
       # @param tag [Symbol] <%= one_of(Primer::Beta::SplitLayout::PANE_TAG_OPTIONS) %>

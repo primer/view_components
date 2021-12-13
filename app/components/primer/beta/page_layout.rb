@@ -7,7 +7,7 @@ module Primer
     #  On smaller screens, `PageLayout` uses vertically stacked rows to display content.
     #  `PageLayout` is responsible to determine the arrangement of the main regions that compose a page. This means anything after the global and local headers (i.e. repo or org headers), and anything before the global footer.
     #
-    #  PageLayout controls the page spacings, supports header and footer regions, provides different styles of sidebars, and handles responsive strategies.
+    #  PageLayout controls the page spacings, supports header and footer regions, provides different styles of panes, and handles responsive strategies.
     #
     # `PageLayout` flows as both column, when there's enough horizontal space to render both `Main` and `Pane` side-by-side (on a desktop of tablet device, per instance);
     # or it flows as a row, when `Main` and `Pane` are stacked vertically (e.g. on a mobile device).
@@ -130,7 +130,7 @@ module Primer
         Primer::BaseComponent.new(tag: :div, **footer_system_arguments)
       }
 
-      # The layout's sidebar.
+      # The layout's pane.
       #
       # @param width [Symbol] <%= one_of(Primer::Beta::PageLayout::Pane::WIDTH_OPTIONS) %>
       # @param position [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::PageLayout::Pane::POSITION_OPTIONS) %>
@@ -288,7 +288,7 @@ module Primer
       # @example Pane position
       #
       #   @description
-      #     Use `start` for sidebars that manipulate local navigation, while right-aligned `end` is useful for metadata and other auxiliary information.
+      #     Use `start` for panes that manipulate local navigation, while right-aligned `end` is useful for metadata and other auxiliary information.
       #
       #   @code
       #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
