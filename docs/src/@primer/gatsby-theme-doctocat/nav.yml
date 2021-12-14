@@ -43,6 +43,8 @@
     url: "/components/closebutton"
   - title: Counter
     url: "/components/counter"
+  - title: CtaLink
+    url: "/components/alpha/ctalink"
   - title: Details
     url: "/components/details"
   - title: Dropdown

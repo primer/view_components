@@ -29,6 +29,30 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: CtaLink
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/cta_link.rb
+  parameters:
+  - name: href
+    type: String
+    default: N/A
+    description: URL to be used for the Link.
+  - name: scheme
+    type: Symbol
+    default: N/A
+    description: One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`,
+      or `:primary`.
+  - name: size
+    type: Symbol
+    default: N/A
+    description: One of `:medium` and `:small`.
+  - name: block
+    type: Boolean
+    default: N/A
+    description: 'Whether button is full-width with `display: block`.'
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Layout
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout.rb
   parameters:
