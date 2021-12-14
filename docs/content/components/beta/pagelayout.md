@@ -17,14 +17,14 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
 
  PageLayout controls the page spacings, supports header and footer regions, provides different styles of panes, and handles responsive strategies.
 
-`PageLayout` flows as both column, when there's enough horizontal space to render both `Main` and `Pane` side-by-side (on a desktop of tablet device, per instance);
-or it flows as a row, when `Main` and `Pane` are stacked vertically (e.g. on a mobile device).
+`PageLayout` flows as both column, when there's enough horizontal space to render both `Content` and `Pane` side-by-side (on a desktop of tablet device, per instance);
+or it flows as a row, when `Content` and `Pane` are stacked vertically (e.g. on a mobile device).
 `PageLayout` should always work in any screen size.
 
 ## Accessibility
 
 Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether
-`main` or `pane` comes first in code. This is determined by the `position` argrument to the `pane` slot.
+`content` or `pane` comes first in code. This is determined by the `position` argrument to the `pane` slot.
 
 ## Arguments
 
@@ -40,9 +40,9 @@ Keyboard navigation follows the markup order. Decide carefully how the focus ord
 
 ## Slots
 
-### `Main`
+### `Content_region`
 
-The layout's main content.
+The layout's content.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
@@ -50,7 +50,7 @@ The layout's main content.
 | `tag` | `Symbol` | N/A | One of `:div` and `:main`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `Header`
+### `Header_region`
 
 The layout's header.
 
@@ -60,7 +60,7 @@ The layout's header.
 | `responsive_divider` | `Symbol` | N/A | Whether to show a divider below the `header` region if in responsive mode. One of `:filled`, `:line`, or `:none`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `Footer`
+### `Footer_region`
 
 The layout's footer.
 
@@ -70,7 +70,7 @@ The layout's footer.
 | `responsive_divider` | `Symbol` | N/A | Whether to show a divider below the `footer` region if in responsive mode. One of `:filled`, `:line`, or `:none`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `Pane`
+### `Pane_region`
 
 The layout's pane.
 
@@ -91,8 +91,8 @@ The layout's pane.
 ```erb
 
 <%= render(Primer::Beta::PageLayout.new) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 ```
 
@@ -103,10 +103,10 @@ The layout's pane.
 ```erb
 
 <%= render(Primer::Beta::PageLayout.new) do |c| %>
-  <% c.header(border: true) { "Header" } %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
-  <% c.footer(border: true) { "Footer" } %>
+  <% c.header_region(border: true) { "Header" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
+  <% c.footer_region(border: true) { "Footer" } %>
 <% end %>
 ```
 
@@ -118,20 +118,20 @@ When `:fluid` the layout will be set to full width. When the other sizing option
 
 ```erb
 <%= render(Primer::Beta::PageLayout.new(wrapper_sizing: :fluid)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new(wrapper_sizing: :md)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new(wrapper_sizing: :lg)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new(wrapper_sizing: :xl)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 ```
 
@@ -143,12 +143,12 @@ Sets wrapper margins surrounding the component to distance itself from the viewp
 
 ```erb
 <%= render(Primer::Beta::PageLayout.new(outer_spacing: :condensed)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new(outer_spacing: :normal)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 ```
 
@@ -160,12 +160,12 @@ Sets the gap between columns to distance them from each other. - `:condensed` ke
 
 ```erb
 <%= render(Primer::Beta::PageLayout.new(column_gap: :condensed)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new(column_gap: :normal)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 ```
 
@@ -177,12 +177,12 @@ Sets the gap below the header and above the footer. - `:condensed` keeps the gap
 
 ```erb
 <%= render(Primer::Beta::PageLayout.new(row_gap: :condensed)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new(row_gap: :normal)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 ```
 
@@ -194,16 +194,16 @@ Sets the pane width. The width is predetermined according to the breakpoint inst
 
 ```erb
 <%= render(Primer::Beta::PageLayout.new) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(width: :default, border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(width: :default, border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new(mt: 5)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(width: :narrow, border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(width: :narrow, border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new(mt: 5)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(width: :wide, border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(width: :wide, border: true) { "Pane" } %>
 <% end %>
 ```
 
@@ -215,12 +215,12 @@ Use `start` for panes that manipulate local navigation, while right-aligned `end
 
 ```erb
 <%= render(Primer::Beta::PageLayout.new) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(position: :start, border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(position: :start, border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new( mt: 5)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(position: :end, border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(position: :end, border: true) { "Pane" } %>
 <% end %>
 ```
 
@@ -232,16 +232,16 @@ Defines the position of the pane in the responsive layout. - `:start` puts the p
 
 ```erb
 <%= render(Primer::Beta::PageLayout.new(mt: 5)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(pane_responsive_position: :inherit, border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(pane_responsive_position: :inherit, border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(pane_responsive_position: :start, border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(pane_responsive_position: :start, border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new(mt: 5)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(pane_responsive_position: :end, border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(pane_responsive_position: :end, border: true) { "Pane" } %>
 <% end %>
 ```
 
@@ -253,14 +253,14 @@ You can add an optional header to the layout and have spacing and positioning ta
 
 ```erb
 <%= render(Primer::Beta::PageLayout.new) do |c| %>
-  <% c.header(border: true) { "Header" } %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.header_region(border: true) { "Header" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new) do |c| %>
-  <% c.header(divider: true, border: true) { "Header" } %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.header_region(divider: true, border: true) { "Header" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 ```
 
@@ -272,13 +272,13 @@ You can add an optional footer to the layout and have spacing and positioning ta
 
 ```erb
 <%= render(Primer::Beta::PageLayout.new) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
-  <% c.footer(border: true) { "Header" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
+  <% c.footer_region(border: true) { "Header" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
-  <% c.footer(divider: true, border: true) { "Header" } %>
+  <% c.content_region(border: true) { "Main" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
+  <% c.footer_region(divider: true, border: true) { "Header" } %>
 <% end %>
 ```

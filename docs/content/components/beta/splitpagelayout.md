@@ -32,9 +32,9 @@ Keyboard navigation follows the markup order. In the case of the `SplitPageLayou
 
 ## Slots
 
-### `Main`
+### `Content_region`
 
-The layout's main content.
+The layout's content.
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
@@ -42,7 +42,7 @@ The layout's main content.
 | `tag` | `Symbol` | N/A | One of `:div` and `:main`. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
-### `Pane`
+### `Pane_region`
 
 The layout's pane.
 
@@ -56,13 +56,13 @@ The layout's pane.
 
 ### Default
 
-<Example src="<div data-view-component='true' class='PageLayout PageLayout--innerSpacing-normal PageLayout--variant-separateRegions-primary-content PageLayout--variant-separateRegions PageLayout--columnGap-none PageLayout--rowGap-none PageLayout--panePos-start PageLayout--hasPaneDivider'>  <div data-view-component='true' class='PageLayout-wrapper'>    <div data-view-component='true' class='PageLayout-columns'>      <div data-view-component='true' class='PageLayout-region PageLayout-pane border'>Pane</div>      <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Main</div></div></div></div>" />
+<Example src="<div data-view-component='true' class='PageLayout PageLayout--innerSpacing-normal PageLayout--variant-separateRegions-primary-content PageLayout--variant-separateRegions PageLayout--columnGap-none PageLayout--rowGap-none PageLayout--panePos-start PageLayout--hasPaneDivider'>  <div data-view-component='true' class='PageLayout-wrapper'>    <div data-view-component='true' class='PageLayout-columns'>      <div data-view-component='true' class='PageLayout-region PageLayout-pane border'>Pane</div>      <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Content</div></div></div></div>" />
 
 ```erb
 
 <%= render(Primer::Beta::SplitPageLayout.new) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Content" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 ```
 
@@ -70,16 +70,16 @@ The layout's pane.
 
 Sets padding to regions individually. - `:condensed` keeps the margin at 16px. - `:normal`` sets the margin to 16px, and to 24px on lg breakpoints and above.
 
-<Example src="<div inner_spacing='condensed' data-view-component='true' class='PageLayout PageLayout--outerSpacing-normal PageLayout--columnGap-normal PageLayout--rowGap-normal PageLayout--variant-stackRegions PageLayout--panePos-start PageLayout--variant-stackRegions-panePos-start'>  <div data-view-component='true' class='PageLayout-wrapper '>        <div data-view-component='true' class='PageLayout-columns'>        <div data-view-component='true' class='PageLayout-region PageLayout-pane PageLayout-region--hasDivider-none-before border'>Pane</div>        <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Main</div></div>    </div></div><div inner_spacing='normal' data-view-component='true' class='PageLayout PageLayout--outerSpacing-normal PageLayout--columnGap-normal PageLayout--rowGap-normal PageLayout--variant-stackRegions PageLayout--panePos-start PageLayout--variant-stackRegions-panePos-start'>  <div data-view-component='true' class='PageLayout-wrapper '>        <div data-view-component='true' class='PageLayout-columns'>        <div data-view-component='true' class='PageLayout-region PageLayout-pane PageLayout-region--hasDivider-none-before border'>Pane</div>        <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Main</div></div>    </div></div>" />
+<Example src="<div inner_spacing='condensed' data-view-component='true' class='PageLayout PageLayout--outerSpacing-normal PageLayout--columnGap-normal PageLayout--rowGap-normal PageLayout--variant-stackRegions PageLayout--panePos-start PageLayout--variant-stackRegions-panePos-start'>  <div data-view-component='true' class='PageLayout-wrapper '>        <div data-view-component='true' class='PageLayout-columns'>        <div data-view-component='true' class='PageLayout-region PageLayout-pane PageLayout-region--hasDivider-none-before border'>Pane</div>        <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Content</div></div>    </div></div><div inner_spacing='normal' data-view-component='true' class='PageLayout PageLayout--outerSpacing-normal PageLayout--columnGap-normal PageLayout--rowGap-normal PageLayout--variant-stackRegions PageLayout--panePos-start PageLayout--variant-stackRegions-panePos-start'>  <div data-view-component='true' class='PageLayout-wrapper '>        <div data-view-component='true' class='PageLayout-columns'>        <div data-view-component='true' class='PageLayout-region PageLayout-pane PageLayout-region--hasDivider-none-before border'>Pane</div>        <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Content</div></div>    </div></div>" />
 
 ```erb
 <%= render(Primer::Beta::PageLayout.new(inner_spacing: :condensed)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Content" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new(inner_spacing: :normal)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Content" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 ```
 
@@ -87,16 +87,16 @@ Sets padding to regions individually. - `:condensed` keeps the margin at 16px. -
 
 When responsiveVariant is set to separateRegions, defines which region appears first on small viewports. content is default. - `:content` - `:pane`
 
-<Example src="<div resposive_primary_region='content' data-view-component='true' class='PageLayout PageLayout--outerSpacing-normal PageLayout--columnGap-normal PageLayout--rowGap-normal PageLayout--variant-stackRegions PageLayout--panePos-start PageLayout--variant-stackRegions-panePos-start'>  <div data-view-component='true' class='PageLayout-wrapper '>        <div data-view-component='true' class='PageLayout-columns'>        <div data-view-component='true' class='PageLayout-region PageLayout-pane PageLayout-region--hasDivider-none-before border'>Pane</div>        <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Main</div></div>    </div></div><div data-view-component='true' class='PageLayout PageLayout--outerSpacing-normal PageLayout--columnGap-normal PageLayout--rowGap-normal PageLayout--variant-stackRegions PageLayout--panePos-start PageLayout--variant-stackRegions-panePos-start'>  <div data-view-component='true' class='PageLayout-wrapper '>        <div data-view-component='true' class='PageLayout-columns'>        <div data-view-component='true' class='PageLayout-region PageLayout-pane PageLayout-region--hasDivider-none-before border'>Pane</div>        <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Main</div></div>    </div></div>" />
+<Example src="<div resposive_primary_region='content' data-view-component='true' class='PageLayout PageLayout--outerSpacing-normal PageLayout--columnGap-normal PageLayout--rowGap-normal PageLayout--variant-stackRegions PageLayout--panePos-start PageLayout--variant-stackRegions-panePos-start'>  <div data-view-component='true' class='PageLayout-wrapper '>        <div data-view-component='true' class='PageLayout-columns'>        <div data-view-component='true' class='PageLayout-region PageLayout-pane PageLayout-region--hasDivider-none-before border'>Pane</div>        <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Content</div></div>    </div></div><div data-view-component='true' class='PageLayout PageLayout--outerSpacing-normal PageLayout--columnGap-normal PageLayout--rowGap-normal PageLayout--variant-stackRegions PageLayout--panePos-start PageLayout--variant-stackRegions-panePos-start'>  <div data-view-component='true' class='PageLayout-wrapper '>        <div data-view-component='true' class='PageLayout-columns'>        <div data-view-component='true' class='PageLayout-region PageLayout-pane PageLayout-region--hasDivider-none-before border'>Pane</div>        <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Content</div></div>    </div></div>" />
 
 ```erb
 <%= render(Primer::Beta::PageLayout.new(resposive_primary_region: :content)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Content" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::PageLayout.new(responsive_primary_region: :pane)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Content" } %>
+  <% c.pane_region(border: true) { "Pane" } %>
 <% end %>
 ```
 
@@ -104,19 +104,19 @@ When responsiveVariant is set to separateRegions, defines which region appears f
 
 Sets the pane width. The width is predetermined according to the breakpoint instead of it being percentage-based. - `default`: - `narrow`: - `wide`: When flowing as a row, `Pane` takes the full width.
 
-<Example src="<div data-view-component='true' class='PageLayout PageLayout--innerSpacing-normal PageLayout--variant-separateRegions-primary-content PageLayout--variant-separateRegions PageLayout--columnGap-none PageLayout--rowGap-none PageLayout--panePos-start PageLayout--hasPaneDivider'>  <div data-view-component='true' class='PageLayout-wrapper'>    <div data-view-component='true' class='PageLayout-columns'>      <div data-view-component='true' class='PageLayout-region PageLayout-pane border'>Pane</div>      <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Main</div></div></div></div><div data-view-component='true' class='PageLayout PageLayout--innerSpacing-normal PageLayout--variant-separateRegions-primary-content PageLayout--variant-separateRegions PageLayout--columnGap-none PageLayout--rowGap-none PageLayout--panePos-start PageLayout--hasPaneDivider PageLayout--paneWidth-narrow mt-5'>  <div data-view-component='true' class='PageLayout-wrapper'>    <div data-view-component='true' class='PageLayout-columns'>      <div data-view-component='true' class='PageLayout-region PageLayout-pane border'>Pane</div>      <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Main</div></div></div></div><div data-view-component='true' class='PageLayout PageLayout--innerSpacing-normal PageLayout--variant-separateRegions-primary-content PageLayout--variant-separateRegions PageLayout--columnGap-none PageLayout--rowGap-none PageLayout--panePos-start PageLayout--hasPaneDivider PageLayout--paneWidth-wide mt-5'>  <div data-view-component='true' class='PageLayout-wrapper'>    <div data-view-component='true' class='PageLayout-columns'>      <div data-view-component='true' class='PageLayout-region PageLayout-pane border'>Pane</div>      <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Main</div></div></div></div>" />
+<Example src="<div data-view-component='true' class='PageLayout PageLayout--innerSpacing-normal PageLayout--variant-separateRegions-primary-content PageLayout--variant-separateRegions PageLayout--columnGap-none PageLayout--rowGap-none PageLayout--panePos-start PageLayout--hasPaneDivider'>  <div data-view-component='true' class='PageLayout-wrapper'>    <div data-view-component='true' class='PageLayout-columns'>      <div data-view-component='true' class='PageLayout-region PageLayout-pane border'>Pane</div>      <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Content</div></div></div></div><div data-view-component='true' class='PageLayout PageLayout--innerSpacing-normal PageLayout--variant-separateRegions-primary-content PageLayout--variant-separateRegions PageLayout--columnGap-none PageLayout--rowGap-none PageLayout--panePos-start PageLayout--hasPaneDivider PageLayout--paneWidth-narrow mt-5'>  <div data-view-component='true' class='PageLayout-wrapper'>    <div data-view-component='true' class='PageLayout-columns'>      <div data-view-component='true' class='PageLayout-region PageLayout-pane border'>Pane</div>      <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Content</div></div></div></div><div data-view-component='true' class='PageLayout PageLayout--innerSpacing-normal PageLayout--variant-separateRegions-primary-content PageLayout--variant-separateRegions PageLayout--columnGap-none PageLayout--rowGap-none PageLayout--panePos-start PageLayout--hasPaneDivider PageLayout--paneWidth-wide mt-5'>  <div data-view-component='true' class='PageLayout-wrapper'>    <div data-view-component='true' class='PageLayout-columns'>      <div data-view-component='true' class='PageLayout-region PageLayout-pane border'>Pane</div>      <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Content</div></div></div></div>" />
 
 ```erb
 <%= render(Primer::Beta::SplitPageLayout.new) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(width: :default, border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Content" } %>
+  <% c.pane_region(width: :default, border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::SplitPageLayout.new(mt: 5)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(width: :narrow, border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Content" } %>
+  <% c.pane_region(width: :narrow, border: true) { "Pane" } %>
 <% end %>
 <%= render(Primer::Beta::SplitPageLayout.new(mt: 5)) do |c| %>
-  <% c.main(border: true) { "Main" } %>
-  <% c.pane(width: :wide, border: true) { "Pane" } %>
+  <% c.content_region(border: true) { "Content" } %>
+  <% c.pane_region(width: :wide, border: true) { "Pane" } %>
 <% end %>
 ```

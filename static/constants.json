@@ -259,6 +259,7 @@
       "normal",
       "condensed"
     ],
+    "Content": "Primer::Beta::PageLayout::Content",
     "FOOTER_RESPONSIVE_DIVIDER_DEFAULT": "none",
     "FOOTER_RESPONSIVE_DIVIDER_MAPPINGS": {
       "none": "",
@@ -281,7 +282,6 @@
       "line",
       "filled"
     ],
-    "Main": "Primer::Beta::PageLayout::Main",
     "OUTER_SPACING_DEFAULT": "normal",
     "OUTER_SPACING_MAPPINGS": {
       "normal": "PageLayout--outerSpacing-normal",
@@ -333,7 +333,7 @@
       "xl"
     ]
   },
-  "Primer::Beta::PageLayout::Main": {
+  "Primer::Beta::PageLayout::Content": {
     "TAG_DEFAULT": "div",
     "TAG_OPTIONS": [
       "div",
@@ -412,6 +412,7 @@
     ]
   },
   "Primer::Beta::SplitPageLayout": {
+    "Content": "Primer::Beta::SplitPageLayout::Content",
     "INNER_SPACING_DEFAULT": "normal",
     "INNER_SPACING_MAPPINGS": {
       "normal": "PageLayout--innerSpacing-normal",
@@ -421,7 +422,6 @@
       "normal",
       "condensed"
     ],
-    "Main": "Primer::Beta::SplitPageLayout::Main",
     "PANE_TAG_DEFAULT": "div",
     "PANE_TAG_OPTIONS": [
       "div",
@@ -450,7 +450,7 @@
       "pane"
     ]
   },
-  "Primer::Beta::SplitPageLayout::Main": {
+  "Primer::Beta::SplitPageLayout::Content": {
     "TAG_DEFAULT": "div",
     "TAG_OPTIONS": [
       "div",
