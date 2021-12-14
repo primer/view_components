@@ -1,15 +1,15 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <%= render(Primer::BaseComponent.new(tag: :div, classes: "PageLayout-wrapper #{@wrapper_sizing_class}")) do %>
-    <%= header %>
+    <%= header_region %>
     <%= render(Primer::BaseComponent.new(tag: :div, classes: "PageLayout-columns")) do %>
-      <% if pane.render_first? %>
-        <%= pane %>
-        <%= main %>
+      <% if pane_region.render_first? %>
+        <%= pane_region %>
+        <%= content_region %>
       <% else %>
-        <%= main %>
-        <%= pane %>
+        <%= content_region %>
+        <%= pane_region %>
       <% end %>
     <% end %>
-    <%= footer %>
+    <%= footer_region %>
   <% end %>
 <% end %>
