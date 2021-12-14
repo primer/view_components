@@ -24,7 +24,7 @@ or it flows as a row, when `Main` and `Pane` are stacked vertically (e.g. on a m
 ## Accessibility
 
 Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether
-`main` or `pane` comes first in code. The code order won’t affect the visual position.
+`main` or `pane` comes first in code. This is determined by the `position` argrument to the `pane` slot.
 
 ## Arguments
 
