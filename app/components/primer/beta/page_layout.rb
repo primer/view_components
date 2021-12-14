@@ -2,10 +2,10 @@
 
 module Primer
   module Beta
-    # `PageLayout` provides foundational patterns for responsive pages.
-    # `PageLayout` can be used for simple two-column pages, or it can be nested to provide flexible 3-column experiences.
+    # `PageLayout` provides foundational patterns for responsive pages. `PageLayout` can be used for simple two-column pages, or it can be nested to provide flexible 3-column experiences.
+    #
     #  On smaller screens, `PageLayout` uses vertically stacked rows to display content.
-    #  `PageLayout` is responsible to determine the arrangement of the main regions that compose a page. This means anything after the global and local headers (i.e. repo or org headers), and anything before the global footer.
+    #  `PageLayout` is responsible for determining the arrangement of the main regions that compose a page. This means anything after the global and local headers (i.e. repo or org headers), and anything before the global footer.
     #
     #  PageLayout controls the page spacings, supports header and footer regions, provides different styles of panes, and handles responsive strategies.
     #
@@ -15,7 +15,7 @@ module Primer
     #
     # @accessibility
     #   Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether
-    #   `content` or `pane` comes first in code. This is determined by the `position` argrument to the `pane` slot.
+    #   `content_region` or `pane_region` comes first in code. This is determined by the `position` argrument to the `pane_region` slot.
     class PageLayout < Primer::Component
       status :beta
 
@@ -165,7 +165,7 @@ module Primer
       # @example Default
       #
       #   <%= render(Primer::Beta::PageLayout.new) do |c| %>
-      #     <% c.content_region(border: true) { "Main" } %>
+      #     <% c.content_region(border: true) { "Content" } %>
       #     <% c.pane_region(border: true) { "Pane" } %>
       #   <% end %>
       #
@@ -173,7 +173,7 @@ module Primer
       #
       #   <%= render(Primer::Beta::PageLayout.new) do |c| %>
       #     <% c.header_region(border: true) { "Header" } %>
-      #     <% c.content_region(border: true) { "Main" } %>
+      #     <% c.content_region(border: true) { "Content" } %>
       #     <% c.pane_region(border: true) { "Pane" } %>
       #     <% c.footer_region(border: true) { "Footer" } %>
       #   <% end %>
@@ -190,19 +190,19 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Beta::PageLayout.new(wrapper_sizing: :fluid)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(wrapper_sizing: :md)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(wrapper_sizing: :lg)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(wrapper_sizing: :xl)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #
@@ -216,11 +216,11 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Beta::PageLayout.new(outer_spacing: :condensed)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(outer_spacing: :normal)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #
@@ -234,11 +234,11 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Beta::PageLayout.new(column_gap: :condensed)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(column_gap: :normal)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #
@@ -252,11 +252,11 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Beta::PageLayout.new(row_gap: :condensed)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(row_gap: :normal)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #
@@ -273,15 +273,15 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(width: :default, border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(mt: 5)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(width: :narrow, border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(mt: 5)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(width: :wide, border: true) { "Pane" } %>
       #     <% end %>
       #
@@ -292,11 +292,11 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(position: :start, border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new( mt: 5)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(position: :end, border: true) { "Pane" } %>
       #     <% end %>
       #
@@ -311,15 +311,15 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Beta::PageLayout.new(mt: 5)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(pane_responsive_position: :inherit, border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(pane_responsive_position: :start, border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(mt: 5)) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(pane_responsive_position: :end, border: true) { "Pane" } %>
       #     <% end %>
       #
@@ -332,12 +332,12 @@ module Primer
       #   @code
       #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
       #       <% c.header_region(border: true) { "Header" } %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
       #       <% c.header_region(divider: true, border: true) { "Header" } %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #
@@ -349,12 +349,12 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #       <% c.footer_region(border: true) { "Header" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
-      #       <% c.content_region(border: true) { "Main" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #       <% c.footer_region(divider: true, border: true) { "Header" } %>
       #     <% end %>
@@ -395,7 +395,7 @@ module Primer
         content_region.present? && pane_region.present?
       end
 
-      # The layout's main content.
+      # The layout's content.
       class Content < Primer::Component
         status :beta
 
@@ -405,8 +405,8 @@ module Primer
         TAG_DEFAULT = :div
         TAG_OPTIONS = [TAG_DEFAULT, :main].freeze
 
-        # @param width [Symbol] <%= one_of(Primer::Beta::PageLayout::Main::WIDTH_OPTIONS) %>
-        # @param tag [Symbol] <%= one_of(Primer::Beta::PageLayout::Main::TAG_OPTIONS) %>
+        # @param width [Symbol] <%= one_of(Primer::Beta::PageLayout::Content::WIDTH_OPTIONS) %>
+        # @param tag [Symbol] <%= one_of(Primer::Beta::PageLayout::Content::TAG_OPTIONS) %>
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(tag: TAG_DEFAULT, width: WIDTH_DEFAULT, **system_arguments)
           @width = fetch_or_fallback(WIDTH_OPTIONS, width, WIDTH_DEFAULT)
@@ -435,7 +435,7 @@ module Primer
         end
       end
 
-      # The layout's pane content. This is a secondary, smaller region that is paired with the `Main` region.
+      # The layout's pane content. This is a secondary, smaller region that is paired with the `Content` region.
       class Pane < Primer::Component
         status :beta
 
