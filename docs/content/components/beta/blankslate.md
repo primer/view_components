@@ -132,7 +132,7 @@ Add a [SpinnerComponent](https://primer.style/view-components/components/spinner
 
 Add an `image` to give context that an Octicon couldn't.
 
-<Example src="  <div data-view-component='true' class='blankslate'>    <img size='56x56' src='https://github.githubassets.com/images/modules/site/features/security-icon.svg' alt='Security - secure vault' data-view-component='true' class='mb-3' />    <h2 data-view-component='true' class='h2 mb-1'>Title</h2>    <div data-view-component='true'>Description</div>    </div>" />
+<Example src="  <div data-view-component='true' class='blankslate'>    <img src='https://github.githubassets.com/images/modules/site/features/security-icon.svg' size='56x56' alt='Security - secure vault' data-view-component='true' class='mb-3' />    <h2 data-view-component='true' class='h2 mb-1'>Title</h2>    <div data-view-component='true'>Description</div>    </div>" />
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>

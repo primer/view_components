@@ -36,6 +36,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     *Manuel Puyol*
 
+### Bug Fixes
+
+* Call `image_path` on `Primer::Image#src`.
+
+    *Manuel Puyol*
+
 ## 0.0.64
 
 ### New
