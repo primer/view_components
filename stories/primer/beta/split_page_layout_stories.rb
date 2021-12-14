@@ -12,10 +12,10 @@ class Primer::Beta::SplitPageLayoutStories < ViewComponent::Storybook::Stories
     end
 
     content do |c|
-      c.main(border: true) do
-        "Main region"
+      c.content_region(border: true) do
+        "Content region"
       end
-      c.pane(border: true) do
+      c.pane_region(border: true) do
         "Pane region"
       end
     end

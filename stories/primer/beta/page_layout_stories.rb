@@ -16,10 +16,10 @@ class Primer::Beta::PageLayoutStories < ViewComponent::Storybook::Stories
     end
 
     content do |c|
-      c.main(border: true) do
+      c.content_region(border: true) do
         "Main region"
       end
-      c.pane(border: true) do
+      c.pane_region(border: true) do
         "Pane region"
       end
     end
@@ -36,16 +36,16 @@ class Primer::Beta::PageLayoutStories < ViewComponent::Storybook::Stories
     end
 
     content do |c|
-      c.header(border: true) do
+      c.header_region(border: true) do
         "Header region"
       end
-      c.main(border: true) do
-        "Main region"
+      c.content_region(border: true) do
+        "Content region"
       end
-      c.pane(border: true) do
+      c.pane_region(border: true) do
         "Pane region"
       end
-      c.footer(border: true) do
+      c.footer_region(border: true) do
         "Footer region"
       end
     end
