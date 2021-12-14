@@ -46,8 +46,7 @@ module Primer
           @selected_item_id = selected_item_id
           @item_classes = item_classes
 
-          aria_label = aria(:label, system_arguments)
-          raise ArgumentError, "an aria-label is required" if aria_label.nil?
+          validate_aria_label
         end
 
         def before_render

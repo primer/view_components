@@ -119,7 +119,7 @@ module Primer
         )
 
         aria_label = aria(:label, list_arguments)
-        raise ArgumentError, "an aria-label is required" if aria_label.nil?
+        raise ArgumentError, "an aria-label is required" if aria_label.nil? && !Rails.env.production?
 
         @nav_arguments = { aria: { label: aria_label } }
 
