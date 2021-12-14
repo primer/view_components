@@ -485,6 +485,8 @@ module Primer
         TAG_DEFAULT = :div
         TAG_OPTIONS = [TAG_DEFAULT, :aside, :nav, :section].freeze
 
+        # @param responsive_divider [Symbol] <%= one_of(Primer::Beta::PageLayout::Pane::RESPONSIVE_DIVIDER_OPTIONS) %>
+        # @param position [Symbol] <%= one_of(Primer::Beta::PageLayout::Pane::POSITION_OPTIONS) %>
         # @param tag [Symbol] <%= one_of(Primer::Beta::PageLayout::Pane::TAG_OPTIONS) %>
         def initialize(responsive_divider: RESPONSIVE_DIVIDER_DEFAULT, position: POSITION_DEFAULT, tag: TAG_DEFAULT, **system_arguments)
           @system_arguments = system_arguments
