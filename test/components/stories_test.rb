@@ -8,9 +8,9 @@ class AllComponentsHaveStoriesTest < Minitest::Test
     Primer::FlexItemComponent,
     Primer::OcticonSymbolsComponent,
     Primer::Beta::Breadcrumbs::Item,
-    Primer::Beta::SplitPageLayout::Main,
+    Primer::Beta::SplitPageLayout::Content,
     Primer::Beta::PageLayout::Pane,
-    Primer::Beta::PageLayout::Main,
+    Primer::Beta::PageLayout::Content,
     Primer::Alpha::Layout::Main,
     Primer::Alpha::Layout::Sidebar
   ].freeze
