@@ -2,13 +2,12 @@
 
 module Primer
   module Beta
-    # In the `SplitPageLayout`, changes in the Pane region are reflected in the Content region. This is also known as a "List/Detail" or "Master/Detail" pattern.
+    # In the `SplitPageLayout`, changes in the Pane region are reflected in the `Content` region. This is also known as a "List/Detail" or "Master/Detail" pattern.
     #
-    # On larger screens, the user sees both regions side by side, with the Pane region appearing flushed to the left.
+    # On larger screens, the user sees both regions side by side, with the `Pane` region appearing flushed to the left.
     #
-    # On smaller screens, the user only sees one of pane or content regions at a time.
-    # Pages may decide if it's more important to show the Pane region or the Content region first by the responsiveLandingRegion property.
-    # For example, opening "Repository settings" on mobile will have the user land on the Pane region, since in that case showing the menu options first is more important.
+    # On smaller screens, the user only sees one of `Pane` or `Content` regions at a time.
+    # Pages may decide if it's more important to show the `Pane` region or the `Content`` region first by the `:responsive_primary_region` property.
     #
     # @accessibility
     #   Keyboard navigation follows the markup order. In the case of the `SplitPageLayout`, the `Pane` region is the first region, and the `Content` region is the second.
@@ -61,7 +60,7 @@ module Primer
           "PageLayout-pane"
         )
 
-        # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
+        # These classes have to be set in the parent element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           PANE_WIDTH_MAPPINGS[fetch_or_fallback(PANE_WIDTH_OPTIONS, width, PANE_WIDTH_DEFAULT)]
@@ -83,7 +82,7 @@ module Primer
       #     Sets padding to regions individually.
       #
       #     - `:condensed` keeps the margin at 16px.
-      #     - `:normal`` sets the margin to 16px, and to 24px on lg breakpoints and above.
+      #     - `:normal` sets the margin to 16px, and to 24px on lg breakpoints and above.
       #
       #   @code
       #     <%= render(Primer::Beta::PageLayout.new(inner_spacing: :condensed)) do |c| %>
@@ -98,7 +97,7 @@ module Primer
       # @example Responsive primary region
       #
       #   @description
-      #     When responsiveVariant is set to separateRegions, defines which region appears first on small viewports. content is default.
+      #     When `responsive_variant` is set to `:separate_regions`, defines which region appears first on small viewports. `:content` is default.
       #
       #     - `:content`
       #     - `:pane`
