@@ -1,8 +1,8 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <%= render(Primer::BaseComponent.new(tag: :div, classes: "PageLayout-wrapper")) do %>
     <%= render(Primer::BaseComponent.new(tag: :div, classes: "PageLayout-columns")) do %>
-      <%= pane %>
-      <%= main %>
+      <%= pane_region %>
+      <%= content_region %>
     <% end %>
   <% end %>
 <% end %>

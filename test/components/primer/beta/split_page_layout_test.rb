@@ -9,29 +9,29 @@ class PrimerBetaSplitPageLayoutTest < Minitest::Test
     render_inline(Primer::Beta::SplitPageLayout.new)
     refute_component_rendered
 
-    render_inline(Primer::Beta::SplitPageLayout.new) { |c| c.main { "Main" } }
+    render_inline(Primer::Beta::SplitPageLayout.new) { |c| c.content_region { "Content" } }
     refute_component_rendered
 
-    render_inline(Primer::Beta::SplitPageLayout.new) { |c| c.pane { "Pane" } }
+    render_inline(Primer::Beta::SplitPageLayout.new) { |c| c.pane_region { "Pane" } }
     refute_component_rendered
   end
 
   def test_renders_layout
     render_inline(Primer::Beta::SplitPageLayout.new) do |c|
-      c.main { "Main" }
-      c.pane { "Pane" }
+      c.content_region { "Content" }
+      c.pane_region { "Pane" }
     end
 
     assert_selector("div.PageLayout") do
-      assert_selector("div.PageLayout-content", text: "Main")
+      assert_selector("div.PageLayout-content", text: "Content")
       assert_selector("div.PageLayout-pane", text: "Pane")
     end
   end
 
   def test_renders_layout_with_correct_default_classes
     render_inline(Primer::Beta::SplitPageLayout.new) do |c|
-      c.main { "Main" }
-      c.pane { "Pane" }
+      c.content_region { "Content" }
+      c.pane_region { "Pane" }
     end
 
     expected_classes = [
@@ -47,7 +47,7 @@ class PrimerBetaSplitPageLayoutTest < Minitest::Test
     assert_selector("div.#{expected_classes}") do
       assert_selector("div.PageLayout-wrapper") do
         assert_selector("div.PageLayout-columns") do
-          assert_selector("div.PageLayout-region.PageLayout-content", text: "Main")
+          assert_selector("div.PageLayout-region.PageLayout-content", text: "Content")
           assert_selector("div.PageLayout-region.PageLayout-pane", text: "Pane")
         end
       end
@@ -57,13 +57,13 @@ class PrimerBetaSplitPageLayoutTest < Minitest::Test
   def test_responsive_primary_region
     Primer::Beta::SplitPageLayout::RESPONSIVE_PRIMARY_REGION_OPTIONS.each do |region|
       render_inline(Primer::Beta::SplitPageLayout.new(responsive_primary_region: region)) do |c|
-        c.main { "Main" }
-        c.pane { "Pane" }
+        c.content_region { "Content" }
+        c.pane_region { "Pane" }
       end
 
       region_class = Primer::Beta::SplitPageLayout::RESPONSIVE_PRIMARY_REGION_MAPPINGS[region]
       assert_selector("div.PageLayout#{region_class.empty? ? '' : ".#{region_class}"}") do
-        assert_selector("div.PageLayout-content", text: "Main")
+        assert_selector("div.PageLayout-content", text: "Content")
         assert_selector("div.PageLayout-pane", text: "Pane")
       end
     end
@@ -72,14 +72,14 @@ class PrimerBetaSplitPageLayoutTest < Minitest::Test
   def test_pane_width
     Primer::Beta::SplitPageLayout::PANE_WIDTH_OPTIONS.each do |size|
       render_inline(Primer::Beta::SplitPageLayout.new) do |c|
-        c.main { "Main" }
-        c.pane(width: size) { "Pane" }
+        c.content_region { "Content" }
+        c.pane_region(width: size) { "Pane" }
       end
 
       width_class = Primer::Beta::SplitPageLayout::PANE_WIDTH_MAPPINGS[size]
       assert_selector("div.PageLayout") do
         assert_selector("div#{width_class.empty? ? '' : ".#{width_class}"}") do
-          assert_selector("div.PageLayout-content", text: "Main")
+          assert_selector("div.PageLayout-content", text: "Content")
           assert_selector("div.PageLayout-pane", text: "Pane")
         end
       end
@@ -89,31 +89,31 @@ class PrimerBetaSplitPageLayoutTest < Minitest::Test
   def test_pane_tags
     Primer::Beta::SplitPageLayout::PANE_TAG_OPTIONS.each do |tag|
       render_inline(Primer::Beta::SplitPageLayout.new) do |c|
-        c.main { "Main" }
-        c.pane(tag: tag) { "Pane" }
+        c.content_region { "Content" }
+        c.pane_region(tag: tag) { "Pane" }
       end
 
       assert_selector("div.PageLayout") do
-        assert_selector("div.PageLayout-content", text: "Main")
+        assert_selector("div.PageLayout-content", text: "Content")
         assert_selector("#{tag}.PageLayout-pane", text: "Pane")
       end
     end
   end
 
-  def test_main_width
-    Primer::Beta::SplitPageLayout::Main::WIDTH_OPTIONS.each do |width|
+  def test_content_width
+    Primer::Beta::SplitPageLayout::Content::WIDTH_OPTIONS.each do |width|
       render_inline(Primer::Beta::SplitPageLayout.new) do |c|
-        c.main(width: width) { "Main" }
-        c.pane { "Pane" }
+        c.content_region(width: width) { "Content" }
+        c.pane_region { "Pane" }
       end
 
       assert_selector("div.PageLayout-columns") do
         assert_selector("div.PageLayout-content") do
           if width == :fluid
-            assert_text("Main")
+            assert_text("Content")
           else
             assert_selector("div.PageLayout-content-centered-#{width}") do
-              assert_selector("div.container-#{width}", text: "Main")
+              assert_selector("div.container-#{width}", text: "Content")
             end
           end
         end
@@ -122,15 +122,15 @@ class PrimerBetaSplitPageLayoutTest < Minitest::Test
     end
   end
 
-  def test_main_tags
-    Primer::Beta::SplitPageLayout::Main::TAG_OPTIONS.each do |tag|
+  def test_content_tags
+    Primer::Beta::SplitPageLayout::Content::TAG_OPTIONS.each do |tag|
       render_inline(Primer::Beta::SplitPageLayout.new) do |c|
-        c.main(tag: tag) { "Main" }
-        c.pane { "Pane" }
+        c.content_region(tag: tag) { "Content" }
+        c.pane_region { "Pane" }
       end
 
       assert_selector("div.PageLayout") do
-        assert_selector("#{tag}.PageLayout-content", text: "Main")
+        assert_selector("#{tag}.PageLayout-content", text: "Content")
         assert_selector("div.PageLayout-pane", text: "Pane")
       end
     end

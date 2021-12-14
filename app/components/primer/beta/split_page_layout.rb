@@ -40,19 +40,19 @@ module Primer
       }.freeze
       RESPONSIVE_PRIMARY_REGION_OPTIONS = RESPONSIVE_PRIMARY_REGION_MAPPINGS.keys.freeze
 
-      # The layout's main content.
+      # The layout's content.
       #
-      # @param width [Symbol] <%= one_of(Primer::Beta::SplitPageLayout::Main::WIDTH_OPTIONS) %>
-      # @param tag [Symbol] <%= one_of(Primer::Beta::SplitPageLayout::Main::TAG_OPTIONS) %>
+      # @param width [Symbol] <%= one_of(Primer::Beta::SplitPageLayout::Content::WIDTH_OPTIONS) %>
+      # @param tag [Symbol] <%= one_of(Primer::Beta::SplitPageLayout::Content::TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :main, "Primer::Beta::SplitPageLayout::Main"
+      renders_one :content_region, "Primer::Beta::SplitPageLayout::Content"
 
       # The layout's pane.
       #
       # @param width [Symbol] <%= one_of(Primer::Beta::SplitPageLayout::PANE_WIDTH_OPTIONS) %>
       # @param tag [Symbol] <%= one_of(Primer::Beta::SplitPageLayout::PANE_TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :pane, lambda { |width: PANE_WIDTH_DEFAULT, tag: PANE_TAG_DEFAULT, **system_arguments|
+      renders_one :pane_region, lambda { |width: PANE_WIDTH_DEFAULT, tag: PANE_TAG_DEFAULT, **system_arguments|
         @pane_system_arguments = system_arguments
         @pane_system_arguments[:tag] = fetch_or_fallback(PANE_TAG_OPTIONS, tag, PANE_TAG_DEFAULT)
         @pane_system_arguments[:classes] = class_names(
@@ -73,8 +73,8 @@ module Primer
       # @example Default
       #
       #   <%= render(Primer::Beta::SplitPageLayout.new) do |c| %>
-      #     <% c.main(border: true) { "Main" } %>
-      #     <% c.pane(border: true) { "Pane" } %>
+      #     <% c.content_region(border: true) { "Content" } %>
+      #     <% c.pane_region(border: true) { "Pane" } %>
       #   <% end %>
       #
       # @example Inner spacing
@@ -87,12 +87,12 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Beta::PageLayout.new(inner_spacing: :condensed)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.pane(border: true) { "Pane" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
+      #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(inner_spacing: :normal)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.pane(border: true) { "Pane" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
+      #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #
       # @example Responsive primary region
@@ -105,12 +105,12 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Beta::PageLayout.new(resposive_primary_region: :content)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.pane(border: true) { "Pane" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
+      #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(responsive_primary_region: :pane)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.pane(border: true) { "Pane" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
+      #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
       #
       # @example Pane widths
@@ -126,16 +126,16 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Beta::SplitPageLayout.new) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.pane(width: :default, border: true) { "Pane" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
+      #       <% c.pane_region(width: :default, border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::SplitPageLayout.new(mt: 5)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.pane(width: :narrow, border: true) { "Pane" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
+      #       <% c.pane_region(width: :narrow, border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::SplitPageLayout.new(mt: 5)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.pane(width: :wide, border: true) { "Pane" } %>
+      #       <% c.content_region(border: true) { "Content" } %>
+      #       <% c.pane_region(width: :wide, border: true) { "Pane" } %>
       #     <% end %>
       #
       #
@@ -164,11 +164,11 @@ module Primer
       end
 
       def render?
-        main.present? && pane.present?
+        content_region.present? && pane_region.present?
       end
 
-      # The layout's main content.
-      class Main < Primer::Component
+      # The layout's content.
+      class Content < Primer::Component
         status :beta
 
         WIDTH_DEFAULT = :fluid
@@ -177,8 +177,8 @@ module Primer
         TAG_DEFAULT = :div
         TAG_OPTIONS = [TAG_DEFAULT, :main].freeze
 
-        # @param width [Symbol] <%= one_of(Primer::Beta::SplitPageLayout::Main::WIDTH_OPTIONS) %>
-        # @param tag [Symbol] <%= one_of(Primer::Beta::SplitPageLayout::Main::TAG_OPTIONS) %>
+        # @param width [Symbol] <%= one_of(Primer::Beta::SplitPageLayout::Content::WIDTH_OPTIONS) %>
+        # @param tag [Symbol] <%= one_of(Primer::Beta::SplitPageLayout::Content::TAG_OPTIONS) %>
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(tag: TAG_DEFAULT, width: WIDTH_DEFAULT, **system_arguments)
           @width = fetch_or_fallback(WIDTH_OPTIONS, width, WIDTH_DEFAULT)
