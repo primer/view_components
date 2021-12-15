@@ -45,6 +45,25 @@
     ]
   },
   "Primer::Alpha::CtaLink": {
+    "DEFAULT_SCHEME": "default",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "primary": "btn-primary",
+      "danger": "btn-danger",
+      "outline": "btn-outline",
+      "invisible": "btn-invisible"
+    },
+    "SCHEME_OPTIONS": [
+      "default",
+      "primary",
+      "danger",
+      "outline",
+      "invisible"
+    ],
+    "SIZE_OPTIONS": [
+      "small",
+      "medium"
+    ]
   },
   "Primer::Alpha::Layout": {
     "FIRST_IN_SOURCE_DEFAULT": "sidebar",
