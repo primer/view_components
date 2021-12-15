@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "securerandom"
+
 module Primer
   module Alpha
     # Use `Dialog` for an overlayed dialog window.
@@ -25,6 +27,15 @@ module Primer
         @system_arguments[:role] = :dialog
         @title = title
         @description = description
+        id = SecureRandom.hex(4)
+        @header_id = `dialog-#{id}`.freeze
+
+        if @description.present?
+          @description_id = `dialog-description-#{id}`.freeze
+          @system_arguments[:aria] = { labelledby: @header_id, describedby: @description_id }
+        else
+          @system_arguments[:aria] = { labelledby: @header_id }
+        end
       end
 
       def call

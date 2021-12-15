@@ -1,8 +1,8 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <header>
-    <h1><%= @title %></h1>
+    <h1 id="<%= @header_id %>"><%= @title %></h1>
     <% if @description.present? %>
-      <h2><%= @description %></h2>
+      <h2 id="<%= @description_id %>"><%= @description %></h2>
     <% end %>
     <%= render Primer::CloseButton.new() %>
     <button type="button" aria-label="Close">
