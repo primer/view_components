@@ -38,9 +38,8 @@
     description: URL to be used for the Link.
   - name: scheme
     type: Symbol
-    default: N/A
-    description: One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`,
-      or `:primary`.
+    default: "`:default`"
+    description: One of `:danger`, `:default`, `:invisible`, `:outline`, or `:primary`.
   - name: size
     type: Symbol
     default: N/A
