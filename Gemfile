@@ -37,4 +37,4 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
 # gem "view_component_storybook", "~> 0.10.1"
-gem "view_component_storybook", git: "https://github.com/jklina/view_component_storybook"
+gem "view_component_storybook", git: "https://github.com/jklina/view_component_storybook", branch: "view_component_storybook", git: "https://github.com/jklina/view_component_storybook", branch: "enable-rendering-of-nested-components"

@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/jklina/view_component_storybook
-  revision: af955bb03bf66b2ce0d1003e2141f01f19885231
+  revision: 6e6708d34211bf59743f56dba807ec6e3204243a
+  branch: enable-rendering-of-nested-components
   specs:
     view_component_storybook (0.10.1)
       view_component (>= 2.36)

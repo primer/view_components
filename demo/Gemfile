@@ -34,7 +34,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 gem "primer_view_components", path: "../"
 # gem "view_component_storybook", "~> 0.10.1"
-gem "view_component_storybook", git: "https://github.com/jklina/view_component_storybook"
+gem "view_component_storybook", git: "https://github.com/jklina/view_component_storybook", branch: "enable-rendering-of-nested-components"
 
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
