@@ -6,8 +6,6 @@ class Primer::Beta::TruncateStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:truncate) do
-    content do
-      text { "Truncate text" }
-    end
+    content(text("Truncate text"))
   end
 end

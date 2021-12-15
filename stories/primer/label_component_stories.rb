@@ -4,10 +4,10 @@ class Primer::LabelComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:label) do
-    controls do
-      select(:scheme, Primer::LabelComponent::SCHEME_MAPPINGS.keys, :success)
-      select(:variant, Primer::LabelComponent::VARIANT_MAPPINGS.keys, :large)
-    end
+    constructor(
+      scheme: select(Primer::LabelComponent::SCHEME_MAPPINGS.keys, :success),
+      variant: select(Primer::LabelComponent::VARIANT_MAPPINGS.keys, :large)
+    )
 
     content do
       "This is a label"

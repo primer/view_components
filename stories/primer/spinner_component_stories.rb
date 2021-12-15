@@ -4,8 +4,6 @@ class Primer::SpinnerComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:spinner) do
-    controls do
-      select(:size, Primer::SpinnerComponent::SIZE_OPTIONS, :medium)
-    end
+    constructor(size: select(Primer::SpinnerComponent::SIZE_OPTIONS, :medium))
   end
 end

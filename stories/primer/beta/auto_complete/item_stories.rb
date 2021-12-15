@@ -6,11 +6,11 @@ class Primer::Beta::AutoComplete::ItemStories < ViewComponent::Storybook::Storie
   layout "storybook_preview"
 
   story(:auto_complete_item) do
-    controls do
-      text(:value, "value")
-      selected false
-      disabled false
-    end
+    constructor(
+      value: text("value"),
+      selected: boolean(false),
+      disabled: boolean(false)
+    )
 
     content do
       "<div>An item</div>".html_safe

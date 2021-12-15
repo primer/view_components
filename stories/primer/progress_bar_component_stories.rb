@@ -4,12 +4,8 @@ class Primer::ProgressBarComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:progress_bar) do
-    controls do
-      select(:size, Primer::ProgressBarComponent::SIZE_MAPPINGS.keys, :small)
-    end
+    constructor(size: select(Primer::ProgressBarComponent::SIZE_MAPPINGS.keys, :small))
 
-    content do |component|
-      component.item(bg: :success_emphasis, percentage: 10)
-    end
+    item(bg: :success_emphasis, percentage: 10)
   end
 end

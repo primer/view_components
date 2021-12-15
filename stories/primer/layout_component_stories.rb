@@ -4,15 +4,13 @@ class Primer::LayoutComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:layout) do
-    controls do
-      responsive false
-      select(:side, Primer::LayoutComponent::ALLOWED_SIDES, :right)
-      sidebar_col 3
-    end
+    constructor(
+      responsive: boolean(false),
+      side: select(Primer::LayoutComponent::ALLOWED_SIDES, :right),
+      sidebar_col: number(3)
+    )
 
-    content do |component|
-      component.main { "Main" }
-      component.sidebar { "Sidebar" }
-    end
+    main { "Main" }
+    sidebar { "Sidebar" }
   end
 end

@@ -6,9 +6,6 @@ class Primer::Beta::AutoComplete::InputStories < ViewComponent::Storybook::Stori
   layout "storybook_preview"
 
   story(:auto_complete_input) do
-    controls do
-      text(:type, "text")
-      aria(label: "Search fruits")
-    end
+    constructor(type: text("text"), "aria-label": "Search fruits")
   end
 end

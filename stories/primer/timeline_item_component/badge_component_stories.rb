@@ -4,8 +4,6 @@ class Primer::TimelineItemComponent::BadgeComponentStories < ViewComponent::Stor
   layout "storybook_centered_preview"
 
   story(:with_items) do
-    controls do
-      text(:icon, "people")
-    end
+    constructor(icon: text("people"))
   end
 end

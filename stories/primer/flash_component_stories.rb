@@ -4,13 +4,13 @@ class Primer::FlashComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:flash) do
-    controls do
-      text(:icon, "people")
-      select(:scheme, Primer::FlashComponent::SCHEME_MAPPINGS.keys, :default)
-      full false
-      spacious false
-      dismissible false
-    end
+    constructor(
+      icon: "people",
+      scheme: select(Primer::FlashComponent::SCHEME_MAPPINGS.keys, :default),
+      full: boolean(false),
+      spacious: boolean(false),
+      dismissible: boolean(false)
+    )
 
     content do
       "This is a flash message!"

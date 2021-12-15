@@ -4,22 +4,18 @@ class Primer::ImageCropStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:image_crop) do
-    controls do
-      text(:src, "https://github.com/koddsson.png")
-      text(:style, "width: 500px")
-    end
+    constructor(
+      src: text("https://github.com/koddsson.png"),
+      style: text("width: 500px")
+    )
   end
 
   story(:image_crop_with_custom_loading_slot) do
-    controls do
-      text(:src, "https://github.com/koddsson.png")
-      text(:style, "width: 500px")
-    end
+    constructor(
+      src: text("https://github.com/koddsson.png"),
+      style: text("width: 500px")
+    )
 
-    content do |component|
-      component.loading do
-        "Loading.."
-      end
-    end
+    loading { "Loading.." }
   end
 end

@@ -5,7 +5,7 @@ class Primer::HeadingComponentStories < ViewComponent::Storybook::Stories
 
   story(:heading) do
     constructor(tag: :h1)
-    
+
     content do
       "This is a heading!"
     end

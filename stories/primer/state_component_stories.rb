@@ -4,12 +4,12 @@ class Primer::StateComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:state) do
-    controls do
-      title "this is the title"
-      select(:scheme, Primer::StateComponent::SCHEME_OPTIONS, :default)
-      select(:size, Primer::StateComponent::SIZE_OPTIONS, :default)
-      select(:tag, Primer::StateComponent::TAG_OPTIONS, :span)
-    end
+    constructor(
+      title: text("this is the title"),
+      scheme: select(Primer::StateComponent::SCHEME_OPTIONS, :default),
+      size: select(Primer::StateComponent::SIZE_OPTIONS, :default),
+      tag: select(Primer::StateComponent::TAG_OPTIONS, :span)
+    )
 
     content do
       "This is a state!"
