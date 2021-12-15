@@ -9,29 +9,13 @@ class Primer::DropdownStories < ViewComponent::Storybook::Stories
       with_caret: boolean(false)
     )
 
-    # menu(
-    #   header: "Header",
-    #   items: items(
-    #     array(
-    #       [
-    #         "Item 1",
-    #         # item { "Item 2" },
-    #         # item(divider: true),
-    #         # item { "Item 3" },
-    #         # item { "Item 4" }
-    #       ]
-    #     )
-    #   )
-    # )
     button { "Dropdown" }
     menu(header: "Headers") do |m|
+      m.item { "item 1" }
       m.item { "item 2" }
-      # m.item { "Item 2" }
-      # m.items([{ divider: true, content: "something" }])
-      # m.item { "Item 2" }
-      # m.item(divider: true)
-      # m.item { "Item 3" }
-      # m.item { "Item 4" }
+      m.item(divider: true)
+      m.item { "Item 3" }
+      m.item { "Item 4" }
     end
   end
 end
