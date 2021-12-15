@@ -1,6 +1,7 @@
 {
   "Primer::Alpha::BorderBox::Header": "alpha",
   "Primer::Alpha::ButtonMarketing": "alpha",
+  "Primer::Alpha::Dialog": "alpha",
   "Primer::Alpha::Layout": "alpha",
   "Primer::Alpha::Layout::Main": "alpha",
   "Primer::Alpha::Layout::Sidebar": "alpha",
