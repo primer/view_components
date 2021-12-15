@@ -7,11 +7,14 @@ class Primer::Alpha::CtaLinkStories < ViewComponent::Storybook::Stories
 
   story(:cta_link) do
     controls do
-      classes "custom-class"
+      href "#"
+      select(:scheme, Primer::Alpha::CtaLink::SCHEME_OPTIONS, Primer::Alpha::CtaLink::DEFAULT_SCHEME)
+      select(:size, Primer::Alpha::CtaLink::SIZE_OPTIONS, :medium)
+      block false
     end
 
     content do
-      "Update your stories!"
+      "Click me"
     end
   end
 end
