@@ -8,16 +8,30 @@ module Primer
     class Dialog < Primer::Component
       # Optional list of buttons to be rendered.
       #
-      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %> except for `size` and `group_item`.
+      # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %> except for `size` and `group_item`.
       renders_many :buttons, lambda { |**system_arguments|
         Primer::ButtonComponent.new(**system_arguments)
       }
 
-      # @example Default
-      #   <%= render(Alpha::Primer::Dialog.new) { "Your content here" } %>
+      # Required body content.
       #
-      # @example Color and padding
-      #   <%= render(Primer::BoxComponent.new(bg: :subtle, p: 3)) { "Hello world" } %>
+      # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %> except for `size` and `group_item`.
+      renders_one :body, lambda { |**system_arguments|
+        deny_tag_argument(**system_arguments)
+        Primer::BaseComponent.new(**system_arguments)
+      }
+
+      # @example Default
+      #   <%= render(Alpha::Primer::Dialog.new(
+      #    title: "Title",
+      #    description: "Description"
+      #   )) do |c| %>
+      #     c.buttons << Primer::ButtonComponent.new() { "Button 1" }
+      #     c.buttons << Primer::ButtonComponent.new() { "Button 2" }
+      #     c.body do
+      #       <em>Your custom content here</em>
+      #     end
+      #   <% end %>
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(title:, description:, **system_arguments)
