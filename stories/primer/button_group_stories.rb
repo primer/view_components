@@ -4,15 +4,13 @@ class Primer::ButtonGroupStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:button_group) do
-    controls do
-      select(:variant, Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
-    end
+    constructor(
+      variant: select(Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
+    )
 
-    content do |c|
-      c.button { "Button" }
-      c.button(scheme: :primary) { "Primary" }
-      c.button(scheme: :danger) { "Danger" }
-      c.button(scheme: :outline) { "Outline" }
-    end
+    button { "Button" }
+    button(scheme: :primary) { "Primary" }
+    button(scheme: :danger) { "Danger" }
+    button(scheme: :outline) { "Outline" }
   end
 end

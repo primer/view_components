@@ -4,71 +4,57 @@ class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:full_box) do
-    controls do
-      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
-    end
+    constructor(
+      padding: select(Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
+    )
 
-    content do |component|
-      component.header { "Header" }
-      component.body { "Body" }
-      component.row { "Row one" }
-      component.row { "Row two" }
-      component.row { "Row three" }
-      component.footer { "Footer" }
-    end
+    header { "Header" }
+    body { "Body" }
+    row { "Row one" }
+    row { "Row two" }
+    row { "Row three" }
+    footer { "Footer" }
   end
 
   story(:header) do
-    controls do
-      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
-    end
+    constructor(
+      padding: select(Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
+    )
 
-    content do |component|
-      component.header { "Header" }
-    end
+    header { "Header" }
   end
 
   story(:header_title) do
-    controls do
-      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
-    end
+    constructor(
+      padding: select(Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
+    )
 
-    content do |component|
-      component.header do |h|
-        h.title { "Title" }
-      end
-    end
+    header(title: "Title")
   end
 
   story(:body) do
-    controls do
-      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
-    end
+    constructor(
+      padding: select(Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
+    )
 
-    content do |component|
-      component.body { "Body" }
-    end
+    body { "Body" }
   end
 
   story(:footer) do
-    controls do
-      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
-    end
+    constructor(
+      padding: select(Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
+    )
 
-    content do |component|
-      component.footer { "Footer" }
-    end
+    footer { "Footer" }
   end
 
   story(:rows) do
-    controls do
-      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
-    end
+    constructor(
+      padding: select(Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
+    )
 
-    content do |component|
-      component.row { "Row one" }
-      component.row { "Row two" }
-      component.row { "Row three" }
-    end
+    row { "Row one" }
+    row { "Row two" }
+    row { "Row three" }
   end
 end

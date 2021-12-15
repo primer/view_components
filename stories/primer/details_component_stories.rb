@@ -4,36 +4,26 @@ class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_centered_preview"
 
   story(:details) do
-    controls do
-      select(:overlay, Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :none)
-      reset false
-    end
+    constructor(
+      overlay: select(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :none),
+      reset: boolean(false)
+    )
 
-    content do |component|
-      component.summary { "Click me" }
-      component.body { "Body" }
-    end
+    summary { "Click me" }
+    body { "Body" }
   end
 
   story(:custom_button) do
-    controls do
-      select(:overlay, Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :none)
-    end
+    constructor(overlay: select(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :none))
 
-    content do |component|
-      component.summary(variant: :small, scheme: :primary) { "Click me" }
-      component.body { "Body" }
-    end
+    summary(variant: :small, scheme: :primary) { "Click me" }
+    body { "Body" }
   end
 
   story(:without_button) do
-    controls do
-      select(:overlay, Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :none)
-    end
+    constructor(overlay: select(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :none))
 
-    content do |component|
-      component.summary(button: false) { "Click me" }
-      component.body { "Body" }
-    end
+    summary(button: false) { "Click me" }
+    body { "Body" }
   end
 end

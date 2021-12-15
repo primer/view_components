@@ -6,35 +6,31 @@ class Primer::Dropdown::MenuStories < ViewComponent::Storybook::Stories
   layout "storybook_centered_preview"
 
   story(:with_items) do
-    controls do
-      select(:as, Primer::Dropdown::Menu::AS_OPTIONS, Primer::Dropdown::Menu::AS_DEFAULT)
-      select(:direction, Primer::Dropdown::Menu::DIRECTION_OPTIONS, Primer::Dropdown::Menu::DIRECTION_DEFAULT)
-      select(:scheme, Primer::Dropdown::Menu::SCHEME_MAPPINGS.keys, Primer::Dropdown::Menu::SCHEME_DEFAULT)
-      header "Header"
-    end
+    constructor(
+      as: select(Primer::Dropdown::Menu::AS_OPTIONS, Primer::Dropdown::Menu::AS_DEFAULT),
+      direction: select(Primer::Dropdown::Menu::DIRECTION_OPTIONS, Primer::Dropdown::Menu::DIRECTION_DEFAULT),
+      scheme: select(Primer::Dropdown::Menu::SCHEME_MAPPINGS.keys, Primer::Dropdown::Menu::SCHEME_DEFAULT),
+      header: "Header"
+    )
 
-    content do |c|
-      c.item { "Item 1" }
-      c.item { "Item 2" }
-      c.item { "Item 3" }
-      c.item { "Item 4" }
-    end
+    item { "Item 1" }
+    item { "Item 2" }
+    item { "Item 3" }
+    item { "Item 4" }
   end
 
   story(:with_divider) do
-    controls do
-      select(:as, Primer::Dropdown::Menu::AS_OPTIONS, Primer::Dropdown::Menu::AS_DEFAULT)
-      select(:direction, Primer::Dropdown::Menu::DIRECTION_OPTIONS, Primer::Dropdown::Menu::DIRECTION_DEFAULT)
-      select(:scheme, Primer::Dropdown::Menu::SCHEME_MAPPINGS.keys, Primer::Dropdown::Menu::SCHEME_DEFAULT)
-      header "Header"
-    end
+    constructor(
+      as: select(Primer::Dropdown::Menu::AS_OPTIONS, Primer::Dropdown::Menu::AS_DEFAULT),
+      direction: select(Primer::Dropdown::Menu::DIRECTION_OPTIONS, Primer::Dropdown::Menu::DIRECTION_DEFAULT),
+      scheme: select(Primer::Dropdown::Menu::SCHEME_MAPPINGS.keys, Primer::Dropdown::Menu::SCHEME_DEFAULT),
+      header: "Header"
+    )
 
-    content do |c|
-      c.item { "Item 1" }
-      c.item { "Item 2" }
-      c.item(divider: true)
-      c.item { "Item 3" }
-      c.item { "Item 4" }
-    end
+    item { "Item 1" }
+    item { "Item 2" }
+    item(divider: true)
+    item { "Item 3" }
+    item { "Item 4" }
   end
 end

@@ -6,9 +6,7 @@ class Primer::Alpha::TabPanelsStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:tab_panels) do
-    controls do
-      classes "custom-class"
-    end
+    constructor(label: "custom-label")
 
     content do
       "Update your stories!"

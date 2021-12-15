@@ -4,11 +4,11 @@ class Primer::BaseButtonStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:base) do
-    controls do
-      block false
-      select(:tag, Primer::BaseButton::TAG_OPTIONS, Primer::BaseButton::DEFAULT_TAG)
-      select(:type, Primer::BaseButton::TYPE_OPTIONS, Primer::BaseButton::DEFAULT_TYPE)
-    end
+    constructor(
+      block: boolean(false),
+      tag: select(Primer::BaseButton::TAG_OPTIONS, Primer::BaseButton::DEFAULT_TAG),
+      type: select(Primer::BaseButton::TYPE_OPTIONS, Primer::BaseButton::DEFAULT_TYPE)
+    )
 
     content do
       "Click me"

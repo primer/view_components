@@ -36,4 +36,5 @@ gem "webpacker", "~> 5.0"
 gem "bootsnap", ">= 1.4.2", require: false
 
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
-gem "view_component_storybook", "~> 0.10.1"
+# gem "view_component_storybook", "~> 0.10.1"
+gem "view_component_storybook", git: "https://github.com/jklina/view_component_storybook"

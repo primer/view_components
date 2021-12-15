@@ -3,7 +3,9 @@
 class Primer::HeadingComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
-  story(:heading, tag: :h1) do
+  story(:heading) do
+    constructor(tag: :h1)
+    
     content do
       "This is a heading!"
     end

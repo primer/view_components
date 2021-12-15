@@ -6,70 +6,63 @@ class Primer::Navigation::TabComponentStories < ViewComponent::Storybook::Storie
   layout "storybook_centered_preview"
 
   story(:tab) do
-    controls do
-      selected true
-      list false
-      with_panel false
-      select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
-    end
+    constructor(
+      selected: boolean(true),
+      list: boolean(false),
+      with_panel: boolean(false),
+      classes: select(%w[tabnav-tab UnderlineNav-item], "tabnav-tab")
+    )
 
-    content do |c|
-      c.text { "Tab" }
-    end
+    # Have to explicitly call #slot to avoid method name conflict.
+    slot(:text) { "Tab" }
   end
 
   story(:with_icon) do
-    controls do
-      selected true
-      list false
-      with_panel false
-      select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
-    end
+    constructor(
+      selected: boolean(true),
+      list: boolean(false),
+      with_panel: boolean(false),
+      classes: select(%w[tabnav-tab UnderlineNav-item], "tabnav-tab")
+    )
 
-    content do |c|
-      c.icon(icon: :star)
-      c.text { "Tab" }
-    end
+    icon(icon: :star)
+    slot(:text) { "Tab" }
   end
 
   story(:with_counter) do
-    controls do
-      selected true
-      list false
-      with_panel false
-      select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
-    end
+    constructor(
+      selected: boolean(true),
+      list: boolean(false),
+      with_panel: boolean(false),
+      classes: select(%w[tabnav-tab UnderlineNav-item], "tabnav-tab")
+    )
 
-    content do |c|
-      c.counter(count: 25)
-      c.text { "Tab" }
-    end
+    counter(count: 25)
+    slot(:text) { "Tab" }
   end
 
   story(:full) do
-    controls do
-      selected true
-      list false
-      with_panel false
-      select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
-    end
+    constructor(
+      selected: boolean(true),
+      list: boolean(false),
+      with_panel: boolean(false),
+      classes: select(%w[tabnav-tab UnderlineNav-item], "tabnav-tab")
+    )
 
-    content do |c|
-      c.icon(icon: :star)
-      c.counter(count: 25)
-      c.text { "Tab" }
-    end
+    icon(icon: :star)
+    counter(count: 25)
+    slot(:text) { "Tab" }
   end
 
   story(:with_custom_html) do
-    controls do
-      selected true
-      list false
-      with_panel false
-      select(:classes, %w[tabnav-tab UnderlineNav-item], "tabnav-tab")
-    end
+    constructor(
+      selected: boolean(true),
+      list: boolean(false),
+      with_panel: boolean(false),
+      classes: select(%w[tabnav-tab UnderlineNav-item], "tabnav-tab")
+    )
 
-    content do |_c|
+    content do
       "<div>This is my <strong>custom HTML</strong></div>".html_safe
     end
   end

@@ -55,7 +55,7 @@ module Primer
       class Item < Primer::Component
         attr_accessor :selected, :href
 
-        def initialize(href:, **system_arguments)
+        def initialize(href: "howdy", **system_arguments)
           @href = href
           @system_arguments = deny_tag_argument(**system_arguments)
           @selected = false

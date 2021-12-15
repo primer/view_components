@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/jklina/view_component_storybook
+  revision: af955bb03bf66b2ce0d1003e2141f01f19885231
+  specs:
+    view_component_storybook (0.10.1)
+      view_component (>= 2.36)
+
 PATH
   remote: ..
   specs:
@@ -38,7 +45,7 @@ GEM
     crass (1.0.6)
     erubi (1.10.0)
     ffi (1.15.3)
-    i18n (1.8.10)
+    i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     listen (3.7.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -48,7 +55,7 @@ GEM
       nokogiri (>= 1.5.9)
     method_source (1.0.0)
     mini_portile2 (2.6.1)
-    minitest (5.14.4)
+    minitest (5.15.0)
     msgpack (1.4.2)
     nio4r (2.5.8)
     nokogiri (1.12.5)
@@ -94,11 +101,9 @@ GEM
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    view_component (2.42.0)
+    view_component (2.46.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
-    view_component_storybook (0.8.0)
-      view_component (>= 2.2)
     zeitwerk (2.5.1)
 
 PLATFORMS
@@ -119,7 +124,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sprockets
   sprockets-rails
-  view_component_storybook (~> 0.8.0)
+  view_component_storybook!
 
 BUNDLED WITH
    2.2.22

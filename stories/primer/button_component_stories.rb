@@ -4,15 +4,15 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:button) do
-    controls do
-      select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
-      select(:variant, Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
-      select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
-      select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
-      group_item false
-      dropdown false
-      disabled false
-    end
+    constructor(
+      scheme: select(Primer::ButtonComponent::SCHEME_OPTIONS, :primary),
+      variant: select(Primer::ButtonComponent::VARIANT_OPTIONS, :medium),
+      tag: select(Primer::BaseButton::TAG_OPTIONS, :button),
+      type: select(Primer::BaseButton::TYPE_OPTIONS, :button),
+      group_item: boolean(false),
+      dropdown: boolean(false),
+      disabled: boolean(false)
+    )
 
     content do
       "Click me"
@@ -20,53 +20,53 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
   end
 
   story(:with_leading_visual) do
-    controls do
-      select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
-      select(:variant, Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
-      select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
-      select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
-      group_item false
-      dropdown false
-      disabled false
-    end
+    constructor(
+      scheme: select(Primer::ButtonComponent::SCHEME_OPTIONS, :primary),
+      variant: select(Primer::ButtonComponent::VARIANT_OPTIONS, :medium),
+      tag: select(Primer::BaseButton::TAG_OPTIONS, :button),
+      type: select(Primer::BaseButton::TYPE_OPTIONS, :button),
+      group_item: boolean(false),
+      dropdown: boolean(false),
+      disabled: boolean(false)
+    )
 
-    content do |c|
-      c.leading_visual_icon(icon: :star)
+    slot(:leading_visual_icon, icon: :star)
+    content do
       "Click me"
     end
   end
 
   story(:with_trailing_visual) do
-    controls do
-      select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
-      select(:variant, Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
-      select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
-      select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
-      group_item false
-      dropdown false
-      disabled false
-    end
+    constructor(
+      scheme: select(Primer::ButtonComponent::SCHEME_OPTIONS, :primary),
+      variant: select(Primer::ButtonComponent::VARIANT_OPTIONS, :medium),
+      tag: select(Primer::BaseButton::TAG_OPTIONS, :button),
+      type: select(Primer::BaseButton::TYPE_OPTIONS, :button),
+      group_item: boolean(false),
+      dropdown: boolean(false),
+      disabled: boolean(false)
+    )
 
-    content do |c|
-      c.trailing_visual_counter(count: 10)
+    slot(:trailing_visual_counter, count: 10)
+    content do
       "Click me"
     end
   end
 
   story(:full) do
-    controls do
-      select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
-      select(:variant, Primer::ButtonComponent::VARIANT_OPTIONS, :medium)
-      select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
-      select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
-      group_item false
-      dropdown false
-      disabled false
-    end
+    constructor(
+      scheme: select(Primer::ButtonComponent::SCHEME_OPTIONS, :primary),
+      variant: select(Primer::ButtonComponent::VARIANT_OPTIONS, :medium),
+      tag: select(Primer::BaseButton::TAG_OPTIONS, :button),
+      type: select(Primer::BaseButton::TYPE_OPTIONS, :button),
+      group_item: boolean(false),
+      dropdown: boolean(false),
+      disabled: boolean(false)
+    )
 
-    content do |c|
-      c.leading_visual_icon(icon: :star)
-      c.trailing_visual_counter(count: 10)
+    slot(:leading_visual_icon, icon: :star)
+    slot(:trailing_visual_counter, count: 10)
+    content do
       "Click me"
     end
   end

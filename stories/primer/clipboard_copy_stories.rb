@@ -4,19 +4,17 @@ class Primer::ClipboardCopyStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:clipboard_copy_simple) do
-    controls do
-      text(:value, "Text to copy")
-      aria(label: "Copy text to the system clipboard")
-    end
-
-    content
+    constructor(
+      value: text("Text to copy"),
+      "aria-label": "Copy text to the system clipboard"
+    )
   end
 
   story(:clipboard_copy_text) do
-    controls do
-      text(:value, "Text to copy")
-      aria(label: "Copy text to the system clipboard")
-    end
+    constructor(
+      value: text("Text to copy"),
+      "aria-label": "Copy text to the system clipboard"
+    )
 
     content do
       "Click to copy!"
