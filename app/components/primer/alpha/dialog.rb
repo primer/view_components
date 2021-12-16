@@ -28,7 +28,7 @@ module Primer
       }
 
       # @example Default
-      #   <%= render(Alpha::Primer::Dialog.new(
+      #   <%= render(Primer::Alpha::Dialog.new(
       #    title: "Title",
       #    description: "Description"
       #   )) do |c| %>
@@ -38,7 +38,7 @@ module Primer
       #   <% end %>
       #
       # @example With buttons
-      #   <%= render(Alpha::Primer::Dialog.new(
+      #   <%= render(Primer::Alpha::Dialog.new(
       #    title: "Title",
       #    description: "Description"
       #   )) do |c| %>

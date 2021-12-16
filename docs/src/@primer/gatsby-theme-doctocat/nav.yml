@@ -45,6 +45,8 @@
     url: "/components/counter"
   - title: Details
     url: "/components/details"
+  - title: Dialog
+    url: /components/dialog
   - title: Dropdown
     url: "/components/dropdown"
   - title: DropdownMenu
