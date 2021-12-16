@@ -188,7 +188,7 @@ class RubocopPrimerOcticonTest < CopTest
 
   def test_octicon_with_class_that_cant_be_converted
     investigate(cop, <<-'RUBY')
-      octicon(:icon, class: "mr-1 text-center")
+      octicon(:icon, class: "mr-1 text-fuzzy-waffle")
     RUBY
 
     assert_empty cop.offenses

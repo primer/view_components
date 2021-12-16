@@ -30,12 +30,12 @@ class ArgumentMappersBaseTest < LinterTestCase
   end
 
   def test_raises_if_a_class_cannot_be_converted
-    @file = '<div class="mr-1 p-3 d-none d-md-block anim-fade-in text-center"></div>'
+    @file = '<div class="mr-1 p-3 d-none d-md-block anim-fade-in text-fuzzy-waffle"></div>'
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
       ERBLint::Linters::ArgumentMappers::Base.new(tags.first).to_s
     end
 
-    assert_equal("Cannot convert class text-center", err.message)
+    assert_equal("Cannot convert class text-fuzzy-waffle", err.message)
   end
 
   def test_returns_aria_arguments_as_string_symbols
