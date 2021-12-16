@@ -42,32 +42,32 @@ Required body content.
 
 ### Default
 
-<Example src="<div role='dialog' aria-labelledby='dialog-df0ecbc7' aria-describedby='dialog-description-df0ecbc7' data-view-component='true'>  <header>    <h1 id='dialog-df0ecbc7'>Title</h1>      <h2 id='dialog-description-df0ecbc7'>Description</h2>    <button aria-label='Close' type='button' data-view-component='true' class='close-button'><svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg></button>    <button type='button' aria-label='Close'>      <svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg>    </button>  </header>    <footer>  </footer></div>" />
+<Example src="<div role='dialog' aria-labelledby='dialog-7b115fe4' aria-describedby='dialog-description-7b115fe4' data-view-component='true'>  <header>    <h1 id='dialog-7b115fe4'>Title</h1>      <h2 id='dialog-description-7b115fe4'>Description</h2>    <button aria-label='Close' type='button' data-view-component='true' class='close-button'><svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg></button>    <button type='button' aria-label='Close'>      <svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg>    </button>  </header>  <div data-view-component='true'>    <em>Your custom content here</em></div>  <footer>  </footer></div>" />
 
 ```erb
 <%= render(Primer::Alpha::Dialog.new(
  title: "Title",
  description: "Description"
 )) do |c| %>
-  c.body do
+  <% c.body do %>
     <em>Your custom content here</em>
-  end
+  <% end %>
 <% end %>
 ```
 
 ### With buttons
 
-<Example src="<div role='dialog' aria-labelledby='dialog-655c885d' aria-describedby='dialog-description-655c885d' data-view-component='true'>  <header>    <h1 id='dialog-655c885d'>Title</h1>      <h2 id='dialog-description-655c885d'>Description</h2>    <button aria-label='Close' type='button' data-view-component='true' class='close-button'><svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg></button>    <button type='button' aria-label='Close'>      <svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg>    </button>  </header>    <footer>  </footer></div>" />
+<Example src="<div role='dialog' aria-labelledby='dialog-72f6ac2d' aria-describedby='dialog-description-72f6ac2d' data-view-component='true'>  <header>    <h1 id='dialog-72f6ac2d'>Title</h1>      <h2 id='dialog-description-72f6ac2d'>Description</h2>    <button aria-label='Close' type='button' data-view-component='true' class='close-button'><svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg></button>    <button type='button' aria-label='Close'>      <svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg>    </button>  </header>  <div data-view-component='true'>    <em>Your custom content here</em></div>  <footer>      <button type='button' data-view-component='true' class='btn'>  Button 1</button>      <button type='button' data-view-component='true' class='btn'>  Button 2</button>  </footer></div>" />
 
 ```erb
 <%= render(Primer::Alpha::Dialog.new(
  title: "Title",
  description: "Description"
 )) do |c| %>
-  c.button { "Button 1" }
-  c.button { "Button 2" }
-  c.body do
+  <% c.button { "Button 1" } %>
+  <% c.button { "Button 2" } %>
+  <% c.body do %>
     <em>Your custom content here</em>
-  end
+  <% end %>
 <% end %>
 ```
