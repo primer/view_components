@@ -159,6 +159,7 @@ module Primer
         private
 
         def find_selector(selector)
+          # Build hash indexed on the selector for fast lookup.
           @selector_cache ||= UTILITIES.each_with_object({}) do |(keyword, argument_w_selectors), dict|
             argument_w_selectors.each do |argument, selectors|
               selectors.each_with_index do |css_selector, index|
