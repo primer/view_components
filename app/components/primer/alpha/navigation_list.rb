@@ -31,7 +31,7 @@ module Primer
 
       # @example Default
       #
-      #   <%= render(Primer::Alpha::NavigationList.new(aria: { label: "Settings" }, selected_item_id: :personal_info)) do |component| %>
+      #   <%= render(Primer::Alpha::NavigationList.new(aria: { label: "Settings" }, selected_item_id: :personal_info, id: an_id)) do |component| %>
       #     <% component.item(selected_by_ids: :general, href: "/settings/general") do %>
       #       General Settings
       #     <% end %>
@@ -54,7 +54,7 @@ module Primer
       #
       # @example Items with leading and trailing visuals
       #
-      #   <%= render(Primer::Alpha::NavigationList.new(aria: { label: "Settings" }, selected_item_id: :personal_info)) do |component| %>
+      #   <%= render(Primer::Alpha::NavigationList.new(aria: { label: "Settings" }, selected_item_id: :personal_info, id: :an_id)) do |component| %>
       #     <% component.section(aria: { label: "Account settings" }) do |section| %>
       #       <% section.heading do %>
       #         Account Settings
@@ -76,7 +76,7 @@ module Primer
       #
       # @example Items with sub-items
       #
-      #   <%= render(Primer::Alpha::NavigationList.new(aria: { label: "Settings" }, selected_item_id: :email_notifications)) do |component| %>
+      #   <%= render(Primer::Alpha::NavigationList.new(aria: { label: "Settings" }, selected_item_id: :email_notifications, id: :an_id)) do |component| %>
       #     <% component.section(aria: { label: "Account settings" }) do |section| %>
       #       <% section.heading do %>
       #         Account Settings
