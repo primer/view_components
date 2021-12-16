@@ -29,6 +29,21 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Dialog
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog.rb
+  parameters:
+  - name: title
+    type: String
+    default: N/A
+    description: The title of the dialog.
+  - name: description
+    type: String
+    default: "`nil`"
+    description: The optional description of the dialog.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Layout
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout.rb
   parameters:
