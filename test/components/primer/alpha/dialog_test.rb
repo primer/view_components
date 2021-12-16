@@ -21,7 +21,8 @@ class PrimerAlphaDialogTest < Minitest::Test
       render_inline(Primer::Alpha::Dialog.new)
     end
 
-    assert_includes(error.message, "missing keyword: :title")
+    assert_includes(error.message, "missing keyword:")
+    assert_includes(error.message, "title")
   end
 
   # Sets title
