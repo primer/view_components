@@ -32,9 +32,9 @@ module Primer
       #    title: "Title",
       #    description: "Description"
       #   )) do |c| %>
-      #     c.body do
+      #     <% c.body do %>
       #       <em>Your custom content here</em>
-      #     end
+      #     <% end %>
       #   <% end %>
       #
       # @example With buttons
@@ -42,11 +42,11 @@ module Primer
       #    title: "Title",
       #    description: "Description"
       #   )) do |c| %>
-      #     c.button { "Button 1" }
-      #     c.button { "Button 2" }
-      #     c.body do
+      #     <% c.button { "Button 1" } %>
+      #     <% c.button { "Button 2" } %>
+      #     <% c.body do %>
       #       <em>Your custom content here</em>
-      #     end
+      #     <% end %>
       #   <% end %>
       #
       # @param title [String] The title of the dialog.
