@@ -10,15 +10,15 @@ class Primer::SubheadComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |component|
-      component.slot(:heading) { "My Profile Heading" }
-      component.slot(:description) { "This is a description of my profile. I live on planet Earth. Sometimes." }
-      component.slot(:actions, classes: "btn btn-sm") { "Link to personal website" }
+      component.heading(tag: :h3) { "My Profile Heading" }
+      component.description { "This is a description of my profile. I live on planet Earth. Sometimes." }
+      component.actions(classes: "btn btn-sm") { "Link to personal website" }
     end
   end
 
   story(:danger_heading) do
     content do |component|
-      component.slot(:heading, danger: true) { "Danger Heading" }
+      component.heading(tag: :h3, danger: true) { "Danger Heading" }
     end
   end
 end
