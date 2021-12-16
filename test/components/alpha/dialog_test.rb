@@ -15,17 +15,89 @@ class PrimerAlphaDialogTest < Minitest::Test
     end
   end
 
-  # Displays rich content in body
-
   # Complain about missing title
+  def test_raises_on_missing_title
+    error = assert_raises(ArgumentError) do
+      render_inline(Primer::Alpha::Dialog.new)
+    end
+
+    assert_includes(error.message, "missing keyword: :title")
+  end
 
   # Sets title
+  def test_renders_title
+    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
+      c.body { "content" }
+    end
+
+    assert_selector("div[role='dialog']") do
+      assert_selector("h1", text: "Title")
+    end
+  end
 
   # Doesn't add description if not present
+  def test_does_not_render_description
+    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
+      c.body { "content" }
+    end
+
+    assert_selector("div[role='dialog']") do
+      refute_selector("h2")
+    end
+  end
 
   # Sets description if present
+  def test_renders_description
+    render_inline(Primer::Alpha::Dialog.new(title: "Title", description: "Description")) do |c|
+      c.body { "content" }
+    end
 
-  # Doesn't add buttons if not present
+    assert_selector("div[role='dialog']") do
+      assert_selector("h2", text: "Description")
+    end
+  end
+
+  # TODO: Doesn't add buttons if not present
+  # def test_does_not_render_button
+  #   render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
+  #     c.button() { "Button 1" }
+  #     c.button() { "Button 2" }
+  #     c.body { "content" }
+  #   end
+
+  #   assert_selector("div[role='dialog']") do
+  #     assert_selector("footer") do
+  #       refute_selector("button")
+  #     end
+  #   end
+  # end
 
   # Adds buttons if present
+  def test_renders_buttons
+    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
+      c.button { "Button 1" }
+      c.button { "Button 2" }
+      c.body { "content" }
+    end
+
+    assert_selector("div[role='dialog']") do
+      assert_selector("footer") do
+        assert_selector("button", text: "Button 1")
+        assert_selector("button", text: "Button 2")
+      end
+    end
+  end
+
+  # Test renders close button
+  def test_renders_close_button
+    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
+      c.body { "content" }
+    end
+
+    assert_selector("div[role='dialog']") do
+      assert_selector("header") do
+        assert_selector("button[aria-label='Close']")
+      end
+    end
+  end
 end

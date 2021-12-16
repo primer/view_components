@@ -8,7 +8,7 @@ module Primer
     class Dialog < Primer::Component
       # Optional list of buttons to be rendered.
       #
-      # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %> except for `size` and `group_item`.
+      # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
       renders_many :buttons, lambda { |**system_arguments|
         Primer::ButtonComponent.new(**system_arguments)
       }
@@ -32,8 +32,18 @@ module Primer
       #    title: "Title",
       #    description: "Description"
       #   )) do |c| %>
-      #     c.buttons << Primer::ButtonComponent.new() { "Button 1" }
-      #     c.buttons << Primer::ButtonComponent.new() { "Button 2" }
+      #     c.body do
+      #       <em>Your custom content here</em>
+      #     end
+      #   <% end %>
+      #
+      # @example With buttons
+      #   <%= render(Alpha::Primer::Dialog.new(
+      #    title: "Title",
+      #    description: "Description"
+      #   )) do |c| %>
+      #     c.button { "Button 1" }
+      #     c.button { "Button 2" }
       #     c.body do
       #       <em>Your custom content here</em>
       #     end
