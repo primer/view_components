@@ -10,12 +10,14 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-Add a general description of component here
-Add additional usage considerations or best practices that may aid the user to use the component correctly.
+Use `CtaLink` when you want a link with more visual weight.
+`CtaLink` has a similar appearance and API to `Button` but always includes a trailing chevron.
 
 ## Accessibility
 
-Add any accessibility considerations
+When the only action is navigating between pages a `CtaLink` should be used instead of a `Button`.
+The chevron is a visual indicator to distinguish navigational behaviour from in-page actions.
+Link text must be descriptive and meaningful, use an `aria-label` attribute to add additional context if the destination of the link is not clear when reading the link in isolation.
 
 ## Arguments
 
