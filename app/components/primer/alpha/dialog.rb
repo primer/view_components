@@ -49,6 +49,8 @@ module Primer
       #     end
       #   <% end %>
       #
+      # @param title [String] The title of the dialog.
+      # @param description [String] The optional description of the dialog.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(title:, description: nil, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
