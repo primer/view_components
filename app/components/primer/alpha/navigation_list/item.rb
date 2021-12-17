@@ -112,7 +112,6 @@ module Primer
             @system_arguments[:classes]
           )
 
-
           if subitems.present?
             @system_arguments[:tabindex] = 0
           else
