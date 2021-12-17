@@ -29,8 +29,8 @@ module Primer
     def initialize(src:, alt:, lazy: false, **system_arguments)
       @system_arguments = deny_tag_argument(**system_arguments)
 
+      @src = src
       @system_arguments[:tag] = :img
-      @system_arguments[:src] = src
       @system_arguments[:alt] = alt
 
       return unless lazy
@@ -40,7 +40,7 @@ module Primer
     end
 
     def call
-      render(Primer::BaseComponent.new(**@system_arguments))
+      render(Primer::BaseComponent.new(src: image_path(@src), **@system_arguments))
     end
   end
 end

@@ -66,7 +66,7 @@ module Primer
 
     def test_ignores_if_cannot_convert_class
       @file = <<~HTML
-        <#{default_tag} class="#{default_class} text-center" #{required_attributes}>
+        <#{default_tag} class="#{default_class} text-fuzzy-waffle" #{required_attributes}>
           #{default_content}
         </#{default_tag}>
       HTML

@@ -679,9 +679,10 @@
     description: One of `:a`, `:div`, `:span`, or `:summary`.
   - name: scheme
     type: Symbol
-    default: "`nil`"
-    description: One of `:danger`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`,
-      `:success`, or `:warning`.
+    default: "`:default`"
+    description: One of `:accent`, `:attention`, `:danger`, `:default`, `:done`, `:info`,
+      `:orange`, `:primary`, `:purple`, `:secondary`, `:severe`, `:sponsors`, `:success`,
+      or `:warning`.
   - name: variant
     type: Symbol
     default: "`nil`"

@@ -23,10 +23,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
     end
 
     assert_selector(".blankslate") do
-      assert_selector("span[role='status']") do
-        assert_selector(".sr-only", text: "Loading")
-        assert_selector("[data-test-selector='blankslate-spinner']")
-      end
+      assert_selector("svg[data-test-selector='blankslate-spinner']")
     end
   end
 

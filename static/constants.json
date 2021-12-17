@@ -518,29 +518,41 @@
   "Primer::ImageCrop": {
   },
   "Primer::LabelComponent": {
+    "DEFAULT_SCHEME": "default",
     "DEFAULT_TAG": "span",
     "DEPRECATED_SCHEME_OPTIONS": [
+      "info",
+      "warning",
       "orange",
       "purple"
     ],
     "SCHEME_MAPPINGS": {
+      "default": "",
       "primary": "Label--primary",
       "secondary": "Label--secondary",
-      "info": "Label--info",
+      "accent": "Label--accent",
       "success": "Label--success",
-      "warning": "Label--warning",
+      "attention": "Label--attention",
       "danger": "Label--danger",
+      "severe": "Label--severe",
+      "done": "Label--done",
+      "sponsors": "Label--sponsors",
+      "info": "Label--info",
+      "warning": "Label--warning",
       "orange": "Label--orange",
       "purple": "Label--purple"
     },
     "SCHEME_OPTIONS": [
+      "default",
       "primary",
       "secondary",
-      "info",
+      "accent",
       "success",
-      "warning",
+      "attention",
       "danger",
-      null
+      "severe",
+      "done",
+      "sponsors"
     ],
     "TAG_OPTIONS": [
       "span",

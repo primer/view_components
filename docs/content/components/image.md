@@ -56,7 +56,7 @@ Always provide a meaningful `alt`.
 
 ### Custom size
 
-<Example src="<img height='100' width='100' src='https://github.com/github.png' alt='GitHub' data-view-component='true' />" />
+<Example src="<img src='https://github.com/github.png' height='100' width='100' alt='GitHub' data-view-component='true' />" />
 
 ```erb
 
