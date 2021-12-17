@@ -22,6 +22,10 @@ module Primer
         def before_render
           @system_arguments[:"aria-hidden"] = true if content.present?
         end
+
+        def call
+          render(Primer::BaseComponent.new(**@system_arguments)) { content }
+        end
       end
     end
   end
