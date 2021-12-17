@@ -34,7 +34,7 @@ module Primer
         # @param item_classes [Array<String>] Additional classes to add to the list's items.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(selected_item_id: nil, item_classes: "", **system_arguments)
-          @id =  system_arguments[:id] || "nav-list-section-#{SecureRandom.uuid}"
+          @id = "nav-list-section-#{SecureRandom.uuid || system_arguments[:id]}"
 
           @system_arguments = system_arguments
           @system_arguments[:classes] = class_names(

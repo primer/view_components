@@ -8,7 +8,9 @@
         <li class="ActionList-sectionDivider"></li>
       <% end %>
       <% sections.each_with_index do |section, idx| %>
-        <li class="ActionList-sectionDivider"></li>
+        <% if idx > 0 %>
+          <li class="ActionList-sectionDivider"></li>
+        <% end %>
         <%= section %>
       <% end %>
     <% end %>
