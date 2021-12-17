@@ -5,7 +5,6 @@ namespace :utilities do
     require "yaml"
     require "json"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
-    require "primer/classify/utilities"
 
     # Keys that are looked for to be included in the utilities.yml file
     # rubocop:disable Lint/ConstantDefinitionInBlock
@@ -28,6 +27,20 @@ namespace :utilities do
       /^width\b/,
       /^v\b/
     ].freeze
+
+    # Replacements for some classnames that end up being a different argument key
+    REPLACEMENT_KEYS = {
+      "^anim" => "animation",
+      "^v-align" => "vertical_align",
+      "^d" => "display",
+      "^wb" => "word_break",
+      "^v" => "visibility",
+      "^width" => "w",
+      "^height" => "h",
+      "^color-bg" => "bg",
+      "^color-border" => "border_color",
+      "^color-fg" => "color"
+    }.freeze
 
     BREAKPOINTS = [nil, "sm", "md", "lg", "xl"].freeze
     # rubocop:enable Lint/ConstantDefinitionInBlock
@@ -67,7 +80,7 @@ namespace :utilities do
       key = ""
 
       # Look for a replacement key
-      Primer::Classify::Utilities::REPLACEMENT_KEYS.each do |k, v|
+      REPLACEMENT_KEYS.each do |k, v|
         next unless classname.match?(Regexp.new(k))
 
         key = v
