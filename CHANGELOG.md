@@ -30,7 +30,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
-
 ### New
 
 - Adding new Alpha component: `NavigationList`
