@@ -30,7 +30,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
-- Revert optimization changes to utilities
+- Revert optimization changes to utilities.
 
   _Josh Klina_
 
