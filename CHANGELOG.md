@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.66
+
 ## 0.0.65
 
 ### Breaking Changes
