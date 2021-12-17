@@ -19,6 +19,20 @@ module Primer
 
       BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
 
+      # Replacements for some classnames that end up being a different argument key
+      REPLACEMENT_KEYS = {
+        "^anim" => "animation",
+        "^v-align" => "vertical_align",
+        "^d" => "display",
+        "^wb" => "word_break",
+        "^v" => "visibility",
+        "^width" => "w",
+        "^height" => "h",
+        "^color-bg" => "bg",
+        "^color-border" => "border_color",
+        "^color-fg" => "color"
+      }.freeze
+
       SUPPORTED_KEY_CACHE = Hash.new { |h, k| h[k] = !UTILITIES[k].nil? }
       BREAKPOINT_INDEX_CACHE = Hash.new { |h, k| h[k] = BREAKPOINTS.index(k) }
 
@@ -159,15 +173,30 @@ module Primer
         private
 
         def find_selector(selector)
-          # Build hash indexed on the selector for fast lookup.
-          @selector_cache ||= UTILITIES.each_with_object({}) do |(keyword, argument_w_selectors), dict|
-            argument_w_selectors.each do |argument, selectors|
-              selectors.each_with_index do |css_selector, index|
-                dict[css_selector] = [keyword, argument, index]
-              end
-            end
+          key = infer_selector_key(selector)
+          value_hash = UTILITIES[key]
+
+          return nil if value_hash.blank?
+
+          # Each value hash will also contain an array of classnames for breakpoints
+          # Key argument `0`, classes `[ "mr-0", "mr-sm-0", "mr-md-0", "mr-lg-0", "mr-xl-0" ]`
+          value_hash.each do |key_argument, classnames|
+            # Skip each value hash until we get one with the selector
+            next unless classnames.include?(selector)
+
+            # Return [:mr, 0, 1]
+            # has index of classname, so we can match it up with responsive array `mr: [nil, 0]`
+            return [key, key_argument, classnames.index(selector)]
           end
-          @selector_cache[selector]
+
+          nil
+        end
+
+        def infer_selector_key(selector)
+          REPLACEMENT_KEYS.each do |k, v|
+            return v.to_sym if selector.match?(Regexp.new(k))
+          end
+          selector.split("-").first.to_sym
         end
       end
     end

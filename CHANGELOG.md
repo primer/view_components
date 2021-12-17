@@ -30,6 +30,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+- Revert optimization changes to utilities.
+
+  _Josh Klina_
+
 ## 0.0.65
 
 ### Breaking Changes
