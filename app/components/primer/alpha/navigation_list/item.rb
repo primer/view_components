@@ -56,6 +56,7 @@ module Primer
 
           @system_arguments = system_arguments
           @system_arguments[:"data-item-id"] = @selected_by_ids.join(" ")
+          @system_arguments[:tag] = :li
           @system_arguments[:classes] = class_names(
             "ActionList-item",
             @system_arguments[:classes]

@@ -1,4 +1,4 @@
-<%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
+<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
   <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
     <% if leading_visual %>
       <span class="ActionList-item-visual ActionList-item-visual--leading">
