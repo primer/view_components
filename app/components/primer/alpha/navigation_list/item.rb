@@ -101,9 +101,9 @@ module Primer
           @system_arguments[:"aria-expanded"] = expanded?.to_s if subitems.present?
           @system_arguments[:"aria-haspopup"] = "true" if subitems.present?
           @system_arguments[:classes] = class_names(
-            "ActionList-item--navActive"  => selected?,
-            "ActionList-item--hasSubItem"  => subitems.present?,
-            @system_arguments[:classes]
+            { "ActionList-item--navActive"  => selected?,
+              "ActionList-item--hasSubItem"  => subitems.present? }
+            .merge(@system_arguments[:classes])
           )
 
           if subitems.present?
