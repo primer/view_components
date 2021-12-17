@@ -33,6 +33,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 ### Updates
 
 * Optimize logic for converting class names into args
+
     *Josh Klina*
 
 ### Deprecations
