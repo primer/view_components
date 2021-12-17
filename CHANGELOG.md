@@ -33,9 +33,9 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### New
 
-* Adding new Alpha component: `NavigationList`
+- Adding new Alpha component: `NavigationList`
 
-    *Lee Quarella*
+    _Lee Quarella_
 
 ## 0.0.66
 
