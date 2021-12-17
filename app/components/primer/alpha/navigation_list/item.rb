@@ -19,7 +19,7 @@ module Primer
             Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
           },
           svg: lambda { |**system_arguments|
-             Primer::BaseComponent.new(tag: :svg, **system_arguments)
+            Primer::BaseComponent.new(tag: :svg, **system_arguments)
           }
         }
 
@@ -104,11 +104,14 @@ module Primer
 
           @system_arguments[:"aria-expanded"] = expanded?.to_s if subitems.present?
           @system_arguments[:"aria-haspopup"] = "true" if subitems.present?
-          @system_arguments[:classes] = class_names({
-            "ActionList-item--navActive" => selected?,
-            "ActionList-item--hasSubItem" => subitems.present?
-          }, @system_arguments[:classes]
+          @system_arguments[:classes] = class_names(
+            {
+              "ActionList-item--navActive" => selected?,
+              "ActionList-item--hasSubItem" => subitems.present?
+            },
+            @system_arguments[:classes]
           )
+
 
           if subitems.present?
             @system_arguments[:tabindex] = 0
