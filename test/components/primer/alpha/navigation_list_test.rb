@@ -166,7 +166,7 @@ class PrimerAlphaNavigationListTest < Minitest::Test
       end
     end
 
-    assert_match(/an aria-label is required/, error.message)
+    assert_match(/`aria-label` is required/, error.message)
   end
 
   def test_aria_labels_for_section_list
