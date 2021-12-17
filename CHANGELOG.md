@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Breaking Changes
+
+- Revert accessibility changes to `Spinner` introduced since 0.0.60.
+
+  _Charlotte Dann_
+
 ### Deprecations
 
 - Deprecate `variant` in favor of `size` in `ButtonComponent` and `ButtonGroup`.
