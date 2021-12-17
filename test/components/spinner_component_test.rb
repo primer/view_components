@@ -20,12 +20,6 @@ class PrimerSpinnerComponentTest < Minitest::Test
     end
   end
 
-  def test_classes_on_outer_element
-    render_inline(Primer::SpinnerComponent.new(classes: "spinner"))
-
-    assert_selector("span[role='status'].spinner")
-  end
-
   def test_defaults_to_size_32
     render_inline(Primer::SpinnerComponent.new)
 
