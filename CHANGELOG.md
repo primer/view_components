@@ -42,6 +42,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
   _Charlotte Dann_
 
+### Updates
+
+- Optimize logic for converting class names into args
+
+    *Josh Klina*
+
 ### Deprecations
 
 - Deprecate `variant` in favor of `size` in `ButtonComponent` and `ButtonGroup`.
