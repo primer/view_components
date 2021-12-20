@@ -9,14 +9,27 @@ module Primer
       INVALID_CLASS_NAME_PREFIXES = /text-|box-shadow-|box_shadow-/.freeze
 
       SUPPORTED_SELECTOR_EXCEPTIONS = %w[
-        f6
+        f1
+        f2
+        f3
+        f4
         f5
+        f6
+        rounded-0
+        rounded-1
         rounded-2
+        rounded-3
+        border-top-0
         border-bottom-0
-        flex-self-baseline
+        border-right-0
+        border-left-0
         no-underline
+        flex-column
         flex-items-center
+        flex-self-baseline
+        flex-self-center
         flex-self-end
+        flex-self-start
         flex-shrink-0
       ].freeze
 
