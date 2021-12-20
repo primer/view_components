@@ -31,12 +31,13 @@ module Primer
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(size: DEFAULT_SIZE, style: DEFAULT_STYLE, **system_arguments)
       @system_arguments = deny_tag_argument(**system_arguments)
-      @system_arguments[:tag] = :span
-      @system_arguments[:role] = :status
-      @system_arguments[:display] = :inline_block
+      @system_arguments[:tag] = :svg
       @system_arguments[:style] ||= style
-
-      @size = SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
+      @system_arguments[:animation] = :rotate
+      @system_arguments[:width] = SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
+      @system_arguments[:height] = SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)]
+      @system_arguments[:viewBox] = "0 0 16 16"
+      @system_arguments[:fill] = :none
     end
   end
 end

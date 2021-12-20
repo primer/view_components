@@ -35,7 +35,7 @@ class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
 
     content do |component|
       component.header do |h|
-        h.title { "Title" }
+        h.title(tag: :h2) { "Title" }
       end
     end
   end
