@@ -69,6 +69,25 @@ class PrimerAlphaNavigationListTest < Minitest::Test
     end
   end
 
+  def test_item_with_leading_svg_visual
+    render_inline(Primer::Alpha::NavigationList.new(aria: { label: "Items" })) do |component|
+      component.item(selected_by_ids: :item, href: "/item") do |item|
+        item.leading_visual_svg(xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 16 16") do
+          "an_svg_path"
+        end
+        "Item"
+      end
+    end
+
+    assert_selector("ul.ActionList") do
+      assert_selector("a.ActionList-content.ActionList-content--visual16") do
+        assert_selector(".ActionList-item-label", text: "Item")
+        assert_selector(".ActionList-item-visual.ActionList-item-visual--leading svg")
+        assert_selector("svg", text: "an_svg_path")
+      end
+    end
+  end
+
   def test_item_with_trailing_icon_visual
     render_inline(Primer::Alpha::NavigationList.new(aria: { label: "Items" })) do |component|
       component.item(selected_by_ids: :item, href: "/item") do |item|
