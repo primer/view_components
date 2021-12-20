@@ -11,21 +11,6 @@ class PrimerSpinnerComponentTest < Minitest::Test
     assert_selector("svg")
   end
 
-  def test_renders_accessible_tags
-    render_inline(Primer::SpinnerComponent.new)
-
-    assert_selector("span[role='status']") do
-      assert_selector(".sr-only", text: "Loading")
-      assert_selector("svg")
-    end
-  end
-
-  def test_classes_on_outer_element
-    render_inline(Primer::SpinnerComponent.new(classes: "spinner"))
-
-    assert_selector("span[role='status'].spinner")
-  end
-
   def test_defaults_to_size_32
     render_inline(Primer::SpinnerComponent.new)
 

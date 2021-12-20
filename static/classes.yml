@@ -194,7 +194,6 @@
 - ".pr-2"
 - ".pt-5"
 - ".right-0"
-- ".sr-only"
 - ".tabnav"
 - ".tabnav-tab"
 - ".tabnav-tabs"
@@ -205,4 +204,3 @@
 - ".tooltipped-n"
 - ".tooltipped-no-delay"
 - ".tooltipped-s"
-- ".v-align-bottom"
