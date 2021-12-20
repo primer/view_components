@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AutoCompleteTestController < ApplicationController
+class AutocompleteTestController < ApplicationController
   def index
     @fruit_list = [
       'Apples',

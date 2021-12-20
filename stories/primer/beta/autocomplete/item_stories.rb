@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "primer/beta/auto_complete/item"
+require "primer/beta/autocomplete/item"
 
-class Primer::Beta::AutoComplete::ItemStories < ViewComponent::Storybook::Stories
+class Primer::Beta::Autocomplete::ItemStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
-  story(:auto_complete_item) do
+  story(:autocomplete_item) do
     controls do
       text(:value, "value")
       selected false

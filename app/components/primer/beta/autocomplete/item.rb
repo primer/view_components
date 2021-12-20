@@ -2,16 +2,16 @@
 
 module Primer
   module Beta
-    class AutoComplete
-      # Use `AutoCompleteItem` to list results of an auto-completed search.
+    class Autocomplete
+      # Use `AutocompleteItem` to list results of an auto-completed search.
       class Item < Primer::Component
         status :beta
 
         # @example Default
-        #   <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
+        #   <%= render(Primer::Beta::Autocomplete::Item.new(selected: true, value: "value")) do |c| %>
         #     Selected
         #   <% end %>
-        #   <%= render(Primer::Beta::AutoComplete::Item.new(value: "value")) do |c| %>
+        #   <%= render(Primer::Beta::Autocomplete::Item.new(value: "value")) do |c| %>
         #     Not selected
         #   <% end %>
         #

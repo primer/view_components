@@ -1,4 +1,4 @@
-import './beta/auto_complete/auto_complete'
+import './beta/autocomplete/autocomplete'
 import './clipboard_copy_component'
 import './tab_container_component'
 import './time_ago_component'

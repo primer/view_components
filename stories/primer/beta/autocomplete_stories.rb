@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "primer/beta/auto_complete"
+require "primer/beta/autocomplete"
 
-class Primer::Beta::AutoCompleteStories < ViewComponent::Storybook::Stories
+class Primer::Beta::AutocompleteStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
-  story(:auto_complete) do
+  story(:autocomplete) do
     controls do
       text(:src, "/")
       text(:input_id, "input-id")

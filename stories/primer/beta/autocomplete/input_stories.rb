@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "primer/beta/auto_complete"
+require "primer/beta/autocomplete"
 
-class Primer::Beta::AutoComplete::InputStories < ViewComponent::Storybook::Stories
+class Primer::Beta::Autocomplete::InputStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
-  story(:auto_complete_input) do
+  story(:autocomplete_input) do
     controls do
       text(:type, "text")
       aria(label: "Search fruits")

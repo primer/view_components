@@ -2,17 +2,17 @@
 
 module Primer
   module Beta
-    # Use `AutoComplete` to provide a user with a list of selectable suggestions that appear when they type into the
+    # Use `Autocomplete` to provide a user with a list of selectable suggestions that appear when they type into the
     # input field. This list is populated by server search results.
     # @accessibility
     #   Always set an accessible label to help the user interact with the component.
     #
     #   * Set the `label` slot to render a visible label. Alternatively, associate an existing visible text element
     #   as a label by setting `aria-labelledby`.
-    #   * If you must use a non-visible label, set `:"aria-label"` on `AutoComplete` and Primer
+    #   * If you must use a non-visible label, set `:"aria-label"` on `Autocomplete` and Primer
     #   will apply it to the correct elements. However, please note that a visible label should almost
     #   always be used unless there is compelling reason not to. A placeholder is not a label.
-    class AutoComplete < Primer::Component
+    class Autocomplete < Primer::Component
       status :beta
 
       # Optionally render a visible label. See <%= link_to_accessibility %>
@@ -27,7 +27,7 @@ module Primer
 
       # Required input used to search for results
       #
-      # @param type [Symbol] <%= one_of(Primer::Beta::AutoComplete::Input::TYPE_OPTIONS) %>
+      # @param type [Symbol] <%= one_of(Primer::Beta::Autocomplete::Input::TYPE_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :input, lambda { |**system_arguments|
         aria_label = aria("label", system_arguments) || @aria_label
@@ -64,38 +64,38 @@ module Primer
       }
 
       # @example Default
-      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-1", list_id: "fruits-popup-1", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::Autocomplete.new(src: "/autocomplete", input_id: "fruits-input-1", list_id: "fruits-popup-1", position: :relative)) do |c| %>
       #     <% c.label(classes:"").with_content("Fruits") %>
       #     <% c.input(type: :text) %>
       #   <% end %>
       #
       # @example With `aria-label`
-      #   <%= render(Primer::Beta::AutoComplete.new("aria-label": "Fruits", src: "/auto_complete", input_id: "fruits-input-2", list_id: "fruits-popup-2", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::Autocomplete.new("aria-label": "Fruits", src: "/autocomplete", input_id: "fruits-input-2", list_id: "fruits-popup-2", position: :relative)) do |c| %>
       #     <% c.input(type: :text) %>
       #   <% end %>
       #
       # @example With `aria-labelledby`
       #   <%= render(Primer::HeadingComponent.new(tag: :h2, id: "search-1")) { "Search" } %>
-      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-3", list_id: "fruits-popup-2", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::Autocomplete.new(src: "/autocomplete", input_id: "fruits-input-3", list_id: "fruits-popup-2", position: :relative)) do |c| %>
       #     <% c.input("aria-labelledby": "search-1") %>
       #   <% end %>
       #
       # @example With custom classes for the results
-      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-4", list_id: "fruits-popup-3", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::Autocomplete.new(src: "/autocomplete", input_id: "fruits-input-4", list_id: "fruits-popup-3", position: :relative)) do |c| %>
       #     <% c.label(classes:"").with_content("Fruits") %>
       #     <% c.input(type: :text) %>
       #     <% c.results(classes: "custom-class") do %>
-      #       <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |c| %>
+      #       <%= render(Primer::Beta::Autocomplete::Item.new(selected: true, value: "apple")) do |c| %>
       #         Apple
       #       <% end %>
-      #       <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |c| %>
+      #       <%= render(Primer::Beta::Autocomplete::Item.new(value: "orange")) do |c| %>
       #         Orange
       #       <% end %>
       #     <% end %>
       #   <% end %>
       #
       # @example With Icon
-      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", list_id: "fruits-popup-4", input_id: "fruits-input-4", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::Autocomplete.new(src: "/autocomplete", list_id: "fruits-popup-4", input_id: "fruits-input-4", position: :relative)) do |c| %>
       #     <% c.label(classes:"").with_content("Fruits") %>
       #     <% c.input(type: :text) %>
       #     <% c.icon(icon: :search) %>
@@ -126,13 +126,13 @@ module Primer
         results(classes: "") unless results
       end
 
-      # This component is part of `Primer::Beta::AutoCompleteComponent` and should not be
+      # This component is part of `Primer::Beta::AutocompleteComponent` and should not be
       # used as a standalone component.
       class Input < Primer::Component
         DEFAULT_TYPE = :text
         TYPE_OPTIONS = [DEFAULT_TYPE, :search].freeze
 
-        # @param type [Symbol] <%= one_of(Primer::Beta::AutoComplete::Input::TYPE_OPTIONS) %>
+        # @param type [Symbol] <%= one_of(Primer::Beta::Autocomplete::Input::TYPE_OPTIONS) %>
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(type: DEFAULT_TYPE, **system_arguments)
           @system_arguments = deny_tag_argument(**system_arguments)

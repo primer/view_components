@@ -162,8 +162,8 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: AutoComplete
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete.rb
+- component: Autocomplete
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/autocomplete.rb
   parameters:
   - name: src
     type: String
@@ -181,8 +181,8 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: AutoCompleteItem
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/item.rb
+- component: AutocompleteItem
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/autocomplete/item.rb
   parameters:
   - name: value
     type: String

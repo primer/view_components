@@ -15,9 +15,9 @@
 - title: Components
   url: "/components"
   children:
-  - title: AutoComplete
+  - title: Autocomplete
     url: "/components/beta/autocomplete"
-  - title: AutoCompleteItem
+  - title: AutocompleteItem
     url: "/components/beta/autocompleteitem"
   - title: Avatar
     url: "/components/beta/avatar"
