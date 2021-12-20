@@ -440,6 +440,24 @@ class PrimerClassifyTest < Minitest::Test
     end
   end
 
+  def test_does_not_raises_if_not_using_system_arguments_exempted_when_raise_on_invalid_options_is_true
+    exemptions = %w[
+      f6
+      f5
+      rounded-2
+      border-bottom-0
+      flex-self-baseline
+      no-underline
+      flex-items-center
+      flex-self-end
+      flex-shrink-0
+    ]
+
+    with_raise_on_invalid_options(true) do
+      Primer::Classify.call(classes: exemptions.join(" "))
+    end
+  end
+
   def test_does_not_raise_if_not_using_system_arguments_when_raise_on_invalid_options_is_false
     with_raise_on_invalid_options(false) do
       assert_generated_class("d-block", { classes: "d-block" })
