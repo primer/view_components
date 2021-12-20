@@ -180,18 +180,18 @@
       "wbr"
     ]
   },
-  "Primer::Beta::AutoComplete": {
-    "Input": "Primer::Beta::AutoComplete::Input",
-    "Item": "Primer::Beta::AutoComplete::Item"
+  "Primer::Beta::Autocomplete": {
+    "Input": "Primer::Beta::Autocomplete::Input",
+    "Item": "Primer::Beta::Autocomplete::Item"
   },
-  "Primer::Beta::AutoComplete::Input": {
+  "Primer::Beta::Autocomplete::Input": {
     "DEFAULT_TYPE": "text",
     "TYPE_OPTIONS": [
       "text",
       "search"
     ]
   },
-  "Primer::Beta::AutoComplete::Item": {
+  "Primer::Beta::Autocomplete::Item": {
   },
   "Primer::Beta::Avatar": {
     "DEFAULT_SHAPE": "circle",
