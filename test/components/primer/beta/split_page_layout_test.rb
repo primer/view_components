@@ -41,8 +41,8 @@ class PrimerBetaSplitPageLayoutTest < Minitest::Test
       "PageLayout--rowGap-none",
       "PageLayout--panePos-start",
       "PageLayout--hasPaneDivider",
-      "PageLayout--variant-separateRegions",
-      "PageLayout--variant-separateRegions-primary-content"
+      "PageLayout--responsive-separateRegions",
+      "PageLayout--responsive-separateRegions-primary-content"
     ].join(".")
     assert_selector("div.#{expected_classes}") do
       assert_selector("div.PageLayout-wrapper") do

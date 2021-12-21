@@ -51,15 +51,15 @@ module Primer
 
       RESPONSIVE_PRIMARY_REGION_DEFAULT = :content
       RESPONSIVE_PRIMARY_REGION_MAPPINGS = {
-        RESPONSIVE_PRIMARY_REGION_DEFAULT => "PageLayout--variant-separateRegions-primary-content",
-        :pane => "PageLayout--variant-separateRegions-primary-pane"
+        RESPONSIVE_PRIMARY_REGION_DEFAULT => "PageLayout--responsive-separateRegions-primary-content",
+        :pane => "PageLayout--responsive-separateRegions-primary-pane"
       }.freeze
       RESPONSIVE_PRIMARY_REGION_OPTIONS = RESPONSIVE_PRIMARY_REGION_MAPPINGS.keys.freeze
 
       RESPONSIVE_VARIANT_DEFAULT = :stack_regions
       RESPONSIVE_VARIANT_MAPPINGS = {
-        RESPONSIVE_VARIANT_DEFAULT => "PageLayout--variant-stackRegions",
-        :separate_regions => "PageLayout--variant-separateRegions"
+        RESPONSIVE_VARIANT_DEFAULT => "PageLayout--responsive-stackRegions",
+        :separate_regions => "PageLayout--responsive-separateRegions"
       }.freeze
       RESPONSIVE_VARIANT_OPTIONS = RESPONSIVE_VARIANT_MAPPINGS.keys.freeze
 
@@ -450,8 +450,8 @@ module Primer
         RESPONSIVE_POSITION_DEFAULT = :inherit
         RESPONSIVE_POSITION_MAPPINGS = {
           RESPONSIVE_POSITION_DEFAULT => "",
-          :start => "PageLayout--variant-stackRegions-panePos-start",
-          :end => "PageLayout--variant-stackRegions-panePos-end"
+          :start => "PageLayout--responsive-stackRegions-panePos-start",
+          :end => "PageLayout--responsive-stackRegions-panePos-end"
         }.freeze
         RESPONSIVE_POSITION_OPTIONS = RESPONSIVE_POSITION_MAPPINGS.keys.freeze
 

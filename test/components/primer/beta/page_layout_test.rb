@@ -56,12 +56,12 @@ class PrimerBetaPageLayoutTest < Minitest::Test
 
     expected_classes = [
       "PageLayout",
-      "PageLayout--variant-stackRegions",
+      "PageLayout--responsive-stackRegions",
       "PageLayout--outerSpacing-normal",
       "PageLayout--columnGap-normal",
       "PageLayout--rowGap-normal",
       "PageLayout--panePos-start",
-      "PageLayout--variant-stackRegions-panePos-start"
+      "PageLayout--responsive-stackRegions-panePos-start"
     ].join(".")
     assert_selector("div.#{expected_classes}") do
       assert_selector("div.PageLayout-content", text: "Content")
@@ -166,8 +166,8 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       c.pane_region { "Pane" }
     end
 
-    refute_selector("div.PageLayout--variant-separateRegions-primary-pane")
-    refute_selector("div.PageLayout--variant-separateRegions-primary-content")
+    refute_selector("div.PageLayout--responsive-separateRegions-primary-pane")
+    refute_selector("div.PageLayout--responsive-separateRegions-primary-content")
   end
 
   def test_pane_width
@@ -269,7 +269,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
 
         responsive_position = position if responsive_position == :inherit
         assert_selector("div.PageLayout") do
-          assert_selector("div.PageLayout--panePos-#{position}.PageLayout--variant-stackRegions-panePos-#{responsive_position}") do
+          assert_selector("div.PageLayout--panePos-#{position}.PageLayout--responsive-stackRegions-panePos-#{responsive_position}") do
             assert_selector("div.PageLayout-content", text: "Content")
             assert_selector("div.PageLayout-pane", text: "Pane")
           end
@@ -284,8 +284,8 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       c.pane_region(position: :start) { "Pane" }
     end
 
-    refute_selector("div.PageLayout--variant-stackRegions-panePos-end")
-    refute_selector("div.PageLayout--variant-stackRegions-panePos-start")
+    refute_selector("div.PageLayout--responsive-stackRegions-panePos-end")
+    refute_selector("div.PageLayout--responsive-stackRegions-panePos-start")
   end
 
   def test_pane_tags

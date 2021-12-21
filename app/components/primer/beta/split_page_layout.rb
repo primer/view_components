@@ -34,8 +34,8 @@ module Primer
 
       RESPONSIVE_PRIMARY_REGION_DEFAULT = :content
       RESPONSIVE_PRIMARY_REGION_MAPPINGS = {
-        RESPONSIVE_PRIMARY_REGION_DEFAULT => "PageLayout--variant-separateRegions-primary-content",
-        :pane => "PageLayout--variant-separateRegions-primary-pane"
+        RESPONSIVE_PRIMARY_REGION_DEFAULT => "PageLayout--responsive-separateRegions-primary-content",
+        :pane => "PageLayout--responsive-separateRegions-primary-pane"
       }.freeze
       RESPONSIVE_PRIMARY_REGION_OPTIONS = RESPONSIVE_PRIMARY_REGION_MAPPINGS.keys.freeze
 
@@ -153,7 +153,7 @@ module Primer
           "PageLayout",
           INNER_SPACING_MAPPINGS[fetch_or_fallback(INNER_SPACING_OPTIONS, inner_spacing, INNER_SPACING_DEFAULT)],
           RESPONSIVE_PRIMARY_REGION_MAPPINGS[fetch_or_fallback(RESPONSIVE_PRIMARY_REGION_OPTIONS, responsive_primary_region, RESPONSIVE_PRIMARY_REGION_DEFAULT)],
-          "PageLayout--variant-separateRegions",
+          "PageLayout--responsive-separateRegions",
           "PageLayout--columnGap-none",
           "PageLayout--rowGap-none",
           "PageLayout--panePos-start",
