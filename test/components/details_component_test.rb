@@ -97,7 +97,7 @@ class PrimerDetailsComponentTest < Minitest::Test
 
   def test_passes_props_to_button
     render_inline(Primer::DetailsComponent.new) do |component|
-      component.summary(variant: :small, scheme: :primary) do
+      component.summary(size: :small, scheme: :primary) do
         "Summary"
       end
       component.body do

@@ -279,7 +279,7 @@
   },
   "Primer::ButtonComponent": {
     "DEFAULT_SCHEME": "default",
-    "DEFAULT_VARIANT": "medium",
+    "DEFAULT_SIZE": "medium",
     "LINK_SCHEME": "link",
     "SCHEME_MAPPINGS": {
       "default": "",
@@ -297,15 +297,13 @@
       "invisible",
       "link"
     ],
-    "VARIANT_MAPPINGS": {
+    "SIZE_MAPPINGS": {
       "small": "btn-sm",
-      "medium": "",
-      "large": "btn-large"
+      "medium": ""
     },
-    "VARIANT_OPTIONS": [
+    "SIZE_OPTIONS": [
       "small",
-      "medium",
-      "large"
+      "medium"
     ]
   },
   "Primer::ButtonGroup": {
@@ -508,29 +506,41 @@
   "Primer::ImageCrop": {
   },
   "Primer::LabelComponent": {
+    "DEFAULT_SCHEME": "default",
     "DEFAULT_TAG": "span",
     "DEPRECATED_SCHEME_OPTIONS": [
+      "info",
+      "warning",
       "orange",
       "purple"
     ],
     "SCHEME_MAPPINGS": {
+      "default": "",
       "primary": "Label--primary",
       "secondary": "Label--secondary",
-      "info": "Label--info",
+      "accent": "Label--accent",
       "success": "Label--success",
-      "warning": "Label--warning",
+      "attention": "Label--attention",
       "danger": "Label--danger",
+      "severe": "Label--severe",
+      "done": "Label--done",
+      "sponsors": "Label--sponsors",
+      "info": "Label--info",
+      "warning": "Label--warning",
       "orange": "Label--orange",
       "purple": "Label--purple"
     },
     "SCHEME_OPTIONS": [
+      "default",
       "primary",
       "secondary",
-      "info",
+      "accent",
       "success",
-      "warning",
+      "attention",
       "danger",
-      null
+      "severe",
+      "done",
+      "sponsors"
     ],
     "TAG_OPTIONS": [
       "span",

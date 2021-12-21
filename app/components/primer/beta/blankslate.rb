@@ -9,8 +9,6 @@ module Primer
     #   - `secondary_action` can be set to provide more information that is relevant in the context of the `Blankslate`.
     #   - `secondary_action` text should be meaningful out of context and clearly describe the destination. Avoid using vague text like, "Learn more" or "Click here".
     class Blankslate < Primer::Component
-      include ViewComponent::PolymorphicSlots
-
       status :beta
 
       VISUAL_OPTIONS = %i[icon spinner image].freeze
@@ -83,7 +81,7 @@ module Primer
         system_arguments[:tag] = :a
         system_arguments[:href] = href
         system_arguments[:mt] = 5
-        system_arguments[:variant] = :medium
+        system_arguments[:size] = :medium
         system_arguments[:scheme] ||= :primary
 
         Primer::ButtonComponent.new(**system_arguments)
