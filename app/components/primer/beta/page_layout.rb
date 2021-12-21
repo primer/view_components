@@ -134,29 +134,29 @@ module Primer
       #
       # @param width [Symbol] <%= one_of(Primer::Beta::PageLayout::Pane::WIDTH_OPTIONS) %>
       # @param position [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::PageLayout::Pane::POSITION_OPTIONS) %>
-      # @param responsive_position [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::PageLayout::Pane::RESPONSIVE_POSITION_OPTIONS) %>
+      # @param position_narrow [Symbol] Pane placement when `Layout` is in column modes. <%= one_of(Primer::Beta::PageLayout::Pane::POSITION_NARROW_OPTIONS) %>
       # @param divider [Boolean] Whether to show a pane line divider.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :pane_region, lambda { |
         width: Pane::WIDTH_DEFAULT,
         position: Pane::POSITION_DEFAULT,
-        responsive_position: Pane::RESPONSIVE_POSITION_DEFAULT,
+        position_narrow: Pane::POSITION_NARROW_DEFAULT,
         divider: false,
         **pane_system_arguments
       |
-        responsive_position = position if responsive_position == Pane::RESPONSIVE_POSITION_DEFAULT
+        position_narrow = position if position_narrow == Pane::POSITION_NARROW_DEFAULT
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           Pane::POSITION_MAPPINGS[fetch_or_fallback(Pane::POSITION_OPTIONS, position, Pane::POSITION_DEFAULT)],
           Pane::WIDTH_MAPPINGS[fetch_or_fallback(Pane::WIDTH_OPTIONS, width, Pane::WIDTH_DEFAULT)],
-          { Pane::RESPONSIVE_POSITION_MAPPINGS[fetch_or_fallback(Pane::RESPONSIVE_POSITION_OPTIONS, responsive_position, Pane::RESPONSIVE_POSITION_DEFAULT)] => @responsive_variant == :stack_regions },
+          { Pane::POSITION_NARROW_MAPPINGS[fetch_or_fallback(Pane::POSITION_NARROW_OPTIONS, position_narrow, Pane::POSITION_NARROW_DEFAULT)] => @responsive_variant == :stack_regions },
           { "PageLayout--hasPaneDivider" => divider }
         )
 
         pane_system_arguments[:classes] = class_names(
           pane_system_arguments[:classes],
-          Pane::HAS_DIVIDER_NONE_MAPPINGS[responsive_position]
+          Pane::HAS_DIVIDER_NONE_MAPPINGS[position_narrow]
         )
 
         Pane.new(position: position, **pane_system_arguments)
@@ -307,20 +307,20 @@ module Primer
       #
       #     - `:start` puts the pane above content
       #     - `:end` puts it below content.
-      #     - `:inherit` uses the same value from `pane_position`
+      #     - `:inherit` uses the same value from `position`
       #
       #   @code
       #     <%= render(Primer::Beta::PageLayout.new(mt: 5)) do |c| %>
       #       <% c.content_region(border: true) { "Content" } %>
-      #       <% c.pane_region(pane_responsive_position: :inherit, border: true) { "Pane" } %>
+      #       <% c.pane_region(position_narrow: :inherit, border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new) do |c| %>
       #       <% c.content_region(border: true) { "Content" } %>
-      #       <% c.pane_region(pane_responsive_position: :start, border: true) { "Pane" } %>
+      #       <% c.pane_region(position_narrow: :start, border: true) { "Pane" } %>
       #     <% end %>
       #     <%= render(Primer::Beta::PageLayout.new(mt: 5)) do |c| %>
       #       <% c.content_region(border: true) { "Content" } %>
-      #       <% c.pane_region(pane_responsive_position: :end, border: true) { "Pane" } %>
+      #       <% c.pane_region(position_narrow: :end, border: true) { "Pane" } %>
       #     <% end %>
       #
       # @example Header
@@ -447,13 +447,13 @@ module Primer
         }.freeze
         WIDTH_OPTIONS = WIDTH_MAPPINGS.keys.freeze
 
-        RESPONSIVE_POSITION_DEFAULT = :inherit
-        RESPONSIVE_POSITION_MAPPINGS = {
-          RESPONSIVE_POSITION_DEFAULT => "",
+        POSITION_NARROW_DEFAULT = :inherit
+        POSITION_NARROW_MAPPINGS = {
+          POSITION_NARROW_DEFAULT => "",
           :start => "PageLayout--responsive-stackRegions-panePos-start",
           :end => "PageLayout--responsive-stackRegions-panePos-end"
         }.freeze
-        RESPONSIVE_POSITION_OPTIONS = RESPONSIVE_POSITION_MAPPINGS.keys.freeze
+        POSITION_NARROW_OPTIONS = POSITION_NARROW_MAPPINGS.keys.freeze
 
         DIVIDER_DEFAULT = :start
         DIVIDER_MAPPINGS = {

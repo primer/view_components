@@ -261,15 +261,15 @@ class PrimerBetaPageLayoutTest < Minitest::Test
 
   def test_stack_regions_variant_with_responsive_pane_position
     Primer::Beta::PageLayout::Pane::POSITION_OPTIONS.each do |position|
-      Primer::Beta::PageLayout::Pane::RESPONSIVE_POSITION_OPTIONS.each do |responsive_position|
+      Primer::Beta::PageLayout::Pane::POSITION_NARROW_OPTIONS.each do |position_narrow|
         render_inline(Primer::Beta::PageLayout.new(responsive_variant: :stack_regions)) do |c|
           c.content_region { "Content" }
-          c.pane_region(position: position, responsive_position: responsive_position) { "Pane" }
+          c.pane_region(position: position, position_narrow: position_narrow) { "Pane" }
         end
 
-        responsive_position = position if responsive_position == :inherit
+        position_narrow = position if position_narrow == :inherit
         assert_selector("div.PageLayout") do
-          assert_selector("div.PageLayout--panePos-#{position}.PageLayout--responsive-stackRegions-panePos-#{responsive_position}") do
+          assert_selector("div.PageLayout--panePos-#{position}.PageLayout--responsive-stackRegions-panePos-#{position_narrow}") do
             assert_selector("div.PageLayout-content", text: "Content")
             assert_selector("div.PageLayout-pane", text: "Pane")
           end
