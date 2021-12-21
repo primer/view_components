@@ -10,7 +10,7 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 
 ## Submitting a pull request
 
-1. [Read through our extended contributor docs](./contributor-docs/) for information on setup and our development practices
+1. Read through the docs in this folder for information on setup and our development practices
 1. [Fork](fork) and clone the repository
 1. Create a new branch: `git switch -n your-username/your-feature`
 1. Make your change, add tests, and make sure all the tests still pass
