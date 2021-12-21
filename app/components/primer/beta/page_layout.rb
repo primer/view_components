@@ -49,12 +49,12 @@ module Primer
       }.freeze
       ROW_GAP_OPTIONS = ROW_GAP_MAPPINGS.keys.freeze
 
-      RESPONSIVE_PRIMARY_REGION_DEFAULT = :content
-      RESPONSIVE_PRIMARY_REGION_MAPPINGS = {
-        RESPONSIVE_PRIMARY_REGION_DEFAULT => "PageLayout--responsive-separateRegions-primary-content",
+      PRIMARY_REGION_DEFAULT = :content
+      PRIMARY_REGION_MAPPINGS = {
+        PRIMARY_REGION_DEFAULT => "PageLayout--responsive-separateRegions-primary-content",
         :pane => "PageLayout--responsive-separateRegions-primary-pane"
       }.freeze
-      RESPONSIVE_PRIMARY_REGION_OPTIONS = RESPONSIVE_PRIMARY_REGION_MAPPINGS.keys.freeze
+      PRIMARY_REGION_OPTIONS = PRIMARY_REGION_MAPPINGS.keys.freeze
 
       RESPONSIVE_VARIANT_DEFAULT = :stack_regions
       RESPONSIVE_VARIANT_MAPPINGS = {
@@ -364,7 +364,7 @@ module Primer
       # @param column_gap [Symbol] Sets gap between columns. <%= one_of(Primer::Beta::PageLayout::COLUMN_GAP_OPTIONS) %>
       # @param row_gap [Symbol] Sets the gap below the header and above the footer. <%= one_of(Primer::Beta::PageLayout::ROW_GAP_OPTIONS) %>
       # @param responsive_variant [Symbol] Defines how the layout component adapts to smaller viewports. `:stack_regions` presents the content in a vertical flow, with pane and content vertically arranged. `:separate_regions` presents pane and content as different pages on smaller viewports.
-      # @param responsive_primary_region [Symbol] When `responsive_variant` is set to `:separate_regions`, defines which region appears first on small viewports. `:content` is default.
+      # @param primary_region [Symbol] When `responsive_variant` is set to `:separate_regions`, defines which region appears first on small viewports. `:content` is default.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         wrapper_sizing: WRAPPER_SIZING_DEFAULT,
@@ -372,7 +372,7 @@ module Primer
         column_gap: COLUMN_GAP_DEFAULT,
         row_gap: ROW_GAP_DEFAULT,
         responsive_variant: RESPONSIVE_VARIANT_DEFAULT,
-        responsive_primary_region: RESPONSIVE_PRIMARY_REGION_DEFAULT,
+        primary_region: PRIMARY_REGION_DEFAULT,
         **system_arguments
       )
 
@@ -386,7 +386,7 @@ module Primer
           COLUMN_GAP_MAPPINGS[fetch_or_fallback(COLUMN_GAP_OPTIONS, column_gap, COLUMN_GAP_DEFAULT)],
           ROW_GAP_MAPPINGS[fetch_or_fallback(ROW_GAP_OPTIONS, row_gap, ROW_GAP_DEFAULT)],
           RESPONSIVE_VARIANT_MAPPINGS[fetch_or_fallback(RESPONSIVE_VARIANT_OPTIONS, @responsive_variant, RESPONSIVE_VARIANT_DEFAULT)],
-          { RESPONSIVE_PRIMARY_REGION_MAPPINGS[fetch_or_fallback(RESPONSIVE_PRIMARY_REGION_OPTIONS, responsive_primary_region, RESPONSIVE_PRIMARY_REGION_DEFAULT)] => @responsive_variant == :separate_regions },
+          { PRIMARY_REGION_MAPPINGS[fetch_or_fallback(PRIMARY_REGION_OPTIONS, primary_region, PRIMARY_REGION_DEFAULT)] => @responsive_variant == :separate_regions },
           system_arguments[:classes]
         )
       end

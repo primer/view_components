@@ -7,7 +7,7 @@ module Primer
     # On larger screens, the user sees both regions side by side, with the `Pane` region appearing flushed to the left.
     #
     # On smaller screens, the user only sees one of `Pane` or `Content` regions at a time.
-    # Pages may decide if it's more important to show the `Pane` region or the `Content`` region first by the `:responsive_primary_region` property.
+    # Pages may decide if it's more important to show the `Pane` region or the `Content`` region first by the `:primary_region` property.
     #
     # @accessibility
     #   Keyboard navigation follows the markup order. In the case of the `SplitPageLayout`, the `Pane` region is the first region, and the `Content` region is the second.
@@ -32,12 +32,12 @@ module Primer
       }.freeze
       INNER_SPACING_OPTIONS = INNER_SPACING_MAPPINGS.keys.freeze
 
-      RESPONSIVE_PRIMARY_REGION_DEFAULT = :content
-      RESPONSIVE_PRIMARY_REGION_MAPPINGS = {
-        RESPONSIVE_PRIMARY_REGION_DEFAULT => "PageLayout--responsive-separateRegions-primary-content",
+      PRIMARY_REGION_DEFAULT = :content
+      PRIMARY_REGION_MAPPINGS = {
+        PRIMARY_REGION_DEFAULT => "PageLayout--responsive-separateRegions-primary-content",
         :pane => "PageLayout--responsive-separateRegions-primary-pane"
       }.freeze
-      RESPONSIVE_PRIMARY_REGION_OPTIONS = RESPONSIVE_PRIMARY_REGION_MAPPINGS.keys.freeze
+      PRIMARY_REGION_OPTIONS = PRIMARY_REGION_MAPPINGS.keys.freeze
 
       # The layout's content.
       #
@@ -107,7 +107,7 @@ module Primer
       #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
-      #     <%= render(Primer::Beta::PageLayout.new(responsive_primary_region: :pane)) do |c| %>
+      #     <%= render(Primer::Beta::PageLayout.new(primary_region: :pane)) do |c| %>
       #       <% c.content_region(border: true) { "Content" } %>
       #       <% c.pane_region(border: true) { "Pane" } %>
       #     <% end %>
@@ -139,11 +139,11 @@ module Primer
       #
       #
       # @param inner_spacing [Symbol]  Sets padding to regions individually. <%= one_of(Primer::Beta::SplitPageLayout::INNER_SPACING_OPTIONS) %>
-      # @param responsive_primary_region [Symbol] When `responsive_variant` is set to `:separate_regions`, defines which region appears first on small viewports. `:content` is default. <%= one_of(Primer::Beta::SplitPageLayout::RESPONSIVE_PRIMARY_REGION_OPTIONS) %>
+      # @param primary_region [Symbol] When `responsive_variant` is set to `:separate_regions`, defines which region appears first on small viewports. `:content` is default. <%= one_of(Primer::Beta::SplitPageLayout::PRIMARY_REGION_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         inner_spacing: INNER_SPACING_DEFAULT,
-        responsive_primary_region: RESPONSIVE_PRIMARY_REGION_DEFAULT,
+        primary_region: PRIMARY_REGION_DEFAULT,
         **system_arguments
       )
 
@@ -152,7 +152,7 @@ module Primer
         @system_arguments[:classes] = class_names(
           "PageLayout",
           INNER_SPACING_MAPPINGS[fetch_or_fallback(INNER_SPACING_OPTIONS, inner_spacing, INNER_SPACING_DEFAULT)],
-          RESPONSIVE_PRIMARY_REGION_MAPPINGS[fetch_or_fallback(RESPONSIVE_PRIMARY_REGION_OPTIONS, responsive_primary_region, RESPONSIVE_PRIMARY_REGION_DEFAULT)],
+          PRIMARY_REGION_MAPPINGS[fetch_or_fallback(PRIMARY_REGION_OPTIONS, primary_region, PRIMARY_REGION_DEFAULT)],
           "PageLayout--responsive-separateRegions",
           "PageLayout--columnGap-none",
           "PageLayout--rowGap-none",

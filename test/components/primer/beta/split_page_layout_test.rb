@@ -54,14 +54,14 @@ class PrimerBetaSplitPageLayoutTest < Minitest::Test
     end
   end
 
-  def test_responsive_primary_region
-    Primer::Beta::SplitPageLayout::RESPONSIVE_PRIMARY_REGION_OPTIONS.each do |region|
-      render_inline(Primer::Beta::SplitPageLayout.new(responsive_primary_region: region)) do |c|
+  def test_primary_region
+    Primer::Beta::SplitPageLayout::PRIMARY_REGION_OPTIONS.each do |region|
+      render_inline(Primer::Beta::SplitPageLayout.new(primary_region: region)) do |c|
         c.content_region { "Content" }
         c.pane_region { "Pane" }
       end
 
-      region_class = Primer::Beta::SplitPageLayout::RESPONSIVE_PRIMARY_REGION_MAPPINGS[region]
+      region_class = Primer::Beta::SplitPageLayout::PRIMARY_REGION_MAPPINGS[region]
       assert_selector("div.PageLayout#{region_class.empty? ? '' : ".#{region_class}"}") do
         assert_selector("div.PageLayout-content", text: "Content")
         assert_selector("div.PageLayout-pane", text: "Pane")
