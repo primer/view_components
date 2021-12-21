@@ -72,13 +72,13 @@ Optional action content showed on the right side of the component.
 
 ### With actions
 
-<Example src="<div data-view-component='true' class='flash'>      This is a flash message with actions!  <div data-view-component='true' class='flash-action'>    <button type='button' data-view-component='true' class='btn-sm btn'>    Take action  </button></div></div>" />
+<Example src="<div data-view-component='true' class='flash'>      This is a flash message with actions!  <div data-view-component='true' class='flash-action'>    <button type='button' data-view-component='true' class='btn-sm btn'>  Take action</button></div></div>" />
 
 ```erb
 <%= render(Primer::FlashComponent.new) do |component| %>
   This is a flash message with actions!
   <% component.action do %>
-    <%= render(Primer::ButtonComponent.new(variant: :small)) { "Take action" } %>
+    <%= render(Primer::ButtonComponent.new(size: :small)) { "Take action" } %>
   <% end %>
 <% end %>
 ```

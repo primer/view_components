@@ -25,6 +25,18 @@ class PrimerBaseComponentTest < Minitest::Test
     assert_text("content")
   end
 
+  def test_renders_self_closing
+    img = Primer::BaseComponent.new(tag: :img)
+    img.expects(:tag)
+    img.call
+  end
+
+  def test_does_not_render_self_closing
+    img = Primer::BaseComponent.new(tag: :div)
+    img.expects(:content_tag)
+    img.call
+  end
+
   def test_skips_rendering_primer_class_if_value_is_nil
     result = render_inline(Primer::BaseComponent.new(tag: :div, my: nil))
 
@@ -121,8 +133,18 @@ class PrimerBaseComponentTest < Minitest::Test
     assert_selector("div.width-fit")
   end
 
+  def test_renders_content_with_raise_on_invalid_options
+    with_raise_on_invalid_options(true) do
+      render_inline(Primer::BaseComponent.new(tag: :div)) do
+        "content"
+      end
+
+      assert_text("content")
+    end
+  end
+
   def test_restricts_allowed_system_arguments
-    with_force_system_arguments(true) do
+    with_raise_on_invalid_options(true) do
       error = assert_raises(ArgumentError) do
         render_inline(
           Primer::BaseComponent.new(
@@ -140,7 +162,7 @@ class PrimerBaseComponentTest < Minitest::Test
   end
 
   def test_strips_denied_system_arguments
-    with_force_system_arguments(false) do
+    with_raise_on_invalid_options(false) do
       render_inline(
         Primer::BaseComponent.new(
           tag: :div,
@@ -154,6 +176,44 @@ class PrimerBaseComponentTest < Minitest::Test
 
     refute_selector("div[system_arguments_denylist]")
     refute_selector(".p-4")
+  end
+
+  def test_raises_when_using_aria_label_for_invalid_tags_and_raise_on_invalid_aria
+    with_raise_on_invalid_aria(true) do
+      Primer::Component::INVALID_ARIA_LABEL_TAGS.each do |tag|
+        err = assert_raises ArgumentError do
+          render_inline(Primer::BaseComponent.new(tag: tag, "aria-label": "label"))
+        end
+
+        assert_equal "Don't use `aria-label` on `#{tag}` elements. See https://www.tpgi.com/short-note-on-aria-label-aria-labelledby-and-aria-describedby/", err.message
+      end
+    end
+  end
+
+  def test_does_not_raise_when_tag_has_role
+    with_raise_on_invalid_aria(true) do
+      Primer::Component::INVALID_ARIA_LABEL_TAGS.each do |tag|
+        render_inline(Primer::BaseComponent.new(tag: tag, role: :role, aria: { label: "label" }))
+
+        assert_selector("#{tag}[aria-label='label']")
+
+        render_inline(Primer::BaseComponent.new(tag: tag, role: :role, "aria-label": "label"))
+
+        assert_selector("#{tag}[aria-label='label']")
+      end
+    end
+  end
+
+  def test_renders_aria_label_with_valid_tag
+    [:a, :img, :button].each do |tag|
+      render_inline(Primer::BaseComponent.new(tag: tag, aria: { label: "label" }))
+
+      assert_selector("#{tag}[aria-label='label']")
+
+      render_inline(Primer::BaseComponent.new(tag: tag, "aria-label": "label"))
+
+      assert_selector("#{tag}[aria-label='label']")
+    end
   end
 
   def test_status

@@ -30,7 +30,7 @@ module Primer
     # @param style [String] Custom element styles.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(size: DEFAULT_SIZE, style: DEFAULT_STYLE, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:tag] = :svg
       @system_arguments[:style] ||= style
       @system_arguments[:animation] = :rotate

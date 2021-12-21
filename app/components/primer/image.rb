@@ -27,10 +27,10 @@ module Primer
     # @param lazy [Boolean] Whether or not to lazily load the image.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(src:, alt:, lazy: false, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
 
+      @src = src
       @system_arguments[:tag] = :img
-      @system_arguments[:src] = src
       @system_arguments[:alt] = alt
 
       return unless lazy
@@ -40,7 +40,7 @@ module Primer
     end
 
     def call
-      render(Primer::BaseComponent.new(**@system_arguments))
+      render(Primer::BaseComponent.new(src: image_path(@src), **@system_arguments))
     end
   end
 end

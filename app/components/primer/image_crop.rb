@@ -6,6 +6,7 @@ module Primer
     # A loading indicator that is shown while the image is loading.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :loading, lambda { |**system_arguments|
+      deny_tag_argument(**system_arguments)
       system_arguments[:tag] = :div
       system_arguments[:"data-loading-slot"] = true
 
@@ -27,7 +28,7 @@ module Primer
     # @param rounded [Boolean] If the crop mask should be a circle. Defaults to true.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(src:, rounded: true, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:tag] = "image-crop"
       @system_arguments[:src] = src
       @system_arguments[:rounded] = true if rounded

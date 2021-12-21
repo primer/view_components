@@ -1,4 +1,11 @@
 ---
+- component: BorderBoxHeader
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/border_box/header.rb
+  parameters:
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: ButtonMarketing
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/button_marketing.rb
   parameters:
@@ -18,6 +25,28 @@
     type: Symbol
     default: "`:button`"
     description: One of `:button` and `:submit`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: Layout
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout.rb
+  parameters:
+  - name: stacking_breakpoint
+    type: Symbol
+    default: "`:md`"
+    description: When the `Layout` should change from rows into columns. One of `:lg`,
+      `:md`, or `:sm`.
+  - name: first_in_source
+    type: Symbol
+    default: "`:sidebar`"
+    description: Which element to render first in the HTML. This will change the keyboard
+      navigation order. One of `:main` and `:sidebar`.
+  - name: gutter
+    type: Symbol
+    default: "`:default`"
+    description: The amount of space between the main section and the sidebar. One
+      of `:condensed`, `:default`, `:none`, or `:spacious`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -185,7 +214,7 @@
   - name: size
     type: Integer
     default: "`20`"
-    description: Adds the avatar-small class if less than 24.
+    description: One of `16`, `20`, `24`, `32`, `40`, `48`, or `80`.
   - name: shape
     type: Symbol
     default: "`:circle`"
@@ -224,6 +253,25 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Blankslate
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/blankslate.rb
+  parameters:
+  - name: narrow
+    type: Boolean
+    default: "`false`"
+    description: Adds a maximum width of `485px` to the Blankslate.
+  - name: spacious
+    type: Boolean
+    default: "`false`"
+    description: Increases the padding from `32px` to `80px 40px`.
+  - name: border
+    type: Boolean
+    default: "`false`"
+    description: Adds a border around the Blankslate.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Breadcrumbs
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/breadcrumbs.rb
   parameters:
@@ -245,73 +293,6 @@
 - component: Truncate
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate.rb
   parameters:
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: Blankslate
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/blankslate_component.rb
-  parameters:
-  - name: title
-    type: String
-    default: '`""`'
-    description: Text that appears in a larger bold font.
-  - name: title_tag
-    type: Symbol
-    default: "`:h3`"
-    description: HTML tag to use for title.
-  - name: icon
-    type: Symbol
-    default: '`""`'
-    description: Octicon icon to use at top of component.
-  - name: icon_size
-    type: Symbol
-    default: "`:medium`"
-    description: One of `:small` (`16`) and `:medium` (`24`).
-  - name: image_src
-    type: String
-    default: '`""`'
-    description: Image to display.
-  - name: image_alt
-    type: String
-    default: '`" "`'
-    description: Alt text for image.
-  - name: description
-    type: String
-    default: '`""`'
-    description: Text that appears below the title. Typically a whole sentence.
-  - name: button_text
-    type: String
-    default: '`""`'
-    description: The text of the button.
-  - name: button_url
-    type: String
-    default: '`""`'
-    description: The URL where the user will be taken after clicking the button.
-  - name: button_classes
-    type: String
-    default: '`"btn-primary my-3"`'
-    description: Classes to apply to action button
-  - name: link_text
-    type: String
-    default: '`""`'
-    description: The text of the link.
-  - name: link_url
-    type: String
-    default: '`""`'
-    description: The URL where the user will be taken after clicking the link.
-  - name: narrow
-    type: Boolean
-    default: "`false`"
-    description: Adds a maximum width.
-  - name: large
-    type: Boolean
-    default: "`false`"
-    description: Increases the font size.
-  - name: spacious
-    type: Boolean
-    default: "`false`"
-    description: Adds extra padding.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -344,8 +325,12 @@
       or `:primary`.
   - name: variant
     type: Symbol
+    default: "`nil`"
+    description: DEPRECATED. One of `:medium` and `:small`.
+  - name: size
+    type: Symbol
     default: "`:medium`"
-    description: One of `:large`, `:medium`, or `:small`.
+    description: One of `:medium` and `:small`.
   - name: tag
     type: Symbol
     default: "`:button`"
@@ -362,10 +347,10 @@
     type: Boolean
     default: "`false`"
     description: 'Whether button is full-width with `display: block`.'
-  - name: caret
+  - name: dropdown
     type: Boolean
     default: "`false`"
-    description: Whether or not to render a caret.
+    description: Whether or not to render a dropdown caret.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -375,8 +360,12 @@
   parameters:
   - name: variant
     type: Symbol
+    default: "`nil`"
+    description: DEPRECATED. One of `:medium` and `:small`.
+  - name: size
+    type: Symbol
     default: "`:medium`"
-    description: One of `:large`, `:medium`, or `:small`.
+    description: One of `:medium` and `:small`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -577,6 +566,17 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: HellipButton
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/hellip_button.rb
+  parameters:
+  - name: inline
+    type: Boolean
+    default: "`false`"
+    description: Whether or not the button is inline.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: HiddenTextExpander
   source: https://github.com/primer/view_components/tree/main/app/components/primer/hidden_text_expander.rb
   parameters:
@@ -663,9 +663,10 @@
     description: One of `:a`, `:div`, `:span`, or `:summary`.
   - name: scheme
     type: Symbol
-    default: "`nil`"
-    description: One of `:danger`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`,
-      `:success`, or `:warning`.
+    default: "`:default`"
+    description: One of `:accent`, `:attention`, `:danger`, `:default`, `:done`, `:info`,
+      `:orange`, `:primary`, `:purple`, `:secondary`, `:severe`, `:sponsors`, `:success`,
+      or `:warning`.
   - name: variant
     type: Symbol
     default: "`nil`"

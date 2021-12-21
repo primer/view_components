@@ -3,6 +3,13 @@
 module Primer
   module Beta
     # Use `Breadcrumbs` to display page hierarchy.
+    #
+    # #### Known issues
+    #
+    # ##### Responsiveness
+    #
+    # `Breadcrumbs` is not optimized for responsive designs.
+    #
     # @accessibility
     #   `Breadcrumbs` renders a list of links within a `nav` element and has an implicit landmark role of `navigation`.
     #   By default, the component labels the `nav` element with "Breadcrumbs" which helps distinguish the type of navigation.
@@ -33,7 +40,7 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
-        @system_arguments = system_arguments
+        @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :nav
         @system_arguments[:aria] = ARIA_LABEL
         @system_arguments[:system_arguments_denylist] = ARGS_DENYLIST
@@ -50,7 +57,7 @@ module Primer
 
         def initialize(href:, **system_arguments)
           @href = href
-          @system_arguments = system_arguments
+          @system_arguments = deny_tag_argument(**system_arguments)
           @selected = false
 
           @system_arguments[:tag] = :li

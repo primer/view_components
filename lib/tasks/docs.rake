@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "active_support/inflector"
+
 namespace :docs do
   task :livereload do
     require "listen"
@@ -27,6 +29,9 @@ namespace :docs do
     # Rails controller for rendering arbitrary ERB
     view_context = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context
     components = [
+      Primer::Alpha::Layout,
+      Primer::HellipButton,
+      Primer::Alpha::BorderBox::Header,
       Primer::Image,
       Primer::LocalTime,
       Primer::OcticonSymbolsComponent,
@@ -37,7 +42,7 @@ namespace :docs do
       Primer::Beta::Avatar,
       Primer::Beta::AvatarStack,
       Primer::BaseButton,
-      Primer::BlankslateComponent,
+      Primer::Beta::Blankslate,
       Primer::BorderBoxComponent,
       Primer::BoxComponent,
       Primer::Beta::Breadcrumbs,
@@ -289,12 +294,57 @@ namespace :docs do
       f.puts(view_context.render(inline: initialize_method.base_docstring))
     end
 
+    # Copy over ADR docs and insert them into the nav
+    puts "Copying ADRs..."
+    Rake::Task["docs:build_adrs"].invoke
+
     puts "Markdown compiled."
 
     if components_needing_docs.any?
       puts
       puts "The following components needs docs. Care to contribute them? #{components_needing_docs.map(&:name).join(', ')}"
     end
+  end
+
+  task :build_adrs do
+    adr_content_dir = File.join(*%w[docs content adr])
+
+    FileUtils.rm_rf(File.join(adr_content_dir))
+    FileUtils.mkdir(adr_content_dir)
+
+    nav_entries = Dir[File.join(*%w[adr *.md])].sort.map do |orig_path|
+      orig_file_name = File.basename(orig_path)
+      url_name = orig_file_name.chomp(".md")
+      title = ActiveSupport::Inflector.titleize(url_name.sub(/\A\d+-/, ""))
+
+      file_contents = File.read(orig_path)
+      file_contents = <<~CONTENTS.sub(/\n+\z/, "\n")
+        <!-- Warning: AUTO-GENERATED file, do not edit. Make changes to the files in the adr/ directory instead. -->
+        #{file_contents}
+      CONTENTS
+
+      File.write(File.join(adr_content_dir, orig_file_name), file_contents)
+      puts "Copied #{orig_path}"
+
+      { "title" => title, "url" => "/adr/#{url_name}" }
+    end
+
+    nav_yaml_file = File.join(*%w[docs src @primer gatsby-theme-doctocat nav.yml])
+    nav_yaml = YAML.load_file(nav_yaml_file)
+    adr_entry = {
+      "title" => "Architecture Decisions",
+      "url" => "/adr",
+      "children" => nav_entries
+    }
+
+    existing_index = nav_yaml.index { |entry| entry["url"] == "/adr" }
+    if existing_index
+      nav_yaml[existing_index] = adr_entry
+    else
+      nav_yaml << adr_entry
+    end
+
+    File.write(nav_yaml_file, YAML.dump(nav_yaml))
   end
 
   task :preview do

@@ -108,15 +108,15 @@ module Primer
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:tag] = :div
       @system_arguments[:classes] = class_names(
         system_arguments[:classes],
         "Popover"
       )
       @system_arguments[:position] ||= :relative
-      @system_arguments[:right] = false unless system_arguments.key?(:right)
-      @system_arguments[:left] = false unless system_arguments.key?(:left)
+      @system_arguments[:right] = false unless @system_arguments.delete(:right)
+      @system_arguments[:left] = false unless @system_arguments.delete(:left)
     end
 
     def render?

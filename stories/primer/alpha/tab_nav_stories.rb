@@ -21,7 +21,7 @@ class Primer::Alpha::TabNavStories < ViewComponent::Storybook::Stories
         "Tab 3"
       end
       c.extra do
-        "<button class=\"btn btn-sm float-right\">Button</a>".html_safe
+        "<button class=\"btn btn-sm float-right\">Button</button>".html_safe
       end
     end
   end

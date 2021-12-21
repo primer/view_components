@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.0.59)
+    primer_view_components (0.0.66)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (~> 15)
@@ -56,7 +56,7 @@ GEM
       html_tokenizer (~> 0.0.6)
       parser (>= 2.4)
       smart_properties
-    bootsnap (1.9.1)
+    bootsnap (1.9.3)
       msgpack (~> 1.0)
     builder (3.2.4)
     capybara (3.35.3)
@@ -206,7 +206,7 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.1.0)
-    view_component (2.40.0)
+    view_component (2.42.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     view_component_storybook (0.8.0)
@@ -229,7 +229,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.26)
-    zeitwerk (2.4.2)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   ruby

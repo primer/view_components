@@ -26,13 +26,13 @@ Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, o
 
 ### Schemes
 
-<Example src="<button type='button' data-view-component='true' class='btn-mktg mr-2'>Default</button><button type='button' data-view-component='true' class='btn-mktg btn-primary-mktg mr-2'>Primary</button><button type='button' data-view-component='true' class='btn-mktg btn-outline-mktg'>Outline</button><div class='color-bg-canvas-inverse'>  <button type='button' data-view-component='true' class='btn-mktg btn-transparent'>Transparent</button></div>" />
+<Example src="<button type='button' data-view-component='true' class='btn-mktg mr-2'>Default</button><button type='button' data-view-component='true' class='btn-mktg btn-signup-mktg mr-2'>Primary</button><button type='button' data-view-component='true' class='btn-mktg btn-muted-mktg'>Outline</button><div class='color-bg-emphasis'>  <button type='button' data-view-component='true' class='btn-mktg btn-subtle-mktg'>Transparent</button></div>" />
 
 ```erb
 <%= render(Primer::Alpha::ButtonMarketing.new(mr: 2)) { "Default" } %>
 <%= render(Primer::Alpha::ButtonMarketing.new(scheme: :primary, mr: 2)) { "Primary" } %>
 <%= render(Primer::Alpha::ButtonMarketing.new(scheme: :outline)) { "Outline" } %>
-<div class="color-bg-canvas-inverse">
+<div class="color-bg-emphasis">
   <%= render(Primer::Alpha::ButtonMarketing.new(scheme: :transparent)) { "Transparent" } %>
 </div>
 ```

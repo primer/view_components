@@ -19,6 +19,7 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :label, lambda { |**system_arguments|
+        deny_tag_argument(**system_arguments)
         system_arguments[:for] = @input_id
         system_arguments[:tag] = :label
         Primer::BaseComponent.new(**system_arguments)
@@ -47,6 +48,7 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :results, lambda { |**system_arguments|
+        deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :ul
         system_arguments[:id] = @list_id
         system_arguments[:classes] = class_names(
@@ -110,7 +112,7 @@ module Primer
 
         system_arguments.delete(:"aria-label") && system_arguments[:aria]&.delete(:label)
 
-        @system_arguments = system_arguments
+        @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = "auto-complete"
         @system_arguments[:src] = src
         @system_arguments[:for] = list_id
@@ -133,7 +135,7 @@ module Primer
         # @param type [Symbol] <%= one_of(Primer::Beta::AutoComplete::Input::TYPE_OPTIONS) %>
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(type: DEFAULT_TYPE, **system_arguments)
-          @system_arguments = system_arguments
+          @system_arguments = deny_tag_argument(**system_arguments)
           @system_arguments[:tag] = :input
 
           @aria_label = system_arguments[:"aria-label"]

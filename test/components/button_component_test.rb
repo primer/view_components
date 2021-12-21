@@ -17,17 +17,19 @@ class PrimerButtonComponentTest < Minitest::Test
     assert_selector("button.btn[type='button']")
   end
 
-  def test_renders_a_as_a_button
+  def test_renders_a_without_button_role
     render_inline(Primer::ButtonComponent.new(tag: :a)) { "content" }
 
-    assert_selector("a.btn[role='button']")
+    assert_selector("a.btn")
+    refute_selector("a.btn[role='button']")
     refute_selector("a[type]")
   end
 
-  def test_renders_summary_as_a_button
+  def test_renders_summary_without_button_role
     render_inline(Primer::ButtonComponent.new(tag: :summary)) { "content" }
 
-    assert_selector("summary.btn[role='button']")
+    assert_selector("summary.btn")
+    refute_selector("summary.btn[role='button']")
     refute_selector("summary[type]")
   end
 
@@ -57,16 +59,22 @@ class PrimerButtonComponentTest < Minitest::Test
     assert_selector(".btn.btn-primary")
   end
 
-  def test_falls_back_when_variant_isn_t_valid
+  def test_falls_back_when_size_isn_t_valid
     without_fetch_or_fallback_raises do
-      render_inline(Primer::ButtonComponent.new(variant: :invalid)) { "content" }
+      render_inline(Primer::ButtonComponent.new(size: :invalid)) { "content" }
 
       assert_selector(".btn")
     end
   end
 
-  def test_renders_with_the_css_class_variant_mapping_to_the_provided_variant
-    render_inline(Primer::ButtonComponent.new(variant: :small)) { "content" }
+  def test_renders_with_the_css_class_size_mapping_to_the_provided_size
+    render_inline(Primer::ButtonComponent.new(size: :small)) { "content" }
+
+    assert_selector(".btn.btn-sm")
+  end
+
+  def test_renders_with_the_css_class_size_mapping_to_the_provided_variant
+    render_inline(Primer::ButtonComponent.new(variant: :small)) { "content" } # rubocop:disable Primer/DeprecatedButtonArguments
 
     assert_selector(".btn.btn-sm")
   end
@@ -90,9 +98,9 @@ class PrimerButtonComponentTest < Minitest::Test
     assert_selector(".btn.btn-primary.btn-block")
   end
 
-  def test_renders_icon
+  def test_renders_leading_visual
     render_inline(Primer::ButtonComponent.new) do |c|
-      c.icon(icon: :star)
+      c.leading_visual_icon(icon: :star)
       "Button"
     end
 
@@ -102,9 +110,9 @@ class PrimerButtonComponentTest < Minitest::Test
     end
   end
 
-  def test_renders_counter
+  def test_renders_trailing_visual
     render_inline(Primer::ButtonComponent.new) do |c|
-      c.counter(count: 10)
+      c.trailing_visual_counter(count: 10)
       "Button"
     end
 
@@ -114,7 +122,21 @@ class PrimerButtonComponentTest < Minitest::Test
     end
   end
 
-  def test_renders_icon_and_counter
+  def test_renders_leading_and_trailing_visuals
+    render_inline(Primer::ButtonComponent.new) do |c|
+      c.leading_visual_icon(icon: :star)
+      c.trailing_visual_counter(count: 10)
+      "Button"
+    end
+
+    assert_selector(".btn") do
+      assert_selector(".octicon.octicon-star")
+      assert_selector(".Counter", text: "10")
+      assert_text("Button")
+    end
+  end
+
+  def test_renders_using_icon_and_counter
     render_inline(Primer::ButtonComponent.new) do |c|
       c.icon(icon: :star)
       c.counter(count: 10)
@@ -128,8 +150,8 @@ class PrimerButtonComponentTest < Minitest::Test
     end
   end
 
-  def test_renders_caret
-    render_inline(Primer::ButtonComponent.new(caret: true).with_content("Button"))
+  def test_renders_dropdown_caret
+    render_inline(Primer::ButtonComponent.new(dropdown: true).with_content("Button"))
 
     assert_selector(".btn") do
       assert_text("Button")

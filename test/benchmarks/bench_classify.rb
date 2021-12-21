@@ -10,11 +10,11 @@ class BenchClassify < Minitest::Benchmark
     @values = {
       align_items: :center,
       align_self: :center,
-      bg: :info,
+      bg: :accent,
       border: :top,
       box_shadow: true,
       col: 1,
-      color: :text_danger,
+      color: :danger,
       flex: 1,
       float: :left,
       font_weight: :bold,
@@ -37,33 +37,8 @@ class BenchClassify < Minitest::Benchmark
     }
   end
 
-  def bench_allocations_with_cache_disabled
-    Primer::Classify::Cache.instance.clear!
-
-    assert_allocations "3.0" => 46, "2.7" => 46, "2.6" => 49, "2.5" => 50 do
-      Primer::Classify::Cache.instance.disable do
-        Primer::Classify.call(**@values)
-      end
-    end
-  ensure
-    Primer::Classify::Cache.instance.preload!
-  end
-
-  def bench_allocations_with_cache_preloaded
-    Primer::Classify::Cache.instance.clear!
-    Primer::Classify::Cache.instance.preload!
-
-    assert_allocations "3.0" => 42, "2.7" => 35, "2.6" => 38, "2.5" => 39 do
-      Primer::Classify.call(**@values)
-    end
-  end
-
-  def bench_allocations_with_cache_preloaded_and_warmed
-    Primer::Classify::Cache.instance.clear!
-    Primer::Classify::Cache.instance.preload!
-    Primer::Classify.call(**@values)
-
-    assert_allocations "3.0" => 8, "2.7" => 8, "2.6" => 11, "2.5" => 12 do
+  def bench_allocations
+    assert_allocations "3.0" => 6, "2.7" => 4, "2.6" => 4, "2.5" => 4 do
       Primer::Classify.call(**@values)
     end
   end

@@ -7,11 +7,25 @@ class Primer::Alpha::TabPanelsStories < ViewComponent::Storybook::Stories
 
   story(:tab_panels) do
     controls do
-      classes "custom-class"
+      label "Repository"
     end
 
-    content do
-      "Update your stories!"
+    content do |c|
+      c.tab(href: "#", selected: true, id: "tab-1") do |t|
+        t.text { "Tab 1" }
+        t.panel { "Panel 1" }
+      end
+      c.tab(href: "#", id: "tab-2") do |t|
+        t.text { "Tab 2" }
+        t.panel { "Panel 2" }
+      end
+      c.tab(href: "#", id: "tab-3") do |t|
+        t.text { "Tab 3" }
+        t.panel { "Panel 3" }
+      end
+      c.extra do
+        "<button class=\"btn btn-sm float-right\">Button</button>".html_safe
+      end
     end
   end
 end

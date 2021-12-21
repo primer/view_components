@@ -27,6 +27,7 @@ module Primer
   class BaseComponent < Primer::Component
     status :beta
 
+    SELF_CLOSING_TAGS = [:area, :base, :br, :col, :embed, :hr, :img, :input, :link, :meta, :param, :source, :track, :wbr].freeze
     # ## HTML attributes
     #
     # System arguments include most HTML attributes. For example:
@@ -71,14 +72,14 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `align_items` | Symbol | <%= one_of(Primer::Classify::Flex::ALIGN_ITEMS_VALUES) %> |
-    # | `align_self` | Symbol | <%= one_of(Primer::Classify::Flex::ALIGN_SELF_VALUES) %> |
-    # | `direction` | Symbol | <%= one_of(Primer::Classify::Flex::DIRECTION_VALUES) %> |
-    # | `flex` | Integer, Symbol | <%= one_of(Primer::Classify::Flex::FLEX_VALUES) %> |
+    # | `align_items` | Symbol | <%= one_of(Primer::Classify::FLEX_ALIGN_ITEMS_VALUES) %> |
+    # | `align_self` | Symbol | <%= one_of(Primer::Classify::FLEX_ALIGN_SELF_VALUES) %> |
+    # | `direction` | Symbol | <%= one_of(Primer::Classify::FLEX_DIRECTION_VALUES) %> |
+    # | `flex` | Integer, Symbol | <%= one_of(Primer::Classify::FLEX_VALUES) %> |
     # | `flex_grow` | Integer | To enable, set to `0`. |
     # | `flex_shrink` | Integer | To enable, set to `0`. |
-    # | `flex_wrap` | Symbol | <%= one_of(Primer::Classify::Flex::WRAP_MAPPINGS.keys) %> |
-    # | `justify_content` | Symbol | <%= one_of(Primer::Classify::Flex::JUSTIFY_CONTENT_VALUES) %> |
+    # | `flex_wrap` | Symbol | <%= one_of(Primer::Classify::FLEX_WRAP_MAPPINGS.keys) %> |
+    # | `justify_content` | Symbol | <%= one_of(Primer::Classify::FLEX_JUSTIFY_CONTENT_VALUES) %> |
     #
     # ## Grid
     #
@@ -150,46 +151,22 @@ module Primer
     # | test_selector | String | Adds `data-test-selector='given value'` in non-Production environments for testing purposes. |
     def initialize(tag:, classes: nil, **system_arguments)
       @tag = tag
-      @system_arguments = system_arguments
 
-      raise ArgumentError, "`class` is an invalid argument. Use `classes` instead." if system_arguments.key?(:class) && !Rails.env.production?
-
-      if (denylist = system_arguments[:system_arguments_denylist])
-        if force_system_arguments? && !ENV["PRIMER_WARNINGS_DISABLED"]
-          # Convert denylist from:
-          # { [:p, :pt] => "message" } to:
-          # { p: "message", pt: "message" }
-          unpacked_denylist =
-            denylist.each_with_object({}) do |(keys, value), memo|
-              keys.each { |key| memo[key] = value }
-            end
-
-          violations = unpacked_denylist.keys & @system_arguments.keys
-
-          if violations.any?
-            message = "Found #{violations.count} #{'violation'.pluralize(violations)}:"
-            violations.each do |violation|
-              message += "\n The #{violation} system argument is not allowed here. #{unpacked_denylist[violation]}"
-            end
-
-            raise(ArgumentError, message)
-          end
-        end
-
-        # Remove :system_arguments_denylist key and any denied keys from system arguments
-        @system_arguments.except!(:system_arguments_denylist)
-        @system_arguments.except!(*denylist.keys.flatten)
-      end
+      @system_arguments = validate_arguments(tag: tag, **system_arguments)
 
       @result = Primer::Classify.call(**@system_arguments.merge(classes: classes))
 
       @system_arguments[:"data-view-component"] = true
       # Filter out Primer keys so they don't get assigned as HTML attributes
-      @content_tag_args = add_test_selector(@system_arguments).except(*Primer::Classify::VALID_KEYS)
+      @content_tag_args = add_test_selector(@system_arguments).except(*Primer::Classify::Utilities::UTILITIES.keys)
     end
 
     def call
-      content_tag(@tag, content, @content_tag_args.merge(@result))
+      if SELF_CLOSING_TAGS.include?(@tag)
+        tag(@tag, @content_tag_args.merge(@result))
+      else
+        content_tag(@tag, content, @content_tag_args.merge(@result))
+      end
     end
   end
 end

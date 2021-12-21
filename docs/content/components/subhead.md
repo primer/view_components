@@ -61,7 +61,7 @@ The description
 
 ### Default
 
-<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive'>  <h3 data-view-component='true' class='Subhead-heading'>    My Heading</h3>    <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
+<Example src="<div data-view-component='true' class='Subhead'>  <h3 data-view-component='true' class='Subhead-heading'>    My Heading</h3>    <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>
@@ -76,7 +76,7 @@ The description
 
 ### With dangerous heading
 
-<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive'>  <h3 data-view-component='true' class='Subhead-heading Subhead-heading--danger'>    My Heading</h3>    <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
+<Example src="<div data-view-component='true' class='Subhead'>  <h3 data-view-component='true' class='Subhead-heading Subhead-heading--danger'>    My Heading</h3>    <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>
@@ -91,7 +91,7 @@ The description
 
 ### With long description
 
-<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive'>  <h3 data-view-component='true' class='Subhead-heading'>    My Heading</h3>    </div><p> This is a longer description that is sitting below the Subhead. It's much longer than a description that could sit comfortably in the Subhead. </p>" />
+<Example src="<div data-view-component='true' class='Subhead'>  <h3 data-view-component='true' class='Subhead-heading'>    My Heading</h3>    </div><p> This is a longer description that is sitting below the Subhead. It's much longer than a description that could sit comfortably in the Subhead. </p>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>
@@ -104,7 +104,7 @@ The description
 
 ### Without border
 
-<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive border-bottom-0 mb-0'>  <div data-view-component='true' class='Subhead-heading'>    My Heading</div>    <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
+<Example src="<div data-view-component='true' class='Subhead border-bottom-0 mb-0'>  <div data-view-component='true' class='Subhead-heading'>    My Heading</div>    <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new(hide_border: true)) do |component| %>
@@ -119,7 +119,7 @@ The description
 
 ### With actions
 
-<Example src="<div data-view-component='true' class='Subhead hx_Subhead--responsive'>  <div data-view-component='true' class='Subhead-heading'>    My Heading</div>  <div data-view-component='true' class='Subhead-actions'>    <a href='http://www.google.com' role='button' data-view-component='true' class='btn-danger btn'>    Action  </a></div>  <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
+<Example src="<div data-view-component='true' class='Subhead'>  <div data-view-component='true' class='Subhead-heading'>    My Heading</div>  <div data-view-component='true' class='Subhead-actions'>    <a href='http://www.google.com' data-view-component='true' class='btn-danger btn'>  Action</a></div>  <div data-view-component='true' class='Subhead-description'>    My Description</div></div>" />
 
 ```erb
 <%= render(Primer::SubheadComponent.new) do |component| %>

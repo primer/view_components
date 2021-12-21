@@ -7,10 +7,16 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Alpha::Layout, {}, proc { |component|
+      component.main(tag: :div) { "Foo" }
+      component.sidebar(tag: :div) { "Bar" }
+    }],
+    [Primer::HellipButton, { "aria-label": "No action" }],
+    [Primer::Alpha::BorderBox::Header, {}],
     [Primer::Alpha::TabPanels, { label: "label" }],
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
-    [Primer::Image, { src: "src", alt: "alt" }],
+    [Primer::Image, { src: "https://github.com/github.png", alt: "alt" }],
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
@@ -23,10 +29,13 @@ class PrimerComponentTest < Minitest::Test
     [Primer::BaseButton, {}],
     [Primer::BaseComponent, { tag: :div }],
     [Primer::BlankslateComponent, { title: "Foo" }],
+    [Primer::Beta::Blankslate, {}, proc { |component|
+      component.heading(tag: :h2) { "Foo" }
+    }],
     [Primer::BorderBoxComponent, {}, proc { |component| component.header { "Foo" } }],
     [Primer::BoxComponent, {}],
     [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
-    [Primer::ButtonComponent, {}],
+    [Primer::ButtonComponent, {}, proc { "Button" }],
     [Primer::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
     [Primer::Alpha::ButtonMarketing, {}],
     [Primer::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
@@ -48,7 +57,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::FlashComponent, {}],
     [Primer::FlexItemComponent, { flex_auto: true }],
     [Primer::HeadingComponent, { tag: :h1 }],
-    [Primer::HiddenTextExpander, {}],
+    [Primer::HiddenTextExpander, { "aria-label": "No action" }],
     [Primer::LabelComponent, {}],
     [Primer::LayoutComponent, {}],
     [Primer::LinkComponent, { href: "https://www.google.com" }],

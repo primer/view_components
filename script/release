@@ -1,170 +1,146 @@
-#!/usr/bin/env bash
+#!/usr/bin/env ruby
+# frozen_string_literal: true
 
-fetch() {
-  git fetch --all
-}
+require "thor"
+require_relative "../lib/primer/view_components/version"
 
-branch_name() {
-  git symbolic-ref --short HEAD
-}
+# Prepares a release PR for `primer_view_components`.
+#
+# Usage:
+#
+# script/release for a patch release
+# script/release --major for a major release
+# script/release --minor for a minor release
+class ReleaseCLI < Thor::Group
+  include Thor::Actions
 
-local_history_is_clean() {
-  history=$(git rev-list --count --right-only @{u}...HEAD)
-  [ "$history" == "0" ]
-}
+  class_option :major, type: :boolean, desc: "Use this option to bump a major version."
+  class_option :minor, type: :boolean, desc: "Use this option to bump a minor version."
+  class_option :patch, type: :boolean, desc: "Use this option to bump a patch version."
 
-remote_history_is_clean() {
-  history=$(git rev-list --count --left-only @{u}...HEAD)
-  [ "$history" == "0" ]
-}
+  def self.exit_on_failure?
+    false
+  end
 
-tag_exists_on_remote() {
-  git rev-parse --quiet --verify refs/tags/v$1.$2.$3 > /dev/null
-}
+  def working_tree_is_clean
+    tree_status = run("git status --porcelain", capture: true).strip
+    raise "Tree is not clean" unless tree_status.empty?
+  end
 
-working_tree_is_clean() {
-  status=$(git status --porcelain)
-  [ "$status" == "" ]
-}
+  def must_be_in_main
+    raise "Must be in the main branch to release" unless current_branch == "main"
+  end
 
-create_release_branch() {
-  git switch -c release-v$1-$2-$3
-}
+  def git_fetch
+    run("git fetch --all")
+  end
 
-update_readme() {
-  sed -i '' "/## main/ {a\
-  \\
-\\
-## $1.$2.$3
-  }" CHANGELOG.md
-}
+  def remote_history_is_clean
+    remote_history = run("git rev-list --count --left-only @{u}...HEAD", capture: true).strip
+    raise "Changes exist on origin not pulled into this branch. Please pull" unless remote_history == "0"
+  end
 
-update_ruby_version() {
-  # Update version file
-  sed -E -i '' \
-      -e "s/MAJOR = [0-9]+/MAJOR = $1/g" \
-      -e "s/MINOR = [0-9]+/MINOR = $2/g" \
-      -e "s/PATCH = [0-9]+/PATCH = $3/g" \
+  def local_history_is_clean
+    remote_history = run("git rev-list --count --right-only @{u}...HEAD", capture: true).strip
+    raise "Changes exist that haven't been pushed to origin. Please pull" unless remote_history == "0"
+  end
+
+  def tag_exists_on_remote
+    raise "Tag exists on remote" unless run("git rev-parse --quiet --verify refs/tags/v#{new_version}", capture: true).strip.empty?
+  end
+
+  def create_release_branch
+    run("git switch -c #{release_branch}")
+  end
+
+  def update_readme
+    gsub_file("CHANGELOG.md", "## main", "## main\n\n## #{new_version}")
+  end
+
+  def update_ruby_version
+    major, minor, patch = new_version.split(".")
+
+    gsub_file("lib/primer/view_components/version.rb", /MAJOR = [0-9]+/, "MAJOR = #{major}")
+    gsub_file("lib/primer/view_components/version.rb", /MINOR = [0-9]+/, "MINOR = #{minor}")
+    gsub_file("lib/primer/view_components/version.rb", /PATCH = [0-9]+/, "PATCH = #{patch}")
+  end
+
+  def update_gemfiles
+    run("bundle")
+    run("pushd demo")
+    run("bundle")
+    run("popd")
+  end
+
+  def update_npm
+    run("npm version --no-git-tag-version \"#{new_version}\"")
+    run("yarn")
+  end
+
+  def add_changed_files
+    files_to_add = %w[
+      CHANGELOG.md
+      Gemfile.lock
+      demo/Gemfile.lock
       lib/primer/view_components/version.rb
-}
+      app/assets/javascripts
+      package.json
+      yarn.lock
+    ]
 
-update_gemfiles() {
-  # Update Gemfile.lock
-  bundle
-  pushd demo
-  bundle
-  popd
-}
+    run("git add #{files_to_add.join(' ')}")
+  end
 
+  def commit_files
+    run("git commit -m \"release #{new_version}\"")
+  end
 
-update_npm() {
-  npm version --no-git-tag-version "$1.$2.$3"
-  yarn
-}
+  def push_files
+    run("git push origin #{release_branch}")
+  end
 
-add_changed_files() {
-  git add \
-    CHANGELOG.md \
-    Gemfile.lock \
-    demo/Gemfile.lock \
-    lib/primer/view_components/version.rb \
-    app/assets/javascripts \
-    package.json \
-    yarn.lock
-}
+  def create_pull_request
+    @pr_url = run("gh pr create -b \"\" -t \"Release v#{new_version}\"", capture: true)
+  end
 
-commit() {
-  git commit -m "release $1.$2.$3"
-}
+  def final_message
+    puts "####################################################"
+    puts "PR link: #{@pr_url}"
+    puts "When the PR has been merged, run script/publish to publish the gem."
+    puts "####################################################"
+  end
 
-push() {
-  git push origin release-v$1-$2-$3
-}
+  private
 
-main() {
-  version=$(ruby ./lib/primer/view_components/version.rb)
-  version=(${version//./ })
-  major=${version[0]}
-  minor=${version[1]}
-  patch=${version[2]}
+  def current_branch
+    @current_branch ||= run("git symbolic-ref --short HEAD", capture: true).strip
+  end
 
-  echo "==================="
-  echo "Prerequisite Checks"
-  echo "==================="
+  def current_version
+    Primer::ViewComponents::VERSION::STRING
+  end
 
-  if ! working_tree_is_clean; then
-    echo "Error: unclean working tree"
-    exit 1
-  fi
+  def new_version
+    @new_version ||= case bump
+                     when :major
+                       "#{Primer::ViewComponents::VERSION::MAJOR + 1}.0.0"
+                     when :minor
+                       "#{Primer::ViewComponents::VERSION::MAJOR}.#{Primer::ViewComponents::VERSION::MINOR + 1}.0"
+                     else
+                       "#{Primer::ViewComponents::VERSION::MAJOR}.#{Primer::ViewComponents::VERSION::MINOR}.#{Primer::ViewComponents::VERSION::PATCH + 1}"
+                     end
+  end
 
-  if [[ "$(branch_name)" != "main" ]]; then
-    echo "Error: can only make a release on the main branch"
-    exit 1
-  fi
+  def bump
+    return :major if options[:major]
+    return :minor if options[:minor]
 
-  fetch
-  if ! remote_history_is_clean; then
-    echo "Error: changes exist on origin not pulled into this branch. Please pull"
-    exit 1
-  fi
+    :patch
+  end
 
-  if ! local_history_is_clean; then
-    echo "Error: changes exist that haven't been pushed to origin. Please pull"
-    exit 1
-  fi
+  def release_branch
+    "release-v#{new_version}"
+  end
+end
 
-  echo "Type the number of an option to bump, or pick Manual to enter a version number"
-  select bump in Major Minor Patch Manual
-  do
-    if [ "$bump" == "Major" ]; then
-      major=$((major + 1))
-      minor=0
-      patch=0
-    elif [ "$bump" == "Minor" ]; then
-      minor=$((minor + 1))
-      patch=0
-    elif [ "$bump" == "Patch" ]; then
-      patch=$((patch + 1))
-    else
-      read -p "What version? (Currently $major.$minor.$patch): " new_version
-      if [ "$new_version" == "$major.$minor.$patch" ]; then
-        echo "Error: Cannot be the same version"
-        exit 1
-      fi
-
-      new_version=(${new_version//./ })
-
-      major=${new_version[0]}
-      minor=${new_version[1]}
-      patch=${new_version[2]}
-    fi
-
-    if tag_exists_on_remote $major $minor $patch; then
-      echo "Error: tag exists on remote"
-      exit 1
-    fi
-
-    echo "==============================="
-    echo "Creating release for $major.$minor.$patch"
-    echo "==============================="
-
-    create_release_branch $major $minor $patch
-    update_readme $major $minor $patch
-    update_ruby_version $major $minor $patch
-    update_gemfiles $major $minor $patch
-    update_npm $major $minor $patch
-    add_changed_files $major $minor $patch
-    commit $major $minor $patch
-    push $major $minor $patch
-
-    echo "####################################################"
-    echo "Now, open a PR with this branch and merge it to main."
-    echo "When the PR has been merged, run script/publish to publish the gem."
-    echo "Finally, create a GitHub release https://github.com/primer/view_components/releases/new with the changes from CHANGELOG"
-    echo "####################################################"
-
-    break
-  done
-}
-
-main
+ReleaseCLI.start(ARGV)

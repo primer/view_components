@@ -2,6 +2,19 @@
 title: Deprecated
 ---
 
+## Deprecated in v0.0.62
+
+### LabelComponent
+
+These `scheme` values are deprecated in favor of their functional counterpart:
+
+| value | replacement |
+| :- | :- |
+| `:info` | `:accent` |
+| `:warning` | `:attention` |
+| `:orange` | `:severe` |
+| `:purple` | `:done` |
+
 ## Deprecated in v0.0.60
 
 ### System Arguments

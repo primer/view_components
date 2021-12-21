@@ -6,7 +6,7 @@ module Primer
   #   `Blankslate` renders an `<h3>` element for the title by default. Update the heading level based on what is appropriate for your page hierarchy by setting `title_tag`.
   #   <%= link_to_heading_practices %>
   class BlankslateComponent < Primer::Component
-    status :beta
+    status :deprecated
 
     # Optional Spinner.
     #

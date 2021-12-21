@@ -26,6 +26,7 @@ module Primer
     # @param selected [Boolean] Whether the item is the current selection
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_many :items, lambda { |href:, selected: false, **system_arguments|
+      deny_tag_argument(**system_arguments)
       system_arguments[:tag] = :a
       system_arguments[:href] = href
       system_arguments[:"aria-current"] = :page if selected
@@ -58,7 +59,7 @@ module Primer
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:tag] = :nav
       @system_arguments[:classes] = class_names(
         "menu",

@@ -33,7 +33,7 @@ module Primer
         @direction = direction
         @as = fetch_or_fallback(AS_OPTIONS, as, AS_DEFAULT)
 
-        @system_arguments = system_arguments
+        @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = "details-menu"
         @system_arguments[:role] = "menu"
 

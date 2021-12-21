@@ -64,11 +64,11 @@ module Primer
         @align = fetch_or_fallback(ALIGN_OPTIONS, align, ALIGN_DEFAULT)
         @wrapper_arguments = wrapper_arguments
 
-        @system_arguments = system_arguments
+        @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :div
         @system_arguments[:classes] = underline_nav_classes(@system_arguments[:classes], @align)
 
-        @body_arguments = body_arguments
+        @body_arguments = deny_tag_argument(**body_arguments)
         @body_arguments[:tag] = :ul
         @body_arguments[:classes] = underline_nav_body_classes(@body_arguments[:classes])
 

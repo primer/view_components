@@ -36,6 +36,7 @@ module Primer
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :actions, lambda { |**system_arguments|
+      deny_tag_argument(**system_arguments)
       system_arguments[:tag] = :div
       system_arguments[:classes] = class_names(system_arguments[:classes], "Subhead-actions")
 
@@ -46,6 +47,7 @@ module Primer
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :description, lambda { |**system_arguments|
+      deny_tag_argument(**system_arguments)
       system_arguments[:tag] = :div
       system_arguments[:classes] = class_names(system_arguments[:classes], "Subhead-description")
 
@@ -111,13 +113,13 @@ module Primer
     # @param hide_border [Boolean] Whether to hide the border under the heading.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(spacious: false, hide_border: false, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
 
       @system_arguments[:tag] = :div
       @system_arguments[:classes] =
         class_names(
           @system_arguments[:classes],
-          "Subhead hx_Subhead--responsive",
+          "Subhead",
           "Subhead--spacious": spacious,
           "border-bottom-0": hide_border
         )

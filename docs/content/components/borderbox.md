@@ -25,6 +25,8 @@ import Example from '../../src/@primer/gatsby-theme-doctocat/components/example'
 
 Optional Header.
 
+When using header.title, the recommended tag is a heading tag, such as h1, h2, h3, etc.
+
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
@@ -56,14 +58,16 @@ Use Rows to add rows with borders and maintain the same padding.
 
 ## Examples
 
-### Header, body, rows, and footer
+### Header with title, body, rows, and footer
 
-<Example src="<div data-view-component='true' class='Box'>  <div data-view-component='true' class='Box-header'>    Header</div>  <div data-view-component='true' class='Box-body'>    Body</div>    <ul>        <li data-view-component='true' class='Box-row'>      Row one</li>        <li data-view-component='true' class='Box-row'>    Row two</li>    </ul>  <div data-view-component='true' class='Box-footer'>    Footer</div></div>" />
+<Example src="<div data-view-component='true' class='Box'>  <div data-view-component='true' class='Box-header'>  <h2 data-view-component='true' class='Box-title'>      Header</h2>  </div>  <div data-view-component='true' class='Box-body'>    Body</div>    <ul>        <li data-view-component='true' class='Box-row'>      Row one</li>        <li data-view-component='true' class='Box-row'>    Row two</li>    </ul>  <div data-view-component='true' class='Box-footer'>    Footer</div></div>" />
 
 ```erb
 <%= render(Primer::BorderBoxComponent.new) do |component| %>
-  <% component.header do %>
-    Header
+  <% component.header do |h| %>
+    <% h.title(tag: :h2) do %>
+      Header
+    <% end %>
   <% end %>
   <% component.body do %>
     Body
@@ -84,7 +88,7 @@ Use Rows to add rows with borders and maintain the same padding.
 
 ### Padding density
 
-<Example src="<div data-view-component='true' class='Box Box--condensed'>  <div data-view-component='true' class='Box-header'>    Header</div>  <div data-view-component='true' class='Box-body'>    Body</div>    <ul>        <li data-view-component='true' class='Box-row'>    Row two</li>    </ul>  <div data-view-component='true' class='Box-footer'>    Footer</div></div>" />
+<Example src="<div data-view-component='true' class='Box Box--condensed'>  <div data-view-component='true' class='Box-header'>        Header</div>  <div data-view-component='true' class='Box-body'>    Body</div>    <ul>        <li data-view-component='true' class='Box-row'>    Row two</li>    </ul>  <div data-view-component='true' class='Box-footer'>    Footer</div></div>" />
 
 ```erb
 <%= render(Primer::BorderBoxComponent.new(padding: :condensed)) do |component| %>

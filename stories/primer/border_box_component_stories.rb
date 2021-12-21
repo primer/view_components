@@ -28,6 +28,18 @@ class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
     end
   end
 
+  story(:header_title) do
+    controls do
+      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
+    end
+
+    content do |component|
+      component.header do |h|
+        h.title(tag: :h2) { "Title" }
+      end
+    end
+  end
+
   story(:body) do
     controls do
       select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)

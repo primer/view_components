@@ -66,7 +66,7 @@ module Primer
 
     def test_ignores_if_cannot_convert_class
       @file = <<~HTML
-        <#{default_tag} class="#{default_class} text-center" #{required_attributes}>
+        <#{default_tag} class="#{default_class} text-fuzzy-waffle" #{required_attributes}>
           #{default_content}
         </#{default_tag}>
       HTML
@@ -161,20 +161,20 @@ module Primer
 
     def test_autocorrects_known_system_arguments
       @file = <<~HTML
-        <#{default_tag} class="#{default_class} mr-1 p-3 d-none d-md-block anim-fade-in color-text-primary" #{required_attributes}>
+        <#{default_tag} class="#{default_class} mr-1 p-3 d-none d-md-block anim-fade-in color-fg-default" #{required_attributes}>
           #{default_content}
         </#{default_tag}>
       HTML
 
       expected = if block_correction?
                    <<~HTML
-                     <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, color: :text_primary#{", #{required_arguments}" if required_arguments}) do %>
+                     <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, color: :default#{", #{required_arguments}" if required_arguments}) do %>
                        #{default_content}
                      <% end %>
                    HTML
                  else
                    <<~HTML
-                     <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, color: :text_primary#{", #{required_arguments}" if required_arguments}) %>
+                     <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, color: :default#{", #{required_arguments}" if required_arguments}) %>
                    HTML
                  end
 
@@ -183,20 +183,20 @@ module Primer
 
     def test_autocorrects_with_custom_classes
       @file = <<~HTML
-        <#{default_tag} class="#{default_class} mr-1 p-3 d-none d-md-block anim-fade-in color-text-primary custom-1 custom-2" #{required_attributes}>
+        <#{default_tag} class="#{default_class} mr-1 p-3 d-none d-md-block anim-fade-in color-fg-default custom-1 custom-2" #{required_attributes}>
           #{default_content}
         </#{default_tag}>
       HTML
 
       expected = if block_correction?
                    <<~HTML
-                     <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, color: :text_primary, classes: "custom-1 custom-2"#{", #{required_arguments}" if required_arguments}) do %>
+                     <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, color: :default, classes: "custom-1 custom-2"#{", #{required_arguments}" if required_arguments}) do %>
                        #{default_content}
                      <% end %>
                    HTML
                  else
                    <<~HTML
-                     <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, color: :text_primary, classes: "custom-1 custom-2"#{", #{required_arguments}" if required_arguments}) %>
+                     <%= render #{linter_class::COMPONENT}.new(mr: 1, p: 3, display: [:none, nil, :block], animation: :fade_in, color: :default, classes: "custom-1 custom-2"#{", #{required_arguments}" if required_arguments}) %>
                    HTML
                  end
 

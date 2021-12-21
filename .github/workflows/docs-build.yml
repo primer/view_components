@@ -25,21 +25,20 @@ jobs:
         with:
           path: vendor/bundle
           key: gems-build-docs-${{ hashFiles('**/Gemfile.lock') }}
-      - name: Generate docs and statuses
+      - name: Generate static files
         run: |
           gem install bundler:2.2.9
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
           bundle exec rake utilities:build
           bundle exec rake docs:build
-          bundle exec rake statuses:dump
-          bundle exec rake constants:dump
+          bundle exec rake static:dump
         env:
           SKIP_STORYBOOK_PRELOAD: 1
       - name: Commit & Push Docs Data
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "Actions Auto Build"
-          git add -f lib/primer/classify/utilities.yml docs static/statuses.json static/constants.json static/arguments.yml static/classes.yml
+          git add -f lib/primer/classify/utilities.yml docs static
           git commit -m "docs: build docs" || true
           git push

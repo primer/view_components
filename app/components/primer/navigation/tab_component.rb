@@ -20,6 +20,7 @@ module Primer
       renders_one :panel, lambda { |**system_arguments|
         return unless @with_panel
 
+        deny_tag_argument(**system_arguments)
         system_arguments[:id] = @panel_id
         system_arguments[:tag] = :div
         system_arguments[:role] ||= :tabpanel

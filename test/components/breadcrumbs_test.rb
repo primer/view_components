@@ -12,7 +12,7 @@ class PrimerBreadcrumbsTest < Minitest::Test
   end
 
   def test_system_argument_restriction
-    with_force_system_arguments(true) do
+    with_raise_on_invalid_options(true) do
       error = assert_raises(ArgumentError) do
         render_inline(Primer::Beta::Breadcrumbs.new(p: 0)) do |component|
           component.item(href: "/") { "Home" }

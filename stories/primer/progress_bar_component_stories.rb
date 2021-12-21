@@ -9,7 +9,7 @@ class Primer::ProgressBarComponentStories < ViewComponent::Storybook::Stories
     end
 
     content do |component|
-      component.item(bg: :success_inverse, percentage: 10)
+      component.item(bg: :success_emphasis, percentage: 10)
     end
   end
 end

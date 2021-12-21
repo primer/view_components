@@ -95,4 +95,13 @@ class PrimerAlphaTabNavTest < Minitest::Test
       assert_text("Extra")
     end
   end
+
+  def test_renders_custom_body_class
+    render_inline(Primer::Alpha::TabNav.new(label: "label", body_arguments: { classes: "custom-body-class" }))
+
+    assert_selector("nav.tabnav[aria-label='label']") do
+      assert_selector("ul.tabnav-tabs.custom-body-class")
+      refute_selector("ul.tabnav-tabs.tabnav")
+    end
+  end
 end

@@ -24,15 +24,9 @@ module Primer
     # Optional Header.
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_one :header, lambda { |**system_arguments|
-      system_arguments[:tag] = :div
-      system_arguments[:classes] = class_names(
-        "Box-header",
-        system_arguments[:classes]
-      )
-
-      Primer::BaseComponent.new(**system_arguments)
-    }
+    # @accessibility
+    # When using header.title, the recommended tag is a heading tag, such as h1, h2, h3, etc.
+    renders_one :header, "Primer::Alpha::BorderBox::Header"
 
     # Optional Body.
     #
@@ -75,10 +69,12 @@ module Primer
       Primer::BaseComponent.new(**system_arguments)
     }
 
-    # @example Header, body, rows, and footer
+    # @example Header with title, body, rows, and footer
     #   <%= render(Primer::BorderBoxComponent.new) do |component| %>
-    #     <% component.header do %>
-    #       Header
+    #     <% component.header do |h| %>
+    #       <% h.title(tag: :h2) do %>
+    #         Header
+    #       <% end %>
     #     <% end %>
     #     <% component.body do %>
     #       Body
@@ -131,7 +127,7 @@ module Primer
     # @param padding [Symbol] <%= one_of(Primer::BorderBoxComponent::PADDING_MAPPINGS.keys) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(padding: DEFAULT_PADDING, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:tag] = :div
       @system_arguments[:classes] = class_names(
         "Box",
