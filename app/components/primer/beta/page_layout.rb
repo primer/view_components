@@ -51,8 +51,8 @@ module Primer
 
       PRIMARY_REGION_DEFAULT = :content
       PRIMARY_REGION_MAPPINGS = {
-        PRIMARY_REGION_DEFAULT => "PageLayout--responsive-separateRegions-primary-content",
-        :pane => "PageLayout--responsive-separateRegions-primary-pane"
+        PRIMARY_REGION_DEFAULT => "PageLayout--responsive-primary-content",
+        :pane => "PageLayout--responsive-primary-pane"
       }.freeze
       PRIMARY_REGION_OPTIONS = PRIMARY_REGION_MAPPINGS.keys.freeze
 
@@ -450,8 +450,8 @@ module Primer
         POSITION_NARROW_DEFAULT = :inherit
         POSITION_NARROW_MAPPINGS = {
           POSITION_NARROW_DEFAULT => "",
-          :start => "PageLayout--responsive-stackRegions-panePos-start",
-          :end => "PageLayout--responsive-stackRegions-panePos-end"
+          :start => "PageLayout--responsive-panePos-start",
+          :end => "PageLayout--responsive-panePos-end"
         }.freeze
         POSITION_NARROW_OPTIONS = POSITION_NARROW_MAPPINGS.keys.freeze
 

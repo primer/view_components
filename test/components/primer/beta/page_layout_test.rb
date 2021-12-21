@@ -61,7 +61,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       "PageLayout--columnGap-normal",
       "PageLayout--rowGap-normal",
       "PageLayout--panePos-start",
-      "PageLayout--responsive-stackRegions-panePos-start"
+      "PageLayout--responsive-panePos-start"
     ].join(".")
     assert_selector("div.#{expected_classes}") do
       assert_selector("div.PageLayout-content", text: "Content")
@@ -166,8 +166,8 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       c.pane_region { "Pane" }
     end
 
-    refute_selector("div.PageLayout--responsive-separateRegions-primary-pane")
-    refute_selector("div.PageLayout--responsive-separateRegions-primary-content")
+    refute_selector("div.PageLayout--responsive-primary-pane")
+    refute_selector("div.PageLayout--responsive-primary-content")
   end
 
   def test_pane_width
@@ -269,7 +269,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
 
         position_narrow = position if position_narrow == :inherit
         assert_selector("div.PageLayout") do
-          assert_selector("div.PageLayout--panePos-#{position}.PageLayout--responsive-stackRegions-panePos-#{position_narrow}") do
+          assert_selector("div.PageLayout--panePos-#{position}.PageLayout--responsive-panePos-#{position_narrow}") do
             assert_selector("div.PageLayout-content", text: "Content")
             assert_selector("div.PageLayout-pane", text: "Pane")
           end
@@ -284,8 +284,8 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       c.pane_region(position: :start) { "Pane" }
     end
 
-    refute_selector("div.PageLayout--responsive-stackRegions-panePos-end")
-    refute_selector("div.PageLayout--responsive-stackRegions-panePos-start")
+    refute_selector("div.PageLayout--responsive-panePos-end")
+    refute_selector("div.PageLayout--responsive-panePos-start")
   end
 
   def test_pane_tags
