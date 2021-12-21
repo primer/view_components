@@ -66,16 +66,16 @@ module Primer
       HEADER_RESPONSIVE_DIVIDER_DEFAULT = :none
       HEADER_RESPONSIVE_DIVIDER_MAPPINGS = {
         HEADER_RESPONSIVE_DIVIDER_DEFAULT => "",
-        :line => "PageLayout-region--hasDivider-line-before",
-        :filled => "PageLayout-region--hasDivider-filled-before"
+        :line => "PageLayout-region--dividerNarrow-line-before",
+        :filled => "PageLayout-region--dividerNarrow-filled-before"
       }.freeze
       HEADER_RESPONSIVE_DIVIDER_OPTIONS = HEADER_RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
 
       FOOTER_RESPONSIVE_DIVIDER_DEFAULT = :none
       FOOTER_RESPONSIVE_DIVIDER_MAPPINGS = {
         FOOTER_RESPONSIVE_DIVIDER_DEFAULT => "",
-        :line => "PageLayout-region--hasDivider-line-before",
-        :filled => "PageLayout-region--hasDivider-filled-before"
+        :line => "PageLayout-region--dividerNarrow-line-before",
+        :filled => "PageLayout-region--dividerNarrow-filled-before"
       }.freeze
       FOOTER_RESPONSIVE_DIVIDER_OPTIONS = FOOTER_RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
 
@@ -478,8 +478,8 @@ module Primer
         RESPONSIVE_DIVIDER_OPTIONS = RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
 
         HAS_DIVIDER_NONE_MAPPINGS = {
-          start: "PageLayout-region--hasDivider-none-before",
-          end: "PageLayout-region--hasDivider-none-after"
+          start: "PageLayout-region--dividerNarrow-none-before",
+          end: "PageLayout-region--dividerNarrow-none-after"
         }.freeze
 
         TAG_DEFAULT = :div
