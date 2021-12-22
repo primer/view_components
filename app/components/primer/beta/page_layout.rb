@@ -112,14 +112,11 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :footer_region, lambda { |divider: false, divider_narrow: FOOTER_DIVIDER_NARROW_DEFAULT, **footer_system_arguments|
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
-        @system_arguments[:classes] = class_names(
-          @system_arguments[:classes],
-          "PageLayout--hasFooterDivider" => divider
-        )
 
         footer_system_arguments[:classes] = class_names(
           footer_system_arguments[:classes],
-          FOOTER_DIVIDER_NARROW_MAPPINGS[fetch_or_fallback(FOOTER_DIVIDER_NARROW_OPTIONS, divider_narrow, FOOTER_DIVIDER_NARROW_DEFAULT)],
+          { "PageLayout-footer--hasDivider" => divider },
+          { FOOTER_DIVIDER_NARROW_MAPPINGS[fetch_or_fallback(FOOTER_DIVIDER_NARROW_OPTIONS, divider_narrow, FOOTER_DIVIDER_NARROW_DEFAULT)] => divider },
           "PageLayout-footer",
           "PageLayout-region"
         )

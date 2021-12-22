@@ -392,7 +392,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       c.footer_region(divider: true) { "Footer" }
     end
 
-    assert_selector("div.PageLayout.PageLayout--hasFooterDivider")
+    assert_selector("div.PageLayout-footer.PageLayout-footer--hasDivider.PageLayout-region--dividerNarrow-line-before")
   end
 
   def test_footer_divider_not_present_when_not_set
@@ -402,7 +402,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       c.footer_region { "Footer" }
     end
 
-    refute_selector("div.PageLayout.PageLayout--hasFooterDivider")
+    refute_selector("div.PageLayout-footer.PageLayout-footer--hasDivider.PageLayout-region--dividerNarrow-line-before")
   end
 
   def test_footer_responsive_divider
@@ -410,7 +410,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       render_inline(Primer::Beta::PageLayout.new) do |c|
         c.content_region { "Content" }
         c.pane_region { "Pane" }
-        c.footer_region(divider_narrow: opt) { "Footer" }
+        c.footer_region(divider: true, divider_narrow: opt) { "Footer" }
       end
 
       divider_class = Primer::Beta::PageLayout::FOOTER_DIVIDER_NARROW_MAPPINGS[opt]
