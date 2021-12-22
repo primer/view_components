@@ -71,13 +71,13 @@ module Primer
       }.freeze
       HEADER_DIVIDER_NARROW_OPTIONS = HEADER_DIVIDER_NARROW_MAPPINGS.keys.freeze
 
-      FOOTER_RESPONSIVE_DIVIDER_DEFAULT = :none
-      FOOTER_RESPONSIVE_DIVIDER_MAPPINGS = {
-        FOOTER_RESPONSIVE_DIVIDER_DEFAULT => "",
+      FOOTER_DIVIDER_NARROW_DEFAULT = :none
+      FOOTER_DIVIDER_NARROW_MAPPINGS = {
+        FOOTER_DIVIDER_NARROW_DEFAULT => "",
         :line => "PageLayout-region--dividerNarrow-line-before",
         :filled => "PageLayout-region--dividerNarrow-filled-before"
       }.freeze
-      FOOTER_RESPONSIVE_DIVIDER_OPTIONS = FOOTER_RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
+      FOOTER_DIVIDER_NARROW_OPTIONS = FOOTER_DIVIDER_NARROW_MAPPINGS.keys.freeze
 
       # The layout's content.
       #
@@ -111,9 +111,9 @@ module Primer
       # The layout's footer.
       #
       # @param divider [Boolean] Whether to show a footer divider
-      # @param responsive_divider [Symbol] Whether to show a divider below the `footer` region if in responsive mode. <%= one_of(Primer::Beta::PageLayout::FOOTER_RESPONSIVE_DIVIDER_OPTIONS) %>
+      # @param divider_narrow [Symbol] Whether to show a divider below the `footer` region if in responsive mode. <%= one_of(Primer::Beta::PageLayout::FOOTER_DIVIDER_NARROW_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :footer_region, lambda { |divider: false, responsive_divider: FOOTER_RESPONSIVE_DIVIDER_DEFAULT, **footer_system_arguments|
+      renders_one :footer_region, lambda { |divider: false, divider_narrow: FOOTER_DIVIDER_NARROW_DEFAULT, **footer_system_arguments|
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
@@ -122,7 +122,7 @@ module Primer
 
         footer_system_arguments[:classes] = class_names(
           footer_system_arguments[:classes],
-          FOOTER_RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(FOOTER_RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, FOOTER_RESPONSIVE_DIVIDER_DEFAULT)],
+          FOOTER_DIVIDER_NARROW_MAPPINGS[fetch_or_fallback(FOOTER_DIVIDER_NARROW_OPTIONS, divider_narrow, FOOTER_DIVIDER_NARROW_DEFAULT)],
           "PageLayout-footer",
           "PageLayout-region"
         )

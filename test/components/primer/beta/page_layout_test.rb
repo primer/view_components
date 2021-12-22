@@ -396,14 +396,14 @@ class PrimerBetaPageLayoutTest < Minitest::Test
   end
 
   def test_footer_responsive_divider
-    Primer::Beta::PageLayout::FOOTER_RESPONSIVE_DIVIDER_OPTIONS.each do |opt|
+    Primer::Beta::PageLayout::FOOTER_DIVIDER_NARROW_OPTIONS.each do |opt|
       render_inline(Primer::Beta::PageLayout.new) do |c|
         c.content_region { "Content" }
         c.pane_region { "Pane" }
-        c.footer_region(responsive_divider: opt) { "Footer" }
+        c.footer_region(divider_narrow: opt) { "Footer" }
       end
 
-      divider_class = Primer::Beta::PageLayout::FOOTER_RESPONSIVE_DIVIDER_MAPPINGS[opt]
+      divider_class = Primer::Beta::PageLayout::FOOTER_DIVIDER_NARROW_MAPPINGS[opt]
       assert_selector("div.PageLayout") do
         assert_selector("div.PageLayout-footer#{divider_class.empty? ? '' : ".#{divider_class}"}", text: "Footer")
         assert_selector("div.PageLayout-content", text: "Content")
