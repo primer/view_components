@@ -469,13 +469,13 @@ module Primer
         }.freeze
         POSITION_OPTIONS = POSITION_MAPPINGS.keys.freeze
 
-        RESPONSIVE_DIVIDER_DEFAULT = :none
-        RESPONSIVE_DIVIDER_MAPPINGS = {
-          RESPONSIVE_DIVIDER_DEFAULT => "",
+        DIVIDER_NARROW_DEFAULT = :none
+        DIVIDER_NARROW_MAPPINGS = {
+          DIVIDER_NARROW_DEFAULT => "",
           :line => "PageLayout--divider-after",
           :filled => "PageLayout--divider-after-filled"
         }.freeze
-        RESPONSIVE_DIVIDER_OPTIONS = RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
+        DIVIDER_NARROW_OPTIONS = DIVIDER_NARROW_MAPPINGS.keys.freeze
 
         HAS_DIVIDER_NONE_MAPPINGS = {
           start: "PageLayout-region--dividerNarrow-none-before",
@@ -485,10 +485,10 @@ module Primer
         TAG_DEFAULT = :div
         TAG_OPTIONS = [TAG_DEFAULT, :aside, :nav, :section].freeze
 
-        # @param responsive_divider [Symbol] <%= one_of(Primer::Beta::PageLayout::Pane::RESPONSIVE_DIVIDER_OPTIONS) %>
+        # @param divider_narrow [Symbol] <%= one_of(Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_OPTIONS) %>
         # @param position [Symbol] <%= one_of(Primer::Beta::PageLayout::Pane::POSITION_OPTIONS) %>
         # @param tag [Symbol] <%= one_of(Primer::Beta::PageLayout::Pane::TAG_OPTIONS) %>
-        def initialize(responsive_divider: RESPONSIVE_DIVIDER_DEFAULT, position: POSITION_DEFAULT, tag: TAG_DEFAULT, **system_arguments)
+        def initialize(divider_narrow: DIVIDER_NARROW_DEFAULT, position: POSITION_DEFAULT, tag: TAG_DEFAULT, **system_arguments)
           @system_arguments = system_arguments
           @position = position
 
@@ -496,7 +496,7 @@ module Primer
           @system_arguments[:classes] = class_names(
             "PageLayout-region",
             "PageLayout-pane",
-            RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, RESPONSIVE_DIVIDER_DEFAULT)],
+            DIVIDER_NARROW_MAPPINGS[fetch_or_fallback(DIVIDER_NARROW_OPTIONS, divider_narrow, DIVIDER_NARROW_DEFAULT)],
             @system_arguments[:classes]
           )
         end

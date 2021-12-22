@@ -208,14 +208,14 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     refute_selector("div.PageLayout.PageLayout--hasPaneDivider")
   end
 
-  def test_pane_responsive_divider
-    Primer::Beta::PageLayout::Pane::RESPONSIVE_DIVIDER_OPTIONS.each do |type|
+  def test_pane_divider_narrow
+    Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_OPTIONS.each do |type|
       render_inline(Primer::Beta::PageLayout.new) do |c|
         c.content_region { "Content" }
-        c.pane_region(responsive_divider: type) { "Pane" }
+        c.pane_region(divider_narrow: type) { "Pane" }
       end
 
-      type_class = Primer::Beta::PageLayout::Pane::RESPONSIVE_DIVIDER_MAPPINGS[type]
+      type_class = Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_MAPPINGS[type]
       assert_selector("div.PageLayout") do
         assert_selector("div#{type_class.empty? ? '' : ".#{type_class}"}") do
           assert_selector("div.PageLayout-content", text: "Content")
