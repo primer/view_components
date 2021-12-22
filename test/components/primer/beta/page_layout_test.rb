@@ -258,7 +258,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
 
     assert_selector("div.PageLayout.PageLayout--hasPaneDivider") do
       assert_selector("div.PageLayout-content", text: "Content")
-      assert_selector("div.PageLayout-pane.PageLayout-region--dividerNarrow-line-before", text: "Pane")
+      assert_selector("div.PageLayout-pane.PageLayout-region--dividerNarrow-line-after", text: "Pane")
     end
   end
 
@@ -272,17 +272,17 @@ class PrimerBetaPageLayoutTest < Minitest::Test
   end
 
   def test_pane_divider_narrow
-    Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_OPTIONS.each do |type|
-      render_inline(Primer::Beta::PageLayout.new) do |c|
-        c.content_region { "Content" }
-        c.pane_region(divider_narrow: type) { "Pane" }
-      end
+    Primer::Beta::PageLayout::Pane::POSITION_OPTIONS.each do |position|
+      Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_USER_OPTIONS.each do |type|
+        render_inline(Primer::Beta::PageLayout.new) do |c|
+          c.content_region { "Content" }
+          c.pane_region(position: position, divider: true, divider_narrow: type) { "Pane" }
+        end
 
-      type_class = Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_MAPPINGS[type]
-      assert_selector("div.PageLayout") do
-        assert_selector("div#{type_class.empty? ? '' : ".#{type_class}"}") do
+        type_class = Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_MAPPINGS[{position => type}]
+        assert_selector("div.PageLayout.PageLayout--hasPaneDivider") do
           assert_selector("div.PageLayout-content", text: "Content")
-          assert_selector("div.PageLayout-pane", text: "Pane")
+          assert_selector("div.PageLayout-pane.#{type_class}", text: "Pane")
         end
       end
     end

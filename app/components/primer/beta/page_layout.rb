@@ -156,11 +156,6 @@ module Primer
           { "PageLayout--hasPaneDivider" => divider }
         )
 
-        pane_system_arguments[:classes] = class_names(
-          pane_system_arguments[:classes],
-          Pane::HAS_DIVIDER_NONE_MAPPINGS[position_narrow]
-        )
-
         Pane.new(position: position, **pane_system_arguments)
       }
 
@@ -456,11 +451,6 @@ module Primer
         }.freeze
         WIDTH_OPTIONS = WIDTH_MAPPINGS.keys.freeze
 
-        HAS_DIVIDER_NONE_MAPPINGS = {
-          start: "PageLayout-region--hasDivider-none-before",
-          end: "PageLayout-region--hasDivider-none-after"
-        }.freeze
-
         POSITION_NARROW_DEFAULT = :inherit
         POSITION_NARROW_MAPPINGS = {
           POSITION_NARROW_DEFAULT => "",
@@ -478,12 +468,16 @@ module Primer
 
         DIVIDER_NARROW_DEFAULT = :inherit
         DIVIDER_NARROW_MAPPINGS = {
-          DIVIDER_NARROW_DEFAULT => "PageLayout-region--dividerNarrow-line-before",
-          :none => "PageLayout-region--dividerNarrow-none-before",
-          :line => "PageLayout-region--dividerNarrow-line-before",
-          :filled => "PageLayout-region--dividerNarrow-filled-before"
+          { end: DIVIDER_NARROW_DEFAULT } => "PageLayout-region--dividerNarrow-line-before",
+          { end: :none } => "PageLayout-region--dividerNarrow-none-before",
+          { end: :line } => "PageLayout-region--dividerNarrow-line-before",
+          { end: :filled } => "PageLayout-region--dividerNarrow-filled-before",
+          { start: DIVIDER_NARROW_DEFAULT } => "PageLayout-region--dividerNarrow-line-after",
+          { start: :none } => "PageLayout-region--dividerNarrow-none-after",
+          { start: :line } => "PageLayout-region--dividerNarrow-line-after",
+          { start: :filled } => "PageLayout-region--dividerNarrow-filled-after"
         }.freeze
-        DIVIDER_NARROW_OPTIONS = DIVIDER_NARROW_MAPPINGS.keys.freeze
+        DIVIDER_NARROW_USER_OPTIONS = [DIVIDER_NARROW_DEFAULT, :none, :line, :filled].freeze
 
         TAG_DEFAULT = :div
         TAG_OPTIONS = [TAG_DEFAULT, :aside, :nav, :section].freeze
@@ -499,7 +493,7 @@ module Primer
           @system_arguments[:classes] = class_names(
             "PageLayout-region",
             "PageLayout-pane",
-            DIVIDER_NARROW_MAPPINGS[fetch_or_fallback(DIVIDER_NARROW_OPTIONS, divider_narrow, DIVIDER_NARROW_DEFAULT)],
+            DIVIDER_NARROW_MAPPINGS[{ position => fetch_or_fallback(DIVIDER_NARROW_USER_OPTIONS, divider_narrow, DIVIDER_NARROW_DEFAULT) }],
             @system_arguments[:classes]
           )
         end
