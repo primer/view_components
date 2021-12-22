@@ -29,12 +29,12 @@ class ArgumentMappersFlashTest < LinterTestCase
   end
 
   def test_raises_if_cannot_map_class
-    @file = '<div class="text-center">flash</div>'
+    @file = '<div class="text-fuzzy-waffle">flash</div>'
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
       ERBLint::Linters::ArgumentMappers::Flash.new(tags.first).to_args
     end
 
-    assert_equal "Cannot convert class text-center", err.message
+    assert_equal "Cannot convert class text-fuzzy-waffle", err.message
   end
 
   def test_complex_case

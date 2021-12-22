@@ -362,7 +362,7 @@ namespace :docs do
       short_name = component.name.gsub(/Primer|::/, "")
       initialize_method = documentation.meths.find(&:constructor?)
 
-      next unless initialize_method.tags(:example).any?
+      next unless initialize_method&.tags(:example)&.any?
 
       yard_example_tags = initialize_method.tags(:example)
 
