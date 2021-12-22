@@ -63,17 +63,19 @@ module Primer
       }.freeze
       RESPONSIVE_VARIANT_OPTIONS = RESPONSIVE_VARIANT_MAPPINGS.keys.freeze
 
-      HEADER_DIVIDER_NARROW_DEFAULT = :none
+      HEADER_DIVIDER_NARROW_DEFAULT = :inherit
       HEADER_DIVIDER_NARROW_MAPPINGS = {
-        HEADER_DIVIDER_NARROW_DEFAULT => "",
-        :line => "PageLayout-region--dividerNarrow-line-before",
-        :filled => "PageLayout-region--dividerNarrow-filled-before"
+        HEADER_DIVIDER_NARROW_DEFAULT => "PageLayout-region--dividerNarrow-line-after",
+        :none => "",
+        :line => "PageLayout-region--dividerNarrow-line-after",
+        :filled => "PageLayout-region--dividerNarrow-filled-after"
       }.freeze
       HEADER_DIVIDER_NARROW_OPTIONS = HEADER_DIVIDER_NARROW_MAPPINGS.keys.freeze
 
-      FOOTER_DIVIDER_NARROW_DEFAULT = :none
+      FOOTER_DIVIDER_NARROW_DEFAULT = :inherit
       FOOTER_DIVIDER_NARROW_MAPPINGS = {
-        FOOTER_DIVIDER_NARROW_DEFAULT => "",
+        FOOTER_DIVIDER_NARROW_DEFAULT => "PageLayout-region--dividerNarrow-line-before",
+        :none => "",
         :line => "PageLayout-region--dividerNarrow-line-before",
         :filled => "PageLayout-region--dividerNarrow-filled-before"
       }.freeze
@@ -152,11 +154,6 @@ module Primer
           Pane::WIDTH_MAPPINGS[fetch_or_fallback(Pane::WIDTH_OPTIONS, width, Pane::WIDTH_DEFAULT)],
           { Pane::POSITION_NARROW_MAPPINGS[fetch_or_fallback(Pane::POSITION_NARROW_OPTIONS, position_narrow, Pane::POSITION_NARROW_DEFAULT)] => @responsive_variant == :stack_regions },
           { "PageLayout--hasPaneDivider" => divider }
-        )
-
-        pane_system_arguments[:classes] = class_names(
-          pane_system_arguments[:classes],
-          Pane::HAS_DIVIDER_NONE_MAPPINGS[position_narrow]
         )
 
         Pane.new(position: position, **pane_system_arguments)
@@ -469,18 +466,14 @@ module Primer
         }.freeze
         POSITION_OPTIONS = POSITION_MAPPINGS.keys.freeze
 
-        DIVIDER_NARROW_DEFAULT = :none
+        DIVIDER_NARROW_DEFAULT = :inherit
         DIVIDER_NARROW_MAPPINGS = {
-          DIVIDER_NARROW_DEFAULT => "",
-          :line => "PageLayout--divider-after",
-          :filled => "PageLayout--divider-after-filled"
+          DIVIDER_NARROW_DEFAULT => "PageLayout-region--dividerNarrow-line-before",
+          :none => "PageLayout-region--dividerNarrow-none-before",
+          :line => "PageLayout-region--dividerNarrow-line-before",
+          :filled => "PageLayout-region--dividerNarrow-filled-before"
         }.freeze
         DIVIDER_NARROW_OPTIONS = DIVIDER_NARROW_MAPPINGS.keys.freeze
-
-        HAS_DIVIDER_NONE_MAPPINGS = {
-          start: "PageLayout-region--dividerNarrow-none-before",
-          end: "PageLayout-region--dividerNarrow-none-after"
-        }.freeze
 
         TAG_DEFAULT = :div
         TAG_OPTIONS = [TAG_DEFAULT, :aside, :nav, :section].freeze

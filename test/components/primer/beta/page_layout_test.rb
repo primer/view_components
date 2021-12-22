@@ -25,7 +25,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     assert_selector("div.PageLayout") do
       assert_selector("div.PageLayout-columns") do
         assert_selector("div.PageLayout-region.PageLayout-content", text: "Content")
-        assert_selector("div.PageLayout-region.PageLayout-pane.PageLayout-region--dividerNarrow-none-before", text: "Pane")
+        assert_selector("div.PageLayout-region.PageLayout-pane", text: "Pane")
       end
     end
   end
@@ -42,7 +42,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       assert_selector("div.PageLayout-header.PageLayout-region", text: "Header")
       assert_selector("div.PageLayout-columns") do
         assert_selector("div.PageLayout-region.PageLayout-content", text: "Content")
-        assert_selector("div.PageLayout-region.PageLayout-pane.PageLayout-region--dividerNarrow-none-before", text: "Pane")
+        assert_selector("div.PageLayout-region.PageLayout-pane", text: "Pane")
       end
       assert_selector("div.PageLayout-footer.PageLayout-region", text: "Footer")
     end
