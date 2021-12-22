@@ -49,19 +49,19 @@ module Primer
       }.freeze
       ROW_GAP_OPTIONS = ROW_GAP_MAPPINGS.keys.freeze
 
-      PRIMARY_REGION_DEFAULT = :content
-      PRIMARY_REGION_MAPPINGS = {
-        PRIMARY_REGION_DEFAULT => "PageLayout--responsive-primary-content",
-        :pane => "PageLayout--responsive-primary-pane"
-      }.freeze
-      PRIMARY_REGION_OPTIONS = PRIMARY_REGION_MAPPINGS.keys.freeze
-
       RESPONSIVE_VARIANT_DEFAULT = :stack_regions
       RESPONSIVE_VARIANT_MAPPINGS = {
         RESPONSIVE_VARIANT_DEFAULT => "PageLayout--responsive-stackRegions",
         :separate_regions => "PageLayout--responsive-separateRegions"
       }.freeze
       RESPONSIVE_VARIANT_OPTIONS = RESPONSIVE_VARIANT_MAPPINGS.keys.freeze
+
+      PRIMARY_REGION_DEFAULT = :content
+      PRIMARY_REGION_MAPPINGS = {
+        PRIMARY_REGION_DEFAULT => "PageLayout--responsive-primary-content",
+        :pane => "PageLayout--responsive-primary-pane"
+      }.freeze
+      PRIMARY_REGION_OPTIONS = PRIMARY_REGION_MAPPINGS.keys.freeze
 
       HEADER_DIVIDER_NARROW_DEFAULT = :inherit
       HEADER_DIVIDER_NARROW_MAPPINGS = {
@@ -154,6 +154,11 @@ module Primer
           Pane::WIDTH_MAPPINGS[fetch_or_fallback(Pane::WIDTH_OPTIONS, width, Pane::WIDTH_DEFAULT)],
           { Pane::POSITION_NARROW_MAPPINGS[fetch_or_fallback(Pane::POSITION_NARROW_OPTIONS, position_narrow, Pane::POSITION_NARROW_DEFAULT)] => @responsive_variant == :stack_regions },
           { "PageLayout--hasPaneDivider" => divider }
+        )
+
+        pane_system_arguments[:classes] = class_names(
+          pane_system_arguments[:classes],
+          Pane::HAS_DIVIDER_NONE_MAPPINGS[position_narrow]
         )
 
         Pane.new(position: position, **pane_system_arguments)
@@ -436,6 +441,13 @@ module Primer
       class Pane < Primer::Component
         status :beta
 
+        POSITION_DEFAULT = :start
+        POSITION_MAPPINGS = {
+          POSITION_DEFAULT => "PageLayout--panePos-start",
+          :end => "PageLayout--panePos-end"
+        }.freeze
+        POSITION_OPTIONS = POSITION_MAPPINGS.keys.freeze
+
         WIDTH_DEFAULT = :default
         WIDTH_MAPPINGS = {
           WIDTH_DEFAULT => "",
@@ -443,6 +455,11 @@ module Primer
           :wide => "PageLayout--paneWidth-wide"
         }.freeze
         WIDTH_OPTIONS = WIDTH_MAPPINGS.keys.freeze
+
+        HAS_DIVIDER_NONE_MAPPINGS = {
+          start: "PageLayout-region--hasDivider-none-before",
+          end: "PageLayout-region--hasDivider-none-after"
+        }.freeze
 
         POSITION_NARROW_DEFAULT = :inherit
         POSITION_NARROW_MAPPINGS = {
@@ -458,13 +475,6 @@ module Primer
           :end => "PageLayout--panePos-start"
         }.freeze
         DIVIDER_OPTIONS = DIVIDER_MAPPINGS.keys.freeze
-
-        POSITION_DEFAULT = :start
-        POSITION_MAPPINGS = {
-          POSITION_DEFAULT => "PageLayout--panePos-start",
-          :end => "PageLayout--panePos-end"
-        }.freeze
-        POSITION_OPTIONS = POSITION_MAPPINGS.keys.freeze
 
         DIVIDER_NARROW_DEFAULT = :inherit
         DIVIDER_NARROW_MAPPINGS = {

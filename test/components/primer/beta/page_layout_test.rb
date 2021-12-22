@@ -170,62 +170,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     refute_selector("div.PageLayout--responsive-primary-content")
   end
 
-  def test_pane_width
-    Primer::Beta::PageLayout::Pane::WIDTH_OPTIONS.each do |size|
-      render_inline(Primer::Beta::PageLayout.new) do |c|
-        c.content_region { "Content" }
-        c.pane_region(width: size) { "Pane" }
-      end
-
-      width_class = Primer::Beta::PageLayout::Pane::WIDTH_MAPPINGS[size]
-      assert_selector("div.PageLayout") do
-        assert_selector("div#{width_class.empty? ? '' : ".#{width_class}"}") do
-          assert_selector("div.PageLayout-content", text: "Content")
-          assert_selector("div.PageLayout-pane", text: "Pane")
-        end
-      end
-    end
-  end
-
-  def test_pane_divider_present_when_set
-    render_inline(Primer::Beta::PageLayout.new) do |c|
-      c.content_region { "Content" }
-      c.pane_region(divider: true) { "Pane" }
-    end
-
-    assert_selector("div.PageLayout.PageLayout--hasPaneDivider") do
-      assert_selector("div.PageLayout-content", text: "Content")
-      assert_selector("div.PageLayout-pane", text: "Pane")
-    end
-  end
-
-  def test_pane_divider_absent_when_not_set
-    render_inline(Primer::Beta::PageLayout.new) do |c|
-      c.content_region { "Content" }
-      c.pane_region { "Pane" }
-    end
-
-    refute_selector("div.PageLayout.PageLayout--hasPaneDivider")
-  end
-
-  def test_pane_divider_narrow
-    Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_OPTIONS.each do |type|
-      render_inline(Primer::Beta::PageLayout.new) do |c|
-        c.content_region { "Content" }
-        c.pane_region(divider_narrow: type) { "Pane" }
-      end
-
-      type_class = Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_MAPPINGS[type]
-      assert_selector("div.PageLayout") do
-        assert_selector("div#{type_class.empty? ? '' : ".#{type_class}"}") do
-          assert_selector("div.PageLayout-content", text: "Content")
-          assert_selector("div.PageLayout-pane", text: "Pane")
-        end
-      end
-    end
-  end
-
-  def test_pane_position_add_correct_class
+  def test_pane_position
     Primer::Beta::PageLayout::Pane::POSITION_OPTIONS.each do |position|
       render_inline(Primer::Beta::PageLayout.new) do |c|
         c.content_region { "Content" }
@@ -259,7 +204,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     assert_match(/PageLayout-content.*PageLayout-pane/m, @rendered_component)
   end
 
-  def test_stack_regions_variant_with_responsive_pane_position
+  def test_stack_regions_variant_with_pane_position_narrow
     Primer::Beta::PageLayout::Pane::POSITION_OPTIONS.each do |position|
       Primer::Beta::PageLayout::Pane::POSITION_NARROW_OPTIONS.each do |position_narrow|
         render_inline(Primer::Beta::PageLayout.new(responsive_variant: :stack_regions)) do |c|
@@ -286,6 +231,61 @@ class PrimerBetaPageLayoutTest < Minitest::Test
 
     refute_selector("div.PageLayout--responsive-panePos-end")
     refute_selector("div.PageLayout--responsive-panePos-start")
+  end
+
+  def test_pane_width
+    Primer::Beta::PageLayout::Pane::WIDTH_OPTIONS.each do |size|
+      render_inline(Primer::Beta::PageLayout.new) do |c|
+        c.content_region { "Content" }
+        c.pane_region(width: size) { "Pane" }
+      end
+
+      width_class = Primer::Beta::PageLayout::Pane::WIDTH_MAPPINGS[size]
+      assert_selector("div.PageLayout") do
+        assert_selector("div#{width_class.empty? ? '' : ".#{width_class}"}") do
+          assert_selector("div.PageLayout-content", text: "Content")
+          assert_selector("div.PageLayout-pane", text: "Pane")
+        end
+      end
+    end
+  end
+
+  def test_pane_divider_present_when_set
+    render_inline(Primer::Beta::PageLayout.new) do |c|
+      c.content_region { "Content" }
+      c.pane_region(divider: true) { "Pane" }
+    end
+
+    assert_selector("div.PageLayout.PageLayout--hasPaneDivider") do
+      assert_selector("div.PageLayout-content", text: "Content")
+      assert_selector("div.PageLayout-pane.PageLayout-region--dividerNarrow-line-before", text: "Pane")
+    end
+  end
+
+  def test_pane_divider_absent_when_not_set
+    render_inline(Primer::Beta::PageLayout.new) do |c|
+      c.content_region { "Content" }
+      c.pane_region { "Pane" }
+    end
+
+    refute_selector("div.PageLayout.PageLayout--hasPaneDivider")
+  end
+
+  def test_pane_divider_narrow
+    Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_OPTIONS.each do |type|
+      render_inline(Primer::Beta::PageLayout.new) do |c|
+        c.content_region { "Content" }
+        c.pane_region(divider_narrow: type) { "Pane" }
+      end
+
+      type_class = Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_MAPPINGS[type]
+      assert_selector("div.PageLayout") do
+        assert_selector("div#{type_class.empty? ? '' : ".#{type_class}"}") do
+          assert_selector("div.PageLayout-content", text: "Content")
+          assert_selector("div.PageLayout-pane", text: "Pane")
+        end
+      end
+    end
   end
 
   def test_pane_tags
