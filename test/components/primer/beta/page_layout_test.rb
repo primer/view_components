@@ -359,14 +359,14 @@ class PrimerBetaPageLayoutTest < Minitest::Test
   end
 
   def test_header_responsive_divider
-    Primer::Beta::PageLayout::HEADER_RESPONSIVE_DIVIDER_OPTIONS.each do |opt|
+    Primer::Beta::PageLayout::HEADER_DIVIDER_NARROW_OPTIONS.each do |opt|
       render_inline(Primer::Beta::PageLayout.new) do |c|
-        c.header_region(responsive_divider: opt) { "Header" }
+        c.header_region(divider_narrow: opt) { "Header" }
         c.content_region { "Content" }
         c.pane_region { "Pane" }
       end
 
-      divider_class = Primer::Beta::PageLayout::HEADER_RESPONSIVE_DIVIDER_MAPPINGS[opt]
+      divider_class = Primer::Beta::PageLayout::HEADER_DIVIDER_NARROW_MAPPINGS[opt]
       assert_selector("div.PageLayout") do
         assert_selector("div.PageLayout-header#{divider_class.empty? ? '' : ".#{divider_class}"}", text: "Header")
         assert_selector("div.PageLayout-content", text: "Content")

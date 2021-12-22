@@ -63,13 +63,13 @@ module Primer
       }.freeze
       RESPONSIVE_VARIANT_OPTIONS = RESPONSIVE_VARIANT_MAPPINGS.keys.freeze
 
-      HEADER_RESPONSIVE_DIVIDER_DEFAULT = :none
-      HEADER_RESPONSIVE_DIVIDER_MAPPINGS = {
-        HEADER_RESPONSIVE_DIVIDER_DEFAULT => "",
+      HEADER_DIVIDER_NARROW_DEFAULT = :none
+      HEADER_DIVIDER_NARROW_MAPPINGS = {
+        HEADER_DIVIDER_NARROW_DEFAULT => "",
         :line => "PageLayout-region--dividerNarrow-line-before",
         :filled => "PageLayout-region--dividerNarrow-filled-before"
       }.freeze
-      HEADER_RESPONSIVE_DIVIDER_OPTIONS = HEADER_RESPONSIVE_DIVIDER_MAPPINGS.keys.freeze
+      HEADER_DIVIDER_NARROW_OPTIONS = HEADER_DIVIDER_NARROW_MAPPINGS.keys.freeze
 
       FOOTER_RESPONSIVE_DIVIDER_DEFAULT = :none
       FOOTER_RESPONSIVE_DIVIDER_MAPPINGS = {
@@ -89,9 +89,9 @@ module Primer
       # The layout's header.
       #
       # @param divider [Boolean] Whether to show a header divider
-      # @param responsive_divider [Symbol] Whether to show a divider below the `header` region if in responsive mode. <%= one_of(Primer::Beta::PageLayout::HEADER_RESPONSIVE_DIVIDER_OPTIONS) %>
+      # @param divider_narrow [Symbol] Whether to show a divider below the `header` region if in responsive mode. <%= one_of(Primer::Beta::PageLayout::HEADER_DIVIDER_NARROW_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :header_region, lambda { |divider: false, responsive_divider: :line, **header_system_arguments|
+      renders_one :header_region, lambda { |divider: false, divider_narrow: :line, **header_system_arguments|
         # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
@@ -100,7 +100,7 @@ module Primer
 
         header_system_arguments[:classes] = class_names(
           header_system_arguments[:classes],
-          HEADER_RESPONSIVE_DIVIDER_MAPPINGS[fetch_or_fallback(HEADER_RESPONSIVE_DIVIDER_OPTIONS, responsive_divider, HEADER_RESPONSIVE_DIVIDER_DEFAULT)],
+          HEADER_DIVIDER_NARROW_MAPPINGS[fetch_or_fallback(HEADER_DIVIDER_NARROW_OPTIONS, divider_narrow, HEADER_DIVIDER_NARROW_DEFAULT)],
           "PageLayout-header",
           "PageLayout-region"
         )
