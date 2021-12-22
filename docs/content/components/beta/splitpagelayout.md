@@ -10,13 +10,12 @@ import Example from '../../../src/@primer/gatsby-theme-doctocat/components/examp
 
 <!-- Warning: AUTO-GENERATED file, do not edit. Add code comments to your Ruby instead <3 -->
 
-In the `SplitPageLayout`, changes in the Pane region are reflected in the Content region. This is also known as a "List/Detail" or "Master/Detail" pattern.
+In the `SplitPageLayout`, changes in the Pane region are reflected in the `Content` region. This is also known as a "List/Detail" or "Master/Detail" pattern.
 
-On larger screens, the user sees both regions side by side, with the Pane region appearing flushed to the left.
+On larger screens, the user sees both regions side by side, with the `Pane` region appearing flushed to the left.
 
-On smaller screens, the user only sees one of pane or content regions at a time.
-Pages may decide if it's more important to show the Pane region or the Content region first by the responsiveLandingRegion property.
-For example, opening "Repository settings" on mobile will have the user land on the Pane region, since in that case showing the menu options first is more important.
+On smaller screens, the user only sees one of `Pane` or `Content` regions at a time.
+Pages may decide if it's more important to show the `Pane` region or the `Content`` region first by the `:responsive_primary_region` property.
 
 ## Accessibility
 
@@ -68,7 +67,7 @@ The layout's pane.
 
 ### Inner spacing
 
-Sets padding to regions individually. - `:condensed` keeps the margin at 16px. - `:normal`` sets the margin to 16px, and to 24px on lg breakpoints and above.
+Sets padding to regions individually. - `:condensed` keeps the margin at 16px. - `:normal` sets the margin to 16px, and to 24px on lg breakpoints and above.
 
 <Example src="<div inner_spacing='condensed' data-view-component='true' class='PageLayout PageLayout--outerSpacing-normal PageLayout--columnGap-normal PageLayout--rowGap-normal PageLayout--variant-stackRegions PageLayout--panePos-start PageLayout--variant-stackRegions-panePos-start'>  <div data-view-component='true' class='PageLayout-wrapper '>        <div data-view-component='true' class='PageLayout-columns'>        <div data-view-component='true' class='PageLayout-region PageLayout-pane PageLayout-region--hasDivider-none-before border'>Pane</div>        <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Content</div></div>    </div></div><div inner_spacing='normal' data-view-component='true' class='PageLayout PageLayout--outerSpacing-normal PageLayout--columnGap-normal PageLayout--rowGap-normal PageLayout--variant-stackRegions PageLayout--panePos-start PageLayout--variant-stackRegions-panePos-start'>  <div data-view-component='true' class='PageLayout-wrapper '>        <div data-view-component='true' class='PageLayout-columns'>        <div data-view-component='true' class='PageLayout-region PageLayout-pane PageLayout-region--hasDivider-none-before border'>Pane</div>        <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Content</div></div>    </div></div>" />
 
@@ -85,7 +84,7 @@ Sets padding to regions individually. - `:condensed` keeps the margin at 16px. -
 
 ### Responsive primary region
 
-When responsiveVariant is set to separateRegions, defines which region appears first on small viewports. content is default. - `:content` - `:pane`
+When `responsive_variant` is set to `:separate_regions`, defines which region appears first on small viewports. `:content` is default. - `:content` - `:pane`
 
 <Example src="<div resposive_primary_region='content' data-view-component='true' class='PageLayout PageLayout--outerSpacing-normal PageLayout--columnGap-normal PageLayout--rowGap-normal PageLayout--variant-stackRegions PageLayout--panePos-start PageLayout--variant-stackRegions-panePos-start'>  <div data-view-component='true' class='PageLayout-wrapper '>        <div data-view-component='true' class='PageLayout-columns'>        <div data-view-component='true' class='PageLayout-region PageLayout-pane PageLayout-region--hasDivider-none-before border'>Pane</div>        <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Content</div></div>    </div></div><div data-view-component='true' class='PageLayout PageLayout--outerSpacing-normal PageLayout--columnGap-normal PageLayout--rowGap-normal PageLayout--variant-stackRegions PageLayout--panePos-start PageLayout--variant-stackRegions-panePos-start'>  <div data-view-component='true' class='PageLayout-wrapper '>        <div data-view-component='true' class='PageLayout-columns'>        <div data-view-component='true' class='PageLayout-region PageLayout-pane PageLayout-region--hasDivider-none-before border'>Pane</div>        <div data-view-component='true' class='PageLayout-region PageLayout-content border'>Content</div></div>    </div></div>" />
 
