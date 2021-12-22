@@ -308,7 +308,7 @@
       presents the content in a vertical flow, with pane and content vertically arranged.
       `:separate_regions` presents pane and content as different pages on smaller
       viewports.
-  - name: responsive_primary_region
+  - name: primary_region
     type: Symbol
     default: "`:content`"
     description: When `responsive_variant` is set to `:separate_regions`, defines
@@ -324,7 +324,7 @@
     type: Symbol
     default: "`:normal`"
     description: Sets padding to regions individually. One of `:condensed` and `:normal`.
-  - name: responsive_primary_region
+  - name: primary_region
     type: Symbol
     default: "`:content`"
     description: When `responsive_variant` is set to `:separate_regions`, defines

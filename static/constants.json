@@ -260,24 +260,28 @@
       "condensed"
     ],
     "Content": "Primer::Beta::PageLayout::Content",
-    "FOOTER_RESPONSIVE_DIVIDER_DEFAULT": "none",
-    "FOOTER_RESPONSIVE_DIVIDER_MAPPINGS": {
+    "FOOTER_DIVIDER_NARROW_DEFAULT": "inherit",
+    "FOOTER_DIVIDER_NARROW_MAPPINGS": {
+      "inherit": "PageLayout-region--dividerNarrow-line-before",
       "none": "",
-      "line": "PageLayout-region--hasDivider-line-before",
-      "filled": "PageLayout-region--hasDivider-filled-before"
+      "line": "PageLayout-region--dividerNarrow-line-before",
+      "filled": "PageLayout-region--dividerNarrow-filled-before"
     },
-    "FOOTER_RESPONSIVE_DIVIDER_OPTIONS": [
+    "FOOTER_DIVIDER_NARROW_OPTIONS": [
+      "inherit",
       "none",
       "line",
       "filled"
     ],
-    "HEADER_RESPONSIVE_DIVIDER_DEFAULT": "none",
-    "HEADER_RESPONSIVE_DIVIDER_MAPPINGS": {
+    "HEADER_DIVIDER_NARROW_DEFAULT": "inherit",
+    "HEADER_DIVIDER_NARROW_MAPPINGS": {
+      "inherit": "PageLayout-region--dividerNarrow-line-after",
       "none": "",
-      "line": "PageLayout-region--hasDivider-line-before",
-      "filled": "PageLayout-region--hasDivider-filled-before"
+      "line": "PageLayout-region--dividerNarrow-line-after",
+      "filled": "PageLayout-region--dividerNarrow-filled-after"
     },
-    "HEADER_RESPONSIVE_DIVIDER_OPTIONS": [
+    "HEADER_DIVIDER_NARROW_OPTIONS": [
+      "inherit",
       "none",
       "line",
       "filled"
@@ -291,20 +295,20 @@
       "normal",
       "condensed"
     ],
-    "Pane": "Primer::Beta::PageLayout::Pane",
-    "RESPONSIVE_PRIMARY_REGION_DEFAULT": "content",
-    "RESPONSIVE_PRIMARY_REGION_MAPPINGS": {
-      "content": "PageLayout--variant-separateRegions-primary-content",
-      "pane": "PageLayout--variant-separateRegions-primary-pane"
+    "PRIMARY_REGION_DEFAULT": "content",
+    "PRIMARY_REGION_MAPPINGS": {
+      "content": "PageLayout--responsive-primary-content",
+      "pane": "PageLayout--responsive-primary-pane"
     },
-    "RESPONSIVE_PRIMARY_REGION_OPTIONS": [
+    "PRIMARY_REGION_OPTIONS": [
       "content",
       "pane"
     ],
+    "Pane": "Primer::Beta::PageLayout::Pane",
     "RESPONSIVE_VARIANT_DEFAULT": "stack_regions",
     "RESPONSIVE_VARIANT_MAPPINGS": {
-      "stack_regions": "PageLayout--variant-stackRegions",
-      "separate_regions": "PageLayout--variant-separateRegions"
+      "stack_regions": "PageLayout--responsive-stackRegions",
+      "separate_regions": "PageLayout--responsive-separateRegions"
     },
     "RESPONSIVE_VARIANT_OPTIONS": [
       "stack_regions",
@@ -353,42 +357,44 @@
       "start": "PageLayout--panePos-start",
       "end": "PageLayout--panePos-start"
     },
+    "DIVIDER_NARROW_DEFAULT": "inherit",
+    "DIVIDER_NARROW_MAPPINGS": {
+      "{:end=>:inherit}": "PageLayout-region--dividerNarrow-line-before",
+      "{:end=>:none}": "PageLayout-region--dividerNarrow-none-before",
+      "{:end=>:line}": "PageLayout-region--dividerNarrow-line-before",
+      "{:end=>:filled}": "PageLayout-region--dividerNarrow-filled-before",
+      "{:start=>:inherit}": "PageLayout-region--dividerNarrow-line-after",
+      "{:start=>:none}": "PageLayout-region--dividerNarrow-none-after",
+      "{:start=>:line}": "PageLayout-region--dividerNarrow-line-after",
+      "{:start=>:filled}": "PageLayout-region--dividerNarrow-filled-after"
+    },
+    "DIVIDER_NARROW_USER_OPTIONS": [
+      "inherit",
+      "none",
+      "line",
+      "filled"
+    ],
     "DIVIDER_OPTIONS": [
       "start",
       "end"
     ],
-    "HAS_DIVIDER_NONE_MAPPINGS": {
-      "start": "PageLayout-region--hasDivider-none-before",
-      "end": "PageLayout-region--hasDivider-none-after"
-    },
     "POSITION_DEFAULT": "start",
     "POSITION_MAPPINGS": {
       "start": "PageLayout--panePos-start",
       "end": "PageLayout--panePos-end"
     },
-    "POSITION_OPTIONS": [
+    "POSITION_NARROW_DEFAULT": "inherit",
+    "POSITION_NARROW_MAPPINGS": {
+      "inherit": "",
+      "start": "PageLayout--responsive-panePos-start",
+      "end": "PageLayout--responsive-panePos-end"
+    },
+    "POSITION_NARROW_OPTIONS": [
+      "inherit",
       "start",
       "end"
     ],
-    "RESPONSIVE_DIVIDER_DEFAULT": "none",
-    "RESPONSIVE_DIVIDER_MAPPINGS": {
-      "none": "",
-      "line": "PageLayout--divider-after",
-      "filled": "PageLayout--divider-after-filled"
-    },
-    "RESPONSIVE_DIVIDER_OPTIONS": [
-      "none",
-      "line",
-      "filled"
-    ],
-    "RESPONSIVE_POSITION_DEFAULT": "inherit",
-    "RESPONSIVE_POSITION_MAPPINGS": {
-      "inherit": "",
-      "start": "PageLayout--variant-stackRegions-panePos-start",
-      "end": "PageLayout--variant-stackRegions-panePos-end"
-    },
-    "RESPONSIVE_POSITION_OPTIONS": [
-      "inherit",
+    "POSITION_OPTIONS": [
       "start",
       "end"
     ],
@@ -440,12 +446,12 @@
       "narrow",
       "wide"
     ],
-    "RESPONSIVE_PRIMARY_REGION_DEFAULT": "content",
-    "RESPONSIVE_PRIMARY_REGION_MAPPINGS": {
-      "content": "PageLayout--variant-separateRegions-primary-content",
-      "pane": "PageLayout--variant-separateRegions-primary-pane"
+    "PRIMARY_REGION_DEFAULT": "content",
+    "PRIMARY_REGION_MAPPINGS": {
+      "content": "PageLayout--responsive-separateRegions-primary-content",
+      "pane": "PageLayout--responsive-separateRegions-primary-pane"
     },
-    "RESPONSIVE_PRIMARY_REGION_OPTIONS": [
+    "PRIMARY_REGION_OPTIONS": [
       "content",
       "pane"
     ]
