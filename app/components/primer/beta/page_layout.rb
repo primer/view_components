@@ -94,15 +94,10 @@ module Primer
       # @param divider_narrow [Symbol] Whether to show a divider below the `header` region if in responsive mode. <%= one_of(Primer::Beta::PageLayout::HEADER_DIVIDER_NARROW_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :header_region, lambda { |divider: false, divider_narrow: :line, **header_system_arguments|
-        # These classes have to be set in the parent `Layout` element, so we modify its system arguments.
-        @system_arguments[:classes] = class_names(
-          @system_arguments[:classes],
-          "PageLayout--hasHeaderDivider" => divider
-        )
-
         header_system_arguments[:classes] = class_names(
           header_system_arguments[:classes],
-          HEADER_DIVIDER_NARROW_MAPPINGS[fetch_or_fallback(HEADER_DIVIDER_NARROW_OPTIONS, divider_narrow, HEADER_DIVIDER_NARROW_DEFAULT)],
+          { "PageLayout-header--hasDivider" => divider },
+          { HEADER_DIVIDER_NARROW_MAPPINGS[fetch_or_fallback(HEADER_DIVIDER_NARROW_OPTIONS, divider_narrow, HEADER_DIVIDER_NARROW_DEFAULT)] => divider },
           "PageLayout-header",
           "PageLayout-region"
         )
@@ -156,7 +151,7 @@ module Primer
           { "PageLayout--hasPaneDivider" => divider }
         )
 
-        Pane.new(position: position, **pane_system_arguments)
+        Pane.new(divider: divider, position: position, **pane_system_arguments)
       }
 
       # @example Default
@@ -482,10 +477,11 @@ module Primer
         TAG_DEFAULT = :div
         TAG_OPTIONS = [TAG_DEFAULT, :aside, :nav, :section].freeze
 
+        # @param divider [Boolean]
         # @param divider_narrow [Symbol] <%= one_of(Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_OPTIONS) %>
         # @param position [Symbol] <%= one_of(Primer::Beta::PageLayout::Pane::POSITION_OPTIONS) %>
         # @param tag [Symbol] <%= one_of(Primer::Beta::PageLayout::Pane::TAG_OPTIONS) %>
-        def initialize(divider_narrow: DIVIDER_NARROW_DEFAULT, position: POSITION_DEFAULT, tag: TAG_DEFAULT, **system_arguments)
+        def initialize(divider: false, divider_narrow: DIVIDER_NARROW_DEFAULT, position: POSITION_DEFAULT, tag: TAG_DEFAULT, **system_arguments)
           @system_arguments = system_arguments
           @position = position
 
@@ -493,7 +489,7 @@ module Primer
           @system_arguments[:classes] = class_names(
             "PageLayout-region",
             "PageLayout-pane",
-            DIVIDER_NARROW_MAPPINGS[{ position => fetch_or_fallback(DIVIDER_NARROW_USER_OPTIONS, divider_narrow, DIVIDER_NARROW_DEFAULT) }],
+            { DIVIDER_NARROW_MAPPINGS[{ position => fetch_or_fallback(DIVIDER_NARROW_USER_OPTIONS, divider_narrow, DIVIDER_NARROW_DEFAULT) }] => divider },
             @system_arguments[:classes]
           )
         end

@@ -288,6 +288,16 @@ class PrimerBetaPageLayoutTest < Minitest::Test
     end
   end
 
+  def test_pane_divider_narrow_not_applied_when_no_divider
+    render_inline(Primer::Beta::PageLayout.new) do |c|
+      c.content_region { "Content" }
+      c.pane_region(position: :start, divider: false, divider_narrow: :line) { "Pane" }
+    end
+
+    type_class = Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_MAPPINGS[{ start: :line }]
+    refute_selector("div.PageLayout-pane.#{type_class}", text: "Pane")
+  end
+
   def test_pane_tags
     Primer::Beta::PageLayout::Pane::TAG_OPTIONS.each do |tag|
       render_inline(Primer::Beta::PageLayout.new) do |c|
@@ -345,7 +355,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       c.pane_region { "Pane" }
     end
 
-    assert_selector("div.PageLayout.PageLayout--hasHeaderDivider")
+    assert_selector("div.PageLayout-header.PageLayout-header--hasDivider.PageLayout-region--dividerNarrow-line-after")
   end
 
   def test_header_divider_not_present_when_not_set
@@ -355,13 +365,13 @@ class PrimerBetaPageLayoutTest < Minitest::Test
       c.pane_region { "Pane" }
     end
 
-    refute_selector("div.PageLayout.PageLayout--hasHeaderDivider")
+    refute_selector("div.PageLayout-header.PageLayout-header--hasDivider")
   end
 
   def test_header_responsive_divider
     Primer::Beta::PageLayout::HEADER_DIVIDER_NARROW_OPTIONS.each do |opt|
       render_inline(Primer::Beta::PageLayout.new) do |c|
-        c.header_region(divider_narrow: opt) { "Header" }
+        c.header_region(divider: true, divider_narrow: opt) { "Header" }
         c.content_region { "Content" }
         c.pane_region { "Pane" }
       end
