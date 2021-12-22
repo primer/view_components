@@ -11,7 +11,7 @@ class Primer::Beta::PageLayoutStories < ViewComponent::Storybook::Stories
       select(:outer_spacing, Primer::Beta::PageLayout::OUTER_SPACING_OPTIONS, Primer::Beta::PageLayout::OUTER_SPACING_DEFAULT)
       select(:column_gap, Primer::Beta::PageLayout::COLUMN_GAP_OPTIONS, Primer::Beta::PageLayout::COLUMN_GAP_DEFAULT)
       select(:row_gap, Primer::Beta::PageLayout::ROW_GAP_OPTIONS, Primer::Beta::PageLayout::ROW_GAP_DEFAULT)
-      select(:responsive_primary_region, Primer::Beta::PageLayout::RESPONSIVE_PRIMARY_REGION_OPTIONS, Primer::Beta::PageLayout::RESPONSIVE_PRIMARY_REGION_DEFAULT)
+      select(:primary_region, Primer::Beta::PageLayout::PRIMARY_REGION_OPTIONS, Primer::Beta::PageLayout::PRIMARY_REGION_DEFAULT)
       select(:responsive_variant, Primer::Beta::PageLayout::RESPONSIVE_VARIANT_OPTIONS, Primer::Beta::PageLayout::RESPONSIVE_VARIANT_DEFAULT)
     end
 
@@ -31,7 +31,7 @@ class Primer::Beta::PageLayoutStories < ViewComponent::Storybook::Stories
       select(:outer_spacing, Primer::Beta::PageLayout::OUTER_SPACING_OPTIONS, Primer::Beta::PageLayout::OUTER_SPACING_DEFAULT)
       select(:column_gap, Primer::Beta::PageLayout::COLUMN_GAP_OPTIONS, Primer::Beta::PageLayout::COLUMN_GAP_DEFAULT)
       select(:row_gap, Primer::Beta::PageLayout::ROW_GAP_OPTIONS, Primer::Beta::PageLayout::ROW_GAP_DEFAULT)
-      select(:responsive_primary_region, Primer::Beta::PageLayout::RESPONSIVE_PRIMARY_REGION_OPTIONS, Primer::Beta::PageLayout::RESPONSIVE_PRIMARY_REGION_DEFAULT)
+      select(:primary_region, Primer::Beta::PageLayout::PRIMARY_REGION_OPTIONS, Primer::Beta::PageLayout::PRIMARY_REGION_DEFAULT)
       select(:responsive_variant, Primer::Beta::PageLayout::RESPONSIVE_VARIANT_OPTIONS, Primer::Beta::PageLayout::RESPONSIVE_VARIANT_DEFAULT)
     end
 
