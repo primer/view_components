@@ -8,7 +8,7 @@ class Primer::Beta::SplitPageLayoutStories < ViewComponent::Storybook::Stories
   story(:page_layout) do
     controls do
       select(:inner_spacing, Primer::Beta::SplitPageLayout::INNER_SPACING_OPTIONS, Primer::Beta::SplitPageLayout::INNER_SPACING_DEFAULT)
-      select(:responsive_primary_region, Primer::Beta::SplitPageLayout::RESPONSIVE_PRIMARY_REGION_OPTIONS, Primer::Beta::SplitPageLayout::RESPONSIVE_PRIMARY_REGION_DEFAULT)
+      select(:primary_region, Primer::Beta::SplitPageLayout::PRIMARY_REGION_OPTIONS, Primer::Beta::SplitPageLayout::PRIMARY_REGION_DEFAULT)
     end
 
     content do |c|
