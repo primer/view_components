@@ -34,8 +34,8 @@ module Primer
 
       PRIMARY_REGION_DEFAULT = :content
       PRIMARY_REGION_MAPPINGS = {
-        PRIMARY_REGION_DEFAULT => "PageLayout--responsive-separateRegions-primary-content",
-        :pane => "PageLayout--responsive-separateRegions-primary-pane"
+        PRIMARY_REGION_DEFAULT => "PageLayout--responsive-primary-content",
+        :pane => "PageLayout--responsive-primary-pane"
       }.freeze
       PRIMARY_REGION_OPTIONS = PRIMARY_REGION_MAPPINGS.keys.freeze
 
