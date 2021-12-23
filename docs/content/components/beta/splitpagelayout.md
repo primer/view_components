@@ -15,7 +15,7 @@ In the `SplitPageLayout`, changes in the Pane region are reflected in the `Conte
 On larger screens, the user sees both regions side by side, with the `Pane` region appearing flushed to the left.
 
 On smaller screens, the user only sees one of `Pane` or `Content` regions at a time.
-Pages may decide if it's more important to show the `Pane` region or the `Content`` region first by the `:primary_region` property.
+Pages may decide if it's more important to show the `Pane` region or the `Content` region first by the `:primary_region` property.
 
 ## Accessibility
 
