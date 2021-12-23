@@ -448,8 +448,8 @@
     ],
     "PRIMARY_REGION_DEFAULT": "content",
     "PRIMARY_REGION_MAPPINGS": {
-      "content": "PageLayout--responsive-separateRegions-primary-content",
-      "pane": "PageLayout--responsive-separateRegions-primary-pane"
+      "content": "PageLayout--responsive-primary-content",
+      "pane": "PageLayout--responsive-primary-pane"
     },
     "PRIMARY_REGION_OPTIONS": [
       "content",
