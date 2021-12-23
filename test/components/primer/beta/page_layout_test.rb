@@ -279,7 +279,7 @@ class PrimerBetaPageLayoutTest < Minitest::Test
           c.pane_region(position: position, divider: true, divider_narrow: type) { "Pane" }
         end
 
-        type_class = Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_MAPPINGS[{position => type}]
+        type_class = Primer::Beta::PageLayout::Pane::DIVIDER_NARROW_MAPPINGS[{ position => type }]
         assert_selector("div.PageLayout.PageLayout--hasPaneDivider") do
           assert_selector("div.PageLayout-content", text: "Content")
           assert_selector("div.PageLayout-pane.#{type_class}", text: "Pane")
