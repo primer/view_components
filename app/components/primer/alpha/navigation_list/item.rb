@@ -12,7 +12,7 @@ module Primer
 
         # The leading visual rendered before the link.
         #
-        # @param kwargs [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %> or <%= link_to_component(Primer::OcticonComponent) %> or inner html (aka <path> tags) for <svg>
+        # @param kwargs [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %> or <%= link_to_component(Primer::OcticonComponent) %> or inner html (ie <path> tags) for <svg>
         renders_one :leading_visual, types: {
           icon: Primer::OcticonComponent,
           avatar: lambda { |**kwargs|
