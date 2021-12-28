@@ -13,13 +13,13 @@ module Primer
       #
       # @param component_klass [Class] A custom component class to use instead of the default Item class.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_many :items, lambda { |component_klass: Item, **system_arguments|
+      renders_many :items, lambda { |**system_arguments|
         system_arguments[:classes] = class_names(
           @item_classes,
           system_arguments[:classes]
         )
 
-        component_klass.new(selected_item_id: @selected_item_id, **system_arguments)
+        Item.new(selected_item_id: @selected_item_id, **system_arguments)
       }
 
       # Sections.
