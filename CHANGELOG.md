@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+- Add alpha `CtaLink` component.
+
+  _Manuel Puyol, Charlotte Dann_
+
 ## 0.0.66
 
 - Revert optimization changes to utilities.
