@@ -87,12 +87,12 @@ class ArgumentMappersButtonTest < LinterTestCase
   end
 
   def test_raises_if_cannot_map_class
-    @file = '<button class="text-center">Button</button>'
+    @file = '<button class="text-fuzzy-waffle">Button</button>'
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
       ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
     end
 
-    assert_equal "Cannot convert class text-center", err.message
+    assert_equal "Cannot convert class text-fuzzy-waffle", err.message
   end
 
   def test_raises_if_cannot_map_attribute
