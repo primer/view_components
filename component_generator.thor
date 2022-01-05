@@ -67,7 +67,7 @@ class ComponentGenerator < Thor::Group
   end
 
   def import_in_primer_ts
-    append_to_file("app/components/primer/primer.ts", "import './#{status_path}#{underscore_name}'") if js_package_name
+    append_to_file("app/components/primer/primer.ts", "import './#{status_path}#{underscore_name}'\n") if js_package_name
   end
 
   def install_js_package
