@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Primer
   module Alpha
     class DialogPreview < ViewComponent::Preview
