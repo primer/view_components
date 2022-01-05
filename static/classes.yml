@@ -137,6 +137,7 @@
 - ".d-inline-flex"
 - ".details-overlay"
 - ".details-reset"
+- ".dialog"
 - ".dropdown"
 - ".dropdown-divider"
 - ".dropdown-header"
