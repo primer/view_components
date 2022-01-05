@@ -62,6 +62,11 @@ module Primer
         dialog_id = SecureRandom.hex(4)
         @header_id = "dialog-#{dialog_id}"
 
+        @system_arguments[:classes] = class_names(
+          "dialog",
+          system_arguments[:classes]
+        )
+
         if @description.present?
           @description_id = "dialog-description-#{dialog_id}"
           @system_arguments[:aria] = { labelledby: @header_id, describedby: @description_id }
