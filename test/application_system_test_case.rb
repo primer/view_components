@@ -22,14 +22,12 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   def with_preview(preview_name)
     component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
-    component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
-     status = nil
-     status = "beta/" if component_name.match?(/^Beta[A-Z].*/)
-     status = "alpha/" if component_name.match?(/^Alpha[A-Z].*/)
-     component_name = component_name.gsub(/^Beta|^Alpha/, "") if status
-     component_uri = component_name.underscore
+    match = /^(Alpha|Beta)([A-Z])/.match(component_name)
+    status = match[1]
+    status_path = status ? "#{status.downcase}/" : ""
+    component_uri = component_name.gsub(status, "").underscore
 
-     visit("/rails/view_components/primer/#{status}#{component_uri}/#{preview_name}")
+    visit("/rails/view_components/primer/#{status_path}#{component_uri}/#{preview_name}")
 
     assert_accessible(page)
   end
