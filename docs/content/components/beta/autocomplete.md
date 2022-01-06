@@ -15,7 +15,7 @@ import RequiresJSFlash from '../../../src/@primer/gatsby-theme-doctocat/componen
 
 Use `AutoComplete` to provide a user with a list of selectable suggestions that appear when they type into the
 input field. This list is populated by server search results.
-hello
+
 ## Accessibility
 
 Always set an accessible label to help the user interact with the component.
