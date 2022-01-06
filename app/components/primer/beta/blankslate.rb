@@ -9,7 +9,6 @@ module Primer
     #   - All blankslate visuals have been programmed as decorative images, using `aria-hidden=”true”` and `img alt=””`,  which will hide the visual from screen reader users.
     #   - The blankslate supports a primary and secondary action. Both actions have been built as semantic links with primary and secondary styling.
     #   - `secondary_action` text should be meaningful out of context and clearly describe the destination. Avoid using vague text like, "Learn more" or "Click here".
-    #   - All links within the blankslate must receive visual and programmatic focus, and be accessible through mouse, keyboard and touch device.
     #   - The blankslate can leverage the spinner component, which will communicate to screen reader users that the content is still loading.
     class Blankslate < Primer::Component
       status :beta
