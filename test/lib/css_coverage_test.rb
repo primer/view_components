@@ -23,7 +23,7 @@ class CssCoverageTest < Minitest::Test
       # used to showcase custom classes in component docs
       ".custom-class",
       ".f00",
-      "."
+      ".dialog" # Temporarily adding this until we've styled it in @primer/css
     ]
 
     @css_data =
