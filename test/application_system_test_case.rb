@@ -23,9 +23,10 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   def with_preview(preview_name)
     component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
     match = /^(Alpha|Beta)([A-Z])/.match(component_name)
-    status = match[1]
-    status_path = status ? "#{status.downcase}/" : ""
-    component_uri = component_name.gsub(status, "").underscore
+    status = match ? match[1] : ""
+    status_path = match ? "#{status.downcase}/" : ""
+    component_name = component_name.gsub(/^Beta|^Alpha/, "") if match
+    component_uri = component_name.underscore
 
     visit("/rails/view_components/primer/#{status_path}#{component_uri}/#{preview_name}")
 
