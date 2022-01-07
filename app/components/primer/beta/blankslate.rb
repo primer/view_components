@@ -53,7 +53,6 @@ module Primer
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = tag
         system_arguments[:mb] = 1
-        system_arguments[:classes] = class_names("h2", system_arguments[:classes])
 
         Primer::HeadingComponent.new(**system_arguments)
       }
