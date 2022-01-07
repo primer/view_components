@@ -1,6 +1,15 @@
 name: CHANGELOG
 
-on: [pull_request]
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - labeled
+      - unlabeled
 
 jobs:
   changed_files:
@@ -20,6 +29,7 @@ jobs:
         run: |
           echo "::set-output name=markdown::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | grep .md$ | xargs)"
   check_for_changes:
+    if: ${{ !contains(github.event.pull_request.labels.*.name , 'skip changelog') }}
     runs-on: ubuntu-latest
     # require the first job to have ran
     needs: changed_files
@@ -27,6 +37,6 @@ jobs:
       - name: echo changed files
         run: |
           if [[ ! "${{needs.changed_files.outputs.markdown}}" == *"CHANGELOG.md"* ]]; then
-            echo "::error file=CHANGELOG.md,line=1,col=1::Please make sure that you add a CHANGELOG entry to describe the changes in this pull request."
+            echo "::error file=CHANGELOG.md,line=1,col=1::Please add a CHANGELOG entry to describe the changes in this pull request or if the changes don’t effect the library output add a ‘skip changelog’ label to the PR."
             exit 1
           fi
