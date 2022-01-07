@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     # Map a step output to a job output
     outputs:
-      all: ${{ steps.changes.outputs.all}}
       markdown: ${{ steps.changes.outputs.markdown }}
     steps:
       # Make sure we have some code to diff.
@@ -19,7 +18,6 @@ jobs:
         id: changes
         # Set outputs using the command.
         run: |
-          echo "::set-output name=all::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | xargs)"
           echo "::set-output name=markdown::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | grep .md$ | xargs)"
   check_for_changes:
     runs-on: ubuntu-latest
