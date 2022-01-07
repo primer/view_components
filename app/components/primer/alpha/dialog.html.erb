@@ -10,9 +10,11 @@
     </button>
   </header>
   <%= body %>
-  <footer>
-    <% buttons.each do |button| %>
-      <%= button %>
-    <% end %>
-  </footer>
+  <% if buttons.any? %>
+    <footer>
+      <% buttons.each do |button| %>
+        <%= button %>
+      <% end %>
+    </footer>
+  <% end %>
 <% end %>
