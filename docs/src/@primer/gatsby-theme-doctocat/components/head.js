@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import useSiteMetadata from '@primer/gatsby-theme-doctocat/src/use-site-metadata'
+import '@primer/css/dist/primer.css'
 
 // Reset PrimerCSS changing body font-size to 14px
 const bodyStyle = `
@@ -32,7 +33,6 @@ function Head(props) {
       <meta property="og:description" content={description} />
       <meta property="og:image" content={siteMetadata.imageUrl} />
       <meta property="twitter:card" content="summary_large_image" />
-      <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
       <script src={primerViewComponentsSrc}></script>
       <style>{bodyStyle}</style>
     </Helmet>
