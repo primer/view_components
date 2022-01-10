@@ -5,7 +5,7 @@ require "application_system_test_case"
 class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
   # Skip components that should be tested as part of a larger component.
   # Do not add to this list for any other reason!
-  NOT_STANDALONE = [:BetaAutoCompleteItemPreview, :NavigationTabComponentPreview].freeze
+  NOT_STANDALONE = [:BetaAutoCompleteItemPreview, :NavigationTabComponentPreview, :ContentPreview].freeze
   IGNORE = [:MarkdownPreview].freeze
 
   def test_accessibility_of_doc_examples

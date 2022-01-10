@@ -331,6 +331,8 @@
       "submit"
     ]
   },
+  "Primer::Content": {
+  },
   "Primer::CounterComponent": {
     "DEFAULT_SCHEME": "default",
     "DEPRECATED_SCHEME_OPTIONS": [
