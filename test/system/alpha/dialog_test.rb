@@ -2,10 +2,11 @@
 
 require "application_system_test_case"
 
-class Integration<%= module_name %><%= class_name %>Test < ApplicationSystemTestCase
+class IntegrationAlphaDialogTest < ApplicationSystemTestCase
+  # TODO: Add tests for JS functionality?
   def test_renders_component
     with_preview(:default)
 
-    assert_selector(".<%= custom_element_name %>")
+    assert_selector("div.dialog")
   end
 end

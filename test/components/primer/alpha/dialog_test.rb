@@ -58,20 +58,18 @@ class PrimerAlphaDialogTest < Minitest::Test
     end
   end
 
-  # TODO: Doesn't add buttons if not present
-  # def test_does_not_render_button
-  #   render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
-  #     c.button() { "Button 1" }
-  #     c.button() { "Button 2" }
-  #     c.body { "content" }
-  #   end
+  # Doesn't add buttons or footer if not present
+  def test_does_not_render_button
+    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
+      c.body { "content" }
+    end
 
-  #   assert_selector("div[role='dialog']") do
-  #     assert_selector("footer") do
-  #       refute_selector("button")
-  #     end
-  #   end
-  # end
+    assert_selector("div[role='dialog']") do
+      refute_selector("footer") do
+        refute_selector("button")
+      end
+    end
+  end
 
   # Adds buttons if present
   def test_renders_buttons
