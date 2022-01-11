@@ -8,6 +8,7 @@ class Primer::Alpha::DialogStories < ViewComponent::Storybook::Stories
   story(:dialog) do
     controls do
       classes "custom-class"
+      title "Are you sure you want to display a dialog?"
     end
 
     content do
