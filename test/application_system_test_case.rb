@@ -21,9 +21,14 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   AXE_WITHIN_SELECTOR = "body"
 
   def with_preview(preview_name)
-    component_uri = self.class.name.gsub("Test", "").gsub("Integration", "").underscore
+    component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
+    match = /^(Alpha|Beta)([A-Z])/.match(component_name)
+    status = match ? match[1] : ""
+    status_path = match ? "#{status.downcase}/" : ""
+    component_name = component_name.gsub(/^Beta|^Alpha/, "") if match
+    component_uri = component_name.underscore
 
-    visit("/rails/view_components/primer/#{component_uri}/#{preview_name}")
+    visit("/rails/view_components/primer/#{status_path}#{component_uri}/#{preview_name}")
 
     assert_accessible(page)
   end
