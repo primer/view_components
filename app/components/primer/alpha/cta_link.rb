@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "../button_component"
+
 module Primer
   module Alpha
     # Use `CtaLink` when you want a link with more visual weight.
