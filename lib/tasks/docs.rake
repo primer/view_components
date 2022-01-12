@@ -325,6 +325,9 @@ namespace :docs do
       title_match = /^# (.+)/.match(file_contents)
       title = title_match[1]
 
+      # Don't include initial ADR for recording ADRs
+      next nil if title == "Record architecture decisions"
+
       File.write(File.join(adr_content_dir, orig_file_name), file_contents)
       puts "Copied #{orig_path}"
 
@@ -336,7 +339,7 @@ namespace :docs do
     adr_entry = {
       "title" => "Architecture decisions",
       "url" => "/adr",
-      "children" => nav_entries
+      "children" => nav_entries.compact
     }
 
     existing_index = nav_yaml.index { |entry| entry["url"] == "/adr" }
