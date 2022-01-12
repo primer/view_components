@@ -440,7 +440,7 @@ class PrimerClassifyTest < Minitest::Test
     end
   end
 
-  def test_does_not_raises_if_not_using_system_arguments_exempted_when_raise_on_invalid_options_is_true
+  def test_does_not_raise_if_exemption_is_specified
     exemptions = %w[
       f1
       f2
@@ -465,6 +465,8 @@ class PrimerClassifyTest < Minitest::Test
       flex-self-start
       flex-shrink-0
     ]
+
+    Primer::Classify::Utilities.supported_selector_exemptions = exemptions
 
     with_raise_on_invalid_options(true) do
       Primer::Classify.call(classes: exemptions.join(" "))
