@@ -6,6 +6,6 @@ class Integration<%= module_name %><%= class_name %>Test < ApplicationSystemTest
   def test_renders_component
     with_preview(:default)
 
-    assert_selector(".<%= custom_element_name %>")
+    assert_selector("<%= custom_element_name %>")
   end
 end

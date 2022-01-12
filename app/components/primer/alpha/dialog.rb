@@ -55,7 +55,7 @@ module Primer
       def initialize(title:, description: nil, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
 
-        @system_arguments[:tag] = :div
+        @system_arguments[:tag] = "modal-dialog"
         @system_arguments[:role] = :dialog
         @title = title
         @description = description

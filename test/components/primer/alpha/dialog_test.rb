@@ -10,7 +10,7 @@ class PrimerAlphaDialogTest < Minitest::Test
       c.body { "content" }
     end
 
-    assert_selector("div[role='dialog']") do
+    assert_selector("modal-dialog[role='dialog']") do
       assert_selector("div", text: "content")
     end
   end
@@ -31,7 +31,7 @@ class PrimerAlphaDialogTest < Minitest::Test
       c.body { "content" }
     end
 
-    assert_selector("div[role='dialog']") do
+    assert_selector("modal-dialog[role='dialog']") do
       assert_selector("h1", text: "Title")
     end
   end
@@ -42,7 +42,7 @@ class PrimerAlphaDialogTest < Minitest::Test
       c.body { "content" }
     end
 
-    assert_selector("div[role='dialog']") do
+    assert_selector("modal-dialog[role='dialog']") do
       refute_selector("h2")
     end
   end
@@ -53,7 +53,7 @@ class PrimerAlphaDialogTest < Minitest::Test
       c.body { "content" }
     end
 
-    assert_selector("div[role='dialog']") do
+    assert_selector("modal-dialog[role='dialog']") do
       assert_selector("h2", text: "Description")
     end
   end
@@ -64,7 +64,7 @@ class PrimerAlphaDialogTest < Minitest::Test
       c.body { "content" }
     end
 
-    assert_selector("div[role='dialog']") do
+    assert_selector("modal-dialog[role='dialog']") do
       refute_selector("footer") do
         refute_selector("button")
       end
@@ -79,7 +79,7 @@ class PrimerAlphaDialogTest < Minitest::Test
       c.body { "content" }
     end
 
-    assert_selector("div[role='dialog']") do
+    assert_selector("modal-dialog[role='dialog']") do
       assert_selector("footer") do
         assert_selector("button", text: "Button 1")
         assert_selector("button", text: "Button 2")
@@ -93,7 +93,7 @@ class PrimerAlphaDialogTest < Minitest::Test
       c.body { "content" }
     end
 
-    assert_selector("div[role='dialog']") do
+    assert_selector("modal-dialog[role='dialog']") do
       assert_selector("header") do
         assert_selector("button[aria-label='Close']")
       end
