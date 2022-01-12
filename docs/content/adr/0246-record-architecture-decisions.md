@@ -1,5 +1,5 @@
 <!-- Warning: AUTO-GENERATED file, do not edit. Make changes to the files in the adr/ directory instead. -->
-# 0246. Record architecture decisions
+# Record architecture decisions
 
 Date: 2021-02-18
 
