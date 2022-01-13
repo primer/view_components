@@ -73,6 +73,9 @@ script/dev
 
 _Note: Overmind is required to run script/dev._
 
+If you make changes to the TypeScript and want to test those changes in Storybook, you'll need to rebuild the TypeScript.
+You can do this by running `npm run prepare` or `yarn run prepare`.
+
 ## Developing with another app
 
 In your `Gemfile`, change:
