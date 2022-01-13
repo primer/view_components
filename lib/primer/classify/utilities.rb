@@ -23,7 +23,7 @@ module Primer
       BREAKPOINT_INDEX_CACHE = Hash.new { |h, k| h[k] = BREAKPOINTS.index(k) }
 
       class << self
-        attr_accessor :validate_class_names, :supported_selector_exemptions
+        attr_accessor :validate_class_names
         alias validate_class_names? validate_class_names
 
         def classname(key, val, breakpoint = "")
@@ -60,16 +60,6 @@ module Primer
           return false unless validate_class_names?
 
           find_selector(selector).present?
-        end
-
-        # Does the given selector have a configured exemption.
-        #
-        # returns Boolean
-        def supported_selector_exemption?(selector)
-          return false unless supported_selector_exemptions
-
-          exemptions = Array(supported_selector_exemptions)
-          exemptions.include?(selector)
         end
 
         # Is the key and value responsive

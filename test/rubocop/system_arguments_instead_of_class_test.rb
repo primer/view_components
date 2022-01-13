@@ -7,6 +7,11 @@ class RubocopSystemArgumentInsteadOfClassTest < CopTest
     RuboCop::Cop::Primer::SystemArgumentInsteadOfClass
   end
 
+  def setup
+    config = RuboCop::Config.new(RuboCop::Config.new("Primer/SystemArgumentInsteadOfClass" => { "SystemArgumentClassExemptions" => ["mr-2"] }))
+    @cop = cop_class.new(config)
+  end
+
   def test_non_primer_component
     investigate(cop, <<-RUBY)
       Component.new(classes: "mr-1")
@@ -22,6 +27,14 @@ class RubocopSystemArgumentInsteadOfClassTest < CopTest
 
     assert_equal 1, cop.offenses.count
     assert_equal "Avoid using CSS classes when you can use System Arguments: https://primer.style/view-components/system-arguments.\n", cop.offenses.first.message
+  end
+
+  def test_primer_component_with_exemption
+    investigate(cop, <<-RUBY)
+      Primer::BaseComponent.new(classes: "mr-2")
+    RUBY
+
+    assert_empty cop.offenses
   end
 
   def test_non_primer_view_helper
