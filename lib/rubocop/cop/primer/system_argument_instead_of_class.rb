@@ -37,13 +37,10 @@ module RuboCop
           # get actual classes
           classes = classes_arg.value.value
 
-          # allow user to supply exemptions
-          exemptions = Array(cop_config["SystemArgumentClassExemptions"])
-          classes_minus_exemptions = (classes.split - exemptions).join(" ")
-          system_arguments = ::Primer::Classify::Utilities.classes_to_hash(classes_minus_exemptions)
+          system_arguments = ::Primer::Classify::Utilities.classes_to_hash(classes)
 
           # no classes are fixable
-          return if system_arguments[:classes].to_s == classes_minus_exemptions
+          return if system_arguments[:classes] == classes
 
           add_offense(classes_arg, message: INVALID_MESSAGE)
         end
