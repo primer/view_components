@@ -31,8 +31,6 @@ class ComponentStatusMigrator < Thor::Group
 
     copy_file(controller_path, controller_path_with_status)
     remove_file(controller_path)
-
-    insert_into_file(controller_path_with_status, "\nPrimer::#{name} = Primer::#{status.capitalize}::#{name_without_suffix}\n")
   end
 
   def move_template
@@ -67,7 +65,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def rename_test_class
-    gsub_file(test_path_with_status, /class .*Test/, "class Primer#{name_without_suffix.gsub('::', '')}Test")
+    gsub_file(test_path_with_status, /class .*Test </, "class Primer#{status.capitalize}#{name_without_suffix.gsub('::', '')}Test <")
   end
 
   def add_require_to_story
@@ -79,7 +77,11 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def update_all_references
-    run("grep -rl #{name} . --exclude=CHANGELOG.md | xargs sed -i 's/Primer::#{name}/Primer::#{status.capitalize}::#{name_without_suffix}/g'")
+    run("grep -rl #{name} . --exclude=CHANGELOG.md --exclude=#{test_path} | xargs sed -i 's/Primer::#{name}/Primer::#{status.capitalize}::#{name_without_suffix}/g'")
+  end
+
+  def add_alias
+    insert_into_file(controller_path_with_status, "\nPrimer::#{name} = Primer::#{status.capitalize}::#{name_without_suffix}\n")
   end
 
   def run_rubocop
