@@ -51,7 +51,7 @@ This setup leverages [yarn link](https://classic.yarnpkg.com/en/docs/cli/link) t
 
 5. Run `script/dev` on your Primer ViewComponents folder.
 
-The Primer ViewComponents documentation site and Storybook will hot reload any changes to Primer CSS after a few seconds.
+The Primer ViewComponents documentation site and Storybook will hot reload any changes to Primer CSS after a few seconds. Once you are done, we recommend using a snapshot release for the pull request review.
 
 To reverse this process, follow the [yarn unlink instructions](https://classic.yarnpkg.com/en/docs/cli/unlink).
 
