@@ -35,7 +35,29 @@ If the change requires a lot of updates or you’re unsure of the consequences o
 
 All the styling for Primer ViewComponents comes from [Primer CSS](https://github.com/primer/css). ViewComponents shouldn’t use Primer CSS utility classes directly for styling, there should be a 1:1 mapping between components in Primer ViewComponents and component classes in Primer CSS.
 
-Currently Primer CSS is in a separate repository so the workflow for making changes to Primer ViewComponents and CSS is quite cumbersome.
+Currently Primer CSS is in a separate repository so the workflow for making changes to Primer ViewComponents and CSS is not straightforward. You can choose between a local setup with hot reloading or use the snapshot releases.
+
+### Hot reloading (Local only)
+
+This setup leverages [yarn link](https://classic.yarnpkg.com/en/docs/cli/link) to hot reload any changes in Primer CSS. It links the Primer CSS dependency on the documentation site, demo app and Storybook to the `/dist` folder in your local installation of Primer CSS.
+
+1. [Set up Primer ViewComponents](./setup.md) and [Primer CSS](https://github.com/primer/css) for local development.
+
+2. On the Primer CSS folder, run `yarn link`. This will register `@primer/css` as a source.
+
+3. Run `yarn link "@primer/css"` in the Primer ViewComponents root, `/docs` and `/demo` folders.
+
+4. Run `yarn dist:watch` on your Primer CSS folder. This process will keep the `/dist` folder up to date.
+
+5. Run `script/dev` on your Primer ViewComponents folder.
+
+The Primer ViewComponents documentation site and Storybook will hot reload any changes to Primer CSS after a few seconds.
+
+To reverse this process, follow the [yarn unlink instructions](https://classic.yarnpkg.com/en/docs/cli/unlink).
+
+_Note: The demo app doesn't hot reload, but this workflow still works. Simply run `yarn postinstall` on the `/demo` folder to refresh your changes._
+
+### Snapshot releases (Local or Codespaces)
 
 As part of its actions workflow Primer CSS makes [snapshot releases](https://github.com/changesets/changesets/blob/main/docs/snapshot-releases.md) which you can use to test your changes in Primer ViewComponents. Develop your changes in Primer CSS and make a draft pull request. Once the checks have been completed you can get the snapshot release version from the check description:
 
