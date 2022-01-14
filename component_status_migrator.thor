@@ -31,6 +31,8 @@ class ComponentStatusMigrator < Thor::Group
 
     copy_file(controller_path, controller_path_with_status)
     remove_file(controller_path)
+
+    insert_into_file(controller_path_with_status, "\nPrimer::#{name} = Primer::#{status.capitalize}::#{name_without_suffix}\n")
   end
 
   def move_template
@@ -42,11 +44,10 @@ class ComponentStatusMigrator < Thor::Group
     end
   end
 
-  def move_test
+  def copy_test
     raise unless File.exist?(test_path)
 
     copy_file(test_path, test_path_with_status)
-    remove_file(test_path)
   end
 
   def move_story
