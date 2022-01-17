@@ -84,6 +84,14 @@ class ComponentStatusMigrator < Thor::Group
     insert_into_file(controller_path_with_status, "\nPrimer::#{name} = Primer::#{status.capitalize}::#{name_without_suffix}\n")
   end
 
+  def add_to_linter
+    insert_into_file(
+      "lib/rubocop/cop/primer/component_name_migration.rb",
+      "\"Primer::#{name}\" => \"Primer::#{status.capitalize}::#{name_without_suffix}\",\n",
+      after: "DEPRECATIONS = {\n"
+    )
+  end
+
   def run_rubocop
     run("bundle exec rubocop -a")
   end
