@@ -17,10 +17,10 @@ class RubocopComponentNameMigrationTest < CopTest
 
   def test_using_deprecated_class
     investigate(cop, <<-RUBY)
-      Primer::PopoverComponent.new
+      Primer::TestComponent.new
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Primer::Beta::Popover.new", cop.offenses.first.corrector.rewrite.strip
+    assert_equal "Primer::Beta::Test.new", cop.offenses.first.corrector.rewrite.strip
   end
 end

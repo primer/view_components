@@ -15,7 +15,7 @@ module RuboCop
       # Primer::Beta::ComponentName.new()
       class ComponentNameMigration < BaseCop
         DEPRECATIONS = {
-          "Primer::PopoverComponent" => "Primer::Beta::Popover"
+          "Primer::TestComponent" => "Primer::Beta::Test"
         }.freeze
 
         def on_send(node)
