@@ -6,6 +6,13 @@ require "rubocop"
 module RuboCop
   module Cop
     module Primer
+      # This cop ensures that components don't use deprecated component names
+      #
+      # bad
+      # Primer::ComponentNameComponent.new()
+      #
+      # good
+      # Primer::Beta::ComponentName.new()
       class ComponentNameMigration < BaseCop
         DEPRECATIONS = {
           "Primer::PopoverComponent" => "Primer::Beta::Popover"
