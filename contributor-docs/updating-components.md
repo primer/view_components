@@ -21,9 +21,15 @@ If the change requires a lot of updates or you’re unsure of the consequences o
 4. Make a release and upgrade the Primer ViewComponents library in github.com
 5. Migrate uses in github.com to new functionality
 
-   [How do we run the migrations / get data from the linter?]
+   To use your linter run:
 
-   If the migrations result in a lot of changes it’s best to split them up into multiple pull requests. [Is there a strategy for this to ping as few teams as possible?]
+   ```bash
+   bin/bundle exec erblint --enable-linters LinterName -a app/views app/components app/packages
+   ```
+
+   You can also enable your linter globally by adding it to `[.erb-lint.yml](https://github.com/github/github/blob/master/.erb-lint.yml)`.
+
+   If the migrations result in a lot of changes it’s best to split them up into multiple pull requests. [Here’s an example script for drafting pull requests by codeowners](https://github.com/primer/view_components/pull/972#discussion_r784217378).
 
 6. Remove old functionality
 
