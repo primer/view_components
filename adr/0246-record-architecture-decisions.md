@@ -1,4 +1,4 @@
-# 0246. Record architecture decisions
+# Record architecture decisions
 
 Date: 2021-02-18
 

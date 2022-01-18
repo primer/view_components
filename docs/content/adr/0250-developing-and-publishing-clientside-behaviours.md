@@ -1,5 +1,5 @@
 <!-- Warning: AUTO-GENERATED file, do not edit. Make changes to the files in the adr/ directory instead. -->
-# 0250. Developing and Publishing ClientSide Behaviours
+# Developing and publishing client-side behaviours
 
 Date: 2021-02-19
 
