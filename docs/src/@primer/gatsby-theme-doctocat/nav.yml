@@ -115,10 +115,8 @@
     url: "/components/alpha/underlinenav"
   - title: UnderlinePanels
     url: "/components/alpha/underlinepanels"
-- title: Architecture Decisions
+- title: Architecture decisions
   url: "/adr"
   children:
-  - title: Record Architecture Decisions
-    url: "/adr/0246-record-architecture-decisions"
-  - title: Developing And Publishing Clientside Behaviours
+  - title: Developing and publishing client-side behaviours
     url: "/adr/0250-developing-and-publishing-clientside-behaviours"
