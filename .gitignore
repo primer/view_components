@@ -17,6 +17,7 @@ demo/public/packs/
 demo/tmp/
 demo/config/master.key
 demo/test/components/previews/primer/docs/
+demo/app/assets/stylesheets/primer.css
 primer_view_components*.gem
 .DS_Store
 app/components/**/*.js
