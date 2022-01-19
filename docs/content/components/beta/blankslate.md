@@ -14,9 +14,11 @@ Use `Blankslate` when there is a lack of content within a page or section. Use a
 
 ## Accessibility
 
-- Set the `heading` level based on what is appropriate for your page hierarchy. [Learn more about best heading practices (WAI Headings)](https://www.w3.org/WAI/tutorials/page-structure/headings/)
-- `secondary_action` can be set to provide more information that is relevant in the context of the `Blankslate`.
+- The blankslate uses a semantic heading that must be set at the appropriate level based on the hierarchy of the page.
+- All blankslate visuals have been programmed as decorative images, using `aria-hidden=”true”` and `img alt=””`,  which will hide the visual from screen reader users.
+- The blankslate supports a primary and secondary action. Both actions have been built as semantic links with primary and secondary styling.
 - `secondary_action` text should be meaningful out of context and clearly describe the destination. Avoid using vague text like, "Learn more" or "Click here".
+- The blankslate can leverage the spinner component, which will communicate to screen reader users that the content is still loading.
 
 ## Arguments
 
@@ -118,7 +120,7 @@ Add an `icon` to give additional context. Refer to the [Octicons](https://primer
 
 Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
 
-<Example src="  <div data-view-component='true' class='blankslate'>    <span role='status' style='box-sizing: content-box; color: var(--color-icon-primary);' data-view-component='true' class='mb-3 d-inline-block'>  <span class='sr-only'>Loading</span>  <svg viewBox='0 0 16 16' fill='none' width='64' height='64' data-view-component='true' class='anim-rotate v-align-bottom'>    <circle cx='8' cy='8' r='7' stroke='currentColor' stroke-opacity='0.25' stroke-width='2' vector-effect='non-scaling-stroke' />    <path d='M15 8a7.002 7.002 0 00-7-7' stroke='currentColor' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke' /></svg></span>    <h2 data-view-component='true' class='h2 mb-1'>Title</h2>    <div data-view-component='true'>Description</div>    </div>" />
+<Example src="  <div data-view-component='true' class='blankslate'>    <svg style='box-sizing: content-box; color: var(--color-icon-primary);' width='64' height='64' viewBox='0 0 16 16' fill='none' data-view-component='true' class='mb-3 anim-rotate'>  <circle cx='8' cy='8' r='7' stroke='currentColor' stroke-opacity='0.25' stroke-width='2' vector-effect='non-scaling-stroke' />  <path d='M15 8a7.002 7.002 0 00-7-7' stroke='currentColor' stroke-width='2' stroke-linecap='round' vector-effect='non-scaling-stroke' /></svg>    <h2 data-view-component='true' class='h2 mb-1'>Title</h2>    <div data-view-component='true'>Description</div>    </div>" />
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>
@@ -132,7 +134,7 @@ Add a [SpinnerComponent](https://primer.style/view-components/components/spinner
 
 Add an `image` to give context that an Octicon couldn't.
 
-<Example src="  <div data-view-component='true' class='blankslate'>    <img size='56x56' src='https://github.githubassets.com/images/modules/site/features/security-icon.svg' alt='Security - secure vault' data-view-component='true' class='mb-3' />    <h2 data-view-component='true' class='h2 mb-1'>Title</h2>    <div data-view-component='true'>Description</div>    </div>" />
+<Example src="  <div data-view-component='true' class='blankslate'>    <img src='https://github.githubassets.com/images/modules/site/features/security-icon.svg' size='56x56' alt='Security - secure vault' data-view-component='true' class='mb-3' />    <h2 data-view-component='true' class='h2 mb-1'>Title</h2>    <div data-view-component='true'>Description</div>    </div>" />
 
 ```erb
 <%= render Primer::Beta::Blankslate.new do |c| %>

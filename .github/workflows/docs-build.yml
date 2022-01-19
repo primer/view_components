@@ -7,12 +7,14 @@ on:
 
 jobs:
   build-docs:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     name: Build Docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          token: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:

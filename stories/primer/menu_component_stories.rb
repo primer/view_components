@@ -13,7 +13,7 @@ class Primer::MenuComponentStories < ViewComponent::Storybook::Stories
 
   story(:with_heading) do
     content do |c|
-      c.heading { "Heading" }
+      c.heading(tag: :h2) { "Heading" }
       c.item(selected: true, href: "#url") { "Item 1" }
       c.item(href: "#url") { "Item 2" }
       c.item(href: "#url") { "Item 3" }

@@ -54,12 +54,11 @@ class ComponentGenerator < Thor::Group
   end
 
   def add_to_nav
-    append_to_file("docs/src/@primer/gatsby-theme-doctocat/nav.yml") do
-      <<-HEREDOC
-    - title: #{class_name} - Fix my order in docs/src/@primer/gatsby-theme-doctocat/nav.yml
-      url: /components/#{short_name}
-      HEREDOC
-    end
+    insert_into_file(
+      "docs/src/@primer/gatsby-theme-doctocat/nav.yml",
+      component_nav,
+      after: "url: \"/components\"\n  children:\n"
+    )
   end
 
   def create_ts_file
@@ -75,6 +74,13 @@ class ComponentGenerator < Thor::Group
   end
 
   private
+
+  def component_nav
+    <<-HEREDOC
+  - title: #{class_name} - Fix my order in docs/src/@primer/gatsby-theme-doctocat/nav.yml
+    url: /components/#{status_path}#{short_name}
+    HEREDOC
+  end
 
   def status_path
     return if status == "stable"
