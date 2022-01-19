@@ -21,6 +21,7 @@ Use `Dialog` for an overlayed dialog window.
 | :- | :- | :- | :- |
 | `title` | `String` | N/A | The title of the dialog. |
 | `description` | `String` | `nil` | The optional description of the dialog. |
+| `dialog_id` | `String` | `nil` | The optional ID of the dialog, defaults to random string. |
 | `system_arguments` | `Hash` | N/A | [System arguments](/system-arguments) |
 
 ## Slots
@@ -45,12 +46,13 @@ Required body content.
 
 ### Default
 
-<Example src="<modal-dialog role='dialog' aria-labelledby='dialog-e615d265' aria-describedby='dialog-description-e615d265' data-view-component='true' class='dialog'>  <header>    <h1 id='dialog-e615d265'>Title</h1>      <h2 id='dialog-description-e615d265'>Description</h2>    <button aria-label='Close' type='button' data-view-component='true' class='close-button'><svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg></button>    <button type='button' aria-label='Close'>      <svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg>    </button>  </header>  <div data-view-component='true'>    <em>Your custom content here</em></div></modal-dialog>" />
+<Example src="<modal-dialog role='dialog' id='my-custom-id' aria-labelledby='my-custom-id-header' aria-describedby='my-custom-id-description' data-view-component='true' class='dialog'>  <header>    <h1 id='my-custom-id-header'>Title</h1>      <h2 id='my-custom-id-description'>Description</h2>    <button aria-label='Close' type='button' data-view-component='true' class='close-button'><svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg></button>    <button type='button' aria-label='Close'>      <svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg>    </button>  </header>  <div data-view-component='true'>    <em>Your custom content here</em></div></modal-dialog>" />
 
 ```erb
 <%= render(Primer::Alpha::Dialog.new(
  title: "Title",
- description: "Description"
+ description: "Description",
+ dialog_id: "my-custom-id"
 )) do |c| %>
   <% c.body do %>
     <em>Your custom content here</em>
@@ -60,12 +62,13 @@ Required body content.
 
 ### With buttons
 
-<Example src="<modal-dialog role='dialog' aria-labelledby='dialog-9d7cf0fa' aria-describedby='dialog-description-9d7cf0fa' data-view-component='true' class='dialog'>  <header>    <h1 id='dialog-9d7cf0fa'>Title</h1>      <h2 id='dialog-description-9d7cf0fa'>Description</h2>    <button aria-label='Close' type='button' data-view-component='true' class='close-button'><svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg></button>    <button type='button' aria-label='Close'>      <svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg>    </button>  </header>  <div data-view-component='true'>    <em>Your custom content here</em></div>    <footer>        <button type='button' data-view-component='true' class='btn'>  Button 1</button>        <button type='button' data-view-component='true' class='btn'>  Button 2</button>    </footer></modal-dialog>" />
+<Example src="<modal-dialog role='dialog' id='my-custom-id' aria-labelledby='my-custom-id-header' aria-describedby='my-custom-id-description' data-view-component='true' class='dialog'>  <header>    <h1 id='my-custom-id-header'>Title</h1>      <h2 id='my-custom-id-description'>Description</h2>    <button aria-label='Close' type='button' data-view-component='true' class='close-button'><svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg></button>    <button type='button' aria-label='Close'>      <svg aria-hidden='true' height='16' viewBox='0 0 16 16' version='1.1' width='16' data-view-component='true' class='octicon octicon-x'>    <path fill-rule='evenodd' d='M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z'></path></svg>    </button>  </header>  <div data-view-component='true'>    <em>Your custom content here</em></div>    <footer>        <button type='button' data-view-component='true' class='btn'>  Button 1</button>        <button type='button' data-view-component='true' class='btn'>  Button 2</button>    </footer></modal-dialog>" />
 
 ```erb
 <%= render(Primer::Alpha::Dialog.new(
  title: "Title",
- description: "Description"
+ description: "Description",
+ dialog_id: "my-custom-id"
 )) do |c| %>
   <% c.button { "Button 1" } %>
   <% c.button { "Button 2" } %>

@@ -36,6 +36,15 @@ class PrimerAlphaDialogTest < Minitest::Test
     end
   end
 
+    # Sets id
+    def test_renders_title
+      render_inline(Primer::Alpha::Dialog.new(title: "Title", dialog_id: "my-id")) do |c|
+        c.body { "content" }
+      end
+  
+      assert_selector("modal-dialog[id='my-id']")
+    end
+
   # Doesn't add description if not present
   def test_does_not_render_description
     render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|

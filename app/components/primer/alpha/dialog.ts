@@ -1,6 +1,73 @@
 // import '@primer/behaviors'
 // import { focusTrap } from '@primer/behaviors';
 
+/*
+
+This file polyfills the following: https://github.com/whatwg/dom/issues/911
+Once all targeted browsers support this DOM feature, this polyfill can be deleted.
+
+This allows users to pass an AbortSignal to a call to addEventListener as part of the
+AddEventListenerOptions object. When the signal is aborted, the event listener is
+removed.
+
+*/
+
+let signalSupported = false
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+function noop() {}
+try {
+  const options = Object.create(
+    {},
+    {
+      signal: {
+        get() {
+          signalSupported = true
+        }
+      }
+    }
+  )
+  window.addEventListener('test', noop, options)
+  window.removeEventListener('test', noop, options)
+} catch (e) {
+  /* */
+}
+function featureSupported(): boolean {
+  return signalSupported
+}
+
+function monkeyPatch() {
+  if (typeof window === 'undefined') {
+    return
+  }
+
+  const originalAddEventListener = EventTarget.prototype.addEventListener
+  EventTarget.prototype.addEventListener = function (name, originalCallback, optionsOrCapture) {
+    if (
+      typeof optionsOrCapture === 'object' &&
+      'signal' in optionsOrCapture &&
+      optionsOrCapture.signal instanceof AbortSignal
+    ) {
+      originalAddEventListener.call(optionsOrCapture.signal, 'abort', () => {
+        this.removeEventListener(name, originalCallback, optionsOrCapture)
+      })
+    }
+    return originalAddEventListener.call(this, name, originalCallback, optionsOrCapture)
+  }
+}
+
+export function polyfill(): void {
+  if (!featureSupported()) {
+    monkeyPatch()
+    signalSupported = true
+  }
+}
+
+declare global {
+  interface AddEventListenerOptions {
+    signal?: AbortSignal
+  }
+}
+
 /**
  * Options to the focusable elements iterator
  */
@@ -134,12 +201,59 @@
   return isFocusable(elem, strict) && elem.getAttribute('tabindex') !== '-1'
 }
 
+// eventListenerSignalPolyfill()
+polyfill()
+
+interface FocusTrapMetadata {
+  container: HTMLElement
+  controller: AbortController
+  initialFocus?: HTMLElement
+  originalSignal: AbortSignal
+}
+
+const suspendedTrapStack: FocusTrapMetadata[] = []
+let activeTrap: FocusTrapMetadata | undefined = undefined
+
+function tryReactivate() {
+  const trapToReactivate = suspendedTrapStack.pop()
+  if (trapToReactivate) {
+    focusTrap2(trapToReactivate.container, trapToReactivate.initialFocus, trapToReactivate.originalSignal)
+  }
+}
+
+// @todo If AbortController.prototype.follow is ever implemented, that
+// could replace this function. @see https://github.com/whatwg/dom/issues/920
+function followSignal(signal: AbortSignal): AbortController {
+  const controller = new AbortController()
+  signal.addEventListener('abort', () => {
+    controller.abort()
+  })
+  return controller
+}
+
 /**
  * Traps focus within the given container.
  * @param container The container in which to trap focus
  * @returns AbortController - call `.abort()` to disable the focus trap
  */
-export function focusTrap2(container: HTMLElement, initialFocus?: HTMLElement) {
+ export function focusTrap2(container: HTMLElement, initialFocus?: HTMLElement): AbortController
+
+ /**
+  * Traps focus within the given container.
+  * @param container The container in which to trap focus
+  * @param abortSignal An AbortSignal to control the focus trap.
+  */
+ export function focusTrap2(container: HTMLElement, initialFocus: HTMLElement | undefined, abortSignal: AbortSignal): void
+ export function focusTrap2(
+   container: HTMLElement,
+   initialFocus?: HTMLElement,
+   abortSignal?: AbortSignal
+ ): AbortController | void {
+  // Set up an abort controller if a signal was not passed in
+  const controller = new AbortController()
+  const signal = abortSignal ?? controller.signal
+
+  container.setAttribute('data-focus-trap', 'active')
   const firstFocusableChild = getFocusableChild(container)
   const sentinelStart = document.createElement('span')
   sentinelStart.setAttribute('class', 'focus-trap sentinel-start')
@@ -165,7 +279,50 @@ export function focusTrap2(container: HTMLElement, initialFocus?: HTMLElement) {
   } else {
     firstFocusableChild?.focus()
   }
+
+  const wrappingController = followSignal(signal)
+
+  if (activeTrap) {
+    const suspendedTrap = activeTrap
+    activeTrap.container.setAttribute('data-focus-trap', 'suspended')
+    activeTrap.controller.abort()
+    suspendedTrapStack.push(suspendedTrap)
+  }
+
+  // When this trap is canceled, either by the user or by us for suspension
+  wrappingController.signal.addEventListener('abort', () => {
+    activeTrap = undefined
+  })
+
+  // Only when user-canceled
+  signal.addEventListener('abort', () => {
+    container.removeAttribute('data-focus-trap')
+    const suspendedTrapIndex = suspendedTrapStack.findIndex(t => t.container === container)
+    if (suspendedTrapIndex >= 0) {
+      suspendedTrapStack.splice(suspendedTrapIndex, 1)
+    }
+    tryReactivate()
+  })
+
+  activeTrap = {
+    container,
+    controller: wrappingController,
+    initialFocus,
+    originalSignal: signal
+  }
+
+    // If we are activating a focus trap for a container that was previously
+  // suspended, just remove it from the suspended list.
+  const suspendedTrapIndex = suspendedTrapStack.findIndex(t => t.container === container)
+  if (suspendedTrapIndex >= 0) {
+    suspendedTrapStack.splice(suspendedTrapIndex, 1)
+  }
+  if (!abortSignal) {
+    return controller
+  }
 }
+
+// ### ACTUAL DIALOG CODE STARTS HERE
 
 /* Testing a theory: can we include in progress TypeScript code here? */
 

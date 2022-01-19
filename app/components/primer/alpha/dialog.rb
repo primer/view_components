@@ -30,7 +30,8 @@ module Primer
       # @example Default
       #   <%= render(Primer::Alpha::Dialog.new(
       #    title: "Title",
-      #    description: "Description"
+      #    description: "Description",
+      #    dialog_id: "my-custom-id"
       #   )) do |c| %>
       #     <% c.body do %>
       #       <em>Your custom content here</em>
@@ -40,7 +41,8 @@ module Primer
       # @example With buttons
       #   <%= render(Primer::Alpha::Dialog.new(
       #    title: "Title",
-      #    description: "Description"
+      #    description: "Description",
+      #    dialog_id: "my-custom-id"
       #   )) do |c| %>
       #     <% c.button { "Button 1" } %>
       #     <% c.button { "Button 2" } %>
@@ -51,16 +53,19 @@ module Primer
       #
       # @param title [String] The title of the dialog.
       # @param description [String] The optional description of the dialog.
+      # @param dialog_id [String] The optional ID of the dialog, defaults to random string.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(title:, description: nil, **system_arguments)
+      def initialize(title:, description: nil, dialog_id: nil, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
 
         @system_arguments[:tag] = "modal-dialog"
         @system_arguments[:role] = :dialog
         @title = title
         @description = description
-        dialog_id = SecureRandom.hex(4)
-        @header_id = "dialog-#{dialog_id}"
+        dialog_id ||= "dialog-#{SecureRandom.hex(4)}"
+        @system_arguments[:id] = dialog_id.to_s
+
+        @header_id = "#{dialog_id}-header"
 
         @system_arguments[:classes] = class_names(
           "dialog",
@@ -68,7 +73,7 @@ module Primer
         )
 
         if @description.present?
-          @description_id = "dialog-description-#{dialog_id}"
+          @description_id = "#{dialog_id}-description"
           @system_arguments[:aria] = { labelledby: @header_id, describedby: @description_id }
         else
           @system_arguments[:aria] = { labelledby: @header_id }
