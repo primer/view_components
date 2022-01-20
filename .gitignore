@@ -23,3 +23,5 @@ primer_view_components*.gem
 app/components/**/*.js
 app/components/**/*.d.ts
 /.idea
+docs/.cache
+docs/public/
