@@ -71,7 +71,7 @@ declare global {
 /**
  * Options to the focusable elements iterator
  */
- export interface IterateFocusableElements {
+export interface IterateFocusableElements {
   /**
    * (Default: false) Iterate through focusable elements in reverse-order
    */
@@ -79,24 +79,24 @@ declare global {
 
   /**
    * (Default: false) Perform additional checks to determine tabbability
-   * which may adversely affect app performance.
+   * which may adversely affect app performance
    */
   strict?: boolean
 
   /**
    * (Default: false) Only iterate tabbable elements, which is the subset
-   * of focusable elements that are part of the page's tab sequence.
+   * of focusable elements that are part of the page's tab sequence
    */
   onlyTabbable?: boolean
 }
 
 /**
- * Returns an iterator over all of the focusable elements within `container`.
- * Note: If `container` is itself focusable it will be included in the results.
- * @param container The container over which to find focusable elements.
- * @param reverse If true, iterate backwards through focusable elements.
+ * Returns an iterator over all of the focusable elements within `container`
+ * Note: If `container` is itself focusable it will be included in the results
+ * @param container The container over which to find focusable elements
+ * @param reverse If true, iterate backwards through focusable elements
  */
- export function* iterateFocusableElements(
+export function* iterateFocusableElements(
   container: HTMLElement,
   options: IterateFocusableElements = {}
 ): Generator<HTMLElement, undefined, undefined> {
@@ -143,7 +143,7 @@ declare global {
  * @param container
  * @param lastChild
  */
- function getFocusableChild(container: HTMLElement, lastChild = false) {
+function getFocusableChild(container: HTMLElement, lastChild = false) {
   return iterateFocusableElements(container, {reverse: lastChild, strict: true, onlyTabbable: true}).next().value
 }
 
@@ -153,7 +153,7 @@ declare global {
  * @param elem
  * @param strict
  */
- export function isFocusable(elem: HTMLElement, strict = false): boolean {
+export function isFocusable(elem: HTMLElement, strict = false): boolean {
   // Certain conditions cause an element to never be focusable, even if they have tabindex="0"
   const disabledAttrInert =
     ['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA', 'OPTGROUP', 'OPTION', 'FIELDSET'].includes(elem.tagName) &&
@@ -165,7 +165,7 @@ declare global {
   }
 
   // Each of the conditions checked below require a reflow, thus are gated by the `strict`
-  // argument. If any are true, the element is not focusable, even if tabindex is set.
+  // argument. If any are true, the element is not focusable, even if tabindex is set
   if (strict) {
     const sizeInert = elem.offsetWidth === 0 || elem.offsetHeight === 0
     const visibilityInert = ['hidden', 'collapse'].includes(getComputedStyle(elem).visibility)
@@ -180,7 +180,7 @@ declare global {
     return true
   }
 
-  // One last way `elem.tabIndex` can be wrong.
+  // One last way `elem.tabIndex` can be wrong
   if (elem instanceof HTMLAnchorElement && elem.getAttribute('href') == null) {
     return false
   }
@@ -188,16 +188,15 @@ declare global {
   return elem.tabIndex !== -1
 }
 
-
 /**
  * Determines whether the given element is tabbable. If `strict` is true, we may
  * perform additional checks that require a reflow (less performant). This check
  * ensures that the element is focusable and that its tabindex is not explicitly
- * set to "-1" (which makes it focusable, but removes it from the tab order).
+ * set to "-1" (which makes it focusable, but removes it from the tab order)
  * @param elem
  * @param strict
  */
- export function isTabbable(elem: HTMLElement, strict = false): boolean {
+export function isTabbable(elem: HTMLElement, strict = false): boolean {
   return isFocusable(elem, strict) && elem.getAttribute('tabindex') !== '-1'
 }
 
@@ -232,23 +231,15 @@ function followSignal(signal: AbortSignal): AbortController {
 }
 
 /**
- * Traps focus within the given container.
+ * Traps focus within the given container
  * @param container The container in which to trap focus
- * @returns AbortController - call `.abort()` to disable the focus trap
+ * @param abortSignal An AbortSignal to control the focus trap
  */
- export function focusTrap(container: HTMLElement, initialFocus?: HTMLElement): AbortController
-
- /**
-  * Traps focus within the given container.
-  * @param container The container in which to trap focus
-  * @param abortSignal An AbortSignal to control the focus trap.
-  */
- export function focusTrap(container: HTMLElement, initialFocus: HTMLElement | undefined, abortSignal: AbortSignal): void
- export function focusTrap(
-   container: HTMLElement,
-   initialFocus?: HTMLElement,
-   abortSignal?: AbortSignal
- ): AbortController | void {
+export function focusTrap(
+  container: HTMLElement,
+  initialFocus?: HTMLElement,
+  abortSignal?: AbortSignal
+): AbortController | undefined {
   // Set up an abort controller if a signal was not passed in
   const controller = new AbortController()
   const signal = abortSignal ?? controller.signal
@@ -298,8 +289,8 @@ function followSignal(signal: AbortSignal): AbortController {
   // Only when user-canceled
   signal.addEventListener('abort', () => {
     container.removeAttribute('data-focus-trap')
-    const sentinels = container.getElementsByClassName('sentinel');
-    while (sentinels.length > 0) sentinels[0].remove();
+    const sentinels = container.getElementsByClassName('sentinel')
+    while (sentinels.length > 0) sentinels[0].remove()
     const suspendedTrapIndex = suspendedTrapStack.findIndex(t => t.container === container)
     if (suspendedTrapIndex >= 0) {
       suspendedTrapStack.splice(suspendedTrapIndex, 1)
@@ -314,8 +305,8 @@ function followSignal(signal: AbortSignal): AbortController {
     originalSignal: signal
   }
 
-    // If we are activating a focus trap for a container that was previously
-  // suspended, just remove it from the suspended list.
+  // If we are activating a focus trap for a container that was previously
+  // suspended, just remove it from the suspended list
   const suspendedTrapIndex = suspendedTrapStack.findIndex(t => t.container === container)
   if (suspendedTrapIndex >= 0) {
     suspendedTrapStack.splice(suspendedTrapIndex, 1)
@@ -332,11 +323,10 @@ function followSignal(signal: AbortSignal): AbortController {
 class ModalDialogElement extends HTMLElement {
   private abortController: AbortController | undefined
 
-  constructor(){
-    super();
+  constructor() {
+    super()
 
-    console.log(this.querySelector('.close-button'));
-    this.querySelector('.close-button')?.addEventListener('click', (e:Event) => this.close());
+    this.querySelector('.close-button')?.addEventListener('click', () => this.close())
   }
 
   connectedCallback(): void {
@@ -388,11 +378,6 @@ class ModalDialogElement extends HTMLElement {
 const states = new WeakMap()
 
 type Subscription = {unsubscribe(): void}
-const NullSubscription = {
-  unsubscribe() {
-    /* Do nothing */
-  }
-}
 
 function fromEvent(
   target: EventTarget,
