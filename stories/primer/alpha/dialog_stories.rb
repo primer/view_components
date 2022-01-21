@@ -11,8 +11,12 @@ class Primer::Alpha::DialogStories < ViewComponent::Storybook::Stories
       title "Are you sure you want to display a dialog?"
     end
 
-    content do
-      "Update your stories!"
+    content do |component|
+      component.body do
+        "Your custom content here"
+      end
+      component.button { "Yes" }
+      component.button { "No" }
     end
   end
 end

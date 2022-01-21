@@ -217,7 +217,7 @@ let activeTrap: FocusTrapMetadata | undefined = undefined
 function tryReactivate() {
   const trapToReactivate = suspendedTrapStack.pop()
   if (trapToReactivate) {
-    focusTrap2(trapToReactivate.container, trapToReactivate.initialFocus, trapToReactivate.originalSignal)
+    focusTrap(trapToReactivate.container, trapToReactivate.initialFocus, trapToReactivate.originalSignal)
   }
 }
 
@@ -236,15 +236,15 @@ function followSignal(signal: AbortSignal): AbortController {
  * @param container The container in which to trap focus
  * @returns AbortController - call `.abort()` to disable the focus trap
  */
- export function focusTrap2(container: HTMLElement, initialFocus?: HTMLElement): AbortController
+ export function focusTrap(container: HTMLElement, initialFocus?: HTMLElement): AbortController
 
  /**
   * Traps focus within the given container.
   * @param container The container in which to trap focus
   * @param abortSignal An AbortSignal to control the focus trap.
   */
- export function focusTrap2(container: HTMLElement, initialFocus: HTMLElement | undefined, abortSignal: AbortSignal): void
- export function focusTrap2(
+ export function focusTrap(container: HTMLElement, initialFocus: HTMLElement | undefined, abortSignal: AbortSignal): void
+ export function focusTrap(
    container: HTMLElement,
    initialFocus?: HTMLElement,
    abortSignal?: AbortSignal
@@ -255,21 +255,22 @@ function followSignal(signal: AbortSignal): AbortController {
 
   container.setAttribute('data-focus-trap', 'active')
   const firstFocusableChild = getFocusableChild(container)
+  const lastFocusableChild = getFocusableChild(container, true)
   const sentinelStart = document.createElement('span')
-  sentinelStart.setAttribute('class', 'focus-trap sentinel-start')
+  sentinelStart.setAttribute('class', 'sentinel')
   sentinelStart.setAttribute('tabindex', '0')
   sentinelStart.setAttribute('aria-hidden', 'true')
   sentinelStart.onfocus = () => {
-    firstFocusableChild?.focus()
+    lastFocusableChild?.focus()
   }
 
   const sentinelEnd = document.createElement('span')
-  sentinelEnd.setAttribute('class', 'focus-trap sentinel-end')
+  sentinelEnd.setAttribute('class', 'sentinel')
   sentinelEnd.setAttribute('tabindex', '0')
   sentinelEnd.setAttribute('aria-hidden', 'true')
   sentinelEnd.onfocus = () => {
-    // If the end sentinel was focused, move focus to the start sentinel
-    sentinelStart.focus()
+    // If the end sentinel was focused, move focus to the start
+    firstFocusableChild?.focus()
   }
   container.prepend(sentinelStart)
   container.append(sentinelEnd)
@@ -297,6 +298,8 @@ function followSignal(signal: AbortSignal): AbortController {
   // Only when user-canceled
   signal.addEventListener('abort', () => {
     container.removeAttribute('data-focus-trap')
+    const sentinels = container.getElementsByClassName('sentinel');
+    while (sentinels.length > 0) sentinels[0].remove();
     const suspendedTrapIndex = suspendedTrapStack.findIndex(t => t.container === container)
     if (suspendedTrapIndex >= 0) {
       suspendedTrapStack.splice(suspendedTrapIndex, 1)
@@ -360,21 +363,25 @@ class ModalDialogElement extends HTMLElement {
   }
 
   open() {
-    //TODO: Is an `open` attribute a good idea?
-    const wasOpen = this.hasAttribute('open')
-    if (wasOpen) return
-    this.setAttribute('open', '')
-    // this.abortController = focusTrap(this)
-    focusTrap2(this)
-    //TODO: handle focus here?
+    const isClosed = this.classList.contains('hidden')
+    if (!isClosed) return
+    this.classList.remove('hidden')
+    if (this.parentElement?.classList.contains('modal-dialog-backdrop')) {
+      this.parentElement.classList.add('active')
+    }
+    document.body.style.overflow = 'hidden'
+    this.abortController = focusTrap(this)
   }
 
   close() {
-    const wasOpen = this.hasAttribute('open')
-    if (!wasOpen) return
-    this.removeAttribute('open')
+    const isClosed = this.classList.contains('hidden')
+    if (isClosed) return
+    this.classList.add('hidden')
+    if (this.parentElement?.classList.contains('modal-dialog-backdrop')) {
+      this.parentElement.classList.remove('active')
+    }
+    document.body.style.overflow = 'initial'
     this.abortController?.abort()
-    //TODO: handle focus here?
   }
 }
 

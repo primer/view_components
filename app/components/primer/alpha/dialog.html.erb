@@ -1,20 +1,19 @@
-<%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <header>
-    <h1 id="<%= @header_id %>"><%= @title %></h1>
-    <% if @description.present? %>
-      <h2 id="<%= @description_id %>"><%= @description %></h2>
-    <% end %>
-    <%= render Primer::CloseButton.new() %>
-    <button type="button" aria-label="Close">
-      <%= primer_octicon "x" %>
-    </button>
-  </header>
-  <%= body %>
-  <% if buttons.any? %>
-    <footer>
-      <% buttons.each do |button| %>
-        <%= button %>
+<div class="modal-dialog-backdrop">
+  <%= render Primer::BaseComponent.new(**@system_arguments) do %>
+    <header>
+      <h1 id="<%= @header_id %>"><%= @title %></h1>
+      <% if @description.present? %>
+        <h2 id="<%= @description_id %>"><%= @description %></h2>
       <% end %>
-    </footer>
+      <%= render Primer::CloseButton.new() %>
+    </header>
+    <%= body %>
+    <% if buttons.any? %>
+      <footer>
+        <% buttons.each do |button| %>
+          <%= button %>
+        <% end %>
+      </footer>
+    <% end %>
   <% end %>
-<% end %>
+</div>

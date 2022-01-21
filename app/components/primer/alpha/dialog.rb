@@ -69,6 +69,7 @@ module Primer
 
         @system_arguments[:classes] = class_names(
           "dialog",
+          "hidden",
           system_arguments[:classes]
         )
 
