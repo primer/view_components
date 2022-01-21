@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Primer
   module <%= module_name %>
     class <%= class_name %>Preview < ViewComponent::Preview

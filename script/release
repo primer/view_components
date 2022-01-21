@@ -67,9 +67,7 @@ class ReleaseCLI < Thor::Group
 
   def update_gemfiles
     run("bundle")
-    run("pushd demo")
-    run("bundle")
-    run("popd")
+    run("cd demo && bundle")
   end
 
   def update_npm
