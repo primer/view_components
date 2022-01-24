@@ -42,7 +42,16 @@ module Primer
 
       # Optional icon to be rendered before the input. Has the same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
       #
-      renders_one :icon, Primer::OcticonComponent
+      renders_one :icon, lambda { |**system_arguments|
+        aria_label = aria("label", system_arguments) || @aria_label
+        if aria_label.present?
+          system_arguments[:"aria-label"] = aria_label
+          system_arguments[:aria]&.delete(:label)
+        end
+
+        system_arguments[:for] = @input_id
+        Primer::OcticonComponent.new(**system_arguments)
+      }
 
       # Customizable results list.
       #
@@ -96,7 +105,6 @@ module Primer
       #
       # @example With Icon
       #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", list_id: "fruits-popup-4", input_id: "fruits-input-4", position: :relative)) do |c| %>
-      #     <% c.label(classes:"").with_content("Fruits") %>
       #     <% c.input(type: :text) %>
       #     <% c.icon(icon: :search) %>
       #   <% end %>
@@ -121,7 +129,7 @@ module Primer
       # add `results` without needing to explicitly call it in the view
       def before_render
         raise ArgumentError, "Missing `input` slot" if input.blank?
-        raise ArgumentError, "Accessible label is required." if label.blank? && input.missing_label?
+        raise ArgumentError, "Accessible label is required." if label.blank? && icon.blank? && input.missing_label?
 
         results(classes: "") unless results
       end

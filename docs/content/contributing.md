@@ -42,6 +42,18 @@ system_arguments[:tag] = :h1
 system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
 ```
 
+## Running the demo app
+
+```bash
+cd demo
+bin/rails s
+```
+Go to your browser, path `/rails/view_components/`
+To rerender the templates, you do not have to restart the server. Simply
+```bash
+bundle exec rake docs:preview
+```
+
 ## Testing
 
 Before running the whole test suite with: `script/test`, you must run `bundle exec rake docs:preview`.
