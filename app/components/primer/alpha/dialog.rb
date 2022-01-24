@@ -75,9 +75,9 @@ module Primer
 
         if @description.present?
           @description_id = "#{dialog_id}-description"
-          @system_arguments[:aria] = { labelledby: @header_id, describedby: @description_id }
+          @system_arguments[:aria] = { modal: true, labelledby: @header_id, describedby: @description_id }
         else
-          @system_arguments[:aria] = { labelledby: @header_id }
+          @system_arguments[:aria] = { modal: true, labelledby: @header_id }
         end
       end
     end
