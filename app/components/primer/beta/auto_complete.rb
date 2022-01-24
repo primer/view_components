@@ -104,7 +104,7 @@ module Primer
       #   <% end %>
       #
       # @example With Icon
-      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", list_id: "fruits-popup-4", input_id: "fruits-input-4", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new("aria-label": "Fruits", src: "/auto_complete", list_id: "fruits-popup-4", input_id: "fruits-input-4", position: :relative)) do |c| %>
       #     <% c.input(type: :text) %>
       #     <% c.icon(icon: :search) %>
       #   <% end %>
@@ -129,7 +129,7 @@ module Primer
       # add `results` without needing to explicitly call it in the view
       def before_render
         raise ArgumentError, "Missing `input` slot" if input.blank?
-        raise ArgumentError, "Accessible label is required." if label.blank? && icon.blank? && input.missing_label?
+        raise ArgumentError, "Accessible label is required." if label.blank? && input.missing_label?
 
         results(classes: "") unless results
       end
