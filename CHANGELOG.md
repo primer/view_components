@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+- Add `dialog` component to create a modal dialog with overlay and button.
+
+  _Owen Niblock_
+
 ## 0.0.66
 
 - Revert optimization changes to utilities.
