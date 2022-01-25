@@ -32,6 +32,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## 0.0.67
 
+## 0.0.67
+
 - Updating octicons to `> 16`
 
     _Jon Rohan_
