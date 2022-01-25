@@ -25,6 +25,11 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14
+          cache: 'yarn'
+          cache-dependency-path: |
+            yarn.lock
+            docs/yarn.lock
+
       - run: yarn
       - uses: actions/cache@v2
         with:
@@ -41,6 +46,12 @@ jobs:
           bundle exec rake static:dump
         env:
           SKIP_STORYBOOK_PRELOAD: 1
+
+      - name: Build docs
+        run: |
+          cd docs
+          yarn
+          yarn build
 
       - uses: chrnorm/deployment-action@v1.2.0
         name: Create GitHub deployment
