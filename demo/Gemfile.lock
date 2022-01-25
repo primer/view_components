@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.0.66)
+    primer_view_components (0.0.67)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (~> 16)
@@ -122,4 +122,4 @@ DEPENDENCIES
   view_component_storybook (~> 0.8.0)
 
 BUNDLED WITH
-   2.2.22
+   2.2.27
