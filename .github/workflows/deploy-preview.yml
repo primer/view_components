@@ -15,6 +15,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          token: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.x
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - run: yarn
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: gems-deploy-preview-${{ hashFiles('**/Gemfile.lock') }}
+
+      - name: Generate static files
+        run: |
+          gem install bundler:2.2.9
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+          bundle exec rake utilities:build
+          bundle exec rake docs:build
+          bundle exec rake static:dump
+        env:
+          SKIP_STORYBOOK_PRELOAD: 1
+
       - uses: chrnorm/deployment-action@v1.2.0
         name: Create GitHub deployment
         id: deployment
