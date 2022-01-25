@@ -138,6 +138,7 @@
 - ".details-overlay"
 - ".details-reset"
 - ".dialog"
+- ".dialog-body"
 - ".dropdown"
 - ".dropdown-divider"
 - ".dropdown-header"

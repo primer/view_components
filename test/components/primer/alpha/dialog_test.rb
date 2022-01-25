@@ -7,6 +7,7 @@ class PrimerAlphaDialogTest < Minitest::Test
 
   def test_renders_content
     render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
+      c.show_button { "Show" }
       c.body { "content" }
     end
 
@@ -28,6 +29,7 @@ class PrimerAlphaDialogTest < Minitest::Test
   # Sets title
   def test_renders_title
     render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
+      c.show_button { "Show" }
       c.body { "content" }
     end
 
@@ -39,6 +41,7 @@ class PrimerAlphaDialogTest < Minitest::Test
   # Sets id
   def test_renders_id
     render_inline(Primer::Alpha::Dialog.new(title: "Title", dialog_id: "my-id")) do |c|
+      c.show_button { "Show" }
       c.body { "content" }
     end
 
@@ -48,6 +51,7 @@ class PrimerAlphaDialogTest < Minitest::Test
   # Doesn't add description if not present
   def test_does_not_render_description
     render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
+      c.show_button { "Show" }
       c.body { "content" }
     end
 
@@ -59,6 +63,7 @@ class PrimerAlphaDialogTest < Minitest::Test
   # Sets description if present
   def test_renders_description
     render_inline(Primer::Alpha::Dialog.new(title: "Title", description: "Description")) do |c|
+      c.show_button { "Show" }
       c.body { "content" }
     end
 
@@ -70,6 +75,7 @@ class PrimerAlphaDialogTest < Minitest::Test
   # Doesn't add buttons or footer if not present
   def test_does_not_render_button
     render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
+      c.show_button { "Show" }
       c.body { "content" }
     end
 
@@ -83,6 +89,7 @@ class PrimerAlphaDialogTest < Minitest::Test
   # Adds buttons if present
   def test_renders_buttons
     render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
+      c.show_button { "Show" }
       c.button { "Button 1" }
       c.button { "Button 2" }
       c.body { "content" }
@@ -99,6 +106,7 @@ class PrimerAlphaDialogTest < Minitest::Test
   # Test renders close button
   def test_renders_close_button
     render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
+      c.show_button { "Show" }
       c.body { "content" }
     end
 

@@ -12,6 +12,9 @@ class Primer::Alpha::DialogStories < ViewComponent::Storybook::Stories
     end
 
     content do |component|
+      component.show_button do
+        "Show dialog"
+      end
       component.body do
         "Your custom content here"
       end

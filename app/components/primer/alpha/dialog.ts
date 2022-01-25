@@ -327,6 +327,7 @@ class ModalDialogElement extends HTMLElement {
     super()
 
     this.querySelector('.close-button')?.addEventListener('click', () => this.close())
+    // document.body.querySelector(`.js-dialog-show-${this.id}`)?.addEventListener('click', () => this.show())
   }
 
   connectedCallback(): void {
@@ -352,10 +353,11 @@ class ModalDialogElement extends HTMLElement {
     }
   }
 
-  open() {
+  show() {
     const isClosed = this.classList.contains('hidden')
     if (!isClosed) return
     this.classList.remove('hidden')
+    this.setAttribute('open', 'true')
     if (this.parentElement?.classList.contains('modal-dialog-backdrop')) {
       this.parentElement.classList.add('active')
     }
@@ -367,6 +369,7 @@ class ModalDialogElement extends HTMLElement {
     const isClosed = this.classList.contains('hidden')
     if (isClosed) return
     this.classList.add('hidden')
+    this.setAttribute('open', 'false')
     if (this.parentElement?.classList.contains('modal-dialog-backdrop')) {
       this.parentElement.classList.remove('active')
     }

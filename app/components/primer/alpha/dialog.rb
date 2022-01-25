@@ -13,6 +13,18 @@ module Primer
         Primer::ButtonComponent.new(**system_arguments)
       }
 
+      # Required button to open the dialog.
+      #
+      # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
+      renders_one :show_button, lambda { |**system_arguments|
+        # TODO: Should we do this with a data-*/js-* attribute?
+        system_arguments[:classes] = class_names(
+          "js-dialog-show-#{@system_arguments[:id]}",
+          system_arguments[:classes]
+        )
+        Primer::ButtonComponent.new(**system_arguments)
+      }
+
       # Required body content.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -20,7 +32,7 @@ module Primer
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :div
 
-        @system_arguments[:classes] = class_names(
+        system_arguments[:classes] = class_names(
           "dialog-body",
           system_arguments[:classes]
         )
@@ -33,6 +45,7 @@ module Primer
       #    description: "Description",
       #    dialog_id: "my-custom-id"
       #   )) do |c| %>
+      #     <% c.show_button { "Show dialog" } %>
       #     <% c.body do %>
       #       <em>Your custom content here</em>
       #     <% end %>
@@ -44,6 +57,8 @@ module Primer
       #    description: "Description",
       #    dialog_id: "my-custom-id"
       #   )) do |c| %>
+      #     <% c.show_button { "Show dialog" } %>
+      #     <% c.button { "Button 1" } %>
       #     <% c.button { "Button 1" } %>
       #     <% c.button { "Button 2" } %>
       #     <% c.body do %>
