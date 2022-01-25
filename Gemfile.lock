@@ -4,7 +4,7 @@ PATH
     primer_view_components (0.0.66)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-      octicons (~> 15)
+      octicons (~> 16)
       view_component (>= 2.0.0, < 3.0)
 
 GEM
@@ -118,7 +118,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
-    octicons (15.2.0)
+    octicons (16.3.0)
     parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
