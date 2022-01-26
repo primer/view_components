@@ -96,7 +96,6 @@ module Primer
       #
       # @example With Icon
       #   <%= render(Primer::Beta::AutoComplete.new("aria-label": "Fruits", src: "/auto_complete", list_id: "fruits-popup-5", input_id: "fruits-input-5", position: :relative)) do |c| %>
-      #     <% c.label(classes:"").with_content("Fruits") %>
       #     <% c.input(type: :text) %>
       #     <% c.icon(icon: :search) %>
       #   <% end %>
