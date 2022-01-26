@@ -8,6 +8,7 @@ on:
       - 'docs/**'
       - '.github/workflows/deploy*.yml'
       - 'package.json'
+      - '.vercelignore'
 jobs:
   deploy-preview:
     if: ${{ github.repository == 'primer/view_components' }}
