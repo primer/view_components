@@ -30,6 +30,14 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.67
+
+## 0.0.67
+
+- Updating octicons to `> 16`
+
+    _Jon Rohan_
+
 ## 0.0.66
 
 - Revert optimization changes to utilities.
