@@ -2,6 +2,9 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <% if icon.present? %>
     <label for="<%= @input_id %>">
+      <% if label.blank? %>
+        <span class="sr-only"><%= @aria_label %></span>
+      <% end %>
       <%= icon %>
     </label>
   <% end %>

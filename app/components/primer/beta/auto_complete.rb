@@ -42,16 +42,7 @@ module Primer
 
       # Optional icon to be rendered before the input. Has the same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
       #
-      renders_one :icon, lambda { |**system_arguments|
-        aria_label = aria("label", system_arguments) || @aria_label
-        if aria_label.present?
-          system_arguments[:"aria-label"] = aria_label
-          system_arguments[:aria]&.delete(:label)
-        end
-
-        system_arguments[:for] = @input_id
-        Primer::OcticonComponent.new(**system_arguments)
-      }
+      renders_one :icon, Primer::OcticonComponent
 
       # Customizable results list.
       #
@@ -105,6 +96,7 @@ module Primer
       #
       # @example With Icon
       #   <%= render(Primer::Beta::AutoComplete.new("aria-label": "Fruits", src: "/auto_complete", list_id: "fruits-popup-5", input_id: "fruits-input-5", position: :relative)) do |c| %>
+      #     <% c.label(classes:"").with_content("Fruits") %>
       #     <% c.input(type: :text) %>
       #     <% c.icon(icon: :search) %>
       #   <% end %>
