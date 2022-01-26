@@ -15,6 +15,13 @@ jobs:
     name: Preview
     runs-on: ubuntu-latest
     steps:
+      - uses: chrnorm/deployment-action@v1.2.0
+        name: Create GitHub deployment
+        id: deployment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: Preview
+
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
@@ -53,13 +60,6 @@ jobs:
           cd docs
           yarn
           yarn build
-
-      - uses: chrnorm/deployment-action@v1.2.0
-        name: Create GitHub deployment
-        id: deployment
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          environment: Preview
 
       - name: Vercel Action
         uses: amondnet/vercel-action@v20
