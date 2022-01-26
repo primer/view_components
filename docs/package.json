@@ -5,7 +5,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build --prefix-paths",
-    "now-build": "yarn run build"
+    "now-build": "exit 0"
   },
   "dependencies": {
     "@primer/css": "^19.2.0",
