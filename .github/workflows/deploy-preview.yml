@@ -66,6 +66,7 @@ jobs:
           github-comment: false
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID_SHARED }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: docs
 
       - name: Update deployment status (success)
         if: success()
