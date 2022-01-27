@@ -11,7 +11,6 @@ on:
       - '.vercelignore'
 jobs:
   deploy-preview:
-    if: ${{ github.repository == 'primer/view_components' }}
     name: Preview
     runs-on: ubuntu-latest
     steps:
@@ -23,9 +22,6 @@ jobs:
           environment: Preview
 
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          token: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:
