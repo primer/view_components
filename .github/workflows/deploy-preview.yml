@@ -22,10 +22,10 @@ jobs:
           environment: Preview
 
       - uses: actions/checkout@v2
-      # - name: Setup Ruby
-      #   uses: actions/setup-ruby@v1
-      #   with:
-      #     ruby-version: 2.7.x
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.x
       - uses: actions/setup-node@v2
         with:
           node-version: 14
@@ -34,22 +34,22 @@ jobs:
             yarn.lock
             docs/yarn.lock
 
-      # - run: yarn
-      # - uses: actions/cache@v2
-      #   with:
-      #     path: vendor/bundle
-      #     key: gems-deploy-preview-${{ hashFiles('**/Gemfile.lock') }}
+      - run: yarn
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: gems-deploy-preview-${{ hashFiles('**/Gemfile.lock') }}
 
-      # - name: Generate static files
-      #   run: |
-      #     gem install bundler:2.2.9
-      #     bundle config path vendor/bundle
-      #     bundle install --jobs 4 --retry 3
-      #     bundle exec rake utilities:build
-      #     bundle exec rake docs:build
-      #     bundle exec rake static:dump
-      #   env:
-      #     SKIP_STORYBOOK_PRELOAD: 1
+      - name: Generate static files
+        run: |
+          gem install bundler:2.2.9
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+          bundle exec rake utilities:build
+          bundle exec rake docs:build
+          bundle exec rake static:dump
+        env:
+          SKIP_STORYBOOK_PRELOAD: 1
 
       - name: Build docs
         run: |
