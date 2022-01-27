@@ -2,7 +2,7 @@
 
 module Primer
   module Beta
-    # Use `Blankslate` when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.
+    # Use `Blankslate` when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there!!!!!
     #
     # @accessibility
     #   - The blankslate uses a semantic heading that must be set at the appropriate level based on the hierarchy of the page.

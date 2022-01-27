@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-docs:
-    if: ${{ github.actor != 'dependabot[bot]' }}
+    if: ${{ false && github.actor != 'dependabot[bot]' }}
     name: Build Docs
     runs-on: ubuntu-latest
     steps:
