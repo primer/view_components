@@ -42,18 +42,6 @@ system_arguments[:tag] = :h1
 system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
 ```
 
-## Running the demo app
-
-```bash
-cd demo
-bin/rails s
-```
-Go to your browser, path `/rails/view_components/`
-To rerender the templates, you do not have to restart the server. Simply
-```bash
-bundle exec rake docs:preview
-```
-
 ## Testing
 
 Before running the whole test suite with: `script/test`, you must run `bundle exec rake docs:preview`.
@@ -75,12 +63,18 @@ By default, the system tests run in a headless Chrome browser. Prefix the test c
 
 Documentation is written as [YARD](https://yardoc.org/) comments directly in the source code, compiled into Markdown via `rake docs:build` and served by [Doctocat](https://github.com/primer/doctocat).
 
-### Storybook / Documentation
+### Storybook / Documentation / Demo Rails App
 
-To run Storybook and the documentation site, run:
+To run Storybook, the documentation site, and the demo app, run:
 
 ```bash
 script/dev
+```
+
+See the demo app at `/rails/view_components/` in your browser.
+To rerender the templates, you do not have to restart the server. Run this command and refresh the page.
+```bash
+bundle exec rake docs:preview
 ```
 
 _Note: Overmind is required to run script/dev._
