@@ -73,6 +73,7 @@ script/dev
 
 See the demo app at `/rails/view_components/` in your browser.
 To rerender the templates, you do not have to restart the server. Run this command and refresh the page.
+
 ```bash
 bundle exec rake docs:preview
 ```
