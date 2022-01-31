@@ -30,7 +30,13 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
-## 0.0.67
+## 0.0.68
+
+### Updates
+
+- Add accessible labels to Search AutoComplete when provided with an icon
+
+    _Andri Alexandrou_
 
 ## 0.0.67
 
