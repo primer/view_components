@@ -14,3 +14,6 @@ popd
 pushd docs
 yarn install
 popd
+
+# Initial build of docs content
+bundle exec rake docs:build
