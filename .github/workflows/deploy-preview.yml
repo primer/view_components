@@ -1,0 +1,85 @@
+name: Deploy
+on:
+  push:
+    branches-ignore:
+      - 'main'
+    paths:
+      - 'app/**'
+      - 'docs/**'
+      - '.github/workflows/deploy*.yml'
+      - 'package.json'
+      - '.vercelignore'
+jobs:
+  deploy-preview:
+    name: Preview
+    runs-on: ubuntu-latest
+    steps:
+      - uses: chrnorm/deployment-action@v1.2.0
+        name: Create GitHub deployment
+        id: deployment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: Preview
+
+      - uses: actions/checkout@v2
+      # - name: Setup Ruby
+      #   uses: actions/setup-ruby@v1
+      #   with:
+      #     ruby-version: 2.7.x
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: 'yarn'
+          cache-dependency-path: |
+            yarn.lock
+            docs/yarn.lock
+
+      # - run: yarn
+      # - uses: actions/cache@v2
+      #   with:
+      #     path: vendor/bundle
+      #     key: gems-deploy-preview-${{ hashFiles('**/Gemfile.lock') }}
+
+      # - name: Generate static files
+      #   run: |
+      #     gem install bundler:2.2.9
+      #     bundle config path vendor/bundle
+      #     bundle install --jobs 4 --retry 3
+      #     bundle exec rake utilities:build
+      #     bundle exec rake docs:build
+      #     bundle exec rake static:dump
+      #   env:
+      #     SKIP_STORYBOOK_PRELOAD: 1
+
+      - name: Build docs
+        run: |
+          cd docs
+          yarn
+          yarn build
+
+      - name: Vercel Action
+        uses: amondnet/vercel-action@v20
+        id: vercel-action
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN_SHARED }}
+          github-comment: false
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID_SHARED }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Update deployment status (success)
+        if: success()
+        uses: chrnorm/deployment-status@v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment_url: ${{ steps.vercel-action.outputs.preview-url }}
+          state: "success"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+      - name: Update deployment status (failure)
+        if: failure()
+        uses: chrnorm/deployment-status@v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          state: "failure"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
