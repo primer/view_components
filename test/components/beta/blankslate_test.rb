@@ -11,7 +11,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
     end
 
     assert_selector("div.blankslate")
-    assert_selector("h3.h2", text: "Title")
+    assert_selector("h3.blankslate-heading", text: "Title")
     refute_selector(".blankslate-narrow")
     refute_selector(".blankslate-spacious")
   end
