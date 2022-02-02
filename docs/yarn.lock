@@ -1583,10 +1583,10 @@
     focus-visible "5.2.0"
     styled-system "5.1.5"
 
-"@primer/css@^19.2.0":
-  version "19.2.0"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-19.2.0.tgz#afd1821c46da5a1c675f8e74a38fa566434c868b"
-  integrity sha512-20fJIGZy/s+LqDfqR1qqGS34LZTg3co4XbeL+Lv45LBqsVQ+ULwURNU6y3JBb78THLbish9V4TccPw59dj1YOQ==
+"@primer/css@^19.3.0":
+  version "19.3.0"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-19.3.0.tgz#46980ddd4292fafe482ed201fb13174bd61ff2db"
+  integrity sha512-8vmesDNX2K+VrVpeRu9vRLEF0o/XYMoLQCexyVV6TxMI0YNOgnGQhO8EsXuwDK49pjKPXBLrFu4FnTo4q3WYcQ==
   dependencies:
     "@primer/primitives" "^7.4.0"
 
