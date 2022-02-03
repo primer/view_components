@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Updates
+
+- Remove CSS utilities from Blankslate
+
+    _Hector Garcia_
+
 ## 0.0.68
 
 ### Updates
