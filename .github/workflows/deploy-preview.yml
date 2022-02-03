@@ -11,6 +11,7 @@ on:
       - '.vercelignore'
 jobs:
   deploy-preview:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     name: Preview
     runs-on: ubuntu-latest
     steps:
