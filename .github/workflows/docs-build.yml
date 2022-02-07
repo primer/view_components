@@ -7,6 +7,7 @@ on:
 
 jobs:
   build-docs:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     name: Build Docs
     runs-on: ubuntu-latest
     steps:
@@ -40,6 +41,6 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "Actions Auto Build"
-          git add -f lib/primer/classify/utilities.yml docs static
+          git add -f lib/primer/classify/utilities.yml static
           git commit -m "docs: build docs" || true
           git push

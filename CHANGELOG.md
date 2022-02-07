@@ -30,6 +30,26 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Updates
+
+- Remove CSS utilities from Blankslate
+
+    _Hector Garcia_
+
+## 0.0.68
+
+### Updates
+
+- Add accessible labels to Search AutoComplete when provided with an icon
+
+    _Andri Alexandrou_
+
+## 0.0.67
+
+- Updating octicons to `> 16`
+
+    _Jon Rohan_
+
 ## 0.0.66
 
 - Revert optimization changes to utilities.

@@ -76,12 +76,12 @@ module Primer
       #
       # @example With `aria-labelledby`
       #   <%= render(Primer::HeadingComponent.new(tag: :h2, id: "search-1")) { "Search" } %>
-      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-3", list_id: "fruits-popup-2", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-3", list_id: "fruits-popup-3", position: :relative)) do |c| %>
       #     <% c.input("aria-labelledby": "search-1") %>
       #   <% end %>
       #
       # @example With custom classes for the results
-      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-4", list_id: "fruits-popup-3", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-4", list_id: "fruits-popup-4", position: :relative)) do |c| %>
       #     <% c.label(classes:"").with_content("Fruits") %>
       #     <% c.input(type: :text) %>
       #     <% c.results(classes: "custom-class") do %>
@@ -95,8 +95,7 @@ module Primer
       #   <% end %>
       #
       # @example With Icon
-      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", list_id: "fruits-popup-4", input_id: "fruits-input-4", position: :relative)) do |c| %>
-      #     <% c.label(classes:"").with_content("Fruits") %>
+      #   <%= render(Primer::Beta::AutoComplete.new("aria-label": "Fruits", src: "/auto_complete", list_id: "fruits-popup-5", input_id: "fruits-input-5", position: :relative)) do |c| %>
       #     <% c.input(type: :text) %>
       #     <% c.icon(icon: :search) %>
       #   <% end %>
