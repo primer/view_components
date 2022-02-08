@@ -1,8 +1,5 @@
 <%= show_button %>
-<div
-  id="modal-dialog-backdrop"
-  class="Overlay-backdrop Overlay-backdrop--positionCenter"
->
+<div class="Overlay-backdrop Overlay-backdrop--positionCenter">
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
     <header class="Overlay-header <%= 'Overlay-header--divided' if @show_header_divider %>">
       <div class="Overlay-header--contentWrap">
