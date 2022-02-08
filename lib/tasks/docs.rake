@@ -115,7 +115,7 @@ namespace :docs do
       data = docs_metadata(component)
 
       path = Pathname.new(data[:path])
-      path.dirname.mkdir unless path.dirname.exist?
+      path.dirname.mkpath unless path.dirname.exist?
       File.open(path, "w") do |f|
         f.puts("---")
         f.puts("title: #{data[:title]}")
