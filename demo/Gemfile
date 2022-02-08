@@ -26,6 +26,8 @@ else
   end
 end
 
+eval_gemfile "gemfiles/kuby.gemfile"
+
 # Use Puma as the app server
 gem "puma", "~> 5.5.1"
 

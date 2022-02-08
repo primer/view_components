@@ -1,0 +1,2 @@
+require 'kuby'
+Kuby.load!
