@@ -27,6 +27,7 @@ will apply it to the correct elements. However, please note that a visible label
 always be used unless there is compelling reason not to. A placeholder is not a label.
 
 * Provide a `div` element with an `id` of `<list_id>-feedback` and class of `sr-only` (`list_id` should match `list_id` passed in to the initial component) to provide feedback to screen reader users about the available autoselect options.
+* Provide a `button` element with an `id` of `<input_id>-clear` to return the user's focus to the input and announce that the input has been cleared
 
 ## Arguments
 
@@ -145,12 +146,23 @@ If `data-autoselect` is `true`, pressing the "Enter" key will select the first o
 <% end %>
 ```
 
-### With Screen Reader Feedback Element
+### With Screen Reader Feedback Element - TODO IN COMMENTS
 
 <Example src="<label for='fruits-input-7' data-view-component='true'>Fruits</label><auto-complete src='/auto_complete' for='fruits-popup-7' data-view-component='true' class='position-relative'>  <input id='fruits-input-7' name='fruits-input-7' type='text' data-view-component='true' class='form-control' />  <ul id='fruits-popup-7' data-view-component='true' class='autocomplete-results'></ul></auto-complete>" />
 
 ```erb
 <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-7", list_id: "fruits-popup-7", position: :relative)) do |c| %>
+  <% c.label(classes:"").with_content("Fruits") %>
+  <% c.input(type: :text) %>
+<% end %>
+```
+
+### With Custom Clear Button - TODO IN COMMENTS
+
+<Example src="<label for='fruits-input-8' data-view-component='true'>Fruits</label><auto-complete src='/auto_complete' for='fruits-popup-8' data-view-component='true' class='position-relative'>  <input id='fruits-input-8' name='fruits-input-8' type='text' data-view-component='true' class='form-control' />  <ul id='fruits-popup-8' data-view-component='true' class='autocomplete-results'></ul></auto-complete>" />
+
+```erb
+<%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-8", list_id: "fruits-popup-8", position: :relative)) do |c| %>
   <% c.label(classes:"").with_content("Fruits") %>
   <% c.input(type: :text) %>
 <% end %>
