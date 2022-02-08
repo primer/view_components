@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/getkuby/kuby-core.git
-  revision: 479654cb38816987f1aa19e52e1f8aa1876bf17d
+  revision: 43fd5a905484657e720660feb4122b19e0230d57
   branch: master
   specs:
     kuby-core (0.17.0)

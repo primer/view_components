@@ -97,7 +97,6 @@ Kuby.define("ViewComponentsStorybook") do
     kubernetes do
       add_plugin :rails_app do
         manage_database false
-        tls_enabled false
 
         root "demo/"
       end
@@ -119,7 +118,7 @@ Kuby.define("ViewComponentsStorybook") do
       # end
 
       configure_plugin :rails_app do
-        hostname 'pvc.primer.style'
+        hostname 'view-components-storybook.eastus.cloudapp.azure.com'
       end
 
       provider :bare_metal do
@@ -134,6 +133,7 @@ Kuby.define("ViewComponentsStorybook") do
 
     kubernetes do
       configure_plugin :rails_app do
+        tls_enabled false
         hostname 'localhost'
       end
 
