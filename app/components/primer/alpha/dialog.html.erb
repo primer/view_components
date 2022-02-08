@@ -1,16 +1,23 @@
 <%= show_button %>
-<div class="modal-dialog-backdrop">
+<div
+  id="modal-dialog-backdrop"
+  class="Overlay-backdrop Overlay-backdrop--positionCenter"
+>
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-    <header>
-      <h1 id="<%= @header_id %>"><%= @title %></h1>
-      <% if @description.present? %>
-        <h2 id="<%= @description_id %>"><%= @description %></h2>
-      <% end %>
-      <%= render Primer::CloseButton.new() %>
+    <header class="Overlay-header <%= 'Overlay-header--divided' if @show_header_divider %>">
+      <div class="Overlay-header--contentWrap">
+        <div class="Overlay-header--titleWrap">
+          <h1 id="<%= @header_id %>" class="Overlay-title"><%= @title %></h1>
+          <% if @description.present? %>
+            <h2 id="<%= @description_id %>" class="Overlay-description"><%= @description %></h2>
+          <% end %>
+        </div>
+        <%= render Primer::CloseButton.new(classes:"Overlay-closeButton") %>
+      </div>
     </header>
-    <%= body %>
+     <div class="Overlay-body"><%= body %></div>
     <% if buttons.any? %>
-      <footer>
+      <footer class="Dialog-footer Overlay-footer <%= 'Overlay-footer--divided' if @show_footer_divider %>">
         <% buttons.each do |button| %>
           <%= button %>
         <% end %>

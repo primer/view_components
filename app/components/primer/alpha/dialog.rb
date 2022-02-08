@@ -70,11 +70,15 @@ module Primer
       # @param description [String] The optional description of the dialog.
       # @param dialog_id [String] The optional ID of the dialog, defaults to random string.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(title:, description: nil, dialog_id: nil, **system_arguments)
+      def initialize(title:, description: nil, dialog_id: nil, show_header_divider: true, show_footer_divider: true, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
 
         @system_arguments[:tag] = "modal-dialog"
         @system_arguments[:role] = :dialog
+
+        @show_header_divider = show_header_divider
+        @show_footer_divider = show_footer_divider
+
         @title = title
         @description = description
         dialog_id ||= "dialog-#{SecureRandom.hex(4)}"
@@ -83,8 +87,8 @@ module Primer
         @header_id = "#{dialog_id}-header"
 
         @system_arguments[:classes] = class_names(
-          "dialog",
-          "hidden",
+          "Dialog",
+          "Overlay",
           system_arguments[:classes]
         )
 

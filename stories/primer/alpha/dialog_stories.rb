@@ -7,8 +7,9 @@ class Primer::Alpha::DialogStories < ViewComponent::Storybook::Stories
 
   story(:dialog) do
     controls do
-      classes "custom-class"
-      title "Are you sure you want to display a dialog?"
+      classes ""
+      title "This is the title of the dialog"
+      description "This is the description of the dialog"
     end
 
     content do |component|
@@ -16,7 +17,7 @@ class Primer::Alpha::DialogStories < ViewComponent::Storybook::Stories
         "Show dialog"
       end
       component.body do
-        "Your custom content here"
+        "This is the body of the dialog"
       end
       component.button { "Yes" }
       component.button { "No" }
