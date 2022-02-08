@@ -71,3 +71,8 @@ Primer/DeprecatedArguments:
 
 Primer/DeprecatedLayoutComponent:
   Enabled: false
+
+Primer/ComponentNameMigration:
+  Enabled: true
+  Exclude:
+    - "test/**/*"

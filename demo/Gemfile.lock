@@ -1,10 +1,10 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.0.64)
+    primer_view_components (0.0.67)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-      octicons (~> 15)
+      octicons (~> 16)
       view_component (>= 2.0.0, < 3.0)
 
 GEM
@@ -56,7 +56,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
-    octicons (15.2.0)
+    octicons (16.3.0)
     puma (5.5.1)
       nio4r (~> 2.0)
     racc (1.5.2)
@@ -122,4 +122,4 @@ DEPENDENCIES
   view_component_storybook (~> 0.8.0)
 
 BUNDLED WITH
-   2.2.22
+   2.2.27

@@ -1,13 +1,14 @@
 {
-  "version": 2,
-  "name": "primer-viewcomponents",
   "builds": [
     {
       "src": "package.json",
-      "use": "@now/static-build",
+      "use": "@vercel/static-build",
       "config": {"distDir": "public"}
     }
   ],
   "rewrites": [{"source": "/view-components(/.*)?", "destination": "/$1"}],
-  "redirects": [{"source": "/", "destination": "/view-components"}]
+  "redirects": [{"source": "/", "destination": "/view-components"}],
+  "github": {
+    "enabled": false
+  }
 }

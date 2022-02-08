@@ -42,11 +42,10 @@ class ComponentStatusMigrator < Thor::Group
     end
   end
 
-  def move_test
+  def copy_test
     raise unless File.exist?(test_path)
 
     copy_file(test_path, test_path_with_status)
-    remove_file(test_path)
   end
 
   def move_story
@@ -66,7 +65,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def rename_test_class
-    gsub_file(test_path_with_status, /class .*Test/, "class Primer#{name_without_suffix.gsub('::', '')}Test")
+    gsub_file(test_path_with_status, /class .*Test </, "class Primer#{status.capitalize}#{name_without_suffix.gsub('::', '')}Test <")
   end
 
   def add_require_to_story
@@ -78,7 +77,19 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def update_all_references
-    run("grep -rl #{name} . --exclude=CHANGELOG.md | xargs sed -i 's/Primer::#{name}/Primer::#{status.capitalize}::#{name_without_suffix}/g'")
+    run("grep -rl #{name} . --exclude=CHANGELOG.md --exclude=#{test_path} | xargs sed -i 's/Primer::#{name}/Primer::#{status.capitalize}::#{name_without_suffix}/g'")
+  end
+
+  def add_alias
+    insert_into_file(controller_path_with_status, "\nPrimer::#{name} = Primer::#{status.capitalize}::#{name_without_suffix}\n")
+  end
+
+  def add_to_linter
+    insert_into_file(
+      "lib/rubocop/cop/primer/component_name_migration.rb",
+      "\"Primer::#{name}\" => \"Primer::#{status.capitalize}::#{name_without_suffix}\",\n",
+      after: "DEPRECATIONS = {\n"
+    )
   end
 
   def run_rubocop
