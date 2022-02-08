@@ -5,13 +5,16 @@ module Primer
     # Use `AutoComplete` to provide a user with a list of selectable suggestions that appear when they type into the
     # input field. This list is populated by server search results.
     # @accessibility
-    #   Always set an accessible label to help the user interact with the component.
+    #   * Always set an accessible label to help the user interact with the component.
     #
-    #   * Set the `label` slot to render a visible label. Alternatively, associate an existing visible text element
+    #     * Set the `label` slot to render a visible label. Alternatively, associate an existing visible text element
     #   as a label by setting `aria-labelledby`.
-    #   * If you must use a non-visible label, set `:"aria-label"` on `AutoComplete` and Primer
+    #     * If you must use a non-visible label, set `:"aria-label"` on `AutoComplete` and Primer
     #   will apply it to the correct elements. However, please note that a visible label should almost
     #   always be used unless there is compelling reason not to. A placeholder is not a label.
+    #
+    #   * Provide a `div` element with an `id` of `<list_id>-feedback` and class of `sr-only` (`list_id` should match `list_id` passed in to the initial component) to provide feedback to screen reader users about the available autoselect options.
+    #   * Provide a `button` element with an `id` of `<input_id>-clear` to return the user's focus to the input and announce that the input has been cleared
     class AutoComplete < Primer::Component
       status :beta
 
@@ -69,19 +72,28 @@ module Primer
       #     <% c.input(type: :text) %>
       #   <% end %>
       #
+      # @example With `data-autoselect`
+      #   @description
+      #     If `data-autoselect` is `true`, pressing the "Enter" key will select the first option available.
+      #   @code
+      #     <%= render(Primer::Beta::AutoComplete.new("data-autoselect": true, src: "/auto_complete", input_id: "fruits-input-2", list_id: "fruits-popup-2", position: :relative)) do |c| %>
+      #       <% c.label(classes:"").with_content("Fruits") %>
+      #       <% c.input(type: :text) %>
+      #     <% end %>
+      #
       # @example With `aria-label`
-      #   <%= render(Primer::Beta::AutoComplete.new("aria-label": "Fruits", src: "/auto_complete", input_id: "fruits-input-2", list_id: "fruits-popup-2", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new("aria-label": "Fruits", src: "/auto_complete", input_id: "fruits-input-3", list_id: "fruits-popup-3", position: :relative)) do |c| %>
       #     <% c.input(type: :text) %>
       #   <% end %>
       #
       # @example With `aria-labelledby`
       #   <%= render(Primer::HeadingComponent.new(tag: :h2, id: "search-1")) { "Search" } %>
-      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-3", list_id: "fruits-popup-3", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-4", list_id: "fruits-popup-4", position: :relative)) do |c| %>
       #     <% c.input("aria-labelledby": "search-1") %>
       #   <% end %>
       #
       # @example With custom classes for the results
-      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-4", list_id: "fruits-popup-4", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-5", list_id: "fruits-popup-5", position: :relative)) do |c| %>
       #     <% c.label(classes:"").with_content("Fruits") %>
       #     <% c.input(type: :text) %>
       #     <% c.results(classes: "custom-class") do %>
@@ -95,9 +107,21 @@ module Primer
       #   <% end %>
       #
       # @example With Icon
-      #   <%= render(Primer::Beta::AutoComplete.new("aria-label": "Fruits", src: "/auto_complete", list_id: "fruits-popup-5", input_id: "fruits-input-5", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new("aria-label": "Fruits", src: "/auto_complete", list_id: "fruits-popup-6", input_id: "fruits-input-6", position: :relative)) do |c| %>
       #     <% c.input(type: :text) %>
       #     <% c.icon(icon: :search) %>
+      #   <% end %>
+      #
+      # @example With Screen Reader Feedback Element - TODO IN COMMENTS
+      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-7", list_id: "fruits-popup-7", position: :relative)) do |c| %>
+      #     <% c.label(classes:"").with_content("Fruits") %>
+      #     <% c.input(type: :text) %>
+      #   <% end %>
+      #
+      # @example With Custom Clear Button - TODO IN COMMENTS
+      #   <%= render(Primer::Beta::AutoComplete.new(src: "/auto_complete", input_id: "fruits-input-8", list_id: "fruits-popup-8", position: :relative)) do |c| %>
+      #     <% c.label(classes:"").with_content("Fruits") %>
+      #     <% c.input(type: :text) %>
       #   <% end %>
       #
       # @param src [String] The route to query.
