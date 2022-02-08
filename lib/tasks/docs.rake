@@ -106,9 +106,8 @@ namespace :docs do
     errors = []
 
     # Deletes docs before regenerating them, guaranteeing that we don't keep stale docs.
-    components_content_dir = File.join(*%w[docs content components])
-    FileUtils.rm_rf(File.join(components_content_dir))
-    FileUtils.mkdir(components_content_dir)
+    components_content_glob = File.join(*%w[docs content components ** *.md])
+    FileUtils.rm_rf(components_content_glob)
 
     components.sort_by(&:name).each do |component|
       documentation = registry.get(component.name)
