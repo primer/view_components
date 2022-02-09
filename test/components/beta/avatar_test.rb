@@ -66,55 +66,51 @@ class PrimerBetaAvatarTest < Minitest::Test
   def test_renders_link_wrapper
     render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#given-href"))
 
-    assert_selector("a.avatar") do |(a)|
+    assert_selector("a") do |(a)|
       assert_equal("#given-href", a["href"])
-      assert_selector("img")
-      refute_selector("img.avatar")
+      assert_selector("img.avatar")
     end
   end
 
   def test_defaults_circle_link_wrapper
     render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#"))
 
-    assert_selector("a.avatar.circle") do
-      assert_selector("img")
-      refute_selector("img.circle")
+    assert_selector("a") do
+      assert_selector("img.avatar.circle")
     end
   end
 
   def test_squared_link_wrapper
     render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#", shape: :square))
 
-    assert_selector("a.avatar") do
-      assert_selector("img")
+    assert_selector("a") do
+      assert_selector("img.avatar")
     end
     refute_selector(".circle")
   end
 
-  def test_adds_small_modifier_to_link_wrapper_when_size_is_less_than_threshold
+  def test_adds_small_modifier_to_avatar_in_link_wrapper_when_size_is_less_than_threshold
     render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#", size: Primer::Beta::Avatar::SMALL_THRESHOLD - 4))
 
-    assert_selector("a.avatar.avatar-small") do
-      assert_selector("img")
-      refute_selector("img.avatar-small")
+    assert_selector("a") do
+      assert_selector("img.avatar-small")
     end
   end
 
-  def test_does_not_add_small_modifier_to_link_wrapper_when_size_is_greater_than_threshold
+  def test_does_not_add_small_modifier_to_avatar_in_link_wrapper_when_size_is_greater_than_threshold
     render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#", size: Primer::Beta::Avatar::SMALL_THRESHOLD + 8))
 
-    assert_selector("a.avatar") do
-      assert_selector("img")
+    assert_selector("a") do
+      assert_selector("img.avatar")
     end
     refute_selector(".avatar-small")
   end
 
-  def test_adds_custom_classes_to_link_wrapper
+  def test_adds_custom_classes_to_avatar_in_link_wrapper
     render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#", classes: "custom-class"))
 
-    assert_selector("a.avatar.custom-class") do
-      assert_selector("img")
-      refute_selector("img.custom-class")
+    assert_selector("a") do
+      assert_selector("img.avatar.custom-class")
     end
   end
 
@@ -124,6 +120,24 @@ class PrimerBetaAvatarTest < Minitest::Test
     assert_selector("a.lh-0") do
       assert_selector("img")
       refute_selector("img.lh-0")
+    end
+  end
+
+  def test_sets_link_arguments_on_link
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#", link_arguments: { mr: 2 }))
+
+    assert_selector("a.mr-2") do
+      assert_selector("img")
+      refute_selector("img.mr-2")
+    end
+  end
+
+  def test_sets_link_arguments_classes_on_link
+    render_inline(Primer::Beta::Avatar.new(src: "https://github.com/github.png", alt: "github", href: "#", link_arguments: { mr: 2, muted: true, underline: false }))
+
+    assert_selector("a.mr-2.Link--muted.no-underline") do
+      assert_selector("img")
+      refute_selector("img.mr-2.Link--muted.no-underline")
     end
   end
 

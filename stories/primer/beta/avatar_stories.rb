@@ -12,6 +12,7 @@ class Primer::Beta::AvatarStories < ViewComponent::Storybook::Stories
       size 20
       select(:shape, Primer::Beta::Avatar::SHAPE_OPTIONS, Primer::Beta::Avatar::DEFAULT_SHAPE)
       text(:href, "#")
+      object(:link_arguments, {})
     end
   end
 end
