@@ -36,6 +36,9 @@ module Primer
       # @example Link
       #   <%= render(Primer::Beta::Avatar.new(href: "#", src: "http://placekitten.com/200/200", alt: "@kittenuser profile")) %>
       #
+      # @example Link with link arguments
+      #   <%= render(Primer::Beta::Avatar.new(href: "#", link_arguments: { ml: 2, p: 1 }, src: "http://placekitten.com/200/200", alt: "@kittenuser profile")) %>
+      #
       # @example With size
       #   <%= render(Primer::Beta::Avatar.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 16)) %>
       #   <%= render(Primer::Beta::Avatar.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: 20)) %>
@@ -50,9 +53,11 @@ module Primer
       # @param size [Integer] <%= one_of(Primer::Beta::Avatar::SIZE_OPTIONS) %>
       # @param shape [Symbol] Shape of the avatar. <%= one_of(Primer::Beta::Avatar::SHAPE_OPTIONS) %>
       # @param href [String] The URL to link to. If used, component will be wrapped by an `<a>` tag.
+      # @param link_arguments [Hash] <%= link_to_system_arguments_docs %> or [link arguments](/components/link#arguments) to be placed on the rendered `<a>` if `href` is provided.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(src:, alt:, size: DEFAULT_SIZE, shape: DEFAULT_SHAPE, href: nil, **system_arguments)
+      def initialize(src:, alt:, size: DEFAULT_SIZE, shape: DEFAULT_SHAPE, href: nil, link_arguments: {}, **system_arguments)
         @href = href
+        @link_arguments = link_arguments
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :img
         @system_arguments[:src] = src
@@ -65,15 +70,15 @@ module Primer
           system_arguments[:classes],
           "avatar",
           "avatar-small" => size < SMALL_THRESHOLD,
-          "circle" => shape == DEFAULT_SHAPE,
-          "lh-0" => href # Addresses an overflow issue with linked avatars
+          "circle" => shape == DEFAULT_SHAPE
         )
       end
 
       def call
         if @href
-          render(Primer::LinkComponent.new(href: @href, classes: @system_arguments[:classes])) do
-            render(Primer::BaseComponent.new(**@system_arguments.except(:classes))) { content }
+          (@link_arguments[:classes] ||= []) << "lh-0" # Addresses an overflow issue with linked avatars
+          render(Primer::LinkComponent.new(href: @href, **@link_arguments)) do
+            render(Primer::BaseComponent.new(**@system_arguments)) { content }
           end
         else
           render(Primer::BaseComponent.new(**@system_arguments)) { content }
