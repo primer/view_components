@@ -61,7 +61,7 @@ By default, the system tests run in a headless Chrome browser. Prefix the test c
 
 ## Writing documentation
 
-Documentation is written as [YARD](https://yardoc.org/) comments directly in the source code, compiled into Markdown via `rake docs:build` and served by [Doctocat](https://github.com/primer/doctocat).
+Documentation is written as [YARD](https://yardoc.org/) comments directly in the source code, compiled into Markdown via `build exec rake docs:build` and served by [Doctocat](https://github.com/primer/doctocat).
 
 ### Storybook / Documentation / Demo Rails App
 
