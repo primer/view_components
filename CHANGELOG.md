@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+- Adds separate hash `link_arguments` to Avatar component.
+
+    _Jamie Chung_
+    
 ### Updates
 
 - Remove CSS utilities from Blankslate
