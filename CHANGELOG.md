@@ -36,6 +36,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Hector Garcia_
 
+- Improve last example on the PopoverComponent docs
+
+    _Hector Garcia_
+
 ### Bug Fixes
 
 - Fix live reloading during local docs development.
