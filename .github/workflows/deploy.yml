@@ -33,7 +33,7 @@ jobs:
     - name: Build
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-      run: bin/kuby -e production build -- --cache-with primer.azurecr.io/primer/view_components_storybook:latest
+      run: bin/kuby -e production build -- --cache-from primer.azurecr.io/primer/view_components_storybook:latest
     - name: Push
       run: bin/kuby -e production push
     - name: Deploy
