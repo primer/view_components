@@ -82,7 +82,8 @@ namespace :docs do
       Primer::Alpha::UnderlineNav,
       Primer::Alpha::UnderlinePanels,
       Primer::Alpha::TabNav,
-      Primer::Alpha::TabPanels
+      Primer::Alpha::TabPanels,
+      Primer::Alpha::Tooltip
     ]
 
     js_components = [
@@ -94,7 +95,8 @@ namespace :docs do
       Primer::TabContainerComponent,
       Primer::TimeAgoComponent,
       Primer::Alpha::UnderlinePanels,
-      Primer::Alpha::TabPanels
+      Primer::Alpha::TabPanels,
+      Primer::Alpha::Tooltip
     ]
 
     all_components = Primer::Component.descendants - [Primer::BaseComponent]
