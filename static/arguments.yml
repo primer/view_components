@@ -165,6 +165,10 @@
 - component: AutoComplete
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete.rb
   parameters:
+  - name: label_text
+    type: String
+    default: N/A
+    description: The label of the input.
   - name: src
     type: String
     default: N/A
@@ -177,6 +181,11 @@
     type: String
     default: N/A
     description: Id of the list element.
+  - name: is_label_visible
+    type: Boolean
+    default: "`true`"
+    description: Controls if the label is visible. If `false`, screen reader only
+      text will be added.
   - name: system_arguments
     type: Hash
     default: N/A
