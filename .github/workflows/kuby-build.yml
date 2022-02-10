@@ -23,6 +23,6 @@ jobs:
       run: |
         gem install bundler -v '~> 2.3'
         bundle config path vendor/bundle
-        bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile.lock
+        bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile
         bin/kuby -e production build
         bin/kuby -e production push
