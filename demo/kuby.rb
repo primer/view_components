@@ -87,11 +87,6 @@ Kuby.define("ViewComponentsStorybook") do
         dockerfile.run("mkdir", "-p", "demo/app/assets/stylesheets")
         dockerfile.run("yarn", "install")
       end
-
-      # Once everything's installed, generate the JSON for all the stories.
-      insert :stories, after: :app_phase do |dockerfile|
-        dockerfile.run("bin/rails", "view_component_storybook:write_stories_json", "--trace")
-      end
     end
 
     kubernetes do

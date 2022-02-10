@@ -1,0 +1,43 @@
+name: Rails Storybook Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - azure
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 3.0.x
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: gems-build-kuby-main-ruby-3.0.x-${{ hashFiles('demo/gemfiles/kuby.gemfile.lock') }}
+    - name: Docker login
+      env:
+        AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
+      run: echo $AZURE_ACR_PASSWORD | docker login --username GitHubActions --password-stdin
+    - name: Bundle
+      run: |
+        gem install bundler -v '~> 2.3'
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile
+    - name: Pull latest
+      run: docker pull primer.azurecr.io/primer/view_components_storybook:latest
+    - name: Build
+      env:
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+      run: bin/kuby -e production build -- --cache-with primer.azurecr.io/primer/view_components_storybook:latest
+    - name: Push
+      run: bin/kuby -e production push
+    - name: Deploy
+      env:
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+        AZURE_SPN_CLIENT_SECRET: ${{ secrets.AZURE_SPN_CLIENT_SECRET }}
+      run: bin/kuby -e production deploy
