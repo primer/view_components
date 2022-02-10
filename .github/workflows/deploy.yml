@@ -41,10 +41,14 @@ jobs:
         bin/kuby -e production build --only app -- --cache-from primer.azurecr.io/primer/view_components_storybook:latest
         bin/kuby -e production build --only assets -- --cache-from primer.azurecr.io/primer/view_components_storybook:latest-assets
   push:
+    runs-on: ubuntu-latest
+    steps:
     - name: Push
       needs: build
       run: bin/kuby -e production push
   deploy:
+    runs-on: ubuntu-latest
+    steps:
     - name: Deploy
       needs: push
       env:
