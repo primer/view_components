@@ -20,6 +20,10 @@ jobs:
         path: vendor/bundle
         key: gems-build-kuby-main-ruby-3.0.x-${{ hashFiles('demo/gemfiles/kuby.gemfile.lock') }}
     - name: Build and push
+      env: # Or as an environment variable
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+        AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
+        AZURE_SPN_CLIENT_SECRET: ${{ secrets.AZURE_SPN_CLIENT_SECRET }}
       run: |
         gem install bundler -v '~> 2.3'
         bundle config path vendor/bundle
