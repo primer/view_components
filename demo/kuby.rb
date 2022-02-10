@@ -7,7 +7,7 @@ Kuby.define("ViewComponentsStorybook") do
     docker do
       credentials do
         username "GitHubActions"
-        password ENV["AZURE_REGISTRY_PASSWORD"]
+        password ENV["AZURE_ACR_PASSWORD"]
       end
 
       # image_url "localhost:5000/primer/view_components_storybook"
@@ -107,23 +107,18 @@ Kuby.define("ViewComponentsStorybook") do
     instance_exec(&shared)
 
     kubernetes do
-      # provider :azure do
-      #   subscription_id "550eb99d-d0c7-4651-a337-f53fa6520c4f"
-      #   tenant_id "398a6654-997b-47e9-b12b-9515b896b4de"
-      #   resource_group_name "primer"
-      #   resource_name "primer"
+      provider :azure do
+        subscription_id "550eb99d-d0c7-4651-a337-f53fa6520c4f"
+        tenant_id "398a6654-997b-47e9-b12b-9515b896b4de"
+        resource_group_name "primer"
+        resource_name "primer"
 
-      #   client_id ""
-      #   client_secret ""
-      # end
+        client_id "5ad1a188-b944-40eb-a2f8-cc683a6a65a0"
+        client_secret ENV["AZURE_SPN_CLIENT_SECRET"]
+      end
 
       configure_plugin :rails_app do
         hostname 'view-components-storybook.eastus.cloudapp.azure.com'
-      end
-
-      provider :bare_metal do
-        kubeconfig "/Users/camertron/Desktop/primer_aks.yaml"
-        storage_class "standard"
       end
     end
   end

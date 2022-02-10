@@ -133,7 +133,7 @@ GEM
     kubectl-rb (0.2.1-x86_64-darwin)
     kubernetes-cli (0.3.2)
       kubectl-rb (~> 0.1)
-    kuby-azure (0.3.1)
+    kuby-azure (0.3.3)
       azure_mgmt_container_service (~> 0.20)
       kube-dsl (~> 0.1)
     kuby-cert-manager (0.3.0)
@@ -224,7 +224,7 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
-  kuby-azure (~> 0.3)
+  kuby-azure (>= 0.3.3, < 1.0)
   kuby-core!
   kuby-kind (~> 0.1)
   pry-byebug

@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem "kuby-core", github: "getkuby/kuby-core", branch: "master"
-gem "kuby-azure", "~> 0.3"
+gem "kuby-azure", ">= 0.3.3", "< 1.0"
 gem "kuby-kind", "~> 0.1"
 
 gem "pry-byebug"
