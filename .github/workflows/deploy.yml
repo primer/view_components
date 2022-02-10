@@ -17,7 +17,7 @@ jobs:
         ruby-version: 3.0.x
     - uses: actions/cache@v2
       with:
-        path: vendor/bundle
+        path: demo/gemfiles/vendor/bundle
         key: gems-build-kuby-main-ruby-3.0.x-${{ hashFiles('demo/gemfiles/kuby.gemfile.lock') }}
     - name: Docker login
       env:
@@ -26,8 +26,7 @@ jobs:
     - name: Bundle
       run: |
         gem install bundler -v '~> 2.3'
-        bundle config path vendor/bundle
-        bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile
+        bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile --path vendor/bundle
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
     - name: Pull latest
