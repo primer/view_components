@@ -42,15 +42,15 @@ jobs:
         bin/kuby -e production build --only assets -- --cache-from primer.azurecr.io/primer/view_components_storybook:latest-assets
   push:
     runs-on: ubuntu-latest
+    needs: build
     steps:
     - name: Push
-      needs: build
       run: bin/kuby -e production push
   deploy:
     runs-on: ubuntu-latest
+    needs: push
     steps:
     - name: Deploy
-      needs: push
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
