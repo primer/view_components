@@ -19,7 +19,7 @@ jobs:
       with:
         path: vendor/bundle
         key: gems-build-kuby-main-ruby-3.0.x-${{ hashFiles('gemfiles/kuby.gemfile.lock') }}
-    - name: Lint with Rubocop
+    - name: Build and push
       run: |
         gem install bundler -v '~> 2.3'
         bundle config path vendor/bundle
