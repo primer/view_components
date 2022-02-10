@@ -28,15 +28,25 @@ jobs:
         gem install bundler -v '~> 2.3'
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
     - name: Pull latest
-      run: docker pull primer.azurecr.io/primer/view_components_storybook:latest
+      run: |
+        docker pull primer.azurecr.io/primer/view_components_storybook:latest
+        docker pull primer.azurecr.io/primer/view_components_storybook:latest-assets
     - name: Build
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-      run: bin/kuby -e production build -- --cache-from primer.azurecr.io/primer/view_components_storybook:latest
+      run: |
+        bin/kuby -e production build --only app -- --cache-from primer.azurecr.io/primer/view_components_storybook:latest
+        bin/kuby -e production build --only assets -- --cache-from primer.azurecr.io/primer/view_components_storybook:latest-assets
+  push:
     - name: Push
+      needs: build
       run: bin/kuby -e production push
+  deploy:
     - name: Deploy
+      needs: push
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
