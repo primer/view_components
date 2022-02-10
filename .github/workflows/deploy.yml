@@ -28,15 +28,13 @@ jobs:
         gem install bundler -v '~> 2.3'
         bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile --path vendor/bundle
     - name: Pull latest
-      run: |
-        docker pull primer.azurecr.io/primer/view_components_storybook:latest
-        docker pull primer.azurecr.io/primer/view_components_storybook:latest-assets
+      run: docker pull primer.azurecr.io/primer/view_components_storybook:latest
     - name: Build
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-      run: |
-        bin/kuby -e production build --only app -- --cache-from primer.azurecr.io/primer/view_components_storybook:latest
-        bin/kuby -e production build --only assets -- --cache-from primer.azurecr.io/primer/view_components_storybook:latest-assets
+      # sadly the app and assets images can't be built separately right now because
+      # of a timestamp tag bug
+      run: bin/kuby -e production build -- --cache-from primer.azurecr.io/primer/view_components_storybook:latest
     - name: Push
       run: bin/kuby -e production push
   deploy:
