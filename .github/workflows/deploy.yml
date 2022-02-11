@@ -1,3 +1,5 @@
+
+
 name: Rails Storybook Deploy
 
 on:
@@ -37,10 +39,24 @@ jobs:
       run: bin/kuby -e production build -- --cache-from primer.azurecr.io/primer/view_components_storybook:latest
     - name: Push
       run: bin/kuby -e production push
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
+    - uses: actions/checkout@master
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 3.0.x
+    - uses: actions/cache@v2
+      with:
+        path: demo/gemfiles/vendor/bundle
+        key: gems-build-kuby-main-ruby-3.0.x-${{ hashFiles('demo/gemfiles/kuby.gemfile.lock') }}
+    - name: Bundle
+      run: |
+        gem install bundler -v '~> 2.3'
+        bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile --path vendor/bundle
     - name: Deploy
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
