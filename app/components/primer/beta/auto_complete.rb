@@ -8,8 +8,9 @@ module Primer
     #   Always set an accessible label to help the user interact with the component.
     #
     #   * `label_text` is required and visible by default.
-    #   * If you must use a non-visible label, set `is_label_visible` to `false`. However, please note that a visible label should almost
-    #   always be used unless there is compelling reason not to. A placeholder is not a label.
+    #   * If you must use a non-visible label, set `is_label_visible` to `false`.
+    #   However, please note that a visible label should almost always
+    #   be used unless there is compelling reason not to. A placeholder is not a label.
     class AutoComplete < Primer::Component
       status :beta
 
@@ -48,7 +49,7 @@ module Primer
       #
       # @example With Custom Classes for the Input
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-3", list_id: "fruits-popup-3", position: :relative)) do |c| %>
-      #     <% c.input(classes: "search-1") %>
+      #     <% c.input(classes: "custom-class") %>
       #   <% end %>
       #
       # @example With Custom Classes for the Results
@@ -85,7 +86,7 @@ module Primer
         @system_arguments[:for] = list_id
       end
 
-      # add `input` and `results` without needing to explicitly call it in the view
+      # add `input` and `results` without needing to explicitly call them in the view
       def before_render
         input(classes: "form-control") unless input
         results(classes: "") unless results
