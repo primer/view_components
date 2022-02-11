@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/getkuby/kuby-core.git
-  revision: 43fd5a905484657e720660feb4122b19e0230d57
-  branch: master
+  revision: 708f2181977ad9c75eb83ca26505402d316975ef
+  ref: 708f2181977ad9c75eb83ca26505402d316975ef
   specs:
     kuby-core (0.17.0)
       colorize (~> 0.8)
@@ -20,20 +20,20 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actionpack (7.0.2)
-      actionview (= 7.0.2)
-      activesupport (= 7.0.2)
+    actionpack (7.0.2.2)
+      actionview (= 7.0.2.2)
+      activesupport (= 7.0.2.2)
       rack (~> 2.0, >= 2.2.0)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.2.0)
-    actionview (7.0.2)
-      activesupport (= 7.0.2)
+    actionview (7.0.2.2)
+      activesupport (= 7.0.2.2)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    activesupport (7.0.2)
+    activesupport (7.0.2.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -146,7 +146,7 @@ GEM
       helm-cli (~> 0.3)
       helm-rb (~> 0.2)
       kube-dsl (>= 0.6.1, < 1.0)
-    loofah (2.13.0)
+    loofah (2.14.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     memoist (0.16.2)
@@ -187,9 +187,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
-    railties (7.0.2)
-      actionpack (= 7.0.2)
-      activesupport (= 7.0.2)
+    railties (7.0.2.2)
+      actionpack (= 7.0.2.2)
+      activesupport (= 7.0.2.2)
       method_source
       rake (>= 12.2)
       thor (~> 1.0)
