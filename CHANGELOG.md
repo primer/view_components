@@ -46,6 +46,14 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Cameron Dutro_
 
+## 0.0.69
+
+### Updates
+
+- Restricts children for AutoComplete API to prevent accessibility violations and misuse
+
+    _Lindsey Wild_
+
 ## 0.0.68
 
 ### Updates
