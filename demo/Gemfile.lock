@@ -210,8 +210,6 @@ GEM
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
-    nokogiri (1.12.5-x86_64-darwin)
-      racc (~> 1.4)
     octicons (16.3.0)
     oj (3.13.11)
     os (1.1.4)
@@ -241,7 +239,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (~> 1.0)
-    rake (12.3.3)
+    rake (13.0.6)
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -303,7 +301,7 @@ DEPENDENCIES
   puma (~> 5.5.1)
   rack-cors
   railties (= 6.1.1)
-  rake (~> 12.0)
+  rake (~> 13.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   sprockets

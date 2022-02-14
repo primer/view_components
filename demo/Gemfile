@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 rails_version = (ENV["RAILS_VERSION"] || "6.1.1").to_s
 
-gem "rake", "~> 12.0"
+gem "rake", "~> 13.0"
 gem "rack-cors"
 gem "sprockets"
 gem "sprockets-rails"
