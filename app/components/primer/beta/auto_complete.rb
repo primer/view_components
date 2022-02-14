@@ -68,6 +68,11 @@ module Primer
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup-5", input_id: "fruits-input-5", position: :relative)) do |c| %>
       #     <% c.icon(icon: :search) %>
       #   <% end %>
+      #
+      # @example With Icon and Non-Visible Label
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup-5", input_id: "fruits-input-5", is_label_visible: false, position: :relative)) do |c| %>
+      #     <% c.icon(icon: :search) %>
+      #   <% end %>
       # @param label_text [String] The label of the input.
       # @param src [String] The route to query.
       # @param input_id [String] Id of the input element.
