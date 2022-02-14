@@ -1583,10 +1583,10 @@
     focus-visible "5.2.0"
     styled-system "5.1.5"
 
-"@primer/css@^19.2.0":
-  version "19.2.0"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-19.2.0.tgz#afd1821c46da5a1c675f8e74a38fa566434c868b"
-  integrity sha512-20fJIGZy/s+LqDfqR1qqGS34LZTg3co4XbeL+Lv45LBqsVQ+ULwURNU6y3JBb78THLbish9V4TccPw59dj1YOQ==
+"@primer/css@^19.3.0":
+  version "19.3.0"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-19.3.0.tgz#46980ddd4292fafe482ed201fb13174bd61ff2db"
+  integrity sha512-8vmesDNX2K+VrVpeRu9vRLEF0o/XYMoLQCexyVV6TxMI0YNOgnGQhO8EsXuwDK49pjKPXBLrFu4FnTo4q3WYcQ==
   dependencies:
     "@primer/primitives" "^7.4.0"
 
@@ -13605,9 +13605,9 @@ simple-concat@^1.0.0:
   integrity sha512-cSFtAPtRhljv69IK0hTVZQ+OfE9nePi/rtJmw5UjHeVyVroEqJXP1sFztKUy1qU+xvz3u/sfYJLa947b7nAN2Q==
 
 simple-get@^3.0.3:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/simple-get/-/simple-get-3.1.0.tgz#b45be062435e50d159540b576202ceec40b9c6b3"
-  integrity sha512-bCR6cP+aTdScaQCnQKbPKtJOKDp/hj9EDLJo3Nw4y1QksqaovlW/bnptB6/c1e+qmNIDHRK+oXFDdEqBT8WzUA==
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/simple-get/-/simple-get-3.1.1.tgz#cc7ba77cfbe761036fbfce3d021af25fc5584d55"
+  integrity sha512-CQ5LTKGfCpvE1K0n2us+kuMPbk/q0EKl82s4aheV9oXjFEz6W/Y7oQFVJuU6QG77hRT4Ghb5RURteF5vnWjupA==
   dependencies:
     decompress-response "^4.2.0"
     once "^1.3.1"

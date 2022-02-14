@@ -36,6 +36,20 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Cameron Dutro_
 
+- Remove CSS utilities from Blankslate
+
+    _Hector Garcia_
+
+- Improve last example on the PopoverComponent docs
+
+    _Hector Garcia_
+
+### Bug Fixes
+
+- Fix live reloading during local docs development.
+
+    _Cameron Dutro_
+
 ## 0.0.68
 
 ### Updates

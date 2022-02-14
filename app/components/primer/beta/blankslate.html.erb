@@ -5,9 +5,13 @@
     <%= heading %>
     <%= description %>
 
-    <%= primary_action %>
+    <% if primary_action.present? %>
+      <div class="blankslate-action">
+        <%= primary_action %>
+      </div>
+    <% end %>
     <% if secondary_action.present? %>
-      <div class="mt-3">
+      <div class="blankslate-action">
         <%= secondary_action %>
       </div>
     <% end %>
