@@ -108,8 +108,6 @@ jobs:
       with:
         path: vendor/bundle
         key: gems-build-stories-ruby-3.0-${{ hashFiles('**/Gemfile.lock') }}
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
     - name: Build gem
       run: |
         gem install bundler:2.2.9
