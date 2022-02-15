@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 rails_version = (ENV["RAILS_VERSION"] || "6.1.1").to_s
 
-gem "rake", "~> 12.0"
+gem "rake", "~> 13.0"
 gem "rack-cors"
 gem "sprockets"
 gem "sprockets-rails"
@@ -26,8 +26,10 @@ else
   end
 end
 
+eval_gemfile "gemfiles/kuby.gemfile"
+
 # Use Puma as the app server
-gem "puma", "~> 5.5.1"
+gem "puma", "~> 5.6.2"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false

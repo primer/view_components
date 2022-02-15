@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+- Migrate from Heroku to Azure for the Rails storybook server.
+
+    _Cameron Dutro_
+
 - Remove CSS utilities from Blankslate
 
     _Hector Garcia_
@@ -56,7 +60,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
-- Add accessible labels to Search AutoComplete when provided with an icon
+- Add accessible labels to Search AutoComplete when provided with an icon.
 
     _Andri Alexandrou_
 
