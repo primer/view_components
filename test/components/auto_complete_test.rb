@@ -52,18 +52,14 @@ class PrimerAutoCompleteTest < Minitest::Test
     end
   end
 
-  def test_forwards_input_id_on_parent_to_input_slot_if_explicit_input_slot
-    render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
-      component.input(name: "something")
-    end
+  def test_forwards_input_id_on_parent_to_input
+    render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id")
 
     assert_selector("input[id=\"test-input\"]")
   end
 
-  def test_forwards_input_id_on_parent_to_input_slot_id_and_name_if_explicit_input_slot
-    render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
-      component.input(classes: "")
-    end
+  def test_forwards_input_id_on_parent_to_input_slot_id_and_name
+    render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id")
 
     assert_selector("input[id=\"test-input\"][name=\"test-input\"]")
   end
@@ -90,16 +86,6 @@ class PrimerAutoCompleteTest < Minitest::Test
       assert_selector("label[for=\"test-input\"]")
       assert_selector("span.sr-only", text: "Fruits")
       assert_selector("svg.octicon.octicon-person")
-    end
-  end
-
-  def test_renders_input_with_custom_classes
-    render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", list_id: "my-list-id", input_id: "test-input") do |component|
-      component.input(classes: "custom-class")
-    end
-
-    assert_selector("auto-complete[for=\"my-list-id\"][src=\"/url\"]") do
-      assert_selector("input.form-control.custom-class")
     end
   end
 

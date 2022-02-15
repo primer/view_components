@@ -181,15 +181,7 @@
     ]
   },
   "Primer::Beta::AutoComplete": {
-    "Input": "Primer::Beta::AutoComplete::Input",
     "Item": "Primer::Beta::AutoComplete::Item"
-  },
-  "Primer::Beta::AutoComplete::Input": {
-    "DEFAULT_TYPE": "text",
-    "TYPE_OPTIONS": [
-      "text",
-      "search"
-    ]
   },
   "Primer::Beta::AutoComplete::Item": {
   },
@@ -354,7 +346,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",

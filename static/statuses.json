@@ -11,7 +11,6 @@
   "Primer::BaseButton": "beta",
   "Primer::BaseComponent": "beta",
   "Primer::Beta::AutoComplete": "beta",
-  "Primer::Beta::AutoComplete::Input": "alpha",
   "Primer::Beta::AutoComplete::Item": "beta",
   "Primer::Beta::Avatar": "beta",
   "Primer::Beta::AvatarStack": "beta",

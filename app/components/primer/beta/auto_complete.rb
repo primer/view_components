@@ -14,15 +14,6 @@ module Primer
     class AutoComplete < Primer::Component
       status :beta
 
-      # Optional slot to customize classes for the input field.
-      #
-      # @param type [Symbol] <%= one_of(Primer::Beta::AutoComplete::Input::TYPE_OPTIONS) %>
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :input, lambda { |**system_arguments|
-        name = system_arguments[:name] || @input_id
-        Input.new(id: @input_id, name: name, **system_arguments)
-      }
-
       # Optional icon to be rendered before the input. Has the same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
       renders_one :icon, Primer::OcticonComponent
 
@@ -47,13 +38,8 @@ module Primer
       # @example With Non-Visible Label
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-2", list_id: "fruits-popup-2", is_label_visible: false, position: :relative)) %>
       #
-      # @example With Custom Classes for the Input
-      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-3", list_id: "fruits-popup-3", position: :relative)) do |c| %>
-      #     <% c.input(classes: "custom-class") %>
-      #   <% end %>
-      #
       # @example With Custom Classes for the Results
-      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-4", list_id: "fruits-popup-4", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-3", list_id: "fruits-popup-3", position: :relative)) do |c| %>
       #     <% c.results(classes: "custom-class") do %>
       #       <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |c| %>
       #         Apple
@@ -65,7 +51,7 @@ module Primer
       #   <% end %>
       #
       # @example With Icon
-      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup-5", input_id: "fruits-input-5", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup-4", input_id: "fruits-input-4", position: :relative)) do |c| %>
       #     <% c.icon(icon: :search) %>
       #   <% end %>
       #
@@ -91,33 +77,9 @@ module Primer
         @system_arguments[:for] = list_id
       end
 
-      # add `input` and `results` without needing to explicitly call them in the view
+      # add `results` without needing to explicitly call them in the view
       def before_render
-        input(classes: "form-control") unless input
         results(classes: "") unless results
-      end
-
-      # This component is part of `Primer::Beta::AutoCompleteComponent` and should not be
-      # used as a standalone component.
-      class Input < Primer::Component
-        DEFAULT_TYPE = :text
-        TYPE_OPTIONS = [DEFAULT_TYPE, :search].freeze
-
-        # @param type [Symbol] <%= one_of(Primer::Beta::AutoComplete::Input::TYPE_OPTIONS) %>
-        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(type: DEFAULT_TYPE, **system_arguments)
-          @system_arguments = deny_tag_argument(**system_arguments)
-          @system_arguments[:tag] = :input
-          @system_arguments[:type] = fetch_or_fallback(TYPE_OPTIONS, type, DEFAULT_TYPE)
-          @system_arguments[:classes] = class_names(
-            "form-control",
-            system_arguments[:classes]
-          )
-        end
-
-        def call
-          render(Primer::BaseComponent.new(**@system_arguments))
-        end
       end
     end
   end
