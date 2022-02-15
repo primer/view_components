@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+- Restricts children for AutoComplete API to prevent accessibility violations and misuse
+
+    _Lindsey Wild_
+
 - Migrate from Heroku to Azure for the Rails storybook server.
 
     _Cameron Dutro_
@@ -55,14 +59,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 - Deprecate `Tooltip` component.
 
   _Kate Higa_
-
-## 0.0.69
-
-### Updates
-
-- Restricts children for AutoComplete API to prevent accessibility violations and misuse
-
-    _Lindsey Wild_
 
 ## 0.0.68
 
