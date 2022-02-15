@@ -16,26 +16,26 @@ class PrimerAutoCompleteTest < Minitest::Test
   def test_renders_label_without_explicitly_calling_it
     render_inline Primer::Beta::AutoComplete.new(label_text: "Cool Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id")
 
-    assert_selector("auto-complete[for=\"my-list-id\"][src=\"/url\"]") do
-      assert_selector("label[for=\"test-input\"]", text: "Cool Fruits")
+    assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
+      assert_selector('label[for="test-input"]', text: "Cool Fruits")
     end
   end
 
   def test_renders_input_without_explicitly_calling_it
     render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id")
 
-    assert_selector("auto-complete[for=\"my-list-id\"][src=\"/url\"]") do
-      assert_selector("input[id=\"test-input\"].form-control")
-      assert_selector("ul[id=\"my-list-id\"].autocomplete-results")
+    assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
+      assert_selector('input[id="test-input"].form-control')
+      assert_selector('ul[id="my-list-id"].autocomplete-results')
     end
   end
 
   def test_renders_results_without_explicitly_calling_it
     render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id")
 
-    assert_selector("auto-complete[for=\"my-list-id\"][src=\"/url\"]") do
-      assert_selector("input[id=\"test-input\"].form-control")
-      assert_selector("ul[id=\"my-list-id\"].autocomplete-results")
+    assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
+      assert_selector('input[id="test-input"].form-control')
+      assert_selector('ul[id="my-list-id"].autocomplete-results')
     end
   end
 
@@ -44,9 +44,9 @@ class PrimerAutoCompleteTest < Minitest::Test
       component.icon(icon: :person)
     end
 
-    assert_selector("auto-complete[for=\"my-list-id\"][src=\"/url\"]") do
+    assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
       assert_selector("input.form-control")
-      assert_selector("label[for=\"test-input\"]")
+      assert_selector('label[for="test-input"]')
       assert_selector("svg.octicon.octicon-person")
       assert_selector("span.sr-only", text: "Fruits")
     end
@@ -55,13 +55,13 @@ class PrimerAutoCompleteTest < Minitest::Test
   def test_forwards_input_id_on_parent_to_input
     render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id")
 
-    assert_selector("input[id=\"test-input\"]")
+    assert_selector('input[id="test-input"]')
   end
 
   def test_forwards_input_id_on_parent_to_input_slot_id_and_name
     render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id")
 
-    assert_selector("input[id=\"test-input\"][name=\"test-input\"]")
+    assert_selector('input[id="test-input"][name="test-input"]')
   end
 
   def test_renders_with_icon
@@ -69,9 +69,9 @@ class PrimerAutoCompleteTest < Minitest::Test
       component.icon(icon: :person)
     end
 
-    assert_selector("auto-complete[for=\"my-list-id\"][src=\"/url\"]") do
+    assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
       assert_selector("input.form-control")
-      assert_selector("label[for=\"test-input\"]")
+      assert_selector('label[for="test-input"]')
       assert_selector("svg.octicon.octicon-person")
     end
   end
@@ -81,9 +81,9 @@ class PrimerAutoCompleteTest < Minitest::Test
       component.icon(icon: :person)
     end
 
-    assert_selector("auto-complete[for=\"my-list-id\"][src=\"/url\"]") do
+    assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
       assert_selector("input.form-control")
-      assert_selector("label[for=\"test-input\"]")
+      assert_selector('label[for="test-input"]')
       assert_selector("span.sr-only", text: "Fruits")
       assert_selector("svg.octicon.octicon-person")
     end
@@ -94,16 +94,16 @@ class PrimerAutoCompleteTest < Minitest::Test
       component.results(classes: "my-class")
     end
 
-    assert_selector("auto-complete[for=\"my-list-id\"][src=\"/url\"]") do
-      assert_selector("ul[id=\"my-list-id\"].autocomplete-results.my-class")
+    assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
+      assert_selector('ul[id="my-list-id"].autocomplete-results.my-class')
     end
   end
 
   def test_label_becomes_screen_reader_text_if_user_sets_visibility_boolean_to_false
     render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id", is_label_visible: false)
 
-    assert_selector("auto-complete[for=\"my-list-id\"][src=\"/url\"]") do
-      assert_selector("label[for=\"test-input\"]")
+    assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
+      assert_selector('label[for="test-input"]')
       assert_selector("span.sr-only", text: "Fruits")
     end
   end
