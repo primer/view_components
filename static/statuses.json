@@ -61,6 +61,6 @@
   "Primer::TimeAgoComponent": "beta",
   "Primer::TimelineItemComponent": "beta",
   "Primer::TimelineItemComponent::BadgeComponent": "alpha",
-  "Primer::Tooltip": "beta",
+  "Primer::Tooltip": "deprecated",
   "Primer::Truncate": "beta"
 }
