@@ -60,6 +60,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
   _Kate Higa_
 
+### Misc
+
+- Updates contributing docs
+
+  _Lindsey Wild_
+
 ## 0.0.68
 
 ### Updates
