@@ -65,7 +65,7 @@ Documentation is written as [YARD](https://yardoc.org/) comments directly in the
 
 ### Storybook / Documentation / Demo Rails App
 
-* **Storybook**: Components can be interacted with, seen in different contexts, and controls can be maniuplated
+* **Storybook**: Components can be interacted with, seen in different contexts, and controls can be manipulated
   * Typically runs on port 5000
   * To rebuild stories, navigate to the `demo` directory (`cd demo`) and then run `bin/rails view_component_storybook:write_stories_json`
 * **Docs**: Generated YARD docs with examples, see components with usage instructions and examples
@@ -86,7 +86,7 @@ If you are running into issues or not seeing your updates, a few things you can 
 
 * Delete the `overmind.sock` file and run `script/dev` again
 * Ensure you have run `script/setup`
-* Delete the `node_modules` file and rereun `script/setup`
+* Delete the `node_modules` directory and re-run `script/setup`
 * Run `bundle exec rake docs:build`
 * Run `bundle exec rake docs:preview`
 
