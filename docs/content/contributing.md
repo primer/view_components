@@ -65,18 +65,29 @@ Documentation is written as [YARD](https://yardoc.org/) comments directly in the
 
 ### Storybook / Documentation / Demo Rails App
 
+- **Storybook**: Components can be interacted with, seen in different contexts, and controls can be maniuplated
+  - Typically runs on port 5000
+  - To rebuild stories, navigate to the `demo` directory (`cd demo`) and then run `bin/rails view_component_storybook:write_stories_json`
+- **Docs**: Generated YARD docs with examples, see components with usage instructions and examples
+  - Typically runs on port 5400
+  - To rebuild docs, run `bundle exec rake docs:build`
+- **Demo App**: See components on a plain page with no interfering framework or styling. Used to test functionality.
+  - Typically runs on port 4000 - visit `/rails/view_components/` in your browser
+  - To rerender the templates, you do not have to restart the server. Run this command and refresh the page.
+
+---
 To run Storybook, the documentation site, and the demo app, run:
 
 ```bash
 script/dev
 ```
 
-See the demo app at `/rails/view_components/` in your browser.
-To rerender the templates, you do not have to restart the server. Run this command and refresh the page.
-
-```bash
-bundle exec rake docs:preview
-```
+If you are running into issues or not seeing your updates, a few things you can try:
+- Delete the `overmind.sock` file and run `script/dev` again
+- Ensure you have run `script/setup`
+- Delete the `node_modules` file and rereun `script/setup`
+- Run `bundle exec rake docs:build`
+- Run `bundle exec rake docs:preview`
 
 _Note: Overmind is required to run script/dev._
 
