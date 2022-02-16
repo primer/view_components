@@ -73,7 +73,7 @@ Documentation is written as [YARD](https://yardoc.org/) comments directly in the
   * To rebuild docs, run `bundle exec rake docs:build`
 * **Demo App**: See components on a plain page with no interfering framework or styling. Used to test functionality.
   * Typically runs on port 4000 - visit `/rails/view_components/` in your browser
-  * To rerender the templates, you do not have to restart the server. Run this command and refresh the page.
+  * To rerender the templates, you do not have to restart the server. Run `bundle exec rake docs:preview` and refresh the page.
 
 ---
 To run Storybook, the documentation site, and the demo app, run:
