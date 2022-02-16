@@ -32,6 +32,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Updates
 
+- Restricts children for AutoComplete API to prevent accessibility violations and misuse
+
+    _Lindsey Wild_
+
 - Migrate from Heroku to Azure for the Rails storybook server.
 
     _Cameron Dutro_

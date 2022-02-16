@@ -1,13 +1,14 @@
-<%= label %>
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <% if icon.present? %>
-    <label for="<%= @input_id %>">
-      <% if label.blank? %>
-        <span class="sr-only"><%= @aria_label %></span>
-      <% end %>
+  <label for="<%= @input_id %>">
+    <% if @is_label_visible %>
+      <%= @label_text %>
+    <% else %>
+      <span class="sr-only"><%= @label_text %></span>
+    <% end %>
+    <% if icon.present? %>
       <%= icon %>
-    </label>
-  <% end %>
-  <%= input %>
+    <% end %>
+  </label>
+  <input id="<%= @input_id %>" name="<%= @input_id %>" type="text" class="form-control" autocomplete="off">
   <%= results %>
 <% end %>
