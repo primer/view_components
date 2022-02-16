@@ -62,6 +62,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Misc
 
+- Updates README with missing `alt` attribute on image
+
+  _Kate Higa_
+
 - Updates contributing docs
 
   _Lindsey Wild_
