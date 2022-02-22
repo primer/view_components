@@ -37,6 +37,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
     _Lindsey Wild_
 
 - Migrate from Heroku to Azure for the Rails storybook server.
+- Build storybook static assets into Docker image.
 
     _Cameron Dutro_
 
