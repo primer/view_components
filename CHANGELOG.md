@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.68
+
 ### Updates
 
 - Restricts children for AutoComplete API to prevent accessibility violations and misuse
