@@ -54,6 +54,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Cameron Dutro_
 
+- Fix sequence of content in Subhead.
+
+    _Hector Garcia_
+
 ### Deprecations
 
 - Deprecate `Tooltip` component.
