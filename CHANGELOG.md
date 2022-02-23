@@ -30,13 +30,20 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.68
+
 ### Updates
+
+- Add accessible labels to Search AutoComplete when provided with an icon.
+
+    _Andri Alexandrou_
 
 - Restricts children for AutoComplete API to prevent accessibility violations and misuse
 
     _Lindsey Wild_
 
 - Migrate from Heroku to Azure for the Rails storybook server.
+- Build storybook static assets into Docker image.
 
     _Cameron Dutro_
 
@@ -73,14 +80,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 - Fix link in system arguments docs
 
   _Lukas Spieß_
-
-## 0.0.68
-
-### Updates
-
-- Add accessible labels to Search AutoComplete when provided with an icon.
-
-    _Andri Alexandrou_
 
 ## 0.0.67
 
