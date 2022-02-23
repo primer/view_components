@@ -69,6 +69,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 - Updates contributing docs
 
   _Lindsey Wild_
+  
+- Fix link in system arguments docs
+
+  _Lukas Spieß_
 
 ## 0.0.68
 
