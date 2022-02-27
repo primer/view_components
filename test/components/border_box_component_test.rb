@@ -95,7 +95,7 @@ class PrimerBorderBoxComponentTest < Minitest::Test
   def test_renders_row_with_schemes
     { neutral: "gray", info: "blue", warning: "yellow" }.each_pair do |scheme, color|
       render_inline(Primer::BorderBoxComponent.new) do |component|
-        component.row(scheme: scheme) { "Row row row your boat" }
+        component.row(scheme: scheme) { "Row, row, row your boat" }
       end
 
       assert_selector(".Box .Box-row--#{color}")
@@ -104,7 +104,7 @@ class PrimerBorderBoxComponentTest < Minitest::Test
 
   def test_renders_row_with_default_scheme
     render_inline(Primer::BorderBoxComponent.new) do |component|
-      component.row { "Row row row your boat" }
+      component.row { "Row, row, row your boat" }
     end
 
     assert_selector(".Box .Box-row")
