@@ -1285,7 +1285,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
   _Simon Taranto_
 
-- Add `silence_deprecations` config to supress deprecation warnings.
+- Add `silence_deprecations` config to suppress deprecation warnings.
 
   _Manuel Puyol_
 
