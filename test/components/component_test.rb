@@ -92,7 +92,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { my: 4 }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector(".my-4")
+      assert_selector(".my-4", visible: :all)
     end
   end
 
@@ -100,7 +100,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { classes: "foo" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector(".foo")
+      assert_selector(".foo", visible: :all)
     end
   end
 
@@ -108,7 +108,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { style: "width: 100%;" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector("[style='width: 100%;']")
+      assert_selector("[style='width: 100%;']", visible: :all)
     end
   end
 
