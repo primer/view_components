@@ -198,8 +198,8 @@ class TooltipElement extends HTMLElement {
   #allowUpdatePosition = false
 
   constructor() {
-    super();
-    const shadow = this.attachShadow({mode: 'open'});
+    super()
+    const shadow = this.attachShadow({mode: 'open'})
     shadow.innerHTML = `
       <style>
         ${this.styles()}
