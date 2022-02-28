@@ -6,12 +6,12 @@ class IntegrationTooltipTest < ApplicationSystemTestCase
   def test_renders_with_aria_described_by
     with_preview(:default)
 
-    assert_selector("primer-tooltip[data-view-component]")
+    assert_selector("tool-tip[data-view-component][aria-describedby]")
   end
 
   def test_renders_with_aria_labelled_by
     with_preview(:label)
 
-    assert_selector("primer-tooltip[data-view-component][aria-labelledby]")
+    assert_selector("tool-tip[data-view-component][aria-labelledby]")
   end
 end

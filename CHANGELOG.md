@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### New
+
+- Add `Primer::Alpha::Tooltip` component
+
+  _Kate Higa_
+
 ### Breaking Changes
 
 - Module for [script/update-statuses-project.rb](script/update-statuses-project.rb) changed to `GitHub`

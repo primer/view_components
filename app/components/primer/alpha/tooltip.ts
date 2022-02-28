@@ -1,36 +1,156 @@
 import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 
-const TOOLTIP_OPEN_CLASS = 'hx_tooltip-open'
-const TOOLTIP_CLASS = 'hx_tooltip'
-const TOOLTIP_ARROW_MARGIN = 6
+const TOOLTIP_OPEN_CLASS = 'tooltip-open'
+const TOOLTIP_CLASS = 'tooltip'
+const TOOLTIP_OFFSET = 10
 
 type Direction = 'n' | 's' | 'e' | 'w' | 'ne' | 'se' | 'nw' | 'sw'
 
 const DIRECTION_CLASSES = [
-  'hx_tooltip-n',
-  'hx_tooltip-s',
-  'hx_tooltip-e',
-  'hx_tooltip-w',
-  'hx_tooltip-ne',
-  'hx_tooltip-se',
-  'hx_tooltip-nw',
-  'hx_tooltip-sw'
+  'tooltip-n',
+  'tooltip-s',
+  'tooltip-e',
+  'tooltip-w',
+  'tooltip-ne',
+  'tooltip-se',
+  'tooltip-nw',
+  'tooltip-sw'
 ]
 type DirectionClass = typeof DIRECTION_CLASSES[number]
 
 const DIRECTION_TO_CLASS: Record<Direction, DirectionClass> = {
-  n: 'hx_tooltip-n',
-  s: 'hx_tooltip-s',
-  e: 'hx_tooltip-e',
-  w: 'hx_tooltip-w',
-  ne: 'hx_tooltip-ne',
-  se: 'hx_tooltip-se',
-  nw: 'hx_tooltip-nw',
-  sw: 'hx_tooltip-sw'
+  n: 'tooltip-n',
+  s: 'tooltip-s',
+  e: 'tooltip-e',
+  w: 'tooltip-w',
+  ne: 'tooltip-ne',
+  se: 'tooltip-se',
+  nw: 'tooltip-nw',
+  sw: 'tooltip-sw'
 }
 
-class PrimerTooltipElement extends HTMLElement {
+class TooltipElement extends HTMLElement {
+  styles() {
+    return `
+      :host(.tooltip) {
+        position: absolute;
+        z-index: 1000000;
+        padding: .5em .75em;
+        font: normal normal 11px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+        -webkit-font-smoothing: subpixel-antialiased;
+        color: var(--color-fg-on-emphasis);
+        text-align: center;
+        text-decoration: none;
+        text-shadow: none;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: break-word;
+        white-space: pre;
+        background: var(--color-neutral-emphasis-plus);
+        border-radius: 6px;
+        opacity: 0;
+        max-width: 250px;
+        word-wrap: break-word;
+        white-space: normal
+      }
+      
+      :host(.tooltip):before{
+        position: absolute;
+        z-index: 1000001;
+        color: var(--color-neutral-emphasis-plus);
+        content: "";
+        border: 6px solid transparent;
+        opacity: 0
+      }
+      
+      @keyframes tooltip-appear {
+        from {
+          opacity: 0
+        }
+        to {
+          opacity: 1
+        }
+      }
+      
+      :host(.tooltip):after{
+        position: absolute;
+        display: block;
+        right: 0;
+        left: 0;
+        height: 12px;
+        content: ""
+      }
+      
+      :host(.tooltip.tooltip-open),
+      :host(.tooltip.tooltip-open):before {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+        animation-delay: .4s
+      }
+      
+      :host(.tooltip.tooltip-s):before,
+      :host(.tooltip.tooltip-se):before,
+      :host(.tooltip.tooltip-sw):before {
+        right: 50%;
+        bottom: 100%;
+        margin-right: -6px;
+        border-bottom-color: var(--color-neutral-emphasis-plus)
+      }
+      
+      :host(.tooltip.tooltip-s):after,
+      :host(.tooltip.tooltip-se):after,
+      :host(.tooltip.tooltip-sw):after {
+        bottom: 100%
+      }
+      
+      :host(.tooltip.tooltip-n):before,
+      :host(.tooltip.tooltip-ne):before,
+      :host(.tooltip.tooltip-nw):before {
+        top: 100%;
+        right: 50%;
+        margin-right: -6px;
+        border-top-color: var(--color-neutral-emphasis-plus)
+      }
+      
+      :host(.tooltip.tooltip-n):after,
+      :host(.tooltip.tooltip-ne):after,
+      :host(.tooltip.tooltip-nw):after {
+        top: 100%
+      }
+      
+      :host(.tooltip.tooltip-se):before,
+      :host(.tooltip.tooltip-ne):before {
+        right: auto
+      }
+      
+      :host(.tooltip.tooltip-sw):before,
+      :host(.tooltip.tooltip-nw):before {
+        right: 0;
+        margin-right: 6px
+      }
+      
+      :host(.tooltip.tooltip-w):before {
+        top: 50%;
+        bottom: 50%;
+        left: 100%;
+        margin-top: -6px;
+        border-left-color: var(--color-neutral-emphasis-plus)
+      }
+      
+      :host(.tooltip.tooltip-e):before {
+        top: 50%;
+        right: 100%;
+        bottom: 50%;
+        margin-top: -6px;
+        border-right-color: var(--color-neutral-emphasis-plus)
+      }
+      <content></content>
+    `
+  }
+
   static observedAttributes = ['data-type', 'data-direction', 'id', 'hidden']
 
   #abortController: AbortController
@@ -77,6 +197,17 @@ class PrimerTooltipElement extends HTMLElement {
 
   #allowUpdatePosition = false
 
+  constructor() {
+    super();
+    const shadow = this.attachShadow({mode: 'open'});
+    shadow.innerHTML = `
+      <style>
+        ${this.styles()}
+      </style>
+      <slot></slot>
+    `
+  }
+
   connectedCallback() {
     this.hidden = true
     this.#allowUpdatePosition = true
@@ -104,8 +235,7 @@ class PrimerTooltipElement extends HTMLElement {
         this.control.setAttribute('aria-describedby', describedBy)
       }
     } else if (name === 'hidden') {
-      const hidden = newValue === ''
-      if (hidden) {
+      if (this.hidden) {
         this.classList.remove(TOOLTIP_OPEN_CLASS, ...DIRECTION_CLASSES)
       } else {
         this.classList.add(TOOLTIP_OPEN_CLASS, TOOLTIP_CLASS)
@@ -184,16 +314,11 @@ class PrimerTooltipElement extends HTMLElement {
     }
   }
 
-  private updatePosition() {
+  // `getAnchoredPosition` may calibrate `anchoredSide` but does not recalibrate `align`.
+  //  Therefore, we need to determine which `align` is best based on the initial `getAnchoredPosition` calcluation.
+  //  Related: https://github.com/primer/behaviors/issues/63
+  private adjustedAnchorAlignment(anchorSide: AnchorSide): AnchorAlignment | undefined {
     if (!this.control) return
-    if (!this.#allowUpdatePosition || this.hidden) return
-
-    const position = getAnchoredPosition(this, this.control, this)
-    const {anchorSide} = position
-    let {top, left} = position
-    // We must set new tooltip position before we can predict alignment.
-    this.style.top = `${top}px`
-    this.style.left = `${left}px`
 
     const tooltipPosition = this.getBoundingClientRect()
     const targetPosition = this.control.getBoundingClientRect()
@@ -201,73 +326,81 @@ class PrimerTooltipElement extends HTMLElement {
 
     const tooltipCenter = tooltipPosition.left + tooltipWidth / 2
     const targetCenter = targetPosition.x + targetPosition.width / 2
-    const centerDiff = Math.abs(tooltipCenter - targetCenter)
 
-    const startDiff = Math.abs(tooltipPosition.left - targetPosition.x)
-    const endDiff = Math.abs(tooltipPosition.left + tooltipWidth - targetPosition.right)
-    const smallestDiff = Math.min(centerDiff, startDiff, endDiff)
+    if (Math.abs(tooltipCenter - targetCenter) < 2 || anchorSide === 'outside-left' || anchorSide === 'outside-right') {
+      return 'center'
+    } else if (tooltipPosition.left === targetPosition.left) {
+      return 'start'
+    } else if (tooltipPosition.right === targetPosition.right) {
+      return 'end'
+    } else if (tooltipCenter < targetCenter) {
+      if (tooltipPosition.left === 0) return 'start'
+      return 'end'
+    } else {
+      if (tooltipPosition.right === 0) return 'end'
+      return 'start'
+    }
+  }
 
-    if (smallestDiff === centerDiff) {
-      this.#align = 'center'
-      if (anchorSide === 'outside-top') {
-        this.#direction = 'n'
-        top -= TOOLTIP_ARROW_MARGIN
-      } else if (anchorSide === 'outside-bottom') {
-        this.#direction = 's'
-        top += TOOLTIP_ARROW_MARGIN
-      } else if (anchorSide === 'outside-left') {
-        this.#direction = 'w'
-        left -= TOOLTIP_ARROW_MARGIN
+  private updatePosition() {
+    if (!this.control) return
+    if (!this.#allowUpdatePosition || this.hidden) return
+    this.style.left = `0px` // Ensures we have reliable tooltip width in `getAnchoredPosition` calculation
+
+    let position = getAnchoredPosition(this, this.control, {
+      side: this.#side,
+      align: this.#align,
+      anchorOffset: TOOLTIP_OFFSET
+    })
+    let anchorSide = position.anchorSide
+
+    // We need to set tooltip position in order to determine ideal align.
+    this.style.top = `${position.top}px`
+    this.style.left = `${position.left}px`
+    let direction: Direction = 's'
+
+    const align = this.adjustedAnchorAlignment(anchorSide)
+    if (!align) return
+
+    position = getAnchoredPosition(this, this.control, {side: anchorSide, align, anchorOffset: TOOLTIP_OFFSET})
+    anchorSide = position.anchorSide
+
+    this.style.top = `${position.top}px`
+    this.style.left = `${position.left}px`
+
+    if (anchorSide === 'outside-left') {
+      direction = 'w'
+    } else if (anchorSide === 'outside-right') {
+      direction = 'e'
+    } else if (anchorSide === 'outside-top') {
+      if (align === 'center') {
+        direction = 'n'
+      } else if (align === 'start') {
+        direction = 'ne'
       } else {
-        this.#direction = 'e'
-        left += TOOLTIP_ARROW_MARGIN
-      }
-    } else if (smallestDiff === endDiff) {
-      this.#align = 'end'
-      if (anchorSide === 'outside-top') {
-        this.#direction = 'nw'
-        top -= TOOLTIP_ARROW_MARGIN
-      } else if (anchorSide === 'outside-bottom') {
-        this.#direction = 'sw'
-        top += TOOLTIP_ARROW_MARGIN
-      } else if (anchorSide === 'outside-left') {
-        this.#direction = 'w'
-        left -= TOOLTIP_ARROW_MARGIN
-      } else {
-        this.#direction = 'e'
-        left += TOOLTIP_ARROW_MARGIN
+        direction = 'nw'
       }
     } else {
-      this.#align = 'start'
-      if (anchorSide === 'outside-top') {
-        this.#direction = 'ne'
-        top -= TOOLTIP_ARROW_MARGIN
-      } else if (anchorSide === 'outside-bottom') {
-        this.#direction = 'se'
-        top += TOOLTIP_ARROW_MARGIN
-      } else if (anchorSide === 'outside-left') {
-        this.#direction = 'w'
-        left -= TOOLTIP_ARROW_MARGIN
+      if (align === 'center') {
+        direction = 's'
+      } else if (align === 'start') {
+        direction = 'se'
       } else {
-        this.#direction = 'e'
-        left += TOOLTIP_ARROW_MARGIN
+        direction = 'sw'
       }
     }
 
-    this.style.top = `${top}px`
-    this.style.left = `${left}px`
-
-    this.classList.add(DIRECTION_TO_CLASS[this.direction])
+    this.classList.add(DIRECTION_TO_CLASS[direction])
   }
 }
 
-if (!window.customElements.get('primer-tooltip')) {
-  window.PrimerTooltipElement = PrimerTooltipElement
-  window.customElements.define('primer-tooltip', PrimerTooltipElement)
+if (!window.customElements.get('tool-tip')) {
+  window.TooltipElement = TooltipElement
+  window.customElements.define('tool-tip', TooltipElement)
 }
 
 declare global {
   interface Window {
-    PrimerTooltipElement: typeof PrimerTooltipElement
+    TooltipElement: typeof TooltipElement
   }
 }
