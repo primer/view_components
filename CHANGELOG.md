@@ -30,6 +30,18 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Breaking Changes
+
+- Module for [script/update-statuses-project.rb](script/update-statuses-project.rb) changed to `GitHub`
+
+    _Josh Soref_
+
+### Misc
+
+- Spelling fixes
+
+    _Josh Soref_
+
 ## 0.0.68
 
 ### Updates
