@@ -105,7 +105,7 @@
   - name: type
     type: Symbol
     default: N/A
-    description: One of `:description` and `:label`..
+    description: One of `:description` and `:label`.
   - name: direction
     type: Symbol
     default: "`:s`"
