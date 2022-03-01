@@ -35,10 +35,29 @@ The category for changes related to documentation, testing and tooling. Also, fo
 - Adds separate hash `link_arguments` to Avatar component.
 
     _Jamie Chung_
-    
+
+## 0.0.68
+
 ### Updates
 
+- Add accessible labels to Search AutoComplete when provided with an icon.
+
+    _Andri Alexandrou_
+
+- Restricts children for AutoComplete API to prevent accessibility violations and misuse
+
+    _Lindsey Wild_
+
+- Migrate from Heroku to Azure for the Rails storybook server.
+- Build storybook static assets into Docker image.
+
+    _Cameron Dutro_
+
 - Remove CSS utilities from Blankslate
+
+    _Hector Garcia_
+
+- Improve last example on the PopoverComponent docs
 
     _Hector Garcia_
 
@@ -48,13 +67,25 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Cameron Dutro_
 
-## 0.0.68
+### Deprecations
 
-### Updates
+- Deprecate `Tooltip` component.
 
-- Add accessible labels to Search AutoComplete when provided with an icon
+  _Kate Higa_
 
-    _Andri Alexandrou_
+### Misc
+
+- Updates README with missing `alt` attribute on image
+
+  _Kate Higa_
+
+- Updates contributing docs
+
+  _Lindsey Wild_
+  
+- Fix link in system arguments docs
+
+  _Lukas Spieß_
 
 ## 0.0.67
 

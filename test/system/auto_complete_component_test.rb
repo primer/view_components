@@ -15,18 +15,19 @@ class IntegrationAutoCompleteTest < ApplicationSystemTestCase
 
   def test_search_items
     with_preview(:default)
+    assert_selector("input.form-control")
 
-    fill_in "input", with: "a"
+    fill_in "input-id", with: "a"
 
     # results are now visible
     assert_selector("ul[id=\"test-id\"].autocomplete-results", visible: true)
     assert_selector(".autocomplete-item")
   end
 
-  def test_renders_label
-    with_preview(:with_visible_label)
+  def test_renders_non_visible_label
+    with_preview(:with_non_visible_label)
 
-    assert_selector("label[for=\"input-id\"]", text: "This is a label", visible: true)
+    assert_selector("label[for=\"input-id\"]", text: "Select a fruit", visible: false)
   end
 
   def test_renders_icon
