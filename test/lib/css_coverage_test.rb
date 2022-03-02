@@ -23,7 +23,10 @@ class CssCoverageTest < Minitest::Test
       # used to showcase custom classes in component docs
       ".custom-class",
       ".f00",
-      "."
+      ".",
+      ".blankslate-action",
+      ".blankslate-heading",
+      ".blankslate-image"
     ]
 
     @css_data =
