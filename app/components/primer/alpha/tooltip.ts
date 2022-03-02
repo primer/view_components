@@ -268,7 +268,6 @@ class TooltipElement extends HTMLElement {
         this.#align = 'end'
         this.#side = 'outside-top'
       }
-      this.#updatePosition()
     }
   }
 
