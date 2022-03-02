@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Misc
+
+- Hide deprecated tooltip component page.
+
+  _Kate Higa_
+
 ## 0.0.68
 
 ### Updates
