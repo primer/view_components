@@ -151,7 +151,7 @@ class TooltipElement extends HTMLElement {
 
   static observedAttributes = ['data-type', 'data-direction', 'id', 'hidden']
 
-  #abortController: AbortController
+  #abortController: AbortController | undefined
 
   get htmlFor(): string {
     return this.getAttribute('for') || ''
@@ -218,7 +218,7 @@ class TooltipElement extends HTMLElement {
 
     this.setAttribute('role', 'tooltip')
 
-    this.addEvents()
+    this.#addEvents()
   }
 
   attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
@@ -239,7 +239,7 @@ class TooltipElement extends HTMLElement {
         for (const tooltip of this.ownerDocument.querySelectorAll<HTMLElement>(this.tagName)) {
           if (tooltip !== this) tooltip.hidden = true
         }
-        this.updatePosition()
+        this.#updatePosition()
       }
     } else if (name === 'data-direction') {
       this.classList.remove(...DIRECTION_CLASSES)
@@ -269,17 +269,17 @@ class TooltipElement extends HTMLElement {
         this.#align = 'end'
         this.#side = 'outside-top'
       }
-      this.updatePosition()
+      this.#updatePosition()
     }
   }
 
   disconnectedCallback() {
-    this.#abortController.abort()
+    this.#abortController?.abort()
   }
 
-  private addEvents() {
+  #addEvents() {
     if (!this.control) return
-
+    this.#abortController?.abort()
     this.#abortController = new AbortController()
     const {signal} = this.#abortController
 
@@ -314,7 +314,7 @@ class TooltipElement extends HTMLElement {
   // `getAnchoredPosition` may calibrate `anchoredSide` but does not recalibrate `align`.
   //  Therefore, we need to determine which `align` is best based on the initial `getAnchoredPosition` calcluation.
   //  Related: https://github.com/primer/behaviors/issues/63
-  private adjustedAnchorAlignment(anchorSide: AnchorSide): AnchorAlignment | undefined {
+  #adjustedAnchorAlignment(anchorSide: AnchorSide): AnchorAlignment | undefined {
     if (!this.control) return
 
     const tooltipPosition = this.getBoundingClientRect()
@@ -339,7 +339,7 @@ class TooltipElement extends HTMLElement {
     }
   }
 
-  private updatePosition() {
+  #updatePosition() {
     if (!this.control) return
     if (!this.#allowUpdatePosition || this.hidden) return
     this.style.left = `0px` // Ensures we have reliable tooltip width in `getAnchoredPosition` calculation
@@ -356,7 +356,7 @@ class TooltipElement extends HTMLElement {
     this.style.left = `${position.left}px`
     let direction: Direction = 's'
 
-    const align = this.adjustedAnchorAlignment(anchorSide)
+    const align = this.#adjustedAnchorAlignment(anchorSide)
     if (!align) return
 
     position = getAnchoredPosition(this, this.control, {side: anchorSide, align, anchorOffset: TOOLTIP_OFFSET})
