@@ -2,7 +2,6 @@ import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 
 const TOOLTIP_OPEN_CLASS = 'tooltip-open'
-const TOOLTIP_CLASS = 'tooltip'
 const TOOLTIP_OFFSET = 10
 
 type Direction = 'n' | 's' | 'e' | 'w' | 'ne' | 'se' | 'nw' | 'sw'
@@ -33,7 +32,7 @@ const DIRECTION_TO_CLASS: Record<Direction, DirectionClass> = {
 class TooltipElement extends HTMLElement {
   styles() {
     return `
-      :host(.tooltip) {
+      :host {
         position: absolute;
         z-index: 1000000;
         padding: .5em .75em;
@@ -55,7 +54,7 @@ class TooltipElement extends HTMLElement {
         white-space: normal
       }
       
-      :host(.tooltip):before{
+      :host:before{
         position: absolute;
         z-index: 1000001;
         color: var(--color-neutral-emphasis-plus);
@@ -73,7 +72,7 @@ class TooltipElement extends HTMLElement {
         }
       }
       
-      :host(.tooltip):after{
+      :host:after{
         position: absolute;
         display: block;
         right: 0;
@@ -82,8 +81,8 @@ class TooltipElement extends HTMLElement {
         content: ""
       }
       
-      :host(.tooltip.tooltip-open),
-      :host(.tooltip.tooltip-open):before {
+      :host(.tooltip-open),
+      :host(.tooltip-open):before {
         animation-name: tooltip-appear;
         animation-duration: .1s;
         animation-fill-mode: forwards;
@@ -91,48 +90,48 @@ class TooltipElement extends HTMLElement {
         animation-delay: .4s
       }
       
-      :host(.tooltip.tooltip-s):before,
-      :host(.tooltip.tooltip-se):before,
-      :host(.tooltip.tooltip-sw):before {
+      :host(.tooltip-s):before,
+      :host(.tooltip-se):before,
+      :host(.tooltip-sw):before {
         right: 50%;
         bottom: 100%;
         margin-right: -6px;
         border-bottom-color: var(--color-neutral-emphasis-plus)
       }
       
-      :host(.tooltip.tooltip-s):after,
-      :host(.tooltip.tooltip-se):after,
-      :host(.tooltip.tooltip-sw):after {
+      :host(.tooltip-s):after,
+      :host(.tooltip-se):after,
+      :host(.tooltip-sw):after {
         bottom: 100%
       }
       
-      :host(.tooltip.tooltip-n):before,
-      :host(.tooltip.tooltip-ne):before,
-      :host(.tooltip.tooltip-nw):before {
+      :host(.tooltip-n):before,
+      :host(.tooltip-ne):before,
+      :host(.tooltip-nw):before {
         top: 100%;
         right: 50%;
         margin-right: -6px;
         border-top-color: var(--color-neutral-emphasis-plus)
       }
       
-      :host(.tooltip.tooltip-n):after,
-      :host(.tooltip.tooltip-ne):after,
-      :host(.tooltip.tooltip-nw):after {
+      :host(.tooltip-n):after,
+      :host(.tooltip-ne):after,
+      :host(.tooltip-nw):after {
         top: 100%
       }
       
-      :host(.tooltip.tooltip-se):before,
-      :host(.tooltip.tooltip-ne):before {
+      :host(.tooltip-se):before,
+      :host(.tooltip-ne):before {
         right: auto
       }
       
-      :host(.tooltip.tooltip-sw):before,
-      :host(.tooltip.tooltip-nw):before {
+      :host(.tooltip-sw):before,
+      :host(.tooltip-nw):before {
         right: 0;
         margin-right: 6px
       }
       
-      :host(.tooltip.tooltip-w):before {
+      :host(.tooltip-w):before {
         top: 50%;
         bottom: 50%;
         left: 100%;
@@ -140,7 +139,7 @@ class TooltipElement extends HTMLElement {
         border-left-color: var(--color-neutral-emphasis-plus)
       }
       
-      :host(.tooltip.tooltip-e):before {
+      :host(.tooltip-e):before {
         top: 50%;
         right: 100%;
         bottom: 50%;
@@ -218,7 +217,6 @@ class TooltipElement extends HTMLElement {
 
     if (!this.control) return
 
-    this.classList.add(TOOLTIP_CLASS)
     this.setAttribute('role', 'tooltip')
 
     this.addEvents()
@@ -238,7 +236,7 @@ class TooltipElement extends HTMLElement {
       if (this.hidden) {
         this.classList.remove(TOOLTIP_OPEN_CLASS, ...DIRECTION_CLASSES)
       } else {
-        this.classList.add(TOOLTIP_OPEN_CLASS, TOOLTIP_CLASS)
+        this.classList.add(TOOLTIP_OPEN_CLASS)
         for (const tooltip of this.ownerDocument.querySelectorAll<HTMLElement>(this.tagName)) {
           if (tooltip !== this) tooltip.hidden = true
         }
