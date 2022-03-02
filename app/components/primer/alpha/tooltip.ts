@@ -174,9 +174,8 @@ class TooltipElement extends HTMLElement {
     this.setAttribute('data-type', value)
   }
 
-  #direction: Direction = 's'
   get direction(): Direction {
-    return this.#direction
+    return (this.getAttribute('data-direction') || 's') as Direction
   }
 
   set direction(value: Direction) {
@@ -243,7 +242,7 @@ class TooltipElement extends HTMLElement {
       }
     } else if (name === 'data-direction') {
       this.classList.remove(...DIRECTION_CLASSES)
-      const direction = (this.#direction = (newValue || 's') as Direction)
+      const direction = this.direction
       if (direction === 'n') {
         this.#align = 'center'
         this.#side = 'outside-top'
