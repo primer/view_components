@@ -30,6 +30,18 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Breaking Changes
+
+- Module for [script/update-statuses-project.rb](script/update-statuses-project.rb) changed to `GitHub`
+
+    _Josh Soref_
+
+### Misc
+
+- Spelling fixes
+
+    _Josh Soref_
+
 ## 0.0.68
 
 ### Updates
@@ -1285,7 +1297,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
   _Simon Taranto_
 
-- Add `silence_deprecations` config to supress deprecation warnings.
+- Add `silence_deprecations` config to suppress deprecation warnings.
 
   _Manuel Puyol_
 
