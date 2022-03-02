@@ -146,7 +146,6 @@ class TooltipElement extends HTMLElement {
         margin-top: -6px;
         border-right-color: var(--color-neutral-emphasis-plus)
       }
-      <content></content>
     `
   }
 
