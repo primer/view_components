@@ -220,7 +220,7 @@ class TooltipElement extends HTMLElement {
     this.#addEvents()
   }
 
-  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+  attributeChangedCallback(name: string) {
     if (name === 'id' || name === 'data-type') {
       if (!this.id || !this.control) return
       if (this.type === 'label') {
