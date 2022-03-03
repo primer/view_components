@@ -15,18 +15,6 @@ const DIRECTION_CLASSES = [
   'tooltip-nw',
   'tooltip-sw'
 ]
-type DirectionClass = typeof DIRECTION_CLASSES[number]
-
-const DIRECTION_TO_CLASS: Record<Direction, DirectionClass> = {
-  n: 'tooltip-n',
-  s: 'tooltip-s',
-  e: 'tooltip-e',
-  w: 'tooltip-w',
-  ne: 'tooltip-ne',
-  se: 'tooltip-se',
-  nw: 'tooltip-nw',
-  sw: 'tooltip-sw'
-}
 
 class TooltipElement extends HTMLElement {
   styles() {
@@ -372,7 +360,7 @@ class TooltipElement extends HTMLElement {
       }
     }
 
-    this.classList.add(DIRECTION_TO_CLASS[direction])
+    this.classList.add(`tooltip-${direction}`)
   }
 }
 
