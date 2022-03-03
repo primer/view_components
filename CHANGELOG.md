@@ -42,6 +42,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Josh Soref_
 
+- Bump view_component in Gemfile.lock files
+
+    _Cameron Dutro_
+
 - Remove markdown file mistakenly checked in.
 
   _Kate Higa_
@@ -80,6 +84,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 - Fix live reloading during local docs development.
 
     _Cameron Dutro_
+
+- Fix sequence of content in Subhead.
+
+    _Hector Garcia_
 
 ### Deprecations
 
