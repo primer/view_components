@@ -42,6 +42,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Josh Soref_
 
+- Bump view_component in Gemfile.lock files
+
+    _Cameron Dutro_
+
 - Remove markdown file mistakenly checked in.
 
   _Kate Higa_
@@ -96,7 +100,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 - Updates contributing docs
 
   _Lindsey Wild_
-  
+
 - Fix link in system arguments docs
 
   _Lukas Spieß_
