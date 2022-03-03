@@ -217,7 +217,16 @@ class TooltipElement extends HTMLElement {
 
     this.setAttribute('role', 'tooltip')
 
-    this.#addEvents()
+    this.#abortController?.abort()
+    this.#abortController = new AbortController()
+    const {signal} = this.#abortController
+
+    this.addEventListener('mouseleave', this, {signal})
+    this.control.addEventListener('mouseenter', this, {signal})
+    this.control.addEventListener('mouseleave', this, {signal})
+    this.control.addEventListener('focus', this, {signal})
+    this.control.addEventListener('blur', this, {signal})
+    this.ownerDocument.addEventListener('keydown', this, {signal})
   }
 
   attributeChangedCallback(name: string) {
@@ -273,20 +282,6 @@ class TooltipElement extends HTMLElement {
 
   disconnectedCallback() {
     this.#abortController?.abort()
-  }
-
-  #addEvents() {
-    if (!this.control) return
-    this.#abortController?.abort()
-    this.#abortController = new AbortController()
-    const {signal} = this.#abortController
-
-    this.addEventListener('mouseleave', this, {signal})
-    this.control.addEventListener('mouseenter', this, {signal})
-    this.control.addEventListener('mouseleave', this, {signal})
-    this.control.addEventListener('focus', this, {signal})
-    this.control.addEventListener('blur', this, {signal})
-    this.ownerDocument.addEventListener('keydown', this, {signal})
   }
 
   handleEvent(event: Event) {
