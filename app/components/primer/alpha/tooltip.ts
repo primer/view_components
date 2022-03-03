@@ -217,6 +217,30 @@ class TooltipElement extends HTMLElement {
     this.ownerDocument.addEventListener('keydown', this, {signal})
   }
 
+  disconnectedCallback() {
+    this.#abortController?.abort()
+  }
+
+  handleEvent(event: Event) {
+    if (!this.control) return
+
+    // Ensures that tooltip stays open when hovering between tooltip and element
+    // WCAG Success Criterion 1.4.13 Hoverable
+    if ((event.type === 'mouseenter' || event.type === 'focus') && this.hidden) {
+      this.hidden = false
+    } else if (event.type === 'blur') {
+      this.hidden = true
+    } else if (
+      event.type === 'mouseleave' &&
+      (event as MouseEvent).relatedTarget !== this.control &&
+      (event as MouseEvent).relatedTarget !== this
+    ) {
+      this.hidden = true
+    } else if (event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape' && !this.hidden) {
+      this.hidden = true
+    }
+  }
+
   static observedAttributes = ['data-type', 'data-direction', 'id', 'hidden']
 
   attributeChangedCallback(name: string) {
@@ -267,30 +291,6 @@ class TooltipElement extends HTMLElement {
         this.#align = 'end'
         this.#side = 'outside-top'
       }
-    }
-  }
-
-  disconnectedCallback() {
-    this.#abortController?.abort()
-  }
-
-  handleEvent(event: Event) {
-    if (!this.control) return
-
-    // Ensures that tooltip stays open when hovering between tooltip and element
-    // WCAG Success Criterion 1.4.13 Hoverable
-    if ((event.type === 'mouseenter' || event.type === 'focus') && this.hidden) {
-      this.hidden = false
-    } else if (event.type === 'blur') {
-      this.hidden = true
-    } else if (
-      event.type === 'mouseleave' &&
-      (event as MouseEvent).relatedTarget !== this.control &&
-      (event as MouseEvent).relatedTarget !== this
-    ) {
-      this.hidden = true
-    } else if (event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape' && !this.hidden) {
-      this.hidden = true
     }
   }
 
