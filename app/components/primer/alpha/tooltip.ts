@@ -2,7 +2,6 @@ import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 
 const TOOLTIP_OPEN_CLASS = 'tooltip-open'
-const TOOLTIP_OFFSET = 10
 
 type Direction = 'n' | 's' | 'e' | 'w' | 'ne' | 'se' | 'nw' | 'sw'
 
@@ -326,6 +325,8 @@ class TooltipElement extends HTMLElement {
   #updatePosition() {
     if (!this.control) return
     if (!this.#allowUpdatePosition || this.hidden) return
+
+    const TOOLTIP_OFFSET = 10
     this.style.left = `0px` // Ensures we have reliable tooltip width in `getAnchoredPosition` calculation
 
     let position = getAnchoredPosition(this, this.control, {
