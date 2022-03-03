@@ -42,6 +42,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Josh Soref_
 
+- Remove markdown file mistakenly checked in.
+
+  _Kate Higa_
+
 ## 0.0.68
 
 ### Updates
