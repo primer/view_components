@@ -161,10 +161,6 @@ class TooltipElement extends HTMLElement {
     this.setAttribute('for', value)
   }
 
-  get control(): HTMLElement | null {
-    return this.ownerDocument.getElementById(this.htmlFor)
-  }
-
   get type(): 'description' | 'label' {
     const type = this.getAttribute('data-type')
     return type === 'label' ? 'label' : 'description'
@@ -180,6 +176,10 @@ class TooltipElement extends HTMLElement {
 
   set direction(value: Direction) {
     this.setAttribute('data-direction', value)
+  }
+
+  get control(): HTMLElement | null {
+    return this.ownerDocument.getElementById(this.htmlFor)
   }
 
   constructor() {
