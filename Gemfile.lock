@@ -4,7 +4,7 @@ PATH
     primer_view_components (0.0.68)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-      octicons (~> 17)
+      octicons (>= 17.0.0)
       view_component (>= 2.0.0, < 3.0)
 
 GEM
