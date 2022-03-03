@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class PrimerAlphaTabPanelsTest < Minitest::Test
+class PrimerAlphaTooltipTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_default_direction
