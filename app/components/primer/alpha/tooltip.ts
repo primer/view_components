@@ -149,8 +149,6 @@ class TooltipElement extends HTMLElement {
     `
   }
 
-  static observedAttributes = ['data-type', 'data-direction', 'id', 'hidden']
-
   #abortController: AbortController | undefined
 
   get htmlFor(): string {
@@ -220,6 +218,8 @@ class TooltipElement extends HTMLElement {
     this.control.addEventListener('blur', this, {signal})
     this.ownerDocument.addEventListener('keydown', this, {signal})
   }
+
+  static observedAttributes = ['data-type', 'data-direction', 'id', 'hidden']
 
   attributeChangedCallback(name: string) {
     if (name === 'id' || name === 'data-type') {
