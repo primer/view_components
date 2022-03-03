@@ -170,12 +170,12 @@ namespace :docs do
         f.puts("| Name | Type | Default | Description |")
         f.puts("| :- | :- | :- | :- |")
 
-        docummented_params = params.map(&:name)
+        documented_params = params.map(&:name)
         component_params = component.instance_method(:initialize).parameters.map { |p| p.last.to_s }
 
-        if (docummented_params & component_params).size != component_params.size
+        if (documented_params & component_params).size != component_params.size
           err = { arguments: {} }
-          (component_params - docummented_params).each do |arg|
+          (component_params - documented_params).each do |arg|
             err[:arguments][arg] = "Not documented"
           end
 

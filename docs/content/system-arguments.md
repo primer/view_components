@@ -83,7 +83,7 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `clearfix` | Boolean | Wether to assign the `clearfix` class. |
+| `clearfix` | Boolean | Whether to assign the `clearfix` class. |
 | `col` | Integer | Number of columns. One of `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
 | `container` | Symbol | Size of the container. One of `:lg`, `:md`, `:sm`, or `:xl`. |
 
