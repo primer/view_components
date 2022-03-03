@@ -46,6 +46,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Cameron Dutro_
 
+- Remove markdown file mistakenly checked in.
+
+  _Kate Higa_
+
 ## 0.0.68
 
 ### Updates
@@ -76,6 +80,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 - Fix live reloading during local docs development.
 
     _Cameron Dutro_
+
+- Fix sequence of content in Subhead.
+
+    _Hector Garcia_
 
 ### Deprecations
 
