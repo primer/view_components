@@ -50,6 +50,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
   _Kate Higa_
 
+- Upgrade octicons to >= 17.0.0
+
+  _Jon Rohan_
+
 ## 0.0.68
 
 ### Updates
