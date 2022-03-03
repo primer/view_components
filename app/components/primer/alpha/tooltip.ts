@@ -80,8 +80,8 @@ class TooltipElement extends HTMLElement {
         content: ""
       }
       
-      :host(.tooltip-open),
-      :host(.tooltip-open):before {
+      :host(.${TOOLTIP_OPEN_CLASS}),
+      :host(.${TOOLTIP_OPEN_CLASS}):before {
         animation-name: tooltip-appear;
         animation-duration: .1s;
         animation-fill-mode: forwards;
