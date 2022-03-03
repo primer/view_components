@@ -150,6 +150,9 @@ class TooltipElement extends HTMLElement {
   }
 
   #abortController: AbortController | undefined
+  #align: AnchorAlignment = 'center'
+  #side: AnchorSide = 'outside-bottom'
+  #allowUpdatePosition = false
 
   get htmlFor(): string {
     return this.getAttribute('for') || ''
@@ -179,10 +182,6 @@ class TooltipElement extends HTMLElement {
   set direction(value: Direction) {
     this.setAttribute('data-direction', value)
   }
-
-  #align: AnchorAlignment = 'center'
-  #side: AnchorSide = 'outside-bottom'
-  #allowUpdatePosition = false
 
   constructor() {
     super()
