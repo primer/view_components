@@ -43,7 +43,7 @@ Kuby.define("ViewComponentsStorybook") do
       # relative path to the view_components gem, meaning bundle install will look
       # for primer_view_components.gemspec and blow up if it doesn't exist. In
       # addition, bundler will load and evaluate primer_view_components.gemspec,
-      # which itself requires version.rb. Rather than blindy copying over all the
+      # which itself requires version.rb. Rather than blindly copying over all the
       # code and busting the layer cache, we copy over only these two necessary
       # files before bundle install.
       insert :gem_support, before: :bundler_phase do |dockerfile|

@@ -86,7 +86,7 @@ namespace :utilities do
         classname.sub!(/^[^-]+-/, "")
       end
 
-      # Change the rest from hypens to underscores
+      # Change the rest from hyphens to underscores
       classname.sub!(/-/, "_")
 
       # convert padding/margin negative values ie n7 to -7
