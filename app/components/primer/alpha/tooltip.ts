@@ -183,15 +183,7 @@ class TooltipElement extends HTMLElement {
   }
 
   #align: AnchorAlignment = 'center'
-  get align(): AnchorAlignment {
-    return this.#align
-  }
-
   #side: AnchorSide = 'outside-bottom'
-  get side(): AnchorSide {
-    return this.#side
-  }
-
   #allowUpdatePosition = false
 
   constructor() {
