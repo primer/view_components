@@ -34,7 +34,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 - Add `Primer::Alpha::Tooltip` component
 
-    _Kate Higa_
+    _Kate Higa_, _Kristján Oddsson_
 
 ### Breaking Changes
 
@@ -47,6 +47,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 - Spelling fixes
 
     _Josh Soref_
+
+- Remove markdown file mistakenly checked in.
+
+    _Kate Higa_
 
 ## 0.0.68
 
