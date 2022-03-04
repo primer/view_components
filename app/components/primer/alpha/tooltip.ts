@@ -2,7 +2,6 @@ import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 
 const TOOLTIP_OPEN_CLASS = 'tooltip-open'
-const TOOLTIP_OFFSET = 10
 
 type Direction = 'n' | 's' | 'e' | 'w' | 'ne' | 'se' | 'nw' | 'sw'
 
@@ -16,18 +15,6 @@ const DIRECTION_CLASSES = [
   'tooltip-nw',
   'tooltip-sw'
 ]
-type DirectionClass = typeof DIRECTION_CLASSES[number]
-
-const DIRECTION_TO_CLASS: Record<Direction, DirectionClass> = {
-  n: 'tooltip-n',
-  s: 'tooltip-s',
-  e: 'tooltip-e',
-  w: 'tooltip-w',
-  ne: 'tooltip-ne',
-  se: 'tooltip-se',
-  nw: 'tooltip-nw',
-  sw: 'tooltip-sw'
-}
 
 class TooltipElement extends HTMLElement {
   styles() {
@@ -81,8 +68,8 @@ class TooltipElement extends HTMLElement {
         content: ""
       }
       
-      :host(.tooltip-open),
-      :host(.tooltip-open):before {
+      :host(.${TOOLTIP_OPEN_CLASS}),
+      :host(.${TOOLTIP_OPEN_CLASS}):before {
         animation-name: tooltip-appear;
         animation-duration: .1s;
         animation-fill-mode: forwards;
@@ -149,9 +136,10 @@ class TooltipElement extends HTMLElement {
     `
   }
 
-  static observedAttributes = ['data-type', 'data-direction', 'id', 'hidden']
-
   #abortController: AbortController | undefined
+  #align: AnchorAlignment = 'center'
+  #side: AnchorSide = 'outside-bottom'
+  #allowUpdatePosition = false
 
   get htmlFor(): string {
     return this.getAttribute('for') || ''
@@ -159,10 +147,6 @@ class TooltipElement extends HTMLElement {
 
   set htmlFor(value: string) {
     this.setAttribute('for', value)
-  }
-
-  get control(): HTMLElement | null {
-    return this.ownerDocument.getElementById(this.htmlFor)
   }
 
   get type(): 'description' | 'label' {
@@ -182,17 +166,9 @@ class TooltipElement extends HTMLElement {
     this.setAttribute('data-direction', value)
   }
 
-  #align: AnchorAlignment = 'center'
-  get align(): AnchorAlignment {
-    return this.#align
+  get control(): HTMLElement | null {
+    return this.ownerDocument.getElementById(this.htmlFor)
   }
-
-  #side: AnchorSide = 'outside-bottom'
-  get side(): AnchorSide {
-    return this.#side
-  }
-
-  #allowUpdatePosition = false
 
   constructor() {
     super()
@@ -217,8 +193,43 @@ class TooltipElement extends HTMLElement {
 
     this.setAttribute('role', 'tooltip')
 
-    this.#addEvents()
+    this.#abortController?.abort()
+    this.#abortController = new AbortController()
+    const {signal} = this.#abortController
+
+    this.addEventListener('mouseleave', this, {signal})
+    this.control.addEventListener('mouseenter', this, {signal})
+    this.control.addEventListener('mouseleave', this, {signal})
+    this.control.addEventListener('focus', this, {signal})
+    this.control.addEventListener('blur', this, {signal})
+    this.ownerDocument.addEventListener('keydown', this, {signal})
   }
+
+  disconnectedCallback() {
+    this.#abortController?.abort()
+  }
+
+  handleEvent(event: Event) {
+    if (!this.control) return
+
+    // Ensures that tooltip stays open when hovering between tooltip and element
+    // WCAG Success Criterion 1.4.13 Hoverable
+    if ((event.type === 'mouseenter' || event.type === 'focus') && this.hidden) {
+      this.hidden = false
+    } else if (event.type === 'blur') {
+      this.hidden = true
+    } else if (
+      event.type === 'mouseleave' &&
+      (event as MouseEvent).relatedTarget !== this.control &&
+      (event as MouseEvent).relatedTarget !== this
+    ) {
+      this.hidden = true
+    } else if (event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape' && !this.hidden) {
+      this.hidden = true
+    }
+  }
+
+  static observedAttributes = ['data-type', 'data-direction', 'id', 'hidden']
 
   attributeChangedCallback(name: string) {
     if (name === 'id' || name === 'data-type') {
@@ -271,44 +282,6 @@ class TooltipElement extends HTMLElement {
     }
   }
 
-  disconnectedCallback() {
-    this.#abortController?.abort()
-  }
-
-  #addEvents() {
-    if (!this.control) return
-    this.#abortController?.abort()
-    this.#abortController = new AbortController()
-    const {signal} = this.#abortController
-
-    this.addEventListener('mouseleave', this, {signal})
-    this.control.addEventListener('mouseenter', this, {signal})
-    this.control.addEventListener('mouseleave', this, {signal})
-    this.control.addEventListener('focus', this, {signal})
-    this.control.addEventListener('blur', this, {signal})
-    this.ownerDocument.addEventListener('keydown', this, {signal})
-  }
-
-  handleEvent(event: Event) {
-    if (!this.control) return
-
-    // Ensures that tooltip stays open when hovering between tooltip and element
-    // WCAG Success Criterion 1.4.13 Hoverable
-    if ((event.type === 'mouseenter' || event.type === 'focus') && this.hidden) {
-      this.hidden = false
-    } else if (event.type === 'blur') {
-      this.hidden = true
-    } else if (
-      event.type === 'mouseleave' &&
-      (event as MouseEvent).relatedTarget !== this.control &&
-      (event as MouseEvent).relatedTarget !== this
-    ) {
-      this.hidden = true
-    } else if (event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape' && !this.hidden) {
-      this.hidden = true
-    }
-  }
-
   // `getAnchoredPosition` may calibrate `anchoredSide` but does not recalibrate `align`.
   //  Therefore, we need to determine which `align` is best based on the initial `getAnchoredPosition` calcluation.
   //  Related: https://github.com/primer/behaviors/issues/63
@@ -340,6 +313,8 @@ class TooltipElement extends HTMLElement {
   #updatePosition() {
     if (!this.control) return
     if (!this.#allowUpdatePosition || this.hidden) return
+
+    const TOOLTIP_OFFSET = 10
     this.style.left = `0px` // Ensures we have reliable tooltip width in `getAnchoredPosition` calculation
 
     let position = getAnchoredPosition(this, this.control, {
@@ -385,7 +360,7 @@ class TooltipElement extends HTMLElement {
       }
     }
 
-    this.classList.add(DIRECTION_TO_CLASS[direction])
+    this.classList.add(`tooltip-${direction}`)
   }
 }
 

@@ -34,7 +34,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 - Add `Primer::Alpha::Tooltip` component
 
-  _Kate Higa_
+    _Kate Higa_, _Kristján Oddsson_
 
 ### Breaking Changes
 
