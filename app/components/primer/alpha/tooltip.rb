@@ -55,21 +55,21 @@ module Primer
       #     Set direction of tooltip with `direction`. The tooltip is responsive and will automatically adjust direction to avoid cutting off.
       #   @code
       #     <%= render(Primer::ButtonComponent.new(id: "North", m: 2)) { "North" } %>
-      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "North", type: :description, text: "This is North-facing and responsive.", direction: :n)) %>
+      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "North", type: :description, text: "This is a North-facing tooltip, and is responsive.", direction: :n)) %>
       #     <%= render(Primer::ButtonComponent.new(id: "South", m: 2)) { "South" } %>
-      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "South", type: :description, text: "This is South-facing and responsive.", direction: :s)) %>
+      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "South", type: :description, text: "This is a South-facing tooltip and is responsive.", direction: :s)) %>
       #     <%= render(Primer::ButtonComponent.new(id: "East", m: 2)) { "East" } %>
-      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "East", type: :description, text: "This is East-facing and responsive.", direction: :e)) %>
+      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "East", type: :description, text: "This is a East-facing tooltip and is responsive.", direction: :e)) %>
       #     <%= render(Primer::ButtonComponent.new(id: "West", m: 2)) { "West" } %>
-      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "West", type: :description, text: "This is West-facing and responsive.", direction: :w)) %>
+      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "West", type: :description, text: "This is a West-facing tooltip and is responsive.", direction: :w)) %>
       #     <%= render(Primer::ButtonComponent.new(id: "Northeast", m: 2)) { "Northeast" } %>
-      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Northeast", type: :description, text: "This is Northeast-facing and responsive.", direction: :ne)) %>
+      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Northeast", type: :description, text: "This is a Northeast-facing tooltip and is responsive.", direction: :ne)) %>
       #     <%= render(Primer::ButtonComponent.new(id: "Southeast", m: 2)) { "Southeast" } %>
-      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Southeast", type: :description, text: "This is Southeast-facing and responsive.", direction: :se)) %>
+      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Southeast", type: :description, text: "This is a Southeast-facing tooltip and is responsive.", direction: :se)) %>
       #     <%= render(Primer::ButtonComponent.new(id: "Northwest", m: 2)) { "Northwest" } %>
-      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Northwest", type: :description, text: "This is Northwest-facing and responsive.", direction: :nw)) %>
+      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Northwest", type: :description, text: "This is a Northwest-facing tooltip and is responsive.", direction: :nw)) %>
       #     <%= render(Primer::ButtonComponent.new(id: "Southwest", m: 2)) { "Southwest" } %>
-      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Southwest", type: :description, text: "This is Southwest-facing and responsive.", direction: :sw)) %>
+      #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Southwest", type: :description, text: "This is a Southwest-facing tooltip and is responsive.", direction: :sw)) %>
       # @param for_id [String] The ID of the element that the tooltip should be attached to.
       # @param type [Symbol] <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
       # @param direction [Symbol] <%= one_of(Primer::Alpha::Tooltip::DIRECTION_OPTIONS) %>
