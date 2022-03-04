@@ -39,6 +39,10 @@
   - color-fg-severe
   :danger:
   - color-fg-danger
+  :open:
+  - color-fg-open
+  :closed:
+  - color-fg-closed
   :done:
   - color-fg-done
   :sponsors:
@@ -78,6 +82,14 @@
   - color-bg-danger
   :danger_emphasis:
   - color-bg-danger-emphasis
+  :open:
+  - color-bg-open
+  :open_emphasis:
+  - color-bg-open-emphasis
+  :closed:
+  - color-bg-closed
+  :closed_emphasis:
+  - color-bg-closed-emphasis
   :done:
   - color-bg-done
   :done_emphasis:
@@ -113,6 +125,14 @@
   - color-border-danger
   :danger_emphasis:
   - color-border-danger-emphasis
+  :open:
+  - color-border-open
+  :open_emphasis:
+  - color-border-open-emphasis
+  :closed:
+  - color-border-closed
+  :closed_emphasis:
+  - color-border-closed-emphasis
   :done:
   - color-border-done
   :done_emphasis:
