@@ -315,8 +315,8 @@ class TooltipElement extends HTMLElement {
     if (!this.#allowUpdatePosition || this.hidden) return
 
     const TOOLTIP_OFFSET = 10
-    this.style.left = `0px` // Ensures we have reliable tooltip width in `getAnchoredPosition` calculation
 
+    this.style.left = `0px` // Ensures we have reliable tooltip width in `getAnchoredPosition`
     let position = getAnchoredPosition(this, this.control, {
       side: this.#side,
       align: this.#align,
@@ -332,6 +332,7 @@ class TooltipElement extends HTMLElement {
     const align = this.#adjustedAnchorAlignment(anchorSide)
     if (!align) return
 
+    this.style.left = `0px` // Reset tooltip position again to ensure accurate width in `getAnchoredPosition`
     position = getAnchoredPosition(this, this.control, {side: anchorSide, align, anchorOffset: TOOLTIP_OFFSET})
     anchorSide = position.anchorSide
 
