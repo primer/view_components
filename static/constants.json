@@ -138,6 +138,24 @@
       "div"
     ]
   },
+  "Primer::Alpha::Tooltip": {
+    "DIRECTION_DEFAULT": "s",
+    "DIRECTION_OPTIONS": [
+      "s",
+      "n",
+      "e",
+      "w",
+      "ne",
+      "nw",
+      "se",
+      "sw"
+    ],
+    "TYPE_FALLBACK": "description",
+    "TYPE_OPTIONS": [
+      "label",
+      "description"
+    ]
+  },
   "Primer::Alpha::UnderlineNav": {
     "BODY_TAG_DEFAULT": "ul",
     "TAG_DEFAULT": "nav",

@@ -95,6 +95,30 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Tooltip
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tooltip.rb
+  parameters:
+  - name: for_id
+    type: String
+    default: N/A
+    description: The ID of the element that the tooltip should be attached to.
+  - name: type
+    type: Symbol
+    default: N/A
+    description: One of `:description` and `:label`.
+  - name: direction
+    type: Symbol
+    default: "`:s`"
+    description: One of `:e`, `:n`, `:ne`, `:nw`, `:s`, `:se`, `:sw`, or `:w`.
+  - name: text
+    type: String
+    default: N/A
+    description: The text content of the tooltip. This should be brief and no longer
+      than a sentence.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: UnderlineNav
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/underline_nav.rb
   parameters:
