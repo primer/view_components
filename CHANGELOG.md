@@ -54,6 +54,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
   _Jon Rohan_
 
+### Bug Fixes
+
+- Fix missing @primer/components dependency.
+
+    _Hector Garcia_
+
 ## 0.0.68
 
 ### Updates

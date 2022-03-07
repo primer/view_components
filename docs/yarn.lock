@@ -1680,6 +1680,30 @@
     history "5.0.0"
     styled-system "5.1.5"
 
+"@primer/react@^34.7.0":
+  version "34.7.0"
+  resolved "https://registry.yarnpkg.com/@primer/react/-/react-34.7.0.tgz#b06b6ad24f54366c3a722c14ad54160378176055"
+  integrity sha512-sYS/cezy7PcbI+ZAn30Euls/FVF6/RifEtmlzv6wUHvisTJZQDWxDhWA5A2M+T+1z29ymOpFVagHPKNPAd7R+g==
+  dependencies:
+    "@primer/behaviors" "1.1.0"
+    "@primer/octicons-react" "16.1.1"
+    "@primer/primitives" "7.1.1"
+    "@radix-ui/react-polymorphic" "0.0.14"
+    "@react-aria/ssr" "3.1.0"
+    "@styled-system/css" "5.1.5"
+    "@styled-system/props" "5.1.5"
+    "@styled-system/theme-get" "5.1.2"
+    "@types/styled-components" "5.1.11"
+    "@types/styled-system" "5.1.12"
+    "@types/styled-system__css" "5.0.16"
+    "@types/styled-system__theme-get" "5.0.1"
+    classnames "2.3.1"
+    color2k "1.2.4"
+    deepmerge "4.2.2"
+    focus-visible "5.2.0"
+    history "5.0.0"
+    styled-system "5.1.5"
+
 "@radix-ui/react-polymorphic@0.0.14":
   version "0.0.14"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-polymorphic/-/react-polymorphic-0.0.14.tgz#fc6cefee6686db8c5a7ff14c8c1b9b5abdee325b"
