@@ -35,7 +35,7 @@ class PrimerBetaTruncateTest < Minitest::Test
 
   def test_truncate_with_custom_item_classes
     render_inline(Primer::Beta::Truncate.new) do |component|
-      component.item(classes: 'foo') { "content" }
+      component.item(classes: "foo") { "content" }
     end
 
     assert_selector(".Truncate .Truncate-text.foo", text: "content")
