@@ -34,6 +34,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### New
 
+- Add ability to attach custom CSS classes to items added to `Truncate` components.
+
+    _Cameron Dutro_
+
 - Add `Primer::Alpha::Tooltip` component
 
     _Kate Higa_, _Kristján Oddsson_
