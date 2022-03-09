@@ -17,9 +17,7 @@ class PublishCLI < Thor::Group
   end
 
   def tools_are_installed
-    unless run("which gh")
-      raise "The gh CLI tool couldn't be found on your PATH. Please install it and run `gh auth login` before continuing."
-    end
+    raise "The gh CLI tool couldn't be found on your PATH. Please install it and run `gh auth login` before continuing." unless run("which gh")
   end
 
   def release_gem
