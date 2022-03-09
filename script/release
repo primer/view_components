@@ -22,6 +22,12 @@ class ReleaseCLI < Thor::Group
     false
   end
 
+  def tools_are_installed
+    unless run("which gh")
+      raise "The gh CLI tool couldn't be found on your PATH. Please install it and run `gh auth login` before continuing."
+    end
+  end
+
   def working_tree_is_clean
     tree_status = run("git status --porcelain", capture: true).strip
     raise "Tree is not clean" unless tree_status.empty?
