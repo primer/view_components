@@ -62,6 +62,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Kate Higa_, _Kristján Oddsson_
 
+### Updates
+
+- Bumps auto-complete package to 3.1.0
+
+    _Lindsey Wild_
+
 ### Breaking Changes
 
 - Module for [script/update-statuses-project.rb](script/update-statuses-project.rb) changed to `GitHub`
