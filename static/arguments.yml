@@ -210,6 +210,10 @@
     default: "`true`"
     description: Controls if the label is visible. If `false`, screen reader only
       text will be added.
+  - name: is_clearable
+    type: Boolean
+    default: "`false`"
+    description: Adds optional clear button.
   - name: system_arguments
     type: Hash
     default: N/A

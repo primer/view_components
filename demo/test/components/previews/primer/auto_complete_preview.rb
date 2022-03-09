@@ -13,5 +13,9 @@ module Primer
         c.icon(icon: :search)
       end
     end
+
+    def with_clear_button
+      render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "input-id", list_id: "test-id", src: "/auto_complete", is_clearable: true, position: :relative))
+    end
   end
 end

@@ -59,17 +59,22 @@ module Primer
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup-5", input_id: "fruits-input-5", is_label_visible: false, position: :relative)) do |c| %>
       #     <% c.icon(icon: :search) %>
       #   <% end %>
+      #
+      # @example With Clear Button
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-6", list_id: "fruits-popup-6", is_clearable: true, position: :relative)) %>
       # @param label_text [String] The label of the input.
       # @param src [String] The route to query.
       # @param input_id [String] Id of the input element.
       # @param list_id [String] Id of the list element.
       # @param is_label_visible [Boolean] Controls if the label is visible. If `false`, screen reader only text will be added.
+      # @param is_clearable [Boolean] Adds optional clear button.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(label_text:, src:, list_id:, input_id:, is_label_visible: true, **system_arguments)
+      def initialize(label_text:, src:, list_id:, input_id:, is_label_visible: true, is_clearable: false, **system_arguments)
         @label_text = label_text
         @list_id = list_id
         @input_id = input_id
         @is_label_visible = is_label_visible
+        @is_clearable = is_clearable
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = "auto-complete"

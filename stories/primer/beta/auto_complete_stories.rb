@@ -11,6 +11,7 @@ class Primer::Beta::AutoCompleteStories < ViewComponent::Storybook::Stories
       text(:src, "/")
       text(:input_id, "input-id")
       text(:list_id, "list-id")
+      is_clearable false
     end
 
     content do |c|

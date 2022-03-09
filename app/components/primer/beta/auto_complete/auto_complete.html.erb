@@ -10,5 +10,9 @@
     <% end %>
   </label>
   <input id="<%= @input_id %>" name="<%= @input_id %>" type="text" class="form-control" autocomplete="off">
+  <% if @is_clearable %>
+    <button id="<%= @input_id %>-clear" class="btn-octicon"><%= primer_octicon "x" %></button>
+  <% end %>
   <%= results %>
+  <div id="<%= @list_id %>-feedback" class="sr-only"></div>
 <% end %>

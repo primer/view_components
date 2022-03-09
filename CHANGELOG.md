@@ -65,6 +65,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 ### Updates
 
 - Bumps auto-complete package to 3.1.0
+- Updates AutoComplete API
 
     _Lindsey Wild_
 

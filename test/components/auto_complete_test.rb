@@ -107,4 +107,10 @@ class PrimerAutoCompleteTest < Minitest::Test
       assert_selector("span.sr-only", text: "Fruits")
     end
   end
+
+  def test_renders_clear_button_if_is_clearable_is_true
+    render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id", is_clearable: true)
+
+    assert_selector('button[id="test-input-clear"]')
+  end
 end
