@@ -13,6 +13,28 @@ class PrimerAutoCompleteTest < Minitest::Test
     end
   end
 
+  def test_raises_if_autofocus_added_to_input
+    err = assert_raises ArgumentError do
+      render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
+        component.input(autofocus: true)
+        component.icon(icon: :person)
+      end
+    end
+
+    assert_includes(err.message, "autofocus is not allowed for accessibility reasons")
+  end
+
+  def test_raises_if_aria_label_added_to_input
+    err = assert_raises ArgumentError do
+      render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
+        component.input("aria-label": "Don't add one")
+        component.icon(icon: :person)
+      end
+    end
+
+    assert_includes(err.message, "instead of `aria-label`, include `label_text` and set `is_label_visible` to `false`.")
+  end
+
   def test_renders_label_without_explicitly_calling_it
     render_inline Primer::Beta::AutoComplete.new(label_text: "Cool Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id")
 

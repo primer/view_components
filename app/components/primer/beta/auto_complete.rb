@@ -32,13 +32,14 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # Required input used to search for results
+      # Customizable input used to search for results.
+      # It is preferred to use this slot sparingly - it will be created by default if not explicity added.
       #
-      # @param type [Symbol] <%= one_of(Primer::Beta::AutoComplete::Input::TYPE_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :input, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
-        deny_single_argument(:autofocus, "autofocus is not allowed for accessibility reasons.", **system_arguments)
+        deny_single_argument(system_arguments[:autofocus], "autofocus is not allowed for accessibility reasons. See https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus#accessibility_considerations for more information.", **system_arguments)
+        deny_single_argument("aria-label", "instead of `aria-label`, include `label_text` and set `is_label_visible` to `false`.", **system_arguments)
         system_arguments[:id] = @input_id
         system_arguments[:name] = @input_id
         system_arguments[:tag] = :input
@@ -59,8 +60,13 @@ module Primer
       # @example With Non-Visible Label
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-2", list_id: "fruits-popup-2", is_label_visible: false, position: :relative)) %>
       #
-      # @example With Custom Classes for the Results
+      # @example With Custom Classes for the Input
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-3", list_id: "fruits-popup-3", position: :relative)) do |c| %>
+      #     <% c.input(classes: "special-form", autofocus: true) %>
+      #   <% end %>
+      #
+      # @example With Custom Classes for the Results
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-4", list_id: "fruits-popup-4", position: :relative)) do |c| %>
       #     <% c.results(classes: "custom-class") do %>
       #       <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |c| %>
       #         Apple
@@ -72,17 +78,17 @@ module Primer
       #   <% end %>
       #
       # @example With Icon
-      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup-4", input_id: "fruits-input-4", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup-5", input_id: "fruits-input-5", position: :relative)) do |c| %>
       #     <% c.icon(icon: :search) %>
       #   <% end %>
       #
       # @example With Icon and Non-Visible Label
-      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup-5", input_id: "fruits-input-5", is_label_visible: false, position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup-6", input_id: "fruits-input-6", is_label_visible: false, position: :relative)) do |c| %>
       #     <% c.icon(icon: :search) %>
       #   <% end %>
       #
       # @example With Clear Button
-      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-6", list_id: "fruits-popup-6", is_clearable: true, position: :relative)) %>
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-7", list_id: "fruits-popup-7", is_clearable: true, position: :relative)) %>
       # @param label_text [String] The label of the input.
       # @param src [String] The route to query.
       # @param input_id [String] Id of the input element.
@@ -103,7 +109,7 @@ module Primer
         @system_arguments[:for] = list_id
       end
 
-      # add `results` without needing to explicitly call them in the view
+      # add `input` and `results` without needing to explicitly call them in the view
       def before_render
         results(classes: "") unless results
         input(classes: "") unless input
