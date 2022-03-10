@@ -37,7 +37,20 @@ module Primer
       # @param type [Symbol] <%= one_of(Primer::Beta::AutoComplete::Input::TYPE_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :input, lambda { |**system_arguments|
-        Input.new(id: @input_id, name: @input_id, **system_arguments)
+        deny_tag_argument(**system_arguments)
+        deny_single_argument(:autofocus, "autofocus is not allowed for accessibility reasons.", **system_arguments)
+        system_arguments[:id] = @input_id
+        system_arguments[:name] = @input_id
+        system_arguments[:tag] = :input
+        system_arguments[:autocomplete] = "off"
+
+        system_arguments[:type] = :text
+        system_arguments[:classes] = class_names(
+          "form-control",
+          system_arguments[:classes]
+        )
+
+        Primer::BaseComponent.new(**system_arguments)
       }
 
       # @example Default
@@ -93,35 +106,7 @@ module Primer
       # add `results` without needing to explicitly call them in the view
       def before_render
         results(classes: "") unless results
-        input unless input
-      end
-    end
-
-    # This component is part of `Primer::Beta::AutoCompleteComponent` and should not be
-    # used as a standalone component.
-    class Input < Primer::Component
-      # TODO: Do we fix this to always use `text`?
-      DEFAULT_TYPE = :text
-      TYPE_OPTIONS = [DEFAULT_TYPE, :search].freeze
-
-      # TODO: Decide if we want to allow aria-labels here?
-
-      # @param type [Symbol] <%= one_of(Primer::Beta::AutoComplete::Input::TYPE_OPTIONS) %>
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(type: DEFAULT_TYPE, **system_arguments)
-        @system_arguments = deny_tag_argument(**system_arguments)
-        @system_arguments = deny_single_argument(:autofocus, "autofocus is not allowed for accessibility reasons.", **system_arguments)
-        @system_arguments[:tag] = :input
-
-        @system_arguments[:type] = fetch_or_fallback(TYPE_OPTIONS, type, DEFAULT_TYPE)
-        @system_arguments[:classes] = class_names(
-          "form-control",
-          system_arguments[:classes]
-        )
-      end
-
-      def call
-        render(Primer::BaseComponent.new(**@system_arguments))
+        input(classes: "") unless input
       end
     end
   end
