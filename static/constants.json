@@ -364,7 +364,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",

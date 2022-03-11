@@ -37,21 +37,25 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :input, lambda { |**system_arguments|
-        deny_tag_argument(**system_arguments)
-        deny_single_argument(system_arguments[:autofocus], "autofocus is not allowed for accessibility reasons. See https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus#accessibility_considerations for more information.", **system_arguments)
-        deny_single_argument("aria-label", "instead of `aria-label`, include `label_text` and set `is_label_visible` to `false` on the component initializer.", **system_arguments)
-        system_arguments[:id] = @input_id
-        system_arguments[:name] = @input_id
-        system_arguments[:tag] = :input
-        system_arguments[:autocomplete] = "off"
+        sanitized_args = deny_tag_argument(**system_arguments)
+        sanitized_args = deny_single_argument(:autofocus, "autofocus is not allowed for accessibility reasons. See https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus#accessibility_considerations for more information.", **sanitized_args)
+        deny_aria_key(
+          :label,
+          "instead of `aria-label`, include `label_text` and set `is_label_visible` to `false` on the component initializer.",
+          **sanitized_args
+        )
+        sanitized_args[:id] = @input_id
+        sanitized_args[:name] = @input_id
+        sanitized_args[:tag] = :input
+        sanitized_args[:autocomplete] = "off"
 
-        system_arguments[:type] = :text
-        system_arguments[:classes] = class_names(
+        sanitized_args[:type] = :text
+        sanitized_args[:classes] = class_names(
           "form-control",
-          system_arguments[:classes]
+          sanitized_args[:classes]
         )
 
-        Primer::BaseComponent.new(**system_arguments)
+        Primer::BaseComponent.new(**sanitized_args)
       }
 
       # @example Default
@@ -62,7 +66,7 @@ module Primer
       #
       # @example With Custom Classes for the Input
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-3", list_id: "fruits-popup-3", position: :relative)) do |c| %>
-      #     <% c.input(classes: "special-form", autofocus: true) %>
+      #     <% c.input(classes: "custom-class") %>
       #   <% end %>
       #
       # @example With Custom Classes for the Results
