@@ -39,7 +39,7 @@ module Primer
       renders_one :input, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
         deny_single_argument(system_arguments[:autofocus], "autofocus is not allowed for accessibility reasons. See https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus#accessibility_considerations for more information.", **system_arguments)
-        deny_single_argument("aria-label", "instead of `aria-label`, include `label_text` and set `is_label_visible` to `false`.", **system_arguments)
+        deny_single_argument("aria-label", "instead of `aria-label`, include `label_text` and set `is_label_visible` to `false` on the component initializer.", **system_arguments)
         system_arguments[:id] = @input_id
         system_arguments[:name] = @input_id
         system_arguments[:tag] = :input
