@@ -44,6 +44,16 @@ module Primer
           "instead of `aria-label`, include `label_text` and set `is_label_visible` to `false` on the component initializer.",
           **sanitized_args
         )
+        deny_single_argument(
+          :id,
+          "`id` will always be set to @input_id.",
+          **sanitized_args
+        )
+        deny_single_argument(
+          :name,
+          "`name` will always be set to @input_id.",
+          **sanitized_args
+        )
         sanitized_args[:id] = @input_id
         sanitized_args[:name] = @input_id
         sanitized_args[:tag] = :input
