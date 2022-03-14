@@ -139,4 +139,26 @@ class PrimerAutoCompleteTest < Minitest::Test
 
     assert_selector('button[id="test-input-clear"]')
   end
+
+  def test_denies_id_on_input_slot
+    with_raise_on_invalid_options(true) do
+      err = assert_raises ArgumentError do
+        render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
+          component.input(id: "some-other-id")
+        end
+      end
+      assert_includes(err.message, "`id` will always be set to @input_id.")
+    end
+  end
+
+  def test_denies_name_on_input_slot
+    with_raise_on_invalid_options(true) do
+      err = assert_raises ArgumentError do
+        render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
+          component.input(name: "some-other-name")
+        end
+      end
+      assert_includes(err.message, "`name` will always be set to @input_id.")
+    end
+  end
 end
