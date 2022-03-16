@@ -57,6 +57,7 @@ module Primer
     alias counter trailing_visual_counter # remove alias when all buttons are migrated to new slot names
 
     # `Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.
+    # **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.
     # Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
     #
     # @param type [Symbol] (:description) <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
