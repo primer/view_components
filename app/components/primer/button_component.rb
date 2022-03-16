@@ -59,6 +59,7 @@ module Primer
     # `Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.
     # Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
     #
+    # @param type [Symbol] (:description) <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Alpha::Tooltip) %>.
     renders_one :tooltip, lambda { |**system_arguments|
       raise ArgumentError, "Buttons with a tooltip must have a unique `id` set on the `Button`." if @id.blank? && !Rails.env.production?
