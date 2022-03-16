@@ -72,7 +72,7 @@ module Primer
       #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Southwest", type: :description, text: "This is a Southwest-facing tooltip and is responsive.", direction: :sw)) %>
       # @example With relative parent
       #   @description
-      #     When the tooltip and trigger element have a container with `relative: position`, it should not inherit width of the container.
+      #     When the tooltip and trigger element have a parent container with `relative: position`, it should not affect width of the tooltip.
       #   @code
       #     <span style="position: relative;">
       #       <%= render(Primer::ButtonComponent.new(id: "test-button", scheme: :primary)) { "Test" } %>
