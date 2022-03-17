@@ -114,6 +114,9 @@ module Primer
     #   <% end %>
     #
     # @example With tooltip
+    #   @description
+    #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
+    #   @code
     #   <%= render(Primer::ButtonComponent.new(id: "button-with-tooltip")) do |c| %>
     #     <% c.tooltip(text: "Tooltip text") %>
     #     Button
