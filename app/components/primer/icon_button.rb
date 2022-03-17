@@ -55,11 +55,5 @@ module Primer
 
       validate_aria_label
     end
-
-    def call
-      render(Primer::BaseButton.new(**@system_arguments)) do
-        render(Primer::OcticonComponent.new(icon: @icon))
-      end
-    end
   end
 end
