@@ -18,6 +18,24 @@ module Primer
       :danger => "btn-octicon-danger"
     }.freeze
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
+
+    # `Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.
+    # **Important:** This tooltip defaults to `type: :label`. In a few scenarios, `type: :description` may be more appropriate.
+    # Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
+    #
+    # @param type [Symbol] (:description) <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
+    # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Alpha::Tooltip) %>.
+    renders_one :tooltip, lambda { |**system_arguments|
+      raise ArgumentError, "IconButtons with a tooltip must have a unique `id` set on the `IconButton`." if @id.blank? && !Rails.env.production?
+
+      @system_arguments = system_arguments
+
+      @system_arguments[:for_id] = @id
+      @system_arguments[:type] ||= :label
+
+      Primer::Alpha::Tooltip.new(**@system_arguments)
+    }
+
     # @example Default
     #
     #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search")) %>
@@ -36,6 +54,14 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
+    # @example With tooltip
+    #   @description
+    #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
+    #   @code
+    #     <%= render(Primer::IconButton.new(icon: :pencil, box: true, "aria-label": "Edit", id: "button-with-tooltip")) do |component| %>
+    #       <% component.tooltip(text: "Tooltip text") %>
+    #     <% end %>
+    #
     # @param scheme [Symbol] <%= one_of(Primer::IconButton::SCHEME_OPTIONS) %>
     # @param icon [String] Name of <%= link_to_octicons %> to use.
     # @param tag [Symbol] <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
@@ -46,6 +72,9 @@ module Primer
       @icon = icon
 
       @system_arguments = system_arguments
+
+      @id = @system_arguments[:id]
+
       @system_arguments[:classes] = class_names(
         "btn-octicon",
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
