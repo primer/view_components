@@ -36,6 +36,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Cameron Dutro_
 
+- Add `Tooltip` support to `IconButton`.
+
+    _Hector Garcia_
+
 ## 0.0.69
 
 ### New
