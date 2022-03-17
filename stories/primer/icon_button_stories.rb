@@ -13,4 +13,20 @@ class Primer::IconButtonStories < ViewComponent::Storybook::Stories
       select(:scheme, Primer::IconButton::SCHEME_OPTIONS, Primer::IconButton::DEFAULT_SCHEME)
     end
   end
+
+  story(:with_tooltip) do
+    controls do
+      aria(label: "Button label")
+      icon "star"
+      box false
+      select(:tag, Primer::BaseButton::TAG_OPTIONS, Primer::BaseButton::DEFAULT_TAG)
+      select(:type, Primer::BaseButton::TYPE_OPTIONS, Primer::BaseButton::DEFAULT_TYPE)
+      select(:scheme, Primer::IconButton::SCHEME_OPTIONS, Primer::IconButton::DEFAULT_SCHEME)
+      text(:id, "button-with-tooltip")
+    end
+
+    content do |c|
+      c.tooltip(text: "Tooltip text")
+    end
+  end
 end
