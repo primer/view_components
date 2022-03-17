@@ -23,7 +23,7 @@ module Primer
     # **Important:** This tooltip defaults to `type: :label`. In a few scenarios, `type: :description` may be more appropriate.
     # Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
     #
-    # @param type [Symbol] (:description) <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
+    # @param type [Symbol] (:label) <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Alpha::Tooltip) %>.
     renders_one :tooltip, lambda { |**system_arguments|
       raise ArgumentError, "IconButtons with a tooltip must have a unique `id` set on the `IconButton`." if @id.blank? && !Rails.env.production?
