@@ -502,7 +502,6 @@
   },
   "Primer::IconButton": {
     "DEFAULT_SCHEME": "default",
-    "DEFAULT_TOOLTIP_TYPE": "label",
     "SCHEME_MAPPINGS": {
       "default": "",
       "danger": "btn-octicon-danger"
