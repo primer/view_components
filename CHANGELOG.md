@@ -36,6 +36,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Cameron Dutro_
 
+### Bug Fixes
+
+- Ensure tooltip arrow position and tooltip width is correct.
+
+  _Kate Higa_
+
 ## 0.0.69
 
 ### New
