@@ -8,8 +8,7 @@ module Primer
   #   The `aria-label` should describe the action to be invoked rather than the icon itself. For instance,
   #   if your `IconButton` renders a magnifying glass icon and invokes a search action, the `aria-label` should be
   #   `"Search"` instead of `"Magnifying glass"`.
-  #   Internally the `aria-label` will be used for the `Tooltip` text. The `button` element is associated via `aria-labelledby`
-  #   to the `Tooltip` so it will serve as the `aria-label` for the `button`.
+  #   Either `aria-label` or `aria-description` will be used for the `Tooltip` text, depending on which one is present.
   #   [Learn more about best functional image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/functional)
   class IconButton < Primer::Component
     status :beta
@@ -39,6 +38,14 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
+    # @example With an `aria-description`
+    #   @description
+    #     If you need to have a longer description for the icon button, use the both the `aria-label` and `aria-description`
+    #     attributes. A label should be short and concise, while the description can be longer as it is intended to provide
+    #     more context and information.
+    #   @code
+    #     <%= render(Primer::IconButton.new(icon: :bold, "aria-label": "Bold", "aria-description": "Add bold text, Cmd+b")) %>
+    #
     # @example Custom tooltip direction
     #
     #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search", tooltip_direction: :e)) %>
@@ -67,10 +74,22 @@ module Primer
 
       validate_aria_label
 
-      # The `aria-label` is used as the tooltip text, which is the `aria-labelled-by` of the button, so we don't set it in the button.
       @aria_label = aria("label", @system_arguments)
-      @system_arguments.delete(:"aria-label")
-      @system_arguments[:aria].delete(:label) if @system_arguments.include?(:aria)
+      @aria_description = aria("description", @system_arguments)
+
+      # If we have both an `aria-label` and a `aria-description`, we create a `Tooltip` with the description type and keep the `aria-label` in the button.
+      # Otherwise, the `aria-label` is used as the tooltip text, which is the `aria-labelled-by` of the button, so we don't set it in the button.
+      @tooltip_type = @aria_label.present? && @aria_description.present? ? :description : :label
+
+      if @tooltip_type == :description
+        @system_arguments.delete(:"aria-description")
+        @system_arguments[:aria].delete(:description) if @system_arguments.include?(:aria)
+        @tooltip_text = @aria_description
+      else
+        @system_arguments.delete(:"aria-label")
+        @system_arguments[:aria].delete(:label) if @system_arguments.include?(:aria)
+        @tooltip_text = @aria_label
+      end
     end
   end
 end
