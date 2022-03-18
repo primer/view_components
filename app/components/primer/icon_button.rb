@@ -68,8 +68,9 @@ module Primer
       validate_aria_label
 
       # The `aria-label` is used as the tooltip text, which is the `aria-labelled-by` of the button, so we don't set it in the button.
-      @aria_label = @system_arguments[:"aria-label"]
+      @aria_label = aria("label", @system_arguments)
       @system_arguments.delete(:"aria-label")
+      @system_arguments[:aria].delete(:label) if @system_arguments.include?(:aria)
     end
   end
 end
