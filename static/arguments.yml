@@ -649,6 +649,10 @@
     default: "`false`"
     description: Whether the button is in a [BorderBox](/components/borderbox). If
       `true`, the button will have the `Box-btn-octicon` class.
+  - name: tooltip_direction
+    type: Symbol
+    default: "`:s`"
+    description: One of `:e`, `:n`, `:ne`, `:nw`, `:s`, `:se`, `:sw`, or `:w`.
   - name: system_arguments
     type: Hash
     default: N/A

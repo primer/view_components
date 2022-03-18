@@ -1,4 +1,4 @@
 <%= render Primer::BaseButton.new(**@system_arguments) do -%>
   <%= render Primer::OcticonComponent.new(icon: @icon) %>
-  <%= tooltip %>
+  <%= render Primer::Alpha::Tooltip.new(for_id: @system_arguments[:id], type: :label, text: @aria_label, direction: @system_arguments[:tooltip_direction]) %>
 <% end -%>

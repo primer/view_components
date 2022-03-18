@@ -8,11 +8,12 @@ module Primer
   #   The `aria-label` should describe the action to be invoked rather than the icon itself. For instance,
   #   if your `IconButton` renders a magnifying glass icon and invokes a search action, the `aria-label` should be
   #   `"Search"` instead of `"Magnifying glass"`.
+  #   Internally the `aria-label` will be used for the `Tooltip` text. The `button` element is associated via `aria-labelledby`
+  #   to the `Tooltip` so it will serve as the `aria-label` for the `button`.
   #   [Learn more about best functional image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/functional)
   class IconButton < Primer::Component
     status :beta
 
-    DEFAULT_TOOLTIP_TYPE = :label
     DEFAULT_SCHEME = :default
     SCHEME_MAPPINGS = {
       DEFAULT_SCHEME => "",
@@ -20,26 +21,9 @@ module Primer
     }.freeze
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
-    # `Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.
-    # **Important:** This tooltip defaults to `type: :label`. In a few scenarios, `type: :description` may be more appropriate.
-    # Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
-    #
-    # @param type [Symbol] (Primer::IconButton::DEFAULT_TOOLTIP_TYPE) <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
-    # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Alpha::Tooltip) %>.
-    renders_one :tooltip, lambda { |**system_arguments|
-      raise ArgumentError, "IconButtons with a tooltip must have a unique `id` set on the `IconButton`." if @id.blank? && !Rails.env.production?
-
-      @system_arguments = system_arguments
-
-      @system_arguments[:for_id] = @id
-      @system_arguments[:type] ||= :label
-
-      Primer::Alpha::Tooltip.new(**@system_arguments)
-    }
-
     # @example Default
     #
-    #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search")) %>
+    #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search", id: "search-button")) %>
     #
     # @example Schemes
     #
@@ -55,26 +39,24 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example With tooltip
-    #   @description
-    #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
-    #   @code
-    #     <%= render(Primer::IconButton.new(icon: :pencil, box: true, "aria-label": "Edit", id: "button-with-tooltip")) do |component| %>
-    #       <% component.tooltip(text: "Tooltip text") %>
-    #     <% end %>
+    # @example Custom tooltip direction
+    #
+    #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search", tooltip_direction: :e)) %>
     #
     # @param scheme [Symbol] <%= one_of(Primer::IconButton::SCHEME_OPTIONS) %>
     # @param icon [String] Name of <%= link_to_octicons %> to use.
     # @param tag [Symbol] <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
     # @param type [Symbol] <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
     # @param box [Boolean] Whether the button is in a <%= link_to_component(Primer::BorderBoxComponent) %>. If `true`, the button will have the `Box-btn-octicon` class.
+    # @param tooltip_direction [Symbol] (Primer::Alpha::Tooltip::DIRECTION_DEFAULT) <%= one_of(Primer::Alpha::Tooltip::DIRECTION_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(icon:, scheme: DEFAULT_SCHEME, box: false, **system_arguments)
       @icon = icon
 
       @system_arguments = system_arguments
 
-      @id = @system_arguments[:id]
+      @system_arguments[:id] ||= "icon-button-#{SecureRandom.hex(4)}"
+      @system_arguments[:tooltip_direction] ||= Primer::Alpha::Tooltip::DIRECTION_DEFAULT
 
       @system_arguments[:classes] = class_names(
         "btn-octicon",
@@ -84,6 +66,10 @@ module Primer
       )
 
       validate_aria_label
+
+      # The `aria-label` is used as the tooltip text, which is the `aria-labelled-by` of the button, so we don't set it in the button.
+      @aria_label = @system_arguments[:"aria-label"]
+      @system_arguments.delete(:"aria-label")
     end
   end
 end
