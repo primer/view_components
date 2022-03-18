@@ -2,6 +2,7 @@ import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 
 const TOOLTIP_OPEN_CLASS = 'tooltip-open'
+const TOOLTIP_ARROW_EDGE_OFFSET = 10
 
 type Direction = 'n' | 's' | 'e' | 'w' | 'ne' | 'se' | 'nw' | 'sw'
 
@@ -38,7 +39,8 @@ class TooltipElement extends HTMLElement {
         opacity: 0;
         max-width: 250px;
         word-wrap: break-word;
-        white-space: normal
+        white-space: normal;
+        width: max-content;
       }
       
       :host:before{
@@ -78,11 +80,15 @@ class TooltipElement extends HTMLElement {
       }
       
       :host(.tooltip-s):before,
+      :host(.tooltip-n):before {
+        right: 50%;
+      }
+
+      :host(.tooltip-s):before,
       :host(.tooltip-se):before,
       :host(.tooltip-sw):before {
-        right: 50%;
         bottom: 100%;
-        margin-right: -6px;
+        margin-right: -${TOOLTIP_ARROW_EDGE_OFFSET}px;
         border-bottom-color: var(--color-neutral-emphasis-plus)
       }
       
@@ -96,8 +102,7 @@ class TooltipElement extends HTMLElement {
       :host(.tooltip-ne):before,
       :host(.tooltip-nw):before {
         top: 100%;
-        right: 50%;
-        margin-right: -6px;
+        margin-right: -${TOOLTIP_ARROW_EDGE_OFFSET}px;
         border-top-color: var(--color-neutral-emphasis-plus)
       }
       
@@ -109,13 +114,14 @@ class TooltipElement extends HTMLElement {
       
       :host(.tooltip-se):before,
       :host(.tooltip-ne):before {
-        right: auto
+        left: 0;
+        margin-left: ${TOOLTIP_ARROW_EDGE_OFFSET}px;
       }
       
       :host(.tooltip-sw):before,
       :host(.tooltip-nw):before {
         right: 0;
-        margin-right: 6px
+        margin-right: ${TOOLTIP_ARROW_EDGE_OFFSET}px;
       }
       
       :host(.tooltip-w):before {
