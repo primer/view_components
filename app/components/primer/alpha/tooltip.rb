@@ -70,6 +70,14 @@ module Primer
       #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Northwest", type: :description, text: "This is a Northwest-facing tooltip and is responsive.", direction: :nw)) %>
       #     <%= render(Primer::ButtonComponent.new(id: "Southwest", m: 2)) { "Southwest" } %>
       #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Southwest", type: :description, text: "This is a Southwest-facing tooltip and is responsive.", direction: :sw)) %>
+      # @example With relative parent
+      #   @description
+      #     When the tooltip and trigger element have a parent container with `relative: position`, it should not affect width of the tooltip.
+      #   @code
+      #     <span style="position: relative;">
+      #       <%= render(Primer::ButtonComponent.new(id: "test-button", scheme: :primary)) { "Test" } %>
+      #       <%= render(Primer::Alpha::Tooltip.new(for_id: "test-button", type: :description, text: "This tooltip should take up the full width", direction: :ne)) %>
+      #     </span>
       # @param for_id [String] The ID of the element that the tooltip should be attached to.
       # @param type [Symbol] <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
       # @param direction [Symbol] <%= one_of(Primer::Alpha::Tooltip::DIRECTION_OPTIONS) %>
