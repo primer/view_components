@@ -40,7 +40,7 @@ module Primer
     #
     # @example With an `aria-description`
     #   @description
-    #     If you need to have a longer description for the icon button, use the both the `aria-label` and `aria-description`
+    #     If you need to have a longer description for the icon button, use both the `aria-label` and `aria-description`
     #     attributes. A label should be short and concise, while the description can be longer as it is intended to provide
     #     more context and information. See the accessibility section for more information.
     #   @code
