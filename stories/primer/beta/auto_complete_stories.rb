@@ -10,6 +10,7 @@ class Primer::Beta::AutoCompleteStories < ViewComponent::Storybook::Stories
       text(:label_text, "Fruits")
       text(:src, "/")
       text(:input_id, "input-id")
+      text(:input_name, "input-name")
       text(:list_id, "list-id")
       is_clearable false
     end

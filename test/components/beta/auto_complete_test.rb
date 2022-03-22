@@ -90,6 +90,12 @@ class PrimerAutoCompleteTest < Minitest::Test
     assert_selector('input[id="test-input"][name="test-input"]')
   end
 
+  def test_forwards_input_name_on_parent_to_input_slot_name
+    render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", input_name: "test-name", list_id: "my-list-id")
+
+    assert_selector('input[id="test-input"][name="test-name"]')
+  end
+
   def test_renders_with_icon
     render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", list_id: "my-list-id", input_id: "test-input") do |component|
       component.icon(icon: :person)
