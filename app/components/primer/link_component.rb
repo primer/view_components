@@ -50,10 +50,6 @@ module Primer
       )
     end
 
-    def call
-      render(Primer::BaseComponent.new(**@system_arguments)) { content }
-    end
-
     def before_render
       raise ArgumentError, "href is required when using <a> tag" if @system_arguments[:tag] == :a && @system_arguments[:href].nil? && !Rails.env.production?
     end
