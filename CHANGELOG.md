@@ -40,6 +40,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Hector Garcia_
 
+- Add `Tooltip` support to `Link`.
+
+    _Hector Garcia_
+
 ### Bug Fixes
 
 - Ensure tooltip arrow position and tooltip width is correct.
