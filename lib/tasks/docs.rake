@@ -96,7 +96,8 @@ namespace :docs do
       Primer::TimeAgoComponent,
       Primer::Alpha::UnderlinePanels,
       Primer::Alpha::TabPanels,
-      Primer::Alpha::Tooltip
+      Primer::Alpha::Tooltip,
+      Primer::ButtonComponent
     ]
 
     all_components = Primer::Component.descendants - [Primer::BaseComponent]
