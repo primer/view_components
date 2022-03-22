@@ -201,6 +201,11 @@
     type: String
     default: N/A
     description: Id of the input element.
+  - name: input_name
+    type: String
+    default: "`nil`"
+    description: Optional name of the input element, defaults to input_id when not
+      set.
   - name: list_id
     type: String
     default: N/A
