@@ -59,13 +59,12 @@ module Primer
     # @param aria-description [String] String that can be read by assistive technology. A description can be longer as it is intended to provide more context and information. See the accessibility section for more information.
     # @param tooltip_direction [Symbol] (Primer::Alpha::Tooltip::DIRECTION_DEFAULT) <%= one_of(Primer::Alpha::Tooltip::DIRECTION_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(icon:, scheme: DEFAULT_SCHEME, box: false, **system_arguments)
+    def initialize(icon:, scheme: DEFAULT_SCHEME, box: false, tooltip_direction: Primer::Alpha::Tooltip::DIRECTION_DEFAULT, **system_arguments)
       @icon = icon
 
       @system_arguments = system_arguments
 
       @system_arguments[:id] ||= "icon-button-#{SecureRandom.hex(4)}"
-      @system_arguments[:tooltip_direction] ||= Primer::Alpha::Tooltip::DIRECTION_DEFAULT
 
       @system_arguments[:classes] = class_names(
         "btn-octicon",
@@ -79,18 +78,23 @@ module Primer
       @aria_label = aria("label", @system_arguments)
       @aria_description = aria("description", @system_arguments)
 
+      @tooltip_arguments = {
+        for_id: @system_arguments[:id],
+        direction: tooltip_direction
+      }
+
       # If we have both an `aria-label` and a `aria-description`, we create a `Tooltip` with the description type and keep the `aria-label` in the button.
       # Otherwise, the `aria-label` is used as the tooltip text, which is the `aria-labelled-by` of the button, so we don't set it in the button.
-      @tooltip_type = @aria_label.present? && @aria_description.present? ? :description : :label
-
-      if @tooltip_type == :description
+      if @aria_label.present? && @aria_description.present?
         @system_arguments.delete(:"aria-description")
         @system_arguments[:aria].delete(:description) if @system_arguments.include?(:aria)
-        @tooltip_text = @aria_description
+        @tooltip_arguments[:text] = @aria_description
+        @tooltip_arguments[:type] = :description
       else
         @system_arguments.delete(:"aria-label")
         @system_arguments[:aria].delete(:label) if @system_arguments.include?(:aria)
-        @tooltip_text = @aria_label
+        @tooltip_arguments[:text] = @aria_label
+        @tooltip_arguments[:type] = :label
       end
     end
   end
