@@ -51,7 +51,7 @@ module Primer
         )
         deny_single_argument(
           :name,
-          "`Set @input_name on the component initializer instead",
+          "Set @input_name on the component initializer instead with `input_name`.",
           **sanitized_args
         )
         sanitized_args[:id] = @input_id

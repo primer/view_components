@@ -164,7 +164,7 @@ class PrimerAutoCompleteTest < Minitest::Test
           component.input(name: "some-other-name")
         end
       end
-      assert_includes(err.message, "`name` will always be set to @input_id.")
+      assert_includes(err.message, "Set @input_name on the component initializer instead with `input_name`.")
     end
   end
 end
