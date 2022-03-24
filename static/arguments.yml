@@ -219,6 +219,11 @@
     type: Boolean
     default: "`false`"
     description: Adds optional clear button.
+  - name: is_label_inline
+    type: Boolean
+    default: "`false`"
+    description: Controls if the label is inline. On smaller screens, label will always
+      become stacked.
   - name: system_arguments
     type: Hash
     default: N/A

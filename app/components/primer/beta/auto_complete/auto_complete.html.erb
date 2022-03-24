@@ -1,5 +1,5 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <label for="<%= @input_id %>">
+  <label for="<%= @input_id %>" class="<%= @label_classes %>">
     <% if @is_label_visible %>
       <%= @label_text %>
     <% else %>
@@ -9,10 +9,12 @@
       <%= icon %>
     <% end %>
   </label>
-  <%= input %>
-  <% if @is_clearable %>
-    <button id="<%= @input_id %>-clear" class="btn-octicon" aria-label="Clear"><%= primer_octicon "x" %></button>
-  <% end %>
-  <%= results %>
+  <span class="autocomplete-body">
+    <%= input %>
+    <% if @is_clearable %>
+      <button id="<%= @input_id %>-clear" class="btn-octicon" aria-label="Clear"><%= primer_octicon "x" %></button>
+    <% end %>
+    <%= results %>
+  </span>
   <div id="<%= @list_id %>-feedback" class="sr-only"></div>
 <% end %>

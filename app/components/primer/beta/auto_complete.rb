@@ -71,6 +71,9 @@ module Primer
       # @example Default
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-1", list_id: "fruits-popup-1", position: :relative)) %>
       #
+      # @example With inline label
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", is_label_inline: true, input_id: "fruits-input-5", list_id: "fruits-popup-5", position: :relative)) %>
+      #
       # @example With Non-Visible Label
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-2", list_id: "fruits-popup-2", is_label_visible: false, position: :relative)) %>
       #
@@ -110,8 +113,9 @@ module Primer
       # @param list_id [String] Id of the list element.
       # @param is_label_visible [Boolean] Controls if the label is visible. If `false`, screen reader only text will be added.
       # @param is_clearable [Boolean] Adds optional clear button.
+      # @param is_label_inline [Boolean] Controls if the label is inline. On smaller screens, label will always become stacked.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, is_label_visible: true, is_clearable: false, **system_arguments)
+      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, is_label_visible: true, is_label_inline: false, is_clearable: false, **system_arguments)
         @label_text = label_text
         @list_id = list_id
         @input_id = input_id
@@ -119,6 +123,7 @@ module Primer
         @is_label_visible = is_label_visible
         @is_clearable = is_clearable
 
+        @label_classes = is_label_inline ? "autocomplete-label-inline" : "autocomplete-label-stacked"
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = "auto-complete"
         @system_arguments[:src] = src
