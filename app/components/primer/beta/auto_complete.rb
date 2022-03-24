@@ -82,7 +82,7 @@ module Primer
       #
       # @example With non-visible label
       #   @description
-      #     A non-visible label may be rendered with `is_label_visible: false`, but it is highly discouraged.
+      #     A non-visible label may be rendered with `is_label_visible: false`, but it is highly discouraged. See <%= link_to_accessibility %>.
       #   @code
       #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-2", list_id: "fruits-popup-2", is_label_visible: false, position: :relative)) %>
       #
