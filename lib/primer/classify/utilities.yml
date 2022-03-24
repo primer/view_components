@@ -98,6 +98,8 @@
   - color-bg-sponsors
   :sponsors_emphasis:
   - color-bg-sponsors-emphasis
+  :transparent:
+  - color-bg-transparent
 :border_color:
   :default:
   - color-border-default

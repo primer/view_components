@@ -50,6 +50,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
   _Kate Higa_
 
+- Fix `.eslintrc.json` `.ts` files override.
+
+  _Hector Garcia_
+
 ## 0.0.69
 
 ### New

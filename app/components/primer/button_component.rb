@@ -117,10 +117,10 @@ module Primer
     #   @description
     #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
     #   @code
-    #   <%= render(Primer::ButtonComponent.new(id: "button-with-tooltip")) do |c| %>
-    #     <% c.tooltip(text: "Tooltip text") %>
-    #     Button
-    #   <% end %>
+    #     <%= render(Primer::ButtonComponent.new(id: "button-with-tooltip")) do |c| %>
+    #       <% c.tooltip(text: "Tooltip text") %>
+    #       Button
+    #     <% end %>
     #
     # @param scheme [Symbol] <%= one_of(Primer::ButtonComponent::SCHEME_OPTIONS) %>
     # @param variant [Symbol] DEPRECATED. <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
