@@ -72,40 +72,40 @@ module Primer
       #   @description
       #     Labels are stacked by default.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-1", list_id: "fruits-popup-1", position: :relative)) %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-1", list_id: "fruits-popup-1")) %>
       #
       # @example With inline label
       #   @description
       #     Labels can be inline by setting `is_label_inline: true`. However, labels will always become stacked on smaller screen sizes.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", is_label_inline: true, input_id: "fruits-input-5", list_id: "fruits-popup-5", position: :relative)) %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", is_label_inline: true, input_id: "fruits-input-5", list_id: "fruits-popup-5")) %>
       #
       # @example With non-visible label
       #   @description
       #     A non-visible label may be rendered with `is_label_visible: false`, but it is highly discouraged. See <%= link_to_accessibility %>.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-2", list_id: "fruits-popup-2", is_label_visible: false, position: :relative)) %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-2", list_id: "fruits-popup-2", is_label_visible: false)) %>
       #
       # @example With icon
-      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup-5", input_id: "fruits-input-5", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup-5", input_id: "fruits-input-5")) do |c| %>
       #     <% c.icon(icon: :search) %>
       #   <% end %>
       #
       # @example With icon and non-visible label
-      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup-6", input_id: "fruits-input-6", is_label_visible: false, position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup-6", input_id: "fruits-input-6", is_label_visible: false)) do |c| %>
       #     <% c.icon(icon: :search) %>
       #   <% end %>
       #
       # @example With clear button
-      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-7", list_id: "fruits-popup-7", is_clearable: true, position: :relative)) %>
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-7", list_id: "fruits-popup-7", is_clearable: true)) %>
       #
       # @example With custom classes for the input
-      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-3", list_id: "fruits-popup-3", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-3", list_id: "fruits-popup-3")) do |c| %>
       #     <% c.input(classes: "custom-class") %>
       #   <% end %>
       #
       # @example With custom classes for the results
-      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-4", list_id: "fruits-popup-4", position: :relative)) do |c| %>
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input-4", list_id: "fruits-popup-4")) do |c| %>
       #     <% c.results(classes: "custom-class") do %>
       #       <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |c| %>
       #         Apple
