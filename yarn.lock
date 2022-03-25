@@ -108,9 +108,9 @@
   integrity sha512-Ej2OUc3ZIFaR7WwIUqESO1DTzmpb7wc8xbTVRT9s52jZQDjN7g5iljoK3ocYZm+BIAcKn3MvcwB42hEk4Ga4xQ==
 
 "@primer/css@^19.0.0":
-  version "19.6.0"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-19.6.0.tgz#a7a29d5ce677ac0e9ff90f72dc9dda976554730f"
-  integrity sha512-6EO/t3z3kfE7epY5xaq1QMTmGCFu2+f2CtHncNFsiJDcYrrvGDRPekcN09Hr8OcqhNVxP6xiqKwR0Vi8u4vdQQ==
+  version "19.7.0"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-19.7.0.tgz#f1cfe25c366bda5adc1fb5fda797db0d8e4026c2"
+  integrity sha512-+VRm7taPN8vdxSyHibmE9UB4XCVmANcO5ikuk5biSVwatBYBEhd852ZbgGRfip2gN+3BxDu4QFlVsTphm9ZpUA==
   dependencies:
     "@primer/primitives" "^7.5.1"
 
