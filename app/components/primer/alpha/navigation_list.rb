@@ -34,8 +34,10 @@ module Primer
       # @example Default
       #
       #   <%= render(Primer::Alpha::NavigationList.new(aria: { label: "Settings" }, selected_item_id: :personal_info)) do |component| %>
-      #     <% component.item(item_id: :general, href: "/settings/general")
-      #     <% component.section(aria: { label: "Account settings" }) do |section|
+      #     <% component.item(item_id: :general, href: "/settings/general") do %>
+      #       General
+      #     <% end %>
+      #     <% component.section(aria: { label: "Account settings" }) do |section| %>
       #       <% section.heading do %>
       #         Account Settings
       #       <% end %>
@@ -54,7 +56,7 @@ module Primer
       # @example Items with leading and trailing visuals
       #
       #   <%= render(Primer::Alpha::NavigationList.new(aria: { label: "Settings" }, selected_item_id: :personal_info)) do |component| %>
-      #     <% component.section(aria: { label: "Account settings" }) do |section|
+      #     <% component.section(aria: { label: "Account settings" }) do |section| %>
       #       <% section.heading do %>
       #         Account Settings
       #       <% end %>
@@ -69,9 +71,7 @@ module Primer
       #       <% section.item(item_id: :billing, href: "/account/billing") do |item| %>
       #         Billing info
       #         <% item.leading_visual_icon(icon: :package) %>
-      #         <% unless current_user.account.in_good_standing? %>
-      #           <% item.trailing_visual_icon(icon: :"dot-fill", color: :attention) %>
-      #         <% end %>
+      #         <% item.trailing_visual_icon(icon: :"dot-fill", color: :attention) %>
       #       <% end %>
       #     <% end %>
       #   <% end %>
@@ -79,7 +79,7 @@ module Primer
       # @example Items with sub-items
       #
       #   <%= render(Primer::Alpha::NavigationList.new(aria: { label: "Settings" }, selected_item_id: :email_notifications)) do |component| %>
-      #     <% component.section(aria: { label: "Account settings" }) do |section|
+      #     <% component.section(aria: { label: "Account settings" }) do |section| %>
       #       <% section.heading do %>
       #         Account Settings
       #       <% end %>
