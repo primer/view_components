@@ -1,6 +1,3 @@
-import {controller} from '@github/catalyst'
-
-@controller
 class NavigationListElement extends HTMLElement {
   connectedCallback(): void {
     this.addEventListener('click', this)
@@ -28,5 +25,15 @@ class NavigationListElement extends HTMLElement {
   }
 }
 
-// Necessary to turn this file into an external module
 export {}
+
+if (!window.customElements.get('navigation-list')) {
+  window.NavigationListElement = NavigationListElement
+  window.customElements.define('navigation-list', NavigationListElement)
+}
+
+declare global {
+  interface Window {
+    NavigationListElement: typeof NavigationListElement
+  }
+}
