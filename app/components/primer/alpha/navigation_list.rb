@@ -83,7 +83,7 @@ module Primer
       #       <% section.heading do %>
       #         Account Settings
       #       <% end %>
-      #       <% section.item(item_id: :notifications, label: "Notifications settings") do |item| %>
+      #       <% section.item(item_id: :notifications, href: "/account/notifications", label: "Notifications settings") do |item| %>
       #         Notifications
       #         <% item.leading_visual_icon(icon: :bell) %>
       #         <% item.subitem(item_id: :email_notifications, href: "/account/notifications/email") do |subitem| %>
@@ -95,7 +95,7 @@ module Primer
       #           <% subitem.trailing_visual_icon(icon: :"device-mobile") %>
       #         <% end %>
       #       <% end %>
-      #       <% section.item(item_id: :messages, label: "Notifications settings") do |item| %>
+      #       <% section.item(item_id: :messages, href: "/account/messages", label: "Notifications settings") do |item| %>
       #         Messages
       #         <% item.leading_visual_icon(icon: :bookmark) %>
       #         <% item.subitem(href: "/account/messages/inbox") do |subitem| %>

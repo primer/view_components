@@ -77,6 +77,8 @@
     url: "/components/menu"
   - title: Markdown
     url: "/components/markdown"
+  - title: NavigationList
+    url: "/components/alpha/navigationlist"
   - title: Octicon
     url: "/components/octicon"
   - title: OcticonSymbols

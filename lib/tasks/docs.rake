@@ -30,6 +30,7 @@ namespace :docs do
     view_context = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context
     components = [
       Primer::Alpha::Layout,
+      Primer::Alpha::NavigationList,
       Primer::HellipButton,
       Primer::Alpha::BorderBox::Header,
       Primer::Image,
@@ -94,6 +95,7 @@ namespace :docs do
       Primer::ClipboardCopy,
       Primer::TabContainerComponent,
       Primer::TimeAgoComponent,
+      Primer::Alpha::NavigationList,
       Primer::Alpha::UnderlinePanels,
       Primer::Alpha::TabPanels,
       Primer::Alpha::Tooltip,
