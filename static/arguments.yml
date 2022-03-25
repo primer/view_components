@@ -210,6 +210,10 @@
     type: String
     default: N/A
     description: Id of the list element.
+  - name: with_icon
+    type: Boolean
+    default: "`false`"
+    description: Controls if a search icon is visible, defaults to `false`.
   - name: is_label_visible
     type: Boolean
     default: "`true`"

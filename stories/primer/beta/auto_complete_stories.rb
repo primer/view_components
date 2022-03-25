@@ -13,10 +13,9 @@ class Primer::Beta::AutoCompleteStories < ViewComponent::Storybook::Stories
       text(:input_name, "input-name")
       text(:list_id, "list-id")
       is_clearable false
-    end
-
-    content do |c|
-      c.icon(icon: :search)
+      is_label_inline false
+      is_label_visible true
+      with_icon false
     end
   end
 end
