@@ -9,6 +9,8 @@ module Primer
     # Finally, `NavigationList` supports sections, which are logical groups of items with
     # a section header.
     class NavigationList < Primer::Component
+      status :alpha
+
       # Top-level nav items shown above all sections.
       #
       # @param component_klass [Class] A custom component class to use instead of the default Item class.
