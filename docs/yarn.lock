@@ -1572,12 +1572,12 @@
   resolved "https://registry.yarnpkg.com/@primer/component-metadata/-/component-metadata-0.4.0.tgz#44b7d7b1285bea41c2a88621fd17f2c777a4c5e9"
   integrity sha512-yppmDSSDrN2CHwjq3h+RWhfpjehFQAx21JcEipYyNTp0f/kC+iazFVNCKZE6DOavAxv003ti7QIrp+QkPT9tpg==
 
-"@primer/css@^19.5.0":
-  version "19.5.0"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-19.5.0.tgz#a84da74ae3bf24c931cff0713c5d2b60bceff246"
-  integrity sha512-PolLas/vj24/UZrE+FcTXnaZIDHgNJ32JoK0DbWNQW0R3T2T9O51nt01KYvcBsLRWYlCawBoQin3xR39jJvuVg==
+"@primer/css@^19.7.0":
+  version "19.7.0"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-19.7.0.tgz#f1cfe25c366bda5adc1fb5fda797db0d8e4026c2"
+  integrity sha512-+VRm7taPN8vdxSyHibmE9UB4XCVmANcO5ikuk5biSVwatBYBEhd852ZbgGRfip2gN+3BxDu4QFlVsTphm9ZpUA==
   dependencies:
-    "@primer/primitives" "7.5.0"
+    "@primer/primitives" "^7.5.1"
 
 "@primer/gatsby-theme-doctocat@^3.2.1":
   version "3.2.1"
@@ -1646,15 +1646,15 @@
   resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-7.1.1.tgz#46edb7f06fbe8809ebe2822bc692fc6c74dba98c"
   integrity sha512-+Gwo89YK1OFi6oubTlah/zPxxzMNaMLy+inECAYI646KIFdzzhAsKWb3z5tSOu5Ff7no4isRV64rWfMSKLZclw==
 
-"@primer/primitives@7.5.0":
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-7.5.0.tgz#c997637bc315b3fde6d1ed22031d60d24b04d85b"
-  integrity sha512-DNAGOxFvelUz2THCZNo1EuSRbtujhY7NR02WjQvSGlbBihMeMJ5yrUYgeQyo/OGrg+HlzbwLW56OLy9PN+iqXA==
-
 "@primer/primitives@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-6.0.0.tgz#a360f2b97f50a8918ef07c2257f0ea4dde8dfec0"
   integrity sha512-idupwQC7vpMki4G2HBpQqTAD6MusFkipgfNXxETQ1D4yLkMQ1bMuif09dnHB7bhQBO5pXUFt52LMpPAnM5Zv4w==
+
+"@primer/primitives@^7.5.1":
+  version "7.5.1"
+  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-7.5.1.tgz#18aa8a0f3a3f7fd49fcad31a7efb86688bffb9de"
+  integrity sha512-1pFKR+FcYRPXJ+zK/qtidrCJB7WmTaAX4sG7zE5LvGWjS5latue4pzZrK0FxxGGBdAU3HpoabANsGjv7T7sRRg==
 
 "@primer/react@^34.5.0":
   version "34.6.0"
@@ -9794,9 +9794,9 @@ lockfile@^1.0.4:
     signal-exit "^3.0.2"
 
 lodash-es@^4.17.14:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.15.tgz#21bd96839354412f23d7a10340e5eac6ee455d78"
-  integrity sha512-rlrc3yU3+JNOpZ9zj5pQtxnx2THmvRykwL4Xlxoa8I9lHBlVbbyPhgyPMioxVZ4NqyxaVVtaJnzsyOidQIhyyQ==
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
 
 lodash.assignin@^4.0.9:
   version "4.2.0"

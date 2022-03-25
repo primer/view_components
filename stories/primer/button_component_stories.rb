@@ -19,6 +19,24 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
     end
   end
 
+  story(:with_tooltip) do
+    controls do
+      select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
+      select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
+      select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
+      select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
+      text(:id, "button-with-tooltip")
+      group_item false
+      dropdown false
+      disabled false
+    end
+
+    content do |c|
+      c.tooltip(text: "Tooltip text")
+      "Click me"
+    end
+  end
+
   story(:with_leading_visual) do
     controls do
       select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
