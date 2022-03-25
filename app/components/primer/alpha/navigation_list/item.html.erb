@@ -1,0 +1,37 @@
+<%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
+  <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
+    <% if leading_visual %>
+      <span class="ActionList-item-visual ActionList-item-visual--leading">
+        <%= leading_visual %>
+      </span>
+    <% end %>
+    <span class="ActionList-item-label">
+      <%= content %>
+    </span>
+    <% if subitems.empty? %>
+      <% if trailing_visual %>
+        <span class="ActionList-item-visual ActionList-item-visual--trailing">
+          <%= trailing_visual %>
+        </span>
+      <% end %>
+    <% else %>
+      <span class="ActionList-item-action ActionList-item-action--trailing">
+        <%= render(
+          Primer::OcticonComponent.new(
+            classes: "ActionList-item-collapseIcon",
+            icon: :"chevron-down",
+            size: :small,
+            aria: { hidden: "true" }
+          )
+        ) %>
+      </span>
+    <% end %>
+  <% end %>
+  <% unless subitems.empty? %>
+    <%= render(Primer::BaseComponent.new(tag: :ul, **@submenu_arguments)) do %>
+      <% subitems.each do |subitem| %>
+        <%= subitem %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

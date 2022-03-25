@@ -1,0 +1,18 @@
+<navigation-list>
+  <%= render(Primer::BaseComponent.new(classes: "NavigationList", tag: :nav, **@nav_arguments)) do %>
+    <%= render(Primer::BaseComponent.new(tag: :ul, role: :list, **@list_arguments)) do %>
+      <% items.each do |item| %>
+        <%= item %>
+      <% end %>
+      <% unless sections.empty? %>
+        <%= render(Primer::Alpha::NavigationList::Separator.new) %>
+      <% end %>
+      <% sections.each_with_index do |section, idx| %>
+        <% if idx > 0 %>
+          <%= render(Primer::Alpha::NavigationList::Separator.new) %>
+        <% end %>
+        <%= section %>
+      <% end %>
+    <% end %>
+  <% end %>
+</navigation-list>
