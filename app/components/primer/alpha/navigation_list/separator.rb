@@ -14,7 +14,8 @@ module Primer
           @system_arguments[:'aria-hidden'] = true
           @system_arguments[:classes] = class_names(
             "ActionList-sectionDivider",
-            filled ? "ActionList-sectionDivider--filled" : ""
+            filled ? "ActionList-sectionDivider--filled" : "",
+            @system_arguments[:classes]
           )
         end
 
