@@ -10,7 +10,13 @@ class AllComponentsHaveStoriesTest < Minitest::Test
     Primer::OcticonSymbolsComponent,
     Primer::Beta::Breadcrumbs::Item,
     Primer::Alpha::Layout::Main,
-    Primer::Alpha::Layout::Sidebar
+    Primer::Alpha::Layout::Sidebar,
+    Primer::Alpha::NavigationList,
+    Primer::Alpha::NavigationList::Heading,
+    Primer::Alpha::NavigationList::Item,
+    Primer::Alpha::NavigationList::Section,
+    Primer::Alpha::NavigationList::Separator,
+    Primer::Alpha::NavigationList::SubItem
   ].freeze
 
   COMPONENTS = Primer::Component.descendants - EXCLUDED_COMPONENTS

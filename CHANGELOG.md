@@ -44,6 +44,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Hector Garcia_
 
+- Graduate the `NavigationList` component into primer/view_components.
+
+    _Cameron Dutro_
+
 ### Bug Fixes
 
 - Ensure tooltip arrow position and tooltip width is correct.

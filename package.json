@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@github/auto-complete-element": "^3.0.2",
+    "@github/catalyst": "^1.3.0",
     "@github/clipboard-copy-element": "^1.1.2",
     "@github/details-menu-element": "^1.0.12",
     "@github/image-crop-element": "^5.0.0",
