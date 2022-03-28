@@ -204,7 +204,7 @@
   - name: input_name
     type: String
     default: "`nil`"
-    description: Optional name of the input element, defaults to input_id when not
+    description: Optional name of the input element, defaults to `input_id` when not
       set.
   - name: list_id
     type: String
