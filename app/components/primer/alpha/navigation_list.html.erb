@@ -1,5 +1,5 @@
 <navigation-list>
-  <%= render(Primer::BaseComponent.new(classes: "NavigationList", tag: :nav, **@nav_arguments)) do %>
+  <%= render(Primer::BaseComponent.new(tag: :nav, **@nav_arguments)) do %>
     <%= render(Primer::BaseComponent.new(tag: :ul, role: :list, **@list_arguments)) do %>
       <% items.each do |item| %>
         <%= item %>

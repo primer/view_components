@@ -65,7 +65,6 @@
 - ".Link--muted"
 - ".Link--primary"
 - ".Link--secondary"
-- ".NavigationList"
 - ".Popover"
 - ".Popover-message"
 - ".Popover-message--large"
