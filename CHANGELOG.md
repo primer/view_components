@@ -32,10 +32,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### New
 
-- Check for the `gh` CLI tool in release scripts.
-
-    _Cameron Dutro_
-
 - Add `Tooltip` support to `Button`.
 
     _Hector Garcia_
@@ -50,6 +46,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 - Updates AutoComplete API with optional clear button, restricted icon, and other argument restrictions
 
     _Lindsey Wild_, _Kate Higa_, _Owen Niblock_
+
+- Check for the `gh` CLI tool in release scripts.
+
+    _Cameron Dutro_
 
 ### Bug Fixes
 
