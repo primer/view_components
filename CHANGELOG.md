@@ -32,10 +32,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### New
 
-- Check for the `gh` CLI tool in release scripts.
-
-    _Cameron Dutro_
-
 - Add `Tooltip` support to `Button`.
 
     _Hector Garcia_
@@ -45,6 +41,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
     _Hector Garcia_
 
 - Graduate the `NavigationList` component into primer/view_components.
+- Check for the `gh` CLI tool in release scripts.
 
     _Cameron Dutro_
 
