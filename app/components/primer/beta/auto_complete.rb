@@ -115,7 +115,7 @@ module Primer
       # @param label_text [String] The label of the input.
       # @param src [String] The route to query.
       # @param input_id [String] Id of the input element.
-      # @param input_name [String] Optional name of the input element, defaults to input_id when not set.
+      # @param input_name [String] Optional name of the input element, defaults to `input_id` when not set.
       # @param list_id [String] Id of the list element.
       # @param with_icon [Boolean] Controls if a search icon is visible, defaults to `false`.
       # @param is_label_visible [Boolean] Controls if the label is visible. If `false`, screen reader only text will be added.

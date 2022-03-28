@@ -44,6 +44,13 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Hector Garcia_
 
+### Updates
+
+- Bumps auto-complete package to 3.1.0
+- Updates AutoComplete API with optional clear button, restricted icon, and other argument restrictions
+
+    _Lindsey Wild_, _Kate Higa_, _Owen Niblock_
+
 ### Bug Fixes
 
 - Ensure tooltip arrow position and tooltip width is correct.
@@ -65,13 +72,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 - Add `Primer::Alpha::Tooltip` component
 
     _Kate Higa_, _Kristján Oddsson_
-
-### Updates
-
-- Bumps auto-complete package to 3.1.0
-- Updates AutoComplete API
-
-    _Lindsey Wild_
 
 ### Breaking Changes
 
