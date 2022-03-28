@@ -32,10 +32,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### New
 
-- Check for the `gh` CLI tool in release scripts.
-
-    _Cameron Dutro_
-
 - Add `Tooltip` support to `Button`.
 
     _Hector Garcia_
@@ -43,6 +39,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 - Add `Tooltip` support to `Link`.
 
     _Hector Garcia_
+
+- Check for the `gh` CLI tool in release scripts.
+
+    _Cameron Dutro_
 
 ### Bug Fixes
 
