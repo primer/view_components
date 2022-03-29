@@ -107,10 +107,10 @@
   resolved "https://registry.yarnpkg.com/@primer/behaviors/-/behaviors-1.1.0.tgz#d5624195b893a1b8c72f904fbbfec2f97b234243"
   integrity sha512-Ej2OUc3ZIFaR7WwIUqESO1DTzmpb7wc8xbTVRT9s52jZQDjN7g5iljoK3ocYZm+BIAcKn3MvcwB42hEk4Ga4xQ==
 
-"@primer/css@^19.0.0":
-  version "19.7.0"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-19.7.0.tgz#f1cfe25c366bda5adc1fb5fda797db0d8e4026c2"
-  integrity sha512-+VRm7taPN8vdxSyHibmE9UB4XCVmANcO5ikuk5biSVwatBYBEhd852ZbgGRfip2gN+3BxDu4QFlVsTphm9ZpUA==
+"@primer/css@^19.7.1":
+  version "19.7.1"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-19.7.1.tgz#36f8f185a36df57b300d0ec0db731b9a52b4ed0b"
+  integrity sha512-g3ffaBiyVs0hUqlN89YnLA0rs5zc8PtTbs+w7CSb45M/xAz0+grD6Yo81ECGpfxhAn1AuRIfcX79CPnogbpDgw==
   dependencies:
     "@primer/primitives" "^7.5.1"
 
