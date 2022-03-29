@@ -44,6 +44,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Cameron Dutro_
 
+- Add responsive values for `text_align` system argument
+
+    _Lukas Spieß_
+
 ### Bug Fixes
 
 - Ensure tooltip arrow position and tooltip width is correct.

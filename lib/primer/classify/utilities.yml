@@ -1555,10 +1555,22 @@
 :text_align:
   :right:
   - text-right
+  - text-sm-right
+  - text-md-right
+  - text-lg-right
+  - text-xl-right
   :left:
   - text-left
+  - text-sm-left
+  - text-md-left
+  - text-lg-left
+  - text-xl-left
   :center:
   - text-center
+  - text-sm-center
+  - text-md-center
+  - text-lg-center
+  - text-xl-center
 :font_weight:
   :light:
   - text-light
