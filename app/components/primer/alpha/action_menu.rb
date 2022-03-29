@@ -59,9 +59,21 @@ module Primer
       #
       # @example With interactive children
       #   @description
-      #     TO DO: what children are allowed?
-      #     Are links allowed?
+      #     TO DO: what children are allowed? Links, buttons...?
       #   @code
+      #    <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-2") do |c| %>
+      #      <%= c.trigger(icon: :"kebab-horizontal", "aria-label": "Menu") %>
+      #      <% c.item do %>
+      #        <a href="https://primer.style/design/">Primer Design</a>
+      #      <% end %>
+      #      <% c.item do %>
+      #        <a href="https://primer.style/view-components/">Primer ViewComponents</a>
+      #      <% end %>
+      #      <% c.item do %>
+      #        <a href="https://primer.style/react/">Primer React</a>
+      #      <% end %>
+      #    <% end %>
+      #
       # @param menu_id [String] Id of the menu.
       # @param menu_text [String] Text for the menu button.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
