@@ -15,7 +15,7 @@
   parameters:
   - name: tag
     type: Symbol
-    default: "`TAG_LIST`"
+    default: "`:li`"
     description: The tag to use for the item. One of `:a`, `:button`, `:clipboard-copy`,
       or `:li`.
   - name: is_divider
