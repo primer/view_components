@@ -18,6 +18,10 @@ module Primer
         #  <%= render Primer::Alpha::ActionMenu::Item.new(tag: :a, href: "https://primer.style/") do %>
         #   primer.style
         #  <% end %>
+        # @example Button
+        #  <%= render Primer::Alpha::ActionMenu::Item.new(tag: :button, type: "button") do %>
+        #   This does something
+        #  <% end %>
         # @param tag [Symbol] The tag to use for the item. <%= one_of(Primer::Alpha::ActionMenu::Item::TAG_OPTIONS) %>
         # @param is_divider [Boolean] Whether to render a divider.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
