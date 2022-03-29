@@ -1417,6 +1417,12 @@
   - hide-lg
   :xl:
   - hide-xl
+  :whenNarrow:
+  - hide-whenNarrow
+  :whenRegular:
+  - hide-whenRegular
+  :whenWide:
+  - hide-whenWide
 :container:
   :sm:
   - container-sm
