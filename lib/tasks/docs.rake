@@ -30,6 +30,7 @@ namespace :docs do
     view_context = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context
     components = [
       Primer::Alpha::ActionMenu,
+      Primer::Alpha::ActionMenu::Item,
       Primer::Alpha::Layout,
       Primer::HellipButton,
       Primer::Alpha::BorderBox::Header,
