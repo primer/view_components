@@ -30,6 +30,12 @@ class IntegrationAutoCompleteTest < ApplicationSystemTestCase
     assert_selector("label[for=\"input-id\"]", text: "Select a fruit", visible: false)
   end
 
+  def test_renders_clear_button
+    with_preview(:with_clear_button)
+
+    assert_selector("#input-id-clear")
+  end
+
   def test_renders_icon
     with_preview(:with_icon)
 

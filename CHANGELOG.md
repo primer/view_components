@@ -40,6 +40,13 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
     _Hector Garcia_
 
+### Updates
+
+- Bumps auto-complete package to 3.1.0
+- Updates AutoComplete API with optional clear button, restricted icon, and other argument restrictions
+
+    _Lindsey Wild_, _Kate Higa_, _Owen Niblock_
+
 - Check for the `gh` CLI tool in release scripts.
 
     _Cameron Dutro_
