@@ -1,4 +1,6 @@
 {
+  "Primer::Alpha::ActionMenu": "alpha",
+  "Primer::Alpha::ActionMenu::Item": "alpha",
   "Primer::Alpha::BorderBox::Header": "alpha",
   "Primer::Alpha::ButtonMarketing": "alpha",
   "Primer::Alpha::Layout": "alpha",
