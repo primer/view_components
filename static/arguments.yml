@@ -1,4 +1,19 @@
 ---
+- component: ActionMenu
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu.rb
+  parameters:
+  - name: menu_id
+    type: String
+    default: N/A
+    description: Id of the menu.
+  - name: menu_text
+    type: String
+    default: N/A
+    description: Text for the menu button.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: BorderBoxHeader
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/border_box/header.rb
   parameters:
