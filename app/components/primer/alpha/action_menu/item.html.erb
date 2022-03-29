@@ -1,0 +1,7 @@
+<% unless is_list? %>
+  <li role="presentation">
+    <%= render(Primer::BaseComponent.new(**@system_arguments)) { content } %>
+  </li>
+<% else %>
+    <%= render(Primer::BaseComponent.new(**@system_arguments)) { content } %>
+<% end %>

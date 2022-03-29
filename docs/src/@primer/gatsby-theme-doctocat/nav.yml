@@ -17,6 +17,8 @@
   children:
   - title: ActionMenu
     url: "/components/alpha/actionmenu"
+  - title: ActionMenuItem
+    url: "/components/alpha/actionmenuitem"
   - title: AutoComplete
     url: "/components/beta/autocomplete"
   - title: AutoCompleteItem
