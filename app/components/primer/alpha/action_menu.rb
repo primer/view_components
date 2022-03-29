@@ -40,7 +40,7 @@ module Primer
       #    <% c.item { "Delete" } %>
       #  <% end %>
       #
-      # @example With `IconOnly` trigger
+      # @example With `IconButton` trigger
       #   @description
       #     Set `icon:` to the octicon you want to use. Always provide an accessible name for the menu by setting `aria-label`.
       #   @code
