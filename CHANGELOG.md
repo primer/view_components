@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Updates
+
+- Add responsive values for `text_align` system argument
+
+    _Lukas Spieß_
+
 ## 0.0.70
 
 ### New
@@ -55,10 +61,6 @@ The category for changes related to documentation, testing and tooling. Also, fo
 - Check for the `gh` CLI tool in release scripts.
 
     _Cameron Dutro_
-
-- Add responsive values for `text_align` system argument
-
-    _Lukas Spieß_
 
 ### Bug Fixes
 
