@@ -201,15 +201,33 @@
     type: String
     default: N/A
     description: Id of the input element.
+  - name: input_name
+    type: String
+    default: "`nil`"
+    description: Optional name of the input element, defaults to `input_id` when not
+      set.
   - name: list_id
     type: String
     default: N/A
     description: Id of the list element.
+  - name: with_icon
+    type: Boolean
+    default: "`false`"
+    description: Controls if a search icon is visible, defaults to `false`.
   - name: is_label_visible
     type: Boolean
     default: "`true`"
     description: Controls if the label is visible. If `false`, screen reader only
       text will be added.
+  - name: is_clearable
+    type: Boolean
+    default: "`false`"
+    description: Adds optional clear button.
+  - name: is_label_inline
+    type: Boolean
+    default: "`false`"
+    description: Controls if the label is inline. On smaller screens, label will always
+      become stacked.
   - name: system_arguments
     type: Hash
     default: N/A

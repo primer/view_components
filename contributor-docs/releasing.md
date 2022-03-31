@@ -34,12 +34,4 @@ If you’ve released a version of the library that introduces significant visual
 
 ## Docs deployment
 
-The documentation site is deployed to [primer.style/view-components](https://primer.style/view-components/) (aliased from [view-components.vercel.app](https://view-components.vercel.app/)) by a Vercel integration, it is automatically deployed with changes to `main`.
-
-## Storybook deployment
-
-Storybook is deployed manually using chatops to [primer.style/view-components/stories](https://primer.style/view-components/stories/) (aliased from [primer-view-components.herokuapp.com](https://primer-view-components.herokuapp.com/view-components/stories)). To deploy run the following in *#primer-rails-ops*:
-
-```text
-.deploy primer-view-components[/<branch>]
-```
+The [documentation site](https://primer.style/view-components) and [Storybook](https://primer.style/view-components/stories) are automatically deployed by GitHub Action workflows when changes are made to the `main` branch. The documentation site is deployed with Vercel (aliased from [view-components.vercel.app](https://view-components.vercel.app)) and Storybook is deployed with Azure as it relies on a live Rails server (aliased from [view-components-storybook.eastus.cloudapp.azure.com](https://view-components-storybook.eastus.cloudapp.azure.com)).

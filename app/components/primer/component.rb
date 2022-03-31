@@ -102,10 +102,17 @@ module Primer
     def deny_aria_label(tag:, arguments:)
       return arguments.except!(:skip_aria_label_check) if arguments[:skip_aria_label_check]
       return if arguments[:role]
-      return unless aria(:label, arguments)
       return unless INVALID_ARIA_LABEL_TAGS.include?(tag)
 
-      raise ArgumentError, "Don't use `aria-label` on `#{tag}` elements. See https://www.tpgi.com/short-note-on-aria-label-aria-labelledby-and-aria-describedby/" if should_raise_aria_error?
+      deny_aria_key(
+        :label,
+        "Don't use `aria-label` on `#{tag}` elements. See https://www.tpgi.com/short-note-on-aria-label-aria-labelledby-and-aria-describedby/",
+        **arguments
+      )
+    end
+
+    def deny_aria_key(key, help_text, **arguments)
+      raise ArgumentError, help_text if should_raise_aria_error? && aria(key, arguments)
     end
 
     def deny_tag_argument(**arguments)

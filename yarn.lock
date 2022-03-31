@@ -39,10 +39,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@github/auto-complete-element@^3.0.2":
-  version "3.0.2"
-  resolved "https://registry.npmjs.org/@github/auto-complete-element/-/auto-complete-element-3.0.2.tgz"
-  integrity sha512-2N6SP/WOvPPnMm5E0uq21AyCxsJ0d6cBxBZ0yVNpvgeaNgPNI8gR1h54c2Ao4iQtvFce6eWdIezBXLDPMPbDag==
+"@github/auto-complete-element@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@github/auto-complete-element/-/auto-complete-element-3.1.0.tgz#afd5ee64a17b4507c42136cfd790103217009b50"
+  integrity sha512-w9sTHX5vq+t8G/+tKhfkWfQ/EyDhnmNH0k9d5VIKbVC8zEUJkubLxXAGra04vkb1sB3vvC+4qp2qM+yX9r7JXQ==
   dependencies:
     "@github/combobox-nav" "^2.0.2"
 
@@ -107,10 +107,10 @@
   resolved "https://registry.yarnpkg.com/@primer/behaviors/-/behaviors-1.1.0.tgz#d5624195b893a1b8c72f904fbbfec2f97b234243"
   integrity sha512-Ej2OUc3ZIFaR7WwIUqESO1DTzmpb7wc8xbTVRT9s52jZQDjN7g5iljoK3ocYZm+BIAcKn3MvcwB42hEk4Ga4xQ==
 
-"@primer/css@^19.0.0":
-  version "19.6.0"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-19.6.0.tgz#a7a29d5ce677ac0e9ff90f72dc9dda976554730f"
-  integrity sha512-6EO/t3z3kfE7epY5xaq1QMTmGCFu2+f2CtHncNFsiJDcYrrvGDRPekcN09Hr8OcqhNVxP6xiqKwR0Vi8u4vdQQ==
+"@primer/css@^19.7.1":
+  version "19.7.1"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-19.7.1.tgz#36f8f185a36df57b300d0ec0db731b9a52b4ed0b"
+  integrity sha512-g3ffaBiyVs0hUqlN89YnLA0rs5zc8PtTbs+w7CSb45M/xAz0+grD6Yo81ECGpfxhAn1AuRIfcX79CPnogbpDgw==
   dependencies:
     "@primer/primitives" "^7.5.1"
 
@@ -1289,9 +1289,9 @@ minimatch@3.0.4, minimatch@^3.0.4:
     brace-expansion "^1.1.7"
 
 minimist@^1.2.0:
-  version "1.2.5"
-  resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
 mocha@^8.3.0:
   version "8.3.0"

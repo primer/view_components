@@ -30,15 +30,31 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.70
+
 ### New
-
-- Check for the `gh` CLI tool in release scripts.
-
-    _Cameron Dutro_
 
 - Add `Tooltip` support to `Button`.
 
     _Hector Garcia_
+
+- Add `Tooltip` support to `Link`.
+
+    _Hector Garcia_
+
+### Updates
+
+- Bumps @primer/css to 19.7.1
+    _Kate Higa_
+
+- Bumps auto-complete package to 3.1.0
+- Updates AutoComplete API with optional clear button, restricted icon, and other argument restrictions
+
+    _Lindsey Wild_, _Kate Higa_, _Owen Niblock_
+
+- Check for the `gh` CLI tool in release scripts.
+
+    _Cameron Dutro_
 
 ### Bug Fixes
 
