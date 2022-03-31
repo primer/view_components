@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.71
+
 ### Updates
 
 - Add responsive values for `text_align` system argument
