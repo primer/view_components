@@ -8,7 +8,7 @@
     "now-build": "exit 0"
   },
   "dependencies": {
-    "@primer/css": "^19.7.1",
+    "@primer/css": "^19.8.0",
     "@primer/gatsby-theme-doctocat": "^3.2.1",
     "@primer/primitives": "^6.0.0",
     "@primer/react": "^34.7.0",
