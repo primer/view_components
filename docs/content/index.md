@@ -27,7 +27,7 @@ gem "primer_view_components"
 In `config/application.rb`, add **after the application definition**:
 
 ```ruby
-require "view_component/engine"
+require "view_component"
 require "primer/view_components/engine"
 ```
 
