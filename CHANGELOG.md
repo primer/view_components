@@ -34,6 +34,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 - Fix alphabetization of components in docs.
 
+### Bug Fixes
+
+- Ensure that no whitespace is added inside LinkComponent.
+
+  _Sam Morrow_
+
 ## 0.0.71
 
 ### Updates
