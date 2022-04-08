@@ -31,6 +31,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 ## main
 
 ### Misc
+
 - Fix alphabetization of components in docs.
 
 ## 0.0.71
