@@ -30,6 +30,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Misc
+
+- Fix alphabetization of components in docs.
+
 ### Bug Fixes
 
 - Ensure that no whitespace is added inside LinkComponent.
