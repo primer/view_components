@@ -7,7 +7,7 @@ require "parser/current"
 module RuboCop
   module Cop
     module Primer
-      # This cop ensures that components marked as "deprecated" in `static/statuses.json` are not used.
+      # This cop ensures that components marked as "deprecated" in `static/statuses.json` are discouraged from use.
       #
       # bad
       # Primer::BlankslateComponent.new(:foo)
@@ -21,8 +21,8 @@ module RuboCop
       # good
       # Primer::Alpha::Tooltip.new(:foo)
       class DeprecatedComponents < BaseCop
-        # If there is no alternative, set the value to nil.
-        ALTERNATIVE_COMPONENTS = {
+        # If there is no alternative to suggest, set the value to nil.
+        COMPONENT_TO_USE_INSTEAD = {
           "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
           "Primer::DropdownMenuComponent" => nil,
           "Primer::Tooltip" => "Primer::Alpha::Tooltip",
@@ -34,8 +34,8 @@ module RuboCop
           return unless node.source.include?("Primer::")
 
           deprecated_components.each do |component|
-            pattern = "(send #{pattern(component)} :new ...)"
-            add_offense(node, message: message(component)) if NodePattern.new(pattern).match(node)
+            pattern = NodePattern.new("(send #{pattern(component)} :new ...)")
+            add_offense(node, message: message(component)) if pattern.match(node)
           end
         end
 
@@ -52,7 +52,7 @@ module RuboCop
 
         def message(component)
           message = "#{component} has been deprecated and should not be used."
-          message += " Please use #{ALTERNATIVE_COMPONENTS[component]} instead." if ALTERNATIVE_COMPONENTS.fetch(component).present?
+          message += " Try #{COMPONENT_TO_USE_INSTEAD[component]} instead." if COMPONENT_TO_USE_INSTEAD.fetch(component).present?
           message
         end
 
@@ -64,7 +64,10 @@ module RuboCop
           ).freeze
           deprecated_components = json.select { |_, value| value == "deprecated" }.keys
           deprecated_components.each do |deprecated|
-            raise "Please add an alternative component for #{deprecated} to ALTERNATIVE_COMPONENTS. If none exist, set the value to nil." unless ALTERNATIVE_COMPONENTS.key?(deprecated)
+            unless COMPONENT_TO_USE_INSTEAD.key?(deprecated)
+              raise "Please provide a component that should be used in place of #{deprecated} in COMPONENT_TO_USE_INSTEAD. " +
+              "If there is no alternative, set the value to nil."
+            end
           end
           deprecated_components
         end

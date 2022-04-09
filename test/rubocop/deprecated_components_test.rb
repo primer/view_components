@@ -62,6 +62,6 @@ class RubocopDeprecatedComponentsTest < CopTest
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Primer::Tooltip has been deprecated and should not be used. Please use Primer::Alpha::Tooltip instead.", cop.offenses.first.message
+    assert_equal "Primer::Tooltip has been deprecated and should not be used. Try Primer::Alpha::Tooltip instead.", cop.offenses.first.message
   end
 end
