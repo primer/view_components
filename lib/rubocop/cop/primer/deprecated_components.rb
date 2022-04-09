@@ -14,7 +14,7 @@ module RuboCop
           "Primer::LayoutComponent" => "Primer::Alpha::Layout",
           "Primer::Tooltip" => "Primer::Alpha::Tooltip",
           "Primer::BlankslateComponent" => "Primer::Beta::Blankslate"
-        }
+        }.freeze
 
         def on_send(node)
           load_deprecated_components
@@ -23,12 +23,9 @@ module RuboCop
           add_offense(node, message: message(component))
         end
 
-
         def message(component)
           message = "#{component} has been deprecated."
-          if ALTERNATIVE_COMPONENTS.key?(component)
-            message += "Please try #{ALTERNATIVE_COMPONENTS[component]} instead."
-          end
+          message += "Please try #{ALTERNATIVE_COMPONENTS[component]} instead." if ALTERNATIVE_COMPONENTS.key?(component)
 
           message
         end
@@ -39,7 +36,7 @@ module RuboCop
               File.join(File.dirname(__FILE__), "../../../../static/statuses.json")
             )
           ).freeze
-          @deprecated_components = json.select {|key, value| value == 'deprecated'}.keys
+          @deprecated_components = json.select { |_key, value| value == "deprecated" }.keys
         end
       end
     end
