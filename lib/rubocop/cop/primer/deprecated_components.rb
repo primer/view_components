@@ -7,12 +7,9 @@ module RuboCop
   module Cop
     module Primer
       # This cop ensures that components with deprecated status are not used.
-      # When an alternative is available, it should be added to the ALTERNATIVE_COMPONENTS map.
+      # When an alternative component is available, it should be added to the ALTERNATIVE_COMPONENTS
+      # so that it can be suggested.
       class DeprecatedComponents < BaseCop
-        def_node_matcher :legacy_component?, <<~PATTERN
-          (send (const (const nil? :Primer) :LayoutComponent) :new ...)
-        PATTERN
-
         ALTERNATIVE_COMPONENTS = {
           "Primer::LayoutComponent" => "Primer::Alpha::Layout",
           "Primer::Tooltip" => "Primer::Alpha::Tooltip",
@@ -21,8 +18,8 @@ module RuboCop
 
         def on_send(node)
           load_deprecated_components
-          return unless legacy_component?(node)
-
+          # Todo - find match with `@deprecated_components``
+          # save match to `component` variable
           add_offense(node, message: message(component))
         end
 
@@ -39,11 +36,10 @@ module RuboCop
         def load_deprecated_components
           json = JSON.parse(
             File.read(
-              File.join(File.dirname(__FILE__), "../../../static/statuses.json")
+              File.join(File.dirname(__FILE__), "../../../../static/statuses.json")
             )
           ).freeze
-          json.select {|key, value| value == 'deprecated'}
-          @deprecated_components = json.fetch_keys
+          @deprecated_components = json.select {|key, value| value == 'deprecated'}.keys
         end
       end
     end
