@@ -31,6 +31,8 @@ module RuboCop
         }.freeze
 
         def on_send(node)
+          return unless node.source.include?("Primer::")
+
           deprecated_components.each do |component|
             pattern = "(send #{pattern(component)} :new ...)"
             add_offense(node, message: message(component)) if NodePattern.new(pattern).match(node)

@@ -7,6 +7,22 @@ class RubocopDeprecatedComponentsTest < CopTest
     RuboCop::Cop::Primer::DeprecatedComponents
   end
 
+  def test_does_not_raise_offense_for_non_primer_node
+    investigate(cop, <<-RUBY)
+      text = FakeComponent.new
+    RUBY
+
+    assert_equal 0, cop.offenses.count
+  end
+
+  def test_does_not_raise_offense_if_non_legacy_component_is_used
+    investigate(cop, <<-RUBY)
+      Primer::ClipboardCopy.new
+    RUBY
+
+    assert_equal 0, cop.offenses.count
+  end
+
   def test_raises_offense_if_calling_legacy_component
     investigate(cop, <<-RUBY)
       Primer::Tooltip.new
