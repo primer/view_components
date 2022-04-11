@@ -66,7 +66,7 @@ module Primer
       #     TODO: Maybe we should render `ClipboardCopy` component instead of the tag?
       #     BUT, there is a component bug we should fix before that: https://github.com/primer/view_components/issues/1081
       #   @code
-      #    <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-2") do |c| %>
+      #    <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-4") do |c| %>
       #      <%= c.trigger(icon: :"kebab-horizontal", "aria-label": "Menu") %>
       #      <% c.item(tag: :a, href: "https://primer.style/design/") do %>
       #        Primer Design
