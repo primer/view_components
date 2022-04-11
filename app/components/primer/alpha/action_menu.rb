@@ -87,9 +87,8 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(menu_id:, **system_arguments)
         @menu_id = menu_id
-        @system_arguments = 
         @system_arguments = deny_tag_argument(**system_arguments)
-        @system_arguments[:tag] = :"primer-action-menu"
+        @system_arguments[:tag] = :"action-menu"
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
           "dropdown"
