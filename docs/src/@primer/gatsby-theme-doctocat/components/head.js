@@ -1,3 +1,4 @@
+import { withPrefix } from "gatsby"
 import React from 'react'
 import Helmet from 'react-helmet'
 import useSiteMetadata from '@primer/gatsby-theme-doctocat/src/use-site-metadata'
@@ -19,11 +20,13 @@ function Head(props) {
 
   let primerViewComponentsSrc
 
-  if(process.env.NODE_ENV === 'development') {
-    primerViewComponentsSrc = "http://localhost:4000/assets/primer_view_components.js"
-  } else {
-    primerViewComponentsSrc = "https://unpkg.com/@primer/view-components@latest/app/assets/javascripts/primer_view_components.js"
-  }
+  primerViewComponentsSrc = "/primer_view_components.js"
+  console.log("THIS IS THE VERCEL ENV**************", process.env.VERCEL_ENV)
+  // if(process.env.NODE_ENV === 'development') {
+  //   primerViewComponentsSrc = "http://localhost:4000/assets/primer_view_components.js"
+  // } else {
+  //   primerViewComponentsSrc = "https://unpkg.com/@primer/view-components@latest/app/assets/javascripts/primer_view_components.js"
+  // }
 
   return (
     <Helmet>
@@ -33,7 +36,7 @@ function Head(props) {
       <meta property="og:description" content={description} />
       <meta property="og:image" content={siteMetadata.imageUrl} />
       <meta property="twitter:card" content="summary_large_image" />
-      <script src={primerViewComponentsSrc}></script>
+      <script src={withPrefix(primerViewComponentsSrc)} type="text/javascript"></script>
       <style>{bodyStyle}</style>
     </Helmet>
   )
