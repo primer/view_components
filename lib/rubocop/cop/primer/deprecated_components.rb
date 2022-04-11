@@ -65,8 +65,8 @@ module RuboCop
           deprecated_components = json.select { |_, value| value == "deprecated" }.keys
           deprecated_components.each do |deprecated|
             unless COMPONENT_TO_USE_INSTEAD.key?(deprecated)
-              raise "Please provide a component that should be used in place of #{deprecated} in COMPONENT_TO_USE_INSTEAD. " +
-              "If there is no alternative, set the value to nil."
+              raise "Please provide a component that should be used in place of #{deprecated} in COMPONENT_TO_USE_INSTEAD. "\
+                    "If there is no alternative, set the value to nil."
             end
           end
           deprecated_components

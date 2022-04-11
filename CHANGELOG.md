@@ -29,6 +29,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 -->
 
 ## main
+
 - Introduce `DeprecatedComponents` rubocop rule.
 
     _Kate Higa_
@@ -36,6 +37,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 ## 0.0.69
 
 ### Misc
+
 - Fix alphabetization of components in docs.
 
 ### Bug Fixes
@@ -53,6 +55,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
     _Lukas Spieß_
 
 ## 0.0.70
+
 ### New
 
 - Add `Tooltip` support to `Button`.
