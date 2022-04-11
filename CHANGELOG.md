@@ -30,13 +30,11 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Misc
+
 - Introduce `DeprecatedComponents` rubocop rule.
 
     _Kate Higa_
-
-## 0.0.69
-
-### Misc
 
 - Fix alphabetization of components in docs.
 
