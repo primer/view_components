@@ -24,7 +24,7 @@
     "app/components/primer/**/*.d.ts"
   ],
   "scripts": {
-    "prepare": "rm -rf docs/static && mkdir docs/static && tsc && rollup -c && cp app/assets/javascripts/primer_view_components.js docs/static/primer_view_components.js",
+    "prepare": "rm -rf docs/static && mkdir docs/static && tsc && rollup -c && cp app/assets/javascripts/primer_view_components.js docs/static/primer_view_components.js && cp app/assets/javascripts/primer_view_components.js.map docs/static/primer_view_components.js.map",
     "lint": "eslint app/components demo/.storybook",
     "lint:fix": "eslint app/components demo/.storybook --fix"
   },
