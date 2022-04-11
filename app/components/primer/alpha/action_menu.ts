@@ -150,6 +150,7 @@ class ActionMenuElement extends HTMLElement {
     if (!this.#buttonEl) return
 
     this.#buttonEl.setAttribute('aria-expanded', 'true')
+    this.#menuEl?.removeAttribute('hidden')
   }
 
   closePopup() {
@@ -157,6 +158,7 @@ class ActionMenuElement extends HTMLElement {
 
     if (this.isOpen()) {
       this.#buttonEl.removeAttribute('aria-expanded')
+      this.#menuEl?.setAttribute('hidden', 'hidden')
     }
   }
 
