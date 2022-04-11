@@ -36,6 +36,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
   _Sam Morrow_
 
+### Misc
+
+- Update documentation to reflect deprecation of `require "view_component/engine"`
+
+  _Leo Correa_
+
 ## 0.0.71
 
 ### Updates
