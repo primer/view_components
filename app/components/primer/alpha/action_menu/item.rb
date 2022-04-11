@@ -33,6 +33,7 @@ module Primer
 
           if @is_divider
             @system_arguments[:"aria-hidden"] = "true"
+            @system_arguments[:"role"] = "presentation"
             @system_arguments[:classes] = "dropdown-divider"
           else
             @system_arguments[:classes] = "dropdown-item"
