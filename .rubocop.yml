@@ -76,3 +76,6 @@ Primer/ComponentNameMigration:
   Enabled: true
   Exclude:
     - "test/**/*"
+
+Primer/DeprecatedComponents:
+  Enabled: false
