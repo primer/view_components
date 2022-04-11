@@ -1,5 +1,5 @@
 <% unless is_list? %>
-  <li role="presentation">
+  <li role="presentation" tabindex="-1">
     <%= render(Primer::BaseComponent.new(**@system_arguments)) { content } %>
   </li>
 <% else %>

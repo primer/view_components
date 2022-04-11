@@ -1,4 +1,6 @@
 ---
+- ".ActionMenu"
+- ".ActionMenuButton"
 - ".AvatarStack"
 - ".AvatarStack--right"
 - ".AvatarStack--three-plus"
