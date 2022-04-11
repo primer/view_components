@@ -56,13 +56,16 @@ module RuboCop
           message
         end
 
-        def deprecated_components
-          json = JSON.parse(
+        def statuses_json
+          JSON.parse(
             File.read(
               File.join(File.dirname(__FILE__), "../../../../static/statuses.json")
             )
           ).freeze
-          deprecated_components = json.select { |_, value| value == "deprecated" }.keys
+        end
+
+        def deprecated_components
+          deprecated_components = statuses_json.select { |_, value| value == "deprecated" }.keys
           deprecated_components.each do |deprecated|
             unless COMPONENT_TO_USE_INSTEAD.key?(deprecated)
               raise "Please provide a component that should be used in place of #{deprecated} in COMPONENT_TO_USE_INSTEAD. "\
