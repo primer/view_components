@@ -200,6 +200,7 @@ class PrimerClassifyTest < Minitest::Test
   def test_text_align
     assert_generated_class("text-right", { text_align: :right })
     assert_generated_class("text-left",  { text_align: :left })
+    assert_generated_class("text-left text-sm-right text-md-center", { text_align: [:left, :right, :center] })
   end
 
   def test_font_family

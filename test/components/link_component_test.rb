@@ -12,6 +12,12 @@ class PrimerLinkComponentTest < Minitest::Test
     refute_selector(".Link--muted")
   end
 
+  def test_renders_no_additional_whitespace
+    render_inline(Primer::LinkComponent.new(href: "http://joe-jonas-shirtless.com")) { "content" }
+
+    assert_text(/^content$/)
+  end
+
   def test_renders_as_a_link
     render_inline(Primer::LinkComponent.new(href: "http://google.com")) { "content" }
 

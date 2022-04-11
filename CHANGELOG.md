@@ -36,6 +36,25 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## 0.0.69
 
+### Misc
+
+- Fix alphabetization of components in docs.
+
+### Bug Fixes
+
+- Ensure that no whitespace is added inside LinkComponent.
+
+  _Sam Morrow_
+
+## 0.0.71
+
+### Updates
+
+- Add responsive values for `text_align` system argument
+
+    _Lukas Spieß_
+
+## 0.0.70
 ### New
 
 - Add `Tooltip` support to `Button`.
@@ -47,6 +66,9 @@ The category for changes related to documentation, testing and tooling. Also, fo
     _Hector Garcia_
 
 ### Updates
+
+- Bumps @primer/css to 19.7.1
+    _Kate Higa_
 
 - Bumps auto-complete package to 3.1.0
 - Updates AutoComplete API with optional clear button, restricted icon, and other argument restrictions
