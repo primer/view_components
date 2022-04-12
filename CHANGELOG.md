@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Bug
+
+- Fix tooltip arrow being off-centered for `s` and `n`.
+
+    _Kate Higa_
+
 ### Misc
 
 - Introduce `DeprecatedComponents` rubocop rule.
