@@ -2,7 +2,7 @@ import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 
 const TOOLTIP_OPEN_CLASS = 'tooltip-open'
-const TOOLTIP_ARROW_EDGE_OFFSET = 10
+const TOOLTIP_ARROW_EDGE_OFFSET = 6
 
 type Direction = 'n' | 's' | 'e' | 'w' | 'ne' | 'se' | 'nw' | 'sw'
 
