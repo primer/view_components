@@ -26,6 +26,7 @@ class ActionMenuElement extends HTMLElement {
 
   connectedCallback() {
     console.log("CONNECTED TO ACTION MENU")
+    console.log("this.#buttonEl", this.#buttonEl)
     if (!this.#buttonEl) return
 
     this.addEvents()
@@ -37,6 +38,9 @@ class ActionMenuElement extends HTMLElement {
   }
 
   private addEvents() {
+    console.log("INSIDE ADD EVENTS")
+    console.log("this.#buttonEl", this.#buttonEl)
+    console.log("this.#menuEl", this.#menuEl)
     if (!this.#buttonEl || !this.#menuEl) return
 
     this.#abortController = new AbortController()
