@@ -15,8 +15,8 @@ class ActionMenuElement extends HTMLElement {
   // Using button node instead of a class or id
   // to prevent someone from switching this
   // to a different HTML element in the future.
-  #buttonEl: HTMLButtonElement | null = this.ownerDocument.querySelector('button')
-  #menuEl: HTMLUListElement | null = this.ownerDocument.querySelector('[role="menu"]')
+  #buttonEl: HTMLButtonElement | null = this.querySelector('button')
+  #menuEl: HTMLUListElement | null = this.querySelector('[role="menu"]')
   #menuItemEls: HTMLLIElement[] = []
   #firstMenuItem: HTMLLIElement
   #lastMenuItem: HTMLLIElement
