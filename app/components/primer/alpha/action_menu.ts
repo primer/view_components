@@ -335,16 +335,13 @@ class ActionMenuElement extends HTMLElement {
   }
 }
 
+if (!window.customElements.get('action-menu')) {
+  window.ActionMenuElement = ActionMenuElement
+  window.customElements.define('action-menu', ActionMenuElement)
+}
+
 declare global {
   interface Window {
     ActionMenuElement: typeof ActionMenuElement
   }
-  interface HTMLElementTagNameMap {
-    'action-menu': ActionMenuElement
-  }
-}
-
-if (!window.customElements.get('action-menu')) {
-  window.ActionMenuElement = ActionMenuElement
-  window.customElements.define('action-menu', ActionMenuElement)
 }
