@@ -25,9 +25,11 @@ class ActionMenuElement extends HTMLElement {
     this.#menuEl && this.#menuEl.querySelectorAll('[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]')
 
   connectedCallback() {
+    console.log("CONNECTED TO ACTION MENU")
     if (!this.#buttonEl) return
 
     this.addEvents()
+    console.log("ADDED EVENTS")
   }
 
   disconnectedCallback() {
