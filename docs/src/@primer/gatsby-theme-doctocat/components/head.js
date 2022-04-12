@@ -36,7 +36,7 @@ function Head(props) {
       <meta property="og:description" content={description} />
       <meta property="og:image" content={siteMetadata.imageUrl} />
       <meta property="twitter:card" content="summary_large_image" />
-      <script src={withPrefix(primerViewComponentsSrc)} type="text/javascript"></script>
+      <script defer src={withPrefix(primerViewComponentsSrc)} type="text/javascript"></script>
       <style>{bodyStyle}</style>
     </Helmet>
   )
