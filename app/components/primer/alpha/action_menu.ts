@@ -15,16 +15,20 @@ class ActionMenuElement extends HTMLElement {
   // Using button node instead of a class or id
   // to prevent someone from switching this
   // to a different HTML element in the future.
-  #buttonEl: HTMLButtonElement | null = this.querySelector('button')
-  #menuEl: HTMLUListElement | null = this.querySelector('[role="menu"]')
+  #buttonEl: HTMLButtonElement | null
+  #menuEl: HTMLUListElement | null 
   #menuItemEls: HTMLLIElement[] = []
   #firstMenuItem: HTMLLIElement
   #lastMenuItem: HTMLLIElement
   #firstCharactersOfItems: string[] = []
-  #allMenuItemEls: NodeListOf<HTMLLIElement> | null =
-    this.#menuEl && this.#menuEl.querySelectorAll('[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]')
+  #allMenuItemEls: NodeListOf<HTMLLIElement> | null
 
   connectedCallback() {
+    this.#buttonEl = this.querySelector('button')
+    this.#menuEl = this.querySelector('[role="menu"]')
+    this.#allMenuItemEls =
+    this.#menuEl && this.#menuEl.querySelectorAll('[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]')
+
     console.log("CONNECTED TO ACTION MENU")
     console.log("this.#buttonEl", this.#buttonEl)
     if (!this.#buttonEl) return
