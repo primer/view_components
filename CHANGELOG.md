@@ -44,6 +44,13 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 - Fix alphabetization of components in docs.
 
+  _David Wilson_
+
+- Give codespaces more memory (4gb is not sufficient).
+
+  _Lindsey Wild_
+  _Cameron Dutro_
+
 ### Bug Fixes
 
 - Ensure that no whitespace is added inside LinkComponent.
