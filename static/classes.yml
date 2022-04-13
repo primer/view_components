@@ -1,5 +1,9 @@
 ---
-- ".ActionMenu"
+- ".ActionList"
+- ".ActionList-content"
+- ".ActionList-item"
+- ".ActionList-item-label"
+- ".ActionList-sectionDivider"
 - ".ActionMenuButton"
 - ".AvatarStack"
 - ".AvatarStack--right"
