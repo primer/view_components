@@ -29,12 +29,9 @@ class ActionMenuElement extends HTMLElement {
     this.#allMenuItemEls =
     this.#menuEl && this.#menuEl.querySelectorAll('[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]')
 
-    console.log("CONNECTED TO ACTION MENU")
-    console.log("this.#buttonEl", this.#buttonEl)
     if (!this.#buttonEl) return
 
     this.addEvents()
-    console.log("ADDED EVENTS")
   }
 
   disconnectedCallback() {
@@ -42,9 +39,6 @@ class ActionMenuElement extends HTMLElement {
   }
 
   private addEvents() {
-    console.log("INSIDE ADD EVENTS")
-    console.log("this.#buttonEl", this.#buttonEl)
-    console.log("this.#menuEl", this.#menuEl)
     if (!this.#buttonEl || !this.#menuEl) return
 
     this.#abortController = new AbortController()
