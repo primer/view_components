@@ -33,6 +33,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 ### Bug
 
 - Fix tooltip arrow being off-centered for `s` and `n`.
+- Revert tooltip arrow offset for `sw`, `se`, `nw`, and `ne`.
 
     _Kate Higa_
 
