@@ -39,6 +39,7 @@ module Primer
             @system_arguments[:class] = "ActionList-content"
             @system_arguments[:tag] = @tag
           else 
+            @list_arguments[:tabindex] = -1
             @list_arguments[:role] = "menuitem"
             @system_arguments[:tag] = :span
           end
@@ -48,7 +49,6 @@ module Primer
           args = {}
           args[:tag] = TAG_LIST
           args[:classes] = "ActionList-item"
-          args[:tabindex] = -1
 
           args
         end
