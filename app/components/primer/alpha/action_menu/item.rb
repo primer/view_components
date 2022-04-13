@@ -6,8 +6,8 @@ module Primer
       # This component is part of <%= link_to_component(Primer::Alpha::ActionMenu) %> and should not be
       # used as a standalone component.
       class Item < Primer::Component
-        TAG_LIST = :li
-        TAG_OPTIONS = [:a, :button, :"clipboard-copy", TAG_LIST].freeze
+        LIST_TAG = :li
+        TAG_OPTIONS = [:a, :button, :"clipboard-copy", LIST_TAG].freeze
 
         # @example Default
         #  <%= render Primer::Alpha::ActionMenu::Item.new do %>
@@ -25,36 +25,34 @@ module Primer
         # @param tag [Symbol] The tag to use for the item. <%= one_of(Primer::Alpha::ActionMenu::Item::TAG_OPTIONS) %>
         # @param is_divider [Boolean] Whether to render a divider.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(tag: TAG_LIST, is_divider: false, **system_arguments)
+        def initialize(tag: LIST_TAG, is_divider: false, **system_arguments)
           @is_divider = is_divider
-          @tag = fetch_or_fallback(TAG_OPTIONS, tag, TAG_LIST)
+          @tag = fetch_or_fallback(TAG_OPTIONS, tag, LIST_TAG)
           
           return if @is_divider
           
           @system_arguments = system_arguments
           @list_arguments = list_arguments
           unless is_list?
-            @list_arguments[:role] = "presentation"
-            @system_arguments[:role] = "menuitem"
             @system_arguments[:class] = "ActionList-content"
             @system_arguments[:tag] = @tag
           else 
             @list_arguments[:tabindex] = -1
-            @list_arguments[:role] = "menuitem"
             @system_arguments[:tag] = :span
           end
         end
         
         def list_arguments
           args = {}
-          args[:tag] = TAG_LIST
+          args[:role] = "menuitem"
+          args[:tag] = LIST_TAG
           args[:classes] = "ActionList-item"
 
           args
         end
 
         def is_list?
-          @tag == TAG_LIST
+          @tag == LIST_TAG
         end
       end
     end
