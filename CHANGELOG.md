@@ -34,13 +34,13 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 - Fix tooltip arrow being off-centered for `s` and `n`.
 
-    _Kate Higa_, _Kristján Oddsson_
+    _Kate Higa_
 
 ### Misc
 
 - Enable `eslint-plugin-custom-elements` linting rulesets.
 
-    _Kate Higa_
+    _Kate Higa_, _Kristján Oddsson_
 
 - Introduce `DeprecatedComponents` rubocop rule.
 
