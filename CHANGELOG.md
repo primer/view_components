@@ -38,6 +38,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Misc
 
+- Enable `eslint-plugin-custom-elements` linting rulesets.
+
+    _Kate Higa_, _Kristján Oddsson_
+
 - Introduce `DeprecatedComponents` rubocop rule.
 
     _Kate Higa_

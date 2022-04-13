@@ -653,6 +653,11 @@ eslint-module-utils@^2.6.0:
     debug "^2.6.9"
     pkg-dir "^2.0.0"
 
+eslint-plugin-custom-elements@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-custom-elements/-/eslint-plugin-custom-elements-0.0.6.tgz#2e0f5018af7ac8348f591cec9b5e80d08996f235"
+  integrity sha512-JwPHRSOUe7y8dpC5hg90ySHejsfnQ3yqprv0902VMZ3j8FRZDudj+yzxqqkRDhZTNFUxP3r+0TWuveZhLgJONg==
+
 eslint-plugin-eslint-comments@>=3.0.1:
   version "3.2.0"
   resolved "https://registry.npmjs.org/eslint-plugin-eslint-comments/-/eslint-plugin-eslint-comments-3.2.0.tgz"

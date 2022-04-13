@@ -18,7 +18,7 @@ const DIRECTION_CLASSES = [
   'tooltip-sw'
 ]
 
-class TooltipElement extends HTMLElement {
+class ToolTipElement extends HTMLElement {
   styles() {
     return `
       :host {
@@ -176,8 +176,7 @@ class TooltipElement extends HTMLElement {
     return this.ownerDocument.getElementById(this.htmlFor)
   }
 
-  constructor() {
-    super()
+  connectedCallback() {
     const shadow = this.attachShadow({mode: 'open'})
     shadow.innerHTML = `
       <style>
@@ -185,9 +184,6 @@ class TooltipElement extends HTMLElement {
       </style>
       <slot></slot>
     `
-  }
-
-  connectedCallback() {
     this.hidden = true
     this.#allowUpdatePosition = true
 
@@ -209,6 +205,7 @@ class TooltipElement extends HTMLElement {
     this.control.addEventListener('focus', this, {signal})
     this.control.addEventListener('blur', this, {signal})
     this.ownerDocument.addEventListener('keydown', this, {signal})
+    this.#update()
   }
 
   disconnectedCallback() {
@@ -237,6 +234,18 @@ class TooltipElement extends HTMLElement {
 
   static observedAttributes = ['data-type', 'data-direction', 'id', 'hidden']
 
+  #update() {
+    if (this.hidden) {
+      this.classList.remove(TOOLTIP_OPEN_CLASS, ...DIRECTION_CLASSES)
+    } else {
+      this.classList.add(TOOLTIP_OPEN_CLASS)
+      for (const tooltip of this.ownerDocument.querySelectorAll<HTMLElement>(this.tagName)) {
+        if (tooltip !== this) tooltip.hidden = true
+      }
+      this.#updatePosition()
+    }
+  }
+
   attributeChangedCallback(name: string) {
     if (name === 'id' || name === 'data-type') {
       if (!this.id || !this.control) return
@@ -247,16 +256,8 @@ class TooltipElement extends HTMLElement {
         describedBy ? (describedBy = `${describedBy} ${this.id}`) : (describedBy = this.id)
         this.control.setAttribute('aria-describedby', describedBy)
       }
-    } else if (name === 'hidden') {
-      if (this.hidden) {
-        this.classList.remove(TOOLTIP_OPEN_CLASS, ...DIRECTION_CLASSES)
-      } else {
-        this.classList.add(TOOLTIP_OPEN_CLASS)
-        for (const tooltip of this.ownerDocument.querySelectorAll<HTMLElement>(this.tagName)) {
-          if (tooltip !== this) tooltip.hidden = true
-        }
-        this.#updatePosition()
-      }
+    } else if (this.isConnected && name === 'hidden') {
+      this.#update()
     } else if (name === 'data-direction') {
       this.classList.remove(...DIRECTION_CLASSES)
       const direction = this.direction
@@ -372,12 +373,12 @@ class TooltipElement extends HTMLElement {
 }
 
 if (!window.customElements.get('tool-tip')) {
-  window.TooltipElement = TooltipElement
-  window.customElements.define('tool-tip', TooltipElement)
+  window.ToolTipElement = ToolTipElement
+  window.customElements.define('tool-tip', ToolTipElement)
 }
 
 declare global {
   interface Window {
-    TooltipElement: typeof TooltipElement
+    ToolTipElement: typeof ToolTipElement
   }
 }

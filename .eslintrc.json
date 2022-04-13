@@ -5,7 +5,8 @@
     "node": true
   },
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:custom-elements/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -52,6 +53,9 @@
           {
             "ignoreRestSiblings": true
           }
+        ], 
+        "custom-elements/tag-name-matches-class": [
+          "error", {"suffix": "Element"}
         ]
       }
     }
