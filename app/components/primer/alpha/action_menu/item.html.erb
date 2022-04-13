@@ -1,7 +1,11 @@
-<% unless is_list? %>
-  <li role="presentation" tabindex="-1">
-    <%= render(Primer::BaseComponent.new(**@system_arguments)) { content } %>
-  </li>
+<% if @is_divider %>
+  <li class="ActionList-sectionDivider" role="presentation" aria-hidden></li>
 <% else %>
-    <%= render(Primer::BaseComponent.new(**@system_arguments)) { content } %>
+  <%= render(Primer::BaseComponent.new(**@list_arguments)) do %>
+    <%= render(Primer::BaseComponent.new(classes: "ActionList-content", **@system_arguments)) do %>
+      <span class="ActionList-item-label">
+        <%= content %>
+      </span>
+    <% end %>
+  <% end %>
 <% end %>
