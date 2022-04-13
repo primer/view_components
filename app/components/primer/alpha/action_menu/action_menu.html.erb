@@ -1,6 +1,6 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <%= trigger %>
-  <ul class="dropdown-menu ActionMenu" id="<%= @menu_id %>-list" role="menu" aria-labelledby="<%= @menu_id %>-text" hidden>
+  <ul class="ActionList" id="<%= @menu_id %>-list" role="menu" aria-labelledby="<%= @menu_id %>-text" hidden>
     <% items.each do |item| %>
       <%= item %>
     <% end %>

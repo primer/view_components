@@ -27,19 +27,30 @@ module Primer
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(tag: TAG_LIST, is_divider: false, **system_arguments)
           @is_divider = is_divider
-          @system_arguments = system_arguments
           @tag = fetch_or_fallback(TAG_OPTIONS, tag, TAG_LIST)
-          @system_arguments[:tag] = @tag
-
-          if @is_divider
-            @system_arguments[:"aria-hidden"] = "true"
-            @system_arguments[:"role"] = "presentation"
-            @system_arguments[:classes] = "dropdown-divider"
-          else
-            @system_arguments[:classes] = "dropdown-item"
+          
+          return if @is_divider
+          
+          @system_arguments = system_arguments
+          @list_arguments = list_arguments
+          unless is_list?
+            @list_arguments[:role] = "presentation"
             @system_arguments[:role] = "menuitem"
-            @system_arguments[:tabindex] = -1
+            @system_arguments[:class] = "ActionList-content"
+            @system_arguments[:tag] = @tag
+          else 
+            @list_arguments[:tabindex] = -1
+            @list_arguments[:role] = "menuitem"
+            @system_arguments[:tag] = :span
           end
+        end
+        
+        def list_arguments
+          args = {}
+          args[:tag] = TAG_LIST
+          args[:classes] = "ActionList-item"
+
+          args
         end
 
         def is_list?
