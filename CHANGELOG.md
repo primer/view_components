@@ -34,7 +34,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 - Fix tooltip arrow being off-centered for `s` and `n`.
 
-    _Kate Higa_
+    _Kate Higa_, _Kristján Oddsson_
 
 ### Misc
 

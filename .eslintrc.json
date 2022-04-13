@@ -53,6 +53,9 @@
           {
             "ignoreRestSiblings": true
           }
+        ], 
+        "custom-elements/tag-name-matches-class": [
+          "error", {"suffix": "Element"}
         ]
       }
     }
