@@ -15,20 +15,22 @@ class ActionMenuElement extends HTMLElement {
   // Using button node instead of a class or id
   // to prevent someone from switching this
   // to a different HTML element in the future.
-  #buttonEl: HTMLButtonElement | null
-  #menuEl: HTMLUListElement | null 
+  // eslint-disable-next-line no-invalid-this
+  #actionMenuEl: HTMLElement | null = this
+  // eslint-disable-next-line no-invalid-this
+  #buttonEl: HTMLButtonElement | null = this.querySelector('button')
+  // eslint-disable-next-line no-invalid-this
+  #menuEl: HTMLUListElement | null = this.querySelector('[role="menu"]')
   #menuItemEls: HTMLLIElement[] = []
   #firstMenuItem: HTMLLIElement
   #lastMenuItem: HTMLLIElement
   #firstCharactersOfItems: string[] = []
-  #allMenuItemEls: NodeListOf<HTMLLIElement> | null
-
-  connectedCallback() {
-    this.#buttonEl = this.querySelector('button')
-    this.#menuEl = this.querySelector('[role="menu"]')
-    this.#allMenuItemEls =
+  // eslint-disable-next-line no-undef
+  #allMenuItemEls: NodeListOf<HTMLLIElement> | null =
+    // eslint-disable-next-line no-invalid-this
     this.#menuEl && this.#menuEl.querySelectorAll('[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]')
 
+  connectedCallback() {
     if (!this.#buttonEl) return
 
     this.addEvents()
@@ -318,13 +320,13 @@ class ActionMenuElement extends HTMLElement {
   }
 
   menuItemMouseover(event: MouseEvent) {
-    ;(event.currentTarget as HTMLButtonElement).focus()
+    (event.currentTarget as HTMLButtonElement).focus()
   }
 
   backgroundMousedown(event: MouseEvent) {
-    if (!this.#buttonEl) return
+    if (!this.#actionMenuEl) return
 
-    if (!this.#buttonEl.contains(event.target as Node)) {
+    if (!this.#actionMenuEl.contains(event.target as Node)) {
       if (this.isOpen()) {
         this.closePopup()
         this.#buttonEl?.focus()
