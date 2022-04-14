@@ -3,7 +3,7 @@
     "Item": "Primer::Alpha::ActionMenu::Item"
   },
   "Primer::Alpha::ActionMenu::Item": {
-    "TAG_LIST": "li",
+    "LIST_TAG": "li",
     "TAG_OPTIONS": [
       "a",
       "button",
