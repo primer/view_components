@@ -18,7 +18,7 @@ Removing the Catalyst dependency from the Web Component is an extra burden on We
 
 <!-- The change that we're proposing or have agreed to implement. -->
 
-Start using Catalyst in Primer ViewComponent behaviours where applicable.
+Any new Primer ViewComponent behaviours should be authored using Catalyst.
 
 ## Considered Options
 
