@@ -1,24 +1,28 @@
 <%= show_button %>
-<div class="Overlay-backdrop Overlay-backdrop--positionCenter">
+<div class="Overlay-backdrop Overlay-hidden <%= @backdrop_classes %>">
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-    <header class="Overlay-header <%= 'Overlay-header--divided' if @show_header_divider %>">
-      <div class="Overlay-header--contentWrap">
-        <div class="Overlay-header--titleWrap">
-          <h1 id="<%= @header_id %>" class="Overlay-title"><%= @title %></h1>
-          <% if @description.present? %>
-            <h2 id="<%= @description_id %>" class="Overlay-description"><%= @description %></h2>
-          <% end %>
+    <% render_form do %>
+      <header class="Overlay-header <%= @header_classes %>">
+        <div class="Overlay-headerContentWrap">
+          <div class="Overlay-titleWrap">
+            <h1 id="<%= @header_id %>" class="Overlay-title"><%= @title %></h1>
+            <% if @description.present? %>
+              <h2 id="<%= @description_id %>" class="Overlay-description"><%= @description %></h2>
+            <% end %>
+          </div>
+          <div class="Overlay-actionWrap">
+            <%= render Primer::CloseButton.new(classes: "Overlay-closeButton", "data-close-dialog-id": @system_arguments[:id]) %>
+          </div>
         </div>
-        <%= render Primer::CloseButton.new(classes:"Overlay-closeButton") %>
-      </div>
-    </header>
-     <div class="Overlay-body"><%= body %></div>
-    <% if buttons.any? %>
-      <footer class="Dialog-footer Overlay-footer <%= 'Overlay-footer--divided' if @show_footer_divider %>">
-        <% buttons.each do |button| %>
-          <%= button %>
-        <% end %>
-      </footer>
+      </header>
+      <div class="Overlay-body <%= @body_classes %>"><%= body %></div>
+      <% if buttons.any? %>
+        <footer class="Overlay-footer <%= @footer_classes %>">
+          <% buttons.each do |button| %>
+            <%= button %>
+          <% end %>
+        </footer>
+      <% end %>
     <% end %>
   <% end %>
 </div>
