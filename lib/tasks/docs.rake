@@ -83,7 +83,8 @@ namespace :docs do
       Primer::Alpha::UnderlineNav,
       Primer::Alpha::UnderlinePanels,
       Primer::Alpha::TabNav,
-      Primer::Alpha::TabPanels
+      Primer::Alpha::TabPanels,
+      Primer::Alpha::Tooltip
     ]
 
     js_components = [
@@ -96,7 +97,10 @@ namespace :docs do
       Primer::TabContainerComponent,
       Primer::TimeAgoComponent,
       Primer::Alpha::UnderlinePanels,
-      Primer::Alpha::TabPanels
+      Primer::Alpha::TabPanels,
+      Primer::Alpha::Tooltip,
+      Primer::ButtonComponent,
+      Primer::LinkComponent
     ]
 
     all_components = Primer::Component.descendants - [Primer::BaseComponent]
@@ -108,7 +112,8 @@ namespace :docs do
     errors = []
 
     # Deletes docs before regenerating them, guaranteeing that we don't keep stale docs.
-    FileUtils.rm_rf(Dir.glob("docs/content/components/**/*.md"))
+    components_content_glob = File.join(*%w[docs content components ** *.md])
+    FileUtils.rm_rf(components_content_glob)
 
     components.sort_by(&:name).each do |component|
       documentation = registry.get(component.name)
@@ -116,7 +121,7 @@ namespace :docs do
       data = docs_metadata(component)
 
       path = Pathname.new(data[:path])
-      path.dirname.mkdir unless path.dirname.exist?
+      path.dirname.mkpath unless path.dirname.exist?
       File.open(path, "w") do |f|
         f.puts("---")
         f.puts("title: #{data[:title]}")
@@ -169,12 +174,12 @@ namespace :docs do
         f.puts("| Name | Type | Default | Description |")
         f.puts("| :- | :- | :- | :- |")
 
-        docummented_params = params.map(&:name)
+        documented_params = params.map(&:name)
         component_params = component.instance_method(:initialize).parameters.map { |p| p.last.to_s }
 
-        if (docummented_params & component_params).size != component_params.size
+        if (documented_params & component_params).size != component_params.size
           err = { arguments: {} }
-          (component_params - docummented_params).each do |arg|
+          (component_params - documented_params).each do |arg|
             err[:arguments][arg] = "Not documented"
           end
 

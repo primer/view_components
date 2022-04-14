@@ -21,7 +21,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
-    [Primer::Beta::AutoComplete, { src: "Foo", list_id: "Bar", "aria-label": "Label", input_id: "input-id" }, proc { |c| c.input(classes: "Baz") }],
+    [Primer::Beta::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
     [Primer::Beta::AutoComplete::Item, { value: "Foo" }],
     [Primer::Beta::Avatar, { alt: "github", src: "https://github.com/github.png" }],
     [Primer::Beta::AvatarStack, {}, lambda do |component|
@@ -78,7 +78,8 @@ class PrimerComponentTest < Minitest::Test
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],
-    [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }]
+    [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }],
+    [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }]
   ].freeze
 
   def test_registered_components
@@ -92,7 +93,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { my: 4 }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector(".my-4")
+      assert_selector(".my-4", visible: :all)
     end
   end
 
@@ -100,7 +101,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { classes: "foo" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector(".foo")
+      assert_selector(".foo", visible: :all)
     end
   end
 
@@ -108,7 +109,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { style: "width: 100%;" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector("[style='width: 100%;']")
+      assert_selector("[style='width: 100%;']", visible: :all)
     end
   end
 

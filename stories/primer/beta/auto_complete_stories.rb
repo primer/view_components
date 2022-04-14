@@ -7,15 +7,15 @@ class Primer::Beta::AutoCompleteStories < ViewComponent::Storybook::Stories
 
   story(:auto_complete) do
     controls do
+      text(:label_text, "Fruits")
       text(:src, "/")
       text(:input_id, "input-id")
+      text(:input_name, "input-name")
       text(:list_id, "list-id")
-    end
-
-    content do |c|
-      c.label { "Fruits" }
-      c.input(name: "username")
-      c.icon(icon: :search)
+      is_clearable false
+      is_label_inline false
+      is_label_visible true
+      with_icon false
     end
   end
 end

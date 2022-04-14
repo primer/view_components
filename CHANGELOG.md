@@ -36,6 +36,191 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
   _Owen Niblock_
 
+### Bug
+
+- Fix tooltip arrow being off-centered for `s` and `n`.
+- Revert tooltip arrow offset for `sw`, `se`, `nw`, and `ne`.
+
+    _Kate Higa_
+
+### Misc
+
+- Enable `eslint-plugin-custom-elements` linting rulesets.
+
+    _Kate Higa_, _Kristján Oddsson_
+
+- Introduce `DeprecatedComponents` rubocop rule.
+
+    _Kate Higa_
+
+- Fix alphabetization of components in docs.
+
+  _David Wilson_
+
+- Give codespaces more memory (4gb is not sufficient).
+
+  _Lindsey Wild_
+  _Cameron Dutro_
+
+### Bug Fixes
+
+- Ensure that no whitespace is added inside LinkComponent.
+
+  _Sam Morrow_
+
+### Misc
+
+- Update documentation to reflect deprecation of `require "view_component/engine"`
+
+  _Leo Correa_
+
+## 0.0.71
+
+### Updates
+
+- Add responsive values for `text_align` system argument
+
+    _Lukas Spieß_
+
+## 0.0.70
+
+### New
+
+- Add `Tooltip` support to `Button`.
+
+    _Hector Garcia_
+
+- Add `Tooltip` support to `Link`.
+
+    _Hector Garcia_
+
+### Updates
+
+- Bumps @primer/css to 19.7.1
+    _Kate Higa_
+
+- Bumps auto-complete package to 3.1.0
+- Updates AutoComplete API with optional clear button, restricted icon, and other argument restrictions
+
+    _Lindsey Wild_, _Kate Higa_, _Owen Niblock_
+
+- Check for the `gh` CLI tool in release scripts.
+
+    _Cameron Dutro_
+
+### Bug Fixes
+
+- Ensure tooltip arrow position and tooltip width is correct.
+
+  _Kate Higa_
+
+- Fix `.eslintrc.json` `.ts` files override.
+
+  _Hector Garcia_
+
+## 0.0.69
+
+### New
+
+- Add ability to attach custom CSS classes to items added to `Truncate` components.
+
+    _Cameron Dutro_
+
+- Add `Primer::Alpha::Tooltip` component
+
+    _Kate Higa_, _Kristján Oddsson_
+
+### Breaking Changes
+
+- Module for [script/update-statuses-project.rb](script/update-statuses-project.rb) changed to `GitHub`
+
+    _Josh Soref_
+
+### Misc
+
+- Spelling fixes
+
+    _Josh Soref_
+
+- Bump view_component in Gemfile.lock files
+
+    _Cameron Dutro_
+
+- Remove markdown file mistakenly checked in.
+
+  _Kate Higa_
+
+- Upgrade octicons to >= 17.0.0
+
+  _Jon Rohan_
+
+### Bug Fixes
+
+- Fix missing @primer/components dependency.
+
+    _Hector Garcia_
+
+## 0.0.68
+
+### Updates
+
+- Add accessible labels to Search AutoComplete when provided with an icon.
+
+    _Andri Alexandrou_
+
+- Restricts children for AutoComplete API to prevent accessibility violations and misuse
+
+    _Lindsey Wild_
+
+- Migrate from Heroku to Azure for the Rails storybook server.
+- Build storybook static assets into Docker image.
+
+    _Cameron Dutro_
+
+- Remove CSS utilities from Blankslate
+
+    _Hector Garcia_
+
+- Improve last example on the PopoverComponent docs
+
+    _Hector Garcia_
+
+### Bug Fixes
+
+- Fix live reloading during local docs development.
+
+    _Cameron Dutro_
+
+- Fix sequence of content in Subhead.
+
+    _Hector Garcia_
+
+### Deprecations
+
+- Deprecate `Tooltip` component.
+
+  _Kate Higa_
+
+### Misc
+
+- Updates README with missing `alt` attribute on image
+
+  _Kate Higa_
+
+- Updates contributing docs
+
+  _Lindsey Wild_
+
+- Fix link in system arguments docs
+
+  _Lukas Spieß_
+
+## 0.0.67
+
+- Updating octicons to `> 16`
+
+    _Jon Rohan_
+
 ## 0.0.66
 
 - Revert optimization changes to utilities.
@@ -1234,7 +1419,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
   _Simon Taranto_
 
-- Add `silence_deprecations` config to supress deprecation warnings.
+- Add `silence_deprecations` config to suppress deprecation warnings.
 
   _Manuel Puyol_
 

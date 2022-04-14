@@ -92,6 +92,7 @@ module Primer
           @system_arguments[:tag] = system_arguments[:tag] || :span
           @system_arguments[:classes] = class_names(
             "Truncate-text",
+            system_arguments[:classes],
             "Truncate-text--primary": priority,
             "Truncate-text--expandable": expandable
           )

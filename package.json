@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.0.66",
+  "version": "0.0.71",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -25,11 +25,11 @@
   ],
   "scripts": {
     "prepare": "tsc && rollup -c",
-    "lint": "eslint app/components demo/.storybook",
-    "lint:fix": "eslint app/components demo/.storybook --fix"
+    "lint": "eslint 'app/components/**/*.ts' demo/.storybook",
+    "lint:fix": "eslint 'app/components/**/*.ts' demo/.storybook --fix"
   },
   "dependencies": {
-    "@github/auto-complete-element": "^3.0.2",
+    "@github/auto-complete-element": "^3.1.0",
     "@github/clipboard-copy-element": "^1.1.2",
     "@github/details-menu-element": "^1.0.12",
     "@github/image-crop-element": "^5.0.0",
@@ -46,13 +46,14 @@
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
     "eslint": "^7.20.0",
+    "eslint-plugin-custom-elements": "^0.0.6",
     "eslint-plugin-github": "^4.1.1",
     "eslint-plugin-prettier": "^3.3.1",
     "mocha": "^8.3.0",
     "rollup": "^2.39.0",
     "rollup-plugin-terser": "^7.0.2",
-    "tslib": "^2.1.0",
-    "typescript": "^4.1.5"
+    "tslib": "^2.3.1",
+    "typescript": "^4.3"
   },
   "prettier": "@github/prettier-config",
   "storybook": {

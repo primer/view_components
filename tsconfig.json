@@ -11,6 +11,7 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "declarationDir": "app/components/primer/",
+    "strictPropertyInitialization": false,
     "strict": true,
     "baseUrl": ".",
     "types": []

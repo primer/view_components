@@ -9,6 +9,14 @@ The easiest way to get started contributing to Primer ViewComponents is with [Co
 3. Run `script/setup` to install dependencies
 4. Run `script/dev`, this will run the documentation site on [localhost:5400](localhost:5400) and Storybook on [localhost:5000](localhost:5000)
 
+### Troubleshooting
+
+When running Storybook locally, if you see:
+
+> Cannot GET /
+
+Try deleting your `node_modules` directory and rerunning `script/setup` followed by `script/dev`.
+
 ## Running tests
 
 Before running tests make sure you run `bundle exec rake docs:preview`, this will build all the code examples used for accessibility and system tests.

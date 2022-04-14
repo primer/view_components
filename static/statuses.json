@@ -7,12 +7,12 @@
   "Primer::Alpha::Layout::Sidebar": "alpha",
   "Primer::Alpha::TabNav": "alpha",
   "Primer::Alpha::TabPanels": "alpha",
+  "Primer::Alpha::Tooltip": "alpha",
   "Primer::Alpha::UnderlineNav": "alpha",
   "Primer::Alpha::UnderlinePanels": "alpha",
   "Primer::BaseButton": "beta",
   "Primer::BaseComponent": "beta",
   "Primer::Beta::AutoComplete": "beta",
-  "Primer::Beta::AutoComplete::Input": "alpha",
   "Primer::Beta::AutoComplete::Item": "beta",
   "Primer::Beta::Avatar": "beta",
   "Primer::Beta::AvatarStack": "beta",
@@ -63,6 +63,6 @@
   "Primer::TimeAgoComponent": "beta",
   "Primer::TimelineItemComponent": "beta",
   "Primer::TimelineItemComponent::BadgeComponent": "alpha",
-  "Primer::Tooltip": "beta",
+  "Primer::Tooltip": "deprecated",
   "Primer::Truncate": "beta"
 }

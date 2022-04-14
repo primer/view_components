@@ -6,7 +6,7 @@ title: System arguments
 
 All Primer ViewComponents accept a standard set of options called system arguments, mimicking the [styled-system API](https://styled-system.com/table) used by [Primer React](https://primer.style/components/system-props).
 
-Under the hood, system arguments are [mapped](https://github.com/primer/view_components/blob/main/app/lib/primer/classify.rb) to Primer CSS classes, with any remaining options passed to Rails' [`content_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag).
+Under the hood, system arguments are [mapped](https://github.com/primer/view_components/blob/main/lib/primer/classify.rb) to Primer CSS classes, with any remaining options passed to Rails' [`content_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag).
 
 ## Responsive values
 
@@ -62,9 +62,9 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `bg` | Symbol | Background color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:emphasis`, `:inset`, `:overlay`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, or `:success_emphasis`. |
-| `border_color` | Symbol | Border color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:muted`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, or `:success_emphasis`. |
-| `color` | Symbol | Text color. One of `:accent`, `:attention`, `:danger`, `:default`, `:done`, `:inherit`, `:muted`, `:on_emphasis`, `:severe`, `:sponsors`, `:subtle`, or `:success`. |
+| `bg` | Symbol | Background color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:closed`, `:closed_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:emphasis`, `:inset`, `:open`, `:open_emphasis`, `:overlay`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, or `:success_emphasis`. |
+| `border_color` | Symbol | Border color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:closed`, `:closed_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:muted`, `:open`, `:open_emphasis`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, or `:success_emphasis`. |
+| `color` | Symbol | Text color. One of `:accent`, `:attention`, `:closed`, `:danger`, `:default`, `:done`, `:inherit`, `:muted`, `:on_emphasis`, `:open`, `:severe`, `:sponsors`, `:subtle`, or `:success`. |
 
 ## Flex
 
@@ -83,7 +83,7 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `clearfix` | Boolean | Wether to assign the `clearfix` class. |
+| `clearfix` | Boolean | Whether to assign the `clearfix` class. |
 | `col` | Integer | Number of columns. One of `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
 | `container` | Symbol | Size of the container. One of `:lg`, `:md`, `:sm`, or `:xl`. |
 

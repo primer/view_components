@@ -61,12 +61,12 @@
     url: "/components/heading"
   - title: HiddenTextExpander
     url: "/components/hiddentextexpander"
+  - title: IconButton
+    url: "/components/iconbutton"
   - title: Image
     url: "/components/image"
   - title: ImageCrop
     url: "/components/imagecrop"
-  - title: IconButton
-    url: "/components/iconbutton"
   - title: Label
     url: "/components/label"
   - title: Layout
@@ -75,10 +75,10 @@
     url: "/components/link"
   - title: LocalTime
     url: "/components/localtime"
-  - title: Menu
-    url: "/components/menu"
   - title: Markdown
     url: "/components/markdown"
+  - title: Menu
+    url: "/components/menu"
   - title: Octicon
     url: "/components/octicon"
   - title: OcticonSymbols
@@ -105,8 +105,6 @@
     url: "/components/timeago"
   - title: TimelineItem
     url: "/components/timelineitem"
-  - title: Tooltip
-    url: "/components/tooltip"
   - title: Truncate
     url: "/components/beta/truncate"
   - title: UnderlineNav

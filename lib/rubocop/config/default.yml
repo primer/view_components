@@ -15,3 +15,6 @@ Primer/PrimerOcticon:
 
 Primer/DeprecatedArguments:
   Enabled: true
+
+Primer/DeprecatedComponents:
+  Enabled: true

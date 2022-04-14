@@ -88,20 +88,16 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example With HTML body
+    # @example With multiple elements in the body
     #   <%= render Primer::PopoverComponent.new do |component| %>
     #     <% component.heading do %>
     #       Activity feed
     #     <% end %>
     #     <% component.body(caret: :left) do %>
-    #       <p> This is the Popover body.</p>
-    #       <div>
-    #         This is using HTML.
-    #         <ul>
-    #           <li>Thing #1</li>
-    #           <li>Thing #2</li>
-    #         </ul>
-    #       </div>
+    #       <p>This is the Popover body.</p>
+    #       <%= render Primer::ButtonComponent.new(type: :submit) do %>
+    #         Got it!
+    #       <% end %>
     #     <% end %>
     #   <% end %>
     #

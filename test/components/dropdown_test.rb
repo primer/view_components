@@ -68,7 +68,7 @@ class PrimerDropdownTest < Minitest::Test
     end
   end
 
-  def test_renders_dropdown_with_direcation
+  def test_renders_dropdown_with_direction
     render_inline(Primer::Dropdown.new) do |c|
       c.button { "Button" }
       c.menu(direction: :s) do |m|
