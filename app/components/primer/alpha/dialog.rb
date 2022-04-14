@@ -9,7 +9,7 @@ module Primer
     #
     # @accessibility
     #   - **Dialog Accessible Name**: A dialog should have an accessible name, so screen readers are aware of the purpose of the dialog when it opens.
-    #   Give an accesible name setting `:title`. The accesible name will be used as the main heading inside the dialog.
+    #   Give an accessible name setting `:title`. The accessible name will be used as the main heading inside the dialog.
     #   - **Dialog unique id**: A dialog should be unique. Give a unique id setting `:dialog_id`. If no `:dialog_id` is given, a default randomize hex id is generated.
     #
     #   The combination of both `:title` and `:dialog_id` establishes an `aria-labelledby` relationship between the title and the unique id of the dialog.
