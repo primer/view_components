@@ -28,23 +28,24 @@ module Primer
         def initialize(tag: LIST_TAG, is_divider: false, **system_arguments)
           @is_divider = is_divider
           @tag = fetch_or_fallback(TAG_OPTIONS, tag, LIST_TAG)
-          
+
           return if @is_divider
-          
+
           @system_arguments = system_arguments
           @list_arguments = list_arguments
           unless is_list?
-            @system_arguments[:class] = "ActionList-content"
+            @system_arguments[:classes] = "ActionList-content"
             @system_arguments[:tag] = @tag
-          else 
+            @system_arguments[:role] = "menuitem"
+          else
             @list_arguments[:tabindex] = -1
             @system_arguments[:tag] = :span
           end
         end
-        
+
         def list_arguments
           args = {}
-          args[:role] = "menuitem"
+          args[:role] = "none"
           args[:tag] = LIST_TAG
           args[:classes] = "ActionList-item"
 
