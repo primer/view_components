@@ -16,17 +16,17 @@ class ActionMenuElement extends HTMLElement {
   // to prevent someone from switching this
   // to a different HTML element in the future.
   // eslint-disable-next-line no-invalid-this
-  #actionMenuEl: HTMLElement | null = this
+  #actionMenuEl: HTMLElement = this
   // eslint-disable-next-line no-invalid-this
-  #buttonEl: HTMLButtonElement | null = this.querySelector('button')
+  #buttonEl = this.querySelector<HTMLButtonElement>('button')
   // eslint-disable-next-line no-invalid-this
-  #menuEl: HTMLUListElement | null = this.querySelector('[role="menu"]')
-  #menuItemEls: HTMLLIElement[] = []
-  #firstMenuItem: HTMLLIElement
-  #lastMenuItem: HTMLLIElement
+  #menuEl = this.querySelector<HTMLUListElement>('[role="menu"]')
+  #menuItemEls: HTMLElement[] = []
+  #firstMenuItem: HTMLElement
+  #lastMenuItem: HTMLElement
   #firstCharactersOfItems: string[] = []
   // eslint-disable-next-line no-undef
-  #allMenuItemEls: NodeListOf<HTMLLIElement> | null =
+  #allMenuItemEls: NodeListOf<HTMLElement> | null =
     // eslint-disable-next-line no-invalid-this
     this.#menuEl && this.#menuEl.querySelectorAll('[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]')
 
@@ -72,7 +72,7 @@ class ActionMenuElement extends HTMLElement {
     window.addEventListener('mousedown', this.backgroundMousedown.bind(this), true)
   }
 
-  setFocusToMenuItem(newMenuItem: HTMLLIElement) {
+  setFocusToMenuItem(newMenuItem: HTMLElement) {
     for (const item of this.#menuItemEls) {
       if (item === newMenuItem) {
         item.tabIndex = 0
@@ -91,7 +91,7 @@ class ActionMenuElement extends HTMLElement {
     this.setFocusToMenuItem(this.#lastMenuItem)
   }
 
-  setFocusToPreviousMenuItem(currentMenuItem: HTMLLIElement) {
+  setFocusToPreviousMenuItem(currentMenuItem: HTMLElement) {
     let newMenuItem = null
     let index = null
 
@@ -107,7 +107,7 @@ class ActionMenuElement extends HTMLElement {
     return newMenuItem
   }
 
-  setFocusToNextMenuItem(currentMenuItem: HTMLLIElement) {
+  setFocusToNextMenuItem(currentMenuItem: HTMLElement) {
     let newMenuItem = null
     let index = null
 
@@ -122,7 +122,7 @@ class ActionMenuElement extends HTMLElement {
     return newMenuItem
   }
 
-  setFocusByFirstCharacter(currentMenuItem: HTMLLIElement, character: string) {
+  setFocusByFirstCharacter(currentMenuItem: HTMLElement, character: string) {
     let start = null
     let index = null
 
@@ -166,6 +166,11 @@ class ActionMenuElement extends HTMLElement {
       this.#buttonEl.removeAttribute('aria-expanded')
       this.#menuEl?.setAttribute('hidden', 'hidden')
     }
+
+    // TODO: Do this without a setTimeout
+    setTimeout(() => {
+      if (document.activeElement === document.body) this.#buttonEl?.focus()
+    }, 1)
   }
 
   isOpen() {
@@ -177,8 +182,6 @@ class ActionMenuElement extends HTMLElement {
   // Menu event handlers
 
   buttonKeydown(event: KeyboardEvent) {
-    // TODO: use data-hotkey
-    // eslint-disable-next-line no-restricted-syntax
     const key = event.key
     let flag = false
 
@@ -218,7 +221,6 @@ class ActionMenuElement extends HTMLElement {
   buttonClick(event: MouseEvent) {
     if (this.isOpen()) {
       this.closePopup()
-      this.#buttonEl?.focus()
     } else {
       this.openPopup()
       this.setFocusToFirstMenuItem()
@@ -230,7 +232,6 @@ class ActionMenuElement extends HTMLElement {
 
   menuItemKeydown(event: KeyboardEvent) {
     const currentTarget = event.currentTarget
-    // eslint-disable-next-line no-restricted-syntax
     const key = event.key
     let flag = false
 
@@ -238,18 +239,16 @@ class ActionMenuElement extends HTMLElement {
       return str.length === 1 && str.match(/\S/)
     }
 
-    // eslint-disable-next-line no-restricted-syntax
     if (event.ctrlKey || event.altKey || event.metaKey) {
       return
     }
 
     if (event.shiftKey) {
       if (isPrintableCharacter(key)) {
-        this.setFocusByFirstCharacter(currentTarget as HTMLLIElement, key)
+        this.setFocusByFirstCharacter(currentTarget as HTMLElement, key)
         flag = true
       }
 
-      // eslint-disable-next-line no-restricted-syntax
       if (event.key === 'Tab') {
         this.#buttonEl?.focus()
         this.closePopup()
@@ -260,26 +259,23 @@ class ActionMenuElement extends HTMLElement {
         case ' ':
         case 'Enter':
           this.closePopup()
-          this.#buttonEl?.focus()
-          flag = true
           break
 
         case 'Esc':
         case 'Escape':
           this.closePopup()
-          this.#buttonEl?.focus()
           flag = true
           break
 
         case 'Up':
         case 'ArrowUp':
-          this.setFocusToPreviousMenuItem(currentTarget as HTMLLIElement)
+          this.setFocusToPreviousMenuItem(currentTarget as HTMLElement)
           flag = true
           break
 
         case 'ArrowDown':
         case 'Down':
-          this.setFocusToNextMenuItem(currentTarget as HTMLLIElement)
+          this.setFocusToNextMenuItem(currentTarget as HTMLElement)
           flag = true
           break
 
@@ -301,7 +297,7 @@ class ActionMenuElement extends HTMLElement {
 
         default:
           if (isPrintableCharacter(key)) {
-            this.setFocusByFirstCharacter(currentTarget as HTMLLIElement, key)
+            this.setFocusByFirstCharacter(currentTarget as HTMLElement, key)
             flag = true
           }
           break
@@ -316,11 +312,11 @@ class ActionMenuElement extends HTMLElement {
 
   menuItemClick() {
     this.closePopup()
-    this.#buttonEl?.focus()
   }
 
   menuItemMouseover(event: MouseEvent) {
-    (event.currentTarget as HTMLButtonElement).focus()
+    // eslint-disable-next-line @typescript-eslint/no-extra-semi
+    ;(event.currentTarget as HTMLButtonElement).focus()
   }
 
   backgroundMousedown(event: MouseEvent) {
@@ -329,7 +325,6 @@ class ActionMenuElement extends HTMLElement {
     if (!this.#actionMenuEl.contains(event.target as Node)) {
       if (this.isOpen()) {
         this.closePopup()
-        this.#buttonEl?.focus()
       }
     }
   }
