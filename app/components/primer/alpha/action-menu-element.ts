@@ -4,17 +4,9 @@
 // interface modifications below.
 export {}
 
-// TODO:
-// See if we can use any existing Primer behaviors
-// Use aria-activedescendant instead of tabindex
-// Refactor into multiple files
-
 class ActionMenuElement extends HTMLElement {
   #abortController: AbortController
 
-  // Using button node instead of a class or id
-  // to prevent someone from switching this
-  // to a different HTML element in the future.
   // eslint-disable-next-line no-invalid-this
   #actionMenuEl: HTMLElement = this
   // eslint-disable-next-line no-invalid-this
@@ -68,7 +60,6 @@ class ActionMenuElement extends HTMLElement {
       }
     }
 
-    // TODO: Can user use event.relatedTarget to detect when focus moves outside of menu?
     window.addEventListener('mousedown', this.backgroundMousedown.bind(this), true)
   }
 
@@ -153,7 +144,7 @@ class ActionMenuElement extends HTMLElement {
   }
 
   openPopup() {
-    if (!this.#buttonEl) return
+    if (!this.#buttonEl || !this.#menuEl) return
 
     this.#buttonEl.setAttribute('aria-expanded', 'true')
     this.#menuEl?.removeAttribute('hidden')
@@ -180,7 +171,6 @@ class ActionMenuElement extends HTMLElement {
   }
 
   // Menu event handlers
-
   buttonKeydown(event: KeyboardEvent) {
     const key = event.key
     let flag = false
