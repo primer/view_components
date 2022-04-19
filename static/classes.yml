@@ -2,6 +2,7 @@
 - ".ActionList"
 - ".ActionList-content"
 - ".ActionList-item"
+- ".ActionList-item--danger"
 - ".ActionList-item-label"
 - ".ActionList-sectionDivider"
 - ".ActionMenuButton"

@@ -24,19 +24,26 @@ module Primer
         #  <% end %>
         # @param tag [Symbol] The tag to use for the item. <%= one_of(Primer::Alpha::ActionMenu::Item::TAG_OPTIONS) %>
         # @param is_divider [Boolean] Whether to render a divider.
+        # @param is_dangerous [Boolean] If item should be styled dangerously.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(tag: LIST_TAG, is_divider: false, **system_arguments)
+        def initialize(tag: LIST_TAG, is_divider: false, is_dangerous: false, **system_arguments)
           @is_divider = is_divider
+          @is_dangerous = is_dangerous
           @tag = fetch_or_fallback(TAG_OPTIONS, tag, LIST_TAG)
 
           return if @is_divider
 
           @system_arguments = system_arguments
           @list_arguments = list_arguments
+
           unless is_list?
-            @system_arguments[:classes] = "ActionList-content"
+            @system_arguments[:classes] = class_names(
+              system_arguments[:classes],
+              "ActionList-content"
+            )
             @system_arguments[:tag] = @tag
             @system_arguments[:role] = "menuitem"
+
           else
             @list_arguments[:tabindex] = -1
             @system_arguments[:tag] = :span
@@ -47,7 +54,12 @@ module Primer
           args = {}
           args[:role] = "none"
           args[:tag] = LIST_TAG
-          args[:classes] = "ActionList-item"
+
+          if @is_dangerous == true
+            args[:classes] = "ActionList-item ActionList-item--danger"
+          else
+            args[:classes] = "ActionList-item"
+          end
 
           args
         end
