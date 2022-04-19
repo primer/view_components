@@ -22,6 +22,10 @@
     type: Boolean
     default: "`false`"
     description: Whether to render a divider.
+  - name: is_dangerous
+    type: Boolean
+    default: "`false`"
+    description: If item should be styled dangerously.
   - name: system_arguments
     type: Hash
     default: N/A

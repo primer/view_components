@@ -2,12 +2,12 @@
 
 module Primer
   module Alpha
-    # The ActionMenu should be used when a user can select a single option triggering an action from a list of items.
+    # The ActionMenu should be used when a user can select a single option triggering an action from a list of items. Primer will automatically nest an `Item` within a presentational `<li>` tag. The functionality should live on element with `role="menuitem"`.
+    #
+    #  The only allowed elements for the `Item` components are `:a`, `:button` and `:clipboard-copy`. We can add to this list if we need more allowed items. To add functionality, use `:button` with a `.js` class that creates the functionality.
     #
     # @accessibility
-    #  TODO: what are considerations?
-    #  The only allowed elements for the `Item` components are `<a>`, `<button>`, and `<clipboard-copy>`. If we find we need more, we can expand on these.
-    #  When should this component be used?
+    #  TODO: what are considerations? When should this component be used?
     class ActionMenu < Primer::Component
       # Button to activate the menu. This may be a <%= link_to_component(Primer::ButtonComponent) %> or <%= link_to_component(Primer::IconButton) %>.
       #
@@ -29,15 +29,11 @@ module Primer
       #    <% c.item(tag: :a, href: "https://primer.style/design/") do %>
       #      Primer Design
       #    <% end %>
-      #    <% c.item(tag: :"a", href: "https://primer.style/view-components/") do %>
-      #      Primer View Components
+      #    <% c.item(tag: :button, type: "button", classes: "js-do-something") do %>
+      #      Button with `.js` class that adds functionality
       #    <% end %>
-      #    <% c.item(tag: :a, href: "https://primer.style/react/") do %>
-      #      Primer React
-      #    <% end %>
-      #    <% c.item(is_divider: true) %>
       #    <% c.item(tag: :"clipboard-copy", value: "Text to copy") do %>
-      #      Copy path
+      #      Copy Text
       #    <% end %>
       #  <% end %>
       #
@@ -47,15 +43,11 @@ module Primer
       #    <% c.item(tag: :a, href: "https://primer.style/design/") do %>
       #      Primer Design
       #    <% end %>
-      #    <% c.item(tag: :"a", href: "https://primer.style/view-components/") do %>
-      #      Primer View Components
+      #    <% c.item(tag: :button, type: "button", classes: "js-do-something") do %>
+      #      Button with `.js` class that adds functionality
       #    <% end %>
-      #    <% c.item(tag: :a, href: "https://primer.style/react/") do %>
-      #      Primer React
-      #    <% end %>
-      #    <% c.item(is_divider: true) %>
       #    <% c.item(tag: :"clipboard-copy", value: "Text to copy") do %>
-      #      Copy path
+      #      Copy Text
       #    <% end %>
       #  <% end %>
       #
@@ -64,64 +56,49 @@ module Primer
       #     Set `icon:` to the octicon you want to use. Always provide an accessible name for the menu by setting `aria-label`.
       #   @code
       #    <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-2") do |c| %>
-      #    <%= c.trigger(icon: :"kebab-horizontal", "aria-label": "Menu") %>
-      #    <% c.item(tag: :a, href: "https://primer.style/design/") do %>
-      #      Primer Design
-      #    <% end %>
-      #    <% c.item(tag: :"a", href: "https://primer.style/view-components/") do %>
-      #      Primer View Components
-      #    <% end %>
-      #    <% c.item(tag: :a, href: "https://primer.style/react/") do %>
-      #      Primer React
-      #    <% end %>
-      #    <% c.item(is_divider: true) %>
-      #    <% c.item(tag: :"clipboard-copy", value: "Text to copy") do %>
-      #      Copy path
-      #    <% end %>
+      #      <%= c.trigger(icon: :"kebab-horizontal", "aria-label": "Menu") %>
+      #      <% c.item(tag: :a, href: "https://primer.style/design/") do %>
+      #        Primer Design Link
+      #      <% end %>
+      #      <% c.item(tag: :button, type: "button", classes: "js-do-something") do %>
+      #        Button with `.js` class that adds functionality
+      #      <% end %>
+      #      <% c.item(tag: :"clipboard-copy", value: "Text to copy") do %>
+      #        Copy Text
+      #      <% end %>
       #    <% end %>
       #
       # @example With divider
       #  <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-3") do |c| %>
       #    <%= c.trigger(icon: :"kebab-horizontal", "aria-label": "Menu") %>
       #    <% c.item(tag: :a, href: "https://primer.style/design/") do %>
-      #      Primer Design
+      #      Primer Design Link
       #    <% end %>
-      #    <% c.item(tag: :"a", href: "https://primer.style/view-components/") do %>
-      #      Primer View Components
-      #    <% end %>
-      #    <% c.item(tag: :a, href: "https://primer.style/react/") do %>
-      #      Primer React
+      #    <% c.item(tag: :button, type: "button", classes: "js-do-something") do %>
+      #      Button with `.js` class that adds functionality
       #    <% end %>
       #    <% c.item(is_divider: true) %>
       #    <% c.item(tag: :"clipboard-copy", value: "Text to copy") do %>
-      #      Copy path
+      #      Copy Text
       #    <% end %>
       #  <% end %>
       #
-      # @example With interactive elements as an `Item`
-      #   @description
-      #     The `Item` may render as an allowed interactive element through the `tag:` option.
-      #     Primer will automatically nest this `Item` within a presentational `<li>` tag.
-      #     TODO: Make an example with the `button` element
-      #     TODO: Maybe we should render `ClipboardCopy` component instead of the tag?
-      #     BUT, there is a component bug we should fix before that: https://github.com/primer/view_components/issues/1081
-      #   @code
-      #    <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-4") do |c| %>
-      #      <%= c.trigger(icon: :"kebab-horizontal", "aria-label": "Menu") %>
-      #      <% c.item(tag: :a, href: "https://primer.style/design/") do %>
-      #        Primer Design
-      #      <% end %>
-      #      <% c.item(tag: :"a", href: "https://primer.style/view-components/") do %>
-      #        Primer View Components
-      #      <% end %>
-      #      <% c.item(tag: :a, href: "https://primer.style/react/") do %>
-      #        Primer React
-      #      <% end %>
-      #      <% c.item(is_divider: true) %>
-      #      <% c.item(tag: :"clipboard-copy", value: "Text to copy") do %>
-      #        Copy path
-      #      <% end %>
+      # @example With danger item
+      #  <%= render Primer::Alpha::ActionMenu.new(menu_id: "my-action-menu-3") do |c| %>
+      #    <%= c.trigger(icon: :"kebab-horizontal", "aria-label": "Menu") %>
+      #    <% c.item(tag: :a, href: "https://primer.style/design/") do %>
+      #      Primer Design Link
       #    <% end %>
+      #    <% c.item(tag: :button, type: "button", classes: "js-do-something") do %>
+      #      Button with `.js` class that adds functionality
+      #    <% end %>
+      #    <% c.item(tag: :"clipboard-copy", value: "Text to copy") do %>
+      #      Copy Text
+      #    <% end %>
+      #    <% c.item(tag: :button, type: "button", classes: "js-do-something", is_dangerous: true) do %>
+      #      Delete
+      #    <% end %>
+      #  <% end %>
       #
       # @param menu_id [String] Id of the menu.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
