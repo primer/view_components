@@ -30,15 +30,43 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Bug
+
+- Fix tooltip arrow being off-centered for `s` and `n`.
+- Revert tooltip arrow offset for `sw`, `se`, `nw`, and `ne`.
+
+    _Kate Higa_
+
 ### Misc
 
+- Enable `eslint-plugin-custom-elements` linting rulesets.
+
+    _Kate Higa_, _Kristján Oddsson_
+
+- Introduce `DeprecatedComponents` rubocop rule.
+
+    _Kate Higa_
+
 - Fix alphabetization of components in docs.
+
+  _David Wilson_
+
+- Give codespaces more memory (4gb is not sufficient).
+
+  _Lindsey Wild_
+  _Cameron Dutro_
 
 ### Bug Fixes
 
 - Ensure that no whitespace is added inside LinkComponent.
 
   _Sam Morrow_
+
+### Misc
+
+- Update documentation to reflect deprecation of `require "view_component/engine"`
+
+  _Leo Correa_
 
 ## 0.0.71
 
