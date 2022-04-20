@@ -1,33 +1,25 @@
 name: Deploy
 on:
-  push:
-    branches-ignore:
-      - 'main'
-    paths:
-      - 'app/**'
-      - 'docs/**'
-      - '.github/workflows/deploy*.yml'
-      - 'package.json'
-      - '.vercelignore'
+  pull_request:
+
 jobs:
-  deploy-preview:
+  build:
     if: ${{ github.actor != 'dependabot[bot]' }}
-    name: Preview
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: chrnorm/deployment-action@v1.2.0
-        name: Create GitHub deployment
-        id: deployment
+      - name: Checkout default branch
+        uses: actions/checkout@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          environment: Preview
+          version: 14
 
-      - uses: actions/checkout@v2
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.7.x
-      - uses: actions/setup-node@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
         with:
           node-version: 14
           cache: 'yarn'
@@ -35,7 +27,6 @@ jobs:
             yarn.lock
             docs/yarn.lock
 
-      - run: yarn
       - uses: actions/cache@v2
         with:
           path: vendor/bundle
@@ -52,35 +43,33 @@ jobs:
         env:
           SKIP_STORYBOOK_PRELOAD: 1
 
-      - name: Build docs
-        run: |
-          cd docs
-          yarn
-          yarn build
+      - name: Install dependencies
+        run: yarn
 
-      - name: Vercel Action
-        uses: amondnet/vercel-action@v20
-        id: vercel-action
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-token: ${{ secrets.VERCEL_TOKEN_SHARED }}
-          github-comment: false
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID_SHARED }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+      - name: Build
+        run: yarn build:docs:preview
 
-      - name: Update deployment status (success)
-        if: success()
-        uses: chrnorm/deployment-status@v1.0.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          environment_url: ${{ steps.vercel-action.outputs.preview-url }}
-          state: "success"
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+      - name: Archive build output
+        run: 'tar --dereference --directory docs/public -cvf artifact.tar .'
 
-      - name: Update deployment status (failure)
-        if: failure()
-        uses: chrnorm/deployment-status@v1.0.0
+      - name: Upload artifact
+        uses: actions/upload-artifact@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          state: "failure"
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          name: github-pages
+          path: artifact.tar
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      deployment_url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: paper-spa/deploy-pages@main
+        with:
+          preview: true
