@@ -32,6 +32,9 @@ jobs:
           path: vendor/bundle
           key: gems-deploy-preview-${{ hashFiles('**/Gemfile.lock') }}
 
+      - name: Install dependencies
+        run: yarn
+
       - name: Generate static files
         run: |
           gem install bundler:2.2.9
@@ -42,9 +45,6 @@ jobs:
           bundle exec rake static:dump
         env:
           SKIP_STORYBOOK_PRELOAD: 1
-
-      - name: Install dependencies
-        run: yarn
 
       - name: Build
         run: yarn build:docs:preview
