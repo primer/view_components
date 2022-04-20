@@ -15,9 +15,9 @@
   parameters:
   - name: tag
     type: Symbol
-    default: "`:li`"
-    description: The tag to use for the item. One of `:a`, `:button`, `:clipboard-copy`,
-      or `:li`.
+    default: "`:span`"
+    description: Optional. The tag to use for the item. One of `:a`, `:button`, `:clipboard-copy`,
+      `:li`, or `:span`.
   - name: is_divider
     type: Boolean
     default: "`false`"

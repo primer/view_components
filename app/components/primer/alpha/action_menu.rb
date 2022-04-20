@@ -4,9 +4,10 @@ module Primer
   module Alpha
     # The ActionMenu should be used when a user can select a single option triggering an action from a list of items. Primer will automatically nest an `Item` within a presentational `<li>` tag. The functionality should live on element with `role="menuitem"`.
     #
-    #  The only allowed elements for the `Item` components are `:a`, `:button` and `:clipboard-copy`. We can add to this list if we need more allowed items. To add functionality, use `:button` with a `.js` class that creates the functionality.
+    #  The only allowed elements for the `Item` components are `:a`, `:button` and `:clipboard-copy`. We can add to this list if we need more allowed items. To add functionality, use a `.js` class that creates the functionality.
     #
     # @accessibility
+    # When an item has `role="menuitem"`, all other semantics inside of that element are ignored. The action for the menu item needs to be on that element for correct functionality.
     #  TODO: what are considerations? When should this component be used?
     class ActionMenu < Primer::Component
       # Button to activate the menu. This may be a <%= link_to_component(Primer::ButtonComponent) %> or <%= link_to_component(Primer::IconButton) %>.
@@ -31,6 +32,9 @@ module Primer
       #    <% end %>
       #    <% c.item(tag: :button, type: "button", classes: "js-do-something") do %>
       #      Button with `.js` class that adds functionality
+      #    <% end %>
+      #    <% c.item(classes: "js-do-something") do %>
+      #      A list item with functionality associated with the class
       #    <% end %>
       #    <% c.item(tag: :"clipboard-copy", value: "Text to copy") do %>
       #      Copy Text
