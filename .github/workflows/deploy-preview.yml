@@ -38,7 +38,7 @@ jobs:
           key: gems-deploy-preview-${{ hashFiles('**/Gemfile.lock') }}
 
       - name: Install dependencies
-        run: yarn
+        run: yarn && cd docs && yarn && cd ..
 
       - name: Generate static files
         run: |
