@@ -9,6 +9,11 @@ on:
       - '.github/workflows/deploy*.yml'
       - 'package.json'
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     name: Build
