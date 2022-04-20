@@ -154,7 +154,7 @@ class ActionMenuElement extends HTMLElement {
     if (!this.#buttonEl) return
 
     if (this.isOpen()) {
-      this.#buttonEl.removeAttribute('aria-expanded')
+      this.#buttonEl.setAttribute('aria-expanded', 'false')
       this.#menuEl?.setAttribute('hidden', 'hidden')
     }
 
