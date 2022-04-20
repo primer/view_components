@@ -64,7 +64,7 @@ jobs:
         run: yarn build:docs
 
       - name: Archive build output
-        run: 'tar --dereference --directory ${{ inputs.output_dir }} -cvf artifact.tar .'
+        run: 'tar --dereference --directory docs/public -cvf artifact.tar .'
 
       - name: Upload artifact
         uses: actions/upload-artifact@main
