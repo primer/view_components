@@ -56,6 +56,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
   _Lindsey Wild_
   _Cameron Dutro_
 
+- Rewrite the documentation for deploying the Rails storybook.
+
+  _Cameron Dutro_
+
 ### Bug Fixes
 
 - Ensure that no whitespace is added inside LinkComponent.
