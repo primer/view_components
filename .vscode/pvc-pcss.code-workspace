@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "name": "view_components",
+      "path": ".."
+    },
+    {
+      "name": "css",
+      "path": "../../css"
+    }
+  ],
+  "settings": {}
+}
