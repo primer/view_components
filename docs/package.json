@@ -4,8 +4,7 @@
   "version": "1.1.0",
   "scripts": {
     "develop": "gatsby develop",
-    "build": "gatsby build --prefix-paths",
-    "now-build": "exit 0"
+    "build": "gatsby build --prefix-paths"
   },
   "dependencies": {
     "@primer/css": "^19.8.2",

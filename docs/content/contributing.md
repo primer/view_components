@@ -130,15 +130,9 @@ Here are a few things you can do that will increase the likelihood of your pull 
 * Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
 * Write a descriptive pull request message.
 
-## Deploying to Heroku
+## Deploying the Rails Storybook
 
-We have both `staging` and `production` environments. To deploy Storybook to Heroku, run the following in `#primer-view-components-ops`:
-
-```bash
-.deploy primer-view-components</branch> to <environment>
-```
-
-If no `branch` is passed, `main` will be deployed.
+The Rails storybook is currently deployed via GitHub Actions using [this workflow](https://github.com/primer/view_components/actions/workflows/deploy-production.yml). Deployments happen automatically on every merge to the `main` branch. The storybook runs in a Kubernetes cluster hosted within our team's Azure subscription. Please contact a member of the team for access.
 
 ## Publishing a Release
 

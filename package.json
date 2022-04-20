@@ -24,6 +24,8 @@
     "app/components/primer/**/*.d.ts"
   ],
   "scripts": {
+    "build:docs": "cd docs && yarn gatsby build --prefix-paths",
+    "build:docs:preview": "cd docs && yarn gatsby build",
     "prepare": "tsc && rollup -c",
     "lint": "eslint 'app/components/**/*.ts' demo/.storybook",
     "lint:fix": "eslint 'app/components/**/*.ts' demo/.storybook --fix"
