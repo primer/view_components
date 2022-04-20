@@ -47,7 +47,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: yarn
+        run: yarn && cd docs && yarn && cd ..
 
       - name: Generate static files
         run: |
