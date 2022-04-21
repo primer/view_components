@@ -46,7 +46,7 @@ module Primer
             "ActionList-content"
           )
 
-          return if is_list?
+          return if list?
 
           @system_arguments[:tag] = @tag
           @system_arguments[:role] = "menuitem"
@@ -58,16 +58,16 @@ module Primer
           args[:role] = "none"
           args[:tag] = LIST_TAG
 
-          if @is_dangerous == true
-            args[:classes] = "ActionList-item ActionList-item--danger"
-          else
-            args[:classes] = "ActionList-item"
-          end
+          args[:classes] = if @is_dangerous == true
+                             "ActionList-item ActionList-item--danger"
+                           else
+                             "ActionList-item"
+                           end
 
           args
         end
 
-        def is_list?
+        def list?
           @tag == LIST_TAG
         end
       end
