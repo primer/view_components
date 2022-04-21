@@ -7,8 +7,7 @@ module Primer
     #  The only allowed elements for the `Item` components are `:a`, `:button` and `:clipboard-copy`. We can add to this list if we need more allowed items. To add functionality, use a `.js` class that creates the functionality.
     #
     # @accessibility
-    # When an item has `role="menuitem"`, all other semantics inside of that element are ignored. The action for the menu item needs to be on that element for correct functionality.
-    #  TODO: what are considerations? When should this component be used?
+    #  When an item has `role="menuitem"`, all other semantics inside of that element are ignored. The action for the menu item needs to be on that element for correct functionality.
     class ActionMenu < Primer::Component
       # Button to activate the menu. This may be a <%= link_to_component(Primer::ButtonComponent) %> or <%= link_to_component(Primer::IconButton) %>.
       #
@@ -110,10 +109,6 @@ module Primer
         @menu_id = menu_id
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :"action-menu"
-        @system_arguments[:classes] = class_names(
-          system_arguments[:classes],
-          "dropdown"
-        )
       end
 
       def menu_id

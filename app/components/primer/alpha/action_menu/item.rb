@@ -6,8 +6,7 @@ module Primer
       # This component is part of <%= link_to_component(Primer::Alpha::ActionMenu) %> and should not be
       # used as a standalone component.
       class Item < Primer::Component
-        LIST_TAG = :li
-        TAG_OPTIONS = [:a, :button, :"clipboard-copy", :span, LIST_TAG].freeze
+        TAG_OPTIONS = [:a, :button, :"clipboard-copy", :span].freeze
 
         # @example Default
         #  <%= render Primer::Alpha::ActionMenu::Item.new do %>
@@ -24,7 +23,7 @@ module Primer
         #   This does something
         #  <% end %>
         #
-        # @example clipboard-copy
+        # @example Clipboard copy
         #  <%= render Primer::Alpha::ActionMenu::Item.new(tag: :"clipboard-copy", value: "Text to be copied") do %>
         #   Copy text
         #  <% end %>
@@ -46,8 +45,6 @@ module Primer
             "ActionList-content"
           )
 
-          return if list?
-
           @system_arguments[:tag] = @tag
           @system_arguments[:role] = "menuitem"
           @system_arguments[:tabindex] = -1
@@ -56,19 +53,15 @@ module Primer
         def list_arguments
           args = {}
           args[:role] = "none"
-          args[:tag] = LIST_TAG
+          args[:tag] = :li
 
-          args[:classes] = if @is_dangerous == true
+          args[:classes] = if @is_dangerous
                              "ActionList-item ActionList-item--danger"
                            else
                              "ActionList-item"
                            end
 
           args
-        end
-
-        def list?
-          @tag == LIST_TAG
         end
       end
     end
