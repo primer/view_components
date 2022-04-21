@@ -3,13 +3,11 @@
     "Item": "Primer::Alpha::ActionMenu::Item"
   },
   "Primer::Alpha::ActionMenu::Item": {
-    "LIST_TAG": "li",
     "TAG_OPTIONS": [
       "a",
       "button",
       "clipboard-copy",
-      "span",
-      "li"
+      "span"
     ]
   },
   "Primer::Alpha::BorderBox::Header": {
