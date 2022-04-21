@@ -3,11 +3,6 @@ on:
   push:
     branches:
       - 'main'
-    paths:
-      - 'app/**'
-      - 'docs/**'
-      - '.github/workflows/deploy*.yml'
-      - 'package.json'
 
 permissions:
   contents: read
