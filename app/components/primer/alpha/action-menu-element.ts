@@ -30,9 +30,6 @@ class ActionMenuElement extends HTMLElement {
   }
 
   #abortController: AbortController
-  #align: AnchorAlignment = 'center'
-  #side: AnchorSide = 'outside-bottom'
-
   // eslint-disable-next-line no-invalid-this
   #actionMenuEl: HTMLElement = this
   // eslint-disable-next-line no-invalid-this
@@ -47,6 +44,22 @@ class ActionMenuElement extends HTMLElement {
   #allMenuItemEls: NodeListOf<HTMLElement> | null =
     // eslint-disable-next-line no-invalid-this
     this.#menuEl && this.#menuEl.querySelectorAll('[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]')
+
+  get anchorAlign(): AnchorAlignment {
+    return (this.getAttribute('data-anchor-align') || 'start') as AnchorAlignment
+  }
+
+  set anchorAlign(value: AnchorAlignment) {
+    this.setAttribute('data-anchor-align', value)
+  }
+
+  get anchorSide(): AnchorSide {
+    return (this.getAttribute('data-anchor-side') || 'outside-bottom') as AnchorSide
+  }
+
+  set anchorSide(value: AnchorSide) {
+    this.setAttribute('data-anchor-align', value)
+  }
 
   connectedCallback() {
     if (!this.#buttonEl) return
@@ -75,8 +88,7 @@ class ActionMenuElement extends HTMLElement {
     this.#buttonEl.addEventListener('click', this.buttonClick.bind(this), {signal})
 
     if (this.#allMenuItemEls) {
-      for (let i = 0; i < this.#allMenuItemEls.length; i++) {
-        const menuItem = this.#allMenuItemEls[i]
+      for (const menuItem of this.#allMenuItemEls) {
         this.#menuItemEls.push(menuItem)
         if (menuItem.textContent) {
           this.#firstCharactersOfItems.push(menuItem.textContent.trim()[0].toLowerCase())
@@ -181,7 +193,7 @@ class ActionMenuElement extends HTMLElement {
 
     const float = this.#menuEl
     const anchor = this.#buttonEl
-    const {top, left} = getAnchoredPosition(float, anchor, {side: this.#side, align: this.#align})
+    const {top, left} = getAnchoredPosition(float, anchor, {side: this.anchorSide, align: this.anchorAlign})
 
     float.style.top = `${top}px`
     float.style.left = `${left}px`
