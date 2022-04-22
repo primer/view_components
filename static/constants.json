@@ -1,5 +1,18 @@
 {
   "Primer::Alpha::ActionMenu": {
+    "ANCHOR_ALIGN_DEFAULT": "start",
+    "ANCHOR_ALIGN_OPTIONS": [
+      "start",
+      "center",
+      "end"
+    ],
+    "ANCHOR_SIDE_DEFAULT": "outside_bottom",
+    "ANCHOR_SIDE_OPTIONS": [
+      "outside_top",
+      "outside_bottom",
+      "outside_left",
+      "outside_right"
+    ],
     "Item": "Primer::Alpha::ActionMenu::Item"
   },
   "Primer::Alpha::ActionMenu::Item": {
