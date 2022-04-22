@@ -10,6 +10,14 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+  - name: anchor_align
+    type: Symbol
+    default: "`:start`"
+    description: One of `:center`, `:end`, or `:start`.
+  - name: anchor_side
+    type: Symbol
+    default: "`:outside_bottom`"
+    description: One of `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`.
 - component: ActionMenuItem
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/item.rb
   parameters:
