@@ -295,7 +295,7 @@ class ToolTipElement extends HTMLElement {
     const TOOLTIP_OFFSET = 10
 
     this.style.left = `0px` // Ensures we have reliable tooltip width in `getAnchoredPosition`
-    
+
     const position = getAnchoredPosition(this, this.control, {
       side: this.#side,
       align: this.#align,
@@ -303,7 +303,7 @@ class ToolTipElement extends HTMLElement {
     })
     const anchorSide = position.anchorSide
     const align = position.anchorAlign
-    
+
     this.style.top = `${position.top}px`
     this.style.left = `${position.left}px`
 
