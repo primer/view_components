@@ -13,16 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-.ActionMenuButton[aria-expanded='true'] {
-  + .ActionMenu {
-    display: block;
-  }
-}
-
-.ActionMenu {
-  position: absolute;
-  z-index: 999;
-  display: none;
-  background-color: var(--color-canvas-overlay);
-}

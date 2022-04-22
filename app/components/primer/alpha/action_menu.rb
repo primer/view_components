@@ -15,9 +15,9 @@ module Primer
       # @param with_caret [Boolean] Whether to include a caret. Always `false` when `icon:` is set.
       renders_one :trigger, lambda { |icon: nil, with_caret: false, **system_arguments|
         if icon
-          Primer::IconButton.new(icon: icon, "aria-haspopup": true, "aria-expanded": false, "aria-controls": list_id, id: menu_id, classes: "ActionMenuButton", **system_arguments)
+          Primer::IconButton.new(icon: icon, "aria-haspopup": true, "aria-expanded": false, "aria-controls": list_id, id: menu_id, **system_arguments)
         else
-          Primer::ButtonComponent.new(dropdown: with_caret, "aria-haspopup": true, "aria-controls": list_id, "aria-expanded": false, classes: "ActionMenuButton", id: menu_id, **system_arguments)
+          Primer::ButtonComponent.new(dropdown: with_caret, "aria-haspopup": true, "aria-controls": list_id, "aria-expanded": false, id: menu_id, **system_arguments)
         end
       }
       #  <%= link_to_component(Primer::Alpha::ActionMenu::Item) %>
