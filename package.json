@@ -37,7 +37,7 @@
     "@github/image-crop-element": "^5.0.0",
     "@github/tab-container-element": "^3.1.0",
     "@github/time-elements": "^3.1.2",
-    "@primer/behaviors": "^1.0.3"
+    "@primer/behaviors": "^1.1.2"
   },
   "devDependencies": {
     "@github/prettier-config": "0.0.4",
