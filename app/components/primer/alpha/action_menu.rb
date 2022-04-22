@@ -109,6 +109,7 @@ module Primer
         @menu_id = menu_id
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :"action-menu"
+        @system_arguments[:position] = :relative
       end
 
       def menu_id

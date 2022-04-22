@@ -1,3 +1,5 @@
+import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
+import {getAnchoredPosition} from '@primer/behaviors'
 // WORK IN PROGRESS - DO NOT USE
 
 // Necessary to turn this file into an external module, which enables the Window
@@ -5,7 +7,31 @@
 export {}
 
 class ActionMenuElement extends HTMLElement {
+  styles() {
+    return `
+      :host {
+        position: relative;
+      }
+
+      ::slotted(ul.opacity-none) {
+        opacity: 0;
+      }
+
+      ::slotted(ul) {
+        position: absolute;
+        width: 160px;
+        background-color: var(--color-canvas-overlay);
+        z-index: 1000000;
+        border: $border-width $border-style var(--color-border-default);
+        border-radius: $border-radius;
+        box-shadow: var(--color-shadow-large);
+      }
+    `
+  }
+
   #abortController: AbortController
+  #align: AnchorAlignment = 'center'
+  #side: AnchorSide = 'outside-bottom'
 
   // eslint-disable-next-line no-invalid-this
   #actionMenuEl: HTMLElement = this
@@ -24,6 +50,13 @@ class ActionMenuElement extends HTMLElement {
 
   connectedCallback() {
     if (!this.#buttonEl) return
+    const shadow = this.attachShadow({mode: 'open'})
+    shadow.innerHTML = `
+      <style>
+        ${this.styles()}
+      </style>
+      <slot></slot>
+    `
 
     this.addEvents()
   }
@@ -143,11 +176,27 @@ class ActionMenuElement extends HTMLElement {
     }
   }
 
+  #updatePosition() {
+    if (!this.#buttonEl || !this.#menuEl) return
+
+    const float = this.#menuEl
+    const anchor = this.#buttonEl
+    const {top, left} = getAnchoredPosition(float, anchor, {side: this.#side, align: this.#align})
+
+    float.style.top = `${top}px`
+    float.style.left = `${left}px`
+  }
+
   openPopup() {
     if (!this.#buttonEl || !this.#menuEl) return
 
     this.#buttonEl.setAttribute('aria-expanded', 'true')
     this.#menuEl?.removeAttribute('hidden')
+    this.#menuEl.classList.add('opacity-none')
+
+    this.#updatePosition()
+
+    this.#menuEl.classList.remove('opacity-none')
   }
 
   closePopup() {
