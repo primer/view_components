@@ -39,6 +39,10 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Misc
 
+- Bump @primer/behaviors and remove dead code.
+
+    _Kate Higa_
+
 - Enable `eslint-plugin-custom-elements` linting rulesets.
 
     _Kate Higa_, _Kristján Oddsson_
