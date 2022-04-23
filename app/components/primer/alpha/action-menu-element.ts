@@ -8,11 +8,7 @@ export {}
 
 class ActionMenuElement extends HTMLElement {
   #abortController: AbortController
-  // eslint-disable-next-line no-invalid-this
-  #actionMenuEl: HTMLElement = this
-  // eslint-disable-next-line no-invalid-this
   #buttonEl = this.querySelector<HTMLButtonElement>('button')
-  // eslint-disable-next-line no-invalid-this
   #menuEl = this.querySelector<HTMLUListElement>('[role="menu"]')
   #menuItemEls: HTMLElement[] = []
   #firstMenuItem: HTMLElement
@@ -360,9 +356,9 @@ class ActionMenuElement extends HTMLElement {
   }
 
   backgroundMousedown(event: MouseEvent) {
-    if (!this.#actionMenuEl) return
+    if (!this) return
 
-    if (!this.#actionMenuEl.contains(event.target as Node)) {
+    if (!this.contains(event.target as Node)) {
       if (this.isOpen()) {
         this.closePopup()
       }
