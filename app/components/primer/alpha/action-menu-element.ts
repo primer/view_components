@@ -7,28 +7,6 @@ import {getAnchoredPosition} from '@primer/behaviors'
 export {}
 
 class ActionMenuElement extends HTMLElement {
-  styles() {
-    return `
-      :host {
-        position: relative;
-      }
-
-      ::slotted(ul.opacity-none) {
-        opacity: 0;
-      }
-
-      ::slotted(ul) {
-        position: absolute;
-        width: 160px;
-        background-color: var(--color-canvas-overlay);
-        z-index: 1000000;
-        border: $border-width $border-style var(--color-border-default);
-        border-radius: $border-radius;
-        box-shadow: var(--color-shadow-large);
-      }
-    `
-  }
-
   #abortController: AbortController
   // eslint-disable-next-line no-invalid-this
   #actionMenuEl: HTMLElement = this
@@ -63,13 +41,24 @@ class ActionMenuElement extends HTMLElement {
 
   connectedCallback() {
     if (!this.#buttonEl) return
-    const shadow = this.attachShadow({mode: 'open'})
-    shadow.innerHTML = `
-      <style>
-        ${this.styles()}
-      </style>
-      <slot></slot>
+
+    // THIS IS TEMPORARY AND SHOULD BE REPLACED BY PRIMER CSS CLASS
+    const style = document.createElement('style')
+    style.innerHTML = `
+        action-menu {
+          position: relative;
+        }
+        action-menu ul {
+          position: absolute;
+          width: 160px;
+          background-color: var(--color-canvas-overlay);
+          z-index: 1000000;
+          border: $border-width $border-style var(--color-border-default);
+          border-radius: $border-radius;
+          box-shadow: var(--color-shadow-large);
+        }
     `
+    document.querySelector('body')?.appendChild(style)
 
     this.addEvents()
   }
@@ -204,11 +193,11 @@ class ActionMenuElement extends HTMLElement {
 
     this.#buttonEl.setAttribute('aria-expanded', 'true')
     this.#menuEl?.removeAttribute('hidden')
-    this.#menuEl.classList.add('opacity-none')
+    this.#menuEl.style.visibility = 'hidden'
 
     this.#updatePosition()
 
-    this.#menuEl.classList.remove('opacity-none')
+    this.#menuEl.style.visibility = 'visible'
   }
 
   closePopup() {
