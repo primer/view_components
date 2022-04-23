@@ -102,10 +102,10 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@primer/behaviors@^1.0.3":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@primer/behaviors/-/behaviors-1.1.0.tgz#d5624195b893a1b8c72f904fbbfec2f97b234243"
-  integrity sha512-Ej2OUc3ZIFaR7WwIUqESO1DTzmpb7wc8xbTVRT9s52jZQDjN7g5iljoK3ocYZm+BIAcKn3MvcwB42hEk4Ga4xQ==
+"@primer/behaviors@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@primer/behaviors/-/behaviors-1.1.2.tgz#bd572fa89c88820c10d173bc2cd43339328d0b60"
+  integrity sha512-gMlUDRc2boyme1th2Sr0tVeH6VyWjFGwuraHj08HDlkfulJ7a6VT0YU0wtSnK1FtC45ZsTXNWOSiLwXWYmLR9g==
 
 "@primer/css@^19.7.1":
   version "19.8.2"

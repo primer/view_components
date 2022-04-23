@@ -288,34 +288,6 @@ class ToolTipElement extends HTMLElement {
     }
   }
 
-  // `getAnchoredPosition` may calibrate `anchoredSide` but does not recalibrate `align`.
-  //  Therefore, we need to determine which `align` is best based on the initial `getAnchoredPosition` calcluation.
-  //  Related: https://github.com/primer/behaviors/issues/63
-  #adjustedAnchorAlignment(anchorSide: AnchorSide): AnchorAlignment | undefined {
-    if (!this.control) return
-
-    const tooltipPosition = this.getBoundingClientRect()
-    const targetPosition = this.control.getBoundingClientRect()
-    const tooltipWidth = tooltipPosition.width
-
-    const tooltipCenter = tooltipPosition.left + tooltipWidth / 2
-    const targetCenter = targetPosition.x + targetPosition.width / 2
-
-    if (Math.abs(tooltipCenter - targetCenter) < 2 || anchorSide === 'outside-left' || anchorSide === 'outside-right') {
-      return 'center'
-    } else if (tooltipPosition.left === targetPosition.left) {
-      return 'start'
-    } else if (tooltipPosition.right === targetPosition.right) {
-      return 'end'
-    } else if (tooltipCenter < targetCenter) {
-      if (tooltipPosition.left === 0) return 'start'
-      return 'end'
-    } else {
-      if (tooltipPosition.right === 0) return 'end'
-      return 'start'
-    }
-  }
-
   #updatePosition() {
     if (!this.control) return
     if (!this.#allowUpdatePosition || this.hidden) return
@@ -323,27 +295,19 @@ class ToolTipElement extends HTMLElement {
     const TOOLTIP_OFFSET = 10
 
     this.style.left = `0px` // Ensures we have reliable tooltip width in `getAnchoredPosition`
-    let position = getAnchoredPosition(this, this.control, {
+
+    const position = getAnchoredPosition(this, this.control, {
       side: this.#side,
       align: this.#align,
       anchorOffset: TOOLTIP_OFFSET
     })
-    let anchorSide = position.anchorSide
+    const anchorSide = position.anchorSide
+    const align = position.anchorAlign
 
-    // We need to set tooltip position in order to determine ideal align.
     this.style.top = `${position.top}px`
     this.style.left = `${position.left}px`
+
     let direction: Direction = 's'
-
-    const align = this.#adjustedAnchorAlignment(anchorSide)
-    if (!align) return
-
-    this.style.left = `0px` // Reset tooltip position again to ensure accurate width in `getAnchoredPosition`
-    position = getAnchoredPosition(this, this.control, {side: anchorSide, align, anchorOffset: TOOLTIP_OFFSET})
-    anchorSide = position.anchorSide
-
-    this.style.top = `${position.top}px`
-    this.style.left = `${position.left}px`
 
     if (anchorSide === 'outside-left') {
       direction = 'w'
