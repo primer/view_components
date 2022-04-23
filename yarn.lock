@@ -41,7 +41,7 @@
 
 "@github/auto-complete-element@^3.1.0":
   version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@github/auto-complete-element/-/auto-complete-element-3.1.0.tgz#afd5ee64a17b4507c42136cfd790103217009b50"
+  resolved "https://registry.npmjs.org/@github/auto-complete-element/-/auto-complete-element-3.1.0.tgz"
   integrity sha512-w9sTHX5vq+t8G/+tKhfkWfQ/EyDhnmNH0k9d5VIKbVC8zEUJkubLxXAGra04vkb1sB3vvC+4qp2qM+yX9r7JXQ==
   dependencies:
     "@github/combobox-nav" "^2.0.2"
@@ -58,12 +58,12 @@
 
 "@github/details-menu-element@^1.0.12":
   version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@github/details-menu-element/-/details-menu-element-1.0.12.tgz#baf9cd5bcf8e40621a085380364090921eb3fae4"
+  resolved "https://registry.npmjs.org/@github/details-menu-element/-/details-menu-element-1.0.12.tgz"
   integrity sha512-Icbq+xw7Qjb6byfRtC5cjk/eAxb+Wc4F/WS+L6VTHLYEfi8q/akDtHgViGeu854IMiJ/qDosfOGXGgSrleud2w==
 
 "@github/image-crop-element@^5.0.0":
   version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@github/image-crop-element/-/image-crop-element-5.0.0.tgz#6ae2c31f1e7dc355c41c3140554fb76ca7a71ef7"
+  resolved "https://registry.npmjs.org/@github/image-crop-element/-/image-crop-element-5.0.0.tgz"
   integrity sha512-Vgm2OwWAs1ESoib/t5sjxsAYo6YTOxxAjWDRxswX7qrqoyCejTZ3hshdo4Ep5e+Mz/GVTZC3rdMtg06dk/eT4g==
 
 "@github/prettier-config@0.0.4":
@@ -78,7 +78,7 @@
 
 "@github/time-elements@^3.1.2":
   version "3.1.2"
-  resolved "https://registry.yarnpkg.com/@github/time-elements/-/time-elements-3.1.2.tgz#cc36d7a34ff2033d7f0b216f1a724405b8fbc201"
+  resolved "https://registry.npmjs.org/@github/time-elements/-/time-elements-3.1.2.tgz"
   integrity sha512-YVtZVLBikP6I7na22kfB9PKIseISwX41MFJ7lPuNz1VVH2IR5cpRRU6F1X6kcchPChljuvMUR4OiwMWHOJQ8kQ==
 
 "@nodelib/fs.scandir@2.1.4":
@@ -104,19 +104,23 @@
 
 "@primer/behaviors@^1.1.2":
   version "1.1.2"
+<<<<<<< HEAD
   resolved "https://registry.yarnpkg.com/@primer/behaviors/-/behaviors-1.1.2.tgz#bd572fa89c88820c10d173bc2cd43339328d0b60"
+=======
+  resolved "https://registry.npmjs.org/@primer/behaviors/-/behaviors-1.1.2.tgz"
+>>>>>>> 73299c73 (Hooking up `getAnchoredPosition` to position menu (#1131))
   integrity sha512-gMlUDRc2boyme1th2Sr0tVeH6VyWjFGwuraHj08HDlkfulJ7a6VT0YU0wtSnK1FtC45ZsTXNWOSiLwXWYmLR9g==
 
 "@primer/css@^19.7.1":
   version "19.8.2"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-19.8.2.tgz#4bdac86e9a11894a53e39c62ddfe0db0282fb367"
+  resolved "https://registry.npmjs.org/@primer/css/-/css-19.8.2.tgz"
   integrity sha512-Zjgk0asxDVj+QY8Ej3DLeJHEMzxlW4ejwmtUk3QzwUJG6R1FzCuGzrTuEN2hFugsvlPDVd1geeKfiskLEjkfOQ==
   dependencies:
     "@primer/primitives" "^7.7.0"
 
 "@primer/primitives@^7.1.0", "@primer/primitives@^7.7.0":
   version "7.7.0"
-  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-7.7.0.tgz#4e838afaf997036720a43ebab0211d2de77b1606"
+  resolved "https://registry.npmjs.org/@primer/primitives/-/primitives-7.7.0.tgz"
   integrity sha512-LSd96U2/A70obilbdYiEKI8D/wXUtZnKmUI/ScLOlGDju4iuwd3pJsmFoBwM1Us6vV23V6mapIG+lh27RzauaA==
 
 "@rollup/plugin-node-resolve@^11.2.0":
@@ -287,7 +291,7 @@ ansi-colors@4.1.1, ansi-colors@^4.1.1:
 
 ansi-regex@^3.0.0:
   version "3.0.1"
-  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-3.0.1.tgz#123d6479e92ad45ad897d4054e3c7ca7db4944e1"
+  resolved "https://registry.npmjs.org/ansi-regex/-/ansi-regex-3.0.1.tgz"
   integrity sha512-+O9Jct8wf++lXxxFc4hc8LsjaSq0HFzzL7cVsw8pRDIPdjKD2mT4ytDZlLuSBZ4cLKZFXIrMGO7DbQCtMJJMKw==
 
 ansi-regex@^5.0.0:
@@ -655,7 +659,7 @@ eslint-module-utils@^2.6.0:
 
 eslint-plugin-custom-elements@^0.0.6:
   version "0.0.6"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-custom-elements/-/eslint-plugin-custom-elements-0.0.6.tgz#2e0f5018af7ac8348f591cec9b5e80d08996f235"
+  resolved "https://registry.npmjs.org/eslint-plugin-custom-elements/-/eslint-plugin-custom-elements-0.0.6.tgz"
   integrity sha512-JwPHRSOUe7y8dpC5hg90ySHejsfnQ3yqprv0902VMZ3j8FRZDudj+yzxqqkRDhZTNFUxP3r+0TWuveZhLgJONg==
 
 eslint-plugin-eslint-comments@>=3.0.1:
@@ -950,7 +954,7 @@ get-intrinsic@^1.0.2, get-intrinsic@^1.1.1:
 
 glob-parent@^5.0.0, glob-parent@^5.1.0, glob-parent@~5.1.0:
   version "5.1.2"
-  resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
+  resolved "https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.2.tgz"
   integrity sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==
   dependencies:
     is-glob "^4.0.1"
@@ -1025,7 +1029,7 @@ he@1.2.0:
 
 hosted-git-info@^2.1.4:
   version "2.8.9"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
+  resolved "https://registry.npmjs.org/hosted-git-info/-/hosted-git-info-2.8.9.tgz"
   integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
 ignore@^4.0.6:
@@ -1095,7 +1099,7 @@ is-date-object@^1.0.1:
 
 is-extglob@^2.1.1:
   version "2.1.1"
-  resolved "https://registry.yarnpkg.com/is-extglob/-/is-extglob-2.1.1.tgz#a88c02535791f02ed37c76a1b9ea9773c833f8c2"
+  resolved "https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz"
   integrity sha1-qIwCU1eR8C7TfHahueqXc8gz+MI=
 
 is-fullwidth-code-point@^2.0.0:
@@ -1110,7 +1114,7 @@ is-fullwidth-code-point@^3.0.0:
 
 is-glob@^4.0.0, is-glob@^4.0.1, is-glob@~4.0.1:
   version "4.0.1"
-  resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-4.0.1.tgz#7567dbe9f2f5e2467bc77ab83c4a29482407a5dc"
+  resolved "https://registry.npmjs.org/is-glob/-/is-glob-4.0.1.tgz"
   integrity sha512-5G0tKtBTFImOqDnLB2hG6Bp2qcKEFduo4tZu9MT/H6NQv/ghhy30o55ufafxJ/LdH79LLs2Kfrn85TLKyA7BUg==
   dependencies:
     is-extglob "^2.1.1"
@@ -1295,7 +1299,7 @@ minimatch@3.0.4, minimatch@^3.0.4:
 
 minimist@^1.2.0:
   version "1.2.6"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.6.tgz"
   integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
 mocha@^8.3.0:
@@ -1487,7 +1491,7 @@ path-key@^3.1.0:
 
 path-parse@^1.0.6:
   version "1.0.7"
-  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
+  resolved "https://registry.npmjs.org/path-parse/-/path-parse-1.0.7.tgz"
   integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
 
 path-type@^2.0.0:
@@ -1883,7 +1887,7 @@ tslib@^1.8.1:
 
 tslib@^2.3.1:
   version "2.3.1"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-2.3.1.tgz"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
 
 tsutils@^3.17.1:
@@ -1907,7 +1911,7 @@ type-fest@^0.8.1:
 
 typescript@^4.3:
   version "4.6.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.2.tgz#fe12d2727b708f4eef40f51598b3398baa9611d4"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-4.6.2.tgz"
   integrity sha512-HM/hFigTBHZhLXshn9sN37H085+hQGeJHJ/X7LpBWLID/fbc2acUMfU+lGD98X81sKP+pFa9f0DZmCwB9GnbAg==
 
 uri-js@^4.2.2:

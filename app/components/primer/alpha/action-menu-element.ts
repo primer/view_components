@@ -1,3 +1,5 @@
+import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
+import {getAnchoredPosition} from '@primer/behaviors'
 // WORK IN PROGRESS - DO NOT USE
 
 // Necessary to turn this file into an external module, which enables the Window
@@ -6,7 +8,6 @@ export {}
 
 class ActionMenuElement extends HTMLElement {
   #abortController: AbortController
-
   // eslint-disable-next-line no-invalid-this
   #actionMenuEl: HTMLElement = this
   // eslint-disable-next-line no-invalid-this
@@ -22,8 +23,42 @@ class ActionMenuElement extends HTMLElement {
     // eslint-disable-next-line no-invalid-this
     this.#menuEl && this.#menuEl.querySelectorAll('[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]')
 
+  get anchorAlign(): AnchorAlignment {
+    return (this.getAttribute('data-anchor-align') || 'start') as AnchorAlignment
+  }
+
+  set anchorAlign(value: AnchorAlignment) {
+    this.setAttribute('data-anchor-align', value)
+  }
+
+  get anchorSide(): AnchorSide {
+    return (this.getAttribute('data-anchor-side') || 'outside-bottom') as AnchorSide
+  }
+
+  set anchorSide(value: AnchorSide) {
+    this.setAttribute('data-anchor-align', value)
+  }
+
   connectedCallback() {
     if (!this.#buttonEl) return
+
+    // THIS IS TEMPORARY AND SHOULD BE REPLACED BY PRIMER CSS CLASS
+    const style = document.createElement('style')
+    style.innerHTML = `
+        action-menu {
+          position: relative;
+        }
+        action-menu ul {
+          position: absolute;
+          width: 160px;
+          background-color: var(--color-canvas-overlay);
+          z-index: 1000000;
+          border: $border-width $border-style var(--color-border-default);
+          border-radius: $border-radius;
+          box-shadow: var(--color-shadow-large);
+        }
+    `
+    document.querySelector('body')?.appendChild(style)
 
     this.addEvents()
   }
@@ -42,8 +77,7 @@ class ActionMenuElement extends HTMLElement {
     this.#buttonEl.addEventListener('click', this.buttonClick.bind(this), {signal})
 
     if (this.#allMenuItemEls) {
-      for (let i = 0; i < this.#allMenuItemEls.length; i++) {
-        const menuItem = this.#allMenuItemEls[i]
+      for (const menuItem of this.#allMenuItemEls) {
         this.#menuItemEls.push(menuItem)
         if (menuItem.textContent) {
           this.#firstCharactersOfItems.push(menuItem.textContent.trim()[0].toLowerCase())
@@ -143,11 +177,27 @@ class ActionMenuElement extends HTMLElement {
     }
   }
 
+  #updatePosition() {
+    if (!this.#buttonEl || !this.#menuEl) return
+
+    const float = this.#menuEl
+    const anchor = this.#buttonEl
+    const {top, left} = getAnchoredPosition(float, anchor, {side: this.anchorSide, align: this.anchorAlign})
+
+    float.style.top = `${top}px`
+    float.style.left = `${left}px`
+  }
+
   openPopup() {
     if (!this.#buttonEl || !this.#menuEl) return
 
     this.#buttonEl.setAttribute('aria-expanded', 'true')
     this.#menuEl?.removeAttribute('hidden')
+    this.#menuEl.style.visibility = 'hidden'
+
+    this.#updatePosition()
+
+    this.#menuEl.style.visibility = 'visible'
   }
 
   closePopup() {
