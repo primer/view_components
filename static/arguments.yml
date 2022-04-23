@@ -1,4 +1,43 @@
 ---
+- component: ActionMenu
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu.rb
+  parameters:
+  - name: menu_id
+    type: String
+    default: N/A
+    description: Id of the menu.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+  - name: anchor_align
+    type: Symbol
+    default: "`:start`"
+    description: One of `:center`, `:end`, or `:start`.
+  - name: anchor_side
+    type: Symbol
+    default: "`:outside_bottom`"
+    description: One of `:outside_bottom`, `:outside_left`, `:outside_right`, or `:outside_top`.
+- component: ActionMenuItem
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_menu/item.rb
+  parameters:
+  - name: tag
+    type: Symbol
+    default: "`:span`"
+    description: Optional. The tag to use for the item. One of `:a`, `:button`, `:clipboard-copy`,
+      or `:span`.
+  - name: is_divider
+    type: Boolean
+    default: "`false`"
+    description: Whether to render a divider.
+  - name: is_dangerous
+    type: Boolean
+    default: "`false`"
+    description: If item should be styled dangerously.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: BorderBoxHeader
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/border_box/header.rb
   parameters:
