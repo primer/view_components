@@ -36,6 +36,36 @@ class ActionMenuElement extends HTMLElement {
     )
   }
 
+  set open(value: boolean) {
+    if (value) {
+      if (this.open) return
+      if (!this.trigger || !this.menu) return
+
+      this.setAttribute('open', '')
+      this.trigger.setAttribute('aria-expanded', 'true')
+      this.menu.removeAttribute('hidden')
+      this.menu.style.visibility = 'hidden'
+
+      this.#updatePosition()
+
+      this.menu.style.visibility = 'visible'
+    } else {
+      if (!this.open) return
+      this.removeAttribute('open')
+      this.trigger?.setAttribute('aria-expanded', 'false')
+      this.menu?.setAttribute('hidden', 'hidden')
+
+      // TODO: Do this without a setTimeout
+      setTimeout(() => {
+        if (document.activeElement === document.body) this.trigger?.focus()
+      }, 1)
+    }
+  }
+
+  get open(): boolean {
+    return this.hasAttribute('open')
+  }
+
   connectedCallback() {
     if (!this.trigger) return
 
@@ -62,6 +92,14 @@ class ActionMenuElement extends HTMLElement {
 
   disconnectedCallback() {
     this.#abortController.abort()
+  }
+
+  show() {
+    this.open = true
+  }
+
+  hide() {
+    this.open = false
   }
 
   private addEvents() {
@@ -192,38 +230,6 @@ class ActionMenuElement extends HTMLElement {
     float.style.left = `${left}px`
   }
 
-  openPopup() {
-    if (!this.trigger || !this.menu) return
-
-    this.trigger.setAttribute('aria-expanded', 'true')
-    this.menu?.removeAttribute('hidden')
-    this.menu.style.visibility = 'hidden'
-
-    this.#updatePosition()
-
-    this.menu.style.visibility = 'visible'
-  }
-
-  closePopup() {
-    if (!this.trigger) return
-
-    if (this.isOpen()) {
-      this.trigger.setAttribute('aria-expanded', 'false')
-      this.menu?.setAttribute('hidden', 'hidden')
-    }
-
-    // TODO: Do this without a setTimeout
-    setTimeout(() => {
-      if (document.activeElement === document.body) this.trigger?.focus()
-    }, 1)
-  }
-
-  isOpen() {
-    if (!this.trigger) return
-
-    return this.trigger.getAttribute('aria-expanded') === 'true'
-  }
-
   // Menu event handlers
   buttonKeydown(event: KeyboardEvent) {
     const key = event.key
@@ -295,19 +301,19 @@ class ActionMenuElement extends HTMLElement {
 
       if (event.key === 'Tab') {
         this.trigger?.focus()
-        this.closePopup()
+        this.hide()
         flag = true
       }
     } else {
       switch (key) {
         case ' ':
         case 'Enter':
-          this.closePopup()
+          this.hide()
           break
 
         case 'Esc':
         case 'Escape':
-          this.closePopup()
+          this.hide()
           flag = true
           break
 
@@ -355,7 +361,7 @@ class ActionMenuElement extends HTMLElement {
   }
 
   menuItemClick() {
-    this.closePopup()
+    this.hide()
   }
 
   menuItemMouseover(event: MouseEvent) {
@@ -367,8 +373,8 @@ class ActionMenuElement extends HTMLElement {
     if (!this) return
 
     if (!this.contains(event.target as Node)) {
-      if (this.isOpen()) {
-        this.closePopup()
+      if (this.open) {
+        this.hide()
       }
     }
   }
