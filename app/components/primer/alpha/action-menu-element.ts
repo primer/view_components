@@ -31,7 +31,9 @@ class ActionMenuElement extends HTMLElement {
   get #menuItems(): HTMLElement[] | null {
     if (!this.menu) return null
 
-    return Array.from(this.menu.querySelectorAll<HTMLElement>('[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]'))
+    return Array.from(
+      this.menu.querySelectorAll<HTMLElement>('[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]')
+    )
   }
 
   connectedCallback() {
@@ -63,15 +65,14 @@ class ActionMenuElement extends HTMLElement {
   }
 
   private addEvents() {
-    if (!this.trigger || !this.menu) return
-
     this.#abortController = new AbortController()
-    this.#firstCharactersOfItems = []
     const {signal} = this.#abortController
 
+    if (!this.trigger || !this.menu) return
     this.trigger.addEventListener('keydown', this.buttonKeydown.bind(this), {signal})
     this.trigger.addEventListener('click', this.buttonClick.bind(this), {signal})
 
+    this.#firstCharactersOfItems = []
     if (this.#menuItems) {
       for (const menuItem of this.#menuItems) {
         if (menuItem.textContent) {
