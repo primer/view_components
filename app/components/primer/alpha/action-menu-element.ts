@@ -144,14 +144,6 @@ class ActionMenuElement extends HTMLElement {
     }
   }
 
-  setFocusToFirstMenuItem() {
-    this.setFocusToMenuItem(this.#firstMenuItem)
-  }
-
-  setFocusToLastMenuItem() {
-    this.setFocusToMenuItem(this.#lastMenuItem)
-  }
-
   setFocusToPreviousMenuItem(currentMenuItem: HTMLElement) {
     if (!this.#menuItems) return
 
@@ -240,8 +232,8 @@ class ActionMenuElement extends HTMLElement {
       case 'Enter':
       case 'ArrowDown':
       case 'Down':
-        this.openPopup()
-        this.setFocusToFirstMenuItem()
+        this.show()
+        this.setFocusToMenuItem(this.#firstMenuItem)
         flag = true
         break
 
@@ -253,8 +245,8 @@ class ActionMenuElement extends HTMLElement {
 
       case 'Up':
       case 'ArrowUp':
-        this.openPopup()
-        this.setFocusToLastMenuItem()
+        this.show()
+        this.setFocusToMenuItem(this.#lastMenuItem)
         flag = true
         break
 
@@ -272,8 +264,8 @@ class ActionMenuElement extends HTMLElement {
     if (this.open) {
       this.hide()
     } else {
-      this.openPopup()
-      this.setFocusToFirstMenuItem()
+      this.show()
+      this.setFocusToMenuItem(this.#firstMenuItem)
     }
 
     event.stopPropagation()
@@ -331,13 +323,13 @@ class ActionMenuElement extends HTMLElement {
 
         case 'Home':
         case 'PageUp':
-          this.setFocusToFirstMenuItem()
+          this.setFocusToMenuItem(this.#firstMenuItem)
           flag = true
           break
 
         case 'End':
         case 'PageDown':
-          this.setFocusToLastMenuItem()
+          this.setFocusToMenuItem(this.#lastMenuItem)
           flag = true
           break
 
