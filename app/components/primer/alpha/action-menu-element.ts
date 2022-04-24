@@ -87,7 +87,7 @@ class ActionMenuElement extends HTMLElement {
     `
     document.querySelector('body')?.appendChild(style)
 
-    this.addEvents()
+    this.#addEvents()
   }
 
   disconnectedCallback() {
@@ -102,7 +102,7 @@ class ActionMenuElement extends HTMLElement {
     this.open = false
   }
 
-  private addEvents() {
+  #addEvents() {
     this.#abortController = new AbortController()
     const {signal} = this.#abortController
 
