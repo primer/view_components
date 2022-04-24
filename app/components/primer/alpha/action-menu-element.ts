@@ -247,7 +247,7 @@ class ActionMenuElement extends HTMLElement {
 
       case 'Esc':
       case 'Escape':
-        this.closePopup()
+        this.hide()
         flag = true
         break
 
@@ -269,8 +269,8 @@ class ActionMenuElement extends HTMLElement {
   }
 
   buttonClick(event: MouseEvent) {
-    if (this.isOpen()) {
-      this.closePopup()
+    if (this.open) {
+      this.hide()
     } else {
       this.openPopup()
       this.setFocusToFirstMenuItem()
@@ -342,7 +342,7 @@ class ActionMenuElement extends HTMLElement {
           break
 
         case 'Tab':
-          this.closePopup()
+          this.hide()
           break
 
         default:
