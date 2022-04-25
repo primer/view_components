@@ -36,6 +36,12 @@ class PrimerActionMenuItemTest < Minitest::Test
     end
   end
 
+  def test_passes_onclick_to_button_item
+    render_inline(Primer::Alpha::ActionMenu::Item.new(tag: :button, type: "button", onclick: "() => {}")) { "Button with Action" }
+
+    assert_selector("button[onclick='() => {}']", visible: false)
+  end
+
   def test_renders_item_as_divider
     render_inline(Primer::Alpha::ActionMenu::Item.new(is_divider: true))
     assert_selector("li.ActionList-sectionDivider[role='presentation']")
