@@ -15,6 +15,15 @@ class PrimerAlphaActionMenuTest < Minitest::Test
     assert_equal("missing keyword: :menu_id", err.message)
   end
 
+  def test_sets_default_anchor_align_and_anchor_side
+    render_inline Primer::Alpha::ActionMenu.new(menu_id: "menu-1") do |component|
+      component.trigger { "Trigger" }
+      component.item(classes: "js-do-something") { "Does something" }
+    end
+
+    assert_selector("action-menu[data-anchor-side='outside-bottom'][data-anchor-align='start']", visible: :false)
+  end
+
   def test_renders_with_relevant_accessibility_attributes
     render_inline Primer::Alpha::ActionMenu.new(menu_id: "menu-1") do |component|
       component.trigger { "Trigger" }
@@ -39,18 +48,18 @@ class PrimerAlphaActionMenuTest < Minitest::Test
       end
     end
 
-    assert_selector("span[role='menuitem']", visible: :hidden)
+    assert_selector("span[role='menuitem']", visible: :false)
   end
 
   def test_allows_trigger_button_to_be_icon_button
     render_inline Primer::Alpha::ActionMenu.new(menu_id: "menu-3") do |component|
-      component.trigger(icon: :chevron, "aria-label": "Menu")
+      component.trigger(icon: :star, "aria-label": "Menu")
       component.item { "Does something" }
     end
 
-    assert_selector("action-menu") do
-      assert_selector("button[id='menu-3-text'][aria-haspopup='true'][aria-expanded='false']", text: "Trigger") do
-        assert_selector("svg")
+    assert_selector("action-menu", visible: :false) do
+      assert_selector("button[id='menu-3-text'][aria-haspopup='true'][aria-expanded='false'][aria-label='Menu']", visible: :false) do
+        assert_selector("svg", visible: :false)
       end
     end
   end
