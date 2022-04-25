@@ -15,15 +15,6 @@ class PrimerAlphaActionMenuTest < Minitest::Test
     assert_equal("missing keyword: :menu_id", err.message)
   end
 
-  def test_sets_default_anchor_align_and_anchor_side
-    render_inline Primer::Alpha::ActionMenu.new(menu_id: "menu-1") do |component|
-      component.trigger { "Trigger" }
-      component.item(classes: "js-do-something") { "Does something" }
-    end
-
-    assert_selector("action-menu[data-anchor-side='outside-bottom'][data-anchor-align='start']", visible: :false)
-  end
-
   def test_renders_with_relevant_accessibility_attributes
     render_inline Primer::Alpha::ActionMenu.new(menu_id: "menu-1") do |component|
       component.trigger { "Trigger" }
@@ -48,7 +39,18 @@ class PrimerAlphaActionMenuTest < Minitest::Test
       end
     end
 
-    assert_selector("span[role='menuitem']", visible: :false)
+    assert_selector("span[role='menuitem']", visible: false)
+  end
+
+  def test_falls_back_to_default_anchor_align_and_anchor_side_if_non_allowed_option_is_set
+    without_fetch_or_fallback_raises do
+      render_inline Primer::Alpha::ActionMenu.new(menu_id: "menu-1", anchor_side: :inside_out, anchor_align: :upside_down) do |component|
+        component.trigger { "Trigger" }
+        component.item(classes: "js-do-something") { "Does something" }
+      end
+    end
+
+    assert_selector("action-menu[data-anchor-side='outside-bottom'][data-anchor-align='start']", visible: false)
   end
 
   def test_allows_trigger_button_to_be_icon_button
@@ -57,9 +59,9 @@ class PrimerAlphaActionMenuTest < Minitest::Test
       component.item { "Does something" }
     end
 
-    assert_selector("action-menu", visible: :false) do
-      assert_selector("button[id='menu-3-text'][aria-haspopup='true'][aria-expanded='false'][aria-label='Menu']", visible: :false) do
-        assert_selector("svg", visible: :false)
+    assert_selector("action-menu", visible: false) do
+      assert_selector("button[id='menu-3-text'][aria-haspopup='true'][aria-expanded='false'][aria-label='Menu']", visible: false) do
+        assert_selector("svg", visible: false)
       end
     end
   end
