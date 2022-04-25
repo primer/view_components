@@ -53,7 +53,7 @@ class ActionMenuElement extends HTMLElement {
       if (!this.open) return
       this.removeAttribute('open')
       this.trigger?.setAttribute('aria-expanded', 'false')
-      this.#menuEl && this.#menuEl.hidden = true
+      this.#menu && this.#menu.hidden = true
 
       // TODO: Do this without a setTimeout
       setTimeout(() => {
