@@ -192,8 +192,8 @@ class ActionMenuElement extends HTMLElement {
     character = character.toLowerCase()
 
     // Get start index for search based on position of currentMenuItem
-    start = this.#menuItems.indexOf(currentMenuItem) + 1
-    if (start >= this.#menuItems.length) {
+    start = this.menuItems.indexOf(currentMenuItem) + 1
+    if (start >= this.menuItems.length) {
       start = 0
     }
 
