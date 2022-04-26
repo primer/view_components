@@ -28,7 +28,7 @@ class ActionMenuElement extends HTMLElement {
     return this.querySelector<HTMLButtonElement>('button')
   }
 
-  get #menuItems(): HTMLElement[] | null {
+  get menuItems(): HTMLElement[] | null {
     if (!this.menu) return null
 
     return Array.from(
