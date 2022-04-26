@@ -1,0 +1,1 @@
+web: bin/rails s
