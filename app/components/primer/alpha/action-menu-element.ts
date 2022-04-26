@@ -207,7 +207,7 @@ class ActionMenuElement extends HTMLElement {
 
     // If match is found
     if (index > -1) {
-      this.setFocusToMenuItem(this.#menuItems[index])
+      this.setFocusToMenuItem(this.menuItems[index])
     }
   }
 
