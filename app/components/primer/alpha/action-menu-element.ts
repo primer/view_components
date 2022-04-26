@@ -153,8 +153,8 @@ class ActionMenuElement extends HTMLElement {
     if (currentMenuItem === this.#firstMenuItem) {
       newMenuItem = this.#lastMenuItem
     } else {
-      index = this.#menuItems.indexOf(currentMenuItem)
-      newMenuItem = this.#menuItems[index - 1]
+      index = this.menuItems.indexOf(currentMenuItem)
+      newMenuItem = this.menuItems[index - 1]
     }
 
     this.setFocusToMenuItem(newMenuItem)
