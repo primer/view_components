@@ -111,7 +111,7 @@ class ActionMenuElement extends HTMLElement {
     this.trigger.addEventListener('click', this.buttonClick.bind(this), {signal})
 
     this.#firstCharactersOfItems = []
-    if (this.#menuItems) {
+    if (this.menuItems) {
       for (const menuItem of this.#menuItems) {
         if (menuItem.textContent) {
           this.#firstCharactersOfItems.push(menuItem.textContent.trim()[0].toLowerCase())
