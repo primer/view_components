@@ -163,7 +163,7 @@ class ActionMenuElement extends HTMLElement {
   }
 
   setFocusToNextMenuItem(currentMenuItem: HTMLElement) {
-    if (!this.#menuItems) return
+    if (!this.menuItems) return
 
     let newMenuItem = null
     let index = null
