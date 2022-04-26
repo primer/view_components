@@ -180,7 +180,7 @@ class ActionMenuElement extends HTMLElement {
   }
 
   setFocusByFirstCharacter(currentMenuItem: HTMLElement, character: string) {
-    if (!this.#menuItems) return
+    if (!this.menuItems) return
 
     let start = null
     let index = null
