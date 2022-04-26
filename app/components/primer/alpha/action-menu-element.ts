@@ -8,39 +8,66 @@ export {}
 
 class ActionMenuElement extends HTMLElement {
   #abortController: AbortController
-  // eslint-disable-next-line no-invalid-this
-  #actionMenuEl: HTMLElement = this
-  // eslint-disable-next-line no-invalid-this
-  #buttonEl = this.querySelector<HTMLButtonElement>('button')
-  // eslint-disable-next-line no-invalid-this
-  #menuEl = this.querySelector<HTMLUListElement>('[role="menu"]')
-  #menuItemEls: HTMLElement[] = []
+  #firstCharactersOfItems: string[]
   #firstMenuItem: HTMLElement
   #lastMenuItem: HTMLElement
-  #firstCharactersOfItems: string[] = []
-  // eslint-disable-next-line no-undef
-  #allMenuItemEls: NodeListOf<HTMLElement> | null =
-    // eslint-disable-next-line no-invalid-this
-    this.#menuEl && this.#menuEl.querySelectorAll('[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]')
 
   get anchorAlign(): AnchorAlignment {
     return (this.getAttribute('data-anchor-align') || 'start') as AnchorAlignment
-  }
-
-  set anchorAlign(value: AnchorAlignment) {
-    this.setAttribute('data-anchor-align', value)
   }
 
   get anchorSide(): AnchorSide {
     return (this.getAttribute('data-anchor-side') || 'outside-bottom') as AnchorSide
   }
 
-  set anchorSide(value: AnchorSide) {
-    this.setAttribute('data-anchor-align', value)
+  get menu(): HTMLUListElement | null {
+    return this.querySelector<HTMLUListElement>('[role="menu"]')
+  }
+
+  get trigger(): HTMLButtonElement | null {
+    return this.querySelector<HTMLButtonElement>('button')
+  }
+
+  get menuItems(): HTMLElement[] | null {
+    if (!this.menu) return null
+
+    return Array.from(
+      this.menu.querySelectorAll<HTMLElement>('[role="menuitem"],[role="menuitemcheckbox"],[role="menuitemradio"]')
+    )
+  }
+
+  set open(value: boolean) {
+    if (value) {
+      if (this.open) return
+      if (!this.trigger || !this.menu) return
+
+      this.setAttribute('open', '')
+      this.trigger.setAttribute('aria-expanded', 'true')
+      this.menu.removeAttribute('hidden')
+      this.menu.style.visibility = 'hidden'
+
+      this.#updatePosition()
+
+      this.menu.style.visibility = 'visible'
+    } else {
+      if (!this.open) return
+      this.removeAttribute('open')
+      this.trigger?.setAttribute('aria-expanded', 'false')
+      this.menu && this.menu.setAttribute('hidden', 'true')
+
+      // TODO: Do this without a setTimeout
+      setTimeout(() => {
+        if (document.activeElement === document.body) this.trigger?.focus()
+      }, 1)
+    }
+  }
+
+  get open(): boolean {
+    return this.hasAttribute('open')
   }
 
   connectedCallback() {
-    if (!this.#buttonEl) return
+    if (!this.trigger) return
 
     // THIS IS TEMPORARY AND SHOULD BE REPLACED BY PRIMER CSS CLASS
     const style = document.createElement('style')
@@ -60,25 +87,32 @@ class ActionMenuElement extends HTMLElement {
     `
     document.querySelector('body')?.appendChild(style)
 
-    this.addEvents()
+    this.#addEvents()
   }
 
   disconnectedCallback() {
     this.#abortController.abort()
   }
 
-  private addEvents() {
-    if (!this.#buttonEl || !this.#menuEl) return
+  show() {
+    this.open = true
+  }
 
+  hide() {
+    this.open = false
+  }
+
+  #addEvents() {
     this.#abortController = new AbortController()
     const {signal} = this.#abortController
 
-    this.#buttonEl.addEventListener('keydown', this.buttonKeydown.bind(this), {signal})
-    this.#buttonEl.addEventListener('click', this.buttonClick.bind(this), {signal})
+    if (!this.trigger || !this.menu) return
+    this.trigger.addEventListener('keydown', this.buttonKeydown.bind(this), {signal})
+    this.trigger.addEventListener('click', this.buttonClick.bind(this), {signal})
 
-    if (this.#allMenuItemEls) {
-      for (const menuItem of this.#allMenuItemEls) {
-        this.#menuItemEls.push(menuItem)
+    this.#firstCharactersOfItems = []
+    if (this.menuItems) {
+      for (const menuItem of this.menuItems) {
         if (menuItem.textContent) {
           this.#firstCharactersOfItems.push(menuItem.textContent.trim()[0].toLowerCase())
         }
@@ -98,7 +132,9 @@ class ActionMenuElement extends HTMLElement {
   }
 
   setFocusToMenuItem(newMenuItem: HTMLElement) {
-    for (const item of this.#menuItemEls) {
+    if (!this.menuItems) return
+
+    for (const item of this.menuItems) {
       if (item === newMenuItem) {
         item.tabIndex = 0
         newMenuItem.focus()
@@ -108,23 +144,17 @@ class ActionMenuElement extends HTMLElement {
     }
   }
 
-  setFocusToFirstMenuItem() {
-    this.setFocusToMenuItem(this.#firstMenuItem)
-  }
-
-  setFocusToLastMenuItem() {
-    this.setFocusToMenuItem(this.#lastMenuItem)
-  }
-
   setFocusToPreviousMenuItem(currentMenuItem: HTMLElement) {
+    if (!this.menuItems) return
+
     let newMenuItem = null
     let index = null
 
     if (currentMenuItem === this.#firstMenuItem) {
       newMenuItem = this.#lastMenuItem
     } else {
-      index = this.#menuItemEls.indexOf(currentMenuItem)
-      newMenuItem = this.#menuItemEls[index - 1]
+      index = this.menuItems.indexOf(currentMenuItem)
+      newMenuItem = this.menuItems[index - 1]
     }
 
     this.setFocusToMenuItem(newMenuItem)
@@ -133,14 +163,16 @@ class ActionMenuElement extends HTMLElement {
   }
 
   setFocusToNextMenuItem(currentMenuItem: HTMLElement) {
+    if (!this.menuItems) return
+
     let newMenuItem = null
     let index = null
 
     if (currentMenuItem === this.#lastMenuItem) {
       newMenuItem = this.#firstMenuItem
     } else {
-      index = this.#menuItemEls.indexOf(currentMenuItem)
-      newMenuItem = this.#menuItemEls[index + 1]
+      index = this.menuItems.indexOf(currentMenuItem)
+      newMenuItem = this.menuItems[index + 1]
     }
     this.setFocusToMenuItem(newMenuItem)
 
@@ -148,6 +180,8 @@ class ActionMenuElement extends HTMLElement {
   }
 
   setFocusByFirstCharacter(currentMenuItem: HTMLElement, character: string) {
+    if (!this.menuItems) return
+
     let start = null
     let index = null
 
@@ -158,8 +192,8 @@ class ActionMenuElement extends HTMLElement {
     character = character.toLowerCase()
 
     // Get start index for search based on position of currentMenuItem
-    start = this.#menuItemEls.indexOf(currentMenuItem) + 1
-    if (start >= this.#menuItemEls.length) {
+    start = this.menuItems.indexOf(currentMenuItem) + 1
+    if (start >= this.menuItems.length) {
       start = 0
     }
 
@@ -173,51 +207,19 @@ class ActionMenuElement extends HTMLElement {
 
     // If match is found
     if (index > -1) {
-      this.setFocusToMenuItem(this.#menuItemEls[index])
+      this.setFocusToMenuItem(this.menuItems[index])
     }
   }
 
   #updatePosition() {
-    if (!this.#buttonEl || !this.#menuEl) return
+    if (!this.trigger || !this.menu) return
 
-    const float = this.#menuEl
-    const anchor = this.#buttonEl
+    const float = this.menu
+    const anchor = this.trigger
     const {top, left} = getAnchoredPosition(float, anchor, {side: this.anchorSide, align: this.anchorAlign})
 
     float.style.top = `${top}px`
     float.style.left = `${left}px`
-  }
-
-  openPopup() {
-    if (!this.#buttonEl || !this.#menuEl) return
-
-    this.#buttonEl.setAttribute('aria-expanded', 'true')
-    this.#menuEl?.removeAttribute('hidden')
-    this.#menuEl.style.visibility = 'hidden'
-
-    this.#updatePosition()
-
-    this.#menuEl.style.visibility = 'visible'
-  }
-
-  closePopup() {
-    if (!this.#buttonEl) return
-
-    if (this.isOpen()) {
-      this.#buttonEl.setAttribute('aria-expanded', 'false')
-      this.#menuEl?.setAttribute('hidden', 'hidden')
-    }
-
-    // TODO: Do this without a setTimeout
-    setTimeout(() => {
-      if (document.activeElement === document.body) this.#buttonEl?.focus()
-    }, 1)
-  }
-
-  isOpen() {
-    if (!this.#buttonEl) return
-
-    return this.#buttonEl.getAttribute('aria-expanded') === 'true'
   }
 
   // Menu event handlers
@@ -230,21 +232,21 @@ class ActionMenuElement extends HTMLElement {
       case 'Enter':
       case 'ArrowDown':
       case 'Down':
-        this.openPopup()
-        this.setFocusToFirstMenuItem()
+        this.show()
+        this.setFocusToMenuItem(this.#firstMenuItem)
         flag = true
         break
 
       case 'Esc':
       case 'Escape':
-        this.closePopup()
+        this.hide()
         flag = true
         break
 
       case 'Up':
       case 'ArrowUp':
-        this.openPopup()
-        this.setFocusToLastMenuItem()
+        this.show()
+        this.setFocusToMenuItem(this.#lastMenuItem)
         flag = true
         break
 
@@ -259,11 +261,11 @@ class ActionMenuElement extends HTMLElement {
   }
 
   buttonClick(event: MouseEvent) {
-    if (this.isOpen()) {
-      this.closePopup()
+    if (this.open) {
+      this.hide()
     } else {
-      this.openPopup()
-      this.setFocusToFirstMenuItem()
+      this.show()
+      this.setFocusToMenuItem(this.#firstMenuItem)
     }
 
     event.stopPropagation()
@@ -290,20 +292,20 @@ class ActionMenuElement extends HTMLElement {
       }
 
       if (event.key === 'Tab') {
-        this.#buttonEl?.focus()
-        this.closePopup()
+        this.trigger?.focus()
+        this.hide()
         flag = true
       }
     } else {
       switch (key) {
         case ' ':
         case 'Enter':
-          this.closePopup()
+          this.hide()
           break
 
         case 'Esc':
         case 'Escape':
-          this.closePopup()
+          this.hide()
           flag = true
           break
 
@@ -321,18 +323,18 @@ class ActionMenuElement extends HTMLElement {
 
         case 'Home':
         case 'PageUp':
-          this.setFocusToFirstMenuItem()
+          this.setFocusToMenuItem(this.#firstMenuItem)
           flag = true
           break
 
         case 'End':
         case 'PageDown':
-          this.setFocusToLastMenuItem()
+          this.setFocusToMenuItem(this.#lastMenuItem)
           flag = true
           break
 
         case 'Tab':
-          this.closePopup()
+          this.hide()
           break
 
         default:
@@ -351,7 +353,7 @@ class ActionMenuElement extends HTMLElement {
   }
 
   menuItemClick() {
-    this.closePopup()
+    this.hide()
   }
 
   menuItemMouseover(event: MouseEvent) {
@@ -360,11 +362,11 @@ class ActionMenuElement extends HTMLElement {
   }
 
   backgroundMousedown(event: MouseEvent) {
-    if (!this.#actionMenuEl) return
+    if (!this) return
 
-    if (!this.#actionMenuEl.contains(event.target as Node)) {
-      if (this.isOpen()) {
-        this.closePopup()
+    if (!this.contains(event.target as Node)) {
+      if (this.open) {
+        this.hide()
       }
     }
   }
