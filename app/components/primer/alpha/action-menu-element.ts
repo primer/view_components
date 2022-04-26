@@ -132,9 +132,9 @@ class ActionMenuElement extends HTMLElement {
   }
 
   setFocusToMenuItem(newMenuItem: HTMLElement) {
-    if (!this.#menuItems) return
+    if (!this.menuItems) return
 
-    for (const item of this.#menuItems) {
+    for (const item of this.menuItems) {
       if (item === newMenuItem) {
         item.tabIndex = 0
         newMenuItem.focus()
