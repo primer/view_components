@@ -1,0 +1,8 @@
+/* Entry point for your PostCSS build */
+
+/* @import '@primer/css/index.scss'; */
+@import '/workspaces/css/src/index.scss';
+
+body {
+  padding: 42px;
+}
