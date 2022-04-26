@@ -112,7 +112,7 @@ class ActionMenuElement extends HTMLElement {
 
     this.#firstCharactersOfItems = []
     if (this.menuItems) {
-      for (const menuItem of this.#menuItems) {
+      for (const menuItem of this.menuItems) {
         if (menuItem.textContent) {
           this.#firstCharactersOfItems.push(menuItem.textContent.trim()[0].toLowerCase())
         }
