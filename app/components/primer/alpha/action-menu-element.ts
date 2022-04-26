@@ -300,7 +300,12 @@ class ActionMenuElement extends HTMLElement {
       switch (key) {
         case ' ':
         case 'Enter':
-          this.hide()
+          if ((currentTarget as HTMLElement).tagName === 'A') {
+            // Adding `role="menuitem"` removes the `role="link"` functionality. This adds it back.
+            window.location.href = (currentTarget as HTMLLinkElement).href
+          } else {
+            this.hide()
+          }
           break
 
         case 'Esc':
