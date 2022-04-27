@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "boot"
 
 require "rails/all"
@@ -9,6 +11,7 @@ require "primer/view_components/engine"
 Bundler.require(*Rails.groups)
 
 module Lookbook
+  # no doc
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0

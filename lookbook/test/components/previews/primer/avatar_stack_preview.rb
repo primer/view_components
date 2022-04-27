@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module Primer
+  # no doc
   class AvatarStackPreview < ViewComponent::Preview
     # @label Rounded
     #

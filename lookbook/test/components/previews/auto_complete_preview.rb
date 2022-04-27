@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# no doc
 class AutoCompletePreview < ViewComponent::Preview
   def default
     render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "input-id", list_id: "test-id", src: "/auto_complete"))

@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module Primer
+  # no doc
   class CounterComponentPreview < ViewComponent::Preview
     # @label Rounded
     #

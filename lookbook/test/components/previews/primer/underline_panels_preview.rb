@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module Primer
+  # no doc
   class UnderlinePanelsPreview < ViewComponent::Preview
     def default
       render(Primer::Alpha::UnderlinePanels.new(label: "Test navigation")) do |c|

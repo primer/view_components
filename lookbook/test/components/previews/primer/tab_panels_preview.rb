@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module Primer
+  # no doc
   class TabPanelsPreview < ViewComponent::Preview
     def default
       render(Primer::Alpha::TabPanels.new(label: "label")) do |c|

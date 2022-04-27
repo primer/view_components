@@ -1,9 +1,10 @@
-module Primer
-  class TooltipPreview < ViewComponent::Preview
-    def description
-    end
+# frozen_string_literal: true
 
-    def label
-    end
+module Primer
+  # no doc
+  class TooltipPreview < ViewComponent::Preview
+    def description; end
+
+    def label; end
   end
 end
