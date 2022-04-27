@@ -39,7 +39,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Misc
 
-- Adding lookbook https://github.com/allmarkedup/lookbook dev server to the project
+- Adding [lookbook](https://github.com/allmarkedup/lookbook) dev server to the project
 
     _Jon Rohan_
 
