@@ -28,8 +28,7 @@
     "build:docs:preview": "cd docs && yarn gatsby build",
     "prepare": "tsc && rollup -c",
     "lint": "eslint 'app/components/**/*.ts' demo/.storybook",
-    "lint:fix": "eslint 'app/components/**/*.ts' demo/.storybook --fix",
-    "lookbook:prepare": "cd ../css/ && yarn install && cd ./lookbook/ && yarn install"
+    "lint:fix": "eslint 'app/components/**/*.ts' demo/.storybook --fix"
   },
   "dependencies": {
     "@github/auto-complete-element": "^3.1.0",
