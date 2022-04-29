@@ -1,10 +1,6 @@
 /* Entry point for your PostCSS build */
 
-/*
-  If you are not running this code in a codespace, uncomment this import and comment the second import
-  @import '@primer/css/index.scss';
-*/
-@import '/workspaces/css/src/index.scss';
+@import './primer.css';
 
 body {
   padding: 42px;
