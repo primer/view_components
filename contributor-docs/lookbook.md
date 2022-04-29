@@ -2,7 +2,6 @@
 
 [Lookbook](https://github.com/allmarkedup/lookbook) is a native ViewComponent alternative to Storybook, that works off of ViewComponent preivews and yarddoc to generate stories.
 
-
 ## How to run (in a codespace)
 
 ### From view_components root directory
