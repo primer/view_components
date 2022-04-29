@@ -30,6 +30,6 @@ class AutoCompleteTestController < ApplicationController
       "Grapes",
       "Grapefruit",
       "Guava"
-    ].select { |fruit| fruit.include?(params["q"]) }
+    ].select { |fruit| fruit.downcase.include?(params["q"].downcase) }
   end
 end
