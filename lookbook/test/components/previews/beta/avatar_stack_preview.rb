@@ -10,9 +10,9 @@ module Beta
     # @param align select [["Left", left], ["Right", right]]
     # @param tooltipped toggle
     # @param tooltip_label text
-    def default(number_of_avatars: 1, tag: :div, align: :left, tooltipped: true, tooltip_label: "This is a tooltip!")
+    def default(number_of_avatars: 1, tag: :div, align: :left, tooltipped: false, tooltip_label: "This is a tooltip!")
       render(Primer::Beta::AvatarStack.new(tag: tag, align: align, tooltipped: tooltipped, body_arguments: { label: tooltip_label })) do |c|
-        Array.new(number_of_avatars) do
+        Array.new(number_of_avatars || 1) do
           c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser")
         end
       end
@@ -31,7 +31,7 @@ module Beta
 
     # @label With tooltip
     def with_tooltip
-      render(Primer::Beta::AvatarStack.new(tooltipped: true, body_arguments: { label: 'This is a tooltip!' })) do |c|
+      render(Primer::Beta::AvatarStack.new(tooltipped: true, body_arguments: { label: "This is a tooltip!" })) do |c|
         c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser")
         c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser")
         c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser")
