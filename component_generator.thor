@@ -37,7 +37,7 @@ class ComponentGenerator < Thor::Group
 
   def create_system_test
     template("templates/system_test.rb.tt", "test/system/#{status_path}#{underscore_name}_test.rb") if js_package_name
-    template("templates/#{status_template_path}system_test_preview.rb.tt", "lookbook/test/components/previews/#{status_path}#{underscore_name}_preview.rb") if js_package_name
+    template("templates/#{status_template_path}system_test_preview.rb.tt", "demo/test/components/previews/primer/#{status_path}#{underscore_name}_preview.rb") if js_package_name
   end
 
   def create_stories

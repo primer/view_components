@@ -60,7 +60,7 @@ If the `js` flag is passed in it will create some extra files:
 
 - `app/components/<status>/<component_name>.ts` contains the imports for any specified npm dependencies
 - `test/system/<status>/<component_name>.rb` contains the component’s system tests
-- `lookbook/test/components/preview/primer/<status>/<component_name>_preview.rb` contains the component’s previews
+- `demo/test/components/preview/primer/<status>/<component_name>_preview.rb` contains the component’s previews
 
 The script also edits some files:
 
