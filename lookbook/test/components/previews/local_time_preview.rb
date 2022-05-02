@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # @label LocalTime
-class LocalTimeComponentPreview < ViewComponent::Preview
+class LocalTimePreview < ViewComponent::Preview
   # @param datetime datetime-local
   # @param weekday [Symbol] select [long, short]
   # @param month [Symbol] select [long, short]
