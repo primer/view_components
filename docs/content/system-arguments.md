@@ -62,7 +62,7 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `bg` | Symbol | Background color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:closed`, `:closed_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:emphasis`, `:inset`, `:open`, `:open_emphasis`, `:overlay`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, or `:success_emphasis`. |
+| `bg` | Symbol | Background color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:closed`, `:closed_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:emphasis`, `:inset`, `:open`, `:open_emphasis`, `:overlay`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, `:success_emphasis`, or `:transparent`. |
 | `border_color` | Symbol | Border color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:closed`, `:closed_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:muted`, `:open`, `:open_emphasis`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, or `:success_emphasis`. |
 | `color` | Symbol | Text color. One of `:accent`, `:attention`, `:closed`, `:danger`, `:default`, `:done`, `:inherit`, `:muted`, `:on_emphasis`, `:open`, `:severe`, `:sponsors`, `:subtle`, or `:success`. |
 
@@ -94,7 +94,7 @@ System arguments include most HTML attributes. For example:
 | `display` | Symbol | One of `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:none`, `:table`, or `:table_cell`. |
 | `w` | Symbol | One of `:auto`, `:fit`, or `:full`. |
 | `h` | Symbol | One of `:fit` and `:full`. |
-| `hide` | Symbol | Hide the element at a specific breakpoint. One of `:lg`, `:md`, `:sm`, or `:xl`. |
+| `hide` | Symbol | Hide the element at a specific breakpoint. One of `:lg`, `:md`, `:sm`, `:whenNarrow`, `:whenRegular`, `:whenWide`, or `:xl`. |
 | `visibility` | Symbol | Visibility. One of `:hidden` and `:visible`. |
 | `vertical_align` | Symbol | One of `:baseline`, `:bottom`, `:middle`, `:text_bottom`, `:text_top`, or `:top`. |
 
