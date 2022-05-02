@@ -2,7 +2,7 @@ import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 
 const TOOLTIP_OPEN_CLASS = 'tooltip-open'
-const TOOLTIP_ARROW_EDGE_OFFSET = 10
+const TOOLTIP_ARROW_EDGE_OFFSET = 6
 
 type Direction = 'n' | 's' | 'e' | 'w' | 'ne' | 'se' | 'nw' | 'sw'
 
@@ -17,7 +17,7 @@ const DIRECTION_CLASSES = [
   'tooltip-sw'
 ]
 
-class TooltipElement extends HTMLElement {
+class ToolTipElement extends HTMLElement {
   styles() {
     return `
       :host {
@@ -82,13 +82,13 @@ class TooltipElement extends HTMLElement {
       :host(.tooltip-s):before,
       :host(.tooltip-n):before {
         right: 50%;
+        margin-right: -${TOOLTIP_ARROW_EDGE_OFFSET}px;
       }
 
       :host(.tooltip-s):before,
       :host(.tooltip-se):before,
       :host(.tooltip-sw):before {
         bottom: 100%;
-        margin-right: -${TOOLTIP_ARROW_EDGE_OFFSET}px;
         border-bottom-color: var(--color-neutral-emphasis-plus)
       }
       
@@ -102,7 +102,6 @@ class TooltipElement extends HTMLElement {
       :host(.tooltip-ne):before,
       :host(.tooltip-nw):before {
         top: 100%;
-        margin-right: -${TOOLTIP_ARROW_EDGE_OFFSET}px;
         border-top-color: var(--color-neutral-emphasis-plus)
       }
       
@@ -176,8 +175,7 @@ class TooltipElement extends HTMLElement {
     return this.ownerDocument.getElementById(this.htmlFor)
   }
 
-  constructor() {
-    super()
+  connectedCallback() {
     const shadow = this.attachShadow({mode: 'open'})
     shadow.innerHTML = `
       <style>
@@ -185,9 +183,6 @@ class TooltipElement extends HTMLElement {
       </style>
       <slot></slot>
     `
-  }
-
-  connectedCallback() {
     this.hidden = true
     this.#allowUpdatePosition = true
 
@@ -209,6 +204,7 @@ class TooltipElement extends HTMLElement {
     this.control.addEventListener('focus', this, {signal})
     this.control.addEventListener('blur', this, {signal})
     this.ownerDocument.addEventListener('keydown', this, {signal})
+    this.#update()
   }
 
   disconnectedCallback() {
@@ -237,6 +233,18 @@ class TooltipElement extends HTMLElement {
 
   static observedAttributes = ['data-type', 'data-direction', 'id', 'hidden']
 
+  #update() {
+    if (this.hidden) {
+      this.classList.remove(TOOLTIP_OPEN_CLASS, ...DIRECTION_CLASSES)
+    } else {
+      this.classList.add(TOOLTIP_OPEN_CLASS)
+      for (const tooltip of this.ownerDocument.querySelectorAll<HTMLElement>(this.tagName)) {
+        if (tooltip !== this) tooltip.hidden = true
+      }
+      this.#updatePosition()
+    }
+  }
+
   attributeChangedCallback(name: string) {
     if (name === 'id' || name === 'data-type') {
       if (!this.id || !this.control) return
@@ -247,16 +255,8 @@ class TooltipElement extends HTMLElement {
         describedBy ? (describedBy = `${describedBy} ${this.id}`) : (describedBy = this.id)
         this.control.setAttribute('aria-describedby', describedBy)
       }
-    } else if (name === 'hidden') {
-      if (this.hidden) {
-        this.classList.remove(TOOLTIP_OPEN_CLASS, ...DIRECTION_CLASSES)
-      } else {
-        this.classList.add(TOOLTIP_OPEN_CLASS)
-        for (const tooltip of this.ownerDocument.querySelectorAll<HTMLElement>(this.tagName)) {
-          if (tooltip !== this) tooltip.hidden = true
-        }
-        this.#updatePosition()
-      }
+    } else if (this.isConnected && name === 'hidden') {
+      this.#update()
     } else if (name === 'data-direction') {
       this.classList.remove(...DIRECTION_CLASSES)
       const direction = this.direction
@@ -288,34 +288,6 @@ class TooltipElement extends HTMLElement {
     }
   }
 
-  // `getAnchoredPosition` may calibrate `anchoredSide` but does not recalibrate `align`.
-  //  Therefore, we need to determine which `align` is best based on the initial `getAnchoredPosition` calcluation.
-  //  Related: https://github.com/primer/behaviors/issues/63
-  #adjustedAnchorAlignment(anchorSide: AnchorSide): AnchorAlignment | undefined {
-    if (!this.control) return
-
-    const tooltipPosition = this.getBoundingClientRect()
-    const targetPosition = this.control.getBoundingClientRect()
-    const tooltipWidth = tooltipPosition.width
-
-    const tooltipCenter = tooltipPosition.left + tooltipWidth / 2
-    const targetCenter = targetPosition.x + targetPosition.width / 2
-
-    if (Math.abs(tooltipCenter - targetCenter) < 2 || anchorSide === 'outside-left' || anchorSide === 'outside-right') {
-      return 'center'
-    } else if (tooltipPosition.left === targetPosition.left) {
-      return 'start'
-    } else if (tooltipPosition.right === targetPosition.right) {
-      return 'end'
-    } else if (tooltipCenter < targetCenter) {
-      if (tooltipPosition.left === 0) return 'start'
-      return 'end'
-    } else {
-      if (tooltipPosition.right === 0) return 'end'
-      return 'start'
-    }
-  }
-
   #updatePosition() {
     if (!this.control) return
     if (!this.#allowUpdatePosition || this.hidden) return
@@ -323,27 +295,19 @@ class TooltipElement extends HTMLElement {
     const TOOLTIP_OFFSET = 10
 
     this.style.left = `0px` // Ensures we have reliable tooltip width in `getAnchoredPosition`
-    let position = getAnchoredPosition(this, this.control, {
+
+    const position = getAnchoredPosition(this, this.control, {
       side: this.#side,
       align: this.#align,
       anchorOffset: TOOLTIP_OFFSET
     })
-    let anchorSide = position.anchorSide
+    const anchorSide = position.anchorSide
+    const align = position.anchorAlign
 
-    // We need to set tooltip position in order to determine ideal align.
     this.style.top = `${position.top}px`
     this.style.left = `${position.left}px`
+
     let direction: Direction = 's'
-
-    const align = this.#adjustedAnchorAlignment(anchorSide)
-    if (!align) return
-
-    this.style.left = `0px` // Reset tooltip position again to ensure accurate width in `getAnchoredPosition`
-    position = getAnchoredPosition(this, this.control, {side: anchorSide, align, anchorOffset: TOOLTIP_OFFSET})
-    anchorSide = position.anchorSide
-
-    this.style.top = `${position.top}px`
-    this.style.left = `${position.left}px`
 
     if (anchorSide === 'outside-left') {
       direction = 'w'
@@ -372,12 +336,12 @@ class TooltipElement extends HTMLElement {
 }
 
 if (!window.customElements.get('tool-tip')) {
-  window.TooltipElement = TooltipElement
-  window.customElements.define('tool-tip', TooltipElement)
+  window.ToolTipElement = ToolTipElement
+  window.customElements.define('tool-tip', ToolTipElement)
 }
 
 declare global {
   interface Window {
-    TooltipElement: typeof TooltipElement
+    ToolTipElement: typeof ToolTipElement
   }
 }
