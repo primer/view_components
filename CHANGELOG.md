@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.72
+
 ### Bug
 
 - Fix tooltip arrow being off-centered for `s` and `n`.
