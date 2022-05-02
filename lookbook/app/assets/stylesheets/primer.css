@@ -1,0 +1,5 @@
+/* If you want to run the workspace with the .vscode/pvc-pcss.code-workspace, */
+/* uncomment this import and comment the second import */
+/* @import '/workspaces/css/src/index.scss'; */
+
+@import '@primer/css/index.scss';
