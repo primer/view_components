@@ -19,6 +19,8 @@ Rails.application.configure do
   # Enable server timing
   config.server_timing = true
 
+  config.hosts << /.*\.githubpreview\.dev/
+
   config.hotwire_livereload.listen_paths << "/workspaces/css/src/"
 
   # Enable/disable caching. By default caching is disabled.

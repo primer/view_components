@@ -1,33 +1,30 @@
-<%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <%= content %>
-<% end %>
-
-
-<%= show_button %>
-<div class="Overlay-backdrop Overlay-hidden <%= @backdrop_classes %>">
+<%= show_trigger_button %>
+<div class="Overlay-backdrop <%= @backdrop_classes %>">
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-    <% render_form do %>
-      <header class="Overlay-header <%= @header_classes %>">
+    <% if @title.present? %>
+    <header class="Overlay-header <%= @header_classes %>">
         <div class="Overlay-headerContentWrap">
-          <div class="Overlay-titleWrap">
-            <h1 id="<%= @header_id %>" class="Overlay-title"><%= @title %></h1>
-            <% if @description.present? %>
-              <h2 id="<%= @description_id %>" class="Overlay-description"><%= @description %></h2>
+            <div class="Overlay-titleWrap">
+                <h1 id="<%= @header_id %>" class="Overlay-title"><%= @title %></h1>
+                <% if @description.present? %>
+                    <h2 id="<%= @description_id %>" class="Overlay-description"><%= @description %></h2>
+                <% end %>
+            </div>
+            <% if @show_close_button %>
+                <div class="Overlay-actionWrap">
+                    <%= render Primer::CloseButton.new(classes: "Overlay-closeButton", "data-close-dialog-id": @system_arguments[:id]) %>
+                </div>
             <% end %>
-          </div>
-          <div class="Overlay-actionWrap">
-            <%= render Primer::CloseButton.new(classes: "Overlay-closeButton", "data-close-dialog-id": @system_arguments[:id]) %>
-          </div>
         </div>
-      </header>
-      <div class="Overlay-body <%= @body_classes %>"><%= body %></div>
-      <% if buttons.any? %>
-        <footer class="Overlay-footer <%= @footer_classes %>">
-          <% buttons.each do |button| %>
-            <%= button %>
-          <% end %>
-        </footer>
-      <% end %>
+    </header>
+    <% end %>
+    <div class="Overlay-body <%= @body_classes %>"><%= body %></div>
+    <% if footer_buttons.any? %>
+    <footer class="Overlay-footer <%= @footer_classes %>">
+        <% footer_buttons.each do |button| %>
+        <%= button %>
+        <% end %>
+    </footer>
     <% end %>
   <% end %>
 </div>

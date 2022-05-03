@@ -4,55 +4,65 @@ require "securerandom"
 
 module Primer
   module Alpha
-    # A `Dialog` is used to remove the user from the main application flow, display information, and to request action confirmation, like delete a discussion or transfer an issue to another repository.
-    #
-    # @accessibility
-    #   - **Dialog Accessible Name**: A dialog should have an accessible name, so screen readers are aware of the purpose of the dialog when it opens.
-    #   Give an accessible name setting `:title`. The accessible name will be used as the main heading inside the dialog.
-    #   - **Dialog unique id**: A dialog should be unique. Give a unique id setting `:dialog_id`. If no `:dialog_id` is given, a default randomize hex id is generated.
-    #
-    #   The combination of both `:title` and `:dialog_id` establishes an `aria-labelledby` relationship between the title and the unique id of the dialog.
-    class Dialog < Primer::Component
-      DEFAULT_VARIANT = :center
-      VARIANT_MAPPINGS = {
-        DEFAULT_VARIANT => "Overlay-backdrop--center",
+    # An overlay is a flexible floating surface, used to display transient content such as menus, selection options, dialogs, and more.
+    class Overlay < Primer::Component
+      status :alpha
+
+      DEFAULT_VARIANT_REGULAR = "Overlay-backdrop--center"
+      VARIANT_REGULAR_MAPPINGS = {
+        DEFAULT_VARIANT_REGULAR => "Overlay-backdrop--center",
+        :center => "Overlay-backdrop--center",
         :anchor => "Overlay-backdrop--anchor",
         :side => "Overlay-backdrop--side",
         :full => "Overlay-backdrop--full",
+        nil => ""
       }.freeze
-      VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
+      VARIANT_REGULAR_OPTIONS = VARIANT_REGULAR_MAPPINGS.keys
 
-      DEFAULT_PLACEMENT = ""
-      PLACEMENT_MAPPINGS = {
-        DEFAULT_PLACEMENT => "Overlay-backdrop--placement-left",
+      DEFAULT_VARIANT_NARROW = "Overlay-backdrop--center-whenNarrow"
+      VARIANT_NARROW_MAPPINGS = {
+        DEFAULT_VARIANT_NARROW => "Overlay-backdrop--center-whenNarrow",
+        :center => "Overlay-backdrop--center-whenNarrow",
+        :anchor => "Overlay-backdrop--anchor-whenNarrow",
+        :side => "Overlay-backdrop--side-whenNarrow",
+        :full => "Overlay-backdrop--full-whenNarrow",
+        nil => ""
+      }.freeze
+      VARIANT_NARROW_OPTIONS = VARIANT_NARROW_MAPPINGS.keys
+
+      DEFAULT_PLACEMENT_REGULAR = nil
+      PLACEMENT_REGULAR_MAPPINGS = {
+        DEFAULT_PLACEMENT_REGULAR => nil,
         :left => "Overlay-backdrop--placement-left",
         :right => "Overlay-backdrop--placement-right",
         :top => "Overlay-backdrop--placement-top",
-        :bottom => "Overlay-backdrop--placement-bottom",
+        :bottom => "Overlay-backdrop--placement-bottom"
       }.freeze
-      PLACEMENT_OPTIONS = PLACEMENT_MAPPINGS.keys
+      PLACEMENT_REGULAR_OPTIONS = PLACEMENT_REGULAR_MAPPINGS.keys
 
-      DEFAULT_VARIANT_NARROW = :inherit
-      VARIANT_NARROW_MAPPINGS = {
-        DEFAULT_VARIANT_NARROW => "",
-        :fullscreen => "Overlay-backdrop-positionWhenNarrow-fullScreen",
-        :anchor => "Overlay-backdrop-positionWhenNarrow-bottomSheet",
+      DEFAULT_PLACEMENT_NARROW = nil
+      PLACEMENT_NARROW_MAPPINGS = {
+        DEFAULT_PLACEMENT_NARROW => nil,
+        :left => "Overlay-backdrop--placement-left-whenNarrow",
+        :right => "Overlay-backdrop--placement-right-whenNarrow",
+        :top => "Overlay-backdrop--placement-top-whenNarrow",
+        :bottom => "Overlay-backdrop--placement-bottom-whenNarrow"
       }.freeze
-      VARIANT_NARROW_OPTIONS = VARIANT_NARROW_MAPPINGS.keys
+      PLACEMENT_NARROW_OPTIONS = PLACEMENT_NARROW_MAPPINGS.keys
 
       DEFAULT_FOOTER_CONTENT_ALIGN = :end
       FOOTER_CONTENT_ALIGN_MAPPINGS = {
         :start => "Overlay-footer--alignStart",
         :center => "Overlay-footer--alignCenter",
-        :medium => "Overlay--height-medium",
-        DEFAULT_FOOTER_CONTENT_ALIGN => "Overlay-footer--alignEnd",
+        :end => "Overlay-footer--alignEnd",
+        DEFAULT_FOOTER_CONTENT_ALIGN => "Overlay-footer--alignEnd"
       }.freeze
       FOOTER_CONTENT_ALIGN_OPTIONS = FOOTER_CONTENT_ALIGN_MAPPINGS.keys
 
       DEFAULT_HEADER_VARIANT = :medium
       HEADER_VARIANT_MAPPINGS = {
         DEFAULT_HEADER_VARIANT => "",
-        :large => "Overlay-header--large",
+        :large => "Overlay-header--large"
       }.freeze
       HEADER_VARIANT_OPTIONS = HEADER_VARIANT_MAPPINGS.keys
 
@@ -60,7 +70,7 @@ module Primer
       BODY_PADDING_VARIANT_MAPPINGS = {
         DEFAULT_BODY_PADDING_VARIANT => "",
         :condensed => "Overlay-body--paddingCondensed",
-        :none => "Overlay-body--paddingNone",
+        :none => "Overlay-body--paddingNone"
       }.freeze
       BODY_PADDING_VARIANT_OPTIONS = BODY_PADDING_VARIANT_MAPPINGS.keys
 
@@ -71,43 +81,44 @@ module Primer
         :small => "Overlay--height-small",
         :medium => "Overlay--height-medium",
         :large => "Overlay--height-large",
-        :xlarge => "Overlay--height-xlarge",
+        :xlarge => "Overlay--height-xlarge"
       }.freeze
       HEIGHT_OPTIONS = HEIGHT_MAPPINGS.keys
 
       DEFAULT_WIDTH = :medium
       WIDTH_MAPPINGS = {
+        :auto => "Overlay--width-auto",
         :small => "Overlay--width-small",
         DEFAULT_WIDTH => "Overlay--width-medium",
         :large => "Overlay--width-large",
         :xlarge => "Overlay--width-xlarge",
-        :xxlarge => "Overlay--width-xxlarge",
+        :xxlarge => "Overlay--width-xxlarge"
       }.freeze
       WIDTH_OPTIONS = WIDTH_MAPPINGS.keys
 
       DEFAULT_MOTION = :scale_fade
       MOTION_MAPPINGS = {
         DEFAULT_MOTION => "Overlay--motion-scaleFade",
-        :none => "",
+        :none => ""
       }.freeze
       MOTION_OPTIONS = MOTION_MAPPINGS.keys
 
-      # Optional list of buttons to be rendered.
+      # Optional list of buttons to be rendered in the footer.
       #
       # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
-      renders_many :buttons, lambda { |**system_arguments|
+      renders_many :footer_buttons, lambda { |**system_arguments|
         Primer::ButtonComponent.new(**system_arguments)
       }
 
-      # Optional button to open the dialog.
+      # Optional button to open the overlay.
       #
       # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
-      renders_one :show_button, lambda { |**system_arguments|
+      renders_one :show_trigger_button, lambda { |**system_arguments|
         system_arguments[:classes] = class_names(
           system_arguments[:classes]
         )
-        system_arguments[:id] = "dialog-show-#{@system_arguments[:id]}"
-        system_arguments["data-show-dialog-id"] = @system_arguments[:id]
+        system_arguments[:id] = "overlay-show-#{@system_arguments[:id]}"
+        system_arguments["data-show-overlay-id"] = @system_arguments[:id]
         Primer::ButtonComponent.new(**system_arguments)
       }
 
@@ -124,144 +135,94 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      # @example Dialog without submit or cancel buttons
+      # @example Overlay without footer content
+      #
       #   @description
       #     If the tooltip content provides supplementary description, set `type: :description` to establish an `aria-describedby` relationship.
       #     The trigger element should also have a _concise_ accessible label via `aria-label`.
+      #
       #   @code
-      #     <%= render(Primer::Experimental::Dialog.new(
-      #       title: "This is the tile of the dialog",
-      #       description: "This is the description of the dialog",
-      #       dialog_id: "dialog-without-buttons"
+      #     <%= render(Primer::Alpha::Overlay.new(
+      #       title: "This is the tile of the overla",
+      #       description: "This is the description of the overlay",
+      #       overlay_id: "overlay-without-footer",
+      #       variant: { narrow: :full, regular: :center },
       #     )) do |c| %>
-      #       <% c.show_button { "Show dialog" } %>
+      #       <% c.show_trigger_button { "Open overlay" } %>
       #       <% c.body do %>
-      #         <p>The body of the dialog</p>
+      #         <p>The body of the overlay</p>
       #       <% end %>
       #     <% end %>
       #
-      # @example Dialog with submit or cancel buttons
-      #   @description
-      #     If the tooltip content provides supplementary description, set `type: :description` to establish an `aria-describedby` relationship.
-      #     The trigger element should also have a _concise_ accessible label via `aria-label`.
-      #   @code
-      #     <%= render(Primer::Experimental::Dialog.new(
-      #       title: "This is the tile of the dialog",
-      #       description: "This is the description of the dialog",
-      #       dialog_id: "dialog-with-buttons"
-      #     )) do |c| %>
-      #       <% c.show_button { "Show dialog" } %>
-      #       <% c.body do %>
-      #         <p>The body of the dialog</p>
-      #       <% end %>
-      #       <% c.button { "Submit" } %>
-      #       <% c.button { "Cancel" } %>
-      #     <% end %>
-      #
-      # @example Dialog with form and buttons (delete category)
-      #   @description
-      #     If the tooltip content provides supplementary description, set `type: :description` to establish an `aria-describedby` relationship.
-      #     The trigger element should also have a _concise_ accessible label via `aria-label`.
-      #     Cancelling the dialog using Escape, Close or a button with `close-dialog-id` will raise the `cancel` event.
-      #     Pressing a button with `submit-dialog-id` will raise the `close` event.
-      #   @code
-      #     <%= render(Primer::Experimental::Dialog.new(
-      #       dialog_id: "delete-discussion",
-      #       show_header_divider: false,
-      #       show_footer_divider: false,
-      #       header_variant: :large,
-      #       width: :medium,
-      #       title: "Delete discussion?",
-      #       form_url: url_for(discussion),
-      #       form_method: :delete
-      #     )) do |c| %>
-      #       <% c.show_button(scheme: :link) do |s| %>
-      #         <span class="text-bold Link--primary lock-toggle-link">
-      #           <%= render Primer::OcticonComponent.new(icon: :trash, mr: 1) %> <strong>Delete discussion</strong>
-      #         </span>
-      #       <% end %>
-      #       <% c.body do %>
-      #         <p>The discussion will be deleted permanently. You will not be able to restore the discussion or its comments</p>
-      #       <% end %>
-      #       <% c.button(data: { "close-dialog-id": "delete-discussion" }) { "Cancel" } %>
-      #       <% c.button(
-      #         type: :submit,
-      #         scheme: :danger,
-      #         data: { "disable-with": "Deleting discussion…", "submit-dialog-id": "delete-discussion" }
-      #       ) { "Delete discussion" } %>
-      #     <% end %>
-      #
-      # @param title [String] The title of the dialog.
-      # @param description [String] The optional description of the dialog.
-      # @param dialog_id [String] The optional ID of the dialog, defaults to random string.
-      # @param form_url [String] The optional URL to submit the form to, form rendered when set.
-      # @param form_method [Symbol] The optional form method, defaults to :post.
-      # @param form_classes [String] The optional form classes, defaults to nil, format with space: "class-a class-b".
-      # @param form_id [String] The optional form id, defaults to nil.
+      # @param title [String] The title of the overlay.
+      # @param description [String] The optional description of the overlay.
+      # @param overlay_id [String] The optional ID of the overlay, defaults to random string.
       # @param show_header_divider [Boolean] Whether to show the header divider.
       # @param show_footer_divider [Boolean] Whether to show the footer divider.
-      # @param width [Symbol] The width of the dialog. <%= one_of(Primer::Experimental::Dialog::WIDTH_OPTIONS) %>
-      # @param height: [Symbol] The height of the dialog. <%= one_of(Primer::Experimental::Dialog::HEIGHT_OPTIONS) %>
-      # @param position [Symbol] The position of the dialog. <%= one_of(Primer::Experimental::Dialog::VARIANT_OPTIONS) %>
-      # @param position_narrow [Symbol] The position of the dialog when narrow. <%= one_of(Primer::Experimental::Dialog::VARIANT_NARROW_OPTIONS) %>
-      # @param footer_content_align [Symbol] The alignment of the footer content. <%= one_of(Primer::Experimental::Dialog::FOOTER_CONTENT_ALIGN_OPTIONS) %>
-      # @param header_variant [Symbol] The variant of the header. <%= one_of(Primer::Experimental::Dialog::HEADER_VARIANT_OPTIONS) %>
-      # @param body_padding_variant [Symbol] The padding variant of the dialog body. <%= one_of(Primer::Experimental::Dialog::BODY_PADDING_VARIANT_OPTIONS) %>
-      # @param motion [Symbol] The motion of the dialog. <%= one_of(Primer::Experimental::Dialog::MOTION_OPTIONS) %>
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      # @param show_close_button [Boolean] Whether to show the close button.
+      # @param footer_content_align [Symbol] The alignment of the footer content.
+      # @param header_variant [Symbol] Header content sizing.
+      # @param body_padding_variant [Symbol] Body content padding.
+      # @param motion [Symbol] Animation options.
+      # @param variant [Symbol] Set position for narrow and regular screens.
+      # @param placement [Symbol] Optional: set placement for narrow and regular screens.
       def initialize(
-          title:, description: nil,
-          dialog_id: "dialog-#{SecureRandom.hex(4)}",
-          form_url: nil,
-          form_method: :post,
-          form_classes: nil,
-          form_id: nil,
-          show_header_divider: true,
-          show_footer_divider: true,
-          width: DEFAULT_WIDTH,
-          height: DEFAULT_HEIGHT,
-          position: DEFAULT_VARIANT,
-          position_narrow: DEFAULT_VARIANT_NARROW,
-          footer_content_align: DEFAULT_FOOTER_CONTENT_ALIGN,
-          header_variant: DEFAULT_HEADER_VARIANT,
-          body_padding_variant: DEFAULT_BODY_PADDING_VARIANT,
-          motion: DEFAULT_MOTION,
-          **system_arguments)
+        title: nil, description: nil,
+        overlay_id: "overlay-#{SecureRandom.hex(4)}",
+        show_header_divider: true,
+        show_footer_divider: true,
+        show_close_button: false,
+        overlay_hidden: false,
+        width: DEFAULT_WIDTH,
+        height: DEFAULT_HEIGHT,
+        placement_regular: DEFAULT_PLACEMENT_REGULAR,
+        placement_narrow: DEFAULT_PLACEMENT_NARROW,
+        footer_content_align: DEFAULT_FOOTER_CONTENT_ALIGN,
+        header_variant: DEFAULT_HEADER_VARIANT,
+        body_padding_variant: DEFAULT_BODY_PADDING_VARIANT,
+        motion: DEFAULT_MOTION,
+        variant: { narrow: DEFAULT_VARIANT_NARROW, regular: DEFAULT_VARIANT_REGULAR },
+        placement: { narrow: DEFAULT_PLACEMENT_NARROW, regular: DEFAULT_PLACEMENT_REGULAR },
+        **system_arguments
+      )
         @system_arguments = deny_tag_argument(**system_arguments)
 
-        @system_arguments[:tag] = "modal-dialog"
+        @system_arguments[:tag] = "div"
+        # make this generic
         @system_arguments[:role] = :dialog
 
         @show_header_divider = show_header_divider
         @show_footer_divider = show_footer_divider
+        @show_close_button = show_close_button
+        @overlay_hidden = overlay_hidden
         @width = width
         @height = height
-        @position = position
-        @position_narrow = position_narrow
+        @placement_regular = placement_regular
+        @placement_narrow = placement_narrow
         @footer_content_align = footer_content_align
         @header_variant = header_variant
         @body_padding_variant = body_padding_variant
         @motion = motion
-
-        @form_url = form_url
-        @form_method = form_method
-        @form_classes = form_classes
-        @form_id = form_id
+        @variant = variant
+        @placement = placement
 
         @title = title
         @description = description
-        @system_arguments[:id] = dialog_id.to_s
+        @system_arguments[:id] = overlay_id.to_s
 
-        @header_id = "#{dialog_id}-header"
+        @header_id = "#{overlay_id}-header"
 
         @backdrop_classes = class_names(
-          VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, position, DEFAULT_VARIANT)],
-          VARIANT_NARROW_MAPPINGS[fetch_or_fallback(VARIANT_NARROW_MAPPINGS, position_narrow, DEFAULT_VARIANT_NARROW)],
+          VARIANT_REGULAR_MAPPINGS[fetch_or_fallback(VARIANT_REGULAR_OPTIONS, variant[:regular], DEFAULT_VARIANT_REGULAR)],
+          VARIANT_NARROW_MAPPINGS[fetch_or_fallback(VARIANT_NARROW_OPTIONS, variant[:narrow], DEFAULT_VARIANT_NARROW)],
+          PLACEMENT_REGULAR_MAPPINGS[fetch_or_fallback(PLACEMENT_REGULAR_OPTIONS, placement[:regular], DEFAULT_PLACEMENT_REGULAR)],
+          PLACEMENT_NARROW_MAPPINGS[fetch_or_fallback(PLACEMENT_NARROW_OPTIONS, placement[:narrow], DEFAULT_PLACEMENT_NARROW)],
+          "Overlay-visibilityHidden": overlay_hidden
         )
 
         @header_classes = class_names(
           HEADER_VARIANT_MAPPINGS[fetch_or_fallback(HEADER_VARIANT_OPTIONS, header_variant, DEFAULT_HEADER_VARIANT)],
-          "Overlay-header--divided": show_header_divider,
+          "Overlay-header--divided": show_header_divider
         )
 
         @body_classes = class_names(
@@ -275,6 +236,7 @@ module Primer
 
         @system_arguments[:classes] = class_names(
           "Overlay",
+          "Overlay-whenNarrow",
           WIDTH_MAPPINGS[fetch_or_fallback(WIDTH_OPTIONS, width, DEFAULT_WIDTH)],
           HEIGHT_MAPPINGS[fetch_or_fallback(HEIGHT_OPTIONS, height, DEFAULT_HEIGHT)],
           MOTION_MAPPINGS[fetch_or_fallback(MOTION_OPTIONS, motion, DEFAULT_MOTION)],
@@ -282,20 +244,82 @@ module Primer
         )
 
         if @description.present?
-          @description_id = "#{dialog_id}-description"
+          @description_id = "#{overlay_id}-description"
           @system_arguments[:aria] = { modal: true, labelledby: @header_id, describedby: @description_id }
         else
           @system_arguments[:aria] = { modal: true, labelledby: @header_id }
         end
       end
 
-      def render_form
-        if @form_url.present?
-          form_tag @form_url, method: @form_method, class: "#{@form_classes}", id: @form_id do
-            yield
-          end
+      def find_narrow_variant
+        narrow_variant = variant[:narrow] || :center
+
+        case narrow_variant
+        when :center
+          %w[Overlay-backdrop--center-whenNarrow]
+        when :anchor
+          %w[Overlay-backdrop--anchor-whenNarrow]
+        when :side
+          %w[Overlay-backdrop--side-whenNarrow]
+        when :full
+          %w[Overlay-backdrop--full-whenNarrow]
+
         else
-          yield
+          raise ArgumentError, "invalid narrow variant"
+        end
+      end
+
+      def find_regular_variant
+        regular_variant = @variant[:regular] || nil
+
+        case regular_variant
+        when :center
+          %w[Overlay-backdrop--center-whenNarrow]
+        when :anchor
+          %w[Overlay-backdrop--anchor-whenNarrow]
+        when :side
+          %w[Overlay-backdrop--side-whenNarrow]
+        when :full
+          %w[Overlay-backdrop--full-whenNarrow]
+
+        else
+          raise ArgumentError, "invalid regular variant"
+        end
+      end
+
+      def find_narrow_position
+        narrow_position = @position[:narrow] || nil
+
+        case narrow_position
+        when :left
+          %w[Overlay-backdrop--placement-left-whenNarrow]
+        when :right
+          %w[Overlay-backdrop--placement-right-whenNarrow]
+        when :top
+          %w[Overlay-backdrop--placement-top-whenNarrow]
+        when :bottom
+          %w[Overlay-backdrop--placement-bottom-whenNarrow]
+
+        else
+          raise ArgumentError, "invalid narrow position"
+        end
+      end
+
+      def find_regular_position
+        regular_position = @position[:regular] || nil
+
+        case regular_position
+        when :left
+          %w[Overlay-backdrop--placement-left]
+        when :right
+          %w[Overlay-backdrop--placement-right]
+        when :top
+          %w[Overlay-backdrop--placement-top]
+        when :bottom
+          %w[Overlay-backdrop--placement-bottom]
+
+        else
+          raise ArgumentError, "invalid regular position"
         end
       end
     end
