@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Bug
+
+- Move shadow DOM attachment into constructor so avoid errors
+
+    _Kate Higa_
+
 ## 0.0.72
 
 ### Bug
