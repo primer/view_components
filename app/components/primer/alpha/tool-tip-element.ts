@@ -175,19 +175,16 @@ class ToolTipElement extends HTMLElement {
     return this.ownerDocument.getElementById(this.htmlFor)
   }
 
-  // eslint-disable-next-line custom-elements/no-constructor
-  constructor() {
-    super()
-    const shadow = this.attachShadow({mode: 'open'})
-    shadow.innerHTML = `
-      <style>
-        ${this.styles()}
-      </style>
-      <slot></slot>
-    `
-  }
-
   connectedCallback() {
+    if (!this.shadowRoot) {
+      const shadow = this.attachShadow({mode: 'open'})
+      shadow.innerHTML = `
+        <style>
+          ${this.styles()}
+        </style>
+        <slot></slot>
+      `
+    }
     this.hidden = true
     this.#allowUpdatePosition = true
 

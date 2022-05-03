@@ -32,7 +32,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ### Bug
 
-- Move shadow DOM attachment into constructor so avoid errors
+- Add conditional check for shadow root to avoid errors.
 
     _Kate Higa_
 
