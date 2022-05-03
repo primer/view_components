@@ -1,0 +1,3 @@
+<% @fruit_list.each do |fruit| %>
+  <%= render(Primer::Beta::AutoComplete::Item.new(value: fruit)) { fruit } %>
+<% end %>

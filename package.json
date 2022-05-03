@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.0.71",
+  "version": "0.0.72",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -37,11 +37,11 @@
     "@github/image-crop-element": "^5.0.0",
     "@github/tab-container-element": "^3.1.0",
     "@github/time-elements": "^3.1.2",
-    "@primer/behaviors": "^1.0.3"
+    "@primer/behaviors": "^1.1.2"
   },
   "devDependencies": {
     "@github/prettier-config": "0.0.4",
-    "@primer/css": "^19.7.1",
+    "@primer/css": "^20.0.0",
     "@primer/primitives": "^7.1.0",
     "@rollup/plugin-node-resolve": "^11.2.0",
     "@rollup/plugin-typescript": "^8.2.0",

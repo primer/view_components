@@ -30,6 +30,8 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.72
+
 ### Bug
 
 - Fix tooltip arrow being off-centered for `s` and `n`.
@@ -38,6 +40,14 @@ The category for changes related to documentation, testing and tooling. Also, fo
     _Kate Higa_
 
 ### Misc
+
+- Adding [lookbook](https://github.com/allmarkedup/lookbook) dev server to the project.
+
+    _Jon Rohan_
+
+- Bump @primer/behaviors and remove dead code.
+
+    _Kate Higa_
 
 - Enable `eslint-plugin-custom-elements` linting rulesets.
 
