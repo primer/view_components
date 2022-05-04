@@ -176,13 +176,15 @@ class ToolTipElement extends HTMLElement {
   }
 
   connectedCallback() {
-    const shadow = this.attachShadow({mode: 'open'})
-    shadow.innerHTML = `
-      <style>
-        ${this.styles()}
-      </style>
-      <slot></slot>
-    `
+    if (!this.shadowRoot) {
+      const shadow = this.attachShadow({mode: 'open'})
+      shadow.innerHTML = `
+        <style>
+          ${this.styles()}
+        </style>
+        <slot></slot>
+      `
+    }
     this.hidden = true
     this.#allowUpdatePosition = true
 
