@@ -41,6 +41,11 @@
       "label": "doctocat"
     }
   },
+  "hostRequirements": {
+    "memory": "32gb"
+  }
+},
+{
   "customizations": {
     "codespaces": {
       "repositories": {
@@ -51,8 +56,5 @@
         }
       }
     }
-  },
-  "hostRequirements": {
-    "memory": "32gb"
   }
 }
