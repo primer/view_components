@@ -46,7 +46,7 @@
       {
         "name": "primer/css",
         "permissions": {
-          "contents": "write"
+            "write-all"
         }
       }
     ]
