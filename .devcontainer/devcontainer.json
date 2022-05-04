@@ -50,9 +50,7 @@
     "codespaces": {
       "repositories": {
         "primer/css": {
-          "permissions": {
-            "write-all"
-          }
+          "permissions": "write-all"
         }
       }
     }
