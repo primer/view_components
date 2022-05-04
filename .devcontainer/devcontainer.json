@@ -41,15 +41,16 @@
       "label": "doctocat"
     }
   },
-  "codespaces": {
-    "repositories": [
-      {
-        "name": "primer/css",
-        "permissions": {
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "primer/css": {
+          "permissions": {
             "write-all"
+          }
         }
       }
-    ]
+    }
   },
   "hostRequirements": {
     "memory": "32gb"
