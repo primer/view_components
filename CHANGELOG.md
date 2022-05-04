@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Bug
+
+- Add conditional check for shadow root to avoid errors.
+
+    _Kate Higa_
+
 ## 0.0.72
 
 ### Bug
