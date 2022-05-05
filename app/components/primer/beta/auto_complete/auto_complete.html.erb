@@ -1,5 +1,5 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <label for="<%= @input_id %>" class="<%= @label_classes if @is_label_visible %>">
+  <label for="<%= @input_id %>" class="<%= @label_classes %>">
     <% if @is_label_visible %>
       <%= @label_text %>
     <% else %>
