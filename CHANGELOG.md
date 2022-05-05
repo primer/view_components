@@ -30,6 +30,12 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+### Bug
+
+- AutoComplete component does not apply stacked label class if the label is not visible
+
+    _Max Beizer_
+
 ## 0.0.72
 
 ### Bug
