@@ -5,6 +5,7 @@ module Primer
     class AutoComplete
       # Use `AutoCompleteItem` to list results of an auto-completed search.
       class Item < Primer::Component
+        include ViewComponent::PolymorphicSlots
         status :beta
 
         # @example Default
@@ -29,14 +30,18 @@ module Primer
           @system_arguments[:"aria-disabled"] = true if disabled
 
           @system_arguments[:classes] = class_names(
-            "autocomplete-item",
+            "ActionList-item",
             system_arguments[:classes],
             "disabled" => disabled
           )
         end
 
         def call
-          render(Primer::BaseComponent.new(**@system_arguments)) { content }
+          render(Primer::BaseComponent.new(**@system_arguments)) do |_c|
+            render(Primer::BaseComponent.new(tag: :span, classes: "ActionList-content")) do |_c|
+              render(Primer::BaseComponent.new(tag: :span, classes: "ActionList-item-label")) { content }
+            end
+          end
         end
       end
     end

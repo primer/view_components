@@ -22,7 +22,7 @@ module Primer
         system_arguments[:tag] = :ul
         system_arguments[:id] = @list_id
         system_arguments[:classes] = class_names(
-          "autocomplete-results",
+          "ActionList",
           system_arguments[:classes]
         )
 
