@@ -3,26 +3,18 @@
         <label for="<%= @input_id %>" class="FormControl-label <%= @visually_hide_label %>">
             <%= @label_text %>
         </label>
-        <div class="FormControl-fieldWrap">
-            <%= render Primer::OcticonComponent.new(:search, classes: "FormControl-leadingVisual") %>
-            <input class="FormControl" placeholder="Placeholder" />
-            <% if @is_clearable %>
-                <button id="<%= @input_id %>-clear" class="FormControl-trailingAction" aria-label="Clear"><%= primer_octicon "x" %></button>
-            <% end %>
-        </div>
+        <% if leading_visual || @show_clear_button %>
+            <div class="FormControl-fieldWrap <%= @field_wrap_classes %>">
+                <%= leading_visual %>
+                <%= input %>
+                <% if @show_clear_button %>
+                    <button id="<%= @input_id %>-clear" class="FormControl-trailingAction" aria-label="Clear"><%= primer_octicon "x" %></button>
+                <% end %>
+            </div>
+        <% else %>
+            <%= input %>
+        <% end %>
     </div>
-  <span class="autocomplete-body">
-    <% if @with_icon %>
-      <div class="form-control autocomplete-embedded-icon-wrap">
-        <%= render Primer::OcticonComponent.new(:search) %>
-    <% end %>
-    <%= input %>
-    <% if @is_clearable %>
-      <button id="<%= @input_id %>-clear" class="btn-octicon" aria-label="Clear"><%= primer_octicon "x" %></button>
-    <% end %>
-    <% if @with_icon %>
-      </div>
-    <% end %>
     <div class="Overlay-backdrop--anchor">
         <div class="Overlay Overlay--height-auto Overlay--width-auto">
             <div class="Overlay-body Overlay-body--paddingNone">
@@ -30,6 +22,5 @@
             </div>
         </div>
     </div>
-  </span>
   <div id="<%= @list_id %>-feedback" class="sr-only"></div>
 <% end %>
