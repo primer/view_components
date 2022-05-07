@@ -3,16 +3,6 @@
 module Beta
   # @label AutoComplete
   class AutoCompletePreview < ViewComponent::Preview
-    # @label Default Options
-    # @param label_text text
-    # @param is_label_inline toggle
-    # @param with_icon toggle
-    # @param show_clear_button toggle
-    # @param visually_hide_label toggle
-    def default(label_text: "Select a fruit", is_label_inline: false, with_icon: false, show_clear_button: false, visually_hide_label: false)
-      render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: "input-id", list_id: "test-id", src: "/auto_complete", is_label_inline: is_label_inline, with_icon: with_icon, show_clear_button: show_clear_button, visually_hide_label: visually_hide_label))
-    end
-
     # @label Playground
     # @param label_text text
     # @param is_label_inline toggle

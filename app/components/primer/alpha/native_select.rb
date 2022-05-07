@@ -1,26 +1,20 @@
 # frozen_string_literal: true
 
 module Primer
-  module <%= module_name %>
+  module Alpha
     # Add a general description of component here
     # Add additional usage considerations or best practices that may aid the user to use the component correctly.
     # @accessibility Add any accessibility considerations
-    class <%= class_name %> < Primer::Component
+    class NativeSelect < Primer::Component
       # @example Example goes here
       #
-      #   <%%= render(Primer::<%= class_name %>.new) { "Example" } %>
+      #   <%= render(Primer::NativeSelect.new) { "Example" } %>
       #
-      # @param system_arguments [Hash] <%%= link_to_system_arguments_docs %>
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] = "div"
       end
-<% if inline? -%>
-
-      def call
-        render(Primer::BaseComponent.new(**@system_arguments)) { content }
-      end
-<% end -%>
     end
   end
 end
