@@ -79,7 +79,8 @@ module Primer
         sanitized_args[:name] = @input_name
         sanitized_args[:tag] = :input
         sanitized_args[:autocomplete] = "off"
-
+        sanitized_args[:disabled] = true if @disabled
+        sanitized_args[:invalid] = true if @invalid
         sanitized_args[:type] = :text
         sanitized_args[:classes] = class_names(
           "FormControl",
@@ -147,7 +148,7 @@ module Primer
       # @param visually_hide_label [Boolean] Controls if the label is visible. If `true`, screen reader only text will be added.
       # @param show_clear_button [Boolean] Adds optional clear button.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, placeholder: nil, show_clear_button: false, visually_hide_label: false, size: DEFAULT_SIZE, label_position: DEFAULT_LABEL_POSITION, full_width: false, **system_arguments)
+      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, placeholder: nil, show_clear_button: false, visually_hide_label: false, size: DEFAULT_SIZE, label_position: DEFAULT_LABEL_POSITION, full_width: false, disabled: false, invalid: false, **system_arguments)
         @label_text = label_text
         @list_id = list_id
         @input_id = input_id
@@ -159,11 +160,16 @@ module Primer
         @system_arguments[:tag] = "auto-complete"
         @system_arguments[:src] = src
         @system_arguments[:for] = list_id
+        @disabled = disabled
+        @invalid = invalid
         @size = size
         @full_width = full_width
         @label_position = label_position
         @field_wrap_classes = class_names(
-          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)]
+          "FormControl-fieldWrap",
+          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
+          "FormControl-fieldWrap--disabled": disabled,
+          "FormControl-fieldWrap--invalid": invalid
         )
         @form_group_classes = class_names(
           LABEL_POSITION_MAPPINGS[fetch_or_fallback(LABEL_POSITION_OPTIONS, @label_position, DEFAULT_LABEL_POSITION)],
