@@ -9,8 +9,9 @@ module Beta
     # @param is_label_inline toggle
     # @param with_icon toggle
     # @param is_clearable toggle
-    def default(label_text: "Select a fruit", is_label_visible: true, is_label_inline: false, with_icon: false, is_clearable: false)
-      render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: "input-id", list_id: "test-id", src: "/auto_complete", is_label_visible: is_label_visible, is_label_inline: is_label_inline, with_icon: with_icon, is_clearable: is_clearable))
+    # @param visually_hide_label toggle
+    def default(label_text: "Select a fruit", is_label_visible: true, is_label_inline: false, with_icon: false, is_clearable: false, visually_hide_label: false)
+      render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: "input-id", list_id: "test-id", src: "/auto_complete", is_label_visible: is_label_visible, is_label_inline: is_label_inline, with_icon: with_icon, is_clearable: is_clearable, visually_hide_label: visually_hide_label))
     end
 
     # @label Playground
@@ -19,8 +20,9 @@ module Beta
     # @param is_label_inline toggle
     # @param with_icon toggle
     # @param is_clearable toggle
-    def playground(label_text: "Select a fruit", is_label_visible: true, is_label_inline: false, with_icon: false, is_clearable: false)
-      render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: "input-id", list_id: "test-id", src: "/auto_complete", is_label_visible: is_label_visible, is_label_inline: is_label_inline, with_icon: with_icon, is_clearable: is_clearable)) do |c|
+    # @param visually_hide_label toggle
+    def playground(label_text: "Select a fruit", is_label_visible: true, is_label_inline: false, with_icon: false, is_clearable: false, visually_hide_label: false)
+      render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: "input-id", list_id: "test-id", src: "/auto_complete", is_label_visible: is_label_visible, is_label_inline: is_label_inline, with_icon: with_icon, is_clearable: is_clearable, visually_hide_label: visually_hide_label)) do |c|
         c.results do
           render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c|
             Apple

@@ -122,16 +122,18 @@ module Primer
       # @param is_clearable [Boolean] Adds optional clear button.
       # @param is_label_inline [Boolean] Controls if the label is inline. On smaller screens, label will always become stacked.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, is_label_visible: true, is_label_inline: false, with_icon: false, is_clearable: false, **system_arguments)
+      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, is_label_visible: true, is_label_inline: false, with_icon: false, is_clearable: false, visually_hide_label: false, **system_arguments)
         @label_text = label_text
         @list_id = list_id
         @input_id = input_id
         @input_name = input_name || input_id
         @is_label_visible = is_label_visible
+        @visually_hide_label = visually_hide_label && "sr-only"
         @with_icon = with_icon
         @is_clearable = is_clearable
 
         @label_classes = is_label_inline ? "autocomplete-label-inline" : "autocomplete-label-stacked"
+        @form_group_classes = is_label_inline && "FormGroup--inline"
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = "auto-complete"
         @system_arguments[:src] = src

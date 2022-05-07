@@ -1,11 +1,7 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-    <div class="FormGroup">
-        <label for="<%= @input_id %>" class="FormControl-label">
-            <% if @is_label_visible %>
+    <div class="FormGroup <%= @form_group_classes %>">
+        <label for="<%= @input_id %>" class="FormControl-label <%= @visually_hide_label %>">
             <%= @label_text %>
-            <% else %>
-            <span class="sr-only"><%= @label_text %></span>
-            <% end %>
         </label>
         <div class="FormControl-fieldWrap">
             <%= render Primer::OcticonComponent.new(:search, classes: "FormControl-leadingVisual") %>
