@@ -1,11 +1,20 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <label for="<%= @input_id %>" class="<%= @label_classes %>">
-    <% if @is_label_visible %>
-      <%= @label_text %>
-    <% else %>
-      <span class="sr-only"><%= @label_text %></span>
-    <% end %>
-  </label>
+    <div class="FormGroup">
+        <label for="<%= @input_id %>" class="FormControl-label">
+            <% if @is_label_visible %>
+            <%= @label_text %>
+            <% else %>
+            <span class="sr-only"><%= @label_text %></span>
+            <% end %>
+        </label>
+        <div class="FormControl-fieldWrap">
+            <%= render Primer::OcticonComponent.new(:search, classes: "FormControl-leadingVisual") %>
+            <input class="FormControl" placeholder="Placeholder" />
+            <% if @is_clearable %>
+                <button id="<%= @input_id %>-clear" class="FormControl-trailingAction" aria-label="Clear"><%= primer_octicon "x" %></button>
+            <% end %>
+        </div>
+    </div>
   <span class="autocomplete-body">
     <% if @with_icon %>
       <div class="form-control autocomplete-embedded-icon-wrap">
