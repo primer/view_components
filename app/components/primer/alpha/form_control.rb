@@ -5,7 +5,7 @@ module Primer
     # Add a general description of component here
     # Add additional usage considerations or best practices that may aid the user to use the component correctly.
     # @accessibility Add any accessibility considerations
-    class NativeSelect < Primer::Component
+    class FormControl < Primer::Component
       status :alpha
 
       DEFAULT_SIZE = :medium
@@ -31,9 +31,15 @@ module Primer
         }
       }
 
+      # @example Example goes here
+      #
+      #   <%= render(Primer::FormControl.new) { "Example" } %>
+      #
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+
       def initialize(
-        label_text: nil,
-        input_id: nil,
+        label_text:,
+        input_id:,
         input_name: nil,
         placeholder: nil,
         show_clear_button: false,
@@ -53,7 +59,7 @@ module Primer
         @input_id = input_id
         @input_name = input_name || input_id
         @placeholder = placeholder
-        @visually_hide_label = visually_hide_label ? "sr-only" : ""
+        @visually_hide_label = visually_hide_label ? "sr-only" : nil
         @show_clear_button = show_clear_button
         @disabled = disabled ? "disabled" : nil
         @invalid = invalid ? "true" : nil

@@ -7,6 +7,8 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Alpha::Checkbox, {}],
+    [Primer::Alpha::FormControl, {}],
     [Primer::Alpha::NativeSelect, {}],
     [Primer::Alpha::Layout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }

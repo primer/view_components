@@ -1,0 +1,3 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <%= render Primer::Alpha::FormControl.new(label_text: @label_text, input_id: "input-id", visually_hide_label: @visually_hide_label, label_position: @label_position, disabled: @disabled, invalid: @invalid, type: "checkbox") %>
+<% end %>

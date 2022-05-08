@@ -1,3 +1,3 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <%= content %>
+    <%= render Primer::Alpha::FormControl.new(label_text: @label_text, input_id: "input-id", show_clear_button: @show_clear_button, visually_hide_label: @visually_hide_label, placeholder: @placeholder, size: @size, label_position: @label_position, full_width: @full_width, disabled: @disabled, invalid: @invalid) %>
 <% end %>
