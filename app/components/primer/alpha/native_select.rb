@@ -24,17 +24,19 @@ module Primer
       }.freeze
       LABEL_POSITION_OPTIONS = LABEL_POSITION_MAPPINGS.keys
 
-      renders_one :leading_visual, types: {
-        icon: lambda { |**system_arguments|
-          system_arguments[:classes] = class_names("FormControl-leadingVisual")
-          Primer::OcticonComponent.new(**system_arguments)
-        }
+      renders_one :option, lambda { |**system_arguments|
+        deny_tag_argument(**system_arguments)
+        system_arguments[:tag] = :option
+        system_arguments[:value] = @value
+
+        Primer::BaseComponent.new(**system_arguments)
       }
 
       def initialize(
         label_text: nil,
         input_id: nil,
         input_name: nil,
+        hint_text: nil,
         placeholder: nil,
         show_clear_button: false,
         visually_hide_label: nil,
@@ -43,13 +45,14 @@ module Primer
         full_width: false,
         disabled: false,
         invalid: false,
-        type: "text",
+        type: "select",
 
         **system_arguments
       )
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
         @label_text = label_text
+        @hint_text = hint_text
         @input_id = input_id
         @input_name = input_name || input_id
         @placeholder = placeholder

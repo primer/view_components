@@ -1,6 +1,9 @@
 <%= render Primer::BaseComponent.new(**@system_arguments, classes: @form_group_classes ) do %>
     <label for="<%= @input_id %>" class="FormControl-label <%= @visually_hide_label %>">
         <%= @label_text %>
+        <% if @hint_text %>
+            <p class="FormControl-label--hint"><%= @hint_text %></p>
+        <% end %>
     </label>
     <% if leading_visual || @show_clear_button %>
         <div class="<%= @field_wrap_classes %>">

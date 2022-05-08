@@ -5,7 +5,7 @@ module Primer
     # Add a general description of component here
     # Add additional usage considerations or best practices that may aid the user to use the component correctly.
     # @accessibility Add any accessibility considerations
-    class FormControl < Primer::Component
+    class TextInput < Primer::Component
       status :alpha
 
       DEFAULT_SIZE = :medium
@@ -33,13 +33,14 @@ module Primer
 
       # @example Example goes here
       #
-      #   <%= render(Primer::FormControl.new) { "Example" } %>
+      #   <%= render(Primer::TextInput.new) { "Example" } %>
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
 
       def initialize(
         label_text:,
         input_id:,
+        hint_text: nil,
         input_name: nil,
         placeholder: nil,
         show_clear_button: false,
@@ -56,6 +57,7 @@ module Primer
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
         @label_text = label_text
+        @hint_text = hint_text
         @input_id = input_id
         @input_name = input_name || input_id
         @placeholder = placeholder

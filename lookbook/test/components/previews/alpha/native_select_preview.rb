@@ -19,7 +19,9 @@ module Alpha
     # With empty option (`~` in YAML)
     # @param select_empty_option select [~, one, two, three]
     def playground(string_example: "Default value", boolean_example: false, select_example: :one)
-      render(Primer::Alpha::NativeSelect.new(string_example: string_example, boolean_example: boolean_example, select_example: select_example))
+      render(Primer::Alpha::NativeSelect.new(string_example: string_example, boolean_example: boolean_example, select_example: select_example)) do |c|
+        c.option(value: "one", label: "First item")
+      end
     end
   end
 end

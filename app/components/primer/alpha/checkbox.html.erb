@@ -1,3 +1,17 @@
-<%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <%= render Primer::Alpha::FormControl.new(label_text: @label_text, input_id: "input-id", visually_hide_label: @visually_hide_label, label_position: @label_position, disabled: @disabled, invalid: @invalid, type: "checkbox") %>
+<%= render Primer::BaseComponent.new(**@system_arguments, classes: @form_group_classes ) do %>
+    <%= render Primer::BaseComponent.new(
+        tag: :input,
+        placeholder: @placeholder,
+        id: @input_id,
+        name: @input_name,
+        disabled: @disabled,
+        type: "checkbox",
+        classes: @form_control_classes) do %>
+    <% end %>
+    <label for="<%= @input_id %>" class="FormControl-label <%= @visually_hide_label %>">
+        <%= @label_text %>
+        <% if @hint_text %>
+            <p class="FormControl-label--hint"><%= @hint_text %></p>
+        <% end %>
+    </label>
 <% end %>
