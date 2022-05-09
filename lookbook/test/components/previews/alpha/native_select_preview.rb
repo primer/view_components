@@ -7,19 +7,17 @@ module Alpha
   # @label NativeSelect
   class NativeSelectPreview < ViewComponent::Preview
     # @label Playground
-    # @param string_example text
-    # @param boolean_example toggle
-    # @param email_example email
-    # @param number_example number
-    # @param url_example url
-    # @param tel_example tel
-    # @param textarea_example textarea
-    # @param select_example select [one, two, three]
-    # @param select_custom_labels select [[One label, one], [Two label, two], [Three label, three]]
-    # With empty option (`~` in YAML)
-    # @param select_empty_option select [~, one, two, three]
-    def playground(string_example: "Default value", boolean_example: false, select_example: :one)
-      render(Primer::Alpha::NativeSelect.new(string_example: string_example, boolean_example: boolean_example, select_example: select_example)) do |c|
+    # @param label_text text
+    # @param hint_text text
+    # @param visually_hide_label toggle
+    # @param placeholder text
+    # @param size select [small, medium, large]
+    # @param label_position select [block, inline]
+    # @param full_width toggle
+    # @param disabled toggle
+    # @param invalid toggle
+    def playground(label_text: "Text input label", hint_text: "Hint text", visually_hide_label: false, placeholder: "Placeholder text", size: :medium, label_position: :block, full_width: false, disabled: false, invalid: false)
+      render(Primer::Alpha::NativeSelect.new(label_text: label_text, hint_text: hint_text, input_id: "input-id", visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, label_position: label_position, full_width: full_width, disabled: disabled, invalid: invalid)) do |c|
         c.option(value: "one", label: "First item")
       end
     end

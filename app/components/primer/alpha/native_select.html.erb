@@ -5,7 +5,9 @@
             <p class="FormControl-label--hint"><%= @hint_text %></p>
         <% end %>
     </label>
-    <%= render Primer::BaseComponent.new(tag: :select, placeholder: @placeholder, id: @input_id, name: @input_name, disabled: @disabled, invalid: @invalid, classes: @form_control_classes) do %>
-        <%= option %>
-    <% end %>
+    <div class="<%= @field_wrap_classes %>">
+        <%= render Primer::BaseComponent.new(tag: :select, placeholder: @placeholder, id: @input_id, name: @input_name, disabled: @disabled, invalid: @invalid, classes: @form_control_classes) do %>
+            <%= option %>
+        <% end %>
+    </div>
 <% end %>

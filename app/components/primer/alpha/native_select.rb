@@ -66,6 +66,7 @@ module Primer
         @type = type
         @field_wrap_classes = class_names(
           "FormControl-fieldWrap",
+          "FormControl-fieldWrap--select",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
           "FormControl-fieldWrap--disabled": disabled,
           "FormControl-fieldWrap--invalid": invalid
@@ -77,6 +78,7 @@ module Primer
         )
         @form_control_classes = class_names(
           "FormControl",
+          "FormControl--select",
           @full_width && "FormControl--fullWidth",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)]
         )

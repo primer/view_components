@@ -26,7 +26,7 @@ module Primer
 
       renders_one :leading_visual, types: {
         icon: lambda { |**system_arguments|
-          system_arguments[:classes] = class_names("FormControl-leadingVisual")
+          system_arguments[:classes] = class_names("FormControl--input-leadingVisual")
           Primer::OcticonComponent.new(**system_arguments)
         }
       }
@@ -71,6 +71,7 @@ module Primer
         @type = type
         @field_wrap_classes = class_names(
           "FormControl-fieldWrap",
+          "FormControl-fieldWrap--input",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
           "FormControl-fieldWrap--disabled": disabled,
           "FormControl-fieldWrap--invalid": invalid
@@ -82,6 +83,7 @@ module Primer
         )
         @form_control_classes = class_names(
           "FormControl",
+          "FormControl--input",
           @full_width && "FormControl--fullWidth",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)]
         )

@@ -10,7 +10,7 @@
             <%= leading_visual %>
             <%= render Primer::BaseComponent.new(tag: :input, placeholder: @placeholder, id: @input_id, name: @input_name, invalid: @invalid, disabled: @disabled, type: @type, classes: @form_control_classes) do %><% end %>
             <% if @show_clear_button %>
-                <button id="<%= @input_id %>-clear" class="FormControl-trailingAction" aria-label="Clear" <%= @disabled %>><%= primer_octicon "x" %></button>
+                <button id="<%= @input_id %>-clear" class="FormControl--input-trailingAction" aria-label="Clear" <%= @disabled %>><%= primer_octicon "x" %></button>
             <% end %>
         </div>
     <% else %>

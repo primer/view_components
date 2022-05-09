@@ -30,7 +30,8 @@ module Primer
           "FormGroup--formControls"
         )
         @form_control_classes = class_names(
-          "FormControl"
+          "FormControl",
+          "FormControl--checkbox"
         )
       end
     end
