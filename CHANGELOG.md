@@ -1,34 +1,12 @@
 # CHANGELOG
 
-<!--
-Authoring changelog entries
+## 0.0.73
 
-This file holds all the changes made in previous versions of Primer View Components and the ones coming to the next version.
-To add yours, you need to find in which category to write it under the `main` section. `Main` is the first section on top of the document.
-There are six categories currently in use, `New`, `Updates`, `Bug fixes`, `Breaking changes`, `Deprecations` and `Misc`.
+### Bug
 
-- New
-Category for new components, system behaviours, options and arguments changes
+- Add conditional check for shadow root to avoid errors.
 
-- Updates
-Every non-breaking change to the source code go there.
-
-- Bug Fixes
-Non-breaking bug fixes to existing code.
-
-- Breaking Changes
-The category for changes creating incompatibilities to code written with previous versions.
-It includes any changes to components name, signature and behaviour. Also, include removing tags options or changing file location.
-If you are not sure you made breaking changes, ask us in your pull request.
-
-- Deprecations
-For changes that explicitly deprecate part of the code base.
-
-- Misc
-The category for changes related to documentation, testing and tooling. Also, for pull requests that can't fit in other sections.
--->
-
-## main
+    _Kate Higa_
 
 ## 0.0.72
 
