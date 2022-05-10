@@ -4,7 +4,7 @@
 require "thor"
 require_relative "../lib/primer/view_components/version"
 
-# Publishes `primer_view_components` gem and npm package, and creates a new GitHub release.
+# Publishes `primer_view_components` gem and npm package.
 #
 # Usage:
 #
@@ -16,34 +16,12 @@ class PublishCLI < Thor::Group
     false
   end
 
-  def tools_are_installed
-    raise "The gh CLI tool couldn't be found on your PATH. Please install it and run `gh auth login` before continuing." unless run("which gh")
-  end
-
   def release_gem
     run("bundle exec rake release")
   end
 
   def release_npm
     run("npm publish --access public")
-  end
-
-  def github_release
-    run("gh release create v#{version} -n '#{release_notes}'")
-  end
-
-  private
-
-  def release_notes
-    changelog.gsub(/.*## #{version}/m, "").gsub(/^## .*/m, "").strip
-  end
-
-  def version
-    Primer::ViewComponents::VERSION::STRING
-  end
-
-  def changelog
-    File.read("CHANGELOG.md")
   end
 end
 
