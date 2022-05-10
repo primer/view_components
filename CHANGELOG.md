@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.0.74
+
+### Patch Changes
+
+- [#1150](https://github.com/primer/view_components/pull/1150) [`d2586024`](https://github.com/primer/view_components/commit/d25860241007f830678dad2218c144974f24aa98) Thanks [@jonrohan](https://github.com/jonrohan)! - Adding changesets workflow to the repository for managing releases.
+
 <!--
 Authoring changelog entries
 
@@ -30,13 +36,15 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 ## main
 
+## 0.0.74
+
 ## 0.0.73
 
 ### Bug
 
 - Add conditional check for shadow root to avoid errors.
 
-    _Kate Higa_
+  _Kate Higa_
 
 ## 0.0.72
 
@@ -45,25 +53,25 @@ The category for changes related to documentation, testing and tooling. Also, fo
 - Fix tooltip arrow being off-centered for `s` and `n`.
 - Revert tooltip arrow offset for `sw`, `se`, `nw`, and `ne`.
 
-    _Kate Higa_
+  _Kate Higa_
 
 ### Misc
 
 - Adding [lookbook](https://github.com/allmarkedup/lookbook) dev server to the project.
 
-    _Jon Rohan_
+  _Jon Rohan_
 
 - Bump @primer/behaviors and remove dead code.
 
-    _Kate Higa_
+  _Kate Higa_
 
 - Enable `eslint-plugin-custom-elements` linting rulesets.
 
-    _Kate Higa_, _Kristján Oddsson_
+  _Kate Higa_, _Kristján Oddsson_
 
 - Introduce `DeprecatedComponents` rubocop rule.
 
-    _Kate Higa_
+  _Kate Higa_
 
 - Fix alphabetization of components in docs.
 
@@ -96,7 +104,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 - Add responsive values for `text_align` system argument
 
-    _Lukas Spieß_
+  _Lukas Spieß_
 
 ## 0.0.70
 
@@ -104,25 +112,25 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 - Add `Tooltip` support to `Button`.
 
-    _Hector Garcia_
+  _Hector Garcia_
 
 - Add `Tooltip` support to `Link`.
 
-    _Hector Garcia_
+  _Hector Garcia_
 
 ### Updates
 
 - Bumps @primer/css to 19.7.1
-    _Kate Higa_
+  _Kate Higa_
 
 - Bumps auto-complete package to 3.1.0
 - Updates AutoComplete API with optional clear button, restricted icon, and other argument restrictions
 
-    _Lindsey Wild_, _Kate Higa_, _Owen Niblock_
+  _Lindsey Wild_, _Kate Higa_, _Owen Niblock_
 
 - Check for the `gh` CLI tool in release scripts.
 
-    _Cameron Dutro_
+  _Cameron Dutro_
 
 ### Bug Fixes
 
@@ -140,27 +148,27 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 - Add ability to attach custom CSS classes to items added to `Truncate` components.
 
-    _Cameron Dutro_
+  _Cameron Dutro_
 
 - Add `Primer::Alpha::Tooltip` component
 
-    _Kate Higa_, _Kristján Oddsson_
+  _Kate Higa_, _Kristján Oddsson_
 
 ### Breaking Changes
 
 - Module for [script/update-statuses-project.rb](script/update-statuses-project.rb) changed to `GitHub`
 
-    _Josh Soref_
+  _Josh Soref_
 
 ### Misc
 
 - Spelling fixes
 
-    _Josh Soref_
+  _Josh Soref_
 
 - Bump view_component in Gemfile.lock files
 
-    _Cameron Dutro_
+  _Cameron Dutro_
 
 - Remove markdown file mistakenly checked in.
 
@@ -174,7 +182,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 - Fix missing @primer/components dependency.
 
-    _Hector Garcia_
+  _Hector Garcia_
 
 ## 0.0.68
 
@@ -182,34 +190,34 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 - Add accessible labels to Search AutoComplete when provided with an icon.
 
-    _Andri Alexandrou_
+  _Andri Alexandrou_
 
 - Restricts children for AutoComplete API to prevent accessibility violations and misuse
 
-    _Lindsey Wild_
+  _Lindsey Wild_
 
 - Migrate from Heroku to Azure for the Rails storybook server.
 - Build storybook static assets into Docker image.
 
-    _Cameron Dutro_
+  _Cameron Dutro_
 
 - Remove CSS utilities from Blankslate
 
-    _Hector Garcia_
+  _Hector Garcia_
 
 - Improve last example on the PopoverComponent docs
 
-    _Hector Garcia_
+  _Hector Garcia_
 
 ### Bug Fixes
 
 - Fix live reloading during local docs development.
 
-    _Cameron Dutro_
+  _Cameron Dutro_
 
 - Fix sequence of content in Subhead.
 
-    _Hector Garcia_
+  _Hector Garcia_
 
 ### Deprecations
 
@@ -235,7 +243,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 - Updating octicons to `> 16`
 
-    _Jon Rohan_
+  _Jon Rohan_
 
 ## 0.0.66
 
@@ -255,7 +263,7 @@ The category for changes related to documentation, testing and tooling. Also, fo
 
 - Optimize logic for converting class names into args
 
-    *Josh Klina*
+  _Josh Klina_
 
 ### Deprecations
 
