@@ -20,11 +20,21 @@ For [npm](https://www.npmjs.com/) create an account with your personal email and
 
 ### Preparing a release
 
-Run `script/release` to prepare a release. This will check you're on the latest version of the `main` branch, bump the gem and npm package versions, tag the Changelog, and open a pull request with the changes. Even if no changes have been made to the JavaScript package we make a release anyway so the version numbers are always in sync. Once the tests have passed you can merge this pull request.
+Releases are managed by 🦋 [Changesets](https://github.com/atlassian/changesets#documentation) which is a great tool for managing major/minor/patch bumps and changelogs. More info can be found in our [how we work docs](https://github.com/github/design-infrastructure/blob/main/how-we-work/engineering/changesets.md#using-changesets-to-prepare-and-publish-a-release).
+
+We have the [changeset-bot comment on new pull requests](https://github.com/changesets/bot#readme) asking contributors or maintainers to add a changeset file, which will become the markdown supported changelog entry for the change.
+
+When creating the changeset always commit into the working branch (pull request branch), not `main`.
+
+When a pull request is approved merge it into the `main` branch. The changeset action will then create a Release pull request that includes this new pull request.
+
+Once maintainers have agreed and are satisfied with the release. Merge the Release pull request. Changesets will then publish a new GitHub release to the repository with the changelog and new version number.
 
 ### Publishing a release
 
-When the release pull request is merged into `main`, pull the changes and run `script/publish` to publish the library on rubygems and npm. This will also open a pre-filled release on GitHub, if you’re happy with the release notes hit ‘Publish’.
+When the release pull request is merged into `main`, pull the changes and run `script/publish` to publish the library on rubygems and npm.
+
+🎉 Congratulations! The new release has been published.
 
 ## Revert plan
 
