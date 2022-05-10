@@ -98,7 +98,8 @@ namespace :docs do
       Primer::Alpha::TabPanels,
       Primer::Alpha::Tooltip,
       Primer::ButtonComponent,
-      Primer::IconButton
+      Primer::IconButton,
+      Primer::LinkComponent
     ]
 
     all_components = Primer::Component.descendants - [Primer::BaseComponent]

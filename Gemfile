@@ -28,7 +28,7 @@ end
 # rubocop:enable Bundler/DuplicatedGem
 
 # Use Puma as the app server
-gem "puma", "~> 5.6.2"
+gem "puma", "~> 5.6.4"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem "webpacker", "~> 5.0"
 

@@ -1,7 +1,0 @@
-# Ignore everything apart from files in docs root and Gatsby build
-/*
-!docs
-docs/content/
-docs/node_modules/
-docs/src/
-docs/.cache/

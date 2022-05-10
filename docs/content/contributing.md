@@ -130,22 +130,13 @@ Here are a few things you can do that will increase the likelihood of your pull 
 * Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
 * Write a descriptive pull request message.
 
-## Deploying to Heroku
+## Deploying the Rails Storybook
 
-We have both `staging` and `production` environments. To deploy Storybook to Heroku, run the following in `#primer-view-components-ops`:
-
-```bash
-.deploy primer-view-components</branch> to <environment>
-```
-
-If no `branch` is passed, `main` will be deployed.
+The Rails storybook is currently deployed via GitHub Actions using [this workflow](https://github.com/primer/view_components/actions/workflows/deploy-production.yml). Deployments happen automatically on every merge to the `main` branch. The storybook runs in a Kubernetes cluster hosted within our team's Azure subscription. Please contact a member of the team for access.
 
 ## Publishing a Release
 
 To publish a release, you must have an account on [rubygems](https://rubygems.org/) and [npmjs](https://www.npmjs.com/). Additionally, you must have been added as a maintainer
 to the project. Please verify that you have 2FA enabled on both accounts.
 
-1. Make sure you are on the main branch and have pulled in the latest changes.
-1. Run `script/release` and follow the instructions.
-1. Once your release PR has been approved and merged, run `script/publish`. You may be prompted to log into your rubygem and npm account.
-1. Lastly, draft a new release from the [releases page](https://github.com/primer/view_components/releases). The tag version should be updated to the newest version. The description should be updated to the relevant CHANGELOG descriptions. Press the `Publish release` button and you're good to go!
+1. Once the changesets release PR has been approved and merged, run `script/publish`. This will build and publish the packages. You may be prompted to log into your rubygem and npm account.

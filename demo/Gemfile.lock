@@ -20,7 +20,7 @@ GIT
 PATH
   remote: ..
   specs:
-    primer_view_components (0.0.69)
+    primer_view_components (0.0.73)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 17.0.0)
@@ -212,7 +212,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.3-x86_64-darwin)
       racc (~> 1.4)
-    octicons (17.0.0)
+    octicons (17.1.0)
     oj (3.13.11)
     os (1.1.4)
     pry (0.13.1)
@@ -222,7 +222,7 @@ GEM
       byebug (~> 11.0)
       pry (~> 0.13.0)
     public_suffix (4.0.6)
-    puma (5.6.2)
+    puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
@@ -300,7 +300,7 @@ DEPENDENCIES
   kuby-kind (~> 0.1)
   primer_view_components!
   pry-byebug
-  puma (~> 5.6.2)
+  puma (~> 5.6.4)
   rack-cors
   railties (= 6.1.1)
   rake (~> 13.0)

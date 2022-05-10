@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.0.69",
+  "version": "0.0.73",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -24,28 +24,34 @@
     "app/components/primer/**/*.d.ts"
   ],
   "scripts": {
+    "build:docs": "cd docs && yarn gatsby build --prefix-paths",
+    "build:docs:preview": "cd docs && yarn gatsby build",
     "prepare": "tsc && rollup -c",
-    "lint": "eslint app/components demo/.storybook",
-    "lint:fix": "eslint app/components demo/.storybook --fix"
+    "lint": "eslint 'app/components/**/*.ts' demo/.storybook",
+    "lint:fix": "eslint 'app/components/**/*.ts' demo/.storybook --fix",
+    "changeset:version": "changeset version && script/version"
   },
   "dependencies": {
-    "@github/auto-complete-element": "^3.0.2",
+    "@github/auto-complete-element": "^3.1.0",
     "@github/clipboard-copy-element": "^1.1.2",
     "@github/details-menu-element": "^1.0.12",
     "@github/image-crop-element": "^5.0.0",
     "@github/tab-container-element": "^3.1.0",
     "@github/time-elements": "^3.1.2",
-    "@primer/behaviors": "^1.0.3"
+    "@primer/behaviors": "^1.1.2"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.4",
+    "@changesets/cli": "^2.22.0",
     "@github/prettier-config": "0.0.4",
-    "@primer/css": "^19.0.0",
+    "@primer/css": "^20.0.0",
     "@primer/primitives": "^7.1.0",
     "@rollup/plugin-node-resolve": "^11.2.0",
     "@rollup/plugin-typescript": "^8.2.0",
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
     "eslint": "^7.20.0",
+    "eslint-plugin-custom-elements": "^0.0.6",
     "eslint-plugin-github": "^4.1.1",
     "eslint-plugin-prettier": "^3.3.1",
     "mocha": "^8.3.0",
