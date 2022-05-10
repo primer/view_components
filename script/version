@@ -4,13 +4,11 @@
 require "thor"
 require_relative "../lib/primer/view_components/version"
 
-# Prepares a release PR for `primer_view_components`.
+# Versions primer_view_components gem based on the package.json file.
 #
 # Usage:
 #
-# script/release for a patch release
-# script/release --major for a major release
-# script/release --minor for a minor release
+# script/version
 class ReleaseCLI < Thor::Group
   include Thor::Actions
 
