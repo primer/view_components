@@ -23,7 +23,6 @@ class PublishCLI < Thor::Group
   def release_npm
     run("npm publish --access public")
   end
-
 end
 
 PublishCLI.start(ARGV)
