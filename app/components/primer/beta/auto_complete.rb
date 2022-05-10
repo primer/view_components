@@ -144,13 +144,15 @@ module Primer
         input(classes: "") unless input
       end
 
+      private
+
       # Private: determines the label classes based on component configration.
       #
       # If the label is not visible, return an empty string.
       #
       # @param args [Hash] The component configuration.
       # @return [String] The label classes.
-      private def label_classes(**args)
+      def label_classes(**args)
         return "" if args[:is_label_visible] == false
 
         args[:is_label_inline] ? "autocomplete-label-inline" : "autocomplete-label-stacked"
