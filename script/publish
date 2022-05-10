@@ -4,7 +4,7 @@
 require "thor"
 require_relative "../lib/primer/view_components/version"
 
-# Publishes `primer_view_components` gem and npm package, and creates a new GitHub release.
+# Publishes `primer_view_components` gem and npm package.
 #
 # Usage:
 #
