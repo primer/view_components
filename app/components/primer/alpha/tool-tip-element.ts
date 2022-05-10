@@ -1,3 +1,4 @@
+// eslint-disable-next-line prettier/prettier
 import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 
@@ -42,7 +43,7 @@ class ToolTipElement extends HTMLElement {
         white-space: normal;
         width: max-content;
       }
-      
+
       :host:before{
         position: absolute;
         z-index: 1000001;
@@ -51,7 +52,7 @@ class ToolTipElement extends HTMLElement {
         border: 6px solid transparent;
         opacity: 0
       }
-      
+
       @keyframes tooltip-appear {
         from {
           opacity: 0
@@ -60,7 +61,7 @@ class ToolTipElement extends HTMLElement {
           opacity: 1
         }
       }
-      
+
       :host:after{
         position: absolute;
         display: block;
@@ -69,7 +70,7 @@ class ToolTipElement extends HTMLElement {
         height: 12px;
         content: ""
       }
-      
+
       :host(.${TOOLTIP_OPEN_CLASS}),
       :host(.${TOOLTIP_OPEN_CLASS}):before {
         animation-name: tooltip-appear;
@@ -78,7 +79,7 @@ class ToolTipElement extends HTMLElement {
         animation-timing-function: ease-in;
         animation-delay: .4s
       }
-      
+
       :host(.tooltip-s):before,
       :host(.tooltip-n):before {
         right: 50%;
@@ -91,38 +92,38 @@ class ToolTipElement extends HTMLElement {
         bottom: 100%;
         border-bottom-color: var(--color-neutral-emphasis-plus)
       }
-      
+
       :host(.tooltip-s):after,
       :host(.tooltip-se):after,
       :host(.tooltip-sw):after {
         bottom: 100%
       }
-      
+
       :host(.tooltip-n):before,
       :host(.tooltip-ne):before,
       :host(.tooltip-nw):before {
         top: 100%;
         border-top-color: var(--color-neutral-emphasis-plus)
       }
-      
+
       :host(.tooltip-n):after,
       :host(.tooltip-ne):after,
       :host(.tooltip-nw):after {
         top: 100%
       }
-      
+
       :host(.tooltip-se):before,
       :host(.tooltip-ne):before {
         left: 0;
         margin-left: ${TOOLTIP_ARROW_EDGE_OFFSET}px;
       }
-      
+
       :host(.tooltip-sw):before,
       :host(.tooltip-nw):before {
         right: 0;
         margin-right: ${TOOLTIP_ARROW_EDGE_OFFSET}px;
       }
-      
+
       :host(.tooltip-w):before {
         top: 50%;
         bottom: 50%;
@@ -130,7 +131,7 @@ class ToolTipElement extends HTMLElement {
         margin-top: -6px;
         border-left-color: var(--color-neutral-emphasis-plus)
       }
-      
+
       :host(.tooltip-e):before {
         top: 50%;
         right: 100%;
