@@ -8,7 +8,7 @@ module Alpha
   class NativeSelectPreview < ViewComponent::Preview
     # @label Playground
     # @param label_text text
-    # @param hint_text text
+    # @param caption text
     # @param visually_hide_label toggle
     # @param placeholder text
     # @param size select [small, medium, large]
@@ -16,8 +16,8 @@ module Alpha
     # @param full_width toggle
     # @param disabled toggle
     # @param invalid toggle
-    def playground(label_text: "Text input label", hint_text: "Hint text", visually_hide_label: false, placeholder: "Placeholder text", size: :medium, label_position: :block, full_width: false, disabled: false, invalid: false)
-      render(Primer::Alpha::NativeSelect.new(label_text: label_text, hint_text: hint_text, input_id: "input-id", visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, label_position: label_position, full_width: full_width, disabled: disabled, invalid: invalid)) do |c|
+    def playground(label_text: "Text input label", caption: "Hint text", visually_hide_label: false, placeholder: "Placeholder text", size: :medium, label_position: :block, full_width: false, disabled: false, invalid: false)
+      render(Primer::Alpha::NativeSelect.new(label_text: label_text, caption: caption, input_id: "input-id", visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, label_position: label_position, full_width: full_width, disabled: disabled, invalid: invalid)) do |c|
         c.option(value: "one", label: "First item")
       end
     end

@@ -10,8 +10,8 @@
     <% end %>
     <label for="<%= @input_id %>" class="FormControl-label <%= @visually_hide_label %>">
         <%= @label_text %>
-        <% if @hint_text %>
-            <p class="FormControl-label--hint"><%= @hint_text %></p>
+        <% if @caption %>
+            <p class="FormControl-label--caption" id="<%= @caption_id %>"><%= @caption %></p>
         <% end %>
     </label>
 <% end %>

@@ -35,8 +35,9 @@ module Primer
       def initialize(
         label_text: nil,
         input_id: nil,
+        caption_id: "caption-#{SecureRandom.hex(4)}",
         input_name: nil,
-        hint_text: nil,
+        caption: nil,
         placeholder: nil,
         show_clear_button: false,
         visually_hide_label: nil,
@@ -45,15 +46,18 @@ module Primer
         full_width: false,
         disabled: false,
         invalid: false,
-        type: "select",
+        # aria_described_by: nil,
 
         **system_arguments
       )
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
+        # this needs to push to the <select> element somehow (haaalp)
+        @system_arguments[:ariaDescribedBy] = caption_id.to_s
         @label_text = label_text
-        @hint_text = hint_text
+        @caption = caption
         @input_id = input_id
+        @caption_id = caption_id
         @input_name = input_name || input_id
         @placeholder = placeholder
         @visually_hide_label = visually_hide_label ? "sr-only" : ""
@@ -63,7 +67,7 @@ module Primer
         @size = size
         @full_width = full_width
         @label_position = label_position
-        @type = type
+        # @aria_described_by = @caption_id.to_s
         @field_wrap_classes = class_names(
           "FormControl-fieldWrap",
           "FormControl-fieldWrap--select",

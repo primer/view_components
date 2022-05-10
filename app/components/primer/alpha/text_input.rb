@@ -40,7 +40,8 @@ module Primer
       def initialize(
         label_text:,
         input_id:,
-        hint_text: nil,
+        caption_id: "caption-#{SecureRandom.hex(4)}",
+        caption: nil,
         input_name: nil,
         placeholder: nil,
         show_clear_button: false,
@@ -57,8 +58,9 @@ module Primer
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
         @label_text = label_text
-        @hint_text = hint_text
+        @caption = caption
         @input_id = input_id
+        @caption_id = caption_id
         @input_name = input_name || input_id
         @placeholder = placeholder
         @visually_hide_label = visually_hide_label ? "sr-only" : nil

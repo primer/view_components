@@ -8,7 +8,7 @@ module Alpha
   class TextInputPreview < ViewComponent::Preview
     # @label Playground
     # @param label_text text
-    # @param hint_text text
+    # @param caption text
     # @param show_clear_button toggle
     # @param visually_hide_label toggle
     # @param placeholder text
@@ -17,8 +17,8 @@ module Alpha
     # @param full_width toggle
     # @param disabled toggle
     # @param invalid toggle
-    def playground(label_text: "Text input label", hint_text: "Hint text", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, label_position: :block, full_width: false, disabled: false, invalid: false)
-      render(Primer::Alpha::TextInput.new(label_text: label_text, hint_text: hint_text, input_id: "input-id", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, label_position: label_position, full_width: full_width, disabled: disabled, invalid: invalid)) do |c|
+    def playground(label_text: "Text input label", caption: "Hint text", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, label_position: :block, full_width: false, disabled: false, invalid: false)
+      render(Primer::Alpha::TextInput.new(label_text: label_text, caption: caption, input_id: "input-id", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, label_position: label_position, full_width: full_width, disabled: disabled, invalid: invalid)) do |c|
         c.leading_visual_icon(icon: :search)
       end
     end

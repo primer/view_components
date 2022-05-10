@@ -1,9 +1,6 @@
 <%= render Primer::BaseComponent.new(**@system_arguments, classes: @form_group_classes ) do %>
     <label for="<%= @input_id %>" class="FormControl-label <%= @visually_hide_label %>">
         <%= @label_text %>
-        <% if @hint_text %>
-            <p class="FormControl-label--hint"><%= @hint_text %></p>
-        <% end %>
     </label>
     <% if leading_visual || @show_clear_button %>
         <div class="<%= @field_wrap_classes %>">
@@ -13,7 +10,13 @@
                 <button id="<%= @input_id %>-clear" class="FormControl--input-trailingAction" aria-label="Clear" <%= @disabled %>><%= primer_octicon "x" %></button>
             <% end %>
         </div>
+        <% if @caption %>
+            <p class="FormControl-label--caption" id="<%= @caption_id %>"><%= @caption %></p>
+        <% end %>
     <% else %>
         <%= render Primer::BaseComponent.new(tag: :input, placeholder: @placeholder, id: @input_id, name: @input_name, disabled: @disabled, invalid: @invalid, type: @type, classes: @form_control_classes) do %><% end %>
+        <% if @caption %>
+            <p class="FormControl-label--caption" id="<%= @caption_id %>"><%= @caption %></p>
+        <% end %>
     <% end %>
 <% end %>

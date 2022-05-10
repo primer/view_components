@@ -8,11 +8,11 @@ module Alpha
   class CheckboxPreview < ViewComponent::Preview
     # @label Playground
     # @param label_text text
-    # @param hint_text text
+    # @param caption text
     # @param visually_hide_label toggle
     # @param disabled toggle
-    def playground(label_text: "Label", hint_text: "Hint text", visually_hide_label: false, disabled: false)
-      render(Primer::Alpha::Checkbox.new(label_text: label_text, hint_text: hint_text, input_id: "input-id", visually_hide_label: visually_hide_label, disabled: disabled))
+    def playground(label_text: "Label", caption: "Hint text", visually_hide_label: false, disabled: false)
+      render(Primer::Alpha::Checkbox.new(label_text: label_text, caption: caption, input_id: "input-id", visually_hide_label: visually_hide_label, disabled: disabled))
     end
 
     # @label Long label

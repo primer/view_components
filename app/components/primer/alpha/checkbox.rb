@@ -7,7 +7,7 @@ module Primer
 
       def initialize(
         label_text: nil,
-        hint_text: nil,
+        caption: nil,
         input_id: nil,
         input_name: nil,
         visually_hide_label: false,
@@ -19,7 +19,7 @@ module Primer
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
         @label_text = label_text
-        @hint_text = hint_text
+        @caption = caption
         @input_id = input_id
         @input_name = input_name || input_id
         @visually_hide_label = visually_hide_label ? "sr-only" : nil
