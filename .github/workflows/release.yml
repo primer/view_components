@@ -30,6 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           yarn
+          bundle install
 
       - name: Create release pull request or publish to npm
         id: changesets
