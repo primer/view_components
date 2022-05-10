@@ -28,16 +28,8 @@
     "wingrunr21.vscode-ruby",
     "mutantdino.resourcemonitor"
   ],
-  "forwardPorts": [
-    4000,
-    5000,
-    5400
-  ],
-  "appPort": [
-    4000,
-    5000,
-    5400
-  ],
+  "forwardPorts": [4000, 5000, 5400],
+  "appPort": [4000, 5000, 5400],
   "portsAttributes": {
     "4000": {
       "label": "web"
@@ -49,15 +41,14 @@
       "label": "doctocat"
     }
   },
-  "codespaces": {
-    "repositories": [
-      {
-        "name": "primer/css",
-        "permissions": {
-          "contents": "read",
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "primer/css": {
+          "permissions": "write-all"
         }
       }
-    ]
+    }
   },
   "hostRequirements": {
     "memory": "8gb"
