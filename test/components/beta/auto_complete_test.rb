@@ -136,6 +136,12 @@ class PrimerAutoCompleteTest < Minitest::Test
     assert_selector("label.autocomplete-label-inline")
   end
 
+  def test_applies_correct_class_when_is_label_visible_is_false
+    render_inline Primer::Beta::AutoComplete.new(label_text: "Cool Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id", is_label_visible: false)
+
+    refute_selector("label.autocomplete-label-inline")
+  end
+
   def test_renders_results_with_custom_classes
     render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", list_id: "my-list-id", input_id: "test-input") do |component|
       component.results(classes: "my-class")

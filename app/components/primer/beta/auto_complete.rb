@@ -131,7 +131,7 @@ module Primer
         @with_icon = with_icon
         @is_clearable = is_clearable
 
-        @label_classes = is_label_inline ? "autocomplete-label-inline" : "autocomplete-label-stacked"
+        @label_classes = label_classes(is_label_visible: is_label_visible, is_label_inline: is_label_inline)
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = "auto-complete"
         @system_arguments[:src] = src
@@ -142,6 +142,20 @@ module Primer
       def before_render
         results(classes: "") unless results
         input(classes: "") unless input
+      end
+
+      private
+
+      # Private: determines the label classes based on component configration.
+      #
+      # If the label is not visible, return an empty string.
+      #
+      # @param args [Hash] The component configuration.
+      # @return [String] The label classes.
+      def label_classes(**args)
+        return "" if args[:is_label_visible] == false
+
+        args[:is_label_inline] ? "autocomplete-label-inline" : "autocomplete-label-stacked"
       end
     end
   end
