@@ -29,7 +29,7 @@
     "prepare": "tsc && rollup -c",
     "lint": "eslint 'app/components/**/*.ts' demo/.storybook",
     "lint:fix": "eslint 'app/components/**/*.ts' demo/.storybook --fix",
-    "changeset:version": "changeset version"
+    "changeset:version": "changeset version && script/version"
   },
   "dependencies": {
     "@github/auto-complete-element": "^3.1.0",
