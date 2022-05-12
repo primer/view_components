@@ -14,6 +14,8 @@ module ERBLint
           indicator_node, _, code_node = *erb_node
           code = code_node.children.first
           ast = erb_ast(code)
+          next unless ast
+
           super_call_nodes = find_super_call_nodes(ast)
           next if super_call_nodes.empty?
 

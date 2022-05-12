@@ -49,6 +49,22 @@ class SuperInComponentTemplatesTest < LinterTestCase
     assert_equal expected, corrected_content
   end
 
+  def test_replaces_super_when_nested
+    @file = <<~ERB
+      <div>
+        <% 3.times { |_i| super } %>
+      </div>
+    ERB
+
+    expected = <<~ERB
+      <div>
+        <% 3.times { |_i| render_parent } %>
+      </div>
+    ERB
+
+    assert_equal expected, corrected_content
+  end
+
   private
 
   def linter_class
