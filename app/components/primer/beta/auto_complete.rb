@@ -23,13 +23,6 @@ module Primer
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
-      DEFAULT_LABEL_POSITION = :block
-      LABEL_POSITION_MAPPINGS = {
-        :inline => "FormGroup--inline",
-        DEFAULT_LABEL_POSITION => ""
-      }.freeze
-      LABEL_POSITION_OPTIONS = LABEL_POSITION_MAPPINGS.keys
-
       #
       # Customizable results list.
       #
@@ -148,7 +141,7 @@ module Primer
       # @param visually_hide_label [Boolean] Controls if the label is visible. If `true`, screen reader only text will be added.
       # @param show_clear_button [Boolean] Adds optional clear button.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, placeholder: nil, show_clear_button: false, visually_hide_label: false, size: DEFAULT_SIZE, label_position: DEFAULT_LABEL_POSITION, full_width: false, disabled: false, invalid: false, **system_arguments)
+      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, placeholder: nil, show_clear_button: false, visually_hide_label: false, size: DEFAULT_SIZE, full_width: false, disabled: false, invalid: false, **system_arguments)
         @label_text = label_text
         @list_id = list_id
         @input_id = input_id
@@ -164,7 +157,6 @@ module Primer
         @invalid = invalid
         @size = size
         @full_width = full_width
-        @label_position = label_position
         @field_wrap_classes = class_names(
           "FormControl-fieldWrap",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
@@ -172,7 +164,6 @@ module Primer
           "FormControl-fieldWrap--invalid": invalid
         )
         @form_group_classes = class_names(
-          LABEL_POSITION_MAPPINGS[fetch_or_fallback(LABEL_POSITION_OPTIONS, @label_position, DEFAULT_LABEL_POSITION)],
           "FormGroup--fullWidth": full_width
         )
       end
