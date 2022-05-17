@@ -3,7 +3,7 @@ import {getAnchoredPosition} from '@primer/behaviors'
 
 // <over-lay open data-anchor-align="start" data-anchor-side="outside-bottom">
 
-class OverLayElement extends HTMLElement {
+class AnchoredOverlayElement extends HTMLElement {
   #abortController: AbortController
 
   get anchorAlign(): AnchorAlignment {
@@ -160,13 +160,13 @@ class OverLayElement extends HTMLElement {
   // }
 }
 
-if (!window.customElements.get('over-lay')) {
-  window.OverLayElement = OverLayElement
-  window.customElements.define('over-lay', OverLayElement)
+if (!window.customElements.get('anchored-overlay')) {
+  window.AnchoredOverlayElement = AnchoredOverlayElement
+  window.customElements.define('anchored-overlay', AnchoredOverlayElement)
 }
 
 declare global {
   interface Window {
-    OverLayElement: typeof OverLayElement
+    AnchoredOverlayElement: typeof AnchoredOverlayElement
   }
 }

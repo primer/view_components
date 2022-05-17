@@ -113,7 +113,7 @@ module Primer
       # Optional button to open the overlay.
       #
       # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
-      renders_one :show_trigger_button, lambda { |**system_arguments|
+      renders_one :renderTrigger, lambda { |**system_arguments|
         system_arguments[:classes] = class_names(
           system_arguments[:classes]
         )
@@ -148,7 +148,7 @@ module Primer
       #       overlay_id: "overlay-without-footer",
       #       variant: { narrow: :full, regular: :center },
       #     )) do |c| %>
-      #       <% c.show_trigger_button { "Open overlay" } %>
+      #       <% c.renderTrigger { "Open overlay" } %>
       #       <% c.body do %>
       #         <p>The body of the overlay</p>
       #       <% end %>
@@ -167,12 +167,12 @@ module Primer
       # @param variant [Symbol] Set position for narrow and regular screens.
       # @param placement [Symbol] Optional: set placement for narrow and regular screens.
       def initialize(
-        title: nil, description: nil,
+        title: nil, description: nil, role: nil,
         overlay_id: "overlay-#{SecureRandom.hex(4)}",
         show_header_divider: true,
         show_footer_divider: true,
         show_close_button: false,
-        overlay_hidden: false,
+        open: false,
         width: DEFAULT_WIDTH,
         height: DEFAULT_HEIGHT,
         placement_regular: DEFAULT_PLACEMENT_REGULAR,
@@ -189,12 +189,12 @@ module Primer
 
         @system_arguments[:tag] = "div"
         # make this generic
-        @system_arguments[:role] = :dialog
+        @system_arguments[:role] = role
 
         @show_header_divider = show_header_divider
         @show_footer_divider = show_footer_divider
         @show_close_button = show_close_button
-        @overlay_hidden = overlay_hidden
+        @open = open
         @width = width
         @height = height
         @placement_regular = placement_regular
@@ -217,7 +217,7 @@ module Primer
           VARIANT_NARROW_MAPPINGS[fetch_or_fallback(VARIANT_NARROW_OPTIONS, variant[:narrow], DEFAULT_VARIANT_NARROW)],
           PLACEMENT_REGULAR_MAPPINGS[fetch_or_fallback(PLACEMENT_REGULAR_OPTIONS, placement[:regular], DEFAULT_PLACEMENT_REGULAR)],
           PLACEMENT_NARROW_MAPPINGS[fetch_or_fallback(PLACEMENT_NARROW_OPTIONS, placement[:narrow], DEFAULT_PLACEMENT_NARROW)],
-          "Overlay-visibilityHidden": overlay_hidden
+          "Overlay--visibilityHidden": !open
         )
 
         @header_classes = class_names(

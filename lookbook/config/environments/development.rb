@@ -23,6 +23,8 @@ Rails.application.configure do
 
   config.hotwire_livereload.listen_paths << "/workspaces/css/src/"
 
+  config.hotwire_livereload.listen_paths << Rails.root.join('../app/assets/javascripts/')
+
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?

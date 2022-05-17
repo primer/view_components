@@ -1,5 +1,5 @@
-<%= show_trigger_button %>
-<div class="Overlay-backdrop <%= @backdrop_classes %>">
+<%= renderTrigger %>
+<anchored-overlay class="Overlay-backdrop <%= @backdrop_classes %>">
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
     <% if @title.present? %>
     <header class="Overlay-header <%= @header_classes %>">
@@ -27,4 +27,4 @@
     </footer>
     <% end %>
   <% end %>
-</div>
+</anchored-overlay>
