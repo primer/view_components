@@ -5,9 +5,11 @@ module Primer
     # Use `Blankslate` when there is a lack of content within a page or section. Use as placeholder to tell users why something isn't there.
     #
     # @accessibility
-    #   - Set the `heading` level based on what is appropriate for your page hierarchy. <%= link_to_heading_practices %>
-    #   - `secondary_action` can be set to provide more information that is relevant in the context of the `Blankslate`.
+    #   - The blankslate uses a semantic heading that must be set at the appropriate level based on the hierarchy of the page.
+    #   - All blankslate visuals have been programmed as decorative images, using `aria-hidden=”true”` and `img alt=””`,  which will hide the visual from screen reader users.
+    #   - The blankslate supports a primary and secondary action. Both actions have been built as semantic links with primary and secondary styling.
     #   - `secondary_action` text should be meaningful out of context and clearly describe the destination. Avoid using vague text like, "Learn more" or "Click here".
+    #   - The blankslate can leverage the spinner component, which will communicate to screen reader users that the content is still loading.
     class Blankslate < Primer::Component
       status :beta
 
@@ -24,20 +26,19 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :visual, types: {
         icon: lambda { |**system_arguments|
-          system_arguments[:mb] = 3
           system_arguments[:size] ||= :medium
           system_arguments[:classes] = class_names("blankslate-icon", system_arguments[:classes])
 
           Primer::OcticonComponent.new(**system_arguments)
         },
         spinner: lambda { |**system_arguments|
-          system_arguments[:mb] = 3
+          system_arguments[:classes] = class_names("blankslate-image", system_arguments[:classes])
 
           Primer::SpinnerComponent.new(**system_arguments)
         },
         image: lambda { |**system_arguments|
-          system_arguments[:mb] = 3
           system_arguments[:size] = "56x56"
+          system_arguments[:classes] = class_names("blankslate-image", system_arguments[:classes])
 
           Primer::Image.new(**system_arguments)
         }
@@ -50,8 +51,7 @@ module Primer
       renders_one :heading, lambda { |tag:, **system_arguments|
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = tag
-        system_arguments[:mb] = 1
-        system_arguments[:classes] = class_names("h2", system_arguments[:classes])
+        system_arguments[:classes] = class_names("blankslate-heading", system_arguments[:classes])
 
         Primer::HeadingComponent.new(**system_arguments)
       }
@@ -64,7 +64,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :description, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
-        system_arguments[:tag] = :div
+        system_arguments[:tag] = :p
 
         Primer::BaseComponent.new(**system_arguments)
       }
@@ -80,7 +80,6 @@ module Primer
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :a
         system_arguments[:href] = href
-        system_arguments[:mt] = 5
         system_arguments[:size] = :medium
         system_arguments[:scheme] ||= :primary
 
@@ -96,8 +95,6 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :secondary_action, lambda { |href:, **system_arguments|
         system_arguments[:href] = href
-        # Padding is needed to increase touch area.
-        system_arguments[:p] = 3
 
         Primer::LinkComponent.new(**system_arguments)
       }

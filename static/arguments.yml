@@ -95,6 +95,30 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Tooltip
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tooltip.rb
+  parameters:
+  - name: for_id
+    type: String
+    default: N/A
+    description: The ID of the element that the tooltip should be attached to.
+  - name: type
+    type: Symbol
+    default: N/A
+    description: One of `:description` and `:label`.
+  - name: direction
+    type: Symbol
+    default: "`:s`"
+    description: One of `:e`, `:n`, `:ne`, `:nw`, `:s`, `:se`, `:sw`, or `:w`.
+  - name: text
+    type: String
+    default: N/A
+    description: The text content of the tooltip. This should be brief and no longer
+      than a sentence.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: UnderlineNav
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/underline_nav.rb
   parameters:
@@ -165,6 +189,10 @@
 - component: AutoComplete
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete.rb
   parameters:
+  - name: label_text
+    type: String
+    default: N/A
+    description: The label of the input.
   - name: src
     type: String
     default: N/A
@@ -173,10 +201,33 @@
     type: String
     default: N/A
     description: Id of the input element.
+  - name: input_name
+    type: String
+    default: "`nil`"
+    description: Optional name of the input element, defaults to `input_id` when not
+      set.
   - name: list_id
     type: String
     default: N/A
     description: Id of the list element.
+  - name: with_icon
+    type: Boolean
+    default: "`false`"
+    description: Controls if a search icon is visible, defaults to `false`.
+  - name: is_label_visible
+    type: Boolean
+    default: "`true`"
+    description: Controls if the label is visible. If `false`, screen reader only
+      text will be added.
+  - name: is_clearable
+    type: Boolean
+    default: "`false`"
+    description: Adds optional clear button.
+  - name: is_label_inline
+    type: Boolean
+    default: "`false`"
+    description: Controls if the label is inline. On smaller screens, label will always
+      become stacked.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -444,7 +495,7 @@
   - name: reset
     type: Boolean
     default: "`false`"
-    description: Defatuls to false. If set to true, it will remove the default caret
+    description: Defaults to false. If set to true, it will remove the default caret
       and remove style from the summary element
   - name: system_arguments
     type: Hash

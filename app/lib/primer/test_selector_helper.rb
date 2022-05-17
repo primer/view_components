@@ -4,7 +4,7 @@ module Primer
   # Module to allow components to deal with the `test_selector` argument.
   # It will only add the selector if env is not Production.
   #
-  # test_selecotr: "foo" => data-test-selector="foo"
+  # test_selector: "foo" => data-test-selector="foo"
   module TestSelectorHelper
     TEST_SELECTOR_TAG = :test_selector
 

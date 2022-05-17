@@ -1,7 +1,7 @@
-import {Link} from '@primer/components'
+import { Link } from '@primer/react'
 import StatusLabel from '@primer/gatsby-theme-doctocat/src/components/status-label'
 import Table from '@primer/gatsby-theme-doctocat/src/components/table'
-import {graphql, Link as GatsbyLink, useStaticQuery} from 'gatsby'
+import { graphql, Link as GatsbyLink, useStaticQuery } from 'gatsby'
 import React from 'react'
 
 export function ComponentStatuses() {
@@ -48,7 +48,7 @@ export function ComponentStatuses() {
         </tr>
       </thead>
       <tbody>
-        {components.map(({slug, description, title, status}) => (
+        {components.map(({ slug, description, title, status }) => (
           <tr key={slug}>
             <td valign="top">
               <Link as={GatsbyLink} to={`/${slug}`}>

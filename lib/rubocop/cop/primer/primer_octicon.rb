@@ -207,7 +207,7 @@ module RuboCop
           return node.source unless node.type == :str
           return ":#{node.value}" unless node.value.include?("-")
 
-          # If the icon contains `-` we need to cast the string as a symbole
+          # If the icon contains `-` we need to cast the string as a symbol
           # E.g: `arrow-down` becomes `:"arrow-down"`
           ":#{node.source}"
         end

@@ -82,7 +82,8 @@ namespace :docs do
       Primer::Alpha::UnderlineNav,
       Primer::Alpha::UnderlinePanels,
       Primer::Alpha::TabNav,
-      Primer::Alpha::TabPanels
+      Primer::Alpha::TabPanels,
+      Primer::Alpha::Tooltip
     ]
 
     js_components = [
@@ -94,7 +95,10 @@ namespace :docs do
       Primer::TabContainerComponent,
       Primer::TimeAgoComponent,
       Primer::Alpha::UnderlinePanels,
-      Primer::Alpha::TabPanels
+      Primer::Alpha::TabPanels,
+      Primer::Alpha::Tooltip,
+      Primer::ButtonComponent,
+      Primer::LinkComponent
     ]
 
     all_components = Primer::Component.descendants - [Primer::BaseComponent]
@@ -106,7 +110,8 @@ namespace :docs do
     errors = []
 
     # Deletes docs before regenerating them, guaranteeing that we don't keep stale docs.
-    FileUtils.rm_rf(Dir.glob("docs/content/components/**/*.md"))
+    components_content_glob = File.join(*%w[docs content components ** *.md])
+    FileUtils.rm_rf(components_content_glob)
 
     components.sort_by(&:name).each do |component|
       documentation = registry.get(component.name)
@@ -114,7 +119,7 @@ namespace :docs do
       data = docs_metadata(component)
 
       path = Pathname.new(data[:path])
-      path.dirname.mkdir unless path.dirname.exist?
+      path.dirname.mkpath unless path.dirname.exist?
       File.open(path, "w") do |f|
         f.puts("---")
         f.puts("title: #{data[:title]}")
@@ -167,12 +172,12 @@ namespace :docs do
         f.puts("| Name | Type | Default | Description |")
         f.puts("| :- | :- | :- | :- |")
 
-        docummented_params = params.map(&:name)
+        documented_params = params.map(&:name)
         component_params = component.instance_method(:initialize).parameters.map { |p| p.last.to_s }
 
-        if (docummented_params & component_params).size != component_params.size
+        if (documented_params & component_params).size != component_params.size
           err = { arguments: {} }
-          (component_params - docummented_params).each do |arg|
+          (component_params - documented_params).each do |arg|
             err[:arguments][arg] = "Not documented"
           end
 
@@ -315,13 +320,18 @@ namespace :docs do
     nav_entries = Dir[File.join(*%w[adr *.md])].sort.map do |orig_path|
       orig_file_name = File.basename(orig_path)
       url_name = orig_file_name.chomp(".md")
-      title = ActiveSupport::Inflector.titleize(url_name.sub(/\A\d+-/, ""))
 
       file_contents = File.read(orig_path)
       file_contents = <<~CONTENTS.sub(/\n+\z/, "\n")
         <!-- Warning: AUTO-GENERATED file, do not edit. Make changes to the files in the adr/ directory instead. -->
         #{file_contents}
       CONTENTS
+
+      title_match = /^# (.+)/.match(file_contents)
+      title = title_match[1]
+
+      # Don't include initial ADR for recording ADRs
+      next nil if title == "Record architecture decisions"
 
       File.write(File.join(adr_content_dir, orig_file_name), file_contents)
       puts "Copied #{orig_path}"
@@ -332,9 +342,9 @@ namespace :docs do
     nav_yaml_file = File.join(*%w[docs src @primer gatsby-theme-doctocat nav.yml])
     nav_yaml = YAML.load_file(nav_yaml_file)
     adr_entry = {
-      "title" => "Architecture Decisions",
+      "title" => "Architecture decisions",
       "url" => "/adr",
-      "children" => nav_entries
+      "children" => nav_entries.compact
     }
 
     existing_index = nav_yaml.index { |entry| entry["url"] == "/adr" }
@@ -360,7 +370,7 @@ namespace :docs do
       short_name = component.name.gsub(/Primer|::/, "")
       initialize_method = documentation.meths.find(&:constructor?)
 
-      next unless initialize_method.tags(:example).any?
+      next unless initialize_method&.tags(:example)&.any?
 
       yard_example_tags = initialize_method.tags(:example)
 

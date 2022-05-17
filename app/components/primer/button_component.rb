@@ -56,6 +56,23 @@ module Primer
     }
     alias counter trailing_visual_counter # remove alias when all buttons are migrated to new slot names
 
+    # `Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.
+    # **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.
+    # Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
+    #
+    # @param type [Symbol] (:description) <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
+    # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Alpha::Tooltip) %>.
+    renders_one :tooltip, lambda { |**system_arguments|
+      raise ArgumentError, "Buttons with a tooltip must have a unique `id` set on the `Button`." if @id.blank? && !Rails.env.production?
+
+      @system_arguments = system_arguments
+
+      @system_arguments[:for_id] = @id
+      @system_arguments[:type] ||= :description
+
+      Primer::Alpha::Tooltip.new(**@system_arguments)
+    }
+
     # @example Schemes
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
@@ -96,6 +113,15 @@ module Primer
     #     Button
     #   <% end %>
     #
+    # @example With tooltip
+    #   @description
+    #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
+    #   @code
+    #     <%= render(Primer::ButtonComponent.new(id: "button-with-tooltip")) do |c| %>
+    #       <% c.tooltip(text: "Tooltip text") %>
+    #       Button
+    #     <% end %>
+    #
     # @param scheme [Symbol] <%= one_of(Primer::ButtonComponent::SCHEME_OPTIONS) %>
     # @param variant [Symbol] DEPRECATED. <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
     # @param size [Symbol] <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
@@ -118,6 +144,9 @@ module Primer
       @dropdown = dropdown
 
       @system_arguments = system_arguments
+
+      @id = @system_arguments[:id]
+
       @system_arguments[:classes] = class_names(
         system_arguments[:classes],
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],

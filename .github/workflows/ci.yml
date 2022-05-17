@@ -17,6 +17,7 @@ jobs:
       with:
         config: '.github/lint/markdown.json'
         args: '**/*.md'
+        ignore: './CHANGELOG.md'
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -154,7 +155,9 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 14
-    - run: yarn
+    - run: |
+        yarn
+        cd demo && yarn
     - name: Build and test with Rake
       run: |
         gem install bundler:2.2.9

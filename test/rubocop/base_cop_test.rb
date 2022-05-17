@@ -31,7 +31,7 @@ class BaseCopTest < CopTest
     refute cop.valid_node?(source.ast)
   end
 
-  def test_no_reciever_valid_node
+  def test_no_receiver_valid_node
     source = processed_source(<<-RUBY)
       new(true)
     RUBY

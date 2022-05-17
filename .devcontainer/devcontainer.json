@@ -40,5 +40,17 @@
     "5400": {
       "label": "doctocat"
     }
+  },
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "primer/css": {
+          "permissions": "write-all"
+        }
+      }
+    }
+  },
+  "hostRequirements": {
+    "memory": "8gb"
   }
 }

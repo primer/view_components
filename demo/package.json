@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "dependencies": {
+    "@primer/css": "^20.0.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "prettier": "^2.4.1",
@@ -21,7 +22,8 @@
   "scripts": {
     "storybook": "start-storybook -p 5000",
     "build-storybook": "build-storybook -o public/view-components/stories --preview-url=/view-components/stories/iframe.html --force-build-preview",
-    "build": "yarn build-storybook"
+    "build": "yarn build-storybook",
+    "postinstall": "cp node_modules/@primer/css/dist/primer.css app/assets/stylesheets"
   },
   "engines": {
     "yarn": "1.22.x"

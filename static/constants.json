@@ -138,6 +138,24 @@
       "div"
     ]
   },
+  "Primer::Alpha::Tooltip": {
+    "DIRECTION_DEFAULT": "s",
+    "DIRECTION_OPTIONS": [
+      "s",
+      "n",
+      "e",
+      "w",
+      "ne",
+      "nw",
+      "se",
+      "sw"
+    ],
+    "TYPE_FALLBACK": "description",
+    "TYPE_OPTIONS": [
+      "label",
+      "description"
+    ]
+  },
   "Primer::Alpha::UnderlineNav": {
     "BODY_TAG_DEFAULT": "ul",
     "TAG_DEFAULT": "nav",
@@ -181,15 +199,7 @@
     ]
   },
   "Primer::Beta::AutoComplete": {
-    "Input": "Primer::Beta::AutoComplete::Input",
     "Item": "Primer::Beta::AutoComplete::Item"
-  },
-  "Primer::Beta::AutoComplete::Input": {
-    "DEFAULT_TYPE": "text",
-    "TYPE_OPTIONS": [
-      "text",
-      "search"
-    ]
   },
   "Primer::Beta::AutoComplete::Item": {
   },
@@ -316,6 +326,8 @@
       "button",
       "submit"
     ]
+  },
+  "Primer::Content": {
   },
   "Primer::CounterComponent": {
     "DEFAULT_SCHEME": "default",
