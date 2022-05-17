@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@github/prettier-config": "0.0.4",
-    "@primer/css": "^20.0.0",
+    "@primer/css": "^20.1.0",
     "@primer/primitives": "^7.1.0",
     "@rollup/plugin-node-resolve": "^11.2.0",
     "@rollup/plugin-typescript": "^8.2.0",
