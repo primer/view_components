@@ -40,8 +40,8 @@ class ComponentGenerator < Thor::Group
     template("templates/#{status_template_path}system_test_preview.rb.tt", "demo/test/components/previews/primer/#{status_path}#{underscore_name}_preview.rb") if js_package_name
   end
 
-  def create_stories
-    template("templates/stories.tt", "stories/primer/#{status_path}#{underscore_name}_stories.rb")
+  def create_preview
+    template("templates/preview.tt", "lookbook/test/components/previews/#{status_path}#{underscore_name}_preview.rb")
   end
 
   def add_to_docs_rakefile
