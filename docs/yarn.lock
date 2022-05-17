@@ -1579,10 +1579,10 @@
   resolved "https://registry.yarnpkg.com/@primer/component-metadata/-/component-metadata-0.4.0.tgz#44b7d7b1285bea41c2a88621fd17f2c777a4c5e9"
   integrity sha512-yppmDSSDrN2CHwjq3h+RWhfpjehFQAx21JcEipYyNTp0f/kC+iazFVNCKZE6DOavAxv003ti7QIrp+QkPT9tpg==
 
-"@primer/css@^20.0.0":
-  version "20.0.0"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-20.0.0.tgz#315075ff9c41c9cf0f09e9a2b962ac86da7e3738"
-  integrity sha512-bzKJEgKM68GqwwLPfXEK1g5xb1sfZ7dKpnMAAWDWl1hVAADrmL0lcQ6xm29DCCi90RTT2bFF2CgU49d0g7PlTg==
+"@primer/css@^20.1.0":
+  version "20.1.0"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-20.1.0.tgz#15ec947c62b115d3aaccabc3583df81f9f6e80f5"
+  integrity sha512-S/CU9JsTtgW0sXH/DZ85WqJpaVOd0gIab6mmveLMeIMZ0Bj4sgXp8C/k8jUSeVglkynqlEBcx8Gfrjw9X8mVew==
   dependencies:
     "@primer/primitives" "^7.7.0"
 
