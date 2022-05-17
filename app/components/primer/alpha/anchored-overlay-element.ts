@@ -5,6 +5,7 @@ import {getAnchoredPosition} from '@primer/behaviors'
 
 class AnchoredOverlayElement extends HTMLElement {
   #abortController: AbortController
+  #openButton: HTMLButtonElement | undefined
 
   get anchorAlign(): AnchorAlignment {
     return (this.getAttribute('data-anchor-align') || 'start') as AnchorAlignment
@@ -45,13 +46,14 @@ class AnchoredOverlayElement extends HTMLElement {
 
     if (value) {
       if (this.open) return
-      if (!this.trigger) return
+      //   if (!this.trigger) return
       this.setAttribute('open', '')
 
       this.#updatePosition()
       // If the window width is changed when the menu is open,
       // this keeps the menu aligned to the button
       observer.observe(document.body)
+      this.setAttribute('open', '')
       this.classList.remove('Overlay--visibilityHidden')
     } else {
       if (!this.open) return
@@ -71,6 +73,45 @@ class AnchoredOverlayElement extends HTMLElement {
 
   connectedCallback() {
     if (!this.trigger) return
+    const {signal} = (this.#abortController = new AbortController())
+
+    this.ownerDocument.addEventListener(
+      'click',
+      event => {
+        const target = event.target as HTMLElement
+        const clickOutsideDialog = target.closest(this.tagName) !== this
+        const button = target?.closest('button')
+        // go over this logic:
+        if (!button) {
+          if (clickOutsideDialog) {
+            // This click is outside the dialog
+            this.close()
+          }
+          return
+        }
+
+        let dialogId = button.getAttribute('data-close-overlay-id')
+        if (dialogId === this.id) {
+          this.close()
+        }
+
+        dialogId = button.getAttribute('data-submit-overlay-id')
+        if (dialogId === this.id) {
+          this.close(true)
+        }
+
+        dialogId = button.getAttribute('data-show-overlay-id')
+        if (dialogId === this.id) {
+          //TODO: see if I can remove this
+          event.stopPropagation()
+          //   this.#openButton = button
+          this.show()
+        }
+      },
+      {signal}
+    )
+
+    // this.addEventListener('keydown', e => this.#keydown(e))
   }
 
   disconnectedCallback() {
@@ -79,6 +120,13 @@ class AnchoredOverlayElement extends HTMLElement {
 
   show() {
     this.open = true
+  }
+
+  close(closed = false) {
+    const eventType = closed ? 'close' : 'cancel'
+    const dialogEvent = new Event(eventType)
+    this.dispatchEvent(dialogEvent)
+    this.open = false
   }
 
   hide() {
@@ -100,64 +148,11 @@ class AnchoredOverlayElement extends HTMLElement {
 
     const float = this.querySelector<HTMLElement>('[data-menu-overlay]')
     const anchor = this.trigger
-    const {top, left} = getAnchoredPosition(float, anchor, {side: this.anchorSide, align: this.anchorAlign})
+    // const {top, left} = getAnchoredPosition(float, anchor, {side: this.anchorSide, align: this.anchorAlign})
 
-    float.style.top = `${top}px`
-    float.style.left = `${left}px`
+    // float.style.top = `${top}px`
+    // float.style.left = `${left}px`
   }
-
-  //   // Menu event handlers
-  //   buttonKeydown(event: KeyboardEvent) {
-  //     // TODO: use data-hotkey
-  //     // eslint-disable-next-line no-restricted-syntax
-  //     const key = event.key
-  //     let flag = false
-
-  //     switch (key) {
-  //       case ' ':
-  //       case 'Enter':
-  //       case 'ArrowDown':
-  //       case 'Down':
-  //         this.show()
-  //         this.setFocusToMenuItem(this.#firstMenuItem)
-  //         flag = true
-  //         break
-
-  //       case 'Esc':
-  //       case 'Escape':
-  //         this.hide()
-  //         flag = true
-  //         break
-
-  //       case 'Up':
-  //       case 'ArrowUp':
-  //         this.show()
-  //         this.setFocusToMenuItem(this.#lastMenuItem)
-  //         flag = true
-  //         break
-
-  //       default:
-  //         break
-  //     }
-
-  //     if (flag) {
-  //       event.stopPropagation()
-  //       event.preventDefault()
-  //     }
-  //   }
-
-  //   buttonClick(event: MouseEvent) {
-  //     if (this.open) {
-  //       this.hide()
-  //     } else {
-  //       this.show()
-  //       this.setFocusToMenuItem(this.#firstMenuItem)
-  //     }
-
-  //     event.stopPropagation()
-  //     event.preventDefault()
-  //   }
-  // }
 }
 
 if (!window.customElements.get('anchored-overlay')) {
