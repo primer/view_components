@@ -5,13 +5,4 @@
 /* @import '@primer/css/index.scss'; */
 
 /* temporary design token imports */
-@import '@primer/primitives/tokens-v2-private/css/tokens/base/size/size.css';
-@import '@primer/primitives/tokens-v2-private/css/tokens/base/size/size.css';
-@import '@primer/primitives/tokens-v2-private/css/tokens/base/typography/typography.css';
-@import '@primer/primitives/tokens-v2-private/css/tokens/functional/size/border.css';
-@import '@primer/primitives/tokens-v2-private/css/tokens/functional/size/breakpoints.css';
-@import '@primer/primitives/tokens-v2-private/css/tokens/functional/size/size-coarse.css';
-@import '@primer/primitives/tokens-v2-private/css/tokens/functional/size/size-fine.css';
-@import '@primer/primitives/tokens-v2-private/css/tokens/functional/size/size.css';
-@import '@primer/primitives/tokens-v2-private/css/tokens/functional/size/viewport.css';
-@import '@primer/primitives/tokens-v2-private/css/tokens/functional/typography/typography.css';
+@import '@primer/css/primitives/index.scss';

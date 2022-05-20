@@ -5,7 +5,6 @@ module Beta
   class AutoCompletePreview < ViewComponent::Preview
     # @label Playground
     # @param label_text text
-    # @param is_label_inline toggle
     # @param show_clear_button toggle
     # @param visually_hide_label toggle
     # @param placeholder text
