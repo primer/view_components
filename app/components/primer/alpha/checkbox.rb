@@ -27,7 +27,7 @@ module Primer
         @type = type
         @form_group_classes = class_names(
           "FormGroup",
-          "FormGroup--formControls"
+          "FormControl-caption"
         )
         @form_control_classes = class_names(
           "FormControl",

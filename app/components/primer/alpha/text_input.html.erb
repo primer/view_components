@@ -11,12 +11,12 @@
             <% end %>
         </div>
         <% if @caption %>
-            <p class="FormControl-label--caption" id="<%= @caption_id %>"><%= @caption %></p>
+            <p class="FormControl-caption" id="<%= @caption_id %>"><%= @caption %></p>
         <% end %>
     <% else %>
         <%= render Primer::BaseComponent.new(tag: :input, placeholder: @placeholder, id: @input_id, name: @input_name, disabled: @disabled, invalid: @invalid, type: @type, classes: @form_control_classes) do %><% end %>
         <% if @caption %>
-            <p class="FormControl-label--caption" id="<%= @caption_id %>"><%= @caption %></p>
+            <p class="FormControl-caption" id="<%= @caption_id %>"><%= @caption %></p>
         <% end %>
     <% end %>
 <% end %>

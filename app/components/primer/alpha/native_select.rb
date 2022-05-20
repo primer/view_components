@@ -17,13 +17,6 @@ module Primer
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
-      DEFAULT_LABEL_POSITION = :block
-      LABEL_POSITION_MAPPINGS = {
-        :inline => "FormGroup--inline",
-        DEFAULT_LABEL_POSITION => ""
-      }.freeze
-      LABEL_POSITION_OPTIONS = LABEL_POSITION_MAPPINGS.keys
-
       renders_one :option, lambda { |**system_arguments|
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = :option
@@ -42,7 +35,6 @@ module Primer
         show_clear_button: false,
         visually_hide_label: nil,
         size: DEFAULT_SIZE,
-        label_position: DEFAULT_LABEL_POSITION,
         full_width: false,
         disabled: false,
         invalid: false,
@@ -66,7 +58,6 @@ module Primer
         @invalid = invalid ? "true" : nil
         @size = size
         @full_width = full_width
-        @label_position = label_position
         # @aria_described_by = @caption_id.to_s
         @field_wrap_classes = class_names(
           "FormControl-fieldWrap",
@@ -76,7 +67,6 @@ module Primer
           "FormControl-fieldWrap--invalid": invalid
         )
         @form_group_classes = class_names(
-          LABEL_POSITION_MAPPINGS[fetch_or_fallback(LABEL_POSITION_OPTIONS, @label_position, DEFAULT_LABEL_POSITION)],
           "FormGroup",
           "FormGroup--fullWidth": full_width
         )

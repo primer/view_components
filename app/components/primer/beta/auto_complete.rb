@@ -164,7 +164,7 @@ module Primer
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
           "FormControl-fieldWrap--disabled": disabled,
           "FormControl-fieldWrap--invalid": invalid,
-          "FormControl-fieldWrap--trailingAction": show_clear_button
+          "FormControl-fieldWrap--input-trailingAction": show_clear_button
         )
         @form_group_classes = class_names(
           "FormGroup",

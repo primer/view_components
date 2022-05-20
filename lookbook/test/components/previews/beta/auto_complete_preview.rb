@@ -15,7 +15,7 @@ module Beta
     # @param invalid toggle
     def playground(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, full_width: false, disabled: false, invalid: false)
       render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: "input-id", list_id: "test-id", src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid)) do |c|
-        c.leading_visual_icon(icon: :search)
+        # c.leading_visual_icon(icon: :search)
         c.results do
           render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c|
             Apple
