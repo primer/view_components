@@ -10,7 +10,6 @@ module Beta
     # @param placeholder text
     # @param size select [small, medium, large]
     # @param full_width toggle
-    # @param state select [error, warning]
     # @param disabled toggle
     # @param invalid toggle
     def playground(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, full_width: false, disabled: false, invalid: false)

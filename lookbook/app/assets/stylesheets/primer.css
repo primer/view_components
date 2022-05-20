@@ -3,3 +3,6 @@
 /* @import '/workspaces/css/src/index.scss'; */
 
 @import '@primer/css/index.scss';
+
+/* temporary design token imports */
+@import '@primer/css/primitives/index.scss';
