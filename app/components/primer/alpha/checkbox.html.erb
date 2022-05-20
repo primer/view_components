@@ -1,17 +1,23 @@
 <%= render Primer::BaseComponent.new(**@system_arguments, classes: @form_group_classes ) do %>
+    <%= render Primer::BaseComponent.new(
+        tag: :input,
+        id: @input_id,
+        name: @input_name,
+        disabled: @disabled,
+        checked: @checked,
+        type: "checkbox",
+        classes: @form_control_classes) do %>
+    <% end %>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="FormControl--checkbox-svg">
+        <rect x="1.5" y="1.5" width="15" height="15" rx="3.5" class="FormControl--checkbox-background" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7799 5.22007C14.9203 5.36069 14.9992 5.55132 14.9992 5.75007C14.9992 5.94882 14.9203 6.13944 14.7799 6.28007L7.52985 13.5301C7.38922 13.6705 7.1986 13.7494 6.99985 13.7494C6.8011 13.7494 6.61047 13.6705 6.46985 13.5301L3.21985 10.2801C3.08737 10.1379 3.01525 9.94985 3.01867 9.75554C3.0221 9.56124 3.10081 9.37586 3.23823 9.23844C3.37564 9.10103 3.56103 9.02232 3.75533 9.01889C3.94963 9.01546 4.13767 9.08759 4.27985 9.22007L6.99985 11.9401L13.7199 5.22007C13.8605 5.07962 14.0511 5.00073 14.2499 5.00073C14.4486 5.00073 14.6393 5.07962 14.7799 5.22007Z" class="FormControl--checkbox-check" />
+    </svg>
     <label for="<%= @input_id %>" class="FormControl-label <%= @visually_hide_label %>">
-        <%= render Primer::BaseComponent.new(
-            tag: :input,
-            placeholder: @placeholder,
-            id: @input_id,
-            name: @input_name,
-            disabled: @disabled,
-            type: "checkbox",
-            classes: @form_control_classes) do %>
-        <% end %>
         <%= @label_text %>
-        <% if @caption %>
-            <p class="FormControl-caption" id="<%= @caption_id %>"><%= @caption %></p>
-        <% end %>
     </label>
+    <% if @caption %>
+        <p class="FormControl-caption" id="<%= @caption_id %>">
+            <%= @caption %>
+        </p>
+    <% end %>
 <% end %>

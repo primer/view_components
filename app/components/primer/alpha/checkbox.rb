@@ -12,6 +12,7 @@ module Primer
         input_name: nil,
         visually_hide_label: false,
         disabled: false,
+        checked: false,
         type: "text",
 
         **system_arguments
@@ -24,9 +25,11 @@ module Primer
         @input_name = input_name || input_id
         @visually_hide_label = visually_hide_label ? "sr-only" : nil
         @disabled = disabled ? "disabled" : nil
+        @checked = checked ? "checked" : nil
         @type = type
         @form_group_classes = class_names(
           "FormGroup",
+          "FormGroup--checkbox",
           "FormControl-caption"
         )
         @form_control_classes = class_names(
