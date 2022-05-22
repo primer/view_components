@@ -33,6 +33,8 @@ module Primer
       def initialize(
         label_text:,
         input_id:,
+        validation_text: nil,
+        validation_id: "validation-#{SecureRandom.hex(4)}",
         caption_id: "caption-#{SecureRandom.hex(4)}",
         caption: nil,
         input_name: nil,
@@ -50,6 +52,8 @@ module Primer
         @system_arguments = system_arguments
         @system_arguments[:tag] = :div
         @label_text = label_text
+        @validation_text = validation_text
+        @validation_id = validation_id
         @caption = caption
         @input_id = input_id
         @caption_id = caption_id
