@@ -32,7 +32,6 @@ module Primer
           @system_arguments[:classes] = class_names(
             "ActionList-item",
             system_arguments[:classes],
-            "disabled" => disabled
           )
         end
 

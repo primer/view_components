@@ -199,7 +199,7 @@ module Beta
       render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c|
         c.leading_visual_icon(icon: :search)
         c.results do
-          render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c|
+          render(Primer::Beta::AutoComplete::Item.new(disabled: true, value: "apple")) do |_c|
             Apple
           end
           render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c|

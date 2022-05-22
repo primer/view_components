@@ -95,7 +95,7 @@ module Primer
 
       # @example Leading visual
       #   @description
-      #     Display any Octicon aaSsas a leading visual within the field
+      #     Display any Octicon as a leading visual within the field
       #   @code
       # <%= render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c| %>
       #   <% c.leading_visual_icon(icon: :search)
