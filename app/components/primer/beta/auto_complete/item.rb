@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# TODO: use generic ActionList item for Autocomplete
 module Primer
   module Beta
     class AutoComplete
