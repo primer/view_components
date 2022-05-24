@@ -199,7 +199,18 @@
     ]
   },
   "Primer::Beta::AutoComplete": {
-    "Item": "Primer::Beta::AutoComplete::Item"
+    "DEFAULT_SIZE": "medium",
+    "Item": "Primer::Beta::AutoComplete::Item",
+    "SIZE_MAPPINGS": {
+      "small": "FormControl--small",
+      "medium": "FormControl--medium",
+      "large": "FormControl--large"
+    },
+    "SIZE_OPTIONS": [
+      "small",
+      "medium",
+      "large"
+    ]
   },
   "Primer::Beta::AutoComplete::Item": {
   },
