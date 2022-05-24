@@ -97,64 +97,64 @@ module Primer
       #   @description
       #     Display any Octicon as a leading visual within the field
       #   @code
-      # <%= render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c| %>
-      #   <% c.leading_visual_icon(icon: :search)
-      #   <% c.results do
-      #     <% render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
-      #       Apple
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", src: "/auto_complete", input_id:"input-id", list_id: "list-id")) do |c| %>
+      #       <% c.leading_visual_icon(icon: :search) %>
+      #       <% c.results do %>
+      #         <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
+      #           Apple
+      #         <% end %>
+      #         <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
+      #           Orange
+      #         <% end %>
+      #       <% end %>
       #     <% end %>
-      #     <% render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
-      #       Orange
-      #     <% end %>
-      #   <% end %>
-      # <% end %>
       #
       # @example Trailing action
       #   @description
       #     Labels can be inline by setting `is_label_inline: true`. However, labels will always become stacked on smaller screen sizes.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c| %>
-      #   <% c.results do
-      #     <% render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
-      #       Apple
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "input-id", list_id: "list-id", src: "/auto_complete", show_clear_button: true )) do |c| %>
+      #       <% c.results do %>
+      #         <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
+      #           Apple
+      #         <% end %>
+      #         <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
+      #           Orange
+      #         <% end %>
+      #       <% end %>
       #     <% end %>
-      #     <% render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
-      #       Orange
-      #     <% end %>
-      #   <% end %>
-      # <% end %>
       #
       # @example Visually hidden label
       #   @description
       #     A non-visible label may be rendered with `visually_hide_label: true`, but it is highly discouraged. See <%= link_to_accessibility %>.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c| %>
-      #   <% c.leading_visual_icon(icon: :search)
-      #   <% c.results do
-      #     <% render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
-      #       Apple
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results", list_id: "fruits-popup--custom-results", src: "/auto_complete", visually_hide_label: true)) do |c| %>
+      #       <% c.leading_visual_icon(icon: :search) %>
+      #       <% c.results do %>
+      #         <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
+      #           Apple
+      #         <% end %>
+      #         <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
+      #           Orange
+      #         <% end %>
+      #       <% end %>
       #     <% end %>
-      #     <% render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
-      #       Orange
-      #     <% end %>
-      #   <% end %>
-      # <% end %>
       #
       # @example Full width field
       #   @description
       #     To allow field to span width of its container, set `full_width` to `true`.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c| %>
-      #   <% c.leading_visual_icon(icon: :search)
-      #   <% c.results do
-      #     <% render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
-      #       Apple
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results", list_id: "fruits-popup--custom-results", src: "/auto_complete", full_width: true)) do |c| %>
+      #       <% c.leading_visual_icon(icon: :search) %>
+      #       <% c.results do %>
+      #         <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
+      #           Apple
+      #         <% end %>
+      #         <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
+      #           Orange
+      #         <% end %>
+      #       <% end %>
       #     <% end %>
-      #     <% render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
-      #       Orange
-      #     <% end %>
-      #   <% end %>
-      # <% end %>
       #
       # @example With custom classes for the input
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--custom-input", list_id: "fruits-popup--custom-input")) do |c| %>
