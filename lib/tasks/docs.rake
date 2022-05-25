@@ -343,11 +343,10 @@ namespace :docs do
     nav_yaml = YAML.load_file(nav_yaml_file)
     adr_entry = {
       "title" => "Architecture decisions",
-      "url" => "/adr",
       "children" => nav_entries.compact
     }
 
-    existing_index = nav_yaml.index { |entry| entry["url"] == "/adr" }
+    existing_index = nav_yaml.index { |entry| entry["title"] == "Architecture decisions" }
     if existing_index
       nav_yaml[existing_index] = adr_entry
     else
