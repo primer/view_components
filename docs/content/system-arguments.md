@@ -6,7 +6,7 @@ title: System arguments
 
 All Primer ViewComponents accept a standard set of options called system arguments, mimicking the [styled-system API](https://styled-system.com/table) used by [Primer React](https://primer.style/components/system-props).
 
-Under the hood, system arguments are [mapped](https://github.com/primer/view_components/blob/main/app/lib/primer/classify.rb) to Primer CSS classes, with any remaining options passed to Rails' [`content_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag).
+Under the hood, system arguments are [mapped](https://github.com/primer/view_components/blob/main/lib/primer/classify.rb) to Primer CSS classes, with any remaining options passed to Rails' [`content_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag).
 
 ## Responsive values
 
@@ -62,9 +62,9 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `bg` | Symbol | Background color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:canvas`, `:canvas_inset`, `:canvas_inverse`, `:danger`, `:danger_emphasis`, `:danger_inverse`, `:default`, `:done`, `:done_emphasis`, `:emphasis`, `:info`, `:info_inverse`, `:inset`, `:overlay`, `:primary`, `:secondary`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, `:success_emphasis`, `:success_inverse`, `:tertiary`, `:warning`, or `:warning_inverse`. |
-| `border_color` | Symbol | Border color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:info`, `:inverse`, `:muted`, `:primary`, `:secondary`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, `:success_emphasis`, `:tertiary`, or `:warning`. |
-| `color` | Symbol | Text color. One of `:accent`, `:attention`, `:danger`, `:default`, `:done`, `:icon_danger`, `:icon_info`, `:icon_primary`, `:icon_secondary`, `:icon_success`, `:icon_tertiary`, `:icon_warning`, `:inherit`, `:muted`, `:on_emphasis`, `:severe`, `:sponsors`, `:subtle`, `:success`, `:text_danger`, `:text_inverse`, `:text_link`, `:text_primary`, `:text_secondary`, `:text_success`, `:text_tertiary`, `:text_warning`, or `:text_white`. |
+| `bg` | Symbol | Background color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:closed`, `:closed_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:emphasis`, `:inset`, `:open`, `:open_emphasis`, `:overlay`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, `:success_emphasis`, or `:transparent`. |
+| `border_color` | Symbol | Border color. One of `:accent`, `:accent_emphasis`, `:attention`, `:attention_emphasis`, `:closed`, `:closed_emphasis`, `:danger`, `:danger_emphasis`, `:default`, `:done`, `:done_emphasis`, `:muted`, `:open`, `:open_emphasis`, `:severe`, `:severe_emphasis`, `:sponsors`, `:sponsors_emphasis`, `:subtle`, `:success`, or `:success_emphasis`. |
+| `color` | Symbol | Text color. One of `:accent`, `:attention`, `:closed`, `:danger`, `:default`, `:done`, `:inherit`, `:muted`, `:on_emphasis`, `:open`, `:severe`, `:sponsors`, `:subtle`, or `:success`. |
 
 ## Flex
 
@@ -83,7 +83,7 @@ System arguments include most HTML attributes. For example:
 
 | Name | Type | Description |
 | :- | :- | :- |
-| `clearfix` | Boolean | Wether to assign the `clearfix` class. |
+| `clearfix` | Boolean | Whether to assign the `clearfix` class. |
 | `col` | Integer | Number of columns. One of `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, or `12`. |
 | `container` | Symbol | Size of the container. One of `:lg`, `:md`, `:sm`, or `:xl`. |
 
@@ -94,7 +94,7 @@ System arguments include most HTML attributes. For example:
 | `display` | Symbol | One of `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:none`, `:table`, or `:table_cell`. |
 | `w` | Symbol | One of `:auto`, `:fit`, or `:full`. |
 | `h` | Symbol | One of `:fit` and `:full`. |
-| `hide` | Symbol | Hide the element at a specific breakpoint. One of `:lg`, `:md`, `:sm`, or `:xl`. |
+| `hide` | Symbol | Hide the element at a specific breakpoint. One of `:lg`, `:md`, `:sm`, `:whenNarrow`, `:whenRegular`, `:whenWide`, or `:xl`. |
 | `visibility` | Symbol | Visibility. One of `:hidden` and `:visible`. |
 | `vertical_align` | Symbol | One of `:baseline`, `:bottom`, `:middle`, `:text_bottom`, `:text_top`, or `:top`. |
 

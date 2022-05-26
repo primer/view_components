@@ -1,7 +1,28 @@
-#!/usr/bin/env bash
+#!/usr/bin/env ruby
+# frozen_string_literal: true
 
-# Publish gem
-bundle exec rake release
+require "thor"
+require_relative "../lib/primer/view_components/version"
 
-# Publish NPM
-npm publish --access public
+# Publishes `primer_view_components` gem and npm package.
+#
+# Usage:
+#
+# script/publish
+class PublishCLI < Thor::Group
+  include Thor::Actions
+
+  def exit_on_failure?
+    false
+  end
+
+  def release_gem
+    run("bundle exec rake release")
+  end
+
+  def release_npm
+    run("npm publish --access public")
+  end
+end
+
+PublishCLI.start(ARGV)

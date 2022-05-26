@@ -1,0 +1,19 @@
+<%= wrapper do %>
+  <%= render Primer::BaseComponent.new(**@system_arguments) do %>
+    <%= visual %>
+
+    <%= heading %>
+    <%= description %>
+
+    <% if primary_action.present? %>
+      <div class="blankslate-action">
+        <%= primary_action %>
+      </div>
+    <% end %>
+    <% if secondary_action.present? %>
+      <div class="blankslate-action">
+        <%= secondary_action %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

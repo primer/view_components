@@ -1,9 +1,4 @@
-<%= render Primer::BaseButton.new(**@system_arguments) do %>
-  <%= icon %>
-  <%= content %>
-  <%= counter %>
-
-  <% if @caret %>
-    <%= primer_octicon("triangle-down") %>
-  <% end %>
-<% end %>
+<%= render Primer::BaseButton.new(**@system_arguments) do -%>
+  <%= leading_visual %><%= trimmed_content %><%= trailing_visual %><%= primer_octicon("triangle-down", ml: 2, mr: -1) if @dropdown %>
+  <%= tooltip %>
+<% end -%>

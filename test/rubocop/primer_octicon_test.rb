@@ -156,47 +156,39 @@ class RubocopPrimerOcticonTest < CopTest
 
   def test_octicon_with_system_arguments
     investigate(cop, <<-RUBY)
-      octicon(:icon, class: "mr-1 color-icon-primary")
+      octicon(:icon, class: "mr-1 color-fg-default")
     RUBY
 
-    assert_correction "primer_octicon(:icon, mr: 1, color: :icon_primary)"
+    assert_correction "primer_octicon(:icon, mr: 1, color: :default)"
   end
 
   def test_octicon_with_custom_class
     investigate(cop, <<-RUBY)
-      octicon(:icon, class: "mr-1 color-icon-primary custom")
+      octicon(:icon, class: "mr-1 color-fg-default custom")
     RUBY
 
-    assert_correction "primer_octicon(:icon, mr: 1, color: :icon_primary, classes: \"custom\")"
+    assert_correction "primer_octicon(:icon, mr: 1, color: :default, classes: \"custom\")"
   end
 
   def test_converts_text_color_into_icon_color
     investigate(cop, <<-RUBY)
-      octicon(:icon, class: "mr-1 color-text-primary")
+      octicon(:icon, class: "mr-1 color-fg-default")
     RUBY
 
-    assert_correction "primer_octicon(:icon, mr: 1, color: :icon_primary)"
-  end
-
-  def test_converts_text_link_into_icon_info
-    investigate(cop, <<-RUBY)
-      octicon(:icon, class: "mr-1 color-text-link")
-    RUBY
-
-    assert_correction "primer_octicon(:icon, mr: 1, color: :icon_info)"
+    assert_correction "primer_octicon(:icon, mr: 1, color: :default)"
   end
 
   def test_converts_keeps_text_white
     investigate(cop, <<-RUBY)
-      octicon(:icon, class: "mr-1 color-text-white")
+      octicon(:icon, class: "mr-1 color-fg-on-emphasis")
     RUBY
 
-    assert_correction "primer_octicon(:icon, mr: 1, color: :text_white)"
+    assert_correction "primer_octicon(:icon, mr: 1, color: :on_emphasis)"
   end
 
   def test_octicon_with_class_that_cant_be_converted
     investigate(cop, <<-'RUBY')
-      octicon(:icon, class: "mr-1 text-center")
+      octicon(:icon, class: "mr-1 text-fuzzy-waffle")
     RUBY
 
     assert_empty cop.offenses

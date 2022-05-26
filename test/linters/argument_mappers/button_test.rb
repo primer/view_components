@@ -42,14 +42,14 @@ class ArgumentMappersButtonTest < LinterTestCase
     end
   end
 
-  def test_returns_variant_argument
-    Primer::ButtonComponent::VARIANT_MAPPINGS.each do |value, class_name|
+  def test_returns_size_argument
+    Primer::ButtonComponent::SIZE_MAPPINGS.each do |value, class_name|
       next if class_name.blank?
 
       @file = "<button class=\"#{class_name}\">Button</button>"
       args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
 
-      assert_equal({ variant: ":#{value}" }, args)
+      assert_equal({ size: ":#{value}" }, args)
     end
   end
 
@@ -87,12 +87,12 @@ class ArgumentMappersButtonTest < LinterTestCase
   end
 
   def test_raises_if_cannot_map_class
-    @file = '<button class="text-center">Button</button>'
+    @file = '<button class="text-fuzzy-waffle">Button</button>'
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
       ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args
     end
 
-    assert_equal "Cannot convert class text-center", err.message
+    assert_equal "Cannot convert class text-fuzzy-waffle", err.message
   end
 
   def test_raises_if_cannot_map_attribute
@@ -132,7 +132,7 @@ class ArgumentMappersButtonTest < LinterTestCase
 
     assert_equal({
                    scheme: ":primary",
-                   variant: ":small",
+                   size: ":small",
                    block: true,
                    group_item: true,
                    mr: 1,

@@ -5,7 +5,7 @@ class Primer::IconButtonStories < ViewComponent::Storybook::Stories
 
   story(:icon_button) do
     controls do
-      text(:"aria-label", "button label")
+      aria(label: "Button label")
       icon "star"
       box false
       select(:tag, Primer::BaseButton::TAG_OPTIONS, Primer::BaseButton::DEFAULT_TAG)

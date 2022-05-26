@@ -7,6 +7,7 @@ module Primer
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :main, lambda { |**system_arguments|
+      deny_tag_argument(**system_arguments)
       system_arguments[:classes] = class_names("flex-shrink-0", system_arguments[:classes])
       system_arguments[:col] = (@responsive ? [12, nil, @main_col] : @main_col)
       system_arguments[:mb] = (@responsive ? [4, nil, 0] : nil)

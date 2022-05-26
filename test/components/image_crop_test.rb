@@ -9,7 +9,7 @@ class PrimerImageCropTest < Minitest::Test
     render_inline(Primer::ImageCrop.new(src: "image.png"))
 
     assert_selector("image-crop[data-view-component][src=\"image.png\"][rounded]") do
-      assert_selector("svg[class=\"flex-1 anim-rotate\"]")
+      assert_selector("svg.flex-1.anim-rotate")
     end
   end
 

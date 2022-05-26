@@ -127,7 +127,7 @@ module Primer
     # @param padding [Symbol] <%= one_of(Primer::BorderBoxComponent::PADDING_MAPPINGS.keys) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(padding: DEFAULT_PADDING, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:tag] = :div
       @system_arguments[:classes] = class_names(
         "Box",

@@ -5,6 +5,7 @@ module Primer
     # Use `UnderlineNav` to style navigation links with a minimal
     # underlined selected state, typically placed at the top
     # of the page.
+    #
     # For panel navigation, use <%= link_to_component(Primer::Alpha::UnderlinePanels) %> instead.
     #
     # @accessibility
@@ -102,7 +103,7 @@ module Primer
       #   <% end %>
       #
       # @example Customizing the body
-      #   <%= render(Primer::Alpha::UnderlineNav.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :info })) do |c| %>
+      #   <%= render(Primer::Alpha::UnderlineNav.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :accent_emphasis })) do |c| %>
       #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
       #     <% c.tab(href: "#") { "Tab 2" } %>
       #     <% c.tab(href: "#") { "Tab 3" } %>

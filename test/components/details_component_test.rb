@@ -31,7 +31,7 @@ class PrimerDetailsComponentTest < Minitest::Test
     assert_selector("details.details-overlay.details-overlay-dark")
   end
 
-  def test_renders_details_reset_when_reseting_the_button_style
+  def test_renders_details_reset_when_resetting_the_button_style
     render_inline(Primer::DetailsComponent.new(reset: true)) do |component|
       component.summary do
         "Summary"
@@ -97,7 +97,7 @@ class PrimerDetailsComponentTest < Minitest::Test
 
   def test_passes_props_to_button
     render_inline(Primer::DetailsComponent.new) do |component|
-      component.summary(variant: :small, scheme: :primary) do
+      component.summary(size: :small, scheme: :primary) do
         "Summary"
       end
       component.body do

@@ -1,111 +1,117 @@
 # frozen_string_literal: true
 
-require_relative "classify/cache"
-require_relative "classify/flex"
 require_relative "classify/utilities"
 require_relative "classify/validation"
 
 module Primer
   # :nodoc:
   class Classify
-    # Keys where we can simply translate { key: value } into ".key-value"
-    CONCAT_KEYS = %i[text box_shadow].freeze
+    FLEX_VALUES = [1, :auto].freeze
 
-    TEXT_KEYS = %i[font_family font_style font_weight text_align text_transform].freeze
-    BOX_SHADOW_KEY = :box_shadow
-
-    BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
-
-    BOOLEAN_MAPPINGS = {
-      underline: {
-        mappings: [
-          {
-            value: true,
-            css_class: "text-underline"
-          },
-          {
-            value: false,
-            css_class: "no-underline"
-          }
-        ]
-      },
-      top: {
-        mappings: [
-          {
-            value: false,
-            css_class: "top-0"
-          }
-        ]
-      },
-      bottom: {
-        mappings: [
-          {
-            value: false,
-            css_class: "bottom-0"
-          }
-        ]
-      },
-      left: {
-        mappings: [
-          {
-            value: false,
-            css_class: "left-0"
-          }
-        ]
-      },
-      right: {
-        mappings: [
-          {
-            value: false,
-            css_class: "right-0"
-          }
-        ]
-      }
+    FLEX_WRAP_MAPPINGS = {
+      wrap: "flex-wrap",
+      nowrap: "flex-nowrap",
+      reverse: "flex-wrap-reverse"
     }.freeze
-    BORDER_KEY = :border
-    BORDER_MARGIN_KEYS = %i[border_top border_bottom border_left border_right].freeze
-    BORDER_RADIUS_KEY = :border_radius
-    TYPOGRAPHY_KEYS = [:font_size].freeze
-    VALID_KEYS = (
-      Primer::Classify::Utilities::UTILITIES.keys +
-      CONCAT_KEYS +
-      BOOLEAN_MAPPINGS.keys +
-      BORDER_MARGIN_KEYS +
-      TYPOGRAPHY_KEYS +
-      TEXT_KEYS +
-      Primer::Classify::Flex::KEYS +
-      [
-        BORDER_KEY,
-        BORDER_RADIUS_KEY,
-        BOX_SHADOW_KEY
-      ]
-    ).freeze
+
+    FLEX_ALIGN_SELF_VALUES = [:auto, :start, :end, :center, :baseline, :stretch].freeze
+
+    FLEX_DIRECTION_VALUES = [:column, :column_reverse, :row, :row_reverse].freeze
+
+    FLEX_JUSTIFY_CONTENT_VALUES = [:flex_start, :flex_end, :center, :space_between, :space_around].freeze
+
+    FLEX_ALIGN_ITEMS_VALUES = [:flex_start, :flex_end, :center, :baseline, :stretch].freeze
+
+    LOOKUP = Primer::Classify::Utilities::UTILITIES
 
     class << self
-      def call(classes: "", style: nil, **args)
-        extract_css_attrs(args).tap do |extracted_results|
-          classes = +"#{validated_class_names(classes)} #{extracted_results[:class]}"
-          classes.strip!
-          extracted_results[:class] = presence(classes)
+      # Utility for mapping component configuration into Primer CSS class names.
+      #
+      # **args can contain utility keys that mimic the interface used by
+      # https://github.com/primer/components, as well as the special entries :classes
+      # and :style.
+      #
+      # Returns a hash containing two entries. The :classes entry is a string of
+      # Primer CSS class names, including any classes given in the :classes entry
+      # in **args. The :style entry is the value of the given :style entry given in
+      # **args.
+      #
+      #
+      # Example usage:
+      # extract_css_attrs({ mt: 4, py: 2 }) => { classes: "mt-4 py-2", style: nil }
+      # extract_css_attrs(classes: "d-flex", mt: 4, py: 2) => { classes: "d-flex mt-4 py-2", style: nil }
+      # extract_css_attrs(classes: "d-flex", style: "float: left", mt: 4, py: 2) => { classes: "d-flex mt-4 py-2", style: "float: left" }
+      #
+      def call(args = {})
+        style = nil
+        classes = [].tap do |result|
+          args.each do |key, val|
+            case key
+            when :classes
+              # insert :classes first to avoid huge doc diffs
+              if (class_names = validated_class_names(val))
+                result.unshift(class_names)
+              end
+              next
+            when :style
+              style = val
+              next
+            end
 
-          styles = "#{extracted_results[:style]}#{style}"
-          extracted_results[:style] = presence(styles)
-        end
+            next unless LOOKUP[key]
+
+            if val.is_a?(Array)
+              # A while loop is ~3.5x faster than Array#each.
+              brk = 0
+              while brk < val.size
+                item = val[brk]
+
+                if item.nil?
+                  brk += 1
+                  next
+                end
+
+                # Believe it or not, three calls to Hash#[] and an inline rescue
+                # are about 30% faster than Hash#dig. It also ensures validate is
+                # only called when necessary, i.e. when the class can't be found
+                # in the lookup table.
+                # rubocop:disable Style/RescueModifier
+                found = (LOOKUP[key][item][brk] rescue nil) || validate(key, item, brk)
+                # rubocop:enable Style/RescueModifier
+                result << found if found
+                brk += 1
+              end
+            else
+              next if val.nil?
+
+              # rubocop:disable Style/RescueModifier
+              found = (LOOKUP[key][val][0] rescue nil) || validate(key, val, 0)
+              # rubocop:enable Style/RescueModifier
+              result << found if found
+            end
+          end
+        end.join(" ")
+
+        # This is much faster than Rails' presence method.
+        # rubocop:disable Rails/Blank
+        {
+          class: !classes || classes.empty? ? nil : classes,
+          style: !style || style.empty? ? nil : style
+        }
+        # rubocop:enable Rails/Blank
       end
 
       private
 
-      # do this instead of using Rails' presence/blank?, which are a lot slower
-      def presence(obj)
-        # rubocop:disable Rails/Blank
-        !obj || obj.empty? ? nil : obj
-        # rubocop:enable Rails/Blank
+      def validate(key, val, brk)
+        brk_str = Primer::Classify::Utilities::BREAKPOINTS[brk]
+        Primer::Classify::Utilities.validate(key, val, brk_str)
       end
 
       def validated_class_names(classes)
         return if classes.blank?
 
-        if force_system_arguments? && !ENV["PRIMER_WARNINGS_DISABLED"]
+        if raise_on_invalid_options? && !ENV["PRIMER_WARNINGS_DISABLED"]
           invalid_class_names =
             classes.split.each_with_object([]) do |class_name, memo|
               memo << class_name if Primer::Classify::Validation.invalid?(class_name)
@@ -121,101 +127,9 @@ module Primer
         classes
       end
 
-      # NOTE: This is a fairly naive implementation that we're building as we go.
-      # Feel free to refactor as this is thoroughly tested.
-      #
-      # Utility for mapping component configuration into Primer CSS class names
-      #
-      # styles_hash - A hash with utility keys that mimic the interface used by https://github.com/primer/components
-      #
-      # Returns a string of Primer CSS class names and style attributes to be added to an HTML tag.
-      #
-      # Example usage:
-      # extract_css_attrs({ mt: 4, py: 2 }) => "mt-4 py-2"
-      def extract_css_attrs(styles_hash)
-        classes = []
-        styles = +""
-
-        styles_hash.each do |key, value|
-          if value.is_a?(Array)
-            raise ArgumentError, "#{key} does not support responsive values" unless Primer::Classify::Flex::RESPONSIVE_KEYS.include?(key) || Primer::Classify::Utilities.supported_key?(key)
-
-            value.each_with_index do |val, index|
-              extract_one_css_attr(classes, styles, key, val, BREAKPOINTS[index])
-            end
-          else
-            extract_one_css_attr(classes, styles, key, value, BREAKPOINTS[0])
-          end
-        end
-
-        {
-          class: classes.join(" "),
-          style: styles
-        }
-      end
-
-      def extract_one_css_attr(classes, styles, key, val, breakpoint)
-        found_classes = Primer::Classify::Cache.instance.fetch(breakpoint, key, val) do
-          classes_from(key, val, breakpoint)
-        end
-
-        classes << found_classes if found_classes
-
-        found_styles = styles_from(key, val, breakpoint)
-        styles << found_styles if found_styles
-      end
-
-      def styles_from(key, val, _breakpoint)
-        # Turn this into an if/else like classes_from when we have more branches.
-        # Could be that way now, but it makes Rubocop unhappy.
-      end
-
-      def classes_from(key, val, breakpoint)
-        return if val.nil? || val == ""
-
-        if Primer::Classify::Utilities.supported_key?(key)
-          Primer::Classify::Utilities.classname(key, val, breakpoint)
-        elsif BOOLEAN_MAPPINGS.key?(key)
-          bools = BOOLEAN_MAPPINGS[key][:mappings].each_with_object([]) do |m, memo|
-            memo << m[:css_class] if m[:value] == val && m[:css_class].present?
-          end
-          bools.empty? ? nil : bools.join(" ")
-        elsif key == BORDER_KEY
-          if val == true
-            "border"
-          else
-            "border-#{val.to_s.dasherize}"
-          end
-        elsif BORDER_MARGIN_KEYS.include?(key)
-          "#{key.to_s.dasherize}-#{val}"
-        elsif key == BORDER_RADIUS_KEY
-          "rounded-#{val}"
-        elsif Primer::Classify::Flex::KEYS.include?(key)
-          Primer::Classify::Flex.classes(key, val, breakpoint)
-        elsif TEXT_KEYS.include?(key)
-          "text-#{val.to_s.dasherize}"
-        elsif TYPOGRAPHY_KEYS.include?(key)
-          if val == :small || val == :normal
-            "text-#{val.to_s.dasherize}"
-          else
-            "f#{val.to_s.dasherize}"
-          end
-        elsif key == BOX_SHADOW_KEY
-          if val == true
-            "color-shadow-small"
-          elsif val == :none || val.blank?
-            "box-shadow-none"
-          else
-            "color-shadow-#{val.to_s.dasherize}"
-          end
-        end
-      end
-
-      def force_system_arguments?
-        Rails.application.config.primer_view_components.force_system_arguments
+      def raise_on_invalid_options?
+        Rails.application.config.primer_view_components.raise_on_invalid_options
       end
     end
-
-    Cache.instance.preload!
   end
 end

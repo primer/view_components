@@ -6,6 +6,7 @@ class Primer::HiddenTextExpanderStories < ViewComponent::Storybook::Stories
   story(:hidden_text_expander) do
     controls do
       inline false
+      aria(label: "No action")
     end
   end
 end

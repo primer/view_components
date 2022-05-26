@@ -6,7 +6,7 @@ gemspec
 rails_version = (ENV["RAILS_VERSION"] || "6.1.1").to_s
 
 gem "rack-cors"
-gem "rake", "~> 12.0"
+gem "rake", "~> 13.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
@@ -28,7 +28,7 @@ end
 # rubocop:enable Bundler/DuplicatedGem
 
 # Use Puma as the app server
-gem "puma", "~> 5.5.1"
+gem "puma", "~> 5.6.4"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem "webpacker", "~> 5.0"
 

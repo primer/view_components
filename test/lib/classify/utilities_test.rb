@@ -7,7 +7,7 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
 
   def test_supported_key
     assert Primer::Classify::Utilities.supported_key?(:m)
-    refute Primer::Classify::Utilities.supported_key?(:flex)
+    refute Primer::Classify::Utilities.supported_key?(:foo)
   end
 
   def test_supported_value
@@ -97,8 +97,7 @@ class PrimerClassifyUtilitiesTest < Minitest::Test
     assert_equal({ mx: :auto }, Primer::Classify::Utilities.classes_to_hash("mx-auto"))
     assert_equal({ mr: [1, 2], classes: "baz bin" }, Primer::Classify::Utilities.classes_to_hash("mr-1 mr-sm-2 baz bin"))
     assert_equal({ mr: [1, nil, 2], classes: "foo bar" }, Primer::Classify::Utilities.classes_to_hash("mr-1 mr-md-2 foo bar"))
-    assert_equal({ color: :text_tertiary }, Primer::Classify::Utilities.classes_to_hash("color-text-tertiary"))
-    assert_equal({ color: :icon_tertiary }, Primer::Classify::Utilities.classes_to_hash("color-icon-tertiary"))
+    assert_equal({ color: :muted }, Primer::Classify::Utilities.classes_to_hash("color-fg-muted"))
   end
 
   def test_classes_to_args

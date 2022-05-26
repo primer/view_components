@@ -16,12 +16,20 @@ module Primer
       FetchOrFallbackHelper.fallback_raises = true
     end
 
-    def with_force_system_arguments(new_value)
-      old_value = Rails.application.config.primer_view_components.force_system_arguments
-      Rails.application.config.primer_view_components.force_system_arguments = new_value
+    def with_raise_on_invalid_options(new_value)
+      old_value = Rails.application.config.primer_view_components.raise_on_invalid_options
+      Rails.application.config.primer_view_components.raise_on_invalid_options = new_value
       yield
     ensure
-      Rails.application.config.primer_view_components.force_system_arguments = old_value
+      Rails.application.config.primer_view_components.raise_on_invalid_options = old_value
+    end
+
+    def with_raise_on_invalid_aria(new_value)
+      old_value = Rails.application.config.primer_view_components.raise_on_invalid_aria
+      Rails.application.config.primer_view_components.raise_on_invalid_aria = new_value
+      yield
+    ensure
+      Rails.application.config.primer_view_components.raise_on_invalid_aria = old_value
     end
 
     def with_silence_deprecations(new_value)

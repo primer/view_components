@@ -4,7 +4,7 @@ module Primer
   # Use `Subhead` as the start of a section. The `:heading` slot will render an `<h2>` font-sized text.
   #
   # - Optionally set the `:description` slot to render a short description and the `:actions` slot for a related action.
-  # - Use a succint, one-line description for the `:description` slot. For longer descriptions, omit the description slot and render a paragraph below the `Subhead`.
+  # - Use a succinct, one-line description for the `:description` slot. For longer descriptions, omit the description slot and render a paragraph below the `Subhead`.
   # - Use the actions slot to render a related action to the right of the heading. Use <%= link_to_component(Primer::ButtonComponent) %> or <%= link_to_component(Primer::LinkComponent) %>.
   #
   # @accessibility
@@ -36,6 +36,7 @@ module Primer
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :actions, lambda { |**system_arguments|
+      deny_tag_argument(**system_arguments)
       system_arguments[:tag] = :div
       system_arguments[:classes] = class_names(system_arguments[:classes], "Subhead-actions")
 
@@ -46,6 +47,7 @@ module Primer
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :description, lambda { |**system_arguments|
+      deny_tag_argument(**system_arguments)
       system_arguments[:tag] = :div
       system_arguments[:classes] = class_names(system_arguments[:classes], "Subhead-description")
 
@@ -111,13 +113,13 @@ module Primer
     # @param hide_border [Boolean] Whether to hide the border under the heading.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(spacious: false, hide_border: false, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
 
       @system_arguments[:tag] = :div
       @system_arguments[:classes] =
         class_names(
           @system_arguments[:classes],
-          "Subhead hx_Subhead--responsive",
+          "Subhead",
           "Subhead--spacious": spacious,
           "border-bottom-0": hide_border
         )

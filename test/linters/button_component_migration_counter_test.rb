@@ -24,7 +24,7 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
     @file = "<button class=\"btn btn-sm btn-primary\">Button</button>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::ButtonComponent.new(variant: :small, scheme: :primary)")
+    assert_includes(offenses.first.message, "render Primer::ButtonComponent.new(size: :small, scheme: :primary)")
   end
 
   def test_suggests_how_to_use_the_component_as_link
@@ -84,7 +84,7 @@ class ButtonComponentMigrationCounterTest < LinterTestCase
           <%= render Primer::ButtonComponent.new(scheme: :outline) do %>
             button 3
             <a>not a button</a>
-            <%= render Primer::ButtonComponent.new(tag: :summary, variant: :small) do %>
+            <%= render Primer::ButtonComponent.new(tag: :summary, size: :small) do %>
               summary
               <%= render Primer::ButtonComponent.new(tag: :a, test_selector: "test selector") do %>
                 a

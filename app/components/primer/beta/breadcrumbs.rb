@@ -40,7 +40,7 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(**system_arguments)
-        @system_arguments = system_arguments
+        @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :nav
         @system_arguments[:aria] = ARIA_LABEL
         @system_arguments[:system_arguments_denylist] = ARGS_DENYLIST
@@ -57,7 +57,7 @@ module Primer
 
         def initialize(href:, **system_arguments)
           @href = href
-          @system_arguments = system_arguments
+          @system_arguments = deny_tag_argument(**system_arguments)
           @selected = false
 
           @system_arguments[:tag] = :li

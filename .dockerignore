@@ -1,0 +1,7 @@
+.devcontainer/
+.vscode/
+.yardoc/
+node_modules/
+pkg/
+test/
+docs/

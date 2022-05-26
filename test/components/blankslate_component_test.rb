@@ -32,12 +32,7 @@ class BlankslateComponentTest < Minitest::Test
       component.spinner(test_selector: "blankslate-spinner")
     end
 
-    assert_selector(".blankslate") do
-      assert_selector("span[role='status']") do
-        assert_selector(".sr-only", text: "Loading")
-        assert_selector("[data-test-selector='blankslate-spinner']")
-      end
-    end
+    assert_selector(".blankslate [data-test-selector='blankslate-spinner']")
   end
 
   def test_renders_a_narrow_large_and_spacious_blankslate_component
@@ -133,6 +128,6 @@ class BlankslateComponentTest < Minitest::Test
   end
 
   def test_status
-    assert_component_state(Primer::BlankslateComponent, :beta)
+    assert_component_state(Primer::BlankslateComponent, :deprecated)
   end
 end

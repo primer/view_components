@@ -51,7 +51,7 @@ module Primer
       @hide_if_zero = hide_if_zero
       @text = text
       @round = round
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
 
       @has_limit = !@limit.nil?
       @system_arguments[:title] = title

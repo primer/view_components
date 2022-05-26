@@ -68,7 +68,7 @@ class PrimerDropdownTest < Minitest::Test
     end
   end
 
-  def test_renders_dropdown_with_direcation
+  def test_renders_dropdown_with_direction
     render_inline(Primer::Dropdown.new) do |c|
       c.button { "Button" }
       c.menu(direction: :s) do |m|
@@ -94,7 +94,7 @@ class PrimerDropdownTest < Minitest::Test
 
     assert_selector("details.dropdown") do
       assert_selector("summary.btn") do
-        assert_selector(".dropdown-caret")
+        assert_selector(".octicon.octicon-triangle-down")
       end
     end
   end

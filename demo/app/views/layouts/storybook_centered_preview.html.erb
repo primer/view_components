@@ -3,17 +3,18 @@
   <head>
     <title>ActionView::Component Storybook Preview</title>
 
-    <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
     <% if Rails.env.development? %>
       <%= javascript_include_tag "primer_view_components", host: "localhost:4000" %>
     <% else %>
-      <%= javascript_include_tag "primer_view_components" %>
+      <%= javascript_include_tag "primer_view_components", host: "primer.style/rails" %>
     <% end %>
   </head>
 
   <body>
-    <div class="d-flex flex-justify-center" style="position:relative">
-      <%= yield %>
+    <div id="sb-root">
+      <div class="d-flex flex-justify-center" style="position:relative" id="sb-story">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

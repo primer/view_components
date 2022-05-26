@@ -11,19 +11,26 @@ module Primer
     DEFAULT_TAG = :span
     TAG_OPTIONS = [DEFAULT_TAG, :summary, :a, :div].freeze
 
+    DEFAULT_SCHEME = :default
     SCHEME_MAPPINGS = {
-      primary: "Label--primary",
-      secondary: "Label--secondary",
-      info: "Label--info",
-      success: "Label--success",
-      warning: "Label--warning",
-      danger: "Label--danger",
+      DEFAULT_SCHEME => "",
+      :primary => "Label--primary",
+      :secondary => "Label--secondary",
+      :accent => "Label--accent",
+      :success => "Label--success",
+      :attention => "Label--attention",
+      :danger => "Label--danger",
+      :severe => "Label--severe",
+      :done => "Label--done",
+      :sponsors => "Label--sponsors",
       # deprecated
-      orange: "Label--orange",
-      purple: "Label--purple"
+      :info => "Label--info",
+      :warning => "Label--warning",
+      :orange => "Label--orange",
+      :purple => "Label--purple"
     }.freeze
-    DEPRECATED_SCHEME_OPTIONS = [:orange, :purple].freeze
-    SCHEME_OPTIONS = ([*SCHEME_MAPPINGS.keys, nil] - DEPRECATED_SCHEME_OPTIONS).freeze
+    DEPRECATED_SCHEME_OPTIONS = [:info, :warning, :orange, :purple].freeze
+    SCHEME_OPTIONS = (SCHEME_MAPPINGS.keys - DEPRECATED_SCHEME_OPTIONS).freeze
 
     VARIANT_MAPPINGS = {
       large: "Label--large",
@@ -35,10 +42,13 @@ module Primer
     #   <%= render(Primer::LabelComponent.new) { "Default" } %>
     #   <%= render(Primer::LabelComponent.new(scheme: :primary)) { "Primary" } %>
     #   <%= render(Primer::LabelComponent.new(scheme: :secondary)) { "Secondary" } %>
-    #   <%= render(Primer::LabelComponent.new(scheme: :info)) { "Info" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :accent)) { "Accent" } %>
     #   <%= render(Primer::LabelComponent.new(scheme: :success)) { "Success" } %>
-    #   <%= render(Primer::LabelComponent.new(scheme: :warning)) { "Warning" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :attention)) { "Attention" } %>
     #   <%= render(Primer::LabelComponent.new(scheme: :danger)) { "Danger" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :severe)) { "Severe" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :done)) { "Done" } %>
+    #   <%= render(Primer::LabelComponent.new(scheme: :sponsors)) { "Sponsors" } %>
     #
     # @example Variants
     #   <%= render(Primer::LabelComponent.new) { "Default" } %>
@@ -48,7 +58,7 @@ module Primer
     # @param scheme [Symbol] <%= one_of(Primer::LabelComponent::SCHEME_MAPPINGS.keys) %>
     # @param variant [Symbol] <%= one_of(Primer::LabelComponent::VARIANT_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(tag: DEFAULT_TAG, scheme: nil, variant: nil, **system_arguments)
+    def initialize(tag: DEFAULT_TAG, scheme: DEFAULT_SCHEME, variant: nil, **system_arguments)
       @system_arguments = system_arguments
       @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
       @system_arguments[:classes] = class_names(

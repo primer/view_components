@@ -16,6 +16,7 @@ module Primer
         )
       ).freeze
       # rubocop:enable Security/YAMLLoad
+
       BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
 
       # Replacements for some classnames that end up being a different argument key
@@ -145,36 +146,6 @@ module Primer
           end.join(", ")
         end
 
-        private
-
-        def find_selector(selector)
-          key = infer_selector_key(selector)
-          value_hash = UTILITIES[key]
-
-          return nil if value_hash.blank?
-
-          # Each value hash will also contain an array of classnames for breakpoints
-          # Key argument `0`, classes `[ "mr-0", "mr-sm-0", "mr-md-0", "mr-lg-0", "mr-xl-0" ]`
-          value_hash.each do |key_argument, classnames|
-            # Skip each value hash until we get one with the selector
-            next unless classnames.include?(selector)
-
-            # Return [:mr, 0, 1]
-            # has index of classname, so we can match it up with responsvie array `mr: [nil, 0]`
-            return [key, key_argument, classnames.index(selector)]
-          end
-
-          nil
-        end
-
-        def infer_selector_key(selector)
-          REPLACEMENT_KEYS.each do |k, v|
-            return v.to_sym if selector.match?(Regexp.new(k))
-          end
-
-          selector.split("-").first.to_sym
-        end
-
         def validate(key, val, breakpoint)
           unless supported_key?(key)
             raise ArgumentError, "#{key} is not a valid Primer utility key" if validate_class_names?
@@ -191,10 +162,41 @@ module Primer
           unless supported_value?(key, val)
             raise ArgumentError, "#{val} is not a valid value for :#{key}. Use one of #{mappings(key)}" if validate_class_names?
 
+            return nil if [true, false].include?(val)
+
             return "#{key.to_s.dasherize}-#{val.to_s.dasherize}"
           end
 
           nil
+        end
+
+        private
+
+        def find_selector(selector)
+          key = infer_selector_key(selector)
+          value_hash = UTILITIES[key]
+
+          return nil if value_hash.blank?
+
+          # Each value hash will also contain an array of classnames for breakpoints
+          # Key argument `0`, classes `[ "mr-0", "mr-sm-0", "mr-md-0", "mr-lg-0", "mr-xl-0" ]`
+          value_hash.each do |key_argument, classnames|
+            # Skip each value hash until we get one with the selector
+            next unless classnames.include?(selector)
+
+            # Return [:mr, 0, 1]
+            # has index of classname, so we can match it up with responsive array `mr: [nil, 0]`
+            return [key, key_argument, classnames.index(selector)]
+          end
+
+          nil
+        end
+
+        def infer_selector_key(selector)
+          REPLACEMENT_KEYS.each do |k, v|
+            return v.to_sym if selector.match?(Regexp.new(k))
+          end
+          selector.split("-").first.to_sym
         end
       end
     end

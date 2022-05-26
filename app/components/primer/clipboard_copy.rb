@@ -25,7 +25,7 @@ module Primer
     # @param for [String] Element id from where to get the copied value.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(value: nil, **system_arguments)
-      @system_arguments = system_arguments
+      @system_arguments = deny_tag_argument(**system_arguments)
       @value = value
 
       validate!

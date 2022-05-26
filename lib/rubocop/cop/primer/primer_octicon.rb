@@ -163,9 +163,7 @@ module RuboCop
 
           color = case args[:color]
                   when :text_white
-                    :text_white
-                  when :text_link
-                    :icon_info
+                    :on_emphasis
                   when Symbol
                     args[:color].to_s.gsub("text_", "icon_").to_sym
                   end
@@ -209,7 +207,7 @@ module RuboCop
           return node.source unless node.type == :str
           return ":#{node.value}" unless node.value.include?("-")
 
-          # If the icon contains `-` we need to cast the string as a symbole
+          # If the icon contains `-` we need to cast the string as a symbol
           # E.g: `arrow-down` becomes `:"arrow-down"`
           ":#{node.source}"
         end

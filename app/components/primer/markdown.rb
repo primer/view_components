@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
-  # Use `Markdown` to wrap markdown content
+  # Use `Markdown` to wrap markdown content.
   class Markdown < Primer::Component
     status :beta
 
@@ -93,7 +93,7 @@ module Primer
     #     <ol>
     #       <li>Michael Jackson</li>
     #       <li>Michael Bolton</li>
-    #       <li>Michael Buble</li>
+    #       <li>Michael Bublé</li>
     #     </ol>
     #
     #     <p>And an unordered task list:</p>
