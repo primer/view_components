@@ -31,7 +31,7 @@ class PrimerAutoCompleteTest < Minitest::Test
         end
       end
 
-      assert_includes(err.message, "instead of `aria-label`, include `label_text` and set `is_label_visible` to `false` on the component initializer.")
+      assert_includes(err.message, "instead of `aria-label`, include `label_text` and set `visually_hide_label` to `true` on the component initializer.")
     end
   end
 
@@ -80,13 +80,13 @@ class PrimerAutoCompleteTest < Minitest::Test
   end
 
   def test_renders_with_icon
-    render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", list_id: "my-list-id", input_id: "test-input", with_icon: true) do |component|
+    render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", list_id: "my-list-id", input_id: "test-input") do |component|
       component.leading_visual_icon(icon: :search)
 
       assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
         assert_selector("input.FormControl")
         assert_selector('label[for="test-input"]')
-        assert_selector("svg.octicon.octicon-search")
+        assert_selector("svg.FormControl--input-leadingVisual")
       end
     end
   end
@@ -108,15 +108,6 @@ class PrimerAutoCompleteTest < Minitest::Test
 
     assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
       assert_selector('ul[id="my-list-id"].ActionList.my-class')
-    end
-  end
-
-  def test_label_becomes_screen_reader_text_if_user_sets_visibility_boolean_to_false
-    render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id", is_label_visible: false)
-
-    assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
-      assert_selector('label[for="test-input"]')
-      assert_selector("span.sr-only", text: "Fruits")
     end
   end
 

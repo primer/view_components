@@ -24,7 +24,6 @@
 - ".Counter--primary"
 - ".Counter--secondary"
 - ".FormControl"
-- ".FormControl--fullWidth"
 - ".FormControl--input"
 - ".FormControl--input-leadingVisual"
 - ".FormControl--input-trailingAction"

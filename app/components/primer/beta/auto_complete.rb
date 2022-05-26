@@ -83,7 +83,6 @@ module Primer
         sanitized_args[:classes] = class_names(
           "FormControl",
           "FormControl--input",
-          @full_width && "FormControl--fullWidth",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
           sanitized_args[:classes]
         )
