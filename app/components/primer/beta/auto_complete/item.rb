@@ -6,7 +6,6 @@ module Primer
     class AutoComplete
       # Use `AutoCompleteItem` to list results of an auto-completed search.
       class Item < Primer::Component
-        include ViewComponent::PolymorphicSlots
         status :beta
 
         # @example Default
