@@ -84,16 +84,15 @@ class PrimerAutoCompleteTest < Minitest::Test
       component.leading_visual_icon(icon: :search)
     end
 
-      assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
-        assert_selector("input.FormControl")
-        assert_selector('label[for="test-input"]')
-        assert_selector("svg.FormControl--input-leadingVisual")
-      end
+    assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
+      assert_selector("input.FormControl")
+      assert_selector('label[for="test-input"]')
+      assert_selector("svg.FormControl--input-leadingVisual")
     end
   end
 
   def test_renders_non_visible_label
-    render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", list_id: "my-list-id", input_id: "test-input", visually_hide_label: true, with_icon: true)
+    render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", list_id: "my-list-id", input_id: "test-input", visually_hide_label: true)
 
     assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
       assert_selector("input.FormControl")
