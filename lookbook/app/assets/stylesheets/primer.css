@@ -4,5 +4,5 @@
 
 @import '@primer/css/index.scss';
 
-/* temporary design token imports */
+/* design token import while primitives are not included in main bundle */
 @import '@primer/css/primitives/index.scss';
