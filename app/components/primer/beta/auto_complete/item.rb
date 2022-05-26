@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # TODO: use generic ActionList item for Autocomplete
 module Primer
   module Beta
@@ -31,7 +32,7 @@ module Primer
 
           @system_arguments[:classes] = class_names(
             "ActionList-item",
-            system_arguments[:classes],
+            system_arguments[:classes]
           )
         end
 
