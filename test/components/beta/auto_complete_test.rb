@@ -82,6 +82,7 @@ class PrimerAutoCompleteTest < Minitest::Test
   def test_renders_with_icon
     render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", list_id: "my-list-id", input_id: "test-input") do |component|
       component.leading_visual_icon(icon: :search)
+    end
 
       assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
         assert_selector("input.FormControl")
