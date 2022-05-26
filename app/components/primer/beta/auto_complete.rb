@@ -8,7 +8,7 @@ module Primer
     #   Always set an accessible label to help the user interact with the component.
     #
     #   * `label_text` is required and visible by default.
-    #   * If you must use a non-visible label, set `visually_hide_label` to `true`.
+    #   * If you must hide the label, set `visually_hide_label` to `true`.
     #   However, please note that a visible label should almost always
     #   be used unless there is compelling reason not to. A placeholder is not a label.
     class AutoComplete < Primer::Component
