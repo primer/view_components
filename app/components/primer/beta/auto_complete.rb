@@ -17,9 +17,8 @@ module Primer
       DEFAULT_SIZE = :medium
       SIZE_MAPPINGS = {
         :small => "FormControl--small",
-        :medium => "FormControl--medium",
-        :large => "FormControl--large",
-        DEFAULT_SIZE => "FormControl--medium"
+        DEFAULT_SIZE => "FormControl--medium",
+        :large => "FormControl--large"
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
