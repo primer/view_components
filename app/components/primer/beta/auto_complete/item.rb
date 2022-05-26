@@ -36,8 +36,8 @@ module Primer
         end
 
         def call
-          render(Primer::BaseComponent.new(**@system_arguments)) do |_c|
-            render(Primer::BaseComponent.new(tag: :span, classes: "ActionList-content")) do |_c|
+          render(Primer::BaseComponent.new(**@system_arguments)) do
+            render(Primer::BaseComponent.new(tag: :span, classes: "ActionList-content")) do
               render(Primer::BaseComponent.new(tag: :span, classes: "ActionList-item-label")) { content }
             end
           end
