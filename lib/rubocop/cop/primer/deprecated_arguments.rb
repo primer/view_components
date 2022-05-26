@@ -36,12 +36,12 @@ module RuboCop
           is_label_inline: nil,
           with_icon: nil,
           is_label_visible: {
-            false: "visually_hide_label: true",
-            true: "visually_hide_label: false"
+            false => "visually_hide_label: true",
+            true => "visually_hide_label: false"
           },
           is_clearable: {
-            false: "show_clear_button: false",
-            true: "show_clear_button: true"
+            false => "show_clear_button: false",
+            true => "show_clear_button: true"
           },
           bg: {
             white: "bg: :primary",
