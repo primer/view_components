@@ -210,28 +210,39 @@
     type: String
     default: N/A
     description: Id of the list element.
-  - name: with_icon
+  - name: visually_hide_label
     type: Boolean
     default: "`false`"
-    description: Controls if a search icon is visible, defaults to `false`.
-  - name: is_label_visible
-    type: Boolean
-    default: "`true`"
-    description: Controls if the label is visible. If `false`, screen reader only
-      text will be added.
-  - name: is_clearable
+    description: Controls if the label is visible. If `true`, screen reader only text
+      will be added.
+  - name: show_clear_button
     type: Boolean
     default: "`false`"
     description: Adds optional clear button.
-  - name: is_label_inline
-    type: Boolean
-    default: "`false`"
-    description: Controls if the label is inline. On smaller screens, label will always
-      become stacked.
   - name: system_arguments
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+  - name: size
+    type: Hash
+    default: "`:medium`"
+    description: Input size can be small, medium (default), or large
+  - name: full_width
+    type: Boolean
+    default: "`false`"
+    description: Input can be full-width or fit to content
+  - name: disabled
+    type: Boolean
+    default: "`false`"
+    description: Disabled input
+  - name: invalid
+    type: Boolean
+    default: "`false`"
+    description: Invalid input
+  - name: placeholder
+    type: String
+    default: "`nil`"
+    description: The placeholder text displayed within the input
 - component: AutoCompleteItem
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/item.rb
   parameters:
