@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.0.75
+
+### Patch Changes
+
+- [#1163](https://github.com/primer/view_components/pull/1163) [`1fabdc63`](https://github.com/primer/view_components/commit/1fabdc636e44094cebbaf58bfde7c15e2231016a) Thanks [@langermank](https://github.com/langermank)! - Autocomplete design updates
+
 ## 0.0.74
 
 ### Patch Changes
