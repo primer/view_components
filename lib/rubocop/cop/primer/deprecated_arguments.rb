@@ -314,14 +314,16 @@ module RuboCop
         def extract_kv_from(pair)
           key = pair.key.value
 
+          # rubocop:disable Lint/BooleanSymbol
           value = case pair.value.type
-          when :sym, :str
-            pair.value.value.to_sym
-          when :false, :true
-            pair.value.type == :true
-          else
-            return []
-          end
+                  when :sym, :str
+                    pair.value.value.to_sym
+                  when :false, :true
+                    pair.value.type == :true
+                  else
+                    return []
+                  end
+          # rubocop:enable Lint/BooleanSymbol
 
           [key, value]
         end
