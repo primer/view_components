@@ -33,8 +33,14 @@ module RuboCop
         # }
         #
         DEPRECATED = {
-          is_label_inline: nil,
-          with_icon: nil,
+          is_label_inline: {
+            true => nil,
+            false => nil
+          },
+          with_icon: {
+            true => nil,
+            false => nil
+          },
           is_label_visible: {
             false => "visually_hide_label: true",
             true => "visually_hide_label: false"
@@ -287,13 +293,10 @@ module RuboCop
           return unless kwargs.type == :hash
 
           kwargs.pairs.each do |pair|
-            # Skip if we're not dealing with a symbol
+            # Skip if we're not dealing with a symbol key
             next if pair.key.type != :sym
-            next unless pair.value.type == :sym || pair.value.type == :str
 
-            key = pair.key.value
-            value = pair.value.value.to_sym
-
+            key, value = extract_kv_from(pair)
             next unless DEPRECATED.key?(key) && DEPRECATED[key].key?(value)
 
             add_offense(pair, message: INVALID_MESSAGE)
@@ -302,9 +305,27 @@ module RuboCop
 
         def autocorrect(node)
           lambda do |corrector|
-            replacement = DEPRECATED[node.key.value][node.value.value.to_sym]
+            key, value = extract_kv_from(node)
+            replacement = DEPRECATED[key][value]
             corrector.replace(node, replacement) if replacement.present?
           end
+        end
+
+        def extract_kv_from(pair)
+          key = pair.key.value
+
+          # rubocop:disable Lint/BooleanSymbol
+          value = case pair.value.type
+                  when :sym, :str
+                    pair.value.value.to_sym
+                  when :false, :true
+                    pair.value.type == :true
+                  else
+                    return []
+                  end
+          # rubocop:enable Lint/BooleanSymbol
+
+          [key, value]
         end
       end
     end
