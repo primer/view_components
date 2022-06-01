@@ -58,4 +58,13 @@ class RubocopDeprecatedArgumentsTest < CopTest
     assert_equal 1, cop.offenses.count
     refute cop.offenses.first.correctable?
   end
+
+  def test_supports_boolean_values
+    investigate(cop, <<-RUBY)
+      Primer::Beta::AutoComplete.new(is_label_visible: false)
+    RUBY
+
+    assert_equal 1, cop.offenses.count
+    assert_equal "Primer::Beta::AutoComplete.new(visually_hide_label: true)", cop.offenses.first.corrector.rewrite.strip
+  end
 end

@@ -287,13 +287,10 @@ module RuboCop
           return unless kwargs.type == :hash
 
           kwargs.pairs.each do |pair|
-            # Skip if we're not dealing with a symbol
+            # Skip if we're not dealing with a symbol key
             next if pair.key.type != :sym
-            next unless pair.value.type == :sym || pair.value.type == :str
 
-            key = pair.key.value
-            value = pair.value.value.to_sym
-
+            key, value = extract_kv_from(pair)
             next unless DEPRECATED.key?(key) && DEPRECATED[key].key?(value)
 
             add_offense(pair, message: INVALID_MESSAGE)
@@ -302,9 +299,25 @@ module RuboCop
 
         def autocorrect(node)
           lambda do |corrector|
-            replacement = DEPRECATED[node.key.value][node.value.value.to_sym]
+            key, value = extract_kv_from(node)
+            replacement = DEPRECATED[key][value]
             corrector.replace(node, replacement) if replacement.present?
           end
+        end
+
+        def extract_kv_from(pair)
+          key = pair.key.value
+
+          value = case pair.value.type
+          when :sym, :str
+            pair.value.value.to_sym
+          when :false, :true
+            pair.value.type == :true
+          else
+            return []
+          end
+
+          [key, value]
         end
       end
     end
