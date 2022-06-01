@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.0.76
+
+### Patch Changes
+
+- [#1182](https://github.com/primer/view_components/pull/1182) [`33fc7907`](https://github.com/primer/view_components/commit/33fc7907b0476bebd1d2c54e3e9c335b5e12da3b) Thanks [@camertron](https://github.com/camertron)! - Adjust DeprecatedArguments cop to handle boolean values
+
+* [#1179](https://github.com/primer/view_components/pull/1179) [`aa7afef2`](https://github.com/primer/view_components/commit/aa7afef27dff6baac2d98e23d47194fbfddbe181) Thanks [@maxbeizer](https://github.com/maxbeizer)! - Add `role` to system args docs.
+
+- [#1180](https://github.com/primer/view_components/pull/1180) [`3dfcf015`](https://github.com/primer/view_components/commit/3dfcf015af0e301e54a15986cb114ccf84dd65d9) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Upgrading view_component
+  - Bump to latest release of [view_component 2.56.0](https://github.com/github/view_component/releases/tag/v2.56.0).
+  - Remove dependency on the now-changed private `@rendered_component` api.
+
 ## 0.0.75
 
 ### Patch Changes
