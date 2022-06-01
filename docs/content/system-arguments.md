@@ -39,6 +39,7 @@ System arguments include most HTML attributes. For example:
 | `style` | `String` | Inline styles. |
 | `title` | `String` | The `title` attribute. |
 | `width` | `Integer` | Width. |
+| `role`  | `String`  | Roles from the ARIA spec. [MDN docs](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles). |
 
 ## Animation
 
