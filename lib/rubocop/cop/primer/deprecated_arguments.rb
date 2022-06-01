@@ -34,12 +34,12 @@ module RuboCop
         #
         DEPRECATED = {
           is_label_inline: {
-            true: nil,
-            false: nil
+            true => nil,
+            false => nil
           },
           with_icon: {
-            true: nil,
-            false: nil
+            true => nil,
+            false => nil
           },
           is_label_visible: {
             false => "visually_hide_label: true",
