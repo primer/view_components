@@ -33,8 +33,14 @@ module RuboCop
         # }
         #
         DEPRECATED = {
-          is_label_inline: nil,
-          with_icon: nil,
+          is_label_inline: {
+            true: nil,
+            false: nil
+          },
+          with_icon: {
+            true: nil,
+            false: nil
+          },
           is_label_visible: {
             false => "visually_hide_label: true",
             true => "visually_hide_label: false"
