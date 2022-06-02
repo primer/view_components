@@ -85,7 +85,7 @@ module Primer
 
     def call
       render(Primer::BaseComponent.new(**@system_arguments)) do
-        "#{content}#{tooltip}"
+        content.to_s + tooltip.to_s
       end
     end
   end
