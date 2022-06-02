@@ -14,6 +14,8 @@ module Primer
         disabled: false,
         checked: false,
         type: "text",
+        indeterminate: false,
+        radio: true,
 
         **system_arguments
       )
@@ -26,7 +28,9 @@ module Primer
         @visually_hide_label = visually_hide_label ? "sr-only" : nil
         @disabled = disabled ? "disabled" : nil
         @checked = checked ? "checked" : nil
+        @indeterminate = indeterminate ? "indeterminate" : nil
         @type = type
+        @radio = radio
         @form_group_classes = class_names(
           "FormGroup",
           "FormGroup--checkbox",

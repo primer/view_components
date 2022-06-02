@@ -11,8 +11,9 @@ module Alpha
     # @param caption text
     # @param disabled toggle
     # @param checked toggle
-    def playground(label_text: "Label", caption: "Hint text", disabled: false, checked: false)
-      render(Primer::Alpha::Checkbox.new(label_text: label_text, caption: caption, input_id: "input-id", checked: checked, disabled: disabled))
+    # @param indeterminate toggle
+    def playground(label_text: "Label", caption: "Hint text", disabled: false, checked: false, indeterminate: false)
+      render(Primer::Alpha::Checkbox.new(label_text: label_text, caption: caption, input_id: "input-id", checked: checked, disabled: disabled, indeterminate: indeterminate))
     end
 
     # @label Long label
@@ -20,8 +21,9 @@ module Alpha
     # @param label_text text
     # @param checked toggle
     # @param disabled toggle
-    def longlabel(label_text: "This is a very long label to demonstrate how field wraps in this very unlikely scenario", checked: false, disabled: false)
-      render(Primer::Alpha::Checkbox.new(label_text: label_text, input_id: "input-id", checked: checked, disabled: disabled))
+    # @param indeterminate toggle
+    def longlabel(label_text: "This is a very long label to demonstrate how field wraps in this very unlikely scenario", checked: false, disabled: false, indeterminate: false)
+      render(Primer::Alpha::Checkbox.new(label_text: label_text, input_id: "input-id", checked: checked, disabled: disabled, indeterminate: indeterminate))
     end
   end
 end
