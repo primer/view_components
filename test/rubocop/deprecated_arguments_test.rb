@@ -58,29 +58,4 @@ class RubocopDeprecatedArgumentsTest < CopTest
     assert_equal 1, cop.offenses.count
     refute cop.offenses.first.correctable?
   end
-
-  def test_supports_boolean_values
-    investigate(cop, <<-RUBY)
-      Primer::Beta::AutoComplete.new(is_label_visible: false)
-    RUBY
-
-    assert_equal 1, cop.offenses.count
-    assert_equal "Primer::Beta::AutoComplete.new(visually_hide_label: true)", cop.offenses.first.corrector.rewrite.strip
-  end
-
-  def test_identifies_is_label_inline
-    investigate(cop, <<-RUBY)
-      Primer::Beta::AutoComplete.new(label_text: "User", is_label_inline: true)
-    RUBY
-
-    assert_equal 1, cop.offenses.count
-  end
-
-  def test_identifies_with_icon
-    investigate(cop, <<-RUBY)
-      Primer::Beta::AutoComplete.new(label_text: "User", with_icon: true)
-    RUBY
-
-    assert_equal 1, cop.offenses.count
-  end
 end
