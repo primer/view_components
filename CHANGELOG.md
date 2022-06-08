@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.0.78
+
+### Patch Changes
+
+- [#1186](https://github.com/primer/view_components/pull/1186) [`ff2c3fe1`](https://github.com/primer/view_components/commit/ff2c3fe1913d7a1d65dbd4f608b68155ed247bef) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Revert #1163, as additional work will be needed to ship those changes to production successfully.
+
 ## 0.0.77
 
 ### Patch Changes
