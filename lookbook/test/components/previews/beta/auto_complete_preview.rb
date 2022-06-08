@@ -29,6 +29,32 @@ module Beta
       end
     end
 
+    # @label With submit button
+    # @param label_text text
+    # @param show_clear_button toggle
+    # @param visually_hide_label toggle
+    # @param placeholder text
+    # @param size select [small, medium, large]
+    # @param full_width toggle
+    # @param disabled toggle
+    # @param invalid toggle
+    # @param input_id text
+    # @param list_id text
+    # @param input_name text
+    def with_submit_button(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, full_width: true, disabled: false, invalid: false, input_id: "input-id", list_id: "list-id", input_name: "input-id")
+      render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c|
+        c.leading_visual_icon(icon: :search)
+        c.results do
+          render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c|
+            Apple
+          end
+          render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c|
+            Orange
+          end
+        end
+      end
+    end
+
     # @label Leading visual
     # @param label_text text
     # @param show_clear_button toggle
