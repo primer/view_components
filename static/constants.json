@@ -270,6 +270,15 @@
   },
   "Primer::Beta::Breadcrumbs::Item": {
   },
+  "Primer::Beta::Flash": {
+    "DEFAULT_SCHEME": "default",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "warning": "flash-warn",
+      "danger": "flash-error",
+      "success": "flash-success"
+    }
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
@@ -375,7 +384,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",
@@ -425,15 +435,6 @@
     "SCHEME_MAPPINGS": {
       "default": "",
       "dark": "dropdown-menu-dark"
-    }
-  },
-  "Primer::FlashComponent": {
-    "DEFAULT_SCHEME": "default",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "warning": "flash-warn",
-      "danger": "flash-error",
-      "success": "flash-success"
     }
   },
   "Primer::FlexComponent": {
