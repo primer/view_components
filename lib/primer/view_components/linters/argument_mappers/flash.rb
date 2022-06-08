@@ -8,7 +8,7 @@ module ERBLint
       # Maps classes in a flash element to arguments for the Flash component.
       class Flash < Base
         SCHEME_MAPPINGS = Primer::ViewComponents::Constants.get(
-          component: "Primer::FlashComponent",
+          component: "Primer::Beta::Flash",
           constant: "SCHEME_MAPPINGS",
           symbolize: true
         ).freeze

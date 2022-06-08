@@ -3,7 +3,7 @@ EnableDefaultLinters: true
 linters:
   ButtonComponentMigrationCounter:
     enabled: true
-  FlashComponentMigrationCounter:
+  FlashMigrationCounter:
     enabled: true
   LabelComponentMigrationCounter:
     enabled: true
