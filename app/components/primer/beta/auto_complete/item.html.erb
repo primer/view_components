@@ -1,0 +1,14 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <span class="ActionList-content">
+    <% if leading_visual %>
+        <span class="ActionList-item-visual ActionList-item-visual--leading">
+            <%= leading_visual %>
+        </span>
+    <% end %>
+    <span class="ActionList-item-label"><%= content %></span>
+   <% if trailing_visual %>
+        <span class="ActionList-item-visual ActionList-item-visual--trailing">
+            <%= trailing_visual %>
+        </span>
+    <% end %>
+<% end %>

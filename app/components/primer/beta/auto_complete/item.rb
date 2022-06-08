@@ -8,6 +8,32 @@ module Primer
       class Item < Primer::Component
         status :beta
 
+        #
+        # Leading visual.
+        #
+        # - `leading_visual_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
+        #
+        # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
+        renders_one :leading_visual, types: {
+          icon: lambda { |**system_arguments|
+            system_arguments[:classes]
+            Primer::OcticonComponent.new(**system_arguments)
+          }
+        }
+
+        #
+        # Trailing visual.
+        #
+        # - `trailing_visual_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
+        #
+        # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
+        renders_one :trailing_visual, types: {
+          icon: lambda { |**system_arguments|
+            system_arguments[:classes]
+            Primer::OcticonComponent.new(**system_arguments)
+          }
+        }
+
         # @example Default
         #   <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
         #     Selected
@@ -33,14 +59,6 @@ module Primer
             "ActionList-item",
             system_arguments[:classes]
           )
-        end
-
-        def call
-          render(Primer::BaseComponent.new(**@system_arguments)) do
-            render(Primer::BaseComponent.new(tag: :span, classes: "ActionList-content")) do
-              render(Primer::BaseComponent.new(tag: :span, classes: "ActionList-item-label")) { content }
-            end
-          end
         end
       end
     end
