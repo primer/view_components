@@ -8,20 +8,11 @@ module Primer
     #   Always set an accessible label to help the user interact with the component.
     #
     #   * `label_text` is required and visible by default.
-    #   * If you must hide the label, set `visually_hide_label` to `true`.
+    #   * If you must use a non-visible label, set `is_label_visible` to `false`.
     #   However, please note that a visible label should almost always
     #   be used unless there is compelling reason not to. A placeholder is not a label.
     class AutoComplete < Primer::Component
       status :beta
-
-      DEFAULT_SIZE = :medium
-      SIZE_MAPPINGS = {
-        :small => "FormControl--small",
-        DEFAULT_SIZE => "FormControl--medium",
-        :large => "FormControl--large"
-      }.freeze
-      SIZE_OPTIONS = SIZE_MAPPINGS.keys
-
       #
       # Customizable results list.
       #
@@ -31,24 +22,11 @@ module Primer
         system_arguments[:tag] = :ul
         system_arguments[:id] = @list_id
         system_arguments[:classes] = class_names(
-          "ActionList",
+          "autocomplete-results",
           system_arguments[:classes]
         )
 
         Primer::BaseComponent.new(**system_arguments)
-      }
-
-      #
-      # Leading visual.
-      #
-      # - `leading_visual_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
-      #
-      # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
-      renders_one :leading_visual, types: {
-        icon: lambda { |**system_arguments|
-          system_arguments[:classes] = class_names("FormControl--input-leadingVisual")
-          Primer::OcticonComponent.new(**system_arguments)
-        }
       }
 
       # Customizable input used to search for results.
@@ -60,7 +38,7 @@ module Primer
         sanitized_args = deny_single_argument(:autofocus, "autofocus is not allowed for accessibility reasons. See https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus#accessibility_considerations for more information.", **sanitized_args)
         deny_aria_key(
           :label,
-          "instead of `aria-label`, include `label_text` and set `visually_hide_label` to `true` on the component initializer.",
+          "instead of `aria-label`, include `label_text` and set `is_label_visible` to `false` on the component initializer.",
           **sanitized_args
         )
         deny_single_argument(
@@ -77,82 +55,45 @@ module Primer
         sanitized_args[:name] = @input_name
         sanitized_args[:tag] = :input
         sanitized_args[:autocomplete] = "off"
-        sanitized_args[:disabled] = true if @disabled
-        sanitized_args[:invalid] = true if @invalid
+
         sanitized_args[:type] = :text
         sanitized_args[:classes] = class_names(
-          "FormControl",
-          "FormControl--input",
-          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
+          "form-control",
           sanitized_args[:classes]
         )
-        sanitized_args[:placeholder] = @placeholder
 
         Primer::BaseComponent.new(**sanitized_args)
       }
 
-      # @example Leading visual
+      # @example Default
       #   @description
-      #     Display any Octicon as a leading visual within the field
+      #     Labels are stacked by default.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", src: "/auto_complete", input_id:"input-id-1", list_id: "list-id-1")) do |c| %>
-      #       <% c.leading_visual_icon(icon: :search) %>
-      #       <% c.results do %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
-      #           Apple
-      #         <% end %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
-      #           Orange
-      #         <% end %>
-      #       <% end %>
-      #     <% end %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--default", list_id: "fruits-popup--default")) %>
       #
-      # @example Trailing action
+      # @example With inline label
       #   @description
-      #     Show a clear button
+      #     Labels can be inline by setting `is_label_inline: true`. However, labels will always become stacked on smaller screen sizes.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "input-id-2", list_id: "list-id-2", src: "/auto_complete", show_clear_button: true )) do |c| %>
-      #       <% c.results do %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
-      #           Apple
-      #         <% end %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
-      #           Orange
-      #         <% end %>
-      #       <% end %>
-      #     <% end %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", is_label_inline: true, input_id: "fruits-input--inline-label", list_id: "fruits-popup--inline-label")) %>
       #
-      # @example Visually hidden label
+      # @example With non-visible label
       #   @description
-      #     A non-visible label may be rendered with `visually_hide_label: true`, but it is highly discouraged. See <%= link_to_accessibility %>.
+      #     A non-visible label may be rendered with `is_label_visible: false`, but it is highly discouraged. See <%= link_to_accessibility %>.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-1", list_id: "fruits-popup--custom-result-1", src: "/auto_complete", visually_hide_label: true)) do |c| %>
-      #       <% c.leading_visual_icon(icon: :search) %>
-      #       <% c.results do %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
-      #           Apple
-      #         <% end %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
-      #           Orange
-      #         <% end %>
-      #       <% end %>
-      #     <% end %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--non-visible-label", list_id: "fruits-popup--non-visible-label", is_label_visible: false)) %>
       #
-      # @example Full width field
+      # @example With icon
       #   @description
-      #     To allow field to span width of its container, set `full_width` to `true`.
+      #     To display a search icon, set `with_icon` to `true`.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-2", list_id: "fruits-popup--custom-results-2", src: "/auto_complete", full_width: true)) do |c| %>
-      #       <% c.leading_visual_icon(icon: :search) %>
-      #       <% c.results do %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
-      #           Apple
-      #         <% end %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
-      #           Orange
-      #         <% end %>
-      #       <% end %>
-      #     <% end %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup--icon", input_id: "fruits-input--icon", with_icon: true)) %>
+      #
+      # @example With icon and non-visible label
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", list_id: "fruits-popup--icon-no-label", input_id: "fruits-input--icon-no-label", with_icon: true, is_label_visible: false)) %>
+      #
+      # @example With clear button
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--clear", list_id: "fruits-popup--clear", is_clearable: true)) %>
       #
       # @example With custom classes for the input
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--custom-input", list_id: "fruits-popup--custom-input")) do |c| %>
@@ -176,48 +117,45 @@ module Primer
       # @param input_id [String] Id of the input element.
       # @param input_name [String] Optional name of the input element, defaults to `input_id` when not set.
       # @param list_id [String] Id of the list element.
-      # @param visually_hide_label [Boolean] Controls if the label is visible. If `true`, screen reader only text will be added.
-      # @param show_clear_button [Boolean] Adds optional clear button.
+      # @param with_icon [Boolean] Controls if a search icon is visible, defaults to `false`.
+      # @param is_label_visible [Boolean] Controls if the label is visible. If `false`, screen reader only text will be added.
+      # @param is_clearable [Boolean] Adds optional clear button.
+      # @param is_label_inline [Boolean] Controls if the label is inline. On smaller screens, label will always become stacked.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      # @param size [Hash] Input size can be small, medium (default), or large
-      # @param full_width [Boolean] Input can be full-width or fit to content
-      # @param disabled [Boolean] Disabled input
-      # @param invalid [Boolean] Invalid input
-      # @param placeholder [String] The placeholder text displayed within the input
-      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, placeholder: nil, show_clear_button: false, visually_hide_label: false, size: DEFAULT_SIZE, full_width: false, disabled: false, invalid: false, **system_arguments)
+      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, is_label_visible: true, is_label_inline: false, with_icon: false, is_clearable: false, **system_arguments)
         @label_text = label_text
         @list_id = list_id
         @input_id = input_id
         @input_name = input_name || input_id
-        @placeholder = placeholder
-        @visually_hide_label = visually_hide_label
-        @show_clear_button = show_clear_button
+        @is_label_visible = is_label_visible
+        @with_icon = with_icon
+        @is_clearable = is_clearable
+
+        @label_classes = label_classes(is_label_visible: is_label_visible, is_label_inline: is_label_inline)
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = "auto-complete"
         @system_arguments[:src] = src
         @system_arguments[:for] = list_id
-        @disabled = disabled
-        @invalid = invalid
-        @size = size
-        @full_width = full_width
-        @field_wrap_classes = class_names(
-          "FormControl-fieldWrap",
-          "FormControl-fieldWrap--input",
-          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
-          "FormControl-fieldWrap--disabled": disabled,
-          "FormControl-fieldWrap--invalid": invalid,
-          "FormControl-fieldWrap--input-trailingAction": show_clear_button
-        )
-        @form_group_classes = class_names(
-          "FormGroup",
-          "FormGroup--fullWidth": full_width
-        )
       end
 
       # add `input` and `results` without needing to explicitly call them in the view
       def before_render
         results(classes: "") unless results
         input(classes: "") unless input
+      end
+
+      private
+
+      # Private: determines the label classes based on component configration.
+      #
+      # If the label is not visible, return an empty string.
+      #
+      # @param args [Hash] The component configuration.
+      # @return [String] The label classes.
+      def label_classes(**args)
+        return "" if args[:is_label_visible] == false
+
+        args[:is_label_inline] ? "autocomplete-label-inline" : "autocomplete-label-stacked"
       end
     end
   end

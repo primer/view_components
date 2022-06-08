@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: use generic ActionList item for Autocomplete
 module Primer
   module Beta
     class AutoComplete
@@ -30,17 +29,14 @@ module Primer
           @system_arguments[:"aria-disabled"] = true if disabled
 
           @system_arguments[:classes] = class_names(
-            "ActionList-item",
-            system_arguments[:classes]
+            "autocomplete-item",
+            system_arguments[:classes],
+            "disabled" => disabled
           )
         end
 
         def call
-          render(Primer::BaseComponent.new(**@system_arguments)) do
-            render(Primer::BaseComponent.new(tag: :span, classes: "ActionList-content")) do
-              render(Primer::BaseComponent.new(tag: :span, classes: "ActionList-item-label")) { content }
-            end
-          end
+          render(Primer::BaseComponent.new(**@system_arguments)) { content }
         end
       end
     end
