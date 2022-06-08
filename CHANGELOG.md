@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.0.77
+
+### Patch Changes
+
+- [#1185](https://github.com/primer/view_components/pull/1185) [`66a15b1a`](https://github.com/primer/view_components/commit/66a15b1a556e9814109317729b729dbee5316594) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Rename FlashComponent to Flash
+
+* [#1183](https://github.com/primer/view_components/pull/1183) [`84b9e4ef`](https://github.com/primer/view_components/commit/84b9e4ef60c9f0d1c2df830f247f2a55aac82783) Thanks [@camertron](https://github.com/camertron)! - Remove trailing newlines from the output of LinkComponent
+
 ## 0.0.76
 
 ### Patch Changes
