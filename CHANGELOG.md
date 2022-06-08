@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.0.79
+
+### Patch Changes
+
+- [#1188](https://github.com/primer/view_components/pull/1188) [`fb7218ac`](https://github.com/primer/view_components/commit/fb7218ac5c4de2253cb627c99bc9469635cde98b) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Revert leftover deprecated arguments from 1163.
+
 ## 0.0.78
 
 ### Patch Changes
