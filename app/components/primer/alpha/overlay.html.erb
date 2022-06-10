@@ -1,5 +1,5 @@
 <%= renderTrigger %>
-<anchored-overlay class="Overlay-backdrop Overlay--visibilityHidden <%= @backdrop_classes %>">
+<anchored-overlay class="Overlay-backdrop Overlay--visibilityHidden <%= @backdrop_classes %>" id="<%= @system_arguments[:id] %>">
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
     <% if @title.present? %>
     <header class="Overlay-header <%= @header_classes %>">
