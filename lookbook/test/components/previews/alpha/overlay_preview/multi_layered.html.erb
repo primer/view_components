@@ -1,0 +1,43 @@
+<div>
+<%= render(
+    Primer::Alpha::Overlay.new(
+        open: open,
+        title: title,
+        description: description,
+        overlay_id: overlay_id,
+        show_header_divider: show_header_divider,
+        show_footer_divider: show_footer_divider,
+        show_close_button: show_close_button,
+        footer_content_align: footer_content_align,
+        header_variant: header_variant,
+        body_padding_variant: body_padding_variant,
+        motion: motion
+        )) do |c| %>
+        <% c.renderTrigger { "Show overlay" } %>
+        <% c.body do %>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          <%= render(
+                Primer::Alpha::Overlay.new(
+                    open: open,
+                    title: title,
+                    description: description,
+                    overlay_id: "inner-overlay",
+                    show_header_divider: show_header_divider,
+                    show_footer_divider: show_footer_divider,
+                    show_close_button: show_close_button,
+                    footer_content_align: footer_content_align,
+                    header_variant: header_variant,
+                    body_padding_variant: body_padding_variant,
+                    motion: motion,
+                    variant: { narrow: :full, regular: :anchor },
+                    placement: { narrow: :bottom, regular: :bottom }
+                    )) do |c| %>
+                    <% c.renderTrigger { "Show menu" } %>
+                    <% c.body do %>
+                    "The body of the dialog"
+                    <% end %>
+                <% end %>
+            </div>
+        <% end %>
+       <% end %>
+</div>
