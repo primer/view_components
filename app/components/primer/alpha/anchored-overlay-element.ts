@@ -140,15 +140,20 @@ class AnchoredOverlayElement extends HTMLElement {
   //   if (!this.trigger) return
 
   //   // this.trigger.addEventListener('keydown', this.buttonKeydown.bind(this), {signal})
-  //   // this.trigger.addEventListener('click', this.buttonClick.bind(this), {signal})
+  //   this.trigger.addEventListener('click', this.buttonClick.bind(this), {signal})
   // }
 
+  // something is wrong here
   #updatePosition() {
     if (!this.trigger) return
 
-    const float = this.querySelector<HTMLElement>('[data-menu-overlay]')
+    // const float = this.querySelector<HTMLElement>('[data-overlay]')
+    // const float = this.querySelector('[data-overlay]'), as HTMLDivElement | null;
+    const float = this.querySelector('anchored-overlay') as HTMLElement | null
     const anchor = this.trigger
-    // const {top, left} = getAnchoredPosition(float, anchor, {side: this.anchorSide, align: this.anchorAlign})
+    console.log(this)
+    // const { top, left } = getAnchoredPosition(float, anchor, { side: this.anchorSide, align: this.anchorAlign })
+
 
     // float.style.top = `${top}px`
     // float.style.left = `${left}px`

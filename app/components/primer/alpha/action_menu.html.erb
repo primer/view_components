@@ -1,0 +1,14 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <%= trigger %>
+  <div class="Overlay-backdrop--anchor" data-menu-overlay>
+    <div class="Overlay Overlay-whenNarrow Overlay--height-auto Overlay--width-auto" hidden>
+      <div class="Overlay-body Overlay-body--paddingNone">
+        <ul class="ActionList" id="<%= @menu_id %>-list" role="menu" aria-labelledby="<%= @menu_id %>-text">
+          <% items.each do |item| %>
+            <%= item %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>

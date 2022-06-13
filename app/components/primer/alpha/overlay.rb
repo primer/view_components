@@ -103,6 +103,12 @@ module Primer
       }.freeze
       MOTION_OPTIONS = MOTION_MAPPINGS.keys
 
+      ANCHOR_ALIGN_DEFAULT = :start
+      ANCHOR_ALIGN_OPTIONS = [ANCHOR_ALIGN_DEFAULT, :center, :end].freeze
+
+      ANCHOR_SIDE_DEFAULT = :outside_bottom
+      ANCHOR_SIDE_OPTIONS = [:outside_top, ANCHOR_SIDE_DEFAULT, :outside_left, :outside_right].freeze
+
       # Optional list of buttons to be rendered in the footer.
       #
       # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
@@ -183,13 +189,16 @@ module Primer
         motion: DEFAULT_MOTION,
         variant: { narrow: DEFAULT_VARIANT_NARROW, regular: DEFAULT_VARIANT_REGULAR },
         placement: { narrow: DEFAULT_PLACEMENT_NARROW, regular: DEFAULT_PLACEMENT_REGULAR },
+        anchor_align: ANCHOR_ALIGN_DEFAULT,
+        anchor_side: ANCHOR_SIDE_DEFAULT,
         **system_arguments
       )
         @system_arguments = deny_tag_argument(**system_arguments)
 
-        @system_arguments[:tag] = "div"
+        @system_arguments[:tag] = "anchored-overlay"
         # make this generic
         @system_arguments[:role] = role
+        @system_arguments[:data] = { overlay: "" }
 
         @show_header_divider = show_header_divider
         @show_footer_divider = show_footer_divider
@@ -205,14 +214,23 @@ module Primer
         @motion = motion
         @variant = variant
         @placement = placement
-
+        @system_arguments[:"data-anchor-align"] = fetch_or_fallback(ANCHOR_ALIGN_OPTIONS, anchor_align, ANCHOR_ALIGN_DEFAULT).to_s
+        @system_arguments[:"data-anchor-side"] = fetch_or_fallback(ANCHOR_SIDE_OPTIONS, anchor_side, ANCHOR_SIDE_DEFAULT).to_s.dasherize
         @title = title
         @description = description
         @system_arguments[:id] = overlay_id.to_s
 
         @header_id = "#{overlay_id}-header"
 
-        @backdrop_classes = class_names(
+        # @backdrop_classes = class_names(
+        #   VARIANT_REGULAR_MAPPINGS[fetch_or_fallback(VARIANT_REGULAR_OPTIONS, variant[:regular], DEFAULT_VARIANT_REGULAR)],
+        #   VARIANT_NARROW_MAPPINGS[fetch_or_fallback(VARIANT_NARROW_OPTIONS, variant[:narrow], DEFAULT_VARIANT_NARROW)],
+        #   PLACEMENT_REGULAR_MAPPINGS[fetch_or_fallback(PLACEMENT_REGULAR_OPTIONS, placement[:regular], DEFAULT_PLACEMENT_REGULAR)],
+        #   PLACEMENT_NARROW_MAPPINGS[fetch_or_fallback(PLACEMENT_NARROW_OPTIONS, placement[:narrow], DEFAULT_PLACEMENT_NARROW)],
+        #   "Overlay--visibilityHidden": !open
+        # )
+
+        @system_arguments[:classes] = class_names(
           VARIANT_REGULAR_MAPPINGS[fetch_or_fallback(VARIANT_REGULAR_OPTIONS, variant[:regular], DEFAULT_VARIANT_REGULAR)],
           VARIANT_NARROW_MAPPINGS[fetch_or_fallback(VARIANT_NARROW_OPTIONS, variant[:narrow], DEFAULT_VARIANT_NARROW)],
           PLACEMENT_REGULAR_MAPPINGS[fetch_or_fallback(PLACEMENT_REGULAR_OPTIONS, placement[:regular], DEFAULT_PLACEMENT_REGULAR)],
@@ -234,13 +252,12 @@ module Primer
           "Overlay-footer--divided": show_footer_divider
         )
 
-        @system_arguments[:classes] = class_names(
+        @overlay_classes = class_names(
           "Overlay",
           "Overlay-whenNarrow",
           WIDTH_MAPPINGS[fetch_or_fallback(WIDTH_OPTIONS, width, DEFAULT_WIDTH)],
           HEIGHT_MAPPINGS[fetch_or_fallback(HEIGHT_OPTIONS, height, DEFAULT_HEIGHT)],
-          MOTION_MAPPINGS[fetch_or_fallback(MOTION_OPTIONS, motion, DEFAULT_MOTION)],
-          system_arguments[:classes]
+          MOTION_MAPPINGS[fetch_or_fallback(MOTION_OPTIONS, motion, DEFAULT_MOTION)]
         )
 
         if @description.present?

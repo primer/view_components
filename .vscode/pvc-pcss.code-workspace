@@ -9,5 +9,7 @@
       "path": "../../css"
     }
   ],
-  "settings": {}
+  "settings": {
+    "editor.tabSize": 2
+  }
 }
