@@ -17,8 +17,10 @@ module Alpha
     # @param full_width toggle
     # @param disabled toggle
     # @param invalid toggle
-    def playground(label_text: "Text input label", caption: "Hint text", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, label_position: :block, full_width: false, disabled: false, invalid: false, validation_text: "Something went wrong")
-      render(Primer::Alpha::TextInput.new(label_text: label_text, caption: caption, input_id: "input-id", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, label_position: label_position, full_width: full_width, disabled: disabled, invalid: invalid, validation_text: validation_text))
+    # @param monospace toggle
+    # @param inset toggle
+    def playground(label_text: "Text input label", caption: "Hint text", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, label_position: :block, full_width: false, disabled: false, invalid: false, validation_text: "Something went wrong", monospace: false, inset: false)
+      render(Primer::Alpha::TextInput.new(label_text: label_text, caption: caption, input_id: "input-id", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, label_position: label_position, full_width: full_width, disabled: disabled, invalid: invalid, validation_text: validation_text, monospace: monospace, inset: inset))
     end
 
     # @label Leading visual

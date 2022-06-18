@@ -15,7 +15,7 @@ module Primer
         checked: false,
         type: "text",
         indeterminate: false,
-        radio: true,
+        radio: false,
 
         **system_arguments
       )

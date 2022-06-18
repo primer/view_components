@@ -46,6 +46,8 @@ module Primer
         disabled: false,
         invalid: false,
         type: "text",
+        inset: false,
+        monospace: false,
 
         **system_arguments
       )
@@ -66,6 +68,8 @@ module Primer
         @size = size
         @full_width = full_width
         @type = type
+        @inset = inset
+        @monospace = monospace
         @field_wrap_classes = class_names(
           "FormControl-fieldWrap",
           "FormControl-fieldWrap--input",
@@ -82,6 +86,8 @@ module Primer
           "FormControl",
           "FormControl--input",
           @full_width && "FormControl--fullWidth",
+          @inset && "FormControl--inset",
+          @monospace && "FormControl--monospace",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)]
         )
       end
