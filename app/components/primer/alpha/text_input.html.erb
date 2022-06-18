@@ -4,7 +4,7 @@
     </label>
     <% if leading_visual || @show_clear_button %>
         <div class="<%= @field_wrap_classes %> <% if leading_visual %>FormControl-fieldWrap--input-leadingVisual<% end %>">
-            <%= leading_visual %>
+            <span class="FormControl--input-leadingVisualWrap"><%= leading_visual %></span>
             <%= render Primer::BaseComponent.new(tag: :input, placeholder: @placeholder, id: @input_id, name: @input_name, invalid: @invalid, disabled: @disabled, type: @type, classes: @form_control_classes, ariaLabelledBy: @caption_id) do %><% end %>
             <% if @show_clear_button %>
                 <button id="<%= @input_id %>-clear" class="FormControl--input-trailingAction" aria-label="Clear" <%= @disabled %>><%= primer_octicon "x" %></button>

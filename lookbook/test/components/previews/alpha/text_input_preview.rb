@@ -18,8 +18,23 @@ module Alpha
     # @param disabled toggle
     # @param invalid toggle
     def playground(label_text: "Text input label", caption: "Hint text", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, label_position: :block, full_width: false, disabled: false, invalid: false, validation_text: "Something went wrong")
+      render(Primer::Alpha::TextInput.new(label_text: label_text, caption: caption, input_id: "input-id", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, label_position: label_position, full_width: full_width, disabled: disabled, invalid: invalid, validation_text: validation_text))
+    end
+
+    # @label Leading visual
+    # @param label_text text
+    # @param validation_text text
+    # @param caption text
+    # @param show_clear_button toggle
+    # @param visually_hide_label toggle
+    # @param placeholder text
+    # @param size select [small, medium, large]
+    # @param full_width toggle
+    # @param disabled toggle
+    # @param invalid toggle
+    def leading_visual(label_text: "Text input label", caption: "Hint text", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, label_position: :block, full_width: false, disabled: false, invalid: false, validation_text: "Something went wrong")
       render(Primer::Alpha::TextInput.new(label_text: label_text, caption: caption, input_id: "input-id", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, label_position: label_position, full_width: full_width, disabled: disabled, invalid: invalid, validation_text: validation_text)) do |c|
-        # c.leading_visual_icon(icon: :search)
+        c.leading_visual_icon(icon: :search)
       end
     end
   end
