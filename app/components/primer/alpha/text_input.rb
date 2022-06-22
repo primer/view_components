@@ -74,8 +74,6 @@ module Primer
           "FormControl-fieldWrap",
           "FormControl-fieldWrap--input",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
-          "FormControl-fieldWrap--disabled": disabled,
-          "FormControl-fieldWrap--invalid": invalid,
           "FormControl-fieldWrap--input-trailingAction": show_clear_button
         )
         @form_group_classes = class_names(
@@ -85,7 +83,6 @@ module Primer
         @form_control_classes = class_names(
           "FormControl",
           "FormControl--input",
-          @full_width && "FormControl--fullWidth",
           @inset && "FormControl--inset",
           @monospace && "FormControl--monospace",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)]

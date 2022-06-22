@@ -12,8 +12,9 @@ module Alpha
     # @param disabled toggle
     # @param checked toggle
     # @param indeterminate toggle
-    def playground(label_text: "Label", caption: "Hint text", disabled: false, checked: false, indeterminate: false)
-      render(Primer::Alpha::Checkbox.new(label_text: label_text, caption: caption, input_id: "input-id", checked: checked, disabled: disabled, indeterminate: indeterminate))
+    # @param radio toggle
+    def playground(label_text: "Label", caption: "Hint text", disabled: false, checked: false, indeterminate: false, radio: false)
+      render(Primer::Alpha::Checkbox.new(label_text: label_text, caption: caption, input_id: "input-id", checked: checked, disabled: disabled, indeterminate: indeterminate, radio: radio))
     end
 
     # @label Long label
