@@ -16,9 +16,9 @@ module Primer
 
       DEFAULT_SIZE = :medium
       SIZE_MAPPINGS = {
-        :small => "FormControl--small",
-        DEFAULT_SIZE => "FormControl--medium",
-        :large => "FormControl--large"
+        :small => "Field--small",
+        DEFAULT_SIZE => "Field--medium",
+        :large => "Field--large"
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
@@ -46,7 +46,7 @@ module Primer
       # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
       renders_one :leading_visual, types: {
         icon: lambda { |**system_arguments|
-          system_arguments[:classes] = class_names("FormControl--input-leadingVisual")
+          system_arguments[:classes] = class_names("Field--input-leadingVisual")
           Primer::OcticonComponent.new(**system_arguments)
         }
       }
@@ -81,8 +81,8 @@ module Primer
         sanitized_args[:invalid] = true if @invalid
         sanitized_args[:type] = :text
         sanitized_args[:classes] = class_names(
-          "FormControl",
-          "FormControl--input",
+          "Field",
+          "Field--input",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
           sanitized_args[:classes]
         )
@@ -201,16 +201,14 @@ module Primer
         @size = size
         @full_width = full_width
         @field_wrap_classes = class_names(
-          "FormControl-fieldWrap",
-          "FormControl-fieldWrap--input",
+          "Field-wrap",
+          "Field-wrap--input",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
-          "FormControl-fieldWrap--disabled": disabled,
-          "FormControl-fieldWrap--invalid": invalid,
-          "FormControl-fieldWrap--input-trailingAction": show_clear_button
+          "Field-wrap--input-trailingAction": show_clear_button
         )
         @form_group_classes = class_names(
-          "FormGroup",
-          "FormGroup--fullWidth": full_width
+          "FormControl",
+          "FormControl--fullWidth": full_width
         )
       end
 
