@@ -202,9 +202,9 @@
     "DEFAULT_SIZE": "medium",
     "Item": "Primer::Beta::AutoComplete::Item",
     "SIZE_MAPPINGS": {
-      "small": "FormControl--small",
-      "medium": "FormControl--medium",
-      "large": "FormControl--large"
+      "small": "Field--small",
+      "medium": "Field--medium",
+      "large": "Field--large"
     },
     "SIZE_OPTIONS": [
       "small",
