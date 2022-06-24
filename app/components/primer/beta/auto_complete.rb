@@ -97,7 +97,6 @@ module Primer
       #   @code
       #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", src: "/auto_complete", input_id:"input-id-1", list_id: "list-id-1")) do |c| %>
       #       <% c.leading_visual_icon(icon: :search) %>
-      #       <% end %>
       #     <% end %>
       #
       # @example Trailing action
