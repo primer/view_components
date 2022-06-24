@@ -97,13 +97,6 @@ module Primer
       #   @code
       #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", src: "/auto_complete", input_id:"input-id-1", list_id: "list-id-1")) do |c| %>
       #       <% c.leading_visual_icon(icon: :search) %>
-      #       <% c.results do %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
-      #           Apple
-      #         <% end %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
-      #           Orange
-      #         <% end %>
       #       <% end %>
       #     <% end %>
       #
@@ -111,16 +104,7 @@ module Primer
       #   @description
       #     Show a clear button
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "input-id-2", list_id: "list-id-2", src: "/auto_complete", show_clear_button: true )) do |c| %>
-      #       <% c.results do %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
-      #           Apple
-      #         <% end %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
-      #           Orange
-      #         <% end %>
-      #       <% end %>
-      #     <% end %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "input-id-2", list_id: "list-id-2", src: "/auto_complete", show_clear_button: true )) %>
       #
       # @example Visually hidden label
       #   @description
@@ -128,14 +112,6 @@ module Primer
       #   @code
       #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-1", list_id: "fruits-popup--custom-result-1", src: "/auto_complete", visually_hide_label: true)) do |c| %>
       #       <% c.leading_visual_icon(icon: :search) %>
-      #       <% c.results do %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
-      #           Apple
-      #         <% end %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
-      #           Orange
-      #         <% end %>
-      #       <% end %>
       #     <% end %>
       #
       # @example Full width field
@@ -144,14 +120,6 @@ module Primer
       #   @code
       #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-2", list_id: "fruits-popup--custom-results-2", src: "/auto_complete", full_width: true)) do |c| %>
       #       <% c.leading_visual_icon(icon: :search) %>
-      #       <% c.results do %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |_c| %>
-      #           Apple
-      #         <% end %>
-      #         <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c| %>
-      #           Orange
-      #         <% end %>
-      #       <% end %>
       #     <% end %>
       #
       # @example With custom classes for the input
@@ -161,14 +129,7 @@ module Primer
       #
       # @example With custom classes for the results
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--custom-results", list_id: "fruits-popup--custom-results")) do |c| %>
-      #     <% c.results(classes: "custom-class") do %>
-      #       <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple")) do |c| %>
-      #         Apple
-      #       <% end %>
-      #       <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |c| %>
-      #         Orange
-      #       <% end %>
-      #     <% end %>
+      #     <% c.results(classes: "custom-class") %>
       #   <% end %>
       #
       # @param label_text [String] The label of the input.

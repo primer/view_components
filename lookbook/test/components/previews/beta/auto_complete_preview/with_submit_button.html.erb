@@ -15,10 +15,6 @@
             input_name: input_name
     )) do |c| %>
         <% c.leading_visual_icon(icon: :search) %>
-        <% c.results do %>
-          <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "apple").with_content("Apple")) %>
-          <%= render(Primer::Beta::AutoComplete::Item.new(value: "orange").with_content("Orange")) %>
-        <% end %>
     <% end %>
     <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Submit" } %>
 </div>

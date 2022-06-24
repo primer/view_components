@@ -18,14 +18,6 @@ module Beta
     def playground(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, full_width: false, disabled: false, invalid: false, input_id: "input-id", list_id: "list-id", input_name: "input-id")
       render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c|
         c.leading_visual_icon(icon: :search)
-        c.results do
-          render(Primer::Beta::AutoComplete::Item.new(value: "apple")) do |_c|
-            Apple
-          end
-          render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c|
-            Orange
-          end
-        end
       end
     end
 
@@ -72,14 +64,6 @@ module Beta
     def leading_visual(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, full_width: false, disabled: false, invalid: false, input_id: "input-id", list_id: "list-id", input_name: "input-id")
       render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c|
         c.leading_visual_icon(icon: :search)
-        c.results do
-          render(Primer::Beta::AutoComplete::Item.new(value: "apple")) do |_c|
-            Apple
-          end
-          render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c|
-            Orange
-          end
-        end
       end
     end
 
@@ -97,14 +81,6 @@ module Beta
     # @param input_name text
     def trailing_action(label_text: "Select a fruit", show_clear_button: true, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, full_width: false, disabled: false, invalid: false, input_id: "input-id", list_id: "list-id", input_name: "input-id")
       render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c|
-        c.results do
-          render(Primer::Beta::AutoComplete::Item.new(value: "apple")) do |_c|
-            Apple
-          end
-          render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c|
-            Orange
-          end
-        end
       end
     end
 
@@ -123,14 +99,6 @@ module Beta
     def full_width(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, full_width: true, disabled: false, invalid: false, input_id: "input-id", list_id: "list-id", input_name: "input-id")
       render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c|
         c.leading_visual_icon(icon: :search)
-        c.results do
-          render(Primer::Beta::AutoComplete::Item.new(value: "apple")) do |_c|
-            Apple
-          end
-          render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c|
-            Orange
-          end
-        end
       end
     end
 
@@ -149,14 +117,6 @@ module Beta
     def visually_hide_label(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: true, placeholder: "Placeholder text", size: :medium, full_width: false, disabled: false, invalid: false, input_id: "input-id", list_id: "list-id", input_name: "input-id")
       render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c|
         c.leading_visual_icon(icon: :search)
-        c.results do
-          render(Primer::Beta::AutoComplete::Item.new(value: "apple")) do |_c|
-            Apple
-          end
-          render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c|
-            Orange
-          end
-        end
       end
     end
 
@@ -176,14 +136,6 @@ module Beta
     def small(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :small, full_width: false, disabled: false, invalid: false, input_id: "input-id-1", list_id: "list-id-1", input_name: "input-id-1")
       render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c|
         c.leading_visual_icon(icon: :search)
-        c.results do
-          render(Primer::Beta::AutoComplete::Item.new(value: "apple")) do |_c|
-            Apple
-          end
-          render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c|
-            Orange
-          end
-        end
       end
     end
 
@@ -201,14 +153,6 @@ module Beta
     def medium(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, full_width: false, disabled: false, invalid: false, input_id: "input-id-2", list_id: "list-id-2", input_name: "input-id-2")
       render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c|
         c.leading_visual_icon(icon: :search)
-        c.results do
-          render(Primer::Beta::AutoComplete::Item.new(value: "apple")) do |_c|
-            Apple
-          end
-          render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c|
-            Orange
-          end
-        end
       end
     end
 
@@ -226,14 +170,6 @@ module Beta
     def large(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :large, full_width: false, disabled: false, invalid: false, input_id: "input-id-3", list_id: "list-id-3", input_name: "input-id-3")
       render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c|
         c.leading_visual_icon(icon: :search)
-        c.results do
-          render(Primer::Beta::AutoComplete::Item.new(disabled: true, value: "apple")) do |_c|
-            Apple
-          end
-          render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c|
-            Orange
-          end
-        end
       end
     end
 
@@ -252,16 +188,7 @@ module Beta
     # @param list_id text
     # @param input_name text
     def leading_visual_in_results(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, full_width: false, disabled: false, invalid: false, input_id: "input-id", list_id: "list-id", input_name: "input-id")
-      render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c|
-        c.results do
-          render(Primer::Beta::AutoComplete::Item.new(value: "apple")) do |_c|
-            c.leading_visual_icon(icon: :info)
-            Apple
-          end
-          render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c|
-            Orange
-          end
-        end
+      render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete?visual=leading", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c|
       end
     end
 
@@ -278,17 +205,7 @@ module Beta
     # @param list_id text
     # @param input_name text
     def trailing_visual_in_results(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, full_width: false, disabled: false, invalid: false, input_id: "input-id", list_id: "list-id", input_name: "input-id")
-      render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name)) do |c|
-        c.results do
-          render(Primer::Beta::AutoComplete::Item.new(value: "apple")) do |_c|
-            c.trailing_visual_icon(icon: :info)
-            Apple
-          end
-          render(Primer::Beta::AutoComplete::Item.new(value: "orange")) do |_c|
-            Orange
-          end
-        end
-      end
+      render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete?visual=trailing", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name))
     end
   end
 end
