@@ -47,7 +47,7 @@ class PrimerAutoCompleteTest < Minitest::Test
     render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id")
 
     assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
-      assert_selector('input[id="test-input"].FormControl')
+      assert_selector('input[id="test-input"].Field')
       assert_selector('ul[id="my-list-id"].ActionList')
     end
   end
@@ -56,7 +56,7 @@ class PrimerAutoCompleteTest < Minitest::Test
     render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id")
 
     assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
-      assert_selector('input[id="test-input"].FormControl')
+      assert_selector('input[id="test-input"].Field')
       assert_selector('ul[id="my-list-id"].ActionList')
     end
   end
@@ -85,9 +85,9 @@ class PrimerAutoCompleteTest < Minitest::Test
     end
 
     assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
-      assert_selector("input.FormControl")
+      assert_selector("input.Field")
       assert_selector('label[for="test-input"]')
-      assert_selector("svg.FormControl--input-leadingVisual")
+      assert_selector("svg.Field--input-leadingVisual")
     end
   end
 
@@ -95,7 +95,7 @@ class PrimerAutoCompleteTest < Minitest::Test
     render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", list_id: "my-list-id", input_id: "test-input", visually_hide_label: true)
 
     assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
-      assert_selector("input.FormControl")
+      assert_selector("input.Field")
       assert_selector('label[for="test-input"]')
       assert_selector("label.sr-only", text: "Fruits")
     end
