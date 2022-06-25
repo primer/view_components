@@ -6,18 +6,17 @@ module ERBLint
   module Linters
     # Replaces calls to `super` with calls to `render_parent`.
     class DisallowActionList < Linter
-      PVC_PATTERNS = %w[
-        app/components/primer/*.html.erb
-        app/components/primer/**/*.html.erb
-      ].freeze
-
       include ERBLint::LinterRegistry
       include Helpers::RubocopHelpers
       include TagTreeHelpers
 
+      class ConfigSchema < LinterConfig
+        property :ignore_files, accepts: array_of?(String), default: -> { [] }
+      end
+      self.config_schema = ConfigSchema
+
       def run(processed_source)
-        # PVCs are exempt
-        return if pvc_template?(processed_source.filename)
+        return if ignored?(processed_source.filename)
 
         class_regex = /ActionList[\w-]*/
         tags, * = build_tag_tree(processed_source)
@@ -58,8 +57,14 @@ module ERBLint
 
       private
 
-      def pvc_template?(path)
-        PVC_PATTERNS.any? { |pattern| File.fnmatch?(pattern, path) }
+      def ignored?(filename)
+        begin
+          relative_filename = Pathname(filename).relative_path_from(Dir.getwd)
+        rescue ArgumentError
+          return false
+        end
+
+        @config.ignore_files.any? { |pattern| relative_filename.fnmatch?(pattern) }
       end
     end
   end
