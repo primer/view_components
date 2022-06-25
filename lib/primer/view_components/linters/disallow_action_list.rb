@@ -63,6 +63,7 @@ module ERBLint
         begin
           filename = filename.relative_path_from(Dir.getwd)
         rescue ArgumentError
+          # raised if the filename does not have Dir.getwd as a prefix
         end
 
         @config.ignore_files.any? { |pattern| filename.fnmatch?(pattern) }
