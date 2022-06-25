@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
+require "pathname"
 require_relative "helpers/rubocop_helpers"
 
 module ERBLint
   module Linters
-    # Replaces calls to `super` with calls to `render_parent`.
+    # Finds usages of ActionList CSS classes.
     class DisallowActionList < Linter
       include ERBLint::LinterRegistry
-      include Helpers::RubocopHelpers
       include TagTreeHelpers
 
       class ConfigSchema < LinterConfig
@@ -61,7 +61,7 @@ module ERBLint
         filename = Pathname(filename)
 
         begin
-          filename = filename.relative_path_from(Dir.getwd)
+          filename = filename.relative_path_from(Pathname(Dir.getwd))
         rescue ArgumentError
           # raised if the filename does not have Dir.getwd as a prefix
         end
