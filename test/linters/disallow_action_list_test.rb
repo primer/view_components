@@ -40,9 +40,11 @@ class DisallowActionListTest < LinterTestCase
     assert offense.source_range.end_pos == 27
   end
 
-  def test_does_not_identify_action_list_class_in_pvc_template
+  def test_does_not_identify_action_list_class_in_ignored_files
     @file = "<div class='ActionList <%= foo %>'>fooo</div>"
     @filename = "app/components/primer/component_template.html.erb"
+    config = linter_class.config_schema.new(ignore_files: ['app/components/primer/*.html.erb'])
+    @linter = linter_class.new(file_loader, config)
     @linter.run(processed_source)
 
     assert_empty @linter.offenses

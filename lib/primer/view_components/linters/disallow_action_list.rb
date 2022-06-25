@@ -58,13 +58,14 @@ module ERBLint
       private
 
       def ignored?(filename)
+        filename = Pathname(filename)
+
         begin
-          relative_filename = Pathname(filename).relative_path_from(Dir.getwd)
+          filename = filename.relative_path_from(Dir.getwd)
         rescue ArgumentError
-          return false
         end
 
-        @config.ignore_files.any? { |pattern| relative_filename.fnmatch?(pattern) }
+        @config.ignore_files.any? { |pattern| filename.fnmatch?(pattern) }
       end
     end
   end
