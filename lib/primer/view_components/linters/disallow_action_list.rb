@@ -49,7 +49,7 @@ module ERBLint
             add_offense(
               new_loc,
               "ActionList classes are only designed to be used by Primer View Components and " \
-                "should be considered private."
+                "should be considered private. Please reach out in the #primer-rails Slack channel."
             )
           end
         end
