@@ -58,15 +58,8 @@ module ERBLint
 
       private
 
-      def pvc_template?(filename)
-        begin
-          relative_filename = Pathname(filename).relative_path_from(Rails.root)
-        rescue ArgumentError
-          # raised if filename doesn't start with Rails.root
-          return false
-        end
-
-        PVC_PATTERNS.any? { |pattern| relative_filename.fnmatch?(pattern) }
+      def pvc_template?(path)
+        PVC_PATTERNS.any? { |pattern| File.fnmatch?(pattern, path) }
       end
     end
   end

@@ -42,7 +42,7 @@ class DisallowActionListTest < LinterTestCase
 
   def test_does_not_identify_action_list_class_in_pvc_template
     @file = "<div class='ActionList <%= foo %>'>fooo</div>"
-    @filename = Rails.root.join("app/components/primer/component_template.html.erb").to_s
+    @filename = "app/components/primer/component_template.html.erb"
     @linter.run(processed_source)
 
     assert_empty @linter.offenses
