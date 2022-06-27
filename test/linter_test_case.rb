@@ -7,6 +7,7 @@ require "linters/support/autocorrectable_linter_shared_tests"
 class LinterTestCase < Minitest::Test
   def setup
     @linter = linter_class&.new(file_loader, linter_class.config_schema.new)
+    @filename = "file.rb"
   end
 
   private
@@ -38,7 +39,7 @@ class LinterTestCase < Minitest::Test
   end
 
   def processed_source
-    ERBLint::ProcessedSource.new("file.rb", @file)
+    ERBLint::ProcessedSource.new(@filename, @file)
   end
 
   def tags
