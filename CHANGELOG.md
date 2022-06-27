@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.0.80
+
+### Patch Changes
+
+- [#1192](https://github.com/primer/view_components/pull/1192) [`d9440694`](https://github.com/primer/view_components/commit/d9440694cccd6eee9642ee74a1f2c351c83de1e7) Thanks [@camertron](https://github.com/camertron)! - Fix sidebar link to the Flash component in docs
+
+* [#1199](https://github.com/primer/view_components/pull/1199) [`3c16e7b3`](https://github.com/primer/view_components/commit/3c16e7b3825d9644a0628edf3d317c3418a9ca03) Thanks [@BlakeWilliams](https://github.com/BlakeWilliams)! - Prevent slot from overriding component system_arguments
+
+- [#1191](https://github.com/primer/view_components/pull/1191) [`d82359d6`](https://github.com/primer/view_components/commit/d82359d6ea677ffa17c134536bfe660e27ce4851) Thanks [@camertron](https://github.com/camertron)! - Fix PVC installation docs to mention correct Javascript include
+
+* [#1198](https://github.com/primer/view_components/pull/1198) [`63977720`](https://github.com/primer/view_components/commit/63977720e421d06942320c79345536a52ff4f9e2) Thanks [@camertron](https://github.com/camertron)! - Add ActionList linter
+
+- [#1194](https://github.com/primer/view_components/pull/1194) [`568f312c`](https://github.com/primer/view_components/commit/568f312cce81250d6699027febb6ff3816532ca8) Thanks [@camertron](https://github.com/camertron)! - Remove version manager files
+
 ## 0.0.79
 
 ### Patch Changes
