@@ -113,7 +113,7 @@ class PrimerAlphaLayoutTest < Minitest::Test
       c.sidebar { "Sidebar" }
     end
 
-    assert_match(/Layout-sidebar.*Layout-main/m, @rendered_component)
+    assert_match(/Layout-sidebar.*Layout-main/m, page.native.serialize)
   end
 
   def test_main_first_in_html
@@ -122,7 +122,7 @@ class PrimerAlphaLayoutTest < Minitest::Test
       c.sidebar { "Sidebar" }
     end
 
-    assert_match(/Layout-main.*Layout-sidebar/m, @rendered_component)
+    assert_match(/Layout-main.*Layout-sidebar/m, page.native.serialize)
   end
 
   def test_renders_main_slot_as_different_elements

@@ -18,7 +18,7 @@ class ArgumentMappersFlashTest < LinterTestCase
   end
 
   def test_returns_scheme_argument
-    Primer::FlashComponent::SCHEME_MAPPINGS.each do |value, class_name|
+    Primer::Beta::Flash::SCHEME_MAPPINGS.each do |value, class_name|
       next if class_name.blank?
 
       @file = "<div class=\"#{class_name}\">flash</div>"

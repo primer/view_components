@@ -24,12 +24,10 @@ module Primer
     renders_one :tooltip, lambda { |**system_arguments|
       raise ArgumentError, "Links with a tooltip must have a unique `id` set on the `LinkComponent`." if @id.blank? && !Rails.env.production?
 
-      @system_arguments = system_arguments
+      system_arguments[:for_id] = @id
+      system_arguments[:type] ||= :description
 
-      @system_arguments[:for_id] = @id
-      @system_arguments[:type] ||= :description
-
-      Primer::Alpha::Tooltip.new(**@system_arguments)
+      Primer::Alpha::Tooltip.new(**system_arguments)
     }
 
     # @example Default
@@ -81,6 +79,12 @@ module Primer
 
     def before_render
       raise ArgumentError, "href is required when using <a> tag" if @system_arguments[:tag] == :a && @system_arguments[:href].nil? && !Rails.env.production?
+    end
+
+    def call
+      render(Primer::BaseComponent.new(**@system_arguments)) do
+        content.to_s + tooltip.to_s
+      end
     end
   end
 end

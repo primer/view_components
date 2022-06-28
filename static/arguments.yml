@@ -341,6 +341,33 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Flash
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/flash.rb
+  parameters:
+  - name: full
+    type: Boolean
+    default: "`false`"
+    description: Whether the component should take up the full width of the screen.
+  - name: spacious
+    type: Boolean
+    default: "`false`"
+    description: Whether to add margin to the bottom of the component.
+  - name: dismissible
+    type: Boolean
+    default: "`false`"
+    description: Whether the component can be dismissed with an X button.
+  - name: icon
+    type: Symbol
+    default: "`nil`"
+    description: Name of Octicon icon to use.
+  - name: scheme
+    type: Symbol
+    default: "`:default`"
+    description: One of `:danger`, `:default`, `:success`, or `:warning`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Text
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb
   parameters:
@@ -542,33 +569,6 @@
     type: String
     default: "`nil`"
     description: Optional string to display as the header
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: Flash
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/flash_component.rb
-  parameters:
-  - name: full
-    type: Boolean
-    default: "`false`"
-    description: Whether the component should take up the full width of the screen.
-  - name: spacious
-    type: Boolean
-    default: "`false`"
-    description: Whether to add margin to the bottom of the component.
-  - name: dismissible
-    type: Boolean
-    default: "`false`"
-    description: Whether the component can be dismissed with an X button.
-  - name: icon
-    type: Symbol
-    default: "`nil`"
-    description: Name of Octicon icon to use.
-  - name: scheme
-    type: Symbol
-    default: "`:default`"
-    description: One of `:danger`, `:default`, `:success`, or `:warning`.
   - name: system_arguments
     type: Hash
     default: N/A

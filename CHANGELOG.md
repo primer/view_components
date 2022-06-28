@@ -1,5 +1,57 @@
 # CHANGELOG
 
+## 0.0.80
+
+### Patch Changes
+
+- [#1192](https://github.com/primer/view_components/pull/1192) [`d9440694`](https://github.com/primer/view_components/commit/d9440694cccd6eee9642ee74a1f2c351c83de1e7) Thanks [@camertron](https://github.com/camertron)! - Fix sidebar link to the Flash component in docs
+
+* [#1199](https://github.com/primer/view_components/pull/1199) [`3c16e7b3`](https://github.com/primer/view_components/commit/3c16e7b3825d9644a0628edf3d317c3418a9ca03) Thanks [@BlakeWilliams](https://github.com/BlakeWilliams)! - Prevent slot from overriding component system_arguments
+
+- [#1191](https://github.com/primer/view_components/pull/1191) [`d82359d6`](https://github.com/primer/view_components/commit/d82359d6ea677ffa17c134536bfe660e27ce4851) Thanks [@camertron](https://github.com/camertron)! - Fix PVC installation docs to mention correct Javascript include
+
+* [#1198](https://github.com/primer/view_components/pull/1198) [`63977720`](https://github.com/primer/view_components/commit/63977720e421d06942320c79345536a52ff4f9e2) Thanks [@camertron](https://github.com/camertron)! - Add ActionList linter
+
+- [#1194](https://github.com/primer/view_components/pull/1194) [`568f312c`](https://github.com/primer/view_components/commit/568f312cce81250d6699027febb6ff3816532ca8) Thanks [@camertron](https://github.com/camertron)! - Remove version manager files
+
+## 0.0.79
+
+### Patch Changes
+
+- [#1188](https://github.com/primer/view_components/pull/1188) [`fb7218ac`](https://github.com/primer/view_components/commit/fb7218ac5c4de2253cb627c99bc9469635cde98b) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Revert leftover deprecated arguments from 1163.
+
+## 0.0.78
+
+### Patch Changes
+
+- [#1186](https://github.com/primer/view_components/pull/1186) [`ff2c3fe1`](https://github.com/primer/view_components/commit/ff2c3fe1913d7a1d65dbd4f608b68155ed247bef) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Revert #1163, as additional work will be needed to ship those changes to production successfully.
+
+## 0.0.77
+
+### Patch Changes
+
+- [#1185](https://github.com/primer/view_components/pull/1185) [`66a15b1a`](https://github.com/primer/view_components/commit/66a15b1a556e9814109317729b729dbee5316594) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Rename FlashComponent to Flash
+
+* [#1183](https://github.com/primer/view_components/pull/1183) [`84b9e4ef`](https://github.com/primer/view_components/commit/84b9e4ef60c9f0d1c2df830f247f2a55aac82783) Thanks [@camertron](https://github.com/camertron)! - Remove trailing newlines from the output of LinkComponent
+
+## 0.0.76
+
+### Patch Changes
+
+- [#1182](https://github.com/primer/view_components/pull/1182) [`33fc7907`](https://github.com/primer/view_components/commit/33fc7907b0476bebd1d2c54e3e9c335b5e12da3b) Thanks [@camertron](https://github.com/camertron)! - Adjust DeprecatedArguments cop to handle boolean values
+
+* [#1179](https://github.com/primer/view_components/pull/1179) [`aa7afef2`](https://github.com/primer/view_components/commit/aa7afef27dff6baac2d98e23d47194fbfddbe181) Thanks [@maxbeizer](https://github.com/maxbeizer)! - Add `role` to system args docs.
+
+- [#1180](https://github.com/primer/view_components/pull/1180) [`3dfcf015`](https://github.com/primer/view_components/commit/3dfcf015af0e301e54a15986cb114ccf84dd65d9) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Upgrading view_component
+  - Bump to latest release of [view_component 2.56.0](https://github.com/github/view_component/releases/tag/v2.56.0).
+  - Remove dependency on the now-changed private `@rendered_component` api.
+
+## 0.0.75
+
+### Patch Changes
+
+- [#1163](https://github.com/primer/view_components/pull/1163) [`1fabdc63`](https://github.com/primer/view_components/commit/1fabdc636e44094cebbaf58bfde7c15e2231016a) Thanks [@langermank](https://github.com/langermank)! - Autocomplete design updates
+
 ## 0.0.74
 
 ### Patch Changes
