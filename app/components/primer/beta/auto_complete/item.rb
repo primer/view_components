@@ -12,27 +12,13 @@ module Primer
         # Leading visual.
         #
         # - `leading_visual_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
-        #
-        # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
-        renders_one :leading_visual, types: {
-          icon: lambda { |**system_arguments|
-            system_arguments[:classes]
-            Primer::OcticonComponent.new(**system_arguments)
-          }
-        }
+        renders_one :leading_visual, "Primer::OcticonComponent"
 
         #
         # Trailing visual.
         #
         # - `trailing_visual_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
-        #
-        # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
-        renders_one :trailing_visual, types: {
-          icon: lambda { |**system_arguments|
-            system_arguments[:classes]
-            Primer::OcticonComponent.new(**system_arguments)
-          }
-        }
+        renders_one :trailing_visual, "Primer::OcticonComponent"
 
         # @example Default
         #   <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
