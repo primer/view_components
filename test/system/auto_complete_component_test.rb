@@ -39,6 +39,6 @@ class IntegrationAutoCompleteTest < ApplicationSystemTestCase
   def test_renders_icon
     with_preview(:with_icon)
 
-    assert_selector("svg.FormControl-input-leadingVisualWrap")
+    assert_selector("svg.FormControl-input-leadingVisual")
   end
 end

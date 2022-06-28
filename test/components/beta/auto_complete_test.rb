@@ -87,7 +87,7 @@ class PrimerAutoCompleteTest < Minitest::Test
     assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
       assert_selector("input.FormControl-input")
       assert_selector('label[for="test-input"]')
-      assert_selector("svg.FormControl-input-leadingVisualWrap")
+      assert_selector("svg.FormControl-input-leadingVisual")
     end
   end
 
