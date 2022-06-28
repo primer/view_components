@@ -54,7 +54,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Dropdown::Menu, {}],
     [Primer::DropdownMenuComponent, {}],
     [Primer::FlexComponent, {}],
-    [Primer::FlashComponent, {}],
+    [Primer::Beta::Flash, {}],
     [Primer::FlexItemComponent, { flex_auto: true }],
     [Primer::HeadingComponent, { tag: :h1 }],
     [Primer::HiddenTextExpander, { "aria-label": "No action" }],

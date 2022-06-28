@@ -2,7 +2,7 @@
 
 require "linter_test_case"
 
-class FlashComponentMigrationCounterTest < LinterTestCase
+class FlashMigrationCounterTest < LinterTestCase
   include Primer::BasicLinterSharedTests
   include Primer::AutocorrectableLinterSharedTests
 
@@ -10,7 +10,7 @@ class FlashComponentMigrationCounterTest < LinterTestCase
     @file = "<div class=\"flash flash-warn flash-full\">flash</div>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::FlashComponent.new(scheme: :warning, full: true)")
+    assert_includes(offenses.first.message, "render Primer::Beta::Flash.new(scheme: :warning, full: true)")
   end
 
   def test_does_not_autocorrect_with_html_content
@@ -20,7 +20,7 @@ class FlashComponentMigrationCounterTest < LinterTestCase
       </div>
     HTML
 
-    assert_equal "<%# erblint:counter FlashComponentMigrationCounter 1 %>\n#{@file}", corrected_content
+    assert_equal "<%# erblint:counter FlashMigrationCounter 1 %>\n#{@file}", corrected_content
   end
 
   def test_does_not_autocorrect_with_erb_content
@@ -30,7 +30,7 @@ class FlashComponentMigrationCounterTest < LinterTestCase
       </div>
     HTML
 
-    assert_equal "<%# erblint:counter FlashComponentMigrationCounter 1 %>\n#{@file}", corrected_content
+    assert_equal "<%# erblint:counter FlashMigrationCounter 1 %>\n#{@file}", corrected_content
   end
 
   def test_does_not_autocorrect_with_interpolation
@@ -40,13 +40,13 @@ class FlashComponentMigrationCounterTest < LinterTestCase
       </div>
     HTML
 
-    assert_equal "<%# erblint:counter FlashComponentMigrationCounter 1 %>\n#{@file}", corrected_content
+    assert_equal "<%# erblint:counter FlashMigrationCounter 1 %>\n#{@file}", corrected_content
   end
 
   private
 
   def linter_class
-    ERBLint::Linters::FlashComponentMigrationCounter
+    ERBLint::Linters::FlashMigrationCounter
   end
 
   def default_tag

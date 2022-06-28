@@ -37,3 +37,7 @@ log/
 tmp/
 !log/.keep
 !tmp/.keep
+
+# Files for version managers
+.ruby-version
+.tool-versions

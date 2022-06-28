@@ -65,12 +65,10 @@ module Primer
     renders_one :tooltip, lambda { |**system_arguments|
       raise ArgumentError, "Buttons with a tooltip must have a unique `id` set on the `Button`." if @id.blank? && !Rails.env.production?
 
-      @system_arguments = system_arguments
+      system_arguments[:for_id] = @id
+      system_arguments[:type] ||= :description
 
-      @system_arguments[:for_id] = @id
-      @system_arguments[:type] ||= :description
-
-      Primer::Alpha::Tooltip.new(**@system_arguments)
+      Primer::Alpha::Tooltip.new(**system_arguments)
     }
 
     # @example Schemes

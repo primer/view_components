@@ -55,7 +55,7 @@ namespace :docs do
       Primer::DetailsComponent,
       Primer::Dropdown,
       Primer::DropdownMenuComponent,
-      Primer::FlashComponent,
+      Primer::Beta::Flash,
       Primer::FlexComponent,
       Primer::FlexItemComponent,
       Primer::HeadingComponent,
