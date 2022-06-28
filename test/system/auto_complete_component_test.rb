@@ -7,7 +7,7 @@ class IntegrationAutoCompleteTest < ApplicationSystemTestCase
     with_preview(:default)
 
     assert_selector("auto-complete[for=\"test-id\"][src=\"/auto_complete\"]") do
-      assert_selector("input.FormControl")
+      assert_selector("input.FormControl-input")
       assert_selector("ul[id=\"test-id\"].ActionList", visible: false)
     end
     refute_selector(".ActionList-item")
@@ -15,7 +15,7 @@ class IntegrationAutoCompleteTest < ApplicationSystemTestCase
 
   def test_search_items
     with_preview(:default)
-    assert_selector("input.FormControl")
+    assert_selector("input.FormControl-input")
 
     fill_in "input-id", with: "a"
 
@@ -39,6 +39,6 @@ class IntegrationAutoCompleteTest < ApplicationSystemTestCase
   def test_renders_icon
     with_preview(:with_icon)
 
-    assert_selector("svg.FormControl--input-leadingVisual")
+    assert_selector("svg.FormControl-input-leadingVisualWrap")
   end
 end

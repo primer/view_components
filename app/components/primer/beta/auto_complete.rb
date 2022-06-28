@@ -16,9 +16,9 @@ module Primer
 
       DEFAULT_SIZE = :medium
       SIZE_MAPPINGS = {
-        :small => "Field--small",
-        DEFAULT_SIZE => "Field--medium",
-        :large => "Field--large"
+        :small => "FormControl-small",
+        DEFAULT_SIZE => "FormControl-medium",
+        :large => "FormControl-large"
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
@@ -31,7 +31,7 @@ module Primer
         system_arguments[:tag] = :ul
         system_arguments[:id] = @list_id
         system_arguments[:classes] = class_names(
-          "ActionList",
+          "ActionList ActionList--full",
           system_arguments[:classes]
         )
 
@@ -46,7 +46,7 @@ module Primer
       # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
       renders_one :leading_visual, types: {
         icon: lambda { |**system_arguments|
-          system_arguments[:classes] = class_names("Field--input-leadingVisual")
+          system_arguments[:classes] = class_names("FormControl-input-leadingVisual")
           Primer::OcticonComponent.new(**system_arguments)
         }
       }
@@ -81,8 +81,7 @@ module Primer
         sanitized_args[:invalid] = true if @invalid
         sanitized_args[:type] = :text
         sanitized_args[:classes] = class_names(
-          "Field",
-          "Field--input",
+          "FormControl-input",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
           sanitized_args[:classes]
         )
@@ -144,7 +143,8 @@ module Primer
       # @param disabled [Boolean] Disabled input
       # @param invalid [Boolean] Invalid input
       # @param placeholder [String] The placeholder text displayed within the input
-      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, placeholder: nil, show_clear_button: false, visually_hide_label: false, size: DEFAULT_SIZE, full_width: false, disabled: false, invalid: false, **system_arguments)
+      # @param trailing_action_divider [Boolean] Displays a vertical divider between the input and the trailing action
+      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, placeholder: nil, show_clear_button: false, visually_hide_label: false, size: DEFAULT_SIZE, full_width: false, disabled: false, invalid: false, trailing_action_divider: false, **system_arguments)
         @label_text = label_text
         @list_id = list_id
         @input_id = input_id
@@ -160,11 +160,11 @@ module Primer
         @invalid = invalid
         @size = size
         @full_width = full_width
+        @trailing_action_divider = trailing_action_divider
         @field_wrap_classes = class_names(
-          "Field-wrap",
-          "Field-wrap--input",
+          "FormControl-input-wrap",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
-          "Field-wrap--input-trailingAction": show_clear_button
+          "FormControl-input-wrap--trailingAction": show_clear_button
         )
         @form_group_classes = class_names(
           "FormControl",
