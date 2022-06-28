@@ -31,7 +31,7 @@ module Primer
         system_arguments[:tag] = :ul
         system_arguments[:id] = @list_id
         system_arguments[:classes] = class_names(
-          "ActionList ActionList--full",
+          "ActionList",
           system_arguments[:classes]
         )
 
@@ -143,8 +143,7 @@ module Primer
       # @param disabled [Boolean] Disabled input
       # @param invalid [Boolean] Invalid input
       # @param placeholder [String] The placeholder text displayed within the input
-      # @param trailing_action_divider [Boolean] Displays a vertical divider between the input and the trailing action
-      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, placeholder: nil, show_clear_button: false, visually_hide_label: false, size: DEFAULT_SIZE, full_width: false, disabled: false, invalid: false, trailing_action_divider: false, **system_arguments)
+      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, placeholder: nil, show_clear_button: false, visually_hide_label: false, size: DEFAULT_SIZE, full_width: false, disabled: false, invalid: false, **system_arguments)
         @label_text = label_text
         @list_id = list_id
         @input_id = input_id
@@ -160,7 +159,6 @@ module Primer
         @invalid = invalid
         @size = size
         @full_width = full_width
-        @trailing_action_divider = trailing_action_divider
         @field_wrap_classes = class_names(
           "FormControl-input-wrap",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],

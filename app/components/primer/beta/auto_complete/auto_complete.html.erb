@@ -10,7 +10,7 @@
             </span>
             <%= input %>
             <% if @show_clear_button %>
-              <button id="<%= @input_id %>-clear" class="FormControl-input-trailingAction <% if @trailing_action_divider %>FormControl-input-trailingAction--divider<% end %>" aria-label="Clear"><%= primer_octicon "x-circle-fill" %></button>
+              <button id="<%= @input_id %>-clear" class="FormControl-input-trailingAction" aria-label="Clear"><%= primer_octicon "x-circle-fill" %></button>
             <% end %>
         </div>
     <% else %>
@@ -19,7 +19,7 @@
   </div>
   <div class="Overlay-backdrop--anchor">
     <div class="Overlay Overlay--height-auto Overlay--width-auto">
-      <div class="Overlay-body">
+      <div class="Overlay-body Overlay-body--paddingNone">
         <%= results %>
       </div>
     </div>
