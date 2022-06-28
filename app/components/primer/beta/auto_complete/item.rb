@@ -12,13 +12,13 @@ module Primer
         # Leading visual.
         #
         # - `leading_visual_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
-        renders_one :leading_visual, "Primer::OcticonComponent"
+        renders_one :leading_visual_icon, "Primer::OcticonComponent"
 
         #
         # Trailing visual.
         #
         # - `trailing_visual_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
-        renders_one :trailing_visual, "Primer::OcticonComponent"
+        renders_one :trailing_visual_icon, "Primer::OcticonComponent"
 
         # @example Default
         #   <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
