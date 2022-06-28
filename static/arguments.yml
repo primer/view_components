@@ -243,10 +243,6 @@
     type: String
     default: "`nil`"
     description: The placeholder text displayed within the input
-  - name: trailing_action_divider
-    type: Boolean
-    default: "`false`"
-    description: Displays a vertical divider between the input and the trailing action
 - component: AutoCompleteItem
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/item.rb
   parameters:

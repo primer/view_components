@@ -1,6 +1,5 @@
 ---
 - ".ActionList"
-- ".ActionList--full"
 - ".ActionList-content"
 - ".ActionList-item"
 - ".ActionList-item-label"
@@ -70,6 +69,7 @@
 - ".Overlay--width-auto"
 - ".Overlay-backdrop--anchor"
 - ".Overlay-body"
+- ".Overlay-body--paddingNone"
 - ".Popover"
 - ".Popover-message"
 - ".Popover-message--large"
