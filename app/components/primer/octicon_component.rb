@@ -37,7 +37,7 @@ module Primer
     def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, use_symbol: false, **system_arguments)
       icon_key = icon_name || icon
 
-      # Don't allow sizes under 12px
+      # Don't allow sizes under 16px
       if system_arguments[:height].present? && system_arguments[:height].to_i < 16 || system_arguments[:width].present? && system_arguments[:width].to_i < 16
         system_arguments.delete(:height)
         system_arguments.delete(:width)
