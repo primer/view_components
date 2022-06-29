@@ -644,14 +644,17 @@
   "Primer::OcticonComponent": {
     "SIZE_DEFAULT": "small",
     "SIZE_MAPPINGS": {
+      "xsmall": 12,
       "small": 16,
       "medium": 24
     },
     "SIZE_MEDIUM": "medium",
     "SIZE_OPTIONS": [
+      "xsmall",
       "small",
       "medium"
-    ]
+    ],
+    "SIZE_XSMALL": "xsmall"
   },
   "Primer::OcticonSymbolsComponent": {
   },
