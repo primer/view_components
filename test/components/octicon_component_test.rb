@@ -50,13 +50,13 @@ class PrimerOcticonComponentTest < Minitest::Test
   end
 
   def test_renders_size_small_when_height_is_less_than_small
-    render_inline(Primer::OcticonComponent.new(:star, height: 8))
+    render_inline(Primer::OcticonComponent.new(:star, height: 12))
 
     assert_selector("[height='16']")
   end
 
   def test_renders_size_small_when_width_is_less_than_small
-    render_inline(Primer::OcticonComponent.new(:star, width: 8))
+    render_inline(Primer::OcticonComponent.new(:star, width: 12))
 
     assert_selector("[height='16']")
   end
