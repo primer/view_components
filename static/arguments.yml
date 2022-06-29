@@ -885,7 +885,7 @@
   - name: size
     type: Symbol
     default: "`:small`"
-    description: One of `:small` (`16`) and `:medium` (`24`).
+    description: One of `:xsmall` (`12`), `:small` (`16`), or `:medium` (`24`).
   - name: use_symbol
     type: Boolean
     default: "`false`"

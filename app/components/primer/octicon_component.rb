@@ -8,10 +8,12 @@ module Primer
   class OcticonComponent < Primer::Component
     status :beta
 
+    SIZE_XSMALL = :xsmall
     SIZE_DEFAULT = :small
     SIZE_MEDIUM = :medium
 
     SIZE_MAPPINGS = {
+      SIZE_XSMALL => 12,
       SIZE_DEFAULT => 16,
       SIZE_MEDIUM => 24
     }.freeze
@@ -35,8 +37,8 @@ module Primer
     def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, use_symbol: false, **system_arguments)
       icon_key = icon_name || icon
 
-      # Don't allow sizes under 16px
-      if system_arguments[:height].present? && system_arguments[:height].to_i < 16 || system_arguments[:width].present? && system_arguments[:width].to_i < 16
+      # Don't allow sizes under 12px
+      if system_arguments[:height].present? && system_arguments[:height].to_i < 12 || system_arguments[:width].present? && system_arguments[:width].to_i < 12
         system_arguments.delete(:height)
         system_arguments.delete(:width)
       end
