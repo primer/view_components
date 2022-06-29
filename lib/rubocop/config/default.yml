@@ -1,9 +1,33 @@
 require:
   - rubocop/cop/primer
+  - rubocop-rails
 
-AllCops:
-  DisabledByDefault: true
+####### RUBOCOP'S DEFAULTS #######
+# we don't want these in .erb files
+Style/FrozenStringLiteralComment:
+  Enabled: false
 
+# lots of false-positives in .erb files
+Layout/InitialIndentation:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# lots of false-positives - this cop is meant for Ruby code, not .erb
+Layout/TrailingEmptyLines:
+  Enabled: false
+
+# it's often not desirable to add unnecessary newlines into .erb files, as
+# they will appear in the rendered HTML
+Layout/LineLength:
+  Enabled: false
+
+# calling .html_safe in templates is ok
+Rails/OutputSafety:
+  Enabled: false
+
+####### PRIMER COPS #######
 Primer/SystemArgumentInsteadOfClass:
   Enabled: true
 
