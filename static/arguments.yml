@@ -258,6 +258,10 @@
     type: Boolean
     default: "`false`"
     description: Whether the item is disabled.
+  - name: description
+    type: String
+    default: "`nil`"
+    description: Display description text below label
   - name: system_arguments
     type: Hash
     default: N/A
