@@ -5,7 +5,7 @@
   <% elsif @icon.present? %>
     <%= primer_octicon @icon, size: @icon_size, classes: "blankslate-icon" %>
   <% elsif @image_src.present? && @image_alt.present? %>
-    <%= image_tag "#{@image_src}", class: "mb-3", size: "56x56", alt: "#{@image_alt}" %>
+    <%= image_tag @image_src.to_s, class: "mb-3", size: "56x56", alt: @image_alt.to_s %>
   <% end %>
 
   <% if @title.present? %>
@@ -24,7 +24,7 @@
 
   <% if @link_text.present? && @link_url.present? %>
     <p>
-      <%= link_to "#{@link_url}" do %><%= @link_text %><% end %>
+      <%= link_to @link_url.to_s do %><%= @link_text %><% end %>
     </p>
   <% end %>
 <% end %>
