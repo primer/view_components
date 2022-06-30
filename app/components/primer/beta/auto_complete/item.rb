@@ -30,6 +30,11 @@ module Primer
           counter: Primer::CounterComponent
         }
 
+        # Optional description
+        #
+        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+        renders_one :description
+
         # @example Default
         #   <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
         #     Selected
@@ -43,12 +48,11 @@ module Primer
         # @param disabled [Boolean] Whether the item is disabled.
         # @param description [String] Display description text below label
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(value:, selected: false, disabled: false, description: nil, **system_arguments)
+        def initialize(value:, selected: false, disabled: false, **system_arguments)
           @system_arguments = deny_tag_argument(**system_arguments)
           @system_arguments[:tag] = :li
           @system_arguments[:role] = :option
           @system_arguments[:"data-autocomplete-value"] = value
-          @description = description
 
           @system_arguments[:"aria-selected"] = true if selected
           @system_arguments[:"aria-disabled"] = true if disabled

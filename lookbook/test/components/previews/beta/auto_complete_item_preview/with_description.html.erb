@@ -1,0 +1,10 @@
+<%= render(
+        Primer::Beta::AutoComplete::Item.new(
+            selected: selected,
+            disabled: disabled,
+            value: ''
+    )) do |c| %>
+        <% c.leading_visual_icon(icon: :search) %>
+        <% c.description { "Description" } %>
+        Label text
+<% end %>
