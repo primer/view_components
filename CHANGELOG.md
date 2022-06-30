@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.0.81
+
+### Patch Changes
+
+- [#1200](https://github.com/primer/view_components/pull/1200) [`a6505054`](https://github.com/primer/view_components/commit/a6505054a07ae006c9d48e19a2b4be6c2e2663b3) Thanks [@camertron](https://github.com/camertron)! - Use Rubocop cops to lint .erb files
+
+* [#1201](https://github.com/primer/view_components/pull/1201) [`de2c7d68`](https://github.com/primer/view_components/commit/de2c7d68ff7d13135c04f5dd40a1e547e41923ba) Thanks [@camertron](https://github.com/camertron)! - Add xsmall size for octicons
+
 ## 0.0.80
 
 ### Patch Changes
