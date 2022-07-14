@@ -14,10 +14,19 @@ module Primer
 
     DEFAULT_SCHEME = :default
     SCHEME_MAPPINGS = {
-      DEFAULT_SCHEME => "",
-      :danger => "btn-octicon-danger"
+      DEFAULT_SCHEME => "Button--secondary",
+      :danger => "Button--danger"
     }.freeze
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
+
+    DEFAULT_SIZE = :medium
+    SIZE_MAPPINGS = {
+      :small => "Button--small",
+      :medium => "Button--medium",
+      :large => "Button--large",
+      DEFAULT_SIZE => "Button--medium"
+    }.freeze
+    SIZE_OPTIONS = SIZE_MAPPINGS.keys
     # @example Default
     #
     #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search")) %>
@@ -42,13 +51,15 @@ module Primer
     # @param type [Symbol] <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
     # @param box [Boolean] Whether the button is in a <%= link_to_component(Primer::BorderBoxComponent) %>. If `true`, the button will have the `Box-btn-octicon` class.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(icon:, scheme: DEFAULT_SCHEME, box: false, **system_arguments)
+    def initialize(icon:, scheme: DEFAULT_SCHEME, box: false, size: DEFAULT_SIZE, **system_arguments)
       @icon = icon
 
       @system_arguments = system_arguments
       @system_arguments[:classes] = class_names(
-        "btn-octicon",
+        "Button",
+        "Button--iconOnly",
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
+        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
         system_arguments[:classes],
         "Box-btn-octicon" => box
       )
@@ -58,7 +69,7 @@ module Primer
 
     def call
       render(Primer::BaseButton.new(**@system_arguments)) do
-        render(Primer::OcticonComponent.new(icon: @icon))
+        render(Primer::OcticonComponent.new(icon: @icon, classes: "Button-visual"))
       end
     end
   end
