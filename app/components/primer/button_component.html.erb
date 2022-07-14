@@ -1,4 +1,21 @@
 <%= render Primer::BaseButton.new(**@system_arguments) do -%>
-  <%= leading_visual %><%= trimmed_content %><%= trailing_visual %><%= primer_octicon("triangle-down", ml: 2, mr: -1) if @dropdown %>
+  <span class="Button-content <%= @align_content_classes %>">
+    <% if leading_visual %>
+      <span class="Button-visual Button-leadingVisual">
+          <%= leading_visual %>
+      </span>
+    <% end %>
+    <span class="Button-label"><%= trimmed_content %></span>
+    <% if trailing_visual %>
+      <span class="Button-visual Button-trailingVisual">
+          <%= trailing_visual %>
+      </span>
+    <% end %>
+  </span>
+  <% if @dropdown %>
+    <span class="Button-visual Button-trailingAction">
+      <%= primer_octicon("triangle-down") %>
+    </span>
+  <% end %>
   <%= tooltip %>
 <% end -%>

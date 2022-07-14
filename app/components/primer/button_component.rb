@@ -9,20 +9,32 @@ module Primer
     LINK_SCHEME = :link
     SCHEME_MAPPINGS = {
       DEFAULT_SCHEME => "",
-      :primary => "btn-primary",
-      :danger => "btn-danger",
+      :primary => "Button--primary",
+      :secondary => "Button--secondary",
+      :default => "Button--secondary",
+      :danger => "Button--danger",
       :outline => "btn-outline",
-      :invisible => "btn-invisible",
+      :invisible => "Button--invisible",
       LINK_SCHEME => "btn-link"
     }.freeze
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
     DEFAULT_SIZE = :medium
     SIZE_MAPPINGS = {
-      :small => "btn-sm",
-      DEFAULT_SIZE => ""
+      :small => "Button--small",
+      :medium => "Button--medium",
+      :large => "Button--large",
+      DEFAULT_SIZE => "Button--medium"
     }.freeze
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
+
+    DEFAULT_ALIGN_CONTENT = :center
+    ALIGN_CONTENT_MAPPINGS = {
+      :start => "Button-content--alignStart",
+      :center => "",
+      DEFAULT_ALIGN_CONTENT => ""
+    }.freeze
+    ALIGN_CONTENT_OPTIONS = ALIGN_CONTENT_MAPPINGS.keys
 
     # Leading visuals appear to the left of the button text.
     #
@@ -33,8 +45,6 @@ module Primer
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
     renders_one :leading_visual, types: {
       icon: lambda { |**system_arguments|
-        system_arguments[:mr] = 2
-
         Primer::OcticonComponent.new(**system_arguments)
       }
     }
@@ -48,11 +58,9 @@ module Primer
     #
     # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::CounterComponent) %>.
     renders_one :trailing_visual, types: {
-      counter: lambda { |**system_arguments|
-        system_arguments[:ml] = 2
-
-        Primer::CounterComponent.new(**system_arguments)
-      }
+      icon: Primer::OcticonComponent,
+      label: Primer::LabelComponent,
+      counter: Primer::CounterComponent
     }
     alias counter trailing_visual_counter # remove alias when all buttons are migrated to new slot names
 
@@ -136,6 +144,7 @@ module Primer
       group_item: false,
       block: false,
       dropdown: false,
+      align_content: DEFAULT_ALIGN_CONTENT,
       **system_arguments
     )
       @scheme = scheme
@@ -145,12 +154,17 @@ module Primer
 
       @id = @system_arguments[:id]
 
+      @align_content_classes = class_names(
+        system_arguments[:classes],
+        ALIGN_CONTENT_MAPPINGS[fetch_or_fallback(ALIGN_CONTENT_OPTIONS, align_content, DEFAULT_ALIGN_CONTENT)]
+      )
+
       @system_arguments[:classes] = class_names(
         system_arguments[:classes],
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
         SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, variant || size, DEFAULT_SIZE)],
-        "btn" => !link?,
-        "btn-block" => block,
+        "Button" => !link?,
+        "Button--fullWidth" => block,
         "BtnGroup-item" => group_item
       )
     end

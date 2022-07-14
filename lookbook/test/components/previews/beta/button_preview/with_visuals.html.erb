@@ -1,0 +1,12 @@
+<%= render(Primer::ButtonComponent.new(
+    scheme: scheme,
+    size: size,
+    block: block,
+    dropdown: dropdown,
+    id: id,
+    align_content: align_content
+)) do |c| %>
+  <% c.leading_visual_icon(icon: :star) %>
+  <% c.trailing_visual_icon(icon: :star) %>
+  Button
+<% end %>
