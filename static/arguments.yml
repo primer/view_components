@@ -260,7 +260,7 @@
     description: Whether the item is disabled.
   - name: description
     type: String
-    default: "`nil`"
+    default: N/A
     description: Display description text below label
   - name: system_arguments
     type: Hash
