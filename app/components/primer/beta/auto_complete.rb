@@ -83,7 +83,9 @@ module Primer
         sanitized_args[:classes] = class_names(
           "FormControl-input",
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, @size, DEFAULT_SIZE)],
-          sanitized_args[:classes]
+          sanitized_args[:classes],
+          "FormControl-inset": @inset,
+          "FormControl-monospace": @monospace
         )
         sanitized_args[:placeholder] = @placeholder
 
@@ -120,6 +122,22 @@ module Primer
       #       <% c.leading_visual_icon(icon: :search) %>
       #     <% end %>
       #
+      # @example Inset variant
+      #   @description
+      #     Use the `inset` variant to change the input background color to be subtle.
+      #   @code
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-2", list_id: "fruits-popup--custom-results-2", src: "/auto_complete", inset: true)) do |c| %>
+      #       <% c.leading_visual_icon(icon: :search) %>
+      #     <% end %>
+      #
+      # @example Monospace variant
+      #   @description
+      #     Use the `monospace` variant to change the input font family.
+      #   @code
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-2", list_id: "fruits-popup--custom-results-2", src: "/auto_complete", monospace: true)) do |c| %>
+      #       <% c.leading_visual_icon(icon: :search) %>
+      #     <% end %>
+      #
       # @example With custom classes for the input
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--custom-input", list_id: "fruits-popup--custom-input")) do |c| %>
       #     <% c.input(classes: "custom-class") %>
@@ -143,7 +161,7 @@ module Primer
       # @param disabled [Boolean] Disabled input
       # @param invalid [Boolean] Invalid input
       # @param placeholder [String] The placeholder text displayed within the input
-      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, placeholder: nil, show_clear_button: false, visually_hide_label: false, size: DEFAULT_SIZE, full_width: false, disabled: false, invalid: false, **system_arguments)
+      def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, placeholder: nil, show_clear_button: false, visually_hide_label: false, size: DEFAULT_SIZE, full_width: false, disabled: false, invalid: false, inset: false, monospace: false, **system_arguments)
         @label_text = label_text
         @list_id = list_id
         @input_id = input_id
@@ -158,6 +176,8 @@ module Primer
         @disabled = disabled
         @invalid = invalid
         @size = size
+        @inset = inset
+        @monospace = monospace
         @full_width = full_width
         @field_wrap_classes = class_names(
           "FormControl-input-wrap",
