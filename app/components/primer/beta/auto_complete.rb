@@ -161,6 +161,8 @@ module Primer
       # @param disabled [Boolean] Disabled input
       # @param invalid [Boolean] Invalid input
       # @param placeholder [String] The placeholder text displayed within the input
+      # @param inset [Boolean] subtle input background color
+      # @param monospace [Boolean] monospace input font family
       def initialize(label_text:, src:, list_id:, input_id:, input_name: nil, placeholder: nil, show_clear_button: false, visually_hide_label: false, size: DEFAULT_SIZE, full_width: false, disabled: false, invalid: false, inset: false, monospace: false, **system_arguments)
         @label_text = label_text
         @list_id = list_id
