@@ -12,10 +12,6 @@ linters:
     rubocop_config:
       inherit_from:
         - lib/rubocop/config/default.yml
-      inherit_gem:
-        rubocop-github:
-          - config/default_edge.yml
-          - config/rails_edge.yml
       Primer/DeprecatedComponents:
         Enabled: true
         Exclude:
