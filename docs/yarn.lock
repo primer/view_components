@@ -1579,12 +1579,12 @@
   resolved "https://registry.yarnpkg.com/@primer/component-metadata/-/component-metadata-0.4.0.tgz#44b7d7b1285bea41c2a88621fd17f2c777a4c5e9"
   integrity sha512-yppmDSSDrN2CHwjq3h+RWhfpjehFQAx21JcEipYyNTp0f/kC+iazFVNCKZE6DOavAxv003ti7QIrp+QkPT9tpg==
 
-"@primer/css@^20.1.1":
-  version "20.1.1"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-20.1.1.tgz#522b44b181d4443a0d12b1435fd5b0a13e15ca3b"
-  integrity sha512-Aah6qa9SCkEqVeauF+q+AUg29Bq5Ut8l6aYP9v5mt8IK9l0uHowpMcOeA+ERy4wSOGhHkn2zOe9M0qQTlVvhzg==
+"@primer/css@^20.2.4":
+  version "20.2.4"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-20.2.4.tgz#a900a7dcd630aed117c0364508902ac5a19783ce"
+  integrity sha512-KuOEwLXsRaZkACAxkjyFIxqmHVJDMKx+jsc0kBKRwZI2nFyH2Ji4B909ErcmlkTM9r+S383jisGBqaZJIUm14g==
   dependencies:
-    "@primer/primitives" "^7.8.3"
+    "@primer/primitives" "^7.8.4"
 
 "@primer/gatsby-theme-doctocat@^4.0.0":
   version "4.0.0"
@@ -1663,10 +1663,10 @@
   resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-6.0.0.tgz#a360f2b97f50a8918ef07c2257f0ea4dde8dfec0"
   integrity sha512-idupwQC7vpMki4G2HBpQqTAD6MusFkipgfNXxETQ1D4yLkMQ1bMuif09dnHB7bhQBO5pXUFt52LMpPAnM5Zv4w==
 
-"@primer/primitives@^7.8.3":
-  version "7.8.3"
-  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-7.8.3.tgz#de7e03492cf977e99f2417490d76421db9715e9f"
-  integrity sha512-04ZwfJhpZ0QFwDrJfCuLX6iOh0BflWDTvuoRA80lQH9xk0RtIg16INbruwwtnbSgnKKXXRSykRRJ5BbxnqufRA==
+"@primer/primitives@^7.8.4":
+  version "7.9.0"
+  resolved "https://registry.yarnpkg.com/@primer/primitives/-/primitives-7.9.0.tgz#c8a27287488c8308b1715a7d73214629c331544a"
+  integrity sha512-ZHHfwB0z0z6nDJp263gyGIClYDy+rl0nwqyi4qhcv3Cxhkmtf+If2KVjr6FQqBBFfi1wQwUzaax2FBvfEMFBnw==
 
 "@primer/react@^35.2.2":
   version "35.2.2"
