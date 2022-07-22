@@ -53,6 +53,7 @@ namespace :docs do
       Primer::Beta::CloseButton,
       Primer::Beta::Counter,
       Primer::Beta::Details,
+      Primer::Alpha::Dialog,
       Primer::Dropdown,
       Primer::DropdownMenuComponent,
       Primer::Beta::Flash,

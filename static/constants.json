@@ -39,6 +39,31 @@
     ]
   },
   "Primer::Alpha::HiddenTextExpander": {
+  "Primer::Alpha::Dialog": {
+    "Body": "Primer::Alpha::Dialog::Body",
+    "DEFAULT_WIDTH": "medium",
+    "Footer": "Primer::Alpha::Dialog::Footer",
+    "Header": "Primer::Alpha::Dialog::Header",
+    "WIDTH_MAPPINGS": {
+      "small": "Overlay--width-small",
+      "medium": "Overlay--width-medium",
+      "large": "Overlay--width-large",
+      "xlarge": "Overlay--width-xlarge",
+      "xxlarge": "Overlay--width-xxlarge"
+    },
+    "WIDTH_OPTIONS": [
+      "small",
+      "medium",
+      "large",
+      "xlarge",
+      "xxlarge"
+    ]
+  },
+  "Primer::Alpha::Dialog::Body": {
+  },
+  "Primer::Alpha::Dialog::Footer": {
+  },
+  "Primer::Alpha::Dialog::Header": {
   },
   "Primer::Alpha::Layout": {
     "FIRST_IN_SOURCE_DEFAULT": "sidebar",
@@ -441,7 +466,8 @@
   "Primer::DetailsComponent": {
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",

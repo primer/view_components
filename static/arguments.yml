@@ -37,6 +37,36 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Dialog
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog.rb
+  parameters:
+  - name: id
+    type: String
+    default: '`"dialog-#{(36**3 + rand(36**4)).to_s(36)}"`'
+    description: The id of the dialog.
+  - name: title
+    type: String
+    default: N/A
+    description: The title of the dialog.
+  - name: subtitle
+    type: String
+    default: "`nil`"
+    description: The subtitle of the dialog. This will also set the `aria-describedby`
+      attribute.
+  - name: role
+    type: String
+    default: '`"dialog"`'
+    description: The role of the dialog, defaults to `dialog`, but could also be set
+      to `alertdialog`.
+  - name: width
+    type: Symbol
+    default: "`:medium`"
+    description: The width of the dialog. One of `:large`, `:medium`, `:small`, `:xlarge`,
+      or `:xxlarge`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Layout
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout.rb
   parameters:
