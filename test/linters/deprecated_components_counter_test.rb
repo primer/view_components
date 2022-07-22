@@ -45,6 +45,15 @@ class DeprecatedComponentsCounterTest < LinterTestCase
     assert @linter.offenses.size.zero?
   end
 
+  def test_does_not_warn_if_html_element
+    @file = <<~ERB
+      <button>whatever</button>
+    ERB
+    @linter.run(processed_source)
+
+    assert @linter.offenses.size.zero?
+  end
+
   def linter_class
     ERBLint::Linters::DeprecatedComponentsCounter
   end

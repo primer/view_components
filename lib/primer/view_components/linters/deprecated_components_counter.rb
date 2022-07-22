@@ -17,6 +17,7 @@ module ERBLint
           code = code_node.children.first.strip
           node = erb_ast(code)
 
+          next unless node
           next unless node.source.include?("Primer::")
 
           deprecated_components.each do |component|
