@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "helpers/rubocop_helpers"
 require_relative "helpers/deprecated_components_helpers"
 
 module ERBLint
@@ -8,20 +7,17 @@ module ERBLint
     # Lints against deprecated components
     class DeprecatedComponentsCounter < Linter
       include ERBLint::LinterRegistry
-      include Helpers::RubocopHelpers
       include Helpers::DeprecatedComponentsHelpers
 
       def run(processed_source)
         processed_source.ast.descendants(:erb).each do |erb_node|
           _, _, code_node = *erb_node
           code = code_node.children.first.strip
-          node = erb_ast(code)
 
-          next unless node
-          next unless node.source.include?("Primer::")
+          next unless code.include?("Primer::")
 
           deprecated_components.each do |component|
-            next unless node.source.include?(component)
+            next unless code.include?(component)
 
             add_offense(
               erb_node.loc,
