@@ -37,7 +37,7 @@ module ERBLint
         return unless offense.context
 
         lambda do |corrector|
-          if processed_source.file_content.include?("erblint:counter #{self.class.name.gsub("ERBLint::Linters::", "")}")
+          if processed_source.file_content.include?("erblint:counter #{self.class.name.gsub('ERBLint::Linters::', '')}")
             # update the counter if exists
             corrector.replace(offense.source_range, offense.context)
           else
