@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.0.82
+
+### Patch Changes
+
+- [#1211](https://github.com/primer/view_components/pull/1211) [`047c6be6`](https://github.com/primer/view_components/commit/047c6be6f601192255a3611940e46fc5a24b46bd) Thanks [@camertron](https://github.com/camertron)! - Don't lint ERB files with Rubocop
+
+* [#1210](https://github.com/primer/view_components/pull/1210) [`7b3d5941`](https://github.com/primer/view_components/commit/7b3d59415d846e254128d04253fadfdb399c8c84) Thanks [@camertron](https://github.com/camertron)! - Silence polymorphic slots warning message
+
 ## 0.0.81
 
 ### Patch Changes
