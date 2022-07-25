@@ -28,6 +28,7 @@ class PrimerComponentTest < Minitest::Test
     end],
     [Primer::BaseButton, {}],
     [Primer::BaseComponent, { tag: :div }],
+    [Primer::ConditionalBaseComponent, { condition: true, tag: :div }],
     [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::Beta::Blankslate, {}, proc { |component|
       component.heading(tag: :h2) { "Foo" }
