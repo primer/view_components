@@ -1,0 +1,8 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <div class="SegmentedControl-content">
+    <%= leading_visual %>
+    <% unless @icon_only %>
+      <span class="SegmentedControl-text" data-content="<%= @text %>"><%= @text %></span>
+    <% end %>
+  </div>
+<% end %>
