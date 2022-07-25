@@ -78,7 +78,7 @@ jobs:
           - rails_version: 6.1.1
             ruby_version: 3.1.x
           - rails_version: main
-            ruby_version: 3.1.x
+            ruby_version: 2.6.x
     steps:
     - uses: actions/checkout@master
     - name: Setup Ruby
@@ -145,7 +145,7 @@ jobs:
           - rails_version: 6.1.1
             ruby_version: 3.1.x
           - rails_version: main
-            ruby_version: 3.1.x
+            ruby_version: 2.6.x
     steps:
     - uses: actions/checkout@master
     - name: Setup Ruby
