@@ -59,7 +59,7 @@ jobs:
     strategy:
       matrix:
         rails_version: [5.2.3, 6.1.1, main]
-        ruby_version: [2.5.x, 2.6.x, 2.7.x, 3.0.x]
+        ruby_version: [2.6.x, 2.7.x, 3.0.x]
         exclude:
           - rails_version: 5.2.3
             ruby_version: 2.6.x
@@ -68,13 +68,11 @@ jobs:
           - rails_version: 5.2.3
             ruby_version: 3.0.x
           - rails_version: 6.1.1
-            ruby_version: 2.5.x
+            ruby_version: 2.6.x
           - rails_version: 6.1.1
             ruby_version: 2.7.x
           - rails_version: 6.1.1
             ruby_version: 3.0.x
-          - rails_version: main
-            ruby_version: 2.5.x
           - rails_version: main
             ruby_version: 2.6.x
     steps:
@@ -133,7 +131,7 @@ jobs:
           - rails_version: 5.2.3
             ruby_version: 3.0.x
           - rails_version: 6.1.1
-            ruby_version: 2.5.x
+            ruby_version: 2.6.x
           - rails_version: 6.1.1
             ruby_version: 2.7.x
           - rails_version: 6.1.1
