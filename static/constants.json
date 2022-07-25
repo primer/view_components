@@ -1,4 +1,9 @@
 {
+  "Primer::Alpha::AutoComplete": {
+    "Item": "Primer::Alpha::AutoComplete::Item"
+  },
+  "Primer::Alpha::AutoComplete::Item": {
+  },
   "Primer::Alpha::BorderBox::Header": {
     "TITLE_TAG_FALLBACK": "h2",
     "TITLE_TAG_OPTIONS": [
