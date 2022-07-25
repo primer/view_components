@@ -70,8 +70,6 @@ jobs:
           - rails_version: 5.2.3
             ruby_version: 3.1.x
           - rails_version: 6.1.1
-            ruby_version: 2.6.x
-          - rails_version: 6.1.1
             ruby_version: 2.7.x
           - rails_version: 6.1.1
             ruby_version: 3.0.x
@@ -136,8 +134,6 @@ jobs:
             ruby_version: 3.0.x
           - rails_version: 5.2.3
             ruby_version: 3.1.x
-          - rails_version: 6.1.1
-            ruby_version: 2.6.x
           - rails_version: 6.1.1
             ruby_version: 2.7.x
           - rails_version: 6.1.1
