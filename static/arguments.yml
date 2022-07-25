@@ -243,6 +243,14 @@
     type: String
     default: "`nil`"
     description: The placeholder text displayed within the input
+  - name: inset
+    type: Boolean
+    default: "`false`"
+    description: subtle input background color
+  - name: monospace
+    type: Boolean
+    default: "`false`"
+    description: monospace input font family
 - component: AutoCompleteItem
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/item.rb
   parameters:
