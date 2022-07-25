@@ -41,7 +41,7 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_preview
-    template("templates/preview.tt", "lookbook/test/components/previews/#{status_path}#{underscore_name}_preview.rb")
+    template("templates/preview.tt", "test/components/previews/#{status_path}#{underscore_name}_preview.rb")
   end
 
   def add_to_docs_rakefile
