@@ -336,6 +336,8 @@
       "submit"
     ]
   },
+  "Primer::ConditionalBaseComponent": {
+  },
   "Primer::Content": {
   },
   "Primer::CounterComponent": {
