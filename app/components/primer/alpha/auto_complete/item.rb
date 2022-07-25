@@ -39,4 +39,3 @@ module Primer
     end
   end
 end
-Footer
