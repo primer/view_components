@@ -54,6 +54,18 @@ class DeprecatedComponentsCounterTest < LinterTestCase
     assert @linter.offenses.size.zero?
   end
 
+  def test_does_autocorrect_when_no_comment
+    @file = <<~ERB
+      <%= render Primer::BlankslateComponent.new %>
+    ERB
+    refute_equal @file, corrected_content
+    expected_content = <<~ERB
+      <%# erblint:counter DeprecatedComponentsCounter 1 %>
+      <%= render Primer::BlankslateComponent.new %>
+    ERB
+    assert_equal expected_content, corrected_content
+  end
+
   def test_does_autocorrect_when_ignores_are_not_correct
     @file = <<~ERB
       <%# erblint:counter DeprecatedComponentsCounter 3 %>
