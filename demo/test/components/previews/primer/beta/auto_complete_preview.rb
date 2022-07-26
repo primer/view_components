@@ -28,6 +28,18 @@ module Primer
       def full_width
         render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "input-id", list_id: "test-id", src: "/auto_complete", full_width: true))
       end
+
+      def size_small
+        render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "input-id", list_id: "test-id", src: "/auto_complete", show_clear_button: false, size: :small))
+      end
+
+      def monospace
+        render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "input-id", list_id: "test-id", src: "/auto_complete", show_clear_button: false, monospace: true))
+      end
+
+      def inset
+        render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "input-id", list_id: "test-id", src: "/auto_complete", show_clear_button: false, inset: true))
+      end
     end
   end
 end
