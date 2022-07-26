@@ -2,7 +2,7 @@
 
 module Beta
   # @label FlashComponent
-  class FlashComponentPreview < ViewComponent::Preview
+  class FlashPreview < ViewComponent::Preview
     # @label Playground
     #
     # @param full toggle
