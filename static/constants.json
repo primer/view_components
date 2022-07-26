@@ -336,7 +336,7 @@
       "submit"
     ]
   },
-  "Primer::ConditionalBaseComponent": {
+  "Primer::ConditionalWrapper": {
   },
   "Primer::Content": {
   },

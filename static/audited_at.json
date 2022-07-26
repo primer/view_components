@@ -29,7 +29,7 @@
   "Primer::ButtonGroup": "",
   "Primer::ClipboardCopy": "",
   "Primer::CloseButton": "",
-  "Primer::ConditionalBaseComponent": "",
+  "Primer::ConditionalWrapper": "",
   "Primer::Content": "",
   "Primer::CounterComponent": "",
   "Primer::DetailsComponent": "",

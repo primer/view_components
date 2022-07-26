@@ -29,7 +29,7 @@
   "Primer::ButtonGroup": "beta",
   "Primer::ClipboardCopy": "beta",
   "Primer::CloseButton": "beta",
-  "Primer::ConditionalBaseComponent": "alpha",
+  "Primer::ConditionalWrapper": "alpha",
   "Primer::Content": "stable",
   "Primer::CounterComponent": "beta",
   "Primer::DetailsComponent": "beta",
