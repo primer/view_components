@@ -89,6 +89,7 @@ GEM
       rainbow
       rubocop
       smart_properties
+    erblint-github (0.1.0)
     erubi (1.10.0)
     ferrum (0.11)
       addressable (~> 2.5)
@@ -248,6 +249,7 @@ DEPENDENCIES
   capybara (~> 3)
   cuprite (= 0.13)
   erb_lint
+  erblint-github (= 0.1.0)
   listen (~> 3.0)
   matrix (~> 0.4.2)
   minitest (~> 5.0)
