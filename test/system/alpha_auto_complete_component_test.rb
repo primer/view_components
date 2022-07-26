@@ -5,7 +5,7 @@ require "application_system_test_case"
 class IntegrationAlphaAutoCompleteTest < ApplicationSystemTestCase
   def test_renders_component
     with_preview(:default)
-    assert_selector("auto-complete[for=\"test-id\"][src=\"/auto_complete\"]") do
+    assert_selector("auto-complete[for=\"test-id\"][src=\"/auto_complete?version=alpha\"]") do
       assert_selector("input.form-control")
       assert_selector("ul[id=\"test-id\"].autocomplete-results", visible: false)
     end
@@ -27,7 +27,7 @@ class IntegrationAlphaAutoCompleteTest < ApplicationSystemTestCase
   end
 
   def test_renders_clear_button
-    with_preview(:show_clear_button)
+    with_preview(:with_clear_button)
     assert_selector("#input-id-clear")
   end
 
