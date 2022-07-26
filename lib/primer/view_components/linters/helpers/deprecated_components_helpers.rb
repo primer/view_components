@@ -7,6 +7,8 @@ module ERBLint
       module DeprecatedComponentsHelpers
         # If there is no alternative to suggest, set the value to nil
         COMPONENT_TO_USE_INSTEAD = {
+          "Primer::Alpha::AutoComplete::Item" => "Primer::Beta::AutoComplete::Item",
+          "Primer::Alpha::AutoComplete" => "Primer::Beta::AutoComplete",
           "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
           "Primer::DropdownMenuComponent" => nil,
           "Primer::Tooltip" => "Primer::Alpha::Tooltip",
