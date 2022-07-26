@@ -7,11 +7,15 @@ module Primer
       class Item < Primer::Component
         status :alpha
         # @example Default
-        #   <%= render(Primer::Alpha::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
-        #     Selected
-        #   <% end %>
-        #   <%= render(Primer::Alpha::AutoComplete::Item.new(value: "value")) do |c| %>
-        #     Not selected
+        #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--custom-results", list_id: "fruits-popup--custom-results")) do |c| %>
+        #     <% c.results(classes: "custom-class") do %>
+        #       <%= render(Primer::Alpha::AutoComplete::Item.new(selected: true, value: "apple")) do |c| %>
+        #         Apple
+        #       <% end %>
+        #       <%= render(Primer::Alpha::AutoComplete::Item.new(value: "orange")) do |c| %>
+        #         Orange
+        #       <% end %>
+        #     <% end %>
         #   <% end %>
         #
         # @param value [String] Value of the item.
