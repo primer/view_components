@@ -27,7 +27,7 @@ class IntegrationAlphaAutoCompleteTest < ApplicationSystemTestCase
   end
 
   def test_renders_clear_button
-    with_preview(:with_clear_button)
+    with_preview(:show_clear_button)
     assert_selector("#input-id-clear")
   end
 
