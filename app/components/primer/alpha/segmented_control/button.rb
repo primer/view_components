@@ -28,12 +28,13 @@ module Primer
           @icon_only = icon_only
           @system_arguments = system_arguments
           @system_arguments[:tag] = :button
+          @system_arguments[:'aria-label'] = text if icon_only
           @system_arguments[:classes] = class_names(
             "SegmentedControl-button",
             @system_arguments[:classes],
             "SegmentedControl-button--selected": selected
           )
-          @system_arguments[:"aria-current"] = true if selected
+          @system_arguments[:'aria-current'] = true if selected
         end
       end
     end
