@@ -2,4 +2,4 @@
 '@primer/view-components': patch
 ---
 
-Add the ConditionalBaseComponent for conditionally wrapping content
+Add the ConditionalWrapper for conditionally wrapping content
