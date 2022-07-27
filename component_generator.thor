@@ -57,7 +57,7 @@ class ComponentGenerator < Thor::Group
     insert_into_file(
       "docs/src/@primer/gatsby-theme-doctocat/nav.yml",
       component_nav,
-      after: "url: \"/components\"\n  children:\n"
+      after: "- title: Components\n  children:\n"
     )
   end
 
@@ -78,7 +78,7 @@ class ComponentGenerator < Thor::Group
   def component_nav
     <<-HEREDOC
   - title: #{class_name} - Fix my order in docs/src/@primer/gatsby-theme-doctocat/nav.yml
-    url: /components/#{status_path}#{short_name}
+    url: "/components/#{status_path}#{short_name}"
     HEREDOC
   end
 

@@ -179,6 +179,7 @@ class ToolTipElement extends HTMLElement {
   connectedCallback() {
     if (!this.shadowRoot) {
       const shadow = this.attachShadow({mode: 'open'})
+      // eslint-disable-next-line github/no-inner-html
       shadow.innerHTML = `
         <style>
           ${this.styles()}
