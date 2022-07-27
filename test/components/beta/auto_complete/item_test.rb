@@ -76,4 +76,17 @@ class PrimerAutoCompleteItemTest < Minitest::Test
       end
     end
   end
+
+  def test_renders_with_inline_description
+    render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo", disabled: false, description_variant: :inline)) do |component|
+      component.description { "Item description" }
+      "Item text"
+    end
+
+    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionList-item", text: "Item text") do
+      assert_selector("span.ActionList-content") do
+        assert_selector("span.ActionList-item-descriptionWrap.ActionList-item-descriptionWrap--inline")
+      end
+    end
+  end
 end

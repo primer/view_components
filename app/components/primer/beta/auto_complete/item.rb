@@ -45,7 +45,9 @@ module Primer
         # @param disabled [Boolean] Whether the item is disabled.
         # @param description [String] Display description text below label
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(value:, selected: false, disabled: false, **system_arguments)
+        def initialize(value:, selected: false, disabled: false, description_variant: :block, **system_arguments)
+          @description_variant = description_variant
+
           @system_arguments = deny_tag_argument(**system_arguments)
           @system_arguments[:tag] = :li
           @system_arguments[:role] = :option
@@ -58,6 +60,17 @@ module Primer
             "ActionList-item",
             system_arguments[:classes]
           )
+        end
+
+        def description_variant_class
+          case @description_variant
+          when :block
+            "ActionList-item-blockDescription"
+          when :inline
+            "ActionList-item-descriptionWrap--inline"
+          else
+            ""
+          end
         end
       end
     end
