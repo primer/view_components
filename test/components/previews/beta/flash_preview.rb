@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Beta
-  # @label FlashComponent
-  class FlashComponentPreview < ViewComponent::Preview
+  # @label Flash
+  class FlashPreview < ViewComponent::Preview
     # @label Playground
     #
     # @param full toggle
