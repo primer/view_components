@@ -10,7 +10,7 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": "2020",
+    "ecmaVersion": "2022",
     "sourceType": "module"
   },
   "plugins": [
@@ -37,7 +37,7 @@
       ],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
-        "ecmaVersion": "2020",
+        "ecmaVersion": "2022",
         "sourceType": "module"
       },
       "plugins": [
@@ -46,6 +46,7 @@
       ],
       "rules": {
         "eslint-comments/no-use": 0,
+        "filenames/match-regex": 0,
         "import/no-namespace": 0,
         "no-shadow": 0,
         "no-unused-vars": [
