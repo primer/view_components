@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@koddsson/postcss-sass": "^5.0.1",
-    "@primer/css": "latest",
+    "@primer/css": "^20.3.0",
     "autoprefixer": "^10.4.5",
     "postcss": "^8.4.12",
     "postcss-cli": "^9.1.0",
