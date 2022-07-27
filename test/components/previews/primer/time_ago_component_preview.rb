@@ -10,7 +10,7 @@ module Primer
     end
 
     def micro
-      render(Primer::TimeAgoComponent.new(time: Time.zone.now.to_s, micro: true))
+      render(Primer::TimeAgoComponent.new(time: Time.zone.now, micro: true))
     end
   end
 end
