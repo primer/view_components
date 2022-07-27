@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 require "test_helper"
+
 class PrimerAutoCompleteItemTest < Minitest::Test
   include Primer::ComponentTestHelpers
+
   def test_renders_item_with_correct_attributes
     render_inline(Primer::Alpha::AutoComplete::Item.new(value: "foo")) { "Item" }
     assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].autocomplete-item", text: "Item")

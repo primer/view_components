@@ -6,6 +6,7 @@ module Primer
       # Use `AutoCompleteItem` to list results of an auto-completed search.
       class Item < Primer::Component
         status :alpha
+
         # @example Default
         #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--custom-results", list_id: "fruits-popup--custom-results")) do |c| %>
         #     <% c.results(classes: "custom-class") do %>

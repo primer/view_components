@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 require "test_helper"
+
 class PrimerAutoCompleteTest < Minitest::Test
   include Primer::ComponentTestHelpers
+
   def test_raises_if_no_label_text_is_passed_in
     assert_raises ArgumentError do
       render_inline Primer::Alpha::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|

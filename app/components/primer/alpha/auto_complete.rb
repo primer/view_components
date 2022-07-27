@@ -13,7 +13,7 @@ module Primer
     #   be used unless there is compelling reason not to. A placeholder is not a label.
     class AutoComplete < Primer::Component
       status :alpha
-      #
+
       # Customizable results list.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -27,6 +27,7 @@ module Primer
         )
         Primer::BaseComponent.new(**system_arguments)
       }
+
       # Customizable input used to search for results.
       # It is preferred to use this slot sparingly - it will be created by default if not explicity added.
       #
@@ -60,6 +61,7 @@ module Primer
         )
         Primer::BaseComponent.new(**sanitized_args)
       }
+
       # @example Default
       #   @description
       #     Labels are stacked by default.

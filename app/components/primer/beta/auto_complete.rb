@@ -22,7 +22,6 @@ module Primer
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
-      #
       # Customizable results list.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -38,7 +37,6 @@ module Primer
         Primer::BaseComponent.new(**system_arguments)
       }
 
-      #
       # Leading visual.
       #
       # - `leading_visual_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
