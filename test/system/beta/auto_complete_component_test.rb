@@ -3,7 +3,7 @@
 require "application_system_test_case"
 
 module Beta
-  class IntegrationBetaAutoCompleteTest < ApplicationSystemTestCase
+  class IntegrationAutoCompleteTest < ApplicationSystemTestCase
     def test_renders_component
       with_preview(:default)
 
