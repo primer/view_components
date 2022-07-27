@@ -24,5 +24,5 @@ Here are a few things you can do that will increase the likelihood of your pull 
 
 * Write a descriptive pull request message
 * Keep your change as focused as possible; if there are multiple changes you would like to make that are not dependent on one other consider submitting them as separate pull requests
-* Write comprehensive [documentation](/contributor-docs/documentation.md) and make sure the generated documentation is committed
-* Write thorough [tests](/contributor-docs/component-tests.md)
+* Write comprehensive [documentation](https://primer.style/view-components/contributing#writing-documentation) and make sure the generated documentation is committed
+* Write thorough [tests](https://primer.style/view-components/contributing#testing)
