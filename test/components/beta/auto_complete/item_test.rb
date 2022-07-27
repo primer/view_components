@@ -23,9 +23,22 @@ class PrimerAutoCompleteItemTest < Minitest::Test
     assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"][aria-disabled=\"true\"].ActionList-item", text: "Item")
   end
 
-  def test_renders_with_icon
+  def test_renders_with_leading_visual_icon
     render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo", disabled: false)) do |component|
       component.leading_visual_icon(icon: :search)
+      "Item text"
+    end
+
+    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionList-item", text: "Item text") do
+      assert_selector("span.ActionList-content") do
+        assert_selector("span.ActionList-item-visual.ActionList-item-visual--leading")
+      end
+    end
+  end
+
+  def test_renders_with_leading_visual_avatar
+    render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo", disabled: false)) do |component|
+      component.leading_visual_avatar(src: "https://github.com/github.png", alt: "github")
       "Item text"
     end
 
