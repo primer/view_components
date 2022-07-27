@@ -6,9 +6,9 @@ Hi there! We're thrilled that you'd like to contribute to this project. Your hel
 
 If you have any substantial changes that you would like to make, please [open an issue](http://github.com/primer/view_components/issues/new) first to discuss them with us.
 
-Contributions to this project are [released](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license) to the public under the [project's open source license](LICENSE.txt).
+Contributions to this project are [released](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license) to the public under the [project's open source license](https://github.com/primer/view_components/blob/main/LICENSE.txt).
 
-Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/primer/view_components/blob/main/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ## Adding a new component
 
