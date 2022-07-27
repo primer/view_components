@@ -7,7 +7,7 @@ module Alpha
     def test_renders_component
       with_preview(:default)
 
-      assert_selector("auto-complete[for=\"test-id\"][src=\"/auto_complete\"]") do
+      assert_selector("auto-complete[for=\"test-id\"][src=\"/auto_complete?version=alpha\"]") do
         assert_selector("input.form-control")
         assert_selector("ul[id=\"test-id\"].autocomplete-results", visible: false)
       end
