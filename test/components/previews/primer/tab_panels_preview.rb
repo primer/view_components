@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Primer
   class TabPanelsPreview < ViewComponent::Preview
     def default

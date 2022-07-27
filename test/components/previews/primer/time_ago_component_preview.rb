@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Primer
   class TimeAgoComponentPreview < ViewComponent::Preview
     def default
