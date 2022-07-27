@@ -24,12 +24,43 @@ class PrimerAutoCompleteItemTest < Minitest::Test
   end
 
   def test_renders_with_icon
-    render_inline Primer::Beta::AutoComplete::Item.new(value: "foo", disabled: true)  do |component|
+    render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo", disabled: false)) do |component|
       component.leading_visual_icon(icon: :search)
+      "Item text"
     end
 
-    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"][aria-disabled=\"true\"].ActionList-item", text: "Item") do
-      assert_selector("span.ActionList-item-visual--leading")
+    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionList-item", text: "Item text") do
+      assert_selector("span.ActionList-content") do
+        assert_selector("span.ActionList-item-visual.ActionList-item-visual--leading")
+      end
+    end
+  end
+
+  def test_renders_with_trailing_visual
+    render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo", disabled: false)) do |component|
+      component.trailing_visual_icon(icon: :search)
+      "Item text"
+    end
+
+    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionList-item", text: "Item text") do
+      assert_selector("span.ActionList-content") do
+        assert_selector("span.ActionList-item-visual.ActionList-item-visual--trailing")
+      end
+    end
+  end
+
+  def test_renders_with_description
+    render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo", disabled: false)) do |component|
+      component.description { "Item description" }
+      "Item text"
+    end
+
+    assert_selector("li[role=\"option\"][data-autocomplete-value=\"foo\"].ActionList-item", text: "Item text") do
+      assert_selector("span.ActionList-content") do
+        assert_selector("span.ActionList-item-descriptionWrap") do
+          assert_selector("span.ActionList-item-description", text: "Item description")
+        end
+      end
     end
   end
 end
