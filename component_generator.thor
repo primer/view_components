@@ -37,11 +37,11 @@ class ComponentGenerator < Thor::Group
 
   def create_system_test
     template("templates/system_test.rb.tt", "test/system/#{status_path}#{underscore_name}_test.rb") if js_package_name
-    template("templates/preview.tt", "test/components/previews/primer/#{status_path}#{underscore_name}_preview.rb") if js_package_name
+    template("templates/preview.tt", "test/previews/primer/#{status_path}#{underscore_name}_preview.rb") if js_package_name
   end
 
   def create_preview
-    template("templates/preview.tt", "test/components/previews/primer/#{status_path}#{underscore_name}_preview.rb")
+    template("templates/preview.tt", "test/previews/primer/#{status_path}#{underscore_name}_preview.rb")
   end
 
   def add_to_docs_rakefile
