@@ -336,6 +336,8 @@
       "submit"
     ]
   },
+  "Primer::ConditionalWrapper": {
+  },
   "Primer::Content": {
   },
   "Primer::CounterComponent": {

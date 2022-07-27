@@ -5,6 +5,7 @@ require "test_helper"
 class AllComponentsHaveStoriesTest < Minitest::Test
   EXCLUDED_COMPONENTS = [
     Primer::BaseComponent,
+    Primer::ConditionalWrapper,
     Primer::Content,
     Primer::FlexItemComponent,
     Primer::OcticonSymbolsComponent,
