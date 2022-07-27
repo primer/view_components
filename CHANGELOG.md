@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.0.83
+
+### Patch Changes
+
+- [#1222](https://github.com/primer/view_components/pull/1222) [`d48f6c4b`](https://github.com/primer/view_components/commit/d48f6c4ba45945ad87e81ea98e16d36347a864eb) Thanks [@jonrohan](https://github.com/jonrohan)! - Adding listen path for the app/components folder
+
+* [#1223](https://github.com/primer/view_components/pull/1223) [`c675cfe1`](https://github.com/primer/view_components/commit/c675cfe15425ad61f89c0d9f78c6f5ad36f11f75) Thanks [@khiga8](https://github.com/khiga8)! - Update README.md
+
+- [#1215](https://github.com/primer/view_components/pull/1215) [`32a8b21f`](https://github.com/primer/view_components/commit/32a8b21f5d0281ce10504946c8541520764310ac) Thanks [@khiga8](https://github.com/khiga8)! - Add `DeprecatedComponents` ERB lint rule
+
+* [#1228](https://github.com/primer/view_components/pull/1228) [`ab9dfabc`](https://github.com/primer/view_components/commit/ab9dfabc92b7914f10828ffd6580a91508eae764) Thanks [@khiga8](https://github.com/khiga8)! - Update devcontainer.json with ERB lint extension
+
+- [#1227](https://github.com/primer/view_components/pull/1227) [`85fdb403`](https://github.com/primer/view_components/commit/85fdb40385cf59dd181aceff56c4991515a7f3fe) Thanks [@keithamus](https://github.com/keithamus)! - Upgrade JS packages
+
+* [#1216](https://github.com/primer/view_components/pull/1216) [`e3de2bb4`](https://github.com/primer/view_components/commit/e3de2bb466518b380ef87b1f4a2433fdc3bbbfcc) Thanks [@jonrohan](https://github.com/jonrohan)! - Move lookbook previews from the lookbook folder to the main project
+
 ## 0.0.82
 
 ### Patch Changes
