@@ -38,18 +38,18 @@ module Primer
       # @param input_name text
       def with_submit_button(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, full_width: true, disabled: false, invalid: false, input_id: "input-id", list_id: "list-id", input_name: "input-id")
         render_with_template(locals: {
-                              label_text: label_text,
-                              show_clear_button: show_clear_button,
-                              visually_hide_label: visually_hide_label,
-                              placeholder: placeholder,
-                              size: size,
-                              full_width: full_width,
-                              disabled: disabled,
-                              invalid: invalid,
-                              input_id: input_id,
-                              list_id: list_id,
-                              input_name: input_name
-                            })
+                               label_text: label_text,
+                               show_clear_button: show_clear_button,
+                               visually_hide_label: visually_hide_label,
+                               placeholder: placeholder,
+                               size: size,
+                               full_width: full_width,
+                               disabled: disabled,
+                               invalid: invalid,
+                               input_id: input_id,
+                               list_id: list_id,
+                               input_name: input_name
+                             })
       end
 
       # @label Leading visual
