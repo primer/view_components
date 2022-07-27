@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 module Primer
+  # @label TimeAgoComponent
   class TimeAgoComponentPreview < ViewComponent::Preview
-    def default
-      render(Primer::TimeAgoComponent.new(time: Time.new))
+    # @param time datetime-local
+    # @param micro [Boolean] toggle
+    def default(time: Time.zone.now.to_s, micro: false)
+      render(Primer::TimeAgoComponent.new(time: DateTime.parse(time), micro: micro))
     end
 
     def micro
-      render(Primer::TimeAgoComponent.new(time: Time.new, micro: true))
+      render(Primer::TimeAgoComponent.new(time: Time.zone.now.to_s, micro: true))
     end
   end
 end
