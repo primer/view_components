@@ -218,6 +218,10 @@
     ]
   },
   "Primer::Beta::AutoComplete::Item": {
+    "ALLOWED_DESCRIPTION_VARIANTS": [
+      "inline",
+      "block"
+    ]
   },
   "Primer::Beta::Avatar": {
     "DEFAULT_SHAPE": "circle",
