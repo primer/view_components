@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Deprecating the alpha autocomplete component
+Deprecating the `Primer::Alpha::Autocomplete` component
