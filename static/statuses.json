@@ -1,4 +1,6 @@
 {
+  "Primer::Alpha::AutoComplete": "alpha",
+  "Primer::Alpha::AutoComplete::Item": "alpha",
   "Primer::Alpha::BorderBox::Header": "alpha",
   "Primer::Alpha::ButtonMarketing": "alpha",
   "Primer::Alpha::Layout": "alpha",
