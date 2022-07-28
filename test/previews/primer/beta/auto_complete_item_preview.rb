@@ -12,12 +12,14 @@ module Primer
       def with_description(description_variant: "block", value: "", selected: false, disabled: false)
         description_variant = description_variant.to_sym
 
-        render_with_template(locals: {
-                              description_variant: description_variant,
-                              selected: selected,
-                              disabled: disabled,
-                              value: value
-                            })
+        render_with_template(
+          locals: {
+            description_variant: description_variant,
+            selected: selected,
+            disabled: disabled,
+            value: value
+          }
+        )
       end
     end
   end

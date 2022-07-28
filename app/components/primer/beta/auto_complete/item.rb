@@ -43,6 +43,7 @@ module Primer
         # @param value [String] Value of the item.
         # @param selected [Boolean] Whether the item is selected.
         # @param disabled [Boolean] Whether the item is disabled.
+        # @param description_variant [Hash] Changes the description style. Allowed values are :inline, :block
         # @param description [String] Display description text below label
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(value:, selected: false, disabled: false, description_variant: :block, **system_arguments)
@@ -62,6 +63,7 @@ module Primer
           )
         end
 
+        # Description variant class.
         def description_variant_class
           case @description_variant
           when :block
