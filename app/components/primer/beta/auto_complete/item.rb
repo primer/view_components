@@ -8,6 +8,8 @@ module Primer
       class Item < Primer::Component
         status :beta
 
+        ALLOWED_DESCRIPTION_VARIANTS = [:inline, :block].freeze
+
         # The leading visual rendered before the link.
         #
         # @param kwargs [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %> or <%= link_to_component(Primer::OcticonComponent) %>
@@ -47,7 +49,7 @@ module Primer
         # @param description [String] Display description text below label
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(value:, selected: false, disabled: false, description_variant: :block, **system_arguments)
-          @description_variant = description_variant
+          @description_variant = ALLOWED_DESCRIPTION_VARIANTS.include?(description_variant) ? description_variant : :block
 
           @system_arguments = deny_tag_argument(**system_arguments)
           @system_arguments[:tag] = :li
@@ -70,8 +72,6 @@ module Primer
             "ActionList-item-blockDescription"
           when :inline
             "ActionList-item-descriptionWrap--inline"
-          else
-            ""
           end
         end
       end
