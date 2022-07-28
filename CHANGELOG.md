@@ -186,10 +186,6 @@
 
 ### New
 
-- Add `Tooltip` support to `IconButton`.
-
-    _Hector Garcia_
-
 - Add `Tooltip` support to `Button`.
 
   _Hector Garcia_
