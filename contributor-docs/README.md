@@ -11,7 +11,7 @@ Please note that this project is released with a [Contributor Code of Conduct](h
 ## Submitting a pull request
 
 1. Read through the docs in this folder for information on setup and our development practices
-1. [Fork](https://github.com/primer/fork) and clone the repository
+1. [Fork](https://github.com/primer/view_components/fork) and clone the repository
 1. Create a new branch: `git switch -n your-username/your-feature`
 1. Make your change, add tests, and make sure all the tests still pass
 1. Add an entry to the top of `CHANGELOG.md` for your change under the appropriate heading
