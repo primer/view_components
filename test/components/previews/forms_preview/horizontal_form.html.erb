@@ -1,0 +1,5 @@
+<div class="col-4 ml-4 mr-4 mb-4 mt-3">
+  <%= form_with(url: "/foo", skip_default_ids: false) do |f| %>
+    <%= render(HorizontalForm.new(f)) %>
+  <% end %>
+</div>
