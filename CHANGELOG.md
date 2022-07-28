@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.0.85
+
+### Patch Changes
+
+- [#1239](https://github.com/primer/view_components/pull/1239) [`bc9e8385`](https://github.com/primer/view_components/commit/bc9e8385894b708929d0e58a63681572493f090e) Thanks [@langermank](https://github.com/langermank)! - Remove deprecated params added for autocomplete beta
+
 ## 0.0.84
 
 ### Patch Changes
