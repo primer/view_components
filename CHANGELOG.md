@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.0.84
+
+### Patch Changes
+
+- [#1189](https://github.com/primer/view_components/pull/1189) [`ec3af746`](https://github.com/primer/view_components/commit/ec3af746dceb8e4a0c967fe270f149d48e81489b) Thanks [@langermank](https://github.com/langermank)! - Autocomplete design updates
+
+* [#1229](https://github.com/primer/view_components/pull/1229) [`5631d286`](https://github.com/primer/view_components/commit/5631d286c559cf4bbb96b85c0bb41dbeda5953d4) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - component generator: correcting template and thor tasks to account for component status
+
+- [#1232](https://github.com/primer/view_components/pull/1232) [`3a154bf4`](https://github.com/primer/view_components/commit/3a154bf4452f5ed8f7694eb917c13258d34ff6c0) Thanks [@jonrohan](https://github.com/jonrohan)! - Consolidating view_components previews into test/previews/ folder
+
+* [#1224](https://github.com/primer/view_components/pull/1224) [`2fc38746`](https://github.com/primer/view_components/commit/2fc387460e5f185463cbca8ffe0f098a06e2dec8) Thanks [@camertron](https://github.com/camertron)! - Add the ConditionalWrapper for conditionally wrapping content
+
+- [#1234](https://github.com/primer/view_components/pull/1234) [`ee04a4a9`](https://github.com/primer/view_components/commit/ee04a4a937c56156b3232552c7d10b0ec0336ab7) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - updating links in the contributing docs to point to correct locations
+
 ## 0.0.83
 
 ### Patch Changes
