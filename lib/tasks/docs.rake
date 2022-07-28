@@ -74,6 +74,7 @@ namespace :docs do
       Primer::SubheadComponent,
       Primer::TabContainerComponent,
       Primer::Beta::Text,
+      Primer::Alpha::TextField,
       Primer::TimeAgoComponent,
       Primer::TimelineItemComponent,
       Primer::Tooltip,
@@ -359,7 +360,7 @@ namespace :docs do
   task :preview do
     registry = generate_yard_registry
 
-    FileUtils.rm_rf("demo/test/components/previews/primer/docs/")
+    FileUtils.rm_rf("test/previews/primer/docs/")
 
     components = Primer::Component.descendants
 
@@ -373,7 +374,7 @@ namespace :docs do
 
       yard_example_tags = initialize_method.tags(:example)
 
-      path = Pathname.new("demo/test/components/previews/primer/docs/#{short_name.underscore}_preview.rb")
+      path = Pathname.new("test/previews/primer/docs/#{short_name.underscore}_preview.rb")
       path.dirname.mkdir unless path.dirname.exist?
 
       File.open(path, "w") do |f|
@@ -386,7 +387,7 @@ namespace :docs do
           method_name = name.split("|").first.downcase.parameterize.underscore
           f.puts("      def #{method_name}; end")
           f.puts unless index == yard_example_tags.size - 1
-          path = Pathname.new("demo/test/components/previews/primer/docs/#{short_name.underscore}_preview/#{method_name}.html.erb")
+          path = Pathname.new("test/previews/primer/docs/#{short_name.underscore}_preview/#{method_name}.html.erb")
           path.dirname.mkdir unless path.dirname.exist?
           File.open(path, "w") do |view_file|
             view_file.puts(code.to_s)

@@ -1,4 +1,9 @@
 {
+  "Primer::Alpha::AutoComplete": {
+    "Item": "Primer::Alpha::AutoComplete::Item"
+  },
+  "Primer::Alpha::AutoComplete::Item": {
+  },
   "Primer::Alpha::BorderBox::Header": {
     "TITLE_TAG_FALLBACK": "h2",
     "TITLE_TAG_OPTIONS": [
@@ -138,6 +143,8 @@
       "div"
     ]
   },
+  "Primer::Alpha::TextField": {
+  },
   "Primer::Alpha::Tooltip": {
     "DIRECTION_DEFAULT": "s",
     "DIRECTION_OPTIONS": [
@@ -199,9 +206,24 @@
     ]
   },
   "Primer::Beta::AutoComplete": {
-    "Item": "Primer::Beta::AutoComplete::Item"
+    "DEFAULT_SIZE": "medium",
+    "Item": "Primer::Beta::AutoComplete::Item",
+    "SIZE_MAPPINGS": {
+      "small": "FormControl-small",
+      "medium": "FormControl-medium",
+      "large": "FormControl-large"
+    },
+    "SIZE_OPTIONS": [
+      "small",
+      "medium",
+      "large"
+    ]
   },
   "Primer::Beta::AutoComplete::Item": {
+    "ALLOWED_DESCRIPTION_VARIANTS": [
+      "inline",
+      "block"
+    ]
   },
   "Primer::Beta::Avatar": {
     "DEFAULT_SHAPE": "circle",
@@ -375,7 +397,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",

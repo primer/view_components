@@ -210,28 +210,47 @@
     type: String
     default: N/A
     description: Id of the list element.
-  - name: with_icon
+  - name: visually_hide_label
     type: Boolean
     default: "`false`"
-    description: Controls if a search icon is visible, defaults to `false`.
-  - name: is_label_visible
-    type: Boolean
-    default: "`true`"
-    description: Controls if the label is visible. If `false`, screen reader only
-      text will be added.
-  - name: is_clearable
+    description: Controls if the label is visible. If `true`, screen reader only text
+      will be added.
+  - name: show_clear_button
     type: Boolean
     default: "`false`"
     description: Adds optional clear button.
-  - name: is_label_inline
-    type: Boolean
-    default: "`false`"
-    description: Controls if the label is inline. On smaller screens, label will always
-      become stacked.
   - name: system_arguments
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+  - name: size
+    type: Hash
+    default: "`:medium`"
+    description: Input size can be small, medium (default), or large
+  - name: full_width
+    type: Boolean
+    default: "`false`"
+    description: Input can be full-width or fit to content
+  - name: disabled
+    type: Boolean
+    default: "`false`"
+    description: Disabled input
+  - name: invalid
+    type: Boolean
+    default: "`false`"
+    description: Invalid input
+  - name: placeholder
+    type: String
+    default: "`nil`"
+    description: The placeholder text displayed within the input
+  - name: inset
+    type: Boolean
+    default: "`false`"
+    description: subtle input background color
+  - name: monospace
+    type: Boolean
+    default: "`false`"
+    description: monospace input font family
 - component: AutoCompleteItem
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/item.rb
   parameters:
@@ -247,6 +266,14 @@
     type: Boolean
     default: "`false`"
     description: Whether the item is disabled.
+  - name: description_variant
+    type: Hash
+    default: "`:block`"
+    description: Changes the description style. Allowed values are :inline, :block
+  - name: description
+    type: String
+    default: N/A
+    description: Display description text below label
   - name: system_arguments
     type: Hash
     default: N/A
@@ -982,6 +1009,99 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: TextField
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/text_field.rb
+  parameters:
+  - name: name
+    type: String
+    default: N/A
+    description: Value for the HTML name attribute.
+  - name: id
+    type: String
+    default: N/A
+    description: Value for the HTML id attribute.
+  - name: class
+    type: String
+    default: N/A
+    description: A list of CSS classes to add to the input. Exists for compatibility
+      with Rails form builders.
+  - name: classes
+    type: String
+    default: N/A
+    description: A list of CSS classes to add to the input. Combined with the `:class`
+      argument.
+  - name: caption
+    type: String
+    default: N/A
+    description: Caption text to render below the input.
+  - name: label
+    type: String
+    default: N/A
+    description: Label text displayed above the input.
+  - name: show_label
+    type: Boolean
+    default: N/A
+    description: Whether or not to visually display the label. If `true` the label
+      will still be available to screen readers.
+  - name: trailing_label
+    type: String
+    default: N/A
+    description: Text to display to the right of the input.
+  - name: size
+    type: Symbol
+    default: N/A
+    description: The size of the field. One of `:large`, `:medium`, or `:small`.
+  - name: show_clear_button
+    type: Boolean
+    default: N/A
+    description: Whether or not to include a clear button inside the input that clears
+      the input's contents when clicked.
+  - name: clear_button_id
+    type: String
+    default: N/A
+    description: The HTML id attribute of the clear button.
+  - name: full_width
+    type: Boolean
+    default: N/A
+    description: Controls whether or not the input takes the full width of its container.
+  - name: disabled
+    type: Boolean
+    default: N/A
+    description: Whether or not the input should accept keyboard and mouse input.
+  - name: invalid
+    type: Boolean
+    default: N/A
+    description: If `true`, renders the input in a visually invalid state.
+  - name: placeholder
+    type: String
+    default: N/A
+    description: Placeholder text.
+  - name: inset
+    type: Boolean
+    default: N/A
+    description: If `true`, renders the input in a visually inset state.
+  - name: monospace
+    type: Boolean
+    default: N/A
+    description: If `true`, uses a monospace font for the input field.
+  - name: leading_visual
+    type: Hash
+    default: N/A
+    description: Renders a leading visual icon before the text field's cursor. The
+      hash will be passed to Primer's [Octicon component](https://primer.style/view-components/components/octicon).
+  - name: label_arguments
+    type: Hash
+    default: N/A
+    description: System arugments passed to the Rails builder's `#label` method. These
+      arguments will appear as HTML attributes on the `<label>` tag.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+  - name: block
+    type: Proc
+    default: N/A
+    description: Unused.
 - component: TimeAgo
   source: https://github.com/primer/view_components/tree/main/app/components/primer/time_ago_component.rb
   parameters:

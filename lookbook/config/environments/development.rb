@@ -65,7 +65,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.view_component.preview_paths << Rails.root.join("../test/components/previews")
+  config.view_component.preview_paths << Rails.root.join("../test/previews")
   config.lookbook.listen_paths << Rails.root.join("../app/components")
 
   # Raises error for missing translations.

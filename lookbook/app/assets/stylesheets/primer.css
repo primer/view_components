@@ -3,3 +3,6 @@
 /* @import '/workspaces/css/src/index.scss'; */
 
 @import '@primer/css/index.scss';
+
+/* design token import while primitives are not included in main bundle */
+@import '@primer/css/primitives/index.scss';
