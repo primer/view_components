@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import useSiteMetadata from '@primer/gatsby-theme-doctocat/src/use-site-metadata'
 import '@primer/css/dist/primer.css'
+import '@primer/css/dist/primitives.css'
 
 // Reset PrimerCSS changing body font-size to 14px
 const bodyStyle = `
@@ -19,10 +20,12 @@ function Head(props) {
 
   let primerViewComponentsSrc
 
-  if(process.env.NODE_ENV === 'development') {
-    primerViewComponentsSrc = "http://localhost:4000/assets/primer_view_components.js"
+  if (process.env.NODE_ENV === 'development') {
+    primerViewComponentsSrc =
+      'http://localhost:4000/assets/primer_view_components.js'
   } else {
-    primerViewComponentsSrc = "https://unpkg.com/@primer/view-components@latest/app/assets/javascripts/primer_view_components.js"
+    primerViewComponentsSrc =
+      'https://unpkg.com/@primer/view-components@latest/app/assets/javascripts/primer_view_components.js'
   }
 
   return (

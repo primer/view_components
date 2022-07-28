@@ -3,11 +3,13 @@
   "private": true,
   "scripts": {
     "dev": "bin/dev",
-    "build:css": "postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css"
+    "build:css": "postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css",
+    "build:ts": "yarn --cwd ../ run tsc",
+    "build:rollup": "yarn --cwd ../ run rollup -c"
   },
   "dependencies": {
     "@koddsson/postcss-sass": "^5.0.1",
-    "@primer/css": "latest",
+    "@primer/css": "^20.3.0",
     "autoprefixer": "^10.4.5",
     "postcss": "^8.4.12",
     "postcss-cli": "^9.1.0",

@@ -1,4 +1,9 @@
 {
+  "Primer::Alpha::AutoComplete": {
+    "Item": "Primer::Alpha::AutoComplete::Item"
+  },
+  "Primer::Alpha::AutoComplete::Item": {
+  },
   "Primer::Alpha::BorderBox::Header": {
     "TITLE_TAG_FALLBACK": "h2",
     "TITLE_TAG_OPTIONS": [
@@ -199,9 +204,24 @@
     ]
   },
   "Primer::Beta::AutoComplete": {
-    "Item": "Primer::Beta::AutoComplete::Item"
+    "DEFAULT_SIZE": "medium",
+    "Item": "Primer::Beta::AutoComplete::Item",
+    "SIZE_MAPPINGS": {
+      "small": "FormControl-small",
+      "medium": "FormControl-medium",
+      "large": "FormControl-large"
+    },
+    "SIZE_OPTIONS": [
+      "small",
+      "medium",
+      "large"
+    ]
   },
   "Primer::Beta::AutoComplete::Item": {
+    "ALLOWED_DESCRIPTION_VARIANTS": [
+      "inline",
+      "block"
+    ]
   },
   "Primer::Beta::Avatar": {
     "DEFAULT_SHAPE": "circle",
@@ -258,6 +278,15 @@
     "PADDING_MESSAGE": "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead."
   },
   "Primer::Beta::Breadcrumbs::Item": {
+  },
+  "Primer::Beta::Flash": {
+    "DEFAULT_SCHEME": "default",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "warning": "flash-warn",
+      "danger": "flash-error",
+      "success": "flash-success"
+    }
   },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
@@ -326,6 +355,8 @@
       "button",
       "submit"
     ]
+  },
+  "Primer::ConditionalWrapper": {
   },
   "Primer::Content": {
   },
@@ -414,15 +445,6 @@
     "SCHEME_MAPPINGS": {
       "default": "",
       "dark": "dropdown-menu-dark"
-    }
-  },
-  "Primer::FlashComponent": {
-    "DEFAULT_SCHEME": "default",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "warning": "flash-warn",
-      "danger": "flash-error",
-      "success": "flash-success"
     }
   },
   "Primer::FlexComponent": {
@@ -644,14 +666,17 @@
   "Primer::OcticonComponent": {
     "SIZE_DEFAULT": "small",
     "SIZE_MAPPINGS": {
+      "xsmall": 12,
       "small": 16,
       "medium": 24
     },
     "SIZE_MEDIUM": "medium",
     "SIZE_OPTIONS": [
+      "xsmall",
       "small",
       "medium"
-    ]
+    ],
+    "SIZE_XSMALL": "xsmall"
   },
   "Primer::OcticonSymbolsComponent": {
   },
