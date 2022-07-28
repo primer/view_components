@@ -266,6 +266,10 @@
     type: Boolean
     default: "`false`"
     description: Whether the item is disabled.
+  - name: description_variant
+    type: Hash
+    default: "`:block`"
+    description: Changes the description style. Allowed values are :inline, :block
   - name: description
     type: String
     default: N/A
