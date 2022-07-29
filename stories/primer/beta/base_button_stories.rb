@@ -2,7 +2,7 @@
 
 require "primer/beta/base_button"
 
-class Primer::BaseButtonStories < ViewComponent::Storybook::Stories
+class Primer::Beta::BaseButtonStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:base) do
