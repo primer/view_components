@@ -16,17 +16,21 @@ module Primer
           perform_render(&block)
         end
 
+        # :nocov:
         def perform_render(&_block)
           raise NotImplementedError, "subclasses must implement ##{__method__}."
         end
+        # :nocov:
 
         def before_render; end
 
+        # :nocov:
         # rubocop:disable Naming/AccessorMethodName
         def set_original_view_context(view_context)
           @view_context = view_context
         end
         # rubocop:enable Naming/AccessorMethodName
+        # :nocov:
       end
 
       def self.extended(base)

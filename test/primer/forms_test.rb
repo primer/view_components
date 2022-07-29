@@ -31,7 +31,7 @@ class Primer::FormsTest < Minitest::Test
   end
 
   def test_renders_correct_form_structure
-    render_preview(:single_text_field_form)
+    render_preview :single_text_field_form
 
     assert_selector "form[action='/foo']" do
       assert_selector ".FormControl" do
@@ -46,7 +46,7 @@ class Primer::FormsTest < Minitest::Test
   end
 
   def test_renders_correct_form_structure_for_a_checkbox
-    render_preview(:text_field_and_checkbox_form)
+    render_preview :text_field_and_checkbox_form
 
     assert_selector "input[type='checkbox'][name='enable_ipd'][id='enable_ipd']"
     assert_selector "label[for='enable_ipd']", text: "Enable the Infinite Improbability Drive" do
@@ -55,13 +55,13 @@ class Primer::FormsTest < Minitest::Test
   end
 
   def test_includes_the_given_note
-    render_preview(:single_text_field_form)
+    render_preview :single_text_field_form
 
     assert_selector ".FormControl-caption", text: "The answer to life, the universe, and everything"
   end
 
   def test_the_input_is_described_by_the_caption
-    render_preview(:single_text_field_form)
+    render_preview :single_text_field_form
 
     caption_id = page.find_all(".FormControl-caption").first["id"]
     assert_selector "input[aria-describedby='#{caption_id}']"
@@ -113,7 +113,7 @@ class Primer::FormsTest < Minitest::Test
   end
 
   def test_renders_the_caption_template_when_present
-    render_preview(:caption_template_form)
+    render_preview :caption_template_form
 
     assert_selector ".FormControl-caption .color-fg-danger", text: "Be honest!"
     assert_selector ".FormControl-caption .color-fg-danger", text: "Check only if you are cool."
@@ -123,7 +123,7 @@ class Primer::FormsTest < Minitest::Test
 
   def test_the_input_is_described_by_the_caption_when_caption_templates_are_used
     num_inputs = 4
-    render_preview(:caption_template_form)
+    render_preview :caption_template_form
 
     caption_ids = page
                   .find_all("span.FormControl-caption")
@@ -188,5 +188,11 @@ class Primer::FormsTest < Minitest::Test
     render_preview :invalid_form
 
     assert_selector "input[type=text][name=last_name][autofocus]"
+  end
+
+  def test_renders_horizontal_group
+    render_preview :horizontal_form
+
+    assert_selector ".d-flex.flex-column .d-flex .FormControl", count: 2
   end
 end
