@@ -13,11 +13,11 @@ module Primer
       TYPE_OPTIONS = [DEFAULT_TYPE, :reset, :submit].freeze
 
       # @example Block
-      #   <%= render(Primer::BaseButton.new(block: :true)) { "Block" } %>
-      #   <%= render(Primer::BaseButton.new(block: :true, scheme: :primary)) { "Primary block" } %>
+      #   <%= render(Primer::Beta::BaseButton.new(block: :true)) { "Block" } %>
+      #   <%= render(Primer::Beta::BaseButton.new(block: :true, scheme: :primary)) { "Primary block" } %>
       #
-      # @param tag [Symbol] <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
-      # @param type [Symbol] <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
+      # @param tag [Symbol] <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
+      # @param type [Symbol] <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
       # @param block [Boolean] Whether button is full-width with `display: block`.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
@@ -44,4 +44,4 @@ module Primer
   end
 end
 
-Primer::BaseButton = Primer::Beta::BaseButton
+Primer::Beta::BaseButton = Primer::Beta::BaseButton

@@ -11,7 +11,7 @@ module ERBLint
       include Autocorrectable
 
       TAGS = Primer::ViewComponents::Constants.get(
-        component: "Primer::BaseButton",
+        component: "Primer::Beta::BaseButton",
         constant: "TAG_OPTIONS"
       ).freeze
 
