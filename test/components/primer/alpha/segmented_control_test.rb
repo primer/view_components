@@ -50,11 +50,12 @@ module Primer
         render_preview(:icons_only)
 
         assert_selector("segmented-control.SegmentedControl") do
-          assert_selector("button.SegmentedControl-button[aria-label]", count: Primer::Alpha::SegmentedControlPreview::NUMBER_OF_BUTTONS_DEFAULT) do
+          assert_selector("button.SegmentedControl-button[id^=\"segmented-control-button-button-\"]", count: Primer::Alpha::SegmentedControlPreview::NUMBER_OF_BUTTONS_DEFAULT) do
             assert_selector(".SegmentedControl-content") do
               assert_selector(".SegmentedControl-leadingVisual")
               refute_selector(".SegmentedControl-text")
             end
+            assert_selector("tool-tip[for^=\"segmented-control-button-button-\"]", visible: false)
           end
         end
       end

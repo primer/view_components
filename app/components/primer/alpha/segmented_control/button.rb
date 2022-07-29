@@ -17,7 +17,6 @@ module Primer
         renders_one :leading_visual, types: {
           icon: lambda { |**system_arguments|
             system_arguments[:classes] = "SegmentedControl-leadingVisual"
-            system_arguments[:'aria-hidden'] = true
 
             Primer::OcticonComponent.new(system_arguments[:icon], **system_arguments)
           }
@@ -28,13 +27,19 @@ module Primer
           @icon_only = icon_only
           @system_arguments = system_arguments
           @system_arguments[:tag] = :button
-          @system_arguments[:'aria-label'] = text if icon_only
+          @system_arguments[:id] = system_arguments[:id] || "segmented-control-button-#{text.downcase.gsub(/\s+/, '-')}" if render_tooltip?
           @system_arguments[:classes] = class_names(
             "SegmentedControl-button",
             @system_arguments[:classes],
             "SegmentedControl-button--selected": selected
           )
           @system_arguments[:'aria-current'] = true if selected
+        end
+
+        private
+
+        def render_tooltip?
+          @icon_only
         end
       end
     end

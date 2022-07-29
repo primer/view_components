@@ -5,4 +5,5 @@
       <span class="SegmentedControl-text" data-content="<%= @text %>"><%= @text %></span>
     <% end %>
   </div>
+  <%= render Primer::Alpha::Tooltip.new(type: :description, for_id: @system_arguments[:id], text: @text) if render_tooltip? %>
 <% end %>
