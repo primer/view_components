@@ -31,13 +31,7 @@ module ERBLint
         end
 
         def deprecated_components
-          @deprecated_components ||= statuses_json.select { |_, value| value == "deprecated" }.keys.tap do
-            if statuses_json.select { |_, value| value == "deprecated" }.keys.sort != COMPONENT_TO_USE_INSTEAD.keys.sort
-              raise "Please make sure that components are officially deprecated within the component file and that the deprecated status is reflected in `statuses.json`. "\
-              "Each deprecated component in `statuses.json` should have an alternative specified in COMPONENTS_TO_USE_INSTEAD. "\
-              "If there is no alternative to suggest, set the value to nil."
-            end
-          end
+          @deprecated_components ||= statuses_json.select { |_, value| value == "deprecated" }.keys
         end
       end
     end
