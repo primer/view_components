@@ -30,7 +30,6 @@ class PrimerComponentTest < Minitest::Test
     end],
     [Primer::Beta::BaseButton, {}],
     [Primer::BaseComponent, { tag: :div }],
-    [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::Beta::Blankslate, {}, proc { |component|
       component.heading(tag: :h2) { "Foo" }
     }],

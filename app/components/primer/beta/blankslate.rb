@@ -236,3 +236,5 @@ module Primer
     end
   end
 end
+
+Primer::BlankslateComponent = Primer::Beta::BlankSlate
