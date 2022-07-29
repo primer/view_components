@@ -37,12 +37,9 @@ GEM
     allocation_tracer (0.6.3)
     ansi (1.5.0)
     ast (2.4.2)
-    axe-core-api (4.2.1)
-      capybara
+    axe-core-api (4.4.1)
       dumb_delegator
-      selenium-webdriver
       virtus
-      watir
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -67,7 +64,6 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    childprocess (3.0.0)
     cliver (0.3.2)
     coderay (1.1.3)
     coercible (1.0.0)
@@ -179,10 +175,6 @@ GEM
       rack (>= 1.1)
       rubocop (>= 0.87.0)
     ruby-progressbar (1.11.0)
-    rubyzip (2.3.2)
-    selenium-webdriver (3.142.7)
-      childprocess (>= 0.5, < 4.0)
-      rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     simplecov (0.18.5)
       docile (~> 1.1)
@@ -217,9 +209,6 @@ GEM
       axiom-types (~> 0.1)
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
-    watir (6.19.1)
-      regexp_parser (>= 1.2, < 3)
-      selenium-webdriver (>= 3.142.7)
     webpacker (5.4.3)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
@@ -243,7 +232,7 @@ DEPENDENCIES
   activesupport (= 6.1.1)
   allocation_stats (~> 0.1)
   allocation_tracer (~> 0.6.3)
-  axe-core-api (~> 4.2.0)
+  axe-core-api (~> 4.4.1)
   benchmark-ips (~> 2.8.4)
   bootsnap (>= 1.4.2)
   capybara (~> 3)
