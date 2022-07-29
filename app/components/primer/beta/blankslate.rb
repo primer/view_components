@@ -237,4 +237,4 @@ module Primer
   end
 end
 
-Primer::BlankslateComponent = Primer::Beta::BlankSlate
+Primer::BlankslateComponent = Primer::Beta::Blankslate
