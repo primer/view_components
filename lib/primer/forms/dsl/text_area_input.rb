@@ -22,9 +22,11 @@ module Primer
           :text_area
         end
 
+        # :nocov:
         def focusable?
           true
         end
+        # :nocov:
       end
     end
   end

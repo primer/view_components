@@ -26,9 +26,11 @@ module Primer
           @nested_form_block = block
         end
 
+        # :nocov:
         def type
           :radio_button
         end
+        # :nocov:
       end
     end
   end

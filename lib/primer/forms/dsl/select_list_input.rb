@@ -36,13 +36,17 @@ module Primer
           SelectList.new(input: self)
         end
 
+        # :nocov:
         def type
           :select_list
         end
+        # :nocov:
 
+        # :nocov:
         def focusable?
           true
         end
+        # :nocov:
       end
     end
   end

@@ -29,9 +29,11 @@ module Primer
         end
       end
 
+      # :nocov:
       def type
         :component
       end
+      # :nocov:
 
       def input?
         false
