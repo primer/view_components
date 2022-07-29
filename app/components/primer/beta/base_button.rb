@@ -44,4 +44,4 @@ module Primer
   end
 end
 
-Primer::Beta::BaseButton = Primer::Beta::BaseButton
+Primer::BaseButton = Primer::Beta::BaseButton
