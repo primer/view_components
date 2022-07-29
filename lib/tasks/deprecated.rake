@@ -7,11 +7,8 @@ namespace :deprecated do
 
     puts "Checking that officially deprecated components are linted by `DeprecatedComponents` linter...."
 
-    statuses_json = JSON.parse(
-      File.read(
-        File.join(File.dirname(__FILE__), "../../static/statuses.json")
-      )
-    ).freeze
+    require_relative "../primer/view_components/statuses"
+    statuses = Primer::ViewComponents::STATUSES
 
     if statuses_json.select { |_, value| value == "deprecated" }.keys.sort != ERBLint::Linters::Helpers::DeprecatedComponentsHelpers::COMPONENT_TO_USE_INSTEAD.keys.sort
       puts "\n**************************************************************************************************************************"
