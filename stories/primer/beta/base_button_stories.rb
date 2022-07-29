@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "primer/beta/base_button"
+
 class Primer::BaseButtonStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 

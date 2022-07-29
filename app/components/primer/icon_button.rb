@@ -57,7 +57,7 @@ module Primer
     end
 
     def call
-      render(Primer::BaseButton.new(**@system_arguments)) do
+      render(Primer::Beta::BaseButton.new(**@system_arguments)) do
         render(Primer::OcticonComponent.new(icon: @icon))
       end
     end
