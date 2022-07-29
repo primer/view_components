@@ -7,8 +7,8 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
     controls do
       select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
       select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
-      select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
-      select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
+      select(:tag, Primer::Beta::BaseButton::TAG_OPTIONS, :button)
+      select(:type, Primer::Beta::BaseButton::TYPE_OPTIONS, :button)
       group_item false
       dropdown false
       disabled false
@@ -23,8 +23,8 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
     controls do
       select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
       select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
-      select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
-      select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
+      select(:tag, Primer::Beta::BaseButton::TAG_OPTIONS, :button)
+      select(:type, Primer::Beta::BaseButton::TYPE_OPTIONS, :button)
       text(:id, "button-with-tooltip")
       group_item false
       dropdown false
@@ -41,8 +41,8 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
     controls do
       select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
       select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
-      select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
-      select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
+      select(:tag, Primer::Beta::BaseButton::TAG_OPTIONS, :button)
+      select(:type, Primer::Beta::BaseButton::TYPE_OPTIONS, :button)
       group_item false
       dropdown false
       disabled false
@@ -58,8 +58,8 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
     controls do
       select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
       select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
-      select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
-      select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
+      select(:tag, Primer::Beta::BaseButton::TAG_OPTIONS, :button)
+      select(:type, Primer::Beta::BaseButton::TYPE_OPTIONS, :button)
       group_item false
       dropdown false
       disabled false
@@ -75,8 +75,8 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
     controls do
       select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
       select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
-      select(:tag, Primer::BaseButton::TAG_OPTIONS, :button)
-      select(:type, Primer::BaseButton::TYPE_OPTIONS, :button)
+      select(:tag, Primer::Beta::BaseButton::TAG_OPTIONS, :button)
+      select(:type, Primer::Beta::BaseButton::TYPE_OPTIONS, :button)
       group_item false
       dropdown false
       disabled false
