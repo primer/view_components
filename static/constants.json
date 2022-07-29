@@ -122,6 +122,17 @@
       "section"
     ]
   },
+  "Primer::Alpha::SegmentedControl": {
+    "Button": "Primer::Alpha::SegmentedControl::Button",
+    "ICON_ONLY_DEFAULT": false,
+    "ICON_ONLY_OPTIONS": [
+      false,
+      true,
+      "whenNarrow"
+    ]
+  },
+  "Primer::Alpha::SegmentedControl::Button": {
+  },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",
     "TAG_DEFAULT": "nav",

@@ -51,6 +51,21 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: SegmentedControl
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/segmented_control.rb
+  parameters:
+  - name: icon_only
+    type: Boolean/Symbol
+    default: "`false`"
+    description: If the buttons should only have an icon, true, false, or :whenNarrow.
+  - name: full_width
+    type: Boolean
+    default: "`false`"
+    description: If the component should be full width
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: TabNav
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tab_nav.rb
   parameters:
