@@ -14,8 +14,14 @@ class PrimerClipboardCopyTest < Minitest::Test
     end
   end
 
+  def test_requires_aria_label_when_empty
+    assert_raises(ArgumentError) do
+      render_inline Primer::ClipboardCopy.new(value: "my-branch-name")
+    end
+  end
+
   def test_renders_with_text_contents
-    render_inline Primer::ClipboardCopy.new(value: "my-branch-name", "aria-label": "Copy branch name to clipboard") do
+    render_inline Primer::ClipboardCopy.new(value: "my-branch-name") do
       "Click to copy!"
     end
 
