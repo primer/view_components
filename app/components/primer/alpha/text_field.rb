@@ -4,13 +4,12 @@ module Primer
   module Alpha
     TextField = Primer::FormComponents.from_input(Primer::Forms::Dsl::TextFieldInput)
 
+    # A text field suitable for use outside a form. For a text field input suitable for use
+    # within an HTML form, see the `Primer::Forms` namespace.
     class TextField
       status :alpha
 
       # @!method initialize
-      #
-      # A text field suitable for use outside a form. For a text field input suitable for use
-      # within an HTML form, see the `Primer::Forms` namespace.
       #
       # @example Default
       #   <%= render(Primer::Alpha::TextField.new(name: :first_name, label: "First name")) %>
