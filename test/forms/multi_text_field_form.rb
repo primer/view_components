@@ -17,5 +17,10 @@ class MultiTextFieldForm < ApplicationForm
       required: true,
       caption: "Bueller. Bueller. Bueller."
     )
+
+    my_form.hidden(
+      name: :csrf_token,
+      value: "abc123"
+    )
   end
 end

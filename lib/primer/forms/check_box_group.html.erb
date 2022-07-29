@@ -6,7 +6,7 @@
   <% end %>
   <%= render(SpacingWrapper.new) do %>
     <% @input.check_boxes.each do |check_box| %>
-      <%= render(check_box.to_component) %>
+      <%= render(check_box) %>
     <% end %>
   <% end %>
 </fieldset>

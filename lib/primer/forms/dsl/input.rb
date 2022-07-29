@@ -181,6 +181,7 @@ module Primer
           input_arguments[:autofocus] = true
         end
 
+        # :nocov:
         def name
           raise_for_abstract_method!(__method__)
         end
@@ -196,6 +197,7 @@ module Primer
         def to_component
           raise_for_abstract_method!(__method__)
         end
+        # :nocov:
 
         def focusable?
           false
@@ -246,9 +248,11 @@ module Primer
           values.join(" ")
         end
 
+        # :nocov:
         def raise_for_abstract_method!(method_name)
           raise NotImplementedError, "subclasses must implement ##{method_name}."
         end
+        # :nocov:
       end
     end
   end

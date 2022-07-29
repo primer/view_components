@@ -207,4 +207,22 @@ class Primer::Forms::FormsTest < Minitest::Test
 
     assert_selector ".FormControl-radio-wrap + .ml-4 .FormControl input[name=first_name]"
   end
+
+  def test_renders_separator
+    render_preview :multi_text_field_form
+
+    assert_selector ".border-top.color-border-muted"
+  end
+
+  def test_renders_check_box_group
+    render_preview :check_box_group_form
+
+    assert_selector "fieldset input[type=checkbox]", count: 3
+  end
+
+  def test_renders_hidden_input
+    render_preview :multi_text_field_form
+
+    assert_selector "input[type=hidden][name=csrf_token][value=abc123]", visible: false
+  end
 end

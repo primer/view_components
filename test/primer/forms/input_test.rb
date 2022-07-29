@@ -5,9 +5,19 @@ require "test_helper"
 class Primer::Forms::InputTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  class InputTestForm < ApplicationForm
-    form do |input_test_form|
-      input_test_form.text_field(name: :foo, label: "Foo")
+  class TestForm < ApplicationForm
+    form do |test_form|
+      test_form.text_field(
+        name: :foo,
+        label: "Foo",
+        caption: "Something about foos, please",
+        disabled: true
+      )
+
+      test_form.hidden(
+        name: :csrf_token,
+        value: "abc123"
+      )
     end
   end
 
@@ -16,27 +26,27 @@ class Primer::Forms::InputTest < Minitest::Test
 
     render_in_view_context do
       form_with(url: "/foo", skip_default_ids: false) do |f|
-        form = SingleTextFieldForm.new(f)
+        form = TestForm.new(f)
       end
     end
 
-    group = form.inputs.first
-    @input = group.inputs.first
+    @text_field = form.inputs[0].inputs.first
+    @hidden_field = form.inputs[1].inputs.first
   end
 
   def test_merges_input_arguments
-    classes = @input.input_arguments[:class]
-    data = @input.input_arguments.fetch(:data, {})
-    aria = @input.input_arguments.fetch(:aria, {})
+    classes = @text_field.input_arguments[:class]
+    data = @text_field.input_arguments.fetch(:data, {})
+    aria = @text_field.input_arguments.fetch(:aria, {})
     describedby = aria.fetch(:describedby, "")
 
     refute classes.include?("foo")
     refute data.include?(:foo)
     refute aria.include?(:foo)
     refute describedby.include?("foo")
-    refute @input.input_arguments.fetch(:foo, nil) == "bar"
+    refute @text_field.input_arguments.fetch(:foo, nil) == "bar"
 
-    @input.merge_input_arguments!(
+    @text_field.merge_input_arguments!(
       class: "foo",
       foo: "bar",
       data: { foo: "foo" },
@@ -46,15 +56,24 @@ class Primer::Forms::InputTest < Minitest::Test
       }
     )
 
-    classes = @input.input_arguments[:class]
-    data = @input.input_arguments.fetch(:data, {})
-    aria = @input.input_arguments.fetch(:aria, {})
+    classes = @text_field.input_arguments[:class]
+    data = @text_field.input_arguments.fetch(:data, {})
+    aria = @text_field.input_arguments.fetch(:aria, {})
 
     assert classes.include?("foo")
     assert data.include?(:foo)
     assert aria.include?(:foo)
     assert aria[:foo] == "bar"
     assert aria[:describedby] == "#{describedby} foo"
-    assert @input.input_arguments[:foo] == "bar"
+    assert @text_field.input_arguments[:foo] == "bar"
+  end
+
+  def test_disabled
+    assert @text_field.disabled?
+  end
+
+  def test_focusable
+    assert @text_field.focusable?
+    refute @hidden_field.focusable?
   end
 end
