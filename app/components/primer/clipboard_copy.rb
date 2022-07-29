@@ -35,10 +35,8 @@ module Primer
     end
 
     # :nodoc:
-    def render_in(*args, &block)
-      validate_aria_label unless block_given?
-
-      super
+    def before_render
+      validate_aria_label if content.blank?
     end
 
     private
