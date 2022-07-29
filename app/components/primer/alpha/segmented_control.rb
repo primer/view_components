@@ -8,8 +8,8 @@ module Primer
     class SegmentedControl < Primer::Component
       status :alpha
 
-      ICON_ONLY_DEFAULT = true
-      ICON_ONLY_OPTIONS = [ICON_ONLY_DEFAULT, false, :whenNarrow].freeze
+      ICON_ONLY_DEFAULT = false
+      ICON_ONLY_OPTIONS = [ICON_ONLY_DEFAULT, true, :whenNarrow].freeze
 
       # Use to render a button and an associated panel slot. See the example below or refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
       #
@@ -20,7 +20,7 @@ module Primer
 
       # @example Basic usage
       #
-      #   <%= render(Primer::SegmentedControl.new) do |c| %>
+      #   <%= render(Primer::Alpha::SegmentedControl.new) do |c| %>
       #     <%= c.button(text: "Button 1", selected: true) %>
       #     <%= c.button(text: "Button 2") %>
       #     <%= c.button(text: "Button 3") %>
