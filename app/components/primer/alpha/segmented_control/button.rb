@@ -33,7 +33,7 @@ module Primer
             @system_arguments[:classes],
             "SegmentedControl-button--selected": selected
           )
-          @system_arguments[:'aria-current'] = true if selected
+          @system_arguments[:'aria-selected'] = true if selected
         end
 
         private

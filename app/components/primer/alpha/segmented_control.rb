@@ -31,6 +31,7 @@ module Primer
         @icon_only = icon_only
         @system_arguments = system_arguments
         @system_arguments[:tag] = "segmented-control"
+        @system_arguments[:role] = "toolbar"
         @system_arguments[:classes] = class_names(
           "SegmentedControl",
           system_arguments[:classes],
