@@ -15,6 +15,81 @@ module Primer
       # @example Default
       #   <%= render(Primer::Alpha::TextField.new(name: :first_name, label: "First name")) %>
       #
+      # @example With a trailing label
+      #   <%= render(
+      #     Primer::Alpha::TextField.new(
+      #       name: :days,
+      #       label: "Number of days",
+      #       show_label: false,
+      #       trailing_label: "days"
+      #     )
+      #   ) %>
+      #
+      # @example With a clear button
+      #   <%= render(
+      #     Primer::Alpha::TextField.new(
+      #       name: :first_name,
+      #       label: "First name",
+      #       show_clear_button: true
+      #     )
+      #   ) %>
+      #
+      # @example Full width
+      #   <%= render(
+      #     Primer::Alpha::TextField.new(
+      #       name: :first_name,
+      #       label: "First name",
+      #       full_width: true
+      #     )
+      #   ) %>
+      #
+      # @example Disabled
+      #   <%= render(
+      #     Primer::Alpha::TextField.new(
+      #       name: :first_name,
+      #       label: "First name",
+      #       disabled: true
+      #     )
+      #   ) %>
+      #
+      # @example Invalid
+      #   <%= render(
+      #     Primer::Alpha::TextField.new(
+      #       name: :first_name,
+      #       label: "First name",
+      #       invalid: true
+      #     )
+      #   ) %>
+      #
+      # @example With a leading visual
+      #   <%= render(
+      #     Primer::Alpha::TextField.new(
+      #       name: :first_name,
+      #       label: "First name",
+      #       leading_visual: {
+      #         icon: :person
+      #       }
+      #     )
+      #   ) %>
+      #
+      # @example With a caption
+      #   <%= render(
+      #     Primer::Alpha::TextField.new(
+      #       name: :first_name,
+      #       label: "First name",
+      #       caption: "What your friends call you"
+      #     )
+      #   ) %>
+      #
+      # @example With a validation message
+      #   <%= render(
+      #     Primer::Alpha::TextField.new(
+      #       name: :first_name,
+      #       label: "First name",
+      #       validation_message: "Hmm, that doesn't look right"
+      #     )
+      #   ) %>
+      #
       # @param name [String] Value for the HTML name attribute.
       # @param id [String] Value for the HTML id attribute.
       # @param class [String] A list of CSS classes to add to the input. Exists for compatibility with Rails form builders.
@@ -33,6 +108,7 @@ module Primer
       # @param inset [Boolean] If `true`, renders the input in a visually inset state.
       # @param monospace [Boolean] If `true`, uses a monospace font for the input field.
       # @param leading_visual [Hash] Renders a leading visual icon before the text field's cursor. The hash will be passed to Primer's [Octicon component](https://primer.style/view-components/components/octicon).
+      # @param validation_message [String] A validation message to display beneath the input. Implicitly sets `invalid` to `true`.
       # @param label_arguments [Hash] System arugments passed to the Rails builder's `#label` method. These arguments will appear as HTML attributes on the `<label>` tag.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       # @param block [Proc] Unused.

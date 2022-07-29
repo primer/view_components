@@ -175,6 +175,11 @@
     default: N/A
     description: Renders a leading visual icon before the text field's cursor. The
       hash will be passed to Primer's [Octicon component](https://primer.style/view-components/components/octicon).
+  - name: validation_message
+    type: String
+    default: N/A
+    description: A validation message to display beneath the input. Implicitly sets
+      `invalid` to `true`.
   - name: label_arguments
     type: Hash
     default: N/A
