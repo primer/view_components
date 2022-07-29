@@ -8,6 +8,9 @@ module Primer
     class SegmentedControl < Primer::Component
       status :alpha
 
+      ICON_ONLY_DEFAULT = true
+      ICON_ONLY_OPTIONS = [ICON_ONLY_DEFAULT, false, :whenNarrow].freeze
+
       # Use to render a button and an associated panel slot. See the example below or refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -23,12 +26,11 @@ module Primer
       #     <%= c.button(text: "Button 3") %>
       #   <% end %>
       #
-      # @param icon_only [Boolean] If the buttons should only have an icon
-      # @param icon_only_when_narrow [Boolean] If the buttons should only have an icon when the screen is narrow
+      # @param icon_only [Boolean/Symbol] If the buttons should only have an icon, true, false, or :whenNarrow.
       # @param full_width [Boolean] If the component should be full width
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(icon_only: false, icon_only_when_narrow: false, full_width: false, **system_arguments)
-        @icon_only = icon_only
+      def initialize(icon_only: ICON_ONLY_DEFAULT, full_width: false, **system_arguments)
+        @icon_only = fetch_or_fallback(ICON_ONLY_OPTIONS, icon_only, ICON_ONLY_DEFAULT)
         @system_arguments = system_arguments
         @system_arguments[:tag] = "segmented-control"
         @system_arguments[:role] = "toolbar"
@@ -36,7 +38,7 @@ module Primer
           "SegmentedControl",
           system_arguments[:classes],
           "SegmentedControl--fullWidth": full_width,
-          "SegmentedControl--iconOnly-whenNarrow": icon_only_when_narrow
+          "SegmentedControl--iconOnly-whenNarrow": @icon_only == :whenNarrow
         )
       end
     end

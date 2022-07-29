@@ -14,7 +14,8 @@ module Primer
       # @param icon_only_when_narrow [Boolean] toggle
       # @param number_of_buttons [Integer] number
       def default(full_width: false, number_of_buttons: NUMBER_OF_BUTTONS_DEFAULT, icon_only: false, icon_only_when_narrow: false)
-        render(Primer::Alpha::SegmentedControl.new(full_width: full_width, icon_only: icon_only, icon_only_when_narrow: icon_only_when_narrow)) do |c|
+        icon_only_when_narrow = false if icon_only == true
+        render(Primer::Alpha::SegmentedControl.new(full_width: full_width, icon_only: icon_only_when_narrow ? :whenNarrow : icon_only)) do |c|
           Array.new(number_of_buttons || NUMBER_OF_BUTTONS_DEFAULT) do |i|
             c.button(text: "Button #{i + 1}", selected: i.zero?) do |b|
               b.leading_visual_icon(icon: :zap) if icon_only || icon_only_when_narrow
@@ -62,7 +63,7 @@ module Primer
       # @param full_width [Boolean] toggle
       # @param number_of_buttons [Integer] number
       def icons_only_when_narrow(full_width: false, number_of_buttons: NUMBER_OF_BUTTONS_DEFAULT, icon_only_when_narrow: true)
-        render(Primer::Alpha::SegmentedControl.new(full_width: full_width, icon_only_when_narrow: icon_only_when_narrow)) do |c|
+        render(Primer::Alpha::SegmentedControl.new(full_width: full_width, icon_only: icon_only_when_narrow ? :whenNarrow : false)) do |c|
           Array.new(number_of_buttons || NUMBER_OF_BUTTONS_DEFAULT) do |i|
             c.button(text: "Button #{i + 1}", selected: i.zero?) do |b|
               b.leading_visual_icon(icon: :zap)

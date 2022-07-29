@@ -39,7 +39,11 @@ module Primer
         private
 
         def render_tooltip?
-          @icon_only
+          @icon_only != false
+        end
+
+        def render_text?
+          @icon_only != true
         end
       end
     end

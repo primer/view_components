@@ -1,9 +1,9 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <div class="SegmentedControl-content">
     <%= leading_visual %>
-    <% unless @icon_only %>
+    <% if render_text? %>
       <span class="SegmentedControl-text" data-content="<%= @text %>"><%= @text %></span>
     <% end %>
   </div>
-  <%= render Primer::Alpha::Tooltip.new(type: :description, for_id: @system_arguments[:id], text: @text) if render_tooltip? %>
+  <%= render Primer::Alpha::Tooltip.new(direction: :n, hide: render_text? ? :whenRegular : nil, type: :description, for_id: @system_arguments[:id], text: @text) if render_tooltip? %>
 <% end %>
