@@ -17,6 +17,7 @@ class PrimerClipboardCopyTest < Minitest::Test
   def test_requires_aria_label_when_empty
     assert_raises(ArgumentError) do
       render_inline Primer::ClipboardCopy.new(value: "my-branch-name") do
+        nil
       end
     end
   end
