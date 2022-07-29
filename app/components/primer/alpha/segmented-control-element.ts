@@ -1,22 +1,8 @@
 /* eslint-disable custom-elements/no-constructor */
-type IncrementKeyCode = 'ArrowRight' | 'ArrowDown'
-type DecrementKeyCode = 'ArrowUp' | 'ArrowLeft'
-
 function getControls(el: SegmentedControlElement): HTMLElement[] {
   return Array.from(el.querySelectorAll<HTMLElement>('[role="toolbar"] button')).filter(
     tab => tab instanceof HTMLElement && tab.closest(el.tagName) === el
   )
-}
-
-function getNavigationKeyCodes(vertical: boolean): [IncrementKeyCode[], DecrementKeyCode[]] {
-  if (vertical) {
-    return [
-      ['ArrowDown', 'ArrowRight'],
-      ['ArrowUp', 'ArrowLeft']
-    ]
-  } else {
-    return [['ArrowRight'], ['ArrowLeft']]
-  }
 }
 
 export default class SegmentedControlElement extends HTMLElement {
@@ -30,15 +16,12 @@ export default class SegmentedControlElement extends HTMLElement {
       if (!target.closest('[role="toolbar"]')) return
       const controls = getControls(this)
       const currentIndex = controls.indexOf(controls.find(control => control === document.activeElement)!)
-      const [incrementKeys, decrementKeys] = getNavigationKeyCodes(
-        target.closest('[role="toolbar"]')?.getAttribute('aria-orientation') === 'vertical'
-      )
 
-      if (incrementKeys.some(code => event.code === code)) {
+      if (event.code === 'ArrowRight') {
         let index = currentIndex + 1
         if (index >= controls.length) index = 0
         controls[index].focus()
-      } else if (decrementKeys.some(code => event.code === code)) {
+      } else if (event.code === 'ArrowLeft') {
         let index = currentIndex - 1
         if (index < 0) index = controls.length - 1
         controls[index].focus()
