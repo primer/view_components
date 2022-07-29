@@ -45,32 +45,6 @@ module Primer
           add_input TextAreaInput.new(builder: builder, form: form, **options, &block)
         end
 
-        def given_name(**options, &block)
-          text_field(autocomplete: "given-name", **options, &block)
-        end
-
-        def family_name(**options, &block)
-          text_field(autocomplete: "family-name", **options, &block)
-        end
-
-        def address_line1(**options, &block)
-          text_field(autocomplete: "address-line1", **options, &block)
-        end
-
-        def address_line2(**options, &block)
-          text_field(autocomplete: "address-line2", **options, &block)
-        end
-
-        def address_level2(**options, &block)
-          text_field(autocomplete: "address-level2", **options, &block)
-        end
-
-        alias city address_level2
-
-        def postal_code(**options, &block)
-          text_field(autocomplete: "postal-code", **options, &block)
-        end
-
         # END text input methods
 
         # START select input methods
@@ -79,16 +53,6 @@ module Primer
           options = decorate_options(**options)
           add_input SelectListInput.new(builder: builder, form: form, **options, &block)
         end
-
-        def country_name(**options, &block)
-          select_list(autocomplete: "country-name", **options, &block)
-        end
-
-        def address_level1(**options, &block)
-          select_list(autocomplete: "address-level1", **options, &block)
-        end
-
-        alias region_name address_level1
 
         # END select input methods
 

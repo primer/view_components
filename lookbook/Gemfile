@@ -46,6 +46,7 @@ gem "bootsnap", require: false
 
 gem "lookbook"
 gem "primer_view_components", path: "../"
+gem "pry-byebug"
 gem "view_component"
 
 # Use Sass to process CSS

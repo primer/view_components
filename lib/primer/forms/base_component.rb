@@ -51,14 +51,6 @@ module Primer
           capture(&block)
         end
       end
-
-      def content_tag_if_args(tag, **kwargs, &block)
-        if kwargs.empty?
-          capture(&block)
-        else
-          content_tag(tag, **kwargs, &block)
-        end
-      end
     end
   end
 end

@@ -9,10 +9,14 @@ module Primer
       def initialize(input:)
         @input = input
         @input.add_label_classes("FormControl-label")
-        @form_group_classes = class_names(
-          "FormControl",
-          "FormControl--fullWidth" => @input.full_width?
-        )
+        @form_group_arguments = {
+          class: class_names(
+            "FormControl",
+            "FormControl--fullWidth" => @input.full_width?
+          )
+        }
+
+        @form_group_arguments[:hidden] = "hidden" if @input.hidden?
       end
     end
   end

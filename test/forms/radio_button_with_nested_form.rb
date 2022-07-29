@@ -25,7 +25,7 @@ class RadioButtonWithNestedForm < ApplicationForm
       radio_group.radio_button(value: "radio", label: "Radio advertisement", caption: "We love us some NPR")
       radio_group.radio_button(value: "friend", label: "From a friend", caption: "Wow, what a good person") do |friend_button|
         friend_button.nested_form do |builder|
-          Primer::RailsForms::FormList.new(
+          Primer::Forms::FormList.new(
             FriendForm.new(builder),
             FriendTextAreaForm.new(builder)
           )

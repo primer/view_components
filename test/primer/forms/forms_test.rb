@@ -2,13 +2,7 @@
 
 require "test_helper"
 
-require "rails"
-require "rails/test_help"
-require "action_controller/railtie"
-require "rails/test_unit/railtie"
-require "active_model/railtie"
-
-class Primer::FormsTest < Minitest::Test
+class Primer::Forms::FormsTest < Minitest::Test
   include Primer::ComponentTestHelpers
   include ViewComponent::RenderPreviewHelper
 
@@ -94,7 +88,7 @@ class Primer::FormsTest < Minitest::Test
     end
 
     text_field = page.find_all("input[type=text]").first
-    assert_equal text_field["name"], "primer_forms_test_deep_thought[ultimate_answer]"
+    assert_equal text_field["name"], "primer_forms_forms_test_deep_thought[ultimate_answer]"
   end
 
   def test_the_input_is_described_by_the_validation_message
@@ -194,5 +188,23 @@ class Primer::FormsTest < Minitest::Test
     render_preview :horizontal_form
 
     assert_selector ".d-flex.flex-column .d-flex .FormControl", count: 2
+  end
+
+  def test_renders_multi_input
+    render_preview :multi_input_form
+
+    assert_selector ".FormControl select[name=region]" do
+      assert_selector "label", text: "State"
+    end
+
+    assert_selector ".FormControl select[name=region]", visible: false do
+      assert_selector "label", text: "Province", visible: false
+    end
+  end
+
+  def test_radio_button_includes_nested_form
+    render_preview :radio_button_with_nested_form
+
+    assert_selector ".FormControl-radio-wrap + .ml-4 .FormControl input[name=first_name]"
   end
 end
