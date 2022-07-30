@@ -66,9 +66,6 @@ module Primer
         end
       end
 
-      def initialize(**); end
-      ruby2_keywords(:initialize) if respond_to?(:ruby2_keywords, true)
-
       def inputs
         @inputs ||= form_object.inputs.map do |input|
           next input unless input.input?
