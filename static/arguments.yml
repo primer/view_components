@@ -265,25 +265,6 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: BaseButton
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/base_button.rb
-  parameters:
-  - name: tag
-    type: Symbol
-    default: "`:button`"
-    description: One of `:a`, `:button`, or `:summary`.
-  - name: type
-    type: Symbol
-    default: "`:button`"
-    description: One of `:button`, `:reset`, or `:submit`.
-  - name: block
-    type: Boolean
-    default: "`false`"
-    description: 'Whether button is full-width with `display: block`.'
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
 - component: AutoComplete
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete.rb
   parameters:
@@ -425,6 +406,25 @@
     description: Parameters to add to the Body. If `tooltipped` is set, has the same
       arguments as [Tooltip](/components/tooltip). The default tag is `:div` but can
       be changed using `tag:` to one of `:div` and `:span`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: BaseButton
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/base_button.rb
+  parameters:
+  - name: tag
+    type: Symbol
+    default: "`:button`"
+    description: One of `:a`, `:button`, or `:summary`.
+  - name: type
+    type: Symbol
+    default: "`:button`"
+    description: One of `:button`, `:reset`, or `:submit`.
+  - name: block
+    type: Boolean
+    default: "`false`"
+    description: 'Whether button is full-width with `display: block`.'
   - name: system_arguments
     type: Hash
     default: N/A

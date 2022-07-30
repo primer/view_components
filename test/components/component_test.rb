@@ -28,7 +28,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::AvatarStack, {}, lambda do |component|
       component.avatar(alt: "github", src: "https://github.com/github.png")
     end],
-    [Primer::BaseButton, {}],
+    [Primer::Beta::BaseButton, {}],
     [Primer::BaseComponent, { tag: :div }],
     [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::Beta::Blankslate, {}, proc { |component|
