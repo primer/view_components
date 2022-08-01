@@ -57,7 +57,7 @@ module Primer
 
       # Use Rows to add rows with borders and maintain the same padding.
       #
-      # @param scheme [Symbol] Color scheme. <%= one_of(Primer::BorderBoxComponent::ROW_SCHEME_MAPPINGS.keys) %>
+      # @param scheme [Symbol] Color scheme. <%= one_of(Primer::Beta::BorderBox::ROW_SCHEME_MAPPINGS.keys) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :rows, lambda { |scheme: DEFAULT_ROW_SCHEME, **system_arguments|
         system_arguments[:tag] = :li
@@ -71,7 +71,7 @@ module Primer
       }
 
       # @example Header with title, body, rows, and footer
-      #   <%= render(Primer::BorderBoxComponent.new) do |component| %>
+      #   <%= render(Primer::Beta::BorderBox.new) do |component| %>
       #     <% component.header do |h| %>
       #       <% h.title(tag: :h2) do %>
       #         Header
@@ -94,7 +94,7 @@ module Primer
       #   <% end %>
       #
       # @example Padding density
-      #   <%= render(Primer::BorderBoxComponent.new(padding: :condensed)) do |component| %>
+      #   <%= render(Primer::Beta::BorderBox.new(padding: :condensed)) do |component| %>
       #     <% component.header do %>
       #       Header
       #     <% end %>
@@ -110,7 +110,7 @@ module Primer
       #   <% end %>
       #
       # @example Row colors
-      #   <%= render(Primer::BorderBoxComponent.new) do |component| %>
+      #   <%= render(Primer::Beta::BorderBox.new) do |component| %>
       #     <% component.row do %>
       #       Default
       #     <% end %>
@@ -125,7 +125,7 @@ module Primer
       #     <% end %>
       #   <% end %>
       #
-      # @param padding [Symbol] <%= one_of(Primer::BorderBoxComponent::PADDING_MAPPINGS.keys) %>
+      # @param padding [Symbol] <%= one_of(Primer::Beta::BorderBox::PADDING_MAPPINGS.keys) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(padding: DEFAULT_PADDING, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
@@ -145,5 +145,3 @@ module Primer
     end
   end
 end
-
-Primer::BorderBoxComponent = Primer::Beta::BorderBox

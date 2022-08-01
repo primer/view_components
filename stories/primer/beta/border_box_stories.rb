@@ -2,12 +2,12 @@
 
 require "primer/beta/border_box"
 
-class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
+class Primer::Beta::BorderBoxStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:full_box) do
     controls do
-      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
+      select(:padding, Primer::Beta::BorderBox::PADDING_MAPPINGS.keys, Primer::Beta::BorderBox::DEFAULT_PADDING)
     end
 
     content do |component|
@@ -22,7 +22,7 @@ class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
 
   story(:header) do
     controls do
-      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
+      select(:padding, Primer::Beta::BorderBox::PADDING_MAPPINGS.keys, Primer::Beta::BorderBox::DEFAULT_PADDING)
     end
 
     content do |component|
@@ -32,7 +32,7 @@ class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
 
   story(:header_title) do
     controls do
-      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
+      select(:padding, Primer::Beta::BorderBox::PADDING_MAPPINGS.keys, Primer::Beta::BorderBox::DEFAULT_PADDING)
     end
 
     content do |component|
@@ -44,7 +44,7 @@ class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
 
   story(:body) do
     controls do
-      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
+      select(:padding, Primer::Beta::BorderBox::PADDING_MAPPINGS.keys, Primer::Beta::BorderBox::DEFAULT_PADDING)
     end
 
     content do |component|
@@ -54,7 +54,7 @@ class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
 
   story(:footer) do
     controls do
-      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
+      select(:padding, Primer::Beta::BorderBox::PADDING_MAPPINGS.keys, Primer::Beta::BorderBox::DEFAULT_PADDING)
     end
 
     content do |component|
@@ -64,7 +64,7 @@ class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
 
   story(:rows) do
     controls do
-      select(:padding, Primer::BorderBoxComponent::PADDING_MAPPINGS.keys, Primer::BorderBoxComponent::DEFAULT_PADDING)
+      select(:padding, Primer::Beta::BorderBox::PADDING_MAPPINGS.keys, Primer::Beta::BorderBox::DEFAULT_PADDING)
     end
 
     content do |component|

@@ -6,7 +6,7 @@ class PrimerBetaBorderBoxTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_does_not_render_an_empty_box
-    render_inline(Primer::BorderBoxComponent.new)
+    render_inline(Primer::Beta::BorderBox.new)
 
     refute_selector("div.Box")
     refute_selector(".Box-header")
@@ -16,7 +16,7 @@ class PrimerBetaBorderBoxTest < Minitest::Test
   end
 
   def test_renders_header
-    render_inline(Primer::BorderBoxComponent.new) do |component|
+    render_inline(Primer::Beta::BorderBox.new) do |component|
       component.header { "Header" }
     end
 
@@ -24,7 +24,7 @@ class PrimerBetaBorderBoxTest < Minitest::Test
   end
 
   def test_renders_body
-    render_inline(Primer::BorderBoxComponent.new) do |component|
+    render_inline(Primer::Beta::BorderBox.new) do |component|
       component.body { "Body" }
     end
 
@@ -32,7 +32,7 @@ class PrimerBetaBorderBoxTest < Minitest::Test
   end
 
   def test_renders_footer
-    render_inline(Primer::BorderBoxComponent.new) do |component|
+    render_inline(Primer::Beta::BorderBox.new) do |component|
       component.footer { "Footer" }
     end
 
@@ -40,7 +40,7 @@ class PrimerBetaBorderBoxTest < Minitest::Test
   end
 
   def test_renders_multiple_rows
-    render_inline(Primer::BorderBoxComponent.new) do |component|
+    render_inline(Primer::Beta::BorderBox.new) do |component|
       component.row { "First" }
       component.row { "Second" }
       component.row { "Third" }
@@ -51,7 +51,7 @@ class PrimerBetaBorderBoxTest < Minitest::Test
   end
 
   def test_renders_condensed
-    render_inline(Primer::BorderBoxComponent.new(padding: :condensed)) do |component|
+    render_inline(Primer::Beta::BorderBox.new(padding: :condensed)) do |component|
       component.body { "Body" }
     end
 
@@ -59,7 +59,7 @@ class PrimerBetaBorderBoxTest < Minitest::Test
   end
 
   def test_renders_spacious
-    render_inline(Primer::BorderBoxComponent.new(padding: :spacious)) do |component|
+    render_inline(Primer::Beta::BorderBox.new(padding: :spacious)) do |component|
       component.body { "Body" }
     end
 
@@ -67,13 +67,13 @@ class PrimerBetaBorderBoxTest < Minitest::Test
   end
 
   def test_status
-    assert_component_state(Primer::BorderBoxComponent, :beta)
+    assert_component_state(Primer::Beta::BorderBox, :beta)
   end
 
   def test_restricts_allowed_system_arguments
     with_raise_on_invalid_options(true) do
       error = assert_raises(ArgumentError) do
-        render_inline(Primer::BorderBoxComponent.new(p: 4)) do |component|
+        render_inline(Primer::Beta::BorderBox.new(p: 4)) do |component|
           component.body { "Body" }
         end
       end
@@ -84,7 +84,7 @@ class PrimerBetaBorderBoxTest < Minitest::Test
 
   def test_strips_denied_system_arguments
     with_raise_on_invalid_options(false) do
-      render_inline(Primer::BorderBoxComponent.new(p: 4)) do |component|
+      render_inline(Primer::Beta::BorderBox.new(p: 4)) do |component|
         component.body { "Body" }
       end
     end
@@ -94,7 +94,7 @@ class PrimerBetaBorderBoxTest < Minitest::Test
 
   def test_renders_row_with_schemes
     { neutral: "gray", info: "blue", warning: "yellow" }.each_pair do |scheme, color|
-      render_inline(Primer::BorderBoxComponent.new) do |component|
+      render_inline(Primer::Beta::BorderBox.new) do |component|
         component.row(scheme: scheme) { "Row, row, row your boat" }
       end
 
@@ -103,7 +103,7 @@ class PrimerBetaBorderBoxTest < Minitest::Test
   end
 
   def test_renders_row_with_default_scheme
-    render_inline(Primer::BorderBoxComponent.new) do |component|
+    render_inline(Primer::Beta::BorderBox.new) do |component|
       component.row { "Row, row, row your boat" }
     end
 
