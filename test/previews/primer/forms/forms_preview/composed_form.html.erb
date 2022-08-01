@@ -1,0 +1,4 @@
+<p>Each of these fields comes from its own form definition.</p>
+<%= form_with(url: "/foo", skip_default_ids: false) do |f| %>
+  <%= render(ComposedForm.new(f)) %>
+<% end %>

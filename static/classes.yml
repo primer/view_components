@@ -25,6 +25,8 @@
 - ".Counter--secondary"
 - ".FormControl"
 - ".FormControl--fullWidth"
+- ".FormControl-caption"
+- ".FormControl-inlineValidation"
 - ".FormControl-input"
 - ".FormControl-input-leadingVisual"
 - ".FormControl-input-leadingVisualWrap"
