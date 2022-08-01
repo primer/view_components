@@ -110,8 +110,8 @@ class PrimerComponentTest < Minitest::Test
   def test_all_components_support_inline_styles
     default_args = { style: "width: 100%;" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
-      render_component(component, default_args.merge(args), proc)
-      assert_selector("[style='width: 100%;']", visible: :all)
+      node = render_component(component, default_args.merge(args), proc)
+      assert_equal(true, node.children.attribute("style")&.value&.include?("width: 100%"))
     end
   end
 
