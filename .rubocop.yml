@@ -79,3 +79,8 @@ Primer/ComponentNameMigration:
 
 Primer/DeprecatedComponents:
   Enabled: false
+
+Primer/DeprecatedLabelVariants:
+  Enabled: true
+  Exclude:
+    - "test/**/*"
