@@ -24,6 +24,7 @@
   "Primer::Beta::Text": "",
   "Primer::Beta::Truncate": "",
   "Primer::Beta::Truncate::TruncateText": "",
+  "Primer::BlankslateComponent": "",
   "Primer::BorderBoxComponent": "",
   "Primer::BoxComponent": "",
   "Primer::ButtonComponent": "",
