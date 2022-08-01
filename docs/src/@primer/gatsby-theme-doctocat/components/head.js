@@ -18,15 +18,7 @@ function Head(props) {
     : siteMetadata.title
   const description = props.description || siteMetadata.description
 
-  let primerViewComponentsSrc
-
-  if (process.env.NODE_ENV === 'development') {
-    primerViewComponentsSrc =
-      'http://localhost:4000/assets/primer_view_components.js'
-  } else {
-    primerViewComponentsSrc =
-      'https://unpkg.com/@primer/view-components@latest/app/assets/javascripts/primer_view_components.js'
-  }
+  const primerViewComponentsSrc = "/primer_view_components.js"
 
   return (
     <Helmet>
