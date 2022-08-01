@@ -50,7 +50,7 @@
   - title: DropdownMenu
     url: "/components/dropdownmenu"
   - title: Flash
-    url: "/components/flash"
+    url: "/components/beta/flash"
   - title: Flex
     url: "/components/flex"
   - title: FlexItem

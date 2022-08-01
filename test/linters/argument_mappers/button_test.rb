@@ -54,7 +54,7 @@ class ArgumentMappersButtonTest < LinterTestCase
   end
 
   def test_returns_tag_argument
-    Primer::BaseButton::TAG_OPTIONS.each do |tag|
+    Primer::Beta::BaseButton::TAG_OPTIONS.each do |tag|
       # button is the default, so it does not require a `tag` argument
       next if tag == :button
 
@@ -66,7 +66,7 @@ class ArgumentMappersButtonTest < LinterTestCase
   end
 
   def test_returns_type_argument
-    Primer::BaseButton::TYPE_OPTIONS.each do |type|
+    Primer::Beta::BaseButton::TYPE_OPTIONS.each do |type|
       # button is the default, so it does not require a `type` argument
       next if type == :button
 

@@ -23,6 +23,7 @@
   "extensions": [
     "castwide.solargraph",
     "kaiwood.endwise",
+    "manuelpuyol.erb-linter",
     "misogi.ruby-rubocop",
     "rebornix.ruby",
     "wingrunr21.vscode-ruby",
