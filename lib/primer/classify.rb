@@ -42,7 +42,7 @@ module Primer
       # extract_css_attrs(classes: "d-flex", mt: 4, py: 2) => { classes: "d-flex mt-4 py-2", style: nil }
       # extract_css_attrs(classes: "d-flex", style: "float: left", mt: 4, py: 2) => { classes: "d-flex mt-4 py-2", style: "float: left" }
       #
-      def call(**args)
+      def call(args = {})
         style = nil
         classes = [].tap do |result|
           args.each do |key, val|

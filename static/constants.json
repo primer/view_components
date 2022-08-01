@@ -1,4 +1,9 @@
 {
+  "Primer::Alpha::AutoComplete": {
+    "Item": "Primer::Alpha::AutoComplete::Item"
+  },
+  "Primer::Alpha::AutoComplete::Item": {
+  },
   "Primer::Alpha::BorderBox::Header": {
     "TITLE_TAG_FALLBACK": "h2",
     "TITLE_TAG_OPTIONS": [
@@ -138,6 +143,24 @@
       "div"
     ]
   },
+  "Primer::Alpha::Tooltip": {
+    "DIRECTION_DEFAULT": "s",
+    "DIRECTION_OPTIONS": [
+      "s",
+      "n",
+      "e",
+      "w",
+      "ne",
+      "nw",
+      "se",
+      "sw"
+    ],
+    "TYPE_FALLBACK": "description",
+    "TYPE_OPTIONS": [
+      "label",
+      "description"
+    ]
+  },
   "Primer::Alpha::UnderlineNav": {
     "BODY_TAG_DEFAULT": "ul",
     "TAG_DEFAULT": "nav",
@@ -147,20 +170,6 @@
     ]
   },
   "Primer::Alpha::UnderlinePanels": {
-  },
-  "Primer::BaseButton": {
-    "DEFAULT_TAG": "button",
-    "DEFAULT_TYPE": "button",
-    "TAG_OPTIONS": [
-      "button",
-      "a",
-      "summary"
-    ],
-    "TYPE_OPTIONS": [
-      "button",
-      "reset",
-      "submit"
-    ]
   },
   "Primer::BaseComponent": {
     "SELF_CLOSING_TAGS": [
@@ -181,17 +190,24 @@
     ]
   },
   "Primer::Beta::AutoComplete": {
-    "Input": "Primer::Beta::AutoComplete::Input",
-    "Item": "Primer::Beta::AutoComplete::Item"
-  },
-  "Primer::Beta::AutoComplete::Input": {
-    "DEFAULT_TYPE": "text",
-    "TYPE_OPTIONS": [
-      "text",
-      "search"
+    "DEFAULT_SIZE": "medium",
+    "Item": "Primer::Beta::AutoComplete::Item",
+    "SIZE_MAPPINGS": {
+      "small": "FormControl-small",
+      "medium": "FormControl-medium",
+      "large": "FormControl-large"
+    },
+    "SIZE_OPTIONS": [
+      "small",
+      "medium",
+      "large"
     ]
   },
   "Primer::Beta::AutoComplete::Item": {
+    "ALLOWED_DESCRIPTION_VARIANTS": [
+      "inline",
+      "block"
+    ]
   },
   "Primer::Beta::Avatar": {
     "DEFAULT_SHAPE": "circle",
@@ -228,6 +244,20 @@
       "span"
     ]
   },
+  "Primer::Beta::BaseButton": {
+    "DEFAULT_TAG": "button",
+    "DEFAULT_TYPE": "button",
+    "TAG_OPTIONS": [
+      "button",
+      "a",
+      "summary"
+    ],
+    "TYPE_OPTIONS": [
+      "button",
+      "reset",
+      "submit"
+    ]
+  },
   "Primer::Beta::Blankslate": {
     "VISUAL_OPTIONS": [
       "icon",
@@ -248,6 +278,15 @@
     "PADDING_MESSAGE": "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead."
   },
   "Primer::Beta::Breadcrumbs::Item": {
+  },
+  "Primer::Beta::Flash": {
+    "DEFAULT_SCHEME": "default",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "warning": "flash-warn",
+      "danger": "flash-error",
+      "success": "flash-success"
+    }
   },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
@@ -279,7 +318,7 @@
   },
   "Primer::ButtonComponent": {
     "DEFAULT_SCHEME": "default",
-    "DEFAULT_VARIANT": "medium",
+    "DEFAULT_SIZE": "medium",
     "LINK_SCHEME": "link",
     "SCHEME_MAPPINGS": {
       "default": "",
@@ -297,11 +336,11 @@
       "invisible",
       "link"
     ],
-    "VARIANT_MAPPINGS": {
+    "SIZE_MAPPINGS": {
       "small": "btn-sm",
       "medium": ""
     },
-    "VARIANT_OPTIONS": [
+    "SIZE_OPTIONS": [
       "small",
       "medium"
     ]
@@ -316,6 +355,10 @@
       "button",
       "submit"
     ]
+  },
+  "Primer::ConditionalWrapper": {
+  },
+  "Primer::Content": {
   },
   "Primer::CounterComponent": {
     "DEFAULT_SCHEME": "default",
@@ -402,15 +445,6 @@
     "SCHEME_MAPPINGS": {
       "default": "",
       "dark": "dropdown-menu-dark"
-    }
-  },
-  "Primer::FlashComponent": {
-    "DEFAULT_SCHEME": "default",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "warning": "flash-warn",
-      "danger": "flash-error",
-      "success": "flash-success"
     }
   },
   "Primer::FlexComponent": {
@@ -504,29 +538,41 @@
   "Primer::ImageCrop": {
   },
   "Primer::LabelComponent": {
+    "DEFAULT_SCHEME": "default",
     "DEFAULT_TAG": "span",
     "DEPRECATED_SCHEME_OPTIONS": [
+      "info",
+      "warning",
       "orange",
       "purple"
     ],
     "SCHEME_MAPPINGS": {
+      "default": "",
       "primary": "Label--primary",
       "secondary": "Label--secondary",
-      "info": "Label--info",
+      "accent": "Label--accent",
       "success": "Label--success",
-      "warning": "Label--warning",
+      "attention": "Label--attention",
       "danger": "Label--danger",
+      "severe": "Label--severe",
+      "done": "Label--done",
+      "sponsors": "Label--sponsors",
+      "info": "Label--info",
+      "warning": "Label--warning",
       "orange": "Label--orange",
       "purple": "Label--purple"
     },
     "SCHEME_OPTIONS": [
+      "default",
       "primary",
       "secondary",
-      "info",
+      "accent",
       "success",
-      "warning",
+      "attention",
       "danger",
-      null
+      "severe",
+      "done",
+      "sponsors"
     ],
     "SIZE_MAPPINGS": {
       "medium": "",
@@ -626,14 +672,17 @@
   "Primer::OcticonComponent": {
     "SIZE_DEFAULT": "small",
     "SIZE_MAPPINGS": {
+      "xsmall": 12,
       "small": 16,
       "medium": 24
     },
     "SIZE_MEDIUM": "medium",
     "SIZE_OPTIONS": [
+      "xsmall",
       "small",
       "medium"
-    ]
+    ],
+    "SIZE_XSMALL": "xsmall"
   },
   "Primer::OcticonSymbolsComponent": {
   },

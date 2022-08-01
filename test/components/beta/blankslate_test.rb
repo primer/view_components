@@ -11,7 +11,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
     end
 
     assert_selector("div.blankslate")
-    assert_selector("h3.h2", text: "Title")
+    assert_selector("h3.blankslate-heading", text: "Title")
     refute_selector(".blankslate-narrow")
     refute_selector(".blankslate-spacious")
   end
@@ -23,10 +23,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
     end
 
     assert_selector(".blankslate") do
-      assert_selector("span[role='status']") do
-        assert_selector(".sr-only", text: "Loading")
-        assert_selector("[data-test-selector='blankslate-spinner']")
-      end
+      assert_selector("svg[data-test-selector='blankslate-spinner']")
     end
   end
 
@@ -76,7 +73,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
     assert_selector("div", text: "Description")
   end
 
-  def test_renders_a_blankslate_component_with_a_priamry_action
+  def test_renders_a_blankslate_component_with_a_primary_action
     render_inline(Primer::Beta::Blankslate.new) do |c|
       c.heading(tag: :h2).with_content("Title")
       c.primary_action(href: "https://github.com").with_content("Button")
@@ -85,7 +82,7 @@ class PrimerBetaBlankslateTest < Minitest::Test
     assert_selector("a.btn[href='https://github.com']", text: "Button")
   end
 
-  def test_renders_a_blankslate_component_with_a_priamry_action_with_custom_classes
+  def test_renders_a_blankslate_component_with_a_primary_action_with_custom_classes
     render_inline(Primer::Beta::Blankslate.new) do |c|
       c.heading(tag: :h2).with_content("Title")
       c.primary_action(href: "https://github.com", scheme: :outline).with_content("Button")

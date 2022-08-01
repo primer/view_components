@@ -36,7 +36,7 @@ class LabelComponentMigrationCounterTest < LinterTestCase
         </span>
         <span class="Label Label--danger">
           Label 2
-          <span class="Label Label--info">
+          <span class="Label Label--accent">
             Label 3
             <a>not a Label</a>
             <summary class="Label Label--large">
@@ -60,7 +60,7 @@ class LabelComponentMigrationCounterTest < LinterTestCase
         </span>
         <%= render Primer::LabelComponent.new(scheme: :danger) do %>
           Label 2
-          <%= render Primer::LabelComponent.new(scheme: :info) do %>
+          <%= render Primer::LabelComponent.new(scheme: :accent) do %>
             Label 3
             <a>not a Label</a>
             <%= render Primer::LabelComponent.new(tag: :summary, size: :large) do %>

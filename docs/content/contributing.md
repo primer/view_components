@@ -6,9 +6,9 @@ Hi there! We're thrilled that you'd like to contribute to this project. Your hel
 
 If you have any substantial changes that you would like to make, please [open an issue](http://github.com/primer/view_components/issues/new) first to discuss them with us.
 
-Contributions to this project are [released](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license) to the public under the [project's open source license](LICENSE.txt).
+Contributions to this project are [released](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license) to the public under the [project's open source license](https://github.com/primer/view_components/blob/main/LICENSE.txt).
 
-Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/primer/view_components/blob/main/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ## Adding a new component
 
@@ -61,15 +61,34 @@ By default, the system tests run in a headless Chrome browser. Prefix the test c
 
 ## Writing documentation
 
-Documentation is written as [YARD](https://yardoc.org/) comments directly in the source code, compiled into Markdown via `rake docs:build` and served by [Doctocat](https://github.com/primer/doctocat).
+Documentation is written as [YARD](https://yardoc.org/) comments directly in the source code, compiled into Markdown via `build exec rake docs:build` and served by [Doctocat](https://github.com/primer/doctocat).
 
-### Storybook / Documentation
+### Storybook / Documentation / Demo Rails App
 
-To run Storybook and the documentation site, run:
+* **Storybook**: Components can be interacted with, seen in different contexts, and controls can be manipulated
+  * Typically runs on port 5000
+  * To rebuild stories, navigate to the `demo` directory (`cd demo`) and then run `bin/rails view_component_storybook:write_stories_json`
+* **Docs**: Generated YARD docs with examples, see components with usage instructions and examples
+  * Typically runs on port 5400
+  * To rebuild docs, run `bundle exec rake docs:build`
+* **Demo App**: See components on a plain page with no interfering framework or styling. Used to test functionality.
+  * Typically runs on port 4000 - visit `/rails/view_components/` in your browser
+  * To rerender the templates, you do not have to restart the server. Run `bundle exec rake docs:preview` and refresh the page.
+
+---
+To run Storybook, the documentation site, and the demo app, run:
 
 ```bash
 script/dev
 ```
+
+If you are running into issues or not seeing your updates, a few things you can try:
+
+* Delete the `overmind.sock` file and run `script/dev` again
+* Ensure you have run `script/setup`
+* Delete the `node_modules` directory and re-run `script/setup`
+* Run `bundle exec rake docs:build`
+* Run `bundle exec rake docs:preview`
 
 _Note: Overmind is required to run script/dev._
 
@@ -111,22 +130,13 @@ Here are a few things you can do that will increase the likelihood of your pull 
 * Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
 * Write a descriptive pull request message.
 
-## Deploying to Heroku
+## Deploying the Rails Storybook
 
-We have both `staging` and `production` environments. To deploy Storybook to Heroku, run the following in `#primer-view-components-ops`:
-
-```bash
-.deploy primer-view-components</branch> to <environment>
-```
-
-If no `branch` is passed, `main` will be deployed.
+The Rails storybook is currently deployed via GitHub Actions using [this workflow](https://github.com/primer/view_components/actions/workflows/deploy-production.yml). Deployments happen automatically on every merge to the `main` branch. The storybook runs in a Kubernetes cluster hosted within our team's Azure subscription. Please contact a member of the team for access.
 
 ## Publishing a Release
 
 To publish a release, you must have an account on [rubygems](https://rubygems.org/) and [npmjs](https://www.npmjs.com/). Additionally, you must have been added as a maintainer
 to the project. Please verify that you have 2FA enabled on both accounts.
 
-1. Make sure you are on the main branch and have pulled in the latest changes.
-1. Run `script/release` and follow the instructions.
-1. Once your release PR has been approved and merged, run `script/publish`. You may be prompted to log into your rubygem and npm account.
-1. Lastly, draft a new release from the [releases page](https://github.com/primer/view_components/releases). The tag version should be updated to the newest version. The description should be updated to the relevant CHANGELOG descriptions. Press the `Publish release` button and you're good to go!
+1. Once the changesets release PR has been approved and merged, run `script/publish`. This will build and publish the packages. You may be prompted to log into your rubygem and npm account.

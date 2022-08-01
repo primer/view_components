@@ -18,7 +18,7 @@ class ArgumentMappersFlashTest < LinterTestCase
   end
 
   def test_returns_scheme_argument
-    Primer::FlashComponent::SCHEME_MAPPINGS.each do |value, class_name|
+    Primer::Beta::Flash::SCHEME_MAPPINGS.each do |value, class_name|
       next if class_name.blank?
 
       @file = "<div class=\"#{class_name}\">flash</div>"
@@ -29,12 +29,12 @@ class ArgumentMappersFlashTest < LinterTestCase
   end
 
   def test_raises_if_cannot_map_class
-    @file = '<div class="text-center">flash</div>'
+    @file = '<div class="text-fuzzy-waffle">flash</div>'
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
       ERBLint::Linters::ArgumentMappers::Flash.new(tags.first).to_args
     end
 
-    assert_equal "Cannot convert class text-center", err.message
+    assert_equal "Cannot convert class text-fuzzy-waffle", err.message
   end
 
   def test_complex_case

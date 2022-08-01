@@ -27,14 +27,14 @@ gem "primer_view_components"
 In `config/application.rb`, add **after the application definition**:
 
 ```ruby
-require "view_component/engine"
+require "view_component"
 require "primer/view_components/engine"
 ```
 
 Optionally, to add the JavaScript behaviours, in your `application.html.erb` in the `<head>` tag add:
 
 ```erb
-<%= javascript_include_tag("primer") %>
+<%= javascript_include_tag("primer_view_components") %>
 ```
 
 Or alternatively, you can install the `@primer/view-components` npm package and in your JavaScript code add:

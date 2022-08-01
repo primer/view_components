@@ -1,7 +1,8 @@
 ---
-- title: Getting started
-  url: "/"
+- title: Introduction
   children:
+  - title: Getting started
+    url: "/"
   - title: Contributing
     url: "/contributing"
   - title: System arguments
@@ -13,7 +14,6 @@
   - title: Component status
     url: "/status"
 - title: Components
-  url: "/components"
   children:
   - title: AutoComplete
     url: "/components/beta/autocomplete"
@@ -50,7 +50,7 @@
   - title: DropdownMenu
     url: "/components/dropdownmenu"
   - title: Flash
-    url: "/components/flash"
+    url: "/components/beta/flash"
   - title: Flex
     url: "/components/flex"
   - title: FlexItem
@@ -59,12 +59,12 @@
     url: "/components/heading"
   - title: HiddenTextExpander
     url: "/components/hiddentextexpander"
+  - title: IconButton
+    url: "/components/iconbutton"
   - title: Image
     url: "/components/image"
   - title: ImageCrop
     url: "/components/imagecrop"
-  - title: IconButton
-    url: "/components/iconbutton"
   - title: Label
     url: "/components/label"
   - title: Layout
@@ -73,10 +73,10 @@
     url: "/components/link"
   - title: LocalTime
     url: "/components/localtime"
-  - title: Menu
-    url: "/components/menu"
   - title: Markdown
     url: "/components/markdown"
+  - title: Menu
+    url: "/components/menu"
   - title: Octicon
     url: "/components/octicon"
   - title: OcticonSymbols
@@ -103,18 +103,15 @@
     url: "/components/timeago"
   - title: TimelineItem
     url: "/components/timelineitem"
-  - title: Tooltip
-    url: "/components/tooltip"
   - title: Truncate
     url: "/components/beta/truncate"
   - title: UnderlineNav
     url: "/components/alpha/underlinenav"
   - title: UnderlinePanels
     url: "/components/alpha/underlinepanels"
-- title: Architecture Decisions
-  url: "/adr"
+- title: Architecture decisions
   children:
-  - title: Record Architecture Decisions
-    url: "/adr/0246-record-architecture-decisions"
-  - title: Developing And Publishing Clientside Behaviours
+  - title: Developing and publishing client-side behaviours
     url: "/adr/0250-developing-and-publishing-clientside-behaviours"
+  - title: 251. Use Catalyst for client-side behaviours
+    url: "/adr/0251-use-catalyst-for-client-side-behaviours"

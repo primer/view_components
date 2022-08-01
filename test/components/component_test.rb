@@ -16,17 +16,19 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::TabPanels, { label: "label" }],
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
-    [Primer::Image, { src: "src", alt: "alt" }],
+    [Primer::Image, { src: "https://github.com/github.png", alt: "alt" }],
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
-    [Primer::Beta::AutoComplete, { src: "Foo", list_id: "Bar", "aria-label": "Label", input_id: "input-id" }, proc { |c| c.input(classes: "Baz") }],
+    [Primer::Alpha::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
+    [Primer::Alpha::AutoComplete::Item, { value: "Foo" }],
+    [Primer::Beta::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
     [Primer::Beta::AutoComplete::Item, { value: "Foo" }],
     [Primer::Beta::Avatar, { alt: "github", src: "https://github.com/github.png" }],
     [Primer::Beta::AvatarStack, {}, lambda do |component|
       component.avatar(alt: "github", src: "https://github.com/github.png")
     end],
-    [Primer::BaseButton, {}],
+    [Primer::Beta::BaseButton, {}],
     [Primer::BaseComponent, { tag: :div }],
     [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::Beta::Blankslate, {}, proc { |component|
@@ -39,6 +41,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
     [Primer::Alpha::ButtonMarketing, {}],
     [Primer::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
+    [Primer::ConditionalWrapper, { condition: true, tag: :div }],
     [Primer::CloseButton, {}],
     [Primer::CounterComponent, { count: 1 }],
     [Primer::DetailsComponent, {}, lambda do |component|
@@ -54,7 +57,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Dropdown::Menu, {}],
     [Primer::DropdownMenuComponent, {}],
     [Primer::FlexComponent, {}],
-    [Primer::FlashComponent, {}],
+    [Primer::Beta::Flash, {}],
     [Primer::FlexItemComponent, { flex_auto: true }],
     [Primer::HeadingComponent, { tag: :h1 }],
     [Primer::HiddenTextExpander, { "aria-label": "No action" }],
@@ -77,11 +80,12 @@ class PrimerComponentTest < Minitest::Test
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],
-    [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }]
+    [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }],
+    [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }]
   ].freeze
 
   def test_registered_components
-    ignored_components = ["Primer::Component", "Primer::OcticonsSymbolComponent"]
+    ignored_components = ["Primer::Component", "Primer::OcticonsSymbolComponent", "Primer::Content"]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count
     assert_equal primer_component_files_count, COMPONENTS_WITH_ARGS.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"
@@ -91,7 +95,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { my: 4 }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector(".my-4")
+      assert_selector(".my-4", visible: :all)
     end
   end
 
@@ -99,7 +103,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { classes: "foo" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector(".foo")
+      assert_selector(".foo", visible: :all)
     end
   end
 
@@ -107,7 +111,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { style: "width: 100%;" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector("[style='width: 100%;']")
+      assert_selector("[style='width: 100%;']", visible: :all)
     end
   end
 

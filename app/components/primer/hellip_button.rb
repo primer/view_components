@@ -33,7 +33,7 @@ module Primer
     end
 
     def call
-      render(Primer::BaseButton.new(**@system_arguments)) { "&hellip;".html_safe }
+      render(Primer::Beta::BaseButton.new(**@system_arguments)) { "&hellip;".html_safe }
     end
   end
 end

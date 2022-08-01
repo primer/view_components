@@ -46,7 +46,7 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
     assert_equal expected, corrected_content
   end
 
-  def test_autocorrects_usin_primer_octicon_class_aria_label
+  def test_autocorrects_using_primer_octicon_class_aria_label
     @file = <<~HTML
       <button class="close-button">
         <%= render Primer::OcticonComponent(icon: :x, aria: { label: "Close menu" }) %>

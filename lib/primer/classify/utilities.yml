@@ -39,6 +39,10 @@
   - color-fg-severe
   :danger:
   - color-fg-danger
+  :open:
+  - color-fg-open
+  :closed:
+  - color-fg-closed
   :done:
   - color-fg-done
   :sponsors:
@@ -78,6 +82,14 @@
   - color-bg-danger
   :danger_emphasis:
   - color-bg-danger-emphasis
+  :open:
+  - color-bg-open
+  :open_emphasis:
+  - color-bg-open-emphasis
+  :closed:
+  - color-bg-closed
+  :closed_emphasis:
+  - color-bg-closed-emphasis
   :done:
   - color-bg-done
   :done_emphasis:
@@ -86,6 +98,8 @@
   - color-bg-sponsors
   :sponsors_emphasis:
   - color-bg-sponsors-emphasis
+  :transparent:
+  - color-bg-transparent
 :border_color:
   :default:
   - color-border-default
@@ -113,6 +127,14 @@
   - color-border-danger
   :danger_emphasis:
   - color-border-danger-emphasis
+  :open:
+  - color-border-open
+  :open_emphasis:
+  - color-border-open-emphasis
+  :closed:
+  - color-border-closed
+  :closed_emphasis:
+  - color-border-closed-emphasis
   :done:
   - color-border-done
   :done_emphasis:
@@ -1395,6 +1417,12 @@
   - hide-lg
   :xl:
   - hide-xl
+  :whenNarrow:
+  - hide-whenNarrow
+  :whenRegular:
+  - hide-whenRegular
+  :whenWide:
+  - hide-whenWide
 :container:
   :sm:
   - container-sm
@@ -1533,10 +1561,22 @@
 :text_align:
   :right:
   - text-right
+  - text-sm-right
+  - text-md-right
+  - text-lg-right
+  - text-xl-right
   :left:
   - text-left
+  - text-sm-left
+  - text-md-left
+  - text-lg-left
+  - text-xl-left
   :center:
   - text-center
+  - text-sm-center
+  - text-md-center
+  - text-lg-center
+  - text-xl-center
 :font_weight:
   :light:
   - text-light
@@ -1578,6 +1618,12 @@
   - border-x
   true:
   - border
+  0:
+  - border-0
+  false:
+  - border-0
+  :dashed:
+  - border-dashed
 :border_top:
   0:
   - border-top-0
@@ -1602,32 +1648,84 @@
 :justify_content:
   :flex_start:
   - flex-justify-start
+  - flex-sm-justify-start
+  - flex-md-justify-start
+  - flex-lg-justify-start
+  - flex-xl-justify-start
   :flex_end:
   - flex-justify-end
+  - flex-sm-justify-end
+  - flex-md-justify-end
+  - flex-lg-justify-end
+  - flex-xl-justify-end
   :center:
   - flex-justify-center
+  - flex-sm-justify-center
+  - flex-md-justify-center
+  - flex-lg-justify-center
+  - flex-xl-justify-center
   :space_between:
   - flex-justify-between
+  - flex-sm-justify-between
+  - flex-md-justify-between
+  - flex-lg-justify-between
+  - flex-xl-justify-between
   :space_around:
   - flex-justify-around
+  - flex-sm-justify-around
+  - flex-md-justify-around
+  - flex-lg-justify-around
+  - flex-xl-justify-around
 :align_items:
   :flex_start:
   - flex-items-start
+  - flex-sm-items-start
+  - flex-md-items-start
+  - flex-lg-items-start
+  - flex-xl-items-start
   :flex_end:
   - flex-items-end
+  - flex-sm-items-end
+  - flex-md-items-end
+  - flex-lg-items-end
+  - flex-xl-items-end
   :center:
   - flex-items-center
+  - flex-sm-items-center
+  - flex-md-items-center
+  - flex-lg-items-center
+  - flex-xl-items-center
   :baseline:
   - flex-items-baseline
+  - flex-sm-items-baseline
+  - flex-md-items-baseline
+  - flex-lg-items-baseline
+  - flex-xl-items-baseline
   :stretch:
   - flex-items-stretch
+  - flex-sm-items-stretch
+  - flex-md-items-stretch
+  - flex-lg-items-stretch
+  - flex-xl-items-stretch
 :flex_wrap:
   :wrap:
   - flex-wrap
+  - flex-sm-wrap
+  - flex-md-wrap
+  - flex-lg-wrap
+  - flex-xl-wrap
   :nowrap:
   - flex-nowrap
+  - flex-sm-nowrap
+  - flex-md-nowrap
+  - flex-lg-nowrap
+  - flex-xl-nowrap
   :reverse:
   - flex-wrap-reverse
+  - flex-sm-wrap-reverse
+  - flex-md-wrap-reverse
+  - flex-lg-wrap-reverse
+  - flex-xl-wrap-reverse
 :direction:
   :column:
   - flex-column
@@ -1656,24 +1754,64 @@
 :flex:
   1:
   - flex-1
+  - flex-sm-1
+  - flex-md-1
+  - flex-lg-1
+  - flex-xl-1
   :auto:
   - flex-auto
+  - flex-sm-auto
+  - flex-md-auto
+  - flex-lg-auto
+  - flex-xl-auto
 :align_self:
   :auto:
   - flex-self-auto
+  - flex-sm-self-auto
+  - flex-md-self-auto
+  - flex-lg-self-auto
+  - flex-xl-self-auto
   :start:
   - flex-self-start
+  - flex-sm-self-start
+  - flex-md-self-start
+  - flex-lg-self-start
+  - flex-xl-self-start
   :end:
   - flex-self-end
+  - flex-sm-self-end
+  - flex-md-self-end
+  - flex-lg-self-end
+  - flex-xl-self-end
   :center:
   - flex-self-center
+  - flex-sm-self-center
+  - flex-md-self-center
+  - flex-lg-self-center
+  - flex-xl-self-center
   :baseline:
   - flex-self-baseline
+  - flex-sm-self-baseline
+  - flex-md-self-baseline
+  - flex-lg-self-baseline
+  - flex-xl-self-baseline
   :stretch:
   - flex-self-stretch
+  - flex-sm-self-stretch
+  - flex-md-self-stretch
+  - flex-lg-self-stretch
+  - flex-xl-self-stretch
 :flex_grow:
   0:
   - flex-grow-0
+  - flex-sm-grow-0
+  - flex-md-grow-0
+  - flex-lg-grow-0
+  - flex-xl-grow-0
 :flex_shrink:
   0:
   - flex-shrink-0
+  - flex-sm-shrink-0
+  - flex-md-shrink-0
+  - flex-lg-shrink-0
+  - flex-xl-shrink-0

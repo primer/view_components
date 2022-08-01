@@ -17,12 +17,12 @@ module Primer
     }.freeze
     SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
-    DEFAULT_VARIANT = :medium
-    VARIANT_MAPPINGS = {
+    DEFAULT_SIZE = :medium
+    SIZE_MAPPINGS = {
       :small => "btn-sm",
-      DEFAULT_VARIANT => ""
+      DEFAULT_SIZE => ""
     }.freeze
-    VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
+    SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
     # Leading visuals appear to the left of the button text.
     #
@@ -56,6 +56,21 @@ module Primer
     }
     alias counter trailing_visual_counter # remove alias when all buttons are migrated to new slot names
 
+    # `Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.
+    # **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.
+    # Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
+    #
+    # @param type [Symbol] (:description) <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
+    # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Alpha::Tooltip) %>.
+    renders_one :tooltip, lambda { |**system_arguments|
+      raise ArgumentError, "Buttons with a tooltip must have a unique `id` set on the `Button`." if @id.blank? && !Rails.env.production?
+
+      system_arguments[:for_id] = @id
+      system_arguments[:type] ||= :description
+
+      Primer::Alpha::Tooltip.new(**system_arguments)
+    }
+
     # @example Schemes
     #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
@@ -64,9 +79,9 @@ module Primer
     #   <%= render(Primer::ButtonComponent.new(scheme: :invisible)) { "Invisible" } %>
     #   <%= render(Primer::ButtonComponent.new(scheme: :link)) { "Link" } %>
     #
-    # @example Variants
-    #   <%= render(Primer::ButtonComponent.new(variant: :small)) { "Small" } %>
-    #   <%= render(Primer::ButtonComponent.new(variant: :medium)) { "Medium" } %>
+    # @example Sizes
+    #   <%= render(Primer::ButtonComponent.new(size: :small)) { "Small" } %>
+    #   <%= render(Primer::ButtonComponent.new(size: :medium)) { "Medium" } %>
     #
     # @example Block
     #   <%= render(Primer::ButtonComponent.new(block: :true)) { "Block" } %>
@@ -96,17 +111,28 @@ module Primer
     #     Button
     #   <% end %>
     #
+    # @example With tooltip
+    #   @description
+    #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
+    #   @code
+    #     <%= render(Primer::ButtonComponent.new(id: "button-with-tooltip")) do |c| %>
+    #       <% c.tooltip(text: "Tooltip text") %>
+    #       Button
+    #     <% end %>
+    #
     # @param scheme [Symbol] <%= one_of(Primer::ButtonComponent::SCHEME_OPTIONS) %>
-    # @param variant [Symbol] <%= one_of(Primer::ButtonComponent::VARIANT_OPTIONS) %>
-    # @param tag [Symbol] (Primer::BaseButton::DEFAULT_TAG) <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
-    # @param type [Symbol] (Primer::BaseButton::DEFAULT_TYPE) <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
+    # @param variant [Symbol] DEPRECATED. <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
+    # @param size [Symbol] <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
+    # @param tag [Symbol] (Primer::Beta::BaseButton::DEFAULT_TAG) <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
+    # @param type [Symbol] (Primer::Beta::BaseButton::DEFAULT_TYPE) <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
     # @param group_item [Boolean] Whether button is part of a ButtonGroup.
     # @param block [Boolean] Whether button is full-width with `display: block`.
     # @param dropdown [Boolean] Whether or not to render a dropdown caret.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(
       scheme: DEFAULT_SCHEME,
-      variant: DEFAULT_VARIANT,
+      variant: nil,
+      size: DEFAULT_SIZE,
       group_item: false,
       block: false,
       dropdown: false,
@@ -116,10 +142,13 @@ module Primer
       @dropdown = dropdown
 
       @system_arguments = system_arguments
+
+      @id = @system_arguments[:id]
+
       @system_arguments[:classes] = class_names(
         system_arguments[:classes],
         SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
-        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)],
+        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, variant || size, DEFAULT_SIZE)],
         "btn" => !link?,
         "btn-block" => block,
         "BtnGroup-item" => group_item

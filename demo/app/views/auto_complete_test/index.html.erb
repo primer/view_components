@@ -1,3 +1,7 @@
 <% @fruit_list.each do |fruit| %>
-  <%= render(Primer::Beta::AutoComplete::Item.new(value: fruit)) { fruit } %>
+  <% if params['version'] == "alpha" %>
+    <%= render(Primer::Alpha::AutoComplete::Item.new(value: fruit)) { fruit } %>
+  <% else %>
+    <%= render(Primer::Beta::AutoComplete::Item.new(value: fruit)) { fruit } %>
+  <% end %>
 <% end %>

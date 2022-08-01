@@ -23,6 +23,7 @@
   "extensions": [
     "castwide.solargraph",
     "kaiwood.endwise",
+    "manuelpuyol.erb-linter",
     "misogi.ruby-rubocop",
     "rebornix.ruby",
     "wingrunr21.vscode-ruby",
@@ -40,5 +41,17 @@
     "5400": {
       "label": "doctocat"
     }
+  },
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "primer/css": {
+          "permissions": "write-all"
+        }
+      }
+    }
+  },
+  "hostRequirements": {
+    "memory": "8gb"
   }
 }

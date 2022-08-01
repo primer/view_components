@@ -196,7 +196,6 @@ module Primer
           REPLACEMENT_KEYS.each do |k, v|
             return v.to_sym if selector.match?(Regexp.new(k))
           end
-
           selector.split("-").first.to_sym
         end
       end

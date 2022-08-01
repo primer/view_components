@@ -19,14 +19,22 @@ class PrimerLabelComponentTest < Minitest::Test
   end
 
   def test_supports_functional_schemes
-    render_inline(Primer::LabelComponent.new(scheme: :danger)) { "private" }
+    Primer::LabelComponent::SCHEME_OPTIONS.each do |scheme|
+      render_inline(Primer::LabelComponent.new(scheme: scheme)) { "scheme" }
 
-    assert_selector(".Label--danger")
+      if scheme == Primer::LabelComponent::DEFAULT_SCHEME
+        assert_selector(".Label")
+      else
+        assert_selector(".#{Primer::LabelComponent::SCHEME_MAPPINGS[scheme]}")
+      end
+    end
   end
 
   def test_deprecated_schemes
     Primer::LabelComponent::DEPRECATED_SCHEME_OPTIONS.each do |scheme|
       render_inline(Primer::LabelComponent.new(scheme: scheme)) { "scheme" }
+
+      assert_selector(".#{Primer::LabelComponent::SCHEME_MAPPINGS[scheme]}")
     end
   end
 

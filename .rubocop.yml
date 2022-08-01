@@ -10,9 +10,9 @@ AllCops:
   Exclude:
     - "test/tmp/**/*"
     - "demo/**/*"
-    - "vendor/**/*"
+    - "**/vendor/**/*"
     - "**/node_modules/**/*"
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.6
 
 Style/ClassAndModuleChildren:
   Enabled: true
@@ -70,4 +70,12 @@ Primer/DeprecatedArguments:
   Enabled: false
 
 Primer/DeprecatedLayoutComponent:
+  Enabled: false
+
+Primer/ComponentNameMigration:
+  Enabled: true
+  Exclude:
+    - "test/**/*"
+
+Primer/DeprecatedComponents:
   Enabled: false

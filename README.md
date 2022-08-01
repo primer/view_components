@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="300px" src="/static/assets/view-components.svg">
+  <img width="300px" alt="Primer ViewComponents Logo" src="/static/assets/view-components.svg">
 </p>
 
 <h1 align="center">Primer ViewComponents</h1>

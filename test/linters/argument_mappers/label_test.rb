@@ -52,12 +52,12 @@ class ArgumentMappersLabelTest < LinterTestCase
   end
 
   def test_raises_if_cannot_map_class
-    @file = '<span class="text-center">Label</span>'
+    @file = '<span class="text-fuzzy-waffle">Label</span>'
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do
       ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
     end
 
-    assert_equal "Cannot convert class text-center", err.message
+    assert_equal "Cannot convert class text-fuzzy-waffle", err.message
   end
 
   def test_complex_case

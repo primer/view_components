@@ -6,12 +6,12 @@ module Primer
   class Dropdown < Primer::Component
     # Required trigger for the dropdown. Has the same arguments as <%= link_to_component(Primer::ButtonComponent) %>,
     # but it is locked as a `summary` tag.
-    renders_one :button, lambda { |**system_arguments, &block|
+    renders_one :button, lambda { |**system_arguments|
       @button_arguments = system_arguments
       @button_arguments[:button] = true
       @button_arguments[:dropdown] = @with_caret
 
-      view_context.capture { block&.call }
+      Primer::Content.new
     }
 
     # Required context menu for the dropdown.
@@ -88,7 +88,7 @@ module Primer
     #
     # @example Customizing the button
     #   <%= render(Primer::Dropdown.new) do |c| %>
-    #     <% c.button(scheme: :primary, variant: :small) do %>
+    #     <% c.button(scheme: :primary, size: :small) do %>
     #       Dropdown
     #     <% end %>
     #

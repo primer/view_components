@@ -8,10 +8,12 @@ module Primer
   class OcticonComponent < Primer::Component
     status :beta
 
+    SIZE_XSMALL = :xsmall
     SIZE_DEFAULT = :small
     SIZE_MEDIUM = :medium
 
     SIZE_MAPPINGS = {
+      SIZE_XSMALL => 12,
       SIZE_DEFAULT => 16,
       SIZE_MEDIUM => 24
     }.freeze
@@ -65,8 +67,10 @@ module Primer
         # Filter out classify options to prevent them from becoming invalid html attributes.
         # Note height and width are both classify options and valid html attributes.
         octicon_options = {
-          height: SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)]
-        }.merge(@system_arguments.slice(:height, :width))
+          height: @system_arguments[:height] || SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)],
+          width: @system_arguments[:width]
+        }
+        octicon_options.compact!
 
         @icon = Octicons::Octicon.new(icon_key, octicon_options)
         Primer::Octicon::Cache.set(cache_key, @icon)

@@ -6,7 +6,7 @@ module Primer
   # @accessibility
   #   `IconButton` requires an `aria-label`, which will provide assistive technologies with an accessible label.
   #   The `aria-label` should describe the action to be invoked rather than the icon itself. For instance,
-  #   if your `IconButton` renders a magnifying glass icon and invokves a search action, the `aria-label` should be
+  #   if your `IconButton` renders a magnifying glass icon and invokes a search action, the `aria-label` should be
   #   `"Search"` instead of `"Magnifying glass"`.
   #   [Learn more about best functional image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/functional)
   class IconButton < Primer::Component
@@ -38,8 +38,8 @@ module Primer
     #
     # @param scheme [Symbol] <%= one_of(Primer::IconButton::SCHEME_OPTIONS) %>
     # @param icon [String] Name of <%= link_to_octicons %> to use.
-    # @param tag [Symbol] <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
-    # @param type [Symbol] <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
+    # @param tag [Symbol] <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
+    # @param type [Symbol] <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
     # @param box [Boolean] Whether the button is in a <%= link_to_component(Primer::BorderBoxComponent) %>. If `true`, the button will have the `Box-btn-octicon` class.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(icon:, scheme: DEFAULT_SCHEME, box: false, **system_arguments)
@@ -57,7 +57,7 @@ module Primer
     end
 
     def call
-      render(Primer::BaseButton.new(**@system_arguments)) do
+      render(Primer::Beta::BaseButton.new(**@system_arguments)) do
         render(Primer::OcticonComponent.new(icon: @icon))
       end
     end

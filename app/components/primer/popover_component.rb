@@ -41,22 +41,21 @@ module Primer
     # @param caret [Symbol] <%= one_of(Primer::PopoverComponent::CARET_MAPPINGS.keys) %>
     # @param large [Boolean] Whether to use the large version of the component.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    renders_one :body, lambda { |caret: CARET_DEFAULT, large: false, **system_arguments, &block|
-      system_arguments[:classes] = class_names(
-        system_arguments[:classes],
+    renders_one :body, lambda { |caret: CARET_DEFAULT, large: false, **system_arguments|
+      @body_arguments = system_arguments
+      @body_arguments[:classes] = class_names(
+        @body_arguments[:classes],
         "Popover-message Box",
         CARET_MAPPINGS[fetch_or_fallback(CARET_MAPPINGS.keys, caret, CARET_DEFAULT)],
         "Popover-message--large" => large
       )
-      system_arguments[:p] ||= 4
-      system_arguments[:mt] ||= 2
-      system_arguments[:mx] ||= :auto
-      system_arguments[:text_align] ||= :left
-      system_arguments[:box_shadow] ||= :large
+      @body_arguments[:p] ||= 4
+      @body_arguments[:mt] ||= 2
+      @body_arguments[:mx] ||= :auto
+      @body_arguments[:text_align] ||= :left
+      @body_arguments[:box_shadow] ||= :large
 
-      # This is a hack to allow the parent to set the slot's content
-      @body_arguments = system_arguments
-      view_context.capture { block&.call }
+      Primer::Content.new
     }
 
     # @example Default
@@ -89,20 +88,16 @@ module Primer
     #     <% end %>
     #   <% end %>
     #
-    # @example With HTML body
+    # @example With multiple elements in the body
     #   <%= render Primer::PopoverComponent.new do |component| %>
     #     <% component.heading do %>
     #       Activity feed
     #     <% end %>
     #     <% component.body(caret: :left) do %>
-    #       <p> This is the Popover body.</p>
-    #       <div>
-    #         This is using HTML.
-    #         <ul>
-    #           <li>Thing #1</li>
-    #           <li>Thing #2</li>
-    #         </ul>
-    #       </div>
+    #       <p>This is the Popover body.</p>
+    #       <%= render Primer::ButtonComponent.new(type: :submit) do %>
+    #         Got it!
+    #       <% end %>
     #     <% end %>
     #   <% end %>
     #

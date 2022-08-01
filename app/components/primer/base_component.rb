@@ -5,7 +5,7 @@ require "primer/classify"
 module Primer
   # All Primer ViewComponents accept a standard set of options called system arguments, mimicking the [styled-system API](https://styled-system.com/table) used by [Primer React](https://primer.style/components/system-props).
   #
-  # Under the hood, system arguments are [mapped](https://github.com/primer/view_components/blob/main/app/lib/primer/classify.rb) to Primer CSS classes, with any remaining options passed to Rails' [`content_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag).
+  # Under the hood, system arguments are [mapped](https://github.com/primer/view_components/blob/main/lib/primer/classify.rb) to Primer CSS classes, with any remaining options passed to Rails' [`content_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag).
   #
   # ## Responsive values
   #
@@ -85,7 +85,7 @@ module Primer
     #
     # | Name | Type | Description |
     # | :- | :- | :- |
-    # | `clearfix` | Boolean | Wether to assign the `clearfix` class. |
+    # | `clearfix` | Boolean | Whether to assign the `clearfix` class. |
     # | `col` | Integer | Number of columns. <%= one_of(Primer::Classify::Utilities.mappings(:col)) %> |
     # | `container` | Symbol | Size of the container. <%= one_of(Primer::Classify::Utilities.mappings(:container)) %> |
     #
