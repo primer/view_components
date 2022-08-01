@@ -181,7 +181,7 @@ class ToolTipElement extends HTMLElement {
   }
 
   get visibilityHidden() {
-    return this.style.visibility == 'hidden'
+    return this.style.visibility === 'hidden'
   }
 
   connectedCallback() {
