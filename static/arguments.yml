@@ -350,6 +350,17 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: BorderBox
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/border_box.rb
+  parameters:
+  - name: padding
+    type: Symbol
+    default: "`:default`"
+    description: One of `:condensed`, `:default`, or `:spacious`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Breadcrumbs
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/breadcrumbs.rb
   parameters:
@@ -398,17 +409,6 @@
 - component: Truncate
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate.rb
   parameters:
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: BorderBox
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/border_box_component.rb
-  parameters:
-  - name: padding
-    type: Symbol
-    default: "`:default`"
-    description: One of `:condensed`, `:default`, or `:spacious`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -692,8 +692,8 @@
   - name: box
     type: Boolean
     default: "`false`"
-    description: Whether the button is in a [BorderBox](/components/borderbox). If
-      `true`, the button will have the `Box-btn-octicon` class.
+    description: Whether the button is in a [BorderBox](/components/beta/borderbox).
+      If `true`, the button will have the `Box-btn-octicon` class.
   - name: system_arguments
     type: Hash
     default: N/A

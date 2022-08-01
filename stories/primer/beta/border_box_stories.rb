@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "primer/beta/border_box"
+
 class Primer::BorderBoxComponentStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
