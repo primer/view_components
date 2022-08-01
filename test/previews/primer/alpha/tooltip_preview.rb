@@ -28,6 +28,10 @@ module Primer
           "Button"
         end
       end
+
+      def tooltip_with_icon_button(direction: :s, tooltip_text: "Tooltip text")
+        render(Primer::IconButton.new(icon: :search, "aria-label": tooltip_text, tooltip_direction: direction))
+      end
       # @!endgroup
     end
   end
