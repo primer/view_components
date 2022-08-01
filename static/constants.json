@@ -265,6 +265,22 @@
       "image"
     ]
   },
+  "Primer::Beta::BorderBox": {
+    "DEFAULT_PADDING": "default",
+    "DEFAULT_ROW_SCHEME": "default",
+    "PADDING_MAPPINGS": {
+      "default": "",
+      "condensed": "Box--condensed",
+      "spacious": "Box--spacious"
+    },
+    "PADDING_SUGGESTION": "Perhaps you could consider using :padding options of default, condensed, and spacious?",
+    "ROW_SCHEME_MAPPINGS": {
+      "default": "",
+      "neutral": "Box-row--gray",
+      "info": "Box-row--blue",
+      "warning": "Box-row--yellow"
+    }
+  },
   "Primer::Beta::Breadcrumbs": {
     "ARGS_DENYLIST": {
       "[:p, :pt, :pb, :pr, :pl, :px, :py]": "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead.",
@@ -299,20 +315,6 @@
   "Primer::BlankslateComponent": {
   },
   "Primer::BorderBoxComponent": {
-    "DEFAULT_PADDING": "default",
-    "DEFAULT_ROW_SCHEME": "default",
-    "PADDING_MAPPINGS": {
-      "default": "",
-      "condensed": "Box--condensed",
-      "spacious": "Box--spacious"
-    },
-    "PADDING_SUGGESTION": "Perhaps you could consider using :padding options of default, condensed, and spacious?",
-    "ROW_SCHEME_MAPPINGS": {
-      "default": "",
-      "neutral": "Box-row--gray",
-      "info": "Box-row--blue",
-      "warning": "Box-row--yellow"
-    }
   },
   "Primer::BoxComponent": {
   },
@@ -395,7 +397,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",

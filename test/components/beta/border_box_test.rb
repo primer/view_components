@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class PrimerBorderBoxComponentTest < Minitest::Test
+class PrimerBetaBorderBoxTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_does_not_render_an_empty_box
