@@ -28,15 +28,11 @@ class ArgumentMappersLabelTest < LinterTestCase
     end
   end
 
-  def test_returns_variant_argument
-    Primer::LabelComponent::VARIANT_MAPPINGS.each do |value, class_name|
-      next if class_name.blank?
+  def test_returns_inline_argument
+    @file = "<span class=\"Label--inline\">Label</span>"
+    args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
 
-      @file = "<span class=\"#{class_name}\">Label</span>"
-      args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
-
-      assert_equal({ variant: ":#{value}" }, args)
-    end
+    assert_equal({ inline: true }, args)
   end
 
   def test_returns_tag_argument

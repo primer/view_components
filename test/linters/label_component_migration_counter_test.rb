@@ -27,6 +27,13 @@ class LabelComponentMigrationCounterTest < LinterTestCase
     assert_includes(offenses.first.message, "render Primer::LabelComponent.new(tag: :div)")
   end
 
+  def test_suggest_using_the_inline_system_argument
+    @file = "<span class=\"Label Label--inline\">Label</span>"
+    @linter.run(processed_source)
+
+    assert_includes(offenses.first.message, "render Primer::LabelComponent.new(inline: true)")
+  end
+
   def test_autocorrects
     @file = <<~HTML
       <span class="Label Label--primary">

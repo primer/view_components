@@ -43,6 +43,8 @@ module Primer
     VARIANT_OPTIONS = [DEFAULT_VARIANT].freeze
     DEPRECATED_VARIANT_OPTIONS = [:large, :inline].freeze
 
+    INLINE_CLASS = "Label--inline".freeze
+
     # @example Schemes
     #   <%= render(Primer::LabelComponent.new) { "Default" } %>
     #   <%= render(Primer::LabelComponent.new(scheme: :primary)) { "Primary" } %>
@@ -84,7 +86,7 @@ module Primer
         system_arguments[:classes],
         SCHEME_MAPPINGS[@scheme],
         SIZE_MAPPINGS[@size],
-        @inline ? "Label--inline" : nil
+        @inline ? INLINE_CLASS : nil
       )
     end
 

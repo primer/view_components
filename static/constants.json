@@ -395,7 +395,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",
@@ -552,6 +553,7 @@
       "large",
       "inline"
     ],
+    "INLINE_CLASS": "Label--inline",
     "SCHEME_MAPPINGS": {
       "default": "",
       "primary": "Label--primary",
