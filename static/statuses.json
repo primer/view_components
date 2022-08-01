@@ -1,6 +1,6 @@
 {
-  "Primer::Alpha::AutoComplete": "alpha",
-  "Primer::Alpha::AutoComplete::Item": "alpha",
+  "Primer::Alpha::AutoComplete": "deprecated",
+  "Primer::Alpha::AutoComplete::Item": "deprecated",
   "Primer::Alpha::BorderBox::Header": "alpha",
   "Primer::Alpha::ButtonMarketing": "alpha",
   "Primer::Alpha::Layout": "alpha",
