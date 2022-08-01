@@ -296,6 +296,8 @@
   },
   "Primer::Beta::Truncate::TruncateText": {
   },
+  "Primer::BlankslateComponent": {
+  },
   "Primer::BorderBoxComponent": {
     "DEFAULT_PADDING": "default",
     "DEFAULT_ROW_SCHEME": "default",
