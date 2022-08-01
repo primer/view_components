@@ -749,10 +749,14 @@
     type: Symbol
     default: "`:medium`"
     description: One of `:large` or `:medium`.
+  - name: inline
+    type: Boolean
+    default: "`false`"
+    description: Whether or not to render this label inline.
   - name: variant
     type: Symbol
     default: "`:none`"
-    description: One of `:inline` or `:none`.
+    description: One of `:inline`, `:large`, or `:none`.
   - name: system_arguments
     type: Hash
     default: N/A

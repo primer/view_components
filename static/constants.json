@@ -539,12 +539,18 @@
   },
   "Primer::LabelComponent": {
     "DEFAULT_SCHEME": "default",
+    "DEFAULT_SIZE": "medium",
     "DEFAULT_TAG": "span",
+    "DEFAULT_VARIANT": "none",
     "DEPRECATED_SCHEME_OPTIONS": [
       "info",
       "warning",
       "orange",
       "purple"
+    ],
+    "DEPRECATED_VARIANT_OPTIONS": [
+      "large",
+      "inline"
     ],
     "SCHEME_MAPPINGS": {
       "default": "",
@@ -575,7 +581,7 @@
       "sponsors"
     ],
     "SIZE_MAPPINGS": {
-      "medium": "",
+      "medium": null,
       "large": "Label--large"
     },
     "SIZE_OPTIONS": [
@@ -588,12 +594,8 @@
       "a",
       "div"
     ],
-    "VARIANT_MAPPINGS": {
-      "inline": "Label--inline"
-    },
     "VARIANT_OPTIONS": [
-      "inline",
-      null
+      "none"
     ]
   },
   "Primer::LayoutComponent": {
