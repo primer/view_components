@@ -99,6 +99,7 @@ namespace :docs do
       Primer::Alpha::TabPanels,
       Primer::Alpha::Tooltip,
       Primer::ButtonComponent,
+      Primer::IconButton,
       Primer::LinkComponent
     ]
 

@@ -1,0 +1,4 @@
+<%= render Primer::Beta::BaseButton.new(**@system_arguments) do -%>
+  <%= render Primer::OcticonComponent.new(icon: @icon) %>
+  <%= render Primer::Alpha::Tooltip.new(**@tooltip_arguments) %>
+<% end -%>
