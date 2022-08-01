@@ -171,20 +171,6 @@
   },
   "Primer::Alpha::UnderlinePanels": {
   },
-  "Primer::BaseButton": {
-    "DEFAULT_TAG": "button",
-    "DEFAULT_TYPE": "button",
-    "TAG_OPTIONS": [
-      "button",
-      "a",
-      "summary"
-    ],
-    "TYPE_OPTIONS": [
-      "button",
-      "reset",
-      "submit"
-    ]
-  },
   "Primer::BaseComponent": {
     "SELF_CLOSING_TAGS": [
       "area",
@@ -256,6 +242,20 @@
     "TAG_OPTIONS": [
       "div",
       "span"
+    ]
+  },
+  "Primer::Beta::BaseButton": {
+    "DEFAULT_TAG": "button",
+    "DEFAULT_TYPE": "button",
+    "TAG_OPTIONS": [
+      "button",
+      "a",
+      "summary"
+    ],
+    "TYPE_OPTIONS": [
+      "button",
+      "reset",
+      "submit"
     ]
   },
   "Primer::Beta::Blankslate": {
