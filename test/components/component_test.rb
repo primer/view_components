@@ -84,7 +84,12 @@ class PrimerComponentTest < Minitest::Test
   ].freeze
 
   def test_registered_components
-    ignored_components = ["Primer::Component", "Primer::OcticonsSymbolComponent", "Primer::Content"]
+    ignored_components = [
+      "Primer::Component",
+      "Primer::OcticonsSymbolComponent",
+      "Primer::Content",
+      "Primer::BlankslateComponent"
+    ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count
     assert_equal primer_component_files_count, COMPONENTS_WITH_ARGS.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"
