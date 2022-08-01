@@ -12,7 +12,6 @@ class PrimerComponentTest < Minitest::Test
       component.sidebar(tag: :div) { "Bar" }
     }],
     [Primer::HellipButton, { "aria-label": "No action" }],
-    [Primer::Alpha::BorderBox::Header, {}],
     [Primer::Alpha::TabPanels, { label: "label" }],
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
@@ -35,6 +34,7 @@ class PrimerComponentTest < Minitest::Test
       component.heading(tag: :h2) { "Foo" }
     }],
     [Primer::Beta::BorderBox, {}, proc { |component| component.header { "Foo" } }],
+    [Primer::Beta::BorderBox::Header, {}],
     [Primer::BoxComponent, {}],
     [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
     [Primer::ButtonComponent, {}, proc { "Button" }],

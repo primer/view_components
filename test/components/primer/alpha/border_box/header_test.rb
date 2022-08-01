@@ -2,17 +2,17 @@
 
 require "test_helper"
 
-class Primer::Alpha::BorderBox::HeaderTest < Minitest::Test
+class Primer::Beta::BorderBox::HeaderTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_content
-    render_inline(Primer::Alpha::BorderBox::Header.new) { "Header" }
+    render_inline(Primer::Beta::BorderBox::Header.new) { "Header" }
 
     assert_text("Header")
   end
 
   def test_renders_title
-    render_inline(Primer::Alpha::BorderBox::Header.new) do |h|
+    render_inline(Primer::Beta::BorderBox::Header.new) do |h|
       h.title(tag: :h3) { "Title" }
     end
 

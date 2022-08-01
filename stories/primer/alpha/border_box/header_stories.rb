@@ -2,7 +2,7 @@
 
 require "primer/alpha/border_box/header"
 
-class Primer::Alpha::BorderBox::HeaderStories < ViewComponent::Storybook::Stories
+class Primer::Beta::BorderBox::HeaderStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:default) do

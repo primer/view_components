@@ -4,17 +4,6 @@
   },
   "Primer::Alpha::AutoComplete::Item": {
   },
-  "Primer::Alpha::BorderBox::Header": {
-    "TITLE_TAG_FALLBACK": "h2",
-    "TITLE_TAG_OPTIONS": [
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6"
-    ]
-  },
   "Primer::Alpha::ButtonMarketing": {
     "DEFAULT_SCHEME": "default",
     "DEFAULT_TAG": "button",
@@ -280,6 +269,17 @@
       "info": "Box-row--blue",
       "warning": "Box-row--yellow"
     }
+  },
+  "Primer::Beta::BorderBox::Header": {
+    "TITLE_TAG_FALLBACK": "h2",
+    "TITLE_TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
   },
   "Primer::Beta::Breadcrumbs": {
     "ARGS_DENYLIST": {
