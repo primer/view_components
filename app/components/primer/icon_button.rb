@@ -52,8 +52,8 @@ module Primer
     #
     # @param scheme [Symbol] <%= one_of(Primer::IconButton::SCHEME_OPTIONS) %>
     # @param icon [String] Name of <%= link_to_octicons %> to use.
-    # @param tag [Symbol] <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
-    # @param type [Symbol] <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
+    # @param tag [Symbol] <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
+    # @param type [Symbol] <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
     # @param box [Boolean] Whether the button is in a <%= link_to_component(Primer::BorderBoxComponent) %>. If `true`, the button will have the `Box-btn-octicon` class.
     # @param aria-label [String] String that can be read by assistive technology. A label should be short and concise. See the accessibility section for more information.
     # @param aria-description [String] String that can be read by assistive technology. A description can be longer as it is intended to provide more context and information. See the accessibility section for more information.
