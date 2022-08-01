@@ -182,7 +182,6 @@
 - ".flex-1"
 - ".flex-auto"
 - ".flex-column"
-- ".flex-items-center"
 - ".flex-items-end"
 - ".flex-justify-center"
 - ".flex-shrink-0"

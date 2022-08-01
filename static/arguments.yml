@@ -124,15 +124,11 @@
     type: String
     default: N/A
     description: Label text displayed above the input.
-  - name: show_label
+  - name: visually_hide_label
     type: Boolean
     default: N/A
-    description: Whether or not to visually display the label. If `true` the label
-      will still be available to screen readers.
-  - name: trailing_label
-    type: String
-    default: N/A
-    description: Text to display to the right of the input.
+    description: Whether or not to visually hide the label. If `true` the label will
+      be hidden visually but still available to screen readers.
   - name: size
     type: Symbol
     default: N/A
