@@ -7,15 +7,12 @@ module Primer
   class Classify
     # Handler for PrimerCSS utility classes loaded from utilities.rake
     class Utilities
-      # Load the utilities.yml file.
-      # Disabling because we want to load symbols, strings, and integers from the .yml file
-      # rubocop:disable Security/YAMLLoad
-      UTILITIES = YAML.load(
+      UTILITIES = YAML.safe_load(
         File.read(
           File.join(File.dirname(__FILE__), "./utilities.yml")
-        )
+        ),
+        permitted_classes: [Symbol]
       ).freeze
-      # rubocop:enable Security/YAMLLoad
 
       BREAKPOINTS = ["", "-sm", "-md", "-lg", "-xl"].freeze
 
