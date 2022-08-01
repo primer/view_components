@@ -226,7 +226,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    view_component (2.53.0)
+    view_component (2.62.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     web-console (4.2.0)
@@ -249,6 +249,7 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
+  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
@@ -274,8 +275,5 @@ DEPENDENCIES
   web-console
   webdrivers
 
-RUBY VERSION
-   ruby 2.7.6p219
-
 BUNDLED WITH
-   2.2.11
+   2.3.7
