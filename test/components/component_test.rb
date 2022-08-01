@@ -110,8 +110,12 @@ class PrimerComponentTest < Minitest::Test
   def test_all_components_support_inline_styles
     default_args = { style: "width: 100%;" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
-      node = render_component(component, default_args.merge(args), proc)
-      assert_equal(true, node.children.attribute("style")&.value&.include?("width: 100%"))
+      render_component(component, default_args.merge(args), proc)
+      if component == Primer::Alpha::Tooltip
+        assert_selector("[style='width: 100%;visibility: hidden']", visible: :all)
+      else
+        assert_selector("[style='width: 100%;']", visible: :all)
+      end
     end
   end
 
