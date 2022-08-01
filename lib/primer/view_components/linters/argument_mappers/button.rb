@@ -20,12 +20,12 @@ module ERBLint
         ).freeze
 
         TYPE_OPTIONS = Primer::ViewComponents::Constants.get(
-          component: "Primer::BaseButton",
+          component: "Primer::Beta::BaseButton",
           constant: "TYPE_OPTIONS"
         ).freeze
 
         DEFAULT_TAG = Primer::ViewComponents::Constants.get(
-          component: "Primer::BaseButton",
+          component: "Primer::Beta::BaseButton",
           constant: "DEFAULT_TAG"
         ).freeze
 

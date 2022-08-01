@@ -5,7 +5,7 @@ require "test_helper"
 class Primer::ViewComponents::ConstantsTest < Minitest::Test
   def test_get_array
     tag_options = Primer::ViewComponents::Constants.get(
-      component: "Primer::BaseButton",
+      component: "Primer::Beta::BaseButton",
       constant: "TAG_OPTIONS"
     )
 
@@ -14,7 +14,7 @@ class Primer::ViewComponents::ConstantsTest < Minitest::Test
 
   def test_get_symbolizes_array_elements
     tag_options = Primer::ViewComponents::Constants.get(
-      component: "Primer::BaseButton",
+      component: "Primer::Beta::BaseButton",
       constant: "TAG_OPTIONS",
       symbolize: true
     )
