@@ -34,10 +34,10 @@ module Primer
 
           @label_arguments[:class] = class_names(
             @label_arguments[:class],
-            @input_arguments.fetch(:show_label, true) ? nil : "sr-only"
+            @input_arguments.fetch(:visually_hide_label, true) ? "sr-only" : nil
           )
 
-          @input_arguments.delete(:show_label)
+          @input_arguments.delete(:visually_hide_label)
 
           @input_arguments.delete(:class) if @input_arguments[:class].blank?
           @label_arguments.delete(:class) if @label_arguments[:class].blank?

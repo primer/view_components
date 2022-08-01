@@ -1,24 +1,19 @@
 <%= render(FormControl.new(input: @input)) do %>
-  <%= content_tag_if(@input.trailing_label?, :div, class: "d-flex flex-items-center") do %>
-    <% if @input.leading_visual || @input.show_clear_button? %>
-      <%= content_tag(:div, class: @input.field_wrap_classes) do %>
-        <% if @input.leading_visual %>
-          <span class="FormControl-input-leadingVisualWrap">
-            <%= render(Primer::OcticonComponent.new(**@input.leading_visual)) %>
-          </span>
-        <% end %>
-        <%= builder.text_field(@input.name, **@input.input_arguments) %>
-        <% if @input.show_clear_button? %>
-          <button id="<%= @input.clear_button_id %>" class="FormControl-input-trailingAction" aria-label="Clear">
-            <%= render(Primer::OcticonComponent.new(icon: :"x-circle-fill")) %>
-          </button>
-        <% end %>
+  <% if @input.leading_visual || @input.show_clear_button? %>
+    <%= content_tag(:div, class: @input.field_wrap_classes) do %>
+      <% if @input.leading_visual %>
+        <span class="FormControl-input-leadingVisualWrap">
+          <%= render(Primer::OcticonComponent.new(**@input.leading_visual)) %>
+        </span>
       <% end %>
-    <% else %>
       <%= builder.text_field(@input.name, **@input.input_arguments) %>
+      <% if @input.show_clear_button? %>
+        <button id="<%= @input.clear_button_id %>" class="FormControl-input-trailingAction" aria-label="Clear">
+          <%= render(Primer::OcticonComponent.new(icon: :"x-circle-fill")) %>
+        </button>
+      <% end %>
     <% end %>
-    <% if @input.trailing_label %>
-      <div class="ml-2"><%= @input.trailing_label %></div>
-    <% end %>
+  <% else %>
+    <%= builder.text_field(@input.name, **@input.input_arguments) %>
   <% end %>
 <% end %>

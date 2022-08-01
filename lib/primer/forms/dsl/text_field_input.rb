@@ -7,8 +7,8 @@ module Primer
       class TextFieldInput < Input
         attr_reader(
           *%i[
-            name label show_clear_button leading_visual trailing_label
-            clear_button_id visually_hide_label inset monospace field_wrap_classes
+            name label show_clear_button leading_visual clear_button_id
+            visually_hide_label inset monospace field_wrap_classes
           ]
         )
 
@@ -18,7 +18,6 @@ module Primer
 
           @show_clear_button = system_arguments.delete(:show_clear_button)
           @leading_visual = system_arguments.delete(:leading_visual)
-          @trailing_label = system_arguments.delete(:trailing_label)
           @clear_button_id = system_arguments.delete(:clear_button_id)
           @inset = system_arguments.delete(:inset)
           @monospace = system_arguments.delete(:monospace)
@@ -59,10 +58,6 @@ module Primer
 
         def leading_visual?
           !!@leading_visual
-        end
-
-        def trailing_label?
-          !!@trailing_label
         end
       end
     end

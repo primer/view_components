@@ -19,7 +19,7 @@ class PrimerAlphaTextFieldTest < MiniTest::Test
   end
 
   def test_visually_hides_the_label
-    render_inline(Primer::Alpha::TextField.new(**@default_params, show_label: false))
+    render_inline(Primer::Alpha::TextField.new(**@default_params, visually_hide_label: true))
 
     assert_selector "label.FormControl-label.sr-only", text: "Foo"
   end
@@ -84,11 +84,5 @@ class PrimerAlphaTextFieldTest < MiniTest::Test
     assert_selector ".FormControl-input-leadingVisualWrap" do
       assert_selector "svg.octicon.octicon-search"
     end
-  end
-
-  def test_renders_a_trailing_label
-    render_inline(Primer::Alpha::TextField.new(**@default_params, trailing_label: "bar"))
-
-    assert_selector ".d-flex .ml-2", text: "bar"
   end
 end

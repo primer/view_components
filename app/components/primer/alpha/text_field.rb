@@ -14,16 +14,6 @@ module Primer
       # @example Default
       #   <%= render(Primer::Alpha::TextField.new(name: :first_name, label: "First name")) %>
       #
-      # @example With a trailing label
-      #   <%= render(
-      #     Primer::Alpha::TextField.new(
-      #       name: :days,
-      #       label: "Number of days",
-      #       show_label: false,
-      #       trailing_label: "days"
-      #     )
-      #   ) %>
-      #
       # @example With a clear button
       #   <%= render(
       #     Primer::Alpha::TextField.new(
@@ -95,8 +85,7 @@ module Primer
       # @param classes [String] A list of CSS classes to add to the input. Combined with the `:class` argument.
       # @param caption [String] Caption text to render below the input.
       # @param label [String] Label text displayed above the input.
-      # @param show_label [Boolean] Whether or not to visually display the label. If `true` the label will still be available to screen readers.
-      # @param trailing_label [String] Text to display to the right of the input.
+      # @param visually_hide_label [Boolean] Whether or not to visually hide the label. If `true` the label will be hidden visually but still available to screen readers.
       # @param size [Symbol] The size of the field. <%= one_of(Primer::Forms::Dsl::Input::SIZE_OPTIONS) %>
       # @param show_clear_button [Boolean] Whether or not to include a clear button inside the input that clears the input's contents when clicked.
       # @param clear_button_id [String] The HTML id attribute of the clear button.

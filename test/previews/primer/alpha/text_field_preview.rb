@@ -9,8 +9,7 @@ module Primer
       # @param name text
       # @param id text
       # @param label text
-      # @param show_label toggle
-      # @param trailing_label text
+      # @param visually_hide_label toggle
       # @param size [Symbol] select [small, medium, large]
       # @param show_clear_button toggle
       # @param clear_button_id text
@@ -25,8 +24,7 @@ module Primer
         name: "my-text-field",
         id: "my-text-field",
         label: "My text field",
-        show_label: true,
-        trailing_label: nil,
+        visually_hide_label: false,
         size: Primer::Forms::Dsl::Input::DEFAULT_SIZE.to_s,
         show_clear_button: false,
         clear_button_id: "my-text-field-clear-button",
@@ -42,8 +40,7 @@ module Primer
           name: name,
           id: id,
           label: label,
-          show_label: show_label,
-          trailing_label: trailing_label,
+          visually_hide_label: visually_hide_label,
           size: size,
           show_clear_button: show_clear_button,
           clear_button_id: clear_button_id,
