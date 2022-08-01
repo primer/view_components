@@ -46,8 +46,14 @@ class PrimerLabelComponentTest < Minitest::Test
     assert_text("content")
   end
 
-  def test_supports_sizes
+  def test_supports_large_size
     render_inline(Primer::LabelComponent.new(size: :large)) { "private" }
+
+    assert_selector(".Label--large")
+  end
+
+  def test_supports_deprecated_large_variant
+    render_inline(Primer::LabelComponent.new(variant: :large)) { "private" }
 
     assert_selector(".Label--large")
   end
@@ -60,7 +66,13 @@ class PrimerLabelComponentTest < Minitest::Test
     assert_text("content")
   end
 
-  def test_renders_with_the_css_class_variant_mapping_to_the_provided_variant
+  def test_supports_inline_argument
+    render_inline(Primer::LabelComponent.new(inline: true)) { "private" }
+
+    assert_selector(".Label.Label--inline")
+  end
+
+  def test_supports_deprecated_inline_variant
     render_inline(Primer::LabelComponent.new(variant: :inline)) { "private" }
 
     assert_selector(".Label.Label--inline")
