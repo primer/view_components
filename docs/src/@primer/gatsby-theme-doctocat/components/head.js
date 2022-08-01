@@ -1,3 +1,4 @@
+import { withPrefix } from "gatsby"
 import React from 'react'
 import Helmet from 'react-helmet'
 import useSiteMetadata from '@primer/gatsby-theme-doctocat/src/use-site-metadata'
@@ -28,7 +29,7 @@ function Head(props) {
       <meta property="og:description" content={description} />
       <meta property="og:image" content={siteMetadata.imageUrl} />
       <meta property="twitter:card" content="summary_large_image" />
-      <script src={primerViewComponentsSrc}></script>
+      <script src={withPrefix(primerViewComponentsSrc)} type="text/javascript"></script>
       <style>{bodyStyle}</style>
     </Helmet>
   )
