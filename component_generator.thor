@@ -36,12 +36,11 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_system_test
-    template("templates/system_test.rb.tt", "test/system/#{status_path}#{underscore_name}_test.rb") if js_package_name
-    template("templates/#{status_template_path}system_test_preview.rb.tt", "demo/test/components/previews/primer/#{status_path}#{underscore_name}_preview.rb") if js_package_name
+    template("templates/system_test.rb.tt", "test/system/#{status_path}#{underscore_name}_test.rb")
   end
 
   def create_preview
-    template("templates/preview.tt", "lookbook/test/components/previews/#{status_path}#{underscore_name}_preview.rb")
+    template("templates/preview.tt", "test/previews/primer/#{status_path}#{underscore_name}_preview.rb")
   end
 
   def add_to_docs_rakefile
@@ -57,7 +56,7 @@ class ComponentGenerator < Thor::Group
     insert_into_file(
       "docs/src/@primer/gatsby-theme-doctocat/nav.yml",
       component_nav,
-      after: "url: \"/components\"\n  children:\n"
+      after: "- title: Components\n  children:\n"
     )
   end
 
@@ -78,7 +77,7 @@ class ComponentGenerator < Thor::Group
   def component_nav
     <<-HEREDOC
   - title: #{class_name} - Fix my order in docs/src/@primer/gatsby-theme-doctocat/nav.yml
-    url: /components/#{status_path}#{short_name}
+    url: "/components/#{status_path}#{short_name}"
     HEREDOC
   end
 

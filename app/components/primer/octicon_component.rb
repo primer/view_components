@@ -8,10 +8,12 @@ module Primer
   class OcticonComponent < Primer::Component
     status :beta
 
+    SIZE_XSMALL = :xsmall
     SIZE_DEFAULT = :small
     SIZE_MEDIUM = :medium
 
     SIZE_MAPPINGS = {
+      SIZE_XSMALL => 12,
       SIZE_DEFAULT => 16,
       SIZE_MEDIUM => 24
     }.freeze

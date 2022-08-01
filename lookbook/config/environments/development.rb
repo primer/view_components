@@ -20,6 +20,8 @@ Rails.application.configure do
   config.server_timing = true
 
   config.hotwire_livereload.listen_paths << "/workspaces/css/src/"
+  config.hotwire_livereload.listen_paths << Rails.root.join("../app/assets/javascripts")
+  config.hotwire_livereload.force_reload_paths << Rails.root.join("../app/assets/javascripts")
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
@@ -62,6 +64,9 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
+
+  config.view_component.preview_paths << Rails.root.join("../test/previews")
+  config.lookbook.listen_paths << Rails.root.join("../app/components")
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

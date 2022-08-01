@@ -179,6 +179,7 @@ class ToolTipElement extends HTMLElement {
   connectedCallback() {
     if (!this.shadowRoot) {
       const shadow = this.attachShadow({mode: 'open'})
+      // eslint-disable-next-line github/no-inner-html
       shadow.innerHTML = `
         <style>
           ${this.styles()}
@@ -253,6 +254,7 @@ class ToolTipElement extends HTMLElement {
       if (!this.id || !this.control) return
       if (this.type === 'label') {
         this.control.setAttribute('aria-labelledby', this.id)
+        this.setAttribute('aria-hidden', 'true')
       } else {
         let describedBy = this.control.getAttribute('aria-describedby')
         describedBy ? (describedBy = `${describedBy} ${this.id}`) : (describedBy = this.id)

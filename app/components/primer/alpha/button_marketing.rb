@@ -63,7 +63,7 @@ module Primer
       end
 
       def call
-        render(Primer::BaseButton.new(**@system_arguments)) { content }
+        render(Primer::Beta::BaseButton.new(**@system_arguments)) { content }
       end
     end
   end

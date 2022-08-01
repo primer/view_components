@@ -8,8 +8,8 @@ class Primer::IconButtonStories < ViewComponent::Storybook::Stories
       aria(label: "Button label")
       icon "star"
       box false
-      select(:tag, Primer::BaseButton::TAG_OPTIONS, Primer::BaseButton::DEFAULT_TAG)
-      select(:type, Primer::BaseButton::TYPE_OPTIONS, Primer::BaseButton::DEFAULT_TYPE)
+      select(:tag, Primer::Beta::BaseButton::TAG_OPTIONS, Primer::Beta::BaseButton::DEFAULT_TAG)
+      select(:type, Primer::Beta::BaseButton::TYPE_OPTIONS, Primer::Beta::BaseButton::DEFAULT_TYPE)
       select(:scheme, Primer::IconButton::SCHEME_OPTIONS, Primer::IconButton::DEFAULT_SCHEME)
     end
   end

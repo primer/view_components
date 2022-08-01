@@ -6,6 +6,6 @@ class IntegrationCounterComponentTest < ApplicationSystemTestCase
   def test_integration
     with_preview(:default)
 
-    assert_selector(".Counter", text: "2")
+    assert_selector(".Counter", text: "1,000")
   end
 end
