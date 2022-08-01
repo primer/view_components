@@ -32,16 +32,19 @@ module Primer
     DEPRECATED_SCHEME_OPTIONS = [:info, :warning, :orange, :purple].freeze
     SCHEME_OPTIONS = (SCHEME_MAPPINGS.keys - DEPRECATED_SCHEME_OPTIONS).freeze
 
+    DEFAULT_SIZE = :medium
     SIZE_MAPPINGS = {
-      medium: "",
-      large: "Label--large"
+      DEFAULT_SIZE => nil,
+      :large => "Label--large"
     }.freeze
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
+    DEFAULT_VARIANT = :none
     VARIANT_MAPPINGS = {
-      inline: "Label--inline"
+      DEFAULT_VARIANT => nil,
+      :inline => "Label--inline"
     }.freeze
-    VARIANT_OPTIONS = VARIANT_MAPPINGS.keys << nil
+    VARIANT_OPTIONS = VARIANT_MAPPINGS.keys
 
     # @example Schemes
     #   <%= render(Primer::LabelComponent.new) { "Default" } %>
@@ -69,15 +72,20 @@ module Primer
     # @param variant [Symbol] <%= one_of(Primer::LabelComponent::VARIANT_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
 
-    def initialize(tag: DEFAULT_TAG, scheme: DEFAULT_SCHEME, size: :medium, variant: nil, **system_arguments)
+    def initialize(tag: DEFAULT_TAG, scheme: DEFAULT_SCHEME, size: DEFAULT_SIZE, variant: DEFAULT_VARIANT, **system_arguments)
       @system_arguments = system_arguments
+
+      @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME, deprecated_values: DEPRECATED_SCHEME_OPTIONS)
+      @size = fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)
+      @variant = fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)
+
       @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
       @system_arguments[:classes] = class_names(
         "Label",
         system_arguments[:classes],
-        SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, deprecated_values: DEPRECATED_SCHEME_OPTIONS)],
-        SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size)],
-        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant)]
+        SCHEME_MAPPINGS[@scheme],
+        SIZE_MAPPINGS[@size],
+        VARIANT_MAPPINGS[@variant]
       )
     end
 

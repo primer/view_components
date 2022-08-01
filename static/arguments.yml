@@ -16,15 +16,15 @@
   - name: variant
     type: Symbol
     default: "`:default`"
-    description: One of `:default` and `:large`.
+    description: One of `:default` or `:large`.
   - name: tag
     type: Symbol
     default: "`:button`"
-    description: One of `:a` and `:button`.
+    description: One of `:a` or `:button`.
   - name: type
     type: Symbol
     default: "`:button`"
-    description: One of `:button` and `:submit`.
+    description: One of `:button` or `:submit`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -41,7 +41,7 @@
     type: Symbol
     default: "`:sidebar`"
     description: Which element to render first in the HTML. This will change the keyboard
-      navigation order. One of `:main` and `:sidebar`.
+      navigation order. One of `:main` or `:sidebar`.
   - name: gutter
     type: Symbol
     default: "`:default`"
@@ -57,7 +57,7 @@
   - name: tag
     type: Symbol
     default: "`:nav`"
-    description: One of `:div` and `:nav`.
+    description: One of `:div` or `:nav`.
   - name: label
     type: String
     default: N/A
@@ -82,7 +82,7 @@
   - name: align
     type: Symbol
     default: N/A
-    description: One of `:left` and `:right`. - Defaults to left
+    description: One of `:left` or `:right`. - Defaults to left
   - name: body_arguments
     type: Hash
     default: "`{}`"
@@ -105,7 +105,7 @@
   - name: type
     type: Symbol
     default: N/A
-    description: One of `:description` and `:label`.
+    description: One of `:description` or `:label`.
   - name: direction
     type: Symbol
     default: "`:s`"
@@ -125,7 +125,7 @@
   - name: tag
     type: Symbol
     default: "`:nav`"
-    description: One of `:div` and `:nav`.
+    description: One of `:div` or `:nav`.
   - name: label
     type: String
     default: N/A
@@ -134,7 +134,7 @@
   - name: align
     type: Symbol
     default: "`:left`"
-    description: One of `:left` and `:right`. - Defaults to left
+    description: One of `:left` or `:right`. - Defaults to left
   - name: body_arguments
     type: Hash
     default: "`{}`"
@@ -154,7 +154,7 @@
   - name: align
     type: Symbol
     default: "`:left`"
-    description: One of `:left` and `:right`. - Defaults to left
+    description: One of `:left` or `:right`. - Defaults to left
   - name: body_arguments
     type: Hash
     default: "`{}`"
@@ -277,7 +277,7 @@
   - name: shape
     type: Symbol
     default: "`:circle`"
-    description: Shape of the avatar. One of `:circle` and `:square`.
+    description: Shape of the avatar. One of `:circle` or `:square`.
   - name: href
     type: String
     default: "`nil`"
@@ -293,11 +293,11 @@
   - name: tag
     type: Symbol
     default: "`:div`"
-    description: One of `:div` and `:span`.
+    description: One of `:div` or `:span`.
   - name: align
     type: Symbol
     default: "`:left`"
-    description: One of `:left` and `:right`.
+    description: One of `:left` or `:right`.
   - name: tooltipped
     type: Boolean
     default: "`false`"
@@ -307,7 +307,7 @@
     default: "`{}`"
     description: Parameters to add to the Body. If `tooltipped` is set, has the same
       arguments as [Tooltip](/components/tooltip). The default tag is `:div` but can
-      be changed using `tag:` to one of `:div` and `:span`.
+      be changed using `tag:` to one of `:div` or `:span`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -431,11 +431,11 @@
   - name: variant
     type: Symbol
     default: "`nil`"
-    description: DEPRECATED. One of `:medium` and `:small`.
+    description: DEPRECATED. One of `:medium` or `:small`.
   - name: size
     type: Symbol
     default: "`:medium`"
-    description: One of `:medium` and `:small`.
+    description: One of `:medium` or `:small`.
   - name: tag
     type: Symbol
     default: "`:button`"
@@ -466,11 +466,11 @@
   - name: variant
     type: Symbol
     default: "`nil`"
-    description: DEPRECATED. One of `:medium` and `:small`.
+    description: DEPRECATED. One of `:medium` or `:small`.
   - name: size
     type: Symbol
     default: "`:medium`"
-    description: One of `:medium` and `:small`.
+    description: One of `:medium` or `:small`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -500,7 +500,7 @@
   - name: type
     type: Symbol
     default: "`:button`"
-    description: One of `:button` and `:submit`.
+    description: One of `:button` or `:submit`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -676,7 +676,7 @@
   - name: scheme
     type: Symbol
     default: "`:default`"
-    description: One of `:danger` and `:default`.
+    description: One of `:danger` or `:default`.
   - name: icon
     type: String
     default: N/A
@@ -741,17 +741,18 @@
     description: One of `:a`, `:div`, `:span`, or `:summary`.
   - name: scheme
     type: Symbol
-    default: "`nil`"
-    description: One of `:danger`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`,
-      `:success`, or `:warning`.
+    default: "`:default`"
+    description: One of `:accent`, `:attention`, `:danger`, `:default`, `:done`, `:info`,
+      `:orange`, `:primary`, `:purple`, `:secondary`, `:severe`, `:sponsors`, `:success`,
+      or `:warning`.
   - name: size
     type: Symbol
     default: "`:medium`"
-    description: One of `:large` and `:medium`.
+    description: One of `:large` or `:medium`.
   - name: variant
     type: Symbol
-    default: "`nil`"
-    description: One of `nil` and `:inline`.
+    default: "`:none`"
+    description: One of `:inline` or `:none`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -766,7 +767,7 @@
   - name: side
     type: Symbol
     default: "`:right`"
-    description: Which side to display the sidebar on. One of `:left` and `:right`.
+    description: Which side to display the sidebar on. One of `:left` or `:right`.
   - name: sidebar_col
     type: Integer
     default: "`3`"
@@ -781,7 +782,7 @@
   - name: tag
     type: String
     default: "`:a`"
-    description: One of `:a` and `:span`.
+    description: One of `:a` or `:span`.
   - name: href
     type: String
     default: "`nil`"
@@ -818,35 +819,35 @@
   - name: weekday
     type: Symbol
     default: "`:short`"
-    description: One of `:long` and `:short`.
+    description: One of `:long` or `:short`.
   - name: year
     type: Symbol
     default: "`:numeric`"
-    description: One of `:2-digit` and `:numeric`.
+    description: One of `:2-digit` or `:numeric`.
   - name: month
     type: Symbol
     default: "`:short`"
-    description: One of `:long` and `:short`.
+    description: One of `:long` or `:short`.
   - name: day
     type: Symbol
     default: "`:numeric`"
-    description: One of `:2-digit` and `:numeric`.
+    description: One of `:2-digit` or `:numeric`.
   - name: hour
     type: Symbol
     default: "`:numeric`"
-    description: One of `:2-digit` and `:numeric`.
+    description: One of `:2-digit` or `:numeric`.
   - name: minute
     type: Symbol
     default: "`:numeric`"
-    description: One of `:2-digit` and `:numeric`.
+    description: One of `:2-digit` or `:numeric`.
   - name: second
     type: Symbol
     default: "`:numeric`"
-    description: One of `:2-digit` and `:numeric`.
+    description: One of `:2-digit` or `:numeric`.
   - name: time_zone_name
     type: Symbol
     default: "`:short`"
-    description: One of `:long` and `:short`.
+    description: One of `:long` or `:short`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -981,11 +982,11 @@
   - name: tag
     type: Symbol
     default: "`:span`"
-    description: HTML tag for element. One of `:div` and `:span`.
+    description: HTML tag for element. One of `:div` or `:span`.
   - name: size
     type: Symbol
     default: "`:default`"
-    description: One of `:default` and `:small`.
+    description: One of `:default` or `:small`.
   - name: system_arguments
     type: Hash
     default: N/A
