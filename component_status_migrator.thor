@@ -60,7 +60,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def rename_test_class
-    gsub_file(test_path_with_status, /class .*Test </, "class Primer#{status.capitalize}#{name_without_suffix.gsub('::', '')}Test <")
+    gsub_file(test_path_with_status, /class .*Test </, "class Primer#{class_status}#{name_without_suffix.gsub('::', '')}Test <")
   end
 
   def add_require_to_story
@@ -69,7 +69,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def rename_story_class
-    new_class_name = "class Primer::#{name_without_suffix.capitalize}Stories"
+    new_class_name = "class Primer::#{class_status}#{name_without_suffix.capitalize}Stories"
     gsub_file(story_path_with_status, /class Primer::#{name}Stories/, new_class_name)
   end
 
@@ -106,6 +106,10 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   private
+
+  def class_status
+    @class_status ||= status.capitalize unless stable?
+  end
 
   def controller_path
     @controller_path ||= "app/components/primer/#{name.underscore}.rb"
