@@ -30,4 +30,11 @@ class Primer::JoinStyleArgumentsHelperTest < Minitest::Test
       join_style_arguments(nil, "width: 100%")
     )
   end
+
+  def test_handles_semicolon
+    assert_equal(
+      "width: 100%;background-color: pink",
+      join_style_arguments("width: 100%;", "background-color: pink")
+    )
+  end
 end
