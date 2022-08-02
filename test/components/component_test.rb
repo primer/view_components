@@ -12,7 +12,6 @@ class PrimerComponentTest < Minitest::Test
       component.sidebar(tag: :div) { "Bar" }
     }],
     [Primer::HellipButton, { "aria-label": "No action" }],
-    [Primer::Alpha::BorderBox::Header, {}],
     [Primer::Alpha::TabPanels, { label: "label" }],
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
@@ -33,7 +32,8 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::Blankslate, {}, proc { |component|
       component.heading(tag: :h2) { "Foo" }
     }],
-    [Primer::BorderBoxComponent, {}, proc { |component| component.header { "Foo" } }],
+    [Primer::Beta::BorderBox, {}, proc { |component| component.header { "Foo" } }],
+    [Primer::Beta::BorderBox::Header, {}],
     [Primer::BoxComponent, {}],
     [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
     [Primer::ButtonComponent, {}, proc { "Button" }],
@@ -89,7 +89,8 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
-      "Primer::BlankslateComponent"
+      "Primer::BlankslateComponent",
+      "Primer::BorderBoxComponent"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count
