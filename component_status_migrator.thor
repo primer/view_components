@@ -32,7 +32,7 @@ class ComponentStatusMigrator < Thor::Group
 
   def move_template
     move_file("template", template_path, template_path_with_status)
- end
+  end
 
   def copy_test
     move_file("test", test_path, test_path_with_status)
@@ -64,7 +64,14 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def add_require_to_story
-    insert_into_file(story_path_with_status, "require \"primer/#{status_folder_name}#{name_without_suffix.underscore}\"\n", after: "# frozen_string_literal: true\n")
+    require_statement = "require \"primer/#{status_folder_name}#{name_without_suffix.underscore}\"\n"
+    insert_into_file(story_path_with_status, require_statement, after: "# frozen_string_literal: true\n")
+  end
+
+  def rename_story_class
+    prior_class_name = /class Primer::#{name.capitalize}Stories/
+    new_class_name = "class Primer::#{name_without_suffix.capitalize}Stories"
+    gsub_file(story_path_with_status, prior_class_name, new_class_name)
   end
 
   def rename_nav_entry
