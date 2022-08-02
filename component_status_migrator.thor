@@ -23,12 +23,10 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def validate_status
-    raise unless STATUSES.include?(status)
+    raise "Invalid status: #{status}" unless STATUSES.include?(status)
   end
 
   def move_controller
-    raise unless File.exist?(controller_path)
-
     if controller_path != controller_path_with_status
       copy_file(controller_path, controller_path_with_status)
       remove_file(controller_path)
@@ -51,8 +49,6 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def copy_test
-    raise unless File.exist?(test_path)
-
     if test_path != test_path_with_status
       copy_file(test_path, test_path_with_status)
     else
@@ -61,8 +57,6 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def move_story
-    raise unless File.exist?(story_path)
-
     if story_path != story_path_with_status
       copy_file(story_path, story_path_with_status)
       remove_file(story_path)
