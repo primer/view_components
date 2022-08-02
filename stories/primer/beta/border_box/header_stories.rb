@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "primer/alpha/border_box/header"
+require "primer/beta/border_box/header"
 
 class Primer::Beta::BorderBox::HeaderStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
