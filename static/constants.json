@@ -4,17 +4,6 @@
   },
   "Primer::Alpha::AutoComplete::Item": {
   },
-  "Primer::Alpha::BorderBox::Header": {
-    "TITLE_TAG_FALLBACK": "h2",
-    "TITLE_TAG_OPTIONS": [
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6"
-    ]
-  },
   "Primer::Alpha::ButtonMarketing": {
     "DEFAULT_SCHEME": "default",
     "DEFAULT_TAG": "button",
@@ -267,6 +256,34 @@
       "image"
     ]
   },
+  "Primer::Beta::BorderBox": {
+    "DEFAULT_PADDING": "default",
+    "DEFAULT_ROW_SCHEME": "default",
+    "Header": "Primer::Beta::BorderBox::Header",
+    "PADDING_MAPPINGS": {
+      "default": "",
+      "condensed": "Box--condensed",
+      "spacious": "Box--spacious"
+    },
+    "PADDING_SUGGESTION": "Perhaps you could consider using :padding options of default, condensed, and spacious?",
+    "ROW_SCHEME_MAPPINGS": {
+      "default": "",
+      "neutral": "Box-row--gray",
+      "info": "Box-row--blue",
+      "warning": "Box-row--yellow"
+    }
+  },
+  "Primer::Beta::BorderBox::Header": {
+    "TITLE_TAG_FALLBACK": "h2",
+    "TITLE_TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
   "Primer::Beta::Breadcrumbs": {
     "ARGS_DENYLIST": {
       "[:p, :pt, :pb, :pr, :pl, :px, :py]": "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead.",
@@ -301,20 +318,6 @@
   "Primer::BlankslateComponent": {
   },
   "Primer::BorderBoxComponent": {
-    "DEFAULT_PADDING": "default",
-    "DEFAULT_ROW_SCHEME": "default",
-    "PADDING_MAPPINGS": {
-      "default": "",
-      "condensed": "Box--condensed",
-      "spacious": "Box--spacious"
-    },
-    "PADDING_SUGGESTION": "Perhaps you could consider using :padding options of default, condensed, and spacious?",
-    "ROW_SCHEME_MAPPINGS": {
-      "default": "",
-      "neutral": "Box-row--gray",
-      "info": "Box-row--blue",
-      "warning": "Box-row--yellow"
-    }
   },
   "Primer::BoxComponent": {
   },

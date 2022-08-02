@@ -31,7 +31,7 @@ module Primer
     #
     # @example In a BorderBox
     #
-    #   <%= render(Primer::BorderBoxComponent.new) do |component| %>
+    #   <%= render(Primer::Beta::BorderBox.new) do |component| %>
     #     <% component.body do %>
     #       <%= render(Primer::Beta::Text.new(pr: 2)) { "Body" } %>
     #       <%= render(Primer::IconButton.new(icon: :pencil, box: true, "aria-label": "Edit")) %>
@@ -54,10 +54,10 @@ module Primer
     # @param icon [String] Name of <%= link_to_octicons %> to use.
     # @param tag [Symbol] <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
     # @param type [Symbol] <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
-    # @param box [Boolean] Whether the button is in a <%= link_to_component(Primer::BorderBoxComponent) %>. If `true`, the button will have the `Box-btn-octicon` class.
     # @param aria-label [String] String that can be read by assistive technology. A label should be short and concise. See the accessibility section for more information.
     # @param aria-description [String] String that can be read by assistive technology. A description can be longer as it is intended to provide more context and information. See the accessibility section for more information.
     # @param tooltip_direction [Symbol] (Primer::Alpha::Tooltip::DIRECTION_DEFAULT) <%= one_of(Primer::Alpha::Tooltip::DIRECTION_OPTIONS) %>
+    # @param box [Boolean] Whether the button is in a <%= link_to_component(Primer::Beta::BorderBox) %>. If `true`, the button will have the `Box-btn-octicon` class.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(icon:, scheme: DEFAULT_SCHEME, box: false, tooltip_direction: Primer::Alpha::Tooltip::DIRECTION_DEFAULT, **system_arguments)
       @icon = icon

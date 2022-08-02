@@ -1,11 +1,4 @@
 ---
-- component: BorderBoxHeader
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/border_box/header.rb
-  parameters:
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
 - component: ButtonMarketing
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/button_marketing.rb
   parameters:
@@ -444,6 +437,24 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: BorderBox
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/border_box.rb
+  parameters:
+  - name: padding
+    type: Symbol
+    default: "`:default`"
+    description: One of `:condensed`, `:default`, or `:spacious`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: BorderBoxHeader
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/border_box/header.rb
+  parameters:
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Breadcrumbs
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/breadcrumbs.rb
   parameters:
@@ -492,17 +503,6 @@
 - component: Truncate
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate.rb
   parameters:
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: BorderBox
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/border_box_component.rb
-  parameters:
-  - name: padding
-    type: Symbol
-    default: "`:default`"
-    description: One of `:condensed`, `:default`, or `:spacious`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -783,11 +783,6 @@
     type: Symbol
     default: N/A
     description: One of `:button`, `:reset`, or `:submit`.
-  - name: box
-    type: Boolean
-    default: "`false`"
-    description: Whether the button is in a [BorderBox](/components/borderbox). If
-      `true`, the button will have the `Box-btn-octicon` class.
   - name: aria-label
     type: String
     default: N/A
@@ -803,6 +798,11 @@
     type: Symbol
     default: "`:s`"
     description: One of `:e`, `:n`, `:ne`, `:nw`, `:s`, `:se`, `:sw`, or `:w`.
+  - name: box
+    type: Boolean
+    default: "`false`"
+    description: Whether the button is in a [BorderBox](/components/beta/borderbox).
+      If `true`, the button will have the `Box-btn-octicon` class.
   - name: system_arguments
     type: Hash
     default: N/A

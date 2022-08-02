@@ -1,7 +1,6 @@
 {
   "Primer::Alpha::AutoComplete": "",
   "Primer::Alpha::AutoComplete::Item": "",
-  "Primer::Alpha::BorderBox::Header": "",
   "Primer::Alpha::ButtonMarketing": "",
   "Primer::Alpha::Layout": "",
   "Primer::Alpha::Layout::Main": "",
@@ -19,6 +18,8 @@
   "Primer::Beta::AvatarStack": "",
   "Primer::Beta::BaseButton": "",
   "Primer::Beta::Blankslate": "",
+  "Primer::Beta::BorderBox": "",
+  "Primer::Beta::BorderBox::Header": "",
   "Primer::Beta::Breadcrumbs": "",
   "Primer::Beta::Breadcrumbs::Item": "",
   "Primer::Beta::Flash": "",

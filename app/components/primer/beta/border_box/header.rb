@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Primer
-  module Alpha
-    module BorderBox
+  module Beta
+    class BorderBox
       # `BorderBox::Header` is used inside `BorderBox` to render its header slot.
       #
       # @accessibility When using `header.title`, set `tag` to one of `h1`, `h2`, `h3`, etc. based on what is appropriate for the page context. <%= link_to_heading_practices %>
@@ -12,7 +12,7 @@ module Primer
 
         # Optional Title.
         #
-        # @param tag [Symbol] <%= one_of(Primer::Alpha::BorderBox::Header::TITLE_TAG_OPTIONS) %>
+        # @param tag [Symbol] <%= one_of(Primer::Beta::BorderBox::Header::TITLE_TAG_OPTIONS) %>
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         renders_one :title, lambda { |tag:, **system_arguments|
           system_arguments[:tag] = fetch_or_fallback(TITLE_TAG_OPTIONS, tag, TITLE_TAG_FALLBACK)
@@ -24,14 +24,14 @@ module Primer
           Primer::BaseComponent.new(**system_arguments)
         }
 
-        # @example default use case
+        # @example Default
         #
-        #   <%= render(Primer::Alpha::BorderBox::Header.new) do %>
+        #   <%= render(Primer::Beta::BorderBox::Header.new) do %>
         #     Header
         #   <% end %>
         #
         # @example with title
-        #   <%= render(Primer::Alpha::BorderBox::Header.new) do |h| %>
+        #   <%= render(Primer::Beta::BorderBox::Header.new) do |h| %>
         #     <% h.title(tag: :h3) do %>I am a title<% end %>
         #   <% end %>
         #
