@@ -783,11 +783,6 @@
     type: Symbol
     default: N/A
     description: One of `:button`, `:reset`, or `:submit`.
-  - name: box
-    type: Boolean
-    default: "`false`"
-    description: Whether the button is in a [BorderBox](/components/beta/borderbox). If
-      `true`, the button will have the `Box-btn-octicon` class.
   - name: aria-label
     type: String
     default: N/A
@@ -803,6 +798,11 @@
     type: Symbol
     default: "`:s`"
     description: One of `:e`, `:n`, `:ne`, `:nw`, `:s`, `:se`, `:sw`, or `:w`.
+  - name: box
+    type: Boolean
+    default: "`false`"
+    description: Whether the button is in a [BorderBox](/components/beta/borderbox).
+      If `true`, the button will have the `Box-btn-octicon` class.
   - name: system_arguments
     type: Hash
     default: N/A
