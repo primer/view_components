@@ -5,7 +5,7 @@ require "application_system_test_case"
 module Alpha
   class IntegrationTooltipTest < ApplicationSystemTestCase
     def test_renders
-      with_preview(:default)
+      visit_preview(:default)
 
       assert_selector("button[id='button-with-tooltip']")
       assert_selector("tool-tip[for='button-with-tooltip'][data-view-component][role='tooltip']", visible: false, text: "Tooltip text")

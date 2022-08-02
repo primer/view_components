@@ -5,7 +5,7 @@ require "application_system_test_case"
 module Alpha
   class IntegrationAutoCompleteTest < ApplicationSystemTestCase
     def test_renders_component
-      with_preview(:default)
+      visit_preview(:default)
 
       assert_selector("auto-complete[for=\"test-id\"][src=\"/auto_complete?version=alpha\"]") do
         assert_selector("input.form-control")
@@ -15,7 +15,7 @@ module Alpha
     end
 
     def test_search_items
-      with_preview(:default)
+      visit_preview(:default)
       assert_selector("input.form-control")
 
       fill_in "input-id", with: "a"
@@ -26,19 +26,19 @@ module Alpha
     end
 
     def test_renders_non_visible_label
-      with_preview(:with_non_visible_label)
+      visit_preview(:with_non_visible_label)
 
       assert_selector("label[for=\"input-id-1\"]", text: "Select a fruit", visible: false)
     end
 
     def test_renders_clear_button
-      with_preview(:with_clear_button)
+      visit_preview(:with_clear_button)
 
       assert_selector("#input-id-4-clear")
     end
 
     def test_renders_icon
-      with_preview(:with_icon)
+      visit_preview(:with_icon)
 
       assert_selector("svg.octicon.octicon-search")
     end
