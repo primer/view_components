@@ -29,14 +29,22 @@ class ComponentStatusMigrator < Thor::Group
   def move_controller
     raise unless File.exist?(controller_path)
 
-    copy_file(controller_path, controller_path_with_status)
-    remove_file(controller_path)
+    if controller_path != controller_path_with_status
+      copy_file(controller_path, controller_path_with_status)
+      remove_file(controller_path)
+    else
+      puts "No change needed - controller file not moved"
+    end
   end
 
   def move_template
     if File.exist?(template_path)
-      copy_file(template_path, template_path_with_status)
-      remove_file(template_path)
+      if template_path != template_path_with_status
+        copy_file(template_path, template_path_with_status)
+        remove_file(template_path)
+      else
+        puts "No change needed - template file not moved"
+      end
     else
       puts "No template found"
     end
@@ -45,23 +53,39 @@ class ComponentStatusMigrator < Thor::Group
   def copy_test
     raise unless File.exist?(test_path)
 
-    copy_file(test_path, test_path_with_status)
+    if test_path != test_path_with_status
+      copy_file(test_path, test_path_with_status)
+    else
+      puts "No change needed - test file not moved"
+    end
   end
 
   def move_story
     raise unless File.exist?(story_path)
 
-    copy_file(story_path, story_path_with_status)
-    remove_file(story_path)
+    if story_path != story_path_with_status
+      copy_file(story_path, story_path_with_status)
+      remove_file(story_path)
+    else
+      puts "No change needed - story file not moved"
+    end
   end
 
   def add_module
-    insert_into_file(controller_path_with_status, "  module #{status.capitalize}\n", after: "module Primer\n")
-    insert_into_file(controller_path_with_status, "  end\n", before: /^end$/, force: true)
+    if !stable?
+      insert_into_file(controller_path_with_status, "  module #{status.capitalize}\n", after: "module Primer\n")
+      insert_into_file(controller_path_with_status, "  end\n", before: /^end$/, force: true)
+    else
+      puts "No change needed - module #{status.capitalize} not added"
+    end
   end
 
   def remove_suffix
-    gsub_file(controller_path_with_status, "class #{name}", "class #{name_without_suffix}")
+    if name != name_without_suffix
+      gsub_file(controller_path_with_status, "class #{name}", "class #{name_without_suffix}")
+    else
+      puts "No change needed - class suffix not removed"
+    end
   end
 
   def rename_test_class
@@ -69,7 +93,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def add_require_to_story
-    insert_into_file(story_path_with_status, "require \"primer/#{status}/#{name_without_suffix.underscore}\"\n", after: "# frozen_string_literal: true\n")
+    insert_into_file(story_path_with_status, "require \"primer/#{status_folder_name}#{name_without_suffix.underscore}\"\n", after: "# frozen_string_literal: true\n")
   end
 
   def rename_nav_entry
@@ -77,17 +101,17 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def update_all_references
-    run("grep -rl #{name} . --exclude=CHANGELOG.md --exclude=#{test_path} | xargs sed -i 's/Primer::#{name}/Primer::#{status.capitalize}::#{name_without_suffix}/g'")
+    run("grep -rl #{name} . --exclude=CHANGELOG.md --exclude=#{test_path} | xargs sed -i 's/Primer::#{name}/Primer::#{status_module}#{name_without_suffix}/g'")
   end
 
   def add_alias
-    insert_into_file(controller_path_with_status, "\nPrimer::#{name} = Primer::#{status.capitalize}::#{name_without_suffix}\n")
+    insert_into_file(controller_path_with_status, "\nPrimer::#{name} = Primer::#{status_module}#{name_without_suffix}\n")
   end
 
   def add_to_linter
     insert_into_file(
       "lib/rubocop/cop/primer/component_name_migration.rb",
-      "\"Primer::#{name}\" => \"Primer::#{status.capitalize}::#{name_without_suffix}\",\n",
+      "\"Primer::#{name}\" => \"Primer::#{status_module}#{name_without_suffix}\",\n",
       after: "DEPRECATIONS = {\n"
     )
   end
@@ -107,11 +131,31 @@ class ComponentStatusMigrator < Thor::Group
   private
 
   def controller_path
-    "app/components/primer/#{name.underscore}.rb"
+    "app/components/primer/#{name_without_suffix.underscore}.rb"
   end
 
   def controller_path_with_status
-    "app/components/primer/#{status}/#{name_without_suffix.underscore}.rb"
+    if stable?
+      controller_path
+    else
+      "app/components/primer/#{status}/#{name_without_suffix.underscore}.rb"
+    end
+  end
+
+  def stable?
+    status == "stable"
+  end
+
+  def status_folder_name
+    if !stable?
+      "#{status}/"
+    end
+  end
+
+  def status_module
+    if !stable?
+      "#{status.capitalize}::"
+    end
   end
 
   def template_path
@@ -119,7 +163,11 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def template_path_with_status
-    "app/components/primer/#{status}/#{name_without_suffix.underscore}.html.erb"
+    if stable?
+      template_path
+    else
+      "app/components/primer/#{status}/#{name_without_suffix.underscore}.html.erb"
+    end
   end
 
   def test_path
@@ -127,15 +175,23 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def test_path_with_status
-    "test/components/#{status}/#{name_without_suffix.underscore}_test.rb"
+    if stable?
+      test_path
+    else
+      "test/components/#{status}/#{name_without_suffix.underscore}_test.rb"
+    end
   end
 
   def story_path
-    "stories/primer/#{name.underscore}_stories.rb"
+    "stories/primer/#{name_without_suffix.underscore}_stories.rb"
   end
 
   def story_path_with_status
-    "stories/primer/#{status}/#{name_without_suffix.underscore}_stories.rb"
+    if stable?
+      story_path
+    else
+      "stories/primer/#{status}/#{name_without_suffix.underscore}_stories.rb"
+    end
   end
 
   def docs_path
@@ -143,7 +199,11 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def docs_path_with_status
-    "/components/#{status}/#{short_name}.md"
+    if stable?
+      docs_path
+    else
+      "/components/#{status}/#{short_name}.md"
+    end
   end
 
   def status
