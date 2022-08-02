@@ -1,4 +1,12 @@
-<%= render Primer::Beta::BaseButton.new(**@system_arguments) do -%>
-  <%= leading_visual %><%= trimmed_content %><%= trailing_visual %><%= primer_octicon("triangle-down", ml: 2, mr: -1) if @dropdown %>
-  <%= tooltip %>
-<% end -%>
+<% if tooltip.present? %>
+  <%= render Primer::BaseComponent.new(tag: :span, position: :relative) do %>
+    <%= render Primer::Beta::BaseButton.new(**@system_arguments) do -%>
+      <%= leading_visual %><%= trimmed_content %><%= trailing_visual %><%= primer_octicon("triangle-down", ml: 2, mr: -1) if @dropdown %>
+    <% end -%>
+    <%= tooltip %>
+  <% end -%>
+<% else %>
+  <%= render Primer::Beta::BaseButton.new(**@system_arguments) do -%>
+    <%= leading_visual %><%= trimmed_content %><%= trailing_visual %><%= primer_octicon("triangle-down", ml: 2, mr: -1) if @dropdown %>
+  <% end -%>
+<% end %>
