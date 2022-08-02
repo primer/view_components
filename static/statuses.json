@@ -1,4 +1,5 @@
 {
+  "Primer::Alpha::ActionListItem": "alpha",
   "Primer::Alpha::AutoComplete": "deprecated",
   "Primer::Alpha::AutoComplete::Item": "deprecated",
   "Primer::Alpha::BorderBox::Header": "alpha",

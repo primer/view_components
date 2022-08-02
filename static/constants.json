@@ -1,4 +1,46 @@
 {
+  "Primer::Alpha::ActionListItem": {
+    "DEFAULT_DESCRIPTION_DISPLAY": "inline",
+    "DEFAULT_SELECT_MODE": "none",
+    "DEFAULT_SIZE": "small",
+    "DEFAULT_VARIANT": "default",
+    "DESCRIPTION_DISPLAY_MAPPINGS": {
+      "inline": "ActionList-item-descriptionWrap--inline",
+      "block": "ActionList-item-descriptionWrap--block"
+    },
+    "DESCRIPTION_DISPLAY_OPTIONS": [
+      "inline",
+      "block"
+    ],
+    "SELECT_MODE_ICON_MAPPINGS": {
+      "none": null,
+      "single": "ActionList-item--singleSelectCheckmark",
+      "multiple": "ActionList-item-multiSelectIcon"
+    },
+    "SELECT_MODE_OPTIONS": [
+      "none",
+      "single",
+      "multiple"
+    ],
+    "SIZE_MAPPINGS": {
+      "small": null,
+      "medium": "ActionList-content--sizeMedium",
+      "large": "ActionList-content--sizeLarge"
+    },
+    "SIZE_OPTIONS": [
+      "small",
+      "medium",
+      "large"
+    ],
+    "VARIANT_MAPPINGS": {
+      "default": null,
+      "danger": "ActionList-item--danger"
+    },
+    "VARIANT_OPTIONS": [
+      "default",
+      "danger"
+    ]
+  },
   "Primer::Alpha::AutoComplete": {
     "Item": "Primer::Alpha::AutoComplete::Item"
   },
@@ -397,7 +439,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",
