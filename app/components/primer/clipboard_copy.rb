@@ -12,7 +12,7 @@ module Primer
     #   <%= render(Primer::ClipboardCopy.new(value: "Text to copy", "aria-label": "Copy text to the system clipboard")) %>
     #
     # @example With text instead of icons
-    #   <%= render(Primer::ClipboardCopy.new(value: "Text to copy", "aria-label": "Copy text to the system clipboard")) do %>
+    #   <%= render(Primer::ClipboardCopy.new(value: "Text to copy")) do %>
     #     Click to copy!
     #   <% end %>
     #
@@ -34,10 +34,14 @@ module Primer
       @system_arguments[:value] = value if value.present?
     end
 
+    # :nodoc:
+    def before_render
+      validate_aria_label if content.blank?
+    end
+
     private
 
     def validate!
-      validate_aria_label
       raise ArgumentError, "Must provide either `value` or `for`" if @value.nil? && @system_arguments[:for].nil?
     end
   end

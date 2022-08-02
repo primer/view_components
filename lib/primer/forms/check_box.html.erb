@@ -1,0 +1,9 @@
+<div class="FormControl-checkbox-wrap">
+  <%= builder.check_box(@input.name, **@input.input_arguments) %>
+  <span class="FormControl-checkbox-labelWrap">
+    <%= builder.label(@input.name, **@input.label_arguments) do %>
+      <%= @input.label %>
+    <% end %>
+    <%= render(Caption.new(input: @input)) %>
+  </span>
+</div>

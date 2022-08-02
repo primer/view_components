@@ -12,64 +12,65 @@ require "active_support/core_ext/string/inflections"
 class ComponentStatusMigrator < Thor::Group
   include Thor::Actions
 
-  STATUSES = %w[alpha beta deprecated].freeze
+  STATUSES = %w[alpha beta deprecated stable].freeze
 
   # Define arguments and options
   argument :name
-  class_option :status, default: "alpha", desc: "Status of the component. Either alpha, beta or deprecated", required: true, type: :string
+  class_option :status, default: "alpha", desc: "Status of the component. Either #{STATUSES.to_sentence(last_word_connector: ', or')}", required: true, type: :string
 
   def self.source_root
     File.dirname(__FILE__)
   end
 
   def validate_status
-    raise unless STATUSES.include?(status)
+    raise "Invalid status: #{status}" unless STATUSES.include?(status)
   end
 
   def move_controller
-    raise unless File.exist?(controller_path)
-
-    copy_file(controller_path, controller_path_with_status)
-    remove_file(controller_path)
+    move_file("controller", controller_path, controller_path_with_status)
   end
 
   def move_template
-    if File.exist?(template_path)
-      copy_file(template_path, template_path_with_status)
-      remove_file(template_path)
-    else
-      puts "No template found"
-    end
+    move_file("template", template_path, template_path_with_status)
   end
 
   def copy_test
-    raise unless File.exist?(test_path)
-
-    copy_file(test_path, test_path_with_status)
+    move_file("test", test_path, test_path_with_status)
   end
 
   def move_story
-    raise unless File.exist?(story_path)
-
-    copy_file(story_path, story_path_with_status)
-    remove_file(story_path)
+    move_file("story", story_path, story_path_with_status)
   end
 
   def add_module
-    insert_into_file(controller_path_with_status, "  module #{status.capitalize}\n", after: "module Primer\n")
-    insert_into_file(controller_path_with_status, "  end\n", before: /^end$/, force: true)
+    if stable?
+      puts "No change needed - module #{status.capitalize} not added"
+    else
+      insert_into_file(controller_path_with_status, "  module #{status.capitalize}\n", after: "module Primer\n")
+      insert_into_file(controller_path_with_status, "  end\n", before: /^end$/, force: true)
+    end
   end
 
   def remove_suffix
-    gsub_file(controller_path_with_status, "class #{name}", "class #{name_without_suffix}")
+    if name == name_without_suffix
+      puts "No change needed - class suffix not removed"
+    else
+      gsub_file(controller_path_with_status, "class #{name}", "class #{name_without_suffix}")
+    end
   end
 
   def rename_test_class
-    gsub_file(test_path_with_status, /class .*Test </, "class Primer#{status.capitalize}#{name_without_suffix.gsub('::', '')}Test <")
+    gsub_file(test_path_with_status, /class .*Test </, "class Primer#{class_status}#{name_without_suffix.gsub('::', '')}Test <")
   end
 
   def add_require_to_story
-    insert_into_file(story_path_with_status, "require \"primer/#{status}/#{name_without_suffix.underscore}\"\n", after: "# frozen_string_literal: true\n")
+    require_statement = "require \"primer/#{status_folder_name}#{name_without_suffix.underscore}\"\n"
+    insert_into_file(story_path_with_status, require_statement, after: "# frozen_string_literal: true\n")
+  end
+
+  def rename_story_class
+    new_class_name = "class Primer::#{class_status}#{name_without_suffix.capitalize}Stories"
+    gsub_file(story_path_with_status, /class Primer::#{name}Stories/, new_class_name)
   end
 
   def rename_nav_entry
@@ -77,17 +78,17 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def update_all_references
-    run("grep -rl #{name} . --exclude=CHANGELOG.md --exclude=#{test_path} | xargs sed -i 's/Primer::#{name}/Primer::#{status.capitalize}::#{name_without_suffix}/g'")
+    run("grep -rl #{name} . --exclude=CHANGELOG.md --exclude=#{test_path} | xargs sed -i 's/Primer::#{name}/Primer::#{status_module}#{name_without_suffix}/g'")
   end
 
   def add_alias
-    insert_into_file(controller_path_with_status, "\nPrimer::#{name} = Primer::#{status.capitalize}::#{name_without_suffix}\n")
+    insert_into_file(controller_path_with_status, "\nPrimer::#{name} = Primer::#{status_module}#{name_without_suffix}\n")
   end
 
   def add_to_linter
     insert_into_file(
       "lib/rubocop/cop/primer/component_name_migration.rb",
-      "\"Primer::#{name}\" => \"Primer::#{status.capitalize}::#{name_without_suffix}\",\n",
+      "\"Primer::#{name}\" => \"Primer::#{status_module}#{name_without_suffix}\",\n",
       after: "DEPRECATIONS = {\n"
     )
   end
@@ -106,48 +107,75 @@ class ComponentStatusMigrator < Thor::Group
 
   private
 
+  def class_status
+    @class_status ||= status.capitalize unless stable?
+  end
+
   def controller_path
-    "app/components/primer/#{name.underscore}.rb"
+    @controller_path ||= "app/components/primer/#{name.underscore}.rb"
   end
 
   def controller_path_with_status
-    "app/components/primer/#{status}/#{name_without_suffix.underscore}.rb"
+    @controller_path_with_status ||= "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.rb"
+  end
+
+  def move_file(file_type, old_path, new_path)
+    if old_path == new_path
+      puts "No change needed - #{file_type} file not moved"
+    elsif File.exist?(old_path)
+      copy_file(old_path, new_path)
+      remove_file(old_path)
+    else
+      puts "Nothing moved. #{file_type.capitalize} file not found: #{story_path}"
+    end
+  end
+
+  def stable?
+    @stable ||= status == "stable"
+  end
+
+  def status_folder_name
+    @status_folder_name ||= "#{status}/" unless stable?
+  end
+
+  def status_module
+    @status_module ||= "#{status.capitalize}::" unless stable?
   end
 
   def template_path
-    "app/components/primer/#{name.underscore}.html.erb"
+    @template_path ||= "app/components/primer/#{name.underscore}.html.erb"
   end
 
   def template_path_with_status
-    "app/components/primer/#{status}/#{name_without_suffix.underscore}.html.erb"
+    @template_path_with_status ||= "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.html.erb"
   end
 
   def test_path
-    "test/components/#{name.underscore}_test.rb"
+    @test_path ||= "test/components/#{name.underscore}_test.rb"
   end
 
   def test_path_with_status
-    "test/components/#{status}/#{name_without_suffix.underscore}_test.rb"
+    @test_path_with_status ||= "test/components/#{status_folder_name}#{name_without_suffix.underscore}_test.rb"
   end
 
   def story_path
-    "stories/primer/#{name.underscore}_stories.rb"
+    @story_path ||= "stories/primer/#{name.underscore}_stories.rb"
   end
 
   def story_path_with_status
-    "stories/primer/#{status}/#{name_without_suffix.underscore}_stories.rb"
+    @story_path_with_status ||= "stories/primer/#{status_folder_name}#{name_without_suffix.underscore}_stories.rb"
   end
 
   def docs_path
-    "/components/#{short_name}.md"
+    @docs_path ||= "/components/#{short_name}.md"
   end
 
   def docs_path_with_status
-    "/components/#{status}/#{short_name}.md"
+    @docs_path_with_status ||= "/components/#{status_folder_name}#{short_name}.md"
   end
 
   def status
-    options[:status].downcase
+    @status ||= options[:status].downcase
   end
 
   def name_without_suffix

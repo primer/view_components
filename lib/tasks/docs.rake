@@ -31,7 +31,6 @@ namespace :docs do
     components = [
       Primer::Alpha::Layout,
       Primer::HellipButton,
-      Primer::Alpha::BorderBox::Header,
       Primer::Image,
       Primer::LocalTime,
       Primer::OcticonSymbolsComponent,
@@ -43,7 +42,8 @@ namespace :docs do
       Primer::Beta::AvatarStack,
       Primer::Beta::BaseButton,
       Primer::Beta::Blankslate,
-      Primer::BorderBoxComponent,
+      Primer::Beta::BorderBox,
+      Primer::Beta::BorderBox::Header,
       Primer::BoxComponent,
       Primer::Beta::Breadcrumbs,
       Primer::ButtonComponent,
@@ -74,6 +74,7 @@ namespace :docs do
       Primer::SubheadComponent,
       Primer::TabContainerComponent,
       Primer::Beta::Text,
+      Primer::Alpha::TextField,
       Primer::TimeAgoComponent,
       Primer::TimelineItemComponent,
       Primer::Tooltip,
@@ -98,6 +99,7 @@ namespace :docs do
       Primer::Alpha::TabPanels,
       Primer::Alpha::Tooltip,
       Primer::ButtonComponent,
+      Primer::IconButton,
       Primer::LinkComponent
     ]
 
