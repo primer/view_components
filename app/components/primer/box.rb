@@ -2,7 +2,7 @@
 
 module Primer
   # `Box` is a basic wrapper component for most layout related needs.
-  class BoxComponent < Primer::Component
+  class Box < Primer::Component
     status :stable
 
     # @example Default
@@ -23,3 +23,5 @@ module Primer
     end
   end
 end
+
+Primer::BoxComponent = Primer::Box

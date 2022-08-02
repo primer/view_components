@@ -319,7 +319,7 @@
   },
   "Primer::BorderBoxComponent": {
   },
-  "Primer::BoxComponent": {
+  "Primer::Box": {
   },
   "Primer::ButtonComponent": {
     "DEFAULT_SCHEME": "default",

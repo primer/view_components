@@ -28,7 +28,7 @@
   "Primer::Beta::Truncate::TruncateText": "alpha",
   "Primer::BlankslateComponent": "deprecated",
   "Primer::BorderBoxComponent": "deprecated",
-  "Primer::BoxComponent": "stable",
+  "Primer::Box": "stable",
   "Primer::ButtonComponent": "beta",
   "Primer::ButtonGroup": "beta",
   "Primer::ClipboardCopy": "beta",

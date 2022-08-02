@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class PrimerBoxComponentTest < Minitest::Test
+class PrimerBoxTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_content

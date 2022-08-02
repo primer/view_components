@@ -122,7 +122,7 @@ module Primer
     end
 
     def call
-      render(Primer::BoxComponent.new(**@system_arguments)) { content }
+      render(Primer::Box.new(**@system_arguments)) { content }
     end
 
     private
