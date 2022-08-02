@@ -12,7 +12,6 @@ class PrimerComponentTest < Minitest::Test
       component.sidebar(tag: :div) { "Bar" }
     }],
     [Primer::HellipButton, { "aria-label": "No action" }],
-    [Primer::Alpha::BorderBox::Header, {}],
     [Primer::Alpha::TabPanels, { label: "label" }],
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
@@ -30,11 +29,11 @@ class PrimerComponentTest < Minitest::Test
     end],
     [Primer::Beta::BaseButton, {}],
     [Primer::BaseComponent, { tag: :div }],
-    [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::Beta::Blankslate, {}, proc { |component|
       component.heading(tag: :h2) { "Foo" }
     }],
-    [Primer::BorderBoxComponent, {}, proc { |component| component.header { "Foo" } }],
+    [Primer::Beta::BorderBox, {}, proc { |component| component.header { "Foo" } }],
+    [Primer::Beta::BorderBox::Header, {}],
     [Primer::BoxComponent, {}],
     [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
     [Primer::ButtonComponent, {}, proc { "Button" }],
@@ -86,7 +85,13 @@ class PrimerComponentTest < Minitest::Test
   ].freeze
 
   def test_registered_components
-    ignored_components = ["Primer::Component", "Primer::OcticonsSymbolComponent", "Primer::Content"]
+    ignored_components = [
+      "Primer::Component",
+      "Primer::OcticonsSymbolComponent",
+      "Primer::Content",
+      "Primer::BlankslateComponent",
+      "Primer::BorderBoxComponent"
+    ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count
     assert_equal primer_component_files_count, COMPONENTS_WITH_ARGS.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"
