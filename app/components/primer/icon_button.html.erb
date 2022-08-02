@@ -1,4 +1,4 @@
-<%= render Primer::BaseComponent.new(tag: :span, position: :relative) do %>
+<%= render Primer::BaseComponent.new(tag: :div, position: :relative, display: :inline_block) do %>
   <%= render Primer::Beta::BaseButton.new(**@system_arguments) do -%>
     <%= render Primer::OcticonComponent.new(icon: @icon) %>
   <% end -%>
