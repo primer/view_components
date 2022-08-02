@@ -9,7 +9,7 @@ class DeprecatedComponentsCounterTest < LinterTestCase
     ERB
     @linter.run(processed_source)
 
-    assert @linter.offenses.size == 2
+    assert_equal @linter.offenses.size, 2
     assert_equal "Primer::BlankslateComponent has been deprecated and should not be used. Try Primer::Beta::Blankslate instead.", @linter.offenses[0].message
     assert_match(/If you must, add <%# erblint:counter DeprecatedComponentsCounter 1 %> to bypass this check/, @linter.offenses[1].message)
   end
@@ -21,7 +21,7 @@ class DeprecatedComponentsCounterTest < LinterTestCase
     ERB
     @linter.run(processed_source)
 
-    assert @linter.offenses.size == 3
+    assert_equal @linter.offenses.size, 3
     assert_match(/If you must, add <%# erblint:counter DeprecatedComponentsCounter 2 %> to bypass this check/, @linter.offenses[2].message)
   end
 
