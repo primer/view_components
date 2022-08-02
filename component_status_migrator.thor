@@ -123,7 +123,7 @@ class ComponentStatusMigrator < Thor::Group
       copy_file(old_path, new_path)
       remove_file(old_path)
     else
-      puts "Nothing movied. #{file_type.capitalize} file not found: #{story_path}"
+      puts "Nothing moved. #{file_type.capitalize} file not found: #{story_path}"
     end
   end
 
