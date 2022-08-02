@@ -7,7 +7,7 @@ module Primer
   # Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox).
   #
   # @deprecated
-  #   Use <%= link_to_component(Primer::BoxComponent) %> instead.
+  #   Use <%= link_to_component(Primer::Box) %> instead.
   #
   #   **Before**:
   #
@@ -22,11 +22,11 @@ module Primer
   #   **After**:
   #
   #   ```erb
-  #   <%%= render Primer::BoxComponent.new(display: :flex, justify_content: :center) %>
-  #   <%%= render Primer::BoxComponent.new(display: :inline_flex) %>
-  #   <%%= render Primer::BoxComponent.new(display: :flex, flex_wrap: :wrap) %>
-  #   <%%= render Primer::BoxComponent.new(display: :flex, align_items: :start) %>
-  #   <%%= render Primer::BoxComponent.new(display: :flex, direction: :column) %>
+  #   <%%= render Primer::Box.new(display: :flex, justify_content: :center) %>
+  #   <%%= render Primer::Box.new(display: :inline_flex) %>
+  #   <%%= render Primer::Box.new(display: :flex, flex_wrap: :wrap) %>
+  #   <%%= render Primer::Box.new(display: :flex, align_items: :start) %>
+  #   <%%= render Primer::Box.new(display: :flex, direction: :column) %>
   #   ```
   class FlexComponent < Primer::Component
     status :deprecated
@@ -62,30 +62,30 @@ module Primer
 
     # @example Default
     #   <%= render(Primer::FlexComponent.new(bg: :subtle)) do %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 1" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 2" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 3" } %>
+    #     <%= render(Primer::Box.new(p: 5, bg: :subtle, classes: "border")) { "Item 1" } %>
+    #     <%= render(Primer::Box.new(p: 5, bg: :subtle, classes: "border")) { "Item 2" } %>
+    #     <%= render(Primer::Box.new(p: 5, bg: :subtle, classes: "border")) { "Item 3" } %>
     #   <% end %>
     #
     # @example Justify center
     #   <%= render(Primer::FlexComponent.new(justify_content: :center, bg: :subtle)) do %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 1" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 2" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 3" } %>
+    #     <%= render(Primer::Box.new(p: 5, bg: :subtle, classes: "border")) { "Item 1" } %>
+    #     <%= render(Primer::Box.new(p: 5, bg: :subtle, classes: "border")) { "Item 2" } %>
+    #     <%= render(Primer::Box.new(p: 5, bg: :subtle, classes: "border")) { "Item 3" } %>
     #   <% end %>
     #
     # @example Align end
     #   <%= render(Primer::FlexComponent.new(align_items: :end, bg: :subtle)) do %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 1" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 2" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 3" } %>
+    #     <%= render(Primer::Box.new(p: 5, bg: :subtle, classes: "border")) { "Item 1" } %>
+    #     <%= render(Primer::Box.new(p: 5, bg: :subtle, classes: "border")) { "Item 2" } %>
+    #     <%= render(Primer::Box.new(p: 5, bg: :subtle, classes: "border")) { "Item 3" } %>
     #   <% end %>
     #
     # @example Direction column
     #   <%= render(Primer::FlexComponent.new(direction: :column, bg: :subtle)) do %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 1" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 2" } %>
-    #     <%= render(Primer::BoxComponent.new(p: 5, bg: :subtle, classes: "border")) { "Item 3" } %>
+    #     <%= render(Primer::Box.new(p: 5, bg: :subtle, classes: "border")) { "Item 1" } %>
+    #     <%= render(Primer::Box.new(p: 5, bg: :subtle, classes: "border")) { "Item 2" } %>
+    #     <%= render(Primer::Box.new(p: 5, bg: :subtle, classes: "border")) { "Item 3" } %>
     #   <% end %>
     #
     # @param justify_content [Symbol] Use this param to distribute space between and around flex items along the main axis of the container. <%= one_of(Primer::FlexComponent::JUSTIFY_CONTENT_OPTIONS) %>
@@ -102,7 +102,7 @@ module Primer
       direction: nil,
       **system_arguments
     )
-      deprecated_component_warning(new_class: Primer::BoxComponent, version: "0.0.40")
+      deprecated_component_warning(new_class: Primer::Box, version: "0.0.40")
 
       @align_items = fetch_or_fallback(ALIGN_ITEMS_OPTIONS, align_items, ALIGN_ITEMS_DEFAULT)
       @justify_content = fetch_or_fallback(JUSTIFY_CONTENT_OPTIONS, justify_content, JUSTIFY_CONTENT_DEFAULT)

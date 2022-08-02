@@ -6,10 +6,10 @@ module Primer
     status :stable
 
     # @example Default
-    #   <%= render(Primer::BoxComponent.new) { "Your content here" } %>
+    #   <%= render(Primer::Box.new) { "Your content here" } %>
     #
     # @example Color and padding
-    #   <%= render(Primer::BoxComponent.new(bg: :subtle, p: 3)) { "Hello world" } %>
+    #   <%= render(Primer::Box.new(bg: :subtle, p: 3)) { "Hello world" } %>
     #
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(**system_arguments)
@@ -23,5 +23,3 @@ module Primer
     end
   end
 end
-
-Primer::BoxComponent = Primer::Box

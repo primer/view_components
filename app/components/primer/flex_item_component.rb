@@ -5,7 +5,7 @@ module Primer
   # dimensions to fill available space.
   #
   # @deprecated
-  #   Use <%= link_to_component(Primer::BoxComponent) %> instead.
+  #   Use <%= link_to_component(Primer::Box) %> instead.
   #
   #   **Before**:
   #
@@ -16,7 +16,7 @@ module Primer
   #   **After**:
   #
   #   ```erb
-  #   <%%= render Primer::BoxComponent.new(flex: :auto) %>
+  #   <%%= render Primer::Box.new(flex: :auto) %>
   #   ```
   class FlexItemComponent < Primer::Component
     status :deprecated
@@ -38,7 +38,7 @@ module Primer
     # @param flex_auto [Boolean] Fills available space and auto-sizes based on the content. Defaults to <%= Primer::FlexItemComponent::FLEX_AUTO_DEFAULT %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(flex_auto: FLEX_AUTO_DEFAULT, **system_arguments)
-      deprecated_component_warning(new_class: Primer::BoxComponent, version: "0.0.40")
+      deprecated_component_warning(new_class: Primer::Box, version: "0.0.40")
 
       @system_arguments = system_arguments
       @system_arguments[:classes] =

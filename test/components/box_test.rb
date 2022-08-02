@@ -6,7 +6,7 @@ class PrimerBoxTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_content
-    render_inline(Primer::BoxComponent.new) do
+    render_inline(Primer::Box.new) do
       "content"
     end
 
@@ -14,7 +14,7 @@ class PrimerBoxTest < Minitest::Test
   end
 
   def test_renders_div
-    render_inline(Primer::BoxComponent.new) do
+    render_inline(Primer::Box.new) do
       "content"
     end
 
@@ -22,6 +22,6 @@ class PrimerBoxTest < Minitest::Test
   end
 
   def test_status
-    assert_component_state(Primer::BoxComponent, :stable)
+    assert_component_state(Primer::Box, :stable)
   end
 end
