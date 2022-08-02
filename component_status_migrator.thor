@@ -69,9 +69,8 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def rename_story_class
-    prior_class_name = /class Primer::#{name.capitalize}Stories/
     new_class_name = "class Primer::#{name_without_suffix.capitalize}Stories"
-    gsub_file(story_path_with_status, prior_class_name, new_class_name)
+    gsub_file(story_path_with_status, /class Primer::#{name}Stories/, new_class_name)
   end
 
   def rename_nav_entry
