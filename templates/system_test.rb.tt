@@ -4,7 +4,7 @@ require "application_system_test_case"
 
 class Integration<%= module_name %><%= class_name %>Test < ApplicationSystemTestCase
   def test_renders_component
-    with_preview(:default)
+    visit_preview(:default)
 
     assert_selector(".<%= custom_element_name %>")
   end

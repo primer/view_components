@@ -20,7 +20,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   AXE_RULES_TO_SKIP = [:region, :"color-contrast"].freeze
   AXE_WITHIN_SELECTOR = "body"
 
-  def with_preview(preview_name)
+  def visit_preview(preview_name)
     component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
     match = /^(Alpha|Beta)([A-Z])/.match(component_name)
     status = match ? match[1] : ""
