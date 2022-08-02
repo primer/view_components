@@ -125,15 +125,11 @@ class ComponentStatusMigrator < Thor::Group
   private
 
   def controller_path
-    "app/components/primer/#{name_without_suffix.underscore}.rb"
+    "app/components/primer/#{name.underscore}.rb"
   end
 
   def controller_path_with_status
-    if stable?
-      controller_path
-    else
-      "app/components/primer/#{status}/#{name_without_suffix.underscore}.rb"
-    end
+    "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.rb"
   end
 
   def stable?
@@ -157,11 +153,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def template_path_with_status
-    if stable?
-      template_path
-    else
-      "app/components/primer/#{status}/#{name_without_suffix.underscore}.html.erb"
-    end
+    "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.html.erb"
   end
 
   def test_path
@@ -169,23 +161,15 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def test_path_with_status
-    if stable?
-      test_path
-    else
-      "test/components/#{status}/#{name_without_suffix.underscore}_test.rb"
-    end
+    "test/components/#{status_folder_name}#{name_without_suffix.underscore}_test.rb"
   end
 
   def story_path
-    "stories/primer/#{name_without_suffix.underscore}_stories.rb"
+    "stories/primer/#{name.underscore}_stories.rb"
   end
 
   def story_path_with_status
-    if stable?
-      story_path
-    else
-      "stories/primer/#{status}/#{name_without_suffix.underscore}_stories.rb"
-    end
+    "stories/primer/#{status_folder_name}#{name_without_suffix.underscore}_stories.rb"
   end
 
   def docs_path
@@ -193,11 +177,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def docs_path_with_status
-    if stable?
-      docs_path
-    else
-      "/components/#{status}/#{short_name}.md"
-    end
+    "/components/#{status_folder_name}#{short_name}.md"
   end
 
   def status
