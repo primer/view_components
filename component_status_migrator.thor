@@ -108,11 +108,11 @@ class ComponentStatusMigrator < Thor::Group
   private
 
   def controller_path
-    "app/components/primer/#{name.underscore}.rb"
+    @controller_path ||= "app/components/primer/#{name.underscore}.rb"
   end
 
   def controller_path_with_status
-    "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.rb"
+    @controller_path_with_status ||= "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.rb"
   end
 
   def move_file(file_type, old_path, new_path)
@@ -127,51 +127,51 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def stable?
-    status == "stable"
+    @stable ||= status == "stable"
   end
 
   def status_folder_name
-    "#{status}/" unless stable?
+    @status_folder_name ||= "#{status}/" unless stable?
   end
 
   def status_module
-    "#{status.capitalize}::" unless stable?
+    @status_module ||= "#{status.capitalize}::" unless stable?
   end
 
   def template_path
-    "app/components/primer/#{name.underscore}.html.erb"
+    @template_path ||= "app/components/primer/#{name.underscore}.html.erb"
   end
 
   def template_path_with_status
-    "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.html.erb"
+    @template_path_with_status ||= "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.html.erb"
   end
 
   def test_path
-    "test/components/#{name.underscore}_test.rb"
+    @test_path ||= "test/components/#{name.underscore}_test.rb"
   end
 
   def test_path_with_status
-    "test/components/#{status_folder_name}#{name_without_suffix.underscore}_test.rb"
+    @test_path_with_status ||= "test/components/#{status_folder_name}#{name_without_suffix.underscore}_test.rb"
   end
 
   def story_path
-    "stories/primer/#{name.underscore}_stories.rb"
+    @story_path ||= "stories/primer/#{name.underscore}_stories.rb"
   end
 
   def story_path_with_status
-    "stories/primer/#{status_folder_name}#{name_without_suffix.underscore}_stories.rb"
+    @story_path_with_status ||= "stories/primer/#{status_folder_name}#{name_without_suffix.underscore}_stories.rb"
   end
 
   def docs_path
-    "/components/#{short_name}.md"
+    @docs_path ||= "/components/#{short_name}.md"
   end
 
   def docs_path_with_status
-    "/components/#{status_folder_name}#{short_name}.md"
+    @docs_path_with_status ||= "/components/#{status_folder_name}#{short_name}.md"
   end
 
   def status
-    options[:status].downcase
+    @status ||= options[:status].downcase
   end
 
   def name_without_suffix
