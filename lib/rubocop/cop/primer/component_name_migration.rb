@@ -15,7 +15,7 @@ module RuboCop
       # Primer::Beta::ComponentName.new()
       class ComponentNameMigration < BaseCop
         DEPRECATIONS = {
-          "Primer::Box" => "Primer::Box",
+          "Primer::BoxComponent" => "Primer::Box",
           "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
           "Primer::BorderBoxComponent" => "Primer::Beta::BorderBox",
           "Primer::BaseButton" => "Primer::Beta::BaseButton",
