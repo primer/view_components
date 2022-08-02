@@ -27,58 +27,35 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def move_controller
-    if controller_path != controller_path_with_status
-      copy_file(controller_path, controller_path_with_status)
-      remove_file(controller_path)
-    else
-      puts "No change needed - controller file not moved"
-    end
+    move_file("controller", controller_path, controller_path_with_status)
   end
 
   def move_template
-    if File.exist?(template_path)
-      if template_path != template_path_with_status
-        copy_file(template_path, template_path_with_status)
-        remove_file(template_path)
-      else
-        puts "No change needed - template file not moved"
-      end
-    else
-      puts "No template found"
-    end
-  end
+    move_file("template", template_path, template_path_with_status)
+ end
 
   def copy_test
-    if test_path != test_path_with_status
-      copy_file(test_path, test_path_with_status)
-    else
-      puts "No change needed - test file not moved"
-    end
+    move_file("test", test_path, test_path_with_status)
   end
 
   def move_story
-    if story_path != story_path_with_status
-      copy_file(story_path, story_path_with_status)
-      remove_file(story_path)
-    else
-      puts "No change needed - story file not moved"
-    end
+    move_file("story", story_path, story_path_with_status)
   end
 
   def add_module
-    if !stable?
+    if stable?
+      puts "No change needed - module #{status.capitalize} not added"
+    else
       insert_into_file(controller_path_with_status, "  module #{status.capitalize}\n", after: "module Primer\n")
       insert_into_file(controller_path_with_status, "  end\n", before: /^end$/, force: true)
-    else
-      puts "No change needed - module #{status.capitalize} not added"
     end
   end
 
   def remove_suffix
-    if name != name_without_suffix
-      gsub_file(controller_path_with_status, "class #{name}", "class #{name_without_suffix}")
-    else
+    if name == name_without_suffix
       puts "No change needed - class suffix not removed"
+    else
+      gsub_file(controller_path_with_status, "class #{name}", "class #{name_without_suffix}")
     end
   end
 
@@ -132,20 +109,27 @@ class ComponentStatusMigrator < Thor::Group
     "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.rb"
   end
 
+  def move_file(file_type, old_path, new_path)
+    if old_path == new_path
+      puts "No change needed - #{file_type} file not moved"
+    elsif File.exist?(old_path)
+      copy_file(old_path, new_path)
+      remove_file(old_path)
+    else
+      puts "Nothing movied. #{file_type.capitalize} file not found: #{story_path}"
+    end
+  end
+
   def stable?
     status == "stable"
   end
 
   def status_folder_name
-    if !stable?
-      "#{status}/"
-    end
+    "#{status}/" unless stable?
   end
 
   def status_module
-    if !stable?
-      "#{status.capitalize}::"
-    end
+    "#{status.capitalize}::" unless stable?
   end
 
   def template_path
