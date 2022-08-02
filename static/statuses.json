@@ -29,6 +29,7 @@
   "Primer::BlankslateComponent": "deprecated",
   "Primer::BorderBoxComponent": "deprecated",
   "Primer::Box": "stable",
+  "Primer::BoxComponent": "deprecated",
   "Primer::ButtonComponent": "beta",
   "Primer::ButtonGroup": "beta",
   "Primer::ClipboardCopy": "beta",
