@@ -38,7 +38,7 @@ class Primer::ProgressBarComponentTest < Minitest::Test
       component.item(percentage: 80)
     end
 
-    assert_selector("[style='width: 80%;']")
+    assert_selector("[style='width: 80%']")
   end
 
   def test_renders_custom_styles
