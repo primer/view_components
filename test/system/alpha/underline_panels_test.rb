@@ -42,13 +42,13 @@ module Alpha
     end
 
     def test_renders_component
-      with_preview(:default)
+      visit_preview(:default)
 
       assert_underline_panels_rendered
     end
 
     def test_changes_tabs_on_click
-      with_preview(:default)
+      visit_preview(:default)
 
       assert_underline_panels_rendered
 
