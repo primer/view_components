@@ -88,6 +88,100 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: TextField
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/text_field.rb
+  parameters:
+  - name: name
+    type: String
+    default: N/A
+    description: Value for the HTML name attribute.
+  - name: id
+    type: String
+    default: N/A
+    description: Value for the HTML id attribute.
+  - name: class
+    type: String
+    default: N/A
+    description: A list of CSS classes to add to the input. Exists for compatibility
+      with Rails form builders.
+  - name: classes
+    type: String
+    default: N/A
+    description: A list of CSS classes to add to the input. Combined with the `:class`
+      argument.
+  - name: caption
+    type: String
+    default: N/A
+    description: Caption text to render below the input.
+  - name: label
+    type: String
+    default: N/A
+    description: Label text displayed above the input.
+  - name: visually_hide_label
+    type: Boolean
+    default: N/A
+    description: Whether or not to visually hide the label. If `true` the label will
+      be hidden visually but still available to screen readers.
+  - name: size
+    type: Symbol
+    default: N/A
+    description: The size of the field. One of `:large`, `:medium`, or `:small`.
+  - name: show_clear_button
+    type: Boolean
+    default: N/A
+    description: Whether or not to include a clear button inside the input that clears
+      the input's contents when clicked.
+  - name: clear_button_id
+    type: String
+    default: N/A
+    description: The HTML id attribute of the clear button.
+  - name: full_width
+    type: Boolean
+    default: N/A
+    description: Controls whether or not the input takes the full width of its container.
+  - name: disabled
+    type: Boolean
+    default: N/A
+    description: Whether or not the input should accept keyboard and mouse input.
+  - name: invalid
+    type: Boolean
+    default: N/A
+    description: If `true`, renders the input in a visually invalid state.
+  - name: placeholder
+    type: String
+    default: N/A
+    description: Placeholder text.
+  - name: inset
+    type: Boolean
+    default: N/A
+    description: If `true`, renders the input in a visually inset state.
+  - name: monospace
+    type: Boolean
+    default: N/A
+    description: If `true`, uses a monospace font for the input field.
+  - name: leading_visual
+    type: Hash
+    default: N/A
+    description: Renders a leading visual icon before the text field's cursor. The
+      hash will be passed to Primer's [Octicon component](https://primer.style/view-components/components/octicon).
+  - name: validation_message
+    type: String
+    default: N/A
+    description: A validation message to display beneath the input. Implicitly sets
+      `invalid` to `true`.
+  - name: label_arguments
+    type: Hash
+    default: N/A
+    description: System arugments passed to the Rails builder's `#label` method. These
+      arguments will appear as HTML attributes on the `<label>` tag.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+  - name: block
+    type: Proc
+    default: N/A
+    description: Unused.
 - component: Tooltip
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tooltip.rb
   parameters:
@@ -692,8 +786,23 @@
   - name: box
     type: Boolean
     default: "`false`"
-    description: Whether the button is in a [BorderBox](/components/beta/borderbox).
-      If `true`, the button will have the `Box-btn-octicon` class.
+    description: Whether the button is in a [BorderBox](/components/beta/borderbox). If
+      `true`, the button will have the `Box-btn-octicon` class.
+  - name: aria-label
+    type: String
+    default: N/A
+    description: String that can be read by assistive technology. A label should be
+      short and concise. See the accessibility section for more information.
+  - name: aria-description
+    type: String
+    default: N/A
+    description: String that can be read by assistive technology. A description can
+      be longer as it is intended to provide more context and information. See the
+      accessibility section for more information.
+  - name: tooltip_direction
+    type: Symbol
+    default: "`:s`"
+    description: One of `:e`, `:n`, `:ne`, `:nw`, `:s`, `:se`, `:sw`, or `:w`.
   - name: system_arguments
     type: Hash
     default: N/A

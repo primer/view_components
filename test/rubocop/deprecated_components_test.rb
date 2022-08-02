@@ -65,13 +65,4 @@ class RubocopDeprecatedComponentsTest < CopTest
     assert_equal 1, cop.offenses.count
     assert_equal "Primer::Tooltip has been deprecated and should not be used. Try Primer::Alpha::Tooltip instead.", cop.offenses.first.message
   end
-
-  def test_raises_if_legacy_component_missing_in_alternative_components
-    RuboCop::Cop::Primer::DeprecatedComponents.any_instance.stubs(:statuses_json).returns({ "Primer::FakeComponent": "deprecated" })
-    assert_raises(RuntimeError) do
-      investigate(cop, <<-RUBY)
-        render(Primer::FakeComponent.new(foo: "bar"))
-      RUBY
-    end
-  end
 end

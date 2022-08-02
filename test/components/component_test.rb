@@ -74,6 +74,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.heading { "Foo" } }],
     [Primer::TabContainerComponent, {}, proc { "Foo" }],
+    [Primer::Alpha::TextField, { name: :foo, label: "Foo" }],
     [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
     [Primer::Beta::Truncate, {}, proc { |component| component.item { "Foo" } }],

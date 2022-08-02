@@ -74,6 +74,7 @@ namespace :docs do
       Primer::SubheadComponent,
       Primer::TabContainerComponent,
       Primer::Beta::Text,
+      Primer::Alpha::TextField,
       Primer::TimeAgoComponent,
       Primer::TimelineItemComponent,
       Primer::Tooltip,
@@ -98,6 +99,7 @@ namespace :docs do
       Primer::Alpha::TabPanels,
       Primer::Alpha::Tooltip,
       Primer::ButtonComponent,
+      Primer::IconButton,
       Primer::LinkComponent
     ]
 

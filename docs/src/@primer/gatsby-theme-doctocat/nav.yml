@@ -99,6 +99,8 @@
     url: "/components/alpha/tabpanels"
   - title: Text
     url: "/components/beta/text"
+  - title: TextField
+    url: "/components/alpha/textfield"
   - title: TimeAgo
     url: "/components/timeago"
   - title: TimelineItem

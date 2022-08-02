@@ -1,0 +1,3 @@
+<%= form_with(url: "/foo", skip_default_ids: false) do |f| %>
+  <%= render(InvalidForm.new(f)) %>
+<% end %>

@@ -132,6 +132,8 @@
       "div"
     ]
   },
+  "Primer::Alpha::TextField": {
+  },
   "Primer::Alpha::Tooltip": {
     "DIRECTION_DEFAULT": "s",
     "DIRECTION_OPTIONS": [
