@@ -90,7 +90,8 @@ class PrimerComponentTest < Minitest::Test
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
       "Primer::BlankslateComponent",
-      "Primer::BorderBoxComponent"
+      "Primer::BorderBoxComponent",
+      "Primer::BoxComponent"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count
