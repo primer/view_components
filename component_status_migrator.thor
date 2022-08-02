@@ -12,11 +12,11 @@ require "active_support/core_ext/string/inflections"
 class ComponentStatusMigrator < Thor::Group
   include Thor::Actions
 
-  STATUSES = %w[alpha beta deprecated].freeze
+  STATUSES = %w[alpha beta deprecated stable].freeze
 
   # Define arguments and options
   argument :name
-  class_option :status, default: "alpha", desc: "Status of the component. Either alpha, beta or deprecated", required: true, type: :string
+  class_option :status, default: "alpha", desc: "Status of the component. Either alpha, beta, stable or deprecated", required: true, type: :string
 
   def self.source_root
     File.dirname(__FILE__)
