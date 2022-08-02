@@ -111,11 +111,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { style: "width: 100%;" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      if component == Primer::Alpha::Tooltip
-        assert_selector("[style='width: 100%;visibility: hidden']", visible: :all)
-      else
-        assert_selector("[style='width: 100%;']", visible: :all)
-      end
+      assert_selector(style: { "width" => "100%" })
     end
   end
 
