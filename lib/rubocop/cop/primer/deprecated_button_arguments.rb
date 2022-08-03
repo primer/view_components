@@ -6,7 +6,7 @@ require "rubocop"
 module RuboCop
   module Cop
     module Primer
-      # This cop ensures that `ButtonComponent` doesn't use deprecated arguments.
+      # This cop ensures that `Button` doesn't use deprecated arguments.
       #
       # bad
       # ButtonComponent.new(variant: :small)
@@ -19,7 +19,7 @@ module RuboCop
         STR
 
         def_node_matcher :button_component?, <<~PATTERN
-          (send (const (const nil? :Primer) :ButtonComponent) :new ...)
+          (send (const (const (const nil? :Primer) :Beta) :Button) :new ...)
         PATTERN
 
         DEPRECATIONS = {
