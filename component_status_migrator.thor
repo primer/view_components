@@ -78,26 +78,33 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def update_all_references
-    exclusions = [
-      test_path,
-      'CHANGELOG.md',
-      '.git/',
-      'vendor/',
-      'docs/node_modules/',
+    exclude_files = [
+      '.git',
       '.yardoc',
-      'doc',
-      'test/previews/primer/docs/',
-      'lookbook/app/assets/builds/',
-      'docs/content/adr/',
-      'docs/content/components/',
-      'docs/.cache/',
-      'docs/public/',
+      'CHANGELOG.md',
+      test_path
+    ]
+
+    exclude_folders = [
+      'demo/node_modules',
+      'demo/tmp',
+      'demo/vendor',
+      'docs/.cache',
+      'docs/content/adr',
+      'docs/content/components',
+      'docs/node_modules',
+      'docs/public',
       'log/',
-      'tmp/'
+      'lookbook/app/assets/builds',
+      'lookbook/vendor',
+      'test/previews/primer/docs',
+      'tmp/',
+      'vendor'
     ]
 
     cmd = ["grep -rl #{name} ."]
-    cmd << exclusions.join(' --exclude=')
+    cmd << exclude_files.join(' --exclude=')
+    cmd << exclude_folders.join(' --exclude-dir=')
     cmd << "| xargs sed -i 's/Primer::#{name}/Primer::#{status_module}#{name_without_suffix}/g'"
 
     run(cmd.join(' '))
