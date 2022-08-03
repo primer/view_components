@@ -42,6 +42,7 @@ module Primer
 
       initializer "primer.forms.helpers" do
         ActiveSupport.on_load :action_controller do
+          require "primer/form_helper"
           helper Primer::FormHelper
         end
       end
