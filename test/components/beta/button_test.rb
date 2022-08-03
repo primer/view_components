@@ -74,7 +74,7 @@ class PrimerBetaButtonTest < Minitest::Test
   end
 
   def test_renders_with_the_css_class_size_mapping_to_the_provided_variant
-    render_inline(Primer::Beta::Button.new(variant: :small)) { "content" }
+    render_inline(Primer::Beta::Button.new(variant: :small)) { "content" } # rubocop disable:Primer/DeprecatedButtonArguments
 
     assert_selector(".btn.btn-sm")
   end
