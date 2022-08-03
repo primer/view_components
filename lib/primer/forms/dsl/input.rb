@@ -22,17 +22,7 @@ module Primer
 
         attr_reader :builder, :form, :input_arguments, :label_arguments, :caption, :validation_message, :ids
 
-        class << self
-          attr_writer :classify
-
-          def classify?
-            !!@classify
-          end
-
-          def inherited(base)
-            base.classify(true)
-          end
-        end
+        class_attribute :classify, instance_accessor: false, default: true
 
         def initialize(builder:, form:, **system_arguments)
           @builder = builder
