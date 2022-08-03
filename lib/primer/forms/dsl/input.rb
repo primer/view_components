@@ -22,6 +22,18 @@ module Primer
 
         attr_reader :builder, :form, :input_arguments, :label_arguments, :caption, :validation_message, :ids
 
+        class << self
+          attr_writer :classify
+
+          def classify?
+            !!@classify
+          end
+
+          def inherited(base)
+            base.classify(true)
+          end
+        end
+
         def initialize(builder:, form:, **system_arguments)
           @builder = builder
           @form = form
@@ -216,11 +228,18 @@ module Primer
 
         private
 
+        def classify?
+          self.class.classify?
+        end
+
         def process_classes!(args)
-          args[:classes] = class_names(args.delete(:class), args[:classes])
-          args.merge!(Primer::Classify.call(args))
+          if classify?
+            args[:classes] = class_names(args.delete(:class), args[:classes])
+            args.merge!(Primer::Classify.call(args))
+            args.except!(*UTILITY_KEYS)
+          end
+
           args[:class] = class_names(args[:class], args.delete(:classes))
-          args.except!(*UTILITY_KEYS)
           args
         end
 
