@@ -16,7 +16,7 @@ class ComponentStatusMigrator < Thor::Group
 
   # Define arguments and options
   argument :name
-  class_option :status, default: "alpha", desc: "Status of the component. Either alpha, beta, stable or deprecated", required: true, type: :string
+  class_option :status, default: "alpha", desc: "Status of the component. Valid values: #{STATUSES.join(', ')}", required: true, type: :string
 
   def self.source_root
     File.dirname(__FILE__)
@@ -43,12 +43,10 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def add_module
-    if stable?
-      puts "No change needed - module #{status.capitalize} not added"
-    else
-      insert_into_file(controller_path_with_status, "  module #{status.capitalize}\n", after: "module Primer\n")
-      insert_into_file(controller_path_with_status, "  end\n", before: /^end$/, force: true)
-    end
+    return if stable?
+
+    insert_into_file(controller_path_with_status, "  module #{class_status}\n", after: "module Primer\n")
+    insert_into_file(controller_path_with_status, "  end\n", before: /^end$/, force: true)
   end
 
   def remove_suffix
@@ -69,7 +67,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def rename_story_class
-    new_class_name = "class Primer::#{class_status}#{name_without_suffix.capitalize}Stories"
+    new_class_name = "class Primer::#{status_module}#{name_without_suffix}Stories"
     gsub_file(story_path_with_status, /class Primer::#{name}Stories/, new_class_name)
   end
 
@@ -78,11 +76,38 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def update_all_references
-    run("grep -rl #{name} . --exclude=CHANGELOG.md --exclude=#{test_path} | xargs sed -i 's/Primer::#{name}/Primer::#{status_module}#{name_without_suffix}/g'")
+    exclude_files = [
+      ".git",
+      "CHANGELOG.md",
+      test_path
+    ]
+
+    exclude_folders = [
+      ".cache",
+      ".yardoc",
+      "builds",
+      "log",
+      "node_modules",
+      "tmp",
+      "vendor"
+    ]
+
+    cmd = ["grep -rl #{name} ."]
+    cmd << exclude_files.join(" --exclude=")
+    cmd << "--exclude-dir={#{exclude_folders.join(',')}}"
+    cmd << "| xargs sed -i '' 's/Primer::#{name}/Primer::#{status_module}#{name_without_suffix}/g'"
+
+    run(cmd.join(" "))
   end
 
   def add_alias
-    insert_into_file(controller_path_with_status, "\nPrimer::#{name} = Primer::#{status_module}#{name_without_suffix}\n")
+    return if controller_path == controller_path_with_status
+
+    remove_file(controller_path)
+    create_file(
+      controller_path,
+      "# frozen_string_literal: true\n\nmodule Primer\n\tclass #{name} < Primer::#{status_module}#{name_without_suffix}\n\t\tstatus :deprecated\n\tend\nend"
+    )
   end
 
   def add_to_linter
@@ -90,6 +115,22 @@ class ComponentStatusMigrator < Thor::Group
       "lib/rubocop/cop/primer/component_name_migration.rb",
       "\"Primer::#{name}\" => \"Primer::#{status_module}#{name_without_suffix}\",\n",
       after: "DEPRECATIONS = {\n"
+    )
+  end
+
+  def add_to_deprecated_component_helper
+    insert_into_file(
+      "lib/primer/view_components/linters/helpers/deprecated_components_helpers.rb",
+      "\"Primer::#{name}\" => \"Primer::#{status_module}#{name_without_suffix}\",\n",
+      after: "COMPONENT_TO_USE_INSTEAD = {\n"
+    )
+  end
+
+  def add_to_ignored_component_test
+    insert_into_file(
+      "test/components/component_test.rb",
+      "\"Primer::#{name}\",\n",
+      after: "ignored_components = [\n"
     )
   end
 
@@ -126,7 +167,7 @@ class ComponentStatusMigrator < Thor::Group
       copy_file(old_path, new_path)
       remove_file(old_path)
     else
-      puts "Nothing moved. #{file_type.capitalize} file not found: #{story_path}"
+      puts "Nothing moved. #{file_type.capitalize} file not found: #{new_path}"
     end
   end
 
@@ -139,7 +180,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def status_module
-    @status_module ||= "#{status.capitalize}::" unless stable?
+    @status_module ||= "#{class_status}::" unless stable?
   end
 
   def template_path
