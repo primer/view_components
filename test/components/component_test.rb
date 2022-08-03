@@ -34,6 +34,7 @@ class PrimerComponentTest < Minitest::Test
     }],
     [Primer::Beta::BorderBox, {}, proc { |component| component.header { "Foo" } }],
     [Primer::Beta::BorderBox::Header, {}],
+    [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::BoxComponent, {}],
     [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
     [Primer::ButtonComponent, {}, proc { "Button" }],
@@ -89,7 +90,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
-      "Primer::BlankslateComponent",
       "Primer::BorderBoxComponent"
     ]
 
