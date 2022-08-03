@@ -16,7 +16,7 @@ class ComponentStatusMigrator < Thor::Group
 
   # Define arguments and options
   argument :name
-  class_option :status, default: "alpha", desc: "Status of the component. Valid values: #{STATUSES.join(", "), required: true, type: :string
+  class_option :status, default: "alpha", desc: "Status of the component. Valid values: #{STATUSES.join(', ')}", required: true, type: :string
 
   def self.source_root
     File.dirname(__FILE__)
