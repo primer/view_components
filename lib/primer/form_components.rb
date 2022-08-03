@@ -17,7 +17,7 @@ module Primer
         end
 
         def call
-          builder = ActionView::Helpers::FormBuilder.new(
+          builder = Primer::Forms::Builder.new(
             nil, nil, __vc_original_view_context, {}
           )
 
