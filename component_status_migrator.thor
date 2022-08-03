@@ -78,7 +78,32 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def update_all_references
-    run("grep -rl #{name} . --exclude=CHANGELOG.md --exclude=#{test_path} | xargs sed -i 's/Primer::#{name}/Primer::#{status_module}#{name_without_suffix}/g'")
+    exclusions = [
+      test_path,
+      'CHANGELOG.md',
+      '.git/',
+      'vendor/',
+      'docs/node_modules/',
+      '.yardoc',
+      'doc',
+      'test/previews/primer/docs/',
+      'lookbook/app/assets/builds/',
+      'docs/content/adr/',
+      'docs/content/components/',
+      'app/components/**/*.js',
+      'app/components/**/*.d.ts',
+      'stories/**/*.stories.json',
+      'docs/.cache/',
+      'docs/public/',
+      'log/',
+      'tmp/'
+    ]
+
+    cmd = ["grep -rl #{name} ."]
+    cmd << exclusions.join(' --exclude=')
+    cmd << "| xargs sed -i 's/Primer::#{name}/Primer::#{status_module}#{name_without_suffix}/g'"
+
+    run(cmd.join(' '))
   end
 
   def add_alias
