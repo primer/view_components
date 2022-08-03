@@ -1,14 +1,14 @@
 {
   "Primer::Alpha::ActionListItem": {
-    "DEFAULT_DESCRIPTION_DISPLAY": "inline",
+    "DEFAULT_DESCRIPTION_VARIANT": "block",
     "DEFAULT_SELECT_MODE": "none",
     "DEFAULT_SIZE": "small",
     "DEFAULT_VARIANT": "default",
-    "DESCRIPTION_DISPLAY_MAPPINGS": {
+    "DESCRIPTION_VARIANT_MAPPINGS": {
       "inline": "ActionList-item-descriptionWrap--inline",
       "block": "ActionList-item-descriptionWrap--block"
     },
-    "DESCRIPTION_DISPLAY_OPTIONS": [
+    "DESCRIPTION_VARIANT_OPTIONS": [
       "inline",
       "block"
     ],
