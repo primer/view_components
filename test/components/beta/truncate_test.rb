@@ -64,6 +64,6 @@ class PrimerBetaTruncateTest < Minitest::Test
       component.item(max_width: 1337) { "content" }
     end
 
-    assert_selector(".Truncate > .Truncate-text[style='max-width: 1337px;']", text: "content")
+    assert_selector(".Truncate > .Truncate-text[style='max-width: 1337px']", text: "content")
   end
 end
