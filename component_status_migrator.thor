@@ -97,7 +97,7 @@ class ComponentStatusMigrator < Thor::Group
     cmd = ["grep -rl #{name} ."]
     cmd << exclude_files.join(" --exclude=")
     cmd << "--exclude-dir={#{exclude_folders.join(',')}}"
-    cmd << "| xargs sed -i 's/Primer::#{name}/Primer::#{status_module}#{name_without_suffix}/g'"
+    cmd << "| xargs sed -i '' 's/Primer::#{name}/Primer::#{status_module}#{name_without_suffix}/g'"
 
     run(cmd.join(" "))
   end
@@ -131,7 +131,7 @@ class ComponentStatusMigrator < Thor::Group
   def add_to_ignored_component_test
     insert_into_file(
       "test/components/component_test.rb",
-      "\"Primer::#{name}\",",
+      "\"Primer::#{name}\",\n",
       after: "ignored_components = [\n"
     )
   end
