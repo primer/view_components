@@ -16,5 +16,5 @@
     )) do |c| %>
         <% c.leading_visual_icon(icon: :search) %>
     <% end %>
-    <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Submit" } %>
+    <%= render(Primer::Beta::Button.new(scheme: :primary)) { "Submit" } %>
 </div>

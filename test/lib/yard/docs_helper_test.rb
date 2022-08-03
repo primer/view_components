@@ -12,7 +12,7 @@ class YardDocsHelperTest < Minitest::Test
   end
 
   def test_link_to_component
-    assert_equal("[Button](/components/button)", link_to_component(Primer::ButtonComponent))
+    assert_equal("[Button](/components/button)", link_to_component(Primer::Beta::Button))
     assert_equal("[AutoCompleteItem](/components/beta/autocompleteitem)", link_to_component(Primer::Beta::AutoComplete::Item))
   end
 

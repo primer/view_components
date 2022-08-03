@@ -8,13 +8,13 @@ module ERBLint
       # Maps classes in a button element to arguments for the Button component.
       class Button < Base
         SCHEME_MAPPINGS = Primer::ViewComponents::Constants.get(
-          component: "Primer::ButtonComponent",
+          component: "Primer::Beta::Button",
           constant: "SCHEME_MAPPINGS",
           symbolize: true
         ).freeze
 
         SIZE_MAPPINGS = Primer::ViewComponents::Constants.get(
-          component: "Primer::ButtonComponent",
+          component: "Primer::Beta::Button",
           constant: "SIZE_MAPPINGS",
           symbolize: true
         ).freeze

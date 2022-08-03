@@ -32,7 +32,7 @@ class ArgumentMappersButtonTest < LinterTestCase
   end
 
   def test_returns_scheme_argument
-    Primer::ButtonComponent::SCHEME_MAPPINGS.each do |value, class_name|
+    Primer::Beta::Button::SCHEME_MAPPINGS.each do |value, class_name|
       next if class_name.blank?
 
       @file = "<button class=\"#{class_name}\">Button</button>"
@@ -43,7 +43,7 @@ class ArgumentMappersButtonTest < LinterTestCase
   end
 
   def test_returns_size_argument
-    Primer::ButtonComponent::SIZE_MAPPINGS.each do |value, class_name|
+    Primer::Beta::Button::SIZE_MAPPINGS.each do |value, class_name|
       next if class_name.blank?
 
       @file = "<button class=\"#{class_name}\">Button</button>"

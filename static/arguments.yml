@@ -462,6 +462,46 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Button
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/button.rb
+  parameters:
+  - name: scheme
+    type: Symbol
+    default: "`:default`"
+    description: One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`,
+      or `:primary`.
+  - name: variant
+    type: Symbol
+    default: "`nil`"
+    description: DEPRECATED. One of `:medium` and `:small`.
+  - name: size
+    type: Symbol
+    default: "`:medium`"
+    description: One of `:medium` and `:small`.
+  - name: tag
+    type: Symbol
+    default: "`:button`"
+    description: One of `:a`, `:button`, or `:summary`.
+  - name: type
+    type: Symbol
+    default: "`:button`"
+    description: One of `:button`, `:reset`, or `:submit`.
+  - name: group_item
+    type: Boolean
+    default: "`false`"
+    description: Whether button is part of a ButtonGroup.
+  - name: block
+    type: Boolean
+    default: "`false`"
+    description: 'Whether button is full-width with `display: block`.'
+  - name: dropdown
+    type: Boolean
+    default: "`false`"
+    description: Whether or not to render a dropdown caret.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Flash
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/flash.rb
   parameters:
@@ -510,46 +550,6 @@
 - component: Box
   source: https://github.com/primer/view_components/tree/main/app/components/primer/box_component.rb
   parameters:
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: Button
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/button_component.rb
-  parameters:
-  - name: scheme
-    type: Symbol
-    default: "`:default`"
-    description: One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`,
-      or `:primary`.
-  - name: variant
-    type: Symbol
-    default: "`nil`"
-    description: DEPRECATED. One of `:medium` and `:small`.
-  - name: size
-    type: Symbol
-    default: "`:medium`"
-    description: One of `:medium` and `:small`.
-  - name: tag
-    type: Symbol
-    default: "`:button`"
-    description: One of `:a`, `:button`, or `:summary`.
-  - name: type
-    type: Symbol
-    default: "`:button`"
-    description: One of `:button`, `:reset`, or `:submit`.
-  - name: group_item
-    type: Boolean
-    default: "`false`"
-    description: Whether button is part of a ButtonGroup.
-  - name: block
-    type: Boolean
-    default: "`false`"
-    description: 'Whether button is full-width with `display: block`.'
-  - name: dropdown
-    type: Boolean
-    default: "`false`"
-    description: Whether or not to render a dropdown caret.
   - name: system_arguments
     type: Hash
     default: N/A

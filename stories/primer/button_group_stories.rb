@@ -5,7 +5,7 @@ class Primer::ButtonGroupStories < ViewComponent::Storybook::Stories
 
   story(:button_group) do
     controls do
-      select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
+      select(:size, Primer::Beta::Button::SIZE_OPTIONS, :medium)
     end
 
     content do |c|

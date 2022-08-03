@@ -9,7 +9,7 @@ class RubocopDeprecatedButtonArgumentsTest < CopTest
 
   def test_no_deprecated_arguments
     investigate(cop, <<-RUBY)
-      Primer::ButtonComponent.new(scheme: :danger)
+      Primer::Beta::Button.new(scheme: :danger)
     RUBY
 
     assert_empty cop.offenses
@@ -17,10 +17,10 @@ class RubocopDeprecatedButtonArgumentsTest < CopTest
 
   def test_using_variant
     investigate(cop, <<-RUBY)
-      Primer::ButtonComponent.new(variant: :small)
+      Primer::Beta::Button.new(variant: :small)
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Primer::ButtonComponent.new(size: :small)", cop.offenses.first.corrector.rewrite.strip
+    assert_equal "Primer::Beta::Button.new(size: :small)", cop.offenses.first.corrector.rewrite.strip
   end
 end

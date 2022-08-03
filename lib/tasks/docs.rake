@@ -46,7 +46,7 @@ namespace :docs do
       Primer::Beta::BorderBox::Header,
       Primer::BoxComponent,
       Primer::Beta::Breadcrumbs,
-      Primer::ButtonComponent,
+      Primer::Beta::Button,
       Primer::ButtonGroup,
       Primer::Alpha::ButtonMarketing,
       Primer::ClipboardCopy,
@@ -98,7 +98,7 @@ namespace :docs do
       Primer::Alpha::UnderlinePanels,
       Primer::Alpha::TabPanels,
       Primer::Alpha::Tooltip,
-      Primer::ButtonComponent,
+      Primer::Beta::Button,
       Primer::IconButton,
       Primer::LinkComponent
     ]

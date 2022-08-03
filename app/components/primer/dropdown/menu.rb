@@ -75,7 +75,7 @@ module Primer
 
         def call
           component = if BUTTON_TAGS.include?(@system_arguments[:tag])
-                        Primer::ButtonComponent.new(scheme: :link, **@system_arguments)
+                        Primer::Beta::Button.new(scheme: :link, **@system_arguments)
                       else
                         Primer::BaseComponent.new(**@system_arguments)
                       end

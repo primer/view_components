@@ -41,41 +41,41 @@ module Primer
       #   @description
       #     If the tooltip labels the icon-only button, set `type: :label`. This tooltip content becomes the accessible name for the button.
       #   @code
-      #     <%= render(Primer::ButtonComponent.new(id: "like-button")) { "👍" } %>
+      #     <%= render(Primer::Beta::Button.new(id: "like-button")) { "👍" } %>
       #     <%= render(Primer::Alpha::Tooltip.new(for_id: "like-button", type: :label, text: "Like", direction: :n)) %>
       #
       # @example As a description for a button with visible label
       #   @description
       #     If the button already has visible label text, the tooltip content is likely supplementary so set `type: :description`.
       #   @code
-      #     <%= render(Primer::ButtonComponent.new(id: "save-button", scheme: :primary)) { "Save" } %>
+      #     <%= render(Primer::Beta::Button.new(id: "save-button", scheme: :primary)) { "Save" } %>
       #     <%= render(Primer::Alpha::Tooltip.new(for_id: "save-button", type: :description, text: "This will immediately impact all organization members", direction: :ne)) %>
       # @example With direction
       #   @description
       #     Set direction of tooltip with `direction`. The tooltip is responsive and will automatically adjust direction to avoid cutting off.
       #   @code
-      #     <%= render(Primer::ButtonComponent.new(id: "North", m: 2)) { "North" } %>
+      #     <%= render(Primer::Beta::Button.new(id: "North", m: 2)) { "North" } %>
       #     <%= render(Primer::Alpha::Tooltip.new(for_id: "North", type: :description, text: "This is a North-facing tooltip, and is responsive.", direction: :n)) %>
-      #     <%= render(Primer::ButtonComponent.new(id: "South", m: 2)) { "South" } %>
+      #     <%= render(Primer::Beta::Button.new(id: "South", m: 2)) { "South" } %>
       #     <%= render(Primer::Alpha::Tooltip.new(for_id: "South", type: :description, text: "This is a South-facing tooltip and is responsive.", direction: :s)) %>
-      #     <%= render(Primer::ButtonComponent.new(id: "East", m: 2)) { "East" } %>
+      #     <%= render(Primer::Beta::Button.new(id: "East", m: 2)) { "East" } %>
       #     <%= render(Primer::Alpha::Tooltip.new(for_id: "East", type: :description, text: "This is a East-facing tooltip and is responsive.", direction: :e)) %>
-      #     <%= render(Primer::ButtonComponent.new(id: "West", m: 2)) { "West" } %>
+      #     <%= render(Primer::Beta::Button.new(id: "West", m: 2)) { "West" } %>
       #     <%= render(Primer::Alpha::Tooltip.new(for_id: "West", type: :description, text: "This is a West-facing tooltip and is responsive.", direction: :w)) %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Northeast", m: 2)) { "Northeast" } %>
+      #     <%= render(Primer::Beta::Button.new(id: "Northeast", m: 2)) { "Northeast" } %>
       #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Northeast", type: :description, text: "This is a Northeast-facing tooltip and is responsive.", direction: :ne)) %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Southeast", m: 2)) { "Southeast" } %>
+      #     <%= render(Primer::Beta::Button.new(id: "Southeast", m: 2)) { "Southeast" } %>
       #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Southeast", type: :description, text: "This is a Southeast-facing tooltip and is responsive.", direction: :se)) %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Northwest", m: 2)) { "Northwest" } %>
+      #     <%= render(Primer::Beta::Button.new(id: "Northwest", m: 2)) { "Northwest" } %>
       #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Northwest", type: :description, text: "This is a Northwest-facing tooltip and is responsive.", direction: :nw)) %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Southwest", m: 2)) { "Southwest" } %>
+      #     <%= render(Primer::Beta::Button.new(id: "Southwest", m: 2)) { "Southwest" } %>
       #     <%= render(Primer::Alpha::Tooltip.new(for_id: "Southwest", type: :description, text: "This is a Southwest-facing tooltip and is responsive.", direction: :sw)) %>
       # @example With relative parent
       #   @description
       #     When the tooltip and trigger element have a parent container with `relative: position`, it should not affect width of the tooltip.
       #   @code
       #     <span style="position: relative;">
-      #       <%= render(Primer::ButtonComponent.new(id: "test-button", scheme: :primary)) { "Test" } %>
+      #       <%= render(Primer::Beta::Button.new(id: "test-button", scheme: :primary)) { "Test" } %>
       #       <%= render(Primer::Alpha::Tooltip.new(for_id: "test-button", type: :description, text: "This tooltip should take up the full width", direction: :ne)) %>
       #     </span>
       # @param for_id [String] The ID of the element that the tooltip should be attached to.

@@ -14,7 +14,7 @@ module Primer
           private
 
           # FormTagHelper#submit_tag ultimately calls the #tag method. We return the options hash here instead
-          # of returning a string so it can be merged into the hash of options we pass to the Primer::ButtonComponent.
+          # of returning a string so it can be merged into the hash of options we pass to the Primer::Beta::Button.
           def tag(_name, options)
             options
           end

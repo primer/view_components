@@ -8,16 +8,16 @@ module Primer
       # @param direction select [s, n, e, w, ne, nw, se, sw]
       # @param tooltip_text text
       def default(type: :description, direction: :s, tooltip_text: "Tooltip text")
-        render(Primer::ButtonComponent.new(id: "button-with-tooltip")) do |c|
+        render(Primer::Beta::Button.new(id: "button-with-tooltip")) do |c|
           c.tooltip(text: tooltip_text, type: type, direction: direction)
           "Button"
         end
       end
 
       # @!group Tooltip enabled elements
-      # @label Tooltip with Primer::ButtonComponent
+      # @label Tooltip with Primer::Beta::Button
       def tooltip_with_button(type: :description, direction: :s, tooltip_text: "Tooltip text")
-        render(Primer::ButtonComponent.new(id: "button-with-tooltip")) do |c|
+        render(Primer::Beta::Button.new(id: "button-with-tooltip")) do |c|
           c.tooltip(text: tooltip_text, type: type, direction: direction)
           "Button"
         end

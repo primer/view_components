@@ -7,12 +7,12 @@ module Primer
 
     # Required list of buttons to be rendered.
     #
-    # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %> except for `size` and `group_item`.
+    # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Button) %> except for `size` and `group_item`.
     renders_many :buttons, lambda { |**kwargs|
       kwargs[:group_item] = true
       kwargs[:size] = @size
 
-      Primer::ButtonComponent.new(**kwargs)
+      Primer::Beta::Button.new(**kwargs)
     }
 
     # @example Default
@@ -34,10 +34,10 @@ module Primer
     #     <% component.button(scheme: :outline) { "Outline" } %>
     #   <% end %>
     #
-    # @param variant [Symbol] DEPRECATED. <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
-    # @param size [Symbol] <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
+    # @param variant [Symbol] DEPRECATED. <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
+    # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(variant: nil, size: Primer::ButtonComponent::DEFAULT_SIZE, **system_arguments)
+    def initialize(variant: nil, size: Primer::Beta::Button::DEFAULT_SIZE, **system_arguments)
       @size = variant || size
       @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:tag] = :div

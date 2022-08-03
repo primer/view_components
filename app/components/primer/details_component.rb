@@ -24,7 +24,7 @@ module Primer
 
       return Primer::BaseComponent.new(**system_arguments) unless button
 
-      Primer::ButtonComponent.new(**system_arguments)
+      Primer::Beta::Button.new(**system_arguments)
     }
 
     # Use the Body slot as the main content to be shown when triggered by the Summary.

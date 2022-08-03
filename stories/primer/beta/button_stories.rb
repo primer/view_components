@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
-class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
+require "primer/beta/button"
+
+class Primer::Beta::ButtonStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:button) do
     controls do
-      select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
-      select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
+      select(:scheme, Primer::Beta::Button::SCHEME_OPTIONS, :primary)
+      select(:size, Primer::Beta::Button::SIZE_OPTIONS, :medium)
       select(:tag, Primer::Beta::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::Beta::BaseButton::TYPE_OPTIONS, :button)
       group_item false
@@ -21,8 +23,8 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
 
   story(:with_tooltip) do
     controls do
-      select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
-      select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
+      select(:scheme, Primer::Beta::Button::SCHEME_OPTIONS, :primary)
+      select(:size, Primer::Beta::Button::SIZE_OPTIONS, :medium)
       select(:tag, Primer::Beta::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::Beta::BaseButton::TYPE_OPTIONS, :button)
       text(:id, "button-with-tooltip")
@@ -39,8 +41,8 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
 
   story(:with_leading_visual) do
     controls do
-      select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
-      select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
+      select(:scheme, Primer::Beta::Button::SCHEME_OPTIONS, :primary)
+      select(:size, Primer::Beta::Button::SIZE_OPTIONS, :medium)
       select(:tag, Primer::Beta::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::Beta::BaseButton::TYPE_OPTIONS, :button)
       group_item false
@@ -56,8 +58,8 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
 
   story(:with_trailing_visual) do
     controls do
-      select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
-      select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
+      select(:scheme, Primer::Beta::Button::SCHEME_OPTIONS, :primary)
+      select(:size, Primer::Beta::Button::SIZE_OPTIONS, :medium)
       select(:tag, Primer::Beta::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::Beta::BaseButton::TYPE_OPTIONS, :button)
       group_item false
@@ -73,8 +75,8 @@ class Primer::ButtonComponentStories < ViewComponent::Storybook::Stories
 
   story(:full) do
     controls do
-      select(:scheme, Primer::ButtonComponent::SCHEME_OPTIONS, :primary)
-      select(:size, Primer::ButtonComponent::SIZE_OPTIONS, :medium)
+      select(:scheme, Primer::Beta::Button::SCHEME_OPTIONS, :primary)
+      select(:size, Primer::Beta::Button::SIZE_OPTIONS, :medium)
       select(:tag, Primer::Beta::BaseButton::TAG_OPTIONS, :button)
       select(:type, Primer::Beta::BaseButton::TYPE_OPTIONS, :button)
       group_item false

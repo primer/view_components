@@ -84,7 +84,7 @@ module Primer
       #     <% c.tab(href: "#") { "Tab 2" } %>
       #     <% c.tab(href: "#") { "Tab 3" } %>
       #     <% c.extra do %>
-      #       <%= render(Primer::ButtonComponent.new(float: :right)) { "Button" } %>
+      #       <%= render(Primer::Beta::Button.new(float: :right)) { "Button" } %>
       #     <% end %>
       #   <% end %>
       #
@@ -95,7 +95,7 @@ module Primer
       #     <% c.tab(href: "#") { "Tab 3" } %>
       #     <% c.extra(align: :right) do %>
       #       <div>
-      #         <%= render(Primer::ButtonComponent.new) { "Button" } %>
+      #         <%= render(Primer::Beta::Button.new) { "Button" } %>
       #       </div>
       #     <% end %>
       #   <% end %>

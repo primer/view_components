@@ -36,7 +36,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::BorderBox::Header, {}],
     [Primer::BoxComponent, {}],
     [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
-    [Primer::ButtonComponent, {}, proc { "Button" }],
+    [Primer::Beta::Button, {}, proc { "Button" }],
     [Primer::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
     [Primer::Alpha::ButtonMarketing, {}],
     [Primer::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
@@ -86,6 +86,7 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::ButtonComponent",
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",

@@ -298,30 +298,7 @@
   },
   "Primer::Beta::Breadcrumbs::Item": {
   },
-  "Primer::Beta::Flash": {
-    "DEFAULT_SCHEME": "default",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "warning": "flash-warn",
-      "danger": "flash-error",
-      "success": "flash-success"
-    }
-  },
-  "Primer::Beta::Text": {
-    "DEFAULT_TAG": "span"
-  },
-  "Primer::Beta::Truncate": {
-    "TruncateText": "Primer::Beta::Truncate::TruncateText"
-  },
-  "Primer::Beta::Truncate::TruncateText": {
-  },
-  "Primer::BlankslateComponent": {
-  },
-  "Primer::BorderBoxComponent": {
-  },
-  "Primer::BoxComponent": {
-  },
-  "Primer::ButtonComponent": {
+  "Primer::Beta::Button": {
     "DEFAULT_SCHEME": "default",
     "DEFAULT_SIZE": "medium",
     "LINK_SCHEME": "link",
@@ -349,6 +326,31 @@
       "small",
       "medium"
     ]
+  },
+  "Primer::Beta::Flash": {
+    "DEFAULT_SCHEME": "default",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "warning": "flash-warn",
+      "danger": "flash-error",
+      "success": "flash-success"
+    }
+  },
+  "Primer::Beta::Text": {
+    "DEFAULT_TAG": "span"
+  },
+  "Primer::Beta::Truncate": {
+    "TruncateText": "Primer::Beta::Truncate::TruncateText"
+  },
+  "Primer::Beta::Truncate::TruncateText": {
+  },
+  "Primer::BlankslateComponent": {
+  },
+  "Primer::BorderBoxComponent": {
+  },
+  "Primer::BoxComponent": {
+  },
+  "Primer::ButtonComponent": {
   },
   "Primer::ButtonGroup": {
   },
