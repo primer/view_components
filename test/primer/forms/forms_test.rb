@@ -178,6 +178,18 @@ class Primer::Forms::FormsTest < Minitest::Test
     assert_nil button["data-disable-with"]
   end
 
+  def test_renders_a_submit_button_with_primer_utility_margin
+    render_preview :submit_button_form
+
+    assert_selector "button.mr-3[type=submit]"
+  end
+
+  def test_renders_a_text_field_with_primer_utility_color
+    render_preview :submit_button_form
+
+    assert_selector "input.color-fg-success[type=text]"
+  end
+
   def test_autofocuses_the_first_invalid_input
     render_preview :invalid_form
 
