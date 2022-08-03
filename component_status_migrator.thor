@@ -80,13 +80,13 @@ class ComponentStatusMigrator < Thor::Group
   def update_all_references
     exclude_files = [
       ".git",
-      ".yardoc",
       "CHANGELOG.md",
       test_path
     ]
 
     exclude_folders = [
       ".cache",
+      ".yardoc",
       "builds",
       "log",
       "node_modules",
