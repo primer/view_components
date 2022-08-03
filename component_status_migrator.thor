@@ -107,6 +107,14 @@ class ComponentStatusMigrator < Thor::Group
     )
   end
 
+  def add_to_ignored_component_test
+    insert_into_file(
+      "test/components/component_test.rb",
+      "\"Primer::#{name}\",",
+      after: "ignored_components = [\n"
+    )
+  end
+
   def run_rubocop
     run("bundle exec rubocop -a")
   end
