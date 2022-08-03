@@ -99,6 +99,14 @@ class ComponentStatusMigrator < Thor::Group
     )
   end
 
+  def add_to_deprecated_component_helper
+    insert_into_file(
+      "lib/primer/view_components/linters/helpers/deprecated_components_helpers.rb",
+      "\"Primer::#{name}\" => \"Primer::#{status_module}#{name_without_suffix}\",\n",
+      after: "COMPONENT_TO_USE_INSTEAD = {\n"
+    )
+  end
+
   def run_rubocop
     run("bundle exec rubocop -a")
   end
