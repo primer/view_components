@@ -82,7 +82,13 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def add_alias
-    insert_into_file(controller_path_with_status, "\nPrimer::#{name} = Primer::#{status_module}#{name_without_suffix}\n")
+    return if controller_path == controller_path_with_status
+
+    remove_file(controller_path)
+    create_file(
+      controller_path,
+      "# frozen_string_literal: true\n\nmodule Primer\n\tclass #{name} < Primer::#{status_module}#{name_without_suffix}\n\t\tstatus :deprecated\n\tend\nend"
+    )
   end
 
   def add_to_linter
