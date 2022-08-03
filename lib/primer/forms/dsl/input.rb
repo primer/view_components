@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "primer/classify"
-
 module Primer
   module Forms
     module Dsl
@@ -16,27 +14,20 @@ module Primer
         }.freeze
         SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
-        UTILITY_KEYS = Primer::Classify::Utilities::UTILITIES.keys.freeze
-
         include Primer::ClassNameHelper
 
         attr_reader :builder, :form, :input_arguments, :label_arguments, :caption, :validation_message, :ids
-
-        class_attribute :classify, instance_accessor: false, default: true
 
         def initialize(builder:, form:, **system_arguments)
           @builder = builder
           @form = form
 
           @input_arguments = system_arguments
-          process_classes!(@input_arguments)
-
           @label_arguments = @input_arguments.delete(:label_arguments) || {}
-          process_classes!(@label_arguments)
 
           @label_arguments[:class] = class_names(
             @label_arguments[:class],
-            @input_arguments.fetch(:visually_hide_label, true) ? "sr-only" : nil
+            @input_arguments.fetch(:visually_hide_label, false) ? "sr-only" : nil
           )
 
           @input_arguments.delete(:visually_hide_label)
@@ -217,21 +208,6 @@ module Primer
         # rubocop:enable Rails/Delegate
 
         private
-
-        def classify?
-          self.class.classify?
-        end
-
-        def process_classes!(args)
-          if classify?
-            args[:classes] = class_names(args.delete(:class), args[:classes])
-            args.merge!(Primer::Classify.call(args))
-            args.except!(*UTILITY_KEYS)
-          end
-
-          args[:class] = class_names(args[:class], args.delete(:classes))
-          args
-        end
 
         def input_data
           @input_arguments[:data] ||= {}

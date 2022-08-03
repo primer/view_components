@@ -7,8 +7,6 @@ module Primer
       class SubmitButtonInput < Input
         attr_reader :name, :label, :block
 
-        self.classify = false
-
         def initialize(name:, label:, **system_arguments, &block)
           @name = name
           @label = label

@@ -66,7 +66,7 @@ class Primer::Forms::FormsTest < Minitest::Test
     model.valid? # populate validation error messages
 
     render_in_view_context do
-      form_with(model: model, url: "/foo", skip_default_ids: false) do |f|
+      primer_form_with(model: model, url: "/foo") do |f|
         render(SingleTextFieldForm.new(f))
       end
     end
@@ -82,7 +82,7 @@ class Primer::Forms::FormsTest < Minitest::Test
     model = DeepThought.new(42)
 
     render_in_view_context do
-      form_with(model: model, url: "/foo", skip_default_ids: false) do |f|
+      primer_form_with(model: model, url: "/foo") do |f|
         render(SingleTextFieldForm.new(f))
       end
     end
@@ -96,7 +96,7 @@ class Primer::Forms::FormsTest < Minitest::Test
     model.valid? # populate validation error messages
 
     render_in_view_context do
-      form_with(model: model, url: "/foo", skip_default_ids: false) do |f|
+      primer_form_with(model: model, url: "/foo") do |f|
         render(SingleTextFieldForm.new(f))
       end
     end
@@ -145,7 +145,7 @@ class Primer::Forms::FormsTest < Minitest::Test
   def test_raises_an_error_if_both_a_caption_argument_and_a_caption_template_are_provided
     error = assert_raises RuntimeError do
       render_in_view_context do
-        form_with(url: "/foo", skip_default_ids: false) do |f|
+        primer_form_with(url: "/foo") do |f|
           render(BothTypesOfCaptionForm.new(f))
         end
       end
@@ -156,7 +156,7 @@ class Primer::Forms::FormsTest < Minitest::Test
 
   def test_form_list_renders_multiple_forms
     render_in_view_context do
-      form_with(url: "/foo", skip_default_ids: false) do |f|
+      primer_form_with(url: "/foo") do |f|
         render(Primer::Forms::FormList.new(FirstNameForm.new(f), LastNameForm.new(f)))
       end
     end
@@ -224,5 +224,17 @@ class Primer::Forms::FormsTest < Minitest::Test
     render_preview :multi_text_field_form
 
     assert_selector "input[type=hidden][name=csrf_token][value=abc123]", visible: false
+  end
+
+  def test_only_accepts_correct_form_builder
+    error = assert_raises(ArgumentError) do
+      render_in_view_context do
+        form_with(url: "/foo") do |f|
+          render(SingleTextFieldForm.new(f))
+        end
+      end
+    end
+
+    assert_includes error.message, "please pass an instance of Primer::Forms::Builder"
   end
 end
