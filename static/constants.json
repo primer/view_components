@@ -260,6 +260,7 @@
     "DEFAULT_PADDING": "default",
     "DEFAULT_ROW_SCHEME": "default",
     "Header": "Primer::Beta::BorderBox::Header",
+    "HeaderTest": "Primer::Beta::BorderBox::HeaderTest",
     "PADDING_MAPPINGS": {
       "default": "",
       "condensed": "Box--condensed",
@@ -402,7 +403,8 @@
     }
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",
