@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Primer::ButtonGroupStories < ViewComponent::Storybook::Stories
+require "primer/beta/button_group"
+
+class Primer::Beta::ButtonGroupStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:button_group) do

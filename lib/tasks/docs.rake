@@ -47,7 +47,7 @@ namespace :docs do
       Primer::BoxComponent,
       Primer::Beta::Breadcrumbs,
       Primer::ButtonComponent,
-      Primer::ButtonGroup,
+      Primer::Beta::ButtonGroup,
       Primer::Alpha::ButtonMarketing,
       Primer::ClipboardCopy,
       Primer::CloseButton,
