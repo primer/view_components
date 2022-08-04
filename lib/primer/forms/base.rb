@@ -17,7 +17,7 @@ module Primer
         end
 
         def new(builder, **options)
-          unless builder.is_a?(Primer::Forms::Builder)
+          if builder && !builder.is_a?(Primer::Forms::Builder)
             raise ArgumentError, "please pass an instance of Primer::Forms::Builder when "\
               "constructing a form object (consider using the `primer_form_with` helper)"
           end
