@@ -44,6 +44,9 @@ module Primer
         ActiveSupport.on_load :action_controller do
           require "primer/form_helper"
           helper Primer::FormHelper
+
+          # make primer_form_with available to view components
+          ViewComponent::Base.prepend(Primer::Forms::ViewComponentPrimerFormHelper)
         end
       end
 
