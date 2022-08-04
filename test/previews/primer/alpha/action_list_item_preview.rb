@@ -24,7 +24,7 @@ module Primer
       # @param trailing_visual_counter number
       # @param trailing_visual_text text
       def playground(
-        label: "Item",
+        label: "Item Item ItemItemItemItem ItemItemItemItemItem",
         truncate_label: false,
         size: Primer::Alpha::ActionListItem::DEFAULT_SIZE,
         variant: Primer::Alpha::ActionListItem::DEFAULT_VARIANT,

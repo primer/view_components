@@ -1,5 +1,5 @@
 <%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
-  <%= render(Primer::BaseComponent.new(tag: :span, **@content_arguments)) do %>
+  <%= render(Primer::BaseComponent.new(tag: :a, href: "/", **@content_arguments)) do %>
     <% if @select_mode == :single %>
       <span class="ActionList-item-action ActionList-item-action--leading">
         <svg
@@ -56,4 +56,5 @@
       </span>
     <% end %>
   <% end %>
+  <%= render(Primer::IconButton.new(icon: :trash, "aria-label": "This as param", scheme: :default, classes: "ActionList-item-button")) %>
 <% end %>
