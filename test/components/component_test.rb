@@ -35,7 +35,6 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::BorderBox, {}, proc { |component| component.header { "Foo" } }],
     [Primer::Beta::BorderBox::Header, {}],
     [Primer::BlankslateComponent, { title: "Foo" }],
-    [Primer::BoxComponent, {}],
     [Primer::Box, {}],
     [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
     [Primer::ButtonComponent, {}, proc { "Button" }],
