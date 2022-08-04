@@ -74,7 +74,7 @@ class ComponentStatusMigrator < Thor::Group
   def rename_nav_entry
     nav_file = "docs/src/@primer/gatsby-theme-doctocat/nav.yml"
     gsub_file(nav_file, "title: #{name}", "title: #{name_without_suffix}")
-    gsub_file(nav_file, "url: \"/components/#{name_without_suffix}\"", "url: \"/components/#{status_url}#{name_without_suffix}\"")
+    gsub_file(nav_file, "url: \"/components/#{name_without_suffix.downcase}\"", "url: \"/components/#{status_url}#{name_without_suffix.downcase}\"")
   end
 
   def update_all_references
