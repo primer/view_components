@@ -72,7 +72,9 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def rename_nav_entry
-    gsub_file("docs/src/@primer/gatsby-theme-doctocat/nav.yml", "class #{name}", name_without_suffix)
+    nav_file = "docs/src/@primer/gatsby-theme-doctocat/nav.yml"
+    gsub_file(nav_file, "title: #{name}", "title: #{name_without_suffix}")
+    gsub_file(nav_file, "url: \"/components/#{name_without_suffix}\"", "url: \"/components/#{status_url}#{name_without_suffix}\"")
   end
 
   def update_all_references
@@ -217,6 +219,10 @@ class ComponentStatusMigrator < Thor::Group
 
   def status
     @status ||= options[:status].downcase
+  end
+
+  def status_url
+    @status_url ||= "#{status}/" unless stable?
   end
 
   def name_without_suffix
