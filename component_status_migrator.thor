@@ -226,13 +226,14 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def name_without_suffix
-    name.gsub("Component", "")
+    @name_without_suffix ||= name.gsub("Component", "")
   end
 
   def short_name
-    name_with_status = name.gsub(/Primer::|Component/, "")
-
-    m = name_with_status.match(/(?<status>Beta|Alpha|Deprecated)?(?<_colons>::)?(?<name>.*)/)
-    m[:name].gsub("::", "").downcase
+    @short_name ||= begin
+                      name_with_status = name.gsub(/Primer::|Component/, "")
+                      m = name_with_status.match(/(?<status>Beta|Alpha|Deprecated)?(?<_colons>::)?(?<name>.*)/)
+                      m[:name].gsub("::", "").downcase
+                    end
   end
 end
