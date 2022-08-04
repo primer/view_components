@@ -79,5 +79,19 @@ module Primer
     def before_render
       raise ArgumentError, "href is required when using <a> tag" if @system_arguments[:tag] == :a && @system_arguments[:href].nil? && !Rails.env.production?
     end
+
+    def call
+      if tooltip.present?
+        render Primer::BaseComponent.new(tag: :span, position: :relative) do
+          render(Primer::BaseComponent.new(**@system_arguments)) do
+            content
+          end.to_s + tooltip.to_s
+        end
+      else
+        render(Primer::BaseComponent.new(**@system_arguments)) do
+          content
+        end
+      end
+    end
   end
 end
