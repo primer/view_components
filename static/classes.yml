@@ -212,6 +212,7 @@
 - ".p-3"
 - ".p-4"
 - ".p-5"
+- ".position-absolute"
 - ".position-relative"
 - ".pr-2"
 - ".pt-5"
