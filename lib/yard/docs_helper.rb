@@ -28,7 +28,7 @@ module YARD
       prefix = "One of"
       prefix = prefix.downcase if lower
 
-      "#{prefix} #{values.to_sentence(last_word_connector: ', or ')}."
+      "#{prefix} #{values.to_sentence(two_words_connector: ' or ', last_word_connector: ', or ')}."
     end
 
     def link_to_accessibility
