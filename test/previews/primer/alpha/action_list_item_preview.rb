@@ -15,7 +15,6 @@ module Primer
       # @param description text
       # @param description_variant [Symbol] select [inline, block]
       # @param select_mode [Symbol] select [none, single, multiple]
-      # @param selected toggle
       # @param checked toggle
       # @param active toggle
       # @param has_sub_item toggle
