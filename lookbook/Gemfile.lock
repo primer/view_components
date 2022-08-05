@@ -1,11 +1,11 @@
 PATH
   remote: ..
   specs:
-    primer_view_components (0.0.86)
+    primer_view_components (0.0.87)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 17.0.0)
-      view_component (>= 2.0.0, < 3.0)
+      view_component (>= 2.57.0, < 3.0)
 
 GEM
   remote: https://rubygems.org/
