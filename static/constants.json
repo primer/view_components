@@ -298,6 +298,25 @@
   },
   "Primer::Beta::Breadcrumbs::Item": {
   },
+  "Primer::Beta::Counter": {
+    "DEFAULT_SCHEME": "default",
+    "DEPRECATED_SCHEME_OPTIONS": [
+      "gray",
+      "light_gray"
+    ],
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "primary": "Counter--primary",
+      "secondary": "Counter--secondary",
+      "gray": "Counter--primary",
+      "light_gray": "Counter--secondary"
+    },
+    "SCHEME_OPTIONS": [
+      "default",
+      "primary",
+      "secondary"
+    ]
+  },
   "Primer::Beta::Flash": {
     "DEFAULT_SCHEME": "default",
     "SCHEME_MAPPINGS": {
@@ -366,23 +385,6 @@
   "Primer::Content": {
   },
   "Primer::CounterComponent": {
-    "DEFAULT_SCHEME": "default",
-    "DEPRECATED_SCHEME_OPTIONS": [
-      "gray",
-      "light_gray"
-    ],
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "primary": "Counter--primary",
-      "secondary": "Counter--secondary",
-      "gray": "Counter--primary",
-      "light_gray": "Counter--secondary"
-    },
-    "SCHEME_OPTIONS": [
-      "default",
-      "primary",
-      "secondary"
-    ]
   },
   "Primer::DetailsComponent": {
     "BODY_TAG_DEFAULT": "div",

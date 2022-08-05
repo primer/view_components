@@ -57,8 +57,8 @@ module Primer
 
       # Counter to be rendered in the Tab right.
       #
-      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::CounterComponent) %>.
-      renders_one :counter, Primer::CounterComponent
+      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Counter) %>.
+      renders_one :counter, Primer::Beta::Counter
 
       attr_reader :selected
 

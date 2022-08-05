@@ -43,7 +43,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
     [Primer::ConditionalWrapper, { condition: true, tag: :div }],
     [Primer::CloseButton, {}],
-    [Primer::CounterComponent, { count: 1 }],
+    [Primer::Beta::Counter, { count: 1 }],
     [Primer::DetailsComponent, {}, lambda do |component|
       component.summary { "Foo" }
       component.body { "Bar" }
@@ -87,6 +87,7 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::CounterComponent",
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
