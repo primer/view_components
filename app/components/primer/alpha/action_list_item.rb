@@ -2,6 +2,7 @@
 
 module Primer
   module Alpha
+    # :nodoc:
     class ActionListItem < Primer::Component
       status :alpha
 
