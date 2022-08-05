@@ -1,0 +1,45 @@
+---
+title: ActionList::Item spec
+label: ActionList::Item spec
+---
+
+Action list item with single select needs `aria-selected="true"` instead of `aria-checked`
+
+<%= embed Primer::Alpha::ActionListItemPreview, :playground, params: {
+select_mode: :single,
+checked: "true"
+} %>
+
+Trailing action with item as a link (a href)
+
+```
+<ul class="ActionList">
+  <li class="ActionList-item">
+    <a href="/" class="ActionList-content">
+      <span class="ActionList-item-label ActionList-item-label--truncate">
+        Item Item ItemItemItemItem ItemItemItemItemItem
+      </span>
+    </a>
+    <button class="btn-octicon ActionList-item-button">
+      <svg></svg>
+    </button>
+  </li>
+</ul>
+```
+
+Leading action with item as a link (a href)
+
+```
+<ul class="ActionList">
+  <li class="ActionList-item">
+    <button class="btn-octicon ActionList-item-button">
+      <svg></svg>
+    </button>
+    <a href="/" class="ActionList-content">
+      <span class="ActionList-item-label ActionList-item-label--truncate">
+        Item Item ItemItemItemItem ItemItemItemItemItem
+      </span>
+    </a>
+  </li>
+</ul>
+```

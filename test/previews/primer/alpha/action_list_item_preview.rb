@@ -12,10 +12,14 @@ module Primer
       # @param size [Symbol] select [small, medium, large]
       # @param variant [Symbol] select [default, danger]
       # @param disabled toggle
-      # @param description_display [Symbol] select [inline, block]
+      # @param description text
+      # @param description_variant [Symbol] select [inline, block]
       # @param select_mode [Symbol] select [none, single, multiple]
       # @param selected toggle
       # @param checked toggle
+      # @param active toggle
+      # @param has_sub_item toggle
+      # @param sub_item toggle
       # @param leading_visual_icon [Symbol] octicon
       # @param leading_visual_avatar_src text
       # @param trailing_visual_icon [Symbol] octicon
@@ -30,10 +34,13 @@ module Primer
         size: Primer::Alpha::ActionListItem::DEFAULT_SIZE,
         variant: Primer::Alpha::ActionListItem::DEFAULT_VARIANT,
         disabled: false,
-        description_display: Primer::Alpha::ActionListItem::DEFAULT_DESCRIPTION_DISPLAY,
+        description: nil,
+        description_variant: Primer::Alpha::ActionListItem::DEFAULT_DESCRIPTION_VARIANT,
         select_mode: Primer::Alpha::ActionListItem::DEFAULT_SELECT_MODE,
-        selected: false,
         checked: false,
+        active: false,
+        has_sub_item: false,
+        sub_item: false,
         leading_visual_icon: nil,
         leading_visual_avatar_src: nil,
         trailing_visual_icon: nil,
@@ -49,10 +56,13 @@ module Primer
           size: size,
           variant: variant,
           disabled: disabled,
-          description_display: description_display,
+          description: description,
+          description_variant: description_variant,
           select_mode: select_mode,
-          selected: selected,
-          checked: checked
+          checked: checked,
+          active: active,
+          has_sub_item: has_sub_item,
+          sub_item: sub_item
         )
 
         if leading_visual_icon && leading_visual_icon != :none
@@ -70,6 +80,8 @@ module Primer
         elsif trailing_visual_text
           item.with_trailing_visual_text(trailing_visual_text)
         end
+
+        item.description { description } if description
 
         render(Primer::BaseComponent.new(tag: :ul, classes: "ActionList")) do |ul|
           item.render_in(ul)

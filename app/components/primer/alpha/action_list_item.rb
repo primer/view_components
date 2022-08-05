@@ -13,12 +13,12 @@ module Primer
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys.freeze
 
-      DEFAULT_DESCRIPTION_DISPLAY = :inline
-      DESCRIPTION_DISPLAY_MAPPINGS = {
-        DEFAULT_DESCRIPTION_DISPLAY => "ActionList-item-descriptionWrap--inline",
-        :block => "ActionList-item-descriptionWrap--block"
+      DEFAULT_DESCRIPTION_VARIANT = :block
+      DESCRIPTION_VARIANT_MAPPINGS = {
+        :inline => "ActionList-item-descriptionWrap--inline",
+        DEFAULT_DESCRIPTION_VARIANT => "ActionList-item-descriptionWrap--block"
       }.freeze
-      DESCRIPTION_DISPLAY_OPTIONS = DESCRIPTION_DISPLAY_MAPPINGS.keys.freeze
+      DESCRIPTION_VARIANT_OPTIONS = DESCRIPTION_VARIANT_MAPPINGS.keys.freeze
 
       DEFAULT_VARIANT = :default
       VARIANT_MAPPINGS = {
@@ -57,11 +57,13 @@ module Primer
         size: DEFAULT_SIZE,
         variant: DEFAULT_VARIANT,
         disabled: false,
-        description_display: DEFAULT_DESCRIPTION_DISPLAY,
+        description_variant: DEFAULT_DESCRIPTION_VARIANT,
         select_mode: DEFAULT_SELECT_MODE,
         checked: false,
-        selected: false,
+        active: false,
         on_click: nil,
+        has_sub_item: false,
+        sub_item: false,
         **system_arguments
       )
         @label = label
@@ -69,20 +71,25 @@ module Primer
         @truncate_label = truncate_label
         @disabled = disabled
         @checked = checked
-        @selected = selected
+        @active = active
+        @has_sub_item = has_sub_item
+        @sub_item = sub_item
         @system_arguments = system_arguments
 
         @size = fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)
         @variant = fetch_or_fallback(VARIANT_OPTIONS, variant, DEFAULT_VARIANT)
         @select_mode = fetch_or_fallback(SELECT_MODE_OPTIONS, select_mode, DEFAULT_SELECT_MODE)
-        @description_display = fetch_or_fallback(
-          DESCRIPTION_DISPLAY_OPTIONS, description_display, DEFAULT_DESCRIPTION_DISPLAY
+        @description_variant = fetch_or_fallback(
+          DESCRIPTION_VARIANT_OPTIONS, description_variant, DEFAULT_DESCRIPTION_VARIANT
         )
 
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
+          VARIANT_MAPPINGS[@variant],
           "ActionList-item",
-          VARIANT_MAPPINGS[@variant]
+          "ActionList-item--navActive" => @active,
+          "ActionList-item--hasSubItem" => @has_sub_item,
+          "ActionList-item--subItem" => @sub_item
         )
 
         @system_arguments[:role] = role
@@ -92,7 +99,7 @@ module Primer
 
         case @select_mode
         when :single
-          @system_arguments[:aria][:selected] = "true" if @selected
+          @system_arguments[:aria][:selected] = "true" if @active
         when :multiple
           @system_arguments[:aria][:checked] = "true" if @checked
         end
@@ -109,14 +116,14 @@ module Primer
           **(on_click && !@href ? { onclick: on_click } : {}),
           classes: class_names(
             "ActionList-content",
-            SIZE_MAPPINGS[@size],
+            SIZE_MAPPINGS[@size]
           )
         }
 
         @description_wrapper_arguments = {
           classes: class_names(
             "ActionList-item-descriptionWrap",
-            DESCRIPTION_DISPLAY_MAPPINGS[@description_display]
+            DESCRIPTION_VARIANT_MAPPINGS[@description_variant]
           )
         }
       end
@@ -124,7 +131,7 @@ module Primer
       private
 
       def before_render
-        return unless description && @description_display == :block
+        return unless description && @description_variant == :block
 
         @content_arguments[:classes] = class_names(
           @content_arguments[:classes],
