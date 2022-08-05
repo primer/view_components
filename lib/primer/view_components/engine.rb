@@ -15,6 +15,7 @@ module Primer
 
       config.eager_load_paths = %W[
         #{root}/app/components
+        #{root}/app/helpers
         #{root}/app/lib
       ]
 
@@ -36,6 +37,16 @@ module Primer
             Primer::Forms::Base.descendants.each(&:compile!)
             Primer::Forms::BaseComponent.descendants.each(&:compile!)
           end
+        end
+      end
+
+      initializer "primer.forms.helpers" do
+        ActiveSupport.on_load :action_controller do
+          require "primer/form_helper"
+          helper Primer::FormHelper
+
+          # make primer_form_with available to view components also
+          ViewComponent::Base.prepend(Primer::FormHelper)
         end
       end
 

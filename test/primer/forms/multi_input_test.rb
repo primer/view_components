@@ -26,7 +26,7 @@ class Primer::Forms::MultiInputTest < Minitest::Test
   def test_only_two_inputs_visible
     error = assert_raises(ArgumentError) do
       render_in_view_context do
-        form_with(url: "/foo", skip_default_ids: false) do |f|
+        primer_form_with(url: "/foo") do |f|
           render(MultipleFieldsVisibleForm.new(f))
         end
       end
@@ -38,7 +38,7 @@ class Primer::Forms::MultiInputTest < Minitest::Test
   def test_inputs_must_have_same_name
     error = assert_raises(ArgumentError) do
       render_in_view_context do
-        form_with(url: "/foo", skip_default_ids: false) do |f|
+        primer_form_with(url: "/foo") do |f|
           render(FieldsWithDifferentNamesForm.new(f))
         end
       end
