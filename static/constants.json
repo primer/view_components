@@ -1,14 +1,8 @@
 {
-  "Primer::Alpha::BorderBox::Header": {
-    "TITLE_TAG_FALLBACK": "h2",
-    "TITLE_TAG_OPTIONS": [
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6"
-    ]
+  "Primer::Alpha::AutoComplete": {
+    "Item": "Primer::Alpha::AutoComplete::Item"
+  },
+  "Primer::Alpha::AutoComplete::Item": {
   },
   "Primer::Alpha::ButtonMarketing": {
     "DEFAULT_SCHEME": "default",
@@ -149,6 +143,8 @@
       "div"
     ]
   },
+  "Primer::Alpha::TextField": {
+  },
   "Primer::Alpha::Tooltip": {
     "DIRECTION_DEFAULT": "s",
     "DIRECTION_OPTIONS": [
@@ -177,20 +173,6 @@
   },
   "Primer::Alpha::UnderlinePanels": {
   },
-  "Primer::BaseButton": {
-    "DEFAULT_TAG": "button",
-    "DEFAULT_TYPE": "button",
-    "TAG_OPTIONS": [
-      "button",
-      "a",
-      "summary"
-    ],
-    "TYPE_OPTIONS": [
-      "button",
-      "reset",
-      "submit"
-    ]
-  },
   "Primer::BaseComponent": {
     "SELF_CLOSING_TAGS": [
       "area",
@@ -210,9 +192,24 @@
     ]
   },
   "Primer::Beta::AutoComplete": {
-    "Item": "Primer::Beta::AutoComplete::Item"
+    "DEFAULT_SIZE": "medium",
+    "Item": "Primer::Beta::AutoComplete::Item",
+    "SIZE_MAPPINGS": {
+      "small": "FormControl-small",
+      "medium": "FormControl-medium",
+      "large": "FormControl-large"
+    },
+    "SIZE_OPTIONS": [
+      "small",
+      "medium",
+      "large"
+    ]
   },
   "Primer::Beta::AutoComplete::Item": {
+    "ALLOWED_DESCRIPTION_VARIANTS": [
+      "inline",
+      "block"
+    ]
   },
   "Primer::Beta::Avatar": {
     "DEFAULT_SHAPE": "circle",
@@ -249,11 +246,53 @@
       "span"
     ]
   },
+  "Primer::Beta::BaseButton": {
+    "DEFAULT_TAG": "button",
+    "DEFAULT_TYPE": "button",
+    "TAG_OPTIONS": [
+      "button",
+      "a",
+      "summary"
+    ],
+    "TYPE_OPTIONS": [
+      "button",
+      "reset",
+      "submit"
+    ]
+  },
   "Primer::Beta::Blankslate": {
     "VISUAL_OPTIONS": [
       "icon",
       "spinner",
       "image"
+    ]
+  },
+  "Primer::Beta::BorderBox": {
+    "DEFAULT_PADDING": "default",
+    "DEFAULT_ROW_SCHEME": "default",
+    "Header": "Primer::Beta::BorderBox::Header",
+    "PADDING_MAPPINGS": {
+      "default": "",
+      "condensed": "Box--condensed",
+      "spacious": "Box--spacious"
+    },
+    "PADDING_SUGGESTION": "Perhaps you could consider using :padding options of default, condensed, and spacious?",
+    "ROW_SCHEME_MAPPINGS": {
+      "default": "",
+      "neutral": "Box-row--gray",
+      "info": "Box-row--blue",
+      "warning": "Box-row--yellow"
+    }
+  },
+  "Primer::Beta::BorderBox::Header": {
+    "TITLE_TAG_FALLBACK": "h2",
+    "TITLE_TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
     ]
   },
   "Primer::Beta::Breadcrumbs": {
@@ -269,6 +308,8 @@
     "PADDING_MESSAGE": "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead."
   },
   "Primer::Beta::Breadcrumbs::Item": {
+  },
+  "Primer::Beta::ButtonGroup": {
   },
   "Primer::Beta::Flash": {
     "DEFAULT_SCHEME": "default",
@@ -290,20 +331,8 @@
   "Primer::BlankslateComponent": {
   },
   "Primer::BorderBoxComponent": {
-    "DEFAULT_PADDING": "default",
-    "DEFAULT_ROW_SCHEME": "default",
-    "PADDING_MAPPINGS": {
-      "default": "",
-      "condensed": "Box--condensed",
-      "spacious": "Box--spacious"
-    },
-    "PADDING_SUGGESTION": "Perhaps you could consider using :padding options of default, condensed, and spacious?",
-    "ROW_SCHEME_MAPPINGS": {
-      "default": "",
-      "neutral": "Box-row--gray",
-      "info": "Box-row--blue",
-      "warning": "Box-row--yellow"
-    }
+  },
+  "Primer::Box": {
   },
   "Primer::BoxComponent": {
   },
@@ -530,13 +559,20 @@
   },
   "Primer::LabelComponent": {
     "DEFAULT_SCHEME": "default",
+    "DEFAULT_SIZE": "medium",
     "DEFAULT_TAG": "span",
+    "DEFAULT_VARIANT": "none",
     "DEPRECATED_SCHEME_OPTIONS": [
       "info",
       "warning",
       "orange",
       "purple"
     ],
+    "DEPRECATED_VARIANT_OPTIONS": [
+      "large",
+      "inline"
+    ],
+    "INLINE_CLASS": "Label--inline",
     "SCHEME_MAPPINGS": {
       "default": "",
       "primary": "Label--primary",
@@ -565,20 +601,22 @@
       "done",
       "sponsors"
     ],
+    "SIZE_MAPPINGS": {
+      "medium": null,
+      "large": "Label--large"
+    },
+    "SIZE_OPTIONS": [
+      "medium",
+      "large"
+    ],
     "TAG_OPTIONS": [
       "span",
       "summary",
       "a",
       "div"
     ],
-    "VARIANT_MAPPINGS": {
-      "large": "Label--large",
-      "inline": "Label--inline"
-    },
     "VARIANT_OPTIONS": [
-      "large",
-      "inline",
-      null
+      "none"
     ]
   },
   "Primer::LayoutComponent": {

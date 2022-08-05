@@ -13,15 +13,20 @@ module ERBLint
           symbolize: true
         ).freeze
 
-        VARIANT_MAPPINGS = Primer::ViewComponents::Constants.get(
+        SIZE_MAPPINGS = Primer::ViewComponents::Constants.get(
           component: "Primer::LabelComponent",
-          constant: "VARIANT_MAPPINGS",
+          constant: "SIZE_MAPPINGS",
           symbolize: true
         ).freeze
 
         DEFAULT_TAG = Primer::ViewComponents::Constants.get(
           component: "Primer::LabelComponent",
           constant: "DEFAULT_TAG"
+        ).freeze
+
+        INLINE_CLASS = Primer::ViewComponents::Constants.get(
+          component: "Primer::LabelComponent",
+          constant: "INLINE_CLASS"
         ).freeze
 
         ATTRIBUTES = %w[title].freeze
@@ -36,8 +41,10 @@ module ERBLint
 
             if SCHEME_MAPPINGS[class_name] && acc[:scheme].nil?
               acc[:scheme] = SCHEME_MAPPINGS[class_name]
-            elsif VARIANT_MAPPINGS[class_name] && acc[:variant].nil?
-              acc[:variant] = VARIANT_MAPPINGS[class_name]
+            elsif SIZE_MAPPINGS[class_name] && acc[:size].nil?
+              acc[:size] = SIZE_MAPPINGS[class_name]
+            elsif class_name == INLINE_CLASS && acc[:inline].nil?
+              acc[:inline] = true
             else
               acc[:classes] << class_name
             end

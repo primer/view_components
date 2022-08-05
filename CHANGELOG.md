@@ -1,5 +1,69 @@
 # CHANGELOG
 
+## 0.0.87
+
+### Patch Changes
+
+- [#1274](https://github.com/primer/view_components/pull/1274) [`c153f734`](https://github.com/primer/view_components/commit/c153f734a891fc3bc7dfc3bed34630ff38ab39d7) Thanks [@jonrohan](https://github.com/jonrohan)! - Fixing whitespace in rendered LinkComponent
+
+* [#1273](https://github.com/primer/view_components/pull/1273) [`f38517ac`](https://github.com/primer/view_components/commit/f38517acf1aed43b27f2c6b94634d70b124883e6) Thanks [@camertron](https://github.com/camertron)! - Revert removal of BlankslateComponent
+
+- [#1270](https://github.com/primer/view_components/pull/1270) [`44919308`](https://github.com/primer/view_components/commit/4491930812d16a9bcb5d8f05b4d94e49e469afa5) Thanks [@camertron](https://github.com/camertron)! - Use a custom form builder; introduce primer_form_for
+
+* [#1269](https://github.com/primer/view_components/pull/1269) [`9ae9615f`](https://github.com/primer/view_components/commit/9ae9615f31acf43875feb89661cac6311527f9fd) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - updating component migrator script with improvements in component reference updates, deprecations, etc.
+
+- [#1276](https://github.com/primer/view_components/pull/1276) [`759ea56f`](https://github.com/primer/view_components/commit/759ea56f00cbe3e536f4e558a9fb9a3e1b89bf7b) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - correcting the updates to nav.yml in the component status migrator
+
+## 0.0.86
+
+### Patch Changes
+
+- [#1247](https://github.com/primer/view_components/pull/1247) [`dbe606b7`](https://github.com/primer/view_components/commit/dbe606b7f38ba52f24edeae2f02f390ad13133ab) Thanks [@khiga8](https://github.com/khiga8)! - Set `aria-hidden="true"` when type is label
+
+* [#1262](https://github.com/primer/view_components/pull/1262) [`4a347b69`](https://github.com/primer/view_components/commit/4a347b6965990c1d73296d297367cb72b36539d2) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - updating the component migrator to support `--status stable`
+
+- [#1244](https://github.com/primer/view_components/pull/1244) [`91a6d2df`](https://github.com/primer/view_components/commit/91a6d2df032fbb21ccaf3edc07b86f3c97b1add0) Thanks [@neall](https://github.com/neall)! - Stop requiring aria-label on ClipboardCopy with other content.
+
+* [#1256](https://github.com/primer/view_components/pull/1256) [`544dd564`](https://github.com/primer/view_components/commit/544dd5647da64c06020d3ae7719f9b6ad32bee55) Thanks [@khiga8](https://github.com/khiga8)! - Use `visibility: 'hidden'` instead of `hidden` attribute to hide tooltip
+
+- [#1238](https://github.com/primer/view_components/pull/1238) [`204a8e4e`](https://github.com/primer/view_components/commit/204a8e4e11931061f7a855b79f90c7aaa2e51945) Thanks [@camertron](https://github.com/camertron)! - Merge primer/rails_forms into primer/view_components
+
+* [#1265](https://github.com/primer/view_components/pull/1265) [`61a78c4f`](https://github.com/primer/view_components/commit/61a78c4f3362fc532149ddf5090252dd3af9122d) Thanks [@jonrohan](https://github.com/jonrohan)! - Update IconButton and Button tooltips to be sibling instead of child
+
+- [#1255](https://github.com/primer/view_components/pull/1255) [`3729a9bf`](https://github.com/primer/view_components/commit/3729a9bfed5d1dbe40510b6a783212453fcc08d3) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - migrating `Primer::BorderBoxComponent` to `Primer::Beta::BorderBox`
+
+* [#1241](https://github.com/primer/view_components/pull/1241) [`918cfe3f`](https://github.com/primer/view_components/commit/918cfe3f143e5fe30dfb4db1dd46449bc54a0a87) Thanks [@jonrohan](https://github.com/jonrohan)! - Deprecating the `Primer::Alpha::Autocomplete` component
+
+- [#1062](https://github.com/primer/view_components/pull/1062) [`4b673a6c`](https://github.com/primer/view_components/commit/4b673a6c1ec9f0bc0710128fc365448e94d7b387) Thanks [@hectahertz](https://github.com/hectahertz)! - Add `Tooltip` support to `IconButton`
+
+* [#1261](https://github.com/primer/view_components/pull/1261) [`8191b80d`](https://github.com/primer/view_components/commit/8191b80de219f100c07cea9d9fdabfa9f50f6e1e) Thanks [@camertron](https://github.com/camertron)! - Make all subdirs of docs/static in prepare script
+
+- [#1260](https://github.com/primer/view_components/pull/1260) [`1a6562fe`](https://github.com/primer/view_components/commit/1a6562fe46503e21aade77df1f6ae542cbc2ddd6) Thanks [@khiga8](https://github.com/khiga8)! - Move tooltip to be sibling of link
+
+* [#1258](https://github.com/primer/view_components/pull/1258) [`d3880f74`](https://github.com/primer/view_components/commit/d3880f74d4fe20ad1a81c9b40af10c67dda52369) Thanks [@camertron](https://github.com/camertron)! - Replace YAML load with YAML safe load with allowed classes list
+
+- [#1254](https://github.com/primer/view_components/pull/1254) [`fc2fbace`](https://github.com/primer/view_components/commit/fc2fbace9c4728dea582df40efde118cfe8ac6a8) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - cleaning up the BlankSlate component to ensure it follows current standards for beta components
+
+## 0.0.85
+
+### Patch Changes
+
+- [#1239](https://github.com/primer/view_components/pull/1239) [`bc9e8385`](https://github.com/primer/view_components/commit/bc9e8385894b708929d0e58a63681572493f090e) Thanks [@langermank](https://github.com/langermank)! - Remove deprecated params added for autocomplete beta
+
+## 0.0.84
+
+### Patch Changes
+
+- [#1189](https://github.com/primer/view_components/pull/1189) [`ec3af746`](https://github.com/primer/view_components/commit/ec3af746dceb8e4a0c967fe270f149d48e81489b) Thanks [@langermank](https://github.com/langermank)! - Autocomplete design updates
+
+* [#1229](https://github.com/primer/view_components/pull/1229) [`5631d286`](https://github.com/primer/view_components/commit/5631d286c559cf4bbb96b85c0bb41dbeda5953d4) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - component generator: correcting template and thor tasks to account for component status
+
+- [#1232](https://github.com/primer/view_components/pull/1232) [`3a154bf4`](https://github.com/primer/view_components/commit/3a154bf4452f5ed8f7694eb917c13258d34ff6c0) Thanks [@jonrohan](https://github.com/jonrohan)! - Consolidating view_components previews into test/previews/ folder
+
+* [#1224](https://github.com/primer/view_components/pull/1224) [`2fc38746`](https://github.com/primer/view_components/commit/2fc387460e5f185463cbca8ffe0f098a06e2dec8) Thanks [@camertron](https://github.com/camertron)! - Add the ConditionalWrapper for conditionally wrapping content
+
+- [#1234](https://github.com/primer/view_components/pull/1234) [`ee04a4a9`](https://github.com/primer/view_components/commit/ee04a4a937c56156b3232552c7d10b0ec0336ab7) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - updating links in the contributing docs to point to correct locations
+
 ## 0.0.83
 
 ### Patch Changes

@@ -73,7 +73,7 @@ System arguments include most HTML attributes. For example:
 | `align_items` | Symbol | One of `:baseline`, `:center`, `:flex_end`, `:flex_start`, or `:stretch`. |
 | `align_self` | Symbol | One of `:auto`, `:baseline`, `:center`, `:end`, `:start`, or `:stretch`. |
 | `direction` | Symbol | One of `:column`, `:column_reverse`, `:row`, or `:row_reverse`. |
-| `flex` | Integer, Symbol | One of `1` and `:auto`. |
+| `flex` | Integer, Symbol | One of `1` or `:auto`. |
 | `flex_grow` | Integer | To enable, set to `0`. |
 | `flex_shrink` | Integer | To enable, set to `0`. |
 | `flex_wrap` | Symbol | One of `:nowrap`, `:reverse`, or `:wrap`. |
@@ -93,9 +93,9 @@ System arguments include most HTML attributes. For example:
 | :- | :- | :- |
 | `display` | Symbol | One of `:block`, `:flex`, `:inline`, `:inline_block`, `:inline_flex`, `:none`, `:table`, or `:table_cell`. |
 | `w` | Symbol | One of `:auto`, `:fit`, or `:full`. |
-| `h` | Symbol | One of `:fit` and `:full`. |
+| `h` | Symbol | One of `:fit` or `:full`. |
 | `hide` | Symbol | Hide the element at a specific breakpoint. One of `:lg`, `:md`, `:sm`, `:whenNarrow`, `:whenRegular`, `:whenWide`, or `:xl`. |
-| `visibility` | Symbol | Visibility. One of `:hidden` and `:visible`. |
+| `visibility` | Symbol | Visibility. One of `:hidden` or `:visible`. |
 | `vertical_align` | Symbol | One of `:baseline`, `:bottom`, `:middle`, `:text_bottom`, `:text_top`, or `:top`. |
 
 ## Position
@@ -139,7 +139,7 @@ System arguments include most HTML attributes. For example:
 | `text_align` | Symbol | Text alignment. One of `:center`, `:left`, or `:right`. |
 | `text_transform` | Symbol | Text alignment. One of `:uppercase`. |
 | `underline` | Boolean | Whether text should be underlined. |
-| `word_break` | Symbol | Whether to break words on line breaks. One of `:break_all` and `:break_word`. |
+| `word_break` | Symbol | Whether to break words on line breaks. One of `:break_all` or `:break_word`. |
 
 ## Other
 

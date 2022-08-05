@@ -26,7 +26,7 @@
   - title: Blankslate
     url: "/components/beta/blankslate"
   - title: BorderBox
-    url: "/components/borderbox"
+    url: "/components/beta/borderbox"
   - title: Box
     url: "/components/box"
   - title: Breadcrumbs
@@ -34,7 +34,7 @@
   - title: Button
     url: "/components/button"
   - title: ButtonGroup
-    url: "/components/buttongroup"
+    url: "/components/beta/buttongroup"
   - title: ButtonMarketing
     url: "/components/alpha/buttonmarketing"
   - title: ClipboardCopy
@@ -99,6 +99,8 @@
     url: "/components/alpha/tabpanels"
   - title: Text
     url: "/components/beta/text"
+  - title: TextField
+    url: "/components/alpha/textfield"
   - title: TimeAgo
     url: "/components/timeago"
   - title: TimelineItem

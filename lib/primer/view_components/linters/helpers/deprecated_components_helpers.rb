@@ -7,7 +7,12 @@ module ERBLint
       module DeprecatedComponentsHelpers
         # If there is no alternative to suggest, set the value to nil
         COMPONENT_TO_USE_INSTEAD = {
+          "Primer::ButtonGroup" => "Primer::Beta::ButtonGroup",
+          "Primer::Alpha::AutoComplete::Item" => "Primer::Beta::AutoComplete::Item",
+          "Primer::Alpha::AutoComplete" => "Primer::Beta::AutoComplete",
           "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
+          "Primer::BorderBoxComponent" => "Primer::Beta::BorderBox",
+          "Primer::BoxComponent" => "Primer::Box",
           "Primer::DropdownMenuComponent" => nil,
           "Primer::Tooltip" => "Primer::Alpha::Tooltip",
           "Primer::FlexComponent" => nil,
@@ -29,14 +34,7 @@ module ERBLint
         end
 
         def deprecated_components
-          @deprecated_components ||= statuses_json.select { |_, value| value == "deprecated" }.keys.tap do |deprecated_components|
-            deprecated_components.each do |deprecated|
-              unless COMPONENT_TO_USE_INSTEAD.key?(deprecated)
-                raise "Please provide a component that should be used in place of #{deprecated} in COMPONENT_TO_USE_INSTEAD. "\
-                      "If there is no alternative, set the value to nil."
-              end
-            end
-          end
+          @deprecated_components ||= statuses_json.select { |_, value| value == "deprecated" }.keys
         end
       end
     end
