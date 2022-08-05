@@ -468,7 +468,7 @@
   - name: type
     type: Symbol
     default: "`:button`"
-    description: One of `:button` and `:submit`.
+    description: One of `:button` or `:submit`.
   - name: system_arguments
     type: Hash
     default: N/A
