@@ -1,16 +1,12 @@
 /* eslint-disable custom-elements/no-constructor */
-function getControls(el: SegmentedControlElement): HTMLElement[] {
-  return Array.from(el.querySelectorAll<HTMLElement>('[role="toolbar"] button')).filter(
-    tab => tab instanceof HTMLElement && tab.closest(el.tagName) === el
-  )
-}
-
 export default class SegmentedControlElement extends HTMLElement {
   constructor() {
     super()
 
     this.addEventListener('click', (event: MouseEvent) => {
-      const controls = getControls(this)
+      const controls = Array.from(this.querySelectorAll<HTMLElement>('[role="toolbar"] button')).filter(
+        tab => tab instanceof HTMLElement && tab.closest(this.tagName) === this
+      ) as HTMLElement[]
 
       if (!(event.target instanceof Element)) return
       if (event.target.closest(this.tagName) !== this) return
