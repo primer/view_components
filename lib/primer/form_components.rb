@@ -28,7 +28,7 @@ module Primer
             &@block
           )
 
-          input.render_in(__vc_original_view_context) { content }
+          input.to_component.render_in(__vc_original_view_context) { content }
         end
       end
     end
