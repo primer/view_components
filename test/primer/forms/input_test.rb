@@ -25,7 +25,7 @@ class Primer::Forms::InputTest < Minitest::Test
     form = nil
 
     render_in_view_context do
-      form_with(url: "/foo", skip_default_ids: false) do |f|
+      primer_form_with(url: "/foo") do |f|
         form = TestForm.new(f)
       end
     end
