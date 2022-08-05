@@ -462,6 +462,23 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Details
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/details.rb
+  parameters:
+  - name: overlay
+    type: Symbol
+    default: "`:none`"
+    description: Dictates the type of overlay to render with. One of `:dark`, `:default`,
+      or `:none`.
+  - name: reset
+    type: Boolean
+    default: "`false`"
+    description: Defaults to false. If set to true, it will remove the default caret
+      and remove style from the summary element
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Flash
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/flash.rb
   parameters:
@@ -628,23 +645,6 @@
     type: Boolean
     default: "`false`"
     description: Whether to apply our standard rounding logic to value.
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: Details
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/details_component.rb
-  parameters:
-  - name: overlay
-    type: Symbol
-    default: "`:none`"
-    description: Dictates the type of overlay to render with. One of `:dark`, `:default`,
-      or `:none`.
-  - name: reset
-    type: Boolean
-    default: "`false`"
-    description: Defaults to false. If set to true, it will remove the default caret
-      and remove style from the summary element
   - name: system_arguments
     type: Hash
     default: N/A

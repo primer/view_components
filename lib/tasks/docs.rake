@@ -52,7 +52,7 @@ namespace :docs do
       Primer::ClipboardCopy,
       Primer::CloseButton,
       Primer::CounterComponent,
-      Primer::DetailsComponent,
+      Primer::Beta::Details,
       Primer::Dropdown,
       Primer::DropdownMenuComponent,
       Primer::Beta::Flash,

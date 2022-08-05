@@ -44,7 +44,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::ConditionalWrapper, { condition: true, tag: :div }],
     [Primer::CloseButton, {}],
     [Primer::CounterComponent, { count: 1 }],
-    [Primer::DetailsComponent, {}, lambda do |component|
+    [Primer::Beta::Details, {}, lambda do |component|
       component.summary { "Foo" }
       component.body { "Bar" }
     end],
@@ -87,6 +87,7 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::DetailsComponent",
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",

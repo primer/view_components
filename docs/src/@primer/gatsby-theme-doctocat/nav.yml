@@ -44,7 +44,7 @@
   - title: Counter
     url: "/components/counter"
   - title: Details
-    url: "/components/details"
+    url: "/components/beta/details"
   - title: Dropdown
     url: "/components/dropdown"
   - title: DropdownMenu

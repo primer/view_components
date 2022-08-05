@@ -298,6 +298,21 @@
   },
   "Primer::Beta::Breadcrumbs::Item": {
   },
+  "Primer::Beta::Details": {
+    "BODY_TAG_DEFAULT": "div",
+    "BODY_TAG_OPTIONS": [
+      "ul",
+      "details-menu",
+      "details-dialog",
+      "div"
+    ],
+    "NO_OVERLAY": "none",
+    "OVERLAY_MAPPINGS": {
+      "none": "",
+      "default": "details-overlay",
+      "dark": "details-overlay details-overlay-dark"
+    }
+  },
   "Primer::Beta::Flash": {
     "DEFAULT_SCHEME": "default",
     "SCHEME_MAPPINGS": {
@@ -387,19 +402,6 @@
     ]
   },
   "Primer::DetailsComponent": {
-    "BODY_TAG_DEFAULT": "div",
-    "BODY_TAG_OPTIONS": [
-      "ul",
-      "details-menu",
-      "details-dialog",
-      "div"
-    ],
-    "NO_OVERLAY": "none",
-    "OVERLAY_MAPPINGS": {
-      "none": "",
-      "default": "details-overlay",
-      "dark": "details-overlay details-overlay-dark"
-    }
   },
   "Primer::Dropdown": {
     "Menu": "Primer::Dropdown::Menu"

@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
-class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
+require "primer/beta/details"
+
+class Primer::Beta::DetailsStories < ViewComponent::Storybook::Stories
   layout "storybook_centered_preview"
 
   story(:details) do
     controls do
-      select(:overlay, Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :none)
+      select(:overlay, Primer::Beta::Details::OVERLAY_MAPPINGS.keys, :none)
       reset false
     end
 
@@ -17,7 +19,7 @@ class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
 
   story(:custom_button) do
     controls do
-      select(:overlay, Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :none)
+      select(:overlay, Primer::Beta::Details::OVERLAY_MAPPINGS.keys, :none)
     end
 
     content do |component|
@@ -28,7 +30,7 @@ class Primer::DetailsComponentStories < ViewComponent::Storybook::Stories
 
   story(:without_button) do
     controls do
-      select(:overlay, Primer::DetailsComponent::OVERLAY_MAPPINGS.keys, :none)
+      select(:overlay, Primer::Beta::Details::OVERLAY_MAPPINGS.keys, :none)
     end
 
     content do |component|
