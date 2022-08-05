@@ -39,6 +39,10 @@ module Primer
         false
       end
 
+      def to_component
+        self
+      end
+
       private
 
       def compile_and_render_template
