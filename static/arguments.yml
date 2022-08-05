@@ -473,11 +473,11 @@
   - name: variant
     type: Symbol
     default: "`nil`"
-    description: DEPRECATED. One of `:medium` and `:small`.
+    description: DEPRECATED. One of `:medium` or `:small`.
   - name: size
     type: Symbol
     default: "`:medium`"
-    description: One of `:medium` and `:small`.
+    description: One of `:medium` or `:small`.
   - name: tag
     type: Symbol
     default: "`:button`"

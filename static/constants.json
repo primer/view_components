@@ -348,6 +348,8 @@
   },
   "Primer::BorderBoxComponent": {
   },
+  "Primer::Box": {
+  },
   "Primer::BoxComponent": {
   },
   "Primer::ButtonComponent": {
