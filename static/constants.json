@@ -338,6 +338,8 @@
   },
   "Primer::BorderBoxComponent": {
   },
+  "Primer::Box": {
+  },
   "Primer::BoxComponent": {
   },
   "Primer::ButtonComponent": {
@@ -546,13 +548,20 @@
   },
   "Primer::LabelComponent": {
     "DEFAULT_SCHEME": "default",
+    "DEFAULT_SIZE": "medium",
     "DEFAULT_TAG": "span",
+    "DEFAULT_VARIANT": "none",
     "DEPRECATED_SCHEME_OPTIONS": [
       "info",
       "warning",
       "orange",
       "purple"
     ],
+    "DEPRECATED_VARIANT_OPTIONS": [
+      "large",
+      "inline"
+    ],
+    "INLINE_CLASS": "Label--inline",
     "SCHEME_MAPPINGS": {
       "default": "",
       "primary": "Label--primary",
@@ -581,20 +590,22 @@
       "done",
       "sponsors"
     ],
+    "SIZE_MAPPINGS": {
+      "medium": null,
+      "large": "Label--large"
+    },
+    "SIZE_OPTIONS": [
+      "medium",
+      "large"
+    ],
     "TAG_OPTIONS": [
       "span",
       "summary",
       "a",
       "div"
     ],
-    "VARIANT_MAPPINGS": {
-      "large": "Label--large",
-      "inline": "Label--inline"
-    },
     "VARIANT_OPTIONS": [
-      "large",
-      "inline",
-      null
+      "none"
     ]
   },
   "Primer::LayoutComponent": {

@@ -2,4 +2,4 @@
 '@primer/view-components': patch
 ---
 
-Revert removal of BlankslateComponent
+Refactor the LabelComponent API

@@ -6,7 +6,8 @@ class Primer::LabelComponentStories < ViewComponent::Storybook::Stories
   story(:label) do
     controls do
       select(:scheme, Primer::LabelComponent::SCHEME_OPTIONS, Primer::LabelComponent::DEFAULT_SCHEME)
-      select(:variant, Primer::LabelComponent::VARIANT_MAPPINGS.keys, :large)
+      select(:size, Primer::LabelComponent::SIZE_MAPPINGS.keys, Primer::LabelComponent::DEFAULT_SIZE)
+      boolean :inline, false
     end
 
     content do
