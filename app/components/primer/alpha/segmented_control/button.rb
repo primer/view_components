@@ -27,7 +27,7 @@ module Primer
           @icon_only = icon_only
           @system_arguments = system_arguments
           @system_arguments[:tag] = :button
-          @system_arguments[:id] = system_arguments[:id] || "segmented-control-button-#{text.downcase.gsub(/\s+/, '-')}" if render_tooltip?
+          @system_arguments[:id] ||= "segmented-control-button-#{SecureRandom.hex(4)}"
           @system_arguments[:classes] = class_names(
             "SegmentedControl-button",
             @system_arguments[:classes],
