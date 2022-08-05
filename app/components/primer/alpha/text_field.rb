@@ -6,7 +6,7 @@ module Primer
 
     # A text field suitable for use outside a form. For a text field input suitable for use
     # within an HTML form, see the `Primer::Forms` namespace.
-    class TextField
+    class TextField < Primer::Component
       status :alpha
 
       # @!method initialize

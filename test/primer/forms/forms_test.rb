@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
+require_relative "form_test_component"
 
 class Primer::Forms::FormsTest < Minitest::Test
   include Primer::ComponentTestHelpers
@@ -27,15 +28,26 @@ class Primer::Forms::FormsTest < Minitest::Test
   def test_renders_correct_form_structure
     render_preview :single_text_field_form
 
-    assert_selector "form[action='/foo']" do
-      assert_selector ".FormControl" do
-        assert_selector "label[for='ultimate_answer']", text: "Ultimate answer" do
-          # asterisk for required field
-          assert_selector "span[aria-hidden='true']", text: "*"
-        end
-
-        assert_selector "input[type='text'][name='ultimate_answer'][id='ultimate_answer'][aria-required='true']"
+    assert_selector "form[action='/foo'] .FormControl" do
+      assert_selector "label[for='ultimate_answer']", text: "Ultimate answer" do
+        # asterisk for required field
+        assert_selector "span[aria-hidden='true']", text: "*"
       end
+
+      assert_selector "input[type='text'][name='ultimate_answer'][id='ultimate_answer'][aria-required='true']"
+    end
+  end
+
+  def test_renders_correct_form_structure_inside_a_component
+    render_inline Primer::FormTestComponent.new(form_class: SingleTextFieldForm)
+
+    assert_selector "form[action='/foo'] .FormControl" do
+      assert_selector "label[for='ultimate_answer']", text: "Ultimate answer" do
+        # asterisk for required field
+        assert_selector "span[aria-hidden='true']", text: "*"
+      end
+
+      assert_selector "input[type='text'][name='ultimate_answer'][id='ultimate_answer'][aria-required='true']"
     end
   end
 
@@ -66,7 +78,7 @@ class Primer::Forms::FormsTest < Minitest::Test
     model.valid? # populate validation error messages
 
     render_in_view_context do
-      form_with(model: model, url: "/foo", skip_default_ids: false) do |f|
+      primer_form_with(model: model, url: "/foo") do |f|
         render(SingleTextFieldForm.new(f))
       end
     end
@@ -82,7 +94,7 @@ class Primer::Forms::FormsTest < Minitest::Test
     model = DeepThought.new(42)
 
     render_in_view_context do
-      form_with(model: model, url: "/foo", skip_default_ids: false) do |f|
+      primer_form_with(model: model, url: "/foo") do |f|
         render(SingleTextFieldForm.new(f))
       end
     end
@@ -96,7 +108,7 @@ class Primer::Forms::FormsTest < Minitest::Test
     model.valid? # populate validation error messages
 
     render_in_view_context do
-      form_with(model: model, url: "/foo", skip_default_ids: false) do |f|
+      primer_form_with(model: model, url: "/foo") do |f|
         render(SingleTextFieldForm.new(f))
       end
     end
@@ -145,7 +157,7 @@ class Primer::Forms::FormsTest < Minitest::Test
   def test_raises_an_error_if_both_a_caption_argument_and_a_caption_template_are_provided
     error = assert_raises RuntimeError do
       render_in_view_context do
-        form_with(url: "/foo", skip_default_ids: false) do |f|
+        primer_form_with(url: "/foo") do |f|
           render(BothTypesOfCaptionForm.new(f))
         end
       end
@@ -156,7 +168,7 @@ class Primer::Forms::FormsTest < Minitest::Test
 
   def test_form_list_renders_multiple_forms
     render_in_view_context do
-      form_with(url: "/foo", skip_default_ids: false) do |f|
+      primer_form_with(url: "/foo") do |f|
         render(Primer::Forms::FormList.new(FirstNameForm.new(f), LastNameForm.new(f)))
       end
     end
@@ -176,6 +188,18 @@ class Primer::Forms::FormsTest < Minitest::Test
 
     button = page.find_all("button[type=submit]").first
     assert_nil button["data-disable-with"]
+  end
+
+  def test_renders_a_submit_button_with_primer_utility_margin
+    render_preview :submit_button_form
+
+    assert_selector "button.mr-3[type=submit]"
+  end
+
+  def test_renders_a_text_field_with_primer_utility_color
+    render_preview :submit_button_form
+
+    assert_selector "input.color-fg-success[type=text]"
   end
 
   def test_autofocuses_the_first_invalid_input
@@ -224,5 +248,17 @@ class Primer::Forms::FormsTest < Minitest::Test
     render_preview :multi_text_field_form
 
     assert_selector "input[type=hidden][name=csrf_token][value=abc123]", visible: false
+  end
+
+  def test_only_accepts_correct_form_builder
+    error = assert_raises(ArgumentError) do
+      render_in_view_context do
+        form_with(url: "/foo") do |f|
+          render(SingleTextFieldForm.new(f))
+        end
+      end
+    end
+
+    assert_includes error.message, "please pass an instance of Primer::Forms::Builder"
   end
 end
