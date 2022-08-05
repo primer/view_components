@@ -29,4 +29,9 @@ class PrimerAlphaTooltipTest < Minitest::Test
       render_inline(Primer::Alpha::Tooltip.new(type: :description, for_id: "someButton", text: not_text, visible: false))
     end
   end
+
+  def test_tooltip_is_position_absolute
+    render_inline(Primer::Alpha::Tooltip.new(type: :description, for_id: "someButton", text: "Tooltip"))
+    assert_selector("tool-tip.position-absolute", visible: false)
+  end
 end
