@@ -119,7 +119,7 @@ module Primer
     end
 
     def body_component
-      Primer::BoxComponent.new(**@body_arguments)
+      Primer::Box.new(**@body_arguments)
     end
   end
 end

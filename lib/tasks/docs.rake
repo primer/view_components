@@ -44,7 +44,7 @@ namespace :docs do
       Primer::Beta::Blankslate,
       Primer::Beta::BorderBox,
       Primer::Beta::BorderBox::Header,
-      Primer::BoxComponent,
+      Primer::Box,
       Primer::Beta::Breadcrumbs,
       Primer::Beta::Button,
       Primer::ButtonGroup,
