@@ -35,7 +35,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::BorderBox, {}, proc { |component| component.header { "Foo" } }],
     [Primer::Beta::BorderBox::Header, {}],
     [Primer::BlankslateComponent, { title: "Foo" }],
-    [Primer::BoxComponent, {}],
+    [Primer::Box, {}],
     [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
     [Primer::ButtonComponent, {}, proc { "Button" }],
     [Primer::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
@@ -91,7 +91,8 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
-      "Primer::BorderBoxComponent"
+      "Primer::BorderBoxComponent",
+      "Primer::BoxComponent"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count

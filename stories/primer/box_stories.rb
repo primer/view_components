@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Primer::BoxComponentStories < ViewComponent::Storybook::Stories
+require "primer/box"
+
+class Primer::BoxStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   story(:box) do

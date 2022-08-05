@@ -119,7 +119,7 @@ class PrimerFlexComponentTest < Minitest::Test
 
   def test_warns_of_deprecation_if_not_silenced
     with_silence_deprecations(false) do
-      ActiveSupport::Deprecation.expects(:warn).with("Primer::FlexComponent is deprecated and will be removed in v0.0.40. Use Primer::BoxComponent instead.").once
+      ActiveSupport::Deprecation.expects(:warn).with("Primer::FlexComponent is deprecated and will be removed in v0.0.40. Use Primer::Box instead.").once
       Primer::FlexComponent.new
     end
   end
