@@ -49,6 +49,6 @@ class PrimerTruncateTest < Minitest::Test
   def test_renders_custom_max_width
     render_inline(Primer::Truncate.new(max_width: 100)) { "content" }
 
-    assert_selector(".css-truncate", text: "content", style: "max-width: 100px;")
+    assert_selector(".css-truncate", text: "content", style: "max-width: 100px")
   end
 end
