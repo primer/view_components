@@ -16,8 +16,9 @@ module Primer
           code.dup.tap do |result|
             parser.var_refs.reverse_each do |lineno, stop|
               line_offset = line_offsets[lineno]
-              start = (stop - "@output_buffer".length) + line_offset
               stop += line_offset
+              stop -= 1 if stop < code.length
+              start = stop - "@output_buffer".length
               result[start...stop] = "output_buffer"
             end
           end
@@ -39,7 +40,7 @@ module Primer
       def on_var_ref(var)
         return unless var == "@output_buffer"
 
-        var_refs << [lineno, column - 1]
+        var_refs << [lineno, column]
       end
 
       def var_refs
