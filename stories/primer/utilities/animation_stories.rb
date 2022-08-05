@@ -4,7 +4,7 @@ class Primer::Utilities::AnimationStories < ViewComponent::Storybook::Stories
   layout "storybook_preview"
 
   def self.default_component
-    Primer::BoxComponent
+    Primer::Box
   end
 
   story(:animation) do

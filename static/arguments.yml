@@ -508,7 +508,7 @@
     default: N/A
     description: "[System arguments](/system-arguments)"
 - component: Box
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/box_component.rb
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/box.rb
   parameters:
   - name: system_arguments
     type: Hash
