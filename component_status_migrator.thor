@@ -72,7 +72,9 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def rename_nav_entry
-    gsub_file("docs/src/@primer/gatsby-theme-doctocat/nav.yml", "class #{name}", name_without_suffix)
+    nav_file = "docs/src/@primer/gatsby-theme-doctocat/nav.yml"
+    gsub_file(nav_file, "title: #{name}", "title: #{name_without_suffix}")
+    gsub_file(nav_file, "url: \"/components/#{name_without_suffix.downcase}\"", "url: \"/components/#{status_url}#{name_without_suffix.downcase}\"")
   end
 
   def update_all_references
@@ -219,14 +221,19 @@ class ComponentStatusMigrator < Thor::Group
     @status ||= options[:status].downcase
   end
 
+  def status_url
+    @status_url ||= "#{status}/" unless stable?
+  end
+
   def name_without_suffix
-    name.gsub("Component", "")
+    @name_without_suffix ||= name.gsub("Component", "")
   end
 
   def short_name
-    name_with_status = name.gsub(/Primer::|Component/, "")
-
-    m = name_with_status.match(/(?<status>Beta|Alpha|Deprecated)?(?<_colons>::)?(?<name>.*)/)
-    m[:name].gsub("::", "").downcase
+    @short_name ||= begin
+      name_with_status = name.gsub(/Primer::|Component/, "")
+      m = name_with_status.match(/(?<status>Beta|Alpha|Deprecated)?(?<_colons>::)?(?<name>.*)/)
+      m[:name].gsub("::", "").downcase
+    end
   end
 end
