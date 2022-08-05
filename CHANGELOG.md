@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.0.87
+
+### Patch Changes
+
+- [#1274](https://github.com/primer/view_components/pull/1274) [`c153f734`](https://github.com/primer/view_components/commit/c153f734a891fc3bc7dfc3bed34630ff38ab39d7) Thanks [@jonrohan](https://github.com/jonrohan)! - Fixing whitespace in rendered LinkComponent
+
+* [#1273](https://github.com/primer/view_components/pull/1273) [`f38517ac`](https://github.com/primer/view_components/commit/f38517acf1aed43b27f2c6b94634d70b124883e6) Thanks [@camertron](https://github.com/camertron)! - Revert removal of BlankslateComponent
+
+- [#1270](https://github.com/primer/view_components/pull/1270) [`44919308`](https://github.com/primer/view_components/commit/4491930812d16a9bcb5d8f05b4d94e49e469afa5) Thanks [@camertron](https://github.com/camertron)! - Use a custom form builder; introduce primer_form_for
+
+* [#1269](https://github.com/primer/view_components/pull/1269) [`9ae9615f`](https://github.com/primer/view_components/commit/9ae9615f31acf43875feb89661cac6311527f9fd) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - updating component migrator script with improvements in component reference updates, deprecations, etc.
+
+- [#1276](https://github.com/primer/view_components/pull/1276) [`759ea56f`](https://github.com/primer/view_components/commit/759ea56f00cbe3e536f4e558a9fb9a3e1b89bf7b) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - correcting the updates to nav.yml in the component status migrator
+
 ## 0.0.86
 
 ### Patch Changes

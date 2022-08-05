@@ -43,6 +43,7 @@
 - ".Label--attention"
 - ".Label--danger"
 - ".Label--done"
+- ".Label--inline"
 - ".Label--large"
 - ".Label--primary"
 - ".Label--secondary"

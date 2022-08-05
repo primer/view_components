@@ -32,11 +32,18 @@ module Primer
     DEPRECATED_SCHEME_OPTIONS = [:info, :warning, :orange, :purple].freeze
     SCHEME_OPTIONS = (SCHEME_MAPPINGS.keys - DEPRECATED_SCHEME_OPTIONS).freeze
 
-    VARIANT_MAPPINGS = {
-      large: "Label--large",
-      inline: "Label--inline"
+    DEFAULT_SIZE = :medium
+    SIZE_MAPPINGS = {
+      DEFAULT_SIZE => nil,
+      :large => "Label--large"
     }.freeze
-    VARIANT_OPTIONS = VARIANT_MAPPINGS.keys << nil
+    SIZE_OPTIONS = SIZE_MAPPINGS.keys
+
+    DEFAULT_VARIANT = :none
+    VARIANT_OPTIONS = [DEFAULT_VARIANT].freeze
+    DEPRECATED_VARIANT_OPTIONS = [:large, :inline].freeze
+
+    INLINE_CLASS = "Label--inline"
 
     # @example Schemes
     #   <%= render(Primer::LabelComponent.new) { "Default" } %>
@@ -50,22 +57,36 @@ module Primer
     #   <%= render(Primer::LabelComponent.new(scheme: :done)) { "Done" } %>
     #   <%= render(Primer::LabelComponent.new(scheme: :sponsors)) { "Sponsors" } %>
     #
-    # @example Variants
+    # @example Sizes
+    #   <%= render(Primer::LabelComponent.new) { "Medium" } %>
+    #   <%= render(Primer::LabelComponent.new(size: :large)) { "Large" } %>
+    #
+    # @example Inline
     #   <%= render(Primer::LabelComponent.new) { "Default" } %>
-    #   <%= render(Primer::LabelComponent.new(variant: :large)) { "Large" } %>
+    #   <%= render(Primer::LabelComponent.new(inline: true)) { "Inline" } %>
     #
     # @param tag [Symbol] <%= one_of(Primer::LabelComponent::TAG_OPTIONS) %>
     # @param scheme [Symbol] <%= one_of(Primer::LabelComponent::SCHEME_MAPPINGS.keys) %>
-    # @param variant [Symbol] <%= one_of(Primer::LabelComponent::VARIANT_OPTIONS) %>
+    # @param size [Symbol] <%= one_of(Primer::LabelComponent::SIZE_OPTIONS) %>
+    # @param inline [Boolean] Whether or not to render this label inline.
+    # @param variant [Symbol] <%= one_of(Primer::LabelComponent::VARIANT_OPTIONS + Primer::LabelComponent::DEPRECATED_VARIANT_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-    def initialize(tag: DEFAULT_TAG, scheme: DEFAULT_SCHEME, variant: nil, **system_arguments)
+
+    def initialize(tag: DEFAULT_TAG, scheme: DEFAULT_SCHEME, size: DEFAULT_SIZE, inline: false, variant: DEFAULT_VARIANT, **system_arguments)
       @system_arguments = system_arguments
+
+      @variant = fetch_or_fallback(VARIANT_OPTIONS, variant, nil, deprecated_values: DEPRECATED_VARIANT_OPTIONS)
+      @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME, deprecated_values: DEPRECATED_SCHEME_OPTIONS)
+      @size = fetch_or_fallback(SIZE_OPTIONS, size) || @variant == :large ? :large : nil || DEFAULT_SIZE
+      @inline = inline || @variant == :inline
+
       @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
       @system_arguments[:classes] = class_names(
         "Label",
         system_arguments[:classes],
-        SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, deprecated_values: DEPRECATED_SCHEME_OPTIONS)],
-        VARIANT_MAPPINGS[fetch_or_fallback(VARIANT_OPTIONS, variant)]
+        SCHEME_MAPPINGS[@scheme],
+        SIZE_MAPPINGS[@size],
+        @inline ? INLINE_CLASS : nil
       )
     end
 
