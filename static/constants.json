@@ -298,6 +298,8 @@
   },
   "Primer::Beta::Breadcrumbs::Item": {
   },
+  "Primer::Beta::ButtonGroup": {
+  },
   "Primer::Beta::Flash": {
     "DEFAULT_SCHEME": "default",
     "SCHEME_MAPPINGS": {

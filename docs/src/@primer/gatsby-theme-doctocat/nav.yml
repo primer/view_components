@@ -34,7 +34,7 @@
   - title: Button
     url: "/components/button"
   - title: ButtonGroup
-    url: "/components/buttongroup"
+    url: "/components/beta/buttongroup"
   - title: ButtonMarketing
     url: "/components/alpha/buttonmarketing"
   - title: ClipboardCopy
