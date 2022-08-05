@@ -45,8 +45,8 @@ module Primer
           require "primer/form_helper"
           helper Primer::FormHelper
 
-          # make primer_form_with available to view components
-          ViewComponent::Base.prepend(Primer::Forms::ViewComponentPrimerFormHelper)
+          # make primer_form_with available to view components also
+          ViewComponent::Base.prepend(Primer::FormHelper)
         end
       end
 

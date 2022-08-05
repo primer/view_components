@@ -28,15 +28,26 @@ class Primer::Forms::FormsTest < Minitest::Test
   def test_renders_correct_form_structure
     render_preview :single_text_field_form
 
-    assert_selector "form[action='/foo']" do
-      assert_selector ".FormControl" do
-        assert_selector "label[for='ultimate_answer']", text: "Ultimate answer" do
-          # asterisk for required field
-          assert_selector "span[aria-hidden='true']", text: "*"
-        end
-
-        assert_selector "input[type='text'][name='ultimate_answer'][id='ultimate_answer'][aria-required='true']"
+    assert_selector "form[action='/foo'] .FormControl" do
+      assert_selector "label[for='ultimate_answer']", text: "Ultimate answer" do
+        # asterisk for required field
+        assert_selector "span[aria-hidden='true']", text: "*"
       end
+
+      assert_selector "input[type='text'][name='ultimate_answer'][id='ultimate_answer'][aria-required='true']"
+    end
+  end
+
+  def test_renders_correct_form_structure_inside_a_component
+    render_inline Primer::FormTestComponent.new(form_class: SingleTextFieldForm)
+
+    assert_selector "form[action='/foo'] .FormControl" do
+      assert_selector "label[for='ultimate_answer']", text: "Ultimate answer" do
+        # asterisk for required field
+        assert_selector "span[aria-hidden='true']", text: "*"
+      end
+
+      assert_selector "input[type='text'][name='ultimate_answer'][id='ultimate_answer'][aria-required='true']"
     end
   end
 
@@ -46,21 +57,6 @@ class Primer::Forms::FormsTest < Minitest::Test
     assert_selector "input[type='checkbox'][name='enable_ipd'][id='enable_ipd']"
     assert_selector "label[for='enable_ipd']", text: "Enable the Infinite Improbability Drive" do
       assert_selector ".FormControl-caption", text: "Cross interstellar distances in a mere nothingth of a second."
-    end
-  end
-
-  def test_renders_correct_form_structure_inside_a_component
-    render_inline Primer::FormTestComponent.new(form_class: SingleTextFieldForm)
-
-    assert_selector "form[action='/foo']" do
-      assert_selector ".FormControl" do
-        assert_selector "label[for='ultimate_answer']", text: "Ultimate answer" do
-          # asterisk for required field
-          assert_selector "span[aria-hidden='true']", text: "*"
-        end
-
-        assert_selector "input[type='text'][name='ultimate_answer'][id='ultimate_answer'][aria-required='true']"
-      end
     end
   end
 
