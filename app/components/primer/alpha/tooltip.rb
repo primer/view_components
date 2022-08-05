@@ -91,6 +91,7 @@ module Primer
         @system_arguments[:tag] = :"tool-tip"
         @system_arguments[:style] = join_style_arguments(@system_arguments[:style], "visibility: hidden")
         @system_arguments[:for] = for_id
+        @system_arguments[:position] = :absolute
         @system_arguments[:"data-direction"] = fetch_or_fallback(DIRECTION_OPTIONS, direction, DIRECTION_DEFAULT).to_s
         @system_arguments[:"data-type"] = fetch_or_fallback(TYPE_OPTIONS, type, TYPE_FALLBACK).to_s
       end
