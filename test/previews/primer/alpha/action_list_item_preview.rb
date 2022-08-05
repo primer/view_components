@@ -7,11 +7,14 @@ module Primer
       #
       # @param label text
       # @param truncate_label toggle
+      # @param href text
+      # @param role text
       # @param size [Symbol] select [small, medium, large]
       # @param variant [Symbol] select [default, danger]
       # @param disabled toggle
       # @param description_display [Symbol] select [inline, block]
       # @param select_mode [Symbol] select [none, single, multiple]
+      # @param selected toggle
       # @param checked toggle
       # @param leading_visual_icon [Symbol] octicon
       # @param leading_visual_avatar_src text
@@ -22,11 +25,14 @@ module Primer
       def playground(
         label: "Item",
         truncate_label: false,
+        href: nil,
+        role: "menuitem",
         size: Primer::Alpha::ActionListItem::DEFAULT_SIZE,
         variant: Primer::Alpha::ActionListItem::DEFAULT_VARIANT,
         disabled: false,
         description_display: Primer::Alpha::ActionListItem::DEFAULT_DESCRIPTION_DISPLAY,
         select_mode: Primer::Alpha::ActionListItem::DEFAULT_SELECT_MODE,
+        selected: false,
         checked: false,
         leading_visual_icon: nil,
         leading_visual_avatar_src: nil,
@@ -38,11 +44,14 @@ module Primer
         item = Primer::Alpha::ActionListItem.new(
           label: label,
           truncate_label: truncate_label,
+          href: href,
+          role: role,
           size: size,
           variant: variant,
           disabled: disabled,
           description_display: description_display,
           select_mode: select_mode,
+          selected: selected,
           checked: checked
         )
 
