@@ -1,7 +1,7 @@
 {
   "Primer::Alpha::ActionListItem": {
     "DEFAULT_DESCRIPTION_VARIANT": "block",
-    "DEFAULT_SELECT_MODE": "none",
+    "DEFAULT_SELECT_MODE": "single",
     "DEFAULT_SIZE": "small",
     "DEFAULT_VARIANT": "default",
     "DESCRIPTION_VARIANT_MAPPINGS": {
@@ -12,13 +12,7 @@
       "inline",
       "block"
     ],
-    "SELECT_MODE_ICON_MAPPINGS": {
-      "none": null,
-      "single": "ActionList-item--singleSelectCheckmark",
-      "multiple": "ActionList-item-multiSelectIcon"
-    },
     "SELECT_MODE_OPTIONS": [
-      "none",
       "single",
       "multiple"
     ],
