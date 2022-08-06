@@ -21,9 +21,42 @@ module Primer
       # @example Basic usage
       #
       #   <%= render(Primer::Alpha::SegmentedControl.new) do |c| %>
-      #     <%= c.button(text: "Button 1", selected: true) %>
-      #     <%= c.button(text: "Button 2") %>
-      #     <%= c.button(text: "Button 3") %>
+      #     <%= c.button(text: "Preview", selected: true) %>
+      #     <%= c.button(text: "Raw") %>
+      #     <%= c.button(text: "Blame") %>
+      #   <% end %>
+      #
+      # @example With icons
+      #   <%= render(Primer::Alpha::SegmentedControl.new) do |c| %>
+      #     <%= c.button(text: "Preview", selected: true) do |b| %>
+      #       <%= b.leading_visual_icon(icon: :eye) %>
+      #     <% end %>
+      #     <%= c.button(text: "Raw") do |b| %>
+      #       <%= b.leading_visual_icon(icon: :"file-code") %>
+      #     <% end %>
+      #     <%= c.button(text: "Blame") do |b| %>
+      #       <%= b.leading_visual_icon(icon: :people) %>
+      #     <% end %>
+      #   <% end %>
+      #
+      # @example With icons only
+      #   <%= render(Primer::Alpha::SegmentedControl.new(icon_only: true)) do |c| %>
+      #     <%= c.button(text: "Preview", selected: true) do |b| %>
+      #       <%= b.leading_visual_icon(icon: :eye) %>
+      #     <% end %>
+      #     <%= c.button(text: "Raw") do |b| %>
+      #       <%= b.leading_visual_icon(icon: :"file-code") %>
+      #     <% end %>
+      #     <%= c.button(text: "Blame") do |b| %>
+      #       <%= b.leading_visual_icon(icon: :people) %>
+      #     <% end %>
+      #   <% end %>
+      #
+      # @example Fill width of parent
+      #   <%= render(Primer::Alpha::SegmentedControl.new(full_width: true)) do |c| %>
+      #     <%= c.button(text: "Preview", selected: true) %>
+      #     <%= c.button(text: "Raw") %>
+      #     <%= c.button(text: "Blame") %>
       #   <% end %>
       #
       # @param icon_only [Boolean/Symbol] If the buttons should only have an icon, true, false, or :whenNarrow.
