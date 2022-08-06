@@ -34,6 +34,7 @@ module Primer
             "SegmentedControl-button--selected": selected
           )
           @system_arguments[:'aria-current'] = selected
+          @system_arguments[:'aria-label'] = text if render_tooltip?
         end
 
         private
