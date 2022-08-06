@@ -16,11 +16,11 @@ export default class SegmentedControlElement extends HTMLElement {
 
       for (const control of controls) {
         control.classList.remove('SegmentedControl-button--selected')
-        control.setAttribute('aria-selected', 'false')
+        control.setAttribute('aria-current', 'false')
       }
 
       selectedControl.classList.add('SegmentedControl-button--selected')
-      selectedControl.setAttribute('aria-selected', 'true')
+      selectedControl.setAttribute('aria-current', 'true')
       selectedControl.focus()
     })
   }
