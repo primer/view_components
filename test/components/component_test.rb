@@ -7,7 +7,13 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
-    [Primer::Alpha::SegmentedControl, {}],
+    [Primer::Alpha::SegmentedControl, {
+      icon_only: false,
+      full_width: false
+    }, proc { |component|
+      component.button(text: "Button", selected: true)
+    }],
+    [Primer::Alpha::SegmentedControl::Button, {}],
     [Primer::Alpha::Layout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }
       component.sidebar(tag: :div) { "Bar" }
