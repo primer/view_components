@@ -13,7 +13,7 @@ class PrimerComponentTest < Minitest::Test
     }, proc { |component|
       component.button(text: "Button", selected: true)
     }],
-    [Primer::Alpha::SegmentedControl::Button, {}],
+    [Primer::Alpha::SegmentedControl::Button, { text: "Button" }],
     [Primer::Alpha::Layout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }
       component.sidebar(tag: :div) { "Bar" }
