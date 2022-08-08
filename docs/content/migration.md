@@ -12,6 +12,6 @@ stable status.
 |------------------|---------------|
 | [`State`](https://primer.style/css/components/labels#states)             | [`Primer::StateComponent`](https://primer.style/view-components/components/state)              |
 | [`breadcrumb-item`](https://primer.style/css/components/breadcrumb)      | [`Primer::Beta::Breadcrumbs`](https://primer.style/view-components/components/beta/breadcrumbs)    |
-| [`Counter`](https://primer.style/css/stickersheet/labels#counters)       | [`Primer::Beta::Counter`](https://primer.style/view-components/components/counter)          |
+| [`Counter`](https://primer.style/css/stickersheet/labels#counters)       | [`Primer::CounterComponent`](https://primer.style/view-components/components/counter)          |
 | [`Subhead`](https://primer.style/css/components/subhead)                 | [`Primer::SubheadComponent`](https://primer.style/view-components/components/subhead)          |
 | [`blankslate`](https://primer.style/css/components/blankslate)           | [`Primer::Beta::Blankslate`](https://primer.style/view-components/components/beta/blankslate)    |

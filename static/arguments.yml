@@ -488,39 +488,6 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: Counter
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/counter.rb
-  parameters:
-  - name: count
-    type: Integer, Float::INFINITY, nil
-    default: "`0`"
-    description: 'The number to be displayed (e.x. # of issues, pull requests)'
-  - name: scheme
-    type: Symbol
-    default: "`:default`"
-    description: Color scheme. One of `:default`, `:primary`, or `:secondary`.
-  - name: limit
-    type: Integer, nil
-    default: "`5_000`"
-    description: Maximum value to display. Pass `nil` for no limit. (e.x. if `count`
-      == 6,000 and `limit` == 5000, counter will display "5,000+")
-  - name: hide_if_zero
-    type: Boolean
-    default: "`false`"
-    description: If true, a `hidden` attribute is added to the counter if `count`
-      is zero.
-  - name: text
-    type: String
-    default: '`""`'
-    description: Text to display instead of count.
-  - name: round
-    type: Boolean
-    default: "`false`"
-    description: Whether to apply our standard rounding logic to value.
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
 - component: Flash
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/flash.rb
   parameters:
@@ -628,6 +595,39 @@
     type: String
     default: N/A
     description: Element id from where to get the copied value.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: Counter
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/counter_component.rb
+  parameters:
+  - name: count
+    type: Integer, Float::INFINITY, nil
+    default: "`0`"
+    description: 'The number to be displayed (e.x. # of issues, pull requests)'
+  - name: scheme
+    type: Symbol
+    default: "`:default`"
+    description: Color scheme. One of `:default`, `:primary`, or `:secondary`.
+  - name: limit
+    type: Integer, nil
+    default: "`5_000`"
+    description: Maximum value to display. Pass `nil` for no limit. (e.x. if `count`
+      == 6,000 and `limit` == 5000, counter will display "5,000+")
+  - name: hide_if_zero
+    type: Boolean
+    default: "`false`"
+    description: If true, a `hidden` attribute is added to the counter if `count`
+      is zero.
+  - name: text
+    type: String
+    default: '`""`'
+    description: Text to display instead of count.
+  - name: round
+    type: Boolean
+    default: "`false`"
+    description: Whether to apply our standard rounding logic to value.
   - name: system_arguments
     type: Hash
     default: N/A

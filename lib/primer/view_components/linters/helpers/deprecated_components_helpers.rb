@@ -9,7 +9,6 @@ module ERBLint
         COMPONENT_TO_USE_INSTEAD = {
           "Primer::ButtonGroup" => "Primer::Beta::ButtonGroup",
           "Primer::CloseButton" => "Primer::Beta::CloseButton",
-          "Primer::CounterComponent" => "Primer::Beta::Counter",
           "Primer::Alpha::AutoComplete::Item" => "Primer::Beta::AutoComplete::Item",
           "Primer::Alpha::AutoComplete" => "Primer::Beta::AutoComplete",
           "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
