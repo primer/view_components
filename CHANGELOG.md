@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.0.89
+
+### Patch Changes
+
+- [#1277](https://github.com/primer/view_components/pull/1277) [`59d5d6ba`](https://github.com/primer/view_components/commit/59d5d6ba1b1c755a592bbaee55345d0747b9a379) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - move the Primer::CloseButton component into Primer::Beta::CloseButton, update all references, create a deprecated Primer::CloseButton in place of the original
+
+* [#1279](https://github.com/primer/view_components/pull/1279) [`8a316108`](https://github.com/primer/view_components/commit/8a316108286a23e88a5cdb393ba954f8584c00d0) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - moving Primer::Counter to Primer::Beta::Counter, and replace original with a deprecated version"
+
 ## 0.0.88
 
 ### Patch Changes
