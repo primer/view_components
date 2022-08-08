@@ -66,6 +66,7 @@ module Primer
         active: false,
         has_sub_item: false,
         sub_item: false,
+        href: nil,
         **system_arguments
       )
         @label = label
@@ -75,6 +76,7 @@ module Primer
         @active = active
         @has_sub_item = has_sub_item
         @sub_item = sub_item
+        @href = href
         @system_arguments = system_arguments
 
         @size = fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)

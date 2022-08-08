@@ -1,5 +1,5 @@
 <%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
-  <%= render(Primer::BaseComponent.new(tag: :a, href: "/", **@content_arguments)) do %>
+  <%= render(Primer::BaseComponent.new(tag: @href ? :a : :span, href: @href, **@content_arguments)) do %>
     <% if @select_mode == :single %>
       <span class="ActionList-item-action ActionList-item-action--leading">
         <svg

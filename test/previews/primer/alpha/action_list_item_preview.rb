@@ -23,6 +23,7 @@ module Primer
       # @param trailing_visual_label text
       # @param trailing_visual_counter number
       # @param trailing_visual_text text
+      # @param href text
       def playground(
         label: "Item Item ItemItemItemItem ItemItemItemItemItem",
         truncate_label: false,
@@ -36,6 +37,7 @@ module Primer
         active: false,
         has_sub_item: false,
         sub_item: false,
+        href: nil,
         leading_visual_icon: nil,
         leading_visual_avatar_src: nil,
         trailing_visual_icon: nil,
@@ -55,7 +57,8 @@ module Primer
           checked: checked,
           active: active,
           has_sub_item: has_sub_item,
-          sub_item: sub_item
+          sub_item: sub_item,
+          href: href
         )
 
         if leading_visual_icon && leading_visual_icon != :none
