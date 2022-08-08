@@ -51,7 +51,7 @@ namespace :docs do
       Primer::Alpha::ButtonMarketing,
       Primer::ClipboardCopy,
       Primer::Beta::CloseButton,
-      Primer::CounterComponent,
+      Primer::Beta::Counter,
       Primer::DetailsComponent,
       Primer::Dropdown,
       Primer::DropdownMenuComponent,

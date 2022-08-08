@@ -53,7 +53,7 @@ module Primer
     #     <% c.item(href: "#url") do %>
     #       <%= render(Primer::OcticonComponent.new("check")) %>
     #       With Icon and Counter
-    #       <%= render(Primer::CounterComponent.new(count: 25)) %>
+    #       <%= render(Primer::Beta::Counter.new(count: 25)) %>
     #     <% end %>
     #   <% end %>
     #

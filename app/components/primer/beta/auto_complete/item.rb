@@ -22,11 +22,11 @@ module Primer
 
         # The trailing visual rendered after the link.
         #
-        # @param kwargs [Hash] The arguments accepted by <%= link_to_component(Primer::OcticonComponent) %>, <%= link_to_component(Primer::LabelComponent) %>, or <%= link_to_component(Primer::CounterComponent) %>
+        # @param kwargs [Hash] The arguments accepted by <%= link_to_component(Primer::OcticonComponent) %>, <%= link_to_component(Primer::LabelComponent) %>, or <%= link_to_component(Primer::Beta::Counter) %>
         renders_one :trailing_visual, types: {
           icon: Primer::OcticonComponent,
           label: Primer::LabelComponent,
-          counter: Primer::CounterComponent
+          counter: Primer::Beta::Counter
         }
 
         # Optional description
