@@ -298,6 +298,8 @@
   },
   "Primer::Beta::Breadcrumbs::Item": {
   },
+  "Primer::Beta::ButtonGroup": {
+  },
   "Primer::Beta::Counter": {
     "DEFAULT_SCHEME": "default",
     "DEPRECATED_SCHEME_OPTIONS": [

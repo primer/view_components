@@ -462,6 +462,21 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: ButtonGroup
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/button_group.rb
+  parameters:
+  - name: variant
+    type: Symbol
+    default: "`nil`"
+    description: DEPRECATED. One of `:medium` or `:small`.
+  - name: size
+    type: Symbol
+    default: "`:medium`"
+    description: One of `:medium` or `:small`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Counter
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/counter.rb
   parameters:
@@ -583,21 +598,6 @@
     type: Boolean
     default: "`false`"
     description: Whether or not to render a dropdown caret.
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: ButtonGroup
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/button_group.rb
-  parameters:
-  - name: variant
-    type: Symbol
-    default: "`nil`"
-    description: DEPRECATED. One of `:medium` or `:small`.
-  - name: size
-    type: Symbol
-    default: "`:medium`"
-    description: One of `:medium` or `:small`.
   - name: system_arguments
     type: Hash
     default: N/A

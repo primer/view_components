@@ -2,17 +2,17 @@
 
 require "test_helper"
 
-class PrimerButtonGroupTest < Minitest::Test
+class PrimerBetaButtonGroupTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_does_not_render_without_buttons
-    render_inline(Primer::ButtonGroup.new)
+    render_inline(Primer::Beta::ButtonGroup.new)
 
     refute_selector("div.BtnGroup")
   end
 
   def test_renders_button_items
-    render_inline(Primer::ButtonGroup.new) { |c| c.button { "Button" } }
+    render_inline(Primer::Beta::ButtonGroup.new) { |c| c.button { "Button" } }
 
     assert_selector("div.BtnGroup") do
       assert_selector("button.btn.BtnGroup-item", text: "Button")
@@ -20,7 +20,7 @@ class PrimerButtonGroupTest < Minitest::Test
   end
 
   def test_renders_button_with_props
-    render_inline(Primer::ButtonGroup.new) do |c|
+    render_inline(Primer::Beta::ButtonGroup.new) do |c|
       c.button { "Button" }
       c.button(scheme: :primary) { "Primary" }
       c.button(scheme: :danger) { "Danger" }
@@ -38,13 +38,13 @@ class PrimerButtonGroupTest < Minitest::Test
   end
 
   def test_does_not_render_content
-    render_inline(Primer::ButtonGroup.new) { "content" }
+    render_inline(Primer::Beta::ButtonGroup.new) { "content" }
 
     refute_text("content")
   end
 
   def test_all_buttons_with_same_size
-    render_inline(Primer::ButtonGroup.new(size: :small)) do |c|
+    render_inline(Primer::Beta::ButtonGroup.new(size: :small)) do |c|
       c.button(size: :medium) { "Medium" }
     end
 
@@ -54,7 +54,7 @@ class PrimerButtonGroupTest < Minitest::Test
   end
 
   def test_all_buttons_with_same_variant
-    render_inline(Primer::ButtonGroup.new(variant: :small)) do |c|
+    render_inline(Primer::Beta::ButtonGroup.new(variant: :small)) do |c|
       c.button(size: :medium) { "Medium" }
     end
 
