@@ -44,14 +44,14 @@ module Primer
     #
     # Use:
     #
-    # - `trailing_visual_counter` for a <%= link_to_component(Primer::Beta::Counter) %>.
+    # - `trailing_visual_counter` for a <%= link_to_component(Primer::CounterComponent) %>.
     #
-    # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Counter) %>.
+    # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::CounterComponent) %>.
     renders_one :trailing_visual, types: {
       counter: lambda { |**system_arguments|
         system_arguments[:ml] = 2
 
-        Primer::Beta::Counter.new(**system_arguments)
+        Primer::CounterComponent.new(**system_arguments)
       }
     }
     alias counter trailing_visual_counter # remove alias when all buttons are migrated to new slot names

@@ -13,7 +13,7 @@ Primer ViewComponents is an implementation of the Primer Design System, using [V
 Render Primer ViewComponents from templates:
 
 ```erb
-<%= render(Primer::Beta::Counter.new(count: 25)) %>
+<%= render(Primer::CounterComponent.new(count: 25)) %>
 ```
 
 ## Installation
