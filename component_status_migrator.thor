@@ -27,7 +27,7 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def move_controller
-    move_file("controller", original_controller_path, updated_controller_path)
+    move_file("controller", controller_path, controller_path_with_status)
   end
 
   def move_template
@@ -45,15 +45,15 @@ class ComponentStatusMigrator < Thor::Group
   def add_module
     return if stable?
 
-    insert_into_file(updated_controller_path, "  module #{class_status}\n", after: "module Primer\n")
-    insert_into_file(updated_controller_path, "  end\n", before: /^end$/, force: true)
+    insert_into_file(controller_path_with_status, "  module #{class_status}\n", after: "module Primer\n")
+    insert_into_file(controller_path_with_status, "  end\n", before: /^end$/, force: true)
   end
 
   def remove_suffix
     if name == name_without_suffix
       puts "No change needed - class suffix not removed"
     else
-      gsub_file(updated_controller_path, "class #{name}", "class #{name_without_suffix}")
+      gsub_file(controller_path_with_status, "class #{name}", "class #{name_without_suffix}")
     end
   end
 
@@ -103,11 +103,11 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def add_alias
-    return if original_controller_path == updated_controller_path
+    return if controller_path == controller_path_with_status
 
-    remove_file(original_controller_path)
+    remove_file(controller_path)
     create_file(
-      original_controller_path,
+      controller_path,
       "# frozen_string_literal: true\n\nmodule Primer\n\tclass #{name} < Primer::#{status_module}#{name_without_suffix}\n\t\tstatus :deprecated\n\tend\nend"
     )
   end
@@ -154,25 +154,12 @@ class ComponentStatusMigrator < Thor::Group
     @class_status ||= status.capitalize unless stable?
   end
 
-  def original_controller_path
-    @original_controller_path ||= begin
-      files = Dir.glob("app/components/primer/**/#{name.underscore}.rb")
-      case files.count
-      when 0
-        puts "\nError: Cannot find component file for #{name}"
-        exit(-1)
-      when 1
-        files[0]
-      else
-        file_list = files.map { |f| "  * #{f}\n" }
-        puts "\nError: Found #{files.count} commponent files and cannot continue.\n#{file_list.join}"
-        exit(-1)
-      end
-    end
+  def controller_path
+    @controller_path ||= "app/components/primer/#{name.underscore}.rb"
   end
 
-  def updated_controller_path
-    @updated_controller_path ||= "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.rb"
+  def controller_path_with_status
+    @controller_path_with_status ||= "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.rb"
   end
 
   def move_file(file_type, old_path, new_path)
