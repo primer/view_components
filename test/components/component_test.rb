@@ -34,6 +34,7 @@ class PrimerComponentTest < Minitest::Test
     }],
     [Primer::Beta::BorderBox, {}, proc { |component| component.header { "Foo" } }],
     [Primer::Beta::BorderBox::Header, {}],
+    [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::BoxComponent, {}],
     [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
     [Primer::ButtonComponent, {}, proc { "Button" }],
@@ -89,7 +90,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
-      "Primer::BlankslateComponent",
       "Primer::BorderBoxComponent"
     ]
 
@@ -116,8 +116,8 @@ class PrimerComponentTest < Minitest::Test
   def test_all_components_support_inline_styles
     default_args = { style: "width: 100%;" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
-      render_component(component, default_args.merge(args), proc)
-      assert_selector("[style='width: 100%;']", visible: :all)
+      rendered = render_component(component, default_args.merge(args), proc)
+      assert_equal(true, rendered.inner_html.include?('style="width: 100%;'))
     end
   end
 

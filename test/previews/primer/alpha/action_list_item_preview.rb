@@ -7,6 +7,8 @@ module Primer
       #
       # @param label text
       # @param truncate_label toggle
+      # @param href text
+      # @param role text
       # @param size [Symbol] select [small, medium, large]
       # @param variant [Symbol] select [default, danger]
       # @param disabled toggle
@@ -27,6 +29,8 @@ module Primer
       def playground(
         label: "Item Item ItemItemItemItem ItemItemItemItemItem",
         truncate_label: false,
+        href: nil,
+        role: "menuitem",
         size: Primer::Alpha::ActionListItem::DEFAULT_SIZE,
         variant: Primer::Alpha::ActionListItem::DEFAULT_VARIANT,
         disabled: false,
@@ -48,6 +52,8 @@ module Primer
         item = Primer::Alpha::ActionListItem.new(
           label: label,
           truncate_label: truncate_label,
+          href: href,
+          role: role,
           size: size,
           variant: variant,
           disabled: disabled,

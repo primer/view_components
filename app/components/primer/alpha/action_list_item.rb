@@ -2,6 +2,7 @@
 
 module Primer
   module Alpha
+    # :nodoc:
     class ActionListItem < Primer::Component
       status :alpha
 
@@ -27,13 +28,8 @@ module Primer
       }.freeze
       VARIANT_OPTIONS = VARIANT_MAPPINGS.keys.freeze
 
-      DEFAULT_SELECT_MODE = :none
-      SELECT_MODE_ICON_MAPPINGS = {
-        DEFAULT_SELECT_MODE => nil,
-        :single => "ActionList-item--singleSelectCheckmark",
-        :multiple => "ActionList-item-multiSelectIcon"
-      }.freeze
-      SELECT_MODE_OPTIONS = SELECT_MODE_ICON_MAPPINGS.keys.freeze
+      DEFAULT_SELECT_MODE = :single
+      SELECT_MODE_OPTIONS = [DEFAULT_SELECT_MODE, :multiple].freeze
 
       renders_one :description
 
@@ -57,6 +53,8 @@ module Primer
       def initialize(
         label:,
         truncate_label: false,
+        href: nil,
+        role: "menuitem",
         size: DEFAULT_SIZE,
         variant: DEFAULT_VARIANT,
         disabled: false,
@@ -64,12 +62,14 @@ module Primer
         select_mode: DEFAULT_SELECT_MODE,
         checked: false,
         active: false,
+        on_click: nil,
         has_sub_item: false,
         sub_item: false,
         href: nil,
         **system_arguments
       )
         @label = label
+        @href = href
         @truncate_label = truncate_label
         @disabled = disabled
         @checked = checked
@@ -86,8 +86,6 @@ module Primer
           DESCRIPTION_VARIANT_OPTIONS, description_variant, DEFAULT_DESCRIPTION_VARIANT
         )
 
-        raise ArgumentError, "checked may only be true if select_mode is specified, i.e. not nil." if @select_mode.nil? && @checked
-
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           VARIANT_MAPPINGS[@variant],
@@ -97,9 +95,17 @@ module Primer
           "ActionList-item--subItem" => @sub_item
         )
 
+        @system_arguments[:role] = role
+
         @system_arguments[:aria] ||= {}
         @system_arguments[:aria][:disabled] = "true" if @disabled
-        @system_arguments[:aria][:checked] = @checked.to_s unless @select_mode.nil?
+
+        case @select_mode
+        when :single
+          @system_arguments[:aria][:selected] = "true" if @active
+        when :multiple
+          @system_arguments[:aria][:checked] = "true" if @checked
+        end
 
         @label_arguments = {
           classes: class_names(
@@ -109,6 +115,8 @@ module Primer
         }
 
         @content_arguments = {
+          tag: !@href || @disabled ? :span : :a,
+          **(on_click && !@href ? { onclick: on_click } : {}),
           classes: class_names(
             "ActionList-content",
             SIZE_MAPPINGS[@size]

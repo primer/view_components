@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## 0.0.86
+
+### Patch Changes
+
+- [#1247](https://github.com/primer/view_components/pull/1247) [`dbe606b7`](https://github.com/primer/view_components/commit/dbe606b7f38ba52f24edeae2f02f390ad13133ab) Thanks [@khiga8](https://github.com/khiga8)! - Set `aria-hidden="true"` when type is label
+
+* [#1262](https://github.com/primer/view_components/pull/1262) [`4a347b69`](https://github.com/primer/view_components/commit/4a347b6965990c1d73296d297367cb72b36539d2) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - updating the component migrator to support `--status stable`
+
+- [#1244](https://github.com/primer/view_components/pull/1244) [`91a6d2df`](https://github.com/primer/view_components/commit/91a6d2df032fbb21ccaf3edc07b86f3c97b1add0) Thanks [@neall](https://github.com/neall)! - Stop requiring aria-label on ClipboardCopy with other content.
+
+* [#1256](https://github.com/primer/view_components/pull/1256) [`544dd564`](https://github.com/primer/view_components/commit/544dd5647da64c06020d3ae7719f9b6ad32bee55) Thanks [@khiga8](https://github.com/khiga8)! - Use `visibility: 'hidden'` instead of `hidden` attribute to hide tooltip
+
+- [#1238](https://github.com/primer/view_components/pull/1238) [`204a8e4e`](https://github.com/primer/view_components/commit/204a8e4e11931061f7a855b79f90c7aaa2e51945) Thanks [@camertron](https://github.com/camertron)! - Merge primer/rails_forms into primer/view_components
+
+* [#1265](https://github.com/primer/view_components/pull/1265) [`61a78c4f`](https://github.com/primer/view_components/commit/61a78c4f3362fc532149ddf5090252dd3af9122d) Thanks [@jonrohan](https://github.com/jonrohan)! - Update IconButton and Button tooltips to be sibling instead of child
+
+- [#1255](https://github.com/primer/view_components/pull/1255) [`3729a9bf`](https://github.com/primer/view_components/commit/3729a9bfed5d1dbe40510b6a783212453fcc08d3) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - migrating `Primer::BorderBoxComponent` to `Primer::Beta::BorderBox`
+
+* [#1241](https://github.com/primer/view_components/pull/1241) [`918cfe3f`](https://github.com/primer/view_components/commit/918cfe3f143e5fe30dfb4db1dd46449bc54a0a87) Thanks [@jonrohan](https://github.com/jonrohan)! - Deprecating the `Primer::Alpha::Autocomplete` component
+
+- [#1062](https://github.com/primer/view_components/pull/1062) [`4b673a6c`](https://github.com/primer/view_components/commit/4b673a6c1ec9f0bc0710128fc365448e94d7b387) Thanks [@hectahertz](https://github.com/hectahertz)! - Add `Tooltip` support to `IconButton`
+
+* [#1261](https://github.com/primer/view_components/pull/1261) [`8191b80d`](https://github.com/primer/view_components/commit/8191b80de219f100c07cea9d9fdabfa9f50f6e1e) Thanks [@camertron](https://github.com/camertron)! - Make all subdirs of docs/static in prepare script
+
+- [#1260](https://github.com/primer/view_components/pull/1260) [`1a6562fe`](https://github.com/primer/view_components/commit/1a6562fe46503e21aade77df1f6ae542cbc2ddd6) Thanks [@khiga8](https://github.com/khiga8)! - Move tooltip to be sibling of link
+
+* [#1258](https://github.com/primer/view_components/pull/1258) [`d3880f74`](https://github.com/primer/view_components/commit/d3880f74d4fe20ad1a81c9b40af10c67dda52369) Thanks [@camertron](https://github.com/camertron)! - Replace YAML load with YAML safe load with allowed classes list
+
+- [#1254](https://github.com/primer/view_components/pull/1254) [`fc2fbace`](https://github.com/primer/view_components/commit/fc2fbace9c4728dea582df40efde118cfe8ac6a8) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - cleaning up the BlankSlate component to ensure it follows current standards for beta components
+
 ## 0.0.85
 
 ### Patch Changes
