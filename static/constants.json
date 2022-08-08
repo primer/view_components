@@ -305,6 +305,7 @@
     "TYPE_OPTIONS": [
       "button",
       "submit"
+    ]
   },
   "Primer::Beta::Counter": {
     "DEFAULT_SCHEME": "default",
