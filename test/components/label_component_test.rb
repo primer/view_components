@@ -8,7 +8,13 @@ class PrimerLabelComponentTest < Minitest::Test
   def test_renders_content
     render_inline(Primer::LabelComponent.new) { "private" }
 
-    assert_text("private")
+    assert_selector("[class='Label']")
+  end
+
+  def test_renders_only_label_class_by_default
+    render_inline(Primer::LabelComponent.new) { "label" }
+
+    assert_selector("[class='Label']")
   end
 
   def test_falls_back_when_tag_isnt_valid
