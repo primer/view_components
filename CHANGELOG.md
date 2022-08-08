@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.0.88
+
+### Patch Changes
+
+- [#1275](https://github.com/primer/view_components/pull/1275) [`1e9ce95c`](https://github.com/primer/view_components/commit/1e9ce95cdc942acdb51807839b2924731a1ab295) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - move Primer::ButtonGroup to Primer::Beta::ButtonGroup, update all references, and add deprecated Primer::ButtonGroup for backwards compatibility
+
+* [#1266](https://github.com/primer/view_components/pull/1266) [`7d2949de`](https://github.com/primer/view_components/commit/7d2949de758b97aa940287a1ceabd5d16209cae2) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - moving Primer::BoxComponent to Primer::Box and creating deprecated Primer::BoxComponent for backward compatibility
+
+- [#1281](https://github.com/primer/view_components/pull/1281) [`843061de`](https://github.com/primer/view_components/commit/843061de168a1927a80fd22e7da795c1a9ddaacd) Thanks [@jonrohan](https://github.com/jonrohan)! - Always set `:absolute` position on Primer::Alpha::Tooltip
+
+* [#934](https://github.com/primer/view_components/pull/934) [`d638fefb`](https://github.com/primer/view_components/commit/d638fefbb55ce9802e91b374903bcde9cc6ab612) Thanks [@pouretrebelle](https://github.com/pouretrebelle)! - Refactor the LabelComponent API
+
 ## 0.0.87
 
 ### Patch Changes
