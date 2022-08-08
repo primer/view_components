@@ -10,12 +10,12 @@ module ERBLint
         ATTRIBUTES = %w[type].freeze
 
         TYPE_OPTIONS = Primer::ViewComponents::Constants.get(
-          component: "Primer::Beta::CloseButton",
+          component: "Primer::CloseButton",
           constant: "TYPE_OPTIONS"
         ).freeze
 
         DEFAULT_TYPE = Primer::ViewComponents::Constants.get(
-          component: "Primer::Beta::CloseButton",
+          component: "Primer::CloseButton",
           constant: "DEFAULT_TYPE"
         ).freeze
 

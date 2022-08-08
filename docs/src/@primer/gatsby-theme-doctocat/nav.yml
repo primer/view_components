@@ -40,7 +40,7 @@
   - title: ClipboardCopy
     url: "/components/clipboardcopy"
   - title: CloseButton
-    url: "/components/beta/closebutton"
+    url: "/components/closebutton"
   - title: Counter
     url: "/components/counter"
   - title: Details
