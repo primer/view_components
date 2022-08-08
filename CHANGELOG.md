@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.0.89
+
+### Patch Changes
+
+- [#1284](https://github.com/primer/view_components/pull/1284) [`401dac2a`](https://github.com/primer/view_components/commit/401dac2a1ab2e026b231399ddb03cfb51bc7742f) Thanks [@jonrohan](https://github.com/jonrohan)! - Don't render tooltip on IconButton when tag is a summary element
+
+* [#1283](https://github.com/primer/view_components/pull/1283) [`ea1c29d7`](https://github.com/primer/view_components/commit/ea1c29d7fa0d917a729cba684bf5f8ae039bb228) Thanks [@jonrohan](https://github.com/jonrohan)! - Updating label component to not always have large
+
 ## 0.0.88
 
 ### Patch Changes
