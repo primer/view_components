@@ -40,9 +40,9 @@
   - title: ClipboardCopy
     url: "/components/clipboardcopy"
   - title: CloseButton
-    url: "/components/closebutton"
+    url: "/components/beta/closebutton"
   - title: Counter
-    url: "/components/counter"
+    url: "/components/beta/counter"
   - title: Details
     url: "/components/beta/details"
   - title: Dropdown
