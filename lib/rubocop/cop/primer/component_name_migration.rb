@@ -17,6 +17,7 @@ module RuboCop
         DEPRECATIONS = {
           "Primer::DetailsComponent" => "Primer::Beta::Details",
           "Primer::BoxComponent" => "Primer::Box",
+          "Primer::ButtonGroup" => "Primer::Beta::ButtonGroup",
           "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
           "Primer::BorderBoxComponent" => "Primer::Beta::BorderBox",
           "Primer::BaseButton" => "Primer::Beta::BaseButton",

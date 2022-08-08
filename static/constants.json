@@ -298,6 +298,8 @@
   },
   "Primer::Beta::Breadcrumbs::Item": {
   },
+  "Primer::Beta::ButtonGroup": {
+  },
   "Primer::Beta::Details": {
     "BODY_TAG_DEFAULT": "div",
     "BODY_TAG_OPTIONS": [
