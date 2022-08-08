@@ -300,6 +300,13 @@
   },
   "Primer::Beta::ButtonGroup": {
   },
+  "Primer::Beta::CloseButton": {
+    "DEFAULT_TYPE": "button",
+    "TYPE_OPTIONS": [
+      "button",
+      "submit"
+    ]
+  },
   "Primer::Beta::Flash": {
     "DEFAULT_SCHEME": "default",
     "SCHEME_MAPPINGS": {
@@ -359,11 +366,6 @@
   "Primer::ClipboardCopy": {
   },
   "Primer::CloseButton": {
-    "DEFAULT_TYPE": "button",
-    "TYPE_OPTIONS": [
-      "button",
-      "submit"
-    ]
   },
   "Primer::ConditionalWrapper": {
   },
