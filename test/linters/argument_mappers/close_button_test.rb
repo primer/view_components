@@ -11,7 +11,7 @@ class ArgumentMappersCloseButtonTest < LinterTestCase
   end
 
   def test_returns_type_argument
-    Primer::CloseButton::TYPE_OPTIONS.each do |type|
+    Primer::Beta::CloseButton::TYPE_OPTIONS.each do |type|
       # button is the default, so it does not require a `type` argument
       next if type == :button
 

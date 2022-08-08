@@ -477,6 +477,17 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: CloseButton
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/close_button.rb
+  parameters:
+  - name: type
+    type: Symbol
+    default: "`:button`"
+    description: One of `:button` or `:submit`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Counter
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/counter.rb
   parameters:
@@ -617,17 +628,6 @@
     type: String
     default: N/A
     description: Element id from where to get the copied value.
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: CloseButton
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/close_button.rb
-  parameters:
-  - name: type
-    type: Symbol
-    default: "`:button`"
-    description: One of `:button` or `:submit`.
   - name: system_arguments
     type: Hash
     default: N/A

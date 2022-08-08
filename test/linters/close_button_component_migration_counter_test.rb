@@ -16,7 +16,7 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
     HTML
 
     expected = <<~HTML
-      <%= render Primer::CloseButton.new(\"aria-label\": \"Close menu\") %>
+      <%= render Primer::Beta::CloseButton.new(\"aria-label\": \"Close menu\") %>
     HTML
 
     assert_equal expected, corrected_content
@@ -28,7 +28,7 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
     HTML
 
     expected = <<~HTML
-      <%= render Primer::CloseButton.new(\"aria-label\": \"Close menu\") %>
+      <%= render Primer::Beta::CloseButton.new(\"aria-label\": \"Close menu\") %>
     HTML
 
     assert_equal expected, corrected_content
@@ -40,7 +40,7 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
     HTML
 
     expected = <<~HTML
-      <%= render Primer::CloseButton.new(\"aria-label\": \"Close menu\") %>
+      <%= render Primer::Beta::CloseButton.new(\"aria-label\": \"Close menu\") %>
     HTML
 
     assert_equal expected, corrected_content
@@ -54,7 +54,7 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
     HTML
 
     expected = <<~HTML
-      <%= render Primer::CloseButton.new(\"aria-label\": \"Close menu\") %>
+      <%= render Primer::Beta::CloseButton.new(\"aria-label\": \"Close menu\") %>
     HTML
 
     assert_equal expected, corrected_content
@@ -68,7 +68,7 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
     HTML
 
     expected = <<~HTML
-      <%= render Primer::CloseButton.new(\"aria-label\": \"Close menu\") %>
+      <%= render Primer::Beta::CloseButton.new(\"aria-label\": \"Close menu\") %>
     HTML
 
     assert_equal expected, corrected_content
@@ -112,7 +112,7 @@ class CloseButtonComponentMigrationCounterTest < LinterTestCase
     HTML
 
     expected = <<~HTML
-      <%= render Primer::CloseButton.new(ml: 1, \"aria-value\": \"some value\", \"aria-label\": \"Close menu\") %>
+      <%= render Primer::Beta::CloseButton.new(ml: 1, \"aria-value\": \"some value\", \"aria-label\": \"Close menu\") %>
     HTML
 
     assert_equal expected, corrected_content

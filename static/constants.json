@@ -300,6 +300,12 @@
   },
   "Primer::Beta::ButtonGroup": {
   },
+  "Primer::Beta::CloseButton": {
+    "DEFAULT_TYPE": "button",
+    "TYPE_OPTIONS": [
+      "button",
+      "submit"
+  },
   "Primer::Beta::Counter": {
     "DEFAULT_SCHEME": "default",
     "DEPRECATED_SCHEME_OPTIONS": [
@@ -378,11 +384,6 @@
   "Primer::ClipboardCopy": {
   },
   "Primer::CloseButton": {
-    "DEFAULT_TYPE": "button",
-    "TYPE_OPTIONS": [
-      "button",
-      "submit"
-    ]
   },
   "Primer::ConditionalWrapper": {
   },
