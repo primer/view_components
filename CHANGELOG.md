@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.0.89
+
+### Patch Changes
+
+- [#1284](https://github.com/primer/view_components/pull/1284) [`401dac2a`](https://github.com/primer/view_components/commit/401dac2a1ab2e026b231399ddb03cfb51bc7742f) Thanks [@jonrohan](https://github.com/jonrohan)! - Don't render tooltip on IconButton when tag is a summary element
+
+* [#1283](https://github.com/primer/view_components/pull/1283) [`ea1c29d7`](https://github.com/primer/view_components/commit/ea1c29d7fa0d917a729cba684bf5f8ae039bb228) Thanks [@jonrohan](https://github.com/jonrohan)! - Updating label component to not always have large
+
+## 0.0.88
+
+### Patch Changes
+
+- [#1275](https://github.com/primer/view_components/pull/1275) [`1e9ce95c`](https://github.com/primer/view_components/commit/1e9ce95cdc942acdb51807839b2924731a1ab295) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - move Primer::ButtonGroup to Primer::Beta::ButtonGroup, update all references, and add deprecated Primer::ButtonGroup for backwards compatibility
+
+* [#1266](https://github.com/primer/view_components/pull/1266) [`7d2949de`](https://github.com/primer/view_components/commit/7d2949de758b97aa940287a1ceabd5d16209cae2) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - moving Primer::BoxComponent to Primer::Box and creating deprecated Primer::BoxComponent for backward compatibility
+
+- [#1281](https://github.com/primer/view_components/pull/1281) [`843061de`](https://github.com/primer/view_components/commit/843061de168a1927a80fd22e7da795c1a9ddaacd) Thanks [@jonrohan](https://github.com/jonrohan)! - Always set `:absolute` position on Primer::Alpha::Tooltip
+
+* [#934](https://github.com/primer/view_components/pull/934) [`d638fefb`](https://github.com/primer/view_components/commit/d638fefbb55ce9802e91b374903bcde9cc6ab612) Thanks [@pouretrebelle](https://github.com/pouretrebelle)! - Refactor the LabelComponent API
+
 ## 0.0.87
 
 ### Patch Changes

@@ -77,7 +77,8 @@ module Primer
 
       @variant = fetch_or_fallback(VARIANT_OPTIONS, variant, nil, deprecated_values: DEPRECATED_VARIANT_OPTIONS)
       @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME, deprecated_values: DEPRECATED_SCHEME_OPTIONS)
-      @size = fetch_or_fallback(SIZE_OPTIONS, size) || @variant == :large ? :large : nil || DEFAULT_SIZE
+      @size = fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)
+      @size = :large if @variant == :large
       @inline = inline || @variant == :inline
 
       @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
