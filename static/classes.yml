@@ -85,7 +85,7 @@
 - ".SegmentedControl"
 - ".SegmentedControl--fullWidth"
 - ".SegmentedControl-button"
-- ".SegmentedControl-button--selected"
+- ".SegmentedControl-button--iconOnly"
 - ".SegmentedControl-content"
 - ".SegmentedControl-leadingVisual"
 - ".SegmentedControl-text"
