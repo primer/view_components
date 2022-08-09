@@ -1,22 +1,9 @@
-<% if render_tooltip? %>
-  <%= render Primer::BaseComponent.new(tag: :div, display: :inline_flex, position: :relative) do %>
-    <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-      <div class="SegmentedControl-content">
-        <%= leading_visual %>
-        <% if render_text? %>
-          <span class="SegmentedControl-text" data-content="<%= @text %>"><%= @text %></span>
-        <% end %>
-      </div>
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <div class="SegmentedControl-content">
+    <%= leading_visual %>
+    <% if render_text? %>
+      <span class="SegmentedControl-text" data-content="<%= @text %>"><%= @text %></span>
     <% end %>
-    <%= render Primer::Alpha::Tooltip.new(direction: :n, hide: render_text? ? :whenRegular : nil, type: :description, for_id: @system_arguments[:id], text: @text) %>
-  <% end %>
-<% else %>
-  <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-    <div class="SegmentedControl-content">
-      <%= leading_visual %>
-      <% if render_text? %>
-        <span class="SegmentedControl-text" data-content="<%= @text %>"><%= @text %></span>
-      <% end %>
-    </div>
-  <% end %>
+  </div>
 <% end %>
+<%= render Primer::Alpha::Tooltip.new(direction: :n, hide: render_text? ? :whenRegular : nil, type: :description, for_id: @system_arguments[:id], text: @text) if render_tooltip? %>

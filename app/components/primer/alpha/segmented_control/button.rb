@@ -26,6 +26,7 @@ module Primer
           @text = text
           @icon_only = icon_only
           @system_arguments = system_arguments
+          @system_arguments[:role] = "listitem"
           @system_arguments[:tag] = :button
           @system_arguments[:id] ||= "segmented-control-button-#{SecureRandom.hex(4)}"
           @system_arguments[:classes] = class_names(

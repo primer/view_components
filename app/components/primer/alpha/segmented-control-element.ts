@@ -4,7 +4,7 @@ export default class SegmentedControlElement extends HTMLElement {
     super()
 
     this.addEventListener('click', (event: MouseEvent) => {
-      const controls = Array.from(this.querySelectorAll<HTMLElement>('[role="toolbar"] button')).filter(
+      const controls = Array.from(this.querySelectorAll<HTMLElement>('[role="list"] button')).filter(
         tab => tab instanceof HTMLElement && tab.closest(this.tagName) === this
       ) as HTMLElement[]
 
@@ -12,7 +12,7 @@ export default class SegmentedControlElement extends HTMLElement {
       if (event.target.closest(this.tagName) !== this) return
 
       const selectedControl = event.target.closest('button')
-      if (!(selectedControl instanceof HTMLElement) || !selectedControl.closest('[role="toolbar"]')) return
+      if (!(selectedControl instanceof HTMLElement) || !selectedControl.closest('[role="list"]')) return
 
       for (const control of controls) {
         control.classList.remove('SegmentedControl-button--selected')

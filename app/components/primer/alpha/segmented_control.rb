@@ -66,7 +66,7 @@ module Primer
         @icon_only = fetch_or_fallback(ICON_ONLY_OPTIONS, icon_only, ICON_ONLY_DEFAULT)
         @system_arguments = system_arguments
         @system_arguments[:tag] = "segmented-control"
-        @system_arguments[:role] = "toolbar"
+        @system_arguments[:role] = "list"
         @system_arguments[:classes] = class_names(
           "SegmentedControl",
           system_arguments[:classes],
