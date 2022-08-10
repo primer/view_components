@@ -40,9 +40,9 @@ module Primer
     # @example Default
     #   <div style="padding-left: 60px">
     #     <%= render(Primer::TimelineItemComponent.new) do |component| %>
-    #       <% component.avatar(src: "https://github.com/github.png", alt: "github") %>
-    #       <% component.badge(bg: :success_emphasis, color: :on_emphasis, icon: :check) %>
-    #       <% component.body { "Success!" } %>
+    #       <% component.with_avatar(src: "https://github.com/github.png", alt: "github") %>
+    #       <% component.with_badge(bg: :success_emphasis, color: :on_emphasis, icon: :check) %>
+    #       <% component.with_body { "Success!" } %>
     #     <% end %>
     #   </div>
     #

@@ -56,27 +56,27 @@ module Primer
 
     # @example Default
     #   <%= render(Primer::SubheadComponent.new) do |component| %>
-    #     <% component.heading(tag: :h3) do %>
+    #     <% component.with_heading(tag: :h3) do %>
     #       My Heading
     #     <% end %>
-    #     <% component.description do %>
+    #     <% component.with_description do %>
     #       My Description
     #     <% end %>
     #   <% end %>
     #
     # @example With dangerous heading
     #   <%= render(Primer::SubheadComponent.new) do |component| %>
-    #     <% component.heading(tag: :h3, danger: true) do %>
+    #     <% component.with_heading(tag: :h3, danger: true) do %>
     #       My Heading
     #     <% end %>
-    #     <% component.description do %>
+    #     <% component.with_description do %>
     #       My Description
     #     <% end %>
     #   <% end %>
     #
     # @example With long description
     #   <%= render(Primer::SubheadComponent.new) do |component| %>
-    #     <% component.heading(tag: :h3) do %>
+    #     <% component.with_heading(tag: :h3) do %>
     #       My Heading
     #     <% end %>
     #   <% end %>
@@ -84,23 +84,23 @@ module Primer
     #
     # @example Without border
     #   <%= render(Primer::SubheadComponent.new(hide_border: true)) do |component| %>
-    #     <% component.heading do %>
+    #     <% component.with_heading do %>
     #       My Heading
     #     <% end %>
-    #     <% component.description do %>
+    #     <% component.with_description do %>
     #       My Description
     #     <% end %>
     #   <% end %>
     #
     # @example With actions
     #   <%= render(Primer::SubheadComponent.new) do |component| %>
-    #     <% component.heading do %>
+    #     <% component.with_heading do %>
     #       My Heading
     #     <% end %>
-    #     <% component.description do %>
+    #     <% component.with_description do %>
     #       My Description
     #     <% end %>
-    #     <% component.actions do %>
+    #     <% component.with_actions do %>
     #       <%= render(
     #         Primer::ButtonComponent.new(
     #           tag: :a, href: "http://www.google.com", scheme: :danger

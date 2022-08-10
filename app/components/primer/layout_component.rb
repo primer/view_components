@@ -38,14 +38,14 @@ module Primer
 
     # @example Default
     #   <%= render(Primer::LayoutComponent.new) do |component| %>
-    #     <% component.sidebar { "Sidebar" } %>
-    #     <% component.main { "Main" } %>
+    #     <% component.with_sidebar { "Sidebar" } %>
+    #     <% component.with_main { "Main" } %>
     #   <% end %>
     #
     # @example Left sidebar
     #   <%= render(Primer::LayoutComponent.new(side: :left)) do |component| %>
-    #     <% component.sidebar { "Sidebar" } %>
-    #     <% component.main { "Main" } %>
+    #     <% component.with_sidebar { "Sidebar" } %>
+    #     <% component.with_main { "Main" } %>
     #   <% end %>
     #
     # @param responsive [Boolean] Whether to collapse layout to a single column at smaller widths.

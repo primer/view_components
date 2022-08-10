@@ -50,7 +50,7 @@ module Primer
     #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
     #   @code
     #     <%= render(Primer::LinkComponent.new(href: "#", id: "link-with-tooltip")) do |c| %>
-    #       <% c.tooltip(text: "Tooltip text") %>
+    #       <% c.with_tooltip(text: "Tooltip text") %>
     #       Link
     #     <% end %>
     #
