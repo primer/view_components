@@ -33,6 +33,32 @@ module Primer
 
       renders_one :description
 
+      renders_one :leading_action, types: {
+        icon: Primer::OcticonComponent,
+        svg: lambda { |**system_arguments|
+          Primer::BaseComponent.new(tag: :svg, **system_arguments)
+        }
+      }
+
+      renders_one :leading_action_button, types: {
+        button: lambda { |**system_arguments|
+          Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
+        },
+      }
+
+      renders_one :trailing_action, types: {
+        icon: Primer::OcticonComponent,
+        svg: lambda { |**system_arguments|
+          Primer::BaseComponent.new(tag: :svg, **system_arguments)
+        }
+      }
+
+      renders_one :trailing_action_button, types: {
+        button: lambda { |**system_arguments|
+          Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
+        },
+      }
+
       renders_one :leading_visual, types: {
         icon: Primer::OcticonComponent,
         avatar: lambda { |**kwargs|
@@ -54,13 +80,14 @@ module Primer
         label:,
         truncate_label: false,
         href: nil,
-        role: "menuitem",
+        role: "listitem",
         size: DEFAULT_SIZE,
         variant: DEFAULT_VARIANT,
         disabled: false,
         description_variant: DEFAULT_DESCRIPTION_VARIANT,
         select_mode: DEFAULT_SELECT_MODE,
         checked: false,
+        selected: false,
         active: false,
         on_click: nil,
         has_sub_item: false,
@@ -72,6 +99,7 @@ module Primer
         @truncate_label = truncate_label
         @disabled = disabled
         @checked = checked
+        @selected = selected
         @active = active
         @has_sub_item = has_sub_item
         @sub_item = sub_item
@@ -100,7 +128,7 @@ module Primer
 
         case @select_mode
         when :single
-          @system_arguments[:aria][:selected] = "true" if @active
+          @system_arguments[:aria][:selected] = "true" if @selected
         when :multiple
           @system_arguments[:aria][:checked] = "true" if @checked
         end

@@ -32,7 +32,7 @@ module Primer
 
         renders_one :description
 
-        renders_one :leading_visual, types: {
+        renders_one :leading_action, types: {
           icon: Primer::OcticonComponent,
           avatar: lambda { |**kwargs|
             Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
@@ -42,11 +42,23 @@ module Primer
           }
         }
 
-        renders_one :trailing_visual, types: {
+        renders_one :leading_action_button, types: {
+          button: lambda { |**system_arguments|
+            Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
+          }
+        }
+
+        renders_one :trailing_action, types: {
           icon: Primer::OcticonComponent,
           label: Primer::LabelComponent,
           counter: Primer::CounterComponent,
           text: ->(text) { text }
+        }
+
+        renders_one :trailing_action_button, types: {
+          button: lambda { |**system_arguments|
+            Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
+          }
         }
 
         renders_many :items, lambda { |**system_arguments|

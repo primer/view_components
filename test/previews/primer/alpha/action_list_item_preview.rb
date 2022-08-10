@@ -16,6 +16,7 @@ module Primer
       # @param description_variant [Symbol] select [inline, block]
       # @param select_mode [Symbol] select [none, single, multiple]
       # @param checked toggle
+      # @param selected toggle
       # @param active toggle
       # @param has_sub_item toggle
       # @param sub_item toggle
@@ -25,11 +26,15 @@ module Primer
       # @param trailing_visual_label text
       # @param trailing_visual_counter number
       # @param trailing_visual_text text
+      # @param leading_action_icon [Symbol] octicon
+      # @param leading_action_icon_button [Symbol] octicon
+      # @param trailing_action_icon [Symbol] octicon
+      # @param trailing_action_icon_button [Symbol] octicon
       def playground(
-        label: "Item",
+        label: "Item Item ItemItemItemItem ItemItemItemItemItem",
         truncate_label: false,
         href: nil,
-        role: "menuitem",
+        role: nil,
         size: Primer::Alpha::ActionListItem::DEFAULT_SIZE,
         variant: Primer::Alpha::ActionListItem::DEFAULT_VARIANT,
         disabled: false,
@@ -37,6 +42,7 @@ module Primer
         description_variant: Primer::Alpha::ActionListItem::DEFAULT_DESCRIPTION_VARIANT,
         select_mode: Primer::Alpha::ActionListItem::DEFAULT_SELECT_MODE,
         checked: false,
+        selected: false,
         active: false,
         has_sub_item: false,
         sub_item: false,
@@ -45,12 +51,15 @@ module Primer
         trailing_visual_icon: nil,
         trailing_visual_label: nil,
         trailing_visual_counter: nil,
-        trailing_visual_text: nil
+        trailing_visual_text: nil,
+        leading_action_icon_button: nil,
+        trailing_action_icon_button: nil,
+        leading_action_icon: nil,
+        trailing_action_icon: nil
       )
         item = Primer::Alpha::ActionListItem.new(
           label: label,
           truncate_label: truncate_label,
-          href: href,
           role: role,
           size: size,
           variant: variant,
@@ -59,10 +68,20 @@ module Primer
           description_variant: description_variant,
           select_mode: select_mode,
           checked: checked,
+          selected: selected,
           active: active,
           has_sub_item: has_sub_item,
-          sub_item: sub_item
+          sub_item: sub_item,
+          href: href
         )
+
+        if leading_action_icon_button
+          item.with_leading_action_button_button(icon: leading_action_icon_button, "aria-label": "test")
+        end
+
+        if leading_action_icon
+          item.with_leading_action_icon(icon: leading_action_icon)
+        end
 
         if leading_visual_icon && leading_visual_icon != :none
           item.with_leading_visual_icon(icon: leading_visual_icon)

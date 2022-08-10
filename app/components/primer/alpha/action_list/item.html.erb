@@ -1,10 +1,17 @@
 <%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
+  <% if leading_action_button %>
+    <span class="ActionList-item-visual ActionList-item-action--leading">
+      <%= leading_action_button %>
+    </span>
+  <% end %>
   <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
     <% if @select_mode == :single %>
       <span class="ActionList-item-action ActionList-item-action--leading">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
+          aria-hidden="true"
+          focusable="false"
           width="16"
           height="16"
           class="ActionList-item-singleSelectCheckmark">
@@ -33,9 +40,9 @@
         </svg>
       </span>
     <% end %>
-    <% if leading_visual %>
+    <% if leading_action %>
       <span class="ActionList-item-visual ActionList-item-visual--leading">
-        <%= leading_visual %>
+        <%= leading_action %>
       </span>
     <% end %>
     <%= render(Primer::ConditionalWrapper.new(condition: description?, tag: :span, **@description_wrapper_arguments)) do %>
@@ -49,9 +56,9 @@
       <% end %>
     <% end %>
     <% if items.empty? %>
-      <% if trailing_visual %>
+      <% if trailing_action %>
         <span class="ActionList-item-visual ActionList-item-visual--trailing">
-          <%= trailing_visual %>
+          <%= trailing_action %>
         </span>
       <% end %>
     <% else %>
@@ -73,5 +80,10 @@
         <%= item %>
       <% end %>
     <% end %>
+  <% end %>
+  <% if trailing_action_button %>
+    <span class="ActionList-item-visual ActionList-item-action--leading">
+      <%= trailing_action_button %>
+    </span>
   <% end %>
 <% end %>
