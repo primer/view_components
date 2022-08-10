@@ -80,8 +80,8 @@ module Primer
       # @example Default
       #
       #   <%= render(Primer::Alpha::Layout.new) do |c| %>
-      #     <% c.main(border: true) { "Main" } %>
-      #     <% c.sidebar(border: true) { "Sidebar" } %>
+      #     <% c.with_main(border: true) { "Main" } %>
+      #     <% c.with_sidebar(border: true) { "Sidebar" } %>
       #   <% end %>
       #
       # @example Main widths
@@ -96,20 +96,20 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Alpha::Layout.new) do |c| %>
-      #       <% c.main(width: :full, border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Sidebar" } %>
+      #       <% c.with_main(width: :full, border: true) { "Main" } %>
+      #       <% c.with_sidebar(border: true) { "Sidebar" } %>
       #     <% end %>
       #     <%= render(Primer::Alpha::Layout.new(mt: 5)) do |c| %>
-      #       <% c.main(width: :md, border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Sidebar" } %>
+      #       <% c.with_main(width: :md, border: true) { "Main" } %>
+      #       <% c.with_sidebar(border: true) { "Sidebar" } %>
       #     <% end %>
       #     <%= render(Primer::Alpha::Layout.new(mt: 5)) do |c| %>
-      #       <% c.main(width: :lg, border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Sidebar" } %>
+      #       <% c.with_main(width: :lg, border: true) { "Main" } %>
+      #       <% c.with_sidebar(border: true) { "Sidebar" } %>
       #     <% end %>
       #     <%= render(Primer::Alpha::Layout.new(mt: 5)) do |c| %>
-      #       <% c.main(width: :xl, border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Sidebar" } %>
+      #       <% c.with_main(width: :xl, border: true) { "Main" } %>
+      #       <% c.with_sidebar(border: true) { "Sidebar" } %>
       #     <% end %>
       #
       # @example Sidebar widths
@@ -125,16 +125,16 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Alpha::Layout.new) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(width: :default, border: true) { "Sidebar" } %>
+      #       <% c.with_main(border: true) { "Main" } %>
+      #       <% c.with_sidebar(width: :default, border: true) { "Sidebar" } %>
       #     <% end %>
       #     <%= render(Primer::Alpha::Layout.new(mt: 5)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(width: :narrow, border: true) { "Sidebar" } %>
+      #       <% c.with_main(border: true) { "Main" } %>
+      #       <% c.with_sidebar(width: :narrow, border: true) { "Sidebar" } %>
       #     <% end %>
       #     <%= render(Primer::Alpha::Layout.new(mt: 5)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(width: :wide, border: true) { "Sidebar" } %>
+      #       <% c.with_main(border: true) { "Main" } %>
+      #       <% c.with_sidebar(width: :wide, border: true) { "Sidebar" } %>
       #     <% end %>
       #
       # @example Sidebar placement
@@ -144,12 +144,12 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Alpha::Layout.new) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(col_placement: :start, border: true) { "Sidebar" } %>
+      #       <% c.with_main(border: true) { "Main" } %>
+      #       <% c.with_sidebar(col_placement: :start, border: true) { "Sidebar" } %>
       #     <% end %>
       #     <%= render(Primer::Alpha::Layout.new( mt: 5)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(col_placement: :end, border: true) { "Sidebar" } %>
+      #       <% c.with_main(border: true) { "Main" } %>
+      #       <% c.with_sidebar(col_placement: :end, border: true) { "Sidebar" } %>
       #     <% end %>
       #
       # @example Sidebar placement as row
@@ -163,16 +163,16 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Alpha::Layout.new) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(row_placement: :start, border: true) { "Sidebar" } %>
+      #       <% c.with_main(border: true) { "Main" } %>
+      #       <% c.with_sidebar(row_placement: :start, border: true) { "Sidebar" } %>
       #     <% end %>
       #     <%= render(Primer::Alpha::Layout.new(mt: 5)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(row_placement: :end, border: true) { "Sidebar" } %>
+      #       <% c.with_main(border: true) { "Main" } %>
+      #       <% c.with_sidebar(row_placement: :end, border: true) { "Sidebar" } %>
       #     <% end %>
       #     <%= render(Primer::Alpha::Layout.new(mt: 5)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(row_placement: :none, border: true) { "Sidebar" } %>
+      #       <% c.with_main(border: true) { "Main" } %>
+      #       <% c.with_sidebar(row_placement: :none, border: true) { "Sidebar" } %>
       #     <% end %>
       #
       # @example Changing when to render `Layout` as columns
@@ -183,16 +183,16 @@ module Primer
       #
       #   @code
       #     <%= render(Primer::Alpha::Layout.new(stacking_breakpoint: :sm)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Sidebar" } %>
+      #       <% c.with_main(border: true) { "Main" } %>
+      #       <% c.with_sidebar(border: true) { "Sidebar" } %>
       #     <% end %>
       #     <%= render(Primer::Alpha::Layout.new(stacking_breakpoint: :md, mt: 5)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Sidebar" } %>
+      #       <% c.with_main(border: true) { "Main" } %>
+      #       <% c.with_sidebar(border: true) { "Sidebar" } %>
       #     <% end %>
       #     <%= render(Primer::Alpha::Layout.new(stacking_breakpoint: :lg, mt: 5)) do |c| %>
-      #       <% c.main(border: true) { "Main" } %>
-      #       <% c.sidebar(border: true) { "Sidebar" } %>
+      #       <% c.with_main(border: true) { "Main" } %>
+      #       <% c.with_sidebar(border: true) { "Sidebar" } %>
       #     <% end %>
       #
       # @param stacking_breakpoint [Symbol] When the `Layout` should change from rows into columns. <%= one_of(Primer::Alpha::Layout::STACKING_BREAKPOINT_OPTIONS) %>
