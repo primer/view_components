@@ -120,7 +120,7 @@ module Primer
       #     Add a [SpinnerComponent](https://primer.style/view-components/components/spinner) to the blankslate in place of an icon.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.with_visual_spinner(size: :large) %>
+      #       <% c.visual_spinner(size: :large) %>
       #       <% c.heading(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
@@ -130,7 +130,7 @@ module Primer
       #     Add an `image` to give context that an Octicon couldn't.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.with_visual_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
+      #       <% c.visual_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
       #       <% c.heading(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>
