@@ -53,60 +53,60 @@ module Primer
       #     `<nav>` is a landmark and should be reserved for main navigation links. See <%= link_to_accessibility %>.
       #   @code
       #     <%= render(Primer::Alpha::UnderlineNav.new(label: "Default with nav element")) do |component| %>
-      #       <% component.tab(href: "#", selected: true) { "Item 1" } %>
-      #       <% component.tab(href: "#") { "Item 2" } %>
-      #       <% component.actions do %>
+      #       <% component.with_tab(href: "#", selected: true) { "Item 1" } %>
+      #       <% component.with_tab(href: "#") { "Item 2" } %>
+      #       <% component.with_actions do %>
       #         <%= render(Primer::ButtonComponent.new) { "Button!" } %>
       #       <% end %>
       #     <% end %>
       #
       # @example With `<div>`
       #   <%= render(Primer::Alpha::UnderlineNav.new(tag: :div, label: "With div element")) do |component| %>
-      #     <% component.tab(href: "#", selected: true) { "Item 1" } %>
-      #     <% component.tab(href: "#") { "Item 2" } %>
-      #     <% component.actions do %>
+      #     <% component.with_tab(href: "#", selected: true) { "Item 1" } %>
+      #     <% component.with_tab(href: "#") { "Item 2" } %>
+      #     <% component.with_actions do %>
       #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
       #     <% end %>
       #   <% end %>
       #
       # @example With icons and counters
       #   <%= render(Primer::Alpha::UnderlineNav.new(label: "With icons and counters")) do |component| %>
-      #     <% component.tab(href: "#", selected: true) do |t| %>
+      #     <% component.with_tab(href: "#", selected: true) do |t| %>
       #       <% t.icon(icon: :star) %>
       #       <% t.text { "Item 1" } %>
       #     <% end %>
-      #     <% component.tab(href: "#") do |t| %>
+      #     <% component.with_tab(href: "#") do |t| %>
       #       <% t.icon(icon: :star) %>
       #       <% t.text { "Item 2" } %>
       #       <% t.counter(count: 10) %>
       #     <% end %>
-      #     <% component.tab(href: "#") do |t| %>
+      #     <% component.with_tab(href: "#") do |t| %>
       #       <% t.text { "Item 3" } %>
       #       <% t.counter(count: 10) %>
       #     <% end %>
-      #     <% component.actions do %>
+      #     <% component.with_actions do %>
       #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
       #     <% end %>
       #   <% end %>
       #
       # @example Align right
       #   <%= render(Primer::Alpha::UnderlineNav.new(label: "Align right", align: :right)) do |component| %>
-      #     <% component.tab(href: "#", selected: true) do |t| %>
+      #     <% component.with_tab(href: "#", selected: true) do |t| %>
       #       <% t.text { "Item 1" } %>
       #     <% end %>
-      #     <% component.tab(href: "#") do |t| %>
+      #     <% component.with_tab(href: "#") do |t| %>
       #       <% t.text { "Item 2" } %>
       #     <% end %>
-      #     <% component.actions do %>
+      #     <% component.with_actions do %>
       #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
       #     <% end %>
       #   <% end %>
       #
       # @example Customizing the body
       #   <%= render(Primer::Alpha::UnderlineNav.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :accent_emphasis })) do |c| %>
-      #     <% c.tab(selected: true, href: "#") { "Tab 1" }%>
-      #     <% c.tab(href: "#") { "Tab 2" } %>
-      #     <% c.tab(href: "#") { "Tab 3" } %>
+      #     <% c.with_tab(selected: true, href: "#") { "Tab 1" }%>
+      #     <% c.with_tab(href: "#") { "Tab 2" } %>
+      #     <% c.with_tab(href: "#") { "Tab 3" } %>
       #   <% end %>
       #
       # @param tag [Symbol] <%= one_of(Primer::Alpha::UnderlineNav::TAG_OPTIONS) %>
