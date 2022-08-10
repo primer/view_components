@@ -20,6 +20,9 @@ module Primer
       # @param active toggle
       # @param has_sub_item toggle
       # @param sub_item toggle
+      # @param show_on_hover toggle
+      # @param leading_action_button toggle
+      # @param trailing_action_button toggle
       # @param leading_visual_icon [Symbol] octicon
       # @param leading_visual_avatar_src text
       # @param trailing_visual_icon [Symbol] octicon
@@ -46,6 +49,9 @@ module Primer
         active: false,
         has_sub_item: false,
         sub_item: false,
+        show_on_hover: false,
+        leading_action_button: false,
+        trailing_action_button: false,
         leading_visual_icon: nil,
         leading_visual_avatar_src: nil,
         trailing_visual_icon: nil,
@@ -72,7 +78,10 @@ module Primer
           active: active,
           has_sub_item: has_sub_item,
           sub_item: sub_item,
-          href: href
+          href: href,
+          show_on_hover: show_on_hover,
+          leading_action_button: leading_action_button,
+          trailing_action_button: trailing_action_button,
         )
 
         if leading_action_icon_button

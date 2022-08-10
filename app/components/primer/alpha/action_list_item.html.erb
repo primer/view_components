@@ -66,5 +66,7 @@
         <%= trailing_action_button %>
       </span>
     <% end %>
-  <%= render(Primer::IconButton.new(icon: :trash, "aria-label": "This as param", scheme: :default, classes: "ActionList-item-button")) %>
+    <%# <span class="ActionList-item-visual ActionList-item-action--leading"> %>
+        <%= render(Primer::IconButton.new(icon: :trash, "aria-label": "This as param", scheme: :default, classes: "ActionList-item-button--trailing", **@action_button_arguments)) %>
+    <%# </span> %>
 <% end %>
