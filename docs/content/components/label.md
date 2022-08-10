@@ -31,7 +31,7 @@ Use `aria-label` if the `Label` or the context around it don't explain the label
 
 ### Schemes
 
-<Example src="<span data-view-component='true' class='Label Label--large'>Default</span><span data-view-component='true' class='Label Label--primary Label--large'>Primary</span><span data-view-component='true' class='Label Label--secondary Label--large'>Secondary</span><span data-view-component='true' class='Label Label--accent Label--large'>Accent</span><span data-view-component='true' class='Label Label--success Label--large'>Success</span><span data-view-component='true' class='Label Label--attention Label--large'>Attention</span><span data-view-component='true' class='Label Label--danger Label--large'>Danger</span><span data-view-component='true' class='Label Label--severe Label--large'>Severe</span><span data-view-component='true' class='Label Label--done Label--large'>Done</span><span data-view-component='true' class='Label Label--sponsors Label--large'>Sponsors</span>" />
+<Example src="<span data-view-component='true' class='Label'>Default</span><span data-view-component='true' class='Label Label--primary'>Primary</span><span data-view-component='true' class='Label Label--secondary'>Secondary</span><span data-view-component='true' class='Label Label--accent'>Accent</span><span data-view-component='true' class='Label Label--success'>Success</span><span data-view-component='true' class='Label Label--attention'>Attention</span><span data-view-component='true' class='Label Label--danger'>Danger</span><span data-view-component='true' class='Label Label--severe'>Severe</span><span data-view-component='true' class='Label Label--done'>Done</span><span data-view-component='true' class='Label Label--sponsors'>Sponsors</span>" />
 
 ```erb
 <%= render(Primer::LabelComponent.new) { "Default" } %>
@@ -48,7 +48,7 @@ Use `aria-label` if the `Label` or the context around it don't explain the label
 
 ### Sizes
 
-<Example src="<span data-view-component='true' class='Label Label--large'>Medium</span><span data-view-component='true' class='Label Label--large'>Large</span>" />
+<Example src="<span data-view-component='true' class='Label'>Medium</span><span data-view-component='true' class='Label Label--large'>Large</span>" />
 
 ```erb
 <%= render(Primer::LabelComponent.new) { "Medium" } %>
@@ -57,7 +57,7 @@ Use `aria-label` if the `Label` or the context around it don't explain the label
 
 ### Inline
 
-<Example src="<span data-view-component='true' class='Label Label--large'>Default</span><span data-view-component='true' class='Label Label--large Label--inline'>Inline</span>" />
+<Example src="<span data-view-component='true' class='Label'>Default</span><span data-view-component='true' class='Label Label--inline'>Inline</span>" />
 
 ```erb
 <%= render(Primer::LabelComponent.new) { "Default" } %>

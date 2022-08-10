@@ -94,12 +94,12 @@ module Primer
       #
       # @example With custom classes for the input
       #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--custom-input", list_id: "fruits-popup--custom-input")) do |c| %>
-      #     <% c.input(classes: "custom-class") %>
+      #     <% c.with_input(classes: "custom-class") %>
       #   <% end %>
       #
       # @example With custom classes for the results
       #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--custom-results", list_id: "fruits-popup--custom-results")) do |c| %>
-      #     <% c.results(classes: "custom-class") do %>
+      #     <% c.with_results(classes: "custom-class") do %>
       #       <%= render(Primer::Alpha::AutoComplete::Item.new(selected: true, value: "apple")) do |c| %>
       #         Apple
       #       <% end %>
