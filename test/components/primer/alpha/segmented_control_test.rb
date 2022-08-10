@@ -11,8 +11,8 @@ module Primer
       def test_renders
         render_preview(:default)
 
-        assert_selector("segmented-control.SegmentedControl") do
-          assert_selector("button.SegmentedControl-button", count: Primer::Alpha::SegmentedControlPreview::NUMBER_OF_BUTTONS_DEFAULT) do
+        assert_selector("segmented-control ul.SegmentedControl") do
+          assert_selector("li button.SegmentedControl-button", count: Primer::Alpha::SegmentedControlPreview::NUMBER_OF_BUTTONS_DEFAULT) do
             assert_selector(".SegmentedControl-content") do
               refute_selector(".SegmentedControl-leadingVisual")
               assert_selector(".SegmentedControl-text")
@@ -24,7 +24,7 @@ module Primer
       def test_selected_button_has_aria_attribute
         render_preview(:default)
 
-        assert_selector("button.SegmentedControl-button.SegmentedControl-button--selected[aria-current=\"true\"]", count: 1)
+        assert_selector("button.SegmentedControl-button[aria-current=\"true\"]", count: 1)
       end
 
       def test_text_has_data_content_attribute
@@ -36,7 +36,7 @@ module Primer
       def test_renders_icons_and_text
         render_preview(:icons_and_text)
 
-        assert_selector("segmented-control.SegmentedControl") do
+        assert_selector("segmented-control ul.SegmentedControl") do
           assert_selector("button.SegmentedControl-button", count: Primer::Alpha::SegmentedControlPreview::NUMBER_OF_BUTTONS_DEFAULT) do
             assert_selector(".SegmentedControl-content") do
               assert_selector(".SegmentedControl-leadingVisual")
@@ -49,7 +49,7 @@ module Primer
       def test_renders_icons_only
         render_preview(:icons_only)
 
-        assert_selector("segmented-control.SegmentedControl") do
+        assert_selector("segmented-control ul.SegmentedControl") do
           assert_selector("button.SegmentedControl-button[id^=\"segmented-control-button-\"]", count: Primer::Alpha::SegmentedControlPreview::NUMBER_OF_BUTTONS_DEFAULT) do
             assert_selector(".SegmentedControl-content") do
               assert_selector(".SegmentedControl-leadingVisual")
@@ -63,13 +63,13 @@ module Primer
       def test_renders_full_width
         render_preview(:full_width)
 
-        assert_selector("segmented-control.SegmentedControl.SegmentedControl--fullWidth")
+        assert_selector("segmented-control ul.SegmentedControl.SegmentedControl--fullWidth")
       end
 
       def test_renders_icons_only_when_narrow
         render_preview(:icons_only_when_narrow)
 
-        assert_selector("segmented-control.SegmentedControl.SegmentedControl--iconOnly-whenNarrow")
+        assert_selector("segmented-control ul.SegmentedControl.SegmentedControl--iconOnly-whenNarrow")
       end
     end
   end
