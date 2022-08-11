@@ -335,6 +335,17 @@
       "success": "flash-success"
     }
   },
+  "Primer::Beta::Heading": {
+    "TAG_FALLBACK": "h2",
+    "TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
@@ -521,15 +532,6 @@
     "FLEX_AUTO_DEFAULT": false
   },
   "Primer::HeadingComponent": {
-    "TAG_FALLBACK": "h2",
-    "TAG_OPTIONS": [
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6"
-    ]
   },
   "Primer::HellipButton": {
   },

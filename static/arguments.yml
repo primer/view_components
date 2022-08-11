@@ -548,6 +548,17 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Heading
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/heading.rb
+  parameters:
+  - name: tag
+    type: String
+    default: N/A
+    description: One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Text
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb
   parameters:
@@ -723,17 +734,6 @@
     default: "`false`"
     description: Fills available space and auto-sizes based on the content. Defaults
       to false
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: Heading
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/heading_component.rb
-  parameters:
-  - name: tag
-    type: String
-    default: N/A
-    description: One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`.
   - name: system_arguments
     type: Hash
     default: N/A

@@ -58,7 +58,7 @@ namespace :docs do
       Primer::Beta::Flash,
       Primer::FlexComponent,
       Primer::FlexItemComponent,
-      Primer::HeadingComponent,
+      Primer::Beta::Heading,
       Primer::HiddenTextExpander,
       Primer::LabelComponent,
       Primer::LayoutComponent,

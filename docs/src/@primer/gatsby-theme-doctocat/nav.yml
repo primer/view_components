@@ -56,7 +56,7 @@
   - title: FlexItem
     url: "/components/flexitem"
   - title: Heading
-    url: "/components/heading"
+    url: "/components/beta/heading"
   - title: HiddenTextExpander
     url: "/components/hiddentextexpander"
   - title: IconButton

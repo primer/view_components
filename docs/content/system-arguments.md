@@ -15,7 +15,7 @@ To apply different values across responsive breakpoints, pass an array with up t
 For example:
 
 ```erb
-<%= render Primer::HeadingComponent.new(mt: [0, nil, nil, 4, 2]) do %>
+<%= render Primer::Beta::Heading.new(mt: [0, nil, nil, 4, 2]) do %>
   Hello world
 <% end %>
 ```
