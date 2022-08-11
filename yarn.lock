@@ -401,10 +401,10 @@
   resolved "https://registry.yarnpkg.com/@primer/behaviors/-/behaviors-1.1.3.tgz#4945f79c39f8b4495ec868b053264830f687c7bc"
   integrity sha512-WpCcjAkXG7Lv3ZbaCUgASWKHnCi/pmuSEiyTmHHb6f5xhwk1mliixNL5ZZHtDN6RCcT3VnXUsyek4GopG2lbZQ==
 
-"@primer/css@^20.3.0":
-  version "20.4.1"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-20.4.1.tgz#ffab915a91e2d1297b5ae01698a87c10c0dc4e43"
-  integrity sha512-jNO8JUmJea/ZMa8w7fWlYT4MWU15raVad04QW1ZZOcqyTyRWEB4Mh31PBj62XB6dfExbKnEC+XX0P4M9FjhwVQ==
+"@primer/css@^20.4.2":
+  version "20.4.2"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-20.4.2.tgz#8a14e2f5acf51ccef14478196eb1ccb498c79426"
+  integrity sha512-EYfDXA80ERXwncs4KTjnOQ41pqz7auRmg7sSNCP9i39W7hqIEl2HAkhtbb3ii34o/48rGSZzOMnxHUL8Nk0c8w==
   dependencies:
     "@primer/primitives" "^7.9.0"
 
