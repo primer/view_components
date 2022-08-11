@@ -1,5 +1,31 @@
 # CHANGELOG
 
+## 0.0.90
+
+### Patch Changes
+
+- [#1290](https://github.com/primer/view_components/pull/1290) [`cc81b54c`](https://github.com/primer/view_components/commit/cc81b54ccdeb685efb3711aad02e8229fee9d9c5) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - updating BorderBox slot use to the new `.with_#{slot_name}` syntax
+
+* [#1294](https://github.com/primer/view_components/pull/1294) [`52fed9a9`](https://github.com/primer/view_components/commit/52fed9a944cae6104eeba1054d4a00b309eac795) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - updating slot use for examples in all components in the root component folder
+
+- [#1295](https://github.com/primer/view_components/pull/1295) [`26d6c3e3`](https://github.com/primer/view_components/commit/26d6c3e3412ca18e71cd67b0797c40183f47ff17) Thanks [@khiga8](https://github.com/khiga8)! - Revert "Use `visibility: 'hidden'` instead of `hidden` attribute"
+
+* [#1292](https://github.com/primer/view_components/pull/1292) [`28cdc994`](https://github.com/primer/view_components/commit/28cdc99466471fa7f89fe9cf094a91509456b604) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - updating slot use in examples, for all `status :alpha` components
+
+- [#1293](https://github.com/primer/view_components/pull/1293) [`4d1e8d29`](https://github.com/primer/view_components/commit/4d1e8d297f52023ce3901e29e364bc1584cc6546) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - updating slot use for components in the beta/ folder
+
+* [`fe709011`](https://github.com/primer/view_components/commit/fe7090113519090d08eddf04540986702c9a595e) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - move the Primer::CloseButton component into Primer::Beta::CloseButton, update all references, create a deprecated Primer::CloseButton in place of the original
+
+- [`7da8c968`](https://github.com/primer/view_components/commit/7da8c968ef20fa3c19e1c6850886694a942facda) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - moving Primer::Counter to Primer::Beta::Counter, and replace original with a deprecated version"
+
+## 0.0.89
+
+### Patch Changes
+
+- [#1284](https://github.com/primer/view_components/pull/1284) [`401dac2a`](https://github.com/primer/view_components/commit/401dac2a1ab2e026b231399ddb03cfb51bc7742f) Thanks [@jonrohan](https://github.com/jonrohan)! - Don't render tooltip on IconButton when tag is a summary element
+
+* [#1283](https://github.com/primer/view_components/pull/1283) [`ea1c29d7`](https://github.com/primer/view_components/commit/ea1c29d7fa0d917a729cba684bf5f8ae039bb228) Thanks [@jonrohan](https://github.com/jonrohan)! - Updating label component to not always have large
+
 ## 0.0.88
 
 ### Patch Changes

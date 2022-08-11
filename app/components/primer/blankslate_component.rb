@@ -41,7 +41,7 @@ module Primer
     #       title: "Title",
     #       description: "Description",
     #     ) do |component| %>
-    #       <% component.spinner(size: :large) %>
+    #       <% component.with_spinner(size: :large) %>
     #     <% end %>
     #
     # @example Custom content

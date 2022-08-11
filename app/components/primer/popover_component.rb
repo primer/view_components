@@ -60,40 +60,40 @@ module Primer
 
     # @example Default
     #   <%= render Primer::PopoverComponent.new do |component| %>
-    #     <% component.heading do %>
+    #     <% component.with_heading do %>
     #       Activity feed
     #     <% end %>
-    #     <% component.body do %>
+    #     <% component.with_body do %>
     #       This is the Popover body.
     #     <% end %>
     #   <% end %>
     #
     # @example Large
     #   <%= render Primer::PopoverComponent.new do |component| %>
-    #     <% component.heading do %>
+    #     <% component.with_heading do %>
     #       Activity feed
     #     <% end %>
-    #     <% component.body(large: true) do %>
+    #     <% component.with_body(large: true) do %>
     #       This is the large Popover body.
     #     <% end %>
     #   <% end %>
     #
     # @example Caret position
     #   <%= render Primer::PopoverComponent.new do |component| %>
-    #     <% component.heading do %>
+    #     <% component.with_heading do %>
     #       Activity feed
     #     <% end %>
-    #     <% component.body(caret: :left) do %>
+    #     <% component.with_body(caret: :left) do %>
     #       This is the Popover body.
     #     <% end %>
     #   <% end %>
     #
     # @example With multiple elements in the body
     #   <%= render Primer::PopoverComponent.new do |component| %>
-    #     <% component.heading do %>
+    #     <% component.with_heading do %>
     #       Activity feed
     #     <% end %>
-    #     <% component.body(caret: :left) do %>
+    #     <% component.with_body(caret: :left) do %>
     #       <p>This is the Popover body.</p>
     #       <%= render Primer::ButtonComponent.new(type: :submit) do %>
     #         Got it!

@@ -97,5 +97,11 @@ module Primer
         @tooltip_arguments[:type] = :label
       end
     end
+
+    private
+
+    def render_tooltip?
+      @system_arguments[:tag] != :summary
+    end
   end
 end

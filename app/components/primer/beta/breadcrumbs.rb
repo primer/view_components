@@ -33,9 +33,9 @@ module Primer
 
       # @example Basic
       #   <%= render(Primer::Beta::Breadcrumbs.new) do |component| %>
-      #     <% component.item(href: "/") do %>Home<% end %>
-      #     <% component.item(href: "/about") do %>About<% end %>
-      #     <% component.item(href: "/about/team") do %>Team<% end %>
+      #     <% component.with_item(href: "/") do %>Home<% end %>
+      #     <% component.with_item(href: "/about") do %>About<% end %>
+      #     <% component.with_item(href: "/about/team") do %>Team<% end %>
       #   <% end %>
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>

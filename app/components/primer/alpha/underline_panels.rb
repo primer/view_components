@@ -38,19 +38,19 @@ module Primer
 
       # @example Default
       #   <%= render(Primer::Alpha::UnderlinePanels.new(label: "With panels")) do |component| %>
-      #     <% component.tab(id: "tab-1", selected: true) do |t| %>
+      #     <% component.with_tab(id: "tab-1", selected: true) do |t| %>
       #       <% t.text { "Tab 1" } %>
       #       <% t.panel do %>
       #         Panel 1
       #       <% end %>
       #     <% end %>
-      #     <% component.tab(id: "tab-2") do |t| %>
+      #     <% component.with_tab(id: "tab-2") do |t| %>
       #       <% t.text { "Tab 2" } %>
       #       <% t.panel do %>
       #         Panel 2
       #       <% end %>
       #     <% end %>
-      #     <% component.actions do %>
+      #     <% component.with_actions do %>
       #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
       #     <% end %>
       #   <% end %>

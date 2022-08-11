@@ -5,8 +5,10 @@ module Primer
     class BorderBox
       # `BorderBox::Header` is used inside `BorderBox` to render its header slot.
       #
-      # @accessibility When using `header.title`, set `tag` to one of `h1`, `h2`, `h3`, etc. based on what is appropriate for the page context. <%= link_to_heading_practices %>
+      # @accessibility When using `header.with_title`, set `tag` to one of `h1`, `h2`, `h3`, etc. based on what is appropriate for the page context. <%= link_to_heading_practices %>
       class Header < Primer::Component
+        status :beta
+
         TITLE_TAG_FALLBACK = :h2
         TITLE_TAG_OPTIONS = [:h1, TITLE_TAG_FALLBACK, :h3, :h4, :h5, :h6].freeze
 
@@ -32,7 +34,7 @@ module Primer
         #
         # @example with title
         #   <%= render(Primer::Beta::BorderBox::Header.new) do |h| %>
-        #     <% h.title(tag: :h3) do %>I am a title<% end %>
+        #     <% h.with_title(tag: :h3) do %>I am a title<% end %>
         #   <% end %>
         #
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
