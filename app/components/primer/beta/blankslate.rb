@@ -46,14 +46,14 @@ module Primer
 
       # Required heading.
       #
-      # @param tag [String]  <%= one_of(Primer::HeadingComponent::TAG_OPTIONS) %>
+      # @param tag [String]  <%= one_of(Primer::Beta::Heading::TAG_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :heading, lambda { |tag:, **system_arguments|
         deny_tag_argument(**system_arguments)
         system_arguments[:tag] = tag
         system_arguments[:classes] = class_names("blankslate-heading", system_arguments[:classes])
 
-        Primer::HeadingComponent.new(**system_arguments)
+        Primer::Beta::Heading.new(**system_arguments)
       }
 
       # Optional description.

@@ -27,13 +27,13 @@ module Primer
 
     # The heading
     #
-    # @param tag [Symbol] (Primer::PopoverComponent::DEFAULT_HEADING_TAG) <%= one_of(Primer::HeadingComponent::TAG_OPTIONS) %>
+    # @param tag [Symbol] (Primer::PopoverComponent::DEFAULT_HEADING_TAG) <%= one_of(Primer::Beta::Heading::TAG_OPTIONS) %>
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     renders_one :heading, lambda { |tag: DEFAULT_HEADING_TAG, **system_arguments|
       system_arguments[:tag] = tag
       system_arguments[:mb] ||= 2
 
-      Primer::HeadingComponent.new(**system_arguments)
+      Primer::Beta::Heading.new(**system_arguments)
     }
 
     # The body
