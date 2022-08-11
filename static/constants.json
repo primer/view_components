@@ -1,4 +1,53 @@
 {
+  "Primer::Alpha::ActionList": {
+    "Heading": "Primer::Alpha::ActionList::Heading",
+    "Item": "Primer::Alpha::ActionList::Item",
+    "Section": "Primer::Alpha::ActionList::Section",
+    "Separator": "Primer::Alpha::ActionList::Separator"
+  },
+  "Primer::Alpha::ActionList::Heading": {
+  },
+  "Primer::Alpha::ActionList::Item": {
+    "DEFAULT_DESCRIPTION_VARIANT": "block",
+    "DEFAULT_SELECT_MODE": "none",
+    "DEFAULT_SIZE": "small",
+    "DEFAULT_VARIANT": "default",
+    "DESCRIPTION_VARIANT_MAPPINGS": {
+      "inline": "ActionList-item-descriptionWrap--inline",
+      "block": "ActionList-item-descriptionWrap--block"
+    },
+    "DESCRIPTION_VARIANT_OPTIONS": [
+      "inline",
+      "block"
+    ],
+    "SELECT_MODE_OPTIONS": [
+      "none",
+      "single",
+      "multiple"
+    ],
+    "SIZE_MAPPINGS": {
+      "small": null,
+      "medium": "ActionList-content--sizeMedium",
+      "large": "ActionList-content--sizeLarge"
+    },
+    "SIZE_OPTIONS": [
+      "small",
+      "medium",
+      "large"
+    ],
+    "VARIANT_MAPPINGS": {
+      "default": null,
+      "danger": "ActionList-item--danger"
+    },
+    "VARIANT_OPTIONS": [
+      "default",
+      "danger"
+    ]
+  },
+  "Primer::Alpha::ActionList::Section": {
+  },
+  "Primer::Alpha::ActionList::Separator": {
+  },
   "Primer::Alpha::ActionListItem": {
     "DEFAULT_DESCRIPTION_VARIANT": "block",
     "DEFAULT_SELECT_MODE": "single",
@@ -73,6 +122,8 @@
       "default",
       "large"
     ]
+  },
+  "Primer::Alpha::CheckList": {
   },
   "Primer::Alpha::Layout": {
     "FIRST_IN_SOURCE_DEFAULT": "sidebar",
@@ -151,6 +202,8 @@
       "nav",
       "section"
     ]
+  },
+  "Primer::Alpha::NavList": {
   },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",

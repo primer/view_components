@@ -86,7 +86,7 @@ module Primer
         )
 
         if leading_action_icon_button
-            item.with_leading_action_button_button(icon: leading_action_icon_button, "aria-label": "test")
+          item.with_leading_action_button_button(icon: leading_action_icon_button, "aria-label": "test")
         end
 
         if leading_action_visual

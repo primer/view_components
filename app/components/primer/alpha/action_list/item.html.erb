@@ -58,9 +58,22 @@
         </span>
       <% end %>
     <% end %>
-    <% if trailing_visual %>
-      <span class="ActionList-item-visual ActionList-item-visual--trailing">
-        <%= trailing_visual %>
+    <% if items.empty? %>
+      <% if trailing_action %>
+        <span class="ActionList-item-visual ActionList-item-visual--trailing">
+          <%= trailing_action %>
+        </span>
+      <% end %>
+    <% else %>
+      <span class="ActionList-item-action ActionList-item-action--trailing">
+        <%= render(
+          Primer::OcticonComponent.new(
+            classes: "ActionList-item-collapseIcon",
+            icon: :"chevron-down",
+            size: :small,
+            aria: { hidden: "true" }
+          )
+        ) %>
       </span>
     <% end %>
     <% if trailing_action_visual %>
