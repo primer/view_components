@@ -138,12 +138,12 @@ module Primer
       #
       # @example With custom classes for the input
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--custom-input", list_id: "fruits-popup--custom-input")) do |c| %>
-      #     <% c.input(classes: "custom-class") %>
+      #     <% c.with_input(classes: "custom-class") %>
       #   <% end %>
       #
       # @example With custom classes for the results
       #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--custom-results", list_id: "fruits-popup--custom-results")) do |c| %>
-      #     <% c.results(classes: "custom-class") %>
+      #     <% c.with_results(classes: "custom-class") %>
       #   <% end %>
       #
       # @param label_text [String] The label of the input.

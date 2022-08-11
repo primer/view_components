@@ -89,20 +89,20 @@ module Primer
     #
     # @example With leading visual
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.leading_visual_icon(icon: :star) %>
+    #     <% c.with_leading_visual_icon(icon: :star) %>
     #     Button
     #   <% end %>
     #
     # @example With trailing visual
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.trailing_visual_counter(count: 15) %>
+    #     <% c.with_trailing_visual_counter(count: 15) %>
     #     Button
     #   <% end %>
     #
     # @example With leading and trailing visuals
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.leading_visual_icon(icon: :star) %>
-    #     <% c.trailing_visual_counter(count: 15) %>
+    #     <% c.with_leading_visual_icon(icon: :star) %>
+    #     <% c.with_trailing_visual_counter(count: 15) %>
     #     Button
     #   <% end %>
     #
@@ -116,7 +116,7 @@ module Primer
     #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
     #   @code
     #     <%= render(Primer::ButtonComponent.new(id: "button-with-tooltip")) do |c| %>
-    #       <% c.tooltip(text: "Tooltip text") %>
+    #       <% c.with_tooltip(text: "Tooltip text") %>
     #       Button
     #     <% end %>
     #

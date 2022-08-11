@@ -176,14 +176,6 @@ class ToolTipElement extends HTMLElement {
     return this.ownerDocument.getElementById(this.htmlFor)
   }
 
-  set visibilityHidden(value: true | false) {
-    this.style.visibility = value ? 'hidden' : ''
-  }
-
-  get visibilityHidden() {
-    return this.style.visibility === 'hidden'
-  }
-
   connectedCallback() {
     if (!this.shadowRoot) {
       const shadow = this.attachShadow({mode: 'open'})
@@ -195,7 +187,7 @@ class ToolTipElement extends HTMLElement {
         <slot></slot>
       `
     }
-    this.visibilityHidden = true
+    this.hidden = true
     this.#allowUpdatePosition = true
 
     if (!this.id) {
@@ -228,36 +220,36 @@ class ToolTipElement extends HTMLElement {
 
     // Ensures that tooltip stays open when hovering between tooltip and element
     // WCAG Success Criterion 1.4.13 Hoverable
-    if ((event.type === 'mouseenter' || event.type === 'focus') && this.visibilityHidden) {
-      this.visibilityHidden = false
+    if ((event.type === 'mouseenter' || event.type === 'focus') && this.hidden) {
+      this.hidden = false
     } else if (event.type === 'blur') {
-      this.visibilityHidden = true
+      this.hidden = true
     } else if (
       event.type === 'mouseleave' &&
       (event as MouseEvent).relatedTarget !== this.control &&
       (event as MouseEvent).relatedTarget !== this
     ) {
-      this.visibilityHidden = true
-    } else if (event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape' && !this.visibilityHidden) {
-      this.visibilityHidden = true
+      this.hidden = true
+    } else if (event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape' && !this.hidden) {
+      this.hidden = true
     }
   }
 
-  static observedAttributes = ['data-type', 'data-direction', 'id', 'style']
+  static observedAttributes = ['data-type', 'data-direction', 'id', 'hidden']
 
   #update() {
-    if (this.visibilityHidden) {
+    if (this.hidden) {
       this.classList.remove(TOOLTIP_OPEN_CLASS, ...DIRECTION_CLASSES)
     } else {
       this.classList.add(TOOLTIP_OPEN_CLASS)
-      for (const tooltip of this.ownerDocument.querySelectorAll<ToolTipElement>(this.tagName)) {
-        if (tooltip !== this) tooltip.visibilityHidden = true
+      for (const tooltip of this.ownerDocument.querySelectorAll<HTMLElement>(this.tagName)) {
+        if (tooltip !== this) tooltip.hidden = true
       }
       this.#updatePosition()
     }
   }
 
-  attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+  attributeChangedCallback(name: string) {
     if (name === 'id' || name === 'data-type') {
       if (!this.id || !this.control) return
       if (this.type === 'label') {
@@ -268,7 +260,7 @@ class ToolTipElement extends HTMLElement {
         describedBy ? (describedBy = `${describedBy} ${this.id}`) : (describedBy = this.id)
         this.control.setAttribute('aria-describedby', describedBy)
       }
-    } else if (this.isConnected && name === 'style' && (oldValue && oldValue.includes('visibility')) || (newValue && newValue.includes('visibility'))) {
+    } else if (this.isConnected && name === 'hidden') {
       this.#update()
     } else if (name === 'data-direction') {
       this.classList.remove(...DIRECTION_CLASSES)
@@ -303,7 +295,7 @@ class ToolTipElement extends HTMLElement {
 
   #updatePosition() {
     if (!this.control) return
-    if (!this.#allowUpdatePosition || this.visibilityHidden) return
+    if (!this.#allowUpdatePosition || this.hidden) return
 
     const TOOLTIP_OFFSET = 10
 

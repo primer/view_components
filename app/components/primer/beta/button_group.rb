@@ -19,20 +19,20 @@ module Primer
       # @example Default
       #
       #   <%= render(Primer::Beta::ButtonGroup.new) do |component| %>
-      #     <% component.button { "Default" } %>
-      #     <% component.button(scheme: :primary) { "Primary" } %>
-      #     <% component.button(scheme: :danger) { "Danger" } %>
-      #     <% component.button(scheme: :outline) { "Outline" } %>
-      #     <% component.button(classes: "custom-class") { "Custom class" } %>
+      #     <% component.with_button { "Default" } %>
+      #     <% component.with_button(scheme: :primary) { "Primary" } %>
+      #     <% component.with_button(scheme: :danger) { "Danger" } %>
+      #     <% component.with_button(scheme: :outline) { "Outline" } %>
+      #     <% component.with_button(classes: "custom-class") { "Custom class" } %>
       #   <% end %>
       #
       # @example Sizes
       #
       #   <%= render(Primer::Beta::ButtonGroup.new(size: :small)) do |component| %>
-      #     <% component.button { "Default" } %>
-      #     <% component.button(scheme: :primary) { "Primary" } %>
-      #     <% component.button(scheme: :danger) { "Danger" } %>
-      #     <% component.button(scheme: :outline) { "Outline" } %>
+      #     <% component.with_button { "Default" } %>
+      #     <% component.with_button(scheme: :primary) { "Primary" } %>
+      #     <% component.with_button(scheme: :danger) { "Danger" } %>
+      #     <% component.with_button(scheme: :outline) { "Outline" } %>
       #   <% end %>
       #
       # @param variant [Symbol] DEPRECATED. <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
