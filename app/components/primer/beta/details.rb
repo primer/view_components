@@ -41,10 +41,10 @@ module Primer
       # @example Default
       #
       #   <%= render Primer::Beta::Details.new do |c| %>
-      #     <% c.summary do %>
+      #     <% c.with_summary do %>
       #       Summary
       #     <% end %>
-      #     <% c.body do %>
+      #     <% c.with_body do %>
       #       Body
       #     <% end %>
       #   <% end %>
