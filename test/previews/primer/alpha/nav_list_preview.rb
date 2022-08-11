@@ -2,6 +2,7 @@
 
 module Primer
   module Alpha
+    # @label NavList
     class NavListPreview < ViewComponent::Preview
       def playing_around
         render(Primer::Alpha::NavList.new(selected_item_id: :code_review_limits, aria: { label: "Repository settings" })) do |c|

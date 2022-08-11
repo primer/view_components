@@ -15,10 +15,6 @@ module Primer
       }
 
       def initialize(tag: :ul, role: :list, item_classes: nil, **system_arguments)
-        # rubocop:disable Style/ClassEqualityComparison
-        raise "ActionList is an abstract component. Please use one of its specializations instead." if self.class == ActionList
-        # rubocop:enable Style/ClassEqualityComparison
-
         @system_arguments = system_arguments
         @system_arguments[:tag] = tag
 

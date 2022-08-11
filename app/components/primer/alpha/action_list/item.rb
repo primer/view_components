@@ -32,7 +32,7 @@ module Primer
 
         renders_one :description
 
-        renders_one :leading_action, types: {
+        renders_one :leading_visual, types: {
           icon: Primer::OcticonComponent,
           avatar: lambda { |**kwargs|
             Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
@@ -42,23 +42,19 @@ module Primer
           }
         }
 
-        renders_one :leading_action_button, types: {
-          button: lambda { |**system_arguments|
-            Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
-          }
+        renders_one :leading_action_button, lambda { |**system_arguments|
+          Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
         }
 
-        renders_one :trailing_action, types: {
+        renders_one :trailing_visual, types: {
           icon: Primer::OcticonComponent,
           label: Primer::LabelComponent,
           counter: Primer::CounterComponent,
           text: ->(text) { text }
         }
 
-        renders_one :trailing_action_button, types: {
-          button: lambda { |**system_arguments|
-            Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
-          }
+        renders_one :trailing_action_button, lambda { |**system_arguments|
+          Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
         }
 
         renders_many :items, lambda { |**system_arguments|
@@ -132,7 +128,7 @@ module Primer
 
           case @select_mode
           when :single
-            @system_arguments[:aria][:selected] = "true" if @active
+            @system_arguments[:aria][:selected] = "true" if @checked
           when :multiple
             @system_arguments[:aria][:checked] = "true" if @checked
           end
@@ -185,7 +181,7 @@ module Primer
         private
 
         def before_render
-          raise "Cannot render a trailing visual for an item with subitems" if items.present? && trailing_visual.present?
+          raise "Cannot render a trailing visual for an item with subitems" if items.present? && trailing_action.present?
 
           if items.present?
             @content_arguments[:tag] = :button

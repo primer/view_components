@@ -40,9 +40,13 @@
         </svg>
       </span>
     <% end %>
-    <% if leading_visual %>
+    <% if leading_action || leading_visual %>
       <span class="ActionList-item-visual ActionList-item-visual--leading">
-        <%= leading_visual %>
+        <% if leading_action %>
+          <%= leading_action %>
+        <% else %>
+          <%= leading_visual %>
+        <% end %>
       </span>
     <% end %>
     <%= render(Primer::ConditionalWrapper.new(condition: description?, tag: :span, **@description_wrapper_arguments)) do %>
@@ -55,30 +59,14 @@
         </span>
       <% end %>
     <% end %>
-    <% if items.empty? %>
-      <% if trailing_visual %>
-        <span class="ActionList-item-visual ActionList-item-visual--trailing">
+    <% if trailing_action || trailing_visual %>
+      <span class="ActionList-item-visual ActionList-item-visual--trailing">
+        <% if trailing_action %>
+          <%= trailing_action %>
+        <% else %>
           <%= trailing_visual %>
-        </span>
-      <% end %>
-    <% else %>
-      <span class="ActionList-item-action ActionList-item-action--trailing">
-        <%= render(
-          Primer::OcticonComponent.new(
-            classes: "ActionList-item-collapseIcon",
-            icon: :"chevron-down",
-            size: :small,
-            aria: { hidden: "true" }
-          )
-        ) %>
+        <% end %>
       </span>
-    <% end %>
-  <% end %>
-  <% unless items.empty? %>
-    <%= render(Primer::BaseComponent.new(tag: :ul, **@sub_group_arguments)) do %>
-      <% items.each do |item| %>
-        <%= item %>
-      <% end %>
     <% end %>
   <% end %>
   <% if trailing_action_button %>
