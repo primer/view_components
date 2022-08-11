@@ -72,6 +72,7 @@ module Primer
           "SegmentedControl--fullWidth": full_width,
           "SegmentedControl--iconOnly-whenNarrow": @icon_only == :whenNarrow
         )
+        @icon_only = false if @icon_only == :whenNarrow
       end
     end
   end
