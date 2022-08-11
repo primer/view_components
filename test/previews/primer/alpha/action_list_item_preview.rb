@@ -29,9 +29,9 @@ module Primer
       # @param trailing_visual_label text
       # @param trailing_visual_counter number
       # @param trailing_visual_text text
-      # @param leading_action_icon [Symbol] octicon
+      # @param leading_action_visual [Symbol] octicon
       # @param leading_action_icon_button [Symbol] octicon
-      # @param trailing_action_icon [Symbol] octicon
+      # @param trailing_action_visual [Symbol] octicon
       # @param trailing_action_icon_button [Symbol] octicon
       def playground(
         label: "Item Item ItemItemItemItem ItemItemItemItemItem",
@@ -60,8 +60,8 @@ module Primer
         trailing_visual_text: nil,
         leading_action_icon_button: nil,
         trailing_action_icon_button: nil,
-        leading_action_icon: nil,
-        trailing_action_icon: nil
+        leading_action_visual: nil,
+        trailing_action_visual: nil
       )
         item = Primer::Alpha::ActionListItem.new(
           label: label,
@@ -82,14 +82,15 @@ module Primer
           show_on_hover: show_on_hover,
           leading_action_button: leading_action_button,
           trailing_action_button: trailing_action_button,
+          leading_action_visual: leading_action_visual
         )
 
         if leading_action_icon_button
             item.with_leading_action_button_button(icon: leading_action_icon_button, "aria-label": "test")
         end
 
-        if leading_action_icon
-            item.with_leading_action_icon(icon: leading_action_icon)
+        if leading_action_visual
+            item.with_leading_action_visual_icon(icon: leading_action_visual)
         end
 
         if leading_visual_icon && leading_visual_icon != :none
@@ -106,6 +107,14 @@ module Primer
           item.with_trailing_visual_counter(count: trailing_visual_counter)
         elsif trailing_visual_text
           item.with_trailing_visual_text(trailing_visual_text)
+        end
+
+        if trailing_action_visual
+            item.with_trailing_action_visual_icon(icon: trailing_action_visual)
+        end
+
+        if trailing_action_icon_button
+            item.with_trailing_action_button_button(icon: trailing_action_icon_button, "aria-label": "test")
         end
 
         item.description { description } if description

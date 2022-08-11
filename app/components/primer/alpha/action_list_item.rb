@@ -33,7 +33,7 @@ module Primer
 
       renders_one :description
 
-      renders_one :leading_action, types: {
+      renders_one :leading_action_visual, types: {
         icon: Primer::OcticonComponent,
         svg: lambda { |**system_arguments|
           Primer::BaseComponent.new(tag: :svg, **system_arguments)
@@ -41,12 +41,12 @@ module Primer
       }
 
       renders_one :leading_action_button, types: {
-        button: lambda { |**system_arguments|
-          Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
+        button: lambda { |**action_button_arguments|
+          Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **action_button_arguments)
         },
       }
 
-      renders_one :trailing_action, types: {
+      renders_one :trailing_action_visual, types: {
         icon: Primer::OcticonComponent,
         svg: lambda { |**system_arguments|
           Primer::BaseComponent.new(tag: :svg, **system_arguments)
@@ -122,8 +122,8 @@ module Primer
           @system_arguments[:classes],
           VARIANT_MAPPINGS[@variant],
           "ActionList-item",
-          "ActionList-item--leadingAction" => @leading_action_button,
-          "ActionList-item--trailingAction" => @trailing_action_button,
+          "ActionList-item--withActions" => @leading_action_button,
+          "ActionList-item--withActions" => @trailing_action_button,
           "ActionList-item--navActive" => @active,
           "ActionList-item--hasSubItem" => @has_sub_item,
           "ActionList-item--subItem" => @sub_item
