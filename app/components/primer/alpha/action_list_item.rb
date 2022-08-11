@@ -41,9 +41,9 @@ module Primer
       }
 
       renders_one :leading_action_button, types: {
-        button: lambda { |**action_button_arguments|
-          Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **action_button_arguments)
-        },
+        button: lambda { |**system_arguments|
+          Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
+        }
       }
 
       renders_one :trailing_action_visual, types: {
@@ -53,10 +53,8 @@ module Primer
         }
       }
 
-      renders_one :trailing_action_button, types: {
-        button: lambda { |**system_arguments|
-          Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
-        },
+      renders_one :trailing_action_button, lambda { |**system_arguments|
+        Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
       }
 
       renders_one :leading_visual, types: {
@@ -87,7 +85,6 @@ module Primer
         description_variant: DEFAULT_DESCRIPTION_VARIANT,
         select_mode: DEFAULT_SELECT_MODE,
         checked: false,
-        selected: false,
         active: false,
         on_click: nil,
         has_sub_item: false,
@@ -102,7 +99,6 @@ module Primer
         @truncate_label = truncate_label
         @disabled = disabled
         @checked = checked
-        @selected = selected
         @active = active
         @has_sub_item = has_sub_item
         @sub_item = sub_item
@@ -136,7 +132,7 @@ module Primer
 
         case @select_mode
         when :single
-          @system_arguments[:aria][:selected] = "true" if @selected
+          @system_arguments[:aria][:selected] = "true" if @active
         when :multiple
           @system_arguments[:aria][:checked] = "true" if @checked
         end

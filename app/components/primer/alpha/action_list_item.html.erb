@@ -1,6 +1,8 @@
 <%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
   <% if leading_action_button %>
+    <span class="ActionList-item-visual ActionList-item-action--leading">
       <%= leading_action_button %>
+    </span>
   <% end %>
   <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
     <% if @select_mode == :single %>
@@ -38,9 +40,13 @@
         </svg>
       </span>
     <% end %>
-    <% if leading_visual %>
+    <% if leading_action || leading_visual %>
       <span class="ActionList-item-visual ActionList-item-visual--leading">
-        <%= leading_visual %>
+        <% if leading_action %>
+          <%= leading_action %>
+        <% else %>
+          <%= leading_visual %>
+        <% end %>
       </span>
     <% end %>
     <%= render(Primer::ConditionalWrapper.new(condition: description?, tag: :span, **@description_wrapper_arguments)) do %>
@@ -53,31 +59,19 @@
         </span>
       <% end %>
     <% end %>
-    <% if items.empty? %>
-      <% if trailing_visual %>
-        <span class="ActionList-item-visual ActionList-item-visual--trailing">
+    <% if trailing_action || trailing_visual %>
+      <span class="ActionList-item-visual ActionList-item-visual--trailing">
+        <% if trailing_action %>
+          <%= trailing_action %>
+        <% else %>
           <%= trailing_visual %>
-        </span>
-      <% end %>
-    <% else %>
-      <span class="ActionList-item-action ActionList-item-action--trailing">
-        <%= render(
-          Primer::OcticonComponent.new(
-            classes: "ActionList-item-collapseIcon",
-            icon: :"chevron-down",
-            size: :small,
-            aria: { hidden: "true" }
-          )
-        ) %>
-      </span>
-    <% end %>
-    <% if trailing_action_visual %>
-      <span class="ActionList-item-visual ActionList-item-action--trailing">
-        <%= trailing_action_visual %>
+        <% end %>
       </span>
     <% end %>
   <% end %>
   <% if trailing_action_button %>
-        <%= trailing_action_button %>
-    <% end %>
+    <span class="ActionList-item-visual ActionList-item-action--leading">
+      <%= trailing_action_button %>
+    </span>
+  <% end %>
 <% end %>
