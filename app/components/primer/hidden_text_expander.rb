@@ -9,6 +9,8 @@ module Primer
   #   if your `HiddenTextExpander` expands a list of 5 comments, the `aria-label` should be
   #   `"Expand 5 more comments"` instead of `"More"`.
   class HiddenTextExpander < Primer::Component
+    status :alpha
+
     # @example Default
     #   <%= render(Primer::HiddenTextExpander.new("aria-label": "No effect")) %>
     #
