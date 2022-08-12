@@ -5,7 +5,7 @@ module Primer
     # :nodoc:
     class ActionList < Primer::Component
       renders_many :items, lambda { |**system_arguments|
-        build_item(**system_arguments, is_sub_item: false, root: nil).tap do |item|
+        build_item(**system_arguments, root: nil).tap do |item|
           will_add_item(item)
         end
       }
