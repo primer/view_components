@@ -532,6 +532,23 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Details
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/details.rb
+  parameters:
+  - name: overlay
+    type: Symbol
+    default: "`:none`"
+    description: Dictates the type of overlay to render with. One of `:dark`, `:default`,
+      or `:none`.
+  - name: reset
+    type: Boolean
+    default: "`false`"
+    description: Defaults to false. If set to true, it will remove the default caret
+      and remove style from the summary element
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Flash
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/flash.rb
   parameters:
@@ -555,6 +572,17 @@
     type: Symbol
     default: "`:default`"
     description: One of `:danger`, `:default`, `:success`, or `:warning`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: Heading
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/heading.rb
+  parameters:
+  - name: tag
+    type: String
+    default: N/A
+    description: One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -643,23 +671,6 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: Details
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/details_component.rb
-  parameters:
-  - name: overlay
-    type: Symbol
-    default: "`:none`"
-    description: Dictates the type of overlay to render with. One of `:dark`, `:default`,
-      or `:none`.
-  - name: reset
-    type: Boolean
-    default: "`false`"
-    description: Defaults to false. If set to true, it will remove the default caret
-      and remove style from the summary element
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
 - component: Dropdown
   source: https://github.com/primer/view_components/tree/main/app/components/primer/dropdown.rb
   parameters:
@@ -734,17 +745,6 @@
     default: "`false`"
     description: Fills available space and auto-sizes based on the content. Defaults
       to false
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: Heading
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/heading_component.rb
-  parameters:
-  - name: tag
-    type: String
-    default: N/A
-    description: One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`.
   - name: system_arguments
     type: Hash
     default: N/A

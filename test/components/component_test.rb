@@ -51,7 +51,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::ConditionalWrapper, { condition: true, tag: :div }],
     [Primer::Beta::CloseButton, {}],
     [Primer::Beta::Counter, { count: 1 }],
-    [Primer::DetailsComponent, {}, lambda do |component|
+    [Primer::Beta::Details, {}, lambda do |component|
       component.summary { "Foo" }
       component.body { "Bar" }
     end],
@@ -66,7 +66,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::FlexComponent, {}],
     [Primer::Beta::Flash, {}],
     [Primer::FlexItemComponent, { flex_auto: true }],
-    [Primer::HeadingComponent, { tag: :h1 }],
+    [Primer::Beta::Heading, { tag: :h1 }],
     [Primer::HiddenTextExpander, { "aria-label": "No action" }],
     [Primer::LabelComponent, {}],
     [Primer::LayoutComponent, {}],
@@ -94,9 +94,11 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::HeadingComponent",
       "Primer::ButtonGroup",
       "Primer::CloseButton",
       "Primer::CounterComponent",
+      "Primer::DetailsComponent",
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",

@@ -18,7 +18,7 @@ module Primer
 
     # @example With a header
     #   <div>
-    #     <%= render(Primer::DetailsComponent.new(overlay: :default, reset: true, position: :relative)) do |c| %>
+    #     <%= render(Primer::Beta::Details.new(overlay: :default, reset: true, position: :relative)) do |c| %>
     #       <% c.summary do %>
     #         Dropdown
     #       <% end %>

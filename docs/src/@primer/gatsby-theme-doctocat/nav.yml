@@ -44,7 +44,7 @@
   - title: Counter
     url: "/components/beta/counter"
   - title: Details
-    url: "/components/details"
+    url: "/components/beta/details"
   - title: Dropdown
     url: "/components/dropdown"
   - title: DropdownMenu
@@ -56,7 +56,7 @@
   - title: FlexItem
     url: "/components/flexitem"
   - title: Heading
-    url: "/components/heading"
+    url: "/components/beta/heading"
   - title: HiddenTextExpander
     url: "/components/hiddentextexpander"
   - title: IconButton
