@@ -53,5 +53,8 @@
   },
   "hostRequirements": {
     "memory": "8gb"
+  },
+  "features": {
+    "sshd": "latest" 
   }
 }
