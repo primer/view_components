@@ -121,15 +121,15 @@
     "FULL_WIDTH_DEFAULT": false
   },
   "Primer::Alpha::SegmentedControl::Button": {
-    "ICON_ONLY_DEFAULT": false,
+    "ICON_ONLY_DEFAULT": "never",
     "ICON_ONLY_MAPPINGS": {
-      "false": "",
-      "true": "SegmentedControl-button--iconOnly",
+      "never": "",
+      "always": "SegmentedControl-button--iconOnly",
       "when_narrow": "SegmentedControl-button--iconOnly-whenNarrow"
     },
     "ICON_ONLY_OPTIONS": [
-      false,
-      true,
+      "never",
+      "always",
       "when_narrow"
     ]
   },
