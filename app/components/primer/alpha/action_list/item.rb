@@ -181,7 +181,7 @@ module Primer
         private
 
         def before_render
-          raise "Cannot render a trailing visual for an item with subitems" if items.present? && trailing_action.present?
+          raise "Cannot render a trailing visual for an item with subitems" if items.present? && trailing_visual.present?
 
           if items.present?
             @content_arguments[:tag] = :button
@@ -198,13 +198,13 @@ module Primer
             )
           end
 
-          if leading_visual
-            @content_arguments[:classes] = class_names(
-              @content_arguments[:classes],
-              "ActionList-content--visual16" => leading_visual && items.present?,
-              "ActionList-content--blockDescription" => description && @description_variant == :block
-            )
-          end
+          return unless leading_visual
+
+          @content_arguments[:classes] = class_names(
+            @content_arguments[:classes],
+            "ActionList-content--visual16" => leading_visual && items.present?,
+            "ActionList-content--blockDescription" => description && @description_variant == :block
+          )
         end
       end
     end
