@@ -14,16 +14,12 @@ module Primer
         super(tag: :nav, **@system_arguments)
       end
 
-      def build_item(selected_by_ids: [], **system_arguments)
-        selected_by_ids = Array(selected_by_ids)
-
-        overrides = { select_mode: :none, "data-item-id": selected_by_ids.join(" ") }
-
-        if selected_by_ids.include?(@selected_item_id)
-          overrides[:active] = true
-        end
-
-        super(**system_arguments, **overrides, list: self)
+      def build_item(component_klass: NavList::Item, **system_arguments)
+        component_klass.new(
+          **system_arguments,
+          selected_item_id: @selected_item_id,
+          list: self
+        )
       end
 
       def will_add_item(item)
