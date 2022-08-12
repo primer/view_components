@@ -41,6 +41,7 @@ module Primer
       end
 
       def will_add_item(_item); end
+
       def will_add_group(_group); end
     end
   end
