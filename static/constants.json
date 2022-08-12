@@ -118,14 +118,20 @@
   },
   "Primer::Alpha::SegmentedControl": {
     "Button": "Primer::Alpha::SegmentedControl::Button",
+    "FULL_WIDTH_DEFAULT": false
+  },
+  "Primer::Alpha::SegmentedControl::Button": {
     "ICON_ONLY_DEFAULT": false,
+    "ICON_ONLY_MAPPINGS": {
+      "false": "",
+      "true": "SegmentedControl-button--iconOnly",
+      "when_narrow": "SegmentedControl-button--iconOnly-whenNarrow"
+    },
     "ICON_ONLY_OPTIONS": [
       false,
       true,
-      "whenNarrow"
+      "when_narrow"
     ]
-  },
-  "Primer::Alpha::SegmentedControl::Button": {
   },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",
