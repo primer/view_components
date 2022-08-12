@@ -59,7 +59,7 @@ namespace :docs do
       Primer::FlexComponent,
       Primer::FlexItemComponent,
       Primer::Beta::Heading,
-      Primer::HiddenTextExpander,
+      Primer::Alpha::HiddenTextExpander,
       Primer::LabelComponent,
       Primer::LayoutComponent,
       Primer::LinkComponent,
