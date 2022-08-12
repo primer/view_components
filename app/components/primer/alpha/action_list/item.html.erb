@@ -1,6 +1,6 @@
 <%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
   <% if leading_action_button %>
-      <%= leading_action_button %>
+    <%= leading_action_button %>
   <% end %>
   <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
     <% if @select_mode == :single %>
@@ -78,6 +78,13 @@
     <% end %>
   <% end %>
   <% if trailing_action_button %>
-        <%= trailing_action_button %>
+    <%= trailing_action_button %>
+  <% end %>
+  <% unless items.empty? %>
+    <%= render(Primer::BaseComponent.new(tag: :ul, **@sub_group_arguments)) do %>
+      <% items.each do |item| %>
+        <%= item %>
+      <% end %>
     <% end %>
+  <% end %>
 <% end %>
