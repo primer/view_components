@@ -83,7 +83,7 @@ module Primer
           label:,
           truncate_label: false,
           href: nil,
-          role: "menuitem",
+          role: :listitem,
           size: DEFAULT_SIZE,
           variant: DEFAULT_VARIANT,
           disabled: false,
