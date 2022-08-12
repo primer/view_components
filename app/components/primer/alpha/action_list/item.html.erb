@@ -1,8 +1,6 @@
 <%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
   <% if leading_action_button %>
-    <span class="ActionList-item-visual ActionList-item-action--leading">
       <%= leading_action_button %>
-    </span>
   <% end %>
   <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
     <% if @select_mode == :single %>
@@ -73,17 +71,13 @@
         ) %>
       </span>
     <% end %>
-  <% end %>
-  <% unless items.empty? %>
-    <%= render(Primer::BaseComponent.new(tag: :ul, **@sub_group_arguments)) do %>
-      <% items.each do |item| %>
-        <%= item %>
-      <% end %>
+    <% if trailing_action_visual %>
+      <span class="ActionList-item-visual ActionList-item-action--trailing">
+        <%= trailing_action_visual %>
+      </span>
     <% end %>
   <% end %>
   <% if trailing_action_button %>
-    <span class="ActionList-item-visual ActionList-item-action--leading">
-      <%= trailing_action_button %>
-    </span>
-  <% end %>
+        <%= trailing_action_button %>
+    <% end %>
 <% end %>

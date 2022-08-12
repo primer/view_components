@@ -19,16 +19,19 @@ module Primer
       # @param active toggle
       # @param has_sub_item toggle
       # @param sub_item toggle
+      # @param show_on_hover toggle
+      # @param leading_action_button toggle
+      # @param trailing_action_button toggle
       # @param leading_visual_icon [Symbol] octicon
       # @param leading_visual_avatar_src text
       # @param trailing_visual_icon [Symbol] octicon
       # @param trailing_visual_label text
       # @param trailing_visual_counter number
       # @param trailing_visual_text text
-      # @param leading_action_icon [Symbol] octicon
-      # @param leading_action_button [Symbol] octicon
-      # @param trailing_action_icon [Symbol] octicon
-      # @param trailing_action_button [Symbol] octicon
+      # @param leading_action_visual [Symbol] octicon
+      # @param leading_action_icon_button [Symbol] octicon
+      # @param trailing_action_visual [Symbol] octicon
+      # @param trailing_action_icon_button [Symbol] octicon
       def playground(
         label: "Item Item ItemItemItemItem ItemItemItemItemItem",
         truncate_label: false,
@@ -44,6 +47,9 @@ module Primer
         active: false,
         has_sub_item: false,
         sub_item: false,
+        show_on_hover: false,
+        leading_action_button: false,
+        trailing_action_button: false,
         leading_visual_icon: nil,
         leading_visual_avatar_src: nil,
         trailing_visual_icon: nil,
@@ -69,24 +75,16 @@ module Primer
           active: active,
           has_sub_item: has_sub_item,
           sub_item: sub_item,
-          href: href
+          href: href,
+          show_on_hover: show_on_hover,
+          leading_action_button: leading_action_button,
+          trailing_action_button: trailing_action_button,
+          leading_action_visual: leading_action_visual
         )
 
-        if leading_action_icon && leading_action_icon != :none
-          item.with_leading_action_icon(icon: leading_action_icon)
-        end
+        item.with_leading_action_icon(icon: leading_action_icon) if leading_action_icon && leading_action_icon != :none
 
-        if trailing_action_icon && trailing_action_icon != :none
-          item.with_trailing_action_icon(icon: trailing_action_icon)
-        end
-
-        if leading_action_button && leading_action_button != :none
-          item.with_leading_action_button(icon: leading_action_button, "aria-label": "test")
-        end
-
-        if trailing_action_button && trailing_action_button != :none
-          item.with_trailing_action_button(icon: trailing_action_button, "aria-label": "test")
-        end
+        item.with_leading_action_icon(icon: leading_action_icon) if leading_action_icon
 
         if leading_visual_icon && leading_visual_icon != :none
           item.with_leading_visual_icon(icon: leading_visual_icon)
@@ -103,6 +101,10 @@ module Primer
         elsif trailing_visual_text
           item.with_trailing_visual_text(trailing_visual_text)
         end
+
+        item.with_trailing_action_visual_icon(icon: trailing_action_visual) if trailing_action_visual
+
+        item.with_trailing_action_button_button(icon: trailing_action_icon_button, "aria-label": "test") if trailing_action_icon_button
 
         item.description { description } if description
 

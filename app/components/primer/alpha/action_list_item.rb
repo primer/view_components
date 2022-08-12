@@ -28,23 +28,25 @@ module Primer
       }.freeze
       VARIANT_OPTIONS = VARIANT_MAPPINGS.keys.freeze
 
-      DEFAULT_SELECT_MODE = :single
-      SELECT_MODE_OPTIONS = [DEFAULT_SELECT_MODE, :multiple].freeze
+      DEFAULT_SELECT_MODE = :none
+      SELECT_MODE_OPTIONS = [DEFAULT_SELECT_MODE, :multiple, :single].freeze
 
       renders_one :description
 
-      renders_one :leading_action, types: {
+      renders_one :leading_action_visual, types: {
         icon: Primer::OcticonComponent,
         svg: lambda { |**system_arguments|
           Primer::BaseComponent.new(tag: :svg, **system_arguments)
         }
       }
 
-      renders_one :leading_action_button, lambda { |**system_arguments|
-        Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
+      renders_one :leading_action_button, types: {
+        button: lambda { |**system_arguments|
+          Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
+        }
       }
 
-      renders_one :trailing_action, types: {
+      renders_one :trailing_action_visual, types: {
         icon: Primer::OcticonComponent,
         svg: lambda { |**system_arguments|
           Primer::BaseComponent.new(tag: :svg, **system_arguments)
@@ -87,6 +89,9 @@ module Primer
         on_click: nil,
         has_sub_item: false,
         sub_item: false,
+        show_on_hover: false,
+        leading_action_button: false,
+        trailing_action_button: false,
         **system_arguments
       )
         @label = label
@@ -97,6 +102,9 @@ module Primer
         @active = active
         @has_sub_item = has_sub_item
         @sub_item = sub_item
+        @show_on_hover = show_on_hover
+        @leading_action_button = leading_action_button
+        @trailing_action_button = trailing_action_button
         @system_arguments = system_arguments
 
         @size = fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)
@@ -110,6 +118,8 @@ module Primer
           @system_arguments[:classes],
           VARIANT_MAPPINGS[@variant],
           "ActionList-item",
+          "ActionList-item--withActions" => @leading_action_button,
+          "ActionList-item--withActions" => @trailing_action_button,
           "ActionList-item--navActive" => @active,
           "ActionList-item--hasSubItem" => @has_sub_item,
           "ActionList-item--subItem" => @sub_item
@@ -126,6 +136,14 @@ module Primer
         when :multiple
           @system_arguments[:aria][:checked] = "true" if @checked
         end
+
+        @action_button_arguments = {
+          classes: class_names(
+            "ActionList-item-button",
+            "ActionList-item-button--trailing",
+            "ActionList-item-button--onHover" => @show_on_hover
+          )
+        }
 
         @label_arguments = {
           classes: class_names(
