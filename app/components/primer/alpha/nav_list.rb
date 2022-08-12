@@ -14,8 +14,8 @@ module Primer
         super(tag: :nav, **@system_arguments)
       end
 
-      def build_item(item_klass: NavList::Item, **system_arguments)
-        item_klass.new(
+      def build_item(component_klass: NavList::Item, **system_arguments)
+        component_klass.new(
           **system_arguments,
           selected_item_id: @selected_item_id,
           list: self
