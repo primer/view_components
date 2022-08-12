@@ -7,44 +7,45 @@ module Primer
       class Button < Primer::Component
         status :alpha
 
-        # Leading visuals appear to the left of the button text.
-        #
-        # Use:
-        #
-        # - `leading_visual_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
-        #
-        # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
-        renders_one :leading_visual, types: {
-          icon: lambda { |**system_arguments|
-            system_arguments[:classes] = "SegmentedControl-leadingVisual"
+        ICON_ONLY_DEFAULT = false
+        ICON_ONLY_MAPPINGS = {
+          ICON_ONLY_DEFAULT => "",
+          true => "SegmentedControl-button--iconOnly",
+          :when_narrow => "SegmentedControl-button--iconOnly-whenNarrow",
+        }.freeze
+        ICON_ONLY_OPTIONS = ICON_ONLY_MAPPINGS.keys
 
-            Primer::OcticonComponent.new(system_arguments[:icon], **system_arguments)
-          }
-        }
-
-        def initialize(text:, icon_only: false, selected: false, **system_arguments)
-          @text = text
-          @icon_only = icon_only
+        def initialize(icon: nil, icon_only: ICON_ONLY_DEFAULT, selected: false, **system_arguments)
           @system_arguments = system_arguments
+
+          # Icons
+          @icon = icon
+          @icon_only = fetch_or_fallback(ICON_ONLY_OPTIONS, icon_only, ICON_ONLY_DEFAULT)
+
           @system_arguments[:tag] = :button
-          @system_arguments[:id] ||= "segmented-control-button-#{SecureRandom.hex(4)}"
+          @system_arguments[:id] ||= "segmented-control-button-#{SecureRandom.hex(4)}" if tooltip?
           @system_arguments[:classes] = class_names(
             "SegmentedControl-button",
-            @system_arguments[:classes],
-            "SegmentedControl-button--iconOnly": icon_only
+            ICON_ONLY_MAPPINGS[@icon_only]
           )
           @system_arguments[:'aria-current'] = selected
-          @system_arguments[:'aria-label'] = text if render_tooltip?
         end
 
         private
 
-        def render_tooltip?
+        def tooltip?
           @icon_only != false
         end
 
-        def render_text?
-          @icon_only != true
+        def trimmed_content
+          return if content.blank?
+
+          trimmed_content = content.strip
+
+          return trimmed_content unless content.html_safe?
+
+          # strip unsets `html_safe`, so we have to set it back again to guarantee that HTML blocks won't break
+          trimmed_content.html_safe # rubocop:disable Rails/OutputSafety
         end
       end
     end

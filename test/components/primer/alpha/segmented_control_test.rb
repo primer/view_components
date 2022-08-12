@@ -12,7 +12,7 @@ module Primer
         render_preview(:default)
 
         assert_selector("segmented-control ul.SegmentedControl") do
-          assert_selector("li button.SegmentedControl-button", count: Primer::Alpha::SegmentedControlPreview::NUMBER_OF_BUTTONS_DEFAULT) do
+          assert_selector("li button.SegmentedControl-button", count: 3) do
             assert_selector(".SegmentedControl-content") do
               refute_selector(".SegmentedControl-leadingVisual")
               assert_selector(".SegmentedControl-text")
@@ -37,7 +37,7 @@ module Primer
         render_preview(:icons_and_text)
 
         assert_selector("segmented-control ul.SegmentedControl") do
-          assert_selector("button.SegmentedControl-button", count: Primer::Alpha::SegmentedControlPreview::NUMBER_OF_BUTTONS_DEFAULT) do
+          assert_selector("button.SegmentedControl-button", count: 3) do
             assert_selector(".SegmentedControl-content") do
               assert_selector(".SegmentedControl-leadingVisual")
               assert_selector(".SegmentedControl-text")
@@ -50,7 +50,7 @@ module Primer
         render_preview(:icons_only)
 
         assert_selector("segmented-control ul.SegmentedControl") do
-          assert_selector("button.SegmentedControl-button[id^=\"segmented-control-button-\"]", count: Primer::Alpha::SegmentedControlPreview::NUMBER_OF_BUTTONS_DEFAULT) do
+          assert_selector("button.SegmentedControl-button[id^=\"segmented-control-button-\"]", count: 3) do
             assert_selector(".SegmentedControl-content") do
               assert_selector(".SegmentedControl-leadingVisual")
               refute_selector(".SegmentedControl-text")
@@ -69,7 +69,7 @@ module Primer
       def test_renders_icons_only_when_narrow
         render_preview(:icons_only_when_narrow)
 
-        assert_selector("segmented-control ul.SegmentedControl.SegmentedControl--iconOnly-whenNarrow")
+        assert_selector("segmented-control ul.SegmentedControl button.SegmentedControl-button--iconOnly-whenNarrow")
       end
     end
   end

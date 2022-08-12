@@ -1,7 +1,9 @@
 <segmented-control>
   <%= render Primer::BaseComponent.new(**@system_arguments) do %>
     <% buttons.each do |button| %>
-      <%= button %>
+      <li>
+        <%= button %>
+      </li>
     <% end %>
   <% end %>
 </segmented-control>
