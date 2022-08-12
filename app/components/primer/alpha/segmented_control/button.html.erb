@@ -1,7 +1,7 @@
-<%= render Primer::Beta::BaseButton.new(**@system_arguments) do %>
+<%= render Primer::Beta::BaseButton.new(tag: :button, **@system_arguments) do %>
   <div class="SegmentedControl-content">
     <%= render Primer::OcticonComponent.new(@icon, classes: "SegmentedControl-leadingVisual") unless @icon.nil? %>
-    <% unless @icon_only == true %>
+    <% unless @icon_only == :always %>
       <span class="SegmentedControl-text" data-content="<%= trimmed_content %>"><%= trimmed_content %></span>
     <% end %>
   </div>

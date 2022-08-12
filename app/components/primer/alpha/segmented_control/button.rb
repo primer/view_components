@@ -7,10 +7,10 @@ module Primer
       class Button < Primer::Component
         status :alpha
 
-        ICON_ONLY_DEFAULT = false
+        ICON_ONLY_DEFAULT = :never
         ICON_ONLY_MAPPINGS = {
           ICON_ONLY_DEFAULT => "",
-          true => "SegmentedControl-button--iconOnly",
+          :always => "SegmentedControl-button--iconOnly",
           :when_narrow => "SegmentedControl-button--iconOnly-whenNarrow"
         }.freeze
         ICON_ONLY_OPTIONS = ICON_ONLY_MAPPINGS.keys
@@ -22,7 +22,6 @@ module Primer
           @icon = icon
           @icon_only = fetch_or_fallback(ICON_ONLY_OPTIONS, icon_only, ICON_ONLY_DEFAULT)
 
-          @system_arguments[:tag] = :button
           @system_arguments[:id] ||= "segmented-control-button-#{SecureRandom.hex(4)}" if tooltip?
           @system_arguments[:classes] = class_names(
             "SegmentedControl-button",
@@ -34,7 +33,7 @@ module Primer
         private
 
         def tooltip?
-          @icon_only != false
+          @icon_only == :when_narrow || @icon_only == :always
         end
 
         def trimmed_content

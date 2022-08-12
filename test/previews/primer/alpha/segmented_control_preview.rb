@@ -7,28 +7,23 @@ module Primer
   module Alpha
     # @label SegmentedControl
     class SegmentedControlPreview < ViewComponent::Preview
-
       # @param full_width [Boolean] toggle
-      # @param icon_only [String] select [true, false, when_narrow]
+      # @param icon_only [Symbol] select [always, never, when_narrow]
       # @param number_of_buttons [Integer] number
-      def default(full_width: false, number_of_buttons: 3, icon_only: false)
-        icon_only = icon_only_argument(icon_only)
-
+      def default(full_width: false, number_of_buttons: 3, icon_only: :never)
         render(Primer::Alpha::SegmentedControl.new(full_width: full_width)) do |c|
           Array.new(number_of_buttons || 3) do |i|
-            c.with_button(icon: (icon_only == false ? nil : :zap), selected: i.zero?, icon_only: icon_only) { "Button #{i + 1}" }
+            c.with_button(icon: (icon_only == :never ? nil : :zap), selected: i.zero?, icon_only: icon_only) { "Button #{i + 1}" }
           end
         end
       end
 
-      # @param icon_only [String] select [true, false, when_narrow]
+      # @param icon_only [Symbol] select [always, never, when_narrow]
       # @param number_of_buttons [Integer] number
-      def full_width(number_of_buttons: 3, icon_only: "false")
-        icon_only = icon_only_argument(icon_only)
-
+      def full_width(number_of_buttons: 3, icon_only: :never)
         render(Primer::Alpha::SegmentedControl.new(full_width: true)) do |c|
           Array.new(number_of_buttons || 3) do |i|
-            c.with_button(icon: (icon_only == false ? nil : :zap), selected: i.zero?, icon_only: icon_only) { "Button #{i + 1}" }
+            c.with_button(icon: (icon_only == :never ? nil : :zap), selected: i.zero?, icon_only: icon_only) { "Button #{i + 1}" }
           end
         end
       end
@@ -48,7 +43,7 @@ module Primer
       def icons_only(full_width: false, number_of_buttons: 3)
         render(Primer::Alpha::SegmentedControl.new(full_width: full_width)) do |c|
           Array.new(number_of_buttons || 3) do |i|
-            c.with_button(icon: :zap, selected: i.zero?, icon_only: true) { "Button #{i + 1}" }
+            c.with_button(icon: :zap, selected: i.zero?, icon_only: :always) { "Button #{i + 1}" }
           end
         end
       end
@@ -60,22 +55,6 @@ module Primer
           Array.new(number_of_buttons || 3) do |i|
             c.with_button(icon: :zap, selected: i.zero?, icon_only: :when_narrow) { "Button #{i + 1}" }
           end
-        end
-      end
-
-      private
-
-      # Lookbook won't mix types, so this normalizes the argument to boolean or symbol
-      def icon_only_argument(icon_only)
-        case icon_only
-        when "true"
-          true
-        when "false"
-          false
-        when "when_narrow"
-          :when_narrow
-        else
-          icon_only
         end
       end
     end

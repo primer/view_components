@@ -1,5 +1,5 @@
 <segmented-control>
-  <%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <%= render Primer::BaseComponent.new(tag: :ul, **@system_arguments) do %>
     <% buttons.each do |button| %>
       <li>
         <%= button %>

@@ -32,9 +32,9 @@ module Primer
       #
       # @example With icons only
       #   <%= render(Primer::Alpha::SegmentedControl.new) do |c| %>
-      #     <%= c.with_button(icon: :eye, icon_only: true, selected: true) { "Preview" } %>
-      #     <%= c.with_button(icon: :"file-code", icon_only: true) { "Raw" } %>
-      #     <%= c.with_button(icon: :people, icon_only: true) { "Blame" } %>
+      #     <%= c.with_button(icon: :eye, icon_only: :always, selected: true) { "Preview" } %>
+      #     <%= c.with_button(icon: :"file-code", icon_only: :always) { "Raw" } %>
+      #     <%= c.with_button(icon: :people, icon_only: :always) { "Blame" } %>
       #   <% end %>
       #
       # @example Fill width of parent
@@ -48,7 +48,6 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(full_width: FULL_WIDTH_DEFAULT, **system_arguments)
         @system_arguments = system_arguments
-        @system_arguments[:tag] = "ul"
         @system_arguments[:classes] = class_names(
           "SegmentedControl",
           "SegmentedControl--fullWidth": full_width
