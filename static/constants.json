@@ -38,6 +38,8 @@
       "large"
     ]
   },
+  "Primer::Alpha::HiddenTextExpander": {
+  },
   "Primer::Alpha::Layout": {
     "FIRST_IN_SOURCE_DEFAULT": "sidebar",
     "FIRST_IN_SOURCE_OPTIONS": [
