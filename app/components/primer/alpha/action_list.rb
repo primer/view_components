@@ -10,8 +10,10 @@ module Primer
         end
       }
 
-      renders_many :sections, lambda { |**system_arguments|
-        build_section(**system_arguments)
+      renders_many :groups, lambda { |**system_arguments|
+        build_group(**system_arguments).tap do |group|
+          will_add_group(group)
+        end
       }
 
       def initialize(tag: :ul, role: :list, item_classes: nil, **system_arguments)
@@ -34,12 +36,12 @@ module Primer
         ActionList::Item.new(list: self, **system_arguments)
       end
 
-      def build_section(**system_arguments)
-        ActionList::Section.new(list: self, **system_arguments)
+      def build_group(**system_arguments)
+        ActionList::Group.new(list: self, **system_arguments)
       end
 
       def will_add_item(_item); end
-      def will_add_section(_section); end
+      def will_add_group(_group); end
     end
   end
 end

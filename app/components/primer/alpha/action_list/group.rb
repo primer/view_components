@@ -6,7 +6,7 @@ module Primer
   module Alpha
     class ActionList
       # :nodoc:
-      class Section < Primer::Component
+      class Group < Primer::Component
         attr_reader :id
 
         renders_one :heading, lambda { |**system_arguments|

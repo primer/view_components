@@ -3,14 +3,14 @@
     <% items.each do |item| %>
       <%= item %>
     <% end %>
-    <% unless sections.empty? %>
+    <% unless groups.empty? %>
       <%= render(Primer::Alpha::ActionList::Separator.new) %>
     <% end %>
-    <% sections.each_with_index do |section, idx| %>
+    <% groups.each_with_index do |group, idx| %>
       <% if idx > 0 %>
         <%= render(Primer::Alpha::ActionList::Separator.new) %>
       <% end %>
-      <%= section %>
+      <%= group %>
     <% end %>
   <% end %>
 <% end %>
