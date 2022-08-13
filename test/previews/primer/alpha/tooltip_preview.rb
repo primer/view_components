@@ -14,6 +14,22 @@ module Primer
         end
       end
 
+      # @param tooltip_text text
+      def label_tooltip_on_button_with_existing_labelledby(type: :label, direction: :s, tooltip_text: "Tooltip text")
+        render(Primer::ButtonComponent.new(id: "button-with-existing-label", "aria-labelledby": "existing-label-id")) do |c|
+          c.tooltip(text: tooltip_text, type: type, direction: direction)
+          "Button"
+        end
+      end
+
+      # @param tooltip_text text
+      def description_tooltip_on_button_with_existing_describedby(type: :description, direction: :s, tooltip_text: "Tooltip text")
+        render(Primer::ButtonComponent.new(id: "button-with-existing-description", "aria-describedby": "existing-description-id")) do |c|
+          c.tooltip(text: tooltip_text, type: type, direction: direction)
+          "Button"
+        end
+      end
+
       # @!group Tooltip enabled elements
       # @label Tooltip with Primer::ButtonComponent
       def tooltip_with_button(type: :description, direction: :s, tooltip_text: "Tooltip text")

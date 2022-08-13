@@ -253,7 +253,9 @@ class ToolTipElement extends HTMLElement {
     if (name === 'id' || name === 'data-type') {
       if (!this.id || !this.control) return
       if (this.type === 'label') {
-        this.control.setAttribute('aria-labelledby', this.id)
+        let labelledBy = this.control.getAttribute('aria-labelledby')
+        labelledBy ? (labelledBy = `${labelledBy} ${this.id}`) : (labelledBy = this.id)
+        this.control.setAttribute('aria-labelledby', labelledBy)
         this.setAttribute('aria-hidden', 'true')
       } else {
         let describedBy = this.control.getAttribute('aria-describedby')
