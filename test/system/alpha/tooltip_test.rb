@@ -16,7 +16,7 @@ module Alpha
       visit_preview(:default)
 
       assert_selector("tool-tip.position-absolute.sr-only", visible: :hidden)
-      assert_equal(nil, find("tool-tip", visible: :hidden)["style"]) # position not set on initial load
+      assert_nil(find("tool-tip", visible: :hidden)["style"]) # position not set on initial load
 
       find("button").send_keys("") # sends focus to button
 
@@ -30,7 +30,7 @@ module Alpha
     def test_appears_and_positions_on_hover_of_button
       visit_preview(:default)
 
-      assert_equal(nil, find("tool-tip", visible: :hidden)["style"])
+      assert_nil(find("tool-tip", visible: :hidden)["style"]) # position not set on initial load
       assert_selector("tool-tip.position-absolute.sr-only", visible: :hidden)
 
       find("button").hover
@@ -77,12 +77,13 @@ module Alpha
     def test_never_aria_hidden_when_tooltip_is_description
       visit_preview(:default)
 
-      assert_selector("tool-tip", visible: :hidden)
-      refute_selector("tool-tip[aria-hidden]", visible: :hidden)
+      assert_selector("tool-tip.sr-only", visible: :hidden)
+      refute_selector("tool-tip.sr-only[aria-hidden]", visible: :hidden)
 
       find("button").send_keys("") # focus
 
-      assert_selector("tool-tip", visible: :hidden)
+      refute_selector("tool-tip.sr-only", visible: :hidden)
+      assert_selector("tool-tip", visible: :visible)
       refute_selector("tool-tip[aria-hidden]", visible: :visible)
     end
   end
