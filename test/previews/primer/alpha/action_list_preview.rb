@@ -10,10 +10,10 @@ module Primer
       # @param truncate_label toggle
       # @param href text
       # @param size [Symbol] select [small, medium, large]
-      # @param variant [Symbol] select [default, danger]
+      # @param scheme [Symbol] select [default, danger]
       # @param disabled toggle
       # @param description text
-      # @param description_variant [Symbol] select [inline, block]
+      # @param description_scheme [Symbol] select [inline, block]
       # @param select_mode [Symbol] select [none, single, multiple]
       # @param checked toggle
       # @param active toggle
@@ -30,10 +30,10 @@ module Primer
         truncate_label: false,
         href: nil,
         size: Primer::Alpha::ActionList::Item::DEFAULT_SIZE,
-        variant: Primer::Alpha::ActionList::Item::DEFAULT_VARIANT,
+        scheme: Primer::Alpha::ActionList::Item::DEFAULT_SCHEME,
         disabled: false,
         description: nil,
-        description_variant: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_VARIANT,
+        description_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME,
         select_mode: Primer::Alpha::ActionList::Item::DEFAULT_SELECT_MODE,
         checked: false,
         active: false,
@@ -54,9 +54,9 @@ module Primer
           truncate_label: truncate_label,
           href: href,
           size: size,
-          variant: variant,
+          scheme: scheme,
           disabled: disabled,
-          description_variant: description_variant,
+          description_scheme: description_scheme,
           select_mode: select_mode,
           checked: checked,
           active: active,

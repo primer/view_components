@@ -48,8 +48,6 @@ module Primer
         has_sub_item: false,
         sub_item: false,
         show_on_hover: false,
-        leading_action_button: false,
-        trailing_action_button: false,
         leading_visual_icon: nil,
         leading_visual_avatar_src: nil,
         trailing_visual_icon: nil,
