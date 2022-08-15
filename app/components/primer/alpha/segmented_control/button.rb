@@ -30,6 +30,10 @@ module Primer
           @system_arguments[:'aria-current'] = selected
         end
 
+        def before_render
+          @system_arguments[:'aria-label'] = trimmed_content if @icon_only == :always
+        end
+
         private
 
         def tooltip?
