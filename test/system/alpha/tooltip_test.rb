@@ -86,5 +86,16 @@ module Alpha
       assert_selector("tool-tip", visible: :visible)
       refute_selector("tool-tip[aria-hidden]", visible: :visible)
     end
+
+    def test_does_not_overflow_and_affect_layout
+      visit_preview(:with_right_most_position)
+      tooltip_in_viewport = evaluate_script("(function(el) {
+        return (
+          el.getBoundingClientRect().right <= (window.innerWidth || document.documentElement.clientWidth) + 1
+        );
+      })(arguments[0]);", find("tool-tip", visible: :hidden))
+
+      assert_equal(true, tooltip_in_viewport)
+    end
   end
 end
