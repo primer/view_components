@@ -49,6 +49,7 @@ module Primer
       def initialize(full_width: FULL_WIDTH_DEFAULT, **system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:classes] = class_names(
+          system_arguments[:classes],
           "SegmentedControl",
           "SegmentedControl--fullWidth": full_width
         )

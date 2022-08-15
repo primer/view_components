@@ -24,6 +24,7 @@ module Primer
 
           @system_arguments[:id] ||= "segmented-control-button-#{SecureRandom.hex(4)}" if tooltip?
           @system_arguments[:classes] = class_names(
+            system_arguments[:classes],
             "SegmentedControl-button",
             ICON_ONLY_MAPPINGS[@icon_only]
           )
