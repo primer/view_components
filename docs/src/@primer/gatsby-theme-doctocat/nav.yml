@@ -58,7 +58,7 @@
   - title: Heading
     url: "/components/beta/heading"
   - title: HiddenTextExpander
-    url: "/components/hiddentextexpander"
+    url: "/components/alpha/hiddentextexpander"
   - title: IconButton
     url: "/components/iconbutton"
   - title: Image

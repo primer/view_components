@@ -67,7 +67,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::Flash, {}],
     [Primer::FlexItemComponent, { flex_auto: true }],
     [Primer::Beta::Heading, { tag: :h1 }],
-    [Primer::HiddenTextExpander, { "aria-label": "No action" }],
+    [Primer::Alpha::HiddenTextExpander, { "aria-label": "No action" }],
     [Primer::LabelComponent, {}],
     [Primer::LayoutComponent, {}],
     [Primer::LinkComponent, { href: "https://www.google.com" }],
@@ -94,6 +94,7 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::HiddenTextExpander",
       "Primer::HeadingComponent",
       "Primer::ButtonGroup",
       "Primer::CloseButton",

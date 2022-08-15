@@ -29,7 +29,8 @@
     "prepare": "rm -rf docs/static && mkdir -p docs/static && tsc && rollup -c && cp app/assets/javascripts/primer_view_components.js docs/static/primer_view_components.js",
     "lint": "eslint 'app/components/**/*.ts' demo/.storybook",
     "lint:fix": "eslint 'app/components/**/*.ts' demo/.storybook --fix",
-    "changeset:version": "changeset version && script/version"
+    "changeset:version": "changeset version && script/version",
+    "build:js": "tsc && rollup -c"
   },
   "dependencies": {
     "@github/auto-complete-element": "^3.3.4",
