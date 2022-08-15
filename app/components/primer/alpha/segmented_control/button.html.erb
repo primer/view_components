@@ -6,4 +6,4 @@
     <% end %>
   </div>
 <% end %>
-<%= render Primer::Alpha::Tooltip.new(direction: :n, hide: @icon_only == :when_narrow ? :whenRegular : nil, type: :description, for_id: @system_arguments[:id], text: trimmed_content) if tooltip? %>
+<%= render Primer::Alpha::Tooltip.new(direction: :n, hide: @icon_only == :when_narrow ? :whenRegular : nil, type: :description, for_id: @system_arguments[:id], type: :label, text: trimmed_content) if tooltip? %>
