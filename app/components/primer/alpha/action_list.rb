@@ -4,6 +4,9 @@ module Primer
   module Alpha
     # :nodoc:
     class ActionList < Primer::Component
+      DEFAULT_ROLE = :list
+      DEFAULT_TAG = :ul
+
       renders_many :items, lambda { |**system_arguments|
         build_item(**system_arguments, root: nil).tap do |item|
           will_add_item(item)
@@ -16,14 +19,10 @@ module Primer
         end
       }
 
-      def initialize(tag: :ul, role: :list, item_classes: nil, **system_arguments)
+      def initialize(tag: DEFAULT_TAG, role: DEFAULT_ROLE, item_classes: nil, **system_arguments)
         @system_arguments = system_arguments
         @system_arguments[:tag] = tag
-
-        @list_arguments = {
-          role: role
-        }
-
+        @system_arguments[:role] = role
         @item_classes = item_classes
       end
 

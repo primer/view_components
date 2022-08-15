@@ -1,16 +1,14 @@
 <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
-  <%= render(Primer::BaseComponent.new(tag: :ul, **@list_arguments)) do %>
-    <% items.each do |item| %>
-      <%= item %>
-    <% end %>
-    <% unless groups.empty? %>
+  <% items.each do |item| %>
+    <%= item %>
+  <% end %>
+  <% unless groups.empty? %>
+    <%= render(Primer::Alpha::ActionList::Separator.new) %>
+  <% end %>
+  <% groups.each_with_index do |group, idx| %>
+    <% if idx > 0 %>
       <%= render(Primer::Alpha::ActionList::Separator.new) %>
     <% end %>
-    <% groups.each_with_index do |group, idx| %>
-      <% if idx > 0 %>
-        <%= render(Primer::Alpha::ActionList::Separator.new) %>
-      <% end %>
-      <%= group %>
-    <% end %>
+    <%= group %>
   <% end %>
 <% end %>
