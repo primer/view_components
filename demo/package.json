@@ -23,7 +23,7 @@
     "storybook": "start-storybook -p 5000",
     "build-storybook": "build-storybook -o public/view-components/stories --preview-url=/view-components/stories/iframe.html --force-build-preview",
     "build": "yarn build-storybook",
-    "postinstall": "cp node_modules/@primer/css/dist/primer.css app/assets/stylesheets"
+    "postinstall": "cp node_modules/@primer/css/dist/primer.css app/assets/stylesheets && cp ../app/assets/styles/*.css app/assets/stylesheets/"
   },
   "engines": {
     "yarn": "1.22.x"
