@@ -33,7 +33,7 @@
     "lint:fix": "eslint 'app/components/**/*.ts' demo/.storybook --fix",
     "changeset:version": "changeset version && script/version",
     "build:js": "tsc && rollup -c",
-    "build:css": "postcss -c css.config.js -o app/assets/styles/primer_view_components.css app/components/primer/primer.css"
+    "build:css": "postcss -o app/assets/styles/primer_view_components.css app/components/primer/primer.css"
   },
   "dependencies": {
     "@github/auto-complete-element": "^3.3.4",
