@@ -4,14 +4,14 @@ export default class SegmentedControlElement extends HTMLElement {
     super()
 
     this.addEventListener('click', (event: MouseEvent) => {
-      const controls = Array.from(this.querySelectorAll<HTMLElement>('ul button')).filter(
+      const controls = Array.from(this.querySelectorAll<HTMLElement>('ul li')).filter(
         tab => tab instanceof HTMLElement && tab.closest(this.tagName) === this
       ) as HTMLElement[]
 
       if (!(event.target instanceof Element)) return
       if (event.target.closest(this.tagName) !== this) return
 
-      const selectedControl = event.target.closest('button')
+      const selectedControl = event.target.closest('li')
       if (!(selectedControl instanceof HTMLElement) || !selectedControl.closest('ul')) return
 
       for (const control of controls) {

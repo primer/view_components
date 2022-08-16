@@ -1,9 +1,11 @@
-<%= render Primer::Beta::BaseButton.new(tag: :button, **@system_arguments) do %>
-  <div class="SegmentedControl-content">
-    <%= render Primer::OcticonComponent.new(@icon, classes: "SegmentedControl-leadingVisual") unless @icon.nil? %>
-    <% unless @icon_only == :always %>
-      <span class="SegmentedControl-text" data-content="<%= trimmed_content %>"><%= trimmed_content %></span>
-    <% end %>
-  </div>
-<% end %>
-<%= render Primer::Alpha::Tooltip.new(direction: :n, hide: @icon_only == :when_narrow ? :whenRegular : nil, type: :description, for_id: @system_arguments[:id], type: :label, text: trimmed_content) if tooltip? %>
+<li class="SegmentedControl-item" role="listitem" aria-current="<%= @selected %>">
+  <%= render Primer::Beta::BaseButton.new(tag: :button, **@system_arguments) do %>
+    <div class="SegmentedControl-content">
+      <%= render Primer::OcticonComponent.new(@icon, classes: "SegmentedControl-leadingVisual") unless @icon.nil? %>
+      <% unless @icon_only == :always %>
+        <span class="SegmentedControl-text" data-content="<%= trimmed_content %>"><%= trimmed_content %></span>
+      <% end %>
+    </div>
+  <% end %>
+  <%= render Primer::Alpha::Tooltip.new(direction: :n, hide: @icon_only == :when_narrow ? :whenRegular : nil, type: :description, for_id: @system_arguments[:id], type: :label, text: trimmed_content) if tooltip? %>
+</li>
