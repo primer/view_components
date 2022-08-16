@@ -87,6 +87,7 @@
 - ".SegmentedControl-button"
 - ".SegmentedControl-button--iconOnly"
 - ".SegmentedControl-content"
+- ".SegmentedControl-item"
 - ".SegmentedControl-leadingVisual"
 - ".SegmentedControl-text"
 - ".State"
