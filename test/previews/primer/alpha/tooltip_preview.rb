@@ -44,6 +44,18 @@ module Primer
         )
       end
 
+      # @param direction select [s, n, e, w, ne, nw, se, sw]
+      # @param tooltip_text text
+      def with_multiple_on_a_page(type: :description, direction: :s, tooltip_text: "Tooltip text")
+        render_with_template(
+          locals: {
+            type: type,
+            direction: direction,
+            tooltip_text: tooltip_text
+          }
+        )
+      end
+
       # @!group Tooltip enabled elements
       # @label Tooltip with Primer::ButtonComponent
       def tooltip_with_button(type: :description, direction: :s, tooltip_text: "Tooltip text")

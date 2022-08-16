@@ -97,5 +97,25 @@ module Alpha
 
       assert_equal(true, tooltip_in_viewport)
     end
+
+    def test_only_one_visible_at_a_time
+      visit_preview(:with_multiple_on_a_page)
+
+      assert_selector("tool-tip.sr-only[for='button-1']", visible: :hidden)
+      assert_selector("tool-tip.sr-only[for='button-2']", visible: :hidden)
+      assert_selector("tool-tip.sr-only[for='button-3']", visible: :hidden)
+
+      find("button#button-1").send_keys("") # focus
+
+      assert_selector("tool-tip[for='button-1']", visible: :visible)
+      assert_selector("tool-tip.sr-only[for='button-2']", visible: :hidden)
+      assert_selector("tool-tip.sr-only[for='button-3']", visible: :hidden)
+
+      find("button#button-2").hover
+
+      assert_selector("tool-tip.sr-only[for='button-1']", visible: :hidden)
+      assert_selector("tool-tip[for='button-2']", visible: :visible)
+      assert_selector("tool-tip.sr-only[for='button-3']", visible: :hidden)
+    end
   end
 end
