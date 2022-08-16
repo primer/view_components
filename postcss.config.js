@@ -12,6 +12,6 @@ module.exports = {
         'nesting-rules': true
       }
     }),
-    // require('cssnano'),
+    require('cssnano'),
   ],
 };
