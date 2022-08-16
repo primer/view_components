@@ -201,10 +201,10 @@ module Primer
             @content_arguments[:tag] = :button
             @content_arguments[:"aria-expanded"] = expanded?.to_s
             # Apply click handler to .ActionList-content button element, enables toggle behavior
-            @content_arguments[:"data-action"] = "click:action-list#handleItemWithSubItemClick"
+            @content_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemWithSubItemClick"
             # Apply click handler to .ActionList-item li element, enables highlight behavior
 
-            @system_arguments[:"data-action"] = "click:action-list#handleItemClick"
+            @system_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemClick"
 
             @system_arguments[:classes] = class_names(
               @system_arguments[:classes],

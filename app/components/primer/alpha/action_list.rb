@@ -7,6 +7,14 @@ module Primer
       DEFAULT_ROLE = :list
       DEFAULT_TAG = :ul
 
+      def self.custom_element_name
+        @custom_element_name ||= name.split("::").last.underscore.dasherize
+      end
+
+      def custom_element_name
+        self.class.custom_element_name
+      end
+
       renders_many :items, lambda { |**system_arguments|
         build_item(**system_arguments, root: nil).tap do |item|
           will_add_item(item)
