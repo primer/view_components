@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 0.0.91
+
+### Patch Changes
+
+- [#1280](https://github.com/primer/view_components/pull/1280) [`1337cd47`](https://github.com/primer/view_components/commit/1337cd471cb26eda8813ec7c508a0f19e7d0309b) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - moving Primer::DetailsComponent to Primer::Beta::Details, and replacing the original with a deprecated component for backward compatibility
+
+* [#1303](https://github.com/primer/view_components/pull/1303) [`16204453`](https://github.com/primer/view_components/commit/1620445358b7dbc482fa371ac9df8a221f00ca90) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - moving Primer::Alpha::HiddenTextExpander to Primer::Alpha::HiddenTextExpander and replacing the original with a deprecated version
+
+- [#1314](https://github.com/primer/view_components/pull/1314) [`9aef2dcb`](https://github.com/primer/view_components/commit/9aef2dcb4164e0a92f160c49ab40dd74fb24c8ff) Thanks [@camertron](https://github.com/camertron)! - Instruct terser to not mangle class names so Catalyst works
+
+* [#1306](https://github.com/primer/view_components/pull/1306) [`5e9003eb`](https://github.com/primer/view_components/commit/5e9003eb32740c7a18864f2e6d7d51642e31d615) Thanks [@khiga8](https://github.com/khiga8)! - Update docs to discourage standalone tooltip use.
+
+- [#1308](https://github.com/primer/view_components/pull/1308) [`b773b71c`](https://github.com/primer/view_components/commit/b773b71cbcecc20c04a835efc24e0dca0995b118) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Update ViewComponent dependency to fix failing integration tests.
+
+* [#1297](https://github.com/primer/view_components/pull/1297) [`c684d071`](https://github.com/primer/view_components/commit/c684d0718b571d47cd508f3865237743c48172ee) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - migrating Primer::HeadingComponent to Primer::Beta::Heading, and replacing original with deprecated version
+
+- [#1316](https://github.com/primer/view_components/pull/1316) [`6241f130`](https://github.com/primer/view_components/commit/6241f1307f4b46cce23981b5a1916c424a700d4c) Thanks [@jonrohan](https://github.com/jonrohan)! - Creating a primer_view_components.css bundle that will ship with the npm package
+
 ## 0.0.90
 
 ### Patch Changes
