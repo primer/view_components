@@ -21,7 +21,6 @@ module Primer
           # Icons
           @icon = icon
           @icon_only = fetch_or_fallback(ICON_ONLY_OPTIONS, icon_only, ICON_ONLY_DEFAULT)
-          @selected = selected
 
           @system_arguments[:id] ||= "segmented-control-button-#{SecureRandom.hex(4)}" if tooltip?
           @system_arguments[:classes] = class_names(
@@ -29,6 +28,9 @@ module Primer
             "SegmentedControl-button",
             ICON_ONLY_MAPPINGS[@icon_only]
           )
+
+          @selected = selected
+          @system_arguments[:"aria-current"] = selected
         end
 
         private
