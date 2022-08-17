@@ -3,6 +3,7 @@
 module Primer
   # Use `IconButton` to render Icon-only buttons without the default button styles.
   #
+  # `IconButton` will always render with a tooltip unless the tag is `:summary`.
   # @accessibility
   #   `IconButton` requires an `aria-label`, which will provide assistive technologies with an accessible label.
   #   The `aria-label` should describe the action to be invoked rather than the icon itself. For instance,
