@@ -4,8 +4,6 @@ module.exports = {
   },
   plugins: [
     require('postcss-import'),
-    // require('autoprefixer'),
-    // require('postcss-mixins'),
     require('postcss-preset-env')({
       stage: 3,
       // https://preset-env.cssdb.org/

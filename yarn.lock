@@ -931,11 +931,6 @@ callsites@^3.0.0:
   resolved "https://registry.npmjs.org/callsites/-/callsites-3.1.0.tgz"
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
 
-camelcase-css@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/camelcase-css/-/camelcase-css-2.0.1.tgz#ee978f6947914cc30c6b44741b6ed1df7f043fd5"
-  integrity sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==
-
 camelcase-keys@^6.2.2:
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/camelcase-keys/-/camelcase-keys-6.2.2.tgz#5e755d6ba51aa223ec7d3d52f25778210f9dc3c0"
@@ -3194,13 +3189,6 @@ postcss-initial@^4.0.1:
   resolved "https://registry.yarnpkg.com/postcss-initial/-/postcss-initial-4.0.1.tgz#529f735f72c5724a0fb30527df6fb7ac54d7de42"
   integrity sha512-0ueD7rPqX8Pn1xJIjay0AZeIuDoF+V+VvMt/uOnn+4ezUKhZM/NokDeP6DwMNyIoYByuN/94IQnt5FEkaN59xQ==
 
-postcss-js@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-js/-/postcss-js-4.0.0.tgz#31db79889531b80dc7bc9b0ad283e418dce0ac00"
-  integrity sha512-77QESFBwgX4irogGVPgQ5s07vLvFqWr228qZY+w6lW599cRlK/HmnlivnnVUxkjHnCu4J16PDMHcH+e+2HbvTQ==
-  dependencies:
-    camelcase-css "^2.0.1"
-
 postcss-lab-function@^4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/postcss-lab-function/-/postcss-lab-function-4.2.1.tgz#6fe4c015102ff7cd27d1bd5385582f67ebdbdc98"
@@ -3276,16 +3264,6 @@ postcss-minify-selectors@^5.2.1:
   integrity sha512-nPJu7OjZJTsVUmPdm2TcaiohIwxP+v8ha9NehQ2ye9szv4orirRU3SDdtUmKH+10nzn0bAyOXZ0UEr7OpvLehg==
   dependencies:
     postcss-selector-parser "^6.0.5"
-
-postcss-mixins@^9.0.3:
-  version "9.0.3"
-  resolved "https://registry.yarnpkg.com/postcss-mixins/-/postcss-mixins-9.0.3.tgz#21a41d30fa53213642d000520237db82313d1a11"
-  integrity sha512-99r5oYtK38cAdGKNYumVHs84u2G6SfbjWo7HCDF6Mxr0o2lFdnRRYwTl6DTqmfRpRvWAUlgav2iJv0fLXZjDKQ==
-  dependencies:
-    fast-glob "^3.2.11"
-    postcss-js "^4.0.0"
-    postcss-simple-vars "^6.0.3"
-    sugarss "^4.0.1"
 
 postcss-nesting@^10.1.10:
   version "10.1.10"
@@ -3494,11 +3472,6 @@ postcss-selector-parser@^6.0.10, postcss-selector-parser@^6.0.4, postcss-selecto
   dependencies:
     cssesc "^3.0.0"
     util-deprecate "^1.0.2"
-
-postcss-simple-vars@^6.0.3:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/postcss-simple-vars/-/postcss-simple-vars-6.0.3.tgz#e66516c7fe980da3498f4a8ad400b9c53861806c"
-  integrity sha512-fkNn4Zio8vN4vIig9IFdb8lVlxWnYR769RgvxCM6YWlFKie/nQaOcaMMMFz/s4gsfHW4/5bJW+i57zD67mQU7g==
 
 postcss-svgo@^5.1.0:
   version "5.1.0"
@@ -3990,11 +3963,6 @@ stylehacks@^5.1.0:
   dependencies:
     browserslist "^4.16.6"
     postcss-selector-parser "^6.0.4"
-
-sugarss@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/sugarss/-/sugarss-4.0.1.tgz#128a783ed71ee0fc3b489ce1f7d5a89bc1e24383"
-  integrity sha512-WCjS5NfuVJjkQzK10s8WOBY+hhDxxNt/N6ZaGwxFZ+wN3/lKKFSaaKUNecULcTTvE4urLcKaZFQD8vO0mOZujw==
 
 supports-color@8.1.1:
   version "8.1.1"
