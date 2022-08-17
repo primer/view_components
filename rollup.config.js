@@ -13,7 +13,7 @@ export default {
   plugins: [
     resolve(),
     typescript(),
-    terser()
+    terser({keep_classnames: /Element$/})
   ],
   onwarn: (warning, warn) => {
     if (warning.code === "THIS_IS_UNDEFINED") return
