@@ -5,7 +5,6 @@ require_relative "form_test_component"
 
 class Primer::Forms::FormsTest < Minitest::Test
   include Primer::ComponentTestHelpers
-  include ViewComponent::RenderPreviewHelper
 
   class DeepThought
     if Rails::VERSION::STRING < "7.0"
