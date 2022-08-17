@@ -107,6 +107,8 @@
     url: "/components/timeago"
   - title: TimelineItem
     url: "/components/timelineitem"
+  - title: Tooltip
+    url: "/components/alpha/tooltip"
   - title: Truncate
     url: "/components/beta/truncate"
   - title: UnderlineNav
