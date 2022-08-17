@@ -19,7 +19,7 @@ Rails.application.configure do
   # Enable server timing
   config.server_timing = true
 
-  config.hotwire_livereload.listen_paths << "/workspaces/css/src/"
+  config.hotwire_livereload.listen_paths << "/workspaces/css/src/" if File.exist?("/workspaces/css/src")
   config.hotwire_livereload.listen_paths << Rails.root.join("../app/assets/javascripts")
   config.hotwire_livereload.force_reload_paths << Rails.root.join("../app/assets/javascripts")
 
