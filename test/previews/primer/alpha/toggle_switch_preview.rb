@@ -37,6 +37,14 @@ module Primer
       def with_no_src
         render(ToggleSwitch.new)
       end
+
+      def with_csrf_token
+        render(ToggleSwitch.new(src: "/toggle_switch", csrf_token: "let_me_in"))
+      end
+
+      def with_bad_csrf_token
+        render(ToggleSwitch.new(src: "/toggle_switch", csrf_token: "i_am_a_criminal"))
+      end
     end
   end
 end

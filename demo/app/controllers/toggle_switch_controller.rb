@@ -6,6 +6,18 @@ class ToggleSwitchController < ApplicationController
 
   def create
     sleep 1 unless Rails.env.test?
+
+    if params[:authenticity_token] && params[:authenticity_token] != "let_me_in"
+      head :unauthorized
+      return
+    end
+
     head :accepted
+  end
+
+  private
+
+  def form_params
+    params.permit(:value, :authenticity_token)
   end
 end

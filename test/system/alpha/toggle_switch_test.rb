@@ -28,5 +28,21 @@ module Alpha
       find("toggle-switch").click
       assert_selector(".ToggleSwitch--checked")
     end
+
+    def test_csrf_token
+      visit_preview(:with_csrf_token)
+
+      refute_selector(".ToggleSwitch--checked")
+      find("toggle-switch").click
+      assert_selector(".ToggleSwitch--checked")
+    end
+
+    def test_bad_csrf_token
+      visit_preview(:with_bad_csrf_token)
+
+      refute_selector(".ToggleSwitch--checked")
+      find("toggle-switch").click
+      assert_selector("[data-target='toggle-switch.errorIcon']")
+    end
   end
 end
