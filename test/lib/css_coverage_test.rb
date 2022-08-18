@@ -23,7 +23,9 @@ class CssCoverageTest < Minitest::Test
       # used to showcase custom classes in component docs
       ".custom-class",
       ".f00",
-      "."
+      ".",
+      ".SegmentedControl-item",
+      ".SegmentedControl-item--selected"
     ]
 
     @css_data =
