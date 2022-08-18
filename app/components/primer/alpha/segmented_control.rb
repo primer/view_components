@@ -37,6 +37,13 @@ module Primer
       #     <%= c.with_button(icon: :people, icon_only: :always) { "Blame" } %>
       #   <% end %>
       #
+      # @example With icons only when narrow
+      #   <%= render(Primer::Alpha::SegmentedControl.new) do |c| %>
+      #     <%= c.with_button(icon: :eye, icon_only: :when_narrow, selected: true) { "Preview" } %>
+      #     <%= c.with_button(icon: :"file-code", icon_only: :when_narrow) { "Raw" } %>
+      #     <%= c.with_button(icon: :people, icon_only: :when_narrow) { "Blame" } %>
+      #   <% end %>
+      #
       # @example Fill width of parent
       #   <%= render(Primer::Alpha::SegmentedControl.new(full_width: true)) do |c| %>
       #     <%= c.with_button(icon: :eye, selected: true) { "Preview" } %>
