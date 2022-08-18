@@ -33,6 +33,10 @@ module Primer
       def with_a_bad_src
         render(ToggleSwitch.new(src: "/foo"))
       end
+
+      def with_no_src
+        render(ToggleSwitch.new)
+      end
     end
   end
 end
