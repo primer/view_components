@@ -6,7 +6,6 @@ module Primer
   module Alpha
     class SegmentedControlTest < Minitest::Test
       include Primer::ComponentTestHelpers
-      include ViewComponent::RenderPreviewHelper
 
       def test_renders
         render_preview(:default)
