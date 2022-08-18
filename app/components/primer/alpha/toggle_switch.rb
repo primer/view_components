@@ -67,10 +67,10 @@ module Primer
 
         @system_arguments[:src] = @src if @src
 
-        if @src && @csrf_token
-          @system_arguments[:data] ||= {}
-          @system_arguments[:data][:csrf] = @csrf_token
-        end
+        return unless @src && @csrf_token
+
+        @system_arguments[:data] ||= {}
+        @system_arguments[:data][:csrf] = @csrf_token
       end
 
       def on?
