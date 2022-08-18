@@ -14,12 +14,12 @@
   border: var(--primer-borderWidth-thin, max(1px, 0.0625rem)) solid transparent;
   border-radius: var(--primer-borderRadius-medium, 6px);
 
-  &:hover .SegmentedControl-content {
+  &:not(.SegmentedControl-item--selected):hover .SegmentedControl-content {
     background-color: var(--color-segmented-control-button-hover-bg);
     transition-duration: var(--primer-duration-fast, 80ms);
   }
 
-  &:active .SegmentedControl-content {
+  &:not(.SegmentedControl-item--selected):active .SegmentedControl-content {
     background-color: var(--color-segmented-control-button-active-bg);
     transition-duration: 0;
   }
