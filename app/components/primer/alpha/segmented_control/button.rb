@@ -15,6 +15,10 @@ module Primer
         }.freeze
         ICON_ONLY_OPTIONS = ICON_ONLY_MAPPINGS.keys
 
+        # @param icon [Symbol] Octicons icon name
+        # @param selected [Boolean] whether the button is selected
+        # @param icon_only [Symbol] <%= one_of(Primer::Alpha::SegmentedControl::Button::ICON_ONLY_OPTIONS) %>
+        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(icon: nil, icon_only: ICON_ONLY_DEFAULT, selected: false, **system_arguments)
           @system_arguments = system_arguments
 
