@@ -5,8 +5,6 @@ module Primer
     # The ToggleSwitch component is a button that toggles between two boolean states. It is meant to be used for
     # settings that should cause an immediate update.
     class ToggleSwitch < Primer::Component
-      warn_on_deprecated_slot_setter
-
       SIZE_DEFAULT = :medium
       SIZE_MAPPINGS = {
         SIZE_DEFAULT => nil,
