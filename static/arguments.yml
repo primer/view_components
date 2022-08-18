@@ -22,21 +22,6 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: HiddenTextExpander
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/hidden_text_expander.rb
-  parameters:
-  - name: inline
-    type: Boolean
-    default: "`false`"
-    description: Whether or not the expander is inline.
-  - name: button_arguments
-    type: Hash
-    default: "`{}`"
-    description: "[System arguments](/system-arguments) for the button element."
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
 - component: Dialog
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog.rb
   parameters:
@@ -53,16 +38,31 @@
     default: "`nil`"
     description: The subtitle of the dialog. This will also set the `aria-describedby`
       attribute.
-  - name: role
-    type: String
-    default: '`"dialog"`'
-    description: The role of the dialog, defaults to `dialog`, but could also be set
-      to `alertdialog`.
   - name: width
     type: Symbol
     default: "`:medium`"
     description: The width of the dialog. One of `:large`, `:medium`, `:small`, `:xlarge`,
       or `:xxlarge`.
+  - name: height
+    type: Symbol
+    default: "`:auto`"
+    description: The height of the dialog. One of `:auto`, `:large`, `:small`, or
+      `:xlarge`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: HiddenTextExpander
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/hidden_text_expander.rb
+  parameters:
+  - name: inline
+    type: Boolean
+    default: "`false`"
+    description: Whether or not the expander is inline.
+  - name: button_arguments
+    type: Hash
+    default: "`{}`"
+    description: "[System arguments](/system-arguments) for the button element."
   - name: system_arguments
     type: Hash
     default: N/A
