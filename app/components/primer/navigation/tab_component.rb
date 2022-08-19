@@ -57,37 +57,37 @@ module Primer
 
       # Counter to be rendered in the Tab right.
       #
-      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::CounterComponent) %>.
-      renders_one :counter, Primer::CounterComponent
+      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Counter) %>.
+      renders_one :counter, Primer::Beta::Counter
 
       attr_reader :selected
 
       # @example Default
       #   <%= render(Primer::Navigation::TabComponent.new(selected: true)) do |c| %>
-      #     <% c.text { "Selected" } %>
+      #     <% c.with_text { "Selected" } %>
       #   <% end %>
       #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
-      #     <% c.text { "Not selected" } %>
+      #     <% c.with_text { "Not selected" } %>
       #   <% end %>
       #
       # @example With icons and counters
       #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
-      #     <% c.icon(:star) %>
-      #     <% c.text { "Tab" } %>
+      #     <% c.with_icon(:star) %>
+      #     <% c.with_text { "Tab" } %>
       #   <% end %>
       #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
-      #     <% c.icon(:star) %>
-      #     <% c.text { "Tab" } %>
-      #     <% c.counter(count: 10) %>
+      #     <% c.with_icon(:star) %>
+      #     <% c.with_text { "Tab" } %>
+      #     <% c.with_counter(count: 10) %>
       #   <% end %>
       #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
-      #     <% c.text { "Tab" } %>
-      #     <% c.counter(count: 10) %>
+      #     <% c.with_text { "Tab" } %>
+      #     <% c.with_counter(count: 10) %>
       #   <% end %>
       #
       # @example Inside a list
       #   <%= render(Primer::Navigation::TabComponent.new(list: true)) do |c| %>
-      #     <% c.text { "Tab" } %>
+      #     <% c.with_text { "Tab" } %>
       #   <% end %>
       #
       # @example With custom HTML

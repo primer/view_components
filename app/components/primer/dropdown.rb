@@ -25,11 +25,11 @@ module Primer
 
     # @example Default
     #   <%= render(Primer::Dropdown.new) do |c| %>
-    #     <% c.button do %>
+    #     <% c.with_button do %>
     #       Dropdown
     #     <% end %>
     #
-    #     <% c.menu(header: "Options") do |menu|
+    #     <% c.with_menu(header: "Options") do |menu|
     #       menu.item { "Item 1" }
     #       menu.item { "Item 2" }
     #       menu.item { "Item 3" }
@@ -42,11 +42,11 @@ module Primer
     #     Dividers can be used to separate a group of items. They don't have any content.
     #   @code
     #     <%= render(Primer::Dropdown.new) do |c| %>
-    #       <% c.button do %>
+    #       <% c.with_button do %>
     #         Dropdown
     #       <% end %>
     #
-    #       <% c.menu(header: "Options") do |menu|
+    #       <% c.with_menu(header: "Options") do |menu|
     #         menu.item { "Item 1" }
     #         menu.item { "Item 2" }
     #         menu.item(divider: true)
@@ -60,11 +60,11 @@ module Primer
     #
     # @example With direction
     #   <%= render(Primer::Dropdown.new(display: :inline_block)) do |c| %>
-    #     <% c.button do %>
+    #     <% c.with_button do %>
     #       Dropdown
     #     <% end %>
     #
-    #     <% c.menu(header: "Options", direction: :s) do |menu|
+    #     <% c.with_menu(header: "Options", direction: :s) do |menu|
     #       menu.item { "Item 1" }
     #       menu.item { "Item 2" }
     #       menu.item { "Item 3" }
@@ -74,11 +74,11 @@ module Primer
     #
     # @example With caret
     #   <%= render(Primer::Dropdown.new(with_caret: true)) do |c| %>
-    #     <% c.button do %>
+    #     <% c.with_button do %>
     #       Dropdown
     #     <% end %>
     #
-    #     <% c.menu(header: "Options") do |menu|
+    #     <% c.with_menu(header: "Options") do |menu|
     #       menu.item { "Item 1" }
     #       menu.item { "Item 2" }
     #       menu.item { "Item 3" }
@@ -88,11 +88,11 @@ module Primer
     #
     # @example Customizing the button
     #   <%= render(Primer::Dropdown.new) do |c| %>
-    #     <% c.button(scheme: :primary, size: :small) do %>
+    #     <% c.with_button(scheme: :primary, size: :small) do %>
     #       Dropdown
     #     <% end %>
     #
-    #     <% c.menu(header: "Options") do |menu|
+    #     <% c.with_menu(header: "Options") do |menu|
     #       menu.item { "Item 1" }
     #       menu.item { "Item 2" }
     #       menu.item { "Item 3" }
@@ -102,11 +102,11 @@ module Primer
     #
     # @example Menu as list
     #   <%= render(Primer::Dropdown.new) do |c| %>
-    #     <% c.button do %>
+    #     <% c.with_button do %>
     #       Dropdown
     #     <% end %>
     #
-    #     <% c.menu(as: :list, header: "Options") do |menu|
+    #     <% c.with_menu(as: :list, header: "Options") do |menu|
     #       menu.item { "Item 1" }
     #       menu.item { "Item 2" }
     #       menu.item(divider: true)
@@ -117,18 +117,18 @@ module Primer
     #
     # @example Customizing menu items
     #   <%= render(Primer::Dropdown.new) do |c| %>
-    #     <% c.button do %>
+    #     <% c.with_button do %>
     #       Dropdown
     #     <% end %>
     #
-    #     <% c.menu(header: "Options") do |menu|
+    #     <% c.with_menu(header: "Options") do |menu|
     #       menu.item(tag: :button) { "Item 1" }
     #       menu.item(classes: "custom-class") { "Item 2" }
     #       menu.item { "Item 3" }
     #     end %>
     #   <% end %>
     #
-    # @param overlay [Symbol] <%= one_of(Primer::DetailsComponent::OVERLAY_MAPPINGS.keys) %>
+    # @param overlay [Symbol] <%= one_of(Primer::Beta::Details::OVERLAY_MAPPINGS.keys) %>
     # @param with_caret [Boolean] Whether or not a caret should be rendered in the button.
     # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     def initialize(overlay: :default, with_caret: false, **system_arguments)

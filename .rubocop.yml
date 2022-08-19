@@ -12,7 +12,8 @@ AllCops:
     - "demo/**/*"
     - "**/vendor/**/*"
     - "**/node_modules/**/*"
-  TargetRubyVersion: 2.5
+    - "test/previews/primer/docs/**/*"
+  TargetRubyVersion: 2.6
 
 Style/ClassAndModuleChildren:
   Enabled: true
@@ -79,3 +80,8 @@ Primer/ComponentNameMigration:
 
 Primer/DeprecatedComponents:
   Enabled: false
+
+Primer/DeprecatedLabelVariants:
+  Enabled: true
+  Exclude:
+    - "test/**/*"

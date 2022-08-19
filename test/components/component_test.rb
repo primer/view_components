@@ -12,7 +12,6 @@ class PrimerComponentTest < Minitest::Test
       component.sidebar(tag: :div) { "Bar" }
     }],
     [Primer::HellipButton, { "aria-label": "No action" }],
-    [Primer::Alpha::BorderBox::Header, {}],
     [Primer::Alpha::TabPanels, { label: "label" }],
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
@@ -20,28 +19,32 @@ class PrimerComponentTest < Minitest::Test
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
+    [Primer::Alpha::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
+    [Primer::Alpha::AutoComplete::Item, { value: "Foo" }],
     [Primer::Beta::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
     [Primer::Beta::AutoComplete::Item, { value: "Foo" }],
     [Primer::Beta::Avatar, { alt: "github", src: "https://github.com/github.png" }],
     [Primer::Beta::AvatarStack, {}, lambda do |component|
       component.avatar(alt: "github", src: "https://github.com/github.png")
     end],
-    [Primer::BaseButton, {}],
+    [Primer::Beta::BaseButton, {}],
     [Primer::BaseComponent, { tag: :div }],
-    [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::Beta::Blankslate, {}, proc { |component|
       component.heading(tag: :h2) { "Foo" }
     }],
-    [Primer::BorderBoxComponent, {}, proc { |component| component.header { "Foo" } }],
-    [Primer::BoxComponent, {}],
+    [Primer::Beta::BorderBox, {}, proc { |component| component.header { "Foo" } }],
+    [Primer::Beta::BorderBox::Header, {}],
+    [Primer::BlankslateComponent, { title: "Foo" }],
+    [Primer::Box, {}],
     [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
     [Primer::ButtonComponent, {}, proc { "Button" }],
-    [Primer::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
+    [Primer::Beta::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
     [Primer::Alpha::ButtonMarketing, {}],
     [Primer::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
-    [Primer::CloseButton, {}],
-    [Primer::CounterComponent, { count: 1 }],
-    [Primer::DetailsComponent, {}, lambda do |component|
+    [Primer::ConditionalWrapper, { condition: true, tag: :div }],
+    [Primer::Beta::CloseButton, {}],
+    [Primer::Beta::Counter, { count: 1 }],
+    [Primer::Beta::Details, {}, lambda do |component|
       component.summary { "Foo" }
       component.body { "Bar" }
     end],
@@ -56,8 +59,8 @@ class PrimerComponentTest < Minitest::Test
     [Primer::FlexComponent, {}],
     [Primer::Beta::Flash, {}],
     [Primer::FlexItemComponent, { flex_auto: true }],
-    [Primer::HeadingComponent, { tag: :h1 }],
-    [Primer::HiddenTextExpander, { "aria-label": "No action" }],
+    [Primer::Beta::Heading, { tag: :h1 }],
+    [Primer::Alpha::HiddenTextExpander, { "aria-label": "No action" }],
     [Primer::LabelComponent, {}],
     [Primer::LayoutComponent, {}],
     [Primer::LinkComponent, { href: "https://www.google.com" }],
@@ -71,6 +74,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.heading { "Foo" } }],
     [Primer::TabContainerComponent, {}, proc { "Foo" }],
+    [Primer::Alpha::TextField, { name: :foo, label: "Foo" }],
     [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
     [Primer::Beta::Truncate, {}, proc { |component| component.item { "Foo" } }],
@@ -82,7 +86,18 @@ class PrimerComponentTest < Minitest::Test
   ].freeze
 
   def test_registered_components
-    ignored_components = ["Primer::Component", "Primer::OcticonsSymbolComponent", "Primer::Content"]
+    ignored_components = [
+      "Primer::HiddenTextExpander",
+      "Primer::HeadingComponent",
+      "Primer::CloseButton",
+      "Primer::CounterComponent",
+      "Primer::DetailsComponent",
+      "Primer::Component",
+      "Primer::OcticonsSymbolComponent",
+      "Primer::Content",
+      "Primer::BorderBoxComponent",
+      "Primer::BoxComponent"
+    ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count
     assert_equal primer_component_files_count, COMPONENTS_WITH_ARGS.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"

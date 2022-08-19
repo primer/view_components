@@ -17,6 +17,8 @@ module Primer
 
     # `Tooltip` that appears on mouse hover or keyboard focus over the link. Use tooltips sparingly and as a last resort.
     # **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.
+    # The tooltip will appear adjacent to the anchor element. Both the tooltip and the anchor will be nested
+    # under a positioning wrapper.
     # Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
     #
     # @param type [Symbol] (:description) <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
@@ -43,15 +45,12 @@ module Primer
     # @example Without underline
     #   <%= render(Primer::LinkComponent.new(href: "#", underline: false)) { "Link" } %>
     #
-    # @example Span as link
-    #   <%= render(Primer::LinkComponent.new(tag: :span)) { "Span as a link" } %>
-    #
     # @example With tooltip
     #   @description
     #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
     #   @code
     #     <%= render(Primer::LinkComponent.new(href: "#", id: "link-with-tooltip")) do |c| %>
-    #       <% c.tooltip(text: "Tooltip text") %>
+    #       <% c.with_tooltip(text: "Tooltip text") %>
     #       Link
     #     <% end %>
     #
@@ -82,8 +81,16 @@ module Primer
     end
 
     def call
-      render(Primer::BaseComponent.new(**@system_arguments)) do
-        content.to_s + tooltip.to_s
+      if tooltip.present?
+        render Primer::BaseComponent.new(tag: :span, position: :relative) do
+          render(Primer::BaseComponent.new(**@system_arguments)) do
+            content
+          end.to_s + tooltip.to_s
+        end
+      else
+        render(Primer::BaseComponent.new(**@system_arguments)) do
+          content
+        end
       end
     end
   end

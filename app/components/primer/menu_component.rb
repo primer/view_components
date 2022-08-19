@@ -40,20 +40,20 @@ module Primer
 
     # @example Default
     #   <%= render(Primer::MenuComponent.new) do |c| %>
-    #     <% c.heading(tag: :h2) do %>
+    #     <% c.with_heading(tag: :h2) do %>
     #       Heading
     #     <% end %>
-    #     <% c.item(selected: true, href: "#url") do %>
+    #     <% c.with_item(selected: true, href: "#url") do %>
     #       Item 1
     #     <% end %>
-    #     <% c.item(href: "#url") do %>
+    #     <% c.with_item(href: "#url") do %>
     #       <%= render(Primer::OcticonComponent.new("check")) %>
     #       With Icon
     #     <% end %>
-    #     <% c.item(href: "#url") do %>
+    #     <% c.with_item(href: "#url") do %>
     #       <%= render(Primer::OcticonComponent.new("check")) %>
     #       With Icon and Counter
-    #       <%= render(Primer::CounterComponent.new(count: 25)) %>
+    #       <%= render(Primer::Beta::Counter.new(count: 25)) %>
     #     <% end %>
     #   <% end %>
     #

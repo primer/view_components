@@ -13,9 +13,9 @@ class PrimerLinkComponentTest < Minitest::Test
   end
 
   def test_renders_no_additional_whitespace
-    render_inline(Primer::LinkComponent.new(href: "http://joe-jonas-shirtless.com")) { "content" }
+    result = render_inline(Primer::LinkComponent.new(href: "http://joe-jonas-shirtless.com")) { "content" }
 
-    assert_text(/^content$/)
+    assert_match(%r{^<a[^>]+>content</a>$}, result.to_s)
   end
 
   def test_renders_without_trailing_newline
@@ -82,5 +82,14 @@ class PrimerLinkComponentTest < Minitest::Test
 
   def test_status
     assert_component_state(Primer::LinkComponent, :beta)
+  end
+
+  def test_renders_with_tooltip_sibling
+    render_inline(Primer::LinkComponent.new(id: "1", href: "http://google.com")) do |c|
+      c.tooltip(text: "Tooltip text")
+      "content"
+    end
+
+    assert_selector("a[href='http://google.com'] + tool-tip", text: "Tooltip text", visible: false)
   end
 end

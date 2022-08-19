@@ -26,7 +26,7 @@
   - title: Blankslate
     url: "/components/beta/blankslate"
   - title: BorderBox
-    url: "/components/borderbox"
+    url: "/components/beta/borderbox"
   - title: Box
     url: "/components/box"
   - title: Breadcrumbs
@@ -34,17 +34,17 @@
   - title: Button
     url: "/components/button"
   - title: ButtonGroup
-    url: "/components/buttongroup"
+    url: "/components/beta/buttongroup"
   - title: ButtonMarketing
     url: "/components/alpha/buttonmarketing"
   - title: ClipboardCopy
     url: "/components/clipboardcopy"
   - title: CloseButton
-    url: "/components/closebutton"
+    url: "/components/beta/closebutton"
   - title: Counter
-    url: "/components/counter"
+    url: "/components/beta/counter"
   - title: Details
-    url: "/components/details"
+    url: "/components/beta/details"
   - title: Dropdown
     url: "/components/dropdown"
   - title: DropdownMenu
@@ -56,9 +56,9 @@
   - title: FlexItem
     url: "/components/flexitem"
   - title: Heading
-    url: "/components/heading"
+    url: "/components/beta/heading"
   - title: HiddenTextExpander
-    url: "/components/hiddentextexpander"
+    url: "/components/alpha/hiddentextexpander"
   - title: IconButton
     url: "/components/iconbutton"
   - title: Image
@@ -68,7 +68,7 @@
   - title: Label
     url: "/components/label"
   - title: Layout
-    url: "/components/layout"
+    url: "/components/alpha/layout"
   - title: Link
     url: "/components/link"
   - title: LocalTime
@@ -99,10 +99,14 @@
     url: "/components/alpha/tabpanels"
   - title: Text
     url: "/components/beta/text"
+  - title: TextField
+    url: "/components/alpha/textfield"
   - title: TimeAgo
     url: "/components/timeago"
   - title: TimelineItem
     url: "/components/timelineitem"
+  - title: Tooltip
+    url: "/components/alpha/tooltip"
   - title: Truncate
     url: "/components/beta/truncate"
   - title: UnderlineNav

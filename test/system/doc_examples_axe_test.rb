@@ -18,6 +18,8 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
     puts "Running axe-core checks on previews generated from documentation examples..."
     puts "============================================================================="
 
+    failure_urls = []
+
     Primer::Docs.constants.each do |klass|
       next if NOT_STANDALONE.include?(klass)
       next if IGNORE.include?(klass)
@@ -31,14 +33,18 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
         rescue RuntimeError => e
           # :nocov:
           puts "=========================================================================="
+          puts e.to_s
           puts "#{component_uri}##{preview} failed check."
           puts "=========================================================================="
-          raise e
+          failure_urls.push("#{component_uri}/#{preview}")
+
           # :nocov:
         else
           puts "#{component_uri}##{preview} passed check."
         end
       end
     end
+
+    raise "#{failure_urls.count} components had axe failures:\n#{failure_urls}" if failure_urls.any?
   end
 end

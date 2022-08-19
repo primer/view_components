@@ -4,11 +4,13 @@ module Primer
   # Use `IconButton` to render Icon-only buttons without the default button styles.
   #
   # `IconButton` will always render with a tooltip unless the tag is `:summary`.
+  # `IconButton` will always render with a tooltip unless the tag is `:summary`.
   # @accessibility
   #   `IconButton` requires an `aria-label`, which will provide assistive technologies with an accessible label.
   #   The `aria-label` should describe the action to be invoked rather than the icon itself. For instance,
   #   if your `IconButton` renders a magnifying glass icon and invokes a search action, the `aria-label` should be
   #   `"Search"` instead of `"Magnifying glass"`.
+  #   Either `aria-label` or `aria-description` will be used for the `Tooltip` text, depending on which one is present.
   #   Either `aria-label` or `aria-description` will be used for the `Tooltip` text, depending on which one is present.
   #   [Learn more about best functional image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/functional)
   class IconButton < Primer::Component
@@ -32,7 +34,7 @@ module Primer
     SIZE_OPTIONS = SIZE_MAPPINGS.keys
     # @example Default
     #
-    #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search", id: "search-button")) %>
+    #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search", id: "search-button", id: "search-button")) %>
     #
     # @example Schemes
     #
@@ -75,34 +77,12 @@ module Primer
       )
 
       validate_aria_label
-
-      @aria_label = aria("label", @system_arguments)
-      @aria_description = aria("description", @system_arguments)
-
-      @tooltip_arguments = {
-        for_id: @system_arguments[:id],
-        direction: tooltip_direction
-      }
-
-      # If we have both an `aria-label` and a `aria-description`, we create a `Tooltip` with the description type and keep the `aria-label` in the button.
-      # Otherwise, the `aria-label` is used as the tooltip text, which is the `aria-labelled-by` of the button, so we don't set it in the button.
-      if @aria_label.present? && @aria_description.present?
-        @system_arguments.delete(:"aria-description")
-        @system_arguments[:aria].delete(:description) if @system_arguments.include?(:aria)
-        @tooltip_arguments[:text] = @aria_description
-        @tooltip_arguments[:type] = :description
-      else
-        @system_arguments.delete(:"aria-label")
-        @system_arguments[:aria].delete(:label) if @system_arguments.include?(:aria)
-        @tooltip_arguments[:text] = @aria_label
-        @tooltip_arguments[:type] = :label
-      end
     end
 
-    private
-
-    def render_tooltip?
-      @system_arguments[:tag] != :summary
+    def call
+      render(Primer::BaseButton.new(**@system_arguments)) do
+        render(Primer::OcticonComponent.new(icon: @icon))
+      end
     end
   end
 end

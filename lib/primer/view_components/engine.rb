@@ -8,8 +8,14 @@ module Primer
     # :nodoc:
     class Engine < ::Rails::Engine
       isolate_namespace Primer::ViewComponents
+
+      config.autoload_paths = %W[
+        #{root}/lib
+      ]
+
       config.eager_load_paths = %W[
         #{root}/app/components
+        #{root}/app/helpers
         #{root}/app/lib
       ]
 
@@ -22,6 +28,34 @@ module Primer
 
       initializer "primer_view_components.assets" do |app|
         app.config.assets.precompile += %w[primer_view_components] if app.config.respond_to?(:assets)
+      end
+
+      initializer "primer.forms.eager_load_actions" do
+        ActiveSupport.on_load(:after_initialize) do
+          if Rails.application.config.eager_load
+            Primer::Forms::Base.compile!
+            Primer::Forms::Base.descendants.each(&:compile!)
+            Primer::Forms::BaseComponent.descendants.each(&:compile!)
+          end
+        end
+      end
+
+      initializer "primer.forms.helpers" do
+        ActiveSupport.on_load :action_controller do
+          require "primer/form_helper"
+          helper Primer::FormHelper
+
+          # make primer_form_with available to view components also
+          ViewComponent::Base.prepend(Primer::FormHelper)
+        end
+      end
+
+      initializer "primer_view_components.zeitwerk_ignore" do
+        Rails.autoloaders.each do |autoloader|
+          autoloader.ignore(Engine.root.join("lib", "primer", "view_components", "linters.rb"))
+          autoloader.ignore(Engine.root.join("lib", "primer", "view_components", "linters", "**", "*.rb"))
+          autoloader.ignore(Engine.root.join("lib", "primer", "view_components", "statuses.rb"))
+        end
       end
 
       config.after_initialize do |app|

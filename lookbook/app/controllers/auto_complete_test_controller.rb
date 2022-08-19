@@ -2,6 +2,8 @@
 
 # no doc
 class AutoCompleteTestController < ApplicationController
+  layout false
+
   def index
     @fruit_list = [
       "Apples",
@@ -31,5 +33,7 @@ class AutoCompleteTestController < ApplicationController
       "Grapefruit",
       "Guava"
     ].select { |fruit| fruit.downcase.include?(params["q"].downcase) }
+    @visual_type = params[:visual]
+    @version = params[:version]
   end
 end

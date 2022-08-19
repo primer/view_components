@@ -54,9 +54,9 @@ module Primer
     #
     # Use:
     #
-    # - `trailing_visual_counter` for a <%= link_to_component(Primer::CounterComponent) %>.
+    # - `trailing_visual_counter` for a <%= link_to_component(Primer::Beta::Counter) %>.
     #
-    # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::CounterComponent) %>.
+    # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Counter) %>.
     renders_one :trailing_visual, types: {
       icon: Primer::OcticonComponent,
       label: Primer::LabelComponent,
@@ -97,20 +97,20 @@ module Primer
     #
     # @example With leading visual
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.leading_visual_icon(icon: :star) %>
+    #     <% c.with_leading_visual_icon(icon: :star) %>
     #     Button
     #   <% end %>
     #
     # @example With trailing visual
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.trailing_visual_counter(count: 15) %>
+    #     <% c.with_trailing_visual_counter(count: 15) %>
     #     Button
     #   <% end %>
     #
     # @example With leading and trailing visuals
     #   <%= render(Primer::ButtonComponent.new) do |c| %>
-    #     <% c.leading_visual_icon(icon: :star) %>
-    #     <% c.trailing_visual_counter(count: 15) %>
+    #     <% c.with_leading_visual_icon(icon: :star) %>
+    #     <% c.with_trailing_visual_counter(count: 15) %>
     #     Button
     #   <% end %>
     #
@@ -124,15 +124,15 @@ module Primer
     #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
     #   @code
     #     <%= render(Primer::ButtonComponent.new(id: "button-with-tooltip")) do |c| %>
-    #       <% c.tooltip(text: "Tooltip text") %>
+    #       <% c.with_tooltip(text: "Tooltip text") %>
     #       Button
     #     <% end %>
     #
     # @param scheme [Symbol] <%= one_of(Primer::ButtonComponent::SCHEME_OPTIONS) %>
     # @param variant [Symbol] DEPRECATED. <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
     # @param size [Symbol] <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
-    # @param tag [Symbol] (Primer::BaseButton::DEFAULT_TAG) <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
-    # @param type [Symbol] (Primer::BaseButton::DEFAULT_TYPE) <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
+    # @param tag [Symbol] (Primer::Beta::BaseButton::DEFAULT_TAG) <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
+    # @param type [Symbol] (Primer::Beta::BaseButton::DEFAULT_TYPE) <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
     # @param group_item [Boolean] Whether button is part of a ButtonGroup.
     # @param block [Boolean] Whether button is full-width with `display: block`.
     # @param dropdown [Boolean] Whether or not to render a dropdown caret.

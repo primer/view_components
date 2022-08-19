@@ -7,21 +7,16 @@
   <% elsif @image_src.present? && @image_alt.present? %>
     <%= image_tag @image_src.to_s, class: "mb-3", size: "56x56", alt: @image_alt.to_s %>
   <% end %>
-
   <% if @title.present? %>
     <%= render Primer::BaseComponent.new(tag: @title_tag, mb: 1) do %><%= @title %><% end %>
   <% end %>
-
   <% if @description.present? %>
     <p><%= @description %></p>
   <% end %>
-
   <%= content %>
-
   <% if @button_text.present? && @button_url.present? %>
     <a class="btn <%= @button_classes %>" href="<%= @button_url %>"><%= @button_text %></a>
   <% end %>
-
   <% if @link_text.present? && @link_url.present? %>
     <p>
       <%= link_to @link_url.to_s do %><%= @link_text %><% end %>

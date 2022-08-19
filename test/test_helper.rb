@@ -24,7 +24,7 @@ require "yard/docs_helper"
 require "pry"
 require "yaml"
 
-require File.expand_path("../demo/config/environment.rb", __dir__)
-
 require "primer/view_components"
 require "primer/view_components/linters"
+
+require File.expand_path("../demo/config/environment.rb", __dir__)
