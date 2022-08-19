@@ -4,7 +4,6 @@ module Primer
   module Alpha
     # @label Layout
     class LayoutPreview < ViewComponent::Preview
-
       # @label Default options
       # @param stacking_breakpoint [Symbol] select [sm, md, lg]
       # @param first_in_source [Symbol] select [sidebar, main]

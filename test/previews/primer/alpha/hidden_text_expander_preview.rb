@@ -4,7 +4,6 @@ module Primer
   module Alpha
     # @label HiddenTextExpander
     class HiddenTextExpanderPreview < ViewComponent::Preview
-
       # @label Default options
       # @param label [String] text
       # @param inline [Boolean] toggle

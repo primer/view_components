@@ -4,7 +4,6 @@ module Primer
   module Alpha
     # @label ButtonMarketing
     class ButtonMarketingPreview < ViewComponent::Preview
-
       # @label Default options
       # @param scheme [Symbol] select [default, primary, outline, transparent]
       # @param variant [Symbol] select [default, large]
