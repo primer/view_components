@@ -8,7 +8,7 @@ module Primer
       #
       # @param tag [Symbol] select [div, p, span]
       # @param content [String] text
-      def playground(tag: :span, content: "Text")
+      def default(tag: :span, content: "Text")
         render(Primer::Beta::Text.new(tag: tag)) { content }
       end
     end
