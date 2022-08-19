@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
+module Primer
 # @label Button
-class ButtonPreview < ViewComponent::Preview
+class ButtonComponentPreview < ViewComponent::Preview
   # @label Playground
   # @param scheme select [default, primary, danger, outline, invisible, link]
   # @param size select [small, medium, large]
@@ -90,3 +91,4 @@ class ButtonPreview < ViewComponent::Preview
     #   end
     # end
   end
+end
