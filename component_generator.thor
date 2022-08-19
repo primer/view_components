@@ -31,6 +31,10 @@ class ComponentGenerator < Thor::Group
     template("templates/component.html.tt", "app/components/primer/#{status_path}#{underscore_name}.html.erb") unless inline?
   end
 
+  def create_css
+    template("templates/component.pcss.tt", "app/components/primer/#{status_path}#{underscore_name}.pcss")
+  end
+
   def create_test
     template("templates/test.tt", "test/components/primer/#{status_path}#{underscore_name}_test.rb")
   end
@@ -41,6 +45,10 @@ class ComponentGenerator < Thor::Group
 
   def create_preview
     template("templates/preview.tt", "test/previews/primer/#{status_path}#{underscore_name}_preview.rb")
+  end
+
+  def add_to_css_file
+    insert_into_file("app/components/primer/primer.pcss", "@import \"./#{status_path}#{underscore_name}.pcss\";\n")
   end
 
   def add_to_docs_rakefile
