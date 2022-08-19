@@ -96,7 +96,6 @@ class PrimerComponentTest < Minitest::Test
     ignored_components = [
       "Primer::HiddenTextExpander",
       "Primer::HeadingComponent",
-      "Primer::ButtonGroup",
       "Primer::CloseButton",
       "Primer::CounterComponent",
       "Primer::DetailsComponent",
