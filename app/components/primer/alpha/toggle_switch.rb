@@ -3,7 +3,8 @@
 module Primer
   module Alpha
     # The ToggleSwitch component is a button that toggles between two boolean states. It is meant to be used for
-    # settings that should cause an immediate update.
+    # settings that should cause an immediate update. If configured with a "src" attribute, the component will
+    # make a POST request containing data of the form "value: 0 | 1".
     class ToggleSwitch < Primer::Component
       SIZE_DEFAULT = :medium
       SIZE_MAPPINGS = {
@@ -37,8 +38,8 @@ module Primer
       # @example With status label positioned at the end
       #   <%= render(Primer::Alpha::ToggleSwitch.new(src: "/foo", status_label_position: :end)) %>
       #
-      # @param src [String] The URL to POST to when the toggle switch is toggled. If `nil`, the toggle switch will not make a request.
-      # @param csrf_token [String] A CSRF token that will be sent to the server as "authenticity_token" when the toggle switch is toggled.
+      # @param src [String] The URL to POST to when the toggle switch is toggled. If `nil`, the toggle switch will not make any requests.
+      # @param csrf_token [String] A CSRF token that will be sent to the server as "authenticity_token" when the toggle switch is toggled. Unused if `src` is `nil`.
       # @param checked [Boolean] Whether the toggle switch is on or off.
       # @param enabled [Boolean] Whether or not the toggle switch responds to user input.
       # @param size [Symbol] What size toggle switch to render. <%= one_of(Primer::Alpha::ToggleSwitch::STATUS_LABEL_POSITION_OPTIONS) %>
