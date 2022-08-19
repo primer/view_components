@@ -3,14 +3,11 @@
 # @label IconButton
 class IconButtonPreview < ViewComponent::Preview
   # @label Playground
-  # @param scheme select [default, danger]
+  # @param scheme select [default, danger, invisible]
   # @param size select [small, medium, large]
-  # @param block toggle
   # @param aria_label text
   # @param disabled toggle
   # @param pressed toggle
-  # @param dropdown toggle
-  # @param align_content select [center, start]
   # @param tag select [a, summary, button]
   def playground(
     scheme: :default,
