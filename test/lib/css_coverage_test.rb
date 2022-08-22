@@ -30,7 +30,10 @@ class CssCoverageTest < Minitest::Test
       ".SegmentedControl-button--iconOnly",
       ".SegmentedControl-content",
       ".SegmentedControl-leadingVisual",
-      ".SegmentedControl-text"
+      ".SegmentedControl-text",
+      ".SegmentedControl-button--iconOnly-whenNarrow",
+      ".SegmentedControl-item",
+      ".SegmentedControl-item--selected"
     ]
 
     @css_data =
