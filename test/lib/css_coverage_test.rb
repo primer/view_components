@@ -24,9 +24,13 @@ class CssCoverageTest < Minitest::Test
       ".custom-class",
       ".f00",
       ".",
-      ".SegmentedControl-item",
-      ".SegmentedControl-item--selected",
-      ".SegmentedControl-button--iconOnly-whenNarrow"
+      ".SegmentedControl",
+      ".SegmentedControl--fullWidth",
+      ".SegmentedControl-button",
+      ".SegmentedControl-button--iconOnly",
+      ".SegmentedControl-content",
+      ".SegmentedControl-leadingVisual",
+      ".SegmentedControl-text"
     ]
 
     @css_data =
