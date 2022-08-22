@@ -1377,10 +1377,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
   integrity sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==
 
-"@primer/css@^20.4.2":
-  version "20.4.2"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-20.4.2.tgz#8a14e2f5acf51ccef14478196eb1ccb498c79426"
-  integrity sha512-EYfDXA80ERXwncs4KTjnOQ41pqz7auRmg7sSNCP9i39W7hqIEl2HAkhtbb3ii34o/48rGSZzOMnxHUL8Nk0c8w==
+"@primer/css@^20.4.3":
+  version "20.4.3"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-20.4.3.tgz#09e0bb3635267edbca32a4455ba1b961ecc5ec23"
+  integrity sha512-d2+++ABwTqqO+TW/00lQ4Ddq7pVKf9xcEAhhsDiBTC+xH40mYAwfdAphD2gnzdrslfHEm8bbyPKG5G/681X/mg==
   dependencies:
     "@primer/primitives" "^7.9.0"
 
