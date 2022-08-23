@@ -35,7 +35,7 @@ module Primer
     def self.generate_constants
       Primer::Component.descendants.sort_by(&:name).each_with_object({}) do |component, mem|
         mem[component.to_s] = component.constants(false).sort.each_with_object({}) do |constant, h|
-          h[constant] = component.const_get(constant) unless constant.name.include? "Test"
+          h[constant] = component.const_get(constant)
         end
       end
     end
