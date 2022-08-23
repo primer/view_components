@@ -38,7 +38,7 @@ module Primer
       end
 
       TemplateGlob = Struct.new(:glob_pattern, :method_name, :on_compile_callback)
-      TemplateParams = Struct.new(:source, :identifier, :type, :format)
+      TemplateParams = Struct.new(:source, :identifier, :type, :format, keyword_init: true)
 
       attr_accessor :template_root_path
 

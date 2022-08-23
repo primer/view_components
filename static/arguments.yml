@@ -9,15 +9,30 @@
   - name: variant
     type: Symbol
     default: "`:default`"
-    description: One of `:default` and `:large`.
+    description: One of `:default` or `:large`.
   - name: tag
     type: Symbol
     default: "`:button`"
-    description: One of `:a` and `:button`.
+    description: One of `:a` or `:button`.
   - name: type
     type: Symbol
     default: "`:button`"
-    description: One of `:button` and `:submit`.
+    description: One of `:button` or `:submit`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: HiddenTextExpander
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/hidden_text_expander.rb
+  parameters:
+  - name: inline
+    type: Boolean
+    default: "`false`"
+    description: Whether or not the expander is inline.
+  - name: button_arguments
+    type: Hash
+    default: "`{}`"
+    description: "[System arguments](/system-arguments) for the button element."
   - name: system_arguments
     type: Hash
     default: N/A
@@ -34,7 +49,7 @@
     type: Symbol
     default: "`:sidebar`"
     description: Which element to render first in the HTML. This will change the keyboard
-      navigation order. One of `:main` and `:sidebar`.
+      navigation order. One of `:main` or `:sidebar`.
   - name: gutter
     type: Symbol
     default: "`:default`"
@@ -50,7 +65,7 @@
   - name: tag
     type: Symbol
     default: "`:nav`"
-    description: One of `:div` and `:nav`.
+    description: One of `:div` or `:nav`.
   - name: label
     type: String
     default: N/A
@@ -75,7 +90,7 @@
   - name: align
     type: Symbol
     default: N/A
-    description: One of `:left` and `:right`. - Defaults to left
+    description: One of `:left` or `:right`. - Defaults to left
   - name: body_arguments
     type: Hash
     default: "`{}`"
@@ -192,7 +207,7 @@
   - name: type
     type: Symbol
     default: N/A
-    description: One of `:description` and `:label`.
+    description: One of `:description` or `:label`.
   - name: direction
     type: Symbol
     default: "`:s`"
@@ -212,7 +227,7 @@
   - name: tag
     type: Symbol
     default: "`:nav`"
-    description: One of `:div` and `:nav`.
+    description: One of `:div` or `:nav`.
   - name: label
     type: String
     default: N/A
@@ -221,7 +236,7 @@
   - name: align
     type: Symbol
     default: "`:left`"
-    description: One of `:left` and `:right`. - Defaults to left
+    description: One of `:left` or `:right`. - Defaults to left
   - name: body_arguments
     type: Hash
     default: "`{}`"
@@ -241,7 +256,7 @@
   - name: align
     type: Symbol
     default: "`:left`"
-    description: One of `:left` and `:right`. - Defaults to left
+    description: One of `:left` or `:right`. - Defaults to left
   - name: body_arguments
     type: Hash
     default: "`{}`"
@@ -364,7 +379,7 @@
   - name: shape
     type: Symbol
     default: "`:circle`"
-    description: Shape of the avatar. One of `:circle` and `:square`.
+    description: Shape of the avatar. One of `:circle` or `:square`.
   - name: href
     type: String
     default: "`nil`"
@@ -380,11 +395,11 @@
   - name: tag
     type: Symbol
     default: "`:div`"
-    description: One of `:div` and `:span`.
+    description: One of `:div` or `:span`.
   - name: align
     type: Symbol
     default: "`:left`"
-    description: One of `:left` and `:right`.
+    description: One of `:left` or `:right`.
   - name: tooltipped
     type: Boolean
     default: "`false`"
@@ -394,7 +409,7 @@
     default: "`{}`"
     description: Parameters to add to the Body. If `tooltipped` is set, has the same
       arguments as [Tooltip](/components/tooltip). The default tag is `:div` but can
-      be changed using `tag:` to one of `:div` and `:span`.
+      be changed using `tag:` to one of `:div` or `:span`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -462,145 +477,34 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: Flash
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/flash.rb
-  parameters:
-  - name: full
-    type: Boolean
-    default: "`false`"
-    description: Whether the component should take up the full width of the screen.
-  - name: spacious
-    type: Boolean
-    default: "`false`"
-    description: Whether to add margin to the bottom of the component.
-  - name: dismissible
-    type: Boolean
-    default: "`false`"
-    description: Whether the component can be dismissed with an X button.
-  - name: icon
-    type: Symbol
-    default: "`nil`"
-    description: Name of Octicon icon to use.
-  - name: scheme
-    type: Symbol
-    default: "`:default`"
-    description: One of `:danger`, `:default`, `:success`, or `:warning`.
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: Text
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb
-  parameters:
-  - name: tag
-    type: Symbol
-    default: "`:span`"
-    description: ''
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: Truncate
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate.rb
-  parameters:
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: Box
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/box_component.rb
-  parameters:
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: Button
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/button_component.rb
-  parameters:
-  - name: scheme
-    type: Symbol
-    default: "`:default`"
-    description: One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`,
-      or `:primary`.
-  - name: variant
-    type: Symbol
-    default: "`nil`"
-    description: DEPRECATED. One of `:medium` and `:small`.
-  - name: size
-    type: Symbol
-    default: "`:medium`"
-    description: One of `:medium` and `:small`.
-  - name: tag
-    type: Symbol
-    default: "`:button`"
-    description: One of `:a`, `:button`, or `:summary`.
-  - name: type
-    type: Symbol
-    default: "`:button`"
-    description: One of `:button`, `:reset`, or `:submit`.
-  - name: group_item
-    type: Boolean
-    default: "`false`"
-    description: Whether button is part of a ButtonGroup.
-  - name: block
-    type: Boolean
-    default: "`false`"
-    description: 'Whether button is full-width with `display: block`.'
-  - name: dropdown
-    type: Boolean
-    default: "`false`"
-    description: Whether or not to render a dropdown caret.
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
 - component: ButtonGroup
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/button_group.rb
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/button_group.rb
   parameters:
   - name: variant
     type: Symbol
     default: "`nil`"
-    description: DEPRECATED. One of `:medium` and `:small`.
+    description: DEPRECATED. One of `:medium` or `:small`.
   - name: size
     type: Symbol
     default: "`:medium`"
-    description: One of `:medium` and `:small`.
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
-- component: ClipboardCopy
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/clipboard_copy.rb
-  parameters:
-  - name: aria-label
-    type: String
-    default: N/A
-    description: String that will be read to screenreaders when the component is focused
-  - name: value
-    type: String
-    default: "`nil`"
-    description: Text to copy into the users clipboard when they click the component.
-  - name: for
-    type: String
-    default: N/A
-    description: Element id from where to get the copied value.
+    description: One of `:medium` or `:small`.
   - name: system_arguments
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
 - component: CloseButton
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/close_button.rb
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/close_button.rb
   parameters:
   - name: type
     type: Symbol
     default: "`:button`"
-    description: One of `:button` and `:submit`.
+    description: One of `:button` or `:submit`.
   - name: system_arguments
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
 - component: Counter
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/counter_component.rb
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/counter.rb
   parameters:
   - name: count
     type: Integer, Float::INFINITY, nil
@@ -633,7 +537,7 @@
     default: N/A
     description: "[System arguments](/system-arguments)"
 - component: Details
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/details_component.rb
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/details.rb
   parameters:
   - name: overlay
     type: Symbol
@@ -645,6 +549,128 @@
     default: "`false`"
     description: Defaults to false. If set to true, it will remove the default caret
       and remove style from the summary element
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: Flash
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/flash.rb
+  parameters:
+  - name: full
+    type: Boolean
+    default: "`false`"
+    description: Whether the component should take up the full width of the screen.
+  - name: spacious
+    type: Boolean
+    default: "`false`"
+    description: Whether to add margin to the bottom of the component.
+  - name: dismissible
+    type: Boolean
+    default: "`false`"
+    description: Whether the component can be dismissed with an X button.
+  - name: icon
+    type: Symbol
+    default: "`nil`"
+    description: Name of Octicon icon to use.
+  - name: scheme
+    type: Symbol
+    default: "`:default`"
+    description: One of `:danger`, `:default`, `:success`, or `:warning`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: Heading
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/heading.rb
+  parameters:
+  - name: tag
+    type: String
+    default: N/A
+    description: One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: Text
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb
+  parameters:
+  - name: tag
+    type: Symbol
+    default: "`:span`"
+    description: ''
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: Truncate
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate.rb
+  parameters:
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: Box
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/box.rb
+  parameters:
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: Button
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/button_component.rb
+  parameters:
+  - name: scheme
+    type: Symbol
+    default: "`:default`"
+    description: One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`,
+      or `:primary`.
+  - name: variant
+    type: Symbol
+    default: "`nil`"
+    description: DEPRECATED. One of `:medium` or `:small`.
+  - name: size
+    type: Symbol
+    default: "`:medium`"
+    description: One of `:medium` or `:small`.
+  - name: tag
+    type: Symbol
+    default: "`:button`"
+    description: One of `:a`, `:button`, or `:summary`.
+  - name: type
+    type: Symbol
+    default: "`:button`"
+    description: One of `:button`, `:reset`, or `:submit`.
+  - name: group_item
+    type: Boolean
+    default: "`false`"
+    description: Whether button is part of a ButtonGroup.
+  - name: block
+    type: Boolean
+    default: "`false`"
+    description: 'Whether button is full-width with `display: block`.'
+  - name: dropdown
+    type: Boolean
+    default: "`false`"
+    description: Whether or not to render a dropdown caret.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: ClipboardCopy
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/clipboard_copy.rb
+  parameters:
+  - name: aria-label
+    type: String
+    default: N/A
+    description: String that will be read to screenreaders when the component is focused
+  - name: value
+    type: String
+    default: "`nil`"
+    description: Text to copy into the users clipboard when they click the component.
+  - name: for
+    type: String
+    default: N/A
+    description: Element id from where to get the copied value.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -727,17 +753,6 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: Heading
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/heading_component.rb
-  parameters:
-  - name: tag
-    type: String
-    default: N/A
-    description: One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`.
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
 - component: HellipButton
   source: https://github.com/primer/view_components/tree/main/app/components/primer/hellip_button.rb
   parameters:
@@ -749,28 +764,13 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
-- component: HiddenTextExpander
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/hidden_text_expander.rb
-  parameters:
-  - name: inline
-    type: Boolean
-    default: "`false`"
-    description: Whether or not the expander is inline.
-  - name: button_arguments
-    type: Hash
-    default: "`{}`"
-    description: "[System arguments](/system-arguments) for the button element."
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
 - component: IconButton
   source: https://github.com/primer/view_components/tree/main/app/components/primer/icon_button.rb
   parameters:
   - name: scheme
     type: Symbol
     default: "`:default`"
-    description: One of `:danger` and `:default`.
+    description: One of `:danger` or `:default`.
   - name: icon
     type: String
     default: N/A
@@ -854,10 +854,18 @@
     description: One of `:accent`, `:attention`, `:danger`, `:default`, `:done`, `:info`,
       `:orange`, `:primary`, `:purple`, `:secondary`, `:severe`, `:sponsors`, `:success`,
       or `:warning`.
+  - name: size
+    type: Symbol
+    default: "`:medium`"
+    description: One of `:large` or `:medium`.
+  - name: inline
+    type: Boolean
+    default: "`false`"
+    description: Whether or not to render this label inline.
   - name: variant
     type: Symbol
-    default: "`nil`"
-    description: One of `nil`, `:inline`, or `:large`.
+    default: "`:none`"
+    description: One of `:inline`, `:large`, or `:none`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -872,7 +880,7 @@
   - name: side
     type: Symbol
     default: "`:right`"
-    description: Which side to display the sidebar on. One of `:left` and `:right`.
+    description: Which side to display the sidebar on. One of `:left` or `:right`.
   - name: sidebar_col
     type: Integer
     default: "`3`"
@@ -887,7 +895,7 @@
   - name: tag
     type: String
     default: "`:a`"
-    description: One of `:a` and `:span`.
+    description: One of `:a` or `:span`.
   - name: href
     type: String
     default: "`nil`"
@@ -924,35 +932,35 @@
   - name: weekday
     type: Symbol
     default: "`:short`"
-    description: One of `:long` and `:short`.
+    description: One of `:long` or `:short`.
   - name: year
     type: Symbol
     default: "`:numeric`"
-    description: One of `:2-digit` and `:numeric`.
+    description: One of `:2-digit` or `:numeric`.
   - name: month
     type: Symbol
     default: "`:short`"
-    description: One of `:long` and `:short`.
+    description: One of `:long` or `:short`.
   - name: day
     type: Symbol
     default: "`:numeric`"
-    description: One of `:2-digit` and `:numeric`.
+    description: One of `:2-digit` or `:numeric`.
   - name: hour
     type: Symbol
     default: "`:numeric`"
-    description: One of `:2-digit` and `:numeric`.
+    description: One of `:2-digit` or `:numeric`.
   - name: minute
     type: Symbol
     default: "`:numeric`"
-    description: One of `:2-digit` and `:numeric`.
+    description: One of `:2-digit` or `:numeric`.
   - name: second
     type: Symbol
     default: "`:numeric`"
-    description: One of `:2-digit` and `:numeric`.
+    description: One of `:2-digit` or `:numeric`.
   - name: time_zone_name
     type: Symbol
     default: "`:short`"
-    description: One of `:long` and `:short`.
+    description: One of `:long` or `:short`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -1087,11 +1095,11 @@
   - name: tag
     type: Symbol
     default: "`:span`"
-    description: HTML tag for element. One of `:div` and `:span`.
+    description: HTML tag for element. One of `:div` or `:span`.
   - name: size
     type: Symbol
     default: "`:default`"
-    description: One of `:default` and `:small`.
+    description: One of `:default` or `:small`.
   - name: system_arguments
     type: Hash
     default: N/A

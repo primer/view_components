@@ -125,6 +125,8 @@
   },
   "Primer::Alpha::CheckList": {
   },
+  "Primer::Alpha::HiddenTextExpander": {
+  },
   "Primer::Alpha::Layout": {
     "FIRST_IN_SOURCE_DEFAULT": "sidebar",
     "FIRST_IN_SOURCE_OPTIONS": [
@@ -387,6 +389,49 @@
   },
   "Primer::Beta::Breadcrumbs::Item": {
   },
+  "Primer::Beta::ButtonGroup": {
+  },
+  "Primer::Beta::CloseButton": {
+    "DEFAULT_TYPE": "button",
+    "TYPE_OPTIONS": [
+      "button",
+      "submit"
+    ]
+  },
+  "Primer::Beta::Counter": {
+    "DEFAULT_SCHEME": "default",
+    "DEPRECATED_SCHEME_OPTIONS": [
+      "gray",
+      "light_gray"
+    ],
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "primary": "Counter--primary",
+      "secondary": "Counter--secondary",
+      "gray": "Counter--primary",
+      "light_gray": "Counter--secondary"
+    },
+    "SCHEME_OPTIONS": [
+      "default",
+      "primary",
+      "secondary"
+    ]
+  },
+  "Primer::Beta::Details": {
+    "BODY_TAG_DEFAULT": "div",
+    "BODY_TAG_OPTIONS": [
+      "ul",
+      "details-menu",
+      "details-dialog",
+      "div"
+    ],
+    "NO_OVERLAY": "none",
+    "OVERLAY_MAPPINGS": {
+      "none": "",
+      "default": "details-overlay",
+      "dark": "details-overlay details-overlay-dark"
+    }
+  },
   "Primer::Beta::Flash": {
     "DEFAULT_SCHEME": "default",
     "SCHEME_MAPPINGS": {
@@ -395,6 +440,17 @@
       "danger": "flash-error",
       "success": "flash-success"
     }
+  },
+  "Primer::Beta::Heading": {
+    "TAG_FALLBACK": "h2",
+    "TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
   },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
@@ -407,6 +463,8 @@
   "Primer::BlankslateComponent": {
   },
   "Primer::BorderBoxComponent": {
+  },
+  "Primer::Box": {
   },
   "Primer::BoxComponent": {
   },
@@ -439,54 +497,17 @@
       "medium"
     ]
   },
-  "Primer::ButtonGroup": {
-  },
   "Primer::ClipboardCopy": {
   },
   "Primer::CloseButton": {
-    "DEFAULT_TYPE": "button",
-    "TYPE_OPTIONS": [
-      "button",
-      "submit"
-    ]
   },
   "Primer::ConditionalWrapper": {
   },
   "Primer::Content": {
   },
   "Primer::CounterComponent": {
-    "DEFAULT_SCHEME": "default",
-    "DEPRECATED_SCHEME_OPTIONS": [
-      "gray",
-      "light_gray"
-    ],
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "primary": "Counter--primary",
-      "secondary": "Counter--secondary",
-      "gray": "Counter--primary",
-      "light_gray": "Counter--secondary"
-    },
-    "SCHEME_OPTIONS": [
-      "default",
-      "primary",
-      "secondary"
-    ]
   },
   "Primer::DetailsComponent": {
-    "BODY_TAG_DEFAULT": "div",
-    "BODY_TAG_OPTIONS": [
-      "ul",
-      "details-menu",
-      "details-dialog",
-      "div"
-    ],
-    "NO_OVERLAY": "none",
-    "OVERLAY_MAPPINGS": {
-      "none": "",
-      "default": "details-overlay",
-      "dark": "details-overlay details-overlay-dark"
-    }
   },
   "Primer::Dropdown": {
     "Menu": "Primer::Dropdown::Menu"
@@ -602,15 +623,6 @@
     "FLEX_AUTO_DEFAULT": false
   },
   "Primer::HeadingComponent": {
-    "TAG_FALLBACK": "h2",
-    "TAG_OPTIONS": [
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6"
-    ]
   },
   "Primer::HellipButton": {
   },
@@ -633,13 +645,20 @@
   },
   "Primer::LabelComponent": {
     "DEFAULT_SCHEME": "default",
+    "DEFAULT_SIZE": "medium",
     "DEFAULT_TAG": "span",
+    "DEFAULT_VARIANT": "none",
     "DEPRECATED_SCHEME_OPTIONS": [
       "info",
       "warning",
       "orange",
       "purple"
     ],
+    "DEPRECATED_VARIANT_OPTIONS": [
+      "large",
+      "inline"
+    ],
+    "INLINE_CLASS": "Label--inline",
     "SCHEME_MAPPINGS": {
       "default": "",
       "primary": "Label--primary",
@@ -668,20 +687,22 @@
       "done",
       "sponsors"
     ],
+    "SIZE_MAPPINGS": {
+      "medium": null,
+      "large": "Label--large"
+    },
+    "SIZE_OPTIONS": [
+      "medium",
+      "large"
+    ],
     "TAG_OPTIONS": [
       "span",
       "summary",
       "a",
       "div"
     ],
-    "VARIANT_MAPPINGS": {
-      "large": "Label--large",
-      "inline": "Label--inline"
-    },
     "VARIANT_OPTIONS": [
-      "large",
-      "inline",
-      null
+      "none"
     ]
   },
   "Primer::LayoutComponent": {

@@ -43,13 +43,13 @@ module Primer
 
       # @example Default
       #   <%= render(Primer::Alpha::TabPanels.new(label: "With panels")) do |component| %>
-      #     <% component.tab(id: "tab-1", selected: true) do |t| %>
+      #     <% component.with_tab(id: "tab-1", selected: true) do |t| %>
       #       <% t.text { "Tab 1" } %>
       #       <% t.panel do %>
       #         Panel 1
       #       <% end %>
       #     <% end %>
-      #     <% component.tab(id: "tab-2") do |t| %>
+      #     <% component.with_tab(id: "tab-2") do |t| %>
       #       <% t.text { "Tab 2" } %>
       #       <% t.panel do %>
       #         Panel 2

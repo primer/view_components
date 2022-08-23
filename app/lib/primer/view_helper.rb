@@ -8,7 +8,7 @@ module Primer
 
     HELPERS = {
       octicon: "Primer::OcticonComponent",
-      heading: "Primer::HeadingComponent",
+      heading: "Primer::Beta::Heading",
       time_ago: "Primer::TimeAgoComponent",
       image: "Primer::Image"
     }.freeze

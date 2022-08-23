@@ -7,10 +7,16 @@ module ERBLint
       module DeprecatedComponentsHelpers
         # If there is no alternative to suggest, set the value to nil
         COMPONENT_TO_USE_INSTEAD = {
+          "Primer::HiddenTextExpander" => "Primer::Alpha::HiddenTextExpander",
+          "Primer::HeadingComponent" => "Primer::Beta::Heading",
+          "Primer::CloseButton" => "Primer::Beta::CloseButton",
+          "Primer::CounterComponent" => "Primer::Beta::Counter",
+          "Primer::DetailsComponent" => "Primer::Beta::Details",
           "Primer::Alpha::AutoComplete::Item" => "Primer::Beta::AutoComplete::Item",
           "Primer::Alpha::AutoComplete" => "Primer::Beta::AutoComplete",
           "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
           "Primer::BorderBoxComponent" => "Primer::Beta::BorderBox",
+          "Primer::BoxComponent" => "Primer::Box",
           "Primer::DropdownMenuComponent" => nil,
           "Primer::Tooltip" => "Primer::Alpha::Tooltip",
           "Primer::FlexComponent" => nil,

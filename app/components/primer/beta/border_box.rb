@@ -72,55 +72,55 @@ module Primer
 
       # @example Header with title, body, rows, and footer
       #   <%= render(Primer::Beta::BorderBox.new) do |component| %>
-      #     <% component.header do |h| %>
+      #     <% component.with_header do |h| %>
       #       <% h.title(tag: :h2) do %>
       #         Header
       #       <% end %>
       #     <% end %>
-      #     <% component.body do %>
+      #     <% component.with_body do %>
       #       Body
       #     <% end %>
-      #     <% component.row do %>
+      #     <% component.with_row do %>
       #       <% if true %>
       #         Row one
       #       <% end %>
       #     <% end %>
-      #     <% component.row do %>
+      #     <% component.with_row do %>
       #       Row two
       #     <% end %>
-      #     <% component.footer do %>
+      #     <% component.with_footer do %>
       #       Footer
       #     <% end %>
       #   <% end %>
       #
       # @example Padding density
       #   <%= render(Primer::Beta::BorderBox.new(padding: :condensed)) do |component| %>
-      #     <% component.header do %>
+      #     <% component.with_header do %>
       #       Header
       #     <% end %>
-      #     <% component.body do %>
+      #     <% component.with_body do %>
       #       Body
       #     <% end %>
-      #     <% component.row do %>
+      #     <% component.with_row do %>
       #       Row two
       #     <% end %>
-      #     <% component.footer do %>
+      #     <% component.with_footer do %>
       #       Footer
       #     <% end %>
       #   <% end %>
       #
       # @example Row colors
       #   <%= render(Primer::Beta::BorderBox.new) do |component| %>
-      #     <% component.row do %>
+      #     <% component.with_row do %>
       #       Default
       #     <% end %>
-      #     <% component.row(scheme: :neutral) do %>
+      #     <% component.with_row(scheme: :neutral) do %>
       #       Neutral
       #     <% end %>
-      #     <% component.row(scheme: :info) do %>
+      #     <% component.with_row(scheme: :info) do %>
       #       Info
       #     <% end %>
-      #     <% component.row(scheme: :warning) do %>
+      #     <% component.with_row(scheme: :warning) do %>
       #       Warning
       #     <% end %>
       #   <% end %>

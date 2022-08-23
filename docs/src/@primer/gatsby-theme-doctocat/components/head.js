@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import useSiteMetadata from '@primer/gatsby-theme-doctocat/src/use-site-metadata'
 import '@primer/css/dist/primer.css'
 import '@primer/css/dist/primitives.css'
+import '../../../../static/primer_view_components.css'
 
 // Reset PrimerCSS changing body font-size to 14px
 const bodyStyle = `

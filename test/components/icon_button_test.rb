@@ -35,7 +35,7 @@ class PrimerIconButtonTest < Minitest::Test
 
     assert_selector("summary.btn-octicon") do
       assert_selector(".octicon.octicon-star")
-      assert_selector("tool-tip", visible: false, text: "Label")
+      refute_selector("tool-tip", visible: false, text: "Label")
     end
   end
 
