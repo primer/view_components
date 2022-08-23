@@ -33,7 +33,7 @@ module Primer
         :small => "Overlay--height-small",
         DEFAULT_HEIGHT => "Overlay--height-auto",
         :large => "Overlay--height-large",
-        :xlarge => "Overlay--height-xlarge",
+        :xlarge => "Overlay--height-xlarge"
       }.freeze
       HEIGHT_OPTIONS = HEIGHT_MAPPINGS.keys
 
@@ -128,15 +128,12 @@ module Primer
           @system_arguments[:aria] ||= {}
           @system_arguments[:aria][:describedby] ||= "#{@id}-description"
         end
-
       end
 
       def before_render
-        with_header() unless header?
-        with_body() unless body?
+        with_header unless header?
+        with_body unless body?
       end
-
     end
   end
 end
-

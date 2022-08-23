@@ -13,8 +13,6 @@ class Primer::Alpha::DialogStories < ViewComponent::Storybook::Stories
       href "#"
     end
 
-    content do |c|
-
-    end
+    content
   end
 end
