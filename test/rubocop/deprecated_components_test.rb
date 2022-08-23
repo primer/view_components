@@ -30,7 +30,7 @@ class RubocopDeprecatedComponentsTest < CopTest
       Primer::FlexComponent.new
     RUBY
 
-    assert_equal 4, cop.offenses.count
+    assert_equal 3, cop.offenses.count
   end
 
   def test_raises_offense_if_calling_legacy_component_with_args
