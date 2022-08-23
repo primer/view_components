@@ -1,4 +1,5 @@
 {
+  "Primer::Alpha::ActionBar": "alpha",
   "Primer::Alpha::AutoComplete": "deprecated",
   "Primer::Alpha::AutoComplete::Item": "deprecated",
   "Primer::Alpha::ButtonMarketing": "alpha",

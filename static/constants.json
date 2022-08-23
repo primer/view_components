@@ -1,4 +1,6 @@
 {
+  "Primer::Alpha::ActionBar": {
+  },
   "Primer::Alpha::AutoComplete": {
     "Item": "Primer::Alpha::AutoComplete::Item"
   },
