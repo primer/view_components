@@ -7,7 +7,7 @@ module Primer
       # @label Default options
       #
       # @param number_of_panels [Integer] number
-      # @param align [Symbol] select [["Left", left], ["Right", right]]
+      # @param align [Symbol] select [left, right]
       def default(number_of_panels: 3, align: :left)
         render(Primer::Alpha::UnderlinePanels.new(label: "Test navigation", align: align)) do |c|
           Array.new(number_of_panels || 3) do |i|
