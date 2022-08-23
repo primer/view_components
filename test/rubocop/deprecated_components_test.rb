@@ -28,7 +28,6 @@ class RubocopDeprecatedComponentsTest < CopTest
       Primer::Tooltip.new
       Primer::BlankslateComponent.new
       Primer::FlexComponent.new
-      Primer::BorderBoxComponent.new
     RUBY
 
     assert_equal 4, cop.offenses.count
