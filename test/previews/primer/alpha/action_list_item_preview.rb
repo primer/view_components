@@ -31,7 +31,7 @@ module Primer
       # @param leading_action_visual [Symbol] octicon
       # @param leading_action_icon_button [Symbol] octicon
       # @param trailing_action_visual [Symbol] octicon
-      # @param trailing_action_icon_button [Symbol] octicon
+      # @param trailing_action_icon [Symbol] octicon
       def playground(
         label: "Item Item ItemItemItemItem ItemItemItemItemItem",
         truncate_label: false,
@@ -102,7 +102,7 @@ module Primer
 
         item.with_trailing_action_visual_icon(icon: trailing_action_visual) if trailing_action_visual
 
-        item.with_trailing_action_button_button(icon: trailing_action_icon_button, "aria-label": "test") if trailing_action_icon_button
+        item.with_trailing_action_button_button(icon: trailing_action_icon, "aria-label": "test") if trailing_action_icon
 
         item.description { description } if description
 

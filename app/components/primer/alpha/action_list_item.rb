@@ -118,8 +118,7 @@ module Primer
           @system_arguments[:classes],
           VARIANT_MAPPINGS[@variant],
           "ActionList-item",
-          "ActionList-item--withActions" => @leading_action_button,
-          "ActionList-item--withActions" => @trailing_action_button,
+          "ActionList-item--withActions" => @leading_action_button || @trailing_action_button,
           "ActionList-item--navActive" => @active,
           "ActionList-item--hasSubItem" => @has_sub_item,
           "ActionList-item--subItem" => @sub_item

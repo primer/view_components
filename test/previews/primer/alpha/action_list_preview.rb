@@ -202,13 +202,9 @@ module Primer
             item.with_trailing_visual_text(trailing_visual_text)
           end
 
-          if leading_action_button_icon && leading_action_button_icon != :none
-            item.with_leading_action_button(icon: leading_action_button_icon, "aria-label": "Button")
-          end
+          item.with_leading_action_button(icon: leading_action_button_icon, "aria-label": "Button") if leading_action_button_icon && leading_action_button_icon != :none
 
-          if trailing_action_button_icon && trailing_action_button_icon != :none
-            item.with_trailing_action_button(icon: trailing_action_button_icon, "aria-label": "Button")
-          end
+          item.with_trailing_action_button(icon: trailing_action_button_icon, "aria-label": "Button") if trailing_action_button_icon && trailing_action_button_icon != :none
 
           item.description { description } if description
         end
