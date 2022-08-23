@@ -117,5 +117,5 @@
   children:
   - title: Developing and publishing client-side behaviours
     url: "/adr/0250-developing-and-publishing-clientside-behaviours"
-  - title: 251. Use Catalyst for client-side behaviours
+  - title: Use Catalyst for client-side behaviours
     url: "/adr/0251-use-catalyst-for-client-side-behaviours"
