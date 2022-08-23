@@ -14,8 +14,8 @@ module Primer
         super(*args, classify(options), &block)
       end
 
-      def check_box(*args, **options, &block)
-        super(*args, classify(options), &block)
+      def check_box(method, options = {}, checked_value = 1, unchecked_value = 0, &block)
+        super(method, classify(options), checked_value, unchecked_value, &block)
       end
 
       def radio_button(*args, **options, &block)

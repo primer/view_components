@@ -2,7 +2,7 @@
 
 module Primer
   module Alpha
-    # @label Text Field Component
+    # @label TextField
     class TextFieldPreview < ViewComponent::Preview
       # @label Playground
       #
