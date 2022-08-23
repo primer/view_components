@@ -1,8 +1,9 @@
 {
   "Primer::Alpha::ActionList": "alpha",
+  "Primer::Alpha::ActionList::Checkmark": "alpha",
+  "Primer::Alpha::ActionList::Group": "alpha",
   "Primer::Alpha::ActionList::Heading": "alpha",
   "Primer::Alpha::ActionList::Item": "alpha",
-  "Primer::Alpha::ActionList::Section": "alpha",
   "Primer::Alpha::ActionList::Separator": "alpha",
   "Primer::Alpha::ActionListItem": "alpha",
   "Primer::Alpha::AutoComplete": "deprecated",
@@ -14,6 +15,7 @@
   "Primer::Alpha::Layout::Main": "alpha",
   "Primer::Alpha::Layout::Sidebar": "alpha",
   "Primer::Alpha::NavList": "alpha",
+  "Primer::Alpha::NavList::Item": "alpha",
   "Primer::Alpha::TabNav": "alpha",
   "Primer::Alpha::TabPanels": "alpha",
   "Primer::Alpha::TextField": "alpha",

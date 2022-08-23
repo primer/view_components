@@ -1,24 +1,39 @@
 {
   "Primer::Alpha::ActionList": {
+    "Checkmark": "Primer::Alpha::ActionList::Checkmark",
+    "DEFAULT_ROLE": "list",
+    "DEFAULT_TAG": "ul",
+    "Group": "Primer::Alpha::ActionList::Group",
     "Heading": "Primer::Alpha::ActionList::Heading",
     "Item": "Primer::Alpha::ActionList::Item",
-    "Section": "Primer::Alpha::ActionList::Section",
     "Separator": "Primer::Alpha::ActionList::Separator"
+  },
+  "Primer::Alpha::ActionList::Checkmark": {
+  },
+  "Primer::Alpha::ActionList::Group": {
   },
   "Primer::Alpha::ActionList::Heading": {
   },
   "Primer::Alpha::ActionList::Item": {
-    "DEFAULT_DESCRIPTION_VARIANT": "block",
+    "DEFAULT_DESCRIPTION_SCHEME": "block",
+    "DEFAULT_SCHEME": "default",
     "DEFAULT_SELECT_MODE": "none",
     "DEFAULT_SIZE": "small",
-    "DEFAULT_VARIANT": "default",
-    "DESCRIPTION_VARIANT_MAPPINGS": {
+    "DESCRIPTION_SCHEME_MAPPINGS": {
       "inline": "ActionList-item-descriptionWrap--inline",
       "block": "ActionList-item-descriptionWrap--block"
     },
-    "DESCRIPTION_VARIANT_OPTIONS": [
+    "DESCRIPTION_SCHEME_OPTIONS": [
       "inline",
       "block"
+    ],
+    "SCHEME_MAPPINGS": {
+      "default": null,
+      "danger": "ActionList-item--danger"
+    },
+    "SCHEME_OPTIONS": [
+      "default",
+      "danger"
     ],
     "SELECT_MODE_OPTIONS": [
       "none",
@@ -34,23 +49,13 @@
       "small",
       "medium",
       "large"
-    ],
-    "VARIANT_MAPPINGS": {
-      "default": null,
-      "danger": "ActionList-item--danger"
-    },
-    "VARIANT_OPTIONS": [
-      "default",
-      "danger"
     ]
-  },
-  "Primer::Alpha::ActionList::Section": {
   },
   "Primer::Alpha::ActionList::Separator": {
   },
   "Primer::Alpha::ActionListItem": {
     "DEFAULT_DESCRIPTION_VARIANT": "block",
-    "DEFAULT_SELECT_MODE": "single",
+    "DEFAULT_SELECT_MODE": "none",
     "DEFAULT_SIZE": "small",
     "DEFAULT_VARIANT": "default",
     "DESCRIPTION_VARIANT_MAPPINGS": {
@@ -62,8 +67,9 @@
       "block"
     ],
     "SELECT_MODE_OPTIONS": [
-      "single",
-      "multiple"
+      "none",
+      "multiple",
+      "single"
     ],
     "SIZE_MAPPINGS": {
       "small": null,
@@ -206,6 +212,9 @@
     ]
   },
   "Primer::Alpha::NavList": {
+    "Item": "Primer::Alpha::NavList::Item"
+  },
+  "Primer::Alpha::NavList::Item": {
   },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",

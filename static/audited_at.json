@@ -1,8 +1,9 @@
 {
   "Primer::Alpha::ActionList": "",
+  "Primer::Alpha::ActionList::Checkmark": "",
+  "Primer::Alpha::ActionList::Group": "",
   "Primer::Alpha::ActionList::Heading": "",
   "Primer::Alpha::ActionList::Item": "",
-  "Primer::Alpha::ActionList::Section": "",
   "Primer::Alpha::ActionList::Separator": "",
   "Primer::Alpha::ActionListItem": "",
   "Primer::Alpha::AutoComplete": "",
@@ -14,6 +15,7 @@
   "Primer::Alpha::Layout::Main": "",
   "Primer::Alpha::Layout::Sidebar": "",
   "Primer::Alpha::NavList": "",
+  "Primer::Alpha::NavList::Item": "",
   "Primer::Alpha::TabNav": "",
   "Primer::Alpha::TabPanels": "",
   "Primer::Alpha::TextField": "",
