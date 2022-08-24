@@ -264,7 +264,11 @@ class ToolTipElement extends HTMLElement {
       if (!this.id || !this.control) return
       if (this.type === 'label') {
         let labelledBy = this.control.getAttribute('aria-labelledby')
-        labelledBy ? (labelledBy = `${labelledBy} ${this.id}`) : (labelledBy = this.id)
+        if (labelledBy) {
+          labelledBy = `${labelledBy} ${this.id}`
+        } else {
+          labelledBy = this.id
+        }
         this.control.setAttribute('aria-labelledby', labelledBy)
 
         // Prevent duplicate accessible name announcements.
