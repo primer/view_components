@@ -124,10 +124,10 @@ module Primer
         @title = title
 
         @subtitle = subtitle
-        if subtitle.present?
-          @system_arguments[:aria] ||= {}
-          @system_arguments[:aria][:describedby] ||= "#{@id}-description"
-        end
+        return if subtitle.present?
+
+        @system_arguments[:aria] ||= {}
+        @system_arguments[:aria][:describedby] ||= "#{@id}-description"
       end
 
       def before_render
