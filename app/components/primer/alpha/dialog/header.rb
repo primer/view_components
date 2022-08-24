@@ -14,7 +14,6 @@ module Primer
           id:,
           title:,
           subtitle: nil,
-          subtitle_id: nil,
           show_divider: true,
           **system_arguments
         )
