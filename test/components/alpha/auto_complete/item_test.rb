@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class PrimerAutoCompleteItemTest < Minitest::Test
+class PrimerAlphaAutoCompleteItemTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_item_with_correct_attributes

@@ -12,6 +12,7 @@
     "declaration": true,
     "declarationDir": "app/components/primer/",
     "strictPropertyInitialization": false,
+    "experimentalDecorators": true, 
     "strict": true,
     "baseUrl": ".",
     "types": []

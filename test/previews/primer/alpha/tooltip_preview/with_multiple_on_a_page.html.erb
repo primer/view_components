@@ -1,0 +1,14 @@
+<div>
+  <%= render(Primer::ButtonComponent.new(id: "button-1")) do |c| %>
+    <% c.with_tooltip(text: tooltip_text, type: type, direction: direction) %>
+    Button 1
+  <% end %>
+  <%= render(Primer::ButtonComponent.new(id: "button-2")) do |c| %>
+    <% c.with_tooltip(text: tooltip_text, type: type, direction: direction) %>
+    Button 2
+  <% end %>
+  <%= render(Primer::ButtonComponent.new(id: "button-3")) do |c| %>
+    <% c.with_tooltip(text: tooltip_text, type: type, direction: direction) %>
+    Button 3
+  <% end %>
+</div>
