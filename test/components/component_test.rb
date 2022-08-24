@@ -96,7 +96,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
-      "Primer::BorderBoxComponent",
       "Primer::BoxComponent"
     ]
 
