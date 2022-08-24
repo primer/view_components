@@ -178,7 +178,7 @@ class ToolTipElement extends HTMLElement {
   }
 
   set hiddenFromView(value: true | false) {
-    value ? this.classList.add(TOOLTIP_SR_ONLY_CLASS) : this.classList.remove(TOOLTIP_SR_ONLY_CLASS)
+    this.classList.toggle(TOOLTIP_SR_ONLY_CLASS, value)
     if (this.isConnected) this.#update()
   }
 
