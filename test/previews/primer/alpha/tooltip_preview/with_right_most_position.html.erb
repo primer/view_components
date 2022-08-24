@@ -1,0 +1,7 @@
+<div>
+  <p>There should be no horizontal overflow and scrollbar caused by tooltip (assuming there is at least 1px of padding to the right of where the associated control is placed).</p>
+  <div style="float: right;">
+    <button id="some-button">Button with tooltip positioned to right of the page</button>
+    <%= render(Primer::Alpha::Tooltip.new(for_id: "some-button", type: type, text: tooltip_text, direction: direction)) %>
+  </div>
+</div>

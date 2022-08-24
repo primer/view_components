@@ -107,9 +107,12 @@ module Primer
 
         @text = text
         @system_arguments = system_arguments
-        @system_arguments[:hidden] = true
         @system_arguments[:tag] = :"tool-tip"
         @system_arguments[:for] = for_id
+        system_arguments[:classes] = class_names(
+          system_arguments[:classes],
+          "sr-only"
+        )
         @system_arguments[:position] = :absolute
         @system_arguments[:"data-direction"] = fetch_or_fallback(DIRECTION_OPTIONS, direction, DIRECTION_DEFAULT).to_s
         @system_arguments[:"data-type"] = fetch_or_fallback(TYPE_OPTIONS, type, TYPE_FALLBACK).to_s

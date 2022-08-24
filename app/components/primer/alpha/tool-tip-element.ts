@@ -4,6 +4,7 @@ import {getAnchoredPosition} from '@primer/behaviors'
 
 const TOOLTIP_OPEN_CLASS = 'tooltip-open'
 const TOOLTIP_ARROW_EDGE_OFFSET = 6
+const TOOLTIP_SR_ONLY_CLASS = 'sr-only'
 
 type Direction = 'n' | 's' | 'e' | 'w' | 'ne' | 'se' | 'nw' | 'sw'
 
@@ -176,6 +177,15 @@ class ToolTipElement extends HTMLElement {
     return this.ownerDocument.getElementById(this.htmlFor)
   }
 
+  set hiddenFromView(value: true | false) {
+    this.classList.toggle(TOOLTIP_SR_ONLY_CLASS, value)
+    if (this.isConnected) this.#update()
+  }
+
+  get hiddenFromView() {
+    return this.classList.contains(TOOLTIP_SR_ONLY_CLASS)
+  }
+
   connectedCallback() {
     if (!this.shadowRoot) {
       const shadow = this.attachShadow({mode: 'open'})
@@ -187,7 +197,7 @@ class ToolTipElement extends HTMLElement {
         <slot></slot>
       `
     }
-    this.hidden = true
+    this.hiddenFromView = true
     this.#allowUpdatePosition = true
 
     if (!this.id) {
@@ -220,30 +230,30 @@ class ToolTipElement extends HTMLElement {
 
     // Ensures that tooltip stays open when hovering between tooltip and element
     // WCAG Success Criterion 1.4.13 Hoverable
-    if ((event.type === 'mouseenter' || event.type === 'focus') && this.hidden) {
-      this.hidden = false
+    if ((event.type === 'mouseenter' || event.type === 'focus') && this.hiddenFromView) {
+      this.hiddenFromView = false
     } else if (event.type === 'blur') {
-      this.hidden = true
+      this.hiddenFromView = true
     } else if (
       event.type === 'mouseleave' &&
       (event as MouseEvent).relatedTarget !== this.control &&
       (event as MouseEvent).relatedTarget !== this
     ) {
-      this.hidden = true
-    } else if (event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape' && !this.hidden) {
-      this.hidden = true
+      this.hiddenFromView = true
+    } else if (event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape' && !this.hiddenFromView) {
+      this.hiddenFromView = true
     }
   }
 
-  static observedAttributes = ['data-type', 'data-direction', 'id', 'hidden']
+  static observedAttributes = ['data-type', 'data-direction', 'id']
 
   #update() {
-    if (this.hidden) {
+    if (this.hiddenFromView) {
       this.classList.remove(TOOLTIP_OPEN_CLASS, ...DIRECTION_CLASSES)
     } else {
       this.classList.add(TOOLTIP_OPEN_CLASS)
-      for (const tooltip of this.ownerDocument.querySelectorAll<HTMLElement>(this.tagName)) {
-        if (tooltip !== this) tooltip.hidden = true
+      for (const tooltip of this.ownerDocument.querySelectorAll<ToolTipElement>(this.tagName)) {
+        if (tooltip !== this) tooltip.hiddenFromView = true
       }
       this.#updatePosition()
     }
@@ -253,15 +263,21 @@ class ToolTipElement extends HTMLElement {
     if (name === 'id' || name === 'data-type') {
       if (!this.id || !this.control) return
       if (this.type === 'label') {
-        this.control.setAttribute('aria-labelledby', this.id)
+        let labelledBy = this.control.getAttribute('aria-labelledby')
+        if (labelledBy) {
+          labelledBy = `${labelledBy} ${this.id}`
+        } else {
+          labelledBy = this.id
+        }
+        this.control.setAttribute('aria-labelledby', labelledBy)
+
+        // Prevent duplicate accessible name announcements.
         this.setAttribute('aria-hidden', 'true')
       } else {
         let describedBy = this.control.getAttribute('aria-describedby')
         describedBy ? (describedBy = `${describedBy} ${this.id}`) : (describedBy = this.id)
         this.control.setAttribute('aria-describedby', describedBy)
       }
-    } else if (this.isConnected && name === 'hidden') {
-      this.#update()
     } else if (name === 'data-direction') {
       this.classList.remove(...DIRECTION_CLASSES)
       const direction = this.direction
@@ -295,7 +311,7 @@ class ToolTipElement extends HTMLElement {
 
   #updatePosition() {
     if (!this.control) return
-    if (!this.#allowUpdatePosition || this.hidden) return
+    if (!this.#allowUpdatePosition || this.hiddenFromView) return
 
     const TOOLTIP_OFFSET = 10
 
