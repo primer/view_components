@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   map: {
     annotation: false
@@ -5,7 +7,7 @@ module.exports = {
   plugins: [
     require('postcss-import'),
     require('postcss-mixins')({
-        mixins: require('./app/lib/postcss-mixins')
+        mixinsDir: path.join(__dirname, './lib/postcss-mixins/')
     }),
     require('postcss-preset-env')({
       stage: 3,
