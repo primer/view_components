@@ -107,6 +107,8 @@
     url: "/components/timeago"
   - title: TimelineItem
     url: "/components/timelineitem"
+  - title: ToggleSwitch
+    url: "/components/alpha/toggleswitch"
   - title: Tooltip
     url: "/components/alpha/tooltip"
   - title: Truncate

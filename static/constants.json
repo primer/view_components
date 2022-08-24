@@ -153,6 +153,26 @@
   },
   "Primer::Alpha::TextField": {
   },
+  "Primer::Alpha::ToggleSwitch": {
+    "SIZE_DEFAULT": "medium",
+    "SIZE_MAPPINGS": {
+      "medium": null,
+      "small": "ToggleSwitch--small"
+    },
+    "SIZE_OPTIONS": [
+      "medium",
+      "small"
+    ],
+    "STATUS_LABEL_POSITION_DEFAULT": "start",
+    "STATUS_LABEL_POSITION_MAPPINGS": {
+      "start": null,
+      "end": "ToggleSwitch--statusAtEnd"
+    },
+    "STATUS_LABEL_POSITION_OPTIONS": [
+      "start",
+      "end"
+    ]
+  },
   "Primer::Alpha::Tooltip": {
     "DIRECTION_DEFAULT": "s",
     "DIRECTION_OPTIONS": [
