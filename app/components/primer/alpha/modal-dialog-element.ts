@@ -147,4 +147,3 @@ if (!window.customElements.get('modal-dialog')) {
   window.ModalDialogElement = ModalDialogElement
   window.customElements.define('modal-dialog', ModalDialogElement)
 }
-

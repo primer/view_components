@@ -123,7 +123,8 @@ export class ToggleSwitchElement extends HTMLElement {
     body.append('value', this.isOn() ? '1' : '0')
 
     try {
-      const response = await fetch(this.src!, {
+      if (!this.src) throw new Error('invalid src')
+      const response = await fetch(this.src, {
         credentials: 'same-origin',
         method: 'POST',
         body
