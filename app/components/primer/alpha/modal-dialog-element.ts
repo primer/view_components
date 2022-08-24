@@ -90,7 +90,6 @@ export class ModalDialogElement extends HTMLElement {
 
         dialogId = button.getAttribute('data-show-dialog-id')
         if (dialogId === this.id) {
-          //TODO: see if I can remove this
           event.stopPropagation()
           this.#openButton = button
           this.show()
@@ -110,9 +109,9 @@ export class ModalDialogElement extends HTMLElement {
     this.open = true
   }
 
-  close(closed = false) {
+  close(closedNotCancelled = false) {
     if (this.open === false) return
-    const eventType = closed ? 'close' : 'cancel'
+    const eventType = closedNotCancelled ? 'close' : 'cancel'
     const dialogEvent = new Event(eventType)
     this.dispatchEvent(dialogEvent)
     this.open = false
