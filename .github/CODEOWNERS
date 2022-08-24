@@ -1,2 +1,4 @@
 * @primer/rails-reviewers
 **/*.pcss @primer/css-reviewers
+app/lib/postcss-mixins.js @primer/css-reviewers
+postcss.config.js @primer/css-reviewers
