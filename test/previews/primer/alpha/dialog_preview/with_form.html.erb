@@ -4,7 +4,7 @@
     <%= render(Primer::Alpha::Dialog::Body.new) do %>
       This is a custom dialog with the body and footer wrapped in a form tag.
     <% end %>
-    <%= render(Primer::Alpha::Dialog::Footer.new) do %>
+    <%= render(Primer::Alpha::Dialog::Footer.new(show_divider: show_divider)) do %>
       <%= render(Primer::ButtonComponent.new(data: { "close-dialog-id": "my-dialog" })) { "Cancel" } %>
       <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Submit" } %>
     <% end %>

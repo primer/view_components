@@ -52,14 +52,14 @@ module Primer
 
       # Header content.
       #
-      # @param hide_divider [Boolean] If true the visual dividing line between the header and body will be hidden
+      # @param show_divider [Boolean] If true the visual dividing line between the header and body will be visible
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :header, lambda { |hide_divider: false, **system_arguments|
+      renders_one :header, lambda { |show_divider: true, **system_arguments|
         Primer::Alpha::Dialog::Header.new(
           id: @id,
           title: @title,
           subtitle: @subtitle,
-          hide_divider: hide_divider,
+          show_divider: show_divider,
           **system_arguments
         )
       }
@@ -71,7 +71,7 @@ module Primer
 
       # Footer content.
       #
-      # @param hide_divider [Boolean] If true the visual dividing line between the body and footer will be hidden
+      # @param show_divider [Boolean] If true the visual dividing line between the body and footer will be visible
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :footer, "Footer"
 

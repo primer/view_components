@@ -65,7 +65,7 @@ class PrimerAlphaDialogTest < Minitest::Test
   def test_renders_footer_without_divider_if_hide_divider
     render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |c|
       c.body { "content" }
-      c.footer(hide_divider: true) { "footer" }
+      c.footer(show_divider: false) { "footer" }
     end
 
     assert_selector("modal-dialog") do
