@@ -31,9 +31,9 @@ jobs:
         gem install bundler -v '~> 2.3'
         bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile --path vendor/bundle
     - name: 'Set env vars'
-        run: |
-          # Image tag is unique to each workflow run so that it always triggers a new deployment
-          echo "DOCKER_IMAGE=primer.azurecr.io/${{ env.IMAGE_REPO }}:${{ env.COMMIT_REF }}-${{ github.run_number }}-${{ github.run_attempt }}" >> $GITHUB_ENV
+      run: |
+        # Image tag is unique to each workflow run so that it always triggers a new deployment
+        echo "DOCKER_IMAGE=primer.azurecr.io/${{ env.IMAGE_REPO }}:${{ env.COMMIT_REF }}-${{ github.run_number }}-${{ github.run_attempt }}" >> $GITHUB_ENV
     - name: Build
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
