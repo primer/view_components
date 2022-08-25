@@ -20,18 +20,15 @@ module Primer
       # @param has_sub_item toggle
       # @param sub_item toggle
       # @param show_on_hover toggle
-      # @param leading_action_button toggle
-      # @param trailing_action_button toggle
       # @param leading_visual_icon [Symbol] octicon
       # @param leading_visual_avatar_src text
       # @param trailing_visual_icon [Symbol] octicon
       # @param trailing_visual_label text
       # @param trailing_visual_counter number
       # @param trailing_visual_text text
-      # @param leading_action_visual [Symbol] octicon
-      # @param leading_action_icon_button [Symbol] octicon
-      # @param trailing_action_visual [Symbol] octicon
-      # @param trailing_action_icon [Symbol] octicon
+      # @param private_leading_action_icon [Symbol] octicon
+      # @param private_trailing_action_icon [Symbol] octicon
+      # @param trailing_action toggle
       def playground(
         label: "Item Item ItemItemItemItem ItemItemItemItemItem",
         truncate_label: false,
@@ -54,10 +51,9 @@ module Primer
         trailing_visual_label: nil,
         trailing_visual_counter: nil,
         trailing_visual_text: nil,
-        leading_action_icon: nil,
-        trailing_action_icon: nil,
-        leading_action_button: nil,
-        trailing_action_button: nil
+        private_leading_action_icon: nil,
+        private_trailing_action_icon: nil,
+        trailing_action: nil
       )
         item = Primer::Alpha::ActionListItem.new(
           label: label,
@@ -75,9 +71,7 @@ module Primer
           sub_item: sub_item,
           href: href,
           show_on_hover: show_on_hover,
-          leading_action_button: leading_action_button,
-          trailing_action_button: trailing_action_button,
-          leading_action_visual: leading_action_visual
+          trailing_action: trailing_action,
         )
 
         item.with_leading_action_icon(icon: leading_action_icon) if leading_action_icon && leading_action_icon != :none

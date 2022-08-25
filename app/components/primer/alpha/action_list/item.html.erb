@@ -1,9 +1,11 @@
 <%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
-  <% if leading_action_button %>
-    <%= leading_action_button %>
-  <% end %>
   <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
     <%= render(Primer::Alpha::ActionList::Checkmark.new(select_mode: @select_mode)) %>
+    <% if private_leading_action %>
+      <span class="ActionList-item-visual ActionList-item-visual--leading">
+        <%= private_leading_action %>
+      </span>
+    <% end %>
     <% if leading_visual %>
       <span class="ActionList-item-visual ActionList-item-visual--leading">
         <%= leading_visual %>
@@ -19,32 +21,19 @@
         </span>
       <% end %>
     <% end %>
-    <% if items.empty? %>
-      <% if trailing_visual %>
-        <span class="ActionList-item-visual ActionList-item-visual--trailing">
-          <%= trailing_visual %>
-        </span>
-      <% end %>
-    <% else %>
-      <span class="ActionList-item-action ActionList-item-action--trailing">
-        <%= render(
-          Primer::OcticonComponent.new(
-            classes: "ActionList-item-collapseIcon",
-            icon: :"chevron-down",
-            size: :small,
-            aria: { hidden: "true" }
-          )
-        ) %>
+    <% if trailing_visual %>
+      <span class="ActionList-item-visual ActionList-item-visual--trailing">
+        <%= trailing_visual %>
       </span>
     <% end %>
-    <% if trailing_action_visual %>
+    <% if private_trailing_action %>
       <span class="ActionList-item-visual ActionList-item-action--trailing">
-        <%= trailing_action_visual %>
+        <%= private_trailing_action %>
       </span>
     <% end %>
   <% end %>
-  <% if trailing_action_button %>
-    <%= trailing_action_button %>
+  <% if trailing_action %>
+    <%= trailing_action %>
   <% end %>
   <% unless items.empty? %>
     <%= render(Primer::BaseComponent.new(tag: :ul, **@sub_group_arguments)) do %>

@@ -42,15 +42,11 @@ module Primer
           }
         }
 
-        renders_one :leading_action_visual, types: {
+        renders_one :private_leading_action, types: {
           icon: Primer::OcticonComponent,
           svg: lambda { |**system_arguments|
             Primer::BaseComponent.new(tag: :svg, **system_arguments)
           }
-        }
-
-        renders_one :leading_action_button, lambda { |**system_arguments|
-          Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
         }
 
         renders_one :trailing_visual, types: {
@@ -60,14 +56,14 @@ module Primer
           text: ->(text) { text }
         }
 
-        renders_one :trailing_action_visual, types: {
+        renders_one :private_trailing_action, types: {
           icon: Primer::OcticonComponent,
           svg: lambda { |**system_arguments|
             Primer::BaseComponent.new(tag: :svg, **system_arguments)
           }
         }
 
-        renders_one :trailing_action_button, lambda { |**system_arguments|
+        renders_one :trailing_action, lambda { |**system_arguments|
           Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
         }
 
