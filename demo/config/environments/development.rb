@@ -40,7 +40,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  # config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -66,7 +66,6 @@ Rails.application.configure do
   config.assets.quiet = true
 
   config.autoload_paths << Rails.root.join("../test/forms")
-  config.view_component.preview_paths << Rails.root.join("../test/previews")
   config.lookbook.listen_paths << Rails.root.join("../app/components")
 
   # Raises error for missing translations.

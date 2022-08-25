@@ -16,6 +16,18 @@ module Lookbook
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.view_component.show_previews = true
+    config.view_component.preview_controller = "PreviewController"
+
+    config.action_dispatch.default_headers.clear
+
+    config.action_dispatch.default_headers = {
+      "Access-Control-Allow-Origin" => "*",
+      "Access-Control-Request-Method" => %w[GET].join(",")
+    }
+
+    config.view_component.preview_paths << Rails.root.join("../test/previews")
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
