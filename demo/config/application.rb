@@ -2,31 +2,26 @@
 
 require_relative "boot"
 
-require "action_controller/railtie"
-require "action_view/railtie"
-require "sprockets/railtie"
+require "rails/all"
 require "view_component/engine"
-require "view_component/storybook/engine"
 require "primer/view_components/engine"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Demo
+module Lookbook
+  # no doc
   class Application < Rails::Application
-    config.load_defaults 6.0 if Rails.version.to_i >= 6
-
     # Initialize configuration defaults for originally generated Rails version.
-    config.view_component_storybook.show_stories = true
-    config.view_component.show_previews = true
-    config.view_component.preview_controller = "PreviewController"
+    config.load_defaults 7.0
 
-    config.action_dispatch.default_headers.clear
-
-    config.action_dispatch.default_headers = {
-      "Access-Control-Allow-Origin" => "*",
-      "Access-Control-Request-Method" => %w[GET].join(",")
-    }
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
   end
 end

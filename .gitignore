@@ -10,7 +10,7 @@ demo/app/assets/stylesheets/primer*
 /.yardoc
 /doc
 test/previews/primer/docs/
-lookbook/app/assets/builds/
+demo/app/assets/builds/
 docs/content/adr/
 docs/content/components/
 

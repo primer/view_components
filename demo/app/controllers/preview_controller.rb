@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require "rails/application_controller"
-
-class PreviewController < ViewComponentsController # :nodoc:
+class PreviewController < ViewComponentsController
+  helper Lookbook::PreviewHelper
   helper Primer::ViewHelper
 end
