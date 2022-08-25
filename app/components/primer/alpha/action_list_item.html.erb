@@ -40,12 +40,12 @@
         </svg>
       </span>
     <% end %>
-    <% if leading_action || leading_visual %>
+    <% if leading_action_visual || leading_action_button %>
       <span class="ActionList-item-visual ActionList-item-visual--leading">
-        <% if leading_action %>
-          <%= leading_action %>
+        <% if leading_action_visual %>
+          <%= leading_action_visual %>
         <% else %>
-          <%= leading_visual %>
+          <%= leading_action_button %>
         <% end %>
       </span>
     <% end %>
@@ -59,10 +59,10 @@
         </span>
       <% end %>
     <% end %>
-    <% if trailing_action || trailing_visual %>
+    <% if trailing_action_visual || trailing_visual %>
       <span class="ActionList-item-visual ActionList-item-visual--trailing">
-        <% if trailing_action %>
-          <%= trailing_action %>
+        <% if trailing_action_visual %>
+          <%= trailing_action_visual %>
         <% else %>
           <%= trailing_visual %>
         <% end %>

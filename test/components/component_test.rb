@@ -19,6 +19,10 @@ class PrimerComponentTest < Minitest::Test
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
+    [Primer::Alpha::ActionList, {}, lambda do |component|
+      component.item(label: "Foo")
+    end],
+    [Primer::Alpha::ActionListItem, { label: "Foo" }],
     [Primer::Alpha::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
     [Primer::Alpha::AutoComplete::Item, { value: "Foo" }],
     [Primer::Beta::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
