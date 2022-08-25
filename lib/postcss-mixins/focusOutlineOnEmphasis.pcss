@@ -1,0 +1,6 @@
+/* outline with fg box-shadow for buttons */
+@define-mixin focusOutlineOnEmphasis $outlineOffset: -2px, $outlineColor: var(--color-accent-fg) {
+  outline: 2px solid $outlineColor;
+  outline-offset: $outlineOffset;
+  box-shadow: inset 0 0 0 3px var(--color-fg-on-emphasis);
+}
