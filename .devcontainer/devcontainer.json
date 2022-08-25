@@ -36,7 +36,7 @@
       "label": "web"
     },
     "5000": {
-      "label": "storybook"
+      "label": "lookbook"
     },
     "5400": {
       "label": "doctocat"
@@ -55,6 +55,6 @@
     "memory": "8gb"
   },
   "features": {
-    "sshd": "latest" 
+    "sshd": "latest"
   }
 }

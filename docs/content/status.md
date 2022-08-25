@@ -24,6 +24,6 @@ We recommend building new Primer ViewComponents in an application that uses them
 ### Promote from alpha to beta
 
 - The component does not use any deprecated `view_component` framework features, such as Slots v1.
-- Documentation and storybook stories are complete.
+- Documentation and lookbook previews are complete.
 - The API is approaching a point of stability.
 - The component is used in production at least 3 times.
