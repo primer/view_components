@@ -28,10 +28,9 @@ class RubocopDeprecatedComponentsTest < CopTest
       Primer::Tooltip.new
       Primer::BlankslateComponent.new
       Primer::FlexComponent.new
-      Primer::BorderBoxComponent.new
     RUBY
 
-    assert_equal 4, cop.offenses.count
+    assert_equal 3, cop.offenses.count
   end
 
   def test_raises_offense_if_calling_legacy_component_with_args
