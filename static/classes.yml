@@ -1,4 +1,5 @@
 ---
+- ".ActionBar"
 - ".ActionList"
 - ".ActionList-content"
 - ".ActionList-item"
@@ -74,6 +75,7 @@
 - ".Overlay-backdrop--anchor"
 - ".Overlay-body"
 - ".Overlay-body--paddingNone"
+- ".Overlay-whenNarrow"
 - ".Popover"
 - ".Popover-message"
 - ".Popover-message--large"
