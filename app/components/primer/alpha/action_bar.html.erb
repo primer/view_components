@@ -4,7 +4,7 @@
   <% end %>
 
   <%# Replace with ActionMenu %>
-  <%= render Primer::BaseComponent.new(tag: :"action-menu") do %>
+  <%= render Primer::BaseComponent.new(tag: :"action-menu", "data-anchor-align": "end", "data-target": "action-bar.moreMenu", hidden: true, classes: "ActionBar-item") do %>
     <%= render Primer::IconButton.new(role: "button", icon: :"kebab-horizontal", "aria-label": "Menu","aria-haspopup": true, "aria-expanded": false, "aria-controls": "#{@menu_id}-list", id: @menu_id) %>
     <div class="Overlay-backdrop--anchor" data-menu-overlay>
       <div class="Overlay Overlay-whenNarrow Overlay--height-auto Overlay--width-auto" hidden>
@@ -12,9 +12,9 @@
           <ul class="ActionList" id="<%= @menu_id %>-list" role="menu" aria-labelledby="<%= @menu_id %>-text">
             <% items.each do |item| %>
               <% if item.divider? %>
-                <li class="ActionList-sectionDivider" role="presentation" aria-hidden></li>
+                <li class="ActionList-sectionDivider" role="presentation" aria-hidden data-targets="action-bar.menuItems" hidden></li>
               <% else %>
-                <%= render(Primer::BaseComponent.new(tag: :li, role: :none, classes: "ActionList-item")) do %>
+                <%= render(Primer::BaseComponent.new(tag: :li, role: :none, classes: "ActionList-item", "data-targets": "action-bar.menuItems", hidden: true)) do %>
                   <%= render(Primer::BaseComponent.new(tag: :button, classes: "ActionList-content")) do %>
                     <% if item.icon_button? %>
                       <%= render Primer::BaseComponent.new(tag: :span, classes: "ActionList-item-visual ActionList-item-visual--leading") do %>

@@ -17,6 +17,7 @@ module Primer
             @label = system_arguments[:"aria-label"]
           elsif divider?
             @system_arguments[:tag] = :hr
+            @system_arguments[:"data-targets"] = "action-bar.items"
             @system_arguments[:classes] = class_names(
               system_arguments[:classes],
               "ActionBar-divider"

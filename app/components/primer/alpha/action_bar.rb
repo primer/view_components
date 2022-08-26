@@ -40,7 +40,7 @@ module Primer
       def initialize(density: DENSITY_DEFAULT, direction: DIRECTION_DEFAULT, **system_arguments)
         @menu_id = "action-bar-overflow-menu-#{SecureRandom.hex(4)}"
         @system_arguments = system_arguments
-        @system_arguments[:tag] = "div"
+        @system_arguments[:tag] = :"action-bar"
 
         @density = fetch_or_fallback(DENSITY_OPTIONS, density, DENSITY_DEFAULT)
         @direction = fetch_or_fallback(DIRECTION_OPTIONS, direction, DIRECTION_DEFAULT)
