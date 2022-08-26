@@ -7,10 +7,11 @@ module Primer
   module Alpha
     # @label ActionBar
     class ActionBarPreview < ViewComponent::Preview
+      # @param density [Symbol] select [[Condensed, condensed], [Normal, normal], [Spacious, spacious]]
       # @param direction [Symbol] select [[Horizontal, horizontal], [Vertical, vertical]]
       # @param aria_label [String]
-      def playground(direction: :horizontal)
-        render(Primer::Alpha::ActionBar.new(direction: direction)) do |component|
+      def playground(density: :normal, direction: :horizontal)
+        render(Primer::Alpha::ActionBar.new(density: density, direction: direction)) do |component|
           component.with_item_icon_button(icon: :heading, "aria-label": "Heading")
           component.with_item_icon_button(icon: :bold, "aria-label": "Bold")
           component.with_item_icon_button(icon: :italic, "aria-label": "Italic")

@@ -3,6 +3,7 @@
 .ActionBar {
   display: flex;
   align-items: center;
+  gap: var(--primer-controlStack-small-gap-condensed, 8px);
 }
 
 /* TODO: Replace with IconButton */
@@ -33,6 +34,14 @@
 }
 
 /* Variations */
+
+.ActionBar--condensed {
+  gap: 0;
+}
+
+.ActionBar--spacious {
+  gap: var(--primer-controlStack-small-gap-spacious, 16px);
+}
 
 .ActionBar--vertical {
   flex-direction: column;
