@@ -15,7 +15,6 @@ module ERBLint
           "Primer::Alpha::AutoComplete::Item" => "Primer::Beta::AutoComplete::Item",
           "Primer::Alpha::AutoComplete" => "Primer::Beta::AutoComplete",
           "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
-          "Primer::BorderBoxComponent" => "Primer::Beta::BorderBox",
           "Primer::BoxComponent" => "Primer::Box",
           "Primer::DropdownMenuComponent" => nil,
           "Primer::Tooltip" => "Primer::Alpha::Tooltip",
