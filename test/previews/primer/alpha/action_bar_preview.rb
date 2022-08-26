@@ -7,20 +7,10 @@ module Primer
   module Alpha
     # @label ActionBar
     class ActionBarPreview < ViewComponent::Preview
-      # @label Playground
-      # @param string_example text
-      # @param boolean_example toggle
-      # @param email_example email
-      # @param number_example number
-      # @param url_example url
-      # @param tel_example tel
-      # @param textarea_example textarea
-      # @param select_example select [one, two, three]
-      # @param select_custom_labels select [[One label, one], [Two label, two], [Three label, three]]
-      # With empty option (`~` in YAML)
-      # @param select_empty_option select [~, one, two, three]
-      def playground
-        render(Primer::Alpha::ActionBar.new) do |component|
+      # @param direction [Symbol] select [[Horizontal, horizontal], [Vertical, vertical]]
+      # @param aria_label [String]
+      def playground(direction: :horizontal)
+        render(Primer::Alpha::ActionBar.new(direction: direction)) do |component|
           component.with_item_icon_button(icon: :heading, "aria-label": "Heading")
           component.with_item_icon_button(icon: :bold, "aria-label": "Bold")
           component.with_item_icon_button(icon: :italic, "aria-label": "Italic")
@@ -32,11 +22,11 @@ module Primer
           component.with_item_icon_button(icon: :"list-unordered", "aria-label": "List unordered")
           component.with_item_icon_button(icon: :tasklist, "aria-label": "Tasklist")
           component.with_item_divider
-          component.with_item_icon_button(icon: :paperclip, "aria-label": "Attach Image")
           component.with_item_icon_button(icon: :mention, "aria-label": "Mention")
           component.with_item_icon_button(icon: :"cross-reference", "aria-label": "Reference")
           component.with_item_icon_button(icon: :reply, "aria-label": "Reply")
           component.with_item_icon_button(icon: :"diff-ignored", "aria-label": "Slash command")
+          component.with_item_icon_button(icon: :paperclip, "aria-label": "Attach Image")
         end
       end
     end

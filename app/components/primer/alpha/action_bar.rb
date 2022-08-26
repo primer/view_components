@@ -8,6 +8,13 @@ module Primer
     class ActionBar < Primer::Component
       status :alpha
 
+      DIRECTION_DEFAULT = :horizontal
+      DIRECTION_MAPPINGS = {
+        DIRECTION_DEFAULT => nil,
+        :vertical => "ActionBar--vertical"
+      }.freeze
+      DIRECTION_OPTIONS = DIRECTION_MAPPINGS.keys.freeze
+
       renders_many :items, types: {
         icon_button: lambda { |**system_arguments|
           Primer::Alpha::ActionBar::Item.new(item_type: :icon_button, **system_arguments)
@@ -22,13 +29,17 @@ module Primer
       #   <%= render(Primer::Alpha::ActionBar.new) { "Example" } %>
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(**system_arguments)
+      def initialize(direction: DIRECTION_DEFAULT, **system_arguments)
         @menu_id = "action-bar-overflow-menu-#{SecureRandom.hex(4)}"
         @system_arguments = system_arguments
         @system_arguments[:tag] = "div"
+
+        @direction = fetch_or_fallback(DIRECTION_OPTIONS, direction, DIRECTION_DEFAULT)
+
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
-          "ActionBar"
+          "ActionBar",
+          DIRECTION_MAPPINGS[@direction]
         )
         @system_arguments[:role] = "toolbar"
       end
