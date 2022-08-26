@@ -1,5 +1,33 @@
 /* CSS for ActionBar  */
 
 .ActionBar {
+  display: flex;
+  align-items: center;
+}
 
+/* TODO: Replace with IconButton */
+.ActionBar-item .btn-octicon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  min-width: var(--primer-control-medium-size, 32px);
+  height: var(--primer-control-medium-size, 32px);
+  border-radius: var(--primer-borderRadius-medium, 6px);
+
+  &:hover {
+    color: var(--color-fg-default);
+    background-color: var(--color-segmented-control-button-hover-bg);
+  }
+
+  &:active {
+    background-color: var(--color-segmented-control-button-active-bg);
+  }
+}
+
+.ActionBar-divider {
+  margin: 0 var(--primer-control-medium-gap, 8px);
+  height: var(--primer-control-medium-lineBoxHeight, 16px);
+  border-left: var(--primer-borderWidth-thin, 1px) solid var(--color-border-subtle);
 }
