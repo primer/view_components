@@ -74,9 +74,9 @@ module Primer
           trailing_action: trailing_action,
         )
 
-        item.with_leading_action_icon(icon: leading_action_icon) if leading_action_icon && leading_action_icon != :none
+        item.with_leading_action_icon(icon: private_leading_action_icon) if private_leading_action_icon && leading_action_icon != :none
 
-        item.with_leading_action_icon(icon: leading_action_icon) if leading_action_icon
+        item.with_leading_action_icon(icon: private_leading_action_icon) if private_leading_action_icon
 
         if leading_visual_icon && leading_visual_icon != :none
           item.with_leading_visual_icon(icon: leading_visual_icon)
@@ -94,9 +94,9 @@ module Primer
           item.with_trailing_visual_text(trailing_visual_text)
         end
 
-        item.with_trailing_action_visual_icon(icon: trailing_action_visual) if trailing_action_visual
+        # item.with_trailing_action_visual_icon(icon: trailing_action_visual) if trailing_action_visual
 
-        item.with_trailing_action_button_button(icon: trailing_action_icon, "aria-label": "test") if trailing_action_icon
+        item.with_trailing_action_button_button(icon: private_trailing_action_icon, "aria-label": "test") if private_trailing_action_icon
 
         item.description { description } if description
 
