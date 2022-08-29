@@ -63,6 +63,10 @@ module Primer
         )
         @system_arguments[:role] = "toolbar"
       end
+
+      def render?
+        items.any?
+      end
     end
   end
 end

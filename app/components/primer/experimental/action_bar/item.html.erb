@@ -1,7 +1,7 @@
 <%= render Primer::ConditionalWrapper.new(condition: !divider?, tag: :div, classes: "ActionBar-item", "data-targets": "action-bar.items") do %>
   <% if icon_button? %>
-    <%= render Primer::IconButton.new(@system_arguments) %>
+    <%= render Primer::IconButton.new(**@system_arguments) %>
   <% else %>
-    <%= render Primer::BaseComponent.new(@system_arguments) %>
+    <%= render Primer::BaseComponent.new(**@system_arguments) %>
   <% end %>
 <% end %>
