@@ -1,8 +1,8 @@
 {
-  "Primer::Alpha::ActionBar": {
-    "Item": "Primer::Alpha::ActionBar::Item"
+  "Primer::Experimental::ActionBar": {
+    "Item": "Primer::Experimental::ActionBar::Item"
   },
-  "Primer::Alpha::ActionBar::Item": {
+  "Primer::Experimental::ActionBar::Item": {
     "ITEM_TYPES": [
       "icon_button",
       "divider"

@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module Primer
-  module Alpha
+  module Experimental
     # Add a general description of component here
     # Add additional usage considerations or best practices that may aid the user to use the component correctly.
     # @accessibility Add any accessibility considerations
     class ActionBar < Primer::Component
-      status :alpha
+      status :experimental
 
       SIZE_DEFAULT = :medium
       SIZE_MAPPINGS = {
@@ -33,16 +33,16 @@ module Primer
 
       renders_many :items, types: {
         icon_button: lambda { |**system_arguments|
-          Primer::Alpha::ActionBar::Item.new(item_type: :icon_button, **system_arguments)
+          Primer::Experimental::ActionBar::Item.new(item_type: :icon_button, **system_arguments)
         },
         divider: lambda { |**system_arguments|
-          Primer::Alpha::ActionBar::Item.new(item_type: :divider, **system_arguments)
+          Primer::Experimental::ActionBar::Item.new(item_type: :divider, **system_arguments)
         }
       }
 
       # @example Example goes here
       #
-      #   <%= render(Primer::Alpha::ActionBar.new) { "Example" } %>
+      #   <%= render(Primer::Experimental::ActionBar.new) { "Example" } %>
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(size: SIZE_DEFAULT, density: DENSITY_DEFAULT, direction: DIRECTION_DEFAULT, **system_arguments)

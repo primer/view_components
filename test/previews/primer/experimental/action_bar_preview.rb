@@ -4,7 +4,7 @@
 # Setup Features to use individual component props and combinations
 
 module Primer
-  module Alpha
+  module Experimental
     # @label ActionBar
     class ActionBarPreview < ViewComponent::Preview
       # @param size [Symbol] select [[Small, small], [Medium, medium], [Large, large]]
@@ -12,7 +12,7 @@ module Primer
       # @param direction [Symbol] select [[Horizontal, horizontal], [Vertical, vertical]]
       # @param aria_label [String]
       def playground(size: :medium, density: :normal, direction: :horizontal)
-        render(Primer::Alpha::ActionBar.new(size: size, density: density, direction: direction)) do |component|
+        render(Primer::Experimental::ActionBar.new(size: size, density: density, direction: direction)) do |component|
           component.with_item_icon_button(icon: :heading, "aria-label": "Heading")
           component.with_item_icon_button(icon: :bold, "aria-label": "Bold")
           component.with_item_icon_button(icon: :italic, "aria-label": "Italic")

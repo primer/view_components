@@ -1,5 +1,5 @@
 module Primer
-  module Alpha
+  module Experimental
     class ActionBar
       # :nodoc:
       class Item < Primer::Component
