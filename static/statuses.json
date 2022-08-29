@@ -1,6 +1,6 @@
 {
-  "Primer::Experimental::ActionBar": "alpha",
-  "Primer::Experimental::ActionBar::Item": "alpha",
+  "Primer::Experimental::ActionBar": "experimental",
+  "Primer::Experimental::ActionBar::Item": "experimental",
   "Primer::Alpha::AutoComplete": "deprecated",
   "Primer::Alpha::AutoComplete::Item": "deprecated",
   "Primer::Alpha::ButtonMarketing": "alpha",

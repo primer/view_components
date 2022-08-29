@@ -1,14 +1,4 @@
 {
-  "Primer::Experimental::ActionBar": {
-    "Item": "Primer::Experimental::ActionBar::Item"
-  },
-  "Primer::Experimental::ActionBar::Item": {
-    "ITEM_TYPES": [
-      "icon_button",
-      "divider"
-    ],
-    "ITEM_TYPE_DEFAULT": "icon_button"
-  },
   "Primer::Alpha::AutoComplete": {
     "Item": "Primer::Alpha::AutoComplete::Item"
   },
