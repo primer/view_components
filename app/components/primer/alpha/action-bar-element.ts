@@ -26,6 +26,9 @@ export class ActionBarElement extends HTMLElement {
 
   #calculateVisibility() {
     const firstItem = this.items[0]
+    if (firstItem.hidden && this.offsetWidth >= firstItem.offsetWidth + this.#gap()) {
+      this.#showItems(1)
+    }
     const offset = positionedOffset(firstItem, this)
     if (!offset) {
       return
