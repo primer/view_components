@@ -9,6 +9,8 @@ export class ActionBarElement extends HTMLElement {
   @targets items: HTMLElement[]
   @targets menuItems: HTMLElement[]
   @target moreMenu: HTMLElement
+
+  // eslint-disable-next-line prettier/prettier
   #observer: ResizeObserver
   #initialBarWidth: number
 
