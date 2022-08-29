@@ -1,44 +1,46 @@
-<%= render(Primer::Beta::BorderBox.new(mb: 2)) do |component| %>
-  <% component.with_body(p: 0) do %>
-    <%= render(Primer::Alpha::TabPanels.new(label: "With panels", display: :flex, mb: 0, bg: :subtle)) do |component| %>
-      <% component.with_tab(id: "tab-1", selected: true, style: "margin-top: -1px;margin-left: -1px;") do |t| %>
-        <% t.text { "Write" } %>
-        <% t.panel do %>
-          <textarea class="FormControl-textarea d-block width-full" style="border-color:transparent;"></textarea>
+<%= render Primer::BaseComponent.new(tag: :div, container: container) do %>
+  <%= render(Primer::Beta::BorderBox.new(mb: 2)) do |component| %>
+    <% component.with_body(p: 0) do %>
+      <%= render(Primer::Alpha::TabPanels.new(label: "With panels", display: :flex, mb: 0, bg: :subtle)) do |component| %>
+        <% component.with_tab(id: "tab-1", selected: true, style: "margin-top: -1px;margin-left: -1px;") do |t| %>
+          <% t.text { "Write" } %>
+          <% t.panel do %>
+            <textarea class="FormControl-textarea d-block width-full" style="border-color:transparent;"></textarea>
+          <% end %>
         <% end %>
-      <% end %>
-      <% component.with_tab(id: "tab-2", style: "margin-top: -1px;margin-left: -1px;") do |t| %>
-        <% t.text { "Preview" } %>
-        <% t.panel do %>
-          <div class="p-3">
-            Markdown preview
+        <% component.with_tab(id: "tab-2", style: "margin-top: -1px;margin-left: -1px;") do |t| %>
+          <% t.text { "Preview" } %>
+          <% t.panel do %>
+            <div class="p-3">
+              Markdown preview
+            </div>
+          <% end %>
+        <% end %>
+        <% component.with_extra(align: :right) do %>
+          <div class="flex-auto position-relative mr-2">
+            <%= render(Primer::Experimental::ActionBar.new(size: :small, density: :condensed, position: :absolute, top: 0, right: 0, bottom: 0, left: 0)) do |component| %>
+              <% component.with_item_icon_button(icon: :heading, "aria-label": "Heading") %>
+              <% component.with_item_icon_button(icon: :bold, "aria-label": "Bold") %>
+              <% component.with_item_icon_button(icon: :italic, "aria-label": "Italic") %>
+              <% component.with_item_icon_button(icon: :quote, "aria-label": "Quote") %>
+              <% component.with_item_icon_button(icon: :code, "aria-label": "Code") %>
+              <% component.with_item_icon_button(icon: :link, "aria-label": "Link") %>
+              <% component.with_item_divider %>
+              <% component.with_item_icon_button(icon: :"list-ordered", "aria-label": "List ordered") %>
+              <% component.with_item_icon_button(icon: :"list-unordered", "aria-label": "List unordered") %>
+              <% component.with_item_icon_button(icon: :tasklist, "aria-label": "Tasklist") %>
+              <% component.with_item_divider %>
+              <% component.with_item_icon_button(icon: :mention, "aria-label": "Mention") %>
+              <% component.with_item_icon_button(icon: :"cross-reference", "aria-label": "Reference") %>
+              <% component.with_item_icon_button(icon: :reply, "aria-label": "Reply") %>
+              <% component.with_item_icon_button(icon: :"diff-ignored", "aria-label": "Slash command") %>
+              <% component.with_item_icon_button(icon: :paperclip, "aria-label": "Attach Image") %>
+            <% end %>
           </div>
         <% end %>
       <% end %>
-      <% component.with_extra(align: :right) do %>
-        <div class="flex-auto position-relative mr-2">
-          <%= render(Primer::Experimental::ActionBar.new(size: :small, density: :condensed, position: :absolute, top: 0, right: 0, bottom: 0, left: 0)) do |component| %>
-            <% component.with_item_icon_button(icon: :heading, "aria-label": "Heading") %>
-            <% component.with_item_icon_button(icon: :bold, "aria-label": "Bold") %>
-            <% component.with_item_icon_button(icon: :italic, "aria-label": "Italic") %>
-            <% component.with_item_icon_button(icon: :quote, "aria-label": "Quote") %>
-            <% component.with_item_icon_button(icon: :code, "aria-label": "Code") %>
-            <% component.with_item_icon_button(icon: :link, "aria-label": "Link") %>
-            <% component.with_item_divider %>
-            <% component.with_item_icon_button(icon: :"list-ordered", "aria-label": "List ordered") %>
-            <% component.with_item_icon_button(icon: :"list-unordered", "aria-label": "List unordered") %>
-            <% component.with_item_icon_button(icon: :tasklist, "aria-label": "Tasklist") %>
-            <% component.with_item_divider %>
-            <% component.with_item_icon_button(icon: :mention, "aria-label": "Mention") %>
-            <% component.with_item_icon_button(icon: :"cross-reference", "aria-label": "Reference") %>
-            <% component.with_item_icon_button(icon: :reply, "aria-label": "Reply") %>
-            <% component.with_item_icon_button(icon: :"diff-ignored", "aria-label": "Slash command") %>
-            <% component.with_item_icon_button(icon: :paperclip, "aria-label": "Attach Image") %>
-          <% end %>
-        </div>
-      <% end %>
     <% end %>
   <% end %>
+  <%= render(Primer::ButtonComponent.new(scheme: :primary,float: :right, ml: 2)) { "Comment" } %>
+  <%= render(Primer::ButtonComponent.new(float: :right)) { "Close" } %>
 <% end %>
-<%= render(Primer::ButtonComponent.new(scheme: :primary,float: :right, ml: 2)) { "Comment" } %>
-<%= render(Primer::ButtonComponent.new(float: :right)) { "Close" } %>

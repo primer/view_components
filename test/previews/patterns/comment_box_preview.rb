@@ -3,8 +3,9 @@
 module Patterns
   # @label Comment box
   class CommentBoxPreview < ViewComponent::Preview
-    def default
-      render_with_template(locals: {})
+    # @param container [Symbol] select [[None, nil], [Small, sm], [Medium, md], [Large, lg], [XLarge, xl]]
+    def default(container: nil)
+      render_with_template(locals: { container: container })
     end
   end
 end
