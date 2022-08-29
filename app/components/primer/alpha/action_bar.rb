@@ -8,6 +8,14 @@ module Primer
     class ActionBar < Primer::Component
       status :alpha
 
+      SIZE_DEFAULT = :medium
+      SIZE_MAPPINGS = {
+        SIZE_DEFAULT => nil,
+        :small => "ActionBar--small",
+        :large => "ActionBar--large"
+      }.freeze
+      SIZE_OPTIONS = SIZE_MAPPINGS.keys.freeze
+
       DENSITY_DEFAULT = :normal
       DENSITY_MAPPINGS = {
         DENSITY_DEFAULT => nil,
@@ -37,17 +45,19 @@ module Primer
       #   <%= render(Primer::Alpha::ActionBar.new) { "Example" } %>
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(density: DENSITY_DEFAULT, direction: DIRECTION_DEFAULT, **system_arguments)
+      def initialize(size: SIZE_DEFAULT, density: DENSITY_DEFAULT, direction: DIRECTION_DEFAULT, **system_arguments)
         @menu_id = "action-bar-overflow-menu-#{SecureRandom.hex(4)}"
         @system_arguments = system_arguments
         @system_arguments[:tag] = :"action-bar"
 
+        @size = fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)
         @density = fetch_or_fallback(DENSITY_OPTIONS, density, DENSITY_DEFAULT)
         @direction = fetch_or_fallback(DIRECTION_OPTIONS, direction, DIRECTION_DEFAULT)
 
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
           "ActionBar",
+          SIZE_MAPPINGS[@size],
           DENSITY_MAPPINGS[@density],
           DIRECTION_MAPPINGS[@direction]
         )

@@ -1,6 +1,8 @@
 /* CSS for ActionBar  */
 
 .ActionBar {
+  --size: var(--primer-control-medium-size, 32px);
+
   display: flex;
   align-items: center;
   gap: var(--primer-controlStack-small-gap-condensed, 8px);
@@ -15,8 +17,8 @@
   justify-content: center;
   margin: 0;
   padding: 0;
-  min-width: var(--primer-control-medium-size, 32px);
-  height: var(--primer-control-medium-size, 32px);
+  width: var(--size);
+  height: var(--size);
   border-radius: var(--primer-borderRadius-medium, 6px);
 
   &:hover {
@@ -31,11 +33,21 @@
 
 .ActionBar-divider {
   margin: 0 var(--primer-control-medium-gap, 8px);
-  height: var(--primer-control-medium-lineBoxHeight, 16px);
+  height: calc(var(--size) / 2);
   border-left: var(--primer-borderWidth-thin, 1px) solid var(--color-border-subtle);
 }
 
-/* Variations */
+/* Size */
+
+.ActionBar--small {
+  --size: var(--primer-control-small-size, 28px);
+}
+
+.ActionBar--large {
+  --size: var(--primer-control-large-size, 40px);
+}
+
+/* Density */
 
 .ActionBar--condensed {
   gap: 0;
@@ -45,13 +57,15 @@
   gap: var(--primer-controlStack-small-gap-spacious, 16px);
 }
 
+/* Direction */
+
 .ActionBar--vertical {
   flex-direction: column;
 
   .ActionBar-divider {
     margin: var(--primer-control-medium-gap, 8px) 0;
     height: auto;
-    width: var(--primer-control-medium-lineBoxHeight, 16px);
+    width: calc(var(--size) / 2);
     border-left: none;
     border-bottom: var(--primer-borderWidth-thin, 1px) solid var(--color-border-subtle);
   }
