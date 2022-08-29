@@ -5,11 +5,11 @@ module Primer
     class ActionList
       # :nodoc:
       class Item < Primer::Component
-        DEFAULT_SIZE = :small
+        DEFAULT_SIZE = :medium
         SIZE_MAPPINGS = {
           DEFAULT_SIZE => nil,
-          :medium => "ActionList-content--sizeMedium",
-          :large => "ActionList-content--sizeLarge"
+          :large => "ActionListContent--sizeLarge",
+          :xlarge => "ActionListContent--sizeXLarge"
         }.freeze
         SIZE_OPTIONS = SIZE_MAPPINGS.keys.freeze
 
@@ -64,7 +64,7 @@ module Primer
         }
 
         renders_one :trailing_action, lambda { |**system_arguments|
-          Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
+          Primer::IconButton.new(scheme: :default, classes: ["ActionList-item-button", "hey" => @trailing_action_on_hover], **system_arguments)
         }
 
         renders_many :items, lambda { |**system_arguments|
@@ -103,6 +103,7 @@ module Primer
           active: false,
           on_click: nil,
           expanded: false,
+          trailing_action_on_hover: false,
           **system_arguments
         )
           @list = list
@@ -114,6 +115,7 @@ module Primer
           @checked = checked
           @active = active
           @expanded = expanded
+          @trailing_action_on_hover = trailing_action_on_hover
           @system_arguments = system_arguments
 
           @size = fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)
@@ -128,7 +130,8 @@ module Primer
             SCHEME_MAPPINGS[@scheme],
             "ActionList-item",
             "ActionList-item--navActive" => @active,
-            "ActionList-item--subItem" => sub_item?
+            "ActionList-item--subItem" => sub_item?,
+            "ActionList-item--trailingActionHover" => @trailing_action_on_hover,
           )
 
           @system_arguments[:role] = role

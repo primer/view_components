@@ -11,7 +11,7 @@ module Primer
       # @param label text
       # @param truncate_label toggle
       # @param href text
-      # @param size [Symbol] select [small, medium, large]
+      # @param size [Symbol] select [medium, large, xlarge]
       # @param scheme [Symbol] select [default, danger]
       # @param disabled toggle
       # @param description text
@@ -25,8 +25,9 @@ module Primer
       # @param trailing_visual_label text
       # @param trailing_visual_counter number
       # @param trailing_visual_text text
-      # @param leading_action_button_icon [Symbol] octicon
-      # @param trailing_action_button_icon [Symbol] octicon
+      # @param private_leading_action_icon [Symbol] octicon
+      # @param private_trailing_action_icon [Symbol] octicon
+      # @param trailing_action [Symbol] octicon
       def list(
         role: Primer::Alpha::ActionList::DEFAULT_ROLE,
         label: "Label",
@@ -47,8 +48,9 @@ module Primer
         trailing_visual_label: nil,
         trailing_visual_counter: nil,
         trailing_visual_text: nil,
-        leading_action_button_icon: nil,
-        trailing_action_button_icon: nil
+        private_leading_action_icon: nil,
+        private_trailing_action_icon: nil,
+        trailing_action: nil
       )
         render(Primer::Alpha::ActionList.new(role: role)) do |list|
           add_item_to(
@@ -71,8 +73,9 @@ module Primer
             trailing_visual_label: trailing_visual_label,
             trailing_visual_counter: trailing_visual_counter,
             trailing_visual_text: trailing_visual_text,
-            leading_action_button_icon: leading_action_button_icon,
-            trailing_action_button_icon: trailing_action_button_icon
+            private_leading_action_icon: private_leading_action_icon,
+            private_trailing_action_icon: private_trailing_action_icon,
+            trailing_action: trailing_action,
           )
         end
       end
@@ -82,7 +85,7 @@ module Primer
       # @param label text
       # @param truncate_label toggle
       # @param href text
-      # @param size [Symbol] select [small, medium, large]
+      # @param size [Symbol] select [medium, large, xlarge]
       # @param scheme [Symbol] select [default, danger]
       # @param disabled toggle
       # @param description text
@@ -96,8 +99,9 @@ module Primer
       # @param trailing_visual_label text
       # @param trailing_visual_counter number
       # @param trailing_visual_text text
-      # @param leading_action_button_icon [Symbol] octicon
-      # @param trailing_action_button_icon [Symbol] octicon
+      # @param private_leading_action_icon [Symbol] octicon
+      # @param private_trailing_action_icon [Symbol] octicon
+      # @param trailing_action [Symbol] octicon
       def item(
         label: "Label",
         truncate_label: false,
@@ -117,8 +121,9 @@ module Primer
         trailing_visual_label: nil,
         trailing_visual_counter: nil,
         trailing_visual_text: nil,
-        leading_action_button_icon: nil,
-        trailing_action_button_icon: nil
+        private_leading_action_icon: nil,
+        private_trailing_action_icon: nil,
+        trailing_action: nil
       )
         list = Primer::Alpha::ActionList.new
         add_item_to(
@@ -141,8 +146,9 @@ module Primer
           trailing_visual_label: trailing_visual_label,
           trailing_visual_counter: trailing_visual_counter,
           trailing_visual_text: trailing_visual_text,
-          leading_action_button_icon: leading_action_button_icon,
-          trailing_action_button_icon: trailing_action_button_icon
+          private_leading_action_icon: private_leading_action_icon,
+          private_trailing_action_icon: private_trailing_action_icon,
+          trailing_action: trailing_action,
         )
         render(list.items.first)
       end
@@ -169,8 +175,9 @@ module Primer
         trailing_visual_label: nil,
         trailing_visual_counter: nil,
         trailing_visual_text: nil,
-        leading_action_button_icon: nil,
-        trailing_action_button_icon: nil
+        private_leading_action_icon: nil,
+        private_trailing_action_icon: nil,
+        trailing_action: nil
       )
         list.item(
           root: nil,
@@ -186,6 +193,7 @@ module Primer
           active: active,
           expanded: expanded
         ) do |item|
+            binding.irb
           if leading_visual_icon && leading_visual_icon != :none
             item.with_leading_visual_icon(icon: leading_visual_icon)
           elsif leading_visual_avatar_src
@@ -202,9 +210,7 @@ module Primer
             item.with_trailing_visual_text(trailing_visual_text)
           end
 
-          item.with_leading_action_button(icon: leading_action_button_icon, "aria-label": "Button") if leading_action_button_icon && leading_action_button_icon != :none
-
-          item.with_trailing_action_button(icon: trailing_action_button_icon, "aria-label": "Button") if trailing_action_button_icon && trailing_action_button_icon != :none
+          item.with_trailing_action(icon: trailing_action, "aria-label": "Button") if trailing_action && trailing_action != :none
 
           item.description { description } if description
         end

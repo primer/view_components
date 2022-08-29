@@ -9,7 +9,7 @@ module Primer
       # @param truncate_label toggle
       # @param href text
       # @param role text
-      # @param size [Symbol] select [small, medium, large]
+      # @param size [Symbol] select [medium, large, xlarge]
       # @param variant [Symbol] select [default, danger]
       # @param disabled toggle
       # @param description text
@@ -53,9 +53,11 @@ module Primer
         trailing_visual_text: nil,
         private_leading_action_icon: nil,
         private_trailing_action_icon: nil,
-        trailing_action: nil
+        trailing_action: false
       )
-        item = Primer::Alpha::ActionListItem.new(
+        item = Primer::Alpha::ActionList::Item.new(
+					list,
+          root: nil,
           label: label,
           truncate_label: truncate_label,
           role: role,
@@ -74,9 +76,9 @@ module Primer
           trailing_action: trailing_action,
         )
 
-        item.with_leading_action_icon(icon: leading_action_icon) if leading_action_icon && leading_action_icon != :none
+        # item.with_leading_action_icon(icon: leading_action_icon) if leading_action_icon && leading_action_icon != :none
 
-        item.with_leading_action_icon(icon: leading_action_icon) if leading_action_icon
+        # item.with_leading_action_icon(icon: leading_action_icon) if leading_action_icon
 
         if leading_visual_icon && leading_visual_icon != :none
           item.with_leading_visual_icon(icon: leading_visual_icon)
@@ -94,9 +96,9 @@ module Primer
           item.with_trailing_visual_text(trailing_visual_text)
         end
 
-        item.with_trailing_action_visual_icon(icon: trailing_action_visual) if trailing_action_visual
+        # item.with_trailing_action_visual_icon(icon: trailing_action_visual) if trailing_action_visual
 
-        item.with_trailing_action_button_button(icon: trailing_action_icon, "aria-label": "test") if trailing_action_icon
+        # item.with_trailing_action_button_button(icon: trailing_action_icon, "aria-label": "test") if trailing_action_icon
 
         item.description { description } if description
 
