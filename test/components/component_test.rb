@@ -78,6 +78,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.heading { "Foo" } }],
     [Primer::TabContainerComponent, {}, proc { "Foo" }],
+    [Primer::Alpha::ToggleSwitch, {}],
     [Primer::Alpha::TextField, { name: :foo, label: "Foo" }],
     [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
@@ -107,7 +108,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
-      "Primer::BorderBoxComponent",
       "Primer::BoxComponent"
     ]
 

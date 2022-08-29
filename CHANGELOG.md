@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 0.0.92
+
+### Patch Changes
+
+- [#1312](https://github.com/primer/view_components/pull/1312) [`ff515aa4`](https://github.com/primer/view_components/commit/ff515aa43baf99eda3ba56ede28693c733307b19) Thanks [@danielnc](https://github.com/danielnc)! - Fixing Primer::Forms::ActsAsComponent::TemplateParams keyword args
+
+* [#1331](https://github.com/primer/view_components/pull/1331) [`7bf8ba76`](https://github.com/primer/view_components/commit/7bf8ba76ce54bc509eb12ab29f1aa0e3c5f6d3d8) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing deprecated Primer::BorderBoxComponent
+
+- [#1318](https://github.com/primer/view_components/pull/1318) [`624a8875`](https://github.com/primer/view_components/commit/624a8875a7cc1640a23dec3cc8256ffb893ec1c3) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing deprecated Primer::ButtonGroup component
+
+* [#1330](https://github.com/primer/view_components/pull/1330) [`b89ac4dd`](https://github.com/primer/view_components/commit/b89ac4dd64be4e7fcbb4a14cf486a326db4e4a3c) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Rename test class names that collided
+
+- [#1332](https://github.com/primer/view_components/pull/1332) [`3004d86d`](https://github.com/primer/view_components/commit/3004d86db2d7e99dbe16f85ce02100499661b1be) Thanks [@jonrohan](https://github.com/jonrohan)! - Ignore compiled _.js _.css files
+
+* [#1307](https://github.com/primer/view_components/pull/1307) [`311fe11e`](https://github.com/primer/view_components/commit/311fe11e7a9e918e6a749c0f01b5db68b3210c2d) Thanks [@khiga8](https://github.com/khiga8)! - Improving screen reader support for tooltip with `sr-only`
+
+- [#1321](https://github.com/primer/view_components/pull/1321) [`f18ef0f0`](https://github.com/primer/view_components/commit/f18ef0f0ea1404dd081cf4398505304ca9b9087d) Thanks [@camertron](https://github.com/camertron)! - Adding Primer::Alpha::ToggleSwitch component
+
 ## 0.0.91
 
 ### Patch Changes

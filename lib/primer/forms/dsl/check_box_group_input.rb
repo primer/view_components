@@ -7,8 +7,7 @@ module Primer
       class CheckBoxGroupInput < Input
         attr_reader :label, :check_boxes
 
-        def initialize(name: nil, label: nil, **system_arguments)
-          @name = name
+        def initialize(label: nil, **system_arguments)
           @label = label
           @check_boxes = []
 
@@ -32,21 +31,9 @@ module Primer
         end
 
         def check_box(**system_arguments)
-          args = {
-            name: @name,
-            **system_arguments,
-            builder: @builder,
-            form: @form,
-            scheme: scheme
-          }
-
-          @check_boxes << CheckBoxInput.new(**args)
-        end
-
-        private
-
-        def scheme
-          @name ? :array : :boolean
+          @check_boxes << CheckBoxInput.new(
+            builder: @builder, form: @form, **system_arguments
+          )
         end
       end
     end
