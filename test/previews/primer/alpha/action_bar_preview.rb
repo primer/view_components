@@ -31,6 +31,10 @@ module Primer
           component.with_item_icon_button(icon: :paperclip, "aria-label": "Attach Image")
         end
       end
+
+      def with_tab_panels
+        render_with_template(locals: {})
+      end
     end
   end
 end
