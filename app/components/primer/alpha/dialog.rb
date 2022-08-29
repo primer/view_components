@@ -29,6 +29,23 @@ module Primer
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
+      DEFAULT_POSITION = :center
+      POSITION_MAPPINGS = {
+        DEFAULT_POSITION => "Overlay-backdrop--center",
+        :left => "Overlay-backdrop--side Overlay-backdrop--placement-left",
+        :right => "Overlay-backdrop--side Overlay-backdrop--placement-right",
+      }.freeze
+      POSITION_OPTIONS = POSITION_MAPPINGS.keys
+
+      DEFAULT_POSITION_NARROW = :inherit
+      POSITION_NARROW_MAPPINGS = {
+        DEFAULT_POSITION_NARROW => "",
+        :bottom => "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-bottom-whenNarrow",
+        :fullscreen => "Overlay-backdrop--full-whenNarrow",
+      }.freeze
+      POSITION_NARROW_OPTIONS = POSITION_NARROW_MAPPINGS.keys
+
+
       # Optional button to open the dialog.
       #
       # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
@@ -93,6 +110,8 @@ module Primer
         title:,
         subtitle: nil,
         size: DEFAULT_SIZE,
+        position: DEFAULT_POSITION,
+        position_narrow: DEFAULT_POSITION_NARROW,
         id: "dialog-#{(36**3 + rand(36**4)).to_s(36)}",
         **system_arguments
       )
@@ -109,9 +128,15 @@ module Primer
           "Overlay--motion-scaleFade",
           system_arguments[:classes]
         )
+        @backdrop_classes = class_names(
+          POSITION_MAPPINGS[fetch_or_fallback(POSITION_OPTIONS, position, DEFAULT_POSITION)],
+          POSITION_NARROW_MAPPINGS[fetch_or_fallback(POSITION_NARROW_MAPPINGS, position_narrow, DEFAULT_POSITION_NARROW)],
+        )
 
         @id = id.to_s
         @title = title
+        @position = position
+        @position_narrow = position_narrow
 
         @subtitle = subtitle
         return if subtitle.present?
