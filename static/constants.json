@@ -18,7 +18,7 @@
     "DEFAULT_DESCRIPTION_SCHEME": "block",
     "DEFAULT_SCHEME": "default",
     "DEFAULT_SELECT_MODE": "none",
-    "DEFAULT_SIZE": "small",
+    "DEFAULT_SIZE": "medium",
     "DESCRIPTION_SCHEME_MAPPINGS": {
       "inline": "ActionList-item-descriptionWrap--inline",
       "block": "ActionList-item-descriptionWrap--block"
@@ -41,14 +41,14 @@
       "multiple"
     ],
     "SIZE_MAPPINGS": {
-      "small": null,
-      "medium": "ActionList-content--sizeMedium",
-      "large": "ActionList-content--sizeLarge"
+      "medium": null,
+      "large": "ActionListContent--sizeLarge",
+      "xlarge": "ActionListContent--sizeXLarge"
     },
     "SIZE_OPTIONS": [
-      "small",
       "medium",
-      "large"
+      "large",
+      "xlarge"
     ]
   },
   "Primer::Alpha::ActionList::Separator": {
