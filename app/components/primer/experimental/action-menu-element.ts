@@ -1,3 +1,4 @@
+// eslint-disable-next-line prettier/prettier
 import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 
@@ -42,7 +43,6 @@ class ActionMenuElement extends HTMLElement {
   set open(value: boolean) {
     const initialBodyWidth = document.body.clientWidth
 
-    // eslint-disable-next-line compat/compat
     const observer = new ResizeObserver(entries => {
       for (const entry of entries) {
         if (initialBodyWidth !== entry.contentRect.width && this.open) {
@@ -225,7 +225,7 @@ class ActionMenuElement extends HTMLElement {
   // Menu event handlers
   buttonKeydown(event: KeyboardEvent) {
     // TODO: use data-hotkey
-    // eslint-disable-next-line no-restricted-syntax
+
     const key = event.key
     let flag = false
 
@@ -276,7 +276,7 @@ class ActionMenuElement extends HTMLElement {
 
   menuItemKeydown(event: KeyboardEvent) {
     const currentTarget = event.currentTarget
-    // eslint-disable-next-line no-restricted-syntax
+
     const key = event.key
     let flag = false
 
@@ -284,7 +284,7 @@ class ActionMenuElement extends HTMLElement {
       return str.length === 1 && str.match(/\S/)
     }
 
-    // eslint-disable-next-line no-restricted-syntax
+
     if (event.ctrlKey || event.altKey || event.metaKey) {
       return
     }
@@ -295,7 +295,7 @@ class ActionMenuElement extends HTMLElement {
         flag = true
       }
 
-      // eslint-disable-next-line no-restricted-syntax
+
       if (event.key === 'Tab') {
         this.trigger?.focus()
         this.hide()
@@ -361,7 +361,7 @@ class ActionMenuElement extends HTMLElement {
   }
 
   menuItemMouseover(event: MouseEvent) {
-    ;(event.currentTarget as HTMLButtonElement).focus()
+    (event.currentTarget as HTMLButtonElement).focus()
   }
 
   backgroundMousedown(event: MouseEvent) {
