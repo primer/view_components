@@ -32,14 +32,14 @@ module Primer
         end
 
         def before_render
-          if heading.present?
-            @system_arguments[:aria][:label] = nil
-            @system_arguments[:"aria-label"] = nil
-            @system_arguments[:"aria-labelledby"] = id
+          # if heading.present?
+          @system_arguments[:aria][:label] = nil
+          @system_arguments[:"aria-label"] = nil
+          @system_arguments[:"aria-labelledby"] = id
           # else
             # aria_label = aria(:label, @system_arguments)
             # raise ArgumentError, "an aria-label is required" if aria_label.nil?
-          end
+          # end
         end
       end
     end
