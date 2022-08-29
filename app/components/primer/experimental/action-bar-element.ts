@@ -9,6 +9,8 @@ export class ActionBarElement extends HTMLElement {
   @targets items: HTMLElement[]
   @targets menuItems: HTMLElement[]
   @target moreMenu: HTMLElement
+  #observer: ResizeObserver
+  #initialBarWidth: number
 
   connectedCallback() {
     let overflowItemsCount = 0
@@ -21,7 +23,20 @@ export class ActionBarElement extends HTMLElement {
     this.#hideItems(overflowItemsCount)
     this.#toggleMoreMenu()
 
-    window.addEventListener('resize', this.#calculateVisibility.bind(this))
+    this.#initialBarWidth = this.offsetWidth
+
+    this.#observer = new ResizeObserver(entries => {
+      for (const entry of entries) {
+        if (this.#initialBarWidth !== entry.contentRect.width) {
+          this.#calculateVisibility()
+        }
+      }
+    })
+    this.#observer.observe(this)
+  }
+
+  disconnectedCallback() {
+    this.#observer.unobserve(this)
   }
 
   #calculateVisibility() {
