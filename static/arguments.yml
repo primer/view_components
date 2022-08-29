@@ -1,11 +1,4 @@
 ---
-- component: ActionBar
-  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_bar.rb
-  parameters:
-  - name: system_arguments
-    type: Hash
-    default: N/A
-    description: "[System arguments](/system-arguments)"
 - component: ButtonMarketing
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/button_marketing.rb
   parameters:

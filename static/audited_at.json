@@ -47,6 +47,8 @@
   "Primer::Dropdown::Menu": "",
   "Primer::Dropdown::Menu::Item": "",
   "Primer::DropdownMenuComponent": "",
+  "Primer::Experimental::ActionBar": "",
+  "Primer::Experimental::ActionBar::Item": "",
   "Primer::FlexComponent": "",
   "Primer::FlexItemComponent": "",
   "Primer::HeadingComponent": "",
