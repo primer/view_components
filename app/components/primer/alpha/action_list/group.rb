@@ -36,7 +36,7 @@ module Primer
             @system_arguments[:aria][:label] = nil
             @system_arguments[:"aria-label"] = nil
             @system_arguments[:"aria-labelledby"] = id
-          else
+          # else
             # aria_label = aria(:label, @system_arguments)
             # raise ArgumentError, "an aria-label is required" if aria_label.nil?
           end

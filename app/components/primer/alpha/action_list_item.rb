@@ -70,7 +70,7 @@ module Primer
       renders_one :trailing_visual, types: {
         icon: Primer::OcticonComponent,
         label: Primer::LabelComponent,
-        counter: Primer::CounterComponent,
+        counter: Primer::CounterComponent
         # text: ->(text) { text }
       }
 
