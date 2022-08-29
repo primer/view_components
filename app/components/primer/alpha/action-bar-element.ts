@@ -45,8 +45,12 @@ export class ActionBarElement extends HTMLElement {
     const reversedItems = this.items.slice().reverse().filter(item => !item.hidden)
     const reversedMenuItems = this.menuItems.slice().reverse().filter(item => item.hidden)
     for (const i of [...Array(count).keys()]) {
-      reversedItems[i].hidden = true
-      reversedMenuItems[i].hidden = false
+      if (reversedItems[i]) {
+        reversedItems[i].hidden = true
+      }
+      if (reversedMenuItems[i]) {
+        reversedMenuItems[i].hidden = false
+      }
     }
   }
 
@@ -54,8 +58,12 @@ export class ActionBarElement extends HTMLElement {
     const items = this.#hiddenItems()
     const menuItems = this.menuItems.filter(item => !item.hidden)
     for (const i of [...Array(count).keys()]) {
-      items[i].hidden = false
-      menuItems[i].hidden = true
+      if (items[i]) {
+        items[i].hidden = false
+      }
+      if (menuItems[i]) {
+        menuItems[i].hidden = true
+      }
     }
   }
 
