@@ -35,31 +35,31 @@ module Primer
         renders_one :leading_visual, types: {
           icon: Primer::OcticonComponent,
           avatar: lambda { |**kwargs|
-            Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
+            # Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
           },
           svg: lambda { |**system_arguments|
-            Primer::BaseComponent.new(tag: :svg, **system_arguments)
+            # Primer::BaseComponent.new(tag: :svg, **system_arguments)
           }
         }
 
         renders_one :private_leading_action, types: {
           icon: Primer::OcticonComponent,
           svg: lambda { |**system_arguments|
-            Primer::BaseComponent.new(tag: :svg, **system_arguments)
+            # Primer::BaseComponent.new(tag: :svg, **system_arguments)
           }
         }
 
         renders_one :trailing_visual, types: {
           icon: Primer::OcticonComponent,
           label: Primer::LabelComponent,
-          counter: Primer::CounterComponent,
-          text: ->(text) { text }
+          counter: Primer::CounterComponent
+          # text: ->(text) { text }
         }
 
         renders_one :private_trailing_action, types: {
           icon: Primer::OcticonComponent,
           svg: lambda { |**system_arguments|
-            Primer::BaseComponent.new(tag: :svg, **system_arguments)
+            # Primer::BaseComponent.new(tag: :svg, **system_arguments)
           }
         }
 
@@ -141,9 +141,9 @@ module Primer
 
           case @select_mode
           when :single
-            @system_arguments[:aria][:selected] = "true" if @checked
+            # @system_arguments[:aria][:selected] = "true" if @checked
           when :multiple
-            @system_arguments[:aria][:checked] = "true" if @checked
+            # @system_arguments[:aria][:checked] = "true" if @checked
           end
 
           @label_arguments = {

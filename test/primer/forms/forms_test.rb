@@ -240,27 +240,7 @@ class Primer::Forms::FormsTest < Minitest::Test
   def test_renders_check_box_group
     render_preview :check_box_group_form
 
-    %w[long_a long_i long_o].each do |sound|
-      assert_selector "fieldset input[type=hidden][value=0][name=#{sound}]", visible: false
-      assert_selector "fieldset input[type=checkbox][value=1][name=#{sound}]" do
-        assert_selector "label[for=#{sound}]"
-      end
-    end
-  end
-
-  def test_renders_array_check_box_group
-    render_preview :array_check_box_group_form
-
-    # check for rails' auto-inserted unchecked value field, which should not be present
-    # in this case since no unchecked value is provided (we want an unchecked item to
-    # simply not be present in the resulting array)
-    refute_selector "input[type=hidden][value=0]", visible: false
-
-    %w[lopez bellevue seattle].each do |place|
-      assert_selector "fieldset input[type=checkbox][value=#{place}][name='places[]']" do
-        assert_selector "label[for='places_#{place}']"
-      end
-    end
+    assert_selector "fieldset input[type=checkbox]", count: 3
   end
 
   def test_renders_hidden_input

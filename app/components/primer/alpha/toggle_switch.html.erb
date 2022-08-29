@@ -1,0 +1,44 @@
+<%= render(Primer::BaseComponent.new(tag: "toggle-switch", **@system_arguments)) do %>
+  <%= render(Primer::OcticonComponent.new(size: :small, color: :danger, icon: :alert, hidden: "true", data: { target: "toggle-switch.errorIcon" })) %>
+  <%= render(Primer::SpinnerComponent.new(size: :small, hidden: "true", data: { target: "toggle-switch.loadingSpinner" })) %>
+  <%= render(Primer::Beta::Text.new(aria: { hidden: true }, classes: "ToggleSwitch-status")) do %>
+    <%= render(Primer::Box.new(classes: "ToggleSwitch-statusOn").with_content("On")) %>
+    <%= render(Primer::Box.new(classes: "ToggleSwitch-statusOff").with_content("Off")) %>
+  <% end %>
+
+  <%= render(Primer::BaseComponent.new(tag: :button, classes: "ToggleSwitch-track", role: "switch", data: { target: "toggle-switch.switch", action: "click:toggle-switch#toggle" }, aria: { checked: on?, disabled: disabled?, label: "Switch" })) do %>
+    <%= render(Primer::Box.new(classes: "ToggleSwitch-icons", aria: { hidden: true })) do %>
+      <%= render(Primer::Box.new(classes: "ToggleSwitch-lineIcon")) do %>
+        <%= render(Primer::BaseComponent.new(
+          tag: :svg,
+          width: @size == :small ? 12 : 16,
+          height: @size == :small ? 12 : 16,
+          viewBox: "0 0 16 16",
+          fill: "currentColor",
+          xmlns: "http://www.w3.org/2000/svg",
+          aria: { hidden: true },
+          focusable: false
+        )) do %>
+          <path fill-rule="evenodd" d="M8 2a.75.75 0 0 1 .75.75v11.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 8 2Z" />
+        <% end %>
+      <% end %>
+
+      <%= render(Primer::Box.new(classes: "ToggleSwitch-circleIcon")) do %>
+        <%= render(Primer::BaseComponent.new(
+          tag: :svg,
+          width: @size == :small ? 12 : 16,
+          height: @size == :small ? 12 : 16,
+          viewBox: "0 0 16 16",
+          fill: "currentColor",
+          xmlns: "http://www.w3.org/2000/svg",
+          aria: { hidden: true },
+          focusable: false
+        )) do %>
+          <path fill-rule="evenodd" d="M8 12.5a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12Z" />
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= render(Primer::Box.new(classes: "ToggleSwitch-knob")) %>
+  <% end %>
+<% end %>

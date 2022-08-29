@@ -1,0 +1,6 @@
+/* box-shadow for :target styles (no inset) */
+/* !important to override PCSS utilities */
+@define-mixin targetBoxShadow $outlineWidth: 2px, $outlineColor: var(--color-accent-fg) {
+  outline: none !important;
+  box-shadow: 0 0 0 $outlineWidth $outlineColor !important;
+}

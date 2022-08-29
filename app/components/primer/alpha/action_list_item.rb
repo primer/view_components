@@ -36,42 +36,42 @@ module Primer
       renders_one :leading_action_visual, types: {
         icon: Primer::OcticonComponent,
         svg: lambda { |**system_arguments|
-          Primer::BaseComponent.new(tag: :svg, **system_arguments)
+          # Primer::BaseComponent.new(tag: :svg, **system_arguments)
         }
       }
 
       renders_one :leading_action_button, types: {
         button: lambda { |**system_arguments|
-          Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
+          # Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
         }
       }
 
       renders_one :trailing_action_visual, types: {
         icon: Primer::OcticonComponent,
         svg: lambda { |**system_arguments|
-          Primer::BaseComponent.new(tag: :svg, **system_arguments)
+          # Primer::BaseComponent.new(tag: :svg, **system_arguments)
         }
       }
 
       renders_one :trailing_action_button, lambda { |**system_arguments|
-        Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
+        # Primer::IconButton.new(scheme: :default, classes: "ActionList-item-button", **system_arguments)
       }
 
       renders_one :leading_visual, types: {
         icon: Primer::OcticonComponent,
         avatar: lambda { |**kwargs|
-          Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
+          # Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
         },
         svg: lambda { |**system_arguments|
-          Primer::BaseComponent.new(tag: :svg, **system_arguments)
+          # Primer::BaseComponent.new(tag: :svg, **system_arguments)
         }
       }
 
       renders_one :trailing_visual, types: {
         icon: Primer::OcticonComponent,
         label: Primer::LabelComponent,
-        counter: Primer::CounterComponent,
-        text: ->(text) { text }
+        counter: Primer::CounterComponent
+        # text: ->(text) { text }
       }
 
       def initialize(
@@ -131,9 +131,9 @@ module Primer
 
         case @select_mode
         when :single
-          @system_arguments[:aria][:selected] = "true" if @active
+          # @system_arguments[:aria][:selected] = "true" if @active
         when :multiple
-          @system_arguments[:aria][:checked] = "true" if @checked
+          # @system_arguments[:aria][:checked] = "true" if @checked
         end
 
         @action_button_arguments = {
@@ -173,10 +173,10 @@ module Primer
       def before_render
         return unless description && @description_variant == :block
 
-        @content_arguments[:classes] = class_names(
-          @content_arguments[:classes],
-          "ActionList-content--blockDescription"
-        )
+        # @content_arguments[:classes] = class_names(
+        #   @content_arguments[:classes],
+        #   "ActionList-content--blockDescription"
+        # )
       end
     end
   end

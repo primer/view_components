@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class PrimerAutoCompleteTest < Minitest::Test
+class PrimerAlphaAutoCompleteTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_raises_if_no_label_text_is_passed_in

@@ -19,6 +19,10 @@ class PrimerComponentTest < Minitest::Test
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
+    [Primer::Alpha::ActionList, {}, lambda do |component|
+      component.item(label: "Foo")
+    end],
+    [Primer::Alpha::ActionListItem, { label: "Foo" }],
     [Primer::Alpha::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
     [Primer::Alpha::AutoComplete::Item, { value: "Foo" }],
     [Primer::Beta::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
@@ -74,6 +78,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.heading { "Foo" } }],
     [Primer::TabContainerComponent, {}, proc { "Foo" }],
+    [Primer::Alpha::ToggleSwitch, {}],
     [Primer::Alpha::TextField, { name: :foo, label: "Foo" }],
     [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
@@ -87,6 +92,14 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::Alpha::ActionList::Checkmark",
+      "Primer::Alpha::ActionList::Group",
+      "Primer::Alpha::ActionList::Heading",
+      "Primer::Alpha::ActionList::Item",
+      "Primer::Alpha::ActionList::Separator",
+      "Primer::Alpha::Checklist",
+      "Primer::Alpha::Navlist",
+      "Primer::Alpha::Navlist::Item",
       "Primer::HiddenTextExpander",
       "Primer::HeadingComponent",
       "Primer::CloseButton",
@@ -95,7 +108,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
-      "Primer::BorderBoxComponent",
       "Primer::BoxComponent"
     ]
 
