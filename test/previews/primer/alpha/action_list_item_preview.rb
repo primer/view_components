@@ -71,7 +71,7 @@ module Primer
           sub_item: sub_item,
           href: href,
           show_on_hover: show_on_hover,
-          trailing_action: trailing_action,
+          trailing_action: trailing_action
         )
 
         item.with_leading_action_icon(icon: private_leading_action_icon) if private_leading_action_icon && leading_action_icon != :none
