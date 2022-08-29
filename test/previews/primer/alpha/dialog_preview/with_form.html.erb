@@ -1,4 +1,4 @@
-<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: title, width: width, height: height, subtitle: subtitle)) do |d| %>
+<%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: title, subtitle: subtitle)) do |d| %>
   <% d.show_button { button_text } %>
   <form class="pt-3">
     <%= render(Primer::Alpha::Dialog::Body.new) do %>

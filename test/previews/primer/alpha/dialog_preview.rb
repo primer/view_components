@@ -9,12 +9,24 @@ module Primer
       # @param title [String] text
       # @param subtitle [String] text
       # @param button_text [String] text
-      # @param width [Symbol] select [small, medium, large, xlarge, xxlarge]
-      # @param height [Symbol] select [small, auto, large, xlarge]
-      def default(title: "Test Dialog", subtitle: nil, width: :medium, height: :auto, button_text: "Show Dialog")
-        render(Primer::Alpha::Dialog.new(title: title, width: width, height: height, subtitle: subtitle)) do |d|
+      # @param size [Symbol] select [small, small_portrait, medium, medium_portrait, large, xlarge]
+      def default(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog")
+        render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size)) do |d|
           d.show_button { button_text }
           d.body { "Content" }
+        end
+      end
+
+      # @label Long text
+      #
+      # @param title [String] text
+      # @param subtitle [String] text
+      # @param button_text [String] text
+      # @param size [Symbol] select [small, small_portrait, medium, medium_portrait, large, xlarge]
+      def long_text(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog")
+        render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size)) do |d|
+          d.show_button { button_text }
+          d.body { "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?" }
         end
       end
 
@@ -23,15 +35,11 @@ module Primer
       # @param title [String] text
       # @param subtitle [String] text
       # @param button_text [String] text
-      # @param width [Symbol] select [small, medium, large, xlarge, xxlarge]
-      # @param height [Symbol] select [small, auto, large, xlarge]
       # @param show_divider [Boolean] toggle
-      def with_footer(title: "Test Dialog", subtitle: nil, width: :medium, height: :auto, button_text: "Show Dialog", show_divider: true)
+      def with_footer(title: "Test Dialog", subtitle: nil, button_text: "Show Dialog", show_divider: true)
         render_with_template(locals: {
                                title: title,
                                subtitle: subtitle,
-                               width: width,
-                               height: height,
                                button_text: button_text,
                                show_divider: show_divider
                              })
@@ -42,15 +50,11 @@ module Primer
       # @param title [String] text
       # @param subtitle [String] text
       # @param button_text [String] text
-      # @param width [Symbol] select [small, medium, large, xlarge, xxlarge]
-      # @param height [Symbol] select [small, auto, large, xlarge]
       # @param show_divider [Boolean] toggle
-      def with_form(title: "Test Dialog", subtitle: nil, width: :medium, height: :auto, button_text: "Show Dialog", show_divider: true)
+      def with_form(title: "Test Dialog", subtitle: nil, button_text: "Show Dialog", show_divider: true)
         render_with_template(locals: {
                                title: title,
                                subtitle: subtitle,
-                               width: width,
-                               height: height,
                                button_text: button_text,
                                show_divider: show_divider
                              })
