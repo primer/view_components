@@ -6,20 +6,23 @@ module Primer
       # A `Dialog::Header` is a compositional component, used to render the
       # Header of a dialog. See <%= link_to_component(Primer::Alpha::Dialog) %>.
       class Header < Primer::Component
-        # @param title [String] The title of the dialog.
-        # @param subtitle [String] The subtitle of the dialog. This will also set the `aria-describedby` attribute.
-        # @param show_divider [Boolean] If true the visual dividing line between the body and footer will be visible
+        # @param title [String] Describes the content of the dialog.
+        # @param subtitle [String] Provides dditional context for the dialog, also setting the `aria-describedby` attribute.
+        # @param show_divider [Boolean] Show a divider between the header and body.
+        # @param visually_hide_title [Boolean] Visually hide the `title` while maintaining a label for assistive technologies.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(
           id:,
           title:,
           subtitle: nil,
-          show_divider: true,
+          show_divider: false,
+          visually_hide_title: false,
           **system_arguments
         )
           @id = id
           @title = title
           @subtitle = subtitle
+          @visually_hide_title = visually_hide_title ? "sr-only" : nil
           @system_arguments = deny_tag_argument(**system_arguments)
           @system_arguments[:tag] = :header
           @system_arguments[:classes] = class_names(

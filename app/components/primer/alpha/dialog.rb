@@ -18,24 +18,34 @@ module Primer
     #   `aria-labelledby` relationship between the title and the unique id of
     #   the dialog.
     class Dialog < Primer::Component
-      DEFAULT_WIDTH = :medium
-      WIDTH_MAPPINGS = {
-        :small => "Overlay--width-small",
-        DEFAULT_WIDTH => "Overlay--width-medium",
-        :large => "Overlay--width-large",
-        :xlarge => "Overlay--width-xlarge",
-        :xxlarge => "Overlay--width-xxlarge"
+      DEFAULT_SIZE = :medium
+      SIZE_MAPPINGS = {
+        :small => "Overlay--size-small",
+        :medium_portrait => "Overlay--size-medium-portrait",
+        DEFAULT_SIZE => "Overlay--size-medium",
+        :large => "Overlay--size-large",
+        :xlarge => "Overlay--size-xlarge",
       }.freeze
-      WIDTH_OPTIONS = WIDTH_MAPPINGS.keys
+      SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
-      DEFAULT_HEIGHT = :auto
-      HEIGHT_MAPPINGS = {
-        :small => "Overlay--height-small",
-        DEFAULT_HEIGHT => "Overlay--height-auto",
-        :large => "Overlay--height-large",
-        :xlarge => "Overlay--height-xlarge"
+      DEFAULT_POSITION = :center
+      POSITION_MAPPINGS = {
+        DEFAULT_POSITION => "Overlay-backdrop--center",
+        :left => "Overlay-backdrop--side Overlay-backdrop--placement-left",
+        :right => "Overlay-backdrop--side Overlay-backdrop--placement-right",
       }.freeze
-      HEIGHT_OPTIONS = HEIGHT_MAPPINGS.keys
+      POSITION_OPTIONS = POSITION_MAPPINGS.keys
+
+      DEFAULT_POSITION_NARROW = :inherit
+      POSITION_NARROW_MAPPINGS = {
+        DEFAULT_POSITION_NARROW => "",
+        :bottom => "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-bottom-whenNarrow",
+        :fullscreen => "Overlay-backdrop--full-whenNarrow",
+        :left => "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-left-whenNarrow",
+        :right => "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-right-whenNarrow",
+      }.freeze
+      POSITION_NARROW_OPTIONS = POSITION_NARROW_MAPPINGS.keys
+
 
       # Optional button to open the dialog.
       #
@@ -52,14 +62,16 @@ module Primer
 
       # Header content.
       #
-      # @param show_divider [Boolean] If true the visual dividing line between the header and body will be visible
+      # @param show_divider [Boolean] Show a divider between the header and body.
+      # @param visually_hide_title [Boolean] Visually hide the `title` while maintaining a label for assistive technologies.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :header, lambda { |show_divider: true, **system_arguments|
+      renders_one :header, lambda { |show_divider: false, visually_hide_title: false, **system_arguments|
         Primer::Alpha::Dialog::Header.new(
           id: @id,
           title: @title,
           subtitle: @subtitle,
           show_divider: show_divider,
+          visually_hide_title: visually_hide_title,
           **system_arguments
         )
       }
@@ -71,7 +83,7 @@ module Primer
 
       # Footer content.
       #
-      # @param show_divider [Boolean] If true the visual dividing line between the body and footer will be visible
+      # @param show_divider [Boolean] Show a divider between the footer and body.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :footer, "Footer"
 
@@ -93,16 +105,17 @@ module Primer
       #       <% end %>
       #     <% end %>
       # @param id [String] The id of the dialog.
-      # @param title [String] The title of the dialog.
-      # @param subtitle [String] The subtitle of the dialog. This will also set the `aria-describedby` attribute.
-      # @param width [Symbol] The width of the dialog. <%= one_of(Primer::Alpha::Dialog::WIDTH_OPTIONS) %>
-      # @param height [Symbol] The height of the dialog. <%= one_of(Primer::Alpha::Dialog::HEIGHT_OPTIONS) %>
+      # @param title [String] Describes the content of the dialog.
+      # @param subtitle [String] Provides dditional context for the dialog, also setting the `aria-describedby` attribute.
+      # @param size [Symbol] The size of the dialog. <%= one_of(Primer::Alpha::Dialog::SIZE_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         title:,
         subtitle: nil,
-        width: DEFAULT_WIDTH,
-        height: DEFAULT_HEIGHT,
+        size: DEFAULT_SIZE,
+        position: DEFAULT_POSITION,
+        position_narrow: DEFAULT_POSITION_NARROW,
+        visually_hide_title: false,
         id: "dialog-#{(36**3 + rand(36**4)).to_s(36)}",
         **system_arguments
       )
@@ -114,14 +127,21 @@ module Primer
         @system_arguments[:aria] = { modal: true }
         @system_arguments[:classes] = class_names(
           "Overlay",
-          WIDTH_MAPPINGS[fetch_or_fallback(WIDTH_OPTIONS, width, DEFAULT_WIDTH)],
-          HEIGHT_MAPPINGS[fetch_or_fallback(HEIGHT_OPTIONS, height, DEFAULT_HEIGHT)],
+          "Overlay-whenNarrow",
+          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
           "Overlay--motion-scaleFade",
           system_arguments[:classes]
+        )
+        @backdrop_classes = class_names(
+          POSITION_MAPPINGS[fetch_or_fallback(POSITION_OPTIONS, position, DEFAULT_POSITION)],
+          POSITION_NARROW_MAPPINGS[fetch_or_fallback(POSITION_NARROW_MAPPINGS, position_narrow, DEFAULT_POSITION_NARROW)],
         )
 
         @id = id.to_s
         @title = title
+        @position = position
+        @position_narrow = position_narrow
+        @visually_hide_title = visually_hide_title
 
         @subtitle = subtitle
         return if subtitle.present?
