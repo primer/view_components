@@ -109,7 +109,6 @@ namespace :docs do
     components_needing_docs = all_components - components
 
     args_for_components = []
-    classes_found_in_examples = []
 
     errors = []
 
@@ -254,9 +253,6 @@ namespace :docs do
           end
           f.puts
           html = view_context.render(inline: code)
-          html.scan(/class="([^"]*)"/) do |classnames|
-            classes_found_in_examples.concat(classnames[0].split.reject { |c| c.starts_with?("octicon", "js", "my-") }.map { ".#{_1}" })
-          end
           f.puts("<Example src=\"#{html.tr('"', "\'").delete("\n")}\" />")
           f.puts
           f.puts("```erb")
