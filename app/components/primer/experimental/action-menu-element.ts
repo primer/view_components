@@ -2,7 +2,7 @@
 import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 
-class ActionMenuElement extends HTMLElement {
+export class ActionMenuElement extends HTMLElement {
   #abortController: AbortController
   #firstCharactersOfItems: string[]
   #firstMenuItem: HTMLElement

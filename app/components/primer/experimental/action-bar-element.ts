@@ -2,23 +2,30 @@
 /* eslint-disable custom-elements/define-tag-after-class-definition */
 
 import {controller, targets, target} from '@github/catalyst'
-import {positionedOffset} from '@primer/behaviors'
+import {positionedOffset, focusZone, FocusKeys} from '@primer/behaviors'
+// eslint-disable-next-line prettier/prettier
+import type {FocusZoneSettings} from '@primer/behaviors'
+import type {ActionMenuElement} from './action-menu-element'
 
 @controller
 export class ActionBarElement extends HTMLElement {
   @targets items: HTMLElement[]
   @targets menuItems: HTMLElement[]
-  @target moreMenu: HTMLElement
+  @target moreMenu: ActionMenuElement
 
-  // eslint-disable-next-line prettier/prettier
   #observer: ResizeObserver
   #initialBarWidth: number
   #itemGap: number
+  #focusController: AbortController
+  #focusSettings: FocusZoneSettings = {
+    bindKeys: FocusKeys.ArrowHorizontal | FocusKeys.HomeAndEnd
+  } as FocusZoneSettings
 
   connectedCallback() {
     this.#initialBarWidth = this.offsetWidth
     this.#itemGap = parseInt(window.getComputedStyle(this)?.columnGap) || 0
 
+    // Calculate the width of all the items before hiding anything
     for (const item of this.items) {
       const width = item.getBoundingClientRect().width
       const marginLeft = parseInt(window.getComputedStyle(item)?.marginLeft)
@@ -26,12 +33,15 @@ export class ActionBarElement extends HTMLElement {
       item.setAttribute('data-offset-width', `${width + marginLeft + marginRight}`)
     }
 
+    // Calculate visible items on page load until there is enough space
+    // to show all items or the first item is hidden
     while (this.#availableSpace() < 0 && !this.items[0].hidden) {
       this.#calculateVisibleItems()
     }
 
     this.#observer = new ResizeObserver(entries => {
       for (const entry of entries) {
+        // Only recalculate if the bar width changed
         if (this.#initialBarWidth !== entry.contentRect.width) {
           this.#calculateVisibleItems()
         }
@@ -42,6 +52,7 @@ export class ActionBarElement extends HTMLElement {
   }
 
   disconnectedCallback() {
+    this.#focusController?.abort()
     this.#observer.unobserve(this)
   }
 
@@ -63,7 +74,6 @@ export class ActionBarElement extends HTMLElement {
     } else if (space > this.#itemGap + this.#nextItemWidth()) {
       this.#showItem()
     }
-    this.#toggleMoreMenu()
   }
 
   #nextItemWidth(): number {
@@ -81,6 +91,14 @@ export class ActionBarElement extends HTMLElement {
     }
     visibleItems[visibleItems.length - 1].hidden = true
     hiddenMenuItems[hiddenMenuItems.length - 1].hidden = false
+
+    if (this.moreMenu.hidden) {
+      this.moreMenu.hidden = false
+    }
+
+    // Reset focus controller
+    this.#focusController?.abort()
+    this.#focusController = focusZone(this, this.#focusSettings)
   }
 
   #showItem() {
@@ -92,6 +110,15 @@ export class ActionBarElement extends HTMLElement {
     }
     hiddenItems[0].hidden = false
     visibleMenuItems[0].hidden = true
+    // If there was only one item left, hide the more menu
+    if (hiddenItems.length === 1) {
+      this.moreMenu.hidden = true
+      this.moreMenu.open = false
+    }
+
+    // Reset focus controller
+    this.#focusController?.abort()
+    this.#focusController = focusZone(this, this.#focusSettings)
   }
 
   #hiddenItems(): HTMLElement[] {
@@ -108,10 +135,6 @@ export class ActionBarElement extends HTMLElement {
 
   #visibleMenuItems(): HTMLElement[] {
     return this.menuItems.filter(item => !item.hidden)
-  }
-
-  #toggleMoreMenu() {
-    this.moreMenu.hidden = this.#hiddenItems().length === 0
   }
 }
 
