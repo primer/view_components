@@ -9,9 +9,9 @@ module Primer
       # @param title [String] text
       # @param subtitle [String] text
       # @param button_text [String] text
-      # @param size [Symbol] select [small, small_portrait, medium, medium_portrait, large, xlarge]
+      # @param size [Symbol] select [small, medium, medium_portrait, large, xlarge]
       # @param position [Symbol] select [center, left, right]
-      # @param position_narrow [Symbol] select [inherit, bottom, fullscreen]
+      # @param position_narrow [Symbol] select [inherit, bottom, fullscreen, left, right]
       def default(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", position: :center, position_narrow: :fullscreen)
         render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: position, position_narrow: position_narrow)) do |d|
           d.show_button { button_text }
@@ -24,9 +24,9 @@ module Primer
       # @param title [String] text
       # @param subtitle [String] text
       # @param button_text [String] text
-      # @param size [Symbol] select [small, small_portrait, medium, medium_portrait, large, xlarge]
+      # @param size [Symbol] select [small, medium, medium_portrait, large, xlarge]
       # @param position [Symbol] select [center, left, right]
-      # @param position_narrow [Symbol] select [inherit, bottom, fullscreen]
+      # @param position_narrow [Symbol] select [inherit, bottom, fullscreen, left, right]
       def long_text(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", position: :center, position_narrow: :fullscreen)
         render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: position, position_narrow: position_narrow)) do |d|
           d.show_button { button_text }

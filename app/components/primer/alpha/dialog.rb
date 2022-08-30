@@ -21,7 +21,6 @@ module Primer
       DEFAULT_SIZE = :medium
       SIZE_MAPPINGS = {
         :small => "Overlay--size-small",
-        :small_portrait => "Overlay--size-small-portrait",
         :medium_portrait => "Overlay--size-medium-portrait",
         DEFAULT_SIZE => "Overlay--size-medium",
         :large => "Overlay--size-large",
@@ -42,6 +41,8 @@ module Primer
         DEFAULT_POSITION_NARROW => "",
         :bottom => "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-bottom-whenNarrow",
         :fullscreen => "Overlay-backdrop--full-whenNarrow",
+        :left => "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-left-whenNarrow",
+        :right => "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-right-whenNarrow",
       }.freeze
       POSITION_NARROW_OPTIONS = POSITION_NARROW_MAPPINGS.keys
 
