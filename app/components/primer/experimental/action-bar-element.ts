@@ -13,27 +13,31 @@ export class ActionBarElement extends HTMLElement {
   // eslint-disable-next-line prettier/prettier
   #observer: ResizeObserver
   #initialBarWidth: number
+  #itemGap: number
 
   connectedCallback() {
-    let overflowItemsCount = 0
-    for (const item of this.items) {
-      const offset = positionedOffset(item, this)
-      if (offset && offset.left < 0) {
-        overflowItemsCount++
-      }
-    }
-    this.#hideItems(overflowItemsCount)
-    this.#toggleMoreMenu()
-
     this.#initialBarWidth = this.offsetWidth
+    this.#itemGap = parseInt(window.getComputedStyle(this)?.columnGap) || 0
+
+    for (const item of this.items) {
+      const width = item.getBoundingClientRect().width
+      const marginLeft = parseInt(window.getComputedStyle(item)?.marginLeft)
+      const marginRight = parseInt(window.getComputedStyle(item)?.marginRight)
+      item.setAttribute('data-offset-width', `${width + marginLeft + marginRight}`)
+    }
+
+    while (this.#availableSpace() < 0 && !this.items[0].hidden) {
+      this.#calculateVisibleItems()
+    }
 
     this.#observer = new ResizeObserver(entries => {
       for (const entry of entries) {
         if (this.#initialBarWidth !== entry.contentRect.width) {
-          this.#calculateVisibility()
+          this.#calculateVisibleItems()
         }
       }
     })
+
     this.#observer.observe(this)
   }
 
@@ -41,59 +45,73 @@ export class ActionBarElement extends HTMLElement {
     this.#observer.unobserve(this)
   }
 
-  #calculateVisibility() {
-    const firstItem = this.items[0]
-    if (firstItem.hidden && this.offsetWidth >= firstItem.offsetWidth + this.#gap()) {
-      this.#showItems(1)
-    }
-    const offset = positionedOffset(firstItem, this)
+  #availableSpace(): number {
+    // Get the offset of the first item from the container edge
+    const offset = positionedOffset(this.items[0], this)
     if (!offset) {
-      return
+      return this.clientWidth - this.moreMenu.clientWidth
     }
-    if (offset.left < 0) {
-      this.#hideItems(1)
-    } else if (offset.left >= firstItem.offsetWidth + this.#gap()) {
-      this.#showItems(1)
+
+    return offset.left
+  }
+
+  #calculateVisibleItems() {
+    const space = this.#availableSpace()
+
+    if (space < 0) {
+      this.#hideItem()
+    } else if (space > this.#itemGap + this.#nextItemWidth()) {
+      this.#showItem()
     }
     this.#toggleMoreMenu()
   }
 
-  #hideItems(count: number) {
-    const reversedItems = this.items.slice().reverse().filter(item => !item.hidden)
-    const reversedMenuItems = this.menuItems.slice().reverse().filter(item => item.hidden)
-    for (const i of [...Array(count).keys()]) {
-      if (reversedItems[i]) {
-        reversedItems[i].hidden = true
-      }
-      if (reversedMenuItems[i]) {
-        reversedMenuItems[i].hidden = false
-      }
-    }
+  #nextItemWidth(): number {
+    const nextItem = this.#hiddenItems()[0] || this.items[0]
+
+    return parseInt(nextItem.getAttribute('data-offset-width') || '0')
   }
 
-  #showItems(count: number) {
-    const items = this.#hiddenItems()
-    const menuItems = this.menuItems.filter(item => !item.hidden)
-    for (const i of [...Array(count).keys()]) {
-      if (items[i]) {
-        items[i].hidden = false
-      }
-      if (menuItems[i]) {
-        menuItems[i].hidden = true
-      }
+  #hideItem() {
+    const visibleItems = this.#visibleItems()
+    const hiddenMenuItems = this.#hiddenMenuItems()
+
+    if (visibleItems.length === 0) {
+      return
     }
+    visibleItems[visibleItems.length - 1].hidden = true
+    hiddenMenuItems[hiddenMenuItems.length - 1].hidden = false
+  }
+
+  #showItem() {
+    const hiddenItems = this.#hiddenItems()
+    const visibleMenuItems = this.#visibleMenuItems()
+
+    if (hiddenItems.length === 0) {
+      return
+    }
+    hiddenItems[0].hidden = false
+    visibleMenuItems[0].hidden = true
   }
 
   #hiddenItems(): HTMLElement[] {
     return this.items.filter(item => item.hidden)
   }
 
-  #toggleMoreMenu() {
-    this.moreMenu.hidden = this.#hiddenItems().length === 0
+  #visibleItems(): HTMLElement[] {
+    return this.items.filter(item => !item.hidden)
   }
 
-  #gap(): number {
-    return parseInt(window.getComputedStyle(this)?.columnGap) || 0
+  #hiddenMenuItems(): HTMLElement[] {
+    return this.menuItems.filter(item => item.hidden)
+  }
+
+  #visibleMenuItems(): HTMLElement[] {
+    return this.menuItems.filter(item => !item.hidden)
+  }
+
+  #toggleMoreMenu() {
+    this.moreMenu.hidden = this.#hiddenItems().length === 0
   }
 }
 
