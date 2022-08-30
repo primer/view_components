@@ -62,14 +62,16 @@ module Primer
 
       # Header content.
       #
-      # @param show_divider [Boolean] If true the visual dividing line between the header and body will be visible
+      # @param show_divider [Boolean] Show a divider between the header and body.
+      # @param visually_hide_title [Boolean] Visually hide the `title` while maintaining a label for assistive technologies.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :header, lambda { |show_divider: false, **system_arguments|
+      renders_one :header, lambda { |show_divider: false, visually_hide_title: false, **system_arguments|
         Primer::Alpha::Dialog::Header.new(
           id: @id,
           title: @title,
           subtitle: @subtitle,
           show_divider: show_divider,
+          visually_hide_title: visually_hide_title,
           **system_arguments
         )
       }
@@ -81,7 +83,7 @@ module Primer
 
       # Footer content.
       #
-      # @param show_divider [Boolean] If true the visual dividing line between the body and footer will be visible
+      # @param show_divider [Boolean] Show a divider between the footer and body.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :footer, "Footer"
 
@@ -103,8 +105,8 @@ module Primer
       #       <% end %>
       #     <% end %>
       # @param id [String] The id of the dialog.
-      # @param title [String] The title of the dialog.
-      # @param subtitle [String] The subtitle of the dialog. This will also set the `aria-describedby` attribute.
+      # @param title [String] Describes the content of the dialog.
+      # @param subtitle [String] Provides dditional context for the dialog, also setting the `aria-describedby` attribute.
       # @param size [Symbol] The size of the dialog. <%= one_of(Primer::Alpha::Dialog::SIZE_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
@@ -113,6 +115,7 @@ module Primer
         size: DEFAULT_SIZE,
         position: DEFAULT_POSITION,
         position_narrow: DEFAULT_POSITION_NARROW,
+        visually_hide_title: false,
         id: "dialog-#{(36**3 + rand(36**4)).to_s(36)}",
         **system_arguments
       )
@@ -138,6 +141,7 @@ module Primer
         @title = title
         @position = position
         @position_narrow = position_narrow
+        @visually_hide_title = visually_hide_title
 
         @subtitle = subtitle
         return if subtitle.present?

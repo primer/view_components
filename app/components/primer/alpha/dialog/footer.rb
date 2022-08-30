@@ -6,10 +6,10 @@ module Primer
       # A `Dialog::Footer` is a compositional component, used to render the
       # Footer of a dialog. See <%= link_to_component(Primer::Alpha::Dialog) %>.
       class Footer < Primer::Component
-        # @param show_divider [Boolean] If true the visual dividing line between the body and footer will be visible
+        # @param show_divider [Boolean] Show a divider between the footer and body.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(
-          show_divider: true,
+          show_divider: false,
           **system_arguments
         )
           @system_arguments = deny_tag_argument(**system_arguments)

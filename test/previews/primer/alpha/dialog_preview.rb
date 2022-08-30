@@ -12,8 +12,9 @@ module Primer
       # @param size [Symbol] select [small, medium, medium_portrait, large, xlarge]
       # @param position [Symbol] select [center, left, right]
       # @param position_narrow [Symbol] select [inherit, bottom, fullscreen, left, right]
-      def default(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", position: :center, position_narrow: :fullscreen)
-        render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: position, position_narrow: position_narrow)) do |d|
+      # @param visually_hide_title [Boolean] toggle
+      def default(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", position: :center, position_narrow: :fullscreen, visually_hide_title: false)
+        render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: position, position_narrow: position_narrow, visually_hide_title: visually_hide_title)) do |d|
           d.show_button { button_text }
           d.body { "Content" }
         end
