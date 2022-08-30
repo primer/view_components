@@ -7,17 +7,15 @@ module Primer
       # @label Playground
       # @param scheme select [default, primary, danger, outline, invisible, link]
       # @param size select [small, medium, large]
-      # @param block toggle
+      # @param full_width toggle
       # @param disabled toggle
       # @param pressed toggle
-      # @param dropdown toggle
       # @param align_content select [center, start]
       # @param tag select [a, summary, button]
       def playground(
         scheme: :default,
         size: :medium,
-        block: false,
-        dropdown: false,
+        full_width: false,
         id: "button-preview",
         align_content: :center,
         tag: :button,
@@ -27,8 +25,7 @@ module Primer
         render(Primer::Beta::Button.new(
                  scheme: scheme,
                  size: size,
-                 block: block,
-                 dropdown: dropdown,
+                 full_width: full_width,
                  id: id,
                  align_content: align_content,
                  tag: tag,
@@ -42,21 +39,19 @@ module Primer
       # @label With visuals
       # @param scheme select [default, primary, danger, outline, invisible, link]
       # @param size select [small, medium]
-      # @param block toggle
-      # @param dropdown toggle
+      # @param full_width toggle
       # @param align_content select [center, start]
       def with_visuals(
         scheme: :default,
         size: :medium,
-        block: false,
-        dropdown: false,
+        full_width: false,
         id: "button-preview",
         align_content: :center
       )
         render_with_template(locals: {
                                scheme: scheme,
                                size: size,
-                               block: block,
+                               full_width: full_width,
                                dropdown: dropdown,
                                id: id,
                                align_content: align_content
@@ -66,15 +61,13 @@ module Primer
       # @label Link as button
       # @param scheme select [default, primary, danger, outline, invisible, link]
       # @param size select [small, medium]
-      # @param block toggle
-      # @param dropdown toggle
+      # @param full_width toggle
       # @param align_content select [center, start]
 
       def link_as_button(
         scheme: :default,
         size: :medium,
-        block: false,
-        dropdown: false,
+        full_width: false,
         id: "button-preview",
         align_content: :center,
         tag: :a
@@ -82,8 +75,7 @@ module Primer
         render(Primer::Beta::Button.new(
                  scheme: scheme,
                  size: size,
-                 block: block,
-                 dropdown: dropdown,
+                 full_width: full_width,
                  id: id,
                  align_content: align_content,
                  tag: tag

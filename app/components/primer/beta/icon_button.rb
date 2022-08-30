@@ -35,12 +35,12 @@ module Primer
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
       # @example Default
       #
-      #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search", id: "search-button", id: "search-button")) %>
+      #   <%= render(Primer::Beta::IconButton.new(icon: :search, "aria-label": "Search", id: "search-button", id: "search-button")) %>
       #
       # @example Schemes
       #
-      #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search")) %>
-      #   <%= render(Primer::IconButton.new(icon: :trash, "aria-label": "Delete", scheme: :danger)) %>
+      #   <%= render(Primer::Beta::IconButton.new(icon: :search, "aria-label": "Search")) %>
+      #   <%= render(Primer::Beta::IconButton.new(icon: :trash, "aria-label": "Delete", scheme: :danger)) %>
       #
       # @example With an `aria-description`
       #   @description
@@ -48,13 +48,13 @@ module Primer
       #     attributes. A label should be short and concise, while the description can be longer as it is intended to provide
       #     more context and information. See the accessibility section for more information.
       #   @code
-      #     <%= render(Primer::IconButton.new(icon: :bold, "aria-label": "Bold", "aria-description": "Add bold text, Cmd+b")) %>
+      #     <%= render(Primer::Beta::IconButton.new(icon: :bold, "aria-label": "Bold", "aria-description": "Add bold text, Cmd+b")) %>
       #
       # @example Custom tooltip direction
       #
-      #   <%= render(Primer::IconButton.new(icon: :search, "aria-label": "Search", tooltip_direction: :e)) %>
+      #   <%= render(Primer::Beta::IconButton.new(icon: :search, "aria-label": "Search", tooltip_direction: :e)) %>
       #
-      # @param scheme [Symbol] <%= one_of(Primer::IconButton::SCHEME_OPTIONS) %>
+      # @param scheme [Symbol] <%= one_of(Primer::Beta::IconButton::SCHEME_OPTIONS) %>
       # @param icon [String] Name of <%= link_to_octicons %> to use.
       # @param tag [Symbol] <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
       # @param type [Symbol] <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>

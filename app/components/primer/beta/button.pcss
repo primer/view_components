@@ -8,25 +8,25 @@
 /* base button */
 .Button {
   position: relative;
-  font-size: var(--primer-text-body-size-medium);
-  font-weight: var(--base-text-weight-medium);
+  font-size: var(--primer-text-body-size-medium, 14px);
+  font-weight: var(--base-text-weight-medium, 500);
   cursor: pointer;
   user-select: none;
   background-color: transparent;
-  border: var(--primer-borderWidth-thin) solid;
+  border: var(--primer-borderWidth-thin, 1px) solid;
   border-color: transparent;
-  border-radius: var(--primer-borderRadius-medium);
+  border-radius: var(--primer-borderRadius-medium, 6px);
   color: var(--color-btn-text);
   transition: var(--primer-duration-fast) var(--primer-easing-easeInOut);
   transition-property: color, fill, background-color, border-color;
   text-align: center;
-  height: var(--primer-control-medium-size);
-  padding: 0 var(--primer-control-medium-paddingInline-normal);
+  height: var(--primer-control-medium-size, 32px);
+  padding: 0 var(--primer-control-medium-paddingInline-normal, 12px);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: var(--primer-control-medium-gap);
+  gap: var(--primer-control-medium-gap, 8px);
 
   /* mobile friendly sizing */
   @media (pointer: course) {
@@ -37,8 +37,7 @@
 
   /* base states */
 
-  &:hover,
-  [open] > & {
+  &:hover {
     transition-duration: var(--primer-duration-fast);
   }
 
@@ -54,9 +53,9 @@
     box-shadow: none;
   }
 
-  &:focus {
+  /* &:focus {
     @mixin focusOutline;
-  }
+  } */
 }
 
 .Button-withTooltip {
@@ -84,7 +83,7 @@ summary.Button {
   /* padding-bottom: 1px; optical alignment for firefox */
 
   & > :not(:last-child) {
-    margin-right: var(--primer-control-medium-gap);
+    margin-right: var(--primer-control-medium-gap, 8px);
   }
 }
 
@@ -104,7 +103,7 @@ summary.Button {
 .Button-label {
   grid-area: text;
   white-space: nowrap;
-  line-height: var(--primer-text-body-lineHeight-medium);
+  line-height: var(--primer-text-body-lineHeight-medium, calc(20/14));
 }
 
 .Button-leadingVisual {
@@ -116,40 +115,40 @@ summary.Button {
 }
 
 .Button-trailingAction {
-  margin-right: calc(var(--base-size-4) * -1);
+  margin-right: calc(var(--base-size-4, 4px) * -1);
 }
 
 /* sizes */
 
 .Button--small {
-  font-size: var(--primer-text-body-size-small);
-  height: var(--primer-control-small-size);
-  padding: 0 var(--primer-control-small-paddingInline-normal);
-  gap: var(--primer-control-small-gap);
+  font-size: var(--primer-text-body-size-small, 12px);
+  height: var(--primer-control-small-size, 28px);
+  padding: 0 var(--primer-control-small-paddingInline-normal, 12px);
+  gap: var(--primer-control-small-gap, 4px);
 
   .Button-label {
-    line-height: var(--primer-text-body-lineHeight-small);
+    line-height: var(--primer-text-body-lineHeight-small, calc(20/12));
   }
 
   .Button-content {
     & > :not(:last-child) {
-      margin-right: var(--primer-control-small-gap);
+      margin-right: var(--primer-control-small-gap, 4px);
     }
   }
 }
 
 .Button--large {
-  height: var(--primer-control-large-size);
-  padding: 0 var(--primer-control-large-paddingInline-normal);
-  gap: var(--primer-control-large-gap);
+  height: var(--primer-control-large-size, 40px);
+  padding: 0 var(--primer-control-large-paddingInline-normal, 12px);
+  gap: var(--primer-control-large-gap, 8px);
 
   .Button-label {
-    line-height: var(--primer-text-body-lineHeight-large);
+    line-height: var(--primer-text-body-lineHeight-large, calc(48/32));
   }
 
   .Button-content {
     & > :not(:last-child) {
-      margin-right: var(--primer-control-large-gap);
+      margin-right: var(--primer-control-large-gap, 8px);
     }
   }
 }
@@ -168,10 +167,25 @@ summary.Button {
   border-color: var(--color-btn-primary-border);
   box-shadow: var(--color-btn-primary-shadow), var(--color-btn-primary-inset-shadow);
 
-  &:hover,
-  [open] > & {
+  &:hover {
     background-color: var(--color-btn-primary-hover-bg);
     border-color: var(--color-btn-primary-hover-border);
+  }
+
+  /* fallback :focus state */
+  &:focus {
+    @mixin focusOutlineOnEmphasis;
+
+    /* remove fallback :focus if :focus-visible is supported */
+    &:not(:focus-visible) {
+      outline: solid 1px transparent;
+      box-shadow: none;
+    }
+  }
+
+  /* default focus state */
+  &:focus-visible {
+    @mixin focusOutlineOnEmphasis;
   }
 
   &:active,
@@ -199,8 +213,7 @@ summary.Button {
   border-color: var(--color-btn-border);
   box-shadow: var(--color-btn-shadow), var(--color-btn-inset-shadow);
 
-  &:hover,
-  [open] > & {
+  &:hover  {
     background-color: var(--color-btn-hover-bg);
     border-color: var(--color-btn-hover-border);
   }
@@ -233,16 +246,15 @@ summary.Button {
   fill: var(--color-fg-default);
   border: none;
 
-  &:hover,
-  [open] > & {
-    background-color: var(--color-segmented-control-button-hover-bg);
+  &:hover {
+    background-color: var(--color-action-list-item-default-hover-bg);
   }
 
   &[aria-pressed='true'],
   &:active,
   &.Button--active,
   &.Button--pressed {
-    background-color: var(--color-segmented-control-button-active-bg);
+    background-color: var(--color-action-list-item-default-active-bg);
     /* box-shadow: var(--color-primer-shadow-inset); */
   }
 
@@ -276,8 +288,7 @@ summary.Button {
   border-color: var(--color-btn-border);
   box-shadow: var(--color-btn-shadow), var(--color-btn-inset-shadow);
 
-  &:hover,
-  [open] > & {
+  &:hover {
     color: var(--color-btn-danger-hover-text);
     fill: var(--color-btn-danger-hover-text);
     background-color: var(--color-btn-danger-hover-bg);
@@ -309,13 +320,13 @@ summary.Button {
   display: grid;
   place-content: center;
   padding: unset;
-  width: var(--primer-control-medium-size);
+  width: var(--primer-control-medium-size, 32px);
 
   &.Button--small {
-    width: var(--primer-control-small-size);
+    width: var(--primer-control-small-size, 28px);
   }
 
   &.Button--large {
-    width: var(--primer-control-large-size);
+    width: var(--primer-control-large-size, 40px);
   }
 }

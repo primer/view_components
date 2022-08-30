@@ -49,7 +49,6 @@ module Primer
           Primer::OcticonComponent.new(**system_arguments)
         }
       }
-      alias icon leading_visual_icon # remove alias when all buttons are migrated to new slot names
 
       # Trailing visuals appear to the right of the button text.
       #
@@ -63,7 +62,17 @@ module Primer
         label: Primer::LabelComponent,
         counter: Primer::CounterComponent
       }
-      alias counter trailing_visual_counter # remove alias when all buttons are migrated to new slot names
+
+      # Trailing visuals appear to the right of the button text.
+      #
+      # Use:
+      #
+      # - `trailing_visual_counter` for a <%= link_to_component(Primer::Beta::Counter) %>.
+      #
+      # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Counter) %>.
+      renders_one :trailing_action, types: {
+        icon: Primer::OcticonComponent
+      }
 
       # `Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.
       # **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.
@@ -81,42 +90,37 @@ module Primer
       }
 
       # @example Schemes
-      #   <%= render(Primer::ButtonComponent.new) { "Default" } %>
-      #   <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Primary" } %>
-      #   <%= render(Primer::ButtonComponent.new(scheme: :danger)) { "Danger" } %>
-      #   <%= render(Primer::ButtonComponent.new(scheme: :outline)) { "Outline" } %>
-      #   <%= render(Primer::ButtonComponent.new(scheme: :invisible)) { "Invisible" } %>
-      #   <%= render(Primer::ButtonComponent.new(scheme: :link)) { "Link" } %>
+      #   <%= render(Primer::Beta::Button.new) { "Default" } %>
+      #   <%= render(Primer::Beta::Button.new(scheme: :primary)) { "Primary" } %>
+      #   <%= render(Primer::Beta::Button.new(scheme: :danger)) { "Danger" } %>
+      #   <%= render(Primer::Beta::Button.new(scheme: :outline)) { "Outline" } %>
+      #   <%= render(Primer::Beta::Button.new(scheme: :invisible)) { "Invisible" } %>
+      #   <%= render(Primer::Beta::Button.new(scheme: :link)) { "Link" } %>
       #
       # @example Sizes
-      #   <%= render(Primer::ButtonComponent.new(size: :small)) { "Small" } %>
-      #   <%= render(Primer::ButtonComponent.new(size: :medium)) { "Medium" } %>
+      #   <%= render(Primer::Beta::Button.new(size: :small)) { "Small" } %>
+      #   <%= render(Primer::Beta::Button.new(size: :medium)) { "Medium" } %>
       #
       # @example Block
-      #   <%= render(Primer::ButtonComponent.new(block: :true)) { "Block" } %>
-      #   <%= render(Primer::ButtonComponent.new(block: :true, scheme: :primary)) { "Primary block" } %>
+      #   <%= render(Primer::Beta::Button.new(block: :true)) { "Block" } %>
+      #   <%= render(Primer::Beta::Button.new(block: :true, scheme: :primary)) { "Primary block" } %>
       #
       # @example With leading visual
-      #   <%= render(Primer::ButtonComponent.new) do |c| %>
+      #   <%= render(Primer::Beta::Button.new) do |c| %>
       #     <% c.with_leading_visual_icon(icon: :star) %>
       #     Button
       #   <% end %>
       #
       # @example With trailing visual
-      #   <%= render(Primer::ButtonComponent.new) do |c| %>
+      #   <%= render(Primer::Beta::Button.new) do |c| %>
       #     <% c.with_trailing_visual_counter(count: 15) %>
       #     Button
       #   <% end %>
       #
       # @example With leading and trailing visuals
-      #   <%= render(Primer::ButtonComponent.new) do |c| %>
+      #   <%= render(Primer::Beta::Button.new) do |c| %>
       #     <% c.with_leading_visual_icon(icon: :star) %>
       #     <% c.with_trailing_visual_counter(count: 15) %>
-      #     Button
-      #   <% end %>
-      #
-      # @example With dropdown caret
-      #   <%= render(Primer::ButtonComponent.new(dropdown: true)) do %>
       #     Button
       #   <% end %>
       #
@@ -124,32 +128,25 @@ module Primer
       #   @description
       #     Use tooltips sparingly and as a last resort. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
       #   @code
-      #     <%= render(Primer::ButtonComponent.new(id: "button-with-tooltip")) do |c| %>
+      #     <%= render(Primer::Beta::Button.new(id: "button-with-tooltip")) do |c| %>
       #       <% c.with_tooltip(text: "Tooltip text") %>
       #       Button
       #     <% end %>
       #
-      # @param scheme [Symbol] <%= one_of(Primer::ButtonComponent::SCHEME_OPTIONS) %>
-      # @param variant [Symbol] DEPRECATED. <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
-      # @param size [Symbol] <%= one_of(Primer::ButtonComponent::SIZE_OPTIONS) %>
+      # @param scheme [Symbol] <%= one_of(Primer::Beta::Button::SCHEME_OPTIONS) %>
+      # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
       # @param tag [Symbol] (Primer::Beta::BaseButton::DEFAULT_TAG) <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
       # @param type [Symbol] (Primer::Beta::BaseButton::DEFAULT_TYPE) <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
-      # @param group_item [Boolean] Whether button is part of a ButtonGroup.
-      # @param block [Boolean] Whether button is full-width with `display: block`.
-      # @param dropdown [Boolean] Whether or not to render a dropdown caret.
+      # @param full_width [Boolean] Whether button is full-width with `display: block`.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         scheme: DEFAULT_SCHEME,
-        variant: nil,
         size: DEFAULT_SIZE,
-        group_item: false,
-        block: false,
-        dropdown: false,
+        full_width: false,
         align_content: DEFAULT_ALIGN_CONTENT,
         **system_arguments
       )
         @scheme = scheme
-        @dropdown = dropdown
 
         @system_arguments = system_arguments
 
@@ -163,10 +160,9 @@ module Primer
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
           SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
-          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, variant || size, DEFAULT_SIZE)],
+          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
           "Button" => !link?,
-          "Button--fullWidth" => block,
-          "BtnGroup-item" => group_item
+          "Button--fullWidth" => full_width
         )
       end
 

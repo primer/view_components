@@ -13,9 +13,9 @@
         </span>
       <% end %>
     </span>
-    <% if @dropdown %>
+    <% if trailing_action %>
       <span class="Button-visual Button-trailingAction">
-        <%= primer_octicon("triangle-down") %>
+        <%= trailing_action %>
       </span>
     <% end %>
     <%= tooltip %>

@@ -6,8 +6,8 @@ class PrimerBetaButtonTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders
-    render_inline(Primer::Button.new)
+    render_inline(Primer::Beta::Button.new)
 
-    assert_text("Add a test here")
+    assert_selector(".Button")
   end
 end
