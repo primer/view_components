@@ -26,7 +26,7 @@ export class ActionBarElement extends HTMLElement {
       item.setAttribute('data-offset-width', `${width + marginLeft + marginRight}`)
     }
 
-    while (this.#availableSpace() < this.#itemGap && !this.items[0].hidden) {
+    while (this.#availableSpace() < 0 && !this.items[0].hidden) {
       this.#calculateVisibleItems()
     }
 
@@ -58,7 +58,7 @@ export class ActionBarElement extends HTMLElement {
   #calculateVisibleItems() {
     const space = this.#availableSpace()
 
-    if (space < this.#itemGap) {
+    if (space < 0) {
       this.#hideItem()
     } else if (space > this.#itemGap + this.#nextItemWidth()) {
       this.#showItem()
