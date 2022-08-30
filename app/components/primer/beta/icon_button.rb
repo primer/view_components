@@ -61,7 +61,6 @@ module Primer
       # @param aria-label [String] String that can be read by assistive technology. A label should be short and concise. See the accessibility section for more information.
       # @param aria-description [String] String that can be read by assistive technology. A description can be longer as it is intended to provide more context and information. See the accessibility section for more information.
       # @param tooltip_direction [Symbol] (Primer::Alpha::Tooltip::DIRECTION_DEFAULT) <%= one_of(Primer::Alpha::Tooltip::DIRECTION_OPTIONS) %>
-      # @param box [Boolean] Whether the button is in a <%= link_to_component(Primer::BorderBoxComponent) %>. If `true`, the button will have the `Box-btn-octicon` class.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(icon:, scheme: DEFAULT_SCHEME, tooltip_direction: Primer::Alpha::Tooltip::DIRECTION_DEFAULT, size: DEFAULT_SIZE, **system_arguments)
         @icon = icon
