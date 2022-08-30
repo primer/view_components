@@ -25,14 +25,6 @@ module Primer
       }.freeze
       SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
-      DEFAULT_SIZE = :medium
-      SIZE_MAPPINGS = {
-        :small => "Button--small",
-        :medium => "Button--medium",
-        :large => "Button--large",
-        DEFAULT_SIZE => "Button--medium"
-      }.freeze
-      SIZE_OPTIONS = SIZE_MAPPINGS.keys
       # @example Default
       #
       #   <%= render(Primer::Beta::IconButton.new(icon: :search, "aria-label": "Search", id: "search-button", id: "search-button")) %>
@@ -54,15 +46,16 @@ module Primer
       #
       #   <%= render(Primer::Beta::IconButton.new(icon: :search, "aria-label": "Search", tooltip_direction: :e)) %>
       #
-      # @param scheme [Symbol] <%= one_of(Primer::Beta::IconButton::SCHEME_OPTIONS) %>
       # @param icon [String] Name of <%= link_to_octicons %> to use.
+      # @param scheme [Symbol] <%= one_of(Primer::Beta::IconButton::SCHEME_OPTIONS) %>
+      # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
       # @param tag [Symbol] <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
       # @param type [Symbol] <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
       # @param aria-label [String] String that can be read by assistive technology. A label should be short and concise. See the accessibility section for more information.
       # @param aria-description [String] String that can be read by assistive technology. A description can be longer as it is intended to provide more context and information. See the accessibility section for more information.
       # @param tooltip_direction [Symbol] (Primer::Alpha::Tooltip::DIRECTION_DEFAULT) <%= one_of(Primer::Alpha::Tooltip::DIRECTION_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(icon:, scheme: DEFAULT_SCHEME, tooltip_direction: Primer::Alpha::Tooltip::DIRECTION_DEFAULT, size: DEFAULT_SIZE, **system_arguments)
+      def initialize(icon:, scheme: DEFAULT_SCHEME, tooltip_direction: Primer::Alpha::Tooltip::DIRECTION_DEFAULT, size: Primer::Beta::Button::DEFAULT_SIZE, **system_arguments)
         @icon = icon
 
         @system_arguments = system_arguments
@@ -72,7 +65,7 @@ module Primer
           "Button",
           "Button--iconOnly",
           SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
-          SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
+          Primer::Beta::Button::SIZE_MAPPINGS[fetch_or_fallback(Primer::Beta::Button::SIZE_OPTIONS, size, Primer::Beta::Button::DEFAULT_SIZE)],
           system_arguments[:classes]
         )
 
