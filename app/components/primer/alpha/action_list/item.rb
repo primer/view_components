@@ -64,7 +64,7 @@ module Primer
         }
 
         renders_one :trailing_action, lambda { |**system_arguments|
-          Primer::IconButton.new(scheme: :default, classes: ["ActionList-item-button", "hey" => @trailing_action_on_hover], **system_arguments)
+          Primer::IconButton.new(scheme: :default, classes: ["ActionList-item-button ActionList-item-button--trailing", "ActionList-item-button--onHover" => @trailing_action_on_hover], **system_arguments)
         }
 
         renders_many :items, lambda { |**system_arguments|
@@ -129,6 +129,7 @@ module Primer
             @system_arguments[:classes],
             SCHEME_MAPPINGS[@scheme],
             "ActionList-item",
+            "ActionList-item--withActions",
             "ActionList-item--navActive" => @active,
             "ActionList-item--subItem" => sub_item?,
             "ActionList-item--trailingActionHover" => @trailing_action_on_hover,

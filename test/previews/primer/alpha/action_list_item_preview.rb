@@ -19,7 +19,7 @@ module Primer
       # @param active toggle
       # @param has_sub_item toggle
       # @param sub_item toggle
-      # @param show_on_hover toggle
+      # @param trailing_action_on_hover toggle
       # @param leading_visual_icon [Symbol] octicon
       # @param leading_visual_avatar_src text
       # @param trailing_visual_icon [Symbol] octicon
@@ -28,13 +28,13 @@ module Primer
       # @param trailing_visual_text text
       # @param private_leading_action_icon [Symbol] octicon
       # @param private_trailing_action_icon [Symbol] octicon
-      # @param trailing_action toggle
+      # @param trailing_action [Symbol] octicon
       def playground(
         label: "Item Item ItemItemItemItem ItemItemItemItemItem",
         truncate_label: false,
         href: nil,
         role: nil,
-        size: Primer::Alpha::ActionListItem::DEFAULT_SIZE,
+        size: :medium,
         variant: Primer::Alpha::ActionListItem::DEFAULT_VARIANT,
         disabled: false,
         description: nil,
@@ -44,7 +44,7 @@ module Primer
         active: false,
         has_sub_item: false,
         sub_item: false,
-        show_on_hover: false,
+        trailing_action_on_hover: false,
         leading_visual_icon: nil,
         leading_visual_avatar_src: nil,
         trailing_visual_icon: nil,
@@ -53,10 +53,10 @@ module Primer
         trailing_visual_text: nil,
         private_leading_action_icon: nil,
         private_trailing_action_icon: nil,
-        trailing_action: false
+        trailing_action: nil
       )
         item = Primer::Alpha::ActionList::Item.new(
-					list,
+		  list: nil,
           root: nil,
           label: label,
           truncate_label: truncate_label,
@@ -72,7 +72,7 @@ module Primer
           has_sub_item: has_sub_item,
           sub_item: sub_item,
           href: href,
-          show_on_hover: show_on_hover,
+          trailing_action_on_hover: trailing_action_on_hover,
           trailing_action: trailing_action
         )
 
@@ -96,9 +96,7 @@ module Primer
           item.with_trailing_visual_text(trailing_visual_text)
         end
 
-        # # item.with_trailing_action_visual_icon(icon: trailing_action_visual) if trailing_action_visual
-
-        # item.with_trailing_action_button_button(icon: trailing_action_icon, "aria-label": "test") if trailing_action_icon
+        item.with_trailing_action(icon: trailing_action, "aria-label": "Button") if trailing_action && trailing_action != :none
 
         item.description { description } if description
 

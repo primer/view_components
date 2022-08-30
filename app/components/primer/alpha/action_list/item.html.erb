@@ -36,6 +36,7 @@
     <%= trailing_action %>
   <% end %>
   <% unless items.empty? %>
+  <%# sublist %>
     <%= render(Primer::BaseComponent.new(tag: :ul, **@sub_group_arguments)) do %>
       <% items.each do |item| %>
         <%= item %>
