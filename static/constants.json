@@ -503,15 +503,6 @@
       "condensed",
       "spacious"
     ],
-    "DIRECTION_DEFAULT": "horizontal",
-    "DIRECTION_MAPPINGS": {
-      "horizontal": null,
-      "vertical": "ActionBar--vertical"
-    },
-    "DIRECTION_OPTIONS": [
-      "horizontal",
-      "vertical"
-    ],
     "Item": "Primer::Experimental::ActionBar::Item",
     "SIZE_DEFAULT": "medium",
     "SIZE_MAPPINGS": {
