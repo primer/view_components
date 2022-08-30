@@ -52,7 +52,6 @@ module Primer
                                scheme: scheme,
                                size: size,
                                full_width: full_width,
-                               dropdown: dropdown,
                                id: id,
                                align_content: align_content
                              })
