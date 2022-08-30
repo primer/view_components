@@ -5,12 +5,44 @@
 
   display: flex;
   align-items: center;
-  gap: var(--primer-controlStack-small-gap-condensed, 8px);
+  gap: var(--primer-controlStack-medium-gap-auto, 8px);
   justify-content: end;
   position: relative;
 }
 
+/* Divider */
+
+.ActionBar-divider {
+  margin: 0 var(--primer-control-medium-gap, 8px);
+  height: calc(var(--size) / 2);
+  border-left: var(--primer-borderWidth-thin, 1px) solid var(--color-border-subtle);
+}
+
+/* Size */
+
+.ActionBar--small {
+  --size: var(--primer-control-small-size, 28px);
+  gap: var(--primer-controlStack-small-gap-auto, 8px);
+}
+
+.ActionBar--large {
+  --size: var(--primer-control-large-size, 40px);
+  gap: var(--primer-controlStack-large-gap-auto, 8px);
+}
+
+/* Density */
+
+.ActionBar--condensed {
+  gap: 0;
+}
+
+.ActionBar--spacious {
+  gap: var(--primer-controlStack-medium-gap-spacious, 12px);
+}
+
 /* TODO: Replace with IconButton */
+/* ----------------------------- */
+
 .ActionBar-item .btn-octicon {
   display: inline-flex;
   align-items: center;
@@ -31,28 +63,37 @@
   }
 }
 
-.ActionBar-divider {
-  margin: 0 var(--primer-control-medium-gap, 8px);
-  height: calc(var(--size) / 2);
-  border-left: var(--primer-borderWidth-thin, 1px) solid var(--color-border-subtle);
-}
+/* Increase touch target */
 
-/* Size */
+@media (pointer: coarse) {
+  .ActionBar--condensed {
+    gap: var(--primer-controlStack-medium-gap-spacious, 12px);
+  }
 
-.ActionBar--small {
-  --size: var(--primer-control-small-size, 28px);
-}
+  .ActionBar--condensed.ActionBar--small {
+    gap: var(--primer-controlStack-small-gap-spacious, 16px);
+  }
 
-.ActionBar--large {
-  --size: var(--primer-control-large-size, 40px);
-}
+  .ActionBar--condensed.ActionBar--large {
+    gap: var(--base-size-4, 4px);
+  }
 
-/* Density */
+  .ActionBar--spacious.ActionBar--small {
+    gap: var(--primer-controlStack-small-gap-spacious, 16px);
+  }
 
-.ActionBar--condensed {
-  gap: 0;
-}
-
-.ActionBar--spacious {
-  gap: var(--primer-controlStack-small-gap-spacious, 16px);
+  .ActionBar-item .btn-octicon {
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      min-height: var(--primer-control-minTarget-coarse, 44px);
+      min-width: var(--primer-control-minTarget-coarse, 44px);
+      content: '';
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
 }
