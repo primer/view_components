@@ -63,13 +63,13 @@ module Primer
         counter: Primer::CounterComponent
       }
 
-      # Trailing visuals appear to the right of the button text.
+      # Trailing action appears to the right of the trailing visual.
       #
       # Use:
       #
-      # - `trailing_visual_counter` for a <%= link_to_component(Primer::Beta::Counter) %>.
+      # - `trailing_action_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
       #
-      # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Counter) %>.
+      # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
       renders_one :trailing_action, types: {
         icon: Primer::OcticonComponent
       }
@@ -135,9 +135,10 @@ module Primer
       #
       # @param scheme [Symbol] <%= one_of(Primer::Beta::Button::SCHEME_OPTIONS) %>
       # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
+      # @param full_width [Boolean] Whether button is full-width with `display: block`.
+      # @param align_content [Symbol] <%= one_of(Primer::Beta::Button::ALIGN_CONTENT_OPTIONS) %>
       # @param tag [Symbol] (Primer::Beta::BaseButton::DEFAULT_TAG) <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
       # @param type [Symbol] (Primer::Beta::BaseButton::DEFAULT_TYPE) <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
-      # @param full_width [Boolean] Whether button is full-width with `display: block`.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         scheme: DEFAULT_SCHEME,
@@ -153,6 +154,7 @@ module Primer
         @id = @system_arguments[:id]
 
         @align_content_classes = class_names(
+          "Button-content",
           system_arguments[:classes],
           ALIGN_CONTENT_MAPPINGS[fetch_or_fallback(ALIGN_CONTENT_OPTIONS, align_content, DEFAULT_ALIGN_CONTENT)]
         )
