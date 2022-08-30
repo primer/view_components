@@ -33,6 +33,8 @@ export class ActionBarElement extends HTMLElement {
       item.setAttribute('data-offset-width', `${width + marginLeft + marginRight}`)
     }
 
+    this.#focusController = focusZone(this, this.#focusSettings)
+
     // Calculate visible items on page load until there is enough space
     // to show all items or the first item is hidden
     while (this.#availableSpace() < 0 && !this.items[0].hidden) {
