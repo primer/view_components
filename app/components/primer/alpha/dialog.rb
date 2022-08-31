@@ -65,7 +65,7 @@ module Primer
       # @param show_divider [Boolean] Show a divider between the header and body.
       # @param visually_hide_title [Boolean] Visually hide the `title` while maintaining a label for assistive technologies.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :header, lambda { |show_divider: false, visually_hide_title: false, **system_arguments|
+      renders_one :header, lambda { |show_divider: false, visually_hide_title: @visually_hide_title, **system_arguments|
         Primer::Alpha::Dialog::Header.new(
           id: @id,
           title: @title,
