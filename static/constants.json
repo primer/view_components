@@ -20,8 +20,8 @@
     "DEFAULT_SELECT_MODE": "none",
     "DEFAULT_SIZE": "medium",
     "DESCRIPTION_SCHEME_MAPPINGS": {
-      "inline": "ActionList-item-descriptionWrap--inline",
-      "block": "ActionList-item-descriptionWrap--block"
+      "inline": "ActionListItem-descriptionWrap--inline",
+      "block": ""
     },
     "DESCRIPTION_SCHEME_OPTIONS": [
       "inline",
@@ -29,7 +29,7 @@
     ],
     "SCHEME_MAPPINGS": {
       "default": null,
-      "danger": "ActionList-item--danger"
+      "danger": "ActionListItem--danger"
     },
     "SCHEME_OPTIONS": [
       "default",
