@@ -1,0 +1,12 @@
+<%= render(Primer::Beta::Button.new(
+    scheme: scheme,
+    size: size,
+    full_width: full_width,
+    id: id,
+    align_content: align_content
+)) do |c| %>
+  <% c.leading_visual_icon(icon: :star) %>
+  <% c.trailing_visual_icon(icon: :star) %>
+  <% c.with_tooltip(text: "Tooltip text") %>
+  Button
+<% end %>
