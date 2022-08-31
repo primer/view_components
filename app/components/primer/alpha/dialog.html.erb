@@ -1,0 +1,12 @@
+<%= show_button %>
+<div class="Overlay--hidden <%= @backdrop_classes %>" data-modal-dialog-overlay>
+  <%= render Primer::BaseComponent.new(**@system_arguments) do %>
+    <%= header %>
+    <% if content.present? %>
+      <%= content %>
+    <% else %>
+      <%= body %>
+      <%= footer %>
+    <% end %>
+  <% end %>
+</div>
