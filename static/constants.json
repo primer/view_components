@@ -547,7 +547,18 @@
     }
   },
   "Primer::Experimental::ActionBar": {
-    "Item": "Primer::Experimental::ActionBar::Item"
+    "Item": "Primer::Experimental::ActionBar::Item",
+    "SIZE_DEFAULT": "medium",
+    "SIZE_MAPPINGS": {
+      "medium": null,
+      "small": "ActionBar--small",
+      "large": "ActionBar--large"
+    },
+    "SIZE_OPTIONS": [
+      "medium",
+      "small",
+      "large"
+    ]
   },
   "Primer::Experimental::ActionBar::Item": {
     "ITEM_TYPES": [
