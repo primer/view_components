@@ -547,29 +547,7 @@
     }
   },
   "Primer::Experimental::ActionBar": {
-    "DENSITY_DEFAULT": "normal",
-    "DENSITY_MAPPINGS": {
-      "normal": null,
-      "condensed": "ActionBar--condensed",
-      "spacious": "ActionBar--spacious"
-    },
-    "DENSITY_OPTIONS": [
-      "normal",
-      "condensed",
-      "spacious"
-    ],
-    "Item": "Primer::Experimental::ActionBar::Item",
-    "SIZE_DEFAULT": "medium",
-    "SIZE_MAPPINGS": {
-      "medium": null,
-      "small": "ActionBar--small",
-      "large": "ActionBar--large"
-    },
-    "SIZE_OPTIONS": [
-      "medium",
-      "small",
-      "large"
-    ]
+    "Item": "Primer::Experimental::ActionBar::Item"
   },
   "Primer::Experimental::ActionBar::Item": {
     "ITEM_TYPES": [
