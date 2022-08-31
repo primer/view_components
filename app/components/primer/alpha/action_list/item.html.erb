@@ -2,12 +2,12 @@
   <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
     <%= render(Primer::Alpha::ActionList::Checkmark.new(select_mode: @select_mode)) %>
     <% if private_leading_action %>
-      <span class="ActionList-item-visual ActionList-item-visual--leading">
+      <span class="ActionListItem-visual ActionListItem-visual--leading">
         <%= private_leading_action %>
       </span>
     <% end %>
     <% if leading_visual %>
-      <span class="ActionList-item-visual ActionList-item-visual--leading">
+      <span class="ActionListItem-visual ActionListItem-visual--leading">
         <%= leading_visual %>
       </span>
     <% end %>
@@ -16,18 +16,18 @@
         <%= @label %>
       <% end %>
       <% if description? %>
-        <span class="ActionList-item-description">
+        <span class="ActionListItem-description">
           <%= description %>
         </span>
       <% end %>
     <% end %>
     <% if trailing_visual %>
-      <span class="ActionList-item-visual ActionList-item-visual--trailing">
+      <span class="ActionListItem-visual ActionListItem-visual--trailing">
         <%= trailing_visual %>
       </span>
     <% end %>
     <% if private_trailing_action %>
-      <span class="ActionList-item-visual ActionList-item-action--trailing">
+      <span class="ActionListItem-visual ActionListItem-action--trailing">
         <%= private_trailing_action %>
       </span>
     <% end %>

@@ -34,13 +34,11 @@ module Primer
         truncate_label: false,
         href: nil,
         role: nil,
-        size: :medium,
-        variant: Primer::Alpha::ActionListItem::DEFAULT_VARIANT,
+        size: Primer::Alpha::ActionList::Item::DEFAULT_SIZE,
+        variant: Primer::Alpha::ActionList::Item::DEFAULT_SCHEME,
         disabled: false,
         description: nil,
-        description_variant: Primer::Alpha::ActionListItem::DEFAULT_DESCRIPTION_VARIANT,
-        select_mode: Primer::Alpha::ActionListItem::DEFAULT_SELECT_MODE,
-        checked: false,
+        description_variant: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME,
         active: false,
         has_sub_item: false,
         sub_item: false,
@@ -52,7 +50,7 @@ module Primer
         trailing_visual_counter: nil,
         trailing_visual_text: nil,
         private_leading_action_icon: nil,
-        # private_trailing_action_icon: nil,
+        private_trailing_action_icon: nil,
         trailing_action: nil
       )
         item = Primer::Alpha::ActionList::Item.new(
@@ -66,13 +64,19 @@ module Primer
           disabled: disabled,
           description: description,
           description_variant: description_variant,
-          select_mode: select_mode,
-          checked: checked,
           active: active,
           has_sub_item: has_sub_item,
           sub_item: sub_item,
           href: href,
           trailing_action_on_hover: trailing_action_on_hover,
+          leading_visual_icon: nil,
+          leading_visual_avatar_src: leading_visual_avatar_src,
+          trailing_visual_icon: trailing_visual_icon,
+          trailing_visual_label: trailing_visual_label,
+          trailing_visual_counter: trailing_visual_counter,
+          trailing_visual_text: trailing_visual_text,
+          private_leading_action_icon: private_leading_action_icon,
+          private_trailing_action_icon: private_trailing_action_icon,
           trailing_action: trailing_action
         )
 

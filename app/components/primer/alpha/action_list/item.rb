@@ -15,15 +15,15 @@ module Primer
 
         DEFAULT_DESCRIPTION_SCHEME = :block
         DESCRIPTION_SCHEME_MAPPINGS = {
-          :inline => "ActionList-item-descriptionWrap--inline",
-          DEFAULT_DESCRIPTION_SCHEME => "ActionList-item-descriptionWrap--block"
+          :inline => "ActionListItem-descriptionWrap--inline",
+          DEFAULT_DESCRIPTION_SCHEME => ""
         }.freeze
         DESCRIPTION_SCHEME_OPTIONS = DESCRIPTION_SCHEME_MAPPINGS.keys.freeze
 
         DEFAULT_SCHEME = :default
         SCHEME_MAPPINGS = {
           DEFAULT_SCHEME => nil,
-          :danger => "ActionList-item--danger"
+          :danger => "ActionListItem--danger"
         }.freeze
         SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
@@ -33,7 +33,9 @@ module Primer
         renders_one :description
 
         renders_one :leading_visual, types: {
-          icon: Primer::OcticonComponent,
+          icon: lambda { |**system_arguments|
+            Primer::OcticonComponent.new(classes: "hey", **system_arguments)
+          },
           avatar: lambda { |**kwargs|
             # Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
           },
@@ -41,6 +43,8 @@ module Primer
             # Primer::BaseComponent.new(tag: :svg, **system_arguments)
           }
         }
+
+
 
         renders_one :private_leading_action, types: {
           icon: Primer::OcticonComponent,
@@ -64,7 +68,7 @@ module Primer
         }
 
         renders_one :trailing_action, lambda { |**system_arguments|
-          Primer::Beta::IconButton.new(scheme: :invisible, classes: ["ActionList-item-button ActionList-item-button--trailing", { "ActionList-item-button--onHover" => @trailing_action_on_hover }], **system_arguments)
+          Primer::Beta::IconButton.new(scheme: :invisible, classes: ["ActionListItem-trailingAction", { "ActionListItem-trailingAction--onHover" => @trailing_action_on_hover }], **system_arguments)
         }
 
         renders_many :items, lambda { |**system_arguments|
@@ -128,11 +132,11 @@ module Primer
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
             SCHEME_MAPPINGS[@scheme],
-            "ActionList-item",
-            "ActionList-item--withActions",
-            "ActionList-item--navActive" => @active,
-            "ActionList-item--subItem" => sub_item?,
-            "ActionList-item--trailingActionHover" => @trailing_action_on_hover
+            "ActionListItem",
+            "ActionListItem--withActions",
+            "ActionListItem--navActive" => @active,
+            "ActionListItem--subItem" => sub_item?,
+            "ActionListItem--trailingActionHover" => @trailing_action_on_hover
           )
 
           @system_arguments[:role] = role
@@ -149,8 +153,8 @@ module Primer
 
           @label_arguments = {
             classes: class_names(
-              "ActionList-item-label",
-              "ActionList-item-label--truncate" => @truncate_label
+              "ActionListItem-label",
+              "ActionListItem-label--truncate" => @truncate_label
             )
           }
 
@@ -171,7 +175,7 @@ module Primer
 
           @description_wrapper_arguments = {
             classes: class_names(
-              "ActionList-item-descriptionWrap",
+              "ActionListItem-descriptionWrap",
               DESCRIPTION_SCHEME_MAPPINGS[@description_scheme]
             )
           }
@@ -202,13 +206,13 @@ module Primer
             @content_arguments[:"aria-expanded"] = expanded?.to_s
             # Apply click handler to .ActionListContent button element, enables toggle behavior
             @content_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemWithSubItemClick"
-            # Apply click handler to .ActionList-item li element, enables highlight behavior
+            # Apply click handler to .ActionListItem li element, enables highlight behavior
 
             @system_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemClick"
 
             @system_arguments[:classes] = class_names(
               @system_arguments[:classes],
-              "ActionList-item--hasSubItem"
+              "ActionListItem--hasSubItem"
             )
           end
 
