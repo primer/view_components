@@ -22,7 +22,7 @@ module Primer
           @id = id
           @title = title
           @subtitle = subtitle
-          @visually_hide_title = visually_hide_title ? "sr-only" : nil
+          @visually_hide_title = visually_hide_title
           @system_arguments = deny_tag_argument(**system_arguments)
           @system_arguments[:tag] = :header
           @system_arguments[:classes] = class_names(
