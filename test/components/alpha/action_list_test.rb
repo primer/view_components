@@ -18,7 +18,7 @@ module Primer
       def test_item_with_leading_icon
         render_preview(:item, params: { leading_visual_icon: "arrow-down" })
 
-        assert_selector(".arrow-down")
+        assert_selector(".octicon-arrow-down")
       end
     end
   end

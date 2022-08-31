@@ -150,7 +150,7 @@ module Primer
           private_trailing_action_icon: private_trailing_action_icon,
           trailing_action: trailing_action
         )
-        render(list.items.first)
+        render(list)
       end
 
       private
