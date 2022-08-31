@@ -32,22 +32,31 @@
   - name: title
     type: String
     default: N/A
-    description: The title of the dialog.
+    description: Describes the content of the dialog.
   - name: subtitle
     type: String
     default: "`nil`"
-    description: The subtitle of the dialog. This will also set the `aria-describedby`
+    description: Provides dditional context for the dialog, also setting the `aria-describedby`
       attribute.
-  - name: width
+  - name: size
     type: Symbol
     default: "`:medium`"
-    description: The width of the dialog. One of `:large`, `:medium`, `:small`, `:xlarge`,
-      or `:xxlarge`.
-  - name: height
+    description: The size of the dialog. One of `:large`, `:medium`, `:medium_portrait`,
+      `:small`, or `:xlarge`.
+  - name: position
     type: Symbol
-    default: "`:auto`"
-    description: The height of the dialog. One of `:auto`, `:large`, `:small`, or
-      `:xlarge`.
+    default: "`:center`"
+    description: The size of the dialog. One of `:center`, `:left`, or `:right`.
+  - name: position_narrow
+    type: Symbol
+    default: "`:inherit`"
+    description: The size of the dialog. One of `:bottom`, `:fullscreen`, `:inherit`,
+      `:left`, or `:right`.
+  - name: visually_hide_title
+    type: Boolean
+    default: "`false`"
+    description: If true will hide the heading title, while still making it available
+      to Screen Readers.
   - name: system_arguments
     type: Hash
     default: N/A

@@ -40,35 +40,48 @@
   },
   "Primer::Alpha::Dialog": {
     "Body": "Primer::Alpha::Dialog::Body",
-    "DEFAULT_HEIGHT": "auto",
-    "DEFAULT_WIDTH": "medium",
+    "DEFAULT_POSITION": "center",
+    "DEFAULT_POSITION_NARROW": "inherit",
+    "DEFAULT_SIZE": "medium",
     "Footer": "Primer::Alpha::Dialog::Footer",
-    "HEIGHT_MAPPINGS": {
-      "small": "Overlay--height-small",
-      "auto": "Overlay--height-auto",
-      "large": "Overlay--height-large",
-      "xlarge": "Overlay--height-xlarge"
-    },
-    "HEIGHT_OPTIONS": [
-      "small",
-      "auto",
-      "large",
-      "xlarge"
-    ],
     "Header": "Primer::Alpha::Dialog::Header",
-    "WIDTH_MAPPINGS": {
-      "small": "Overlay--width-small",
-      "medium": "Overlay--width-medium",
-      "large": "Overlay--width-large",
-      "xlarge": "Overlay--width-xlarge",
-      "xxlarge": "Overlay--width-xxlarge"
+    "POSITION_MAPPINGS": {
+      "center": "Overlay-backdrop--center",
+      "left": "Overlay-backdrop--side Overlay-backdrop--placement-left",
+      "right": "Overlay-backdrop--side Overlay-backdrop--placement-right"
     },
-    "WIDTH_OPTIONS": [
+    "POSITION_NARROW_MAPPINGS": {
+      "inherit": "",
+      "bottom": "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-bottom-whenNarrow",
+      "fullscreen": "Overlay-backdrop--full-whenNarrow",
+      "left": "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-left-whenNarrow",
+      "right": "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-right-whenNarrow"
+    },
+    "POSITION_NARROW_OPTIONS": [
+      "inherit",
+      "bottom",
+      "fullscreen",
+      "left",
+      "right"
+    ],
+    "POSITION_OPTIONS": [
+      "center",
+      "left",
+      "right"
+    ],
+    "SIZE_MAPPINGS": {
+      "small": "Overlay--size-small-portrait",
+      "medium_portrait": "Overlay--size-medium-portrait",
+      "medium": "Overlay--size-medium",
+      "large": "Overlay--size-large",
+      "xlarge": "Overlay--size-xlarge"
+    },
+    "SIZE_OPTIONS": [
       "small",
+      "medium_portrait",
       "medium",
       "large",
-      "xlarge",
-      "xxlarge"
+      "xlarge"
     ]
   },
   "Primer::Alpha::Dialog::Body": {
