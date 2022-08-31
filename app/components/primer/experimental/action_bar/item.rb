@@ -17,6 +17,7 @@ module Primer
           if icon_button?
             @icon = system_arguments[:icon]
             @label = system_arguments[:"aria-label"]
+            @system_arguments[:scheme] = :invisible
           elsif divider?
             @system_arguments[:tag] = :hr
             @system_arguments[:"data-targets"] = "action-bar.items"
