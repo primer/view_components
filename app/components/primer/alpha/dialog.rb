@@ -108,6 +108,9 @@ module Primer
       # @param title [String] Describes the content of the dialog.
       # @param subtitle [String] Provides dditional context for the dialog, also setting the `aria-describedby` attribute.
       # @param size [Symbol] The size of the dialog. <%= one_of(Primer::Alpha::Dialog::SIZE_OPTIONS) %>
+      # @param position [Symbol] The size of the dialog. <%= one_of(Primer::Alpha::Dialog::POSITION_OPTIONS) %>
+      # @param position_narrow [Symbol] The size of the dialog. <%= one_of(Primer::Alpha::Dialog::POSITION_NARROW_OPTIONS) %>
+      # @param visually_hide_title [Boolean] If true will hide the heading title, while still making it available to Screen Readers.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         title:,
