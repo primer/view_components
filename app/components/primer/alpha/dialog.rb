@@ -46,7 +46,6 @@ module Primer
       }.freeze
       POSITION_NARROW_OPTIONS = POSITION_NARROW_MAPPINGS.keys
 
-
       # Optional button to open the dialog.
       #
       # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
