@@ -20,7 +20,7 @@ module Primer
     class Dialog < Primer::Component
       DEFAULT_SIZE = :medium
       SIZE_MAPPINGS = {
-        :small => "Overlay--size-small",
+        :small => "Overlay--size-small-portrait",
         :medium_portrait => "Overlay--size-medium-portrait",
         DEFAULT_SIZE => "Overlay--size-medium",
         :large => "Overlay--size-large",
