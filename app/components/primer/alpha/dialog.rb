@@ -24,7 +24,7 @@ module Primer
         :medium_portrait => "Overlay--size-medium-portrait",
         DEFAULT_SIZE => "Overlay--size-medium",
         :large => "Overlay--size-large",
-        :xlarge => "Overlay--size-xlarge",
+        :xlarge => "Overlay--size-xlarge"
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
@@ -32,7 +32,7 @@ module Primer
       POSITION_MAPPINGS = {
         DEFAULT_POSITION => "Overlay-backdrop--center",
         :left => "Overlay-backdrop--side Overlay-backdrop--placement-left",
-        :right => "Overlay-backdrop--side Overlay-backdrop--placement-right",
+        :right => "Overlay-backdrop--side Overlay-backdrop--placement-right"
       }.freeze
       POSITION_OPTIONS = POSITION_MAPPINGS.keys
 
@@ -42,7 +42,7 @@ module Primer
         :bottom => "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-bottom-whenNarrow",
         :fullscreen => "Overlay-backdrop--full-whenNarrow",
         :left => "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-left-whenNarrow",
-        :right => "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-right-whenNarrow",
+        :right => "Overlay-backdrop--side-whenNarrow Overlay-backdrop--placement-right-whenNarrow"
       }.freeze
       POSITION_NARROW_OPTIONS = POSITION_NARROW_MAPPINGS.keys
 
@@ -137,7 +137,7 @@ module Primer
         )
         @backdrop_classes = class_names(
           POSITION_MAPPINGS[fetch_or_fallback(POSITION_OPTIONS, position, DEFAULT_POSITION)],
-          POSITION_NARROW_MAPPINGS[fetch_or_fallback(POSITION_NARROW_MAPPINGS, position_narrow, DEFAULT_POSITION_NARROW)],
+          POSITION_NARROW_MAPPINGS[fetch_or_fallback(POSITION_NARROW_MAPPINGS, position_narrow, DEFAULT_POSITION_NARROW)]
         )
 
         @id = id.to_s
