@@ -52,11 +52,11 @@ module Primer
         trailing_visual_counter: nil,
         trailing_visual_text: nil,
         private_leading_action_icon: nil,
-        private_trailing_action_icon: nil,
+        # private_trailing_action_icon: nil,
         trailing_action: nil
       )
         item = Primer::Alpha::ActionList::Item.new(
-		  list: nil,
+          list: nil,
           root: nil,
           label: label,
           truncate_label: truncate_label,

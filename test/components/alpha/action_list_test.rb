@@ -14,6 +14,10 @@ module Primer
       def test_item
         render_preview(:item)
       end
+
+      def test_item_with_leading_icon
+        render_preview(:item, params: { leading_visual_icon: "arrow-down" })
+      end
     end
   end
 end

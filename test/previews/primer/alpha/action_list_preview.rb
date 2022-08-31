@@ -75,7 +75,7 @@ module Primer
             trailing_visual_text: trailing_visual_text,
             private_leading_action_icon: private_leading_action_icon,
             private_trailing_action_icon: private_trailing_action_icon,
-            trailing_action: trailing_action,
+            trailing_action: trailing_action
           )
         end
       end
@@ -148,7 +148,7 @@ module Primer
           trailing_visual_text: trailing_visual_text,
           private_leading_action_icon: private_leading_action_icon,
           private_trailing_action_icon: private_trailing_action_icon,
-          trailing_action: trailing_action,
+          trailing_action: trailing_action
         )
         render(list.items.first)
       end
@@ -175,8 +175,8 @@ module Primer
         trailing_visual_label: nil,
         trailing_visual_counter: nil,
         trailing_visual_text: nil,
-        private_leading_action_icon: nil,
-        private_trailing_action_icon: nil,
+        # private_leading_action_icon: nil,
+        # private_trailing_action_icon: nil,
         trailing_action: nil
       )
         list.item(
@@ -193,7 +193,6 @@ module Primer
           active: active,
           expanded: expanded
         ) do |item|
-            binding.irb
           if leading_visual_icon && leading_visual_icon != :none
             item.with_leading_visual_icon(icon: leading_visual_icon)
           elsif leading_visual_avatar_src
