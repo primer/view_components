@@ -1,0 +1,6 @@
+<%= render Primer::ConditionalWrapper.new(condition: render_tooltip?, tag: :div, classes: "Button-withTooltip") do %>
+  <%= render Primer::Beta::BaseButton.new(**@system_arguments) do -%>
+    <%= render Primer::OcticonComponent.new(icon: @icon, classes: "Button-visual") %>
+  <% end -%>
+  <%= render Primer::Alpha::Tooltip.new(**@tooltip_arguments) if render_tooltip? %>
+<% end %>

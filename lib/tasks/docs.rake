@@ -29,6 +29,8 @@ namespace :docs do
     # Rails controller for rendering arbitrary ERB
     view_context = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context
     components = [
+      Primer::Beta::IconButton,
+      Primer::Beta::Button,
       Primer::Alpha::Layout,
       Primer::HellipButton,
       Primer::Image,
@@ -53,6 +55,7 @@ namespace :docs do
       Primer::Beta::CloseButton,
       Primer::Beta::Counter,
       Primer::Beta::Details,
+      Primer::Alpha::Dialog,
       Primer::Dropdown,
       Primer::DropdownMenuComponent,
       Primer::Beta::Flash,
@@ -107,7 +110,6 @@ namespace :docs do
     components_needing_docs = all_components - components
 
     args_for_components = []
-    classes_found_in_examples = []
 
     errors = []
 
@@ -252,9 +254,6 @@ namespace :docs do
           end
           f.puts
           html = view_context.render(inline: code)
-          html.scan(/class="([^"]*)"/) do |classnames|
-            classes_found_in_examples.concat(classnames[0].split.reject { |c| c.starts_with?("octicon", "js", "my-") }.map { ".#{_1}" })
-          end
           f.puts("<Example src=\"#{html.tr('"', "\'").delete("\n")}\" />")
           f.puts
           f.puts("```erb")
@@ -274,10 +273,6 @@ namespace :docs do
       puts "==============================================="
 
       raise
-    end
-
-    File.open("static/classes.yml", "w") do |f|
-      f.puts YAML.dump(classes_found_in_examples.sort.uniq)
     end
 
     File.open("static/arguments.yml", "w") do |f|
