@@ -11,12 +11,12 @@
         <div class="Overlay-body Overlay-body--paddingNone">
           <ul class="ActionList" id="<%= @menu_id %>-list" role="menu" aria-labelledby="<%= @menu_id %>-text">
             <% items.each do |item| %>
-              <% if item.divider? %>
+              <% if item.slot_type?(:divider) %>
                 <li class="ActionList-sectionDivider" role="presentation" aria-hidden data-targets="action-bar.menuItems" hidden></li>
               <% else %>
                 <%= render(Primer::BaseComponent.new(tag: :li, role: :none, classes: "ActionList-item", "data-targets": "action-bar.menuItems", hidden: true)) do %>
                   <%= render(Primer::BaseComponent.new(tag: :button, classes: "ActionList-content")) do %>
-                    <% if item.icon_button? %>
+                    <% if item.slot_type?(:icon_button) %>
                       <%= render Primer::BaseComponent.new(tag: :span, classes: "ActionList-item-visual ActionList-item-visual--leading") do %>
                         <%= render Primer::OcticonComponent.new(icon: item.icon) %>
                       <% end %>

@@ -23,13 +23,13 @@ export class ActionBarElement extends HTMLElement {
 
   connectedCallback() {
     this.#initialBarWidth = this.offsetWidth
-    this.#itemGap = parseInt(window.getComputedStyle(this)?.columnGap) || 0
+    this.#itemGap = parseInt(window.getComputedStyle(this)?.columnGap, 10) || 0
 
     // Calculate the width of all the items before hiding anything
     for (const item of this.items) {
       const width = item.getBoundingClientRect().width
-      const marginLeft = parseInt(window.getComputedStyle(item)?.marginLeft)
-      const marginRight = parseInt(window.getComputedStyle(item)?.marginRight)
+      const marginLeft = parseInt(window.getComputedStyle(item)?.marginLeft, 10)
+      const marginRight = parseInt(window.getComputedStyle(item)?.marginRight, 10)
       item.setAttribute('data-offset-width', `${width + marginLeft + marginRight}`)
     }
 
@@ -81,7 +81,7 @@ export class ActionBarElement extends HTMLElement {
   #nextItemWidth(): number {
     const nextItem = this.#hiddenItems()[0] || this.items[0]
 
-    return parseInt(nextItem.getAttribute('data-offset-width') || '0')
+    return Number(nextItem.getAttribute('data-offset-width') || '0')
   }
 
   #hideItem() {

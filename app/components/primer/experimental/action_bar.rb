@@ -18,10 +18,18 @@ module Primer
 
       renders_many :items, types: {
         icon_button: lambda { |**system_arguments|
-          Primer::Experimental::ActionBar::Item.new(item_type: :icon_button, size: @size, **system_arguments)
+          Primer::Experimental::ActionBar::Item.new(slot_type: :icon_button, size: @size, **system_arguments)
         },
         divider: lambda { |**system_arguments|
-          Primer::Experimental::ActionBar::Item.new(item_type: :divider, **system_arguments)
+          Primer::Experimental::ActionBar::Item.new(
+            slot_type: :divider,
+            tag: :hr,
+            classes: class_names(
+              system_arguments[:classes],
+              "ActionBar-divider"
+            ),
+            **system_arguments
+          )
         }
       }
 
@@ -47,6 +55,37 @@ module Primer
 
       def render?
         items.any?
+      end
+
+      # :no_doc:
+      class Item < Primer::Component
+        SLOT_TYPES = [:icon_button, :divider].freeze
+        SLOT_TYPE_DEFAULT = :icon_button
+
+        attr_reader :icon, :label
+
+        def initialize(slot_type:, **system_arguments)
+          @item_type = fetch_or_fallback(SLOT_TYPES, slot_type, SLOT_TYPE_DEFAULT)
+          @system_arguments = system_arguments
+          @system_arguments[:"data-targets"] = "action-bar.items"
+
+          return unless slot_type?(:icon_button)
+
+          @icon = system_arguments[:icon]
+          @label = system_arguments[:"aria-label"]
+        end
+
+        def slot_type?(type)
+          @item_type == type
+        end
+
+        def call
+          if slot_type?(:icon_button)
+            render Primer::Beta::IconButton.new(scheme: :invisible, **@system_arguments)
+          else
+            render Primer::BaseComponent.new(**@system_arguments)
+          end
+        end
       end
     end
   end
