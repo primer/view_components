@@ -8,6 +8,14 @@ module Primer
     class ActionBar < Primer::Component
       status :experimental
 
+      SIZE_DEFAULT = :medium
+      SIZE_MAPPINGS = {
+        SIZE_DEFAULT => nil,
+        :small => "ActionBar--small",
+        :large => "ActionBar--large"
+      }.freeze
+      SIZE_OPTIONS = SIZE_MAPPINGS.keys.freeze
+
       renders_many :items, types: {
         icon_button: lambda { |**system_arguments|
           Primer::Experimental::ActionBar::Item.new(item_type: :icon_button, size: @size, **system_arguments)
@@ -31,7 +39,8 @@ module Primer
 
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
-          "ActionBar"
+          "ActionBar",
+          SIZE_MAPPINGS[@size]
         )
         @system_arguments[:role] = "toolbar"
       end

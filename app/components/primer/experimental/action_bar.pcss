@@ -14,3 +14,35 @@
   height: calc(var(--primer-control-medium-size, 32px) / 2);
   border-left: var(--primer-borderWidth-thin, 1px) solid var(--color-border-subtle);
 }
+
+/* Increase touch target */
+
+@media (pointer: coarse) {
+  .ActionBar {
+    gap: var(--primer-controlStack-medium-gap-spacious, 12px);
+  }
+
+  .ActionBar--small {
+    gap: var(--primer-controlStack-small-gap-spacious, 16px);
+  }
+
+  .ActionBar--large {
+    gap: var(--base-size-4, 4px);
+  }
+
+  .ActionBar .Button--iconOnly {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      min-height: var(--primer-control-minTarget-coarse, 44px);
+      min-width: var(--primer-control-minTarget-coarse, 44px);
+      content: '';
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+}
