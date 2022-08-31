@@ -59,6 +59,8 @@ module Primer
 
       # :no_doc:
       class Item < Primer::Component
+        status :experimental
+
         SLOT_TYPES = [:icon_button, :divider].freeze
         SLOT_TYPE_DEFAULT = :icon_button
 
