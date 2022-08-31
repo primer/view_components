@@ -55,9 +55,9 @@ class PrimerComponentTest < Minitest::Test
       component.body { "Foo" }
       component.footer { "Foo" }
     }],
-    [Primer::Alpha::Dialog::Header, { title: "Test", id: "foo" }],
-    [Primer::Alpha::Dialog::Body],
-    [Primer::Alpha::Dialog::Footer],
+    [Primer::Alpha::Dialog::Header, { title: "Test", id: "test" }],
+    [Primer::Alpha::Dialog::Body, {}],
+    [Primer::Alpha::Dialog::Footer, {}],
     [Primer::Dropdown, {}, lambda do |component|
       component.button { "Foo" }
       component.menu do |m|
