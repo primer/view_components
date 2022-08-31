@@ -561,11 +561,11 @@
     ]
   },
   "Primer::Experimental::ActionBar::Item": {
-    "ITEM_TYPES": [
+    "SLOT_TYPES": [
       "icon_button",
       "divider"
     ],
-    "ITEM_TYPE_DEFAULT": "icon_button"
+    "SLOT_TYPE_DEFAULT": "icon_button"
   },
   "Primer::FlexComponent": {
     "ALIGN_ITEMS_DEFAULT": null,
