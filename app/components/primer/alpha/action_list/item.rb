@@ -64,7 +64,7 @@ module Primer
         }
 
         renders_one :trailing_action, lambda { |**system_arguments|
-          Primer::IconButton.new(scheme: :default, classes: ["ActionList-item-button ActionList-item-button--trailing", "ActionList-item-button--onHover" => @trailing_action_on_hover], **system_arguments)
+          Primer::Beta::IconButton.new(scheme: :invisible, classes: ["ActionList-item-button ActionList-item-button--trailing", "ActionList-item-button--onHover" => @trailing_action_on_hover], **system_arguments)
         }
 
         renders_many :items, lambda { |**system_arguments|
@@ -74,7 +74,7 @@ module Primer
             if item.active? && !@root
               @content_arguments[:classes] = class_names(
                 @content_arguments[:classes],
-                "ActionList-content--hasActiveSubItem"
+                "ActionListContent--hasActiveSubItem"
               )
             end
           end
@@ -156,7 +156,7 @@ module Primer
 
           @content_arguments = {
             classes: class_names(
-              "ActionList-content",
+              "ActionListContent",
               SIZE_MAPPINGS[@size]
             )
           }
@@ -200,7 +200,7 @@ module Primer
           if items.present?
             @content_arguments[:tag] = :button
             @content_arguments[:"aria-expanded"] = expanded?.to_s
-            # Apply click handler to .ActionList-content button element, enables toggle behavior
+            # Apply click handler to .ActionListContent button element, enables toggle behavior
             @content_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemWithSubItemClick"
             # Apply click handler to .ActionList-item li element, enables highlight behavior
 
@@ -216,8 +216,8 @@ module Primer
 
           @content_arguments[:classes] = class_names(
             @content_arguments[:classes],
-            "ActionList-content--visual16" => leading_visual && items.present?,
-            "ActionList-content--blockDescription" => description && @description_scheme == :block
+            "ActionListContent--visual16" => leading_visual && items.present?,
+            "ActionListContent--blockDescription" => description && @description_scheme == :block
           )
         end
       end
