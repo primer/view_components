@@ -53,43 +53,6 @@
   },
   "Primer::Alpha::ActionList::Separator": {
   },
-  "Primer::Alpha::ActionListItem": {
-    "DEFAULT_DESCRIPTION_VARIANT": "block",
-    "DEFAULT_SELECT_MODE": "none",
-    "DEFAULT_SIZE": "small",
-    "DEFAULT_VARIANT": "default",
-    "DESCRIPTION_VARIANT_MAPPINGS": {
-      "inline": "ActionList-item-descriptionWrap--inline",
-      "block": "ActionList-item-descriptionWrap--block"
-    },
-    "DESCRIPTION_VARIANT_OPTIONS": [
-      "inline",
-      "block"
-    ],
-    "SELECT_MODE_OPTIONS": [
-      "none",
-      "multiple",
-      "single"
-    ],
-    "SIZE_MAPPINGS": {
-      "small": null,
-      "medium": "ActionList-content--sizeMedium",
-      "large": "ActionList-content--sizeLarge"
-    },
-    "SIZE_OPTIONS": [
-      "small",
-      "medium",
-      "large"
-    ],
-    "VARIANT_MAPPINGS": {
-      "default": null,
-      "danger": "ActionList-item--danger"
-    },
-    "VARIANT_OPTIONS": [
-      "default",
-      "danger"
-    ]
-  },
   "Primer::Alpha::AutoComplete": {
     "Item": "Primer::Alpha::AutoComplete::Item"
   },

@@ -5,7 +5,6 @@
   "Primer::Alpha::ActionList::Heading": "alpha",
   "Primer::Alpha::ActionList::Item": "alpha",
   "Primer::Alpha::ActionList::Separator": "alpha",
-  "Primer::Alpha::ActionListItem": "alpha",
   "Primer::Alpha::AutoComplete": "deprecated",
   "Primer::Alpha::AutoComplete::Item": "deprecated",
   "Primer::Alpha::ButtonMarketing": "alpha",
