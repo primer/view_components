@@ -94,8 +94,8 @@ module Primer
       #       title: "Dialog Example",
       #       id: "my-dialog",
       #     )) do |d| %>
-      #       <% d.show_button { "Show Dialog" } %>
-      #       <% d.body do %>
+      #       <% d.with_show_button { "Show Dialog" } %>
+      #       <% d.with_body do %>
       #         <p>Some content</p>
       #       <% end %>
       #       <% d.footer do %>
@@ -146,7 +146,6 @@ module Primer
         @visually_hide_title = visually_hide_title
 
         @subtitle = subtitle
-        return if subtitle.present?
 
         @system_arguments[:aria] ||= {}
         @system_arguments[:aria][:describedby] ||= "#{@id}-description"
