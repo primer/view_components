@@ -25,8 +25,6 @@ module Primer
       # @param trailing_visual_label text
       # @param trailing_visual_counter number
       # @param trailing_visual_text text
-      # @param private_leading_action_icon [Symbol] octicon
-      # @param private_trailing_action_icon [Symbol] octicon
       # @param trailing_action [Symbol] octicon
       def list(
         role: Primer::Alpha::ActionList::DEFAULT_ROLE,
@@ -48,8 +46,6 @@ module Primer
         trailing_visual_label: nil,
         trailing_visual_counter: nil,
         trailing_visual_text: nil,
-        private_leading_action_icon: nil,
-        private_trailing_action_icon: nil,
         trailing_action: nil
       )
         render(Primer::Alpha::ActionList.new(role: role)) do |list|
@@ -73,8 +69,6 @@ module Primer
             trailing_visual_label: trailing_visual_label,
             trailing_visual_counter: trailing_visual_counter,
             trailing_visual_text: trailing_visual_text,
-            private_leading_action_icon: private_leading_action_icon,
-            private_trailing_action_icon: private_trailing_action_icon,
             trailing_action: trailing_action
           )
         end
@@ -99,8 +93,6 @@ module Primer
       # @param trailing_visual_label text
       # @param trailing_visual_counter number
       # @param trailing_visual_text text
-      # @param private_leading_action_icon [Symbol] octicon
-      # @param private_trailing_action_icon [Symbol] octicon
       # @param trailing_action [Symbol] octicon
       def item(
         label: "Label",
@@ -121,8 +113,6 @@ module Primer
         trailing_visual_label: nil,
         trailing_visual_counter: nil,
         trailing_visual_text: nil,
-        private_leading_action_icon: nil,
-        private_trailing_action_icon: nil,
         trailing_action: nil
       )
         list = Primer::Alpha::ActionList.new
@@ -146,11 +136,9 @@ module Primer
           trailing_visual_label: trailing_visual_label,
           trailing_visual_counter: trailing_visual_counter,
           trailing_visual_text: trailing_visual_text,
-          private_leading_action_icon: private_leading_action_icon,
-          private_trailing_action_icon: private_trailing_action_icon,
           trailing_action: trailing_action
         )
-        render(list.items.first)
+        render(list)
       end
 
       private
@@ -175,8 +163,6 @@ module Primer
         trailing_visual_label: nil,
         trailing_visual_counter: nil,
         trailing_visual_text: nil,
-        private_leading_action_icon: nil,
-        private_trailing_action_icon: nil,
         trailing_action: nil
       )
         list.item(
@@ -193,9 +179,6 @@ module Primer
           active: active,
           expanded: expanded
         ) do |item|
-          private_trailing_action_icon
-          private_leading_action_icon
-
           if leading_visual_icon && leading_visual_icon != :none
             item.with_leading_visual_icon(icon: leading_visual_icon)
           elsif leading_visual_avatar_src
