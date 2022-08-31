@@ -54,7 +54,7 @@
   "Primer::Dropdown::Menu::Item": "alpha",
   "Primer::DropdownMenuComponent": "deprecated",
   "Primer::Experimental::ActionBar": "experimental",
-  "Primer::Experimental::ActionBar::Item": "alpha",
+  "Primer::Experimental::ActionBar::Item": "experimental",
   "Primer::FlexComponent": "deprecated",
   "Primer::FlexItemComponent": "deprecated",
   "Primer::HeadingComponent": "deprecated",
