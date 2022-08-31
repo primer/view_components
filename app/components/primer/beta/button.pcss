@@ -329,4 +329,20 @@ summary.Button {
   &.Button--large {
     width: var(--primer-control-large-size, 40px);
   }
+
+  /* Increase touch target */
+  @media (pointer: coarse) {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: var(--primer-control-minTarget-coarse, 44px);
+      width: var(--primer-control-minTarget-coarse, 44px);
+      content: '';
+      transform: translateX(-50%) translateY(-50%);
+      background: #ff000022;
+    }
+  }
 }
