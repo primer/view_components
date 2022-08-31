@@ -8,25 +8,9 @@ module Primer
     class ActionBar < Primer::Component
       status :experimental
 
-      SIZE_DEFAULT = :medium
-      SIZE_MAPPINGS = {
-        SIZE_DEFAULT => nil,
-        :small => "ActionBar--small",
-        :large => "ActionBar--large"
-      }.freeze
-      SIZE_OPTIONS = SIZE_MAPPINGS.keys.freeze
-
-      DENSITY_DEFAULT = :normal
-      DENSITY_MAPPINGS = {
-        DENSITY_DEFAULT => nil,
-        :condensed => "ActionBar--condensed",
-        :spacious => "ActionBar--spacious"
-      }.freeze
-      DENSITY_OPTIONS = DENSITY_MAPPINGS.keys.freeze
-
       renders_many :items, types: {
         icon_button: lambda { |**system_arguments|
-          Primer::Experimental::ActionBar::Item.new(item_type: :icon_button, **system_arguments)
+          Primer::Experimental::ActionBar::Item.new(item_type: :icon_button, size: @size, **system_arguments)
         },
         divider: lambda { |**system_arguments|
           Primer::Experimental::ActionBar::Item.new(item_type: :divider, **system_arguments)
@@ -38,19 +22,16 @@ module Primer
       #   <%= render(Primer::Experimental::ActionBar.new) { "Example" } %>
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(size: SIZE_DEFAULT, density: DENSITY_DEFAULT, **system_arguments)
+      def initialize(size: Primer::Beta::Button::DEFAULT_SIZE, **system_arguments)
         @menu_id = "action-bar-overflow-menu-#{SecureRandom.hex(4)}"
         @system_arguments = system_arguments
         @system_arguments[:tag] = :"action-bar"
 
-        @size = fetch_or_fallback(SIZE_OPTIONS, size, SIZE_DEFAULT)
-        @density = fetch_or_fallback(DENSITY_OPTIONS, density, DENSITY_DEFAULT)
+        @size = fetch_or_fallback(Primer::Beta::Button::SIZE_OPTIONS, size, Primer::Beta::Button::DEFAULT_SIZE)
 
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
-          "ActionBar",
-          SIZE_MAPPINGS[@size],
-          DENSITY_MAPPINGS[@density]
+          "ActionBar"
         )
         @system_arguments[:role] = "toolbar"
       end

@@ -1,11 +1,8 @@
 /* CSS for ActionBar  */
 
 .ActionBar {
-  --size: var(--primer-control-medium-size, 32px);
-
   display: flex;
   align-items: center;
-  gap: var(--primer-controlStack-medium-gap-auto, 8px);
   justify-content: end;
   position: relative;
 }
@@ -14,48 +11,6 @@
 
 .ActionBar-divider {
   margin: 0 var(--primer-control-medium-gap, 8px);
-  height: calc(var(--size) / 2);
+  height: calc(var(--primer-control-medium-size, 32px) / 2);
   border-left: var(--primer-borderWidth-thin, 1px) solid var(--color-border-subtle);
-}
-
-/* Size */
-
-.ActionBar--small {
-  --size: var(--primer-control-small-size, 28px);
-  gap: var(--primer-controlStack-small-gap-auto, 8px);
-}
-
-.ActionBar--large {
-  --size: var(--primer-control-large-size, 40px);
-  gap: var(--primer-controlStack-large-gap-auto, 8px);
-}
-
-/* Density */
-
-.ActionBar--condensed {
-  gap: 0;
-}
-
-.ActionBar--spacious {
-  gap: var(--primer-controlStack-medium-gap-spacious, 12px);
-}
-
-/* Increase touch target */
-
-@media (pointer: coarse) {
-  .ActionBar--condensed {
-    gap: var(--primer-controlStack-medium-gap-spacious, 12px);
-  }
-
-  .ActionBar--condensed.ActionBar--small {
-    gap: var(--primer-controlStack-small-gap-spacious, 16px);
-  }
-
-  .ActionBar--condensed.ActionBar--large {
-    gap: var(--base-size-4, 4px);
-  }
-
-  .ActionBar--spacious.ActionBar--small {
-    gap: var(--primer-controlStack-small-gap-spacious, 16px);
-  }
 }

@@ -8,10 +8,9 @@ module Primer
     # @label ActionBar
     class ActionBarPreview < ViewComponent::Preview
       # @param size [Symbol] select [[Small, small], [Medium, medium], [Large, large]]
-      # @param density [Symbol] select [[Condensed, condensed], [Normal, normal], [Spacious, spacious]]
       # @param aria_label [String]
-      def playground(size: :medium, density: :normal)
-        render(Primer::Experimental::ActionBar.new(size: size, density: density)) do |component|
+      def playground(size: :medium)
+        render(Primer::Experimental::ActionBar.new(size: size)) do |component|
           component.with_item_icon_button(icon: :heading, "aria-label": "Heading")
           component.with_item_icon_button(icon: :bold, "aria-label": "Bold")
           component.with_item_icon_button(icon: :italic, "aria-label": "Italic")

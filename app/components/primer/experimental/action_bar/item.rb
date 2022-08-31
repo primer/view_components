@@ -14,13 +14,13 @@ module Primer
           @item_type = fetch_or_fallback(ITEM_TYPES, item_type, ITEM_TYPE_DEFAULT)
           @system_arguments = system_arguments
 
+          @system_arguments[:"data-targets"] = "action-bar.items"
           if icon_button?
             @icon = system_arguments[:icon]
             @label = system_arguments[:"aria-label"]
             @system_arguments[:scheme] = :invisible
           elsif divider?
             @system_arguments[:tag] = :hr
-            @system_arguments[:"data-targets"] = "action-bar.items"
             @system_arguments[:classes] = class_names(
               system_arguments[:classes],
               "ActionBar-divider"
