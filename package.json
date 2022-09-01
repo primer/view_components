@@ -26,6 +26,7 @@
     "app/components/primer/**/*.d.ts"
   ],
   "scripts": {
+    "clean": "git clean -fdX -- app/",
     "build:docs": "cd docs && yarn gatsby build --prefix-paths",
     "build:docs:preview": "cd docs && yarn gatsby build",
     "prepare": "rm -rf docs/static && mkdir -p docs/static && yarn build:js && yarn build:css && cp app/assets/**/primer_view_components.* docs/static/",
