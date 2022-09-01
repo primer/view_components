@@ -7,6 +7,7 @@ on:
 
 jobs:
   build-docs:
+    if: ${{ github.repository == 'primer/view_components' }}
     name: Update statuses project
     runs-on: ubuntu-latest
     steps:

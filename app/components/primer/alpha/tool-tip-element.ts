@@ -1,4 +1,3 @@
-// eslint-disable-next-line prettier/prettier
 import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 

@@ -22,6 +22,45 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Dialog
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog.rb
+  parameters:
+  - name: id
+    type: String
+    default: '`"dialog-#{(36**3 + rand(36**4)).to_s(36)}"`'
+    description: The id of the dialog.
+  - name: title
+    type: String
+    default: N/A
+    description: Describes the content of the dialog.
+  - name: subtitle
+    type: String
+    default: "`nil`"
+    description: Provides dditional context for the dialog, also setting the `aria-describedby`
+      attribute.
+  - name: size
+    type: Symbol
+    default: "`:medium`"
+    description: The size of the dialog. One of `:large`, `:medium`, `:medium_portrait`,
+      `:small`, or `:xlarge`.
+  - name: position
+    type: Symbol
+    default: "`:center`"
+    description: The size of the dialog. One of `:center`, `:left`, or `:right`.
+  - name: position_narrow
+    type: Symbol
+    default: "`:inherit`"
+    description: The size of the dialog. One of `:bottom`, `:fullscreen`, `:inherit`,
+      `:left`, or `:right`.
+  - name: visually_hide_title
+    type: Boolean
+    default: "`false`"
+    description: If true will hide the heading title, while still making it available
+      to Screen Readers.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: HiddenTextExpander
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/hidden_text_expander.rb
   parameters:
