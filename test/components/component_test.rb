@@ -7,6 +7,8 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Beta::IconButton, { icon: :star, "aria-label": "Star" }],
+    [Primer::Beta::Button, {}],
     [Primer::Alpha::SegmentedControl, {
       icon_only: false,
       full_width: false
@@ -55,6 +57,14 @@ class PrimerComponentTest < Minitest::Test
       component.summary { "Foo" }
       component.body { "Bar" }
     end],
+    [Primer::Alpha::Dialog, { title: "Test" }, proc { |component|
+      component.header { "Foo" }
+      component.body { "Foo" }
+      component.footer { "Foo" }
+    }],
+    [Primer::Alpha::Dialog::Header, { title: "Test", id: "test" }],
+    [Primer::Alpha::Dialog::Body, {}],
+    [Primer::Alpha::Dialog::Footer, {}],
     [Primer::Dropdown, {}, lambda do |component|
       component.button { "Foo" }
       component.menu do |m|

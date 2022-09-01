@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   build:
-    if: ${{ github.actor != 'dependabot[bot]' }}
+    if: ${{ github.repository == 'primer/view_components' && github.actor != 'dependabot[bot]' }}
     name: Build
     runs-on: ubuntu-latest
     steps:

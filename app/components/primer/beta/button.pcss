@@ -1,0 +1,332 @@
+/* CSS for Button  */
+/* temporary, pre primitives release */
+:root {
+  --primer-duration-fast: 80ms;
+  --primer-easing-easeInOut: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* base button */
+.Button {
+  position: relative;
+  font-size: var(--primer-text-body-size-medium, 14px);
+  font-weight: var(--base-text-weight-medium, 500);
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: var(--primer-borderWidth-thin, 1px) solid;
+  border-color: transparent;
+  border-radius: var(--primer-borderRadius-medium, 6px);
+  color: var(--color-btn-text);
+  transition: var(--primer-duration-fast) var(--primer-easing-easeInOut);
+  transition-property: color, fill, background-color, border-color;
+  text-align: center;
+  height: var(--primer-control-medium-size, 32px);
+  padding: 0 var(--primer-control-medium-paddingInline-normal, 12px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--primer-control-medium-gap, 8px);
+
+  /* mobile friendly sizing */
+  @media (pointer: course) {
+    &::before {
+      @mixin minTouchTarget 48px, 48px;
+    }
+  }
+
+  /* base states */
+
+  &:hover {
+    transition-duration: var(--primer-duration-fast);
+  }
+
+  &:active,
+  &.Button--active {
+    transition: none;
+  }
+
+  &:disabled,
+  &.Button--disabled,
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  /* &:focus {
+    @mixin focusOutline;
+  } */
+}
+
+.Button-withTooltip {
+  position: relative;
+  display: inline-block;
+}
+
+a.Button,
+summary.Button {
+  display: inline-flex;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/* wrap grid content to allow trailingAction to lock-right */
+.Button-content {
+  flex: 1 0 auto;
+  display: grid;
+  grid-template-areas: 'leadingVisual text trailingVisual';
+  grid-template-columns: min-content minmax(0, auto) min-content;
+  align-items: center;
+  place-content: center;
+  /* padding-bottom: 1px; optical alignment for firefox */
+
+  & > :not(:last-child) {
+    margin-right: var(--primer-control-medium-gap, 8px);
+  }
+}
+
+/* center child elements for fullWidth */
+.Button-content--alignStart {
+  justify-content: start;
+}
+
+/* button child elements */
+
+/* align svg */
+.Button-visual {
+  display: flex;
+  pointer-events: none; /* allow click handler to work, avoiding visuals */
+}
+
+.Button-label {
+  grid-area: text;
+  white-space: nowrap;
+  line-height: var(--primer-text-body-lineHeight-medium, calc(20/14));
+}
+
+.Button-leadingVisual {
+  grid-area: leadingVisual;
+}
+
+.Button-trailingVisual {
+  grid-area: trailingVisual;
+}
+
+.Button-trailingAction {
+  margin-right: calc(var(--base-size-4, 4px) * -1);
+}
+
+/* sizes */
+
+.Button--small {
+  font-size: var(--primer-text-body-size-small, 12px);
+  height: var(--primer-control-small-size, 28px);
+  padding: 0 var(--primer-control-small-paddingInline-normal, 12px);
+  gap: var(--primer-control-small-gap, 4px);
+
+  .Button-label {
+    line-height: var(--primer-text-body-lineHeight-small, calc(20/12));
+  }
+
+  .Button-content {
+    & > :not(:last-child) {
+      margin-right: var(--primer-control-small-gap, 4px);
+    }
+  }
+}
+
+.Button--large {
+  height: var(--primer-control-large-size, 40px);
+  padding: 0 var(--primer-control-large-paddingInline-normal, 12px);
+  gap: var(--primer-control-large-gap, 8px);
+
+  .Button-label {
+    line-height: var(--primer-text-body-lineHeight-large, calc(48/32));
+  }
+
+  .Button-content {
+    & > :not(:last-child) {
+      margin-right: var(--primer-control-large-gap, 8px);
+    }
+  }
+}
+
+.Button--fullWidth {
+  width: 100%;
+}
+
+/* variants */
+
+/* primary */
+.Button--primary {
+  color: var(--color-btn-primary-text);
+  fill: var(--color-btn-primary-icon);
+  background-color: var(--color-btn-primary-bg);
+  border-color: var(--color-btn-primary-border);
+  box-shadow: var(--color-btn-primary-shadow), var(--color-btn-primary-inset-shadow);
+
+  &:hover {
+    background-color: var(--color-btn-primary-hover-bg);
+    border-color: var(--color-btn-primary-hover-border);
+  }
+
+  /* fallback :focus state */
+  &:focus {
+    @mixin focusOutlineOnEmphasis;
+
+    /* remove fallback :focus if :focus-visible is supported */
+    &:not(:focus-visible) {
+      outline: solid 1px transparent;
+      box-shadow: none;
+    }
+  }
+
+  /* default focus state */
+  &:focus-visible {
+    @mixin focusOutlineOnEmphasis;
+  }
+
+  &:active,
+  &[aria-pressed='true'],
+  &.Button--pressed {
+    background-color: var(--color-btn-primary-selected-bg);
+    box-shadow: var(--color-btn-primary-selected-shadow);
+  }
+
+  &:disabled,
+  &.Button--disabled,
+  &[aria-disabled='true'] {
+    color: var(--color-btn-primary-disabled-text);
+    background-color: var(--color-btn-primary-disabled-bg);
+    border-color: var(--color-btn-primary-disabled-border);
+    fill: var(--color-btn-primary-disabled-text);
+  }
+}
+
+/* default (secondary) */
+.Button--secondary {
+  color: var(--color-btn-text);
+  fill: var(--color-fg-muted); /* help this */
+  background-color: var(--color-btn-bg);
+  border-color: var(--color-btn-border);
+  box-shadow: var(--color-btn-shadow), var(--color-btn-inset-shadow);
+
+  &:hover  {
+    background-color: var(--color-btn-hover-bg);
+    border-color: var(--color-btn-hover-border);
+  }
+
+  &:active,
+  &.Button--active {
+    background-color: var(--color-btn-active-bg);
+    border-color: var(--color-btn-active-border);
+  }
+
+  &[aria-pressed='true'],
+  &.Button--pressed {
+    background-color: var(--color-btn-selected-bg);
+    box-shadow: var(--color-primer-shadow-inset);
+  }
+
+  &:disabled,
+  &.Button--disabled,
+  &[aria-disabled='true'] {
+    color: var(--color-primer-fg-disabled);
+    background-color: var(--color-btn-bg);
+    border-color: var(--color-btn-border);
+    fill: var(--color-primer-fg-disabled);
+  }
+}
+
+/* link color without svg */
+.Button--invisible {
+  color: var(--color-fg-default);
+  fill: var(--color-fg-default);
+  border: none;
+
+  &:hover {
+    background-color: var(--color-action-list-item-default-hover-bg);
+  }
+
+  &[aria-pressed='true'],
+  &:active,
+  &.Button--active,
+  &.Button--pressed {
+    background-color: var(--color-action-list-item-default-active-bg);
+    /* box-shadow: var(--color-primer-shadow-inset); */
+  }
+
+  &:disabled,
+  &.Button--disabled,
+  &[aria-disabled='true'] {
+    color: var(--color-primer-fg-disabled);
+    background-color: var(--color-btn-bg);
+    border-color: var(--color-btn-border);
+    fill: var(--color-primer-fg-disabled);
+  }
+
+  /* if visual is present, muted label color */
+  .Button-label:not(:only-child) {
+    color: var(--color-btn-text);
+  }
+
+  /* if trailingAction is present, muted label color */
+  .Button-content:not(:only-child) {
+    .Button-label {
+      color: var(--color-btn-text);
+    }
+  }
+}
+
+/* danger */
+.Button--danger {
+  color: var(--color-btn-danger-text);
+  fill: var(--color-btn-danger-icon);
+  background-color: var(--color-btn-bg);
+  border-color: var(--color-btn-border);
+  box-shadow: var(--color-btn-shadow), var(--color-btn-inset-shadow);
+
+  &:hover {
+    color: var(--color-btn-danger-hover-text);
+    fill: var(--color-btn-danger-hover-text);
+    background-color: var(--color-btn-danger-hover-bg);
+    border-color: var(--color-btn-danger-hover-border);
+    box-shadow: var(--color-btn-danger-hover-shadow), var(--color-btn-danger-hover-inset-shadow);
+  }
+
+  &:active,
+  &[aria-pressed='true'],
+  &.Button--pressed {
+    color: var(--color-btn-danger-selected-text);
+    fill: var(--color-btn-danger-selected-text);
+    background-color: var(--color-btn-danger-selected-bg);
+    border-color: var(--color-btn-danger-selected-border);
+    box-shadow: var(--color-btn-danger-selected-shadow);
+  }
+
+  &:disabled,
+  &.disabled,
+  &[aria-disabled='true'] {
+    color: var(--color-btn-danger-disabled-text);
+    fill: var(--color-btn-danger-disabled-text);
+    background-color: var(--color-btn-danger-disabled-bg);
+    border-color: var(--color-btn-border);
+  }
+}
+
+.Button--iconOnly {
+  display: grid;
+  place-content: center;
+  padding: unset;
+  width: var(--primer-control-medium-size, 32px);
+
+  &.Button--small {
+    width: var(--primer-control-small-size, 28px);
+  }
+
+  &.Button--large {
+    width: var(--primer-control-large-size, 40px);
+  }
+}

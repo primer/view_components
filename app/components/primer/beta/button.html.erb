@@ -1,0 +1,23 @@
+<%= render Primer::ConditionalWrapper.new(condition: tooltip.present?, tag: :div, classes: "Button-withTooltip") do -%>
+  <%= render Primer::Beta::BaseButton.new(**@system_arguments) do -%>
+    <span class="<%= @align_content_classes %>">
+      <% if leading_visual %>
+        <span class="Button-visual Button-leadingVisual">
+          <%= leading_visual %>
+        </span>
+      <% end %>
+      <span class="Button-label"><%= trimmed_content %></span>
+      <% if trailing_visual %>
+        <span class="Button-visual Button-trailingVisual">
+          <%= trailing_visual %>
+        </span>
+      <% end %>
+    </span>
+    <% if trailing_action %>
+      <span class="Button-visual Button-trailingAction">
+        <%= trailing_action %>
+      </span>
+    <% end %>
+    <%= tooltip %>
+  <% end -%>
+<% end -%>
