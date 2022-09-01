@@ -83,7 +83,7 @@ Kuby.define("ViewComponentsStorybook") do
 
         # This directory needs to exist b/c some JavaScript thing copies the compiled
         # Primer CSS bundle into it.
-        dockerfile.run("mkdir", "-p", "demo/app/assets/stylesheets")
+        dockerfile.run("mkdir", "-p", "demo/app/assets/builds")
         dockerfile.run("yarn", "install")
       end
 
