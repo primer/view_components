@@ -66,7 +66,7 @@ module Primer
         }
 
         renders_one :trailing_action, lambda { |**system_arguments|
-          Primer::Beta::IconButton.new(scheme: :invisible, classes: ["ActionListItem-trailingAction", { "ActionListItem-trailingAction--onHover" => @trailing_action_on_hover }], **system_arguments)
+          Primer::Beta::IconButton.new(scheme: :invisible, classes: ["ActionListItem-trailingAction"], **system_arguments)
         }
 
         renders_many :items, lambda { |**system_arguments|
@@ -131,10 +131,12 @@ module Primer
             @system_arguments[:classes],
             SCHEME_MAPPINGS[@scheme],
             "ActionListItem",
+            "ActionListItem--withActions",
+            "ActionListItem--trailingActionHover",
             # "ActionListItem--withActions" if trailing_action.present?,
+            "ActionListItem--trailingActionHover" => @trailing_action_on_hover,
             "ActionListItem--navActive" => @active,
-            "ActionListItem--subItem" => sub_item?,
-            "ActionListItem--trailingActionHover" => @trailing_action_on_hover
+            "ActionListItem--subItem" => sub_item?
           )
 
           @system_arguments[:role] = role

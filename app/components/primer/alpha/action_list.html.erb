@@ -3,11 +3,11 @@
     <%= item %>
   <% end %>
   <% unless groups.empty? %>
-    <%= render(Primer::Alpha::ActionList::Separator.new) %>
+    <%= render(Primer::Alpha::ActionList::Divider.new) %>
   <% end %>
   <% groups.each_with_index do |group, idx| %>
     <% if idx > 0 %>
-      <%= render(Primer::Alpha::ActionList::Separator.new) %>
+      <%= render(Primer::Alpha::ActionList::Divider.new) %>
     <% end %>
     <%= group %>
   <% end %>

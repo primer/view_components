@@ -5,16 +5,27 @@ module Primer
     class ActionList
       # Section heading rendered above the section contents.
       class Heading < Primer::Component
+
+        DEFAULT_SCHEME = :subtle
+        SCHEME_MAPPINGS = {
+          DEFAULT_SCHEME => nil,
+          :filled => "ActionList-sectionDivider--filled"
+        }.freeze
+        SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
+
         # @param section_id [String] The unique identifier of the section the heading belongs to.
         # @param filled [Boolean] Whether or not the section is filled, i.e. has a colored background.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(section_id:, filled: false, **system_arguments)
+        def initialize(section_id:, title:, scheme: DEFAULT_SCHEME, subtitle: nil, **system_arguments)
           @system_arguments = system_arguments
           @system_arguments[:tag] = :li
           @section_id = section_id
+          @title = title
+          @subtitle = subtitle
+          @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
           @system_arguments[:classes] = class_names(
             "ActionList-sectionDivider",
-            filled ? "ActionList-sectionDivider--filled" : "",
+            SCHEME_MAPPINGS[@scheme],
             @system_arguments[:classes]
           )
         end

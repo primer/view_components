@@ -2,12 +2,14 @@
   --primer-actionListContent-paddingBlock: var(--primer-control-medium-paddingBlock, 6px);
 }
 
+/* ActionList */
+
 /* <ul> */
 .ActionListWrap--inset {
   padding: var(--base-size-8);
 }
 
-/* dividers */
+/* list dividers */
 
 .ActionListWrap--divided {
   & .ActionListItem-label::before {
@@ -19,16 +21,6 @@
     content: '';
     background: var(--color-action-list-item-inline-divider);
   }
-
-  /* & .ActionListContent--sizeLarge {
-    & .ActionListItem-label::before {
-      top: calc(-1 * var(--primer-control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2)));
-    }
-  }
-
-  &.ActionListContent--sizeXLarge {
-    padding-block: var(--primer-control-xlarge-paddingBlock, calc((3rem - 1.25rem) / 2));
-  } */
 
   /* if descriptionWrap--inline exists, move pseudo divider to wrapper */
   & .ActionListItem-descriptionWrap--inline {
@@ -204,6 +196,7 @@
     /* blue accent line
     &::after {
       @include activeIndicatorLine(-$spacer-1);
+      @mixin activeIndicatorLine
     } */
   }
 
@@ -238,6 +231,7 @@
   }
 
   /* disabled */
+
   &[aria-disabled='true'] {
     & .ActionListContent {
       & .ActionListItem-label,
@@ -318,20 +312,6 @@
 
   &:hover {
     text-decoration: none;
-  }
-
-  &:focus {
-    /* @mixin focusOutline; */
-
-    /* remove fallback :focus if :focus-visible is supported */
-    &:not(:focus-visible) {
-      outline: solid 1px transparent;
-    }
-  }
-
-  /* default focus state */
-  &:focus-visible {
-    /* @mixin focusOutline; */
   }
 
   /* disabled */
@@ -449,18 +429,15 @@
 
   &.ActionListContent--sizeLarge {
     --primer-actionListContent-paddingBlock: var(--primer-control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2));
-    /* padding-block: var(--primer-control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2)); */
   }
 
   &.ActionListContent--sizeXLarge {
     --primer-actionListContent-paddingBlock: var(--primer-control-xlarge-paddingBlock, calc((3rem - 1.25rem) / 2));
-    /* padding-block: var(--primer-control-xlarge-paddingBlock, calc((3rem - 1.25rem) / 2)); */
   }
 
   /* On pointer:coarse (mobile), all list items are large */
   @media (pointer: coarse) {
     --primer-actionListContent-paddingBlock: var(--primer-control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2));
-    padding-block: var(--primer-control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2));
   }
 
   &.ActionListContent--blockDescription {
@@ -556,13 +533,25 @@
   font-size: var(--primer-text-body-size-small, 12px);
 }
 
+/* trailing action icon button */
+
+.ActionListItem--withActions {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
 .ActionListItem-trailingAction {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.ActionListItem-trailingAction--onHover {
-  visibility: hidden;
+/* show trailing action button on hover */
+
+.ActionListItem--trailingActionHover {
+  & .ActionListItem-trailingAction {
+    visibility: hidden;
+  }
 
   &:hover,
   &:focus-within {
@@ -572,15 +561,56 @@
   }
 }
 
-.ActionListItem--withActions {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
+/* ActionList::Divider */
+
+.ActionList-sectionDivider {
+  /* with children */
+  &:not(:empty) {
+    display: flex;
+    padding: ($spacer-1 * 1.5) $spacer-2;
+    padding-inline: var(--primer-actionListContent-paddingBlock);
+    padding-block: var(--base-size-8, 8px);
+    font-size: var(--primer-text-body-size-small, 12px);
+    font-weight: var(--base-text-weight-semibold, 600);
+    color: var(--color-fg-muted);
+    flex-direction: column;
+  }
+
+  /* no children */
+  &:empty {
+    display: block;
+    height: var(--primer-borderWidth-thin, 1px);
+    padding: 0;
+    margin-block-start: calc(var(--base-size-8, 8px) - var(--primer-borderWidth-thin, 1px));
+    margin-block-end: var(--base-size-8, 8px);
+    margin-inline: calc(-1 * var(--base-size-8, 8px));
+    list-style: none;
+    background: var(--color-action-list-item-inline-divider);
+    border: 0;
+  }
+
+  .ActionList-sectionDivider-title {
+    font-size: var(--primer-text-body-size-small, 12px);
+    font-weight: var(--base-text-weight-semibold, 600);
+    color: var(--color-fg-muted);
+  }
 }
 
-/* notes to katie
- offer hover prop for leading/trailing action
- button styles
- sub-group items etc etc
- action button height set per size option
- move single and multi select to own component */
+.ActionList-sectionDivider--filled {
+  margin-block-start: calc(var(--base-size-8, 8px) - var(--primer-borderWidth-thin, 1px));
+  margin-block-end: var(--base-size-8, 8px);
+  margin-inline: calc(-1 * var(--base-size-8, 8px));
+  background: var(--color-canvas-subtle);
+  border-top: solid var(--primer-borderWidth-thin, 1px) var(--color-action-list-item-inline-divider);
+  border-bottom: solid var(--primer-borderWidth-thin, 1px) var(--color-action-list-item-inline-divider);
+
+  /* if no children, treat as divider */
+  &:empty {
+    height: var(--base-size-8, 8px);
+    box-sizing: border-box;
+  }
+
+  &:first-child {
+    margin-block-start: 0;
+  }
+}

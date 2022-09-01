@@ -7,7 +7,6 @@ module Primer
       # @label List
       #
       # @param role text
-      #
       # @param scheme [Symbol] select [full, inset]
       # @param show_dividers toggle
       def list(
@@ -26,32 +25,30 @@ module Primer
                 item.with_leading_visual_icon(icon: :heart)
             end
         end
-        # end
-        # render(Primer::Alpha::ActionList::Item.new(list, label: "test", root: nil))
-        # render(Primer::Alpha::ActionList.new(role: role)) do |list|
-        #   add_item_to(
-        #     list,
-        #     label: label,
-        #     truncate_label: truncate_label,
-        #     href: href,
-        #     size: size,
-        #     scheme: scheme,
-        #     disabled: disabled,
-        #     description: description,
-        #     description_scheme: description_scheme,
-        #     select_mode: select_mode,
-        #     checked: checked,
-        #     active: active,
-        #     expanded: expanded,
-        #     leading_visual_icon: leading_visual_icon,
-        #     leading_visual_avatar_src: leading_visual_avatar_src,
-        #     trailing_visual_icon: trailing_visual_icon,
-        #     trailing_visual_label: trailing_visual_label,
-        #     trailing_visual_counter: trailing_visual_counter,
-        #     trailing_visual_text: trailing_visual_text,
-        #     trailing_action: trailing_action
-        #   )
-        # end
+      end
+
+      # @label Divider
+      #
+      # @param scheme [Symbol] select [subtle, filled]
+      def Divider(
+        scheme: Primer::Alpha::ActionList::Divider::DEFAULT_SCHEME
+      )
+        render(Primer::Alpha::ActionList::Divider.new(scheme: scheme))
+      end
+
+      # @label Heading
+      #
+      # @param scheme [Symbol] select [subtle, filled]
+      # @param title text
+      # @param subtitle text
+      # @param section_id text
+      def Heading(
+        scheme: Primer::Alpha::ActionList::Heading::DEFAULT_SCHEME,
+        title: "This is a title",
+        section_id: "unique-id",
+        subtitle: "This is a subtitle"
+      )
+        render(Primer::Alpha::ActionList::Heading.new(scheme: scheme, section_id: section_id, title: title, subtitle: subtitle))
       end
 
       # @label Item
@@ -67,6 +64,7 @@ module Primer
       # @param select_mode [Symbol] select [none, single, multiple]
       # @param checked toggle
       # @param active toggle
+      # @param trailing_action_on_hover toggle
       # @param leading_visual_icon [Symbol] octicon
       # @param leading_visual_avatar_src text
       # @param trailing_visual_icon [Symbol] octicon
@@ -87,6 +85,7 @@ module Primer
         checked: false,
         active: false,
         expanded: false,
+        trailing_action_on_hover: false,
         leading_visual_icon: nil,
         leading_visual_avatar_src: nil,
         trailing_visual_icon: nil,
@@ -110,6 +109,7 @@ module Primer
           checked: checked,
           active: active,
           expanded: expanded,
+          trailing_action_on_hover: trailing_action_on_hover,
           leading_visual_icon: leading_visual_icon,
           leading_visual_avatar_src: leading_visual_avatar_src,
           trailing_visual_icon: trailing_visual_icon,
@@ -137,6 +137,7 @@ module Primer
         checked: false,
         active: false,
         expanded: false,
+        trailing_action_on_hover: false,
         leading_visual_icon: nil,
         leading_visual_avatar_src: nil,
         trailing_visual_icon: nil,
@@ -158,6 +159,7 @@ module Primer
           checked: checked,
           active: active,
           expanded: expanded
+        #   trailing_action_on_hover: trailing_action_on_hover
         ) do |item|
           if leading_visual_icon && leading_visual_icon != :none
             item.with_leading_visual_icon(icon: leading_visual_icon)
@@ -175,7 +177,7 @@ module Primer
             item.with_trailing_visual_text(trailing_visual_text)
           end
 
-          item.with_trailing_action(icon: trailing_action, "aria-label": "Button") if trailing_action && trailing_action != :none
+          item.with_trailing_action(icon: trailing_action, "aria-label": "Button tooltip", size: :medium) if trailing_action && trailing_action != :none
 
           item.description { description } if description
         end
