@@ -1,0 +1,25 @@
+<style>
+  pre {
+    font-size: 1.1rem;
+  }
+</style>
+
+<% if args %>
+<pre>
+args:
+<%= args %>
+</pre>
+<hr>
+<% end %>
+
+<pre>
+object:
+<%= component %>
+</pre>
+<hr>
+
+<% if error_message %>
+<pre style="color: darkred">
+<%= error_message %>
+</pre>
+<% end %>

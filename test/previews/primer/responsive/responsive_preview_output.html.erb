@@ -1,0 +1,15 @@
+<style>
+  pre {
+    font-size: 1.1rem;
+  }
+</style>
+
+<% if defined?(panels) %>
+<% panels.each do |panel| %>
+<pre<% if panel[:style] %> style="<%= panel[:style] %>"<% end %>>
+<% if panel.key? :title %><%= panel[:title] %>:<% end %>
+<%= panel[:output] %>
+</pre>
+<hr>
+<% end %>
+<% end %>
