@@ -25,8 +25,8 @@ module Primer
 
           @system_arguments = system_arguments
           @system_arguments[:classes] = class_names(
-            "ActionList",
-            "ActionList--subGroup",
+            "ActionListWrap",
+            "ActionListWrap--subGroup",
             @system_arguments[:classes]
           )
         end

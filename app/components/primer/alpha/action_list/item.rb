@@ -33,9 +33,7 @@ module Primer
         renders_one :description
 
         renders_one :leading_visual, types: {
-          icon: lambda { |**system_arguments|
-            Primer::OcticonComponent.new(classes: "hey", **system_arguments)
-          },
+          icon: Primer::OcticonComponent,
           avatar: lambda { |**kwargs|
             # Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
           },
@@ -133,7 +131,7 @@ module Primer
             @system_arguments[:classes],
             SCHEME_MAPPINGS[@scheme],
             "ActionListItem",
-            "ActionListItem--withActions",
+            # "ActionListItem--withActions" if trailing_action.present?,
             "ActionListItem--navActive" => @active,
             "ActionListItem--subItem" => sub_item?,
             "ActionListItem--trailingActionHover" => @trailing_action_on_hover

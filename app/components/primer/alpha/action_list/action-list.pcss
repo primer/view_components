@@ -1,24 +1,18 @@
+:root {
+  --primer-actionListContent-paddingBlock: var(--primer-control-medium-paddingBlock, 6px);
+}
+
 /* <ul> */
-.ActionList {
+.ActionListWrap--inset {
   padding: var(--base-size-8);
-}
-
-/* full bleed */
-.ActionList--full {
-  padding: 0;
-}
-
-/* nested list within main ActionList */
-.ActionList--subGroup {
-  padding: 0;
 }
 
 /* dividers */
 
-.ActionList--divided {
+.ActionListWrap--divided {
   & .ActionListItem-label::before {
     position: absolute;
-    top: calc(-1 * var(--base-size-6));
+    top: calc(-1 * var(--primer-actionListContent-paddingBlock));
     display: block;
     width: 100%;
     height: 1px;
@@ -26,11 +20,21 @@
     background: var(--color-action-list-item-inline-divider);
   }
 
+  /* & .ActionListContent--sizeLarge {
+    & .ActionListItem-label::before {
+      top: calc(-1 * var(--primer-control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2)));
+    }
+  }
+
+  &.ActionListContent--sizeXLarge {
+    padding-block: var(--primer-control-xlarge-paddingBlock, calc((3rem - 1.25rem) / 2));
+  } */
+
   /* if descriptionWrap--inline exists, move pseudo divider to wrapper */
   & .ActionListItem-descriptionWrap--inline {
     &::before {
       position: absolute;
-      top: calc(-1 * var(--base-size-6));
+      top: calc(-1 * var(--primer-actionListContent-paddingBlock));
       display: block;
       width: 100%;
       height: var(--primer-borderWidth-thin);
@@ -67,7 +71,7 @@
 
 /* ActionList::Item */
 
-/* Divider behavior */
+/* divider behavior */
 
 .ActionListItem {
   /* hide dividers  */
@@ -91,7 +95,7 @@
   }
 }
 
-/* Sub items */
+/* sub items */
 
 .ActionListItem {
   /* target contents of li if sub-item (li wraps item label + nested ul) */
@@ -120,6 +124,8 @@
   list-style: none;
   background-color: transparent;
   border-radius: var(--primer-borderRadius-medium, 6px);
+
+  /* state */
 
   &:hover,
   &:active {
@@ -280,11 +286,6 @@
       }
     }
   }
-
-  /* if nested list exists, remove default padding */
-  & .ActionList {
-    padding: unset;
-  }
 }
 
 /* button or a href */
@@ -292,7 +293,7 @@
   position: relative;
   display: grid;
   width: 100%;
-  padding-block: var(--primer-control-medium-paddingBlock, calc((2rem - 1.25rem) / 2));
+  padding-block: var(--primer-actionListContent-paddingBlock);
   padding-inline: var(--primer-control-medium-paddingInline-condensed, 8px);
   color: var(--color-fg-default);
   text-align: left;
@@ -357,7 +358,7 @@
   /* nesting (single level)
    target items inside expanded subgroups */
   &[aria-expanded] {
-    + & .ActionList--subGroup {
+    & + .ActionList--subGroup {
       @media screen and (prefers-reduced-motion: no-preference) {
         transition: opacity 160ms cubic-bezier(0.25, 1, 0.5, 1), transform 160ms cubic-bezier(0.25, 1, 0.5, 1);
       }
@@ -377,7 +378,7 @@
     /* has 20px leading visual */
     &.ActionListContent--visual20 + .ActionList--subGroup {
       & .ActionListContent {
-        /* padding-left: $spacer-2 * 4.5;  36px */
+        padding-left: var(--base-size-36, 36px);
       }
     }
 
@@ -447,19 +448,18 @@
   /* sizes */
 
   &.ActionListContent--sizeLarge {
-    padding-block: var(--primer-control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2));
+    --primer-actionListContent-paddingBlock: var(--primer-control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2));
+    /* padding-block: var(--primer-control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2)); */
   }
 
   &.ActionListContent--sizeXLarge {
-    padding-block: var(--primer-control-xlarge-paddingBlock, calc((3rem - 1.25rem) / 2));
-  }
-
-  &.ActionListContent--fontSmall {
-    font-size: var(--primer-text-body-size-small, 12px);
+    --primer-actionListContent-paddingBlock: var(--primer-control-xlarge-paddingBlock, calc((3rem - 1.25rem) / 2));
+    /* padding-block: var(--primer-control-xlarge-paddingBlock, calc((3rem - 1.25rem) / 2)); */
   }
 
   /* On pointer:coarse (mobile), all list items are large */
   @media (pointer: coarse) {
+    --primer-actionListContent-paddingBlock: var(--primer-control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2));
     padding-block: var(--primer-control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2));
   }
 
@@ -552,7 +552,6 @@
 /* nested lists (only supports 1 level currently)
  target ActionListItem--subItem for padding-left to maintain :active :after state */
 
-/* TODO: remove with PVC implementation */
 .ActionListItem--subItem > .ActionListContent {
   font-size: var(--primer-text-body-size-small, 12px);
 }
