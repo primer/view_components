@@ -16,7 +16,7 @@ module Primer
         DEFAULT_DESCRIPTION_SCHEME = :block
         DESCRIPTION_SCHEME_MAPPINGS = {
           :inline => "ActionListItem-descriptionWrap--inline",
-          DEFAULT_DESCRIPTION_SCHEME => ""
+          DEFAULT_DESCRIPTION_SCHEME => "ActionListItem-descriptionWrap"
         }.freeze
         DESCRIPTION_SCHEME_OPTIONS = DESCRIPTION_SCHEME_MAPPINGS.keys.freeze
 

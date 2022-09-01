@@ -1,6 +1,5 @@
 <%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
   <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
-    <%= render(Primer::Alpha::ActionList::Checkmark.new(select_mode: @select_mode)) %>
     <% if private_leading_action %>
       <span class="ActionListItem-visual ActionListItem-visual--leading">
         <%= private_leading_action %>

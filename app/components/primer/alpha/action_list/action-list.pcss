@@ -67,16 +67,52 @@
 
 /* ActionList::Item */
 
-/* @mixin activeIndicatorLine($padding-left: -$actionList-item-padding-horizontal) {
-  position: absolute;
-  top: calc(50% - 12px);
-  left: $padding-left;
-  width: $spacer-1;
-  height: $spacer-4;
-  content: '';
-  background: var(--color-accent-fg);
-  border-radius: var(--primer-borderRadius-medium, 6px);
-} */
+/* Divider behavior */
+
+.ActionListItem {
+  /* hide dividers  */
+  @media (hover: hover) {
+    &:hover {
+      & .ActionListItem-label::before,
+      & + .ActionListItem .ActionListItem-label::before {
+        visibility: hidden;
+      }
+
+      & .ActionListItem-descriptionWrap--inline::before,
+      & + .ActionListItem .ActionListItem-descriptionWrap--inline::before {
+        visibility: hidden;
+      }
+    }
+  }
+
+  /* Make sure that the first visible item isn't a divider */
+  &[hidden] + .ActionList-sectionDivider {
+    display: none;
+  }
+}
+
+/* Sub items */
+
+.ActionListItem {
+  /* target contents of li if sub-item (li wraps item label + nested ul) */
+  /* collapse styles here */
+  &.ActionListItem--hasSubItem {
+    /* first child */
+    & > .ActionListContent {
+      z-index: 1;
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: var(--color-action-list-item-default-hover-bg);
+        }
+      }
+
+      &:active {
+        background-color: var(--color-action-list-item-default-active-bg);
+      }
+    }
+  }
+}
 
 /* <li> */
 .ActionListItem {
@@ -134,51 +170,12 @@
       }
     }
 
-    /* hide dividers  */
-    @media (hover: hover) {
-      &:hover {
-        & .ActionListItem-label::before,
-        & + .ActionListItem .ActionListItem-label::before {
-          visibility: hidden;
-        }
-
-        & .ActionListItem-descriptionWrap--inline::before,
-        & + .ActionListItem .ActionListItem-descriptionWrap--inline::before {
-          visibility: hidden;
-        }
-      }
-    }
-
     &:active {
       & .ActionListItem-label::before,
       & + .ActionListItem .ActionListItem-label::before {
         visibility: hidden;
       }
     }
-  }
-
-  /* target contents of li if sub-item (li wraps item label + nested ul) */
-  /* collapse styles here */
-  &.ActionListItem--hasSubItem {
-    /* first child */
-    & > .ActionListContent {
-      z-index: 1;
-
-      @media (hover: hover) {
-        &:hover {
-          background-color: var(--color-action-list-item-default-hover-bg);
-        }
-      }
-
-      &:active {
-        background-color: var(--color-action-list-item-default-active-bg);
-      }
-    }
-  }
-
-  /* Make sure that the first visible item isn't a divider */
-  &[hidden] + .ActionList-sectionDivider {
-    display: none;
   }
 
   /* Autocomplete [aria-selected] items */
@@ -227,103 +224,12 @@
         visibility: hidden;
       }
 
-      /* blue accent line
+      /* blue accent line  */
       &::after {
-        @include activeIndicatorLine;
-      } */
-    }
-  }
-
-  /* checkbox item [aria-checked]
-   listbox [aria-selected] */
-
-  &[aria-checked='true'],
-  &[aria-selected='true'] {
-    /* multiselect checkmark */
-    & .ActionListItem-multiSelectCheckmark {
-      visibility: visible;
-      opacity: 1;
-      /* transition: visibility 0 linear 0, opacity $actionList-item-checkmark-transition-timing; */
-    }
-
-    /* singleselect checkmark */
-    & .ActionListItem-singleSelectCheckmark {
-      visibility: visible;
-
-      @media screen and (prefers-reduced-motion: no-preference) {
-        animation: checkmarkIn 200ms cubic-bezier(0.11, 0, 0.5, 0) forwards;
-      }
-    }
-
-    /* checkbox */
-    & .ActionListItem-multiSelectIcon {
-      & .ActionListItem-multiSelectIconRect {
-        fill: var(--color-accent-fg);
-        stroke: var(--color-accent-fg);
-        stroke-width: var(--primer-borderWidth-thin, 1px);
-      }
-
-      & .ActionListItem-multiSelectCheckmark {
-        fill: var(--color-fg-on-emphasis);
+        @mixin activeIndicatorLine;
       }
     }
   }
-
-  &[aria-checked='false'],
-  &[aria-selected='false'] {
-    /* multiselect checkmark */
-    & .ActionListItem-multiSelectCheckmark {
-      visibility: hidden;
-      opacity: 0;
-      /* transition: visibility 0 linear $actionList-item-checkmark-transition-timing,
-        opacity $actionList-item-checkmark-transition-timing; */
-    }
-
-    /* singleselect checkmark */
-    & .ActionListItem-singleSelectCheckmark {
-      visibility: hidden;
-      transition: visibility 0s linear 200ms;
-      clip-path: inset(16px 0 0 0);
-
-      @media screen and (prefers-reduced-motion: no-preference) {
-        animation: checkmarkOut 200ms cubic-bezier(0.11, 0, 0.5, 0) forwards;
-      }
-    }
-
-    /* checkbox */
-    & .ActionListItem-multiSelectIcon {
-      & .ActionListItem-multiSelectIconRect {
-        fill: var(--color-canvas-default);
-        stroke: var(--color-border-default);
-        stroke-width: var(--primer-borderWidth-thin, 1px);
-      }
-    }
-
-    & .ActionListItem-multiSelectIconRect {
-      fill: var(--color-canvas-default);
-      border: var(--primer-borderWidth-thin, 1px) solid var(--color-border-default);
-    }
-  }
-
-  /* @keyframes checkmarkIn {
-    from {
-      clip-path: inset(16px 0 0 0);
-    }
-
-    to {
-      clip-path: inset(0 0 0 0);
-    }
-  } */
-
-  /* @keyframes checkmarkOut {
-    from {
-      clip-path: inset(0 0 0 0);
-    }
-
-    to {
-      clip-path: inset(16px 0 0 0);
-    }
-  } */
 
   /* disabled */
   &[aria-disabled='true'] {
@@ -388,8 +294,6 @@
   width: 100%;
   padding-block: var(--primer-control-medium-paddingBlock, calc((2rem - 1.25rem) / 2));
   padding-inline: var(--primer-control-medium-paddingInline-condensed, 8px);
-  font-size: var(--primer-text-body-size-medium, 14px);
-  font-weight: var(--base-text-weight-normal, 400);
   color: var(--color-fg-default);
   text-align: left;
   user-select: none;
@@ -535,7 +439,7 @@
 
       /* blue accent line */
       &::after {
-        /* @include activeIndicatorLine; */
+        @mixin activeIndicatorLine;
       }
     }
   }
@@ -556,7 +460,7 @@
 
   /* On pointer:coarse (mobile), all list items are large */
   @media (pointer: coarse) {
-    /* padding: $actionList-item-padding-vertical-lg $actionList-item-padding-horizontal; */
+    padding-block: var(--primer-control-large-paddingBlock, calc((2.5rem - 1.25rem) / 2));
   }
 
   &.ActionListContent--blockDescription {
@@ -595,10 +499,7 @@
   grid-area: label;
   display: flex;
   flex-direction: column;
-
-  & .ActionListItem-description {
-    margin-top: var(--base-size-4, 4px);
-  }
+  gap: var(--base-size-4, 4px);
 
   & .ActionListItem-label {
     font-weight: var(--base-text-weight-semibold, 600);
@@ -610,17 +511,14 @@
   position: relative;
   flex-direction: row;
   align-items: baseline;
-
-  & .ActionListItem-description {
-    margin-left: var(--base-size-8, 8px);
-  }
+  gap: var(--base-size-8, 8px);
 }
 
 /* description */
 .ActionListItem-description {
   font-size: var(--primer-text-body-size-small, 12px);
   font-weight: var(--base-text-weight-normal, 400);
-  /* line-height: $lh-default; */
+  line-height: var(--primer-text-body-lineHeight-small, calc(20 / 12));
   color: var(--color-fg-muted);
 }
 
@@ -629,7 +527,7 @@
 .ActionListItem-visual,
 .ActionListItem-action {
   display: flex;
-  /* min-height: $actionList-item-height-sm; */
+  min-height: var(--primer-control-medium-lineBoxHeight, 20px);
   color: var(--color-fg-muted);
   pointer-events: none;
   fill: var(--color-fg-muted);
@@ -639,9 +537,9 @@
 /* text */
 .ActionListItem-label {
   position: relative;
-  /* forpseudo dividers */
+  font-size: var(--primer-text-body-size-medium, 14px);
   font-weight: var(--base-text-weight-normal, 400);
-  /* line-height: $actionList-item-label-line-height; */
+  line-height: var(--primer-text-body-lineHeight-medium, calc(20 / 14));
   color: var(--color-fg-default);
 }
 
