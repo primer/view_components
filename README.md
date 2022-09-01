@@ -4,7 +4,7 @@
 
 <h1 align="center">Primer ViewComponents</h1>
 
-<p align="center">ViewComponents for the Primer Design System</p>
+<p align="center">ViewComponents for the Primer Design System.</p>
 
 _Note: This library is under active pre-1.0 development. Breaking changes are likely in patch releases._
 
