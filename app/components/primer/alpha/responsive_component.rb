@@ -4,6 +4,8 @@ module Primer
   module Alpha
     # Base class for Responsive Components
     class ResponsiveComponent < Primer::BaseComponent
+      status :alpha
+
       extend ActionView::Helpers::TagHelper
       extend Primer::Responsive::HtmlAttributesHelper
       extend Primer::Responsive::ArgumentsDefinitionHelper
@@ -23,7 +25,9 @@ module Primer
       @style_map = nil
 
       # Declares a list of exclusively allowed HTML attributes to be used when validating/sanitizing the attributes
-      # @param allowed_html_attributes [Array] array of symbols
+      # Note: this should be used deliberately, since it will filter out data- attributes, including data-test-selector and data-view-component.
+      #       Prefer `additional_allowed_html_attributes` whenever possible
+      # @param allowed_html_attributes [Array] array of symbols containing only the attributes that should be allowed
       def self.allowed_html_attributes(*allowed_html_attributes)
         allowed_html_attributes = allowed_html_attributes.flatten if allowed_html_attributes.is_a? Array
         @html_attributes_type = HTML_ATTRS_VALIDATION_STRICT
@@ -98,14 +102,14 @@ module Primer
         @argument_values = argument_values
         @html_attributes = html_attributes
 
+        @html_attributes[:"data-view-component"] = true
+        @html_attributes = add_test_selector(@html_attributes)
+
         validate_html_attributes if should_raise_error?
         sanitize_html_attributes!
 
         tag = argument_values.fetch(:tag, nil)
         super(tag: tag)
-
-        @html_attributes[:"data-view-component"] = true
-        @html_attributes = add_test_selector(@html_attributes)
 
         # support for the old Primer behavior
         return unless @html_attributes.key? :classes
@@ -151,7 +155,15 @@ module Primer
       # @param html_attibutes [Hash] defaults to instance @html_attributes
       def render_html_attributes(html_attributes = nil)
         html_attributes = @html_attributes if html_attributes.nil?
-        self.class.tag.attributes(html_attributes)
+        self.class.tag.attributes(**html_attributes)
+      end
+
+      def call
+        if SELF_CLOSING_TAGS.include?(@tag)
+          tag(@tag, @html_attributes)
+        else
+          content_tag(@tag, content, @html_attributes)
+        end
       end
 
       # Normalizes the argument_values by component arguments_definition
