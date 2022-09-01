@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    if: ${{ github.repository == 'primer/view_components' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master

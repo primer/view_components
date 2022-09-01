@@ -1,0 +1,7 @@
+<%= render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle)) do |d| %>
+  <% d.show_button { @button_text } %>
+  <% d.body { "Content" } %>
+  <% d.footer do %>
+    render(Primer::ButtonComponent.new(scheme: :primary)) { "Submit" }
+  <% end %>
+<% end %>
