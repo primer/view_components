@@ -17,10 +17,6 @@ yarn install
 yarn build:css
 popd
 
-pushd ../css
-yarn install
-popd
-
 # Set up docs
 pushd docs
 yarn install
