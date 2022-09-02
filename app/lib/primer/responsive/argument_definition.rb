@@ -402,7 +402,7 @@ module Primer
       # @deprecated_values: array of deprecated values that cannot be used moving forward
       # @type: if a type was changed into another and the old type is still supported. This should be the old supported type
       # @warn_message: explanations for the deprecation on top of what is presented by default
-      attr_reader :deprecated_values, :type, :warn_message
+      attr_reader :argument, :deprecated_values, :type, :warn_message
 
       def initialize(argument_definition: nil, argument: false, deprecated_values: nil, type: nil, warn_message: "")
         @argument_definition = argument_definition

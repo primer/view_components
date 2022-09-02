@@ -102,7 +102,7 @@ As mentioned before, to keep things reusable and independent, inside `app/lib/pr
     contains classes to handle component's argument definitions. It adds support for responsive arguments, argument value validation, argument default values, and argument/values deprecation.
 - `responsive/arguments_definition_helper.rb`: high level module that makes working with the `ArgumentDefinition` class a declarative based approach
 - `responsive/style_class_map_helper.rb`: provides functionality to build responsive class maps based on a argument-value-class mapping automatically, and calculates classes based of the class map and the argument value provided
-- `html_attributes_helper.rb`: control `html_attributes` to be used in the component rendering, making it a completely independent logic from the utility classes that primer supports.
+- `responsive/html_attributes_helper.rb`: control `html_attributes` to be used in the component rendering, making it a completely independent logic from the utility classes that primer supports.
 
 ## Viewport range names
 
@@ -114,7 +114,7 @@ Initially, they were prefixed with `when_`: `when_narrow`, `when_regular`, `when
 
 After a few discussions, the selected prefix was `v_`. It can mean both variant or viewport, and it's only 2 characters long, while making the ranges visually distinct while eye scanning the code: `v_narrow`, `v_regular`, `v_wide`.
 
-Inside `responsive_config.rb` file, it's the configuration for the viewport range names and their respective css class modifiers. It also holds the configuration for `optional` viewports, like `v_wide`, which will be used by the helpers to know when to add defaults/validation to that specific viewport range.
+Inside the `responsive_config.rb` file, it's the configuration for the viewport range names and their respective css class modifiers. It also holds the configuration for `optional` viewports, like `v_wide`, which will be used by the helpers to know when to add defaults/validation to that specific viewport range.
 
 
 ## Responsive arguments
@@ -122,7 +122,7 @@ Inside `responsive_config.rb` file, it's the configuration for the viewport rang
 Let's take a look at a simple `arguments_definition` declaring all possible arguments a custom component will support:
 
 ```rb
-class CustomComponent < Primer::Alpha::ResponsiveComponent
+class CustomComponent < ::Primer::Alpha::ResponsiveComponent
   arguments_definition(
     id: arg(
       type: Numeric,
@@ -154,8 +154,60 @@ class CustomComponent < Primer::Alpha::ResponsiveComponent
 end
 ```
 
-The `arguments_definition` method not only creates the corresponding `ArgumentDefinition` object to represent the argument, but will also ensure that the definition is consistent and error free by raising error with helpful messages in a development environment. This and the preview will make it easy for developers to learn how to define the arguments properly.
+The `arguments_definition` method not only creates the corresponding `ArgumentDefinition` object to represent the argument, but will also ensure that the definition is consistent and error free by raising error with helpful messages in a development environment. This and the lookbook previews will make it easy for developers to learn how to define the arguments properly.
 
+The method maps each `argument_name`(Symbol) to its definition properties. To support arguments namespaces if necessary, the method `arg` must be used to wrap the argument definition. It's just a simple way to mark that part of the hash as being the container for a definition.
+
+### Argument definition hash keys
+- `responsive`: defines the responsive behavior of the argument.  
+ possible values:(`:no(default) | :yes | :transitional`)
+  - `:no` _(default)_: won't accept argument values set through the responsive variants.
+  - `:yes`: will only accept values set through the responsive variants.
+  - `:transitional`: supports values set directly or through the responsive variants. Should only be used to migrate non-responsive arguments into responsive arguments while keeping backward compatibility in the transition period (migration).
+- `type`: defines the type of the argument and will be used to validate its value. Use the base class of the type. For ruby types, use their base class as well, for instance: `Numeric`, `Integer`, `String`, `Array`, `Hash`, etc.  
+  > _note_: Ruby doesn't have a boolean type that encompasses both `true` and `false` values, since they're both instances of the `TrueClass` and `FalseClass` respectively. To support booleans, used `allowed_values` instead.  
+  ```rb
+  # example of type definition
+  language_name_argument: arg(
+    type: String
+  )
+
+  # example of argument_values setting a valid argument value
+  {
+    language_name_argument: "Rust"
+  }
+  ```
+- `allowed_values`: defines an array with all possible values that the argument can assume. The list of values could be called simply `values`, but since `.values` is a Hash method, `allowed_` is used as prefix to avoid any misconceptions when reading through the helpers code.
+  ```rb
+  # example of argument definition using allowed_values
+  size: arg(
+    allowed_values: [:small, :medium, :large]
+  )
+
+  # argument value in use
+  {
+    size: :medium
+  } 
+  ```
+  To support boolean arguments, use the following approach for definition:
+  ```rb
+  boolean_argument: arg(
+    allowed_values: [true, false]
+  )
+  ```
+- `default`: specifies the default value of an argument. This value is used to fill the `argument_values` hash when the value is missing or invalid. If a `default` key is not present in an argument defintion, that argument is considered required.
+- `deprecation`: can be used to generate deprecation warnings for the entire property, or especific values.
+  - `argument`: boolean that defaults to `false`. If `true`, the entire argument is considered deprecated.
+  - `deprecated_values`: array of values deprecated. They're used to validate an argument value, include the deprecated values, but generating warning messages.
+  - `type`: used to deprecate a type when the argument has to change types.
+  - `warn_message`: custom warn message to be added on top of the default deprecation message generated by the responsive helpers.
+
+In case the component is responsive (has `:responsive` set to `:yes` or `:transitional`), a set of keys representing the responsive variants is available for the argument definition: `v_narrow`, `v_regular`, and `v_wide`. For each variant (viewport range), the following configuration keys are available:
+- `additional_allowed_values`: works like the base `allowed_values`, but will add to the current `allowed_values` list if it's set in the base definition.
+- `default`: defines a default per responsive variant. It has precedence over the base `default` value.
+> _note_: responsive definition cannot contain a `type`. If the base definition uses a `type`, that means that all responsive variants will be of the same type.
+
+### Sharing arguments definition
 
 
 ## Responsive class map
