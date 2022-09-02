@@ -135,6 +135,7 @@ namespace :docs do
         f.puts
         f.puts("import Example from '#{data[:example_path]}'")
 
+
         initialize_method = documentation.meths.find(&:constructor?)
 
         if js_components.include?(component)
@@ -409,9 +410,7 @@ namespace :docs do
 
     Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
 
-    YARD::Rake::YardocTask.new do |t|
-      t.files = ["./app/components/primer/**/*.rb"]
-    end
+    YARD::Rake::YardocTask.new
 
     # Custom tags for yard
     YARD::Tags::Library.define_tag("Accessibility", :accessibility)
@@ -419,6 +418,7 @@ namespace :docs do
     YARD::Tags::Library.define_tag("Parameter", :param, :with_types_name_and_default)
 
     puts "Building YARD documentation."
+    Rake::Task["yard"].execute
 
     registry = YARD::RegistryStore.new
     registry.load!(".yardoc")
