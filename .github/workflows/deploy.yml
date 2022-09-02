@@ -1,9 +1,13 @@
 
 
-name: Rails Storybook Deploy
+name: Rails Demo Deploy
 
 on:
   push:
+
+env:
+  IMAGE_REPO: "primer/view_components_storybook/tests"
+  COMMIT_REF: ${{ github.event.pull_request.head.sha || github.event.inputs.COMMIT_REF }}
 
 jobs:
   build:
@@ -27,16 +31,16 @@ jobs:
       run: |
         gem install bundler -v '~> 2.3'
         bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile --path vendor/bundle
-    - name: Pull latest
+    - name: 'Set env vars'
       run: |
-        docker pull primer.azurecr.io/primer/view_components_storybook:latest
-        docker pull primer.azurecr.io/primer/view_components_storybook:latest-assets
+        # Image tag is unique to each workflow run so that it always triggers a new deployment
+        echo "DOCKER_IMAGE=primer.azurecr.io/${{ env.IMAGE_REPO }}:${{ env.COMMIT_REF }}-${{ github.run_number }}-${{ github.run_attempt }}" >> $GITHUB_ENV
     - name: Build
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       run: |
-        bin/kuby -e production build --only app -- --cache-from primer.azurecr.io/primer/view_components_storybook:latest
-        bin/kuby -e production build --only assets -- --cache-from primer.azurecr.io/primer/view_components_storybook:latest-assets
+        bin/kuby -e production build --only app -- -t $DOCKER_IMAGE
+        bin/kuby -e production build --only assets -- -t $DOCKER_IMAGE
     - name: Push
       run: bin/kuby -e production push
 
