@@ -25,7 +25,7 @@
   },
   "scripts": {
     "dev": "bin/dev",
-    "build:css": "postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css",
+    "build:css": "yarn --cwd ../ run build:css && postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css",
     "build:ts": "yarn --cwd ../ run tsc",
     "build:rollup": "yarn --cwd ../ run rollup -c",
     "storybook": "start-storybook -p 5000",
