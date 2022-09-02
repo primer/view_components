@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_REPO: "primer/view_components_storybook/test"
+  IMAGE_REPO: "primer/view_components_storybook/tests"
   COMMIT_REF: ${{ github.event.pull_request.head.sha || github.event.inputs.COMMIT_REF }}
 
 jobs:
