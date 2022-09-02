@@ -8,7 +8,7 @@ on:
 env:
   PR_NUMBER: ${{ github.event.number || github.run_id }}
   COMMIT_REF: ${{ github.event.pull_request.head.sha || github.event.inputs.COMMIT_REF }}
-  IMAGE_REPO: "primer/view_components_storybook/pr-${{ github.event.number }}"
+  IMAGE_REPO: "primer/view_components_demo/pr-${{ github.event.number }}"
 
 # This allows one deploy workflow to interrupt another
 concurrency:
