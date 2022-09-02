@@ -23,7 +23,7 @@ if [ -n "$debug" ]; then
 
   trap cleanup EXIT
 
-  bin/rails server -p 3000
+  bin/rails server -p 4000
 else
   foreman start -f Procfile.dev "$@"
 fi
