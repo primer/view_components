@@ -3,7 +3,7 @@
 name: Rails Demo Deploy
 
 on:
-  push:
+  pull_request:
 
 env:
   IMAGE_REPO: "primer/view_components_storybook/tests"
