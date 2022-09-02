@@ -9,7 +9,6 @@ module Primer
       # @param size select [small, medium, large]
       # @param aria_label text
       # @param disabled toggle
-      # @param pressed toggle
       # @param tag select [a, summary, button]
       def playground(
         scheme: :default,
