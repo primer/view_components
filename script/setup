@@ -8,13 +8,7 @@ yarn install
 pushd demo
 bundle install --path vendor/bundle
 yarn install
-popd
-
-# Set up lookbook
-pushd lookbook
-bundle install --path vendor/bundle
-yarn install
-yarn build:css
+yarn build
 popd
 
 # Set up docs

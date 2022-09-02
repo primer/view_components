@@ -94,7 +94,7 @@ Kuby.define("ViewComponentsStorybook") do
       # to install dev dependencies, which is where the storybook deps are listed.
       insert :build_storybook, after: :assets_phase do |dockerfile|
         dockerfile.run("yarn", "install", "--production=false")
-        dockerfile.run("yarn", "run", "build-storybook")
+        dockerfile.run("yarn", "run", "build")
       end
     end
 

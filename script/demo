@@ -1,5 +1,5 @@
 #!/bin/sh
 
-cd ./lookbook/
+cd ./demo/
 
 bin/dev
