@@ -8,7 +8,6 @@ on:
 env:
   PR_NUMBER: ${{ github.event.number || github.run_id }}
   COMMIT_REF: ${{ github.event.pull_request.head.sha || github.event.inputs.COMMIT_REF }}
-  IMAGE_REPO: "primer/view_components_demo/pr-${{ github.event.number }}"
 
 # This allows one deploy workflow to interrupt another
 concurrency:
@@ -19,6 +18,13 @@ jobs:
   build:
     if: ${{ github.repository == 'primer/view_components' }}
     runs-on: ubuntu-latest
+    environment:
+      name: review-pr-${{ github.event.number }}
+      # The environment variable is computer later in this job in
+      # the "Get preview app info" step.
+      # That script sets environment variables which is used by Actions
+      # to link a PR to a list of environments later.
+      url: ${{ env.APP_URL }}
     steps:
     - uses: actions/checkout@master
     - name: Setup Ruby
@@ -40,6 +46,12 @@ jobs:
       run: |
         gem install bundler -v '~> 2.3'
         bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile --path vendor/bundle
+
+    - name: Get preview app info
+      env:
+        APP_NAME_SEED: ${{ secrets.PREVIEW_ENV_NAME_SEED }}
+
+      run: .github/actions-scripts/get-preview-app-info.sh
     - name: 'Set env vars'
       run: |
         # Image tag is unique to each workflow run so that it always triggers a new deployment
