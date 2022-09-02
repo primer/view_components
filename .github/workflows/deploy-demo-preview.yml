@@ -49,30 +49,25 @@ jobs:
         bin/kuby -e production build --only assets -- -t $DOCKER_IMAGE
     - name: Push
       run: bin/kuby -e production push
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Run ARM deploy
-        # This 'if' will be truth, if this workflow is...
-        #  - run as a workflow_dispatch
-        #  - run because of a push to main (or when added to a merge queue)
-        #  - run as a regular pull request
-        # But if it's a pull request, *and* for whatever reason, the pull
-        # request has "Auto-merge" enabled, don't bother.
-        # The idea is that if auto-merge has been abled, by humans or by
-        # bots, they have no intention of viewing the deployed preview anyway.
-        # This saves time because the PR can merge sooner.
-        if: ${{ !github.event.pull_request.auto_merge }}
-        uses: azure/arm-deploy@841b12551939c88af8f6df767c24c38a5620fd0d
-        with:
-          resourceGroupName: primer
-          subscriptionId: 550eb99d-d0c7-4651-a337-f53fa6520c4f
-          template: ./.github/workflows/deploy-demo-preview-template.json
-          deploymentName: primer-view-components-pr-${{env.PR_NUMBER}}
-          parameters: appName="primer-view-components-preview-${{env.PR_NUMBER}}"
-            containerImage="${{ env.DOCKER_IMAGE }}"
-            dockerRegistryUrl="primer.azurecr.io"
-            dockerRegistryUsername="primer"
-            dockerRegistryPassword="${{ secrets.AZURE_ACR_PASSWORD }}"
+    - name: Run ARM deploy
+      # This 'if' will be truth, if this workflow is...
+      #  - run as a workflow_dispatch
+      #  - run because of a push to main (or when added to a merge queue)
+      #  - run as a regular pull request
+      # But if it's a pull request, *and* for whatever reason, the pull
+      # request has "Auto-merge" enabled, don't bother.
+      # The idea is that if auto-merge has been abled, by humans or by
+      # bots, they have no intention of viewing the deployed preview anyway.
+      # This saves time because the PR can merge sooner.
+      if: ${{ !github.event.pull_request.auto_merge }}
+      uses: azure/arm-deploy@841b12551939c88af8f6df767c24c38a5620fd0d
+      with:
+        resourceGroupName: primer
+        subscriptionId: 550eb99d-d0c7-4651-a337-f53fa6520c4f
+        template: ./.github/workflows/deploy-demo-preview-template.json
+        deploymentName: primer-view-components-pr-${{env.PR_NUMBER}}
+        parameters: appName="primer-view-components-preview-${{env.PR_NUMBER}}"
+          containerImage="${{ env.DOCKER_IMAGE }}"
+          dockerRegistryUrl="primer.azurecr.io"
+          dockerRegistryUsername="primer"
+          dockerRegistryPassword="${{ secrets.AZURE_ACR_PASSWORD }}"
