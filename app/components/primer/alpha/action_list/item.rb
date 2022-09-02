@@ -131,10 +131,10 @@ module Primer
             @system_arguments[:classes],
             SCHEME_MAPPINGS[@scheme],
             "ActionListItem",
-            "ActionListItem--withActions",
-            "ActionListItem--trailingActionHover",
-            # "ActionListItem--withActions" if trailing_action.present?,
-            "ActionListItem--trailingActionHover" => @trailing_action_on_hover,
+            # "ActionListItem--withActions",
+            # "ActionListItem--trailingActionHover",
+            # "ActionListItem--withActions" if trailing_action.present? this isn't working,
+            # "ActionListItem--trailingActionHover" => @trailing_action_on_hover, this isn't working
             "ActionListItem--navActive" => @active,
             "ActionListItem--subItem" => sub_item?
           )
