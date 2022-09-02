@@ -1,4 +1,4 @@
-web: bin/rails server -p 4000
+web: STORYBOOK=true bin/rails s -p 4000
 css: yarn build:css --watch
 ts: yarn build:ts --watch
 rollup: yarn build:rollup --watch
