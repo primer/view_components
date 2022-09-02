@@ -39,17 +39,11 @@ gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PA
 gem "view_component_storybook", "~> 0.8.0"
 
 group :development do
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
   gem "hotwire-livereload", "~> 1.1"
-  # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
   gem "importmap-rails"
-
-  # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-  gem "turbo-rails"
-
-  # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-  gem "stimulus-rails"
   gem "lookbook"
+  gem "spring-watcher-listen", "~> 2.0.0"
+  gem "spring"
+  gem "stimulus-rails"
+  gem "turbo-rails"
 end

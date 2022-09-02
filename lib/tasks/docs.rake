@@ -409,7 +409,9 @@ namespace :docs do
 
     Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
 
-    YARD::Rake::YardocTask.new
+    YARD::Rake::YardocTask.new do |t|
+      t.files = ["./app/components/primer/**/*.rb"]
+    end
 
     # Custom tags for yard
     YARD::Tags::Library.define_tag("Accessibility", :accessibility)
@@ -417,7 +419,6 @@ namespace :docs do
     YARD::Tags::Library.define_tag("Parameter", :param, :with_types_name_and_default)
 
     puts "Building YARD documentation."
-    Rake::Task["yard"].execute
 
     registry = YARD::RegistryStore.new
     registry.load!(".yardoc")
