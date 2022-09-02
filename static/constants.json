@@ -2,17 +2,46 @@
   "Primer::Alpha::ActionList": {
     "Checkmark": "Primer::Alpha::ActionList::Checkmark",
     "DEFAULT_ROLE": "list",
+    "DEFAULT_SCHEME": "full",
     "DEFAULT_TAG": "ul",
+    "Divider": "Primer::Alpha::ActionList::Divider",
     "Group": "Primer::Alpha::ActionList::Group",
     "Heading": "Primer::Alpha::ActionList::Heading",
     "Item": "Primer::Alpha::ActionList::Item",
-    "Separator": "Primer::Alpha::ActionList::Separator"
+    "SCHEME_MAPPINGS": {
+      "full": null,
+      "inset": "ActionListWrap--inset"
+    },
+    "SCHEME_OPTIONS": [
+      "full",
+      "inset"
+    ]
   },
   "Primer::Alpha::ActionList::Checkmark": {
+  },
+  "Primer::Alpha::ActionList::Divider": {
+    "DEFAULT_SCHEME": "subtle",
+    "SCHEME_MAPPINGS": {
+      "subtle": null,
+      "filled": "ActionList-sectionDivider--filled"
+    },
+    "SCHEME_OPTIONS": [
+      "subtle",
+      "filled"
+    ]
   },
   "Primer::Alpha::ActionList::Group": {
   },
   "Primer::Alpha::ActionList::Heading": {
+    "DEFAULT_SCHEME": "subtle",
+    "SCHEME_MAPPINGS": {
+      "subtle": null,
+      "filled": "ActionList-sectionDivider--filled"
+    },
+    "SCHEME_OPTIONS": [
+      "subtle",
+      "filled"
+    ]
   },
   "Primer::Alpha::ActionList::Item": {
     "DEFAULT_DESCRIPTION_SCHEME": "block",
@@ -21,7 +50,7 @@
     "DEFAULT_SIZE": "medium",
     "DESCRIPTION_SCHEME_MAPPINGS": {
       "inline": "ActionListItem-descriptionWrap--inline",
-      "block": ""
+      "block": "ActionListItem-descriptionWrap"
     },
     "DESCRIPTION_SCHEME_OPTIONS": [
       "inline",
@@ -50,8 +79,6 @@
       "large",
       "xlarge"
     ]
-  },
-  "Primer::Alpha::ActionList::Separator": {
   },
   "Primer::Alpha::AutoComplete": {
     "Item": "Primer::Alpha::AutoComplete::Item"

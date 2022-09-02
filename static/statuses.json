@@ -1,10 +1,10 @@
 {
   "Primer::Alpha::ActionList": "alpha",
   "Primer::Alpha::ActionList::Checkmark": "alpha",
+  "Primer::Alpha::ActionList::Divider": "alpha",
   "Primer::Alpha::ActionList::Group": "alpha",
   "Primer::Alpha::ActionList::Heading": "alpha",
   "Primer::Alpha::ActionList::Item": "alpha",
-  "Primer::Alpha::ActionList::Separator": "alpha",
   "Primer::Alpha::AutoComplete": "deprecated",
   "Primer::Alpha::AutoComplete::Item": "deprecated",
   "Primer::Alpha::ButtonMarketing": "alpha",
