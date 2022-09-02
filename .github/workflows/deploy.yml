@@ -4,8 +4,6 @@ name: Rails Storybook Deploy
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
   build:
