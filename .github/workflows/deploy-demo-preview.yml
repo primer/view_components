@@ -69,5 +69,5 @@ jobs:
         parameters: appName="primer-view-components-preview-${{env.PR_NUMBER}}"
           containerImage="primer.azurecr.io/${{ env.IMAGE_REPO }}:latest"
           dockerRegistryUrl="primer.azurecr.io"
-          dockerRegistryUsername="primer"
+          dockerRegistryUsername="GitHubActions"
           dockerRegistryPassword="${{ secrets.AZURE_ACR_PASSWORD }}"
