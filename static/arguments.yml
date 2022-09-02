@@ -22,6 +22,45 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Dialog
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog.rb
+  parameters:
+  - name: id
+    type: String
+    default: '`"dialog-#{(36**3 + rand(36**4)).to_s(36)}"`'
+    description: The id of the dialog.
+  - name: title
+    type: String
+    default: N/A
+    description: Describes the content of the dialog.
+  - name: subtitle
+    type: String
+    default: "`nil`"
+    description: Provides dditional context for the dialog, also setting the `aria-describedby`
+      attribute.
+  - name: size
+    type: Symbol
+    default: "`:medium`"
+    description: The size of the dialog. One of `:large`, `:medium`, `:medium_portrait`,
+      `:small`, or `:xlarge`.
+  - name: position
+    type: Symbol
+    default: "`:center`"
+    description: The size of the dialog. One of `:center`, `:left`, or `:right`.
+  - name: position_narrow
+    type: Symbol
+    default: "`:inherit`"
+    description: The size of the dialog. One of `:bottom`, `:fullscreen`, `:inherit`,
+      `:left`, or `:right`.
+  - name: visually_hide_title
+    type: Boolean
+    default: "`false`"
+    description: If true will hide the heading title, while still making it available
+      to Screen Readers.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: HiddenTextExpander
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/hidden_text_expander.rb
   parameters:
@@ -477,6 +516,38 @@
     type: Hash
     default: N/A
     description: "[System arguments](/system-arguments)"
+- component: Button
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/button.rb
+  parameters:
+  - name: scheme
+    type: Symbol
+    default: "`:default`"
+    description: One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`,
+      `:primary`, or `:secondary`.
+  - name: size
+    type: Symbol
+    default: "`:medium`"
+    description: One of `:large`, `:medium`, or `:small`.
+  - name: full_width
+    type: Boolean
+    default: "`false`"
+    description: 'Whether button is full-width with `display: block`.'
+  - name: align_content
+    type: Symbol
+    default: "`:center`"
+    description: One of `:center` or `:start`.
+  - name: tag
+    type: Symbol
+    default: "`:button`"
+    description: One of `:a`, `:button`, or `:summary`.
+  - name: type
+    type: Symbol
+    default: "`:button`"
+    description: One of `:button`, `:reset`, or `:submit`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: ButtonGroup
   source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/button_group.rb
   parameters:
@@ -587,6 +658,48 @@
     type: String
     default: N/A
     description: One of `:h1`, `:h2`, `:h3`, `:h4`, `:h5`, or `:h6`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
+- component: IconButton
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/beta/icon_button.rb
+  parameters:
+  - name: icon
+    type: String
+    default: N/A
+    description: Name of [Octicon](https://primer.style/octicons/) to use.
+  - name: scheme
+    type: Symbol
+    default: "`:default`"
+    description: One of `:danger`, `:default`, or `:invisible`.
+  - name: size
+    type: Symbol
+    default: "`:medium`"
+    description: One of `:large`, `:medium`, or `:small`.
+  - name: tag
+    type: Symbol
+    default: N/A
+    description: One of `:a`, `:button`, or `:summary`.
+  - name: type
+    type: Symbol
+    default: N/A
+    description: One of `:button`, `:reset`, or `:submit`.
+  - name: aria-label
+    type: String
+    default: N/A
+    description: String that can be read by assistive technology. A label should be
+      short and concise. See the accessibility section for more information.
+  - name: aria-description
+    type: String
+    default: N/A
+    description: String that can be read by assistive technology. A description can
+      be longer as it is intended to provide more context and information. See the
+      accessibility section for more information.
+  - name: tooltip_direction
+    type: Symbol
+    default: "`:s`"
+    description: One of `:e`, `:n`, `:ne`, `:nw`, `:s`, `:se`, `:sw`, or `:w`.
   - name: system_arguments
     type: Hash
     default: N/A

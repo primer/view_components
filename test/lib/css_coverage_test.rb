@@ -10,15 +10,6 @@ class CssCoverageTest < Minitest::Test
       .map { |k| ".#{k}" }
       .uniq
 
-    @classes_from_docs_build =
-      YAML.safe_load(
-        File.read(
-          File.join(
-            __FILE__.split("test")[0], "/static/classes.yml"
-          )
-        )
-      )
-
     @allowed_missing_classes_for_now = [
       # used to showcase custom classes in component docs
       ".custom-class",
@@ -44,9 +35,5 @@ class CssCoverageTest < Minitest::Test
 
   def test_classify_does_not_generate_primer_css_classes_that_do_not_exist
     assert_empty(@classes_from_utilities - @css_data - @allowed_missing_classes_for_now)
-  end
-
-  def test_docs_do_not_generate_primer_css_classes_that_do_not_exist
-    assert_empty(@classes_from_docs_build - @css_data - @allowed_missing_classes_for_now)
   end
 end

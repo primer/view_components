@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.0.93
+
+### Patch Changes
+
+- [#1214](https://github.com/primer/view_components/pull/1214) [`33949aa9`](https://github.com/primer/view_components/commit/33949aa9e1be9e9a86a1eefb10e9cd3b47ecdeda) Thanks [@keithamus](https://github.com/keithamus)! - Adding Primer Dialog Component
+
+* [#1325](https://github.com/primer/view_components/pull/1325) [`a54e5510`](https://github.com/primer/view_components/commit/a54e5510ecc87b55ed9a6bf71ac1c9d2e3b3fef9) Thanks [@langermank](https://github.com/langermank)! - Adding Primer::Beta::Button and Primer::Beta::IconButton with visual refinements
+
+- [#1340](https://github.com/primer/view_components/pull/1340) [`a4f868c3`](https://github.com/primer/view_components/commit/a4f868c32af1ae76f2bba760e9565c2bade22f56) Thanks [@jsoref](https://github.com/jsoref)! - Let forks ✅ on `main`
+
+* [#1335](https://github.com/primer/view_components/pull/1335) [`cbf52761`](https://github.com/primer/view_components/commit/cbf52761ab5624dfd9bc35a2220f87068c370039) Thanks [@jonrohan](https://github.com/jonrohan)! - Adding the `postcss-mixins` plugin to our CSS build step.
+
 ## 0.0.92
 
 ### Patch Changes

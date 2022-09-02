@@ -75,7 +75,7 @@ module ERBLint
 
         # Override this with your component's mappings, it should return a hash with the component's arguments,
         # including a `classes` key that will contain all classes that the mapper couldn't handle.
-        # @returns { classes: Array, ... }
+        # @return { classes: Array, ... }
         def classes_to_args(classes)
           { classes: classes }
         end
