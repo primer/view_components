@@ -67,7 +67,7 @@ jobs:
         template: ./.github/workflows/deploy-demo-preview-template.json
         deploymentName: primer-view-components-pr-${{env.PR_NUMBER}}
         parameters: appName="primer-view-components-preview-${{env.PR_NUMBER}}"
-          containerImage="${{ env.DOCKER_IMAGE }}"
+          containerImage="primer.azurecr.io/${{ env.IMAGE_REPO }}:latest"
           dockerRegistryUrl="primer.azurecr.io"
           dockerRegistryUsername="primer"
           dockerRegistryPassword="${{ secrets.AZURE_ACR_PASSWORD }}"
