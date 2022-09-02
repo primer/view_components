@@ -51,7 +51,7 @@ jobs:
       env:
         APP_NAME_SEED: ${{ secrets.PREVIEW_ENV_NAME_SEED }}
 
-      run: .github/actions-scripts/get-preview-app-info.sh
+      run: ./.github/workflows/get-preview-app-info.sh
     - name: 'Set env vars'
       run: |
         # Image tag is unique to each workflow run so that it always triggers a new deployment
