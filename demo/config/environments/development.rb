@@ -55,7 +55,6 @@ Rails.application.configure do
   config.hotwire_livereload.force_reload_paths << Rails.root.join("../app/assets/javascripts")
 
   config.autoload_paths << Rails.root.join("../test/forms")
-  config.view_component.preview_paths << Rails.root.join("../test/previews")
   config.lookbook.listen_paths << Rails.root.join("../app/components")
 
   config.view_component_storybook.stories_path = Rails.root.join("../stories") unless ENV["SKIP_STORYBOOK_PRELOAD"] == "1"

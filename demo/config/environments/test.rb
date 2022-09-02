@@ -46,5 +46,4 @@ Rails.application.configure do
   config.primer_view_components.raise_on_invalid_options = false
 
   config.autoload_paths << Rails.root.join("..", "test", "forms")
-  config.view_component.preview_paths << Rails.root.join("..", "test", "previews")
 end
