@@ -17,5 +17,8 @@ module.exports = {
       config.output.publicPath = "/view-components/stories/"
 
     return config;
+  },
+  features: {
+    postcss: false
   }
 };
