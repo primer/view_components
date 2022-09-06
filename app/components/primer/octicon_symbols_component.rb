@@ -46,10 +46,14 @@ module Primer
     def symbol_tags
       safe_join(
         @icons.values.map do |icon|
-          tag.symbol(icon.path.html_safe, id: "octicon_#{icon.symbol}_#{icon.height}",
-                                          viewBox: icon.options[:viewBox],
-                                          width: icon.width,
-                                          height: icon.height)
+          content_tag( # rubocop:disable Rails/ContentTag
+            :symbol,
+            icon.path.html_safe, # rubocop:disable Rails/OutputSafety
+            id: "octicon_#{icon.symbol}_#{icon.height}",
+            viewBox: icon.options[:viewBox],
+            width: icon.width,
+            height: icon.height
+          )
         end
       )
     end

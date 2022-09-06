@@ -229,7 +229,7 @@ module Primer
           return # returning `yield` caused a double render
         end
 
-        tag.div(class: "Box") do
+        content_tag(:div, class: "Box") do # rubocop:disable Rails/ContentTag
           yield if block_given?
         end
       end
