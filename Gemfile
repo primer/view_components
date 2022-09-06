@@ -42,8 +42,8 @@ group :development do
   gem "hotwire-livereload", "~> 1.1"
   gem "importmap-rails"
   gem "lookbook"
-  gem "spring-watcher-listen", "~> 2.0.0"
   gem "spring"
+  gem "spring-watcher-listen", "~> 2.0.0"
   gem "stimulus-rails"
   gem "turbo-rails"
 end
