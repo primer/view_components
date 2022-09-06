@@ -19,6 +19,6 @@ module.exports = {
     return config;
   },
   features: {
-    postcss: false,
+    postcss: false
   }
 };
