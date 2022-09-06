@@ -13,7 +13,6 @@ gem "rake", "~> 13.0"
 # rubocop:disable Bundler/DuplicatedGem
 if rails_version == "main"
   git "https://github.com/rails/rails", ref: "main" do
-    gem "actioncable"
     gem "actionview"
     gem "activemodel"
     gem "activerecord"
@@ -21,7 +20,6 @@ if rails_version == "main"
     gem "railties"
   end
 else
-  gem "actioncable", rails_version
   gem "actionview", rails_version
   gem "activemodel", rails_version
   gem "activesupport", rails_version
