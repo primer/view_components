@@ -229,7 +229,7 @@ module Primer
           return # returning `yield` caused a double render
         end
 
-        content_tag(:div, class: "Box") do
+        tag.div(class: "Box") do
           yield if block_given?
         end
       end
