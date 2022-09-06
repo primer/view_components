@@ -10,7 +10,7 @@
   "Primer::Alpha::Layout": "alpha",
   "Primer::Alpha::Layout::Main": "alpha",
   "Primer::Alpha::Layout::Sidebar": "alpha",
-  "Primer::Alpha::ResponsiveComponent": "beta",
+  "Primer::Alpha::ResponsiveComponent": "alpha",
   "Primer::Alpha::TabNav": "alpha",
   "Primer::Alpha::TabPanels": "alpha",
   "Primer::Alpha::TextField": "alpha",
