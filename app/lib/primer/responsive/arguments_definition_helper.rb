@@ -2,7 +2,7 @@
 
 module Primer
   module Responsive
-    # argument space helper
+    # Helper to define, validate, and normalized values for arguments definition for components
     module ArgumentsDefinitionHelper
       RESPONSIVE_VARIANTS_MAP = Primer::Responsive::ResponsiveConfig::RESPONSIVE_VARIANTS_MAP
       RESPONSIVE_VARIANTS = Primer::Responsive::ResponsiveConfig::RESPONSIVE_VARIANTS
@@ -10,24 +10,9 @@ module Primer
 
       private_constant :RESPONSIVE_VARIANTS_MAP, :RESPONSIVE_VARIANTS, :REQUIRED_RESPONSIVE_VARIANTS
 
-      # NOTE: optional responsive variants are skipped
-      # when calculating style classes and when validating missgin values
-      # RESPONSIVE_VARIANTS_MAP = {
-      #   v_narrow: {
-      #     style_class_modifier: "whenNarrow"
-      #   },
-      #   v_regular: {
-      #     style_class_modifier: "whenRegular"
-      #   },
-      #   v_wide: {
-      #     optional: true,
-      #     style_class_modifier: "whenWide"
-      #   }
-      # }.freeze
-
-      # RESPONSIVE_VARIANTS = RESPONSIVE_VARIANTS_MAP.keys.freeze
-      # REQUIRED_RESPONSIVE_VARIANTS = RESPONSIVE_VARIANTS_MAP.reject { |_, c| c[:optional] }.keys.freeze
-
+      # Used to tag the mark a subhash with an argument definition structure inside a arguments definition hash tree
+      # allowing arguments to be nested in namespace if necessary, while keep it easy to expand the argument_definition
+      # keys in the future
       ARGUMENT_IDENTIFIER_KEY = :__argument_definition
 
       # Error raised when the a argument definition declaration is invalid
@@ -57,18 +42,20 @@ module Primer
         arguments
       end
 
-      # "flag" a argument definition hash to be created as a arger ArgumentDefinition
-      # allowing for argument namespacing
+      # "flags" an argument definition subhash to be use to create an ArgumentDefinition
+      # @param argument_definition [Hash] configuration for the specfic argument definition
       def arg(argument_definition = {})
         { ARGUMENT_IDENTIFIER_KEY =>  argument_definition }
       end
+
+      module_function :arg
 
       # Validates each argument in arguments definition
       # If the argument is exclusively responsive, the argument value cannot be set as a base
       # value after the arguments values are normalized with its default values
       #
       # @param arguments_definition [Hash] definition of the arguments available to the component
-      # @param arguments [Hash] names params of the components
+      # @param argument_values [Hash] hash structured value of arguments
       def validate_argument_values(arguments_definition:, argument_values: {})
         arguments_definition.each do |arg, possible_definition|
           unless possible_definition.is_a? ArgumentDefinition
@@ -91,13 +78,6 @@ module Primer
               Argument value is required.
             MSG
           end
-
-          # if definition.responsive == :yes && argument_values.key?(arg)
-          #   raise InvalidArgumentValueError, <<~MSG
-          #     #{definition.invalid_value_base_message(argument_values[arg])}
-          #     Exclusively responsive argument can't have value outside of responsive variants.
-          #   MSG
-          # end
 
           definition.validate_value(argument_values[arg]) if argument_values.key?(arg)
           RESPONSIVE_VARIANTS.each do |variant|
@@ -142,6 +122,12 @@ module Primer
           end
 
           definition = possible_definition
+          if definition.deprecated?
+            definition.deprecation_warn
+          elsif definition.deprecated_value? arguments_values[arg]
+            definition.deprecation_warn(arguments_values[arg])
+          end
+
           has_to_fallback = fallback_to_default && !definition.valid_value?(argument_values[arg])
           next unless !argument_values.key?(arg) || argument_values[arg].nil? || has_to_fallback
 
@@ -158,6 +144,8 @@ module Primer
 
               has_defined_variant = argument_values[responsive_variant].key?(arg)
               responsive_value = has_defined_variant ? argument_values[responsive_variant][arg] : base_value
+
+              definition.deprecation_warn(responsive_value) if definition.deprecated_value? responsive_value
 
               has_to_fallback ||= (fallback_to_default && !definition.valid_value?(responsive_value, responsive_variant))
 
@@ -256,11 +244,6 @@ module Primer
 
         false
       end
-
-      def production_env?
-        Rails.env.production?
-      end
-      module_function :production_env?
     end
   end
 end

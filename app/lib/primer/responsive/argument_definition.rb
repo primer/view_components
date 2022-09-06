@@ -2,9 +2,9 @@
 
 module Primer
   module Responsive
-    RESPONSIVE_VARIANTS_MAP = Primer::Responsive::ResponsiveConfig::RESPONSIVE_VARIANTS_MAP
-    RESPONSIVE_VARIANTS = Primer::Responsive::ResponsiveConfig::RESPONSIVE_VARIANTS
-    REQUIRED_RESPONSIVE_VARIANTS = Primer::Responsive::ResponsiveConfig::REQUIRED_RESPONSIVE_VARIANTS
+    RESPONSIVE_VARIANTS_MAP = ResponsiveConfig::RESPONSIVE_VARIANTS_MAP
+    RESPONSIVE_VARIANTS = ResponsiveConfig::RESPONSIVE_VARIANTS
+    REQUIRED_RESPONSIVE_VARIANTS = ResponsiveConfig::REQUIRED_RESPONSIVE_VARIANTS
 
     # Argument Definition helps defining, validating, and deprecating an argument of responsive components
     class ArgumentDefinition
@@ -31,7 +31,7 @@ module Primer
 
       def initialize(params = {})
         @params = params
-        validate_params_structure unless ArgumentsDefinitionHelper.production_env?
+        validate_params_structure if ResponsiveConfig.raise_on_invalid?
 
         @name = params[:name]
         @allowed_values = params[:allowed_values]
@@ -58,7 +58,7 @@ module Primer
 
         @has_defined_default = params.key?(:default)
 
-        validate_definition unless ArgumentsDefinitionHelper.production_env?
+        validate_definition if ::Primer::Responsive::ResponsiveConfig.raise_on_invalid?
       end
 
       # Checks if the argument is required by checking if it or its reponsive variants have defaults.
@@ -175,18 +175,27 @@ module Primer
       # Checks if a given value is deprecated.
       #
       # @pram value [Any] the value to check for deprecation.
+      # @return [Boolean]
       def deprecated_value?(value)
         return false if @deprecation.nil?
 
         @deprecation.deprecated_value?(value)
       end
 
-      # Gets the deprecation message for the given value
+      # Logs a deprecation warn if the argument or given value is deprecated
       #
+      # @param value [Any] deprecated value
       # @return [String]
-      def deprecation_warn_message(value)
-        return "" if @deprecation.nil?
+      def deprecation_warn(value = nil)
+        @deprecation.deprecation_warn(value)
+      end
 
+      # Retrieves the constructed deprecation message, in case the deprecation message has to be used
+      # outside of the default deprecation warn pipeline
+      #
+      # @param value [Any] deprecated value
+      # @return [String]
+      def deprecation_warn_message(value = nil)
         @deprecation.deprecation_warn_message(value)
       end
 
@@ -415,10 +424,10 @@ module Primer
       end
 
       def deprecation_warn(value_given = nil)
-        return unless ArgumentsDefinitionHelper.production_env? || silent_deprecation?
+        return unless ResponsiveConfig.silent_deprecation?
 
         deprecation_message = deprecation_warn_message(value_given)
-        ActiveSupport::Deprecation.warn(deprecation_message)
+        ActiveSupport::Deprecation.warn(deprecation_message) if deprecation_message.present?
       end
 
       def deprecation_warn_message(value_given = nil)
@@ -447,10 +456,6 @@ module Primer
         return true if @argument
 
         @type.nil? ? @deprecated_values.any?(value) : value.is_a?(@type)
-      end
-
-      def silent_deprecation?
-        Rails.application.config.primer_view_components.silence_deprecations
       end
     end
   end

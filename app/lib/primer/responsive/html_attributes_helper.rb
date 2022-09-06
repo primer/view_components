@@ -66,6 +66,7 @@ module Primer
       # @param additional_allowed_attributes [Array] optional array to allow components to accept element specific attributes.
       #                                              However, wildcard is not allowed for them.
       def validate_html_attributes(given_html_attributes, additional_allowed_attributes: [])
+        return unless ::Primer::Responsive::ResponsiveConfig.raise_on_invalid?
         return if given_html_attributes.blank?
 
         given_html_attributes.each_key do |name|
@@ -83,9 +84,10 @@ module Primer
       # Validates the hash of HTML Attributes strictly against the provided allowe attributes
       #
       # @param given_html_attributes [Hash] keys are symbols with the html attribute name.
-      # @param additional_allowed_attributes [Array] optional array to allow components to accept element specific attributes.
+      # @param allowed_attribute_prefixes [Array] optional array to allow components to accept element specific attributes.
       #                                              However, wildcard is not allowed for them.
       def strict_validate_html_attributes(given_html_attributes, allowed_attributes:, allowed_attribute_prefixes: [])
+        return unless ::Primer::Responsive::ResponsiveConfig.raise_on_invalid?
         return if given_html_attributes.blank?
 
         given_html_attributes.each_key do |name|
@@ -122,7 +124,7 @@ module Primer
       # @param raw_html_attributes [Hash] html attributes and values to be sanitized
       # @param allowed_attributes [Array] array to allow components to accept element specific attributes.
       #                                   Wildcard not supported.
-      # @param allowed_attrbitues_prefixes [Array] optional array containing attributes prefixes to allow a subset of attributes
+      # @param allowed_attribute_prefixes [Array] optional array containing attributes prefixes to allow a subset of attributes
       #                                            like "data-" and "item" attributes
       def strict_sanitize_html_attributes(raw_html_attributes, allowed_attributes:, allowed_attribute_prefixes: [])
         return raw_html_attributes if raw_html_attributes.blank?

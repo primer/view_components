@@ -171,7 +171,7 @@ module Primer
         self.class.normalize_argument_values!(
           arguments_definition: self.class.arguments,
           argument_values: argument_values,
-          fallback_to_default: fallback_to_default || Primer::Responsive::ArgumentsDefinitionHelper.production_env?
+          fallback_to_default: fallback_to_default || Primer::Responsive::ResponsiveConfig.fallback_to_default?
         )
       end
 

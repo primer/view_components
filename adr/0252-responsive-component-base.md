@@ -1,6 +1,11 @@
-# Responsive Components
+# 252. Responsive Components
+Date: 2022-09-01
 
 The `ResponsiveComponent` class adds support for creating `viewport_range`-based responsive components, in a similar way that `Primer::Component` adds support for Primer CSS utility classes.
+
+## Status
+
+Proposed
 
 ## Context
 
@@ -77,9 +82,11 @@ The current approach doesn't provide any support to handle responsive properties
 
 The other problem is that it ties together the style map and argument values space, even deriving the possible value space (`<argument_name>_OPTIONS`) from the style map. And defining the `<argument_name>_DEFAULT` and later using it as a key of the style map hash makes it harder to change default values without impacting directly the style map, forcing a refactor of it in order to keep the current `<argument_name>_OPTIONS` the same.
 
+To solve this problem, the arguments and style classes of a component are defined and handled independent from one another. This allows more control over each functionality and make them easier to enhance if necessary. This also allows components to fully rely on the logic to handle arguments, even if the arguments are not necessarily be used to derive classes to be applied to html elements.
+
 The `ResponsiveComponent` adds helper functions and structure to remove the boilerplate out of the way.
 
-## Design philosphy
+## Design philosophy
 
 When designing the `ResponsiveComponent` base class, the main goal was to make its behavior explicit and the least intrusive as possible. All the main logic to handle each problem encountered is split into its own module and can be used by any component by extending the required helper, allowing the logic to be reused even if the component doesn't inherit from `ResponsiveComponent`.
 
@@ -154,9 +161,9 @@ class CustomComponent < ::Primer::Alpha::ResponsiveComponent
 end
 ```
 
-The `arguments_definition` method not only creates the corresponding `ArgumentDefinition` object to represent the argument, but will also ensure that the definition is consistent and error free by raising error with helpful messages in a development environment. This and the lookbook previews will make it easy for developers to learn how to define the arguments properly.
+The `arguments_definition` method not only creates the corresponding `ArgumentDefinition` object to represent each argument, but will also ensure that the definition is consistent and error free by raising error with helpful messages in a development environment. This plus the lookbook previews will make it easy for developers to learn how to define the arguments properly.
 
-The method maps each `argument_name`(Symbol) to its definition properties. To support arguments namespaces if necessary, the method `arg` must be used to wrap the argument definition. It's just a simple way to mark that part of the hash as being the container for a definition.
+The method works by mapping each `argument_name`(Symbol) to its definition properties. To support arguments namespaces if necessary, the method `arg` must be used to wrap the argument definition hash. It simply wraps its arguments within a specific hash key to mark that part of the hash as being the container for a definition.
 
 ### Argument definition hash keys
 - `responsive`: defines the responsive behavior of the argument.  
@@ -205,11 +212,25 @@ The method maps each `argument_name`(Symbol) to its definition properties. To su
 In case the component is responsive (has `:responsive` set to `:yes` or `:transitional`), a set of keys representing the responsive variants is available for the argument definition: `v_narrow`, `v_regular`, and `v_wide`. For each variant (viewport range), the following configuration keys are available:
 - `additional_allowed_values`: works like the base `allowed_values`, but will add to the current `allowed_values` list if it's set in the base definition.
 - `default`: defines a default per responsive variant. It has precedence over the base `default` value.
-> _note_: responsive definition cannot contain a `type`. If the base definition uses a `type`, that means that all responsive variants will be of the same type.
+> _note_: responsive definitions cannot contain a `type`. If the base definition uses a `type`, that means that all responsive variants will be of the same type.
 
 ### Sharing arguments definition
 
+Arguments definition can be shared by composition or by inheritance.
+
+#### Composition
+Since the entire argument definition is a simple Hash, it's possible to create modules holding a base definition that can be reused by many custom responsive components. The only method required to define the hash structure is `arg()`, which is conveniently declared as a `module_function` of the `ArgumentsDefinitionHelper` module.
+
+```rb
+module //TODO 
+```
+
+#### Inheritance
+Another available option is to define arguments using the `add_arguments_definition()` method. It will merge the arguments defined in the parent class with the definition of the current class, however the definition has to exist in the parent class directly. This is only recommended if the parent definition is treated as an abstract class.
+_TODO_
 
 ## Responsive class map
+_TODO_
 
-## How to use it
+## HTML Tags and Attributes
+_TODO_

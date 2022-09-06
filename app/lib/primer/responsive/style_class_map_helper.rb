@@ -12,7 +12,7 @@ module Primer
       # Adds responsive variants to the base map modifying the base classes to the respective variant name
       #
       # @param map [Hash] a hash composed of argument names mapping each possible value to a css class (string)
-      # @param remove_inicial [boolean] flag to remove the initial class map structure once the variants are added  
+      # @param remove_initial [boolean] flag to remove the initial class map structure once the variants are added  
       def add_responsive_variants!(map, remove_initial: false)
         RESPONSIVE_VARIANTS_MAP.each do |responsive_variant, config|
           add_responsive_variant!(map, responsive_variant, config[:style_class_modifier], RESPONSIVE_VARIANTS)
