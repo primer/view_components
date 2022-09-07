@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # :nodoc:
   module Deprecations
     # If there is no alternative to suggest, set the value to nil
     DEPRECATED_COMPONENTS = {
