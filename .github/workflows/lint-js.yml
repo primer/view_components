@@ -1,0 +1,33 @@
+name: ESLint
+
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - main
+
+jobs:
+  lint_js:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Node.js
+      uses: actions/setup-node@master
+      with:
+        node-version: 16
+    - uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: node-modules-main-${{ hashFiles('yarn.lock') }}
+    - name: Get specific changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v29.0.3
+      with:
+        files: |
+          app/components/**/*.ts
+          demo/.storybook/**/*.js
+    - name: Lint with ESLint
+      run: |
+        npx eslint --quiet ${{ steps.changed-files.outputs.all_changed_files }}

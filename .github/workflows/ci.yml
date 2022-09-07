@@ -37,22 +37,6 @@ jobs:
         bundle install --jobs 4 --retry 3
         bundle exec rubocop
         bundle exec erblint app/components
-  lint_js:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: Set up Node.js
-      uses: actions/setup-node@master
-      with:
-        node-version: 16
-    - uses: actions/cache@v2
-      with:
-        path: node_modules
-        key: node-modules-main-${{ hashFiles('yarn.lock') }}
-    - name: Lint with ESLint
-      run: |
-        yarn
-        yarn lint
   benchmark:
     needs: lint
     runs-on: ubuntu-latest
