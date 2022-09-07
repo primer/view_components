@@ -12,7 +12,7 @@ require "active_support/core_ext/string/inflections"
 class ComponentStatusMigrator < Thor::Group
   include Thor::Actions
 
-  STATUSES = %w[alpha beta deprecated stable].freeze
+  STATUSES = %w[alpha beta deprecated stable experimental].freeze
 
   # Define arguments and options
   argument :name
