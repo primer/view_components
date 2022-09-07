@@ -1,6 +1,5 @@
 {
   "Primer::Alpha::ActionList": "alpha",
-  "Primer::Alpha::ActionList::Checkmark": "alpha",
   "Primer::Alpha::ActionList::Divider": "alpha",
   "Primer::Alpha::ActionList::Group": "alpha",
   "Primer::Alpha::ActionList::Heading": "alpha",

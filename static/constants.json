@@ -1,6 +1,5 @@
 {
   "Primer::Alpha::ActionList": {
-    "Checkmark": "Primer::Alpha::ActionList::Checkmark",
     "DEFAULT_ROLE": "list",
     "DEFAULT_SCHEME": "full",
     "DEFAULT_TAG": "ul",
@@ -16,8 +15,6 @@
       "full",
       "inset"
     ]
-  },
-  "Primer::Alpha::ActionList::Checkmark": {
   },
   "Primer::Alpha::ActionList::Divider": {
     "DEFAULT_SCHEME": "subtle",
@@ -417,6 +414,7 @@
     "DEFAULT_PADDING": "default",
     "DEFAULT_ROW_SCHEME": "default",
     "Header": "Primer::Beta::BorderBox::Header",
+    "HeaderTest": "Primer::Beta::BorderBox::HeaderTest",
     "PADDING_MAPPINGS": {
       "default": "",
       "condensed": "Box--condensed",
@@ -629,7 +627,8 @@
   "Primer::DetailsComponent": {
   },
   "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
+    "Menu": "Primer::Dropdown::Menu",
+    "MenuTest": "Primer::Dropdown::MenuTest"
   },
   "Primer::Dropdown::Menu": {
     "AS_DEFAULT": "default",
