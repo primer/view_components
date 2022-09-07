@@ -80,8 +80,8 @@ jobs:
         resourceGroupName: primer
         subscriptionId: 550eb99d-d0c7-4651-a337-f53fa6520c4f
         template: ./.github/workflows/deploy-demo-preview-template.json
-        deploymentName: primer-view-components-pr-${{env.PR_NUMBER}}
-        parameters: appName="primer-view-components-preview-${{env.PR_NUMBER}}"
+        deploymentName: ${{env.DEPLOYMENT_NAME}}
+        parameters: appName="${{env.APP_NAME}}"
           containerImage="primer.azurecr.io/${{ env.IMAGE_REPO }}:latest"
           dockerRegistryUrl="primer.azurecr.io"
           dockerRegistryUsername="GitHubActions"
