@@ -1,4 +1,4 @@
-import './alpha/action-list-element'
+import './alpha/action_list_element'
 import './alpha/modal_dialog'
 import './alpha/toggle_switch'
 import './alpha/tool_tip'

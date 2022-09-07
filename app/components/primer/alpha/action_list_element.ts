@@ -1,9 +1,7 @@
 /* eslint-disable custom-elements/expose-class-on-global */
-/* eslint-disable custom-elements/define-tag-after-class-definition */
 
 import {FocusKeys, focusZone} from '@primer/behaviors'
 import {attr, controller} from '@github/catalyst'
-// eslint-disable-next-line prettier/prettier
 import type {FocusZoneSettings} from '@primer/behaviors'
 
 @controller
