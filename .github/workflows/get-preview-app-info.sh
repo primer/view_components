@@ -17,7 +17,7 @@ echo "REPO_NAME=${REPO_NAME}" >> $GITHUB_ENV
 DEPLOYMENT_NAME="${REPO_NAME}-pr-${PR_NUMBER}"
 echo "DEPLOYMENT_NAME=${DEPLOYMENT_NAME}" >> $GITHUB_ENV
 
-APP_NAME="${REPO_NAME}-preview-${PR_NUMBER}"
+APP_NAME="primer-view-components-preview-${PR_NUMBER}"
 echo "APP_NAME=${APP_NAME}" >> $GITHUB_ENV
 
 APP_URL="http://${APP_NAME}.eastus.azurecontainer.io"

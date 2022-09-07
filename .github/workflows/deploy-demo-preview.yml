@@ -49,10 +49,8 @@ jobs:
         bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile --path vendor/bundle
 
     - name: Get preview app info
-      env:
-        APP_NAME_SEED: ${{ secrets.PREVIEW_ENV_NAME_SEED }}
-
       run: ./.github/workflows/get-preview-app-info.sh
+
     - name: 'Set env vars'
       run: |
         # Image tag is unique to each workflow run so that it always triggers a new deployment
