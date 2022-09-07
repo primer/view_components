@@ -27,14 +27,14 @@
 
 @media (pointer: coarse) {
   .ActionBar {
-    gap: var(--primer-controlStack-medium-gap-spacious, 12px);
+    gap: calc(var(--primer-control-minTarget-coarse, 44px) - var(--primer-control-medium-size, 32px)); /* 12px */
   }
 
   .ActionBar--small {
-    gap: var(--primer-controlStack-small-gap-spacious, 16px);
+    gap: calc(var(--primer-control-minTarget-coarse, 44px) - var(--primer-control-small-size, 28px));  /* 16px */
   }
 
   .ActionBar--large {
-    gap: var(--base-size-4, 4px);
+    gap: calc(var(--primer-control-minTarget-coarse, 44px) - var(--primer-control-large-size, 40px));  /* 4px */
   }
 }
