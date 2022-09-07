@@ -16,7 +16,6 @@ module Primer
       "Primer::FlexItemComponent" => nil,
       "Primer::HeadingComponent" => "Primer::Beta::Heading",
       "Primer::HiddenTextExpander" => "Primer::Alpha::HiddenTextExpander",
-      "Primer::TestComponent" => "Primer::Beta::Test",
       "Primer::Tooltip" => "Primer::Alpha::Tooltip"
     }.freeze
 
