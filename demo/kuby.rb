@@ -25,6 +25,7 @@ Kuby.define("ViewComponentsStorybook") do
       # of the Puma webserver. Hopefully this will be fixed in an upcoming Kuby
       # release.
       webserver_phase.webserver = :puma
+      webserver_phase.port = ENV["PORT"] || 8080
 
       # Additional environment variables the app needs when it runs.
       app_phase.env "RAILS_SERVE_STATIC_FILES", "true"
