@@ -15,7 +15,11 @@ Bundler.require(*Rails.groups)
 
 module Demo
   class Application < Rails::Application
-    config.load_defaults 6.0 if Rails.version.to_i >= 6
+    if Rails.version.to_i >= 7
+      config.load_defaults 7.0
+    elsif Rails.version.to_i >= 6
+      config.load_defaults 6.0
+    end
 
     # Initialize configuration defaults for originally generated Rails version.
     config.view_component_storybook.show_stories = true

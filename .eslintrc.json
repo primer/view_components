@@ -54,7 +54,11 @@
           {
             "ignoreRestSiblings": true
           }
-        ], 
+        ],
+        "custom-elements/define-tag-after-class-definition": "off",
+        "custom-elements/file-name-matches-element": [
+          "error", {"suffix": "Element", "transform": "snake"}
+        ],
         "custom-elements/tag-name-matches-class": [
           "error", {"suffix": "Element"}
         ]

@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-rails_version = (ENV["RAILS_VERSION"] || "6.1.1").to_s
+rails_version = (ENV["RAILS_VERSION"] || "7.0.3").to_s
 
 gem "rake", "~> 13.0"
 gem "rack-cors"
@@ -41,4 +41,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "hotwire-livereload", "~> 1.1"
+  # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+  gem "importmap-rails"
+
+  # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+  gem "turbo-rails"
+
+  # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+  gem "stimulus-rails"
 end

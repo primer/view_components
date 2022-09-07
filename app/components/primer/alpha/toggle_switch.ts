@@ -1,6 +1,3 @@
-/* eslint-disable custom-elements/expose-class-on-global */
-/* eslint-disable custom-elements/define-tag-after-class-definition */
-
 import {controller, target} from '@github/catalyst'
 import {debounce} from '@github/mini-throttle/decorators'
 
@@ -145,4 +142,9 @@ declare global {
   interface Window {
     ToggleSwitchElement: typeof ToggleSwitchElement
   }
+}
+
+if (!window.customElements.get('toggle-switch')) {
+  window.ToggleSwitchElement = ToggleSwitchElement
+  window.customElements.define('toggle-switch', ToggleSwitchElement)
 }
