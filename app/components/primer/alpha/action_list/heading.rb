@@ -5,7 +5,6 @@ module Primer
     class ActionList
       # Section heading rendered above the section contents.
       class Heading < Primer::Component
-
         DEFAULT_SCHEME = :subtle
         SCHEME_MAPPINGS = {
           DEFAULT_SCHEME => nil,

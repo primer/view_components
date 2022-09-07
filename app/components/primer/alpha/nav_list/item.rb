@@ -11,14 +11,14 @@ module Primer
 
           overrides = { select_mode: :none, "data-item-id": @selected_by_ids.join(" ") }
           overrides[:active] = true if @selected_by_ids.include?(@selected_item_id)
-        	# overrides[private_leading_action(icon: :"chevron-down")]
+          # overrides[private_leading_action(icon: :"chevron-down")]
 
           super(**system_arguments, **overrides)
         end
 
         # def before_render
-				# 	self.private_leading_action(icon: :"chevron-down")
-				# end
+        # 	self.private_leading_action(icon: :"chevron-down")
+        # end
       end
     end
   end

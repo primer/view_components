@@ -15,22 +15,22 @@ module Primer
         show_dividers: false
       )
         render(Primer::Alpha::ActionList.new(role: role, scheme: scheme, show_dividers: show_dividers)) do |c|
-            c.with_item(label: "Item one", href: "/") do |item|
-                item.with_leading_visual_icon(icon: :gear)
-            end
-            c.with_item(label: "Item two", href: "/") do |item|
-                item.with_leading_visual_icon(icon: :star)
-            end
-            c.with_item(label: "Item three", href: "/") do |item|
-                item.with_leading_visual_icon(icon: :heart)
-            end
+          c.with_item(label: "Item one", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :gear)
+          end
+          c.with_item(label: "Item two", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :star)
+          end
+          c.with_item(label: "Item three", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :heart)
+          end
         end
       end
 
       # @label Divider
       #
       # @param scheme [Symbol] select [subtle, filled]
-      def Divider(
+      def divider(
         scheme: Primer::Alpha::ActionList::Divider::DEFAULT_SCHEME
       )
         render(Primer::Alpha::ActionList::Divider.new(scheme: scheme))
@@ -42,7 +42,7 @@ module Primer
       # @param title text
       # @param subtitle text
       # @param section_id text
-      def Heading(
+      def heading(
         scheme: Primer::Alpha::ActionList::Heading::DEFAULT_SCHEME,
         title: "This is a title",
         section_id: "unique-id",
@@ -85,7 +85,7 @@ module Primer
         checked: false,
         active: false,
         expanded: false,
-        trailing_action_on_hover: false,
+        # trailing_action_on_hover: false,
         leading_visual_icon: nil,
         leading_visual_avatar_src: nil,
         trailing_visual_icon: nil,
@@ -109,7 +109,7 @@ module Primer
           checked: checked,
           active: active,
           expanded: expanded,
-          trailing_action_on_hover: trailing_action_on_hover,
+          # trailing_action_on_hover: trailing_action_on_hover,
           leading_visual_icon: leading_visual_icon,
           leading_visual_avatar_src: leading_visual_avatar_src,
           trailing_visual_icon: trailing_visual_icon,
@@ -137,7 +137,7 @@ module Primer
         checked: false,
         active: false,
         expanded: false,
-        trailing_action_on_hover: false,
+        # trailing_action_on_hover: false,
         leading_visual_icon: nil,
         leading_visual_avatar_src: nil,
         trailing_visual_icon: nil,
@@ -159,7 +159,7 @@ module Primer
           checked: checked,
           active: active,
           expanded: expanded
-        #   trailing_action_on_hover: trailing_action_on_hover
+          #   trailing_action_on_hover: trailing_action_on_hover
         ) do |item|
           if leading_visual_icon && leading_visual_icon != :none
             item.with_leading_visual_icon(icon: leading_visual_icon)

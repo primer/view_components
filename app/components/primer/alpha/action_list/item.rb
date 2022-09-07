@@ -42,8 +42,6 @@ module Primer
           }
         }
 
-
-
         renders_one :private_leading_action, types: {
           icon: Primer::OcticonComponent,
           svg: lambda { |**system_arguments|

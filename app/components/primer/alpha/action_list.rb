@@ -8,11 +8,11 @@ module Primer
       DEFAULT_TAG = :ul
 
       DEFAULT_SCHEME = :full
-        SCHEME_MAPPINGS = {
-          DEFAULT_SCHEME => nil,
-          :inset => "ActionListWrap--inset"
-        }.freeze
-        SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
+      SCHEME_MAPPINGS = {
+        DEFAULT_SCHEME => nil,
+        :inset => "ActionListWrap--inset"
+      }.freeze
+      SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
       def self.custom_element_name
         @custom_element_name ||= name.split("::").last.underscore.dasherize
@@ -42,9 +42,9 @@ module Primer
         @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
         @show_dividers = show_dividers
         system_arguments[:classes] = class_names(
-            SCHEME_MAPPINGS[@scheme],
-            "ActionListWrap",
-            "ActionListWrap--divided" => @show_dividers
+          SCHEME_MAPPINGS[@scheme],
+          "ActionListWrap",
+          "ActionListWrap--divided" => @show_dividers
         )
       end
 
