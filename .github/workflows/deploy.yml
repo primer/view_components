@@ -35,6 +35,7 @@ jobs:
         docker pull primer.azurecr.io/primer/view_components_storybook:latest-assets
     - name: Build
       env:
+        SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       run: |
         bin/kuby -e production build --only app -- --cache-from primer.azurecr.io/primer/view_components_storybook:latest

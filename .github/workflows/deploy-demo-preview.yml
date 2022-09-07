@@ -54,10 +54,15 @@ jobs:
     - name: 'Set env vars'
       run: |
         # Image tag is unique to each workflow run so that it always triggers a new deployment
-        echo "DOCKER_IMAGE=primer.azurecr.io/${{ env.IMAGE_REPO }}:${{ env.COMMIT_REF }}-${{ github.run_number }}-${{ github.run_attempt }}" >> $GITHUB_ENV
+        echo "DOCKER_IMAGE=${{ env.IMAGE_URL }}:${{ env.COMMIT_REF }}-${{ github.run_number }}-${{ github.run_attempt }}" >> $GITHUB_ENV
+    - name: Pull latest
+      run: |
+        docker pull ${{ env.IMAGE_URL }}:latest
+        docker pull ${{ env.IMAGE_URL }}:latest-assets
     - name: Build
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+        SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
       run: |
         bin/kuby -e production build --only app -- -t $DOCKER_IMAGE
         bin/kuby -e production build --only assets -- -t $DOCKER_IMAGE
