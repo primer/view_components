@@ -20,7 +20,8 @@ module Primer
         alpha: :alpha,
         beta: :beta,
         stable: :stable,
-        deprecated: :deprecated
+        deprecated: :deprecated,
+        experimental: :experimental
       }.freeze
 
       class UnknownStatusError < StandardError; end
