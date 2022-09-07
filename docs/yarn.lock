@@ -1574,6 +1574,11 @@
   resolved "https://registry.yarnpkg.com/@primer/behaviors/-/behaviors-1.1.1.tgz#51e2f02ebfe297c4c05f503cdc52ae8b4ce5794c"
   integrity sha512-wvF1PYjyxKNTr6+5w4uR5Gkz53t1fsRDgKjWxDKk7wmlh0cwiILBo4dDFjjVhWRF1mBSjaIxxJGB4WGaP7ct2Q==
 
+"@primer/behaviors@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@primer/behaviors/-/behaviors-1.2.0.tgz#35952a30d049ec546440af09c2058c47abe63115"
+  integrity sha512-SeD00vXuTNFviLdJiehRsV5T7uk39TcZF1yhiyPTVFDNuJC8hrkC9NdCMZyF2DXtH+yaaWGM5/gp4F0KYhRa3g==
+
 "@primer/component-metadata@^0.4.0":
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/@primer/component-metadata/-/component-metadata-0.4.0.tgz#44b7d7b1285bea41c2a88621fd17f2c777a4c5e9"
