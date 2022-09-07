@@ -9,52 +9,7 @@ on:
       - main
 
 jobs:
-  markdown:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - uses: avto-dev/markdown-lint@v1
-      with:
-        config: '.github/lint/markdown.json'
-        args: '**/*.md'
-        ignore: './CHANGELOG.md'
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: Setup Ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 3.0.x
-    - uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: gems-build-rails-main-ruby-2.7.x-${{ hashFiles('**/Gemfile.lock') }}
-    - name: Lint with Rubocop
-      run: |
-        gem install bundler:2.2.9
-        bundle config path vendor/bundle
-        bundle install --jobs 4 --retry 3
-        bundle exec rubocop
-        bundle exec erblint app/components
-  lint_js:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: Set up Node.js
-      uses: actions/setup-node@master
-      with:
-        node-version: 16
-    - uses: actions/cache@v2
-      with:
-        path: node_modules
-        key: node-modules-main-${{ hashFiles('yarn.lock') }}
-    - name: Lint with ESLint
-      run: |
-        yarn
-        yarn lint
   benchmark:
-    needs: lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -80,7 +35,6 @@ jobs:
         RUBY_VERSION: ${{ matrix.ruby_version }}
         RAILS_VERSION: ${{ matrix.rails_version }}
   stories:
-    needs: lint
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -102,7 +56,6 @@ jobs:
         bundle update actionview activemodel activesupport railties
         bin/rails view_component_storybook:write_stories_json
   test:
-    needs: lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
