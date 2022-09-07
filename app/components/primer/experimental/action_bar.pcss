@@ -10,9 +10,17 @@
 /* Divider */
 
 .ActionBar-divider {
-  margin: 0 var(--primer-control-medium-gap, 8px);
+  margin: 0 var(--primer-controlStack-medium-gap-condensed, 8px);
   height: calc(var(--primer-control-medium-size, 32px) / 2);
   border-left: var(--primer-borderWidth-thin, 1px) solid var(--color-border-subtle);
+}
+
+.ActionBar--small .ActionBar-divider {
+  margin: 0 var(--primer-controlStack-small-gap-condensed, 8px);
+}
+
+.ActionBar--large .ActionBar-divider {
+  margin: 0 var(--primer-controlStack-large-gap-condensed, 8px);
 }
 
 /* Increase spacing so touch targets don't overlap */
