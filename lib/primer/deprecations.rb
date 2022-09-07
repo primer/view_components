@@ -1,5 +1,6 @@
 module Primer
   module Deprecations
+    # If there is no alternative to suggest, set the value to nil
     DEPRECATIONS = {
       "Primer::Alpha::AutoComplete" => "Primer::Beta::AutoComplete",
       "Primer::Alpha::AutoComplete::Item" => "Primer::Beta::AutoComplete::Item",
