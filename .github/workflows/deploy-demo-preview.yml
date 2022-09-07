@@ -4,8 +4,8 @@ name: Demo Preview Deploy
 
 on:
   pull_request:
-    branches:
-        - '!changeset-release/**'
+    branches-ignore:
+        - 'changeset-release/**'
 
 env:
   PR_NUMBER: ${{ github.event.number || github.run_id }}
