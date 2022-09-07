@@ -11,8 +11,6 @@
 [[ -z $PR_NUMBER ]] && { echo "Missing PR_NUMBER. Exiting."; exit 1; }
 [[ -z $GITHUB_ENV ]] && { echo "Missing GITHUB_ENV. Exiting."; exit 1; }
 
-PREVIEW_ENV_LOCATION="eastus"
-
 REPO_NAME="${GITHUB_REPOSITORY#*\/}"
 echo "REPO_NAME=${REPO_NAME}" >> $GITHUB_ENV
 
