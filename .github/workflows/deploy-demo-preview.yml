@@ -8,6 +8,7 @@ on:
 env:
   PR_NUMBER: ${{ github.event.number || github.run_id }}
   COMMIT_REF: ${{ github.event.pull_request.head.sha || github.event.inputs.COMMIT_REF }}
+  PORT: 80
 
 # This allows one deploy workflow to interrupt another
 concurrency:
