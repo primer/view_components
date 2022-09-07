@@ -43,5 +43,3 @@ module Primer
     end
   end
 end
-
-Primer::BaseButton = Primer::Beta::BaseButton
