@@ -71,7 +71,7 @@
                 },
                 {
                   "name": "RAILS_MASTER_KEY",
-                  "valuse": "[parameters('railsMasterKey')]"
+                  "value": "[parameters('railsMasterKey')]"
                 }
               ],
               "resources": {
