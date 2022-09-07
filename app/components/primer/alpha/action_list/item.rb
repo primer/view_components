@@ -64,20 +64,20 @@ module Primer
         }
 
         renders_one :trailing_action, lambda { |**system_arguments|
-          Primer::Beta::IconButton.new(scheme: :invisible, classes: ["ActionListItem-trailingAction"], **system_arguments)
+          # Primer::Beta::IconButton.new(scheme: :invisible, classes: ["ActionListItem-trailingAction"], **system_arguments)
         }
 
         renders_many :items, lambda { |**system_arguments|
-          @list.build_item(**system_arguments, root: @root || self).tap do |item|
-            @list.will_add_item(item)
+          # @list.build_item(**system_arguments, root: @root || self).tap do |item|
+          #   @list.will_add_item(item)
 
-            if item.active? && !@root
-              @content_arguments[:classes] = class_names(
-                @content_arguments[:classes],
-                "ActionListContent--hasActiveSubItem"
-              )
-            end
-          end
+          #   if item.active? && !@root
+          #     @content_arguments[:classes] = class_names(
+          #       @content_arguments[:classes],
+          #       "ActionListContent--hasActiveSubItem"
+          #     )
+          #   end
+          # end
         }
 
         attr_reader :root, :active, :disabled, :checked, :expanded
@@ -191,7 +191,7 @@ module Primer
         end
 
         def expand!
-          @expanded = true
+          # @expanded = true
         end
 
         private
@@ -200,18 +200,18 @@ module Primer
           raise "Cannot render a trailing visual for an item with subitems" if items.present? && trailing_visual.present?
 
           if items.present?
-            @content_arguments[:tag] = :button
-            @content_arguments[:"aria-expanded"] = expanded?.to_s
+            # @content_arguments[:tag] = :button
+            # @content_arguments[:"aria-expanded"] = expanded?.to_s
             # Apply click handler to .ActionListContent button element, enables toggle behavior
-            @content_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemWithSubItemClick"
+            # @content_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemWithSubItemClick"
             # Apply click handler to .ActionListItem li element, enables highlight behavior
 
-            @system_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemClick"
+            # @system_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemClick"
 
-            @system_arguments[:classes] = class_names(
-              @system_arguments[:classes],
-              "ActionListItem--hasSubItem"
-            )
+            # @system_arguments[:classes] = class_names(
+            #   @system_arguments[:classes],
+            #   "ActionListItem--hasSubItem"
+            # )
           end
 
           return unless leading_visual

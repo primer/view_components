@@ -15,11 +15,11 @@ module Primer
       SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
       def self.custom_element_name
-        @custom_element_name ||= name.split("::").last.underscore.dasherize
+        # @custom_element_name ||= name.split("::").last.underscore.dasherize
       end
 
       def custom_element_name
-        self.class.custom_element_name
+        # self.class.custom_element_name
       end
 
       renders_many :items, lambda { |**system_arguments|
@@ -29,9 +29,9 @@ module Primer
       }
 
       renders_many :groups, lambda { |**system_arguments|
-        build_group(**system_arguments).tap do |group|
-          will_add_group(group)
-        end
+        # build_group(**system_arguments).tap do |group|
+        #   will_add_group(group)
+        # end
       }
 
       def initialize(tag: DEFAULT_TAG, role: DEFAULT_ROLE, item_classes: nil, scheme: DEFAULT_SCHEME, show_dividers: false, **system_arguments)
@@ -59,7 +59,7 @@ module Primer
       end
 
       def build_group(**system_arguments)
-        ActionList::Group.new(list: self, **system_arguments)
+        # ActionList::Group.new(list: self, **system_arguments)
       end
 
       def will_add_item(_item); end
