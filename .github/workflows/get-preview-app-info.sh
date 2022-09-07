@@ -24,7 +24,7 @@ APP_NAME_BASE="${REPO_NAME}-preview-${PR_NUMBER}"
 APP_NAME="${APP_NAME_BASE}"
 echo "APP_NAME=${APP_NAME}" >> $GITHUB_ENV
 
-APP_URL="https://${REPO_NAME}-${PR_NUMBER}.eastus.azurecontainer.io"
+APP_URL="https://${APP_NAME_BASE}.eastus.azurecontainer.io"
 echo "APP_URL=${APP_URL}" >> $GITHUB_ENV
 
 IMAGE_REPO="${GITHUB_REPOSITORY}/pr-${PR_NUMBER}"
