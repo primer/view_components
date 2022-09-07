@@ -62,7 +62,6 @@ jobs:
     - name: Build
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-        SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
       run: |
         bin/kuby -e production build --only app -- -t $DOCKER_IMAGE
         bin/kuby -e production build --only assets -- -t $DOCKER_IMAGE
@@ -90,3 +89,4 @@ jobs:
           dockerRegistryUrl="primer.azurecr.io"
           dockerRegistryUsername="GitHubActions"
           dockerRegistryPassword="${{ secrets.AZURE_ACR_PASSWORD }}"
+          railsMasterKey="${{ secrets.RAILS_MASTER_KEY }}"

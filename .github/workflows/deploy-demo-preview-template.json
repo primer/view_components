@@ -65,6 +65,10 @@
                 {
                   "name": "ENABLED_LANGUAGES",
                   "value": "en"
+                },
+                {
+                  "name": "RAILS_MASTER_KEY",
+                  "valuse": "[parameters('railsMasterKey')]"
                 }
               ],
               "resources": {
