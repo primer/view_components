@@ -1,7 +1,7 @@
 module Primer
   module Deprecations
     # If there is no alternative to suggest, set the value to nil
-    DEPRECATIONS = {
+    DEPRECATED_COMPONENTS = {
       "Primer::Alpha::AutoComplete" => "Primer::Beta::AutoComplete",
       "Primer::Alpha::AutoComplete::Item" => "Primer::Beta::AutoComplete::Item",
       "Primer::BaseButton" => "Primer::Beta::BaseButton",
@@ -21,11 +21,11 @@ module Primer
     }.freeze
 
     def self.deprecated?(name)
-      DEPRECATIONS.key?(name)
+      DEPRECATED_COMPONENTS.key?(name)
     end
 
     def self.suggested_component(name)
-      DEPRECATIONS[name]
+      DEPRECATED_COMPONENTS[name]
     end
 
     def self.correctable?(name)
