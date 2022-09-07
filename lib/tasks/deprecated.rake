@@ -11,7 +11,7 @@ namespace :deprecated do
       puts "\n**************************************************************************************************************************"
       raise "Please make sure that components are officially deprecated by setting the `status :deprecated` within the component file.\n"\
       "Run `bundle exec rake static:dump` so the deprecated status is reflected in `statuses.json`.\n"\
-      "Make sure to provide an alternative component for each deprecated component in `ERBLint::Linters::Helpers::DeprecatedComponentsHelpers::COMPONENT_TO_USE_INSTEAD`.\n"\
+      "Make sure to provide an alternative component for each deprecated component in `Primer::Deprecations::DEPRECATED_COMPONENTS` (lib/primer/deprecations.rb).\n"\
       "If there is no alternative to suggest, set the value to nil."
     end
 
