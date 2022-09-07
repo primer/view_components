@@ -107,8 +107,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
       "Primer::Alpha::Checklist",
-      "Primer::Alpha::Navlist",
-      "Primer::Alpha::Navlist::Item",
       "Primer::HiddenTextExpander",
       "Primer::HeadingComponent",
       "Primer::CloseButton",

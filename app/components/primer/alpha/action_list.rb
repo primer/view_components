@@ -43,6 +43,7 @@ module Primer
         @show_dividers = show_dividers
         system_arguments[:classes] = class_names(
           SCHEME_MAPPINGS[@scheme],
+          system_arguments[:classes],
           "ActionListWrap",
           "ActionListWrap--divided" => @show_dividers
         )
