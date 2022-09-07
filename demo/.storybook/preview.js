@@ -1,5 +1,4 @@
 import '@primer/css/dist/primer.css'
-import '../app/assets/stylesheets/primer_view_components.css'
 
 const isProd = process.env.NODE_ENV == 'production';
 
