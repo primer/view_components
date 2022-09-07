@@ -29,6 +29,9 @@
     },
     "dockerRegistryPassword": {
       "type": "SecureString"
+    },
+    "railsMasterKey": {
+      "type": "SecureString"
     }
   },
   "resources": [
