@@ -3,15 +3,14 @@
 
 import {controller, targets, target} from '@github/catalyst'
 import {positionedOffset, focusZone, FocusKeys} from '@primer/behaviors'
-// eslint-disable-next-line prettier/prettier
 import type {FocusZoneSettings} from '@primer/behaviors'
-import type {ActionMenuElement} from './action-menu-element'
+import type {ActionBarMenuElement} from './action-bar-menu-element'
 
 @controller
 export class ActionBarElement extends HTMLElement {
   @targets items: HTMLElement[]
   @targets menuItems: HTMLElement[]
-  @target moreMenu: ActionMenuElement
+  @target moreMenu: ActionBarMenuElement
 
   #observer: ResizeObserver
   #initialBarWidth: number

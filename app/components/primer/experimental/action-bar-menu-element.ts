@@ -2,7 +2,7 @@
 import type {AnchorAlignment, AnchorSide} from '@primer/behaviors'
 import {getAnchoredPosition} from '@primer/behaviors'
 
-export class ActionMenuElement extends HTMLElement {
+export class ActionBarMenuElement extends HTMLElement {
   #abortController: AbortController
   #firstCharactersOfItems: string[]
   #firstMenuItem: HTMLElement
@@ -375,13 +375,13 @@ export class ActionMenuElement extends HTMLElement {
   }
 }
 
-if (!window.customElements.get('action-menu')) {
-  window.ActionMenuElement = ActionMenuElement
-  window.customElements.define('action-menu', ActionMenuElement)
+if (!window.customElements.get('action-bar-menu')) {
+  window.ActionBarMenuElement = ActionBarMenuElement
+  window.customElements.define('action-bar-menu', ActionBarMenuElement)
 }
 
 declare global {
   interface Window {
-    ActionMenuElement: typeof ActionMenuElement
+    ActionBarMenuElement: typeof ActionBarMenuElement
   }
 }
