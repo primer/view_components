@@ -1,6 +1,3 @@
-/* eslint-disable custom-elements/expose-class-on-global */
-/* eslint-disable custom-elements/define-tag-after-class-definition */
-
 import {controller, targets, target} from '@github/catalyst'
 import {positionedOffset, focusZone, FocusKeys} from '@primer/behaviors'
 import type {FocusZoneSettings} from '@primer/behaviors'
@@ -144,3 +141,5 @@ declare global {
     ActionBarElement: typeof ActionBarElement
   }
 }
+
+window.ActionBarElement = ActionBarElement
