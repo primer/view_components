@@ -70,7 +70,7 @@ module Primer
 
       def body_component
         if @tooltipped
-          Primer::Tooltip.new(**@body_arguments)
+          Primer::Alpha::Tooltip.new(**@body_arguments)
         else
           Primer::BaseComponent.new(**@body_arguments)
         end

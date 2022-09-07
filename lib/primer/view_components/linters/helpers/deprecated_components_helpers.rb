@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'primer/deprecations'
+require "primer/deprecations"
 
 module ERBLint
   module Linters

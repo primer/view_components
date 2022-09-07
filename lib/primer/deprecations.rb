@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Primer
   module Deprecations
     # If there is no alternative to suggest, set the value to nil
