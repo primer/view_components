@@ -19,6 +19,7 @@ module Primer
         assert_selector("li.ActionListItem ul.ActionListWrap--subGroup")
         assert_selector("ul.ActionListWrap[aria-labelledby]")
         assert_selector("div.ActionList-sectionDivider")
+        assert_selector("ul.ActionListWrap--subGroup li.ActionListItem--subItem")
       end
 
       def test_item

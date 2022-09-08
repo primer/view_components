@@ -78,7 +78,8 @@ module Primer
       def build_item(**system_arguments)
         system_arguments[:classes] = class_names(
           @item_classes,
-          system_arguments[:classes]
+          system_arguments[:classes],
+          "ActionListItem--subItem" => @child,
         )
 
         ActionList::Item.new(list: self, **system_arguments)
