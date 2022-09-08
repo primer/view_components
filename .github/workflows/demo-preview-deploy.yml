@@ -4,15 +4,10 @@ name: Demo Preview
 
 on:
   pull_request:
-    branches:
-      - '!changeset-release/**'
-    paths:
-      - '.github/**'
-      - 'app/**'
-      - 'bin/**'
-      - 'demo/**'
-      - 'lib/**'
-      - 'stories/**'
+    branches-ignore:
+      - 'changeset-release/main'
+      - 'main'
+
 env:
   PR_NUMBER: ${{ github.event.number || github.run_id }}
   COMMIT_REF: ${{ github.event.pull_request.head.sha || github.event.inputs.COMMIT_REF }}
