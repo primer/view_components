@@ -31,7 +31,7 @@ jobs:
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
         yarn
-        yarn markdownlint -c .github/lint/markdown.json -- ${{ steps.changed-files.outputs.all_changed_files }}
+        yarn markdownlint ${{ steps.changed-files.outputs.all_changed_files }}
 
   rubocop:
     runs-on: ubuntu-latest
