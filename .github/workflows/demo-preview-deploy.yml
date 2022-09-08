@@ -72,8 +72,8 @@ jobs:
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       run: |
-        bin/kuby -e production build --only app -- -t $DOCKER_IMAGE
-        bin/kuby -e production build --only assets -- -t $DOCKER_IMAGE
+        bin/kuby -e production build --only app -- -t ${{ env.DOCKER_IMAGE }}
+        bin/kuby -e production build --only assets -- -t ${{ env.DOCKER_IMAGE }}
     - name: Push
       run: bin/kuby -e production push
     - name: Run ARM deploy
@@ -94,7 +94,7 @@ jobs:
         template: ./.github/workflows/demo-preview-template.json
         deploymentName: ${{env.DEPLOYMENT_NAME}}
         parameters: appName="${{env.APP_NAME}}"
-          containerImage="${{ DOCKER_IMAGE }}"
+          containerImage="${{ env.DOCKER_IMAGE }}"
           dockerRegistryUrl="primer.azurecr.io"
           dockerRegistryUsername="GitHubActions"
           dockerRegistryPassword="${{ secrets.AZURE_ACR_PASSWORD }}"
