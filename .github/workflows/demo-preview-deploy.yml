@@ -5,7 +5,8 @@ name: Demo Preview
 on:
   pull_request:
     branches-ignore:
-      - 'changeset-release/**'
+      - 'changeset-release/main'
+      - 'main'
     paths:
       - '.github/**'
       - 'app/**'
