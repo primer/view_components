@@ -4,9 +4,8 @@ name: Demo Preview
 
 on:
   pull_request:
-    branches-ignore:
-      - 'changeset-release/main'
-      - 'main'
+    branches:
+      - '!changeset-release/**'
     paths:
       - '.github/**'
       - 'app/**'
