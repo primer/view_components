@@ -11,6 +11,10 @@ module Primer
         render_preview(:list)
       end
 
+      def test_lists
+        render_preview(:lists)
+      end
+
       def test_item
         render_preview(:item)
       end

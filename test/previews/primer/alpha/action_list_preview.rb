@@ -4,6 +4,20 @@ module Primer
   module Alpha
     # @label ActionList
     class ActionListPreview < ViewComponent::Preview
+      # @label Sub lists
+      def lists
+        render(Primer::Alpha::ActionList.new) do |list|
+          list.with_item(label: "Item one", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :gear)
+          end
+          list.with_list do |sub_list|
+            sub_list.with_item(label: "Sub item one", href: "/") do |item|
+              item.with_leading_visual_icon(icon: :gear)
+            end
+          end
+        end
+      end
+
       # @label List
       #
       # @param role text

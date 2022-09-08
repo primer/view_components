@@ -28,13 +28,20 @@ module Primer
         end
       }
 
-      renders_many :groups, lambda { |**system_arguments|
-        # build_group(**system_arguments).tap do |group|
-        #   will_add_group(group)
-        # end
+      renders_many :lists, lambda { |**system_arguments|
+        build_list(**system_arguments).tap do |group|
+          will_add_list(group)
+        end
       }
 
-      def initialize(tag: DEFAULT_TAG, role: DEFAULT_ROLE, item_classes: nil, scheme: DEFAULT_SCHEME, show_dividers: false, **system_arguments)
+      def initialize(
+        tag: DEFAULT_TAG,
+        role: DEFAULT_ROLE,
+        item_classes: nil,
+        scheme: DEFAULT_SCHEME,
+        show_dividers: false,
+        **system_arguments
+      )
         @system_arguments = system_arguments
         @system_arguments[:tag] = tag
         @system_arguments[:role] = role
@@ -58,13 +65,13 @@ module Primer
         ActionList::Item.new(list: self, **system_arguments)
       end
 
-      def build_group(**system_arguments)
-        # ActionList::Group.new(list: self, **system_arguments)
+      def build_list(**system_arguments)
+        ActionList.new(list: self, **system_arguments)
       end
 
       def will_add_item(_item); end
 
-      def will_add_group(_group); end
+      def will_add_list(_list); end
     end
   end
 end

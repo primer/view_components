@@ -2,13 +2,13 @@
   <% items.each do |item| %>
     <%= item %>
   <% end %>
-  <% unless groups.empty? %>
+  <% unless lists.empty? %>
     <%= render(Primer::Alpha::ActionList::Divider.new) %>
   <% end %>
-  <% groups.each_with_index do |group, idx| %>
+  <% lists.each_with_index do |list, idx| %>
     <% if idx > 0 %>
       <%= render(Primer::Alpha::ActionList::Divider.new) %>
     <% end %>
-    <%= group %>
+    <%= list %>
   <% end %>
 <% end %>
