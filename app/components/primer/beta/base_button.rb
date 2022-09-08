@@ -27,7 +27,7 @@ module Primer
         **system_arguments
       )
         @system_arguments = system_arguments
-        @system_arguments[:tag] = fetch_or_fallback(TAG_OPTIONS, tag, DEFAULT_TAG)
+        @system_arguments[:tag] = tag
 
         @system_arguments[:type] = fetch_or_fallback(TYPE_OPTIONS, type, DEFAULT_TYPE) if @system_arguments[:tag] == :button
 
