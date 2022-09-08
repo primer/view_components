@@ -8,4 +8,7 @@ require_relative "config/application"
 Rails.application.load_tasks
 
 # generate stories before precompiling assets
-Rake::Task["assets:precompile"].enhance(["view_component_storybook:write_stories_json"])
+Rake::Task['assets:precompile'].enhance do
+  Rake::Task["view_component_storybook:write_stories_json"].invoke
+  Rake::Task["lookbook:previews:preparse"].invoke
+end
