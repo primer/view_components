@@ -27,10 +27,13 @@ jobs:
       with:
         files: |
           **/*.md
+        files_ignore: |
+          .changeset/*.md
     - name: Lint with Markdownlint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
-        npx markdownlint -c .github/lint/markdown.json -- ${{ steps.changed-files.outputs.all_changed_files }}
+        yarn
+        yarn markdownlint -c .github/lint/markdown.json -- ${{ steps.changed-files.outputs.all_changed_files }}
 
   rubocop:
     runs-on: ubuntu-latest
@@ -110,4 +113,5 @@ jobs:
     - name: Lint with ESLint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
-        npx eslint --quiet ${{ steps.changed-files.outputs.all_changed_files }}
+        yarn
+        yarn eslint --quiet ${{ steps.changed-files.outputs.all_changed_files }}
