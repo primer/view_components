@@ -94,7 +94,7 @@ jobs:
         template: ./.github/workflows/demo-preview-template.json
         deploymentName: ${{env.DEPLOYMENT_NAME}}
         parameters: appName="${{env.APP_NAME}}"
-          containerImage="${{ env.DOCKER_IMAGE }}"
+          containerImage="primer.azurecr.io/${{ env.IMAGE_REPO }}:latest"
           dockerRegistryUrl="primer.azurecr.io"
           dockerRegistryUsername="GitHubActions"
           dockerRegistryPassword="${{ secrets.AZURE_ACR_PASSWORD }}"
