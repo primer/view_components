@@ -4,6 +4,10 @@ name: Demo Preview
 
 on:
   pull_request:
+    types:
+      - opened
+      - synchronize
+
     branches:
       - '!changeset-release/**'
 
