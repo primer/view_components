@@ -1,6 +1,6 @@
 
 
-name: Demo Preview Deploy
+name: Demo Preview
 
 on:
   pull_request:
@@ -24,7 +24,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
+    name: Deploy
     if: ${{ github.repository == 'primer/view_components' }}
     runs-on: ubuntu-latest
     environment:
@@ -57,7 +58,7 @@ jobs:
         bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile --path vendor/bundle
 
     - name: Get preview app info
-      run: ./.github/workflows/get-preview-app-info.sh
+      run: ./.github/workflows/demo-preview-app-info.sh
 
     - name: 'Set env vars'
       run: |
@@ -90,7 +91,7 @@ jobs:
       with:
         resourceGroupName: primer
         subscriptionId: 550eb99d-d0c7-4651-a337-f53fa6520c4f
-        template: ./.github/workflows/deploy-demo-preview-template.json
+        template: ./.github/workflows/demo-preview-template.json
         deploymentName: ${{env.DEPLOYMENT_NAME}}
         parameters: appName="${{env.APP_NAME}}"
           containerImage="primer.azurecr.io/${{ env.IMAGE_REPO }}:latest"
