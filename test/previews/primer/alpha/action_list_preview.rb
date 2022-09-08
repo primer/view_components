@@ -7,6 +7,7 @@ module Primer
       # @label Sub lists
       def lists
         render(Primer::Alpha::ActionList.new) do |list|
+          list.with_heading(title: "Heading")
           list.with_item(label: "Item one", href: "/") do |item|
             item.with_leading_visual_icon(icon: :gear)
           end

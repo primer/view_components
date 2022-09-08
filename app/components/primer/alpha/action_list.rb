@@ -22,6 +22,10 @@ module Primer
         # self.class.custom_element_name
       end
 
+      renders_one :heading, lambda { |**system_arguments|
+        Heading.new(section_id: @id, **system_arguments)
+      }
+
       renders_many :items, lambda { |**system_arguments|
         build_item(**system_arguments, root: nil).tap do |item|
           will_add_item(item)
@@ -42,6 +46,8 @@ module Primer
         show_dividers: false,
         **system_arguments
       )
+        @id = "action-list-section-#{SecureRandom.uuid}"
+
         @system_arguments = system_arguments
         @system_arguments[:tag] = tag
         @system_arguments[:role] = role
@@ -66,7 +72,7 @@ module Primer
       end
 
       def build_list(**system_arguments)
-        ActionList.new(list: self, **system_arguments)
+        ActionList.new(**system_arguments)
       end
 
       def will_add_item(_item); end

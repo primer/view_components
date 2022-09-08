@@ -1,4 +1,7 @@
 <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
+  <% if heading %>
+    <%= heading %>
+  <% end %>
   <% items.each do |item| %>
     <%= item %>
   <% end %>
@@ -9,6 +12,8 @@
     <% if idx > 0 %>
       <%= render(Primer::Alpha::ActionList::Divider.new) %>
     <% end %>
-    <%= list %>
+    <%= render(Primer::BaseComponent.new(tag: :li, classes: "ActionListItem ActionListItem--hasSubItem")) do %>
+      <%= list %>
+    <% end %>
   <% end %>
 <% end %>
