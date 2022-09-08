@@ -33,7 +33,7 @@ module Primer
       }
 
       renders_many :lists, lambda { |**system_arguments|
-        build_list(**system_arguments).tap do |group|
+        build_list(child: true, **system_arguments).tap do |group|
           will_add_list(group)
         end
       }
@@ -44,9 +44,11 @@ module Primer
         item_classes: nil,
         scheme: DEFAULT_SCHEME,
         show_dividers: false,
+        child: false,
         **system_arguments
       )
         @id = "action-list-section-#{SecureRandom.uuid}"
+        @child = child
 
         @system_arguments = system_arguments
         @system_arguments[:tag] = tag
@@ -58,8 +60,19 @@ module Primer
           SCHEME_MAPPINGS[@scheme],
           system_arguments[:classes],
           "ActionListWrap",
+          "ActionListWrap--subGroup" => child,
           "ActionListWrap--divided" => @show_dividers
         )
+      end
+
+      def before_render
+        return if @child
+
+        if heading.present?
+          @system_arguments[:"aria-labelledby"] = @id
+        elsif !aria(:label, @system_arguments).present?
+          raise ArgumentError.new("An aria-label or heading must be provided")
+        end
       end
 
       def build_item(**system_arguments)

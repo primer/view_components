@@ -17,7 +17,7 @@ module Primer
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(section_id:, title:, scheme: DEFAULT_SCHEME, subtitle: nil, **system_arguments)
           @system_arguments = system_arguments
-          @system_arguments[:tag] = :li
+          @system_arguments[:tag] = :div
           @section_id = section_id
           @title = title
           @subtitle = subtitle

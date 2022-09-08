@@ -29,7 +29,12 @@ module Primer
         scheme: Primer::Alpha::ActionList::DEFAULT_SCHEME,
         show_dividers: false
       )
-        render(Primer::Alpha::ActionList.new(role: role, scheme: scheme, show_dividers: show_dividers)) do |c|
+        render(Primer::Alpha::ActionList.new(
+          role: role,
+          scheme: scheme,
+          show_dividers: show_dividers,
+          aria: { label: "Action List" }
+        )) do |c|
           c.with_item(label: "Item one", href: "/") do |item|
             item.with_leading_visual_icon(icon: :gear)
           end
@@ -109,7 +114,7 @@ module Primer
         trailing_visual_text: nil,
         trailing_action: nil
       )
-        list = Primer::Alpha::ActionList.new
+        list = Primer::Alpha::ActionList.new(aria: { label: "Action List" })
         add_item_to(
           list,
           label: label,

@@ -9,10 +9,16 @@ module Primer
 
       def test_list
         render_preview(:list)
+
+        assert_selector("ul.ActionListWrap[aria-label]")
       end
 
       def test_lists
         render_preview(:lists)
+
+        assert_selector("li.ActionListItem ul.ActionListWrap--subGroup")
+        assert_selector("ul.ActionListWrap[aria-labelledby]")
+        assert_selector("div.ActionList-sectionDivider")
       end
 
       def test_item

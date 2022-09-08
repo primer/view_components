@@ -1,7 +1,7 @@
+<% if heading %>
+  <%= heading %>
+<% end %>
 <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
-  <% if heading %>
-    <%= heading %>
-  <% end %>
   <% items.each do |item| %>
     <%= item %>
   <% end %>
