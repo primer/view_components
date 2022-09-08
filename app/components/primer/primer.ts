@@ -1,5 +1,5 @@
 import './alpha/modal_dialog'
-import './alpha/segmented-control-element'
+import './alpha/segmented_control'
 import './alpha/toggle_switch'
 import './alpha/tool_tip'
 import './beta/auto_complete/auto_complete'
