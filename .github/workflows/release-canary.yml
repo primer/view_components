@@ -4,12 +4,6 @@ on:
     branches-ignore:
       - 'changeset-release/**'
 
-permissions:
-  actions: write
-  contents: read
-  pages: write
-  id-token: write
-
 jobs:
   release-canary:
     name: Canary
