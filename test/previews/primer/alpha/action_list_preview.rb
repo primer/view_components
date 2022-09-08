@@ -30,11 +30,11 @@ module Primer
         show_dividers: false
       )
         render(Primer::Alpha::ActionList.new(
-          role: role,
-          scheme: scheme,
-          show_dividers: show_dividers,
-          aria: { label: "Action List" }
-        )) do |c|
+                 role: role,
+                 scheme: scheme,
+                 show_dividers: show_dividers,
+                 aria: { label: "Action List" }
+               )) do |c|
           c.with_item(label: "Item one", href: "/") do |item|
             item.with_leading_visual_icon(icon: :gear)
           end

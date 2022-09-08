@@ -70,8 +70,8 @@ module Primer
 
         if heading.present?
           @system_arguments[:"aria-labelledby"] = @id
-        elsif !aria(:label, @system_arguments).present?
-          raise ArgumentError.new("An aria-label or heading must be provided")
+        elsif aria(:label, @system_arguments).blank?
+          raise ArgumentError, "An aria-label or heading must be provided"
         end
       end
 
