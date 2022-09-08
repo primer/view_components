@@ -4,9 +4,8 @@ name: Demo Preview
 
 on:
   pull_request:
-    branches-ignore:
-      - 'changeset-release/main'
-      - 'main'
+    branches:
+      - '!changeset-release/**'
 
 env:
   PR_NUMBER: ${{ github.event.number || github.run_id }}
