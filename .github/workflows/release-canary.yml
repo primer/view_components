@@ -1,6 +1,8 @@
 name: Release Canary
 on:
   pull_request:
+    branches-ignore:
+      - 'changeset-release/**'
 
 permissions:
   contents: read
@@ -10,6 +12,7 @@ permissions:
 jobs:
   release-canary:
     name: Canary
+    if: ${{ github.repository == 'primer/view_components' }}
     uses: primer/.github/.github/workflows/release_canary.yml@main
     with:
       install: yarn
