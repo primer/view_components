@@ -26,6 +26,7 @@ jobs:
           **/*.md
         files_ignore: |
           .changeset/*.md
+          CHANGELOG.md
     - name: Lint with Markdownlint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
