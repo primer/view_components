@@ -40,7 +40,7 @@ class PrimerBetaBaseButtonTest < Minitest::Test
   end
 
   def test_primer_base_button_references_beta_base_button
-    assert_equal(Primer::BaseButton, Primer::Beta::BaseButton)
+    assert_equal(Primer::BaseButton.superclass, Primer::Beta::BaseButton)
 
     render_inline(Primer::BaseButton.new) { "Primer::BaseButton content" }
 

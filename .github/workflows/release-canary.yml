@@ -1,0 +1,17 @@
+name: Release Canary
+on:
+  push:
+    branches-ignore:
+      - 'main'
+      - 'changeset-release/**'
+      - 'dependabot/**'
+
+jobs:
+  release-canary:
+    if: ${{ github.repository == 'primer/view_components' }}
+    uses: primer/.github/.github/workflows/release_canary.yml@main
+    with:
+      install: yarn
+    secrets:
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
+      npm_token: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}

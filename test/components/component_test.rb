@@ -106,10 +106,12 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
-      "Primer::BoxComponent"
+      "Primer::BoxComponent",
+      "Primer::BaseButton",
+      "Primer::ButtonGroup"
     ]
 
-    primer_component_files_count = Dir["app/components/**/*.rb"].count
+    primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
     assert_equal primer_component_files_count, COMPONENTS_WITH_ARGS.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"
   end
 

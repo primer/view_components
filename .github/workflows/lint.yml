@@ -1,0 +1,115 @@
+name: Lint
+
+on:
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  markdown:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Node.js
+      uses: actions/setup-node@master
+      with:
+        node-version: 16
+    - uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: node-modules-main-${{ hashFiles('yarn.lock') }}
+    - name: Get specific changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v29.0.3
+      with:
+        files: |
+          **/*.md
+        files_ignore: |
+          .changeset/*.md
+          CHANGELOG.md
+    - name: Lint with Markdownlint
+      if: steps.changed-files.outputs.any_changed == 'true'
+      run: |
+        yarn
+        yarn markdownlint -c .github/lint/markdown.json -- ${{ steps.changed-files.outputs.all_changed_files }}
+
+  rubocop:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 3.0.x
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: gems-build-rails-main-ruby-2.7.x-${{ hashFiles('**/Gemfile.lock') }}
+    - name: Get specific changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v29.0.3
+      with:
+        files: |
+          app/**/*.rb
+          lib/**/*.rb
+          lookbook/**/*.rb
+          stories/**/*.rb
+          test/**/*.rb
+    - name: Lint with Rubocop
+      if: steps.changed-files.outputs.any_changed == 'true'
+      run: |
+        gem install bundler:2.2.9
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
+        bundle exec rubocop ${{ steps.changed-files.outputs.all_changed_files }}
+
+  erblint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 3.0.x
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: gems-build-rails-main-ruby-2.7.x-${{ hashFiles('**/Gemfile.lock') }}
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v29.0.3
+      with:
+        files: |
+          app/components/**/*.erb
+    - name: Lint with ERB Lint
+      if: steps.changed-files.outputs.any_changed == 'true'
+      run: |
+        gem install bundler:2.2.9
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
+        bundle exec erblint ${{ steps.changed-files.outputs.all_changed_files }}
+
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Node.js
+      uses: actions/setup-node@master
+      with:
+        node-version: 16
+    - uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: node-modules-main-${{ hashFiles('yarn.lock') }}
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v29.0.3
+      with:
+        files: |
+          app/components/**/*.ts
+          demo/.storybook/**/*.js
+    - name: Lint with ESLint
+      if: steps.changed-files.outputs.any_changed == 'true'
+      run: |
+        yarn
+        yarn eslint --quiet ${{ steps.changed-files.outputs.all_changed_files }}

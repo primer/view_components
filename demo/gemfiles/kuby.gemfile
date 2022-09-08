@@ -3,5 +3,6 @@ source "https://rubygems.org"
 gem "kuby-core", github: "getkuby/kuby-core", ref: "708f2181977ad9c75eb83ca26505402d316975ef"
 gem "kuby-azure", ">= 0.3.3", "< 1.0"
 gem "kuby-kind", "~> 0.1"
+gem "kind-rb", "~> 0.1"
 
 gem "pry-byebug"

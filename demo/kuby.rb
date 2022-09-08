@@ -10,7 +10,7 @@ Kuby.define("ViewComponentsStorybook") do
         password ENV["AZURE_ACR_PASSWORD"]
       end
 
-      image_url "primer.azurecr.io/#{ENV["IMAGE_REPO"]}" || "primer.azurecr.io/primer/view_components_storybook"
+      image_url ENV["IMAGE_URL"] || "primer.azurecr.io/primer/view_components_storybook"
 
       # Run bundler, yarn, etc in this directory.
       app_root "./demo"
@@ -25,6 +25,7 @@ Kuby.define("ViewComponentsStorybook") do
       # of the Puma webserver. Hopefully this will be fixed in an upcoming Kuby
       # release.
       webserver_phase.webserver = :puma
+      webserver_phase.port = ENV["PORT"] || 8080
 
       # Additional environment variables the app needs when it runs.
       app_phase.env "RAILS_SERVE_STATIC_FILES", "true"

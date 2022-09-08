@@ -7,6 +7,7 @@
     "build": "gatsby build --prefix-paths"
   },
   "dependencies": {
+    "@primer/behaviors": "^1.2.0",
     "@primer/css": "^20.4.4",
     "@primer/gatsby-theme-doctocat": "^4.0.0",
     "@primer/primitives": "^6.0.0",

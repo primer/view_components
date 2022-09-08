@@ -12,7 +12,7 @@ require "active_support/core_ext/string/inflections"
 class ComponentStatusMigrator < Thor::Group
   include Thor::Actions
 
-  STATUSES = %w[alpha beta deprecated stable].freeze
+  STATUSES = %w[alpha beta deprecated stable experimental].freeze
 
   # Define arguments and options
   argument :name
@@ -112,19 +112,11 @@ class ComponentStatusMigrator < Thor::Group
     )
   end
 
-  def add_to_linter
-    insert_into_file(
-      "lib/rubocop/cop/primer/component_name_migration.rb",
-      "\"Primer::#{name}\" => \"Primer::#{status_module}#{name_without_suffix}\",\n",
-      after: "DEPRECATIONS = {\n"
-    )
-  end
-
   def add_to_deprecated_component_helper
     insert_into_file(
-      "lib/primer/view_components/linters/helpers/deprecated_components_helpers.rb",
+      "lib/primer/deprecations.rb",
       "\"Primer::#{name}\" => \"Primer::#{status_module}#{name_without_suffix}\",\n",
-      after: "COMPONENT_TO_USE_INSTEAD = {\n"
+      after: "DEPRECATED_COMPONENTS = {\n"
     )
   end
 
