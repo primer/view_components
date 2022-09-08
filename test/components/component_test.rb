@@ -21,7 +21,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
-    [Primer::Alpha::ActionList, {}, lambda do |component|
+    [Primer::Alpha::ActionList, { aria: { label: "Action List" }}, lambda do |component|
       component.item(label: "Foo")
     end],
     [Primer::Alpha::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
@@ -101,7 +101,6 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
-      "Primer::Alpha::ActionList::Group",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
