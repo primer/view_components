@@ -3,6 +3,7 @@ on:
   pull_request:
     branches-ignore:
       - 'changeset-release/**'
+      - 'dependabot/**'
 
 jobs:
   release-canary:
