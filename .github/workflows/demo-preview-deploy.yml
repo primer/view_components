@@ -1,15 +1,8 @@
 
 
 name: Demo Preview
-
 on:
   pull_request:
-    types:
-      - opened
-      - synchronize
-
-    branches:
-      - '!changeset-release/**'
 
 env:
   PR_NUMBER: ${{ github.event.number || github.run_id }}
@@ -24,7 +17,7 @@ concurrency:
 jobs:
   deploy:
     name: Deploy
-    if: ${{ github.repository == 'primer/view_components' }}
+    if: ${{ github.repository == 'primer/view_components' && github.actor != 'dependabot[bot]' && github.actor != 'primer-css' }}
     runs-on: ubuntu-latest
     environment:
       name: review-pr-${{ github.event.number }}
