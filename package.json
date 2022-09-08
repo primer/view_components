@@ -62,6 +62,7 @@
     "eslint-plugin-custom-elements": "^0.0.6",
     "eslint-plugin-github": "^4.3.7",
     "eslint-plugin-prettier": "^4.2.1",
+    "markdownlint-cli": "^0.32.2",
     "mocha": "^10.0.0",
     "postcss": "^8.4.16",
     "postcss-cli": "^10.0.0",

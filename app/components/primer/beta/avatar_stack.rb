@@ -70,7 +70,7 @@ module Primer
 
       def body_component
         if @tooltipped
-          Primer::Tooltip.new(**@body_arguments)
+          Primer::Tooltip.new(**@body_arguments) # rubocop:disable Primer/ComponentNameMigration
         else
           Primer::BaseComponent.new(**@body_arguments)
         end
