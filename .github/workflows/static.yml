@@ -1,0 +1,98 @@
+name: Static Build
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  docs:
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    name: Docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          token: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.x
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - run: yarn
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: gems-build-docs-${{ hashFiles('**/Gemfile.lock') }}
+      - name: Generate static files
+        run: |
+          gem install bundler:2.2.9
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+          bundle exec rake utilities:build
+          bundle exec rake docs:build
+          bundle exec rake static:dump
+        env:
+          SKIP_STORYBOOK_PRELOAD: 1
+      - name: Commit & Push Docs Data
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "Actions Auto Build"
+          git add -f lib/primer/classify/utilities.yml static
+          git commit -m "docs: build docs" || true
+          git push
+  status:
+    if: ${{ github.repository == 'primer/view_components' }}
+    name: Update statuses project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.x
+      - name: Install deps
+        run: gem install graphql-client
+      - name: Make updates
+        run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} script/update-statuses-project.rb
+  stories:
+    name: Build Storybook Stories
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 3.0
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: gems-build-stories-ruby-3.0-${{ hashFiles('**/Gemfile.lock') }}
+    - name: Build gem
+      run: |
+        gem install bundler:2.2.9
+        bundle config path vendor/bundle
+        bundle update actionview activemodel activesupport railties
+        cd demo
+        bundle config path vendor/bundle
+        bundle update actionview activemodel activesupport railties
+        bin/rails view_component_storybook:write_stories_json
+  deprecated:
+    name: Deprecated components
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 3.0.x
+    - name: Make sure deprecated components can be linted
+      run: |
+        gem install bundler:2.2.9
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
+        bundle exec rake static:dump
+        bundle exec rake deprecated:check
