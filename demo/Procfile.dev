@@ -1,5 +1,4 @@
-storybook: STORYBOOK=true bin/yarn storybook -p 5000
-rails: STORYBOOK=true bin/rails s -p 4000
+rails: bin/rails s -p 4000
 css: yarn build:css --watch
 ts: yarn build:ts --watch
 rollup: yarn build:rollup --watch

@@ -326,8 +326,6 @@ GEM
       activesupport (>= 5.0.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
-    view_component_storybook (0.8.0)
-      view_component (>= 2.2)
     virtus (2.0.0)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -394,7 +392,6 @@ DEPENDENCIES
   thor
   timecop
   turbo-rails
-  view_component_storybook (~> 0.8.0)
   webpacker (~> 5.0)
   yard (~> 0.9.25)
 

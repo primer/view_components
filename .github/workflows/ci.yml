@@ -34,27 +34,6 @@ jobs:
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
         RAILS_VERSION: ${{ matrix.rails_version }}
-  stories:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: Setup Ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 3.0
-    - uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: gems-build-stories-ruby-3.0-${{ hashFiles('**/Gemfile.lock') }}
-    - name: Build gem
-      run: |
-        gem install bundler:2.2.9
-        bundle config path vendor/bundle
-        bundle update actionview activemodel activesupport railties
-        cd demo
-        bundle config path vendor/bundle
-        bundle update actionview activemodel activesupport railties
-        bin/rails view_component_storybook:write_stories_json
   test:
     runs-on: ubuntu-latest
     strategy:

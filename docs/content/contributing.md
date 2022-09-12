@@ -63,11 +63,8 @@ By default, the system tests run in a headless Chrome browser. Prefix the test c
 
 Documentation is written as [YARD](https://yardoc.org/) comments directly in the source code, compiled into Markdown via `bundle exec rake docs:build` and served by [Doctocat](https://github.com/primer/doctocat).
 
-### Storybook / Documentation / Demo Rails App
+### Documentation / Demo Rails App
 
-* **Storybook**: Components can be interacted with, seen in different contexts, and controls can be manipulated
-  * Typically runs on port 5000
-  * To rebuild stories, navigate to the `demo` directory (`cd demo`) and then run `bin/rails view_component_storybook:write_stories_json`
 * **Docs**: Generated YARD docs with examples, see components with usage instructions and examples
   * Typically runs on port 5400
   * To rebuild docs, run `bundle exec rake docs:build`

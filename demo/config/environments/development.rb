@@ -57,8 +57,6 @@ Rails.application.configure do
   config.autoload_paths << Rails.root.join("../test/forms")
   config.lookbook.listen_paths << Rails.root.join("../app/components")
 
-  config.view_component_storybook.stories_path = Rails.root.join("../stories") unless ENV["SKIP_STORYBOOK_PRELOAD"] == "1"
-
   # Unblock codespaces githubpreview.dev domain
   config.hosts << /.*githubpreview\.dev/
 end

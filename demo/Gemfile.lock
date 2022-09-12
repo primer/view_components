@@ -392,8 +392,6 @@ GEM
       activesupport (>= 5.0.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
-    view_component_storybook (0.8.0)
-      view_component (>= 2.2)
     webrick (1.7.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -430,7 +428,6 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
-  view_component_storybook (~> 0.8.0)
 
 BUNDLED WITH
    2.2.33
