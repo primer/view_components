@@ -40,7 +40,7 @@ gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PA
 group :development do
   gem "hotwire-livereload", "~> 1.1"
   gem "importmap-rails"
-  gem "lookbook"
+  gem "lookbook", "~> 1.0.4"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "stimulus-rails"

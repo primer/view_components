@@ -369,7 +369,7 @@ DEPENDENCIES
   hotwire-livereload (~> 1.1)
   importmap-rails
   listen (~> 3.0)
-  lookbook
+  lookbook (~> 1.0.4)
   matrix (~> 0.4.2)
   minitest (~> 5.0)
   mocha

@@ -415,7 +415,7 @@ DEPENDENCIES
   kuby-azure (>= 0.3.3, < 1.0)
   kuby-core!
   kuby-kind (~> 0.1)
-  lookbook
+  lookbook (~> 1.0.4)
   primer_view_components!
   pry-byebug
   puma (~> 5.6.4)
