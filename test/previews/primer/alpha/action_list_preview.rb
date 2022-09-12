@@ -109,57 +109,9 @@ module Primer
         trailing_visual_label: nil,
         trailing_visual_counter: nil,
         trailing_visual_text: nil,
-        trailing_action: nil,
-        id: "tooltip-test"
-      )
-        list = Primer::Alpha::ActionList.new(aria: { label: "Action List" })
-        add_item_to(
-          list,
-          label: label,
-          truncate_label: truncate_label,
-          href: href,
-          size: size,
-          scheme: scheme,
-          disabled: disabled,
-          description: description,
-          description_scheme: description_scheme,
-          active: active,
-          expanded: expanded,
-          # trailing_action_on_hover: trailing_action_on_hover,
-          leading_visual_icon: leading_visual_icon,
-          leading_visual_avatar_src: leading_visual_avatar_src,
-          trailing_visual_icon: trailing_visual_icon,
-          trailing_visual_label: trailing_visual_label,
-          trailing_visual_counter: trailing_visual_counter,
-          trailing_visual_text: trailing_visual_text,
-          trailing_action: trailing_action
-        )
-        render(list)
-      end
-
-      private
-
-      def add_item_to(
-        list,
-        label: "Label",
-        truncate_label: false,
-        href: nil,
-        size: Primer::Alpha::ActionList::Item::DEFAULT_SIZE,
-        scheme: Primer::Alpha::ActionList::Item::DEFAULT_SCHEME,
-        disabled: false,
-        description: nil,
-        description_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME,
-        active: false,
-        expanded: false,
-        # trailing_action_on_hover: false,
-        leading_visual_icon: nil,
-        leading_visual_avatar_src: nil,
-        trailing_visual_icon: nil,
-        trailing_visual_label: nil,
-        trailing_visual_counter: nil,
-        trailing_visual_text: nil,
         trailing_action: nil
       )
+        list = Primer::Alpha::ActionList.new(aria: { label: "Action List" })
         list.item(
           root: nil,
           label: label,
@@ -194,8 +146,10 @@ module Primer
 
           item.description { description } if description
 
-          # item.with_tooltip(text: "Tooltip text", for_id:"tooltip-test", type: :description)
+          item.with_tooltip(text: "Tooltip text", for_id: "tooltip-test", type: :description)
         end
+
+        render(list)
       end
     end
   end

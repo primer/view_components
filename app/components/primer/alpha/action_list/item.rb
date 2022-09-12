@@ -84,10 +84,10 @@ module Primer
         # @param type [Symbol] (:description) <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
         # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Alpha::Tooltip) %>.
         renders_one :tooltip, lambda { |**system_arguments|
-          # raise ArgumentError, "Buttons with a tooltip must have a unique `id` set on the `Button`." if @id.blank? && !Rails.env.production?
+          raise ArgumentError, "Buttons with a tooltip must have a unique `id` set on the `Button`." if @id.blank? && !Rails.env.production?
 
-          # system_arguments[:for_id] = @id
-          # system_arguments[:type] ||= :description
+          system_arguments[:for_id] = @id
+          system_arguments[:type] ||= :description
 
           Primer::Alpha::Tooltip.new(**system_arguments)
         }
@@ -113,7 +113,7 @@ module Primer
           on_click: nil,
           expanded: false,
           trailing_action_on_hover: false,
-          id: nil,
+          id: SecureRandom.hex,
           **system_arguments
         )
           @list = list

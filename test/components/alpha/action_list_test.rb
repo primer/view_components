@@ -26,6 +26,12 @@ module Primer
         render_preview(:item)
       end
 
+      def test_item_tooltip
+        render_preview(:item)
+
+        assert_selector(".ActionListItem > tool-tip")
+      end
+
       def test_divider
         render_preview(:divider)
       end
