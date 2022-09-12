@@ -20,5 +20,20 @@ module Primer
         end
       end
     end
+
+    # @label Menu Options
+    #
+    # @param as [Symbol] select [list, default]
+    # @param direction [Symbol] select [se, sw, w, e, ne, s]
+    # @param scheme [Symbol] select [default, dark]
+    def menu(as: :default, direction: :se, scheme: :default)
+      render(Primer::Dropdown::Menu.new(as: as, direction: direction, scheme: scheme, header: "Header")) do |m|
+        m.with_item { "Item 1" }
+        m.with_item { "Item 2" }
+        m.with_item(divider: true)
+        m.with_item { "Item 3" }
+        m.with_item { "Item 4" }
+      end
+    end
   end
 end
