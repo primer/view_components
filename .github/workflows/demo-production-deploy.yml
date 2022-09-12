@@ -1,6 +1,6 @@
 
 
-name: Rails Storybook Deploy
+name: Demo Production
 
 on:
   push:

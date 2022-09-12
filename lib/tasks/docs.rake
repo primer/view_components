@@ -88,7 +88,8 @@ namespace :docs do
       Primer::Alpha::UnderlinePanels,
       Primer::Alpha::TabNav,
       Primer::Alpha::TabPanels,
-      Primer::Alpha::Tooltip
+      Primer::Alpha::Tooltip,
+      Primer::Alpha::ToggleSwitch
     ]
 
     js_components = [
