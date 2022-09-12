@@ -95,6 +95,7 @@ GEM
     helm-cli (0.3.0)
       helm-rb (~> 0.1)
     helm-rb (0.2.1-x86_64-darwin)
+    helm-rb (0.2.1-x86_64-linux)
     http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -113,6 +114,7 @@ GEM
       to_regexp (~> 0.2.1)
     jwt (2.3.0)
     kind-rb (0.1.0-x86_64-darwin)
+    kind-rb (0.1.0-x86_64-linux)
     krane (1.1.4)
       activesupport (>= 5.0)
       colorize (~> 0.8)
@@ -131,6 +133,7 @@ GEM
       recursive-open-struct (~> 1.1, >= 1.1.1)
       rest-client (~> 2.0)
     kubectl-rb (0.2.1-x86_64-darwin)
+    kubectl-rb (0.2.1-x86_64-linux)
     kubernetes-cli (0.3.2)
       kubectl-rb (~> 0.1)
     kuby-azure (0.3.3)
@@ -168,6 +171,8 @@ GEM
     multipart-post (2.1.1)
     netrc (0.11.0)
     nokogiri (1.13.1-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.1-x86_64-linux)
       racc (~> 1.4)
     oj (3.13.11)
     os (1.1.4)
@@ -222,8 +227,10 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
+  kind-rb (~> 0.1)
   kuby-azure (>= 0.3.3, < 1.0)
   kuby-core!
   kuby-kind (~> 0.1)
