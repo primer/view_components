@@ -36,13 +36,3 @@ gem "webpacker", "~> 5.0"
 gem "bootsnap", ">= 1.4.2", require: false
 
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
-
-group :development do
-  gem "hotwire-livereload", "~> 1.1"
-  gem "importmap-rails"
-  gem "lookbook", "~> 1.0.4"
-  gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
-  gem "stimulus-rails"
-  gem "turbo-rails"
-end
