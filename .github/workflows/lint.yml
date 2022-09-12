@@ -53,7 +53,6 @@ jobs:
           app/**/*.rb
           lib/**/*.rb
           lookbook/**/*.rb
-          stories/**/*.rb
           test/**/*.rb
     - name: Lint with Rubocop
       if: steps.changed-files.outputs.any_changed == 'true'

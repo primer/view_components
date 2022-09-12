@@ -51,8 +51,8 @@ Running the component generator script creates several files across the codebase
 - `app/components/<status>/<component_name>.rb` is where the component logic is defined, and where you’ll write the component’s [documentation] in the form of YARD comments
   - [Read about writing documents with YARD comments](./documentation.md#yard-setup)
 - `app/components/<status>/<component_name>.html.erb` is the component’s template file (omitted if the `inline` flag is passed to the generator)
-- `stories/primer/<status>/<component_name>.rb` defines the Storybook stories for the component
-  - [Read about writing stories](./documentation.md#writing-storybook-stories)
+- `test/previews/primer/<status>/<component_name>_preview.rb` defines the ViewComponent preview for the component
+  - [Read about writing previews](https://viewcomponent.org/guide/previews.html)
 - `test/components/primer/<status>/<component_name>.rb` contains the component’s unit tests
   - [Read about writing component tests](./component-tests.md)
 

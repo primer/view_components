@@ -464,7 +464,7 @@ namespace :docs do
       component_id: short_name.underscore,
       status: status.capitalize,
       source: source_url(component),
-      storybook: storybook_url(component),
+      storybook: lookbook_url(component),
       path: "docs/content/components/#{status_path}#{short_name.downcase}.md",
       example_path: example_path(component),
       require_js_path: require_js_path(component)
@@ -477,10 +477,10 @@ namespace :docs do
     "https://github.com/primer/view_components/tree/main/app/components/#{path}.rb"
   end
 
-  def storybook_url(component)
-    path = component.name.split("::").map { |n| n.underscore.dasherize }.join("-")
+  def lookbook_url(component)
+    path = component.name.underscore
 
-    "https://primer.style/view-components/stories/?path=/story/#{path}"
+    "https://primer.style/view-components/lookbook/inspect/#{path}"
   end
 
   def example_path(component)

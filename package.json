@@ -75,8 +75,5 @@
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },
-  "prettier": "@github/prettier-config",
-  "storybook": {
-    "url": "https://primer.style/view-components/stories/"
-  }
+  "prettier": "@github/prettier-config"
 }

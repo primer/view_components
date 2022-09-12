@@ -6,8 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
     <%= javascript_include_tag "primer_view_components", type: "module", "data-turbo-track": "reload" %>
     <% if Rails.env.development? %>
       <%= javascript_include_tag "hotwire-livereload", defer: true %>
@@ -18,6 +18,7 @@
     <div style="
       margin-left: auto;
       margin-right: auto;
+      position: relative;
       max-width: <%= params[:lookbook][:display][:max_width] || "100%" %>
     ">
       <%= yield %> <!-- rendered preview will be injected here -->

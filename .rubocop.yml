@@ -18,13 +18,11 @@ AllCops:
 Style/ClassAndModuleChildren:
   Enabled: true
   Exclude:
-    - "stories/**/*"
     - "test/**/*"
 
 Style/Documentation:
   Enabled: true
   Exclude:
-    - "stories/**/*"
     - "test/**/*"
 
 Naming/MethodParameterName:
@@ -47,8 +45,6 @@ Style/SymbolArray:
 
 Rails/OutputSafety:
   Enabled: true
-  Exclude:
-    - "stories/**/*"
 
 Style/AsciiComments:
   Enabled: false

@@ -28,9 +28,7 @@
     "build:css": "yarn --cwd ../ run build:css && postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css",
     "build:ts": "yarn --cwd ../ run tsc",
     "build:rollup": "yarn --cwd ../ run rollup -c",
-    "storybook": "start-storybook -p 5000",
-    "build-storybook": "build-storybook -o public/view-components/stories --preview-url=/view-components/stories/iframe.html --force-build-preview",
-    "build": "yarn build-storybook && yarn build:css && yarn build:ts && yarn build:rollup"
+    "build": "yarn build:css && yarn build:ts && yarn build:rollup"
   },
   "engines": {
     "yarn": "1.22.x"

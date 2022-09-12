@@ -90,11 +90,11 @@ Kuby.define("ViewComponentsStorybook") do
       end
 
       # After assets have been built via assets:precompile, we need to manually build
-      # the storybook static assets the app will serve from /view-components/stories.
+      # the demo static assets the app will serve from /view-components/lookbook.
       # These are pretty important since they comprise the actual Storybook frontend
       # that communicates with the Rails backend. A second yarn install is done here
       # to install dev dependencies, which is where the storybook deps are listed.
-      insert :build_storybook, after: :assets_phase do |dockerfile|
+      insert :build_demo, after: :assets_phase do |dockerfile|
         dockerfile.run("yarn", "install", "--production=false")
         dockerfile.run("yarn", "run", "build")
       end
