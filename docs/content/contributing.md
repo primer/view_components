@@ -73,15 +73,15 @@ Documentation is written as [YARD](https://yardoc.org/) comments directly in the
   * To rerender the templates, you do not have to restart the server. Run `bundle exec rake docs:preview` and refresh the page.
 
 ---
-To run Storybook, the documentation site, and the demo app, run:
+To run Lookbook:
 
 ```bash
-script/dev
+script/demo
 ```
 
 If you are running into issues or not seeing your updates, a few things you can try:
 
-* Delete the `overmind.sock` file and run `script/dev` again
+* Delete the `overmind.sock` file and run `script/demo` again
 * Ensure you have run `script/setup`
 * Delete the `node_modules` directory and re-run `script/setup`
 * Run `bundle exec rake docs:build`
@@ -106,8 +106,6 @@ gem "primer_view_components", path: "path_to_the_gem" # e.g. path: "~/primer/vie
 Then, `bundle install` to update references. You'll now be able to see changes from the gem without having to build it.
 Remember that restarting the Rails server is necessary to see changes, as the gem is loaded at boot time.
 
-To minimize the number of restarts, we recommend checking the component in Storybook first, and then when it's in a good state, you can check it in your app.
-
 ## Submitting a pull request
 
 0. [Fork](https://github.com/primer/view_components/fork) and clone the repository
@@ -127,9 +125,9 @@ Here are a few things you can do that will increase the likelihood of your pull 
 * Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
 * Write a descriptive pull request message.
 
-## Deploying the Rails Storybook
+## Deploying the Rails Demo
 
-The Rails storybook is currently deployed via GitHub Actions using [this workflow](https://github.com/primer/view_components/actions/workflows/deploy-production.yml). Deployments happen automatically on every merge to the `main` branch. The storybook runs in a Kubernetes cluster hosted within our team's Azure subscription. Please contact a member of the team for access.
+The Rails demo is currently deployed via GitHub Actions using [this workflow](https://github.com/primer/view_components/actions/workflows/deploy-production.yml). Deployments happen automatically on every merge to the `main` branch. The demo runs in a Kubernetes cluster hosted within our team's Azure subscription. Please contact a member of the team for access.
 
 ## Publishing a Release
 

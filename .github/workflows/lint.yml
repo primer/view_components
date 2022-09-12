@@ -106,7 +106,6 @@ jobs:
       with:
         files: |
           app/components/**/*.ts
-          demo/.storybook/**/*.js
     - name: Lint with ESLint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |

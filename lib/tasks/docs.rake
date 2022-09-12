@@ -130,7 +130,7 @@ namespace :docs do
         f.puts("componentId: #{data[:component_id]}")
         f.puts("status: #{data[:status]}")
         f.puts("source: #{data[:source]}")
-        f.puts("storybook: #{data[:storybook]}")
+        f.puts("storybook: #{data[:lookbook]}")
         f.puts("---")
         f.puts
         f.puts("import Example from '#{data[:example_path]}'")
@@ -464,7 +464,7 @@ namespace :docs do
       component_id: short_name.underscore,
       status: status.capitalize,
       source: source_url(component),
-      storybook: lookbook_url(component),
+      lookbook: lookbook_url(component),
       path: "docs/content/components/#{status_path}#{short_name.downcase}.md",
       example_path: example_path(component),
       require_js_path: require_js_path(component)
