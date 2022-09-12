@@ -83,7 +83,6 @@ module Primer
       # @param description_scheme [Symbol] select [inline, block]
       # @param checked toggle
       # @param active toggle
-      # @param trailing_action_on_hover toggle
       # @param leading_visual_icon [Symbol] octicon
       # @param leading_visual_avatar_src text
       # @param trailing_visual_icon [Symbol] octicon
@@ -102,7 +101,6 @@ module Primer
         description_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME,
         active: false,
         expanded: false,
-        # trailing_action_on_hover: false,
         leading_visual_icon: nil,
         leading_visual_avatar_src: nil,
         trailing_visual_icon: nil,
@@ -123,8 +121,7 @@ module Primer
           description_scheme: description_scheme,
           active: active,
           expanded: expanded,
-          id: "tooltip-test"
-          #   trailing_action_on_hover: trailing_action_on_hover
+          id: "tooltip-test",
         ) do |item|
           if leading_visual_icon && leading_visual_icon != :none
             item.with_leading_visual_icon(icon: leading_visual_icon)
@@ -142,7 +139,9 @@ module Primer
             item.with_trailing_visual_text(trailing_visual_text)
           end
 
-          item.with_trailing_action(icon: trailing_action, "aria-label": "Button tooltip", size: :medium) if trailing_action && trailing_action != :none
+          if trailing_action && trailing_action != :none
+            item.with_trailing_action(show_on_hover: true, icon: trailing_action, "aria-label": "Button tooltip", size: :medium)
+          end
 
           item.description { description } if description
 
