@@ -10,6 +10,7 @@ on:
 
 jobs:
   benchmark:
+    name: Benchmarks
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -35,7 +36,7 @@ jobs:
         RUBY_VERSION: ${{ matrix.ruby_version }}
         RAILS_VERSION: ${{ matrix.rails_version }}
   test:
-    name: Component Tests
+    name: Components
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -56,13 +57,11 @@ jobs:
         node-version: 14
     - run: |
         yarn
-        cd demo && yarn
     - name: Build and test with Rake
       run: |
         gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle update actionview activemodel activesupport railties
-        bundle exec rake docs:preview
         bundle exec rake
       env:
         RAILS_VERSION: ${{ matrix.rails_version }}
@@ -94,3 +93,18 @@ jobs:
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
         bundle exec rake coverage:report
+  deprecated:
+    name: Deprecated components
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 3.0.x
+    - name: Make sure deprecated components can be linted
+      run: |
+        gem install bundler:2.2.9
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
+        bundle exec rake deprecated:check

@@ -117,19 +117,3 @@ jobs:
           git commit -m "classify: utilities" || true
           git pull --rebase
           git push
-  deprecated:
-    name: Deprecated components
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: Setup Ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 3.0.x
-    - name: Make sure deprecated components can be linted
-      run: |
-        gem install bundler:2.2.9
-        bundle config path vendor/bundle
-        bundle install --jobs 4 --retry 3
-        bundle exec rake static:dump
-        bundle exec rake deprecated:check
