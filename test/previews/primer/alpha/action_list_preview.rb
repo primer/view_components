@@ -5,7 +5,7 @@ module Primer
     # @label ActionList
     class ActionListPreview < ViewComponent::Preview
       # @label Sub lists
-      def lists
+      def sub_lists
         render(Primer::Alpha::ActionList.new) do |list|
           list.with_heading(title: "Heading")
           list.with_item(label: "Item one", href: "/") do |item|
@@ -14,6 +14,19 @@ module Primer
           list.with_list do |sub_list|
             sub_list.with_item(label: "Sub item one", href: "/") do |item|
               item.with_leading_visual_icon(icon: :gear)
+            end
+          end
+        end
+      end
+
+      # @label Sub items
+      def sub_items
+        render(Primer::Alpha::ActionList.new) do |list|
+          list.with_heading(title: "Heading")
+          list.with_item(label: "Item one") do |item|
+            item.with_leading_visual_icon(icon: :gear)
+            item.with_item(label: "Sub item", href: "/") do |sub_item|
+              sub_item.with_leading_visual_icon(icon: :gear)
             end
           end
         end

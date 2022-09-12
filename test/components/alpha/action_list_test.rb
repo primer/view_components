@@ -14,7 +14,7 @@ module Primer
       end
 
       def test_lists
-        render_preview(:lists)
+        render_preview(:sub_lists)
 
         assert_selector("li.ActionListItem ul.ActionListWrap--subGroup")
         assert_selector("ul.ActionListWrap[aria-labelledby]")
@@ -42,6 +42,13 @@ module Primer
         render_preview(:item, params: { trailing_action: "arrow-down" })
 
         assert_selector(".ActionListItem--trailingActionHover")
+      end
+
+      def test_sub_items
+        render_preview(:sub_items)
+
+        assert_selector("button.ActionListContent[aria-expanded='false'][data-action='click:action-list#handleItemWithSubItemClick']")
+        assert_selector(".ActionListItem--hasSubItem[data-action='click:action-list#handleItemClick'] .ActionList--subGroup .ActionListItem--subItem", text: "Sub item")
       end
 
       def test_divider

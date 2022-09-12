@@ -15,11 +15,11 @@ module Primer
       SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
       def self.custom_element_name
-        # @custom_element_name ||= name.split("::").last.underscore.dasherize
+        @custom_element_name ||= name.split("::").last.underscore.dasherize
       end
 
       def custom_element_name
-        # self.class.custom_element_name
+        self.class.custom_element_name
       end
 
       renders_one :heading, lambda { |**system_arguments|
