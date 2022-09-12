@@ -27,9 +27,6 @@ module Primer
         }.freeze
         SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
-        DEFAULT_SELECT_MODE = :none
-        SELECT_MODE_OPTIONS = [DEFAULT_SELECT_MODE, :single, :multiple].freeze
-
         renders_one :description
 
         renders_one :leading_visual, types: {
@@ -95,11 +92,10 @@ module Primer
           Primer::Alpha::Tooltip.new(**system_arguments)
         }
 
-        attr_reader :root, :active, :disabled, :checked, :expanded
+        attr_reader :root, :active, :disabled, :expanded
 
         alias active? active
         alias disabled? disabled
-        alias checked? checked
         alias expanded? expanded
 
         def initialize(
@@ -113,8 +109,6 @@ module Primer
           scheme: DEFAULT_SCHEME,
           disabled: false,
           description_scheme: DEFAULT_DESCRIPTION_SCHEME,
-          select_mode: DEFAULT_SELECT_MODE,
-          checked: false,
           active: false,
           on_click: nil,
           expanded: false,
@@ -128,7 +122,6 @@ module Primer
           @href = href
           @truncate_label = truncate_label
           @disabled = disabled
-          @checked = checked
           @active = active
           @expanded = expanded
           @trailing_action_on_hover = trailing_action_on_hover
@@ -137,7 +130,6 @@ module Primer
 
           @size = fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)
           @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
-          @select_mode = fetch_or_fallback(SELECT_MODE_OPTIONS, select_mode, DEFAULT_SELECT_MODE)
           @description_scheme = fetch_or_fallback(
             DESCRIPTION_SCHEME_OPTIONS, description_scheme, DEFAULT_DESCRIPTION_SCHEME
           )
@@ -158,13 +150,6 @@ module Primer
 
           @system_arguments[:aria] ||= {}
           @system_arguments[:aria][:disabled] = "true" if @disabled
-
-          case @select_mode
-          when :single
-            # @system_arguments[:aria][:selected] = "true" if @checked
-          when :multiple
-            # @system_arguments[:aria][:checked] = "true" if @checked
-          end
 
           @label_arguments = {
             classes: class_names(

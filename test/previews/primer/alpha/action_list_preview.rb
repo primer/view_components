@@ -81,7 +81,6 @@ module Primer
       # @param disabled toggle
       # @param description text
       # @param description_scheme [Symbol] select [inline, block]
-      # @param select_mode [Symbol] select [none, single, multiple]
       # @param checked toggle
       # @param active toggle
       # @param trailing_action_on_hover toggle
@@ -101,8 +100,6 @@ module Primer
         disabled: false,
         description: nil,
         description_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME,
-        select_mode: Primer::Alpha::ActionList::Item::DEFAULT_SELECT_MODE,
-        checked: false,
         active: false,
         expanded: false,
         # trailing_action_on_hover: false,
@@ -126,8 +123,6 @@ module Primer
           disabled: disabled,
           description: description,
           description_scheme: description_scheme,
-          select_mode: select_mode,
-          checked: checked,
           active: active,
           expanded: expanded,
           # trailing_action_on_hover: trailing_action_on_hover,
@@ -154,8 +149,6 @@ module Primer
         disabled: false,
         description: nil,
         description_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME,
-        select_mode: Primer::Alpha::ActionList::Item::DEFAULT_SELECT_MODE,
-        checked: false,
         active: false,
         expanded: false,
         # trailing_action_on_hover: false,
@@ -176,8 +169,6 @@ module Primer
           scheme: scheme,
           disabled: disabled,
           description_scheme: description_scheme,
-          select_mode: select_mode,
-          checked: checked,
           active: active,
           expanded: expanded,
           id: "tooltip-test"
