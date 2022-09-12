@@ -1784,15 +1784,6 @@ eslint@^8.21.0:
 
 espree@^9.3.2, espree@^9.3.3:
   version "9.3.3"
-  resolved "https://registry.npmjs.org/espree/-/espree-9.3.3.tgz"
-  integrity sha512-ORs1Rt/uQTqUKjDdGCyrtYxbazf5umATSf/K4qxjmZHORR6HJk+2s/2Pqe+Kk49HHINC/xNIrGfgh8sZcll0ng==
-  dependencies:
-    acorn "^8.8.0"
-    acorn-jsx "^5.3.2"
-    eslint-visitor-keys "^3.3.0"
-
-espree@^9.3.3:
-  version "9.3.3"
   resolved "https://registry.yarnpkg.com/espree/-/espree-9.3.3.tgz#2dd37c4162bb05f433ad3c1a52ddf8a49dc08e9d"
   integrity sha512-ORs1Rt/uQTqUKjDdGCyrtYxbazf5umATSf/K4qxjmZHORR6HJk+2s/2Pqe+Kk49HHINC/xNIrGfgh8sZcll0ng==
   dependencies:

@@ -80,6 +80,21 @@ module Primer
           # end
         }
 
+        # `Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.
+        # **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.
+        # Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
+        #
+        # @param type [Symbol] (:description) <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
+        # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Alpha::Tooltip) %>.
+        renders_one :tooltip, lambda { |**system_arguments|
+          # raise ArgumentError, "Buttons with a tooltip must have a unique `id` set on the `Button`." if @id.blank? && !Rails.env.production?
+
+          # system_arguments[:for_id] = @id
+          # system_arguments[:type] ||= :description
+
+          Primer::Alpha::Tooltip.new(**system_arguments)
+        }
+
         attr_reader :root, :active, :disabled, :checked, :expanded
 
         alias active? active
@@ -104,6 +119,7 @@ module Primer
           on_click: nil,
           expanded: false,
           trailing_action_on_hover: false,
+          id: nil,
           **system_arguments
         )
           @list = list
@@ -116,6 +132,7 @@ module Primer
           @active = active
           @expanded = expanded
           @trailing_action_on_hover = trailing_action_on_hover
+          @id = id
           @system_arguments = system_arguments
 
           @size = fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)
@@ -157,6 +174,7 @@ module Primer
           }
 
           @content_arguments = {
+            id: @id,
             classes: class_names(
               "ActionListContent",
               SIZE_MAPPINGS[@size]

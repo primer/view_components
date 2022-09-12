@@ -112,7 +112,8 @@ module Primer
         trailing_visual_label: nil,
         trailing_visual_counter: nil,
         trailing_visual_text: nil,
-        trailing_action: nil
+        trailing_action: nil,
+        id: "tooltip-test"
       )
         list = Primer::Alpha::ActionList.new(aria: { label: "Action List" })
         add_item_to(
@@ -178,7 +179,8 @@ module Primer
           select_mode: select_mode,
           checked: checked,
           active: active,
-          expanded: expanded
+          expanded: expanded,
+          id: "tooltip-test"
           #   trailing_action_on_hover: trailing_action_on_hover
         ) do |item|
           if leading_visual_icon && leading_visual_icon != :none
@@ -200,6 +202,8 @@ module Primer
           item.with_trailing_action(icon: trailing_action, "aria-label": "Button tooltip", size: :medium) if trailing_action && trailing_action != :none
 
           item.description { description } if description
+
+          # item.with_tooltip(text: "Tooltip text", for_id:"tooltip-test", type: :description)
         end
       end
     end

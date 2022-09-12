@@ -6,7 +6,7 @@
 
 /* <ul> */
 .ActionListWrap--inset {
-  padding: var(--base-size-8);
+  padding: var(--base-size-8, 8px);
 }
 
 /* list dividers */
@@ -29,7 +29,7 @@
       top: calc(-1 * var(--primer-actionListContent-paddingBlock));
       display: block;
       width: 100%;
-      height: var(--primer-borderWidth-thin);
+      height: var(--primer-borderWidth-thin, 1px);
       content: '';
       background: var(--color-action-list-item-inline-divider);
     }
