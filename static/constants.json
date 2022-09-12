@@ -40,7 +40,6 @@
   "Primer::Alpha::ActionList::Item": {
     "DEFAULT_DESCRIPTION_SCHEME": "block",
     "DEFAULT_SCHEME": "default",
-    "DEFAULT_SELECT_MODE": "none",
     "DEFAULT_SIZE": "medium",
     "DESCRIPTION_SCHEME_MAPPINGS": {
       "inline": "ActionListItem-descriptionWrap--inline",
@@ -57,11 +56,6 @@
     "SCHEME_OPTIONS": [
       "default",
       "danger"
-    ],
-    "SELECT_MODE_OPTIONS": [
-      "none",
-      "single",
-      "multiple"
     ],
     "SIZE_MAPPINGS": {
       "medium": null,
@@ -112,8 +106,6 @@
       "default",
       "large"
     ]
-  },
-  "Primer::Alpha::CheckList": {
   },
   "Primer::Alpha::Dialog": {
     "Body": "Primer::Alpha::Dialog::Body",
