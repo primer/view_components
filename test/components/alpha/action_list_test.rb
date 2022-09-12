@@ -26,6 +26,12 @@ module Primer
         render_preview(:item)
       end
 
+      def test_item_with_actions
+        render_preview(:item, params: { trailing_action: "arrow-down" })
+
+        assert_selector(".ActionListItem--withActions")
+      end
+
       def test_item_tooltip
         render_preview(:item)
 
