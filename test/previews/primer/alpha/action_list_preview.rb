@@ -98,6 +98,7 @@ module Primer
       # @param active toggle
       # @param leading_visual_icon [Symbol] octicon
       # @param leading_visual_avatar_src text
+      # @param leading_visual_svg toggle
       # @param private_trailing_action_svg toggle
       # @param trailing_visual_icon [Symbol] octicon
       # @param trailing_visual_label text
@@ -116,6 +117,7 @@ module Primer
         active: false,
         expanded: false,
         leading_visual_icon: nil,
+        leading_visual_svg: false,
         leading_visual_avatar_src: nil,
         private_leading_action_svg: true,
         trailing_visual_icon: nil,
@@ -154,6 +156,8 @@ module Primer
           elsif trailing_visual_text
             item.with_trailing_visual_text(trailing_visual_text)
           end
+
+          item.with_leading_visual_svg.with_content("leading visual svg") if leading_visual_svg
 
           item.with_private_leading_action_svg.with_content("leading") if private_leading_action_svg
 
