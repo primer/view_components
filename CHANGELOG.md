@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.0.94
+
+### Patch Changes
+
+- [#1352](https://github.com/primer/view_components/pull/1352) [`a02944bb`](https://github.com/primer/view_components/commit/a02944bb6e2393ebe476466b96cfc022dd571fd2) Thanks [@jonrohan](https://github.com/jonrohan)! - Update eslint custom-element rules so web components can match ruby component names
+
+* [#1364](https://github.com/primer/view_components/pull/1364) [`e8714975`](https://github.com/primer/view_components/commit/e87149754da0a7551ddc18f6244ec901fede943f) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - added Primer::Alpha::ToggleSwitch to the docs build task so it will build and deploy
+
+- [#1354](https://github.com/primer/view_components/pull/1354) [`c1edd34f`](https://github.com/primer/view_components/commit/c1edd34f8e60ec5b9689891e279ded3a8b0ef23e) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - consolidating deprecations into a single list, updating component status migrator for this change, and ensuring rubocop / erblint deprecation linters can be run against changed files only instead of all files
+
 ## 0.0.93
 
 ### Patch Changes
