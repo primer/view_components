@@ -70,6 +70,12 @@ module Primer
         assert_selector(".avatar-small")
       end
 
+      def test_item_trailing_visual_text
+        render_preview(:item, params: { trailing_visual_text: "trailing visual text" })
+
+        assert_text("trailing visual text")
+      end
+
       def test_sub_items
         render_preview(:sub_items)
 

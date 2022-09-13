@@ -49,8 +49,8 @@ module Primer
         renders_one :trailing_visual, types: {
           icon: Primer::OcticonComponent,
           label: Primer::LabelComponent,
-          counter: Primer::CounterComponent
-          # text: ->(text) { text }
+          counter: Primer::CounterComponent,
+          text: ->(text) { text }
         }
 
         renders_one :private_trailing_action, types: {
