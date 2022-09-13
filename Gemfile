@@ -35,8 +35,9 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
 
-group :test do
-  gem "lookbook"
+group :development, :test do
+  gem "lookbook", "~> 1.0"
   gem "sprockets-rails"
-  gem "sqlite3"
+  gem "sqlite3", "~> 1.4"
+  gem "hotwire-livereload", "~> 1.1"
 end

@@ -126,10 +126,6 @@
     default: N/A
     description: Sets an `aria-label` that helps assistive technology users understand
       the purpose of the tabs.
-  - name: align
-    type: Symbol
-    default: N/A
-    description: One of `:left` or `:right`. - Defaults to left
   - name: body_arguments
     type: Hash
     default: "`{}`"
@@ -536,14 +532,6 @@
     type: Symbol
     default: "`:center`"
     description: One of `:center` or `:start`.
-  - name: tag
-    type: Symbol
-    default: "`:button`"
-    description: One of `:a`, `:button`, or `:summary`.
-  - name: type
-    type: Symbol
-    default: "`:button`"
-    description: One of `:button`, `:reset`, or `:submit`.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -772,18 +760,10 @@
 - component: ClipboardCopy
   source: https://github.com/primer/view_components/tree/main/app/components/primer/clipboard_copy.rb
   parameters:
-  - name: aria-label
-    type: String
-    default: N/A
-    description: String that will be read to screenreaders when the component is focused
   - name: value
     type: String
     default: "`nil`"
     description: Text to copy into the users clipboard when they click the component.
-  - name: for
-    type: String
-    default: N/A
-    description: Element id from where to get the copied value.
   - name: system_arguments
     type: Hash
     default: N/A
@@ -888,25 +868,6 @@
     type: String
     default: N/A
     description: Name of [Octicon](https://primer.style/octicons/) to use.
-  - name: tag
-    type: Symbol
-    default: N/A
-    description: One of `:a`, `:button`, or `:summary`.
-  - name: type
-    type: Symbol
-    default: N/A
-    description: One of `:button`, `:reset`, or `:submit`.
-  - name: aria-label
-    type: String
-    default: N/A
-    description: String that can be read by assistive technology. A label should be
-      short and concise. See the accessibility section for more information.
-  - name: aria-description
-    type: String
-    default: N/A
-    description: String that can be read by assistive technology. A description can
-      be longer as it is intended to provide more context and information. See the
-      accessibility section for more information.
   - name: tooltip_direction
     type: Symbol
     default: "`:s`"
