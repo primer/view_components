@@ -151,8 +151,6 @@ GEM
     rack (2.2.4)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
-    rack-proxy (0.7.2)
-      rack
     rack-test (2.0.2)
       rack (>= 1.3)
     rails-dom-testing (2.0.3)
@@ -205,7 +203,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    semantic_range (3.0.0)
     simplecov (0.18.5)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -244,11 +241,6 @@ GEM
     watir (7.1.0)
       regexp_parser (>= 1.2, < 3)
       selenium-webdriver (~> 4.0)
-    webpacker (5.4.3)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     webrick (1.7.0)
     websocket (1.2.9)
     websocket-driver (0.7.5)
@@ -298,7 +290,6 @@ DEPENDENCIES
   sqlite3
   thor
   timecop
-  webpacker (~> 5.0)
   yard (~> 0.9.25)
 
 BUNDLED WITH
