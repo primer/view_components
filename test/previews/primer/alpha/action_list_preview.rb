@@ -137,7 +137,7 @@ module Primer
           description_scheme: description_scheme,
           active: active,
           expanded: expanded,
-          id: "tooltip-test",
+          id: "tooltip-test"
         ) do |item|
           if leading_visual_icon && leading_visual_icon != :none
             item.with_leading_visual_icon(icon: leading_visual_icon)
@@ -155,17 +155,11 @@ module Primer
             item.with_trailing_visual_text(trailing_visual_text)
           end
 
-          if private_leading_action_svg
-            item.with_private_leading_action_svg.with_content("leading")
-          end
+          item.with_private_leading_action_svg.with_content("leading") if private_leading_action_svg
 
-          if private_trailing_action_svg
-            item.with_private_trailing_action_svg.with_content("trailing")
-          end
+          item.with_private_trailing_action_svg.with_content("trailing") if private_trailing_action_svg
 
-          if trailing_action && trailing_action != :none
-            item.with_trailing_action(show_on_hover: true, icon: trailing_action, "aria-label": "Button tooltip", size: :medium)
-          end
+          item.with_trailing_action(show_on_hover: true, icon: trailing_action, "aria-label": "Button tooltip", size: :medium) if trailing_action && trailing_action != :none
 
           item.description { description } if description
 

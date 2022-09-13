@@ -61,7 +61,7 @@ module Primer
         }
 
         renders_one :trailing_action, lambda { |show_on_hover: false, **system_arguments|
-          @trailing_action_on_hover = true
+          @trailing_action_on_hover = show_on_hover
 
           Primer::Beta::IconButton.new(scheme: :invisible, classes: ["ActionListItem-trailingAction"], **system_arguments)
         }
