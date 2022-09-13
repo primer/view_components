@@ -2,7 +2,6 @@
 
 module Primer
   module Alpha
-    # :nodoc:
     class ActionList < Primer::Component
       DEFAULT_ROLE = :list
       DEFAULT_TAG = :ul
