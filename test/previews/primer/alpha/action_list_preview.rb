@@ -98,6 +98,7 @@ module Primer
       # @param active toggle
       # @param leading_visual_icon [Symbol] octicon
       # @param leading_visual_avatar_src text
+      # @param private_trailing_action_svg toggle
       # @param trailing_visual_icon [Symbol] octicon
       # @param trailing_visual_label text
       # @param trailing_visual_counter number
@@ -114,6 +115,7 @@ module Primer
         description_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME,
         active: false,
         expanded: false,
+        private_trailing_action_svg: true,
         leading_visual_icon: nil,
         leading_visual_avatar_src: nil,
         trailing_visual_icon: nil,
@@ -150,6 +152,10 @@ module Primer
             item.with_trailing_visual_counter(count: trailing_visual_counter)
           elsif trailing_visual_text
             item.with_trailing_visual_text(trailing_visual_text)
+          end
+
+          if private_trailing_action_svg
+            item.with_private_trailing_action_svg.with_content("test")
           end
 
           if trailing_action && trailing_action != :none

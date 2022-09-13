@@ -44,6 +44,12 @@ module Primer
         assert_selector(".ActionListItem--trailingActionHover")
       end
 
+      def test_item_private_trailing_action_svg
+        render_preview(:item, params: { private_trailing_action_svg: true })
+
+        assert_selector("svg", text: "test")
+      end
+
       def test_sub_items
         render_preview(:sub_items)
 

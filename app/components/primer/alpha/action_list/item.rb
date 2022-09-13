@@ -56,7 +56,7 @@ module Primer
         renders_one :private_trailing_action, types: {
           icon: Primer::OcticonComponent,
           svg: lambda { |**system_arguments|
-            # Primer::BaseComponent.new(tag: :svg, **system_arguments)
+            Primer::BaseComponent.new(tag: :svg, **system_arguments)
           }
         }
 
