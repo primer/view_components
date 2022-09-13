@@ -421,6 +421,10 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  actionview (= 7.0.3)
+  activemodel (= 7.0.3)
+  activerecord (= 7.0.3)
+  activesupport (= 7.0.3)
   bootsnap
   capybara
   cssbundling-rails (~> 1.1)
@@ -432,11 +436,11 @@ DEPENDENCIES
   kuby-azure (>= 0.3.3, < 1.0)
   kuby-core!
   kuby-kind (~> 0.1)
-  lookbook
+  lookbook (~> 1.0)
   primer_view_components!
   pry-byebug
   puma (~> 5.0)
-  rails (= 7.0.3)
+  railties (= 7.0.3)
   redis (~> 4.0)
   selenium-webdriver
   sprockets-rails

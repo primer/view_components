@@ -331,6 +331,7 @@ PLATFORMS
 DEPENDENCIES
   actionview (= 7.0.3)
   activemodel (= 7.0.3)
+  activerecord (= 7.0.3)
   activesupport (= 7.0.3)
   allocation_stats (~> 0.1)
   allocation_tracer (~> 0.6.3)

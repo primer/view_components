@@ -1,19 +1,24 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org"
-
 rails_version = (ENV["RAILS_VERSION"] || "7.0.3").to_s
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-if rails_version != "main"
-  gem "rails", rails_version
-else
+if rails_version == "main"
   git "https://github.com/rails/rails", ref: "main" do
-    # rubocop:disable Bundler/DuplicatedGem
-    gem "rails"
-    # rubocop:enable Bundler/DuplicatedGem
+    gem "actionview"
+    gem "activemodel"
+    gem "activerecord"
+    gem "activesupport"
+    gem "railties"
   end
+else
+  gem "actionview", rails_version
+  gem "activemodel", rails_version
+  gem "activerecord", rails_version
+  gem "activesupport", rails_version
+  gem "railties", rails_version
 end
+# rubocop:enable Bundler/DuplicatedGem
 
 eval_gemfile "gemfiles/kuby.gemfile"
 
