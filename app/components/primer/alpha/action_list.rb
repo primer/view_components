@@ -2,6 +2,7 @@
 
 module Primer
   module Alpha
+    # An `ActionList` is a TBD
     class ActionList < Primer::Component
       DEFAULT_ROLE = :list
       DEFAULT_TAG = :ul
