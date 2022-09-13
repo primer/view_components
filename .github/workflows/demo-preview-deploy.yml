@@ -37,8 +37,8 @@ jobs:
         ruby-version: 3.0.x
     - uses: actions/cache@v2
       with:
-        path: demo/gemfiles/vendor/bundle
-        key: gems-build-kuby-main-ruby-3.0.x-${{ hashFiles('demo/gemfiles/kuby.gemfile.lock') }}
+        path: lookbook/gemfiles/vendor/bundle
+        key: gems-build-kuby-main-ruby-3.0.x-${{ hashFiles('lookbook/gemfiles/kuby.gemfile.lock') }}
     - name: Docker login
       env:
         AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
@@ -49,7 +49,7 @@ jobs:
     - name: Bundle
       run: |
         gem install bundler -v '~> 2.3'
-        bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile --path vendor/bundle
+        bundle install --jobs 4 --retry 3 --gemfile lookbook/gemfiles/kuby.gemfile --path vendor/bundle
 
     - name: Get preview app info
       run: ./.github/workflows/demo-preview-app-info.sh
