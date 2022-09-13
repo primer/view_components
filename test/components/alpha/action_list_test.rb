@@ -7,6 +7,14 @@ module Primer
     class ActionListTest < Minitest::Test
       include Primer::ComponentTestHelpers
 
+      def test_invalid_list
+        error = assert_raises ArgumentError do
+          render_inline(Primer::Alpha::ActionList.new)
+        end
+
+        assert_includes(error.message, "label or heading must be provided")
+      end
+
       def test_list
         render_preview(:list)
 
