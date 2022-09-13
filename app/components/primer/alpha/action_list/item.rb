@@ -32,7 +32,7 @@ module Primer
         renders_one :leading_visual, types: {
           icon: Primer::OcticonComponent,
           avatar: lambda { |**kwargs|
-            # Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
+            Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
           },
           svg: lambda { |**system_arguments|
             Primer::BaseComponent.new(tag: :svg, **system_arguments)

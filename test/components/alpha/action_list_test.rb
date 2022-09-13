@@ -64,6 +64,12 @@ module Primer
         assert_selector("svg", text: "leading")
       end
 
+      def test_item_leading_visual_avatar
+        render_preview(:item, params: { leading_visual_avatar_src: "/" })
+
+        assert_selector(".avatar-small")
+      end
+
       def test_sub_items
         render_preview(:sub_items)
 
