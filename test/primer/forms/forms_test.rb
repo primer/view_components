@@ -2,6 +2,7 @@
 
 require "test_helper"
 require_relative "form_test_component"
+require "active_model"
 
 class Primer::Forms::FormsTest < Minitest::Test
   include Primer::ComponentTestHelpers
