@@ -55,7 +55,13 @@ module Primer
       def test_item_private_trailing_action_svg
         render_preview(:item, params: { private_trailing_action_svg: true })
 
-        assert_selector("svg", text: "test")
+        assert_selector("svg", text: "trailing")
+      end
+
+      def test_item_private_leading_action_svg
+        render_preview(:item, params: { private_leading_action_svg: true })
+
+        assert_selector("svg", text: "leading")
       end
 
       def test_sub_items

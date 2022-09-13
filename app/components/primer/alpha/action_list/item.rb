@@ -35,14 +35,14 @@ module Primer
             # Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
           },
           svg: lambda { |**system_arguments|
-            # Primer::BaseComponent.new(tag: :svg, **system_arguments)
+            Primer::BaseComponent.new(tag: :svg, **system_arguments)
           }
         }
 
         renders_one :private_leading_action, types: {
           icon: Primer::OcticonComponent,
           svg: lambda { |**system_arguments|
-            # Primer::BaseComponent.new(tag: :svg, **system_arguments)
+            Primer::BaseComponent.new(tag: :svg, **system_arguments)
           }
         }
 

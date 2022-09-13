@@ -115,14 +115,15 @@ module Primer
         description_scheme: Primer::Alpha::ActionList::Item::DEFAULT_DESCRIPTION_SCHEME,
         active: false,
         expanded: false,
-        private_trailing_action_svg: true,
         leading_visual_icon: nil,
         leading_visual_avatar_src: nil,
+        private_leading_action_svg: true,
         trailing_visual_icon: nil,
         trailing_visual_label: nil,
         trailing_visual_counter: nil,
         trailing_visual_text: nil,
-        trailing_action: nil
+        trailing_action: nil,
+        private_trailing_action_svg: true
       )
         list = Primer::Alpha::ActionList.new(aria: { label: "Action List" })
         list.item(
@@ -154,8 +155,12 @@ module Primer
             item.with_trailing_visual_text(trailing_visual_text)
           end
 
+          if private_leading_action_svg
+            item.with_private_leading_action_svg.with_content("leading")
+          end
+
           if private_trailing_action_svg
-            item.with_private_trailing_action_svg.with_content("test")
+            item.with_private_trailing_action_svg.with_content("trailing")
           end
 
           if trailing_action && trailing_action != :none
