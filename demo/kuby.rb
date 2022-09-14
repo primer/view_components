@@ -11,7 +11,6 @@ Kuby.define("ViewComponentsStorybook") do
       end
 
       image_url ENV["IMAGE_URL"] || "primer.azurecr.io/primer/view_components_storybook"
-      # image.tags [ENV["IMAGE_TAG"]] if ENV["IMAGE_TAG"]
 
       # Run bundler, yarn, etc in this directory.
       app_root "./demo"
