@@ -305,8 +305,6 @@
   },
   "Primer::Alpha::UnderlinePanels": {
   },
-  "Primer::BaseButton": {
-  },
   "Primer::BaseComponent": {
     "SELF_CLOSING_TAGS": [
       "area",
@@ -603,8 +601,6 @@
       "small",
       "medium"
     ]
-  },
-  "Primer::ButtonGroup": {
   },
   "Primer::ClipboardCopy": {
   },
