@@ -91,7 +91,7 @@ module Primer
       def test_sub_items
         render_preview(:sub_items)
 
-        assert_selector("button.ActionListContent[aria-expanded='false'][data-action='click:action-list#handleItemWithSubItemClick']")
+        assert_selector("button.ActionListContent--hasActiveSubItem.ActionListContent[aria-expanded='false'][data-action='click:action-list#handleItemWithSubItemClick']")
         assert_selector(".ActionListItem--hasSubItem[data-action='click:action-list#handleItemClick'] .ActionList--subGroup .ActionListItem--subItem", text: "Sub item")
       end
 

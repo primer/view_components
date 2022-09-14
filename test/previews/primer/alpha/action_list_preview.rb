@@ -25,7 +25,7 @@ module Primer
           list.with_heading(title: "Heading")
           list.with_item(label: "Item one") do |item|
             item.with_leading_visual_icon(icon: :gear)
-            item.with_item(label: "Sub item", href: "/") do |sub_item|
+            item.with_item(label: "Sub item", href: "/", active: true) do |sub_item|
               sub_item.with_leading_visual_icon(icon: :gear)
             end
           end

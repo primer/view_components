@@ -70,12 +70,12 @@ module Primer
           @list.build_item(**system_arguments, root: @root || self).tap do |item|
             @list.will_add_item(item)
 
-            # if item.active? && !@root
-            #   @content_arguments[:classes] = class_names(
-            #     @content_arguments[:classes],
-            #     "ActionListContent--hasActiveSubItem"
-            #   )
-            # end
+            if item.active?
+              @content_arguments[:classes] = class_names(
+                @content_arguments[:classes],
+                "ActionListContent--hasActiveSubItem"
+              )
+            end
           end
         }
 
