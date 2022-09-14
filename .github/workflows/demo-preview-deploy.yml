@@ -63,9 +63,9 @@ jobs:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       run: |
         bin/kuby -e production build --only app -- --tag=${{ env.DOCKER_IMAGE }}
-        bin/kuby -e production build --only assets -- --tag=${{ env.DOCKER_IMAGE }}
+        bin/kuby -e production build --only assets -- --tag=${{ env.DOCKER_IMAGE }}-assets
     - name: Push
-      run: bin/kuby -e production push
+      run: bin/kuby -e production push -- --all-tags
     - name: Run ARM deploy
       # This 'if' will be truth, if this workflow is...
       #  - run as a workflow_dispatch
