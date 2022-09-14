@@ -27,7 +27,7 @@ module Primer
       }
 
       renders_many :items, lambda { |**system_arguments|
-        build_item(**system_arguments, root: nil).tap do |item|
+        build_item(**system_arguments).tap do |item|
           will_add_item(item)
         end
       }

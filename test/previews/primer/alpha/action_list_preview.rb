@@ -129,7 +129,6 @@ module Primer
       )
         list = Primer::Alpha::ActionList.new(aria: { label: "Action List" })
         list.item(
-          root: nil,
           label: label,
           truncate_label: truncate_label,
           href: href,

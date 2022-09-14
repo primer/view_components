@@ -67,7 +67,7 @@ module Primer
         }
 
         renders_many :items, lambda { |**system_arguments|
-          @list.build_item(**system_arguments, root: @root || self).tap do |item|
+          @list.build_item(sub_item: true, **system_arguments || self).tap do |item|
             @list.will_add_item(item)
 
             if item.active?
@@ -94,14 +94,13 @@ module Primer
           Primer::Alpha::Tooltip.new(**system_arguments)
         }
 
-        attr_reader :root, :active, :disabled
+        attr_reader :active, :disabled
 
         alias active? active
         alias disabled? disabled
 
         def initialize(
           list:,
-          root:,
           label:,
           truncate_label: false,
           href: nil,
@@ -113,11 +112,11 @@ module Primer
           active: false,
           on_click: nil,
           expanded: false,
+          sub_item: false,
           id: SecureRandom.hex,
           **system_arguments
         )
           @list = list
-          @root = root
           @label = label
           @href = href
           @truncate_label = truncate_label
@@ -139,7 +138,7 @@ module Primer
             SCHEME_MAPPINGS[@scheme],
             "ActionListItem",
             "ActionListItem--navActive" => @active,
-            "ActionListItem--subItem" => sub_item?
+            "ActionListItem--subItem" => sub_item
           )
 
           @system_arguments[:role] = role
@@ -183,10 +182,6 @@ module Primer
               "ActionList--subGroup"
             )
           }
-        end
-
-        def sub_item?
-          @root.present?
         end
 
         private
