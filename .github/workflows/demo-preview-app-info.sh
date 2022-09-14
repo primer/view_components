@@ -28,3 +28,10 @@ echo "IMAGE_REPO=${IMAGE_REPO}" >> $GITHUB_ENV
 
 IMAGE_URL="primer.azurecr.io/${IMAGE_REPO}"
 echo "IMAGE_URL=${IMAGE_URL}" >> $GITHUB_ENV
+
+IMAGE_TAG="${COMMIT_REF}-${GITHUB_RUN_NUMBER}-${GITHUB_RUN_ATTEMPT}"
+echo "IMAGE_TAG=${IMAGE_TAG}" >> $GITHUB_ENV
+
+# Image tag is unique to each workflow run so that it always triggers a new deployment
+DOCKER_IMAGE="${IMAGE_URL}:${IMAGE_TAG}
+echo "DOCKER_IMAGE=${DOCKER_IMAGE}" >> $GITHUB_ENV

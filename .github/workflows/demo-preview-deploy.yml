@@ -54,10 +54,6 @@ jobs:
     - name: Get preview app info
       run: ./.github/workflows/demo-preview-app-info.sh
 
-    - name: 'Set env vars'
-      run: |
-        # Image tag is unique to each workflow run so that it always triggers a new deployment
-        echo "DOCKER_IMAGE=${{ env.IMAGE_URL }}:${{ env.COMMIT_REF }}-${{ github.run_number }}-${{ github.run_attempt }}" >> $GITHUB_ENV
     - name: Build
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
