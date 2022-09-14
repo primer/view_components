@@ -1,19 +1,21 @@
-<% if heading %>
-  <%= heading %>
-<% end %>
-<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
-  <% items.each do |item| %>
-    <%= item %>
+<<%= custom_element_name %>>
+  <% if heading %>
+    <%= heading %>
   <% end %>
-  <% unless lists.empty? %>
-    <%= render(Primer::Alpha::ActionList::Divider.new) %>
-  <% end %>
-  <% lists.each_with_index do |list, idx| %>
-    <% if idx > 0 %>
+  <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
+    <% items.each do |item| %>
+      <%= item %>
+    <% end %>
+    <% unless lists.empty? %>
       <%= render(Primer::Alpha::ActionList::Divider.new) %>
     <% end %>
-    <%= render(Primer::BaseComponent.new(tag: :li, classes: "ActionListItem ActionListItem--hasSubItem")) do %>
-      <%= list %>
+    <% lists.each_with_index do |list, idx| %>
+      <% if idx > 0 %>
+        <%= render(Primer::Alpha::ActionList::Divider.new) %>
+      <% end %>
+      <%= render(Primer::BaseComponent.new(tag: :li, classes: "ActionListItem ActionListItem--hasSubItem")) do %>
+        <%= list %>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+</<%= custom_element_name %>>

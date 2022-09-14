@@ -201,6 +201,8 @@ module Primer
             @content_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemWithSubItemClick"
             @system_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemClick"
 
+            private_trailing_action_icon(:"chevron-down", classes: "ActionListItem-collapseIcon")
+
             @system_arguments[:classes] = class_names(
               @system_arguments[:classes],
               "ActionListItem--hasSubItem"
