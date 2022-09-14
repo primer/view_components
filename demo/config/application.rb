@@ -26,6 +26,8 @@ module Demo
     config.view_component.show_previews = true
     config.view_component.preview_controller = "PreviewController"
 
+    config.view_component.preview_paths << "#{Rails.root}/../test/previews"
+
     config.action_dispatch.default_headers.clear
 
     config.action_dispatch.default_headers = {
