@@ -33,5 +33,5 @@ IMAGE_TAG="${COMMIT_REF}-${GITHUB_RUN_NUMBER}-${GITHUB_RUN_ATTEMPT}"
 echo "IMAGE_TAG=${IMAGE_TAG}" >> $GITHUB_ENV
 
 # Image tag is unique to each workflow run so that it always triggers a new deployment
-DOCKER_IMAGE="${IMAGE_URL}:${IMAGE_TAG}
+DOCKER_IMAGE="${IMAGE_URL}:${IMAGE_TAG}"
 echo "DOCKER_IMAGE=${DOCKER_IMAGE}" >> $GITHUB_ENV
