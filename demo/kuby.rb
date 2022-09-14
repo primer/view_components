@@ -10,7 +10,7 @@ Kuby.define("ViewComponentsStorybook") do
         password ENV["AZURE_ACR_PASSWORD"]
       end
 
-      image_url ENV["IMAGE_URL"] || "primer.azurecr.io/primer/view_components_storybook"
+      image_url ENV["DOCKER_IMAGE"] || "primer.azurecr.io/primer/view_components_storybook"
 
       # Run bundler, yarn, etc in this directory.
       app_root "./demo"
