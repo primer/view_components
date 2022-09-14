@@ -3,6 +3,6 @@
 require "rails/application_controller"
 
 class PreviewController < ViewComponentsController # :nodoc:
-  helper Lookbook::PreviewHelper
+  helper Lookbook::PreviewHelper if Rails.version.to_i >= 7
   helper Primer::ViewHelper
 end
