@@ -75,7 +75,7 @@ Kuby.define("ViewComponentsStorybook") do
         files = %w(
           tsconfig.json
           rollup.config.js
-          app/components/primer
+          app/
           package.json
           yarn.lock
           test/previews
