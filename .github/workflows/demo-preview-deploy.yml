@@ -62,8 +62,8 @@ jobs:
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       run: |
-        bin/kuby -e production build --only app -- -t ${{ env.DOCKER_IMAGE }}
-        bin/kuby -e production build --only assets -- -t ${{ env.DOCKER_IMAGE }}
+        bin/kuby -e production build --only app -- --tag=${{ env.DOCKER_IMAGE }}
+        bin/kuby -e production build --only assets -- --tag=${{ env.DOCKER_IMAGE }}
     - name: Push
       run: bin/kuby -e production push
     - name: Run ARM deploy
