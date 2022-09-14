@@ -15,7 +15,7 @@
                 <li class="ActionList-sectionDivider" role="presentation" aria-hidden data-targets="action-bar.menuItems" hidden></li>
               <% else %>
                 <%= render(Primer::BaseComponent.new(tag: :li, role: :none, classes: "ActionList-item", "data-targets": "action-bar.menuItems", hidden: true)) do %>
-                  <%= render(Primer::BaseComponent.new(tag: :button, classes: "ActionList-content")) do %>
+                  <%= render(Primer::BaseComponent.new(**item.menu_arguments)) do %>
                     <% if item.slot_type?(:icon_button) %>
                       <%= render Primer::BaseComponent.new(tag: :span, classes: "ActionList-item-visual ActionList-item-visual--leading") do %>
                         <%= render Primer::OcticonComponent.new(icon: item.icon) %>

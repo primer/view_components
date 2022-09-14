@@ -64,15 +64,19 @@ module Primer
         SLOT_TYPES = [:icon_button, :divider].freeze
         SLOT_TYPE_DEFAULT = :icon_button
 
-        attr_reader :icon, :label
+        attr_reader :icon, :label, :menu_arguments
 
         def initialize(slot_type:, **system_arguments)
           @item_type = fetch_or_fallback(SLOT_TYPES, slot_type, SLOT_TYPE_DEFAULT)
           @system_arguments = system_arguments
-          @system_arguments[:"data-targets"] = "action-bar.items"
+          @menu_arguments = system_arguments.dup
+          @menu_arguments.delete(:icon)
+          @menu_arguments.delete(:"aria-label")
 
           return unless slot_type?(:icon_button)
 
+          @menu_arguments[:tag] = system_arguments[:tag] || :button
+          @menu_arguments[:classes] = "ActionList-content"
           @icon = system_arguments[:icon]
           @label = system_arguments[:"aria-label"]
         end
@@ -83,9 +87,9 @@ module Primer
 
         def call
           if slot_type?(:icon_button)
-            render Primer::Beta::IconButton.new(scheme: :invisible, **@system_arguments)
+            render Primer::Beta::IconButton.new("data-targets": "action-bar.items", scheme: :invisible, **@system_arguments)
           else
-            render Primer::BaseComponent.new(**@system_arguments)
+            render Primer::BaseComponent.new("data-targets": "action-bar.items", **@system_arguments)
           end
         end
       end
