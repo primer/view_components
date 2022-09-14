@@ -22,6 +22,7 @@ module Demo
     end
 
     # Initialize configuration defaults for originally generated Rails version.
+    config.view_component.default_preview_layout = "component_preview"
     config.view_component_storybook.show_stories = true
     config.view_component.show_previews = true
     config.view_component.preview_controller = "PreviewController"

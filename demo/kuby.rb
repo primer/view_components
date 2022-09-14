@@ -78,6 +78,7 @@ Kuby.define("ViewComponentsStorybook") do
           app/components/primer
           package.json
           yarn.lock
+          test/previews
         )
 
         files.each { |f| dockerfile.copy(f, f) }
