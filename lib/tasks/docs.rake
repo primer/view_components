@@ -488,7 +488,7 @@ namespace :docs do
   end
 
   def lookbook_url(component)
-    path = component.name.underscore
+    path = component.name.underscore.gsub("_component", "")
 
     "https://primer.style/view-components/lookbook/inspect/#{path}/default/"
   end
