@@ -7,10 +7,8 @@ module Primer
     DEPRECATED_COMPONENTS = {
       "Primer::Alpha::AutoComplete" => "Primer::Beta::AutoComplete",
       "Primer::Alpha::AutoComplete::Item" => "Primer::Beta::AutoComplete::Item",
-      "Primer::BaseButton" => "Primer::Beta::BaseButton",
       "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
       "Primer::BoxComponent" => "Primer::Box",
-      "Primer::ButtonGroup" => "Primer::Beta::ButtonGroup",
       "Primer::CloseButton" => "Primer::Beta::CloseButton",
       "Primer::CounterComponent" => "Primer::Beta::Counter",
       "Primer::DetailsComponent" => "Primer::Beta::Details",

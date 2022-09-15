@@ -13,6 +13,7 @@ concurrency:
 
 jobs:
   destory:
+    if: ${{ github.event.pull_request.head.repo.full_name == 'primer/view_components' && github.actor != 'dependabot[bot]' && github.actor != 'primer-css' }}
     name: Destroy
     runs-on: ubuntu-latest
     timeout-minutes: 5

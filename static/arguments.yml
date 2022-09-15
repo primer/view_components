@@ -236,6 +236,40 @@
     type: Proc
     default: N/A
     description: Unused.
+- component: ToggleSwitch
+  source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/toggle_switch.rb
+  parameters:
+  - name: src
+    type: String
+    default: "`nil`"
+    description: The URL to POST to when the toggle switch is toggled. If `nil`, the
+      toggle switch will not make any requests.
+  - name: csrf_token
+    type: String
+    default: "`nil`"
+    description: A CSRF token that will be sent to the server as "authenticity_token"
+      when the toggle switch is toggled. Unused if `src` is `nil`.
+  - name: checked
+    type: Boolean
+    default: "`false`"
+    description: Whether the toggle switch is on or off.
+  - name: enabled
+    type: Boolean
+    default: "`true`"
+    description: Whether or not the toggle switch responds to user input.
+  - name: size
+    type: Symbol
+    default: "`:medium`"
+    description: What size toggle switch to render. One of `:end` or `:start`.
+  - name: status_label_position
+    type: Symbol
+    default: "`:start`"
+    description: Which side of the toggle switch to render the status label. One of
+      `:medium` or `:small`.
+  - name: system_arguments
+    type: Hash
+    default: N/A
+    description: "[System arguments](/system-arguments)"
 - component: Tooltip
   source: https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tooltip.rb
   parameters:
