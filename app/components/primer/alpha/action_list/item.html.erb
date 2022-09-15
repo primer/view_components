@@ -1,7 +1,7 @@
 <%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
   <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
     <% if private_leading_action %>
-      <span class="ActionListItem-visual ActionListItem-visual--leading">
+      <span class="ActionListItem-visual ActionListItem-action--leading">
         <%= private_leading_action %>
       </span>
     <% end %>
