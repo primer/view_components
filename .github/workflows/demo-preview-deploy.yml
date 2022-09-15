@@ -56,17 +56,16 @@ jobs:
 
     - name: Pull latest
       run: |
-        docker pull primer.azurecr.io/primer/view_components_storybook:latest
-        docker pull primer.azurecr.io/primer/view_components_storybook:latest-assets
+        docker pull ${{ env.IMAGE_URL }}:latest || true
+        docker pull ${{ env.IMAGE_URL }}:latest-assets || true
     - name: Build
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       run: |
-        bin/kuby -e production build --only app -- --tag=${{ env.DOCKER_IMAGE }} --cache-from primer.azurecr.io/primer/view_components_storybook:latest
-        bin/kuby -e production build --only assets -- --tag=${{ env.DOCKER_IMAGE }}-assets --cache-from primer.azurecr.io/primer/view_components_storybook:latest-assets
+        bin/kuby -e production build --only app -- --tag=${{ env.DOCKER_IMAGE }} --cache-from ${{ env.IMAGE_URL }}:latest
+        bin/kuby -e production build --only assets -- --tag=${{ env.DOCKER_IMAGE }}-assets --cache-from ${{ env.IMAGE_URL }}:latest-assets
     - name: Push
       run: |
-        bin/kuby -e production push
         docker image push --all-tags ${{ env.IMAGE_URL }}
     - name: Run ARM deploy
       # This 'if' will be truth, if this workflow is...
