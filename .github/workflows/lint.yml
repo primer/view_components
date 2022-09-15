@@ -52,7 +52,7 @@ jobs:
         files: |
           app/**/*.rb
           lib/**/*.rb
-          lookbook/**/*.rb
+          demo/**/*.rb
           stories/**/*.rb
           test/**/*.rb
     - name: Lint with Rubocop
