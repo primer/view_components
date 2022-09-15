@@ -81,6 +81,7 @@ Kuby.define("ViewComponentsStorybook") do
           package.json
           yarn.lock
           test/previews
+          test/forms
         )
 
         files.each { |f| dockerfile.copy(f, f) }
