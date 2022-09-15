@@ -132,6 +132,7 @@ namespace :docs do
         f.puts("status: #{data[:status]}")
         f.puts("source: #{data[:source]}")
         f.puts("storybook: #{data[:storybook]}")
+        f.puts("lookbook: #{data[:lookbook]}") if preview_exists?(component)
         f.puts("---")
         f.puts
         f.puts("import Example from '#{data[:example_path]}'")
@@ -467,6 +468,7 @@ namespace :docs do
       status: status.capitalize,
       source: source_url(component),
       storybook: storybook_url(component),
+      lookbook: lookbook_url(component),
       path: "docs/content/components/#{status_path}#{short_name.downcase}.md",
       example_path: example_path(component),
       require_js_path: require_js_path(component)
@@ -483,6 +485,18 @@ namespace :docs do
     path = component.name.split("::").map { |n| n.underscore.dasherize }.join("-")
 
     "https://primer.style/view-components/stories/?path=/story/#{path}"
+  end
+
+  def lookbook_url(component)
+    path = component.name.underscore
+
+    "https://primer.style/view-components/lookbook/inspect/#{path}/default/"
+  end
+
+  def preview_exists?(component)
+    path = component.name.underscore
+
+    File.exist?("test/previews/#{path}_preview.rb")
   end
 
   def example_path(component)
