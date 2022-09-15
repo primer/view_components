@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nocov:
 Rails.application.routes.draw do
   if Rails.env.production?
     get '/view-components', to: redirect('/view-components/stories/')
