@@ -1,7 +1,0 @@
-/* Entry point for your PostCSS build */
-
-@import './primer.css';
-
-body {
-  padding: 42px;
-}

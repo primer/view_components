@@ -1,4 +1,0 @@
-web: bin/rails server -p 3000
-css: yarn build:css --watch
-ts: yarn build:ts --watch
-rollup: yarn build:rollup --watch
