@@ -38,12 +38,4 @@ class PrimerBetaBaseButtonTest < Minitest::Test
 
     assert_selector(".btn-block")
   end
-
-  def test_primer_base_button_references_beta_base_button
-    assert_equal(Primer::BaseButton.superclass, Primer::Beta::BaseButton)
-
-    render_inline(Primer::BaseButton.new) { "Primer::BaseButton content" }
-
-    assert_text("Primer::BaseButton content")
-  end
 end

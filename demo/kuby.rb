@@ -75,9 +75,13 @@ Kuby.define("ViewComponentsStorybook") do
         files = %w(
           tsconfig.json
           rollup.config.js
-          app/components/primer
+          postcss.config.js
+          lib/postcss_mixins
+          app/
           package.json
           yarn.lock
+          test/previews
+          test/forms
         )
 
         files.each { |f| dockerfile.copy(f, f) }
