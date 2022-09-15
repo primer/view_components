@@ -50,8 +50,9 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.hotwire_livereload.listen_paths << Rails.root.join("../app/assets")
-  config.hotwire_livereload.force_reload_paths << Rails.root.join("../app/assets")
+  # Not working in bundle exec rake utilities:build
+  # config.hotwire_livereload.listen_paths << Rails.root.join("../app/assets")
+  # config.hotwire_livereload.force_reload_paths << Rails.root.join("../app/assets")
 
   config.lookbook.listen_paths << Rails.root.join("../app/components")
 
