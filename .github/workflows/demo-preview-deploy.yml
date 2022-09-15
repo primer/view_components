@@ -54,18 +54,19 @@ jobs:
     - name: Get preview app info
       run: ./.github/workflows/demo-preview-app-info.sh
 
-    - name: 'Set env vars'
+    - name: Pull latest
       run: |
-        # Image tag is unique to each workflow run so that it always triggers a new deployment
-        echo "DOCKER_IMAGE=${{ env.IMAGE_URL }}:${{ env.COMMIT_REF }}-${{ github.run_number }}-${{ github.run_attempt }}" >> $GITHUB_ENV
+        docker pull ${{ env.IMAGE_URL }}:latest || true
+        docker pull ${{ env.IMAGE_URL }}:latest-assets || true
     - name: Build
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       run: |
-        bin/kuby -e production build --only app -- -t ${{ env.DOCKER_IMAGE }}
-        bin/kuby -e production build --only assets -- -t ${{ env.DOCKER_IMAGE }}
+        bin/kuby -e production build --only app -- --tag=${{ env.DOCKER_IMAGE }} --cache-from ${{ env.IMAGE_URL }}:latest
+        bin/kuby -e production build --only assets -- --tag=${{ env.DOCKER_IMAGE }}-assets --cache-from ${{ env.IMAGE_URL }}:latest-assets
     - name: Push
-      run: bin/kuby -e production push
+      run: |
+        docker image push --all-tags ${{ env.IMAGE_URL }}
     - name: Run ARM deploy
       # This 'if' will be truth, if this workflow is...
       #  - run as a workflow_dispatch
@@ -84,7 +85,7 @@ jobs:
         template: ./.github/workflows/demo-preview-template.json
         deploymentName: ${{env.DEPLOYMENT_NAME}}
         parameters: appName="${{env.APP_NAME}}"
-          containerImage="primer.azurecr.io/${{ env.IMAGE_REPO }}:latest"
+          containerImage="${{ env.DOCKER_IMAGE }}"
           dockerRegistryUrl="primer.azurecr.io"
           dockerRegistryUsername="GitHubActions"
           dockerRegistryPassword="${{ secrets.AZURE_ACR_PASSWORD }}"
