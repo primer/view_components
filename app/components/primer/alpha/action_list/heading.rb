@@ -15,9 +15,9 @@ module Primer
         # @param section_id [String] The unique identifier of the section the heading belongs to.
         # @param filled [Boolean] Whether or not the section is filled, i.e. has a colored background.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-        def initialize(section_id:, title:, scheme: DEFAULT_SCHEME, subtitle: nil, **system_arguments)
+        def initialize(section_id:, title:, tag: :div, scheme: DEFAULT_SCHEME, subtitle: nil, **system_arguments)
           @system_arguments = system_arguments
-          @system_arguments[:tag] = :div
+          @system_arguments[:tag] = tag
           @section_id = section_id
           @title = title
           @subtitle = subtitle

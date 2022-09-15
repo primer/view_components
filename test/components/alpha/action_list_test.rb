@@ -21,12 +21,13 @@ module Primer
         assert_selector("ul.ActionListWrap[aria-label]")
       end
 
-      def test_lists
+      def test_sub_lists
         render_preview(:sub_lists)
 
+        assert_selector("h2")
         assert_selector("li.ActionListItem ul.ActionListWrap--subGroup")
         assert_selector("ul.ActionListWrap[aria-labelledby]")
-        assert_selector("div.ActionList-sectionDivider")
+        assert_selector(".ActionList-sectionDivider")
         assert_selector("ul.ActionListWrap--subGroup li.ActionListItem--subItem")
       end
 
