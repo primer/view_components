@@ -54,12 +54,16 @@ jobs:
     - name: Get preview app info
       run: ./.github/workflows/demo-preview-app-info.sh
 
+    - name: Pull latest
+      run: |
+        docker pull primer.azurecr.io/primer/view_components_storybook:latest
+        docker pull primer.azurecr.io/primer/view_components_storybook:latest-assets
     - name: Build
       env:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       run: |
-        bin/kuby -e production build --only app -- --tag=${{ env.DOCKER_IMAGE }}
-        bin/kuby -e production build --only assets -- --tag=${{ env.DOCKER_IMAGE }}-assets
+        bin/kuby -e production build --only app -- --tag=${{ env.DOCKER_IMAGE }} --cache-from primer.azurecr.io/primer/view_components_storybook:latest
+        bin/kuby -e production build --only assets -- --tag=${{ env.DOCKER_IMAGE }}-assets --cache-from primer.azurecr.io/primer/view_components_storybook:latest-assets
     - name: Push
       run: |
         bin/kuby -e production push
