@@ -131,7 +131,6 @@ namespace :docs do
         f.puts("componentId: #{data[:component_id]}")
         f.puts("status: #{data[:status]}")
         f.puts("source: #{data[:source]}")
-        f.puts("storybook: #{data[:storybook]}")
         f.puts("lookbook: #{data[:lookbook]}") if preview_exists?(component)
         f.puts("---")
         f.puts
@@ -467,7 +466,6 @@ namespace :docs do
       component_id: short_name.underscore,
       status: status.capitalize,
       source: source_url(component),
-      storybook: storybook_url(component),
       lookbook: lookbook_url(component),
       path: "docs/content/components/#{status_path}#{short_name.downcase}.md",
       example_path: example_path(component),
@@ -479,12 +477,6 @@ namespace :docs do
     path = component.name.split("::").map(&:underscore).join("/")
 
     "https://github.com/primer/view_components/tree/main/app/components/#{path}.rb"
-  end
-
-  def storybook_url(component)
-    path = component.name.split("::").map { |n| n.underscore.dasherize }.join("-")
-
-    "https://primer.style/view-components/stories/?path=/story/#{path}"
   end
 
   def lookbook_url(component)
