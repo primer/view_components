@@ -64,4 +64,4 @@ jobs:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
         AZURE_SPN_CLIENT_SECRET: ${{ secrets.AZURE_SPN_CLIENT_SECRET }}
-      run: bin/kuby -e production deploy
+      run: bin/kuby -e production deploy --tag=primer.azurecr.io/primer/view_components_storybook:latest --tag=primer.azurecr.io/primer/view_components_storybook:latest-assets
