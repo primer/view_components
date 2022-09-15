@@ -4,7 +4,7 @@ module Primer
   module Beta
     # @label Button
     class ButtonPreview < ViewComponent::Preview
-      # @label Playground
+      # @label Default
       # @param scheme select [default, primary, danger, outline, invisible, link]
       # @param size select [small, medium, large]
       # @param full_width toggle
@@ -12,7 +12,7 @@ module Primer
       # @param pressed toggle
       # @param align_content select [center, start]
       # @param tag select [a, summary, button]
-      def playground(
+      def default(
         scheme: :default,
         size: :medium,
         full_width: false,
