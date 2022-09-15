@@ -51,8 +51,8 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Not working in bundle exec rake utilities:build
-  # config.hotwire_livereload.listen_paths << Rails.root.join("../app/assets")
-  # config.hotwire_livereload.force_reload_paths << Rails.root.join("../app/assets")
+  config.hotwire_livereload.listen_paths << Rails.root.join("../app/assets")
+  config.hotwire_livereload.force_reload_paths << Rails.root.join("../app/assets")
 
   config.lookbook.listen_paths << Rails.root.join("../app/components")
 
