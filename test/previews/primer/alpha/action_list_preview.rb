@@ -179,7 +179,7 @@ module Primer
       end
 
       # @label Item [default]
-      def item_default()
+      def item_default
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
@@ -189,7 +189,7 @@ module Primer
       end
 
       # @label Item [size large]
-      def item_size_large()
+      def item_size_large
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
@@ -199,7 +199,7 @@ module Primer
       end
 
       # @label Item [size xlarge]
-      def item_size_xlarge()
+      def item_size_xlarge
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
@@ -209,7 +209,7 @@ module Primer
       end
 
       # @label Item [leading visual]
-      def item_leading_visual()
+      def item_leading_visual
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
@@ -220,7 +220,7 @@ module Primer
       end
 
       # @label Item [trailing visual]
-      def item_trailing_visual()
+      def item_trailing_visual
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
@@ -231,7 +231,7 @@ module Primer
       end
 
       # @label Item [leading and trailing visual]
-      def item_leading_trailing_visual()
+      def item_leading_trailing_visual
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
@@ -243,7 +243,7 @@ module Primer
       end
 
       # @label Item [description]
-      def item_with_description()
+      def item_with_description
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
@@ -254,7 +254,7 @@ module Primer
       end
 
       # @label Item [inline description]
-      def item_with_description_inline()
+      def item_with_description_inline
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
@@ -265,7 +265,7 @@ module Primer
       end
 
       # @label Item [trailing action]
-      def item_trailing_action()
+      def item_trailing_action
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
@@ -276,7 +276,7 @@ module Primer
       end
 
       # @label Item [trailing action on hover]
-      def item_trailing_action_hover()
+      def item_trailing_action_hover
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
@@ -287,7 +287,7 @@ module Primer
       end
 
       # @label Item [danger]
-      def item_danger()
+      def item_danger
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
@@ -297,7 +297,7 @@ module Primer
       end
 
       # @label Item [disabled]
-      def item_disabled()
+      def item_disabled
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
@@ -307,7 +307,7 @@ module Primer
       end
 
       # @label Item [wrap label]
-      def item_wrap_label()
+      def item_wrap_label
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
@@ -317,7 +317,7 @@ module Primer
       end
 
       # @label Item [truncate label]
-      def item_truncate_label()
+      def item_truncate_label
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
@@ -327,7 +327,7 @@ module Primer
       end
 
       # @label Item [active]
-      def item_active()
+      def item_active
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
