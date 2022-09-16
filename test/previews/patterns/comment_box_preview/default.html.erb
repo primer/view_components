@@ -1,7 +1,7 @@
 <%= render Primer::BaseComponent.new(tag: :div, container: container) do %>
   <%= render(Primer::Beta::BorderBox.new(mb: 2)) do |component| %>
     <% component.with_body(p: 0) do %>
-      <%= render(Primer::Alpha::TabPanels.new(body_arguments: {  }, label: "With panels", mb: 0, bg: :subtle, style: "display: grid;grid-template-columns: max-content minmax(auto, auto);grid-auto-flow: column;justify-content: space-between;")) do |component| %>
+      <%= render(Primer::Alpha::TabPanels.new(label: "With panels", mb: 0, bg: :subtle, style: "display: grid;grid-template-columns: max-content minmax(auto, 498px);grid-auto-flow: column;justify-content: space-between;")) do |component| %>
         <% component.with_tab(id: "tab-1", selected: true, style: "margin-top: -1px;margin-left: -1px;") do |t| %>
           <% t.text { "Write" } %>
           <% t.panel do %>
