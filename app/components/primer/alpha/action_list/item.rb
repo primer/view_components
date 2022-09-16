@@ -31,20 +31,10 @@ module Primer
 
         renders_one :leading_visual, types: {
           icon: Primer::OcticonComponent,
-          avatar: lambda { |**kwargs|
-            Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
-          },
-          svg: lambda { |**system_arguments|
-            Primer::BaseComponent.new(tag: :svg, **system_arguments)
-          }
+          avatar: lambda { |**kwargs| Primer::Beta::Avatar.new(**{ **kwargs, size: 16 }) }
         }
 
-        renders_one :private_leading_action, types: {
-          icon: Primer::OcticonComponent,
-          svg: lambda { |**system_arguments|
-            Primer::BaseComponent.new(tag: :svg, **system_arguments)
-          }
-        }
+        renders_one :private_leading_action_icon, Primer::OcticonComponent
 
         renders_one :trailing_visual, types: {
           icon: Primer::OcticonComponent,
@@ -53,12 +43,7 @@ module Primer
           text: ->(text) { text }
         }
 
-        renders_one :private_trailing_action, types: {
-          icon: Primer::OcticonComponent,
-          svg: lambda { |**system_arguments|
-            Primer::BaseComponent.new(tag: :svg, **system_arguments)
-          }
-        }
+        renders_one :private_trailing_action_icon, Primer::OcticonComponent
 
         renders_one :trailing_action, lambda { |show_on_hover: false, **system_arguments|
           @trailing_action_on_hover = show_on_hover

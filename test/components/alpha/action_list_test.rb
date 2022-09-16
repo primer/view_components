@@ -48,33 +48,15 @@ module Primer
       end
 
       def test_item_tooltip
-        render_preview(:item)
+        render_preview(:item, params: { tooltip: true })
 
         assert_selector(".ActionListItem > tool-tip")
       end
 
       def test_item_trailing_action_on_hover
-        render_preview(:item, params: { trailing_action: "arrow-down" })
+        render_preview(:item, params: { trailing_action: "arrow-down", trailing_action_on_hover: true })
 
         assert_selector(".ActionListItem--trailingActionHover")
-      end
-
-      def test_item_private_trailing_action_svg
-        render_preview(:item, params: { private_trailing_action_svg: true })
-
-        assert_selector("svg", text: "trailing")
-      end
-
-      def test_item_private_leading_action_svg
-        render_preview(:item, params: { private_leading_action_svg: true })
-
-        assert_selector("svg", text: "leading")
-      end
-
-      def test_item_leading_visual_svg
-        render_preview(:item, params: { leading_visual_svg: true })
-
-        assert_selector("svg", text: "leading visual svg")
       end
 
       def test_item_leading_visual_avatar

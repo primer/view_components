@@ -1,8 +1,8 @@
 <%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
   <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
-    <% if private_leading_action %>
+    <% if private_leading_action_icon %>
       <span class="ActionListItem-visual ActionListItem-action--leading">
-        <%= private_leading_action %>
+        <%= private_leading_action_icon %>
       </span>
     <% end %>
     <% if leading_visual %>
@@ -25,9 +25,9 @@
         <%= trailing_visual %>
       </span>
     <% end %>
-    <% if private_trailing_action %>
+    <% if private_trailing_action_icon %>
       <span class="ActionListItem-visual ActionListItem-action--trailing">
-        <%= private_trailing_action %>
+        <%= private_trailing_action_icon %>
       </span>
     <% end %>
   <% end %>
