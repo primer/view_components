@@ -133,7 +133,7 @@
         cursor: pointer;
         background-color: var(--color-action-list-item-default-hover-bg);
 
-        &:not(.ActionListItem--navActive) {
+        &:not(.ActionListItem--navActive):not(:focus-visible) {
           /* Support for "Windows high contrast mode" */
           outline: solid var(--primer-borderWidth-thin, 1px) transparent;
           outline-offset: calc(-1 * var(--primer-borderWidth-thin, 1px));
