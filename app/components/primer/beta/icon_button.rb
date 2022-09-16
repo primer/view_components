@@ -48,6 +48,7 @@ module Primer
       #
       # @param icon [String] Name of <%= link_to_octicons %> to use.
       # @param scheme [Symbol] <%= one_of(Primer::Beta::IconButton::SCHEME_OPTIONS) %>
+      # @param wrapper_arguments [Hash] Optional keyword arguments to be passed to the wrapper `<div>` tag.
       # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
       # @param tag [Symbol] <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
       # @param type [Symbol] <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
@@ -55,11 +56,13 @@ module Primer
       # @param aria-description [String] String that can be read by assistive technology. A description can be longer as it is intended to provide more context and information. See the accessibility section for more information.
       # @param tooltip_direction [Symbol] (Primer::Alpha::Tooltip::DIRECTION_DEFAULT) <%= one_of(Primer::Alpha::Tooltip::DIRECTION_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(icon:, scheme: DEFAULT_SCHEME, tooltip_direction: Primer::Alpha::Tooltip::DIRECTION_DEFAULT, size: Primer::Beta::Button::DEFAULT_SIZE, **system_arguments)
+      def initialize(icon:, scheme: DEFAULT_SCHEME, wrapper_arguments: {}, tooltip_direction: Primer::Alpha::Tooltip::DIRECTION_DEFAULT, size: Primer::Beta::Button::DEFAULT_SIZE, **system_arguments)
         @icon = icon
 
         @system_arguments = system_arguments
         @system_arguments[:id] ||= "icon-button-#{SecureRandom.hex(4)}"
+
+        @wrapper_arguments = wrapper_arguments
 
         @system_arguments[:classes] = class_names(
           "Button",
