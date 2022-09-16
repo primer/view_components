@@ -5,7 +5,6 @@ module Primer
     # An ActionList is a list of items that can be activated or selected. ActionList is the base component for many menu-type components, including ActionMenu and SelectPanel.
     class ActionList < Primer::Component
       DEFAULT_ROLE = :list
-      DEFAULT_TAG = :ul
 
       DEFAULT_SCHEME = :full
       SCHEME_MAPPINGS = {
@@ -33,7 +32,7 @@ module Primer
       }
 
       renders_many :lists, lambda { |**system_arguments|
-        build_list(child: true, **system_arguments).tap do |group|
+        build_list(sub_group: true, **system_arguments).tap do |group|
           will_add_list(group)
         end
       }
@@ -42,21 +41,20 @@ module Primer
       # @param role [Boolean] ARIA role describing the function of the list. listbox and menu are a common values.
       # @param scheme [Symbol] `inset` children are offset (vertically and horizontally) from list edges. `full` (default) children are flush (vertically and horizontally) with list edges
       # @param show_dividers [Boolean] Display a divider above each item in the list when it does not follow a header or divider.
-      # @param child [Boolean] If an ActionList is nested within another ActionList.
+      # @param sub_group [Boolean] If an ActionList is nested within another ActionList.
       def initialize(
-        tag: DEFAULT_TAG,
         role: DEFAULT_ROLE,
         item_classes: nil,
         scheme: DEFAULT_SCHEME,
         show_dividers: false,
-        child: false,
+        sub_group: false,
         **system_arguments
       )
         @id = "action-list-section-#{SecureRandom.uuid}"
-        @child = child
+        @sub_group = sub_group
 
         @system_arguments = system_arguments
-        @system_arguments[:tag] = tag
+        @system_arguments[:tag] = :ul
         @system_arguments[:role] = role
         @item_classes = item_classes
         @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
@@ -65,13 +63,13 @@ module Primer
           SCHEME_MAPPINGS[@scheme],
           system_arguments[:classes],
           "ActionListWrap",
-          "ActionListWrap--subGroup" => child,
+          "ActionListWrap--subGroup" => sub_group,
           "ActionListWrap--divided" => @show_dividers
         )
       end
 
       def before_render
-        return if @child
+        return if @sub_group
 
         if heading.present?
           @system_arguments[:"aria-labelledby"] = @id
@@ -84,7 +82,7 @@ module Primer
         system_arguments[:classes] = class_names(
           @item_classes,
           system_arguments[:classes],
-          "ActionListItem--subItem" => @child
+          "ActionListItem--subItem" => @sub_group
         )
 
         ActionList::Item.new(list: self, **system_arguments)
