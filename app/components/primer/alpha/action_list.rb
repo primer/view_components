@@ -2,7 +2,7 @@
 
 module Primer
   module Alpha
-    # An `ActionList` is a TBD
+    # An ActionList is a list of items that can be activated or selected. ActionList is the base component for many menu-type components, including ActionMenu and SelectPanel.
     class ActionList < Primer::Component
       DEFAULT_ROLE = :list
       DEFAULT_TAG = :ul
@@ -38,6 +38,11 @@ module Primer
         end
       }
 
+      `inset` children are offset (vertically and horizontally) from list edges. `full` children are flush (vertically and horizontally) with list edges
+      # @param role [Boolean] ARIA role describing the function of the list. listbox and menu are a common values.
+      # @param scheme [Symbol] `inset` children are offset (vertically and horizontally) from list edges. `full` (default) children are flush (vertically and horizontally) with list edges
+      # @param show_dividers [Boolean] Display a divider above each item in the list when it does not follow a header or divider.
+      # @param child [Boolean] If an ActionList is nested within another ActionList.
       def initialize(
         tag: DEFAULT_TAG,
         role: DEFAULT_ROLE,

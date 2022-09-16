@@ -3,7 +3,7 @@
 module Primer
   module Alpha
     class ActionList
-      # Section heading rendered above the section contents.
+      # Section heading used to describe each group of action list items within an action list.
       class Heading < Primer::Component
         DEFAULT_SCHEME = :subtle
         SCHEME_MAPPINGS = {
@@ -13,7 +13,10 @@ module Primer
         SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
         # @param section_id [String] The unique identifier of the section the heading belongs to.
-        # @param filled [Boolean] Whether or not the section is filled, i.e. has a colored background.
+        # @param title [String] Group title.
+        # @param subtitle [String] Optional group description.
+        # @param scheme [Symbol] Display a background color if scheme is `filled`.
+        # @param tag [Symbol] Semantic tag for the heading.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(section_id:, title:, tag: :div, scheme: DEFAULT_SCHEME, subtitle: nil, **system_arguments)
           @system_arguments = system_arguments

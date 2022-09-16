@@ -99,6 +99,19 @@ module Primer
         alias active? active
         alias disabled? disabled
 
+        # @param label [String] Item label
+        # @param truncate_label [Boolean] Truncate label with ellipsis.
+        # @param href [String] Link URK
+        # @param on_click [?] The unique identifier of the section the heading belongs to.
+        # @param role [String] ARIA role describing the function of the item.
+        # @param size [Symbol] Controls block sizing of the item.
+        # @param scheme [Symbol] Controls color/style based on behavior.
+        # @param disabled [Boolean] Disabled items are not clickable and visually dim.
+        # @param description [String] Optional item description
+        # @param description_scheme [Symbol] Display description inline with label, or block on the next line.
+        # @param active [Boolean] Sets an active state on navigational items.
+        # @param expanded [Boolean] Handles expand/collapse for nested groups.
+        # @param sub_item [Boolean] If item is within a nested ActionList.
         def initialize(
           list:,
           label:,

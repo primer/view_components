@@ -12,7 +12,7 @@ module Primer
         }.freeze
         SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
-        # @param filled [Boolean] Whether or not the section is filled, i.e. has a colored background.
+        # @param scheme [Symbol] Display a background color if scheme is `filled`.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(scheme: DEFAULT_SCHEME, **system_arguments)
           @system_arguments = system_arguments
