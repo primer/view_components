@@ -244,7 +244,7 @@ module Primer
 
       # @label Item [description]
       def item_with_description()
-        render(Primer::alpha::ActionList.new(
+        render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
           c.with_item(label: "Default item", href: "/") do |item|
@@ -255,33 +255,33 @@ module Primer
 
       # @label Item [inline description]
       def item_with_description_inline()
-        render(Primer::alpha::ActionList.new(
+        render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
-          c.with_item(label: "Default item", href: "/" description_scheme: :inline) do |item|
+          c.with_item(label: "Default item", href: "/", description_scheme: :inline) do |item|
             item.with_description.with_content("This is a description")
           end
         end
       end
 
       # @label Item [trailing action]
-      def item_with_trailing_action()
-        render(Primer::alpha::ActionList.new(
+      def item_trailing_action()
+        render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
-          c.with_item(label: "Item with trailing action button", href: "/") do |item|
-            item.with_trailing_action(show_on_hover: false, icon: "plus", "aria-label": "Action description", size: :medium)
+          c.with_item(label: "Default item", href: "/") do |item|
+            item.with_trailing_action(show_on_hover: false, icon: "plus", "aria-label": "Button tooltip", size: :medium)
           end
         end
       end
 
       # @label Item [trailing action on hover]
-      def item_with_trailing_action_on_hover()
-        render(Primer::alpha::ActionList.new(
+      def item_trailing_action_hover()
+        render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
-          c.with_item(label: "Item with trailing action button on hover", href: "/") do |item|
-            item.with_trailing_action(show_on_hover: true, icon: "plus", "aria-label": "Action description", size: :medium)
+          c.with_item(label: "Default item", href: "/") do |item|
+            item.with_trailing_action(show_on_hover: true, icon: "plus", "aria-label": "Button tooltip", size: :medium)
           end
         end
       end
