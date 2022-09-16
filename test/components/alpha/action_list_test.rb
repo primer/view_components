@@ -18,7 +18,7 @@ module Primer
       def test_sub_lists
         render_preview(:sub_lists)
 
-        assert_selector("h2")
+        assert_selector("h2.ActionList-sectionDivider-title")
         assert_selector("li.ActionListItem ul.ActionListWrap--subGroup")
         assert_selector("ul.ActionListWrap[aria-labelledby]")
         assert_selector(".ActionList-sectionDivider")
