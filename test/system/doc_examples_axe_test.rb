@@ -13,8 +13,6 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
     # Workaround to ensure that all component previews are loaded.
     visit("/rails/view_components")
 
-    raise "You must generate previews with `bundle exec rake docs:preview` before running this test" unless defined? Primer::Docs
-
     puts "\n============================================================================="
     puts "Running axe-core checks on previews..."
     puts "============================================================================="
