@@ -87,7 +87,7 @@ module Primer
 
         def call
           if slot_type?(:icon_button)
-            render Primer::Beta::IconButton.new("data-targets": "action-bar.items", scheme: :invisible, **@system_arguments)
+            render Primer::Beta::IconButton.new(wrapper_arguments: { "data-targets": "action-bar.items" }, scheme: :invisible, **@system_arguments)
           else
             render Primer::BaseComponent.new("data-targets": "action-bar.items", **@system_arguments)
           end

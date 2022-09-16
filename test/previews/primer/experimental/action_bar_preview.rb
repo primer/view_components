@@ -7,9 +7,10 @@ module Primer
   module Experimental
     # @label ActionBar
     class ActionBarPreview < ViewComponent::Preview
+      # @label Default
       # @param size [Symbol] select [[Small, small], [Medium, medium], [Large, large]]
       # @param aria_label [String]
-      def playground(size: :medium)
+      def default(size: :medium)
         render(Primer::Experimental::ActionBar.new(size: size)) do |component|
           component.with_item_icon_button(icon: :heading, "aria-label": "Heading")
           component.with_item_icon_button(icon: :bold, "aria-label": "Bold")

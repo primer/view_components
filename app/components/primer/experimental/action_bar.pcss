@@ -3,17 +3,20 @@
 .ActionBar {
   display: flex !important;
   align-items: center;
-  position: relative;
   overflow: hidden;
+  min-width: 0;
+  justify-content: space-between;
+  position: relative;
+  flex: 0 1 auto;
+}
+
+.ActionBar-item-container {
+  display: flex;
+  align-items: center;
 }
 
 .ActionBar-more-menu {
-  position: absolute;
-  right: 0;
-
-  &[aria-hidden="true"] {
-    visibility: hidden;
-  }
+  flex-shrink: 0;
 }
 
 /* Divider */
@@ -35,15 +38,15 @@
 /* Increase spacing so touch targets don't overlap */
 
 @media (pointer: coarse) {
-  .ActionBar {
+  .ActionBar .ActionBar-item-container {
     gap: calc(var(--primer-control-minTarget-coarse, 44px) - var(--primer-control-medium-size, 32px)); /* 12px */
   }
 
-  .ActionBar--small {
+  .ActionBar--small .ActionBar-item-container {
     gap: calc(var(--primer-control-minTarget-coarse, 44px) - var(--primer-control-small-size, 28px));  /* 16px */
   }
 
-  .ActionBar--large {
+  .ActionBar--large .ActionBar-item-container {
     gap: calc(var(--primer-control-minTarget-coarse, 44px) - var(--primer-control-large-size, 40px));  /* 4px */
   }
 }
