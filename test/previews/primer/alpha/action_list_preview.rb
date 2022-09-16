@@ -28,10 +28,8 @@ module Primer
           list.with_heading(title: "Heading")
           list.with_item(label: "Item one") do |item|
             item.with_leading_visual_icon(icon: :gear)
-            item.with_item(label: "Active sub item", href: "/", active: true) do |sub_item|
-            end
-            item.with_item(label: "Sub item", href: "/", active: false) do |sub_item|
-            end
+            item.with_item(label: "Active sub item", href: "/", active: true)
+            item.with_item(label: "Sub item", href: "/", active: false)
           end
         end
       end
@@ -183,8 +181,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
-          c.with_item(label: "Default item", href: "/") do |item|
-          end
+          c.with_item(label: "Default item", href: "/")
         end
       end
 
@@ -193,8 +190,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
-          c.with_item(label: "Default item", href: "/", size: :large) do |item|
-          end
+          c.with_item(label: "Default item", href: "/", size: :large)
         end
       end
 
@@ -203,8 +199,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
-          c.with_item(label: "Default item", href: "/", size: :xlarge) do |item|
-          end
+          c.with_item(label: "Default item", href: "/", size: :xlarge)
         end
       end
 
@@ -291,8 +286,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
-          c.with_item(label: "Danger item", href: "/", scheme: :danger) do |item|
-          end
+          c.with_item(label: "Danger item", href: "/", scheme: :danger)
         end
       end
 
@@ -301,8 +295,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
-          c.with_item(label: "Disabled item", href: "/", disabled: true) do |item|
-          end
+          c.with_item(label: "Disabled item", href: "/", disabled: true)
         end
       end
 
@@ -311,8 +304,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
-          c.with_item(label: "This is a very long string of text that will wrap if it runs out of horizontal space", href: "/") do |item|
-          end
+          c.with_item(label: "This is a very long string of text that will wrap if it runs out of horizontal space", href: "/")
         end
       end
 
@@ -321,8 +313,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
-          c.with_item(label: "This is a very long string of text that will truncate if it runs out of horizontal space", href: "/", truncate_label: true) do |item|
-          end
+          c.with_item(label: "This is a very long string of text that will truncate if it runs out of horizontal space", href: "/", truncate_label: true)
         end
       end
 
@@ -331,8 +322,7 @@ module Primer
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
                )) do |c|
-          c.with_item(label: "Active item", href: "/", active: true) do |item|
-          end
+          c.with_item(label: "Active item", href: "/", active: true)
         end
       end
     end
