@@ -2,7 +2,6 @@
   "Primer::Alpha::ActionList": {
     "DEFAULT_ROLE": "list",
     "DEFAULT_SCHEME": "full",
-    "DEFAULT_TAG": "ul",
     "Divider": "Primer::Alpha::ActionList::Divider",
     "Heading": "Primer::Alpha::ActionList::Heading",
     "Item": "Primer::Alpha::ActionList::Item",
