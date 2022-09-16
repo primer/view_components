@@ -15,12 +15,6 @@ module Primer
         assert_includes(error.message, "label or heading must be provided")
       end
 
-      def test_default
-        render_preview(:default)
-
-        assert_selector("ul.ActionListWrap[aria-label]")
-      end
-
       def test_sub_lists
         render_preview(:sub_lists)
 
@@ -29,10 +23,6 @@ module Primer
         assert_selector("ul.ActionListWrap[aria-labelledby]")
         assert_selector(".ActionList-sectionDivider")
         assert_selector("ul.ActionListWrap--subGroup li.ActionListItem--subItem")
-      end
-
-      def test_item
-        render_preview(:item)
       end
 
       def test_active_item
@@ -76,14 +66,6 @@ module Primer
 
         assert_selector("button.ActionListContent--hasActiveSubItem.ActionListContent[aria-expanded='false'][data-action='click:action-list#handleItemWithSubItemClick'] svg.ActionListItem-collapseIcon")
         assert_selector(".ActionListItem--hasSubItem[data-action='click:action-list#handleItemClick'] .ActionList--subGroup .ActionListItem--subItem", text: "Sub item")
-      end
-
-      def test_divider
-        render_preview(:divider)
-      end
-
-      def test_heading
-        render_preview(:heading)
       end
 
       def test_item_with_leading_icon
