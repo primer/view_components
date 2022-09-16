@@ -15,8 +15,8 @@ module Primer
         assert_includes(error.message, "label or heading must be provided")
       end
 
-      def test_list
-        render_preview(:list)
+      def test_default
+        render_preview(:default)
 
         assert_selector("ul.ActionListWrap[aria-label]")
       end

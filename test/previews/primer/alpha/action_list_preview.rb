@@ -34,12 +34,12 @@ module Primer
         end
       end
 
-      # @label List
+      # @label default
       #
       # @param role text
       # @param scheme [Symbol] select [full, inset]
       # @param show_dividers toggle
-      def list(
+      def default(
         role: Primer::Alpha::ActionList::DEFAULT_ROLE,
         scheme: Primer::Alpha::ActionList::DEFAULT_SCHEME,
         show_dividers: false
