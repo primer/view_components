@@ -131,7 +131,7 @@ namespace :docs do
         f.puts("componentId: #{data[:component_id]}")
         f.puts("status: #{data[:status]}")
         f.puts("source: #{data[:source]}")
-        f.puts("storybook: #{data[:storybook]}")
+        f.puts("lookbook: #{data[:lookbook]}") if preview_exists?(component)
         f.puts("---")
         f.puts
         f.puts("import Example from '#{data[:example_path]}'")
@@ -400,6 +400,7 @@ namespace :docs do
 
   def generate_yard_registry
     ENV["SKIP_STORYBOOK_PRELOAD"] = "1"
+    ENV["RAILS_ENV"] = "test"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
     require "primer/view_components"
     require "yard/docs_helper"
@@ -465,7 +466,7 @@ namespace :docs do
       component_id: short_name.underscore,
       status: status.capitalize,
       source: source_url(component),
-      storybook: storybook_url(component),
+      lookbook: lookbook_url(component),
       path: "docs/content/components/#{status_path}#{short_name.downcase}.md",
       example_path: example_path(component),
       require_js_path: require_js_path(component)
@@ -478,10 +479,16 @@ namespace :docs do
     "https://github.com/primer/view_components/tree/main/app/components/#{path}.rb"
   end
 
-  def storybook_url(component)
-    path = component.name.split("::").map { |n| n.underscore.dasherize }.join("-")
+  def lookbook_url(component)
+    path = component.name.underscore.gsub("_component", "")
 
-    "https://primer.style/view-components/stories/?path=/story/#{path}"
+    "https://primer.style/view-components/lookbook/inspect/#{path}/default/"
+  end
+
+  def preview_exists?(component)
+    path = component.name.underscore
+
+    File.exist?("test/previews/#{path}_preview.rb")
   end
 
   def example_path(component)

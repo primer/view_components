@@ -50,5 +50,11 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  # Not working in bundle exec rake utilities:build
+  config.hotwire_livereload.listen_paths << Rails.root.join("../app/assets")
+  config.hotwire_livereload.force_reload_paths << Rails.root.join("../app/assets")
+
+  config.lookbook.listen_paths << Rails.root.join("../app/components")
+
   config.view_component_storybook.stories_path = Rails.root.join("../stories") unless ENV["SKIP_STORYBOOK_PRELOAD"] == "1"
 end
