@@ -3,8 +3,17 @@
 .ActionBar {
   display: flex !important;
   align-items: center;
-  justify-content: flex-end;
   position: relative;
+  overflow: hidden;
+}
+
+.ActionBar-more-menu {
+  position: absolute;
+  right: 0;
+
+  &[aria-hidden="true"] {
+    visibility: hidden;
+  }
 }
 
 /* Divider */

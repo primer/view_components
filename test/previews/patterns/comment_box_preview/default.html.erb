@@ -17,8 +17,8 @@
           <% end %>
         <% end %>
         <% component.with_extra(align: :right) do %>
-          <div class="flex-auto position-relative mr-2">
-            <%= render(Primer::Experimental::ActionBar.new(density: :condensed, position: :absolute, top: 0, right: 0, bottom: 0, left: 0)) do |component| %>
+          <div class="flex-auto d-flex">
+            <%= render(Primer::Experimental::ActionBar.new(mx: 2)) do |component| %>
               <% component.with_item_icon_button(icon: :heading, "aria-label": "Heading") %>
               <% component.with_item_icon_button(icon: :bold, "aria-label": "Bold") %>
               <% component.with_item_icon_button(icon: :italic, "aria-label": "Italic") %>

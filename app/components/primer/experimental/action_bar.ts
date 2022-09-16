@@ -1,13 +1,12 @@
 import {controller, targets, target} from '@github/catalyst'
 import {positionedOffset, focusZone, FocusKeys} from '@primer/behaviors'
 import type {FocusZoneSettings} from '@primer/behaviors'
-// import type {ActionBarMenuElement} from './action-bar-menu-element'
 
 @controller
 export class ActionBarElement extends HTMLElement {
   @targets items: HTMLElement[]
   @targets menuItems: HTMLElement[]
-  @target moreMenu: HTMLElement // ActionBarMenuElement
+  @target moreMenu: HTMLElement
 
   #observer: ResizeObserver
   #initialBarWidth: number
@@ -33,9 +32,11 @@ export class ActionBarElement extends HTMLElement {
 
     // Calculate visible items on page load until there is enough space
     // to show all items or the first item is hidden
-    while (this.#availableSpace() < 0 && !this.items[0].hidden) {
-      this.#calculateVisibleItems()
-    }
+    // while (this.#availableSpace() < this.moreMenu.clientWidth && !this.items[0].hidden) {
+    //   this.#calculateVisibleItems()
+    // }
+
+    this.style.overflow = 'visible'
 
     this.#observer = new ResizeObserver(entries => {
       for (const entry of entries) {
@@ -55,21 +56,23 @@ export class ActionBarElement extends HTMLElement {
   }
 
   #availableSpace(): number {
+    const visibleItems = this.#visibleItems()
+    const lastItem = visibleItems[visibleItems.length - 1]
     // Get the offset of the first item from the container edge
-    const offset = positionedOffset(this.items[0], this)
+    const offset = positionedOffset(lastItem, this)
     if (!offset) {
       return this.clientWidth - this.moreMenu.clientWidth
     }
 
-    return offset.left
+    return offset.right
   }
 
   #calculateVisibleItems() {
     const space = this.#availableSpace()
 
-    if (space < 0) {
+    if (space < this.moreMenu.clientWidth) {
       this.#hideItem()
-    } else if (space > this.#itemGap + this.#nextItemWidth()) {
+    } else if (space > this.#nextItemWidth() + this.moreMenu.clientWidth) {
       this.#showItem()
     }
   }
@@ -90,8 +93,8 @@ export class ActionBarElement extends HTMLElement {
     visibleItems[visibleItems.length - 1].hidden = true
     hiddenMenuItems[hiddenMenuItems.length - 1].hidden = false
 
-    if (this.moreMenu.hidden) {
-      this.moreMenu.hidden = false
+    if (this.moreMenu.getAttribute('aria-hidden') === 'true') {
+      this.#showMenu()
     }
 
     // Reset focus controller
@@ -110,8 +113,7 @@ export class ActionBarElement extends HTMLElement {
     visibleMenuItems[0].hidden = true
     // If there was only one item left, hide the more menu
     if (hiddenItems.length === 1) {
-      this.moreMenu.hidden = true
-      // this.moreMenu.open = false
+      this.#hideMenu()
     }
 
     // Reset focus controller
@@ -133,6 +135,15 @@ export class ActionBarElement extends HTMLElement {
 
   #visibleMenuItems(): HTMLElement[] {
     return this.menuItems.filter(item => !item.hidden)
+  }
+
+  #hideMenu() {
+    this.moreMenu.setAttribute('aria-hidden', 'true')
+    // this.moreMenu.open = false
+  }
+
+  #showMenu() {
+    this.moreMenu.setAttribute('aria-hidden', 'false')
   }
 }
 

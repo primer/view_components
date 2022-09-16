@@ -4,7 +4,7 @@
   <% end %>
 
   <%# Replace with ActionMenu %>
-  <%= render Primer::BaseComponent.new(tag: :"action-menu", "data-anchor-align": "end", "data-target": "action-bar.moreMenu", hidden: true, classes: "ActionBar-item") do %>
+  <%= render Primer::BaseComponent.new(tag: :"action-menu", "data-anchor-align": "end", "data-target": "action-bar.moreMenu", "aria-hidden": true, classes: "ActionBar-more-menu") do %>
     <%= render Primer::Beta::IconButton.new(scheme: :invisible, icon: :"kebab-horizontal", "aria-label": "Menu", "aria-haspopup": true, "aria-expanded": false, "aria-controls": "#{@menu_id}-list", id: @menu_id) %>
     <div class="Overlay-backdrop--anchor" data-menu-overlay>
       <div class="Overlay Overlay-whenNarrow Overlay--height-auto Overlay--width-auto" hidden>
