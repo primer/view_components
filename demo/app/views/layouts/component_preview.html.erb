@@ -8,6 +8,9 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "primer_view_components", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "primer_view_components", type: "module", "data-turbo-track": "reload" %>
+    <% if Rails.env.development? %>
+      <%= javascript_include_tag "hotwire-livereload", defer: true %>
+    <% end %>
   </head>
 
   <body style="padding: 16px">

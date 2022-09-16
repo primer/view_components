@@ -42,19 +42,10 @@
       "label": "doctocat"
     }
   },
-  "customizations": {
-    "codespaces": {
-      "repositories": {
-        "primer/css": {
-          "permissions": "write-all"
-        }
-      }
-    }
-  },
   "hostRequirements": {
     "memory": "8gb"
   },
   "features": {
-    "sshd": "latest" 
+    "sshd": "latest"
   }
 }
