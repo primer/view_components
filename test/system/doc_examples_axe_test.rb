@@ -7,6 +7,9 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
   # Do not add to this list for any other reason!
   IGNORED_PREVIEWS = %w[
     Primer::MarkdownPreview
+    Primer::Beta::AutoCompleteItemPreview
+    Docs::BetaAutoCompleteItemPreview
+    Docs::NavigationTabComponentPreview
   ].freeze
 
   def test_accessibility_of_doc_examples
