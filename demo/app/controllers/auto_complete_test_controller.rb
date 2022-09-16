@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# no doc
+# :nocov:
 class AutoCompleteTestController < ApplicationController
   layout false
 
