@@ -1,13 +1,13 @@
 import {controller, targets, target} from '@github/catalyst'
 import {positionedOffset, focusZone, FocusKeys} from '@primer/behaviors'
 import type {FocusZoneSettings} from '@primer/behaviors'
-import type {ActionBarMenuElement} from './action-bar-menu-element'
+// import type {ActionBarMenuElement} from './action-bar-menu-element'
 
 @controller
 export class ActionBarElement extends HTMLElement {
   @targets items: HTMLElement[]
   @targets menuItems: HTMLElement[]
-  @target moreMenu: ActionBarMenuElement
+  @target moreMenu: HTMLElement // ActionBarMenuElement
 
   #observer: ResizeObserver
   #initialBarWidth: number
@@ -111,7 +111,7 @@ export class ActionBarElement extends HTMLElement {
     // If there was only one item left, hide the more menu
     if (hiddenItems.length === 1) {
       this.moreMenu.hidden = true
-      this.moreMenu.open = false
+      // this.moreMenu.open = false
     }
 
     // Reset focus controller
