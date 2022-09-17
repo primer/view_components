@@ -1,3 +1,18 @@
 #!/bin/sh
 
+# Gems
+bundle install --path vendor/bundle
+yarn install
+
+# Set up demo
+pushd demo
+bundle install --path vendor/bundle
+yarn install
+popd
+
+# Set up docs
+pushd docs
+yarn install
+popd
+
 exec overmind start
