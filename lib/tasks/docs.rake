@@ -397,7 +397,6 @@ namespace :docs do
   end
 
   def generate_yard_registry
-    ENV["SKIP_STORYBOOK_PRELOAD"] = "1"
     ENV["RAILS_ENV"] = "test"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
     require "primer/view_components"

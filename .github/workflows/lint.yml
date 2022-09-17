@@ -53,7 +53,6 @@ jobs:
           app/**/*.rb
           lib/**/*.rb
           demo/**/*.rb
-          stories/**/*.rb
           test/**/*.rb
     - name: Lint with Rubocop
       if: steps.changed-files.outputs.any_changed == 'true'
@@ -107,7 +106,6 @@ jobs:
       with:
         files: |
           app/components/**/*.ts
-          demo/.storybook/**/*.js
     - name: Lint with ESLint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |

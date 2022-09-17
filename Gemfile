@@ -36,5 +36,4 @@ gem "webpacker", "~> 5.0"
 gem "bootsnap", ">= 1.4.2", require: false
 
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
-gem "view_component_storybook", "~> 0.8.0"
 gem "lookbook", "~> 1" unless rails_version.to_f < 7

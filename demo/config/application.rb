@@ -6,7 +6,6 @@ require "action_controller/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
 require "view_component/engine"
-require "view_component/storybook/engine"
 require "primer/view_components/engine"
 
 # Require the gems listed in Gemfile, including any gems
@@ -23,7 +22,6 @@ module Demo
 
     # Initialize configuration defaults for originally generated Rails version.
     config.view_component.default_preview_layout = "component_preview"
-    config.view_component_storybook.show_stories = true
     config.view_component.show_previews = true
     config.view_component.preview_controller = "PreviewController"
     config.view_component.preview_paths << "#{Rails.root}/../test/previews"

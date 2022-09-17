@@ -63,11 +63,8 @@ By default, the system tests run in a headless Chrome browser. Prefix the test c
 
 Documentation is written as [YARD](https://yardoc.org/) comments directly in the source code, compiled into Markdown via `bundle exec rake docs:build` and served by [Doctocat](https://github.com/primer/doctocat).
 
-### Storybook / Documentation / Demo Rails App
+### Documentation / Demo Rails App
 
-* **Storybook**: Components can be interacted with, seen in different contexts, and controls can be manipulated
-  * Typically runs on port 5000
-  * To rebuild stories, navigate to the `demo` directory (`cd demo`) and then run `bin/rails view_component_storybook:write_stories_json`
 * **Docs**: Generated YARD docs with examples, see components with usage instructions and examples
   * Typically runs on port 5400
   * To rebuild docs, run `bundle exec rake docs:build`
@@ -76,7 +73,7 @@ Documentation is written as [YARD](https://yardoc.org/) comments directly in the
   * To rerender the templates, you do not have to restart the server. Run `bundle exec rake docs:preview` and refresh the page.
 
 ---
-To run Storybook, the documentation site, and the demo app, run:
+To run the documentation site and the demo app, run:
 
 ```bash
 script/dev
@@ -109,7 +106,7 @@ gem "primer_view_components", path: "path_to_the_gem" # e.g. path: "~/primer/vie
 Then, `bundle install` to update references. You'll now be able to see changes from the gem without having to build it.
 Remember that restarting the Rails server is necessary to see changes, as the gem is loaded at boot time.
 
-To minimize the number of restarts, we recommend checking the component in Storybook first, and then when it's in a good state, you can check it in your app.
+To minimize the number of restarts, we recommend checking the component in Lookbook first, and then when it's in a good state, you can check it in your app.
 
 ## Submitting a pull request
 
@@ -130,9 +127,9 @@ Here are a few things you can do that will increase the likelihood of your pull 
 * Keep your change as focused as possible. If there are multiple changes you would like to make that are not dependent upon each other, consider submitting them as separate pull requests.
 * Write a descriptive pull request message.
 
-## Deploying the Rails Storybook
+## Deploying the Rails Lookbook
 
-The Rails storybook is currently deployed via GitHub Actions using [this workflow](https://github.com/primer/view_components/actions/workflows/deploy-production.yml). Deployments happen automatically on every merge to the `main` branch. The storybook runs in a Kubernetes cluster hosted within our team's Azure subscription. Please contact a member of the team for access.
+The Rails lookbook is currently deployed via GitHub Actions using [this workflow](https://github.com/primer/view_components/actions/workflows/deploy-production.yml). Deployments happen automatically on every merge to the `main` branch. The lookbook runs in a Kubernetes cluster hosted within our team's Azure subscription. Please contact a member of the team for access.
 
 ## Publishing a Release
 

@@ -3,8 +3,8 @@
 # :nocov:
 Rails.application.routes.draw do
   if Rails.env.production?
-    get '/view-components', to: redirect('/view-components/stories/')
-    get '/', to: redirect('/view-components/stories/')
+    get '/view-components', to: redirect('/view-components/lookbook/')
+    get '/', to: redirect('/view-components/lookbook/')
   else
     get '/', to: redirect('/lookbook/')
   end
