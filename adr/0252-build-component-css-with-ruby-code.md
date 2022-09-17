@@ -22,8 +22,6 @@ In our github.com production bundle we have a few options:
 1. We could include the compiled css file in our main bundle by adding a `@import "@primer/view-components/app/assets/styles/primer_view_components.css"` import line. This is most likely what we'll start with.
 2. We could use CSS modules to load specific bundles for each component dynamically when the component is included on the page. This is more work, but would be worth the reward.
 
-[docs build]: https://primer-904b32aa7f-26611710.drafts.github.io/components/alpha/segmentedcontrol
-[`pre` version]: https://unpkg.com/browse/@primer/view-components@0.0.0-pre.7f94707/app/assets/styles/primer_view_components.css
 [PostCSS]: https://postcss.org/
 [preset-env]: https://preset-env.cssdb.org/
 [^1]: https://github.com/primer/css/pull/2083
@@ -33,19 +31,18 @@ In our github.com production bundle we have a few options:
 [^5]: https://github.com/primer/css/pull/2202
 [^6]: https://github.com/primer/css/pull/2205
 
-
 ## Alternatives considered
 
 ### Keep component CSS separate in primer/css
 
 Pros:
-  - Doesn't require us to change already established norms.
-  - Has storybook site
+- Doesn't require us to change already established norms.
+- Has storybook site
 
 Cons:
-  - Requires extra releases in both libraries when iterating on component architecture.
-  - Cognitive disassociation between Primer::ViewComponent and .PrimerCssComponent
-  - Uses old SCSS technology
+- Requires extra releases in both libraries when iterating on component architecture.
+- Cognitive disassociation between Primer::ViewComponent and .PrimerCssComponent
+- Uses old SCSS technology
 
 ## Consequences
 
