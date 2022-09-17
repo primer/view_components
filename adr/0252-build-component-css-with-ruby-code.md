@@ -9,6 +9,7 @@ Accepted
 ## Context
 
 We've talked a few times about the overhead it takes to develop components twice for rails architecture. Once in [primer/css](https://github.com/primer/css/pull/2083) and again in [primer/view_components](https://github.com/primer/view_components/pull/1225). This disconnect can lead to multiple versions and iterations happening in primer/css before any component is actually ready. [^1] [^2] [^3] [^4] [^5] [^6].
+
 ## Decision
 
 Any new View Components should include corresponding CSS in this repository instead of in Primer CSS.
@@ -36,16 +37,17 @@ In our github.com production bundle we have a few options:
 ### Keep component CSS separate in primer/css
 
 Pros:
+
 - Doesn't require us to change already established norms.
 - Has storybook site
 
 Cons:
+
 - Requires extra releases in both libraries when iterating on component architecture.
 - Cognitive disassociation between Primer::ViewComponent and .PrimerCssComponent
 - Uses old SCSS technology
 
 ## Consequences
 
-<!-- What becomes easier or more difficult to do and any risks introduced by the change that will need to be mitigated.-->
 - This might make sharing CSS with Primer React more difficult, as it will now be located in a Rails-specific repository.
 - The source of truth for CSS will be split across PVC and PCSS, at least in the short term.
