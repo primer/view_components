@@ -13,6 +13,7 @@ require "primer/view_components/engine"
 Bundler.require(*Rails.groups)
 
 module Demo
+  # :nocov:
   class Application < Rails::Application
     if Rails.version.to_i >= 7
       config.load_defaults 7.0
@@ -24,7 +25,7 @@ module Demo
     config.view_component.default_preview_layout = "component_preview"
     config.view_component.show_previews = true
     config.view_component.preview_controller = "PreviewController"
-    config.view_component.preview_paths << "#{Rails.root}/../test/previews"
+    config.view_component.preview_paths << Rails.root.join("../test/previews")
 
     config.autoload_paths << Rails.root.join("../test/forms")
 

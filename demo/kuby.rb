@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require "kuby/azure"
 require "kuby/kind"
 
 # Define a production Kuby deploy environment
 Kuby.define("ViewComponentsStorybook") do
-  shared = -> do
+  shared = lambda {
     docker do
       credentials do
         username "GitHubActions"
@@ -48,10 +50,10 @@ Kuby.define("ViewComponentsStorybook") do
       # code and busting the layer cache, we copy over only these two necessary
       # files before bundle install.
       insert :gem_support, before: :bundler_phase do |dockerfile|
-        files = %w(
+        files = %w[
           primer_view_components.gemspec
           lib/primer/view_components/version.rb
-        )
+        ]
 
         files.each { |f| dockerfile.copy(f, f) }
       end
@@ -72,7 +74,7 @@ Kuby.define("ViewComponentsStorybook") do
       # :yarn_phase) because the prepare script compiles and generates the PVC
       # JavaScript bundle the Rails app needs to build into its own bundle.
       insert :main_yarn, before: :yarn_phase do |dockerfile|
-        files = %w(
+        files = %w[
           tsconfig.json
           rollup.config.js
           postcss.config.js
@@ -82,7 +84,7 @@ Kuby.define("ViewComponentsStorybook") do
           yarn.lock
           test/previews
           test/forms
-        )
+        ]
 
         files.each { |f| dockerfile.copy(f, f) }
 
@@ -104,7 +106,7 @@ Kuby.define("ViewComponentsStorybook") do
         root "demo/"
       end
     end
-  end
+  }
 
   environment(:production) do
     instance_exec(&shared)
@@ -121,7 +123,7 @@ Kuby.define("ViewComponentsStorybook") do
       end
 
       configure_plugin :rails_app do
-        hostname 'view-components-storybook.eastus.cloudapp.azure.com'
+        hostname "view-components-storybook.eastus.cloudapp.azure.com"
       end
     end
   end
@@ -132,7 +134,7 @@ Kuby.define("ViewComponentsStorybook") do
     kubernetes do
       configure_plugin :rails_app do
         tls_enabled false
-        hostname 'localhost'
+        hostname "localhost"
       end
 
       provider :kind
