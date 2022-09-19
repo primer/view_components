@@ -209,7 +209,7 @@ module Primer
         def caption_template_name
           return nil unless name
 
-          @caption_template_name ||= if respond_to?(:value)
+          @caption_template_name ||= if respond_to?(:value) && value
                                        :"#{name}_#{value}"
                                      else
                                        name.to_sym
