@@ -33,10 +33,7 @@
   "appPort": [4000, 5000, 5400],
   "portsAttributes": {
     "4000": {
-      "label": "web"
-    },
-    "5000": {
-      "label": "storybook"
+      "label": "demo"
     },
     "5400": {
       "label": "doctocat"
