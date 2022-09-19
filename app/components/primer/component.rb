@@ -17,6 +17,8 @@ module Primer
 
     INVALID_ARIA_LABEL_TAGS = [:div, :span, :p].freeze
 
+    warn_on_deprecated_slot_setter
+
     private
 
     def raise_on_invalid_options?
