@@ -31,7 +31,7 @@ jobs:
     - name: Purge tags
       run: |
         az acr run \
-          --cmd "az acr purge --filter 'primer/view_components_storybook:.*'  --ago 0d --keep 10" \
+          --cmd "acr purge --filter 'primer/view_components_storybook:.*'  --ago 0d --keep 10" \
           --registry primer \
           /dev/null
     - name: Bundle
