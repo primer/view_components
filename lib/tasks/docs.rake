@@ -371,27 +371,25 @@ namespace :docs do
 
       yard_example_tags = initialize_method.tags(:example)
 
-      path = Pathname.new("test/previews/primer/docs/#{short_name.underscore}_preview.rb")
+      path = Pathname.new("test/previews/docs/#{short_name.underscore}_preview.rb")
       path.dirname.mkdir unless path.dirname.exist?
 
       File.open(path, "w") do |f|
-        f.puts("module Primer")
-        f.puts("  module Docs")
-        f.puts("    class #{short_name}Preview < ViewComponent::Preview")
+        f.puts("module Docs")
+        f.puts("  class #{short_name}Preview < ViewComponent::Preview")
 
         yard_example_tags.each_with_index do |tag, index|
           name, _, code = parse_example_tag(tag)
           method_name = name.split("|").first.downcase.parameterize.underscore
-          f.puts("      def #{method_name}; end")
+          f.puts("    def #{method_name}; end")
           f.puts unless index == yard_example_tags.size - 1
-          path = Pathname.new("test/previews/primer/docs/#{short_name.underscore}_preview/#{method_name}.html.erb")
+          path = Pathname.new("test/previews/docs/#{short_name.underscore}_preview/#{method_name}.html.erb")
           path.dirname.mkdir unless path.dirname.exist?
           File.open(path, "w") do |view_file|
             view_file.puts(code.to_s)
           end
         end
 
-        f.puts("    end")
         f.puts("  end")
         f.puts("end")
       end
@@ -399,7 +397,6 @@ namespace :docs do
   end
 
   def generate_yard_registry
-    ENV["SKIP_STORYBOOK_PRELOAD"] = "1"
     ENV["RAILS_ENV"] = "test"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
     require "primer/view_components"

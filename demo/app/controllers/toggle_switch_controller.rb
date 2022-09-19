@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # For toggle switch previews/tests
+# :nocov:
 class ToggleSwitchController < ApplicationController
   skip_before_action :verify_authenticity_token
 

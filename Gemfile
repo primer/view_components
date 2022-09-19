@@ -37,4 +37,3 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 gem "lookbook", "~> 1" unless rails_version.to_f < 7
 gem "view_component", path: ENV["VIEW_COMPONENT_PATH"] if ENV["VIEW_COMPONENT_PATH"]
-gem "view_component_storybook", "~> 0.8.0"
