@@ -30,8 +30,8 @@
     "build:docs": "cd docs && yarn gatsby build --prefix-paths",
     "build:docs:preview": "cd docs && yarn gatsby build",
     "prepare": "rm -rf docs/static && mkdir -p docs/static && yarn build:js && yarn build:css && cp app/assets/**/primer_view_components.* docs/static/",
-    "lint": "eslint 'app/components/**/*.ts' demo/.storybook",
-    "lint:fix": "eslint 'app/components/**/*.ts' demo/.storybook --fix",
+    "lint": "eslint 'app/components/**/*.ts'",
+    "lint:fix": "eslint 'app/components/**/*.ts' --fix",
     "changeset:version": "changeset version && script/version",
     "build:js": "tsc && rollup -c",
     "build:css": "postcss -o app/assets/styles/primer_view_components.css app/components/primer/primer.pcss"
@@ -57,6 +57,7 @@
     "@rollup/plugin-typescript": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
+    "chokidar-cli": "^3.0.0",
     "cssnano": "^5.1.13",
     "eslint": "^8.20.0",
     "eslint-plugin-custom-elements": "^0.0.6",
@@ -75,8 +76,5 @@
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },
-  "prettier": "@github/prettier-config",
-  "storybook": {
-    "url": "https://primer.style/view-components/stories/"
-  }
+  "prettier": "@github/prettier-config"
 }

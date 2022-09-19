@@ -7,9 +7,9 @@ module Beta
     def test_renders_component
       visit_preview(:default)
 
-      assert_selector("auto-complete[for=\"test-id\"][src=\"/auto_complete\"]") do
+      assert_selector("auto-complete[for=\"list-id\"][src=\"/auto_complete\"]") do
         assert_selector("input.FormControl-input")
-        assert_selector("ul[id=\"test-id\"].ActionList", visible: false)
+        assert_selector("ul[id=\"list-id\"].ActionList", visible: false)
       end
       refute_selector(".ActionList-item")
     end
@@ -21,7 +21,7 @@ module Beta
       fill_in "input-id", with: "a"
 
       # results are now visible
-      assert_selector("ul[id=\"test-id\"].ActionList", visible: true)
+      assert_selector("ul[id=\"list-id\"].ActionList", visible: true)
       assert_selector(".ActionList-item")
     end
 

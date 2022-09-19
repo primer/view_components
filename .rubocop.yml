@@ -12,19 +12,17 @@ AllCops:
     - "demo/**/*"
     - "**/vendor/**/*"
     - "**/node_modules/**/*"
-    - "test/previews/primer/docs/**/*"
+    - "test/previews/docs/**/*"
   TargetRubyVersion: 2.6
 
 Style/ClassAndModuleChildren:
   Enabled: true
   Exclude:
-    - "stories/**/*"
     - "test/**/*"
 
 Style/Documentation:
   Enabled: true
   Exclude:
-    - "stories/**/*"
     - "test/**/*"
 
 Naming/MethodParameterName:
@@ -47,8 +45,6 @@ Style/SymbolArray:
 
 Rails/OutputSafety:
   Enabled: true
-  Exclude:
-    - "stories/**/*"
 
 Style/AsciiComments:
   Enabled: false

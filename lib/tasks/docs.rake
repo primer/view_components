@@ -132,7 +132,7 @@ namespace :docs do
         f.puts("componentId: #{data[:component_id]}")
         f.puts("status: #{data[:status]}")
         f.puts("source: #{data[:source]}")
-        f.puts("storybook: #{data[:storybook]}")
+        f.puts("lookbook: #{data[:lookbook]}") if preview_exists?(component)
         f.puts("---")
         f.puts
         f.puts("import Example from '#{data[:example_path]}'")
@@ -372,27 +372,25 @@ namespace :docs do
 
       yard_example_tags = initialize_method.tags(:example)
 
-      path = Pathname.new("test/previews/primer/docs/#{short_name.underscore}_preview.rb")
+      path = Pathname.new("test/previews/docs/#{short_name.underscore}_preview.rb")
       path.dirname.mkdir unless path.dirname.exist?
 
       File.open(path, "w") do |f|
-        f.puts("module Primer")
-        f.puts("  module Docs")
-        f.puts("    class #{short_name}Preview < ViewComponent::Preview")
+        f.puts("module Docs")
+        f.puts("  class #{short_name}Preview < ViewComponent::Preview")
 
         yard_example_tags.each_with_index do |tag, index|
           name, _, code = parse_example_tag(tag)
           method_name = name.split("|").first.downcase.parameterize.underscore
-          f.puts("      def #{method_name}; end")
+          f.puts("    def #{method_name}; end")
           f.puts unless index == yard_example_tags.size - 1
-          path = Pathname.new("test/previews/primer/docs/#{short_name.underscore}_preview/#{method_name}.html.erb")
+          path = Pathname.new("test/previews/docs/#{short_name.underscore}_preview/#{method_name}.html.erb")
           path.dirname.mkdir unless path.dirname.exist?
           File.open(path, "w") do |view_file|
             view_file.puts(code.to_s)
           end
         end
 
-        f.puts("    end")
         f.puts("  end")
         f.puts("end")
       end
@@ -400,7 +398,7 @@ namespace :docs do
   end
 
   def generate_yard_registry
-    ENV["SKIP_STORYBOOK_PRELOAD"] = "1"
+    ENV["RAILS_ENV"] = "test"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
     require "primer/view_components"
     require "yard/docs_helper"
@@ -466,7 +464,7 @@ namespace :docs do
       component_id: short_name.underscore,
       status: status.capitalize,
       source: source_url(component),
-      storybook: storybook_url(component),
+      lookbook: lookbook_url(component),
       path: "docs/content/components/#{status_path}#{short_name.downcase}.md",
       example_path: example_path(component),
       require_js_path: require_js_path(component)
@@ -479,10 +477,16 @@ namespace :docs do
     "https://github.com/primer/view_components/tree/main/app/components/#{path}.rb"
   end
 
-  def storybook_url(component)
-    path = component.name.split("::").map { |n| n.underscore.dasherize }.join("-")
+  def lookbook_url(component)
+    path = component.name.underscore.gsub("_component", "")
 
-    "https://primer.style/view-components/stories/?path=/story/#{path}"
+    "https://primer.style/view-components/lookbook/inspect/#{path}/default/"
+  end
+
+  def preview_exists?(component)
+    path = component.name.underscore
+
+    File.exist?("test/previews/#{path}_preview.rb")
   end
 
   def example_path(component)

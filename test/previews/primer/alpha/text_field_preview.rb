@@ -4,7 +4,7 @@ module Primer
   module Alpha
     # @label TextField
     class TextFieldPreview < ViewComponent::Preview
-      # @label Playground
+      # @label Default
       #
       # @param name text
       # @param id text
@@ -20,7 +20,7 @@ module Primer
       # @param inset toggle
       # @param monospace toggle
       # @param leading_visual_icon text
-      def playground(
+      def default(
         name: "my-text-field",
         id: "my-text-field",
         label: "My text field",

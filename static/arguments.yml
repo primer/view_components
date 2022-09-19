@@ -36,7 +36,7 @@
   - name: subtitle
     type: String
     default: "`nil`"
-    description: Provides dditional context for the dialog, also setting the `aria-describedby`
+    description: Provides additional context for the dialog, also setting the `aria-describedby`
       attribute.
   - name: size
     type: Symbol
@@ -46,12 +46,12 @@
   - name: position
     type: Symbol
     default: "`:center`"
-    description: The size of the dialog. One of `:center`, `:left`, or `:right`.
+    description: The position of the dialog. One of `:center`, `:left`, or `:right`.
   - name: position_narrow
     type: Symbol
     default: "`:inherit`"
-    description: The size of the dialog. One of `:bottom`, `:fullscreen`, `:inherit`,
-      `:left`, or `:right`.
+    description: The position of the dialog when narrow. One of `:bottom`, `:fullscreen`,
+      `:inherit`, `:left`, or `:right`.
   - name: visually_hide_title
     type: Boolean
     default: "`false`"
