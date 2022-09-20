@@ -37,7 +37,7 @@ export class ActionBarElement extends HTMLElement {
 
     // Calculate visible items on page load until there is enough space
     // to show all items or the first item is hidden
-    while (this.#availableSpace() < this.moreMenu.clientWidth + this.#itemGap * 0.5 && !this.items[0].hidden) {
+    while (this.#availableSpace() < this.moreMenu.offsetWidth + this.#itemGap * 0.5 && !this.items[0].hidden) {
       this.#shrinking()
     }
 
@@ -67,7 +67,7 @@ export class ActionBarElement extends HTMLElement {
 
   #availableSpace(): number {
     // Get the offset of the item container from the container edge
-    return this.clientWidth - this.itemContainer.clientWidth
+    return this.offsetWidth - this.itemContainer.offsetWidth
   }
 
   #shrinking() {
@@ -76,7 +76,7 @@ export class ActionBarElement extends HTMLElement {
     }
     const gapSpace = this.#itemGap * 0.5
 
-    if (this.#availableSpace() < this.moreMenu.clientWidth + gapSpace) {
+    if (this.#availableSpace() < this.moreMenu.offsetWidth + gapSpace) {
       const visibleItems = this.items.filter(item => !item.hidden)
       const hiddenMenuItems = this.menuItems.filter(item => item.hidden)
 
@@ -105,7 +105,7 @@ export class ActionBarElement extends HTMLElement {
 
     const hiddenItemWidth = Number(hiddenItems[0].getAttribute('data-offset-width'))
 
-    if (this.#availableSpace() >= this.moreMenu.clientWidth + hiddenItemWidth + gapSpace) {
+    if (this.#availableSpace() >= this.moreMenu.offsetWidth + hiddenItemWidth + gapSpace) {
       const visibleMenuItems = this.menuItems.filter(item => !item.hidden)
 
       hiddenItems[0].hidden = false
