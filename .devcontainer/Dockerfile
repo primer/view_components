@@ -45,9 +45,6 @@ RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/l
 ARG BUNDLER_VERSION=2.2.11
 RUN gem install bundler:${BUNDLER_VERSION} solargraph
 
-# Install yarn
-RUN npm install -g yarn
-
 # Install chrome
 RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
       && (sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb || sudo apt-get -fy install)  \
