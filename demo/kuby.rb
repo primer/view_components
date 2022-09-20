@@ -70,7 +70,7 @@ Kuby.define("ViewComponentsStorybook") do
       # before the Rails app's JavaScript modules are installed (i.e. before
       # :yarn_phase) because the prepare script compiles and generates the PVC
       # JavaScript bundle the Rails app needs to build into its own bundle.
-      insert :main_npm, after: :nodejs_phase do |dockerfile|
+      insert :main_npm, after: :package_phase do |dockerfile|
         files = %w[
           tsconfig.json
           rollup.config.js
