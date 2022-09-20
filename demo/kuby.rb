@@ -3,6 +3,7 @@
 require "kuby/azure"
 require "kuby/kind"
 
+# NPM package
 class NpmPackage < Kuby::Docker::Packages::Package
   def install_on_debian(dockerfile)
     dockerfile.run(<<~END)
@@ -11,7 +12,7 @@ class NpmPackage < Kuby::Docker::Packages::Package
   end
 end
 
-Kuby.register_package('npm', NpmPackage)
+Kuby.register_package("npm", NpmPackage)
 
 # Define a production Kuby deploy environment
 Kuby.define("ViewComponentsStorybook") do
