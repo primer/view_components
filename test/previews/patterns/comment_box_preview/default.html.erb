@@ -1,14 +1,14 @@
 <%= render Primer::BaseComponent.new(tag: :div, container: container) do %>
   <%= render(Primer::Beta::BorderBox.new(mb: 2)) do |component| %>
     <% component.with_body(p: 0) do %>
-      <%= render(Primer::Alpha::TabPanels.new(label: "With panels", mb: 0, bg: :subtle, style: "display: flex;")) do |component| %>
-        <% component.with_tab(id: "tab-1", selected: true, style: "margin-top: -1px;margin-left: -1px;") do |t| %>
+      <%= render(Primer::Alpha::TabPanels.new(label: "With panels", mb: 0, bg: :subtle, style: "display: flex;")) do |c| %>
+        <% c.with_tab(id: "tab-1", selected: true, style: "margin-top: -1px;margin-left: -1px;") do |t| %>
           <% t.text { "Write" } %>
           <% t.panel do %>
             <textarea class="FormControl-textarea d-block width-full" style="border-color:transparent;"></textarea>
           <% end %>
         <% end %>
-        <% component.with_tab(id: "tab-2", style: "margin-top: -1px;margin-left: -1px;") do |t| %>
+        <% c.with_tab(id: "tab-2", style: "margin-top: -1px;margin-left: -1px;") do |t| %>
           <% t.text { "Preview" } %>
           <% t.panel do %>
             <div class="p-3">
@@ -16,7 +16,7 @@
             </div>
           <% end %>
         <% end %>
-        <% component.with_extra(align: :right) do %>
+        <% c.with_extra(align: :right) do %>
           <%= render(Primer::Experimental::ActionBar.new(ml: :auto)) do |component| %>
             <% component.with_item_icon_button(icon: :heading, "aria-label": "Heading") %>
             <% component.with_item_icon_button(icon: :bold, "aria-label": "Bold") %>
