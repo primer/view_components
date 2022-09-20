@@ -7,19 +7,11 @@ The easiest way to get started contributing to Primer ViewComponents is with [Co
 1. Clone `git@github.com:primer/view_components.git`
 2. Install [Overmind](https://github.com/DarthSim/overmind) and [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
 3. Run `script/setup` to install dependencies
-4. Run `script/dev`, this will run the documentation site on [localhost:5400](localhost:5400) and Storybook on [localhost:5000](localhost:5000)
-
-### Troubleshooting
-
-When running Storybook locally, if you see:
-
-> Cannot GET /
-
-Try deleting your `node_modules` directory and rerunning `script/setup` followed by `script/dev`.
+4. Run `script/dev`, this will run the documentation site on [localhost:5400](localhost:5400) and Lookbook on [localhost:4000](localhost:5000)
 
 ### Lookbook
 
-[Lookbook](https://github.com/allmarkedup/lookbook) is a native ViewComponent alternative to Storybook, that works off of ViewComponent preivews and yarddoc to generate stories.
+[Lookbook](https://github.com/allmarkedup/lookbook) is a native ViewComponent alternative to Storybook, that works off of ViewComponent preivews and yarddoc.
 
 #### How to run
 

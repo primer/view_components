@@ -38,10 +38,6 @@ class ComponentStatusMigrator < Thor::Group
     move_file("test", test_path, test_path_with_status)
   end
 
-  def move_story
-    move_file("story", story_path, story_path_with_status)
-  end
-
   def add_module
     return if stable?
 
@@ -59,16 +55,6 @@ class ComponentStatusMigrator < Thor::Group
 
   def rename_test_class
     gsub_file(test_path_with_status, /class .*Test </, "class Primer#{class_status}#{name_without_suffix.gsub('::', '')}Test <")
-  end
-
-  def add_require_to_story
-    require_statement = "require \"primer/#{status_folder_name}#{name_without_suffix.underscore}\"\n"
-    insert_into_file(story_path_with_status, require_statement, after: "# frozen_string_literal: true\n")
-  end
-
-  def rename_story_class
-    new_class_name = "class Primer::#{status_module}#{name_without_suffix}Stories"
-    gsub_file(story_path_with_status, /class Primer::#{name}Stories/, new_class_name)
   end
 
   def rename_nav_entry
@@ -191,14 +177,6 @@ class ComponentStatusMigrator < Thor::Group
 
   def test_path_with_status
     @test_path_with_status ||= "test/components/#{status_folder_name}#{name_without_suffix.underscore}_test.rb"
-  end
-
-  def story_path
-    @story_path ||= "stories/primer/#{name.underscore}_stories.rb"
-  end
-
-  def story_path_with_status
-    @story_path_with_status ||= "stories/primer/#{status_folder_name}#{name_without_suffix.underscore}_stories.rb"
   end
 
   def docs_path

@@ -77,7 +77,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  config.logger = Logger.new(STDOUT) if ENV["RAILS_LOG_TO_STDOUT"].present?
+  config.logger = Logger.new($stdout) if ENV["RAILS_LOG_TO_STDOUT"].present?
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
@@ -99,5 +99,4 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  config.view_component_storybook.stories_path = Rails.root.join("../stories")
 end

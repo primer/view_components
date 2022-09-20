@@ -13,8 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        rails_version: [6.1.1, 7.0.3, main]
-        ruby_version: [2.7.x, 3.0.x, 3.1.x]
+        include:
+          - rails_version: "6.1.1"
+            ruby_version: "2.7.x"
+          - rails_version: "7.0.3"
+            ruby_version: "3.0.x"
+          - rails_version: "main"
+            ruby_version: "3.1.x"
     steps:
     - uses: actions/checkout@master
     - name: Setup Ruby
@@ -34,33 +39,17 @@ jobs:
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
         RAILS_VERSION: ${{ matrix.rails_version }}
-  stories:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: Setup Ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 3.0
-    - uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: gems-build-stories-ruby-3.0-${{ hashFiles('**/Gemfile.lock') }}
-    - name: Build gem
-      run: |
-        gem install bundler:2.2.9
-        bundle config path vendor/bundle
-        bundle update actionview activemodel activesupport railties actioncable
-        cd demo
-        bundle config path vendor/bundle
-        bundle update actionview activemodel activesupport railties actioncable
-        bin/rails view_component_storybook:write_stories_json
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        rails_version: [6.1.1, 7.0.3, main]
-        ruby_version: [2.7.x, 3.0.x, 3.1.x]
+        include:
+          - rails_version: "6.1.1"
+            ruby_version: "2.7.x"
+          - rails_version: "7.0.3"
+            ruby_version: "3.0.x"
+          - rails_version: "main"
+            ruby_version: "3.1.x"
     steps:
     - uses: actions/checkout@master
     - name: Setup Ruby
