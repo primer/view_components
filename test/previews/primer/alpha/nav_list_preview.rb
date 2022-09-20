@@ -10,14 +10,14 @@ module Primer
             item.with_leading_visual_icon(icon: :gear)
           end
 
-          c.with_group(aria: { label: "Access" }) do |group|
-            group.with_heading { "Access" }
+          c.with_list(aria: { label: "Access" }) do |list|
+            list.with_heading(title: "Access")
 
-            group.with_item(label: "Collaborators and teams", href: "/collaborators", selected_by_ids: :collaborators) do |item|
+            list.with_item(label: "Collaborators and teams", href: "/collaborators", selected_by_ids: :collaborators) do |item|
               item.with_leading_visual_icon(icon: :people)
             end
 
-            group.with_item(label: "Moderation options", href: "/moderation") do |item|
+            list.with_item(label: "Moderation options", href: "/moderation") do |item|
               item.with_leading_visual_icon(icon: :"comment-discussion")
 
               item.with_item(label: "Interaction limits", href: "/interaction-limits", selected_by_ids: :interaction_limits)

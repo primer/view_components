@@ -1,5 +1,5 @@
 import {controller} from '@github/catalyst'
-import {ActionListElement} from './action-list-element'
+import {ActionListElement} from './action_list_element'
 
 @controller
 class NavListElement extends ActionListElement {
