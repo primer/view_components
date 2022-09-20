@@ -14,7 +14,7 @@ Kuby.define("ViewComponentsStorybook") do
 
       image_url ENV["IMAGE_URL"] || "primer.azurecr.io/primer/view_components_storybook"
 
-      # Run bundler, yarn, etc in this directory.
+      # Run bundler, npm, etc in this directory.
       app_root "./demo"
 
       # Copy over this separate gemfile our main Gemfile depends on. We use a
@@ -36,9 +36,6 @@ Kuby.define("ViewComponentsStorybook") do
       # We need newer versions than the ones Kuby installs by default.
       package_phase.remove :nodejs
       package_phase.add :nodejs, "16.13.2"
-
-      package_phase.remove :yarn
-      package_phase.add :yarn, "1.22.17"
 
       # Kuby copies over only Gemfiles, i.e. no app code, before attempting to
       # bundle install to prevent busting the layer cache and having to reinstall
@@ -73,7 +70,7 @@ Kuby.define("ViewComponentsStorybook") do
       # before the Rails app's JavaScript modules are installed (i.e. before
       # :yarn_phase) because the prepare script compiles and generates the PVC
       # JavaScript bundle the Rails app needs to build into its own bundle.
-      insert :main_yarn, before: :yarn_phase do |dockerfile|
+      insert :main_npm, after: :nodejs_phase do |dockerfile|
         files = %w[
           tsconfig.json
           rollup.config.js
@@ -81,7 +78,7 @@ Kuby.define("ViewComponentsStorybook") do
           lib/postcss_mixins
           app/
           package.json
-          yarn.lock
+          package-lock.json
           test/previews
           test/forms
         ]
@@ -91,11 +88,11 @@ Kuby.define("ViewComponentsStorybook") do
         # This directory needs to exist b/c some JavaScript thing copies the compiled
         # Primer CSS bundle into it.
         dockerfile.run("mkdir", "-p", "demo/app/assets/stylesheets")
-        dockerfile.run("yarn", "install")
+        dockerfile.run("npm", "install")
       end
 
       insert :build_demo_assets, after: :assets_phase do |dockerfile|
-        dockerfile.run("yarn", "install", "--production=false")
+        dockerfile.run("npm", "install", "--production=false")
       end
     end
 

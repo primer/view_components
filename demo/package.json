@@ -12,8 +12,5 @@
   },
   "scripts": {
     "postinstall": "cp node_modules/@primer/css/dist/primer.css app/assets/stylesheets"
-  },
-  "engines": {
-    "yarn": "1.22.x"
   }
 }

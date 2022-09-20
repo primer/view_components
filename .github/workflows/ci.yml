@@ -65,7 +65,7 @@ jobs:
         node-version: 16
     - run: |
         npm i
-        cd demo && yarn
+        cd demo && npm i
     - name: Build and test with Rake
       run: |
         gem install bundler:2.2.9
@@ -115,7 +115,7 @@ jobs:
         node-version: 16
     - run: |
         npm i
-        cd demo && yarn
+        cd demo && npm i
     - name: Build and test with Rake
       run: |
         gem install bundler:2.2.9
