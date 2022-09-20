@@ -13,6 +13,8 @@ module Primer
         def initialize(name:, label:, value: nil, scheme: DEFAULT_SCHEME, **system_arguments)
           raise ArgumentError, "Check box scheme must be one of #{SCHEMES.join(', ')}" unless SCHEMES.include?(scheme)
 
+          raise ArgumentError, "Check box needs an explicit value if scheme is array" if scheme == :array && value.nil?
+
           @name = name
           @label = label
           @value = value
@@ -27,6 +29,16 @@ module Primer
 
         def type
           :check_box
+        end
+
+        private
+
+        def caption_template_name
+          @caption_template_name ||= if @scheme == :array
+                                       :"#{name}_#{value}"
+                                     else
+                                       name.to_sym
+                                     end
         end
       end
     end

@@ -261,6 +261,8 @@ class Primer::Forms::FormsTest < Minitest::Test
         assert_selector "label[for='places_#{place}']"
       end
     end
+
+    assert_selector ".FormControl-caption span", text: "Vacation getaway"
   end
 
   def test_renders_hidden_input
