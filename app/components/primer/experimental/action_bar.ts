@@ -1,5 +1,5 @@
 import {controller, targets, target} from '@github/catalyst'
-import {positionedOffset, focusZone, FocusKeys} from '@primer/behaviors'
+import {focusZone, FocusKeys} from '@primer/behaviors'
 import type {FocusZoneSettings} from '@primer/behaviors'
 
 @controller
@@ -33,9 +33,11 @@ export class ActionBarElement extends HTMLElement {
 
     this.#focusController = focusZone(this, this.#focusSettings)
 
+    this.style.maxWidth = `${this.itemContainer.offsetWidth}px`
+
     // Calculate visible items on page load until there is enough space
     // to show all items or the first item is hidden
-    while (this.#availableSpace() <= this.moreMenu.clientWidth && !this.items[0].hidden) {
+    while (this.#availableSpace() < this.moreMenu.clientWidth + this.#itemGap * 0.5 && !this.items[0].hidden) {
       this.#shrinking()
     }
 
@@ -65,7 +67,7 @@ export class ActionBarElement extends HTMLElement {
 
   #availableSpace(): number {
     // Get the offset of the item container from the container edge
-    return positionedOffset(this.itemContainer, this)?.right || 0
+    return this.clientWidth - this.itemContainer.clientWidth
   }
 
   #shrinking() {
@@ -74,7 +76,7 @@ export class ActionBarElement extends HTMLElement {
     }
     const gapSpace = this.#itemGap * 0.5
 
-    if (this.#availableSpace() <= this.moreMenu.clientWidth + gapSpace) {
+    if (this.#availableSpace() < this.moreMenu.clientWidth + gapSpace) {
       const visibleItems = this.items.filter(item => !item.hidden)
       const hiddenMenuItems = this.menuItems.filter(item => item.hidden)
 
@@ -95,7 +97,6 @@ export class ActionBarElement extends HTMLElement {
     if (this.moreMenu.hidden) {
       return
     }
-
     const gapSpace = this.#itemGap * 0.5
     const hiddenItems = this.items.filter(item => item.hidden)
     if (hiddenItems.length === 0) {

@@ -1,7 +1,7 @@
 <%= render Primer::BaseComponent.new(tag: :div, container: container) do %>
   <%= render(Primer::Beta::BorderBox.new(mb: 2)) do |component| %>
     <% component.with_body(p: 0) do %>
-      <%= render(Primer::Alpha::TabPanels.new(label: "With panels", mb: 0, bg: :subtle, style: "display: grid;grid-template-columns: max-content minmax(auto, 498px);grid-auto-flow: column;justify-content: space-between;")) do |component| %>
+      <%= render(Primer::Alpha::TabPanels.new(label: "With panels", mb: 0, bg: :subtle, style: "display: flex;")) do |component| %>
         <% component.with_tab(id: "tab-1", selected: true, style: "margin-top: -1px;margin-left: -1px;") do |t| %>
           <% t.text { "Write" } %>
           <% t.panel do %>
@@ -17,7 +17,7 @@
           <% end %>
         <% end %>
         <% component.with_extra(align: :right) do %>
-          <%= render(Primer::Experimental::ActionBar.new(px: 2)) do |component| %>
+          <%= render(Primer::Experimental::ActionBar.new(ml: :auto)) do |component| %>
             <% component.with_item_icon_button(icon: :heading, "aria-label": "Heading") %>
             <% component.with_item_icon_button(icon: :bold, "aria-label": "Bold") %>
             <% component.with_item_icon_button(icon: :italic, "aria-label": "Italic") %>
