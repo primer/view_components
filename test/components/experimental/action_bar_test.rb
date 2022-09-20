@@ -12,7 +12,7 @@ class PrimerExperimentalActionBarTest < Minitest::Test
     end
 
     assert_selector("action-bar.ActionBar") do
-      assert_selector("button[data-targets=\"action-bar.items\"]", count: 1) do
+      assert_selector("[data-targets=\"action-bar.items\"]", count: 1) do
         assert_selector("tool-tip", text: "Heading", visible: :all)
       end
       assert_selector("hr.ActionBar-divider[data-targets=\"action-bar.items\"]", count: 1)
