@@ -13,6 +13,8 @@
     url: "/migration"
   - title: Component status
     url: "/status"
+  - title: Ruby Style Guide
+    url: "https://github.com/github/rubocop-github/blob/master/STYLEGUIDE.md"
 - title: Components
   children:
   - title: AutoComplete
