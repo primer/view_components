@@ -3,6 +3,16 @@
 require "kuby/azure"
 require "kuby/kind"
 
+class NpmPackage < Kuby::Docker::Packages::Package
+  def install_on_debian(dockerfile)
+    dockerfile.run(<<~END)
+      apt-get update && apt-get install -y npm
+    END
+  end
+end
+
+Kuby.register_package('npm', NpmPackage)
+
 # Define a production Kuby deploy environment
 Kuby.define("ViewComponentsStorybook") do
   shared = lambda {
@@ -36,6 +46,8 @@ Kuby.define("ViewComponentsStorybook") do
       # We need newer versions than the ones Kuby installs by default.
       package_phase.remove :nodejs
       package_phase.add :nodejs, "16.13.2"
+
+      package_phase.remove :npm
       package_phase.add :npm, "8.15.0"
 
       # Kuby copies over only Gemfiles, i.e. no app code, before attempting to
@@ -63,13 +75,13 @@ Kuby.define("ViewComponentsStorybook") do
       # Kuby will handle installing JavaScript modules inside demo/, since we
       # specified an app_root of demo/ above. However, it will not install anything
       # defined in the top level package.json, which is where the custom build phase
-      # below comes into play. First, we copy over all the individual files yarn
+      # below comes into play. First, we copy over all the individual files npm
       # needs to 1) install modules, and 2) run the prepare script (see the scripts
-      # section in package.json). Side note: apparently yarn will automatically
+      # section in package.json). Side note: apparently npm will automatically
       # run any script named "prepare" on install if one is defined. Second, we
-      # run yarn install at the top level. This custom build phase must be inserted
+      # run npm install at the top level. This custom build phase must be inserted
       # before the Rails app's JavaScript modules are installed (i.e. before
-      # :yarn_phase) because the prepare script compiles and generates the PVC
+      # :package_phase) because the prepare script compiles and generates the PVC
       # JavaScript bundle the Rails app needs to build into its own bundle.
       insert :main_npm, after: :package_phase do |dockerfile|
         files = %w[

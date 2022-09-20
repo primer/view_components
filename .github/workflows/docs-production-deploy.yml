@@ -31,7 +31,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: |
             package-lock.json
-            docs/yarn.lock
+            docs/package-lock.json
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -42,7 +42,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm i && cd docs && yarn && cd ..
+        run: npm i && cd docs && npm i && cd ..
 
       - name: Generate static files
         run: |

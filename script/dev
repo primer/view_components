@@ -12,7 +12,7 @@ popd
 
 # Set up docs
 pushd docs
-yarn install
+npm install
 popd
 
 exec overmind start

@@ -30,7 +30,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: |
             package-lock.json
-            docs/yarn.lock
+            docs/package-lock.json
 
       - uses: actions/cache@v2
         with:
@@ -38,7 +38,7 @@ jobs:
           key: gems-deploy-preview-${{ hashFiles('**/Gemfile.lock') }}
 
       - name: Install dependencies
-        run: npm i && cd docs && yarn && cd ..
+        run: npm i && cd docs && npm i && cd ..
 
       - name: Generate static files
         run: |
