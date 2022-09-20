@@ -35,8 +35,8 @@ module Primer
       # Renders extra content to the `TabPanels`. This will be rendered after the tabs.
       #
       # @param align [Symbol] <%= one_of(Primer::Alpha::TabNav::EXTRA_ALIGN_OPTIONS) %>
-      renders_one :extra, lambda { |align: EXTRA_ALIGN_DEFAULT, &block|
-        @align = fetch_or_fallback(EXTRA_ALIGN_OPTIONS, align, EXTRA_ALIGN_DEFAULT)
+      renders_one :extra, lambda { |align: Primer::TabNavHelper::EXTRA_ALIGN_DEFAULT, &block|
+        @align = fetch_or_fallback(Primer::TabNavHelper::EXTRA_ALIGN_OPTIONS, align, Primer::TabNavHelper::EXTRA_ALIGN_DEFAULT)
 
         view_context.capture { block&.call }
       }
