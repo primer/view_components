@@ -20,6 +20,7 @@
     "url": "https://github.com/primer/view_components/issues"
   },
   "files": [
+    "static/**/*",
     "app/assets/**/*",
     "app/components/primer/**/*.js",
     "app/components/primer/**/*.css",
