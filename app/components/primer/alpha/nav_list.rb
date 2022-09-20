@@ -22,8 +22,15 @@ module Primer
         )
       end
 
+      def build_list(**system_arguments)
+        NavList.new(
+          **system_arguments,
+          selected_item_id: @selected_item_id
+        )
+      end
+
       def will_add_item(item)
-        item.root.expand! if item.active? && item.root
+        item.parent.expand! if item.active? && item.parent
       end
     end
   end

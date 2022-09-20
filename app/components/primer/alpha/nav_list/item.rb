@@ -5,11 +5,13 @@ module Primer
     class NavList
       # :nodoc:
       class Item < Primer::Alpha::ActionList::Item
+        attr_reader :selected_by_ids
+
         def initialize(selected_item_id: nil, selected_by_ids: [], **system_arguments)
           @selected_item_id = selected_item_id
           @selected_by_ids = Array(selected_by_ids)
 
-          overrides = { select_mode: :none, "data-item-id": @selected_by_ids.join(" ") }
+          overrides = { "data-item-id": @selected_by_ids.join(" ") }
           overrides[:active] = true if @selected_by_ids.include?(@selected_item_id)
 
           super(**system_arguments, **overrides)

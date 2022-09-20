@@ -52,7 +52,7 @@ module Primer
         }
 
         renders_many :items, lambda { |**system_arguments|
-          @list.build_item(sub_item: true, **system_arguments || self).tap do |item|
+          @list.build_item(parent: self, sub_item: true, **system_arguments).tap do |item|
             @list.will_add_item(item)
 
             if item.active?
@@ -79,10 +79,11 @@ module Primer
           Primer::Alpha::Tooltip.new(**system_arguments)
         }
 
-        attr_reader :active, :disabled
+        attr_reader :list, :active, :disabled, :sub_item, :parent
 
         alias active? active
         alias disabled? disabled
+        alias sub_item? sub_item
 
         # @param label [String] Item label
         # @param truncate_label [Boolean] Truncate label with ellipsis.
@@ -99,6 +100,7 @@ module Primer
         # @param sub_item [Boolean] If item is within a nested ActionList.
         def initialize(
           list:,
+          parent: nil,
           label:,
           truncate_label: false,
           href: nil,
@@ -115,6 +117,7 @@ module Primer
           **system_arguments
         )
           @list = list
+          @parent = parent
           @label = label
           @href = href
           @truncate_label = truncate_label
@@ -124,6 +127,7 @@ module Primer
           @trailing_action_on_hover = false
           @id = id
           @system_arguments = system_arguments
+          @sub_item = sub_item
 
           @size = fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)
           @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
@@ -136,7 +140,7 @@ module Primer
             SCHEME_MAPPINGS[@scheme],
             "ActionListItem",
             "ActionListItem--navActive" => @active,
-            "ActionListItem--subItem" => sub_item
+            "ActionListItem--subItem" => @sub_item
           )
 
           @system_arguments[:role] = role
@@ -182,6 +186,10 @@ module Primer
           }
         end
 
+        def expand!
+          @expanded = true
+        end
+
         private
 
         def before_render
@@ -196,8 +204,8 @@ module Primer
           if items.present?
             @content_arguments[:tag] = :button
             @content_arguments[:"aria-expanded"] = @expanded.to_s
-            @content_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemWithSubItemClick"
-            @system_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemClick"
+            @content_arguments[:"data-action"] = "click:action-list#handleItemWithSubItemClick"
+            @system_arguments[:"data-action"] = "click:action-list#handleItemClick"
 
             private_trailing_action_icon(:"chevron-down", classes: "ActionListItem-collapseIcon")
 

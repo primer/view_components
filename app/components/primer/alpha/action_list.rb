@@ -13,14 +13,6 @@ module Primer
       }.freeze
       SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
-      def self.custom_element_name
-        @custom_element_name ||= name.split("::").last.underscore.dasherize
-      end
-
-      def custom_element_name
-        self.class.custom_element_name
-      end
-
       renders_one :heading, lambda { |**system_arguments|
         Heading.new(section_id: @id, **system_arguments)
       }
@@ -63,7 +55,7 @@ module Primer
           SCHEME_MAPPINGS[@scheme],
           system_arguments[:classes],
           "ActionListWrap",
-          "ActionListWrap--subGroup" => sub_group,
+          "ActionListWrap--subGroup" => @sub_group,
           "ActionListWrap--divided" => @show_dividers
         )
       end
