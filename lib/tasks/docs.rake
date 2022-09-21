@@ -130,6 +130,7 @@ namespace :docs do
         f.puts("componentId: #{data[:component_id]}")
         f.puts("status: #{data[:status]}")
         f.puts("source: #{data[:source]}")
+        f.puts("a11yReviewed: #{false}")
         f.puts("storybook: #{data[:storybook]}")
         f.puts("---")
         f.puts

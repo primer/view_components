@@ -1,4 +1,4 @@
-import { Link } from '@primer/react'
+import { Link, Text, Label } from '@primer/react'
 import StatusLabel from '@primer/gatsby-theme-doctocat/src/components/status-label'
 import Table from '@primer/gatsby-theme-doctocat/src/components/table'
 import { graphql, Link as GatsbyLink, useStaticQuery } from 'gatsby'
@@ -17,13 +17,14 @@ export function ComponentStatuses() {
           frontmatter {
             status
             title
+            a11yReviewed
           }
         }
       }
     }
   `)
 
-  const components = data.allMdx.nodes.map((node) => {
+  const components = data.allMdx.nodes.map(node => {
     // get first sentence of the excerpt
     // search for a period space and capital letter to avoid splitting at e.g.
     const excerptMatch = node.excerpt
@@ -35,6 +36,7 @@ export function ComponentStatuses() {
       description: excerptMatch ? excerptMatch[1] : node.excerpt,
       title: node.frontmatter.title,
       status: node.frontmatter.status,
+      a11yReviewed: node.frontmatter.a11yReviewed,
     }
   })
 
@@ -43,20 +45,28 @@ export function ComponentStatuses() {
       <thead>
         <tr>
           <th align="left">Component</th>
-          <th align="left">Status</th>
+          <th align="center">Status</th>
+          <th align="center">Accessibility</th>
           <th align="left">Description</th>
         </tr>
       </thead>
       <tbody>
-        {components.map(({ slug, description, title, status }) => (
+        {components.map(({ slug, description, title, status, a11yReviewed }) => (
           <tr key={slug}>
             <td valign="top">
               <Link as={GatsbyLink} to={`/${slug}`}>
                 {title}
               </Link>
             </td>
-            <td valign="top">
+            <td align="center" valign="top">
               <StatusLabel status={status} />
+            </td>
+            <td align="center" valign="top" style={{ whiteSpace: 'nowrap' }}>
+              {a11yReviewed ? (
+                <Label variant="primary">Reviewed</Label>
+              ) : (
+                <Text sx={{ color: 'fg.subtle' }}>Pending review</Text>
+              )}
             </td>
             <td valign="top">{description}</td>
           </tr>
