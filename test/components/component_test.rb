@@ -11,12 +11,12 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::IconButton, { icon: :star, "aria-label": "Star" }],
     [Primer::Beta::Button, {}],
     [Primer::Alpha::SegmentedControl, {
-      icon_only: false,
+      icon_only: :never,
       full_width: false
     }, proc { |component|
-      component.button(text: "Button", selected: true)
+      component.button(selected: true) { "Button" }
     }],
-    [Primer::Alpha::SegmentedControl::Button, { text: "Button" }],
+    [Primer::Alpha::SegmentedControl::Button, { selected: true }, proc { "Button" }],
     [Primer::Alpha::Layout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }
       component.sidebar(tag: :div) { "Bar" }
