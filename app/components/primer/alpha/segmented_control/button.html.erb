@@ -1,11 +1,8 @@
-<li class="<%= class_names("SegmentedControl-item", "SegmentedControl-item--selected": @selected) %>" role="listitem">
-  <%= render Primer::Beta::BaseButton.new(tag: :button, **@system_arguments) do %>
-    <div class="SegmentedControl-content">
-      <%= render Primer::OcticonComponent.new(@icon, classes: "SegmentedControl-leadingVisual") unless @icon.nil? %>
-      <% unless @icon_only == :always %>
-        <span class="SegmentedControl-text" data-content="<%= trimmed_content %>"><%= trimmed_content %></span>
-      <% end %>
-    </div>
+<% if @icon_only == :always %>
+  <%= render Primer::Beta::IconButton.new(icon: @icon, "aria-label": content, **@system_arguments) %>
+<% else %>
+  <%= render Primer::Beta::Button.new(**@system_arguments) do |button| %>
+    <% button.with_leading_visual_icon(icon: @icon) unless @icon.nil? %>
+    <%= content %>
   <% end %>
-  <%= render Primer::Alpha::Tooltip.new(direction: :n, hide: @icon_only == :when_narrow ? :whenRegular : nil, type: :description, for_id: @system_arguments[:id], type: :label, text: trimmed_content) if tooltip? %>
-</li>
+<% end %>

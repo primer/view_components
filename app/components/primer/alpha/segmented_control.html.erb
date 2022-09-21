@@ -1,7 +1,12 @@
 <segmented-control>
   <%= render Primer::BaseComponent.new(tag: :ul, role: "list", **@system_arguments) do %>
     <% buttons.each do |button| %>
-      <%= button %>
+      <li class="<%= class_names(
+        "SegmentedControl-item",
+        "SegmentedControl-item--selected": button.selected
+        ) %>" role="listitem">
+        <%= button %>
+      </li>
     <% end %>
   <% end %>
 </segmented-control>

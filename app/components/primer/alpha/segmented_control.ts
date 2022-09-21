@@ -1,28 +1,16 @@
-/* eslint-disable custom-elements/no-constructor */
-export default class SegmentedControlElement extends HTMLElement {
-  constructor() {
-    super()
+import {controller} from '@github/catalyst'
 
-    this.addEventListener('click', (event: MouseEvent) => {
-      const controls = Array.from(this.querySelectorAll<HTMLElement>('ul button')).filter(
-        tab => tab instanceof HTMLElement && tab.closest(this.tagName) === this
-      ) as HTMLElement[]
+@controller
+export class SegmentedControlElement extends HTMLElement {
+  select(event: Event) {
+    const button = event.currentTarget as HTMLButtonElement
+    for (const item of this.querySelectorAll('li.SegmentedControl-item')) {
+      item.classList.remove('SegmentedControl-item--selected')
+      item.querySelector('.Button')?.setAttribute('aria-current', 'false')
+    }
 
-      if (!(event.target instanceof Element)) return
-      if (event.target.closest(this.tagName) !== this) return
-
-      const selectedControl = event.target.closest('button')
-      if (!(selectedControl instanceof HTMLElement) || !selectedControl.closest('ul')) return
-
-      for (const control of controls) {
-        control.closest('li')?.classList.remove('SegmentedControl-item--selected')
-        control.setAttribute('aria-current', 'false')
-      }
-
-      selectedControl.closest('li')?.classList.add('SegmentedControl-item--selected')
-      selectedControl.setAttribute('aria-current', 'true')
-      selectedControl.focus()
-    })
+    button.closest('li.SegmentedControl-item')?.classList.add('SegmentedControl-item--selected')
+    button.setAttribute('aria-current', 'true')
   }
 }
 
@@ -32,7 +20,4 @@ declare global {
   }
 }
 
-if (!window.customElements.get('segmented-control')) {
-  window.SegmentedControlElement = SegmentedControlElement
-  window.customElements.define('segmented-control', SegmentedControlElement)
-}
+window.SegmentedControlElement = SegmentedControlElement
