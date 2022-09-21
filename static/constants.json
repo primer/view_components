@@ -176,8 +176,8 @@
     "ICON_ONLY_DEFAULT": "never",
     "ICON_ONLY_MAPPINGS": {
       "never": "",
-      "always": "SegmentedControl-button--iconOnly",
-      "when_narrow": "SegmentedControl-button--iconOnly-whenNarrow"
+      "always": "SegmentedControl--iconOnly",
+      "when_narrow": "SegmentedControl--iconOnly-whenNarrow"
     },
     "ICON_ONLY_OPTIONS": [
       "never",
