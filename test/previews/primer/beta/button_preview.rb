@@ -4,6 +4,37 @@ module Primer
   module Beta
     # @label Button
     class ButtonPreview < ViewComponent::Preview
+
+      # @label Playground
+      # @param scheme select [default, primary, danger, outline, invisible, link]
+      # @param size select [small, medium, large]
+      # @param full_width toggle
+      # @param disabled toggle
+      # @param pressed toggle
+      # @param align_content select [center, start]
+      # @param tag select [a, summary, button]
+      def playground(
+        scheme: :default,
+        size: :medium,
+        full_width: false,
+        id: "button-preview",
+        align_content: :center,
+        tag: :button,
+        disabled: false
+      )
+        render(Primer::Beta::Button.new(
+                 scheme: scheme,
+                 size: size,
+                 full_width: full_width,
+                 id: id,
+                 align_content: align_content,
+                 tag: tag,
+                 disabled: disabled
+               )) do |_c|
+          "Button"
+        end
+      end
+
       # @label Default
       # @param scheme select [default, primary, danger, outline, invisible, link]
       # @param size select [small, medium, large]
@@ -19,8 +50,7 @@ module Primer
         id: "button-preview",
         align_content: :center,
         tag: :button,
-        disabled: false,
-        pressed: false
+        disabled: false
       )
         render(Primer::Beta::Button.new(
                  scheme: scheme,
@@ -29,8 +59,7 @@ module Primer
                  id: id,
                  align_content: align_content,
                  tag: tag,
-                 disabled: disabled,
-                 "aria-pressed": pressed
+                 disabled: disabled
                )) do |_c|
           "Button"
         end
@@ -82,6 +111,6 @@ module Primer
           "Button"
         end
       end
-      end
+    end
   end
 end
