@@ -62,7 +62,7 @@
   - title: HiddenTextExpander
     url: "/components/alpha/hiddentextexpander"
   - title: IconButton
-    url: "/components/iconbutton"
+    url: "/components/beta/iconbutton"
   - title: Image
     url: "/components/image"
   - title: ImageCrop

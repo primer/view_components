@@ -58,7 +58,7 @@
   "Primer::HeadingComponent": "deprecated",
   "Primer::HellipButton": "alpha",
   "Primer::HiddenTextExpander": "deprecated",
-  "Primer::IconButton": "beta",
+  "Primer::IconButton": "deprecated",
   "Primer::Image": "alpha",
   "Primer::ImageCrop": "alpha",
   "Primer::LabelComponent": "beta",
