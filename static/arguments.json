@@ -114,6 +114,36 @@
     ]
   },
   {
+    "component": "Image",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/image.rb",
+    "parameters": [
+      {
+        "name": "src",
+        "type": "String",
+        "default": "N/A",
+        "description": "The source url of the image."
+      },
+      {
+        "name": "alt",
+        "type": "String",
+        "default": "N/A",
+        "description": "Specifies an alternate text for the image."
+      },
+      {
+        "name": "lazy",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not to lazily load the image."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Layout",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout.rb",
     "parameters": [
@@ -1412,36 +1442,6 @@
         "type": "Boolean",
         "default": "`false`",
         "description": "Whether the button is in a [BorderBox](/components/beta/borderbox). If `true`, the button will have the `Box-btn-octicon` class."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Image",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/image.rb",
-    "parameters": [
-      {
-        "name": "src",
-        "type": "String",
-        "default": "N/A",
-        "description": "The source url of the image."
-      },
-      {
-        "name": "alt",
-        "type": "String",
-        "default": "N/A",
-        "description": "Specifies an alternate text for the image."
-      },
-      {
-        "name": "lazy",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not to lazily load the image."
       },
       {
         "name": "system_arguments",

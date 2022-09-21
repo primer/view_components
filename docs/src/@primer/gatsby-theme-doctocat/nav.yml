@@ -64,7 +64,7 @@
   - title: IconButton
     url: "/components/iconbutton"
   - title: Image
-    url: "/components/image"
+    url: "/components/alpha/image"
   - title: ImageCrop
     url: "/components/imagecrop"
   - title: Label
@@ -123,3 +123,5 @@
     url: "/adr/0250-developing-and-publishing-clientside-behaviours"
   - title: 251. Use Catalyst for client-side behaviours
     url: "/adr/0251-use-catalyst-for-client-side-behaviours"
+  - title: 252. Build component css with ruby code
+    url: "/adr/0252-build-component-css-with-ruby-code"
