@@ -277,8 +277,8 @@ namespace :docs do
       raise
     end
 
-    File.open("static/arguments.yml", "w") do |f|
-      f.puts YAML.dump(args_for_components)
+    File.open("static/arguments.json", "w") do |f|
+      f.puts JSON.pretty_generate(args_for_components)
     end
 
     # Build system arguments docs from BaseComponent
