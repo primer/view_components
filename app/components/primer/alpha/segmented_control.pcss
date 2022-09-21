@@ -98,7 +98,9 @@
 
 /* Icon only */
 .SegmentedControl--iconOnly {
-  width: var(--primer-control-medium-size, 32px);
+  & .Button {
+    width: var(--primer-control-medium-size, 32px);
+  }
 
   & .Button-content {
     padding: 0;
@@ -109,7 +111,9 @@
 /* Icon only when narrow */
 @media (max-width: 768px) {
   .SegmentedControl--iconOnly-whenNarrow {
-    width: var(--primer-control-medium-size, 32px);
+    & .Button {
+      width: var(--primer-control-medium-size, 32px);
+    }
 
     & .Button-content {
       padding: 0;
@@ -137,8 +141,8 @@
   }
 
   /* reset for icon-only buttons */
-  .SegmentedControl--iconOnly,
-  .SegmentedControl--iconOnly-whenNarrow {
+  .SegmentedControl--iconOnly .Button,
+  .SegmentedControl--iconOnly-whenNarrow .Button {
     min-width: unset;
   }
 }
