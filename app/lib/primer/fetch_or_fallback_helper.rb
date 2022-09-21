@@ -33,7 +33,7 @@ module Primer
 
         given_value
       else
-        if fallback_raises && ENV["RAILS_ENV"] != "production" && ENV["STORYBOOK"] != "true"
+        if fallback_raises && ENV["RAILS_ENV"] != "production"
           raise InvalidValueError, <<~MSG
             fetch_or_fallback was called with an invalid value.
 

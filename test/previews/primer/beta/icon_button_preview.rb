@@ -4,14 +4,13 @@ module Primer
   module Beta
     # @label IconButton
     class IconButtonPreview < ViewComponent::Preview
-      # @label Playground
+      # @label Default
       # @param scheme select [default, danger, invisible]
       # @param size select [small, medium, large]
       # @param aria_label text
       # @param disabled toggle
-      # @param pressed toggle
       # @param tag select [a, summary, button]
-      def playground(
+      def default(
         scheme: :default,
         size: :medium,
         id: "button-preview",

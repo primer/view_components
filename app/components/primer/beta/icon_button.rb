@@ -49,8 +49,8 @@ module Primer
       # @param icon [String] Name of <%= link_to_octicons %> to use.
       # @param scheme [Symbol] <%= one_of(Primer::Beta::IconButton::SCHEME_OPTIONS) %>
       # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
-      # @param tag [Symbol] <%= one_of(Primer::BaseButton::TAG_OPTIONS) %>
-      # @param type [Symbol] <%= one_of(Primer::BaseButton::TYPE_OPTIONS) %>
+      # @param tag [Symbol] <%= one_of(Primer::Beta::BaseButton::TAG_OPTIONS) %>
+      # @param type [Symbol] <%= one_of(Primer::Beta::BaseButton::TYPE_OPTIONS) %>
       # @param aria-label [String] String that can be read by assistive technology. A label should be short and concise. See the accessibility section for more information.
       # @param aria-description [String] String that can be read by assistive technology. A description can be longer as it is intended to provide more context and information. See the accessibility section for more information.
       # @param tooltip_direction [Symbol] (Primer::Alpha::Tooltip::DIRECTION_DEFAULT) <%= one_of(Primer::Alpha::Tooltip::DIRECTION_OPTIONS) %>
