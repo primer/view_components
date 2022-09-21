@@ -13,8 +13,8 @@ module Primer
       ICON_ONLY_DEFAULT = :never
       ICON_ONLY_MAPPINGS = {
         ICON_ONLY_DEFAULT => "",
-        :always => "SegmentedControl-button--iconOnly",
-        :when_narrow => "SegmentedControl-button--iconOnly-whenNarrow"
+        :always => "SegmentedControl--iconOnly",
+        :when_narrow => "SegmentedControl--iconOnly-whenNarrow"
       }.freeze
       ICON_ONLY_OPTIONS = ICON_ONLY_MAPPINGS.keys
 
