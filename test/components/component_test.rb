@@ -16,7 +16,6 @@ class PrimerComponentTest < Minitest::Test
     }, proc { |component|
       component.button(selected: true) { "Button" }
     }],
-    [Primer::Alpha::SegmentedControl::Button, { selected: true }, proc { "Button" }],
     [Primer::Alpha::Layout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }
       component.sidebar(tag: :div) { "Bar" }

@@ -21,12 +21,6 @@ module Primer
         assert_selector("button.Button[aria-current=\"true\"]", count: 1)
       end
 
-      def test_text_has_data_content_attribute
-        render_preview(:default)
-
-        assert_selector(".Button-label[data-content]")
-      end
-
       def test_renders_icons_and_text
         render_preview(:icons_and_text)
 
