@@ -172,9 +172,7 @@
   },
   "Primer::Alpha::SegmentedControl": {
     "Button": "Primer::Alpha::SegmentedControl::Button",
-    "FULL_WIDTH_DEFAULT": false
-  },
-  "Primer::Alpha::SegmentedControl::Button": {
+    "FULL_WIDTH_DEFAULT": false,
     "ICON_ONLY_DEFAULT": "never",
     "ICON_ONLY_MAPPINGS": {
       "never": "",
@@ -186,6 +184,8 @@
       "always",
       "when_narrow"
     ]
+  },
+  "Primer::Alpha::SegmentedControl::Button": {
   },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",

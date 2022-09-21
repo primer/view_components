@@ -11,7 +11,7 @@
   "Primer::Alpha::Layout::Main": "alpha",
   "Primer::Alpha::Layout::Sidebar": "alpha",
   "Primer::Alpha::SegmentedControl": "alpha",
-  "Primer::Alpha::SegmentedControl::Button": "alpha",
+  "Primer::Alpha::SegmentedControl::Button": "beta",
   "Primer::Alpha::TabNav": "alpha",
   "Primer::Alpha::TabPanels": "alpha",
   "Primer::Alpha::TextField": "alpha",
