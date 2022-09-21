@@ -2,7 +2,7 @@ import {controller, targets} from '@github/catalyst'
 
 @controller
 export class SegmentedControlElement extends HTMLElement {
-  @targets buttons: HTMLElement[]
+  @targets items: HTMLElement[]
 
   connectedCallback() {
     this.#updateButtonLabels()
@@ -10,9 +10,9 @@ export class SegmentedControlElement extends HTMLElement {
 
   select(event: Event) {
     const button = event.currentTarget as HTMLButtonElement
-    for (const item of this.querySelectorAll('li.SegmentedControl-item')) {
+    for (const item of this.items) {
       item.classList.remove('SegmentedControl-item--selected')
-      item.querySelector('.Button')?.setAttribute('aria-current', 'false')
+      item.querySelector('[aria-current]')?.setAttribute('aria-current', 'false')
     }
 
     button.closest('li.SegmentedControl-item')?.classList.add('SegmentedControl-item--selected')
@@ -35,4 +35,7 @@ declare global {
   }
 }
 
-window.SegmentedControlElement = SegmentedControlElement
+if (!window.customElements.get('segmented-control')) {
+  window.SegmentedControlElement = SegmentedControlElement
+  window.customElements.define('segmented-control', SegmentedControlElement)
+}
