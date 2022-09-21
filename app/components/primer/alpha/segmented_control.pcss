@@ -25,9 +25,12 @@
   /* Selected */
 
   &.SegmentedControl-item--selected {
-    font-weight: var(--base-text-weight-semibold, 600);
     background-color: var(--color-btn-bg);
     border-color: var(--color-segmented-control-button-selected-border);
+
+    & .Button {
+      font-weight: var(--base-text-weight-semibold, 600);
+    }
 
     &::before {
       border-color: transparent;
@@ -36,6 +39,15 @@
     & + .SegmentedControl-item::before {
       border-color: transparent;
     }
+  }
+
+  /* renders a visibly hidden "copy" of the text in bold, reserving box space for when text becomes bold on selected */
+  & .Button-label[data-content]::before {
+    display: block;
+    height: 0;
+    font-weight: var(--base-text-weight-semibold, 600);
+    visibility: hidden;
+    content: attr(data-content);
   }
 
   &::before {

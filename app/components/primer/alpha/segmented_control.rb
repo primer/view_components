@@ -84,9 +84,6 @@ module Primer
           @selected = selected
           @icon_only = fetch_or_fallback(ICON_ONLY_OPTIONS, icon_only, ICON_ONLY_DEFAULT)
           @system_arguments = system_arguments
-          @system_arguments[:classes] = class_names(
-            "SegmentedControl-item--selected": selected
-          )
           @system_arguments[:"data-action"] = "click:segmented-control#select"
           @system_arguments[:"aria-current"] = selected
           @icon = icon

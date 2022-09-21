@@ -155,7 +155,6 @@ module Primer
 
         @align_content_classes = class_names(
           "Button-content",
-          system_arguments[:classes],
           ALIGN_CONTENT_MAPPINGS[fetch_or_fallback(ALIGN_CONTENT_OPTIONS, align_content, DEFAULT_ALIGN_CONTENT)]
         )
 

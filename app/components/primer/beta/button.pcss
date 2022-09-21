@@ -104,15 +104,6 @@ summary.Button {
   grid-area: text;
   white-space: nowrap;
   line-height: var(--primer-text-body-lineHeight-medium, calc(20/14));
-
-  /* renders a visibly hidden "copy" of the text in bold, reserving box space for when text becomes bold on selected */
-  &[data-content]::before {
-    display: block;
-    height: 0;
-    font-weight: var(--base-text-weight-semibold, 600);
-    visibility: hidden;
-    content: attr(data-content);
-  }
 }
 
 .Button-leadingVisual {
