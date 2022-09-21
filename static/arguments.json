@@ -1078,6 +1078,12 @@
         "description": "Name of [Octicon](https://primer.style/octicons/) to use."
       },
       {
+        "name": "wrapper_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "Optional keyword arguments to be passed to the wrapper `<div>` tag."
+      },
+      {
         "name": "scheme",
         "type": "Symbol",
         "default": "`:default`",

@@ -32,7 +32,7 @@
   - title: Breadcrumbs
     url: "/components/beta/breadcrumbs"
   - title: Button
-    url: "/components/button"
+    url: "/components/beta/button"
   - title: ButtonGroup
     url: "/components/beta/buttongroup"
   - title: ButtonMarketing
@@ -62,7 +62,7 @@
   - title: HiddenTextExpander
     url: "/components/alpha/hiddentextexpander"
   - title: IconButton
-    url: "/components/iconbutton"
+    url: "/components/beta/iconbutton"
   - title: Image
     url: "/components/alpha/image"
   - title: ImageCrop
