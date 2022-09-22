@@ -3,13 +3,21 @@
 module Primer
   module Alpha
     # `NavList` provides a simple way to render side navigation, i.e. navigation
-    # that appears to the left or right side of some main content.
-    # `NavList` contains a list of navigation items (links) and corresponding leading
-    # and trailing visuals such as icons.
+    # that appears to the left or right side of some main content. Each item in a
+    # nav list is a link along with corresponding leading and trailing visuals.
+    #
+    # Nav list items can either be single items or sub lists. Rather than navigating
+    # to a URL, sub lists expand and collapse on click. To indicate this functionality,
+    # sub lists automatically render with a trailing chevron that changes direction
+    # when the sub list expands and collapses.
+    #
+    # Nav list items appear visually active when selected. Each nav item must have one
+    # or more ID values that determine which item will appear selected. Use the
+    # `selected_item_id` argument to select the appropriate nav item.
     class NavList < ActionList
       status :alpha
 
-      # @example Top-level item and expandable sub list
+      # @example Top-level items with header
       #
       #   <%= render(Primer::Alpha::NavList.new(aria: { label: "Settings" }, selected_item_id: :personal_info)) do |component| %>
       #     <% component.with_item(label: "General", selected_by_ids: :general, href: "/settings/general") %>
@@ -29,8 +37,9 @@ module Primer
       #       <% list.with_item(label: "Personal Information", selected_by_ids: :personal_info, href: "/account/info") do |item| %>
       #         <% item.with_leading_visual_avatar(src: "https://github.com/github.png", alt: "GitHub") %>
       #       <% end %>
-      #       <% list.with_item(label: "Password", selected_by_ids: :password, href: "/account/password") do |item| %>
-      #         <% item.with_leading_visual_icon(icon: :key) %>
+      #       <% list.with_item(label: "Notifications", selected_by_ids: :notifications, href: "/account/notifications") do |item| %>
+      #         <% item.with_leading_visual_icon(icon: :bell) %>
+      #         <% item.with_trailing_visual_counter(count: 15) %>
       #       <% end %>
       #       <% list.with_item(label: "Billing info", selected_by_ids: :billing, href: "/account/billing") do |item| %>
       #         <% item.with_leading_visual_icon(icon: :package) %>
@@ -39,7 +48,7 @@ module Primer
       #     <% end %>
       #   <% end %>
       #
-      # @example Additional types of visuals
+      # @example Expandable sub lists
       #
       #   <%= render(Primer::Alpha::NavList.new(aria: { label: "Settings" }, selected_item_id: :email_notifications)) do |component| %>
       #     <% component.with_list(aria: { label: "Account settings" }) do |list| %>
@@ -65,6 +74,20 @@ module Primer
       #     <% end %>
       #   <% end %>
       #
+      # @example Trailing action
+      #
+      #   <%= render(Primer::Alpha::NavList.new(aria: { label: "Foods list" })) do |component| %>
+      #     <% component.with_list(aria: { label: "Favorite foods" }) do |list| %>
+      #       <% list.with_heading(title: "My Favorite Foods") %>
+      #       <% list.with_item(label: "Popplers", selected_by_ids: :popplers, href: "/foods/popplers") do |item| %>
+      #         <% item.with_trailing_action(show_on_hover: false, icon: "plus", "aria-label": "Add new food", size: :medium) %>
+      #       <% end %>
+      #       <% list.with_item(label: "Slurm", selected_by_ids: :slurm, href: "/foods/slurm") do |item| %>
+      #         <% item.with_trailing_action(show_on_hover: true, icon: "plus", "aria-label": "Add new food", size: :medium) %>
+      #       <% end %>
+      #     <% end %>
+      #   <% end %>
+      #
       # @param selected_item_id [Symbol] The ID of the currently selected item. The default is `nil`, meaning no item is selected.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(selected_item_id: nil, **system_arguments)
@@ -76,6 +99,18 @@ module Primer
 
         super(tag: :nav, **@system_arguments)
       end
+
+      # @!parse
+      #   # Top-level items that render above all sub lists.
+      #   #
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Item) %>.
+      #   renders_many :items
+
+      # @!parse
+      #   # Sub lists, i.e. items that contain sub items.
+      #   #
+      #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList) %>.
+      #   renders_many :lists
 
       # @private
       def build_item(component_klass: NavList::Item, **system_arguments)

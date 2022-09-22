@@ -12,7 +12,7 @@ module Primer
         }.freeze
         SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
-        # @param list_id [String] The unique identifier of the sub list the heading belongs to.
+        # @param list_id [String] The unique identifier of the sub list the heading belongs to. Used internally.
         # @param title [String] Sub list title.
         # @param subtitle [String] Optional sub list description.
         # @param scheme [Symbol] Display a background color if scheme is `filled`.

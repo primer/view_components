@@ -34,6 +34,10 @@ module Primer
         renders_one :description
 
         # An icon or avatar that will render to the left of the label.
+        #
+        # To render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by <%= link_to_component(Primer::OcticonComponent) %>.
+        #
+        # To render an avatar, call the `with_leading_visual_avatar` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>.
         renders_one :leading_visual, types: {
           icon: Primer::OcticonComponent,
           avatar: ->(**kwargs) { Primer::Beta::Avatar.new(**{ **kwargs, size: 16 }) }
@@ -44,7 +48,18 @@ module Primer
         # @private
         renders_one :private_leading_action_icon, Primer::OcticonComponent
 
-        # An icon, label, counter or text to render to the right of the label.
+        # An icon, label, counter, or text to render to the right of the label.
+        #
+        # To render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by <%= link_to_component(Primer::OcticonComponent) %>.
+        #
+        # To render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by <%= link_to_component(Primer::LabelComponent) %>.
+        #
+        # To render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by <%= link_to_component(Primer::CounterComponent) %>.
+        #
+        # To render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:
+        # ```ruby
+        # with_leading_visual_text { "Text here" }`
+        # ```
         renders_one :trailing_visual, types: {
           icon: Primer::OcticonComponent,
           label: Primer::LabelComponent,
@@ -59,14 +74,15 @@ module Primer
 
         # A button rendered after the trailing icon that can be used to show a menu, activate
         # a dialog, etc.
+        #
+        # @param show_on_hover [Boolean] Whether or not to show the button when the list item is hovered. If `true`, the button will be invisible until hovered. If `false`, the button will always be visible. Defaults to `false`.
+        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::IconButton) %>.
         renders_one :trailing_action, lambda { |show_on_hover: false, **system_arguments|
           @trailing_action_on_hover = show_on_hover
 
           Primer::Beta::IconButton.new(scheme: :invisible, classes: ["ActionListItem-trailingAction"], **system_arguments)
         }
 
-        # Items.
-        #
         # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
         renders_many :items, lambda { |**system_arguments|
           raise "Items can only be nested 2 levels deep" if sub_item?
@@ -115,9 +131,11 @@ module Primer
         # @return [Boolean]
         alias sub_item? sub_item
 
-        # @param label [String] Item label
+        # @param list [Primer::Alpha::ActionList] Used internally.
+        # @param parent [Primer::Alpha::ActionList::Item] Used internally.
+        # @param label [String] Item label.
         # @param truncate_label [Boolean] Truncate label with ellipsis.
-        # @param href [String] Link URL
+        # @param href [String] Link URL.
         # @param role [String] ARIA role describing the function of the item.
         # @param size [Symbol] Controls block sizing of the item.
         # @param scheme [Symbol] Controls color/style based on behavior.
@@ -126,7 +144,9 @@ module Primer
         # @param active [Boolean] Sets an active state on navigational items.
         # @param on_click [String] JavaScript to execute when the item is clicked.
         # @param expanded [Boolean] Handles expand/collapse for nested lists.
-        # @param sub_item [Boolean] If item is within a nested ActionList.
+        # @param sub_item [Boolean] If item is within a nested ActionList. Used internally.
+        # @param id [String] Used internally.
+        # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(
           list:,
           parent: nil,

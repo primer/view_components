@@ -6,7 +6,7 @@
     <% items.each do |item| %>
       <%= item %>
     <% end %>
-    <% unless lists.empty? %>
+    <% unless items.empty? || lists.empty? %>
       <%= render(Primer::Alpha::ActionList::Divider.new) %>
     <% end %>
     <% lists.each_with_index do |list, idx| %>

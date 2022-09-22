@@ -2,9 +2,17 @@
 
 module Primer
   module Alpha
-    # An ActionList is a list of items that can be activated or selected. ActionList is the
-    # base component for many menu-type components, including `ActionMenu` and `SelectPanel`,
-    # as well as navigational components like `NavList`.
+    # An ActionList is a styled list of links. It acts as the base component for many
+    # other menu-type components, including `ActionMenu` and `SelectPanel`, as well as
+    # the navigational component `NavList`.
+    #
+    # Each item in an action list can be augmented by specifying corresponding leading
+    # and/or trailing visuals.
+    #
+    # List items can either be single items or sub lists. Rather than navigating to
+    # to a URL, sub lists expand and collapse on click. To indicate this functionality,
+    # sub lists automatically render with a trailing chevron that changes direction
+    # when the sub list expands and collapses.
     class ActionList < Primer::Component
       status :alpha
 
@@ -27,11 +35,14 @@ module Primer
         self.class.custom_element_name
       end
 
+      # Heading text rendered above the list of items.
+      #
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Heading) %>.
       renders_one :heading, lambda { |**system_arguments|
         Heading.new(list_id: @id, **system_arguments)
       }
 
-      # Top-level items.
+      # Top-level items that render above all sub lists.
       #
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
       renders_many :items, lambda { |**system_arguments|
@@ -40,7 +51,7 @@ module Primer
         end
       }
 
-      # Nested lists.
+      # Sub lists, i.e. items that contain sub items.
       #
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>.
       renders_many :lists, lambda { |**system_arguments|
@@ -54,6 +65,7 @@ module Primer
       # @param scheme [Symbol] <%= one_of(Primer::Alpha::ActionList::SCHEME_OPTIONS) %>. `inset` children are offset (vertically and horizontally) from list edges. `full` (default) children are flush (vertically and horizontally) with list edges.
       # @param show_dividers [Boolean] Display a divider above each item in the list when it does not follow a header or divider.
       # @param sub_list [Boolean] Whether or not this `ActionList` is nested within another `ActionList`. Used internally.
+      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(
         role: DEFAULT_ROLE,
         item_classes: nil,
