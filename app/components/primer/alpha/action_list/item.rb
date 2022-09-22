@@ -207,7 +207,7 @@ module Primer
             )
           }
 
-          @sub_group_arguments = {
+          @sub_list_arguments = {
             classes: class_names(
               "ActionList",
               "ActionList--subGroup"

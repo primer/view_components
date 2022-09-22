@@ -44,8 +44,8 @@ module Primer
       #
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>.
       renders_many :lists, lambda { |**system_arguments|
-        build_list(sub_list: true, **system_arguments).tap do |group|
-          will_add_list(group)
+        build_list(sub_list: true, **system_arguments).tap do |list|
+          will_add_list(list)
         end
       }
 
@@ -59,11 +59,11 @@ module Primer
         item_classes: nil,
         scheme: DEFAULT_SCHEME,
         show_dividers: false,
-        sub_group: false,
+        sub_list: false,
         **system_arguments
       )
         @id = "action-list-sublist-#{SecureRandom.uuid}"
-        @sub_group = sub_group
+        @sub_list = sub_list
 
         @system_arguments = system_arguments
         @system_arguments[:tag] = :ul
@@ -75,14 +75,14 @@ module Primer
           SCHEME_MAPPINGS[@scheme],
           system_arguments[:classes],
           "ActionListWrap",
-          "ActionListWrap--subGroup" => @sub_group,
+          "ActionListWrap--subGroup" => @sub_list,
           "ActionListWrap--divided" => @show_dividers
         )
       end
 
       # @private
       def before_render
-        return if @sub_group
+        return if @sub_list
 
         if heading.present?
           @system_arguments[:"aria-labelledby"] = @id
@@ -96,7 +96,7 @@ module Primer
         system_arguments[:classes] = class_names(
           @item_classes,
           system_arguments[:classes],
-          "ActionListItem--subItem" => @sub_group
+          "ActionListItem--subItem" => @sub_list
         )
 
         ActionList::Item.new(list: self, **system_arguments)

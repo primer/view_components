@@ -3,7 +3,7 @@
 module Primer
   module Alpha
     class ActionList
-      # Section heading used to describe each group of action list items within an action list.
+      # Heading used to describe each sub list within an action list.
       class Heading < Primer::Component
         DEFAULT_SCHEME = :subtle
         SCHEME_MAPPINGS = {
