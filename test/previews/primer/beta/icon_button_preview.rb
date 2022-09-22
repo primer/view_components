@@ -21,14 +21,14 @@ module Primer
         aria_label: "Button"
       )
         render(Primer::Beta::IconButton.new(
-                scheme: scheme,
-                size: size,
-                id: id,
-                tag: tag,
-                disabled: disabled,
-                icon: icon,
-                "aria-label": aria_label
-              )) do |_c|
+                 scheme: scheme,
+                 size: size,
+                 id: id,
+                 tag: tag,
+                 disabled: disabled,
+                 icon: icon,
+                 "aria-label": aria_label
+               )) do |_c|
           "Button"
         end
       end
@@ -47,14 +47,14 @@ module Primer
         aria_label: "Button"
       )
         render(Primer::Beta::IconButton.new(
-                scheme: :default,
-                size: size,
-                id: id,
-                tag: tag,
-                disabled: disabled,
-                icon: icon,
-                "aria-label": aria_label
-              )) do |_c|
+                 scheme: :default,
+                 size: size,
+                 id: id,
+                 tag: tag,
+                 disabled: disabled,
+                 icon: icon,
+                 "aria-label": aria_label
+               )) do |_c|
           "Button"
         end
       end
@@ -73,14 +73,14 @@ module Primer
         aria_label: "Button"
       )
         render(Primer::Beta::IconButton.new(
-                scheme: :invisible,
-                size: size,
-                id: id,
-                tag: tag,
-                disabled: disabled,
-                icon: icon,
-                "aria-label": aria_label
-              )) do |_c|
+                 scheme: :invisible,
+                 size: size,
+                 id: id,
+                 tag: tag,
+                 disabled: disabled,
+                 icon: icon,
+                 "aria-label": aria_label
+               )) do |_c|
           "Button"
         end
       end
@@ -99,14 +99,14 @@ module Primer
         aria_label: "Button"
       )
         render(Primer::Beta::IconButton.new(
-                scheme: :danger,
-                size: size,
-                id: id,
-                tag: tag,
-                disabled: disabled,
-                icon: icon,
-                "aria-label": aria_label
-              )) do |_c|
+                 scheme: :danger,
+                 size: size,
+                 id: id,
+                 tag: tag,
+                 disabled: disabled,
+                 icon: icon,
+                 "aria-label": aria_label
+               )) do |_c|
           "Button"
         end
       end
