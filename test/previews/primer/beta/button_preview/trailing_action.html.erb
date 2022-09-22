@@ -1,0 +1,10 @@
+<%= render(Primer::Beta::Button.new(
+    scheme: :default,
+    size: :medium,
+    full_width: full_width,
+    id: id,
+    align_content: align_content
+)) do |c| %>
+  <% c.trailing_action_icon(icon: "triangle-down") %>
+  Button
+<% end %>

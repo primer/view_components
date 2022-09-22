@@ -7,16 +7,13 @@ module Primer
       status :beta
 
       DEFAULT_SCHEME = :default
-      LINK_SCHEME = :link
       SCHEME_MAPPINGS = {
         DEFAULT_SCHEME => "",
         :primary => "Button--primary",
         :secondary => "Button--secondary",
         :default => "Button--secondary",
         :danger => "Button--danger",
-        :outline => "btn-outline",
         :invisible => "Button--invisible",
-        LINK_SCHEME => "btn-link"
       }.freeze
       SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
@@ -93,17 +90,15 @@ module Primer
       #   <%= render(Primer::Beta::Button.new) { "Default" } %>
       #   <%= render(Primer::Beta::Button.new(scheme: :primary)) { "Primary" } %>
       #   <%= render(Primer::Beta::Button.new(scheme: :danger)) { "Danger" } %>
-      #   <%= render(Primer::Beta::Button.new(scheme: :outline)) { "Outline" } %>
       #   <%= render(Primer::Beta::Button.new(scheme: :invisible)) { "Invisible" } %>
-      #   <%= render(Primer::Beta::Button.new(scheme: :link)) { "Link" } %>
       #
       # @example Sizes
       #   <%= render(Primer::Beta::Button.new(size: :small)) { "Small" } %>
       #   <%= render(Primer::Beta::Button.new(size: :medium)) { "Medium" } %>
       #
-      # @example Block
-      #   <%= render(Primer::Beta::Button.new(block: :true)) { "Block" } %>
-      #   <%= render(Primer::Beta::Button.new(block: :true, scheme: :primary)) { "Primary block" } %>
+      # @example Full width
+      #   <%= render(Primer::Beta::Button.new(full_width: :true)) { "Full width" } %>
+      #   <%= render(Primer::Beta::Button.new(full_width: :true, scheme: :primary)) { "Primary full width" } %>
       #
       # @example With leading visual
       #   <%= render(Primer::Beta::Button.new) do |c| %>
@@ -163,16 +158,12 @@ module Primer
           system_arguments[:classes],
           SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
-          "Button" => !link?,
+          "Button",
           "Button--fullWidth" => full_width
         )
       end
 
       private
-
-      def link?
-        @scheme == LINK_SCHEME
-      end
 
       def trimmed_content
         return if content.blank?
