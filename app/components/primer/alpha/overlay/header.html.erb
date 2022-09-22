@@ -1,0 +1,15 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title <% if @visually_hide_title || content.present? %>sr-only<% end %>"><%= @title %></h1>
+      <% if content.present? %>
+        <%= content %>
+      <% elsif @subtitle.present? %>
+        <h2 id="<%= @id %>-description" class="Overlay-description"><%= @subtitle %></h2>
+      <% end %>
+    </div>
+    <div class="Overlay-actionWrap">
+      <%= render Primer::Beta::CloseButton.new(classes: "Overlay-closeButton", "data-close-dialog-id": @id) %>
+    </div>
+  </div>
+<% end %>
