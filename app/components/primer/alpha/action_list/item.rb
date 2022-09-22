@@ -3,7 +3,9 @@
 module Primer
   module Alpha
     class ActionList
-      # :nodoc:
+      # An individual `ActionList` item. They can optionally include leading and/or trailing visuals,
+      # such as icons, avatars, and counters. Items can themselves contain sub lists. Sub lists are
+      # rendered collapsed by default.
       class Item < Primer::Component
         DEFAULT_SIZE = :medium
         SIZE_MAPPINGS = {
@@ -27,15 +29,22 @@ module Primer
         }.freeze
         SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
+        # Description content that complements the item's label. See `ActionList`'s `description_scheme` argument
+        # for layout options.
         renders_one :description
 
+        # An icon or avatar that will render to the left of the label.
         renders_one :leading_visual, types: {
           icon: Primer::OcticonComponent,
           avatar: ->(**kwargs) { Primer::Beta::Avatar.new(**{ **kwargs, size: 16 }) }
         }
 
+        # Used internally.
+        #
+        # @private
         renders_one :private_leading_action_icon, Primer::OcticonComponent
 
+        # An icon, label, counter or text to render to the right of the label.
         renders_one :trailing_visual, types: {
           icon: Primer::OcticonComponent,
           label: Primer::LabelComponent,
@@ -43,15 +52,25 @@ module Primer
           text: ->(text) { text }
         }
 
+        # Used internally.
+        #
+        # @private
         renders_one :private_trailing_action_icon, Primer::OcticonComponent
 
+        # A button rendered after the trailing icon that can be used to show a menu, activate
+        # a dialog, etc.
         renders_one :trailing_action, lambda { |show_on_hover: false, **system_arguments|
           @trailing_action_on_hover = show_on_hover
 
           Primer::Beta::IconButton.new(scheme: :invisible, classes: ["ActionListItem-trailingAction"], **system_arguments)
         }
 
+        # Items.
+        #
+        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
         renders_many :items, lambda { |**system_arguments|
+          raise "Items can only be nested 2 levels deep" if sub_item?
+
           @list.build_item(parent: self, sub_item: true, **system_arguments).tap do |item|
             @list.will_add_item(item)
 
@@ -64,12 +83,12 @@ module Primer
           end
         }
 
-        # `Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.
-        # **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.
-        # Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
+        # `Tooltip` that appears on mouse hover or keyboard focus over the trailing action button. Use tooltips sparingly and as
+        # a last resort. **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be
+        # more appropriate. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
         #
         # @param type [Symbol] (:description) <%= one_of(Primer::Alpha::Tooltip::TYPE_OPTIONS) %>
-        # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Alpha::Tooltip) %>.
+        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::Tooltip) %>.
         renders_one :tooltip, lambda { |**system_arguments|
           raise ArgumentError, "Buttons with a tooltip must have a unique `id` set on the `Button`." if @id.blank? && !Rails.env.production?
 
@@ -81,22 +100,32 @@ module Primer
 
         attr_reader :list, :active, :disabled, :sub_item, :parent
 
+        # Whether or not this item is active.
+        #
+        # @return [Boolean]
         alias active? active
+
+        # Whether or not this item is disabled.
+        #
+        # @return [Boolean]
         alias disabled? disabled
+
+        # Whether or not this item is a sub item of another `ActionList`.
+        #
+        # @return [Boolean]
         alias sub_item? sub_item
 
         # @param label [String] Item label
         # @param truncate_label [Boolean] Truncate label with ellipsis.
-        # @param href [String] Link URK
-        # @param on_click [?] The unique identifier of the section the heading belongs to.
+        # @param href [String] Link URL
         # @param role [String] ARIA role describing the function of the item.
         # @param size [Symbol] Controls block sizing of the item.
         # @param scheme [Symbol] Controls color/style based on behavior.
         # @param disabled [Boolean] Disabled items are not clickable and visually dim.
-        # @param description [String] Optional item description
         # @param description_scheme [Symbol] Display description inline with label, or block on the next line.
         # @param active [Boolean] Sets an active state on navigational items.
-        # @param expanded [Boolean] Handles expand/collapse for nested groups.
+        # @param on_click [String] JavaScript to execute when the item is clicked.
+        # @param expanded [Boolean] Handles expand/collapse for nested lists.
         # @param sub_item [Boolean] If item is within a nested ActionList.
         def initialize(
           list:,
@@ -186,6 +215,7 @@ module Primer
           }
         end
 
+        # Cause this item to show its list of sub items when rendered.
         def expand!
           @expanded = true
         end
@@ -204,8 +234,8 @@ module Primer
           if items.present?
             @content_arguments[:tag] = :button
             @content_arguments[:"aria-expanded"] = @expanded.to_s
-            @content_arguments[:"data-action"] = "click:action-list#handleItemWithSubItemClick"
-            @system_arguments[:"data-action"] = "click:action-list#handleItemClick"
+            @content_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemWithSubItemClick"
+            @system_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemClick"
 
             private_trailing_action_icon(:"chevron-down", classes: "ActionListItem-collapseIcon")
 

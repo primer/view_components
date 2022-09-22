@@ -2,8 +2,12 @@
 
 module Primer
   module Alpha
-    # An ActionList is a list of items that can be activated or selected. ActionList is the base component for many menu-type components, including ActionMenu and SelectPanel.
+    # An ActionList is a list of items that can be activated or selected. ActionList is the
+    # base component for many menu-type components, including `ActionMenu` and `SelectPanel`,
+    # as well as navigational components like `NavList`.
     class ActionList < Primer::Component
+      status :alpha
+
       DEFAULT_ROLE = :list
 
       DEFAULT_SCHEME = :full
@@ -13,27 +17,43 @@ module Primer
       }.freeze
       SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
+      # @private
+      def self.custom_element_name
+        @custom_element_name ||= name.split("::").last.underscore.dasherize
+      end
+
+      # @private
+      def custom_element_name
+        self.class.custom_element_name
+      end
+
       renders_one :heading, lambda { |**system_arguments|
-        Heading.new(section_id: @id, **system_arguments)
+        Heading.new(list_id: @id, **system_arguments)
       }
 
+      # Top-level items.
+      #
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
       renders_many :items, lambda { |**system_arguments|
         build_item(**system_arguments).tap do |item|
           will_add_item(item)
         end
       }
 
+      # Nested lists.
+      #
+      # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList) %>.
       renders_many :lists, lambda { |**system_arguments|
-        build_list(sub_group: true, **system_arguments).tap do |group|
+        build_list(sub_list: true, **system_arguments).tap do |group|
           will_add_list(group)
         end
       }
 
-      # `inset` children are offset (vertically and horizontally) from list edges. `full` children are flush (vertically and horizontally) with list edges
       # @param role [Boolean] ARIA role describing the function of the list. listbox and menu are a common values.
-      # @param scheme [Symbol] `inset` children are offset (vertically and horizontally) from list edges. `full` (default) children are flush (vertically and horizontally) with list edges
+      # @param item_classes [String] Additional CSS classes to attach to items.
+      # @param scheme [Symbol] <%= one_of(Primer::Alpha::ActionList::SCHEME_OPTIONS) %>. `inset` children are offset (vertically and horizontally) from list edges. `full` (default) children are flush (vertically and horizontally) with list edges.
       # @param show_dividers [Boolean] Display a divider above each item in the list when it does not follow a header or divider.
-      # @param sub_group [Boolean] If an ActionList is nested within another ActionList.
+      # @param sub_list [Boolean] Whether or not this `ActionList` is nested within another `ActionList`. Used internally.
       def initialize(
         role: DEFAULT_ROLE,
         item_classes: nil,
@@ -42,7 +62,7 @@ module Primer
         sub_group: false,
         **system_arguments
       )
-        @id = "action-list-section-#{SecureRandom.uuid}"
+        @id = "action-list-sublist-#{SecureRandom.uuid}"
         @sub_group = sub_group
 
         @system_arguments = system_arguments
@@ -60,6 +80,7 @@ module Primer
         )
       end
 
+      # @private
       def before_render
         return if @sub_group
 
@@ -70,6 +91,7 @@ module Primer
         end
       end
 
+      # @private
       def build_item(**system_arguments)
         system_arguments[:classes] = class_names(
           @item_classes,
@@ -80,12 +102,15 @@ module Primer
         ActionList::Item.new(list: self, **system_arguments)
       end
 
+      # @private
       def build_list(**system_arguments)
         ActionList.new(**system_arguments)
       end
 
+      # @private
       def will_add_item(_item); end
 
+      # @private
       def will_add_list(_list); end
     end
   end
