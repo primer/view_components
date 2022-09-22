@@ -124,6 +124,9 @@ export class ToggleSwitchElement extends HTMLElement {
       const response = await fetch(this.src, {
         credentials: 'same-origin',
         method: 'POST',
+        headers: {
+          'Requested-With': 'XMLHttpRequest'
+        },
         body
       })
       if (response.ok) {
