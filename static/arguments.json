@@ -823,7 +823,7 @@
         "name": "scheme",
         "type": "Symbol",
         "default": "`:default`",
-        "description": "One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`, `:primary`, or `:secondary`."
+        "description": "One of `:danger`, `:default`, `:invisible`, `:primary`, or `:secondary`."
       },
       {
         "name": "size",

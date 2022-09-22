@@ -384,24 +384,19 @@
     "DEFAULT_ALIGN_CONTENT": "center",
     "DEFAULT_SCHEME": "default",
     "DEFAULT_SIZE": "medium",
-    "LINK_SCHEME": "link",
     "SCHEME_MAPPINGS": {
       "default": "Button--secondary",
       "primary": "Button--primary",
       "secondary": "Button--secondary",
       "danger": "Button--danger",
-      "outline": "btn-outline",
-      "invisible": "Button--invisible",
-      "link": "btn-link"
+      "invisible": "Button--invisible"
     },
     "SCHEME_OPTIONS": [
       "default",
       "primary",
       "secondary",
       "danger",
-      "outline",
-      "invisible",
-      "link"
+      "invisible"
     ],
     "SIZE_MAPPINGS": {
       "small": "Button--small",
