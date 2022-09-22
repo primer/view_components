@@ -4,7 +4,6 @@ module Primer
   module Beta
     # @label Button
     class ButtonPreview < ViewComponent::Preview
-
       # @label Playground
       # @param scheme select [default, primary, danger, invisible, link]
       # @param size select [small, medium, large]
@@ -39,7 +38,6 @@ module Primer
       # @param disabled toggle
       # @param tag select [a, summary, button]
       def default(
-        scheme: :default,
         full_width: false,
         id: "button-preview",
         tag: :button,
@@ -124,7 +122,7 @@ module Primer
       end
 
       # @label All schemes
-      def all_schemes()
+      def all_schemes
         render_with_template(locals: {})
       end
 
@@ -132,7 +130,6 @@ module Primer
       # @param disabled toggle
       # @param tag select [a, summary, button]
       def full_width(
-        scheme: :default,
         id: "button-preview",
         tag: :button,
         disabled: false

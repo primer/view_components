@@ -158,7 +158,7 @@ module Primer
           system_arguments[:classes],
           SCHEME_MAPPINGS[fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)],
           SIZE_MAPPINGS[fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)],
-          "Button",
+          "Button"
           "Button--fullWidth" => full_width
         )
       end
