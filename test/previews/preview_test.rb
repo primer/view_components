@@ -4,7 +4,7 @@ require "test_helper"
 
 class PreviewTest < Minitest::Test
   def setup
-    @previews = Dir.glob("test/previews/**/*.rb").reject { |f| f.include?("forms_preview.rb") || f.include?("/docs/") }
+    @previews = Dir.glob("previews/**/*.rb").reject { |f| f.include?("forms_preview.rb") || f.include?("/docs/") }
   end
 
   def test_previews_exist
