@@ -47,7 +47,7 @@ module Primer
         aria_label: "Button"
       )
         render(Primer::Beta::IconButton.new(
-              scheme: :default,
+                scheme: :default,
                 size: size,
                 id: id,
                 tag: tag,

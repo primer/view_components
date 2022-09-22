@@ -13,7 +13,7 @@ module Primer
         :secondary => "Button--secondary",
         :default => "Button--secondary",
         :danger => "Button--danger",
-        :invisible => "Button--invisible",
+        :invisible => "Button--invisible"
       }.freeze
       SCHEME_OPTIONS = SCHEME_MAPPINGS.keys
 
