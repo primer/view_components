@@ -389,14 +389,16 @@
       "primary": "Button--primary",
       "secondary": "Button--secondary",
       "danger": "Button--danger",
-      "invisible": "Button--invisible"
+      "invisible": "Button--invisible",
+      "link": "Button--link"
     },
     "SCHEME_OPTIONS": [
       "default",
       "primary",
       "secondary",
       "danger",
-      "invisible"
+      "invisible",
+      "link"
     ],
     "SIZE_MAPPINGS": {
       "small": "Button--small",
