@@ -21,10 +21,11 @@ module Primer
       # clicked, this list item will fetch the next page of results from the URL passed
       # in the `src` argument and append the resulting chunk of HTML to the list.
       #
+      # @param src [String] The URL to query for additional pages of list items.
       # @param pages [Integer] The total number of pages in the result set.
       # @param component_klass [Class] A component class to use instead of the default `Primer::Alpha::NavList::Item` class.
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
-      renders_one :show_more_item, lambda { |pages:, component_klass: Item, **system_arguments|
+      renders_one :show_more_item, lambda { |src:, pages:, component_klass: Item, **system_arguments|
         system_arguments[:classes] = class_names(
           @item_classes,
           system_arguments[:classes]
@@ -42,7 +43,7 @@ module Primer
           "color-fg-accent"
         )
 
-        component_klass.new(list: self, **system_arguments)
+        component_klass.new(list: self, src: src, **system_arguments)
       }
 
       # @example Top-level items with header
