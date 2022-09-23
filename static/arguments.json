@@ -124,6 +124,12 @@
         "description": "Item label."
       },
       {
+        "name": "label_classes",
+        "type": "String",
+        "default": "`nil`",
+        "description": "CSS classes that will be added to the label."
+      },
+      {
         "name": "truncate_label",
         "type": "Boolean",
         "default": "`false`",
