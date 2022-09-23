@@ -10,7 +10,7 @@ class NavListItemsController < ApplicationController
       { label: "Bachelor Chow", href: "/foods/bachelor-chow" },
       { label: "LöBrau", href: "/foods/lobrau" }
     ]
-  }
+  }.freeze
 
   def index
     @data = PAGES[params[:page].to_i]
