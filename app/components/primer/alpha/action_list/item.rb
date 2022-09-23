@@ -134,6 +134,7 @@ module Primer
         # @param list [Primer::Alpha::ActionList] Used internally.
         # @param parent [Primer::Alpha::ActionList::Item] Used internally.
         # @param label [String] Item label.
+        # @param label_classes [String] CSS classes that will be added to the label.
         # @param truncate_label [Boolean] Truncate label with ellipsis.
         # @param href [String] Link URL.
         # @param role [String] ARIA role describing the function of the item.
@@ -150,6 +151,7 @@ module Primer
         def initialize(
           list:,
           label:,
+          label_classes: nil,
           parent: nil,
           truncate_label: false,
           href: nil,
@@ -199,6 +201,7 @@ module Primer
 
           @label_arguments = {
             classes: class_names(
+              label_classes,
               "ActionListItem-label",
               "ActionListItem-label--truncate" => @truncate_label
             )

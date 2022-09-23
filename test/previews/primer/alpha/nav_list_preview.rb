@@ -58,6 +58,16 @@ module Primer
         end
       end
 
+      # @label Show more item
+      def show_more_item
+        render(Primer::Alpha::NavList.new(aria: { label: "List of foods" })) do |list|
+          list.with_heading(title: "My favorite foods")
+          list.with_item(label: "Popplers", href: "/foods/popplers")
+          list.with_item(label: "Slurm", href: "/foods/slurm")
+          list.with_show_more_item(label: "Show more", src: "/nav_list_items", pages: 2)
+        end
+      end
+
       # @label default
       #
       # @param role text
