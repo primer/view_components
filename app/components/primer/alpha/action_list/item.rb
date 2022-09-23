@@ -149,8 +149,8 @@ module Primer
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(
           list:,
-          parent: nil,
           label:,
+          parent: nil,
           truncate_label: false,
           href: nil,
           role: :listitem,

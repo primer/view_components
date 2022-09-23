@@ -98,8 +98,8 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Tooltip, { label: "More" }],
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
-    [Primer::Alpha::ActionList, { aria: { label: "Nav list" }}],
-    [Primer::Alpha::NavList, { aria: { label: "Nav list" }}]
+    [Primer::Alpha::ActionList, { aria: { label: "Nav list" } }],
+    [Primer::Alpha::NavList, { aria: { label: "Nav list" } }]
   ].freeze
 
   def test_registered_components

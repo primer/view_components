@@ -285,9 +285,7 @@ namespace :docs do
             f.puts("```")
           end
         else
-          unless components_without_examples.include?(component)
-            errors << { component.name => { example: "No examples found" } }
-          end
+          errors << { component.name => { example: "No examples found" } } unless components_without_examples.include?(component)
         end
       end
     end
