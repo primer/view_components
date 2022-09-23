@@ -76,14 +76,14 @@ module Primer
       # @param scheme [Symbol] select [subtle, filled]
       # @param title text
       # @param subtitle text
-      # @param section_id text
+      # @param list_id text
       def heading(
         scheme: Primer::Alpha::ActionList::Heading::DEFAULT_SCHEME,
         title: "This is a title",
-        section_id: "unique-id",
+        list_id: "unique-id",
         subtitle: "This is a subtitle"
       )
-        render(Primer::Alpha::ActionList::Heading.new(scheme: scheme, section_id: section_id, title: title, subtitle: subtitle))
+        render(Primer::Alpha::ActionList::Heading.new(scheme: scheme, list_id: list_id, title: title, subtitle: subtitle))
       end
 
       # @label Item [playground]
