@@ -39,10 +39,6 @@ module Primer
       @icons.any?
     end
 
-    def self._after_compile
-      Primer::Octicon::Cache.preload!
-    end
-
     def symbol_tags
       safe_join(
         @icons.values.map do |icon|
