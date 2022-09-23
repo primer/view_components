@@ -823,7 +823,7 @@
         "name": "scheme",
         "type": "Symbol",
         "default": "`:default`",
-        "description": "One of `:danger`, `:default`, `:invisible`, `:link`, `:outline`, `:primary`, or `:secondary`."
+        "description": "One of `:danger`, `:default`, `:invisible`, `:link`, `:primary`, or `:secondary`."
       },
       {
         "name": "size",
@@ -832,7 +832,7 @@
         "description": "One of `:large`, `:medium`, or `:small`."
       },
       {
-        "name": "full_width",
+        "name": "block",
         "type": "Boolean",
         "default": "`false`",
         "description": "Whether button is full-width with `display: block`."
