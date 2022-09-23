@@ -7,14 +7,14 @@ module Primer
       # @label Playground
       # @param scheme select [default, primary, danger, invisible, link]
       # @param size select [small, medium, large]
-      # @param full_width toggle
+      # @param block toggle
       # @param disabled toggle
       # @param align_content select [center, start]
       # @param tag select [a, summary, button]
       def playground(
         scheme: :default,
         size: :medium,
-        full_width: false,
+        block: false,
         id: "button-preview",
         align_content: :center,
         tag: :button,
@@ -23,7 +23,7 @@ module Primer
         render(Primer::Beta::Button.new(
                  scheme: scheme,
                  size: size,
-                 full_width: full_width,
+                 block: block,
                  id: id,
                  align_content: align_content,
                  tag: tag,
@@ -34,11 +34,11 @@ module Primer
       end
 
       # @label Default
-      # @param full_width toggle
+      # @param block toggle
       # @param disabled toggle
       # @param tag select [a, summary, button]
       def default(
-        full_width: false,
+        block: false,
         id: "button-preview",
         tag: :button,
         disabled: false
@@ -46,7 +46,7 @@ module Primer
         render(Primer::Beta::Button.new(
                  scheme: :default,
                  size: :medium,
-                 full_width: full_width,
+                 block: block,
                  id: id,
                  tag: tag,
                  disabled: disabled
@@ -56,19 +56,19 @@ module Primer
       end
 
       # @label Primary
-      # @param full_width toggle
+      # @param block toggle
       # @param disabled toggle
       # @param tag select [a, summary, button]
       def primary(
         id: "button-preview",
-        full_width: false,
+        block: false,
         tag: :button,
         disabled: false
       )
         render(Primer::Beta::Button.new(
                  scheme: :primary,
                  size: :medium,
-                 full_width: full_width,
+                 block: block,
                  id: id,
                  tag: tag,
                  disabled: disabled
@@ -78,19 +78,19 @@ module Primer
       end
 
       # @label Danger
-      # @param full_width toggle
+      # @param block toggle
       # @param disabled toggle
       # @param tag select [a, summary, button]
       def danger(
         id: "button-preview",
-        full_width: false,
+        block: false,
         tag: :button,
         disabled: false
       )
         render(Primer::Beta::Button.new(
                  scheme: :danger,
                  size: :medium,
-                 full_width: full_width,
+                 block: block,
                  id: id,
                  tag: tag,
                  disabled: disabled
@@ -100,19 +100,19 @@ module Primer
       end
 
       # @label Invisible
-      # @param full_width toggle
+      # @param block toggle
       # @param disabled toggle
       # @param tag select [a, summary, button]
       def invisible(
         id: "button-preview",
-        full_width: false,
+        block: false,
         tag: :button,
         disabled: false
       )
         render(Primer::Beta::Button.new(
                  scheme: :invisible,
                  size: :medium,
-                 full_width: full_width,
+                 block: block,
                  id: id,
                  tag: tag,
                  disabled: disabled
@@ -137,7 +137,7 @@ module Primer
         render(Primer::Beta::Button.new(
                  scheme: :default,
                  size: :medium,
-                 full_width: true,
+                 block: true,
                  id: id,
                  tag: tag,
                  disabled: disabled
@@ -149,12 +149,12 @@ module Primer
       # @label Link as button
       # @param scheme select [default, primary, danger, outline, invisible, link]
       # @param size select [small, medium]
-      # @param full_width toggle
+      # @param block toggle
       # @param align_content select [center, start]
       def link_as_button(
         scheme: :default,
         size: :medium,
-        full_width: false,
+        block: false,
         id: "button-preview",
         align_content: :center,
         tag: :a
@@ -162,7 +162,7 @@ module Primer
         render(Primer::Beta::Button.new(
                  scheme: scheme,
                  size: size,
-                 full_width: full_width,
+                 block: block,
                  id: id,
                  align_content: align_content,
                  tag: tag
@@ -174,13 +174,13 @@ module Primer
       # @label Trailing visual
       # @param scheme select [default, primary, danger, outline, invisible, link]
       # @param size select [small, medium]
-      # @param full_width toggle
+      # @param block toggle
       # @param align_content select [center, start]
       # @param tag select [a, summary, button]
       def trailing_visual(
         scheme: :default,
         size: :medium,
-        full_width: false,
+        block: false,
         id: "button-preview",
         align_content: :center,
         tag: :a
@@ -188,7 +188,7 @@ module Primer
         render_with_template(locals: {
                                scheme: scheme,
                                size: size,
-                               full_width: full_width,
+                               block: block,
                                id: id,
                                align_content: align_content,
                                tag: tag
@@ -198,34 +198,34 @@ module Primer
       # @label Leading visual
       # @param scheme select [default, primary, danger, outline, invisible, link]
       # @param size select [small, medium]
-      # @param full_width toggle
+      # @param block toggle
       # @param align_content select [center, start]
       def leading_visual(
-        scheme: :default,
+        scheme: :invisible,
         size: :medium,
-        full_width: false,
+        block: false,
         id: "button-preview",
         align_content: :center
       )
         render_with_template(locals: {
                                scheme: scheme,
                                size: size,
-                               full_width: full_width,
+                               block: block,
                                id: id,
                                align_content: align_content
                              })
       end
 
       # @label Trailing action
-      # @param full_width toggle
+      # @param block toggle
       # @param align_content select [center, start]
       def trailing_action(
-        full_width: false,
+        block: false,
         id: "button-preview",
         align_content: :center
       )
         render_with_template(locals: {
-                               full_width: full_width,
+                               block: block,
                                id: id,
                                align_content: align_content
                              })
@@ -234,19 +234,19 @@ module Primer
       # @label With tooltip
       # @param scheme select [default, primary, danger, outline, invisible, link]
       # @param size select [small, medium]
-      # @param full_width toggle
+      # @param block toggle
       # @param align_content select [center, start]
       def with_tooltip(
         scheme: :default,
         size: :medium,
-        full_width: false,
+        block: false,
         id: "button-preview",
         align_content: :center
       )
         render_with_template(locals: {
                                scheme: scheme,
                                size: size,
-                               full_width: full_width,
+                               block: block,
                                id: id,
                                align_content: align_content
                              })
