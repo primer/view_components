@@ -146,6 +146,7 @@ module Primer
       # The items contained within this nav list.
       #
       # @return [Array<Primer::Alpha::ActionList::Item>]
+      # @private
       def items
         [*super, show_more_item].tap(&:compact!)
       end
