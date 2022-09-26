@@ -1,0 +1,25 @@
+on:
+  release:
+    types: [published]
+name: Publish primer_view_components and @primer/view-components
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: "3.1.x"
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - run: |
+          gem install bundler:2.2.9
+          bundle config path vendor/bundle
+          bundle install
+          script/publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
+          RUBYGEMS_TOKEN: ${{ secrets.RUBYGEMS_TOKEN_SHARED }}
