@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.0.96
+
+### Patch Changes
+
+- [#1400](https://github.com/primer/view_components/pull/1400) [`ae48b9fe`](https://github.com/primer/view_components/commit/ae48b9fe9d7ef3a908ea9f84f5fd25cf9bf40e50) Thanks [@langermank](https://github.com/langermank)! - - Add Lookbook previews for Beta Button and IconButton
+  - Tiny CSS bug fix
+
+* [#1406](https://github.com/primer/view_components/pull/1406) [`1fec4bf5`](https://github.com/primer/view_components/commit/1fec4bf5097d3f002208840694d05dd4401c7a83) Thanks [@jonrohan](https://github.com/jonrohan)! - Raise on usage of deprecated arguments in Primer::Beta::Button
+
+- [#1402](https://github.com/primer/view_components/pull/1402) [`7e50f6d9`](https://github.com/primer/view_components/commit/7e50f6d93338da50e2aa670c7c9f1a23fb7dfecc) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Move Octicon cache preload to initializer.
+
 ## 0.0.95
 
 ### Patch Changes
