@@ -22,18 +22,6 @@ module Primer
         end
       end
 
-      # @label Sub items
-      def sub_items
-        render(Primer::Alpha::ActionList.new) do |list|
-          list.with_heading(title: "Heading")
-          list.with_item(label: "Item one") do |item|
-            item.with_leading_visual_icon(icon: :gear)
-            item.with_item(label: "Active sub item", href: "/", active: true)
-            item.with_item(label: "Sub item", href: "/", active: false)
-          end
-        end
-      end
-
       # @label default
       #
       # @param role text
