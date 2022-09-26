@@ -8,7 +8,7 @@ module Primer
       # @param direction select [s, n, e, w, ne, nw, se, sw]
       # @param tooltip_text text
       def default(type: :description, direction: :s, tooltip_text: "Tooltip text")
-        render(Primer::ButtonComponent.new(id: "button-with-tooltip")) do |c|
+        render(Primer::Beta::Button.new(id: "button-with-tooltip")) do |c|
           c.tooltip(text: tooltip_text, type: type, direction: direction)
           "Button"
         end
@@ -17,7 +17,7 @@ module Primer
       # @param direction select [s, n, e, w, ne, nw, se, sw]
       # @param tooltip_text text
       def label_tooltip_on_button_with_existing_labelledby(type: :label, direction: :s, tooltip_text: "Tooltip text")
-        render(Primer::ButtonComponent.new(id: "button-with-existing-label", "aria-labelledby": "existing-label-id")) do |c|
+        render(Primer::Beta::Button.new(id: "button-with-existing-label", "aria-labelledby": "existing-label-id")) do |c|
           c.tooltip(text: tooltip_text, type: type, direction: direction)
           "Button"
         end
@@ -26,7 +26,7 @@ module Primer
       # @param direction select [s, n, e, w, ne, nw, se, sw]
       # @param tooltip_text text
       def description_tooltip_on_button_with_existing_describedby(type: :description, direction: :s, tooltip_text: "Tooltip text")
-        render(Primer::ButtonComponent.new(id: "button-with-existing-description", "aria-describedby": "existing-description-id")) do |c|
+        render(Primer::Beta::Button.new(id: "button-with-existing-description", "aria-describedby": "existing-description-id")) do |c|
           c.tooltip(text: tooltip_text, type: type, direction: direction)
           "Button"
         end
@@ -57,9 +57,9 @@ module Primer
       end
 
       # @!group Tooltip enabled elements
-      # @label Tooltip with Primer::ButtonComponent
+      # @label Tooltip with Primer::Beta::Button
       def tooltip_with_button(type: :description, direction: :s, tooltip_text: "Tooltip text")
-        render(Primer::ButtonComponent.new(id: "button-with-tooltip")) do |c|
+        render(Primer::Beta::Button.new(id: "button-with-tooltip")) do |c|
           c.tooltip(text: tooltip_text, type: type, direction: direction)
           "Button"
         end

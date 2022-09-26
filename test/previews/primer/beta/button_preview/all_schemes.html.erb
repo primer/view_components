@@ -1,0 +1,26 @@
+<div style="display: flex; gap: 1rem;">
+  <%= render(Primer::Beta::Button.new(
+      scheme: :secondary,
+      size: :medium,
+  )) do |c| %>
+    Button
+  <% end %>
+  <%= render(Primer::Beta::Button.new(
+      scheme: :primary,
+      size: :medium,
+  )) do |c| %>
+    Button
+  <% end %>
+  <%= render(Primer::Beta::Button.new(
+      scheme: :invisible,
+      size: :medium,
+  )) do |c| %>
+    Button
+  <% end %>
+  <%= render(Primer::Beta::Button.new(
+      scheme: :danger,
+      size: :medium,
+  )) do |c| %>
+    Button
+  <% end %>
+</div>
