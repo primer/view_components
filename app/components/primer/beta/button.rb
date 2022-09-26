@@ -149,6 +149,9 @@ module Primer
 
         @id = @system_arguments[:id]
 
+        raise ArgumentError, "The `variant:` argument is no longer supported on Primer::Beta::Button. Consider `scheme:` or `size:`." if !Rails.env.production? && @system_arguments[:variant].present?
+        raise ArgumentError, "The `dropdown:` argument is no longer supported on Primer::Beta::Button. Use the `trailing_action` slot instead." if !Rails.env.production? && @system_arguments[:dropdown].present?
+
         @align_content_classes = class_names(
           "Button-content",
           system_arguments[:classes],
