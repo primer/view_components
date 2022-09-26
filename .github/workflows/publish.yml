@@ -11,16 +11,33 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: "3.1.x"
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14
-      - run: |
+      - name: Bundle install
+        run: |
           gem install bundler:2.2.9
           bundle config path vendor/bundle
           bundle install
-          yarn
-          script/publish
+      - name: Create .gem credentials
+        run: |
+          mkdir -p ~/.gem
+          cat << EOF > ~/.gem/credentials
+          ---
+          :rubygems_api_key: ${RUBYGEMS_TOKEN}
+          EOF
+          chmod 0600 ~/.gem/credentials
         env:
-          GITHUB_TOKEN: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
           RUBYGEMS_TOKEN: ${{ secrets.RUBYGEMS_TOKEN_SHARED }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Create .npmrc
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
+      - name: Yarn install
+        run: |
+          yarn
+      - name: Publish
+        run: script/publish
