@@ -83,7 +83,7 @@ module Primer
         system_arguments[:size] = :medium
         system_arguments[:scheme] ||= :primary
 
-        Primer::Beta::Button.new(**system_arguments)
+        Primer::ButtonComponent.new(**system_arguments)
       }
 
       # Optional secondary action
