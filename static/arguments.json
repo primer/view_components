@@ -28,10 +28,10 @@
         "description": "Display a divider above each item in the list when it does not follow a header or divider."
       },
       {
-        "name": "sub_list",
+        "name": "sub_group",
         "type": "Boolean",
         "default": "`false`",
-        "description": "Whether or not this `ActionList` is nested within another `ActionList`. Used internally."
+        "description": "Whether or not this `ActionList` represents a group in a parent `ActionList`. Used internally."
       },
       {
         "name": "system_arguments",
@@ -109,13 +109,13 @@
         "name": "list",
         "type": "Primer::Alpha::ActionList",
         "default": "N/A",
-        "description": "Used internally."
+        "description": "The list that contains this item. Used internally."
       },
       {
         "name": "parent",
         "type": "Primer::Alpha::ActionList::Item",
         "default": "`nil`",
-        "description": "Used internally."
+        "description": "This item's parent item. `nil` if this item is at the root. Used internally."
       },
       {
         "name": "label",
@@ -182,18 +182,6 @@
         "type": "String",
         "default": "`nil`",
         "description": "JavaScript to execute when the item is clicked."
-      },
-      {
-        "name": "expanded",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Handles expand/collapse for nested lists."
-      },
-      {
-        "name": "sub_item",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "If item is within a nested ActionList. Used internally."
       },
       {
         "name": "id",
@@ -386,6 +374,18 @@
         "type": "Array<Symbol>",
         "default": "`[]`",
         "description": "The list of IDs that select this item. In other words, if the `selected_item_id` attribute on the parent `NavList` is set to one of these IDs, the item will appear selected."
+      },
+      {
+        "name": "expanded",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether this item shows (expands) or hides (collapses) its list of sub items."
+      },
+      {
+        "name": "sub_item",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not this item is nested under a parent item. Used internally."
       },
       {
         "name": "system_arguments",

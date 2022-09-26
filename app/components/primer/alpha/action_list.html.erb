@@ -1,21 +1,19 @@
-<%= render(Primer::ConditionalWrapper.new(condition: self.class == Primer::Alpha::ActionList, tag: "action-list")) do %>
-  <% if heading %>
-    <%= heading %>
+<% if heading %>
+  <%= heading %>
+<% end %>
+<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
+  <% items.each do |item| %>
+    <%= item %>
   <% end %>
-  <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
-    <% items.each do |item| %>
-      <%= item %>
-    <% end %>
-    <% unless items.empty? || lists.empty? %>
+  <% unless items.empty? || groups.empty? %>
+    <%= render(Primer::Alpha::ActionList::Divider.new) %>
+  <% end %>
+  <% groups.each_with_index do |group, idx| %>
+    <% if idx > 0 %>
       <%= render(Primer::Alpha::ActionList::Divider.new) %>
     <% end %>
-    <% lists.each_with_index do |list, idx| %>
-      <% if idx > 0 %>
-        <%= render(Primer::Alpha::ActionList::Divider.new) %>
-      <% end %>
-      <%= render(Primer::BaseComponent.new(tag: :li, classes: "ActionListItem ActionListItem--hasSubItem")) do %>
-        <%= list %>
-      <% end %>
+    <%= render(Primer::BaseComponent.new(tag: :li, classes: "ActionListItem ActionListItem--hasSubItem")) do %>
+      <%= group %>
     <% end %>
   <% end %>
 <% end %>

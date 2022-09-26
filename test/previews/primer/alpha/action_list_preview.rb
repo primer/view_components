@@ -4,18 +4,18 @@ module Primer
   module Alpha
     # @label ActionList
     class ActionListPreview < ViewComponent::Preview
-      # @label Sub lists
-      def sub_lists
+      # @label Groups
+      def groups
         render(Primer::Alpha::ActionList.new) do |list|
           list.with_heading(title: "Heading", tag: :h2)
           list.with_item(label: "Item one", href: "/") do |item|
             item.with_leading_visual_icon(icon: :gear)
           end
-          list.with_list do |sub_list|
-            sub_list.with_item(label: "Sub item one", href: "/") do |item|
+          list.with_group do |group|
+            group.with_item(label: "Group item one", href: "/") do |item|
               item.with_leading_visual_icon(icon: :gear)
             end
-            sub_list.with_item(label: "Sub item two", href: "/") do |item|
+            group.with_item(label: "Group item two", href: "/") do |item|
               item.with_leading_visual_icon(icon: :gear)
             end
           end

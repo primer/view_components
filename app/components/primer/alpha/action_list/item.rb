@@ -4,8 +4,7 @@ module Primer
   module Alpha
     class ActionList
       # An individual `ActionList` item. They can optionally include leading and/or trailing visuals,
-      # such as icons, avatars, and counters. Items can themselves contain sub lists. Sub lists are
-      # rendered collapsed by default.
+      # such as icons, avatars, and counters. Items can also contain groups of related items.
       class Item < Primer::Component
         DEFAULT_SIZE = :medium
         SIZE_MAPPINGS = {
@@ -83,22 +82,6 @@ module Primer
           Primer::Beta::IconButton.new(scheme: :invisible, classes: ["ActionListItem-trailingAction"], **system_arguments)
         }
 
-        # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
-        renders_many :items, lambda { |**system_arguments|
-          raise "Items can only be nested 2 levels deep" if sub_item?
-
-          @list.build_item(parent: self, sub_item: true, **system_arguments).tap do |item|
-            @list.will_add_item(item)
-
-            if item.active?
-              @content_arguments[:classes] = class_names(
-                @content_arguments[:classes],
-                "ActionListContent--hasActiveSubItem"
-              )
-            end
-          end
-        }
-
         # `Tooltip` that appears on mouse hover or keyboard focus over the trailing action button. Use tooltips sparingly and as
         # a last resort. **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be
         # more appropriate. Consult the <%= link_to_component(Primer::Alpha::Tooltip) %> documentation for more information.
@@ -114,7 +97,12 @@ module Primer
           Primer::Alpha::Tooltip.new(**system_arguments)
         }
 
-        attr_reader :list, :active, :disabled, :sub_item, :parent
+        # Used internally.
+        #
+        # @private
+        renders_one :private_content
+
+        attr_reader :list, :active, :disabled, :parent
 
         # Whether or not this item is active.
         #
@@ -126,13 +114,8 @@ module Primer
         # @return [Boolean]
         alias disabled? disabled
 
-        # Whether or not this item is a sub item of another `ActionList`.
-        #
-        # @return [Boolean]
-        alias sub_item? sub_item
-
-        # @param list [Primer::Alpha::ActionList] Used internally.
-        # @param parent [Primer::Alpha::ActionList::Item] Used internally.
+        # @param list [Primer::Alpha::ActionList] The list that contains this item. Used internally.
+        # @param parent [Primer::Alpha::ActionList::Item] This item's parent item. `nil` if this item is at the root. Used internally.
         # @param label [String] Item label.
         # @param label_classes [String] CSS classes that will be added to the label.
         # @param truncate_label [Boolean] Truncate label with ellipsis.
@@ -144,8 +127,6 @@ module Primer
         # @param description_scheme [Symbol] Display description inline with label, or block on the next line.
         # @param active [Boolean] Sets an active state on navigational items.
         # @param on_click [String] JavaScript to execute when the item is clicked.
-        # @param expanded [Boolean] Handles expand/collapse for nested lists.
-        # @param sub_item [Boolean] If item is within a nested ActionList. Used internally.
         # @param id [String] Used internally.
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(
@@ -162,8 +143,6 @@ module Primer
           description_scheme: DEFAULT_DESCRIPTION_SCHEME,
           active: false,
           on_click: nil,
-          expanded: false,
-          sub_item: false,
           id: SecureRandom.hex,
           **system_arguments
         )
@@ -174,11 +153,9 @@ module Primer
           @truncate_label = truncate_label
           @disabled = disabled
           @active = active
-          @expanded = expanded
           @trailing_action_on_hover = false
           @id = id
           @system_arguments = system_arguments
-          @sub_item = sub_item
 
           @size = fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)
           @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
@@ -190,8 +167,7 @@ module Primer
             @system_arguments[:classes],
             SCHEME_MAPPINGS[@scheme],
             "ActionListItem",
-            "ActionListItem--navActive" => @active,
-            "ActionListItem--subItem" => @sub_item
+            "ActionListItem--navActive" => @active
           )
 
           @system_arguments[:role] = role
@@ -229,50 +205,22 @@ module Primer
               DESCRIPTION_SCHEME_MAPPINGS[@description_scheme]
             )
           }
-
-          @sub_list_arguments = {
-            classes: class_names(
-              "ActionList",
-              "ActionList--subGroup"
-            )
-          }
-        end
-
-        # Cause this item to show its list of sub items when rendered.
-        def expand!
-          @expanded = true
         end
 
         private
 
         def before_render
-          raise "Cannot render a trailing visual for an item with subitems" if items.present? && trailing_visual.present?
-
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
             "ActionListItem--withActions" => trailing_action.present?,
             "ActionListItem--trailingActionHover" => @trailing_action_on_hover
           )
 
-          if items.present?
-            @content_arguments[:tag] = :button
-            @content_arguments[:"aria-expanded"] = @expanded.to_s
-            @content_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemWithSubItemClick"
-            @system_arguments[:"data-action"] = "click:#{@list.custom_element_name}#handleItemClick"
-
-            private_trailing_action_icon(:"chevron-down", classes: "ActionListItem-collapseIcon")
-
-            @system_arguments[:classes] = class_names(
-              @system_arguments[:classes],
-              "ActionListItem--hasSubItem"
-            )
-          end
-
           return unless leading_visual
 
           @content_arguments[:classes] = class_names(
             @content_arguments[:classes],
-            "ActionListContent--visual16" => leading_visual && items.present?,
+            "ActionListContent--visual16" => leading_visual,
             "ActionListContent--blockDescription" => description && @description_scheme == :block
           )
         end

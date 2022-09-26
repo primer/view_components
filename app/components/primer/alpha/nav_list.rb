@@ -6,14 +6,14 @@ module Primer
     # that appears to the left or right side of some main content. Each item in a
     # nav list is a link along with corresponding leading and trailing visuals.
     #
-    # Nav list items can either be single items or sub lists. Rather than navigating
-    # to a URL, sub lists expand and collapse on click. To indicate this functionality,
-    # sub lists automatically render with a trailing chevron that changes direction
+    # Nav list items can either be single items or groups. Rather than navigating
+    # to a URL, groups expand and collapse on click. To indicate this functionality,
+    # groups automatically render with a trailing chevron icon that changes direction
     # when the sub list expands and collapses.
     #
     # Nav list items appear visually active when selected. Each nav item must have one
     # or more ID values that determine which item will appear selected. Use the
-    # `selected_item_id` argument to select the appropriate nav item.
+    # `selected_item_id` argument to select the appropriate item.
     class NavList < ActionList
       status :alpha
 
@@ -25,7 +25,7 @@ module Primer
       # @param pages [Integer] The total number of pages in the result set.
       # @param component_klass [Class] A component class to use instead of the default `Primer::Alpha::NavList::Item` class.
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::ActionList::Item) %>.
-      renders_one :show_more_item, lambda { |src:, pages:, component_klass: Item, **system_arguments|
+      renders_one :show_more_item, lambda { |src:, pages:, component_klass: NavList::Item, **system_arguments|
         system_arguments[:classes] = class_names(
           @item_classes,
           system_arguments[:classes]
@@ -50,7 +50,7 @@ module Primer
       #
       #   <%= render(Primer::Alpha::NavList.new(aria: { label: "Settings" }, selected_item_id: :personal_info)) do |component| %>
       #     <% component.with_item(label: "General", selected_by_ids: :general, href: "/settings/general") %>
-      #     <% component.with_list(aria: { label: "Account settings" }) do |list| %>
+      #     <% component.with_group(aria: { label: "Account settings" }) do |list| %>
       #       <% list.with_heading(title: "Account Settings") %>
       #       <% list.with_item(label: "Personal Information", selected_by_ids: :personal_info, href: "/account/info") %>
       #       <% list.with_item(label: "Password", selected_by_ids: :password, href: "/account/password") %>
@@ -61,7 +61,7 @@ module Primer
       # @example Leading and trailing visuals
       #
       #   <%= render(Primer::Alpha::NavList.new(aria: { label: "Settings" }, selected_item_id: :personal_info)) do |component| %>
-      #     <% component.with_list(aria: { label: "Account settings" }) do |list| %>
+      #     <% component.with_group(aria: { label: "Account settings" }) do |list| %>
       #       <% list.with_heading(title: "Account Settings") %>
       #       <% list.with_item(label: "Personal Information", selected_by_ids: :personal_info, href: "/account/info") do |item| %>
       #         <% item.with_leading_visual_avatar(src: "https://github.com/github.png", alt: "GitHub") %>
@@ -80,7 +80,7 @@ module Primer
       # @example Expandable sub lists
       #
       #   <%= render(Primer::Alpha::NavList.new(aria: { label: "Settings" }, selected_item_id: :email_notifications)) do |component| %>
-      #     <% component.with_list(aria: { label: "Account settings" }) do |list| %>
+      #     <% component.with_group(aria: { label: "Account settings" }) do |list| %>
       #       <% list.with_heading(title: "Account Settings") %>
       #       <% list.with_item(label: "Notification settings", selected_by_ids: :notifications) do |item| %>
       #         <% item.with_leading_visual_icon(icon: :bell) %>
@@ -106,7 +106,7 @@ module Primer
       # @example Trailing action
       #
       #   <%= render(Primer::Alpha::NavList.new(aria: { label: "Foods list" })) do |component| %>
-      #     <% component.with_list(aria: { label: "Favorite foods" }) do |list| %>
+      #     <% component.with_group(aria: { label: "Favorite foods" }) do |list| %>
       #       <% list.with_heading(title: "My Favorite Foods") %>
       #       <% list.with_item(label: "Popplers", selected_by_ids: :popplers, href: "/foods/popplers") do |item| %>
       #         <% item.with_trailing_action(show_on_hover: false, icon: "plus", "aria-label": "Add new food", size: :medium) %>
@@ -122,34 +122,34 @@ module Primer
       def initialize(selected_item_id: nil, **system_arguments)
         @system_arguments = system_arguments
         @selected_item_id = selected_item_id
-
         @system_arguments[:"data-target"] = "nav-list.list"
-
-        aria_label = aria(:label, system_arguments)
-        raise ArgumentError, "an aria-label is required" if aria_label.nil?
 
         super(tag: :nav, **@system_arguments)
       end
 
+      # Cause this item to show its list of sub items when rendered.
+      def expand!
+        @expanded = true
+      end
+
+      # The items contained within this nav list.
+      #
+      # @return [Array<Primer::Alpha::ActionList::Item>]
+      def items
+        [*super, show_more_item].tap(&:compact!)
+      end
+
       # @!parse
-      #   # Top-level items that render above all sub lists.
+      #   # Top-level items that render above all groups.
       #   #
       #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList::Item) %>.
       #   renders_many :items
 
       # @!parse
-      #   # Sub lists, i.e. items that contain sub items.
+      #   # Groups.
       #   #
       #   # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::NavList) %>.
-      #   renders_many :lists
-
-      # The items contained within this nav list.
-      #
-      # @return [Array<Primer::Alpha::ActionList::Item>]
-      # @private
-      def items
-        [*super, show_more_item].tap(&:compact!)
-      end
+      #   renders_many :groups
 
       # @private
       def build_item(component_klass: NavList::Item, **system_arguments)
@@ -161,7 +161,7 @@ module Primer
       end
 
       # @private
-      def build_list(**system_arguments)
+      def build_group(**system_arguments)
         NavList.new(
           **system_arguments,
           selected_item_id: @selected_item_id,

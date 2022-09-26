@@ -35,11 +35,5 @@
   <% if trailing_action %>
     <%= trailing_action %>
   <% end %>
-  <% unless items.empty? %>
-    <%= render(Primer::BaseComponent.new(tag: :ul, **@sub_list_arguments)) do %>
-      <% items.each do |item| %>
-        <%= item %>
-      <% end %>
-    <% end %>
-  <% end %>
+  <%= private_content %>
 <% end %>

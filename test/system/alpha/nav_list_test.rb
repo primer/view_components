@@ -4,6 +4,14 @@ require "application_system_test_case"
 
 module Alpha
   class NavListTest < ApplicationSystemTestCase
+    def test_collapses_group
+      visit_preview(:default)
+
+      assert_selector("[aria-expanded='true']")
+      click_button("Moderation options")
+      assert_selector("[aria-expanded='false']")
+    end
+
     def test_shows_more_items
       visit_preview(:show_more_item)
 

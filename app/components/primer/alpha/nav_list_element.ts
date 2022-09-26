@@ -1,17 +1,13 @@
+/* eslint-disable custom-elements/expose-class-on-global */
 import {controller, target, targets} from '@github/catalyst'
-import {ActionListElement} from './action_list_element'
 
 @controller
-class NavListElement extends ActionListElement {
+class NavListElement extends HTMLElement {
   @target list: HTMLElement
   @target showMoreItem: HTMLElement
   @targets focusMarkers: HTMLElement[]
 
   connectedCallback(): void {
-    if (this.arrowNavigation === true) {
-      this.setupFocusZone()
-    }
-
     this.setShowMoreItemState()
   }
 
@@ -42,6 +38,40 @@ class NavListElement extends ActionListElement {
 
   get paginationSrc(): string {
     return this.showMoreItem.getAttribute('src') || ''
+  }
+
+  // expand collapsible item onClick
+  expandItem(item: HTMLElement) {
+    item.nextElementSibling?.removeAttribute('data-hidden')
+    item.setAttribute('aria-expanded', 'true')
+  }
+
+  collapseItem(item: HTMLElement) {
+    item.nextElementSibling?.setAttribute('data-hidden', '')
+    item.setAttribute('aria-expanded', 'false')
+  }
+
+  itemIsExpanded(item: HTMLElement | null) {
+    if (item?.tagName === 'A') {
+      return true
+    }
+    return item?.getAttribute('aria-expanded') === 'true'
+  }
+
+  // expand/collapse item
+  handleItemWithSubItemClick(e: Event) {
+    const target = e.target
+    if (!(target instanceof HTMLElement)) return
+
+    const button = target.closest<HTMLButtonElement>('button')
+    if (!button) return
+    if (this.itemIsExpanded(button)) {
+      this.collapseItem(button)
+    } else {
+      this.expandItem(button)
+    }
+
+    e.stopPropagation()
   }
 
   private async showMore(e: Event) {

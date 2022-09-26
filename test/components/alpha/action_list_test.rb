@@ -15,16 +15,6 @@ module Primer
         assert_includes(error.message, "label or heading must be provided")
       end
 
-      def test_sub_lists
-        render_preview(:sub_lists)
-
-        assert_selector("h2.ActionList-sectionDivider-title")
-        assert_selector("li.ActionListItem ul.ActionListWrap--subGroup")
-        assert_selector("ul.ActionListWrap[aria-labelledby]")
-        assert_selector(".ActionList-sectionDivider")
-        assert_selector("ul.ActionListWrap--subGroup li.ActionListItem--subItem")
-      end
-
       def test_active_item
         render_preview(:item, params: { active: true })
 
@@ -61,17 +51,31 @@ module Primer
         assert_text("trailing visual text")
       end
 
-      def test_sub_items
-        render_preview(:sub_items)
-
-        assert_selector("button.ActionListContent--hasActiveSubItem.ActionListContent[aria-expanded='false'][data-action='click:action-list#handleItemWithSubItemClick'] svg.ActionListItem-collapseIcon")
-        assert_selector(".ActionListItem--hasSubItem[data-action='click:action-list#handleItemClick'] .ActionList--subGroup .ActionListItem--subItem", text: "Sub item")
-      end
-
       def test_item_with_leading_icon
         render_preview(:item, params: { leading_visual_icon: "arrow-down" })
 
         assert_selector(".octicon-arrow-down")
+      end
+
+      def test_list_labelled_by_heading
+        render_preview(:groups)
+
+        id = page.find_css(".ActionList-sectionDivider h2")[0].attributes["id"].value
+        assert_selector("ul.ActionListWrap[aria-labelledby='#{id}']")
+      end
+
+      def test_no_group_nesting
+        error = assert_raises do
+          render_inline(Primer::Alpha::ActionList.new(aria: { label: "Action list" })) do |c|
+            c.with_group do |group|
+              group.with_group do |nested_group|
+                nested_group.with_item(label: "Item 1")
+              end
+            end
+          end
+        end
+
+        assert_equal "ActionLists may not contain nested groups", error.message
       end
     end
   end
