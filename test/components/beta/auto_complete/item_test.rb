@@ -38,7 +38,7 @@ class PrimerBetaAutoCompleteItemTest < Minitest::Test
 
   def test_renders_with_leading_visual_avatar
     render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo", disabled: false)) do |component|
-      component.leading_visual_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "github")
+      component.leading_visual_avatar(src: "https://github.com/github.png", alt: "github")
       "Item text"
     end
 
