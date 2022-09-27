@@ -83,7 +83,7 @@ module Primer
         system_arguments[:size] = :medium
         system_arguments[:scheme] ||= :primary
 
-        Primer::ButtonComponent.new(**system_arguments)
+        Primer::ButtonComponent.new(**system_arguments) # rubocop:disable Primer/ComponentNameMigration
       }
 
       # Optional secondary action
