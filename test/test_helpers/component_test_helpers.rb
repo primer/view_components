@@ -53,12 +53,11 @@ module Primer
     end
 
     def assert_selector(*args, message: nil, **kwargs, &block)
-      begin
-        super(*args, **kwargs, &block)
-      rescue ::Minitest::Assertion => e
-        raise unless message
-        raise ::Minitest::Assertion, "#{message}: #{e.message}"
-      end
+      super(*args, **kwargs, &block)
+    rescue ::Minitest::Assertion => e
+      raise unless message
+
+      raise ::Minitest::Assertion, "#{message}: #{e.message}"
     end
   end
 end
