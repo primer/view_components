@@ -38,7 +38,7 @@ function globalPopUpHandler(event: Event) {
   }
 }
 
-class PrimerOverlayElement extends HTMLElement {
+export class PrimerOverlayElement extends HTMLElement {
   static get observedAttributes() {
     return ['popup', 'defaultopen']
   }
