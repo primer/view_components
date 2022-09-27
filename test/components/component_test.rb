@@ -18,7 +18,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::TabPanels, { label: "label" }],
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
-    [Primer::Image, { src: "https://github.com/github.png", alt: "alt" }],
+    [Primer::Image, { src: Primer::ExampleImage::BASE64_SRC, alt: "alt" }],
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
@@ -26,9 +26,9 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::AutoComplete::Item, { value: "Foo" }],
     [Primer::Beta::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
     [Primer::Beta::AutoComplete::Item, { value: "Foo" }],
-    [Primer::Beta::Avatar, { alt: "github", src: "https://github.com/github.png" }],
+    [Primer::Beta::Avatar, { alt: "github", src: Primer::ExampleImage::BASE64_SRC }],
     [Primer::Beta::AvatarStack, {}, lambda do |component|
-      component.avatar(alt: "github", src: "https://github.com/github.png")
+      component.avatar(alt: "github", src: Primer::ExampleImage::BASE64_SRC)
     end],
     [Primer::Beta::BaseButton, {}],
     [Primer::BaseComponent, { tag: :div }],

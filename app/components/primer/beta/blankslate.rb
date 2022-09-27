@@ -130,7 +130,7 @@ module Primer
       #     Add an `image` to give context that an Octicon couldn't.
       #   @code
       #     <%= render Primer::Beta::Blankslate.new do |c| %>
-      #       <% c.visual_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault") %>
+      #       <% c.visual_image(src: Primer::ExampleImage::BASE64_SRC, alt: "Security - secure vault") %>
       #       <% c.heading(tag: :h2).with_content("Title") %>
       #       <% c.description { "Description"} %>
       #     <% end %>

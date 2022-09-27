@@ -35,7 +35,7 @@ class Primer::ViewHelperTest < Minitest::Test
   end
 
   def test_renders_image_helper
-    primer_image(src: "https://github.com/github.png", alt: "alt")
+    primer_image(src: Primer::ExampleImage::BASE64_SRC, alt: "alt")
 
     assert_selector("img[src='https://github.com/github.png'][alt='alt']")
   end

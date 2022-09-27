@@ -21,23 +21,23 @@ module Primer
 
       # @example Default
       #   <%= render(Primer::Beta::AvatarStack.new) do |c| %>
-      #     <% c.with_avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-      #     <% c.with_avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-      #     <% c.with_avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
       #   <% end  %>
       #
       # @example Align right
       #   <%= render(Primer::Beta::AvatarStack.new(align: :right)) do |c| %>
-      #     <% c.with_avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-      #     <% c.with_avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-      #     <% c.with_avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
       #   <% end  %>
       #
       # @example With tooltip
       #   <%= render(Primer::Beta::AvatarStack.new(tooltipped: true, body_arguments: { label: 'This is a tooltip!' })) do |c| %>
-      #     <% c.with_avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-      #     <% c.with_avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
-      #     <% c.with_avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser") %>
+      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
       #   <% end  %>
       #
       # @param tag [Symbol] <%= one_of(Primer::Beta::AvatarStack::TAG_OPTIONS) %>
