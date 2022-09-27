@@ -51,5 +51,13 @@ module Primer
     def assert_component_state(component, state)
       assert_equal component.status, Primer::Component::STATUSES[state]
     end
+
+    def assert_selector(*args, message: nil, **kwargs, &block)
+      super(*args, **kwargs, &block)
+    rescue ::Minitest::Assertion => e
+      raise unless message
+
+      raise ::Minitest::Assertion, "#{message}: #{e.message}"
+    end
   end
 end
