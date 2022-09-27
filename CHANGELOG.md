@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.0.97
+
+### Patch Changes
+
+- [#1268](https://github.com/primer/view_components/pull/1268) [`f26afd94`](https://github.com/primer/view_components/commit/f26afd9427c82d38c0c1f7d866dade959cb78364) Thanks [@camertron](https://github.com/camertron)! - Add the ActionList and NavList components
+
+* [#1412](https://github.com/primer/view_components/pull/1412) [`cf548425`](https://github.com/primer/view_components/commit/cf54842572f9e040c1fb51c2b9c0c5e3a2902235) Thanks [@owenniblock](https://github.com/owenniblock)! - Change header tag to div on `Primer::Alpha::Dialog`
+
 ## 0.0.96
 
 ### Patch Changes
