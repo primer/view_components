@@ -54,7 +54,14 @@ module Primer
         list_id: "unique-id",
         subtitle: "This is a subtitle"
       )
-        render(Primer::Alpha::ActionList::Heading.new(scheme: scheme, list_id: list_id, title: title, subtitle: subtitle))
+        render_with_template(
+          locals: {
+            scheme: scheme,
+            title: title,
+            list_id: list_id,
+            subtitle: subtitle
+          }
+        )
       end
 
       # @label Item [playground]
