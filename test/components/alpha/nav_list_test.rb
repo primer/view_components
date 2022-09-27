@@ -22,25 +22,30 @@ module Primer
         render_preview(:default)
 
         assert_selector("h3.ActionList-sectionDivider-title")
-        assert_selector("li.ActionListItem ul.ActionListWrap--subGroup")
-        assert_selector("ul.ActionListWrap[aria-labelledby]")
-        assert_selector(".ActionList-sectionDivider")
-        assert_selector("ul.ActionListWrap--subGroup li.ActionListItem--subItem")
+        assert_selector("ul.ActionListWrap--subGroup li.ActionListItem") do
+          assert_selector("ul.ActionListWrap[aria-labelledby]")
+          assert_selector(".ActionList-sectionDivider")
+          assert_selector("ul.ActionListWrap--subGroup li.ActionListItem--subItem")
+        end
       end
 
       def test_no_selected_item
-        render_inline(Primer::Alpha::NavList.new(aria: { label: "Nav list" })) do |c|
-          c.with_item(label: "Item 1", href: "/item1", selected_by_ids: :item1)
-          c.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
+        render_inline(Primer::Alpha::NavList.new) do |c|
+          c.with_section(aria: { label: "Nav list" }) do |section|
+            section.with_item(label: "Item 1", href: "/item1", selected_by_ids: :item1)
+            section.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
+          end
         end
 
         refute_selector ".ActionListItem--navActive"
       end
 
       def test_selected_item
-        render_inline(Primer::Alpha::NavList.new(aria: { label: "Nav list" }, selected_item_id: :item2)) do |c|
-          c.with_item(label: "Item 1", href: "/item1", selected_by_ids: :item1)
-          c.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
+        render_inline(Primer::Alpha::NavList.new(selected_item_id: :item2)) do |c|
+          c.with_section(aria: { label: "Nav list" }) do |section|
+            section.with_item(label: "Item 1", href: "/item1", selected_by_ids: :item1)
+            section.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
+          end
         end
 
         refute_selector ".ActionListItem--navActive", text: "Item 1"
@@ -48,9 +53,11 @@ module Primer
       end
 
       def test_item_can_be_selected_by_any_of_its_ids
-        render_inline(Primer::Alpha::NavList.new(aria: { label: "Nav list" }, selected_item_id: :other_item1_id)) do |c|
-          c.with_item(label: "Item 1", href: "/item1", selected_by_ids: [:item1, :other_item1_id])
-          c.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
+        render_inline(Primer::Alpha::NavList.new(selected_item_id: :other_item1_id)) do |c|
+          c.with_section(aria: { label: "Nav list" }) do |section|
+            section.with_item(label: "Item 1", href: "/item1", selected_by_ids: [:item1, :other_item1_id])
+            section.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
+          end
         end
 
         assert_selector ".ActionListItem--navActive", text: "Item 1"
@@ -59,9 +66,9 @@ module Primer
 
       def test_max_nesting_depth
         error = assert_raises(RuntimeError) do
-          render_inline(Primer::Alpha::NavList.new(aria: { label: "Nav list" })) do |c|
-            c.with_group do |group|
-              group.with_item(label: "Item at level 1", href: "/item_level_1") do |item|
+          render_inline(Primer::Alpha::NavList.new) do |c|
+            c.with_section(aria: { label: "Nav list" }) do |section|
+              section.with_item(label: "Item at level 1", href: "/item_level_1") do |item|
                 item.with_item(label: "Item at level 2", href: "/item_level_2") do |sub_item|
                   sub_item.with_item(label: "Item at level 3", href: "/item_level_3")
                 end

@@ -92,6 +92,7 @@ namespace :docs do
       Primer::Alpha::ActionList,
       Primer::Alpha::NavList,
       Primer::Alpha::NavList::Item,
+      Primer::Alpha::NavList::Section,
       Primer::Alpha::ActionList::Divider,
       Primer::Alpha::ActionList::Heading,
       Primer::Alpha::ActionList::Item
@@ -113,7 +114,8 @@ namespace :docs do
       Primer::LinkComponent,
       Primer::Alpha::ToggleSwitch,
       Primer::Alpha::ActionList,
-      Primer::Alpha::NavList
+      Primer::Alpha::NavList,
+      Primer::Alpha::NavList::Section
     ]
 
     components_without_examples = [
@@ -124,7 +126,8 @@ namespace :docs do
       Primer::Alpha::ActionList::Item,
 
       # Examples can be seen in the NavList docs
-      Primer::Alpha::NavList::Item
+      Primer::Alpha::NavList::Item,
+      Primer::Alpha::NavList::Section
     ]
 
     all_components = Primer::Component.descendants - [Primer::BaseComponent]

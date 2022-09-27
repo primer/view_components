@@ -1,8 +1,10 @@
 <% with_private_content do %>
-  <% capture do %>
-    <%= render(Primer::BaseComponent.new(tag: :ul, **@sub_list_arguments)) do %>
-      <% items.each do |item| %>
-        <%= item %>
+  <% unless items.empty? %>
+    <% capture do %>
+      <%= render(Primer::BaseComponent.new(tag: :ul, **@sub_list_arguments)) do %>
+        <% items.each do |item| %>
+          <%= item %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

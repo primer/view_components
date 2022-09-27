@@ -3,8 +3,8 @@
 module Primer
   module Alpha
     class ActionList
-      # An individual `ActionList` item. They can optionally include leading and/or trailing visuals,
-      # such as icons, avatars, and counters. Items can also contain groups of related items.
+      # An individual `ActionList` item. Items can optionally include leading and/or trailing visuals,
+      # such as icons, avatars, and counters.
       class Item < Primer::Component
         DEFAULT_SIZE = :medium
         SIZE_MAPPINGS = {

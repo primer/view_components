@@ -1,3 +1,10 @@
-<nav-list>
-  <%= render_parent %>
-</nav-list>
+<ul class="ActionListWrap">
+  <% sections.each_with_index do |section, index| %>
+    <% if index > 0 %>
+      <%= render(Primer::Alpha::ActionList::Divider.new) %>
+    <% end %>
+    <li>
+      <%= section %>
+    </li>
+  <% end %>
+</ul>

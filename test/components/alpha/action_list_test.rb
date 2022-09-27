@@ -58,24 +58,10 @@ module Primer
       end
 
       def test_list_labelled_by_heading
-        render_preview(:groups)
+        render_preview(:default)
 
-        id = page.find_css(".ActionList-sectionDivider h2")[0].attributes["id"].value
+        id = page.find_css(".ActionList-sectionDivider h3")[0].attributes["id"].value
         assert_selector("ul.ActionListWrap[aria-labelledby='#{id}']")
-      end
-
-      def test_no_group_nesting
-        error = assert_raises do
-          render_inline(Primer::Alpha::ActionList.new(aria: { label: "Action list" })) do |c|
-            c.with_group do |group|
-              group.with_group do |nested_group|
-                nested_group.with_item(label: "Item 1")
-              end
-            end
-          end
-        end
-
-        assert_equal "ActionLists may not contain nested groups", error.message
       end
     end
   end

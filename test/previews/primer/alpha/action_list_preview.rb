@@ -4,25 +4,7 @@ module Primer
   module Alpha
     # @label ActionList
     class ActionListPreview < ViewComponent::Preview
-      # @label Groups
-      def groups
-        render(Primer::Alpha::ActionList.new) do |list|
-          list.with_heading(title: "Heading", tag: :h2)
-          list.with_item(label: "Item one", href: "/") do |item|
-            item.with_leading_visual_icon(icon: :gear)
-          end
-          list.with_group do |group|
-            group.with_item(label: "Group item one", href: "/") do |item|
-              item.with_leading_visual_icon(icon: :gear)
-            end
-            group.with_item(label: "Group item two", href: "/") do |item|
-              item.with_leading_visual_icon(icon: :gear)
-            end
-          end
-        end
-      end
-
-      # @label default
+      # @label Default
       #
       # @param role text
       # @param scheme [Symbol] select [full, inset]
@@ -38,6 +20,7 @@ module Primer
                  show_dividers: show_dividers,
                  aria: { label: "Action List" }
                )) do |c|
+          c.with_heading(title: "Action List")
           c.with_item(label: "Item one", href: "/") do |item|
             item.with_leading_visual_icon(icon: :gear)
           end
