@@ -57,7 +57,7 @@ module Primer
           system_arguments[:id] = "dialog-show-#{@system_arguments[:id]}"
           system_arguments["data-show-dialog-id"] = @system_arguments[:id]
           system_arguments[:data] = (system_arguments[:data] || {}).merge({ "show-dialog-id": @system_arguments[:id] })
-          Primer::Beta::ButtonComponent.new(**system_arguments)
+          Primer::Beta::Button.new(**system_arguments)
         },
         iconbutton: lambda { |**system_arguments|
           system_arguments[:classes] = class_names(
