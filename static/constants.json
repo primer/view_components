@@ -239,9 +239,12 @@
     ]
   },
   "Primer::Alpha::NavList": {
-    "Item": "Primer::Alpha::NavList::Item"
+    "Item": "Primer::Alpha::NavList::Item",
+    "Section": "Primer::Alpha::NavList::Section"
   },
   "Primer::Alpha::NavList::Item": {
+  },
+  "Primer::Alpha::NavList::Section": {
   },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",
