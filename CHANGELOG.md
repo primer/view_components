@@ -1,5 +1,42 @@
 # CHANGELOG
 
+## 0.0.96
+
+### Patch Changes
+
+- [#1400](https://github.com/primer/view_components/pull/1400) [`ae48b9fe`](https://github.com/primer/view_components/commit/ae48b9fe9d7ef3a908ea9f84f5fd25cf9bf40e50) Thanks [@langermank](https://github.com/langermank)! - - Add Lookbook previews for Beta Button and IconButton
+  - Tiny CSS bug fix
+
+* [#1406](https://github.com/primer/view_components/pull/1406) [`1fec4bf5`](https://github.com/primer/view_components/commit/1fec4bf5097d3f002208840694d05dd4401c7a83) Thanks [@jonrohan](https://github.com/jonrohan)! - Raise on usage of deprecated arguments in Primer::Beta::Button
+
+- [#1402](https://github.com/primer/view_components/pull/1402) [`7e50f6d9`](https://github.com/primer/view_components/commit/7e50f6d93338da50e2aa670c7c9f1a23fb7dfecc) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Move Octicon cache preload to initializer.
+
+## 0.0.95
+
+### Patch Changes
+
+- [#1372](https://github.com/primer/view_components/pull/1372) [`98155b10`](https://github.com/primer/view_components/commit/98155b10599d3b1753c32b7c247acadff926eaa4) Thanks [@jonrohan](https://github.com/jonrohan)! - Delete the deprecated Primer::ButtonGroup component
+
+* [#1386](https://github.com/primer/view_components/pull/1386) [`142b8193`](https://github.com/primer/view_components/commit/142b8193abd973a5bf6fd413d0a1e11fa0b3d3ae) Thanks [@khiga8](https://github.com/khiga8)! - Make sure duplicate ID associations aren't created for the Button
+
+- [#1371](https://github.com/primer/view_components/pull/1371) [`d0ddcce0`](https://github.com/primer/view_components/commit/d0ddcce0fbb4b46b1746e5688b23c54e1ba74f12) Thanks [@jonrohan](https://github.com/jonrohan)! - Delete the deprecated Primer::BaseButton component
+
+* [#1396](https://github.com/primer/view_components/pull/1396) [`e0c50dcb`](https://github.com/primer/view_components/commit/e0c50dcbc12f31bdc0cac480f563952404051f14) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - mark Primer::ButtonComponent as deprecated in favor of Primer::Beta::Button
+
+- [#1393](https://github.com/primer/view_components/pull/1393) [`5533f8e7`](https://github.com/primer/view_components/commit/5533f8e7dfffceba0e4b94bbc3bae1e17ebcff91) Thanks [@camertron](https://github.com/camertron)! - Add the Requested-With header to toggle switch requests
+
+* [#1382](https://github.com/primer/view_components/pull/1382) [`6fd690c8`](https://github.com/primer/view_components/commit/6fd690c8804cd4a1cc8bdbb76d1f6f7e795ab8d6) Thanks [@kangarruu](https://github.com/kangarruu)! - Docs change to fix typo and descriptions in dialog.rb
+
+- [#1397](https://github.com/primer/view_components/pull/1397) [`1ad8cfa7`](https://github.com/primer/view_components/commit/1ad8cfa753872e3ee5d196315ed5048351073029) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - deprecated Primer::IconButton in favor of Primer::Beta::IconButton"
+
+* [#1390](https://github.com/primer/view_components/pull/1390) [`94c31645`](https://github.com/primer/view_components/commit/94c316459db0299afa0946eee5ae2987a16879f3) Thanks [@neall](https://github.com/neall)! - Support submitting a check box group as an array
+
+- [#1392](https://github.com/primer/view_components/pull/1392) [`1f424aab`](https://github.com/primer/view_components/commit/1f424aabc6e8be4bd3a2c55190414a1b125b9111) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing `static/arguments.yml` and replacing with `static/arguments.json`. The data output doesn't change.
+
+* [#1381](https://github.com/primer/view_components/pull/1381) [`040148d8`](https://github.com/primer/view_components/commit/040148d8cc197c12945466b99805177db69fbf95) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Simplify CI configuration to a single build per Ruby/Rails version.
+
+- [#1394](https://github.com/primer/view_components/pull/1394) [`27d82335`](https://github.com/primer/view_components/commit/27d823358e4abb9ba6c5c208c44aab300546c144) Thanks [@jonrohan](https://github.com/jonrohan)! - Adding optional wrapper arguments to IconButton
+
 ## 0.0.94
 
 ### Patch Changes
