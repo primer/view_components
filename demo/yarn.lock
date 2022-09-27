@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@primer/css@^20.4.5":
-  version "20.4.5"
-  resolved "https://registry.yarnpkg.com/@primer/css/-/css-20.4.5.tgz#69e77a011ccfab41f47851a8a279fb5513fc96b5"
-  integrity sha512-QVbNfpVmdtJXouAn/E4Jye3dj/JKq64YW3vsimf2bwsaCpsk3mmyQ+eYC8p5RIP0x5ht+kuV4bpVd2i6pn1NYg==
+"@primer/css@^20.4.6":
+  version "20.4.6"
+  resolved "https://registry.yarnpkg.com/@primer/css/-/css-20.4.6.tgz#08f6675797cf5d4b50aa3fd3d7d127c944437364"
+  integrity sha512-GsX9FgZO6WM7j8Ar1YjTdUMYh59meSUFEq+jbU+cT6bmb0HJYzDzG0WJOzRYSbzQPACeU0E7TycPCGTG4POlCw==
   dependencies:
     "@primer/primitives" "^7.9.0"
 
