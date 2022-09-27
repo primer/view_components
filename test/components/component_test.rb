@@ -107,6 +107,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
+      "Primer::Alpha::NavList::Section",
       "Primer::HiddenTextExpander",
       "Primer::HeadingComponent",
       "Primer::CloseButton",
@@ -126,7 +127,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { my: 4 }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector(".my-4", visible: :all)
+      assert_selector(".my-4", visible: :all, message: "#{component.name} does not support system arguments")
     end
   end
 
@@ -134,7 +135,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { classes: "foo" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector(".foo", visible: :all)
+      assert_selector(".foo", visible: :all, message: "#{component.name} does not pass through classes")
     end
   end
 
@@ -142,7 +143,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { style: "width: 100%;" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector("[style='width: 100%;']", visible: :all)
+      assert_selector("[style='width: 100%;']", visible: :all, message: "#{component.name} does not support inline styles")
     end
   end
 
@@ -150,7 +151,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { hidden: true }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector("[hidden]", visible: false)
+      assert_selector("[hidden]", visible: false, message: "#{component.name} does not support content tag arguments")
     end
   end
 
@@ -158,7 +159,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { "data-ga-click": "Foo,bar" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector("[data-ga-click='Foo,bar']", visible: false)
+      assert_selector("[data-ga-click='Foo,bar']", visible: false, message: "#{component.name} does not support data arguments")
     end
   end
 
