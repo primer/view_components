@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.0.98
+
+### Patch Changes
+
+- [#1420](https://github.com/primer/view_components/pull/1420) [`d6623553`](https://github.com/primer/view_components/commit/d662355359b1b5d8801cc6a86a1376cb1d2da63b) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - un-deprecate Primer::ButtonComponent for now, due to inconsistencies and issues in migrating to Primer::Beta::Button
+
+* [`1d4b6851`](https://github.com/primer/view_components/commit/1d4b685174ca82cb0f67e65cc095810841b0b390) Thanks [@jonrohan](https://github.com/jonrohan)! - Move previews into root and include in gemspec. Thanks [@steves](https://github.com/steves)! [#1404](https://github.com/primer/view_components/pull/1404)
+
+- [#1416](https://github.com/primer/view_components/pull/1416) [`f99156fd`](https://github.com/primer/view_components/commit/f99156fddcab45467a4da773387efa4ea13401c3) Thanks [@jonrohan](https://github.com/jonrohan)! - Don't use outside images in docs examples
+
 ## 0.0.97
 
 ### Patch Changes
