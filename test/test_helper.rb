@@ -9,6 +9,7 @@ if ENV["COVERAGE"] == "1"
   SimpleCov.start do
     command_name "rails#{ENV['RAILS_VERSION']}-ruby#{ENV['RUBY_VERSION']}" if ENV["RUBY_VERSION"]
     formatter SimpleCov::Formatter::Console
+    SimpleCov::Formatter::Console.max_rows = 50
   end
 end
 
