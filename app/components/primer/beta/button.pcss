@@ -103,7 +103,7 @@ summary.Button {
 .Button-label {
   grid-area: text;
   white-space: nowrap;
-  line-height: var(--primer-text-body-lineHeight-medium, calc(20/14));
+  line-height: var(--primer-text-body-lineHeight-medium, calc(20 / 14));
 }
 
 .Button-leadingVisual {
@@ -127,7 +127,7 @@ summary.Button {
   gap: var(--primer-control-small-gap, 4px);
 
   .Button-label {
-    line-height: var(--primer-text-body-lineHeight-small, calc(20/12));
+    line-height: var(--primer-text-body-lineHeight-small, calc(20 / 12));
   }
 
   .Button-content {
@@ -143,7 +143,7 @@ summary.Button {
   gap: var(--primer-control-large-gap, 8px);
 
   .Button-label {
-    line-height: var(--primer-text-body-lineHeight-large, calc(48/32));
+    line-height: var(--primer-text-body-lineHeight-large, calc(48 / 32));
   }
 
   .Button-content {
@@ -213,7 +213,7 @@ summary.Button {
   border-color: var(--color-btn-border);
   box-shadow: var(--color-btn-shadow), var(--color-btn-inset-shadow);
 
-  &:hover  {
+  &:hover {
     background-color: var(--color-btn-hover-bg);
     border-color: var(--color-btn-hover-border);
   }
@@ -241,8 +241,7 @@ summary.Button {
 }
 
 .Button--invisible {
-  color: var(--color-btn-text);
-  fill: var(--color-btn-text);
+  color: var(--color-accent-fg);
 
   &:hover {
     background-color: var(--color-action-list-item-default-hover-bg);
@@ -263,11 +262,16 @@ summary.Button {
     border-color: var(--color-btn-border);
     fill: var(--color-primer-fg-disabled);
   }
+
+  .Button-label:not(:only-child) {
+    color: var(--color-btn-text);
+    fill: var(--color-btn-text);
+  }
 }
 
 .Button--link {
-  color: var(--color-accent-default);
-  fill: var(--color-accent-default);
+  color: var(--color-accent-fg);
+  fill: var(--color-accent-fg);
   border: none;
 
   &:hover {
