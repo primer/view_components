@@ -336,24 +336,6 @@
     ]
   },
   {
-    "component": "SegmentedControl",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/segmented_control.rb",
-    "parameters": [
-      {
-        "name": "icon_only",
-        "type": "Symbol",
-        "default": "`:never`",
-        "description": "One of `:always`, `:never`, or `:when_narrow`."
-      },
-      {
-        "name": "full_width",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "If the component should be full width"
-      }
-    ]
-  },
-  {
     "component": "NavList",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list.rb",
     "parameters": [
@@ -416,6 +398,30 @@
         "type": "Symbol",
         "default": "`nil`",
         "description": "The ID of the currently selected item. Used internally."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "SegmentedControl",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/segmented_control.rb",
+    "parameters": [
+      {
+        "name": "icon_only",
+        "type": "Symbol",
+        "default": "`:never`",
+        "description": "One of `:always`, `:never`, or `:when_narrow`."
+      },
+      {
+        "name": "full_width",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "If the component should be full width"
       },
       {
         "name": "system_arguments",
