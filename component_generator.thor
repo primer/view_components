@@ -44,7 +44,7 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_preview
-    template("templates/preview.tt", "test/previews/primer/#{status_path}#{underscore_name}_preview.rb")
+    template("templates/preview.tt", "previews/primer/#{status_path}#{underscore_name}_preview.rb")
   end
 
   def add_to_css_file

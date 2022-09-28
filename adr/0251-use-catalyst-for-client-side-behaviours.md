@@ -1,4 +1,4 @@
-# 251. Use Catalyst for client-side behaviours
+# Use Catalyst for client-side behaviours
 
 Date: 2022-04-12
 

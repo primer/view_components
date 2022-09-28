@@ -39,5 +39,7 @@ jobs:
       - name: NPM install
         run: |
           npm i
-      - name: Publish
-        run: script/publish
+      - name: Publish Gem
+        run: bundle exec rake release
+      - name: Publish NPM
+        run: npm publish --access public

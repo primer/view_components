@@ -93,7 +93,7 @@ Kuby.define("ViewComponentsStorybook") do
           app/
           package.json
           package-lock.json
-          test/previews
+          previews
           test/forms
         ]
 
