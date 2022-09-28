@@ -28,8 +28,11 @@ require "yaml"
 require "action_controller/railtie"
 require "rails/test_unit/railtie"
 require "active_model/railtie"
+require "webmock/minitest"
 
 require "primer/view_components"
 require "primer/view_components/linters"
 
 require File.expand_path("../demo/config/environment.rb", __dir__)
+
+WebMock.disable_net_connect!(allow_localhost: true)

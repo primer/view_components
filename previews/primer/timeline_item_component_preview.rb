@@ -8,7 +8,7 @@ module Primer
     # @param condensed [Boolean]
     def default(condensed: false)
       render(Primer::TimelineItemComponent.new(condensed: condensed)) do |component|
-        component.with_avatar(src: "https://github.com/octocat.png", alt: "octocat")
+        component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "octocat")
         component.with_badge(bg: :success_emphasis, color: :on_emphasis, icon: :check)
         component.with_body { "Success!" }
       end
