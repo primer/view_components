@@ -86,6 +86,7 @@ module Primer
           @system_arguments = system_arguments
           @system_arguments[:"data-action"] = "click:segmented-control#select"
           @system_arguments[:"aria-current"] = selected
+          @system_arguments[:scheme] = :invisible
           @icon = icon
         end
       end
