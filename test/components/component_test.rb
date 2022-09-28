@@ -28,6 +28,9 @@ class PrimerComponentTest < Minitest::Test
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
+    [Primer::Alpha::ActionList, { aria: { label: "Action List" } }, lambda do |component|
+      component.item(label: "Foo")
+    end],
     [Primer::Alpha::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
     [Primer::Alpha::AutoComplete::Item, { value: "Foo" }],
     [Primer::Beta::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
@@ -100,11 +103,17 @@ class PrimerComponentTest < Minitest::Test
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }],
-    [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }]
+    [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
+    [Primer::Alpha::ActionList, { aria: { label: "Nav list" } }],
+    [Primer::Alpha::NavList, { aria: { label: "Nav list" } }]
   ].freeze
 
   def test_registered_components
     ignored_components = [
+      "Primer::Alpha::ActionList::Heading",
+      "Primer::Alpha::ActionList::Item",
+      "Primer::Alpha::ActionList::Separator",
+      "Primer::Alpha::NavList::Section",
       "Primer::HiddenTextExpander",
       "Primer::HeadingComponent",
       "Primer::CloseButton",
@@ -124,7 +133,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { my: 4 }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector(".my-4", visible: :all)
+      assert_selector(".my-4", visible: :all, message: "#{component.name} does not support system arguments")
     end
   end
 
@@ -132,7 +141,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { classes: "foo" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector(".foo", visible: :all)
+      assert_selector(".foo", visible: :all, message: "#{component.name} does not pass through classes")
     end
   end
 
@@ -140,7 +149,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { style: "width: 100%;" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector("[style='width: 100%;']", visible: :all)
+      assert_selector("[style='width: 100%;']", visible: :all, message: "#{component.name} does not support inline styles")
     end
   end
 
@@ -148,7 +157,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { hidden: true }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector("[hidden]", visible: false)
+      assert_selector("[hidden]", visible: false, message: "#{component.name} does not support content tag arguments")
     end
   end
 
@@ -156,7 +165,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { "data-ga-click": "Foo,bar" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector("[data-ga-click='Foo,bar']", visible: false)
+      assert_selector("[data-ga-click='Foo,bar']", visible: false, message: "#{component.name} does not support data arguments")
     end
   end
 

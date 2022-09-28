@@ -1,4 +1,8 @@
 {
+  "Primer::Alpha::ActionList": "alpha",
+  "Primer::Alpha::ActionList::Divider": "alpha",
+  "Primer::Alpha::ActionList::Heading": "alpha",
+  "Primer::Alpha::ActionList::Item": "alpha",
   "Primer::Alpha::AutoComplete": "deprecated",
   "Primer::Alpha::AutoComplete::Item": "deprecated",
   "Primer::Alpha::ButtonMarketing": "alpha",
@@ -10,6 +14,9 @@
   "Primer::Alpha::Layout": "alpha",
   "Primer::Alpha::Layout::Main": "alpha",
   "Primer::Alpha::Layout::Sidebar": "alpha",
+  "Primer::Alpha::NavList": "alpha",
+  "Primer::Alpha::NavList::Item": "alpha",
+  "Primer::Alpha::NavList::Section": "alpha",
   "Primer::Alpha::SegmentedControl": "alpha",
   "Primer::Alpha::SegmentedControl::Button": "beta",
   "Primer::Alpha::TabNav": "alpha",
