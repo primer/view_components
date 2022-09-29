@@ -22,7 +22,7 @@ module Primer
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :buttons, lambda { |selected: false, icon: nil, **system_arguments|
-        Primer::Alpha::SegmentedControl::Button.new(selected: selected, icon: icon, icon_only: @icon_only, **system_arguments)
+        Primer::Alpha::SegmentedControl::Button.new(selected: selected, icon: icon, icon_only: @icon_only, block: @full_width, **system_arguments)
       }
 
       # @example Basic usage
@@ -66,6 +66,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(icon_only: ICON_ONLY_DEFAULT, full_width: FULL_WIDTH_DEFAULT, **system_arguments)
         @icon_only = fetch_or_fallback(ICON_ONLY_OPTIONS, icon_only, ICON_ONLY_DEFAULT)
+        @full_width = full_width
         @system_arguments = system_arguments
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],

@@ -13,23 +13,19 @@
   display: inline-flex;
   border: var(--primer-borderWidth-thin, max(1px, 0.0625rem)) solid transparent;
   border-radius: var(--primer-borderRadius-medium, 6px);
+  padding: calc(var(--primer-control-xsmall-paddingInline-condensed, 4px) - var(--primer-borderWidth-thin, 1px));
 
-  &:not(.SegmentedControl-item--selected):hover .Button-content {
-    background-color: var(--color-segmented-control-button-hover-bg);
-  }
-
-  &:not(.SegmentedControl-item--selected):active .Button-content {
-    background-color: var(--color-segmented-control-button-active-bg);
-  }
-
-  /* Selected */
-
+  /* Selected ---------------------------------------- */
   &.SegmentedControl-item--selected {
     background-color: var(--color-btn-bg);
     border-color: var(--color-segmented-control-button-selected-border);
 
     & .Button {
       font-weight: var(--base-text-weight-semibold, 600);
+
+      &:hover {
+        background-color: transparent;
+      }
     }
 
     &::before {
@@ -50,6 +46,7 @@
     content: attr(data-content);
   }
 
+  /* Separator lines */
   &::before {
     position: absolute;
     inset: var(--primer-borderWidth-thin, 1px) 0 0 calc(var(--primer-borderWidth-thin, 1px) * -1);
@@ -61,88 +58,37 @@
 
   /* Button ----------------------------------------- */
   & .Button {
-    display: inline-flex;
-    height: var(--primer-control-medium-size, 32px);
-    padding: calc(var(--primer-control-xsmall-paddingInline-condensed, 4px) - var(--primer-borderWidth-thin, 1px));
-    background-color: transparent;
-    border: transparent;
-    border-radius: var(--primer-borderRadius-medium, 6px);
+    height: calc(var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) - var(--primer-borderWidth-thin, 1px) * 2);
+    padding-left: calc(var(--primer-control-medium-paddingInline-condensed, 8px) - var(--primer-borderWidth-thin, 1px));
+    padding-right: calc(var(--primer-control-medium-paddingInline-condensed, 8px) - var(--primer-borderWidth-thin, 1px));
+    font-weight: var(--base-text-weight-normal, 400);
+
+    &::before {
+      @mixin minTouchTarget 48px;
+    }
 
     &:focus-visible {
-      outline-offset: -1px;
+      outline-offset: calc(var(--primer-control-xsmall-paddingInline-condensed, 4px) - var(--primer-borderWidth-thin, 1px) * 2);
+      border-radius: calc(var(--primer-borderRadius-medium, 6px) - 3px);
     }
   }
 
-  /* Content ----------------------------------------- */
-  & .Button-content {
-    display: flex;
-    flex: 1;
-    height: 100%;
-    padding: 0 var(--primer-control-medium-paddingInline-condensed, 8px);
-    border-radius: var(--primer-borderRadius-medium, 6px);
+  & .Button--iconOnly {
+    width: calc(var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) - var(--primer-borderWidth-thin, 1px) * 2);
   }
 }
-
-/* Variants ----------------------------------------- */
 
 /* fullWidth */
 .SegmentedControl--fullWidth {
   display: flex;
 
-  & .Button,
   & .SegmentedControl-item {
     flex: 1;
     justify-content: center;
   }
-}
 
-/* Icon only */
-.SegmentedControl--iconOnly {
-  & .Button {
-    width: var(--primer-control-medium-size, 32px);
-  }
-
-  & .Button-content {
-    padding: 0;
-    flex: 1;
-  }
-}
-
-/* Icon only when narrow */
-@media (max-width: 768px) {
-  .SegmentedControl--iconOnly-whenNarrow {
-    & .Button {
-      width: var(--primer-control-medium-size, 32px);
-    }
-
-    & .Button-content {
-      padding: 0;
-      flex: 1;
-    }
-
-    & .Button-label {
-      display: none;
-    }
-
-    & .Button-leadingVisual {
-      margin-right: 0;
-    }
-  }
-}
-
-/* Increase touch target */
-@media (pointer: coarse) {
-  .SegmentedControl-item .Button {
-    min-width: var(--primer-control-minTarget-coarse, 44px);
-
-    &::after {
-      @mixin minTouchTarget var(--primer-control-minTarget-coarse, 44px);
-    }
-  }
-
-  /* reset for icon-only buttons */
-  .SegmentedControl--iconOnly .Button,
-  .SegmentedControl--iconOnly-whenNarrow .Button {
-    min-width: unset;
+  & .Button--iconOnly,
+  & .Button-withTooltip {
+    width: 100%;
   }
 }
