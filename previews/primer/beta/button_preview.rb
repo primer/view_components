@@ -138,7 +138,7 @@ module Primer
       # @param block toggle
       # @param disabled toggle
       # @param tag select [a, summary, button]
-      def primary(
+      def link(
         id: "button-preview",
         block: false,
         tag: :button,
