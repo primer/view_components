@@ -182,7 +182,7 @@ module Primer
       end
 
       # @label Link as button
-      # @param scheme select [default, primary, danger, outline, invisible, link]
+      # @param scheme select [default, primary, danger, invisible, link]
       # @param size select [small, medium]
       # @param block toggle
       # @param align_content select [center, start]
@@ -207,7 +207,7 @@ module Primer
       end
 
       # @label Trailing visual
-      # @param scheme select [default, primary, danger, outline, invisible, link]
+      # @param scheme select [default, primary, danger, invisible, link]
       # @param size select [small, medium]
       # @param block toggle
       # @param align_content select [center, start]
@@ -231,7 +231,7 @@ module Primer
       end
 
       # @label Leading visual
-      # @param scheme select [default, primary, danger, outline, invisible, link]
+      # @param scheme select [default, primary, danger, invisible, link]
       # @param size select [small, medium]
       # @param block toggle
       # @param align_content select [center, start]
@@ -267,7 +267,7 @@ module Primer
       end
 
       # @label With tooltip
-      # @param scheme select [default, primary, danger, outline, invisible, link]
+      # @param scheme select [default, primary, danger, invisible, link]
       # @param size select [small, medium]
       # @param block toggle
       # @param align_content select [center, start]
