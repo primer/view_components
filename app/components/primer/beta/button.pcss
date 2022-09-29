@@ -264,66 +264,49 @@ summary.Button {
   }
 
   & .Button-visual {
-    color: var(--color-btn-text);
+    color: var(--color-fg-muted);
   }
 
-  /* & .Button-label:is(:last-child) {
-    color: var(--color-btn-text);
-  } */
+  /* the section below can be replace with :has()
+  * .Button--invisible:has(.Button-visual) {
+  *   color: var(--color-btn-text);
+  * }
+  */
 
+  /* select label content when visuals are present */
   & .Button-content:nth-child(odd) {
     color: var(--color-btn-text);
 
+    /* if label is only child, use link color */
     & > .Button-label:only-child {
       color: var(--color-accent-fg);
     }
   }
 
+  /* if trailing action, button label should be default */
   & .Button-content:not(:only-child) {
+    /* need important to override previous selector */
     & > .Button-label {
       color: var(--color-btn-text) !important;
     }
   }
-
-  /* & .Button-label:only-child {
-      color: var(--color-accent-fg);
-  }
-
-  & .Button-content:only-child {
-    color: var(--color-btn-text);
-  } */
-
-  /* & .Button-content:not(:only-child) {
-      color: var(--color-btn-text);
-
-    & + .Button-visual {
-      color: var(--color-btn-text);
-    }
-  } */
-
-  /* & .Button-content {
-    & .Button-visual + .Button-label {
-        color: var(--color-btn-text);
-        color: deeppink;
-    }
-  } */
 }
 
 .Button--link {
   color: var(--color-accent-fg);
   fill: var(--color-accent-fg);
+  display: inline-block;
+  font-size: inherit;
   border: none;
+  height: unset;
+  padding: 0;
 
-  &:hover {
-    background-color: var(--color-action-list-item-default-hover-bg);
+  &:hover:not(:disabled) {
+    text-decoration: underline;
   }
 
-  &[aria-pressed='true'],
-  &:active,
-  &.Button--active,
-  &.Button--pressed {
-    background-color: var(--color-action-list-item-default-active-bg);
-    /* box-shadow: var(--color-primer-shadow-inset); */
+  &:focus-visible, &:focus {
+    outline-offset: 2px;
   }
 
   &:disabled,

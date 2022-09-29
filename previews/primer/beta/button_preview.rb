@@ -4,6 +4,14 @@ module Primer
   module Beta
     # @label Button
     class ButtonPreview < ViewComponent::Preview
+      # Upgrade guide to Primer::Beta::Button
+      #
+      # | old param | new param | options |
+      # | -- | -- | -- |
+      # | variant | size | :small, :medium (default), :large |
+      # | :outline | :default or :invisible | option for :scheme |
+      # | dropdown | trailing action icon slot | see trailing action preview for markup |
+      #
       # @label Playground
       # @param scheme select [default, primary, danger, invisible, link]
       # @param size select [small, medium, large]
@@ -124,6 +132,28 @@ module Primer
       # @label Invisible all visuals
       def invisible_all_visuals
         render_with_template(locals: {})
+      end
+
+      # @label Link
+      # @param block toggle
+      # @param disabled toggle
+      # @param tag select [a, summary, button]
+      def primary(
+        id: "button-preview",
+        block: false,
+        tag: :button,
+        disabled: false
+      )
+        render(Primer::Beta::Button.new(
+                 scheme: :link,
+                 size: :medium,
+                 block: block,
+                 id: id,
+                 tag: tag,
+                 disabled: disabled
+               )) do |_c|
+          "Button"
+        end
       end
 
       # @label All schemes

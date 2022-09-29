@@ -26,4 +26,21 @@
     <% c.trailing_visual_counter(count: "15") %>
     Button
   <% end %>
+  <%= render(Primer::Beta::Button.new(
+      scheme: :invisible,
+      size: :medium,
+  )) do |c| %>
+    <% c.leading_visual_icon(icon: :eye) %>
+    <% c.trailing_visual_counter(count: "15") %>
+    Button
+  <% end %>
+  <%= render(Primer::Beta::Button.new(
+      scheme: :invisible,
+      size: :medium,
+  )) do |c| %>
+    <% c.leading_visual_icon(icon: :eye) %>
+    <% c.trailing_visual_counter(count: "15") %>
+    <% c.trailing_action_icon(icon: "triangle-down") %>
+    Button
+  <% end %>
 </div>
