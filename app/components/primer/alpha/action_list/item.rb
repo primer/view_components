@@ -45,7 +45,7 @@ module Primer
           icon: Primer::OcticonComponent,
           avatar: ->(**kwargs) { Primer::Beta::Avatar.new(**{ **kwargs, size: 16 }) },
           svg: lambda { |**system_arguments|
-            Primer::BaseComponent.new(tag: :svg, **system_arguments)
+            Primer::BaseComponent.new(tag: :svg, width: "16", height: "16", **system_arguments)
           },
           content: lambda { |**system_arguments|
             Primer::BaseComponent.new(tag: :span, **system_arguments)
