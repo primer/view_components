@@ -6,9 +6,9 @@ require "kuby/kind"
 # NPM package
 class NpmPackage < Kuby::Docker::Packages::Package
   def install_on_debian(dockerfile)
-    dockerfile.run(<<~END)
+    dockerfile.run(<<~INSTALL)
       apt-get update && apt-get install -y npm
-    END
+    INSTALL
   end
 end
 
