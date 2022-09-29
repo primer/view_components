@@ -6,9 +6,27 @@ require "kuby/kind"
 # NPM package
 class NpmPackage < Kuby::Docker::Packages::Package
   def install_on_debian(dockerfile)
-    dockerfile.run(<<~INSTALL)
-      apt-get update && apt-get install -y npm
-    INSTALL
+    install_from_image("node:#{version}", dockerfile)
+  end
+
+  def install_on_alpine(dockerfile)
+    install_from_image("node:#{version}-alpine", dockerfile)
+  end
+
+  def version
+    @version || 'current'
+  end
+
+  private
+
+  def install_from_image(image, dockerfile)
+    dockerfile.insert_at(0) do
+      dockerfile.from(image, as: 'npm')
+    end
+
+    dockerfile.copy('/usr/local/lib/node_modules', '/usr/local/lib/node_modules', from: 'npm')
+    dockerfile.run('ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm')
+    dockerfile.run('ln -s /usr/local/lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx')
   end
 end
 
@@ -47,7 +65,7 @@ Kuby.define("ViewComponentsStorybook") do
       # We need newer versions than the ones Kuby installs by default.
       package_phase.remove :nodejs
       package_phase.add :nodejs, "16.13.2"
-      package_phase.add :npm
+      package_phase.add :npm, "16.13.2"
 
       # Kuby copies over only Gemfiles, i.e. no app code, before attempting to
       # bundle install to prevent busting the layer cache and having to reinstall
