@@ -60,7 +60,7 @@ jobs:
         gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
-        bundle exec rubocop ${{ steps.changed-files.outputs.all_changed_files }}
+        bundle exec rubocop ${{ steps.changed-files.outputs.all_changed_files }} --format github
 
   erblint:
     runs-on: ubuntu-latest
