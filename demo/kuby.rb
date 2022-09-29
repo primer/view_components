@@ -125,12 +125,8 @@ Kuby.define("ViewComponentsStorybook") do
         dockerfile.run("npm", "install")
       end
 
-      insert :build_demo_assets, after: :assets_phase do |dockerfile|
+      insert :build_demo_assets, before: :assets_phase do |dockerfile|
         dockerfile.run("npm", "install")
-
-        # Copy primer css into the assets folder
-        dockerfile.run("cp node_modules/@primer/css/dist/primer.css app/assets/stylesheets")
-        dockerfile.run("cp node_modules/@primer/css/dist/primitives.css app/assets/stylesheets")
       end
     end
 
