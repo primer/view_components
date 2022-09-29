@@ -32,14 +32,24 @@ module Primer
         # for layout options.
         renders_one :description
 
-        # An icon or avatar that will render to the left of the label.
+        # An icon, avatar, SVG, or custom content that will render to the left of the label.
         #
         # To render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by <%= link_to_component(Primer::OcticonComponent) %>.
         #
         # To render an avatar, call the `with_leading_visual_avatar` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>.
+        #
+        # To render an SVG, call the `with_leading_visual_svg` method.
+        #
+        # To render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.
         renders_one :leading_visual, types: {
           icon: Primer::OcticonComponent,
-          avatar: ->(**kwargs) { Primer::Beta::Avatar.new(**{ **kwargs, size: 16 }) }
+          avatar: ->(**kwargs) { Primer::Beta::Avatar.new(**{ **kwargs, size: 16 }) },
+          svg: lambda { |**system_arguments|
+            Primer::BaseComponent.new(tag: :svg, **system_arguments)
+          },
+          content: lambda { |**system_arguments|
+            Primer::BaseComponent.new(tag: :span, **system_arguments)
+          }
         }
 
         # Used internally.
