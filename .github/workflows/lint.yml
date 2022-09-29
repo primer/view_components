@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - uses: xt0rted/markdownlint-problem-matcher@v1
     - name: Set up Node.js
       uses: actions/setup-node@master
       with:
