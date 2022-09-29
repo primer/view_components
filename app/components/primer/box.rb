@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Primer
   # `Box` is a basic wrapper component for most layout related needs.
   class Box < Primer::Component
