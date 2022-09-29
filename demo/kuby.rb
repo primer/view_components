@@ -14,19 +14,19 @@ class NpmPackage < Kuby::Docker::Packages::Package
   end
 
   def version
-    @version || 'current'
+    @version || "current"
   end
 
   private
 
   def install_from_image(image, dockerfile)
     dockerfile.insert_at(0) do
-      dockerfile.from(image, as: 'npm')
+      dockerfile.from(image, as: "npm")
     end
 
-    dockerfile.copy('/usr/local/lib/node_modules', '/usr/local/lib/node_modules', from: 'npm')
-    dockerfile.run('ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm')
-    dockerfile.run('ln -s /usr/local/lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx')
+    dockerfile.copy("/usr/local/lib/node_modules", "/usr/local/lib/node_modules", from: "npm")
+    dockerfile.run("ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm")
+    dockerfile.run("ln -s /usr/local/lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx")
   end
 end
 
@@ -64,6 +64,10 @@ Kuby.define("ViewComponentsStorybook") do
 
       # We need newer versions than the ones Kuby installs by default.
       package_phase.remove :nodejs
+
+      package_phase.remove :yarn
+      delete :yarn_phase
+
       package_phase.add :nodejs, "16.13.2"
       package_phase.add :npm, "16.13.2"
 
