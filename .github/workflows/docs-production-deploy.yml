@@ -27,11 +27,11 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v2
         with:
-          node-version: 14
-          cache: 'yarn'
+          node-version: 16
+          cache: 'npm'
           cache-dependency-path: |
-            yarn.lock
-            docs/yarn.lock
+            package-lock.json
+            docs/package-lock.json
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -42,7 +42,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: yarn && cd docs && yarn && cd ..
+        run: npm i && cd docs && npm i && cd ..
 
       - name: Generate static files
         run: |
@@ -54,7 +54,7 @@ jobs:
           bundle exec rake static:dump
 
       - name: Build
-        run: yarn build:docs
+        run: npm run build:docs
 
       - name: Archive build output
         run: 'tar --dereference --directory docs/public -cvf artifact.tar .'

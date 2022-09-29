@@ -36,9 +36,9 @@ jobs:
           EOF
         env:
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
-      - name: Yarn install
+      - name: NPM install
         run: |
-          yarn
+          npm i
       - name: Publish Gem
         run: bundle exec rake release
       - name: Publish NPM

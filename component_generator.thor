@@ -77,7 +77,7 @@ class ComponentGenerator < Thor::Group
   end
 
   def install_js_package
-    run "yarn add #{js_package_name}" if js_package_name
+    run "npm i --save #{js_package_name}" if js_package_name
   end
 
   private

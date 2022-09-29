@@ -7,17 +7,17 @@ fi
 
 # Gems
 bundle install --path vendor/bundle
-yarn install
+npm install
 
 # Set up demo
 pushd demo
 bundle install --path vendor/bundle
-yarn install
+npm install
 popd
 
 # Set up docs
 pushd docs
-yarn install
+npm install
 popd
 
 while [[ "$#" > 0 ]]; do case $1 in
