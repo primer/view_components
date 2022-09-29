@@ -12,7 +12,7 @@ class NpmPackage < Kuby::Docker::Packages::Package
   end
 end
 
-Kuby.register_package("npm", NpmPackage)
+Kuby.register_package(:npm, NpmPackage)
 
 # Define a production Kuby deploy environment
 Kuby.define("ViewComponentsStorybook") do
@@ -47,8 +47,6 @@ Kuby.define("ViewComponentsStorybook") do
       # We need newer versions than the ones Kuby installs by default.
       package_phase.remove :nodejs
       package_phase.add :nodejs, "16.13.2"
-
-      package_phase.remove :npm
       package_phase.add :npm, "8.15.0"
 
       # Kuby copies over only Gemfiles, i.e. no app code, before attempting to
