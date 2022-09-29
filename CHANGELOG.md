@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.0.99
+
+### Patch Changes
+
+- [#1421](https://github.com/primer/view_components/pull/1421) [`c35a5c32`](https://github.com/primer/view_components/commit/c35a5c3226ab39aa62182ee4816e63d9c1d0c598) Thanks [@langermank](https://github.com/langermank)! - Fix Beta::Button visual regressions
+  - Add back link styles
+  - Ensure invisible buttons are blue when no visuals are present
+
+* [#1422](https://github.com/primer/view_components/pull/1422) [`a129a4d1`](https://github.com/primer/view_components/commit/a129a4d1b7d1dfae6d2d623e1603ea6e75533940) Thanks [@camertron](https://github.com/camertron)! - Add SVG and custom content options to NavList's leading visual slot
+
 ## 0.0.98
 
 ### Patch Changes
