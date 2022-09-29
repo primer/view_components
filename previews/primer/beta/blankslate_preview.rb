@@ -32,7 +32,7 @@ module Primer
       def with_image(narrow: false, spacious: false, border: false)
         render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |c|
           c.heading(tag: :h2).with_content("Millions of teams trust GitHub to keep their work safe")
-          c.visual_image(src: "https://github.githubassets.com/images/modules/site/features/security-icon.svg", alt: "Security - secure vault")
+          c.visual_image(src: Primer::ExampleImage::BASE64_SRC, alt: "Security - secure vault")
         end
       end
 

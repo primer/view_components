@@ -138,10 +138,10 @@
       "problemMatcher": []
     },
     {
-      "label": "yarn: build assets",
+      "label": "build assets",
       "type": "shell",
       "group": "build",
-      "command": "yarn",
+      "command": "npm",
       "presentation": {
         "reveal": "always",
         "panel": "dedicated"
@@ -155,7 +155,7 @@
       "label": "lint:fix: fix eslint errors",
       "type": "shell",
       "group": "build",
-      "command": "yarn lint:fix",
+      "command": "npm run lint:fix",
       "presentation": {
         "reveal": "always",
         "panel": "dedicated"

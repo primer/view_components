@@ -10,7 +10,7 @@ module Primer
       # @param shape [Symbol] select [circle, square]
       # @param href [String] text
       def default(size: 24, shape: :circle, href: nil)
-        render(Primer::Beta::Avatar.new(src: "http://placekitten.com/200/200", alt: "@kittenuser", size: size, shape: shape, href: href))
+        render(Primer::Beta::Avatar.new(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser", size: size, shape: shape, href: href))
       end
     end
   end
