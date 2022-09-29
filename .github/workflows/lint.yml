@@ -130,7 +130,8 @@ jobs:
       with:
         files: |
           app/components/**/*.pcss
-    - name: Lint with ESLint
+          lib/postcss_mixins/*.pcss
+    - name: Lint with Stylelint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
         npm i
