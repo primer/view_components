@@ -174,7 +174,7 @@ module Primer
 
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
-          "invisible_button_class"
+          "Button--invisible-noVisuals"
         )
       end
 

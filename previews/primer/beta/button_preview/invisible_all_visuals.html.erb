@@ -43,4 +43,12 @@
     <% c.trailing_action_icon(icon: "triangle-down") %>
     Button
   <% end %>
+  <%= render(Primer::Beta::Button.new(
+      scheme: :invisible,
+      size: :medium,
+      id: "my-id"
+  )) do |c| %>
+    <% c.with_tooltip(text: "Tooltip text") %>
+    Button with tooltip
+  <% end %>
 </div>

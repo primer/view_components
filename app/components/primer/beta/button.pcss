@@ -241,11 +241,7 @@ summary.Button {
 }
 
 .Button--invisible {
-  color: var(--color-accent-fg);
-
-  &.invisible_button_class.invisible_button_class .Button-label.Button-label {
-    color: red !important;
-  }
+  color: var(--color-btn-text);
 
   &:hover {
     background-color: var(--color-action-list-item-default-hover-bg);
@@ -267,32 +263,13 @@ summary.Button {
     fill: var(--color-primer-fg-disabled);
   }
 
+  /* if button has no visuals, use link blue for text */
+  &.Button--invisible-noVisuals .Button-label {
+    color: var(--color-accent-fg);
+  }
+
   & .Button-visual {
     color: var(--color-fg-muted);
-  }
-
-  /* the section below can be replace with :has()
-  * .Button--invisible:has(.Button-visual) {
-  *   color: var(--color-btn-text);
-  * }
-  */
-
-  /* select label content when visuals are present */
-  & .Button-content:nth-child(odd) {
-    color: var(--color-btn-text);
-
-    /* if label is only child, use link color */
-    & > .Button-label:only-child {
-      color: var(--color-accent-fg);
-    }
-  }
-
-  /* if trailing action, button label should be default */
-  & .Button-content:not(:only-child) {
-    /* need important to override previous selector */
-    & > .Button-label {
-      color: var(--color-btn-text) !important;
-    }
   }
 }
 
