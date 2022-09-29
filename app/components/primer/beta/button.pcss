@@ -243,6 +243,10 @@ summary.Button {
 .Button--invisible {
   color: var(--color-accent-fg);
 
+  &.invisible_button_class.invisible_button_class .Button-label.Button-label {
+    color: red !important;
+  }
+
   &:hover {
     background-color: var(--color-action-list-item-default-hover-bg);
   }
