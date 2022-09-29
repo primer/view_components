@@ -121,6 +121,11 @@ module Primer
         end
       end
 
+      # @label Invisible all visuals
+      def invisible_all_visuals
+        render_with_template(locals: {})
+      end
+
       # @label All schemes
       def all_schemes
         render_with_template(locals: {})

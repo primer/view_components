@@ -263,10 +263,50 @@ summary.Button {
     fill: var(--color-primer-fg-disabled);
   }
 
-  .Button-label:not(:only-child) {
+  & .Button-visual {
     color: var(--color-btn-text);
-    fill: var(--color-btn-text);
   }
+
+  /* & .Button-label:is(:last-child) {
+    color: var(--color-btn-text);
+  } */
+
+  & .Button-content:nth-child(odd) {
+    color: var(--color-btn-text);
+
+    & > .Button-label:only-child {
+      color: var(--color-accent-fg);
+    }
+  }
+
+  & .Button-content:not(:only-child) {
+    & > .Button-label {
+      color: var(--color-btn-text) !important;
+    }
+  }
+
+  /* & .Button-label:only-child {
+      color: var(--color-accent-fg);
+  }
+
+  & .Button-content:only-child {
+    color: var(--color-btn-text);
+  } */
+
+  /* & .Button-content:not(:only-child) {
+      color: var(--color-btn-text);
+
+    & + .Button-visual {
+      color: var(--color-btn-text);
+    }
+  } */
+
+  /* & .Button-content {
+    & .Button-visual + .Button-label {
+        color: var(--color-btn-text);
+        color: deeppink;
+    }
+  } */
 }
 
 .Button--link {
