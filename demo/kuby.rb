@@ -125,8 +125,8 @@ Kuby.define("ViewComponentsStorybook") do
         dockerfile.run("npm", "install")
       end
 
-      insert :build_demo_assets, after: :assets_phase do |dockerfile|
-        dockerfile.run("npm", "install", "--production=false")
+      insert :build_demo_assets, before: :assets_phase do |dockerfile|
+        dockerfile.run("npm", "install")
       end
     end
 
