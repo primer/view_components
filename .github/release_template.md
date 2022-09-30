@@ -16,9 +16,9 @@ Please ensure these items are checked before merging.
 
 ### 🤔 Sanity test
 
-- [ ] All bugfixes in this release have resolved their corrosponding issues
+- [ ] All bugfixes in this release have resolved their corresponding issues
 - [ ] All new features in this release have been tested and verified as compatible with GitHub.com
-- [ ] No noticeable regressions have not been introduced as a result of changes in this release
+- [ ] No noticeable regressions have been introduced as a result of changes in this release
 - [ ] Release notes accurately describe the changes made
 
 Please also leave any testing notes as a comment on this pull request. In particular, describing any issues encountered during your testing. This is helpful in providing historical context to maintainers.
