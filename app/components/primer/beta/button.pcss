@@ -27,6 +27,7 @@
   justify-content: space-between;
   align-items: center;
   gap: var(--primer-control-medium-gap, 8px);
+  min-width: max-content;
 
   /* mobile friendly sizing */
   @media (pointer: course) {
@@ -41,13 +42,11 @@
     transition-duration: var(--primer-duration-fast);
   }
 
-  &:active,
-  &.Button--active {
+  &:active {
     transition: none;
   }
 
   &:disabled,
-  &.Button--disabled,
   &[aria-disabled='true'] {
     cursor: not-allowed;
     box-shadow: none;
@@ -167,7 +166,7 @@ summary.Button {
   border-color: var(--color-btn-primary-border);
   box-shadow: var(--color-btn-primary-shadow), var(--color-btn-primary-inset-shadow);
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--color-btn-primary-hover-bg);
     border-color: var(--color-btn-primary-hover-border);
   }
@@ -188,15 +187,13 @@ summary.Button {
     @mixin focusOutlineOnEmphasis;
   }
 
-  &:active,
-  &[aria-pressed='true'],
-  &.Button--pressed {
+  &:active:not(:disabled),
+  &[aria-pressed='true'] {
     background-color: var(--color-btn-primary-selected-bg);
     box-shadow: var(--color-btn-primary-selected-shadow);
   }
 
   &:disabled,
-  &.Button--disabled,
   &[aria-disabled='true'] {
     color: var(--color-btn-primary-disabled-text);
     background-color: var(--color-btn-primary-disabled-bg);
@@ -213,25 +210,22 @@ summary.Button {
   border-color: var(--color-btn-border);
   box-shadow: var(--color-btn-shadow), var(--color-btn-inset-shadow);
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--color-btn-hover-bg);
     border-color: var(--color-btn-hover-border);
   }
 
-  &:active,
-  &.Button--active {
+  &:active:not(:disabled) {
     background-color: var(--color-btn-active-bg);
     border-color: var(--color-btn-active-border);
   }
 
-  &[aria-pressed='true'],
-  &.Button--pressed {
+  &[aria-pressed='true'] {
     background-color: var(--color-btn-selected-bg);
     box-shadow: var(--color-primer-shadow-inset);
   }
 
   &:disabled,
-  &.Button--disabled,
   &[aria-disabled='true'] {
     color: var(--color-primer-fg-disabled);
     background-color: var(--color-btn-bg);
@@ -243,19 +237,16 @@ summary.Button {
 .Button--invisible {
   color: var(--color-btn-text);
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--color-action-list-item-default-hover-bg);
   }
 
   &[aria-pressed='true'],
-  &:active,
-  &.Button--active,
-  &.Button--pressed {
+  &:active:not(:disabled) {
     background-color: var(--color-action-list-item-default-active-bg);
   }
 
   &:disabled,
-  &.Button--disabled,
   &[aria-disabled='true'] {
     color: var(--color-primer-fg-disabled);
     background-color: var(--color-btn-bg);
@@ -291,7 +282,6 @@ summary.Button {
   }
 
   &:disabled,
-  &.Button--disabled,
   &[aria-disabled='true'] {
     color: var(--color-primer-fg-disabled);
     background-color: transparent;
@@ -308,7 +298,7 @@ summary.Button {
   border-color: var(--color-btn-border);
   box-shadow: var(--color-btn-shadow), var(--color-btn-inset-shadow);
 
-  &:hover {
+  &:hover:not(:disabled) {
     color: var(--color-btn-danger-hover-text);
     fill: var(--color-btn-danger-hover-text);
     background-color: var(--color-btn-danger-hover-bg);
@@ -316,9 +306,8 @@ summary.Button {
     box-shadow: var(--color-btn-danger-hover-shadow), var(--color-btn-danger-hover-inset-shadow);
   }
 
-  &:active,
-  &[aria-pressed='true'],
-  &.Button--pressed {
+  &:active:not(:disabled),
+  &[aria-pressed='true'] {
     color: var(--color-btn-danger-selected-text);
     fill: var(--color-btn-danger-selected-text);
     background-color: var(--color-btn-danger-selected-bg);
@@ -327,7 +316,6 @@ summary.Button {
   }
 
   &:disabled,
-  &.disabled,
   &[aria-disabled='true'] {
     color: var(--color-btn-danger-disabled-text);
     fill: var(--color-btn-danger-disabled-text);
