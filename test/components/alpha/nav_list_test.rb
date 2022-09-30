@@ -64,6 +64,34 @@ module Primer
         refute_selector ".ActionListItem--navActive", text: "Item 2"
       end
 
+      class CurrentPageItem < Primer::Alpha::NavList::Item
+        def initialize(current_page_href:, **system_arguments)
+          @current_page_href = current_page_href
+          super(**system_arguments)
+        end
+
+        private
+
+        def current_page?(url)
+          url == @current_page_href
+        end
+      end
+
+      def test_item_can_be_selected_by_current_page
+        current_page_href = "/item2"
+
+        render_inline(Primer::Alpha::NavList.new) do |c|
+          c.with_section(aria: { label: "Nav list" }) do |section|
+            # use CurrentPageItem instead of a mock since the API supports it
+            section.with_item(component_klass: CurrentPageItem, label: "Item 1", href: "/item1", current_page_href: current_page_href)
+            section.with_item(component_klass: CurrentPageItem, label: "Item 2", href: "/item2", current_page_href: current_page_href)
+          end
+        end
+
+        refute_selector ".ActionListItem--navActive", text: "Item 1"
+        assert_selector ".ActionListItem--navActive", text: "Item 2"
+      end
+
       def test_max_nesting_depth
         error = assert_raises(RuntimeError) do
           render_inline(Primer::Alpha::NavList.new) do |c|
