@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.0.100
+
+### Patch Changes
+
+- [#1428](https://github.com/primer/view_components/pull/1428) [`b7b0c8be`](https://github.com/primer/view_components/commit/b7b0c8be1e2a82327f6dd4b2104a3e4fb3089394) Thanks [@bolonio](https://github.com/bolonio)! - Remove external classes from the the button content `<span>` in `Primer::beta::Button`
+
+* [#1427](https://github.com/primer/view_components/pull/1427) [`2139fa30`](https://github.com/primer/view_components/commit/2139fa30982b49e88a44ab6be72f3428f6e5b0f1) Thanks [@langermank](https://github.com/langermank)! - Beta::Button CSS bug fixes
+
 ## 0.0.99
 
 ### Patch Changes
