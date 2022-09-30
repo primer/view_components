@@ -62,10 +62,10 @@ jobs:
         key: gems-build-rails-${{ matrix.rails_version }}-ruby-${{ matrix.ruby_version }}-${{ hashFiles('**/Gemfile.lock') }}
     - uses: actions/setup-node@v2
       with:
-        node-version: 14
+        node-version: 16
     - run: |
-        yarn
-        cd demo && yarn
+        npm i
+        cd demo && npm i
     - name: Build and test with Rake
       run: |
         gem install bundler:2.2.9
@@ -112,10 +112,10 @@ jobs:
         ruby-version: 2.7.x
     - uses: actions/setup-node@v2
       with:
-        node-version: 14
+        node-version: 16
     - run: |
-        yarn
-        cd demo && yarn
+        npm i
+        cd demo && npm i
     - name: Build and test with Rake
       run: |
         gem install bundler:2.2.9

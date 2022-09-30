@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.0.94",
+  "version": "0.0.100",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -20,7 +20,7 @@
     "url": "https://github.com/primer/view_components/issues"
   },
   "files": [
-    "static/**/*",
+    "static/*.json",
     "app/assets/**/*",
     "app/components/primer/**/*.js",
     "app/components/primer/**/*.css",
@@ -28,9 +28,9 @@
   ],
   "scripts": {
     "clean": "git clean -fdX -- app/",
-    "build:docs": "cd docs && yarn gatsby build --prefix-paths",
-    "build:docs:preview": "cd docs && yarn gatsby build",
-    "prepare": "rm -rf docs/static && mkdir -p docs/static && yarn build:js && yarn build:css && cp app/assets/**/primer_view_components.* docs/static/",
+    "build:docs": "npm run --prefix ./docs/ build",
+    "build:docs:preview": "cd docs && npx gatsby build",
+    "prepare": "rm -rf docs/static && mkdir -p docs/static && npm run build:js && npm run build:css && cp app/assets/**/primer_view_components.* docs/static/",
     "lint": "eslint 'app/components/**/*.ts'",
     "lint:fix": "eslint 'app/components/**/*.ts' --fix",
     "changeset:version": "changeset version && script/version",
@@ -52,7 +52,7 @@
     "@changesets/changelog-github": "^0.4.6",
     "@changesets/cli": "^2.24.1",
     "@github/prettier-config": "0.0.4",
-    "@primer/css": "20.4.5",
+    "@primer/css": "20.4.6",
     "@primer/primitives": "^7.9.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",
@@ -60,7 +60,7 @@
     "@typescript-eslint/parser": "^5.31.0",
     "chokidar-cli": "^3.0.0",
     "cssnano": "^5.1.13",
-    "eslint": "^8.20.0",
+    "eslint": "^8.23.1",
     "eslint-plugin-custom-elements": "^0.0.6",
     "eslint-plugin-github": "^4.3.7",
     "eslint-plugin-prettier": "^4.2.1",

@@ -29,7 +29,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          yarn
+          npm i
           bundle install
 
       - name: Create release pull request or publish to npm
@@ -37,7 +37,7 @@ jobs:
         uses: changesets/action@master
         with:
           title: Release Tracking
-          version: yarn changeset:version
+          version: npm run changeset:version
           publish: script/changeset-publish
         env:
           GITHUB_TOKEN: ${{ secrets.GPR_AUTH_TOKEN_SHARED }}

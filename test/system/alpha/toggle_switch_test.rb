@@ -44,5 +44,15 @@ module Alpha
       find("toggle-switch").click
       assert_selector("[data-target='toggle-switch.errorIcon']")
     end
+
+    def test_fetch_made_with_correct_headers
+      visit_preview(:default)
+
+      refute_selector(".ToggleSwitch--checked")
+      find("toggle-switch").click
+      assert_selector(".ToggleSwitch--checked")
+
+      assert_equal "XMLHttpRequest", ToggleSwitchController.last_request.headers["HTTP_REQUESTED_WITH"]
+    end
   end
 end
