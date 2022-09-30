@@ -1,13 +1,12 @@
 name: Release Checklist
 
 on:
-  push:
-    branches:
-      - 'changeset-release/main'
+  pull_request:
 
 jobs:
   release-checklist:
-    if: ${{ github.repository == 'primer/view_components' }}
+    # Only run on Release Tracking branch
+    if: ${{ github.repository == 'primer/view_components' && github.head_ref == 'changeset-release/main' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
