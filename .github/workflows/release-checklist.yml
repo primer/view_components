@@ -1,12 +1,13 @@
 name: Release Checklist
 
 on:
-  pull_request:
+  push:
     branches:
-      - 'changeset-release/**'
+      - 'changeset-release/main'
 
 jobs:
-  release-template:
+  release-checklist:
+    if: ${{ github.repository == 'primer/view_components' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
