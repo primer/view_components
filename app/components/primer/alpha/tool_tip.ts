@@ -264,7 +264,11 @@ class ToolTipElement extends HTMLElement {
       if (this.type === 'label') {
         let labelledBy = this.control.getAttribute('aria-labelledby')
         if (labelledBy) {
-          labelledBy = `${labelledBy} ${this.id}`
+          if (!labelledBy.split(' ').includes(this.id)) {
+            labelledBy = `${labelledBy} ${this.id}`
+          } else {
+            labelledBy = `${labelledBy}`
+          }
         } else {
           labelledBy = this.id
         }
@@ -274,7 +278,15 @@ class ToolTipElement extends HTMLElement {
         this.setAttribute('aria-hidden', 'true')
       } else {
         let describedBy = this.control.getAttribute('aria-describedby')
-        describedBy ? (describedBy = `${describedBy} ${this.id}`) : (describedBy = this.id)
+        if (describedBy) {
+          if (!describedBy.split(' ').includes(this.id)) {
+            describedBy = `${describedBy} ${this.id}`
+          } else {
+            describedBy = `${describedBy}`
+          }
+        } else {
+          describedBy = this.id
+        }
         this.control.setAttribute('aria-describedby', describedBy)
       }
     } else if (name === 'data-direction') {

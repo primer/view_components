@@ -47,6 +47,7 @@ module Primer
       #   <%= render(Primer::Beta::IconButton.new(icon: :search, "aria-label": "Search", tooltip_direction: :e)) %>
       #
       # @param icon [String] Name of <%= link_to_octicons %> to use.
+      # @param wrapper_arguments [Hash] Optional keyword arguments to be passed to the wrapper `<div>` tag.
       # @param scheme [Symbol] <%= one_of(Primer::Beta::IconButton::SCHEME_OPTIONS) %>
       # @param wrapper_arguments [Hash] Optional keyword arguments to be passed to the wrapper `<div>` tag.
       # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
@@ -59,6 +60,7 @@ module Primer
       def initialize(icon:, scheme: DEFAULT_SCHEME, wrapper_arguments: {}, tooltip_direction: Primer::Alpha::Tooltip::DIRECTION_DEFAULT, size: Primer::Beta::Button::DEFAULT_SIZE, **system_arguments)
         @icon = icon
 
+        @wrapper_arguments = wrapper_arguments
         @system_arguments = system_arguments
         @system_arguments[:id] ||= "icon-button-#{SecureRandom.hex(4)}"
 

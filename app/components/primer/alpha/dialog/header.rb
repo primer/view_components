@@ -24,7 +24,7 @@ module Primer
           @subtitle = subtitle
           @visually_hide_title = visually_hide_title
           @system_arguments = deny_tag_argument(**system_arguments)
-          @system_arguments[:tag] = :header
+          @system_arguments[:tag] = :div
           @system_arguments[:classes] = class_names(
             "Overlay-header",
             { "Overlay-header--divided": show_divider },

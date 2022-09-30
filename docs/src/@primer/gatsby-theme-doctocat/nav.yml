@@ -32,7 +32,7 @@
   - title: Breadcrumbs
     url: "/components/beta/breadcrumbs"
   - title: Button
-    url: "/components/button"
+    url: "/components/beta/button"
   - title: ButtonGroup
     url: "/components/beta/buttongroup"
   - title: ButtonMarketing
@@ -62,7 +62,7 @@
   - title: HiddenTextExpander
     url: "/components/alpha/hiddentextexpander"
   - title: IconButton
-    url: "/components/iconbutton"
+    url: "/components/beta/iconbutton"
   - title: Image
     url: "/components/image"
   - title: ImageCrop
@@ -79,6 +79,8 @@
     url: "/components/markdown"
   - title: Menu
     url: "/components/menu"
+  - title: NavList
+    url: "/components/alpha/navlist"
   - title: Octicon
     url: "/components/octicon"
   - title: OcticonSymbols
@@ -121,5 +123,7 @@
   children:
   - title: Developing and publishing client-side behaviours
     url: "/adr/0250-developing-and-publishing-clientside-behaviours"
-  - title: 251. Use Catalyst for client-side behaviours
+  - title: Use Catalyst for client-side behaviours
     url: "/adr/0251-use-catalyst-for-client-side-behaviours"
+  - title: 252. Build component css with ruby code
+    url: "/adr/0252-build-component-css-with-ruby-code"
