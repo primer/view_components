@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
+require_relative "../../lib/primer/view_components/statuses"
 
 class PrimerComponentTest < Minitest::Test
   include Primer::ComponentTestHelpers
@@ -21,6 +22,9 @@ class PrimerComponentTest < Minitest::Test
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
+    [Primer::Alpha::ActionList, { aria: { label: "Action List" } }, lambda do |component|
+      component.item(label: "Foo")
+    end],
     [Primer::Alpha::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
     [Primer::Alpha::AutoComplete::Item, { value: "Foo" }],
     [Primer::Beta::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
@@ -93,11 +97,17 @@ class PrimerComponentTest < Minitest::Test
     [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }],
-    [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }]
+    [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
+    [Primer::Alpha::ActionList, { aria: { label: "Nav list" } }],
+    [Primer::Alpha::NavList, { aria: { label: "Nav list" } }]
   ].freeze
 
   def test_registered_components
     ignored_components = [
+      "Primer::Alpha::ActionList::Heading",
+      "Primer::Alpha::ActionList::Item",
+      "Primer::Alpha::ActionList::Separator",
+      "Primer::Alpha::NavList::Section",
       "Primer::HiddenTextExpander",
       "Primer::HeadingComponent",
       "Primer::CloseButton",
@@ -109,7 +119,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::BoxComponent"
     ]
 
-    primer_component_files_count = Dir["app/components/**/*.rb"].count
+    primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
     assert_equal primer_component_files_count, COMPONENTS_WITH_ARGS.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"
   end
 
@@ -117,7 +127,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { my: 4 }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector(".my-4", visible: :all)
+      assert_selector(".my-4", visible: :all, message: "#{component.name} does not support system arguments")
     end
   end
 
@@ -125,7 +135,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { classes: "foo" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector(".foo", visible: :all)
+      assert_selector(".foo", visible: :all, message: "#{component.name} does not pass through classes")
     end
   end
 
@@ -133,7 +143,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { style: "width: 100%;" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector("[style='width: 100%;']", visible: :all)
+      assert_selector("[style='width: 100%;']", visible: :all, message: "#{component.name} does not support inline styles")
     end
   end
 
@@ -141,7 +151,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { hidden: true }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector("[hidden]", visible: false)
+      assert_selector("[hidden]", visible: false, message: "#{component.name} does not support content tag arguments")
     end
   end
 
@@ -149,7 +159,7 @@ class PrimerComponentTest < Minitest::Test
     default_args = { "data-ga-click": "Foo,bar" }
     COMPONENTS_WITH_ARGS.each do |component, args, proc|
       render_component(component, default_args.merge(args), proc)
-      assert_selector("[data-ga-click='Foo,bar']", visible: false)
+      assert_selector("[data-ga-click='Foo,bar']", visible: false, message: "#{component.name} does not support data arguments")
     end
   end
 
@@ -161,5 +171,12 @@ class PrimerComponentTest < Minitest::Test
     render_inline(component.new(**args)) do |c|
       proc.call(c) if proc.present?
     end
+  end
+
+  def test_deprecated_components_by_status_match_list
+    deprecated_by_status = Primer::ViewComponents::STATUSES.select { |_, value| value == "deprecated" }.keys.sort
+    deprecated_by_list = ::Primer::Deprecations::DEPRECATED_COMPONENTS.keys.sort
+
+    assert_empty(deprecated_by_status - deprecated_by_list, "Please make sure that components are officially deprecated by setting the `status :deprecated` within the component file.\nMake sure to provide an alternative component for each deprecated component in Primer::Deprecations::DEPRECATED_COMPONENTS (lib/primer/deprecations.rb). If there is no alternative to suggest, set the value to nil.")
   end
 end

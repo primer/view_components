@@ -87,7 +87,15 @@ namespace :docs do
       Primer::Alpha::UnderlinePanels,
       Primer::Alpha::TabNav,
       Primer::Alpha::TabPanels,
-      Primer::Alpha::Tooltip
+      Primer::Alpha::Tooltip,
+      Primer::Alpha::ToggleSwitch,
+      Primer::Alpha::ActionList,
+      Primer::Alpha::NavList,
+      Primer::Alpha::NavList::Item,
+      Primer::Alpha::NavList::Section,
+      Primer::Alpha::ActionList::Divider,
+      Primer::Alpha::ActionList::Heading,
+      Primer::Alpha::ActionList::Item
     ]
 
     js_components = [
@@ -103,7 +111,23 @@ namespace :docs do
       Primer::Alpha::Tooltip,
       Primer::ButtonComponent,
       Primer::IconButton,
-      Primer::LinkComponent
+      Primer::LinkComponent,
+      Primer::Alpha::ToggleSwitch,
+      Primer::Alpha::ActionList,
+      Primer::Alpha::NavList,
+      Primer::Alpha::NavList::Section
+    ]
+
+    components_without_examples = [
+      # ActionList is a base component that should not be used by itself
+      Primer::Alpha::ActionList,
+      Primer::Alpha::ActionList::Divider,
+      Primer::Alpha::ActionList::Heading,
+      Primer::Alpha::ActionList::Item,
+
+      # Examples can be seen in the NavList docs
+      Primer::Alpha::NavList::Item,
+      Primer::Alpha::NavList::Section
     ]
 
     all_components = Primer::Component.descendants - [Primer::BaseComponent]
@@ -130,7 +154,7 @@ namespace :docs do
         f.puts("componentId: #{data[:component_id]}")
         f.puts("status: #{data[:status]}")
         f.puts("source: #{data[:source]}")
-        f.puts("storybook: #{data[:storybook]}")
+        f.puts("lookbook: #{data[:lookbook]}") if preview_exists?(component)
         f.puts("---")
         f.puts
         f.puts("import Example from '#{data[:example_path]}'")
@@ -211,7 +235,9 @@ namespace :docs do
         args_for_components << component_args
 
         # Slots V2 docs
-        slot_v2_methods = documentation.meths.select { |x| x[:renders_one] || x[:renders_many] }
+        slot_v2_methods = documentation.meths.select do |mtd|
+          (mtd[:renders_one] || mtd[:renders_many]) && mtd.tag(:private).nil?
+        end
 
         if slot_v2_methods.any?
           f.puts
@@ -219,7 +245,7 @@ namespace :docs do
 
           slot_v2_methods.each do |slot_documentation|
             f.puts
-            f.puts("### `#{slot_documentation.name.to_s.capitalize}`")
+            f.puts("### `#{slot_documentation.name}`")
 
             if slot_documentation.base_docstring.to_s.present?
               f.puts
@@ -239,26 +265,30 @@ namespace :docs do
           end
         end
 
-        errors << { component.name => { example: "No examples found" } } unless initialize_method.tags(:example).any?
+        example_tags = initialize_method.tags(:example)
 
-        f.puts
-        f.puts("## Examples")
-
-        initialize_method.tags(:example).each do |tag|
-          name, description, code = parse_example_tag(tag)
+        if example_tags.any?
           f.puts
-          f.puts("### #{name}")
-          if description
+          f.puts("## Examples")
+
+          example_tags.each do |tag|
+            name, description, code = parse_example_tag(tag)
             f.puts
-            f.puts(view_context.render(inline: description.squish))
+            f.puts("### #{name}")
+            if description
+              f.puts
+              f.puts(view_context.render(inline: description.squish))
+            end
+            f.puts
+            html = view_context.render(inline: code)
+            f.puts("<Example src=\"#{html.tr('"', "\'").delete("\n")}\" />")
+            f.puts
+            f.puts("```erb")
+            f.puts(code.to_s)
+            f.puts("```")
           end
-          f.puts
-          html = view_context.render(inline: code)
-          f.puts("<Example src=\"#{html.tr('"', "\'").delete("\n")}\" />")
-          f.puts
-          f.puts("```erb")
-          f.puts(code.to_s)
-          f.puts("```")
+        else
+          errors << { component.name => { example: "No examples found" } } unless components_without_examples.include?(component)
         end
       end
     end
@@ -275,8 +305,8 @@ namespace :docs do
       raise
     end
 
-    File.open("static/arguments.yml", "w") do |f|
-      f.puts YAML.dump(args_for_components)
+    File.open("static/arguments.json", "w") do |f|
+      f.puts JSON.pretty_generate(args_for_components)
     end
 
     # Build system arguments docs from BaseComponent
@@ -356,7 +386,7 @@ namespace :docs do
   task :preview do
     registry = generate_yard_registry
 
-    FileUtils.rm_rf("test/previews/primer/docs/")
+    FileUtils.rm_rf("previews/primer/docs/")
 
     components = Primer::Component.descendants
 
@@ -370,27 +400,25 @@ namespace :docs do
 
       yard_example_tags = initialize_method.tags(:example)
 
-      path = Pathname.new("test/previews/primer/docs/#{short_name.underscore}_preview.rb")
+      path = Pathname.new("previews/docs/#{short_name.underscore}_preview.rb")
       path.dirname.mkdir unless path.dirname.exist?
 
       File.open(path, "w") do |f|
-        f.puts("module Primer")
-        f.puts("  module Docs")
-        f.puts("    class #{short_name}Preview < ViewComponent::Preview")
+        f.puts("module Docs")
+        f.puts("  class #{short_name}Preview < ViewComponent::Preview")
 
         yard_example_tags.each_with_index do |tag, index|
           name, _, code = parse_example_tag(tag)
           method_name = name.split("|").first.downcase.parameterize.underscore
-          f.puts("      def #{method_name}; end")
+          f.puts("    def #{method_name}; end")
           f.puts unless index == yard_example_tags.size - 1
-          path = Pathname.new("test/previews/primer/docs/#{short_name.underscore}_preview/#{method_name}.html.erb")
+          path = Pathname.new("previews/docs/#{short_name.underscore}_preview/#{method_name}.html.erb")
           path.dirname.mkdir unless path.dirname.exist?
           File.open(path, "w") do |view_file|
             view_file.puts(code.to_s)
           end
         end
 
-        f.puts("    end")
         f.puts("  end")
         f.puts("end")
       end
@@ -398,7 +426,7 @@ namespace :docs do
   end
 
   def generate_yard_registry
-    ENV["SKIP_STORYBOOK_PRELOAD"] = "1"
+    ENV["RAILS_ENV"] = "test"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
     require "primer/view_components"
     require "yard/docs_helper"
@@ -455,16 +483,16 @@ namespace :docs do
   end
 
   def docs_metadata(component)
-    (status_module, short_name) = status_module_and_short_name(component)
+    status_module, short_name, class_name = status_module_and_short_name(component)
     status_path = status_module.nil? ? "" : "#{status_module}/"
     status = component.status.to_s
 
     {
-      title: short_name,
+      title: class_name,
       component_id: short_name.underscore,
       status: status.capitalize,
       source: source_url(component),
-      storybook: storybook_url(component),
+      lookbook: lookbook_url(component),
       path: "docs/content/components/#{status_path}#{short_name.downcase}.md",
       example_path: example_path(component),
       require_js_path: require_js_path(component)
@@ -477,10 +505,16 @@ namespace :docs do
     "https://github.com/primer/view_components/tree/main/app/components/#{path}.rb"
   end
 
-  def storybook_url(component)
-    path = component.name.split("::").map { |n| n.underscore.dasherize }.join("-")
+  def lookbook_url(component)
+    path = component.name.underscore.gsub("_component", "")
 
-    "https://primer.style/view-components/stories/?path=/story/#{path}"
+    "https://primer.style/view-components/lookbook/inspect/#{path}/default/"
+  end
+
+  def preview_exists?(component)
+    path = component.name.underscore
+
+    File.exist?("previews/#{path}_preview.rb")
   end
 
   def example_path(component)

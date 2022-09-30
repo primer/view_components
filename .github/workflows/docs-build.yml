@@ -21,8 +21,8 @@ jobs:
           ruby-version: 2.7.x
       - uses: actions/setup-node@v2
         with:
-          node-version: 14
-      - run: yarn
+          node-version: 16
+      - run: npm i
       - uses: actions/cache@v2
         with:
           path: vendor/bundle
@@ -35,8 +35,6 @@ jobs:
           bundle exec rake utilities:build
           bundle exec rake docs:build
           bundle exec rake static:dump
-        env:
-          SKIP_STORYBOOK_PRELOAD: 1
       - name: Commit & Push Docs Data
         run: |
           git config --local user.email "actions@github.com"

@@ -4,6 +4,7 @@ namespace :utilities do
   task :build do
     require "yaml"
     require "json"
+    ENV["RAILS_ENV"] = "test"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
     require "primer/classify/utilities"
 

@@ -4,4 +4,6 @@
 node_modules/
 pkg/
 test/
+!test/previews/
+!test/forms/
 docs/

@@ -44,7 +44,7 @@ class ComponentGenerator < Thor::Group
   end
 
   def create_preview
-    template("templates/preview.tt", "test/previews/primer/#{status_path}#{underscore_name}_preview.rb")
+    template("templates/preview.tt", "previews/primer/#{status_path}#{underscore_name}_preview.rb")
   end
 
   def add_to_css_file
@@ -77,7 +77,7 @@ class ComponentGenerator < Thor::Group
   end
 
   def install_js_package
-    run "yarn add #{js_package_name}" if js_package_name
+    run "npm i --save #{js_package_name}" if js_package_name
   end
 
   private

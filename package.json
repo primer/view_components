@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.0.92",
+  "version": "0.0.100",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -20,17 +20,19 @@
     "url": "https://github.com/primer/view_components/issues"
   },
   "files": [
+    "static/*.json",
     "app/assets/**/*",
     "app/components/primer/**/*.js",
     "app/components/primer/**/*.css",
     "app/components/primer/**/*.d.ts"
   ],
   "scripts": {
-    "build:docs": "cd docs && yarn gatsby build --prefix-paths",
-    "build:docs:preview": "cd docs && yarn gatsby build",
-    "prepare": "rm -rf docs/static && mkdir -p docs/static && yarn build:js && yarn build:css && cp app/assets/**/primer_view_components.* docs/static/",
-    "lint": "eslint 'app/components/**/*.ts' demo/.storybook",
-    "lint:fix": "eslint 'app/components/**/*.ts' demo/.storybook --fix",
+    "clean": "git clean -fdX -- app/",
+    "build:docs": "npm run --prefix ./docs/ build",
+    "build:docs:preview": "cd docs && npx gatsby build",
+    "prepare": "rm -rf docs/static && mkdir -p docs/static && npm run build:js && npm run build:css && cp app/assets/**/primer_view_components.* docs/static/",
+    "lint": "eslint 'app/components/**/*.ts'",
+    "lint:fix": "eslint 'app/components/**/*.ts' --fix",
     "changeset:version": "changeset version && script/version",
     "build:js": "tsc && rollup -c",
     "build:css": "postcss -o app/assets/styles/primer_view_components.css app/components/primer/primer.pcss"
@@ -44,23 +46,25 @@
     "@github/mini-throttle": "^2.1.0",
     "@github/tab-container-element": "^3.1.2",
     "@github/time-elements": "^3.1.2",
-    "@primer/behaviors": "^1.1.3"
+    "@primer/behaviors": "^1.2.0"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.6",
     "@changesets/cli": "^2.24.1",
     "@github/prettier-config": "0.0.4",
-    "@primer/css": "20.4.4",
+    "@primer/css": "20.4.6",
     "@primer/primitives": "^7.9.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
+    "chokidar-cli": "^3.0.0",
     "cssnano": "^5.1.13",
-    "eslint": "^8.20.0",
+    "eslint": "^8.23.1",
     "eslint-plugin-custom-elements": "^0.0.6",
     "eslint-plugin-github": "^4.3.7",
     "eslint-plugin-prettier": "^4.2.1",
+    "markdownlint-cli": "^0.32.2",
     "mocha": "^10.0.0",
     "postcss": "^8.4.16",
     "postcss-cli": "^10.0.0",
@@ -73,8 +77,5 @@
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },
-  "prettier": "@github/prettier-config",
-  "storybook": {
-    "url": "https://primer.style/view-components/stories/"
-  }
+  "prettier": "@github/prettier-config"
 }

@@ -1,5 +1,100 @@
 # CHANGELOG
 
+## 0.0.100
+
+### Patch Changes
+
+- [#1428](https://github.com/primer/view_components/pull/1428) [`b7b0c8be`](https://github.com/primer/view_components/commit/b7b0c8be1e2a82327f6dd4b2104a3e4fb3089394) Thanks [@bolonio](https://github.com/bolonio)! - Remove external classes from the the button content `<span>` in `Primer::beta::Button`
+
+* [#1427](https://github.com/primer/view_components/pull/1427) [`2139fa30`](https://github.com/primer/view_components/commit/2139fa30982b49e88a44ab6be72f3428f6e5b0f1) Thanks [@langermank](https://github.com/langermank)! - Beta::Button CSS bug fixes
+
+## 0.0.99
+
+### Patch Changes
+
+- [#1421](https://github.com/primer/view_components/pull/1421) [`c35a5c32`](https://github.com/primer/view_components/commit/c35a5c3226ab39aa62182ee4816e63d9c1d0c598) Thanks [@langermank](https://github.com/langermank)! - Fix Beta::Button visual regressions
+  - Add back link styles
+  - Ensure invisible buttons are blue when no visuals are present
+
+* [#1422](https://github.com/primer/view_components/pull/1422) [`a129a4d1`](https://github.com/primer/view_components/commit/a129a4d1b7d1dfae6d2d623e1603ea6e75533940) Thanks [@camertron](https://github.com/camertron)! - Add SVG and custom content options to NavList's leading visual slot
+
+## 0.0.98
+
+### Patch Changes
+
+- [#1420](https://github.com/primer/view_components/pull/1420) [`d6623553`](https://github.com/primer/view_components/commit/d662355359b1b5d8801cc6a86a1376cb1d2da63b) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - un-deprecate Primer::ButtonComponent for now, due to inconsistencies and issues in migrating to Primer::Beta::Button
+
+* [`1d4b6851`](https://github.com/primer/view_components/commit/1d4b685174ca82cb0f67e65cc095810841b0b390) Thanks [@jonrohan](https://github.com/jonrohan)! - Move previews into root and include in gemspec. Thanks [@steves](https://github.com/steves)! [#1404](https://github.com/primer/view_components/pull/1404)
+
+- [#1416](https://github.com/primer/view_components/pull/1416) [`f99156fd`](https://github.com/primer/view_components/commit/f99156fddcab45467a4da773387efa4ea13401c3) Thanks [@jonrohan](https://github.com/jonrohan)! - Don't use outside images in docs examples
+
+## 0.0.97
+
+### Patch Changes
+
+- [#1268](https://github.com/primer/view_components/pull/1268) [`f26afd94`](https://github.com/primer/view_components/commit/f26afd9427c82d38c0c1f7d866dade959cb78364) Thanks [@camertron](https://github.com/camertron)! - Add the ActionList and NavList components
+
+* [#1412](https://github.com/primer/view_components/pull/1412) [`cf548425`](https://github.com/primer/view_components/commit/cf54842572f9e040c1fb51c2b9c0c5e3a2902235) Thanks [@owenniblock](https://github.com/owenniblock)! - Change header tag to div on `Primer::Alpha::Dialog`
+
+## 0.0.96
+
+### Patch Changes
+
+- [#1400](https://github.com/primer/view_components/pull/1400) [`ae48b9fe`](https://github.com/primer/view_components/commit/ae48b9fe9d7ef3a908ea9f84f5fd25cf9bf40e50) Thanks [@langermank](https://github.com/langermank)! - - Add Lookbook previews for Beta Button and IconButton
+  - Tiny CSS bug fix
+
+* [#1406](https://github.com/primer/view_components/pull/1406) [`1fec4bf5`](https://github.com/primer/view_components/commit/1fec4bf5097d3f002208840694d05dd4401c7a83) Thanks [@jonrohan](https://github.com/jonrohan)! - Raise on usage of deprecated arguments in Primer::Beta::Button
+
+- [#1402](https://github.com/primer/view_components/pull/1402) [`7e50f6d9`](https://github.com/primer/view_components/commit/7e50f6d93338da50e2aa670c7c9f1a23fb7dfecc) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Move Octicon cache preload to initializer.
+
+## 0.0.95
+
+### Patch Changes
+
+- [#1372](https://github.com/primer/view_components/pull/1372) [`98155b10`](https://github.com/primer/view_components/commit/98155b10599d3b1753c32b7c247acadff926eaa4) Thanks [@jonrohan](https://github.com/jonrohan)! - Delete the deprecated Primer::ButtonGroup component
+
+* [#1386](https://github.com/primer/view_components/pull/1386) [`142b8193`](https://github.com/primer/view_components/commit/142b8193abd973a5bf6fd413d0a1e11fa0b3d3ae) Thanks [@khiga8](https://github.com/khiga8)! - Make sure duplicate ID associations aren't created for the Button
+
+- [#1371](https://github.com/primer/view_components/pull/1371) [`d0ddcce0`](https://github.com/primer/view_components/commit/d0ddcce0fbb4b46b1746e5688b23c54e1ba74f12) Thanks [@jonrohan](https://github.com/jonrohan)! - Delete the deprecated Primer::BaseButton component
+
+* [#1396](https://github.com/primer/view_components/pull/1396) [`e0c50dcb`](https://github.com/primer/view_components/commit/e0c50dcbc12f31bdc0cac480f563952404051f14) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - mark Primer::ButtonComponent as deprecated in favor of Primer::Beta::Button
+
+- [#1393](https://github.com/primer/view_components/pull/1393) [`5533f8e7`](https://github.com/primer/view_components/commit/5533f8e7dfffceba0e4b94bbc3bae1e17ebcff91) Thanks [@camertron](https://github.com/camertron)! - Add the Requested-With header to toggle switch requests
+
+* [#1382](https://github.com/primer/view_components/pull/1382) [`6fd690c8`](https://github.com/primer/view_components/commit/6fd690c8804cd4a1cc8bdbb76d1f6f7e795ab8d6) Thanks [@kangarruu](https://github.com/kangarruu)! - Docs change to fix typo and descriptions in dialog.rb
+
+- [#1397](https://github.com/primer/view_components/pull/1397) [`1ad8cfa7`](https://github.com/primer/view_components/commit/1ad8cfa753872e3ee5d196315ed5048351073029) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - deprecated Primer::IconButton in favor of Primer::Beta::IconButton"
+
+* [#1390](https://github.com/primer/view_components/pull/1390) [`94c31645`](https://github.com/primer/view_components/commit/94c316459db0299afa0946eee5ae2987a16879f3) Thanks [@neall](https://github.com/neall)! - Support submitting a check box group as an array
+
+- [#1392](https://github.com/primer/view_components/pull/1392) [`1f424aab`](https://github.com/primer/view_components/commit/1f424aabc6e8be4bd3a2c55190414a1b125b9111) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing `static/arguments.yml` and replacing with `static/arguments.json`. The data output doesn't change.
+
+* [#1381](https://github.com/primer/view_components/pull/1381) [`040148d8`](https://github.com/primer/view_components/commit/040148d8cc197c12945466b99805177db69fbf95) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Simplify CI configuration to a single build per Ruby/Rails version.
+
+- [#1394](https://github.com/primer/view_components/pull/1394) [`27d82335`](https://github.com/primer/view_components/commit/27d823358e4abb9ba6c5c208c44aab300546c144) Thanks [@jonrohan](https://github.com/jonrohan)! - Adding optional wrapper arguments to IconButton
+
+## 0.0.94
+
+### Patch Changes
+
+- [#1352](https://github.com/primer/view_components/pull/1352) [`a02944bb`](https://github.com/primer/view_components/commit/a02944bb6e2393ebe476466b96cfc022dd571fd2) Thanks [@jonrohan](https://github.com/jonrohan)! - Update eslint custom-element rules so web components can match ruby component names
+
+* [#1364](https://github.com/primer/view_components/pull/1364) [`e8714975`](https://github.com/primer/view_components/commit/e87149754da0a7551ddc18f6244ec901fede943f) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - added Primer::Alpha::ToggleSwitch to the docs build task so it will build and deploy
+
+- [#1354](https://github.com/primer/view_components/pull/1354) [`c1edd34f`](https://github.com/primer/view_components/commit/c1edd34f8e60ec5b9689891e279ded3a8b0ef23e) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - consolidating deprecations into a single list, updating component status migrator for this change, and ensuring rubocop / erblint deprecation linters can be run against changed files only instead of all files
+
+## 0.0.93
+
+### Patch Changes
+
+- [#1214](https://github.com/primer/view_components/pull/1214) [`33949aa9`](https://github.com/primer/view_components/commit/33949aa9e1be9e9a86a1eefb10e9cd3b47ecdeda) Thanks [@keithamus](https://github.com/keithamus)! - Adding Primer Dialog Component
+
+* [#1325](https://github.com/primer/view_components/pull/1325) [`a54e5510`](https://github.com/primer/view_components/commit/a54e5510ecc87b55ed9a6bf71ac1c9d2e3b3fef9) Thanks [@langermank](https://github.com/langermank)! - Adding Primer::Beta::Button and Primer::Beta::IconButton with visual refinements
+
+- [#1340](https://github.com/primer/view_components/pull/1340) [`a4f868c3`](https://github.com/primer/view_components/commit/a4f868c32af1ae76f2bba760e9565c2bade22f56) Thanks [@jsoref](https://github.com/jsoref)! - Let forks ✅ on `main`
+
+* [#1335](https://github.com/primer/view_components/pull/1335) [`cbf52761`](https://github.com/primer/view_components/commit/cbf52761ab5624dfd9bc35a2220f87068c370039) Thanks [@jonrohan](https://github.com/jonrohan)! - Adding the `postcss-mixins` plugin to our CSS build step.
+
 ## 0.0.92
 
 ### Patch Changes

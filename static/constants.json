@@ -1,4 +1,72 @@
 {
+  "Primer::Alpha::ActionList": {
+    "DEFAULT_ROLE": "list",
+    "DEFAULT_SCHEME": "full",
+    "Divider": "Primer::Alpha::ActionList::Divider",
+    "Heading": "Primer::Alpha::ActionList::Heading",
+    "Item": "Primer::Alpha::ActionList::Item",
+    "SCHEME_MAPPINGS": {
+      "full": null,
+      "inset": "ActionListWrap--inset"
+    },
+    "SCHEME_OPTIONS": [
+      "full",
+      "inset"
+    ]
+  },
+  "Primer::Alpha::ActionList::Divider": {
+    "DEFAULT_SCHEME": "subtle",
+    "SCHEME_MAPPINGS": {
+      "subtle": null,
+      "filled": "ActionList-sectionDivider--filled"
+    },
+    "SCHEME_OPTIONS": [
+      "subtle",
+      "filled"
+    ]
+  },
+  "Primer::Alpha::ActionList::Heading": {
+    "DEFAULT_SCHEME": "subtle",
+    "SCHEME_MAPPINGS": {
+      "subtle": null,
+      "filled": "ActionList-sectionDivider--filled"
+    },
+    "SCHEME_OPTIONS": [
+      "subtle",
+      "filled"
+    ]
+  },
+  "Primer::Alpha::ActionList::Item": {
+    "DEFAULT_DESCRIPTION_SCHEME": "block",
+    "DEFAULT_SCHEME": "default",
+    "DEFAULT_SIZE": "medium",
+    "DESCRIPTION_SCHEME_MAPPINGS": {
+      "inline": "ActionListItem-descriptionWrap--inline",
+      "block": "ActionListItem-descriptionWrap"
+    },
+    "DESCRIPTION_SCHEME_OPTIONS": [
+      "inline",
+      "block"
+    ],
+    "SCHEME_MAPPINGS": {
+      "default": null,
+      "danger": "ActionListItem--danger"
+    },
+    "SCHEME_OPTIONS": [
+      "default",
+      "danger"
+    ],
+    "SIZE_MAPPINGS": {
+      "medium": null,
+      "large": "ActionListContent--sizeLarge",
+      "xlarge": "ActionListContent--sizeXLarge"
+    },
+    "SIZE_OPTIONS": [
+      "medium",
+      "large",
+      "xlarge"
+    ]
+  },
   "Primer::Alpha::AutoComplete": {
     "Item": "Primer::Alpha::AutoComplete::Item"
   },
@@ -169,6 +237,14 @@
       "nav",
       "section"
     ]
+  },
+  "Primer::Alpha::NavList": {
+    "Item": "Primer::Alpha::NavList::Item",
+    "Section": "Primer::Alpha::NavList::Section"
+  },
+  "Primer::Alpha::NavList::Item": {
+  },
+  "Primer::Alpha::NavList::Section": {
   },
   "Primer::Alpha::ResponsiveComponent": {
   },
@@ -386,22 +462,19 @@
     "DEFAULT_ALIGN_CONTENT": "center",
     "DEFAULT_SCHEME": "default",
     "DEFAULT_SIZE": "medium",
-    "LINK_SCHEME": "link",
     "SCHEME_MAPPINGS": {
       "default": "Button--secondary",
       "primary": "Button--primary",
       "secondary": "Button--secondary",
       "danger": "Button--danger",
-      "outline": "btn-outline",
       "invisible": "Button--invisible",
-      "link": "btn-link"
+      "link": "Button--link"
     },
     "SCHEME_OPTIONS": [
       "default",
       "primary",
       "secondary",
       "danger",
-      "outline",
       "invisible",
       "link"
     ],
