@@ -67,9 +67,19 @@
 
 /* ActionList::Item */
 
-/* divider behavior */
-
 .ActionListItem {
+  position: relative;
+  list-style: none;
+  background-color: transparent;
+  border-radius: var(--primer-borderRadius-medium, 6px);
+
+  /* state */
+
+  &:hover,
+  &:active {
+    cursor: pointer;
+  }
+
   /* hide dividers  */
   @media (hover: hover) {
     &:hover {
@@ -89,12 +99,6 @@
   &[hidden] + .ActionList-sectionDivider {
     display: none;
   }
-}
-
-/* sub items */
-
-.ActionListItem {
-  /* target contents of li if sub-item (li wraps item label + nested ul) */
 
   /* collapse styles here */
   &.ActionListItem--hasSubItem {
@@ -112,21 +116,6 @@
         background-color: var(--color-action-list-item-default-active-bg);
       }
     }
-  }
-}
-
-/* <li> */
-.ActionListItem {
-  position: relative;
-  list-style: none;
-  background-color: transparent;
-  border-radius: var(--primer-borderRadius-medium, 6px);
-
-  /* state */
-
-  &:hover,
-  &:active {
-    cursor: pointer;
   }
 
   /* only hover li without list as children */
@@ -171,9 +160,7 @@
           transform: scale(0.97);
         }
       }
-    }
 
-    &:active {
       & .ActionListItem-label::before,
       & + .ActionListItem .ActionListItem-label::before {
         visibility: hidden;
@@ -463,10 +450,6 @@
   grid-area: leadingVisual;
 }
 
-.ActionListItem-label {
-  grid-area: label;
-}
-
 .ActionListItem-visual--trailing {
   grid-area: trailingVisual;
 }
@@ -523,6 +506,7 @@
   font-weight: var(--base-text-weight-normal, 400);
   line-height: var(--primer-text-body-lineHeight-medium, calc(20 / 14));
   color: var(--color-fg-default);
+  grid-area: label;
 }
 
 .ActionListItem-label--truncate {
