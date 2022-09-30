@@ -28,9 +28,7 @@ module Primer
                  disabled: disabled,
                  icon: icon,
                  "aria-label": aria_label
-               )) do |_c|
-          "Button"
-        end
+               ))
       end
 
       # @label Default
@@ -54,9 +52,7 @@ module Primer
                  disabled: disabled,
                  icon: icon,
                  "aria-label": aria_label
-               )) do |_c|
-          "Button"
-        end
+               ))
       end
 
       # @label Invisible
@@ -80,9 +76,7 @@ module Primer
                  disabled: disabled,
                  icon: icon,
                  "aria-label": aria_label
-               )) do |_c|
-          "Button"
-        end
+               ))
       end
 
       # @label Danger
@@ -106,9 +100,7 @@ module Primer
                  disabled: disabled,
                  icon: icon,
                  "aria-label": aria_label
-               )) do |_c|
-          "Button"
-        end
+               ))
       end
     end
   end

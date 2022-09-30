@@ -267,11 +267,11 @@ module Primer
 
         <p>Small images should be shown at their actual size.</p>
 
-        <p><img src=\"http://placekitten.com/g/300/200/\"></p>
+        <!-- p><img src=\"http://placekitten.com/g/300/200/\"></!-->
 
         <p>Large images should always scale down and fit in the content container.</p>
 
-        <p><img src=\"http://placekitten.com/g/1200/800/\"></p>
+        <!-- p><img src=\"http://placekitten.com/g/1200/800/\"></!-->
 
         <pre><code>This is the final element on the page and there should be no margin below this.</code></pre>".html_safe # rubocop:disable Rails/OutputSafety
       end

@@ -33,7 +33,7 @@ namespace :test do
 
     t.libs << "test"
     t.libs << "lib"
-    t.test_files = FileList["test/system/**/*_test.rb", "test/previews/**/*_test.rb"]
+    t.test_files = FileList["test/system/**/*_test.rb"]
   end
 
   Rake::TestTask.new(:bench) do |t|

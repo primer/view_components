@@ -10,7 +10,6 @@ module Primer
       "Primer::Alpha::AutoComplete::Item" => "Primer::Beta::AutoComplete::Item",
       "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
       "Primer::BoxComponent" => "Primer::Box",
-      "Primer::ButtonComponent" => "Primer::Beta::Button",
       "Primer::CloseButton" => "Primer::Beta::CloseButton",
       "Primer::CounterComponent" => "Primer::Beta::Counter",
       "Primer::DetailsComponent" => "Primer::Beta::Details",

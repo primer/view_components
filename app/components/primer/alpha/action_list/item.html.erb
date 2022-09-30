@@ -1,0 +1,39 @@
+<%= render(Primer::BaseComponent.new(tag: :li, **@system_arguments)) do %>
+  <%= render(Primer::BaseComponent.new(**@content_arguments)) do %>
+    <% if private_leading_action_icon %>
+      <span class="ActionListItem-visual ActionListItem-action--leading">
+        <%= private_leading_action_icon %>
+      </span>
+    <% end %>
+    <% if leading_visual %>
+      <span class="ActionListItem-visual ActionListItem-visual--leading">
+        <%= leading_visual %>
+      </span>
+    <% end %>
+    <%= render(Primer::ConditionalWrapper.new(condition: description?, tag: :span, **@description_wrapper_arguments)) do %>
+      <%= render(Primer::BaseComponent.new(tag: :span, **@label_arguments)) do %>
+        <%= @label %>
+      <% end %>
+      <% if description? %>
+        <span class="ActionListItem-description">
+          <%= description %>
+        </span>
+      <% end %>
+    <% end %>
+    <% if trailing_visual %>
+      <span class="ActionListItem-visual ActionListItem-visual--trailing">
+        <%= trailing_visual %>
+      </span>
+    <% end %>
+    <% if private_trailing_action_icon %>
+      <span class="ActionListItem-visual ActionListItem-action--trailing">
+        <%= private_trailing_action_icon %>
+      </span>
+    <% end %>
+  <% end %>
+  <%= tooltip %>
+  <% if trailing_action %>
+    <%= trailing_action %>
+  <% end %>
+  <%= private_content %>
+<% end %>

@@ -9,19 +9,19 @@ module Primer
     class Image < Primer::Component
       # @example Default
       #
-      #   <%= render(Primer::Alpha::Image.new(src: "https://github.com/github.png", alt: "GitHub")) %>
+      #   <%= render(Primer::Alpha::Image.new(src: Primer::ExampleImage::BASE64_SRC, alt: "GitHub")) %>
       #
       # @example Helper
       #
-      #   <%= primer_image(src: "https://github.com/github.png", alt: "GitHub") %>
+      #   <%= primer_image(src: Primer::ExampleImage::BASE64_SRC, alt: "GitHub") %>
       #
       # @example Lazy loading
       #
-      #   <%= render(Primer::Alpha::Image.new(src: "https://github.com/github.png", alt: "GitHub", lazy: true)) %>
+      #   <%= render(Primer::Alpha::Image.new(src: Primer::ExampleImage::BASE64_SRC, alt: "GitHub", lazy: true)) %>
       #
       # @example Custom size
       #
-      #   <%= render(Primer::Alpha::Image.new(src: "https://github.com/github.png", alt: "GitHub", height: 100, width: 100)) %>
+      #   <%= render(Primer::Alpha::Image.new(src: Primer::ExampleImage::BASE64_SRC, alt: "GitHub", height: 100, width: 100)) %>
       #
       # @param src [String] The source url of the image.
       # @param alt [String] Specifies an alternate text for the image.

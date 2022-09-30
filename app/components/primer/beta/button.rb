@@ -149,9 +149,11 @@ module Primer
 
         @id = @system_arguments[:id]
 
+        raise ArgumentError, "The `variant:` argument is no longer supported on Primer::Beta::Button. Consider `scheme:` or `size:`." if !Rails.env.production? && @system_arguments[:variant].present?
+        raise ArgumentError, "The `dropdown:` argument is no longer supported on Primer::Beta::Button. Use the `trailing_action` slot instead." if !Rails.env.production? && @system_arguments[:dropdown].present?
+
         @align_content_classes = class_names(
           "Button-content",
-          system_arguments[:classes],
           ALIGN_CONTENT_MAPPINGS[fetch_or_fallback(ALIGN_CONTENT_OPTIONS, align_content, DEFAULT_ALIGN_CONTENT)]
         )
 
@@ -165,6 +167,15 @@ module Primer
       end
 
       private
+
+      def before_render
+        return unless @scheme == :invisible && !trailing_visual && !leading_visual && !trailing_action
+
+        @system_arguments[:classes] = class_names(
+          @system_arguments[:classes],
+          "Button--invisible-noVisuals"
+        )
+      end
 
       def trimmed_content
         return if content.blank?

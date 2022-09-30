@@ -14,7 +14,7 @@ module Primer
       def default(number_of_avatars: 1, tag: :div, align: :left, tooltipped: false, tooltip_label: "This is a tooltip!")
         render(Primer::Beta::AvatarStack.new(tag: tag, align: align, tooltipped: tooltipped, body_arguments: { label: tooltip_label })) do |c|
           Array.new(number_of_avatars || 1) do
-            c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser")
+            c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
           end
         end
       end
@@ -24,18 +24,18 @@ module Primer
       # @label Align right
       def align_right
         render(Primer::Beta::AvatarStack.new(align: :right)) do |c|
-          c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser")
-          c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser")
-          c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
         end
       end
 
       # @label With tooltip
       def with_tooltip
         render(Primer::Beta::AvatarStack.new(tooltipped: true, body_arguments: { label: "This is a tooltip!" })) do |c|
-          c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser")
-          c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser")
-          c.avatar(src: "http://placekitten.com/200/200", alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
         end
       end
       # @!endgroup

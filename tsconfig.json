@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2017",
+    "experimentalDecorators": true,
     "module": "es2020",
     "lib": [
       "es2020",
@@ -15,7 +16,7 @@
     "experimentalDecorators": true, 
     "strict": true,
     "baseUrl": ".",
-    "types": []
+    "types": [],
   },
   "include": [
     "app/components/primer/*.ts"

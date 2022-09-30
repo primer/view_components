@@ -1,5 +1,197 @@
 [
   {
+    "component": "ActionList",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list.rb",
+    "parameters": [
+      {
+        "name": "role",
+        "type": "Boolean",
+        "default": "`:list`",
+        "description": "ARIA role describing the function of the list. listbox and menu are a common values."
+      },
+      {
+        "name": "item_classes",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Additional CSS classes to attach to items."
+      },
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:full`",
+        "description": "One of `:full` or `:inset`.. `inset` children are offset (vertically and horizontally) from list edges. `full` (default) children are flush (vertically and horizontally) with list edges."
+      },
+      {
+        "name": "show_dividers",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Display a divider above each item in the list when it does not follow a header or divider."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "ActionList::Divider",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
+    "parameters": [
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:subtle`",
+        "description": "Display a background color if scheme is `filled`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "ActionList::Heading",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/heading.rb",
+    "parameters": [
+      {
+        "name": "list_id",
+        "type": "String",
+        "default": "N/A",
+        "description": "The unique identifier of the sub list the heading belongs to. Used internally."
+      },
+      {
+        "name": "title",
+        "type": "String",
+        "default": "N/A",
+        "description": "Sub list title."
+      },
+      {
+        "name": "subtitle",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Optional sub list description."
+      },
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:subtle`",
+        "description": "Display a background color if scheme is `filled`."
+      },
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:h3`",
+        "description": "Semantic tag for the heading."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "ActionList::Item",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/item.rb",
+    "parameters": [
+      {
+        "name": "list",
+        "type": "Primer::Alpha::ActionList",
+        "default": "N/A",
+        "description": "The list that contains this item. Used internally."
+      },
+      {
+        "name": "parent",
+        "type": "Primer::Alpha::ActionList::Item",
+        "default": "`nil`",
+        "description": "This item's parent item. `nil` if this item is at the root. Used internally."
+      },
+      {
+        "name": "label",
+        "type": "String",
+        "default": "N/A",
+        "description": "Item label."
+      },
+      {
+        "name": "label_classes",
+        "type": "String",
+        "default": "`nil`",
+        "description": "CSS classes that will be added to the label."
+      },
+      {
+        "name": "truncate_label",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Truncate label with ellipsis."
+      },
+      {
+        "name": "href",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Link URL."
+      },
+      {
+        "name": "role",
+        "type": "String",
+        "default": "`:listitem`",
+        "description": "ARIA role describing the function of the item."
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:medium`",
+        "description": "Controls block sizing of the item."
+      },
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:default`",
+        "description": "Controls color/style based on behavior."
+      },
+      {
+        "name": "disabled",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Disabled items are not clickable and visually dim."
+      },
+      {
+        "name": "description_scheme",
+        "type": "Symbol",
+        "default": "`:block`",
+        "description": "Display description inline with label, or block on the next line."
+      },
+      {
+        "name": "active",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Sets an active state on navigational items."
+      },
+      {
+        "name": "on_click",
+        "type": "String",
+        "default": "`nil`",
+        "description": "JavaScript to execute when the item is clicked."
+      },
+      {
+        "name": "id",
+        "type": "String",
+        "default": "`SecureRandom.hex`",
+        "description": "Used internally."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "ButtonMarketing",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/button_marketing.rb",
     "parameters": [
@@ -164,6 +356,78 @@
         "type": "Symbol",
         "default": "`:default`",
         "description": "The amount of space between the main section and the sidebar. One of `:condensed`, `:default`, `:none`, or `:spacious`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "NavList",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list.rb",
+    "parameters": [
+      {
+        "name": "selected_item_id",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The ID of the currently selected item. The default is `nil`, meaning no item is selected."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "NavList::Item",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/item.rb",
+    "parameters": [
+      {
+        "name": "selected_item_id",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The ID of the currently selected list item. Used internally."
+      },
+      {
+        "name": "selected_by_ids",
+        "type": "Array<Symbol>",
+        "default": "`[]`",
+        "description": "The list of IDs that select this item. In other words, if the `selected_item_id` attribute on the parent `NavList` is set to one of these IDs, the item will appear selected."
+      },
+      {
+        "name": "expanded",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether this item shows (expands) or hides (collapses) its list of sub items."
+      },
+      {
+        "name": "sub_item",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not this item is nested under a parent item. Used internally."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "NavList::Section",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/section.rb",
+    "parameters": [
+      {
+        "name": "selected_item_id",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The ID of the currently selected item. Used internally."
       },
       {
         "name": "system_arguments",
@@ -624,7 +888,7 @@
     ]
   },
   {
-    "component": "AutoCompleteItem",
+    "component": "AutoComplete::Item",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/item.rb",
     "parameters": [
       {
@@ -822,7 +1086,7 @@
     ]
   },
   {
-    "component": "BorderBoxHeader",
+    "component": "BorderBox::Header",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/border_box/header.rb",
     "parameters": [
       {
@@ -1698,7 +1962,7 @@
     ]
   },
   {
-    "component": "NavigationTab",
+    "component": "Navigation::Tab",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/navigation/tab_component.rb",
     "parameters": [
       {
