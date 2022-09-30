@@ -31,8 +31,11 @@
     "build:docs": "npm run --prefix ./docs/ build",
     "build:docs:preview": "cd docs && npx gatsby build",
     "prepare": "rm -rf docs/static && mkdir -p docs/static && npm run build:js && npm run build:css && cp app/assets/**/primer_view_components.* docs/static/",
-    "lint": "eslint 'app/components/**/*.ts'",
-    "lint:fix": "eslint 'app/components/**/*.ts' --fix",
+    "lint": "npm run lint:stylelint && npm run lint:eslint",
+    "lint:stylelint": "stylelint 'app/components/**/*.pcss'",
+    "lint:stylelint:fix": "stylelint 'app/components/**/*.pcss' --fix",
+    "lint:eslint": "eslint 'app/components/**/*.ts'",
+    "lint:eslint:fix": "eslint 'app/components/**/*.ts' --fix",
     "changeset:version": "changeset version && script/version",
     "build:js": "tsc && rollup -c",
     "build:css": "postcss -o app/assets/styles/primer_view_components.css app/components/primer/primer.pcss"

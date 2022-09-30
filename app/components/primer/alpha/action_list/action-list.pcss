@@ -95,6 +95,7 @@
 
 .ActionListItem {
   /* target contents of li if sub-item (li wraps item label + nested ul) */
+
   /* collapse styles here */
   &.ActionListItem--hasSubItem {
     /* first child */
@@ -137,7 +138,7 @@
         cursor: pointer;
         background-color: var(--color-action-list-item-default-hover-bg);
 
-        &:not(.ActionListItem--navActive):not(:focus-visible) {
+        &:not(.ActionListItem--navActive, :focus-visible) {
           /* Support for "Windows high contrast mode" */
           outline: solid var(--primer-borderWidth-thin, 1px) transparent;
           outline-offset: calc(-1 * var(--primer-borderWidth-thin, 1px));
@@ -162,7 +163,7 @@
 
       @keyframes ActionListItem-active-bg {
         50% {
-          box-shadow: inset 0 2px 12px 6px rgba(var(--color-canvas-default), 0.4);
+          box-shadow: inset 0 2px 12px 6px rgb(var(--color-canvas-default) 0.4);
           transform: scale(1);
         }
 
