@@ -5,6 +5,7 @@
     "selector-class-pattern": null,
     "keyframes-name-pattern": null,
     "no-descending-specificity": null,
+    "declaration-block-no-redundant-longhand-properties": null,
     "at-rule-no-unknown": [
       true,
       {
