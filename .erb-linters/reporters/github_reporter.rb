@@ -8,8 +8,6 @@ module ERBLint
     class GithubReporter < CompactReporter
       def preview; end
 
-      # ::error file=/workspaces/view_components/app/components/primer/box.rb,line=1,col=1::Style/FrozenStringLiteralComment: Missing frozen string literal comment.
-
       def show
         processed_files.each do |filename, offenses|
           offenses.each do |offense|
