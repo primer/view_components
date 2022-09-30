@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - uses: xt0rted/markdownlint-problem-matcher@v1
     - name: Set up Node.js
       uses: actions/setup-node@master
       with:
@@ -60,7 +61,7 @@ jobs:
         gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
-        bundle exec rubocop ${{ steps.changed-files.outputs.all_changed_files }}
+        bundle exec rubocop ${{ steps.changed-files.outputs.all_changed_files }} --format github
 
   erblint:
     runs-on: ubuntu-latest
@@ -86,7 +87,7 @@ jobs:
         gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
-        bundle exec erblint ${{ steps.changed-files.outputs.all_changed_files }}
+        bundle exec erblint ${{ steps.changed-files.outputs.all_changed_files }} --format github
 
   eslint:
     runs-on: ubuntu-latest
