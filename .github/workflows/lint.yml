@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - uses: xt0rted/markdownlint-problem-matcher@v1
     - name: Set up Node.js
       uses: actions/setup-node@master
       with:
@@ -17,7 +18,7 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: node_modules
-        key: node-modules-main-${{ hashFiles('yarn.lock') }}
+        key: node-modules-main-${{ hashFiles('package-lock.json') }}
     - name: Get specific changed files
       id: changed-files
       uses: tj-actions/changed-files@v29.0.3
@@ -30,8 +31,8 @@ jobs:
     - name: Lint with Markdownlint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
-        yarn
-        yarn markdownlint ${{ steps.changed-files.outputs.all_changed_files }}
+        npm i
+        npx markdownlint ${{ steps.changed-files.outputs.all_changed_files }}
 
   rubocop:
     runs-on: ubuntu-latest
@@ -60,7 +61,7 @@ jobs:
         gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
-        bundle exec rubocop ${{ steps.changed-files.outputs.all_changed_files }}
+        bundle exec rubocop ${{ steps.changed-files.outputs.all_changed_files }} --format github
 
   erblint:
     runs-on: ubuntu-latest
@@ -86,7 +87,7 @@ jobs:
         gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
-        bundle exec erblint ${{ steps.changed-files.outputs.all_changed_files }}
+        bundle exec erblint ${{ steps.changed-files.outputs.all_changed_files }} --format github
 
   eslint:
     runs-on: ubuntu-latest
@@ -99,7 +100,7 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: node_modules
-        key: node-modules-main-${{ hashFiles('yarn.lock') }}
+        key: node-modules-main-${{ hashFiles('package-lock.json') }}
     - name: Get changed files
       id: changed-files
       uses: tj-actions/changed-files@v29.0.3
@@ -109,5 +110,5 @@ jobs:
     - name: Lint with ESLint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
-        yarn
-        yarn eslint --quiet ${{ steps.changed-files.outputs.all_changed_files }}
+        npm i
+        npx eslint --quiet ${{ steps.changed-files.outputs.all_changed_files }}

@@ -154,7 +154,6 @@ module Primer
 
         @align_content_classes = class_names(
           "Button-content",
-          system_arguments[:classes],
           ALIGN_CONTENT_MAPPINGS[fetch_or_fallback(ALIGN_CONTENT_OPTIONS, align_content, DEFAULT_ALIGN_CONTENT)]
         )
 
@@ -168,6 +167,15 @@ module Primer
       end
 
       private
+
+      def before_render
+        return unless @scheme == :invisible && !trailing_visual && !leading_visual && !trailing_action
+
+        @system_arguments[:classes] = class_names(
+          @system_arguments[:classes],
+          "Button--invisible-noVisuals"
+        )
+      end
 
       def trimmed_content
         return if content.blank?

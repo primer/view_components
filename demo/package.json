@@ -4,16 +4,12 @@
   "version": "0.1.0",
   "dependencies": {
     "@primer/css": "^20.4.6",
-    "@primer/primitives": "^6.0.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "turbolinks": "^5.2.0",
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "postinstall": "cp node_modules/@primer/css/dist/primer.css app/assets/stylesheets"
-  },
-  "engines": {
-    "yarn": "1.22.x"
+    "postinstall": "cp node_modules/@primer/css/dist/primer.css app/assets/stylesheets && cp node_modules/@primer/css/dist/primitives.css app/assets/stylesheets"
   }
 }
