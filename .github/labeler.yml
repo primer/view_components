@@ -1,0 +1,9 @@
+css:
+- app/components/**/*.pcss
+
+ruby:
+- app/components/**/*.rb
+- app/components/**/*.erb
+
+javascript:
+- app/components/**/*.ts
