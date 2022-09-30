@@ -62,10 +62,7 @@
     padding-left: calc(var(--primer-control-medium-paddingInline-condensed, 8px) - var(--primer-borderWidth-thin, 1px));
     padding-right: calc(var(--primer-control-medium-paddingInline-condensed, 8px) - var(--primer-borderWidth-thin, 1px));
     font-weight: var(--base-text-weight-normal, 400);
-
-    &::before {
-      @mixin minTouchTarget 48px;
-    }
+    transition: none;
 
     &:focus-visible {
       outline-offset: calc(var(--primer-control-xsmall-paddingInline-condensed, 4px) - var(--primer-borderWidth-thin, 1px) * 2);
@@ -75,6 +72,10 @@
 
   & .Button--iconOnly {
     width: calc(var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) - var(--primer-borderWidth-thin, 1px) * 2);
+  }
+
+  & .Button--invisible.Button--invisible-noVisuals .Button-label {
+    color: var(--color-btn-text);
   }
 }
 
