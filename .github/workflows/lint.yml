@@ -87,7 +87,7 @@ jobs:
         gem install bundler:2.2.9
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
-        bundle exec erblint ${{ steps.changed-files.outputs.all_changed_files }}
+        bundle exec erblint ${{ steps.changed-files.outputs.all_changed_files }} --format github
 
   eslint:
     runs-on: ubuntu-latest

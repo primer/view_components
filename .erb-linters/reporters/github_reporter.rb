@@ -1,0 +1,38 @@
+# frozen_string_literal: true
+
+require "erb_lint/reporters/compact_reporter"
+
+module ERBLint
+  module Reporters
+    # :nodoc:
+    class GithubReporter < CompactReporter
+      def preview; end
+
+      # ::error file=/workspaces/view_components/app/components/primer/box.rb,line=1,col=1::Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+
+      def show
+        processed_files.each do |filename, offenses|
+          offenses.each do |offense|
+            puts format_offense(filename, offense)
+          end
+        end
+      end
+
+      private
+
+      def format_offense(filename, offense)
+        [
+          "::error ",
+          [
+            "file=#{filename}",
+            "line=#{offense.line_number}",
+            "col=#{offense.column}"
+          ].join(","),
+          "::",
+          "#{offense.linter.class.simple_name}: ",
+          offense.message.to_s
+        ].join
+      end
+    end
+  end
+end
