@@ -6,6 +6,7 @@
     "keyframes-name-pattern": null,
     "no-descending-specificity": null,
     "declaration-block-no-redundant-longhand-properties": null,
+    "color-function-notation": "legacy",
     "at-rule-no-unknown": [
       true,
       {
