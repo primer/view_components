@@ -1,0 +1,7 @@
+<%= render(Primer::Alpha::SplitButton.new()) do |c| %>
+  <%= c.button(id: "id") do |c| %>
+    <% c.with_tooltip(text: "Tooltip text") %>
+    Button
+  <% end %>
+  <% c.icon_button(icon: :x, "aria-label": "test") %>
+<% end %>
