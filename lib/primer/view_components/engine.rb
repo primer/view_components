@@ -30,12 +30,13 @@ module Primer
         app.config.assets.precompile += %w[primer_view_components] if app.config.respond_to?(:assets)
       end
 
-      initializer "primer.forms.eager_load_actions" do
+      initializer "primer.eager_load_actions" do
         ActiveSupport.on_load(:after_initialize) do
           if Rails.application.config.eager_load
             Primer::Forms::Base.compile!
             Primer::Forms::Base.descendants.each(&:compile!)
             Primer::Forms::BaseComponent.descendants.each(&:compile!)
+            Primer::Octicon::Cache.preload!
           end
         end
       end

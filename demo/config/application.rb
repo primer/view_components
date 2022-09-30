@@ -25,7 +25,7 @@ module Demo
     config.view_component.default_preview_layout = "component_preview"
     config.view_component.show_previews = true
     config.view_component.preview_controller = "PreviewController"
-    config.view_component.preview_paths << Rails.root.join("../test/previews")
+    config.view_component.preview_paths << Rails.root.join("../previews")
 
     config.autoload_paths << Rails.root.join("../test/forms")
 

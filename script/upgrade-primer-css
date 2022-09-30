@@ -33,7 +33,7 @@ class UpgradePrimerCSSCLI < Thor::Group
   end
 
   def install_command
-    "yarn upgrade @primer/css@#{version}"
+    "npm install @primer/css@#{version}"
   end
 end
 

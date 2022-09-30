@@ -27,6 +27,7 @@
   justify-content: space-between;
   align-items: center;
   gap: var(--primer-control-medium-gap, 8px);
+  min-width: max-content;
 
   /* mobile friendly sizing */
   @media (pointer: course) {
@@ -41,13 +42,11 @@
     transition-duration: var(--primer-duration-fast);
   }
 
-  &:active,
-  &.Button--active {
+  &:active {
     transition: none;
   }
 
   &:disabled,
-  &.Button--disabled,
   &[aria-disabled='true'] {
     cursor: not-allowed;
     box-shadow: none;
@@ -103,7 +102,7 @@ summary.Button {
 .Button-label {
   grid-area: text;
   white-space: nowrap;
-  line-height: var(--primer-text-body-lineHeight-medium, calc(20/14));
+  line-height: var(--primer-text-body-lineHeight-medium, calc(20 / 14));
 }
 
 .Button-leadingVisual {
@@ -123,11 +122,11 @@ summary.Button {
 .Button--small {
   font-size: var(--primer-text-body-size-small, 12px);
   height: var(--primer-control-small-size, 28px);
-  padding: 0 var(--primer-control-small-paddingInline-normal, 12px);
+  padding: 0 var(--primer-control-small-paddingInline-condensed, 8px);
   gap: var(--primer-control-small-gap, 4px);
 
   .Button-label {
-    line-height: var(--primer-text-body-lineHeight-small, calc(20/12));
+    line-height: var(--primer-text-body-lineHeight-small, calc(20 / 12));
   }
 
   .Button-content {
@@ -139,11 +138,11 @@ summary.Button {
 
 .Button--large {
   height: var(--primer-control-large-size, 40px);
-  padding: 0 var(--primer-control-large-paddingInline-normal, 12px);
+  padding: 0 var(--primer-control-large-paddingInline-spacious, 16px);
   gap: var(--primer-control-large-gap, 8px);
 
   .Button-label {
-    line-height: var(--primer-text-body-lineHeight-large, calc(48/32));
+    line-height: var(--primer-text-body-lineHeight-large, calc(48 / 32));
   }
 
   .Button-content {
@@ -167,7 +166,7 @@ summary.Button {
   border-color: var(--color-btn-primary-border);
   box-shadow: var(--color-btn-primary-shadow), var(--color-btn-primary-inset-shadow);
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--color-btn-primary-hover-bg);
     border-color: var(--color-btn-primary-hover-border);
   }
@@ -188,15 +187,13 @@ summary.Button {
     @mixin focusOutlineOnEmphasis;
   }
 
-  &:active,
-  &[aria-pressed='true'],
-  &.Button--pressed {
+  &:active:not(:disabled),
+  &[aria-pressed='true'] {
     background-color: var(--color-btn-primary-selected-bg);
     box-shadow: var(--color-btn-primary-selected-shadow);
   }
 
   &:disabled,
-  &.Button--disabled,
   &[aria-disabled='true'] {
     color: var(--color-btn-primary-disabled-text);
     background-color: var(--color-btn-primary-disabled-bg);
@@ -213,25 +210,22 @@ summary.Button {
   border-color: var(--color-btn-border);
   box-shadow: var(--color-btn-shadow), var(--color-btn-inset-shadow);
 
-  &:hover  {
+  &:hover:not(:disabled) {
     background-color: var(--color-btn-hover-bg);
     border-color: var(--color-btn-hover-border);
   }
 
-  &:active,
-  &.Button--active {
+  &:active:not(:disabled) {
     background-color: var(--color-btn-active-bg);
     border-color: var(--color-btn-active-border);
   }
 
-  &[aria-pressed='true'],
-  &.Button--pressed {
+  &[aria-pressed='true'] {
     background-color: var(--color-btn-selected-bg);
     box-shadow: var(--color-primer-shadow-inset);
   }
 
   &:disabled,
-  &.Button--disabled,
   &[aria-disabled='true'] {
     color: var(--color-primer-fg-disabled);
     background-color: var(--color-btn-bg);
@@ -240,26 +234,19 @@ summary.Button {
   }
 }
 
-/* link color without svg */
 .Button--invisible {
-  color: var(--color-fg-default);
-  fill: var(--color-fg-default);
-  border: none;
+  color: var(--color-btn-text);
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(--color-action-list-item-default-hover-bg);
   }
 
   &[aria-pressed='true'],
-  &:active,
-  &.Button--active,
-  &.Button--pressed {
+  &:active:not(:disabled) {
     background-color: var(--color-action-list-item-default-active-bg);
-    /* box-shadow: var(--color-primer-shadow-inset); */
   }
 
   &:disabled,
-  &.Button--disabled,
   &[aria-disabled='true'] {
     color: var(--color-primer-fg-disabled);
     background-color: var(--color-btn-bg);
@@ -267,16 +254,39 @@ summary.Button {
     fill: var(--color-primer-fg-disabled);
   }
 
-  /* if visual is present, muted label color */
-  .Button-label:not(:only-child) {
-    color: var(--color-btn-text);
+  /* if button has no visuals, use link blue for text */
+  &.Button--invisible-noVisuals .Button-label {
+    color: var(--color-accent-fg);
   }
 
-  /* if trailingAction is present, muted label color */
-  .Button-content:not(:only-child) {
-    .Button-label {
-      color: var(--color-btn-text);
-    }
+  & .Button-visual {
+    color: var(--color-fg-muted);
+  }
+}
+
+.Button--link {
+  color: var(--color-accent-fg);
+  fill: var(--color-accent-fg);
+  display: inline-block;
+  font-size: inherit;
+  border: none;
+  height: unset;
+  padding: 0;
+
+  &:hover:not(:disabled) {
+    text-decoration: underline;
+  }
+
+  &:focus-visible, &:focus {
+    outline-offset: 2px;
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    color: var(--color-primer-fg-disabled);
+    background-color: transparent;
+    border-color: transparent;
+    fill: var(--color-primer-fg-disabled);
   }
 }
 
@@ -288,7 +298,7 @@ summary.Button {
   border-color: var(--color-btn-border);
   box-shadow: var(--color-btn-shadow), var(--color-btn-inset-shadow);
 
-  &:hover {
+  &:hover:not(:disabled) {
     color: var(--color-btn-danger-hover-text);
     fill: var(--color-btn-danger-hover-text);
     background-color: var(--color-btn-danger-hover-bg);
@@ -296,9 +306,8 @@ summary.Button {
     box-shadow: var(--color-btn-danger-hover-shadow), var(--color-btn-danger-hover-inset-shadow);
   }
 
-  &:active,
-  &[aria-pressed='true'],
-  &.Button--pressed {
+  &:active:not(:disabled),
+  &[aria-pressed='true'] {
     color: var(--color-btn-danger-selected-text);
     fill: var(--color-btn-danger-selected-text);
     background-color: var(--color-btn-danger-selected-bg);
@@ -307,7 +316,6 @@ summary.Button {
   }
 
   &:disabled,
-  &.disabled,
   &[aria-disabled='true'] {
     color: var(--color-btn-danger-disabled-text);
     fill: var(--color-btn-danger-disabled-text);

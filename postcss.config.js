@@ -13,7 +13,8 @@ module.exports = {
       stage: 3,
       // https://preset-env.cssdb.org/
       features: {
-        'nesting-rules': true
+        'nesting-rules': true,
+        'has-pseudo-class': true
       }
     }),
     require('cssnano'),

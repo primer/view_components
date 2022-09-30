@@ -1,5 +1,52 @@
 # CHANGELOG
 
+## 0.0.100
+
+### Patch Changes
+
+- [#1428](https://github.com/primer/view_components/pull/1428) [`b7b0c8be`](https://github.com/primer/view_components/commit/b7b0c8be1e2a82327f6dd4b2104a3e4fb3089394) Thanks [@bolonio](https://github.com/bolonio)! - Remove external classes from the the button content `<span>` in `Primer::beta::Button`
+
+* [#1427](https://github.com/primer/view_components/pull/1427) [`2139fa30`](https://github.com/primer/view_components/commit/2139fa30982b49e88a44ab6be72f3428f6e5b0f1) Thanks [@langermank](https://github.com/langermank)! - Beta::Button CSS bug fixes
+
+## 0.0.99
+
+### Patch Changes
+
+- [#1421](https://github.com/primer/view_components/pull/1421) [`c35a5c32`](https://github.com/primer/view_components/commit/c35a5c3226ab39aa62182ee4816e63d9c1d0c598) Thanks [@langermank](https://github.com/langermank)! - Fix Beta::Button visual regressions
+  - Add back link styles
+  - Ensure invisible buttons are blue when no visuals are present
+
+* [#1422](https://github.com/primer/view_components/pull/1422) [`a129a4d1`](https://github.com/primer/view_components/commit/a129a4d1b7d1dfae6d2d623e1603ea6e75533940) Thanks [@camertron](https://github.com/camertron)! - Add SVG and custom content options to NavList's leading visual slot
+
+## 0.0.98
+
+### Patch Changes
+
+- [#1420](https://github.com/primer/view_components/pull/1420) [`d6623553`](https://github.com/primer/view_components/commit/d662355359b1b5d8801cc6a86a1376cb1d2da63b) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - un-deprecate Primer::ButtonComponent for now, due to inconsistencies and issues in migrating to Primer::Beta::Button
+
+* [`1d4b6851`](https://github.com/primer/view_components/commit/1d4b685174ca82cb0f67e65cc095810841b0b390) Thanks [@jonrohan](https://github.com/jonrohan)! - Move previews into root and include in gemspec. Thanks [@steves](https://github.com/steves)! [#1404](https://github.com/primer/view_components/pull/1404)
+
+- [#1416](https://github.com/primer/view_components/pull/1416) [`f99156fd`](https://github.com/primer/view_components/commit/f99156fddcab45467a4da773387efa4ea13401c3) Thanks [@jonrohan](https://github.com/jonrohan)! - Don't use outside images in docs examples
+
+## 0.0.97
+
+### Patch Changes
+
+- [#1268](https://github.com/primer/view_components/pull/1268) [`f26afd94`](https://github.com/primer/view_components/commit/f26afd9427c82d38c0c1f7d866dade959cb78364) Thanks [@camertron](https://github.com/camertron)! - Add the ActionList and NavList components
+
+* [#1412](https://github.com/primer/view_components/pull/1412) [`cf548425`](https://github.com/primer/view_components/commit/cf54842572f9e040c1fb51c2b9c0c5e3a2902235) Thanks [@owenniblock](https://github.com/owenniblock)! - Change header tag to div on `Primer::Alpha::Dialog`
+
+## 0.0.96
+
+### Patch Changes
+
+- [#1400](https://github.com/primer/view_components/pull/1400) [`ae48b9fe`](https://github.com/primer/view_components/commit/ae48b9fe9d7ef3a908ea9f84f5fd25cf9bf40e50) Thanks [@langermank](https://github.com/langermank)! - - Add Lookbook previews for Beta Button and IconButton
+  - Tiny CSS bug fix
+
+* [#1406](https://github.com/primer/view_components/pull/1406) [`1fec4bf5`](https://github.com/primer/view_components/commit/1fec4bf5097d3f002208840694d05dd4401c7a83) Thanks [@jonrohan](https://github.com/jonrohan)! - Raise on usage of deprecated arguments in Primer::Beta::Button
+
+- [#1402](https://github.com/primer/view_components/pull/1402) [`7e50f6d9`](https://github.com/primer/view_components/commit/7e50f6d93338da50e2aa670c7c9f1a23fb7dfecc) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Move Octicon cache preload to initializer.
+
 ## 0.0.95
 
 ### Patch Changes
