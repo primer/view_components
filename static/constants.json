@@ -278,6 +278,107 @@
   },
   "Primer::Alpha::SegmentedControl::Item": {
   },
+  "Primer::Alpha::Overlay": {
+    "ANCHOR_ALIGN_MAPPINGS": {
+      "start": "Overlay--anchorAlign-start",
+      "center": "Overlay--anchorAlign-center",
+      "end": "Overlay--anchorAlign-end"
+    },
+    "ANCHOR_ALIGN_OPTIONS": [
+      "start",
+      "center",
+      "end"
+    ],
+    "ANCHOR_SIDE_MAPPINGS": {
+      "inside_top": "Overlay--anchorSide-insideTop",
+      "inside_bottom": "Overlay--anchorSide-insideBottom",
+      "inside_left": "Overlay--anchorSide-insideLeft",
+      "inside_right": "Overlay--anchorSide-insideRight",
+      "inside_center": "Overlay--anchorSide-insideCenter",
+      "outside_top": "Overlay--anchorSide-outsideTop",
+      "outside_bottom": "Overlay--anchorSide-outsideBottom",
+      "outside_left": "Overlay--anchorSide-outsideLeft",
+      "outside_right": "Overlay--anchorSide-outsideRight"
+    },
+    "ANCHOR_SIDE_OPTIONS": [
+      "inside_top",
+      "inside_bottom",
+      "inside_left",
+      "inside_right",
+      "inside_center",
+      "outside_top",
+      "outside_bottom",
+      "outside_left",
+      "outside_right"
+    ],
+    "Body": "Primer::Alpha::Overlay::Body",
+    "DEFAULT_ANCHOR_ALIGN": "start",
+    "DEFAULT_ANCHOR_SIDE": "outside_bottom",
+    "DEFAULT_PLACEMENT": "anchored",
+    "DEFAULT_POPUP": "auto",
+    "DEFAULT_SIZE": "auto",
+    "Footer": "Primer::Alpha::Overlay::Footer",
+    "Header": "Primer::Alpha::Overlay::Header",
+    "PLACEMENT_MAPPINGS": {
+      "anchored": "Overlay--placement-anchored",
+      "center": "Overlay--placement-center",
+      "full": "Overlay--placement-full",
+      "top": "Overlay--placement-top",
+      "bottom": "Overlay--placement-bottom",
+      "start": "Overlay--placement-start",
+      "end": "Overlay--placement-end"
+    },
+    "PLACEMENT_OPTIONS": [
+      null,
+      "anchored",
+      "center",
+      "full",
+      "top",
+      "bottom",
+      "start",
+      "end"
+    ],
+    "POPUP_OPTIONS": [
+      "auto",
+      "hint",
+      "manual"
+    ],
+    "ROLE_OPTIONS": [
+      "dialog",
+      "menu"
+    ],
+    "SIZE_MAPPINGS": {
+      "auto": "Overlay--size-auto",
+      "small": "Overlay--size-small",
+      "medium": "Overlay--size-medium",
+      "medium_portrait": "Overlay--size-medium-portrait",
+      "large": "Overlay--size-large",
+      "xlarge": "Overlay--size-xlarge"
+    },
+    "SIZE_OPTIONS": [
+      "auto",
+      "small",
+      "medium",
+      "medium_portrait",
+      "large",
+      "xlarge"
+    ]
+  },
+  "Primer::Alpha::Overlay::Body": {
+  },
+  "Primer::Alpha::Overlay::Footer": {
+  },
+  "Primer::Alpha::Overlay::Header": {
+    "DEFAULT_SIZE": "medium",
+    "SIZE_MAPPINGS": {
+      "medium": null,
+      "large": "Overlay-header--large"
+    },
+    "SIZE_OPTIONS": [
+      "medium",
+      "large"
+    ]
+  },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",
     "TAG_DEFAULT": "nav",
