@@ -63,6 +63,16 @@ module Primer
         id = page.find_css(".ActionList-sectionDivider h3")[0].attributes["id"].value
         assert_selector("ul.ActionListWrap[aria-labelledby='#{id}']")
       end
+
+      def test_allows_content_arguments
+        render_inline(Primer::Alpha::ActionList.new(aria: { label: "List" })) do |c|
+          c.with_item(label: "Item 1", href: "/item1")
+          c.with_item(label: "Item 2", href: "/item2", content_arguments: { data: { foo: "bar" } })
+          c.with_item(label: "Item 3", href: "/item3")
+        end
+
+        assert_selector(".ActionListItem a[data-foo=bar]")
+      end
     end
   end
 end
