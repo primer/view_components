@@ -77,11 +77,6 @@ module Primer
             list: self
           )
         end
-
-        # @private
-        def will_add_item(item)
-          item.parent.expand! if item.active? && item.parent
-        end
       end
     end
   end
