@@ -14,9 +14,11 @@ Capybara.register_driver(:cuprite) do |app|
       # Allow running Chrome in a headful mode by setting HEADLESS env
       # var to a falsey value
       headless: !ENV["HEADLESS"].in?(%w[n 0 no false])
-    }
+    },
+    window_size: [1012, 800]
   )
 end
 
 # Configure Capybara to use :cuprite driver by default
 Capybara.default_driver = Capybara.javascript_driver = :cuprite
+Capybara.save_path = "./test/snapshots"

@@ -31,7 +31,13 @@ class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
       component_previews.each do |preview|
         visit("/rails/view_components/#{component_uri}/#{preview}")
         begin
+          if component_uri.starts_with?("primer/")
+            page.driver.zoom_factor = 1
+            page.save_screenshot("#{component_uri}/#{preview}.png", selector: "#component-preview")
+          end
           assert_accessible(page)
+        rescue Ferrum::BrowserError
+          next
         rescue RuntimeError => e
           # :nocov:
           puts "=========================================================================="

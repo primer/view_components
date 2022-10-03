@@ -123,3 +123,10 @@ jobs:
         bundle update actionview activemodel activesupport railties actioncable
         bundle exec rake docs:preview
         bundle exec rake test:system
+    - name: Commit & Push Docs Data
+      run: |
+        git config --local user.email "actions@github.com"
+        git config --local user.name "Actions Auto Build"
+        git add -f test/snapshots/
+        git commit -m "building component snapshots" || true
+        git push
