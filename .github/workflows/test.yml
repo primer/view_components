@@ -12,6 +12,9 @@ permissions:
 
 jobs:
   snapshots:
+    concurrency:
+      group: test-snapshot-${{ github.head_ref || github.run_id }}
+      cancel-in-progress: true
     name: Snapshots
     # Don't run on main
     if: ${{ github.event_name == 'pull_request' }}
