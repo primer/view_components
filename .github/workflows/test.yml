@@ -36,13 +36,14 @@ jobs:
         bundle config path vendor/bundle
         bundle update actionview activemodel activesupport railties actioncable
         bundle exec rake test:snapshots
-    - uses: stefanzweifel/git-auto-commit-action@v4
+    - id: auto-commit
+      uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Generating component snapshots
         file_pattern: test/snapshots/**/*.png
 
     - name: "Changes detected"
-      if: steps.auto-commit-action.outputs.changes_detected == 'true'
+      if: steps.auto-commit.outputs.changes_detected == 'true'
       uses: phulsechinmay/rewritable-pr-comment@v0.2.1
       with:
         message: |
