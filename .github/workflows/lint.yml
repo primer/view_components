@@ -112,3 +112,28 @@ jobs:
       run: |
         npm i
         npx eslint --quiet ${{ steps.changed-files.outputs.all_changed_files }}
+
+  stylelint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Node.js
+      uses: actions/setup-node@master
+      with:
+        node-version: 16
+    - uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: node-modules-main-${{ hashFiles('package-lock.json') }}
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v29.0.3
+      with:
+        files: |
+          app/components/**/*.pcss
+          lib/postcss_mixins/*.pcss
+    - name: Lint with Stylelint
+      if: steps.changed-files.outputs.any_changed == 'true'
+      run: |
+        npm i
+        npx stylelint ${{ steps.changed-files.outputs.all_changed_files }} -f "github"
