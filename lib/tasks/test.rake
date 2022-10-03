@@ -36,6 +36,14 @@ namespace :test do
     t.test_files = FileList["test/system/**/*_test.rb"]
   end
 
+  Rake::TestTask.new(:snapshots) do |t|
+    ENV["TZ"] = "Asia/Taipei"
+
+    t.libs << "test"
+    t.libs << "lib"
+    t.test_files = FileList["test/snapshots_test.rb"]
+  end
+
   Rake::TestTask.new(:bench) do |t|
     t.libs << "test"
     t.test_files = FileList["test/benchmarks/**/bench_*.rb"]
