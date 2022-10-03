@@ -15,7 +15,7 @@ Capybara.register_driver(:cuprite) do |app|
       # var to a falsey value
       headless: !ENV["HEADLESS"].in?(%w[n 0 no false])
     },
-    window_size: [1012, 800]
+    window_size: [768, 800]
   )
 end
 
