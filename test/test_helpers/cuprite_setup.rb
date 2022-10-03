@@ -14,7 +14,7 @@ Capybara.register_driver(:cuprite) do |app|
       # Allow running Chrome in a headful mode by setting HEADLESS env
       # var to a falsey value
       headless: !ENV["HEADLESS"].in?(%w[n 0 no false]),
-      window_size: [768, 800]
+      window_size: [775, 800]
     }
   )
 end
