@@ -15,8 +15,11 @@ class SnapshotsTest < ApplicationSystemTestCase
         visit("/rails/view_components/#{component_uri}/#{preview}")
         begin
           page.driver.zoom_factor = 1
-          page.driver.resize_window(1056, 84)
-          page.save_screenshot("#{component_uri}/#{preview}.png", selector: "#component-preview > *")
+          page.save_screenshot(
+            "#{component_uri}/#{preview}.png",
+            selector: "#component-preview",
+            window_size: [1056, 800]
+          )
         rescue Ferrum::BrowserError
           next
         else
