@@ -31,7 +31,7 @@ module Primer
             component.with_tab(href: "#", selected: i.zero?) do |t|
               t.icon(icon: :star)
               t.text { "Item #{i + 1}" }
-              t.counter(count: i + 1 * 5)
+              t.counter(count: (i + 1) * 5)
             end
           end
         end
