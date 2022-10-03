@@ -40,4 +40,22 @@ jobs:
 
     - name: "Changes detected"
       if: steps.auto-commit-action.outputs.changes_detected == 'true'
-      run: echo "Changes!"
+      uses: phulsechinmay/rewritable-pr-comment@v0.2.1
+      with:
+        message: |
+          ### ⚠️ Visual differences found
+
+          <details><summary>Our visual comparison tests found UI differences.</summary>
+          Please review the differences by using the test artifacts to ensure that the changes were intentional.
+          Artifacts can be downloaded and reviewed locally.
+
+          Download links are available at the bottom of the workflow summary screen.
+          ##### Example:
+          ![artifacts section of workflow run](https://user-images.githubusercontent.com/13340707/181026915-2bda8a90-58e3-40ef-a2f6-c9c4af6e9c4a.png)
+          If the changes are expected, please run `npm run test:visual:update-snapshots` to replace the previous fixtures.
+          </details>
+
+          [Review visual differences](https://github.com/primer/view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&show-viewed-files=false)
+
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        COMMENT_IDENTIFIER: 'visual-comparison-diff'
