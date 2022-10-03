@@ -49,9 +49,7 @@ jobs:
         message: |
           ### ⚠️ Visual differences found
 
-          <details><summary>Our visual comparison tests found UI differences.</summary>
-          Please review the differences by viewing the files changed tab to ensure that the changes were intentional.
-          </details>
+          Our visual comparison tests found UI differences. Please review the differences by viewing the files changed tab to ensure that the changes were intentional.
 
           [Review visual differences](https://github.com/primer/view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&show-viewed-files=false)
 
