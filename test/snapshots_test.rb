@@ -18,8 +18,7 @@ class SnapshotsTest < ApplicationSystemTestCase
           page.driver.resize_window(1056, 800)
           page.save_screenshot(
             "#{component_uri}/#{preview}.png",
-            selector: "#component-preview",
-            screen_size: [1024, 800]
+            selector: "#component-preview"
           )
         rescue Ferrum::BrowserError
           next
