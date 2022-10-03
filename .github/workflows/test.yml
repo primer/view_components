@@ -19,6 +19,8 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
     - uses: actions/setup-node@v2
       with:
         node-version: 16
