@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.0.101
+
+### Patch Changes
+
+- [#1424](https://github.com/primer/view_components/pull/1424) [`d7b277ef`](https://github.com/primer/view_components/commit/d7b277ef00aed062d6d123cb99c014a14ea3c7a1) Thanks [@camertron](https://github.com/camertron)! - Allow specifying an unchecked value for check box inputs
+
+* [#1439](https://github.com/primer/view_components/pull/1439) [`56fae759`](https://github.com/primer/view_components/commit/56fae7599e74b1b734e30c10b7b8b54e4782df5d) Thanks [@camertron](https://github.com/camertron)! - Support system arguments for ActionList item anchor tags
+
+- [#1438](https://github.com/primer/view_components/pull/1438) [`b0329cda`](https://github.com/primer/view_components/commit/b0329cdac8ea5edbe38ddec20107777c394caa0d) Thanks [@langermank](https://github.com/langermank)! - ActionListItem `line-height` bug fix
+
+* [#1435](https://github.com/primer/view_components/pull/1435) [`8312e6ce`](https://github.com/primer/view_components/commit/8312e6cee8f51260e810000ed89624e2f316e25b) Thanks [@camertron](https://github.com/camertron)! - Allow NavList items to be selected by the current page
+
 ## 0.0.100
 
 ### Patch Changes
