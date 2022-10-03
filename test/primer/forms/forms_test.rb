@@ -240,11 +240,16 @@ class Primer::Forms::FormsTest < Minitest::Test
   def test_renders_check_box_group
     render_preview :check_box_group_form
 
-    %w[long_a long_i long_o].each do |sound|
+    %w[long_a long_i].each do |sound|
       assert_selector "fieldset input[type=hidden][value=0][name=#{sound}]", visible: false
       assert_selector "fieldset input[type=checkbox][value=1][name=#{sound}]" do
         assert_selector "label[for=#{sound}]"
       end
+    end
+
+    assert_selector "fieldset input[type=hidden][value=not_long_o][name=long_o]", visible: false
+    assert_selector "fieldset input[type=checkbox][value=long_o][name=long_o]" do
+      assert_selector "label[for=long_o]"
     end
   end
 

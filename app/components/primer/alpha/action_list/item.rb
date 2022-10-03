@@ -112,7 +112,7 @@ module Primer
         # @private
         renders_one :private_content
 
-        attr_reader :list, :active, :disabled, :parent
+        attr_reader :list, :href, :active, :disabled, :parent
 
         # Whether or not this item is active.
         #
@@ -176,8 +176,7 @@ module Primer
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
             SCHEME_MAPPINGS[@scheme],
-            "ActionListItem",
-            "ActionListItem--navActive" => @active
+            "ActionListItem"
           )
 
           @system_arguments[:role] = role
@@ -223,7 +222,8 @@ module Primer
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
             "ActionListItem--withActions" => trailing_action.present?,
-            "ActionListItem--trailingActionHover" => @trailing_action_on_hover
+            "ActionListItem--trailingActionHover" => @trailing_action_on_hover,
+            "ActionListItem--navActive" => active?
           )
 
           return unless leading_visual
