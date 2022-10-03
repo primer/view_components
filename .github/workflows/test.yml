@@ -12,10 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Setup Ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.7.x
+    - uses: ruby/setup-ruby@v1
     - uses: actions/setup-node@v2
       with:
         node-version: 16
