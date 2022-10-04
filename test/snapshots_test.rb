@@ -18,6 +18,7 @@ class SnapshotsTest < ApplicationSystemTestCase
 
         themes = %w[
           light
+          dark
         ]
 
         themes.each do |theme|
