@@ -101,6 +101,7 @@ jobs:
         cache-version: ${{ matrix.rails_version }}-${{ matrix.rails_version }}
     - name: Build and test with Rake
       run: |
+        bundle update
         bundle exec rake test:performance
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
