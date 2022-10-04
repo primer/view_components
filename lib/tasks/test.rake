@@ -45,6 +45,9 @@ namespace :test do
   end
 
   Rake::TestTask.new(:snapshots) do |t|
+    # Clear folder
+    FileUtils.rm_rf("test/snapshots")
+
     ENV["TZ"] = "Asia/Taipei"
 
     t.libs << "test"
