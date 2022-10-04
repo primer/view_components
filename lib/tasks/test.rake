@@ -4,7 +4,7 @@ require "rake/testtask"
 
 namespace :test do
   desc "Run all tests"
-  task all: [:fast, :system]
+  task all: [:fast, :system, :accessibility, :bench]
 
   Rake::TestTask.new(:single) do |t|
     ENV["TZ"] = "Asia/Taipei"
@@ -34,6 +34,14 @@ namespace :test do
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList["test/system/**/*_test.rb"]
+  end
+
+  Rake::TestTask.new(:accessibility) do |t|
+    ENV["TZ"] = "Asia/Taipei"
+
+    t.libs << "test"
+    t.libs << "lib"
+    t.test_files = FileList["test/accessibility_test.rb"]
   end
 
   Rake::TestTask.new(:snapshots) do |t|
