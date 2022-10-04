@@ -80,3 +80,27 @@ jobs:
       run: |
         bundle exec rake docs:preview
         bundle exec rake test:accessibility
+  performance:
+    name: Performance
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - rails_version: "6.1.1"
+            ruby_version: "2.7.x"
+          - rails_version: "7.0.3"
+            ruby_version: "3.0.x"
+          - rails_version: "main"
+            ruby_version: "3.1.x"
+    steps:
+    - uses: actions/checkout@master
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby_version }}
+        bundler-cache: true
+    - name: Build and test with Rake
+      run: |
+        bundle exec rake test:performance
+      env:
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}

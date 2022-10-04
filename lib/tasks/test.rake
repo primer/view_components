@@ -4,7 +4,7 @@ require "rake/testtask"
 
 namespace :test do
   desc "Run all tests"
-  task all: [:fast, :system, :accessibility, :bench]
+  task all: [:fast, :system, :accessibility, :performance]
 
   Rake::TestTask.new(:single) do |t|
     ENV["TZ"] = "Asia/Taipei"
@@ -36,6 +36,14 @@ namespace :test do
     t.test_files = FileList["test/system/**/*_test.rb"]
   end
 
+  Rake::TestTask.new(:performance) do |t|
+    ENV["TZ"] = "Asia/Taipei"
+
+    t.libs << "test"
+    t.test_files = FileList["test/performance/**/*_test.rb", "test/performance/**/bench_*.rb"]
+    t.verbose = true
+  end
+
   Rake::TestTask.new(:accessibility) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
@@ -51,12 +59,6 @@ namespace :test do
     t.libs << "lib"
     t.test_files = FileList["test/snapshots_test.rb"]
   end
-
-  Rake::TestTask.new(:bench) do |t|
-    t.libs << "test"
-    t.test_files = FileList["test/benchmarks/**/bench_*.rb"]
-    t.verbose = true
-  end
 end
 
 task :test do
@@ -66,5 +68,3 @@ task :test do
     Rake::Task["test:all"].invoke
   end
 end
-
-task bench: "test:bench"
