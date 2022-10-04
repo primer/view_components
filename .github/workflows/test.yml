@@ -97,6 +97,8 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby_version }}
+        bundler-cache: true
+        cache-version: ${{ matrix.rails_version }}-${{ matrix.rails_version }}
     - name: Build and test with Rake
       run: |
         bundle exec rake test:performance
