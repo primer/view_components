@@ -33,8 +33,6 @@ jobs:
         cd demo && npm i
     - name: Build and test with Rake
       run: |
-        bundle config path vendor/bundle
-        bundle update actionview activemodel activesupport railties actioncable
         bundle exec rake test:snapshots
     - id: auto-commit
       uses: stefanzweifel/git-auto-commit-action@v4
@@ -74,8 +72,5 @@ jobs:
         cd demo && npm i
     - name: Build and test with Rake
       run: |
-        gem install bundler:2.2.9
-        bundle config path vendor/bundle
-        bundle update actionview activemodel activesupport railties actioncable
         bundle exec rake docs:preview
         bundle exec rake test:accessibility
