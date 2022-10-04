@@ -2,7 +2,7 @@
 
 require "application_system_test_case"
 
-class IntegrationDocExamplesAxeTest < ApplicationSystemTestCase
+class AccessibilityTest < ApplicationSystemTestCase
   # Skip components that should be tested as part of a larger component.
   # Do not add to this list for any other reason!
   IGNORED_PREVIEWS = %w[
