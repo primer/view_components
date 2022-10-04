@@ -50,11 +50,10 @@ class SnapshotsTest < ApplicationSystemTestCase
       # We only want to press enter on buttons
       return unless ["button"].include? element.tag_name
 
+      page.driver.resize_window(1024, 375)
+
       page.driver.browser.keyboard.type(:enter)
-      page.save_screenshot(
-        "#{component_uri}/actions/#{preview}/enter.png",
-        selector: "#component-preview"
-      )
+      page.save_screenshot("#{component_uri}/actions/#{preview}/enter.png")
     rescue Ferrum::BrowserError => e
       puts "Error: #{e.message}"
     end
