@@ -102,6 +102,7 @@ jobs:
     - name: Build and test with Rake
       run: |
         bundle config unset deployment
+        bundle update
         bundle exec rake test:performance
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
