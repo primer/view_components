@@ -29,7 +29,7 @@ class RubocopDeprecatedComponentsTest < CopTest
       Primer::BlankslateComponent.new
     RUBY
 
-    assert_equal 3, cop.offenses.count
+    assert_equal 2, cop.offenses.count
   end
 
   def test_raises_offense_if_calling_legacy_component_with_args
