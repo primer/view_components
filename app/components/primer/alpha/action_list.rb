@@ -79,8 +79,6 @@ module Primer
 
       # @private
       def before_render
-        return if @sub_group
-
         if heading.present?
           @system_arguments[:"aria-labelledby"] = @id
         elsif aria(:label, @system_arguments).blank?
