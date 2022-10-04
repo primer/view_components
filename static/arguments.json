@@ -1584,66 +1584,6 @@
     ]
   },
   {
-    "component": "Flex",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/flex_component.rb",
-    "parameters": [
-      {
-        "name": "justify_content",
-        "type": "Symbol",
-        "default": "`JUSTIFY_CONTENT_DEFAULT`",
-        "description": "Use this param to distribute space between and around flex items along the main axis of the container. One of `nil`, `:center`, `:flex_end`, `:flex_start`, `:space_around`, or `:space_between`."
-      },
-      {
-        "name": "inline",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Defaults to false."
-      },
-      {
-        "name": "flex_wrap",
-        "type": "Boolean",
-        "default": "`FLEX_WRAP_DEFAULT`",
-        "description": "Defaults to nil."
-      },
-      {
-        "name": "align_items",
-        "type": "Symbol",
-        "default": "`ALIGN_ITEMS_DEFAULT`",
-        "description": "Use this param to align items on the cross axis. One of `nil`, `:baseline`, `:center`, `:end`, `:start`, or `:stretch`."
-      },
-      {
-        "name": "direction",
-        "type": "Symbol",
-        "default": "`nil`",
-        "description": "Use this param to define the orientation of the main axis (row or column). By default, flex items will display in a row. One of `nil`, `:column`, `:column_reverse`, `:row`, or `:row_reverse`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "FlexItem",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/flex_item_component.rb",
-    "parameters": [
-      {
-        "name": "flex_auto",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Fills available space and auto-sizes based on the content. Defaults to false"
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
     "component": "HellipButton",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/hellip_button.rb",
     "parameters": [
