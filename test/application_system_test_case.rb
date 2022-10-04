@@ -10,7 +10,7 @@ require "axe/expectation"
 require "test_helpers/cuprite_setup"
 require "test_helpers/retry"
 
-Ferrum::Browser.new(process_timeout: 120, timeout: 120)
+Ferrum::Browser.new(process_timeout: 240, timeout: 240)
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :cuprite, using: :chrome, screen_size: [1400, 1400]
