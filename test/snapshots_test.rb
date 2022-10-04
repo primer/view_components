@@ -18,7 +18,8 @@ class SnapshotsTest < ApplicationSystemTestCase
 
         puts "Saving #{component_uri}##{preview} snapshots."
 
-        save_default(component_uri, preview)
+        save_themes(component_uri, preview)
+        page.driver.browser.refresh
         save_actions(component_uri, preview)
       end
     end
@@ -26,11 +27,18 @@ class SnapshotsTest < ApplicationSystemTestCase
 
   private
 
-  def save_default(component_uri, preview)
-    page.save_screenshot(
-      "#{component_uri}/#{preview}.png",
-      selector: "#component-preview"
-    )
+  def save_themes(component_uri, preview)
+    themes = ["light", "dark"]
+
+    page.driver.browser.execute("document.querySelector(\"html\").setAttribute(\"data-color-mode\", \"light\")")
+
+    themes.each do |theme|
+      page.driver.browser.execute("document.querySelector(\"html\").setAttribute(\"data-light-theme\", \"#{theme}\")")
+      page.save_screenshot(
+        "#{component_uri}/#{preview}/themes/#{theme}.png",
+        selector: "#component-preview"
+      )
+    end
   end
 
   def save_actions(component_uri, preview)
@@ -43,7 +51,7 @@ class SnapshotsTest < ApplicationSystemTestCase
 
     begin
       page.save_screenshot(
-        "#{component_uri}/actions/#{preview}/focus.png",
+        "#{component_uri}/#{preview}/actions/focus.png",
         selector: "#component-preview"
       )
 
@@ -53,7 +61,7 @@ class SnapshotsTest < ApplicationSystemTestCase
       page.driver.resize_window(1024, 375)
 
       page.driver.browser.keyboard.type(:enter)
-      page.save_screenshot("#{component_uri}/actions/#{preview}/enter.png")
+      page.save_screenshot("#{component_uri}/#{preview}/actions/enter.png")
     rescue Ferrum::BrowserError => e
       puts "Error: #{e.message}"
     end
