@@ -53,3 +53,24 @@ jobs:
           [Review visual differences](https://github.com/primer/view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&show-viewed-files=false)
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         COMMENT_IDENTIFIER: 'visual-comparison-diff'
+  accessibility:
+    name: Accessibility
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 16
+    - run: |
+        npm i
+        cd demo && npm i
+    - name: Build and test with Rake
+      run: |
+        gem install bundler:2.2.9
+        bundle config path vendor/bundle
+        bundle update actionview activemodel activesupport railties actioncable
+        bundle exec rake docs:preview
+        bundle exec rake test:accessibility
