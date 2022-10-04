@@ -107,6 +107,12 @@ module Primer
 
         assert_equal "Items can only be nested 2 levels deep", error.message
       end
+
+      def test_show_more_item
+        render_preview(:show_more_item)
+
+        assert_selector("#ActionList--showMoreItem", visible: false, text: "Show more")
+      end
     end
   end
 end
