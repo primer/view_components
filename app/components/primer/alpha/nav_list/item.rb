@@ -73,7 +73,7 @@ module Primer
 
           super
 
-          raise "Cannot render a trailing visual for an item with subitems" if items.present? && trailing_visual.present?
+          raise "Cannot render a trailing action for an item with subitems" if items.present? && trailing_action.present?
 
           return if items.blank?
 
