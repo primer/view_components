@@ -98,11 +98,10 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby_version }}
         bundler-cache: true
-        cache-version: ${{ matrix.rails_version }}-${{ matrix.rails_version }}
+        cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
     - name: Build and test with Rake
       run: |
         bundle config unset deployment
-        bundle update
         bundle exec rake test:performance
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
