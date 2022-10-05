@@ -43,7 +43,7 @@ module Primer
       #   <%= render(Primer::Beta::Flash.new) do |component| %>
       #     This is a flash message with actions!
       #     <% component.with_action do %>
-      #       <%= render(Primer::ButtonComponent.new(size: :small)) { "Take action" } %>
+      #       <%= render(Primer::Beta::Button.new(size: :small)) { "Take action" } %>
       #     <% end %>
       #   <% end %>
       #

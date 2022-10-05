@@ -99,8 +99,8 @@ module Primer
       #         <p>Some content</p>
       #       <% end %>
       #       <% d.footer do %>
-      #         <%= render(Primer::ButtonComponent.new(data: { "close-dialog-id": "my-dialog" })) { "Cancel" } %>
-      #         <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Submit" } %>
+      #         <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": "my-dialog" })) { "Cancel" } %>
+      #         <%= render(Primer::Beta::Button.new(scheme: :primary)) { "Submit" } %>
       #       <% end %>
       #     <% end %>
       # @param id [String] The id of the dialog.

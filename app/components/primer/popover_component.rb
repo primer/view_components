@@ -95,7 +95,7 @@ module Primer
     #     <% end %>
     #     <% component.with_body(caret: :left) do %>
     #       <p>This is the Popover body.</p>
-    #       <%= render Primer::ButtonComponent.new(type: :submit) do %>
+    #       <%= render Primer::Beta::Button.new(type: :submit) do %>
     #         Got it!
     #       <% end %>
     #     <% end %>

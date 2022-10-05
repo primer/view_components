@@ -7,12 +7,12 @@ module Primer
     #
     # When using a tooltip, follow the provided guidelines to avoid accessibility issues:
     # - Tooltips should contain only **non-essential text**. Tooltips can easily be missed and are not accessible on touch devices so never use tooltips to convey critical information.
-    # - `Tooltip` should be rendered through the API of <%= link_to_component(Primer::ButtonComponent)%>, <%= link_to_component(Primer::LinkComponent)%>, or <%= link_to_component(Primer::IconButton)%>. Avoid using `Tooltip` a standalone component unless absolutely necessary (and **only** on interactive elements).
+    # - `Tooltip` should be rendered through the API of <%= link_to_component(Primer::Beta::Button)%>, <%= link_to_component(Primer::LinkComponent)%>, or <%= link_to_component(Primer::IconButton)%>. Avoid using `Tooltip` a standalone component unless absolutely necessary (and **only** on interactive elements).
     # @accessibility
     #   - Tooltip text must be brief and concise whether it is a label or a description.
     #   - Tooltip can only hold string content.
     #   - **Never set tooltips on static, non-interactive elements** like `span` or `div`. Tooltips should only be used on interactive elements like buttons or links to avoid excluding keyboard-only users
-    #   and screen reader users. Use of tooltip through <%= link_to_component(Primer::ButtonComponent) %>, <%= link_to_component(Primer::LinkComponent) %>, or <%= link_to_component(Primer::IconButton) %> will guarantee this.
+    #   and screen reader users. Use of tooltip through <%= link_to_component(Primer::Beta::Button) %>, <%= link_to_component(Primer::LinkComponent) %>, or <%= link_to_component(Primer::IconButton) %> will guarantee this.
     #   - If you must use `Tooltip` as a standalone component, place it adjacent after the trigger element in the DOM. This allows screen reader users to navigate to and copy the tooltip
     #   content.
     #   ### Which type should I set?
@@ -33,7 +33,7 @@ module Primer
       #     In this example, the button has a visible label text, "Save". `type: :description` is set because the tooltip content is supplementary.
       #     A screen reader user who encounters this button will hear the accessible name, "Save" followed by the accessible description, "This will immediately impact all organization members".
       #   @code
-      #     <%= render(Primer::ButtonComponent.new(id: "save-button")) do |c| %>
+      #     <%= render(Primer::Beta::Button.new(id: "save-button")) do |c| %>
       #       <% c.with_tooltip(text: "This will immediately impact all organization members", type: :description, direction: :ne) %>
       #       Save
       #     <% end %>
@@ -55,35 +55,35 @@ module Primer
       #   @description
       #     Set direction of tooltip with `direction`. The tooltip is responsive and will automatically adjust direction to avoid cutting off.
       #   @code
-      #     <%= render(Primer::ButtonComponent.new(id: "North", m: 2)) do |c| %>
+      #     <%= render(Primer::Beta::Button.new(id: "North", m: 2)) do |c| %>
       #       <% c.with_tooltip(text: "This is a North-facing tooltip, and is responsive.", type: :description, direction: :n) %>
       #       North
       #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "South", m: 2)) do |c| %>
+      #     <%= render(Primer::Beta::Button.new(id: "South", m: 2)) do |c| %>
       #       <% c.with_tooltip(text: "This is a South-facing tooltip, and is responsive.", type: :description, direction: :s) %>
       #       South
       #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "East", m: 2)) do |c| %>
+      #     <%= render(Primer::Beta::Button.new(id: "East", m: 2)) do |c| %>
       #       <% c.with_tooltip(text: "This is a East-facing tooltip, and is responsive.", type: :description, direction: :e) %>
       #       East
       #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "West", m: 2)) do |c| %>
+      #     <%= render(Primer::Beta::Button.new(id: "West", m: 2)) do |c| %>
       #       <% c.with_tooltip(text: "This is a West-facing tooltip, and is responsive.", type: :description, direction: :w) %>
       #       West
       #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Northwest", m: 2)) do |c| %>
+      #     <%= render(Primer::Beta::Button.new(id: "Northwest", m: 2)) do |c| %>
       #       <% c.with_tooltip(text: "This is a Northwest-facing tooltip, and is responsive.", type: :description, direction: :nw) %>
       #       Northwest
       #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Southwest", m: 2)) do |c| %>
+      #     <%= render(Primer::Beta::Button.new(id: "Southwest", m: 2)) do |c| %>
       #       <% c.with_tooltip(text: "This is a Southwest-facing tooltip, and is responsive.", type: :description, direction: :sw) %>
       #       Southwest
       #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Northeast", m: 2)) do |c| %>
+      #     <%= render(Primer::Beta::Button.new(id: "Northeast", m: 2)) do |c| %>
       #       <% c.with_tooltip(text: "This is a Northeast-facing tooltip, and is responsive.", type: :description, direction: :ne) %>
       #       Northeast
       #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Southeast", m: 2)) do |c| %>
+      #     <%= render(Primer::Beta::Button.new(id: "Southeast", m: 2)) do |c| %>
       #       <% c.with_tooltip(text: "This is a Southeast-facing tooltip, and is responsive.", type: :description, direction: :se) %>
       #       Southeast
       #     <% end %>

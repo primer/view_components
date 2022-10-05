@@ -56,7 +56,7 @@ module Primer
       #       <% component.with_tab(href: "#", selected: true) { "Item 1" } %>
       #       <% component.with_tab(href: "#") { "Item 2" } %>
       #       <% component.with_actions do %>
-      #         <%= render(Primer::ButtonComponent.new) { "Button!" } %>
+      #         <%= render(Primer::Beta::Button.new) { "Button!" } %>
       #       <% end %>
       #     <% end %>
       #
@@ -65,7 +65,7 @@ module Primer
       #     <% component.with_tab(href: "#", selected: true) { "Item 1" } %>
       #     <% component.with_tab(href: "#") { "Item 2" } %>
       #     <% component.with_actions do %>
-      #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
+      #       <%= render(Primer::Beta::Button.new) { "Button!" } %>
       #     <% end %>
       #   <% end %>
       #
@@ -85,7 +85,7 @@ module Primer
       #       <% t.counter(count: 10) %>
       #     <% end %>
       #     <% component.with_actions do %>
-      #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
+      #       <%= render(Primer::Beta::Button.new) { "Button!" } %>
       #     <% end %>
       #   <% end %>
       #
@@ -98,7 +98,7 @@ module Primer
       #       <% t.text { "Item 2" } %>
       #     <% end %>
       #     <% component.with_actions do %>
-      #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
+      #       <%= render(Primer::Beta::Button.new) { "Button!" } %>
       #     <% end %>
       #   <% end %>
       #

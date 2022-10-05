@@ -36,7 +36,7 @@ module Primer
     # @example Wrapping another component
     #   <div class="pt-5">
     #     <%= render(Primer::Tooltip.new(label: "Even bolder")) do %>
-    #       <%= render(Primer::ButtonComponent.new) { "Bold Button" } %>
+    #       <%= render(Primer::Beta::Button.new) { "Bold Button" } %>
     #     <% end %>
     #   </div>
     #

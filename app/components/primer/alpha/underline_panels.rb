@@ -51,7 +51,7 @@ module Primer
       #       <% end %>
       #     <% end %>
       #     <% component.with_actions do %>
-      #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
+      #       <%= render(Primer::Beta::Button.new) { "Button!" } %>
       #     <% end %>
       #   <% end %>
       #
