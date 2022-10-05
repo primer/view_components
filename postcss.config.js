@@ -23,11 +23,10 @@ module.exports = {
       ]
     }),
     require('postcss-preset-env')({
-      stage: 3,
-      // https://preset-env.cssdb.org/
+      stage: 2,
+      // https://preset-env.cssdb.org/features/#stage-2
       features: {
         'nesting-rules': true,
-        'has-pseudo-class': true,
         'custom-properties': false
       }
     }),
