@@ -46,9 +46,6 @@ namespace :test do
   end
 
   Rake::TestTask.new(:snapshots) do |t|
-    # Clear folder
-    FileUtils.rm_rf("test/snapshots")
-
     ENV["TZ"] = "Asia/Taipei"
 
     t.libs << "test"
@@ -72,3 +69,8 @@ task :test do
 end
 
 task bench: "test:bench"
+task "test:snapshots" => :clean_snapshots
+task :clean_snapshots do
+  # Clear folder
+  FileUtils.rm_rf("test/snapshots")
+end
