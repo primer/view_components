@@ -39,7 +39,7 @@ class SnapshotsTest < ApplicationSystemTestCase
 
   def save_actions(page_url)
     # Hide blinking cursor so it doesn't show up in snapshots
-    page.driver.browser.add_style_tag(content: "input, textarea { caret-color: transparent; }")
+    page.driver.browser.add_style_tag(content: "input,textarea{caret-color:transparent;}*{transition:none!important;animation:none!important;}")
 
     # focus first element
     page.driver.browser.keyboard.type(:tab)
