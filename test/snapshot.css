@@ -1,8 +1,11 @@
 /* Reset animation type stuff so screenshots don't thrash between runs */
 *, *::before, *::after {
-  box-shadow: none !important;
   caret-color: transparent !important;
   animation: none !important;
   transition: none !important;
   transition-duration: 0s !important;
+}
+
+*:focus, *:focus-within, *:focus-visible, *:active {
+  box-shadow: none !important;
 }
