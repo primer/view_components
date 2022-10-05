@@ -22,6 +22,8 @@ class SnapshotsTest < ApplicationSystemTestCase
 
         themes.each do |theme|
           visit("/rails/view_components/#{page_url}?theme=#{theme}")
+          # Hide blinking cursor so it doesn't show up in snapshots
+          page.driver.browser.add_style_tag(path: File.join(File.dirname(__FILE__), "./snapshot.css"))
           page.driver.zoom_factor = 1
           page.driver.resize_window(1024, 1400)
 
@@ -38,10 +40,6 @@ class SnapshotsTest < ApplicationSystemTestCase
   private
 
   def save_actions(page_url)
-    # Hide blinking cursor so it doesn't show up in snapshots
-    # Trigger build
-    page.driver.browser.add_style_tag(content: "input,textarea{caret-color:transparent;}")
-
     # focus first element
     page.driver.browser.keyboard.type(:tab)
     element = page.driver.browser.evaluate("document.activeElement")
