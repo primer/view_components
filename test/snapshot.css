@@ -6,6 +6,7 @@
   transition-duration: 0s !important;
 }
 
+/* hide shadows */
 *:focus, *:focus-within, *:focus-visible, *:active {
   box-shadow: none !important;
 }
