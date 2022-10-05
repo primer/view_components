@@ -2,7 +2,7 @@ import {controller, target} from '@github/catalyst'
 import {debounce} from '@github/mini-throttle/decorators'
 
 @controller
-export class ToggleSwitchElement extends HTMLElement {
+class ToggleSwitchElement extends HTMLElement {
   @target switch: HTMLElement
   @target loadingSpinner: HTMLElement
   @target errorIcon: HTMLElement
