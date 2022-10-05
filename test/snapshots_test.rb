@@ -38,6 +38,9 @@ class SnapshotsTest < ApplicationSystemTestCase
   private
 
   def save_actions(page_url)
+    # Hide blinking cursor so it doesn't show up in snapshots
+    page.driver.browser.add_style_tag(content: "* { caret-color: transparent; }")
+
     # focus first element
     page.driver.browser.keyboard.type(:tab)
     element = page.driver.browser.evaluate("document.activeElement")
