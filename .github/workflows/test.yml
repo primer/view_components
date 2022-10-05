@@ -19,7 +19,7 @@ jobs:
     name: Snapshots
     # Don't run on main
     if: ${{ github.event_name == 'pull_request' }}
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@master
     - uses: ruby/setup-ruby@v1
