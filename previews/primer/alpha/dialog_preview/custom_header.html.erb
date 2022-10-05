@@ -1,6 +1,6 @@
 <%= render(Primer::Alpha::Dialog.new(id: "my-dialog", title: title, subtitle: subtitle, visually_hide_title: false)) do |d| %>
   <% d.header(show_divider: show_divider) do %>
-    <%= render Primer::Beta::Button.new { "Custom Header Controls" } %>
+    <%= render(Primer::Beta::Button.new) { "Custom Header Controls" } %>
   <% end %>
   <% d.show_button { button_text } %>
   <% d.body { "Hello World" } %>
