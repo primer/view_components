@@ -9,25 +9,25 @@
 /* base button */
 .Button {
   position: relative;
-  font-size: var(--primer-text-body-size-medium, 14px);
-  font-weight: var(--base-text-weight-medium, 500);
+  font-size: var(--primer-text-body-size-medium);
+  font-weight: var(--base-text-weight-medium);
   cursor: pointer;
   user-select: none;
   background-color: transparent;
-  border: var(--primer-borderWidth-thin, 1px) solid;
+  border: var(--primer-borderWidth-thin) solid;
   border-color: transparent;
-  border-radius: var(--primer-borderRadius-medium, 6px);
+  border-radius: var(--primer-borderRadius-medium);
   color: var(--color-btn-text);
   transition: var(--primer-duration-fast) var(--primer-easing-easeInOut);
   transition-property: color, fill, background-color, border-color;
   text-align: center;
-  height: var(--primer-control-medium-size, 32px);
-  padding: 0 var(--primer-control-medium-paddingInline-normal, 12px);
+  height: var(--primer-control-medium-size);
+  padding: 0 var(--primer-control-medium-paddingInline-normal);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: var(--primer-control-medium-gap, 8px);
+  gap: var(--primer-control-medium-gap);
   min-width: max-content;
 
   /* mobile friendly sizing */
@@ -84,7 +84,7 @@ summary.Button {
   /* padding-bottom: 1px; optical alignment for firefox */
 
   & > :not(:last-child) {
-    margin-right: var(--primer-control-medium-gap, 8px);
+    margin-right: var(--primer-control-medium-gap);
   }
 }
 
@@ -104,7 +104,7 @@ summary.Button {
 .Button-label {
   grid-area: text;
   white-space: nowrap;
-  line-height: var(--primer-text-body-lineHeight-medium, calc(20 / 14));
+  line-height: var(--primer-text-body-lineHeight-medium);
 }
 
 .Button-leadingVisual {
@@ -116,40 +116,40 @@ summary.Button {
 }
 
 .Button-trailingAction {
-  margin-right: calc(var(--base-size-4, 4px) * -1);
+  margin-right: calc(var(--base-size-4) * -1);
 }
 
 /* sizes */
 
 .Button--small {
-  font-size: var(--primer-text-body-size-small, 12px);
-  height: var(--primer-control-small-size, 28px);
-  padding: 0 var(--primer-control-small-paddingInline-condensed, 8px);
-  gap: var(--primer-control-small-gap, 4px);
+  font-size: var(--primer-text-body-size-small);
+  height: var(--primer-control-small-size);
+  padding: 0 var(--primer-control-small-paddingInline-condensed);
+  gap: var(--primer-control-small-gap);
 
   .Button-label {
-    line-height: var(--primer-text-body-lineHeight-small, calc(20 / 12));
+    line-height: var(--primer-text-body-lineHeight-small);
   }
 
   .Button-content {
     & > :not(:last-child) {
-      margin-right: var(--primer-control-small-gap, 4px);
+      margin-right: var(--primer-control-small-gap);
     }
   }
 }
 
 .Button--large {
-  height: var(--primer-control-large-size, 40px);
-  padding: 0 var(--primer-control-large-paddingInline-spacious, 16px);
-  gap: var(--primer-control-large-gap, 8px);
+  height: var(--primer-control-large-size);
+  padding: 0 var(--primer-control-large-paddingInline-spacious);
+  gap: var(--primer-control-large-gap);
 
   .Button-label {
-    line-height: var(--primer-text-body-lineHeight-large, calc(48 / 32));
+    line-height: var(--primer-text-body-lineHeight-large);
   }
 
   .Button-content {
     & > :not(:last-child) {
-      margin-right: var(--primer-control-large-gap, 8px);
+      margin-right: var(--primer-control-large-gap);
     }
   }
 }
@@ -331,13 +331,13 @@ summary.Button {
   display: grid;
   place-content: center;
   padding: unset;
-  width: var(--primer-control-medium-size, 32px);
+  width: var(--primer-control-medium-size);
 
   &.Button--small {
-    width: var(--primer-control-small-size, 28px);
+    width: var(--primer-control-small-size);
   }
 
   &.Button--large {
-    width: var(--primer-control-large-size, 40px);
+    width: var(--primer-control-large-size);
   }
 }

@@ -1,5 +1,5 @@
 :root {
-  --primer-actionListContent-paddingBlock: var(--primer-control-medium-paddingBlock, 6px);
+  --primer-actionListContent-paddingBlock: var(--primer-control-medium-paddingBlock);
 }
 
 /* ActionList */
@@ -10,7 +10,7 @@
 }
 
 .ActionListWrap--inset {
-  padding: var(--base-size-8, 8px);
+  padding: var(--base-size-8);
 }
 
 /* list dividers */
@@ -33,7 +33,7 @@
       top: calc(-1 * var(--primer-actionListContent-paddingBlock));
       display: block;
       width: 100%;
-      height: var(--primer-borderWidth-thin, 1px);
+      height: var(--primer-borderWidth-thin);
       content: '';
       background: var(--color-action-list-item-inline-divider);
     }
@@ -71,7 +71,7 @@
   position: relative;
   list-style: none;
   background-color: transparent;
-  border-radius: var(--primer-borderRadius-medium, 6px);
+  border-radius: var(--primer-borderRadius-medium);
 
   /* state */
 
@@ -129,9 +129,9 @@
 
         &:not(.ActionListItem--navActive, :focus-visible) {
           /* Support for "Windows high contrast mode" */
-          outline: solid var(--primer-borderWidth-thin, 1px) transparent;
-          outline-offset: calc(-1 * var(--primer-borderWidth-thin, 1px));
-          box-shadow: var(--primer-borderInset-thin, 1px) var(--color-action-list-item-default-active-border);
+          outline: solid var(--primer-borderWidth-thin) transparent;
+          outline-offset: calc(-1 * var(--primer-borderWidth-thin));
+          box-shadow: var(--primer-borderInset-thin) var(--color-action-list-item-default-active-border);
         }
       }
     }
@@ -141,9 +141,9 @@
 
       &:not(.ActionListItem--navActive) {
         /* Support for "Windows high contrast mode" https:sarahmhigley.com/writing/whcm-quick-tips/ */
-        outline: solid var(--primer-borderWidth-thin, 1px) transparent;
-        outline-offset: calc(-1 * var(--primer-borderWidth-thin, 1px));
-        box-shadow: var(--primer-borderInset-thin, 1px) var(--color-action-list-item-default-active-border);
+        outline: solid var(--primer-borderWidth-thin) transparent;
+        outline-offset: calc(-1 * var(--primer-borderWidth-thin));
+        box-shadow: var(--primer-borderInset-thin) var(--color-action-list-item-default-active-border);
       }
 
       @media screen and (prefers-reduced-motion: no-preference) {
@@ -171,7 +171,7 @@
   /* Autocomplete [aria-selected] items */
 
   &[aria-selected='true'] {
-    font-weight: var(--base-text-weight-normal, 400);
+    font-weight: var(--base-text-weight-normal);
     background: var(--color-action-list-item-default-selected-bg);
 
     @media (hover: hover) {
@@ -197,7 +197,7 @@
   &.ActionListItem--navActive {
     &:not(.ActionListItem--subItem) {
       .ActionListItem-label {
-        font-weight: var(--base-text-weight-semibold, 600);
+        font-weight: var(--base-text-weight-semibold);
       }
     }
 
@@ -280,13 +280,13 @@
   display: grid;
   width: 100%;
   padding-block: var(--primer-actionListContent-paddingBlock);
-  padding-inline: var(--primer-control-medium-paddingInline-condensed, 8px);
+  padding-inline: var(--primer-control-medium-paddingInline-condensed);
   color: var(--color-fg-default);
   text-align: left;
   user-select: none;
   background-color: transparent;
   border: none;
-  border-radius: var(--primer-borderRadius-medium, 6px);
+  border-radius: var(--primer-borderRadius-medium);
   transition: background 33.333ms linear;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
@@ -297,7 +297,7 @@
 
   /* column-gap persists with empty grid-areas, margin applies only when children exist */
   & > :not(:last-child) {
-    margin-right: var(--primer-control-medium-gap, 8px);
+    margin-right: var(--primer-control-medium-gap);
   }
 
   /* state */
@@ -336,28 +336,28 @@
       }
 
       & .ActionListContent {
-        padding-left: var(--base-size-24, 24px);
+        padding-left: var(--base-size-24);
       }
     }
 
     /* has 16px leading visual */
     &.ActionListContent--visual16 + .ActionList--subGroup {
       & .ActionListContent {
-        padding-left: var(--base-size-32, 32px);
+        padding-left: var(--base-size-32);
       }
     }
 
     /* has 20px leading visual */
     &.ActionListContent--visual20 + .ActionList--subGroup {
       & .ActionListContent {
-        padding-left: var(--base-size-36, 36px);
+        padding-left: var(--base-size-36);
       }
     }
 
     /* has 24px leading visual */
     &.ActionListContent--visual24 + .ActionList--subGroup {
       & .ActionListContent {
-        padding-left: var(--base-size-40, 40px);
+        padding-left: var(--base-size-40);
       }
     }
   }
@@ -378,7 +378,7 @@
 
     &.ActionListContent--hasActiveSubItem {
       & > .ActionListItem-label {
-        font-weight: var(--base-text-weight-semibold, 600);
+        font-weight: var(--base-text-weight-semibold);
       }
     }
   }
@@ -394,7 +394,7 @@
       overflow: hidden;
       visibility: hidden;
       opacity: 0;
-      transform: translateY(calc(-1 * var(--base-size-16, 16px)));
+      transform: translateY(calc(-1 * var(--base-size-16)));
     }
 
     /* show active indicator on parent collapse if child is active */
@@ -402,7 +402,7 @@
       background: var(--color-action-list-item-default-selected-bg);
 
       & .ActionListItem-label {
-        font-weight: var(--base-text-weight-semibold, 600);
+        font-weight: var(--base-text-weight-semibold);
       }
 
       &::before,
@@ -464,10 +464,10 @@
   grid-area: label;
   display: flex;
   flex-direction: column;
-  gap: var(--base-size-4, 4px);
+  gap: var(--base-size-4);
 
   & .ActionListItem-label {
-    font-weight: var(--base-text-weight-semibold, 600);
+    font-weight: var(--base-text-weight-semibold);
   }
 }
 
@@ -476,13 +476,13 @@
   position: relative;
   flex-direction: row;
   align-items: baseline;
-  gap: var(--base-size-8, 8px);
+  gap: var(--base-size-8);
 }
 
 /* description */
 .ActionListItem-description {
-  font-size: var(--primer-text-body-size-small, 12px);
-  font-weight: var(--base-text-weight-normal, 400);
+  font-size: var(--primer-text-body-size-small);
+  font-weight: var(--base-text-weight-normal);
   line-height: var(--primer-text-body-lineHeight-small, calc(20 / 12));
   color: var(--color-fg-muted);
 }
@@ -492,7 +492,7 @@
 .ActionListItem-visual,
 .ActionListItem-action {
   display: flex;
-  min-height: var(--primer-control-medium-lineBoxHeight, 20px);
+  min-height: var(--primer-control-medium-lineBoxHeight);
   color: var(--color-fg-muted);
   pointer-events: none;
   fill: var(--color-fg-muted);
@@ -502,8 +502,8 @@
 /* text */
 .ActionListItem-label {
   position: relative;
-  font-size: var(--primer-text-body-size-medium, 14px);
-  font-weight: var(--base-text-weight-normal, 400);
+  font-size: var(--primer-text-body-size-medium);
+  font-weight: var(--base-text-weight-normal);
   line-height: var(--primer-text-body-lineHeight-medium, calc(20 / 14));
   color: var(--color-fg-default);
   grid-area: label;
@@ -519,7 +519,7 @@
  target ActionListItem--subItem for padding-left to maintain :active :after state */
 
 .ActionListItem--subItem > .ActionListContent > .ActionListItem-label {
-  font-size: var(--primer-text-body-size-small, 12px);
+  font-size: var(--primer-text-body-size-small);
   line-height: var(--primer-text-body-lineHeight-small, calc(20 / 12));
 }
 
@@ -559,10 +559,10 @@
     display: flex;
     padding: ($spacer-1 * 1.5) $spacer-2;
     padding-inline: var(--primer-actionListContent-paddingBlock);
-    padding-block: var(--base-size-8, 8px);
-    font-size: var(--primer-text-body-size-small, 12px);
+    padding-block: var(--base-size-8);
+    font-size: var(--primer-text-body-size-small);
     line-height: var(--primer-text-body-lineHeight-small, calc(20 / 12));
-    font-weight: var(--base-text-weight-semibold, 600);
+    font-weight: var(--base-text-weight-semibold);
     color: var(--color-fg-muted);
     flex-direction: column;
   }
@@ -570,34 +570,34 @@
   /* no children */
   &:empty {
     display: block;
-    height: var(--primer-borderWidth-thin, 1px);
+    height: var(--primer-borderWidth-thin);
     padding: 0;
-    margin-block-start: calc(var(--base-size-8, 8px) - var(--primer-borderWidth-thin, 1px));
-    margin-block-end: var(--base-size-8, 8px);
-    margin-inline: calc(-1 * var(--base-size-8, 8px));
+    margin-block-start: calc(var(--base-size-8) - var(--primer-borderWidth-thin));
+    margin-block-end: var(--base-size-8);
+    margin-inline: calc(-1 * var(--base-size-8));
     list-style: none;
     background: var(--color-action-list-item-inline-divider);
     border: 0;
   }
 
   .ActionList-sectionDivider-title {
-    font-size: var(--primer-text-body-size-small, 12px);
-    font-weight: var(--base-text-weight-semibold, 600);
+    font-size: var(--primer-text-body-size-small);
+    font-weight: var(--base-text-weight-semibold);
     color: var(--color-fg-muted);
   }
 }
 
 .ActionList-sectionDivider--filled {
-  margin-block-start: calc(var(--base-size-8, 8px) - var(--primer-borderWidth-thin, 1px));
-  margin-block-end: var(--base-size-8, 8px);
-  margin-inline: calc(-1 * var(--base-size-8, 8px));
+  margin-block-start: calc(var(--base-size-8) - var(--primer-borderWidth-thin));
+  margin-block-end: var(--base-size-8);
+  margin-inline: calc(-1 * var(--base-size-8));
   background: var(--color-canvas-subtle);
-  border-top: solid var(--primer-borderWidth-thin, 1px) var(--color-action-list-item-inline-divider);
-  border-bottom: solid var(--primer-borderWidth-thin, 1px) var(--color-action-list-item-inline-divider);
+  border-top: solid var(--primer-borderWidth-thin) var(--color-action-list-item-inline-divider);
+  border-bottom: solid var(--primer-borderWidth-thin) var(--color-action-list-item-inline-divider);
 
   /* if no children, treat as divider */
   &:empty {
-    height: var(--base-size-8, 8px);
+    height: var(--base-size-8);
     box-sizing: border-box;
   }
 
