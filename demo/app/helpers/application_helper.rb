@@ -16,27 +16,19 @@ module ApplicationHelper
 
   def color_theme_attributes
     theme = color_themes.include?(params[:theme]) ? params[:theme] : "light"
+    mode = theme.include?("dark") ? "dark" : "light"
 
     attributes = {
-      "data-color-mode": theme.start_with?("dark") ? "dark" : "light",
+      "data-color-mode": mode,
+      "data-#{mode}-theme": theme
     }
-
-    if theme.start_with?("dark")
-      attributes["data-dark-theme"] = theme
-    else
-      attributes["data-light-theme"] = theme
-    end
 
     tag_attributes(attributes)
   end
 
   def tag_attributes(hash)
     parts = hash.map do |key, value|
-      safe_join([
-        key,
-        "=",
-        value
-      ])
+      safe_join([key, "=", value])
     end
 
     safe_join(parts, " ")
