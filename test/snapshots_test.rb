@@ -22,6 +22,7 @@ class SnapshotsTest < ApplicationSystemTestCase
 
         themes.each do |theme|
           visit("/rails/view_components/#{page_url}?theme=#{theme}")
+
           # Hide blinking cursor so it doesn't show up in snapshots
           page.driver.browser.add_style_tag(path: File.join(File.dirname(__FILE__), "./snapshot.css"))
           page.driver.zoom_factor = 1
