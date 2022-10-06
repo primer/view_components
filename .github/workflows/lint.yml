@@ -10,11 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: xt0rted/markdownlint-problem-matcher@v1
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'npm'
     - name: Get specific changed files
       id: changed-files
       uses: tj-actions/changed-files@v29.0.3
@@ -24,6 +19,13 @@ jobs:
         files_ignore: |
           .changeset/*.md
           CHANGELOG.md
+    - uses: xt0rted/markdownlint-problem-matcher@v1
+      if: steps.changed-files.outputs.any_changed == 'true'
+    - uses: actions/setup-node@v3
+      if: steps.changed-files.outputs.any_changed == 'true'
+      with:
+        node-version: 16
+        cache: 'npm'
     - name: Lint with Markdownlint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
@@ -34,10 +36,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.0'
-        bundler-cache: true
     - name: Get specific changed files
       id: changed-files
       uses: tj-actions/changed-files@v29.0.3
@@ -47,6 +45,11 @@ jobs:
           lib/**/*.rb
           demo/**/*.rb
           test/**/*.rb
+    - uses: ruby/setup-ruby@v1
+      if: steps.changed-files.outputs.any_changed == 'true'
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
     - name: Lint with Rubocop
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
@@ -56,16 +59,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.0'
-        bundler-cache: true
     - name: Get changed files
       id: changed-files
       uses: tj-actions/changed-files@v29.0.3
       with:
         files: |
           app/components/**/*.erb
+    - uses: ruby/setup-ruby@v1
+      if: steps.changed-files.outputs.any_changed == 'true'
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
     - name: Lint with ERB Lint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
@@ -75,16 +79,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'npm'
     - name: Get changed files
       id: changed-files
       uses: tj-actions/changed-files@v29.0.3
       with:
         files: |
           app/components/**/*.ts
+    - uses: actions/setup-node@v3
+      if: steps.changed-files.outputs.any_changed == 'true'
+      with:
+        node-version: 16
+        cache: 'npm'
     - name: Lint with ESLint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
@@ -95,10 +100,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'npm'
     - name: Get changed files
       id: changed-files
       uses: tj-actions/changed-files@v29.0.3
@@ -106,6 +107,11 @@ jobs:
         files: |
           app/components/**/*.pcss
           lib/postcss_mixins/*.pcss
+    - uses: actions/setup-node@v3
+      if: steps.changed-files.outputs.any_changed == 'true'
+      with:
+        node-version: 16
+        cache: 'npm'
     - name: Lint with Stylelint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
