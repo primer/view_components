@@ -12,6 +12,8 @@ class SnapshotsTest < ApplicationSystemTestCase
       component_previews = klass.instance_methods(false)
       component_uri = klass.to_s.underscore.gsub("_preview", "")
       component_previews.each do |preview|
+        next unless preview.to_s == "default"
+
         page_url = "#{component_uri}/#{preview}"
         page.driver.zoom_factor = 1
         puts "Saving #{page_url} snapshots."
