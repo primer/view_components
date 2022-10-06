@@ -17,6 +17,7 @@ concurrency:
 jobs:
   snapshots:
     name: Snapshots
+
     # Don't run on main
     # if: ${{ github.event_name == 'pull_request' && github.actor != 'primer-css'  }}
     runs-on: ubuntu-latest
