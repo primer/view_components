@@ -107,6 +107,27 @@ module Primer
 
         assert_equal "Items can only be nested 2 levels deep", error.message
       end
+
+      def test_show_more_item
+        render_preview(:show_more_item)
+
+        assert_selector("#ActionList--showMoreItem", visible: false, text: "Show more")
+      end
+
+      def test_disallow_subitems_and_trailing_action
+        error = assert_raises(RuntimeError) do
+          render_inline(Primer::Alpha::NavList.new) do |c|
+            c.with_section(aria: { label: "List" }) do |section|
+              section.with_item(label: "Level 1", href: "/level1") do |item|
+                item.with_item(label: "Level 2", href: "/level2")
+                item.with_trailing_action(icon: :megaphone, aria: { label: "Action" })
+              end
+            end
+          end
+        end
+
+        assert_equal "Cannot render a trailing action for an item with subitems", error.message
+      end
     end
   end
 end

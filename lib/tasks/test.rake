@@ -22,6 +22,7 @@ namespace :test do
     t.test_files = FileList[
       "test/components/**/*_test.rb",
       "test/lib/**/*_test.rb",
+      "test/forms/**/*_test.rb",
       "test/primer/**/*_test.rb",
       "test/linters/**/*_test.rb",
       "test/rubocop/**/*_test.rb"
@@ -67,4 +68,10 @@ task :test do
   else
     Rake::Task["test:all"].invoke
   end
+end
+
+task "test:snapshots" => :clean_snapshots
+task :clean_snapshots do
+  # Clear folder
+  FileUtils.rm_rf("test/snapshots")
 end

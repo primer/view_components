@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.0.102
+
+### Patch Changes
+
+- [#1450](https://github.com/primer/view_components/pull/1450) [`ef4498df`](https://github.com/primer/view_components/commit/ef4498df7630e3b5d9895eb92910fc36622c32de) Thanks [@camertron](https://github.com/camertron)! - Don't export ToggleSwitchElement
+
+* [#1446](https://github.com/primer/view_components/pull/1446) [`4f235520`](https://github.com/primer/view_components/commit/4f23552009b932be1238a38b7cef21ffcc6fe632) Thanks [@camertron](https://github.com/camertron)! - Allow NavLists to define sub-items as well as a trailing visual
+
+- [#1445](https://github.com/primer/view_components/pull/1445) [`493530ed`](https://github.com/primer/view_components/commit/493530ed8e097c89322d52e73d6ac8a320573b43) Thanks [@camertron](https://github.com/camertron)! - Remove unused instance variable in ActionList
+
+* [#1441](https://github.com/primer/view_components/pull/1441) [`bd8fe7f5`](https://github.com/primer/view_components/commit/bd8fe7f5c9c20e28354d96a36717f6a56ef57fa4) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing deprecated FlexComponent and FlexItemComponent
+
 ## 0.0.101
 
 ### Patch Changes
