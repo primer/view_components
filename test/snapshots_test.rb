@@ -13,7 +13,7 @@ class SnapshotsTest < ApplicationSystemTestCase
       component_uri = klass.to_s.underscore.gsub("_preview", "")
       component_previews.each do |preview|
         page_url = "#{component_uri}/#{preview}"
-
+        page.driver.zoom_factor = 1
         puts "Saving #{page_url} snapshots."
 
         themes = %w[
@@ -25,14 +25,13 @@ class SnapshotsTest < ApplicationSystemTestCase
 
           # Add some css to try and stop the page from moving around
           page.driver.browser.add_style_tag(path: File.join(File.dirname(__FILE__), "./snapshot.css"))
-          page.driver.zoom_factor = 1
           page.driver.resize_window(1024, 1400)
 
           page.save_screenshot(
             "#{page_url}/#{theme}/initial.png",
             selector: "#component-preview"
           )
-          # save_actions("#{page_url}/#{theme}")
+          save_actions("#{page_url}/#{theme}")
         end
       end
     end
@@ -43,10 +42,10 @@ class SnapshotsTest < ApplicationSystemTestCase
   def save_actions(page_url)
     # focus first element
     page.driver.browser.keyboard.type(:tab)
-    element = page.driver.browser.evaluate("document.activeElement")
+    # element = page.driver.browser.evaluate("document.activeElement")
 
     # When nothing is active, the element will be the body
-    return if ["body"].include? element.tag_name
+    # return if ["body"].include? element.tag_name
 
     begin
       page.save_screenshot(
@@ -55,12 +54,12 @@ class SnapshotsTest < ApplicationSystemTestCase
       )
 
       # We only want to press enter on buttons
-      return unless %w[button summary].include? element.tag_name
+      # return unless %w[button summary].include? element.tag_name
 
-      page.driver.resize_window(1024, 375)
+      # page.driver.resize_window(1024, 375)
 
-      page.driver.browser.keyboard.type(:enter)
-      page.save_screenshot("#{page_url}/enter.png")
+      # page.driver.browser.keyboard.type(:enter)
+      # page.save_screenshot("#{page_url}/enter.png")
     rescue Ferrum::BrowserError => e
       puts "Error: #{e.message}"
     end
