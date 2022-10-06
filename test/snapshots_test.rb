@@ -16,23 +16,17 @@ class SnapshotsTest < ApplicationSystemTestCase
         page.driver.zoom_factor = 1
         puts "Saving #{page_url} snapshots."
 
-        themes = %w[
-          light
-        ]
+        visit("/rails/view_components/#{page_url}")
 
-        themes.each do |theme|
-          visit("/rails/view_components/#{page_url}?theme=#{theme}")
+        # Add some css to try and stop the page from moving around
+        page.driver.browser.add_style_tag(path: File.join(File.dirname(__FILE__), "./snapshot.css"))
+        page.driver.resize_window(1024, 1400)
 
-          # Add some css to try and stop the page from moving around
-          page.driver.browser.add_style_tag(path: File.join(File.dirname(__FILE__), "./snapshot.css"))
-          page.driver.resize_window(1024, 1400)
-
-          page.save_screenshot(
-            "#{page_url}/#{theme}/initial.jpeg",
-            selector: "#component-preview"
-          )
-          save_actions("#{page_url}/#{theme}")
-        end
+        page.save_screenshot(
+          "#{page_url}/light.jpeg",
+          selector: "#component-preview"
+        )
+        save_actions(page_url)
       end
     end
   end
