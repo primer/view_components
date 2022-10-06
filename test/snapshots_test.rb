@@ -32,7 +32,7 @@ class SnapshotsTest < ApplicationSystemTestCase
             "#{page_url}/#{theme}/initial.png",
             selector: "#component-preview"
           )
-          save_actions("#{page_url}/#{theme}")
+          # save_actions("#{page_url}/#{theme}")
         end
       end
     end
@@ -55,7 +55,7 @@ class SnapshotsTest < ApplicationSystemTestCase
       )
 
       # We only want to press enter on buttons
-      return unless ["button"].include? element.tag_name
+      return unless %w[button summary].include? element.tag_name
 
       page.driver.resize_window(1024, 375)
 
