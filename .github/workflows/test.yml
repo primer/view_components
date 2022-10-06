@@ -18,7 +18,7 @@ jobs:
   snapshots:
     name: Snapshots
     # Don't run on main
-    if: ${{ github.event_name == 'not_pull_request' && github.actor != 'primer-css'  }}
+    if: ${{ github.event_name == 'pull_request' && github.actor != 'primer-css'  }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
