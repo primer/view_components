@@ -27,6 +27,7 @@ jobs:
     - name: Lint with Markdownlint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
+        npm ci
         npx markdownlint ${{ steps.changed-files.outputs.all_changed_files }}
 
   rubocop:
@@ -87,6 +88,7 @@ jobs:
     - name: Lint with ESLint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
+        npm ci
         npx eslint --quiet ${{ steps.changed-files.outputs.all_changed_files }}
 
   stylelint:
@@ -107,4 +109,5 @@ jobs:
     - name: Lint with Stylelint
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
+        npm ci
         npx stylelint ${{ steps.changed-files.outputs.all_changed_files }} -f "github"
