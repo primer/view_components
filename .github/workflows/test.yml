@@ -43,7 +43,7 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Generating component snapshots
-        file_pattern: test/snapshots/**/*.png
+        file_pattern: test/snapshots/**/*.jpeg
 
     - name: "Changes detected"
       if: steps.auto-commit.outputs.changes_detected == 'true'
