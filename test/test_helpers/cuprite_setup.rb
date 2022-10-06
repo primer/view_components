@@ -22,4 +22,3 @@ end
 # Configure Capybara to use :cuprite driver by default
 Capybara.default_driver = Capybara.javascript_driver = :cuprite
 Capybara.save_path = "./test/snapshots"
-Capybara.disable_animation = true
