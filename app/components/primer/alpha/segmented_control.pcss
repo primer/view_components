@@ -6,6 +6,36 @@
   background-color: var(--color-segmented-control-bg);
   border-radius: var(--primer-borderRadius-medium, 6px);
   box-shadow: var(--primer-borderInset-thin, inset 0 0 0 max(1px, 0.0625rem)) var(--color-border-default);
+
+  &.SegmentedControl--iconOnly-whenNarrow tool-tip {
+    display: none;
+  }
+
+  /* Icon only when narrow */
+  @media (max-width: 768px) {
+    &.SegmentedControl--iconOnly-whenNarrow {
+      & .Button {
+        width: var(--primer-control-medium-size, 32px);
+      }
+
+      & .Button-content {
+        padding: 0;
+        flex: 1;
+      }
+
+      & .Button-label {
+        display: none;
+      }
+
+      & .Button-leadingVisual {
+        margin-right: 0;
+      }
+
+      & tool-tip {
+        display: block;
+      }
+    }
+  }
 }
 
 .SegmentedControl-item {

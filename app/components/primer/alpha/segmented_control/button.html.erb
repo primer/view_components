@@ -3,6 +3,7 @@
 <% else %>
   <%= render Primer::Beta::Button.new(**@system_arguments) do |button| %>
     <% button.with_leading_visual_icon(icon: @icon) unless @icon.nil? %>
+    <% button.tooltip(text: content) if @icon_only == :when_narrow %>
     <%= content %>
   <% end %>
 <% end %>

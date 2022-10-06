@@ -88,6 +88,7 @@ module Primer
           @system_arguments[:"data-action"] = "click:segmented-control#select"
           @system_arguments[:"aria-current"] = selected
           @system_arguments[:scheme] = :invisible
+          @system_arguments[:id] ||= "segmented-button-#{SecureRandom.hex(4)}" if @icon_only == :when_narrow || @system_arguments[:id]
           @icon = icon
         end
       end
