@@ -25,7 +25,7 @@ class SnapshotsTest < ApplicationSystemTestCase
         page.driver.resize_window(1024, 1400)
 
         page.save_screenshot(
-          "#{page_url}/light.jpeg",
+          "#{page_url}/light.png",
           selector: "#component-preview"
         )
         save_actions(page_url)
@@ -45,7 +45,7 @@ class SnapshotsTest < ApplicationSystemTestCase
 
     begin
       page.save_screenshot(
-        "#{page_url}/focus.jpeg",
+        "#{page_url}/focus.png",
         selector: "#component-preview"
       )
 
@@ -55,7 +55,7 @@ class SnapshotsTest < ApplicationSystemTestCase
       page.driver.resize_window(1024, 375)
 
       page.driver.browser.keyboard.type(:enter)
-      page.save_screenshot("#{page_url}/enter.jpeg")
+      page.save_screenshot("#{page_url}/enter.png")
     rescue Ferrum::BrowserError => e
       puts "Error: #{e.message}"
     end
