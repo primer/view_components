@@ -3,7 +3,7 @@
 require "application_system_test_case"
 
 class SnapshotsTest < ApplicationSystemTestCase
-  def test_accessibility_of_doc_examples
+  def test_take_snapshots_of_all_components
     # Workaround to ensure that all component previews are loaded.
     visit("/rails/view_components")
 
@@ -23,7 +23,7 @@ class SnapshotsTest < ApplicationSystemTestCase
         themes.each do |theme|
           visit("/rails/view_components/#{page_url}?theme=#{theme}")
 
-          # Hide blinking cursor so it doesn't show up in snapshots
+          # Add some css to try and stop the page from moving around
           page.driver.browser.add_style_tag(path: File.join(File.dirname(__FILE__), "./snapshot.css"))
           page.driver.zoom_factor = 1
           page.driver.resize_window(1024, 1400)
