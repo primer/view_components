@@ -28,7 +28,7 @@ class SnapshotsTest < ApplicationSystemTestCase
           page.driver.resize_window(1024, 1400)
 
           page.save_screenshot(
-            "#{page_url}/#{theme}/initial.png",
+            "#{page_url}/#{theme}/initial.jpeg",
             selector: "#component-preview"
           )
           save_actions("#{page_url}/#{theme}")
@@ -42,24 +42,24 @@ class SnapshotsTest < ApplicationSystemTestCase
   def save_actions(page_url)
     # focus first element
     page.driver.browser.keyboard.type(:tab)
-    # element = page.driver.browser.evaluate("document.activeElement")
+    element = page.driver.browser.evaluate("document.activeElement")
 
     # When nothing is active, the element will be the body
-    # return if ["body"].include? element.tag_name
+    return if ["body"].include? element.tag_name
 
     begin
       page.save_screenshot(
-        "#{page_url}/focus.png",
+        "#{page_url}/focus.jpeg",
         selector: "#component-preview"
       )
 
       # We only want to press enter on buttons
-      # return unless %w[button summary].include? element.tag_name
+      return unless %w[button summary].include? element.tag_name
 
-      # page.driver.resize_window(1024, 375)
+      page.driver.resize_window(1024, 375)
 
-      # page.driver.browser.keyboard.type(:enter)
-      # page.save_screenshot("#{page_url}/enter.png")
+      page.driver.browser.keyboard.type(:enter)
+      page.save_screenshot("#{page_url}/enter.jpeg")
     rescue Ferrum::BrowserError => e
       puts "Error: #{e.message}"
     end
