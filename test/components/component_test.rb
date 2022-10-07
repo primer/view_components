@@ -106,7 +106,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
       "Primer::Alpha::NavList::Section",
-      "Primer::HeadingComponent",
       "Primer::CounterComponent",
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",

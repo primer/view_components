@@ -58,7 +58,6 @@
   "Primer::Dropdown::Menu": "alpha",
   "Primer::Dropdown::Menu::Item": "alpha",
   "Primer::DropdownMenuComponent": "deprecated",
-  "Primer::HeadingComponent": "deprecated",
   "Primer::HellipButton": "alpha",
   "Primer::IconButton": "deprecated",
   "Primer::Image": "alpha",

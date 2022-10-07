@@ -11,7 +11,6 @@ module Primer
       "Primer::BoxComponent" => "Primer::Box",
       "Primer::CounterComponent" => "Primer::Beta::Counter",
       "Primer::DropdownMenuComponent" => nil,
-      "Primer::HeadingComponent" => "Primer::Beta::Heading",
       "Primer::IconButton" => "Primer::Beta::IconButton",
       "Primer::Tooltip" => "Primer::Alpha::Tooltip"
     }.freeze
