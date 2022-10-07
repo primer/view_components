@@ -616,8 +616,6 @@
   },
   "Primer::CounterComponent": {
   },
-  "Primer::DetailsComponent": {
-  },
   "Primer::Dropdown": {
     "Menu": "Primer::Dropdown::Menu"
   },
