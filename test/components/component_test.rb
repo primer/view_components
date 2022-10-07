@@ -108,7 +108,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::NavList::Section",
       "Primer::HiddenTextExpander",
       "Primer::HeadingComponent",
-      "Primer::CloseButton",
       "Primer::CounterComponent",
       "Primer::DetailsComponent",
       "Primer::Component",
