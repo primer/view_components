@@ -675,8 +675,6 @@
   },
   "Primer::HellipButton": {
   },
-  "Primer::HiddenTextExpander": {
-  },
   "Primer::IconButton": {
     "DEFAULT_SCHEME": "default",
     "SCHEME_MAPPINGS": {
