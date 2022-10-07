@@ -51,7 +51,6 @@
   "Primer::BoxComponent": "deprecated",
   "Primer::ButtonComponent": "beta",
   "Primer::ClipboardCopy": "beta",
-  "Primer::CloseButton": "deprecated",
   "Primer::ConditionalWrapper": "alpha",
   "Primer::Content": "stable",
   "Primer::CounterComponent": "deprecated",
