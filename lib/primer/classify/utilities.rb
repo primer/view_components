@@ -9,7 +9,7 @@ module Primer
     class Utilities
       UTILITIES = YAML.safe_load(
         File.read(
-          File.join(File.dirname(__FILE__), "./utilities.yml")
+          File.join(File.dirname(__FILE__), "utilities.yml")
         ),
         permitted_classes: [Symbol]
       ).freeze
