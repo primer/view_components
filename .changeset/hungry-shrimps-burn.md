@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Removing deprecated Primer::HiddenTextExpander
+Removing the deprecated Primer::HiddenTextExpander component.
