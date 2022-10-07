@@ -13,7 +13,6 @@ module Primer
       "Primer::CounterComponent" => "Primer::Beta::Counter",
       "Primer::DetailsComponent" => "Primer::Beta::Details",
       "Primer::DropdownMenuComponent" => nil,
-      "Primer::HeadingComponent" => "Primer::Beta::Heading",
       "Primer::HiddenTextExpander" => "Primer::Alpha::HiddenTextExpander",
       "Primer::IconButton" => "Primer::Beta::IconButton",
       "Primer::Tooltip" => "Primer::Alpha::Tooltip"

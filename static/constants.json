@@ -671,8 +671,6 @@
       "dark": "dropdown-menu-dark"
     }
   },
-  "Primer::HeadingComponent": {
-  },
   "Primer::HellipButton": {
   },
   "Primer::HiddenTextExpander": {
