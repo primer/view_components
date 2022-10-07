@@ -55,7 +55,6 @@
   "Primer::ConditionalWrapper": "alpha",
   "Primer::Content": "stable",
   "Primer::CounterComponent": "deprecated",
-  "Primer::DetailsComponent": "deprecated",
   "Primer::Dropdown": "alpha",
   "Primer::Dropdown::Menu": "alpha",
   "Primer::Dropdown::Menu::Item": "alpha",

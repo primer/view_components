@@ -110,7 +110,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::HeadingComponent",
       "Primer::CloseButton",
       "Primer::CounterComponent",
-      "Primer::DetailsComponent",
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",

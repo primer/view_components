@@ -11,7 +11,6 @@ module Primer
       "Primer::BoxComponent" => "Primer::Box",
       "Primer::CloseButton" => "Primer::Beta::CloseButton",
       "Primer::CounterComponent" => "Primer::Beta::Counter",
-      "Primer::DetailsComponent" => "Primer::Beta::Details",
       "Primer::DropdownMenuComponent" => nil,
       "Primer::HeadingComponent" => "Primer::Beta::Heading",
       "Primer::HiddenTextExpander" => "Primer::Alpha::HiddenTextExpander",
