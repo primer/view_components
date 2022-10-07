@@ -37,23 +37,9 @@ module Primer
       # rubocop:enable Lint/ConstantDefinitionInBlock
 
       def self.build
-        utility_data =
-          JSON.parse(
-            File.read(
-              File.expand_path(File.join(*%w[.. .. .. node_modules @primer css dist stats utilities.json]), __dir__)
-            )
-          )["selectors"]["values"]
-
-        custom_utility_data = YAML.load_file(
-          File.join(__dir__, "custom_utilities.yml")
-        )
-
-        layout_data =
-          JSON.parse(
-            File.read(
-              File.expand_path(File.join(*%w[.. .. .. node_modules @primer css dist stats layout.json]), __dir__)
-            )
-          )["selectors"]["values"]
+        utility_data = JSON.parse(File.read(File.expand_path("utilities.json", __dir__)))["selectors"]["values"]
+        layout_data = JSON.parse(File.read(File.expand_path("layout.json", __dir__)))["selectors"]["values"]
+        custom_utility_data = YAML.load_file(File.join(__dir__, "custom_utilities.yml"))
 
         css_data = utility_data + layout_data
 
