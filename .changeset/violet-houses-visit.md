@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Removing Primer::DetailsComponent
+Removing the deprecated Primer::DetailsComponent component.
