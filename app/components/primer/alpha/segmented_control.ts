@@ -20,7 +20,7 @@ export class SegmentedControlElement extends HTMLElement {
   }
 
   // Updates the button labels to have a data-content attribute with the text
-  // This if for selection styling to avoid the text jumping. It only needs to be
+  // This is for selection styling to avoid the text jumping. It only needs to be
   // setup when the component is first loaded.
   #updateButtonLabels() {
     for (const label of this.querySelectorAll('.Button-label')) {
