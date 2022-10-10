@@ -43,7 +43,7 @@
   display: inline-flex;
   border: var(--primer-borderWidth-thin, max(1px, 0.0625rem)) solid transparent;
   border-radius: var(--primer-borderRadius-medium, 6px);
-  padding: calc(var(--primer-control-xsmall-paddingInline-condensed, 4px) - var(--primer-borderWidth-thin, 1px));
+  padding: var(--primer-control-xsmall-paddingInline-condensed, 4px);
 
   /* Selected ---------------------------------------- */
   &.SegmentedControl-item--selected {
@@ -88,16 +88,30 @@
 
   /* Button ----------------------------------------- */
   & .Button {
-    height: calc(var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) - var(--primer-borderWidth-thin, 1px) * 2);
-    padding-left: calc(var(--primer-control-medium-paddingInline-condensed, 8px) - var(--primer-borderWidth-thin, 1px));
-    padding-right: calc(var(--primer-control-medium-paddingInline-condensed, 8px) - var(--primer-borderWidth-thin, 1px));
+    border: 0;
     font-weight: var(--base-text-weight-normal, 400);
     transition: none;
+    color: var(--color-btn-text);
 
     &:focus-visible {
-      outline-offset: calc(var(--primer-control-xsmall-paddingInline-condensed, 4px) - var(--primer-borderWidth-thin, 1px) * 2);
-      border-radius: calc(var(--primer-borderRadius-medium, 6px) - 3px);
+      outline-offset: calc(var(--primer-control-xsmall-paddingInline-condensed, 4px) - var(--primer-borderWidth-thin, 1px));
+      border-radius: calc(var(--primer-borderRadius-medium, 6px) - 5px);
     }
+  }
+
+  & .Button--small {
+    height: calc(var(--primer-control-small-size, 28px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+    padding: 0 calc(var(--primer-control-small-paddingInline-condensed, 8px) - var(--primer-control-xsmall-paddingInline-condensed, 4px));
+  }
+
+  & .Button--medium {
+    height: calc(var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+    padding: 0 calc(var(--primer-control-medium-paddingInline-normal, 12px) - var(--primer-control-xsmall-paddingInline-condensed, 4px));
+  }
+
+  & .Button--large {
+    height: calc(var(--primer-control-large-size, 40px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+    padding: 0 calc(var(--primer-control-large-paddingInline-spacious, 16px) - var(--primer-control-xsmall-paddingInline-condensed, 4px));
   }
 
   & .Button--iconOnly {
