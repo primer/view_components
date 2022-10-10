@@ -18,47 +18,47 @@ module Primer
       }.freeze
       ICON_ONLY_OPTIONS = ICON_ONLY_MAPPINGS.keys
 
-      # Use to render a button and an associated panel slot. See the example below or refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
+      # Use to render an item in the segmented control
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_many :buttons, lambda { |selected: false, icon: nil, **system_arguments|
-        Primer::Alpha::SegmentedControl::Button.new(selected: selected, icon: icon, icon_only: @icon_only, block: @full_width, **system_arguments)
+      renders_many :items, lambda { |label:, selected: false, icon: nil, **system_arguments|
+        Primer::Alpha::SegmentedControl::Item.new(label: label, selected: selected, icon: icon, icon_only: @icon_only, block: @full_width, **system_arguments)
       }
 
       # @example Basic usage
       #
       #   <%= render(Primer::Alpha::SegmentedControl.new) do |c| %>
-      #     <%= c.with_button(selected: true) { "Preview" } %>
-      #     <%= c.with_button { "Raw" } %>
-      #     <%= c.with_button { "Blame" } %>
+      #     <%= c.with_item(label: "Preview", selected: true) %>
+      #     <%= c.with_item(label: "Raw") %>
+      #     <%= c.with_item(label: "Blame") %>
       #   <% end %>
       #
       # @example With icons
       #   <%= render(Primer::Alpha::SegmentedControl.new) do |c| %>
-      #     <%= c.with_button(icon: :eye, selected: true) { "Preview" } %>
-      #     <%= c.with_button(icon: :"file-code") { "Raw" } %>
-      #     <%= c.with_button(icon: :people) { "Blame" } %>
+      #     <%= c.with_item(label: "Preview", icon: :eye, selected: true) %>
+      #     <%= c.with_item(label: "Raw", icon: :"file-code") %>
+      #     <%= c.with_item(label: "Blame", icon: :people) %>
       #   <% end %>
       #
       # @example With icons only
       #   <%= render(Primer::Alpha::SegmentedControl.new(icon_only: :always)) do |c| %>
-      #     <%= c.with_button(icon: :eye, selected: true) { "Preview" } %>
-      #     <%= c.with_button(icon: :"file-code") { "Raw" } %>
-      #     <%= c.with_button(icon: :people) { "Blame" } %>
+      #     <%= c.with_item(label: "Preview", icon: :eye, selected: true) %>
+      #     <%= c.with_item(label: "Raw", icon: :"file-code") %>
+      #     <%= c.with_item(label: "Blame", icon: :people) %>
       #   <% end %>
       #
       # @example With icons only when narrow
       #   <%= render(Primer::Alpha::SegmentedControl.new(icon_only: :when_narrow)) do |c| %>
-      #     <%= c.with_button(icon: :eye, selected: true) { "Preview" } %>
-      #     <%= c.with_button(icon: :"file-code") { "Raw" } %>
-      #     <%= c.with_button(icon: :people) { "Blame" } %>
+      #     <%= c.with_item(label: "Preview", icon: :eye, selected: true) %>
+      #     <%= c.with_item(label: "Raw", icon: :"file-code") %>
+      #     <%= c.with_item(label: "Blame", icon: :people) %>
       #   <% end %>
       #
       # @example Fill width of parent
       #   <%= render(Primer::Alpha::SegmentedControl.new(full_width: true)) do |c| %>
-      #     <%= c.with_button(icon: :eye, selected: true) { "Preview" } %>
-      #     <%= c.with_button(icon: :"file-code") { "Raw" } %>
-      #     <%= c.with_button(icon: :people) { "Blame" } %>
+      #     <%= c.with_item(label: "Preview", icon: :eye, selected: true) %>
+      #     <%= c.with_item(label: "Raw", icon: :"file-code") %>
+      #     <%= c.with_item(label: "Blame", icon: :people) %>
       #   <% end %>
       #
       # @param icon_only [Symbol] <%= one_of(Primer::Alpha::SegmentedControl::ICON_ONLY_OPTIONS) %>
@@ -74,23 +74,6 @@ module Primer
           ICON_ONLY_MAPPINGS[icon_only],
           "SegmentedControl--fullWidth": full_width
         )
-      end
-
-      # SegmentedControl::Button is a private component that is only used by SegmentedControl
-      # It wraps the Button and IconButton components to provide the correct styles
-      class Button < Primer::BaseComponent
-        attr_reader :selected
-
-        def initialize(icon: nil, selected: false, icon_only: ICON_ONLY_DEFAULT, **system_arguments)
-          @selected = selected
-          @icon_only = fetch_or_fallback(ICON_ONLY_OPTIONS, icon_only, ICON_ONLY_DEFAULT)
-          @system_arguments = system_arguments
-          @system_arguments[:"data-action"] = "click:segmented-control#select"
-          @system_arguments[:"aria-current"] = selected
-          @system_arguments[:scheme] = :invisible
-          @system_arguments[:id] ||= "segmented-button-#{SecureRandom.hex(4)}" if @icon_only == :when_narrow || @system_arguments[:id]
-          @icon = icon
-        end
       end
     end
   end

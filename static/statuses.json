@@ -18,7 +18,7 @@
   "Primer::Alpha::NavList::Item": "alpha",
   "Primer::Alpha::NavList::Section": "alpha",
   "Primer::Alpha::SegmentedControl": "alpha",
-  "Primer::Alpha::SegmentedControl::Button": "beta",
+  "Primer::Alpha::SegmentedControl::Item": "alpha",
   "Primer::Alpha::TabNav": "alpha",
   "Primer::Alpha::TabPanels": "alpha",
   "Primer::Alpha::TextField": "alpha",

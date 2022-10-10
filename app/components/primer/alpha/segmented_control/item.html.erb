@@ -1,0 +1,14 @@
+<li class="<%= class_names(
+  "SegmentedControl-item",
+  "SegmentedControl-item--selected": @selected
+  ) %>" role="listitem" data-targets="segmented-control.items">
+  <% if @icon_only == :always %>
+    <%= render Primer::Beta::IconButton.new(icon: @icon, "aria-label": @label, **@system_arguments) %>
+  <% else %>
+    <%= render Primer::Beta::Button.new(size: :small, **@system_arguments) do |button| %>
+      <% button.with_leading_visual_icon(icon: @icon) unless @icon.nil? %>
+      <% button.tooltip(text: @label) if @icon_only == :when_narrow %>
+      <%= @label %>
+    <% end %>
+  <% end %>
+</li>
