@@ -3,6 +3,7 @@
 if ! command -v overmind &> /dev/null
 then
   echo "Please install overmind."
+  exit 1
 fi
 
 # Gems
