@@ -12,7 +12,6 @@ export class ModalDialogElement extends HTMLElement {
   #focusAbortController = new AbortController()
   #abortController: AbortController | null = null
   #openButton: HTMLButtonElement | undefined
-  #shouldTryLoadingFragment = true
 
   get open() {
     return this.hasAttribute('open')
