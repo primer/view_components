@@ -21,7 +21,8 @@ module Primer
 
       # @param icon_only [Symbol] select [always, never, when_narrow]
       # @param number_of_buttons [Integer] number
-      def full_width(number_of_buttons: 3, icon_only: :never)
+      # @param size select [small, medium, large]
+      def full_width(number_of_buttons: 3, icon_only: :never, size: :medium)
         render(Primer::Alpha::SegmentedControl.new(full_width: true, icon_only: icon_only)) do |c|
           Array.new(number_of_buttons || 3) do |i|
             c.with_item(label: "Button #{i + 1}", icon: (icon_only == :never ? nil : :zap), selected: i.zero?)
@@ -31,8 +32,9 @@ module Primer
 
       # @param full_width [Boolean] toggle
       # @param number_of_buttons [Integer] number
-      def icons_and_text(full_width: false, number_of_buttons: 3)
-        render(Primer::Alpha::SegmentedControl.new(full_width: full_width)) do |c|
+      # @param size select [small, medium, large]
+      def icons_and_text(full_width: false, number_of_buttons: 3, size: :medium)
+        render(Primer::Alpha::SegmentedControl.new(full_width: full_width, size: size)) do |c|
           Array.new(number_of_buttons || 3) do |i|
             c.with_item(label: "Button #{i + 1}", icon: :zap, selected: i.zero?)
           end
@@ -41,8 +43,9 @@ module Primer
 
       # @param full_width [Boolean] toggle
       # @param number_of_buttons [Integer] number
-      def icons_only(full_width: false, number_of_buttons: 3)
-        render(Primer::Alpha::SegmentedControl.new(full_width: full_width, icon_only: :always)) do |c|
+      # @param size select [small, medium, large]
+      def icons_only(full_width: false, number_of_buttons: 3, size: :medium)
+        render(Primer::Alpha::SegmentedControl.new(full_width: full_width, icon_only: :always, size: size)) do |c|
           Array.new(number_of_buttons || 3) do |i|
             c.with_item(label: "Button #{i + 1}", icon: :zap, selected: i.zero?)
           end
@@ -51,8 +54,9 @@ module Primer
 
       # @param full_width [Boolean] toggle
       # @param number_of_buttons [Integer] number
-      def icons_only_when_narrow(full_width: false, number_of_buttons: 3)
-        render(Primer::Alpha::SegmentedControl.new(full_width: full_width, icon_only: :when_narrow)) do |c|
+      # @param size select [small, medium, large]
+      def icons_only_when_narrow(full_width: false, number_of_buttons: 3, size: :medium)
+        render(Primer::Alpha::SegmentedControl.new(full_width: full_width, icon_only: :when_narrow, size: size)) do |c|
           Array.new(number_of_buttons || 3) do |i|
             c.with_item(label: "Button #{i + 1}", icon: :zap, selected: i.zero?)
           end
