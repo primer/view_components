@@ -66,7 +66,7 @@ export class ModalDialogElement extends HTMLElement {
       'click',
       event => {
         const target = event.target as HTMLElement
-        const clickOutsideDialog = target.closest(this.tagName) !== this
+        const clickOutsideDialog = !target.closest(`#${this.getAttribute('id')}`)
         const button = target?.closest('button')
         // go over this logic:
         if (!button) {
