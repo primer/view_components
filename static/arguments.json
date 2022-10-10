@@ -430,6 +430,12 @@
         "description": "If the component should be full width"
       },
       {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:medium`",
+        "description": "One of `:large`, `:medium`, or `:small`."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
