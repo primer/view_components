@@ -14,7 +14,7 @@ module Primer
       def default(full_width: false, number_of_buttons: 3, icon_only: :never, size: :medium)
         render(Primer::Alpha::SegmentedControl.new(full_width: full_width, icon_only: icon_only, size: size)) do |c|
           Array.new(number_of_buttons || 3) do |i|
-            c.with_item(label: "Button", icon: (icon_only == :never ? nil : :zap), selected: i.zero?)
+            c.with_item(label: "Button #{i + 1}", icon: (icon_only == :never ? nil : :zap), selected: i.zero?)
           end
         end
       end
