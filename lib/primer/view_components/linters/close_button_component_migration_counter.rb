@@ -14,7 +14,7 @@ module ERBLint
 
       TAGS = %w[button].freeze
       CLASSES = %w[close-button].freeze
-      MESSAGE = "We are migrating close-button to use [Primer::Beta::CloseButton](https://primer.style/view-components/components/closebutton), please try to use that instead of raw HTML."
+      MESSAGE = "We are migrating close-button to use [Primer::Beta::CloseButton](https://primer.style/view-components/components/beta/closebutton), please try to use that instead of raw HTML."
       ARGUMENT_MAPPER = ArgumentMappers::CloseButton
       COMPONENT = "Primer::Beta::CloseButton"
 
