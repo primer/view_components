@@ -5,6 +5,7 @@ require_relative "boot"
 require "action_controller/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
+require "view_component"
 require "primer/view_components/engine"
 
 # Require the gems listed in Gemfile, including any gems
