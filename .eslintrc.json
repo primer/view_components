@@ -33,7 +33,8 @@
       "extends": [
         "plugin:@typescript-eslint/recommended",
         "plugin:github/recommended",
-        "plugin:github/browser"
+        "plugin:github/browser",
+        "plugin:github/typescript"
       ],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
