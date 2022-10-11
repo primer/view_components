@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class MultiInputForm < ApplicationForm
   form do |my_form|
     my_form.radio_button_group(name: :country, label: "Country") do |radio_group|

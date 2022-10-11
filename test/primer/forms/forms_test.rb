@@ -231,6 +231,27 @@ class Primer::Forms::FormsTest < Minitest::Test
     assert_selector ".FormControl-radio-wrap + .ml-4 .FormControl input[name=first_name]"
   end
 
+  def test_radio_button_group_form
+    render_preview :radio_button_group_form
+
+    assert_selector ".FormControl-radio-wrap + .FormControl-radio-wrap + .FormControl-radio-wrap"
+  end
+
+  def test_select_list_form
+    render_preview :select_list_form
+
+    assert_selector ".FormControl-select option[value=lopez_island]"
+    assert_selector ".FormControl-select option[value=bellevue]"
+    assert_selector ".FormControl-select option[value=seattle]"
+  end
+
+  def test_composed_form
+    render_preview :composed_form
+
+    assert_selector ".FormControl-input[name='[first_name][first_name]']"
+    assert_selector ".FormControl-input[name='[last_name][last_name]']"
+  end
+
   def test_renders_separator
     render_preview :multi_text_field_form
 
