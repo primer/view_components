@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class ArrayCheckBoxGroupForm < ApplicationForm
   form do |check_form|
     # Passing a name: here causes the form to emit all the check boxes with the same name.

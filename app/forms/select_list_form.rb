@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class SelectListForm < ApplicationForm
   form do |check_form|
     check_form.select_list(name: "cities", label: "Cool cities", caption: "Select your favorite!") do |city_list|

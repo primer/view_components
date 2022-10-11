@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class MultiTextFieldForm < ApplicationForm
   form do |my_form|
     my_form.text_field(

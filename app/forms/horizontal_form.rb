@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class HorizontalForm < ApplicationForm
   form do |my_form|
     my_form.group(layout: :horizontal) do |name_group|

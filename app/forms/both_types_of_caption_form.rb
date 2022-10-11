@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class BothTypesOfCaptionForm < ApplicationForm
   form do |caption_form|
     caption_form.text_field(

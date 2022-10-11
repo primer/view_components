@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class ComposedForm < ApplicationForm
   form do |composed_form|
     composed_form.fields_for(:first_name) do |builder|

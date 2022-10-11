@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class AfterContentForm < ApplicationForm
   form do |after_content_form|
     after_content_form.text_field(

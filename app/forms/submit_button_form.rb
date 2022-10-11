@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class SubmitButtonForm < ApplicationForm
   form do |my_form|
     my_form.fields_for(:name_form) do |builder|
