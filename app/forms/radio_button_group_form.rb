@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class RadioButtonGroupForm < ApplicationForm
   form do |radio_form|
     radio_form.radio_button_group(name: "channel", label: "How did you hear about us?") do |radio_group|
