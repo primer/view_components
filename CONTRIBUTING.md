@@ -1,1 +1,1 @@
-contributor-docs/README.md
+docs/contributors/README.md
