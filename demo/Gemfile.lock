@@ -298,7 +298,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.8-x86_64-darwin)
       racc (~> 1.4)
-    octicons (17.6.0)
+    octicons (17.7.0)
     oj (3.13.21)
     os (1.1.4)
     pry (0.14.1)
@@ -389,7 +389,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    view_component (2.72.0)
+    view_component (2.74.1)
       activesupport (>= 5.0.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -430,6 +430,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
+  view_component (>= 2.74.1)
 
 BUNDLED WITH
    2.2.33
