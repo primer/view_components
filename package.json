@@ -30,15 +30,15 @@
     "clean": "git clean -fdX -- app/",
     "build:docs": "npm run --prefix ./docs/ build",
     "build:docs:preview": "cd docs && npx gatsby build",
-    "prepare": "rm -rf docs/static && mkdir -p docs/static && npm run build:js && npm run build:css && cp app/assets/**/primer_view_components.* docs/static/",
+    "prepare": "rm -rf docs/static && mkdir -p docs/static && script/build-assets && cp app/assets/**/primer_view_components.* docs/static/",
     "lint": "npm run lint:stylelint && npm run lint:eslint",
     "lint:stylelint": "stylelint 'app/components/**/*.pcss'",
     "lint:stylelint:fix": "stylelint 'app/components/**/*.pcss' --fix",
     "lint:eslint": "eslint 'app/components/**/*.ts'",
     "lint:eslint:fix": "eslint 'app/components/**/*.ts' --fix",
     "changeset:version": "changeset version && script/version",
-    "build:js": "tsc && rollup -c",
-    "build:css": "postcss -o app/assets/styles/primer_view_components.css app/components/primer/primer.pcss"
+    "build:js": "script/build-assets js",
+    "build:css": "script/build-assets css"
   },
   "dependencies": {
     "@github/auto-complete-element": "^3.3.4",
