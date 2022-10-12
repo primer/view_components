@@ -1,24 +1,36 @@
-const path = require('path')
-const scss = require('postcss-scss')
+import autoprefixer from 'autoprefixer';
+import sass from '@koddsson/postcss-sass';
+import scss from 'postcss-scss';
+import scssImport from 'postcss-import';
+import mixins from 'postcss-mixins';
+import presetEnv from 'postcss-preset-env';
+import cssNano from 'cssnano';
+import {join} from 'path';
 
-module.exports = {
+export default {
+  map: {
+    sourcesContent: false,
+    annotation: true
+  },
   customSyntax: scss,
   parser: scss,
-  map: {
-    annotation: false
-  },
   plugins: [
-    require('postcss-import'),
-    require('postcss-mixins')({
-      mixinsDir: path.join(__dirname, './lib/postcss_mixins/')
+    scssImport,
+    mixins({
+      mixinsDir: 'lib/postcss_mixins/'
     }),
-    require('postcss-preset-env')({
+    presetEnv({
       stage: 2,
       // https://preset-env.cssdb.org/features/#stage-2
       features: {
         'nesting-rules': true
       }
     }),
-    require('cssnano'),
+    cssNano,
+    sass({
+      includePaths: ['node_modules'],
+      outputStyle: process.env.CSS_MINIFY === '0' ? 'expanded' : 'compressed'
+    }),
+    autoprefixer,
   ],
 };

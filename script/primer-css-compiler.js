@@ -1,5 +1,5 @@
 import postcss from 'postcss'
-import postCssConfig from '../postcss.config.cjs'
+import postCssConfig from '../postcss.config.js'
 
 export default async function compiler(css, options) {
   const { plugins, ...config } = postCssConfig

@@ -1,0 +1,821 @@
+{
+  "$h00-size-mobile": {
+    "values": [
+      "40px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 5
+    },
+    "computed": "40px"
+  },
+  "$h0-size-mobile": {
+    "values": [
+      "32px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 6
+    },
+    "computed": "32px"
+  },
+  "$h1-size-mobile": {
+    "values": [
+      "26px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 7
+    },
+    "computed": "26px"
+  },
+  "$h2-size-mobile": {
+    "values": [
+      "22px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 8
+    },
+    "computed": "22px"
+  },
+  "$h3-size-mobile": {
+    "values": [
+      "18px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 9
+    },
+    "computed": "18px"
+  },
+  "$h00-size": {
+    "values": [
+      "48px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 12
+    },
+    "computed": "48px"
+  },
+  "$h0-size": {
+    "values": [
+      "40px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 13
+    },
+    "computed": "40px"
+  },
+  "$h1-size": {
+    "values": [
+      "32px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 14
+    },
+    "computed": "32px"
+  },
+  "$h2-size": {
+    "values": [
+      "24px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 15
+    },
+    "computed": "24px"
+  },
+  "$h3-size": {
+    "values": [
+      "20px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 16
+    },
+    "computed": "20px"
+  },
+  "$h4-size": {
+    "values": [
+      "16px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 17
+    },
+    "computed": "16px"
+  },
+  "$h5-size": {
+    "values": [
+      "14px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 18
+    },
+    "computed": "14px"
+  },
+  "$h6-size": {
+    "values": [
+      "12px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 19
+    },
+    "computed": "12px"
+  },
+  "$font-size-small": {
+    "values": [
+      "12px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 21
+    },
+    "computed": "12px"
+  },
+  "$font-weight-bold": {
+    "values": [
+      "600"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 24
+    },
+    "computed": "600"
+  },
+  "$font-weight-semibold": {
+    "values": [
+      "500"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 25
+    },
+    "computed": "500"
+  },
+  "$font-weight-normal": {
+    "values": [
+      "400"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 26
+    },
+    "computed": "400"
+  },
+  "$font-weight-light": {
+    "values": [
+      "300"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 27
+    },
+    "computed": "300"
+  },
+  "$lh-condensed-ultra": {
+    "values": [
+      "1"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 30
+    },
+    "computed": "1"
+  },
+  "$lh-condensed": {
+    "values": [
+      "1.25"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 31
+    },
+    "computed": "1.25"
+  },
+  "$lh-default": {
+    "values": [
+      "1.5"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 32
+    },
+    "computed": "1.5"
+  },
+  "$body-font": {
+    "values": [
+      "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 35
+    },
+    "computed": "calc(-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji')"
+  },
+  "$mono-font": {
+    "values": [
+      "ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 39
+    },
+    "computed": "calc(ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace)"
+  },
+  "$body-font-size": {
+    "values": [
+      "14px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 42
+    },
+    "computed": "14px"
+  },
+  "$body-line-height": {
+    "values": [
+      "$lh-default",
+      "1.5"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/typography.scss",
+      "line": 43
+    },
+    "computed": "1.5"
+  },
+  "$spacer": {
+    "values": [
+      "8px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 32
+    },
+    "computed": "8px"
+  },
+  "$spacer-0": {
+    "values": [
+      "0"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 35
+    },
+    "computed": "0"
+  },
+  "$spacer-1": {
+    "values": [
+      "$spacer * 0.5",
+      "8px * 0.5"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 36
+    },
+    "computed": "4px"
+  },
+  "$spacer-2": {
+    "values": [
+      "$spacer",
+      "8px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 37
+    },
+    "computed": "8px"
+  },
+  "$spacer-3": {
+    "values": [
+      "$spacer * 2",
+      "8px * 2"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 38
+    },
+    "computed": "16px"
+  },
+  "$spacer-4": {
+    "values": [
+      "$spacer * 3",
+      "8px * 3"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 39
+    },
+    "computed": "24px"
+  },
+  "$spacer-5": {
+    "values": [
+      "$spacer * 4",
+      "8px * 4"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 40
+    },
+    "computed": "32px"
+  },
+  "$spacer-6": {
+    "values": [
+      "$spacer * 5",
+      "8px * 5"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 41
+    },
+    "computed": "40px"
+  },
+  "$spacer-7": {
+    "values": [
+      "$spacer * 6",
+      "8px * 6"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 69
+    },
+    "computed": "48px"
+  },
+  "$spacer-8": {
+    "values": [
+      "$spacer * 8",
+      "8px * 8"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 70
+    },
+    "computed": "64px"
+  },
+  "$spacer-9": {
+    "values": [
+      "$spacer * 10",
+      "8px * 10"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 71
+    },
+    "computed": "80px"
+  },
+  "$spacer-10": {
+    "values": [
+      "$spacer * 12",
+      "8px * 12"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 72
+    },
+    "computed": "96px"
+  },
+  "$spacer-11": {
+    "values": [
+      "$spacer * 14",
+      "8px * 14"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 73
+    },
+    "computed": "112px"
+  },
+  "$spacer-12": {
+    "values": [
+      "$spacer * 16",
+      "8px * 16"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 74
+    },
+    "computed": "128px"
+  },
+  "$em-spacer-1": {
+    "values": [
+      "0.0625em"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 99
+    },
+    "computed": "0.0625em"
+  },
+  "$em-spacer-2": {
+    "values": [
+      "0.125em"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 100
+    },
+    "computed": "0.125em"
+  },
+  "$em-spacer-3": {
+    "values": [
+      "0.25em"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 101
+    },
+    "computed": "0.25em"
+  },
+  "$em-spacer-4": {
+    "values": [
+      "0.375em"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 102
+    },
+    "computed": "0.375em"
+  },
+  "$em-spacer-5": {
+    "values": [
+      "0.5em"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 103
+    },
+    "computed": "0.5em"
+  },
+  "$em-spacer-6": {
+    "values": [
+      "0.75em"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 104
+    },
+    "computed": "0.75em"
+  },
+  "$size": {
+    "values": [
+      "16px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 108
+    },
+    "computed": "16px"
+  },
+  "$size-0": {
+    "values": [
+      "0"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 110
+    },
+    "computed": "0"
+  },
+  "$size-1": {
+    "values": [
+      "$size",
+      "16px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 111
+    },
+    "computed": "16px"
+  },
+  "$size-2": {
+    "values": [
+      "$size-1 +  4px",
+      "16px +  4px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 112
+    },
+    "computed": "20px"
+  },
+  "$size-3": {
+    "values": [
+      "$size-2 +  4px",
+      "16px +  4px +  4px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 113
+    },
+    "computed": "24px"
+  },
+  "$size-4": {
+    "values": [
+      "$size-3 +  4px",
+      "16px +  4px +  4px +  4px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 114
+    },
+    "computed": "28px"
+  },
+  "$size-5": {
+    "values": [
+      "$size-4 +  4px",
+      "16px +  4px +  4px +  4px +  4px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 115
+    },
+    "computed": "32px"
+  },
+  "$size-6": {
+    "values": [
+      "$size-5 +  8px",
+      "16px +  4px +  4px +  4px +  4px +  8px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 116
+    },
+    "computed": "40px"
+  },
+  "$size-7": {
+    "values": [
+      "$size-6 +  8px",
+      "16px +  4px +  4px +  4px +  4px +  8px +  8px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 117
+    },
+    "computed": "48px"
+  },
+  "$size-8": {
+    "values": [
+      "$size-7 + 16px",
+      "16px +  4px +  4px +  4px +  4px +  8px +  8px + 16px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 118
+    },
+    "computed": "64px"
+  },
+  "$container-width": {
+    "values": [
+      "980px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 121
+    },
+    "computed": "980px"
+  },
+  "$grid-gutter": {
+    "values": [
+      "10px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 122
+    },
+    "computed": "10px"
+  },
+  "$width-xs": {
+    "values": [
+      "0"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 125
+    },
+    "computed": "0"
+  },
+  "$width-sm": {
+    "values": [
+      "544px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 127
+    },
+    "computed": "544px"
+  },
+  "$width-md": {
+    "values": [
+      "768px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 129
+    },
+    "computed": "768px"
+  },
+  "$width-lg": {
+    "values": [
+      "1012px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 131
+    },
+    "computed": "1012px"
+  },
+  "$width-xl": {
+    "values": [
+      "1280px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 133
+    },
+    "computed": "1280px"
+  },
+  "$container-sm": {
+    "values": [
+      "$width-sm",
+      "544px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 136
+    },
+    "computed": "544px"
+  },
+  "$container-md": {
+    "values": [
+      "$width-md",
+      "768px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 137
+    },
+    "computed": "768px"
+  },
+  "$container-lg": {
+    "values": [
+      "$width-lg",
+      "1012px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 138
+    },
+    "computed": "1012px"
+  },
+  "$container-xl": {
+    "values": [
+      "$width-xl",
+      "1280px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 139
+    },
+    "computed": "1280px"
+  },
+  "$viewport-narrow": {
+    "values": [
+      "'max-width: #{$width-md - 0.02px}'",
+      "'max-width: #{768px - 0.02px}'"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 152
+    },
+    "computed": "calc('max-width: #{768px - 0.02px}')"
+  },
+  "$viewport-regular": {
+    "values": [
+      "'min-width: #{$width-md}'",
+      "'min-width: #{768px}'"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 153
+    },
+    "computed": "calc('min-width: #{768px}')"
+  },
+  "$viewport-wide": {
+    "values": [
+      "'min-width: 1400px'"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/layout.scss",
+      "line": 154
+    },
+    "computed": "calc('min-width: 1400px')"
+  },
+  "$border-width": {
+    "values": [
+      "1px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/misc.scss",
+      "line": 4
+    },
+    "computed": "1px"
+  },
+  "$border-style": {
+    "values": [
+      "solid"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/misc.scss",
+      "line": 5
+    },
+    "computed": "calc(solid)"
+  },
+  "$border": {
+    "values": [
+      "$border-width $border-style var(--color-border-default)",
+      "1px solid var(--color-border-default)"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/misc.scss",
+      "line": 6
+    },
+    "computed": "calc(1px solid var(--color-border-default))"
+  },
+  "$border-radius-1": {
+    "values": [
+      "4px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/misc.scss",
+      "line": 9
+    },
+    "computed": "4px"
+  },
+  "$border-radius-2": {
+    "values": [
+      "6px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/misc.scss",
+      "line": 10
+    },
+    "computed": "6px"
+  },
+  "$border-radius-3": {
+    "values": [
+      "8px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/misc.scss",
+      "line": 11
+    },
+    "computed": "8px"
+  },
+  "$border-radius": {
+    "values": [
+      "$border-radius-2",
+      "6px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/misc.scss",
+      "line": 12
+    },
+    "computed": "6px"
+  },
+  "$tooltip-max-width": {
+    "values": [
+      "250px"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/misc.scss",
+      "line": 15
+    },
+    "computed": "250px"
+  },
+  "$tooltip-delay": {
+    "values": [
+      "0.4s"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/misc.scss",
+      "line": 16
+    },
+    "computed": "0.4s"
+  },
+  "$tooltip-duration": {
+    "values": [
+      "0.1s"
+    ],
+    "source": {
+      "path": "app/lib/primer/css/support/variables/misc.scss",
+      "line": 17
+    },
+    "computed": "0.1s"
+  }
+}

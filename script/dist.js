@@ -1,16 +1,16 @@
 #!/usr/bin/env node
-
 import {globby} from 'globby'
+import compiler from './primer-css-compiler.js'
 import cssstats from 'cssstats'
 import {dirname, join} from 'path'
-import fsExtra from 'fs-extra'
 
-import compiler from './primer-css-compiler.js'
 import analyzeVariables from './analyze-variables.js'
 
+import fsExtra from 'fs-extra'
 const {copy, remove, mkdirp, readFile, writeFile} = fsExtra
-const inDir = 'src'
-const outDir = 'dist'
+
+const inDir = 'app/lib/primer/css'
+const outDir = 'app/assets/styles'
 const statsDir = join(outDir, 'stats')
 const encoding = 'utf8'
 
@@ -100,8 +100,8 @@ function getPathName(path) {
 dist()
 
 async function writeVariableData() {
-  const support = await analyzeVariables('src/support/index.scss')
-  const marketing = await analyzeVariables('src/marketing/support/index.scss')
-  const data = Object.assign({}, support, marketing)
+  const support = await analyzeVariables('app/lib/primer/css/support/index.scss')
+  // const marketing = await analyzeVariables('src/marketing/support/index.scss')
+  const data = Object.assign({}, support) //, marketing)
   writeFile(join(outDir, 'variables.json'), JSON.stringify(data, null, 2))
 }
