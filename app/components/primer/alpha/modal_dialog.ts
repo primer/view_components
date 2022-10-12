@@ -14,11 +14,11 @@ function clickHandler(event: Event) {
   const button = target?.closest('button')
 
   // If the user is clicking a valid dialog trigger
-  let dialogId = target.getAttribute('data-show-dialog-id')
-  if (target instanceof HTMLButtonElement && dialogId) {
+  let dialogId = button?.getAttribute('data-show-dialog-id')
+  if (button && dialogId) {
     event.stopPropagation()
-    const dialog = document.querySelector<ModalDialogElement>(`#${dialogId}`)
-    if (dialog) {
+    const dialog = document.getElementById(dialogId)
+    if (dialog instanceof ModalDialogElement) {
       dialog.openButton = button
       dialog.show()
       return
