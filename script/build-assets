@@ -1,51 +1,31 @@
-#!/usr/bin/env ruby
-# frozen_string_literal: true
+#!/bin/bash
 
-require "thor"
-require_relative "../lib/primer/view_components/version"
+export INPUT_TYPE=$1
 
-# Publishes `primer_view_components` gem and npm package.
-#
-# Usage:
-#
-# script/build-assets
-class BuildAssetsCLI < Thor::Group
-  include Thor::Actions
+build_css() {
+  # Get a list of all the CSS files in the src directory
+  CSS_FILES=$(find app/components/primer -name '*.pcss' ! -path '*/primer.pcss')
+  npx postcss $CSS_FILES --dir app/components --base app/components --ext css
+  # Build main CSS bundle
+  npx postcss -o app/assets/styles/primer_view_components.css app/components/primer/primer.pcss
+}
 
-  def exit_on_failure?
-    true
-  end
+# Function to build the assets
+build_js() {
+  # Build the assets
+  npx tsc
+  npx rollup -c
+}
 
-  def build_js
-    return unless build?("js")
-
-    # Build typescript files
-    run("npx tsc")
-
-    # Build main JS file
-    run("npx rollup -c")
-  end
-
-  def build_css
-    return unless build?("css")
-
-    files = Dir.glob("app/components/**/*.pcss").reject { |f| f.include?("primer.pcss") }
-    # Build individual CSS files for each component
-    run("npx postcss #{files.join(" ")} --dir app/components --base app/components --ext css")
-
-    # Build main CSS file
-    run("npx postcss -o app/assets/styles/primer_view_components.css app/components/primer/primer.pcss -m")
-  end
-
-  private
-
-  def build?(type)
-    input_type = args[0] || "all"
-
-    return true if input_type == "all"
-
-    return input_type == type
-  end
-end
-
-BuildAssetsCLI.start(ARGV)
+if [ "$INPUT_TYPE" = "css" ]; then
+  echo "Building css assets"
+  build_css
+elif [ "$INPUT_TYPE" = "js" ]; then
+  # run build_js
+  echo "Building js assets"
+  build_js
+else
+  echo "Building all assets"
+  build_js
+  build_css
+fi
