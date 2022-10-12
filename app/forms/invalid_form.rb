@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class MultiTextFieldForm < ApplicationForm
+# :nodoc:
+class InvalidForm < ApplicationForm
   form do |my_form|
     my_form.text_field(
       name: :first_name,
@@ -9,18 +10,12 @@ class MultiTextFieldForm < ApplicationForm
       caption: "That which we call a rose by any other name would smell as sweet."
     )
 
-    my_form.separator
-
     my_form.text_field(
       name: :last_name,
       label: "Last name",
       required: true,
-      caption: "Bueller. Bueller. Bueller."
-    )
-
-    my_form.hidden(
-      name: :csrf_token,
-      value: "abc123"
+      caption: "Bueller. Bueller. Bueller.",
+      validation_message: "That doesn't look right"
     )
   end
 end

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class CheckBoxGroupForm < ApplicationForm
   form do |check_form|
     check_form.check_box_group(label: "I like to eat, eat, eat:") do |check_group|

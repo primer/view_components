@@ -342,7 +342,7 @@ namespace :docs do
     FileUtils.rm_rf(File.join(adr_content_dir))
     FileUtils.mkdir(adr_content_dir)
 
-    nav_entries = Dir[File.join(*%w[adr *.md])].sort.map do |orig_path|
+    nav_entries = Dir[File.join(*%w[docs adr *.md])].sort.map do |orig_path|
       orig_file_name = File.basename(orig_path)
       url_name = orig_file_name.chomp(".md")
 
