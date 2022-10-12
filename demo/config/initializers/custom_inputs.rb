@@ -1,3 +1,8 @@
 # frozen_string_literal: true
 
-Lookbook.define_param_input(:octicon, "lookbook/previews/inputs/octicon")
+begin
+  require "lookbook"
+
+  Lookbook.define_param_input(:octicon, "lookbook/previews/inputs/octicon")
+rescue NameError
+end
