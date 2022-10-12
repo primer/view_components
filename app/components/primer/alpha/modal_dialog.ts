@@ -15,7 +15,7 @@ function clickHandler(event: Event) {
 
   // If the user is clicking a valid dialog trigger
   let dialogId = button?.getAttribute('data-show-dialog-id')
-  if (target instanceof HTMLButtonElement && dialogId) {
+  if (button && dialogId) {
     event.stopPropagation()
     const dialog = document.getElementById(dialogId)
     if (dialog instanceof ModalDialogElement) {
