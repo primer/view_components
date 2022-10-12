@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "thor"
+require_relative "../lib/primer/view_components/version"
+
+# Publishes `primer_view_components` gem and npm package.
+#
+# Usage:
+#
+# script/build-assets
+class BuildAssetsCLI < Thor::Group
+  include Thor::Actions
+
+  def exit_on_failure?
+    true
+  end
+
+  def build_js
+    return unless build?("js")
+
+    # Build typescript files
+    run("npx tsc")
+
+    # Build main JS file
+    run("npx rollup -c")
+  end
+
+  def build_css
+    return unless build?("css")
+
+    files = Dir.glob("app/components/**/*.pcss").reject { |f| f.include?("primer.pcss") }
+    # Build individual CSS files for each component
+    run("npx postcss #{files.join(" ")} --dir app/components --base app/components --ext css")
+
+    # Build main CSS file
+    run("npx postcss -o app/assets/styles/primer_view_components.css app/components/primer/primer.pcss -m")
+  end
+
+  private
+
+  def build?(type)
+    input_type = args[0] || "all"
+
+    return true if input_type == "all"
+
+    return input_type == type
+  end
+end
+
+BuildAssetsCLI.start(ARGV)
