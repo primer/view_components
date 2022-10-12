@@ -185,11 +185,11 @@
       visibility: hidden;
     }
 
-    /* blue accent line
+    /* blue accent line */
+
     &::after {
-      @include activeIndicatorLine(-$spacer-1);
-      @mixin activeIndicatorLine
-    } */
+      @mixin activeIndicatorLine(calc(-1 * var(--base-size-4, 4px)));
+    }
   }
 
   /* active state [aria-current] */
