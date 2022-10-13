@@ -19,4 +19,11 @@ class PrimerBetaIconButtonTest < Minitest::Test
 
     assert_selector(".Button-withTooltip#foo")
   end
+
+  def test_allows_hiding_tooltip
+    render_inline(Primer::Beta::IconButton.new(icon: :star, "aria-label": "Star", show_tooltip: false))
+
+    refute_selector(".Button-withTooltip")
+    refute_selector("tool-tip")
+  end
 end
