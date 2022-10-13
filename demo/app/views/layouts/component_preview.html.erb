@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <%= color_theme_attributes(params[:theme] || params[:lookbook][:display][:theme]) %>>
+<html <%= color_theme_attributes(params.dig(:theme) || params.dig(:lookbook, :display, :theme)) %>>
   <head>
     <title>Component Preview</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -15,12 +15,12 @@
 
   <body>
     <div id="component-preview">
-      <% if params[:lookbook][:display][:theme] == "all" %>
+      <% if params.dig(:lookbook, :display, :theme) == "all" %>
         <div class="theme-wrap">
           <% color_themes.each do |theme| %>
             <div class="preview-wrap" <%= color_theme_attributes(theme) %>>
               <%= yield %>
-              <%= render(Primer::LabelComponent.new(classes: "theme-name")) { theme } %>
+              <div class="theme-name"><%= theme %></div>
             </div>
           <% end %>
         </div>

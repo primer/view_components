@@ -1,15 +1,20 @@
 .theme-wrap {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-  height: 100vh;
+  grid-template-columns: minmax(var(--primer-breakpoint-xsmall), auto) minmax(var(--primer-breakpoint-xsmall), auto) minmax(var(--primer-breakpoint-xsmall), auto);
+}
+
+.theme-wrap .preview-wrap {
+  border: 1px solid var(--color-border-default);
+  padding-bottom: 40px;
 }
 
 .theme-name {
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 16px;
+  right: 0;
+  background-color: var(--color-canvas-subtle);
+  padding: var(--base-size-4) var(--base-size-8);
+  font: var(--primer-text-caption-shorthand);
 }
 
 .preview-wrap {
