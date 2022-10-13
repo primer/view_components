@@ -4,7 +4,7 @@ require "rake/testtask"
 
 namespace :test do
   desc "Run all tests"
-  task all: [:fast, :system]
+  task all: [:fast, :system, :accessibility, :performance]
 
   Rake::TestTask.new(:single) do |t|
     ENV["TZ"] = "Asia/Taipei"
@@ -36,10 +36,28 @@ namespace :test do
     t.test_files = FileList["test/system/**/*_test.rb"]
   end
 
-  Rake::TestTask.new(:bench) do |t|
+  Rake::TestTask.new(:performance) do |t|
+    ENV["TZ"] = "Asia/Taipei"
+
     t.libs << "test"
-    t.test_files = FileList["test/benchmarks/**/bench_*.rb"]
+    t.test_files = FileList["test/performance/**/*_test.rb", "test/performance/**/bench_*.rb"]
     t.verbose = true
+  end
+
+  Rake::TestTask.new(:accessibility) do |t|
+    ENV["TZ"] = "Asia/Taipei"
+
+    t.libs << "test"
+    t.libs << "lib"
+    t.test_files = FileList["test/accessibility_test.rb"]
+  end
+
+  Rake::TestTask.new(:snapshots) do |t|
+    ENV["TZ"] = "Asia/Taipei"
+
+    t.libs << "test"
+    t.libs << "lib"
+    t.test_files = FileList["test/snapshots_test.rb"]
   end
 end
 
@@ -51,4 +69,8 @@ task :test do
   end
 end
 
-task bench: "test:bench"
+task "test:snapshots" => :clean_snapshots
+task :clean_snapshots do
+  # Clear folder
+  FileUtils.rm_rf("test/snapshots")
+end

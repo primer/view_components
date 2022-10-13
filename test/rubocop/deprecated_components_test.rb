@@ -27,15 +27,14 @@ class RubocopDeprecatedComponentsTest < CopTest
     investigate(cop, <<-RUBY)
       Primer::Tooltip.new
       Primer::BlankslateComponent.new
-      Primer::FlexComponent.new
     RUBY
 
-    assert_equal 3, cop.offenses.count
+    assert_equal 2, cop.offenses.count
   end
 
   def test_raises_offense_if_calling_legacy_component_with_args
     investigate(cop, <<-RUBY)
-      Primer::FlexComponent.new(:foo)
+      Primer::BlankslateComponent.new(:foo)
     RUBY
     assert_equal 1, cop.offenses.count
   end
@@ -50,7 +49,7 @@ class RubocopDeprecatedComponentsTest < CopTest
 
   def test_raises_offense_if_calling_legacy_component_in_render_with_args
     investigate(cop, <<-RUBY)
-      render(Primer::FlexComponent.new(foo: "bar"))
+      render(Primer::BlankslateComponent.new(foo: "bar"))
     RUBY
 
     assert_equal 1, cop.offenses.count

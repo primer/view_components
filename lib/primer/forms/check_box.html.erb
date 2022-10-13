@@ -1,9 +1,5 @@
 <div class="FormControl-checkbox-wrap">
-  <% if @input.scheme == :array %>
-    <%= builder.check_box(@input.name, @input.input_arguments, checked_value, nil) %>
-  <% else %>
-    <%= builder.check_box(@input.name, @input.input_arguments) %>
-  <% end %>
+  <%= builder.check_box(@input.name, @input.input_arguments, checked_value, unchecked_value) %>
   <span class="FormControl-checkbox-labelWrap">
     <%= builder.label(@input.name, **@input.label_arguments) do %>
       <%= @input.label %>

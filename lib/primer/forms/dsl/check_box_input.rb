@@ -8,9 +8,9 @@ module Primer
         DEFAULT_SCHEME = :boolean
         SCHEMES = [DEFAULT_SCHEME, :array].freeze
 
-        attr_reader :name, :label, :value, :scheme
+        attr_reader :name, :label, :value, :unchecked_value, :scheme
 
-        def initialize(name:, label:, value: nil, scheme: DEFAULT_SCHEME, **system_arguments)
+        def initialize(name:, label:, value: nil, unchecked_value: nil, scheme: DEFAULT_SCHEME, **system_arguments)
           raise ArgumentError, "Check box scheme must be one of #{SCHEMES.join(', ')}" unless SCHEMES.include?(scheme)
 
           raise ArgumentError, "Check box needs an explicit value if scheme is array" if scheme == :array && value.nil?
@@ -18,6 +18,7 @@ module Primer
           @name = name
           @label = label
           @value = value
+          @unchecked_value = unchecked_value
           @scheme = scheme
 
           super(**system_arguments)

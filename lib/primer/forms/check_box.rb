@@ -22,6 +22,12 @@ module Primer
       def checked_value
         @input.value || "1"
       end
+
+      def unchecked_value
+        return if @input.scheme == :array
+
+        @input.unchecked_value || "0"
+      end
     end
   end
 end

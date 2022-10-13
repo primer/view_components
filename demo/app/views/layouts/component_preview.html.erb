@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html <%= color_theme_attributes %>>
   <head>
     <title>Component Preview</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -13,11 +13,12 @@
     <% end %>
   </head>
 
-  <body style="padding: 16px">
-    <div style="
+  <body>
+    <div id="component-preview" style="
       margin-left: auto;
       margin-right: auto;
       position: relative;
+      padding: 16px;
     ">
       <%= yield %> <!-- rendered preview will be injected here -->
     </div>

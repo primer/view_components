@@ -124,6 +124,12 @@
         "description": "CSS classes that will be added to the label."
       },
       {
+        "name": "content_arguments",
+        "type": "Hash",
+        "default": "`{}`",
+        "description": "[System arguments](/system-arguments) used to construct the item's anchor or span tag."
+      },
+      {
         "name": "truncate_label",
         "type": "Boolean",
         "default": "`false`",
@@ -1354,6 +1360,12 @@
         "description": "String that can be read by assistive technology. A description can be longer as it is intended to provide more context and information. See the accessibility section for more information."
       },
       {
+        "name": "show_tooltip",
+        "type": "Boolean",
+        "default": "`true`",
+        "description": "Whether or not to show a tooltip when this button is hovered. Tooltips should only be hidden if the aria label is redundant, i.e. if the icon has a widely understood definition."
+      },
+      {
         "name": "tooltip_direction",
         "type": "Symbol",
         "default": "`:s`",
@@ -1544,66 +1556,6 @@
         "type": "String",
         "default": "`nil`",
         "description": "Optional string to display as the header"
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Flex",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/flex_component.rb",
-    "parameters": [
-      {
-        "name": "justify_content",
-        "type": "Symbol",
-        "default": "`JUSTIFY_CONTENT_DEFAULT`",
-        "description": "Use this param to distribute space between and around flex items along the main axis of the container. One of `nil`, `:center`, `:flex_end`, `:flex_start`, `:space_around`, or `:space_between`."
-      },
-      {
-        "name": "inline",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Defaults to false."
-      },
-      {
-        "name": "flex_wrap",
-        "type": "Boolean",
-        "default": "`FLEX_WRAP_DEFAULT`",
-        "description": "Defaults to nil."
-      },
-      {
-        "name": "align_items",
-        "type": "Symbol",
-        "default": "`ALIGN_ITEMS_DEFAULT`",
-        "description": "Use this param to align items on the cross axis. One of `nil`, `:baseline`, `:center`, `:end`, `:start`, or `:stretch`."
-      },
-      {
-        "name": "direction",
-        "type": "Symbol",
-        "default": "`nil`",
-        "description": "Use this param to define the orientation of the main axis (row or column). By default, flex items will display in a row. One of `nil`, `:column`, `:column_reverse`, `:row`, or `:row_reverse`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "FlexItem",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/flex_item_component.rb",
-    "parameters": [
-      {
-        "name": "flex_auto",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Fills available space and auto-sizes based on the content. Defaults to false"
       },
       {
         "name": "system_arguments",

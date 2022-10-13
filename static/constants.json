@@ -608,15 +608,11 @@
   },
   "Primer::ClipboardCopy": {
   },
-  "Primer::CloseButton": {
-  },
   "Primer::ConditionalWrapper": {
   },
   "Primer::Content": {
   },
   "Primer::CounterComponent": {
-  },
-  "Primer::DetailsComponent": {
   },
   "Primer::Dropdown": {
     "Menu": "Primer::Dropdown::Menu"
@@ -671,71 +667,7 @@
       "dark": "dropdown-menu-dark"
     }
   },
-  "Primer::FlexComponent": {
-    "ALIGN_ITEMS_DEFAULT": null,
-    "ALIGN_ITEMS_MAPPINGS": {
-      "start": "flex-items-start",
-      "end": "flex-items-end",
-      "center": "flex-items-center",
-      "baseline": "flex-items-baseline",
-      "stretch": "flex-items-stretch"
-    },
-    "ALIGN_ITEMS_OPTIONS": [
-      null,
-      "start",
-      "end",
-      "center",
-      "baseline",
-      "stretch"
-    ],
-    "ALLOWED_DIRECTIONS": [
-      null,
-      "column",
-      "column_reverse",
-      "row",
-      "row_reverse"
-    ],
-    "DEFAULT_DIRECTION": null,
-    "FLEX_WRAP_DEFAULT": null,
-    "FLEX_WRAP_OPTIONS": [
-      null,
-      true,
-      false
-    ],
-    "INLINE_DEFAULT": false,
-    "INLINE_OPTIONS": [
-      false,
-      true
-    ],
-    "JUSTIFY_CONTENT_DEFAULT": null,
-    "JUSTIFY_CONTENT_MAPPINGS": {
-      "flex_start": "flex-justify-start",
-      "flex_end": "flex-justify-end",
-      "center": "flex-justify-center",
-      "space_between": "flex-justify-between",
-      "space_around": "flex-justify-around"
-    },
-    "JUSTIFY_CONTENT_OPTIONS": [
-      null,
-      "flex_start",
-      "flex_end",
-      "center",
-      "space_between",
-      "space_around"
-    ]
-  },
-  "Primer::FlexItemComponent": {
-    "FLEX_AUTO_ALLOWED_VALUES": [
-      false,
-      true
-    ],
-    "FLEX_AUTO_DEFAULT": false
-  },
-  "Primer::HeadingComponent": {
-  },
   "Primer::HellipButton": {
-  },
-  "Primer::HiddenTextExpander": {
   },
   "Primer::IconButton": {
     "DEFAULT_SCHEME": "default",

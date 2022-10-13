@@ -17,7 +17,7 @@ class DeprecatedComponentsCounterTest < LinterTestCase
   def test_warns_about_multiple_deprecated_primer_component
     @file = <<~ERB
       <%= render Primer::BlankslateComponent.new %>
-      <%= render Primer::FlexComponent.new %>
+      <%= render Primer::Tooltip.new %>
     ERB
     @linter.run(processed_source)
 
@@ -38,7 +38,7 @@ class DeprecatedComponentsCounterTest < LinterTestCase
     @file = <<~ERB
       <%# erblint:counter DeprecatedComponentsCounter 2 %>
       <%= render Primer::BlankslateComponent.new %>
-      <%= render Primer::FlexComponent.new %>
+      <%= render Primer::Tooltip.new %>
     ERB
     @linter.run(processed_source)
 

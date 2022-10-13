@@ -1,5 +1,4 @@
-<%# erblint:counter DeprecatedComponentsCounter 1 %>
-<%= render(Primer::FlexComponent.new(**@system_arguments)) do %>
+<%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
   <% if @side == :left %>
     <%= sidebar %>
   <% end %>
