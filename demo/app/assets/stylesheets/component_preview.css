@@ -1,0 +1,18 @@
+.theme-wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  height: 100vh;
+}
+
+.theme-name {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 16px;
+}
+
+.preview-wrap {
+  position: relative;
+  padding: 16px;
+}

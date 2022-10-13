@@ -35,5 +35,18 @@ module Demo
       "Access-Control-Allow-Origin" => "*",
       "Access-Control-Request-Method" => %w[GET].join(",")
     }
+
+    config.lookbook.preview_display_options = {
+      theme: [
+        "light",
+        "light_colorblind",
+        "light_high_contrast",
+        "dark",
+        "dark_dimmed",
+        "dark_high_contrast",
+        "dark_colorblind",
+        "all"
+      ]
+    }
   end
 end
