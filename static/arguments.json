@@ -1360,6 +1360,12 @@
         "description": "String that can be read by assistive technology. A description can be longer as it is intended to provide more context and information. See the accessibility section for more information."
       },
       {
+        "name": "show_tooltip",
+        "type": "Boolean",
+        "default": "`true`",
+        "description": "Whether or not to show a tooltip when this button is hovered. Tooltips should only be hidden if the aria label is redundant, i.e. if the icon has a widely understood definition."
+      },
+      {
         "name": "tooltip_direction",
         "type": "Symbol",
         "default": "`:s`",

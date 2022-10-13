@@ -11,6 +11,7 @@ module Primer
       # @param disabled toggle
       # @param tag select [a, summary, button]
       # @param icon [Symbol] octicon
+      # @param show_tooltip toggle
       def playground(
         scheme: :default,
         size: :medium,
@@ -18,7 +19,8 @@ module Primer
         tag: :button,
         disabled: false,
         icon: :plus,
-        aria_label: "Button"
+        aria_label: "Button",
+        show_tooltip: true
       )
         render(Primer::Beta::IconButton.new(
                  scheme: scheme,
@@ -27,7 +29,8 @@ module Primer
                  tag: tag,
                  disabled: disabled,
                  icon: icon,
-                 "aria-label": aria_label
+                 "aria-label": aria_label,
+                 show_tooltip: show_tooltip
                ))
       end
 
