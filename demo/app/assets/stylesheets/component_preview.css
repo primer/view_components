@@ -1,10 +1,12 @@
 .theme-wrap {
   display: grid;
   grid-template-columns: repeat(4, minmax(var(--primer-breakpoint-xsmall), auto));
+  grid-gap: 1px;
 }
 
 .theme-wrap .preview-wrap {
-  border: 1px solid var(--color-border-default);
+  /* Lookbook border color */
+  outline: 1px solid #d4d4d8;
   padding-bottom: 40px;
 }
 
