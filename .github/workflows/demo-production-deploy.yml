@@ -3,9 +3,9 @@
 name: Demo Production
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+  release:
+    types: [published]
 
 jobs:
   build:
