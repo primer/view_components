@@ -1,4 +1,4 @@
 <%= render(Primer::Beta::Flash.new(full: full, dismissible: dismissible, icon: icon, scheme: scheme)) do |component| %>
-  <% component.with_action(size: :small) { "Take action" } %>
+  <% component.with_action(size: :medium) { "Take action" } %>
   <%= content %>
 <% end %>

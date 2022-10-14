@@ -27,15 +27,6 @@ module Primer
       def with_action(full: false, dismissible: false, icon: :people, scheme: Primer::Beta::Flash::DEFAULT_SCHEME, content: "This is a flash message with an action!")
         render_with_template(locals: { full: full, dismissible: dismissible, icon: icon == :none ? nil : icon, scheme: scheme, content: content })
       end
-
-      def action_button
-        render(Primer::Beta::Flash.new) do |c|
-          "This is broken"
-          c.action do |c|
-            "Take action"
-          end
-        end
-      end
     end
   end
 end

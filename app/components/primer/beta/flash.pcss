@@ -10,7 +10,7 @@
   border-radius: var(--primer-borderRadius-medium, 6px);
   grid-auto-flow: column;
   grid-template-areas: 'visual message actions close';
-  grid-template-columns: min-content 1fr min-content min-content;
+  grid-template-columns: min-content 1fr minmax(0,auto) min-content;
   grid-template-rows: min-content;
 
   /* `sm` breakpoint variantion */
@@ -62,13 +62,13 @@
     grid-area: actions;
 
     &:last-child {
-      align-self: end;
+      align-self: center;
     }
   }
 
   & .Banner-close {
     grid-area: close;
-    margin: 0 0 0 var(--base-size-8, 8px);
+    margin-left: var(--primer-controlStack-medium-gap-condensed, 8px);
   }
 
   & .Banner-visual .octicon {
