@@ -7,7 +7,7 @@ const presetEnv = require('postcss-preset-env');
 const cssNano = require('cssnano');
 const path = require('path')
 
-module.export = {
+module.exports = {
   map: {
     sourcesContent: false,
     annotation: true
