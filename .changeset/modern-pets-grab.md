@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-move tooltip to be adjacent to button
+Building PostCSS components separately 
