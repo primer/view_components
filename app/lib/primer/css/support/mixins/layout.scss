@@ -1,6 +1,6 @@
 // Responsive media queries
 
-@define-mixin breakpoint($breakpoint) {
+@mixin breakpoint($breakpoint) {
   @if $breakpoint == '' {
     @content;
   }
@@ -27,7 +27,7 @@
 
 // Retina media query
 
-@define-mixin retina-media-query {
+@mixin retina-media-query {
   @media
     only screen and (-webkit-min-device-pixel-ratio: 2),
     only screen and (min--moz-device-pixel-ratio: 2),
@@ -44,7 +44,7 @@
 //
 // Clears floats via mixin.
 
-@define-mixin clearfix {
+@mixin clearfix {
   &::before {
     display: table;
     content: '';

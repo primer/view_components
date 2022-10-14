@@ -1,7 +1,7 @@
 // Text hiding for image based text replacement.
 // Higher performance than -9999px because it only renders
 // the size of the actual text, not a full 9999px box.
-@define-mixin hide-text() {
+@mixin hide-text() {
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
@@ -9,32 +9,32 @@
 
 // Heading mixins for use within components
 // These match heading utilities in utilities/typography
-@define-mixin h1 {
+@mixin h1 {
   font-size: $h1-size;
   font-weight: $font-weight-bold;
 }
 
-@define-mixin h2 {
+@mixin h2 {
   font-size: $h2-size;
   font-weight: $font-weight-bold;
 }
 
-@define-mixin h3 {
+@mixin h3 {
   font-size: $h3-size;
   font-weight: $font-weight-bold;
 }
 
-@define-mixin h4 {
+@mixin h4 {
   font-size: $h4-size;
   font-weight: $font-weight-bold;
 }
 
-@define-mixin h5 {
+@mixin h5 {
   font-size: $h5-size;
   font-weight: $font-weight-bold;
 }
 
-@define-mixin h6 {
+@mixin h6 {
   font-size: $h6-size;
   font-weight: $font-weight-bold;
 }
@@ -42,21 +42,21 @@
 // Responsive heading mixins
 // There are no responsive mixins for h4-h6 because they are small
 // and don't need to be smaller on mobile.
-@define-mixin f1-responsive {
+@mixin f1-responsive {
   font-size: $h1-size-mobile;
 
   // 32px on desktop
   @include breakpoint(md) { font-size: $h1-size; }
 }
 
-@define-mixin f2-responsive {
+@mixin f2-responsive {
   font-size: $h2-size-mobile;
 
   // 24px on desktop
   @include breakpoint(md) { font-size: $h2-size; }
 }
 
-@define-mixin f3-responsive {
+@mixin f3-responsive {
   font-size: $h3-size-mobile;
 
   // 20px on desktop
@@ -66,19 +66,19 @@
 // These use the mixins from above for responsive heading sizes.
 // The following mixins can be used where it's convenient or necessary to
 // couple the responsive font-size with the font-weight.
-@define-mixin h1-responsive {
+@mixin h1-responsive {
   @include f1-responsive;
 
   font-weight: $font-weight-bold;
 }
 
-@define-mixin h2-responsive {
+@mixin h2-responsive {
   @include f2-responsive;
 
   font-weight: $font-weight-bold;
 }
 
-@define-mixin h3-responsive {
+@mixin h3-responsive {
   @include f3-responsive;
 
   font-weight: $font-weight-bold;

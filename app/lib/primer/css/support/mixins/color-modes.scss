@@ -1,4 +1,4 @@
-@define-mixin color-mode-theme($theme-name, $include-root: false) {
+@mixin color-mode-theme($theme-name, $include-root: false) {
   @if $include-root {
     :root,
     [data-color-mode="light"][data-light-theme="#{$theme-name}"],
@@ -29,7 +29,7 @@
   }
 }
 
-@define-mixin color-mode($mode) {
+@mixin color-mode($mode) {
   @if $mode == light {
     :root,
     [data-color-mode="light"][data-light-theme*="#{$mode}"],
@@ -76,7 +76,7 @@
 //     dark: var(--color-scale-gray-6)
 //   )
 // ));
-@define-mixin color-variables($color-map) {
+@mixin color-variables($color-map) {
   // Create map to store incoming variables
   $dark-colors: ();
   $light-colors: ();

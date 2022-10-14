@@ -1,5 +1,5 @@
 // Generate a two-color caret for any element.
-@define-mixin double-caret($background: var(--color-canvas-default), $border: var(--color-border-default)) {
+@mixin double-caret($background: var(--color-canvas-default), $border: var(--color-border-default)) {
   &::after,
   &::before {
     position: absolute;
@@ -29,7 +29,7 @@
 // global focus styles
 
 // inset box-shadow for form controls
-@define-mixin focusBoxShadowInset($outlineWidth: 1px, $outlineColor: var(--color-accent-fg)) {
+@mixin focusBoxShadowInset($outlineWidth: 1px, $outlineColor: var(--color-accent-fg)) {
   border-color: var(--color-accent-fg);
   outline: none;
   box-shadow: inset 0 0 0 $outlineWidth $outlineColor;
@@ -37,27 +37,27 @@
 
 // box-shadow for :target styles (no inset)
 // !important to override PCSS utilities
-@define-mixin targetBoxShadow($outlineWidth: 2px, $outlineColor: var(--color-accent-fg)) {
+@mixin targetBoxShadow($outlineWidth: 2px, $outlineColor: var(--color-accent-fg)) {
   outline: none !important;
   box-shadow: 0 0 0 $outlineWidth $outlineColor !important;
 }
 
 // outline
-@define-mixin focusOutline($outlineOffset: -2px, $outlineColor: var(--color-accent-fg)) {
+@mixin focusOutline($outlineOffset: -2px, $outlineColor: var(--color-accent-fg)) {
   outline: 2px solid $outlineColor;
   outline-offset: $outlineOffset;
   box-shadow: none;
 }
 
 // outline with fg box-shadow for buttons
-@define-mixin focusOutlineOnEmphasis($outlineOffset: -2px, $outlineColor: var(--color-accent-fg)) {
+@mixin focusOutlineOnEmphasis($outlineOffset: -2px, $outlineColor: var(--color-accent-fg)) {
   outline: 2px solid $outlineColor;
   outline-offset: $outlineOffset;
   box-shadow: inset 0 0 0 3px var(--color-fg-on-emphasis);
 }
 
 // if min-width is undefined, return only min-height
-@define-mixin minTouchTarget($min-height: 32px, $min-width: '') {
+@mixin minTouchTarget($min-height: 32px, $min-width: '') {
   position: absolute;
   top: 50%;
   left: 50%;
