@@ -33,6 +33,8 @@
     "build:css": "postcss -o app/assets/styles/primer_view_components.css app/components/primer/primer.pcss",
     "build:docs": "npm run --prefix ./docs/ build",
     "build:docs:preview": "cd docs && npx gatsby build",
+    "build:pcss": "script/build-css.js",
+    "build:pcss:stats": "script/dist.js",
     "prepare": "rm -rf docs/static && mkdir -p docs/static && script/build-assets && cp app/assets/**/primer_view_components.* docs/static/",
     "lint": "npm run lint:stylelint && npm run lint:eslint",
     "lint:stylelint": "stylelint 'app/components/**/*.pcss'",
