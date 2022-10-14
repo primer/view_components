@@ -1,0 +1,5 @@
+#! /bin/bash -e
+
+npm run build:pcss
+cp app/assets/styles/utilities.css ../css/dist/
+echo "Copied utilities.css to ../css/dist"
