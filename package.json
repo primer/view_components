@@ -61,6 +61,7 @@
     "@changesets/cli": "^2.24.1",
     "@github/browserslist-config": "^1.0.0",
     "@github/prettier-config": "0.0.4",
+    "@koddsson/postcss-sass": "^5.0.1",
     "@primer/css": "20.4.7",
     "@primer/primitives": "^7.9.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
