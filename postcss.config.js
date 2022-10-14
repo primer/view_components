@@ -1,13 +1,13 @@
-import autoprefixer from 'autoprefixer';
-import sass from '@koddsson/postcss-sass';
-import scss from 'postcss-scss';
-import scssImport from 'postcss-import';
-import mixins from 'postcss-mixins';
-import presetEnv from 'postcss-preset-env';
-import cssNano from 'cssnano';
-import {join} from 'path';
+const autoprefixer = require('autoprefixer');
+const sass = require('@koddsson/postcss-sass');
+const scss = require('postcss-scss');
+const scssImport = require('postcss-import');
+const mixins = require('postcss-mixins');
+const presetEnv = require('postcss-preset-env');
+const cssNano = require('cssnano');
+const path = require('path');
 
-export default {
+module.export = {
   map: {
     sourcesContent: false,
     annotation: true

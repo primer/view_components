@@ -6,7 +6,6 @@
   "module": "app/components/primer/primer.js",
   "types": "app/components/primer/primer.d.ts",
   "repository": "primer/view_components",
-  "type": "module",
   "keywords": [
     "rails",
     "view_components",
