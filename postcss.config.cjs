@@ -5,7 +5,7 @@ const scssImport = require('postcss-import');
 const mixins = require('postcss-mixins');
 const presetEnv = require('postcss-preset-env');
 const cssNano = require('cssnano');
-const path = require('path');
+const path = require('path')
 
 module.export = {
   map: {
@@ -17,7 +17,7 @@ module.export = {
   plugins: [
     scssImport,
     mixins({
-      mixinsDir: 'lib/postcss_mixins/'
+      mixinsDir: path.join(__dirname, './lib/postcss_mixins/')
     }),
     presetEnv({
       stage: 2,
@@ -28,7 +28,7 @@ module.export = {
     }),
     cssNano,
     sass({
-      includePaths: ['node_modules'],
+      includePaths: [path.join(__dirname, 'node_modules')],
       outputStyle: process.env.CSS_MINIFY === '0' ? 'expanded' : 'compressed'
     }),
     autoprefixer,

@@ -1,21 +1,19 @@
 #!/usr/bin/env node
 import postcss from 'postcss'
-import {join} from 'path'
 import fs from 'fs'
 import atImport from 'postcss-import'
 import syntax from 'postcss-scss'
 import calc from 'postcss-calc'
 import simpleVars from 'postcss-simple-vars'
-
-import { dirname } from 'path';
+import { join, dirname } from 'path'
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const processor = postcss([
-  atImport({path: ['src']}),
+  atImport({path: ['app/lib/primer/css']}),
   collectVariables(),
-  simpleVars({includePaths: [join(__dirname, '../src/support/variables')]})
+  simpleVars({includePaths: [join(__dirname, '../app/lib/primer/css/support/variables')]})
 ])
 
 async function analyzeVariables(fileName) {
