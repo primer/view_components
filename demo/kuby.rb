@@ -114,6 +114,7 @@ Kuby.define("ViewComponentsStorybook") do
           package.json
           package-lock.json
           previews
+          script
         ]
 
         files.each { |f| dockerfile.copy(f, f) }

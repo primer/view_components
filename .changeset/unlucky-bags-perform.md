@@ -2,4 +2,4 @@
 '@primer/view-components': patch
 ---
 
-Make sure nested dialogs behave correctly
+Allow IconButton tooltips to be hidden

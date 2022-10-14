@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## 0.0.103
+
+### Patch Changes
+
+- [#1457](https://github.com/primer/view_components/pull/1457) [`7fa6d221`](https://github.com/primer/view_components/commit/7fa6d221f4e2196d3421592d89f48a4abe7b8373) Thanks [@orhantoy](https://github.com/orhantoy)! - Remove dead Flex and FlexItem links from nav
+
+* [#1469](https://github.com/primer/view_components/pull/1469) [`a3442456`](https://github.com/primer/view_components/commit/a3442456c5230918ff3cedb7293d4799b963599d) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing the deprecated Primer::HeadingComponent component.
+
+- [#1480](https://github.com/primer/view_components/pull/1480) [`c764cee6`](https://github.com/primer/view_components/commit/c764cee6744c91671db729bd7ac60dc532398820) Thanks [@koddsson](https://github.com/koddsson)! - Fix nested dialogs
+
+* [#1466](https://github.com/primer/view_components/pull/1466) [`9b5cff15`](https://github.com/primer/view_components/commit/9b5cff1513ca24f85906fd8ed54d34d056504535) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing the deprecated Primer::HiddenTextExpander component.
+
+- [#1471](https://github.com/primer/view_components/pull/1471) [`5687bebe`](https://github.com/primer/view_components/commit/5687bebebb3c0fa58bf63d2a1ff09602b9f3987d) Thanks [@koddsson](https://github.com/koddsson)! - Make sure nested dialogs behave correctly
+
+* [#1479](https://github.com/primer/view_components/pull/1479) [`b0281033`](https://github.com/primer/view_components/commit/b028103397ac94375035d38c5ca85e85aeffde08) Thanks [@khiga8](https://github.com/khiga8)! - move tooltip to be adjacent to button
+
+- [#1468](https://github.com/primer/view_components/pull/1468) [`ae99c2ed`](https://github.com/primer/view_components/commit/ae99c2ed9e9b937d79443cbc393bddd6f02a2112) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing the deprecated Primer::CloseButton component.
+
+* [#1476](https://github.com/primer/view_components/pull/1476) [`f174b31c`](https://github.com/primer/view_components/commit/f174b31c7bf59d08402d03c35a2bc52fc34bc687) Thanks [@camertron](https://github.com/camertron)! - Bump view_component to 2.74.1 to fix deadlock issues in Lookbook
+
+- [#1452](https://github.com/primer/view_components/pull/1452) [`9252a124`](https://github.com/primer/view_components/commit/9252a12435d9bb5a3bd2610a72e12358c1ca2c2b) Thanks [@steves](https://github.com/steves)! - Move sample forms out of test folder
+
+* [#1467](https://github.com/primer/view_components/pull/1467) [`a3b562ca`](https://github.com/primer/view_components/commit/a3b562cae569902c0ce3131599654b8a00720095) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing the deprecated Primer::DetailsComponent component.
+
 ## 0.0.102
 
 ### Patch Changes
