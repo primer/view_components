@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class FriendForm < ApplicationForm
   form do |friend_form|
     friend_form.group(layout: :horizontal) do |name_group|
@@ -9,6 +10,7 @@ class FriendForm < ApplicationForm
   end
 end
 
+# :nodoc:
 class FriendTextAreaForm < ApplicationForm
   form do |friend_text_area_form|
     friend_text_area_form.text_area(
@@ -18,6 +20,7 @@ class FriendTextAreaForm < ApplicationForm
   end
 end
 
+# :nodoc:
 class RadioButtonWithNestedForm < ApplicationForm
   form do |radio_form|
     radio_form.radio_button_group(name: "channel") do |radio_group|

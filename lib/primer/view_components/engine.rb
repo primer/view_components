@@ -15,6 +15,7 @@ module Primer
 
       config.eager_load_paths = %W[
         #{root}/app/components
+        #{root}/app/forms
         #{root}/app/helpers
         #{root}/app/lib
       ]

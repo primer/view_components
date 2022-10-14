@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nodoc:
 class LastNameForm < ApplicationForm
   form do |last_name_form|
     last_name_form.text_field(

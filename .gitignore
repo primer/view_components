@@ -1,5 +1,7 @@
 # Generated from npm prepare
 app/components/**/*.js
+app/components/**/*.css
+app/components/**/*.css.map
 app/components/**/*.d.ts
 app/assets/
 
