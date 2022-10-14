@@ -1270,6 +1270,12 @@
         "description": "Whether the component can be dismissed with an X button."
       },
       {
+        "name": "description",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Description text rendered underneath the message."
+      },
+      {
         "name": "icon",
         "type": "Symbol",
         "default": "`nil`",
@@ -1280,6 +1286,12 @@
         "type": "Symbol",
         "default": "`:default`",
         "description": "One of `:danger`, `:default`, `:success`, or `:warning`."
+      },
+      {
+        "name": "description",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Optional description."
       },
       {
         "name": "system_arguments",
