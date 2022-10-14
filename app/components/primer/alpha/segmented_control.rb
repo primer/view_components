@@ -2,9 +2,7 @@
 
 module Primer
   module Alpha
-    # Add a general description of component here
-    # Add additional usage considerations or best practices that may aid the user to use the component correctly.
-    # @accessibility Add any accessibility considerations
+    # Use a segmented control to let users select an option from a short list and immediately apply the selection
     class SegmentedControl < Primer::Component
       status :alpha
 
@@ -36,6 +34,14 @@ module Primer
       # @example Basic usage
       #
       #   <%= render(Primer::Alpha::SegmentedControl.new) do |c| %>
+      #     <%= c.with_item(label: "Preview", selected: true) %>
+      #     <%= c.with_item(label: "Raw") %>
+      #     <%= c.with_item(label: "Blame") %>
+      #   <% end %>
+      #
+      # @example Small
+      #
+      #   <%= render(Primer::Alpha::SegmentedControl.new(size: :small)) do |c| %>
       #     <%= c.with_item(label: "Preview", selected: true) %>
       #     <%= c.with_item(label: "Raw") %>
       #     <%= c.with_item(label: "Blame") %>
