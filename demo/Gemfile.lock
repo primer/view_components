@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/allmarkedup/lookbook.git
-  revision: ca73399745e8ebe4d9d6a7e5dac60a5abd410f0e
+  revision: 9d52d527732d0c4dac642c0f9d7ebabc3e137172
   branch: dynamic-display-options
   specs:
     lookbook (1.1.1)
