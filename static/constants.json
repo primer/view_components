@@ -534,9 +534,9 @@
     "DEFAULT_SCHEME": "default",
     "SCHEME_MAPPINGS": {
       "default": "",
-      "warning": "flash-warn",
-      "danger": "flash-error",
-      "success": "flash-success"
+      "warning": "Banner--warning",
+      "danger": "Banner--error",
+      "success": "Banner--success"
     }
   },
   "Primer::Beta::Heading": {

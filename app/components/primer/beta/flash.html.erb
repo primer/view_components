@@ -1,11 +1,30 @@
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <%= primer_octicon @icon if @icon %>
-  <%= content %>
-  <% if @dismissible %>
-    <button class="flash-close js-flash-close" type="button" aria-label="Close">
-      <%= primer_octicon "x" %>
-    </button>
+  <% if @icon %>
+    <div class="Banner-visual">
+      <%= primer_octicon @icon %>
+    </div>
   <% end %>
-
-  <%= action %>
+  <div class="Banner-message">
+    <p class="Banner-title"><%= content %></p>
+    <% if @description %>
+      <p><%= @description %></p>
+    <% end %>
+  </div>
+  <% if action %>
+    <div class="Banner-actions">
+      <%= action %>
+    </div>
+  <% end %>
+  <% if @dismissible %>
+    <div class="Banner-close">
+      <%= render(
+        Primer::Beta::IconButton.new(
+          scheme: :invisible,
+          icon: :x,
+          classes: "js-flash-close",
+          aria: { label: "Dismiss" }
+        )
+      ) %>
+    </div>
+  <% end %>
 <% end %>

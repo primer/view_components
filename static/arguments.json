@@ -1258,10 +1258,10 @@
         "description": "Whether the component should take up the full width of the screen."
       },
       {
-        "name": "spacious",
+        "name": "full_when_narrow",
         "type": "Boolean",
         "default": "`false`",
-        "description": "Whether to add margin to the bottom of the component."
+        "description": "Whether the component should take up the full width of the screen when rendered inside smaller viewports."
       },
       {
         "name": "dismissible",
