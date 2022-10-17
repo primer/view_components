@@ -12,7 +12,7 @@ namespace :test do
     t.warning = false
     t.libs << "test"
     t.libs << "lib"
-    t.test_files = FileList[ENV["TESTS"]]
+    t.test_files = FileList[ENV["TEST"]]
   end
 
   Rake::TestTask.new(:fast) do |t|
@@ -67,7 +67,7 @@ namespace :test do
 end
 
 task :test do
-  if ENV["TESTS"]
+  if ENV["TEST"]
     Rake::Task["test:single"].invoke
   else
     Rake::Task["test:all"].invoke
