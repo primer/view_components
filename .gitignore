@@ -43,3 +43,6 @@ tmp/
 # Files for version managers
 .ruby-version
 .tool-versions
+
+# Simplecov folder
+coverage/
