@@ -126,6 +126,12 @@ jobs:
         ruby-version: ${{ matrix.ruby_version }}
         bundler-cache: true
         cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+    - run: |
+        npm ci
     - name: Build and test with Rake
       run: |
         bundle config unset deployment
