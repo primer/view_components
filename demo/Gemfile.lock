@@ -1,23 +1,4 @@
 GIT
-  remote: https://github.com/allmarkedup/lookbook.git
-  revision: 9d52d527732d0c4dac642c0f9d7ebabc3e137172
-  branch: dynamic-display-options
-  specs:
-    lookbook (1.1.1)
-      actioncable
-      activemodel
-      css_parser
-      htmlbeautifier (~> 1.3)
-      htmlentities (~> 4.3.4)
-      listen (~> 3.0)
-      railties (>= 5.0)
-      redcarpet (~> 3.5)
-      rouge (>= 3.26, < 5.0)
-      view_component (~> 2.0)
-      yard (~> 0.9.25)
-      zeitwerk (~> 2.5)
-
-GIT
   remote: https://github.com/getkuby/kuby-core.git
   revision: 708f2181977ad9c75eb83ca26505402d316975ef
   ref: 708f2181977ad9c75eb83ca26505402d316975ef
@@ -261,6 +242,19 @@ GEM
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
+    lookbook (1.2.1)
+      actioncable
+      activemodel
+      css_parser
+      htmlbeautifier (~> 1.3)
+      htmlentities (~> 4.3.4)
+      listen (~> 3.0)
+      railties (>= 5.0)
+      redcarpet (~> 3.5)
+      rouge (>= 3.26, < 5.0)
+      view_component (~> 2.0)
+      yard (~> 0.9.25)
+      zeitwerk (~> 2.5)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
@@ -417,7 +411,7 @@ DEPENDENCIES
   kuby-azure (>= 0.3.3, < 1.0)
   kuby-core!
   kuby-kind (~> 0.1)
-  lookbook!
+  lookbook (~> 1.2.1)
   primer_view_components!
   pry-byebug
   puma (~> 5.6.4)
