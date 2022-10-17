@@ -146,3 +146,25 @@ jobs:
           [Review visual differences](https://github.com/primer/view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&show-viewed-files=false)
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         COMMENT_IDENTIFIER: 'visual-comparison-diff'
+  system:
+    name: System
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.1'
+        bundler-cache: true
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+        cache-dependency-path: |
+          package-lock.json
+          demo/package-lock.json
+    - run: |
+        npm ci
+        cd demo && npm ci
+    - name: Build and test with Rake
+      run: |
+        bundle exec rake test:system
