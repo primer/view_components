@@ -43,35 +43,13 @@ jobs:
         bundle update actionview activemodel activesupport railties actioncable
         bundle exec rake test:fast
       env:
+        RUBY_VERSION: ${{ matrix.ruby_version }}
         RAILS_VERSION: ${{ matrix.rails_version }}
-        COVERAGE: 1
-    - name: Upload coverage results
-      uses: actions/upload-artifact@master
-      if: always()
-      with:
-        name: simplecov-resultset-rails${{matrix.rails_version}}-ruby${{matrix.ruby_version}}
-        path: coverage
-  coverage:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: Setup Ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 3.0.x
-    - name: Download coverage results
-      uses: actions/download-artifact@v2
-    - uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: gems-build-rails-main-ruby-3.0.x-${{ hashFiles('**/Gemfile.lock') }}
-    - name: Collate simplecov
-      run: |
-        gem install bundler:2.2.9
-        bundle config path vendor/bundle
-        bundle install --jobs 4 --retry 3
-        bundle exec rake coverage:report
+    - name: Coverage report
+      run: bundle exec rake test:coverage
+      env:
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
   system:
     runs-on: ubuntu-latest
     steps:

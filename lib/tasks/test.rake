@@ -17,6 +17,7 @@ namespace :test do
 
   Rake::TestTask.new(:fast) do |t|
     ENV["TZ"] = "Asia/Taipei"
+    ENV["COVERAGE"] = "1"
 
     t.warning = false
     t.libs << "test"
