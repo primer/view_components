@@ -17,7 +17,7 @@ class MigrateDeprecatedFlashArgumentsTest < LinterTestCase
     refute_empty @linter.offenses
   end
 
-  def test_replaces_spacious_argument
+  def test_replaces_spacious_argument_when_true
     @file = <<~ERB
       <%= render(Primer::Beta::Flash.new(dismissible: true, spacious: true)) do |c| %>
         Some content
@@ -26,6 +26,22 @@ class MigrateDeprecatedFlashArgumentsTest < LinterTestCase
 
     expected = <<~ERB
       <%= render(Primer::Beta::Flash.new(dismissible: true, mb: 4)) do |c| %>
+        Some content
+      <% end %>
+    ERB
+
+    assert_equal expected, corrected_content
+  end
+
+  def test_removes_spacious_argument_when_false
+    @file = <<~ERB
+      <%= render(Primer::Beta::Flash.new(dismissible: true, spacious: false)) do |c| %>
+        Some content
+      <% end %>
+    ERB
+
+    expected = <<~ERB
+      <%= render(Primer::Beta::Flash.new(dismissible: true)) do |c| %>
         Some content
       <% end %>
     ERB

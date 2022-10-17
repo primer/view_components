@@ -29,7 +29,8 @@ module ERBLint
           code_start_pos = erb_node.location.begin_pos + indicator.size + 2
 
           constructor_arg_hashes.each do |constructor_arg_hash|
-            next unless constructor_arg_hash.include?(:spacious)
+            spacious_arg = constructor_arg_hash.include?(:spacious)
+            next unless spacious_arg
 
             orig_loc = code_node.location
             key_node, value_node = constructor_arg_hash[:spacious]
@@ -39,11 +40,21 @@ module ERBLint
               end_pos: value_node.location.expression.end_pos + code_start_pos
             )
 
-            add_offense(
-              new_loc,
-              "The :spacious argument is deprecated. Use `mb: 4` instead.",
-              "mb: 4"
-            )
+            if value_node.source == "true"
+              add_offense(
+                new_loc,
+                "The :spacious argument is deprecated. Use `mb: 4` instead.",
+                "mb: 4"
+              )
+            else
+              new_loc = adjust_to_preceding_comma(new_loc)
+
+              add_offense(
+                new_loc,
+                "The :spacious argument is deprecated; `spacious: false` can be removed.",
+                ""
+              )
+            end
           end
         end
       end
@@ -57,6 +68,13 @@ module ERBLint
       end
 
       private
+
+      def adjust_to_preceding_comma(loc)
+        comma_pos = loc.source_buffer.source.rindex(/\s*,/, loc.begin_pos)
+        return loc unless comma_pos
+
+        loc.with(begin_pos: comma_pos)
+      end
 
       def find_new_flash_instances(ast)
         if (instance = find_new_flash_instance(ast))
