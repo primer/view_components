@@ -51,10 +51,35 @@ module Primer
         assert_selector("segmented-control ul.SegmentedControl.SegmentedControl--fullWidth")
       end
 
-      def test_renders_icons_only_when_narrow
-        render_preview(:icons_only_when_narrow)
+      def test_doesnt_render_with_too_many_items
+        error = assert_raises(ArgumentError) do
+          render_inline(Primer::Alpha::SegmentedControl.new) do |c|
+            c.with_item(label: "Item 1", selected: true) { "Item 1" }
+            c.with_item(label: "Item 2") { "Item 2" }
+            c.with_item(label: "Item 3") { "Item 3" }
+            c.with_item(label: "Item 4") { "Item 4" }
+            c.with_item(label: "Item 5") { "Item 5" }
+            c.with_item(label: "Item 6") { "Item 6" }
+          end
+        end
 
-        assert_selector("segmented-control ul.SegmentedControl.SegmentedControl--iconOnly-whenNarrow")
+        assert_equal(error.message, "A segmented control should have 2–5 choices with text labels, or up to 6 icon-only buttons.")
+      end
+
+      def test_doesnt_render_with_too_many_icon_items
+        error = assert_raises(ArgumentError) do
+          render_inline(Primer::Alpha::SegmentedControl.new(hide_labels: true)) do |c|
+            c.with_item(icon: :zap, label: "Item 1", selected: true) { "Item 1" }
+            c.with_item(icon: :zap, label: "Item 2") { "Item 2" }
+            c.with_item(icon: :zap, label: "Item 3") { "Item 3" }
+            c.with_item(icon: :zap, label: "Item 4") { "Item 4" }
+            c.with_item(icon: :zap, label: "Item 5") { "Item 5" }
+            c.with_item(icon: :zap, label: "Item 6") { "Item 6" }
+            c.with_item(icon: :zap, label: "Item 7") { "Item 7" }
+          end
+        end
+
+        assert_equal(error.message, "A segmented control should have 2–5 choices with text labels, or up to 6 icon-only buttons.")
       end
     end
   end
