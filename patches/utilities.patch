@@ -1,7 +1,7 @@
 From 79956cdcb3aabda34a47bf78b956a39a85a092df Mon Sep 17 00:00:00 2001
 From: River Lynn Parrhesia Bailey <river.bailey@testdouble.com>
 Date: Fri, 14 Oct 2022 14:02:58 -0500
-Subject: [PATCH 3/4] utilities.css build comparison stuff
+Subject: [PATCH 3/8] utilities.css build comparison stuff
 
 ---
  dist/utilities.css                 | 1469 +++++------
