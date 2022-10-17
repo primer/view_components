@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "linter_test_case"
+require "erblint_test_case"
 
-class BlankslateApiMigrationTest < LinterTestCase
+class BlankslateApiMigrationTest < ErblintTestCase
   def test_does_not_migrate_if_no_blankslate
     @file = "<div></div>"
     @linter.run(processed_source)

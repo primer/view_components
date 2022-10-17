@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "linter_test_case"
+require "erblint_test_case"
 
-class BaseLinterTest < LinterTestCase
+class BaseLinterTest < ErblintTestCase
   def linter_class
     ERBLint::Linters::BaseLinter
   end

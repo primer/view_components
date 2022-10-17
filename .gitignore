@@ -43,3 +43,5 @@ tmp/
 # Files for version managers
 .ruby-version
 .tool-versions
+
+coverage/

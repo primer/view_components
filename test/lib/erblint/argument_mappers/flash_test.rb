@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "linter_test_case"
+require "erblint_test_case"
 
-class ArgumentMappersFlashTest < LinterTestCase
+class ArgumentMappersFlashTest < ErblintTestCase
   def test_returns_no_arguments_if_only_flash
     @file = '<div class="flash">flash</div>'
     args = ERBLint::Linters::ArgumentMappers::Flash.new(tags.first).to_args

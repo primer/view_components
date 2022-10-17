@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "linter_test_case"
+require "erblint_test_case"
 
-class DisallowActionListTest < LinterTestCase
+class DisallowActionListTest < ErblintTestCase
   def test_identifies_action_list_class
     @file = "<div class='ActionList <%= foo %>'>fooo</div>"
     @linter.run(processed_source)

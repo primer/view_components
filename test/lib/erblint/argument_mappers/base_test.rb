@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "linter_test_case"
+require "erblint_test_case"
 
-class ArgumentMappersBaseTest < LinterTestCase
+class ArgumentMappersBaseTest < ErblintTestCase
   def test_returns_no_arguments_no_attributes
     @file = "<div></div>"
     args = ERBLint::Linters::ArgumentMappers::Base.new(tags.first).to_args

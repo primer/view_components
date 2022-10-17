@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require "test_helper"
-require "linters/support/basic_linter_shared_tests"
-require "linters/support/autocorrectable_linter_shared_tests"
+require "lib/erblint/support/basic_linter_shared_tests"
+require "lib/erblint/support/autocorrectable_linter_shared_tests"
 
-class LinterTestCase < Minitest::Test
+class ErblintTestCase < Minitest::Test
   def setup
     @linter = linter_class&.new(file_loader, linter_class.config_schema.new)
     @filename = "file.rb"

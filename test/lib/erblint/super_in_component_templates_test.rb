@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "linter_test_case"
+require "erblint_test_case"
 
-class SuperInComponentTemplatesTest < LinterTestCase
+class SuperInComponentTemplatesTest < ErblintTestCase
   def test_identifies_super_calls
     @file = "<div><% super %></div>"
     @linter.run(processed_source)

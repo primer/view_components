@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "linter_test_case"
+require "erblint_test_case"
 
-class ArgumentMappersSystemArgumentsTest < LinterTestCase
+class ArgumentMappersSystemArgumentsTest < ErblintTestCase
   def test_returns_aria_arguments_as_string_symbols
     @file = '<div aria-label="label" aria-boolean>'
 

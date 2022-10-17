@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "linter_test_case"
+require "erblint_test_case"
 
-class ArgumentMappersClipboardCopyTest < LinterTestCase
+class ArgumentMappersClipboardCopyTest < ErblintTestCase
   def test_returns_value_argument
     @file = "<clipboard-copy value=\"some value\"></clipboard-copy>"
     args = ERBLint::Linters::ArgumentMappers::ClipboardCopy.new(tags.first).to_args

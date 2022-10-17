@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "linter_test_case"
+require "erblint_test_case"
 
-class ArgumentMappersButtonTest < LinterTestCase
+class ArgumentMappersButtonTest < ErblintTestCase
   def test_returns_no_arguments_if_only_btn
     @file = '<button class="btn">Button</button>'
     args = ERBLint::Linters::ArgumentMappers::Button.new(tags.first).to_args

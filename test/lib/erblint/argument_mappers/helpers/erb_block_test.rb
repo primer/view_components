@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "linter_test_case"
+require "erblint_test_case"
 
-class ArgumentMappersButtonTest < LinterTestCase
+class ArgumentMappersButtonTest < ErblintTestCase
   def test_does_not_convert_interpolation_with_if
     @file = '<div attribute="<% if condition %>Yes<% else %>No<% end %>">'
     err = assert_raises ERBLint::Linters::ArgumentMappers::ConversionError do

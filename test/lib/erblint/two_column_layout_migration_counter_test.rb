@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "linter_test_case"
+require "erblint_test_case"
 
-class TwoColumnLayoutsTest < LinterTestCase
+class TwoColumnLayoutsTest < ErblintTestCase
   def linter_class
     ERBLint::Linters::TwoColumnLayoutMigrationCounter
   end

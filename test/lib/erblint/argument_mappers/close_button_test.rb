@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "linter_test_case"
+require "erblint_test_case"
 
-class ArgumentMappersCloseButtonTest < LinterTestCase
+class ArgumentMappersCloseButtonTest < ErblintTestCase
   def test_returns_no_arguments_if_only_close_button
     @file = '<button class="close-button"><%= primer_octicon(:x) %></button>'
     args = ERBLint::Linters::ArgumentMappers::CloseButton.new(tags.first).to_args

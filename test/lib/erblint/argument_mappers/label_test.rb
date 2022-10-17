@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "linter_test_case"
+require "erblint_test_case"
 
-class ArgumentMappersLabelTest < LinterTestCase
+class ArgumentMappersLabelTest < ErblintTestCase
   def test_returns_no_arguments_if_only_label
     @file = '<span class="Label">Label</span>'
     args = ERBLint::Linters::ArgumentMappers::Label.new(tags.first).to_args
