@@ -4,8 +4,9 @@ ENV["RAILS_ENV"] = "test"
 
 if ENV["COVERAGE"] == "1"
   require "simplecov"
+  require "simplecov-console"
 
-  SimpleCov.formatter SimpleCov::Formatter::SimpleFormatter
+  SimpleCov::Formatter::Console.output_style = "table"
 end
 
 require "minitest/autorun"

@@ -9,6 +9,7 @@ namespace :test do
   Rake::TestTask.new(:single) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList[ENV["TEST"]]
@@ -17,11 +18,11 @@ namespace :test do
   Rake::TestTask.new(:fast) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList[
-      "test/components/**/*_test.rb",
-      "test/primer/**/*_test.rb",
+      "test/components/**/*_test.rb"
     ]
   end
 
@@ -35,13 +36,15 @@ namespace :test do
   task :coverage do
     require "simplecov"
 
-    SimpleCov.minimum_coverage 100
+    # Goal is 100% coverage
+    SimpleCov.minimum_coverage 99
     SimpleCov.collate Dir["coverage/.resultset.json"], "rails"
   end
 
   Rake::TestTask.new(:system) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList["test/system/**/*_test.rb"]
@@ -50,6 +53,7 @@ namespace :test do
   Rake::TestTask.new(:performance) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.test_files = FileList["test/performance/**/*_test.rb", "test/performance/**/bench_*.rb"]
     t.verbose = true
@@ -58,6 +62,7 @@ namespace :test do
   Rake::TestTask.new(:accessibility) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList["test/accessibility_test.rb"]
@@ -66,6 +71,7 @@ namespace :test do
   Rake::TestTask.new(:snapshots) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList["test/snapshots_test.rb"]

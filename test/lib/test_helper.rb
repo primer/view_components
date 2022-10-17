@@ -6,8 +6,7 @@ if ENV["COVERAGE"] == "1"
   require "simplecov"
 
   SimpleCov.add_filter [
-    "app/components/",
-    "previews/"
+    "app/components/"
   ]
 end
 
