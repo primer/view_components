@@ -9,6 +9,7 @@ namespace :test do
   Rake::TestTask.new(:single) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList[ENV["TESTS"]]
@@ -17,6 +18,7 @@ namespace :test do
   Rake::TestTask.new(:fast) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList[
@@ -31,6 +33,7 @@ namespace :test do
   Rake::TestTask.new(:system) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList["test/system/**/*_test.rb"]
@@ -47,6 +50,7 @@ namespace :test do
   Rake::TestTask.new(:accessibility) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList["test/accessibility_test.rb"]
@@ -55,6 +59,7 @@ namespace :test do
   Rake::TestTask.new(:snapshots) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList["test/snapshots_test.rb"]
