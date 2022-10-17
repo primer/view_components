@@ -36,17 +36,19 @@ module Demo
       "Access-Control-Request-Method" => %w[GET].join(",")
     }
 
-    config.lookbook.preview_display_options = {
-      theme: [
-        ["Light default", "light"],
-        ["Light colorblind", "light_colorblind"],
-        ["Light high contrast", "light_high_contrast"],
-        ["Dark default", "dark"],
-        ["Dark Dimmed", "dark_dimmed"],
-        ["Dark high contrast", "dark_high_contrast"],
-        ["Dark colorblind", "dark_colorblind"],
-        ["All themes", "all"]
-      ]
-    }
+    if config.lookbook
+      config.lookbook.preview_display_options = {
+        theme: [
+          ["Light default", "light"],
+          ["Light colorblind", "light_colorblind"],
+          ["Light high contrast", "light_high_contrast"],
+          ["Dark default", "dark"],
+          ["Dark Dimmed", "dark_dimmed"],
+          ["Dark high contrast", "dark_high_contrast"],
+          ["Dark colorblind", "dark_colorblind"],
+          ["All themes", "all"]
+        ]
+      }
+    end
   end
 end
