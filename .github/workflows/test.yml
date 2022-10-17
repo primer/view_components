@@ -111,9 +111,6 @@ jobs:
   lib:
     name: lib
     runs-on: ubuntu-latest
-    env:
-      RUBY_VERSION: ${{ matrix.ruby_version }}
-      RAILS_VERSION: ${{ matrix.rails_version }}
     strategy:
       fail-fast: false
       matrix:
@@ -142,5 +139,11 @@ jobs:
         bundle config unset deployment
         bundle update
         bundle exec rake test:lib
+      env:
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
     - name: Coverage report
       run: bundle exec rake test:coverage
+      env:
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
