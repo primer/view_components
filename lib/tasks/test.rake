@@ -26,7 +26,7 @@ namespace :test do
   end
 
   task :lib do
-    ENV["COVERAGE"] = "1" if ENV["RAILS_VERSION"] == "main"
+    ENV["COVERAGE"] = "1"
 
     ENV["TEST"] = "test/lib/**/*_test.rb"
     Rake::Task["test:single"].invoke
