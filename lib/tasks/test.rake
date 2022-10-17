@@ -32,6 +32,23 @@ namespace :test do
     Rake::Task["test:single"].invoke
   end
 
+  task :coverage do
+    require "simplecov"
+    require "simplecov-console"
+
+    SimpleCov.minimum_coverage 100
+
+    SimpleCov.collate Dir["coverage/.resultset.json"], "rails" do
+      formatter SimpleCov::Formatter::Console
+      SimpleCov::Formatter::Console.max_rows = 50
+      SimpleCov::Formatter::Console.output_style = "block"
+
+      add_group "Ignored Code" do |src_file|
+        File.readlines(src_file.filename).grep(/:nocov:/).any?
+      end
+    end
+  end
+
   Rake::TestTask.new(:system) do |t|
     ENV["TZ"] = "Asia/Taipei"
 

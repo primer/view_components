@@ -15,9 +15,7 @@ if ENV["COVERAGE"] == "1"
       "lib/yard"
     ]
     command_name "rails#{ENV['RAILS_VERSION']}-ruby#{ENV['RUBY_VERSION']}" if ENV["RUBY_VERSION"]
-    formatter SimpleCov::Formatter::Console
-    SimpleCov::Formatter::Console.max_rows = 50
-    SimpleCov::Formatter::Console.table_options = { style: { width: 140 } }
+    formatter SimpleCov::Formatter::SimpleFormatter
   end
 end
 
