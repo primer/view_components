@@ -6,12 +6,10 @@ if ENV["COVERAGE"] == "1"
   require "simplecov"
   require "simplecov-console"
 
-  SimpleCov.start do
-    add_filter [
-      "app/components/",
-      "previews/"
-    ]
-  end
+  SimpleCov.add_filter [
+    "app/components/",
+    "previews/"
+  ]
 end
 
 require "erb_lint/all"
