@@ -37,7 +37,7 @@ namespace :test do
     require "simplecov"
 
     # Goal is 100% coverage
-    SimpleCov.minimum_coverage 99
+    SimpleCov.minimum_coverage 100
     SimpleCov.collate Dir["coverage/.resultset.json"], "rails"
   end
 

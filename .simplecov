@@ -2,7 +2,7 @@
 
 require "simplecov-console"
 
-SimpleCov.start do
+SimpleCov.start "rails" do
   add_filter [
     "demo/",
     "previews/",
