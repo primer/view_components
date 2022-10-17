@@ -8,6 +8,7 @@ if ENV["COVERAGE"] == "1"
 
   SimpleCov.start do
     add_filter [
+      "demo/",
       "previews/",
       "test/test_helpers/",
       "lib/tasks",
