@@ -36,7 +36,7 @@ module Demo
       "Access-Control-Request-Method" => %w[GET].join(",")
     }
 
-    if config.lookbook
+    if config.respond_to?(:lookbook)
       config.lookbook.preview_display_options = {
         theme: [
           ["Light default", "light"],
