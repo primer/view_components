@@ -248,17 +248,7 @@
   },
   "Primer::Alpha::SegmentedControl": {
     "FULL_WIDTH_DEFAULT": false,
-    "ICON_ONLY_DEFAULT": "never",
-    "ICON_ONLY_MAPPINGS": {
-      "never": "",
-      "always": "SegmentedControl--iconOnly",
-      "when_narrow": "SegmentedControl--iconOnly-whenNarrow"
-    },
-    "ICON_ONLY_OPTIONS": [
-      "never",
-      "always",
-      "when_narrow"
-    ],
+    "HIDE_LABELS_DEFAULT": false,
     "Item": "Primer::Alpha::SegmentedControl::Item"
   },
   "Primer::Alpha::SegmentedControl::Item": {

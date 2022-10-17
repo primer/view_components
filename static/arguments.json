@@ -418,10 +418,10 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/segmented_control.rb",
     "parameters": [
       {
-        "name": "icon_only",
-        "type": "Symbol",
-        "default": "`:never`",
-        "description": "One of `:always`, `:never`, or `:when_narrow`."
+        "name": "hide_labels",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether to hide the labels and only show the icons"
       },
       {
         "name": "full_width",
