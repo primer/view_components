@@ -6,9 +6,6 @@ on:
     branches:
       - main
 
-env:
-  TEST_MATRIX: "{ include: [ { rails_version: \"6.1.1\", ruby_version: \"2.7\" }, { rails_version: \"7.0.3\", ruby_version: \"3.0\" }, { rails_version: \"main\", ruby_version: \"3.1\" } ] }"
-
 permissions:
   contents: write
   pull-requests: write
@@ -87,7 +84,15 @@ jobs:
     name: Performance
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{ env.TEST_MATRIX }}
+      fail-fast: false
+      matrix:
+        include:
+          - rails_version: "6.1.1"
+            ruby_version: "2.7"
+          - rails_version: "7.0.3"
+            ruby_version: "3.0"
+          - rails_version: "main"
+            ruby_version: "3.1"
     steps:
     - uses: actions/checkout@master
     - uses: ruby/setup-ruby@v1
@@ -107,7 +112,15 @@ jobs:
     name: lib
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{ env.TEST_MATRIX }}
+      fail-fast: false
+      matrix:
+        include:
+          - rails_version: "6.1.1"
+            ruby_version: "2.7"
+          - rails_version: "7.0.3"
+            ruby_version: "3.0"
+          - rails_version: "main"
+            ruby_version: "3.1"
     steps:
     - uses: actions/checkout@master
     - uses: ruby/setup-ruby@v1
