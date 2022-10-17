@@ -64,6 +64,14 @@ namespace :test do
     t.libs << "lib"
     t.test_files = FileList["test/snapshots_test.rb"]
   end
+
+  task :coverage do
+    require "simplecov"
+
+    # Goal is 100% coverage
+    SimpleCov.minimum_coverage 99
+    SimpleCov.collate Dir["coverage/.resultset.json"], "rails"
+  end
 end
 
 task :test do
