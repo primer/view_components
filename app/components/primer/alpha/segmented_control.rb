@@ -7,14 +7,7 @@ module Primer
       status :alpha
 
       FULL_WIDTH_DEFAULT = false
-
-      ICON_ONLY_DEFAULT = :never
-      ICON_ONLY_MAPPINGS = {
-        ICON_ONLY_DEFAULT => "",
-        :always => "SegmentedControl--iconOnly",
-        :when_narrow => "SegmentedControl--iconOnly-whenNarrow"
-      }.freeze
-      ICON_ONLY_OPTIONS = ICON_ONLY_MAPPINGS.keys
+      HIDE_LABELS_DEFAULT = false
 
       # Use to render an item in the segmented control
       #
@@ -24,7 +17,7 @@ module Primer
           label: label,
           selected: selected,
           icon: icon,
-          icon_only: @icon_only,
+          hide_labels: @hide_labels,
           size: @size,
           block: @full_width,
           **system_arguments
@@ -55,14 +48,7 @@ module Primer
       #   <% end %>
       #
       # @example With icons only
-      #   <%= render(Primer::Alpha::SegmentedControl.new(icon_only: :always)) do |c| %>
-      #     <%= c.with_item(label: "Preview", icon: :eye, selected: true) %>
-      #     <%= c.with_item(label: "Raw", icon: :"file-code") %>
-      #     <%= c.with_item(label: "Blame", icon: :people) %>
-      #   <% end %>
-      #
-      # @example With icons only when narrow
-      #   <%= render(Primer::Alpha::SegmentedControl.new(icon_only: :when_narrow)) do |c| %>
+      #   <%= render(Primer::Alpha::SegmentedControl.new(hide_labels: true)) do |c| %>
       #     <%= c.with_item(label: "Preview", icon: :eye, selected: true) %>
       #     <%= c.with_item(label: "Raw", icon: :"file-code") %>
       #     <%= c.with_item(label: "Blame", icon: :people) %>
@@ -75,14 +61,14 @@ module Primer
       #     <%= c.with_item(label: "Blame", icon: :people) %>
       #   <% end %>
       #
-      # @param icon_only [Symbol] <%= one_of(Primer::Alpha::SegmentedControl::ICON_ONLY_OPTIONS) %>
+      # @param hide_labels [Boolean] Whether to hide the labels and only show the icons
       # @param full_width [Boolean] If the component should be full width
       # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(icon_only: ICON_ONLY_DEFAULT, full_width: FULL_WIDTH_DEFAULT, size: Primer::Beta::Button::DEFAULT_SIZE, **system_arguments)
-        @icon_only = fetch_or_fallback(ICON_ONLY_OPTIONS, icon_only, ICON_ONLY_DEFAULT)
+      def initialize(hide_labels: HIDE_LABELS_DEFAULT, full_width: FULL_WIDTH_DEFAULT, size: Primer::Beta::Button::DEFAULT_SIZE, **system_arguments)
         @full_width = full_width
         @size = size
+        @hide_labels = hide_labels
 
         @system_arguments = system_arguments
         @system_arguments[:tag] = :ul
@@ -90,7 +76,7 @@ module Primer
         @system_arguments[:classes] = class_names(
           system_arguments[:classes],
           "SegmentedControl",
-          ICON_ONLY_MAPPINGS[icon_only],
+          "SegmentedControl--iconOnly": hide_labels,
           "SegmentedControl--fullWidth": full_width
         )
       end

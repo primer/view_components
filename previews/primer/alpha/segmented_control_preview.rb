@@ -7,67 +7,67 @@ module Primer
   module Alpha
     # @label SegmentedControl
     class SegmentedControlPreview < ViewComponent::Preview
+      # @label Playground
       # @param full_width [Boolean] toggle
-      # @param icon_only [Symbol] select [always, never, when_narrow]
-      # @param number_of_buttons [Integer] number
+      # @param hide_labels [Boolean] toggle
+      # @param icon [Symbol] octicon
       # @param size select [small, medium, large]
-      def default(full_width: false, number_of_buttons: 3, icon_only: :never, size: :medium)
-        render(Primer::Alpha::SegmentedControl.new(full_width: full_width, icon_only: icon_only, size: size)) do |c|
-          Array.new(number_of_buttons || 3) do |i|
-            c.with_item(label: "Button #{i + 1}", icon: (icon_only == :never ? nil : :zap), selected: i.zero?)
-          end
+      def playground(full_width: false, hide_labels: false, size: :medium, icon: :none)
+        if icon == :none
+          icon = hide_labels ? :zap : nil
         end
-      end
-
-      # @param icon_only [Symbol] select [always, never, when_narrow]
-      # @param number_of_buttons [Integer] number
-      # @param size select [small, medium, large]
-      def full_width(number_of_buttons: 3, icon_only: :never, size: :medium)
-        render(Primer::Alpha::SegmentedControl.new(full_width: true, icon_only: icon_only)) do |c|
-          Array.new(number_of_buttons || 3) do |i|
-            c.with_item(label: "Button #{i + 1}", icon: (icon_only == :never ? nil : :zap), selected: i.zero?)
-          end
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: full_width, hide_labels: hide_labels, size: size)) do |c|
+          c.with_item(label: "Preview", icon: icon, selected: true)
+          c.with_item(label: "Raw", icon: icon)
+          c.with_item(label: "Blame", icon: icon)
         end
       end
 
       # @param full_width [Boolean] toggle
-      # @param number_of_buttons [Integer] number
       # @param size select [small, medium, large]
-      def icons_and_text(full_width: false, number_of_buttons: 3, size: :medium)
-        render(Primer::Alpha::SegmentedControl.new(full_width: full_width, size: size)) do |c|
-          Array.new(number_of_buttons || 3) do |i|
-            c.with_item(label: "Button #{i + 1}", icon: :zap, selected: i.zero?)
-          end
+      def default(full_width: false, size: :medium)
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: full_width, size: size)) do |c|
+          c.with_item(label: "Preview", selected: true)
+          c.with_item(label: "Raw")
+          c.with_item(label: "Blame")
+        end
+      end
+
+      # @param hide_labels [Boolean] toggle
+      # @param size select [small, medium, large]
+      def full_width(hide_labels: false, size: :medium)
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: true, hide_labels: hide_labels, size: size)) do |c|
+          c.with_item(label: "Preview", icon: (hide_labels ? :zap : nil), selected: true)
+          c.with_item(label: "Raw", icon: (hide_labels ? :zap : nil))
+          c.with_item(label: "Blame", icon: (hide_labels ? :zap : nil))
         end
       end
 
       # @param full_width [Boolean] toggle
-      # @param number_of_buttons [Integer] number
       # @param size select [small, medium, large]
-      def icons_only(full_width: false, number_of_buttons: 3, size: :medium)
-        render(Primer::Alpha::SegmentedControl.new(full_width: full_width, icon_only: :always, size: size)) do |c|
-          Array.new(number_of_buttons || 3) do |i|
-            c.with_item(label: "Button #{i + 1}", icon: :zap, selected: i.zero?)
-          end
+      def icons_and_text(full_width: false, size: :medium)
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: full_width, size: size)) do |c|
+          c.with_item(label: "Preview", icon: :eye, selected: true)
+          c.with_item(label: "Raw", icon: :"file-code")
+          c.with_item(label: "Blame", icon: :people)
         end
       end
 
       # @param full_width [Boolean] toggle
-      # @param number_of_buttons [Integer] number
       # @param size select [small, medium, large]
-      def icons_only_when_narrow(full_width: false, number_of_buttons: 3, size: :medium)
-        render(Primer::Alpha::SegmentedControl.new(full_width: full_width, icon_only: :when_narrow, size: size)) do |c|
-          Array.new(number_of_buttons || 3) do |i|
-            c.with_item(label: "Button #{i + 1}", icon: :zap, selected: i.zero?)
-          end
+      def icons_only(full_width: false, size: :medium)
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: full_width, hide_labels: true, size: size)) do |c|
+          c.with_item(label: "Preview", icon: :eye, selected: true)
+          c.with_item(label: "Raw", icon: :"file-code")
+          c.with_item(label: "Blame", icon: :people)
         end
       end
 
       def with_links_as_tags
         render(Primer::Alpha::SegmentedControl.new) do |c|
-          c.with_item(label: "Button 1", icon: :zap, tag: :a, href: "#", selected: true)
-          c.with_item(label: "Button 2", icon: :zap, tag: :a, href: "#")
-          c.with_item(label: "Button 3", icon: :zap, tag: :a, href: "#")
+          c.with_item(tag: :a, href: "#", label: "Preview", icon: :eye, selected: true)
+          c.with_item(tag: :a, href: "#", label: "Raw", icon: :"file-code")
+          c.with_item(tag: :a, href: "#", label: "Blame", icon: :people)
         end
       end
     end
