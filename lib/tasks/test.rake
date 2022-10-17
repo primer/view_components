@@ -34,19 +34,9 @@ namespace :test do
 
   task :coverage do
     require "simplecov"
-    require "simplecov-console"
 
     SimpleCov.minimum_coverage 100
-
-    SimpleCov.collate Dir["coverage/.resultset.json"], "rails" do
-      formatter SimpleCov::Formatter::Console
-      SimpleCov::Formatter::Console.max_rows = 50
-      SimpleCov::Formatter::Console.output_style = "block"
-
-      add_group "Ignored Code" do |src_file|
-        File.readlines(src_file.filename).grep(/:nocov:/).any?
-      end
-    end
+    SimpleCov.collate Dir["coverage/.resultset.json"], "rails"
   end
 
   Rake::TestTask.new(:system) do |t|

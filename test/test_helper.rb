@@ -4,19 +4,8 @@ ENV["RAILS_ENV"] = "test"
 
 if ENV["COVERAGE"] == "1"
   require "simplecov"
-  require "simplecov-console"
 
-  SimpleCov.start do
-    add_filter [
-      "demo/",
-      "previews/",
-      "test/test_helpers/",
-      "lib/tasks",
-      "lib/yard"
-    ]
-    command_name "rails#{ENV['RAILS_VERSION']}-ruby#{ENV['RUBY_VERSION']}" if ENV["RUBY_VERSION"]
-    formatter SimpleCov::Formatter::SimpleFormatter
-  end
+  SimpleCov.formatter SimpleCov::Formatter::SimpleFormatter
 end
 
 require "minitest/autorun"
