@@ -7,14 +7,18 @@ if ENV["COVERAGE"] == "1"
   require "simplecov-console"
 
   SimpleCov.start do
-    add_filter "/previews/"
+    add_filter [
+      "previews/",
+      "test/test_helpers/",
+      "lib/tasks",
+      "lib/yard"
+    ]
     command_name "rails#{ENV['RAILS_VERSION']}-ruby#{ENV['RUBY_VERSION']}" if ENV["RUBY_VERSION"]
     formatter SimpleCov::Formatter::Console
     SimpleCov::Formatter::Console.max_rows = 50
   end
 end
 
-require "erb_lint/all"
 require "minitest/autorun"
 require "mocha/minitest"
 require "rails"
@@ -31,7 +35,6 @@ require "active_model/railtie"
 require "webmock/minitest"
 
 require "primer/view_components"
-require "primer/view_components/linters"
 
 require File.expand_path("../demo/config/environment.rb", __dir__)
 

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "cop_test"
+require "lib/cop_test_case"
 
-class RubocopSystemArgumentInsteadOfClassTest < CopTest
+class RubocopSystemArgumentInsteadOfClassTest < CopTestCase
   def cop_class
     RuboCop::Cop::Primer::SystemArgumentInsteadOfClass
   end

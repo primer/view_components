@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require "lib/test_helper"
 
 class Primer::Forms::InputTest < Minitest::Test
   include Primer::ComponentTestHelpers

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "erblint_test_case"
+require "lib/erblint_test_case"
 
 class ArgumentMappersSystemArgumentsTest < ErblintTestCase
   def test_returns_aria_arguments_as_string_symbols

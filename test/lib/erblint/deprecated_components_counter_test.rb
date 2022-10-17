@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "erblint_test_case"
+require "lib/erblint_test_case"
 
 class DeprecatedComponentsCounterTest < ErblintTestCase
   def test_warns_about_deprecated_primer_component

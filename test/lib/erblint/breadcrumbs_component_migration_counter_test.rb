@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "erblint_test_case"
+require "lib/erblint_test_case"
 
 class BreadcrumbsComponentMigrationCounterTest < ErblintTestCase
   include Primer::BasicLinterSharedTests

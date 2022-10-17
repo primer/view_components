@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require "lib/test_helper"
 require "rubocop/cop/primer"
 
-class CopTest < MiniTest::Test
+class CopTestCase < MiniTest::Test
   def cop_class
     # :nocov:
     raise NotImplementedError

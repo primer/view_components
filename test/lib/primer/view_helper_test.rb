@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "test_helper"
-require_relative "../../app/lib/primer/view_helper"
+require "lib/test_helper"
+require_relative "../../../app/lib/primer/view_helper"
 
 class Primer::ViewHelperTest < Minitest::Test
   include Primer::ViewHelper

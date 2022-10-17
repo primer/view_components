@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require "lib/test_helper"
 
 class Primer::ViewComponentsTest < Minitest::Test
   def test_generate_statuses

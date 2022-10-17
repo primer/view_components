@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "cop_test"
+require "lib/cop_test_case"
 
-class RubocopDeprecatedComponentsTest < CopTest
+class RubocopDeprecatedComponentsTest < CopTestCase
   def cop_class
     RuboCop::Cop::Primer::DeprecatedComponents
   end

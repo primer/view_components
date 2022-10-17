@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "erblint_test_case"
+require "lib/erblint_test_case"
 
 class BlankslateApiMigrationTest < ErblintTestCase
   def test_does_not_migrate_if_no_blankslate

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require "lib/test_helper"
 require "lib/erblint/support/basic_linter_shared_tests"
 require "lib/erblint/support/autocorrectable_linter_shared_tests"
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "erblint_test_case"
+require "lib/erblint_test_case"
 
 class SuperInComponentTemplatesTest < ErblintTestCase
   def test_identifies_super_calls

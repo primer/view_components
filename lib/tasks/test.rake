@@ -11,7 +11,7 @@ namespace :test do
 
     t.libs << "test"
     t.libs << "lib"
-    t.test_files = FileList[ENV["TESTS"]]
+    t.test_files = FileList[ENV["TEST"]]
   end
 
   Rake::TestTask.new(:fast) do |t|
@@ -25,14 +25,11 @@ namespace :test do
     ]
   end
 
-  Rake::TestTask.new(:lib) do |t|
-    ENV["TZ"] = "Asia/Taipei"
+  task :lib do
+    ENV["COVERAGE"] = "1"
 
-    t.libs << "test"
-    t.libs << "lib"
-    t.test_files = FileList[
-      "test/lib/**/*_test.rb",
-    ]
+    ENV["TEST"] = "test/lib/**/*_test.rb"
+    Rake::Task["test:single"].invoke
   end
 
   Rake::TestTask.new(:system) do |t|

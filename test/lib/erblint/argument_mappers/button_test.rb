@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "erblint_test_case"
+require "lib/erblint_test_case"
 
 class ArgumentMappersButtonTest < ErblintTestCase
   def test_returns_no_arguments_if_only_btn
