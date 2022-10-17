@@ -6,6 +6,8 @@ if ENV["COVERAGE"] == "1"
   require "simplecov"
   require "simplecov-console"
 
+  SimpleCov.minimum_coverage 100
+
   SimpleCov.add_filter [
     "app/components/",
     "previews/"
