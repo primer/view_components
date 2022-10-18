@@ -1,4 +1,4 @@
-name: Check for changeset
+name: Triage
 
 on:
   pull_request:
@@ -11,7 +11,21 @@ on:
       - "labeled"
       - "unlabeled"
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
+  label:
+    name: Labeler
+    if: github.event.action != 'labeled' && github.event.action != 'unlabeled'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/labeler@v4
+      with:
+        sync-labels: true
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+
   check-for-changeset:
     name: Check for changeset
     runs-on: ubuntu-latest
