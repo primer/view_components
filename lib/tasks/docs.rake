@@ -227,7 +227,9 @@ namespace :docs do
 
         component_args = {
           "component" => data[:title],
+          "status" => component.status.to_s,
           "source" => data[:source],
+          "lookbook" => data[:lookbook],
           "parameters" => args
         }
 
@@ -507,7 +509,7 @@ namespace :docs do
   def lookbook_url(component)
     path = component.name.underscore.gsub("_component", "")
 
-    "https://primer.style/view-components/lookbook/inspect/#{path}/default/"
+    "https://primer.style/view-components/lookbook/inspect/#{path}/playground/"
   end
 
   def preview_exists?(component)
