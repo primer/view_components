@@ -28,4 +28,15 @@ class PreviewTest < Minitest::Test
     end
     assert(missing_previews.empty?, "The following previews are missing a playground preview method: \n\n - #{missing_previews.join("\n - ")}")
   end
+
+  def test_preview_labels_are_sentence_case
+    lowercase_labels = []
+    @previews.each do |preview|
+      contents = File.read(preview).split("\n")
+      contents.each_with_index do |line, index|
+        lowercase_labels << "#{preview}:#{index + 1}: #{line}" if /# @label [a-z]/.match?(line)
+      end
+    end
+    assert(lowercase_labels.empty?, "Preview labels should use sentence case: \n\n - #{lowercase_labels.join("\n - ")}")
+  end
 end
