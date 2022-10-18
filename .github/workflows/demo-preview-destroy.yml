@@ -1,4 +1,4 @@
-name: Demo Preview
+name: Demo Preview Destroy
 
 on:
   pull_request:
