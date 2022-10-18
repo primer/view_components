@@ -27,7 +27,7 @@ jobs:
             const fs = require('fs')
             const body = await fs.readFileSync('.github/release_template.md', 'utf8')
             const result = await github.rest.issues.listComments({
-              issue_number: `${PR_NUMBER}`,
+              issue_number: `${process.env.PR_NUMBER}`,
               owner: context.repo.owner,
               repo: context.repo.repo
             });
