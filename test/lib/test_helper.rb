@@ -13,3 +13,4 @@ end
 
 require "erb_lint/all"
 require "primer/view_components/linters"
+require "yard/docs_helper"
