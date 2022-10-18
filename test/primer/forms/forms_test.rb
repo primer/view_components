@@ -240,6 +240,7 @@ class Primer::Forms::FormsTest < Minitest::Test
   def test_select_list_form
     render_preview :select_list_form
 
+    assert_selector ".FormControl-select option[value='']"
     assert_selector ".FormControl-select option[value=lopez_island]"
     assert_selector ".FormControl-select option[value=bellevue]"
     assert_selector ".FormControl-select option[value=seattle]"
