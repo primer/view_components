@@ -158,4 +158,25 @@ class PrimerButtonComponentTest < Minitest::Test
       assert_selector(".octicon.octicon-triangle-down")
     end
   end
+
+  def test_renders_button_with_tooltip
+    render_inline(Primer::ButtonComponent.new(id: "button-id")) do |component|
+      component.with_tooltip(text: "Tooltip", type: :description)
+      "Button"
+    end
+
+    assert_selector(".btn", text: "Button")
+    assert_selector(".btn ~ tool-tip[for='button-id']", visible: false)
+  end
+
+  def test_warns_on_use_of_tooltip_without_id
+    err = assert_raises ArgumentError do
+      render_inline(Primer::ButtonComponent.new) do |component|
+        component.with_tooltip(text: "Tooltip")
+        "Button"
+      end
+    end
+
+    assert_equal "Buttons with a tooltip must have a unique `id` set on the `Button`.", err.message
+  end
 end
