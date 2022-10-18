@@ -1,31 +1,33 @@
 name: Release Checklist
 
 on:
-  pull_request:
+  push:
+    branches:
+     - 'changeset-release/*'
 
 jobs:
   release-checklist:
     # Only run on Release Tracking branch
-    if: ${{ github.repository == 'primer/view_components' && github.head_ref == 'changeset-release/main' }}
+    if: ${{ github.repository == 'primer/view_components' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
+      - uses: jwalton/gh-find-current-pr@v1
+        id: findPr
 
       - name: Get or Create Comment
-        uses: actions/github-script@v5
+        if: success() && steps.findPr.outputs.number
+        uses: actions/github-script@v6
+        env:
+          PR_NUMBER: ${{ steps.findPr.outputs.pr }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs')
             const body = await fs.readFileSync('.github/release_template.md', 'utf8')
             const result = await github.rest.issues.listComments({
-              issue_number: context.issue.number,
+              issue_number: `${PR_NUMBER}`,
               owner: context.repo.owner,
               repo: context.repo.repo
             });
