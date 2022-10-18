@@ -7,3 +7,8 @@
     <%= render(Caption.new(input: @input)) %>
   </span>
 </div>
+<% if @input.nested_form_block %>
+  <%= content_tag(:div, nested_form_arguments) do %>
+    <%= render(@input.nested_form_block.call(builder)) %>
+  <% end %>
+<% end %>

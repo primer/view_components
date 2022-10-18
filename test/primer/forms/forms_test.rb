@@ -252,6 +252,12 @@ class Primer::Forms::FormsTest < Minitest::Test
     assert_selector ".FormControl-input[name='[last_name][last_name]']"
   end
 
+  def test_check_box_includes_nested_form
+    render_preview :check_box_with_nested_form
+
+    assert_selector ".FormControl-checkbox-wrap + .ml-4 .FormControl input[name=custom_cities]"
+  end
+
   def test_renders_separator
     render_preview :multi_text_field_form
 
