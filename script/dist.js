@@ -7,7 +7,7 @@ import {dirname, join} from 'path'
 import analyzeVariables from './analyze-variables.js'
 
 import fsExtra from 'fs-extra'
-const {copy, remove, mkdirp, readFile, writeFile} = fsExtra
+const {copy, remove, mkdirp, pathExists, readFile, writeFile} = fsExtra
 
 const inDir = 'app/lib/primer/css'
 const outDir = 'app/assets/styles'
@@ -26,18 +26,20 @@ const bundleNames = {
 async function dist() {
   try {
     const bundles = {}
-
-    await remove(outDir)
-    await mkdirp(statsDir)
     const files = await globby([`${inDir}/**/index.scss`])
-
     const inPattern = new RegExp(`^${inDir}/`)
+
+    await mkdirp(statsDir)
+
     const tasks = files.map(async from => {
       const path = from.replace(inPattern, '')
       const name = bundleNames[path] || getPathName(dirname(path))
-
+      const cssFile = `${outDir}/${name}.css`
+      const mapFile = `${cssFile}.map`
       const to = join(outDir, `${name}.css`)
-      const meta = {
+
+      const meta =
+        {
         name,
         source: from,
         sass: `@primer/css/${path}`,
@@ -48,30 +50,21 @@ async function dist() {
         legacy: `primer-${name}/index.scss`
       }
 
-      const scss = await readFile(from, encoding)
-      meta.imports = getExternalImports(scss, path).map(getPathName)
-      const result = await compiler(scss, {from, to})
-      const warnings = result.warnings()
-
-      // We don't want to release changes that cause warnings with postcss. Fail the dist build if any warnings are detected.
-      if (warnings.length) {
-        for (const warning of warnings) {
-          console.warn(warning.toString())
-        }
-        throw new Error(`Warnings while compiling ${from}.  See output above.`)
-      }
+      const result = {
+        css: await readFile(cssFile, encoding),
+        map: await pathExists(mapFile) ? await readFile(mapFile, encoding) : false,
+      };
 
       await Promise.all([
-        writeFile(to, result.css, encoding),
         writeFile(meta.stats, JSON.stringify(cssstats(result.css)), encoding),
         writeFile(meta.js, `export {cssstats: require('./stats/${name}.json')}`, encoding),
         result.map ? writeFile(meta.map, result.map.toString(), encoding) : null
       ])
+
       bundles[name] = meta
     })
 
     await Promise.all(tasks)
-
     const meta = {bundles}
     await writeFile(join(outDir, 'meta.json'), JSON.stringify(meta, null, 2), encoding)
     await writeVariableData()
@@ -97,11 +90,11 @@ function getPathName(path) {
   return path.replace(/\//g, '-')
 }
 
-dist()
-
 async function writeVariableData() {
   const support = await analyzeVariables('app/lib/primer/css/support/index.scss')
   // const marketing = await analyzeVariables('src/marketing/support/index.scss')
   const data = Object.assign({}, support) //, marketing)
   writeFile(join(outDir, 'variables.json'), JSON.stringify(data, null, 2))
 }
+
+dist()
