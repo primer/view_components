@@ -4,68 +4,62 @@ require "rake/testtask"
 
 namespace :test do
   desc "Run all tests"
-  task all: [:fast, :lib, :system, :accessibility, :performance]
+  task all: [
+    :components,
+    :lib,
+    :system,
+    :accessibility,
+    :performance
+  ]
 
   Rake::TestTask.new(:single) do |t|
-    ENV["TZ"] = "Asia/Taipei"
-
     t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList[ENV["TEST"]]
   end
 
-  Rake::TestTask.new(:fast) do |t|
-    ENV["TZ"] = "Asia/Taipei"
-
+  Rake::TestTask.new(:components) do |t|
     t.warning = false
     t.libs << "test"
-    t.libs << "lib"
     t.test_files = FileList[
       "test/components/**/*_test.rb"
     ]
   end
 
-  task :lib do
-    ENV["COVERAGE"] = "1"
-
-    ENV["TEST"] = "test/lib/**/*_test.rb"
-    Rake::Task["test:single"].invoke
-  end
-
-  Rake::TestTask.new(:system) do |t|
-    ENV["TZ"] = "Asia/Taipei"
-
+  Rake::TestTask.new(:lib) do |t|
     t.warning = false
     t.libs << "test"
     t.libs << "lib"
+    t.test_files = FileList[
+      "test/lib/**/*_test.rb"
+    ]
+  end
+
+  Rake::TestTask.new(:system) do |t|
+    t.warning = false
+    t.libs << "test"
     t.test_files = FileList["test/system/**/*_test.rb"]
   end
 
   Rake::TestTask.new(:performance) do |t|
-    ENV["TZ"] = "Asia/Taipei"
-
-    t.warning = false
-    t.libs << "test"
-    t.test_files = FileList["test/performance/**/*_test.rb", "test/performance/**/bench_*.rb"]
     t.verbose = true
+    t.libs << "test"
+    t.test_files = FileList[
+      "test/performance/**/*_test.rb",
+      "test/performance/**/bench_*.rb"
+    ]
   end
 
   Rake::TestTask.new(:accessibility) do |t|
-    ENV["TZ"] = "Asia/Taipei"
-
     t.warning = false
     t.libs << "test"
-    t.libs << "lib"
     t.test_files = FileList["test/accessibility_test.rb"]
   end
 
   Rake::TestTask.new(:snapshots) do |t|
-    ENV["TZ"] = "Asia/Taipei"
-
     t.warning = false
     t.libs << "test"
-    t.libs << "lib"
     t.test_files = FileList["test/snapshots_test.rb"]
   end
 
