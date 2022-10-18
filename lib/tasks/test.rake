@@ -33,14 +33,6 @@ namespace :test do
     Rake::Task["test:single"].invoke
   end
 
-  task :coverage do
-    require "simplecov"
-
-    # Goal is 100% coverage
-    SimpleCov.minimum_coverage 100
-    SimpleCov.collate Dir["coverage/.resultset.json"], "rails"
-  end
-
   Rake::TestTask.new(:system) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
