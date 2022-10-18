@@ -16,6 +16,15 @@ class PrimerAlphaDialogTest < Minitest::Test
     end
   end
 
+  def test_renders_show_button
+    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
+      c.with_body { "Hello" }
+      c.with_show_button { "Show" }
+    end
+
+    assert_selector("[data-show-dialog-id]")
+  end
+
   def test_raises_on_missing_title
     error = assert_raises(ArgumentError) do
       render_inline(Primer::Alpha::Dialog.new)
