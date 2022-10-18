@@ -73,6 +73,12 @@ module Primer
 
         assert_selector(".ActionListItem a[data-foo=bar]")
       end
+
+      def test_renders_leading_visuals
+        render_preview(:leading_visuals)
+
+        assert_selector(".ActionListItem-visual--leading", count: 2)
+      end
     end
   end
 end
