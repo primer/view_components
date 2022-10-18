@@ -14,6 +14,9 @@ concurrency:
   group: test-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
+env:
+  COVERAGE: 1
+
 jobs:
   accessibility:
     name: Accessibility
@@ -31,13 +34,13 @@ jobs:
         cache-dependency-path: |
           package-lock.json
           demo/package-lock.json
-    - run: |
+    - name: Build
+      run: |
         npm ci
         cd demo && npm ci
-    - name: Build and test with Rake
-      run: |
         bundle exec rake docs:preview
-        bundle exec rake test:accessibility
+    - name: Test
+      run: bundle exec rake test:accessibility
   components:
     name: Components
     runs-on: ubuntu-latest
@@ -62,18 +65,18 @@ jobs:
       with:
         node-version: 16
         cache: 'npm'
-    - run: |
-        npm ci
-    - name: Build and test with Rake
+    - name: Build
       run: |
+        npm ci
         bundle config unset deployment
         bundle update
-        bundle exec rake test:fast
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
         RAILS_VERSION: ${{ matrix.rails_version }}
-    - name: Coverage report
-      run: bundle exec rake test:coverage
+    - name: Test
+      run: |
+        bundle exec rake test:fast
+        bundle exec rake test:coverage
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
         RAILS_VERSION: ${{ matrix.rails_version }}
@@ -101,18 +104,18 @@ jobs:
       with:
         node-version: 16
         cache: 'npm'
-    - run: |
-        npm ci
-    - name: Build and test with Rake
+    - name: Build
       run: |
+        npm ci
         bundle config unset deployment
         bundle update
-        bundle exec rake test:lib
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
         RAILS_VERSION: ${{ matrix.rails_version }}
-    - name: Coverage report
-      run: bundle exec rake test:coverage
+    - name: Test
+      run: |
+        bundle exec rake test:lib
+        bundle exec rake test:coverage
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
         RAILS_VERSION: ${{ matrix.rails_version }}
@@ -136,10 +139,15 @@ jobs:
         ruby-version: ${{ matrix.ruby_version }}
         bundler-cache: true
         cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
-    - name: Build and test with Rake
+    - name: Build
       run: |
         bundle config unset deployment
         bundle update
+      env:
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
+    - name: Test
+      run: |
         bundle exec rake test:performance
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
@@ -202,9 +210,10 @@ jobs:
         cache-dependency-path: |
           package-lock.json
           demo/package-lock.json
-    - run: |
+    - name: Build
+      run: |
         npm ci
         cd demo && npm ci
-    - name: Build and test with Rake
+    - name: Test
       run: |
         bundle exec rake test:system
