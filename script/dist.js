@@ -23,6 +23,28 @@ const bundleNames = {
   'index.scss': 'primer'
 }
 
+function getExternalImports(scss, relativeTo) {
+  const imports = []
+  const dir = dirname(relativeTo)
+  // XXX: this might *seem* fragile, but since we enforce double quotes via
+  // stylelint, I think it's kosher.
+  scss.replace(/@import "(.+)\/index\.scss";/g, (_, dep) => {
+    imports.push(join(dir, dep))
+  })
+  return imports
+}
+
+function getPathName(path) {
+  return path.replace(/\//g, '-')
+}
+
+async function writeVariableData() {
+  const support = await analyzeVariables('app/lib/primer/css/support/index.scss')
+  // const marketing = await analyzeVariables('src/marketing/support/index.scss')
+  const data = Object.assign({}, support) //, marketing)
+  writeFile(join(outDir, 'variables.json'), JSON.stringify(data, null, 2))
+}
+
 async function dist() {
   try {
     const bundles = {}
@@ -43,8 +65,7 @@ async function dist() {
         return
       }
 
-      const meta =
-        {
+      const meta = {
         name,
         source: from,
         sass: `@primer/css/${path}`,
@@ -78,28 +99,6 @@ async function dist() {
     console.error(error)
     process.exitCode = 1
   }
-}
-
-function getExternalImports(scss, relativeTo) {
-  const imports = []
-  const dir = dirname(relativeTo)
-  // XXX: this might *seem* fragile, but since we enforce double quotes via
-  // stylelint, I think it's kosher.
-  scss.replace(/@import "(.+)\/index\.scss";/g, (_, dep) => {
-    imports.push(join(dir, dep))
-  })
-  return imports
-}
-
-function getPathName(path) {
-  return path.replace(/\//g, '-')
-}
-
-async function writeVariableData() {
-  const support = await analyzeVariables('app/lib/primer/css/support/index.scss')
-  // const marketing = await analyzeVariables('src/marketing/support/index.scss')
-  const data = Object.assign({}, support) //, marketing)
-  writeFile(join(outDir, 'variables.json'), JSON.stringify(data, null, 2))
 }
 
 dist()
