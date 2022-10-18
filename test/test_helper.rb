@@ -13,15 +13,15 @@ if ENV["COVERAGE"] == "1"
   end
 end
 
-require "action_controller/railtie"
-require "active_model/railtie"
 require "minitest/autorun"
 require "mocha/minitest"
-require "primer/view_components"
 require "rails"
 require "rails/test_help"
-require "rails/test_unit/railtie"
-require "test_helpers/component_test_helpers"
 require "view_component/test_helpers"
+require "test_helpers/component_test_helpers"
+require "action_controller/railtie"
+require "rails/test_unit/railtie"
+require "active_model/railtie"
+require "primer/view_components"
 
 require File.expand_path("../demo/config/environment.rb", __dir__)
