@@ -43,6 +43,7 @@ namespace :test do
   end
 
   Rake::TestTask.new(:performance) do |t|
+    t.warning = false
     t.verbose = true
     t.libs << "test"
     t.test_files = FileList[
