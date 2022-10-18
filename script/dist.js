@@ -38,6 +38,11 @@ async function dist() {
       const mapFile = `${cssFile}.map`
       const to = join(outDir, `${name}.css`)
 
+      if (!await pathExists(to)) {
+        console.log(`File not found. Cannot build stats. ${to}`)
+        return
+      }
+
       const meta =
         {
         name,
