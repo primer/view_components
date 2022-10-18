@@ -14,6 +14,12 @@ class PrimerBetaIconButtonTest < Minitest::Test
     assert_selector("tool-tip", text: "Star", visible: :all)
   end
 
+  def test_renders_description_tooltip
+    render_inline(Primer::Beta::IconButton.new(icon: :star, "aria-label": "Star", "aria-description": "Star this repository"))
+
+    assert_selector("tool-tip", text: "Star this repository", visible: :all)
+  end
+
   def test_adds_wrapper_arguments
     render_inline(Primer::Beta::IconButton.new(icon: :star, "aria-label": "Star", wrapper_arguments: { id: "foo" }))
 
