@@ -37,6 +37,7 @@ module Demo
     }
 
     if config.respond_to?(:lookbook)
+      config.lookbook.project_name = "Primer ViewComponents v#{Primer::ViewComponents::VERSION::STRING}"
       config.lookbook.preview_display_options = {
         theme: [
           ["Light default", "light"],
