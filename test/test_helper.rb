@@ -4,13 +4,12 @@ ENV["RAILS_ENV"] = "test"
 
 if ENV["COVERAGE"] == "1"
   require "simplecov"
-  require "simplecov-console"
 
-  SimpleCov.start do
-    add_filter "/previews/"
-    command_name "rails#{ENV['RAILS_VERSION']}-ruby#{ENV['RUBY_VERSION']}" if ENV["RUBY_VERSION"]
-    formatter SimpleCov::Formatter::Console
-    SimpleCov::Formatter::Console.max_rows = 50
+  if ENV["CI"] == "true"
+    SimpleCov.formatter SimpleCov::Formatter::SimpleFormatter
+  else
+    require "simplecov-console"
+    SimpleCov::Formatter::Console.output_style = "table"
   end
 end
 

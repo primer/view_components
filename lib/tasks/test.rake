@@ -9,14 +9,17 @@ namespace :test do
   Rake::TestTask.new(:single) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
-    t.test_files = FileList[ENV["TESTS"]]
+    t.test_files = FileList[ENV["TEST"]]
   end
 
   Rake::TestTask.new(:fast) do |t|
     ENV["TZ"] = "Asia/Taipei"
+    ENV["COVERAGE"] = "1"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList[
@@ -31,6 +34,7 @@ namespace :test do
   Rake::TestTask.new(:system) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList["test/system/**/*_test.rb"]
@@ -47,6 +51,7 @@ namespace :test do
   Rake::TestTask.new(:accessibility) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList["test/accessibility_test.rb"]
@@ -55,14 +60,23 @@ namespace :test do
   Rake::TestTask.new(:snapshots) do |t|
     ENV["TZ"] = "Asia/Taipei"
 
+    t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList["test/snapshots_test.rb"]
   end
+
+  task :coverage do
+    require "simplecov"
+
+    # Goal is 100% coverage
+    SimpleCov.minimum_coverage 99
+    SimpleCov.collate Dir["coverage/.resultset.json"], "rails"
+  end
 end
 
 task :test do
-  if ENV["TESTS"]
+  if ENV["TEST"]
     Rake::Task["test:single"].invoke
   else
     Rake::Task["test:all"].invoke
