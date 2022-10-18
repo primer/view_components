@@ -44,4 +44,5 @@ tmp/
 .ruby-version
 .tool-versions
 
+# Simplecov folder
 coverage/

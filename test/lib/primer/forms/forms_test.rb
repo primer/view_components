@@ -240,6 +240,7 @@ class Primer::Forms::FormsTest < Minitest::Test
   def test_select_list_form
     render_preview :select_list_form
 
+    assert_selector ".FormControl-select option[value='']"
     assert_selector ".FormControl-select option[value=lopez_island]"
     assert_selector ".FormControl-select option[value=bellevue]"
     assert_selector ".FormControl-select option[value=seattle]"
@@ -250,6 +251,12 @@ class Primer::Forms::FormsTest < Minitest::Test
 
     assert_selector ".FormControl-input[name='[first_name][first_name]']"
     assert_selector ".FormControl-input[name='[last_name][last_name]']"
+  end
+
+  def test_check_box_includes_nested_form
+    render_preview :check_box_with_nested_form
+
+    assert_selector ".FormControl-checkbox-wrap + .ml-4 .FormControl input[name=custom_cities]"
   end
 
   def test_renders_separator

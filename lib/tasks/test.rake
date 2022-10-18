@@ -17,6 +17,7 @@ namespace :test do
 
   Rake::TestTask.new(:fast) do |t|
     ENV["TZ"] = "Asia/Taipei"
+    ENV["COVERAGE"] = "1"
 
     t.warning = false
     t.libs << "test"
@@ -75,6 +76,14 @@ namespace :test do
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList["test/snapshots_test.rb"]
+  end
+
+  task :coverage do
+    require "simplecov"
+
+    # Goal is 100% coverage
+    SimpleCov.minimum_coverage 99
+    SimpleCov.collate Dir["coverage/.resultset.json"], "rails"
   end
 end
 
