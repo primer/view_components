@@ -34,7 +34,7 @@ jobs:
             docs/package-lock.json
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3.0.11
         with:
           path: vendor/bundle
           key: gems-deploy-preview-${{ hashFiles('**/Gemfile.lock') }}
