@@ -1,0 +1,6 @@
+#! /bin/bash -e
+
+script/copy-pcss-source-files
+npm run build:pcss
+npm run build:pcss:stats
+bundle exec rake utilities:build
