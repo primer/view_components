@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "linter_test_case"
+require "lib/erblint_test_case"
 
-class <%= component_short_name %>ComponentMigrationCounterTest < LinterTestCase
+class <%= component_short_name %>ComponentMigrationCounterTest < ErblintTestCase
   include Primer::BasicLinterSharedTests
   <%- if @autocorrectable -%>
   include Primer::AutocorrectableLinterSharedTests

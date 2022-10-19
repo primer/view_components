@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.0.104
+
+### Patch Changes
+
+- [#1505](https://github.com/primer/view_components/pull/1505) [`5d3448bb`](https://github.com/primer/view_components/commit/5d3448bb379621d2acaf22c2ed38fae6528497bd) Thanks [@camertron](https://github.com/camertron)! - Pass select list options to Rails form builder
+
+* [#1498](https://github.com/primer/view_components/pull/1498) [`b3668d38`](https://github.com/primer/view_components/commit/b3668d3836c35e52a301544de9955b09c023e82a) Thanks [@neall](https://github.com/neall)! - Add option for nested forms for check boxes
+
+- [#1488](https://github.com/primer/view_components/pull/1488) [`db5b5f65`](https://github.com/primer/view_components/commit/db5b5f6514cfd0952dd299b121f5cc2f2f001067) Thanks [@jonrohan](https://github.com/jonrohan)! - Building PostCSS components separately
+
+* [#1486](https://github.com/primer/view_components/pull/1486) [`9a936bd1`](https://github.com/primer/view_components/commit/9a936bd18053f7f17d1c1146349a157b90c5c91e) Thanks [@langermank](https://github.com/langermank)! - Remove dead SCSS code from ActionList
+
+- [#1491](https://github.com/primer/view_components/pull/1491) [`f43bd08a`](https://github.com/primer/view_components/commit/f43bd08af6ffcd7ad4607c61cc1569bf2fccd7ee) Thanks [@camertron](https://github.com/camertron)! - Allow IconButton tooltips to be hidden
+
 ## 0.0.103
 
 ### Patch Changes
