@@ -11,9 +11,32 @@ class PreviewTest < Minitest::Test
     refute_empty(@previews)
   end
 
-  def test_previews_have_default_method
+  def test_previews_have_default_preview
+    missing_previews = []
     @previews.each do |preview|
-      assert_includes(File.read(preview), "def default", "The preview `#{preview}` does not have a default method. Please include at one `def default` method")
+      contents = File.read(preview)
+      missing_previews << preview unless contents.include?("def default")
     end
+    assert(missing_previews.empty?, "The following previews are missing a default preview method: \n\n - #{missing_previews.join("\n - ")}\n")
+  end
+
+  def test_previews_have_playground_preview
+    missing_previews = []
+    @previews.each do |preview|
+      contents = File.read(preview)
+      missing_previews << preview unless contents.include?("def playground")
+    end
+    assert(missing_previews.empty?, "The following previews are missing a playground preview method: \n\n - #{missing_previews.join("\n - ")}")
+  end
+
+  def test_preview_labels_are_sentence_case
+    lowercase_labels = []
+    @previews.each do |preview|
+      contents = File.read(preview).split("\n")
+      contents.each_with_index do |line, index|
+        lowercase_labels << "#{preview}:#{index + 1}: #{line}" if /# @label [a-z]/.match?(line)
+      end
+    end
+    assert(lowercase_labels.empty?, "Preview labels should use sentence case: \n\n - #{lowercase_labels.join("\n - ")}")
   end
 end

@@ -4,6 +4,18 @@ module Primer
   module Beta
     # @label Blankslate
     class BlankslatePreview < ViewComponent::Preview
+      # @label Playground
+      #
+      # @param narrow [Boolean] toggle
+      # @param spacious [Boolean] toggle
+      # @param border [Boolean] toggle
+      def playground(narrow: false, spacious: false, border: false)
+        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |c|
+          c.heading(tag: :h2).with_content("Title")
+          c.description { "Description" }
+        end
+      end
+
       # @label Default options
       #
       # @param narrow [Boolean] toggle

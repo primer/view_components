@@ -4,6 +4,35 @@ module Primer
   module Alpha
     # @label ActionList
     class ActionListPreview < ViewComponent::Preview
+      # @label Playground
+      #
+      # @param role text
+      # @param scheme [Symbol] select [full, inset]
+      # @param show_dividers toggle
+      def playground(
+        role: Primer::Alpha::ActionList::DEFAULT_ROLE,
+        scheme: Primer::Alpha::ActionList::DEFAULT_SCHEME,
+        show_dividers: false
+      )
+        render(Primer::Alpha::ActionList.new(
+                 role: role,
+                 scheme: scheme,
+                 show_dividers: show_dividers,
+                 aria: { label: "Action List" }
+               )) do |c|
+          c.with_heading(title: "Action List")
+          c.with_item(label: "Item one", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :gear)
+          end
+          c.with_item(label: "Item two", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :star)
+          end
+          c.with_item(label: "Item three", href: "/") do |item|
+            item.with_leading_visual_icon(icon: :heart)
+          end
+        end
+      end
+
       # @label Default
       #
       # @param role text
