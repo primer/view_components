@@ -110,7 +110,7 @@ jobs:
           ruby-version: 2.7.x
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: 'npm'
