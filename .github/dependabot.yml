@@ -8,6 +8,7 @@ updates:
     labels:
       - "dependencies"
       - "skip changelog"
+      - "actions"
     schedule:
       interval: "monthly"
 
@@ -19,6 +20,7 @@ updates:
     labels:
       - "dependencies"
       - "skip changelog"
+      - "npm"
     allow:
       - dependency-type: "production"
   - package-ecosystem: "npm"
@@ -28,8 +30,14 @@ updates:
     labels:
       - "dependencies"
       - "skip changelog"
+      - "npm"
     allow:
       - dependency-type: "production"
+    ignore:
+      - dependency-name: "gatsby"
+      - dependency-name: "react"
+      - dependency-name: "react-dom"
+      - dependency-name: "webpack-dev-server"
   - package-ecosystem: "npm"
     directory: "/demo"
     schedule:
@@ -37,6 +45,7 @@ updates:
     labels:
       - "dependencies"
       - "skip changelog"
+      - "npm"
     allow:
       - dependency-type: "production"
 
@@ -48,6 +57,7 @@ updates:
     labels:
       - "dependencies"
       - "skip changelog"
+      - "bundler"
     allow:
       - dependency-type: "production"
   - package-ecosystem: "bundler"
@@ -57,5 +67,6 @@ updates:
     labels:
       - "dependencies"
       - "skip changelog"
+      - "bundler"
     allow:
       - dependency-type: "production"
