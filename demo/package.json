@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "dependencies": {
     "@primer/css": "^20.4.7",
-    "@rails/actioncable": "^6.0.0",
+    "@rails/actioncable": "^7.0.4",
     "@rails/ujs": "^7.0.4",
     "turbolinks": "^5.2.0",
     "webpack-dev-server": "^3.11.0"
