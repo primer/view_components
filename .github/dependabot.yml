@@ -37,7 +37,6 @@ updates:
       - dependency-name: "gatsby"
       - dependency-name: "react"
       - dependency-name: "react-dom"
-      - dependency-name: "webpack-dev-server"
   - package-ecosystem: "npm"
     directory: "/demo"
     schedule:
