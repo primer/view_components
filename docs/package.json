@@ -13,7 +13,7 @@
     "@primer/primitives": "^7.10.0",
     "@primer/react": "^35.2.2",
     "gatsby": "^2.24.63",
-    "react": "^16.13.1",
+    "react": "^18.2.0",
     "react-dom": "^16.13.1"
   }
 }
