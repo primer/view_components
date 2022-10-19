@@ -23,7 +23,7 @@ module Primer
       render(Primer::LinkComponent.new(href: "#", tag: tag, scheme: scheme, muted: muted, underline: underline)) { "This is a link!" }
     end
 
-    # @label with Tooltip
+    # @label With Tooltip
     #
     # @param underline [Boolean]
     # @param muted [Boolean]
