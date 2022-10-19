@@ -7,7 +7,7 @@
     "@rails/actioncable": "^7.0.4",
     "@rails/ujs": "^7.0.4",
     "turbolinks": "^5.2.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^4.11.1"
   },
   "scripts": {
     "postinstall": "cp node_modules/@primer/css/dist/primer.css app/assets/stylesheets && cp node_modules/@primer/css/dist/primitives.css app/assets/stylesheets"
