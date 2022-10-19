@@ -12,7 +12,7 @@
     "@primer/gatsby-theme-doctocat": "^4.2.1",
     "@primer/primitives": "^6.0.0",
     "@primer/react": "^35.2.2",
-    "gatsby": "^2.24.63",
+    "gatsby": "^4.24.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
