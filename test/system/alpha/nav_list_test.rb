@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "application_system_test_case"
+require "system/test_case"
 
 module Alpha
-  class NavListTest < ApplicationSystemTestCase
+  class NavListTest < System::TestCase
     def test_collapses_group
       visit_preview(:default)
 

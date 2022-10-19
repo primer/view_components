@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # :nocov:
   # :nodoc:
   module FormHelper
     def primer_form_with(**kwargs, &block)
