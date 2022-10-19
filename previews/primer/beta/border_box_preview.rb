@@ -4,6 +4,20 @@ module Primer
   module Beta
     # @label BorderBox
     class BorderBoxPreview < ViewComponent::Preview
+      # @label Playground
+      #
+      # @param padding [Symbol] select [default, condensed]
+      def playground(padding: :default)
+        render(Primer::Beta::BorderBox.new(padding: padding)) do |component|
+          component.header { "Header" }
+          component.body { "Body" }
+          component.row { "Row one" }
+          component.row { "Row two" }
+          component.row { "Row three" }
+          component.footer { "Footer" }
+        end
+      end
+
       # @label Default options
       #
       # @param padding [Symbol] select [default, condensed]

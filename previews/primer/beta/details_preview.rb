@@ -4,6 +4,21 @@ module Primer
   module Beta
     # @label Details
     class DetailsPreview < ViewComponent::Preview
+      # @label Playground
+      #
+      # @param overlay [Symbol] select [none, default, dark]
+      # @param reset [Boolean] toggle
+      def playground(reset: false, overlay: :default)
+        render Primer::Beta::Details.new(reset: reset, overlay: overlay) do |c|
+          c.with_summary do
+            "Summary"
+          end
+          c.with_body do
+            "Body"
+          end
+        end
+      end
+
       # @label Default options
       #
       # @param overlay [Symbol] select [none, default, dark]

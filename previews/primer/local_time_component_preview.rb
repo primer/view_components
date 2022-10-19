@@ -12,6 +12,19 @@ module Primer
     # @param minute [Symbol] select [numeric, "2-digit"]
     # @param second [Symbol] select [numeric, "2-digit"]
     # @param time_zone_name [Symbol] select [long, short]
+    def playground(datetime: "2014-04-01T16:30:00-08:00", weekday: :short, month: :short, year: :numeric, day: :numeric, hour: :numeric, minute: :numeric, second: :numeric, time_zone_name: :short)
+      render(Primer::LocalTime.new(datetime: DateTime.parse(datetime), weekday: weekday, month: month, year: year, day: day, hour: hour, minute: minute, second: second, time_zone_name: time_zone_name))
+    end
+
+    # @param datetime datetime-local
+    # @param weekday [Symbol] select [long, short]
+    # @param month [Symbol] select [long, short]
+    # @param year [Symbol] select [numeric, "2-digit"]
+    # @param day [Symbol] select [numeric, "2-digit"]
+    # @param hour [Symbol] select [numeric, "2-digit"]
+    # @param minute [Symbol] select [numeric, "2-digit"]
+    # @param second [Symbol] select [numeric, "2-digit"]
+    # @param time_zone_name [Symbol] select [long, short]
     def default(datetime: "2014-04-01T16:30:00-08:00", weekday: :short, month: :short, year: :numeric, day: :numeric, hour: :numeric, minute: :numeric, second: :numeric, time_zone_name: :short)
       render(Primer::LocalTime.new(datetime: DateTime.parse(datetime), weekday: weekday, month: month, year: year, day: day, hour: hour, minute: minute, second: second, time_zone_name: time_zone_name))
     end
