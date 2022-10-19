@@ -3,6 +3,7 @@
 require "minitest"
 require "minitest/benchmark"
 require "test_helper"
+require "test_helpers/assert_allocations_helper"
 
 class BenchClassify < Minitest::Benchmark
   include Primer::AssertAllocationsHelper
