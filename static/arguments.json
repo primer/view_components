@@ -3,7 +3,7 @@
     "component": "ActionList",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/default/",
     "parameters": [
       {
         "name": "role",
@@ -41,7 +41,7 @@
     "component": "ActionList::Divider",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/divider.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/divider/default/",
     "parameters": [
       {
         "name": "scheme",
@@ -61,7 +61,7 @@
     "component": "ActionList::Heading",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/heading.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/heading/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/heading/default/",
     "parameters": [
       {
         "name": "list_id",
@@ -105,7 +105,7 @@
     "component": "ActionList::Item",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/action_list/item.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/item/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/action_list/item/default/",
     "parameters": [
       {
         "name": "list",
@@ -209,7 +209,7 @@
     "component": "ButtonMarketing",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/button_marketing.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/button_marketing/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/button_marketing/default/",
     "parameters": [
       {
         "name": "scheme",
@@ -247,7 +247,7 @@
     "component": "Dialog",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dialog.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dialog/default/",
     "parameters": [
       {
         "name": "id",
@@ -303,7 +303,7 @@
     "component": "HiddenTextExpander",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/hidden_text_expander.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/hidden_text_expander/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/hidden_text_expander/default/",
     "parameters": [
       {
         "name": "inline",
@@ -329,7 +329,7 @@
     "component": "Layout",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/layout/default/",
     "parameters": [
       {
         "name": "stacking_breakpoint",
@@ -361,7 +361,7 @@
     "component": "NavList",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/default/",
     "parameters": [
       {
         "name": "selected_item_id",
@@ -381,7 +381,7 @@
     "component": "NavList::Item",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/item.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/item/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/item/default/",
     "parameters": [
       {
         "name": "selected_item_id",
@@ -419,7 +419,7 @@
     "component": "NavList::Section",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list/section.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/section/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/nav_list/section/default/",
     "parameters": [
       {
         "name": "selected_item_id",
@@ -439,7 +439,7 @@
     "component": "TabNav",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tab_nav.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tab_nav/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tab_nav/default/",
     "parameters": [
       {
         "name": "tag",
@@ -471,7 +471,7 @@
     "component": "TabPanels",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tab_panels.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tab_panels/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tab_panels/default/",
     "parameters": [
       {
         "name": "label",
@@ -509,7 +509,7 @@
     "component": "TextField",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/text_field.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/text_field/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/text_field/default/",
     "parameters": [
       {
         "name": "name",
@@ -643,7 +643,7 @@
     "component": "ToggleSwitch",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/toggle_switch.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/toggle_switch/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/toggle_switch/default/",
     "parameters": [
       {
         "name": "src",
@@ -693,7 +693,7 @@
     "component": "Tooltip",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tooltip.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tooltip/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tooltip/default/",
     "parameters": [
       {
         "name": "for_id",
@@ -731,7 +731,7 @@
     "component": "UnderlineNav",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/underline_nav.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/underline_nav/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/underline_nav/default/",
     "parameters": [
       {
         "name": "tag",
@@ -769,7 +769,7 @@
     "component": "UnderlinePanels",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/underline_panels.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/underline_panels/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/underline_panels/default/",
     "parameters": [
       {
         "name": "label",
@@ -807,7 +807,7 @@
     "component": "AutoComplete",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/default/",
     "parameters": [
       {
         "name": "label_text",
@@ -905,7 +905,7 @@
     "component": "AutoComplete::Item",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/auto_complete/item.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/item/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/auto_complete/item/default/",
     "parameters": [
       {
         "name": "value",
@@ -949,7 +949,7 @@
     "component": "Avatar",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/avatar.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/avatar/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/avatar/default/",
     "parameters": [
       {
         "name": "src",
@@ -993,7 +993,7 @@
     "component": "AvatarStack",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/avatar_stack.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/avatar_stack/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/avatar_stack/default/",
     "parameters": [
       {
         "name": "tag",
@@ -1031,7 +1031,7 @@
     "component": "BaseButton",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/base_button.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/base_button/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/base_button/default/",
     "parameters": [
       {
         "name": "tag",
@@ -1063,7 +1063,7 @@
     "component": "Blankslate",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/blankslate.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/blankslate/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/blankslate/default/",
     "parameters": [
       {
         "name": "narrow",
@@ -1095,7 +1095,7 @@
     "component": "BorderBox",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/border_box.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/border_box/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/border_box/default/",
     "parameters": [
       {
         "name": "padding",
@@ -1115,7 +1115,7 @@
     "component": "BorderBox::Header",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/border_box/header.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/border_box/header/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/border_box/header/default/",
     "parameters": [
       {
         "name": "system_arguments",
@@ -1129,7 +1129,7 @@
     "component": "Breadcrumbs",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/breadcrumbs.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/breadcrumbs/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/breadcrumbs/default/",
     "parameters": [
       {
         "name": "system_arguments",
@@ -1143,7 +1143,7 @@
     "component": "Button",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/button.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button/default/",
     "parameters": [
       {
         "name": "scheme",
@@ -1193,7 +1193,7 @@
     "component": "ButtonGroup",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/button_group.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button_group/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/button_group/default/",
     "parameters": [
       {
         "name": "variant",
@@ -1219,7 +1219,7 @@
     "component": "CloseButton",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/close_button.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/close_button/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/close_button/default/",
     "parameters": [
       {
         "name": "type",
@@ -1239,7 +1239,7 @@
     "component": "Counter",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/counter.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/counter/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/counter/default/",
     "parameters": [
       {
         "name": "count",
@@ -1289,7 +1289,7 @@
     "component": "Details",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/details.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/details/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/details/default/",
     "parameters": [
       {
         "name": "overlay",
@@ -1315,7 +1315,7 @@
     "component": "Flash",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/flash.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/flash/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/flash/default/",
     "parameters": [
       {
         "name": "full",
@@ -1359,7 +1359,7 @@
     "component": "Heading",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/heading.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/heading/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/heading/default/",
     "parameters": [
       {
         "name": "tag",
@@ -1379,7 +1379,7 @@
     "component": "IconButton",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/icon_button.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/icon_button/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/icon_button/default/",
     "parameters": [
       {
         "name": "icon",
@@ -1453,7 +1453,7 @@
     "component": "Text",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/text/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/text/default/",
     "parameters": [
       {
         "name": "tag",
@@ -1473,7 +1473,7 @@
     "component": "Truncate",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/truncate/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/truncate/default/",
     "parameters": [
       {
         "name": "system_arguments",
@@ -1487,7 +1487,7 @@
     "component": "Box",
     "status": "stable",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/box.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/box/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/box/default/",
     "parameters": [
       {
         "name": "system_arguments",
@@ -1501,7 +1501,7 @@
     "component": "Button",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/button_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/button/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/button/default/",
     "parameters": [
       {
         "name": "scheme",
@@ -1563,7 +1563,7 @@
     "component": "ClipboardCopy",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/clipboard_copy.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/clipboard_copy/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/clipboard_copy/default/",
     "parameters": [
       {
         "name": "aria-label",
@@ -1595,7 +1595,7 @@
     "component": "Dropdown",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/dropdown.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/dropdown/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/dropdown/default/",
     "parameters": [
       {
         "name": "overlay",
@@ -1621,7 +1621,7 @@
     "component": "DropdownMenu",
     "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/dropdown_menu_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/dropdown_menu/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/dropdown_menu/default/",
     "parameters": [
       {
         "name": "direction",
@@ -1653,7 +1653,7 @@
     "component": "HellipButton",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/hellip_button.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/hellip_button/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/hellip_button/default/",
     "parameters": [
       {
         "name": "inline",
@@ -1673,7 +1673,7 @@
     "component": "IconButton",
     "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/icon_button.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/icon_button/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/icon_button/default/",
     "parameters": [
       {
         "name": "scheme",
@@ -1735,7 +1735,7 @@
     "component": "Image",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/image.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/image/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/image/default/",
     "parameters": [
       {
         "name": "src",
@@ -1767,7 +1767,7 @@
     "component": "ImageCrop",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/image_crop.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/image_crop/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/image_crop/default/",
     "parameters": [
       {
         "name": "src",
@@ -1793,7 +1793,7 @@
     "component": "Label",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/label_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/label/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/label/default/",
     "parameters": [
       {
         "name": "tag",
@@ -1837,7 +1837,7 @@
     "component": "Layout",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/layout_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/layout/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/layout/default/",
     "parameters": [
       {
         "name": "responsive",
@@ -1869,7 +1869,7 @@
     "component": "Link",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/link_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/link/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/link/default/",
     "parameters": [
       {
         "name": "tag",
@@ -1913,7 +1913,7 @@
     "component": "LocalTime",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/local_time.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/local_time/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/local_time/default/",
     "parameters": [
       {
         "name": "datetime",
@@ -1987,7 +1987,7 @@
     "component": "Markdown",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/markdown.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/markdown/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/markdown/default/",
     "parameters": [
       {
         "name": "tag",
@@ -2007,7 +2007,7 @@
     "component": "Menu",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/menu_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/menu/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/menu/default/",
     "parameters": [
       {
         "name": "system_arguments",
@@ -2021,7 +2021,7 @@
     "component": "Navigation::Tab",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/navigation/tab_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/navigation/tab/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/navigation/tab/default/",
     "parameters": [
       {
         "name": "list",
@@ -2071,7 +2071,7 @@
     "component": "Octicon",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/octicon_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/octicon/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/octicon/default/",
     "parameters": [
       {
         "name": "icon_name",
@@ -2109,7 +2109,7 @@
     "component": "OcticonSymbols",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/octicon_symbols_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/octicon_symbols/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/octicon_symbols/default/",
     "parameters": [
       {
         "name": "icons",
@@ -2123,7 +2123,7 @@
     "component": "Popover",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/popover_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/popover/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/popover/default/",
     "parameters": [
       {
         "name": "system_arguments",
@@ -2137,7 +2137,7 @@
     "component": "ProgressBar",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/progress_bar_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/progress_bar/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/progress_bar/default/",
     "parameters": [
       {
         "name": "size",
@@ -2157,7 +2157,7 @@
     "component": "Spinner",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/spinner_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/spinner/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/spinner/default/",
     "parameters": [
       {
         "name": "size",
@@ -2183,7 +2183,7 @@
     "component": "State",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/state_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/state/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/state/default/",
     "parameters": [
       {
         "name": "title",
@@ -2221,7 +2221,7 @@
     "component": "Subhead",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/subhead_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/subhead/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/subhead/default/",
     "parameters": [
       {
         "name": "spacious",
@@ -2247,7 +2247,7 @@
     "component": "TabContainer",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/tab_container_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/tab_container/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/tab_container/default/",
     "parameters": [
       {
         "name": "system_arguments",
@@ -2261,7 +2261,7 @@
     "component": "TimeAgo",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/time_ago_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/time_ago/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/time_ago/default/",
     "parameters": [
       {
         "name": "time",
@@ -2287,7 +2287,7 @@
     "component": "TimelineItem",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/timeline_item_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/timeline_item/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/timeline_item/default/",
     "parameters": [
       {
         "name": "condensed",
@@ -2307,7 +2307,7 @@
     "component": "Tooltip",
     "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/tooltip.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/tooltip/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/tooltip/default/",
     "parameters": [
       {
         "name": "label",
@@ -2351,7 +2351,7 @@
     "component": "Truncate",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/truncate.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/truncate/playground/",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/truncate/default/",
     "parameters": [
       {
         "name": "tag",
