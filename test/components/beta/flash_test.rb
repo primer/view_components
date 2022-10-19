@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require "components/test_helper"
 
 class PrimerFlashTest < Minitest::Test
   include Primer::ComponentTestHelpers

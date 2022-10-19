@@ -4,6 +4,20 @@ module Primer
   module Beta
     # @label AutoCompleteItem
     class AutoCompleteItemPreview < ViewComponent::Preview
+      # @label Playground
+      # @param selected toggle
+      # @param disabled toggle
+      # @param value text
+      def playground(value: "", selected: false, disabled: false)
+        render_with_template(
+          locals: {
+            selected: selected,
+            disabled: disabled,
+            value: value
+          }
+        )
+      end
+
       # @label Default
       # @param selected toggle
       # @param disabled toggle

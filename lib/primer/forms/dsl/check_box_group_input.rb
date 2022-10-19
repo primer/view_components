@@ -31,7 +31,7 @@ module Primer
           :check_box_group
         end
 
-        def check_box(**system_arguments)
+        def check_box(**system_arguments, &block)
           args = {
             name: @name,
             **system_arguments,
@@ -40,7 +40,7 @@ module Primer
             scheme: scheme
           }
 
-          @check_boxes << CheckBoxInput.new(**args)
+          @check_boxes << CheckBoxInput.new(**args, &block)
         end
 
         private

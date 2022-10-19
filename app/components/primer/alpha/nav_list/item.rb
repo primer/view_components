@@ -106,7 +106,9 @@ module Primer
           elsif item.href
             current_page?(item.href)
           else
+            # :nocov:
             false
+            # :nocov:
           end
         end
 
