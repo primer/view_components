@@ -3,8 +3,6 @@
 name: Preview
 on:
   pull_request:
-    branches-ignore:
-      - 'dependabot/**'
 
 permissions:
   contents: read
@@ -24,7 +22,7 @@ concurrency:
 jobs:
   demo:
     name: Demo Build & Deploy
-    if: ${{ github.event.pull_request.head.repo.full_name == 'primer/view_components' && github.actor != 'dependabot[bot]' }}
+    if: ${{ github.event.pull_request.head.repo.full_name == 'primer/view_components' }}
     runs-on: ubuntu-latest
     environment:
       name: review-pr-${{ github.event.number }}
@@ -95,7 +93,7 @@ jobs:
           dockerRegistryPassword="${{ secrets.AZURE_ACR_PASSWORD }}"
           railsMasterKey="${{ secrets.RAILS_MASTER_KEY }}"
   docs_build:
-    if: ${{ github.event.pull_request.head.repo.full_name == 'primer/view_components' && github.actor != 'dependabot[bot]' }}
+    if: ${{ github.event.pull_request.head.repo.full_name == 'primer/view_components' }}
     name: Docs Build
     runs-on: ubuntu-latest
     steps:
