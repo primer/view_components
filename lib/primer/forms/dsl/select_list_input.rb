@@ -5,6 +5,8 @@ module Primer
     module Dsl
       # :nodoc:
       class SelectListInput < Input
+        SELECT_ARGUMENTS = %i[multiple disabled include_blank prompt].freeze
+
         # :nodoc:
         class Option
           attr_reader :label, :value, :system_arguments
@@ -16,12 +18,18 @@ module Primer
           end
         end
 
-        attr_reader :name, :label, :options
+        attr_reader :name, :label, :options, :select_arguments
 
         def initialize(name:, label:, **system_arguments)
           @name = name
           @label = label
           @options = []
+
+          @select_arguments = {}.tap do |select_args|
+            SELECT_ARGUMENTS.each do |select_arg|
+              select_args[select_arg] = system_arguments.delete(select_arg)
+            end
+          end
 
           super(**system_arguments)
 
