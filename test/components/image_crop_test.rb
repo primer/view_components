@@ -6,7 +6,7 @@ class PrimerImageCropTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_simple
-    render_inline(Primer::ImageCrop.new(src: "image.png"))
+    render_inline(Primer::Alpha::ImageCrop.new(src: "image.png"))
 
     assert_selector("image-crop[data-view-component][src=\"image.png\"][rounded]") do
       assert_selector("svg.flex-1.anim-rotate")
@@ -14,13 +14,13 @@ class PrimerImageCropTest < Minitest::Test
   end
 
   def test_square_cropper
-    render_inline Primer::ImageCrop.new(src: "image.png", rounded: false)
+    render_inline Primer::Alpha::ImageCrop.new(src: "image.png", rounded: false)
 
     assert_selector("image-crop[data-view-component][src=\"image.png\"]")
   end
 
   def test_custom_loading_element
-    render_inline Primer::ImageCrop.new(src: "image.png") do |crop|
+    render_inline Primer::Alpha::ImageCrop.new(src: "image.png") do |crop|
       crop.loading do
         "Loading.."
       end
