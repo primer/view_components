@@ -53,10 +53,6 @@
     url: "/components/dropdownmenu"
   - title: Flash
     url: "/components/beta/flash"
-  - title: Flex
-    url: "/components/flex"
-  - title: FlexItem
-    url: "/components/flexitem"
   - title: Heading
     url: "/components/beta/heading"
   - title: HiddenTextExpander
@@ -89,6 +85,8 @@
     url: "/components/popover"
   - title: ProgressBar
     url: "/components/progressbar"
+  - title: SegmentedControl
+    url: "/components/alpha/segmentedcontrol"
   - title: Spinner
     url: "/components/spinner"
   - title: State

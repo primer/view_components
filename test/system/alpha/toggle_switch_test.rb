@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "application_system_test_case"
+require "system/test_case"
 
 module Alpha
-  class IntegrationToggleSwitchTest < ApplicationSystemTestCase
+  class IntegrationToggleSwitchTest < System::TestCase
     def test_click
       visit_preview(:default)
 

@@ -31,6 +31,7 @@ namespace :docs do
     components = [
       Primer::Beta::IconButton,
       Primer::Beta::Button,
+      Primer::Alpha::SegmentedControl,
       Primer::Alpha::Layout,
       Primer::HellipButton,
       Primer::Image,
@@ -59,8 +60,6 @@ namespace :docs do
       Primer::Dropdown,
       Primer::DropdownMenuComponent,
       Primer::Beta::Flash,
-      Primer::FlexComponent,
-      Primer::FlexItemComponent,
       Primer::Beta::Heading,
       Primer::Alpha::HiddenTextExpander,
       Primer::LabelComponent,
@@ -154,6 +153,7 @@ namespace :docs do
         f.puts("componentId: #{data[:component_id]}")
         f.puts("status: #{data[:status]}")
         f.puts("source: #{data[:source]}")
+        f.puts("a11yReviewed: false")
         f.puts("lookbook: #{data[:lookbook]}") if preview_exists?(component)
         f.puts("---")
         f.puts
@@ -228,7 +228,9 @@ namespace :docs do
 
         component_args = {
           "component" => data[:title],
+          "status" => component.status.to_s,
           "source" => data[:source],
+          "lookbook" => data[:lookbook],
           "parameters" => args
         }
 
@@ -344,7 +346,7 @@ namespace :docs do
     FileUtils.rm_rf(File.join(adr_content_dir))
     FileUtils.mkdir(adr_content_dir)
 
-    nav_entries = Dir[File.join(*%w[adr *.md])].sort.map do |orig_path|
+    nav_entries = Dir[File.join(*%w[docs adr *.md])].sort.map do |orig_path|
       orig_file_name = File.basename(orig_path)
       url_name = orig_file_name.chomp(".md")
 

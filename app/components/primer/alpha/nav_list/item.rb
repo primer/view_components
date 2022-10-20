@@ -16,13 +16,6 @@ module Primer
 
           @list.build_item(parent: self, sub_item: true, **system_arguments).tap do |item|
             @list.will_add_item(item)
-
-            if item.active?
-              @content_arguments[:classes] = class_names(
-                @content_arguments[:classes],
-                "ActionListContent--hasActiveSubItem"
-              )
-            end
           end
         }
 
@@ -55,9 +48,12 @@ module Primer
           }
 
           overrides = { "data-item-id": @selected_by_ids.join(" ") }
-          overrides[:active] = @selected_by_ids.include?(@selected_item_id)
 
           super(**system_arguments, **overrides)
+        end
+
+        def active?
+          item_active?(self)
         end
 
         # Cause this item to show its list of sub items when rendered.
@@ -66,9 +62,18 @@ module Primer
         end
 
         def before_render
+          if active_sub_item?
+            expand!
+
+            @content_arguments[:classes] = class_names(
+              @content_arguments[:classes],
+              "ActionListContent--hasActiveSubItem"
+            )
+          end
+
           super
 
-          raise "Cannot render a trailing visual for an item with subitems" if items.present? && trailing_visual.present?
+          raise "Cannot render a trailing action for an item with subitems" if items.present? && trailing_action.present?
 
           return if items.blank?
 
@@ -82,6 +87,37 @@ module Primer
             @system_arguments[:classes],
             "ActionListItem--hasSubItem"
           )
+        end
+
+        private
+
+        # Normally it would be easier to simply ask each item for its active status, eg.
+        # items.any?(&:active?), but unfortunately the view context is not set on each
+        # item until _after_ the parent's before_render, etc methods have been called.
+        # This means helper methods like current_page? will blow up with an error, since
+        # `helpers` is simply an alias for the view context (i.e. an instance of
+        # ActionView::Base). Since we know the view context for the parent object must
+        # be set before `before_render` is invoked, we can call helper methods here in
+        # the parent and bypass the problem entirely. Maybe not the most OO approach,
+        # but it works.
+        def item_active?(item)
+          if item.selected_by_ids.present?
+            item.selected_by_ids.include?(@selected_item_id)
+          elsif item.href
+            current_page?(item.href)
+          else
+            # :nocov:
+            false
+            # :nocov:
+          end
+        end
+
+        def active_sub_item?
+          items.any? { |subitem| item_active?(subitem) }
+        end
+
+        def current_page?(url)
+          helpers.current_page?(url)
         end
       end
     end

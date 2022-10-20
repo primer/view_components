@@ -1,8 +1,8 @@
 name: Docs Production
 on:
-  push:
-    branches:
-      - 'main'
+  workflow_dispatch:
+  release:
+    types: [published]
 
 permissions:
   contents: read
@@ -25,7 +25,7 @@ jobs:
           ruby-version: 2.7.x
 
       - name: Set up Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: 'npm'
@@ -34,7 +34,7 @@ jobs:
             docs/package-lock.json
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3.0.11
         with:
           path: vendor/bundle
           key: gems-deploy-preview-${{ hashFiles('**/Gemfile.lock') }}

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require "components/test_helper"
 require_relative "../../lib/primer/view_components/statuses"
 
 class PrimerComponentTest < Minitest::Test
@@ -10,6 +10,13 @@ class PrimerComponentTest < Minitest::Test
   COMPONENTS_WITH_ARGS = [
     [Primer::Beta::IconButton, { icon: :star, "aria-label": "Star" }],
     [Primer::Beta::Button, {}],
+    [Primer::Alpha::SegmentedControl, {
+      full_width: false
+    }, proc { |component|
+      component.with_item(label: "Button", selected: true)
+      component.with_item(label: "Button")
+    }],
+    [Primer::Alpha::SegmentedControl::Item, { label: "Button" }],
     [Primer::Alpha::Layout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }
       component.sidebar(tag: :div) { "Bar" }
@@ -70,9 +77,7 @@ class PrimerComponentTest < Minitest::Test
     end],
     [Primer::Dropdown::Menu, {}],
     [Primer::DropdownMenuComponent, {}],
-    [Primer::FlexComponent, {}],
     [Primer::Beta::Flash, {}],
-    [Primer::FlexItemComponent, { flex_auto: true }],
     [Primer::Beta::Heading, { tag: :h1 }],
     [Primer::Alpha::HiddenTextExpander, { "aria-label": "No action" }],
     [Primer::LabelComponent, {}],
@@ -108,11 +113,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
       "Primer::Alpha::NavList::Section",
-      "Primer::HiddenTextExpander",
-      "Primer::HeadingComponent",
-      "Primer::CloseButton",
       "Primer::CounterComponent",
-      "Primer::DetailsComponent",
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",

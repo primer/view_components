@@ -61,6 +61,8 @@ module Primer
         @system_arguments[:classes]
       )
       @system_arguments[:direction] = responsive ? [:column, nil, :row] : nil
+      @system_arguments[:display] = :flex
+      @system_arguments[:tag] = :div
 
       @sidebar_col = fetch_or_fallback(ALLOWED_SIDEBAR_COLS, sidebar_col, DEFAULT_SIDEBAR_COL)
       @main_col = MAX_COL - @sidebar_col

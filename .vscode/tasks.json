@@ -152,10 +152,10 @@
       "problemMatcher": []
     },
     {
-      "label": "lint:fix: fix eslint errors",
+      "label": "erblint: autofix eslint errors",
       "type": "shell",
       "group": "build",
-      "command": "npm run lint:fix",
+      "command": "npm run lint:eslint:fix",
       "presentation": {
         "reveal": "always",
         "panel": "dedicated"
@@ -164,6 +164,6 @@
         "reevaluateOnRerun": false
       },
       "problemMatcher": []
-    },
+    }
   ]
 }

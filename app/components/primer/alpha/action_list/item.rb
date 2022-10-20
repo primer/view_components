@@ -112,7 +112,7 @@ module Primer
         # @private
         renders_one :private_content
 
-        attr_reader :list, :active, :disabled, :parent
+        attr_reader :list, :href, :active, :disabled, :parent
 
         # Whether or not this item is active.
         #
@@ -128,6 +128,7 @@ module Primer
         # @param parent [Primer::Alpha::ActionList::Item] This item's parent item. `nil` if this item is at the root. Used internally.
         # @param label [String] Item label.
         # @param label_classes [String] CSS classes that will be added to the label.
+        # @param content_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the item's anchor or span tag.
         # @param truncate_label [Boolean] Truncate label with ellipsis.
         # @param href [String] Link URL.
         # @param role [String] ARIA role describing the function of the item.
@@ -143,6 +144,7 @@ module Primer
           list:,
           label:,
           label_classes: nil,
+          content_arguments: {},
           parent: nil,
           truncate_label: false,
           href: nil,
@@ -166,6 +168,7 @@ module Primer
           @trailing_action_on_hover = false
           @id = id
           @system_arguments = system_arguments
+          @content_arguments = content_arguments
 
           @size = fetch_or_fallback(SIZE_OPTIONS, size, DEFAULT_SIZE)
           @scheme = fetch_or_fallback(SCHEME_OPTIONS, scheme, DEFAULT_SCHEME)
@@ -176,8 +179,7 @@ module Primer
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
             SCHEME_MAPPINGS[@scheme],
-            "ActionListItem",
-            "ActionListItem--navActive" => @active
+            "ActionListItem"
           )
 
           @system_arguments[:role] = role
@@ -193,13 +195,12 @@ module Primer
             )
           }
 
-          @content_arguments = {
-            id: @id,
-            classes: class_names(
-              "ActionListContent",
-              SIZE_MAPPINGS[@size]
-            )
-          }
+          @content_arguments[:id] = @id
+          @content_arguments[:classes] = class_names(
+            @content_arguments[:classes],
+            "ActionListContent",
+            SIZE_MAPPINGS[@size]
+          )
 
           if @href && !@disabled
             @content_arguments[:tag] = :a
@@ -223,7 +224,8 @@ module Primer
           @system_arguments[:classes] = class_names(
             @system_arguments[:classes],
             "ActionListItem--withActions" => trailing_action.present?,
-            "ActionListItem--trailingActionHover" => @trailing_action_on_hover
+            "ActionListItem--trailingActionHover" => @trailing_action_on_hover,
+            "ActionListItem--navActive" => active?
           )
 
           return unless leading_visual

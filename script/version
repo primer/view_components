@@ -29,6 +29,10 @@ class ReleaseCLI < Thor::Group
     run("cd demo && bundle")
   end
 
+  def update_package_lock
+    run("npm i --package-lock-only")
+  end
+
   private
 
   def current_version

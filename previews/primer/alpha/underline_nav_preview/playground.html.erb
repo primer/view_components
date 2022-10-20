@@ -1,0 +1,8 @@
+<%= render(Primer::Alpha::UnderlineNav.new(label: label, tag: tag, align: align)) do |component| %>
+  <% Array.new(number_of_panels || 3) do |i| %>
+    <% component.with_tab(href: "#", selected: i.zero?) { "Item #{i + 1}" } %>
+  <% end %>
+  <% component.with_actions do %>
+    <%= render(Primer::ButtonComponent.new) { "Button" } %>
+  <% end %>
+<% end %>

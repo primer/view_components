@@ -60,10 +60,10 @@ class NavListElement extends HTMLElement {
 
   // expand/collapse item
   handleItemWithSubItemClick(e: Event) {
-    const target = e.target
-    if (!(target instanceof HTMLElement)) return
+    const el = e.target
+    if (!(el instanceof HTMLElement)) return
 
-    const button = target.closest<HTMLButtonElement>('button')
+    const button = el.closest<HTMLButtonElement>('button')
     if (!button) return
     if (this.itemIsExpanded(button)) {
       this.collapseItem(button)

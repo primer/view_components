@@ -5,7 +5,7 @@ require_relative "boot"
 require "action_controller/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
-require "view_component/engine"
+require "view_component"
 require "primer/view_components/engine"
 
 # Require the gems listed in Gemfile, including any gems
@@ -35,5 +35,21 @@ module Demo
       "Access-Control-Allow-Origin" => "*",
       "Access-Control-Request-Method" => %w[GET].join(",")
     }
+
+    if config.respond_to?(:lookbook)
+      config.lookbook.project_name = "Primer ViewComponents v#{Primer::ViewComponents::VERSION::STRING}"
+      config.lookbook.preview_display_options = {
+        theme: [
+          ["Light default", "light"],
+          ["Light colorblind", "light_colorblind"],
+          ["Light high contrast", "light_high_contrast"],
+          ["Dark default", "dark"],
+          ["Dark Dimmed", "dark_dimmed"],
+          ["Dark high contrast", "dark_high_contrast"],
+          ["Dark colorblind", "dark_colorblind"],
+          ["All themes", "all"]
+        ]
+      }
+    end
   end
 end

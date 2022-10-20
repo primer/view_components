@@ -4,6 +4,7 @@ require "view_component/version"
 
 module Primer
   # @private
+  # :nocov:
   class Component < ViewComponent::Base
     include ViewComponent::SlotableV2 unless ViewComponent::Base < ViewComponent::SlotableV2
     include ViewComponent::PolymorphicSlots unless ViewComponent::Base < ViewComponent::PolymorphicSlots
