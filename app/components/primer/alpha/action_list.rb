@@ -20,6 +20,7 @@ module Primer
       }.freeze
       SCHEME_OPTIONS = SCHEME_MAPPINGS.keys.freeze
 
+      # :nocov:
       # @private
       def self.custom_element_name
         @custom_element_name ||= name.split("::").last.underscore.dasherize
@@ -29,6 +30,7 @@ module Primer
       def custom_element_name
         self.class.custom_element_name
       end
+      # :nocov:
 
       # Heading text rendered above the list of items.
       #

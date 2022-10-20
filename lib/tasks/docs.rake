@@ -227,7 +227,9 @@ namespace :docs do
 
         component_args = {
           "component" => data[:title],
+          "status" => component.status.to_s,
           "source" => data[:source],
+          "lookbook" => data[:lookbook],
           "parameters" => args
         }
 

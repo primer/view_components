@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require "components/test_helper"
 
 class PrimerAlphaDialogTest < Minitest::Test
   include Primer::ComponentTestHelpers
@@ -14,6 +14,15 @@ class PrimerAlphaDialogTest < Minitest::Test
       assert_selector("h1", text: "Title")
       assert_selector(".Overlay-body", text: "Hello")
     end
+  end
+
+  def test_renders_show_button
+    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
+      c.with_body { "Hello" }
+      c.with_show_button { "Show" }
+    end
+
+    assert_selector("[data-show-dialog-id]")
   end
 
   def test_raises_on_missing_title

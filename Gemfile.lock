@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    primer_view_components (0.0.103)
+    primer_view_components (0.0.104)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 17.0.0)
@@ -116,7 +116,7 @@ GEM
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    lookbook (1.1.1)
+    lookbook (1.2.1)
       actioncable
       activemodel
       css_parser
@@ -211,14 +211,16 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
-    simplecov (0.18.5)
+    simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
-    simplecov-console (0.7.2)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-console (0.9.1)
       ansi
       simplecov
       terminal-table
     simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     smart_properties (1.17.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
@@ -284,7 +286,7 @@ DEPENDENCIES
   erb_lint
   erblint-github (= 0.1.0)
   listen (~> 3.0)
-  lookbook (~> 1)
+  lookbook (~> 1.2.1)
   matrix (~> 0.4.2)
   minitest (~> 5.0)
   mocha
@@ -297,8 +299,8 @@ DEPENDENCIES
   rubocop (= 1.13.0)
   rubocop-github (~> 0.16.0)
   rubocop-performance (~> 1.7)
-  simplecov (~> 0.18.0)
-  simplecov-console (~> 0.7.2)
+  simplecov (~> 0.21.2)
+  simplecov-console (~> 0.9.1)
   sprockets
   sprockets-rails
   thor

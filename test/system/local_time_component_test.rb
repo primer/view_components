@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "application_system_test_case"
+require "system/test_case"
 
-class IntegrationLocalTimeComponentTest < ApplicationSystemTestCase
+class IntegrationLocalTimeComponentTest < System::TestCase
   def test_default
     visit_preview(:default)
 

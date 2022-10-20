@@ -17,6 +17,11 @@ module Primer
         render(Primer::Beta::Flash.new(full: full, full_when_narrow: full_when_narrow, dismissible: dismissible, icon: icon == :none ? nil : icon, scheme: scheme, description: description)) { content }
       end
 
+      # @label Default
+      def default
+        render(Primer::Beta::Flash.new) { "This is a flash message!" }
+      end
+
       # @label With action button
       #
       # @param full toggle
