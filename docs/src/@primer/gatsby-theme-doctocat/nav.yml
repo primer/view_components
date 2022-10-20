@@ -85,6 +85,8 @@
     url: "/components/popover"
   - title: ProgressBar
     url: "/components/progressbar"
+  - title: SegmentedControl
+    url: "/components/alpha/segmentedcontrol"
   - title: Spinner
     url: "/components/spinner"
   - title: State

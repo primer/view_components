@@ -10,6 +10,13 @@ class PrimerComponentTest < Minitest::Test
   COMPONENTS_WITH_ARGS = [
     [Primer::Beta::IconButton, { icon: :star, "aria-label": "Star" }],
     [Primer::Beta::Button, {}],
+    [Primer::Alpha::SegmentedControl, {
+      full_width: false
+    }, proc { |component|
+      component.with_item(label: "Button", selected: true)
+      component.with_item(label: "Button")
+    }],
+    [Primer::Alpha::SegmentedControl::Item, { label: "Button" }],
     [Primer::Alpha::Layout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }
       component.sidebar(tag: :div) { "Bar" }

@@ -246,6 +246,13 @@
   },
   "Primer::Alpha::NavList::Section": {
   },
+  "Primer::Alpha::SegmentedControl": {
+    "FULL_WIDTH_DEFAULT": false,
+    "HIDE_LABELS_DEFAULT": false,
+    "Item": "Primer::Alpha::SegmentedControl::Item"
+  },
+  "Primer::Alpha::SegmentedControl::Item": {
+  },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",
     "TAG_DEFAULT": "nav",

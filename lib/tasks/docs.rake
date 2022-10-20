@@ -31,6 +31,7 @@ namespace :docs do
     components = [
       Primer::Beta::IconButton,
       Primer::Beta::Button,
+      Primer::Alpha::SegmentedControl,
       Primer::Alpha::Layout,
       Primer::HellipButton,
       Primer::Image,
