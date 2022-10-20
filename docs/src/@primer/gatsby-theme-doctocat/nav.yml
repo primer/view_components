@@ -60,7 +60,7 @@
   - title: IconButton
     url: "/components/beta/iconbutton"
   - title: Image
-    url: "/components/image"
+    url: "/components/alpha/image"
   - title: ImageCrop
     url: "/components/imagecrop"
   - title: Label

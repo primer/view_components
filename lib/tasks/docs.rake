@@ -34,7 +34,7 @@ namespace :docs do
       Primer::Alpha::SegmentedControl,
       Primer::Alpha::Layout,
       Primer::HellipButton,
-      Primer::Image,
+      Primer::Alpha::Image,
       Primer::LocalTime,
       Primer::OcticonSymbolsComponent,
       Primer::ImageCrop,
