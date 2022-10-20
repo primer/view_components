@@ -1333,7 +1333,7 @@
         "name": "dismissible",
         "type": "Boolean",
         "default": "`false`",
-        "description": "Whether the component can be dismissed with an X button."
+        "description": "Whether the component can be dismissed with an \"x\" button."
       },
       {
         "name": "description",
@@ -1345,19 +1345,13 @@
         "name": "icon",
         "type": "Symbol",
         "default": "`nil`",
-        "description": "Name of Octicon icon to use."
+        "description": "The name of an [Octicon](https://primer.style/octicons/) icon to use. If no icon is provided, a default one will be chosen based on the scheme."
       },
       {
         "name": "scheme",
         "type": "Symbol",
         "default": "`:default`",
         "description": "One of `:danger`, `:default`, `:success`, or `:warning`."
-      },
-      {
-        "name": "description",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Optional description."
       },
       {
         "name": "system_arguments",

@@ -1,0 +1,6 @@
+<%= render(Primer::Beta::Flash.new(full: full, dismissible: dismissible, icon: icon, scheme: scheme, reappear: reappear)) do |component| %>
+  <% component.with_action_content do %>
+    <%= render(Primer::IconButton.new(icon: :pencil, mr: 1, "aria-label": "Edit")) %>
+  <% end %>
+  <%= content %>
+<% end %>

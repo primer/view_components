@@ -1,30 +1,33 @@
-<%= render Primer::BaseComponent.new(**@system_arguments) do %>
-  <% if @icon %>
-    <div class="Banner-visual">
-      <%= primer_octicon @icon %>
-    </div>
-  <% end %>
-  <div class="Banner-message">
-    <p class="Banner-title"><%= content %></p>
-    <% if @description %>
-      <p><%= @description %></p>
+<flash-banner>
+  <%= render Primer::BaseComponent.new(**@system_arguments) do %>
+    <% if @icon %>
+      <div class="Banner-visual">
+        <%= render(Primer::OcticonComponent.new(icon: @icon)) %>
+      </div>
     <% end %>
-  </div>
-  <% if action %>
-    <div class="Banner-actions">
-      <%= action %>
-    </div>
+    <%= render(Primer::BaseComponent.new(**@message_arguments)) do %>
+      <p class="Banner-title"><%= content %></p>
+      <% if @description %>
+        <p><%= @description %></p>
+      <% end %>
+    <% end %>
+    <% if action %>
+      <div class="Banner-actions">
+        <%= action %>
+      </div>
+    <% end %>
+    <% if @dismissible %>
+      <div class="Banner-close">
+        <%= render(
+          Primer::Beta::IconButton.new(
+            scheme: :invisible,
+            icon: :x,
+            aria: { label: "Dismiss" },
+            data: { action: "click:flash-banner#dismiss" },
+            autofocus: true
+          )
+        ) %>
+      </div>
+    <% end %>
   <% end %>
-  <% if @dismissible %>
-    <div class="Banner-close">
-      <%= render(
-        Primer::Beta::IconButton.new(
-          scheme: :invisible,
-          icon: :x,
-          classes: "js-flash-close",
-          aria: { label: "Dismiss" }
-        )
-      ) %>
-    </div>
-  <% end %>
-<% end %>
+</flash-banner>
