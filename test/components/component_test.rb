@@ -11,7 +11,6 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::IconButton, { icon: :star, "aria-label": "Star" }],
     [Primer::Beta::Button, {}],
     [Primer::Alpha::SegmentedControl, {
-      icon_only: :never,
       full_width: false
     }, proc { |component|
       component.with_item(label: "Button", selected: true)
