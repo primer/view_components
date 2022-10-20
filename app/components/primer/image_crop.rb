@@ -14,13 +14,13 @@ module Primer
     }
 
     # @example Simple cropper
-    #   <%= render(Primer::Alpha::ImageCrop.new(src: Primer::ExampleImage::BASE64_SRC)) %>
+    #   <%= render(Primer::ImageCrop.new(src: Primer::ExampleImage::BASE64_SRC)) %>
     #
     # @example Square cropper
-    #   <%= render(Primer::Alpha::ImageCrop.new(src: Primer::ExampleImage::BASE64_SRC, rounded: false)) %>
+    #   <%= render(Primer::ImageCrop.new(src: Primer::ExampleImage::BASE64_SRC, rounded: false)) %>
     #
     # @example Cropper with a custom loader
-    #   <%= render(Primer::Alpha::ImageCrop.new(src: Primer::ExampleImage::BASE64_SRC, rounded: false)) do |cropper| %>
+    #   <%= render(Primer::ImageCrop.new(src: Primer::ExampleImage::BASE64_SRC, rounded: false)) do |cropper| %>
     #     <% cropper.with_loading(style: "width: 120px").with_content("Loading...") %>
     #   <% end %>
     #

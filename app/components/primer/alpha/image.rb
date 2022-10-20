@@ -7,6 +7,8 @@ module Primer
     # @accessibility
     #   Always provide a meaningful `alt`.
     class Image < Primer::Component
+      status :alpha
+
       # @example Default
       #
       #   <%= render(Primer::Alpha::Image.new(src: Primer::ExampleImage::BASE64_SRC, alt: "GitHub")) %>
