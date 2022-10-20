@@ -49,9 +49,9 @@
   /* Separator lines */
   &::before {
     position: absolute;
-    inset: var(--primer-borderWidth-thin, 1px) 0 0 calc(var(--primer-borderWidth-thin, 1px) * -1);
-    height: var(--primer-text-body-size-large, 16px);
+    inset: 0 0 0 -1px;
     margin-top: var(--primer-control-medium-paddingBlock, 6px);
+    margin-bottom: var(--primer-control-medium-paddingBlock, 6px);
     content: '';
     border-left: var(--primer-borderWidth-thin, max(1px, 0.0625rem)) solid var(--color-border-default);
   }
