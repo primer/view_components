@@ -1354,6 +1354,12 @@
         "description": "One of `:danger`, `:default`, `:success`, or `:warning`."
       },
       {
+        "name": "reappear",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the flash banner should reappear after being dismissed. Only for use in test and preview environments."
+      },
+      {
         "name": "system_arguments",
         "type": "Hash",
         "default": "N/A",
