@@ -8,10 +8,10 @@
   },
   "dependencies": {
     "@primer/behaviors": "^1.2.0",
-    "@primer/css": "^20.4.6",
-    "@primer/gatsby-theme-doctocat": "^4.1.0",
-    "@primer/primitives": "^6.0.0",
-    "@primer/react": "^35.2.2",
+    "@primer/css": "^20.4.7",
+    "@primer/gatsby-theme-doctocat": "^4.2.1",
+    "@primer/primitives": "^7.10.0",
+    "@primer/react": "^35.12.0",
     "gatsby": "^2.24.63",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"

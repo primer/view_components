@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require "lib/test_helper"
 
 class PrimerOcticonCacheTest < Minitest::Test
   def test_preload_loads_octicon_cache

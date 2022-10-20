@@ -1,5 +1,67 @@
 # CHANGELOG
 
+## 0.0.104
+
+### Patch Changes
+
+- [#1505](https://github.com/primer/view_components/pull/1505) [`5d3448bb`](https://github.com/primer/view_components/commit/5d3448bb379621d2acaf22c2ed38fae6528497bd) Thanks [@camertron](https://github.com/camertron)! - Pass select list options to Rails form builder
+
+* [#1498](https://github.com/primer/view_components/pull/1498) [`b3668d38`](https://github.com/primer/view_components/commit/b3668d3836c35e52a301544de9955b09c023e82a) Thanks [@neall](https://github.com/neall)! - Add option for nested forms for check boxes
+
+- [#1488](https://github.com/primer/view_components/pull/1488) [`db5b5f65`](https://github.com/primer/view_components/commit/db5b5f6514cfd0952dd299b121f5cc2f2f001067) Thanks [@jonrohan](https://github.com/jonrohan)! - Building PostCSS components separately
+
+* [#1486](https://github.com/primer/view_components/pull/1486) [`9a936bd1`](https://github.com/primer/view_components/commit/9a936bd18053f7f17d1c1146349a157b90c5c91e) Thanks [@langermank](https://github.com/langermank)! - Remove dead SCSS code from ActionList
+
+- [#1491](https://github.com/primer/view_components/pull/1491) [`f43bd08a`](https://github.com/primer/view_components/commit/f43bd08af6ffcd7ad4607c61cc1569bf2fccd7ee) Thanks [@camertron](https://github.com/camertron)! - Allow IconButton tooltips to be hidden
+
+## 0.0.103
+
+### Patch Changes
+
+- [#1457](https://github.com/primer/view_components/pull/1457) [`7fa6d221`](https://github.com/primer/view_components/commit/7fa6d221f4e2196d3421592d89f48a4abe7b8373) Thanks [@orhantoy](https://github.com/orhantoy)! - Remove dead Flex and FlexItem links from nav
+
+* [#1469](https://github.com/primer/view_components/pull/1469) [`a3442456`](https://github.com/primer/view_components/commit/a3442456c5230918ff3cedb7293d4799b963599d) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing the deprecated Primer::HeadingComponent component.
+
+- [#1480](https://github.com/primer/view_components/pull/1480) [`c764cee6`](https://github.com/primer/view_components/commit/c764cee6744c91671db729bd7ac60dc532398820) Thanks [@koddsson](https://github.com/koddsson)! - Fix nested dialogs
+
+* [#1466](https://github.com/primer/view_components/pull/1466) [`9b5cff15`](https://github.com/primer/view_components/commit/9b5cff1513ca24f85906fd8ed54d34d056504535) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing the deprecated Primer::HiddenTextExpander component.
+
+- [#1471](https://github.com/primer/view_components/pull/1471) [`5687bebe`](https://github.com/primer/view_components/commit/5687bebebb3c0fa58bf63d2a1ff09602b9f3987d) Thanks [@koddsson](https://github.com/koddsson)! - Make sure nested dialogs behave correctly
+
+* [#1479](https://github.com/primer/view_components/pull/1479) [`b0281033`](https://github.com/primer/view_components/commit/b028103397ac94375035d38c5ca85e85aeffde08) Thanks [@khiga8](https://github.com/khiga8)! - move tooltip to be adjacent to button
+
+- [#1468](https://github.com/primer/view_components/pull/1468) [`ae99c2ed`](https://github.com/primer/view_components/commit/ae99c2ed9e9b937d79443cbc393bddd6f02a2112) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing the deprecated Primer::CloseButton component.
+
+* [#1476](https://github.com/primer/view_components/pull/1476) [`f174b31c`](https://github.com/primer/view_components/commit/f174b31c7bf59d08402d03c35a2bc52fc34bc687) Thanks [@camertron](https://github.com/camertron)! - Bump view_component to 2.74.1 to fix deadlock issues in Lookbook
+
+- [#1452](https://github.com/primer/view_components/pull/1452) [`9252a124`](https://github.com/primer/view_components/commit/9252a12435d9bb5a3bd2610a72e12358c1ca2c2b) Thanks [@steves](https://github.com/steves)! - Move sample forms out of test folder
+
+* [#1467](https://github.com/primer/view_components/pull/1467) [`a3b562ca`](https://github.com/primer/view_components/commit/a3b562cae569902c0ce3131599654b8a00720095) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing the deprecated Primer::DetailsComponent component.
+
+## 0.0.102
+
+### Patch Changes
+
+- [#1450](https://github.com/primer/view_components/pull/1450) [`ef4498df`](https://github.com/primer/view_components/commit/ef4498df7630e3b5d9895eb92910fc36622c32de) Thanks [@camertron](https://github.com/camertron)! - Don't export ToggleSwitchElement
+
+* [#1446](https://github.com/primer/view_components/pull/1446) [`4f235520`](https://github.com/primer/view_components/commit/4f23552009b932be1238a38b7cef21ffcc6fe632) Thanks [@camertron](https://github.com/camertron)! - Allow NavLists to define sub-items as well as a trailing visual
+
+- [#1445](https://github.com/primer/view_components/pull/1445) [`493530ed`](https://github.com/primer/view_components/commit/493530ed8e097c89322d52e73d6ac8a320573b43) Thanks [@camertron](https://github.com/camertron)! - Remove unused instance variable in ActionList
+
+* [#1441](https://github.com/primer/view_components/pull/1441) [`bd8fe7f5`](https://github.com/primer/view_components/commit/bd8fe7f5c9c20e28354d96a36717f6a56ef57fa4) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing deprecated FlexComponent and FlexItemComponent
+
+## 0.0.101
+
+### Patch Changes
+
+- [#1424](https://github.com/primer/view_components/pull/1424) [`d7b277ef`](https://github.com/primer/view_components/commit/d7b277ef00aed062d6d123cb99c014a14ea3c7a1) Thanks [@camertron](https://github.com/camertron)! - Allow specifying an unchecked value for check box inputs
+
+* [#1439](https://github.com/primer/view_components/pull/1439) [`56fae759`](https://github.com/primer/view_components/commit/56fae7599e74b1b734e30c10b7b8b54e4782df5d) Thanks [@camertron](https://github.com/camertron)! - Support system arguments for ActionList item anchor tags
+
+- [#1438](https://github.com/primer/view_components/pull/1438) [`b0329cda`](https://github.com/primer/view_components/commit/b0329cdac8ea5edbe38ddec20107777c394caa0d) Thanks [@langermank](https://github.com/langermank)! - ActionListItem `line-height` bug fix
+
+* [#1435](https://github.com/primer/view_components/pull/1435) [`8312e6ce`](https://github.com/primer/view_components/commit/8312e6cee8f51260e810000ed89624e2f316e25b) Thanks [@camertron](https://github.com/camertron)! - Allow NavList items to be selected by the current page
+
 ## 0.0.100
 
 ### Patch Changes

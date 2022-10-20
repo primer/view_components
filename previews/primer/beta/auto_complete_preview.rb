@@ -4,6 +4,26 @@ module Primer
   module Beta
     # @label AutoComplete
     class AutoCompletePreview < ViewComponent::Preview
+      # @label Playground
+      # @param label_text text
+      # @param show_clear_button toggle
+      # @param visually_hide_label toggle
+      # @param placeholder text
+      # @param size select [small, medium, large]
+      # @param full_width toggle
+      # @param disabled toggle
+      # @param invalid toggle
+      # @param input_id text
+      # @param list_id text
+      # @param input_name text
+      # @param inset toggle
+      # @param monospace toggle
+      def playground(label_text: "Select a fruit", show_clear_button: false, visually_hide_label: false, placeholder: "Placeholder text", size: :medium, full_width: false, disabled: false, invalid: false, input_id: "input-id", list_id: "list-id", input_name: "input-id", inset: false, monospace: false)
+        render(Primer::Beta::AutoComplete.new(label_text: label_text, input_id: input_id, list_id: list_id, src: "/auto_complete", show_clear_button: show_clear_button, visually_hide_label: visually_hide_label, placeholder: placeholder, size: size, full_width: full_width, disabled: disabled, invalid: invalid, input_name: input_name, inset: inset, monospace: monospace)) do |c|
+          c.leading_visual_icon(icon: :search)
+        end
+      end
+
       # @label Default
       # @param label_text text
       # @param show_clear_button toggle

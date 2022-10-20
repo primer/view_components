@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "application_system_test_case"
+require "system/test_case"
 
 module Beta
-  class IntegrationAutoCompleteTest < ApplicationSystemTestCase
+  class IntegrationAutoCompleteTest < System::TestCase
     def test_renders_component
       visit_preview(:default)
 

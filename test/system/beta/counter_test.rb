@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "application_system_test_case"
+require "system/test_case"
 
 module Beta
-  class IntegrationCounterTest < ApplicationSystemTestCase
+  class IntegrationCounterTest < System::TestCase
     def test_integration
       visit_preview(:default)
 

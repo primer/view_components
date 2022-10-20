@@ -4,6 +4,15 @@ module Primer
   module Alpha
     # @label ButtonMarketing
     class ButtonMarketingPreview < ViewComponent::Preview
+      # @label Playground
+      # @param scheme [Symbol] select [default, primary, outline, transparent]
+      # @param variant [Symbol] select [default, large]
+      # @param tag [Symbol] select [button, a]
+      # @param type [Symbol] select [button, submit]
+      def playground(tag: :button, type: :button, scheme: :default, variant: :default)
+        render(Primer::Alpha::ButtonMarketing.new(tag: tag, type: type, scheme: scheme, variant: variant)) { "Default" }
+      end
+
       # @label Default options
       # @param scheme [Symbol] select [default, primary, outline, transparent]
       # @param variant [Symbol] select [default, large]

@@ -67,9 +67,19 @@
 
 /* ActionList::Item */
 
-/* divider behavior */
-
 .ActionListItem {
+  position: relative;
+  list-style: none;
+  background-color: transparent;
+  border-radius: var(--primer-borderRadius-medium, 6px);
+
+  /* state */
+
+  &:hover,
+  &:active {
+    cursor: pointer;
+  }
+
   /* hide dividers  */
   @media (hover: hover) {
     &:hover {
@@ -89,12 +99,7 @@
   &[hidden] + .ActionList-sectionDivider {
     display: none;
   }
-}
 
-/* sub items */
-
-.ActionListItem {
-  /* target contents of li if sub-item (li wraps item label + nested ul) */
   /* collapse styles here */
   &.ActionListItem--hasSubItem {
     /* first child */
@@ -112,21 +117,6 @@
       }
     }
   }
-}
-
-/* <li> */
-.ActionListItem {
-  position: relative;
-  list-style: none;
-  background-color: transparent;
-  border-radius: var(--primer-borderRadius-medium, 6px);
-
-  /* state */
-
-  &:hover,
-  &:active {
-    cursor: pointer;
-  }
 
   /* only hover li without list as children */
   &:not(.ActionListItem--hasSubItem),
@@ -137,7 +127,7 @@
         cursor: pointer;
         background-color: var(--color-action-list-item-default-hover-bg);
 
-        &:not(.ActionListItem--navActive):not(:focus-visible) {
+        &:not(.ActionListItem--navActive, :focus-visible) {
           /* Support for "Windows high contrast mode" */
           outline: solid var(--primer-borderWidth-thin, 1px) transparent;
           outline-offset: calc(-1 * var(--primer-borderWidth-thin, 1px));
@@ -170,9 +160,7 @@
           transform: scale(0.97);
         }
       }
-    }
 
-    &:active {
       & .ActionListItem-label::before,
       & + .ActionListItem .ActionListItem-label::before {
         visibility: hidden;
@@ -197,11 +185,11 @@
       visibility: hidden;
     }
 
-    /* blue accent line
+    /* blue accent line */
+
     &::after {
-      @include activeIndicatorLine(-$spacer-1);
-      @mixin activeIndicatorLine
-    } */
+      @mixin activeIndicatorLine calc(-1 * var(--base-size-4, 4px));
+    }
   }
 
   /* active state [aria-current] */
@@ -462,10 +450,6 @@
   grid-area: leadingVisual;
 }
 
-.ActionListItem-label {
-  grid-area: label;
-}
-
 .ActionListItem-visual--trailing {
   grid-area: trailingVisual;
 }
@@ -522,6 +506,7 @@
   font-weight: var(--base-text-weight-normal, 400);
   line-height: var(--primer-text-body-lineHeight-medium, calc(20 / 14));
   color: var(--color-fg-default);
+  grid-area: label;
 }
 
 .ActionListItem-label--truncate {
@@ -535,6 +520,7 @@
 
 .ActionListItem--subItem > .ActionListContent > .ActionListItem-label {
   font-size: var(--primer-text-body-size-small, 12px);
+  line-height: var(--primer-text-body-lineHeight-small, calc(20 / 12));
 }
 
 /* trailing action icon button */
@@ -571,10 +557,10 @@
   /* with children */
   &:not(:empty) {
     display: flex;
-    padding: ($spacer-1 * 1.5) $spacer-2;
     padding-inline: var(--primer-actionListContent-paddingBlock);
     padding-block: var(--base-size-8, 8px);
     font-size: var(--primer-text-body-size-small, 12px);
+    line-height: var(--primer-text-body-lineHeight-small, calc(20 / 12));
     font-weight: var(--base-text-weight-semibold, 600);
     color: var(--color-fg-muted);
     flex-direction: column;

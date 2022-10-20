@@ -4,6 +4,23 @@ module Primer
   module Alpha
     # @label Dialog
     class DialogPreview < ViewComponent::Preview
+      # @label Playground
+      #
+      # @param title [String] text
+      # @param subtitle [String] text
+      # @param size [Symbol] select [small, medium, medium_portrait, large, xlarge]
+      # @param position [Symbol] select [center, left, right]
+      # @param position_narrow [Symbol] select [inherit, bottom, fullscreen, left, right]
+      # @param visually_hide_title [Boolean] toggle
+      # @param button_text [String] text
+      # @param body_text [String] text
+      def playground(title: "Test Dialog", subtitle: nil, size: :medium, button_text: "Show Dialog", body_text: "Content", position: :center, position_narrow: :fullscreen, visually_hide_title: false)
+        render(Primer::Alpha::Dialog.new(title: title, subtitle: subtitle, size: size, position: position, position_narrow: position_narrow, visually_hide_title: visually_hide_title)) do |d|
+          d.with_show_button { button_text }
+          d.with_body { body_text }
+        end
+      end
+
       # @label Default options
       #
       # @param title [String] text
@@ -73,6 +90,21 @@ module Primer
       # @param button_text [String] text
       # @param show_divider [Boolean] toggle
       def custom_header(title: "Test Dialog", subtitle: nil, button_text: "Show Dialog", show_divider: true)
+        render_with_template(locals: {
+                               title: title,
+                               subtitle: subtitle,
+                               button_text: button_text,
+                               show_divider: show_divider
+                             })
+      end
+
+      # @label Nested dialog
+      #
+      # @param title [String] text
+      # @param subtitle [String] text
+      # @param button_text [String] text
+      # @param show_divider [Boolean] toggle
+      def nested_dialog(title: "Test Dialog", subtitle: nil, button_text: "Show Dialog", show_divider: true)
         render_with_template(locals: {
                                title: title,
                                subtitle: subtitle,

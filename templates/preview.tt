@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-# Setup Default to use all available component props
+# Setup Playground to use all available component props
 # Setup Features to use individual component props and combinations
 
 module Primer
   module <%= module_name %>
     # @label <%= class_name %>
     class <%= class_name %>Preview < ViewComponent::Preview
-      # @label Default
+      # @label Playground
       # @param string_example text
       # @param boolean_example toggle
       # @param email_example email
@@ -19,7 +19,7 @@ module Primer
       # @param select_custom_labels select [[One label, one], [Two label, two], [Three label, three]]
       # With empty option (`~` in YAML)
       # @param select_empty_option select [~, one, two, three]
-      def default(string_example: "Default value", boolean_example: false, select_example: :one)
+      def playground(string_example: "Some value", boolean_example: false, select_example: :one)
         render(Primer::<%= module_name %>::<%= class_name %>.new(string_example: string_example, boolean_example: boolean_example, select_example: select_example))
       end
     end

@@ -1,0 +1,217 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: test-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  accessibility:
+    name: Accessibility
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+        cache-dependency-path: |
+          package-lock.json
+          demo/package-lock.json
+    - name: Build
+      run: |
+        bundle exec rake docs:preview
+        npm ci
+        cd demo && npm ci
+    - name: Test
+      run: bundle exec rake test:accessibility
+  components:
+    name: Components
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - rails_version: "6.1.1"
+            ruby_version: "2.7"
+          - rails_version: "7.0.3"
+            ruby_version: "3.0"
+          - rails_version: "main"
+            ruby_version: "3.1"
+    steps:
+    - uses: actions/checkout@master
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby_version }}
+        bundler-cache: true
+        cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+    - name: Build
+      run: |
+        npm ci
+        bundle config unset deployment
+        bundle update
+      env:
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
+    - name: Test
+      run: |
+        bundle exec rake test:components
+        bundle exec rake test:coverage
+      env:
+        COVERAGE: 1
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
+  lib:
+    name: Lib
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - rails_version: "6.1.1"
+            ruby_version: "2.7"
+          - rails_version: "7.0.3"
+            ruby_version: "3.0"
+          - rails_version: "main"
+            ruby_version: "3.1"
+    steps:
+    - uses: actions/checkout@master
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby_version }}
+        bundler-cache: true
+        cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+    - name: Build
+      run: |
+        npm ci
+        bundle config unset deployment
+        bundle update
+      env:
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
+    - name: Test
+      run: |
+        bundle exec rake test:lib
+        bundle exec rake test:coverage
+      env:
+        COVERAGE: 1
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
+  performance:
+    name: Performance
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - rails_version: "6.1.1"
+            ruby_version: "2.7"
+          - rails_version: "7.0.3"
+            ruby_version: "3.0"
+          - rails_version: "main"
+            ruby_version: "3.1"
+    steps:
+    - uses: actions/checkout@master
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby_version }}
+        bundler-cache: true
+        cache-version: ${{ matrix.rails_version }}-${{ matrix.ruby_version }}
+    - name: Build
+      run: |
+        bundle config unset deployment
+        bundle update
+      env:
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
+    - name: Test
+      run: |
+        bundle exec rake test:performance
+      env:
+        RUBY_VERSION: ${{ matrix.ruby_version }}
+        RAILS_VERSION: ${{ matrix.rails_version }}
+  # snapshots:
+  #   name: Snapshots
+  #   # Don't run on main
+  #   if: ${{ github.event_name == 'not_pull_request' && github.actor != 'primer-css'  }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@master
+  #   - uses: ruby/setup-ruby@v1
+  #     with:
+  #       ruby-version: '3.0'
+  #       bundler-cache: true
+  #   - uses: actions/setup-node@v3
+  #     with:
+  #       node-version: 16
+  #       cache: 'npm'
+  #       cache-dependency-path: |
+  #         package-lock.json
+  #         demo/package-lock.json
+  #   - run: |
+  #       npm ci
+  #       cd demo && npm ci
+  #   - name: Build and test with Rake
+  #     run: |
+  #       bundle exec rake test:snapshots
+  #   - id: auto-commit
+  #     uses: stefanzweifel/git-auto-commit-action@v4
+  #     with:
+  #       commit_message: Generating component snapshots
+  #       file_pattern: test/snapshots/**/*.png
+  #   - name: "Changes detected"
+  #     if: steps.auto-commit.outputs.changes_detected == 'true'
+  #     uses: phulsechinmay/rewritable-pr-comment@v0.3.0
+  #     with:
+  #       message: |
+  #         ### ⚠️ Visual differences found
+
+  #         Our visual comparison tests found UI differences. Please review the differences by viewing the files changed tab to ensure that the changes were intentional.
+
+  #         [Review visual differences](https://github.com/primer/view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&show-viewed-files=false)
+  #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       COMMENT_IDENTIFIER: 'visual-comparison-diff'
+  system:
+    name: System
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.1'
+        bundler-cache: true
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+        cache-dependency-path: |
+          package-lock.json
+          demo/package-lock.json
+    - name: Build
+      run: |
+        npm ci
+        cd demo && npm ci
+    - name: Test
+      run: |
+        bundle exec rake test:system

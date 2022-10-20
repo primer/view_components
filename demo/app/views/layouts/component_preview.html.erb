@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html <%= color_theme_attributes(params.dig(:theme) || params.dig(:lookbook, :display, :theme)) %>>
   <head>
     <title>Component Preview</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -13,13 +13,22 @@
     <% end %>
   </head>
 
-  <body style="padding: 16px">
-    <div style="
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-    ">
-      <%= yield %> <!-- rendered preview will be injected here -->
+  <body>
+    <div id="component-preview">
+      <% if params.dig(:lookbook, :display, :theme) == "all" %>
+        <div class="theme-wrap">
+          <% color_themes.each do |theme| %>
+            <div class="preview-wrap" <%= color_theme_attributes(theme) %>>
+              <%= yield %>
+              <div class="theme-name"><%= theme %></div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="preview-wrap">
+          <%= yield %>
+        </div>
+      <% end %>
     </div>
   </body>
 </html>

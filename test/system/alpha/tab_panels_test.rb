@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "application_system_test_case"
+require "system/test_case"
 
 module Alpha
-  class IntegrationTabPanelsTest < ApplicationSystemTestCase
+  class IntegrationTabPanelsTest < System::TestCase
     def assert_tab_panels_rendered
       assert_selector("tab-container") do
         assert_selector("div.tabnav") do

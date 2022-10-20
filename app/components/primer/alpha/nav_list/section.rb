@@ -52,9 +52,11 @@ module Primer
         end
 
         # Cause this section to show its list of sub items when rendered.
+        # :nocov:
         def expand!
           @expanded = true
         end
+        # :nocov:
 
         # The items contained within this section.
         #
@@ -76,11 +78,6 @@ module Primer
             selected_item_id: @selected_item_id,
             list: self
           )
-        end
-
-        # @private
-        def will_add_item(item)
-          item.parent.expand! if item.active? && item.parent
         end
       end
     end

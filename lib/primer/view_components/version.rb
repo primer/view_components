@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
+# :nocov:
 module Primer
   module ViewComponents
     module VERSION
       MAJOR = 0
       MINOR = 0
-      PATCH = 100
+      PATCH = 104
 
       STRING = [MAJOR, MINOR, PATCH].join(".")
     end

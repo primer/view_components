@@ -4,6 +4,16 @@ module Primer
   module Alpha
     # @label AutoComplete
     class AutoCompletePreview < ViewComponent::Preview
+      # @label Playground
+      # @param label_text text
+      # @param is_label_visible toggle
+      # @param is_label_inline toggle
+      # @param with_icon toggle
+      # @param is_clearable toggle
+      def playground(label_text: "Select a fruit", is_label_visible: true, is_label_inline: false, with_icon: false, is_clearable: false)
+        render(Primer::Alpha::AutoComplete.new(label_text: label_text, input_id: "input-id", list_id: "test-id", src: "/auto_complete?version=alpha", is_label_visible: is_label_visible, is_label_inline: is_label_inline, with_icon: with_icon, is_clearable: is_clearable))
+      end
+
       # @label Default Options
       # @param label_text text
       # @param is_label_visible toggle

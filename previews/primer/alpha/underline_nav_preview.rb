@@ -4,6 +4,21 @@ module Primer
   module Alpha
     # @label UnderlineNav
     class UnderlineNavPreview < ViewComponent::Preview
+      # @label Playground
+      #
+      # @param label [String] text
+      # @param tag [Symbol] select [div, nav]
+      # @param align [Symbol] select [left, right]
+      # @param number_of_panels [Integer] number
+      def playground(label: "Default with nav element", tag: :nav, align: :left, number_of_panels: 3)
+        render_with_template(locals: {
+                               label: label,
+                               tag: tag,
+                               align: align,
+                               number_of_panels: number_of_panels
+                             })
+      end
+
       # @label Default options
       #
       # @param label [String] text
@@ -31,7 +46,7 @@ module Primer
             component.with_tab(href: "#", selected: i.zero?) do |t|
               t.icon(icon: :star)
               t.text { "Item #{i + 1}" }
-              t.counter(count: rand(1..10))
+              t.counter(count: (i + 1) * 5)
             end
           end
         end

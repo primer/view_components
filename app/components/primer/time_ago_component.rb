@@ -33,7 +33,9 @@ module Primer
       seconds_ago = Time.current - @time
 
       if seconds_ago < 1.minute
+        # :nocov:
         "1m"
+        # :nocov:
       elsif seconds_ago >= 1.minute && seconds_ago < 1.hour
         "#{(seconds_ago / 60).floor}m"
       elsif seconds_ago >= 1.hour && seconds_ago < 1.day

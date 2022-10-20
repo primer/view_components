@@ -1,4 +1,4 @@
-name: Demo Preview
+name: Demo Preview Destroy
 
 on:
   pull_request:
@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   destory:
-    if: ${{ github.event.pull_request.head.repo.full_name == 'primer/view_components' && github.actor != 'dependabot[bot]' && github.actor != 'primer-css' }}
+    if: ${{ github.event.pull_request.head.repo.full_name == 'primer/view_components' && github.actor != 'dependabot[bot]' }}
     name: Destroy
     runs-on: ubuntu-latest
     timeout-minutes: 5
