@@ -14,6 +14,7 @@ class PrimerComponentTest < Minitest::Test
       full_width: false
     }, proc { |component|
       component.with_item(label: "Button", selected: true)
+      component.with_item(label: "Button")
     }],
     [Primer::Alpha::SegmentedControl::Item, { label: "Button" }],
     [Primer::Alpha::Layout, {}, proc { |component|
