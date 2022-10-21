@@ -574,6 +574,19 @@
       "invisible"
     ]
   },
+  "Primer::Beta::Link": {
+    "DEFAULT_SCHEME": "default",
+    "DEFAULT_TAG": "a",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "primary": "Link--primary",
+      "secondary": "Link--secondary"
+    },
+    "TAG_OPTIONS": [
+      "a",
+      "span"
+    ]
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
@@ -779,18 +792,7 @@
     "DEFAULT_SIDEBAR_COL": 3,
     "MAX_COL": 12
   },
-  "Primer::Beta::Link": {
-    "DEFAULT_SCHEME": "default",
-    "DEFAULT_TAG": "a",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "primary": "Link--primary",
-      "secondary": "Link--secondary"
-    },
-    "TAG_OPTIONS": [
-      "a",
-      "span"
-    ]
+  "Primer::LinkComponent": {
   },
   "Primer::LocalTime": {
     "DEFAULT_DIGIT_TYPE": "numeric",

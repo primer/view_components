@@ -1540,6 +1540,50 @@
     ]
   },
   {
+    "component": "Link",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/link.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/link/default/",
+    "parameters": [
+      {
+        "name": "tag",
+        "type": "String",
+        "default": "`:a`",
+        "description": "One of `:a` or `:span`."
+      },
+      {
+        "name": "href",
+        "type": "String",
+        "default": "`nil`",
+        "description": "URL to be used for the Link. Required if tag is `:a`. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered."
+      },
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:default`",
+        "description": "One of `:default`, `:primary`, or `:secondary`."
+      },
+      {
+        "name": "muted",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Uses light gray for Link color, and blue on hover."
+      },
+      {
+        "name": "underline",
+        "type": "Boolean",
+        "default": "`true`",
+        "description": "Whether or not to underline the link."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Text",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb",
@@ -1888,50 +1932,6 @@
         "type": "Integer",
         "default": "`3`",
         "description": "Sidebar column width."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Link",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/link_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/link/default/",
-    "parameters": [
-      {
-        "name": "tag",
-        "type": "String",
-        "default": "`:a`",
-        "description": "One of `:a` or `:span`."
-      },
-      {
-        "name": "href",
-        "type": "String",
-        "default": "`nil`",
-        "description": "URL to be used for the Link. Required if tag is `:a`. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered."
-      },
-      {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:default`, `:primary`, or `:secondary`."
-      },
-      {
-        "name": "muted",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Uses light gray for Link color, and blue on hover."
-      },
-      {
-        "name": "underline",
-        "type": "Boolean",
-        "default": "`true`",
-        "description": "Whether or not to underline the link."
       },
       {
         "name": "system_arguments",
