@@ -152,7 +152,7 @@ namespace :docs do
         f.puts("componentId: #{data[:component_id]}")
         f.puts("status: #{data[:status]}")
         f.puts("source: #{data[:source]}")
-        f.puts("a11yReviewed: false")
+        f.puts("a11yReviewed: #{data[:a11y_reviewed]}")
         f.puts("lookbook: #{data[:lookbook]}") if preview_exists?(component)
         f.puts("---")
         f.puts
@@ -485,11 +485,13 @@ namespace :docs do
     status_module, short_name, class_name = status_module_and_short_name(component)
     status_path = status_module.nil? ? "" : "#{status_module}/"
     status = component.status.to_s
+    a11y_reviewed = component.audited_at.nil? ? "false" : "true"
 
     {
       title: class_name,
       component_id: short_name.underscore,
       status: status.capitalize,
+      a11y_reviewed: a11y_reviewed,
       source: source_url(component),
       lookbook: lookbook_url(component),
       path: "docs/content/components/#{status_path}#{short_name.downcase}.md",
