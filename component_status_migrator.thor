@@ -22,6 +22,10 @@ class ComponentStatusMigrator < Thor::Group
     File.dirname(__FILE__)
   end
 
+  def exit_on_failure?
+    true
+  end
+
   def validate_status
     raise "Invalid status: #{status}" unless STATUSES.include?(status)
   end
