@@ -2,7 +2,7 @@
 
 module Primer
   module Beta
-    # @label LabelComponent
+    # @label Label
     class LabelPreview < ViewComponent::Preview
       # @label Default Options
       #
