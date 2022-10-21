@@ -1540,6 +1540,50 @@
     ]
   },
   {
+    "component": "Label",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/label.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/label/default/",
+    "parameters": [
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:span`",
+        "description": "One of `:a`, `:div`, `:span`, or `:summary`."
+      },
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:default`",
+        "description": "One of `:accent`, `:attention`, `:danger`, `:default`, `:done`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`, `:severe`, `:sponsors`, `:success`, or `:warning`."
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:medium`",
+        "description": "One of `:large` or `:medium`."
+      },
+      {
+        "name": "inline",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not to render this label inline."
+      },
+      {
+        "name": "variant",
+        "type": "Symbol",
+        "default": "`:none`",
+        "description": "One of `:inline`, `:large`, or `:none`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Text",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb",
@@ -1812,50 +1856,6 @@
         "type": "Boolean",
         "default": "`false`",
         "description": "Whether the button is in a [BorderBox](/components/beta/borderbox). If `true`, the button will have the `Box-btn-octicon` class."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Label",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/label_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/label/default/",
-    "parameters": [
-      {
-        "name": "tag",
-        "type": "Symbol",
-        "default": "`:span`",
-        "description": "One of `:a`, `:div`, `:span`, or `:summary`."
-      },
-      {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:accent`, `:attention`, `:danger`, `:default`, `:done`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`, `:severe`, `:sponsors`, `:success`, or `:warning`."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:medium`",
-        "description": "One of `:large` or `:medium`."
-      },
-      {
-        "name": "inline",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not to render this label inline."
-      },
-      {
-        "name": "variant",
-        "type": "Symbol",
-        "default": "`:none`",
-        "description": "One of `:inline`, `:large`, or `:none`."
       },
       {
         "name": "system_arguments",

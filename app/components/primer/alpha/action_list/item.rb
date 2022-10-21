@@ -61,7 +61,7 @@ module Primer
         #
         # To render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by <%= link_to_component(Primer::OcticonComponent) %>.
         #
-        # To render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by <%= link_to_component(Primer::LabelComponent) %>.
+        # To render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Label) %>.
         #
         # To render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by <%= link_to_component(Primer::CounterComponent) %>.
         #
@@ -71,7 +71,7 @@ module Primer
         # ```
         renders_one :trailing_visual, types: {
           icon: Primer::OcticonComponent,
-          label: Primer::LabelComponent,
+          label: Primer::Beta::Label,
           counter: Primer::CounterComponent,
           text: ->(text) { text }
         }
