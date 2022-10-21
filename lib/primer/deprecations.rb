@@ -5,6 +5,7 @@ module Primer
   module Deprecations
     # If there is no alternative to suggest, set the value to nil
     DEPRECATED_COMPONENTS = {
+      "Primer::LinkComponent" => "Primer::Beta::Link",
       "Primer::ImageCrop" => "Primer::Alpha::ImageCrop",
       "Primer::Image" => "Primer::Alpha::Image",
       "Primer::Alpha::AutoComplete" => "Primer::Beta::AutoComplete",

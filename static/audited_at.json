@@ -68,7 +68,7 @@
   "Primer::ImageCrop": "",
   "Primer::LabelComponent": "",
   "Primer::LayoutComponent": "",
-  "Primer::LinkComponent": "",
+  "Primer::Beta::Link": "",
   "Primer::LocalTime": "",
   "Primer::Markdown": "",
   "Primer::MenuComponent": "",

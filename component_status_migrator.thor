@@ -101,7 +101,7 @@ class ComponentStatusMigrator < Thor::Group
     ]
 
     cmd = ["grep -rl #{name} ."]
-    cmd << exclude_files.map {|f| "--exclude=#{f}"}.join(" ")
+    cmd << exclude_files.map { |f| "--exclude=#{f}" }.join(" ")
     cmd << "--exclude-dir={#{exclude_folders.join(',')}}"
     cmd << "| xargs sed -i '' 's/Primer::#{name}/Primer::#{status_module}#{name_without_suffix}/g'"
 

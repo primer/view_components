@@ -68,7 +68,7 @@
   - title: Layout
     url: "/components/alpha/layout"
   - title: Link
-    url: "/components/link"
+    url: "/components/beta/link"
   - title: LocalTime
     url: "/components/localtime"
   - title: Markdown

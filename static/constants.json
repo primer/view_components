@@ -779,7 +779,7 @@
     "DEFAULT_SIDEBAR_COL": 3,
     "MAX_COL": 12
   },
-  "Primer::LinkComponent": {
+  "Primer::Beta::Link": {
     "DEFAULT_SCHEME": "default",
     "DEFAULT_TAG": "a",
     "SCHEME_MAPPINGS": {

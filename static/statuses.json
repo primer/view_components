@@ -68,7 +68,7 @@
   "Primer::ImageCrop": "deprecated",
   "Primer::LabelComponent": "beta",
   "Primer::LayoutComponent": "alpha",
-  "Primer::LinkComponent": "beta",
+  "Primer::Beta::Link": "beta",
   "Primer::LocalTime": "alpha",
   "Primer::Markdown": "beta",
   "Primer::MenuComponent": "alpha",
