@@ -3,7 +3,7 @@
 module Primer
   module Beta
     # @label Link
-    class LinkComponentPreview < ViewComponent::Preview
+    class LinkPreview < ViewComponent::Preview
       # @label Playground
       #
       # @param underline [Boolean]
