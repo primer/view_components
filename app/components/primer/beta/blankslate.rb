@@ -96,7 +96,7 @@ module Primer
       renders_one :secondary_action, lambda { |href:, **system_arguments|
         system_arguments[:href] = href
 
-        Primer::LinkComponent.new(**system_arguments)
+        Primer::Beta::Link.new(**system_arguments)
       }
 
       # @example Basic

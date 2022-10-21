@@ -82,7 +82,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::HiddenTextExpander, { "aria-label": "No action" }],
     [Primer::Beta::Label, {}],
     [Primer::LayoutComponent, {}],
-    [Primer::LinkComponent, { href: "https://www.google.com" }],
+    [Primer::Beta::Link, { href: "https://www.google.com" }],
     [Primer::Markdown, {}],
     [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],
     [Primer::Navigation::TabComponent, {}],
@@ -110,6 +110,7 @@ class PrimerComponentTest < Minitest::Test
   def test_registered_components
     ignored_components = [
       "Primer::LabelComponent",
+      "Primer::LinkComponent",
       "Primer::ImageCrop",
       "Primer::Image",
       "Primer::Alpha::ActionList::Heading",
