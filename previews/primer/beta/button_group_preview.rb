@@ -4,6 +4,18 @@ module Primer
   module Beta
     # @label ButtonGroup
     class ButtonGroupPreview < ViewComponent::Preview
+      # @label Playground
+      #
+      # @param size [Symbol] select [medium, small]
+      def playground(size: :medium)
+        render(Primer::Beta::ButtonGroup.new(size: size)) do |c|
+          c.button { "Button" }
+          c.button(scheme: :primary) { "Primary" }
+          c.button(scheme: :danger) { "Danger" }
+          c.button(scheme: :outline) { "Outline" }
+        end
+      end
+
       # @label Default options
       #
       # @param size [Symbol] select [medium, small]

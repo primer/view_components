@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.0.103",
+  "version": "0.0.104",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -56,7 +56,7 @@
     "@changesets/cli": "^2.24.1",
     "@github/browserslist-config": "^1.0.0",
     "@github/prettier-config": "0.0.4",
-    "@primer/css": "20.4.6",
+    "@primer/css": "20.4.7",
     "@primer/primitives": "^7.9.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",

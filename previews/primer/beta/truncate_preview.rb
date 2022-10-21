@@ -4,6 +4,13 @@ module Primer
   module Beta
     # @label Truncate
     class TruncatePreview < ViewComponent::Preview
+      # @label Playground
+      #
+      # @param text [String] text
+      def playground(text: "branch-name-that-is-really-long")
+        render(Primer::Beta::Truncate.new) { text }
+      end
+
       # @label Default options
       #
       # @param text [String] text

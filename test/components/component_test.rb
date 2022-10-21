@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require "components/test_helper"
 require_relative "../../lib/primer/view_components/statuses"
 
 class PrimerComponentTest < Minitest::Test
@@ -10,6 +10,13 @@ class PrimerComponentTest < Minitest::Test
   COMPONENTS_WITH_ARGS = [
     [Primer::Beta::IconButton, { icon: :star, "aria-label": "Star" }],
     [Primer::Beta::Button, {}],
+    [Primer::Alpha::SegmentedControl, {
+      full_width: false
+    }, proc { |component|
+      component.with_item(label: "Button", selected: true)
+      component.with_item(label: "Button")
+    }],
+    [Primer::Alpha::SegmentedControl::Item, { label: "Button" }],
     [Primer::Alpha::Layout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }
       component.sidebar(tag: :div) { "Bar" }
@@ -18,7 +25,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::TabPanels, { label: "label" }],
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
-    [Primer::Image, { src: "https://github.com/github.png", alt: "alt" }],
+    [Primer::Alpha::Image, { src: "https://github.com/github.png", alt: "alt" }],
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
@@ -102,6 +109,7 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::Image",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",

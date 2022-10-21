@@ -3,6 +3,14 @@
 module Primer
   # @label ClipboardCopy
   class ClipboardCopyPreview < ViewComponent::Preview
+    # @label Playground
+    #
+    # @param aria_label [String]
+    # @param value [String]
+    def playground(value: "Text to copy", aria_label: "Copy text to the system clipboard")
+      render(Primer::ClipboardCopy.new(value: value, "aria-label": aria_label))
+    end
+
     # @label Default Options
     #
     # @param aria_label [String]

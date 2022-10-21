@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require "components/test_helper"
 
 class PrimerBetaBaseButtonTest < Minitest::Test
   include Primer::ComponentTestHelpers

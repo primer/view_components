@@ -10,5 +10,13 @@ module Primer
     def default(inline: false, aria_label: "No effect")
       render(Primer::HellipButton.new(inline: inline, "aria-label": aria_label))
     end
+
+    # @label Playground
+    #
+    # @param aria_label [String]
+    # @param inline [Boolean]
+    def playground(inline: false, aria_label: "No effect")
+      render(Primer::HellipButton.new(inline: inline, "aria-label": aria_label))
+    end
   end
 end

@@ -3,6 +3,13 @@
 module Primer
   # @label ImageCrop
   class ImageCropPreview < ViewComponent::Preview
+    # @label Playground
+    #
+    # @param rounded [Boolean]
+    def playground(rounded: false)
+      render(Primer::ImageCrop.new(src: Primer::ExampleImage::BASE64_SRC, rounded: rounded))
+    end
+
     # @label Default Options
     #
     # @param rounded [Boolean]

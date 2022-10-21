@@ -1,0 +1,161 @@
+
+
+name: Preview
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+env:
+  PR_NUMBER: ${{ github.event.number || github.run_id }}
+  COMMIT_REF: ${{ github.event.pull_request.head.sha || github.event.inputs.COMMIT_REF }}
+  PORT: 80
+
+# This allows one deploy workflow to interrupt another
+concurrency:
+  group: 'preview-env @ ${{ github.head_ref || github.run_id }} for ${{ github.event.number || github.event.inputs.PR_NUMBER }}'
+  cancel-in-progress: true
+
+jobs:
+  demo:
+    name: Demo Build & Deploy
+    if: ${{ github.event.pull_request.head.repo.full_name == 'primer/view_components' && github.actor != 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: review-pr-${{ github.event.number }}
+      # The environment variable is computer later in this job in
+      # the "Get preview app info" step.
+      # That script sets environment variables which is used by Actions
+      # to link a PR to a list of environments later.
+      url: ${{ env.APP_URL }}
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 3.0.x
+    - uses: actions/cache@v3.0.11
+      with:
+        path: demo/gemfiles/vendor/bundle
+        key: gems-build-kuby-main-ruby-3.0.x-${{ hashFiles('demo/gemfiles/kuby.gemfile.lock') }}
+    - name: Docker login
+      env:
+        AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
+      run: echo $AZURE_ACR_PASSWORD | docker login primer.azurecr.io --username GitHubActions --password-stdin
+    - uses: Azure/login@v1
+      with:
+        creds: '{"clientId":"5ad1a188-b944-40eb-a2f8-cc683a6a65a0","clientSecret":"${{ secrets.AZURE_SPN_CLIENT_SECRET }}","subscriptionId":"550eb99d-d0c7-4651-a337-f53fa6520c4f","tenantId":"398a6654-997b-47e9-b12b-9515b896b4de"}'
+    - name: Bundle
+      run: |
+        gem install bundler -v '~> 2.3'
+        bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile --path vendor/bundle
+
+    - name: Get preview app info
+      run: ./.github/workflows/demo-preview-app-info.sh
+
+    - name: Pull latest
+      run: |
+        docker pull ${{ env.IMAGE_URL }}:latest || true
+        docker pull ${{ env.IMAGE_URL }}:latest-assets || true
+    - name: Build
+      env:
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+      run: |
+        bin/kuby -e production build --only app -- --tag=${{ env.DOCKER_IMAGE }} --cache-from ${{ env.IMAGE_URL }}:latest
+        bin/kuby -e production build --only assets -- --tag=${{ env.DOCKER_IMAGE }}-assets --cache-from ${{ env.IMAGE_URL }}:latest-assets
+    - name: Push
+      run: |
+        docker image push --all-tags ${{ env.IMAGE_URL }}
+    - name: Run ARM deploy
+      # This 'if' will be truth, if this workflow is...
+      #  - run as a workflow_dispatch
+      #  - run because of a push to main (or when added to a merge queue)
+      #  - run as a regular pull request
+      # But if it's a pull request, *and* for whatever reason, the pull
+      # request has "Auto-merge" enabled, don't bother.
+      # The idea is that if auto-merge has been abled, by humans or by
+      # bots, they have no intention of viewing the deployed preview anyway.
+      # This saves time because the PR can merge sooner.
+      if: ${{ !github.event.pull_request.auto_merge }}
+      uses: azure/arm-deploy@841b12551939c88af8f6df767c24c38a5620fd0d
+      with:
+        resourceGroupName: primer
+        subscriptionId: 550eb99d-d0c7-4651-a337-f53fa6520c4f
+        template: ./.github/workflows/demo-preview-template.json
+        deploymentName: ${{env.DEPLOYMENT_NAME}}
+        parameters: appName="${{env.APP_NAME}}"
+          containerImage="${{ env.DOCKER_IMAGE }}"
+          dockerRegistryUrl="primer.azurecr.io"
+          dockerRegistryUsername="GitHubActions"
+          dockerRegistryPassword="${{ secrets.AZURE_ACR_PASSWORD }}"
+          railsMasterKey="${{ secrets.RAILS_MASTER_KEY }}"
+  docs_build:
+    if: ${{ github.event.pull_request.head.repo.full_name == 'primer/view_components' }}
+    name: Docs Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout default branch
+        uses: actions/checkout@v2
+        with:
+          version: 14
+
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.x
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: |
+            package-lock.json
+            docs/package-lock.json
+
+      - uses: actions/cache@v3.0.11
+        with:
+          path: vendor/bundle
+          key: gems-deploy-preview-${{ hashFiles('**/Gemfile.lock') }}
+
+      - name: Install dependencies
+        run: npm i && cd docs && npm i && cd ..
+
+      - name: Generate static files
+        run: |
+          gem install bundler:2.2.9
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+          bundle exec rake utilities:build
+          bundle exec rake docs:build
+          bundle exec rake static:dump
+
+      - name: Build
+        run: npm run build:docs:preview
+
+      - name: Archive build output
+        run: 'tar --dereference --directory docs/public -cvf artifact.tar .'
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: github-pages
+          path: artifact.tar
+  docs_deploy:
+    name: Docs Deploy
+    runs-on: ubuntu-latest
+    needs: docs_build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      deployment_url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+        with:
+          preview: true
