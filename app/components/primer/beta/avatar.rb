@@ -72,7 +72,7 @@ module Primer
 
       def call
         if @href
-          render(Primer::LinkComponent.new(href: @href, classes: @system_arguments[:classes])) do
+          render(Primer::Beta::Link.new(href: @href, classes: @system_arguments[:classes])) do
             render(Primer::BaseComponent.new(**@system_arguments.except(:classes))) { content }
           end
         else

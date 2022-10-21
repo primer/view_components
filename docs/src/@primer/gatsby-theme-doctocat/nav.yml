@@ -60,15 +60,15 @@
   - title: IconButton
     url: "/components/beta/iconbutton"
   - title: Image
-    url: "/components/image"
+    url: "/components/alpha/image"
   - title: ImageCrop
-    url: "/components/imagecrop"
+    url: "/components/alpha/imagecrop"
   - title: Label
-    url: "/components/label"
+    url: "/components/beta/label"
   - title: Layout
     url: "/components/alpha/layout"
   - title: Link
-    url: "/components/link"
+    url: "/components/beta/link"
   - title: LocalTime
     url: "/components/localtime"
   - title: Markdown
@@ -85,6 +85,8 @@
     url: "/components/popover"
   - title: ProgressBar
     url: "/components/progressbar"
+  - title: SegmentedControl
+    url: "/components/alpha/segmentedcontrol"
   - title: Spinner
     url: "/components/spinner"
   - title: State

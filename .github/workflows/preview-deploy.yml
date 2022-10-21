@@ -3,8 +3,6 @@
 name: Preview
 on:
   pull_request:
-    branches-ignore:
-      - 'dependabot/**'
 
 permissions:
   contents: read
@@ -39,7 +37,7 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 3.0.x
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3.0.11
       with:
         path: demo/gemfiles/vendor/bundle
         key: gems-build-kuby-main-ruby-3.0.x-${{ hashFiles('demo/gemfiles/kuby.gemfile.lock') }}
@@ -95,7 +93,7 @@ jobs:
           dockerRegistryPassword="${{ secrets.AZURE_ACR_PASSWORD }}"
           railsMasterKey="${{ secrets.RAILS_MASTER_KEY }}"
   docs_build:
-    if: ${{ github.event.pull_request.head.repo.full_name == 'primer/view_components' && github.actor != 'dependabot[bot]' }}
+    if: ${{ github.event.pull_request.head.repo.full_name == 'primer/view_components' }}
     name: Docs Build
     runs-on: ubuntu-latest
     steps:
@@ -110,7 +108,7 @@ jobs:
           ruby-version: 2.7.x
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: 'npm'
@@ -118,7 +116,7 @@ jobs:
             package-lock.json
             docs/package-lock.json
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3.0.11
         with:
           path: vendor/bundle
           key: gems-deploy-preview-${{ hashFiles('**/Gemfile.lock') }}

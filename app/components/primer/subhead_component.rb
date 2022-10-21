@@ -5,7 +5,7 @@ module Primer
   #
   # - Optionally set the `:description` slot to render a short description and the `:actions` slot for a related action.
   # - Use a succinct, one-line description for the `:description` slot. For longer descriptions, omit the description slot and render a paragraph below the `Subhead`.
-  # - Use the actions slot to render a related action to the right of the heading. Use <%= link_to_component(Primer::ButtonComponent) %> or <%= link_to_component(Primer::LinkComponent) %>.
+  # - Use the actions slot to render a related action to the right of the heading. Use <%= link_to_component(Primer::ButtonComponent) %> or <%= link_to_component(Primer::Beta::Link) %>.
   #
   # @accessibility
   #   The `:heading` slot defaults to rendering a `<div>`. Update the tag to a heading element with the appropriate level to improve page navigation for assistive technologies.

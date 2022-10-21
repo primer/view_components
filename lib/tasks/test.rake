@@ -4,73 +4,70 @@ require "rake/testtask"
 
 namespace :test do
   desc "Run all tests"
-  task all: [:fast, :system, :accessibility, :performance]
+  task all: [
+    :components,
+    :lib,
+    :system,
+    :accessibility,
+    :performance
+  ]
 
   Rake::TestTask.new(:single) do |t|
-    ENV["TZ"] = "Asia/Taipei"
-
     t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList[ENV["TEST"]]
   end
 
-  Rake::TestTask.new(:fast) do |t|
-    ENV["TZ"] = "Asia/Taipei"
-    ENV["COVERAGE"] = "1"
+  Rake::TestTask.new(:components) do |t|
+    t.warning = false
+    t.libs << "test"
+    t.test_files = FileList[
+      "test/components/**/*_test.rb"
+    ]
+  end
 
+  Rake::TestTask.new(:lib) do |t|
     t.warning = false
     t.libs << "test"
     t.libs << "lib"
     t.test_files = FileList[
-      "test/components/**/*_test.rb",
-      "test/lib/**/*_test.rb",
-      "test/primer/**/*_test.rb",
-      "test/linters/**/*_test.rb",
-      "test/rubocop/**/*_test.rb"
+      "test/lib/**/*_test.rb"
     ]
   end
 
   Rake::TestTask.new(:system) do |t|
-    ENV["TZ"] = "Asia/Taipei"
-
     t.warning = false
     t.libs << "test"
-    t.libs << "lib"
     t.test_files = FileList["test/system/**/*_test.rb"]
   end
 
   Rake::TestTask.new(:performance) do |t|
-    ENV["TZ"] = "Asia/Taipei"
-
-    t.libs << "test"
-    t.test_files = FileList["test/performance/**/*_test.rb", "test/performance/**/bench_*.rb"]
+    t.warning = false
     t.verbose = true
+    t.libs << "test"
+    t.test_files = FileList[
+      "test/performance/**/*_test.rb",
+      "test/performance/**/bench_*.rb"
+    ]
   end
 
   Rake::TestTask.new(:accessibility) do |t|
-    ENV["TZ"] = "Asia/Taipei"
-
     t.warning = false
     t.libs << "test"
-    t.libs << "lib"
     t.test_files = FileList["test/accessibility_test.rb"]
   end
 
   Rake::TestTask.new(:snapshots) do |t|
-    ENV["TZ"] = "Asia/Taipei"
-
     t.warning = false
     t.libs << "test"
-    t.libs << "lib"
     t.test_files = FileList["test/snapshots_test.rb"]
   end
 
   task :coverage do
     require "simplecov"
 
-    # Goal is 100% coverage
-    SimpleCov.minimum_coverage 99
+    SimpleCov.minimum_coverage 100
     SimpleCov.collate Dir["coverage/.resultset.json"], "rails"
   end
 end

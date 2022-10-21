@@ -34,7 +34,7 @@ jobs:
             const botComments = result.data.filter(c => c.user.login == 'github-actions[bot]')
             if (!botComments.length) {
               await github.rest.issues.createComment({
-                issue_number: context.issue.number,
+                issue_number: `${process.env.PR_NUMBER}`,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 body: body.replace('{{PR_AUTHOR}}', context.payload.sender.login)

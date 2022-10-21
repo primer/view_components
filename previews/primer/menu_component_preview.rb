@@ -3,7 +3,10 @@
 module Primer
   # @label MenuComponent
   class MenuComponentPreview < ViewComponent::Preview
-    # @label Default Options
+    # @label Playground
+    def playground; end
+
+    # @label Default
     def default; end
   end
 end

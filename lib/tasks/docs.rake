@@ -31,12 +31,13 @@ namespace :docs do
     components = [
       Primer::Beta::IconButton,
       Primer::Beta::Button,
+      Primer::Alpha::SegmentedControl,
       Primer::Alpha::Layout,
       Primer::HellipButton,
-      Primer::Image,
+      Primer::Alpha::Image,
       Primer::LocalTime,
       Primer::OcticonSymbolsComponent,
-      Primer::ImageCrop,
+      Primer::Alpha::ImageCrop,
       Primer::IconButton,
       Primer::Beta::AutoComplete,
       Primer::Beta::AutoComplete::Item,
@@ -61,9 +62,9 @@ namespace :docs do
       Primer::Beta::Flash,
       Primer::Beta::Heading,
       Primer::Alpha::HiddenTextExpander,
-      Primer::LabelComponent,
+      Primer::Beta::Label,
       Primer::LayoutComponent,
-      Primer::LinkComponent,
+      Primer::Beta::Link,
       Primer::Markdown,
       Primer::MenuComponent,
       Primer::Navigation::TabComponent,
@@ -99,7 +100,7 @@ namespace :docs do
     js_components = [
       Primer::Dropdown,
       Primer::LocalTime,
-      Primer::ImageCrop,
+      Primer::Alpha::ImageCrop,
       Primer::Beta::AutoComplete,
       Primer::ClipboardCopy,
       Primer::TabContainerComponent,
@@ -109,7 +110,7 @@ namespace :docs do
       Primer::Alpha::Tooltip,
       Primer::ButtonComponent,
       Primer::IconButton,
-      Primer::LinkComponent,
+      Primer::Beta::Link,
       Primer::Alpha::ToggleSwitch,
       Primer::Alpha::ActionList,
       Primer::Alpha::NavList,
@@ -152,7 +153,7 @@ namespace :docs do
         f.puts("componentId: #{data[:component_id]}")
         f.puts("status: #{data[:status]}")
         f.puts("source: #{data[:source]}")
-        f.puts("a11yReviewed: false")
+        f.puts("a11yReviewed: #{data[:a11y_reviewed]}")
         f.puts("lookbook: #{data[:lookbook]}") if preview_exists?(component)
         f.puts("---")
         f.puts
@@ -227,7 +228,9 @@ namespace :docs do
 
         component_args = {
           "component" => data[:title],
+          "status" => component.status.to_s,
           "source" => data[:source],
+          "lookbook" => data[:lookbook],
           "parameters" => args
         }
 
@@ -485,11 +488,13 @@ namespace :docs do
     status_module, short_name, class_name = status_module_and_short_name(component)
     status_path = status_module.nil? ? "" : "#{status_module}/"
     status = component.status.to_s
+    a11y_reviewed = component.audited_at.nil? ? "false" : "true"
 
     {
       title: class_name,
       component_id: short_name.underscore,
       status: status.capitalize,
+      a11y_reviewed: a11y_reviewed,
       source: source_url(component),
       lookbook: lookbook_url(component),
       path: "docs/content/components/#{status_path}#{short_name.downcase}.md",
