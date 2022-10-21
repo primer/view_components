@@ -35,15 +35,15 @@ class MigrateDeprecatedFlashArgumentsTest < ErblintTestCase
 
   def test_removes_spacious_argument_when_false
     @file = <<~ERB
-      <%= render(Primer::Beta::Flash.new(dismissible: true, spacious: false)) do |c| %>
+      <%= render(Primer::Beta::Flash.new(dismissible: true, spacious: false)) { |c| %>
         Some content
-      <% end %>
+      <% } %>
     ERB
 
     expected = <<~ERB
-      <%= render(Primer::Beta::Flash.new(dismissible: true)) do |c| %>
+      <%= render(Primer::Beta::Flash.new(dismissible: true)) { |c| %>
         Some content
-      <% end %>
+      <% } %>
     ERB
 
     assert_equal expected, corrected_content
