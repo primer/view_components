@@ -385,6 +385,21 @@
       "span"
     ]
   },
+  "Primer::Beta::Banner": {
+    "DEFAULT_ICONS": {
+      "default": "bell",
+      "warning": "alert",
+      "danger": "stop",
+      "success": "check-circle"
+    },
+    "DEFAULT_SCHEME": "default",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "warning": "Banner--warning",
+      "danger": "Banner--error",
+      "success": "Banner--success"
+    }
+  },
   "Primer::Beta::BaseButton": {
     "DEFAULT_TAG": "button",
     "DEFAULT_TYPE": "button",
@@ -531,19 +546,6 @@
     }
   },
   "Primer::Beta::Flash": {
-    "DEFAULT_ICONS": {
-      "default": "bell",
-      "warning": "alert",
-      "danger": "stop",
-      "success": "check-circle"
-    },
-    "DEFAULT_SCHEME": "default",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "warning": "Banner--warning",
-      "danger": "Banner--error",
-      "success": "Banner--success"
-    }
   },
   "Primer::Beta::Heading": {
     "TAG_FALLBACK": "h2",
