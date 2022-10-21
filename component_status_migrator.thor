@@ -22,7 +22,7 @@ class ComponentStatusMigrator < Thor::Group
     File.dirname(__FILE__)
   end
 
-  def exit_on_failure?
+  def self.exit_on_failure?
     true
   end
 
@@ -84,12 +84,13 @@ class ComponentStatusMigrator < Thor::Group
 
   def update_all_references
     exclude_files = [
-      ".git",
+      ".overmind.sock",
       "CHANGELOG.md",
       test_path
     ]
 
     exclude_folders = [
+      ".git",
       ".cache",
       ".yardoc",
       "builds",
@@ -100,7 +101,7 @@ class ComponentStatusMigrator < Thor::Group
     ]
 
     cmd = ["grep -rl #{name} ."]
-    cmd << exclude_files.join(" --exclude=")
+    cmd << exclude_files.map {|f| "--exclude=#{f}"}.join(" ")
     cmd << "--exclude-dir={#{exclude_folders.join(',')}}"
     cmd << "| xargs sed -i '' 's/Primer::#{name}/Primer::#{status_module}#{name_without_suffix}/g'"
 
