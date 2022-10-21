@@ -167,11 +167,11 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def preview_path
-    @preview_path ||= "preview/sprimer/#{name.underscore}.rb"
+    @preview_path ||= "previews/primer/#{name.underscore}_preview.rb"
   end
 
   def preview_path_with_status
-    @preview_path_with_status ||= "previews/primer/#{status_folder_name}#{name_without_suffix.underscore}.rb"
+    @preview_path_with_status ||= "previews/primer/#{status_folder_name}#{name_without_suffix.underscore}_preview.rb"
   end
 
   def stable?
