@@ -102,8 +102,7 @@ module Primer
 
         @message_arguments = {
           tag: :div,
-          classes: "Banner-message",
-          data: { target: catalyst_target(field: "message") },
+          classes: "Banner-message"
         }
 
         @wrapper_arguments = {
