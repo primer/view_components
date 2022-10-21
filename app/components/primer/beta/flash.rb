@@ -42,8 +42,7 @@ module Primer
         super
 
         @message_arguments[:aria] ||= {}
-        @message_arguments[:aria][:live] = "off"
-        @message_arguments[:tabindex] = "-1"
+        @message_arguments[:aria][:atomic] = "true"
         @message_arguments[:role] = @scheme == :danger ? "alert" : "status"
       end
 

@@ -6,7 +6,7 @@
       </div>
     <% end %>
     <%= render(Primer::BaseComponent.new(**@message_arguments)) do %>
-      <p class="Banner-title"><%= content %></p>
+      <p class="Banner-title" data-target="<%= catalyst_target(field: "titleText") %>"><%= content %></p>
       <% if @description %>
         <p><%= @description %></p>
       <% end %>
