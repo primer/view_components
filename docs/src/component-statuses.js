@@ -1,7 +1,8 @@
-import { Link, Text, Label } from '@primer/react'
+import {Link, Label, StyledOcticon} from '@primer/react'
 import StatusLabel from '@primer/gatsby-theme-doctocat/src/components/status-label'
+import {AccessibilityInsetIcon} from '@primer/octicons-react'
 import Table from '@primer/gatsby-theme-doctocat/src/components/table'
-import { graphql, Link as GatsbyLink, useStaticQuery } from 'gatsby'
+import {graphql, Link as GatsbyLink, useStaticQuery} from 'gatsby'
 import React from 'react'
 
 export function ComponentStatuses() {
@@ -24,7 +25,7 @@ export function ComponentStatuses() {
     }
   `)
 
-  const components = data.allMdx.nodes.map(node => {
+  const components = data.allMdx.nodes.map((node) => {
     // get first sentence of the excerpt
     // search for a period space and capital letter to avoid splitting at e.g.
     const excerptMatch = node.excerpt
@@ -51,7 +52,7 @@ export function ComponentStatuses() {
         </tr>
       </thead>
       <tbody>
-        {components.map(({ slug, description, title, status, a11yReviewed }) => (
+        {components.map(({slug, description, title, status, a11yReviewed}) => (
           <tr key={slug}>
             <td valign="top">
               <Link as={GatsbyLink} to={`/${slug}`}>
@@ -59,13 +60,38 @@ export function ComponentStatuses() {
               </Link>
             </td>
             <td align="center" valign="top">
-              <StatusLabel status={status} />
+              <StatusLabel size="large" status={status} />
             </td>
-            <td align="center" valign="top" style={{ whiteSpace: 'nowrap' }}>
+            <td align="center" valign="top" style={{whiteSpace: 'nowrap'}}>
               {a11yReviewed ? (
-                <Label variant="primary">Reviewed</Label>
+                <Label
+                  size="large"
+                  sx={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 1,
+                    backgroundColor: 'done.subtle',
+                    fontWeight: 'normal',
+                    borderColor: 'transparent',
+                  }}
+                >
+                  <StyledOcticon
+                    icon={AccessibilityInsetIcon}
+                    sx={{fill: 'done.fg'}}
+                  />
+                  Reviewed
+                </Label>
               ) : (
-                <Text sx={{ color: 'fg.subtle' }}>Review pending</Text>
+                <Label
+                  size="large"
+                  sx={{
+                    backgroundColor: 'neutral.subtle',
+                    fontWeight: 'normal',
+                    borderColor: 'transparent',
+                  }}
+                >
+                  Not reviewed
+                </Label>
               )}
             </td>
             <td valign="top">{description}</td>
