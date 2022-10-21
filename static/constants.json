@@ -531,6 +531,12 @@
     }
   },
   "Primer::Beta::Flash": {
+    "DEFAULT_ICONS": {
+      "default": "bell",
+      "warning": "alert",
+      "danger": "stop",
+      "success": "check-circle"
+    },
     "DEFAULT_SCHEME": "default",
     "SCHEME_MAPPINGS": {
       "default": "",
