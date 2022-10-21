@@ -60,11 +60,19 @@ class ComponentStatusMigrator < Thor::Group
     insert_into_file(preview_path_with_status, "  end\n", before: /^end$/, force: true)
   end
 
-  def remove_suffix
+  def remove_suffix_from_component_class
     if name == name_without_suffix
-      puts "No change needed - class suffix not removed"
+      puts "No change needed - component suffix not removed from component class name"
     else
       gsub_file(controller_path_with_status, "class #{name}", "class #{name_without_suffix}")
+    end
+  end
+
+  def remove_suffix_from_preview_class
+    if name == name_without_suffix
+      puts "No change needed - component suffix not removed from lookbook preview class name"
+    else
+      gsub_file(preview_path_with_status, "class #{name}", "class #{name_without_suffix}")
     end
   end
 
