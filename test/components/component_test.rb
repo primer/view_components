@@ -27,7 +27,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
     [Primer::Alpha::Image, { src: "https://github.com/github.png", alt: "alt" }],
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
-    [Primer::ImageCrop, { src: "Foo" }],
+    [Primer::Alpha::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
     [Primer::Alpha::ActionList, { aria: { label: "Action List" } }, lambda do |component|
       component.item(label: "Foo")
@@ -109,6 +109,7 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::ImageCrop",
       "Primer::Image",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",

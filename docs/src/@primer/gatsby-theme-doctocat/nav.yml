@@ -62,7 +62,7 @@
   - title: Image
     url: "/components/alpha/image"
   - title: ImageCrop
-    url: "/components/imagecrop"
+    url: "/components/alpha/imagecrop"
   - title: Label
     url: "/components/label"
   - title: Layout
