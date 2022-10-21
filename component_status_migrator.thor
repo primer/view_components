@@ -34,15 +34,26 @@ class ComponentStatusMigrator < Thor::Group
     move_file("template", template_path, template_path_with_status)
   end
 
-  def copy_test
+  def move_test
     move_file("test", test_path, test_path_with_status)
   end
 
-  def add_module
+  def move_preview
+    move_file("preview", preview_path, preview_path_with_status)
+  end
+
+  def add_module_to_component
     return if stable?
 
     insert_into_file(controller_path_with_status, "  module #{class_status}\n", after: "module Primer\n")
     insert_into_file(controller_path_with_status, "  end\n", before: /^end$/, force: true)
+  end
+
+  def add_module_to_preview
+    return if stable?
+
+    insert_into_file(preview_path_with_status, "  module #{class_status}\n", after: "module Primer\n")
+    insert_into_file(preview_path_with_status, "  end\n", before: /^end$/, force: true)
   end
 
   def remove_suffix
@@ -51,6 +62,10 @@ class ComponentStatusMigrator < Thor::Group
     else
       gsub_file(controller_path_with_status, "class #{name}", "class #{name_without_suffix}")
     end
+  end
+
+  def rename_preview_label
+    gsub_file(preview_path_with_status, /# @label #{name}/, "# @label #{name_without_suffix}")
   end
 
   def rename_test_class
@@ -149,6 +164,14 @@ class ComponentStatusMigrator < Thor::Group
     else
       puts "Nothing moved. #{file_type.capitalize} file not found: #{new_path}"
     end
+  end
+
+  def preview_path
+    @preview_path ||= "preview/sprimer/#{name.underscore}.rb"
+  end
+
+  def preview_path_with_status
+    @preview_path_with_status ||= "previews/primer/#{status_folder_name}#{name_without_suffix.underscore}.rb"
   end
 
   def stable?
