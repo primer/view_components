@@ -7,11 +7,11 @@ module ERBLint
     module ArgumentMappers
       # Maps classes in a flash element to arguments for the Flash component.
       class Flash < Base
-        SCHEME_MAPPINGS = Primer::ViewComponents::Constants.get(
-          component: "Primer::Beta::Flash",
-          constant: "SCHEME_MAPPINGS",
-          symbolize: true
-        ).freeze
+        SCHEME_MAPPINGS = {
+          "flash-success" => ":success",
+          "flash-warn" => ":warning",
+          "flash-error" => ":danger"
+        }.freeze
 
         def classes_to_args(classes)
           classes.each_with_object({ classes: [] }) do |class_name, acc|

@@ -23,6 +23,8 @@
     url: "/components/beta/avatar"
   - title: AvatarStack
     url: "/components/beta/avatarstack"
+  - title: Banner
+    url: "/components/beta/banner"
   - title: Blankslate
     url: "/components/beta/blankslate"
   - title: BorderBox
