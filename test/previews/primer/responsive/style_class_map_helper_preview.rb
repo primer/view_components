@@ -35,7 +35,7 @@ module Primer
             }
           }
         }
-      }
+      }.freeze
 
       # @label add responsive
       def add_responsive

@@ -57,11 +57,11 @@ module Primer
 
         unless type.empty?
           args[:type] = case type
-                         when "String"
-                           String
-                         when "Integer"
-                           Integer
-                         end
+                        when "String"
+                          String
+                        when "Integer"
+                          Integer
+                        end
         end
 
         unless v_narrow_allowed_values.empty? && v_narrow_default.empty?
