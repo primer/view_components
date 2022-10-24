@@ -33,6 +33,7 @@
   "Primer::Beta::AutoComplete::Item": "beta",
   "Primer::Beta::Avatar": "beta",
   "Primer::Beta::AvatarStack": "beta",
+  "Primer::Beta::Banner": "beta",
   "Primer::Beta::BaseButton": "beta",
   "Primer::Beta::Blankslate": "beta",
   "Primer::Beta::BorderBox": "beta",
