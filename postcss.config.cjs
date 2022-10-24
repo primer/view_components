@@ -1,21 +1,31 @@
-const path = require('path')
+const autoprefixer = require('autoprefixer');
+const cssImport = require('postcss-import');
+const mixins = require('postcss-mixins');
+const presetEnv = require('postcss-preset-env');
+const cssNano = require('cssnano');
+const path = require('path');
+const comments = require('postcss-comment');
 
 module.exports = {
   map: {
-    annotation: false
+    sourcesContent: false,
+    annotation: true
   },
+  parser: comments,
+  syntax: comments,
   plugins: [
-    require('postcss-import'),
-    require('postcss-mixins')({
-        mixinsDir: path.join(__dirname, './lib/postcss_mixins/')
+    cssImport,
+    mixins({
+      mixinsDir: path.join(__dirname, './lib/postcss_mixins/')
     }),
-    require('postcss-preset-env')({
+    presetEnv({
       stage: 2,
       // https://preset-env.cssdb.org/features/#stage-2
       features: {
         'nesting-rules': true
       }
     }),
-    require('cssnano'),
+    cssNano,
+    autoprefixer,
   ],
 };
