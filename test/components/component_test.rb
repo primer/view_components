@@ -34,7 +34,6 @@ class PrimerComponentTest < Minitest::Test
     end],
     [Primer::Alpha::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
     [Primer::Alpha::AutoComplete::Item, { value: "Foo" }],
-    [Primer::Alpha::ResponsiveComponent, {}],
     [Primer::Beta::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
     [Primer::Beta::AutoComplete::Item, { value: "Foo" }],
     [Primer::Beta::Avatar, { alt: "github", src: "https://github.com/github.png" }],
@@ -121,7 +120,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::BoxComponent"
     ]
 
-    primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
+    primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") && p.exclude?("responsive_component") }
     assert_equal primer_component_files_count, COMPONENTS_WITH_ARGS.length + ignored_components.count, "Primer component added. Please update this test with an entry for your new component <3"
   end
 
