@@ -30,6 +30,8 @@
     "clean": "git clean -fdX -- app/",
     "build:docs": "npm run --prefix ./docs/ build",
     "build:docs:preview": "cd docs && npx gatsby build",
+    "build:pcss": "script/build-pcss.js",
+    "build:pcss:stats": "script/build-stats.js",
     "prepare": "rm -rf docs/static && mkdir -p docs/static && script/build-assets && cp app/assets/**/primer_view_components.* docs/static/",
     "lint": "npm run lint:stylelint && npm run lint:eslint",
     "lint:stylelint": "stylelint 'app/components/**/*.pcss'",
