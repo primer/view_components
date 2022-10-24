@@ -23,7 +23,7 @@ class XFlashElement extends XBannerElement {
     setTimeout(() => {
       const textNode = document.createTextNode('\u00A0')
       this.titleText.appendChild(textNode)
-    }, 200)
+    }, 500)
   }
 }
 
