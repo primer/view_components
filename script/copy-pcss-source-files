@@ -1,0 +1,13 @@
+#! /bin/bash
+
+echo "Copying source files from PCSS to PVC ..."
+echo " - src/deprecations.json"
+echo " - src/utilities/*"
+echo " - src/support/*"
+
+PCSS_DIR="../css/src"
+PVC_DIR="app/lib/primer/css"
+
+cp $PCSS_DIR/deprecations.json $PVC_DIR/
+cp -R $PCSS_DIR/utilities/ $PVC_DIR/utilities/
+cp -R $PCSS_DIR/support/ $PVC_DIR/support/
