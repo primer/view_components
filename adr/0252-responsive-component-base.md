@@ -222,6 +222,7 @@ In case the component is responsive (has `:responsive` set to `:yes` or `:transi
 
 - `additional_allowed_values`: works like the base `allowed_values`, but will add to the current `allowed_values` list if it's set in the base definition.
 - `default`: defines a default per responsive variant. It has precedence over the base `default` value.
+
 > _note_: responsive definitions cannot contain a `type`. If the base definition uses a `type`, that means that all responsive variants will be of the same type.
 
 ### Sharing arguments definition
