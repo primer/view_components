@@ -46,7 +46,7 @@ class StyleClassMapHelperTest < Minitest::Test
         arg_b_value_a: "argument-b-value-a",
         arg_b_value_b: "argument-b-value-b",
         arg_b_value_c: "argument-b-value-c",
-        arg_b_value_d: "argument-b-value-d",
+        arg_b_value_d: "argument-b-value-d"
       },
       arg_namespace_lvl1: {
         inner_arg_a: {

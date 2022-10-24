@@ -12,7 +12,7 @@ module Primer
       # Adds responsive variants to the base map modifying the base classes to the respective variant name
       #
       # @param map [Hash] a hash composed of argument names mapping each possible value to a css class (string)
-      # @param remove_initial [boolean] flag to remove the initial class map structure once the variants are added  
+      # @param remove_initial [boolean] flag to remove the initial class map structure once the variants are added
       def add_responsive_variants!(map, remove_initial: false)
         RESPONSIVE_VARIANTS_MAP.each do |responsive_variant, config|
           add_responsive_variant!(map, responsive_variant, config[:style_class_modifier], RESPONSIVE_VARIANTS)
@@ -123,7 +123,7 @@ module Primer
       # Matches the style map with the given value and returns the mapped class
       #
       # @param map [Hash] a map of the possible values of a argument and its respective css class
-      # @param value [Object] the value of the argument. If it's a hash, the style is going to try to create a recursive applied map 
+      # @param value [Object] the value of the argument. If it's a hash, the style is going to try to create a recursive applied map
       def get_style_from_value(map, value)
         style_class = nil
 

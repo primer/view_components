@@ -411,7 +411,7 @@ class ArgumentsDefinitionHelperTest < Minitest::Test
         one_lvl_deep: { arg_responsive: :c },
         multiple_lvls_deep: {
           level_a: {
-            level_a_a: { arg_responsive: :invalid_value}
+            level_a_a: { arg_responsive: :invalid_value }
           }
         }
       },

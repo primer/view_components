@@ -1,4 +1,5 @@
 # 252. Responsive Components
+
 Date: 2022-09-01
 
 The `ResponsiveComponent` class adds support for creating `viewport_range`-based responsive components, in a similar way that `Primer::Component` adds support for Primer CSS utility classes.
@@ -33,6 +34,7 @@ Inside Primer, the current responsive components are being created with a "style
 ```
 
 Then, to derive the class in the component, the `fetch_or_fallback` requires biding the map, the argument value, and its default option:
+
 ```rb
   INNER_SPACING_MAPPINGS[fetch_or_fallback(INNER_SPACING_OPTIONS, inner_spacing INNER_SPACING_DEFAULT)],
 ```
@@ -172,7 +174,8 @@ The method works by mapping each `argument_name`(Symbol) to its definition prope
   - `:yes`: will only accept values set through the responsive variants.
   - `:transitional`: supports values set directly or through the responsive variants. Should only be used to migrate non-responsive arguments into responsive arguments while keeping backward compatibility in the transition period (migration).
 - `type`: defines the type of the argument and will be used to validate its value. Use the base class of the type. For ruby types, use their base class as well, for instance: `Numeric`, `Integer`, `String`, `Array`, `Hash`, etc.  
-  > _note_: Ruby doesn't have a boolean type that encompasses both `true` and `false` values, since they're both instances of the `TrueClass` and `FalseClass` respectively. To support booleans, used `allowed_values` instead.  
+  > _note_: Ruby doesn't have a boolean type that encompasses both `true` and `false` values, since they're both instances of the `TrueClass` and `FalseClass` respectively. To support booleans, used `allowed_values` instead.
+  
   ```rb
   # example of type definition
   language_name_argument: arg(
@@ -184,7 +187,9 @@ The method works by mapping each `argument_name`(Symbol) to its definition prope
     language_name_argument: "Rust"
   }
   ```
+  
 - `allowed_values`: defines an array with all possible values that the argument can assume. The list of values could be called simply `values`, but since `.values` is a Hash method, `allowed_` is used as prefix to avoid any misconceptions when reading through the helpers code.
+
   ```rb
   # example of argument definition using allowed_values
   size: arg(
@@ -196,12 +201,15 @@ The method works by mapping each `argument_name`(Symbol) to its definition prope
     size: :medium
   } 
   ```
+
   To support boolean arguments, use the following approach for definition:
+
   ```rb
   boolean_argument: arg(
     allowed_values: [true, false]
   )
   ```
+
 - `default`: specifies the default value of an argument. This value is used to fill the `argument_values` hash when the value is missing or invalid. If a `default` key is not present in an argument defintion, that argument is considered required.
 - `deprecation`: can be used to generate deprecation warnings for the entire property, or especific values.
   - `argument`: boolean that defaults to `false`. If `true`, the entire argument is considered deprecated.

@@ -26,16 +26,16 @@ module Primer
       def silent_deprecation?
         Rails.env.production? || Rails.application.config.primer_view_components.silence_deprecations
       end
-  
+
       # the following methods could support better configuration, if necessary
       def fallback_to_default?
         Rails.env.production?
       end
-  
+
       def raise_on_invalid?
         !Rails.env.production?
       end
-  
+
       module_function :silent_deprecation?, :fallback_to_default?, :raise_on_invalid?
     end
   end

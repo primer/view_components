@@ -226,7 +226,7 @@ class ResponsiveComponentTest < Minitest::Test
     }
 
     expected_normalized_values = {
-      simple_arg: :b, 
+      simple_arg: :b,
       arg_namespace: {
         nested_simple_arg: "valid value"
       },

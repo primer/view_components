@@ -163,12 +163,12 @@ module Primer
       def argument_definitions
         begin
           component = Alpha::DummyResponsiveComponent.new
-        rescue => e
+        rescue StandardError => e
           error_message = e.message
         end
         render_with_template(
           locals: {
-            args: nil, #Alpha::DummyResponsiveComponent::args_DEFINITION_FOR_TESTS.pretty_inspect,
+            args: nil, # Alpha::DummyResponsiveComponent::args_DEFINITION_FOR_TESTS.pretty_inspect,
             component: component.pretty_inspect,
             error_message: error_message
           },
@@ -290,7 +290,7 @@ module Primer
           spacing: {
             s: "ChildComponent-spacing-Small",
             m: "ChildComponent-spacing-Medium",
-            l: "ChildComponent-spacing-Large",
+            l: "ChildComponent-spacing-Large"
           }
         },
         with_responsive: {
@@ -299,7 +299,7 @@ module Primer
               center: "ChildComponent-Viewport-Center",
               top: "ChildComponent-Viewport-Top",
               bottom: "ChildComponent-Viewport-Bottom",
-              full: "ChildComponent-Viewport-Full",
+              full: "ChildComponent-Viewport-Full"
             }
           }
         }
