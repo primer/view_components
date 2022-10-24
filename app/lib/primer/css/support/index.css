@@ -1,10 +1,10 @@
 // variables
-@import './variables/typography.scss';
-@import './variables/layout.scss';
-@import './variables/misc.scss';
+@import './variables/typography.css';
+@import './variables/layout.css';
+@import './variables/misc.css';
 
 // mixins
-@import './mixins/color-modes.scss';
-@import './mixins/typography.scss';
-@import './mixins/layout.scss';
-@import './mixins/misc.scss';
+@import './mixins/color-modes.css';
+@import './mixins/typography.css';
+@import './mixins/layout.css';
+@import './mixins/misc.css';
