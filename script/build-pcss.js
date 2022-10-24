@@ -13,7 +13,7 @@ const bundleNames = {
   'index.scss': 'primer'
 }
 
-const files = await globby([`${inDir}/**/index.scss`])
+const files = await globby([`${inDir}/**/index.css`])
 await mkdirp(outDir)
 const inPattern = new RegExp(`^${inDir}/`)
 const tasks = files.map(async from => {
