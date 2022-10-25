@@ -47,7 +47,7 @@
   /* hide divider if item is active */
   & .ActionListItem--navActive {
     & .ActionListItem-label::before,
-    + .ActionListItem .ActionListItem-label::before {
+    & + .ActionListItem .ActionListItem-label::before {
       visibility: hidden;
     }
   }
@@ -406,7 +406,7 @@
       }
 
       &::before,
-      + .ActionListItem::before {
+      & + .ActionListItem::before {
         visibility: hidden;
       }
 
