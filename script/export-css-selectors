@@ -17,6 +17,6 @@ glob('app/components/primer/**/*.css', (err, files) => {
         selectors.push(rule.selector)
       }
     })
-    fs.writeFileSync(`${file}.json`, JSON.stringify({ "selectors": [...new Set(selectors)] }))
+    fs.writeFileSync(`${file}.json`, JSON.stringify({ 'selectors': [...new Set(selectors)] }))
   })
 })
