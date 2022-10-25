@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+const postcss = require('postcss');
+const glob = require('glob');
+const fs = require('fs');
+
+console.log('Exporting CSS rules')
+
+glob('app/components/primer/**/*.css', (err, files) => {
+  files.forEach(file => {
+    const css = fs.readFileSync(file, 'utf8');
+    const root = postcss.parse(css)
+
+    const selectors = []
+    root.walkRules(rule => {
+      if (rule.selector.indexOf(':') === -1) {
+        selectors.push(rule.selector)
+      }
+    })
+    fs.writeFileSync(`${file}.json`, JSON.stringify(selectors))
+  })
+})
