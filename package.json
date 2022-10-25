@@ -24,6 +24,7 @@
     "app/assets/**/*",
     "app/components/primer/**/*.js",
     "app/components/primer/**/*.css",
+    "app/components/primer/**/*.css.json",
     "app/components/primer/**/*.d.ts"
   ],
   "scripts": {
