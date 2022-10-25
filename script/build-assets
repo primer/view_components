@@ -21,14 +21,14 @@ build_js() {
 }
 
 if [ "$INPUT_TYPE" = "css" ]; then
-  echo "Building css assets"
+  echo "Building CSS assets..."
   build_css
 elif [ "$INPUT_TYPE" = "js" ]; then
   # run build_js
-  echo "Building js assets"
+  echo "Building JS assets..."
   build_js
 else
-  echo "Building all assets"
+  echo "Building all assets..."
   build_js
   build_css
 fi
