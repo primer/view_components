@@ -4,7 +4,7 @@ const postcss = require('postcss');
 const glob = require('glob');
 const fs = require('fs');
 
-console.log('Exporting CSS rules')
+console.log('Exporting CSS selectors...');
 
 glob('app/components/primer/**/*.css', (err, files) => {
   files.forEach(file => {
@@ -17,6 +17,6 @@ glob('app/components/primer/**/*.css', (err, files) => {
         selectors.push(rule.selector)
       }
     })
-    fs.writeFileSync(`${file}.json`, JSON.stringify({ "selectors": selectors }))
+    fs.writeFileSync(`${file}.json`, JSON.stringify({ "selectors": [...new Set(selectors)] }))
   })
 })
