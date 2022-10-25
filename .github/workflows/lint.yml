@@ -9,17 +9,17 @@ jobs:
   markdown:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Get specific changed files
       id: changed-files
-      uses: tj-actions/changed-files@v32.1.2
+      uses: tj-actions/changed-files@v33.0.0
       with:
         files: |
           **/*.md
         files_ignore: |
           .changeset/*.md
           CHANGELOG.md
-    - uses: xt0rted/markdownlint-problem-matcher@v1
+    - uses: xt0rted/markdownlint-problem-matcher@v2
       if: steps.changed-files.outputs.any_changed == 'true'
     - uses: actions/setup-node@v3
       if: steps.changed-files.outputs.any_changed == 'true'
@@ -35,10 +35,10 @@ jobs:
   rubocop:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Get specific changed files
       id: changed-files
-      uses: tj-actions/changed-files@v32.1.2
+      uses: tj-actions/changed-files@v33.0.0
       with:
         files: |
           app/**/*.rb
@@ -58,10 +58,10 @@ jobs:
   erblint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@v32.1.2
+      uses: tj-actions/changed-files@v33.0.0
       with:
         files: |
           app/components/**/*.erb
@@ -78,10 +78,10 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@v32.1.2
+      uses: tj-actions/changed-files@v33.0.0
       with:
         files: |
           app/components/**/*.ts
@@ -99,10 +99,10 @@ jobs:
   stylelint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Get changed files
       id: changed-files
-      uses: tj-actions/changed-files@v32.1.2
+      uses: tj-actions/changed-files@v33.0.0
       with:
         files: |
           app/components/**/*.pcss

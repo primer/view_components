@@ -32,7 +32,7 @@ jobs:
       # to link a PR to a list of environments later.
       url: ${{ env.APP_URL }}
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Setup Ruby
       uses: actions/setup-ruby@v1
       with:
@@ -98,7 +98,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout default branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           version: 14
 
