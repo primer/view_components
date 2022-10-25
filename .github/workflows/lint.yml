@@ -19,7 +19,7 @@ jobs:
         files_ignore: |
           .changeset/*.md
           CHANGELOG.md
-    - uses: xt0rted/markdownlint-problem-matcher@v1
+    - uses: xt0rted/markdownlint-problem-matcher@v2
       if: steps.changed-files.outputs.any_changed == 'true'
     - uses: actions/setup-node@v3
       if: steps.changed-files.outputs.any_changed == 'true'
