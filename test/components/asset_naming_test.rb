@@ -21,7 +21,7 @@ class AssetNamingTest < Minitest::Test
     app/components/primer/alpha/modal_dialog.ts
     app/components/primer/beta/auto_complete/auto_complete.ts
     app/components/primer/beta/x_banner.ts
-  ]
+  ].freeze
 
   def test_js_naming_matches_component
     Dir["app/components/**/*.ts"].each do |file|
