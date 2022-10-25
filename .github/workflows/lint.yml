@@ -9,7 +9,7 @@ jobs:
   markdown:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Get specific changed files
       id: changed-files
       uses: tj-actions/changed-files@v32.1.2
@@ -35,7 +35,7 @@ jobs:
   rubocop:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Get specific changed files
       id: changed-files
       uses: tj-actions/changed-files@v32.1.2
@@ -58,7 +58,7 @@ jobs:
   erblint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Get changed files
       id: changed-files
       uses: tj-actions/changed-files@v32.1.2
@@ -78,7 +78,7 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Get changed files
       id: changed-files
       uses: tj-actions/changed-files@v32.1.2
@@ -99,7 +99,7 @@ jobs:
   stylelint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Get changed files
       id: changed-files
       uses: tj-actions/changed-files@v32.1.2
