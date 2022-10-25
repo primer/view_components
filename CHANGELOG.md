@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.0.106
+
+### Patch Changes
+
+- [#1533](https://github.com/primer/view_components/pull/1533) [`1ee5cc19`](https://github.com/primer/view_components/commit/1ee5cc19d21f45662038449f288f35797b117d16) Thanks [@camertron](https://github.com/camertron)! - Introduce the Banner component
+
 ## 0.0.105
 
 ### Patch Changes
