@@ -1,6 +1,6 @@
 // Miscellaneous variables
 // --------------------
-// variabled are scoped to the :root pseudo-selector
+// variables are scoped to the :root pseudo-selector
 // allowing them to be used anywhere in our html
 
 :root {
