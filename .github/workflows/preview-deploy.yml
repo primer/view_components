@@ -34,13 +34,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Setup Ruby
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.x
-    - uses: actions/cache@v3.0.11
-      with:
-        path: demo/gemfiles/vendor/bundle
-        key: gems-build-kuby-main-ruby-3.0.x-${{ hashFiles('demo/gemfiles/kuby.gemfile.lock') }}
+        ruby-version: '3.0'
+        bundler-cache: true
+        working-directory: 'demo/'
     - name: Docker login
       env:
         AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
@@ -103,9 +101,10 @@ jobs:
           version: 14
 
       - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7.x
+          ruby-version: '3.0'
+          bundler-cache: true
 
       - name: Setup Node
         uses: actions/setup-node@v3

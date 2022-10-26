@@ -20,17 +20,18 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 16
+          cache: 'npm'
 
       - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.x
+          ruby-version: '3.0'
+          bundler-cache: true
 
       - name: Install dependencies
         run: |
-          npm i
-          bundle install
+          npm ci
 
       - name: Create release pull request or publish to npm
         id: changesets
