@@ -437,7 +437,9 @@
   },
   {
     "component": "SegmentedControl",
+    "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/segmented_control.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/segmented_control/default/",
     "parameters": [
       {
         "name": "hide_labels",
@@ -457,6 +459,20 @@
         "default": "`:medium`",
         "description": "One of `:large`, `:medium`, or `:small`."
       },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "Stack",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/stack.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/stack/default/",
+    "parameters": [
       {
         "name": "system_arguments",
         "type": "Hash",
