@@ -1,11 +1,147 @@
 // Visibility and display utilities
 
 // Responsive display utilities
-@each $breakpoint, $variant in $responsive-variants {
-  @include breakpoint($breakpoint) {
-    @each $display in $display-values {
-      .d#{$variant}-#{$display} { display: $display !important; }
-    }
+// @each $breakpoint, $variant in $responsive-variants {
+//   @include breakpoint($breakpoint) {
+//     @each $display in $display-values {
+//       .d#{$variant}-#{$display} { display: $display !important; }
+//     }
+//   }
+// }
+
+@media(min-width: 544px) {
+  .d-sm-block {
+    display: block !important
+  }
+
+  .d-sm-flex {
+    display: flex !important
+  }
+
+  .d-sm-inline {
+    display: inline !important
+  }
+
+  .d-sm-inline-block {
+    display: inline-block !important
+  }
+
+  .d-sm-inline-flex {
+    display: inline-flex !important
+  }
+
+  .d-sm-none {
+    display: none !important
+  }
+
+  .d-sm-table {
+    display: table !important
+  }
+
+  .d-sm-table-cell {
+    display: table-cell !important
+  }
+}
+
+@media(min-width: 768px) {
+  .d-md-block {
+    display: block !important
+  }
+
+  .d-md-flex {
+    display: flex !important
+  }
+
+  .d-md-inline {
+    display: inline !important
+  }
+
+  .d-md-inline-block {
+    display: inline-block !important
+  }
+
+  .d-md-inline-flex {
+    display: inline-flex !important
+  }
+
+  .d-md-none {
+    display: none !important
+  }
+
+  .d-md-table {
+    display: table !important
+  }
+
+  .d-md-table-cell {
+    display: table-cell !important
+  }
+}
+
+@media(min-width: 1012px) {
+  .d-lg-block {
+    display: block !important
+  }
+
+  .d-lg-flex {
+    display: flex !important
+  }
+
+  .d-lg-inline {
+    display: inline !important
+  }
+
+  .d-lg-inline-block {
+    display: inline-block !important
+  }
+
+  .d-lg-inline-flex {
+    display: inline-flex !important
+  }
+
+  .d-lg-none {
+    display: none !important
+  }
+
+  .d-lg-table {
+    display: table !important
+  }
+
+  .d-lg-table-cell {
+    display: table-cell !important
+  }
+}
+
+@media(min-width: 1280px) {
+  .d-xl-block {
+    display: block !important
+  }
+
+  .d-xl-flex {
+    display: flex !important
+  }
+
+  .d-xl-inline {
+    display: inline !important
+  }
+
+  .d-xl-inline-block {
+    display: inline-block !important
+  }
+
+  .d-xl-inline-flex {
+    display: inline-flex !important
+  }
+
+  .d-xl-none {
+    display: none !important
+  }
+
+  .d-xl-table {
+    display: table !important
+  }
+
+  .d-xl-table-cell {
+    display: table-cell !important
   }
 }
 
