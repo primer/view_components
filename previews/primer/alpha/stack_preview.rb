@@ -20,7 +20,11 @@ module Primer
       # With empty option (`~` in YAML)
       # @param select_empty_option select [~, one, two, three]
       def playground(string_example: "Some value", boolean_example: false, select_example: :one)
-        render(Primer::Alpha::Stack.new(string_example: string_example, boolean_example: boolean_example, select_example: select_example))
+        render(Primer::Alpha::Stack.new) do |component|
+          component.with_item do
+            "1"
+          end
+        end
       end
     end
   end

@@ -1,0 +1,10 @@
+@define-mixin stackItemModifiers $viewportRange: '' {
+
+  .Stack-item--expand$(viewportRange) {
+    flex-grow: 1;
+  }
+
+  .Stack-item--keepSize$(viewportRange) {
+    flex-shrink: 0;
+  }
+}
