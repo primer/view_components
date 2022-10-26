@@ -32,6 +32,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
+          bundle install
 
       - name: Create release pull request or publish to npm
         id: changesets
