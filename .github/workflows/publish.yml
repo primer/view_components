@@ -6,16 +6,16 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
       - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.1.x"
-      - name: Bundle install
-        run: |
-          gem install bundler:2.2.9
-          bundle config path vendor/bundle
-          bundle install
+          ruby-version: '3.0'
+          bundler-cache: true
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
       - name: Create .gem credentials
         run: |
           mkdir -p $HOME/.gem
@@ -38,7 +38,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
       - name: NPM install
         run: |
-          npm i
+          npm ci
       - name: Publish Gem
         run: bundle exec rake release
       - name: Publish NPM

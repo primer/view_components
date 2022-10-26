@@ -32,15 +32,12 @@ jobs:
       # to link a PR to a list of environments later.
       url: ${{ env.APP_URL }}
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
     - name: Setup Ruby
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.x
-    - uses: actions/cache@v3.0.11
-      with:
-        path: demo/gemfiles/vendor/bundle
-        key: gems-build-kuby-main-ruby-3.0.x-${{ hashFiles('demo/gemfiles/kuby.gemfile.lock') }}
+        ruby-version: '3.0'
+        bundler-cache: true
     - name: Docker login
       env:
         AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
@@ -48,10 +45,6 @@ jobs:
     - uses: Azure/login@v1
       with:
         creds: '{"clientId":"5ad1a188-b944-40eb-a2f8-cc683a6a65a0","clientSecret":"${{ secrets.AZURE_SPN_CLIENT_SECRET }}","subscriptionId":"550eb99d-d0c7-4651-a337-f53fa6520c4f","tenantId":"398a6654-997b-47e9-b12b-9515b896b4de"}'
-    - name: Bundle
-      run: |
-        gem install bundler -v '~> 2.3'
-        bundle install --jobs 4 --retry 3 --gemfile demo/gemfiles/kuby.gemfile --path vendor/bundle
 
     - name: Get preview app info
       run: ./.github/workflows/demo-preview-app-info.sh
@@ -98,14 +91,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout default branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           version: 14
 
       - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7.x
+          ruby-version: '3.0'
+          bundler-cache: true
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -116,19 +110,11 @@ jobs:
             package-lock.json
             docs/package-lock.json
 
-      - uses: actions/cache@v3.0.11
-        with:
-          path: vendor/bundle
-          key: gems-deploy-preview-${{ hashFiles('**/Gemfile.lock') }}
-
       - name: Install dependencies
-        run: npm i && cd docs && npm i && cd ..
+        run: npm ci && cd docs && npm ci && cd ..
 
       - name: Generate static files
         run: |
-          gem install bundler:2.2.9
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
           bundle exec rake utilities:build
           bundle exec rake docs:build
           bundle exec rake static:dump
@@ -140,7 +126,7 @@ jobs:
         run: 'tar --dereference --directory docs/public -cvf artifact.tar .'
 
       - name: Upload artifact
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@v3
         with:
           name: github-pages
           path: artifact.tar
