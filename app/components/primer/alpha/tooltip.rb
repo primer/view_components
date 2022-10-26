@@ -7,12 +7,12 @@ module Primer
     #
     # When using a tooltip, follow the provided guidelines to avoid accessibility issues:
     # - Tooltips should contain only **non-essential text**. Tooltips can easily be missed and are not accessible on touch devices so never use tooltips to convey critical information.
-    # - `Tooltip` should be rendered through the API of <%= link_to_component(Primer::ButtonComponent)%>, <%= link_to_component(Primer::LinkComponent)%>, or <%= link_to_component(Primer::IconButton)%>. Avoid using `Tooltip` a standalone component unless absolutely necessary (and **only** on interactive elements).
+    # - `Tooltip` should be rendered through the API of <%= link_to_component(Primer::ButtonComponent)%>, <%= link_to_component(Primer::Beta::Link)%>, or <%= link_to_component(Primer::IconButton)%>. Avoid using `Tooltip` a standalone component unless absolutely necessary (and **only** on interactive elements).
     # @accessibility
     #   - Tooltip text must be brief and concise whether it is a label or a description.
     #   - Tooltip can only hold string content.
     #   - **Never set tooltips on static, non-interactive elements** like `span` or `div`. Tooltips should only be used on interactive elements like buttons or links to avoid excluding keyboard-only users
-    #   and screen reader users. Use of tooltip through <%= link_to_component(Primer::ButtonComponent) %>, <%= link_to_component(Primer::LinkComponent) %>, or <%= link_to_component(Primer::IconButton) %> will guarantee this.
+    #   and screen reader users. Use of tooltip through <%= link_to_component(Primer::ButtonComponent) %>, <%= link_to_component(Primer::Beta::Link) %>, or <%= link_to_component(Primer::IconButton) %> will guarantee this.
     #   - If you must use `Tooltip` as a standalone component, place it adjacent after the trigger element in the DOM. This allows screen reader users to navigate to and copy the tooltip
     #   content.
     #   ### Which type should I set?

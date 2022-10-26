@@ -17,7 +17,7 @@ class RubocopDeprecatedLabelVariantsTest < CopTestCase
 
   def test_no_deprecated_arguments
     investigate(cop, <<-RUBY)
-      Primer::LabelComponent.new(size: :large)
+      Primer::Beta::Label.new(size: :large)
     RUBY
 
     assert_empty cop.offenses
@@ -25,7 +25,7 @@ class RubocopDeprecatedLabelVariantsTest < CopTestCase
 
   def test_argument_not_a_string_or_symbol
     investigate(cop, <<-'RUBY')
-      Primer::LabelComponent.new(variant: variant)
+      Primer::Beta::Label.new(variant: variant)
     RUBY
 
     assert_empty cop.offenses
@@ -33,7 +33,7 @@ class RubocopDeprecatedLabelVariantsTest < CopTestCase
 
   def test_deprecated_large_variant
     investigate(cop, <<-RUBY)
-      Primer::LabelComponent.new(variant: :large)
+      Primer::Beta::Label.new(variant: :large)
     RUBY
 
     assert_equal 1, cop.offenses.count
@@ -41,19 +41,19 @@ class RubocopDeprecatedLabelVariantsTest < CopTestCase
 
   def test_deprecated_large_variant_autocorrected
     investigate(cop, <<-RUBY)
-      Primer::LabelComponent.new(variant: :large)
+      Primer::Beta::Label.new(variant: :large)
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Primer::LabelComponent.new(size: :large)", cop.offenses.first.corrector.rewrite.strip
+    assert_equal "Primer::Beta::Label.new(size: :large)", cop.offenses.first.corrector.rewrite.strip
   end
 
   def test_deprecated_inline_variant_autocorrected
     investigate(cop, <<-RUBY)
-      Primer::LabelComponent.new(variant: :inline)
+      Primer::Beta::Label.new(variant: :inline)
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Primer::LabelComponent.new(inline: true)", cop.offenses.first.corrector.rewrite.strip
+    assert_equal "Primer::Beta::Label.new(inline: true)", cop.offenses.first.corrector.rewrite.strip
   end
 end

@@ -10,28 +10,28 @@ class LabelComponentMigrationCounterTest < ErblintTestCase
     @file = "<span class=\"Label Label--large Label--primary\">Label</span>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::LabelComponent.new(size: :large, scheme: :primary)")
+    assert_includes(offenses.first.message, "render Primer::Beta::Label.new(size: :large, scheme: :primary)")
   end
 
   def test_suggest_title_argument
     @file = "<span class=\"Label\" title=\"some title\">Label</span>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::LabelComponent.new(title: \"some title\")")
+    assert_includes(offenses.first.message, "render Primer::Beta::Label.new(title: \"some title\")")
   end
 
   def test_suggest_using_the_tag_system_argument
     @file = "<div class=\"Label\">Label</div>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::LabelComponent.new(tag: :div)")
+    assert_includes(offenses.first.message, "render Primer::Beta::Label.new(tag: :div)")
   end
 
   def test_suggest_using_the_inline_system_argument
     @file = "<span class=\"Label Label--inline\">Label</span>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::LabelComponent.new(inline: true)")
+    assert_includes(offenses.first.message, "render Primer::Beta::Label.new(inline: true)")
   end
 
   def test_autocorrects
@@ -60,19 +60,19 @@ class LabelComponentMigrationCounterTest < ErblintTestCase
 
     expected = <<~HTML
       <%# erblint:counter LabelComponentMigrationCounter 1 %>
-      <%= render Primer::LabelComponent.new(scheme: :primary) do %>
+      <%= render Primer::Beta::Label.new(scheme: :primary) do %>
         Label 1
         <span invalid-attr class="Label">
           Can\'t be autocorrected
         </span>
-        <%= render Primer::LabelComponent.new(scheme: :danger) do %>
+        <%= render Primer::Beta::Label.new(scheme: :danger) do %>
           Label 2
-          <%= render Primer::LabelComponent.new(scheme: :accent) do %>
+          <%= render Primer::Beta::Label.new(scheme: :accent) do %>
             Label 3
             <a>not a Label</a>
-            <%= render Primer::LabelComponent.new(tag: :summary, size: :large) do %>
+            <%= render Primer::Beta::Label.new(tag: :summary, size: :large) do %>
               summary
-              <%= render Primer::LabelComponent.new(tag: :div, test_selector: "test selector") do %>
+              <%= render Primer::Beta::Label.new(tag: :div, test_selector: "test selector") do %>
                 div
               <% end %>
             <% end %>

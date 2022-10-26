@@ -22,6 +22,10 @@ class ComponentStatusMigrator < Thor::Group
     File.dirname(__FILE__)
   end
 
+  def self.exit_on_failure?
+    true
+  end
+
   def validate_status
     raise "Invalid status: #{status}" unless STATUSES.include?(status)
   end
@@ -34,23 +38,46 @@ class ComponentStatusMigrator < Thor::Group
     move_file("template", template_path, template_path_with_status)
   end
 
-  def copy_test
+  def move_test
     move_file("test", test_path, test_path_with_status)
   end
 
-  def add_module
+  def move_preview
+    move_file("preview", preview_path, preview_path_with_status)
+  end
+
+  def add_module_to_component
     return if stable?
 
     insert_into_file(controller_path_with_status, "  module #{class_status}\n", after: "module Primer\n")
     insert_into_file(controller_path_with_status, "  end\n", before: /^end$/, force: true)
   end
 
-  def remove_suffix
+  def add_module_to_preview
+    return if stable?
+
+    insert_into_file(preview_path_with_status, "  module #{class_status}\n", after: "module Primer\n")
+    insert_into_file(preview_path_with_status, "  end\n", before: /^end$/, force: true)
+  end
+
+  def remove_suffix_from_component_class
     if name == name_without_suffix
-      puts "No change needed - class suffix not removed"
+      puts "No change needed - component suffix not removed from component class name"
     else
       gsub_file(controller_path_with_status, "class #{name}", "class #{name_without_suffix}")
     end
+  end
+
+  def remove_suffix_from_preview_class
+    if name == name_without_suffix
+      puts "No change needed - component suffix not removed from lookbook preview class name"
+    else
+      gsub_file(preview_path_with_status, "class #{name}", "class #{name_without_suffix}")
+    end
+  end
+
+  def rename_preview_label
+    gsub_file(preview_path_with_status, /# @label #{name}/, "# @label #{name_without_suffix}")
   end
 
   def rename_test_class
@@ -65,12 +92,13 @@ class ComponentStatusMigrator < Thor::Group
 
   def update_all_references
     exclude_files = [
-      ".git",
+      ".overmind.sock",
       "CHANGELOG.md",
       test_path
     ]
 
     exclude_folders = [
+      ".git",
       ".cache",
       ".yardoc",
       "builds",
@@ -81,7 +109,7 @@ class ComponentStatusMigrator < Thor::Group
     ]
 
     cmd = ["grep -rl #{name} ."]
-    cmd << exclude_files.join(" --exclude=")
+    cmd << exclude_files.map { |f| "--exclude=#{f}" }.join(" ")
     cmd << "--exclude-dir={#{exclude_folders.join(',')}}"
     cmd << "| xargs sed -i '' 's/Primer::#{name}/Primer::#{status_module}#{name_without_suffix}/g'"
 
@@ -149,6 +177,14 @@ class ComponentStatusMigrator < Thor::Group
     else
       puts "Nothing moved. #{file_type.capitalize} file not found: #{new_path}"
     end
+  end
+
+  def preview_path
+    @preview_path ||= "previews/primer/#{name.underscore}_preview.rb"
+  end
+
+  def preview_path_with_status
+    @preview_path_with_status ||= "previews/primer/#{status_folder_name}#{name_without_suffix.underscore}_preview.rb"
   end
 
   def stable?

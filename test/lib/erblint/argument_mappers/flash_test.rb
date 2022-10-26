@@ -18,13 +18,13 @@ class ArgumentMappersFlashTest < ErblintTestCase
   end
 
   def test_returns_scheme_argument
-    Primer::Beta::Flash::SCHEME_MAPPINGS.each do |value, class_name|
+    ERBLint::Linters::ArgumentMappers::Flash::SCHEME_MAPPINGS.each do |class_name, value|
       next if class_name.blank?
 
       @file = "<div class=\"#{class_name}\">flash</div>"
       args = ERBLint::Linters::ArgumentMappers::Flash.new(tags.first).to_args
 
-      assert_equal({ scheme: ":#{value}" }, args)
+      assert_equal({ scheme: value }, args)
     end
   end
 
