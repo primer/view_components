@@ -326,6 +326,64 @@
     ]
   },
   {
+    "component": "Image",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/image.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/image/default/",
+    "parameters": [
+      {
+        "name": "src",
+        "type": "String",
+        "default": "N/A",
+        "description": "The source url of the image."
+      },
+      {
+        "name": "alt",
+        "type": "String",
+        "default": "N/A",
+        "description": "Specifies an alternate text for the image."
+      },
+      {
+        "name": "lazy",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not to lazily load the image."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "ImageCrop",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/image_crop.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/image_crop/default/",
+    "parameters": [
+      {
+        "name": "src",
+        "type": "String",
+        "default": "N/A",
+        "description": "The path of the image to crop."
+      },
+      {
+        "name": "rounded",
+        "type": "Boolean",
+        "default": "`true`",
+        "description": "If the crop mask should be a circle. Defaults to true."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Layout",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/layout.rb",
@@ -426,6 +484,38 @@
         "type": "Symbol",
         "default": "`nil`",
         "description": "The ID of the currently selected item. Used internally."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "SegmentedControl",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/segmented_control.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/segmented_control/default/",
+    "parameters": [
+      {
+        "name": "hide_labels",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether to hide the labels and only show the icons"
+      },
+      {
+        "name": "full_width",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "If the component should be full width"
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:medium`",
+        "description": "One of `:large`, `:medium`, or `:small`."
       },
       {
         "name": "system_arguments",
@@ -1476,6 +1566,94 @@
     ]
   },
   {
+    "component": "Label",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/label.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/label/default/",
+    "parameters": [
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:span`",
+        "description": "One of `:a`, `:div`, `:span`, or `:summary`."
+      },
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:default`",
+        "description": "One of `:accent`, `:attention`, `:danger`, `:default`, `:done`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`, `:severe`, `:sponsors`, `:success`, or `:warning`."
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:medium`",
+        "description": "One of `:large` or `:medium`."
+      },
+      {
+        "name": "inline",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not to render this label inline."
+      },
+      {
+        "name": "variant",
+        "type": "Symbol",
+        "default": "`:none`",
+        "description": "One of `:inline`, `:large`, or `:none`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "Link",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/link.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/link/default/",
+    "parameters": [
+      {
+        "name": "tag",
+        "type": "String",
+        "default": "`:a`",
+        "description": "One of `:a` or `:span`."
+      },
+      {
+        "name": "href",
+        "type": "String",
+        "default": "`nil`",
+        "description": "URL to be used for the Link. Required if tag is `:a`. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered."
+      },
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:default`",
+        "description": "One of `:default`, `:primary`, or `:secondary`."
+      },
+      {
+        "name": "muted",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Uses light gray for Link color, and blue on hover."
+      },
+      {
+        "name": "underline",
+        "type": "Boolean",
+        "default": "`true`",
+        "description": "Whether or not to underline the link."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Text",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb",
@@ -1758,108 +1936,6 @@
     ]
   },
   {
-    "component": "Image",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/image.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/image/default/",
-    "parameters": [
-      {
-        "name": "src",
-        "type": "String",
-        "default": "N/A",
-        "description": "The source url of the image."
-      },
-      {
-        "name": "alt",
-        "type": "String",
-        "default": "N/A",
-        "description": "Specifies an alternate text for the image."
-      },
-      {
-        "name": "lazy",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not to lazily load the image."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "ImageCrop",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/image_crop.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/image_crop/default/",
-    "parameters": [
-      {
-        "name": "src",
-        "type": "String",
-        "default": "N/A",
-        "description": "The path of the image to crop."
-      },
-      {
-        "name": "rounded",
-        "type": "Boolean",
-        "default": "`true`",
-        "description": "If the crop mask should be a circle. Defaults to true."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Label",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/label_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/label/default/",
-    "parameters": [
-      {
-        "name": "tag",
-        "type": "Symbol",
-        "default": "`:span`",
-        "description": "One of `:a`, `:div`, `:span`, or `:summary`."
-      },
-      {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:accent`, `:attention`, `:danger`, `:default`, `:done`, `:info`, `:orange`, `:primary`, `:purple`, `:secondary`, `:severe`, `:sponsors`, `:success`, or `:warning`."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:medium`",
-        "description": "One of `:large` or `:medium`."
-      },
-      {
-        "name": "inline",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not to render this label inline."
-      },
-      {
-        "name": "variant",
-        "type": "Symbol",
-        "default": "`:none`",
-        "description": "One of `:inline`, `:large`, or `:none`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
     "component": "Layout",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/layout_component.rb",
@@ -1882,50 +1958,6 @@
         "type": "Integer",
         "default": "`3`",
         "description": "Sidebar column width."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Link",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/link_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/link/default/",
-    "parameters": [
-      {
-        "name": "tag",
-        "type": "String",
-        "default": "`:a`",
-        "description": "One of `:a` or `:span`."
-      },
-      {
-        "name": "href",
-        "type": "String",
-        "default": "`nil`",
-        "description": "URL to be used for the Link. Required if tag is `:a`. If the requirements are not met an error will be raised in non production environments. In production, an empty link element will be rendered."
-      },
-      {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:default`, `:primary`, or `:secondary`."
-      },
-      {
-        "name": "muted",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Uses light gray for Link color, and blue on hover."
-      },
-      {
-        "name": "underline",
-        "type": "Boolean",
-        "default": "`true`",
-        "description": "Whether or not to underline the link."
       },
       {
         "name": "system_arguments",

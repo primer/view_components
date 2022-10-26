@@ -1,11 +1,15 @@
 ---
 title: Component status
-description: Check the current status of Primer ViewComponents
+description: Check the current status of Primer ViewComponents.
 ---
 
 import {ComponentStatuses} from '../src/component-statuses'
 
+<Note>
+
 See the [component lifecycle](https://primer.style/contribute/component-lifecycle) for more information about each status.
+
+</Note>
 
 <ComponentStatuses />
 

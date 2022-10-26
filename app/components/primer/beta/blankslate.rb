@@ -20,7 +20,7 @@ module Primer
       # Use:
       #
       # - `visual_icon` for an <%= link_to_component(Primer::OcticonComponent) %>.
-      # - `visual_image` for an <%= link_to_component(Primer::Image) %>.
+      # - `visual_image` for an <%= link_to_component(Primer::Alpha::Image) %>.
       # - `visual_spinner` for a <%= link_to_component(Primer::SpinnerComponent) %>.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -40,7 +40,7 @@ module Primer
           system_arguments[:size] = "56x56"
           system_arguments[:classes] = class_names("blankslate-image", system_arguments[:classes])
 
-          Primer::Image.new(**system_arguments)
+          Primer::Alpha::Image.new(**system_arguments)
         }
       }
 
@@ -83,7 +83,7 @@ module Primer
         system_arguments[:size] = :medium
         system_arguments[:scheme] ||= :primary
 
-        Primer::ButtonComponent.new(**system_arguments) # rubocop:disable Primer/ComponentNameMigration
+        Primer::ButtonComponent.new(**system_arguments)
       }
 
       # Optional secondary action
@@ -96,7 +96,7 @@ module Primer
       renders_one :secondary_action, lambda { |href:, **system_arguments|
         system_arguments[:href] = href
 
-        Primer::LinkComponent.new(**system_arguments)
+        Primer::Beta::Link.new(**system_arguments)
       }
 
       # @example Basic

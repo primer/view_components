@@ -9,10 +9,10 @@ module RuboCop
       # This cop ensures that components don't use deprecated `Label` schemes.
       #
       # bad
-      # Primer::LabelComponent.new(scheme: :info)
+      # Primer::Beta::Label.new(scheme: :info)
       #
       # good
-      # Primer::LabelComponent.new(scheme: :accent)
+      # Primer::Beta::Label.new(scheme: :accent)
       class DeprecatedLabelSchemes < BaseCop
         INVALID_MESSAGE = <<~STR
           Avoid using deprecated schemes: https://primer.style/view-components/deprecated#labelcomponent.
@@ -60,7 +60,7 @@ module RuboCop
         def label_node?(node)
           return if node.nil?
 
-          node.method_name == :new && !node.receiver.nil? && node.receiver.const_name == "Primer::LabelComponent"
+          node.method_name == :new && !node.receiver.nil? && node.receiver.const_name == "Primer::Beta::Label"
         end
       end
     end
