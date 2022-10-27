@@ -19,22 +19,31 @@ class PrimerBannerTest < Minitest::Test
     assert_selector(".octicon")
   end
 
+  def test_includes_legacy_classes
+    render_inline(Primer::Beta::Banner.new) { "foo" }
+
+    assert_selector(".flash")
+  end
+
   def test_renders_danger_scheme
     render_inline(Primer::Beta::Banner.new(scheme: :danger)) { "foo" }
 
     assert_selector(".Banner.Banner--error", text: "foo")
+    assert_selector(".flash.flash-error", text: "foo") # legacy
   end
 
   def test_renders_warning_scheme
     render_inline(Primer::Beta::Banner.new(scheme: :warning)) { "foo" }
 
     assert_selector(".Banner.Banner--warning", text: "foo")
+    assert_selector(".flash.flash-warn", text: "foo") # legacy
   end
 
   def test_renders_success_scheme
     render_inline(Primer::Beta::Banner.new(scheme: :success)) { "foo" }
 
     assert_selector(".Banner.Banner--success", text: "foo")
+    assert_selector(".flash.flash-success", text: "foo") # legacy
   end
 
   def test_renders_default_icon
@@ -76,6 +85,7 @@ class PrimerBannerTest < Minitest::Test
     render_inline(Primer::Beta::Banner.new(full: true)) { "foo" }
 
     assert_selector(".Banner.Banner--full", text: "foo")
+    assert_selector(".flash.flash-full", text: "foo") # legacy
   end
 
   def test_renders_full_width_when_narrow
