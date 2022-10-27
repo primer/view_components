@@ -19,7 +19,7 @@ module System
     AXE_RULES_TO_SKIP = [:region, :"color-contrast"].freeze
     AXE_WITHIN_SELECTOR = "body"
 
-    def visit_preview(preview_name)
+    def visit_preview(preview_name, params = {})
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
       match = /^(Alpha|Beta)([A-Z])/.match(component_name)
       status = match ? match[1] : ""
@@ -27,7 +27,11 @@ module System
       component_name = component_name.gsub(/^Beta|^Alpha/, "") if match
       component_uri = component_name.underscore
 
-      visit("/rails/view_components/primer/#{status_path}#{component_uri}/#{preview_name}")
+      url = "/rails/view_components/primer/#{status_path}#{component_uri}/#{preview_name}"
+      query_string = params.map { |k, v| "#{k}=#{CGI.escape(v.to_s)}" }.join("&")
+      url << "?#{query_string}" if query_string.present?
+
+      visit(url)
 
       assert_accessible(page)
     end
