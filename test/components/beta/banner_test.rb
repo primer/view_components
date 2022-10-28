@@ -49,7 +49,7 @@ class PrimerBannerTest < Minitest::Test
   def test_renders_default_icon
     render_inline(Primer::Beta::Banner.new) { "foo" }
 
-    assert_selector(".octicon.octicon-bell")
+    assert_selector(".octicon.octicon-info")
   end
 
   def test_renders_default_danger_icon

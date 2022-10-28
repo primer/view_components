@@ -398,12 +398,24 @@
   },
   "Primer::Beta::Banner": {
     "DEFAULT_ICONS": {
-      "default": "bell",
+      "default": "info",
       "warning": "alert",
       "danger": "stop",
       "success": "check-circle"
     },
     "DEFAULT_SCHEME": "default",
+    "HEADING_MAPPINGS": {
+      "default": "Information",
+      "warning": "Warning",
+      "error": "Error",
+      "success": "Success"
+    },
+    "LEGACY_SCHEME_MAPPINGS": {
+      "default": "",
+      "warning": "flash-warn",
+      "danger": "flash-error",
+      "success": "flash-success"
+    },
     "SCHEME_MAPPINGS": {
       "default": "",
       "warning": "Banner--warning",
