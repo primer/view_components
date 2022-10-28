@@ -68,7 +68,6 @@
   "Primer::HellipButton": "alpha",
   "Primer::IconButton": "deprecated",
   "Primer::Image": "deprecated",
-  "Primer::ImageCrop": "deprecated",
   "Primer::LabelComponent": "deprecated",
   "Primer::LayoutComponent": "alpha",
   "Primer::LinkComponent": "deprecated",
