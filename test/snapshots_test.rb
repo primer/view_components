@@ -10,22 +10,25 @@ class SnapshotsTest < System::TestCase
     components = ViewComponent::Preview.descendants
     components.each do |klass|
       component_previews = klass.instance_methods(false)
-      component_uri = klass.to_s.underscore.gsub("_preview", "")
-      component_previews.each do |preview|
-        next unless preview.to_s == "default"
+      next unless component_previews.include?(:default)
 
-        page_url = "#{component_uri}/#{preview}"
-        page.driver.zoom_factor = 1
-        puts "Saving #{page_url} snapshots."
+      page_url = "#{klass.to_s.underscore.gsub('_preview', '')}/default"
+      page.driver.zoom_factor = 1
+      puts "Saving #{page_url} snapshots."
 
-        visit("/rails/view_components/#{page_url}")
+      themes = %w[
+        light
+      ]
+
+      themes.each do |theme|
+        visit("/rails/view_components/#{page_url}?theme=#{theme}")
 
         # Add some css to try and stop the page from moving around
         page.driver.browser.add_style_tag(path: File.join(File.dirname(__FILE__), "./snapshot.css"))
         page.driver.resize_window(1024, 1400)
 
         page.save_screenshot(
-          "#{page_url}/light.png",
+          "#{page_url}/#{theme}.png",
           selector: "#component-preview"
         )
         save_actions(page_url)
