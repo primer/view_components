@@ -164,54 +164,54 @@
   // This map in the form (breakpoint: variant) is used to iterate over
   // breakpoints and create both responsive and non-responsive classes in one
   // loop:
-  --responsive-variants: (
-    '': '',
-    sm: '-sm',
-    md: '-md',
-    lg: '-lg',
-    xl: '-xl',
-  ) !default;
+  // --responsive-variants: (
+  //   '': '',
+  //   sm: '-sm',
+  //   md: '-md',
+  //   lg: '-lg',
+  //   xl: '-xl',
+  // ) !default;
 
   // responsive utility position values
-  --responsive-positions: (
-    static,
-    relative,
-    absolute,
-    fixed,
-    sticky
-  ) !default;
+  // --responsive-positions: (
+  //   static,
+  //   relative,
+  //   absolute,
+  //   fixed,
+  //   sticky
+  // ) !default;
 
-  --sidebar-width: (
-    sm: 220px,
-    md: 256px,
-    lg: 296px
-  ) !default;
+  // --sidebar-width: (
+  //   sm: 220px,
+  //   md: 256px,
+  //   lg: 296px
+  // ) !default;
 
-  --sidebar-narrow-width: (
-    md: 240px,
-    lg: 256px
-  ) !default;
+  // --sidebar-narrow-width: (
+  //   md: 240px,
+  //   lg: 256px
+  // ) !default;
 
-  --sidebar-wide-width: (
-    lg: 320px,
-    xl: 336px
-  ) !default;
+  // --sidebar-wide-width: (
+  //   lg: 320px,
+  //   xl: 336px
+  // ) !default;
 
-  --gutter: (
-    md: var(--spacer-3),
-    lg: var(--spacer-4),
-    xl: var(--spacer-5)
-  ) !default;
+  // --gutter: (
+  //   md: var(--spacer-3),
+  //   lg: var(--spacer-4),
+  //   xl: var(--spacer-5)
+  // ) !default;
 
-  --gutter-condensed: (
-    md: var(--spacer-3),
-    lg: var(--spacer-3),
-    xl: var(--spacer-4)
-  ) !default;
+  // --gutter-condensed: (
+  //   md: var(--spacer-3),
+  //   lg: var(--spacer-3),
+  //   xl: var(--spacer-4)
+  // ) !default;
 
-  --gutter-spacious: (
-    md: var(--spacer-4),
-    lg: var(--spacer-5),
-    xl: var(--spacer-6)
-  ) !default;
+  // --gutter-spacious: (
+  //   md: var(--spacer-4),
+  //   lg: var(--spacer-5),
+  //   xl: var(--spacer-6)
+  // ) !default;
 }
