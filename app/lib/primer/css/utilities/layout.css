@@ -3,7 +3,7 @@
 
 /* Position */
 @each $breakpoint, $variant in $responsive-variants {
-  @include breakpoint($breakpoint) {
+  @include breakpoint $breakpoint {
     @each $position in $responsive-positions {
       .position#{$variant}-#{$position} {
         position: $position !important;
@@ -14,7 +14,7 @@
 
 /* Final position */
 @each $breakpoint, $variant in $responsive-variants {
-  @include breakpoint($breakpoint) {
+  @include breakpoint $breakpoint {
     .top#{$variant}-0 { top: 0 !important; }
     .right#{$variant}-0 { right: 0 !important; }
     .bottom#{$variant}-0 { bottom: 0 !important; }
@@ -41,7 +41,7 @@
 
 // Overflow utilities
 @each $breakpoint, $variant in $responsive-variants {
-  @include breakpoint($breakpoint) {
+  @include breakpoint $breakpoint  {
     @each $overflow in (visible, hidden, auto, scroll) {
       .overflow#{$variant}-#{$overflow}   { overflow: $overflow !important; }
       .overflow#{$variant}-x-#{$overflow} { overflow-x: $overflow !important; }
@@ -58,7 +58,7 @@
 
 // Floats
 @each $breakpoint, $variant in $responsive-variants {
-  @include breakpoint($breakpoint) {
+  @include breakpoint $breakpoint  {
     /* Float to the left */
     .float#{$variant}-left  { float: left !important; }
     /* Float to the right */
@@ -83,7 +83,7 @@
 .min-width-0 { min-width: 0 !important; }
 
 @each $breakpoint, $variant in $responsive-variants {
-  @include breakpoint($breakpoint) {
+  @include breakpoint $breakpoint  {
 
     // Auto variants
     .width#{$variant}-auto { width: auto !important; }

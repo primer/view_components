@@ -1,7 +1,7 @@
 // Flex utility classes
 // stylelint-disable block-opening-brace-space-before
 @each $breakpoint, $variant in $responsive-variants {
-  @include breakpoint($breakpoint) {
+  @include breakpoint $breakpoint  {
     // Flexbox classes
     // Container
     .flex#{$variant}-row            { flex-direction: row !important; }

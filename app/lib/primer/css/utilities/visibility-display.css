@@ -2,7 +2,7 @@
 
 // Responsive display utilities
 // @each $breakpoint, $variant in $responsive-variants {
-//   @include breakpoint($breakpoint) {
+//   @include breakpoint $breakpoint  {
 //     @each $display in $display-values {
 //       .d#{$variant}-#{$display} { display: $display !important; }
 //     }

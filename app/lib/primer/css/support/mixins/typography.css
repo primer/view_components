@@ -46,7 +46,7 @@
   font-size: $h1-size-mobile;
 
   // 32px on desktop
-  @include breakpoint md  { font-size: $h1-size; }
+  @include breakpoint md { font-size: $h1-size; }
 }
 
 @define-mixin f2-responsive {
