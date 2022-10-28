@@ -1,0 +1,7 @@
+#! /bin/bash
+
+script/build-assets
+
+echo ""
+echo "Build utilities.yml"
+bundle exec rake utilities:build
