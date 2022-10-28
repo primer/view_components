@@ -58,10 +58,9 @@ namespace :test do
     t.test_files = FileList["test/accessibility_test.rb"]
   end
 
-  Rake::TestTask.new(:snapshots) do |t|
-    t.warning = false
-    t.libs << "test"
-    t.test_files = FileList["test/snapshots_test.rb"]
+  task :snapshots do
+    ENV["TEST"] = "test/snapshots_test.rb"
+    Rake::Task["test:single"].invoke
   end
 
   task :coverage do
@@ -80,8 +79,8 @@ task :test do
   end
 end
 
-task "test:snapshots" => :clean_snapshots
-task :clean_snapshots do
-  # Clear folder
-  FileUtils.rm_rf("test/snapshots")
-end
+# task "test:snapshots" => :clean_snapshots
+# task :clean_snapshots do
+#   # Clear folder
+#   # FileUtils.rm_rf("test/snapshots")
+# end
