@@ -63,6 +63,16 @@ namespace :test do
     Rake::Task["test:single"].invoke
   end
 
+  task "snapshots:clean" do
+    puts "Cleaning snapshots"
+
+    Dir["test/snapshots/**/*.png"].each do |file|
+      component_uri = file.sub("test/snapshots/", "").sub(%r{/default/[^/]+$}, "")
+      # file exists in the component directory
+      FileUtils.rm(file) unless File.exist?("app/components/#{component_uri}.rb")
+    end
+  end
+
   task :coverage do
     require "simplecov"
 
@@ -79,8 +89,4 @@ task :test do
   end
 end
 
-# task "test:snapshots" => :clean_snapshots
-# task :clean_snapshots do
-#   # Clear folder
-#   # FileUtils.rm_rf("test/snapshots")
-# end
+task "test:snapshots" => "test:snapshots:clean"
