@@ -18,9 +18,11 @@ const export_selectors = folder => {
 
       const selectors = []
       root.walkRules(rule => {
-        if (rule.selector.indexOf(':') === -1) {
-          selectors.push(rule.selector)
-        }
+        rule.selector.split(',').forEach(ruleSelector => {
+          if (ruleSelector.indexOf(':') === -1) {
+            selectors.push(ruleSelector)
+          }
+        })
       })
 
       fs.writeFileSync(`${file}.json`, JSON.stringify({ 'name': componentName, 'selectors': [...new Set(selectors)] }))
