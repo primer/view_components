@@ -4,15 +4,7 @@ import {XBannerElement} from './x_banner'
 @controller
 class XFlashElement extends XBannerElement {
   connectedCallback() {
-    if (document.readyState.toString() === 'ready' || document.readyState.toString() === 'complete') {
-      this.announceMessage()
-    } else {
-      document.addEventListener('readystatechange', () => {
-        if (document.readyState.toString() === 'complete') {
-          this.announceMessage()
-        }
-      })
-    }
+    this.announceMessage()
   }
 
   dismiss() {
@@ -20,10 +12,7 @@ class XFlashElement extends XBannerElement {
   }
 
   private announceMessage() {
-    setTimeout(() => {
-      const textNode = document.createTextNode('\u00A0')
-      this.titleText.appendChild(textNode)
-    }, 500)
+    this.heading.focus()
   }
 }
 

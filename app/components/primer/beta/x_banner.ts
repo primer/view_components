@@ -3,7 +3,7 @@ import {controller, target} from '@github/catalyst'
 @controller
 export class XBannerElement extends HTMLElement {
   @target root: HTMLElement
-  @target titleText: HTMLElement
+  @target heading: HTMLElement
 
   dismiss() {
     if (this.shouldReappear()) {
