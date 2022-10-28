@@ -34,8 +34,15 @@ module Primer
         :success => "Banner--success"
       }.freeze
 
+      HEADING_MAPPINGS = {
+        DEFAULT_SCHEME => "Information",
+        :warning => "Warning",
+        :error => "Error",
+        :success => "Success"
+      }.freeze
+
       DEFAULT_ICONS = {
-        default: :bell,
+        default: :info,
         warning: :alert,
         danger: :stop,
         success: :"check-circle"
@@ -111,6 +118,10 @@ module Primer
       end
 
       private
+
+      def heading
+        HEADING_MAPPINGS[@scheme]
+      end
 
       def custom_element_name
         "x-banner"

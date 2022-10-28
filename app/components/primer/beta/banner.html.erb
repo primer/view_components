@@ -1,10 +1,15 @@
 <%= render(Primer::BaseComponent.new(**@wrapper_arguments)) do %>
   <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
-    <% if @icon %>
-      <div class="Banner-visual">
-        <%= render(Primer::OcticonComponent.new(icon: @icon)) %>
-      </div>
-    <% end %>
+    <h2>
+      <span class="sr-only">
+        <%= heading %>
+      </span>
+      <% if @icon %>
+        <div class="Banner-visual">
+          <%= render(Primer::OcticonComponent.new(icon: @icon, aria: { hidden: "true" })) %>
+        </div>
+      <% end %>
+    </h2>
     <%= render(Primer::BaseComponent.new(**@message_arguments)) do %>
       <p class="Banner-title" data-target="<%= catalyst_target(field: "titleText") %>"><%= content %></p>
       <% if @description %>
