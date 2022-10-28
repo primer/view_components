@@ -10,7 +10,7 @@ const inDir = 'app/lib/primer/css'
 const outDir = 'app/assets/styles'
 
 const bundleNames = {
-  'index.scss': 'primer'
+  'index.css': 'primer'
 }
 
 const files = await globby([`${inDir}/**/index.css`])
