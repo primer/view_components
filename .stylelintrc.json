@@ -1,5 +1,6 @@
 {
   "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "ignoreFiles": ["app/**/*.css", "**/*.js", "**/*.ts"],
   "rules": {
     "custom-property-pattern": null,
     "selector-class-pattern": null,
@@ -7,6 +8,7 @@
     "no-descending-specificity": null,
     "declaration-block-no-redundant-longhand-properties": null,
     "color-function-notation": "legacy",
+    "selector-nested-pattern": "^&\\s?\\W",
     "at-rule-no-unknown": [
       true,
       {

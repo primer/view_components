@@ -70,7 +70,7 @@ class LinterGenerator < Thor::Group
   end
 
   def linter_test_path
-    "test/linters/#{component_short_name.underscore}_component_migration_counter_test.rb"
+    "test/lib/erblint/#{component_short_name.underscore}_component_migration_counter_test.rb"
   end
 
   def mapper_path
@@ -78,7 +78,7 @@ class LinterGenerator < Thor::Group
   end
 
   def argument_mapper_test_path
-    "test/linters/argument_mappers/#{component_short_name.underscore}_test.rb"
+    "test/lib/erblint/argument_mappers/#{component_short_name.underscore}_test.rb"
   end
 
   def status_module_and_short_name

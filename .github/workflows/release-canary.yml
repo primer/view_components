@@ -1,4 +1,4 @@
-name: Release Canary
+name: Release
 on:
   push:
     branches-ignore:
@@ -7,6 +7,7 @@ on:
 
 jobs:
   release-canary:
+    name: npm
     if: ${{ github.repository == 'primer/view_components' }}
     uses: primer/.github/.github/workflows/release_canary.yml@main
     with:

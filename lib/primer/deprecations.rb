@@ -5,16 +5,15 @@ module Primer
   module Deprecations
     # If there is no alternative to suggest, set the value to nil
     DEPRECATED_COMPONENTS = {
+      "Primer::LabelComponent" => "Primer::Beta::Label",
+      "Primer::LinkComponent" => "Primer::Beta::Link",
+      "Primer::Image" => "Primer::Alpha::Image",
       "Primer::Alpha::AutoComplete" => "Primer::Beta::AutoComplete",
       "Primer::Alpha::AutoComplete::Item" => "Primer::Beta::AutoComplete::Item",
       "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
       "Primer::BoxComponent" => "Primer::Box",
-      "Primer::CloseButton" => "Primer::Beta::CloseButton",
       "Primer::CounterComponent" => "Primer::Beta::Counter",
-      "Primer::DetailsComponent" => "Primer::Beta::Details",
       "Primer::DropdownMenuComponent" => nil,
-      "Primer::HeadingComponent" => "Primer::Beta::Heading",
-      "Primer::HiddenTextExpander" => "Primer::Alpha::HiddenTextExpander",
       "Primer::IconButton" => "Primer::Beta::IconButton",
       "Primer::Tooltip" => "Primer::Alpha::Tooltip"
     }.freeze

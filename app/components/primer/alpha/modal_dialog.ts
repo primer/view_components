@@ -1,18 +1,64 @@
 import {focusTrap} from '@primer/behaviors'
 import {getFocusableChild} from '@primer/behaviors/utils'
 
-function focusIfNeeded(elem?: HTMLElement) {
+function focusIfNeeded(elem: HTMLElement | undefined | null) {
   if (document.activeElement !== elem) {
     elem?.focus()
+  }
+}
+
+const overlayStack: ModalDialogElement[] = []
+
+function clickHandler(event: Event) {
+  const target = event.target as HTMLElement
+  const button = target?.closest('button')
+
+  // If the user is clicking a valid dialog trigger
+  let dialogId = button?.getAttribute('data-show-dialog-id')
+  if (button && dialogId) {
+    event.stopPropagation()
+    const dialog = document.getElementById(dialogId)
+    if (dialog instanceof ModalDialogElement) {
+      dialog.openButton = button
+      dialog.show()
+      return
+    }
+  }
+
+  // Find the top level dialog that is open.
+  const topLevelDialog = overlayStack[overlayStack.length - 1]
+  if (!topLevelDialog) return
+
+  // Check if the click happened outside the boundary of the top level dialog
+  const clickOutsideDialog = !target.closest(`#${topLevelDialog.getAttribute('id')}`)
+
+  // Only close dialog if it's a click outside the dialog and the dialog has a
+  // button?
+  if (!button) {
+    if (clickOutsideDialog) {
+      overlayStack.pop()
+      topLevelDialog.close()
+    }
+    return
+  }
+
+  dialogId = button.getAttribute('data-close-dialog-id')
+  if (dialogId === topLevelDialog.id) {
+    overlayStack.pop()
+    topLevelDialog.close()
+  }
+
+  dialogId = button.getAttribute('data-submit-dialog-id')
+  if (dialogId === topLevelDialog.id) {
+    overlayStack.pop()
+    topLevelDialog.close(true)
   }
 }
 
 export class ModalDialogElement extends HTMLElement {
   //TODO: Do we remove the abortController from focusTrap?
   #focusAbortController = new AbortController()
-  #abortController: AbortController | null = null
-  #openButton: HTMLButtonElement | undefined
-  #shouldTryLoadingFragment = true
+  openButton: HTMLButtonElement | null
 
   get open() {
     return this.hasAttribute('open')
@@ -27,6 +73,7 @@ export class ModalDialogElement extends HTMLElement {
         this.#focusAbortController = new AbortController()
       }
       focusTrap(this, undefined, this.#focusAbortController.signal)
+      overlayStack.push(this)
     } else {
       if (!this.open) return
       this.removeAttribute('open')
@@ -35,13 +82,13 @@ export class ModalDialogElement extends HTMLElement {
       this.#focusAbortController.abort()
       // if #openButton is a child of a menu, we need to focus a suitable child of the menu
       // element since it is expected for the menu to close on click
-      const menu = this.#openButton?.closest('details') || this.#openButton?.closest('action-menu')
+      const menu = this.openButton?.closest('details') || this.openButton?.closest('action-menu')
       if (menu) {
         focusIfNeeded(getFocusableChild(menu))
       } else {
-        focusIfNeeded(this.#openButton)
+        focusIfNeeded(this.openButton)
       }
-      this.#openButton = undefined
+      this.openButton = null
     }
   }
 
@@ -61,48 +108,9 @@ export class ModalDialogElement extends HTMLElement {
   connectedCallback(): void {
     if (!this.hasAttribute('role')) this.setAttribute('role', 'dialog')
 
-    const {signal} = (this.#abortController = new AbortController())
-
-    this.ownerDocument.addEventListener(
-      'click',
-      event => {
-        const target = event.target as HTMLElement
-        const clickOutsideDialog = target.closest(this.tagName) !== this
-        const button = target?.closest('button')
-        // go over this logic:
-        if (!button) {
-          if (clickOutsideDialog) {
-            // This click is outside the dialog
-            this.close()
-          }
-          return
-        }
-
-        let dialogId = button.getAttribute('data-close-dialog-id')
-        if (dialogId === this.id) {
-          this.close()
-        }
-
-        dialogId = button.getAttribute('data-submit-dialog-id')
-        if (dialogId === this.id) {
-          this.close(true)
-        }
-
-        dialogId = button.getAttribute('data-show-dialog-id')
-        if (dialogId === this.id) {
-          event.stopPropagation()
-          this.#openButton = button
-          this.show()
-        }
-      },
-      {signal}
-    )
+    document.addEventListener('click', clickHandler)
 
     this.addEventListener('keydown', e => this.#keydown(e))
-  }
-
-  disconnectedCallback(): void {
-    this.#abortController?.abort()
   }
 
   show() {

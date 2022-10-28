@@ -10,7 +10,7 @@ module Primer
       octicon: "Primer::OcticonComponent",
       heading: "Primer::Beta::Heading",
       time_ago: "Primer::TimeAgoComponent",
-      image: "Primer::Image"
+      image: "Primer::Alpha::Image"
     }.freeze
 
     HELPERS.each do |name, component|

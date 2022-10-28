@@ -31,18 +31,20 @@ namespace :docs do
     components = [
       Primer::Beta::IconButton,
       Primer::Beta::Button,
+      Primer::Alpha::SegmentedControl,
       Primer::Alpha::Layout,
       Primer::HellipButton,
-      Primer::Image,
+      Primer::Alpha::Image,
       Primer::LocalTime,
       Primer::OcticonSymbolsComponent,
-      Primer::ImageCrop,
+      Primer::Alpha::ImageCrop,
       Primer::IconButton,
       Primer::Beta::AutoComplete,
       Primer::Beta::AutoComplete::Item,
       Primer::Beta::Avatar,
       Primer::Beta::AvatarStack,
       Primer::Beta::BaseButton,
+      Primer::Beta::Banner,
       Primer::Beta::Blankslate,
       Primer::Beta::BorderBox,
       Primer::Beta::BorderBox::Header,
@@ -61,9 +63,9 @@ namespace :docs do
       Primer::Beta::Flash,
       Primer::Beta::Heading,
       Primer::Alpha::HiddenTextExpander,
-      Primer::LabelComponent,
+      Primer::Beta::Label,
       Primer::LayoutComponent,
-      Primer::LinkComponent,
+      Primer::Beta::Link,
       Primer::Markdown,
       Primer::MenuComponent,
       Primer::Navigation::TabComponent,
@@ -99,8 +101,9 @@ namespace :docs do
     js_components = [
       Primer::Dropdown,
       Primer::LocalTime,
-      Primer::ImageCrop,
+      Primer::Alpha::ImageCrop,
       Primer::Beta::AutoComplete,
+      Primer::Beta::Banner,
       Primer::ClipboardCopy,
       Primer::TabContainerComponent,
       Primer::TimeAgoComponent,
@@ -109,7 +112,7 @@ namespace :docs do
       Primer::Alpha::Tooltip,
       Primer::ButtonComponent,
       Primer::IconButton,
-      Primer::LinkComponent,
+      Primer::Beta::Link,
       Primer::Alpha::ToggleSwitch,
       Primer::Alpha::ActionList,
       Primer::Alpha::NavList,
@@ -152,6 +155,7 @@ namespace :docs do
         f.puts("componentId: #{data[:component_id]}")
         f.puts("status: #{data[:status]}")
         f.puts("source: #{data[:source]}")
+        f.puts("a11yReviewed: #{data[:a11y_reviewed]}")
         f.puts("lookbook: #{data[:lookbook]}") if preview_exists?(component)
         f.puts("---")
         f.puts
@@ -226,7 +230,9 @@ namespace :docs do
 
         component_args = {
           "component" => data[:title],
+          "status" => component.status.to_s,
           "source" => data[:source],
+          "lookbook" => data[:lookbook],
           "parameters" => args
         }
 
@@ -342,7 +348,7 @@ namespace :docs do
     FileUtils.rm_rf(File.join(adr_content_dir))
     FileUtils.mkdir(adr_content_dir)
 
-    nav_entries = Dir[File.join(*%w[adr *.md])].sort.map do |orig_path|
+    nav_entries = Dir[File.join(*%w[docs adr *.md])].sort.map do |orig_path|
       orig_file_name = File.basename(orig_path)
       url_name = orig_file_name.chomp(".md")
 
@@ -484,11 +490,13 @@ namespace :docs do
     status_module, short_name, class_name = status_module_and_short_name(component)
     status_path = status_module.nil? ? "" : "#{status_module}/"
     status = component.status.to_s
+    a11y_reviewed = component.audited_at.nil? ? "false" : "true"
 
     {
       title: class_name,
       component_id: short_name.underscore,
       status: status.capitalize,
+      a11y_reviewed: a11y_reviewed,
       source: source_url(component),
       lookbook: lookbook_url(component),
       path: "docs/content/components/#{status_path}#{short_name.downcase}.md",

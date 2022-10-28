@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "application_system_test_case"
+require "system/test_case"
 
-class SnapshotsTest < ApplicationSystemTestCase
+class SnapshotsTest < System::TestCase
   def test_take_snapshots_of_all_components
     # Workaround to ensure that all component previews are loaded.
     visit("/rails/view_components")

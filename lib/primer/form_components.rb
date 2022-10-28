@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # :nocov:
   # :nodoc:
   class FormComponents
     def self.from_input(input_klass)
