@@ -1,0 +1,31 @@
+name: Generate static files
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - name: Build
+        run: npm ci
+      - name: Generate static files
+        run: |
+          bundle exec rake utilities:build
+          bundle exec rake docs:build
+          bundle exec rake static:dump
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Generating static files
+          file_pattern: lib/primer/classify/utilities.yml static/*.json

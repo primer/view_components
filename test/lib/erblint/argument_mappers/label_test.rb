@@ -18,7 +18,7 @@ class ArgumentMappersLabelTest < ErblintTestCase
   end
 
   def test_returns_scheme_argument
-    Primer::LabelComponent::SCHEME_MAPPINGS.each do |value, class_name|
+    Primer::Beta::Label::SCHEME_MAPPINGS.each do |value, class_name|
       next if class_name.blank?
 
       @file = "<span class=\"#{class_name}\">Label</span>"
@@ -36,7 +36,7 @@ class ArgumentMappersLabelTest < ErblintTestCase
   end
 
   def test_returns_tag_argument
-    Primer::LabelComponent::TAG_OPTIONS.each do |tag|
+    Primer::Beta::Label::TAG_OPTIONS.each do |tag|
       # span is the default, so it does not require a `tag` argument
       next if tag == :span
 

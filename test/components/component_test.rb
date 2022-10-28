@@ -10,6 +10,13 @@ class PrimerComponentTest < Minitest::Test
   COMPONENTS_WITH_ARGS = [
     [Primer::Beta::IconButton, { icon: :star, "aria-label": "Star" }],
     [Primer::Beta::Button, {}],
+    [Primer::Alpha::SegmentedControl, {
+      full_width: false
+    }, proc { |component|
+      component.with_item(label: "Button", selected: true)
+      component.with_item(label: "Button")
+    }],
+    [Primer::Alpha::SegmentedControl::Item, { label: "Button" }],
     [Primer::Alpha::Layout, {}, proc { |component|
       component.main(tag: :div) { "Foo" }
       component.sidebar(tag: :div) { "Bar" }
@@ -18,9 +25,9 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::TabPanels, { label: "label" }],
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
-    [Primer::Image, { src: "https://github.com/github.png", alt: "alt" }],
+    [Primer::Alpha::Image, { src: "https://github.com/github.png", alt: "alt" }],
     [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
-    [Primer::ImageCrop, { src: "Foo" }],
+    [Primer::Alpha::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
     [Primer::Alpha::ActionList, { aria: { label: "Action List" } }, lambda do |component|
       component.item(label: "Foo")
@@ -73,9 +80,9 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::Flash, {}],
     [Primer::Beta::Heading, { tag: :h1 }],
     [Primer::Alpha::HiddenTextExpander, { "aria-label": "No action" }],
-    [Primer::LabelComponent, {}],
+    [Primer::Beta::Label, {}],
     [Primer::LayoutComponent, {}],
-    [Primer::LinkComponent, { href: "https://www.google.com" }],
+    [Primer::Beta::Link, { href: "https://www.google.com" }],
     [Primer::Markdown, {}],
     [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],
     [Primer::Navigation::TabComponent, {}],
@@ -97,11 +104,15 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
     [Primer::Alpha::ActionList, { aria: { label: "Nav list" } }],
-    [Primer::Alpha::NavList, { aria: { label: "Nav list" } }]
+    [Primer::Alpha::NavList, { aria: { label: "Nav list" } }],
+    [Primer::Beta::Banner, {}]
   ].freeze
 
   def test_registered_components
     ignored_components = [
+      "Primer::LabelComponent",
+      "Primer::LinkComponent",
+      "Primer::Image",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",

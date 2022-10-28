@@ -73,7 +73,7 @@ module Primer
           end
 
           render(Primer::BaseComponent.new(**@system_arguments)) do
-            render(Primer::LinkComponent.new(**link_arguments)) { content }
+            render(Primer::Beta::Link.new(**link_arguments)) { content }
           end
         end
       end

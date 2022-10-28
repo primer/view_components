@@ -9,16 +9,16 @@ module RuboCop
       # This cop ensures that `LabelComponent`s don't use the old `variant` argument.
       #
       # bad
-      # Primer::LabelComponent.new(variant: :large)
+      # Primer::Beta::Label.new(variant: :large)
       #
       # good
-      # Primer::LabelComponent.new(size: :large)
+      # Primer::Beta::Label.new(size: :large)
       #
       # bad
-      # Primer::LabelComponent.new(variant: :inline)
+      # Primer::Beta::Label.new(variant: :inline)
       #
       # good
-      # Primer::LabelComponent.new(inline: true)
+      # Primer::Beta::Label.new(inline: true)
       class DeprecatedLabelVariants < BaseCop
         def on_send(node)
           return unless label_node?(node)
@@ -63,7 +63,7 @@ module RuboCop
         def label_node?(node)
           return if node.nil?
 
-          node.method_name == :new && !node.receiver.nil? && node.receiver.const_name == "Primer::LabelComponent"
+          node.method_name == :new && !node.receiver.nil? && node.receiver.const_name == "Primer::Beta::Label"
         end
       end
     end

@@ -41,11 +41,18 @@ module Primer
         :success => "Success"
       }.freeze
 
+      LEGACY_SCHEME_MAPPINGS = {
+        DEFAULT_SCHEME => "",
+        :warning => "flash-warn",
+        :danger => "flash-error",
+        :success => "flash-success"
+      }.freeze
+
       DEFAULT_ICONS = {
-        default: :info,
-        warning: :alert,
-        danger: :stop,
-        success: :"check-circle"
+        DEFAULT_SCHEME => :info,
+        :warning => :alert,
+        :danger => :stop,
+        :success => :"check-circle"
       }.freeze
 
       # @example Schemes
@@ -102,8 +109,11 @@ module Primer
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           "Banner",
+          "flash", # legacy
           SCHEME_MAPPINGS[@scheme],
+          LEGACY_SCHEME_MAPPINGS[@scheme],
           "Banner--full": full,
+          "flash-full": full, # legacy
           "Banner--full-whenNarrow": full_when_narrow
         )
 

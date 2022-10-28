@@ -17,7 +17,7 @@ class RubocopDeprecatedLabelSchemesTest < CopTestCase
 
   def test_no_deprecated_arguments
     investigate(cop, <<-RUBY)
-      Primer::LabelComponent.new(scheme: :danger)
+      Primer::Beta::Label.new(scheme: :danger)
     RUBY
 
     assert_empty cop.offenses
@@ -25,7 +25,7 @@ class RubocopDeprecatedLabelSchemesTest < CopTestCase
 
   def test_argument_not_a_symbol
     investigate(cop, <<-'RUBY')
-      Primer::LabelComponent.new(scheme: scheme)
+      Primer::Beta::Label.new(scheme: scheme)
     RUBY
 
     assert_empty cop.offenses
@@ -33,7 +33,7 @@ class RubocopDeprecatedLabelSchemesTest < CopTestCase
 
   def test_deprecated_argument
     investigate(cop, <<-RUBY)
-      Primer::LabelComponent.new(scheme: :info)
+      Primer::Beta::Label.new(scheme: :info)
     RUBY
 
     assert_equal 1, cop.offenses.count
@@ -41,19 +41,19 @@ class RubocopDeprecatedLabelSchemesTest < CopTestCase
 
   def test_deprecated_argument_as_a_string
     investigate(cop, <<-RUBY)
-      Primer::LabelComponent.new(scheme: "info")
+      Primer::Beta::Label.new(scheme: "info")
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Primer::LabelComponent.new(scheme: :accent)", cop.offenses.first.corrector.rewrite.strip
+    assert_equal "Primer::Beta::Label.new(scheme: :accent)", cop.offenses.first.corrector.rewrite.strip
   end
 
   def test_deprecated_argument_autocorrected
     investigate(cop, <<-RUBY)
-      Primer::LabelComponent.new(scheme: :info)
+      Primer::Beta::Label.new(scheme: :info)
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Primer::LabelComponent.new(scheme: :accent)", cop.offenses.first.corrector.rewrite.strip
+    assert_equal "Primer::Beta::Label.new(scheme: :accent)", cop.offenses.first.corrector.rewrite.strip
   end
 end
