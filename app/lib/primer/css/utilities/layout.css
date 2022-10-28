@@ -2,27 +2,301 @@
 // stylelint-disable block-opening-brace-space-before, comment-empty-line-before
 
 /* Position */
-@each $breakpoint, $variant in $responsive-variants {
-  @include breakpoint $breakpoint {
-    @each $position in $responsive-positions {
-      .position#{$variant}-#{$position} {
-        position: $position !important;
-      }
-    }
+// @each $breakpoint, $variant in $responsive-variants {
+//   @include breakpoint $breakpoint {
+//     @each $position in $responsive-positions {
+//       .position#{$variant}-#{$position} {
+//         position: $position !important;
+//       }
+//     }
+//   }
+// }
+.position-static {
+  position: static !important
+}
+
+.position-relative {
+  position: relative !important
+}
+
+.position-absolute {
+  position: absolute !important
+}
+
+.position-fixed {
+  position: fixed !important
+}
+
+.position-sticky {
+  position: sticky !important
+}
+
+@media(min-width: 544px) {
+  .position-sm-static {
+    position: static !important
+  }
+
+  .position-sm-relative {
+    position: relative !important
+  }
+
+  .position-sm-absolute {
+    position: absolute !important
+  }
+
+  .position-sm-fixed {
+    position: fixed !important
+  }
+
+  .position-sm-sticky {
+    position: sticky !important
+  }
+}
+
+@media(min-width: 768px) {
+  .position-md-static {
+    position: static !important
+  }
+
+  .position-md-relative {
+    position: relative !important
+  }
+
+  .position-md-absolute {
+    position: absolute !important
+  }
+
+  .position-md-fixed {
+    position: fixed !important
+  }
+
+  .position-md-sticky {
+    position: sticky !important
+  }
+}
+
+@media(min-width: 1012px) {
+  .position-lg-static {
+    position: static !important
+  }
+
+  .position-lg-relative {
+    position: relative !important
+  }
+
+  .position-lg-absolute {
+    position: absolute !important
+  }
+
+  .position-lg-fixed {
+    position: fixed !important
+  }
+
+  .position-lg-sticky {
+    position: sticky !important
+  }
+}
+
+@media(min-width: 1280px) {
+  .position-xl-static {
+    position: static !important
+  }
+
+  .position-xl-relative {
+    position: relative !important
+  }
+
+  .position-xl-absolute {
+    position: absolute !important
+  }
+
+  .position-xl-fixed {
+    position: fixed !important
+  }
+
+  .position-xl-sticky {
+    position: sticky !important
   }
 }
 
 /* Final position */
-@each $breakpoint, $variant in $responsive-variants {
-  @include breakpoint $breakpoint {
-    .top#{$variant}-0 { top: 0 !important; }
-    .right#{$variant}-0 { right: 0 !important; }
-    .bottom#{$variant}-0 { bottom: 0 !important; }
-    .left#{$variant}-0 { left: 0 !important; }
-    .top#{$variant}-auto { top: auto !important; }
-    .right#{$variant}-auto { right: auto !important; }
-    .bottom#{$variant}-auto { bottom: auto !important; }
-    .left#{$variant}-auto { left: auto !important; }
+// @each $breakpoint, $variant in $responsive-variants {
+//   @include breakpoint $breakpoint {
+//     .top#{$variant}-0 { top: 0 !important; }
+//     .right#{$variant}-0 { right: 0 !important; }
+//     .bottom#{$variant}-0 { bottom: 0 !important; }
+//     .left#{$variant}-0 { left: 0 !important; }
+//     .top#{$variant}-auto { top: auto !important; }
+//     .right#{$variant}-auto { right: auto !important; }
+//     .bottom#{$variant}-auto { bottom: auto !important; }
+//     .left#{$variant}-auto { left: auto !important; }
+//   }
+// }
+.top-0 {
+  top: 0 !important
+}
+
+.right-0 {
+  right: 0 !important
+}
+
+.bottom-0 {
+  bottom: 0 !important
+}
+
+.left-0 {
+  left: 0 !important
+}
+
+.top-auto {
+  top: auto !important
+}
+
+.right-auto {
+  right: auto !important
+}
+
+.bottom-auto {
+  bottom: auto !important
+}
+
+.left-auto {
+  left: auto !important
+}
+
+@media(min-width: 544px) {
+  .top-sm-0 {
+    top: 0 !important
+  }
+
+  .right-sm-0 {
+    right: 0 !important
+  }
+
+  .bottom-sm-0 {
+    bottom: 0 !important
+  }
+
+  .left-sm-0 {
+    left: 0 !important
+  }
+
+  .top-sm-auto {
+    top: auto !important
+  }
+
+  .right-sm-auto {
+    right: auto !important
+  }
+
+  .bottom-sm-auto {
+    bottom: auto !important
+  }
+
+  .left-sm-auto {
+    left: auto !important
+  }
+}
+
+@media(min-width: 768px) {
+  .top-md-0 {
+    top: 0 !important
+  }
+
+  .right-md-0 {
+    right: 0 !important
+  }
+
+  .bottom-md-0 {
+    bottom: 0 !important
+  }
+
+  .left-md-0 {
+    left: 0 !important
+  }
+
+  .top-md-auto {
+    top: auto !important
+  }
+
+  .right-md-auto {
+    right: auto !important
+  }
+
+  .bottom-md-auto {
+    bottom: auto !important
+  }
+
+  .left-md-auto {
+    left: auto !important
+  }
+}
+
+@media(min-width: 1012px) {
+  .top-lg-0 {
+    top: 0 !important
+  }
+
+  .right-lg-0 {
+    right: 0 !important
+  }
+
+  .bottom-lg-0 {
+    bottom: 0 !important
+  }
+
+  .left-lg-0 {
+    left: 0 !important
+  }
+
+  .top-lg-auto {
+    top: auto !important
+  }
+
+  .right-lg-auto {
+    right: auto !important
+  }
+
+  .bottom-lg-auto {
+    bottom: auto !important
+  }
+
+  .left-lg-auto {
+    left: auto !important
+  }
+}
+
+@media(min-width: 1280px) {
+  .top-xl-0 {
+    top: 0 !important
+  }
+
+  .right-xl-0 {
+    right: 0 !important
+  }
+
+  .bottom-xl-0 {
+    bottom: 0 !important
+  }
+
+  .left-xl-0 {
+    left: 0 !important
+  }
+
+  .top-xl-auto {
+    top: auto !important
+  }
+
+  .right-xl-auto {
+    right: auto !important
+  }
+
+  .bottom-xl-auto {
+    bottom: auto !important
+  }
+
+  .left-xl-auto {
+    left: auto !important
   }
 }
 
@@ -40,13 +314,260 @@
 .v-align-baseline    { vertical-align: baseline !important; }
 
 // Overflow utilities
-@each $breakpoint, $variant in $responsive-variants {
-  @include breakpoint $breakpoint  {
-    @each $overflow in (visible, hidden, auto, scroll) {
-      .overflow#{$variant}-#{$overflow}   { overflow: $overflow !important; }
-      .overflow#{$variant}-x-#{$overflow} { overflow-x: $overflow !important; }
-      .overflow#{$variant}-y-#{$overflow} { overflow-y: $overflow !important; }
-    }
+// @each $breakpoint, $variant in $responsive-variants {
+//   @include breakpoint $breakpoint  {
+//     @each $overflow in (visible, hidden, auto, scroll) {
+//       .overflow#{$variant}-#{$overflow}   { overflow: $overflow !important; }
+//       .overflow#{$variant}-x-#{$overflow} { overflow-x: $overflow !important; }
+//       .overflow#{$variant}-y-#{$overflow} { overflow-y: $overflow !important; }
+//     }
+//   }
+// }
+.overflow-visible {
+  overflow: visible !important
+}
+
+.overflow-x-visible {
+  overflow-x: visible !important
+}
+
+.overflow-y-visible {
+  overflow-y: visible !important
+}
+
+.overflow-hidden {
+  overflow: hidden !important
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden !important
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden !important
+}
+
+.overflow-auto {
+  overflow: auto !important
+}
+
+.overflow-x-auto {
+  overflow-x: auto !important
+}
+
+.overflow-y-auto {
+  overflow-y: auto !important
+}
+
+.overflow-scroll {
+  overflow: scroll !important
+}
+
+.overflow-x-scroll {
+  overflow-x: scroll !important
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll !important
+}
+
+@media(min-width: 544px) {
+  .overflow-sm-visible {
+    overflow: visible !important
+  }
+
+  .overflow-sm-x-visible {
+    overflow-x: visible !important
+  }
+
+  .overflow-sm-y-visible {
+    overflow-y: visible !important
+  }
+
+  .overflow-sm-hidden {
+    overflow: hidden !important
+  }
+
+  .overflow-sm-x-hidden {
+    overflow-x: hidden !important
+  }
+
+  .overflow-sm-y-hidden {
+    overflow-y: hidden !important
+  }
+
+  .overflow-sm-auto {
+    overflow: auto !important
+  }
+
+  .overflow-sm-x-auto {
+    overflow-x: auto !important
+  }
+
+  .overflow-sm-y-auto {
+    overflow-y: auto !important
+  }
+
+  .overflow-sm-scroll {
+    overflow: scroll !important
+  }
+
+  .overflow-sm-x-scroll {
+    overflow-x: scroll !important
+  }
+
+  .overflow-sm-y-scroll {
+    overflow-y: scroll !important
+  }
+}
+
+@media(min-width: 768px) {
+  .overflow-md-visible {
+    overflow: visible !important
+  }
+
+  .overflow-md-x-visible {
+    overflow-x: visible !important
+  }
+
+  .overflow-md-y-visible {
+    overflow-y: visible !important
+  }
+
+  .overflow-md-hidden {
+    overflow: hidden !important
+  }
+
+  .overflow-md-x-hidden {
+    overflow-x: hidden !important
+  }
+
+  .overflow-md-y-hidden {
+    overflow-y: hidden !important
+  }
+
+  .overflow-md-auto {
+    overflow: auto !important
+  }
+
+  .overflow-md-x-auto {
+    overflow-x: auto !important
+  }
+
+  .overflow-md-y-auto {
+    overflow-y: auto !important
+  }
+
+  .overflow-md-scroll {
+    overflow: scroll !important
+  }
+
+  .overflow-md-x-scroll {
+    overflow-x: scroll !important
+  }
+
+  .overflow-md-y-scroll {
+    overflow-y: scroll !important
+  }
+}
+
+@media(min-width: 1012px) {
+  .overflow-lg-visible {
+    overflow: visible !important
+  }
+
+  .overflow-lg-x-visible {
+    overflow-x: visible !important
+  }
+
+  .overflow-lg-y-visible {
+    overflow-y: visible !important
+  }
+
+  .overflow-lg-hidden {
+    overflow: hidden !important
+  }
+
+  .overflow-lg-x-hidden {
+    overflow-x: hidden !important
+  }
+
+  .overflow-lg-y-hidden {
+    overflow-y: hidden !important
+  }
+
+  .overflow-lg-auto {
+    overflow: auto !important
+  }
+
+  .overflow-lg-x-auto {
+    overflow-x: auto !important
+  }
+
+  .overflow-lg-y-auto {
+    overflow-y: auto !important
+  }
+
+  .overflow-lg-scroll {
+    overflow: scroll !important
+  }
+
+  .overflow-lg-x-scroll {
+    overflow-x: scroll !important
+  }
+
+  .overflow-lg-y-scroll {
+    overflow-y: scroll !important
+  }
+}
+
+@media(min-width: 1280px) {
+  .overflow-xl-visible {
+    overflow: visible !important
+  }
+
+  .overflow-xl-x-visible {
+    overflow-x: visible !important
+  }
+
+  .overflow-xl-y-visible {
+    overflow-y: visible !important
+  }
+
+  .overflow-xl-hidden {
+    overflow: hidden !important
+  }
+
+  .overflow-xl-x-hidden {
+    overflow-x: hidden !important
+  }
+
+  .overflow-xl-y-hidden {
+    overflow-y: hidden !important
+  }
+
+  .overflow-xl-auto {
+    overflow: auto !important
+  }
+
+  .overflow-xl-x-auto {
+    overflow-x: auto !important
+  }
+
+  .overflow-xl-y-auto {
+    overflow-y: auto !important
+  }
+
+  .overflow-xl-scroll {
+    overflow: scroll !important
+  }
+
+  .overflow-xl-x-scroll {
+    overflow-x: scroll !important
+  }
+
+  .overflow-xl-y-scroll {
+    overflow-y: scroll !important
   }
 }
 
@@ -57,16 +578,172 @@
 }
 
 // Floats
-@each $breakpoint, $variant in $responsive-variants {
-  @include breakpoint $breakpoint  {
-    /* Float to the left */
-    .float#{$variant}-left  { float: left !important; }
-    /* Float to the right */
-    .float#{$variant}-right  { float: right !important; }
-    /* No float */
-    .float#{$variant}-none { float: none !important; }
+// @each $breakpoint, $variant in $responsive-variants {
+//   @include breakpoint $breakpoint  {
+//     /* Float to the left */
+//     .float#{$variant}-left  { float: left !important; }
+//     /* Float to the right */
+//     .float#{$variant}-right  { float: right !important; }
+//     /* No float */
+//     .float#{$variant}-none { float: none !important; }
+//   }
+// }
+.float-left {
+  float: left !important
+}
+
+.float-right {
+  float: right !important
+}
+
+.float-none {
+  float: none !important
+}
+
+@media(min-width: 544px) {
+  .float-sm-left {
+    float: left !important
+  }
+
+  .float-sm-right {
+    float: right !important
+  }
+
+  .float-sm-none {
+    float: none !important
   }
 }
+
+@media(min-width: 768px) {
+  .float-md-left {
+    float: left !important
+  }
+
+  .float-md-right {
+    float: right !important
+  }
+
+  .float-md-none {
+    float: none !important
+  }
+}
+
+@media(min-width: 1012px) {
+  .float-lg-left {
+    float: left !important
+  }
+
+  .float-lg-right {
+    float: right !important
+  }
+
+  .float-lg-none {
+    float: none !important
+  }
+}
+
+@media(min-width: 1280px) {
+  .float-xl-left {
+    float: left !important
+  }
+
+  .float-xl-right {
+    float: right !important
+  }
+
+  .float-xl-none {
+    float: none !important
+  }
+}
+
+.width-fit {
+  max-width: 100% !important
+}
+
+.width-full {
+  width: 100% !important
+}
+
+.height-fit {
+  max-height: 100% !important
+}
+
+.height-full {
+  height: 100% !important
+}
+
+.min-width-0 {
+  min-width: 0 !important
+}
+
+.width-auto {
+  width: auto !important
+}
+
+.direction-rtl {
+  direction: rtl !important
+}
+
+.direction-ltr {
+  direction: ltr !important
+}
+
+@media(min-width: 544px) {
+  .width-sm-auto {
+    width: auto !important
+  }
+
+  .direction-sm-rtl {
+    direction: rtl !important
+  }
+
+  .direction-sm-ltr {
+    direction: ltr !important
+  }
+}
+
+@media(min-width: 768px) {
+  .width-md-auto {
+    width: auto !important
+  }
+
+  .direction-md-rtl {
+    direction: rtl !important
+  }
+
+  .direction-md-ltr {
+    direction: ltr !important
+  }
+}
+
+@media(min-width: 1012px) {
+  .width-lg-auto {
+    width: auto !important
+  }
+
+  .direction-lg-rtl {
+    direction: rtl !important
+  }
+
+  .direction-lg-ltr {
+    direction: ltr !important
+  }
+}
+
+@media(min-width: 1280px) {
+  .width-xl-auto {
+    width: auto !important
+  }
+
+  .direction-xl-rtl {
+    direction: rtl !important
+  }
+
+  .direction-xl-ltr {
+    direction: ltr !important
+  }
+}
+
 
 // Width and height utilities, helpful in combination
 // with display-table utilities and images
@@ -82,15 +759,82 @@
 /* Remove min-width from element */
 .min-width-0 { min-width: 0 !important; }
 
-@each $breakpoint, $variant in $responsive-variants {
-  @include breakpoint $breakpoint  {
+// @each $breakpoint, $variant in $responsive-variants {
+//   @include breakpoint $breakpoint  {
+// 
+//     // Auto variants
+//     .width#{$variant}-auto { width: auto !important; }
+// 
+//     /* Set the direction to rtl */
+//     .direction#{$variant}-rtl { direction: rtl !important; }
+//     /* Set the direction to ltr */
+//     .direction#{$variant}-ltr { direction: ltr !important; }
+//   }
+// }
+.width-auto {
+  width: auto !important
+}
 
-    // Auto variants
-    .width#{$variant}-auto { width: auto !important; }
+.direction-rtl {
+  direction: rtl !important
+}
 
-    /* Set the direction to rtl */
-    .direction#{$variant}-rtl { direction: rtl !important; }
-    /* Set the direction to ltr */
-    .direction#{$variant}-ltr { direction: ltr !important; }
+.direction-ltr {
+  direction: ltr !important
+}
+
+@media(min-width: 544px) {
+  .width-sm-auto {
+    width: auto !important
+  }
+
+  .direction-sm-rtl {
+    direction: rtl !important
+  }
+
+  .direction-sm-ltr {
+    direction: ltr !important
+  }
+}
+
+@media(min-width: 768px) {
+  .width-md-auto {
+    width: auto !important
+  }
+
+  .direction-md-rtl {
+    direction: rtl !important
+  }
+
+  .direction-md-ltr {
+    direction: ltr !important
+  }
+}
+
+@media(min-width: 1012px) {
+  .width-lg-auto {
+    width: auto !important
+  }
+
+  .direction-lg-rtl {
+    direction: rtl !important
+  }
+
+  .direction-lg-ltr {
+    direction: ltr !important
+  }
+}
+
+@media(min-width: 1280px) {
+  .width-xl-auto {
+    width: auto !important
+  }
+
+  .direction-xl-rtl {
+    direction: rtl !important
+  }
+
+  .direction-xl-ltr {
+    direction: ltr !important
   }
 }
