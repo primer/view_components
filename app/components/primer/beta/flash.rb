@@ -43,6 +43,7 @@ module Primer
 
         @message_arguments[:aria] ||= {}
         @message_arguments[:aria][:atomic] = "true"
+        @message_arguments[:aria][:live] = "true"
         @message_arguments[:role] = @scheme == :danger ? "alert" : "status"
       end
 

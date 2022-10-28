@@ -13,6 +13,11 @@ class XFlashElement extends XBannerElement {
 
   private announceMessage() {
     this.heading.focus()
+
+    setTimeout(() => {
+      const textNode = document.createTextNode('\u00A0')
+      this.titleText.appendChild(textNode)
+    }, 500)
   }
 }
 
