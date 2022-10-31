@@ -36,9 +36,8 @@ module Primer
 
       def self.build
         utility_data = JSON.parse(File.read("app/css/utilities.css.json"))["selectors"]
-        # commented out because we're only migrating system arguments for now
-        # layout_data = JSON.parse(File.read(File.expand_path("layout.json", __dir__)))["selectors"]["values"]
-        css_data = utility_data # + layout_data
+        layout_data = JSON.parse(File.read("app/css/layout.css.json"))["selectors"]
+        css_data = utility_data + layout_data
 
         output = {}
 

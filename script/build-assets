@@ -20,6 +20,11 @@ build_js() {
   npx rollup -c
 }
 
+# run the PVC Classify utilities to ensure PVC is up to date
+build_utilities() {
+  bundle exec rake docs:build
+}
+
 if [ "$INPUT_TYPE" = "css" ]; then
   echo "Building CSS assets..."
   build_css
@@ -27,8 +32,12 @@ elif [ "$INPUT_TYPE" = "js" ]; then
   # run build_js
   echo "Building JS assets..."
   build_js
+elif [ "$INPUT_TYPE" = "utilities" ]; then
+  echo "Building utilities for PVC Classify"
+  build_utilities
 else
   echo "Building all assets..."
   build_js
   build_css
+  build_utilities
 fi
