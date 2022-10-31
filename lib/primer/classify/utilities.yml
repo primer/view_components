@@ -187,6 +187,9 @@
   - v-align-text-bottom
   :baseline:
   - v-align-baseline
+:clearfix:
+  true:
+  - clearfix
 :float:
   :left:
   - float-left
