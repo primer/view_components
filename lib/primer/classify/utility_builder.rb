@@ -101,9 +101,8 @@ module Primer
           x.transform_values { |y| y.reverse.drop_while(&:nil?).reverse }
         end
 
-        # commenting out because we're only pulling in the system arguments for now
-        # custom_utility_data = YAML.load_file(File.join(__dir__, "custom_utilities.yml"))
-        # output.merge!(custom_utility_data)
+        custom_utility_data = YAML.load_file("lib/tasks/custom_utilities.yml")
+        output.merge!(custom_utility_data)
 
         File.open("lib/primer/classify/utilities.yml", "w") do |f|
           f.puts YAML.dump(output)
