@@ -22,7 +22,7 @@ build_js() {
 
 # run the PVC Classify utilities to ensure PVC is up to date
 build_utilities() {
-  bundle exec rake docs:build
+  bundle exec rake utilities:build
 }
 
 if [ "$INPUT_TYPE" = "css" ]; then
