@@ -37,11 +37,10 @@ module Primer
       # rubocop:enable Lint/ConstantDefinitionInBlock
 
       def self.build
-        utility_data = JSON.parse(File.read(File.expand_path("utilities.json", __dir__)))["selectors"]["values"]
-        layout_data = JSON.parse(File.read(File.expand_path("layout.json", __dir__)))["selectors"]["values"]
-        custom_utility_data = YAML.load_file(File.join(__dir__, "custom_utilities.yml"))
-
-        css_data = utility_data + layout_data
+        utility_data = JSON.parse(File.read("app/css/utilities.css.json"))["selectors"]
+        # commented out because we're only migrating system arguments for now
+        # layout_data = JSON.parse(File.read(File.expand_path("layout.json", __dir__)))["selectors"]["values"]
+        css_data = utility_data # + layout_data
 
         output = {}
 
@@ -105,7 +104,9 @@ module Primer
           x.transform_values { |y| y.reverse.drop_while(&:nil?).reverse }
         end
 
-        output.merge!(custom_utility_data)
+        # commenting out because we're only pulling in the system arguments for now
+        # custom_utility_data = YAML.load_file(File.join(__dir__, "custom_utilities.yml"))
+        # output.merge!(custom_utility_data)
 
         File.open("lib/primer/classify/utilities.yml", "w") do |f|
           f.puts YAML.dump(output)
