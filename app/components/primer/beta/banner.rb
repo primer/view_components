@@ -96,9 +96,6 @@ module Primer
 
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :div
-        @system_arguments[:data] ||= {}
-        @system_arguments[:data][:target] = catalyst_target(field: "root")
-        @system_arguments[:data][:reappear] = @reappear if @reappear
         @system_arguments[:classes] = class_names(
           @system_arguments[:classes],
           "Banner",
@@ -118,6 +115,8 @@ module Primer
         @wrapper_arguments = {
           tag: custom_element_name
         }
+
+        @wrapper_arguments[:data] = { reappear: @reappear } if @reappear
       end
 
       private

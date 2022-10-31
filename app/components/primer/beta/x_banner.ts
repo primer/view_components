@@ -2,7 +2,6 @@ import {controller, target} from '@github/catalyst'
 
 @controller
 export class XBannerElement extends HTMLElement {
-  @target root: HTMLElement
   @target titleText: HTMLElement
 
   dismiss() {
@@ -23,7 +22,7 @@ export class XBannerElement extends HTMLElement {
   }
 
   private shouldReappear(): boolean {
-    return this.root.getAttribute('data-reappear') === 'true'
+    return this.getAttribute('data-reappear') === 'true'
   }
 }
 
