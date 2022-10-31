@@ -9,10 +9,9 @@ require File.expand_path("./../../../demo/config/environment.rb", __dir__)
 
 module Primer
   class Classify
+    # :nodoc:
     class UtilityBuilder
-
       # Keys that are looked for to be included in the utilities.yml file
-      # rubocop:disable Lint/ConstantDefinitionInBlock
       SUPPORTED_KEYS = [
         /^anim\b/,
         /^color-bg\b/,
@@ -34,7 +33,6 @@ module Primer
       ].freeze
 
       BREAKPOINTS = [nil, "sm", "md", "lg", "xl"].freeze
-      # rubocop:enable Lint/ConstantDefinitionInBlock
 
       def self.build
         utility_data = JSON.parse(File.read("app/css/utilities.css.json"))["selectors"]
