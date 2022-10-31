@@ -18,6 +18,7 @@ class SnapshotsTest < System::TestCase
 
       themes = %w[
         light
+        dark
       ]
 
       themes.each do |theme|
