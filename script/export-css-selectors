@@ -19,9 +19,7 @@ const export_selectors = folder => {
       const selectors = []
       root.walkRules(rule => {
         rule.selector.split(',').forEach(ruleSelector => {
-          if (ruleSelector.indexOf(':') === -1) {
-            selectors.push(ruleSelector)
-          }
+          selectors.push(ruleSelector)
         })
       })
 
