@@ -66,10 +66,23 @@ namespace :test do
   task "snapshots:clean" do
     puts "Cleaning snapshots"
 
+    # Load the previews
+    require "view_component"
+    Dir["./previews/**/*.rb"].sort.each { |file| require file }
+
+    previews_with_method = []
+
+    ViewComponent::Preview.descendants.each do |klass|
+      preview = klass.to_s.underscore.gsub("_preview", "")
+      methods = klass.instance_methods(false)
+      methods.each do |method|
+        previews_with_method << "#{preview}/#{method}"
+      end
+    end
+
     Dir["test/snapshots/**/*.png"].each do |file|
-      component_uri = file.sub("test/snapshots/", "").sub(%r{/default/[^/]+$}, "")
-      # file exists in the component directory
-      FileUtils.rm(file) unless File.exist?("app/components/#{component_uri}.rb")
+      component_uri = file.sub("test/snapshots/", "").sub(%r{/[^/]+$}, "")
+      FileUtils.rm(file) unless previews_with_method.include?(component_uri)
     end
   end
 

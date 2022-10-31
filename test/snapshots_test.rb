@@ -31,8 +31,11 @@ class SnapshotsTest < System::TestCase
           "#{page_url}/#{theme}.png",
           selector: "#component-preview"
         )
-        save_actions(page_url)
       end
+
+      visit("/rails/view_components/#{page_url}")
+
+      save_actions(page_url)
     end
   end
 
