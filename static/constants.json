@@ -404,6 +404,12 @@
       "success": "check-circle"
     },
     "DEFAULT_SCHEME": "default",
+    "LEGACY_SCHEME_MAPPINGS": {
+      "default": "",
+      "warning": "flash-warn",
+      "danger": "flash-error",
+      "success": "flash-success"
+    },
     "SCHEME_MAPPINGS": {
       "default": "",
       "warning": "Banner--warning",
