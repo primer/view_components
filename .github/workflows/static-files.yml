@@ -32,4 +32,5 @@ jobs:
           commit_message: Generating static files
           commit_user_name: GitHub Design Engineering Bot
           commit_user_email: primer-css@users.noreply.github.com
+          commit_author: primer-css <primer-css@users.noreply.github.com>
           file_pattern: lib/primer/classify/utilities.yml static/*.json
