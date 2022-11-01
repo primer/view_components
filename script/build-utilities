@@ -1,0 +1,6 @@
+#! /bin/bash
+
+bin/build-assets
+
+echo "Build utilities and classify..."
+bundle exec utilities:build
