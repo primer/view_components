@@ -15,9 +15,3 @@ jobs:
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
       npm_token: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      if: steps.changed-files.outputs.any_changed == 'true'
-      with:
-        ruby-version: '3.0'
-        bundler-cache: true
