@@ -1,6 +1,6 @@
 #! /bin/bash
 
-bin/build-assets
+script/build-assets
 
 echo "Build utilities and classify..."
-bundle exec utilities:build
+bundle exec rake utilities:build

@@ -33,8 +33,8 @@ namespace :utilities do
     BREAKPOINTS = [nil, "sm", "md", "lg", "xl"].freeze
     # rubocop:enable Lint/ConstantDefinitionInBlock
 
-    utility_data = JSON.parse(File.read("app/css/utilities.css.json"))["selectors"]
-    layout_data = JSON.parse(File.read("app/css/layout.css.json"))["selectors"]
+    utility_data = JSON.parse(File.read("app/lib/primer/css/utilities.css.json"))["selectors"]
+    layout_data = JSON.parse(File.read("app/lib/primer/css/layout.css.json"))["selectors"]
     css_data = utility_data + layout_data
 
     output = {}
