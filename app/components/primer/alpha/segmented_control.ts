@@ -1,7 +1,7 @@
 import {controller, targets} from '@github/catalyst'
 
 @controller
-export class SegmentedControlElement extends HTMLElement {
+class SegmentedControlElement extends HTMLElement {
   @targets items: HTMLElement[]
 
   connectedCallback() {
