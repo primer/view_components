@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.0.108
+
+### Patch Changes
+
+- [#1560](https://github.com/primer/view_components/pull/1560) [`8bc7d1c5`](https://github.com/primer/view_components/commit/8bc7d1c588b94aded4f15f159b40be71c33f3121) Thanks [@safeforge](https://github.com/safeforge)! - Avoid double-registering of exported components
+
 ## 0.0.107
 
 ### Patch Changes

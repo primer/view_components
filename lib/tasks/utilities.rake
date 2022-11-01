@@ -33,24 +33,8 @@ namespace :utilities do
     BREAKPOINTS = [nil, "sm", "md", "lg", "xl"].freeze
     # rubocop:enable Lint/ConstantDefinitionInBlock
 
-    utility_data =
-      JSON.parse(
-        File.read(
-          File.expand_path(File.join(*%w[.. .. node_modules @primer css dist stats utilities.json]), __dir__)
-        )
-      )["selectors"]["values"]
-
-    custom_utility_data = YAML.load_file(
-      File.join(__dir__, "custom_utilities.yml")
-    )
-
-    layout_data =
-      JSON.parse(
-        File.read(
-          File.expand_path(File.join(*%w[.. .. node_modules @primer css dist stats layout.json]), __dir__)
-        )
-      )["selectors"]["values"]
-
+    utility_data = JSON.parse(File.read("app/lib/primer/css/utilities.css.json"))["selectors"]
+    layout_data = JSON.parse(File.read("app/lib/primer/css/layout.css.json"))["selectors"]
     css_data = utility_data + layout_data
 
     output = {}
@@ -115,6 +99,7 @@ namespace :utilities do
       x.transform_values { |y| y.reverse.drop_while(&:nil?).reverse }
     end
 
+    custom_utility_data = YAML.load_file("lib/tasks/custom_utilities.yml")
     output.merge!(custom_utility_data)
 
     File.open("lib/primer/classify/utilities.yml", "w") do |f|
