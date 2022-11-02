@@ -27,7 +27,7 @@ module System
       component_name = component_name.gsub(/^Beta|^Alpha/, "") if match
       component_uri = component_name.underscore
 
-      url = "/rails/view_components/primer/#{status_path}#{component_uri}/#{preview_name}"
+      url = +"/rails/view_components/primer/#{status_path}#{component_uri}/#{preview_name}"
       query_string = params.map { |k, v| "#{k}=#{CGI.escape(v.to_s)}" }.join("&")
       url << "?#{query_string}" if query_string.present?
 
