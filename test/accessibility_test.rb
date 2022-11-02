@@ -3,7 +3,7 @@
 require "system/test_case"
 
 class AccessibilityTest < System::TestCase
-  parallelize workers: 2
+  parallelize workers: 4
 
   # Skip components that should be tested as part of a larger component.
   # Do not add to this list for any other reason!
