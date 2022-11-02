@@ -1,0 +1,121 @@
+/* SegmentedControl */
+
+.SegmentedControl {
+  display: inline-flex;
+  list-style: none;
+  background-color: var(--color-segmented-control-bg);
+  border-radius: var(--primer-borderRadius-medium, 6px);
+  box-shadow: var(--primer-borderInset-thin, inset 0 0 0 max(1px, 0.0625rem)) var(--color-border-default);
+}
+
+.SegmentedControl-item {
+  position: relative;
+  display: inline-flex;
+  border: var(--primer-borderWidth-thin, max(1px, 0.0625rem)) solid transparent;
+  border-radius: var(--primer-borderRadius-medium, 6px);
+  padding: var(--primer-control-xsmall-paddingInline-condensed, 4px);
+
+  /* Selected ---------------------------------------- */
+  &.SegmentedControl-item--selected {
+    background-color: var(--color-btn-bg);
+    border-color: var(--color-segmented-control-button-selected-border);
+
+    & .Button {
+      font-weight: var(--base-text-weight-semibold, 600);
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    &::before {
+      border-color: transparent;
+    }
+
+    & + .SegmentedControl-item::before {
+      border-color: transparent;
+    }
+  }
+
+  /* renders a visibly hidden "copy" of the text in bold, reserving box space for when text becomes bold on selected */
+  & .Button-label[data-content]::before {
+    display: block;
+    height: 0;
+    font-weight: var(--base-text-weight-semibold, 600);
+    visibility: hidden;
+    content: attr(data-content);
+  }
+
+  /* Separator lines */
+  &::before {
+    position: absolute;
+    inset: 0 0 0 -1px;
+    margin-top: var(--primer-control-medium-paddingBlock, 6px);
+    margin-bottom: var(--primer-control-medium-paddingBlock, 6px);
+    content: '';
+    border-left: var(--primer-borderWidth-thin, max(1px, 0.0625rem)) solid var(--color-border-default);
+  }
+
+  /* Button ----------------------------------------- */
+  & .Button {
+    border: 0;
+    font-weight: var(--base-text-weight-normal, 400);
+    transition: none;
+    color: var(--color-btn-text);
+
+    &:focus-visible {
+      outline-offset: calc(var(--primer-control-xsmall-paddingInline-condensed, 4px) - var(--primer-borderWidth-thin, 1px));
+      border-radius: calc(var(--primer-borderRadius-medium, 6px) - 5px);
+    }
+  }
+
+  & .Button--small {
+    height: calc(var(--primer-control-small-size, 28px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+    padding: 0 calc(var(--primer-control-small-paddingInline-condensed, 8px) - var(--primer-control-xsmall-paddingInline-condensed, 4px));
+
+    &.Button--iconOnly {
+      width: calc(var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+    }
+  }
+
+  & .Button--medium {
+    height: calc(var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+    padding: 0 calc(var(--primer-control-medium-paddingInline-normal, 12px) - var(--primer-control-xsmall-paddingInline-condensed, 4px));
+
+    &.Button--iconOnly {
+      width: calc(var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+    }
+  }
+
+  & .Button--large {
+    height: calc(var(--primer-control-large-size, 40px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+    padding: 0 calc(var(--primer-control-large-paddingInline-spacious, 16px) - var(--primer-control-xsmall-paddingInline-condensed, 4px));
+
+    &.Button--iconOnly {
+      width: calc(var(--primer-control-large-size, 40px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+    }
+  }
+
+  & .Button--iconOnly {
+    padding: initial;
+  }
+
+  & .Button--invisible.Button--invisible-noVisuals .Button-label {
+    color: var(--color-btn-text);
+  }
+}
+
+/* fullWidth */
+.SegmentedControl--fullWidth {
+  display: flex;
+
+  & .SegmentedControl-item {
+    flex: 1;
+    justify-content: center;
+  }
+
+  & .Button--iconOnly,
+  & .Button-withTooltip {
+    width: 100%;
+  }
+}

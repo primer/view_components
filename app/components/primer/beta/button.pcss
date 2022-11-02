@@ -127,11 +127,11 @@ summary.Button {
   padding: 0 var(--primer-control-small-paddingInline-condensed);
   gap: var(--primer-control-small-gap);
 
-  .Button-label {
-    line-height: var(--primer-text-body-lineHeight-small);
+  & .Button-label {
+    line-height: var(--primer-text-body-lineHeight-small, calc(20 / 12));
   }
 
-  .Button-content {
+  & .Button-content {
     & > :not(:last-child) {
       margin-right: var(--primer-control-small-gap);
     }
@@ -143,11 +143,11 @@ summary.Button {
   padding: 0 var(--primer-control-large-paddingInline-spacious);
   gap: var(--primer-control-large-gap);
 
-  .Button-label {
-    line-height: var(--primer-text-body-lineHeight-large);
+  & .Button-label {
+    line-height: var(--primer-text-body-lineHeight-large, calc(48 / 32));
   }
 
-  .Button-content {
+  & .Button-content {
     & > :not(:last-child) {
       margin-right: var(--primer-control-large-gap);
     }

@@ -57,7 +57,7 @@ module Primer
       # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Counter) %>.
       renders_one :trailing_visual, types: {
         icon: Primer::OcticonComponent,
-        label: Primer::LabelComponent,
+        label: Primer::Beta::Label,
         counter: Primer::CounterComponent
       }
 

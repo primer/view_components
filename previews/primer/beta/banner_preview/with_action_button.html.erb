@@ -1,0 +1,4 @@
+<%= render(Primer::Beta::Banner.new(full: full, dismissible: dismissible, icon: icon, scheme: scheme, reappear: reappear)) do |component| %>
+  <% component.with_action_button(size: :medium) { "Take action" } %>
+  <%= content %>
+<% end %>

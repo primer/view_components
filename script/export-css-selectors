@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+const postcss = require('postcss');
+const glob = require('glob');
+const fs = require('fs');
+
+console.log('Exporting CSS selectors...');
+
+const export_selectors = folder => {
+  const folder_glob = folder + "/**/*.css"
+
+  glob(folder_glob, (err, files) => {
+    files.forEach(file => {
+      const css = fs.readFileSync(file, 'utf8');
+      const root = postcss.parse(css)
+      const componentNameRegex = new RegExp(`${folder.replace('\/','\\\/')}\\/(.*)\.css`)
+      const componentName = componentNameRegex.exec(file)[1]
+
+      const selectors = []
+      root.walkRules(rule => {
+        rule.selector.split(',').forEach(ruleSelector => {
+          selectors.push(ruleSelector)
+        })
+      })
+
+      fs.writeFileSync(`${file}.json`, JSON.stringify({ 'name': componentName, 'selectors': [...new Set(selectors)] }))
+    })
+  })
+}
+
+export_selectors('app/components/primer')
+export_selectors('app/css')

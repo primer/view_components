@@ -27,7 +27,8 @@ module.exports = {
       // https://preset-env.cssdb.org/features/#stage-2
       features: {
         'nesting-rules': true,
-        'custom-properties': false
+        'custom-properties': false,
+        'focus-visible-pseudo-class': false
       }
     }),
     require('cssnano'),

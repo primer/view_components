@@ -14,8 +14,8 @@ module ApplicationHelper
     ]
   end
 
-  def color_theme_attributes
-    theme = color_themes.include?(params[:theme]) ? params[:theme] : "light"
+  def color_theme_attributes(theme = "light")
+    theme = color_themes.include?(theme) ? theme : "light"
     mode = theme.include?("dark") ? "dark" : "light"
 
     attributes = {

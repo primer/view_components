@@ -52,9 +52,11 @@ module Primer
         end
 
         # Cause this section to show its list of sub items when rendered.
+        # :nocov:
         def expand!
           @expanded = true
         end
+        # :nocov:
 
         # The items contained within this section.
         #

@@ -160,6 +160,10 @@
   },
   "Primer::Alpha::HiddenTextExpander": {
   },
+  "Primer::Alpha::Image": {
+  },
+  "Primer::Alpha::ImageCrop": {
+  },
   "Primer::Alpha::Layout": {
     "FIRST_IN_SOURCE_DEFAULT": "sidebar",
     "FIRST_IN_SOURCE_OPTIONS": [
@@ -245,6 +249,13 @@
   "Primer::Alpha::NavList::Item": {
   },
   "Primer::Alpha::NavList::Section": {
+  },
+  "Primer::Alpha::SegmentedControl": {
+    "FULL_WIDTH_DEFAULT": false,
+    "HIDE_LABELS_DEFAULT": false,
+    "Item": "Primer::Alpha::SegmentedControl::Item"
+  },
+  "Primer::Alpha::SegmentedControl::Item": {
   },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",
@@ -384,6 +395,27 @@
       "div",
       "span"
     ]
+  },
+  "Primer::Beta::Banner": {
+    "DEFAULT_ICONS": {
+      "default": "bell",
+      "warning": "alert",
+      "danger": "stop",
+      "success": "check-circle"
+    },
+    "DEFAULT_SCHEME": "default",
+    "LEGACY_SCHEME_MAPPINGS": {
+      "default": "",
+      "warning": "flash-warn",
+      "danger": "flash-error",
+      "success": "flash-success"
+    },
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "warning": "Banner--warning",
+      "danger": "Banner--error",
+      "success": "Banner--success"
+    }
   },
   "Primer::Beta::BaseButton": {
     "DEFAULT_TAG": "button",
@@ -563,6 +595,81 @@
       "invisible"
     ]
   },
+  "Primer::Beta::Label": {
+    "DEFAULT_SCHEME": "default",
+    "DEFAULT_SIZE": "medium",
+    "DEFAULT_TAG": "span",
+    "DEFAULT_VARIANT": "none",
+    "DEPRECATED_SCHEME_OPTIONS": [
+      "info",
+      "warning",
+      "orange",
+      "purple"
+    ],
+    "DEPRECATED_VARIANT_OPTIONS": [
+      "large",
+      "inline"
+    ],
+    "INLINE_CLASS": "Label--inline",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "primary": "Label--primary",
+      "secondary": "Label--secondary",
+      "accent": "Label--accent",
+      "success": "Label--success",
+      "attention": "Label--attention",
+      "danger": "Label--danger",
+      "severe": "Label--severe",
+      "done": "Label--done",
+      "sponsors": "Label--sponsors",
+      "info": "Label--info",
+      "warning": "Label--warning",
+      "orange": "Label--orange",
+      "purple": "Label--purple"
+    },
+    "SCHEME_OPTIONS": [
+      "default",
+      "primary",
+      "secondary",
+      "accent",
+      "success",
+      "attention",
+      "danger",
+      "severe",
+      "done",
+      "sponsors"
+    ],
+    "SIZE_MAPPINGS": {
+      "medium": null,
+      "large": "Label--large"
+    },
+    "SIZE_OPTIONS": [
+      "medium",
+      "large"
+    ],
+    "TAG_OPTIONS": [
+      "span",
+      "summary",
+      "a",
+      "div"
+    ],
+    "VARIANT_OPTIONS": [
+      "none"
+    ]
+  },
+  "Primer::Beta::Link": {
+    "DEFAULT_SCHEME": "default",
+    "DEFAULT_TAG": "a",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "primary": "Link--primary",
+      "secondary": "Link--secondary"
+    },
+    "TAG_OPTIONS": [
+      "a",
+      "span"
+    ]
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
@@ -682,69 +789,7 @@
   },
   "Primer::Image": {
   },
-  "Primer::ImageCrop": {
-  },
   "Primer::LabelComponent": {
-    "DEFAULT_SCHEME": "default",
-    "DEFAULT_SIZE": "medium",
-    "DEFAULT_TAG": "span",
-    "DEFAULT_VARIANT": "none",
-    "DEPRECATED_SCHEME_OPTIONS": [
-      "info",
-      "warning",
-      "orange",
-      "purple"
-    ],
-    "DEPRECATED_VARIANT_OPTIONS": [
-      "large",
-      "inline"
-    ],
-    "INLINE_CLASS": "Label--inline",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "primary": "Label--primary",
-      "secondary": "Label--secondary",
-      "accent": "Label--accent",
-      "success": "Label--success",
-      "attention": "Label--attention",
-      "danger": "Label--danger",
-      "severe": "Label--severe",
-      "done": "Label--done",
-      "sponsors": "Label--sponsors",
-      "info": "Label--info",
-      "warning": "Label--warning",
-      "orange": "Label--orange",
-      "purple": "Label--purple"
-    },
-    "SCHEME_OPTIONS": [
-      "default",
-      "primary",
-      "secondary",
-      "accent",
-      "success",
-      "attention",
-      "danger",
-      "severe",
-      "done",
-      "sponsors"
-    ],
-    "SIZE_MAPPINGS": {
-      "medium": null,
-      "large": "Label--large"
-    },
-    "SIZE_OPTIONS": [
-      "medium",
-      "large"
-    ],
-    "TAG_OPTIONS": [
-      "span",
-      "summary",
-      "a",
-      "div"
-    ],
-    "VARIANT_OPTIONS": [
-      "none"
-    ]
   },
   "Primer::LayoutComponent": {
     "ALLOWED_SIDEBAR_COLS": [
@@ -769,17 +814,6 @@
     "MAX_COL": 12
   },
   "Primer::LinkComponent": {
-    "DEFAULT_SCHEME": "default",
-    "DEFAULT_TAG": "a",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "primary": "Link--primary",
-      "secondary": "Link--secondary"
-    },
-    "TAG_OPTIONS": [
-      "a",
-      "span"
-    ]
   },
   "Primer::LocalTime": {
     "DEFAULT_DIGIT_TYPE": "numeric",

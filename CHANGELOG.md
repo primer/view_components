@@ -1,5 +1,67 @@
 # CHANGELOG
 
+## 0.0.108
+
+### Patch Changes
+
+- [#1560](https://github.com/primer/view_components/pull/1560) [`8bc7d1c5`](https://github.com/primer/view_components/commit/8bc7d1c588b94aded4f15f159b40be71c33f3121) Thanks [@safeforge](https://github.com/safeforge)! - Avoid double-registering of exported components
+
+## 0.0.107
+
+### Patch Changes
+
+- [#1539](https://github.com/primer/view_components/pull/1539) [`c86d4785`](https://github.com/primer/view_components/commit/c86d4785460507d9cab9fc44edab281ad2b128ef) Thanks [@jonrohan](https://github.com/jonrohan)! - Bug Fix: Fixing bad CSS in action-list.css and writing test to check for error
+
+* [#1552](https://github.com/primer/view_components/pull/1552) [`746696f4`](https://github.com/primer/view_components/commit/746696f42dccda969f5306e67952ddc80023390f) Thanks [@jonrohan](https://github.com/jonrohan)! - Disable focus-visible-pseudo-class plugin to fix primary Button
+
+- [#1550](https://github.com/primer/view_components/pull/1550) [`8211b263`](https://github.com/primer/view_components/commit/8211b26385355f39baad810c63b12cb34193a0bd) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing deprecated `Primer::ImageCrop` component
+
+* [#1538](https://github.com/primer/view_components/pull/1538) [`03008a4a`](https://github.com/primer/view_components/commit/03008a4a06f03f8120c6510f3a45694ef79f72b8) Thanks [@jonrohan](https://github.com/jonrohan)! - Export component CSS selectors as json file for use in component CSS coverage tests, linters, etc.
+
+- [#1540](https://github.com/primer/view_components/pull/1540) [`94c6b7fd`](https://github.com/primer/view_components/commit/94c6b7fd6653bc207635393d8a28d8f5014e29f3) Thanks [@jonrohan](https://github.com/jonrohan)! - `app/components/primer/alpha/action_list/action-list.pcss` was re-written to `app/components/primer/alpha/action_list.pcss`
+
+* [#1548](https://github.com/primer/view_components/pull/1548) [`c9b2c558`](https://github.com/primer/view_components/commit/c9b2c5581b6d91fae709b6150bbf41db8b85ede2) Thanks [@camertron](https://github.com/camertron)! - Include legacy flash classes in banners
+
+## 0.0.106
+
+### Patch Changes
+
+- [#1533](https://github.com/primer/view_components/pull/1533) [`1ee5cc19`](https://github.com/primer/view_components/commit/1ee5cc19d21f45662038449f288f35797b117d16) Thanks [@camertron](https://github.com/camertron)! - Introduce the Banner component
+
+## 0.0.105
+
+### Patch Changes
+
+- [#1531](https://github.com/primer/view_components/pull/1531) [`58436f71`](https://github.com/primer/view_components/commit/58436f71d8a64a290bcd725542b5c2434c7aacf4) Thanks [@issyl0](https://github.com/issyl0)! - rubocop/config/default: Unset `DisabledByDefault`
+
+* [#1532](https://github.com/primer/view_components/pull/1532) [`d67dae0a`](https://github.com/primer/view_components/commit/d67dae0a6d762d4aeb9ed48926daa93d9f2e3405) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - migrate Primer::LinkComponent to Primer::Beta::Link and mark the old one as deprecated
+
+- [#1395](https://github.com/primer/view_components/pull/1395) [`488532ce`](https://github.com/primer/view_components/commit/488532ceaa024fd04fb1e00d8b7f052608679a9e) Thanks [@josepmartins](https://github.com/josepmartins)! - Add a11yreviewed variable in frontmatter
+
+* [#1527](https://github.com/primer/view_components/pull/1527) [`595a6754`](https://github.com/primer/view_components/commit/595a67548ada4efcc1268fb59b15ebb9cc7bc5b6) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - deprecating Primer::Image in favor of Primer::Alpha::Image
+
+- [#1507](https://github.com/primer/view_components/pull/1507) [`16ecd00e`](https://github.com/primer/view_components/commit/16ecd00e6022c5fb7607f278a014537d77ce84ff) Thanks [@jonrohan](https://github.com/jonrohan)! - Adding lookbook and status to `static/arguments.json` file.
+
+* [#1225](https://github.com/primer/view_components/pull/1225) [`c026577c`](https://github.com/primer/view_components/commit/c026577caa9a4c0eb52b9f83f614a928ab3f7445) Thanks [@jonrohan](https://github.com/jonrohan)! - Creating new `Primer::Alpha::SegmentedControl` component. [Design guidelines](https://primer.style/design/components/segmented-control)
+
+- [#1530](https://github.com/primer/view_components/pull/1530) [`72866fc2`](https://github.com/primer/view_components/commit/72866fc297a5b3e64562f3b535f58eb1fcecb75a) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - migrating Primer::LabelComponent to Primer::Beta::Label
+
+* [#1528](https://github.com/primer/view_components/pull/1528) [`1724aa2b`](https://github.com/primer/view_components/commit/1724aa2b39a0c515b4e1135999fd8d0d4cc869de) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - migrating Primer::ImageCrop to Primer::Alpha::ImageCrop
+
+## 0.0.104
+
+### Patch Changes
+
+- [#1505](https://github.com/primer/view_components/pull/1505) [`5d3448bb`](https://github.com/primer/view_components/commit/5d3448bb379621d2acaf22c2ed38fae6528497bd) Thanks [@camertron](https://github.com/camertron)! - Pass select list options to Rails form builder
+
+* [#1498](https://github.com/primer/view_components/pull/1498) [`b3668d38`](https://github.com/primer/view_components/commit/b3668d3836c35e52a301544de9955b09c023e82a) Thanks [@neall](https://github.com/neall)! - Add option for nested forms for check boxes
+
+- [#1488](https://github.com/primer/view_components/pull/1488) [`db5b5f65`](https://github.com/primer/view_components/commit/db5b5f6514cfd0952dd299b121f5cc2f2f001067) Thanks [@jonrohan](https://github.com/jonrohan)! - Building PostCSS components separately
+
+* [#1486](https://github.com/primer/view_components/pull/1486) [`9a936bd1`](https://github.com/primer/view_components/commit/9a936bd18053f7f17d1c1146349a157b90c5c91e) Thanks [@langermank](https://github.com/langermank)! - Remove dead SCSS code from ActionList
+
+- [#1491](https://github.com/primer/view_components/pull/1491) [`f43bd08a`](https://github.com/primer/view_components/commit/f43bd08af6ffcd7ad4607c61cc1569bf2fccd7ee) Thanks [@camertron](https://github.com/camertron)! - Allow IconButton tooltips to be hidden
+
 ## 0.0.103
 
 ### Patch Changes

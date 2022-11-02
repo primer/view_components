@@ -25,6 +25,8 @@ module Primer
 
       def radio_button_with_nested_form; end
 
+      def check_box_with_nested_form; end
+
       def caption_template_form; end
 
       def after_content_form; end
