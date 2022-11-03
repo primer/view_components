@@ -28,7 +28,7 @@ class CssSelectorTest < Minitest::Test
         end
       end
 
-      remaining_selectors = (selectors - matched_selectors.flatten.uniq).uniq || []
+      remaining_selectors = (selectors - matched_selectors.flatten.uniq) || []
       assert remaining_selectors.empty?, no_preview_for_selectors_message(preview_class, remaining_selectors)
     end
   end
