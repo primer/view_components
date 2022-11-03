@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 require "components/css/test_helper"
-Dir["app/components/**/*.rb"].each {|file| require_relative "../../../#{file}" }
+Dir["app/components/**/*.rb"].each { |file| require_relative "../../../#{file}" }
 
 class CssSelectorTest < Minitest::Test
   include Primer::ComponentTestHelpers
   include Primer::RenderPreview
 
-  IGNORED_SELECTORS = [/^\d/, /^to/, ":is", ":root", ":before", ":after", ":hover", ":active", ":disabled", ":focus"]
+  IGNORED_SELECTORS = [/^\d/, /^to/, ":is", ":root", ":before", ":after", ":hover", ":active", ":disabled", ":focus"].freeze
 
   Primer::Component.descendants.each do |component_class|
     class_test_name = component_class.name.downcase.gsub("::", "_")
@@ -62,8 +62,8 @@ class CssSelectorTest < Minitest::Test
   end
 
   def filter_selectors(selectors)
-    filtered = (selectors || []).select do |selector|
-      !IGNORED_SELECTORS.any?{ |pattern| selector.match(pattern) }
+    filtered = (selectors || []).reject do |selector|
+      IGNORED_SELECTORS.any? { |pattern| selector.match(pattern) }
     end
 
     filtered.flatten.uniq

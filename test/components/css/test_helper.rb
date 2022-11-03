@@ -6,12 +6,12 @@ module Primer::RenderPreview
   def render_preview(name, preview_klass: nil, params: {})
     if preview_klass.nil?
       begin
-        preview_klass = if respond_to?(:described_class)
+        if respond_to?(:described_class)
           raise "`render_preview` expected a described_class, but it is nil." if described_class.nil?
 
-          "#{described_class}Preview"
+          prevew_klass = "#{described_class}Preview"
         else
-          self.class.name.gsub("Test", "Preview")
+          preview_klass = self.class.name.gsub("Test", "Preview")
         end
         preview_klass = preview_klass.constantize
       rescue NameError
@@ -36,4 +36,3 @@ module Primer::RenderPreview
     Nokogiri::HTML.fragment(@rendered_content)
   end
 end
-
