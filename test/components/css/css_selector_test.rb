@@ -48,7 +48,13 @@ class CssSelectorTest < Minitest::Test
   end
 
   def no_preview_for_selectors_message(preview_class, selectors)
-    "PVC Preview Class `#{preview_class.name}` does not render a preview for these selectors. Selectors without a preview may be ignored by updating `IGNORED_SELECTORS` in #{__FILE__}\n#{selectors.join("\n")}"
+    selector_list = selectors.join("\n")
+
+    msg = ["PVC Preview Class `#{preview_class.name}` does not render a preview for these selectors:"]
+    msg << "#{selector_list}"
+    msg << "Selectors without a preview may be ignored by updating `IGNORED_SELECTORS` in #{__FILE__}"
+
+    msg.join("\n")
   end
 
   def filter_selectors(selectors)
