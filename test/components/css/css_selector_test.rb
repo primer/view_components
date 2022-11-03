@@ -13,6 +13,12 @@ class CssSelectorTest < Minitest::Test
     Primer::Alpha::ActionList => [/^to/], 
   }.freeze
 
+  # Test: All Selectors Are Previewed For <component>
+  # ----
+  # ensure all css rules for a component are present in a preview
+  #
+  # these test methods are created dynamically so we can see all failures for
+  # all components and not error after the first component failure
   Primer::Component.descendants.each do |component_class|
     class_test_name = component_class.name.downcase.gsub("::", "_")
     define_method("test_all_selectors_are_previewed_for_#{class_test_name}") do
