@@ -19,7 +19,7 @@ module Primer
           @selected = selected
 
           @system_arguments = system_arguments
-          @system_arguments[:"data-action"] = "click:segmented-control#select"
+          @system_arguments[:"data-action"] = "click:segmented-control#select" if system_arguments[:href].nil?
           @system_arguments[:"aria-current"] = selected
           @system_arguments[:scheme] = :invisible
         end
