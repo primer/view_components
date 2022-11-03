@@ -7,7 +7,11 @@ class CssSelectorTest < Minitest::Test
   include Primer::ComponentTestHelpers
   include Primer::RenderPreview
 
-  IGNORED_SELECTORS = [/^\d/, /^to/, ":is", ":root", ":before", ":after", ":hover", ":active", ":disabled", ":focus"].freeze
+  IGNORED_SELECTORS = {
+    :global => [/^\d/, ":is", ":root", ":before", ":after", ":hover", ":active", ":disabled", ":focus"],
+    Primer::Beta::Button => ["summary.Button"],
+    Primer::Alpha::ActionList => [/^to/], 
+  }.freeze
 
   Primer::Component.descendants.each do |component_class|
     class_test_name = component_class.name.downcase.gsub("::", "_")
@@ -44,7 +48,7 @@ class CssSelectorTest < Minitest::Test
   def get_component_selectors(component_class)
     css_file = Object.const_source_location(component_class.to_s)[0].gsub(".rb", ".css.json")
     css_data = File.exist?(css_file) ? JSON.parse(File.read(css_file)) : {}
-    filter_selectors(css_data["selectors"])
+    filter_selectors(component_class, css_data["selectors"])
   end
 
   def no_preview_for_selectors_message(preview_class, selectors)
@@ -52,18 +56,23 @@ class CssSelectorTest < Minitest::Test
     selector_list = selectors.join("\n")
 
     msg = []
-    msg << "PVC Preview Class `#{class_name}` does not render a preview for these selectors:"
+    msg << "PVC Preview Class '#{class_name}' does not render a preview for these selectors:"
     msg << ""
     msg << selector_list
     msg << ""
-    msg << "Selectors without a preview may be ignored by updating `IGNORED_SELECTORS` in #{__FILE__}"
+    msg << "Selectors without a preview may be ignored by updating 'IGNORED_SELECTORS' in #{__FILE__}"
 
     msg.join("\n")
   end
 
-  def filter_selectors(selectors)
+  def filter_selectors(component_class, selectors)
     filtered = (selectors || []).reject do |selector|
-      IGNORED_SELECTORS.any? { |pattern| selector.match(pattern) }
+      global_ignored = IGNORED_SELECTORS[:global].any? { |pattern| selector.match(pattern) }
+
+      component_filter = IGNORED_SELECTORS[component_class]
+      component_ignored = component_filter ? component_filter.any? { |pattern| selector.match(pattern) } : false
+
+      global_ignored || component_ignored
     end
 
     filtered.flatten.uniq
