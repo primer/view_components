@@ -51,6 +51,16 @@ module Primer
         assert_selector("segmented-control ul.SegmentedControl.SegmentedControl--fullWidth")
       end
 
+      def test_doesnt_use_control_click_with_href
+        render_inline(Primer::Alpha::SegmentedControl.new) do |c|
+          c.with_item(icon: :zap, label: "Item 1", selected: true) { "Item 1" }
+          c.with_item(tag: :a, href: "#", icon: :zap, label: "Item 2") { "Item 2" }
+        end
+
+        assert_selector("button[data-action=\"click:segmented-control#select\"]", count: 1)
+        assert_selector("a[data-action=\"click:segmented-control#select\"]", count: 0)
+      end
+
       def test_doesnt_render_with_too_many_items
         error = assert_raises(ArgumentError) do
           render_inline(Primer::Alpha::SegmentedControl.new) do |c|
