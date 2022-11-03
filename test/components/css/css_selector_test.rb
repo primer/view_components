@@ -10,7 +10,7 @@ class CssSelectorTest < Minitest::Test
   IGNORED_SELECTORS = [/^\d/, ":is", ":root", ":before", ":after", ":hover", ":active", ":disabled", ":focus"]
 
   Primer::Component.descendants.each do |component_class|
-    class_test_name = component_class.name.camelize
+    class_test_name = component_class.name.downcase.gsub("::", "_")
     define_method("test_all_selectors_are_previewed_for_#{class_test_name}") do
       preview_class = get_preview_class(component_class)
       next unless preview_class
