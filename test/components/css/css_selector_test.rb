@@ -7,7 +7,7 @@ class CssSelectorTest < Minitest::Test
   include Primer::ComponentTestHelpers
   include Primer::RenderPreview
 
-  IGNORED_SELECTORS = [/^\d/, ":is", ":root", ":before", ":after", ":hover", ":active", ":disabled", ":focus"]
+  IGNORED_SELECTORS = [/^\d/, /^to/, ":is", ":root", ":before", ":after", ":hover", ":active", ":disabled", ":focus"]
 
   Primer::Component.descendants.each do |component_class|
     class_test_name = component_class.name.downcase.gsub("::", "_")
