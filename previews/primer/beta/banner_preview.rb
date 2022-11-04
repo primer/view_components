@@ -41,12 +41,12 @@ module Primer
 
       # @label Full width
       def full_width
-        render(Primer::Beta::Banner.new(full: true)) { "This is a full width banner!" }
+        render(Primer::Beta::Banner.new(full: true)) { "This is a full width banner." }
       end
 
-      # @label Full width expanding
-      def full_widthin_narrow_container
-        render(Primer::Beta::Banner.new(full: true, full_when_narrow: true)) { "This is a full width banner, expanding outside it's container!" }
+      # @label Full width in Narrow Viewport
+      def full_width_in_narrow_viewport
+        render(Primer::Beta::Banner.new(full: true, full_when_narrow: true)) { "This is a full width banner in a narrow viewport." }
       end
 
       # @label With action button
