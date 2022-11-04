@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.0.109
+
+### Patch Changes
+
+- [#1554](https://github.com/primer/view_components/pull/1554) [`74db3db4`](https://github.com/primer/view_components/commit/74db3db45e5d36b239a5c3ccf2c1f30da1106a69) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - build the utilities.yml for PVC's classify utilities directly in PVC
+
+* [#1566](https://github.com/primer/view_components/pull/1566) [`613f5697`](https://github.com/primer/view_components/commit/613f56976d184961405dc96cfc334a0e915098a0) Thanks [@dependabot](https://github.com/apps/dependabot)! - Allow arrow key navigation on aria-disabled elements in details-menu
+
+- [#1571](https://github.com/primer/view_components/pull/1571) [`bc235b39`](https://github.com/primer/view_components/commit/bc235b3901ff03b0d10de61eb3b5e7b450cfd262) Thanks [@jonrohan](https://github.com/jonrohan)! - SegmentedControl: Don't update selected state on links
+
+* [#1559](https://github.com/primer/view_components/pull/1559) [`b5340016`](https://github.com/primer/view_components/commit/b53400169d180a662ac9c07d1786f533c7c3c29d) Thanks [@camertron](https://github.com/camertron)! - Additional legacy flash/banner classes; fix data-target issue
+
+- [#1576](https://github.com/primer/view_components/pull/1576) [`619a8f9a`](https://github.com/primer/view_components/commit/619a8f9a97d0a4854f01de9c19c06a50807a65d2) Thanks [@camertron](https://github.com/camertron)! - Remove redundant data-show-dialog-id system_argument in dialog component
+
+* [#1575](https://github.com/primer/view_components/pull/1575) [`eead9f6a`](https://github.com/primer/view_components/commit/eead9f6ac1021d4398341408c292d2f00a6f486c) Thanks [@neall](https://github.com/neall)! - Allow form field names to end in "?"
+
 ## 0.0.108
 
 ### Patch Changes
