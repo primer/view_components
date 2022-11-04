@@ -315,4 +315,11 @@ class Primer::Forms::FormsTest < Minitest::Test
 
     assert_includes error.message, "please pass an instance of Primer::Forms::Builder"
   end
+
+  def test_renders_field_name_with_question_mark_caption_template
+    render_preview :name_with_question_mark_form
+
+    assert_selector "input[name=enabled]"
+    assert_selector ".my-test-caption"
+  end
 end
