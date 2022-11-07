@@ -17,6 +17,6 @@ module.exports = {
         'focus-visible-pseudo-class': false
       }
     }),
-    process.env.NODE_ENV === 'development' ? null : require('cssnano')
+    process.env.CI === '1' ? require('cssnano') : null
   ],
 };
