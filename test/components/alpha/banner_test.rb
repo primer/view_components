@@ -125,6 +125,6 @@ class PrimerBannerTest < Minitest::Test
   end
 
   def test_status
-    assert_component_state(Primer::Alpha::Banner, :beta)
+    assert_component_state(Primer::Alpha::Banner, :alpha)
   end
 end
