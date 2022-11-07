@@ -44,11 +44,15 @@ module Primer
         end
 
         def caption_template?(field_name)
-          fields_with_caption_templates.include?(field_name)
+          fields_with_caption_templates.include?(sanitize_field_name_for_template_path(field_name))
         end
 
         def fields_with_caption_templates
           @fields_with_caption_templates ||= []
+        end
+
+        def sanitize_field_name_for_template_path(field_name)
+          field_name.to_s.delete_suffix("?").to_sym
         end
 
         private
@@ -115,8 +119,8 @@ module Primer
         self.class.after_content?(*args)
       end
 
-      def render_caption_template(name)
-        send(:"render_#{name}_caption")
+      def render_caption_template(field_name)
+        send(:"render_#{self.class.sanitize_field_name_for_template_path(field_name)}_caption")
       end
 
       def perform_render(&_block)

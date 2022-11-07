@@ -13,9 +13,10 @@ module.exports = {
       stage: 2,
       // https://preset-env.cssdb.org/features/#stage-2
       features: {
-        'nesting-rules': true
+        'nesting-rules': true,
+        'focus-visible-pseudo-class': false
       }
     }),
-    require('cssnano'),
+    process.env.CI === 'true' ? require('cssnano') : null
   ],
 };

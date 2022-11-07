@@ -11,6 +11,7 @@
       "NODE_VERSION": "lts/*"
     }
   },
+  "onCreateCommand": ".devcontainer/on-create-command.sh",
   "postCreateCommand": ".devcontainer/post-create-command.sh",
   "settings": {
     "files.watcherExclude": {
@@ -27,13 +28,15 @@
     "misogi.ruby-rubocop",
     "rebornix.ruby",
     "wingrunr21.vscode-ruby",
-    "mutantdino.resourcemonitor"
+    "mutantdino.resourcemonitor",
+    "vunguyentuan.vscode-postcss"
   ],
-  "forwardPorts": [4000, 5000, 5400],
-  "appPort": [4000, 5000, 5400],
+  "forwardPorts": [4000, 5400],
+  "appPort": [4000, 5400],
   "portsAttributes": {
     "4000": {
-      "label": "demo"
+      "label": "demo",
+      "onAutoForward": "openBrowser"
     },
     "5400": {
       "label": "doctocat"

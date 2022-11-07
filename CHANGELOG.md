@@ -1,5 +1,43 @@
 # CHANGELOG
 
+## 0.0.109
+
+### Patch Changes
+
+- [#1554](https://github.com/primer/view_components/pull/1554) [`74db3db4`](https://github.com/primer/view_components/commit/74db3db45e5d36b239a5c3ccf2c1f30da1106a69) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - build the utilities.yml for PVC's classify utilities directly in PVC
+
+* [#1566](https://github.com/primer/view_components/pull/1566) [`613f5697`](https://github.com/primer/view_components/commit/613f56976d184961405dc96cfc334a0e915098a0) Thanks [@dependabot](https://github.com/apps/dependabot)! - Allow arrow key navigation on aria-disabled elements in details-menu
+
+- [#1571](https://github.com/primer/view_components/pull/1571) [`bc235b39`](https://github.com/primer/view_components/commit/bc235b3901ff03b0d10de61eb3b5e7b450cfd262) Thanks [@jonrohan](https://github.com/jonrohan)! - SegmentedControl: Don't update selected state on links
+
+* [#1559](https://github.com/primer/view_components/pull/1559) [`b5340016`](https://github.com/primer/view_components/commit/b53400169d180a662ac9c07d1786f533c7c3c29d) Thanks [@camertron](https://github.com/camertron)! - Additional legacy flash/banner classes; fix data-target issue
+
+- [#1576](https://github.com/primer/view_components/pull/1576) [`619a8f9a`](https://github.com/primer/view_components/commit/619a8f9a97d0a4854f01de9c19c06a50807a65d2) Thanks [@camertron](https://github.com/camertron)! - Remove redundant data-show-dialog-id system_argument in dialog component
+
+* [#1575](https://github.com/primer/view_components/pull/1575) [`eead9f6a`](https://github.com/primer/view_components/commit/eead9f6ac1021d4398341408c292d2f00a6f486c) Thanks [@neall](https://github.com/neall)! - Allow form field names to end in "?"
+
+## 0.0.108
+
+### Patch Changes
+
+- [#1560](https://github.com/primer/view_components/pull/1560) [`8bc7d1c5`](https://github.com/primer/view_components/commit/8bc7d1c588b94aded4f15f159b40be71c33f3121) Thanks [@safeforge](https://github.com/safeforge)! - Avoid double-registering of exported components
+
+## 0.0.107
+
+### Patch Changes
+
+- [#1539](https://github.com/primer/view_components/pull/1539) [`c86d4785`](https://github.com/primer/view_components/commit/c86d4785460507d9cab9fc44edab281ad2b128ef) Thanks [@jonrohan](https://github.com/jonrohan)! - Bug Fix: Fixing bad CSS in action-list.css and writing test to check for error
+
+* [#1552](https://github.com/primer/view_components/pull/1552) [`746696f4`](https://github.com/primer/view_components/commit/746696f42dccda969f5306e67952ddc80023390f) Thanks [@jonrohan](https://github.com/jonrohan)! - Disable focus-visible-pseudo-class plugin to fix primary Button
+
+- [#1550](https://github.com/primer/view_components/pull/1550) [`8211b263`](https://github.com/primer/view_components/commit/8211b26385355f39baad810c63b12cb34193a0bd) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing deprecated `Primer::ImageCrop` component
+
+* [#1538](https://github.com/primer/view_components/pull/1538) [`03008a4a`](https://github.com/primer/view_components/commit/03008a4a06f03f8120c6510f3a45694ef79f72b8) Thanks [@jonrohan](https://github.com/jonrohan)! - Export component CSS selectors as json file for use in component CSS coverage tests, linters, etc.
+
+- [#1540](https://github.com/primer/view_components/pull/1540) [`94c6b7fd`](https://github.com/primer/view_components/commit/94c6b7fd6653bc207635393d8a28d8f5014e29f3) Thanks [@jonrohan](https://github.com/jonrohan)! - `app/components/primer/alpha/action_list/action-list.pcss` was re-written to `app/components/primer/alpha/action_list.pcss`
+
+* [#1548](https://github.com/primer/view_components/pull/1548) [`c9b2c558`](https://github.com/primer/view_components/commit/c9b2c5581b6d91fae709b6150bbf41db8b85ede2) Thanks [@camertron](https://github.com/camertron)! - Include legacy flash classes in banners
+
 ## 0.0.106
 
 ### Patch Changes

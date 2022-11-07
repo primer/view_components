@@ -206,6 +206,62 @@
     ]
   },
   {
+    "component": "Banner",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/banner.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/banner/default/",
+    "parameters": [
+      {
+        "name": "full",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the component should take up the full width of the screen."
+      },
+      {
+        "name": "full_when_narrow",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the component should take up the full width of the screen when rendered inside smaller viewports."
+      },
+      {
+        "name": "dismissible",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether the component can be dismissed with an \"x\" button."
+      },
+      {
+        "name": "description",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Description text rendered underneath the message."
+      },
+      {
+        "name": "icon",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The name of an [Octicon](https://primer.style/octicons/) icon to use. If no icon is provided, a default one will be chosen based on the scheme."
+      },
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:default`",
+        "description": "One of `:danger`, `:default`, `:success`, or `:warning`."
+      },
+      {
+        "name": "reappear",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the flash banner should reappear after being dismissed. Only for use in test and preview environments."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "ButtonMarketing",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/button_marketing.rb",
@@ -1122,62 +1178,6 @@
         "type": "Hash",
         "default": "`{}`",
         "description": "Parameters to add to the Body. If `tooltipped` is set, has the same arguments as [Tooltip](/components/tooltip). The default tag is `:div` but can be changed using `tag:` to one of `:div` or `:span`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Banner",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/banner.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/banner/default/",
-    "parameters": [
-      {
-        "name": "full",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the component should take up the full width of the screen."
-      },
-      {
-        "name": "full_when_narrow",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the component should take up the full width of the screen when rendered inside smaller viewports."
-      },
-      {
-        "name": "dismissible",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether the component can be dismissed with an \"x\" button."
-      },
-      {
-        "name": "description",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Description text rendered underneath the message."
-      },
-      {
-        "name": "icon",
-        "type": "Symbol",
-        "default": "`nil`",
-        "description": "The name of an [Octicon](https://primer.style/octicons/) icon to use. If no icon is provided, a default one will be chosen based on the scheme."
-      },
-      {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:danger`, `:default`, `:success`, or `:warning`."
-      },
-      {
-        "name": "reappear",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not the flash banner should reappear after being dismissed. Only for use in test and preview environments."
       },
       {
         "name": "system_arguments",

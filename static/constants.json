@@ -72,6 +72,27 @@
   },
   "Primer::Alpha::AutoComplete::Item": {
   },
+  "Primer::Alpha::Banner": {
+    "DEFAULT_ICONS": {
+      "default": "bell",
+      "warning": "alert",
+      "danger": "stop",
+      "success": "check-circle"
+    },
+    "DEFAULT_SCHEME": "default",
+    "LEGACY_SCHEME_MAPPINGS": {
+      "default": "",
+      "warning": "flash-warn",
+      "danger": "flash-error",
+      "success": "flash-success"
+    },
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "warning": "Banner--warning",
+      "danger": "Banner--error",
+      "success": "Banner--success"
+    }
+  },
   "Primer::Alpha::ButtonMarketing": {
     "DEFAULT_SCHEME": "default",
     "DEFAULT_TAG": "button",
@@ -397,21 +418,6 @@
       "div",
       "span"
     ]
-  },
-  "Primer::Beta::Banner": {
-    "DEFAULT_ICONS": {
-      "default": "bell",
-      "warning": "alert",
-      "danger": "stop",
-      "success": "check-circle"
-    },
-    "DEFAULT_SCHEME": "default",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "warning": "Banner--warning",
-      "danger": "Banner--error",
-      "success": "Banner--success"
-    }
   },
   "Primer::Beta::BaseButton": {
     "DEFAULT_TAG": "button",
@@ -784,8 +790,6 @@
     ]
   },
   "Primer::Image": {
-  },
-  "Primer::ImageCrop": {
   },
   "Primer::LabelComponent": {
   },
