@@ -4,6 +4,7 @@ require_relative "boot"
 
 require "action_controller/railtie"
 require "action_view/railtie"
+require "active_model/railtie"
 require "sprockets/railtie"
 require "view_component"
 require "primer/view_components/engine"
@@ -37,6 +38,19 @@ module Demo
     }
 
     if config.respond_to?(:lookbook)
+      asset_panel_config = {
+        label: "Assets",
+        partial: "lookbook/panels/assets",
+        locals: lambda do |data|
+          assets = data.preview.components.map do |component|
+            asset_files = Dir[Rails.root.join("../", "#{component.full_path.to_s.chomp('.rb')}.{css,ts}")]
+            asset_files.map { |path| Pathname.new path }
+          end.flatten.compact
+          { assets: assets }
+        end
+      }
+      Lookbook.define_panel("assets", asset_panel_config)
+
       config.lookbook.project_name = "Primer ViewComponents v#{Primer::ViewComponents::VERSION::STRING}"
       config.lookbook.preview_display_options = {
         theme: [
