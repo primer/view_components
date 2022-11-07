@@ -888,7 +888,7 @@
     },
     "DEFAULT_HEADING_TAG": "h4"
   },
-  "Primer::ProgressBarComponent": {
+  "Primer::Beta::ProgressBar": {
     "SIZE_DEFAULT": "default",
     "SIZE_MAPPINGS": {
       "default": "",

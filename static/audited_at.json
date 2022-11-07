@@ -78,7 +78,7 @@
   "Primer::OcticonComponent": "",
   "Primer::OcticonSymbolsComponent": "",
   "Primer::PopoverComponent": "",
-  "Primer::ProgressBarComponent": "",
+  "Primer::Beta::ProgressBar": "",
   "Primer::SpinnerComponent": "",
   "Primer::StateComponent": "",
   "Primer::SubheadComponent": "",
