@@ -5,7 +5,7 @@
   "Primer::Alpha::ActionList::Item": "alpha",
   "Primer::Alpha::AutoComplete": "deprecated",
   "Primer::Alpha::AutoComplete::Item": "deprecated",
-  "Primer::Alpha::Banner": "beta",
+  "Primer::Alpha::Banner": "alpha",
   "Primer::Alpha::ButtonMarketing": "alpha",
   "Primer::Alpha::Dialog": "alpha",
   "Primer::Alpha::Dialog::Body": "alpha",
