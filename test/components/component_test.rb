@@ -105,7 +105,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
     [Primer::Alpha::ActionList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::NavList, { aria: { label: "Nav list" } }],
-    [Primer::Beta::Banner, {}]
+    [Primer::Alpha::Banner, {}]
   ].freeze
 
   def test_registered_components
