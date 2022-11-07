@@ -38,20 +38,18 @@ module Demo
     }
 
     if config.respond_to?(:lookbook)
-      Lookbook.define_panel("assets", {
+      asset_panel_config = {
         label: "Assets",
         partial: "lookbook/panels/assets",
         locals: lambda do |data|
           assets = data.preview.components.map do |component|
-            # This example expects assets to have the same path as the related component `.rb`
-            # file but with a `.js` or `.css` extension
-            # `app/components/elements/button.rb` -> `app/components/elements/button.js`
-            asset_files = Dir[Rails.root.join("../", "#{component.full_path.to_s.chomp(".rb")}.{css,ts}")]
+            asset_files = Dir[Rails.root.join("../", "#{component.full_path.to_s.chomp('.rb')}.{css,ts}")]
             asset_files.map { |path| Pathname.new path }
           end.flatten.compact
           { assets: assets }
         end
-      })
+      }
+      Lookbook.define_panel("assets", asset_panel_config)
 
       config.lookbook.project_name = "Primer ViewComponents v#{Primer::ViewComponents::VERSION::STRING}"
       config.lookbook.preview_display_options = {
