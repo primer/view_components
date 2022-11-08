@@ -21,7 +21,7 @@ module Primer
 
       # @label Default
       def default
-        render(Primer::Alpha::Banner.new) { "This is a banner!" }
+        render(Primer::Alpha::Banner.new) { "This is a banner." }
       end
 
       # @label Danger
@@ -37,6 +37,11 @@ module Primer
       # @label Warning
       def as_warning
         render(Primer::Alpha::Banner.new(scheme: :warning)) { "This is a warning banner!" }
+      end
+
+      # @label Dismissable 
+      def full_width
+        render(Primer::Alpha::Banner.new(dismissable: true, reappear: true)) { "This is a dismissable banner." }
       end
 
       # @label Full width
