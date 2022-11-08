@@ -85,6 +85,8 @@
     url: "/components/beta/popover"
   - title: ProgressBar
     url: "/components/beta/progressbar"
+  - title: RelativeTime
+    url: "/components/beta/relativetime"
   - title: SegmentedControl
     url: "/components/alpha/segmentedcontrol"
   - title: Spinner
