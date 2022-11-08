@@ -9,7 +9,7 @@ module Primer::RenderPreview
         if respond_to?(:described_class)
           raise "`render_preview` expected a described_class, but it is nil." if described_class.nil?
 
-          prevew_klass = "#{described_class}Preview"
+          preview_klass = "#{described_class}Preview"
         else
           preview_klass = self.class.name.gsub("Test", "Preview")
         end
