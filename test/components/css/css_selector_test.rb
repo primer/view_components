@@ -13,9 +13,11 @@ class CssSelectorTest < Minitest::Test
     Primer::Alpha::ActionList => [/^to/]
   }.freeze
 
-  # Test: All Selectors Are Previewed For <component>
+  # Test: All CSS Selectors Are Previewed For <component>
   # ----
-  # ensure all css rules for a component are present in a preview
+  # ensure all css rules that are added to a component specific css file, are
+  # are present in a preview. selectors that do not show up in a preview can be
+  # ignored by modifying the above `IGNORED_SELECTORS` constant.
   #
   # these test methods are created dynamically so we can see all failures for
   # all components and not error after the first component failure
