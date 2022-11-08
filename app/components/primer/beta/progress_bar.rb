@@ -6,7 +6,7 @@ module Primer
     class ProgressBar < Primer::Component
       status :beta
 
-      # Use the Item slot to add an item to the progress bas
+      # Use the Item slot to add an item to the progress bar
       #
       # @param percentage [Integer] The percent complete
       # @param bg [Symbol] The background color
