@@ -2,7 +2,7 @@
 
 require "system/test_case"
 
-module Beta
+module Alpha
   class IntegrationBannerTest < System::TestCase
     def test_dismiss_button
       visit_preview(:playground, dismissible: true, reappear: false)
