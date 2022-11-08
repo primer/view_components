@@ -26,27 +26,27 @@ module Primer
 
       # @label Danger
       def as_danger
-        render(Primer::Beta::Banner.new(scheme: :danger)) { "This is a danger banner!" }
+        render(Primer::Alpha::Banner.new(scheme: :danger)) { "This is a danger banner!" }
       end
 
       # @label Success
       def as_success
-        render(Primer::Beta::Banner.new(scheme: :success)) { "This is a success banner!" }
+        render(Primer::Alpha::Banner.new(scheme: :success)) { "This is a success banner!" }
       end
 
       # @label Warning
       def as_warning
-        render(Primer::Beta::Banner.new(scheme: :warning)) { "This is a warning banner!" }
+        render(Primer::Alpha::Banner.new(scheme: :warning)) { "This is a warning banner!" }
       end
 
       # @label Full width
       def full_width
-        render(Primer::Beta::Banner.new(full: true)) { "This is a full width banner." }
+        render(Primer::Alpha::Banner.new(full: true)) { "This is a full width banner." }
       end
 
       # @label Full width in Narrow Viewport
       def full_width_in_narrow_viewport
-        render(Primer::Beta::Banner.new(full: true, full_when_narrow: true)) { "This is a full width banner in a narrow viewport." }
+        render(Primer::Alpha::Banner.new(full: true, full_when_narrow: true)) { "This is a full width banner in a narrow viewport." }
       end
 
       # @label With action button
