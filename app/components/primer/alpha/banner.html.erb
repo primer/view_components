@@ -12,12 +12,12 @@
       <% end %>
     <% end %>
     <% if action %>
-      <div class="Banner-actions">
+      <div class="flash-action Banner-actions">
         <%= action %>
       </div>
     <% end %>
     <% if @dismissible %>
-      <div class="Banner-close">
+      <div class="flash-close Banner-close">
         <%= render(
           Primer::Beta::IconButton.new(
             scheme: :invisible,
