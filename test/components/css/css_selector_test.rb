@@ -8,7 +8,7 @@ class CssSelectorTest < Minitest::Test
   include Primer::RenderPreview
 
   IGNORED_SELECTORS = {
-    :global => [/^\d/, ":is", ":root", ":before", ":after", ":hover", ":active", ":disabled", ":focus"],
+    :global => [/^\d/, ":"],
     Primer::Beta::Button => ["summary.Button"],
     Primer::Alpha::ActionList => [/^to/], 
   }.freeze
