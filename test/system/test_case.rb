@@ -16,8 +16,7 @@ module System
 
     # Skip `:region` which relates to preview page structure rather than individual component.
     # Skip `:color-contrast` which requires primer design-level change.
-    AXE_RULES_TO_SKIP = [:region].freeze
-    AXE_WITHIN_SELECTOR = "body"
+    AXE_RULES_TO_SKIP = [:region, :'color-contrast-enhanced'].freeze
 
     def visit_preview(preview_name, params = {})
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
@@ -28,39 +27,80 @@ module System
       component_uri = component_name.underscore
 
       url = +"/rails/view_components/primer/#{status_path}#{component_uri}/#{preview_name}"
-      query_string = params.map { |k, v| "#{k}=#{CGI.escape(v.to_s)}" }.join("&")
-      url << "?#{query_string}" if query_string.present?
+        query_string = params.map { |k, v| "#{k}=#{CGI.escape(v.to_s)}" }.join("&")
+        url << "?#{query_string}" if query_string.present?
 
-      visit(url)
+        visit(url)
 
-      assert_accessible(page)
+      assert_accessible
     end
 
-    def assert_accessible(page, within: AXE_WITHIN_SELECTOR, skipping: AXE_RULES_TO_SKIP, **options)
-      options[:within] = within
-      options[:skipping] = skipping
+    def format_accessibility_errors(violations)
+      results = violations.map.with_index do |summary, index|
+        summary["nodes"].map do |node|
+          <<~OUTPUT
+            #{index + 1}) #{summary["id"]}: #{summary["description"]} (#{summary["impact"]})
+            #{summary["helpUrl"]}
+            The following #{node["any"].size} node violate this rule:
+              #{node["any"].map do |violation|
+              items = node["failureSummary"].sub("Fix any of the following:", "").split("\n")
+              <<~OUTPUT
+            Selector: #{node["target"].join(', ')}
+              HTML: #{node["html"]}
+              Fix any of the following:
+              #{items.map { |item| "- #{item.strip}" }.join}
+              OUTPUT
+              end.join}
+          OUTPUT
+        end.join
+      end.join
+      <<~OUTPUT
+        Found #{violations.size} accessibility violations:
+          #{results}
+      OUTPUT
+    end
 
-      is_axe_clean = Axe::Matchers::BeAxeClean.new.tap do |a|
-        options.each do |option|
-          key, value = option
-          a.send(key, *value)
-        end
-      end
+    def assert_accessible
+      axe_exists = page.driver.evaluate_script '!!window.axe'
 
-      Axe::AccessibleExpectation.new.assert page, is_axe_clean
+      results = page.driver.evaluate_async_script <<~JS
+        const callback = arguments[arguments.length - 1];
+        #{File.read("node_modules/axe-core/axe.min.js") unless axe_exists}
+
+        const rulesToRun = axe
+          .getRules(["wcag2a", "wcag21a", "wcag2aa", "wcag2aaa", "wcag21aa", "wcag21aaa"])
+          .map(rule => rule.ruleId)
+          .filter(id => ![#{AXE_RULES_TO_SKIP.map { |id| "'#{id}'" }.join(', ')}].includes(id))
+
+        const options = {
+          elementRef: true,
+          resultTypes: ['violations', 'incomplete'],
+          runOnly: {
+            type: 'rule',
+            values: rulesToRun
+          }
+        }
+        axe.run(document.body, options).then(res => JSON.parse(JSON.stringify(res))).then(callback);
+      JS
+
+      violations = (results["violations"] + results["incomplete"].filter { |item| item["impact"] != "serious" && item["impact"] != "critical" })
+
+      message = format_accessibility_errors(violations)
+
+      assert violations.size == 0, message
     end
 
     # Capybara Overrides to run accessibility checks when UI changes.
     def fill_in(locator = nil, **kwargs)
       super
 
-      assert_accessible(page)
+      assert_accessible
     end
 
     def click_button(locator = nil, **kwargs)
       super
 
-      assert_accessible(page)
+      assert_accessible
     end
-  end
+    end
 end
