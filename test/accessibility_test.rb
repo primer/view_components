@@ -23,7 +23,7 @@ class AccessibilityTest < System::TestCase
     component_previews.each do |preview|
       define_method(:"test_#{component_uri.parameterize(separator: "_")}_#{preview}") do
         visit("/rails/view_components/#{component_uri}/#{preview}")
-        assert_accessible(page)
+        assert_accessible
         puts "#{component_uri}##{preview} passed check."
       end
     end
