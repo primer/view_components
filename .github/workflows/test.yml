@@ -202,7 +202,6 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      id: playwright-run
       continue-on-error: true
       run: npx playwright test
     - id: auto-commit
