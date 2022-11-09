@@ -8,7 +8,7 @@ module Alpha
       visit_preview(:default)
 
       assert_selector("button[id='button-with-tooltip']")
-      assert_selector("tool-tip[for='button-with-tooltip'][data-view-component][role='tooltip']", text: "Tooltip text", visible: :hidden)
+      assert_selector("tool-tip[for='button-with-tooltip'][data-view-component][role='tooltip']", text: "You can press a button", visible: :hidden)
       assert_equal(find("button")["aria-describedby"], find("tool-tip", visible: :hidden)["id"])
     end
 

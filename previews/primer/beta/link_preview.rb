@@ -31,12 +31,9 @@ module Primer
       # @param tag [Symbol] select [a, span]
       # @param scheme [Symbol] select [default, primary, secondary]
       def tooltip(tag: :a, scheme: :default, muted: false, underline: true)
-        render(Primer::BaseComponent.new(tag: :div)) do
-          "First there's some surrounding text."
-          render(Primer::Beta::Link.new(href: "#", id: "tooltip-link", tag: tag, scheme: scheme, muted: muted, underline: underline)) do |component|
-            component.with_tooltip(text: "Tooltip text")
-            "Link with tooltip"
-          end
+        render(Primer::Beta::Link.new(href: "#", id: "tooltip-link", tag: tag, scheme: scheme, muted: muted, underline: underline)) do |component|
+          component.with_tooltip(text: "Tooltip text")
+          "Link with tooltip"
         end
       end
     end

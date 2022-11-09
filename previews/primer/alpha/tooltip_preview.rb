@@ -7,7 +7,7 @@ module Primer
       # @param type [Symbol] select [["Description", description], ["Label", label]]
       # @param direction select [s, n, e, w, ne, nw, se, sw]
       # @param tooltip_text text
-      def playground(type: :description, direction: :s, tooltip_text: "Tooltip text")
+      def playground(type: :description, direction: :s, tooltip_text: "You can press a button")
         render(Primer::Beta::Button.new(id: "button-with-tooltip")) do |c|
           c.tooltip(text: tooltip_text, type: type, direction: direction)
           "Button"
@@ -17,7 +17,7 @@ module Primer
       # @param type [Symbol] select [["Description", description], ["Label", label]]
       # @param direction select [s, n, e, w, ne, nw, se, sw]
       # @param tooltip_text text
-      def default(type: :description, direction: :s, tooltip_text: "Tooltip text")
+      def default(type: :description, direction: :s, tooltip_text: "You can press a button")
         render(Primer::Beta::Button.new(id: "button-with-tooltip")) do |c|
           c.tooltip(text: tooltip_text, type: type, direction: direction)
           "Button"
@@ -35,7 +35,7 @@ module Primer
 
       # @param direction select [s, n, e, w, ne, nw, se, sw]
       # @param tooltip_text text
-      def description_tooltip_on_button_with_existing_describedby(type: :description, direction: :s, tooltip_text: "Tooltip text")
+      def description_tooltip_on_button_with_existing_describedby(type: :description, direction: :s, tooltip_text: "You can press a button")
         render(Primer::Beta::Button.new(id: "button-with-existing-description", "aria-describedby": "existing-description-id")) do |c|
           c.tooltip(text: tooltip_text, type: type, direction: direction)
           "Button"
@@ -56,7 +56,7 @@ module Primer
 
       # @param direction select [s, n, e, w, ne, nw, se, sw]
       # @param tooltip_text text
-      def with_multiple_on_a_page(type: :description, direction: :s, tooltip_text: "Tooltip text")
+      def with_multiple_on_a_page(type: :description, direction: :s, tooltip_text: "You can press a button")
         render_with_template(
           locals: {
             type: type,
@@ -68,7 +68,7 @@ module Primer
 
       # @!group Tooltip enabled elements
       # @label Tooltip with Primer::Beta::Button
-      def tooltip_with_button(type: :description, direction: :s, tooltip_text: "Tooltip text")
+      def tooltip_with_button(type: :description, direction: :s, tooltip_text: "You can press a button")
         render(Primer::Beta::Button.new(id: "button-with-tooltip")) do |c|
           c.tooltip(text: tooltip_text, type: type, direction: direction)
           "Button"
@@ -76,18 +76,15 @@ module Primer
       end
 
       # @label Tooltip with Primer::Beta::Link
-      def tooltip_with_link(type: :description, direction: :s, tooltip_text: "Tooltip text")
-        render(Primer::BaseComponent.new(tag: :div)) do
-          "Here is some surrounding text."
-          render(Primer::Beta::Link.new(href: "#link-with-tooltip", id: "link-with-tooltip")) do |c|
-            c.tooltip(text: tooltip_text, type: type, direction: direction)
-            "Button"
-          end
+      def tooltip_with_link(type: :description, direction: :s, tooltip_text: "You can press a button")
+        render(Primer::Beta::Link.new(href: "#link-with-tooltip", id: "link-with-tooltip")) do |c|
+          c.tooltip(text: tooltip_text, type: type, direction: direction)
+          "Button"
         end
       end
 
       # @label Tooltip with Primer::IconButton
-      def tooltip_with_icon_button(direction: :s, tooltip_text: "Tooltip text")
+      def tooltip_with_icon_button(direction: :s, tooltip_text: "You can press a button")
         render(Primer::Beta::IconButton.new(icon: :search, "aria-label": tooltip_text, tooltip_direction: direction))
       end
       # @!endgroup
