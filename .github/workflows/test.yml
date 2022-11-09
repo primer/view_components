@@ -176,6 +176,7 @@ jobs:
         bundle exec rake test:system
   visual:
     name: Visual Regressions
+    if: ${{ github.event_name == 'pull_request' && github.actor != 'primer-css' }}
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -202,9 +203,20 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
-    - uses: actions/upload-artifact@v3
-      if: always()
+    - id: auto-commit
+      uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        name: playwright-report
-        path: .playwright/report/
-        retention-days: 30
+        commit_message: Generating component snapshots
+        file_pattern: .playwright/screenshots/**/*.png
+    - name: "Changes detected"
+      if: steps.auto-commit.outputs.changes_detected == 'true'
+      uses: phulsechinmay/rewritable-pr-comment@v0.3.0
+      with:
+        message: |
+          ### ⚠️ Visual differences found
+
+          Our visual comparison tests found UI differences. Please review the differences by viewing the files changed tab to ensure that the changes were intentional.
+
+          [Review visual differences](https://github.com/primer/view_components/pull/${{ github.event.number }}/files?file-filters%5B%5D=.png&show-viewed-files=false)
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        COMMENT_IDENTIFIER: 'visual-comparison-diff'
