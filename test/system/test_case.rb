@@ -27,10 +27,10 @@ module System
       component_uri = component_name.underscore
 
       url = +"/rails/view_components/primer/#{status_path}#{component_uri}/#{preview_name}"
-        query_string = params.map { |k, v| "#{k}=#{CGI.escape(v.to_s)}" }.join("&")
-        url << "?#{query_string}" if query_string.present?
+      query_string = params.map { |k, v| "#{k}=#{CGI.escape(v.to_s)}" }.join("&")
+      url << "?#{query_string}" if query_string.present?
 
-        visit(url)
+      visit(url)
 
       assert_accessible
     end
@@ -39,17 +39,17 @@ module System
       results = violations.map.with_index do |summary, index|
         summary["nodes"].map do |node|
           <<~OUTPUT
-            #{index + 1}) #{summary["id"]}: #{summary["description"]} (#{summary["impact"]})
-            #{summary["helpUrl"]}
-            The following #{node["any"].size} node violate this rule:
-              #{node["any"].map do |violation|
-              items = node["failureSummary"].sub("Fix any of the following:", "").split("\n")
-              <<~OUTPUT
-            Selector: #{node["target"].join(', ')}
-              HTML: #{node["html"]}
-              Fix any of the following:
-              #{items.map { |item| "- #{item.strip}" }.join}
-              OUTPUT
+            #{index + 1}) #{summary['id']}: #{summary['description']} (#{summary['impact']})
+            #{summary['helpUrl']}
+            The following #{node['any'].size} node violate this rule:
+              #{node['any'].map do |_violation|
+                items = node['failureSummary'].sub('Fix any of the following:', '').split("\n")
+                <<~OUTPUT
+                  Selector: #{node['target'].join(', ')}
+                    HTML: #{node['html']}
+                    Fix any of the following:
+                    #{items.map { |item| "- #{item.strip}" }.join}
+                OUTPUT
               end.join}
           OUTPUT
         end.join
@@ -61,11 +61,11 @@ module System
     end
 
     def assert_accessible
-      axe_exists = page.driver.evaluate_script '!!window.axe'
+      axe_exists = page.driver.evaluate_script "!!window.axe"
 
       results = page.driver.evaluate_async_script <<~JS
         const callback = arguments[arguments.length - 1];
-        #{File.read("node_modules/axe-core/axe.min.js") unless axe_exists}
+        #{File.read('node_modules/axe-core/axe.min.js') unless axe_exists}
 
         const rulesToRun = axe
           .getRules(["wcag2a", "wcag21a", "wcag2aa", "wcag2aaa", "wcag21aa", "wcag21aaa"])
@@ -87,7 +87,7 @@ module System
 
       message = format_accessibility_errors(violations)
 
-      assert violations.size == 0, message
+      assert violations.empty?, message
     end
 
     # Capybara Overrides to run accessibility checks when UI changes.
