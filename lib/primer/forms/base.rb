@@ -84,6 +84,8 @@ module Primer
       end
 
       def before_render
+        define_inputs_once
+
         each_input_in(self) do |input|
           if input.input? && input.invalid? && input.focusable?
             input.autofocus!
@@ -119,12 +121,23 @@ module Primer
 
       private
 
+      def define_inputs_once
+        return if defined?(@inputs_defined) && @inputs_defined
+
+        define_inputs_on(form_object)
+
+        @inputs_defined = true
+      end
+
+      def define_inputs_on(form_object)
+        instance_exec(form_object, &self.class.__vcf_form_block)
+      end
+
       def form_object
         # rubocop:disable Naming/MemoizedInstanceVariableName
         @__pf_form_object ||= Primer::Forms::Dsl::FormObject.new(builder: @builder, form: self).tap do |obj|
           # compile before adding inputs so caption templates are identified
           self.class.compile!
-          instance_exec(obj, &self.class.__vcf_form_block)
         end
         # rubocop:enable Naming/MemoizedInstanceVariableName
       end

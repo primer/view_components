@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ExampleToggleSwitchForm < Primer::Forms::ToggleSwitchForm
-  set_name :example_field
-  set_label "Example"
+  def initialize(**system_arguments)
+    super(name: :example_field, label: "Example", **system_arguments)
+  end
 end

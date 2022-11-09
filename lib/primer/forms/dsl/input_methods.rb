@@ -33,6 +33,10 @@ module Primer
           add_input Separator.new
         end
 
+        def toggle_switch(**options)
+          add_input ToggleSwitchInput.new(builder: builder, form: form, **options)
+        end
+
         # START text input methods
 
         def text_field(**options, &block)

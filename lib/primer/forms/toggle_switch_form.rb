@@ -3,30 +3,31 @@
 module Primer
   module Forms
     class ToggleSwitchForm < Primer::Forms::Base
-      class << self
-        def set_name(name)
-          @name = name
-          redefine_form
-        end
+      def self.create
+        Class.new(self)
+      end
 
-        def set_label(label)
-          @label = label
-          redefine_form
-        end
+      # override to avoid accepting a builder argument
+      def self.new(**options)
+        allocate.tap { |obj| obj.send(:initialize, **options) }
+      end
 
-        def redefine_form
-          return unless @label && @name
+      def initialize(**system_arguments)
+        @system_arguments = system_arguments
+      end
 
-          name = @name
-          label = @label
+      def render_in(view_context, &block)
+        @builder = Primer::Forms::Builder.new(
+          nil, nil, view_context, {}
+        )
 
-          form do |f|
-            f.check_box(
-              name: name,
-              label: label
-            )
-          end
-        end
+        super
+      end
+
+      private
+
+      def define_inputs_on(obj)
+        obj.toggle_switch(**@system_arguments)
       end
     end
   end
