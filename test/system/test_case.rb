@@ -4,9 +4,6 @@ require "system/test_helper"
 require "capybara/rails"
 require "capybara/minitest"
 
-require "axe/matchers/be_axe_clean"
-require "axe/expectation"
-
 require "test_helpers/cuprite_setup"
 require "test_helpers/retry"
 
