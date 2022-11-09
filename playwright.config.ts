@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-nodejs-modules
 import path from 'node:path'
 import type {PlaywrightTestConfig} from '@playwright/test'
-import {devices} from '@playwright/test'
 
 /**
  * See https://playwright.dev/docs/test-configuration.
