@@ -16,7 +16,8 @@ module System
 
     # Skip `:region` which relates to preview page structure rather than individual component.
     # Skip `:color-contrast` which requires primer design-level change.
-    AXE_RULES_TO_SKIP = [:region, :'color-contrast', :'color-contrast-enhanced'].freeze
+    # Skip `:aria-required-children` is broken in 4.5: https://github.com/dequelabs/axe-core/issues/3758
+    AXE_RULES_TO_SKIP = [:region, :'color-contrast', :'color-contrast-enhanced', :'aria-required-children'].freeze
 
     def visit_preview(preview_name, params = {})
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
