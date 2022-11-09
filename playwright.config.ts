@@ -32,7 +32,11 @@ const config: PlaywrightTestConfig = {
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
 
-  reporter: [['line'], ['html', {open: 'never', outputFolder: path.join(__dirname, '.playwright/report')}]],
+  reporter: [
+    ['line'],
+    ['html', {open: 'never', outputFolder: path.join(__dirname, '.playwright/report')}],
+    ['json', {outputFile: path.join(__dirname, '.playwright', 'results.json')}]
+  ],
 
   webServer: {
     command: 'cd demo; bin/rails s -p 4000',

@@ -22,6 +22,7 @@ for (const preview of previews) {
 
   test(`renders ${componentName} preview`, async ({page}) => {
     await page.goto(`/lookbook/preview/${previewURL}/default`)
-    expect(await page.locator('#component-preview').screenshot()).toMatchSnapshot(['previews', `${previewURL}.png`])
+    const screenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
+    expect(screenshot).toMatchSnapshot(['previews', `${previewURL}.png`])
   })
 }
