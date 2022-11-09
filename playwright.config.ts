@@ -18,7 +18,7 @@ const config: PlaywrightTestConfig = {
 
   /* Run tests in files in parallel */
   fullyParallel: true,
-  workers: 4,
+  workers: process.env.CI ? 4 : undefined,
   use: {
     baseURL: 'http://127.0.0.1:4000',
     browserName: 'chromium',
