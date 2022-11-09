@@ -1,29 +1,25 @@
-// A rounded corner box containing a label "open" or "closed"
+/* State */
 
-// Default 32px
-// Small 24px
+/* Default 32px */
 
-.state, // TODO: Deprecate
+.state, /* TODO: Deprecate */
 .State {
   display: inline-block;
-  // stylelint-disable-next-line primer/spacing
-  padding: 5px 12px;
-  font-size: $body-font-size;
-  font-weight: $font-weight-semibold;
-  // stylelint-disable-next-line primer/typography
-  line-height: 20px;
+  padding: 5px var(--primer-control-medium-paddingInline-normal, 12px);
+  font-size: var(--primer-text-body-size-medium, 14px);
+  font-weight: var(--base-text-weight-medium, 500);
+  line-height: var(--primer-control-medium-lineBoxHeight, 20px);
   text-align: center;
   white-space: nowrap;
-  // stylelint-disable-next-line primer/borders
   border-radius: 2em;
 }
 
-.state, // TODO: Deprecate
+.state, /* TODO: Deprecate */
 .State,
 .State--draft {
   color: var(--color-fg-on-emphasis);
   background-color: var(--color-neutral-emphasis);
-  border: $border-width $border-style transparent;
+  border: var(--primer-borderWidth-thin, 1px) solid transparent;
 }
 
 .State--open {
@@ -41,16 +37,14 @@
   background-color: var(--color-closed-emphasis);
 }
 
-// Small
+/* Small 24px */
 
 .State--small {
-  // stylelint-disable-next-line primer/spacing
   padding: 0 10px;
-  font-size: $font-size-small;
-  // stylelint-disable-next-line primer/typography
-  line-height: $size-3;
+  font-size: var(--primer-text-body-size-small, 12px);
+  line-height: var(--base-size-24, 24px);
 
-  .octicon {
-    width: 1em; // Ensures different icons don't change State indicator width
+  & .octicon {
+    width: 1em; /* Ensures different icons don't change State indicator width */
   }
 }
