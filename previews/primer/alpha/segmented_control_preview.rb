@@ -24,7 +24,7 @@ module Primer
       end
 
       # @label Default
-      def default()
+      def default
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |c|
           c.with_item(label: "Preview", selected: true)
           c.with_item(label: "Raw")
@@ -36,27 +36,27 @@ module Primer
       # @label Size small
       def full_width_small(hide_labels: false, size: :small)
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: true, size: :small)) do |c|
-          c.with_item(label: "Preview", icon: :eye, selected: true)
-          c.with_item(label: "Raw", icon: :"file-code")
-          c.with_item(label: "Blame", icon: :people)
+          c.with_item(label: "Preview", selected: true)
+          c.with_item(label: "Raw")
+          c.with_item(label: "Blame")
         end
       end
 
       # @label Size medium
       def full_width_medium(hide_labels: false, size: :medium)
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: true, size: :medium)) do |c|
-          c.with_item(label: "Preview", icon: :eye, selected: true)
-          c.with_item(label: "Raw", icon: :"file-code")
-          c.with_item(label: "Blame", icon: :people)
+          c.with_item(label: "Preview", selected: true)
+          c.with_item(label: "Raw")
+          c.with_item(label: "Blame")
         end
       end
 
       # @label Size large
       def full_width_large(hide_labels: false, size: :large)
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: true, size: :large)) do |c|
-          c.with_item(label: "Preview", icon: :eye, selected: true)
-          c.with_item(label: "Raw", icon: :"file-code")
-          c.with_item(label: "Blame", icon: :people)
+          c.with_item(label: "Preview", selected: true)
+          c.with_item(label: "Raw")
+          c.with_item(label: "Blame")
         end
       end
       # @!endgroup
