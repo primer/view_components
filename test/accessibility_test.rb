@@ -25,7 +25,7 @@ class AccessibilityTest < System::TestCase
         visit("/rails/view_components/#{component_uri}/#{preview}")
         begin
           assert_accessible
-        rescue e
+        rescue StandardError => e
           puts "/rails/view_components/#{component_uri}/#{preview}"
           raise e
         end
