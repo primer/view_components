@@ -9,8 +9,9 @@ class CssSelectorTest < Minitest::Test
 
   IGNORED_SELECTORS = {
     :global => [/^\d/, ":"],
-    Primer::Beta::Button => ["summary.Button"],
-    Primer::Alpha::ActionList => [/^to/]
+    Primer::Alpha::ActionList => [/^to/],
+    Primer::Alpha::Banner => [".Banner .Banner-close"],
+    Primer::Beta::Button => ["summary.Button"]
   }.freeze
 
   # Test: All CSS Selectors Are Previewed For <component>
