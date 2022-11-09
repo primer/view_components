@@ -1,25 +1,23 @@
-// Counters are rounded-corner badges for numbers
+/* Counter */
+
 .Counter {
   display: inline-block;
-  min-width: $size-2; // makes sure it's a circle with just one digit
-  // stylelint-disable-next-line primer/spacing
+  min-width: var(--base-size-20, 20px); /* makes sure it's a circle with just one digit */
   padding: 0 6px;
-  font-size: $font-size-small;
-  font-weight: $font-weight-semibold;
-  // stylelint-disable-next-line primer/typography
-  line-height: $size-2 - 2px; // remove borders
+  font-size: var(--primer-text-body-size-small, 12px);
+  font-weight: var(--base-text-weight-medium, 500);
+  line-height: calc(var(--base-size-20, 20px) - var(--primer-borderWidth-thin, 1px) * 2); /* 20px - 2px for the borders */
   color: var(--color-fg-default);
   text-align: center;
   background-color: var(--color-neutral-muted);
-  border: $border-width $border-style var(--color-counter-border);
-  // stylelint-disable-next-line primer/borders
+  border: var(--primer-borderWidth-thin, 1px) solid var(--color-counter-border);
   border-radius: 2em;
 
   &:empty {
     display: none;
   }
 
-  .octicon {
+  & .octicon {
     vertical-align: text-top;
     opacity: 0.8;
   }
