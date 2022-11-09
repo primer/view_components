@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 import {test, expect} from '@playwright/test'
 import {componentPreviews} from './helpers'
 
-test.beforeEach(async (page, testInfo) => {
+test.beforeEach(async ({page}, testInfo) => {
   testInfo.snapshotSuffix = ''
 })
 
