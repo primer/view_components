@@ -54,5 +54,5 @@ Rails.application.configure do
   config.hotwire_livereload.listen_paths << Rails.root.join("../app/assets")
   config.hotwire_livereload.force_reload_paths << Rails.root.join("../app/assets")
 
-  config.lookbook.listen_paths << Rails.root.join("../app/components")
+  config.lookbook.listen_paths << Rails.root.join("../app/components/**/*.rb")
 end
