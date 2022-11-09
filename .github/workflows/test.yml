@@ -194,7 +194,10 @@ jobs:
     - name: Build
       run: |
         npm ci
-        cd demo && npm ci
+        bundle install
+        cd demo
+        npm ci
+        bundle install
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
