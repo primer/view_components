@@ -2,8 +2,12 @@ import {test, expect} from '@playwright/test'
 import {glob} from 'glob'
 
 const previews = glob.sync('previews/**/*_preview.rb')
+const ignoredPreviews = ['primer/forms/forms']
 for (const preview of previews) {
-  const previewURL = preview.replace('previews/', '').replace('_preview.rb', '')
+  const previewURL = preview.replace('previews/', '').replace('_preview.rb', '').replace('_component', '')
+  if (ignoredPreviews.includes(previewURL)) {
+    continue
+  }
   const componentName = previewURL
     .split('/')
     .map(module => {
