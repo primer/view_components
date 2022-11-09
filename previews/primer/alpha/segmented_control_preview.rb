@@ -92,7 +92,7 @@ module Primer
 
       # @!group Icons only
       # @label Size small
-      def hidden_label_small
+      def icon_only_small
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, size: :small)) do |c|
           c.with_item(label: "Preview", icon: :eye, selected: true)
           c.with_item(label: "Raw", icon: :"file-code")
@@ -101,7 +101,7 @@ module Primer
       end
 
       # @label Size medium
-      def hidden_label_medium
+      def icon_only_medium
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, size: :medium)) do |c|
           c.with_item(label: "Preview", icon: :eye, selected: true)
           c.with_item(label: "Raw", icon: :"file-code")
@@ -110,8 +110,17 @@ module Primer
       end
 
       # @label Size large
-      def hidden_label_large
+      def icon_only_large
         render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, size: :large)) do |c|
+          c.with_item(label: "Preview", icon: :eye, selected: true)
+          c.with_item(label: "Raw", icon: :"file-code")
+          c.with_item(label: "Blame", icon: :people)
+        end
+      end
+
+      # @label Full width
+      def icon_only_full_width
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, full_width: true)) do |c|
           c.with_item(label: "Preview", icon: :eye, selected: true)
           c.with_item(label: "Raw", icon: :"file-code")
           c.with_item(label: "Blame", icon: :people)
