@@ -11,6 +11,7 @@ class CssSelectorTest < Minitest::Test
     :global => [/^\d/, ":"],
     Primer::Alpha::ActionList => [/^to/],
     Primer::Alpha::Banner => [".Banner .Banner-close"],
+    Primer::Alpha::SegmentedControl => [".Button-withTooltip"],
     Primer::Beta::Button => ["summary.Button"]
   }.freeze
 
