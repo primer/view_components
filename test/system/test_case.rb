@@ -38,19 +38,19 @@ module System
     def format_accessibility_errors(violations)
       results = violations.map.with_index do |summary, index|
         summary["nodes"].map do |node|
+          violations = node["any"] + node["all"]
           <<~OUTPUT
-            #{index + 1}) #{summary['id']}: #{summary['description']} (#{summary['impact']})
-            #{summary['helpUrl']}
-            The following #{node['any'].size} node violate this rule:
-              #{node['any'].map do |_violation|
-                items = node['failureSummary'].sub('Fix any of the following:', '').split("\n")
-                <<~OUTPUT
-                  Selector: #{node['target'].join(', ')}
-                    HTML: #{node['html']}
-                    Fix any of the following:
-                    #{items.map { |item| "- #{item.strip}" }.join}
-                OUTPUT
-              end.join}
+                        #{index + 1}) #{summary['id']}: #{summary['description']} (#{summary['impact']})
+                        #{summary['helpUrl']}
+            #{'            '}
+                          The following #{violations.size} node violate this rule:
+                          #{violations.map do |_violation|
+                            <<~OUTPUT
+                              Selector: #{node['target'].join(', ')}
+                                HTML: #{node['html']}
+                                #{node['failureSummary']}
+                            OUTPUT
+                          end.join}
           OUTPUT
         end.join
       end.join
