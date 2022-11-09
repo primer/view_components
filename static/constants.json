@@ -670,6 +670,19 @@
       "span"
     ]
   },
+  "Primer::Beta::ProgressBar": {
+    "SIZE_DEFAULT": "default",
+    "SIZE_MAPPINGS": {
+      "default": "",
+      "small": "Progress--small",
+      "large": "Progress--large"
+    },
+    "SIZE_OPTIONS": [
+      "default",
+      "small",
+      "large"
+    ]
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
@@ -889,17 +902,6 @@
     "DEFAULT_HEADING_TAG": "h4"
   },
   "Primer::ProgressBarComponent": {
-    "SIZE_DEFAULT": "default",
-    "SIZE_MAPPINGS": {
-      "default": "",
-      "small": "Progress--small",
-      "large": "Progress--large"
-    },
-    "SIZE_OPTIONS": [
-      "default",
-      "small",
-      "large"
-    ]
   },
   "Primer::SpinnerComponent": {
     "DEFAULT_SIZE": "medium",

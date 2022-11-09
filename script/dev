@@ -16,11 +16,6 @@ bundle install --path vendor/bundle
 npm install
 popd
 
-# Set up docs
-pushd docs
-npm install
-popd
-
 while [[ "$#" > 0 ]]; do case $1 in
   -d|--debug) debug="1"; shift;;
 esac; done
@@ -44,4 +39,3 @@ if [ -n "$debug" ]; then
 else
   exec overmind start "$@"
 fi
-
