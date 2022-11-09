@@ -1,0 +1,9 @@
+<div class="d-flex">
+  <span style="flex-grow: 1">
+    <%= builder.label(@input.name, **@input.label_arguments) do %>
+      <%= @input.label %>
+    <% end %>
+    <%= render(Caption.new(input: @input)) %>
+  </span>
+  <%= render(Primer::Alpha::ToggleSwitch.new(src: "/yo")) %>
+</div>
