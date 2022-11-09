@@ -174,8 +174,8 @@ jobs:
     - name: Test
       run: |
         bundle exec rake test:system
-  snapshots:
-    name: Snapshots
+  visual:
+    name: Visual Regressions
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
