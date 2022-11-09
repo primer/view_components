@@ -176,7 +176,7 @@ jobs:
         bundle exec rake test:system
   visual:
     name: Visual Regressions
-    if: ${{ github.event_name == 'pull_request' && github.actor != 'primer-css' }}
+    if: ${{ github.event_name == 'pull_request' }}
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:

@@ -18,8 +18,11 @@ const config: PlaywrightTestConfig = {
 
   /* Run tests in files in parallel */
   fullyParallel: true,
+  workers: 4,
   use: {
-    screenshot: 'only-on-failure'
+    baseURL: 'http://127.0.0.1:4000',
+    browserName: 'chromium',
+    headless: true
   },
   expect: {
     toHaveScreenshot: {

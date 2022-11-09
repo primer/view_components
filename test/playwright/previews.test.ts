@@ -17,7 +17,7 @@ for (const preview of previews) {
     .join('::')
 
   test(`renders ${componentName} preview`, async ({page}) => {
-    await page.goto(`http://127.0.0.1:4000/lookbook/preview/${previewURL}/default`)
+    await page.goto(`/lookbook/preview/${previewURL}/default`)
     const component = await page.locator('#component-preview')
     await expect(component).toHaveScreenshot({maxDiffPixels: 100})
   })
