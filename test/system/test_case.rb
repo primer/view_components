@@ -16,7 +16,7 @@ module System
 
     # Skip `:region` which relates to preview page structure rather than individual component.
     # Skip `:color-contrast` which requires primer design-level change.
-    AXE_RULES_TO_SKIP = [:region, :"color-contrast"].freeze
+    AXE_RULES_TO_SKIP = [:region].freeze
     AXE_WITHIN_SELECTOR = "body"
 
     def visit_preview(preview_name, params = {})
