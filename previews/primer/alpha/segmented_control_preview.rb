@@ -118,9 +118,27 @@ module Primer
         end
       end
 
-      # @label Full width
-      def icon_only_full_width
-        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, full_width: true)) do |c|
+      # @label Full width, size small
+      def icon_only_full_width_small
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, full_width: true, size: :small)) do |c|
+          c.with_item(label: "Preview", icon: :eye, selected: true)
+          c.with_item(label: "Raw", icon: :"file-code")
+          c.with_item(label: "Blame", icon: :people)
+        end
+      end
+
+      # @label Full width, size medium
+      def icon_only_full_width_medium
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, full_width: true, size: :medium)) do |c|
+          c.with_item(label: "Preview", icon: :eye, selected: true)
+          c.with_item(label: "Raw", icon: :"file-code")
+          c.with_item(label: "Blame", icon: :people)
+        end
+      end
+
+      # @label Full width, size large
+      def icon_only_full_width_large
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, full_width: true, size: :large)) do |c|
           c.with_item(label: "Preview", icon: :eye, selected: true)
           c.with_item(label: "Raw", icon: :"file-code")
           c.with_item(label: "Blame", icon: :people)
