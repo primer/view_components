@@ -34,7 +34,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "allocation_stats", "~> 0.1"
   spec.add_development_dependency "allocation_tracer", "~> 0.6.3"
-  spec.add_development_dependency "axe-core-api", "~> 4.2.0"
   spec.add_development_dependency "benchmark-ips", "~> 2.8.4"
   spec.add_development_dependency "capybara", "~> 3"
   spec.add_development_dependency "cuprite", "= 0.13"
