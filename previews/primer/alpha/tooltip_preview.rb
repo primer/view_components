@@ -26,7 +26,7 @@ module Primer
 
       # @param direction select [s, n, e, w, ne, nw, se, sw]
       # @param tooltip_text text
-      def label_tooltip_on_button_with_existing_labelledby(type: :label, direction: :s, tooltip_text: "Tooltip text")
+      def label_tooltip_on_button_with_existing_labelledby(type: :label, direction: :s, tooltip_text: "You can press a button")
         render(Primer::Beta::Button.new(id: "button-with-existing-label", "aria-labelledby": "existing-label-id")) do |c|
           c.tooltip(text: tooltip_text, type: type, direction: direction)
           "Button"
