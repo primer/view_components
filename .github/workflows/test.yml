@@ -230,3 +230,25 @@ jobs:
     - name: Failure
       if: ${{ steps.auto-commit.outputs.changes_detected == 'true' || steps.playwright-run.outcome == 'failure' }}
       run: exit 1
+  selectors:
+    name: CSS coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - name: NPM Build
+        run: npm ci
+      - name: Build Output Selectors
+        run: script/build-assets
+      - name: Test CSS
+        run: bundle exec rake test:component_css
