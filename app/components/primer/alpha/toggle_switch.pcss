@@ -1,5 +1,7 @@
-// Catalyst in dotcom applies a display: block to all web component elements. This
-// rule overrides it so the status label and toggle switch are laid out correctly.
+/* ToggleSwitch */
+
+/* Catalyst in dotcom applies a display: block to all web component elements. This
+** rule overrides it so the status label and toggle switch are laid out correctly. */
 .ToggleSwitch.ToggleSwitch {
   display: inline-flex;
 }
@@ -7,28 +9,28 @@
 .ToggleSwitch {
   align-items: center;
   display: inline-flex;
-  gap: $spacer-2;
+  gap: var(--primer-controlStack-medium-gap-condensed, 8px);
 
   &:hover {
-    .ToggleSwitch-knob {
+    & .ToggleSwitch-knob {
       background-color: var(--color-btn-hover-bg);
     }
   }
 
   &:active {
-    .ToggleSwitch-knob {
+    & .ToggleSwitch-knob {
       background-color: var(--color-btn-active-bg);
     }
   }
 }
 
 .ToggleSwitch--checked {
-  .ToggleSwitch-statusOn {
+  & .ToggleSwitch-statusOn {
     height: auto;
     visibility: visible;
   }
 
-  .ToggleSwitch-statusOff {
+  & .ToggleSwitch-statusOff {
     height: 0;
     visibility: hidden;
   }
@@ -37,16 +39,16 @@
 .ToggleSwitch-track {
   position: relative;
   display: block;
-  width: $spacer-8;
-  height: $spacer-5;
+  width: var(--base-size-64, 64px);
+  height: var(--primer-control-medium-size, 32px);
   padding: 0;
   overflow: hidden;
   text-decoration: none;
   cursor: pointer;
   user-select: none;
   background-color: var(--color-switch-track-bg);
-  border: $border-width $border-style var(--color-switch-track-border);
-  border-radius: $border-radius;
+  border: var(--primer-borderWidth-thin, 1px) solid var(--color-switch-track-border);
+  border-radius: var(--primer-borderRadius-medium, 6px);
   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
   transition-duration: 80ms;
   transition-property: background-color, border-color;
@@ -59,14 +61,14 @@
 
   @media (pointer: coarse) {
     &::before {
-      @include minTouchTarget(calc($spacer-6 + $spacer-1));
+      @mixin minTouchTarget 44px;
     }
   }
 
   @media (prefers-reduced-motion) {
     transition: none;
 
-    * {
+    & * {
       transition: none;
     }
   }
@@ -80,16 +82,15 @@
   &:active {
     background-color: var(--color-canvas-subtle);
 
-    // This is the most straightforward way of setting the knob's styles when the
-    // switch is both checked and disabled.
+    /* This is the most straightforward way of setting the knob's styles when the
+    ** switch is both checked and disabled. */
 
-    // stylelint-disable-next-line selector-max-specificity
-    .ToggleSwitch-knob {
+    & .ToggleSwitch-knob {
       background-color: var(--color-switch-knob-checked-disabled-bg);
     }
   }
 
-  .ToggleSwitch-knob {
+  & .ToggleSwitch-knob {
     background-color: var(--color-switch-knob-checked-disabled-bg);
   }
 }
@@ -106,17 +107,17 @@
     background-color: var(--color-switch-track-checked-active-bg);
   }
 
-  .ToggleSwitch-knob {
+  & .ToggleSwitch-knob {
     background-color: var(--color-switch-knob-checked-bg);
     border: 0;
     transform: translateX(calc(100% + 1px));
   }
 
-  .ToggleSwitch-lineIcon {
+  & .ToggleSwitch-lineIcon {
     transform: translateX(0%);
   }
 
-  .ToggleSwitch-circleIcon {
+  & .ToggleSwitch-circleIcon {
     transform: translateX(100%);
   }
 }
@@ -129,12 +130,12 @@
 
   &:hover,
   &:active {
-    .ToggleSwitch-knob {
+    & .ToggleSwitch-knob {
       background-color: var(--color-btn-bg);
     }
   }
 
-  .ToggleSwitch-knob {
+  & .ToggleSwitch-knob {
     border-color: var(--color-border-default);
     box-shadow: none;
 
@@ -144,11 +145,11 @@
     }
   }
 
-  .ToggleSwitch-lineIcon {
+  & .ToggleSwitch-lineIcon {
     color: var(--color-fg-subtle);
   }
 
-  .ToggleSwitch-circleIcon {
+  & .ToggleSwitch-circleIcon {
     color: var(--color-fg-subtle);
   }
 }
@@ -186,8 +187,8 @@
   z-index: 1;
   width: 50%;
   background-color: var(--color-btn-bg);
-  border: $border-width $border-style var(--color-switch-track-border);
-  border-radius: $border-radius;
+  border: var(--primer-borderWidth-thin, 1px) solid var(--color-switch-track-border);
+  border-radius: var(--primer-borderRadius-medium, 6px);
   box-shadow: var(--color-shadow-medium), var(--color-btn-inset-shadow);
   transition-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
   transition-duration: 80ms;
@@ -201,25 +202,25 @@
 
 .ToggleSwitch-status {
   position: relative;
-  font-size: $body-font-size;
-  line-height: $body-line-height;
+  font-size: var(--primer-text-body-size-medium, 14px);
+  line-height: 1.5;
   color: var(--color-fg-default);
   text-align: right;
 }
 
 .ToggleSwitch--small {
-  .ToggleSwitch-status {
-    font-size: $font-size-small;
+  & .ToggleSwitch-status {
+    font-size: var(--primer-text-body-size-small, 12px);
   }
 
-  .ToggleSwitch-track {
-    width: $spacer-7;
-    height: $spacer-4;
+  & .ToggleSwitch-track {
+    width: var(--base-size-48, 48px);
+    height: var(--primer-control-xsmall-size, 24px);
   }
 }
 
 .ToggleSwitch--disabled {
-  .ToggleSwitch-status {
+  & .ToggleSwitch-status {
     color: var(--color-fg-muted);
   }
 }
@@ -237,7 +238,7 @@
 .ToggleSwitch--statusAtEnd {
   flex-direction: row-reverse;
 
-  .ToggleSwitch-status {
+  & .ToggleSwitch-status {
     text-align: left;
   }
 }
