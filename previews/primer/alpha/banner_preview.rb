@@ -24,26 +24,37 @@ module Primer
         render(Primer::Alpha::Banner.new) { "This is a banner." }
       end
 
+      # @!group Schemes
+      #
+      # @label Default scheme
+      def scheme_default
+        render(Primer::Alpha::Banner.new) { "This is a default banner." }
+      end
+
       # @label Danger
-      def as_danger
+      def scheme_danger
         render(Primer::Alpha::Banner.new(scheme: :danger)) { "This is a danger banner!" }
       end
 
       # @label Success
-      def as_success
+      def scheme_success
         render(Primer::Alpha::Banner.new(scheme: :success)) { "This is a success banner!" }
       end
 
       # @label Warning
-      def as_warning
+      def scheme_warning
         render(Primer::Alpha::Banner.new(scheme: :warning)) { "This is a warning banner!" }
       end
+      #
+      # @!endgroup
 
       # @label Dismissable 
-      def full_width
+      def dismissable
         render(Primer::Alpha::Banner.new(dismissable: true, reappear: true)) { "This is a dismissable banner." }
       end
 
+      # @!group Full Width
+      #
       # @label Full width
       def full_width
         render(Primer::Alpha::Banner.new(full: true)) { "This is a full width banner." }
@@ -53,6 +64,8 @@ module Primer
       def full_width_in_narrow_viewport
         render(Primer::Alpha::Banner.new(full: true, full_when_narrow: true)) { "This is a full width banner in a narrow viewport." }
       end
+      #
+      # @!endgroup
 
       # @label With action button
       #
