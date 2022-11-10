@@ -227,5 +227,6 @@ jobs:
         name: playwright-report
         path: .playwright/report/
         retention-days: 30
-    - if: steps.playwright-run.outcome == 'failure'
+    - name: Failure
+      if: ${{ steps.auto-commit.outputs.changes_detected == 'true' || steps.playwright-run.outcome == 'failure' }}
       run: exit 1
