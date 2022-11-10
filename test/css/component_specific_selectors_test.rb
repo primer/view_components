@@ -1,9 +1,15 @@
 # frozen_string_literal: true
 
-require "components/css/test_helper"
-Dir["app/components/**/*.rb"].each { |file| require_relative "../../../#{file}" }
+require_relative "./test_helper"
+Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 
-class CssSelectorTest < Minitest::Test
+# Test Component Specific Selectors
+# ----
+# ensure all css rules that are added to a component specific css file, are
+# are present in a preview. selectors that do not show up in a preview can be
+# ignored by modifying the above `IGNORED_SELECTORS` constant.
+#
+class ComponentSpecificSelectorsTest < Minitest::Test
   include Primer::ComponentTestHelpers
   include Primer::RenderPreview
 
@@ -16,12 +22,6 @@ class CssSelectorTest < Minitest::Test
     Primer::Beta::Counter => ["Counter .octicon"]
   }.freeze
 
-  # Test: All CSS Selectors Are Previewed For <component>
-  # ----
-  # ensure all css rules that are added to a component specific css file, are
-  # are present in a preview. selectors that do not show up in a preview can be
-  # ignored by modifying the above `IGNORED_SELECTORS` constant.
-  #
   # these test methods are created dynamically so we can see all failures for
   # all components and not error after the first component failure
   Primer::Component.descendants.each do |component_class|
