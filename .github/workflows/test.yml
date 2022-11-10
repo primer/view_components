@@ -177,7 +177,7 @@ jobs:
   visual:
     name: Visual Regressions
     if: ${{ github.event_name == 'pull_request' }}
-    timeout-minutes: 60
+    timeout-minutes: 20
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -202,6 +202,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
+      id: playwright-run
       continue-on-error: true
       run: npx playwright test
     - id: auto-commit
@@ -226,3 +227,5 @@ jobs:
         name: playwright-report
         path: .playwright/report/
         retention-days: 30
+    - if: steps.playwright-run.outcome == 'failure'
+      run: exit 1
