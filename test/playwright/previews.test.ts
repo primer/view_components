@@ -10,7 +10,12 @@ test.beforeEach(async ({page}, testInfo) => {
 for (const {componentName, previewURL} of componentPreviews()) {
   test(`renders ${componentName} preview`, async ({page}) => {
     await page.goto(`/lookbook/preview/${previewURL}/default`)
-    const screenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
-    expect(screenshot).toMatchSnapshot([previewURL, 'default.png'])
+    const defaultScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
+    expect(defaultScreenshot).toMatchSnapshot([previewURL, 'default.png'])
+
+    // Focus state
+    await page.keyboard.press('Tab')
+    const focusedScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
+    expect(focusedScreenshot).toMatchSnapshot([previewURL, 'focused.png'])
   })
 }
