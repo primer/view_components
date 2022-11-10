@@ -1,17 +1,19 @@
+/* Truncate */
+
 .Truncate {
   display: inline-flex;
   min-width: 0;
   max-width: 100%;
 
-  > .Truncate-text {
+  & > .Truncate-text {
     min-width: 1ch;
     max-width: fit-content;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    + .Truncate-text {
-      margin-left: $spacer-1;
+    & + .Truncate-text {
+      margin-left: var(--primer-control-small-gap, 4px);
     }
 
     &.Truncate-text--primary {
