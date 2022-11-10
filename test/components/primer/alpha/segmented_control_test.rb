@@ -22,7 +22,7 @@ module Primer
       end
 
       def test_renders_icons_and_text
-        render_preview(:icons_and_text)
+        render_preview(:icons_and_text_medium)
 
         assert_selector("segmented-control ul.SegmentedControl") do
           assert_selector("button.Button", count: 3) do
@@ -33,7 +33,7 @@ module Primer
       end
 
       def test_renders_icons_only
-        render_preview(:icons_only)
+        render_preview(:icon_only_medium)
 
         assert_selector("segmented-control ul.SegmentedControl") do
           assert_selector(".Button-withTooltip", count: 3) do
@@ -46,7 +46,7 @@ module Primer
       end
 
       def test_renders_full_width
-        render_preview(:full_width)
+        render_preview(:full_width_small)
 
         assert_selector("segmented-control ul.SegmentedControl.SegmentedControl--fullWidth")
       end
