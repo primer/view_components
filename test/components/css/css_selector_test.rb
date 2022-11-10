@@ -12,7 +12,8 @@ class CssSelectorTest < Minitest::Test
     Primer::Alpha::ActionList => [/^to/],
     Primer::Alpha::Banner => [".Banner .Banner-close"],
     Primer::Alpha::SegmentedControl => [".Button-withTooltip"],
-    Primer::Beta::Button => ["summary.Button"]
+    Primer::Beta::Button => ["summary.Button"],
+    Primer::Beta::Counter => ["Counter .octicon"]
   }.freeze
 
   # Test: All CSS Selectors Are Previewed For <component>
