@@ -1698,6 +1698,26 @@
     ]
   },
   {
+    "component": "ProgressBar",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/progress_bar.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/progress_bar/default/",
+    "parameters": [
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:default`",
+        "description": "One of `:default`, `:large`, or `:small`. Increases height."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Text",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb",
@@ -2227,26 +2247,6 @@
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/popover_component.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/popover/default/",
     "parameters": [
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "ProgressBar",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/progress_bar_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/progress_bar/default/",
-    "parameters": [
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:default`, `:large`, or `:small`. Increases height."
-      },
       {
         "name": "system_arguments",
         "type": "Hash",
