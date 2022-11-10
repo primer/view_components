@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   selectors:
-    name: Component-specific selectors
+    name: CSS coverage
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
