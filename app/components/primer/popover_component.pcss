@@ -1,3 +1,5 @@
+/* Popover */
+
 .Popover {
   position: absolute;
   z-index: 100;
@@ -9,10 +11,10 @@
   margin-right: auto;
   margin-left: auto;
   background-color: var(--color-canvas-overlay);
-  border: $border-width $border-style var(--color-border-default);
-  border-radius: $border-radius;
+  border: var(--primer-borderWidth-thin, 1px) solid var(--color-border-default);
+  border-radius: var(--primer-borderRadius-medium, 6px);
 
-  // Carets
+  /* Carets */
   &::before,
   &::after {
     position: absolute;
@@ -22,24 +24,21 @@
   }
 
   &::before {
-    top: -$spacer-3;
-    // stylelint-disable-next-line primer/spacing
+    top: -16px;
     margin-left: -9px;
-    // stylelint-disable-next-line primer/borders
-    border: $spacer-2 $border-style transparent;
+    border: 8px solid transparent;
     border-bottom-color: var(--color-border-default);
   }
 
   &::after {
     top: -14px;
-    margin-left: -$spacer-2;
-    // stylelint-disable-next-line primer/borders
-    border: 7px $border-style transparent;
+    margin-left: -8px;
+    border: 7px solid transparent;
     border-bottom-color: var(--color-canvas-overlay);
   }
 }
 
-// No caret
+/* No caret */
 .Popover-message--no-caret {
   &::before,
   &::after {
@@ -47,7 +46,7 @@
   }
 }
 
-// Bottom-oriented carets
+/* Bottom-oriented carets */
 .Popover-message--bottom,
 .Popover-message--bottom-right,
 .Popover-message--bottom-left {
@@ -58,7 +57,7 @@
   }
 
   &::before {
-    bottom: -$spacer-3;
+    bottom: -16px;
     border-top-color: var(--color-border-default);
   }
 
@@ -68,7 +67,7 @@
   }
 }
 
-// Top & Bottom: Right-oriented carets
+/* Top & Bottom: Right-oriented carets */
 .Popover-message--top-right,
 .Popover-message--bottom-right {
   right: -9px;
@@ -89,7 +88,7 @@
   }
 }
 
-// Top & Bottom: Left-oriented carets
+/* Top & Bottom: Left-oriented carets */
 .Popover-message--top-left,
 .Popover-message--bottom-left {
   left: -9px;
@@ -97,16 +96,16 @@
 
   &::before,
   &::after {
-    left: $spacer-4;
+    left: 24px;
     margin-left: 0;
   }
 
   &::after {
-    left: $spacer-4 + 1;
+    left: 25px;
   }
 }
 
-// Right- & Left-oriented carets
+/* Right- & Left-oriented carets */
 .Popover-message--right,
 .Popover-message--right-top,
 .Popover-message--right-bottom,
@@ -122,20 +121,20 @@
   }
 
   &::before {
-    margin-top: -($spacer-2 + 1);
+    margin-top: -9px;
   }
 
   &::after {
-    margin-top: -$spacer-2;
+    margin-top: -8px;
   }
 }
 
-// Right-oriented carets
+/* Right-oriented carets */
 .Popover-message--right,
 .Popover-message--right-top,
 .Popover-message--right-bottom {
   &::before {
-    right: -$spacer-3;
+    right: -16px;
     border-left-color: var(--color-border-default);
   }
 
@@ -145,12 +144,12 @@
   }
 }
 
-// Left-oriented carets
+/* Left-oriented carets */
 .Popover-message--left,
 .Popover-message--left-top,
 .Popover-message--left-bottom {
   &::before {
-    left: -$spacer-3;
+    left: -16px;
     border-right-color: var(--color-border-default);
   }
 
@@ -160,16 +159,16 @@
   }
 }
 
-// Right & Left: Top-oriented carets
+/* Right & Left: Top-oriented carets */
 .Popover-message--right-top,
 .Popover-message--left-top {
   &::before,
   &::after {
-    top: $spacer-4;
+    top: 24px;
   }
 }
 
-// Right & Left: Bottom-oriented carets
+/* Right & Left: Bottom-oriented carets */
 .Popover-message--right-bottom,
 .Popover-message--left-bottom {
   &::before,
@@ -178,24 +177,24 @@
   }
 
   &::before {
-    bottom: $spacer-3;
+    bottom: 16px;
   }
 
   &::after {
-    bottom: $spacer-3 + 1;
+    bottom: 17px;
   }
 }
 
-.Popover-message--large {
-  @include breakpoint(sm) {
+@media (min-width: 544px) {
+  .Popover-message--large {
     min-width: 320px;
   }
 }
 
-// Responsive Popover
-// For < md it will show full-width anchored to the bottom
+/* Responsive Popover
+** For < md it will show full-width anchored to the bottom */
 
-@media (max-width: ($width-md - 0.02px)) {
+@media (max-width: 767.98px) {
   .Popover {
     position: fixed;
     top: auto !important;
@@ -210,15 +209,15 @@
     bottom: auto;
     left: auto;
     width: auto !important;
-    margin: $spacer-2;
+    margin: var(--primer-stack-gap-condensed, 8px);
   }
 
-  // Increase tap area for touch input
+  /* Increase tap area for touch input */
   .Popover-message > .btn-octicon {
-    padding: $spacer-2 + $spacer-1 !important;
+    padding: var(--primer-control-medium-paddingInline-normal, 12px) !important;
   }
 
-  // Remove caret
+  /* Remove caret */
   .Popover-message::after,
   .Popover-message::before {
     display: none;
