@@ -1,3 +1,5 @@
+/* dropdown */
+
 .dropdown {
   position: relative;
 }
@@ -8,16 +10,15 @@
   height: 0;
   vertical-align: middle;
   content: '';
-  border-style: $border-style;
-  // stylelint-disable-next-line primer/borders
-  border-width: $spacer-1 $spacer-1 0;
+  border-style: solid;
+  border-width: var(--primer-borderWidth-thicker, 4px) var(--primer-borderWidth-thicker, 4px) 0;
   border-right-color: transparent;
   border-bottom-color: transparent;
   border-left-color: transparent;
 }
 
-// Requires a positioning class (e.g., `.dropdown-menu-w`) to determine which
-// way the menu should render from the element triggering it.
+/* Requires a positioning class (e.g., `.dropdown-menu-w`) to determine which
+** way the menu should render from the element triggering it. */
 
 .dropdown-menu {
   position: absolute;
@@ -25,15 +26,14 @@
   left: 0;
   z-index: 100;
   width: 160px;
-  padding-top: $spacer-1;
-  padding-bottom: $spacer-1;
-  // stylelint-disable-next-line primer/spacing
+  padding-top: var(--primer-control-small-paddingBlock, 4px);
+  padding-bottom: var(--primer-control-small-paddingBlock, 4px);
   margin-top: 2px;
   list-style: none;
   background-color: var(--color-canvas-overlay);
   background-clip: padding-box;
-  border: $border-width $border-style var(--color-border-default);
-  border-radius: $border-radius;
+  border: var(--primer-borderWidth-thin, 1px) solid var(--color-border-default);
+  border-radius: var(--primer-borderRadius-medium, 6px);
   box-shadow: var(--color-shadow-large);
 
   &::before,
@@ -43,22 +43,19 @@
     content: '';
   }
 
-  // caret border
+  /* caret border */
   &::before {
-    // stylelint-disable-next-line primer/borders
-    border: $spacer-2 $border-style transparent;
+    border: 8px solid transparent;
     border-bottom-color: var(--color-border-default);
   }
 
-  // caret background (should match dropdown background)
+  /* caret background (should match dropdown background) */
   &::after {
-    // stylelint-disable-next-line primer/borders
-    border: 7px $border-style transparent;
+    border: 7px solid transparent;
     border-bottom-color: var(--color-canvas-overlay);
   }
 
-  // stylelint-disable-next-line selector-max-type
-  > ul {
+  & > ul {
     list-style: none;
   }
 }
@@ -66,17 +63,17 @@
 .dropdown-menu-no-overflow {
   width: auto;
 
-  .dropdown-item {
-    padding: $spacer-1 $spacer-3;
+  & .dropdown-item {
+    padding: var(--primer-control-small-paddingBlock, 4px) var(--primer-control-medium-paddingInline-spacious, 16px);
     overflow: visible;
     text-overflow: inherit;
   }
 }
 
-// Dropdown items (can be links or buttons)
+/* Dropdown items (can be links or buttons) */
 .dropdown-item {
   display: block;
-  padding: $spacer-1 $spacer-2 $spacer-1 $spacer-3;
+  padding: var(--primer-control-small-paddingBlock, 4px) var(--primer-control-medium-paddingInline-condensed, 8px) var(--primer-control-small-paddingBlock, 4px) var(--primer-control-medium-paddingInline-spacious, 16px);
   overflow: hidden;
   color: var(--color-fg-default);
   text-overflow: ellipsis;
@@ -87,18 +84,18 @@
     text-decoration: none;
     background-color: var(--color-accent-emphasis);
 
-    > .octicon {
+    & > .octicon {
       color: inherit;
       opacity: 1;
     }
 
-    [class*='color-text-'] {
+    & [class*='color-text-'] {
       color: inherit !important;
     }
 
-    > .Label {
+    & > .Label {
       color: inherit !important;
-      border-color: currentColor;
+      border-color: currentcolor;
     }
   }
 
@@ -118,13 +115,13 @@
 .dropdown-divider {
   display: block;
   height: 0;
-  margin: $spacer-2 0;
-  border-top: $border-width $border-style var(--color-border-default);
+  margin: var(--primer-stack-gap-condensed, 8px) 0;
+  border-top: var(--primer-borderWidth-thin, 1px) solid var(--color-border-default);
 }
 
 .dropdown-header {
-  padding: $spacer-1 $spacer-3;
-  font-size: $h6-size;
+  padding: var(--primer-control-small-paddingBlock, 4px) var(--primer-control-medium-paddingInline-spacious, 16px);
+  font-size: var(--primer-text-body-size-small, 12px);
   color: var(--color-fg-muted);
 }
 
@@ -132,10 +129,10 @@
   display: none;
 }
 
-// Directional classes
-//
-// Move the menu and the caret attached to it. Requires at least one of these on
-// the `.dropdown-menu` element.
+/* Directional classes
+**
+** Move the menu and the caret attached to it. Requires at least one of these on
+** the `.dropdown-menu` element. */
 
 .dropdown-menu-w {
   top: 0;
@@ -143,11 +140,11 @@
   left: auto;
   width: auto;
   margin-top: 0;
-  margin-right: $spacer-2;
+  margin-right: 8px;
 
   &::before {
     top: 10px;
-    right: -$spacer-3;
+    right: -16px;
     left: auto;
     border-color: transparent;
     border-left-color: var(--color-border-default);
@@ -167,11 +164,11 @@
   left: 100%;
   width: auto;
   margin-top: 0;
-  margin-left: $spacer-2;
+  margin-left: 8px;
 
   &::before {
     top: 10px;
-    left: -$spacer-3;
+    left: -16px;
     border-color: transparent;
     border-right-color: var(--color-border-default);
   }
@@ -188,7 +185,6 @@
   top: auto;
   bottom: 100%;
   left: 0;
-  // stylelint-disable-next-line primer/spacing
   margin-bottom: 3px;
 
   &::before,
@@ -198,27 +194,21 @@
   }
 
   &::before {
-    bottom: -$spacer-2;
+    bottom: -8px;
     left: 9px;
-    // stylelint-disable-next-line primer/borders
-    border-top: $spacer-2 $border-style var(--color-border-default);
-    // stylelint-disable-next-line primer/borders
-    border-right: $spacer-2 $border-style transparent;
+    border-top: 8px solid var(--color-border-default);
+    border-right: 8px solid transparent;
     border-bottom: 0;
-    // stylelint-disable-next-line primer/borders
-    border-left: $spacer-2 $border-style transparent;
+    border-left: 8px solid transparent;
   }
 
   &::after {
     bottom: -7px;
     left: 10px;
-    // stylelint-disable-next-line primer/borders
-    border-top: 7px $border-style var(--color-canvas-overlay);
-    // stylelint-disable-next-line primer/borders
-    border-right: 7px $border-style transparent;
+    border-top: 7px solid var(--color-canvas-overlay);
+    border-right: 7px solid transparent;
     border-bottom: 0;
-    // stylelint-disable-next-line primer/borders
-    border-left: 7px $border-style transparent;
+    border-left: 7px solid transparent;
   }
 }
 
@@ -228,7 +218,7 @@
   transform: translateX(50%);
 
   &::before {
-    top: -$spacer-3;
+    top: -16px;
     right: 50%;
     transform: translateX(50%);
   }
@@ -245,7 +235,7 @@
   left: auto;
 
   &::before {
-    top: -$spacer-3;
+    top: -16px;
     right: 9px;
     left: auto;
   }
@@ -259,7 +249,7 @@
 
 .dropdown-menu-se {
   &::before {
-    top: -$spacer-3;
+    top: -16px;
     left: 9px;
   }
 
