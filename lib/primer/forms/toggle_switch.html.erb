@@ -5,5 +5,5 @@
     <% end %>
     <%= render(Caption.new(input: @input)) %>
   </span>
-  <%= render(Primer::Alpha::ToggleSwitch.new(src: "/yo")) %>
+  <%= render(Primer::Alpha::ToggleSwitch.new(src: @input.src)) %>
 </div>

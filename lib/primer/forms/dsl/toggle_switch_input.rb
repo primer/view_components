@@ -5,11 +5,19 @@ module Primer
     module Dsl
       # :nodoc:
       class ToggleSwitchInput < Input
-        attr_reader :name, :label, :value, :unchecked_value
+        attr_reader :name, :label, :src, :value, :unchecked_value
 
-        def initialize(name:, label:, value: nil, unchecked_value: nil, **system_arguments)
+        def initialize(
+          name:,
+          label:,
+          src:,
+          value: nil,
+          unchecked_value: nil,
+          **system_arguments
+        )
           @name = name
           @label = label
+          @src = src
           @value = value
           @unchecked_value = unchecked_value
 
