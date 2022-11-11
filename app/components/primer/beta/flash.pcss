@@ -8,12 +8,18 @@
   border-width: var(--primer-borderWidth-thin, 1px);
   border-radius: var(--primer-borderRadius-medium, 6px);
 
-  & p:last-child {
-    margin-bottom: 0;
-  }
+  /* Default color */
+  color: var(--color-fg-default);
+  background-image: linear-gradient(var(--color-accent-subtle), var(--color-accent-subtle));
+  border-color: var(--color-accent-muted);
 
   & .octicon {
+    color: var(--color-accent-fg);
     margin-right: var(--base-size-12, 12px);
+  }
+
+  & p:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -71,16 +77,6 @@
 
 
 /* Color variations */
-
-.flash:not(.Banner) {
-  color: var(--color-fg-default);
-  background-image: linear-gradient(var(--color-accent-subtle), var(--color-accent-subtle));
-  border-color: var(--color-accent-muted);
-
-  & .octicon {
-    color: var(--color-accent-fg);
-  }
-}
 
 .flash-warn:not(.Banner) {
   color: var(--color-fg-default);
