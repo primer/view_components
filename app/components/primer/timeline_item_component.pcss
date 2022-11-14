@@ -1,0 +1,93 @@
+/* TimelineItem */
+
+.TimelineItem {
+  position: relative;
+  display: flex;
+  padding: var(--primer-stack-padding-normal, 16px) 0;
+  margin-left: var(--primer-stack-gap-normal, 16px);
+
+  /* The Timeline */
+  &::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: var(--primer-borderWidth-thick, 2px);
+    content: '';
+    background-color: var(--color-border-muted);
+  }
+
+  &:target .TimelineItem-badge {
+    border-color: var(--color-accent-emphasis);
+    box-shadow: 0 0 0.2em var(--color-accent-muted);
+  }
+}
+
+.TimelineItem-badge {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: var(--primer-control-medium-size, 32px);
+  height: var(--primer-control-medium-size, 32px);
+  margin-right: var(--primer-controlStack-medium-gap-condensed, 8px);
+  margin-left: calc(var(--primer-control-medium-size, 32px) / -2 + 1px);
+  color: var(--color-fg-muted);
+  align-items: center;
+  background-color: var(--color-timeline-badge-bg);
+  border: var(--primer-borderWidth-thick, 2px) solid var(--color-canvas-default);
+  border-radius: 50%;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.TimelineItem-badge--success {
+  color: var(--color-fg-on-emphasis);
+  background-color: var(--color-success-emphasis);
+  border: var(--primer-borderWidth-thin, 1px) solid transparent;
+}
+
+.TimelineItem-body {
+  min-width: 0;
+  max-width: 100%;
+  margin-top: var(--base-size-4, 4px);
+  color: var(--color-fg-muted);
+  flex: auto;
+}
+
+.TimelineItem-avatar {
+  position: absolute;
+  left: -72px;
+  z-index: 1;
+}
+
+.TimelineItem-break {
+  position: relative;
+  z-index: 1;
+  height: var(--primer-stack-gap-spacious, 24px);
+  margin: 0;
+  margin-bottom: calc(var(--primer-stack-gap-normal, 16px) * -1);
+  margin-left: -56px;
+  background-color: var(--color-canvas-default);
+  border: 0;
+  border-top: var(--primer-borderWidth-thicker, 4px) solid var(--color-border-default);
+}
+
+.TimelineItem--condensed {
+  padding-top: var(--base-size-4, 4px);
+  padding-bottom: 0;
+
+  /* TimelineItem--condensed is often grouped. (commits) */
+  &:last-child {
+    padding-bottom: var(--primer-stack-gap-normal, 16px);
+  }
+
+  & .TimelineItem-badge {
+    height: var(--base-size-16, 16px);
+    margin-top: var(--base-size-8, 8px);
+    margin-bottom: var(--base-size-8, 8px);
+    color: var(--color-fg-muted);
+    background-color: var(--color-canvas-default);
+    border: 0;
+  }
+}
