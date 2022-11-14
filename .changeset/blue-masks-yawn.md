@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Move labels styles to PVC
+Move `Popover` styles to PVC

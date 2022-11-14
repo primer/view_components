@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Move `ToggleSwitch` styles to PVC
+Move `TimelineItem` styles to PVC
