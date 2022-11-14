@@ -14,7 +14,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
   include Primer::RenderPreview
 
   IGNORED_SELECTORS = {
-    :global => [/^\d/, ":"],
+    :global => [/^\d/, ":", /\[.*\]/],
     Primer::Alpha::ActionList => [/^to/],
     Primer::Alpha::Banner => [".Banner .Banner-close"],
     Primer::Alpha::SegmentedControl => [".Button-withTooltip"],
