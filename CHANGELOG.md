@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 0.0.110
+
+### Patch Changes
+
+- [#1583](https://github.com/primer/view_components/pull/1583) [`a06f52cf`](https://github.com/primer/view_components/commit/a06f52cf77eff76f5a9003a9b224dc425de78f4b) Thanks [@jonrohan](https://github.com/jonrohan)! - Migrating progress bar component to beta folder, and adding progress bar css.
+
+* [#1579](https://github.com/primer/view_components/pull/1579) [`05e07bb1`](https://github.com/primer/view_components/commit/05e07bb1ff0a7d42fca94c0a922e24e7558af939) Thanks [@camertron](https://github.com/camertron)! - Move Banner to alpha namespace
+
+- [#1592](https://github.com/primer/view_components/pull/1592) [`f743267e`](https://github.com/primer/view_components/commit/f743267e791222a8388084433b2fa4143b11b129) Thanks [@simurai](https://github.com/simurai)! - Move `Breadcrumbs` styles to PVC
+
+* [#1584](https://github.com/primer/view_components/pull/1584) [`cad5c235`](https://github.com/primer/view_components/commit/cad5c23548ad5682c8dce0d8f2831b08c2628889) Thanks [@simurai](https://github.com/simurai)! - Move `blankslate` styles to PVC
+
+- [#1574](https://github.com/primer/view_components/pull/1574) [`b3e351d2`](https://github.com/primer/view_components/commit/b3e351d23bc0f545ddb21384dc2567d08c07ed83) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - adding a test suite to show all component-specific selectors are used in previews, and updating various component previews for lookbook
+
+* [#1587](https://github.com/primer/view_components/pull/1587) [`ac54ecc4`](https://github.com/primer/view_components/commit/ac54ecc4c2870cbb89d326d5d1808e6a36c543ec) Thanks [@simurai](https://github.com/simurai)! - Move labels styles to PVC
+
+- [#1594](https://github.com/primer/view_components/pull/1594) [`55f0d4df`](https://github.com/primer/view_components/commit/55f0d4dfd6fa111b4b3c551e087119637255f617) Thanks [@simurai](https://github.com/simurai)! - Move `Subhead` styles to PVC
+
+* [#1593](https://github.com/primer/view_components/pull/1593) [`7042b5f5`](https://github.com/primer/view_components/commit/7042b5f5ef7f52fcef0a268023b6f096bd1d43e5) Thanks [@simurai](https://github.com/simurai)! - Move `ToggleSwitch` styles to PVC
+
+- [#1590](https://github.com/primer/view_components/pull/1590) [`820022c3`](https://github.com/primer/view_components/commit/820022c3fbd69ab7d16aadcd46f23e74673bd2b0) Thanks [@simurai](https://github.com/simurai)! - Move `Truncate` styles to PVC
+
 ## 0.0.109
 
 ### Patch Changes
