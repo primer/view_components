@@ -14,12 +14,36 @@ class ComponentSpecificSelectorsTest < Minitest::Test
   include Primer::RenderPreview
 
   IGNORED_SELECTORS = {
-    :global => [/^\d/, ":"],
+    :global => [/^\d/, ":", /\[.*\]/],
     Primer::Alpha::ActionList => [/^to/],
-    Primer::Alpha::Banner => [".Banner .Banner-close"],
-    Primer::Alpha::SegmentedControl => [".Button-withTooltip"],
-    Primer::Beta::Button => ["summary.Button"],
-    Primer::Beta::Counter => ["Counter .octicon"]
+    Primer::Alpha::Banner => [
+      ".Banner .Banner-close"
+    ],
+    Primer::Alpha::SegmentedControl => [
+      ".Button-withTooltip"
+    ],
+    Primer::Beta::Button => [
+      "summary.Button"
+    ],
+    Primer::Beta::Counter => [
+      "Counter .octicon"
+    ],
+    Primer::Beta::Label => [
+      ".labels",
+      ".label",
+      ".Label--info",
+      ".Label--warning",
+      ".Label--open",
+      ".Label--closed"
+    ],
+    Primer::Beta::Blankslate => [
+      ".blankslate code",
+      ".blankslate-large img",
+      ".blankslate-large h3",
+      ".blankslate-large p",
+      ".blankslate-capped",
+      ".blankslate-clean-background"
+    ]
   }.freeze
 
   # these test methods are created dynamically so we can see all failures for
