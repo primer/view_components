@@ -16,10 +16,18 @@ class ComponentSpecificSelectorsTest < Minitest::Test
   IGNORED_SELECTORS = {
     :global => [/^\d/, ":"],
     Primer::Alpha::ActionList => [/^to/],
-    Primer::Alpha::Banner => [".Banner .Banner-close"],
-    Primer::Alpha::SegmentedControl => [".Button-withTooltip"],
-    Primer::Beta::Button => ["summary.Button"],
-    Primer::Beta::Counter => ["Counter .octicon"],
+    Primer::Alpha::Banner => [
+      ".Banner .Banner-close"
+    ],
+    Primer::Alpha::SegmentedControl => [
+      ".Button-withTooltip"
+    ],
+    Primer::Beta::Button => [
+      "summary.Button"
+    ],
+    Primer::Beta::Counter => [
+      "Counter .octicon"
+    ],
     Primer::Beta::Label => [
       ".labels",
       ".label",
