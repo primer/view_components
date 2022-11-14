@@ -25,7 +25,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Alpha::ActionList => [/^to/],
     Primer::Alpha::Banner => [".Banner .Banner-close"],
     Primer::Alpha::SegmentedControl => [".Button-withTooltip"],
-    Primer::Beta::Blankslate => ["code", ".blankslate-capped", ".blankslate-clean-background"],
+    Primer::Beta::Blankslate => ["code", ".blankslate-capped", ".blankslate-clean-background", ".blankslate-large"],
     Primer::Beta::Button => ["summary.Button"],
     Primer::Beta::Counter => ["Counter .octicon"]
   }.freeze
