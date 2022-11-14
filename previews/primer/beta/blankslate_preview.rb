@@ -101,6 +101,53 @@ module Primer
           c.with_secondary_action(href: "#").with_content("Learn more about vulnerabilities")
         end
       end
+
+      # @!group Spacing
+      #
+      # @label Not Narrow or Spacious
+      def spacing_not_narrow_or_spacious
+        render Primer::Beta::Blankslate.new(narrow: false, spacious: false, border: true) do |c|
+          c.with_visual_icon(icon: :shield)
+          c.with_heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
+          c.with_description { "Millions of teams trust GitHub to keep their work safe" }
+          c.with_primary_action(href: "#").with_content("Fix issue")
+          c.with_secondary_action(href: "#").with_content("Learn more about vulnerabilities")
+        end
+      end
+
+      # @label Narrow, not Spacious
+      def spacing_narrow_not_spacious
+        render Primer::Beta::Blankslate.new(narrow: true, spacious: false, border: true) do |c|
+          c.with_visual_icon(icon: :shield)
+          c.with_heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
+          c.with_description { "Millions of teams trust GitHub to keep their work safe" }
+          c.with_primary_action(href: "#").with_content("Fix issue")
+          c.with_secondary_action(href: "#").with_content("Learn more about vulnerabilities")
+        end
+      end
+
+      # @label Not Narrow, Spacious
+      def spacing_not_narrow_and_spacious
+        render Primer::Beta::Blankslate.new(narrow: false, spacious: true, border: true) do |c|
+          c.with_visual_icon(icon: :shield)
+          c.with_heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
+          c.with_description { "Millions of teams trust GitHub to keep their work safe" }
+          c.with_primary_action(href: "#").with_content("Fix issue")
+          c.with_secondary_action(href: "#").with_content("Learn more about vulnerabilities")
+        end
+      end
+
+      # @label Narrow and Spacious
+      def spacing_narrow_and_spacious
+        render Primer::Beta::Blankslate.new(narrow: true, spacious: true, border: true) do |c|
+          c.with_visual_icon(icon: :shield)
+          c.with_heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
+          c.with_description { "Millions of teams trust GitHub to keep their work safe" }
+          c.with_primary_action(href: "#").with_content("Fix issue")
+          c.with_secondary_action(href: "#").with_content("Learn more about vulnerabilities")
+        end
+      end
+      # @!endgroup
     end
   end
 end
