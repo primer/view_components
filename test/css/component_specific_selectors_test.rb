@@ -14,7 +14,14 @@ class ComponentSpecificSelectorsTest < Minitest::Test
   include Primer::RenderPreview
 
   IGNORED_SELECTORS = {
-    :global => [/^\d/, ":", /\[.*\]/],
+    :global => [
+      # selectors that start with a number
+      /^\d/,
+      # pseudo selectors, like :hover
+      ":",
+      # attribute selectors, like [aria-label="foo"]
+      /\[.*\]/
+    ],
     Primer::Alpha::ActionList => [/^to/],
     Primer::Alpha::Banner => [".Banner .Banner-close"],
     Primer::Alpha::SegmentedControl => [".Button-withTooltip"],
