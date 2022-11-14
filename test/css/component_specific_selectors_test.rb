@@ -19,7 +19,8 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Alpha::Banner => [".Banner .Banner-close"],
     Primer::Alpha::SegmentedControl => [".Button-withTooltip"],
     Primer::Beta::Button => ["summary.Button"],
-    Primer::Beta::Counter => ["Counter .octicon"]
+    Primer::Beta::Counter => ["Counter .octicon"],
+    Primer::Beta::Label => %w[labels label Label--info Label--warning Label--open Label--closed]
   }.freeze
 
   # these test methods are created dynamically so we can see all failures for
