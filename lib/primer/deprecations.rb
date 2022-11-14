@@ -12,7 +12,6 @@ module Primer
       "Primer::Alpha::AutoComplete::Item" => "Primer::Beta::AutoComplete::Item",
       "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
       "Primer::BoxComponent" => "Primer::Box",
-      "Primer::CounterComponent" => "Primer::Beta::Counter",
       "Primer::DropdownMenuComponent" => nil,
       "Primer::IconButton" => "Primer::Beta::IconButton",
       "Primer::Tooltip" => "Primer::Alpha::Tooltip",

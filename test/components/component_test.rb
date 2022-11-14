@@ -118,7 +118,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
       "Primer::Alpha::NavList::Section",
-      "Primer::CounterComponent",
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
