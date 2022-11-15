@@ -23,7 +23,15 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Button-withTooltip"
     ],
     Primer::Beta::Button => [
-      "summary.Button"
+      "summary.Button",
+      ".Button-content--alignStart",
+      ".Button--small",
+      ".Button--small .Button-label",
+      ".Button--large",
+      ".Button--large .Button-label",
+      ".Button--iconOnly",
+      ".Button--iconOnly.Button--small",
+      ".Button--iconOnly.Button--large"
     ],
     Primer::Beta::Counter => [
       "Counter .octicon"
