@@ -43,6 +43,11 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".blankslate-large p",
       ".blankslate-capped",
       ".blankslate-clean-background"
+    ],
+    Primer::Beta::Flash => [
+      ".flash-messages",
+      ".flash-banner",
+      ".warning"
     ]
   }.freeze
 
