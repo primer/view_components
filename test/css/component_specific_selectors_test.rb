@@ -48,6 +48,13 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".flash-messages",
       ".flash-banner",
       ".warning"
+    ],
+    Primer::Dropdown => [
+      ".dropdown-caret",
+      ".dropdown-menu-no-overflow",
+      ".dropdown-menu-no-overflow .dropdown-item",
+      ".dropdown-item.btn-link",
+      ".dropdown-signout"
     ]
   }.freeze
 
