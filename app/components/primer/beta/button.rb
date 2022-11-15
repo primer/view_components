@@ -58,7 +58,7 @@ module Primer
       renders_one :trailing_visual, types: {
         icon: Primer::OcticonComponent,
         label: Primer::Beta::Label,
-        counter: Primer::CounterComponent
+        counter: Primer::Beta::Counter
       }
 
       # Trailing action appears to the right of the trailing visual.

@@ -63,7 +63,7 @@ module Primer
         #
         # To render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Label) %>.
         #
-        # To render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by <%= link_to_component(Primer::CounterComponent) %>.
+        # To render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Counter) %>.
         #
         # To render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:
         # ```ruby
@@ -72,7 +72,7 @@ module Primer
         renders_one :trailing_visual, types: {
           icon: Primer::OcticonComponent,
           label: Primer::Beta::Label,
-          counter: Primer::CounterComponent,
+          counter: Primer::Beta::Counter,
           text: ->(text) { text }
         }
 
