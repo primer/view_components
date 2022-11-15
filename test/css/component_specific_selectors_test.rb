@@ -14,8 +14,20 @@ class ComponentSpecificSelectorsTest < Minitest::Test
   include Primer::RenderPreview
 
   IGNORED_SELECTORS = {
-    :global => [/^\d/, ":", /\[.*\]/],
-    Primer::Alpha::ActionList => [/^to/],
+    :global => [/^\d/, ":", /\[.*\]/, /^to/, /^from/],
+    Primer::Alpha::ActionList => [
+      ".ActionListWrap--inset",
+      ".ActionListItem.ActionListItem--hasSubItem > .ActionListContent",
+      ".ActionListItem.ActionListItem--hasSubItem>.ActionListContent",
+      ".ActionListItem.ActionListItem--danger .ActionListItem-visual",
+      ".ActionListContent.ActionListContent--blockDescription .ActionListItem-visual",
+      ".ActionListItem-action--leading",
+      ".ActionListItem-action--trailing",
+      ".ActionListItem-action",
+      ".ActionListItem--subItem > .ActionListContent > .ActionListItem-label",
+      ".ActionListItem--subItem>.ActionListContent>.ActionListItem-label",
+      ".ActionList-sectionDivider--filled"
+    ],
     Primer::Alpha::Banner => [
       ".Banner .Banner-close"
     ],
@@ -23,7 +35,15 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Button-withTooltip"
     ],
     Primer::Beta::Button => [
-      "summary.Button"
+      "summary.Button",
+      ".Button-content--alignStart",
+      ".Button--small",
+      ".Button--small .Button-label",
+      ".Button--large",
+      ".Button--large .Button-label",
+      ".Button--iconOnly",
+      ".Button--iconOnly.Button--small",
+      ".Button--iconOnly.Button--large"
     ],
     Primer::Beta::Counter => [
       "Counter .octicon"
@@ -43,6 +63,18 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".blankslate-large p",
       ".blankslate-capped",
       ".blankslate-clean-background"
+    ],
+    Primer::Beta::Flash => [
+      ".flash-messages",
+      ".flash-banner",
+      ".warning"
+    ],
+    Primer::Dropdown => [
+      ".dropdown-caret",
+      ".dropdown-menu-no-overflow",
+      ".dropdown-menu-no-overflow .dropdown-item",
+      ".dropdown-item.btn-link",
+      ".dropdown-signout"
     ]
   }.freeze
 
