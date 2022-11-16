@@ -1,12 +1,14 @@
-// Stacked avatars can be used to show who is participating in thread when
-// there is limited space available.
+/* AvatarStack */
+
+/* Stacked avatars can be used to show who is participating in thread when
+** there is limited space available. */
 
 .AvatarStack {
   position: relative;
   min-width: 26px;
   height: 20px;
 
-  .AvatarStack-body {
+  & .AvatarStack-body {
     position: absolute;
   }
 
@@ -22,22 +24,19 @@
 .AvatarStack-body {
   display: flex;
   background: var(--color-canvas-default);
-  // stylelint-disable-next-line primer/borders
   border-radius: 100px;
 
-  .avatar {
+  & .avatar {
     position: relative;
     z-index: 2;
     display: flex;
     width: 20px;
     height: 20px;
     box-sizing: content-box;
-    // stylelint-disable-next-line primer/spacing
     margin-right: -11px;
     background-color: var(--color-canvas-default);
-    border-right: $border-width $border-style var(--color-canvas-default);
-    // stylelint-disable-next-line primer/borders
-    border-radius: $border-radius-1;
+    border-right: var(--primer-borderWidth-thin, 1px) solid var(--color-canvas-default);
+    border-radius: var(--primer-borderRadius-small, 4px);
     box-shadow: none;
     transition: margin 0.1s ease-in-out;
 
@@ -50,14 +49,11 @@
       border-right: 0;
     }
 
-    // stylelint-disable selector-max-type
-    img {
-      // stylelint-disable-next-line primer/borders
-      border-radius: $border-radius-1;
+    & img {
+      border-radius: var(--primer-borderRadius-small, 4px);
     }
-    // stylelint-enable selector-max-type
 
-    // Account for 4+ avatars
+    /* Account for 4+ avatars */
     &:nth-child(n + 4) {
       display: none;
       opacity: 0;
@@ -65,17 +61,16 @@
   }
 
   &:hover {
-    .avatar {
-      // stylelint-disable-next-line primer/spacing
+    & .avatar {
       margin-right: 3px;
     }
 
-    .avatar:nth-child(n + 4) {
+    & .avatar:nth-child(n + 4) {
       display: flex;
       opacity: 1;
     }
 
-    .avatar-more {
+    & .avatar-more {
       display: none !important;
     }
   }
@@ -92,9 +87,8 @@
     display: block;
     height: 20px;
     content: '';
-    // stylelint-disable-next-line primer/borders
     border-radius: 2px;
-    outline: $border-width $border-style var(--color-canvas-default);
+    outline: var(--primer-borderWidth-thin, 1px) solid var(--color-canvas-default);
   }
 
   &::before {
@@ -108,25 +102,24 @@
   }
 }
 
-// Right aligned variation
+/* Right aligned variation */
 
 .AvatarStack--right {
-  .AvatarStack-body {
+  & .AvatarStack-body {
     right: 0;
     flex-direction: row-reverse;
 
     &:hover .avatar {
       margin-right: 0;
-      // stylelint-disable-next-line primer/spacing
       margin-left: 3px;
     }
 
-    .avatar:not(:last-child) {
+    & .avatar:not(:last-child) {
       border-left: 0;
     }
   }
 
-  .avatar.avatar-more {
+  & .avatar.avatar-more {
     background: var(--color-avatar-stack-fade);
 
     &::before {
@@ -139,11 +132,10 @@
     }
   }
 
-  .avatar {
+  & .avatar {
     margin-right: 0;
-    // stylelint-disable-next-line primer/spacing
     margin-left: -11px;
     border-right: 0;
-    border-left: $border-width $border-style var(--color-canvas-default);
+    border-left: var(--primer-borderWidth-thin, 1px) solid var(--color-canvas-default);
   }
 }
