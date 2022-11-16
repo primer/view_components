@@ -13,7 +13,7 @@ module Primer
 
       # @example UnorderedList with list items
       #
-      #   <%= render(Meuse::UnorderedList.new) do |component| %>
+      #   <%= render(Primer::Alpha::UnorderedList.new) do |component| %>
       #     <% component.with_item do %>
       #       List item 1
       #     <% end %>

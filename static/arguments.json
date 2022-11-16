@@ -550,6 +550,26 @@
     ]
   },
   {
+    "component": "OrderedList",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/ordered_list.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/ordered_list/default/",
+    "parameters": [
+      {
+        "name": "type",
+        "type": "Symbol",
+        "default": "`1`",
+        "description": "One of `1`, `A`, `I`, `a`, or `i`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "SegmentedControl",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/segmented_control.rb",
@@ -941,6 +961,20 @@
         "default": "`{}`",
         "description": "[System arguments](/system-arguments) for the `TabContainer` wrapper."
       },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "UnorderedList",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/unordered_list.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/unordered_list/default/",
+    "parameters": [
       {
         "name": "system_arguments",
         "type": "Hash",

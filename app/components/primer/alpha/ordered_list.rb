@@ -22,7 +22,7 @@ module Primer
 
       # @example OrderedList with a list items
       #
-      #   <%= render(Meuse::OrderedList.new) do |component| %>
+      #   <%= render(Primer::Alpha::OrderedList.new) do |component| %>
       #     <% component.with_item do %>
       #       List item 1
       #     <% end %>
@@ -31,7 +31,7 @@ module Primer
       #     <% end %>
       #   <% end %>
       #
-      # @param type [Symbol] <%= one_of(Meuse::OrderedList::ORDER_TYPES.keys) %>
+      # @param type [Symbol] <%= one_of(Primer::Alpha::OrderedList::ORDER_TYPES) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(type: DEFAULT_ORDER_TYPE, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
@@ -40,7 +40,7 @@ module Primer
         @system_arguments[:classes] = class_names(
           "List",
           "List--ordered",
-          system_arguments[:classes],
+          system_arguments[:classes]
         )
       end
 

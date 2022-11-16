@@ -8,7 +8,8 @@ module Primer
         status :alpha
 
         # @example Default
-        #   <%= render(Meuse::List::ListItem.new) do %>
+        #
+        #   <%= render(Primer::Alpha::List::ListItem.new) do %>
         #     ListItem
         #   <% end %>
         #
@@ -18,7 +19,7 @@ module Primer
           @system_arguments[:tag] = :li
           @system_arguments[:classes] = class_names(
             "ListItem",
-            system_arguments[:classes],
+            system_arguments[:classes]
           )
         end
 
