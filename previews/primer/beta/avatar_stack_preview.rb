@@ -23,7 +23,6 @@ module Primer
       def default
         render(Primer::Beta::AvatarStack.new) do |c|
           c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
-          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
         end
       end
 
