@@ -83,6 +83,8 @@
     url: "/components/octicon"
   - title: OcticonSymbols
     url: "/components/octiconsymbols"
+  - title: OrderedList
+    url: "/components/alpha/orderedlist"
   - title: Popover
     url: "/components/popover"
   - title: ProgressBar
@@ -119,6 +121,8 @@
     url: "/components/alpha/underlinenav"
   - title: UnderlinePanels
     url: "/components/alpha/underlinepanels"
+  - title: UnorderedList
+  url: "/components/alpha/unorderedlist"
 - title: Architecture decisions
   children:
   - title: Developing and publishing client-side behaviours

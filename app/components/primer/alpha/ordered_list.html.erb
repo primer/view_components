@@ -1,0 +1,7 @@
+<%= render Primer::BaseComponent.new(**@system_arguments) do %>
+  <% if items.any? %>
+    <% items.each do |item| %>
+      <%= item %>
+    <% end %>
+  <% end %>
+<% end %>
