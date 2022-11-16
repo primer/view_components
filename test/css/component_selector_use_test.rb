@@ -5,7 +5,8 @@ Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 
 IGNORED_SELECTORS = {
   :global => ["preview-wrap"],
-  Primer::Alpha::Layout => ["Layout"]
+  Primer::Alpha::Layout => ["Layout"],
+  Primer::Alpha::Dialog => ["Overlay"],
 }.freeze
 
 # Test CSS Selectors Used By Components
@@ -24,8 +25,7 @@ class ComponentSelectorUseTest < Minitest::Test
 
   # these test methods are created dynamically so we can see all failures for
   # all components and not error after the first component failure
-  # Primer::Component.descendants.each do |component_class|
-  [Primer::Alpha::Layout].each do |component_class|
+  Primer::Component.descendants.each do |component_class|
     class_test_name = component_class.name.downcase.gsub("::", "_")
     define_method("test_selectors_used_by_#{class_test_name}_are_valid") do
       preview_class = get_preview_class(component_class)
