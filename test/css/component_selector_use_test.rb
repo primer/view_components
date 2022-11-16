@@ -4,7 +4,7 @@ require_relative "./test_helper"
 Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 
 IGNORED_SELECTORS = {
-  :global => ["preview-wrap"]
+  :global => ["preview-wrap"],
 }.freeze
 
 # Test CSS Selectors Used By Components
