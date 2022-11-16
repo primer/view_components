@@ -4,7 +4,8 @@ require_relative "./test_helper"
 Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 
 IGNORED_SELECTORS = {
-  global: ["preview-wrap"]
+  :global => ["preview-wrap"],
+  Primer::Alpha::Layout => ["Layout"]
 }.freeze
 
 # Test CSS Selectors Used By Components
@@ -16,14 +17,15 @@ class ComponentSelectorUseTest < Minitest::Test
   include Primer::ComponentTestHelpers
   include Primer::RenderPreview
 
-  COMPONENT_SELECTORS = Dir["app/components/**/*.css.json"].map { |file| 
+  COMPONENT_SELECTORS = Dir["app/{components,lib/primer}/**/*.css.json"].map do |file| 
     data = JSON.parse(File.read(file))
-    data["selectors"].map { |sel| sel.gsub('\n', "").strip.downcase }
-  }.flatten.uniq
+    data["selectors"].map { |sel| sel.gsub('\n', "").strip }
+  end.flatten.uniq
 
   # these test methods are created dynamically so we can see all failures for
   # all components and not error after the first component failure
-  Primer::Component.descendants.each do |component_class|
+  # Primer::Component.descendants.each do |component_class|
+  [Primer::Alpha::Layout].each do |component_class|
     class_test_name = component_class.name.downcase.gsub("::", "_")
     define_method("test_selectors_used_by_#{class_test_name}_are_valid") do
       preview_class = get_preview_class(component_class)
@@ -32,11 +34,10 @@ class ComponentSelectorUseTest < Minitest::Test
       previews = preview_class.instance_methods(false)
       previews.each do |preview|
         preview_page = render_preview(preview, preview_klass: preview_class)
-        preview_selectors = find_selectors(component_class, preview_page)
+        preview_selectors = find_selectors(component_class, preview_page).map { |sel| ".#{sel}" }
 
-        preview_selectors.each do |selector|
-          assert COMPONENT_SELECTORS.include?(".#{selector.downcase}"), "Could not find .#{selector.downcase} in the PVC component-specific selectors"
-        end
+        unmatched_selectors = (preview_selectors - COMPONENT_SELECTORS).sort
+        assert unmatched_selectors.empty?, unmatched_selectors_message(component_class, unmatched_selectors)
       end
     end
   end
@@ -51,15 +52,20 @@ class ComponentSelectorUseTest < Minitest::Test
     end
 
     flat_list = selectors.concat(child_selectors).flatten.uniq
-    filtered_selectors = filter_selectors(component_class, flat_list, IGNORED_SELECTORS)
+    filter_selectors(component_class, flat_list, IGNORED_SELECTORS)
+  end
 
-    # puts "              Node: #{node.name}"
-    # puts "    Node Selectors: #{selectors}"
-    # puts "   Child Selectors: #{child_selectors}"
-    # puts "Combined Selectors: #{flat_list}"
-    # puts "Filtered Selectors: #{filtered_selectors}"
-    # puts ""
+  def unmatched_selectors_message(component_class, selectors)
+    class_name = component_class.name
+    selector_list = selectors.join("\n")
 
-    filtered_selectors
+    msg = []
+    msg << "PVC Component '#{class_name}' uses CSS selectors that are not found in the PVC source:"
+    msg << ""
+    msg << selector_list
+    msg << ""
+    msg << "CSS selectors not provided by PVC may be ignored by updating 'IGNORED_SELECTORS' in #{__FILE__}"
+
+    msg.join("\n")
   end
 end
