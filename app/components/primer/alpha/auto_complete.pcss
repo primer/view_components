@@ -1,48 +1,49 @@
-// This file can be deprecated when AutoComplete is upstreamed to PVC + rolled out to dotcom https://github.com/github/primer/issues/796
-// AutoComplete relies on FormControl, Overlay and ActionList CSS
+/* autocomplete */
 
-// Stacked label (default)
+/* This file can be deprecated when AutoComplete is upstreamed to PVC + rolled out to dotcom https://github.com/github/primer/issues/796
+** AutoComplete relies on FormControl, Overlay and ActionList CSS */
+
+/* Stacked label (default) */
 .autocomplete-label-stacked {
   display: block;
-  margin-bottom: $spacer-2 * 0.75;
+  margin-bottom: 6px;
 }
 
-// Inline label (non-default)
+/* Inline label (non-default) */
 .autocomplete-label-inline {
   display: inline;
-  margin-right: $spacer-2 * 0.75;
+  margin-right: 6px;
 }
 
-// Switch to stacked at smaller viewport
-@media (max-width: $width-sm) {
+/* Switch to stacked at smaller viewport */
+@media (max-width: 543.98px) {
   .autocomplete-label-inline {
     display: block;
-    margin-bottom: $spacer-2 * 0.75;
+    margin-bottom: 6px;
   }
 }
 
-// Wrapper for the input and result elements to ensure alignment
+/* Wrapper for the input and result elements to ensure alignment */
 .autocomplete-body {
   position: relative;
   display: inline;
 }
 
-// Wrapper and conditional styles for when an icon is added
+/* Wrapper and conditional styles for when an icon is added */
 .autocomplete-embedded-icon-wrap {
   display: inline-flex;
-  padding: $spacer-1 $spacer-2;
+  padding: 4px 8px;
   align-items: center;
 
   &:focus-within {
     border-color: var(--color-accent-fg);
 
-    @include focusBoxShadowInset;
+    @mixin focusBoxShadowInset;
   }
 
-  .form-control {
+  & .form-control {
     padding: 0;
-    margin-left: $spacer-2;
-    // stylelint-disable-next-line
+    margin-left: 8px;
     border: none;
     box-shadow: none;
 
@@ -56,7 +57,7 @@
   }
 }
 
-// A pop up list of items used to show autocompleted results
+/* A pop up list of items used to show autocompleted results */
 .autocomplete-results {
   position: absolute;
   left: 0;
@@ -65,24 +66,23 @@
   min-width: 100%;
   max-height: 20em;
   overflow-y: auto;
-  // stylelint-disable-next-line primer/typography
   font-size: 13px;
   list-style: none;
   background: var(--color-canvas-overlay);
-  border: $border-width $border-style var(--color-border-default);
-  border-radius: $border-radius;
+  border: var(--primer-borderWidth-thin, 1px) solid var(--color-border-default);
+  border-radius: var(--primer-borderRadius-medium, 6px);
   box-shadow: var(--color-shadow-medium);
 }
 
-// One of the items that appears within an autocomplete group
-// Bold black text on white background
+/* One of the items that appears within an autocomplete group
+** Bold black text on white background */
 
 .autocomplete-item {
   display: block;
   width: 100%;
-  padding: $spacer-1 $spacer-2;
+  padding: 4px 8px;
   overflow: hidden;
-  font-weight: $font-weight-bold;
+  font-weight: var(--base-text-weight-semibold, 600);
   color: var(--color-fg-default);
   text-align: left;
   text-decoration: none;
@@ -97,8 +97,8 @@
     text-decoration: none;
     background-color: var(--color-accent-emphasis);
 
-    // Inherit color on all child elements to ensure enough contrast
-    * {
+    /* Inherit color on all child elements to ensure enough contrast */
+    & * {
       color: inherit !important;
     }
   }
@@ -110,8 +110,8 @@
     text-decoration: none;
     background-color: var(--color-accent-emphasis);
 
-    // Inherit color on all child elements to ensure enough contrast
-    * {
+    /* Inherit color on all child elements to ensure enough contrast */
+    & * {
       color: inherit !important;
     }
   }
