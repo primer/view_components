@@ -1,15 +1,17 @@
 const visibleElements = new WeakSet()
 
+
 function globalPopoverHandler(event: Event) {
   const target = event.target
-  if (!(target instanceof HTMLElement)) return
+  if (!(target instanceof Element)) return
   const doc = target.ownerDocument
   let effectedPopover: HTMLElement | null = target.closest('[popover]')
-  const isButton = target instanceof HTMLButtonElement
+  const button = target.closest('[popovertoggletarget],[popoverhidetarget],[popovershowtarget]')
+  const isButton = button instanceof HTMLButtonElement
 
   // Handle popover triggers
-  if (isButton && target.hasAttribute('popovershowtarget')) {
-    effectedPopover = doc.getElementById(target.getAttribute('popovershowtarget') || '')
+  if (isButton && button.hasAttribute('popovershowtarget')) {
+    effectedPopover = doc.getElementById(button.getAttribute('popovershowtarget') || '')
 
     if (
       effectedPopover instanceof PrimerOverlayElement &&
@@ -18,8 +20,8 @@ function globalPopoverHandler(event: Event) {
     ) {
       effectedPopover.showPopover()
     }
-  } else if (isButton && target.hasAttribute('popoverhidetarget')) {
-    effectedPopover = doc.getElementById(target.getAttribute('popoverhidetarget') || '')
+  } else if (isButton && button.hasAttribute('popoverhidetarget')) {
+    effectedPopover = doc.getElementById(button.getAttribute('popoverhidetarget') || '')
 
     if (
       effectedPopover instanceof PrimerOverlayElement &&
@@ -28,15 +30,11 @@ function globalPopoverHandler(event: Event) {
     ) {
       effectedPopover.hidePopover()
     }
-  } else if (isButton && target.hasAttribute('popovertoggletarget')) {
-    effectedPopover = doc.getElementById(target.getAttribute('popovertoggletarget') || '')
+  } else if (isButton && button.hasAttribute('popovertoggletarget')) {
+    effectedPopover = doc.getElementById(button.getAttribute('popovertoggletarget') || '')
 
     if (effectedPopover instanceof PrimerOverlayElement && effectedPopover.popover) {
-      if (visibleElements.has(effectedPopover)) {
-        effectedPopover.hidePopover()
-      } else if (effectedPopover instanceof PrimerOverlayElement) {
-        effectedPopover.showPopover()
-      }
+      effectedPopover.togglePopover()
     }
   }
 
@@ -80,25 +78,24 @@ export class PrimerOverlayElement extends HTMLElement {
 
   showPopover() {
     if (supportsPopover) return super.showPopover()
-    if (visibleElements.has(this)) throw new DOMException('Invalid on already-showing popover', 'InvalidStateError')
-    this.style.display = 'block'
-    this.style.position = 'fixed'
+    if (visibleElements.has(this)) throw new DOMException('Invalid on already showing popover', 'InvalidStateError')
+    this.classList.add(':open')
     visibleElements.add(this)
   }
 
   hidePopover() {
     if (supportsPopover) return super.hidePopover()
-    if (visibleElements.has(this)) throw new DOMException('Invalid on already-showing Popover', 'InvalidStateError')
-    this.style.display = 'none'
+    if (!visibleElements.has(this)) throw new DOMException('Invalid on already hidden Popover', 'InvalidStateError')
+    this.classList.remove(':open')
     visibleElements.delete(this)
   }
 
   togglePopover() {
     if (supportsPopover) return super.hidePopover()
     if (visibleElements.has(this)) {
-      this.showPopover()
-    } else {
       this.hidePopover()
+    } else {
+      this.showPopover()
     }
   }
 }
