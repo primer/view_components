@@ -62,7 +62,7 @@ class ComponentSelectorUseTest < Minitest::Test
     msg << ""
     msg << selector_list
     msg << ""
-    msg << "CSS selectors not provided by PVC may be ignored by updating 'IGNORED_SELECTORS' in #{__FILE__}"
+    msg << "If these CSS selectors are not provided by PVC, they may be ignored by updating 'IGNORED_SELECTORS' in #{__FILE__}"
 
     msg.join("\n")
   end
