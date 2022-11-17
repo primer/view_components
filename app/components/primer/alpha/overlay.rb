@@ -65,8 +65,8 @@ module Primer
       }.freeze
       ANCHOR_SIDE_OPTIONS = ANCHOR_SIDE_MAPPINGS.keys
 
-      DEFAULT_POPUP = :auto
-      POPUP_OPTIONS = [ DEFAULT_POPUP, :hint, :manual ].freeze
+      DEFAULT_POPOVER = :auto
+      POPOVER_OPTIONS = [ DEFAULT_POPOVER, :manual ].freeze
 
       ROLE_OPTIONS = [ :dialog, :menu ].freeze
 
@@ -78,7 +78,7 @@ module Primer
           system_arguments[:classes]
         )
         system_arguments[:id] = "overlay-show-#{@system_arguments[:id]}"
-        system_arguments["popuptoggletarget"] = @system_arguments[:id]
+        system_arguments["popovertoggletarget"] = @system_arguments[:id]
         system_arguments[:data] = (system_arguments[:data] || {}).merge({ "show-dialog-id": @system_arguments[:id] })
         Primer::ButtonComponent.new(**system_arguments)
       }
@@ -142,7 +142,7 @@ module Primer
       def initialize(
         title:,
         subtitle: nil,
-        popup: DEFAULT_POPUP,
+        popover: DEFAULT_POPOVER,
         defaultopen: false,
         size: DEFAULT_SIZE,
         placement: DEFAULT_PLACEMENT,
@@ -179,7 +179,7 @@ module Primer
         @subtitle = subtitle
         @visually_hide_title = visually_hide_title
 
-        @system_arguments[:popup] = popup
+        @system_arguments[:popover] = popover
         @system_arguments[:defaultopen] = "" if defaultopen
         @system_arguments[:aria] ||= {}
         @system_arguments[:aria][:describedby] ||= "#{@id}-description"
