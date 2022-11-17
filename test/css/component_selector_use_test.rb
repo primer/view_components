@@ -5,6 +5,37 @@ Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 
 IGNORED_SELECTORS = {
   :global => ["preview-wrap"],
+  Primer::Alpha::TabPanels => ["tabnav", "tabnav-tab", "tabnav-tabs"],
+  Primer::Beta::Button => ["Button--medium", "octicon", "octicon-search", "Button--invisible-noVisuals"],
+  Primer::Dropdown => ["btn", "details-overlay", "details-reset", "dropdown-menu-se", "octicon", "octicon-triangle-down"],
+  Primer::Beta::AvatarStack => ["AvatarStack", "AvatarStack-body", "avatar", "avatar-small", "tooltipped", "tooltipped-n"],
+  Primer::Beta::CloseButton => ["close-button", "octicon", "octicon-x"],
+  Primer::Alpha::TextField => ["FormControl", "FormControl-input", "FormControl-label"],
+  Primer::Alpha::Layout => ["Layout--sidebarPosition-flowRow-start", "Layout--sidebarPosition-start"],
+  Primer::Alpha::SegmentedControl => ["Button--invisible-noVisuals", "Button--medium", "SegmentedControl-item--selected", "octicon", "octicon-eye", "octicon-file-code", "octicon-people", "SegmentedControl--iconOnly", "btn-block"],
+  Primer::Beta::Truncate => ["Truncate-text"],
+  Primer::Alpha::Banner => ["Banner-message", "Banner-title", "Banner-visual", "flash", "octicon", "octicon-bell", "Banner-actions", "Button--medium", "Banner--error", "Banner--success", "Banner--warning", "Banner--full"],
+  Primer::Alpha::Tooltip => ["Button--medium", "octicon", "octicon-search"],
+  Primer::Beta::ButtonGroup => ["BtnGroup", "BtnGroup-item", "btn", "btn-danger", "btn-outline", "btn-primary"],
+  Primer::Alpha::ActionList => ["ActionList-sectionDivider", "ActionList-sectionDivider-title", "ActionListContent--visual16", "ActionListItem--hasSubItem", "ActionListWrap--subGroup", "ActionListContent--sizeLarge", "ActionListContent--sizeXLarge", "octicon", "octicon-star", "Button--medium", "ActionListItem--trailingActionHover", "ActionListItem--danger", "ActionListItem--navActive"],
+  Primer::Markdown => ["markdown-body"],
+  Primer::Beta::BorderBox => ["Box", "Box-body", "Box-footer", "Box-header", "Box-row"],
+  Primer::ClipboardCopy => ["octicon", "octicon-check", "octicon-copy"],
+  Primer::Alpha::NavList => ["ActionList-sectionDivider", "ActionList-sectionDivider-title", "ActionListItem--hasSubItem", "ActionListWrap--subGroup", "ActionList", "ActionList--subGroup", "ActionListContent--hasActiveSubItem", "ActionListContent--visual16", "ActionListItem--navActive", "ActionListItem--subItem", "ActionListItem-collapseIcon", "octicon", "octicon-chevron-down", "octicon-comment-discussion", "octicon-gear", "octicon-people", "Button--medium"],
+  Primer::Alpha::UnderlineNav => ["UnderlineNav", "UnderlineNav-actions", "UnderlineNav-body", "UnderlineNav-item", "btn", "octicon", "octicon-star"],
+  Primer::Beta::Avatar => ["avatar"],
+  Primer::Beta::Blankslate => ["btn", "btn-primary", "octicon", "octicon-shield", "Box"],
+  Primer::Alpha::Dialog => ["Overlay", "Overlay--hidden", "Overlay--motion-scaleFade", "Overlay--size-medium", "Overlay-actionWrap", "Overlay-backdrop--center", "Overlay-body", "Overlay-closeButton", "Overlay-footer", "Overlay-footer--alignEnd", "Overlay-footer--divided", "Overlay-header", "Overlay-headerContentWrap", "Overlay-title", "Overlay-titleWrap", "Overlay-whenNarrow", "btn", "btn-primary", "close-button", "octicon", "octicon-x"],
+  Primer::Alpha::UnderlinePanels => ["UnderlineNav", "UnderlineNav-body", "UnderlineNav-item"],
+  Primer::Alpha::ToggleSwitch => ["octicon", "octicon-alert", "ToggleSwitch--checked", "ToggleSwitch--disabled", "ToggleSwitch--small"],
+  Primer::Beta::Breadcrumbs => ["breadcrumb-item-selected"],
+  Primer::Alpha::ButtonMarketing => ["btn-mktg"],
+  Primer::Beta::AutoComplete => ["ActionList", "FormControl", "FormControl-input", "FormControl-input-leadingVisual", "FormControl-input-leadingVisualWrap", "FormControl-input-wrap", "FormControl-input-wrap--leadingVisual", "FormControl-label", "FormControl-medium", "Overlay", "Overlay--height-auto", "Overlay--width-auto", "Overlay-backdrop--anchor", "Overlay-body", "Overlay-body--paddingNone", "octicon", "octicon-search", "btn", "btn-primary"],
+  Primer::Beta::IconButton => ["Button--medium", "octicon", "octicon-x"],
+  Primer::Beta::Flash => ["flash", "octicon", "octicon-people"],
+  Primer::Alpha::HiddenTextExpander => ["ellipsis-expander", "hidden-text-expander"],
+  Primer::Beta::Details => ["details-overlay", "btn"],
+  Primer::Alpha::AutoComplete => [/.*/],
 }.freeze
 
 # Test CSS Selectors Used By Components
@@ -29,14 +60,17 @@ class ComponentSelectorUseTest < Minitest::Test
       preview_class = get_preview_class(component_class)
       next unless preview_class
 
+      unmatched_selectors = []
       previews = preview_class.instance_methods(false)
       previews.each do |preview|
         preview_page = render_preview(preview, preview_klass: preview_class)
         preview_selectors = find_selectors(component_class, preview_page).map { |sel| ".#{sel}" }
 
-        unmatched_selectors = (preview_selectors - COMPONENT_SELECTORS).sort
-        assert unmatched_selectors.empty?, unmatched_selectors_message(component_class, unmatched_selectors)
+        unmatched_selectors << (preview_selectors - COMPONENT_SELECTORS)
       end
+      unmatched_selectors = unmatched_selectors.flatten.compact.uniq
+
+      assert unmatched_selectors.empty?, unmatched_selectors_message(component_class, unmatched_selectors)
     end
   end
 
@@ -55,7 +89,7 @@ class ComponentSelectorUseTest < Minitest::Test
 
   def unmatched_selectors_message(component_class, selectors)
     class_name = component_class.name
-    selector_list = selectors.join("\n")
+    selector_list = selectors.compact.sort.join("\n")
 
     msg = []
     msg << "PVC Component '#{class_name}' uses CSS selectors that are not found in the PVC source:"
