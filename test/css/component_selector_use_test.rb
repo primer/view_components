@@ -3,6 +3,7 @@
 require_relative "./test_helper"
 Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 
+# rubocop:disable Style/WordArray
 IGNORED_SELECTORS = {
   :global => ["preview-wrap"],
   Primer::Alpha::TabPanels => ["tabnav", "tabnav-tab", "tabnav-tabs"],
@@ -35,19 +36,20 @@ IGNORED_SELECTORS = {
   Primer::Beta::Flash => ["flash", "octicon", "octicon-people"],
   Primer::Alpha::HiddenTextExpander => ["ellipsis-expander", "hidden-text-expander"],
   Primer::Beta::Details => ["details-overlay", "btn"],
-  Primer::Alpha::AutoComplete => [/.*/],
+  Primer::Alpha::AutoComplete => [/.*/]
 }.freeze
+# rubocop:enable Style/WordArray
 
 # Test CSS Selectors Used By Components
 # ----
-# 
+#
 # ensure all of the classes used by components are valid, checking against the
 # available selectors in component-specific CSS
 class ComponentSelectorUseTest < Minitest::Test
   include Primer::ComponentTestHelpers
   include Primer::RenderPreview
 
-  COMPONENT_SELECTORS = Dir["app/{components,lib/primer}/**/*.css.json"].map do |file| 
+  COMPONENT_SELECTORS = Dir["app/{components,lib/primer}/**/*.css.json"].map do |file|
     data = JSON.parse(File.read(file))
     data["selectors"].map { |sel| sel.gsub('\n', "").strip }
   end.flatten.uniq
@@ -79,7 +81,7 @@ class ComponentSelectorUseTest < Minitest::Test
   def find_selectors(component_class, node)
     selectors = node.classes || []
 
-    child_selectors = node.elements.map do |el| 
+    child_selectors = node.elements.map do |el|
       find_selectors(component_class, el)
     end
 
