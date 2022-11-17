@@ -78,7 +78,6 @@
   "Primer::OcticonComponent": "beta",
   "Primer::OcticonSymbolsComponent": "alpha",
   "Primer::PopoverComponent": "beta",
-  "Primer::ProgressBarComponent": "deprecated",
   "Primer::SpinnerComponent": "beta",
   "Primer::StateComponent": "beta",
   "Primer::SubheadComponent": "beta",
