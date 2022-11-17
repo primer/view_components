@@ -1,95 +1,105 @@
-const visibleElements = new Set()
+const visibleElements = new WeakSet()
 
-function globalPopUpHandler(event: Event) {
+function globalPopoverHandler(event: Event) {
   const target = event.target
   if (!(target instanceof HTMLElement)) return
   const doc = target.ownerDocument
-  let effectedPopup: HTMLElement | null = target.closest('[popup]')
+  let effectedPopover: HTMLElement | null = target.closest('[popover]')
   const isButton = target instanceof HTMLButtonElement
 
-  // Handle popup triggers
-  if (isButton && target.hasAttribute('popupshowtarget')) {
-    effectedPopup = doc.getElementById(target.getAttribute('popupshowtarget') || '')
+  // Handle popover triggers
+  if (isButton && target.hasAttribute('popovershowtarget')) {
+    effectedPopover = doc.getElementById(target.getAttribute('popovershowtarget') || '')
 
-    if (effectedPopup instanceof PrimerOverlayElement && effectedPopup.popUp && !visibleElements.has(effectedPopup)) {
-      effectedPopup.showPopUp()
+    if (
+      effectedPopover instanceof PrimerOverlayElement &&
+      effectedPopover.popover &&
+      !visibleElements.has(effectedPopover)
+    ) {
+      effectedPopover.showPopover()
     }
-  } else if (isButton && target.hasAttribute('popuphidetarget')) {
-    effectedPopup = doc.getElementById(target.getAttribute('popuphidetarget') || '')
+  } else if (isButton && target.hasAttribute('popoverhidetarget')) {
+    effectedPopover = doc.getElementById(target.getAttribute('popoverhidetarget') || '')
 
-    if (effectedPopup instanceof PrimerOverlayElement && effectedPopup.popUp && visibleElements.has(effectedPopup)) {
-      effectedPopup.hidePopUp()
+    if (
+      effectedPopover instanceof PrimerOverlayElement &&
+      effectedPopover.popover &&
+      visibleElements.has(effectedPopover)
+    ) {
+      effectedPopover.hidePopover()
     }
-  } else if (isButton && target.hasAttribute('popuptoggletarget')) {
-    effectedPopup = doc.getElementById(target.getAttribute('popuptoggletarget') || '')
+  } else if (isButton && target.hasAttribute('popovertoggletarget')) {
+    effectedPopover = doc.getElementById(target.getAttribute('popovertoggletarget') || '')
 
-    if (effectedPopup instanceof PrimerOverlayElement && effectedPopup.popUp) {
-      if (visibleElements.has(effectedPopup)) {
-        effectedPopup.hidePopUp()
-      } else if (effectedPopup instanceof PrimerOverlayElement) {
-        effectedPopup.showPopUp()
+    if (effectedPopover instanceof PrimerOverlayElement && effectedPopover.popover) {
+      if (visibleElements.has(effectedPopover)) {
+        effectedPopover.hidePopover()
+      } else if (effectedPopover instanceof PrimerOverlayElement) {
+        effectedPopover.showPopover()
       }
     }
   }
 
-  // Dismiss open popups
-  for (const popup of doc.querySelectorAll('[popup="" i].\\:open, [popup=auto i].\\:open, [popup=hint i].\\:open')) {
-    if (popup instanceof PrimerOverlayElement && popup !== effectedPopup) popup.hidePopUp()
+  // Dismiss open popovers
+  for (const popover of doc.querySelectorAll('[popover="" i].\\:open, [popover=auto i].\\:open')) {
+    if (popover instanceof PrimerOverlayElement && popover !== effectedPopover) popover.hidePopover()
+  }
+}
+
+const supportsPopover = 'popover' in HTMLElement.prototype
+declare global {
+  interface HTMLElement {
+    popover: 'auto' | 'manual' | null
+    showPopover(): void
+    hidePopover(): void
   }
 }
 
 export class PrimerOverlayElement extends HTMLElement {
   static get observedAttributes() {
-    return ['popup', 'defaultopen']
+    return ['popover']
   }
 
-  get defaultOpen(): boolean {
-    return this.hasAttribute('defaultopen')
-  }
-
-  set defaultOpen(value: boolean) {
-    this.toggleAttribute('defaultopen', value)
-  }
-
-  get popUp(): 'auto' | 'hint' | 'manual' | null {
-    const value = this.getAttribute('popup')?.toLowerCase() || ''
-    if (value === 'hint') return 'hint'
+  get popover(): 'auto' | 'manual' | null {
+    if (supportsPopover) return super.popover
+    const value = this.getAttribute('popover')?.toLowerCase() || ''
     if (value === 'manual') return 'manual'
     if (value === '' || value === 'auto') return 'auto'
     return null
   }
 
-  set popUp(value: string | null) {
-    this.setAttribute('popup', String(value))
+  set popover(value: string | null) {
+    this.setAttribute('popover', String(value))
   }
 
   private connectedCallback() {
-    if (!('showPopUp' in HTMLElement.prototype)) {
-      this.ownerDocument.addEventListener('click', globalPopUpHandler)
-    }
-
-    if (this.defaultOpen) {
-      if (this.popUp === 'auto') {
-        // eslint-disable-next-line custom-elements/no-dom-traversal-in-connectedcallback
-        const popup = document.querySelector('primer-overlay[popup=auto i][defaultopen]')
-        if (popup === this) this.showPopUp()
-      } else if (this.popUp === 'manual') {
-        this.showPopUp()
-      }
+    if (!supportsPopover) {
+      this.ownerDocument.addEventListener('click', globalPopoverHandler)
     }
   }
 
-  showPopUp() {
-    if (visibleElements.has(this)) throw new DOMException('Invalid on already-showing popups', 'InvalidStateError')
+  showPopover() {
+    if (supportsPopover) return super.showPopover()
+    if (visibleElements.has(this)) throw new DOMException('Invalid on already-showing popover', 'InvalidStateError')
     this.style.display = 'block'
     this.style.position = 'fixed'
     visibleElements.add(this)
   }
 
-  hidePopUp() {
-    if (visibleElements.has(this)) throw new DOMException('Invalid on already-showing popups', 'InvalidStateError')
+  hidePopover() {
+    if (supportsPopover) return super.hidePopover()
+    if (visibleElements.has(this)) throw new DOMException('Invalid on already-showing Popover', 'InvalidStateError')
     this.style.display = 'none'
     visibleElements.delete(this)
+  }
+
+  togglePopover() {
+    if (supportsPopover) return super.hidePopover()
+    if (visibleElements.has(this)) {
+      this.showPopover()
+    } else {
+      this.hidePopover()
+    }
   }
 }
 
