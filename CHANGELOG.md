@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.0.111
+
+### Patch Changes
+
+- [#1599](https://github.com/primer/view_components/pull/1599) [`62dd9461`](https://github.com/primer/view_components/commit/62dd946124001709dcb193a49af91dd785fa4f8c) Thanks [@simurai](https://github.com/simurai)! - Move `Popover` styles to PVC
+
+* [#1605](https://github.com/primer/view_components/pull/1605) [`63b40c1b`](https://github.com/primer/view_components/commit/63b40c1bd83bdcf0114a238d9904330ea7af6e3a) Thanks [@jonrohan](https://github.com/jonrohan)! - Remove the deprecated `Primer::CounterComponet` and use `Primer::Beta::Counter`.
+
+- [#1611](https://github.com/primer/view_components/pull/1611) [`047674c8`](https://github.com/primer/view_components/commit/047674c872b5ca3fedd768cee8473b7d5e665c95) Thanks [@safeforge](https://github.com/safeforge)! - Avoid double-registering of exported components
+
+* [#1601](https://github.com/primer/view_components/pull/1601) [`ce2e959d`](https://github.com/primer/view_components/commit/ce2e959dd62d2859e6dbb3113bc1867ff7b3dcf8) Thanks [@simurai](https://github.com/simurai)! - Move `flash` styles to PVC
+
+- [#1607](https://github.com/primer/view_components/pull/1607) [`c97f7b72`](https://github.com/primer/view_components/commit/c97f7b72daed4d167668ac703c59702522def49b) Thanks [@simurai](https://github.com/simurai)! - Move `Avatar` + `AvatarStack` styles to PVC
+
+* [#1598](https://github.com/primer/view_components/pull/1598) [`040f4943`](https://github.com/primer/view_components/commit/040f49435db61d5ec454b1be68e9addb0bb47a9b) Thanks [@simurai](https://github.com/simurai)! - Move `TimelineItem` styles to PVC
+
+- [#1608](https://github.com/primer/view_components/pull/1608) [`75ad4765`](https://github.com/primer/view_components/commit/75ad4765ccbac2b0b5e631877c26373d13760ed3) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - testing to ensure CSS classes used by PVC components are valid, according to the available selectors
+
+* [#1600](https://github.com/primer/view_components/pull/1600) [`4501861b`](https://github.com/primer/view_components/commit/4501861b6d8eb662fda30a9e6c9fbbb62d1ed6d3) Thanks [@simurai](https://github.com/simurai)! - Move `dropdown` styles to PVC
+
 ## 0.0.110
 
 ### Patch Changes
