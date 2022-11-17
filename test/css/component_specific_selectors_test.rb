@@ -48,6 +48,21 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Button--iconOnly.Button--small",
       ".Button--iconOnly.Button--large"
     ],
+    Primer::Beta::Avatar => [
+      ".avatar-link",
+      ".avatar-group-item",
+      ".avatar-1",
+      ".avatar-2",
+      ".avatar-3",
+      ".avatar-4",
+      ".avatar-5",
+      ".avatar-6",
+      ".avatar-7",
+      ".avatar-8"
+    ],
+    Primer::Beta::AvatarStack => [
+      ".AvatarStack-body .avatar img"
+    ],
     Primer::Beta::Counter => [
       "Counter .octicon"
     ],
@@ -89,7 +104,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       preview_class = get_preview_class(component_class)
       next unless preview_class
 
-      selectors = get_component_selectors(component_class)
+      selectors = get_component_selectors(component_class, IGNORED_SELECTORS)
       previews = preview_class.instance_methods(false)
 
       matched_selectors = []
@@ -109,18 +124,6 @@ class ComponentSpecificSelectorsTest < Minitest::Test
 
   private
 
-  def get_preview_class(component_class)
-    name = component_class.name.gsub("Component", "")
-    prevew_name = "#{name}Preview"
-    Object.const_defined?(prevew_name) ? prevew_name.constantize : nil
-  end
-
-  def get_component_selectors(component_class)
-    css_file = Object.const_source_location(component_class.to_s)[0].gsub(".rb", ".css.json")
-    css_data = File.exist?(css_file) ? JSON.parse(File.read(css_file)) : {}
-    filter_selectors(component_class, css_data["selectors"])
-  end
-
   def no_preview_for_selectors_message(preview_class, selectors)
     class_name = preview_class.name
     selector_list = selectors.join("\n")
@@ -133,18 +136,5 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     msg << "Selectors without a preview may be ignored by updating 'IGNORED_SELECTORS' in #{__FILE__}"
 
     msg.join("\n")
-  end
-
-  def filter_selectors(component_class, selectors)
-    filtered = (selectors || []).reject do |selector|
-      global_ignored = IGNORED_SELECTORS[:global].any? { |pattern| selector.match(pattern) }
-
-      component_filter = IGNORED_SELECTORS[component_class]
-      component_ignored = component_filter ? component_filter.any? { |pattern| selector.match(pattern) } : false
-
-      global_ignored || component_ignored
-    end
-
-    filtered.flatten.uniq
   end
 end
