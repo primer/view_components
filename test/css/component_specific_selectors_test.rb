@@ -71,6 +71,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Label--open",
       ".Label--closed"
     ],
+    Primer::Beta::Link => [".Link"],
     Primer::Beta::Blankslate => [
       ".blankslate code",
       ".blankslate-large img",
