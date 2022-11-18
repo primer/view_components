@@ -31,6 +31,10 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Alpha::Banner => [
       ".Banner .Banner-close"
     ],
+    Primer::Alpha::ButtonMarketing => [
+      ".btn-mktg.disabled",
+      ".btn-small-mktg"
+    ],
     Primer::Alpha::SegmentedControl => [
       ".Button-withTooltip"
     ],
