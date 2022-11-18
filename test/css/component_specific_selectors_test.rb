@@ -28,6 +28,9 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".ActionListItem--subItem>.ActionListContent>.ActionListItem-label",
       ".ActionList-sectionDivider--filled"
     ],
+    Primer::Alpha::AutoComplete => [
+      ".autocomplete-item"
+    ],
     Primer::Alpha::Banner => [
       ".Banner .Banner-close"
     ],
