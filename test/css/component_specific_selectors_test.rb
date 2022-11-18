@@ -34,6 +34,21 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Alpha::SegmentedControl => [
       ".Button-withTooltip"
     ],
+    Primer::Beta::BorderBox => [
+      ".Box-btn-octicon",
+      ".Box--spacious .Box-title",
+      ".Box-row--unread",
+      ".Box-row.unread",
+      ".Box-row.navigation-focus",
+      ".Box-row--focus-gray",
+      ".Box-row--focus-blue",
+      ".Box-row-link",
+      ".Box-row--drag-button",
+      ".Box--scrollable",
+      ".Box--blue",
+      ".Box--danger",
+      ".Box-header--blue"
+    ],
     Primer::Beta::Button => [
       "summary.Button",
       ".Button-content--alignStart",
