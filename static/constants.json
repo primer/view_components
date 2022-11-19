@@ -179,6 +179,43 @@
   },
   "Primer::Alpha::Dialog::Header": {
   },
+  "Primer::Alpha::Dropdown": {
+    "Menu": "Primer::Alpha::Dropdown::Menu"
+  },
+  "Primer::Alpha::Dropdown::Menu": {
+    "AS_DEFAULT": "default",
+    "AS_OPTIONS": [
+      "default",
+      "list"
+    ],
+    "DIRECTION_DEFAULT": "se",
+    "DIRECTION_OPTIONS": [
+      "se",
+      "sw",
+      "w",
+      "e",
+      "ne",
+      "s"
+    ],
+    "Item": "Primer::Alpha::Dropdown::Menu::Item",
+    "SCHEME_DEFAULT": "default",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "dark": "dropdown-menu-dark"
+    }
+  },
+  "Primer::Alpha::Dropdown::Menu::Item": {
+    "BUTTON_TAGS": [
+      "button",
+      "summary"
+    ],
+    "TAG_DEFAULT": "a",
+    "TAG_OPTIONS": [
+      "a",
+      "button",
+      "summary"
+    ]
+  },
   "Primer::Alpha::HiddenTextExpander": {
   },
   "Primer::Alpha::Image": {
@@ -736,38 +773,6 @@
     "Menu": "Primer::Dropdown::Menu"
   },
   "Primer::Dropdown::Menu": {
-    "AS_DEFAULT": "default",
-    "AS_OPTIONS": [
-      "default",
-      "list"
-    ],
-    "DIRECTION_DEFAULT": "se",
-    "DIRECTION_OPTIONS": [
-      "se",
-      "sw",
-      "w",
-      "e",
-      "ne",
-      "s"
-    ],
-    "Item": "Primer::Dropdown::Menu::Item",
-    "SCHEME_DEFAULT": "default",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "dark": "dropdown-menu-dark"
-    }
-  },
-  "Primer::Dropdown::Menu::Item": {
-    "BUTTON_TAGS": [
-      "button",
-      "summary"
-    ],
-    "TAG_DEFAULT": "a",
-    "TAG_OPTIONS": [
-      "a",
-      "button",
-      "summary"
-    ]
   },
   "Primer::DropdownMenuComponent": {
     "DIRECTION_DEFAULT": "se",

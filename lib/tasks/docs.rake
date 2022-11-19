@@ -58,8 +58,8 @@ namespace :docs do
       Primer::Beta::Counter,
       Primer::Beta::Details,
       Primer::Alpha::Dialog,
-      Primer::Dropdown,
-      Primer::DropdownMenuComponent,
+      Primer::Alpha::Dropdown,
+      Primer::Alpha::DropdownMenuComponent,
       Primer::Beta::Flash,
       Primer::Beta::Heading,
       Primer::Alpha::HiddenTextExpander,
@@ -99,7 +99,7 @@ namespace :docs do
     ]
 
     js_components = [
-      Primer::Dropdown,
+      Primer::Alpha::Dropdown,
       Primer::LocalTime,
       Primer::Alpha::ImageCrop,
       Primer::Beta::AutoComplete,

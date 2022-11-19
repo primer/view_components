@@ -87,7 +87,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".flash-banner",
       ".warning"
     ],
-    Primer::Dropdown => [
+    Primer::Alpha::Dropdown => [
       ".dropdown-caret",
       ".dropdown-menu-no-overflow",
       ".dropdown-menu-no-overflow .dropdown-item",
