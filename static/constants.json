@@ -773,6 +773,9 @@
     "Menu": "Primer::Dropdown::Menu"
   },
   "Primer::Dropdown::Menu": {
+    "Item": "Primer::Dropdown::Menu::Item"
+  },
+  "Primer::Dropdown::Menu::Item": {
   },
   "Primer::DropdownMenuComponent": {
     "DIRECTION_DEFAULT": "se",

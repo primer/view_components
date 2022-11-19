@@ -66,6 +66,7 @@
   "Primer::Content": "stable",
   "Primer::Dropdown": "deprecated",
   "Primer::Dropdown::Menu": "deprecated",
+  "Primer::Dropdown::Menu::Item": "deprecated",
   "Primer::DropdownMenuComponent": "deprecated",
   "Primer::HellipButton": "alpha",
   "Primer::IconButton": "deprecated",

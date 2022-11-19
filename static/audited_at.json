@@ -66,6 +66,7 @@
   "Primer::Content": "",
   "Primer::Dropdown": "",
   "Primer::Dropdown::Menu": "",
+  "Primer::Dropdown::Menu::Item": "",
   "Primer::DropdownMenuComponent": "",
   "Primer::HellipButton": "",
   "Primer::IconButton": "",
