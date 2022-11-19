@@ -113,7 +113,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::LabelComponent",
       "Primer::LinkComponent",
       "Primer::ProgressBarComponent",
-      "Primer::Image",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
