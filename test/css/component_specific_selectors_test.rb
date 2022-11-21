@@ -28,11 +28,30 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".ActionListItem--subItem>.ActionListContent>.ActionListItem-label",
       ".ActionList-sectionDivider--filled"
     ],
+    Primer::Alpha::AutoComplete => [
+      ".autocomplete-item"
+    ],
     Primer::Alpha::Banner => [
       ".Banner .Banner-close"
     ],
+    Primer::Alpha::TabNav => [
+      ".tabnav-tab.selected",
+      ".tabnav-extra",
+      ".tabnav-btn"
+    ],
+    Primer::Alpha::ButtonMarketing => [
+      ".btn-mktg.disabled",
+      ".btn-small-mktg"
+    ],
     Primer::Alpha::SegmentedControl => [
       ".Button-withTooltip"
+    ],
+    Primer::Alpha::UnderlineNav => [
+      ".UnderlineNav .Counter--primary",
+      ".UnderlineNav-item.selected",
+      ".UnderlineNav--right",
+      ".UnderlineNav--full",
+      ".UnderlineNav-container"
     ],
     Primer::Beta::BorderBox => [
       ".Box-btn-octicon",
@@ -86,6 +105,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Label--open",
       ".Label--closed"
     ],
+    Primer::Beta::Link => [".Link"],
     Primer::Beta::Blankslate => [
       ".blankslate code",
       ".blankslate-large img",
