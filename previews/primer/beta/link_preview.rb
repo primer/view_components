@@ -36,6 +36,34 @@ module Primer
           "Link with tooltip"
         end
       end
+
+      # @!group Color Scheme
+      #
+      # @label Default
+      def color_scheme_default
+        render(Primer::Beta::Link.new(href: "#")) { "This is a default link color." }
+      end
+
+      # @label Primary
+      def color_scheme_primary
+        render(Primer::Beta::Link.new(href: "#", scheme: :primary)) { "This is a primary link color." }
+      end
+
+      # @label Primary, Muted
+      def color_scheme_primary_muted
+        render(Primer::Beta::Link.new(href: "#", scheme: :primary, muted: true)) { "This is a muted primary link color." }
+      end
+
+      # @label Secondary
+      def color_scheme_secondary
+        render(Primer::Beta::Link.new(href: "#", scheme: :secondary)) { "This is a secondary link color." }
+      end
+
+      # @label Secondary, Muted
+      def color_scheme_secondary_muted
+        render(Primer::Beta::Link.new(href: "#", scheme: :secondary, muted: true)) { "This is a muted secondary link color." }
+      end
+      # @!endgroup
     end
   end
 end
