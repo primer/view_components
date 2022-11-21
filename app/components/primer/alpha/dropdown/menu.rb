@@ -6,6 +6,8 @@ module Primer
       # This component is part of `Dropdown` and should not be
       # used as a standalone component.
       class Menu < Primer::Component
+        status :alpha
+
         AS_DEFAULT = :default
         AS_OPTIONS = [AS_DEFAULT, :list].freeze
 
@@ -54,6 +56,8 @@ module Primer
 
         # Items to be rendered in the `Dropdown` menu.
         class Item < Primer::Component
+          status :alpha
+
           TAG_DEFAULT = :a
           BUTTON_TAGS = [:button, :summary].freeze
           TAG_OPTIONS = [TAG_DEFAULT, *BUTTON_TAGS].freeze
