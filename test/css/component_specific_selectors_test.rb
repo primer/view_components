@@ -39,6 +39,10 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".tabnav-extra",
       ".tabnav-btn"
     ],
+    Primer::Alpha::ButtonMarketing => [
+      ".btn-mktg.disabled",
+      ".btn-small-mktg"
+    ],
     Primer::Alpha::SegmentedControl => [
       ".Button-withTooltip"
     ],
@@ -86,6 +90,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Label--open",
       ".Label--closed"
     ],
+    Primer::Beta::Link => [".Link"],
     Primer::Beta::Blankslate => [
       ".blankslate code",
       ".blankslate-large img",
