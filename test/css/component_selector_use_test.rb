@@ -6,6 +6,7 @@ Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 # rubocop:disable Style/WordArray
 IGNORED_SELECTORS = {
   :global => ["preview-wrap"],
+  Primer::Alpha::TabNav => ["octicon", "octicon-bookmark", "octicon-heart", "octicon-star"],
   Primer::Alpha::TabPanels => ["tabnav", "tabnav-tab", "tabnav-tabs"],
   Primer::Beta::Button => ["Button--medium", "octicon", "octicon-search", "Button--invisible-noVisuals"],
   Primer::Dropdown => ["btn", "details-overlay", "details-reset", "dropdown-menu-se", "octicon", "octicon-triangle-down"],
