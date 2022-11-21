@@ -44,4 +44,17 @@ class Primer::Forms::FormControlTest < Minitest::Test
     # there are validation-related elements
     assert_selector(".FormControl-inlineValidation", visible: :visible)
   end
+
+  def test_auto_check_generates_validtion_elements
+    model = DeepThought.new(42)
+
+    render_in_view_context do
+      primer_form_with(url: "/foo", model: model) do |f|
+        render(AutoCheckTextFieldForm.new(f))
+      end
+    end
+
+    # there are validation-related elements, but they're hidden
+    assert_selector(".FormControl-inlineValidation", visible: false)
+  end
 end

@@ -200,6 +200,10 @@ module Primer
           true
         end
 
+        def need_validation_element?
+          invalid?
+        end
+
         private
 
         def input_data

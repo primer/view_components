@@ -1,19 +1,19 @@
-<%= render(FormControl.new(input: @input)) do %>
-  <% if @input.leading_visual || @input.show_clear_button? %>
-    <%= content_tag(:div, **@field_wrap_arguments) do %>
+<%= render Primer::ConditionalWrapper.new(condition: @input.auto_check_src, tag: "text-field") do %>
+  <%= render(FormControl.new(input: @input)) do %>
+    <%= render Primer::ConditionalWrapper.new(tag: :div, class: @input.field_wrap_classes, condition: @input.leading_visual || @input.show_clear_button?) do %>
       <% if @input.leading_visual %>
         <span class="FormControl-input-leadingVisualWrap">
           <%= render(Primer::OcticonComponent.new(**@input.leading_visual)) %>
         </span>
       <% end %>
-      <%= builder.text_field(@input.name, **@input.input_arguments) %>
+      <%= render Primer::ConditionalWrapper.new(condition: @input.auto_check_src, tag: "auto-check", csrf: "hello", src: @input.auto_check_src) do %>
+        <%= builder.text_field(@input.name, **@input.input_arguments) %>
+      <% end %>
       <% if @input.show_clear_button? %>
         <button id="<%= @input.clear_button_id %>" class="FormControl-input-trailingAction" aria-label="Clear">
           <%= render(Primer::OcticonComponent.new(icon: :"x-circle-fill")) %>
         </button>
       <% end %>
     <% end %>
-  <% else %>
-    <%= builder.text_field(@input.name, **@input.input_arguments) %>
   <% end %>
 <% end %>

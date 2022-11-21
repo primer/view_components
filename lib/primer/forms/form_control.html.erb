@@ -8,11 +8,17 @@
     <% end %>
   <% end %>
   <%= content %>
-  <% if @input.invalid? && @input.validation_messages.present? %>
-    <div class="FormControl-inlineValidation" id="<%= @input.validation_id %>">
+  <% if @input.need_validation_element? %>
+    <%= content_tag(
+      :div,
+      class: "FormControl-inlineValidation",
+      id: @input.validation_id,
+      data: { target: "text-field.validationElement" },
+      hidden: @input.valid?
+    ) do %>
       <%= render(Primer::OcticonComponent.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %>
-      <span><%= @input.validation_messages.first %></span>
-    </div>
+      <span data-target="text-field.validationMessageElement"><%= @input.validation_messages.first %></span>
+    <% end %>
   <% end %>
   <%= render(Caption.new(input: @input)) %>
 <% end %>
