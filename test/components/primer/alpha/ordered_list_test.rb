@@ -9,12 +9,12 @@ class PrimerAlphaOrderedListTest < Minitest::Test
     render_inline(Primer::Alpha::OrderedList.new) do |c|
       c.with_item { "Item 1" }
     end
-    assert_selector(".List--ordered")
+    assert_selector(".OrderedList")
   end
 
   def test_does_not_render_if_no_items
     render_inline(Primer::Alpha::OrderedList.new)
-    refute_selector(".List--ordered")
+    refute_selector(".OrderedList")
   end
 
   def test_renders_multiple_items

@@ -9,12 +9,12 @@ class PrimerAlphaUnorderedListTest < Minitest::Test
     render_inline(Primer::Alpha::UnorderedList.new) do |c|
       c.with_item { "Item 1" }
     end
-    assert_selector(".List--unordered")
+    assert_selector(".UnorderedList")
   end
 
   def test_does_not_render_if_no_items
     render_inline(Primer::Alpha::UnorderedList.new)
-    refute_selector(".List--unordered")
+    refute_selector(".UnorderedList")
   end
 
   def test_renders_multiple_items
