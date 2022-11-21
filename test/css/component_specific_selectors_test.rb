@@ -38,6 +38,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".tabnav-tab.selected",
       ".tabnav-extra",
       ".tabnav-btn"
+    ],
     Primer::Alpha::ButtonMarketing => [
       ".btn-mktg.disabled",
       ".btn-small-mktg"
