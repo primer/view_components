@@ -1,5 +1,25 @@
 /* CSS for OrderedList  */
 
 .OrderedList {
+    padding-left: 8px;
 
+    &[type='1'] {
+      list-style-type: decimal;
+    }
+
+    &[type='A'] {
+      list-style-type: upper-alpha;
+    }
+
+    &[type='a'] {
+      list-style-type: lower-alpha;
+    }
+
+    &[type='I'] {
+      list-style-type: upper-roman;
+    }
+
+    &[type='i'] {
+      list-style-type: lower-roman;
+    }
 }

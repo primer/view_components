@@ -28,9 +28,8 @@ module Primer
         @system_arguments[:tag] = :ul
         # @system_arguments[:type] = fetch_or_fallback(TYPE_OPTIONS, type, DEFAULT_TYPE)
         @system_arguments[:classes] = class_names(
-          "List",
-          "List--unordered",
-          system_arguments[:classes],
+          "UnorderedList",
+          system_arguments[:classes]
         )
       end
 

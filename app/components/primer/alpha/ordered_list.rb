@@ -38,8 +38,7 @@ module Primer
         @system_arguments[:tag] = :ol
         @system_arguments[:type] = type
         @system_arguments[:classes] = class_names(
-          "List",
-          "List--ordered",
+          "OrderedList",
           system_arguments[:classes]
         )
       end
