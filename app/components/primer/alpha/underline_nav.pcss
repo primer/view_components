@@ -1,17 +1,16 @@
-$nav-height: $spacer-3 * 3 !default; // 48px
+/* UnderlineNav */
 
 .UnderlineNav {
   display: flex;
-  min-height: $nav-height;
+  min-height: var(--base-size-48, 48px);
   overflow-x: auto;
   overflow-y: hidden;
-  // stylelint-disable-next-line primer/box-shadow
   box-shadow: inset 0 -1px 0 var(--color-border-muted);
   -webkit-overflow-scrolling: auto;
   justify-content: space-between;
 
-  .Counter {
-    margin-left: $spacer-2;
+  & .Counter {
+    margin-left: var(--primer-control-medium-gap, 8px);
     color: var(--color-fg-default);
     background-color: var(--color-neutral-muted);
 
@@ -25,16 +24,15 @@ $nav-height: $spacer-3 * 3 !default; // 48px
 .UnderlineNav-body {
   display: flex;
   align-items: center;
-  gap: $spacer-2;
+  gap: var(--primer-control-medium-gap, 8px);
   list-style: none;
 }
 
 .UnderlineNav-item {
   position: relative;
   display: flex;
-  padding: 0 $spacer-2;
-  font-size: $body-font-size;
-  // stylelint-disable-next-line primer/typography
+  padding: 0 var(--primer-control-medium-paddingInline-condensed, 8px);
+  font-size: var(--primer-text-body-size-medium, 14px);
   line-height: 30px;
   color: var(--color-fg-default);
   text-align: center;
@@ -42,7 +40,7 @@ $nav-height: $spacer-3 * 3 !default; // 48px
   cursor: pointer;
   background-color: transparent;
   border: 0;
-  border-radius: $border-radius;
+  border-radius: var(--primer-borderRadius-medium, 6px);
   align-items: center;
 
   &:hover,
@@ -55,21 +53,21 @@ $nav-height: $spacer-3 * 3 !default; // 48px
     transition: border-bottom-color 0.12s ease-out;
   }
 
-  // renders a visibly hidden "copy" of the label in bold, reserving box space for when label becomes bold on selected
-  [data-content]::before {
+  /* renders a visibly hidden "copy" of the label in bold, reserving box space for when label becomes bold on selected */
+  & [data-content]::before {
     display: block;
     height: 0;
-    font-weight: $font-weight-bold;
+    font-weight: var(--base-text-weight-semibold, 600);
     visibility: hidden;
     content: attr(data-content);
   }
 
-  // increase touch target area
+  /* increase touch target area */
   &::before {
-    @include minTouchTarget($min-height: $nav-height);
+    @mixin minTouchTarget 48px;
   }
 
-  // hover state was "sticking" on mobile after click
+  /* hover state was "sticking" on mobile after click */
   @media (pointer: fine) {
     &:hover {
       color: var(--color-fg-default);
@@ -82,21 +80,20 @@ $nav-height: $spacer-3 * 3 !default; // 48px
   &.selected,
   &[role='tab'][aria-selected='true'],
   &[aria-current]:not([aria-current='false']) {
-    font-weight: $font-weight-bold;
+    font-weight: var(--base-text-weight-semibold, 600);
     color: var(--color-fg-default);
     border-bottom-color: var(--color-primer-border-active);
 
-    // current/selected underline
+    /* current/selected underline */
     &::after {
       position: absolute;
       right: 50%;
-      // 48px total height / 2 (24px) + 1px
-      bottom: calc(50% - 25px);
+      bottom: calc(50% - 25px); /* 48px total height / 2 (24px) + 1px */
       width: 100%;
       height: 2px;
       content: '';
       background: var(--color-primer-border-active);
-      border-radius: $border-radius;
+      border-radius: var(--primer-borderRadius-medium, 6px);
       transform: translate(50%, -50%);
     }
   }
@@ -105,7 +102,7 @@ $nav-height: $spacer-3 * 3 !default; // 48px
 .UnderlineNav--right {
   justify-content: flex-end;
 
-  .UnderlineNav-actions {
+  & .UnderlineNav-actions {
     flex: 1 1 auto;
   }
 }
@@ -117,15 +114,15 @@ $nav-height: $spacer-3 * 3 !default; // 48px
 .UnderlineNav--full {
   display: block;
 
-  // required for underline to align with additional wrapper element
-  .UnderlineNav-body {
-    min-height: $nav-height;
+  /* required for underline to align with additional wrapper element */
+  & .UnderlineNav-body {
+    min-height: var(--base-size-48, 48px);
   }
 }
 
 .UnderlineNav-octicon {
   display: inline !important;
-  margin-right: $spacer-2;
+  margin-right: var(--primer-control-medium-gap, 8px);
   color: var(--color-fg-muted);
   fill: var(--color-fg-muted);
 }
