@@ -2,8 +2,8 @@
    stylelint-disable selector-max-type */
 .tabnav {
   margin-top: 0;
-  margin-bottom: $spacer-3;
-  border-bottom: $border-width $border-style var(--color-border-default);
+  margin-bottom: var(--spacer-3);
+  border-bottom: var(--border-width) var(--border-style) var(--color-border-default);
 }
 
 .tabnav-tabs {
@@ -16,14 +16,14 @@
 .tabnav-tab {
   display: inline-block;
   flex-shrink: 0;
-  padding: $spacer-2 $spacer-3;
-  font-size: $h5-size;
+  padding: var(--spacer-2) var(--spacer-3);
+  font-size: var(--h5-size);
   /* stylelint-disable-next-line primer/typography */
   line-height: 23px;
   color: var(--color-fg-muted);
   text-decoration: none;
   background-color: transparent;
-  border: $border-width $border-style transparent;
+  border: var(--border-width) var(--border-style) transparent;
   border-bottom: 0;
   transition: color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
 
@@ -33,7 +33,7 @@
     color: var(--color-fg-default);
     background-color: var(--color-canvas-default); /* cover bottom border */
     border-color: var(--color-border-default);
-    border-radius: $border-radius $border-radius 0 0;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
 
     .octicon {
       color: inherit;
@@ -48,7 +48,7 @@
 
   &:focus,
   &:focus-visible {
-    border-radius: $border-radius $border-radius 0 0 !important;
+    border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
     outline-offset: -6px;
   }
 
@@ -57,12 +57,12 @@
   }
 
   .octicon {
-    margin-right: $spacer-1;
+    margin-right: var(--spacer-1);
     color: var(--color-fg-muted);
   }
 
   .Counter {
-    margin-left: $spacer-1;
+    margin-left: var(--spacer-1);
     color: inherit;
   }
 }
@@ -74,7 +74,7 @@
   padding-top: 10px;
   /* stylelint-disable-next-line primer/spacing */
   margin-left: 10px;
-  font-size: $font-size-small;
+  font-size: var(--font-size-small);
   color: var(--color-fg-muted);
 
   > .octicon {
@@ -96,5 +96,5 @@ When there are multiple buttons, space them out appropriately. Requires the butt
 */
 
 .tabnav-btn {
-  margin-left: $spacer-2;
+  margin-left: var(--spacer-2);
 }
