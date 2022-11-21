@@ -41,6 +41,22 @@
   --em-spacer-4: 0.375em;  /* 3/8 */
   --em-spacer-5: 0.5em;    /* 1/2 */
   --em-spacer-6: 0.75em;   /* 3/4 */
+
+  /* Border */
+  --border-width: 1px;
+  --border-style: solid;
+  --border: var(--border-width) var(--border-style) var(--color-border-default);
+
+  /* Border Radius */
+  --border-radius-1:  4px;
+  --border-radius-2:  6px;
+  --border-radius-3:  8px;
+  --border-radius: var(--border-radius-2);
+
+  /* Tooltips */
+  --tooltip-max-width: 250px;
+  --tooltip-delay: 0.4s;
+  --tooltip-duration: 0.1s;
 }
 
 .AppFrame .AppFrame-a11yNav {
