@@ -42,6 +42,13 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Alpha::SegmentedControl => [
       ".Button-withTooltip"
     ],
+    Primer::Alpha::UnderlineNav => [
+      ".UnderlineNav .Counter--primary",
+      ".UnderlineNav-item.selected",
+      ".UnderlineNav--right",
+      ".UnderlineNav--full",
+      ".UnderlineNav-container"
+    ],
     Primer::Beta::Button => [
       "summary.Button",
       ".Button-content--alignStart",
