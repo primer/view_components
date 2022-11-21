@@ -34,6 +34,11 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Alpha::Banner => [
       ".Banner .Banner-close"
     ],
+    Primer::Alpha::TabNav => [
+      ".tabnav-tab.selected",
+      ".tabnav-extra",
+      ".tabnav-btn"
+    ],
     Primer::Alpha::SegmentedControl => [
       ".Button-withTooltip"
     ],
