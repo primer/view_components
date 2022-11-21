@@ -17,10 +17,6 @@ module Primer
         def initialize(**system_arguments)
           @system_arguments = deny_tag_argument(**system_arguments)
           @system_arguments[:tag] = :li
-          @system_arguments[:classes] = class_names(
-            "ListItem",
-            system_arguments[:classes]
-          )
         end
 
         def call
