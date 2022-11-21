@@ -8,8 +8,8 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
-    [Primer::Alpha::UnorderedList, {}],
-    [Primer::Alpha::OrderedList, {}],
+    [Primer::Alpha::UnorderedList, {}, proc { |component| component.item { "Item 1" } }],
+    [Primer::Alpha::OrderedList, {}, proc { |component| component.item { "Item 1" } }],
     [Primer::Beta::IconButton, { icon: :star, "aria-label": "Star" }],
     [Primer::Beta::Button, {}],
     [Primer::Alpha::SegmentedControl, {
@@ -119,6 +119,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
+      "Primer::Alpha::List::ListItem",
       "Primer::Alpha::NavList::Section",
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
