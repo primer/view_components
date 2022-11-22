@@ -31,6 +31,15 @@ module Primer
           end
         end
       end
+
+      # @label Large
+      def large
+        render Primer::Beta::Popover.new do |component|
+          component.with_body(large: true) do
+            "This is a large Popover body."
+          end
+        end
+      end
     end
   end
 end
