@@ -2,11 +2,11 @@
 
 require "components/test_helper"
 
-class PrimerPopoverComponentTest < Minitest::Test
+class PrimerBetaPopoverTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_default_styling
-    render_inline(Primer::PopoverComponent.new) do |component|
+    render_inline(Primer::Beta::Popover.new) do |component|
       component.heading do
         "My header"
       end
@@ -21,7 +21,7 @@ class PrimerPopoverComponentTest < Minitest::Test
   end
 
   def test_without_left_and_right_classes
-    render_inline(Primer::PopoverComponent.new(left: true, right: true)) do |component|
+    render_inline(Primer::Beta::Popover.new(left: true, right: true)) do |component|
       component.heading do
         "My header"
       end
@@ -37,7 +37,7 @@ class PrimerPopoverComponentTest < Minitest::Test
   end
 
   def test_allows_customization
-    render_inline(Primer::PopoverComponent.new(
+    render_inline(Primer::Beta::Popover.new(
                     position: :absolute, classes: "custom-class"
                   )) do |component|
       component.body do
@@ -49,7 +49,7 @@ class PrimerPopoverComponentTest < Minitest::Test
   end
 
   def test_respects_message_caret_option
-    render_inline(Primer::PopoverComponent.new) do |component|
+    render_inline(Primer::Beta::Popover.new) do |component|
       component.body(caret: :left_bottom)
     end
 
@@ -57,7 +57,7 @@ class PrimerPopoverComponentTest < Minitest::Test
   end
 
   def test_respects_message_large_option
-    render_inline(Primer::PopoverComponent.new) do |component|
+    render_inline(Primer::Beta::Popover.new) do |component|
       component.body(large: true)
     end
 
@@ -65,7 +65,7 @@ class PrimerPopoverComponentTest < Minitest::Test
   end
 
   def test_allows_message_customization
-    render_inline(Primer::PopoverComponent.new) do |component|
+    render_inline(Primer::Beta::Popover.new) do |component|
       component.body(p: 3, mt: 1, mx: 4, text_align: :right)
     end
 
@@ -73,7 +73,7 @@ class PrimerPopoverComponentTest < Minitest::Test
   end
 
   def test_allows_heading_customization
-    render_inline(Primer::PopoverComponent.new) do |component|
+    render_inline(Primer::Beta::Popover.new) do |component|
       component.body { "Foo" }
       component.heading(mb: 4, pr: 3, tag: :h3) do
         "Hello world"
@@ -84,6 +84,6 @@ class PrimerPopoverComponentTest < Minitest::Test
   end
 
   def test_status
-    assert_component_state(Primer::PopoverComponent, :beta)
+    assert_component_state(Primer::Beta::Popover, :beta)
   end
 end

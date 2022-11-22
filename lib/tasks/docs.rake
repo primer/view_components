@@ -70,7 +70,7 @@ namespace :docs do
       Primer::MenuComponent,
       Primer::Navigation::TabComponent,
       Primer::OcticonComponent,
-      Primer::PopoverComponent,
+      Primer::Beta::Popover,
       Primer::Beta::ProgressBar,
       Primer::StateComponent,
       Primer::SpinnerComponent,

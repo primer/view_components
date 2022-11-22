@@ -87,7 +87,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],
     [Primer::Navigation::TabComponent, {}],
     [Primer::OcticonComponent, { icon: :people }],
-    [Primer::PopoverComponent, {}, proc { |component| component.body { "Foo" } }],
+    [Primer::Beta::Popover, {}, proc { |component| component.body { "Foo" } }],
     [Primer::Beta::ProgressBar, {}, proc { |component| component.item }],
     [Primer::SpinnerComponent, {}],
     [Primer::StateComponent, { title: "Open" }],
@@ -121,7 +121,8 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
-      "Primer::BoxComponent"
+      "Primer::BoxComponent",
+      "Primer::PopoverComponent"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
