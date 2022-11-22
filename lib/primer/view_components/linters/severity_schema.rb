@@ -5,7 +5,10 @@ require "erb_lint/utils/severity_levels"
 module ERBLint
   module Linters
     class SeveritySchema < LinterConfig
-      property :severity, accepts: ERBLint::Utils::SeverityLevels::SEVERITY_NAMES, default: :fatal, reader: :severity
+      # SEVERITY_NAMES :info, :refactor, :convention, :warning, :error, :fatal
+      # see https://github.com/Shopify/erb-lint/blob/main/lib/erb_lint/utils/severity_levels.rb
+
+      property :severity, accepts: ERBLint::Utils::SeverityLevels::SEVERITY_NAMES, default: nil, reader: :severity
     end
   end
 end

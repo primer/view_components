@@ -3,6 +3,15 @@
 require "lib/erblint_test_case"
 
 class DeprecatedComponentsCounterTest < ErblintTestCase
+  def test_severity_level
+    @file = <<~ERB
+      <%= render Primer::BlankslateComponent.new %>
+    ERB
+    @linter.run(processed_source)
+
+    assert_equal :info, @linter.offenses[0].severity
+  end
+
   def test_warns_about_deprecated_primer_component
     @file = <<~ERB
       <%= render Primer::BlankslateComponent.new %>

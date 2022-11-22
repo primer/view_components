@@ -50,6 +50,10 @@ module ERBLint
           end
         end
       end
+
+      def severity
+        @config.severity
+      end
     end
   end
 end
