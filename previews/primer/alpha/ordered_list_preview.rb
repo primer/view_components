@@ -17,6 +17,15 @@ module Primer
         end
       end
 
+      # @label Default
+      def default
+        render(Primer::Alpha::OrderedList.new) do |c|
+          c.with_item { "Item 1" }
+          c.with_item { "Item 2" }
+          c.with_item { "Item 3" }
+        end
+      end
+
       # @label Decimal
       def decimal
         render(Primer::Alpha::OrderedList.new(type: :decimal)) do |c|
