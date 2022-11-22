@@ -69,13 +69,13 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::Dialog::Header, { title: "Test", id: "test" }],
     [Primer::Alpha::Dialog::Body, {}],
     [Primer::Alpha::Dialog::Footer, {}],
-    [Primer::Dropdown, {}, lambda do |component|
+    [Primer::Alpha::Dropdown, {}, lambda do |component|
       component.button { "Foo" }
       component.menu do |m|
         m.item { "Baz" }
       end
     end],
-    [Primer::Dropdown::Menu, {}],
+    [Primer::Alpha::Dropdown::Menu, {}],
     [Primer::DropdownMenuComponent, {}],
     [Primer::Beta::Flash, {}],
     [Primer::Beta::Heading, { tag: :h1 }],
@@ -112,8 +112,6 @@ class PrimerComponentTest < Minitest::Test
     ignored_components = [
       "Primer::LabelComponent",
       "Primer::LinkComponent",
-      "Primer::ProgressBarComponent",
-      "Primer::Image",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
@@ -123,6 +121,8 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Content",
       "Primer::BoxComponent",
       "Primer::PopoverComponent"
+      "Primer::Dropdown",
+      "Primer::Dropdown::Menu"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }

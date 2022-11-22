@@ -53,6 +53,21 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".UnderlineNav--full",
       ".UnderlineNav-container"
     ],
+    Primer::Beta::BorderBox => [
+      ".Box-btn-octicon",
+      ".Box--spacious .Box-title",
+      ".Box-row--unread",
+      ".Box-row.unread",
+      ".Box-row.navigation-focus",
+      ".Box-row--focus-gray",
+      ".Box-row--focus-blue",
+      ".Box-row-link",
+      ".Box-row--drag-button",
+      ".Box--scrollable",
+      ".Box--blue",
+      ".Box--danger",
+      ".Box-header--blue"
+    ],
     Primer::Beta::Button => [
       "summary.Button",
       ".Button-content--alignStart",
@@ -104,7 +119,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".flash-banner",
       ".warning"
     ],
-    Primer::Dropdown => [
+    Primer::Alpha::Dropdown => [
       ".dropdown-caret",
       ".dropdown-menu-no-overflow",
       ".dropdown-menu-no-overflow .dropdown-item",

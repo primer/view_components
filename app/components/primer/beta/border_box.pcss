@@ -1,0 +1,284 @@
+/* BorderBox */
+
+/* TODO: Rename to BorderBox to match PVC */
+.Box {
+  background-color: var(--color-canvas-default);
+  border-color: var(--color-border-default);
+  border-style: solid;
+  border-width: var(--primer-borderWidth-thin, 1px);
+  border-radius: var(--primer-borderRadius-medium, 6px);
+}
+
+/* Box padding density options */
+.Box--condensed {
+  line-height: 1.25;
+
+  & .Box-header {
+    padding: var(--primer-stack-padding-condensed, 8px) var(--primer-stack-padding-normal, 16px);
+  }
+
+  & .Box-body {
+    padding: var(--primer-stack-padding-condensed, 8px) var(--primer-stack-padding-normal, 16px);
+  }
+
+  & .Box-footer {
+    padding: var(--primer-stack-padding-condensed, 8px) var(--primer-stack-padding-normal, 16px);
+  }
+
+  & .Box-btn-octicon {
+    &.btn-octicon {
+      padding: var(--primer-control-medium-paddingInline-condensed, 8px) var(--primer-control-medium-paddingInline-spacious, 16px);
+      margin: calc(var(--primer-controlStack-medium-gap-condensed, 8px) * -1) calc(var(--primer-controlStack-small-gap-spacious, 16px) * -1);
+      line-height: 1.25;
+    }
+  }
+
+  & .Box-row {
+    padding: var(--primer-stack-padding-condensed, 8px) var(--primer-stack-padding-normal, 16px);
+  }
+}
+
+.Box--spacious {
+  & .Box-header {
+    padding: var(--primer-stack-padding-spacious, 24px);
+    line-height: 1.25;
+  }
+
+  & .Box-title {
+    font-size: var(--primer-text-title-size-medium, 20px);
+  }
+
+  & .Box-body {
+    padding: var(--primer-stack-padding-spacious, 24px);
+  }
+
+  & .Box-footer {
+    padding: var(--primer-stack-padding-spacious, 24px);
+  }
+
+  & .Box-btn-octicon {
+    &.btn-octicon {
+      padding: var(--primer-stack-padding-spacious, 24px);
+      margin: calc(var(--primer-stack-gap-spacious, 24px) * -1) calc(var(--primer-stack-gap-spacious, 24px) * -1);
+    }
+  }
+
+  & .Box-row {
+    padding: var(--primer-stack-padding-spacious, 24px);
+  }
+}
+
+.Box-header {
+  padding: var(--primer-stack-padding-normal, 16px);
+  margin: calc(var(--primer-borderWidth-thin, 1px) * -1) calc(var(--primer-borderWidth-thin, 1px) * -1) 0;
+  background-color: var(--color-canvas-subtle);
+  border-color: var(--color-border-default);
+  border-style: solid;
+  border-width: var(--primer-borderWidth-thin, 1px);
+  border-top-left-radius: var(--primer-borderRadius-medium, 6px);
+  border-top-right-radius: var(--primer-borderRadius-medium, 6px);
+}
+
+.Box-title {
+  font-size: var(--primer-text-body-size-medium, 14px);
+  font-weight: var(--base-text-weight-semibold, 600);
+}
+
+.Box-body {
+  padding: var(--primer-stack-padding-normal, 16px);
+  border-bottom: var(--primer-borderWidth-thin, 1px) solid var(--color-border-default);
+
+  /* Ensures bottom-border doesn't poke out when .Box-body used without box-footer */
+  &:last-of-type {
+    margin-bottom: calc(var(--primer-borderWidth-thin, 1px) * -1);
+    border-bottom-right-radius: var(--primer-borderRadius-medium, 6px);
+    border-bottom-left-radius: var(--primer-borderRadius-medium, 6px);
+  }
+}
+
+/* Box rows */
+.Box-row {
+  padding: var(--primer-stack-padding-normal, 16px);
+  margin-top: calc(var(--primer-borderWidth-thin, 1px) * -1);
+  list-style-type: none; /* To account for applying Box component to a list */
+  border-top-color: var(--color-border-muted);
+  border-top-style: solid;
+  border-top-width: var(--primer-borderWidth-thin, 1px);
+
+  &:first-of-type {
+    border-top-left-radius: var(--primer-borderRadius-medium, 6px);
+    border-top-right-radius: var(--primer-borderRadius-medium, 6px);
+  }
+
+  &:last-of-type {
+    border-bottom-right-radius: var(--primer-borderRadius-medium, 6px);
+    border-bottom-left-radius: var(--primer-borderRadius-medium, 6px);
+  }
+
+  /* Adds a blue vertical line to the left of the row
+  ** For indicating a row item is unread */
+  &.Box-row--unread,
+  /* .unread to be deprecated with .Box-row-unread */
+  &.unread {
+    box-shadow: inset 2px 0 0 var(--color-accent-emphasis);
+  }
+
+  &.navigation-focus {
+    /* Focus styles for when drag icon */
+    & .Box-row--drag-button {
+      color: var(--color-accent-fg);
+      cursor: grab;
+      opacity: 100;
+    }
+
+    /* Grabbing while row is dragged */
+    &.is-dragging .Box-row--drag-button {
+      cursor: grabbing;
+    }
+
+    /* Row dragging styles */
+    &.sortable-chosen {
+      background-color: var(--color-canvas-subtle);
+    }
+
+    /* Makes dragging row background gray */
+    &.sortable-ghost {
+      background-color: var(--color-canvas-subtle);
+
+      /* Hides contents of row while dragging so row looks solid gray */
+      & .Box-row--drag-hide {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.Box-row--focus-gray {
+  &.navigation-focus {
+    background-color: var(--color-canvas-subtle);
+  }
+}
+
+.Box-row--focus-blue {
+  &.navigation-focus {
+    background-color: var(--color-accent-subtle);
+  }
+}
+
+.Box-row--hover-gray {
+  &:hover {
+    background-color: var(--color-canvas-subtle);
+  }
+}
+
+.Box-row--hover-blue {
+  &:hover {
+    background-color: var(--color-accent-subtle);
+  }
+}
+
+/* Optional link style
+** Makes links on mobile blue since they don't have hover state,
+** and links are dark-gray with blue hover on desktop. */
+.Box-row-link {
+  @media (min-width: 768px) {
+    color: var(--color-fg-default);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-accent-fg);
+      text-decoration: none;
+    }
+  }
+}
+
+/* Optional drag icon styles for reordering items
+** Focus styles included in .Box-row above */
+.Box-row--drag-button {
+  opacity: 0;
+}
+
+.Box-footer {
+  padding: var(--primer-stack-padding-normal, 16px);
+  margin-top: calc(var(--primer-borderWidth-thin, 1px) * -1); /* prevents double border when used with .Box-body */
+  border-top-color: var(--color-border-default);
+  border-top-style: solid;
+  border-top-width: var(--primer-borderWidth-thin, 1px);
+  border-radius: 0 0 var(--primer-borderRadius-medium, 6px) var(--primer-borderRadius-medium, 6px);
+}
+
+/* Option for a box with scrolling content */
+.Box--scrollable {
+  max-height: 324px;
+  overflow: scroll;
+}
+
+/* Box themes */
+
+.Box--blue {
+  border-color: var(--color-accent-muted);
+
+  & .Box-header {
+    background-color: var(--color-accent-subtle);
+    border-color: var(--color-accent-muted);
+  }
+
+  & .Box-body {
+    border-color: var(--color-accent-muted);
+  }
+
+  & .Box-row {
+    border-color: var(--color-accent-muted);
+  }
+
+  & .Box-footer {
+    border-color: var(--color-accent-muted);
+  }
+}
+
+/* Applies and red border to the outside of the box,
+** but not to the border separating rows. */
+.Box--danger {
+  border-color: var(--color-danger-emphasis);
+
+  & .Box-row {
+    &:first-of-type {
+      border-color: var(--color-danger-emphasis);
+    }
+  }
+
+  & .Box-body {
+    &:last-of-type {
+      border-color: var(--color-danger-emphasis);
+    }
+  }
+}
+
+.Box-header--blue {
+  background-color: var(--color-accent-subtle);
+  border-color: var(--color-accent-muted);
+}
+
+/* Box row highlight themes */
+
+.Box-row--yellow {
+  background-color: var(--color-attention-subtle);
+}
+
+.Box-row--blue {
+  background-color: var(--color-accent-subtle);
+}
+
+.Box-row--gray {
+  background-color: var(--color-canvas-subtle);
+}
+
+/* Box with btn-octicon */
+.Box-btn-octicon {
+  /* Increase specificity when btn-octicon is used because comes after .Box in the cascade */
+  &.btn-octicon {
+    padding: var(--primer-control-medium-paddingInline-spacious, 16px) var(--primer-control-medium-paddingInline-spacious, 16px);
+    margin: calc(var(--primer-controlStack-small-gap-spacious, 16px) * -1) calc(var(--primer-controlStack-small-gap-spacious, 16px) * -1);
+    line-height: 1.5; /* override btn-octicon line-height */
+  }
+}

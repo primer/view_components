@@ -2,23 +2,23 @@
 
 require "components/test_helper"
 
-class PrimerDropdownTest < Minitest::Test
+class PrimerAlphaDropdownTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_does_not_render_without_button
-    render_inline(Primer::Dropdown.new) { |c| c.menu { "Menu" } }
+    render_inline(Primer::Alpha::Dropdown.new) { |c| c.menu { "Menu" } }
 
     refute_selector(".dropdown")
   end
 
   def test_does_not_render_without_menu
-    render_inline(Primer::Dropdown.new) { |c| c.button { "Button" } }
+    render_inline(Primer::Alpha::Dropdown.new) { |c| c.button { "Button" } }
 
     refute_selector(".dropdown")
   end
 
   def test_renders_dropdown
-    render_inline(Primer::Dropdown.new) do |c|
+    render_inline(Primer::Alpha::Dropdown.new) do |c|
       c.button { "Button" }
       c.menu do |m|
         m.item { "Item" }
@@ -34,7 +34,7 @@ class PrimerDropdownTest < Minitest::Test
   end
 
   def test_renders_dropdown_with_header
-    render_inline(Primer::Dropdown.new) do |c|
+    render_inline(Primer::Alpha::Dropdown.new) do |c|
       c.button { "Button" }
       c.menu(header: "Header") do |m|
         m.item { "Item" }
@@ -51,7 +51,7 @@ class PrimerDropdownTest < Minitest::Test
   end
 
   def test_renders_dropdown_with_divider
-    render_inline(Primer::Dropdown.new) do |c|
+    render_inline(Primer::Alpha::Dropdown.new) do |c|
       c.button { "Button" }
       c.menu do |m|
         m.item { "Item" }
@@ -69,7 +69,7 @@ class PrimerDropdownTest < Minitest::Test
   end
 
   def test_renders_dropdown_with_direction
-    render_inline(Primer::Dropdown.new) do |c|
+    render_inline(Primer::Alpha::Dropdown.new) do |c|
       c.button { "Button" }
       c.menu(direction: :s) do |m|
         m.item { "Item" }
@@ -85,7 +85,7 @@ class PrimerDropdownTest < Minitest::Test
   end
 
   def test_renders_caret
-    render_inline(Primer::Dropdown.new(with_caret: true)) do |c|
+    render_inline(Primer::Alpha::Dropdown.new(with_caret: true)) do |c|
       c.button { "Button" }
       c.menu do |m|
         m.item { "Item" }
