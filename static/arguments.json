@@ -1710,6 +1710,20 @@
     ]
   },
   {
+    "component": "Popover",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/popover.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/popover/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "ProgressBar",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/progress_bar.rb",
@@ -2224,20 +2238,6 @@
         "type": "Array<Hash>",
         "default": "`[]`",
         "description": "List of icons to render, in the format { symbol: :icon_name, size: :small }"
-      }
-    ]
-  },
-  {
-    "component": "Popover",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/popover_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/popover/default/",
-    "parameters": [
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
       }
     ]
   },
