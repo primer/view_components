@@ -7,9 +7,10 @@ class DeprecatedComponentsCounterTest < ErblintTestCase
     @file = <<~ERB
       <%= render Primer::BlankslateComponent.new %>
     ERB
-    @linter.run(processed_source)
+    linter = linter_with_severity(:info)
+    linter.run(processed_source)
 
-    assert_equal :info, @linter.offenses[0].severity
+    assert_equal :info, linter.offenses[0].severity
   end
 
   def test_warns_about_deprecated_primer_component
