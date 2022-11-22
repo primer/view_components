@@ -69,13 +69,13 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::Dialog::Header, { title: "Test", id: "test" }],
     [Primer::Alpha::Dialog::Body, {}],
     [Primer::Alpha::Dialog::Footer, {}],
-    [Primer::Dropdown, {}, lambda do |component|
+    [Primer::Alpha::Dropdown, {}, lambda do |component|
       component.button { "Foo" }
       component.menu do |m|
         m.item { "Baz" }
       end
     end],
-    [Primer::Dropdown::Menu, {}],
+    [Primer::Alpha::Dropdown::Menu, {}],
     [Primer::DropdownMenuComponent, {}],
     [Primer::Beta::Flash, {}],
     [Primer::Beta::Heading, { tag: :h1 }],
@@ -119,6 +119,8 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
+      "Primer::Dropdown",
+      "Primer::Dropdown::Menu",
       "Primer::BoxComponent"
     ]
 

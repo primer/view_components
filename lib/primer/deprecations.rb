@@ -12,6 +12,9 @@ module Primer
       "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
       "Primer::BoxComponent" => "Primer::Box",
       "Primer::DropdownMenuComponent" => nil,
+      "Primer::Dropdown" => "Primer::Alpha::Dropdown",
+      "Primer::Dropdown::Menu" => "Primer::Alpha::Dropdown::Menu",
+      "Primer::Dropdown::Menu::Item" => "Primer::Alpha::Dropdown::Menu::Item",
       "Primer::IconButton" => "Primer::Beta::IconButton",
       "Primer::Tooltip" => "Primer::Alpha::Tooltip"
     }.freeze
