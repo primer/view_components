@@ -558,8 +558,8 @@
       {
         "name": "type",
         "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:decimal`, `:default`, `:lower_alpha`, `:lower_roman`, `:upper_alpha`, or `:upper_roman`."
+        "default": "`:decimal`",
+        "description": "One of `:decimal`, `:lower_alpha`, `:lower_roman`, `:upper_alpha`, or `:upper_roman`."
       },
       {
         "name": "system_arguments",

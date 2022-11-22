@@ -37,7 +37,6 @@ module Primer
       def initialize(type: ORDER_TYPE_DEFAULT, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :ol
-        @system_arguments[:type] = type
         @system_arguments[:classes] = class_names(
           "OrderedList",
           ORDER_TYPE_MAPPINGS[fetch_or_fallback(ORDER_TYPE_OPTIONS, type, ORDER_TYPE_DEFAULT)],
