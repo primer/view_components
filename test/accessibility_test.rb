@@ -9,6 +9,7 @@ class AccessibilityTest < System::TestCase
   # Do not add to this list for any other reason!
   IGNORED_PREVIEWS = %w[
     Primer::MarkdownPreview
+    Primer::Alpha::List::ListItem
     Primer::Beta::AutoCompleteItemPreview
     Docs::BetaAutoCompleteItemPreview
     Docs::NavigationTabComponentPreview

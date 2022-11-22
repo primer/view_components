@@ -26,7 +26,6 @@ module Primer
       def initialize(**system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :ul
-        # @system_arguments[:type] = fetch_or_fallback(TYPE_OPTIONS, type, DEFAULT_TYPE)
         @system_arguments[:classes] = class_names(
           "UnorderedList",
           system_arguments[:classes]
