@@ -6,14 +6,13 @@ module Primer
     class OrderedList < Primer::Component
       status :alpha
 
-      ORDER_TYPE_DEFAULT = :default
+      ORDER_TYPE_DEFAULT = :decimal
       ORDER_TYPE_MAPPINGS = {
-        :decimal => "OrderedList--type-decimal",
+        ORDER_TYPE_DEFAULT => "OrderedList--type-decimal",
         :upper_alpha => "OrderedList--type-upperAlpha",
         :lower_alpha => "OrderedList--type-lowerAlpha",
         :upper_roman => "OrderedList--type-upperRoman",
-        :lower_roman => "OrderedList--type-lowerRoman",
-        ORDER_TYPE_DEFAULT => "OrderedList--type-decimal"
+        :lower_roman => "OrderedList--type-lowerRoman"
       }.freeze
       ORDER_TYPE_OPTIONS = ORDER_TYPE_MAPPINGS.keys.freeze
 

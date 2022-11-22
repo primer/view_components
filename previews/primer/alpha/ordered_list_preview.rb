@@ -8,8 +8,8 @@ module Primer
     # @label OrderedList
     class OrderedListPreview < ViewComponent::Preview
       # @label Playground
-      # @param type [Symbol] select [default, decimal, upper_alpha, lower_alpha, upper_roman, lower_roman]
-      def playground(type: :a)
+      # @param type [Symbol] select [decimal, upper_alpha, lower_alpha, upper_roman, lower_roman]
+      def playground(type: :upper_alpha)
         render(Primer::Alpha::OrderedList.new(type: type)) do |c|
           c.with_item { "Item 1" }
           c.with_item { "Item 2" }
