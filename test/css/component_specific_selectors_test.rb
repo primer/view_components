@@ -127,7 +127,8 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".dropdown-signout"
     ],
     Primer::Beta::Popover => [
-      ".Popover-message > .btn-octicon"
+      ".Popover-message > .btn-octicon",
+      ".Popover-message>.btn-octicon"
     ]
   }.freeze
 
