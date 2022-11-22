@@ -1,22 +1,20 @@
-// stylelint-disable selector-max-type, no-duplicate-selectors
+/* btn */
 
-// Base button styles
+/* Base button styles */
 .btn {
   position: relative;
   display: inline-block;
-  // stylelint-disable-next-line primer/spacing
-  padding: 5px $spacer-3;
-  font-size: $body-font-size;
-  font-weight: $font-weight-semibold;
-  // stylelint-disable-next-line primer/typography
-  line-height: 20px; // Specifically not inherit our `<body>` default
+  padding: 5px var(--primer-control-medium-paddingInline-spacious, 16px);
+  font-size: var(--primer-text-body-size-medium, 14px);
+  font-weight: var(--base-text-weight-medium, 500);
+  line-height: 20px; /* Specifically not inherit our `<body>` default */
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
-  border: $border-width $border-style;
-  border-radius: $border-radius;
-  appearance: none; // Corrects inability to style clickable `input` types in iOS.
+  border: var(--primer-borderWidth-thin, 1px) solid;
+  border-radius: var(--primer-borderRadius-medium, 6px);
+  appearance: none; /* Corrects inability to style clickable `input` types in iOS. */
 
   &:hover {
     text-decoration: none;
@@ -28,14 +26,14 @@
     cursor: default;
   }
 
-  i {
+  & i {
     font-style: normal;
-    font-weight: $font-weight-semibold;
+    font-weight: var(--base-text-weight-medium, 500);
     opacity: 0.75;
   }
 
-  .octicon {
-    margin-right: $spacer-1;
+  & .octicon {
+    margin-right: var(--primer-control-small-gap, 4px);
     color: var(--color-fg-muted);
     vertical-align: text-bottom;
 
@@ -44,8 +42,7 @@
     }
   }
 
-  .Counter {
-    // stylelint-disable-next-line primer/spacing
+  & .Counter {
     margin-left: 2px;
     color: inherit;
     text-shadow: none;
@@ -53,15 +50,13 @@
     background-color: var(--color-btn-counter-bg);
   }
 
-  .dropdown-caret {
-    margin-left: $spacer-1;
+  & .dropdown-caret {
+    margin-left: var(--primer-control-small-gap, 4px);
     opacity: 0.8;
   }
-}
 
-// Default button
+  /* Default button */
 
-.btn {
   color: var(--color-btn-text);
   background-color: var(--color-btn-bg);
   border-color: var(--color-btn-border);
@@ -89,20 +84,19 @@
     box-shadow: var(--color-primer-shadow-inset);
   }
 
-  &:disabled,
   &.disabled,
   &[aria-disabled='true'] {
     color: var(--color-primer-fg-disabled);
     background-color: var(--color-btn-bg);
     border-color: var(--color-btn-border);
 
-    .octicon {
+    & .octicon {
       color: var(--color-primer-fg-disabled);
     }
   }
 }
 
-// Primary button
+/* Primary button */
 
 .btn-primary {
   color: var(--color-btn-primary-text);
@@ -117,20 +111,20 @@
     border-color: var(--color-btn-primary-hover-border);
   }
 
-  // fallback :focus state
+  /* fallback :focus state */
   &:focus {
-    @include focusOutlineOnEmphasis;
+    @mixin focusOutlineOnEmphasis;
 
-    // remove fallback :focus if :focus-visible is supported
+    /* remove fallback :focus if :focus-visible is supported */
     &:not(:focus-visible) {
       outline: solid 1px transparent;
       box-shadow: none;
     }
   }
 
-  // default focus state
+  /* default focus state */
   &:focus-visible {
-    @include focusOutlineOnEmphasis;
+    @mixin focusOutlineOnEmphasis;
   }
 
   &:active,
@@ -147,42 +141,41 @@
     background-color: var(--color-btn-primary-disabled-bg);
     border-color: var(--color-btn-primary-disabled-border);
 
-    .octicon {
+    & .octicon {
       color: var(--color-btn-primary-disabled-text);
     }
   }
 
-  .Counter {
+  & .Counter {
     color: inherit;
     background-color: var(--color-btn-primary-counter-bg);
   }
 
-  .octicon {
+  & .octicon {
     color: var(--color-btn-primary-icon);
   }
 }
 
-// ensure links styled as button primary gets proper focus style
-// stylelint-disable-next-line selector-no-qualifying-type
+/* ensure links styled as button primary gets proper focus style */
 a.btn-primary {
-  // fallback :focus state
+  /* fallback :focus state */
   &:focus {
-    @include focusOutlineOnEmphasis;
+    @mixin focusOutlineOnEmphasis;
 
-    // remove fallback :focus if :focus-visible is supported
+    /* remove fallback :focus if :focus-visible is supported */
     &:not(:focus-visible) {
       outline: solid 1px transparent;
       box-shadow: none;
     }
   }
 
-  // default focus state
+  /* default focus state */
   &:focus-visible {
-    @include focusOutlineOnEmphasis;
+    @mixin focusOutlineOnEmphasis;
   }
 }
 
-// Outline button
+/* Outline button */
 
 .btn-outline {
   color: var(--color-btn-outline-text);
@@ -194,11 +187,11 @@ a.btn-primary {
     border-color: var(--color-btn-outline-hover-border);
     box-shadow: var(--color-btn-outline-hover-shadow), var(--color-btn-outline-hover-inset-shadow);
 
-    .Counter {
+    & .Counter {
       background-color: var(--color-btn-outline-hover-counter-bg);
     }
 
-    .octicon {
+    & .octicon {
       color: inherit;
     }
   }
@@ -211,20 +204,20 @@ a.btn-primary {
     border-color: var(--color-btn-outline-selected-border);
     box-shadow: var(--color-btn-outline-selected-shadow);
 
-    // fallback :focus state
+    /* fallback :focus state */
     &:focus {
-      @include focusOutlineOnEmphasis;
+      @mixin focusOutlineOnEmphasis;
 
-      // remove fallback :focus if :focus-visible is supported
+      /* remove fallback :focus if :focus-visible is supported */
       &:not(:focus-visible) {
         outline: solid 1px transparent;
         box-shadow: none;
       }
     }
 
-    // default focus state
+    /* default focus state */
     &:focus-visible {
-      @include focusOutlineOnEmphasis;
+      @mixin focusOutlineOnEmphasis;
     }
   }
 
@@ -236,23 +229,23 @@ a.btn-primary {
     border-color: var(--color-btn-border);
     box-shadow: none;
 
-    .Counter {
+    & .Counter {
       background-color: var(--color-btn-outline-disabled-counter-bg);
     }
   }
 
-  .Counter {
+  & .Counter {
     color: inherit;
     background-color: var(--color-btn-outline-counter-bg);
   }
 }
 
-// Danger button
+/* Danger button */
 
 .btn-danger {
   color: var(--color-btn-danger-text);
 
-  .octicon {
+  & .octicon {
     color: var(--color-btn-danger-icon);
   }
 
@@ -263,11 +256,11 @@ a.btn-primary {
     border-color: var(--color-btn-danger-hover-border);
     box-shadow: var(--color-btn-danger-hover-shadow), var(--color-btn-danger-hover-inset-shadow);
 
-    .Counter {
+    & .Counter {
       background-color: var(--color-btn-danger-hover-counter-bg);
     }
 
-    .octicon {
+    & .octicon {
       color: var(--color-btn-danger-hover-icon);
     }
   }
@@ -289,50 +282,46 @@ a.btn-primary {
     border-color: var(--color-btn-border);
     box-shadow: none;
 
-    .Counter {
+    & .Counter {
       background-color: var(--color-btn-danger-disabled-counter-bg);
     }
 
-    .octicon {
+    & .octicon {
       color: var(--color-btn-danger-disabled-text);
     }
   }
 
-  .Counter {
+  & .Counter {
     color: inherit;
     background-color: var(--color-btn-danger-counter-bg);
   }
 }
 
-// Sizes
-//
-// Tweak `line-height` to make them smaller.
+/* Sizes
+**
+** Tweak `line-height` to make them smaller. */
 .btn-sm {
-  // stylelint-disable-next-line primer/spacing
   padding: 3px 12px;
-  font-size: $font-size-small;
-  // stylelint-disable-next-line primer/typography
+  font-size: var(--primer-text-body-size-small, 12px);
   line-height: 20px;
 
-  .octicon {
+  & .octicon {
     vertical-align: text-top;
   }
 }
 
-// Large button adds more padding around text. Use font-size utils to increase font-size.. e.g, <p class="text-gamma"><button class="btn btn-large btn-primary" type="button">Big green button</button></p>
+/* Large button adds more padding around text. Use font-size utils to increase font-size..
+** e.g, <p class="text-gamma"><button class="btn btn-large btn-primary" type="button">Big green button</button></p> */
 .btn-large {
-  // stylelint-disable-next-line primer/spacing
-  padding: $em-spacer-6 1.5em;
+  padding: 0.75em 1.5em;
   font-size: inherit;
-  line-height: $lh-default;
-
-  // stylelint-disable-next-line primer/borders
+  line-height: 1.5;
   border-radius: 0.5em;
 }
 
-// Full-width button
-//
-// These buttons expand to the full width of their parent container
+/* Full-width button
+**
+** These buttons expand to the full width of their parent container */
 .btn-block {
   display: block;
   width: 100%;
