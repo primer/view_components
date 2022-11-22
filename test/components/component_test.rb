@@ -120,7 +120,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
       "Primer::BoxComponent",
-      "Primer::PopoverComponent"
+      "Primer::PopoverComponent",
       "Primer::Dropdown",
       "Primer::Dropdown::Menu"
     ]
