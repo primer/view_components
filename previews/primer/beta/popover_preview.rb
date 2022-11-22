@@ -40,6 +40,40 @@ module Primer
           end
         end
       end
+
+      # @!group Directions
+      def bottom_right
+        render Primer::Beta::Popover.new do |component|
+          component.with_body(caret: :bottom_right) do
+            "This is the Popover body."
+          end
+        end
+      end
+
+      def top_right
+        render Primer::Beta::Popover.new do |component|
+          component.with_body(caret: :top_right) do
+            "This is the Popover body."
+          end
+        end
+      end
+
+      def bottom_left
+        render Primer::Beta::Popover.new do |component|
+          component.with_body(caret: :bottom_left) do
+            "This is the Popover body."
+          end
+        end
+      end
+
+      def top_left
+        render Primer::Beta::Popover.new do |component|
+          component.with_body(caret: :top_left) do
+            "This is the Popover body."
+          end
+        end
+      end
+      # @!endgroup
     end
   end
 end

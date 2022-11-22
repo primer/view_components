@@ -125,6 +125,9 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".dropdown-menu-no-overflow .dropdown-item",
       ".dropdown-item.btn-link",
       ".dropdown-signout"
+    ],
+    Primer::Beta::Popover => [
+      ".Popover-message > .btn-octicon"
     ]
   }.freeze
 
