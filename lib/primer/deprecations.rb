@@ -7,15 +7,13 @@ module Primer
     DEPRECATED_COMPONENTS = {
       "Primer::LabelComponent" => "Primer::Beta::Label",
       "Primer::LinkComponent" => "Primer::Beta::Link",
-      "Primer::Image" => "Primer::Alpha::Image",
       "Primer::Alpha::AutoComplete" => "Primer::Beta::AutoComplete",
       "Primer::Alpha::AutoComplete::Item" => "Primer::Beta::AutoComplete::Item",
       "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
       "Primer::BoxComponent" => "Primer::Box",
       "Primer::DropdownMenuComponent" => nil,
       "Primer::IconButton" => "Primer::Beta::IconButton",
-      "Primer::Tooltip" => "Primer::Alpha::Tooltip",
-      "Primer::ProgressBarComponent" => "Primer::Beta::ProgressBar"
+      "Primer::Tooltip" => "Primer::Alpha::Tooltip"
     }.freeze
 
     def self.deprecated?(name)

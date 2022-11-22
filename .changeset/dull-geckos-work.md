@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Move `dropdown` styles to PVC
+Move `navigation` styles to PVC

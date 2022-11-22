@@ -798,8 +798,6 @@
       "danger"
     ]
   },
-  "Primer::Image": {
-  },
   "Primer::LabelComponent": {
   },
   "Primer::LayoutComponent": {
@@ -898,8 +896,6 @@
       "top_right": "Popover-message--top-right"
     },
     "DEFAULT_HEADING_TAG": "h4"
-  },
-  "Primer::ProgressBarComponent": {
   },
   "Primer::SpinnerComponent": {
     "DEFAULT_SIZE": "medium",

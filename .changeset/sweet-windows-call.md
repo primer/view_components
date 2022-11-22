@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Move `flash` styles to PVC
+Move `autocomplete` styles to PVC
