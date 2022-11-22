@@ -121,7 +121,7 @@
 
   /* fallback :focus state */
   &:focus {
-    @include focusOutlineOnEmphasis;
+    @mixin focusOutlineOnEmphasis;
 
     /* remove fallback :focus if :focus-visible is supported */
     &:not(:focus-visible) {
@@ -132,7 +132,7 @@
 
   /* default focus state */
   &:focus-visible {
-    @include focusOutlineOnEmphasis;
+    @mixin focusOutlineOnEmphasis;
   }
 
   &:active,
@@ -171,7 +171,7 @@
 a.btn-primary {
   /* fallback :focus state */
   &:focus {
-    @include focusOutlineOnEmphasis;
+    @mixin focusOutlineOnEmphasis;
 
     /* remove fallback :focus if :focus-visible is supported */
     &:not(:focus-visible) {
@@ -182,7 +182,7 @@ a.btn-primary {
 
   /* default focus state */
   &:focus-visible {
-    @include focusOutlineOnEmphasis;
+    @mixin focusOutlineOnEmphasis;
   }
 }
 
@@ -217,7 +217,7 @@ a.btn-primary {
 
     /* fallback :focus state */
     &:focus {
-      @include focusOutlineOnEmphasis;
+      @mixin focusOutlineOnEmphasis;
 
       /* remove fallback :focus if :focus-visible is supported */
       &:not(:focus-visible) {
@@ -228,7 +228,7 @@ a.btn-primary {
 
     /* default focus state */
     &:focus-visible {
-      @include focusOutlineOnEmphasis;
+      @mixin focusOutlineOnEmphasis;
     }
   }
 
