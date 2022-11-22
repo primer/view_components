@@ -27,7 +27,9 @@ module ERBLint
 
             add_offense(
               erb_node.loc,
-              message(component)
+              message(component),
+              nil,
+              @config.severity
             )
           end
         end
