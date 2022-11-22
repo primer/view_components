@@ -81,7 +81,9 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     ],
     Primer::Beta::ButtonGroup => [
       ".BtnGroup + .BtnGroup",
+      ".BtnGroup+.BtnGroup",
       ".BtnGroup + .btn",
+      ".BtnGroup+.btn",
       ".BtnGroup-item.btn.selected",
       ".BtnGroup-parent"
     ],
