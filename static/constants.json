@@ -897,8 +897,6 @@
     },
     "DEFAULT_HEADING_TAG": "h4"
   },
-  "Primer::ProgressBarComponent": {
-  },
   "Primer::SpinnerComponent": {
     "DEFAULT_SIZE": "medium",
     "DEFAULT_STYLE": "box-sizing: content-box; color: var(--color-icon-primary);",

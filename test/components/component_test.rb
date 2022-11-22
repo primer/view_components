@@ -112,7 +112,6 @@ class PrimerComponentTest < Minitest::Test
     ignored_components = [
       "Primer::LabelComponent",
       "Primer::LinkComponent",
-      "Primer::ProgressBarComponent",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
