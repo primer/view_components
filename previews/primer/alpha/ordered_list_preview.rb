@@ -9,7 +9,7 @@ module Primer
     class OrderedListPreview < ViewComponent::Preview
       # @label Playground
       # @param type [Symbol] select [decimal, upper_alpha, lower_alpha, upper_roman, lower_roman]
-      def playground(type: :upper_alpha)
+      def playground(type: :lower_alpha)
         render(Primer::Alpha::OrderedList.new(type: type)) do |c|
           c.with_item { "Item 1" }
           c.with_item { "Item 2" }
@@ -17,9 +17,45 @@ module Primer
         end
       end
 
-      # @label Default options
-      def default
-        render(Primer::Alpha::OrderedList.new) do |c|
+      # @label Decimal
+      def decimal
+        render(Primer::Alpha::OrderedList.new(type: :decimal)) do |c|
+          c.with_item { "Item 1" }
+          c.with_item { "Item 2" }
+          c.with_item { "Item 3" }
+        end
+      end
+
+      # @label Upper Alpha
+      def upper_alpha
+        render(Primer::Alpha::OrderedList.new(type: :upper_alpha)) do |c|
+          c.with_item { "Item 1" }
+          c.with_item { "Item 2" }
+          c.with_item { "Item 3" }
+        end
+      end
+
+      # @label Lower Alpha
+      def lower_alpha
+        render(Primer::Alpha::OrderedList.new(type: :lower_alpha)) do |c|
+          c.with_item { "Item 1" }
+          c.with_item { "Item 2" }
+          c.with_item { "Item 3" }
+        end
+      end
+
+      # @label Upper Roman
+      def upper_roman
+        render(Primer::Alpha::OrderedList.new(type: :upper_roman)) do |c|
+          c.with_item { "Item 1" }
+          c.with_item { "Item 2" }
+          c.with_item { "Item 3" }
+        end
+      end
+
+      # @label Lower Roman
+      def lower_roman
+        render(Primer::Alpha::OrderedList.new(type: :lower_roman)) do |c|
           c.with_item { "Item 1" }
           c.with_item { "Item 2" }
           c.with_item { "Item 3" }
