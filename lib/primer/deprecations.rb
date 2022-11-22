@@ -15,7 +15,8 @@ module Primer
       "Primer::DropdownMenuComponent" => nil,
       "Primer::IconButton" => "Primer::Beta::IconButton",
       "Primer::Tooltip" => "Primer::Alpha::Tooltip",
-      "Primer::ProgressBarComponent" => "Primer::Beta::ProgressBar"
+      "Primer::ProgressBarComponent" => "Primer::Beta::ProgressBar",
+      "Primer::PopoverComponent" => "Primer::Beta::Popover"
     }.freeze
 
     def self.deprecated?(name)
