@@ -1,0 +1,340 @@
+// stylelint-disable selector-max-type, no-duplicate-selectors
+
+// Base button styles
+.btn {
+  position: relative;
+  display: inline-block;
+  // stylelint-disable-next-line primer/spacing
+  padding: 5px $spacer-3;
+  font-size: $body-font-size;
+  font-weight: $font-weight-semibold;
+  // stylelint-disable-next-line primer/typography
+  line-height: 20px; // Specifically not inherit our `<body>` default
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: $border-width $border-style;
+  border-radius: $border-radius;
+  appearance: none; // Corrects inability to style clickable `input` types in iOS.
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:disabled,
+  &.disabled,
+  &[aria-disabled='true'] {
+    cursor: default;
+  }
+
+  i {
+    font-style: normal;
+    font-weight: $font-weight-semibold;
+    opacity: 0.75;
+  }
+
+  .octicon {
+    margin-right: $spacer-1;
+    color: var(--color-fg-muted);
+    vertical-align: text-bottom;
+
+    &:only-child {
+      margin-right: 0;
+    }
+  }
+
+  .Counter {
+    // stylelint-disable-next-line primer/spacing
+    margin-left: 2px;
+    color: inherit;
+    text-shadow: none;
+    vertical-align: top;
+    background-color: var(--color-btn-counter-bg);
+  }
+
+  .dropdown-caret {
+    margin-left: $spacer-1;
+    opacity: 0.8;
+  }
+}
+
+// Default button
+
+.btn {
+  color: var(--color-btn-text);
+  background-color: var(--color-btn-bg);
+  border-color: var(--color-btn-border);
+  box-shadow: var(--color-btn-shadow), var(--color-btn-inset-shadow);
+  transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+  transition-property: color, background-color, box-shadow, border-color;
+
+  &:hover,
+  &.hover,
+  [open] > & {
+    background-color: var(--color-btn-hover-bg);
+    border-color: var(--color-btn-hover-border);
+    transition-duration: 0.1s;
+  }
+
+  &:active {
+    background-color: var(--color-btn-active-bg);
+    border-color: var(--color-btn-active-border);
+    transition: none;
+  }
+
+  &.selected,
+  &[aria-selected='true'] {
+    background-color: var(--color-btn-selected-bg);
+    box-shadow: var(--color-primer-shadow-inset);
+  }
+
+  &:disabled,
+  &.disabled,
+  &[aria-disabled='true'] {
+    color: var(--color-primer-fg-disabled);
+    background-color: var(--color-btn-bg);
+    border-color: var(--color-btn-border);
+
+    .octicon {
+      color: var(--color-primer-fg-disabled);
+    }
+  }
+}
+
+// Primary button
+
+.btn-primary {
+  color: var(--color-btn-primary-text);
+  background-color: var(--color-btn-primary-bg);
+  border-color: var(--color-btn-primary-border);
+  box-shadow: var(--color-btn-primary-shadow), var(--color-btn-primary-inset-shadow);
+
+  &:hover,
+  &.hover,
+  [open] > & {
+    background-color: var(--color-btn-primary-hover-bg);
+    border-color: var(--color-btn-primary-hover-border);
+  }
+
+  // fallback :focus state
+  &:focus {
+    @include focusOutlineOnEmphasis;
+
+    // remove fallback :focus if :focus-visible is supported
+    &:not(:focus-visible) {
+      outline: solid 1px transparent;
+      box-shadow: none;
+    }
+  }
+
+  // default focus state
+  &:focus-visible {
+    @include focusOutlineOnEmphasis;
+  }
+
+  &:active,
+  &.selected,
+  &[aria-selected='true'] {
+    background-color: var(--color-btn-primary-selected-bg);
+    box-shadow: var(--color-btn-primary-selected-shadow);
+  }
+
+  &:disabled,
+  &.disabled,
+  &[aria-disabled='true'] {
+    color: var(--color-btn-primary-disabled-text);
+    background-color: var(--color-btn-primary-disabled-bg);
+    border-color: var(--color-btn-primary-disabled-border);
+
+    .octicon {
+      color: var(--color-btn-primary-disabled-text);
+    }
+  }
+
+  .Counter {
+    color: inherit;
+    background-color: var(--color-btn-primary-counter-bg);
+  }
+
+  .octicon {
+    color: var(--color-btn-primary-icon);
+  }
+}
+
+// ensure links styled as button primary gets proper focus style
+// stylelint-disable-next-line selector-no-qualifying-type
+a.btn-primary {
+  // fallback :focus state
+  &:focus {
+    @include focusOutlineOnEmphasis;
+
+    // remove fallback :focus if :focus-visible is supported
+    &:not(:focus-visible) {
+      outline: solid 1px transparent;
+      box-shadow: none;
+    }
+  }
+
+  // default focus state
+  &:focus-visible {
+    @include focusOutlineOnEmphasis;
+  }
+}
+
+// Outline button
+
+.btn-outline {
+  color: var(--color-btn-outline-text);
+
+  &:hover,
+  [open] > & {
+    color: var(--color-btn-outline-hover-text);
+    background-color: var(--color-btn-outline-hover-bg);
+    border-color: var(--color-btn-outline-hover-border);
+    box-shadow: var(--color-btn-outline-hover-shadow), var(--color-btn-outline-hover-inset-shadow);
+
+    .Counter {
+      background-color: var(--color-btn-outline-hover-counter-bg);
+    }
+
+    .octicon {
+      color: inherit;
+    }
+  }
+
+  &:active,
+  &.selected,
+  &[aria-selected='true'] {
+    color: var(--color-btn-outline-selected-text);
+    background-color: var(--color-btn-outline-selected-bg);
+    border-color: var(--color-btn-outline-selected-border);
+    box-shadow: var(--color-btn-outline-selected-shadow);
+
+    // fallback :focus state
+    &:focus {
+      @include focusOutlineOnEmphasis;
+
+      // remove fallback :focus if :focus-visible is supported
+      &:not(:focus-visible) {
+        outline: solid 1px transparent;
+        box-shadow: none;
+      }
+    }
+
+    // default focus state
+    &:focus-visible {
+      @include focusOutlineOnEmphasis;
+    }
+  }
+
+  &:disabled,
+  &.disabled,
+  &[aria-disabled='true'] {
+    color: var(--color-btn-outline-disabled-text);
+    background-color: var(--color-btn-outline-disabled-bg);
+    border-color: var(--color-btn-border);
+    box-shadow: none;
+
+    .Counter {
+      background-color: var(--color-btn-outline-disabled-counter-bg);
+    }
+  }
+
+  .Counter {
+    color: inherit;
+    background-color: var(--color-btn-outline-counter-bg);
+  }
+}
+
+// Danger button
+
+.btn-danger {
+  color: var(--color-btn-danger-text);
+
+  .octicon {
+    color: var(--color-btn-danger-icon);
+  }
+
+  &:hover,
+  [open] > & {
+    color: var(--color-btn-danger-hover-text);
+    background-color: var(--color-btn-danger-hover-bg);
+    border-color: var(--color-btn-danger-hover-border);
+    box-shadow: var(--color-btn-danger-hover-shadow), var(--color-btn-danger-hover-inset-shadow);
+
+    .Counter {
+      background-color: var(--color-btn-danger-hover-counter-bg);
+    }
+
+    .octicon {
+      color: var(--color-btn-danger-hover-icon);
+    }
+  }
+
+  &:active,
+  &.selected,
+  &[aria-selected='true'] {
+    color: var(--color-btn-danger-selected-text);
+    background-color: var(--color-btn-danger-selected-bg);
+    border-color: var(--color-btn-danger-selected-border);
+    box-shadow: var(--color-btn-danger-selected-shadow);
+  }
+
+  &:disabled,
+  &.disabled,
+  &[aria-disabled='true'] {
+    color: var(--color-btn-danger-disabled-text);
+    background-color: var(--color-btn-danger-disabled-bg);
+    border-color: var(--color-btn-border);
+    box-shadow: none;
+
+    .Counter {
+      background-color: var(--color-btn-danger-disabled-counter-bg);
+    }
+
+    .octicon {
+      color: var(--color-btn-danger-disabled-text);
+    }
+  }
+
+  .Counter {
+    color: inherit;
+    background-color: var(--color-btn-danger-counter-bg);
+  }
+}
+
+// Sizes
+//
+// Tweak `line-height` to make them smaller.
+.btn-sm {
+  // stylelint-disable-next-line primer/spacing
+  padding: 3px 12px;
+  font-size: $font-size-small;
+  // stylelint-disable-next-line primer/typography
+  line-height: 20px;
+
+  .octicon {
+    vertical-align: text-top;
+  }
+}
+
+// Large button adds more padding around text. Use font-size utils to increase font-size.. e.g, <p class="text-gamma"><button class="btn btn-large btn-primary" type="button">Big green button</button></p>
+.btn-large {
+  // stylelint-disable-next-line primer/spacing
+  padding: $em-spacer-6 1.5em;
+  font-size: inherit;
+  line-height: $lh-default;
+
+  // stylelint-disable-next-line primer/borders
+  border-radius: 0.5em;
+}
+
+// Full-width button
+//
+// These buttons expand to the full width of their parent container
+.btn-block {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
