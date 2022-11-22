@@ -200,9 +200,11 @@ class PrimerComponentTest < Minitest::Test
     with_raise_on_invalid_options(true) do
       assert_raises(ArgumentError) { DenyComponent.new(class: "foo") }
 
+      # rubocop:disable Rails/Inquiry
       Rails.stub(:env, "production".inquiry) do
         DenyComponent.new(class: "foo")
       end
+      # rubocop:enable Rails/Inquiry
     end
   end
 
@@ -210,9 +212,11 @@ class PrimerComponentTest < Minitest::Test
     with_raise_on_invalid_aria(true) do
       assert_raises(ArgumentError) { DenyComponent.new(aria: { label: "foo" }) }
 
+      # rubocop:disable Rails/Inquiry
       Rails.stub(:env, "production".inquiry) do
         DenyComponent.new(aria: { label: "foo" })
       end
+      # rubocop:enable Rails/Inquiry
     end
   end
 end
