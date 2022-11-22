@@ -84,7 +84,7 @@
   - title: OcticonSymbols
     url: "/components/octiconsymbols"
   - title: Popover
-    url: "/components/popover"
+    url: "/components/beta/popover"
   - title: ProgressBar
     url: "/components/beta/progressbar"
   - title: SegmentedControl

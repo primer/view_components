@@ -707,6 +707,24 @@
       "span"
     ]
   },
+  "Primer::Beta::Popover": {
+    "CARET_DEFAULT": "top",
+    "CARET_MAPPINGS": {
+      "top": "",
+      "bottom": "Popover-message--bottom",
+      "bottom_right": "Popover-message--bottom-right",
+      "bottom_left": "Popover-message--bottom-left",
+      "left": "Popover-message--left",
+      "left_bottom": "Popover-message--left-bottom",
+      "left_top": "Popover-message--left-top",
+      "right": "Popover-message--right",
+      "right_bottom": "Popover-message--right-bottom",
+      "right_top": "Popover-message--right-top",
+      "top_left": "Popover-message--top-left",
+      "top_right": "Popover-message--top-right"
+    },
+    "DEFAULT_HEADING_TAG": "h4"
+  },
   "Primer::Beta::ProgressBar": {
     "SIZE_DEFAULT": "default",
     "SIZE_MAPPINGS": {
@@ -888,22 +906,6 @@
   "Primer::OcticonSymbolsComponent": {
   },
   "Primer::PopoverComponent": {
-    "CARET_DEFAULT": "top",
-    "CARET_MAPPINGS": {
-      "top": "",
-      "bottom": "Popover-message--bottom",
-      "bottom_right": "Popover-message--bottom-right",
-      "bottom_left": "Popover-message--bottom-left",
-      "left": "Popover-message--left",
-      "left_bottom": "Popover-message--left-bottom",
-      "left_top": "Popover-message--left-top",
-      "right": "Popover-message--right",
-      "right_bottom": "Popover-message--right-bottom",
-      "right_top": "Popover-message--right-top",
-      "top_left": "Popover-message--top-left",
-      "top_right": "Popover-message--top-right"
-    },
-    "DEFAULT_HEADING_TAG": "h4"
   },
   "Primer::SpinnerComponent": {
     "DEFAULT_SIZE": "medium",
