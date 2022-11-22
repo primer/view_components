@@ -30,13 +30,13 @@
     cursor: default;
   }
 
-  i {
+  &i {
     font-style: normal;
     font-weight: $font-weight-semibold;
     opacity: 0.75;
   }
 
-  .octicon {
+  &.octicon {
     margin-right: $spacer-1;
     color: var(--color-fg-muted);
     vertical-align: text-bottom;
@@ -46,7 +46,7 @@
     }
   }
 
-  .Counter {
+  &.Counter {
     /* stylelint-disable-next-line primer/spacing */
     margin-left: 2px;
     color: inherit;
@@ -55,7 +55,7 @@
     background-color: var(--color-btn-counter-bg);
   }
 
-  .dropdown-caret {
+  &.dropdown-caret {
     margin-left: $spacer-1;
     opacity: 0.8;
   }
@@ -98,7 +98,7 @@
     background-color: var(--color-btn-bg);
     border-color: var(--color-btn-border);
 
-    .octicon {
+    &.octicon {
       color: var(--color-primer-fg-disabled);
     }
   }
@@ -149,17 +149,17 @@
     background-color: var(--color-btn-primary-disabled-bg);
     border-color: var(--color-btn-primary-disabled-border);
 
-    .octicon {
+    &.octicon {
       color: var(--color-btn-primary-disabled-text);
     }
   }
 
-  .Counter {
+  &.Counter {
     color: inherit;
     background-color: var(--color-btn-primary-counter-bg);
   }
 
-  .octicon {
+  &.octicon {
     color: var(--color-btn-primary-icon);
   }
 }
@@ -198,11 +198,11 @@ a.btn-primary {
     border-color: var(--color-btn-outline-hover-border);
     box-shadow: var(--color-btn-outline-hover-shadow), var(--color-btn-outline-hover-inset-shadow);
 
-    .Counter {
+    &.Counter {
       background-color: var(--color-btn-outline-hover-counter-bg);
     }
 
-    .octicon {
+    &.octicon {
       color: inherit;
     }
   }
@@ -240,12 +240,12 @@ a.btn-primary {
     border-color: var(--color-btn-border);
     box-shadow: none;
 
-    .Counter {
+    &.Counter {
       background-color: var(--color-btn-outline-disabled-counter-bg);
     }
   }
 
-  .Counter {
+  &.Counter {
     color: inherit;
     background-color: var(--color-btn-outline-counter-bg);
   }
@@ -256,7 +256,7 @@ a.btn-primary {
 .btn-danger {
   color: var(--color-btn-danger-text);
 
-  .octicon {
+  &.octicon {
     color: var(--color-btn-danger-icon);
   }
 
@@ -267,11 +267,11 @@ a.btn-primary {
     border-color: var(--color-btn-danger-hover-border);
     box-shadow: var(--color-btn-danger-hover-shadow), var(--color-btn-danger-hover-inset-shadow);
 
-    .Counter {
+    &.Counter {
       background-color: var(--color-btn-danger-hover-counter-bg);
     }
 
-    .octicon {
+    &.octicon {
       color: var(--color-btn-danger-hover-icon);
     }
   }
@@ -293,16 +293,16 @@ a.btn-primary {
     border-color: var(--color-btn-border);
     box-shadow: none;
 
-    .Counter {
+    &.Counter {
       background-color: var(--color-btn-danger-disabled-counter-bg);
     }
 
-    .octicon {
+    &.octicon {
       color: var(--color-btn-danger-disabled-text);
     }
   }
 
-  .Counter {
+  &.Counter {
     color: inherit;
     background-color: var(--color-btn-danger-counter-bg);
   }
@@ -319,12 +319,15 @@ a.btn-primary {
   /* stylelint-disable-next-line primer/typography */
   line-height: 20px;
 
-  .octicon {
+  &.octicon {
     vertical-align: text-top;
   }
 }
 
-/* Large button adds more padding around text. Use font-size utils to increase font-size.. e.g, <p class="text-gamma"><button class="btn btn-large btn-primary" type="button">Big green button</button></p> */
+/*
+* Large button adds more padding around text. Use font-size utils to increase font-size.
+* e.g, <p class="text-gamma"><button class="btn btn-large btn-primary" type="button">Big green button</button></p>
+*/
 .btn-large {
   /* stylelint-disable-next-line primer/spacing */
   padding: $em-spacer-6 1.5em;
@@ -339,7 +342,7 @@ a.btn-primary {
 *
 * These buttons expand to the full width of their parent container
 */
-.btn-block {
+&.btn-block {
   display: block;
   width: 100%;
   text-align: center;
