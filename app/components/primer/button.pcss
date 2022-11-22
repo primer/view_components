@@ -7,17 +7,17 @@
   position: relative;
   display: inline-block;
   /* stylelint-disable-next-line primer/spacing */
-  padding: 5px $spacer-3;
-  font-size: $body-font-size;
-  font-weight: $font-weight-semibold;
+  padding: 5px var(--primer-stack-padding-normal, 16px);
+  font-size: var(--primer-text-body-size-medium, 14px);
+  font-weight: var(--base-text-weight-medium, 500);
   /* stylelint-disable-next-line primer/typography */
   line-height: 20px; /* Specifically not inherit our `<body>` default */
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
-  border: $border-width $border-style;
-  border-radius: $border-radius;
+  border: var(--primer-borderWidth-thin, 1px) solid;
+  border-radius: var(--primer-borderRadius-medium, 6px);
   appearance: none; /* Corrects inability to style clickable `input` types in iOS. */
 
   &:hover {
@@ -32,7 +32,7 @@
 
   &i {
     font-style: normal;
-    font-weight: $font-weight-semibold;
+    font-weight: var(--base-text-weight-medium, 500);
     opacity: 0.75;
   }
 
@@ -315,7 +315,7 @@ a.btn-primary {
 .btn-sm {
   /* stylelint-disable-next-line primer/spacing */
   padding: 3px 12px;
-  font-size: $font-size-small;
+  font-size: var(--primer-text-body-size-small, 12px);
   /* stylelint-disable-next-line primer/typography */
   line-height: 20px;
 
@@ -330,6 +330,7 @@ a.btn-primary {
 */
 .btn-large {
   /* stylelint-disable-next-line primer/spacing */
+
   padding: $em-spacer-6 1.5em;
   font-size: inherit;
   line-height: $lh-default;

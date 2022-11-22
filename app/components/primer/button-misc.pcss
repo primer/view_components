@@ -33,7 +33,7 @@
   &:not(.dropdown-item) {
     &:focus,
     &:focus-visible {
-      border-radius: $border-radius;
+      border-radius: var(--primer-borderRadius-medium, 6px);
       outline-offset: 0;
     }
   }
@@ -48,7 +48,7 @@
   color: var(--color-accent-fg);
   background-color: transparent; /* Reset default gradient backgrounds and colors */
   border: 0;
-  border-radius: $border-radius;
+  border-radius: var(--primer-borderRadius-medium, 6px);
   box-shadow: none;
 
   &:hover,
@@ -106,7 +106,7 @@
 
   &:focus,
   &:focus-visible {
-    border-radius: $border-radius;
+    border-radius: var(--primer-borderRadius-medium, 6px);
   }
 
   &.disabled,
@@ -168,8 +168,8 @@
   height: 12px;
   /* stylelint-disable-next-line primer/spacing */
   padding: 0 5px 5px;
-  font-size: $font-size-small;
-  font-weight: $font-weight-bold;
+  font-size: var(--primer-text-body-size-small, 12px);
+  font-weight: var(--base-text-weight-semibold, 600);
   /* stylelint-disable-next-line primer/typography */
   line-height: 6px;
   color: var(--color-fg-default);
@@ -217,17 +217,17 @@
   float: left;
   /* stylelint-disable-next-line primer/spacing */
   padding: 3px 12px;
-  font-size: $font-size-small;
-  font-weight: $font-weight-bold;
+  font-size: var(--primer-text-body-size-small, 12px);
+  font-weight: var(--base-text-weight-semibold, 600);
   /* stylelint-disable-next-line primer/typography */
   line-height: 20px;
   color: var(--color-fg-default);
   vertical-align: middle;
   background-color: var(--color-canvas-default);
-  border: $border-width $border-style var(--color-btn-border);
+  border: var(--primer-borderWidth-thin, 1px) solid var(--color-btn-border);
   border-left: 0;
-  border-top-right-radius: $border-radius;
-  border-bottom-right-radius: $border-radius;
+  border-top-right-radius: var(--primer-borderRadius-medium, 6px);
+  border-bottom-right-radius: var(--primer-borderRadius-medium, 6px);
   box-shadow: var(--color-shadow-small), var(--color-primer-shadow-highlight);
 
   &:hover,
