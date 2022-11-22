@@ -1,7 +1,9 @@
-// Button group
-//
-// A button group is a series of buttons laid out next to each other, all part
-// of one visual button, but separated by rules to be separate.
+/*
+* Button group
+*
+* A button group is a series of buttons laid out next to each other, all part
+* of one visual button, but separated by rules to be separate.
+*/
 
 .BtnGroup {
   display: inline-block;
@@ -9,7 +11,7 @@
 
   @include clearfix();
 
-  // Proper spacing for multiple button groups (a la, gollum editor)
+  /* Proper spacing for multiple button groups (a la, gollum editor) */
   + .BtnGroup,
   + .btn {
     margin-left: $spacer-1;
@@ -82,7 +84,7 @@
   }
 }
 
-// ensure that the focus ring sits above the adjacent buttons
+/* ensure that the focus ring sits above the adjacent buttons */
 .BtnGroup-item,
 .BtnGroup-parent {
   &:focus,

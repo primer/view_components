@@ -1,22 +1,24 @@
-// stylelint-disable selector-max-type, no-duplicate-selectors
+/* stylelint-disable selector-max-type, no-duplicate-selectors */
 
-// Base button styles
+/*
+* Base button styles
+*/
 .btn {
   position: relative;
   display: inline-block;
-  // stylelint-disable-next-line primer/spacing
+  /* stylelint-disable-next-line primer/spacing */
   padding: 5px $spacer-3;
   font-size: $body-font-size;
   font-weight: $font-weight-semibold;
-  // stylelint-disable-next-line primer/typography
-  line-height: 20px; // Specifically not inherit our `<body>` default
+  /* stylelint-disable-next-line primer/typography */
+  line-height: 20px; /* Specifically not inherit our `<body>` default */
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
   border: $border-width $border-style;
   border-radius: $border-radius;
-  appearance: none; // Corrects inability to style clickable `input` types in iOS.
+  appearance: none; /* Corrects inability to style clickable `input` types in iOS. */
 
   &:hover {
     text-decoration: none;
@@ -45,7 +47,7 @@
   }
 
   .Counter {
-    // stylelint-disable-next-line primer/spacing
+    /* stylelint-disable-next-line primer/spacing */
     margin-left: 2px;
     color: inherit;
     text-shadow: none;
@@ -59,7 +61,7 @@
   }
 }
 
-// Default button
+/* Default button */
 
 .btn {
   color: var(--color-btn-text);
@@ -102,7 +104,7 @@
   }
 }
 
-// Primary button
+/* Primary button */
 
 .btn-primary {
   color: var(--color-btn-primary-text);
@@ -117,18 +119,18 @@
     border-color: var(--color-btn-primary-hover-border);
   }
 
-  // fallback :focus state
+  /* fallback :focus state */
   &:focus {
     @include focusOutlineOnEmphasis;
 
-    // remove fallback :focus if :focus-visible is supported
+    /* remove fallback :focus if :focus-visible is supported */
     &:not(:focus-visible) {
       outline: solid 1px transparent;
       box-shadow: none;
     }
   }
 
-  // default focus state
+  /* default focus state */
   &:focus-visible {
     @include focusOutlineOnEmphasis;
   }
@@ -162,27 +164,29 @@
   }
 }
 
-// ensure links styled as button primary gets proper focus style
-// stylelint-disable-next-line selector-no-qualifying-type
+/* 
+* ensure links styled as button primary gets proper focus style
+* stylelint-disable-next-line selector-no-qualifying-type
+*/
 a.btn-primary {
-  // fallback :focus state
+  /* fallback :focus state */
   &:focus {
     @include focusOutlineOnEmphasis;
 
-    // remove fallback :focus if :focus-visible is supported
+    /* remove fallback :focus if :focus-visible is supported */
     &:not(:focus-visible) {
       outline: solid 1px transparent;
       box-shadow: none;
     }
   }
 
-  // default focus state
+  /* default focus state */
   &:focus-visible {
     @include focusOutlineOnEmphasis;
   }
 }
 
-// Outline button
+/* Outline button */
 
 .btn-outline {
   color: var(--color-btn-outline-text);
@@ -211,18 +215,18 @@ a.btn-primary {
     border-color: var(--color-btn-outline-selected-border);
     box-shadow: var(--color-btn-outline-selected-shadow);
 
-    // fallback :focus state
+    /* fallback :focus state */
     &:focus {
       @include focusOutlineOnEmphasis;
 
-      // remove fallback :focus if :focus-visible is supported
+      /* remove fallback :focus if :focus-visible is supported */
       &:not(:focus-visible) {
         outline: solid 1px transparent;
         box-shadow: none;
       }
     }
 
-    // default focus state
+    /* default focus state */
     &:focus-visible {
       @include focusOutlineOnEmphasis;
     }
@@ -247,7 +251,7 @@ a.btn-primary {
   }
 }
 
-// Danger button
+/* Danger button */
 
 .btn-danger {
   color: var(--color-btn-danger-text);
@@ -304,14 +308,15 @@ a.btn-primary {
   }
 }
 
-// Sizes
-//
-// Tweak `line-height` to make them smaller.
+/* Sizes
+*
+* Tweak `line-height` to make them smalle
+*/
 .btn-sm {
-  // stylelint-disable-next-line primer/spacing
+  /* stylelint-disable-next-line primer/spacing */
   padding: 3px 12px;
   font-size: $font-size-small;
-  // stylelint-disable-next-line primer/typography
+  /* stylelint-disable-next-line primer/typography */
   line-height: 20px;
 
   .octicon {
@@ -319,20 +324,21 @@ a.btn-primary {
   }
 }
 
-// Large button adds more padding around text. Use font-size utils to increase font-size.. e.g, <p class="text-gamma"><button class="btn btn-large btn-primary" type="button">Big green button</button></p>
+/* Large button adds more padding around text. Use font-size utils to increase font-size.. e.g, <p class="text-gamma"><button class="btn btn-large btn-primary" type="button">Big green button</button></p> */
 .btn-large {
-  // stylelint-disable-next-line primer/spacing
+  /* stylelint-disable-next-line primer/spacing */
   padding: $em-spacer-6 1.5em;
   font-size: inherit;
   line-height: $lh-default;
 
-  // stylelint-disable-next-line primer/borders
+  /* stylelint-disable-next-line primer/borders */
   border-radius: 0.5em;
 }
 
-// Full-width button
-//
-// These buttons expand to the full width of their parent container
+/* Full-width button
+*
+* These buttons expand to the full width of their parent container
+*/
 .btn-block {
   display: block;
   width: 100%;

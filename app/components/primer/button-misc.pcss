@@ -1,8 +1,9 @@
-// stylelint-disable selector-max-type
-
-// Link-like buttons
-//
-// This class is for styling <button> and <input> elements to look like links
+/*
+* stylelint-disable selector-max-type
+*
+* Link-like buttons
+* This class is for styling <button> and <input> elements to look like links
+*/
 .btn-link {
   display: inline-block;
   padding: 0;
@@ -14,7 +15,7 @@
   user-select: none;
   background-color: transparent;
   border: 0;
-  appearance: none; // Corrects inability to style clickable `input` types in iOS.
+  appearance: none; /* Corrects inability to style clickable `input` types in iOS. */
 
   &:hover {
     text-decoration: underline;
@@ -38,12 +39,14 @@
   }
 }
 
-// Invisible button
-//
-// Typically used as a "cancel" button next to a .btn
+/*
+* Invisible button
+*
+* Typically used as a "cancel" button next to a .btn
+*/
 .btn-invisible {
   color: var(--color-accent-fg);
-  background-color: transparent; // Reset default gradient backgrounds and colors
+  background-color: transparent; /* Reset default gradient backgrounds and colors */
   border: 0;
   border-radius: $border-radius;
   box-shadow: none;
@@ -79,20 +82,20 @@
   }
 }
 
-// Octicon button
-//
-// Icon-only buttons
+/* Octicon button */
+
+/* Icon-only buttons */
 .btn-octicon {
   display: inline-block;
-  // stylelint-disable-next-line primer/spacing
+  /* stylelint-disable-next-line primer/spacing */
   padding: 5px;
-  // stylelint-disable-next-line primer/spacing
+  /* stylelint-disable-next-line primer/spacing */
   margin-left: 5px;
   line-height: $lh-condensed-ultra;
   color: var(--color-fg-muted);
   vertical-align: middle;
 
-  // For `<button>` elements
+  /* For `<button>` elements */
   background: transparent;
   border: 0;
   box-shadow: none;
@@ -121,9 +124,11 @@
   color: var(--color-danger-fg);
 }
 
-// Close button
-//
-// Typically used with an octicon-x
+/*
+* Close button
+*
+* Typically used with an octicon-x
+*/
 .close-button {
   padding: 0;
   color: var(--color-fg-muted);
@@ -139,9 +144,11 @@
   }
 }
 
-// Hidden text button
-//
-// Use `.hidden-text-expander` to indicate and expand hidden text.
+/*
+* Hidden text button
+*
+* Use `.hidden-text-expander` to indicate and expand hidden text.
+*/
 .hidden-text-expander {
   display: block;
 
@@ -149,7 +156,7 @@
     position: relative;
     top: -1px;
     display: inline-block;
-    // stylelint-disable-next-line primer/spacing
+    /* stylelint-disable-next-line primer/spacing */
     margin-left: 5px;
     line-height: 0;
   }
@@ -159,18 +166,18 @@
 .ellipsis-expander {
   display: inline-block;
   height: 12px;
-  // stylelint-disable-next-line primer/spacing
+  /* stylelint-disable-next-line primer/spacing */
   padding: 0 5px 5px;
   font-size: $font-size-small;
   font-weight: $font-weight-bold;
-  // stylelint-disable-next-line primer/typography
+  /* stylelint-disable-next-line primer/typography */
   line-height: 6px;
   color: var(--color-fg-default);
   text-decoration: none;
   vertical-align: middle;
   background: var(--color-neutral-muted);
   border: 0;
-  // stylelint-disable-next-line primer/borders
+  /* stylelint-disable-next-line primer/borders */
   border-radius: 1px;
 
   &:hover {
@@ -184,8 +191,10 @@
   }
 }
 
-// Social button count
-// TODO: Deprecate? Use BtnGroup instead?
+/*
+* Social button count
+* TODO: Deprecate? Use BtnGroup instead?
+*/
 
 .btn-with-count {
   float: left;
@@ -197,18 +206,20 @@
   }
 }
 
-// Social count bubble
-//
-// A container that is used for social bubbles counts.
+/*
+* Social count bubble
+*
+* A container that is used for social bubbles counts
+*/
 
 .social-count {
   position: relative;
   float: left;
-  // stylelint-disable-next-line primer/spacing
+  /* stylelint-disable-next-line primer/spacing */
   padding: 3px 12px;
   font-size: $font-size-small;
   font-weight: $font-weight-bold;
-  // stylelint-disable-next-line primer/typography
+  /* stylelint-disable-next-line primer/typography */
   line-height: 20px;
   color: var(--color-fg-default);
   vertical-align: middle;
