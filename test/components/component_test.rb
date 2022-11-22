@@ -184,4 +184,35 @@ class PrimerComponentTest < Minitest::Test
 
     assert_empty(deprecated_by_status - deprecated_by_list, "Please make sure that components are officially deprecated by setting the `status :deprecated` within the component file.\nMake sure to provide an alternative component for each deprecated component in Primer::Deprecations::DEPRECATED_COMPONENTS (lib/primer/deprecations.rb). If there is no alternative to suggest, set the value to nil.")
   end
+
+  class DenyComponent < Primer::Component
+    def initialize(**system_arguments)
+      deny_single_argument(:class, "Use `classes` instead.", **system_arguments)
+      deny_aria_key(:label, "Don't use labels?", **system_arguments)
+    end
+
+    def call
+      "<p>foo</p>".html_safe
+    end
+  end
+
+  def test_deny_single_argument_does_not_raise_in_production
+    with_raise_on_invalid_options(true) do
+      assert_raises(ArgumentError) { DenyComponent.new(class: "foo") }
+
+      Rails.stub(:env, "production".inquiry) do
+        DenyComponent.new(class: "foo")
+      end
+    end
+  end
+
+  def test_deny_aria_key_does_not_raise_in_production
+    with_raise_on_invalid_aria(true) do
+      assert_raises(ArgumentError) { DenyComponent.new(aria: { label: "foo" }) }
+
+      Rails.stub(:env, "production".inquiry) do
+        DenyComponent.new(aria: { label: "foo" })
+      end
+    end
+  end
 end
