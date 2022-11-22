@@ -1,18 +1,18 @@
-// Button group
-//
-// A button group is a series of buttons laid out next to each other, all part
-// of one visual button, but separated by rules to be separate.
+/* BtnGroup */
+
+/* A button group is a series of buttons laid out next to each other, all part
+** of one visual button, but separated by rules to be separate. */
 
 .BtnGroup {
   display: inline-block;
   vertical-align: middle;
 
-  @include clearfix();
+  /* TODO @include clearfix(); */
 
-  // Proper spacing for multiple button groups (a la, gollum editor)
-  + .BtnGroup,
-  + .btn {
-    margin-left: $spacer-1;
+  /* Proper spacing for multiple button groups (a la, gollum editor) */
+  & + .BtnGroup,
+  & + .btn {
+    margin-left: var(--primer-control-small-gap, 4px);
   }
 }
 
@@ -23,14 +23,14 @@
   border-radius: 0;
 
   &:first-child {
-    border-top-left-radius: $border-radius;
-    border-bottom-left-radius: $border-radius;
+    border-top-left-radius: var(--primer-borderRadius-medium, 6px);
+    border-bottom-left-radius: var(--primer-borderRadius-medium, 6px);
   }
 
   &:last-child {
-    border-right-width: $border-width;
-    border-top-right-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
+    border-right-width: var(--primer-borderWidth-thin, 1px);
+    border-top-right-radius: var(--primer-borderRadius-medium, 6px);
+    border-bottom-right-radius: var(--primer-borderRadius-medium, 6px);
   }
 
   &.selected,
@@ -38,10 +38,10 @@
   &:focus,
   &:active,
   &:hover {
-    border-right-width: $border-width;
+    border-right-width: var(--primer-borderWidth-thin, 1px);
 
-    + .BtnGroup-item,
-    + .BtnGroup-parent .BtnGroup-item {
+    & + .BtnGroup-item,
+    & + .BtnGroup-parent .BtnGroup-item {
       border-left-width: 0;
     }
   }
@@ -51,17 +51,17 @@
   float: left;
 
   &:first-child .BtnGroup-item {
-    border-top-left-radius: $border-radius;
-    border-bottom-left-radius: $border-radius;
+    border-top-left-radius: var(--primer-borderRadius-medium, 6px);
+    border-bottom-left-radius: var(--primer-borderRadius-medium, 6px);
   }
 
   &:last-child .BtnGroup-item {
-    border-right-width: $border-width;
-    border-top-right-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
+    border-right-width: var(--primer-borderWidth-thin, 1px);
+    border-top-right-radius: var(--primer-borderRadius-medium, 6px);
+    border-bottom-right-radius: var(--primer-borderRadius-medium, 6px);
   }
 
-  .BtnGroup-item {
+  & .BtnGroup-item {
     border-right-width: 0;
     border-radius: 0;
   }
@@ -71,18 +71,18 @@
   &:focus,
   &:active,
   &:hover {
-    .BtnGroup-item {
-      border-right-width: $border-width;
+    & .BtnGroup-item {
+      border-right-width: var(--primer-borderWidth-thin, 1px);
     }
 
-    + .BtnGroup-item,
-    + .BtnGroup-parent .BtnGroup-item {
+    & + .BtnGroup-item,
+    & + .BtnGroup-parent .BtnGroup-item {
       border-left-width: 0;
     }
   }
 }
 
-// ensure that the focus ring sits above the adjacent buttons
+/* ensure that the focus ring sits above the adjacent buttons */
 .BtnGroup-item,
 .BtnGroup-parent {
   &:focus,
