@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require_relative "helpers/deprecated_components_helpers"
+require_relative "severity_schema"
+
 require "erblint-github/linters/custom_helpers"
 
 module ERBLint
@@ -10,6 +12,8 @@ module ERBLint
       include CustomHelpers
       include ERBLint::LinterRegistry
       include Helpers::DeprecatedComponentsHelpers
+
+      self.config_schema = SeveritySchema
 
       def run(processed_source)
         processed_source.ast.descendants(:erb).each do |erb_node|
