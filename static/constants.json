@@ -798,8 +798,6 @@
       "danger"
     ]
   },
-  "Primer::Image": {
-  },
   "Primer::LabelComponent": {
   },
   "Primer::LayoutComponent": {
