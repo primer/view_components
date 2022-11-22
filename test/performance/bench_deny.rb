@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "benchmark/ips"
 require "minitest"
 require "minitest/benchmark"
 require "test_helper"
