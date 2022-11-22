@@ -356,6 +356,32 @@
     ]
   },
   {
+    "component": "Dropdown",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/default/",
+    "parameters": [
+      {
+        "name": "overlay",
+        "type": "Symbol",
+        "default": "`:default`",
+        "description": "One of `:dark`, `:default`, or `:none`."
+      },
+      {
+        "name": "with_caret",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not a caret should be rendered in the button."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "HiddenTextExpander",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/hidden_text_expander.rb",
@@ -1836,32 +1862,6 @@
         "type": "String",
         "default": "N/A",
         "description": "Element id from where to get the copied value."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Dropdown",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/dropdown.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/dropdown/default/",
-    "parameters": [
-      {
-        "name": "overlay",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:dark`, `:default`, or `:none`."
-      },
-      {
-        "name": "with_caret",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not a caret should be rendered in the button."
       },
       {
         "name": "system_arguments",
