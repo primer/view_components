@@ -3,23 +3,23 @@
 .OrderedList {
     padding-left: var(--base-size-8, 8px);
 
-    &[type='1'] {
+    & .OrderedList.type-decimal {
       list-style-type: decimal;
     }
-
-    &[type='A'] {
+    
+    & .OrderedList.type-upperAlpha {
       list-style-type: upper-alpha;
     }
-
-    &[type='a'] {
+    
+    & .OrderedList.type-lowerAlpha {
       list-style-type: lower-alpha;
     }
-
-    &[type='I'] {
+    
+    & .OrderedList.type-upperRoman {
       list-style-type: upper-roman;
     }
-
-    &[type='i'] {
+    
+    & .OrderedList.type-lowerRoman {
       list-style-type: lower-roman;
-    }
+    }    
 }

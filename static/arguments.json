@@ -558,8 +558,8 @@
       {
         "name": "type",
         "type": "Symbol",
-        "default": "`1`",
-        "description": "One of `1`, `A`, `I`, `a`, or `i`."
+        "default": "`:default`",
+        "description": "One of `:decimal`, `:default`, `:lower_alpha`, `:lower_roman`, `:upper_alpha`, or `:upper_roman`."
       },
       {
         "name": "system_arguments",

@@ -6,14 +6,16 @@ module Primer
     class OrderedList < Primer::Component
       status :alpha
 
-      DEFAULT_ORDER_TYPE = "1"
-      ORDER_TYPES = [
-        DEFAULT_ORDER_TYPE,
-        "a",
-        "A",
-        "i",
-        "I"
-      ].freeze
+      ORDER_TYPE_DEFAULT = :default
+      ORDER_TYPE_MAPPINGS = {
+        :decimal => "OrderedList--type-decimal",
+        :upper_alpha => "OrderedList--type-upperAlpha",
+        :lower_alpha => "OrderedList--type-lowerAlpha",
+        :upper_roman => "OrderedList--type-upperRoman",
+        :lower_roman => "OrderedList--type-lowerRoman",
+        ORDER_TYPE_DEFAULT => "OrderedList--type-decimal"
+      }.freeze
+      ORDER_TYPE_OPTIONS = ORDER_TYPE_MAPPINGS.keys.freeze
 
       # Use items to add list items to the ordered list.
       #
@@ -31,14 +33,15 @@ module Primer
       #     <% end %>
       #   <% end %>
       #
-      # @param type [Symbol] <%= one_of(Primer::Alpha::OrderedList::ORDER_TYPES) %>
+      # @param type [Symbol] <%= one_of(Primer::Alpha::OrderedList::ORDER_TYPE_OPTIONS) %>
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      def initialize(type: DEFAULT_ORDER_TYPE, **system_arguments)
+      def initialize(type: ORDER_TYPE_DEFAULT, **system_arguments)
         @system_arguments = deny_tag_argument(**system_arguments)
         @system_arguments[:tag] = :ol
         @system_arguments[:type] = type
         @system_arguments[:classes] = class_names(
           "OrderedList",
+          ORDER_TYPE_MAPPINGS[fetch_or_fallback(ORDER_TYPE_OPTIONS, type, ORDER_TYPE_DEFAULT)],
           system_arguments[:classes]
         )
       end
