@@ -25,12 +25,7 @@ module ERBLint
           deprecated_components.each do |component|
             next unless code.include?(component)
 
-            add_offense(
-              erb_node.loc,
-              message(component),
-              nil,
-              @config.severity
-            )
+            add_offense(erb_node.loc, message(component))
           end
         end
 
@@ -51,8 +46,14 @@ module ERBLint
         end
       end
 
-      def severity
-        @config.severity
+      # this override is necessary because of the github/erblint-github `CustomHelpers`
+      # module. `counter_correct?` is provided by this module, and calls `add_offense`
+      # directly. there is no simple way to modify this without updating the gem and
+      # creating what would likely be an API that is non-standard and/or difficult to use
+      #
+      # https://github.com/github/erblint-github/blob/main/lib/erblint-github/linters/custom_helpers.rb
+      def add_offense(source_range, message, context = nil, severity = nil)
+        super(source_range, message, context, severity || @config.severity)
       end
     end
   end
