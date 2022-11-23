@@ -1,0 +1,93 @@
+# Primer ViewComponents Deprecation Configuration
+# 
+# Schema
+# ------
+# component: [string/class] # Required. The full ruby class being deprecated
+#   autocorrect: [boolean] # Optional. Whether or not this deprecations can be autocorrected with `erblint -a`. default: false
+#   replacement: [string/class] # Optional. The full ruby class of the new component, if any, that replaces the now deprecated component. default: nil
+#   guide: [string/url]. Optional # Optional. A url that contains instructions on how to migrate from the deprecated component to the new component. default: nil
+#
+# Examples
+# --------
+# Please note that these examples are somewhat contrived, even if they match up to actual PVC components. They
+# should be read as documentation only, and are not expected to be live. See the live configuration below the
+# examples for the real list of deprecations.
+#
+# 1. An autocorrectable deprecation without a migration guide.
+#
+#   component: "Primer::LabelComponent"
+#     autocorrect: true
+#     replacement: "Primer::Beta::Label
+#
+# 2. An autocorrectable deprecation with a migration guide to provide more information about the changes.
+#
+#   component: "Primer::LabelComponent"
+#     autocorrect: true
+#     replacement: "Primer::Beta::Label
+#     guide: "https://primer.style/view-components/migration/label_component"
+#
+# 3. A non-autocorrectable deprecation, with a replacement component and migration guide.
+#
+#   component: "Primer::ButtonComponent"
+#     autocorrect: false
+#     replacement: "Primer::Beta::Button"
+#     guide: "https://primer.style/view-components/migration/button_component"
+#
+# 4. A non-autocorrectable deprecation, without a replacement component, and with a guide to alternatives.
+#
+#   component: "Primer::DropdownMenuComponent"
+#     autocorrect: false
+#     guide: "https://primer.style/view-components/migration/dropdown_menu_alternatives"
+#
+# 5. A non-autocorrectable deprecation, without a replacement component, and without a guide to alternatives.
+#   !!!WARNING!!!
+#     THIS IS NOT RECOMMENDED. It will provide a deprecation warning with no guidance. This is
+#     not a good user experience. Please provide either a guide or a replacement component.
+#
+#   component: "Primer::BlankslateComponent"
+#     autocorrect: false
+#   
+#   or
+#
+#   component: "Primer::BlankslateComponent"
+
+deprecations:
+  component: "Primer::LabelComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Label"
+  component: "Primer::LinkComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Link"
+  component: "Primer::Alpha::AutoComplete"
+    autocorrect: true
+    replacement: "Primer::Beta::AutoComplete"
+  component: "Primer::Alpha::AutoComplete::Item"
+    autocorrect: true
+    replacement: "Primer::Beta::AutoComplete::Item"
+  component: "Primer::BlankslateComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Blankslate"
+  component: "Primer::BoxComponent"
+    autocorrect: true
+    replacement: "Primer::Box"
+  component: "Primer::DropdownMenuComponent"
+    autocorrect: false
+    guide: "https://primer.style/view-components/migration"
+  component: "Primer::Dropdown"
+    autocorrect: true
+    replacement: "Primer::Alpha::Dropdown"
+  component: "Primer::Dropdown::Menu"
+    autocorrect: true
+    replacement: "Primer::Alpha::Dropdown::Menu"
+  component: "Primer::Dropdown::Menu::Item"
+    autocorrect: true
+    replacement: "Primer::Alpha::Dropdown::Menu::Item"
+  component: "Primer::IconButton"
+    autocorrect: true
+    replacement: "Primer::Beta::IconButton"
+  component: "Primer::Tooltip"
+    autocorrect: true
+    replacement: "Primer::Alpha::Tooltip"
+  component: "Primer::PopoverComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Popover"
