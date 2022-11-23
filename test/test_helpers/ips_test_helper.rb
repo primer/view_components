@@ -7,9 +7,9 @@ require "benchmark/ips"
 
 module Primer
   module IPSTestHelper
-    def measure_ips
+    def measure_ips(&block)
       suppress_output do
-        Benchmark.ips { |x| x.report { yield } }
+        Benchmark.ips { |x| x.report(&block) }
       end
     end
 
