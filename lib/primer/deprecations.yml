@@ -2,7 +2,7 @@
 # 
 # Schema
 # ------
-# component: [string]
+# - component: [string]
 #   autocorrect: [boolean] 
 #   replacement: [string] 
 #   guide: [string]
@@ -77,42 +77,42 @@
 #   component: "Primer::BlankslateComponent"
 
 deprecations:
-  component: "Primer::LabelComponent"
+  - component: "Primer::LabelComponent"
     autocorrect: true
     replacement: "Primer::Beta::Label"
-  component: "Primer::LinkComponent"
+  - component: "Primer::LinkComponent"
     autocorrect: true
     replacement: "Primer::Beta::Link"
-  component: "Primer::Alpha::AutoComplete"
+  - component: "Primer::Alpha::AutoComplete"
     autocorrect: true
     replacement: "Primer::Beta::AutoComplete"
-  component: "Primer::Alpha::AutoComplete::Item"
+  - component: "Primer::Alpha::AutoComplete::Item"
     autocorrect: true
     replacement: "Primer::Beta::AutoComplete::Item"
-  component: "Primer::BlankslateComponent"
+  - component: "Primer::BlankslateComponent"
     autocorrect: true
     replacement: "Primer::Beta::Blankslate"
-  component: "Primer::BoxComponent"
+  - component: "Primer::BoxComponent"
     autocorrect: true
     replacement: "Primer::Box"
-  component: "Primer::DropdownMenuComponent"
+  - component: "Primer::DropdownMenuComponent"
     autocorrect: false
     replacement: "Primer::Beta::Dropdown"
-  component: "Primer::Dropdown"
+  - component: "Primer::Dropdown"
     autocorrect: true
     replacement: "Primer::Alpha::Dropdown"
-  component: "Primer::Dropdown::Menu"
+  - component: "Primer::Dropdown::Menu"
     autocorrect: true
     replacement: "Primer::Alpha::Dropdown::Menu"
-  component: "Primer::Dropdown::Menu::Item"
+  - component: "Primer::Dropdown::Menu::Item"
     autocorrect: true
     replacement: "Primer::Alpha::Dropdown::Menu::Item"
-  component: "Primer::IconButton"
+  - component: "Primer::IconButton"
     autocorrect: true
     replacement: "Primer::Beta::IconButton"
-  component: "Primer::Tooltip"
+  - component: "Primer::Tooltip"
     autocorrect: true
     replacement: "Primer::Alpha::Tooltip"
-  component: "Primer::PopoverComponent"
+  - component: "Primer::PopoverComponent"
     autocorrect: true
     replacement: "Primer::Beta::Popover"
