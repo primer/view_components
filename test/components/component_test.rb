@@ -69,13 +69,13 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::Dialog::Header, { title: "Test", id: "test" }],
     [Primer::Alpha::Dialog::Body, {}],
     [Primer::Alpha::Dialog::Footer, {}],
-    [Primer::Dropdown, {}, lambda do |component|
+    [Primer::Alpha::Dropdown, {}, lambda do |component|
       component.button { "Foo" }
       component.menu do |m|
         m.item { "Baz" }
       end
     end],
-    [Primer::Dropdown::Menu, {}],
+    [Primer::Alpha::Dropdown::Menu, {}],
     [Primer::DropdownMenuComponent, {}],
     [Primer::Beta::Flash, {}],
     [Primer::Beta::Heading, { tag: :h1 }],
@@ -87,7 +87,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],
     [Primer::Navigation::TabComponent, {}],
     [Primer::OcticonComponent, { icon: :people }],
-    [Primer::PopoverComponent, {}, proc { |component| component.body { "Foo" } }],
+    [Primer::Beta::Popover, {}, proc { |component| component.body { "Foo" } }],
     [Primer::Beta::ProgressBar, {}, proc { |component| component.item }],
     [Primer::SpinnerComponent, {}],
     [Primer::StateComponent, { title: "Open" }],
@@ -112,8 +112,6 @@ class PrimerComponentTest < Minitest::Test
     ignored_components = [
       "Primer::LabelComponent",
       "Primer::LinkComponent",
-      "Primer::ProgressBarComponent",
-      "Primer::Image",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
@@ -121,7 +119,10 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
-      "Primer::BoxComponent"
+      "Primer::BoxComponent",
+      "Primer::PopoverComponent",
+      "Primer::Dropdown",
+      "Primer::Dropdown::Menu"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
@@ -183,5 +184,29 @@ class PrimerComponentTest < Minitest::Test
     deprecated_by_list = ::Primer::Deprecations::DEPRECATED_COMPONENTS.keys.sort
 
     assert_empty(deprecated_by_status - deprecated_by_list, "Please make sure that components are officially deprecated by setting the `status :deprecated` within the component file.\nMake sure to provide an alternative component for each deprecated component in Primer::Deprecations::DEPRECATED_COMPONENTS (lib/primer/deprecations.rb). If there is no alternative to suggest, set the value to nil.")
+  end
+
+  def test_deny_single_argument_does_not_raise_in_production
+    with_raise_on_invalid_options(true) do
+      assert_raises(ArgumentError) { Primer::DenyComponent.new(class: "foo") }
+
+      # rubocop:disable Rails/Inquiry
+      Rails.stub(:env, "production".inquiry) do
+        Primer::DenyComponent.new(class: "foo")
+      end
+      # rubocop:enable Rails/Inquiry
+    end
+  end
+
+  def test_deny_aria_key_does_not_raise_in_production
+    with_raise_on_invalid_aria(true) do
+      assert_raises(ArgumentError) { Primer::DenyComponent.new(aria: { label: "foo" }) }
+
+      # rubocop:disable Rails/Inquiry
+      Rails.stub(:env, "production".inquiry) do
+        Primer::DenyComponent.new(aria: { label: "foo" })
+      end
+      # rubocop:enable Rails/Inquiry
+    end
   end
 end

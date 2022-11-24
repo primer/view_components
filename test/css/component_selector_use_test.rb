@@ -35,7 +35,7 @@ IGNORED_SELECTORS = {
   Primer::Beta::IconButton => ["Button--medium", "octicon", "octicon-x"],
   Primer::Beta::Truncate => ["Truncate-text"],
   Primer::ClipboardCopy => ["octicon", "octicon-check", "octicon-copy"],
-  Primer::Dropdown => ["btn", "details-overlay", "details-reset", "dropdown-menu-se", "octicon", "octicon-triangle-down"],
+  Primer::Alpha::Dropdown => ["btn", "details-overlay", "details-reset", "dropdown-menu-se", "octicon", "octicon-triangle-down"],
   Primer::Markdown => ["markdown-body"]
 }.freeze
 # rubocop:enable Style/WordArray

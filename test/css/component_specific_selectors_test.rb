@@ -127,12 +127,16 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".flash-banner",
       ".warning"
     ],
-    Primer::Dropdown => [
+    Primer::Alpha::Dropdown => [
       ".dropdown-caret",
       ".dropdown-menu-no-overflow",
       ".dropdown-menu-no-overflow .dropdown-item",
       ".dropdown-item.btn-link",
       ".dropdown-signout"
+    ],
+    Primer::Beta::Popover => [
+      ".Popover-message > .btn-octicon",
+      ".Popover-message>.btn-octicon"
     ]
   }.freeze
 
