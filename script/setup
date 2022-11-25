@@ -15,5 +15,8 @@ pushd docs
 npm install
 popd
 
+# Build assets so tests can be run correctly
+script/build-assets
+
 # Initial build of docs content
 bundle exec rake docs:build
