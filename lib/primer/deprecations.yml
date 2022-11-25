@@ -5,7 +5,6 @@
 # - component: [string]
 #   autocorrect: [boolean] 
 #   replacement: [string] 
-#   guide: [string]
 #
 # Field Descriptions
 # ------------------
@@ -26,55 +25,22 @@
 #   - Default: nil
 #   - The full ruby class of the new component, if any, that replaces the now deprecated component
 #
-# guide:
-#   - Optional
-#   - Type: string
-#   - Default: nil
-#   - A url that contains instructions on how to migrate from the deprecated component to the new component
-#
 # Examples
 # --------
 # Please note that these examples are somewhat contrived, even if they match up to actual PVC components. They
 # should be read as documentation only, and are not expected to be live. See the live configuration below the
 # examples for the real list of deprecations.
 #
-# 1. An autocorrectable deprecation without a migration guide
+# 1. An autocorrectable deprecation
 #
 #   component: "Primer::LabelComponent"
 #     autocorrect: true
 #     replacement: "Primer::Beta::Label
 #
-# 2. An autocorrectable deprecation with a migration guide to provide more information about the changes
-#
-#   component: "Primer::LabelComponent"
-#     autocorrect: true
-#     replacement: "Primer::Beta::Label
-#     guide: "https://primer.style/view-components/migration/label_component"
-#
-# 3. A non-autocorrectable deprecation, with a replacement component and migration guide
+# 2. A non-autocorrectable deprecation (no direct replacement component)
 #
 #   component: "Primer::ButtonComponent"
 #     autocorrect: false
-#     replacement: "Primer::Beta::Button"
-#     guide: "https://primer.style/view-components/migration/button_component"
-#
-# 4. A non-autocorrectable deprecation, without a replacement component, and with a guide to alternatives
-#
-#   component: "Primer::DropdownMenuComponent"
-#     autocorrect: false
-#     guide: "https://primer.style/view-components/migration/dropdown_menu_alternatives"
-#
-# 5. A non-autocorrectable deprecation, without a replacement component, and without a guide to alternatives
-#    !!!WARNING!!!
-#    THIS IS NOT RECOMMENDED. It will provide a deprecation warning with no guidance. This is
-#    not a good user experience. Please provide either a guide or a replacement component.
-#
-#   component: "Primer::BlankslateComponent"
-#     autocorrect: false
-#   
-#   or
-#
-#   component: "Primer::BlankslateComponent"
 
 deprecations:
   - component: "Primer::LabelComponent"
