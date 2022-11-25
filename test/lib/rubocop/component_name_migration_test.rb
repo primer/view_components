@@ -16,8 +16,6 @@ class RubocopComponentNameMigrationTest < CopTestCase
   end
 
   def test_using_deprecated_class
-    original_list = Primer::Deprecations.deprecated_components
-
     investigate(cop, <<-RUBY)
       Primer::BlankslateComponent.new
     RUBY

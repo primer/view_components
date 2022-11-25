@@ -23,7 +23,7 @@ class DeprecationsTest < Minitest::Test
   Primer::Component.descendants.each do |component_class|
     class_test_name = component_class.name.downcase.gsub("::", "_")
     define_method("test_ensure_#{class_test_name}_is_properly_deprecated") do
-      if component_class.deprecated?
+      if component_class.deprecated? # rubocop:disable Style/IfUnlessModifier
         assert @deprecated_components.include?(component_class.name), missing_deprecation_message(component_class)
       end
     end
