@@ -8,7 +8,7 @@ class DeprecationsTest < Minitest::Test
     @deprecated_components = Primer::Deprecations.deprecated_components
   end
 
-  def test_default_deprecations_are_loaded
+  def test_default_pvc_deprecations_are_loaded
     component = "Primer::BlankslateComponent"
     replacement = "Primer::Beta::Blankslate"
 
@@ -18,7 +18,7 @@ class DeprecationsTest < Minitest::Test
     assert_nil Primer::Deprecations.guide(component)
   end
 
-  def test_registering_deprecations
+  def test_custom_deprecations
     component = "Custom::CoolComponent"
     options = {
       autocorrect: false,
