@@ -7,6 +7,12 @@ fieldset {
   border: 0;
 }
 
+/* TODO: Remove again, once `::placeholder` is part of the base styles */
+::placeholder {
+  color: var(--color-fg-subtle);
+  opacity: 1; /* override opacity in normalize.css */
+}
+
 /* groups label, field, caption and inline error message */
 .FormControl {
   display: inline-flex;
