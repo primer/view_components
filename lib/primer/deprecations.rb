@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'yaml'
+require "yaml"
 
 module Primer
   # :nodoc:
@@ -52,9 +52,6 @@ module Primer
     end
 
     # auto-load PVC's deprecations
-    begin
-      config_path = File.expand_path("deprecations.yml", __dir__)
-      self.register(config_path)
-    end
+    register(File.expand_path("deprecations.yml", __dir__))
   end
 end
