@@ -181,7 +181,7 @@ class PrimerComponentTest < Minitest::Test
 
   def test_deprecated_components_by_status_match_list
     deprecated_by_status = Primer::ViewComponents::STATUSES.select { |_, value| value == "deprecated" }.keys.sort
-    deprecated_by_list = ::Primer::Deprecations::DEPRECATED_COMPONENTS.keys.sort
+    deprecated_by_list = ::Primer::Deprecations.deprecated_components
 
     assert_empty(deprecated_by_status - deprecated_by_list, "Please make sure that components are officially deprecated by setting the `status :deprecated` within the component file.\nMake sure to provide an alternative component for each deprecated component in Primer::Deprecations::DEPRECATED_COMPONENTS (lib/primer/deprecations.rb). If there is no alternative to suggest, set the value to nil.")
   end

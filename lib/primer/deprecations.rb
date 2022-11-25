@@ -18,6 +18,10 @@ module Primer
         end
       end
 
+      def deprecated_components
+        deprecations.keys.sort
+      end
+
       def deprecated?(component_name)
         # if the component is registered, it is deprecated
         deprecations.key?(component_name)
