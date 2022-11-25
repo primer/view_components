@@ -9,8 +9,7 @@ module Primer
       def register(file_path)
         data = YAML.load_file(file_path)
         data["deprecations"].each do |dep|
-          register_deprecation({
-            component: dep["component"],
+          register_deprecation(dep["component"], {
             autocorrect: dep["autocorrect"],
             guide: dep["guide"],
             replacement: dep["replacement"]
@@ -18,12 +17,16 @@ module Primer
         end
       end
 
-      def register_deprecation(registration)
-        registered_deprecations[registration.component] = {
-          autocorrect: registration.autocorrect,
-          guide: registration.guide,
-          replacement: registration.replacement
+      def register_deprecation(component, options)
+        registered_deprecations[component] = {
+          autocorrect: options[:autocorrect],
+          guide: options[:guide],
+          replacement: options[:replacement]
         }
+      end
+
+      def remove_deprecation(component)
+        remove_registration(component)
       end
 
       def deprecated_components
@@ -57,6 +60,10 @@ module Primer
       end
 
       private
+
+      def remove_registration(component)
+        @registered_deprecations.delete(component)
+      end
 
       def registered_deprecations
         @registered_deprecations ||= {}

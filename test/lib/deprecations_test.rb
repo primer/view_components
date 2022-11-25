@@ -18,6 +18,24 @@ class DeprecationsTest < Minitest::Test
     assert_nil Primer::Deprecations.guide(component)
   end
 
+  def test_registering_deprecations
+    component = "Custom::CoolComponent"
+    options = {
+      autocorrect: false,
+      replacement: "Custom::Beta::Cool",
+      guide: "https://example.com/some/component-guide"
+    }
+
+    Primer::Deprecations.register_deprecation(component, options)
+
+    assert Primer::Deprecations.deprecated?(component)
+    refute Primer::Deprecations.correctable?(component)
+    assert_equal Primer::Deprecations.replacement(component), options[:replacement]
+    assert_equal Primer::Deprecations.guide(component), options[:guide]
+  ensure
+    Primer::Deprecations.remove_deprecation(component)
+  end
+
   # ensure all components that has 'status: :deprecated' are listed in the component deprecations configuration file
   Primer::Component.descendants.each do |component_class|
     class_test_name = component_class.name.downcase.gsub("::", "_")
