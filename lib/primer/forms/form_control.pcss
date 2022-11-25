@@ -1,18 +1,18 @@
-// stylelint-disable primer/typography, primer/borders, primer/spacing, selector-max-type, selector-max-specificity, selector-no-qualifying-type,  max-nesting-depth
+/* FormControl */
 
-// groups label, field, caption and inline error message
+/* groups label, field, caption and inline error message */
 .FormControl {
   display: inline-flex;
   flex-direction: column;
   gap: var(--base-size-4, 4px);
 }
 
-// fill container
+/* fill container */
 .FormControl--fullWidth {
   display: flex;
 }
 
-// <label>
+/* <label> */
 .FormControl-label {
   font-size: var(--primer-text-body-size-medium, 14px);
   font-weight: var(--base-text-weight-semibold, 600);
@@ -21,7 +21,7 @@
   user-select: none;
 }
 
-// optional caption
+/* optional caption */
 .FormControl-caption {
   margin-bottom: 0;
   font-size: var(--primer-text-caption-size, 12px);
@@ -30,7 +30,7 @@
   color: var(--color-fg-muted);
 }
 
-// inline validation message
+/* inline validation message */
 .FormControl-inlineValidation {
   display: flex;
   font-size: var(--primer-text-caption-size, 12px);
@@ -41,13 +41,13 @@
   align-items: center;
   gap: var(--base-size-4, 4px);
 
-  p {
+  & p {
     margin-bottom: 0;
   }
 }
 
-// shared among all form control components (input, select, textarea, checkbox, radio)
-@mixin Field {
+/* shared among all form control components (input, select, textarea, checkbox, radio) */
+@define-mixin Field {
   color: var(--color-fg-default);
   background-color: var(--color-canvas-default);
   border: var(--primer-borderWidth-thin, 1px) solid var(--color-border-default);
@@ -65,59 +65,59 @@
     border-color: var(--color-danger-emphasis);
   }
 
-  &:not([type='checkbox']):not([type='radio']):focus {
-    @include focusBoxShadowInset;
+  &:not([type='checkbox'], [type='radio']):focus {
+    @mixin focusBoxShadowInset;
 
-    // remove fallback :focus if :focus-visible is supported
+    /* remove fallback :focus if :focus-visible is supported */
     &:not(:focus-visible) {
       border-color: transparent;
 
-      @include focusBoxShadowInset(1px, transparent);
+      @mixin focusBoxShadowInset 1px transparent;
     }
   }
 
-  // default focus state
-  &:not([type='checkbox']):not([type='radio']):focus-visible {
-    @include focusBoxShadowInset;
+  /* default focus state */
+  &:not([type='checkbox'], [type='radio']):focus-visible {
+    @mixin focusBoxShadowInset;
   }
 }
 
-// TextInput structure
-// ===================
-//
-// .FormControl
-// ├─ .FormControl-label
-// │  ├─ .FormControl-input-wrap
-// │  │  ├─ .FormControl-input-leadingVisualWrap
-// │  │  │  ├─ .FormControl-input-leadingVisual
-// │  │  ├─ .FormControl-input
-// │  │  ├─ .FormControl-input-trailingAction
-// ├─ .FormControl-inlineValidation
-// ├─ .FormControl-caption
+/* TextInput structure
+** ===================
+**
+** .FormControl
+** ├─ .FormControl-label
+** │  ├─ .FormControl-input-wrap
+** │  │  ├─ .FormControl-input-leadingVisualWrap
+** │  │  │  ├─ .FormControl-input-leadingVisual
+** │  │  ├─ .FormControl-input
+** │  │  ├─ .FormControl-input-trailingAction
+** ├─ .FormControl-inlineValidation
+** ├─ .FormControl-caption */
 
-// Select structure
-// ===================
-//
-// .FormControl
-// ├─ .FormControl-label
-// │  ├─ .FormControl-select-wrap
-// │  │  ├─ .FormControl-select
-// ├─ .FormControl-inlineValidation
-// ├─ .FormControl-caption
+/* // Select structure
+** ===================
+**
+** .FormControl
+** ├─ .FormControl-label
+** │  ├─ .FormControl-select-wrap
+** │  │  ├─ .FormControl-select
+** ├─ .FormControl-inlineValidation
+** ├─ .FormControl-caption */
 
-// Textarea structure
-// ===================
-//
-// .FormControl
-// ├─ .FormControl-label
-// ├─ .FormControl-textarea
-// ├─ .FormControl-inlineValidation
-// ├─ .FormControl-caption
+/* // Textarea structure
+** ===================
+**
+** .FormControl
+** ├─ .FormControl-label
+** ├─ .FormControl-textarea
+** ├─ .FormControl-inlineValidation
+** ├─ .FormControl-caption */
 
 .FormControl-input,
 .FormControl-select,
 .FormControl-textarea {
-  @include Field;
+  @mixin Field;
 
   width: 100%;
   font-size: var(--primer-text-body-size-medium, 14px);
@@ -138,12 +138,12 @@
     background-color: var(--color-input-disabled-bg);
   }
 
-  ::placeholder {
+  & ::placeholder {
     color: var(--color-fg-subtle);
     opacity: 1;
   }
 
-  // sizes
+  /* sizes */
 
   &.FormControl-small {
     height: var(--primer-control-small-size, 28px);
@@ -162,7 +162,7 @@
     padding-block: var(--primer-control-large-paddingBlock, 10px);
   }
 
-  // variants
+  /* variants */
 
   &.FormControl-inset {
     background-color: var(--color-canvas-inset);
@@ -181,7 +181,7 @@
       );
   }
 
-  // validation states
+  /* validation states */
 
   &.FormControl-error {
     border-color: var(--color-danger-emphasis);
@@ -196,12 +196,12 @@
   }
 }
 
-// positioning for leading/trailing items for TextInput
+/* positioning for leading/trailing items for TextInput */
 .FormControl-input-wrap {
   position: relative;
   display: grid;
 
-  .FormControl-input-leadingVisualWrap {
+  & .FormControl-input-leadingVisualWrap {
     position: absolute;
     top: var(--base-size-8, 8px);
     left: var(--base-size-8, 8px);
@@ -211,15 +211,15 @@
     color: var(--color-fg-muted);
     pointer-events: none;
 
-    // octicon
-    .FormControl-input-leadingVisual {
+    /* octicon */
+    & .FormControl-input-leadingVisual {
       display: block;
       user-select: none;
     }
   }
 
-  // TODO: replace with new Button component
-  .FormControl-input-trailingAction {
+  /* TODO: replace with new Button component */
+  & .FormControl-input-trailingAction {
     position: absolute;
     top: var(--base-size-4, 4px);
     right: var(--base-size-4, 4px);
@@ -238,7 +238,7 @@
     align-items: center;
     justify-content: center;
 
-    svg {
+    & svg {
       user-select: none;
     }
 
@@ -255,7 +255,7 @@
       background: var(--color-action-list-item-default-active-bg);
     }
 
-    // show vertical divider line between field and button
+    /* show vertical divider line between field and button */
     &.FormControl-input-trailingAction--divider {
       &::before {
         position: absolute;
@@ -270,7 +270,7 @@
     }
 
     &::after {
-      @include minTouchTarget(var(--primer-control-medium-size, 32px), var(--primer-control-medium-size, 32px));
+      @mixin minTouchTarget var(--primer-control-medium-size, 32px) var(--primer-control-medium-size, 32px);
 
       @media (pointer: coarse) {
         min-width: var(--primer-control-minTarget-coarse, 44px);
@@ -279,7 +279,7 @@
     }
   }
 
-  // if leadingVisual is present
+  /* if leadingVisual is present */
 
   /*
 	┌──32px──┬────────────────────┐
@@ -288,8 +288,9 @@
 	╎  └───┘   └────────────────┘ ╎
 	└───────8px───────────────────┘
 	*/
+
   &.FormControl-input-wrap--leadingVisual {
-    .FormControl-input {
+    & .FormControl-input {
       padding-inline-start:
         calc(
           var(--primer-control-medium-paddingInline-condensed, 8px) + var(--base-size-16, 16px) +
@@ -305,9 +306,10 @@
 	╎  └──────────────┘  └────┘ ╎
 	└──────────────────┴────────┘
   */
-  // if trailingAction is present
+
+  /* if trailingAction is present */
   &.FormControl-input-wrap--trailingAction {
-    .FormControl-input {
+    & .FormControl-input {
       padding-inline-end:
         calc(
           var(--primer-control-medium-paddingInline-condensed, 8px) + var(--base-size-16, 16px) +
@@ -323,10 +325,11 @@
 		╎  └──────────────┘  └────┘ ╎
 		└──────────────────┴────────┘
 		*/
-    // if trailingAction divider is present, add 1px padding to accomodate input field text
-    // can be refactored to has(.FormControl-input-trailingAction--divider)
+
+    /* if trailingAction divider is present, add 1px padding to accomodate input field text
+    ** can be refactored to has(.FormControl-input-trailingAction--divider) */
     &.FormControl-input-wrap-trailingAction--divider {
-      .FormControl-input {
+      & .FormControl-input {
         padding-inline-end:
           calc(
             var(--primer-control-medium-paddingInline-condensed, 8px) + var(--base-size-16, 16px) +
@@ -336,10 +339,10 @@
     }
   }
 
-  // size modifications can be refactored with :has() - FormControl-input-wrap:has(.FormControl-large)
-  // sizes
+  /* size modifications can be refactored with :has() - FormControl-input-wrap:has(.FormControl-large)
+  // sizes */
   &.FormControl-small {
-    .FormControl-input-leadingVisualWrap {
+    & .FormControl-input-leadingVisualWrap {
       top: calc(var(--primer-control-medium-paddingInline-condensed, 8px) - 0.125rem); /* 6px */
       left: calc(var(--primer-control-medium-paddingInline-condensed, 8px) - 0.125rem); /* 6px */
     }
@@ -351,8 +354,9 @@
     ╎  └──────────────┘  └────┘ ╎
     └──────────────────┴────────┘
     */
+
     &.FormControl-input-wrap--trailingAction {
-      .FormControl-input.FormControl-small {
+      & .FormControl-input.FormControl-small {
         padding-inline-end:
           calc(
             var(--primer-control-small-paddingInline-condensed, 8px) + var(--base-size-16, 16px) +
@@ -368,8 +372,9 @@
 			╎  └──────────────┘  └────┘ ╎
 			└──────────────────┴────────┘
 			*/
+
       &.FormControl-input-wrap-trailingAction--divider {
-        .FormControl-input.FormControl-small {
+        & .FormControl-input.FormControl-small {
           padding-inline-end:
             calc(
               var(--primer-control-small-paddingInline-condensed, 8px) + var(--base-size-16, 16px) +
@@ -379,7 +384,7 @@
       }
     }
 
-    .FormControl-input-trailingAction {
+    & .FormControl-input-trailingAction {
       width: calc(var(--primer-control-small-size, 28px) - var(--base-size-8, 8px));
       height: calc(var(--primer-control-small-size, 28px) - var(--base-size-8, 8px));
 
@@ -390,7 +395,7 @@
   }
 
   &.FormControl-large {
-    .FormControl-input-leadingVisualWrap {
+    & .FormControl-input-leadingVisualWrap {
       top: var(--primer-control-medium-paddingInline-normal, 12px);
       left: var(--primer-control-medium-paddingInline-normal, 12px);
     }
@@ -402,8 +407,9 @@
     ╎  └───┘   └────────────────┘ ╎
     └12px───8px───────────────────┘
     */
+
     &.FormControl-input-wrap--leadingVisual {
-      .FormControl-input.FormControl-large {
+      & .FormControl-input.FormControl-large {
         padding-inline-start:
           calc(
             var(--primer-control-large-paddingInline-normal, 12px) + var(--base-size-16, 16px) +
@@ -419,8 +425,9 @@
     ╎  └──────────────┘  └────┘ ╎
     └──────────────────┴────────┘
     */
+
     &.FormControl-input-wrap--trailingAction {
-      .FormControl-input.FormControl-large {
+      & .FormControl-input.FormControl-large {
         padding-inline-end:
           calc(
             var(--primer-control-large-paddingInline-normal, 12px) + var(--base-size-16, 16px) +
@@ -435,8 +442,9 @@
 			╎  └──────────────┘  └────┘ ╎
 			└──────────────────┴────────┘
 			*/
+
       &.FormControl-input-wrap-trailingAction--divider {
-        .FormControl-input.FormControl-large {
+        & .FormControl-input.FormControl-large {
           padding-inline-end:
             calc(
               var(--primer-control-large-paddingInline-normal, 12px) + var(--base-size-16, 16px) +
@@ -446,7 +454,7 @@
       }
     }
 
-    .FormControl-input-trailingAction {
+    & .FormControl-input-trailingAction {
       top: calc(var(--primer-control-medium-paddingInline-condensed, 8px) - 0.125rem); /* 6px */
       right: calc(var(--primer-control-medium-paddingInline-condensed, 8px) - 0.125rem); /* 6px */
       width: var(--primer-control-small-size, 28px);
@@ -464,7 +472,7 @@
   display: grid;
   grid-template-columns: minmax(0, auto) var(--base-size-16, 16px);
 
-  // mask allows for background-color to respect themes
+  /* mask allows for background-color to respect themes */
   &::after {
     width: var(--base-size-16, 16px);
     height: var(--base-size-16, 16px);
@@ -480,8 +488,8 @@
     place-self: center end;
   }
 
-  // spans entire grid below mask
-  .FormControl-select {
+  /* spans entire grid below mask */
+  & .FormControl-select {
     grid-column: 1/-1;
     grid-row: 1;
     appearance: none;
@@ -489,16 +497,16 @@
   }
 }
 
-// checkbox + radio specific styles
+/* checkbox + radio specific styles */
 
-// Checkbox + Radio structure
-// ===================
-//
-// .FormControl-radio-wrap
-// ├─ .FormControl-radio
-// ├─ .FormControl-radio-labelWrap
-// │  ├─ .FormControl-label
-// │  ├─ .FormControl-caption
+/* // Checkbox + Radio structure
+** ===================
+**
+** .FormControl-radio-wrap
+** ├─ .FormControl-radio
+** ├─ .FormControl-radio-labelWrap
+** │  ├─ .FormControl-label
+** │  ├─ .FormControl-caption */
 
 .FormControl-checkbox-wrap,
 .FormControl-radio-wrap {
@@ -506,33 +514,33 @@
   grid-template-columns: min-content auto;
   gap: var(--base-size-8, 8px);
 
-  .FormControl-checkbox-labelWrap,
-  .FormControl-radio-labelWrap {
+  & .FormControl-checkbox-labelWrap,
+  & .FormControl-radio-labelWrap {
     display: flex;
     flex-direction: column;
     gap: var(--base-size-4, 4px);
   }
 
-  .FormControl-label {
+  & .FormControl-label {
     cursor: pointer;
   }
 }
 
-// these selectors are temporary to override base.scss
-// once Field styles are widely adopted, we can adjust this and the global base styles
+/* these selectors are temporary to override base.scss
+** once Field styles are widely adopted, we can adjust this and the global base styles */
 input[type='checkbox'].FormControl-checkbox {
-  @include Field;
+  @mixin Field;
 
   position: relative;
   display: grid;
   width: var(--base-size-16, 16px);
   height: var(--base-size-16, 16px);
   margin: 0;
-  margin-top: 0.125rem; // 2px to center align with label (20px line-height)
+  margin-top: 0.125rem; /* 2px to center align with label (20px line-height) */
   cursor: pointer;
   border-color: var(--color-neutral-emphasis);
   border-radius: var(--primer-borderRadius-small, 3px);
-  transition: background-color, border-color 80ms cubic-bezier(0.33, 1, 0.68, 1); // checked -> unchecked - add 120ms delay to fully see animation-out
+  transition: background-color, border-color 80ms cubic-bezier(0.33, 1, 0.68, 1); /* checked -> unchecked - add 120ms delay to fully see animation-out */
   appearance: none;
   place-content: center;
 
@@ -544,25 +552,27 @@ input[type='checkbox'].FormControl-checkbox {
     background-color: var(--color-fg-on-emphasis);
     transition: visibility 0s linear 230ms;
     clip-path: inset(var(--base-size-16, 16px) 0 0 0);
-    mask-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTEuNzgwMyAwLjIxOTYyNUMxMS45MjEgMC4zNjA0MjcgMTIgMC41NTEzMDUgMTIgMC43NTAzMTNDMTIgMC45NDkzMjEgMTEuOTIxIDEuMTQwMTkgMTEuNzgwMyAxLjI4MUw0LjUxODYgOC41NDA0MkM0LjM3Nzc1IDguNjgxIDQuMTg2ODIgOC43NiAzLjk4Nzc0IDguNzZDMy43ODg2NyA4Ljc2IDMuNTk3NzMgOC42ODEgMy40NTY4OSA4LjU0MDQyTDAuMjAxNjIyIDUuMjg2MkMwLjA2ODkyNzcgNS4xNDM4MyAtMC4wMDMzMDkwNSA0Ljk1NTU1IDAuMDAwMTE2NDkzIDQuNzYwOThDMC4wMDM1NTIwNSA0LjU2NjQzIDAuMDgyMzg5NCA0LjM4MDgxIDAuMjIwMDMyIDQuMjQzMjFDMC4zNTc2NjUgNC4xMDU2MiAwLjU0MzM1NSA0LjAyNjgxIDAuNzM3OTcgNC4wMjMzOEMwLjkzMjU4NCA0LjAxOTk0IDEuMTIwOTMgNC4wOTIxNyAxLjI2MzM0IDQuMjI0ODJMMy45ODc3NCA2Ljk0ODM1TDEwLjcxODYgMC4yMTk2MjVDMTAuODU5NSAwLjA3ODk5MjMgMTEuMDUwNCAwIDExLjI0OTUgMEMxMS40NDg1IDAgMTEuNjM5NSAwLjA3ODk5MjMgMTEuNzgwMyAwLjIxOTYyNVoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo='); // octicon checkmark image
+
+    /* octicon checkmark image */
+    mask-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTEuNzgwMyAwLjIxOTYyNUMxMS45MjEgMC4zNjA0MjcgMTIgMC41NTEzMDUgMTIgMC43NTAzMTNDMTIgMC45NDkzMjEgMTEuOTIxIDEuMTQwMTkgMTEuNzgwMyAxLjI4MUw0LjUxODYgOC41NDA0MkM0LjM3Nzc1IDguNjgxIDQuMTg2ODIgOC43NiAzLjk4Nzc0IDguNzZDMy43ODg2NyA4Ljc2IDMuNTk3NzMgOC42ODEgMy40NTY4OSA4LjU0MDQyTDAuMjAxNjIyIDUuMjg2MkMwLjA2ODkyNzcgNS4xNDM4MyAtMC4wMDMzMDkwNSA0Ljk1NTU1IDAuMDAwMTE2NDkzIDQuNzYwOThDMC4wMDM1NTIwNSA0LjU2NjQzIDAuMDgyMzg5NCA0LjM4MDgxIDAuMjIwMDMyIDQuMjQzMjFDMC4zNTc2NjUgNC4xMDU2MiAwLjU0MzM1NSA0LjAyNjgxIDAuNzM3OTcgNC4wMjMzOEMwLjkzMjU4NCA0LjAxOTk0IDEuMTIwOTMgNC4wOTIxNyAxLjI2MzM0IDQuMjI0ODJMMy45ODc3NCA2Ljk0ODM1TDEwLjcxODYgMC4yMTk2MjVDMTAuODU5NSAwLjA3ODk5MjMgMTEuMDUwNCAwIDExLjI0OTUgMEMxMS40NDg1IDAgMTEuNjM5NSAwLjA3ODk5MjMgMTEuNzgwMyAwLjIxOTYyNVoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=');
     mask-size: 75%;
     mask-repeat: no-repeat;
     mask-position: center;
 
     @media screen and (prefers-reduced-motion: no-preference) {
-      animation: checkmarkOut 80ms cubic-bezier(0.65, 0, 0.35, 1) forwards; // slightly snappier animation out
+      animation: checkmarkOut 80ms cubic-bezier(0.65, 0, 0.35, 1) forwards; /* slightly snappier animation out */
     }
   }
 
-  // extend touch target
+  /* extend touch target */
   &::after {
-    @include minTouchTarget(var(--primer-control-medium-size, 32px), var(--primer-control-medium-size, 32px));
+    @mixin minTouchTarget var(--primer-control-medium-size, 32px) var(--primer-control-medium-size, 32px);
   }
 
   &[disabled] {
-    ~ .FormControl-checkbox-labelWrap,
-    ~ .FormControl-radio-labelWrap {
-      .FormControl-label {
+    & ~ .FormControl-checkbox-labelWrap,
+    & ~ .FormControl-radio-labelWrap {
+      & .FormControl-label {
         color: var(--color-primer-fg-disabled);
         cursor: not-allowed;
       }
@@ -572,7 +582,7 @@ input[type='checkbox'].FormControl-checkbox {
   &:checked {
     background: var(--color-accent-fg);
     border-color: var(--color-accent-fg);
-    transition: background-color, border-color 80ms cubic-bezier(0.32, 0, 0.67, 0) 0ms; // unchecked -> checked
+    transition: background-color, border-color 80ms cubic-bezier(0.32, 0, 0.67, 0) 0ms; /* unchecked -> checked */
 
     &::before {
       visibility: visible;
@@ -594,17 +604,15 @@ input[type='checkbox'].FormControl-checkbox {
       }
     }
 
-    // Windows High Contrast mode
-    // stylelint-disable primer/colors
+    /* Windows High Contrast mode */
     @media (forced-colors: active) {
-      background-color: CanvasText;
-      border-color: CanvasText;
+      background-color: canvastext;
+      border-color: canvastext;
     }
-    // stylelint-enable primer/colors
   }
 
   &:focus-visible {
-    @include focusOutline(2px);
+    @mixin focusOutline 2px;
   }
 
   &:indeterminate {
@@ -616,21 +624,21 @@ input[type='checkbox'].FormControl-checkbox {
 }
 
 input[type='radio'].FormControl-radio {
-  @include Field;
+  @mixin Field;
 
   position: relative;
   width: var(--base-size-16, 16px);
   height: var(--base-size-16, 16px);
   margin: 0;
-  margin-top: 0.125rem; // 2px to center align with label (20px line-height)
+  margin-top: 0.125rem; /* 2px to center align with label (20px line-height) */
   cursor: pointer;
   border-color: var(--color-neutral-emphasis);
   border-radius: var(--primer-borderRadius-full, 100vh);
-  transition: background-color, border-color 80ms cubic-bezier(0.33, 1, 0.68, 1); // checked -> unchecked - add 120ms delay to fully see animation-out
+  transition: background-color, border-color 80ms cubic-bezier(0.33, 1, 0.68, 1); /* checked -> unchecked - add 120ms delay to fully see animation-out */
   appearance: none;
 
   &::after {
-    @include minTouchTarget(var(--primer-control-medium-size, 32px), var(--primer-control-medium-size, 32px));
+    @mixin minTouchTarget var(--primer-control-medium-size, 32px) var(--primer-control-medium-size, 32px);
   }
 
   &:checked {
@@ -644,16 +652,14 @@ input[type='radio'].FormControl-radio {
   }
 
   &:focus-visible {
-    @include focusOutline(2px);
+    @mixin focusOutline 2px;
   }
 
-  // Windows High Contrast mode
-  // stylelint-disable primer/colors
+  /* Windows High Contrast mode */
   @media (forced-colors: active) {
-    background-color: CanvasText;
-    border-color: CanvasText;
+    background-color: canvastext;
+    border-color: canvastext;
   }
-  // stylelint-enable primer/colors
 }
 
 @keyframes checkmarkIn {
