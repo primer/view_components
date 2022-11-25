@@ -12,6 +12,7 @@ module Primer
           component = dep["component"]
           deprecations[component] = {
             autocorrect: dep["autocorrect"],
+            guide: dep["guide"],
             replacement: dep["replacement"]
           }
         end
@@ -38,6 +39,13 @@ module Primer
         return false if dep.nil?
 
         dep[:autocorrect]
+      end
+
+      def guide(component_name)
+        dep = deprecations[component_name]
+        return nil if dep.nil?
+
+        dep[:guide]
       end
 
       private
