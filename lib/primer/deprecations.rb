@@ -25,10 +25,6 @@ module Primer
         }
       end
 
-      def remove_deprecation(component)
-        remove_registration(component)
-      end
-
       def deprecated_components
         registered_deprecations.keys.sort
       end
@@ -60,10 +56,6 @@ module Primer
       end
 
       private
-
-      def remove_registration(component)
-        @registered_deprecations.delete(component)
-      end
 
       def registered_deprecations
         @registered_deprecations ||= {}

@@ -32,8 +32,6 @@ class DeprecationsTest < Minitest::Test
     refute Primer::Deprecations.correctable?(component)
     assert_equal Primer::Deprecations.replacement(component), options[:replacement]
     assert_equal Primer::Deprecations.guide(component), options[:guide]
-  ensure
-    Primer::Deprecations.remove_deprecation(component)
   end
 
   # ensure all components that has 'status: :deprecated' are listed in the component deprecations configuration file
