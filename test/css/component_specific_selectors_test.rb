@@ -14,7 +14,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
   include Primer::RenderPreview
 
   IGNORED_SELECTORS = {
-    :global => [/^\d/, ":", /\[.*\]/, /^to/, /^from/],
+    :global => [/^\d/, ":", /\+/, /\[.*\]/, /^to/, /^from/],
     Primer::Alpha::ActionList => [
       ".ActionListWrap--inset",
       ".ActionListItem.ActionListItem--hasSubItem > .ActionListContent",
@@ -80,10 +80,6 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Button--iconOnly.Button--large"
     ],
     Primer::Beta::ButtonGroup => [
-      ".BtnGroup + .BtnGroup",
-      ".BtnGroup+.BtnGroup",
-      ".BtnGroup + .btn",
-      ".BtnGroup+.btn",
       ".BtnGroup-item.btn.selected",
       ".BtnGroup-parent"
     ],
