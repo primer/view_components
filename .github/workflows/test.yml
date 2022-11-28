@@ -176,6 +176,7 @@ jobs:
         bundle exec rake test:system
   visual:
     name: Visual Regressions
+    runs-on: ubuntu-latest-8-cores
     if: ${{ github.event_name == 'pull_request' }}
     timeout-minutes: 20
     runs-on: ubuntu-latest
@@ -204,7 +205,7 @@ jobs:
     - name: Run Playwright tests
       id: playwright-run
       continue-on-error: true
-      run: npx playwright test
+      run: npx playwright test --fully-parallel --workers 4
     - id: auto-commit
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
