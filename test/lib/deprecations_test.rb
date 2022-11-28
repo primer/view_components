@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require "lib/test_helper"
+require_relative "../../lib/primer/view_components/statuses"
+
 Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 
 class DeprecationsTest < Minitest::Test
@@ -59,6 +61,14 @@ class DeprecationsTest < Minitest::Test
     end
   end
 
+  def test_deprecated_components_by_status_list
+    deprecated_by_status = Primer::ViewComponents::STATUSES.select { |_, value| value == "deprecated" }.keys.sort
+    deprecated_by_list = ::Primer::Deprecations.deprecated_components
+
+    unmatched = deprecated_by_status - deprecated_by_list
+    assert_empty(unmatched, components_not_in_deprecated_status_list_message(unmatched))
+  end
+
   private
 
   def missing_deprecation_message(component_class)
@@ -75,5 +85,13 @@ class DeprecationsTest < Minitest::Test
 
   def component_not_deprecated_message(component_class)
     "A deprecation entry was found in 'lib/deprecations/deprecations.yml' for '#{component_class.name}', but this component is not deprecated. Current status: #{component_class.status}"
+  end
+
+  def components_not_in_deprecated_status_list_message(list)
+    msg = []
+    msg << "The deprecated component list in 'static/statuses.json' does not match the list in 'lib/primer/deprecations.yml'."
+    msg << "Please make sure that components are deprecated by setting the 'status :deprecated' within the component file"
+    msg << "and update the 'lib/primer/deprercations.yml' with the appropriate configuration."
+    msg.join(" ")
   end
 end
