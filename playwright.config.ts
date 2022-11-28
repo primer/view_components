@@ -9,7 +9,7 @@ const config: PlaywrightTestConfig = {
   testDir: path.join(__dirname, 'test', 'playwright'),
   testMatch: '**/*.test.ts',
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 10 * 1000,
 
   // https://playwright.dev/docs/api/class-testconfig#test-config-output-dir
   outputDir: path.join(__dirname, '.playwright', 'results'),
