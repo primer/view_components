@@ -49,6 +49,14 @@ module Primer
       def with_bad_csrf_token
         render(ToggleSwitch.new(src: "/toggle_switch", csrf_token: "i_am_a_criminal"))
       end
+
+      def only_accept_on
+        render(ToggleSwitch.new(src: "/toggle_switch/only_accept_on", checked: false, csrf_token: "let_me_in"))
+      end
+
+      def only_accept_off
+        render(ToggleSwitch.new(src: "/toggle_switch/only_accept_off", checked: true, csrf_token: "let_me_in"))
+      end
     end
   end
 end
