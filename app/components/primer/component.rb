@@ -18,6 +18,10 @@ module Primer
 
     INVALID_ARIA_LABEL_TAGS = [:div, :span, :p].freeze
 
+    def self.deprecated?
+      status == :deprecated
+    end
+
     private
 
     def raise_on_invalid_options?
