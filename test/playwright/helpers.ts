@@ -15,7 +15,10 @@ export function componentPreviews(): ComponentPreview[] {
 
   for (const preview of previews) {
     // Remove prefixes and suffixes to get the component name and preview URL
-    const previewURL = preview.replace('previews/', '').replace('_preview.rb', '').replace('_component', '')
+    const previewURL = `${preview
+      .replace('previews/', '')
+      .replace('_preview.rb', '')
+      .replace('_component', '')}_preview`
 
     // If the preview is in the ignored list, skip it
     if (ignoredPreviews.includes(previewURL)) {
