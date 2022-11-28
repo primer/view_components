@@ -12,19 +12,8 @@ Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 # that are marked as not needing a test are invalid configurations. These are 
 # prevented through tests in 'deprecations_test.rb'
 #
-# This table assumes a component is deprecated
-# |-------------|-------------|-------|-------------|
-# | replacement | autocorrect | guide | needs test? |
-# |-------------|-------------|-------|-------------|
-# | true        | true        | true  | yes         |
-# | true        | true        | false | yes         |
-# | true        | false       | true  | yes         |
-# | true        | false       | false | no          |
-# | false       | true        | true  | no          |
-# | false       | true        | false | no          |
-# | false       | false       | true  | yes         |
-# | false       | false       | false | no          |
-# |-------------|-------------|-------|-------------|
+# For information on what configurations are valid / invalid, please see the
+# documentation at the top of 'lib/primer/deprecations.yml'
 
 class DeprecationMessagesTest < Minitest::Test
   def setup

@@ -36,13 +36,21 @@ class DeprecationsTest < Minitest::Test
     assert_equal Primer::Deprecations.guide(component), options[:guide]
   end
 
-  # ensure all components that has 'status: :deprecated' are listed in the component deprecations configuration file
+  def test_deprecated_components_by_status_list
+    deprecated_by_status = Primer::ViewComponents::STATUSES.select { |_, value| value == "deprecated" }.keys.sort
+    deprecated_by_list = ::Primer::Deprecations.deprecated_components
+
+    unmatched = deprecated_by_status - deprecated_by_list
+    assert_empty(unmatched, components_not_in_deprecated_status_list_message(unmatched))
+  end
+
+  # ensure all components that have 'status: :deprecated' are listed in the component deprecations configuration file
   Primer::Component.descendants.each do |component_class|
     class_test_name = component_class.name.downcase.gsub("::", "_")
     define_method("test_ensure_#{class_test_name}_is_properly_deprecated") do
-      if component_class.deprecated? # rubocop:disable Style/IfUnlessModifier
-        assert @deprecated_components.include?(component_class.name), missing_deprecation_message(component_class)
-      end
+      return unless component_class.deprecated?
+
+      assert @deprecated_components.include?(component_class.name), missing_deprecation_message(component_class)
     end
   end
 
@@ -61,12 +69,15 @@ class DeprecationsTest < Minitest::Test
     end
   end
 
-  def test_deprecated_components_by_status_list
-    deprecated_by_status = Primer::ViewComponents::STATUSES.select { |_, value| value == "deprecated" }.keys.sort
-    deprecated_by_list = ::Primer::Deprecations.deprecated_components
+  # ensure all components listed in 'deprecations.yml' have a valid configuration
+  Primer::Deprecations.deprecated_components.each do |component_name|
+    class_test_name = component_name.downcase.gsub("::", "_")
+    define_method("test_ensure_#{class_test_name}_has_valid_deprecation_configuration") do
+      component_class = component_name.constantize
+      return unless component_class.deprecated?
 
-    unmatched = deprecated_by_status - deprecated_by_list
-    assert_empty(unmatched, components_not_in_deprecated_status_list_message(unmatched))
+      assert deprecation_configuration_valid?(component_name), invalid_configuration_message(component_name)
+    end
   end
 
   private
@@ -92,6 +103,44 @@ class DeprecationsTest < Minitest::Test
     msg << "The deprecated component list in 'static/statuses.json' does not match the list in 'lib/primer/deprecations.yml'."
     msg << "Please make sure that components are deprecated by setting the 'status :deprecated' within the component file"
     msg << "and update the 'lib/primer/deprercations.yml' with the appropriate configuration."
+    msg.join(" ")
+  end
+
+  def deprecation_configuration_valid?(component_name)
+    # For information on what configurations are valid / invalid, please see the
+    # documentation at the top of 'lib/primer/deprecations.yml'
+
+    has_replacement = Primer::Deprecations.replacement?(component_name)
+    is_correctable = Primer::Deprecations.correctable?(component_name)
+    has_guide = Primer::Deprecations.guide?(component_name)
+
+    # assume invalid until proven otherwise
+    valid = false
+
+    if has_replacement && is_correctable && has_guide
+      valid = true
+    end
+
+    if has_replacement && is_correctable && !has_guide
+      valid = true
+    end
+
+    if has_replacement && !is_correctable && has_guide
+      valid = true
+    end
+
+    if !has_replacement && !is_correctable && has_guide
+      valid = true
+    end
+
+    valid
+  end
+
+  def invalid_configuration_message(component_name)
+    msg = []
+    msg << "'#{component_name}' has an invalid deprecation configuration."
+    msg << "Please check the documentation in 'lib/primer/deprecations.yml' for a list of what is valid / invalid,"
+    msg << "and correct the configuration in the same file."
     msg.join(" ")
   end
 end
