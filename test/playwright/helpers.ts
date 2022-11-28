@@ -1,7 +1,7 @@
 import {glob} from 'glob'
 
 // Previews we're ignoring because they're not ready to be tested yet
-const ignoredPreviews = ['Primer::Forms::Forms']
+const ignoredPreviews = ['Primer::Forms::FormsPreview']
 
 interface ComponentPreview {
   componentName: string
