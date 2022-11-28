@@ -1,0 +1,84 @@
+# Primer ViewComponents Deprecation Configuration
+# 
+# Schema
+# ------
+# - component: [string]
+#   autocorrect: [boolean] 
+#   replacement: [string] 
+#
+# Field Descriptions
+# ------------------
+# component:
+#   - Required
+#   - Type: string
+#   - The full ruby class of the deprecated component
+#
+# autocorrect:
+#   - Optional
+#   - Type: boolean
+#   - Default: false
+#   - Whether or not this deprecations can be autocorrected with `erblint -a`
+#
+# replacement:
+#   - Optional
+#   - Type: string
+#   - Default: nil
+#   - The full ruby class of the new component, if any, that replaces the now deprecated component
+#
+# Examples
+# --------
+# Please note that these examples are somewhat contrived, even if they match up to actual PVC components. They
+# should be read as documentation only, and are not expected to be live. See the live configuration below the
+# examples for the real list of deprecations.
+#
+# 1. An autocorrectable deprecation
+#
+#   component: "Primer::LabelComponent"
+#     autocorrect: true
+#     replacement: "Primer::Beta::Label
+#
+# 2. A non-autocorrectable deprecation (no direct replacement component)
+#
+#   component: "Primer::ButtonComponent"
+#     autocorrect: false
+
+deprecations:
+  - component: "Primer::LabelComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Label"
+  - component: "Primer::LinkComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Link"
+  - component: "Primer::Alpha::AutoComplete"
+    autocorrect: true
+    replacement: "Primer::Beta::AutoComplete"
+  - component: "Primer::Alpha::AutoComplete::Item"
+    autocorrect: true
+    replacement: "Primer::Beta::AutoComplete::Item"
+  - component: "Primer::BlankslateComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Blankslate"
+  - component: "Primer::BoxComponent"
+    autocorrect: true
+    replacement: "Primer::Box"
+  - component: "Primer::DropdownMenuComponent"
+    autocorrect: false
+    replacement: "Primer::Beta::Dropdown"
+  - component: "Primer::Dropdown"
+    autocorrect: true
+    replacement: "Primer::Alpha::Dropdown"
+  - component: "Primer::Dropdown::Menu"
+    autocorrect: true
+    replacement: "Primer::Alpha::Dropdown::Menu"
+  - component: "Primer::Dropdown::Menu::Item"
+    autocorrect: true
+    replacement: "Primer::Alpha::Dropdown::Menu::Item"
+  - component: "Primer::IconButton"
+    autocorrect: true
+    replacement: "Primer::Beta::IconButton"
+  - component: "Primer::Tooltip"
+    autocorrect: true
+    replacement: "Primer::Alpha::Tooltip"
+  - component: "Primer::PopoverComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Popover"

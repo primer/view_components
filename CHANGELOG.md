@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## 0.0.112
+
+### Patch Changes
+
+- [#1624](https://github.com/primer/view_components/pull/1624) [`61c8a7d6`](https://github.com/primer/view_components/commit/61c8a7d606f00eaf4e1b4c16f10306282ac034e0) Thanks [@jonrohan](https://github.com/jonrohan)! - Deleting deprecated Primer::Image component
+
+* [#1620](https://github.com/primer/view_components/pull/1620) [`4898307e`](https://github.com/primer/view_components/commit/4898307eee7430555ef1e78fdfd1d3204c66823b) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - adding css source for Marketing Button and Link, from Primer CSS
+
+- [#1626](https://github.com/primer/view_components/pull/1626) [`be3d92aa`](https://github.com/primer/view_components/commit/be3d92aaf1d6f656cc640a09168075279facfca3) Thanks [@simurai](https://github.com/simurai)! - Move `navigation` styles to PVC
+
+* [#1617](https://github.com/primer/view_components/pull/1617) [`9322db97`](https://github.com/primer/view_components/commit/9322db976c7c29374faf7be3d4b4e1d0a12d42cf) Thanks [@simurai](https://github.com/simurai)! - Update `dropdown` hover text color
+
+- [#1632](https://github.com/primer/view_components/pull/1632) [`7f1181be`](https://github.com/primer/view_components/commit/7f1181be49960337254db834e9b2b9a5fdb7b0b8) Thanks [@camertron](https://github.com/camertron)! - Improve performance of the deny\_\* methods
+
+* [#1625](https://github.com/primer/view_components/pull/1625) [`3af9bf5e`](https://github.com/primer/view_components/commit/3af9bf5e778bb1fe475ed7efda9fc1a5ed36d695) Thanks [@jonrohan](https://github.com/jonrohan)! - Deprecate components and moving to new namespace:
+
+  - Primer::Dropdown moving to Primer::Alpha::Dropdown
+  - Primer::Dropdown::Menu moving to Primer::Alpha::Dropdown::Menu
+  - Primer::Dropdown::Menu::Item moving to Primer::Alpha::Dropdown::Menu::Item
+
+- [#1618](https://github.com/primer/view_components/pull/1618) [`72f8c3a9`](https://github.com/primer/view_components/commit/72f8c3a989e23135b56e347a0be8e2be4dbb253e) Thanks [@simurai](https://github.com/simurai)! - Move`Box` styles to PVC
+
+* [#1629](https://github.com/primer/view_components/pull/1629) [`a7527531`](https://github.com/primer/view_components/commit/a7527531d01d0af4a08d002bb3024bca1828d40a) Thanks [@jonrohan](https://github.com/jonrohan)! - Deprecate Primer::PopoverComponent moving to Primer::Beta::Popover
+
+- [#1634](https://github.com/primer/view_components/pull/1634) [`cdc13a18`](https://github.com/primer/view_components/commit/cdc13a18d406e9b0b2dd3bb4ba7b058c72052b84) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Adding a custom erblint schema to allow `severity` in linter configuration
+
+* [#1609](https://github.com/primer/view_components/pull/1609) [`c4408661`](https://github.com/primer/view_components/commit/c44086611439e93d7214068dd332f37308b7c24f) Thanks [@simurai](https://github.com/simurai)! - Move `autocomplete` styles to PVC
+
+- [#1623](https://github.com/primer/view_components/pull/1623) [`7643e514`](https://github.com/primer/view_components/commit/7643e51449abe73a71453c1d2f46a69e8661a963) Thanks [@jonrohan](https://github.com/jonrohan)! - Deleting deprecated Primer::ProgressBarComponent in favor of Primer::Beta::ProgressBar
+
 ## 0.0.111
 
 ### Patch Changes
