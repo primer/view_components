@@ -7,15 +7,8 @@ module ERBLint
     module Helpers
       # Helpers to share between DeprecatedComponents ERB lint and Rubocop cop
       module DeprecatedComponentsHelpers
-        def message(component)
-          message = "#{component} has been deprecated and should not be used."
-
-          if Primer::Deprecations.correctable?(component)
-            replacement = Primer::Deprecations.replacement(component)
-            message += " Try #{replacement} instead."
-          end
-
-          message
+        def message(component_name)
+          Primer::Deprecations.deprecation_message(component_name)
         end
 
         def statuses_json
@@ -27,7 +20,7 @@ module ERBLint
         end
 
         def deprecated_components
-          @deprecated_components ||= statuses_json.select { |_, value| value == "deprecated" }.keys
+          Primer::Deprecations.deprecated_components
         end
       end
     end
