@@ -81,18 +81,25 @@
 #
 # This table assumes a component is deprecated by being listed in this file.
 #
-# |-------------|-------------|-------|--------|
-# | replacement | autocorrect | guide | valid? |
-# |-------------|-------------|-------|--------|
-# | true        | true        | true  | YES    |
-# | true        | true        | false | YES    |
-# | true        | false       | true  | YES    |
-# | true        | false       | false | NO     |
-# | false       | true        | true  | NO     |
-# | false       | true        | false | NO     |
-# | false       | false       | true  | YES    |
-# | false       | false       | false | NO     |
-# |-------------|-------------|-------|--------|
+# |-----------------|-----------------|-----------|--------|
+# | HAS REPLACEMENT | CAN AUTOCORRECT | HAS GUIDE | VALID? |
+# |-----------------|-----------------|-----------|--------|
+# | true            | true            | true      | YES    |
+# |-----------------|-----------------|-----------|--------|
+# | true            | true            | false     | YES    |
+# |-----------------|-----------------|-----------|--------|
+# | true            | false           | true      | YES    |
+# |-----------------|-----------------|-----------|--------|
+# | true            | false           | false     | NO     |
+# |-----------------|-----------------|-----------|--------|
+# | false           | true            | true      | NO     |
+# |-----------------|-----------------|-----------|--------|
+# | false           | true            | false     | NO     |
+# |-----------------|-----------------|-----------|--------|
+# | false           | false           | true      | YES    |
+# |-----------------|-----------------|-----------|--------|
+# | false           | false           | false     | NO     |
+# |-----------------|-----------------|-----------|--------|
 
 deprecations:
   - component: "Primer::LabelComponent"
