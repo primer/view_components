@@ -10,10 +10,10 @@ module Primer
         data = YAML.load_file(file_path)
         data["deprecations"].each do |dep|
           register_deprecation(dep["component"], {
-            autocorrect: dep["autocorrect"],
-            guide: dep["guide"],
-            replacement: dep["replacement"]
-          })
+                                 autocorrect: dep["autocorrect"],
+                                 guide: dep["guide"],
+                                 replacement: dep["replacement"]
+                               })
         end
       end
 
@@ -78,21 +78,15 @@ module Primer
           if correctable?(component_name) # is autocorrectable
             msg << "Please update your code to use '#{replacement(component_name)}'"
             msg << "or use rubocopy's auto-correct option to do it for you."
-            if guide?(component_name) # has a guide
-              msg << "See #{guide(component_name)} for more information."
-            end
-          else # not autocorrectable
-            if guide?(component_name) # has a guide
-              msg << "See #{guide(component_name)} for information on replacing this component in your code."
-            end
+            msg << "See #{guide(component_name)} for more information." if guide?(component_name) # has a guide
+          elsif guide?(component_name) # not autocorrectable
+            msg << "See #{guide(component_name)} for information on replacing this component in your code." # has a guide
           end
-        else # no replacement
-          if !correctable?(component_name) # not autocorrectable
-            if guide?(component_name) # has a guide
-              msg << "Unfortunately, there is no direct replacement."
-              msg << "See #{guide(component_name)} for available options to update your code."
+        elsif !correctable?(component_name) # no replacement
+          if guide?(component_name) # has a guide
+            msg << "Unfortunately, there is no direct replacement."
+            msg << "See #{guide(component_name)} for available options to update your code."
             end
-          end
         end
 
         msg.join(" ")

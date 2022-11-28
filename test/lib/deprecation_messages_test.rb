@@ -9,7 +9,7 @@ Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 #
 # The first scenario is to test a component that is not deprecated. Beyond that,
 # here is a table of possible configurations that need to be tested. Scenarios
-# that are marked as not needing a test are invalid configurations. These are 
+# that are marked as not needing a test are invalid configurations. These are
 # prevented through tests in 'deprecations_test.rb'
 #
 # For information on what configurations are valid / invalid, please see the
@@ -28,36 +28,36 @@ class DeprecationMessagesTest < Minitest::Test
 
   def test_replacement_correctable_guide
     msg = deprecation_message({
-      replacement: @replacement,
-      autocorrect: true,
-      guide: @guide
-    })
+                                replacement: @replacement,
+                                autocorrect: true,
+                                guide: @guide
+                              })
 
     assert_equal "'#{@component}' has been deprecated. Please update your code to use '#{@replacement}' or use rubocopy's auto-correct option to do it for you. See #{@guide} for more information.", msg
   end
 
   def test_replacement_correctable_no_guide
     msg = deprecation_message({
-      replacement: @replacement,
-      autocorrect: true
-    })
+                                replacement: @replacement,
+                                autocorrect: true
+                              })
 
     assert_equal "'#{@component}' has been deprecated. Please update your code to use '#{@replacement}' or use rubocopy's auto-correct option to do it for you.", msg
   end
 
   def test_replacement_not_correctable_guide
     msg = deprecation_message({
-      replacement: @replacement,
-      guide: @guide
-    })
+                                replacement: @replacement,
+                                guide: @guide
+                              })
 
     assert_equal "'#{@component}' has been deprecated. See #{@guide} for information on replacing this component in your code.", msg
   end
 
   def test_no_replacement_not_correctable_guide
     msg = deprecation_message({
-      guide: @guide
-    })
+                                guide: @guide
+                              })
 
     assert_equal "'#{@component}' has been deprecated. Unfortunately, there is no direct replacement. See #{@guide} for available options to update your code.", msg
   end
