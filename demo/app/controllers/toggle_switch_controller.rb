@@ -9,10 +9,11 @@ class ToggleSwitchController < ApplicationController
 
   skip_before_action :verify_authenticity_token
 
-  before_action :reject_ajax_request
+  before_action :reject_non_ajax_request
   before_action :verify_artificial_authenticity_token
 
   def create
+    # lol this is so not threadsafe
     self.class.last_request = request
 
     sleep 1 unless Rails.env.test?
@@ -20,29 +21,23 @@ class ToggleSwitchController < ApplicationController
     head :accepted
   end
 
-  def only_accept_on
-    return head(:accepted) if form_params[:value] == "1"
-    head :bad_request
-  end
-
-  def only_accept_off
-    return head(:accepted) if form_params[:value] == "0"
-    head :bad_request
-  end
-
   private
 
-  def reject_ajax_request
-    # this mimics dotcom behavior
-    if request.headers["HTTP_REQUESTED_WITH"] != "XMLHttpRequest"
-      head :unprocessable_entity
-    end
+  # this mimics dotcom behavior
+  def reject_non_ajax_request
+    return if request.headers["HTTP_REQUESTED_WITH"] == "XMLHttpRequest"
+
+    head :unprocessable_entity
   end
 
   def verify_artificial_authenticity_token
-    if form_params[:authenticity_token] && form_params[:authenticity_token] != "let_me_in"
-      head :unauthorized
-    end
+    # don't check token if not provided
+    return unless form_params[:authenticity_token]
+
+    # if provided, check token
+    return if form_params[:authenticity_token] == "let_me_in"
+
+    head :unauthorized
   end
 
   def form_params

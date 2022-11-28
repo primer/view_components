@@ -11,11 +11,7 @@ Rails.application.routes.draw do
 
   scope path: Rails.env.production? ? "/view-components" : "/" do
     get "/auto_complete", to: "auto_complete_test#index"
-
-    post "/toggle_switch", to: "toggle_switch#create"
-    post "/toggle_switch/only_accept_on", to: "toggle_switch#only_accept_on"
-    post "/toggle_switch/only_accept_off", to: "toggle_switch#only_accept_off"
-
+    resources :toggle_switch, only: [:create]
     resources :nav_list_items, only: [:index]
 
     mount Lookbook::Engine, at: "/lookbook" if defined?(Lookbook)

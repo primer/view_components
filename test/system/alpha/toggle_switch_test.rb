@@ -32,21 +32,24 @@ module Alpha
     end
 
     def test_submits_correct_value_when_off
-      visit_preview(:only_accept_on)
+      visit_preview(:default)
 
       refute_selector(".ToggleSwitch--checked")
       find("toggle-switch").click
-      wait_for_spinner
       assert_selector(".ToggleSwitch--checked")
+
+      assert_equal "1", ToggleSwitchController.last_request.params[:value]
     end
 
     def test_submits_correct_value_when_on
-      visit_preview(:only_accept_off)
+      visit_preview(:checked)
 
       assert_selector(".ToggleSwitch--checked")
       find("toggle-switch").click
       wait_for_spinner
       refute_selector(".ToggleSwitch--checked")
+
+      assert_equal "0", ToggleSwitchController.last_request.params[:value]
     end
 
     def test_csrf_token
