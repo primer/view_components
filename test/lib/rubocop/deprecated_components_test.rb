@@ -30,6 +30,8 @@ class RubocopDeprecatedComponentsTest < CopTestCase
     RUBY
 
     assert_equal 2, cop.offenses.count
+    assert_equal "Primer::Tooltip has been deprecated and should not be used. Try Primer::Alpha::Tooltip instead.", cop.offenses[0].message
+    assert_equal "Primer::BlankslateComponent has been deprecated and should not be used. Try Primer::Beta::Blankslate instead.", cop.offenses[1].message
   end
 
   def test_raises_offense_if_calling_legacy_component_with_args

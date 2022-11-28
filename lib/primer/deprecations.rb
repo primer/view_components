@@ -34,6 +34,10 @@ module Primer
         registered_deprecations.key?(component_name)
       end
 
+      def replacement?(component_name)
+        !replacement(component_name).nil?
+      end
+
       def replacement(component_name)
         dep = registered_deprecations[component_name]
         return nil if dep.nil?
@@ -48,11 +52,37 @@ module Primer
         dep[:autocorrect]
       end
 
+      def guide?(component_name)
+        !guide(component_name).nil?
+      end
+
       def guide(component_name)
         dep = registered_deprecations[component_name]
         return nil if dep.nil?
 
         dep[:guide]
+      end
+
+      def deprecation_message(component_name)
+        return nil unless deprecated?(component_name)
+
+        msg = ["#{component_name} has been deprecated."]
+
+        if replacement?(component_name)
+          if correctable?(component_name)
+            msg << "Please update your code to use '#{replacement(component_name)}' or use rubocopy's auto-correct option to do it for you."
+          end
+
+          if guide?(component_name)
+            msg << "See #{guide(component_name)} for more information on updating this component."
+          end
+        else
+          if guide?(component_name)
+            msg << "See #{guide(component_name)} for information on replacing this component in your code."
+          end
+        end
+
+        msg.join(" ")
       end
 
       private
