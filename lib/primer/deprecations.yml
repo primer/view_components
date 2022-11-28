@@ -116,6 +116,7 @@ deprecations:
   - component: "Primer::DropdownMenuComponent"
     autocorrect: false
     replacement: "Primer::Beta::Dropdown"
+    guide: "https://primer.style/view-components/migration"
   - component: "Primer::Dropdown"
     autocorrect: true
     replacement: "Primer::Alpha::Dropdown"
