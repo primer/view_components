@@ -66,19 +66,31 @@ module Primer
       def deprecation_message(component_name)
         return nil unless deprecated?(component_name)
 
-        msg = ["#{component_name} has been deprecated."]
+        msg = ["'#{component_name}' has been deprecated."]
 
-        if replacement?(component_name)
-          if correctable?(component_name)
-            msg << "Please update your code to use '#{replacement(component_name)}' or use rubocopy's auto-correct option to do it for you."
-          end
+        # this nested structure is complex, because it has to
+        # match all of the valid scenarios for a component being
+        # replaceable, auto-correctable, and having a guide. for
+        # more information on what is and is not valid, see the
+        # tests here: test/lib/deprecation_messages_test.rb
 
-          if guide?(component_name)
-            msg << "See #{guide(component_name)} for more information on updating this component."
+        if replacement?(component_name) # has replacement
+          if correctable?(component_name) # is autocorrectable
+            msg << "Please update your code to use '#{replacement(component_name)}'"
+            msg << "or use rubocopy's auto-correct option to do it for you."
+            if guide?(component_name) # has a guide
+              msg << "See #{guide(component_name)} for more information."
+            end
+          else # not autocorrectable
+            if guide?(component_name) # has a guide
+              msg << "See #{guide(component_name)} for information on replacing this component in your code."
+            end
           end
-        else
-          if guide?(component_name)
-            msg << "See #{guide(component_name)} for information on replacing this component in your code."
+        else # no replacement
+          if !correctable?(component_name) # not autocorrectable
+            if guide?(component_name) # has a guide
+              msg << "Unfortunately, there is no direct replacement. See #{guide(component_name)} for available options to update your code."
+            end
           end
         end
 
