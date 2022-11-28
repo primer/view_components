@@ -204,7 +204,7 @@ jobs:
     - name: Run Playwright tests
       id: playwright-run
       continue-on-error: true
-      run: npx playwright test --fully-parallel --workers 4
+      run: npx playwright test --workers 6
     - id: auto-commit
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
