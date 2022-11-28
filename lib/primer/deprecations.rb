@@ -89,7 +89,8 @@ module Primer
         else # no replacement
           if !correctable?(component_name) # not autocorrectable
             if guide?(component_name) # has a guide
-              msg << "Unfortunately, there is no direct replacement. See #{guide(component_name)} for available options to update your code."
+              msg << "Unfortunately, there is no direct replacement."
+              msg << "See #{guide(component_name)} for available options to update your code."
             end
           end
         end
