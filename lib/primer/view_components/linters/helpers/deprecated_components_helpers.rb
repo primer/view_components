@@ -11,14 +11,6 @@ module ERBLint
           Primer::Deprecations.deprecation_message(component_name)
         end
 
-        def statuses_json
-          JSON.parse(
-            File.read(
-              File.join(File.dirname(__FILE__), "../../../../../static/statuses.json")
-            )
-          ).freeze
-        end
-
         def deprecated_components
           Primer::Deprecations.deprecated_components
         end
