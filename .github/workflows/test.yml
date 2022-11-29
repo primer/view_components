@@ -178,7 +178,7 @@ jobs:
     name: Visual Regressions
     if: ${{ github.event_name == 'pull_request' }}
     timeout-minutes: 20
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-8-cores
     steps:
     - uses: actions/checkout@v3
     - uses: ruby/setup-ruby@v1
@@ -204,7 +204,7 @@ jobs:
     - name: Run Playwright tests
       id: playwright-run
       continue-on-error: true
-      run: npx playwright test
+      run: npx playwright test --workers 6
     - id: auto-commit
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
