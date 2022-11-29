@@ -20,7 +20,7 @@ GIT
 PATH
   remote: ..
   specs:
-    primer_view_components (0.0.111)
+    primer_view_components (0.0.112)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 17.0.0)
@@ -225,7 +225,7 @@ GEM
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    lookbook (1.3.4)
+    lookbook (1.4.1)
       actioncable
       activemodel
       css_parser
@@ -393,7 +393,7 @@ DEPENDENCIES
   kuby-azure (>= 0.3.3, < 1.0)
   kuby-core!
   kuby-kind (~> 0.1)
-  lookbook (~> 1.3.4)
+  lookbook (~> 1.4.1)
   primer_view_components!
   pry-byebug
   puma (~> 6.0.0)

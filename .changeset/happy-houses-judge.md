@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Update `dropdown` hover text color
+Move `button` styles to PVC

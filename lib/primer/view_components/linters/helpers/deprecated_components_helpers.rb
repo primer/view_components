@@ -11,8 +11,8 @@ module ERBLint
           message = "#{component} has been deprecated and should not be used."
 
           if Primer::Deprecations.correctable?(component)
-            suggested_component = Primer::Deprecations.suggested_component(component)
-            message += " Try #{suggested_component} instead."
+            replacement = Primer::Deprecations.replacement(component)
+            message += " Try #{replacement} instead."
           end
 
           message
