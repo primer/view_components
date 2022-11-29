@@ -24,7 +24,7 @@
   - title: AvatarStack
     url: "/components/beta/avatarstack"
   - title: Banner
-    url: "/components/beta/banner"
+    url: "/components/alpha/banner"
   - title: Blankslate
     url: "/components/beta/blankslate"
   - title: BorderBox
@@ -50,7 +50,7 @@
   - title: Dialog
     url: "/components/alpha/dialog"
   - title: Dropdown
-    url: "/components/dropdown"
+    url: "/components/alpha/dropdown"
   - title: DropdownMenu
     url: "/components/dropdownmenu"
   - title: Flash
@@ -84,7 +84,7 @@
   - title: OcticonSymbols
     url: "/components/octiconsymbols"
   - title: Popover
-    url: "/components/popover"
+    url: "/components/beta/popover"
   - title: ProgressBar
     url: "/components/beta/progressbar"
   - title: SegmentedControl

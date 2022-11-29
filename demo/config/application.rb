@@ -29,6 +29,7 @@ module Demo
     config.view_component.preview_paths << Rails.root.join("../previews")
 
     config.autoload_paths << Rails.root.join("../test/forms")
+    config.autoload_paths << Rails.root.join("../test/test_helpers/components")
 
     config.action_dispatch.default_headers.clear
 

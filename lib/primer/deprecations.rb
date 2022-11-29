@@ -1,33 +1,53 @@
 # frozen_string_literal: true
 
+require "yaml"
+
 module Primer
   # :nodoc:
-  module Deprecations
-    # If there is no alternative to suggest, set the value to nil
-    DEPRECATED_COMPONENTS = {
-      "Primer::LabelComponent" => "Primer::Beta::Label",
-      "Primer::LinkComponent" => "Primer::Beta::Link",
-      "Primer::Image" => "Primer::Alpha::Image",
-      "Primer::Alpha::AutoComplete" => "Primer::Beta::AutoComplete",
-      "Primer::Alpha::AutoComplete::Item" => "Primer::Beta::AutoComplete::Item",
-      "Primer::BlankslateComponent" => "Primer::Beta::Blankslate",
-      "Primer::BoxComponent" => "Primer::Box",
-      "Primer::DropdownMenuComponent" => nil,
-      "Primer::IconButton" => "Primer::Beta::IconButton",
-      "Primer::Tooltip" => "Primer::Alpha::Tooltip",
-      "Primer::ProgressBarComponent" => "Primer::Beta::ProgressBar"
-    }.freeze
+  class Deprecations
+    class << self
+      def register(file_path)
+        data = YAML.load_file(file_path)
+        data["deprecations"].each do |dep|
+          component = dep["component"]
+          deprecations[component] = {
+            autocorrect: dep["autocorrect"],
+            replacement: dep["replacement"]
+          }
+        end
+      end
 
-    def self.deprecated?(name)
-      DEPRECATED_COMPONENTS.key?(name)
+      def deprecated_components
+        deprecations.keys.sort
+      end
+
+      def deprecated?(component_name)
+        # if the component is registered, it is deprecated
+        deprecations.key?(component_name)
+      end
+
+      def replacement(component_name)
+        dep = deprecations[component_name]
+        return nil if dep.nil?
+
+        dep[:replacement]
+      end
+
+      def correctable?(component_name)
+        dep = deprecations[component_name]
+        return false if dep.nil?
+
+        dep[:autocorrect]
+      end
+
+      private
+
+      def deprecations
+        @deprecations ||= {}
+      end
     end
 
-    def self.suggested_component(name)
-      DEPRECATED_COMPONENTS[name]
-    end
-
-    def self.correctable?(name)
-      !suggested_component(name).nil?
-    end
+    # auto-load PVC's deprecations
+    register(File.expand_path("deprecations.yml", __dir__))
   end
 end

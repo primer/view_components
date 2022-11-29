@@ -14,7 +14,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
   include Primer::RenderPreview
 
   IGNORED_SELECTORS = {
-    :global => [/^\d/, ":", /\[.*\]/, /^to/, /^from/],
+    :global => [/^\d/, ":", /\+/, /\[.*\]/, /^to/, /^from/],
     Primer::Alpha::ActionList => [
       ".ActionListWrap--inset",
       ".ActionListItem.ActionListItem--hasSubItem > .ActionListContent",
@@ -28,11 +28,45 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".ActionListItem--subItem>.ActionListContent>.ActionListItem-label",
       ".ActionList-sectionDivider--filled"
     ],
+    Primer::Alpha::AutoComplete => [
+      ".autocomplete-item"
+    ],
     Primer::Alpha::Banner => [
       ".Banner .Banner-close"
     ],
+    Primer::Alpha::TabNav => [
+      ".tabnav-tab.selected",
+      ".tabnav-extra",
+      ".tabnav-btn"
+    ],
+    Primer::Alpha::ButtonMarketing => [
+      ".btn-mktg.disabled",
+      ".btn-small-mktg"
+    ],
     Primer::Alpha::SegmentedControl => [
       ".Button-withTooltip"
+    ],
+    Primer::Alpha::UnderlineNav => [
+      ".UnderlineNav .Counter--primary",
+      ".UnderlineNav-item.selected",
+      ".UnderlineNav--right",
+      ".UnderlineNav--full",
+      ".UnderlineNav-container"
+    ],
+    Primer::Beta::BorderBox => [
+      ".Box-btn-octicon",
+      ".Box--spacious .Box-title",
+      ".Box-row--unread",
+      ".Box-row.unread",
+      ".Box-row.navigation-focus",
+      ".Box-row--focus-gray",
+      ".Box-row--focus-blue",
+      ".Box-row-link",
+      ".Box-row--drag-button",
+      ".Box--scrollable",
+      ".Box--blue",
+      ".Box--danger",
+      ".Box-header--blue"
     ],
     Primer::Beta::Button => [
       "summary.Button",
@@ -45,6 +79,25 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Button--iconOnly.Button--small",
       ".Button--iconOnly.Button--large"
     ],
+    Primer::Beta::ButtonGroup => [
+      ".BtnGroup-item.btn.selected",
+      ".BtnGroup-parent"
+    ],
+    Primer::Beta::Avatar => [
+      ".avatar-link",
+      ".avatar-group-item",
+      ".avatar-1",
+      ".avatar-2",
+      ".avatar-3",
+      ".avatar-4",
+      ".avatar-5",
+      ".avatar-6",
+      ".avatar-7",
+      ".avatar-8"
+    ],
+    Primer::Beta::AvatarStack => [
+      ".AvatarStack-body .avatar img"
+    ],
     Primer::Beta::Counter => [
       "Counter .octicon"
     ],
@@ -56,6 +109,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Label--open",
       ".Label--closed"
     ],
+    Primer::Beta::Link => [".Link"],
     Primer::Beta::Blankslate => [
       ".blankslate code",
       ".blankslate-large img",
@@ -69,12 +123,16 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".flash-banner",
       ".warning"
     ],
-    Primer::Dropdown => [
+    Primer::Alpha::Dropdown => [
       ".dropdown-caret",
       ".dropdown-menu-no-overflow",
       ".dropdown-menu-no-overflow .dropdown-item",
       ".dropdown-item.btn-link",
       ".dropdown-signout"
+    ],
+    Primer::Beta::Popover => [
+      ".Popover-message > .btn-octicon",
+      ".Popover-message>.btn-octicon"
     ]
   }.freeze
 
@@ -86,7 +144,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       preview_class = get_preview_class(component_class)
       next unless preview_class
 
-      selectors = get_component_selectors(component_class)
+      selectors = get_component_selectors(component_class, IGNORED_SELECTORS)
       previews = preview_class.instance_methods(false)
 
       matched_selectors = []
@@ -106,18 +164,6 @@ class ComponentSpecificSelectorsTest < Minitest::Test
 
   private
 
-  def get_preview_class(component_class)
-    name = component_class.name.gsub("Component", "")
-    prevew_name = "#{name}Preview"
-    Object.const_defined?(prevew_name) ? prevew_name.constantize : nil
-  end
-
-  def get_component_selectors(component_class)
-    css_file = Object.const_source_location(component_class.to_s)[0].gsub(".rb", ".css.json")
-    css_data = File.exist?(css_file) ? JSON.parse(File.read(css_file)) : {}
-    filter_selectors(component_class, css_data["selectors"])
-  end
-
   def no_preview_for_selectors_message(preview_class, selectors)
     class_name = preview_class.name
     selector_list = selectors.join("\n")
@@ -130,18 +176,5 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     msg << "Selectors without a preview may be ignored by updating 'IGNORED_SELECTORS' in #{__FILE__}"
 
     msg.join("\n")
-  end
-
-  def filter_selectors(component_class, selectors)
-    filtered = (selectors || []).reject do |selector|
-      global_ignored = IGNORED_SELECTORS[:global].any? { |pattern| selector.match(pattern) }
-
-      component_filter = IGNORED_SELECTORS[component_class]
-      component_ignored = component_filter ? component_filter.any? { |pattern| selector.match(pattern) } : false
-
-      global_ignored || component_ignored
-    end
-
-    filtered.flatten.uniq
   end
 end

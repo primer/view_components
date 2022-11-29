@@ -48,7 +48,7 @@ module Primer
       #
       # @!endgroup
 
-      # @label Dismissable 
+      # @label Dismissable
       def dismissable
         render(Primer::Alpha::Banner.new(dismissable: true, reappear: true)) { "This is a dismissable banner." }
       end

@@ -16,16 +16,11 @@ class RubocopComponentNameMigrationTest < CopTestCase
   end
 
   def test_using_deprecated_class
-    original_list = Primer::Deprecations::DEPRECATED_COMPONENTS
-    Primer::Deprecations.const_set("DEPRECATED_COMPONENTS", { "Primer::TestComponent" => "Primer::Beta::Test" })
-
     investigate(cop, <<-RUBY)
-      Primer::TestComponent.new
+      Primer::BlankslateComponent.new
     RUBY
 
     assert_equal 1, cop.offenses.count
-    assert_equal "Primer::Beta::Test.new", cop.offenses.first.corrector.rewrite.strip
-  ensure
-    Primer::Deprecations.const_set("DEPRECATED_COMPONENTS", original_list)
+    assert_equal "Primer::Beta::Blankslate.new", cop.offenses.first.corrector.rewrite.strip
   end
 end
