@@ -126,11 +126,15 @@ class ComponentStatusMigrator < Thor::Group
     )
   end
 
-  def add_to_deprecated_component_helper
+  def add_to_deprecated_component_configuration
+    content = []
+    content << "  - component: \"Primer::#{name}\"\n"
+    content << "    replacement: \"Primer::#{status_module}#{name_without_suffix}\"\n"
+
     insert_into_file(
-      "lib/primer/deprecations.rb",
-      "\"Primer::#{name}\" => \"Primer::#{status_module}#{name_without_suffix}\",\n",
-      after: "DEPRECATED_COMPONENTS = {\n"
+      "lib/primer/deprecations.yml",
+      content.join,
+      after: "deprecations:\n"
     )
   end
 
@@ -143,7 +147,11 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def run_rubocop
-    run("bundle exec rubocop -a")
+    # IMPORTANT: the `exit 0` must be here because
+    # rubocop will exit with a non-zero code, due to
+    # the expected linter failures. this causes thor
+    # to stop running the script before it should
+    run("bundle exec rubocop -a; exit 0")
   end
 
   def generate_docs
@@ -152,6 +160,20 @@ class ComponentStatusMigrator < Thor::Group
 
   def dump_static_files
     run("bundle exec rake static:dump")
+  end
+
+  def show_instructions
+    puts ""
+    puts "Component Status Migration Completed"
+    puts "------------------------------------"
+    puts ""
+    puts "Original Component: 'Primer::#{name}'"
+    puts "     New Component: 'Primer::#{status_module}#{name_without_suffix}'"
+    puts ""
+    puts "IMPORTANT NOTE:"
+    puts ""
+    puts "The original component has been marked as deprecated, but needs additional configuration. Please update the entry in 'lib/primer/deprecations.yml'."
+    puts ""
   end
 
   private

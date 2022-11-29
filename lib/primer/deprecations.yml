@@ -1,46 +1,8 @@
-# Primer ViewComponents Deprecation Configuration
-# 
-# Schema
-# ------
-# - component: [string]
-#   autocorrect: [boolean] 
-#   replacement: [string] 
+# PVC Component Deprecations
+# --------------------------
 #
-# Field Descriptions
-# ------------------
-# component:
-#   - Required
-#   - Type: string
-#   - The full ruby class of the deprecated component
-#
-# autocorrect:
-#   - Optional
-#   - Type: boolean
-#   - Default: false
-#   - Whether or not this deprecations can be autocorrected with `erblint -a`
-#
-# replacement:
-#   - Optional
-#   - Type: string
-#   - Default: nil
-#   - The full ruby class of the new component, if any, that replaces the now deprecated component
-#
-# Examples
-# --------
-# Please note that these examples are somewhat contrived, even if they match up to actual PVC components. They
-# should be read as documentation only, and are not expected to be live. See the live configuration below the
-# examples for the real list of deprecations.
-#
-# 1. An autocorrectable deprecation
-#
-#   component: "Primer::LabelComponent"
-#     autocorrect: true
-#     replacement: "Primer::Beta::Label
-#
-# 2. A non-autocorrectable deprecation (no direct replacement component)
-#
-#   component: "Primer::ButtonComponent"
-#     autocorrect: false
+# All component deprecations for PVC must be listed here, and must have valid configurations.
+# See 'docs/contributors/deprecations.md' for information on configuration options.
 
 deprecations:
   - component: "Primer::LabelComponent"
@@ -64,6 +26,7 @@ deprecations:
   - component: "Primer::DropdownMenuComponent"
     autocorrect: false
     replacement: "Primer::Beta::Dropdown"
+    guide: "https://primer.style/view-components/migration"
   - component: "Primer::Dropdown"
     autocorrect: true
     replacement: "Primer::Alpha::Dropdown"
