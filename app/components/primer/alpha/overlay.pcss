@@ -33,10 +33,6 @@ primer-overlay[popover='manual' i].\:open {
 
 /* Overlay */
 
-// stylelint-disable selector-max-compound-selectors, max-nesting-depth, selector-max-specificity, primer/borders
-// replace with primitive
-$primer-borderRadius-large: 0.75rem;
-
 .Overlay--hidden {
   display: none !important;
 }
@@ -56,7 +52,7 @@ $primer-borderRadius-large: 0.75rem;
   white-space: normal;
   flex-direction: column;
   background-color: var(--color-canvas-overlay);
-  border-radius: $primer-borderRadius-large;
+  border-radius: var(--primer-borderRadius-large, 12px);
   box-shadow: var(--color-overlay-shadow);
   opacity: 1;
 
@@ -111,7 +107,7 @@ $primer-borderRadius-large: 0.75rem;
     height: auto;
   }
 
-  // start deprecate in favor of Alpha::Dialog
+  /* start deprecate in favor of Alpha::Dialog */
   &.Overlay--height-xsmall {
     height: min(192px, 100vh - 2rem);
   }
@@ -145,21 +141,18 @@ $primer-borderRadius-large: 0.75rem;
   }
 
   &.Overlay--width-large {
-    // stylelint-disable-next-line primer/responsive-widths
     width: min(480px, 100vw - 2rem);
   }
 
   &.Overlay--width-xlarge {
-    // stylelint-disable-next-line primer/responsive-widths
     width: min(640px, 100vw - 2rem);
   }
 
   &.Overlay--width-xxlarge {
-    // stylelint-disable-next-line primer/responsive-widths
     width: min(960px, 100vw - 2rem);
   }
 
-  // end deprecate
+  /* end deprecate */
 
   &.Overlay--motion-scaleFade {
     @media screen and (prefers-reduced-motion: no-preference) {
@@ -180,7 +173,7 @@ $primer-borderRadius-large: 0.75rem;
   }
 }
 
-// for <form> element that wraps entire contents of overlay
+/* for <form> element that wraps entire contents of overlay */
 .Overlay-form {
   display: flex;
   overflow: auto;
@@ -194,77 +187,76 @@ $primer-borderRadius-large: 0.75rem;
   flex-direction: column;
 
   &.Overlay-header--divided {
-    padding-bottom: $spacer-2;
-    // stylelint-disable-next-line primer/box-shadow
-    box-shadow: inset 0 #{-$border-width} var(--color-border-default);
+    padding-bottom: var(--primer-stack-padding-condensed, 8px);
+    box-shadow: inset 0 calc(var(--primer-borderWidth-thin, 1px) * -1) var(--color-border-default);
 
-    + .Overlay-body {
-      padding-top: $spacer-3;
+    & + .Overlay-body {
+      padding-top: var(--primer-stack-padding-normal, 16px);
     }
   }
 
   &.Overlay-header--large {
-    .Overlay-headerContentWrap {
-      .Overlay-titleWrap {
-        gap: $spacer-2;
+    & .Overlay-headerContentWrap {
+      & .Overlay-titleWrap {
+        gap: var(--primer-stack-gap-condensed, 8px);
 
-        .Overlay-title {
-          font-size: $h3-size;
+        & .Overlay-title {
+          font-size: var(--primer-text-title-size-medium, 20px);
         }
 
-        .Overlay-description {
-          font-size: $body-font-size;
+        & .Overlay-description {
+          font-size: var(--primer-text-body-size-medium, 14px);
         }
       }
     }
   }
 
-  .Overlay-headerContentWrap {
+  & .Overlay-headerContentWrap {
     display: flex;
     align-items: flex-start;
-    gap: $spacer-2;
-    padding: $spacer-2 $spacer-2 0 $spacer-2;
+    gap: var(--primer-stack-gap-condensed, 8px);
+    padding: var(--primer-stack-gap-condensed, 8px) var(--primer-stack-gap-condensed, 8px) 0 var(--primer-stack-gap-condensed, 8px);
 
-    .Overlay-actionWrap {
+    & .Overlay-actionWrap {
       display: flex;
       flex-direction: row;
-      gap: $spacer-2;
+      gap: var(--primer-stack-gap-condensed, 8px);
     }
 
-    .Overlay-titleWrap {
+    & .Overlay-titleWrap {
       display: flex;
-      padding: ($spacer-2 * 0.75) 0 ($spacer-2 * 0.75) $spacer-2;
+      padding: calc(var(--primer-stack-gap-condensed, 8px) * 0.75) 0 calc(var(--primer-stack-gap-condensed, 8px) * 0.75) var(--primer-stack-gap-condensed, 8px);
       flex-direction: column;
       flex-grow: 1;
-      gap: $spacer-1;
+      gap: var(--primer-control-small-gap, 4px);
 
-      .Overlay-title {
+      & .Overlay-title {
         margin: 0;
-        font-size: $body-font-size;
-        font-weight: $font-weight-bold;
+        font-size: var(--primer-text-body-size-medium, 14px);
+        font-weight: var(--base-text-weight-semibold, 600);
       }
 
-      .Overlay-description {
+      & .Overlay-description {
         margin: 0;
-        font-size: $font-size-small;
-        font-weight: $font-weight-normal;
+        font-size: var(--primer-text-body-size-small, 12px);
+        font-weight: var(--base-text-weight-normal, 400);
         color: var(--color-fg-muted);
       }
     }
   }
 }
 
-// generic body content slot
+/* generic body content slot */
 .Overlay-body {
-  padding: $spacer-3;
+  padding: var(--primer-stack-padding-normal, 16px);
   padding-top: 0;
   overflow-y: auto;
   scrollbar-width: thin;
-  font-size: $body-font-size;
+  font-size: var(--primer-text-body-size-medium, 14px);
   flex-grow: 1;
 
   &.Overlay-body--paddingCondensed {
-    padding: $spacer-2;
+    padding: var(--primer-stack-padding-condensed, 8px);
     padding-top: 0;
   }
 
@@ -273,50 +265,49 @@ $primer-borderRadius-large: 0.75rem;
   }
 }
 
-// generic footer slot
+/* generic footer slot */
 .Overlay-footer {
   z-index: 1;
   display: flex;
-  padding: 0 $spacer-3 $spacer-3 $spacer-3;
+  padding: 0 var(--primer-stack-padding-normal, 16px) var(--primer-stack-padding-normal, 16px) var(--primer-stack-padding-normal, 16px);
   flex-direction: row;
   flex-shrink: 0;
   flex-wrap: wrap;
 
   &.Overlay-footer--divided {
-    padding-top: $spacer-3;
-    // stylelint-disable-next-line primer/box-shadow
-    box-shadow: inset 0 $border-width var(--color-border-default);
+    padding-top: var(--primer-stack-padding-normal, 16px);
+    box-shadow: inset 0 var(--primer-borderWidth-thin, 1px) var(--color-border-default);
   }
 
   &.Overlay-footer--alignStart {
     justify-content: flex-start;
-    gap: $spacer-2;
+    gap: var(--primer-stack-gap-condensed, 8px);
   }
 
   &.Overlay-footer--alignCenter {
     justify-content: center;
-    gap: $spacer-2;
+    gap: var(--primer-stack-gap-condensed, 8px);
   }
 
   &.Overlay-footer--alignEnd {
     justify-content: flex-end;
-    gap: $spacer-2;
+    gap: var(--primer-stack-gap-condensed, 8px);
   }
 }
 
-// TODO: replace with refactored IconButton
+/* TODO: replace with refactored IconButton */
 .Overlay-closeButton {
   position: relative;
   display: grid;
-  width: $spacer-5;
-  height: $spacer-5;
+  width: var(--base-size-32, 32px);
+  height: var(--base-size-32, 32px);
   padding: 0;
   color: var(--color-fg-muted);
   cursor: pointer;
   user-select: none;
   background-color: transparent;
-  border: $border-width $border-style transparent;
-  border-radius: $border-radius;
+  border: var(--primer-borderWidth-thin, 1px) solid transparent;
+  border-radius: var(--primer-borderRadius-medium, 6px);
   transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
   transition-property: color, background-color, border-color;
   place-content: center;
@@ -326,11 +317,11 @@ $primer-borderRadius-large: 0.75rem;
   &:hover,
   &:focus {
     background-color: var(--color-btn-hover-bg);
-    border: $border-width $border-style var(--color-btn-hover-bg);
+    border: var(--primer-borderWidth-thin, 1px) solid var(--color-btn-hover-bg);
   }
 }
 
-@mixin Overlay-backdrop() {
+@define-mixin Overlay-backdrop {
   position: fixed;
   top: 0;
   right: 0;
@@ -341,49 +332,49 @@ $primer-borderRadius-large: 0.75rem;
   background-color: var(--color-neutral-muted);
 }
 
-@mixin Overlay-backdrop--transparent() {
+@define-mixin Overlay-backdrop--transparent {
   position: absolute;
   z-index: 999;
   background-color: transparent;
 }
 
-// variants must be mixins so we can extend within a media query (@extend is not supported inside media queries)
+/* variants must be mixins so we can extend within a media query (@extend is not supported inside media queries) */
 
-// border-radius repeats within placement options to ensure the original radius is reset when two classes co-exist
+/* border-radius repeats within placement options to ensure the original radius is reset when two classes co-exist */
 
-// center
-@mixin Overlay-backdrop--center {
-  @include Overlay-backdrop;
+/* center */
+@define-mixin Overlay-backdrop--center {
+  @mixin Overlay-backdrop;
 
   align-items: center;
   justify-content: center;
 }
 
-// anchor
-@mixin Overlay-backdrop--anchor {
-  @include Overlay-backdrop--transparent;
+/* anchor */
+@define-mixin Overlay-backdrop--anchor {
+  @mixin Overlay-backdrop--transparent;
 
   .Overlay {
     width: auto;
   }
 }
 
-// anchor side(s)
-@mixin Overlay-backdrop--side($responsiveVariant: '') {
-  @include Overlay-backdrop;
+/* anchor side(s) */
+@define-mixin Overlay-backdrop--side $responsiveVariant: '' {
+  @mixin Overlay-backdrop;
 
-  // default left
+  /* default left */
   align-items: center;
   justify-content: left;
 
-  &.Overlay-backdrop--placement-left#{$responsiveVariant} {
+  &.Overlay-backdrop--placement-left$(responsiveVariant) {
     align-items: center;
     justify-content: left;
 
-    > .Overlay#{$responsiveVariant} {
+    & > .Overlay$(responsiveVariant) {
       height: 100vh;
       max-height: unset;
-      border-radius: $primer-borderRadius-large;
+      border-radius: var(--primer-borderRadius-large, 12px);
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
 
@@ -393,14 +384,14 @@ $primer-borderRadius-large: 0.75rem;
     }
   }
 
-  &.Overlay-backdrop--placement-right#{$responsiveVariant} {
+  &.Overlay-backdrop--placement-right$(responsiveVariant) {
     align-items: center;
     justify-content: right;
 
-    > .Overlay#{$responsiveVariant} {
+    & > .Overlay$(responsiveVariant) {
       height: 100vh;
       max-height: unset;
-      border-radius: $primer-borderRadius-large;
+      border-radius: var(--primer-borderRadius-large, 12px);
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
 
@@ -410,15 +401,15 @@ $primer-borderRadius-large: 0.75rem;
     }
   }
 
-  &.Overlay-backdrop--placement-bottom#{$responsiveVariant} {
+  &.Overlay-backdrop--placement-bottom$(responsiveVariant) {
     align-items: end;
     justify-content: center;
 
-    > .Overlay#{$responsiveVariant} {
+    & > .Overlay$(responsiveVariant) {
       width: 100vw;
       height: auto;
       max-height: calc(100vh - 2rem);
-      border-radius: $primer-borderRadius-large;
+      border-radius: var(--primer-borderRadius-large, 12px);
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
 
@@ -428,12 +419,12 @@ $primer-borderRadius-large: 0.75rem;
     }
   }
 
-  &.Overlay-backdrop--placement-top#{$responsiveVariant} {
+  &.Overlay-backdrop--placement-top$(responsiveVariant) {
     align-items: start;
     justify-content: center;
 
-    > .Overlay#{$responsiveVariant} {
-      border-radius: $primer-borderRadius-large;
+    & > .Overlay$(responsiveVariant) {
+      border-radius: var(--primer-borderRadius-large, 12px);
       border-top-left-radius: 0;
       border-top-right-radius: 0;
 
@@ -444,9 +435,9 @@ $primer-borderRadius-large: 0.75rem;
   }
 }
 
-// full width
-@mixin Overlay-backdrop--full {
-  @include Overlay-backdrop;
+/* full width */
+@define-mixin Overlay-backdrop--full {
+  @mixin Overlay-backdrop;
 
   .Overlay {
     width: 100%;
@@ -458,40 +449,41 @@ $primer-borderRadius-large: 0.75rem;
   }
 }
 
-// Overlay variant classnames
+/* Overlay variant classnames */
 .Overlay-backdrop--center {
-  @include Overlay-backdrop--center;
+  @mixin Overlay-backdrop--center;
 }
 
 .Overlay-backdrop--anchor {
-  @include Overlay-backdrop--anchor;
+  @mixin Overlay-backdrop--anchor;
 }
 
 .Overlay-backdrop--side {
-  @include Overlay-backdrop--side;
+  @mixin Overlay-backdrop--side;
 }
 
 .Overlay-backdrop--full {
-  @include Overlay-backdrop--full;
+  @mixin Overlay-backdrop--full;
 }
 
-// responsive variants
-// up to 767px
-@media (max-width: #{map-get($breakpoints, 'md') - 0.02px}) {
+/* responsive variants */
+
+/* up to 767px */
+@media (--primer-viewportRange-narrowLandscape) {
   .Overlay-backdrop--center-whenNarrow {
-    @include Overlay-backdrop--center;
+    @mixin Overlay-backdrop--center;
   }
 
   .Overlay-backdrop--anchor-whenNarrow {
-    @include Overlay-backdrop--anchor;
+    @mixin Overlay-backdrop--anchor;
   }
 
   .Overlay-backdrop--side-whenNarrow {
-    @include Overlay-backdrop--side('-whenNarrow');
+    @mixin Overlay-backdrop--side -whenNarrow;
   }
 
   .Overlay-backdrop--full-whenNarrow {
-    @include Overlay-backdrop--full;
+    @mixin Overlay-backdrop--full;
   }
 }
 
