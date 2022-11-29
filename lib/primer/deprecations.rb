@@ -77,7 +77,7 @@ module Primer
         if replacement?(component_name) # has replacement
           if correctable?(component_name) # is autocorrectable
             msg << "Please update your code to use '#{replacement(component_name)}'"
-            msg << "or use rubocopy's auto-correct option to do it for you."
+            msg << "or use rubocop's auto-correct option to do it for you."
             msg << "See #{guide(component_name)} for more information." if guide?(component_name) # has a guide
           elsif guide?(component_name) # not autocorrectable
             msg << "See #{guide(component_name)} for information on replacing this component in your code." # has a guide
