@@ -158,6 +158,20 @@ class ComponentStatusMigrator < Thor::Group
     run("bundle exec rake static:dump")
   end
 
+  def show_instructions
+    puts ""
+    puts "Component Status Migration Completed"
+    puts "------------------------------------"
+    puts ""
+    puts "Original Component: 'Primer::#{name}'"
+    puts "     New Component: 'Primer::#{status_module}#{name_without_suffix}'"
+    puts ""
+    puts "IMPORTANT NOTE:"
+    puts "The original component has been marked as deprecated, and a basic deprecation entry has been added."
+    puts "Please update the deprecation entry at 'lib/primer/deprecations.yml' with any additional configuration that is needed."
+    puts ""
+  end
+
   private
 
   def class_status
