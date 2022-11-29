@@ -13,7 +13,7 @@ Dir["app/components/**/*.rb"].each { |file| require_relative "../../#{file}" }
 # prevented through tests in 'deprecations_test.rb'
 #
 # For information on what configurations are valid / invalid, please see the
-# documentation at the top of 'lib/primer/deprecations.yml'
+# documentation in 'docs/contributors/deprecations.md'
 
 class DeprecationMessagesTest < Minitest::Test
   def setup

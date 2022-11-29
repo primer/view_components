@@ -107,7 +107,7 @@ class DeprecationsTest < Minitest::Test
 
   def deprecation_configuration_valid?(component_name)
     # For information on what configurations are valid / invalid, please see the
-    # documentation at the top of 'lib/primer/deprecations.yml'
+    # documentation in 'docs/contributors/deprecations.md'
 
     has_replacement = Primer::Deprecations.replacement?(component_name)
     is_correctable = Primer::Deprecations.correctable?(component_name)
@@ -127,7 +127,7 @@ class DeprecationsTest < Minitest::Test
   def invalid_configuration_message(component_name)
     msg = []
     msg << "'#{component_name}' has an invalid deprecation configuration."
-    msg << "Please check the documentation in 'lib/primer/deprecations.yml' for a list of what is valid / invalid,"
+    msg << "Please check the documentation in 'docs/contributors/deprecations.md' for a list of what is valid / invalid,"
     msg << "and correct the configuration in the same file."
     msg.join(" ")
   end

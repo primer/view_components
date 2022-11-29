@@ -8,7 +8,6 @@ For integration with other apps and services, a developer may provide a custom y
 
 yaml file:
 ```rb
-# see lib/primer/deprecations.yml for documentation on yml file format
 Primer::Deprecations.register("path/to/custom_deprecations.yml")
 ```
 

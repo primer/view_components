@@ -72,7 +72,7 @@ module Primer
         # match all of the valid scenarios for a component being
         # replaceable, auto-correctable, and having a guide. for
         # more information on what is and is not valid, see the
-        # documentation here: lib/primer/deprecations.yml
+        # documentation here: docs/contributors/deprecations.md
 
         if replacement?(component_name) # has replacement
           if correctable?(component_name) # is autocorrectable
