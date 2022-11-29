@@ -147,7 +147,11 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def run_rubocop
-    run("bundle exec rubocop -a")
+    # IMPORTANT: the `exit 0` must be here because
+    # rubocop will exit with a non-zero code, due to
+    # the expected linter failures. this causes thor
+    # to stop running the script before it should
+    run("bundle exec rubocop -a; exit 0")
   end
 
   def generate_docs
@@ -167,8 +171,8 @@ class ComponentStatusMigrator < Thor::Group
     puts "     New Component: 'Primer::#{status_module}#{name_without_suffix}'"
     puts ""
     puts "IMPORTANT NOTE:"
-    puts "The original component has been marked as deprecated, and a basic deprecation entry has been added."
-    puts "Please update the deprecation entry at 'lib/primer/deprecations.yml' with any additional configuration that is needed."
+    puts ""
+    puts "The original component has been marked as deprecated, but needs additional configuration. Please update the entry in 'lib/primer/deprecations.yml'."
     puts ""
   end
 
