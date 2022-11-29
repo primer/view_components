@@ -33,7 +33,7 @@ class DeprecationMessagesTest < Minitest::Test
                                 guide: @guide
                               })
 
-    assert_equal "'#{@component}' has been deprecated. Please update your code to use '#{@replacement}' or use rubocopy's auto-correct option to do it for you. See #{@guide} for more information.", msg
+    assert_equal "'#{@component}' has been deprecated. Please update your code to use '#{@replacement}' or use rubocop's auto-correct option to do it for you. See #{@guide} for more information.", msg
   end
 
   def test_replacement_correctable_no_guide
@@ -42,7 +42,7 @@ class DeprecationMessagesTest < Minitest::Test
                                 autocorrect: true
                               })
 
-    assert_equal "'#{@component}' has been deprecated. Please update your code to use '#{@replacement}' or use rubocopy's auto-correct option to do it for you.", msg
+    assert_equal "'#{@component}' has been deprecated. Please update your code to use '#{@replacement}' or use rubocop's auto-correct option to do it for you.", msg
   end
 
   def test_replacement_not_correctable_guide
