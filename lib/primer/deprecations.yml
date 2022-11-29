@@ -49,20 +49,20 @@
 #   component: "Primer::LabelComponent"
 #     autocorrect: true
 #     replacement: "Primer::Beta::Label
-#     guide: "https://primer.style/view-components/migration/label_component"
+#     guide: "https://example.com/label_component"
 #
 # 3. A non-autocorrectable deprecation, with a replacement component and migration guide
 #
 #   component: "Primer::ButtonComponent"
 #     autocorrect: false
 #     replacement: "Primer::Beta::Button"
-#     guide: "https://primer.style/view-components/migration/button_component"
+#     guide: "https://example.com/button_component"
 #
 # 4. A non-autocorrectable deprecation, without a replacement component, and with a guide to alternatives
 #
 #   component: "Primer::DropdownMenuComponent"
 #     autocorrect: false
-#     guide: "https://primer.style/view-components/migration/dropdown_menu_alternatives"
+#     guide: "https://example.com/dropdown_menu_alternatives"
 #
 # 5. A non-autocorrectable deprecation, without a replacement component, and without a guide to alternatives
 #    !!!WARNING!!!

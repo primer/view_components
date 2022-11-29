@@ -126,11 +126,16 @@ class ComponentStatusMigrator < Thor::Group
     )
   end
 
-  def add_to_deprecated_component_helper
+  def add_to_deprecated_component_configuration
+    content = []
+    content << "  - component: \"Primer::LabelComponent\""
+    content << "    autocorrect: true"
+    content << "    replacement: \"Primer::Beta::Label\""
+
     insert_into_file(
-      "lib/primer/deprecations.rb",
-      "\"Primer::#{name}\" => \"Primer::#{status_module}#{name_without_suffix}\",\n",
-      after: "DEPRECATED_COMPONENTS = {\n"
+      "lib/primer/deprecations.yml",
+      content.join("\n"),
+      after: "deprecations:\n"
     )
   end
 
