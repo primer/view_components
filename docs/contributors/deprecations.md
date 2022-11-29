@@ -1,17 +1,19 @@
 # Registering Deprecations
 
-Components within PVC should be marked as deprecated by updating `lib/primer/deprecations.yml`. 
+Components within PVC should be marked as deprecated by updating `lib/primer/deprecations.yml`.
 
 ## Custom Deprecation Registration
 
 For integration with other apps and services, a developer may provide a custom yaml file or call the deprecations API directly, to register a custom deprecated component.
 
 yaml file:
+
 ```rb
 Primer::Deprecations.register("path/to/custom_deprecations.yml")
 ```
 
 code:
+
 ```rb
 Primer::Deprecations.register_deprecation("Some::Component::Name", {
   autocorrect: false,
@@ -27,7 +29,7 @@ options.
 
 ### Schema
 
-```
+```yml
 - component: [string]
   autocorrect: [boolean] 
   replacement: [string] 
