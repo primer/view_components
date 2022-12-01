@@ -10,12 +10,15 @@ module Primer
       extend ActsAsComponent
 
       def self.inherited(base)
-        base.renders_template File.join(__dir__, "#{base.name.demodulize.underscore}.html.erb"), :render_template
+        dir = File.dirname(Utils.const_source_location(base.name))
+        base.renders_template File.join(dir, "#{base.name.demodulize.underscore}.html.erb"), :render_template
       end
 
       delegate :required?, :disabled?, :hidden?, to: :@input
 
       def perform_render(&block)
+        return "" unless render?
+
         @__prf_content_block = block
         compile_and_render_template
       end
@@ -41,6 +44,10 @@ module Primer
 
       def to_component
         self
+      end
+
+      def render?
+        true
       end
 
       private
