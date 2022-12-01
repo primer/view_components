@@ -34,6 +34,9 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Alpha::Banner => [
       ".Banner .Banner-close"
     ],
+    Primer::Alpha::Dialog => [
+      ".Overlay"
+    ],
     Primer::Alpha::TabNav => [
       ".tabnav-tab.selected",
       ".tabnav-extra",
