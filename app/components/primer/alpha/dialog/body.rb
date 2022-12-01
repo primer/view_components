@@ -6,6 +6,9 @@ module Primer
       # A `Dialog::Body` is a compositional component, used to render the
       # Body of a dialog. See <%= link_to_component(Primer::Alpha::Dialog) %>.
       class Body < Primer::Component
+        status :alpha
+        audited_at "2022-10-10"
+
         # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
         def initialize(**system_arguments)
           @system_arguments = deny_tag_argument(**system_arguments)

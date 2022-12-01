@@ -18,6 +18,9 @@ module Primer
     #   `aria-labelledby` relationship between the title and the unique id of
     #   the dialog.
     class Dialog < Primer::Component
+      status :alpha
+      audited_at "2022-10-10"
+
       DEFAULT_SIZE = :medium
       SIZE_MAPPINGS = {
         :small => "Overlay--size-small-portrait",
