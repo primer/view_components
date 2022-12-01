@@ -6,7 +6,7 @@
           <%= render(Primer::OcticonComponent.new(**@input.leading_visual)) %>
         </span>
       <% end %>
-      <%= render Primer::ConditionalWrapper.new(condition: @input.auto_check_src, tag: "auto-check", csrf: "hello", src: @input.auto_check_src) do %>
+      <%= render Primer::ConditionalWrapper.new(condition: @input.auto_check_src, tag: "auto-check", csrf: auto_check_authenticity_token, src: @input.auto_check_src) do %>
         <%= builder.text_field(@input.name, **@input.input_arguments) %>
       <% end %>
       <% if @input.show_clear_button? %>
