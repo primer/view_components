@@ -13,7 +13,10 @@ module Primer
           "FormControl--medium"
         )
 
-        @field_wrap_classes = class_names("FormControl-select-wrap")
+        @field_wrap_arguments = {
+          class: "FormControl-select-wrap",
+          hidden: @input.hidden?
+        }
       end
 
       def options
