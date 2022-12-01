@@ -12,7 +12,8 @@ module Primer
         @form_group_arguments = {
           class: class_names(
             "FormControl",
-            "FormControl--fullWidth" => @input.full_width?
+            "flex-1",
+            "FormControl--fullWidth" => @input.full_width?,
           )
         }
 
