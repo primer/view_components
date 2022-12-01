@@ -1,3 +1,5 @@
-<% @input.inputs.each do |child_input| %>
-  <%= render(child_input.to_component) %>
+<%= render(FormControl.new(input: @input)) do %>
+  <% @input.inputs.each do |child_input| %>
+    <%= render(child_input.to_component) %>
+  <% end %>
 <% end %>

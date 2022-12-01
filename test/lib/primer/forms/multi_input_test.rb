@@ -23,7 +23,7 @@ class Primer::Forms::MultiInputTest < Minitest::Test
     end
   end
 
-  def test_only_two_inputs_visible
+  def test_disallows_two_visible_inputs
     error = assert_raises(ArgumentError) do
       render_in_view_context do
         primer_form_with(url: "/foo") do |f|

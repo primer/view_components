@@ -36,7 +36,7 @@ module Primer
 
         def decorate_options(name: nil, **options)
           check_name!(name) if name
-          new_options = { name: name || @name, label: nil, **options }
+          new_options = { name: name || @name, label: nil, form_control: false, **options }
           new_options[:id] = nil if options[:hidden]
           new_options
         end
