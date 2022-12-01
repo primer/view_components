@@ -13,13 +13,13 @@
     "declaration": true,
     "declarationDir": "app/components/primer/",
     "strictPropertyInitialization": false,
-    "experimentalDecorators": true, 
     "strict": true,
     "baseUrl": ".",
     "types": [],
   },
   "include": [
-    "app/components/primer/*.ts"
+    "app/components/primer/*.ts",
+    "lib/primer/forms/*.ts"
   ],
   "exclude": [
     "demo/**/*",
