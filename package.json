@@ -49,7 +49,7 @@
     "@github/image-crop-element": "^5.0.0",
     "@github/mini-throttle": "^2.1.0",
     "@github/tab-container-element": "^3.1.2",
-    "@github/time-elements": "^3.1.2",
+    "@github/time-elements": "^4.0.0",
     "@primer/behaviors": "^1.2.0"
   },
   "devDependencies": {
