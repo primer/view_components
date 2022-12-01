@@ -1,4 +1,4 @@
-<%= content_tag(:div, style: "flex-grow: 1", **@form_group_arguments) do %>
+<%= content_tag(:div, **@form_group_arguments) do %>
   <% if @input.label %>
     <%= builder.label(@input.name, **@input.label_arguments) do %>
       <%= @input.label %>

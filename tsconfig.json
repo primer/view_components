@@ -11,7 +11,7 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "declarationDir": "app/components/primer/",
+    "declarationDir": "./",
     "strictPropertyInitialization": false,
     "strict": true,
     "baseUrl": ".",
