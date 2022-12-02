@@ -13,7 +13,7 @@ module Primer
           class: class_names(
             "FormControl",
             "flex-1",
-            "FormControl--fullWidth" => @input.full_width?,
+            "FormControl--fullWidth" => @input.full_width?
           )
         }
 
