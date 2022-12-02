@@ -19,6 +19,8 @@ of the Primer Button.
 | `scheme`     | `scheme` | removed `:outline` value. use `:invisible` instead |
 | `variant`    | `size`   | renamed; values remain the same                    |
 
+The remaining arguments have stayed the same.
+
 `Primer::Beta::Button` no longer supports the boolean settings for being part of
 a group, nor the dropdown caret via initializer argument. See the following for examples of how to replace
 this functionality.
@@ -26,8 +28,6 @@ this functionality.
 * Button groups: [`Primer::Beta::ButtonGroup`](https://primer.style/view-components/components/beta/buttongroup)
 * Trailing counter: [`trailing_visual` slot](https://primer.style/view-components/lookbook/inspect/primer/beta/button/trailing_visual)
 * Trailing caret: [`trailing_action` slot](https://primer.style/view-components/lookbook/inspect/primer/beta/button/trailing_action)
-
-The remaining arguments have stayed the same.
 
 ## Slot Names
 
