@@ -14,9 +14,10 @@ of the Primer Button.
 
 | From `Primer::ButtonComponent` | To `Primer::Beta::Button` | Notes |
 |--------------------------------|---------------------------|-------|
-| `variant`    | `size` | renamed; values remain the same   |
-| `group_item` | n/a    | removed in `Primer::Beta::Button` |
-| `dropdown`   | n/a    | removed in `Primer::Beta::Button` |
+| `dropdown`   | n/a      | removed in `Primer::Beta::Button`                  |
+| `group_item` | n/a      | removed in `Primer::Beta::Button`                  |
+| `scheme`     | `scheme` | removed `:outline` value. use `:invisible` instead |
+| `variant`    | `size`   | renamed; values remain the same                    |
 
 `Primer::Beta::Button` no longer supports the boolean settings for being part of
 a group, or displaying the dropdown caret. If you need a button group, please
