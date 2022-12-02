@@ -42,6 +42,16 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".tabnav-extra",
       ".tabnav-btn"
     ],
+    Primer::Alpha::TextField => [
+      ".FormControl-inlineValidation p",
+      ".FormControl-select",
+      ".FormControl-textarea",
+      ".FormControl-input",
+      ".FormControl-input-wrap",
+      ".FormControl-select-wrap",
+      ".FormControl-checkbox-wrap",
+      ".FormControl-radio-wrap"
+    ],
     Primer::Alpha::ButtonMarketing => [
       ".btn-mktg.disabled",
       ".btn-small-mktg"
