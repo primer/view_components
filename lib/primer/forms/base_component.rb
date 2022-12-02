@@ -10,7 +10,14 @@ module Primer
       extend ActsAsComponent
 
       def self.inherited(base)
-        dir = File.dirname(Utils.const_source_location(base.name))
+        base_path = Utils.const_source_location(base.name)
+
+        unless base_path
+          warn "Could not identify the template for #{base}"
+          return
+        end
+
+        dir = File.dirname(base_path)
         base.renders_template File.join(dir, "#{base.name.demodulize.underscore}.html.erb"), :render_template
       end
 

@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 module Primer
+  # :nodoc:
   module Forms
+    # :nodoc:
     module Utils
       # Unfortunately this bug (https://github.com/ruby/ruby/pull/5646) prevents us from using
       # Ruby's native Module.const_source_location. Instead we have to fudge it by searching
