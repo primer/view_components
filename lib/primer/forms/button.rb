@@ -32,6 +32,8 @@ module Primer
 
       def initialize(input:, type: :button)
         @input = input
+        @type = type
+
         @input.add_input_classes("FormField-input flex-self-start")
         @input.merge_input_arguments!(tag_attributes.deep_symbolize_keys)
 

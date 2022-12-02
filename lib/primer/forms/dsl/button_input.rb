@@ -19,6 +19,7 @@ module Primer
           Button.new(input: self)
         end
 
+        # :nocov:
         def type
           :button
         end
