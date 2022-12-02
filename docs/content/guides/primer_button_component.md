@@ -9,7 +9,7 @@ component.
 
 ## Arguments
 
-The following arguments for the component initialier have changed between the deprecated and newer versions
+The following arguments for the component initializer have changed between the deprecated and newer versions
 of the Primer Button.
 
 | From `Primer::ButtonComponent` | To `Primer::Beta::Button` | Notes |
