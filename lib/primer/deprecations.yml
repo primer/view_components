@@ -45,3 +45,7 @@ deprecations:
   - component: "Primer::PopoverComponent"
     autocorrect: true
     replacement: "Primer::Beta::Popover"
+  - component: "Primer::ButtonComponent"
+    autocorrect: false
+    replacement: "Primer::Beta::Button"
+    guide: "https://primer.style/view-components/guides/primer_button_component"
