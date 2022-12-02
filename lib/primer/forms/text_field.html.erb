@@ -1,4 +1,4 @@
-<%= render Primer::ConditionalWrapper.new(condition: @input.auto_check_src, tag: "text-field") do %>
+<%= render Primer::ConditionalWrapper.new(condition: @input.auto_check_src, tag: "primer-text-field") do %>
   <%= render(FormControl.new(input: @input)) do %>
     <%= render Primer::ConditionalWrapper.new(tag: :div, class: @input.field_wrap_classes, condition: @input.leading_visual || @input.show_clear_button?) do %>
       <% if @input.leading_visual %>

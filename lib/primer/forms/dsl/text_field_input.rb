@@ -30,7 +30,7 @@ module Primer
             Primer::Forms::Dsl::Input::SIZE_MAPPINGS[size]
           )
 
-          add_input_data(:target, "text-field.inputElement") if auto_check_src.present?
+          add_input_data(:target, "primer-text-field.inputElement") if auto_check_src.present?
           add_input_classes("FormControl-inset") if inset?
           add_input_classes("FormControl-monospace") if monospace?
         end
@@ -63,7 +63,7 @@ module Primer
           if auto_check_src.present?
             super.merge(
               data: {
-                target: "text-field.validationElement"
+                target: "primer-text-field.validationElement"
               }
             )
           else
@@ -75,7 +75,7 @@ module Primer
           if auto_check_src.present?
             super.merge(
               data: {
-                target: "text-field.validationMessageElement"
+                target: "primer-text-field.validationMessageElement"
               }
             )
           else

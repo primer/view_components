@@ -2,7 +2,7 @@ import '@github/auto-check-element'
 import {controller, target} from '@github/catalyst'
 
 @controller
-class TextFieldElement extends HTMLElement { // TODO: have a less generic tag name than <text-field>
+class PrimerTextFieldElement extends HTMLElement {
   @target inputElement: HTMLInputElement
   @target validationElement: HTMLElement
   @target validationMessageElement: HTMLElement
@@ -32,11 +32,11 @@ class TextFieldElement extends HTMLElement { // TODO: have a less generic tag na
 
 declare global {
   interface Window {
-    TextFieldElement: typeof TextFieldElement
+    PrimerTextFieldElement: typeof PrimerTextFieldElement
   }
 }
 
-if (!window.customElements.get('text-field')) {
-  Object.assign(window, {TextFieldElement})
-  window.customElements.define('text-field', TextFieldElement)
+if (!window.customElements.get('primer-text-field')) {
+  Object.assign(window, {PrimerTextFieldElement})
+  window.customElements.define('primer-text-field', PrimerTextFieldElement)
 }
