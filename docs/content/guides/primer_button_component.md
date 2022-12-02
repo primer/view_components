@@ -20,9 +20,13 @@ of the Primer Button.
 | `variant`    | `size`   | renamed; values remain the same                    |
 
 `Primer::Beta::Button` no longer supports the boolean settings for being part of
-a group, or displaying the dropdown caret. If you need a button group, please
-see [`Primer::Beta::ButtonGroup`](https://primer.style/view-components/components/beta/buttongroup). For dropdown menus, please see
-[`Primer::Alpha::Dropdown`](https://primer.style/view-components/components/alpha/dropdown).
+a group, nor the dropdown caret via initializer argument. See the following for examples of how to replace
+this functionality.
+
+* Button groups: [`Primer::Beta::ButtonGroup`](https://primer.style/view-components/components/beta/buttongroup)
+* Dropdown menus: [`Primer::Alpha::Dropdown`](https://primer.style/view-components/components/alpha/dropdown).
+* Trailing counter: [`trailing_visual` slot](https://primer.style/view-components/lookbook/inspect/primer/beta/button/trailing_visual)
+* Trailing caret: [`trailing_action` slot](https://primer.style/view-components/lookbook/inspect/primer/beta/button/trailing_action)
 
 The remaining arguments have stayed the same.
 
