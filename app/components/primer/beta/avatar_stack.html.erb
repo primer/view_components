@@ -1,3 +1,4 @@
+<%= render Primer::ButtonComponent.new %>
 <%= render Primer::BaseComponent.new(**@system_arguments) do %>
   <%= render body_component do %>
     <% avatars.each_with_index do |avatar, i| %>
