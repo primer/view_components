@@ -63,6 +63,11 @@ module Primer
           add_input SubmitButtonInput.new(builder: builder, form: form, **options, &block)
         end
 
+        def button(**options, &block)
+          options = decorate_options(**options)
+          add_input ButtonInput.new(builder: builder, form: form, **options, &block)
+        end
+
         # END button input methods
 
         def inputs
