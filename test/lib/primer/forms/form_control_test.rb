@@ -43,6 +43,9 @@ class Primer::Forms::FormControlTest < Minitest::Test
 
     # there are validation-related elements
     assert_selector(".FormControl-inlineValidation", visible: :visible)
+    # the validation elements don't have the data attributes that text-field needs
+    refute_selector("[data-target='text-field.validationElement']", visible: :all)
+    refute_selector("[data-target='text-field.validationMessageElement']", visible: :all)
   end
 
   def test_auto_check_generates_validtion_elements

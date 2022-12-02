@@ -58,6 +58,30 @@ module Primer
         def need_validation_element?
           super || auto_check_src.present?
         end
+
+        def validation_arguments
+          if auto_check_src.present?
+            super.merge(
+              data: {
+                target: "text-field.validationElement"
+              }
+            )
+          else
+            super
+          end
+        end
+
+        def validation_message_arguments
+          if auto_check_src.present?
+            super.merge(
+              data: {
+                target: "text-field.validationMessageElement"
+              }
+            )
+          else
+            super
+          end
+        end
       end
     end
   end
