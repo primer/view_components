@@ -1,6 +1,8 @@
 ---
-title: Migrate from Primer CSS
+title: Migration and Upgrade Guides
 ---
+
+## Migrate from Primer CSS
 
 Many Primer CSS use cases are supported by Primer ViewComponents.
 
@@ -15,3 +17,14 @@ stable status.
 | [`Counter`](https://primer.style/css/stickersheet/labels#counters)       | [`Primer::Beta::Counter`](https://primer.style/view-components/components/counter)          |
 | [`Subhead`](https://primer.style/css/components/subhead)                 | [`Primer::SubheadComponent`](https://primer.style/view-components/components/subhead)          |
 | [`blankslate`](https://primer.style/css/components/blankslate)           | [`Primer::Beta::Blankslate`](https://primer.style/view-components/components/beta/blankslate)    |
+
+## Upgrading Deprecated Components
+
+As Primer ViewComponents are updated, there are often breaking changes and
+deprecations that require changes which cannot be auto-corrected with Rubocop or
+other tools. These guides will walk you through the upgrade process for specific
+components.
+
+| Deprecated Component | Replacement Component | Guide |
+|----------------------|-----------------------|-------|
+| [`Primer::ButtonComponent`](http://localhost:8000/components/button) | [`Primer::Beta::Button`](http://localhost:8000/components/beta/button) | [Upgrade to Primer::Beta::Button](#) |
