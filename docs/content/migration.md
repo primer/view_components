@@ -27,4 +27,4 @@ components.
 
 | Deprecated Component | Replacement Component | Guide |
 |----------------------|-----------------------|-------|
-| [`Primer::ButtonComponent`](http://localhost:8000/components/button) | [`Primer::Beta::Button`](http://localhost:8000/components/beta/button) | [Upgrade to Primer::Beta::Button](#) |
+| [`Primer::ButtonComponent`](https://primer.style/view-components/components/button) | [`Primer::Beta::Button`](https://primer.style/view-components/components/beta/button) | [Upgrade to Primer::Beta::Button](https://primer.style/view-components/guides/primer_button_component) |
