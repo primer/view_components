@@ -24,7 +24,6 @@ a group, nor the dropdown caret via initializer argument. See the following for 
 this functionality.
 
 * Button groups: [`Primer::Beta::ButtonGroup`](https://primer.style/view-components/components/beta/buttongroup)
-* Dropdown menus: [`Primer::Alpha::Dropdown`](https://primer.style/view-components/components/alpha/dropdown).
 * Trailing counter: [`trailing_visual` slot](https://primer.style/view-components/lookbook/inspect/primer/beta/button/trailing_visual)
 * Trailing caret: [`trailing_action` slot](https://primer.style/view-components/lookbook/inspect/primer/beta/button/trailing_action)
 
