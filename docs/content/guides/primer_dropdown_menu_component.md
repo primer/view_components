@@ -4,7 +4,7 @@ title: Moving Away From `Primer::DropdownMenuComponent`
 
 This guide will show you how to upgrade from the now deprecated
 [`Primer::DropdownMenuComponent`](https://primer.style/view-components/components/dropdownmenu)
-to the latest [`Primer::Beta::Dropdown`](https://primer.style/view-components/components/beta/dropdown)
+to the latest [`Primer::Alpha::Dropdown`](https://primer.style/view-components/components/alpha/dropdown)
 component.
 
 ## Arguments
@@ -12,7 +12,7 @@ component.
 The following arguments for the component initializer have changed between the deprecated and newer versions
 of the Primer Dropdown.
 
-| From `Primer::DropdownMenuComponent` | To `Primer::Beta::Dropdown` | Notes |
+| From `Primer::DropdownMenuComponent` | To `Primer::Alpha::Dropdown` | Notes |
 |--------------------------------------|-----------------------------|-------|
 | | | |
 
@@ -26,7 +26,7 @@ more description here
 
 The following slots have changed with the newer Primer Dropdown.
 
-| From `Primer::DropdownMenuComponent` | To `Primer::Beta::Dropdown` | Notes |
+| From `Primer::DropdownMenuComponent` | To `Primer::Alpha::Dropdown` | Notes |
 |--------------------------------------|-----------------------------|-------|
 | | | |
 

@@ -28,4 +28,4 @@ components.
 | Deprecated Component | Replacement Component | Guide |
 |----------------------|-----------------------|-------|
 | [`Primer::ButtonComponent`](https://primer.style/view-components/components/button) | [`Primer::Beta::Button`](https://primer.style/view-components/components/beta/button) | [Upgrade to Primer::Beta::Button](https://primer.style/view-components/guides/primer_button_component) |
-| [`Primer::DropdownMenuComponent`](https://primer.style/view-components/components/dropdownmenu) | [`Primer::Beta::Dropdown`](https://primer.style/view-components/components/beta/dropdown) | [Upgrade to Primer::Beta::Dropdown](https://primer.style/view-components/guides/primer_dropdown_menu_component) |
+| [`Primer::DropdownMenuComponent`](https://primer.style/view-components/components/dropdownmenu) | [`Primer::Alpha::Dropdown`](https://primer.style/view-components/components/alpha/dropdown) | [Upgrade to Primer::Alpha::Dropdown](https://primer.style/view-components/guides/primer_dropdown_menu_component) |
