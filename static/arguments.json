@@ -1793,7 +1793,7 @@
   },
   {
     "component": "Button",
-    "status": "beta",
+    "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/button_component.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/button/default/",
     "parameters": [
