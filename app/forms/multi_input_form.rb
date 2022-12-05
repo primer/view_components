@@ -22,6 +22,6 @@ class MultiInputForm < ApplicationForm
       end
     end
 
-    my_form.submit(name: :submit, label: "Do something")
+    my_form.submit(name: :submit, label: "Submit", scheme: :primary)
   end
 end

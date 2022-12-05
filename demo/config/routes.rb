@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get "/auto_complete", to: "auto_complete_test#index"
     resources :toggle_switch, only: [:create]
     resources :nav_list_items, only: [:index]
+    resources :multi, only: [:create]
 
     mount Lookbook::Engine, at: "/lookbook" if defined?(Lookbook)
   end
