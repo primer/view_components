@@ -1,7 +1,5 @@
 /* Layout */
 
-/* Layout alpha mixins */
-
 @define-mixin flow-as-row {
   grid-auto-flow: row;
   grid-template-columns: 1fr !important;
@@ -78,32 +76,6 @@
       border-width: $border-width 0;
     }
   }
-}
-
-/* Layout beta mixins */
-
-/* responsive region dividers */
-
-@define-mixin Layout-line-divider {
-  position: absolute;
-  left: calc(var(--Layout-outer-spacing-x) * -1);
-  display: block;
-  width: calc(100% + (var(--Layout-outer-spacing-x) * 2));
-  height: 1px;
-  content: '';
-  background-color: $Layout-divider-color;
-}
-
-@define-mixin Layout-filled-divider {
-  position: absolute;
-  bottom: calc(var(--base-size-8, 8px) * -1); /* -8px */
-  left: calc(var(--Layout-outer-spacing-x) * -1);
-  display: block;
-  width: calc(100% + (var(--Layout-outer-spacing-x) * 2));
-  height: var(--base-size-8, 8px); /* 8px */
-  content: '';
-  background-color: var(--color-canvas-inset);
-  box-shadow: inset 0 1px $Layout-divider-color, inset 0 -1px $Layout-divider-color;
 }
 
 .Layout {
