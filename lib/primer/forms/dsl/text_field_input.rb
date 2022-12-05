@@ -31,13 +31,6 @@ module Primer
 
           add_input_classes("FormControl-inset") if inset?
           add_input_classes("FormControl-monospace") if monospace?
-
-          @field_wrap_classes = class_names(
-            "FormControl-input-wrap",
-            Primer::Forms::Dsl::Input::SIZE_MAPPINGS[size],
-            "FormControl-input-wrap--trailingAction": show_clear_button?,
-            "FormControl-input-wrap--leadingVisual": leading_visual?
-          )
         end
 
         alias show_clear_button? show_clear_button
