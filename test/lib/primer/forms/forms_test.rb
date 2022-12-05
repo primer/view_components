@@ -176,10 +176,23 @@ class Primer::Forms::FormsTest < Minitest::Test
     assert_selector "input[type=text][name=last_name]"
   end
 
-  def test_renders_a_submit_button
+  def test_renders_buttons
     render_preview :submit_button_form
 
     assert_selector "button[type=submit]"
+    assert_selector "button[type=button]"
+  end
+
+  def test_renders_buttons_with_slots
+    render_preview :submit_button_form
+
+    assert_selector "button[type=submit]" do
+      assert_selector ".octicon-check-circle"
+    end
+
+    assert_selector "button[type=button]" do
+      assert_selector ".octicon-alert"
+    end
   end
 
   def test_renders_a_submit_button_without_data_disable_with
@@ -189,10 +202,11 @@ class Primer::Forms::FormsTest < Minitest::Test
     assert_nil button["data-disable-with"]
   end
 
-  def test_renders_a_submit_button_with_primer_utility_margin
+  def test_renders_buttons_with_primer_utility_margins
     render_preview :submit_button_form
 
-    assert_selector "button.mr-3[type=submit]"
+    assert_selector "button.mb-3[type=submit]"
+    assert_selector "button.mb-3[type=button]"
   end
 
   def test_renders_a_text_field_with_primer_utility_color

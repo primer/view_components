@@ -4,7 +4,7 @@ module Primer
   module Forms
     module Dsl
       # :nodoc:
-      class SubmitButtonInput < Input
+      class ButtonInput < Input
         attr_reader :name, :label, :block
 
         def initialize(name:, label:, **system_arguments, &block)
@@ -16,12 +16,12 @@ module Primer
         end
 
         def to_component
-          SubmitButton.new(input: self)
+          Button.new(input: self)
         end
 
         # :nocov:
         def type
-          :submit_button
+          :button
         end
       end
     end
