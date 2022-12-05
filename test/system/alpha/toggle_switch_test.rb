@@ -17,6 +17,7 @@ module Alpha
 
       refute_selector(".ToggleSwitch--checked")
       find("toggle-switch").click
+      wait_for_spinner
       refute_selector(".ToggleSwitch--checked")
     end
 
@@ -26,7 +27,29 @@ module Alpha
       assert_selector(".ToggleSwitch--checked")
       assert_selector(".ToggleSwitch--disabled")
       find("toggle-switch").click
+      wait_for_spinner
       assert_selector(".ToggleSwitch--checked")
+    end
+
+    def test_submits_correct_value_when_off
+      visit_preview(:default)
+
+      refute_selector(".ToggleSwitch--checked")
+      find("toggle-switch").click
+      assert_selector(".ToggleSwitch--checked")
+
+      assert_equal "1", ToggleSwitchController.last_request.params[:value]
+    end
+
+    def test_submits_correct_value_when_on
+      visit_preview(:checked)
+
+      assert_selector(".ToggleSwitch--checked")
+      find("toggle-switch").click
+      wait_for_spinner
+      refute_selector(".ToggleSwitch--checked")
+
+      assert_equal "0", ToggleSwitchController.last_request.params[:value]
     end
 
     def test_csrf_token
@@ -53,6 +76,12 @@ module Alpha
       assert_selector(".ToggleSwitch--checked")
 
       assert_equal "XMLHttpRequest", ToggleSwitchController.last_request.headers["HTTP_REQUESTED_WITH"]
+    end
+
+    private
+
+    def wait_for_spinner
+      refute_selector("[data-target='toggle-switch.loadingSpinner']")
     end
   end
 end

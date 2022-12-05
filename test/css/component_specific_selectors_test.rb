@@ -14,7 +14,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
   include Primer::RenderPreview
 
   IGNORED_SELECTORS = {
-    :global => [/^\d/, ":", /\[.*\]/, /^to/, /^from/],
+    :global => [/^\d/, ":", /\+/, /\[.*\]/, /^to/, /^from/],
     Primer::Alpha::ActionList => [
       ".ActionListWrap--inset",
       ".ActionListItem.ActionListItem--hasSubItem > .ActionListContent",
@@ -34,10 +34,23 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Alpha::Banner => [
       ".Banner .Banner-close"
     ],
+    Primer::Alpha::Dialog => [
+      ".Overlay"
+    ],
     Primer::Alpha::TabNav => [
       ".tabnav-tab.selected",
       ".tabnav-extra",
       ".tabnav-btn"
+    ],
+    Primer::Alpha::TextField => [
+      ".FormControl-inlineValidation p",
+      ".FormControl-select",
+      ".FormControl-textarea",
+      ".FormControl-input",
+      ".FormControl-input-wrap",
+      ".FormControl-select-wrap",
+      ".FormControl-checkbox-wrap",
+      ".FormControl-radio-wrap"
     ],
     Primer::Alpha::ButtonMarketing => [
       ".btn-mktg.disabled",
@@ -78,6 +91,10 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Button--iconOnly",
       ".Button--iconOnly.Button--small",
       ".Button--iconOnly.Button--large"
+    ],
+    Primer::Beta::ButtonGroup => [
+      ".BtnGroup-item.btn.selected",
+      ".BtnGroup-parent"
     ],
     Primer::Beta::Avatar => [
       ".avatar-link",

@@ -51,8 +51,6 @@
     url: "/components/alpha/dialog"
   - title: Dropdown
     url: "/components/alpha/dropdown"
-  - title: DropdownMenu
-    url: "/components/dropdownmenu"
   - title: Flash
     url: "/components/beta/flash"
   - title: Heading
@@ -119,6 +117,20 @@
     url: "/components/alpha/underlinenav"
   - title: UnderlinePanels
     url: "/components/alpha/underlinepanels"
+- title: Deprecated Components
+  children:
+  - title: BlankslateComponent
+    url: "/components/blankslate"
+  - title: BoxComponent
+    url: "/components/box"
+  - title: ButtonComponent
+    url: "/components/button"
+  - title: DropdownMenuComponent
+    url: "/components/dropdownmenu"
+  - title: IconButton
+    url: "/components/iconbutton"
+  - title: Tooltip
+    url: "/components/tooltip"
 - title: Architecture decisions
   children:
   - title: Developing and publishing client-side behaviours
