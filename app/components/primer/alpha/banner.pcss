@@ -14,7 +14,7 @@
   grid-template-rows: min-content;
 
   /* `sm` breakpoint variantion */
-  @media (--primer-viewportRange-narrow-viewport) {
+  @media (max-width: 543.98px) {
     grid-template-areas:
       'visual message close'
       '. actions actions';
@@ -115,7 +115,7 @@
     border-radius: 0;
   }
 
-  @media (--primer-viewportRange-narrowLandscape) {
+  @media (max-width: 767.98px) {
     &.Banner--full-whenNarrow {
       margin-top: calc(var(--primer-borderWidth-thin, max(1px, 0.0625rem)) * -1);
       border-right: 0;
