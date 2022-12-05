@@ -37,6 +37,9 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Alpha::Dialog => [
       ".Overlay"
     ],
+    Primer::Alpha::Layout => [
+      ".Layout"
+    ],
     Primer::Alpha::TabNav => [
       ".tabnav-tab.selected",
       ".tabnav-extra",
