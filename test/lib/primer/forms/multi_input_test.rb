@@ -8,8 +8,8 @@ class Primer::Forms::MultiInputTest < Minitest::Test
   class MultipleFieldsVisibleForm < ApplicationForm
     form do |test_form|
       test_form.multi(name: :foo, label: "Thing") do |multi|
-        multi.text_field(label: "Text field")
-        multi.text_field(label: "Text field")
+        multi.text_field(name: :bar, label: "Text field")
+        multi.text_field(name: :baz, label: "Text field")
       end
     end
   end
@@ -17,8 +17,8 @@ class Primer::Forms::MultiInputTest < Minitest::Test
   class FieldsWithDifferentNamesForm < ApplicationForm
     form do |test_form|
       test_form.multi(name: :foo, label: "Thing") do |multi|
-        multi.text_field(name: :foo, label: "Text field")
-        multi.text_field(name: :bar, label: "Text field", hidden: true)
+        multi.text_field(name: :bar, label: "Text field")
+        multi.text_field(name: :baz, label: "Text field", hidden: true)
       end
     end
   end
@@ -35,15 +35,14 @@ class Primer::Forms::MultiInputTest < Minitest::Test
     assert_includes error.message, "can be visible"
   end
 
-  def test_inputs_must_have_same_name
-    error = assert_raises(ArgumentError) do
-      render_in_view_context do
-        primer_form_with(url: "/foo") do |f|
-          render(FieldsWithDifferentNamesForm.new(f))
-        end
+  def test_inputs_have_data_name
+    render_in_view_context do
+      primer_form_with(url: "/foo") do |f|
+        render(FieldsWithDifferentNamesForm.new(f))
       end
     end
 
-    assert_includes error.message, "must all have the same name"
+    assert_selector "input[data-name=bar]"
+    assert_selector "input[data-name=baz]", visible: false
   end
 end
