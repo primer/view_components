@@ -10,7 +10,7 @@ class ClipboardCopyComponentMigrationCounterTest < ErblintTestCase
     @file = "<clipboard-copy value=\"value\" aria-label=\"label\">ClipboardCopy</clipboard-copy>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::ClipboardCopy.new(value: \"value\", \"aria-label\": \"label\")")
+    assert_includes(offenses.first.message, "render Primer::Beta::ClipboardCopy.new(value: \"value\", \"aria-label\": \"label\")")
   end
 
   def test_autocorrects
@@ -29,12 +29,12 @@ class ClipboardCopyComponentMigrationCounterTest < ErblintTestCase
 
     expected = <<~HTML
       <%# erblint:counter ClipboardCopyComponentMigrationCounter 1 %>
-      <%= render Primer::ClipboardCopy.new(value: "value", "aria-label": "label") do %>
+      <%= render Primer::Beta::ClipboardCopy.new(value: "value", "aria-label": "label") do %>
         ClipboardCopy 1
         <clipboard-copy value="value" aria-label="label" invalid-attr>
           Can\'t be autocorrected
         </clipboard-copy>
-        <%= render Primer::ClipboardCopy.new(value: "value", "aria-label": "label") do %>
+        <%= render Primer::Beta::ClipboardCopy.new(value: "value", "aria-label": "label") do %>
           ClipboardCopy 2
           <a>not a ClipboardCopy</a>
         <% end %>
@@ -52,7 +52,7 @@ class ClipboardCopyComponentMigrationCounterTest < ErblintTestCase
     HTML
 
     expected = <<~HTML
-      <%= render Primer::ClipboardCopy.new(for: "clone-help-step-2", "aria-label": "Copy to clipboard", classes: "btn btn-sm zeroclipboard-button") do %>
+      <%= render Primer::Beta::ClipboardCopy.new(for: "clone-help-step-2", "aria-label": "Copy to clipboard", classes: "btn btn-sm zeroclipboard-button") do %>
         <%= render(Primer::OcticonComponent.new(icon: "paste")) %>
       <% end %>
     HTML
@@ -68,7 +68,7 @@ class ClipboardCopyComponentMigrationCounterTest < ErblintTestCase
     HTML
 
     expected = <<~HTML
-      <%= render Primer::ClipboardCopy.new(value: some_call, "aria-label": "label") do %>
+      <%= render Primer::Beta::ClipboardCopy.new(value: some_call, "aria-label": "label") do %>
         clipboard-copy
       <% end %>
     HTML
@@ -84,7 +84,7 @@ class ClipboardCopyComponentMigrationCounterTest < ErblintTestCase
     HTML
 
     expected = <<~'HTML'
-      <%= render Primer::ClipboardCopy.new(value: "string-#{ some_call }", "aria-label": "label") do %>
+      <%= render Primer::Beta::ClipboardCopy.new(value: "string-#{ some_call }", "aria-label": "label") do %>
         clipboard-copy
       <% end %>
     HTML
@@ -100,7 +100,7 @@ class ClipboardCopyComponentMigrationCounterTest < ErblintTestCase
     HTML
 
     expected = <<~'HTML'
-      <%= render Primer::ClipboardCopy.new(value: "string-#{ some_call }#{ other_call }-more-#{ another_call }", "aria-label": "label") do %>
+      <%= render Primer::Beta::ClipboardCopy.new(value: "string-#{ some_call }#{ other_call }-more-#{ another_call }", "aria-label": "label") do %>
         clipboard-copy
       <% end %>
     HTML

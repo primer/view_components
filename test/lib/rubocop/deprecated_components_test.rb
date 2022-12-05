@@ -17,7 +17,7 @@ class RubocopDeprecatedComponentsTest < CopTestCase
 
   def test_does_not_raise_offense_if_non_legacy_component_is_used
     investigate(cop, <<-RUBY)
-      Primer::ClipboardCopy.new
+      Primer::Beta::ClipboardCopy.new
     RUBY
 
     assert_equal 0, cop.offenses.count

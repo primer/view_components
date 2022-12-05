@@ -40,7 +40,7 @@
   - title: ButtonMarketing
     url: "/components/alpha/buttonmarketing"
   - title: ClipboardCopy
-    url: "/components/clipboardcopy"
+    url: "/components/beta/clipboardcopy"
   - title: CloseButton
     url: "/components/beta/closebutton"
   - title: Counter

@@ -5,6 +5,8 @@
 # See 'docs/contributors/deprecations.md' for information on configuration options.
 
 deprecations:
+  - component: "Primer::ClipboardCopy"
+    replacement: "Primer::Beta::ClipboardCopy"
   - component: "Primer::Alpha::AutoComplete"
     autocorrect: true
     replacement: "Primer::Beta::AutoComplete"
