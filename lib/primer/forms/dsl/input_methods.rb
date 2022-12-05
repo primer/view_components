@@ -17,8 +17,8 @@ module Primer
           add_input HiddenInput.new(builder: builder, form: form, **options)
         end
 
-        def check_box(**options)
-          add_input CheckBoxInput.new(builder: builder, form: form, **options)
+        def check_box(**options, &block)
+          add_input CheckBoxInput.new(builder: builder, form: form, **options, &block)
         end
 
         def radio_button_group(**options, &block)

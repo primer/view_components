@@ -23,9 +23,22 @@ class Primer::Forms::CheckboxInputTest < Minitest::Test
     assert_includes error.message, "Check box needs an explicit value if scheme is array"
   end
 
+  class NestedForm < ApplicationForm
+    form do |nested_form|
+      nested_form.text_field(
+        name: :bar,
+        label: "Bar"
+      )
+    end
+  end
+
   class HiddenCheckboxForm < ApplicationForm
     form do |check_form|
-      check_form.check_box(name: :foo, label: "Foo", hidden: true)
+      check_form.check_box(name: :foo, label: "Foo", hidden: true) do |foo_check|
+        foo_check.nested_form do |builder|
+          NestedForm.new(builder)
+        end
+      end
     end
   end
 
@@ -36,6 +49,28 @@ class Primer::Forms::CheckboxInputTest < Minitest::Test
       end
     end
 
-    assert_selector ".FormControl-checkbox-wrap", visible: false
+    assert_selector "input[name=foo]", visible: false
+    assert_selector "input[name=bar]", visible: false
+  end
+
+  class CheckboxWithHiddenNestedForm < ApplicationForm
+    form do |check_form|
+      check_form.check_box(name: :foo, label: "Foo") do |foo_check|
+        foo_check.nested_form(hidden: true) do |builder|
+          NestedForm.new(builder)
+        end
+      end
+    end
+  end
+
+  def test_nested_form_can_be_hidden_independently
+    render_in_view_context do
+      primer_form_with(url: "/foo") do |f|
+        render(CheckboxWithHiddenNestedForm.new(f))
+      end
+    end
+
+    assert_selector "input[name=foo]"
+    assert_selector "input[name=bar]", visible: false
   end
 end
