@@ -5,7 +5,7 @@ module Primer
     module Dsl
       # :nodoc:
       class SelectListInput < Input
-        SELECT_ARGUMENTS = %i[multiple disabled include_blank prompt].freeze
+        SELECT_ARGUMENTS = %i[multiple include_blank prompt].freeze
 
         # :nodoc:
         class Option
