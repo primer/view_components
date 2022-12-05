@@ -20,7 +20,7 @@ of the Primer Dropdown.
 | n/a         | `overlay`    | Color of the menu overlay: `:default`, `:dark`, or `:none` |
 | n/a         | `with_caret` | Whether or not a caret should be displayed on the button   |
 
-The remaining arguments have stayed the same. 
+The remaining arguments have stayed the same.
 
 Please see the following documentation for complete descriptions and examples.
 
@@ -52,4 +52,3 @@ The following arguments are available with the `menu` named slot in Primer Dropd
 | `system_arguments` | [System arguments](https://primer.style/view-components/system-arguments)    |
 
 [&larr; Back to migration guides](https://primer.style/view-components/migration)
-
