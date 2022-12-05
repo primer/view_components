@@ -14,17 +14,18 @@ of the Primer Dropdown.
 
 | From `Primer::DropdownMenuComponent` | To `Primer::Alpha::Dropdown` | Notes |
 |--------------------------------------|------------------------------|-------|
-| `direction` | n/a          | moved to `menu` slot, below                                |
-| `scheme`    | n/a          | moved to `menu` slot, below                                |
-| `header`    | n/a          | moved to `menu` slot, below                                |
-| n/a         | `overlay`    | color of the menu overlay: `:default`, `:dark`, or `:none` |
-| n/a         | `with_caret` | whether or not a caret should be displayed on the button   |
+| `direction` | n/a          | Moved to `menu` slot, below                                |
+| `scheme`    | n/a          | Moved to `menu` slot, below                                |
+| `header`    | n/a          | Moved to `menu` slot, below                                |
+| n/a         | `overlay`    | Color of the menu overlay: `:default`, `:dark`, or `:none` |
+| n/a         | `with_caret` | Whether or not a caret should be displayed on the button   |
 
 The remaining arguments have stayed the same. 
 
 Please see the following documentation for complete descriptions and examples.
 
-* [`Primer::Alpha::Dropdown` component](https://primer.style/view-components/components/alpha/dropdown)
+* [Deprecated `Primer::DropdownMenuComponent`](https://primer.style/view-components/components/dropdownmenu)
+* [Updated `Primer::Alpha::Dropdown` component](https://primer.style/view-components/components/alpha/dropdown)
 * [`Primer::Alpha::Dropdown` Lookbook examples](https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/default)
 
 ## Slot Names
@@ -33,8 +34,8 @@ The following slots have changed with the newer Primer Dropdown.
 
 | From `Primer::DropdownMenuComponent` | To `Primer::Alpha::Dropdown` | Notes |
 |--------------------------------------|------------------------------|-------|
-| n/a | `menu`   | see the "Arguments for `menu` slot" section, below |
-| n/a | `button` | the button to display for the dropdown action      |
+| n/a | `menu`   | Required context menu for the dropdown. See the "Arguments for `menu` slot" section, below |
+| n/a | `button` | The [`Primer::Beta::Button`](https://primer.style/view-components/components/beta/button) to display for the dropdown action |
 
 The remaining slot names have stayed the same.
 
