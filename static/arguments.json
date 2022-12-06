@@ -1388,6 +1388,38 @@
     ]
   },
   {
+    "component": "ClipboardCopy",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/clipboard_copy.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/clipboard_copy/default/",
+    "parameters": [
+      {
+        "name": "aria-label",
+        "type": "String",
+        "default": "N/A",
+        "description": "String that will be read to screenreaders when the component is focused"
+      },
+      {
+        "name": "value",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Text to copy into the users clipboard when they click the component."
+      },
+      {
+        "name": "for",
+        "type": "String",
+        "default": "N/A",
+        "description": "Element id from where to get the copied value."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "CloseButton",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/close_button.rb",
@@ -1744,6 +1776,116 @@
     ]
   },
   {
+    "component": "RelativeTime",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/relative_time.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/relative_time/default/",
+    "parameters": [
+      {
+        "name": "datetime",
+        "type": "Time",
+        "default": "N/A",
+        "description": "The time to be formatted."
+      },
+      {
+        "name": "tense",
+        "type": "Symbol",
+        "default": "`:auto`",
+        "description": "Which tense to use. One of `:auto`, `:future`, or `:past`."
+      },
+      {
+        "name": "prefix",
+        "type": "sring",
+        "default": "`nil`",
+        "description": "What to prefix the relative ime display with."
+      },
+      {
+        "name": "second",
+        "type": "Symbol",
+        "default": "`SECOND_DEFAULT`",
+        "description": "What format seconds should take. One of `nil`, `:numeric`, or `:two_digit`."
+      },
+      {
+        "name": "minute",
+        "type": "Symbol",
+        "default": "`MINUTE_DEFAULT`",
+        "description": "What format minues should take. One of `nil`, `:numeric`, or `:two_digit`."
+      },
+      {
+        "name": "hour",
+        "type": "Symbol",
+        "default": "`HOUR_DEFAULT`",
+        "description": "What format hours should take. One of `nil`, `:numeric`, or `:two_digit`."
+      },
+      {
+        "name": "weekday",
+        "type": "Symbol",
+        "default": "`WEEKDAY_DEFAULT`",
+        "description": "What format weekdays should take. One of `nil`, `:long`, `:narrow`, or `:short`."
+      },
+      {
+        "name": "day",
+        "type": "Symbol",
+        "default": "`DAY_DEFAULT`",
+        "description": "What format days should take. One of `nil`, `:numeric`, or `:two_digit`."
+      },
+      {
+        "name": "month",
+        "type": "Symbol",
+        "default": "`MONTH_DEFAULT`",
+        "description": "What format months should take. One of `nil`, `:long`, `:narrow`, `:numeric`, `:short`, or `:two_digit`."
+      },
+      {
+        "name": "year",
+        "type": "Symbol",
+        "default": "`YEAR_DEFAULT`",
+        "description": "What format years should take. One of `nil`, `:numeric`, or `:two_digit`."
+      },
+      {
+        "name": "time_zone_name",
+        "type": "Symbol",
+        "default": "`TIMEZONENAME_DEFAULT`",
+        "description": "What format the time zone should take. One of `nil`, `:long`, `:long_generic`, `:long_offset`, `:short`, `:short_generic`, or `:short_offset`."
+      },
+      {
+        "name": "threshold",
+        "type": "string",
+        "default": "`nil`",
+        "description": "The threshold at which relative time displays become absolute."
+      },
+      {
+        "name": "precision",
+        "type": "Symbol",
+        "default": "`PRECISION_DEFAULT`",
+        "description": "The precision elapsed time should display. One of `nil`, `:day`, `:hour`, `:minute`, `:month`, `:second`, or `:year`."
+      },
+      {
+        "name": "format",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The format the display should take. One of `:auto`, `:elapsed`, or `:micro`."
+      },
+      {
+        "name": "lang",
+        "type": "string",
+        "default": "`nil`",
+        "description": "The language to use."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "default": "`nil`",
+        "description": "Provide a custom title to the element."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Text",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb",
@@ -1844,38 +1986,6 @@
         "type": "Boolean",
         "default": "`false`",
         "description": "Whether or not to render a dropdown caret."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "ClipboardCopy",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/clipboard_copy.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/clipboard_copy/default/",
-    "parameters": [
-      {
-        "name": "aria-label",
-        "type": "String",
-        "default": "N/A",
-        "description": "String that will be read to screenreaders when the component is focused"
-      },
-      {
-        "name": "value",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Text to copy into the users clipboard when they click the component."
-      },
-      {
-        "name": "for",
-        "type": "String",
-        "default": "N/A",
-        "description": "Element id from where to get the copied value."
       },
       {
         "name": "system_arguments",

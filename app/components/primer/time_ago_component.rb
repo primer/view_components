@@ -15,7 +15,8 @@ module Primer
       @system_arguments = deny_tag_argument(**system_arguments)
       @system_arguments[:datetime] = time.utc.iso8601
       @system_arguments[:classes] = class_names("no-wrap", @system_arguments[:classes])
-      @system_arguments[:tag] = "time-ago"
+      @system_arguments[:tag] = "relative-time"
+      @system_arguments[:tense] = "past"
       @system_arguments[:format] = "micro" if micro
       @time = time
       @micro = micro

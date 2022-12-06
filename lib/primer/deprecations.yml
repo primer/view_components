@@ -26,6 +26,10 @@ deprecations:
     replacement: "Primer::Beta::Button"
     guide: "https://primer.style/view-components/guides/primer_button_component"
 
+  - component: "Primer::ClipboardCopy"
+    autocorrect: true
+    replacement: "Primer::Beta::ClipboardCopy"
+
   - component: "Primer::DropdownMenuComponent"
     autocorrect: false
     replacement: "Primer::Beta::Dropdown"
