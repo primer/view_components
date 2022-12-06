@@ -72,7 +72,7 @@
   - title: LocalTime
     url: "/components/localtime"
   - title: Markdown
-    url: "/components/markdown"
+    url: "/components/beta/markdown"
   - title: Menu
     url: "/components/menu"
   - title: NavList
