@@ -7,14 +7,31 @@ class PrimerTextFieldElement extends HTMLElement {
   @target validationElement: HTMLElement
   @target validationMessageElement: HTMLElement
 
-  connectedCallback(): void {
-    this.inputElement.addEventListener('auto-check-success', () => { this.clearError() })
+  #abortController: AbortController | null
 
-    this.inputElement.addEventListener('auto-check-error', (event: any) => {
-      event.detail.response.text().then((error_message: string) => {
-        this.setError(error_message)
-      })
-    })
+  connectedCallback(): void {
+    this.#abortController?.abort()
+    const {signal} = (this.#abortController = new AbortController())
+
+    this.inputElement.addEventListener(
+      'auto-check-success',
+      () => { this.clearError() },
+      {signal}
+    )
+
+    this.inputElement.addEventListener(
+      'auto-check-error',
+      (event: any) => {
+        event.detail.response.text().then(
+          (error_message: string) => { this.setError(error_message) }
+        )
+      },
+      {signal}
+    )
+  }
+
+  disconnectedCallback() {
+    this.#abortController?.abort()
   }
 
   clearError(): void {
@@ -28,15 +45,4 @@ class PrimerTextFieldElement extends HTMLElement {
     this.validationElement.hidden = false
     this.inputElement.setAttribute('invalid', 'true')
   }
-}
-
-declare global {
-  interface Window {
-    PrimerTextFieldElement: typeof PrimerTextFieldElement
-  }
-}
-
-if (!window.customElements.get('primer-text-field')) {
-  Object.assign(window, {PrimerTextFieldElement})
-  window.customElements.define('primer-text-field', PrimerTextFieldElement)
 }
