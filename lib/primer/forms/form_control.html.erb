@@ -18,7 +18,5 @@
     <%= render(Caption.new(input: @input)) %>
   <% end %>
 <% else %>
-  <%= render(Primer::ConditionalWrapper.new(condition: @input.hidden?, tag: :div, hidden: @input.hidden?)) do %>
-    <%= content %>
-  <% end %>
+  <%= content %>
 <% end %>
