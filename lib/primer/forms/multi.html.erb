@@ -1,7 +1,7 @@
-<primer-multi-input>
-  <%= render(FormControl.new(input: @input)) do %>
+<%= render(FormControl.new(input: @input)) do %>
+  <primer-multi-input>
     <% @input.inputs.each do |child_input| %>
       <%= render(child_input.to_component) %>
     <% end %>
-  <% end %>
-</primer-multi-input>
+  </primer-multi-input>
+<% end %>
