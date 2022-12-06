@@ -74,7 +74,7 @@
   - title: Markdown
     url: "/components/markdown"
   - title: Menu
-    url: "/components/menu"
+    url: "/components/alpha/menu"
   - title: NavList
     url: "/components/alpha/navlist"
   - title: Octicon

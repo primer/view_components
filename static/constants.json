@@ -300,6 +300,17 @@
       "section"
     ]
   },
+  "Primer::Alpha::Menu": {
+    "HEADING_TAG_FALLBACK": "h2",
+    "HEADING_TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
   "Primer::Alpha::NavList": {
     "Item": "Primer::Alpha::NavList::Item",
     "Section": "Primer::Alpha::NavList::Section"
@@ -995,15 +1006,6 @@
     ]
   },
   "Primer::MenuComponent": {
-    "HEADING_TAG_FALLBACK": "h2",
-    "HEADING_TAG_OPTIONS": [
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6"
-    ]
   },
   "Primer::Navigation::TabComponent": {
     "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [
