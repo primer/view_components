@@ -38,7 +38,9 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".Overlay"
     ],
     Primer::Alpha::Layout => [
-      ".Layout"
+      ".Layout-divider",
+      ".Layout--divided",
+      ".Layout-main"
     ],
     Primer::Alpha::TabNav => [
       ".tabnav-tab.selected",
