@@ -2,7 +2,7 @@
 
 require "system/test_case"
 
-class IntegrationLocalTimeComponentTest < System::TestCase
+class IntegrationAlphaLocalTimeTest < System::TestCase
   def test_default
     visit_preview(:default)
 
