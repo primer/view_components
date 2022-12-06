@@ -2,17 +2,17 @@
 
 require "components/test_helper"
 
-class PrimerLocalTimeTest < Minitest::Test
+class PrimerAlphaLocalTimeTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders
-    render_inline Primer::LocalTime.new(datetime: DateTime.parse("2014-06-01T13:05:07Z"))
+    render_inline Primer::Alpha::LocalTime.new(datetime: DateTime.parse("2014-06-01T13:05:07Z"))
 
     assert_selector("relative-time[data-view-component][threshold=\"PT0S\"][prefix=\"\"][datetime=\"2014-06-01T13:05:07+00:00\"][year=\"numeric\"][month=\"short\"][day=\"numeric\"][hour=\"numeric\"][minute=\"numeric\"][second=\"numeric\"]", text: "June 1, 2014 13:05 +00:00")
   end
 
   def test_all_options
-    render_inline Primer::LocalTime.new(
+    render_inline Primer::Alpha::LocalTime.new(
       datetime: DateTime.parse("2016-06-01T13:05:07Z"),
       weekday: :long,
       year: :"2-digit",
@@ -28,7 +28,7 @@ class PrimerLocalTimeTest < Minitest::Test
   end
 
   def test_contents
-    render_inline Primer::LocalTime.new(datetime: DateTime.parse("2014-06-01T13:05:07Z"), initial_text: "2014/06/01 13:05")
+    render_inline Primer::Alpha::LocalTime.new(datetime: DateTime.parse("2014-06-01T13:05:07Z"), initial_text: "2014/06/01 13:05")
 
     assert_selector("relative-time[data-view-component][threshold=\"PT0S\"][prefix=\"\"][datetime=\"2014-06-01T13:05:07+00:00\"][year=\"numeric\"][month=\"short\"][day=\"numeric\"][hour=\"numeric\"][minute=\"numeric\"][second=\"numeric\"]", text: "2014/06/01 13:05")
   end

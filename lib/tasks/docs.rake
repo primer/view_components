@@ -36,7 +36,7 @@ namespace :docs do
       Primer::Alpha::Layout,
       Primer::HellipButton,
       Primer::Alpha::Image,
-      Primer::LocalTime,
+      Primer::Alpha::LocalTime,
       Primer::OcticonSymbolsComponent,
       Primer::Alpha::ImageCrop,
       Primer::IconButton,
@@ -101,7 +101,7 @@ namespace :docs do
 
     js_components = [
       Primer::Alpha::Dropdown,
-      Primer::LocalTime,
+      Primer::Alpha::LocalTime,
       Primer::Alpha::ImageCrop,
       Primer::Beta::AutoComplete,
       Primer::Alpha::Banner,

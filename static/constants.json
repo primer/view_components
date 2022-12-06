@@ -300,6 +300,18 @@
       "section"
     ]
   },
+  "Primer::Alpha::LocalTime": {
+    "DEFAULT_DIGIT_TYPE": "numeric",
+    "DEFAULT_TEXT_TYPE": "short",
+    "DIGIT_TYPE_OPTIONS": [
+      "numeric",
+      "2-digit"
+    ],
+    "TEXT_TYPE_OPTIONS": [
+      "short",
+      "long"
+    ]
+  },
   "Primer::Alpha::NavList": {
     "Item": "Primer::Alpha::NavList::Item",
     "Section": "Primer::Alpha::NavList::Section"
@@ -975,16 +987,6 @@
   "Primer::LinkComponent": {
   },
   "Primer::LocalTime": {
-    "DEFAULT_DIGIT_TYPE": "numeric",
-    "DEFAULT_TEXT_TYPE": "short",
-    "DIGIT_TYPE_OPTIONS": [
-      "numeric",
-      "2-digit"
-    ],
-    "TEXT_TYPE_OPTIONS": [
-      "short",
-      "long"
-    ]
   },
   "Primer::Markdown": {
     "DEFAULT_TAG": "div",

@@ -70,7 +70,7 @@
   - title: Link
     url: "/components/beta/link"
   - title: LocalTime
-    url: "/components/localtime"
+    url: "/components/alpha/localtime"
   - title: Markdown
     url: "/components/markdown"
   - title: Menu

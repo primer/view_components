@@ -498,6 +498,80 @@
     ]
   },
   {
+    "component": "LocalTime",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/local_time.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/local_time/default/",
+    "parameters": [
+      {
+        "name": "datetime",
+        "type": "DateTime",
+        "default": "N/A",
+        "description": "The date to parse"
+      },
+      {
+        "name": "initial_text",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Text to render before component is initialized"
+      },
+      {
+        "name": "weekday",
+        "type": "Symbol",
+        "default": "`:short`",
+        "description": "One of `:long` or `:short`."
+      },
+      {
+        "name": "year",
+        "type": "Symbol",
+        "default": "`:numeric`",
+        "description": "One of `:2-digit` or `:numeric`."
+      },
+      {
+        "name": "month",
+        "type": "Symbol",
+        "default": "`:short`",
+        "description": "One of `:long` or `:short`."
+      },
+      {
+        "name": "day",
+        "type": "Symbol",
+        "default": "`:numeric`",
+        "description": "One of `:2-digit` or `:numeric`."
+      },
+      {
+        "name": "hour",
+        "type": "Symbol",
+        "default": "`:numeric`",
+        "description": "One of `:2-digit` or `:numeric`."
+      },
+      {
+        "name": "minute",
+        "type": "Symbol",
+        "default": "`:numeric`",
+        "description": "One of `:2-digit` or `:numeric`."
+      },
+      {
+        "name": "second",
+        "type": "Symbol",
+        "default": "`:numeric`",
+        "description": "One of `:2-digit` or `:numeric`."
+      },
+      {
+        "name": "time_zone_name",
+        "type": "Symbol",
+        "default": "`:short`",
+        "description": "One of `:long` or `:short`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "NavList",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list.rb",
@@ -2132,80 +2206,6 @@
         "type": "Integer",
         "default": "`3`",
         "description": "Sidebar column width."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "LocalTime",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/local_time.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/local_time/default/",
-    "parameters": [
-      {
-        "name": "datetime",
-        "type": "DateTime",
-        "default": "N/A",
-        "description": "The date to parse"
-      },
-      {
-        "name": "initial_text",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Text to render before component is initialized"
-      },
-      {
-        "name": "weekday",
-        "type": "Symbol",
-        "default": "`:short`",
-        "description": "One of `:long` or `:short`."
-      },
-      {
-        "name": "year",
-        "type": "Symbol",
-        "default": "`:numeric`",
-        "description": "One of `:2-digit` or `:numeric`."
-      },
-      {
-        "name": "month",
-        "type": "Symbol",
-        "default": "`:short`",
-        "description": "One of `:long` or `:short`."
-      },
-      {
-        "name": "day",
-        "type": "Symbol",
-        "default": "`:numeric`",
-        "description": "One of `:2-digit` or `:numeric`."
-      },
-      {
-        "name": "hour",
-        "type": "Symbol",
-        "default": "`:numeric`",
-        "description": "One of `:2-digit` or `:numeric`."
-      },
-      {
-        "name": "minute",
-        "type": "Symbol",
-        "default": "`:numeric`",
-        "description": "One of `:2-digit` or `:numeric`."
-      },
-      {
-        "name": "second",
-        "type": "Symbol",
-        "default": "`:numeric`",
-        "description": "One of `:2-digit` or `:numeric`."
-      },
-      {
-        "name": "time_zone_name",
-        "type": "Symbol",
-        "default": "`:short`",
-        "description": "One of `:long` or `:short`."
       },
       {
         "name": "system_arguments",
