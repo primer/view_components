@@ -56,6 +56,7 @@
   "Primer::Beta::Link": "beta",
   "Primer::Beta::Popover": "beta",
   "Primer::Beta::ProgressBar": "beta",
+  "Primer::Beta::RelativeTime": "beta",
   "Primer::Beta::Text": "beta",
   "Primer::Beta::Truncate": "beta",
   "Primer::Beta::Truncate::TruncateText": "alpha",
