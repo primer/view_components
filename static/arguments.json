@@ -1388,6 +1388,38 @@
     ]
   },
   {
+    "component": "ClipboardCopy",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/clipboard_copy.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/clipboard_copy/default/",
+    "parameters": [
+      {
+        "name": "aria-label",
+        "type": "String",
+        "default": "N/A",
+        "description": "String that will be read to screenreaders when the component is focused"
+      },
+      {
+        "name": "value",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Text to copy into the users clipboard when they click the component."
+      },
+      {
+        "name": "for",
+        "type": "String",
+        "default": "N/A",
+        "description": "Element id from where to get the copied value."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "CloseButton",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/close_button.rb",
@@ -1844,38 +1876,6 @@
         "type": "Boolean",
         "default": "`false`",
         "description": "Whether or not to render a dropdown caret."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "ClipboardCopy",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/clipboard_copy.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/clipboard_copy/default/",
-    "parameters": [
-      {
-        "name": "aria-label",
-        "type": "String",
-        "default": "N/A",
-        "description": "String that will be read to screenreaders when the component is focused"
-      },
-      {
-        "name": "value",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Text to copy into the users clipboard when they click the component."
-      },
-      {
-        "name": "for",
-        "type": "String",
-        "default": "N/A",
-        "description": "Element id from where to get the copied value."
       },
       {
         "name": "system_arguments",

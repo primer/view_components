@@ -53,7 +53,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::ButtonComponent, {}, proc { "Button" }],
     [Primer::Beta::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
     [Primer::Alpha::ButtonMarketing, {}],
-    [Primer::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
+    [Primer::Beta::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
     [Primer::ConditionalWrapper, { condition: true, tag: :div }],
     [Primer::Beta::CloseButton, {}],
     [Primer::Beta::Counter, { count: 1 }],
@@ -110,6 +110,7 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::ClipboardCopy",
       "Primer::LabelComponent",
       "Primer::LinkComponent",
       "Primer::Alpha::ActionList::Heading",
