@@ -37,7 +37,9 @@ module Primer
 
       @datetime = datetime
 
-      @system_arguments[:tag] = "local-time"
+      @system_arguments[:tag] = "relative-time"
+      @system_arguments[:threshold] = "PT0S"
+      @system_arguments[:prefix] = ""
       @system_arguments[:datetime] = datetime
 
       @initial_text = initial_text
