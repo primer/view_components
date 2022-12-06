@@ -89,7 +89,7 @@
   }
 
   &.Layout--flowRow-until-md {
-    @media (--primer-viewportRange-narrow-viewport) {
+    @media (max-width: calc(768px - 0.02px)) {
       @mixin flow-as-row;
     }
   }
