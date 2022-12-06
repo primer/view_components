@@ -2,9 +2,7 @@
 
 module Primer
   module Beta
-    # Add a general description of component here
-    # Add additional usage considerations or best practices that may aid the user to use the component correctly.
-    # @accessibility Add any accessibility considerations
+    # Formats a timestamp as a localized string or as relative text that auto-updates in the user's browser.
     class RelativeTime < Primer::Component
       status :beta
 
@@ -90,7 +88,7 @@ module Primer
       #   <%= render(Primer::Beta::RelativeTime.new(datetime: Time.at(628232400), tense: :past)) %>
       #
       # @example Elapsed Time
-      #   <%= render(Primer::Beta::RelativeTime.new(datetime: Time.at(628232400), tense: :elapsed)) %>
+      #   <%= render(Primer::Beta::RelativeTime.new(datetime: Time.at(628232400), format: :elapsed)) %>
       #
       # @param datetime [Time] The time to be formatted.
       # @param tense [Symbol] Which tense to use. <%= one_of(Primer::Beta::RelativeTime::TENSE_OPTIONS) %>
