@@ -40,7 +40,9 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Alpha::Layout => [
       ".Layout-divider",
       ".Layout--divided",
-      ".Layout-main"
+      ".Layout-main",
+      ".Layout.Layout--flowRow-until-lg.Layout--sidebarPosition-flowRow-end .Layout-sidebar",
+      ".Layout.Layout--flowRow-until-lg.Layout--sidebarPosition-flowRow-none .Layout-sidebar"
     ],
     Primer::Alpha::TabNav => [
       ".tabnav-tab.selected",
