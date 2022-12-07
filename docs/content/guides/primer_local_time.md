@@ -30,4 +30,6 @@ Please see the following documentation for complete descriptions and examples.
 * [`Primer::Beta::RelativeTime` component](https://primer.style/view-components/components/beta/relativetime)
 * [`Primer::Beta::RelativeTime` Lookbook examples](https://primer.style/view-components/lookbook/inspect/primer/beta/relativetime/default)
 
+<p>&nbsp;</p>
+
 [&larr; Back to migration guides](https://primer.style/view-components/migration)
