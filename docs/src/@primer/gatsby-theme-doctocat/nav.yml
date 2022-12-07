@@ -127,10 +127,10 @@
     url: "/components/button"
   - title: DropdownMenuComponent
     url: "/components/dropdownmenu"
-  - title: LocalTime
-    url: "/components/localtime"
   - title: IconButton
     url: "/components/iconbutton"
+  - title: LocalTime
+    url: "/components/localtime"
   - title: Tooltip
     url: "/components/tooltip"
 - title: Architecture decisions
