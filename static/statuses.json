@@ -77,7 +77,7 @@
   "Primer::LabelComponent": "deprecated",
   "Primer::LayoutComponent": "alpha",
   "Primer::LinkComponent": "deprecated",
-  "Primer::LocalTime": "alpha",
+  "Primer::LocalTime": "deprecated",
   "Primer::Markdown": "deprecated",
   "Primer::MenuComponent": "alpha",
   "Primer::Navigation::TabComponent": "alpha",
