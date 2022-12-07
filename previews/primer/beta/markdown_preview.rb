@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 module Primer
-  # @label Markdown
-  class MarkdownPreview < ViewComponent::Preview
-    MD_FIXTURE = %(
+  module Beta
+    # @label Markdown
+    class MarkdownPreview < ViewComponent::Preview
+      MD_FIXTURE = %(
       <p>Text can be <b>bold</b>, <i>italic</i>, or <s>strikethrough</s>. <a href=\"https://github.com\">Links </a> should be blue with no underlines (unless hovered over).</p>
 
       <p>There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.</p>
@@ -274,17 +275,18 @@ module Primer
       <pre><code>This is the final element on the page and there should be no margin below this.</code></pre>
     ).html_safe # rubocop:disable Rails/OutputSafety
 
-    # @label Playground
-    def playground
-      render(Primer::Markdown.new) do
-        MD_FIXTURE
+      # @label Playground
+      def playground
+        render(Primer::Beta::Markdown.new) do
+          MD_FIXTURE
+        end
       end
-    end
 
-    # @label Default Options
-    def default
-      render(Primer::Markdown.new) do
-        MD_FIXTURE
+      # @label Default Options
+      def default
+        render(Primer::Beta::Markdown.new) do
+          MD_FIXTURE
+        end
       end
     end
   end

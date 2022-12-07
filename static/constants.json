@@ -720,6 +720,14 @@
       "span"
     ]
   },
+  "Primer::Beta::Markdown": {
+    "DEFAULT_TAG": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "article",
+      "td"
+    ]
+  },
   "Primer::Beta::Popover": {
     "CARET_DEFAULT": "top",
     "CARET_MAPPINGS": {
@@ -998,12 +1006,6 @@
     ]
   },
   "Primer::Markdown": {
-    "DEFAULT_TAG": "div",
-    "TAG_OPTIONS": [
-      "div",
-      "article",
-      "td"
-    ]
   },
   "Primer::MenuComponent": {
   },
