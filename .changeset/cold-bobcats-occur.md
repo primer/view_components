@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Revert moving `button` styles to PVC
+Move `Layout` styles to PVC

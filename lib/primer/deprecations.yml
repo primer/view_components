@@ -68,6 +68,10 @@ deprecations:
     autocorrect: true
     replacement: "Primer::Beta::Markdown"
 
+  - component: "Primer::MenuComponent"
+    autocorrect: true
+    replacement: "Primer::Alpha::Menu"
+
   - component: "Primer::PopoverComponent"
     autocorrect: true
     replacement: "Primer::Beta::Popover"

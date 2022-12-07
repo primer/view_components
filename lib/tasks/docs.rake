@@ -68,7 +68,7 @@ namespace :docs do
       Primer::LayoutComponent,
       Primer::Beta::Link,
       Primer::Beta::Markdown,
-      Primer::MenuComponent,
+      Primer::Alpha::Menu,
       Primer::Navigation::TabComponent,
       Primer::OcticonComponent,
       Primer::Beta::Popover,

@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.0.114
+
+### Patch Changes
+
+- [#1685](https://github.com/primer/view_components/pull/1685) [`5f062fed`](https://github.com/primer/view_components/commit/5f062fed16980bd1ec437636eef1851dfea56388) Thanks [@simurai](https://github.com/simurai)! - Revert moving `button` styles to PVC
+
+* [#1681](https://github.com/primer/view_components/pull/1681) [`0c9611f5`](https://github.com/primer/view_components/commit/0c9611f5a08c78452be999c08d9f24703b5bd671) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Moving Primer::Markdown to Primer::Beta::Markdown, and deprecating the original
+
 ## 0.0.113
 
 ### Patch Changes
