@@ -13,6 +13,7 @@ IGNORED_SELECTORS = {
   Primer::Alpha::Dialog => ["Overlay", "Overlay--hidden", "Overlay--motion-scaleFade", "Overlay--size-medium", "Overlay-actionWrap", "Overlay-backdrop--center", "Overlay-body", "Overlay-closeButton", "Overlay-footer", "Overlay-footer--alignEnd", "Overlay-footer--divided", "Overlay-header", "Overlay-headerContentWrap", "Overlay-title", "Overlay-titleWrap", "Overlay-whenNarrow", "btn", "btn-primary", "close-button", "octicon", "octicon-x"],
   Primer::Alpha::HiddenTextExpander => ["ellipsis-expander", "hidden-text-expander"],
   Primer::Alpha::Layout => ["Layout--sidebarPosition-flowRow-start", "Layout--sidebarPosition-start"],
+  Primer::Alpha::Menu => ["octicon", "octicon-check"],
   Primer::Alpha::NavList => ["ActionList-sectionDivider", "ActionList-sectionDivider-title", "ActionListItem--hasSubItem", "ActionListWrap--subGroup", "ActionList", "ActionList--subGroup", "ActionListContent--hasActiveSubItem", "ActionListContent--visual16", "ActionListItem--navActive", "ActionListItem--subItem", "ActionListItem-collapseIcon", "octicon", "octicon-chevron-down", "octicon-comment-discussion", "octicon-gear", "octicon-people", "Button--medium"],
   Primer::Alpha::SegmentedControl => ["Button--invisible-noVisuals", "Button--medium", "SegmentedControl-item--selected", "octicon", "octicon-eye", "octicon-file-code", "octicon-people", "SegmentedControl--iconOnly", "btn-block"],
   Primer::Alpha::TabPanels => ["tabnav", "tabnav-tab", "tabnav-tabs"],
