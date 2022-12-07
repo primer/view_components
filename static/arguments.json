@@ -2163,7 +2163,7 @@
   },
   {
     "component": "LocalTime",
-    "status": "alpha",
+    "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/local_time.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/local_time/default/",
     "parameters": [
