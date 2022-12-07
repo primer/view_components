@@ -498,6 +498,20 @@
     ]
   },
   {
+    "component": "Menu",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/menu.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/menu/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "NavList",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list.rb",
@@ -2227,20 +2241,6 @@
         "default": "`:short`",
         "description": "One of `:long` or `:short`."
       },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Menu",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/menu_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/menu/default/",
-    "parameters": [
       {
         "name": "system_arguments",
         "type": "Hash",
