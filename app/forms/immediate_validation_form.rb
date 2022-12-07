@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # :nodoc:
+# :nocov:
 class ImmediateValidationForm < ApplicationForm
   form do |validation_form|
     validation_form.text_field(
