@@ -57,6 +57,7 @@ module Primer
           autoloader.ignore(Engine.root.join("lib", "primer", "view_components", "linters.rb"))
           autoloader.ignore(Engine.root.join("lib", "primer", "view_components", "linters", "**", "*.rb"))
           autoloader.ignore(Engine.root.join("lib", "primer", "view_components", "statuses.rb"))
+          autoloader.ignore(Engine.root.join("lib", "primer", "view_components", "audited.rb"))
         end
       end
 

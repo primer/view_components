@@ -29,6 +29,7 @@ namespace :docs do
     # Rails controller for rendering arbitrary ERB
     view_context = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context
     components = [
+      Primer::Beta::RelativeTime,
       Primer::Beta::IconButton,
       Primer::Beta::Button,
       Primer::Alpha::SegmentedControl,
@@ -53,7 +54,7 @@ namespace :docs do
       Primer::ButtonComponent,
       Primer::Beta::ButtonGroup,
       Primer::Alpha::ButtonMarketing,
-      Primer::ClipboardCopy,
+      Primer::Beta::ClipboardCopy,
       Primer::Beta::CloseButton,
       Primer::Beta::Counter,
       Primer::Beta::Details,
@@ -66,8 +67,8 @@ namespace :docs do
       Primer::Beta::Label,
       Primer::LayoutComponent,
       Primer::Beta::Link,
-      Primer::Markdown,
-      Primer::MenuComponent,
+      Primer::Beta::Markdown,
+      Primer::Alpha::Menu,
       Primer::Navigation::TabComponent,
       Primer::OcticonComponent,
       Primer::Beta::Popover,
@@ -104,7 +105,7 @@ namespace :docs do
       Primer::Alpha::ImageCrop,
       Primer::Beta::AutoComplete,
       Primer::Alpha::Banner,
-      Primer::ClipboardCopy,
+      Primer::Beta::ClipboardCopy,
       Primer::TabContainerComponent,
       Primer::TimeAgoComponent,
       Primer::Alpha::UnderlinePanels,

@@ -300,6 +300,17 @@
       "section"
     ]
   },
+  "Primer::Alpha::Menu": {
+    "HEADING_TAG_FALLBACK": "h2",
+    "HEADING_TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
   "Primer::Alpha::NavList": {
     "Item": "Primer::Alpha::NavList::Item",
     "Section": "Primer::Alpha::NavList::Section"
@@ -558,6 +569,8 @@
   },
   "Primer::Beta::ButtonGroup": {
   },
+  "Primer::Beta::ClipboardCopy": {
+  },
   "Primer::Beta::CloseButton": {
     "DEFAULT_TYPE": "button",
     "TYPE_OPTIONS": [
@@ -707,6 +720,14 @@
       "span"
     ]
   },
+  "Primer::Beta::Markdown": {
+    "DEFAULT_TAG": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "article",
+      "td"
+    ]
+  },
   "Primer::Beta::Popover": {
     "CARET_DEFAULT": "top",
     "CARET_MAPPINGS": {
@@ -736,6 +757,128 @@
       "default",
       "small",
       "large"
+    ]
+  },
+  "Primer::Beta::RelativeTime": {
+    "DAY_DEFAULT": null,
+    "DAY_MAPPINGS": {
+      "": null,
+      "numeric": "numeric",
+      "two_digit": "2-digit"
+    },
+    "DAY_OPTIONS": [
+      null,
+      "numeric",
+      "two_digit"
+    ],
+    "FORMAT_DEFAULT": "auto",
+    "FORMAT_OPTIONS": [
+      "auto",
+      "micro",
+      "elapsed"
+    ],
+    "HOUR_DEFAULT": null,
+    "HOUR_MAPPINGS": {
+      "": null,
+      "numeric": "numeric",
+      "two_digit": "2-digit"
+    },
+    "HOUR_OPTIONS": [
+      null,
+      "numeric",
+      "two_digit"
+    ],
+    "MINUTE_DEFAULT": null,
+    "MINUTE_MAPPINGS": {
+      "": null,
+      "numeric": "numeric",
+      "two_digit": "2-digit"
+    },
+    "MINUTE_OPTIONS": [
+      null,
+      "numeric",
+      "two_digit"
+    ],
+    "MONTH_DEFAULT": null,
+    "MONTH_MAPPINGS": {
+      "": null,
+      "numeric": "numeric",
+      "two_digit": "2-digit",
+      "short": "short",
+      "long": "long",
+      "narrow": "narrow"
+    },
+    "MONTH_OPTIONS": [
+      null,
+      "numeric",
+      "two_digit",
+      "short",
+      "long",
+      "narrow"
+    ],
+    "PRECISION_DEFAULT": null,
+    "PRECISION_OPTIONS": [
+      null,
+      "second",
+      "minute",
+      "hour",
+      "day",
+      "month",
+      "year"
+    ],
+    "SECOND_DEFAULT": null,
+    "SECOND_MAPPINGS": {
+      "": null,
+      "numeric": "numeric",
+      "two_digit": "2-digit"
+    },
+    "SECOND_OPTIONS": [
+      null,
+      "numeric",
+      "two_digit"
+    ],
+    "TENSE_DEFAULT": "auto",
+    "TENSE_OPTIONS": [
+      "auto",
+      "past",
+      "future"
+    ],
+    "TIMEZONENAME_DEFAULT": null,
+    "TIMEZONENAME_OPTIONS": [
+      null,
+      "long",
+      "short",
+      "short_offset",
+      "long_offset",
+      "short_generic",
+      "long_generic"
+    ],
+    "TIMEZONE_MAPPINGS": {
+      "": null,
+      "long": "long",
+      "short": "short",
+      "short_offset": "shortOffset",
+      "long_offset": "longOffset",
+      "short_generic": "shortGeneric",
+      "long_generic": "longGeneric"
+    },
+    "WEEKDAY_DEFAULT": null,
+    "WEEKDAY_OPTIONS": [
+      null,
+      "long",
+      "short",
+      "narrow"
+    ],
+    "YEAR_DEFAULT": null,
+    "YEAR_MAPPINGS": {
+      "": null,
+      "numeric": "numeric",
+      "two_digit": "2-digit"
+    },
+    "YEAR_OPTIONS": [
+      null,
+      "numeric",
+      "two_digit"
     ]
   },
   "Primer::Beta::Text": {
@@ -863,23 +1006,8 @@
     ]
   },
   "Primer::Markdown": {
-    "DEFAULT_TAG": "div",
-    "TAG_OPTIONS": [
-      "div",
-      "article",
-      "td"
-    ]
   },
   "Primer::MenuComponent": {
-    "HEADING_TAG_FALLBACK": "h2",
-    "HEADING_TAG_OPTIONS": [
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6"
-    ]
   },
   "Primer::Navigation::TabComponent": {
     "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [

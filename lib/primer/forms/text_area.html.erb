@@ -1,5 +1,5 @@
 <%= render(FormControl.new(input: @input)) do %>
-  <%= content_tag(:div, class: @field_wrap_classes) do %>
+  <%= content_tag(:div, **@field_wrap_arguments) do %>
     <%= builder.text_area(@input.name, **@input.input_arguments) %>
   <% end %>
 <% end %>

@@ -153,6 +153,12 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Beta::Popover => [
       ".Popover-message > .btn-octicon",
       ".Popover-message>.btn-octicon"
+    ],
+    Primer::Alpha::Menu => [
+      ".menu-item.selected",
+      ".menu-item .menu-warning",
+      ".menu-item .avatar",
+      ".menu-item.alert .Counter"
     ]
   }.freeze
 

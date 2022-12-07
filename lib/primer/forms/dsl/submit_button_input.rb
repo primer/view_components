@@ -19,6 +19,7 @@ module Primer
           SubmitButton.new(input: self)
         end
 
+        # :nocov:
         def type
           :submit_button
         end

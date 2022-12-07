@@ -3,7 +3,7 @@
 module Primer
   # Use `Button` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
   class ButtonComponent < Primer::Component
-    status :beta
+    status :deprecated
 
     DEFAULT_SCHEME = :default
     LINK_SCHEME = :link

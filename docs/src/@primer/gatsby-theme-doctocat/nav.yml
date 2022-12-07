@@ -40,7 +40,7 @@
   - title: ButtonMarketing
     url: "/components/alpha/buttonmarketing"
   - title: ClipboardCopy
-    url: "/components/clipboardcopy"
+    url: "/components/beta/clipboardcopy"
   - title: CloseButton
     url: "/components/beta/closebutton"
   - title: Counter
@@ -51,8 +51,6 @@
     url: "/components/alpha/dialog"
   - title: Dropdown
     url: "/components/alpha/dropdown"
-  - title: DropdownMenu
-    url: "/components/dropdownmenu"
   - title: Flash
     url: "/components/beta/flash"
   - title: Heading
@@ -74,9 +72,9 @@
   - title: LocalTime
     url: "/components/localtime"
   - title: Markdown
-    url: "/components/markdown"
+    url: "/components/beta/markdown"
   - title: Menu
-    url: "/components/menu"
+    url: "/components/alpha/menu"
   - title: NavList
     url: "/components/alpha/navlist"
   - title: Octicon
@@ -87,6 +85,8 @@
     url: "/components/beta/popover"
   - title: ProgressBar
     url: "/components/beta/progressbar"
+  - title: RelativeTime
+    url: "/components/beta/relativetime"
   - title: SegmentedControl
     url: "/components/alpha/segmentedcontrol"
   - title: Spinner
@@ -119,6 +119,20 @@
     url: "/components/alpha/underlinenav"
   - title: UnderlinePanels
     url: "/components/alpha/underlinepanels"
+- title: Deprecated Components
+  children:
+  - title: BlankslateComponent
+    url: "/components/blankslate"
+  - title: BoxComponent
+    url: "/components/box"
+  - title: ButtonComponent
+    url: "/components/button"
+  - title: DropdownMenuComponent
+    url: "/components/dropdownmenu"
+  - title: IconButton
+    url: "/components/iconbutton"
+  - title: Tooltip
+    url: "/components/tooltip"
 - title: Architecture decisions
   children:
   - title: Developing and publishing client-side behaviours

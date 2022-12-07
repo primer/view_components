@@ -326,7 +326,7 @@
 @define-mixin Overlay-backdrop--anchor {
   @mixin Overlay-backdrop--transparent;
 
-  .Overlay {
+  & .Overlay {
     width: auto;
   }
 }
@@ -411,7 +411,7 @@
 @define-mixin Overlay-backdrop--full {
   @mixin Overlay-backdrop;
 
-  .Overlay {
+  & .Overlay {
     width: 100%;
     max-width: 100vw;
     height: 100%;
@@ -440,8 +440,8 @@
 
 /* responsive variants */
 
-/* up to 767px */
-@media (--primer-viewportRange-narrowLandscape) {
+/* --primer-viewportRange-narrowLandscape */
+@media (max-width: 767px) {
   .Overlay-backdrop--center-whenNarrow {
     @mixin Overlay-backdrop--center;
   }

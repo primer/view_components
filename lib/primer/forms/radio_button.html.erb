@@ -1,4 +1,4 @@
-<div class="FormControl-radio-wrap">
+<%= content_tag(:div, class: "FormControl-radio-wrap", hidden: @input.hidden?) do %>
   <%= builder.radio_button(@input.name, @input.value, **@input.input_arguments) %>
   <span class="FormControl-radio-labelWrap">
     <%= builder.label(@input.name, value: @input.value, **@input.label_arguments) do %>
@@ -6,7 +6,7 @@
     <% end %>
     <%= render(Caption.new(input: @input)) %>
   </span>
-</div>
+<% end %>
 <% if @input.nested_form_block %>
   <%= content_tag(:div, nested_form_arguments) do %>
     <%= render(@input.nested_form_block.call(builder)) %>

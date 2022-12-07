@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.0.112",
+  "version": "0.0.114",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -48,8 +48,8 @@
     "@github/details-menu-element": "^1.0.12",
     "@github/image-crop-element": "^5.0.0",
     "@github/mini-throttle": "^2.1.0",
+    "@github/relative-time-element": "^4.0.0",
     "@github/tab-container-element": "^3.1.2",
-    "@github/time-elements": "^3.1.2",
     "@primer/behaviors": "^1.2.0"
   },
   "devDependencies": {

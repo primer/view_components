@@ -20,7 +20,7 @@ module Primer
       def nested_form_arguments
         return @nested_form_arguments if defined?(@nested_form_arguments)
 
-        @nested_form_arguments = { **@input.nested_form_arguments }
+        @nested_form_arguments = { hidden: @input.hidden?, **@input.nested_form_arguments }
         @nested_form_arguments[:class] = class_names(
           @nested_form_arguments[:class],
           @nested_form_arguments.delete(:classes),

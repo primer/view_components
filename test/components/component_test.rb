@@ -8,6 +8,7 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Beta::RelativeTime, { datetime: Time.now.utc }],
     [Primer::Beta::IconButton, { icon: :star, "aria-label": "Star" }],
     [Primer::Beta::Button, {}],
     [Primer::Alpha::SegmentedControl, {
@@ -53,7 +54,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::ButtonComponent, {}, proc { "Button" }],
     [Primer::Beta::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
     [Primer::Alpha::ButtonMarketing, {}],
-    [Primer::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
+    [Primer::Beta::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
     [Primer::ConditionalWrapper, { condition: true, tag: :div }],
     [Primer::Beta::CloseButton, {}],
     [Primer::Beta::Counter, { count: 1 }],
@@ -83,8 +84,8 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::Label, {}],
     [Primer::LayoutComponent, {}],
     [Primer::Beta::Link, { href: "https://www.google.com" }],
-    [Primer::Markdown, {}],
-    [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],
+    [Primer::Beta::Markdown, {}],
+    [Primer::Alpha::Menu, {}, proc { |c| c.item(href: "#url") { "Item" } }],
     [Primer::Navigation::TabComponent, {}],
     [Primer::OcticonComponent, { icon: :people }],
     [Primer::Beta::Popover, {}, proc { |component| component.body { "Foo" } }],
@@ -110,6 +111,9 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::Markdown",
+      "Primer::MenuComponent",
+      "Primer::ClipboardCopy",
       "Primer::LabelComponent",
       "Primer::LinkComponent",
       "Primer::Alpha::ActionList::Heading",

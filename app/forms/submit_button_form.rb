@@ -13,8 +13,14 @@ class SubmitButtonForm < ApplicationForm
       color: :success
     )
 
-    my_form.submit(name: :submit, label: "Submit", scheme: :primary, mr: 3) do |c|
-      c.with_leading_visual_icon(icon: :"check-circle")
+    my_form.group(layout: :horizontal) do |button_group|
+      button_group.submit(name: :submit, label: "Submit", scheme: :primary, mb: 3) do |c|
+        c.with_leading_visual_icon(icon: :"check-circle")
+      end
+
+      button_group.button(name: :button, label: "Click me", mb: 3) do |c|
+        c.with_leading_visual_icon(icon: :alert)
+      end
     end
   end
 end
