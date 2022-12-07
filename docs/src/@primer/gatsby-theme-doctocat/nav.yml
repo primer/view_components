@@ -69,8 +69,6 @@
     url: "/components/alpha/layout"
   - title: Link
     url: "/components/beta/link"
-  - title: LocalTime
-    url: "/components/localtime"
   - title: Markdown
     url: "/components/beta/markdown"
   - title: Menu
@@ -129,6 +127,8 @@
     url: "/components/button"
   - title: DropdownMenuComponent
     url: "/components/dropdownmenu"
+  - title: LocalTime
+    url: "/components/localtime"
   - title: IconButton
     url: "/components/iconbutton"
   - title: Tooltip
