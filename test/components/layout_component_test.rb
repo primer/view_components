@@ -7,8 +7,8 @@ class PrimerLayoutComponentTest < Minitest::Test
 
   def test_renders_content
     render_inline(Primer::LayoutComponent.new) do |component|
-      component.sidebar { "Sidebar" }
-      component.main { "Main content" }
+      component.with_sidebar { "Sidebar" }
+      component.with_main { "Main content" }
     end
 
     assert_text("Sidebar")
@@ -17,8 +17,8 @@ class PrimerLayoutComponentTest < Minitest::Test
 
   def test_puts_sidebar_first_if_side_left
     render_inline(Primer::LayoutComponent.new(side: :left)) do |component|
-      component.sidebar { "Sidebar" }
-      component.main { "Main content" }
+      component.with_sidebar { "Sidebar" }
+      component.with_main { "Main content" }
     end
 
     assert_selector(".d-flex > .col-3:first-child")
@@ -26,8 +26,8 @@ class PrimerLayoutComponentTest < Minitest::Test
 
   def test_defaults_to_col_3_on_sidebar
     render_inline(Primer::LayoutComponent.new) do |component|
-      component.sidebar { "Sidebar" }
-      component.main { "Main content" }
+      component.with_sidebar { "Sidebar" }
+      component.with_main { "Main content" }
     end
 
     assert_selector(".d-flex > .col-9:first-child") # main
@@ -37,8 +37,8 @@ class PrimerLayoutComponentTest < Minitest::Test
   def test_defaults_to_col_3_on_sidebar_if_value_is_invalid
     without_fetch_or_fallback_raises do
       render_inline(Primer::LayoutComponent.new(sidebar_col: Primer::LayoutComponent::MAX_COL)) do |component|
-        component.sidebar { "Sidebar" }
-        component.main { "Main content" }
+        component.with_sidebar { "Sidebar" }
+        component.with_main { "Main content" }
       end
     end
 
@@ -48,8 +48,8 @@ class PrimerLayoutComponentTest < Minitest::Test
 
   def test_changes_sidebar_col_and_main_col_accordingly
     render_inline(Primer::LayoutComponent.new(sidebar_col: 5)) do |component|
-      component.sidebar { "Sidebar" }
-      component.main { "Main content" }
+      component.with_sidebar { "Sidebar" }
+      component.with_main { "Main content" }
     end
 
     assert_selector(".d-flex > .col-7:first-child") # main
