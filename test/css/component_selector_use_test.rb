@@ -25,7 +25,7 @@ IGNORED_SELECTORS = {
   Primer::Beta::AutoComplete => ["ActionList", "FormControl", "FormControl-input", "FormControl-input-leadingVisual", "FormControl-input-leadingVisualWrap", "FormControl-input-wrap", "FormControl-input-wrap--leadingVisual", "FormControl-label", "FormControl-medium", "Overlay", "Overlay--height-auto", "Overlay--width-auto", "Overlay-backdrop--anchor", "Overlay-body", "Overlay-body--paddingNone", "octicon", "octicon-search", "btn", "btn-primary"],
   Primer::Beta::Avatar => ["avatar"],
   Primer::Beta::AvatarStack => ["AvatarStack", "AvatarStack-body", "avatar", "avatar-small", "tooltipped", "tooltipped-n"],
-  Primer::Beta::Blankslate => ["btn", "btn-primary", "octicon", "octicon-shield", "Box"],
+  Primer::Beta::Blankslate => ["Button--medium", "btn", "btn-primary", "octicon", "octicon-shield", "Box"],
   Primer::Beta::Breadcrumbs => ["breadcrumb-item-selected"],
   Primer::Beta::BorderBox => ["Box", "Box-body", "Box-footer", "Box-header", "Box-row"],
   Primer::Beta::Button => ["Button--medium", "octicon", "octicon-search", "Button--invisible-noVisuals"],
@@ -36,6 +36,7 @@ IGNORED_SELECTORS = {
   Primer::Beta::IconButton => ["Button--medium", "octicon", "octicon-x"],
   Primer::Beta::Truncate => ["Truncate-text"],
   Primer::Beta::ClipboardCopy => ["octicon", "octicon-check", "octicon-copy"],
+  Primer::Beta::Octicon => ["octicon"],
   Primer::Alpha::Dropdown => ["btn", "details-overlay", "details-reset", "dropdown-menu-se", "octicon", "octicon-triangle-down"],
   Primer::Beta::Markdown => ["markdown-body"]
 }.freeze

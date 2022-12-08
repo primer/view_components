@@ -8,9 +8,9 @@ module Primer
     warn_on_deprecated_slot_setter
 
     # @example Symbol dictionary
-    #   <%= render(Primer::OcticonComponent.new(icon: :check, use_symbol: true, color: :success)) %>
-    #   <%= render(Primer::OcticonComponent.new(icon: :check, use_symbol: true, color: :danger)) %>
-    #   <%= render(Primer::OcticonComponent.new(icon: :check, use_symbol: true, size: :medium)) %>
+    #   <%= render(Primer::Beta::Octicon.new(icon: :check, use_symbol: true, color: :success)) %>
+    #   <%= render(Primer::Beta::Octicon.new(icon: :check, use_symbol: true, color: :danger)) %>
+    #   <%= render(Primer::Beta::Octicon.new(icon: :check, use_symbol: true, size: :medium)) %>
     #   <%= render(Primer::OcticonSymbolsComponent.new(icons: [{ symbol: :check }, { symbol: :check, size: :medium }])) %>
     #
     # @param icons [Array<Hash>] List of icons to render, in the format { symbol: :icon_name, size: :small }
@@ -18,8 +18,8 @@ module Primer
       @icons = {}
       icons.each do |icon|
         symbol = icon[:symbol]
-        size = Primer::OcticonComponent::SIZE_MAPPINGS[
-          fetch_or_fallback(Primer::OcticonComponent::SIZE_OPTIONS, icon[:size] || Primer::OcticonComponent::SIZE_DEFAULT, Primer::OcticonComponent::SIZE_DEFAULT)
+        size = Primer::Beta::Octicon::SIZE_MAPPINGS[
+          fetch_or_fallback(Primer::Beta::Octicon::SIZE_OPTIONS, icon[:size] || Primer::Beta::Octicon::SIZE_DEFAULT, Primer::Beta::Octicon::SIZE_DEFAULT)
         ]
 
         cache_key = Primer::Octicon::Cache.get_key(symbol: symbol, size: size)

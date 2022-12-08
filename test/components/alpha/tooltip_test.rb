@@ -24,7 +24,7 @@ class PrimerAlphaTooltipTest < Minitest::Test
   end
 
   def test_raises_if_text_is_not_string
-    not_text = Primer::OcticonComponent.new("calendar")
+    not_text = Primer::Beta::Octicon.new("calendar")
     assert_raises(TypeError, "Tooltip content must be a string") do
       render_inline(Primer::Alpha::Tooltip.new(type: :description, for_id: "someButton", text: not_text, visible: false))
     end

@@ -69,8 +69,6 @@
     url: "/components/alpha/layout"
   - title: Link
     url: "/components/beta/link"
-  - title: LocalTime
-    url: "/components/localtime"
   - title: Markdown
     url: "/components/beta/markdown"
   - title: Menu
@@ -78,7 +76,7 @@
   - title: NavList
     url: "/components/alpha/navlist"
   - title: Octicon
-    url: "/components/octicon"
+    url: "/components/beta/octicon"
   - title: OcticonSymbols
     url: "/components/octiconsymbols"
   - title: Popover
@@ -131,6 +129,8 @@
     url: "/components/dropdownmenu"
   - title: IconButton
     url: "/components/iconbutton"
+  - title: LocalTime
+    url: "/components/localtime"
   - title: Tooltip
     url: "/components/tooltip"
 - title: Architecture decisions

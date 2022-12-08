@@ -34,7 +34,7 @@ module Primer
 
       def call
         render(Primer::Beta::BaseButton.new(**@system_arguments)) do
-          render(Primer::OcticonComponent.new("x"))
+          render(Primer::Beta::Octicon.new("x"))
         end
       end
     end

@@ -2,7 +2,7 @@
   <%= render(Primer::BaseComponent.new(**@system_arguments)) do %>
     <% if @icon %>
       <div class="Banner-visual">
-        <%= render(Primer::OcticonComponent.new(icon: @icon)) %>
+        <%= render(Primer::Beta::Octicon.new(icon: @icon)) %>
       </div>
     <% end %>
     <%= render(Primer::BaseComponent.new(**@message_arguments)) do %>

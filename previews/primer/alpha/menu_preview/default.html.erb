@@ -6,11 +6,11 @@
     Item 1
   <% end %>
   <% c.with_item(href: "#url") do %>
-    <%= render(Primer::OcticonComponent.new("check")) %>
+    <%= render(Primer::Beta::Octicon.new("check")) %>
     With Icon
   <% end %>
   <% c.with_item(href: "#url") do %>
-    <%= render(Primer::OcticonComponent.new("check")) %>
+    <%= render(Primer::Beta::Octicon.new("check")) %>
     With Icon and Counter
     <%= render(Primer::Beta::Counter.new(count: 25)) %>
   <% end %>
