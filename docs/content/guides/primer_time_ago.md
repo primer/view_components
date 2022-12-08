@@ -9,54 +9,41 @@ component.
 
 ## A Migration Example
 
-The most common use case of the `TimeAgoComponent` component can be migrated with only
-a few minor changes.
+Use of the `TimeAgoComponent` component can be migrated with only a few minor changes.
 
 For example, if the `TimeAgoComponent` was set up in this way:
 
 ```rb
-<%= Primer::TimeAgoComponent(datetime: Time.now, initial_text: Time.now.iso8601) %>
+<%= render(Primer::TimeAgoComponent.new(time: Time.at(628232400))) %>
 ```
 
-It can be migrated by removing `initial_text`c, setting an empty `prefix`, and adding `threshold: "PT0S"`.
+It can be migrated by renaming `time` to `datetime`, and adding the `tense:
+:past` setting.
 
 ```rb
-<%= Primer::Beta::RelativeTime(datetime: Time.now, prefix: "", threshold: "PT0S") %>
+<%= render(Primer::Beta::RelativeTime.new(datetime: Time.at(628232400), tense: :past)) %>
 ```
-
-The `RelativeTime` component defaults to the `iso8601` format and does not need
-to be specified directly.
-
-The `threshold` value is an [ISO-8601 "duration"](https://en.wikipedia.org/wiki/ISO_8601#Durations) that tells the `RelativeTime`
-component to display the absolute date/time, instead of relative time
-description. The example of `PT0S` says to switch to absolute time display
-starting zero (0) seconds ago. In practice, this means it will always display
-the absolute time. With the `TimeAgoComponent` component, `PT0S` was the default
-threshold. The `RelativeTime` component defaults to `P30D`, however, and
-it will need to be zeroed out to always display a datetime.
 
 ## Arguments
 
-The following arguments are different between `TimeAgoComponent` and `RelativeTime`.
+The majority of new options available in `RelativeTime` are not relevant to
+using it as a replacement for `TimeAgo`. There are a few changes that need to be
+noted, however.
 
 | From `Primer::TimeAgoComponent` | To `Primer::Beta::RelativeTime` | Notes |
-|--------------------------|---------------------------------|-------|
-| `initial_text` | n/a         | No longer used.                                                                                                     |
-| n/a            | `tense`     | Which tense to use. One of `:auto`, `:future`, or `:past`.                                                          |
-| n/a            | `prefix`    | What to prefix the relative ime display with.                                                                       |
-| n/a            | `threshold` | The threshold, in ISO-8601 'durations' format, at which relative time displays become absolute.                                                      |
-| n/a            | `precision` | The precision elapsed time should display. One of nil, `:day`, `:hour`, `:minute`, `:month`, `:second`, or `:year`. |
-| n/a            | `format`    | The format the display should take. One of `:auto`, `:elapsed`, or `:micro`.                                        |
-| n/a            | `lang`      | The language to use.                                                                                                |
-| n/a            | `title`     | Provide a custom title to the element.                                                                              |
+|---------------------------------|---------------------------------|-------|
+| `time`  | `datetime`       | Renamed argument, but the semantics remain the same                                                                     |
+| `micro` | `format: :micro` | Instead of a boolean flag, set the `format` argument to the value of `:micro`                                           |
+| n/a     | `tense: :past`   | Required for displaying how long ago the set time was. This argument tells `RelativeTime` to behave like `TimeAgo` did. |
 
-The remaining arguments stayed the same.
+The remaining arguments for `RelativeTime` can be found in the docu7mentation
+for that component. 
 
-Please see the following documentation for complete descriptions and examples.
+Please see the following for complete descriptions and examples.
 
 * [Deprecated `Primer::TimeAgoComponent`](https://primer.style/view-components/components/timeago)
 * [`Primer::Beta::RelativeTime` component](https://primer.style/view-components/components/beta/relativetime)
-* [`Primer::Beta::RelativeTime` Lookbook examples](https://primer.style/view-components/lookbook/inspect/primer/beta/relativetime/default)
+* [`Primer::Beta::RelativeTime` Lookbook examples](https://primer.style/view-components/lookbook/inspect/primer/beta/relative_time_preview/default)
 
 <p>&nbsp;</p>
 
