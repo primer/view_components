@@ -200,6 +200,22 @@ module Primer
           true
         end
 
+        def need_validation_element?
+          invalid?
+        end
+
+        def validation_arguments
+          {
+            class: "FormControl-inlineValidation",
+            id: validation_id,
+            hidden: valid?
+          }
+        end
+
+        def validation_message_arguments
+          {}
+        end
+
         private
 
         def input_data

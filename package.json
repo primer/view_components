@@ -25,7 +25,9 @@
     "app/components/primer/**/*.js",
     "app/components/primer/**/*.css",
     "app/components/primer/**/*.css.json",
-    "app/components/primer/**/*.d.ts"
+    "app/components/primer/**/*.d.ts",
+    "lib/primer/forms/**/*.js",
+    "lib/primer/forms/**/*.d.ts"
   ],
   "scripts": {
     "clean": "git clean -fdX -- app/",
@@ -42,6 +44,7 @@
     "build:css": "script/build-assets css"
   },
   "dependencies": {
+    "@github/auto-check-element": "^5.2.0",
     "@github/auto-complete-element": "^3.3.4",
     "@github/catalyst": "^1.6.0",
     "@github/clipboard-copy-element": "^1.1.2",
