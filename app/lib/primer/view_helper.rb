@@ -7,7 +7,7 @@ module Primer
     class ViewHelperNotFound < StandardError; end
 
     HELPERS = {
-      octicon: "Primer::OcticonComponent",
+      octicon: "Primer::Beta::Octicon",
       heading: "Primer::Beta::Heading",
       time_ago: "Primer::TimeAgoComponent",
       image: "Primer::Alpha::Image"

@@ -49,7 +49,7 @@ class CloseButtonComponentMigrationCounterTest < ErblintTestCase
   def test_autocorrects_using_primer_octicon_class_aria_label
     @file = <<~HTML
       <button class="close-button">
-        <%= render Primer::OcticonComponent(icon: :x, aria: { label: "Close menu" }) %>
+        <%= render Primer::Beta::Octicon(icon: :x, aria: { label: "Close menu" }) %>
       </button>
     HTML
 
@@ -63,7 +63,7 @@ class CloseButtonComponentMigrationCounterTest < ErblintTestCase
   def test_autocorrects_with_primer_octicon_class_without_aria_label
     @file = <<~HTML
       <button class="close-button" aria-label="Close menu">
-        <%= render Primer::OcticonComponent(:x) %>
+        <%= render Primer::Beta::Octicon(:x) %>
       </button>
     HTML
 
@@ -136,7 +136,7 @@ class CloseButtonComponentMigrationCounterTest < ErblintTestCase
 
   def test_does_not_autocorrect_with_custom_primer_octicon_class
     @file = <<~HTML
-      <button class="close-button" aria-label="label"><%= render Primer::OcticonComponent.new(:icon) %></button>
+      <button class="close-button" aria-label="label"><%= render Primer::Beta::Octicon.new(:icon) %></button>
     HTML
 
     assert_equal "<%# erblint:counter CloseButtonComponentMigrationCounter 1 %>\n#{@file}", corrected_content
@@ -144,7 +144,7 @@ class CloseButtonComponentMigrationCounterTest < ErblintTestCase
 
   def test_does_not_autocorrect_with_custom_primer_octicon_class_with_kwargs
     @file = <<~HTML
-      <button class="close-button" aria-label="label"><%= render Primer::OcticonComponent.new(icon: :icon) %></button>
+      <button class="close-button" aria-label="label"><%= render Primer::Beta::Octicon.new(icon: :icon) %></button>
     HTML
 
     assert_equal "<%# erblint:counter CloseButtonComponentMigrationCounter 1 %>\n#{@file}", corrected_content

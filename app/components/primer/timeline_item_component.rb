@@ -78,7 +78,7 @@ module Primer
 
       def call
         render(Primer::BaseComponent.new(**@system_arguments)) do
-          render(Primer::OcticonComponent.new(@icon))
+          render(Primer::Beta::Octicon.new(@icon))
         end
       end
     end

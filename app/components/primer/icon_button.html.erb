@@ -1,12 +1,12 @@
 <% if render_tooltip? %>
   <%= render Primer::BaseComponent.new(tag: :div, position: :relative, display: :inline_block) do %>
     <%= render Primer::Beta::BaseButton.new(**@system_arguments) do -%>
-      <%= render Primer::OcticonComponent.new(icon: @icon) %>
+      <%= render Primer::Beta::Octicon.new(icon: @icon) %>
     <% end -%>
     <%= render Primer::Alpha::Tooltip.new(**@tooltip_arguments) %>
   <% end %>
 <% else %>
   <%= render Primer::Beta::BaseButton.new(**@system_arguments) do -%>
-    <%= render Primer::OcticonComponent.new(icon: @icon) %>
+    <%= render Primer::Beta::Octicon.new(icon: @icon) %>
   <% end -%>
 <% end %>

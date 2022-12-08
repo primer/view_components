@@ -10,7 +10,7 @@
   <%= content %>
   <% if @input.invalid? && @input.validation_messages.present? %>
     <div class="FormControl-inlineValidation" id="<%= @input.validation_id %>">
-      <%= render(Primer::OcticonComponent.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %>
+      <%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %>
       <span><%= @input.validation_messages.first %></span>
     </div>
   <% end %>

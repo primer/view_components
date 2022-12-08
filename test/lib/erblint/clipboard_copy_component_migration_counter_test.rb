@@ -47,13 +47,13 @@ class ClipboardCopyComponentMigrationCounterTest < ErblintTestCase
   def test_more_autocorrect
     @file = <<~HTML
       <clipboard-copy for="clone-help-step-2" aria-label="Copy to clipboard" class="btn btn-sm zeroclipboard-button">
-        <%= render(Primer::OcticonComponent.new(icon: "paste")) %>
+        <%= render(Primer::Beta::Octicon.new(icon: "paste")) %>
       </clipboard-copy>
     HTML
 
     expected = <<~HTML
       <%= render Primer::Beta::ClipboardCopy.new(for: "clone-help-step-2", "aria-label": "Copy to clipboard", classes: "btn btn-sm zeroclipboard-button") do %>
-        <%= render(Primer::OcticonComponent.new(icon: "paste")) %>
+        <%= render(Primer::Beta::Octicon.new(icon: "paste")) %>
       <% end %>
     HTML
 
