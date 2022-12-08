@@ -111,7 +111,6 @@ Kuby.define("ViewComponentsStorybook") do
           postcss.config.js
           lib/
           app/
-          lib/
           package.json
           package-lock.json
           previews
