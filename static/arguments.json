@@ -2457,7 +2457,7 @@
   },
   {
     "component": "TimeAgo",
-    "status": "beta",
+    "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/time_ago_component.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/time_ago/default/",
     "parameters": [
