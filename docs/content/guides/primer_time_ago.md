@@ -26,7 +26,7 @@ It can be migrated by renaming `time` to `datetime`, and adding the `tense:
 
 ## Arguments
 
-The majority of new options available in `RelativeTime` are not relevant to
+The majority of options available in `RelativeTime` are not relevant when
 using it as a replacement for `TimeAgo`. There are a few changes that need to be
 noted, however.
 
