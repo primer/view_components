@@ -37,7 +37,7 @@ noted, however.
 | n/a     | `tense: :past`   | Required for displaying how long ago the set time was. This argument tells `RelativeTime` to behave like `TimeAgo` did. |
 
 The remaining arguments for `RelativeTime` can be found in the docu7mentation
-for that component. 
+for that component.
 
 Please see the following for complete descriptions and examples.
 
