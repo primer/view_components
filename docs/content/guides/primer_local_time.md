@@ -21,7 +21,7 @@ For example, if the `LocalTime` was set up in this way:
 It can be migrated and removing `initial_text` and setting an empty `prefix`.
 
 ```rb
-<%= Primer::Beta::RelativeTtime(datetime: Time.now, prefix: "", threshold: "PT0S") %>
+<%= Primer::Beta::RelativeTime(datetime: Time.now, prefix: "", threshold: "PT0S") %>
 ```
 
 The `RelativeTime` component defaults to the `iso8601` format and does not need
