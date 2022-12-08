@@ -1885,7 +1885,7 @@
         "name": "threshold",
         "type": "string",
         "default": "`nil`",
-        "description": "The threshold at which relative time displays become absolute."
+        "description": "The threshold, in ISO-8601 'durations' format, at which relative time displays become absolute."
       },
       {
         "name": "precision",
@@ -2177,7 +2177,7 @@
   },
   {
     "component": "LocalTime",
-    "status": "alpha",
+    "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/local_time.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/local_time/default/",
     "parameters": [

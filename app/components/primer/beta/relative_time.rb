@@ -101,7 +101,7 @@ module Primer
       # @param month [Symbol] What format months should take. <%= one_of(Primer::Beta::RelativeTime::MONTH_OPTIONS) %>
       # @param year [Symbol] What format years should take. <%= one_of(Primer::Beta::RelativeTime::YEAR_OPTIONS) %>
       # @param time_zone_name [Symbol] What format the time zone should take. <%= one_of(Primer::Beta::RelativeTime::TIMEZONENAME_OPTIONS) %>
-      # @param threshold [string] The threshold at which relative time displays become absolute.
+      # @param threshold [string] The threshold, in ISO-8601 'durations' format, at which relative time displays become absolute.
       # @param precision [Symbol] The precision elapsed time should display. <%= one_of(Primer::Beta::RelativeTime::PRECISION_OPTIONS) %>
       # @param format [Symbol] The format the display should take. <%= one_of(Primer::Beta::RelativeTime::FORMAT_OPTIONS) %>
       # @param lang [string] The language to use.
