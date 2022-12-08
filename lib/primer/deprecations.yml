@@ -5,8 +5,6 @@
 # See 'docs/contributors/deprecations.md' for information on configuration options.
 
 deprecations:
-  - component: "Primer::OcticonComponent"
-    replacement: "Primer::Beta::Octicon"
   - component: "Primer::Alpha::AutoComplete"
     autocorrect: true
     replacement: "Primer::Beta::AutoComplete"
@@ -68,6 +66,10 @@ deprecations:
   - component: "Primer::MenuComponent"
     autocorrect: true
     replacement: "Primer::Alpha::Menu"
+
+  - component: "Primer::OcticonComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Octicon"
 
   - component: "Primer::PopoverComponent"
     autocorrect: true
