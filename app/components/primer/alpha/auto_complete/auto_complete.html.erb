@@ -9,7 +9,7 @@
   <span class="autocomplete-body">
     <% if @with_icon %>
       <div class="form-control autocomplete-embedded-icon-wrap">
-        <%= render Primer::OcticonComponent.new(:search) %>
+        <%= render Primer::Beta::Octicon.new(:search) %>
     <% end %>
     <%= input %>
     <% if @is_clearable %>

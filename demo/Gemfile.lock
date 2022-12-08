@@ -20,7 +20,7 @@ GIT
 PATH
   remote: ..
   specs:
-    primer_view_components (0.0.113)
+    primer_view_components (0.0.114)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 17.0.0)
@@ -225,7 +225,7 @@ GEM
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    lookbook (1.4.1)
+    lookbook (1.4.3)
       actioncable
       activemodel
       css_parser
@@ -247,6 +247,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.0)
     minitest (5.16.3)
     ms_rest (0.7.6)
       concurrent-ruby (~> 1.0)
@@ -270,9 +271,12 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.5.8)
-    nokogiri (1.13.9-x86_64-darwin)
+    nokogiri (1.13.10)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.9-x86_64-linux)
+    nokogiri (1.13.10-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     octicons (17.9.0)
     oj (3.13.23)
@@ -286,7 +290,7 @@ GEM
     public_suffix (5.0.0)
     puma (6.0.0)
       nio4r (~> 2.0)
-    racc (1.6.0)
+    racc (1.6.1)
     rack (2.2.4)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
@@ -377,6 +381,7 @@ GEM
     zeitwerk (2.6.6)
 
 PLATFORMS
+  ruby
   x86_64-darwin-19
   x86_64-darwin-20
   x86_64-linux
@@ -393,7 +398,7 @@ DEPENDENCIES
   kuby-azure (>= 0.3.3, < 1.0)
   kuby-core!
   kuby-kind (~> 0.1)
-  lookbook (~> 1.4.1)
+  lookbook (~> 1.4.3)
   primer_view_components!
   pry-byebug
   puma (~> 6.0.0)

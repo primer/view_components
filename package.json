@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.0.113",
+  "version": "0.0.114",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -44,6 +44,7 @@
     "build:css": "script/build-assets css"
   },
   "dependencies": {
+    "@github/auto-check-element": "^5.2.0",
     "@github/auto-complete-element": "^3.3.4",
     "@github/catalyst": "^1.6.0",
     "@github/clipboard-copy-element": "^1.1.2",

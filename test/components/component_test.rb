@@ -84,10 +84,10 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::Label, {}],
     [Primer::LayoutComponent, {}],
     [Primer::Beta::Link, { href: "https://www.google.com" }],
-    [Primer::Markdown, {}],
-    [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],
+    [Primer::Beta::Markdown, {}],
+    [Primer::Alpha::Menu, {}, proc { |c| c.item(href: "#url") { "Item" } }],
     [Primer::Navigation::TabComponent, {}],
-    [Primer::OcticonComponent, { icon: :people }],
+    [Primer::Beta::Octicon, { icon: :people }],
     [Primer::Beta::Popover, {}, proc { |component| component.body { "Foo" } }],
     [Primer::Beta::ProgressBar, {}, proc { |component| component.item }],
     [Primer::SpinnerComponent, {}],
@@ -111,6 +111,9 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::OcticonComponent",
+      "Primer::Markdown",
+      "Primer::MenuComponent",
       "Primer::ClipboardCopy",
       "Primer::LabelComponent",
       "Primer::LinkComponent",

@@ -37,6 +37,8 @@ module Primer
       def multi_input_form; end
 
       def name_with_question_mark_form; end
+
+      def immediate_validation_form; end
     end
   end
 end

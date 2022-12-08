@@ -300,6 +300,17 @@
       "section"
     ]
   },
+  "Primer::Alpha::Menu": {
+    "HEADING_TAG_FALLBACK": "h2",
+    "HEADING_TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
   "Primer::Alpha::NavList": {
     "Item": "Primer::Alpha::NavList::Item",
     "Section": "Primer::Alpha::NavList::Section"
@@ -709,6 +720,29 @@
       "span"
     ]
   },
+  "Primer::Beta::Markdown": {
+    "DEFAULT_TAG": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "article",
+      "td"
+    ]
+  },
+  "Primer::Beta::Octicon": {
+    "SIZE_DEFAULT": "small",
+    "SIZE_MAPPINGS": {
+      "xsmall": 12,
+      "small": 16,
+      "medium": 24
+    },
+    "SIZE_MEDIUM": "medium",
+    "SIZE_OPTIONS": [
+      "xsmall",
+      "small",
+      "medium"
+    ],
+    "SIZE_XSMALL": "xsmall"
+  },
   "Primer::Beta::Popover": {
     "CARET_DEFAULT": "top",
     "CARET_MAPPINGS": {
@@ -987,23 +1021,8 @@
     ]
   },
   "Primer::Markdown": {
-    "DEFAULT_TAG": "div",
-    "TAG_OPTIONS": [
-      "div",
-      "article",
-      "td"
-    ]
   },
   "Primer::MenuComponent": {
-    "HEADING_TAG_FALLBACK": "h2",
-    "HEADING_TAG_OPTIONS": [
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6"
-    ]
   },
   "Primer::Navigation::TabComponent": {
     "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [
@@ -1013,19 +1032,6 @@
     "DEFAULT_ARIA_CURRENT_FOR_ANCHOR": "page"
   },
   "Primer::OcticonComponent": {
-    "SIZE_DEFAULT": "small",
-    "SIZE_MAPPINGS": {
-      "xsmall": 12,
-      "small": 16,
-      "medium": 24
-    },
-    "SIZE_MEDIUM": "medium",
-    "SIZE_OPTIONS": [
-      "xsmall",
-      "small",
-      "medium"
-    ],
-    "SIZE_XSMALL": "xsmall"
   },
   "Primer::OcticonSymbolsComponent": {
   },

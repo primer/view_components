@@ -12,7 +12,8 @@ IGNORED_SELECTORS = {
   Primer::Alpha::Banner => ["Banner-message", "Banner-title", "Banner-visual", "flash", "octicon", "octicon-bell", "Banner-actions", "Button--medium", "Banner--error", "Banner--success", "Banner--warning", "Banner--full"],
   Primer::Alpha::Dialog => ["Overlay", "Overlay--hidden", "Overlay--motion-scaleFade", "Overlay--size-medium", "Overlay-actionWrap", "Overlay-backdrop--center", "Overlay-body", "Overlay-closeButton", "Overlay-footer", "Overlay-footer--alignEnd", "Overlay-footer--divided", "Overlay-header", "Overlay-headerContentWrap", "Overlay-title", "Overlay-titleWrap", "Overlay-whenNarrow", "btn", "btn-primary", "close-button", "octicon", "octicon-x"],
   Primer::Alpha::HiddenTextExpander => ["ellipsis-expander", "hidden-text-expander"],
-  Primer::Alpha::Layout => ["Layout--sidebarPosition-flowRow-start", "Layout--sidebarPosition-start"],
+  Primer::Alpha::Layout => ["Layout--sidebarPosition-flowRow-start", "Layout--sidebarPosition-start", "Layout--flowRow-until-lg", "Layout--flowRow-until-md", "Layout--gutter-condensed", "Layout--gutter-none", "Layout--gutter-spacious", "Layout--sidebar-narrow", "Layout--sidebar-wide", "Layout--sidebarPosition-end", "Layout--sidebarPosition-flowRow-end", "Layout--sidebarPosition-flowRow-none", "Layout-main-centered-lg", "Layout-main-centered-md", "Layout-main-centered-xl"],
+  Primer::Alpha::Menu => ["octicon", "octicon-check"],
   Primer::Alpha::NavList => ["ActionList-sectionDivider", "ActionList-sectionDivider-title", "ActionListItem--hasSubItem", "ActionListWrap--subGroup", "ActionList", "ActionList--subGroup", "ActionListContent--hasActiveSubItem", "ActionListContent--visual16", "ActionListItem--navActive", "ActionListItem--subItem", "ActionListItem-collapseIcon", "octicon", "octicon-chevron-down", "octicon-comment-discussion", "octicon-gear", "octicon-people", "Button--medium"],
   Primer::Alpha::SegmentedControl => ["Button--invisible-noVisuals", "Button--medium", "SegmentedControl-item--selected", "octicon", "octicon-eye", "octicon-file-code", "octicon-people", "SegmentedControl--iconOnly", "btn-block"],
   Primer::Alpha::TabPanels => ["tabnav", "tabnav-tab", "tabnav-tabs"],
@@ -24,7 +25,7 @@ IGNORED_SELECTORS = {
   Primer::Beta::AutoComplete => ["ActionList", "FormControl", "FormControl-input", "FormControl-input-leadingVisual", "FormControl-input-leadingVisualWrap", "FormControl-input-wrap", "FormControl-input-wrap--leadingVisual", "FormControl-label", "FormControl-medium", "Overlay", "Overlay--height-auto", "Overlay--width-auto", "Overlay-backdrop--anchor", "Overlay-body", "Overlay-body--paddingNone", "octicon", "octicon-search", "btn", "btn-primary"],
   Primer::Beta::Avatar => ["avatar"],
   Primer::Beta::AvatarStack => ["AvatarStack", "AvatarStack-body", "avatar", "avatar-small", "tooltipped", "tooltipped-n"],
-  Primer::Beta::Blankslate => ["btn", "btn-primary", "octicon", "octicon-shield", "Box"],
+  Primer::Beta::Blankslate => ["Button--medium", "btn", "btn-primary", "octicon", "octicon-shield", "Box"],
   Primer::Beta::Breadcrumbs => ["breadcrumb-item-selected"],
   Primer::Beta::BorderBox => ["Box", "Box-body", "Box-footer", "Box-header", "Box-row"],
   Primer::Beta::Button => ["Button--medium", "octicon", "octicon-search", "Button--invisible-noVisuals"],
@@ -35,8 +36,9 @@ IGNORED_SELECTORS = {
   Primer::Beta::IconButton => ["Button--medium", "octicon", "octicon-x"],
   Primer::Beta::Truncate => ["Truncate-text"],
   Primer::Beta::ClipboardCopy => ["octicon", "octicon-check", "octicon-copy"],
+  Primer::Beta::Octicon => ["octicon"],
   Primer::Alpha::Dropdown => ["btn", "details-overlay", "details-reset", "dropdown-menu-se", "octicon", "octicon-triangle-down"],
-  Primer::Markdown => ["markdown-body"]
+  Primer::Beta::Markdown => ["markdown-body"]
 }.freeze
 # rubocop:enable Style/WordArray
 

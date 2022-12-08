@@ -20,6 +20,17 @@ module Primer
           hidden: @input.hidden?
         }
       end
+
+      def auto_check_authenticity_token
+        return @auto_check_authenticity_token if defined?(@auto_check_authenticity_token)
+
+        @auto_check_authenticity_token =
+          if @input.auto_check_src
+            @view_context.form_authenticity_token(
+              form_options: { method: :post, action: @input.auto_check_src }
+            )
+          end
+      end
     end
   end
 end
