@@ -20,7 +20,7 @@ class Primer::Forms::CheckboxGroupInputTest < Minitest::Test
       end
     end
 
-    assert_selector "fieldset", visible: false
-    assert_selector ".FormControl-checkbox-wrap", visible: false
+    assert_selector "fieldset", visible: :hidden
+    assert_selector ".FormControl-checkbox-wrap", visible: :hidden
   end
 end

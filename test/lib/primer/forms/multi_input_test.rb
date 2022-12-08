@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "lib/test_helper"
+require_relative "models/deep_thought"
 
 class Primer::Forms::MultiInputTest < Minitest::Test
   include Primer::ComponentTestHelpers
@@ -43,6 +44,28 @@ class Primer::Forms::MultiInputTest < Minitest::Test
     end
 
     assert_selector "input[data-name=bar]"
-    assert_selector "input[data-name=baz]", visible: false
+    assert_selector "input[data-name=baz]", visible: :hidden
+  end
+
+  class MultiDeepThoughtForm < ApplicationForm
+    form do |text_area_form|
+      text_area_form.multi(name: :ultimate_answer, label: "Ultimate answer") do |ultimate_answer_multi|
+        ultimate_answer_multi.text_field(name: :foo)
+        ultimate_answer_multi.text_field(name: :bar, hidden: true)
+      end
+    end
+  end
+
+  def test_no_error_markup
+    model = DeepThought.new(41)
+    model.valid? # populate validation error messages
+
+    render_in_view_context do
+      primer_form_with(model: model, url: "/foo") do |f|
+        render(MultiDeepThoughtForm.new(f))
+      end
+    end
+
+    refute_selector ".field_with_errors", visible: :all
   end
 end
