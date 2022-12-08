@@ -5,7 +5,7 @@ require "primer/classify"
 # See: https://github.com/rails/rails/pull/46666
 ActionView::Helpers::Tags::Base.prepend(
   Module.new do
-    def initialize(...)
+    def initialize(*args, **kwargs, &block)
       super
 
       return if defined?(@generate_error_markup)
@@ -18,7 +18,9 @@ ActionView::Helpers::Tags::Base.prepend(
     def error_wrapping(html_tag)
       return html_tag unless @generate_error_markup
 
+      # :nocov:
       super
+      # :nocov:
     end
   end
 )
