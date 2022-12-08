@@ -90,7 +90,7 @@
   "Primer::StateComponent": "beta",
   "Primer::SubheadComponent": "beta",
   "Primer::TabContainerComponent": "alpha",
-  "Primer::TimeAgoComponent": "beta",
+  "Primer::TimeAgoComponent": "deprecated",
   "Primer::TimelineItemComponent": "beta",
   "Primer::TimelineItemComponent::BadgeComponent": "alpha",
   "Primer::Tooltip": "deprecated",
