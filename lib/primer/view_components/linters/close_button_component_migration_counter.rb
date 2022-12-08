@@ -40,7 +40,7 @@ module ERBLint
         if ast.method_name == :primer_octicon || ast.method_name == :octicon
           octicon_kwargs = ast.arguments[1]
           icon = icon(ast.arguments)
-        elsif ast.method_name == :render && code.include?("Primer::OcticonComponent")
+        elsif ast.method_name == :render && code.include?("Primer::Beta::Octicon")
           octicon_kwargs = ast.arguments.first.arguments.last
           icon = icon(ast.arguments.first.arguments)
         else

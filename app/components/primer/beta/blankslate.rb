@@ -19,7 +19,7 @@ module Primer
       #
       # Use:
       #
-      # - `visual_icon` for an <%= link_to_component(Primer::OcticonComponent) %>.
+      # - `visual_icon` for an <%= link_to_component(Primer::Beta::Octicon) %>.
       # - `visual_image` for an <%= link_to_component(Primer::Alpha::Image) %>.
       # - `visual_spinner` for a <%= link_to_component(Primer::SpinnerComponent) %>.
       #
@@ -29,7 +29,7 @@ module Primer
           system_arguments[:size] ||= :medium
           system_arguments[:classes] = class_names("blankslate-icon", system_arguments[:classes])
 
-          Primer::OcticonComponent.new(**system_arguments)
+          Primer::Beta::Octicon.new(**system_arguments)
         },
         spinner: lambda { |**system_arguments|
           system_arguments[:classes] = class_names("blankslate-image", system_arguments[:classes])

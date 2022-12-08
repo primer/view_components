@@ -2,7 +2,7 @@
   <% if content.present? %>
     <%= content %>
   <% else %>
-    <%= render Primer::OcticonComponent.new(:copy) %>
-    <%= render Primer::OcticonComponent.new(:check, color: :success, style: "display: none;") %>
+    <%= render Primer::Beta::Octicon.new(:copy) %>
+    <%= render Primer::Beta::Octicon.new(:check, color: :success, style: "display: none;") %>
   <% end %>
 <% end %>

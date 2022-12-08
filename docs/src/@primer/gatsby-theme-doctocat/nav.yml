@@ -78,7 +78,7 @@
   - title: NavList
     url: "/components/alpha/navlist"
   - title: Octicon
-    url: "/components/octicon"
+    url: "/components/beta/octicon"
   - title: OcticonSymbols
     url: "/components/octiconsymbols"
   - title: Popover

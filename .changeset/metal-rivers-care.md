@@ -2,4 +2,4 @@
 '@primer/view-components': patch
 ---
 
-Move `Primer::OcticonComponent` to `Primer::Beta::Octicon` and deprecate the original
+Move `Primer::Beta::Octicon` to `Primer::Beta::Octicon` and deprecate the original

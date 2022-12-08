@@ -36,7 +36,7 @@ module Primer
         end
 
         def preload!
-          PRELOADED_ICONS.each { |icon| Primer::OcticonComponent.new(icon: icon) }
+          PRELOADED_ICONS.each { |icon| Primer::Beta::Octicon.new(icon: icon) }
         end
       end
     end

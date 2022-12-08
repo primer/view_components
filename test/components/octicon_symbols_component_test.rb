@@ -30,7 +30,7 @@ class PrimerOcticonSymbolsComponentTest < Minitest::Test
       },
       {
         symbol: :alert,
-        size: Primer::OcticonComponent::SIZE_MEDIUM
+        size: Primer::Beta::Octicon::SIZE_MEDIUM
       }
     ]
 
@@ -47,7 +47,7 @@ class PrimerOcticonSymbolsComponentTest < Minitest::Test
       },
       {
         symbol: :markdown,
-        size: Primer::OcticonComponent::SIZE_MEDIUM
+        size: Primer::Beta::Octicon::SIZE_MEDIUM
       }
     ]
 

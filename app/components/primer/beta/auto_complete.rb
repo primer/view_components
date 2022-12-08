@@ -39,13 +39,13 @@ module Primer
 
       # Leading visual.
       #
-      # - `leading_visual_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
+      # - `leading_visual_icon` for a <%= link_to_component(Primer::Beta::Octicon) %>.
       #
-      # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
+      # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Octicon) %>.
       renders_one :leading_visual, types: {
         icon: lambda { |**system_arguments|
           system_arguments[:classes] = class_names("FormControl-input-leadingVisual")
-          Primer::OcticonComponent.new(**system_arguments)
+          Primer::Beta::Octicon.new(**system_arguments)
         }
       }
 
