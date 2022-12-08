@@ -79,16 +79,16 @@ class PrimerBetaBlankslateTest < Minitest::Test
       c.primary_action(href: "https://github.com").with_content("Button")
     end
 
-    assert_selector("a.btn[href='https://github.com']", text: "Button")
+    assert_selector("a.Button[href='https://github.com']", text: "Button")
   end
 
   def test_renders_a_blankslate_component_with_a_primary_action_with_custom_classes
     render_inline(Primer::Beta::Blankslate.new) do |c|
       c.heading(tag: :h2).with_content("Title")
-      c.primary_action(href: "https://github.com", scheme: :outline).with_content("Button")
+      c.primary_action(href: "https://github.com", scheme: :danger).with_content("Button")
     end
 
-    assert_selector("a.btn.btn-outline[href='https://github.com']", text: "Button")
+    assert_selector("a.Button.Button--danger[href='https://github.com']", text: "Button")
   end
 
   def test_renders_a_blankslate_component_with_a_secondary_action
