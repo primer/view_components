@@ -36,6 +36,7 @@ IGNORED_SELECTORS = {
   Primer::Beta::IconButton => ["Button--medium", "octicon", "octicon-x"],
   Primer::Beta::Truncate => ["Truncate-text"],
   Primer::Beta::ClipboardCopy => ["octicon", "octicon-check", "octicon-copy"],
+  Primer::Beta::Octicon => ["octicon"],
   Primer::Alpha::Dropdown => ["btn", "details-overlay", "details-reset", "dropdown-menu-se", "octicon", "octicon-triangle-down"],
   Primer::Beta::Markdown => ["markdown-body"]
 }.freeze
