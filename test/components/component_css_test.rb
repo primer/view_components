@@ -13,8 +13,12 @@ class ComponentCssTest < Minitest::Test
     Dir["app/components/**/*.css"].each do |file|
       css = File.read(file)
 
+      # remove comments
+      css.gsub!(%r{/\*((?!\*/).)*\*/}m, "")
+
       refute(css.include?("@import"), "CSS files should not import other CSS files:\n#{file} contains @import")
       refute(css.include?("&"), "CSS Nesting wasn't compiled correctly:\n#{file} contains &")
+      refute(css.include?("$"), "Sass variable(s) detected:\n#{file} contains $")
     end
   end
 end
