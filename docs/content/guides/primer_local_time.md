@@ -10,7 +10,7 @@ component.
 ## A Migration Example
 
 The most common use case of the `LocalTime` component can be migrated with only
-a few minor changes. 
+a few minor changes.
 
 For example, if the `LocalTime` was set up in this way:
 
@@ -18,14 +18,14 @@ For example, if the `LocalTime` was set up in this way:
 <%= Primer::LocalTime(datetime: Time.now, initial_text: Time.now.iso8601) %>
 ```
 
-It can be migrated and removing `initial_text` and setting an empty `prefix`. 
+It can be migrated and removing `initial_text` and setting an empty `prefix`.
 
 ```rb
 <%= Primer::Beta::RelativeTtime(datetime: Time.now, prefix: "", threshold: "PT0S") %>
 ```
 
 The `RelativeTime` component defaults to the `iso8601` format and does not need
-to be specified directly. 
+to be specified directly.
 
 The `threshold` value is an [ISO-8601 "duration"](https://en.wikipedia.org/wiki/ISO_8601#Durations) that tells the `RelativeTime`
 component to display the absolute date/time, instead of relative time
