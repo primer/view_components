@@ -32,8 +32,8 @@ component to display the absolute date/time, instead of relative time
 description. The example of `PT0S` says to switch to absolute time display
 starting zero (0) seconds ago. In practice, this means it will always display
 the absolute time. With the `LocalTime` component, `PT0S` was the default
-threshold. The `RelativeTime` component does not have a default, however, and
-it should should be specified if needed.
+threshold. The `RelativeTime` component defaults to `P30D`, however, and
+it will need to be zeroed out to always display a datetime.
 
 ## Arguments
 
