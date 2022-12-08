@@ -1,6 +1,6 @@
 <%= render Primer::ConditionalWrapper.new(condition: @input.auto_check_src, tag: "primer-text-field") do %>
   <%= render(FormControl.new(input: @input)) do %>
-    <%= render Primer::ConditionalWrapper.new(tag: :div, **@field_wrap_arguments, condition: @input.leading_visual || @input.show_clear_button?) do %>
+    <%= content_tag(:div, **@field_wrap_arguments) do %>
       <% if @input.leading_visual %>
         <span class="FormControl-input-leadingVisualWrap">
           <%= render(Primer::Beta::Octicon.new(**@input.leading_visual)) %>
