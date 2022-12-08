@@ -1885,7 +1885,7 @@
         "name": "threshold",
         "type": "string",
         "default": "`nil`",
-        "description": "The threshold at which relative time displays become absolute."
+        "description": "The threshold, in ISO-8601 'durations' format, at which relative time displays become absolute."
       },
       {
         "name": "precision",
