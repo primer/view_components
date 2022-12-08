@@ -80,6 +80,11 @@ deprecations:
     autocorrect: true
     replacement: "Primer::Beta::Popover"
 
+  - component: "Primer::TimeAgoComponent"
+    autocorrect: false
+    replacement: "Primer::Beta::RelativeTime"
+    guide: "https://primer.style/view-components/guides/primer_time_ago"
+
   - component: "Primer::Tooltip"
     autocorrect: true
     replacement: "Primer::Alpha::Tooltip"

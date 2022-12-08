@@ -1,27 +1,10 @@
 # frozen_string_literal: true
 
 require "lib/test_helper"
+require_relative "models/deep_thought"
 
 class Primer::Forms::FormHelperTest < Minitest::Test
   include Primer::ComponentTestHelpers
-
-  class DeepThought
-    if Rails::VERSION::STRING < "7.0"
-      include ActiveModel::Model
-    else
-      include ActiveModel::API
-    end
-
-    include ActiveModel::Validations
-
-    attr_reader :ultimate_answer
-
-    def initialize(ultimate_answer)
-      @ultimate_answer = ultimate_answer
-    end
-
-    validates :ultimate_answer, numericality: { greater_than: 41, less_than: 43 }
-  end
 
   def test_includes_activemodel_validation_messages
     model = DeepThought.new(41)
@@ -50,7 +33,7 @@ class Primer::Forms::FormHelperTest < Minitest::Test
     end
 
     text_field = page.find_all("input[type=text]").first
-    assert_equal text_field["name"], "primer_forms_form_helper_test_deep_thought[ultimate_answer]"
+    assert_equal text_field["name"], "deep_thought[ultimate_answer]"
   end
 
   def test_the_input_is_described_by_the_validation_message
