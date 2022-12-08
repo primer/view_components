@@ -1776,6 +1776,44 @@
     ]
   },
   {
+    "component": "Octicon",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/octicon.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/octicon/default/",
+    "parameters": [
+      {
+        "name": "icon_name",
+        "type": "Symbol, String",
+        "default": "`nil`",
+        "description": "Name of [Octicon](https://primer.style/octicons/) to use."
+      },
+      {
+        "name": "icon",
+        "type": "Symbol, String",
+        "default": "`nil`",
+        "description": "Name of [Octicon](https://primer.style/octicons/) to use."
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:small`",
+        "description": "One of `:xsmall` (`12`), `:small` (`16`), or `:medium` (`24`)."
+      },
+      {
+        "name": "use_symbol",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "EXPERIMENTAL (May change or be removed) - Set to true when using with [OcticonSymbols](/components/octiconsymbols)."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Popover",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/popover.rb",
@@ -1885,7 +1923,7 @@
         "name": "threshold",
         "type": "string",
         "default": "`nil`",
-        "description": "The threshold at which relative time displays become absolute."
+        "description": "The threshold, in ISO-8601 'durations' format, at which relative time displays become absolute."
       },
       {
         "name": "precision",
@@ -2177,7 +2215,7 @@
   },
   {
     "component": "LocalTime",
-    "status": "alpha",
+    "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/local_time.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/local_time/default/",
     "parameters": [
@@ -2290,44 +2328,6 @@
         "type": "Hash",
         "default": "`{}`",
         "description": "[System arguments](/system-arguments) to be used in the `<li>` wrapper when the tab is an item in a list."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Octicon",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/octicon_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/octicon/default/",
-    "parameters": [
-      {
-        "name": "icon_name",
-        "type": "Symbol, String",
-        "default": "`nil`",
-        "description": "Name of [Octicon](https://primer.style/octicons/) to use."
-      },
-      {
-        "name": "icon",
-        "type": "Symbol, String",
-        "default": "`nil`",
-        "description": "Name of [Octicon](https://primer.style/octicons/) to use."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:small`",
-        "description": "One of `:xsmall` (`12`), `:small` (`16`), or `:medium` (`24`)."
-      },
-      {
-        "name": "use_symbol",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "EXPERIMENTAL (May change or be removed) - Set to true when using with [OcticonSymbols](/components/octiconsymbols)."
       },
       {
         "name": "system_arguments",

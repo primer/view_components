@@ -38,6 +38,14 @@ class ComponentStatusMigrator < Thor::Group
     move_file("template", template_path, template_path_with_status)
   end
 
+  def move_reamining_files
+    Dir["app/components/primer/#{name.underscore}.*"].each do |file_path|
+      file_name = File.basename(file_path)
+      new_path = "#{status_full_path}#{file_name}"
+      move_file("misc", file_path, new_path)
+    end
+  end
+
   def move_test
     move_file("test", test_path, test_path_with_status)
   end
@@ -69,7 +77,11 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def remove_suffix_from_preview_class
-    if name == name_without_suffix
+    if preview_path.include?("_component") && !name.include?("Component") # rubocop:disable Rails/NegateInclude
+      # if the class name does not include 'Component', but the file name does include '_component',
+      # this line will correct it by removing the incosistency with the word 'Component'
+      gsub_file(preview_path_with_status, "class #{name}Component", "class #{name_without_suffix}")
+    elsif name == name_without_suffix
       puts "No change needed - component suffix not removed from lookbook preview class name"
     else
       gsub_file(preview_path_with_status, "class #{name}", "class #{name_without_suffix}")
@@ -88,6 +100,13 @@ class ComponentStatusMigrator < Thor::Group
     nav_file = "docs/src/@primer/gatsby-theme-doctocat/nav.yml"
     gsub_file(nav_file, "title: #{name}", "title: #{name_without_suffix}")
     gsub_file(nav_file, "url: \"/components/#{name_without_suffix.downcase}\"", "url: \"/components/#{status_url}#{name_without_suffix.downcase}\"")
+  end
+
+  def update_primer_js_imports
+    primer_js = "app/components/primer/primer.ts"
+    original_content = "import './#{name.underscore}'"
+    updated_content = "import './#{status_folder_name}#{name_without_suffix.underscore}'"
+    gsub_file(primer_js, original_content, updated_content)
   end
 
   def update_all_references
@@ -202,7 +221,11 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def preview_path
-    @preview_path ||= "previews/primer/#{name.underscore}_preview.rb"
+    @preview_path ||= begin
+      path = "previews/primer/#{name.underscore}_preview.rb"
+      path_with_component = "previews/primer/#{name.underscore}_component_preview.rb"
+      File.exist?(path_with_component) ? path_with_component : path
+    end
   end
 
   def preview_path_with_status
@@ -219,6 +242,10 @@ class ComponentStatusMigrator < Thor::Group
 
   def status_module
     @status_module ||= "#{class_status}::" unless stable?
+  end
+
+  def status_full_path
+    @status_full_path ||= "app/components/primer/#{status_folder_name}"
   end
 
   def template_path

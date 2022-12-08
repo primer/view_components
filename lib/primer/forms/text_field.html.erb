@@ -3,7 +3,7 @@
     <%= render Primer::ConditionalWrapper.new(tag: :div, class: @input.field_wrap_classes, condition: @input.leading_visual || @input.show_clear_button?) do %>
       <% if @input.leading_visual %>
         <span class="FormControl-input-leadingVisualWrap">
-          <%= render(Primer::OcticonComponent.new(**@input.leading_visual)) %>
+          <%= render(Primer::Beta::Octicon.new(**@input.leading_visual)) %>
         </span>
       <% end %>
       <%= render Primer::ConditionalWrapper.new(condition: @input.auto_check_src, tag: "auto-check", csrf: auto_check_authenticity_token, src: @input.auto_check_src) do %>
@@ -11,7 +11,7 @@
       <% end %>
       <% if @input.show_clear_button? %>
         <button id="<%= @input.clear_button_id %>" class="FormControl-input-trailingAction" aria-label="Clear">
-          <%= render(Primer::OcticonComponent.new(icon: :"x-circle-fill")) %>
+          <%= render(Primer::Beta::Octicon.new(icon: :"x-circle-fill")) %>
         </button>
       <% end %>
     <% end %>
