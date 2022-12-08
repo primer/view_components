@@ -92,7 +92,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::ProgressBar, {}, proc { |component| component.item }],
     [Primer::SpinnerComponent, {}],
     [Primer::StateComponent, { title: "Open" }],
-    [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.heading { "Foo" } }],
+    [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.with_heading { "Foo" } }],
     [Primer::TabContainerComponent, {}, proc { "Foo" }],
     [Primer::Alpha::ToggleSwitch, {}],
     [Primer::Alpha::TextField, { name: :foo, label: "Foo" }],
