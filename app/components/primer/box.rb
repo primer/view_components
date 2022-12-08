@@ -3,6 +3,7 @@
 module Primer
   # `Box` is a basic wrapper component for most layout related needs.
   class Box < Primer::Component
+    warn_on_deprecated_slot_setter
     status :stable
 
     # @example Default

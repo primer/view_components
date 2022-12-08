@@ -4,6 +4,7 @@ module Primer
   module Beta
     # Formats a timestamp as a localized string or as relative text that auto-updates in the user's browser.
     class RelativeTime < Primer::Component
+      warn_on_deprecated_slot_setter
       status :beta
 
       TENSE_DEFAULT = :auto

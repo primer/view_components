@@ -7,6 +7,7 @@ module Primer
     # @accessibility
     #   Always set an accessible label to help the user interact with the component.
     class ClipboardCopy < Primer::Component
+      warn_on_deprecated_slot_setter
       status :beta
 
       # @example Default

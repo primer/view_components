@@ -4,6 +4,7 @@ module Primer
   module Beta
     # Use `BaseButton` to render an unstyled `<button>` tag that can be customized.
     class BaseButton < Primer::Component
+      warn_on_deprecated_slot_setter
       status :beta
 
       DEFAULT_TAG = :button

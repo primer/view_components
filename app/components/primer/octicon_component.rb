@@ -6,6 +6,8 @@ module Primer
   # `Octicon` renders an <%= link_to_octicons %> with <%= link_to_system_arguments_docs %>.
   # `Octicon` can also be rendered with the `primer_octicon` helper, which accepts the same arguments.
   class OcticonComponent < Primer::Component
+    warn_on_deprecated_slot_setter
+
     status :beta
 
     SIZE_XSMALL = :xsmall

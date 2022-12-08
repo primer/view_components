@@ -3,6 +3,7 @@
 module Primer
   # Use `Spinner` to let users know that content is being loaded.
   class SpinnerComponent < Primer::Component
+    warn_on_deprecated_slot_setter
     status :beta
 
     DEFAULT_SIZE = :medium

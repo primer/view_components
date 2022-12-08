@@ -3,6 +3,7 @@
 module Primer
   # Use `TimeAgo` to display a time relative to how long ago it was. This component requires JavaScript.
   class TimeAgoComponent < Primer::Component
+    warn_on_deprecated_slot_setter
     status :beta
 
     # @example Default

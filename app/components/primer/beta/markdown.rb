@@ -4,6 +4,7 @@ module Primer
   module Beta
     # Use `Markdown` to wrap markdown content.
     class Markdown < Primer::Component
+      warn_on_deprecated_slot_setter
       status :beta
 
       DEFAULT_TAG = :div
