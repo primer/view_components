@@ -24,8 +24,8 @@ It can be migrated and removing `initial_text` and setting an empty `prefix`.
 <%= Primer::Beta::RelativeTtime(datetime: Time.now, prefix: "", threshold: "PT0S") %>
 ```
 
-The `RelativeTime` component defaults to the `iso8601` format, so there's no need to
-specify that format. 
+The `RelativeTime` component defaults to the `iso8601` format and does not need
+to be specified directly. 
 
 The `threshold` value is an [ISO-8601 "duration"](https://en.wikipedia.org/wiki/ISO_8601#Durations) that tells the `RelativeTime`
 component to display the absolute date/time, instead of relative time
