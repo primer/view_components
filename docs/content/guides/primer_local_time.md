@@ -18,7 +18,7 @@ For example, if the `LocalTime` was set up in this way:
 <%= Primer::LocalTime(datetime: Time.now, initial_text: Time.now.iso8601) %>
 ```
 
-It can be migrated and removing `initial_text` and setting an empty `prefix`.
+It can be migrated and removing `initial_text` and setting an empty `prefix` and `threshold: "PT0S"`.
 
 ```rb
 <%= Primer::Beta::RelativeTime(datetime: Time.now, prefix: "", threshold: "PT0S") %>
