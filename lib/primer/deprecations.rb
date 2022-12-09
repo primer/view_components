@@ -78,11 +78,9 @@ module Primer
           msg << "Please update your code to use '#{replacement(component_name)}'."
           msg << "Use Rubocop's auto-correct, or replace it yourself." if correctable?(component_name)
           msg << "See #{guide(component_name)} for more information." if guide?(component_name)
-        else # if there is no replacement, then it can never be auto-corrected
-          if guide?(component_name)
-            msg << "Unfortunately, there is no direct replacement."
-            msg << "See #{guide(component_name)} for more information and available options."
-          end
+        else # if there is no replacement, it must have a guide. this is enforced through tests
+          msg << "Unfortunately, there is no direct replacement."
+          msg << "See #{guide(component_name)} for more information and available options."
         end
 
         msg.join(" ")
