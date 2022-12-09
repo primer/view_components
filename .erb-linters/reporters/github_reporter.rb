@@ -8,8 +8,8 @@ module ERBLint
 
     SEVERITY_MAP = {
        "info" => "::notice",
-       "refactor" => "::warning",
-       "convention" => "::warning",
+       "refactor" => "::notice",
+       "convention" => "::notice",
        "warning" => "::warning",
        "error" => "::error",
        "fatal" => "::error"
