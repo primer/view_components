@@ -63,9 +63,9 @@ class PrimerComponentTest < Minitest::Test
       component.body { "Bar" }
     end],
     [Primer::Alpha::Dialog, { title: "Test" }, proc { |component|
-      component.header { "Foo" }
-      component.body { "Foo" }
-      component.footer { "Foo" }
+      component.with_header { "Foo" }
+      component.with_body { "Foo" }
+      component.with_footer { "Foo" }
     }],
     [Primer::Alpha::Dialog::Header, { title: "Test", id: "test" }],
     [Primer::Alpha::Dialog::Body, {}],

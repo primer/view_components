@@ -18,6 +18,7 @@ module Primer
     #   `aria-labelledby` relationship between the title and the unique id of
     #   the dialog.
     class Dialog < Primer::Component
+      warn_on_deprecated_slot_setter
       status :alpha
       audited_at "2022-10-10"
 
