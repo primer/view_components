@@ -16,12 +16,10 @@ module RuboCop
       # Primer::Beta::ComponentName.new()
       class ComponentNameMigration < BaseCop
         def on_send(node)
-          return unless node.method_name == :new && !node.receiver.nil?
+          return unless node.method_name == :new && !node.receiver.nil? && ::Primer::Deprecations.deprecated?(node.receiver.const_name)
 
-          component_name = node.receiver.const_name
-          return unless ::Primer::Deprecations.deprecated?(component_name)
-
-          add_offense(node.receiver, message: ::Primer::Deprecations.deprecation_message(component_name))
+          message = ::Primer::Deprecations.deprecation_message(node.receiver.const_name)
+          add_offense(node.receiver, message: message)
         end
 
         def autocorrect(node)
