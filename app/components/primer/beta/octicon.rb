@@ -33,7 +33,7 @@ module Primer
       # @param icon_name [Symbol, String] Name of <%= link_to_octicons %> to use.
       # @param icon [Symbol, String] Name of <%= link_to_octicons %> to use.
       # @param size [Symbol] <%= one_of(Primer::Beta::Octicon::SIZE_MAPPINGS, sort: false) %>
-      # @param use_symbol [Boolean] EXPERIMENTAL (May change or be removed) - Set to true when using with <%= link_to_component(Primer::OcticonSymbolsComponent) %>.
+      # @param use_symbol [Boolean] EXPERIMENTAL (May change or be removed) - Set to true when using with <%= link_to_component(Primer::Alpha::OcticonSymbols) %>.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       def initialize(icon_name = nil, icon: nil, size: SIZE_DEFAULT, use_symbol: false, **system_arguments)
         icon_key = icon_name || icon

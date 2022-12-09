@@ -319,6 +319,8 @@
   },
   "Primer::Alpha::NavList::Section": {
   },
+  "Primer::Alpha::OcticonSymbols": {
+  },
   "Primer::Alpha::SegmentedControl": {
     "FULL_WIDTH_DEFAULT": false,
     "HIDE_LABELS_DEFAULT": false,
