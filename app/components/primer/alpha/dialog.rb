@@ -17,6 +17,8 @@ module Primer
     #   The combination of both `:title` and `:dialog_id` establishes an
     #   `aria-labelledby` relationship between the title and the unique id of
     #   the dialog.
+    #
+    #   test
     class Dialog < Primer::Component
       status :alpha
       audited_at "2022-10-10"
