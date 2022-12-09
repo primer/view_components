@@ -590,6 +590,20 @@
     ]
   },
   {
+    "component": "OcticonSymbols",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/octicon_symbols.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/octicon_symbols_preview/default/",
+    "parameters": [
+      {
+        "name": "icons",
+        "type": "Array<Hash>",
+        "default": "`[]`",
+        "description": "List of icons to render, in the format { symbol: :icon_name, size: :small }"
+      }
+    ]
+  },
+  {
     "component": "SegmentedControl",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/segmented_control.rb",
@@ -1803,7 +1817,7 @@
         "name": "use_symbol",
         "type": "Boolean",
         "default": "`false`",
-        "description": "EXPERIMENTAL (May change or be removed) - Set to true when using with [OcticonSymbols](/components/octiconsymbols)."
+        "description": "EXPERIMENTAL (May change or be removed) - Set to true when using with [OcticonSymbols](/components/alpha/octiconsymbols)."
       },
       {
         "name": "system_arguments",
@@ -2334,20 +2348,6 @@
         "type": "Hash",
         "default": "N/A",
         "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "OcticonSymbols",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/octicon_symbols_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/octicon_symbols_preview/default/",
-    "parameters": [
-      {
-        "name": "icons",
-        "type": "Array<Hash>",
-        "default": "`[]`",
-        "description": "List of icons to render, in the format { symbol: :icon_name, size: :small }"
       }
     ]
   },
