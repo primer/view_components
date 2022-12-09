@@ -1,3 +1,14 @@
-<%= primer_form_with(url: "/foo") do |f| %>
+<script type="text/javascript">
+  window.addEventListener('load', function () {
+    document.querySelector('input#country_us').onclick = function() {
+      document.querySelector('primer-multi-input').activateField('states');
+    };
+
+    document.querySelector('input#country_ca').onclick = function() {
+      document.querySelector('primer-multi-input').activateField('provinces');
+    };
+  }, false);
+</script>
+<%= primer_form_with(url: multi_index_path(format: :json)) do |f| %>
   <%= render(MultiInputForm.new(f)) %>
 <% end %>

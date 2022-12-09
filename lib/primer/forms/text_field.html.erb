@@ -1,6 +1,6 @@
 <%= render Primer::ConditionalWrapper.new(condition: @input.auto_check_src, tag: "primer-text-field") do %>
   <%= render(FormControl.new(input: @input)) do %>
-    <%= render Primer::ConditionalWrapper.new(tag: :div, class: @input.field_wrap_classes, condition: @input.leading_visual || @input.show_clear_button?) do %>
+    <%= content_tag(:div, **@field_wrap_arguments) do %>
       <% if @input.leading_visual %>
         <span class="FormControl-input-leadingVisualWrap">
           <%= render(Primer::Beta::Octicon.new(**@input.leading_visual)) %>
@@ -10,7 +10,7 @@
         <%= builder.text_field(@input.name, **@input.input_arguments) %>
       <% end %>
       <% if @input.show_clear_button? %>
-        <button id="<%= @input.clear_button_id %>" class="FormControl-input-trailingAction" aria-label="Clear">
+        <button type="button" id="<%= @input.clear_button_id %>" class="FormControl-input-trailingAction" aria-label="Clear">
           <%= render(Primer::Beta::Octicon.new(icon: :"x-circle-fill")) %>
         </button>
       <% end %>

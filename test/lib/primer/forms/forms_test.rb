@@ -167,12 +167,14 @@ class Primer::Forms::FormsTest < Minitest::Test
   def test_renders_multi_input
     render_preview :multi_input_form
 
+    assert_selector "label", text: "Region"
+
     assert_selector ".FormControl select[name=region]" do
-      assert_selector "label", text: "State"
+      assert_selector "select option[value=WA]"
     end
 
     assert_selector ".FormControl select[name=region]", visible: false do
-      assert_selector "label", text: "Province", visible: false
+      assert_selector "select option[value=BC]", visible: false
     end
   end
 

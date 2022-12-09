@@ -4,7 +4,9 @@
     <%= builder.label(@input.name, **@input.label_arguments) do %>
       <%= @input.label %>
     <% end %>
-    <%= render(Caption.new(input: @input)) %>
+    <% if @input.form_control? %>
+      <%= render(Caption.new(input: @input)) %>
+    <% end %>
   </span>
 <% end %>
 <% if @input.nested_form_block %>

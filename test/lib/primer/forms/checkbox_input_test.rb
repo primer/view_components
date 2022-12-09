@@ -49,8 +49,8 @@ class Primer::Forms::CheckboxInputTest < Minitest::Test
       end
     end
 
-    assert_selector "input[name=foo]", visible: false
-    assert_selector "input[name=bar]", visible: false
+    assert_selector "input[name=foo]", visible: :hidden
+    assert_selector "input[name=bar]", visible: :hidden
   end
 
   class CheckboxWithHiddenNestedForm < ApplicationForm
@@ -71,6 +71,6 @@ class Primer::Forms::CheckboxInputTest < Minitest::Test
     end
 
     assert_selector "input[name=foo]"
-    assert_selector "input[name=bar]", visible: false
+    assert_selector "input[name=bar]", visible: :hidden
   end
 end

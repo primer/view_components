@@ -34,8 +34,8 @@ class Primer::Forms::RadioButtonInputTest < Minitest::Test
     end
 
     assert_selector "fieldset"
-    assert_selector "input[name=foo]", visible: false
-    assert_selector "input[name=bar]", visible: false
+    assert_selector "input[name=foo]", visible: :hidden
+    assert_selector "input[name=bar]", visible: :hidden
   end
 
   class RadioButtonWithHiddenNestedForm < ApplicationForm
@@ -58,7 +58,7 @@ class Primer::Forms::RadioButtonInputTest < Minitest::Test
     end
 
     assert_selector "input[name=foo]"
-    assert_selector "input[name=bar]", visible: false
+    assert_selector "input[name=bar]", visible: :hidden
   end
 
   class HiddenRadioButtonGroupForm < ApplicationForm
@@ -76,7 +76,7 @@ class Primer::Forms::RadioButtonInputTest < Minitest::Test
       end
     end
 
-    assert_selector "fieldset", visible: false
-    assert_selector "input[name=foo]", visible: false
+    assert_selector "fieldset", visible: :hidden
+    assert_selector "input[name=foo]", visible: :hidden
   end
 end

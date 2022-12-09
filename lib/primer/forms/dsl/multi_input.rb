@@ -34,17 +34,14 @@ module Primer
           check_one_input_visible!
         end
 
-        def decorate_options(name: nil, **options)
-          check_name!(name) if name
-          new_options = { name: name || @name, label: nil, **options }
+        def decorate_options(name:, **options)
+          new_options = { name: @name, label: nil, form_control: false, **options }
+          new_options[:data] ||= {}
+          new_options[:data][:name] = name
+          new_options[:data][:targets] = "primer-multi-input.fields"
           new_options[:id] = nil if options[:hidden]
+          new_options[:disabled] = true if options[:hidden] # disable to avoid submitting to server
           new_options
-        end
-
-        def check_name!(name)
-          return if name == @name
-
-          raise ArgumentError, "Inputs inside a `multi' block must all have the same name. Expected '#{@name}', got '#{name}'."
         end
 
         def check_one_input_visible!
