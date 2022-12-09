@@ -31,7 +31,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
     [Primer::Alpha::ActionList, { aria: { label: "Action List" } }, lambda do |component|
-      component.item(label: "Foo")
+      component.with_item(label: "Foo")
     end],
     [Primer::Alpha::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
     [Primer::Alpha::AutoComplete::Item, { value: "Foo" }],
