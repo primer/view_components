@@ -60,6 +60,7 @@
   "Primer::Beta::Popover": "",
   "Primer::Beta::ProgressBar": "",
   "Primer::Beta::RelativeTime": "",
+  "Primer::Beta::Spinner": "",
   "Primer::Beta::Text": "",
   "Primer::Beta::Truncate": "",
   "Primer::Beta::Truncate::TruncateText": "",

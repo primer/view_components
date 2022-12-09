@@ -10,10 +10,10 @@ module Primer
 
     # Optional Spinner.
     #
-    # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::SpinnerComponent) %>.
+    # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Spinner) %>.
     renders_one :spinner, lambda { |**system_arguments|
       system_arguments[:mb] ||= 3
-      Primer::SpinnerComponent.new(**system_arguments)
+      Primer::Beta::Spinner.new(**system_arguments)
     }
 
     #
