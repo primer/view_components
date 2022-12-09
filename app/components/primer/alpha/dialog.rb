@@ -61,9 +61,7 @@ module Primer
         )
         system_arguments[:id] = "dialog-show-#{@system_arguments[:id]}"
         system_arguments[:data] = (system_arguments[:data] || {}).merge({ "show-dialog-id": @system_arguments[:id] })
-        # rubocop:disable Primer/ComponentNameMigration
         Primer::ButtonComponent.new(**system_arguments)
-        # rubocop:enable Primer/ComponentNameMigration
       }
 
       # Header content.
