@@ -3,6 +3,7 @@
 module Primer
   # Use `LocalTime` to format a date and time in the user's preferred locale format. This component requires JavaScript.
   class LocalTime < Primer::Component
+    warn_on_deprecated_slot_setter
     status :deprecated
 
     DEFAULT_DIGIT_TYPE = :numeric

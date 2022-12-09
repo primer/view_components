@@ -18,6 +18,7 @@ module Primer
     #   Headings allow assistive technology users to quickly navigate around a page. Navigation to text that is not meant to be a heading can be a confusing experience.
     #   <%= link_to_heading_practices %>
     class Heading < Primer::Component
+      warn_on_deprecated_slot_setter
       status :beta
 
       TAG_FALLBACK = :h2

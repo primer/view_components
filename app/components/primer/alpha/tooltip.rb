@@ -23,6 +23,8 @@ module Primer
     #   - When there is no visible text on the trigger element and the tooltip content is appropriate as a label for the element, set `type: :label`.
     #   `label` type is usually only appropriate for an icon-only control.
     class Tooltip < Primer::Component
+      warn_on_deprecated_slot_setter
+
       DIRECTION_DEFAULT = :s
       DIRECTION_OPTIONS = [DIRECTION_DEFAULT, :n, :e, :w, :ne, :nw, :se, :sw].freeze
 

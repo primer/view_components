@@ -7,6 +7,7 @@ module Primer
     # @accessibility
     #   Always provide a meaningful `alt`.
     class Image < Primer::Component
+      warn_on_deprecated_slot_setter
       status :alpha
 
       # @example Default
