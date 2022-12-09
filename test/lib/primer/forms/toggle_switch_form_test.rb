@@ -8,6 +8,6 @@ class Primer::Forms::ToggleSwitchFormTest < Minitest::Test
   def test_it_renders_with_a_name
     render_inline(ExampleToggleSwitchForm.new)
 
-    assert_selector "toggle-switch[src='/example']"
+    assert_selector "toggle-switch[src='/toggle_switch']"
   end
 end
