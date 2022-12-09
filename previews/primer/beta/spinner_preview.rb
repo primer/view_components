@@ -3,7 +3,7 @@
 module Primer
   module Beta
     # @label Spinner
-    class SpinnerComponentPreview < ViewComponent::Preview
+    class SpinnerPreview < ViewComponent::Preview
       # @label Playground
       #
       # @param size [Symbol] select [small, medium, large]
