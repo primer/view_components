@@ -84,6 +84,10 @@ deprecations:
     autocorrect: true
     replacement: "Primer::Beta::Popover"
 
+  - component: "Primer::SpinnerComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Spinner"
+
   - component: "Primer::TimeAgoComponent"
     autocorrect: false
     replacement: "Primer::Beta::RelativeTime"

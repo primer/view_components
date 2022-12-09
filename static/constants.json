@@ -898,6 +898,20 @@
       "two_digit"
     ]
   },
+  "Primer::Beta::Spinner": {
+    "DEFAULT_SIZE": "medium",
+    "DEFAULT_STYLE": "box-sizing: content-box; color: var(--color-icon-primary);",
+    "SIZE_MAPPINGS": {
+      "small": 16,
+      "medium": 32,
+      "large": 64
+    },
+    "SIZE_OPTIONS": [
+      "small",
+      "medium",
+      "large"
+    ]
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
@@ -1040,18 +1054,6 @@
   "Primer::PopoverComponent": {
   },
   "Primer::SpinnerComponent": {
-    "DEFAULT_SIZE": "medium",
-    "DEFAULT_STYLE": "box-sizing: content-box; color: var(--color-icon-primary);",
-    "SIZE_MAPPINGS": {
-      "small": 16,
-      "medium": 32,
-      "large": 64
-    },
-    "SIZE_OPTIONS": [
-      "small",
-      "medium",
-      "large"
-    ]
   },
   "Primer::StateComponent": {
     "DEPRECATED_SCHEME_MAPPINGS": {
