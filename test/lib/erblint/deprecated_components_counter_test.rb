@@ -31,7 +31,7 @@ class DeprecatedComponentsCounterTest < ErblintTestCase
     @linter.run(processed_source)
 
     assert_equal @linter.offenses.size, 2
-    assert_equal "'Primer::BlankslateComponent' has been deprecated. Please update your code to use 'Primer::Beta::Blankslate' or use rubocop's auto-correct option to do it for you.", @linter.offenses[0].message
+    assert_equal "'Primer::BlankslateComponent' has been deprecated. Please update your code to use 'Primer::Beta::Blankslate'. Use Rubocop's auto-correct, or replace it yourself.", @linter.offenses[0].message
     assert_match(/If you must, add <%# erblint:counter DeprecatedComponentsCounter 1 %> to bypass this check/, @linter.offenses[1].message)
   end
 
