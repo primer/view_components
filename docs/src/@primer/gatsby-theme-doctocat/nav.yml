@@ -78,7 +78,7 @@
   - title: Octicon
     url: "/components/beta/octicon"
   - title: OcticonSymbols
-    url: "/components/octiconsymbols"
+    url: "/components/alpha/octiconsymbols"
   - title: Popover
     url: "/components/beta/popover"
   - title: ProgressBar

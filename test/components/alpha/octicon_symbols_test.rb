@@ -2,7 +2,7 @@
 
 require "components/test_helper"
 
-class PrimerOcticonSymbolsComponentTest < Minitest::Test
+class PrimerAlphaOcticonSymbolsTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_one_octicon
@@ -12,13 +12,13 @@ class PrimerOcticonSymbolsComponentTest < Minitest::Test
       }
     ]
 
-    render_inline(Primer::OcticonSymbolsComponent.new(icons: icons))
+    render_inline(Primer::Alpha::OcticonSymbols.new(icons: icons))
 
     assert_selector("svg symbol#octicon_alert_16 path", visible: false)
   end
 
   def test_does_not_render_if_there_are_no_icons
-    render_inline(Primer::OcticonSymbolsComponent.new)
+    render_inline(Primer::Alpha::OcticonSymbols.new)
 
     refute_selector("svg", visible: false)
   end
@@ -34,7 +34,7 @@ class PrimerOcticonSymbolsComponentTest < Minitest::Test
       }
     ]
 
-    render_inline(Primer::OcticonSymbolsComponent.new(icons: icons))
+    render_inline(Primer::Alpha::OcticonSymbols.new(icons: icons))
 
     assert_selector("symbol#octicon_alert_16", visible: false)
     assert_selector("symbol#octicon_alert_24", visible: false)
@@ -51,7 +51,7 @@ class PrimerOcticonSymbolsComponentTest < Minitest::Test
       }
     ]
 
-    render_inline(Primer::OcticonSymbolsComponent.new(icons: icons))
+    render_inline(Primer::Alpha::OcticonSymbols.new(icons: icons))
 
     assert_selector("symbol#octicon_markdown_16", count: 1, visible: false)
   end

@@ -4,6 +4,7 @@ module Primer
   module Alpha
     # Use `Banner` to highlight important information.
     class Banner < Primer::Component
+      warn_on_deprecated_slot_setter
       status :alpha
 
       # A button or custom content that will render on the right-hand side of the component.

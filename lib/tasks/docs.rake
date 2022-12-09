@@ -37,7 +37,7 @@ namespace :docs do
       Primer::HellipButton,
       Primer::Alpha::Image,
       Primer::LocalTime,
-      Primer::OcticonSymbolsComponent,
+      Primer::Alpha::OcticonSymbols,
       Primer::Alpha::ImageCrop,
       Primer::IconButton,
       Primer::Beta::AutoComplete,

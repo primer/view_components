@@ -169,7 +169,7 @@ module Primer
         tooltip: false
       )
         list = Primer::Alpha::ActionList.new(aria: { label: "Action List" })
-        list.item(
+        list.with_item(
           label: label,
           truncate_label: truncate_label,
           href: href,
