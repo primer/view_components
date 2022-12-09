@@ -2,4 +2,4 @@
 '@primer/view-components': patch
 ---
 
-Move `Primer::Beta::Spinner` to `Primer::Beta::Spinner`
+Move `Primer::SpinnerComponent` to `Primer::Beta::Spinner`
