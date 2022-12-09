@@ -5,8 +5,6 @@
 # See 'docs/contributors/deprecations.md' for information on configuration options.
 
 deprecations:
-  - component: "Primer::SpinnerComponent"
-    replacement: "Primer::Beta::Spinner"
   - component: "Primer::Alpha::AutoComplete"
     autocorrect: true
     replacement: "Primer::Beta::AutoComplete"
@@ -81,6 +79,10 @@ deprecations:
   - component: "Primer::PopoverComponent"
     autocorrect: true
     replacement: "Primer::Beta::Popover"
+
+  - component: "Primer::SpinnerComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Spinner"
 
   - component: "Primer::TimeAgoComponent"
     autocorrect: false
