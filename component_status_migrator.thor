@@ -35,6 +35,8 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def move_template
+    return nil unless File.exist?(template_path)
+
     move_file("template", template_path, template_path_with_status)
   end
 
@@ -47,10 +49,14 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def move_test
+    return nil unless File.exist?(test_path)
+
     move_file("test", test_path, test_path_with_status)
   end
 
   def move_preview
+    return nil unless File.exist?(preview_path)
+
     move_file("preview", preview_path, preview_path_with_status)
   end
 
@@ -63,6 +69,7 @@ class ComponentStatusMigrator < Thor::Group
 
   def add_module_to_preview
     return if stable?
+    return nil unless File.exist?(preview_path_with_status)
 
     insert_into_file(preview_path_with_status, "  module #{class_status}\n", after: "module Primer\n")
     insert_into_file(preview_path_with_status, "  end\n", before: /^end$/, force: true)
@@ -77,6 +84,8 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def remove_suffix_from_preview_class
+    return nil unless File.exist?(preview_path)
+
     if preview_path.include?("_component") && !name.include?("Component") # rubocop:disable Rails/NegateInclude
       # if the class name does not include 'Component', but the file name does include '_component',
       # this line will correct it by removing the incosistency with the word 'Component'
@@ -89,10 +98,14 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def rename_preview_label
+    return nil unless File.exist?(preview_path_with_status)
+
     gsub_file(preview_path_with_status, /# @label #{name}/, "# @label #{name_without_suffix}")
   end
 
   def rename_test_class
+    return nil unless File.exist?(test_path_with_status)
+
     gsub_file(test_path_with_status, /class .*Test </, "class Primer#{class_status}#{name_without_suffix.gsub('::', '')}Test <")
   end
 

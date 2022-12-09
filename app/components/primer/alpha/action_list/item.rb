@@ -6,6 +6,8 @@ module Primer
       # An individual `ActionList` item. Items can optionally include leading and/or trailing visuals,
       # such as icons, avatars, and counters.
       class Item < Primer::Component
+        warn_on_deprecated_slot_setter
+
         DEFAULT_SIZE = :medium
         SIZE_MAPPINGS = {
           DEFAULT_SIZE => nil,

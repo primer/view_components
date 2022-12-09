@@ -76,9 +76,17 @@ deprecations:
     autocorrect: true
     replacement: "Primer::Beta::Octicon"
 
+  - component: "Primer::OcticonSymbolsComponent"
+    autocorrect: true
+    replacement: "Primer::Alpha::OcticonSymbols"
+
   - component: "Primer::PopoverComponent"
     autocorrect: true
     replacement: "Primer::Beta::Popover"
+
+  - component: "Primer::SpinnerComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Spinner"
 
   - component: "Primer::TimeAgoComponent"
     autocorrect: false

@@ -21,7 +21,7 @@ module Primer
       #
       # - `visual_icon` for an <%= link_to_component(Primer::Beta::Octicon) %>.
       # - `visual_image` for an <%= link_to_component(Primer::Alpha::Image) %>.
-      # - `visual_spinner` for a <%= link_to_component(Primer::SpinnerComponent) %>.
+      # - `visual_spinner` for a <%= link_to_component(Primer::Beta::Spinner) %>.
       #
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :visual, types: {
@@ -34,7 +34,7 @@ module Primer
         spinner: lambda { |**system_arguments|
           system_arguments[:classes] = class_names("blankslate-image", system_arguments[:classes])
 
-          Primer::SpinnerComponent.new(**system_arguments)
+          Primer::Beta::Spinner.new(**system_arguments)
         },
         image: lambda { |**system_arguments|
           system_arguments[:size] = "56x56"
