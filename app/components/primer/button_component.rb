@@ -3,6 +3,8 @@
 module Primer
   # Use `Button` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
   class ButtonComponent < Primer::Component
+    warn_on_deprecated_slot_setter
+
     status :deprecated
 
     DEFAULT_SCHEME = :default
@@ -38,7 +40,7 @@ module Primer
         Primer::Beta::Octicon.new(**system_arguments)
       }
     }
-    alias icon leading_visual_icon # remove alias when all buttons are migrated to new slot names
+    alias icon with_leading_visual_icon # remove alias when all buttons are migrated to new slot names
 
     # Trailing visuals appear to the right of the button text.
     #
@@ -54,7 +56,7 @@ module Primer
         Primer::Beta::Counter.new(**system_arguments)
       }
     }
-    alias counter trailing_visual_counter # remove alias when all buttons are migrated to new slot names
+    alias counter with_trailing_visual_counter # remove alias when all buttons are migrated to new slot names
 
     # `Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.
     # **Important:** This tooltip defaults to `type: :description`. In a few scenarios, `type: :label` may be more appropriate.
