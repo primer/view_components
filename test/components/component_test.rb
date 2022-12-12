@@ -98,7 +98,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::TextField, { name: :foo, label: "Foo" }],
     [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
-    [Primer::Beta::Truncate, {}, proc { |component| component.item { "Foo" } }],
+    [Primer::Beta::Truncate, {}, proc { |component| component.with_item { "Foo" } }],
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.with_body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],
