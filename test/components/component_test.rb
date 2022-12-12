@@ -71,9 +71,9 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::Dialog::Body, {}],
     [Primer::Alpha::Dialog::Footer, {}],
     [Primer::Alpha::Dropdown, {}, lambda do |component|
-      component.button { "Foo" }
-      component.menu do |m|
-        m.item { "Baz" }
+      component.with_button { "Foo" }
+      component.with_menu do |menu|
+        menu.item { "Baz" }
       end
     end],
     [Primer::Alpha::Dropdown::Menu, {}],

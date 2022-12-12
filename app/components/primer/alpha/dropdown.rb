@@ -5,6 +5,7 @@ module Primer
     # `Dropdown` is a lightweight context menu for housing navigation and actions.
     # They're great for instances where you don't need the full power (and code) of the SelectMenu.
     class Dropdown < Primer::Component
+      warn_on_deprecated_slot_setter
       status :alpha
 
       # Required trigger for the dropdown. Has the same arguments as <%= link_to_component(Primer::ButtonComponent) %>,
