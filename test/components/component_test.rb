@@ -19,8 +19,8 @@ class PrimerComponentTest < Minitest::Test
     }],
     [Primer::Alpha::SegmentedControl::Item, { label: "Button" }],
     [Primer::Alpha::Layout, {}, proc { |component|
-      component.main(tag: :div) { "Foo" }
-      component.sidebar(tag: :div) { "Bar" }
+      component.with_main(tag: :div) { "Foo" }
+      component.with_sidebar(tag: :div) { "Bar" }
     }],
     [Primer::HellipButton, { "aria-label": "No action" }],
     [Primer::Alpha::TabPanels, { label: "label" }],
