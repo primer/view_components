@@ -186,6 +186,8 @@ class ToolTipElement extends HTMLElement {
   }
 
   connectedCallback() {
+    this.#updateControlReference()
+    this.#updateDirection()
     if (!this.shadowRoot) {
       const shadow = this.attachShadow({mode: 'open'})
       // eslint-disable-next-line github/no-inner-html
@@ -259,64 +261,74 @@ class ToolTipElement extends HTMLElement {
   }
 
   attributeChangedCallback(name: string) {
-    if (name === 'id' || name === 'data-type') {
-      if (!this.id || !this.control) return
-      if (this.type === 'label') {
-        let labelledBy = this.control.getAttribute('aria-labelledby')
-        if (labelledBy) {
-          if (!labelledBy.split(' ').includes(this.id)) {
-            labelledBy = `${labelledBy} ${this.id}`
-          } else {
-            labelledBy = `${labelledBy}`
-          }
-        } else {
-          labelledBy = this.id
-        }
-        this.control.setAttribute('aria-labelledby', labelledBy)
+    if (!this.isConnected) return
 
-        // Prevent duplicate accessible name announcements.
-        this.setAttribute('aria-hidden', 'true')
-      } else {
-        let describedBy = this.control.getAttribute('aria-describedby')
-        if (describedBy) {
-          if (!describedBy.split(' ').includes(this.id)) {
-            describedBy = `${describedBy} ${this.id}`
-          } else {
-            describedBy = `${describedBy}`
-          }
-        } else {
-          describedBy = this.id
-        }
-        this.control.setAttribute('aria-describedby', describedBy)
-      }
+    if (name === 'id' || name === 'data-type') {
+      this.#updateControlReference()
     } else if (name === 'data-direction') {
-      this.classList.remove(...DIRECTION_CLASSES)
-      const direction = this.direction
-      if (direction === 'n') {
-        this.#align = 'center'
-        this.#side = 'outside-top'
-      } else if (direction === 'ne') {
-        this.#align = 'start'
-        this.#side = 'outside-top'
-      } else if (direction === 'e') {
-        this.#align = 'center'
-        this.#side = 'outside-right'
-      } else if (direction === 'se') {
-        this.#align = 'start'
-        this.#side = 'outside-bottom'
-      } else if (direction === 's') {
-        this.#align = 'center'
-        this.#side = 'outside-bottom'
-      } else if (direction === 'sw') {
-        this.#align = 'end'
-        this.#side = 'outside-bottom'
-      } else if (direction === 'w') {
-        this.#align = 'center'
-        this.#side = 'outside-left'
-      } else if (direction === 'nw') {
-        this.#align = 'end'
-        this.#side = 'outside-top'
+      this.#updateDirection()
+    }
+  }
+
+  #updateControlReference() {
+    if (!this.id || !this.control) return
+    if (this.type === 'label') {
+      let labelledBy = this.control.getAttribute('aria-labelledby')
+      if (labelledBy) {
+        if (!labelledBy.split(' ').includes(this.id)) {
+          labelledBy = `${labelledBy} ${this.id}`
+        } else {
+          labelledBy = `${labelledBy}`
+        }
+      } else {
+        labelledBy = this.id
       }
+      this.control.setAttribute('aria-labelledby', labelledBy)
+
+      // Prevent duplicate accessible name announcements.
+      this.setAttribute('aria-hidden', 'true')
+    } else {
+      let describedBy = this.control.getAttribute('aria-describedby')
+      if (describedBy) {
+        if (!describedBy.split(' ').includes(this.id)) {
+          describedBy = `${describedBy} ${this.id}`
+        } else {
+          describedBy = `${describedBy}`
+        }
+      } else {
+        describedBy = this.id
+      }
+      this.control.setAttribute('aria-describedby', describedBy)
+    }
+  }
+
+  #updateDirection() {
+    this.classList.remove(...DIRECTION_CLASSES)
+    const direction = this.direction
+    if (direction === 'n') {
+      this.#align = 'center'
+      this.#side = 'outside-top'
+    } else if (direction === 'ne') {
+      this.#align = 'start'
+      this.#side = 'outside-top'
+    } else if (direction === 'e') {
+      this.#align = 'center'
+      this.#side = 'outside-right'
+    } else if (direction === 'se') {
+      this.#align = 'start'
+      this.#side = 'outside-bottom'
+    } else if (direction === 's') {
+      this.#align = 'center'
+      this.#side = 'outside-bottom'
+    } else if (direction === 'sw') {
+      this.#align = 'end'
+      this.#side = 'outside-bottom'
+    } else if (direction === 'w') {
+      this.#align = 'center'
+      this.#side = 'outside-left'
+    } else if (direction === 'nw') {
+      this.#align = 'end'
+      this.#side = 'outside-top'
     }
   }
 

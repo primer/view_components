@@ -3,6 +3,7 @@
 module Primer
   # `Tooltip` is a wrapper component that will apply a tooltip to the provided content.
   class Tooltip < Primer::Component
+    warn_on_deprecated_slot_setter
     status :deprecated
 
     DIRECTION_DEFAULT = :n

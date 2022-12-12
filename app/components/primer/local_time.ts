@@ -1,1 +1,1 @@
-import '@github/time-elements'
+import '@github/relative-time-element'

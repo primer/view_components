@@ -8,6 +8,7 @@ class PrimerComponentTest < Minitest::Test
 
   # Components with any arguments necessary to make them render
   COMPONENTS_WITH_ARGS = [
+    [Primer::Beta::RelativeTime, { datetime: Time.now.utc }],
     [Primer::Beta::IconButton, { icon: :star, "aria-label": "Star" }],
     [Primer::Beta::Button, {}],
     [Primer::Alpha::SegmentedControl, {
@@ -30,7 +31,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
     [Primer::Alpha::ActionList, { aria: { label: "Action List" } }, lambda do |component|
-      component.item(label: "Foo")
+      component.with_item(label: "Foo")
     end],
     [Primer::Alpha::AutoComplete, { label_text: "Fruits", src: "Foo", list_id: "Bar", input_id: "input-id", input_name: "input-name" }],
     [Primer::Alpha::AutoComplete::Item, { value: "Foo" }],
@@ -53,7 +54,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::ButtonComponent, {}, proc { "Button" }],
     [Primer::Beta::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
     [Primer::Alpha::ButtonMarketing, {}],
-    [Primer::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
+    [Primer::Beta::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
     [Primer::ConditionalWrapper, { condition: true, tag: :div }],
     [Primer::Beta::CloseButton, {}],
     [Primer::Beta::Counter, { count: 1 }],
@@ -62,20 +63,20 @@ class PrimerComponentTest < Minitest::Test
       component.body { "Bar" }
     end],
     [Primer::Alpha::Dialog, { title: "Test" }, proc { |component|
-      component.header { "Foo" }
-      component.body { "Foo" }
-      component.footer { "Foo" }
+      component.with_header { "Foo" }
+      component.with_body { "Foo" }
+      component.with_footer { "Foo" }
     }],
     [Primer::Alpha::Dialog::Header, { title: "Test", id: "test" }],
     [Primer::Alpha::Dialog::Body, {}],
     [Primer::Alpha::Dialog::Footer, {}],
-    [Primer::Dropdown, {}, lambda do |component|
+    [Primer::Alpha::Dropdown, {}, lambda do |component|
       component.button { "Foo" }
       component.menu do |m|
         m.item { "Baz" }
       end
     end],
-    [Primer::Dropdown::Menu, {}],
+    [Primer::Alpha::Dropdown::Menu, {}],
     [Primer::DropdownMenuComponent, {}],
     [Primer::Beta::Flash, {}],
     [Primer::Beta::Heading, { tag: :h1 }],
@@ -83,15 +84,15 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::Label, {}],
     [Primer::LayoutComponent, {}],
     [Primer::Beta::Link, { href: "https://www.google.com" }],
-    [Primer::Markdown, {}],
-    [Primer::MenuComponent, {}, proc { |c| c.item(href: "#url") { "Item" } }],
+    [Primer::Beta::Markdown, {}],
+    [Primer::Alpha::Menu, {}, proc { |c| c.item(href: "#url") { "Item" } }],
     [Primer::Navigation::TabComponent, {}],
-    [Primer::OcticonComponent, { icon: :people }],
-    [Primer::PopoverComponent, {}, proc { |component| component.body { "Foo" } }],
-    [Primer::ProgressBarComponent, {}, proc { |component| component.item }],
-    [Primer::SpinnerComponent, {}],
+    [Primer::Beta::Octicon, { icon: :people }],
+    [Primer::Beta::Popover, {}, proc { |component| component.body { "Foo" } }],
+    [Primer::Beta::ProgressBar, {}, proc { |component| component.item }],
+    [Primer::Beta::Spinner, {}],
     [Primer::StateComponent, { title: "Open" }],
-    [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.heading { "Foo" } }],
+    [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.with_heading { "Foo" } }],
     [Primer::TabContainerComponent, {}, proc { "Foo" }],
     [Primer::Alpha::ToggleSwitch, {}],
     [Primer::Alpha::TextField, { name: :foo, label: "Foo" }],
@@ -99,7 +100,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Truncate, {}],
     [Primer::Beta::Truncate, {}, proc { |component| component.item { "Foo" } }],
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
-    [Primer::TimelineItemComponent, {}, proc { |component| component.body { "Foo" } }],
+    [Primer::TimelineItemComponent, {}, proc { |component| component.with_body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
@@ -110,18 +111,25 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::OcticonSymbolsComponent",
+      "Primer::SpinnerComponent",
+      "Primer::OcticonComponent",
+      "Primer::Markdown",
+      "Primer::MenuComponent",
+      "Primer::ClipboardCopy",
       "Primer::LabelComponent",
       "Primer::LinkComponent",
-      "Primer::Image",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
       "Primer::Alpha::NavList::Section",
-      "Primer::CounterComponent",
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
-      "Primer::BoxComponent"
+      "Primer::BoxComponent",
+      "Primer::PopoverComponent",
+      "Primer::Dropdown",
+      "Primer::Dropdown::Menu"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
@@ -178,10 +186,27 @@ class PrimerComponentTest < Minitest::Test
     end
   end
 
-  def test_deprecated_components_by_status_match_list
-    deprecated_by_status = Primer::ViewComponents::STATUSES.select { |_, value| value == "deprecated" }.keys.sort
-    deprecated_by_list = ::Primer::Deprecations::DEPRECATED_COMPONENTS.keys.sort
+  def test_deny_single_argument_does_not_raise_in_production
+    with_raise_on_invalid_options(true) do
+      assert_raises(ArgumentError) { Primer::DenyComponent.new(class: "foo") }
 
-    assert_empty(deprecated_by_status - deprecated_by_list, "Please make sure that components are officially deprecated by setting the `status :deprecated` within the component file.\nMake sure to provide an alternative component for each deprecated component in Primer::Deprecations::DEPRECATED_COMPONENTS (lib/primer/deprecations.rb). If there is no alternative to suggest, set the value to nil.")
+      # rubocop:disable Rails/Inquiry
+      Rails.stub(:env, "production".inquiry) do
+        Primer::DenyComponent.new(class: "foo")
+      end
+      # rubocop:enable Rails/Inquiry
+    end
+  end
+
+  def test_deny_aria_key_does_not_raise_in_production
+    with_raise_on_invalid_aria(true) do
+      assert_raises(ArgumentError) { Primer::DenyComponent.new(aria: { label: "foo" }) }
+
+      # rubocop:disable Rails/Inquiry
+      Rails.stub(:env, "production".inquiry) do
+        Primer::DenyComponent.new(aria: { label: "foo" })
+      end
+      # rubocop:enable Rails/Inquiry
+    end
   end
 end

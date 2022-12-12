@@ -39,12 +39,12 @@ module Primer
       #
       # Use:
       #
-      # - `leading_visual_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
+      # - `leading_visual_icon` for a <%= link_to_component(Primer::Beta::Octicon) %>.
       #
-      # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
+      # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Octicon) %>.
       renders_one :leading_visual, types: {
         icon: lambda { |**system_arguments|
-          Primer::OcticonComponent.new(**system_arguments)
+          Primer::Beta::Octicon.new(**system_arguments)
         }
       }
 
@@ -56,20 +56,20 @@ module Primer
       #
       # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Counter) %>.
       renders_one :trailing_visual, types: {
-        icon: Primer::OcticonComponent,
+        icon: Primer::Beta::Octicon,
         label: Primer::Beta::Label,
-        counter: Primer::CounterComponent
+        counter: Primer::Beta::Counter
       }
 
       # Trailing action appears to the right of the trailing visual.
       #
       # Use:
       #
-      # - `trailing_action_icon` for a <%= link_to_component(Primer::OcticonComponent) %>.
+      # - `trailing_action_icon` for a <%= link_to_component(Primer::Beta::Octicon) %>.
       #
-      # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
+      # @param system_arguments [Hash] Same arguments as <%= link_to_component(Primer::Beta::Octicon) %>.
       renders_one :trailing_action, types: {
-        icon: Primer::OcticonComponent
+        icon: Primer::Beta::Octicon
       }
 
       # `Tooltip` that appears on mouse hover or keyboard focus over the button. Use tooltips sparingly and as a last resort.

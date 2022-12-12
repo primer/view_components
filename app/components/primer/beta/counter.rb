@@ -9,6 +9,7 @@ module Primer
     #   should be accompanied with text such as `issues` or `pull requests`.
     #
     class Counter < Primer::Component
+      warn_on_deprecated_slot_setter
       status :beta
 
       DEFAULT_SCHEME = :default

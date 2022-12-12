@@ -29,7 +29,7 @@ module Primer
         end
 
         def inherited(base)
-          form_path = const_source_location(base.name)
+          form_path = Utils.const_source_location(base.name)
           return unless form_path
 
           base.template_root_path = File.join(File.dirname(form_path), base.name.demodulize.underscore)
@@ -53,25 +53,6 @@ module Primer
 
         def sanitize_field_name_for_template_path(field_name)
           field_name.to_s.delete_suffix("?").to_sym
-        end
-
-        private
-
-        # Unfortunately this bug (https://github.com/ruby/ruby/pull/5646) prevents us from using
-        # Ruby's native Module.const_source_location. Instead we have to fudge it by searching
-        # for the file in the configured autoload paths. Doing so relies on Rails' autoloading
-        # conventions, so it should work ok. Zeitwerk also has this information but lacks a
-        # public API to map constants to source files.
-        def const_source_location(class_name)
-          # NOTE: underscore respects namespacing, i.e. will convert Foo::Bar to foo/bar.
-          class_path = "#{class_name.underscore}.rb"
-
-          ActiveSupport::Dependencies.autoload_paths.each do |autoload_path|
-            absolute_path = File.join(autoload_path, class_path)
-            return absolute_path if File.exist?(absolute_path)
-          end
-
-          nil
         end
       end
 
@@ -124,10 +105,16 @@ module Primer
       end
 
       def perform_render(&_block)
+        return "" unless render?
+
         Base.compile!
         self.class.compile!
 
         render_base_form
+      end
+
+      def render?
+        true
       end
 
       private

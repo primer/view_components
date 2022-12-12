@@ -1,12 +1,14 @@
-<div class="FormControl-checkbox-wrap">
+<%= content_tag(:div, class: "FormControl-checkbox-wrap", hidden: @input.hidden?) do %>
   <%= builder.check_box(@input.name, @input.input_arguments, checked_value, unchecked_value) %>
   <span class="FormControl-checkbox-labelWrap">
     <%= builder.label(@input.name, **@input.label_arguments) do %>
       <%= @input.label %>
     <% end %>
-    <%= render(Caption.new(input: @input)) %>
+    <% if @input.form_control? %>
+      <%= render(Caption.new(input: @input)) %>
+    <% end %>
   </span>
-</div>
+<% end %>
 <% if @input.nested_form_block %>
   <%= content_tag(:div, nested_form_arguments) do %>
     <%= render(@input.nested_form_block.call(builder)) %>

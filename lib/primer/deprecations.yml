@@ -1,0 +1,98 @@
+# PVC Component Deprecations
+# --------------------------
+#
+# All component deprecations for PVC must be listed here, and must have valid configurations.
+# See 'docs/contributors/deprecations.md' for information on configuration options.
+
+deprecations:
+  - component: "Primer::Alpha::AutoComplete"
+    autocorrect: true
+    replacement: "Primer::Beta::AutoComplete"
+
+  - component: "Primer::Alpha::AutoComplete::Item"
+    autocorrect: true
+    replacement: "Primer::Beta::AutoComplete::Item"
+
+  - component: "Primer::BlankslateComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Blankslate"
+
+  - component: "Primer::BoxComponent"
+    autocorrect: true
+    replacement: "Primer::Box"
+
+  - component: "Primer::ButtonComponent"
+    autocorrect: false
+    replacement: "Primer::Beta::Button"
+    guide: "https://primer.style/view-components/guides/primer_button_component"
+
+  - component: "Primer::ClipboardCopy"
+    autocorrect: true
+    replacement: "Primer::Beta::ClipboardCopy"
+
+  - component: "Primer::DropdownMenuComponent"
+    autocorrect: false
+    replacement: "Primer::Beta::Dropdown"
+    guide: "https://primer.style/view-components/guides/primer_dropdown_menu_component"
+
+  - component: "Primer::Dropdown"
+    autocorrect: true
+    replacement: "Primer::Alpha::Dropdown"
+
+  - component: "Primer::Dropdown::Menu"
+    autocorrect: true
+    replacement: "Primer::Alpha::Dropdown::Menu"
+
+  - component: "Primer::Dropdown::Menu::Item"
+    autocorrect: true
+    replacement: "Primer::Alpha::Dropdown::Menu::Item"
+
+  - component: "Primer::IconButton"
+    autocorrect: true
+    replacement: "Primer::Beta::IconButton"
+
+  - component: "Primer::LabelComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Label"
+
+  - component: "Primer::LocalTime"
+    autocorrect: false
+    replacement: "Primer::Beta::RelativeTime"
+    guide: "https://primer.style/view-components/guides/primer_local_time"
+
+  - component: "Primer::LinkComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Link"
+
+  - component: "Primer::Markdown"
+    autocorrect: true
+    replacement: "Primer::Beta::Markdown"
+
+  - component: "Primer::MenuComponent"
+    autocorrect: true
+    replacement: "Primer::Alpha::Menu"
+
+  - component: "Primer::OcticonComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Octicon"
+
+  - component: "Primer::OcticonSymbolsComponent"
+    autocorrect: true
+    replacement: "Primer::Alpha::OcticonSymbols"
+
+  - component: "Primer::PopoverComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Popover"
+
+  - component: "Primer::SpinnerComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Spinner"
+
+  - component: "Primer::TimeAgoComponent"
+    autocorrect: false
+    replacement: "Primer::Beta::RelativeTime"
+    guide: "https://primer.style/view-components/guides/primer_time_ago"
+
+  - component: "Primer::Tooltip"
+    autocorrect: true
+    replacement: "Primer::Alpha::Tooltip"

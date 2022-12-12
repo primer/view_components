@@ -32,9 +32,13 @@ class ToggleSwitchElement extends HTMLElement {
   }
 
   toggle() {
+    if (this.isDisabled()) {
+      return
+    }
+
     if (this.isRemote()) {
       this.setLoadingState()
-      this.check()
+      this.submitForm()
     } else {
       this.performToggle()
     }
@@ -110,14 +114,14 @@ class ToggleSwitchElement extends HTMLElement {
   }
 
   @debounce(300)
-  private async check() {
+  private async submitForm() {
     const body = new FormData()
 
     if (this.csrf) {
       body.append(this.csrfField, this.csrf)
     }
 
-    body.append('value', this.isOn() ? '1' : '0')
+    body.append('value', this.isOn() ? '0' : '1')
 
     try {
       if (!this.src) throw new Error('invalid src')

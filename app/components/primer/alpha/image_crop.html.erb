@@ -2,7 +2,7 @@
   <% if loading.present? %>
     <%= loading %>
   <% else %>
-    <%= render(Primer::SpinnerComponent.new(size: :large, flex: 1, "data-loading-slot": true)) %>
+    <%= render(Primer::Beta::Spinner.new(size: :large, flex: 1, "data-loading-slot": true)) %>
   <% end %>
 
   <input autocomplete="off" type="hidden" data-image-crop-input="x" name="cropped_x">

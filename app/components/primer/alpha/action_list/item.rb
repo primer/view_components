@@ -6,6 +6,8 @@ module Primer
       # An individual `ActionList` item. Items can optionally include leading and/or trailing visuals,
       # such as icons, avatars, and counters.
       class Item < Primer::Component
+        warn_on_deprecated_slot_setter
+
         DEFAULT_SIZE = :medium
         SIZE_MAPPINGS = {
           DEFAULT_SIZE => nil,
@@ -34,7 +36,7 @@ module Primer
 
         # An icon, avatar, SVG, or custom content that will render to the left of the label.
         #
-        # To render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by <%= link_to_component(Primer::OcticonComponent) %>.
+        # To render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Octicon) %>.
         #
         # To render an avatar, call the `with_leading_visual_avatar` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>.
         #
@@ -42,7 +44,7 @@ module Primer
         #
         # To render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.
         renders_one :leading_visual, types: {
-          icon: Primer::OcticonComponent,
+          icon: Primer::Beta::Octicon,
           avatar: ->(**kwargs) { Primer::Beta::Avatar.new(**{ **kwargs, size: 16 }) },
           svg: lambda { |**system_arguments|
             Primer::BaseComponent.new(tag: :svg, width: "16", height: "16", **system_arguments)
@@ -55,31 +57,31 @@ module Primer
         # Used internally.
         #
         # @private
-        renders_one :private_leading_action_icon, Primer::OcticonComponent
+        renders_one :private_leading_action_icon, Primer::Beta::Octicon
 
         # An icon, label, counter, or text to render to the right of the label.
         #
-        # To render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by <%= link_to_component(Primer::OcticonComponent) %>.
+        # To render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Octicon) %>.
         #
         # To render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Label) %>.
         #
-        # To render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by <%= link_to_component(Primer::CounterComponent) %>.
+        # To render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Counter) %>.
         #
         # To render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:
         # ```ruby
         # with_leading_visual_text { "Text here" }`
         # ```
         renders_one :trailing_visual, types: {
-          icon: Primer::OcticonComponent,
+          icon: Primer::Beta::Octicon,
           label: Primer::Beta::Label,
-          counter: Primer::CounterComponent,
+          counter: Primer::Beta::Counter,
           text: ->(text) { text }
         }
 
         # Used internally.
         #
         # @private
-        renders_one :private_trailing_action_icon, Primer::OcticonComponent
+        renders_one :private_trailing_action_icon, Primer::Beta::Octicon
 
         # A button rendered after the trailing icon that can be used to show a menu, activate
         # a dialog, etc.

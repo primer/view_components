@@ -20,7 +20,7 @@ GIT
 PATH
   remote: ..
   specs:
-    primer_view_components (0.0.109)
+    primer_view_components (0.0.114)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 17.0.0)
@@ -98,7 +98,7 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     azure_mgmt_container_service (0.22.0)
       ms_rest_azure (~> 0.12.0)
-    bootsnap (1.13.0)
+    bootsnap (1.15.0)
       msgpack (~> 1.2)
     builder (3.2.4)
     byebug (11.1.3)
@@ -157,13 +157,6 @@ GEM
       signet (~> 0.15)
     helm-cli (0.3.0)
       helm-rb (~> 0.1)
-    helm-rb (0.2.1-aarch64-linux)
-    helm-rb (0.2.1-arm-linux)
-    helm-rb (0.2.1-arm64-darwin)
-    helm-rb (0.2.1-arm64-linux)
-    helm-rb (0.2.1-ppc64le-linux)
-    helm-rb (0.2.1-s390x-linux)
-    helm-rb (0.2.1-x86-linux)
     helm-rb (0.2.1-x86_64-darwin)
     helm-rb (0.2.1-x86_64-linux)
     hotwire-livereload (1.2.2)
@@ -191,9 +184,6 @@ GEM
       multi_json
       to_regexp (~> 0.2.1)
     jwt (2.5.0)
-    kind-rb (0.1.0-aarch64-linux)
-    kind-rb (0.1.0-arm64-darwin)
-    kind-rb (0.1.0-ppc64le-linux)
     kind-rb (0.1.0-x86_64-darwin)
     kind-rb (0.1.0-x86_64-linux)
     krane (1.1.4)
@@ -213,13 +203,6 @@ GEM
       http (>= 3.0, < 5.0)
       recursive-open-struct (~> 1.1, >= 1.1.1)
       rest-client (~> 2.0)
-    kubectl-rb (0.2.1-aarch64-linux)
-    kubectl-rb (0.2.1-arm-linux)
-    kubectl-rb (0.2.1-arm64-darwin)
-    kubectl-rb (0.2.1-arm64-linux)
-    kubectl-rb (0.2.1-ppc64le-linux)
-    kubectl-rb (0.2.1-s390x-linux)
-    kubectl-rb (0.2.1-x86-linux)
     kubectl-rb (0.2.1-x86_64-darwin)
     kubectl-rb (0.2.1-x86_64-linux)
     kubernetes-cli (0.4.0)
@@ -242,7 +225,7 @@ GEM
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    lookbook (1.3.3)
+    lookbook (1.4.3)
       actioncable
       activemodel
       css_parser
@@ -288,12 +271,12 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.5.8)
-    nokogiri (1.13.9)
+    nokogiri (1.13.10)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.9-x86_64-darwin)
+    nokogiri (1.13.10-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.9-x86_64-linux)
+    nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     octicons (17.9.0)
     oj (3.13.23)
@@ -307,7 +290,7 @@ GEM
     public_suffix (5.0.0)
     puma (6.0.0)
       nio4r (~> 2.0)
-    racc (1.6.0)
+    racc (1.6.1)
     rack (2.2.4)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
@@ -358,10 +341,10 @@ GEM
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
     sorbet-runtime-stub (0.2.0)
-    spring (2.1.1)
-    spring-watcher-listen (2.0.1)
+    spring (4.1.0)
+    spring-watcher-listen (2.1.0)
       listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
+      spring (>= 4)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -385,7 +368,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    view_component (2.75.0)
+    view_component (2.78.0)
       activesupport (>= 5.0.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -395,11 +378,12 @@ GEM
     websocket-extensions (0.1.5)
     yard (0.9.28)
       webrick (~> 1.7.0)
-    zeitwerk (2.6.5)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   ruby
   x86_64-darwin-19
+  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
@@ -414,15 +398,15 @@ DEPENDENCIES
   kuby-azure (>= 0.3.3, < 1.0)
   kuby-core!
   kuby-kind (~> 0.1)
-  lookbook (~> 1.3.3)
+  lookbook (~> 1.4.3)
   primer_view_components!
   pry-byebug
   puma (~> 6.0.0)
   rack-cors
   railties (= 7.0.3)
   rake (~> 13.0)
-  spring
-  spring-watcher-listen (~> 2.0.0)
+  spring (~> 4.0)
+  spring-watcher-listen (~> 2.1)
   sprockets
   sprockets-rails
   stimulus-rails

@@ -27,6 +27,14 @@ namespace :test do
     ]
   end
 
+  Rake::TestTask.new(:component_css) do |t|
+    t.warning = false
+    t.libs << "test"
+    t.test_files = FileList[
+      "test/css/**/*_test.rb"
+    ]
+  end
+
   Rake::TestTask.new(:lib) do |t|
     t.warning = false
     t.libs << "test"

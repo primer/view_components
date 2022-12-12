@@ -35,8 +35,7 @@
   "appPort": [4000, 5400],
   "portsAttributes": {
     "4000": {
-      "label": "demo",
-      "onAutoForward": "openBrowser"
+      "label": "demo"
     },
     "5400": {
       "label": "doctocat"

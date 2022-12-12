@@ -1,0 +1,50 @@
+/* State */
+
+/* Default 32px */
+
+.state, /* TODO: Deprecate */
+.State {
+  display: inline-block;
+  padding: 5px var(--primer-control-medium-paddingInline-normal, 12px);
+  font-size: var(--primer-text-body-size-medium, 14px);
+  font-weight: var(--base-text-weight-medium, 500);
+  line-height: var(--primer-control-medium-lineBoxHeight, 20px);
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 2em;
+}
+
+.state, /* TODO: Deprecate */
+.State,
+.State--draft {
+  color: var(--color-fg-on-emphasis);
+  background-color: var(--color-neutral-emphasis);
+  border: var(--primer-borderWidth-thin, 1px) solid transparent;
+}
+
+.State--open {
+  color: var(--color-fg-on-emphasis);
+  background-color: var(--color-open-emphasis);
+}
+
+.State--merged {
+  color: var(--color-fg-on-emphasis);
+  background-color: var(--color-done-emphasis);
+}
+
+.State--closed {
+  color: var(--color-fg-on-emphasis);
+  background-color: var(--color-closed-emphasis);
+}
+
+/* Small 24px */
+
+.State--small {
+  padding: 0 10px;
+  font-size: var(--primer-text-body-size-small, 12px);
+  line-height: var(--base-size-24, 24px);
+
+  & .octicon {
+    width: 1em; /* Ensures different icons don't change State indicator width */
+  }
+}

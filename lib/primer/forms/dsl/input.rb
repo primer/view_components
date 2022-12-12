@@ -16,7 +16,9 @@ module Primer
 
         include Primer::ClassNameHelper
 
-        attr_reader :builder, :form, :input_arguments, :label_arguments, :caption, :validation_message, :ids
+        attr_reader :builder, :form, :input_arguments, :label_arguments, :caption, :validation_message, :ids, :form_control
+
+        alias form_control? form_control
 
         def initialize(builder:, form:, **system_arguments)
           @builder = builder
@@ -40,6 +42,10 @@ module Primer
           @invalid = @input_arguments.delete(:invalid)
           @full_width = @input_arguments.delete(:full_width)
           @size = @input_arguments.delete(:size)
+
+          # Whether or not to wrap the component in a FormControl, which renders a
+          # label above and validation message beneath the input.
+          @form_control = @input_arguments.delete(:form_control) { true }
 
           @input_arguments[:invalid] = "true" if invalid?
 
@@ -198,6 +204,22 @@ module Primer
 
         def input?
           true
+        end
+
+        def need_validation_element?
+          invalid?
+        end
+
+        def validation_arguments
+          {
+            class: "FormControl-inlineValidation",
+            id: validation_id,
+            hidden: valid?
+          }
+        end
+
+        def validation_message_arguments
+          {}
         end
 
         private

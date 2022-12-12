@@ -6,24 +6,6 @@ require_relative "form_test_component"
 class Primer::Forms::FormsTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
-  class DeepThought
-    if Rails::VERSION::STRING < "7.0"
-      include ActiveModel::Model
-    else
-      include ActiveModel::API
-    end
-
-    include ActiveModel::Validations
-
-    attr_reader :ultimate_answer
-
-    def initialize(ultimate_answer)
-      @ultimate_answer = ultimate_answer
-    end
-
-    validates :ultimate_answer, numericality: { greater_than: 41, less_than: 43 }
-  end
-
   def test_renders_correct_form_structure
     render_preview :single_text_field_form
 
@@ -70,51 +52,6 @@ class Primer::Forms::FormsTest < Minitest::Test
 
     caption_id = page.find_all(".FormControl-caption").first["id"]
     assert_selector "input[aria-describedby='#{caption_id}']"
-  end
-
-  def test_includes_activemodel_validation_messages
-    model = DeepThought.new(41)
-    model.valid? # populate validation error messages
-
-    render_in_view_context do
-      primer_form_with(model: model, url: "/foo") do |f|
-        render(SingleTextFieldForm.new(f))
-      end
-    end
-
-    assert_selector ".FormControl" do
-      assert_selector ".FormControl-inlineValidation", text: "Ultimate answer must be greater than 41" do
-        assert_selector ".octicon-alert-fill"
-      end
-    end
-  end
-
-  def test_names_inputs_correctly_when_rendered_against_an_activemodel
-    model = DeepThought.new(42)
-
-    render_in_view_context do
-      primer_form_with(model: model, url: "/foo") do |f|
-        render(SingleTextFieldForm.new(f))
-      end
-    end
-
-    text_field = page.find_all("input[type=text]").first
-    assert_equal text_field["name"], "primer_forms_forms_test_deep_thought[ultimate_answer]"
-  end
-
-  def test_the_input_is_described_by_the_validation_message
-    model = DeepThought.new(41)
-    model.valid? # populate validation error messages
-
-    render_in_view_context do
-      primer_form_with(model: model, url: "/foo") do |f|
-        render(SingleTextFieldForm.new(f))
-      end
-    end
-
-    validation_id = page.find_all(".FormControl-inlineValidation").first["id"]
-    described_by = page.find_all("input[type='text']").first["aria-describedby"]
-    assert described_by.split.include?(validation_id)
   end
 
   def test_renders_the_caption_template_when_present
@@ -176,10 +113,23 @@ class Primer::Forms::FormsTest < Minitest::Test
     assert_selector "input[type=text][name=last_name]"
   end
 
-  def test_renders_a_submit_button
+  def test_renders_buttons
     render_preview :submit_button_form
 
     assert_selector "button[type=submit]"
+    assert_selector "button[type=button]"
+  end
+
+  def test_renders_buttons_with_slots
+    render_preview :submit_button_form
+
+    assert_selector "button[type=submit]" do
+      assert_selector ".octicon-check-circle"
+    end
+
+    assert_selector "button[type=button]" do
+      assert_selector ".octicon-alert"
+    end
   end
 
   def test_renders_a_submit_button_without_data_disable_with
@@ -189,10 +139,11 @@ class Primer::Forms::FormsTest < Minitest::Test
     assert_nil button["data-disable-with"]
   end
 
-  def test_renders_a_submit_button_with_primer_utility_margin
+  def test_renders_buttons_with_primer_utility_margins
     render_preview :submit_button_form
 
-    assert_selector "button.mr-3[type=submit]"
+    assert_selector "button.mb-3[type=submit]"
+    assert_selector "button.mb-3[type=button]"
   end
 
   def test_renders_a_text_field_with_primer_utility_color
@@ -216,12 +167,14 @@ class Primer::Forms::FormsTest < Minitest::Test
   def test_renders_multi_input
     render_preview :multi_input_form
 
+    assert_selector "label", text: "Region"
+
     assert_selector ".FormControl select[name=region]" do
-      assert_selector "label", text: "State"
+      assert_selector "select option[value=WA]"
     end
 
     assert_selector ".FormControl select[name=region]", visible: false do
-      assert_selector "label", text: "Province", visible: false
+      assert_selector "select option[value=BC]", visible: false
     end
   end
 

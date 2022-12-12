@@ -1,0 +1,35 @@
+/* Counter */
+
+.Counter {
+  display: inline-block;
+  min-width: var(--base-size-20, 20px); /* makes sure it's a circle with just one digit */
+  padding: 0 6px;
+  font-size: var(--primer-text-body-size-small, 12px);
+  font-weight: var(--base-text-weight-medium, 500);
+  line-height: calc(var(--base-size-20, 20px) - var(--primer-borderWidth-thin, 1px) * 2); /* 20px - 2px for the borders */
+  color: var(--color-fg-default);
+  text-align: center;
+  background-color: var(--color-neutral-muted);
+  border: var(--primer-borderWidth-thin, 1px) solid var(--color-counter-border);
+  border-radius: 2em;
+
+  &:empty {
+    display: none;
+  }
+
+  /* Is this selector used? could not find any use of it */
+  & .octicon {
+    vertical-align: text-top;
+    opacity: 0.8;
+  }
+}
+
+.Counter--primary {
+  color: var(--color-fg-on-emphasis);
+  background-color: var(--color-neutral-emphasis);
+}
+
+.Counter--secondary {
+  color: var(--color-fg-muted);
+  background-color: var(--color-neutral-subtle);
+}

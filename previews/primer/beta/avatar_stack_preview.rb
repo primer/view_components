@@ -19,23 +19,64 @@ module Primer
         end
       end
 
-      # @label Default options
-      #
-      # @param number_of_avatars [Integer] number
-      # @param tag select [["div", div], ["span", span]]
-      # @param align select [["Left", left], ["Right", right]]
-      # @param tooltipped toggle
-      # @param tooltip_label text
-      def default(number_of_avatars: 1, tag: :div, align: :left, tooltipped: false, tooltip_label: "This is a tooltip!")
-        render(Primer::Beta::AvatarStack.new(tag: tag, align: align, tooltipped: tooltipped, body_arguments: { label: tooltip_label })) do |c|
-          Array.new(number_of_avatars || 1) do
-            c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
-          end
+      # @label Default
+      def default
+        render(Primer::Beta::AvatarStack.new) do |c|
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
         end
       end
 
-      # @!group More Examples
+      # @!group Multiple avatars
+      #
+      # @label 1 avatar
+      def avatar_1
+        render(Primer::Beta::AvatarStack.new) do |c|
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+        end
+      end
 
+      # @label 2 avatars
+      def avatar_2
+        render(Primer::Beta::AvatarStack.new) do |c|
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+        end
+      end
+
+      # @label 3 avatars
+      def avatar_3
+        render(Primer::Beta::AvatarStack.new) do |c|
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+        end
+      end
+
+      # @label 4 avatars
+      def avatar_4
+        render(Primer::Beta::AvatarStack.new) do |c|
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+        end
+      end
+
+      # @label 5 avatars
+      def avatar_5
+        render(Primer::Beta::AvatarStack.new) do |c|
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+          c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
+        end
+      end
+      #
+      # @!endgroup
+
+      # @!group More options
+      #
       # @label Align right
       def align_right
         render(Primer::Beta::AvatarStack.new(align: :right)) do |c|
@@ -53,6 +94,7 @@ module Primer
           c.avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser")
         end
       end
+      #
       # @!endgroup
     end
   end

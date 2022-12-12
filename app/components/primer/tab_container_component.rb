@@ -6,6 +6,8 @@ module Primer
   #
   # This component requires javascript.
   class TabContainerComponent < Primer::Component
+    warn_on_deprecated_slot_setter
+
     # @example Default
     #   <%= render(Primer::TabContainerComponent.new)  do %>
     #     <div role="tablist">

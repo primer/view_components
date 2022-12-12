@@ -3,6 +3,7 @@
 module Primer
   # Use `TimelineItem` to display items on a vertical timeline, connected by badge elements.
   class TimelineItemComponent < Primer::Component
+    warn_on_deprecated_slot_setter
     status :beta
 
     # Avatar to be rendered to the left of the Badge.
@@ -59,7 +60,7 @@ module Primer
     end
 
     def render?
-      avatar.present? || badge.present? || body.present?
+      avatar? || badge? || body?
     end
 
     # This component is part of `Primer::TimelineItemComponent` and should not be
@@ -78,7 +79,7 @@ module Primer
 
       def call
         render(Primer::BaseComponent.new(**@system_arguments)) do
-          render(Primer::OcticonComponent.new(@icon))
+          render(Primer::Beta::Octicon.new(@icon))
         end
       end
     end

@@ -17,16 +17,40 @@ module Primer
       end
 
       # @label Default options
-      #
-      # @param narrow [Boolean] toggle
-      # @param spacious [Boolean] toggle
-      # @param border [Boolean] toggle
-      def default(narrow: false, spacious: false, border: false)
-        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |c|
+      def default
+        render Primer::Beta::Blankslate.new do |c|
           c.heading(tag: :h2).with_content("Title")
           c.description { "Description" }
         end
       end
+
+      # @!group Options
+      #
+      # @label Narrow
+      def option_narrow
+        render Primer::Beta::Blankslate.new(narrow: true) do |c|
+          c.heading(tag: :h2).with_content("Title")
+          c.description { "Description" }
+        end
+      end
+
+      # @label Spacious
+      def option_spacious
+        render Primer::Beta::Blankslate.new(spacious: true) do |c|
+          c.heading(tag: :h2).with_content("Title")
+          c.description { "Description" }
+        end
+      end
+
+      # @label Border
+      def option_border
+        render Primer::Beta::Blankslate.new(border: true) do |c|
+          c.heading(tag: :h2).with_content("Title")
+          c.description { "Description" }
+        end
+      end
+      #
+      # @!endgroup
 
       # @param narrow [Boolean] toggle
       # @param spacious [Boolean] toggle

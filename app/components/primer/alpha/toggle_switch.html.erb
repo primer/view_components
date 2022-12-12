@@ -1,6 +1,6 @@
 <%= render(Primer::BaseComponent.new(tag: "toggle-switch", **@system_arguments)) do %>
-  <%= render(Primer::OcticonComponent.new(size: :small, color: :danger, icon: :alert, hidden: "true", data: { target: "toggle-switch.errorIcon" })) %>
-  <%= render(Primer::SpinnerComponent.new(size: :small, hidden: "true", data: { target: "toggle-switch.loadingSpinner" })) %>
+  <%= render(Primer::Beta::Octicon.new(size: :small, color: :danger, icon: :alert, hidden: "true", data: { target: "toggle-switch.errorIcon" })) %>
+  <%= render(Primer::Beta::Spinner.new(size: :small, hidden: "true", data: { target: "toggle-switch.loadingSpinner" })) %>
   <%= render(Primer::Beta::Text.new(aria: { hidden: true }, classes: "ToggleSwitch-status")) do %>
     <%= render(Primer::Box.new(classes: "ToggleSwitch-statusOn").with_content("On")) %>
     <%= render(Primer::Box.new(classes: "ToggleSwitch-statusOff").with_content("Off")) %>

@@ -12,6 +12,7 @@ module Primer
     #   However, please note that a visible label should almost always
     #   be used unless there is compelling reason not to. A placeholder is not a label.
     class AutoComplete < Primer::Component
+      warn_on_deprecated_slot_setter
       status :deprecated
 
       # Customizable results list.
@@ -136,8 +137,8 @@ module Primer
 
       # add `input` and `results` without needing to explicitly call them in the view
       def before_render
-        results(classes: "") unless results
-        input(classes: "") unless input
+        with_results(classes: "") unless results?
+        with_input(classes: "") unless input?
       end
 
       private

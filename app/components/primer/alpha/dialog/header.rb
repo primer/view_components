@@ -6,6 +6,9 @@ module Primer
       # A `Dialog::Header` is a compositional component, used to render the
       # Header of a dialog. See <%= link_to_component(Primer::Alpha::Dialog) %>.
       class Header < Primer::Component
+        status :alpha
+        audited_at "2022-10-10"
+
         # @param title [String] Describes the content of the dialog.
         # @param subtitle [String] Provides dditional context for the dialog, also setting the `aria-describedby` attribute.
         # @param show_divider [Boolean] Show a divider between the header and body.

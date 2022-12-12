@@ -29,6 +29,7 @@ namespace :docs do
     # Rails controller for rendering arbitrary ERB
     view_context = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context
     components = [
+      Primer::Beta::RelativeTime,
       Primer::Beta::IconButton,
       Primer::Beta::Button,
       Primer::Alpha::SegmentedControl,
@@ -36,7 +37,7 @@ namespace :docs do
       Primer::HellipButton,
       Primer::Alpha::Image,
       Primer::LocalTime,
-      Primer::OcticonSymbolsComponent,
+      Primer::Alpha::OcticonSymbols,
       Primer::Alpha::ImageCrop,
       Primer::IconButton,
       Primer::Beta::AutoComplete,
@@ -53,12 +54,12 @@ namespace :docs do
       Primer::ButtonComponent,
       Primer::Beta::ButtonGroup,
       Primer::Alpha::ButtonMarketing,
-      Primer::ClipboardCopy,
+      Primer::Beta::ClipboardCopy,
       Primer::Beta::CloseButton,
       Primer::Beta::Counter,
       Primer::Beta::Details,
       Primer::Alpha::Dialog,
-      Primer::Dropdown,
+      Primer::Alpha::Dropdown,
       Primer::DropdownMenuComponent,
       Primer::Beta::Flash,
       Primer::Beta::Heading,
@@ -66,14 +67,14 @@ namespace :docs do
       Primer::Beta::Label,
       Primer::LayoutComponent,
       Primer::Beta::Link,
-      Primer::Markdown,
-      Primer::MenuComponent,
+      Primer::Beta::Markdown,
+      Primer::Alpha::Menu,
       Primer::Navigation::TabComponent,
-      Primer::OcticonComponent,
-      Primer::PopoverComponent,
-      Primer::ProgressBarComponent,
+      Primer::Beta::Octicon,
+      Primer::Beta::Popover,
+      Primer::Beta::ProgressBar,
       Primer::StateComponent,
-      Primer::SpinnerComponent,
+      Primer::Beta::Spinner,
       Primer::SubheadComponent,
       Primer::TabContainerComponent,
       Primer::Beta::Text,
@@ -99,12 +100,12 @@ namespace :docs do
     ]
 
     js_components = [
-      Primer::Dropdown,
+      Primer::Alpha::Dropdown,
       Primer::LocalTime,
       Primer::Alpha::ImageCrop,
       Primer::Beta::AutoComplete,
       Primer::Alpha::Banner,
-      Primer::ClipboardCopy,
+      Primer::Beta::ClipboardCopy,
       Primer::TabContainerComponent,
       Primer::TimeAgoComponent,
       Primer::Alpha::UnderlinePanels,
@@ -514,7 +515,7 @@ namespace :docs do
   def lookbook_url(component)
     path = component.name.underscore.gsub("_component", "")
 
-    "https://primer.style/view-components/lookbook/inspect/#{path}/default/"
+    "https://primer.style/view-components/lookbook/inspect/#{path}_preview/default/"
   end
 
   def preview_exists?(component)

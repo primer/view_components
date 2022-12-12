@@ -9,6 +9,7 @@ module Primer
     #   You may choose to override this label with something more descriptive via [system_arguments][0].
     # [0]: https://primer.style/view-components/system-arguments#html-attributes
     class CloseButton < Primer::Component
+      warn_on_deprecated_slot_setter
       status :beta
 
       DEFAULT_TYPE = :button
@@ -33,7 +34,7 @@ module Primer
 
       def call
         render(Primer::Beta::BaseButton.new(**@system_arguments)) do
-          render(Primer::OcticonComponent.new("x"))
+          render(Primer::Beta::Octicon.new("x"))
         end
       end
     end

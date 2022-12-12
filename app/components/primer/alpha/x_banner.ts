@@ -1,7 +1,7 @@
 import {controller, target} from '@github/catalyst'
 
 @controller
-export class XBannerElement extends HTMLElement {
+class XBannerElement extends HTMLElement {
   @target titleText: HTMLElement
 
   dismiss() {

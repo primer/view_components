@@ -23,53 +23,142 @@ module Primer
         end
       end
 
-      # @param full_width [Boolean] toggle
-      # @param size select [small, medium, large]
-      def default(full_width: false, size: :medium)
-        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: full_width, size: size)) do |c|
+      # @label Default
+      def default
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |c|
           c.with_item(label: "Preview", selected: true)
           c.with_item(label: "Raw")
           c.with_item(label: "Blame")
         end
       end
 
+      # @!group Full width
+      # @label Size small
       # @param hide_labels [Boolean] toggle
-      # @param size select [small, medium, large]
-      def full_width(hide_labels: false, size: :medium)
-        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: true, hide_labels: hide_labels, size: size)) do |c|
-          c.with_item(label: "Preview", icon: (hide_labels ? :zap : nil), selected: true)
-          c.with_item(label: "Raw", icon: (hide_labels ? :zap : nil))
-          c.with_item(label: "Blame", icon: (hide_labels ? :zap : nil))
+      def full_width_small(hide_labels: false)
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: hide_labels, full_width: true, size: :small)) do |c|
+          c.with_item(label: "Preview", selected: true)
+          c.with_item(label: "Raw")
+          c.with_item(label: "Blame")
         end
       end
 
-      # @param full_width [Boolean] toggle
-      # @param size select [small, medium, large]
-      def icons_and_text(full_width: false, size: :medium)
-        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: full_width, size: size)) do |c|
+      # @label Size medium
+      # @param hide_labels [Boolean] toggle
+      def full_width_medium(hide_labels: false)
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: hide_labels, full_width: true, size: :medium)) do |c|
+          c.with_item(label: "Preview", selected: true)
+          c.with_item(label: "Raw")
+          c.with_item(label: "Blame")
+        end
+      end
+
+      # @label Size large
+      # @param hide_labels [Boolean] toggle
+      def full_width_large(hide_labels: false)
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: hide_labels, full_width: true, size: :large)) do |c|
+          c.with_item(label: "Preview", selected: true)
+          c.with_item(label: "Raw")
+          c.with_item(label: "Blame")
+        end
+      end
+      # @!endgroup
+
+      # @!group Icons and text
+      # @label Size small
+      def icons_and_text_small
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", size: :small)) do |c|
           c.with_item(label: "Preview", icon: :eye, selected: true)
           c.with_item(label: "Raw", icon: :"file-code")
           c.with_item(label: "Blame", icon: :people)
         end
       end
 
-      # @param full_width [Boolean] toggle
-      # @param size select [small, medium, large]
-      def icons_only(full_width: false, size: :medium)
-        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: full_width, hide_labels: true, size: size)) do |c|
+      # @label Size medium
+      def icons_and_text_medium
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", size: :medium)) do |c|
           c.with_item(label: "Preview", icon: :eye, selected: true)
           c.with_item(label: "Raw", icon: :"file-code")
           c.with_item(label: "Blame", icon: :people)
         end
       end
 
-      def with_links_as_tags
+      # @label Size large
+      def icons_and_text_large
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", size: :large)) do |c|
+          c.with_item(label: "Preview", icon: :eye, selected: true)
+          c.with_item(label: "Raw", icon: :"file-code")
+          c.with_item(label: "Blame", icon: :people)
+        end
+      end
+      # @!endgroup
+
+      # @!group Icons only
+      # @label Size small
+      def icon_only_small
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, size: :small)) do |c|
+          c.with_item(label: "Preview", icon: :eye, selected: true)
+          c.with_item(label: "Raw", icon: :"file-code")
+          c.with_item(label: "Blame", icon: :people)
+        end
+      end
+
+      # @label Size medium
+      def icon_only_medium
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, size: :medium)) do |c|
+          c.with_item(label: "Preview", icon: :eye, selected: true)
+          c.with_item(label: "Raw", icon: :"file-code")
+          c.with_item(label: "Blame", icon: :people)
+        end
+      end
+
+      # @label Size large
+      def icon_only_large
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, size: :large)) do |c|
+          c.with_item(label: "Preview", icon: :eye, selected: true)
+          c.with_item(label: "Raw", icon: :"file-code")
+          c.with_item(label: "Blame", icon: :people)
+        end
+      end
+
+      # @label Full width, size small
+      def icon_only_full_width_small
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, full_width: true, size: :small)) do |c|
+          c.with_item(label: "Preview", icon: :eye, selected: true)
+          c.with_item(label: "Raw", icon: :"file-code")
+          c.with_item(label: "Blame", icon: :people)
+        end
+      end
+
+      # @label Full width, size medium
+      def icon_only_full_width_medium
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, full_width: true, size: :medium)) do |c|
+          c.with_item(label: "Preview", icon: :eye, selected: true)
+          c.with_item(label: "Raw", icon: :"file-code")
+          c.with_item(label: "Blame", icon: :people)
+        end
+      end
+
+      # @label Full width, size large
+      def icon_only_full_width_large
+        render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true, full_width: true, size: :large)) do |c|
+          c.with_item(label: "Preview", icon: :eye, selected: true)
+          c.with_item(label: "Raw", icon: :"file-code")
+          c.with_item(label: "Blame", icon: :people)
+        end
+      end
+      # @!endgroup
+
+      # NOTE: this preview uses a group to force it's display below the other groups
+      # @!group With link as tag
+      def with_link_as_tag
         render(Primer::Alpha::SegmentedControl.new) do |c|
           c.with_item(tag: :a, href: "#", label: "Preview", icon: :eye, selected: true)
           c.with_item(tag: :a, href: "#", label: "Raw", icon: :"file-code")
           c.with_item(tag: :a, href: "#", label: "Blame", icon: :people)
         end
       end
+      # @!endgroup
     end
   end
 end

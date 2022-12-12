@@ -7,6 +7,7 @@ module Primer
     # @accessibility
     #   Use `aria-label` if the `Label` or the context around it don't explain the label.
     class Label < Primer::Component
+      warn_on_deprecated_slot_setter
       status :beta
 
       DEFAULT_TAG = :span

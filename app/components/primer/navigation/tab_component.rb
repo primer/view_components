@@ -41,13 +41,13 @@ module Primer
 
       # Icon to be rendered in the Tab left.
       #
-      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::OcticonComponent) %>.
+      # @param kwargs [Hash] The same arguments as <%= link_to_component(Primer::Beta::Octicon) %>.
       renders_one :icon, lambda { |icon = nil, **system_arguments|
         system_arguments[:classes] = class_names(
           @icon_classes,
           system_arguments[:classes]
         )
-        Primer::OcticonComponent.new(icon, **system_arguments)
+        Primer::Beta::Octicon.new(icon, **system_arguments)
       }
 
       # The Tab's text.

@@ -57,6 +57,13 @@ class ErblintTestCase < Minitest::Test
     end
   end
 
+  def linter_with_severity(severity)
+    return unless linter_class
+
+    config_with_severity = linter_class.config_schema.new({ severity: severity })
+    linter_class.new(file_loader, config_with_severity)
+  end
+
   def linter_with_override
     linter_class&.new(file_loader, linter_class.config_schema.new(override_ignores_if_correctable: true))
   end
