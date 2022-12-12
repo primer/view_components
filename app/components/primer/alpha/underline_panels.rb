@@ -4,6 +4,8 @@ module Primer
   module Alpha
     # Use `UnderlinePanels` to style tabs with an associated panel and an underlined selected state.
     class UnderlinePanels < Primer::Component
+      warn_on_deprecated_slot_setter
+
       include Primer::TabbedComponentHelper
       include Primer::UnderlineNavHelper
       # Use to render a button and an associated panel slot. See the example below or refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
