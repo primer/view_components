@@ -39,7 +39,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::AutoComplete::Item, { value: "Foo" }],
     [Primer::Beta::Avatar, { alt: "github", src: "https://github.com/github.png" }],
     [Primer::Beta::AvatarStack, {}, lambda do |component|
-      component.avatar(alt: "github", src: "https://github.com/github.png")
+      component.with_avatar(alt: "github", src: "https://github.com/github.png")
     end],
     [Primer::Beta::BaseButton, {}],
     [Primer::BaseComponent, { tag: :div }],
