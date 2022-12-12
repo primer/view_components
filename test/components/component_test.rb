@@ -46,7 +46,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::Blankslate, {}, proc { |component|
       component.with_heading(tag: :h2) { "Foo" }
     }],
-    [Primer::Beta::BorderBox, {}, proc { |component| component.header { "Foo" } }],
+    [Primer::Beta::BorderBox, {}, proc { |component| component.with_header { "Foo" } }],
     [Primer::Beta::BorderBox::Header, {}],
     [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::Box, {}],
