@@ -21,7 +21,7 @@ class PrimerAlphaImageCropTest < Minitest::Test
 
   def test_custom_loading_element
     render_inline Primer::Alpha::ImageCrop.new(src: "image.png") do |crop|
-      crop.loading do
+      crop.with_loading do
         "Loading.."
       end
     end
