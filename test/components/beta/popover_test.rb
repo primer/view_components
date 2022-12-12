@@ -7,10 +7,10 @@ class PrimerBetaPopoverTest < Minitest::Test
 
   def test_renders_default_styling
     render_inline(Primer::Beta::Popover.new) do |component|
-      component.heading do
+      component.with_heading do
         "My header"
       end
-      component.body do
+      component.with_body do
         "My body"
       end
     end
@@ -22,10 +22,10 @@ class PrimerBetaPopoverTest < Minitest::Test
 
   def test_without_left_and_right_classes
     render_inline(Primer::Beta::Popover.new(left: true, right: true)) do |component|
-      component.heading do
+      component.with_heading do
         "My header"
       end
-      component.body do
+      component.with_body do
         "My body"
       end
     end
@@ -40,7 +40,7 @@ class PrimerBetaPopoverTest < Minitest::Test
     render_inline(Primer::Beta::Popover.new(
                     position: :absolute, classes: "custom-class"
                   )) do |component|
-      component.body do
+      component.with_body do
         "Hi there"
       end
     end
@@ -50,7 +50,7 @@ class PrimerBetaPopoverTest < Minitest::Test
 
   def test_respects_message_caret_option
     render_inline(Primer::Beta::Popover.new) do |component|
-      component.body(caret: :left_bottom)
+      component.with_body(caret: :left_bottom)
     end
 
     assert_selector("div.Popover div.Popover-message.Popover-message--left-bottom.Box")
@@ -58,7 +58,7 @@ class PrimerBetaPopoverTest < Minitest::Test
 
   def test_respects_message_large_option
     render_inline(Primer::Beta::Popover.new) do |component|
-      component.body(large: true)
+      component.with_body(large: true)
     end
 
     assert_selector("div.Popover div.Popover-message.Popover-message--large.Box")
@@ -66,7 +66,7 @@ class PrimerBetaPopoverTest < Minitest::Test
 
   def test_allows_message_customization
     render_inline(Primer::Beta::Popover.new) do |component|
-      component.body(p: 3, mt: 1, mx: 4, text_align: :right)
+      component.with_body(p: 3, mt: 1, mx: 4, text_align: :right)
     end
 
     assert_selector("div.Popover div.Popover-message.Box.p-3.mt-1.mx-4.text-right")
@@ -74,8 +74,8 @@ class PrimerBetaPopoverTest < Minitest::Test
 
   def test_allows_heading_customization
     render_inline(Primer::Beta::Popover.new) do |component|
-      component.body { "Foo" }
-      component.heading(mb: 4, pr: 3, tag: :h3) do
+      component.with_body { "Foo" }
+      component.with_heading(mb: 4, pr: 3, tag: :h3) do
         "Hello world"
       end
     end

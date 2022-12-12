@@ -88,7 +88,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::Menu, {}, proc { |c| c.item(href: "#url") { "Item" } }],
     [Primer::Navigation::TabComponent, {}],
     [Primer::Beta::Octicon, { icon: :people }],
-    [Primer::Beta::Popover, {}, proc { |component| component.body { "Foo" } }],
+    [Primer::Beta::Popover, {}, proc { |component| component.with_body { "Foo" } }],
     [Primer::Beta::ProgressBar, {}, proc { |component| component.item }],
     [Primer::Beta::Spinner, {}],
     [Primer::StateComponent, { title: "Open" }],
