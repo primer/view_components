@@ -44,7 +44,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::BaseButton, {}],
     [Primer::BaseComponent, { tag: :div }],
     [Primer::Beta::Blankslate, {}, proc { |component|
-      component.heading(tag: :h2) { "Foo" }
+      component.with_heading(tag: :h2) { "Foo" }
     }],
     [Primer::Beta::BorderBox, {}, proc { |component| component.header { "Foo" } }],
     [Primer::Beta::BorderBox::Header, {}],
