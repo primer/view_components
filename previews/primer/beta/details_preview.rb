@@ -39,9 +39,9 @@ module Primer
       # @param overlay [Symbol] select [none, default, dark]
       # @param reset [Boolean] toggle
       def custom_button(reset: false, overlay: :default)
-        render Primer::Beta::Details.new(reset: reset, overlay: overlay) do |c|
-          c.summary(size: :small, scheme: :primary) { "Click me" }
-          c.body { "Body" }
+        render Primer::Beta::Details.new(reset: reset, overlay: overlay) do |component|
+          component.with_summary(size: :small, scheme: :primary) { "Click me" }
+          component.with_body { "Body" }
         end
       end
 
@@ -50,9 +50,9 @@ module Primer
       # @param overlay [Symbol] select [none, default, dark]
       # @param reset [Boolean] toggle
       def without_button(reset: false, overlay: :default)
-        render Primer::Beta::Details.new(reset: reset, overlay: overlay) do |c|
-          c.summary(button: false) { "Click me" }
-          c.body { "Body" }
+        render Primer::Beta::Details.new(reset: reset, overlay: overlay) do |component|
+          component.with_summary(button: false) { "Click me" }
+          component.with_body { "Body" }
         end
       end
     end

@@ -59,8 +59,8 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::CloseButton, {}],
     [Primer::Beta::Counter, { count: 1 }],
     [Primer::Beta::Details, {}, lambda do |component|
-      component.summary { "Foo" }
-      component.body { "Bar" }
+      component.with_summary { "Foo" }
+      component.with_body { "Bar" }
     end],
     [Primer::Alpha::Dialog, { title: "Test" }, proc { |component|
       component.with_header { "Foo" }
