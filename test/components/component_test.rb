@@ -50,7 +50,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::BorderBox::Header, {}],
     [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::Box, {}],
-    [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
+    [Primer::Beta::Breadcrumbs, {}, proc { |component| component.with_item(href: "/") { "Foo" } }],
     [Primer::ButtonComponent, {}, proc { "Button" }],
     [Primer::Beta::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
     [Primer::Alpha::ButtonMarketing, {}],

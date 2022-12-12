@@ -15,7 +15,7 @@ class PrimerBreadcrumbsTest < Minitest::Test
     with_raise_on_invalid_options(true) do
       error = assert_raises(ArgumentError) do
         render_inline(Primer::Beta::Breadcrumbs.new(p: 0)) do |component|
-          component.item(href: "/") { "Home" }
+          component.with_item(href: "/") { "Home" }
         end
       end
 
@@ -23,7 +23,7 @@ class PrimerBreadcrumbsTest < Minitest::Test
 
       error = assert_raises(ArgumentError) do
         render_inline(Primer::Beta::Breadcrumbs.new(font_size: 4)) do |component|
-          component.item(href: "/") { "Home" }
+          component.with_item(href: "/") { "Home" }
         end
       end
 
@@ -33,7 +33,7 @@ class PrimerBreadcrumbsTest < Minitest::Test
 
   def test_renders_single_item
     render_inline(Primer::Beta::Breadcrumbs.new) do |component|
-      component.item(href: "/") { "Home" }
+      component.with_item(href: "/") { "Home" }
     end
 
     assert_selector("nav[aria-label='Breadcrumb'] .breadcrumb-item", text: "Home")
@@ -41,9 +41,9 @@ class PrimerBreadcrumbsTest < Minitest::Test
 
   def test_renders_multiple_items
     render_inline(Primer::Beta::Breadcrumbs.new) do |component|
-      component.item(href: "/") { "Home" }
-      component.item(href: "/about") { "About" }
-      component.item(href: "/about/team") { "Team" }
+      component.with_item(href: "/") { "Home" }
+      component.with_item(href: "/about") { "About" }
+      component.with_item(href: "/about/team") { "Team" }
     end
 
     assert_selector("nav[aria-label='Breadcrumb'] .breadcrumb-item", count: 3)
@@ -51,8 +51,8 @@ class PrimerBreadcrumbsTest < Minitest::Test
 
   def test_renders_links_when_specified
     render_inline(Primer::Beta::Breadcrumbs.new) do |component|
-      component.item(href: "/") { "Home" }
-      component.item(href: "/about") { "About" }
+      component.with_item(href: "/") { "Home" }
+      component.with_item(href: "/about") { "About" }
     end
 
     assert_selector("nav[aria-label='Breadcrumb'] .breadcrumb-item a", count: 2)
@@ -61,8 +61,8 @@ class PrimerBreadcrumbsTest < Minitest::Test
 
   def test_automatically_selects_last_item
     render_inline(Primer::Beta::Breadcrumbs.new) do |component|
-      component.item(href: "/") { "Home" }
-      component.item(href: "/about") { "About" }
+      component.with_item(href: "/") { "Home" }
+      component.with_item(href: "/about") { "About" }
     end
 
     assert_selector("li.breadcrumb-item-selected a[aria-current='page']", text: "About")
