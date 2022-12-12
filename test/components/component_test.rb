@@ -52,7 +52,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Box, {}],
     [Primer::Beta::Breadcrumbs, {}, proc { |component| component.with_item(href: "/") { "Foo" } }],
     [Primer::ButtonComponent, {}, proc { "Button" }],
-    [Primer::Beta::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
+    [Primer::Beta::ButtonGroup, {}, proc { |component| component.with_button { "Button" } }],
     [Primer::Alpha::ButtonMarketing, {}],
     [Primer::Beta::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
     [Primer::ConditionalWrapper, { condition: true, tag: :div }],

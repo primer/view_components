@@ -4,6 +4,7 @@ module Primer
   module Beta
     # Use `ButtonGroup` to render a series of buttons.
     class ButtonGroup < Primer::Component
+      warn_on_deprecated_slot_setter
       status :beta
 
       # Required list of buttons to be rendered.
