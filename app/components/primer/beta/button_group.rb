@@ -4,6 +4,7 @@ module Primer
   module Beta
     # Use `ButtonGroup` to render a series of buttons.
     class ButtonGroup < Primer::Component
+      warn_on_deprecated_slot_setter
       status :beta
 
       # Required list of buttons to be rendered.
@@ -13,7 +14,9 @@ module Primer
         kwargs[:group_item] = true
         kwargs[:size] = @size
 
+        # rubocop:disable Primer/ComponentNameMigration
         Primer::ButtonComponent.new(**kwargs)
+        # rubocop:enable Primer/ComponentNameMigration
       }
 
       # @example Default

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Primer/ComponentNameMigration
+
 module Primer
   # @label TimeAgoComponent
   class TimeAgoComponentPreview < ViewComponent::Preview
@@ -22,3 +24,4 @@ module Primer
     end
   end
 end
+# rubocop:enable Primer/ComponentNameMigration

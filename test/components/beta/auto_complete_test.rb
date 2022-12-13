@@ -15,7 +15,7 @@ class PrimerBetaAutoCompleteTest < Minitest::Test
     with_raise_on_invalid_options(true) do
       err = assert_raises ArgumentError do
         render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
-          component.input(autofocus: true)
+          component.with_input(autofocus: true)
         end
       end
 
@@ -27,7 +27,7 @@ class PrimerBetaAutoCompleteTest < Minitest::Test
     with_raise_on_invalid_aria(true) do
       err = assert_raises ArgumentError do
         render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
-          component.input("aria-label": "Don't add one")
+          component.with_input("aria-label": "Don't add one")
         end
       end
 
@@ -81,7 +81,7 @@ class PrimerBetaAutoCompleteTest < Minitest::Test
 
   def test_renders_with_icon
     render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", list_id: "my-list-id", input_id: "test-input") do |component|
-      component.leading_visual_icon(icon: :search)
+      component.with_leading_visual_icon(icon: :search)
     end
 
     assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
@@ -103,7 +103,7 @@ class PrimerBetaAutoCompleteTest < Minitest::Test
 
   def test_renders_results_with_custom_classes
     render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", list_id: "my-list-id", input_id: "test-input") do |component|
-      component.results(classes: "my-class")
+      component.with_results(classes: "my-class")
     end
 
     assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
@@ -121,7 +121,7 @@ class PrimerBetaAutoCompleteTest < Minitest::Test
     with_raise_on_invalid_options(true) do
       err = assert_raises ArgumentError do
         render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
-          component.input(id: "some-other-id")
+          component.with_input(id: "some-other-id")
         end
       end
       assert_includes(err.message, "`id` will always be set to @input_id.")
@@ -132,7 +132,7 @@ class PrimerBetaAutoCompleteTest < Minitest::Test
     with_raise_on_invalid_options(true) do
       err = assert_raises ArgumentError do
         render_inline Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
-          component.input(name: "some-other-name")
+          component.with_input(name: "some-other-name")
         end
       end
       assert_includes(err.message, "Set @input_name on the component initializer instead with `input_name`.")

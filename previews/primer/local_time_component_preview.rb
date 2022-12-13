@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Primer/ComponentNameMigration
+
 module Primer
   # @label LocalTime
   class LocalTimeComponentPreview < ViewComponent::Preview
@@ -52,3 +54,4 @@ module Primer
     end
   end
 end
+# rubocop:enable Primer/ComponentNameMigration
