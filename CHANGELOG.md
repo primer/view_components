@@ -1,5 +1,41 @@
 # CHANGELOG
 
+## 0.0.115
+
+### Patch Changes
+
+- [#1670](https://github.com/primer/view_components/pull/1670) [`217db072`](https://github.com/primer/view_components/commit/217db07287d7383155051eba8c496d9a9636c54c) Thanks [@simurai](https://github.com/simurai)! - Move `Layout` styles to PVC
+
+* [#1667](https://github.com/primer/view_components/pull/1667) [`ee7f476d`](https://github.com/primer/view_components/commit/ee7f476dd13b58e1c38538950780493b97142c8b) Thanks [@camertron](https://github.com/camertron)! - Make multi input a form control
+
+- [#1672](https://github.com/primer/view_components/pull/1672) [`1a7daddb`](https://github.com/primer/view_components/commit/1a7daddb62cfb01825f09a9edb5310c0d9e44e07) Thanks [@neall](https://github.com/neall)! - Add auto_check_src option to forms framework text fields to run server-side validation on field change
+
+* [#1698](https://github.com/primer/view_components/pull/1698) [`29a5415e`](https://github.com/primer/view_components/commit/29a5415ecb6810d79abd135a32e9d63076c7a8c1) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Move `Primer::SpinnerComponent` to `Primer::Beta::Spinner`
+
+- [#1697](https://github.com/primer/view_components/pull/1697) [`4ff75a58`](https://github.com/primer/view_components/commit/4ff75a58b5daa94c9e24fc0cf2723a5a6750f4fe) Thanks [@joelhawksley](https://github.com/joelhawksley)! - ActionList, Alpha::AutoComplete, Banner, and Alpha::Dialog use new "with\_\*" Slots API.
+
+* [#1696](https://github.com/primer/view_components/pull/1696) [`d709bae1`](https://github.com/primer/view_components/commit/d709bae13ad0ff907b20b0471cbcb847daf3724a) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Moving `Primer::OcticonSymbolsComponent` to `Primer::Alpha::OcticonSymbols`, and deprecating the original
+
+- [#1694](https://github.com/primer/view_components/pull/1694) [`b1fc5dfd`](https://github.com/primer/view_components/commit/b1fc5dfd591c4ebcb16469003c5aff4eb115b485) Thanks [@camertron](https://github.com/camertron)! - Fix sass variable in layout.pcss
+
+* [#1687](https://github.com/primer/view_components/pull/1687) [`a5b6f02e`](https://github.com/primer/view_components/commit/a5b6f02e32e6fa05005a57cc82a0682b5bcd2351) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Deprecate Primer::LocalTime in favor of Primer::RelativeTime
+
+- [#1692](https://github.com/primer/view_components/pull/1692) [`f50c77fe`](https://github.com/primer/view_components/commit/f50c77fe215240a70d9355180fdddf17a2daae24) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Deprecating Primer::TimeAgo in favor of Primer::RelativeTime, and adding a migration guide
+
+* [#1690](https://github.com/primer/view_components/pull/1690) [`c1845c65`](https://github.com/primer/view_components/commit/c1845c65c3d7aaae3abb31f9846279783734974e) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Move `Primer::Beta::Octicon` to `Primer::Beta::Octicon` and deprecate the original
+
+- [#1688](https://github.com/primer/view_components/pull/1688) [`988077aa`](https://github.com/primer/view_components/commit/988077aae27c11fc270e1e9302498b2d2cd1113c) Thanks [@manuelpuyol](https://github.com/manuelpuyol)! - Fix tooltips not adding aria attributes when Turbo navigating
+
+* [#1691](https://github.com/primer/view_components/pull/1691) [`ab416be9`](https://github.com/primer/view_components/commit/ab416be957c4c48f0073c2d8a1c1218ea7f9c3d5) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Start migration to new slots API. You may see warnings for using the non-`with_` slot setter API.
+
+- [#1682](https://github.com/primer/view_components/pull/1682) [`e5144a38`](https://github.com/primer/view_components/commit/e5144a3867ee10a37c8662a27d2cb85711aae8ad) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Moving `Primer::MenuComponent` to `Primer::Alpha::Menu` and deprecating the original
+
+* [#1693](https://github.com/primer/view_components/pull/1693) [`219f5ef4`](https://github.com/primer/view_components/commit/219f5ef4844523f388843b612f23909484cb881a) Thanks [@camertron](https://github.com/camertron)! - Use URL helpers in previews that interact with the server-side
+
+- [#1701](https://github.com/primer/view_components/pull/1701) [`2c73c2f7`](https://github.com/primer/view_components/commit/2c73c2f7fbfa142da67e5c1044bc1c2cdfa50891) Thanks [@camertron](https://github.com/camertron)! - Properly scope Lookbook routes
+
+* [#1695](https://github.com/primer/view_components/pull/1695) [`7a881bf5`](https://github.com/primer/view_components/commit/7a881bf5a50720bc630c66a903256445aeb14a3e) Thanks [@simurai](https://github.com/simurai)! - Remove `forms.css` import for Lookbook
+
 ## 0.0.114
 
 ### Patch Changes
