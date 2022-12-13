@@ -49,9 +49,26 @@ module Primer
           # We achieve this by passing the `name` option to Rails form builder
           # methods. These methods will use the passed name if provided instead
           # of generating a scoped one.
-          if !@input_arguments.delete(:scope_name_to_model)
+          #
+          # rubocop:disable Style/IfUnlessModifier
+          unless @input_arguments.delete(:scope_name_to_model) { true }
             @input_arguments[:name] = name
           end
+          # rubocop:enable Style/IfUnlessModifier
+
+          # If scope_id_to_model is false, the name of the input for eg. `my_field`
+          # will be `my_field` instead of the Rails default of `model_my_field`.
+          #
+          # We achieve this by passing the `id` option to Rails form builder
+          # methods. These methods will use the passed id if provided instead
+          # of generating a scoped one. The id is the name of the field unless
+          # explicitly provided in system_arguments.
+          #
+          # rubocop:disable Style/IfUnlessModifier
+          unless @input_arguments.delete(:scope_id_to_model) { true }
+            @input_arguments[:id] = @input_arguments.delete(:id) { name }
+          end
+          # rubocop:enable Style/IfUnlessModifier
 
           # Whether or not to wrap the component in a FormControl, which renders a
           # label above and validation message beneath the input.
