@@ -8,8 +8,7 @@ module Primer
 
       private
 
-      def controller
-      end
+      def controller; end
     end
   end
 end

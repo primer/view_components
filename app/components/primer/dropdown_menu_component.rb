@@ -18,12 +18,12 @@ module Primer
 
     # @example With a header
     #   <div>
-    #     <%= render(Primer::Beta::Details.new(overlay: :default, reset: true, position: :relative)) do |c| %>
-    #       <% c.summary do %>
+    #     <%= render(Primer::Beta::Details.new(overlay: :default, reset: true, position: :relative)) do |component| %>
+    #       <% component.with_summary do %>
     #         Dropdown
     #       <% end %>
     #
-    #       <% c.body do %>
+    #       <% component.with_body do %>
     #         <%= render(Primer::DropdownMenuComponent.new(header: "Options")) do %>
     #           <ul>
     #             <li><a class="dropdown-item" href="#url">Dropdown item</a></li>

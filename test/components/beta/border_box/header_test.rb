@@ -12,8 +12,8 @@ class Primer::Beta::BorderBox::HeaderTest < Minitest::Test
   end
 
   def test_renders_title
-    render_inline(Primer::Beta::BorderBox::Header.new) do |h|
-      h.title(tag: :h3) { "Title" }
+    render_inline(Primer::Beta::BorderBox::Header.new) do |header|
+      header.with_title(tag: :h3) { "Title" }
     end
 
     assert_text("Title")

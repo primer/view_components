@@ -12,7 +12,7 @@ class PrimerBetaButtonGroupTest < Minitest::Test
   end
 
   def test_renders_button_items
-    render_inline(Primer::Beta::ButtonGroup.new) { |c| c.button { "Button" } }
+    render_inline(Primer::Beta::ButtonGroup.new) { |component| component.with_button { "Button" } }
 
     assert_selector("div.BtnGroup") do
       assert_selector("button.btn.BtnGroup-item", text: "Button")
@@ -20,12 +20,12 @@ class PrimerBetaButtonGroupTest < Minitest::Test
   end
 
   def test_renders_button_with_props
-    render_inline(Primer::Beta::ButtonGroup.new) do |c|
-      c.button { "Button" }
-      c.button(scheme: :primary) { "Primary" }
-      c.button(scheme: :danger) { "Danger" }
-      c.button(scheme: :outline) { "Outline" }
-      c.button(classes: "custom-class") { "Custom class" }
+    render_inline(Primer::Beta::ButtonGroup.new) do |component|
+      component.with_button { "Button" }
+      component.with_button(scheme: :primary) { "Primary" }
+      component.with_button(scheme: :danger) { "Danger" }
+      component.with_button(scheme: :outline) { "Outline" }
+      component.with_button(classes: "custom-class") { "Custom class" }
     end
 
     assert_selector("div.BtnGroup") do
@@ -44,8 +44,8 @@ class PrimerBetaButtonGroupTest < Minitest::Test
   end
 
   def test_all_buttons_with_same_size
-    render_inline(Primer::Beta::ButtonGroup.new(size: :small)) do |c|
-      c.button(size: :medium) { "Medium" }
+    render_inline(Primer::Beta::ButtonGroup.new(size: :small)) do |component|
+      component.with_button(size: :medium) { "Medium" }
     end
 
     assert_selector("div.BtnGroup") do
@@ -54,8 +54,8 @@ class PrimerBetaButtonGroupTest < Minitest::Test
   end
 
   def test_all_buttons_with_same_variant
-    render_inline(Primer::Beta::ButtonGroup.new(variant: :small)) do |c|
-      c.button(size: :medium) { "Medium" }
+    render_inline(Primer::Beta::ButtonGroup.new(variant: :small)) do |component|
+      component.with_button(size: :medium) { "Medium" }
     end
 
     assert_selector("div.BtnGroup") do

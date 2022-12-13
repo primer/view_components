@@ -4,6 +4,8 @@ module Primer
   module Beta
     # Use `AvatarStack` to stack multiple avatars together.
     class AvatarStack < Primer::Component
+      warn_on_deprecated_slot_setter
+
       status :beta
 
       ALIGN_DEFAULT = :left

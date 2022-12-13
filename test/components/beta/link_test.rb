@@ -85,8 +85,8 @@ class PrimerBetaLinkTest < Minitest::Test
   end
 
   def test_renders_with_tooltip_sibling
-    render_inline(Primer::Beta::Link.new(id: "1", href: "http://google.com")) do |c|
-      c.tooltip(text: "Tooltip text")
+    render_inline(Primer::Beta::Link.new(id: "1", href: "http://google.com")) do |component|
+      component.with_tooltip(text: "Tooltip text")
       "content"
     end
 

@@ -4,6 +4,7 @@ module Primer
   module Beta
     # Use `Truncate` to shorten overflowing text with an ellipsis.
     class Truncate < Primer::Component
+      warn_on_deprecated_slot_setter
       status :beta
 
       # Text slot used for the truncated text.
@@ -77,11 +78,11 @@ module Primer
       def before_render
         return unless content.present? && items.empty?
 
-        item { content }
+        with_item { content }
       end
 
       def render?
-        items.any?
+        items?
       end
 
       # This component is part of `Primer::Beta::Truncate` and should not be

@@ -80,7 +80,9 @@ module Primer
 
           def call
             component = if BUTTON_TAGS.include?(@system_arguments[:tag])
+                          # rubocop:disable Primer/ComponentNameMigration
                           Primer::ButtonComponent.new(scheme: :link, **@system_arguments)
+                          # rubocop:enable Primer/ComponentNameMigration
                         else
                           Primer::BaseComponent.new(**@system_arguments)
                         end
