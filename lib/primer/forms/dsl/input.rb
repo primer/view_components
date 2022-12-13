@@ -43,6 +43,16 @@ module Primer
           @full_width = @input_arguments.delete(:full_width)
           @size = @input_arguments.delete(:size)
 
+          # If scope_name_to_model is false, the name of the input for eg. `my_field`
+          # will be `my_field` instead of the Rails default of `model[my_field]`.
+          #
+          # We achieve this by passing the `name` option to Rails form builder
+          # methods. These methods will use the passed name if provided instead
+          # of generating a scoped one.
+          if !@input_arguments.delete(:scope_name_to_model)
+            @input_arguments[:name] = name
+          end
+
           # Whether or not to wrap the component in a FormControl, which renders a
           # label above and validation message beneath the input.
           @form_control = @input_arguments.delete(:form_control) { true }
