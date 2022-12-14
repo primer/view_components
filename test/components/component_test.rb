@@ -89,7 +89,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Navigation::TabComponent, {}],
     [Primer::Beta::Octicon, { icon: :people }],
     [Primer::Beta::Popover, {}, proc { |component| component.with_body { "Foo" } }],
-    [Primer::Beta::ProgressBar, {}, proc { |component| component.item }],
+    [Primer::Beta::ProgressBar, {}, proc { |component| component.with_item }],
     [Primer::Beta::Spinner, {}],
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.with_heading { "Foo" } }],
