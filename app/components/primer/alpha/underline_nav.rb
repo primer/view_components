@@ -15,8 +15,6 @@ module Primer
     #   - See <%= link_to_component(Primer::Navigation::TabComponent) %> for additional
     #     accessibility considerations.
     class UnderlineNav < Primer::Component
-      warn_on_deprecated_slot_setter
-
       include Primer::TabbedComponentHelper
       include Primer::UnderlineNavHelper
 

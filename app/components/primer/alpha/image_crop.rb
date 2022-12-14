@@ -4,8 +4,6 @@ module Primer
   module Alpha
     # A client-side mechanism to crop images.
     class ImageCrop < Primer::Component
-      warn_on_deprecated_slot_setter
-
       # A loading indicator that is shown while the image is loading.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_one :loading, lambda { |**system_arguments|

@@ -6,8 +6,6 @@ module Primer
     # settings that should cause an immediate update. If configured with a "src" attribute, the component will
     # make a POST request containing data of the form "value: 0 | 1".
     class ToggleSwitch < Primer::Component
-      warn_on_deprecated_slot_setter
-
       SIZE_DEFAULT = :medium
       SIZE_MAPPINGS = {
         SIZE_DEFAULT => nil,

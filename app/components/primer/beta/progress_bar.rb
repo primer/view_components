@@ -4,7 +4,6 @@ module Primer
   module Beta
     # Use `ProgressBar` to visualize task completion.
     class ProgressBar < Primer::Component
-      warn_on_deprecated_slot_setter
       status :beta
 
       # Use the Item slot to add an item to the progress bar

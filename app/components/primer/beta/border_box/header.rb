@@ -7,8 +7,6 @@ module Primer
       #
       # @accessibility When using `header.with_title`, set `tag` to one of `h1`, `h2`, `h3`, etc. based on what is appropriate for the page context. <%= link_to_heading_practices %>
       class Header < Primer::Component
-        warn_on_deprecated_slot_setter
-
         status :beta
 
         TITLE_TAG_FALLBACK = :h2

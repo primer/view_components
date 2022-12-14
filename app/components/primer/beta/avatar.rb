@@ -17,7 +17,6 @@ module Primer
     #   rather than `@kittenuser`.
     #   [Learn more about best image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/)
     class Avatar < Primer::Component
-      warn_on_deprecated_slot_setter
       status :beta
 
       DEFAULT_SIZE = 20

@@ -4,8 +4,6 @@ module Primer
   module Alpha
     # Use `Menu` to create vertical lists of navigational links.
     class Menu < Primer::Component
-      warn_on_deprecated_slot_setter
-
       HEADING_TAG_OPTIONS = [:h1, :h2, :h3, :h4, :h5, :h6].freeze
       HEADING_TAG_FALLBACK = :h2
 

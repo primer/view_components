@@ -14,7 +14,6 @@ module Primer
     #   Keyboard navigation follows the markup order. Decide carefully how the focus order should be be by deciding whether
     #   `main` or `sidebar` comes first in code. The code order won’t affect the visual position.
     class Layout < Primer::Component
-      warn_on_deprecated_slot_setter
       status :alpha
 
       FIRST_IN_SOURCE_DEFAULT = :sidebar

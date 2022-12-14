@@ -15,7 +15,6 @@ module Primer
     #   Either `aria-label` or `aria-description` will be used for the `Tooltip` text, depending on which one is present.
     #   [Learn more about best functional image practices (WAI Images)](https://www.w3.org/WAI/tutorials/images/functional)
     class IconButton < Primer::Component
-      warn_on_deprecated_slot_setter
       status :beta
 
       DEFAULT_SCHEME = :default

@@ -11,8 +11,6 @@ module Primer
   #   The `:heading` slot defaults to rendering a `<div>`. Update the tag to a heading element with the appropriate level to improve page navigation for assistive technologies.
   #   <%= link_to_heading_practices %>
   class SubheadComponent < Primer::Component
-    warn_on_deprecated_slot_setter
-
     status :beta
 
     DEFAULT_HEADING_TAG = :div

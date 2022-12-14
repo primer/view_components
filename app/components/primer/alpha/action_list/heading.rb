@@ -5,8 +5,6 @@ module Primer
     class ActionList
       # Heading used to describe each sub list within an action list.
       class Heading < Primer::Component
-        warn_on_deprecated_slot_setter
-
         DEFAULT_SCHEME = :subtle
         SCHEME_MAPPINGS = {
           DEFAULT_SCHEME => nil,
