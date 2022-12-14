@@ -12,9 +12,9 @@ class PrimerAlphaMenuTest < Minitest::Test
   end
 
   def test_renders_items
-    render_inline(Primer::Alpha::Menu.new) do |c|
-      c.item(selected: true, href: "#url") { "Item 1" }
-      c.item(href: "#url") { "Item 2" }
+    render_inline(Primer::Alpha::Menu.new) do |component|
+      component.with_item(selected: true, href: "#url") { "Item 1" }
+      component.with_item(href: "#url") { "Item 2" }
     end
 
     assert_selector("nav.menu") do
@@ -24,10 +24,10 @@ class PrimerAlphaMenuTest < Minitest::Test
   end
 
   def test_renders_heading
-    render_inline(Primer::Alpha::Menu.new) do |c|
-      c.heading(tag: :h3) { "Heading" }
-      c.item(selected: true, href: "#url") { "Item 1" }
-      c.item(href: "#url") { "Item 2" }
+    render_inline(Primer::Alpha::Menu.new) do |component|
+      component.with_heading(tag: :h3) { "Heading" }
+      component.with_item(selected: true, href: "#url") { "Item 1" }
+      component.with_item(href: "#url") { "Item 2" }
     end
 
     assert_selector("nav.menu") do
@@ -37,10 +37,10 @@ class PrimerAlphaMenuTest < Minitest::Test
 
   def test_falls_back_to_h2_when_heading_tag_isnt_valid
     without_fetch_or_fallback_raises do
-      render_inline(Primer::Alpha::Menu.new) do |c|
-        c.heading(tag: :div) { "Heading" }
-        c.item(selected: true, href: "#url") { "Item 1" }
-        c.item(href: "#url") { "Item 2" }
+      render_inline(Primer::Alpha::Menu.new) do |component|
+        component.with_heading(tag: :div) { "Heading" }
+        component.with_item(selected: true, href: "#url") { "Item 1" }
+        component.with_item(href: "#url") { "Item 2" }
       end
 
       assert_selector("nav.menu") do
