@@ -5,5 +5,13 @@
     <% end %>
     <%= render(Caption.new(input: @input)) %>
   </span>
-  <%= render(Primer::Alpha::ToggleSwitch.new(src: @input.src)) %>
+  <%
+    csrf = @input.csrf || @view_context.form_authenticity_token(
+      form_options: {
+        method: :post,
+        action: @input.src
+      }
+    )
+  %>
+  <%= render(Primer::Alpha::ToggleSwitch.new(src: @input.src, csrf: csrf)) %>
 </div>
