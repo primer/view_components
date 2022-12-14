@@ -33,6 +33,8 @@ module Primer
 
       UTILITY_KEYS = Primer::Classify::Utilities::UTILITIES.keys.freeze
 
+      alias primer_fields_for fields_for
+
       def label(method, text = nil, **options, &block)
         super(method, text, classify(options).merge(generate_error_markup: false), &block)
       end

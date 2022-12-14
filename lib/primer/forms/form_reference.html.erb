@@ -1,3 +1,3 @@
-<%= builder.fields_for(*@input.fields_for_args, **@input.fields_for_kwargs) do |fields| %>
+<%= builder_or_view.primer_fields_for(*@input.fields_for_args, **@input.fields_for_kwargs) do |fields| %>
   <%= render(@input.ref_block.call(fields)) %>
 <% end %>
