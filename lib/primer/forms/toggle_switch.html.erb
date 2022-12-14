@@ -1,4 +1,4 @@
-<div class="d-flex">
+<%= content_tag(:div, **@form_group_arguments) do %>
   <span style="flex-grow: 1">
     <%= builder.label(@input.name, **@input.label_arguments) do %>
       <%= @input.label %>
@@ -14,4 +14,4 @@
     )
   %>
   <%= render(Primer::Alpha::ToggleSwitch.new(src: @input.src, csrf: csrf)) %>
-</div>
+<% end %>

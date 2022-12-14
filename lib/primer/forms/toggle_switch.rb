@@ -9,19 +9,10 @@ module Primer
       def initialize(input:)
         @input = input
         @input.add_label_classes("FormControl-label")
-        # @input.add_input_classes("FormControl-something??")
 
-        # @input.label_arguments[:value] = checked_value # what does this do?
-      end
+        @form_group_arguments = { class: "d-flex" }
 
-      private
-
-      def checked_value
-        @input.value || "1"
-      end
-
-      def unchecked_value
-        @input.unchecked_value || "0"
+        @form_group_arguments[:hidden] = "hidden" if @input.hidden?
       end
     end
   end
