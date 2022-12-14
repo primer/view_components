@@ -6,6 +6,7 @@ module Primer
       # This component is part of `Dropdown` and should not be
       # used as a standalone component.
       class Menu < Primer::Component
+        warn_on_deprecated_slot_setter
         status :alpha
 
         AS_DEFAULT = :default

@@ -73,7 +73,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::Dropdown, {}, lambda do |component|
       component.with_button { "Foo" }
       component.with_menu do |menu|
-        menu.item { "Baz" }
+        menu.with_item { "Baz" }
       end
     end],
     [Primer::Alpha::Dropdown::Menu, {}],
