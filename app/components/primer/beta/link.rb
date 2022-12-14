@@ -4,7 +4,6 @@ module Primer
   module Beta
     # Use `Link` for navigating from one page to another. `Link` styles anchor tags with default blue styling and hover text-decoration.
     class Link < Primer::Component
-      warn_on_deprecated_slot_setter
       status :beta
 
       DEFAULT_SCHEME = :default

@@ -6,7 +6,6 @@ module Primer
   # @private
   # :nocov:
   class Component < ViewComponent::Base
-    warn_on_deprecated_slot_setter
     include ViewComponent::SlotableV2 unless ViewComponent::Base < ViewComponent::SlotableV2
     include ViewComponent::PolymorphicSlots unless ViewComponent::Base < ViewComponent::PolymorphicSlots
     include ClassNameHelper

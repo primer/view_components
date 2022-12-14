@@ -4,7 +4,6 @@ module Primer
   module Beta
     # Use `Flash` to inform users of successful or pending actions.
     class Flash < Primer::Component
-      warn_on_deprecated_slot_setter
       status :beta
 
       # Optional action content showed on the right side of the component.
