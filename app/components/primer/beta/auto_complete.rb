@@ -12,6 +12,8 @@ module Primer
     #   However, please note that a visible label should almost always
     #   be used unless there is compelling reason not to. A placeholder is not a label.
     class AutoComplete < Primer::Component
+      warn_on_deprecated_slot_setter
+
       status :beta
 
       DEFAULT_SIZE = :medium

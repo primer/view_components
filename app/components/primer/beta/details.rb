@@ -4,6 +4,7 @@ module Primer
   module Beta
     # Use `DetailsComponent` to reveal content after clicking a button.
     class Details < Primer::Component
+      warn_on_deprecated_slot_setter
       status :beta
 
       BODY_TAG_DEFAULT = :div

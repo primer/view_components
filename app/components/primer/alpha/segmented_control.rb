@@ -26,7 +26,7 @@ module Primer
 
       # @example Basic usage
       #
-      #   <%= render(Primer::Alpha::SegmentedControl.new) do |c| %>
+      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |c| %>
       #     <%= c.with_item(label: "Preview", selected: true) %>
       #     <%= c.with_item(label: "Raw") %>
       #     <%= c.with_item(label: "Blame") %>
@@ -34,28 +34,28 @@ module Primer
       #
       # @example Small
       #
-      #   <%= render(Primer::Alpha::SegmentedControl.new(size: :small)) do |c| %>
+      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", size: :small)) do |c| %>
       #     <%= c.with_item(label: "Preview", selected: true) %>
       #     <%= c.with_item(label: "Raw") %>
       #     <%= c.with_item(label: "Blame") %>
       #   <% end %>
       #
       # @example With icons
-      #   <%= render(Primer::Alpha::SegmentedControl.new) do |c| %>
+      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |c| %>
       #     <%= c.with_item(label: "Preview", icon: :eye, selected: true) %>
       #     <%= c.with_item(label: "Raw", icon: :"file-code") %>
       #     <%= c.with_item(label: "Blame", icon: :people) %>
       #   <% end %>
       #
       # @example With icons only
-      #   <%= render(Primer::Alpha::SegmentedControl.new(hide_labels: true)) do |c| %>
+      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true)) do |c| %>
       #     <%= c.with_item(label: "Preview", icon: :eye, selected: true) %>
       #     <%= c.with_item(label: "Raw", icon: :"file-code") %>
       #     <%= c.with_item(label: "Blame", icon: :people) %>
       #   <% end %>
       #
       # @example Fill width of parent
-      #   <%= render(Primer::Alpha::SegmentedControl.new(full_width: true)) do |c| %>
+      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: true)) do |c| %>
       #     <%= c.with_item(label: "Preview", icon: :eye, selected: true) %>
       #     <%= c.with_item(label: "Raw", icon: :"file-code") %>
       #     <%= c.with_item(label: "Blame", icon: :people) %>
