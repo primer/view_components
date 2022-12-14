@@ -3,13 +3,13 @@
 module Primer
   module Forms
     class ToggleSwitchForm < Primer::Forms::Base
-      def self.create
-        Class.new(self)
-      end
-
       # override to avoid accepting a builder argument
       def self.new(**options)
         allocate.tap { |obj| obj.send(:initialize, **options) }
+      end
+
+      def self.form(*)
+        raise "ToggleSwitch forms only have a single field, and therefore do not support the `form' method."
       end
 
       def initialize(**system_arguments)
