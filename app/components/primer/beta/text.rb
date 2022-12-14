@@ -4,7 +4,6 @@ module Primer
   module Beta
     # `Text` is a wrapper component that will apply typography styles to the text inside.
     class Text < Primer::Component
-      warn_on_deprecated_slot_setter
       status :beta
 
       DEFAULT_TAG = :span

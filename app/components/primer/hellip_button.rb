@@ -8,8 +8,6 @@ module Primer
   #   * This button is displaying a hellip as its content (The three dots character). Therefore a label is needed for screen readers.
   #   * Set the attribute `aria-label` on the system arguments. E.g. `Primer::HellipButton.new("aria-label": "Expand next part")`
   class HellipButton < Primer::Component
-    warn_on_deprecated_slot_setter
-
     # @example Default
     #   <%= render(Primer::HellipButton.new("aria-label": "No effect")) %>
     #

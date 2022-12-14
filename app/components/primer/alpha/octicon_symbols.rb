@@ -6,8 +6,6 @@ module Primer
   module Alpha
     # OcticonSymbols renders a symbol dictionary using a list of <%= link_to_octicons %>.
     class OcticonSymbols < Primer::Component
-      warn_on_deprecated_slot_setter
-
       # @example Symbol dictionary
       #   <%= render(Primer::Beta::Octicon.new(icon: :check, use_symbol: true, color: :success)) %>
       #   <%= render(Primer::Beta::Octicon.new(icon: :check, use_symbol: true, color: :danger)) %>

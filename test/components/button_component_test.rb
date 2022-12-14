@@ -99,8 +99,8 @@ class PrimerButtonComponentTest < Minitest::Test
   end
 
   def test_renders_leading_visual
-    render_inline(Primer::ButtonComponent.new) do |c|
-      c.leading_visual_icon(icon: :star)
+    render_inline(Primer::ButtonComponent.new) do |component|
+      component.with_leading_visual_icon(icon: :star)
       "Button"
     end
 
@@ -111,8 +111,8 @@ class PrimerButtonComponentTest < Minitest::Test
   end
 
   def test_renders_trailing_visual
-    render_inline(Primer::ButtonComponent.new) do |c|
-      c.trailing_visual_counter(count: 10)
+    render_inline(Primer::ButtonComponent.new) do |component|
+      component.with_trailing_visual_counter(count: 10)
       "Button"
     end
 
@@ -123,9 +123,9 @@ class PrimerButtonComponentTest < Minitest::Test
   end
 
   def test_renders_leading_and_trailing_visuals
-    render_inline(Primer::ButtonComponent.new) do |c|
-      c.leading_visual_icon(icon: :star)
-      c.trailing_visual_counter(count: 10)
+    render_inline(Primer::ButtonComponent.new) do |component|
+      component.with_leading_visual_icon(icon: :star)
+      component.with_trailing_visual_counter(count: 10)
       "Button"
     end
 
@@ -137,9 +137,9 @@ class PrimerButtonComponentTest < Minitest::Test
   end
 
   def test_renders_using_icon_and_counter
-    render_inline(Primer::ButtonComponent.new) do |c|
-      c.icon(icon: :star)
-      c.counter(count: 10)
+    render_inline(Primer::ButtonComponent.new) do |component|
+      component.icon(icon: :star)
+      component.counter(count: 10)
       "Button"
     end
 

@@ -215,7 +215,7 @@ module Primer
       end
 
       def render?
-        main.present? && sidebar.present?
+        main? && sidebar?
       end
 
       # The layout's main content.

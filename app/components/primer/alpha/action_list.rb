@@ -9,7 +9,6 @@ module Primer
     # Each item in an action list can be augmented by specifying corresponding leading
     # and/or trailing visuals.
     class ActionList < Primer::Component
-      warn_on_deprecated_slot_setter
       status :alpha
 
       DEFAULT_ROLE = :list

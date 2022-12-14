@@ -19,8 +19,8 @@ class PrimerComponentTest < Minitest::Test
     }],
     [Primer::Alpha::SegmentedControl::Item, { label: "Button" }],
     [Primer::Alpha::Layout, {}, proc { |component|
-      component.main(tag: :div) { "Foo" }
-      component.sidebar(tag: :div) { "Bar" }
+      component.with_main(tag: :div) { "Foo" }
+      component.with_sidebar(tag: :div) { "Bar" }
     }],
     [Primer::HellipButton, { "aria-label": "No action" }],
     [Primer::Alpha::TabPanels, { label: "label" }],
@@ -71,9 +71,9 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::Dialog::Body, {}],
     [Primer::Alpha::Dialog::Footer, {}],
     [Primer::Alpha::Dropdown, {}, lambda do |component|
-      component.button { "Foo" }
-      component.menu do |m|
-        m.item { "Baz" }
+      component.with_button { "Foo" }
+      component.with_menu do |menu|
+        menu.with_item { "Baz" }
       end
     end],
     [Primer::Alpha::Dropdown::Menu, {}],
@@ -85,11 +85,11 @@ class PrimerComponentTest < Minitest::Test
     [Primer::LayoutComponent, {}],
     [Primer::Beta::Link, { href: "https://www.google.com" }],
     [Primer::Beta::Markdown, {}],
-    [Primer::Alpha::Menu, {}, proc { |c| c.item(href: "#url") { "Item" } }],
+    [Primer::Alpha::Menu, {}, proc { |c| c.with_item(href: "#url") { "Item" } }],
     [Primer::Navigation::TabComponent, {}],
     [Primer::Beta::Octicon, { icon: :people }],
     [Primer::Beta::Popover, {}, proc { |component| component.with_body { "Foo" } }],
-    [Primer::Beta::ProgressBar, {}, proc { |component| component.item }],
+    [Primer::Beta::ProgressBar, {}, proc { |component| component.with_item }],
     [Primer::Beta::Spinner, {}],
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.with_heading { "Foo" } }],
@@ -102,7 +102,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.with_body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],
-    [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }],
+    [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.with_tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
     [Primer::Alpha::ActionList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::NavList, { aria: { label: "Nav list" } }],

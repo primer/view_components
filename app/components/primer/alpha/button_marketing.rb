@@ -4,8 +4,6 @@ module Primer
   module Alpha
     # Use `ButtonMarketing` for actions (e.g. in forms). Use links for destinations, or moving from one page to another.
     class ButtonMarketing < Primer::Component
-      warn_on_deprecated_slot_setter
-
       DEFAULT_SCHEME = :default
       SCHEME_MAPPINGS = {
         DEFAULT_SCHEME => "",

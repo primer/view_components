@@ -32,9 +32,9 @@ class Primer::Alpha::Dropdown::MenuTest < Minitest::Test
   end
 
   def test_renders_items
-    render_inline(Primer::Alpha::Dropdown::Menu.new(header: "Header")) do |c|
-      c.item { "Item 1" }
-      c.item { "Item 2" }
+    render_inline(Primer::Alpha::Dropdown::Menu.new(header: "Header")) do |component|
+      component.with_item { "Item 1" }
+      component.with_item { "Item 2" }
     end
 
     assert_selector(".dropdown-item[role='menuitem']", text: "Item 1")
@@ -42,9 +42,9 @@ class Primer::Alpha::Dropdown::MenuTest < Minitest::Test
   end
 
   def test_renders_items_as_buttons
-    render_inline(Primer::Alpha::Dropdown::Menu.new(header: "Header")) do |c|
-      c.item(tag: :button) { "Item 1" }
-      c.item(tag: :button) { "Item 2" }
+    render_inline(Primer::Alpha::Dropdown::Menu.new(header: "Header")) do |component|
+      component.with_item(tag: :button) { "Item 1" }
+      component.with_item(tag: :button) { "Item 2" }
     end
 
     assert_selector("button.dropdown-item[role='menuitem']", text: "Item 1")
@@ -52,18 +52,18 @@ class Primer::Alpha::Dropdown::MenuTest < Minitest::Test
   end
 
   def test_renders_dividers
-    render_inline(Primer::Alpha::Dropdown::Menu.new(header: "Header")) do |c|
-      c.item(divider: true)
+    render_inline(Primer::Alpha::Dropdown::Menu.new(header: "Header")) do |component|
+      component.with_item(divider: true)
     end
 
     assert_selector(".dropdown-divider[role='separator']")
   end
 
   def test_renders_as_list
-    render_inline(Primer::Alpha::Dropdown::Menu.new(as: :list, header: "Header")) do |c|
-      c.item { "Item 1" }
-      c.item(divider: true)
-      c.item { "Item 2" }
+    render_inline(Primer::Alpha::Dropdown::Menu.new(as: :list, header: "Header")) do |component|
+      component.with_item { "Item 1" }
+      component.with_item(divider: true)
+      component.with_item { "Item 2" }
     end
 
     assert_selector("details-menu.dropdown-menu") do

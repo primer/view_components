@@ -3,7 +3,6 @@
 module Primer
   # Use `TimelineItem` to display items on a vertical timeline, connected by badge elements.
   class TimelineItemComponent < Primer::Component
-    warn_on_deprecated_slot_setter
     status :beta
 
     # Avatar to be rendered to the left of the Badge.

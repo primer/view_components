@@ -7,10 +7,10 @@ class PrimerAlphaTabNavTest < Minitest::Test
 
   def test_raises_if_multiple_tabs_are_selected
     err = assert_raises Primer::TabbedComponentHelper::MultipleSelectedTabsError do
-      render_inline(Primer::Alpha::TabNav.new(label: "label")) do |c|
-        c.tab(selected: true) { "Tab 1" }
-        c.tab { "Tab 2" }
-        c.tab(selected: true) { "Tab 3" }
+      render_inline(Primer::Alpha::TabNav.new(label: "label")) do |component|
+        component.with_tab(selected: true) { "Tab 1" }
+        component.with_tab { "Tab 2" }
+        component.with_tab(selected: true) { "Tab 3" }
       end
     end
 
@@ -18,9 +18,9 @@ class PrimerAlphaTabNavTest < Minitest::Test
   end
 
   def test_renders_tabs
-    render_inline(Primer::Alpha::TabNav.new(label: "label")) do |c|
-      c.tab(selected: true) { "Tab 1" }
-      c.tab { "Tab 2" }
+    render_inline(Primer::Alpha::TabNav.new(label: "label")) do |component|
+      component.with_tab(selected: true) { "Tab 1" }
+      component.with_tab { "Tab 2" }
     end
 
     refute_selector("tab-container")
@@ -37,9 +37,9 @@ class PrimerAlphaTabNavTest < Minitest::Test
   end
 
   def test_renders_tag_as_div_and_aria_label_on_list
-    render_inline(Primer::Alpha::TabNav.new(label: "label", tag: :div)) do |c|
-      c.tab(selected: true) { "Tab 1" }
-      c.tab { "Tab 2" }
+    render_inline(Primer::Alpha::TabNav.new(label: "label", tag: :div)) do |component|
+      component.with_tab(selected: true) { "Tab 1" }
+      component.with_tab { "Tab 2" }
     end
 
     assert_selector("div.tabnav") do
@@ -55,10 +55,10 @@ class PrimerAlphaTabNavTest < Minitest::Test
   end
 
   def test_renders_extra_content
-    render_inline(Primer::Alpha::TabNav.new(label: "label")) do |c|
-      c.tab(selected: true) { "Tab 1" }
-      c.tab { "Tab 2" }
-      c.extra { "Extra" }
+    render_inline(Primer::Alpha::TabNav.new(label: "label")) do |component|
+      component.with_tab(selected: true) { "Tab 1" }
+      component.with_tab { "Tab 2" }
+      component.with_extra { "Extra" }
     end
 
     assert_selector(".tabnav") do
@@ -77,10 +77,10 @@ class PrimerAlphaTabNavTest < Minitest::Test
   end
 
   def test_renders_extra_content_after_the_tabs
-    render_inline(Primer::Alpha::TabNav.new(label: "label")) do |c|
-      c.tab(selected: true) { "Tab 1" }
-      c.tab { "Tab 2" }
-      c.extra(align: :right) { "Extra" }
+    render_inline(Primer::Alpha::TabNav.new(label: "label")) do |component|
+      component.with_tab(selected: true) { "Tab 1" }
+      component.with_tab { "Tab 2" }
+      component.with_extra(align: :right) { "Extra" }
     end
 
     assert_selector("nav.tabnav[aria-label='label']") do
