@@ -94,7 +94,7 @@ module Primer
       #   @description
       #     Display any Octicon as a leading visual within the field
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", src: "/auto_complete", input_id:"input-id-1", list_id: "list-id-1")) do |component| %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", src: "/view-components/rails-app/auto_complete", input_id:"input-id-1", list_id: "list-id-1")) do |component| %>
       #       <% component.with_leading_visual_icon(icon: :search) %>
       #     <% end %>
       #
@@ -102,13 +102,13 @@ module Primer
       #   @description
       #     Show a clear button
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "input-id-2", list_id: "list-id-2", src: "/auto_complete", show_clear_button: true )) %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "input-id-2", list_id: "list-id-2", src: "/view-components/rails-app/auto_complete", show_clear_button: true )) %>
       #
       # @example Visually hidden label
       #   @description
       #     A non-visible label may be rendered with `visually_hide_label: true`, but it is highly discouraged. See <%= link_to_accessibility %>.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-1", list_id: "fruits-popup--custom-result-1", src: "/auto_complete", visually_hide_label: true)) do |component| %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-1", list_id: "fruits-popup--custom-result-1", src: "/view-components/rails-app/auto_complete", visually_hide_label: true)) do %>
       #       <% component.with_leading_visual_icon(icon: :search) %>
       #     <% end %>
       #
@@ -116,7 +116,7 @@ module Primer
       #   @description
       #     To allow field to span width of its container, set `full_width` to `true`.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-2", list_id: "fruits-popup--custom-results-2", src: "/auto_complete", full_width: true)) do |component| %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-2", list_id: "fruits-popup--custom-results-2", src: "/view-components/rails-app/auto_complete", full_width: true)) do |component| %>
       #       <% component.with_leading_visual_icon(icon: :search) %>
       #     <% end %>
       #
@@ -124,25 +124,25 @@ module Primer
       #   @description
       #     Use the `inset` variant to change the input background color to be subtle.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-2", list_id: "fruits-popup--custom-results-2", src: "/auto_complete", inset: true)) do |component| %>
-      #       <% component.with_leading_visual_icon(icon: :search) %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-2", list_id: "fruits-popup--custom-results-2", src: "/view-components/rails-app/auto_complete", inset: true)) do |component| %>
+      #       <% component.leading_visual_icon(icon: :search) %>
       #     <% end %>
       #
       # @example Monospace variant
       #   @description
       #     Use the `monospace` variant to change the input font family.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-2", list_id: "fruits-popup--custom-results-2", src: "/auto_complete", monospace: true)) do |component| %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-2", list_id: "fruits-popup--custom-results-2", src: "/view-components/rails-app/auto_complete", monospace: true)) do |component| %>
       #       <% component.with_leading_visual_icon(icon: :search) %>
       #     <% end %>
       #
       # @example With custom classes for the input
-      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--custom-input", list_id: "fruits-popup--custom-input")) do |component| %>
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete", input_id: "fruits-input--custom-input", list_id: "fruits-popup--custom-input")) do |component| %>
       #     <% component.with_input(classes: "custom-class") %>
       #   <% end %>
       #
       # @example With custom classes for the results
-      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--custom-results", list_id: "fruits-popup--custom-results")) do |component| %>
+      #   <%= render(Primer::Beta::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete", input_id: "fruits-input--custom-results", list_id: "fruits-popup--custom-results")) do |component| %>
       #     <% component.with_results(classes: "custom-class") %>
       #   <% end %>
       #

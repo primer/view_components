@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Primer
+  # :nodoc:
   module URLHelpers
     class << self
       # use send to avoid yard warning
