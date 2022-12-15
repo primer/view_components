@@ -108,7 +108,7 @@ module Primer
       #   @description
       #     A non-visible label may be rendered with `visually_hide_label: true`, but it is highly discouraged. See <%= link_to_accessibility %>.
       #   @code
-      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-1", list_id: "fruits-popup--custom-result-1", src: "/view-components/rails-app/auto_complete", visually_hide_label: true)) do %>
+      #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-1", list_id: "fruits-popup--custom-result-1", src: "/view-components/rails-app/auto_complete", visually_hide_label: true)) do |component| %>
       #       <% component.with_leading_visual_icon(icon: :search) %>
       #     <% end %>
       #
