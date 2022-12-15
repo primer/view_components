@@ -95,6 +95,11 @@ summary.Button {
 .Button-visual {
   display: flex;
   pointer-events: none; /* allow click handler to work, avoiding visuals */
+
+  & .Counter {
+    color: inherit;
+    background-color: var(--color-btn-counter-bg);
+  }
 }
 
 .Button-label {
