@@ -8,11 +8,11 @@ module Primer
       #
       # @param size [Symbol] select [medium, small]
       def playground(size: :medium)
-        render(Primer::Beta::ButtonGroup.new(size: size)) do |c|
-          c.button { "Button" }
-          c.button(scheme: :primary) { "Primary" }
-          c.button(scheme: :danger) { "Danger" }
-          c.button(scheme: :outline) { "Outline" }
+        render(Primer::Beta::ButtonGroup.new(size: size)) do |component|
+          component.with_button { "Button" }
+          component.with_button(scheme: :primary) { "Primary" }
+          component.with_button(scheme: :danger) { "Danger" }
+          component.with_button(scheme: :outline) { "Outline" }
         end
       end
 
@@ -20,11 +20,11 @@ module Primer
       #
       # @param size [Symbol] select [medium, small]
       def default(size: :medium)
-        render(Primer::Beta::ButtonGroup.new(size: size)) do |c|
-          c.button { "Button" }
-          c.button(scheme: :primary) { "Primary" }
-          c.button(scheme: :danger) { "Danger" }
-          c.button(scheme: :outline) { "Outline" }
+        render(Primer::Beta::ButtonGroup.new(size: size)) do |component|
+          component.with_button { "Button" }
+          component.with_button(scheme: :primary) { "Primary" }
+          component.with_button(scheme: :danger) { "Danger" }
+          component.with_button(scheme: :outline) { "Outline" }
         end
       end
     end

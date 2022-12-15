@@ -13,8 +13,8 @@
             disabled: disabled,
             invalid: invalid,
             input_name: input_name
-    )) do |c| %>
-        <% c.leading_visual_icon(icon: :search) %>
+    )) do |component| %>
+        <% component.with_leading_visual_icon(icon: :search) %>
     <% end %>
     <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Submit" } %>
 </div>

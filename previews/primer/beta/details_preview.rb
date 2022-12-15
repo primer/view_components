@@ -9,11 +9,11 @@ module Primer
       # @param overlay [Symbol] select [none, default, dark]
       # @param reset [Boolean] toggle
       def playground(reset: false, overlay: :default)
-        render Primer::Beta::Details.new(reset: reset, overlay: overlay) do |c|
-          c.with_summary do
+        render Primer::Beta::Details.new(reset: reset, overlay: overlay) do |component|
+          component.with_summary do
             "Summary"
           end
-          c.with_body do
+          component.with_body do
             "Body"
           end
         end
@@ -24,11 +24,11 @@ module Primer
       # @param overlay [Symbol] select [none, default, dark]
       # @param reset [Boolean] toggle
       def default(reset: false, overlay: :default)
-        render Primer::Beta::Details.new(reset: reset, overlay: overlay) do |c|
-          c.with_summary do
+        render Primer::Beta::Details.new(reset: reset, overlay: overlay) do |component|
+          component.with_summary do
             "Summary"
           end
-          c.with_body do
+          component.with_body do
             "Body"
           end
         end

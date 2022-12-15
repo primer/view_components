@@ -6,8 +6,8 @@ class PrimerAlphaDialogTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_title_and_body
-    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
-      c.with_body { "Hello" }
+    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |component|
+      component.with_body { "Hello" }
     end
 
     assert_selector("modal-dialog[role='dialog']") do
@@ -17,9 +17,9 @@ class PrimerAlphaDialogTest < Minitest::Test
   end
 
   def test_renders_show_button
-    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
-      c.with_body { "Hello" }
-      c.with_show_button { "Show" }
+    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |component|
+      component.with_body { "Hello" }
+      component.with_show_button { "Show" }
     end
 
     assert_selector("[data-show-dialog-id]")
@@ -35,24 +35,24 @@ class PrimerAlphaDialogTest < Minitest::Test
   end
 
   def test_renders_provided_id
-    render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-id")) do |c|
-      c.with_body { "content" }
+    render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-id")) do |component|
+      component.with_body { "content" }
     end
 
     assert_selector("modal-dialog[id='my-id']")
   end
 
   def test_renders_random_id
-    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |c|
-      c.with_body { "content" }
+    render_inline(Primer::Alpha::Dialog.new(title: "Title")) do |component|
+      component.with_body { "content" }
     end
 
     assert_selector("modal-dialog[id^='dialog-']")
   end
 
   def test_renders_subtitle_with_describedby
-    render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |c|
-      c.with_body { "content" }
+    render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |component|
+      component.with_body { "content" }
     end
 
     assert_selector("modal-dialog[id='my-dialog'][aria-describedby='my-dialog-description']") do
@@ -61,9 +61,9 @@ class PrimerAlphaDialogTest < Minitest::Test
   end
 
   def test_renders_footer_without_divider_by_default
-    render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |c|
-      c.with_body { "content" }
-      c.with_footer { "footer" }
+    render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |component|
+      component.with_body { "content" }
+      component.with_footer { "footer" }
     end
 
     assert_selector("modal-dialog") do
@@ -72,9 +72,9 @@ class PrimerAlphaDialogTest < Minitest::Test
   end
 
   def test_renders_footer_with_divider_if_show_divider_is_true
-    render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |c|
-      c.with_body { "content" }
-      c.with_footer(show_divider: true) { "footer" }
+    render_inline(Primer::Alpha::Dialog.new(title: "Title", id: "my-dialog", subtitle: "Subtitle")) do |component|
+      component.with_body { "content" }
+      component.with_footer(show_divider: true) { "footer" }
     end
 
     assert_selector("modal-dialog") do

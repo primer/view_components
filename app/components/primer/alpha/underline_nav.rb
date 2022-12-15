@@ -103,10 +103,10 @@ module Primer
       #   <% end %>
       #
       # @example Customizing the body
-      #   <%= render(Primer::Alpha::UnderlineNav.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :accent_emphasis })) do |c| %>
-      #     <% c.with_tab(selected: true, href: "#") { "Tab 1" }%>
-      #     <% c.with_tab(href: "#") { "Tab 2" } %>
-      #     <% c.with_tab(href: "#") { "Tab 3" } %>
+      #   <%= render(Primer::Alpha::UnderlineNav.new(label: "Default", body_arguments: { classes: "custom-class", border: true, border_color: :accent_emphasis })) do |component| %>
+      #     <% component.with_tab(selected: true, href: "#") { "Tab 1" }%>
+      #     <% component.with_tab(href: "#") { "Tab 2" } %>
+      #     <% component.with_tab(href: "#") { "Tab 3" } %>
       #   <% end %>
       #
       # @param tag [Symbol] <%= one_of(Primer::Alpha::UnderlineNav::TAG_OPTIONS) %>

@@ -4,8 +4,8 @@
             selected: selected,
             disabled: disabled,
             value: ''
-    )) do |c| %>
-        <% c.leading_visual_icon(icon: :search) %>
-        <% c.description { "Description" } %>
+    )) do |component| %>
+        <% component.with_leading_visual_icon(icon: :search) %>
+        <% component.with_description { "Description" } %>
         Label text
 <% end %>
