@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.0.116
+
+### Patch Changes
+
+- [#1710](https://github.com/primer/view_components/pull/1710) [`8e3390cd`](https://github.com/primer/view_components/commit/8e3390cd67088e3cc4add0b98331239fc860cd3a) Thanks [@joelhawksley](https://github.com/joelhawksley)! - All components use new `with_*` Slots API.
+
+* [#1712](https://github.com/primer/view_components/pull/1712) [`1568f7f9`](https://github.com/primer/view_components/commit/1568f7f99735baab0ab59d79a10675dda7c1ba1a) Thanks [@simurai](https://github.com/simurai)! - Improve `Counter` colors when nested in `Button`
+
+- [#1711](https://github.com/primer/view_components/pull/1711) [`b39dd62c`](https://github.com/primer/view_components/commit/b39dd62c37d8311e2374e39e056fb94c3cb1c4a5) Thanks [@camertron](https://github.com/camertron)! - Add option for controlling when form fields should be nested under their parent
+
+* [#1704](https://github.com/primer/view_components/pull/1704) [`f54ee3f7`](https://github.com/primer/view_components/commit/f54ee3f7a5cf13efafee6e0b6980f8607ced38dd) Thanks [@camertron](https://github.com/camertron)! - Add option to skip adding model scope to form inputs
+
+- [#1586](https://github.com/primer/view_components/pull/1586) [`bf704000`](https://github.com/primer/view_components/commit/bf70400033f6d0aa4c57020f37ba8ccd51e9ef7a) Thanks [@jonrohan](https://github.com/jonrohan)! - Updating touch targets on SegmentedControl
+
+* [#1703](https://github.com/primer/view_components/pull/1703) [`8103ec36`](https://github.com/primer/view_components/commit/8103ec36c27bf31fdb073010a02556f9e57d7838) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Beta components use new `with_*` Slots API.
+
 ## 0.0.115
 
 ### Patch Changes
