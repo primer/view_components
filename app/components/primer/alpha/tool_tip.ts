@@ -190,13 +190,9 @@ class ToolTipElement extends HTMLElement {
     this.#updateDirection()
     if (!this.shadowRoot) {
       const shadow = this.attachShadow({mode: 'open'})
-      // eslint-disable-next-line github/no-inner-html
-      shadow.innerHTML = `
-        <style>
-          ${this.styles()}
-        </style>
-        <slot></slot>
-      `
+      const style = shadow.appendChild(document.createElement('style'))
+      style.textContent = this.styles()
+      shadow.appendChild(document.createElement('slot'))
     }
     this.hiddenFromView = true
     this.#allowUpdatePosition = true
