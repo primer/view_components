@@ -7,7 +7,7 @@ class Primer::Forms::ToggleSwitchFormTest < Minitest::Test
 
   def test_it_renders_with_a_name
     bogus_csrf = "let me in"
-    render_inline(ExampleToggleSwitchForm.new(csrf: bogus_csrf))
+    render_inline(ExampleToggleSwitchForm.new(csrf: bogus_csrf, src: "/toggle_switch"))
 
     assert_selector "toggle-switch[src='/toggle_switch'][csrf='#{bogus_csrf}']"
   end
