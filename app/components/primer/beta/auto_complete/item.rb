@@ -6,7 +6,6 @@ module Primer
     class AutoComplete
       # Use `AutoCompleteItem` to list results of an auto-completed search.
       class Item < Primer::Component
-        warn_on_deprecated_slot_setter
         status :beta
 
         ALLOWED_DESCRIPTION_VARIANTS = [:inline, :block].freeze
@@ -36,10 +35,10 @@ module Primer
         renders_one :description
 
         # @example Default
-        #   <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
+        #   <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "value")) do %>
         #     Selected
         #   <% end %>
-        #   <%= render(Primer::Beta::AutoComplete::Item.new(value: "value")) do |c| %>
+        #   <%= render(Primer::Beta::AutoComplete::Item.new(value: "value")) do %>
         #     Not selected
         #   <% end %>
         #

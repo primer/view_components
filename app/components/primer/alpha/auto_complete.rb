@@ -93,17 +93,17 @@ module Primer
       #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete?version=alpha", input_id: "fruits-input--clear", list_id: "fruits-popup--clear", is_clearable: true)) %>
       #
       # @example With custom classes for the input
-      #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete?version=alpha", input_id: "fruits-input--custom-input", list_id: "fruits-popup--custom-input")) do |c| %>
-      #     <% c.with_input(classes: "custom-class") %>
+      #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete?version=alpha", input_id: "fruits-input--custom-input", list_id: "fruits-popup--custom-input")) do |component| %>
+      #     <% component.with_input(classes: "custom-class") %>
       #   <% end %>
       #
       # @example With custom classes for the results
-      #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete?version=alpha", input_id: "fruits-input--custom-results", list_id: "fruits-popup--custom-results")) do |c| %>
-      #     <% c.with_results(classes: "custom-class") do %>
-      #       <%= render(Primer::Alpha::AutoComplete::Item.new(selected: true, value: "apple")) do |c| %>
+      #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/view-components/rails-app/auto_complete?version=alpha", input_id: "fruits-input--custom-results", list_id: "fruits-popup--custom-results")) do |component| %>
+      #     <% component.with_results(classes: "custom-class") do %>
+      #       <%= render(Primer::Alpha::AutoComplete::Item.new(selected: true, value: "apple")) do %>
       #         Apple
       #       <% end %>
-      #       <%= render(Primer::Alpha::AutoComplete::Item.new(value: "orange")) do |c| %>
+      #       <%= render(Primer::Alpha::AutoComplete::Item.new(value: "orange")) do %>
       #         Orange
       #       <% end %>
       #     <% end %>

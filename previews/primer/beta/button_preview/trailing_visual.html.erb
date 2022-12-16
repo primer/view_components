@@ -5,7 +5,7 @@
     id: id,
     align_content: align_content,
     tag: tag
-)) do |c| %>
-  <% c.trailing_visual_counter(count: "15") %>
+)) do |component| %>
+  <% component.with_trailing_visual_counter(count: "15") %>
   Button
 <% end %>

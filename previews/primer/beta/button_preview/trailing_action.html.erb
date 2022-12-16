@@ -4,7 +4,7 @@
     block: block,
     id: id,
     align_content: align_content
-)) do |c| %>
-  <% c.trailing_action_icon(icon: "triangle-down") %>
+)) do |component| %>
+  <% component.with_trailing_action_icon(icon: "triangle-down") %>
   Button
 <% end %>

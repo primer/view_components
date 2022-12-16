@@ -11,7 +11,6 @@ module Primer
     #   - `secondary_action` text should be meaningful out of context and clearly describe the destination. Avoid using vague text like, "Learn more" or "Click here".
     #   - The blankslate can leverage the spinner component, which will communicate to screen reader users that the content is still loading.
     class Blankslate < Primer::Component
-      warn_on_deprecated_slot_setter
       status :beta
 
       VISUAL_OPTIONS = %i[icon spinner image].freeze

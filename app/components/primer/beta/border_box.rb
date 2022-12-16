@@ -4,8 +4,6 @@ module Primer
   module Beta
     # `BorderBox` is a Box component with a border.
     class BorderBox < Primer::Component
-      warn_on_deprecated_slot_setter
-
       status :beta
 
       DEFAULT_PADDING = :default

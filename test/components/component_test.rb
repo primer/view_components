@@ -85,7 +85,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::LayoutComponent, {}],
     [Primer::Beta::Link, { href: "https://www.google.com" }],
     [Primer::Beta::Markdown, {}],
-    [Primer::Alpha::Menu, {}, proc { |c| c.with_item(href: "#url") { "Item" } }],
+    [Primer::Alpha::Menu, {}, proc { |component| component.with_item(href: "#url") { "Item" } }],
     [Primer::Navigation::TabComponent, {}],
     [Primer::Beta::Octicon, { icon: :people }],
     [Primer::Beta::Popover, {}, proc { |component| component.with_body { "Foo" } }],
