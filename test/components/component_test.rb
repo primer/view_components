@@ -91,7 +91,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::Popover, {}, proc { |component| component.with_body { "Foo" } }],
     [Primer::Beta::ProgressBar, {}, proc { |component| component.with_item }],
     [Primer::Beta::Spinner, {}],
-    [Primer::StateComponent, { title: "Open" }],
+    [Primer::Beta::State, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.with_heading { "Foo" } }],
     [Primer::TabContainerComponent, {}, proc { "Foo" }],
     [Primer::Alpha::ToggleSwitch, {}],
@@ -111,6 +111,7 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::StateComponent",
       "Primer::OcticonSymbolsComponent",
       "Primer::SpinnerComponent",
       "Primer::OcticonComponent",

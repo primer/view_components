@@ -12,7 +12,7 @@ stable status.
 
 | Primer CSS Class | ViewComponent |
 |------------------|---------------|
-| [`State`](https://primer.style/css/components/labels#states)             | [`Primer::StateComponent`](https://primer.style/view-components/components/state)              |
+| [`State`](https://primer.style/css/components/labels#states)             | [`Primer::Beta::State`](https://primer.style/view-components/components/state)              |
 | [`breadcrumb-item`](https://primer.style/css/components/breadcrumb)      | [`Primer::Beta::Breadcrumbs`](https://primer.style/view-components/components/beta/breadcrumbs)    |
 | [`Counter`](https://primer.style/css/stickersheet/labels#counters)       | [`Primer::Beta::Counter`](https://primer.style/view-components/components/counter)          |
 | [`Subhead`](https://primer.style/css/components/subhead)                 | [`Primer::SubheadComponent`](https://primer.style/view-components/components/subhead)          |

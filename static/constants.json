@@ -912,6 +912,52 @@
       "large"
     ]
   },
+  "Primer::Beta::State": {
+    "DEPRECATED_SCHEME_MAPPINGS": {
+      "default": "",
+      "green": "State--open",
+      "red": "State--closed",
+      "purple": "State--merged"
+    },
+    "NEW_SCHEME_MAPPINGS": {
+      "open": "State--open",
+      "closed": "State--closed",
+      "merged": "State--merged"
+    },
+    "SCHEME_DEFAULT": "default",
+    "SCHEME_MAPPINGS": {
+      "open": "State--open",
+      "closed": "State--closed",
+      "merged": "State--merged",
+      "default": "",
+      "green": "State--open",
+      "red": "State--closed",
+      "purple": "State--merged"
+    },
+    "SCHEME_OPTIONS": [
+      "open",
+      "closed",
+      "merged",
+      "default",
+      "green",
+      "red",
+      "purple"
+    ],
+    "SIZE_DEFAULT": "default",
+    "SIZE_MAPPINGS": {
+      "default": "",
+      "small": "State--small"
+    },
+    "SIZE_OPTIONS": [
+      "default",
+      "small"
+    ],
+    "TAG_DEFAULT": "span",
+    "TAG_OPTIONS": [
+      "span",
+      "div"
+    ]
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
@@ -1056,50 +1102,6 @@
   "Primer::SpinnerComponent": {
   },
   "Primer::StateComponent": {
-    "DEPRECATED_SCHEME_MAPPINGS": {
-      "default": "",
-      "green": "State--open",
-      "red": "State--closed",
-      "purple": "State--merged"
-    },
-    "NEW_SCHEME_MAPPINGS": {
-      "open": "State--open",
-      "closed": "State--closed",
-      "merged": "State--merged"
-    },
-    "SCHEME_DEFAULT": "default",
-    "SCHEME_MAPPINGS": {
-      "open": "State--open",
-      "closed": "State--closed",
-      "merged": "State--merged",
-      "default": "",
-      "green": "State--open",
-      "red": "State--closed",
-      "purple": "State--merged"
-    },
-    "SCHEME_OPTIONS": [
-      "open",
-      "closed",
-      "merged",
-      "default",
-      "green",
-      "red",
-      "purple"
-    ],
-    "SIZE_DEFAULT": "default",
-    "SIZE_MAPPINGS": {
-      "default": "",
-      "small": "State--small"
-    },
-    "SIZE_OPTIONS": [
-      "default",
-      "small"
-    ],
-    "TAG_DEFAULT": "span",
-    "TAG_OPTIONS": [
-      "span",
-      "div"
-    ]
   },
   "Primer::SubheadComponent": {
     "DEFAULT_HEADING_TAG": "div",
