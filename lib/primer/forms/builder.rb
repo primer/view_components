@@ -33,6 +33,8 @@ module Primer
 
       UTILITY_KEYS = Primer::Classify::Utilities::UTILITIES.keys.freeze
 
+      alias primer_fields_for fields_for
+
       def label(method, text = nil, **options, &block)
         super(method, text, classify(options).merge(generate_error_markup: false), &block)
       end
@@ -72,9 +74,6 @@ module Primer
       #    is expected by Rails/HTML while the second is specific to Primer.
       # 3. Combines options[:class] and options[:classes] into options[:class]
       #    so the options hash can be easily passed to Rails form builder methods.
-      # 4. Sets generate_error_markup: false, which, in combination with the
-      #    monkeypatch at the top of this file, skips rendering any markup around
-      #    invalid fields.
       #
       def classify(options)
         options[:classes] = class_names(options.delete(:class), options[:classes])

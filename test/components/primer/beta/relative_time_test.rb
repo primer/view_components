@@ -16,7 +16,7 @@ class PrimerBetaRelativeTimeTest < Minitest::Test
   end
 
   def test_component_accepts_time_date_format
-    datetime = Time.new(2022, 12, 6, 11, 14, 46).utc
+    datetime = Time.utc(2022, 12, 6, 11, 14, 46)
     render_inline(Primer::Beta::RelativeTime.new(datetime: datetime))
     assert_selector("relative-time", text: "December 6, 2022 11:14")
   end

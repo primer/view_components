@@ -7,7 +7,6 @@ module Primer
     # A text field suitable for use outside a form. For a text field input suitable for use
     # within an HTML form, see the `Primer::Forms` namespace.
     class TextField < Primer::Component
-      warn_on_deprecated_slot_setter
       status :alpha
 
       # @!method initialize

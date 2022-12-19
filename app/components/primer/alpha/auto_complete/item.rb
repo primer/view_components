@@ -5,16 +5,15 @@ module Primer
     class AutoComplete
       # Use `AutoCompleteItem` to list results of an auto-completed search.
       class Item < Primer::Component
-        warn_on_deprecated_slot_setter
         status :deprecated
 
         # @example Default
-        #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--custom-results", list_id: "fruits-popup--custom-results")) do |c| %>
-        #     <% c.results(classes: "custom-class") do %>
-        #       <%= render(Primer::Alpha::AutoComplete::Item.new(selected: true, value: "apple")) do |c| %>
+        #   <%= render(Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/auto_complete", input_id: "fruits-input--custom-results", list_id: "fruits-popup--custom-results")) do |component| %>
+        #     <% component.results(classes: "custom-class") do %>
+        #       <%= render(Primer::Alpha::AutoComplete::Item.new(selected: true, value: "apple")) do %>
         #         Apple
         #       <% end %>
-        #       <%= render(Primer::Alpha::AutoComplete::Item.new(value: "orange")) do |c| %>
+        #       <%= render(Primer::Alpha::AutoComplete::Item.new(value: "orange")) do %>
         #         Orange
         #       <% end %>
         #     <% end %>

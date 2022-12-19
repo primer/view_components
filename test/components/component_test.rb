@@ -19,8 +19,8 @@ class PrimerComponentTest < Minitest::Test
     }],
     [Primer::Alpha::SegmentedControl::Item, { label: "Button" }],
     [Primer::Alpha::Layout, {}, proc { |component|
-      component.main(tag: :div) { "Foo" }
-      component.sidebar(tag: :div) { "Bar" }
+      component.with_main(tag: :div) { "Foo" }
+      component.with_sidebar(tag: :div) { "Bar" }
     }],
     [Primer::HellipButton, { "aria-label": "No action" }],
     [Primer::Alpha::TabPanels, { label: "label" }],
@@ -39,28 +39,28 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::AutoComplete::Item, { value: "Foo" }],
     [Primer::Beta::Avatar, { alt: "github", src: "https://github.com/github.png" }],
     [Primer::Beta::AvatarStack, {}, lambda do |component|
-      component.avatar(alt: "github", src: "https://github.com/github.png")
+      component.with_avatar(alt: "github", src: "https://github.com/github.png")
     end],
     [Primer::Beta::BaseButton, {}],
     [Primer::BaseComponent, { tag: :div }],
     [Primer::Beta::Blankslate, {}, proc { |component|
-      component.heading(tag: :h2) { "Foo" }
+      component.with_heading(tag: :h2) { "Foo" }
     }],
-    [Primer::Beta::BorderBox, {}, proc { |component| component.header { "Foo" } }],
+    [Primer::Beta::BorderBox, {}, proc { |component| component.with_header { "Foo" } }],
     [Primer::Beta::BorderBox::Header, {}],
     [Primer::BlankslateComponent, { title: "Foo" }],
     [Primer::Box, {}],
-    [Primer::Beta::Breadcrumbs, {}, proc { |component| component.item(href: "/") { "Foo" } }],
+    [Primer::Beta::Breadcrumbs, {}, proc { |component| component.with_item(href: "/") { "Foo" } }],
     [Primer::ButtonComponent, {}, proc { "Button" }],
-    [Primer::Beta::ButtonGroup, {}, proc { |component| component.button { "Button" } }],
+    [Primer::Beta::ButtonGroup, {}, proc { |component| component.with_button { "Button" } }],
     [Primer::Alpha::ButtonMarketing, {}],
     [Primer::Beta::ClipboardCopy, { "aria-label": "String that will be read to screenreaders", value: "String that will be copied" }],
     [Primer::ConditionalWrapper, { condition: true, tag: :div }],
     [Primer::Beta::CloseButton, {}],
     [Primer::Beta::Counter, { count: 1 }],
     [Primer::Beta::Details, {}, lambda do |component|
-      component.summary { "Foo" }
-      component.body { "Bar" }
+      component.with_summary { "Foo" }
+      component.with_body { "Bar" }
     end],
     [Primer::Alpha::Dialog, { title: "Test" }, proc { |component|
       component.with_header { "Foo" }
@@ -71,9 +71,9 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::Dialog::Body, {}],
     [Primer::Alpha::Dialog::Footer, {}],
     [Primer::Alpha::Dropdown, {}, lambda do |component|
-      component.button { "Foo" }
-      component.menu do |m|
-        m.item { "Baz" }
+      component.with_button { "Foo" }
+      component.with_menu do |menu|
+        menu.with_item { "Baz" }
       end
     end],
     [Primer::Alpha::Dropdown::Menu, {}],
@@ -85,11 +85,11 @@ class PrimerComponentTest < Minitest::Test
     [Primer::LayoutComponent, {}],
     [Primer::Beta::Link, { href: "https://www.google.com" }],
     [Primer::Beta::Markdown, {}],
-    [Primer::Alpha::Menu, {}, proc { |c| c.item(href: "#url") { "Item" } }],
+    [Primer::Alpha::Menu, {}, proc { |component| component.with_item(href: "#url") { "Item" } }],
     [Primer::Navigation::TabComponent, {}],
     [Primer::Beta::Octicon, { icon: :people }],
-    [Primer::Beta::Popover, {}, proc { |component| component.body { "Foo" } }],
-    [Primer::Beta::ProgressBar, {}, proc { |component| component.item }],
+    [Primer::Beta::Popover, {}, proc { |component| component.with_body { "Foo" } }],
+    [Primer::Beta::ProgressBar, {}, proc { |component| component.with_item }],
     [Primer::Beta::Spinner, {}],
     [Primer::StateComponent, { title: "Open" }],
     [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.with_heading { "Foo" } }],
@@ -98,11 +98,11 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::TextField, { name: :foo, label: "Foo" }],
     [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
-    [Primer::Beta::Truncate, {}, proc { |component| component.item { "Foo" } }],
+    [Primer::Beta::Truncate, {}, proc { |component| component.with_item { "Foo" } }],
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::TimelineItemComponent, {}, proc { |component| component.with_body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],
-    [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.tab(selected: true) { "Foo" } }],
+    [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.with_tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
     [Primer::Alpha::ActionList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::NavList, { aria: { label: "Nav list" } }],

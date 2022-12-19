@@ -26,39 +26,39 @@ module Primer
 
       # @example Basic usage
       #
-      #   <%= render(Primer::Alpha::SegmentedControl.new) do |c| %>
-      #     <%= c.with_item(label: "Preview", selected: true) %>
-      #     <%= c.with_item(label: "Raw") %>
-      #     <%= c.with_item(label: "Blame") %>
+      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |component| %>
+      #     <%= component.with_item(label: "Preview", selected: true) %>
+      #     <%= component.with_item(label: "Raw") %>
+      #     <%= component.with_item(label: "Blame") %>
       #   <% end %>
       #
       # @example Small
       #
-      #   <%= render(Primer::Alpha::SegmentedControl.new(size: :small)) do |c| %>
-      #     <%= c.with_item(label: "Preview", selected: true) %>
-      #     <%= c.with_item(label: "Raw") %>
-      #     <%= c.with_item(label: "Blame") %>
+      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", size: :small)) do |component| %>
+      #     <%= component.with_item(label: "Preview", selected: true) %>
+      #     <%= component.with_item(label: "Raw") %>
+      #     <%= component.with_item(label: "Blame") %>
       #   <% end %>
       #
       # @example With icons
-      #   <%= render(Primer::Alpha::SegmentedControl.new) do |c| %>
-      #     <%= c.with_item(label: "Preview", icon: :eye, selected: true) %>
-      #     <%= c.with_item(label: "Raw", icon: :"file-code") %>
-      #     <%= c.with_item(label: "Blame", icon: :people) %>
+      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |component| %>
+      #     <%= component.with_item(label: "Preview", icon: :eye, selected: true) %>
+      #     <%= component.with_item(label: "Raw", icon: :"file-code") %>
+      #     <%= component.with_item(label: "Blame", icon: :people) %>
       #   <% end %>
       #
       # @example With icons only
-      #   <%= render(Primer::Alpha::SegmentedControl.new(hide_labels: true)) do |c| %>
-      #     <%= c.with_item(label: "Preview", icon: :eye, selected: true) %>
-      #     <%= c.with_item(label: "Raw", icon: :"file-code") %>
-      #     <%= c.with_item(label: "Blame", icon: :people) %>
+      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", hide_labels: true)) do |component| %>
+      #     <%= component.with_item(label: "Preview", icon: :eye, selected: true) %>
+      #     <%= component.with_item(label: "Raw", icon: :"file-code") %>
+      #     <%= component.with_item(label: "Blame", icon: :people) %>
       #   <% end %>
       #
       # @example Fill width of parent
-      #   <%= render(Primer::Alpha::SegmentedControl.new(full_width: true)) do |c| %>
-      #     <%= c.with_item(label: "Preview", icon: :eye, selected: true) %>
-      #     <%= c.with_item(label: "Raw", icon: :"file-code") %>
-      #     <%= c.with_item(label: "Blame", icon: :people) %>
+      #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view", full_width: true)) do |component| %>
+      #     <%= component.with_item(label: "Preview", icon: :eye, selected: true) %>
+      #     <%= component.with_item(label: "Raw", icon: :"file-code") %>
+      #     <%= component.with_item(label: "Blame", icon: :people) %>
       #   <% end %>
       #
       # @param hide_labels [Boolean] Whether to hide the labels and only show the icons

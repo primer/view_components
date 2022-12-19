@@ -1,9 +1,9 @@
-<%= render(Primer::Beta::Details.new(**@system_arguments)) do |c| %>
-  <% c.summary(**@button_arguments) do %>
+<%= render(Primer::Beta::Details.new(**@system_arguments)) do |component| %>
+  <% component.with_summary(**@button_arguments) do %>
     <%= button %>
   <% end %>
 
-  <% c.body do %>
+  <% component.with_body do %>
     <%= menu %>
   <% end %>
 <% end %>

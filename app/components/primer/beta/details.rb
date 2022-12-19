@@ -25,7 +25,9 @@ module Primer
 
         return Primer::BaseComponent.new(**system_arguments) unless button
 
+        # rubocop:disable Primer/ComponentNameMigration
         Primer::ButtonComponent.new(**system_arguments)
+        # rubocop:enable Primer/ComponentNameMigration
       }
 
       # Use the Body slot as the main content to be shown when triggered by the Summary.
@@ -40,11 +42,11 @@ module Primer
 
       # @example Default
       #
-      #   <%= render Primer::Beta::Details.new do |c| %>
-      #     <% c.with_summary do %>
+      #   <%= render Primer::Beta::Details.new do |component| %>
+      #     <% component.with_summary do %>
       #       Summary
       #     <% end %>
-      #     <% c.with_body do %>
+      #     <% component.with_body do %>
       #       Body
       #     <% end %>
       #   <% end %>

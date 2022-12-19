@@ -9,6 +9,10 @@ module Primer
       def initialize(input:)
         @input = input
       end
+
+      def builder_or_view
+        @input.nested? ? builder : @view_context
+      end
     end
   end
 end

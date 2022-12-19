@@ -3,7 +3,6 @@
 module Primer
   # Use `State` for rendering the status of an item.
   class StateComponent < Primer::Component
-    warn_on_deprecated_slot_setter
     status :beta
 
     SCHEME_DEFAULT = :default

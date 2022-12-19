@@ -2,4 +2,4 @@
 "@primer/view-components": patch
 ---
 
-Move `Layout` styles to PVC
+Use new Slots API in previews.

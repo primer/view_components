@@ -35,10 +35,10 @@ module Primer
         renders_one :description
 
         # @example Default
-        #   <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
+        #   <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "value")) do %>
         #     Selected
         #   <% end %>
-        #   <%= render(Primer::Beta::AutoComplete::Item.new(value: "value")) do |c| %>
+        #   <%= render(Primer::Beta::AutoComplete::Item.new(value: "value")) do %>
         #     Not selected
         #   <% end %>
         #

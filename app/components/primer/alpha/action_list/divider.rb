@@ -5,8 +5,6 @@ module Primer
     class ActionList
       # Section heading rendered above the section contents.
       class Divider < Primer::Component
-        warn_on_deprecated_slot_setter
-
         DEFAULT_SCHEME = :subtle
         SCHEME_MAPPINGS = {
           DEFAULT_SCHEME => nil,

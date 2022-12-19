@@ -6,8 +6,6 @@ module Primer
     # settings that should cause an immediate update. If configured with a "src" attribute, the component will
     # make a POST request containing data of the form "value: 0 | 1".
     class ToggleSwitch < Primer::Component
-      warn_on_deprecated_slot_setter
-
       SIZE_DEFAULT = :medium
       SIZE_MAPPINGS = {
         SIZE_DEFAULT => nil,
@@ -23,22 +21,22 @@ module Primer
       STATUS_LABEL_POSITION_OPTIONS = STATUS_LABEL_POSITION_MAPPINGS.keys.freeze
 
       # @example Default
-      #   <%= render(Primer::Alpha::ToggleSwitch.new(src: "/foo")) %>
+      #   <%= render(Primer::Alpha::ToggleSwitch.new(src: "/view-components/rails-app/toggle_switch")) %>
       #
       # @example Checked
-      #   <%= render(Primer::Alpha::ToggleSwitch.new(src: "/foo", checked: true)) %>
+      #   <%= render(Primer::Alpha::ToggleSwitch.new(src: "/view-components/rails-app/toggle_switch", checked: true)) %>
       #
       # @example Disabled
-      #   <%= render(Primer::Alpha::ToggleSwitch.new(src: "/foo", enabled: false)) %>
+      #   <%= render(Primer::Alpha::ToggleSwitch.new(src: "/view-components/rails-app/toggle_switch", enabled: false)) %>
       #
       # @example Checked and Disabled
-      #   <%= render(Primer::Alpha::ToggleSwitch.new(src: "/foo", checked: true, enabled: false)) %>
+      #   <%= render(Primer::Alpha::ToggleSwitch.new(src: "/view-components/rails-app/toggle_switch", checked: true, enabled: false)) %>
       #
       # @example Small
-      #   <%= render(Primer::Alpha::ToggleSwitch.new(src: "/foo", size: :small)) %>
+      #   <%= render(Primer::Alpha::ToggleSwitch.new(src: "/view-components/rails-app/toggle_switch", size: :small)) %>
       #
       # @example With status label positioned at the end
-      #   <%= render(Primer::Alpha::ToggleSwitch.new(src: "/foo", status_label_position: :end)) %>
+      #   <%= render(Primer::Alpha::ToggleSwitch.new(src: "/view-components/rails-app/toggle_switch", status_label_position: :end)) %>
       #
       # @param src [String] The URL to POST to when the toggle switch is toggled. If `nil`, the toggle switch will not make any requests.
       # @param csrf_token [String] A CSRF token that will be sent to the server as "authenticity_token" when the toggle switch is toggled. Unused if `src` is `nil`.

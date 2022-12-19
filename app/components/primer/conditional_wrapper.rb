@@ -22,8 +22,6 @@ module Primer
   # @param condition [Boolean] Whether or not to wrap the content in a `Primer::BaseComponent`.
   # @param base_component_arguments [Hash] The arguments to pass to `Primer::BaseComponent`.
   class ConditionalWrapper < Primer::Component
-    warn_on_deprecated_slot_setter
-
     def initialize(condition:, **base_component_arguments)
       @condition = condition
       @base_component_arguments = base_component_arguments

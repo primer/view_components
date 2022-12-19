@@ -2,53 +2,53 @@
   <%= render(Primer::Beta::Button.new(
       scheme: :invisible,
       size: :medium,
-  )) do |c| %>
+  )) do %>
     Button
   <% end %>
   <%= render(Primer::Beta::Button.new(
       scheme: :invisible,
       size: :medium,
-  )) do |c| %>
-    <% c.leading_visual_icon(icon: :search) %>
+  )) do |component| %>
+    <% component.with_leading_visual_icon(icon: :search) %>
     Button
   <% end %>
   <%= render(Primer::Beta::Button.new(
       scheme: :invisible,
       size: :medium,
-  )) do |c| %>
-    <% c.trailing_action_icon(icon: "triangle-down") %>
+  )) do |component| %>
+    <% component.with_trailing_action_icon(icon: "triangle-down") %>
     Button
   <% end %>
   <%= render(Primer::Beta::Button.new(
       scheme: :invisible,
       size: :medium,
-  )) do |c| %>
-    <% c.trailing_visual_counter(count: "15") %>
+  )) do |component| %>
+    <% component.with_trailing_visual_counter(count: "15") %>
     Button
   <% end %>
   <%= render(Primer::Beta::Button.new(
       scheme: :invisible,
       size: :medium,
-  )) do |c| %>
-    <% c.leading_visual_icon(icon: :eye) %>
-    <% c.trailing_visual_counter(count: "15") %>
+  )) do |component| %>
+    <% component.with_leading_visual_icon(icon: :eye) %>
+    <% component.with_trailing_visual_counter(count: "15") %>
     Button
   <% end %>
   <%= render(Primer::Beta::Button.new(
       scheme: :invisible,
       size: :medium,
-  )) do |c| %>
-    <% c.leading_visual_icon(icon: :eye) %>
-    <% c.trailing_visual_counter(count: "15") %>
-    <% c.trailing_action_icon(icon: "triangle-down") %>
+  )) do |component| %>
+    <% component.with_leading_visual_icon(icon: :eye) %>
+    <% component.with_trailing_visual_counter(count: "15") %>
+    <% component.with_trailing_action_icon(icon: "triangle-down") %>
     Button
   <% end %>
   <%= render(Primer::Beta::Button.new(
       scheme: :invisible,
       size: :medium,
       id: "my-id"
-  )) do |c| %>
-    <% c.with_tooltip(text: "Tooltip text") %>
+  )) do |component| %>
+    <% component.with_tooltip(text: "Tooltip text") %>
     Button with tooltip
   <% end %>
 </div>

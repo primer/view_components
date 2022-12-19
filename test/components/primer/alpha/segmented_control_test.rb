@@ -52,9 +52,9 @@ module Primer
       end
 
       def test_doesnt_use_control_click_with_href
-        render_inline(Primer::Alpha::SegmentedControl.new) do |c|
-          c.with_item(icon: :zap, label: "Item 1", selected: true) { "Item 1" }
-          c.with_item(tag: :a, href: "#", icon: :zap, label: "Item 2") { "Item 2" }
+        render_inline(Primer::Alpha::SegmentedControl.new) do |component|
+          component.with_item(icon: :zap, label: "Item 1", selected: true) { "Item 1" }
+          component.with_item(tag: :a, href: "#", icon: :zap, label: "Item 2") { "Item 2" }
         end
 
         assert_selector("button[data-action=\"click:segmented-control#select\"]", count: 1)
@@ -63,13 +63,13 @@ module Primer
 
       def test_doesnt_render_with_too_many_items
         error = assert_raises(ArgumentError) do
-          render_inline(Primer::Alpha::SegmentedControl.new) do |c|
-            c.with_item(label: "Item 1", selected: true) { "Item 1" }
-            c.with_item(label: "Item 2") { "Item 2" }
-            c.with_item(label: "Item 3") { "Item 3" }
-            c.with_item(label: "Item 4") { "Item 4" }
-            c.with_item(label: "Item 5") { "Item 5" }
-            c.with_item(label: "Item 6") { "Item 6" }
+          render_inline(Primer::Alpha::SegmentedControl.new) do |component|
+            component.with_item(label: "Item 1", selected: true) { "Item 1" }
+            component.with_item(label: "Item 2") { "Item 2" }
+            component.with_item(label: "Item 3") { "Item 3" }
+            component.with_item(label: "Item 4") { "Item 4" }
+            component.with_item(label: "Item 5") { "Item 5" }
+            component.with_item(label: "Item 6") { "Item 6" }
           end
         end
 
@@ -78,14 +78,14 @@ module Primer
 
       def test_doesnt_render_with_too_many_icon_items
         error = assert_raises(ArgumentError) do
-          render_inline(Primer::Alpha::SegmentedControl.new(hide_labels: true)) do |c|
-            c.with_item(icon: :zap, label: "Item 1", selected: true) { "Item 1" }
-            c.with_item(icon: :zap, label: "Item 2") { "Item 2" }
-            c.with_item(icon: :zap, label: "Item 3") { "Item 3" }
-            c.with_item(icon: :zap, label: "Item 4") { "Item 4" }
-            c.with_item(icon: :zap, label: "Item 5") { "Item 5" }
-            c.with_item(icon: :zap, label: "Item 6") { "Item 6" }
-            c.with_item(icon: :zap, label: "Item 7") { "Item 7" }
+          render_inline(Primer::Alpha::SegmentedControl.new(hide_labels: true)) do |component|
+            component.with_item(icon: :zap, label: "Item 1", selected: true) { "Item 1" }
+            component.with_item(icon: :zap, label: "Item 2") { "Item 2" }
+            component.with_item(icon: :zap, label: "Item 3") { "Item 3" }
+            component.with_item(icon: :zap, label: "Item 4") { "Item 4" }
+            component.with_item(icon: :zap, label: "Item 5") { "Item 5" }
+            component.with_item(icon: :zap, label: "Item 6") { "Item 6" }
+            component.with_item(icon: :zap, label: "Item 7") { "Item 7" }
           end
         end
 

@@ -77,11 +77,11 @@ module Primer
       def before_render
         return unless content.present? && items.empty?
 
-        item { content }
+        with_item { content }
       end
 
       def render?
-        items.any?
+        items?
       end
 
       # This component is part of `Primer::Beta::Truncate` and should not be

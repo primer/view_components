@@ -19,7 +19,7 @@ class PrimerBetaTruncateTest < Minitest::Test
 
   def test_truncate_wrapper_and_text_tag
     render_inline(Primer::Beta::Truncate.new(tag: :button)) do |component|
-      component.item(tag: :strong) { "content" }
+      component.with_item(tag: :strong) { "content" }
     end
 
     assert_selector("button.Truncate > strong.Truncate-text", text: "content")
@@ -27,7 +27,7 @@ class PrimerBetaTruncateTest < Minitest::Test
 
   def test_truncate_with_default_options
     render_inline(Primer::Beta::Truncate.new) do |component|
-      component.item { "content" }
+      component.with_item { "content" }
     end
 
     assert_selector(".Truncate > .Truncate-text", text: "content")
@@ -35,7 +35,7 @@ class PrimerBetaTruncateTest < Minitest::Test
 
   def test_truncate_with_custom_item_classes
     render_inline(Primer::Beta::Truncate.new) do |component|
-      component.item(classes: "foo") { "content" }
+      component.with_item(classes: "foo") { "content" }
     end
 
     assert_selector(".Truncate .Truncate-text.foo", text: "content")
@@ -43,8 +43,8 @@ class PrimerBetaTruncateTest < Minitest::Test
 
   def test_truncate_with_priority
     render_inline(Primer::Beta::Truncate.new) do |component|
-      component.item { "content" }
-      component.item(priority: true) { "priority content" }
+      component.with_item { "content" }
+      component.with_item(priority: true) { "priority content" }
     end
 
     assert_selector(".Truncate > .Truncate-text.Truncate-text--primary", text: "priority content")
@@ -52,8 +52,8 @@ class PrimerBetaTruncateTest < Minitest::Test
 
   def test_truncate_with_expandable
     render_inline(Primer::Beta::Truncate.new) do |component|
-      component.item { "content" }
-      component.item(tag: :button, expandable: true) { "expandable content" }
+      component.with_item { "content" }
+      component.with_item(tag: :button, expandable: true) { "expandable content" }
     end
 
     assert_selector(".Truncate > button.Truncate-text.Truncate-text--expandable", text: "expandable content")
@@ -61,7 +61,7 @@ class PrimerBetaTruncateTest < Minitest::Test
 
   def test_truncate_with_max_width
     render_inline(Primer::Beta::Truncate.new) do |component|
-      component.item(max_width: 1337) { "content" }
+      component.with_item(max_width: 1337) { "content" }
     end
 
     assert_selector(".Truncate > .Truncate-text[style='max-width: 1337px;']", text: "content")

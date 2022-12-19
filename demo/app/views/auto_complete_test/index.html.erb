@@ -2,11 +2,11 @@
   <% if params['version'] == "alpha" %>
     <%= render(Primer::Alpha::AutoComplete::Item.new(value: fruit)) { fruit } %>
   <% else %>
-    <%= render(Primer::Beta::AutoComplete::Item.new(value: fruit)) do |c| %>
+    <%= render(Primer::Beta::AutoComplete::Item.new(value: fruit)) do |component| %>
       <% if @visual_type == "leading" %>
-        <% c.leading_visual_icon(icon: :"mark-github") %>
+        <% component.with_leading_visual_icon(icon: :"mark-github") %>
       <% elsif @visual_type == "trailing" %>
-        <% c.trailing_visual_icon(icon: :"mark-github") %>
+        <% component.with_trailing_visual_icon(icon: :"mark-github") %>
       <% end %>
       <%= fruit %>
     <% end %>

@@ -63,31 +63,31 @@ module Primer
       attr_reader :selected
 
       # @example Default
-      #   <%= render(Primer::Navigation::TabComponent.new(selected: true)) do |c| %>
-      #     <% c.with_text { "Selected" } %>
+      #   <%= render(Primer::Navigation::TabComponent.new(selected: true)) do |component| %>
+      #     <% component.with_text { "Selected" } %>
       #   <% end %>
-      #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
-      #     <% c.with_text { "Not selected" } %>
+      #   <%= render(Primer::Navigation::TabComponent.new) do |component| %>
+      #     <% component.with_text { "Not selected" } %>
       #   <% end %>
       #
       # @example With icons and counters
-      #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
-      #     <% c.with_icon(:star) %>
-      #     <% c.with_text { "Tab" } %>
+      #   <%= render(Primer::Navigation::TabComponent.new) do |component| %>
+      #     <% component.with_icon(:star) %>
+      #     <% component.with_text { "Tab" } %>
       #   <% end %>
-      #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
-      #     <% c.with_icon(:star) %>
-      #     <% c.with_text { "Tab" } %>
-      #     <% c.with_counter(count: 10) %>
+      #   <%= render(Primer::Navigation::TabComponent.new) do |component| %>
+      #     <% component.with_icon(:star) %>
+      #     <% component.with_text { "Tab" } %>
+      #     <% component.with_counter(count: 10) %>
       #   <% end %>
-      #   <%= render(Primer::Navigation::TabComponent.new) do |c| %>
-      #     <% c.with_text { "Tab" } %>
-      #     <% c.with_counter(count: 10) %>
+      #   <%= render(Primer::Navigation::TabComponent.new) do |component| %>
+      #     <% component.with_text { "Tab" } %>
+      #     <% component.with_counter(count: 10) %>
       #   <% end %>
       #
       # @example Inside a list
-      #   <%= render(Primer::Navigation::TabComponent.new(list: true)) do |c| %>
-      #     <% c.with_text { "Tab" } %>
+      #   <%= render(Primer::Navigation::TabComponent.new(list: true)) do |component| %>
+      #     <% component.with_text { "Tab" } %>
       #   <% end %>
       #
       # @example With custom HTML

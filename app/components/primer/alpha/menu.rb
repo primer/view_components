@@ -40,18 +40,18 @@ module Primer
       }
 
       # @example Default
-      #   <%= render(Primer::Alpha::Menu.new) do |c| %>
-      #     <% c.with_heading(tag: :h2) do %>
+      #   <%= render(Primer::Alpha::Menu.new) do |component| %>
+      #     <% component.with_heading(tag: :h2) do %>
       #       Heading
       #     <% end %>
-      #     <% c.with_item(selected: true, href: "#url") do %>
+      #     <% component.with_item(selected: true, href: "#url") do %>
       #       Item 1
       #     <% end %>
-      #     <% c.with_item(href: "#url") do %>
+      #     <% component.with_item(href: "#url") do %>
       #       <%= render(Primer::Beta::Octicon.new("check")) %>
       #       With Icon
       #     <% end %>
-      #     <% c.with_item(href: "#url") do %>
+      #     <% component.with_item(href: "#url") do %>
       #       <%= render(Primer::Beta::Octicon.new("check")) %>
       #       With Icon and Counter
       #       <%= render(Primer::Beta::Counter.new(count: 25)) %>
