@@ -74,19 +74,13 @@ module Primer
         # more information on what is and is not valid, see the
         # documentation here: docs/contributors/deprecations.md
 
-        if replacement?(component_name) # has replacement
-          if correctable?(component_name) # is autocorrectable
-            msg << "Please update your code to use '#{replacement(component_name)}'"
-            msg << "or use rubocop's auto-correct option to do it for you."
-            msg << "See #{guide(component_name)} for more information." if guide?(component_name) # has a guide
-          elsif guide?(component_name) # not autocorrectable
-            msg << "See #{guide(component_name)} for information on replacing this component in your code." # has a guide
-          end
-        elsif !correctable?(component_name) # no replacement
-          if guide?(component_name) # has a guide
-            msg << "Unfortunately, there is no direct replacement."
-            msg << "See #{guide(component_name)} for available options to update your code."
-            end
+        if replacement?(component_name)
+          msg << "Please update your code to use '#{replacement(component_name)}'."
+          msg << "Use Rubocop's auto-correct, or replace it yourself." if correctable?(component_name)
+          msg << "See #{guide(component_name)} for more information." if guide?(component_name)
+        else # if there is no replacement, it must have a guide. this is enforced through tests
+          msg << "Unfortunately, there is no direct replacement."
+          msg << "See #{guide(component_name)} for more information and available options."
         end
 
         msg.join(" ")

@@ -4,6 +4,17 @@ require "erb_lint/reporters/compact_reporter"
 
 module ERBLint
   module Reporters
+    SEVERITY_DEFAULT = "::error"
+
+    SEVERITY_MAP = {
+       "info" => "::notice",
+       "refactor" => "::notice",
+       "convention" => "::notice",
+       "warning" => "::warning",
+       "error" => "::error",
+       "fatal" => "::error"
+    }.freeze
+
     # :nodoc:
     class GithubReporter < CompactReporter
       def preview; end
@@ -19,8 +30,10 @@ module ERBLint
       private
 
       def format_offense(filename, offense)
+        report_level = SEVERITY_MAP[offense.severity] || SEVERITY_DEFAULT
+
         [
-          "::error ",
+          report_level,
           [
             "file=#{filename}",
             "line=#{offense.line_number}",
