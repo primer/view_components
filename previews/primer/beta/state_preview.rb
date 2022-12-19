@@ -3,7 +3,7 @@
 module Primer
   module Beta
     # @label State
-    class StateComponentPreview < ViewComponent::Preview
+    class StatePreview < ViewComponent::Preview
       # @label Playground
       #
       # @param title [String]
