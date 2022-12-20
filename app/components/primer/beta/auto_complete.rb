@@ -125,7 +125,7 @@ module Primer
       #     Use the `inset` variant to change the input background color to be subtle.
       #   @code
       #     <%= render(Primer::Beta::AutoComplete.new(label_text: "Select a fruit", input_id: "fruits-input--custom-results-2", list_id: "fruits-popup--custom-results-2", src: "/view-components/rails-app/auto_complete", inset: true)) do |component| %>
-      #       <% component.leading_visual_icon(icon: :search) %>
+      #       <% component.with_leading_visual_icon(icon: :search) %>
       #     <% end %>
       #
       # @example Monospace variant
