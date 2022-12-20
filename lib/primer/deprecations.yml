@@ -5,8 +5,6 @@
 # See 'docs/contributors/deprecations.md' for information on configuration options.
 
 deprecations:
-  - component: "Primer::SubheadComponent"
-    replacement: "Primer::Beta::Subhead"
   - component: "Primer::Alpha::AutoComplete"
     autocorrect: true
     replacement: "Primer::Beta::AutoComplete"
@@ -93,6 +91,10 @@ deprecations:
   - component: "Primer::StateComponent"
     autocorrect: true
     replacement: "Primer::Beta::State"
+
+  - component: "Primer::SubheadComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Subhead"
 
   - component: "Primer::TimeAgoComponent"
     autocorrect: false
