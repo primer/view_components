@@ -73,7 +73,7 @@ namespace :docs do
       Primer::Beta::Octicon,
       Primer::Beta::Popover,
       Primer::Beta::ProgressBar,
-      Primer::StateComponent,
+      Primer::Beta::State,
       Primer::Beta::Spinner,
       Primer::SubheadComponent,
       Primer::TabContainerComponent,
