@@ -2036,6 +2036,32 @@
     ]
   },
   {
+    "component": "Subhead",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/subhead.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/subhead_preview/default/",
+    "parameters": [
+      {
+        "name": "spacious",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether to add spacing to the Subhead."
+      },
+      {
+        "name": "hide_border",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether to hide the border under the heading."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Text",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb",
@@ -2406,32 +2432,6 @@
         "type": "Hash",
         "default": "`{}`",
         "description": "[System arguments](/system-arguments) to be used in the `<li>` wrapper when the tab is an item in a list."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Subhead",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/subhead_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/subhead_preview/default/",
-    "parameters": [
-      {
-        "name": "spacious",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether to add spacing to the Subhead."
-      },
-      {
-        "name": "hide_border",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether to hide the border under the heading."
       },
       {
         "name": "system_arguments",
