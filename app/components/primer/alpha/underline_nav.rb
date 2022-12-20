@@ -94,7 +94,7 @@ module Primer
       #     <% component.with_tab(href: "#", selected: true) do |tab| %>
       #       <% tab.with_text { "Item 1" } %>
       #     <% end %>
-      #     <% component.with_tab(href: "#") do |t| %>
+      #     <% component.with_tab(href: "#") do |tab| %>
       #       <% tab.with_text { "Item 2" } %>
       #     <% end %>
       #     <% component.with_actions do %>
