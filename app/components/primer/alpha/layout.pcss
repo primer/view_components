@@ -225,6 +225,22 @@
       }
     }
   }
+
+  /* Sidebar hidden */
+
+  &.Layout--sidebar-hidden {
+    grid-auto-flow: row;
+    grid-gap: 0;
+    grid-template-columns: 1fr;
+
+    & .Layout-sidebar {
+      display: none;
+    }
+
+    & .Layout-main {
+      grid-column: auto;
+    }
+  }
 }
 
 .Layout-divider {
