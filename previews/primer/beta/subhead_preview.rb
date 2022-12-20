@@ -37,6 +37,75 @@ module Primer
           end
         end
       end
+
+      # @label Danger
+      def danger
+        render(Primer::Beta::Subhead.new) do |component|
+          component.with_heading(danger: true) do
+            "Danger Heading"
+          end
+          component.with_description do
+            "A description of the 'danger'"
+          end
+        end
+      end
+
+      # @label Actions
+      def actions
+        render(Primer::Beta::Subhead.new) do |component|
+          component.with_heading do
+            "A Heading"
+          end
+          component.with_description do
+            "A description with actions"
+          end
+          component.with_actions do
+            Primer::Beta::Button.new(scheme: :primary) do
+              "An action"
+            end
+          end
+        end
+      end
+
+      # @!group Spacing
+      #
+      # @label Default
+      def spacing_default
+        render(Primer::Beta::Subhead.new(spacious: false)) do |component|
+          component.with_heading do
+            "Default Spacing"
+          end
+          component.with_description do
+            "Default spacing above the component"
+          end
+        end
+      end
+
+      # @label Spacious
+      def spacing_spacious
+        render(Primer::Beta::Subhead.new(spacious: true)) do |component|
+          component.with_heading do
+            "Spacious"
+          end
+          component.with_description do
+            "With extra space above the component"
+          end
+        end
+      end
+
+      # @label Spacious w/ Danger Heading
+      def spacing_dangerous
+        render(Primer::Beta::Subhead.new(spacious: true)) do |component|
+          component.with_heading(danger: true) do
+            "Danger Heading"
+          end
+          component.with_description do
+            "With extra space above the component, and a 'danger' heading"
+          end
+        end
+      end
+      #
+      # @!endgroup
     end
   end
 end
