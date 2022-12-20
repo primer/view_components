@@ -34,7 +34,7 @@ module Primer
       # @label Header with title
       def header_with_title
         render(Primer::Beta::BorderBox.new) do |component|
-          component.with_header do |h|
+          component.with_header do |header|
             header.with_title(tag: :h2) do
               "Header with title"
             end
