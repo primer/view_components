@@ -71,18 +71,18 @@ module Primer
       #
       # @example With icons and counters
       #   <%= render(Primer::Alpha::UnderlineNav.new(label: "With icons and counters")) do |component| %>
-      #     <% component.with_tab(href: "#", selected: true) do |t| %>
-      #       <% t.icon(icon: :star) %>
-      #       <% t.text { "Item 1" } %>
+      #     <% component.with_tab(href: "#", selected: true) do |tab| %>
+      #       <% tab.with_icon(icon: :star) %>
+      #       <% tab.with_text { "Item 1" } %>
       #     <% end %>
-      #     <% component.with_tab(href: "#") do |t| %>
-      #       <% t.icon(icon: :star) %>
-      #       <% t.text { "Item 2" } %>
-      #       <% t.counter(count: 10) %>
+      #     <% component.with_tab(href: "#") do |tab| %>
+      #       <% tab.with_icon(icon: :star) %>
+      #       <% tab.with_text { "Item 2" } %>
+      #       <% tab.with_counter(count: 10) %>
       #     <% end %>
-      #     <% component.with_tab(href: "#") do |t| %>
-      #       <% t.text { "Item 3" } %>
-      #       <% t.counter(count: 10) %>
+      #     <% component.with_tab(href: "#") do |tab| %>
+      #       <% tab.with_text { "Item 3" } %>
+      #       <% tab.with_counter(count: 10) %>
       #     <% end %>
       #     <% component.with_actions do %>
       #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
@@ -91,11 +91,11 @@ module Primer
       #
       # @example Align right
       #   <%= render(Primer::Alpha::UnderlineNav.new(label: "Align right", align: :right)) do |component| %>
-      #     <% component.with_tab(href: "#", selected: true) do |t| %>
-      #       <% t.text { "Item 1" } %>
+      #     <% component.with_tab(href: "#", selected: true) do |tab| %>
+      #       <% tab.with_text { "Item 1" } %>
       #     <% end %>
       #     <% component.with_tab(href: "#") do |t| %>
-      #       <% t.text { "Item 2" } %>
+      #       <% tab.with_text { "Item 2" } %>
       #     <% end %>
       #     <% component.with_actions do %>
       #       <%= render(Primer::ButtonComponent.new) { "Button!" } %>
