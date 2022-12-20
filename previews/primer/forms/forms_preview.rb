@@ -39,6 +39,8 @@ module Primer
       def name_with_question_mark_form; end
 
       def immediate_validation_form; end
+
+      def example_toggle_switch_form; end
     end
   end
 end
