@@ -3,7 +3,7 @@
 module Primer
   module Beta
     # @label Subhead
-    class SubheadComponentPreview < ViewComponent::Preview
+    class SubheadPreview < ViewComponent::Preview
       # @label Playground
       #
       # @param spacious [Boolean]
