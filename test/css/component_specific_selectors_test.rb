@@ -169,7 +169,7 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".TimelineItem-badge--success",
       ".TimelineItem-break",
       ".TimelineItem--condensed",
-      ".TimelineItem--condensed .TimelineItem-badge",
+      ".TimelineItem--condensed .TimelineItem-badge"
     ]
   }.freeze
 
