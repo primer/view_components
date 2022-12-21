@@ -5,8 +5,6 @@
 # See 'docs/contributors/deprecations.md' for information on configuration options.
 
 deprecations:
-  - component: "Primer::HellipButton"
-    replacement: "Primer::Alpha::HellipButton"
   - component: "Primer::Alpha::AutoComplete"
     autocorrect: true
     replacement: "Primer::Beta::AutoComplete"
@@ -48,6 +46,10 @@ deprecations:
   - component: "Primer::Dropdown::Menu::Item"
     autocorrect: true
     replacement: "Primer::Alpha::Dropdown::Menu::Item"
+
+  - component: "Primer::HellipButton"
+    autocorrect: true
+    replacement: "Primer::Alpha::HellipButton"
 
   - component: "Primer::IconButton"
     autocorrect: true
