@@ -13,10 +13,9 @@ module.exports = {
       stage: 2,
       // https://preset-env.cssdb.org/features/#stage-2
       features: {
-        'nesting-rules': true,
+        'nesting-rules': { noIsPseudoSelector: true },
         'focus-visible-pseudo-class': false,
         'logical-properties-and-values': false,
-        'is-pseudo-class': true,
         'custom-media-queries':  {
           importFrom: [
             path.join(__dirname, './node_modules/@primer/primitives/tokens-v2-private/css/tokens/functional/size/viewport.css')
