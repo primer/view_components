@@ -52,19 +52,7 @@ module Primer
 
       # @label Actions
       def actions
-        render(Primer::Beta::Subhead.new) do |component|
-          component.with_heading do
-            "A Heading"
-          end
-          component.with_description do
-            "A description with actions"
-          end
-          component.with_actions do
-            Primer::Beta::Button.new(scheme: :primary) do
-              "An action"
-            end
-          end
-        end
+        render_with_template(locals: {})
       end
 
       # @!group Spacing
