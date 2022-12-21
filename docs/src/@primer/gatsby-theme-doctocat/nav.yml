@@ -94,7 +94,7 @@
   - title: Subhead
     url: "/components/beta/subhead"
   - title: TabContainer
-    url: "/components/tabcontainer"
+    url: "/components/alpha/tabcontainer"
   - title: TabNav
     url: "/components/alpha/tabnav"
   - title: TabPanels

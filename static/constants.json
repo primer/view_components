@@ -328,6 +328,8 @@
   },
   "Primer::Alpha::SegmentedControl::Item": {
   },
+  "Primer::Alpha::TabContainer": {
+  },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",
     "TAG_DEFAULT": "nav",
