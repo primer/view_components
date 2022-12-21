@@ -22,7 +22,7 @@ class PrimerComponentTest < Minitest::Test
       component.with_main(tag: :div) { "Foo" }
       component.with_sidebar(tag: :div) { "Bar" }
     }],
-    [Primer::HellipButton, { "aria-label": "No action" }],
+    [Primer::Alpha::HellipButton, { "aria-label": "No action" }],
     [Primer::Alpha::TabPanels, { label: "label" }],
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
@@ -111,6 +111,7 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::HellipButton",
       "Primer::StateComponent",
       "Primer::OcticonSymbolsComponent",
       "Primer::SpinnerComponent",

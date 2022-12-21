@@ -382,6 +382,26 @@
     ]
   },
   {
+    "component": "HellipButton",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/hellip_button.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/hellip_button_preview/default/",
+    "parameters": [
+      {
+        "name": "inline",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is inline."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "HiddenTextExpander",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/hidden_text_expander.rb",
@@ -2168,26 +2188,6 @@
         "type": "String",
         "default": "`nil`",
         "description": "Optional string to display as the header"
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "HellipButton",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/hellip_button.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/hellip_button_preview/default/",
-    "parameters": [
-      {
-        "name": "inline",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not the button is inline."
       },
       {
         "name": "system_arguments",

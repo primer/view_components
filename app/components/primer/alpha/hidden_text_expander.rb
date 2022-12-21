@@ -49,7 +49,7 @@ module Primer
 
       def call
         render(Primer::BaseComponent.new(**@system_arguments)) do
-          render(Primer::HellipButton.new(**@button_arguments))
+          render(Primer::Alpha::HellipButton.new(**@button_arguments))
         end
       end
     end
