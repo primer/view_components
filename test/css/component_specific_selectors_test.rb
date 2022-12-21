@@ -164,6 +164,12 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".state",
       ".State--draft",
       ".State--small .octicon"
+    ],
+    Primer::Beta::TimelineItem => [
+      ".TimelineItem-badge--success",
+      ".TimelineItem-break",
+      ".TimelineItem--condensed",
+      ".TimelineItem--condensed .TimelineItem-badge",
     ]
   }.freeze
 
