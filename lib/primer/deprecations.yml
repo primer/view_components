@@ -109,6 +109,10 @@ deprecations:
     replacement: "Primer::Beta::RelativeTime"
     guide: "https://primer.style/view-components/guides/primer_time_ago"
 
+  - component: "Primer::TimelineItemComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::TimelineItem"
+
   - component: "Primer::Tooltip"
     autocorrect: true
     replacement: "Primer::Alpha::Tooltip"

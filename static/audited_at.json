@@ -67,6 +67,8 @@
   "Primer::Beta::State": "",
   "Primer::Beta::Subhead": "",
   "Primer::Beta::Text": "",
+  "Primer::Beta::TimelineItem": "",
+  "Primer::Beta::TimelineItem::BadgeComponent": "",
   "Primer::Beta::Truncate": "",
   "Primer::Beta::Truncate::TruncateText": "",
   "Primer::BlankslateComponent": "",
@@ -98,7 +100,6 @@
   "Primer::TabContainerComponent": "",
   "Primer::TimeAgoComponent": "",
   "Primer::TimelineItemComponent": "",
-  "Primer::TimelineItemComponent::BadgeComponent": "",
   "Primer::Tooltip": "",
   "Primer::Truncate": ""
 }

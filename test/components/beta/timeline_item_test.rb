@@ -2,11 +2,11 @@
 
 require "components/test_helper"
 
-class PrimerTimelineItemComponentTest < Minitest::Test
+class PrimerBetaTimelineItemTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_does_not_render_an_empty_box
-    render_inline(Primer::TimelineItemComponent.new)
+    render_inline(Primer::Beta::TimelineItem.new)
 
     refute_selector("div.TimelineItem")
     refute_selector(".TimelineItem-avatar")
@@ -16,7 +16,7 @@ class PrimerTimelineItemComponentTest < Minitest::Test
   end
 
   def test_defaults_to_not_condensed
-    render_inline(Primer::TimelineItemComponent.new) do |component|
+    render_inline(Primer::Beta::TimelineItem.new) do |component|
       component.with_body { "Body" }
     end
 
@@ -25,7 +25,7 @@ class PrimerTimelineItemComponentTest < Minitest::Test
   end
 
   def test_adds_condensed_modifier
-    render_inline(Primer::TimelineItemComponent.new(condensed: true)) do |component|
+    render_inline(Primer::Beta::TimelineItem.new(condensed: true)) do |component|
       component.with_body { "Body" }
     end
 
@@ -34,7 +34,7 @@ class PrimerTimelineItemComponentTest < Minitest::Test
   end
 
   def test_avatar_defaults_to_square_and_size_40
-    render_inline(Primer::TimelineItemComponent.new) do |component|
+    render_inline(Primer::Beta::TimelineItem.new) do |component|
       component.with_avatar(alt: "mock", src: "mock")
     end
 
@@ -44,7 +44,7 @@ class PrimerTimelineItemComponentTest < Minitest::Test
   end
 
   def test_renders_circle_avatar
-    render_inline(Primer::TimelineItemComponent.new) do |component|
+    render_inline(Primer::Beta::TimelineItem.new) do |component|
       component.with_avatar(alt: "mock", src: "mock", shape: :circle)
     end
 
@@ -53,7 +53,7 @@ class PrimerTimelineItemComponentTest < Minitest::Test
   end
 
   def test_renders_avatar_with_custom_size
-    render_inline(Primer::TimelineItemComponent.new) do |component|
+    render_inline(Primer::Beta::TimelineItem.new) do |component|
       component.with_avatar(alt: "mock", src: "mock", size: 20)
     end
 
@@ -62,7 +62,7 @@ class PrimerTimelineItemComponentTest < Minitest::Test
   end
 
   def test_renders_body
-    render_inline(Primer::TimelineItemComponent.new) do |component|
+    render_inline(Primer::Beta::TimelineItem.new) do |component|
       component.with_body { "Body" }
     end
 
@@ -70,7 +70,7 @@ class PrimerTimelineItemComponentTest < Minitest::Test
   end
 
   def test_renders_badge
-    render_inline(Primer::TimelineItemComponent.new) do |component|
+    render_inline(Primer::Beta::TimelineItem.new) do |component|
       component.with_badge(icon: :check)
     end
 
@@ -78,6 +78,6 @@ class PrimerTimelineItemComponentTest < Minitest::Test
   end
 
   def test_status
-    assert_component_state(Primer::TimelineItemComponent, :beta)
+    assert_component_state(Primer::Beta::TimelineItem, :beta)
   end
 end
