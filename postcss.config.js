@@ -13,7 +13,7 @@ module.exports = {
       stage: 2,
       // https://preset-env.cssdb.org/features/#stage-2
       features: {
-        'nesting-rules': true,
+        'nesting-rules': { noIsPseudoSelector: true },
         'focus-visible-pseudo-class': false,
         'logical-properties-and-values': false,
         'custom-media-queries':  {
