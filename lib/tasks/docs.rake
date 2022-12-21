@@ -80,7 +80,7 @@ namespace :docs do
       Primer::Beta::Text,
       Primer::Alpha::TextField,
       Primer::TimeAgoComponent,
-      Primer::TimelineItemComponent,
+      Primer::Beta::TimelineItem,
       Primer::Tooltip,
       Primer::Truncate,
       Primer::Beta::Truncate,

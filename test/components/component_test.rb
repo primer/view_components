@@ -100,7 +100,7 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Truncate, {}],
     [Primer::Beta::Truncate, {}, proc { |component| component.with_item { "Foo" } }],
     [Primer::TimeAgoComponent, { time: Time.zone.now }],
-    [Primer::TimelineItemComponent, {}, proc { |component| component.with_body { "Foo" } }],
+    [Primer::Beta::TimelineItem, {}, proc { |component| component.with_body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.with_tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
@@ -111,6 +111,7 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::TimelineItemComponent",
       "Primer::SubheadComponent",
       "Primer::TabContainerComponent",
       "Primer::HellipButton",

@@ -977,6 +977,11 @@
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
+  "Primer::Beta::TimelineItem": {
+    "BadgeComponent": "Primer::Beta::TimelineItem::BadgeComponent"
+  },
+  "Primer::Beta::TimelineItem::BadgeComponent": {
+  },
   "Primer::Beta::Truncate": {
     "TruncateText": "Primer::Beta::Truncate::TruncateText"
   },
@@ -1126,9 +1131,6 @@
   "Primer::TimeAgoComponent": {
   },
   "Primer::TimelineItemComponent": {
-    "BadgeComponent": "Primer::TimelineItemComponent::BadgeComponent"
-  },
-  "Primer::TimelineItemComponent::BadgeComponent": {
   },
   "Primer::Tooltip": {
     "ALIGN_DEFAULT": "default",

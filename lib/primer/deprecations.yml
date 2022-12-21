@@ -5,6 +5,8 @@
 # See 'docs/contributors/deprecations.md' for information on configuration options.
 
 deprecations:
+  - component: "Primer::TimelineItemComponent"
+    replacement: "Primer::Beta::TimelineItem"
   - component: "Primer::Alpha::AutoComplete"
     autocorrect: true
     replacement: "Primer::Beta::AutoComplete"

@@ -2116,6 +2116,26 @@
     ]
   },
   {
+    "component": "TimelineItem",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/timeline_item.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/timeline_item_preview/default/",
+    "parameters": [
+      {
+        "name": "condensed",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Reduce the vertical padding and remove the background from the badge item. Most commonly used in commits."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Truncate",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/truncate.rb",
@@ -2472,26 +2492,6 @@
         "type": "Boolean",
         "default": "`false`",
         "description": "If true then the text will be formatted in \"micro\" mode, using as few characters as possible"
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "TimelineItem",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/timeline_item_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/timeline_item_preview/default/",
-    "parameters": [
-      {
-        "name": "condensed",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Reduce the vertical padding and remove the background from the badge item. Most commonly used in commits."
       },
       {
         "name": "system_arguments",
