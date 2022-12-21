@@ -5,8 +5,6 @@
 # See 'docs/contributors/deprecations.md' for information on configuration options.
 
 deprecations:
-  - component: "Primer::TimelineItemComponent"
-    replacement: "Primer::Beta::TimelineItem"
   - component: "Primer::Alpha::AutoComplete"
     autocorrect: true
     replacement: "Primer::Beta::AutoComplete"
@@ -110,6 +108,10 @@ deprecations:
     autocorrect: false
     replacement: "Primer::Beta::RelativeTime"
     guide: "https://primer.style/view-components/guides/primer_time_ago"
+
+  - component: "Primer::TimelineItemComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::TimelineItem"
 
   - component: "Primer::Tooltip"
     autocorrect: true
