@@ -92,8 +92,8 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::ProgressBar, {}, proc { |component| component.with_item }],
     [Primer::Beta::Spinner, {}],
     [Primer::Beta::State, { title: "Open" }],
-    [Primer::SubheadComponent, { heading: "Foo" }, proc { |component| component.with_heading { "Foo" } }],
-    [Primer::TabContainerComponent, {}, proc { "Foo" }],
+    [Primer::Beta::Subhead, { heading: "Foo" }, proc { |component| component.with_heading { "Foo" } }],
+    [Primer::Alpha::TabContainer, {}, proc { "Foo" }],
     [Primer::Alpha::ToggleSwitch, {}],
     [Primer::Alpha::TextField, { name: :foo, label: "Foo" }],
     [Primer::Beta::Text, {}],
@@ -111,6 +111,8 @@ class PrimerComponentTest < Minitest::Test
 
   def test_registered_components
     ignored_components = [
+      "Primer::SubheadComponent",
+      "Primer::TabContainerComponent",
       "Primer::HellipButton",
       "Primer::StateComponent",
       "Primer::OcticonSymbolsComponent",

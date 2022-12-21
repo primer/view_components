@@ -43,9 +43,13 @@ class ComponentStatusMigrator < Thor::Group
   def move_reamining_files
     Dir["app/components/primer/#{name.underscore}.*"].each do |file_path|
       file_name = File.basename(file_path)
-      new_path = "#{status_full_path}#{file_name}"
+      new_path = "#{status_full_path}#{file_name.gsub('_component', '')}"
       move_file("misc", file_path, new_path)
     end
+  end
+
+  def update_css
+    gsub_file(primer_css_file, component_css_import, component_css_import_with_status)
   end
 
   def move_test
@@ -84,17 +88,11 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def remove_suffix_from_preview_class
-    return nil unless File.exist?(preview_path)
+    return nil unless File.exist?(preview_path_with_status)
 
-    if preview_path.include?("_component") && !name.include?("Component") # rubocop:disable Rails/NegateInclude
-      # if the class name does not include 'Component', but the file name does include '_component',
-      # this line will correct it by removing the incosistency with the word 'Component'
-      gsub_file(preview_path_with_status, "class #{name}Component", "class #{name_without_suffix}")
-    elsif name == name_without_suffix
-      puts "No change needed - component suffix not removed from lookbook preview class name"
-    else
-      gsub_file(preview_path_with_status, "class #{name}", "class #{name_without_suffix}")
-    end
+    original_preview_class = /class .*Preview < ViewComponent::Preview/
+    updated_preview_class = "class #{name_without_suffix}Preview < ViewComponent::Preview"
+    gsub_file(preview_path_with_status, original_preview_class, updated_preview_class)
   end
 
   def rename_preview_label
@@ -222,6 +220,14 @@ class ComponentStatusMigrator < Thor::Group
     @controller_path_with_status ||= "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.rb"
   end
 
+  def component_css_import
+    @component_css_import ||= "import \"./#{name.underscore}.pcss\""
+  end
+
+  def component_css_import_with_status
+    @component_css_import_with_status ||= "import \"./#{status_folder_name}#{name_without_suffix.underscore}.pcss\""
+  end
+
   def move_file(file_type, old_path, new_path)
     if old_path == new_path
       puts "No change needed - #{file_type} file not moved"
@@ -295,6 +301,10 @@ class ComponentStatusMigrator < Thor::Group
 
   def name_without_suffix
     @name_without_suffix ||= name.gsub("Component", "")
+  end
+
+  def primer_css_file
+    @primer_css_file ||= "app/components/primer/primer.pcss"
   end
 
   def short_name

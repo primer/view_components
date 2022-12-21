@@ -92,9 +92,9 @@
   - title: State
     url: "/components/beta/state"
   - title: Subhead
-    url: "/components/subhead"
+    url: "/components/beta/subhead"
   - title: TabContainer
-    url: "/components/tabcontainer"
+    url: "/components/alpha/tabcontainer"
   - title: TabNav
     url: "/components/alpha/tabnav"
   - title: TabPanels

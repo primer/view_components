@@ -23,7 +23,7 @@ module Primer
     def tab_container_wrapper(with_panel:, **system_arguments)
       return yield unless with_panel
 
-      render Primer::TabContainerComponent.new(**system_arguments) do
+      render Primer::Alpha::TabContainer.new(**system_arguments) do
         yield if block_given?
       end
     end
