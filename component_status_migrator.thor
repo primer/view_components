@@ -88,17 +88,9 @@ class ComponentStatusMigrator < Thor::Group
   end
 
   def remove_suffix_from_preview_class
-    return nil unless File.exist?(preview_path)
-
-    if preview_path.include?("_component") && !name.include?("Component") # rubocop:disable Rails/NegateInclude
-      # if the class name does not include 'Component', but the file name does include '_component',
-      # this line will correct it by removing the incosistency with the word 'Component'
-      gsub_file(preview_path_with_status, "class #{name}Component", "class #{name_without_suffix}")
-    elsif name == name_without_suffix
-      puts "No change needed - component suffix not removed from lookbook preview class name"
-    else
-      gsub_file(preview_path_with_status, "class #{name}", "class #{name_without_suffix}")
-    end
+    original_preview_class = /class .*Preview < ViewComponent::Preview/
+    updated_preview_class = "class #{name_without_suffix}Preview < ViewComponent::Preview"
+    gsub_file(preview_path_with_status, original_preview_class, updated_preview_class)
   end
 
   def rename_preview_label
