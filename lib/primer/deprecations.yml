@@ -47,6 +47,10 @@ deprecations:
     autocorrect: true
     replacement: "Primer::Alpha::Dropdown::Menu::Item"
 
+  - component: "Primer::HellipButton"
+    autocorrect: true
+    replacement: "Primer::Alpha::HellipButton"
+
   - component: "Primer::IconButton"
     autocorrect: true
     replacement: "Primer::Beta::IconButton"

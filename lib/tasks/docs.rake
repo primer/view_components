@@ -34,7 +34,7 @@ namespace :docs do
       Primer::Beta::Button,
       Primer::Alpha::SegmentedControl,
       Primer::Alpha::Layout,
-      Primer::HellipButton,
+      Primer::Alpha::HellipButton,
       Primer::Alpha::Image,
       Primer::LocalTime,
       Primer::Alpha::OcticonSymbols,
