@@ -92,6 +92,10 @@ deprecations:
     autocorrect: true
     replacement: "Primer::Beta::State"
 
+  - component: "Primer::SubheadComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::Subhead"
+
   - component: "Primer::TimeAgoComponent"
     autocorrect: false
     replacement: "Primer::Beta::RelativeTime"
