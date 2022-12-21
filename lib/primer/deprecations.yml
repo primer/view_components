@@ -88,6 +88,10 @@ deprecations:
     autocorrect: true
     replacement: "Primer::Beta::Spinner"
 
+  - component: "Primer::StateComponent"
+    autocorrect: true
+    replacement: "Primer::Beta::State"
+
   - component: "Primer::TimeAgoComponent"
     autocorrect: false
     replacement: "Primer::Beta::RelativeTime"

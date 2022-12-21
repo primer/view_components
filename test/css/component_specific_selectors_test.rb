@@ -159,6 +159,11 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".menu-item .menu-warning",
       ".menu-item .avatar",
       ".menu-item.alert .Counter"
+    ],
+    Primer::Beta::State => [
+      ".state",
+      ".State--draft",
+      ".State--small .octicon"
     ]
   }.freeze
 

@@ -4,8 +4,6 @@ module Primer
   module Beta
     # Use `AvatarStack` to stack multiple avatars together.
     class AvatarStack < Primer::Component
-      warn_on_deprecated_slot_setter
-
       status :beta
 
       ALIGN_DEFAULT = :left
@@ -22,24 +20,24 @@ module Primer
       renders_many :avatars, "Primer::Beta::Avatar"
 
       # @example Default
-      #   <%= render(Primer::Beta::AvatarStack.new) do |c| %>
-      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
-      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
-      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #   <%= render(Primer::Beta::AvatarStack.new) do |component| %>
+      #     <% component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #     <% component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #     <% component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
       #   <% end  %>
       #
       # @example Align right
-      #   <%= render(Primer::Beta::AvatarStack.new(align: :right)) do |c| %>
-      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
-      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
-      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #   <%= render(Primer::Beta::AvatarStack.new(align: :right)) do |component| %>
+      #     <% component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #     <% component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #     <% component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
       #   <% end  %>
       #
       # @example With tooltip
-      #   <%= render(Primer::Beta::AvatarStack.new(tooltipped: true, body_arguments: { label: 'This is a tooltip!' })) do |c| %>
-      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
-      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
-      #     <% c.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #   <%= render(Primer::Beta::AvatarStack.new(tooltipped: true, body_arguments: { label: 'This is a tooltip!' })) do |component| %>
+      #     <% component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #     <% component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
+      #     <% component.with_avatar(src: Primer::ExampleImage::BASE64_SRC, alt: "@kittenuser") %>
       #   <% end  %>
       #
       # @param tag [Symbol] <%= one_of(Primer::Beta::AvatarStack::TAG_OPTIONS) %>

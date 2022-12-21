@@ -1998,6 +1998,44 @@
     ]
   },
   {
+    "component": "State",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/state.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/state_preview/default/",
+    "parameters": [
+      {
+        "name": "title",
+        "type": "String",
+        "default": "N/A",
+        "description": "`title` HTML attribute."
+      },
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:default`",
+        "description": "Background color. One of `:closed`, `:default`, `:green`, `:merged`, `:open`, `:purple`, or `:red`."
+      },
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:span`",
+        "description": "HTML tag for element. One of `:div` or `:span`."
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:default`",
+        "description": "One of `:default` or `:small`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Text",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb",
@@ -2368,44 +2406,6 @@
         "type": "Hash",
         "default": "`{}`",
         "description": "[System arguments](/system-arguments) to be used in the `<li>` wrapper when the tab is an item in a list."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "State",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/state_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/state_preview/default/",
-    "parameters": [
-      {
-        "name": "title",
-        "type": "String",
-        "default": "N/A",
-        "description": "`title` HTML attribute."
-      },
-      {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "Background color. One of `:closed`, `:default`, `:green`, `:merged`, `:open`, `:purple`, or `:red`."
-      },
-      {
-        "name": "tag",
-        "type": "Symbol",
-        "default": "`:span`",
-        "description": "HTML tag for element. One of `:div` or `:span`."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:default` or `:small`."
       },
       {
         "name": "system_arguments",

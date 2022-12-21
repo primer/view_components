@@ -33,8 +33,8 @@ module Primer
       #     In this example, the button has a visible label text, "Save". `type: :description` is set because the tooltip content is supplementary.
       #     A screen reader user who encounters this button will hear the accessible name, "Save" followed by the accessible description, "This will immediately impact all organization members".
       #   @code
-      #     <%= render(Primer::ButtonComponent.new(id: "save-button")) do |c| %>
-      #       <% c.with_tooltip(text: "This will immediately impact all organization members", type: :description, direction: :ne) %>
+      #     <%= render(Primer::ButtonComponent.new(id: "save-button")) do |component| %>
+      #       <% component.with_tooltip(text: "This will immediately impact all organization members", type: :description, direction: :ne) %>
       #       Save
       #     <% end %>
       # @example As a label for an `IconButton`
@@ -55,36 +55,36 @@ module Primer
       #   @description
       #     Set direction of tooltip with `direction`. The tooltip is responsive and will automatically adjust direction to avoid cutting off.
       #   @code
-      #     <%= render(Primer::ButtonComponent.new(id: "North", m: 2)) do |c| %>
-      #       <% c.with_tooltip(text: "This is a North-facing tooltip, and is responsive.", type: :description, direction: :n) %>
+      #     <%= render(Primer::ButtonComponent.new(id: "North", m: 2)) do |component| %>
+      #       <% component.with_tooltip(text: "This is a North-facing tooltip, and is responsive.", type: :description, direction: :n) %>
       #       North
       #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "South", m: 2)) do |c| %>
-      #       <% c.with_tooltip(text: "This is a South-facing tooltip, and is responsive.", type: :description, direction: :s) %>
+      #     <%= render(Primer::ButtonComponent.new(id: "South", m: 2)) do |component| %>
+      #       <% component.with_tooltip(text: "This is a South-facing tooltip, and is responsive.", type: :description, direction: :s) %>
       #       South
       #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "East", m: 2)) do |c| %>
-      #       <% c.with_tooltip(text: "This is a East-facing tooltip, and is responsive.", type: :description, direction: :e) %>
+      #     <%= render(Primer::ButtonComponent.new(id: "East", m: 2)) do |component| %>
+      #       <% component.with_tooltip(text: "This is a East-facing tooltip, and is responsive.", type: :description, direction: :e) %>
       #       East
       #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "West", m: 2)) do |c| %>
-      #       <% c.with_tooltip(text: "This is a West-facing tooltip, and is responsive.", type: :description, direction: :w) %>
+      #     <%= render(Primer::ButtonComponent.new(id: "West", m: 2)) do |component| %>
+      #       <% component.with_tooltip(text: "This is a West-facing tooltip, and is responsive.", type: :description, direction: :w) %>
       #       West
       #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Northwest", m: 2)) do |c| %>
-      #       <% c.with_tooltip(text: "This is a Northwest-facing tooltip, and is responsive.", type: :description, direction: :nw) %>
+      #     <%= render(Primer::ButtonComponent.new(id: "Northwest", m: 2)) do |component| %>
+      #       <% component.with_tooltip(text: "This is a Northwest-facing tooltip, and is responsive.", type: :description, direction: :nw) %>
       #       Northwest
       #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Southwest", m: 2)) do |c| %>
-      #       <% c.with_tooltip(text: "This is a Southwest-facing tooltip, and is responsive.", type: :description, direction: :sw) %>
+      #     <%= render(Primer::ButtonComponent.new(id: "Southwest", m: 2)) do |component| %>
+      #       <% component.with_tooltip(text: "This is a Southwest-facing tooltip, and is responsive.", type: :description, direction: :sw) %>
       #       Southwest
       #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Northeast", m: 2)) do |c| %>
-      #       <% c.with_tooltip(text: "This is a Northeast-facing tooltip, and is responsive.", type: :description, direction: :ne) %>
+      #     <%= render(Primer::ButtonComponent.new(id: "Northeast", m: 2)) do |component| %>
+      #       <% component.with_tooltip(text: "This is a Northeast-facing tooltip, and is responsive.", type: :description, direction: :ne) %>
       #       Northeast
       #     <% end %>
-      #     <%= render(Primer::ButtonComponent.new(id: "Southeast", m: 2)) do |c| %>
-      #       <% c.with_tooltip(text: "This is a Southeast-facing tooltip, and is responsive.", type: :description, direction: :se) %>
+      #     <%= render(Primer::ButtonComponent.new(id: "Southeast", m: 2)) do |component| %>
+      #       <% component.with_tooltip(text: "This is a Southeast-facing tooltip, and is responsive.", type: :description, direction: :se) %>
       #       Southeast
       #     <% end %>
       # @example Directly using `Tooltip`

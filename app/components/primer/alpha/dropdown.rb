@@ -27,15 +27,15 @@ module Primer
       renders_one :menu, "Primer::Alpha::Dropdown::Menu"
 
       # @example Default
-      #   <%= render(Primer::Alpha::Dropdown.new) do |c| %>
-      #     <% c.with_button do %>
+      #   <%= render(Primer::Alpha::Dropdown.new) do |component| %>
+      #     <% component.with_button do %>
       #       Dropdown
       #     <% end %>
       #
-      #     <% c.with_menu(header: "Options") do |menu|
-      #       menu.item { "Item 1" }
-      #       menu.item { "Item 2" }
-      #       menu.item { "Item 3" }
+      #     <% component.with_menu(header: "Options") do |menu|
+      #       menu.with_item { "Item 1" }
+      #       menu.with_item { "Item 2" }
+      #       menu.with_item { "Item 3" }
       #     end %>
       #   <% end %>
       #
@@ -44,90 +44,90 @@ module Primer
       #   @description
       #     Dividers can be used to separate a group of items. They don't have any content.
       #   @code
-      #     <%= render(Primer::Alpha::Dropdown.new) do |c| %>
-      #       <% c.with_button do %>
+      #     <%= render(Primer::Alpha::Dropdown.new) do |component| %>
+      #       <% component.with_button do %>
       #         Dropdown
       #       <% end %>
       #
-      #       <% c.with_menu(header: "Options") do |menu|
-      #         menu.item { "Item 1" }
-      #         menu.item { "Item 2" }
-      #         menu.item(divider: true)
-      #         menu.item { "Item 3" }
-      #         menu.item { "Item 4" }
-      #         menu.item(divider: true)
-      #         menu.item { "Item 5" }
-      #         menu.item { "Item 6" }
+      #       <% component.with_menu(header: "Options") do |menu|
+      #         menu.with_item { "Item 1" }
+      #         menu.with_item { "Item 2" }
+      #         menu.with_item(divider: true)
+      #         menu.with_item { "Item 3" }
+      #         menu.with_item { "Item 4" }
+      #         menu.with_item(divider: true)
+      #         menu.with_item { "Item 5" }
+      #         menu.with_item { "Item 6" }
       #       end %>
       #     <% end %>
       #
       # @example With direction
-      #   <%= render(Primer::Alpha::Dropdown.new(display: :inline_block)) do |c| %>
-      #     <% c.with_button do %>
+      #   <%= render(Primer::Alpha::Dropdown.new(display: :inline_block)) do |component| %>
+      #     <% component.with_button do %>
       #       Dropdown
       #     <% end %>
       #
-      #     <% c.with_menu(header: "Options", direction: :s) do |menu|
-      #       menu.item { "Item 1" }
-      #       menu.item { "Item 2" }
-      #       menu.item { "Item 3" }
-      #       menu.item { "Item 4" }
+      #     <% component.with_menu(header: "Options", direction: :s) do |menu|
+      #       menu.with_item { "Item 1" }
+      #       menu.with_item { "Item 2" }
+      #       menu.with_item { "Item 3" }
+      #       menu.with_item { "Item 4" }
       #     end %>
       #   <% end %>
       #
       # @example With caret
-      #   <%= render(Primer::Alpha::Dropdown.new(with_caret: true)) do |c| %>
-      #     <% c.with_button do %>
+      #   <%= render(Primer::Alpha::Dropdown.new(with_caret: true)) do |component| %>
+      #     <% component.with_button do %>
       #       Dropdown
       #     <% end %>
       #
-      #     <% c.with_menu(header: "Options") do |menu|
-      #       menu.item { "Item 1" }
-      #       menu.item { "Item 2" }
-      #       menu.item { "Item 3" }
-      #       menu.item { "Item 4" }
+      #     <% component.with_menu(header: "Options") do |menu|
+      #       menu.with_item { "Item 1" }
+      #       menu.with_item { "Item 2" }
+      #       menu.with_item { "Item 3" }
+      #       menu.with_item { "Item 4" }
       #     end %>
       #   <% end %>
       #
       # @example Customizing the button
-      #   <%= render(Primer::Alpha::Dropdown.new) do |c| %>
-      #     <% c.with_button(scheme: :primary, size: :small) do %>
+      #   <%= render(Primer::Alpha::Dropdown.new) do |component| %>
+      #     <% component.with_button(scheme: :primary, size: :small) do %>
       #       Dropdown
       #     <% end %>
       #
-      #     <% c.with_menu(header: "Options") do |menu|
-      #       menu.item { "Item 1" }
-      #       menu.item { "Item 2" }
-      #       menu.item { "Item 3" }
-      #       menu.item { "Item 4" }
+      #     <% component.with_menu(header: "Options") do |menu|
+      #       menu.with_item { "Item 1" }
+      #       menu.with_item { "Item 2" }
+      #       menu.with_item { "Item 3" }
+      #       menu.with_item { "Item 4" }
       #     end %>
       #   <% end %>
       #
       # @example Menu as list
-      #   <%= render(Primer::Alpha::Dropdown.new) do |c| %>
-      #     <% c.with_button do %>
+      #   <%= render(Primer::Alpha::Dropdown.new) do |component| %>
+      #     <% component.with_button do %>
       #       Dropdown
       #     <% end %>
       #
-      #     <% c.with_menu(as: :list, header: "Options") do |menu|
-      #       menu.item { "Item 1" }
-      #       menu.item { "Item 2" }
-      #       menu.item(divider: true)
-      #       menu.item { "Item 3" }
-      #       menu.item { "Item 4" }
+      #     <% component.with_menu(as: :list, header: "Options") do |menu|
+      #       menu.with_item { "Item 1" }
+      #       menu.with_item { "Item 2" }
+      #       menu.with_item(divider: true)
+      #       menu.with_item { "Item 3" }
+      #       menu.with_item { "Item 4" }
       #     end %>
       #   <% end %>
       #
       # @example Customizing menu items
-      #   <%= render(Primer::Alpha::Dropdown.new) do |c| %>
-      #     <% c.with_button do %>
+      #   <%= render(Primer::Alpha::Dropdown.new) do |component| %>
+      #     <% component.with_button do %>
       #       Dropdown
       #     <% end %>
       #
-      #     <% c.with_menu(header: "Options") do |menu|
-      #       menu.item(tag: :button) { "Item 1" }
-      #       menu.item(classes: "custom-class") { "Item 2" }
-      #       menu.item { "Item 3" }
+      #     <% component.with_menu(header: "Options") do |menu|
+      #       menu.with_item(tag: :button) { "Item 1" }
+      #       menu.with_item(classes: "custom-class") { "Item 2" }
+      #       menu.with_item { "Item 3" }
       #     end %>
       #   <% end %>
       #
@@ -147,7 +147,7 @@ module Primer
       end
 
       def render?
-        button.present? && menu.present?
+        button? && menu?
       end
     end
   end

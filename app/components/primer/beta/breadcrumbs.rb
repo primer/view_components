@@ -17,7 +17,6 @@ module Primer
     #
     #   For more information on the breadcrumbs pattern implemented by this component, see [WAI-ARIA 1.1 Breadcrumb](https://www.w3.org/TR/wai-aria-practices-1.1/#breadcrumb).
     class Breadcrumbs < Primer::Component
-      warn_on_deprecated_slot_setter
       status :beta
 
       PADDING_MESSAGE = "Padding system arguments are not allowed on Breadcrumbs. Consider using margins instead."

@@ -10,17 +10,17 @@ module Primer
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
       def playground(narrow: false, spacious: false, border: false)
-        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |c|
-          c.heading(tag: :h2).with_content("Title")
-          c.description { "Description" }
+        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
+          component.with_heading(tag: :h2).with_content("Title")
+          component.with_description { "Description" }
         end
       end
 
       # @label Default options
       def default
-        render Primer::Beta::Blankslate.new do |c|
-          c.heading(tag: :h2).with_content("Title")
-          c.description { "Description" }
+        render Primer::Beta::Blankslate.new do |component|
+          component.with_heading(tag: :h2).with_content("Title")
+          component.with_description { "Description" }
         end
       end
 
@@ -28,25 +28,25 @@ module Primer
       #
       # @label Narrow
       def option_narrow
-        render Primer::Beta::Blankslate.new(narrow: true) do |c|
-          c.heading(tag: :h2).with_content("Title")
-          c.description { "Description" }
+        render Primer::Beta::Blankslate.new(narrow: true) do |component|
+          component.with_heading(tag: :h2).with_content("Title")
+          component.with_description { "Description" }
         end
       end
 
       # @label Spacious
       def option_spacious
-        render Primer::Beta::Blankslate.new(spacious: true) do |c|
-          c.heading(tag: :h2).with_content("Title")
-          c.description { "Description" }
+        render Primer::Beta::Blankslate.new(spacious: true) do |component|
+          component.with_heading(tag: :h2).with_content("Title")
+          component.with_description { "Description" }
         end
       end
 
       # @label Border
       def option_border
-        render Primer::Beta::Blankslate.new(border: true) do |c|
-          c.heading(tag: :h2).with_content("Title")
-          c.description { "Description" }
+        render Primer::Beta::Blankslate.new(border: true) do |component|
+          component.with_heading(tag: :h2).with_content("Title")
+          component.with_description { "Description" }
         end
       end
       #
@@ -56,9 +56,9 @@ module Primer
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
       def with_icon(narrow: false, spacious: false, border: false)
-        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |c|
-          c.visual_icon(icon: :shield)
-          c.heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
+        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
+          component.with_visual_icon(icon: :shield)
+          component.with_heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
         end
       end
 
@@ -66,9 +66,9 @@ module Primer
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
       def with_image(narrow: false, spacious: false, border: false)
-        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |c|
-          c.heading(tag: :h2).with_content("Millions of teams trust GitHub to keep their work safe")
-          c.visual_image(src: Primer::ExampleImage::BASE64_SRC, alt: "Security - secure vault")
+        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
+          component.with_heading(tag: :h2).with_content("Millions of teams trust GitHub to keep their work safe")
+          component.with_visual_image(src: Primer::ExampleImage::BASE64_SRC, alt: "Security - secure vault")
         end
       end
 
@@ -76,10 +76,10 @@ module Primer
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
       def loading(narrow: false, spacious: false, border: false)
-        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |c|
-          c.heading(tag: :h2).with_content("Mirroring your repository")
-          c.description { "We’re currently mirroring this repository. It should take anywhere from a few minutes to a couple of hours depending on the size of the repository." }
-          c.visual_spinner(size: :large)
+        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
+          component.with_heading(tag: :h2).with_content("Mirroring your repository")
+          component.with_description { "We’re currently mirroring this repository. It should take anywhere from a few minutes to a couple of hours depending on the size of the repository." }
+          component.with_visual_spinner(size: :large)
         end
       end
 
@@ -87,9 +87,9 @@ module Primer
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
       def description(narrow: false, spacious: false, border: false)
-        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |c|
-          c.heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
-          c.description { "Millions of teams trust GitHub to keep their work safe" }
+        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
+          component.with_heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
+          component.with_description { "Millions of teams trust GitHub to keep their work safe" }
         end
       end
 
@@ -97,9 +97,9 @@ module Primer
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
       def primary_action(narrow: false, spacious: false, border: false)
-        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |c|
-          c.heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
-          c.primary_action(href: "#").with_content("Fix issue")
+        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
+          component.with_heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
+          component.with_primary_action(href: "#").with_content("Fix issue")
         end
       end
 
@@ -107,9 +107,9 @@ module Primer
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
       def secondary_action(narrow: false, spacious: false, border: false)
-        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |c|
-          c.heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
-          c.secondary_action(href: "#").with_content("Fix issue")
+        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
+          component.with_heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
+          component.with_secondary_action(href: "#").with_content("Fix issue")
         end
       end
 
@@ -117,12 +117,12 @@ module Primer
       # @param spacious [Boolean] toggle
       # @param border [Boolean] toggle
       def full(narrow: false, spacious: false, border: false)
-        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |c|
-          c.visual_icon(icon: :shield)
-          c.heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
-          c.description { "Millions of teams trust GitHub to keep their work safe" }
-          c.primary_action(href: "#").with_content("Fix issue")
-          c.secondary_action(href: "#").with_content("Learn more about vulnerabilities")
+        render Primer::Beta::Blankslate.new(narrow: narrow, spacious: spacious, border: border) do |component|
+          component.with_visual_icon(icon: :shield)
+          component.with_heading(tag: :h2).with_content("It looks like we have discovered a vulnerability")
+          component.with_description { "Millions of teams trust GitHub to keep their work safe" }
+          component.with_primary_action(href: "#").with_content("Fix issue")
+          component.with_secondary_action(href: "#").with_content("Learn more about vulnerabilities")
         end
       end
     end
