@@ -960,6 +960,18 @@
       "div"
     ]
   },
+  "Primer::Beta::Subhead": {
+    "DEFAULT_HEADING_TAG": "div",
+    "HEADING_TAG_OPTIONS": [
+      "div",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
   },
@@ -1106,16 +1118,6 @@
   "Primer::StateComponent": {
   },
   "Primer::SubheadComponent": {
-    "DEFAULT_HEADING_TAG": "div",
-    "HEADING_TAG_OPTIONS": [
-      "div",
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6"
-    ]
   },
   "Primer::TabContainerComponent": {
   },

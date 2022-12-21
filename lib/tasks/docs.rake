@@ -75,7 +75,7 @@ namespace :docs do
       Primer::Beta::ProgressBar,
       Primer::Beta::State,
       Primer::Beta::Spinner,
-      Primer::SubheadComponent,
+      Primer::Beta::Subhead,
       Primer::Alpha::TabContainer,
       Primer::Beta::Text,
       Primer::Alpha::TextField,
