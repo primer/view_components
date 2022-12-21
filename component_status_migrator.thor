@@ -43,9 +43,13 @@ class ComponentStatusMigrator < Thor::Group
   def move_reamining_files
     Dir["app/components/primer/#{name.underscore}.*"].each do |file_path|
       file_name = File.basename(file_path)
-      new_path = "#{status_full_path}#{file_name}"
+      new_path = "#{status_full_path}#{file_name.gsub('_component', '')}"
       move_file("misc", file_path, new_path)
     end
+  end
+
+  def update_css
+    gsub_file(primer_css_file, component_css_import, component_css_import_with_status)
   end
 
   def move_test
@@ -222,6 +226,14 @@ class ComponentStatusMigrator < Thor::Group
     @controller_path_with_status ||= "app/components/primer/#{status_folder_name}#{name_without_suffix.underscore}.rb"
   end
 
+  def component_css_import
+    @component_css_import ||= "import \"./#{name.underscore}.pcss\""
+  end
+
+  def component_css_import_with_status
+    @component_css_import_with_status ||= "import \"./#{status_folder_name}#{name_without_suffix.underscore}.pcss\""
+  end
+
   def move_file(file_type, old_path, new_path)
     if old_path == new_path
       puts "No change needed - #{file_type} file not moved"
@@ -295,6 +307,10 @@ class ComponentStatusMigrator < Thor::Group
 
   def name_without_suffix
     @name_without_suffix ||= name.gsub("Component", "")
+  end
+
+  def primer_css_file
+    @primer_css_file ||= "app/components/primer/primer.pcss"
   end
 
   def short_name
