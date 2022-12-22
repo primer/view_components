@@ -132,7 +132,8 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::NavList::Group",
       "Primer::Alpha::OcticonSymbols",
       "Primer::Component",
-      "Primer::Content"
+      "Primer::Content",
+      "Primer::Navigation::TabComponent"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
