@@ -7,7 +7,7 @@ module Primer
       # and `Primer::Alpha::UnderlineNav` and should not be used by itself.
       #
       # @accessibility
-      #   `TabComponent` renders the selected anchor tab with `aria-current="page"` by default.
+      #   `Tab` renders the selected anchor tab with `aria-current="page"` by default.
       #    When the selected tab does not correspond to the current page, such as in a nested inner tab, make sure to use aria-current="true"
       class Tab < Primer::Component
         status :alpha

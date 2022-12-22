@@ -2,7 +2,7 @@
 
 require "components/test_helper"
 
-class PrimerNavigationTabComponentTest < Minitest::Test
+class PrimerNavigationTabTest < Minitest::Test
   include Primer::ComponentTestHelpers
 
   def test_renders_title
