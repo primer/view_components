@@ -216,6 +216,8 @@
       "summary"
     ]
   },
+  "Primer::Alpha::HellipButton": {
+  },
   "Primer::Alpha::HiddenTextExpander": {
   },
   "Primer::Alpha::Image": {
@@ -327,6 +329,8 @@
     "Item": "Primer::Alpha::SegmentedControl::Item"
   },
   "Primer::Alpha::SegmentedControl::Item": {
+  },
+  "Primer::Alpha::TabContainer": {
   },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",
@@ -958,8 +962,25 @@
       "div"
     ]
   },
+  "Primer::Beta::Subhead": {
+    "DEFAULT_HEADING_TAG": "div",
+    "HEADING_TAG_OPTIONS": [
+      "div",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
+  },
+  "Primer::Beta::TimelineItem": {
+    "BadgeComponent": "Primer::Beta::TimelineItem::BadgeComponent"
+  },
+  "Primer::Beta::TimelineItem::BadgeComponent": {
   },
   "Primer::Beta::Truncate": {
     "TruncateText": "Primer::Beta::Truncate::TruncateText"
@@ -1104,25 +1125,12 @@
   "Primer::StateComponent": {
   },
   "Primer::SubheadComponent": {
-    "DEFAULT_HEADING_TAG": "div",
-    "HEADING_TAG_OPTIONS": [
-      "div",
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6"
-    ]
   },
   "Primer::TabContainerComponent": {
   },
   "Primer::TimeAgoComponent": {
   },
   "Primer::TimelineItemComponent": {
-    "BadgeComponent": "Primer::TimelineItemComponent::BadgeComponent"
-  },
-  "Primer::TimelineItemComponent::BadgeComponent": {
   },
   "Primer::Tooltip": {
     "ALIGN_DEFAULT": "default",
