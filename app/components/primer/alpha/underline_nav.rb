@@ -12,7 +12,7 @@ module Primer
     #   - By default, `UnderlineNav` renders links within a `<nav>` element. `<nav>` has an
     #     implicit landmark role of `navigation` which should be reserved for main links.
     #     For all other set of links, set tag to `:div`.
-    #   - See <%= link_to_component(Primer::Navigation::TabComponent) %> for additional
+    #   - See <%= link_to_component(Primer::Alpha::Navigation::Tab) %> for additional
     #     accessibility considerations.
     class UnderlineNav < Primer::Component
       include Primer::TabbedComponentHelper
@@ -29,7 +29,7 @@ module Primer
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
       renders_many :tabs, lambda { |selected: false, **system_arguments|
         system_arguments[:classes] = underline_nav_tab_classes(system_arguments[:classes])
-        Primer::Navigation::TabComponent.new(
+        Primer::Alpha::Navigation::Tab.new(
           list: true,
           selected: selected,
           icon_classes: "UnderlineNav-octicon",

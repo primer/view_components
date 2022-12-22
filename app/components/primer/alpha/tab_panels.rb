@@ -14,7 +14,7 @@ module Primer
       TAG_DEFAULT = :nav
       TAG_OPTIONS = [TAG_DEFAULT, :div].freeze
 
-      # Tabs to be rendered. For more information, refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
+      # Tabs to be rendered. For more information, refer to <%= link_to_component(Primer::Alpha::Navigation::Tab) %>.
       #
       # @param id [String] Unique ID of tab.
       # @param selected [Boolean] Whether the tab is selected.
@@ -23,7 +23,7 @@ module Primer
         system_arguments[:id] = id
         system_arguments[:classes] = tab_nav_tab_classes(system_arguments[:classes])
 
-        Primer::Navigation::TabComponent.new(
+        Primer::Alpha::Navigation::Tab.new(
           selected: selected,
           with_panel: true,
           list: true,

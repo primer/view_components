@@ -1198,7 +1198,7 @@
     "DEFAULT_SIDEBAR_COL": 3,
     "MAX_COL": 12
   },
-  "Primer::Navigation::TabComponent": {
+  "Primer::Alpha::Navigation::Tab": {
     "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [
       true,
       "page"

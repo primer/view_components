@@ -45,6 +45,7 @@ module Primer
         Primer::Beta::Markdown => {},
         Primer::Alpha::Menu => {},
         Primer::Navigation::TabComponent => {},
+        Primer::Alpha::Navigation::Tab => {},
         Primer::Beta::Octicon => {},
         Primer::Beta::Popover => {},
         Primer::Beta::ProgressBar => {},

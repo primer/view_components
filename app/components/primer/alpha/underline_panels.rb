@@ -6,7 +6,7 @@ module Primer
     class UnderlinePanels < Primer::Component
       include Primer::TabbedComponentHelper
       include Primer::UnderlineNavHelper
-      # Use to render a button and an associated panel slot. See the example below or refer to <%= link_to_component(Primer::Navigation::TabComponent) %>.
+      # Use to render a button and an associated panel slot. See the example below or refer to <%= link_to_component(Primer::Alpha::Navigation::Tab) %>.
       #
       # @param id [String] Unique ID of tab.
       # @param selected [Boolean] Whether the tab is selected.
@@ -15,7 +15,7 @@ module Primer
         system_arguments[:id] = id
         system_arguments[:classes] = underline_nav_tab_classes(system_arguments[:classes])
 
-        Primer::Navigation::TabComponent.new(
+        Primer::Alpha::Navigation::Tab.new(
           selected: selected,
           with_panel: true,
           list: true,

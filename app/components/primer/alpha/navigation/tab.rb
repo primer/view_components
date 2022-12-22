@@ -65,35 +65,35 @@ module Primer
       attr_reader :selected
 
       # @example Default
-      #   <%= render(Primer::Navigation::TabComponent.new(selected: true)) do |component| %>
+      #   <%= render(Primer::Alpha::Navigation::Tab.new(selected: true)) do |component| %>
       #     <% component.with_text { "Selected" } %>
       #   <% end %>
-      #   <%= render(Primer::Navigation::TabComponent.new) do |component| %>
+      #   <%= render(Primer::Alpha::Navigation::Tab.new) do |component| %>
       #     <% component.with_text { "Not selected" } %>
       #   <% end %>
       #
       # @example With icons and counters
-      #   <%= render(Primer::Navigation::TabComponent.new) do |component| %>
+      #   <%= render(Primer::Alpha::Navigation::Tab.new) do |component| %>
       #     <% component.with_icon(:star) %>
       #     <% component.with_text { "Tab" } %>
       #   <% end %>
-      #   <%= render(Primer::Navigation::TabComponent.new) do |component| %>
+      #   <%= render(Primer::Alpha::Navigation::Tab.new) do |component| %>
       #     <% component.with_icon(:star) %>
       #     <% component.with_text { "Tab" } %>
       #     <% component.with_counter(count: 10) %>
       #   <% end %>
-      #   <%= render(Primer::Navigation::TabComponent.new) do |component| %>
+      #   <%= render(Primer::Alpha::Navigation::Tab.new) do |component| %>
       #     <% component.with_text { "Tab" } %>
       #     <% component.with_counter(count: 10) %>
       #   <% end %>
       #
       # @example Inside a list
-      #   <%= render(Primer::Navigation::TabComponent.new(list: true)) do |component| %>
+      #   <%= render(Primer::Alpha::Navigation::Tab.new(list: true)) do |component| %>
       #     <% component.with_text { "Tab" } %>
       #   <% end %>
       #
       # @example With custom HTML
-      #   <%= render(Primer::Navigation::TabComponent.new) do %>
+      #   <%= render(Primer::Alpha::Navigation::Tab.new) do %>
       #     <div>
       #       This is my <strong>custom HTML</strong>
       #     </div>
