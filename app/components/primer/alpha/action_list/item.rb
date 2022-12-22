@@ -48,7 +48,7 @@ module Primer
             Primer::BaseComponent.new(tag: :svg, width: "16", height: "16", **system_arguments)
           },
           content: lambda { |**system_arguments|
-            Primer::BaseComponent.new(tag: :span, **system_arguments)
+            Primer::BaseComponent.new(tag: :button, **system_arguments)
           }
         }
 
@@ -128,7 +128,7 @@ module Primer
         # @param parent [Primer::Alpha::ActionList::Item] This item's parent item. `nil` if this item is at the root. Used internally.
         # @param label [String] Item label.
         # @param label_classes [String] CSS classes that will be added to the label.
-        # @param content_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the item's anchor or span tag.
+        # @param content_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the item's anchor or button tag.
         # @param truncate_label [Boolean] Truncate label with ellipsis.
         # @param href [String] Link URL.
         # @param role [String] ARIA role describing the function of the item.
@@ -206,7 +206,7 @@ module Primer
             @content_arguments[:tag] = :a
             @content_arguments[:href] = @href
           else
-            @content_arguments[:tag] = :span
+            @content_arguments[:tag] = :button
             @content_arguments[:onclick] = on_click if on_click
           end
 
