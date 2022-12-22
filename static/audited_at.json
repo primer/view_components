@@ -93,6 +93,7 @@
   "Primer::Content": "",
   "Primer::IconButton": "",
   "Primer::LayoutComponent": "",
+  "Primer::Navigation::TabComponent": "",
   "Primer::Tooltip": "",
   "Primer::Truncate": ""
 }
