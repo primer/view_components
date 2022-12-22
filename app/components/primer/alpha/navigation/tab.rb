@@ -8,7 +8,9 @@ module Primer
     # @accessibility
     #   `TabComponent` renders the selected anchor tab with `aria-current="page"` by default.
     #    When the selected tab does not correspond to the current page, such as in a nested inner tab, make sure to use aria-current="true"
-    class TabComponent < Primer::Component
+    class Tab < Primer::Component
+      status :alpha
+
       DEFAULT_ARIA_CURRENT_FOR_ANCHOR = :page
       ARIA_CURRENT_OPTIONS_FOR_ANCHOR = [true, DEFAULT_ARIA_CURRENT_FOR_ANCHOR].freeze
       # Panel controlled by the Tab. This will not render anything in the tab itself.
