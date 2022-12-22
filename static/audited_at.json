@@ -68,7 +68,7 @@
   "Primer::Beta::Subhead": "",
   "Primer::Beta::Text": "",
   "Primer::Beta::TimelineItem": "",
-  "Primer::Beta::TimelineItem::BadgeComponent": "",
+  "Primer::Beta::TimelineItem::Badge": "",
   "Primer::Beta::Truncate": "",
   "Primer::Beta::Truncate::TruncateText": "",
   "Primer::BlankslateComponent": "",

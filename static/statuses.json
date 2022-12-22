@@ -68,7 +68,7 @@
   "Primer::Beta::Subhead": "beta",
   "Primer::Beta::Text": "beta",
   "Primer::Beta::TimelineItem": "beta",
-  "Primer::Beta::TimelineItem::BadgeComponent": "alpha",
+  "Primer::Beta::TimelineItem::Badge": "alpha",
   "Primer::Beta::Truncate": "beta",
   "Primer::Beta::Truncate::TruncateText": "alpha",
   "Primer::BlankslateComponent": "deprecated",

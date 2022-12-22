@@ -65,7 +65,9 @@ module Primer
 
       # This component is part of `Primer::Beta::TimelineItem` and should not be
       # used as a standalone component.
-      class BadgeComponent < Primer::Component
+      class Badge < Primer::Component
+        status :beta
+
         def initialize(icon: nil, **system_arguments)
           @icon = icon
 
