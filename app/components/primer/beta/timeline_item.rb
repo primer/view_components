@@ -22,7 +22,7 @@ module Primer
       #
       # @param icon [String] Name of <%= link_to_octicons %> to use.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :badge, "BadgeComponent"
+      renders_one :badge, "Badge"
 
       # Body to be rendered to the left of the Badge.
       #

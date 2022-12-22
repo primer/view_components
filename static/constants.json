@@ -978,7 +978,7 @@
     "DEFAULT_TAG": "span"
   },
   "Primer::Beta::TimelineItem": {
-    "BadgeComponent": "Primer::Beta::TimelineItem::Badge"
+    "Badge": "Primer::Beta::TimelineItem::Badge"
   },
   "Primer::Beta::TimelineItem::Badge": {
   },
