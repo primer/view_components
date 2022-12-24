@@ -2,7 +2,7 @@
 import {controller, targets} from '@github/catalyst'
 
 @controller
-export class PrimerMultiInputElement extends HTMLElement {
+class PrimerMultiInputElement extends HTMLElement {
   @targets fields: HTMLInputElement[]
 
   activateField(name: string) {
