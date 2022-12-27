@@ -4,8 +4,9 @@ const options = require('@github/markdownlint-github').init({
   "no-trailing-punctuation": false,
   "no-inline-html": false,
   "first-line-heading": false,
+  "no-generic-link-text": { "exceptions": ["link"] },
   // Rules that we want to enable
-  "no-duplicate-heading": false
+  "no-duplicate-heading": false,
 })
 module.exports = {
     config: options,

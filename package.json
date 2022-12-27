@@ -60,7 +60,7 @@
     "@changesets/cli": "^2.24.1",
     "@github/browserslist-config": "^1.0.0",
     "@github/prettier-config": "0.0.4",
-    "@github/markdownlint-github": "^0.2.1",
+    "@github/markdownlint-github": "^0.2.2",
     "@playwright/test": "^1.27.1",
     "@primer/css": "20.4.7",
     "@primer/primitives": "^7.9.0",
