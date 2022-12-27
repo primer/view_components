@@ -10,7 +10,7 @@ _Note: This library is under active pre-1.0 development. Breaking changes are li
 
 ## Documentation
 
-Visit [https://primer.style/view-components/](https://primer.style/view-components/) to view documentation.
+Visit [here](https://primer.style/view-components/) to view documentation.
 
 ## License
 
