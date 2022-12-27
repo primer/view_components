@@ -30,7 +30,7 @@ jobs:
       if: steps.changed-files.outputs.any_changed == 'true'
       run: |
         npm ci
-        npx markdownlint ${{ steps.changed-files.outputs.all_changed_files }}
+        npx markdownlint-cli2 ${{ steps.changed-files.outputs.all_changed_files }}
 
   rubocop:
     runs-on: ubuntu-latest
