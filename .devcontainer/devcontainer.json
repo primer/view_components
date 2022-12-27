@@ -29,7 +29,8 @@
     "rebornix.ruby",
     "wingrunr21.vscode-ruby",
     "mutantdino.resourcemonitor",
-    "vunguyentuan.vscode-postcss"
+    "vunguyentuan.vscode-postcss",
+    "DavidAnson.vscode-markdownlint"
   ],
   "forwardPorts": [4000, 5400],
   "appPort": [4000, 5400],
