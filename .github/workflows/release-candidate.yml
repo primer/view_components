@@ -1,18 +1,15 @@
 name: Release
+
 on:
   push:
-    branches-ignore:
-      - 'main'
-      - 'dependabot/**'
-      - 'changeset-release/**'
+    branches:
+      - 'changeset-release/main'
 
 jobs:
-  release-canary:
+  release-candidate:
     name: npm
     if: ${{ github.repository == 'primer/view_components' }}
-    uses: primer/.github/.github/workflows/release_canary.yml@main
-    with:
-      install: npm i
+    uses: primer/.github/.github/workflows/release_candidate.yml@main
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
       npm_token: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
