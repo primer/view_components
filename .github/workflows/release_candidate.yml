@@ -1,0 +1,14 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - 'changeset-release/main'
+
+jobs:
+  release-candidate:
+    name: Candidate
+    uses: primer/.github/.github/workflows/release_candidate.yml@main
+    secrets:
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
+      npm_token: ${{ secrets.NPM_AUTH_TOKEN_SHARED }}
