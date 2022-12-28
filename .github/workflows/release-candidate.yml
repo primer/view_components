@@ -7,7 +7,7 @@ on:
 
 jobs:
   release-candidate:
-    name: Candidate
+    name: npm
     uses: primer/.github/.github/workflows/release_candidate.yml@main
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
