@@ -1,5 +1,39 @@
 # CHANGELOG
 
+## 0.0.117
+
+### Patch Changes
+
+- [#1719](https://github.com/primer/view_components/pull/1719) [`8e4b37bc`](https://github.com/primer/view_components/commit/8e4b37bc269a1a285ce1bce695691f82827c9bc2) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Fix previews that used old slots API
+
+* [#1721](https://github.com/primer/view_components/pull/1721) [`3cea518c`](https://github.com/primer/view_components/commit/3cea518c521631ac5e40e857c0eb87d863409a0d) Thanks [@joelhawksley](https://github.com/joelhawksley)! - fix more previews to use new Slots API
+
+- [#1722](https://github.com/primer/view_components/pull/1722) [`0186096b`](https://github.com/primer/view_components/commit/0186096be9ae6990ed90b1ff04a26d73dabc78a4) Thanks [@simurai](https://github.com/simurai)! - Disable `is()` selector
+
+* [#1724](https://github.com/primer/view_components/pull/1724) [`3533d8fb`](https://github.com/primer/view_components/commit/3533d8fbc77189656c9c2c85e343c548bc2596cf) Thanks [@simurai](https://github.com/simurai)! - Remove PCSS imports for Docs
+
+- [#1718](https://github.com/primer/view_components/pull/1718) [`f96b7edd`](https://github.com/primer/view_components/commit/f96b7edd1af06170c4dea3a418630a8bd12bc092) Thanks [@joelhawksley](https://github.com/joelhawksley)! - fix missed Slots API changes
+
+* [#1716](https://github.com/primer/view_components/pull/1716) [`9a4ad693`](https://github.com/primer/view_components/commit/9a4ad6935ea9d6852ee08c3ff4d7d45e0f07cc78) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Move `Primer::StateComponent` to `Primer::Beta::State` and deprecate the original
+
+- [#1720](https://github.com/primer/view_components/pull/1720) [`365048a3`](https://github.com/primer/view_components/commit/365048a39af18484ac0eb9ca6985858fb2285b88) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Move `Primer::SubheadComponent` to `Primer::Beta::Subhead` and deprecate the original
+
+* [#1729](https://github.com/primer/view_components/pull/1729) [`897b3524`](https://github.com/primer/view_components/commit/897b35246c7d8c9a813984eaa101fa0e9368ad63) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Correctly deprecate `Primer::TimelineItemComponent::BadgeComponent` in favor of `Primer::Beta::TimelineItem::Badge`
+
+- [#1715](https://github.com/primer/view_components/pull/1715) [`34dfc3ab`](https://github.com/primer/view_components/commit/34dfc3abdc66ad15db3449ec1acae4b41be63e28) Thanks [@neall](https://github.com/neall)! - Add Primer::Forms::ToggleSwitchForm
+
+* [#1713](https://github.com/primer/view_components/pull/1713) [`9b535d89`](https://github.com/primer/view_components/commit/9b535d89962a2cac4fc50d3a43119db3ccad8041) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Use new Slots API in previews.
+
+- [#1725](https://github.com/primer/view_components/pull/1725) [`f84c7dda`](https://github.com/primer/view_components/commit/f84c7dda2239f4e01b1785db83fe70007df47f89) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Move `Primer::TabContainerComponent` to `Primer::Alpha::TabContainer`
+
+* [#1717](https://github.com/primer/view_components/pull/1717) [`da56d348`](https://github.com/primer/view_components/commit/da56d34842afc7cbe3abe54de7545faa993abcae) Thanks [@KyFaSt](https://github.com/KyFaSt)! - Make tool_tip Trusted Types compatible
+
+- [#1699](https://github.com/primer/view_components/pull/1699) [`14498234`](https://github.com/primer/view_components/commit/14498234a2953427a7fffd54c2aff82df594c9a1) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Update component deprecation in CI to report as info instead of errors. Update the deprecation messages to always provide a replacement when possible.
+
+* [#1726](https://github.com/primer/view_components/pull/1726) [`0b21fb75`](https://github.com/primer/view_components/commit/0b21fb757cabb2f9ddc40cad57b58db6216a2002) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Move `Primer::HellipButton` to `Primer::Alpha::HellipButton`
+
+- [#1727](https://github.com/primer/view_components/pull/1727) [`97a781a9`](https://github.com/primer/view_components/commit/97a781a9da38aa6c0f5cd8a98a889130d488693a) Thanks [@mxriverlynn](https://github.com/mxriverlynn)! - Move Primer::TimelineItemComponent to Primer::Beta::TimelineItem
+
 ## 0.0.116
 
 ### Patch Changes
