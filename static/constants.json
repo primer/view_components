@@ -1131,6 +1131,9 @@
   "Primer::TimeAgoComponent": {
   },
   "Primer::TimelineItemComponent": {
+    "BadgeComponent": "Primer::TimelineItemComponent::BadgeComponent"
+  },
+  "Primer::TimelineItemComponent::BadgeComponent": {
   },
   "Primer::Tooltip": {
     "ALIGN_DEFAULT": "default",

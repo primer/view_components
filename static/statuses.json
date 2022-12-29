@@ -100,6 +100,7 @@
   "Primer::TabContainerComponent": "deprecated",
   "Primer::TimeAgoComponent": "deprecated",
   "Primer::TimelineItemComponent": "deprecated",
+  "Primer::TimelineItemComponent::BadgeComponent": "deprecated",
   "Primer::Tooltip": "deprecated",
   "Primer::Truncate": "beta"
 }
