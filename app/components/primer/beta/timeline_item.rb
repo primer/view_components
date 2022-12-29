@@ -22,7 +22,7 @@ module Primer
       #
       # @param icon [String] Name of <%= link_to_octicons %> to use.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
-      renders_one :badge, "BadgeComponent"
+      renders_one :badge, "Badge"
 
       # Body to be rendered to the left of the Badge.
       #
@@ -65,7 +65,9 @@ module Primer
 
       # This component is part of `Primer::Beta::TimelineItem` and should not be
       # used as a standalone component.
-      class BadgeComponent < Primer::Component
+      class Badge < Primer::Component
+        status :beta
+
         def initialize(icon: nil, **system_arguments)
           @icon = icon
 
