@@ -20,7 +20,7 @@ export function componentPreviews(): ComponentPreview[] {
     if (previewURL.includes('_component')) {
       previewURL = previewURL.replace('_component', '')
     } else {
-      previewURL = `${previewURL}_preview`
+      previewURL = `${previewURL}`
     }
 
     // Covert the preview URL to a component name ie. primer/beta/button => Primer::Beta::Button
