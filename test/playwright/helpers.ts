@@ -1,7 +1,7 @@
 import {glob} from 'glob'
 
 // Previews we're ignoring because they're not ready to be tested yet
-const ignoredPreviews = ['Primer::Forms::FormsPreview']
+const ignoredPreviews = ['Primer::Forms::FormsPreview', 'Primer::Forms::Forms']
 
 interface ComponentPreview {
   componentName: string
@@ -20,7 +20,7 @@ export function componentPreviews(): ComponentPreview[] {
     if (previewURL.includes('_component')) {
       previewURL = previewURL.replace('_component', '')
     } else {
-      previewURL = `${previewURL}_preview`
+      previewURL = `${previewURL}`
     }
 
     // Covert the preview URL to a component name ie. primer/beta/button => Primer::Beta::Button
