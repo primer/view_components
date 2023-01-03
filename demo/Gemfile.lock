@@ -183,7 +183,7 @@ GEM
     jsonpath (0.9.9)
       multi_json
       to_regexp (~> 0.2.1)
-    jwt (2.5.0)
+    jwt (2.6.0)
     kind-rb (0.1.0-x86_64-darwin)
     kind-rb (0.1.0-x86_64-linux)
     krane (1.1.4)
