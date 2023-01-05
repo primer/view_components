@@ -515,7 +515,7 @@ namespace :docs do
   def lookbook_url(component)
     path = component.name.underscore.gsub("_component", "")
 
-    "https://primer.style/view-components/lookbook/inspect/#{path}_preview/default/"
+    "https://primer.style/view-components/lookbook/inspect/#{path}/default/"
   end
 
   def preview_exists?(component)
