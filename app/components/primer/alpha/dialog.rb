@@ -27,7 +27,8 @@ module Primer
         :medium_portrait => "Overlay--size-medium-portrait",
         DEFAULT_SIZE => "Overlay--size-medium",
         :large => "Overlay--size-large",
-        :xlarge => "Overlay--size-xlarge"
+        :xlarge => "Overlay--size-xlarge",
+        :auto => "Overlay--size-auto"
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
