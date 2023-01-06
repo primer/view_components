@@ -12,10 +12,11 @@ const overlayStack: ModalDialogElement[] = []
 function clickHandler(event: Event) {
   const target = event.target as HTMLElement
   const button = target?.closest('button')
+  if (!button) return
 
   // If the user is clicking a valid dialog trigger
   let dialogId = button?.getAttribute('data-show-dialog-id')
-  if (button && dialogId) {
+  if (dialogId) {
     event.stopPropagation()
     const dialog = document.getElementById(dialogId)
     if (dialog instanceof ModalDialogElement) {
@@ -24,23 +25,9 @@ function clickHandler(event: Event) {
       return
     }
   }
-
   // Find the top level dialog that is open.
   const topLevelDialog = overlayStack[overlayStack.length - 1]
   if (!topLevelDialog) return
-
-  // Check if the click happened outside the boundary of the top level dialog
-  const clickOutsideDialog = !target.closest(`#${topLevelDialog.getAttribute('id')}`)
-
-  // Only close dialog if it's a click outside the dialog and the dialog has a
-  // button?
-  if (!button) {
-    if (clickOutsideDialog) {
-      overlayStack.pop()
-      topLevelDialog.close()
-    }
-    return
-  }
 
   dialogId = button.getAttribute('data-close-dialog-id')
   if (dialogId === topLevelDialog.id) {
@@ -52,6 +39,32 @@ function clickHandler(event: Event) {
   if (dialogId === topLevelDialog.id) {
     overlayStack.pop()
     topLevelDialog.close(true)
+  }
+}
+
+function mousedownHandler(event: Event) {
+  const target = event.target as HTMLElement
+  if (target?.closest('button')) return
+
+  // Find the top level dialog that is open.
+  const topLevelDialog = overlayStack[overlayStack.length - 1]
+  if (!topLevelDialog) return
+
+  // Check if the mousedown happened outside the boundary of the top level dialog
+  const mouseDownOutsideDialog = !target.closest(`#${topLevelDialog.getAttribute('id')}`)
+
+  // Only close dialog if it's a click outside the dialog and the dialog has a button?
+  if (mouseDownOutsideDialog) {
+    target.ownerDocument.addEventListener(
+      'mouseup',
+      (upEvent: Event) => {
+        if (upEvent.target === target) {
+          overlayStack.pop()
+          topLevelDialog.close()
+        }
+      },
+      {once: true}
+    )
   }
 }
 
@@ -109,6 +122,7 @@ export class ModalDialogElement extends HTMLElement {
     if (!this.hasAttribute('role')) this.setAttribute('role', 'dialog')
 
     document.addEventListener('click', clickHandler)
+    document.addEventListener('mousedown', mousedownHandler)
 
     this.addEventListener('keydown', e => this.#keydown(e))
   }
