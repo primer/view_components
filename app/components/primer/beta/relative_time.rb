@@ -13,7 +13,7 @@ module Primer
       FORMAT_OPTIONS = [FORMAT_DEFAULT, :micro, :elapsed].freeze
 
       FORMAT_STYLE_DEFAULT = nil
-      FORMAT_STYLE_OPTIONS = [FORMAT_DEFAULT, :long, :short, :narrow].freeze
+      FORMAT_STYLE_OPTIONS = [FORMAT_STYLE_DEFAULT, :long, :short, :narrow].freeze
 
       SECOND_DEFAULT = nil
       SECOND_MAPPINGS = {
