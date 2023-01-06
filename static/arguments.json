@@ -135,7 +135,7 @@
         "name": "content_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "[System arguments](/system-arguments) used to construct the item's anchor or span tag."
+        "description": "[System arguments](/system-arguments) used to construct the item's anchor or button tag."
       },
       {
         "name": "truncate_label",
