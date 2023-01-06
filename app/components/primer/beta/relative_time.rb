@@ -12,6 +12,9 @@ module Primer
       FORMAT_DEFAULT = :auto
       FORMAT_OPTIONS = [FORMAT_DEFAULT, :micro, :elapsed].freeze
 
+      FORMAT_STYLE_DEFAULT = nil
+      FORMAT_STYLE_OPTIONS = [FORMAT_DEFAULT, :long, :short, :narrow].freeze
+
       SECOND_DEFAULT = nil
       SECOND_MAPPINGS = {
         SECOND_DEFAULT => nil,
@@ -104,6 +107,7 @@ module Primer
       # @param threshold [string] The threshold, in ISO-8601 'durations' format, at which relative time displays become absolute.
       # @param precision [Symbol] The precision elapsed time should display. <%= one_of(Primer::Beta::RelativeTime::PRECISION_OPTIONS) %>
       # @param format [Symbol] The format the display should take. <%= one_of(Primer::Beta::RelativeTime::FORMAT_OPTIONS) %>
+      # @param format_style [Symbol] The format the display should take. <%= one_of(Primer::Beta::RelativeTime::FORMAT_STYLE_OPTIONS) %>
       # @param lang [string] The language to use.
       # @param title [string] Provide a custom title to the element.
       # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
@@ -122,6 +126,7 @@ module Primer
         threshold: nil,
         precision: PRECISION_DEFAULT,
         format: nil,
+        format_style: nil,
         lang: nil,
         title: nil,
         **system_arguments
@@ -143,6 +148,7 @@ module Primer
         @system_arguments[:title] = title if title.present?
         @system_arguments[:lang] = lang if lang.present?
         @system_arguments[:format] = fetch_or_fallback(FORMAT_OPTIONS, format, FORMAT_DEFAULT) if format.present?
+        @system_arguments[:"format-style"] = format_style if format_style.present?
         if datetime.present? && datetime.respond_to?(:iso8601)
           @datetime = datetime
           @system_arguments[:datetime] = datetime.iso8601
