@@ -48,7 +48,7 @@ module Primer
             Primer::BaseComponent.new(tag: :svg, width: "16", height: "16", **system_arguments)
           },
           content: lambda { |**system_arguments|
-            Primer::BaseComponent.new(tag: :button, **system_arguments)
+            Primer::BaseComponent.new(tag: :span, **system_arguments)
           }
         }
 
