@@ -1986,6 +1986,12 @@
         "description": "The format the display should take. One of `:auto`, `:elapsed`, or `:micro`."
       },
       {
+        "name": "format_style",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The format the display should take. One of `nil`, `:long`, `:narrow`, or `:short`."
+      },
+      {
         "name": "lang",
         "type": "string",
         "default": "`nil`",

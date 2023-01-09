@@ -800,6 +800,13 @@
       "micro",
       "elapsed"
     ],
+    "FORMAT_STYLE_DEFAULT": null,
+    "FORMAT_STYLE_OPTIONS": [
+      null,
+      "long",
+      "short",
+      "narrow"
+    ],
     "HOUR_DEFAULT": null,
     "HOUR_MAPPINGS": {
       "": null,
