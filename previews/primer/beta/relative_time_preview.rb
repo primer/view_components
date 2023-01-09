@@ -21,6 +21,7 @@ module Primer
       # @param time_zone_name [Symbol] select [~, long, short, short_offset, long_offset, short_generic, long_generic]
       # @param precision [Symbol] select [~, second, minute, hour, day, month, year]
       # @param format [Symbol] select [~, auto, micro, elapsed]
+      # @param format_style [Symbol] select [~, long, short, narrow]
       # @param lang [String] text
       # @param title [String] text
       def playground(
@@ -37,6 +38,7 @@ module Primer
         threshold: nil,
         precision: nil,
         format: nil,
+        format_style: nil,
         datetime: Time.utc(2020, 1, 1, 0, 0, 0),
         lang: nil,
         title: nil
@@ -55,6 +57,7 @@ module Primer
                  threshold: threshold,
                  precision: precision,
                  format: format,
+                 format_style: format_style,
                  datetime: datetime,
                  lang: lang,
                  title: title
@@ -75,6 +78,7 @@ module Primer
       # @param time_zone_name [Symbol] select [~, long, short, short_offset, long_offset, short_generic, long_generic]
       # @param precision [Symbol] select [~, second, minute, hour, day, month, year]
       # @param format [Symbol] select [~, auto, micro, elapsed]
+      # @param format_style [Symbol] select [~, long, short, narrow]
       # @param lang [String] text
       # @param title [String] text
       def default(
@@ -91,6 +95,7 @@ module Primer
         threshold: nil,
         precision: nil,
         format: nil,
+        format_style: nil,
         datetime: Time.now.utc,
         lang: nil,
         title: nil
@@ -109,6 +114,7 @@ module Primer
                  threshold: threshold,
                  precision: precision,
                  format: format,
+                 format_style: format_style,
                  datetime: datetime,
                  lang: lang,
                  title: title
@@ -128,6 +134,7 @@ module Primer
       # @param year [Symbol] select [~, numeric, two_digit]
       # @param time_zone_name [Symbol] select [~, long, short, short_offset, long_offset, short_generic, long_generic]
       # @param precision [Symbol] select [~, second, minute, hour, day, month, year]
+      # @param format_style [Symbol] select [~, long, short, narrow]
       # @param lang [String] text
       # @param title [String] text
       def micro_format(
@@ -143,6 +150,7 @@ module Primer
         time_zone_name: nil,
         threshold: nil,
         precision: nil,
+        format_style: nil,
         datetime: Time.now.iso8601,
         lang: nil,
         title: nil
@@ -161,6 +169,7 @@ module Primer
                  threshold: threshold,
                  precision: precision,
                  format: :micro,
+                 format_style: format_style,
                  datetime: datetime,
                  lang: lang,
                  title: title
@@ -181,6 +190,7 @@ module Primer
       # @param time_zone_name [Symbol] select [~, long, short, short_offset, long_offset, short_generic, long_generic]
       # @param precision [Symbol] select [~, second, minute, hour, day, month, year]
       # @param format [Symbol] select [~, auto, micro, elapsed]
+      # @param format_style [Symbol] select [~, long, short, narrow]
       # @param lang [String] text
       # @param title [String] text
       def recent_time(
@@ -197,6 +207,7 @@ module Primer
         threshold: nil,
         precision: nil,
         format: nil,
+        format_style: nil,
         datetime: Time.now.iso8601,
         lang: nil,
         title: nil
@@ -215,6 +226,7 @@ module Primer
                  threshold: threshold,
                  precision: precision,
                  format: format,
+                 format_style: format_style,
                  datetime: datetime,
                  lang: lang,
                  title: title
@@ -232,6 +244,7 @@ module Primer
       # @param year [Symbol] select [~, numeric, two_digit]
       # @param time_zone_name [Symbol] select [~, long, short, short_offset, long_offset, short_generic, long_generic]
       # @param precision [Symbol] select [~, second, minute, hour, day, month, year]
+      # @param format_style [Symbol] select [~, long, short, narrow]
       # @param lang [String] text
       # @param title [String] text
       def count_down_timer(
@@ -245,6 +258,7 @@ module Primer
         time_zone_name: nil,
         threshold: nil,
         precision: nil,
+        format_style: nil,
         datetime: Time.utc(2038, 1, 19, 0o3, 14, 8),
         lang: nil,
         title: nil
@@ -261,6 +275,7 @@ module Primer
                  threshold: threshold,
                  precision: precision,
                  format: :elapsed,
+                 format_style: format_style,
                  datetime: datetime,
                  lang: lang,
                  title: title
