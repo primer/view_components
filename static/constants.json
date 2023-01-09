@@ -163,14 +163,16 @@
       "medium_portrait": "Overlay--size-medium-portrait",
       "medium": "Overlay--size-medium",
       "large": "Overlay--size-large",
-      "xlarge": "Overlay--size-xlarge"
+      "xlarge": "Overlay--size-xlarge",
+      "auto": "Overlay--size-auto"
     },
     "SIZE_OPTIONS": [
       "small",
       "medium_portrait",
       "medium",
       "large",
-      "xlarge"
+      "xlarge",
+      "auto"
     ]
   },
   "Primer::Alpha::Dialog::Body": {
