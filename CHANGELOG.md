@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 0.0.118
+
+### Patch Changes
+
+- [#1757](https://github.com/primer/view_components/pull/1757) [`9bc35cce`](https://github.com/primer/view_components/commit/9bc35cceff429a7fa347d3957afe7ea27eed2b19) Thanks [@camertron](https://github.com/camertron)! - Bump view_component to v2.81.0 to fix issue with Rails main
+
+* [#1753](https://github.com/primer/view_components/pull/1753) [`95df035a`](https://github.com/primer/view_components/commit/95df035a61edbf2bf43a55570b63a8646a216b02) Thanks [@keithamus](https://github.com/keithamus)! - Update `with_show_button` slot to use `Primer::Beta::Button` instead of `Primer::ButtonComponent`.
+
+- [#1736](https://github.com/primer/view_components/pull/1736) [`927a52c3`](https://github.com/primer/view_components/commit/927a52c3e83f4eb48e8c37fdbf6c377957eedc03) Thanks [@dependabot](https://github.com/apps/dependabot)! - Add format_style to RelativeTime component
+
+* [#1728](https://github.com/primer/view_components/pull/1728) [`1c9981f4`](https://github.com/primer/view_components/commit/1c9981f48ae9113049ec55306b6fd3fd287d1cbc) Thanks [@langermank](https://github.com/langermank)! - Use a button tag for ActionList::Items
+
+- [#1750](https://github.com/primer/view_components/pull/1750) [`64343de4`](https://github.com/primer/view_components/commit/64343de4323fc56ff5270d3809be3142795077cf) Thanks [@jonrohan](https://github.com/jonrohan)! - Adding `:auto` to size option to Dialog component
+
+* [#1756](https://github.com/primer/view_components/pull/1756) [`280972cb`](https://github.com/primer/view_components/commit/280972cbc38250971b071914cfaeb22e473b7c6a) Thanks [@langermank](https://github.com/langermank)! - Fix media query typo in Button
+
+- [#1754](https://github.com/primer/view_components/pull/1754) [`d662c1c7`](https://github.com/primer/view_components/commit/d662c1c77f70cd27c5b894af0231a9de43938f2f) Thanks [@keithamus](https://github.com/keithamus)! - Fix bug where clicking inside dialog, but finishing click outside, dismisses dialog
+
 ## 0.0.117
 
 ### Patch Changes
