@@ -5,7 +5,7 @@ PATH
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       octicons (>= 17.0.0)
-      view_component (>= 2.57.0, < 3.0)
+      view_component (>= 2.81.0, < 3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -355,7 +355,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    view_component (2.80.0)
+    view_component (2.81.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -398,7 +398,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
-  view_component (>= 2.74.1)
+  view_component (>= 2.81.0)
 
 BUNDLED WITH
    2.2.33
