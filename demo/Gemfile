@@ -54,3 +54,5 @@ group :development do
 
   gem "foreman"
 end
+
+gem "pry-byebug"

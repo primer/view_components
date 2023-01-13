@@ -133,6 +133,10 @@
     url: "/components/timeago"
   - title: Tooltip
     url: "/components/tooltip"
+- title: Forms
+  children:
+  - title: Getting started
+    url: "/forms/getting_started"
 - title: Architecture decisions
   children:
   - title: Developing and publishing client-side behaviours

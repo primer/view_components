@@ -1,0 +1,15 @@
+|`disabled`|Boolean|When set to `true`, disables the field so it cannot receive input.|
+|`hidden`|Boolean|When set to `true`, visually hides the field.|
+|`class`|String|CSS classes to include in the input's HTML `class` attribute.|
+|`label_arguments`|Hash|Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports.|
+|`visually_hide_label`|Boolean|When set to `true`, the field's label will be hidden visually but will still appear to screen readers.|
+|`caption`|String|A string describing the field and what sorts of input it expects. Displayed underneath the field.|
+|`validation_message`|String|A string displayed between the caption and the field indicating the field's contents are invalid. This option is, by default, set to the first Rails validation message for the field (assuming the form is associated with a model object). Use `validation_message` to override the default or to provide a validation message in case there is no associated model object.|
+|`invalid`|Boolean|If set to `true`, the field will be rendered with a red border. Implied if `validation_message` is truthy. This option is set to `true` automatically if the model object associated with the form reports that the field is invalid via Rails validations. It is provided for cases where the form does not have an associated model. If the field is invalid as determined by Rails validations, setting `invalid` to `false` will have no effect.|
+|`full_width`|Boolean|When set to `true`, the field will take up all available space.|
+|`size`|Symbol|One of `:small`, `:medium` (the default), or `:large`. Controls how "tall" the field is. Only available for certain fields.|
+|`scope_name_to_model`|Boolean|Default `true`. When set to `false`, prevents the model name from prefixing the field name. For example, if the field name is `my_field`, Rails will normally emit an HTML name attribute of `model[my_field]`. Setting `scope_name_to_model` to `false` will cause Rails to emit `my_field` instead.|
+|`scope_id_to_model`|Boolean|Default `true`. When set to `false`, prevents the model name from prefixing the field ID. For example, if the field name is `my_field`, Rails will normally emit an HTML ID attribute of `model_my_field`. Setting `scope_id_to_model` to `false` will cause Rails to emit `my_field` instead.|
+|`required`|Boolean|Default `false`. When set to `true`, causes an asterisk (*) to appear next to the field's label indicating it is a required field. Note that this option explicitly does _not_ add a `required` HTML attribute. Doing so would enable native browser validations, which are inaccessible and inconsistent with the Primer design system.|
+|`aria`|Hash|Key/value pairs that represent Aria attributes and their values. Eg. `aria: { current: true }` becomes `aria-current="true"`.|
+|`data`|Hash|Key/value pairs that represent data attributes and their values. Eg. `data: { foo: "bar" }` becomes `data-foo="bar"`.|

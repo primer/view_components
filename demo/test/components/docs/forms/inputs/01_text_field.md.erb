@@ -1,0 +1,23 @@
+---
+title: "Text Field"
+---
+
+Text fields are single-line text inputs rendered as `<input type="text">` in HTML.
+
+### Options
+
+<%= render partial: "shared/options_header" %>
+|`name`|String|**Required**. The name of this field.|
+|`label`|String|**Required**. The label describing this field.|
+|`show_clear_button`|Boolean|When `true`, displays a button that clears the input when clicked.|
+|`clear_button_id`|String|The HTML ID of the clear button.|
+|`inset`|Boolean|Default `false`. When set to `true`, renders the text field in an inset style.|
+|`monospace`|Boolean|Default `false`. When set to `true`, causes the text field to use a monospace font.|
+|`leading_visual`|Symbol|The name of an [Octicon](https://primer.style/octicons/) to display to the left of the cursor.|
+|`auto_check_src`|String|A URL to an endpoint that will receive POST requests containing the value of the field as the user types. If the endpoint returns a non-2xx response, the field will be marked as invalid and the response body (presumably an error message) will be displayed under the field as the validation message. If the endpoint subsequently returns a 2xx response, the validation message will be cleared and the field marked as valid.|
+
+### Generic options
+
+<%= render partial: "shared/options_header" %>
+<%= render partial: "shared/generic_options" %>
+<%= render partial: "shared/primer_options" %>
