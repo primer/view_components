@@ -10,7 +10,7 @@ module Primer
         @input = input
         @input.add_label_classes("FormControl-label")
 
-        @form_group_arguments = { class: "d-flex flex-items-start", style: "gap: 8px" }
+        @form_group_arguments = { class: "FormControl-toggleSwitchInput" }
 
         @form_group_arguments[:hidden] = "hidden" if @input.hidden?
       end
