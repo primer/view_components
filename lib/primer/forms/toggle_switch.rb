@@ -9,10 +9,8 @@ module Primer
       def initialize(input:)
         @input = input
         @input.add_label_classes("FormControl-label")
-
-        @form_group_arguments = { class: "FormControl-toggleSwitchInput" }
-
-        @form_group_arguments[:hidden] = "hidden" if @input.hidden?
+        @input.add_input_classes("FormControl-toggleSwitchInput")
+        @input.input_arguments[:hidden] = "hidden" if @input.hidden?
       end
     end
   end

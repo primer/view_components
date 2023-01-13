@@ -39,5 +39,33 @@ module Forms
       assert result["country"], "CA"
       assert result["region"], "SK"
     end
+
+    def test_toggle_switch_form_errors
+      visit_preview(:example_toggle_switch_form)
+
+      find("#error-toggle toggle-switch").click
+      wait_for_toggle_switch_spinner
+
+      assert_selector("#error-toggle [data-target='toggle-switch.errorIcon']")
+      assert_selector("#error-toggle", text: "Bad CSRF token")
+
+      page.evaluate_script(<<~JAVASCRIPT)
+        document
+          .querySelector('#error-toggle toggle-switch')
+          .setAttribute('csrf', 'let_me_in');
+      JAVASCRIPT
+
+      find("#error-toggle toggle-switch").click
+      wait_for_toggle_switch_spinner
+
+      refute_selector("#error-toggle [data-target='toggle-switch.errorIcon']")
+      refute_selector("#error-toggle", text: "Bad CSRF token")
+    end
+
+    private
+
+    def wait_for_toggle_switch_spinner
+      refute_selector("[data-target='toggle-switch.loadingSpinner']")
+    end
   end
 end

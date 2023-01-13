@@ -37,7 +37,7 @@ class ToggleSwitchController < ApplicationController
     # if provided, check token
     return if form_params[:authenticity_token] == "let_me_in"
 
-    render status: :unauthorized, plain: "Bad CSRF token (someone's trying to XHR you!)"
+    render status: :unauthorized, plain: "Bad CSRF token"
   end
 
   def form_params
