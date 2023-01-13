@@ -10,7 +10,7 @@ module Primer
         @input = input
         @input.add_label_classes("FormControl-label")
 
-        @form_group_arguments = { class: "d-flex" }
+        @form_group_arguments = { class: "d-flex flex-items-start" }
 
         @form_group_arguments[:hidden] = "hidden" if @input.hidden?
       end
