@@ -87,6 +87,8 @@
     url: "/components/beta/relativetime"
   - title: SegmentedControl
     url: "/components/alpha/segmentedcontrol"
+  - title: SelectList
+    url: "/components/alpha/selectlist"
   - title: Spinner
     url: "/components/beta/spinner"
   - title: State

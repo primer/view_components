@@ -96,7 +96,8 @@ namespace :docs do
       Primer::Alpha::NavList::Section,
       Primer::Alpha::ActionList::Divider,
       Primer::Alpha::ActionList::Heading,
-      Primer::Alpha::ActionList::Item
+      Primer::Alpha::ActionList::Item,
+      Primer::Alpha::SelectList
     ]
 
     js_components = [
