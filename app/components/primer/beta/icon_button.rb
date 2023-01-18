@@ -63,7 +63,7 @@ module Primer
         @wrapper_arguments = wrapper_arguments
         @show_tooltip = show_tooltip
         @system_arguments = system_arguments
-        @system_arguments[:id] ||= "icon-button-#{SecureRandom.hex(4)}"
+        @system_arguments[:id] ||= self.class.generate_id
 
         @system_arguments[:classes] = class_names(
           "Button",

@@ -107,10 +107,11 @@ module Primer
 
         @text = text
         @system_arguments = system_arguments
+        @system_arguments[:id] ||= self.class.generate_id
         @system_arguments[:tag] = :"tool-tip"
         @system_arguments[:for] = for_id
-        system_arguments[:classes] = class_names(
-          system_arguments[:classes],
+        @system_arguments[:classes] = class_names(
+          @system_arguments[:classes],
           "sr-only"
         )
         @system_arguments[:position] = :absolute
@@ -121,6 +122,6 @@ module Primer
       def call
         render(Primer::BaseComponent.new(**@system_arguments)) { @text }
       end
-      end
     end
   end
+end
