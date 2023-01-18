@@ -78,7 +78,6 @@ namespace :docs do
       Primer::Beta::Subhead,
       Primer::Alpha::TabContainer,
       Primer::Beta::Text,
-      Primer::Alpha::TextField,
       Primer::TimeAgoComponent,
       Primer::Beta::TimelineItem,
       Primer::Tooltip,
@@ -97,7 +96,10 @@ namespace :docs do
       Primer::Alpha::ActionList::Divider,
       Primer::Alpha::ActionList::Heading,
       Primer::Alpha::ActionList::Item,
-      Primer::Alpha::SelectList
+      Primer::Alpha::TextField,
+      Primer::Alpha::SelectList,
+      Primer::Alpha::MultiInput,
+      Primer::Alpha::RadioButtonGroup
     ]
 
     js_components = [
@@ -118,7 +120,8 @@ namespace :docs do
       Primer::Alpha::ToggleSwitch,
       Primer::Alpha::ActionList,
       Primer::Alpha::NavList,
-      Primer::Alpha::NavList::Section
+      Primer::Alpha::NavList::Section,
+      Primer::Alpha::MultiInput
     ]
 
     components_without_examples = [
