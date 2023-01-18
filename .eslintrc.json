@@ -62,7 +62,8 @@
         ],
         "custom-elements/tag-name-matches-class": [
           "error", {"suffix": "Element"}
-        ]
+        ],
+        "i18n-text/no-en": "off"
       }
     }
   ]

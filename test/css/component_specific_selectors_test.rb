@@ -57,7 +57,8 @@ class ComponentSpecificSelectorsTest < Minitest::Test
       ".FormControl-input-wrap",
       ".FormControl-select-wrap",
       ".FormControl-checkbox-wrap",
-      ".FormControl-radio-wrap"
+      ".FormControl-radio-wrap",
+      ".FormControl-toggleSwitchInput"
     ],
     Primer::Alpha::ButtonMarketing => [
       ".btn-mktg.disabled",
