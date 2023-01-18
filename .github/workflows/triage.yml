@@ -29,11 +29,12 @@ jobs:
   check-for-changeset:
     name: Check for changeset
     runs-on: ubuntu-latest
+    env:
+      SKIP_LABEL: "skip changelog"
+    if: "!contains(github.event.pull_request.labels.*.name, 'skip changelog')"
     steps:
       - uses: actions/checkout@v3
-      - name: "Check for changeset"
-        uses: brettcannon/check-for-changed-files@v1
         with:
-          file-pattern: ".changeset/*.md"
-          skip-label: "skip changelog"
-          failure-message: "No changeset found. If these changes should not result in a new version, apply the ${skip-label} label to this pull request. If these changes should result in a version bump, please add a changeset https://git.io/J6QvQ"
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: "Check for changeset"
+        run: script/check-for-changeset
