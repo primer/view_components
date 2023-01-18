@@ -194,7 +194,7 @@
       {
         "name": "id",
         "type": "String",
-        "default": "`SecureRandom.hex`",
+        "default": "`self.class.generate_id`",
         "description": "Used internally."
       },
       {
@@ -308,7 +308,7 @@
       {
         "name": "id",
         "type": "String",
-        "default": "`\"dialog-#{(36**3 + rand(36**4)).to_s(36)}\"`",
+        "default": "`self.class.generate_id`",
         "description": "The id of the dialog."
       },
       {
