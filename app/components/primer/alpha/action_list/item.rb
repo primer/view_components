@@ -155,7 +155,7 @@ module Primer
           description_scheme: DEFAULT_DESCRIPTION_SCHEME,
           active: false,
           on_click: nil,
-          id: SecureRandom.hex,
+          id: self.class.generate_id,
           **system_arguments
         )
           @list = list

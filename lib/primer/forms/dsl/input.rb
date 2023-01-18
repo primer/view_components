@@ -99,7 +99,7 @@ module Primer
 
           @input_arguments[:invalid] = "true" if invalid?
 
-          base_id = SecureRandom.hex[0..5]
+          base_id = SecureRandom.uuid
 
           @ids = {}.tap do |id_map|
             id_map[:validation] = "validation-#{base_id}" if invalid?

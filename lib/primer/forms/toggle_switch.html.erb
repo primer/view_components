@@ -1,9 +1,14 @@
-<%= content_tag(:div, **@form_group_arguments) do %>
+<%= content_tag("toggle-switch-input", **@input.input_arguments) do %>
   <span style="flex-grow: 1">
     <%= builder.label(@input.name, **@input.label_arguments) do %>
       <%= @input.label %>
     <% end %>
-    <%= render(Caption.new(input: @input)) %>
+
+    <%= content_tag(:div, data: { target: "toggle-switch-input.validationElement" }, **@input.validation_arguments) do %>
+      <%= content_tag(:span, @input.validation_messages.first, data: { target: "toggle-switch-input.validationMessageElement" }, **@input.validation_message_arguments) %>
+    <% end %>
+
+    <div><%= render(Caption.new(input: @input)) %></div>
   </span>
   <%
     csrf = @input.csrf || @view_context.form_authenticity_token(
