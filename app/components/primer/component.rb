@@ -22,6 +22,10 @@ module Primer
       status == :deprecated
     end
 
+    def self.generate_id
+      "#{name.demodulize.underscore.dasherize}-#{SecureRandom.uuid}"
+    end
+
     private
 
     def raise_on_invalid_options?

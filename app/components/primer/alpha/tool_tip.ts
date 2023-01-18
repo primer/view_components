@@ -197,10 +197,6 @@ class ToolTipElement extends HTMLElement {
     this.hiddenFromView = true
     this.#allowUpdatePosition = true
 
-    if (!this.id) {
-      this.id = `tooltip-${Date.now()}-${(Math.random() * 10000).toFixed(0)}`
-    }
-
     if (!this.control) return
 
     this.setAttribute('role', 'tooltip')
