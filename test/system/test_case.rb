@@ -46,24 +46,24 @@ module System
         summary["nodes"].map do |node|
           index += 1
           %{
-    #{index}) #{summary["id"]}: #{summary["description"]} (#{summary["impact"]})
-    #{summary["helpUrl"]}
-    The following #{node["any"].size} node violate this rule:
-      #{node["any"].map do |_violation|
-        items = node["failureSummary"].sub("Fix any of the following:", "").split("\n")
-        %{Selector: #{node["target"].join(', ')}
-      HTML: #{node["html"]}
+    #{index}) #{summary['id']}: #{summary['description']} (#{summary['impact']})
+    #{summary['helpUrl']}
+    The following #{node['any'].size} node violate this rule:
+      #{node['any'].map do |_violation|
+        items = node['failureSummary'].sub('Fix any of the following:', '').split("\n")
+        %(Selector: #{node['target'].join(', ')}
+      HTML: #{node['html']}
       Fix any of the following:
       #{items.map { |item| "- #{item.strip}" }.join}
-    }
+    )
       end.join}
             }
         end.join
       end.join
-      %{
+      %(
     Found #{violations.size} accessibility violations:
     #{results}
-      }
+      )
     end
 
     def assert_accessible(excludes: [])
@@ -76,7 +76,7 @@ module System
 
       results = driver.evaluate_async_script <<~JS
         const callback = arguments[arguments.length - 1];
-        #{File.read("node_modules/axe-core/axe.min.js") unless axe_exists}
+        #{File.read('node_modules/axe-core/axe.min.js') unless axe_exists}
         // Remove cyclic references
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Cyclic_object_value#examples
         const getCircularReplacer = () => {
@@ -109,7 +109,7 @@ module System
 
       message = format_accessibility_errors(violations)
 
-      assert violations.size == 0, message
+      assert violations.size.zero?, message
     end
 
     # Capybara Overrides to run accessibility checks when UI changes.
