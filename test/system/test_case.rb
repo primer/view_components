@@ -41,63 +41,75 @@ module System
     end
 
     def format_accessibility_errors(violations)
-      # rubocop:disable Lint/UnusedBlockArgument
-      results = violations.flat_map.with_index do |summary, index|
+      index = 0
+      results = violations.map do |summary|
         summary["nodes"].map do |node|
-          violations = node["any"] + node["all"]
-          # rubocop:disable Security/Eval
-          eval(Erubi::Engine.new(<<~ERB, trim: true).src)
-            <%= index + 1 %>) <%= summary["id"] %>: <%= summary["description"] %> (<%= summary["impact"] %>)
-            <%= summary["helpUrl"] %>
-
-              The following <%= violations.size %> <%= violations.size == 1 ? "node violates" : "nodes violate" %> this rule:
-              <% violations.each do |_violation| %>
-                Selector: <%= node["target"].join(", ") %>
-                HTML: <%= node["html"] %>
-              <%= node["failureSummary"] %>
-              <% end %>
-          ERB
-          # rubocop:enable Security/Eval
-        end
-      end
-      # rubocop:enable Lint/UnusedBlockArgument
-
-      <<~OUTPUT
-        Found #{violations.size} accessibility violations:
-          #{results.join}
-      OUTPUT
+          index += 1
+          %{
+    #{index}) #{summary["id"]}: #{summary["description"]} (#{summary["impact"]})
+    #{summary["helpUrl"]}
+    The following #{node["any"].size} node violate this rule:
+      #{node["any"].map do |_violation|
+        items = node["failureSummary"].sub("Fix any of the following:", "").split("\n")
+        %{Selector: #{node["target"].join(', ')}
+      HTML: #{node["html"]}
+      Fix any of the following:
+      #{items.map { |item| "- #{item.strip}" }.join}
+    }
+      end.join}
+            }
+        end.join
+      end.join
+      %{
+    Found #{violations.size} accessibility violations:
+    #{results}
+      }
     end
 
-    def assert_accessible
-      axe_exists = page.driver.evaluate_script("!!window.axe")
+    def assert_accessible(excludes: [])
+      excludes = Set.new(AXE_RULES_TO_SKIP) + excludes
 
-      results = page.driver.evaluate_async_script(<<~JS)
+      axe_exists = driver.evaluate_async_script <<~JS
         const callback = arguments[arguments.length - 1];
-        #{File.read('node_modules/axe-core/axe.min.js') unless axe_exists}
-
-        const rulesToRun = axe
-          .getRules(["wcag2a", "wcag21a", "wcag2aa", "wcag2aaa", "wcag21aa", "wcag21aaa"])
-          .map(rule => rule.ruleId)
-          .filter(id => ![#{AXE_RULES_TO_SKIP.map { |id| "'#{id}'" }.join(', ')}].includes(id))
-
-        const options = {
-          elementRef: true,
-          resultTypes: ['violations', 'incomplete'],
-          runOnly: {
-            type: 'rule',
-            values: rulesToRun
-          }
-        }
-        axe.run(document.body, options).then(res => JSON.parse(JSON.stringify(res))).then(callback);
+        callback(!!window.axe)
       JS
 
-      violations = results["violations"] + results["incomplete"].select do |item|
-        item["impact"] != "serious" && item["impact"] != "critical"
-      end
+      results = driver.evaluate_async_script <<~JS
+        const callback = arguments[arguments.length - 1];
+        #{File.read("node_modules/axe-core/axe.min.js") unless axe_exists}
+        // Remove cyclic references
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Cyclic_object_value#examples
+        const getCircularReplacer = () => {
+          const seen = new WeakSet();
+          return (key, value) => {
+            if (typeof value === "object" && value !== null) {
+              if (seen.has(value)) {
+                return;
+              }
+              seen.add(value);
+            }
+            return value;
+          };
+        };
+        const excludedRulesConfig = {};
+        for (const rule of [#{excludes.map { |id| "'#{id}'" }.join(', ')}]) {
+          excludedRulesConfig[rule] = { enabled: false };
+        }
+        const options = {
+          elementRef: true,
+          resultTypes: ['violations'],
+          rules: {
+            ...excludedRulesConfig
+          }
+        }
+        axe.run(document.body, options).then(res => JSON.parse(JSON.stringify(res, getCircularReplacer()))).then(callback);
+      JS
+
+      violations = results["violations"]
 
       message = format_accessibility_errors(violations)
 
-      assert violations.empty?, message
+      assert violations.size == 0, message
     end
 
     # Capybara Overrides to run accessibility checks when UI changes.
@@ -111,6 +123,12 @@ module System
       super
 
       assert_accessible
+    end
+
+    private
+
+    def driver
+      page.driver
     end
   end
 end
