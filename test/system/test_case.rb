@@ -15,7 +15,13 @@ module System
     # Skip `:color-contrast` which requires primer design-level change.
     # Skip `:aria-required-children` is broken in 4.5: https://github.com/dequelabs/axe-core/issues/3758
     # Skip `:link-in-text-block` which is new and seems broken.
-    AXE_RULES_TO_SKIP = [:region, :'color-contrast', :'color-contrast-enhanced', :'aria-required-children', :'link-in-text-block'].freeze
+    AXE_RULES_TO_SKIP = %i[
+      region
+      color-contrast
+      color-contrast-enhanced
+      aria-required-children
+      link-in-text-block
+    ].freeze
 
     def visit_preview(preview_name, params = {})
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
@@ -35,34 +41,33 @@ module System
     end
 
     def format_accessibility_errors(violations)
-      results = violations.map.with_index do |summary, index|
+      results = violations.flat_map.with_index do |summary, index|
         summary["nodes"].map do |node|
           violations = node["any"] + node["all"]
-          <<~OUTPUT
-                        #{index + 1}) #{summary['id']}: #{summary['description']} (#{summary['impact']})
-                        #{summary['helpUrl']}
-            #{'            '}
-                          The following #{violations.size} node violate this rule:
-                          #{violations.map do |_violation|
-                            <<~OUTPUT
-                              Selector: #{node['target'].join(', ')}
-                                HTML: #{node['html']}
-                                #{node['failureSummary']}
-                            OUTPUT
-                          end.join}
-          OUTPUT
-        end.join
-      end.join
+          eval(Erubi::Engine.new(<<~ERB, trim: true).src)
+            <%= index + 1 %>) <%= summary["id"] %>: <%= summary["description"] %> (<%= summary["impact"] %>)
+            <%= summary["helpUrl"] %>
+
+              The following <%= violations.size %> <%= violations.size == 1 ? "node violates" : "nodes violate" %> this rule:
+              <% violations.each do |_violation| %>
+                Selector: <%= node["target"].join(", ") %>
+                HTML: <%= node["html"] %>
+              <%= node["failureSummary"] %>
+              <% end %>
+          ERB
+        end
+      end
+
       <<~OUTPUT
         Found #{violations.size} accessibility violations:
-          #{results}
+          #{results.join}
       OUTPUT
     end
 
     def assert_accessible
-      axe_exists = page.driver.evaluate_script "!!window.axe"
+      axe_exists = page.driver.evaluate_script("!!window.axe")
 
-      results = page.driver.evaluate_async_script <<~JS
+      results = page.driver.evaluate_async_script(<<~JS)
         const callback = arguments[arguments.length - 1];
         #{File.read('node_modules/axe-core/axe.min.js') unless axe_exists}
 
@@ -82,7 +87,9 @@ module System
         axe.run(document.body, options).then(res => JSON.parse(JSON.stringify(res))).then(callback);
       JS
 
-      violations = (results["violations"] + results["incomplete"].filter { |item| item["impact"] != "serious" && item["impact"] != "critical" })
+      violations = results["violations"] + results["incomplete"].select do |item|
+        item["impact"] != "serious" && item["impact"] != "critical"
+      end
 
       message = format_accessibility_errors(violations)
 
@@ -101,5 +108,5 @@ module System
 
       assert_accessible
     end
-    end
+  end
 end
