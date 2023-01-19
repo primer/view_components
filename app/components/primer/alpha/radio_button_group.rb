@@ -40,6 +40,8 @@ module Primer
 
       # @!method radio_button
       #
+      # Adds a radio button to the group.
+      #
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::RadioButton) %>.
     end
   end

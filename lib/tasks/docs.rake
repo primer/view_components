@@ -243,9 +243,31 @@ namespace :docs do
 
         args_for_components << component_args
 
-        # Slots V2 docs
-        slot_v2_methods = documentation.meths.select do |mtd|
-          (mtd[:renders_one] || mtd[:renders_many]) && mtd.tag(:private).nil?
+        # Method docs
+        slot_v2_methods, other_methods = documentation.meths
+          .reject { |mtd| mtd.tag(:private) || mtd.name == :initialize }
+          .select { |mtd| mtd.parent.title == component.name }
+          .partition { |mtd| mtd[:renders_one] || mtd[:renders_many] }
+
+        emit_method = -> (method_documentation) do
+          f.puts
+          f.puts("### `#{method_documentation.name}`")
+
+          if method_documentation.base_docstring.to_s.present?
+            f.puts
+            f.puts(view_context.render(inline: method_documentation.base_docstring))
+          end
+
+          param_tags = method_documentation.tags(:param)
+          if param_tags.any?
+            f.puts
+            f.puts("| Name | Type | Default | Description |")
+            f.puts("| :- | :- | :- | :- |")
+          end
+
+          param_tags.each do |tag|
+            f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{pretty_default_value(tag, component)} | #{view_context.render(inline: tag.text)} |")
+          end
         end
 
         if slot_v2_methods.any?
@@ -253,24 +275,16 @@ namespace :docs do
           f.puts("## Slots")
 
           slot_v2_methods.each do |slot_documentation|
-            f.puts
-            f.puts("### `#{slot_documentation.name}`")
+            emit_method.call(slot_documentation)
+          end
+        end
 
-            if slot_documentation.base_docstring.to_s.present?
-              f.puts
-              f.puts(view_context.render(inline: slot_documentation.base_docstring))
-            end
+        if other_methods.any?
+          f.puts
+          f.puts("## Methods")
 
-            param_tags = slot_documentation.tags(:param)
-            if param_tags.any?
-              f.puts
-              f.puts("| Name | Type | Default | Description |")
-              f.puts("| :- | :- | :- | :- |")
-            end
-
-            param_tags.each do |tag|
-              f.puts("| `#{tag.name}` | `#{tag.types.join(', ')}` | #{pretty_default_value(tag, component)} | #{view_context.render(inline: tag.text)} |")
-            end
+          other_methods.each do |method_documentation|
+            emit_method.call(method_documentation)
           end
         end
 
