@@ -41,9 +41,11 @@ module System
     end
 
     def format_accessibility_errors(violations)
+      # rubocop:disable Lint/UnusedBlockArgument
       results = violations.flat_map.with_index do |summary, index|
         summary["nodes"].map do |node|
           violations = node["any"] + node["all"]
+          # rubocop:disable Security/Eval
           eval(Erubi::Engine.new(<<~ERB, trim: true).src)
             <%= index + 1 %>) <%= summary["id"] %>: <%= summary["description"] %> (<%= summary["impact"] %>)
             <%= summary["helpUrl"] %>
@@ -55,8 +57,10 @@ module System
               <%= node["failureSummary"] %>
               <% end %>
           ERB
+          # rubocop:enable Security/Eval
         end
       end
+      # rubocop:enable Lint/UnusedBlockArgument
 
       <<~OUTPUT
         Found #{violations.size} accessibility violations:
