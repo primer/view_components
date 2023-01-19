@@ -65,7 +65,7 @@ module Primer
 
       @system_arguments = system_arguments
 
-      @system_arguments[:id] ||= "icon-button-#{SecureRandom.hex(4)}"
+      @system_arguments[:id] ||= self.class.generate_id
 
       @system_arguments[:classes] = class_names(
         "btn-octicon",

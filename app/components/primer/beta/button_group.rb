@@ -13,7 +13,9 @@ module Primer
         kwargs[:group_item] = true
         kwargs[:size] = @size
 
+        # rubocop:disable Primer/ComponentNameMigration
         Primer::ButtonComponent.new(**kwargs)
+        # rubocop:enable Primer/ComponentNameMigration
       }
 
       # @example Default

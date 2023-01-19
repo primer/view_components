@@ -18,15 +18,52 @@ module Primer
 
       # @label Default
       #
-      # @param full toggle
-      # @param spacious toggle
-      # @param dismissible toggle
-      # @param icon [Symbol] select [alert, check, info, people]
-      # @param scheme [Symbol] select [default, warning, danger, success]
-      # @param content text
-      def default(full: false, spacious: false, dismissible: false, icon: :people, scheme: Primer::Beta::Flash::DEFAULT_SCHEME, content: "This is a flash message!")
-        render(Primer::Beta::Flash.new(full: full, spacious: spacious, dismissible: dismissible, icon: icon, scheme: scheme)) { content }
+      def default
+        render(Primer::Beta::Flash.new) { "This is a flash message!" }
       end
+
+      # @!group Color Schemes
+      #
+      # @label Default
+      def color_scheme_default
+        render(Primer::Beta::Flash.new) { "This is a flash message!" }
+      end
+
+      # @label Warning
+      def color_scheme_warning
+        render(Primer::Beta::Flash.new(scheme: :warning)) { "This is a warning flash message!" }
+      end
+
+      # @label Danger
+      def color_scheme_danger
+        render(Primer::Beta::Flash.new(scheme: :danger)) { "This is a danger flash message!" }
+      end
+
+      # @label Success
+      def color_scheme_success
+        render(Primer::Beta::Flash.new(scheme: :success)) { "This is a success flash message!" }
+      end
+      #
+      # @!endgroup
+
+      # @!group More options
+      #
+      # @label Full width
+      def options_full
+        render(Primer::Beta::Flash.new(full: true)) { "This is a full width flash message!" }
+      end
+
+      # @label Dismissible
+      def options_dismissible
+        render(Primer::Beta::Flash.new(dismissible: true)) { "This is a dismissible flash message!" }
+      end
+
+      # @label With icon
+      def options_with_icon
+        render(Primer::Beta::Flash.new(icon: :info)) { "This is a flash message with an icon!" }
+      end
+      #
+      # @!endgroup
     end
   end
 end

@@ -71,6 +71,7 @@ Primer/DeprecatedLayoutComponent:
 
 Primer/ComponentNameMigration:
   Enabled: true
+  Severity: info
   Exclude:
     - "test/**/*"
 

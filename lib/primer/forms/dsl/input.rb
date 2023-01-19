@@ -16,7 +16,9 @@ module Primer
 
         include Primer::ClassNameHelper
 
-        attr_reader :builder, :form, :input_arguments, :label_arguments, :caption, :validation_message, :ids
+        attr_reader :builder, :form, :input_arguments, :label_arguments, :caption, :validation_message, :ids, :form_control
+
+        alias form_control? form_control
 
         def initialize(builder:, form:, **system_arguments)
           @builder = builder
@@ -41,9 +43,40 @@ module Primer
           @full_width = @input_arguments.delete(:full_width)
           @size = @input_arguments.delete(:size)
 
+          # If scope_name_to_model is false, the name of the input for eg. `my_field`
+          # will be `my_field` instead of the Rails default of `model[my_field]`.
+          #
+          # We achieve this by passing the `name` option to Rails form builder
+          # methods. These methods will use the passed name if provided instead
+          # of generating a scoped one.
+          #
+          # rubocop:disable Style/IfUnlessModifier
+          unless @input_arguments.delete(:scope_name_to_model) { true }
+            @input_arguments[:name] = name
+          end
+          # rubocop:enable Style/IfUnlessModifier
+
+          # If scope_id_to_model is false, the name of the input for eg. `my_field`
+          # will be `my_field` instead of the Rails default of `model_my_field`.
+          #
+          # We achieve this by passing the `id` option to Rails form builder
+          # methods. These methods will use the passed id if provided instead
+          # of generating a scoped one. The id is the name of the field unless
+          # explicitly provided in system_arguments.
+          #
+          # rubocop:disable Style/IfUnlessModifier
+          unless @input_arguments.delete(:scope_id_to_model) { true }
+            @input_arguments[:id] = @input_arguments.delete(:id) { name }
+          end
+          # rubocop:enable Style/IfUnlessModifier
+
+          # Whether or not to wrap the component in a FormControl, which renders a
+          # label above and validation message beneath the input.
+          @form_control = @input_arguments.delete(:form_control) { true }
+
           @input_arguments[:invalid] = "true" if invalid?
 
-          base_id = SecureRandom.hex[0..5]
+          base_id = SecureRandom.uuid
 
           @ids = {}.tap do |id_map|
             id_map[:validation] = "validation-#{base_id}" if invalid?
@@ -198,6 +231,22 @@ module Primer
 
         def input?
           true
+        end
+
+        def need_validation_element?
+          invalid?
+        end
+
+        def validation_arguments
+          {
+            class: "FormControl-inlineValidation",
+            id: validation_id,
+            hidden: valid?
+          }
+        end
+
+        def validation_message_arguments
+          {}
         end
 
         private

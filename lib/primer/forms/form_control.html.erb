@@ -1,18 +1,22 @@
-<%= content_tag(:div, style: "flex-grow: 1", **@form_group_arguments) do %>
-  <% if @input.label %>
-    <%= builder.label(@input.name, **@input.label_arguments) do %>
-      <%= @input.label %>
-      <% if @input.required? %>
-        <span aria-hidden="true">*</span>
+<% if @input.form_control? %>
+  <%= content_tag(:div, **@form_group_arguments) do %>
+    <% if @input.label %>
+      <%= builder.label(@input.name, **@input.label_arguments) do %>
+        <%= @input.label %>
+        <% if @input.required? %>
+          <span aria-hidden="true">*</span>
+        <% end %>
       <% end %>
     <% end %>
+    <%= content %>
+    <% if @input.need_validation_element? %>
+      <%= content_tag(:div, **@input.validation_arguments) do %>
+        <%= render(Primer::Beta::Octicon.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %>
+        <%= content_tag(:span, @input.validation_messages.first, **@input.validation_message_arguments) %>
+      <% end %>
+    <% end %>
+    <%= render(Caption.new(input: @input)) %>
   <% end %>
+<% else %>
   <%= content %>
-  <% if @input.invalid? && @input.validation_messages.present? %>
-    <div class="FormControl-inlineValidation" id="<%= @input.validation_id %>">
-      <%= render(Primer::OcticonComponent.new(icon: :"alert-fill", size: :xsmall, aria: { hidden: true })) %>
-      <span><%= @input.validation_messages.first %></span>
-    </div>
-  <% end %>
-  <%= render(Caption.new(input: @input)) %>
 <% end %>

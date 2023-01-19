@@ -7,10 +7,10 @@ class PrimerAlphaTabPanelsTest < Minitest::Test
 
   def test_raises_if_multiple_tabs_are_selected
     err = assert_raises Primer::TabbedComponentHelper::MultipleSelectedTabsError do
-      render_inline(Primer::Alpha::TabPanels.new(label: "label")) do |c|
-        c.tab(id: "tab-1", selected: true)
-        c.tab(id: "tab-2")
-        c.tab(id: "tab-3", selected: true)
+      render_inline(Primer::Alpha::TabPanels.new(label: "label")) do |component|
+        component.with_tab(id: "tab-1", selected: true)
+        component.with_tab(id: "tab-2")
+        component.with_tab(id: "tab-3", selected: true)
       end
     end
 
@@ -18,16 +18,16 @@ class PrimerAlphaTabPanelsTest < Minitest::Test
   end
 
   def test_renders_tabs_and_panels_with_relevant_aria_attributes
-    render_inline(Primer::Alpha::TabPanels.new(label: "label")) do |c|
-      c.tab(selected: true, id: "tab-1") do |t|
-        t.panel { "Panel 1" }
-        t.text { "Tab 1" }
+    render_inline(Primer::Alpha::TabPanels.new(label: "label")) do |component|
+      component.with_tab(selected: true, id: "tab-1") do |tab|
+        tab.with_panel { "Panel 1" }
+        tab.with_text { "Tab 1" }
       end
-      c.tab(id: "tab-2") do |t|
-        t.panel { "Panel 2" }
-        t.text { "Tab 2" }
+      component.with_tab(id: "tab-2") do |tab|
+        tab.with_panel { "Panel 2" }
+        tab.with_text { "Tab 2" }
       end
-      c.extra { "extra" }
+      component.with_extra { "extra" }
     end
 
     assert_selector("tab-container") do
@@ -47,10 +47,10 @@ class PrimerAlphaTabPanelsTest < Minitest::Test
   end
 
   def test_customizes_tab_container
-    render_inline(Primer::Alpha::TabPanels.new(label: "label", wrapper_arguments: { m: 2, classes: "custom-class" })) do |c|
-      c.tab(selected: true, id: "tab-1") do |t|
-        t.panel { "Panel 1" }
-        t.text { "Tab 1" }
+    render_inline(Primer::Alpha::TabPanels.new(label: "label", wrapper_arguments: { m: 2, classes: "custom-class" })) do |component|
+      component.with_tab(selected: true, id: "tab-1") do |tab|
+        tab.with_panel { "Panel 1" }
+        tab.with_text { "Tab 1" }
       end
     end
 
@@ -58,16 +58,16 @@ class PrimerAlphaTabPanelsTest < Minitest::Test
   end
 
   def test_renders_extra_content
-    render_inline(Primer::Alpha::TabPanels.new(label: "label")) do |c|
-      c.tab(selected: true, id: "tab-1") do |t|
-        t.panel { "Panel 1" }
-        t.text { "Tab 1" }
+    render_inline(Primer::Alpha::TabPanels.new(label: "label")) do |component|
+      component.with_tab(selected: true, id: "tab-1") do |tab|
+        tab.with_panel { "Panel 1" }
+        tab.with_text { "Tab 1" }
       end
-      c.tab(id: "tab-2") do |t|
-        t.panel { "Panel 2" }
-        t.text { "Tab 2" }
+      component.with_tab(id: "tab-2") do |tab|
+        tab.with_panel { "Panel 2" }
+        tab.with_text { "Tab 2" }
       end
-      c.extra { "extra" }
+      component.with_extra { "extra" }
     end
     assert_selector("tab-container") do
       assert_selector("div.tabnav") do

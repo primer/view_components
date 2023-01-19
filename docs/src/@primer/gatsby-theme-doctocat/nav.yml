@@ -24,7 +24,7 @@
   - title: AvatarStack
     url: "/components/beta/avatarstack"
   - title: Banner
-    url: "/components/beta/banner"
+    url: "/components/alpha/banner"
   - title: Blankslate
     url: "/components/beta/blankslate"
   - title: BorderBox
@@ -40,7 +40,7 @@
   - title: ButtonMarketing
     url: "/components/alpha/buttonmarketing"
   - title: ClipboardCopy
-    url: "/components/clipboardcopy"
+    url: "/components/beta/clipboardcopy"
   - title: CloseButton
     url: "/components/beta/closebutton"
   - title: Counter
@@ -50,9 +50,7 @@
   - title: Dialog
     url: "/components/alpha/dialog"
   - title: Dropdown
-    url: "/components/dropdown"
-  - title: DropdownMenu
-    url: "/components/dropdownmenu"
+    url: "/components/alpha/dropdown"
   - title: Flash
     url: "/components/beta/flash"
   - title: Heading
@@ -71,32 +69,32 @@
     url: "/components/alpha/layout"
   - title: Link
     url: "/components/beta/link"
-  - title: LocalTime
-    url: "/components/localtime"
   - title: Markdown
-    url: "/components/markdown"
+    url: "/components/beta/markdown"
   - title: Menu
-    url: "/components/menu"
+    url: "/components/alpha/menu"
   - title: NavList
     url: "/components/alpha/navlist"
   - title: Octicon
-    url: "/components/octicon"
+    url: "/components/beta/octicon"
   - title: OcticonSymbols
-    url: "/components/octiconsymbols"
+    url: "/components/alpha/octiconsymbols"
   - title: Popover
-    url: "/components/popover"
+    url: "/components/beta/popover"
   - title: ProgressBar
     url: "/components/beta/progressbar"
+  - title: RelativeTime
+    url: "/components/beta/relativetime"
   - title: SegmentedControl
     url: "/components/alpha/segmentedcontrol"
   - title: Spinner
-    url: "/components/spinner"
+    url: "/components/beta/spinner"
   - title: State
-    url: "/components/state"
+    url: "/components/beta/state"
   - title: Subhead
-    url: "/components/subhead"
+    url: "/components/beta/subhead"
   - title: TabContainer
-    url: "/components/tabcontainer"
+    url: "/components/alpha/tabcontainer"
   - title: TabNav
     url: "/components/alpha/tabnav"
   - title: TabPanels
@@ -105,10 +103,8 @@
     url: "/components/beta/text"
   - title: TextField
     url: "/components/alpha/textfield"
-  - title: TimeAgo
-    url: "/components/timeago"
   - title: TimelineItem
-    url: "/components/timelineitem"
+    url: "/components/beta/timelineitem"
   - title: ToggleSwitch
     url: "/components/alpha/toggleswitch"
   - title: Tooltip
@@ -119,6 +115,24 @@
     url: "/components/alpha/underlinenav"
   - title: UnderlinePanels
     url: "/components/alpha/underlinepanels"
+- title: Deprecated Components
+  children:
+  - title: BlankslateComponent
+    url: "/components/blankslate"
+  - title: BoxComponent
+    url: "/components/box"
+  - title: ButtonComponent
+    url: "/components/button"
+  - title: DropdownMenuComponent
+    url: "/components/dropdownmenu"
+  - title: IconButton
+    url: "/components/iconbutton"
+  - title: LocalTime
+    url: "/components/localtime"
+  - title: TimeAgo
+    url: "/components/timeago"
+  - title: Tooltip
+    url: "/components/tooltip"
 - title: Architecture decisions
   children:
   - title: Developing and publishing client-side behaviours

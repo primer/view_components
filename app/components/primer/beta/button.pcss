@@ -31,7 +31,7 @@
   min-width: max-content;
 
   /* mobile friendly sizing */
-  @media (pointer: course) {
+  @media (pointer: coarse) {
     &::before {
       @mixin minTouchTarget 48px, 48px;
     }
@@ -52,10 +52,6 @@
     cursor: not-allowed;
     box-shadow: none;
   }
-
-  /* &:focus {
-    @mixin focusOutline;
-  } */
 }
 
 .Button-withTooltip {
@@ -99,6 +95,11 @@ summary.Button {
 .Button-visual {
   display: flex;
   pointer-events: none; /* allow click handler to work, avoiding visuals */
+
+  & .Counter {
+    color: inherit;
+    background-color: var(--color-btn-counter-bg);
+  }
 }
 
 .Button-label {

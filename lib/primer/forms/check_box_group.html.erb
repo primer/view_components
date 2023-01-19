@@ -1,4 +1,4 @@
-<fieldset>
+<%= content_tag(:fieldset, hidden: @input.hidden?) do %>
   <% if @input.label %>
     <%= content_tag(:legend, **@input.label_arguments) do %>
       <%= @input.label %>
@@ -9,4 +9,4 @@
       <%= render(check_box.to_component) %>
     <% end %>
   <% end %>
-</fieldset>
+<% end %>

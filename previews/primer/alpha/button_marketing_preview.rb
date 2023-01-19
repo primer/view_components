@@ -21,6 +21,42 @@ module Primer
       def default(tag: :button, type: :button, scheme: :default, variant: :default)
         render(Primer::Alpha::ButtonMarketing.new(tag: tag, type: type, scheme: scheme, variant: variant)) { "Default" }
       end
+
+      # @!group Size Variants
+      #
+      # @label Default
+      def sizes_default
+        render(Primer::Alpha::ButtonMarketing.new) { "Default" }
+      end
+
+      # @label Large
+      def sizes_large
+        render(Primer::Alpha::ButtonMarketing.new(variant: :large)) { "Large" }
+      end
+      # @!endgroup
+
+      # @!group Schemes
+      #
+      # @label Default
+      def scheme_default
+        render(Primer::Alpha::ButtonMarketing.new) { "Default" }
+      end
+
+      # @label Primary
+      def scheme_primary
+        render(Primer::Alpha::ButtonMarketing.new(scheme: :primary)) { "Primary" }
+      end
+
+      # @label Outline
+      def scheme_outline
+        render(Primer::Alpha::ButtonMarketing.new(scheme: :outline)) { "Outline" }
+      end
+
+      # @label Transparent
+      def scheme_transparent
+        render(Primer::Alpha::ButtonMarketing.new(scheme: :transparent)) { "Transparent" }
+      end
+      # @!endgroup
     end
   end
 end

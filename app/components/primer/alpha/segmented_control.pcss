@@ -75,6 +75,10 @@
 
     &.Button--iconOnly {
       width: calc(var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+
+      &::before {
+        @mixin minTouchTarget var(--primer-control-medium-size, 32px), var(--primer-control-medium-size, 32px);
+      }
     }
   }
 
@@ -84,6 +88,10 @@
 
     &.Button--iconOnly {
       width: calc(var(--primer-control-medium-size, 32px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+
+      &::before {
+        @mixin minTouchTarget var(--primer-control-medium-size, 32px), var(--primer-control-medium-size, 32px);
+      }
     }
   }
 
@@ -93,6 +101,10 @@
 
     &.Button--iconOnly {
       width: calc(var(--primer-control-large-size, 40px) - var(--primer-control-xsmall-paddingInline-condensed, 4px) * 2 - var(--primer-borderWidth-thin, 1px) * 2);
+
+      &::before {
+        @mixin minTouchTarget var(--primer-control-large-size, 40px), var(--primer-control-large-size, 40px);
+      }
     }
   }
 
@@ -114,6 +126,7 @@
     justify-content: center;
   }
 
+  /* is .Button-withTooltip used anywhere? can't find use of it */
   & .Button--iconOnly,
   & .Button-withTooltip {
     width: 100%;

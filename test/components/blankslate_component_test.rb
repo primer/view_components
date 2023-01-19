@@ -29,7 +29,7 @@ class BlankslateComponentTest < Minitest::Test
 
   def test_renders_a_blankslate_component_with_a_spinner_component
     render_inline(Primer::BlankslateComponent.new(title: "Title")) do |component|
-      component.spinner(test_selector: "blankslate-spinner")
+      component.with_spinner(test_selector: "blankslate-spinner")
     end
 
     assert_selector(".blankslate [data-test-selector='blankslate-spinner']")

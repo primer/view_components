@@ -38,15 +38,15 @@ module Primer
 
       # @example Default
       #   <%= render(Primer::Alpha::UnderlinePanels.new(label: "With panels")) do |component| %>
-      #     <% component.with_tab(id: "tab-1", selected: true) do |t| %>
-      #       <% t.text { "Tab 1" } %>
-      #       <% t.panel do %>
+      #     <% component.with_tab(id: "tab-1", selected: true) do |tab| %>
+      #       <% tab.with_text { "Tab 1" } %>
+      #       <% tab.with_panel do %>
       #         Panel 1
       #       <% end %>
       #     <% end %>
-      #     <% component.with_tab(id: "tab-2") do |t| %>
-      #       <% t.text { "Tab 2" } %>
-      #       <% t.panel do %>
+      #     <% component.with_tab(id: "tab-2") do |tab| %>
+      #       <% tab.with_text { "Tab 2" } %>
+      #       <% tab.with_panel do %>
       #         Panel 2
       #       <% end %>
       #     <% end %>

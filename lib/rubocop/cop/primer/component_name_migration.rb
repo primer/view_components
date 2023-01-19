@@ -18,7 +18,8 @@ module RuboCop
         def on_send(node)
           return unless node.method_name == :new && !node.receiver.nil? && ::Primer::Deprecations.deprecated?(node.receiver.const_name)
 
-          add_offense(node.receiver, message: "Don't use deprecated names")
+          message = ::Primer::Deprecations.deprecation_message(node.receiver.const_name)
+          add_offense(node.receiver, message: message)
         end
 
         def autocorrect(node)
@@ -26,8 +27,8 @@ module RuboCop
             component_name = node.const_name
             return unless ::Primer::Deprecations.correctable?(component_name)
 
-            suggested_component = ::Primer::Deprecations.suggested_component(component_name)
-            corrector.replace(node, suggested_component) if suggested_component.present?
+            replacement = ::Primer::Deprecations.replacement(component_name)
+            corrector.replace(node, replacement) if replacement.present?
           end
         end
       end

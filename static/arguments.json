@@ -135,7 +135,7 @@
         "name": "content_arguments",
         "type": "Hash",
         "default": "`{}`",
-        "description": "[System arguments](/system-arguments) used to construct the item's anchor or span tag."
+        "description": "[System arguments](/system-arguments) used to construct the item's anchor or button tag."
       },
       {
         "name": "truncate_label",
@@ -194,7 +194,7 @@
       {
         "name": "id",
         "type": "String",
-        "default": "`SecureRandom.hex`",
+        "default": "`self.class.generate_id`",
         "description": "Used internally."
       },
       {
@@ -308,7 +308,7 @@
       {
         "name": "id",
         "type": "String",
-        "default": "`\"dialog-#{(36**3 + rand(36**4)).to_s(36)}\"`",
+        "default": "`self.class.generate_id`",
         "description": "The id of the dialog."
       },
       {
@@ -327,7 +327,7 @@
         "name": "size",
         "type": "Symbol",
         "default": "`:medium`",
-        "description": "The size of the dialog. One of `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`."
+        "description": "The size of the dialog. One of `:auto`, `:large`, `:medium`, `:medium_portrait`, `:small`, or `:xlarge`."
       },
       {
         "name": "position",
@@ -346,6 +346,52 @@
         "type": "Boolean",
         "default": "`false`",
         "description": "If true will hide the heading title, while still making it available to Screen Readers."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "Dropdown",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/dropdown.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/dropdown/default/",
+    "parameters": [
+      {
+        "name": "overlay",
+        "type": "Symbol",
+        "default": "`:default`",
+        "description": "One of `:dark`, `:default`, or `:none`."
+      },
+      {
+        "name": "with_caret",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not a caret should be rendered in the button."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "HellipButton",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/hellip_button.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/hellip_button/default/",
+    "parameters": [
+      {
+        "name": "inline",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether or not the button is inline."
       },
       {
         "name": "system_arguments",
@@ -472,6 +518,20 @@
     ]
   },
   {
+    "component": "Menu",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/menu.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/menu/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "NavList",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/nav_list.rb",
@@ -550,6 +610,20 @@
     ]
   },
   {
+    "component": "OcticonSymbols",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/octicon_symbols.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/octicon_symbols/default/",
+    "parameters": [
+      {
+        "name": "icons",
+        "type": "Array<Hash>",
+        "default": "`[]`",
+        "description": "List of icons to render, in the format { symbol: :icon_name, size: :small }"
+      }
+    ]
+  },
+  {
     "component": "SegmentedControl",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/segmented_control.rb",
@@ -573,6 +647,20 @@
         "default": "`:medium`",
         "description": "One of `:large`, `:medium`, or `:small`."
       },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "TabContainer",
+    "status": "alpha",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/alpha/tab_container.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/alpha/tab_container/default/",
+    "parameters": [
       {
         "name": "system_arguments",
         "type": "Hash",
@@ -1362,6 +1450,38 @@
     ]
   },
   {
+    "component": "ClipboardCopy",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/clipboard_copy.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/clipboard_copy/default/",
+    "parameters": [
+      {
+        "name": "aria-label",
+        "type": "String",
+        "default": "N/A",
+        "description": "String that will be read to screenreaders when the component is focused"
+      },
+      {
+        "name": "value",
+        "type": "String",
+        "default": "`nil`",
+        "description": "Text to copy into the users clipboard when they click the component."
+      },
+      {
+        "name": "for",
+        "type": "String",
+        "default": "N/A",
+        "description": "Element id from where to get the copied value."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "CloseButton",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/close_button.rb",
@@ -1684,6 +1804,78 @@
     ]
   },
   {
+    "component": "Markdown",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/markdown.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/markdown/default/",
+    "parameters": [
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:div`",
+        "description": "One of `:article`, `:div`, or `:td`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "Octicon",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/octicon.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/octicon/default/",
+    "parameters": [
+      {
+        "name": "icon_name",
+        "type": "Symbol, String",
+        "default": "`nil`",
+        "description": "Name of [Octicon](https://primer.style/octicons/) to use."
+      },
+      {
+        "name": "icon",
+        "type": "Symbol, String",
+        "default": "`nil`",
+        "description": "Name of [Octicon](https://primer.style/octicons/) to use."
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:small`",
+        "description": "One of `:xsmall` (`12`), `:small` (`16`), or `:medium` (`24`)."
+      },
+      {
+        "name": "use_symbol",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "EXPERIMENTAL (May change or be removed) - Set to true when using with [OcticonSymbols](/components/alpha/octiconsymbols)."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "Popover",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/popover.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/popover/default/",
+    "parameters": [
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "ProgressBar",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/progress_bar.rb",
@@ -1704,6 +1896,212 @@
     ]
   },
   {
+    "component": "RelativeTime",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/relative_time.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/relative_time/default/",
+    "parameters": [
+      {
+        "name": "datetime",
+        "type": "Time",
+        "default": "N/A",
+        "description": "The time to be formatted."
+      },
+      {
+        "name": "tense",
+        "type": "Symbol",
+        "default": "`:auto`",
+        "description": "Which tense to use. One of `:auto`, `:future`, or `:past`."
+      },
+      {
+        "name": "prefix",
+        "type": "sring",
+        "default": "`nil`",
+        "description": "What to prefix the relative ime display with."
+      },
+      {
+        "name": "second",
+        "type": "Symbol",
+        "default": "`SECOND_DEFAULT`",
+        "description": "What format seconds should take. One of `nil`, `:numeric`, or `:two_digit`."
+      },
+      {
+        "name": "minute",
+        "type": "Symbol",
+        "default": "`MINUTE_DEFAULT`",
+        "description": "What format minues should take. One of `nil`, `:numeric`, or `:two_digit`."
+      },
+      {
+        "name": "hour",
+        "type": "Symbol",
+        "default": "`HOUR_DEFAULT`",
+        "description": "What format hours should take. One of `nil`, `:numeric`, or `:two_digit`."
+      },
+      {
+        "name": "weekday",
+        "type": "Symbol",
+        "default": "`WEEKDAY_DEFAULT`",
+        "description": "What format weekdays should take. One of `nil`, `:long`, `:narrow`, or `:short`."
+      },
+      {
+        "name": "day",
+        "type": "Symbol",
+        "default": "`DAY_DEFAULT`",
+        "description": "What format days should take. One of `nil`, `:numeric`, or `:two_digit`."
+      },
+      {
+        "name": "month",
+        "type": "Symbol",
+        "default": "`MONTH_DEFAULT`",
+        "description": "What format months should take. One of `nil`, `:long`, `:narrow`, `:numeric`, `:short`, or `:two_digit`."
+      },
+      {
+        "name": "year",
+        "type": "Symbol",
+        "default": "`YEAR_DEFAULT`",
+        "description": "What format years should take. One of `nil`, `:numeric`, or `:two_digit`."
+      },
+      {
+        "name": "time_zone_name",
+        "type": "Symbol",
+        "default": "`TIMEZONENAME_DEFAULT`",
+        "description": "What format the time zone should take. One of `nil`, `:long`, `:long_generic`, `:long_offset`, `:short`, `:short_generic`, or `:short_offset`."
+      },
+      {
+        "name": "threshold",
+        "type": "string",
+        "default": "`nil`",
+        "description": "The threshold, in ISO-8601 'durations' format, at which relative time displays become absolute."
+      },
+      {
+        "name": "precision",
+        "type": "Symbol",
+        "default": "`PRECISION_DEFAULT`",
+        "description": "The precision elapsed time should display. One of `nil`, `:day`, `:hour`, `:minute`, `:month`, `:second`, or `:year`."
+      },
+      {
+        "name": "format",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The format the display should take. One of `:auto`, `:elapsed`, or `:micro`."
+      },
+      {
+        "name": "format_style",
+        "type": "Symbol",
+        "default": "`nil`",
+        "description": "The format the display should take. One of `nil`, `:long`, `:narrow`, or `:short`."
+      },
+      {
+        "name": "lang",
+        "type": "string",
+        "default": "`nil`",
+        "description": "The language to use."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "default": "`nil`",
+        "description": "Provide a custom title to the element."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "Spinner",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/spinner.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/spinner/default/",
+    "parameters": [
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:medium`",
+        "description": "One of `[:large, 64]`, `[:medium, 32]`, or `[:small, 16]`."
+      },
+      {
+        "name": "style",
+        "type": "String",
+        "default": "`box-sizing: content-box; color: var(--color-icon-primary);`",
+        "description": "Custom element styles."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "State",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/state.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/state/default/",
+    "parameters": [
+      {
+        "name": "title",
+        "type": "String",
+        "default": "N/A",
+        "description": "`title` HTML attribute."
+      },
+      {
+        "name": "scheme",
+        "type": "Symbol",
+        "default": "`:default`",
+        "description": "Background color. One of `:closed`, `:default`, `:green`, `:merged`, `:open`, `:purple`, or `:red`."
+      },
+      {
+        "name": "tag",
+        "type": "Symbol",
+        "default": "`:span`",
+        "description": "HTML tag for element. One of `:div` or `:span`."
+      },
+      {
+        "name": "size",
+        "type": "Symbol",
+        "default": "`:default`",
+        "description": "One of `:default` or `:small`."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "Subhead",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/subhead.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/subhead/default/",
+    "parameters": [
+      {
+        "name": "spacious",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether to add spacing to the Subhead."
+      },
+      {
+        "name": "hide_border",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Whether to hide the border under the heading."
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
     "component": "Text",
     "status": "beta",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/text.rb",
@@ -1714,6 +2112,26 @@
         "type": "Symbol",
         "default": "`:span`",
         "description": ""
+      },
+      {
+        "name": "system_arguments",
+        "type": "Hash",
+        "default": "N/A",
+        "description": "[System arguments](/system-arguments)"
+      }
+    ]
+  },
+  {
+    "component": "TimelineItem",
+    "status": "beta",
+    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/beta/timeline_item.rb",
+    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/beta/timeline_item/default/",
+    "parameters": [
+      {
+        "name": "condensed",
+        "type": "Boolean",
+        "default": "`false`",
+        "description": "Reduce the vertical padding and remove the background from the badge item. Most commonly used in commits."
       },
       {
         "name": "system_arguments",
@@ -1753,7 +2171,7 @@
   },
   {
     "component": "Button",
-    "status": "beta",
+    "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/button_component.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/button/default/",
     "parameters": [
@@ -1814,64 +2232,6 @@
     ]
   },
   {
-    "component": "ClipboardCopy",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/clipboard_copy.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/clipboard_copy/default/",
-    "parameters": [
-      {
-        "name": "aria-label",
-        "type": "String",
-        "default": "N/A",
-        "description": "String that will be read to screenreaders when the component is focused"
-      },
-      {
-        "name": "value",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Text to copy into the users clipboard when they click the component."
-      },
-      {
-        "name": "for",
-        "type": "String",
-        "default": "N/A",
-        "description": "Element id from where to get the copied value."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Dropdown",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/dropdown.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/dropdown/default/",
-    "parameters": [
-      {
-        "name": "overlay",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:dark`, `:default`, or `:none`."
-      },
-      {
-        "name": "with_caret",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not a caret should be rendered in the button."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
     "component": "DropdownMenu",
     "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/dropdown_menu_component.rb",
@@ -1894,26 +2254,6 @@
         "type": "String",
         "default": "`nil`",
         "description": "Optional string to display as the header"
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "HellipButton",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/hellip_button.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/hellip_button/default/",
-    "parameters": [
-      {
-        "name": "inline",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether or not the button is inline."
       },
       {
         "name": "system_arguments",
@@ -2019,7 +2359,7 @@
   },
   {
     "component": "LocalTime",
-    "status": "alpha",
+    "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/local_time.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/local_time/default/",
     "parameters": [
@@ -2092,40 +2432,6 @@
     ]
   },
   {
-    "component": "Markdown",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/markdown.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/markdown/default/",
-    "parameters": [
-      {
-        "name": "tag",
-        "type": "Symbol",
-        "default": "`:div`",
-        "description": "One of `:article`, `:div`, or `:td`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Menu",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/menu_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/menu/default/",
-    "parameters": [
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
     "component": "Navigation::Tab",
     "status": "alpha",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/navigation/tab_component.rb",
@@ -2176,178 +2482,8 @@
     ]
   },
   {
-    "component": "Octicon",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/octicon_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/octicon/default/",
-    "parameters": [
-      {
-        "name": "icon_name",
-        "type": "Symbol, String",
-        "default": "`nil`",
-        "description": "Name of [Octicon](https://primer.style/octicons/) to use."
-      },
-      {
-        "name": "icon",
-        "type": "Symbol, String",
-        "default": "`nil`",
-        "description": "Name of [Octicon](https://primer.style/octicons/) to use."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:small`",
-        "description": "One of `:xsmall` (`12`), `:small` (`16`), or `:medium` (`24`)."
-      },
-      {
-        "name": "use_symbol",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "EXPERIMENTAL (May change or be removed) - Set to true when using with [OcticonSymbols](/components/octiconsymbols)."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "OcticonSymbols",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/octicon_symbols_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/octicon_symbols/default/",
-    "parameters": [
-      {
-        "name": "icons",
-        "type": "Array<Hash>",
-        "default": "`[]`",
-        "description": "List of icons to render, in the format { symbol: :icon_name, size: :small }"
-      }
-    ]
-  },
-  {
-    "component": "Popover",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/popover_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/popover/default/",
-    "parameters": [
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Spinner",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/spinner_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/spinner/default/",
-    "parameters": [
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:medium`",
-        "description": "One of `[:large, 64]`, `[:medium, 32]`, or `[:small, 16]`."
-      },
-      {
-        "name": "style",
-        "type": "String",
-        "default": "`box-sizing: content-box; color: var(--color-icon-primary);`",
-        "description": "Custom element styles."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "State",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/state_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/state/default/",
-    "parameters": [
-      {
-        "name": "title",
-        "type": "String",
-        "default": "N/A",
-        "description": "`title` HTML attribute."
-      },
-      {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "Background color. One of `:closed`, `:default`, `:green`, `:merged`, `:open`, `:purple`, or `:red`."
-      },
-      {
-        "name": "tag",
-        "type": "Symbol",
-        "default": "`:span`",
-        "description": "HTML tag for element. One of `:div` or `:span`."
-      },
-      {
-        "name": "size",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "One of `:default` or `:small`."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "Subhead",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/subhead_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/subhead/default/",
-    "parameters": [
-      {
-        "name": "spacious",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether to add spacing to the Subhead."
-      },
-      {
-        "name": "hide_border",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Whether to hide the border under the heading."
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "TabContainer",
-    "status": "alpha",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/tab_container_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/tab_container/default/",
-    "parameters": [
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
     "component": "TimeAgo",
-    "status": "beta",
+    "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/time_ago_component.rb",
     "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/time_ago/default/",
     "parameters": [
@@ -2362,26 +2498,6 @@
         "type": "Boolean",
         "default": "`false`",
         "description": "If true then the text will be formatted in \"micro\" mode, using as few characters as possible"
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
-    "component": "TimelineItem",
-    "status": "beta",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/timeline_item_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/timeline_item/default/",
-    "parameters": [
-      {
-        "name": "condensed",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "Reduce the vertical padding and remove the background from the badge item. Most commonly used in commits."
       },
       {
         "name": "system_arguments",

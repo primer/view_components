@@ -18,13 +18,17 @@ module Primer
     #   `aria-labelledby` relationship between the title and the unique id of
     #   the dialog.
     class Dialog < Primer::Component
+      status :alpha
+      audited_at "2022-10-10"
+
       DEFAULT_SIZE = :medium
       SIZE_MAPPINGS = {
         :small => "Overlay--size-small-portrait",
         :medium_portrait => "Overlay--size-medium-portrait",
         DEFAULT_SIZE => "Overlay--size-medium",
         :large => "Overlay--size-large",
-        :xlarge => "Overlay--size-xlarge"
+        :xlarge => "Overlay--size-xlarge",
+        :auto => "Overlay--size-auto"
       }.freeze
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
 
@@ -48,14 +52,14 @@ module Primer
 
       # Optional button to open the dialog.
       #
-      # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::ButtonComponent) %>.
+      # @param system_arguments [Hash] The same arguments as <%= link_to_component(Primer::Beta::Button) %>.
       renders_one :show_button, lambda { |**system_arguments|
         system_arguments[:classes] = class_names(
           system_arguments[:classes]
         )
         system_arguments[:id] = "dialog-show-#{@system_arguments[:id]}"
         system_arguments[:data] = (system_arguments[:data] || {}).merge({ "show-dialog-id": @system_arguments[:id] })
-        Primer::ButtonComponent.new(**system_arguments)
+        Primer::Beta::Button.new(**system_arguments)
       }
 
       # Header content.
@@ -117,14 +121,14 @@ module Primer
         position: DEFAULT_POSITION,
         position_narrow: DEFAULT_POSITION_NARROW,
         visually_hide_title: false,
-        id: "dialog-#{(36**3 + rand(36**4)).to_s(36)}",
+        id: self.class.generate_id,
         **system_arguments
       )
         @system_arguments = deny_tag_argument(**system_arguments)
 
         @system_arguments[:tag] = "modal-dialog"
         @system_arguments[:role] = "dialog"
-        @system_arguments[:id] = id.to_s
+        @system_arguments[:id] = id
         @system_arguments[:aria] = { modal: true }
         @system_arguments[:classes] = class_names(
           "Overlay",

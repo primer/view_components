@@ -32,9 +32,13 @@ class ToggleSwitchElement extends HTMLElement {
   }
 
   toggle() {
+    if (this.isDisabled()) {
+      return
+    }
+
     if (this.isRemote()) {
       this.setLoadingState()
-      this.check()
+      this.submitForm()
     } else {
       this.performToggle()
     }
@@ -93,10 +97,16 @@ class ToggleSwitchElement extends HTMLElement {
   }
 
   private setSuccessState(): void {
+    const event = new CustomEvent('toggleSwitchSuccess', {bubbles: true})
+    this.dispatchEvent(event)
+
     this.setFinishedState(false)
   }
 
-  private setErrorState(): void {
+  private setErrorState(message: string): void {
+    const event = new CustomEvent('toggleSwitchError', {bubbles: true, detail: message})
+    this.dispatchEvent(event)
+
     this.setFinishedState(true)
   }
 
@@ -110,33 +120,43 @@ class ToggleSwitchElement extends HTMLElement {
   }
 
   @debounce(300)
-  private async check() {
+  private async submitForm() {
     const body = new FormData()
 
     if (this.csrf) {
       body.append(this.csrfField, this.csrf)
     }
 
-    body.append('value', this.isOn() ? '1' : '0')
+    body.append('value', this.isOn() ? '0' : '1')
 
     try {
       if (!this.src) throw new Error('invalid src')
-      const response = await fetch(this.src, {
-        credentials: 'same-origin',
-        method: 'POST',
-        headers: {
-          'Requested-With': 'XMLHttpRequest'
-        },
-        body
-      })
+
+      let response
+
+      try {
+        response = await fetch(this.src, {
+          credentials: 'same-origin',
+          method: 'POST',
+          headers: {
+            'Requested-With': 'XMLHttpRequest'
+          },
+          body
+        })
+      } catch (error) {
+        throw new Error('A network error occurred, please try again.')
+      }
+
       if (response.ok) {
         this.setSuccessState()
         this.performToggle()
       } else {
-        this.setErrorState()
+        throw new Error(await response.text())
       }
     } catch (error) {
-      this.setErrorState()
+      if (error instanceof Error) {
+        this.setErrorState(error.message || 'An error occurred, please try again.')
+      }
     }
   }
 }

@@ -10,7 +10,7 @@ module Primer
       def playground(number_of_links: 2)
         render(Primer::Beta::Breadcrumbs.new) do |component|
           Array.new(number_of_links || 3) do |i|
-            component.item(href: "##{i}") { "Breadcrumb Item #{i + 1}" }
+            component.with_item(href: "##{i}") { "Breadcrumb Item #{i + 1}" }
           end
         end
       end
@@ -21,7 +21,7 @@ module Primer
       def default(number_of_links: 2)
         render(Primer::Beta::Breadcrumbs.new) do |component|
           Array.new(number_of_links || 3) do |i|
-            component.item(href: "##{i}") { "Breadcrumb Item #{i + 1}" }
+            component.with_item(href: "##{i}") { "Breadcrumb Item #{i + 1}" }
           end
         end
       end

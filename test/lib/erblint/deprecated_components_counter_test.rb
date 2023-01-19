@@ -3,6 +3,27 @@
 require "lib/erblint_test_case"
 
 class DeprecatedComponentsCounterTest < ErblintTestCase
+  def test_default_severity_level
+    @file = <<~ERB
+      <%= render Primer::BlankslateComponent.new %>
+    ERB
+    @linter.run(processed_source)
+
+    assert_nil @linter.offenses[0].severity
+    assert_nil @linter.offenses[1].severity
+  end
+
+  def test_setting_severity_level
+    @file = <<~ERB
+      <%= render Primer::BlankslateComponent.new %>
+    ERB
+    linter = linter_with_severity(:info)
+    linter.run(processed_source)
+
+    assert_equal :info, linter.offenses[0].severity
+    assert_equal :info, linter.offenses[1].severity
+  end
+
   def test_warns_about_deprecated_primer_component
     @file = <<~ERB
       <%= render Primer::BlankslateComponent.new %>
@@ -10,7 +31,7 @@ class DeprecatedComponentsCounterTest < ErblintTestCase
     @linter.run(processed_source)
 
     assert_equal @linter.offenses.size, 2
-    assert_equal "Primer::BlankslateComponent has been deprecated and should not be used. Try Primer::Beta::Blankslate instead.", @linter.offenses[0].message
+    assert_equal "'Primer::BlankslateComponent' has been deprecated. Please update your code to use 'Primer::Beta::Blankslate'. Use Rubocop's auto-correct, or replace it yourself.", @linter.offenses[0].message
     assert_match(/If you must, add <%# erblint:counter DeprecatedComponentsCounter 1 %> to bypass this check/, @linter.offenses[1].message)
   end
 

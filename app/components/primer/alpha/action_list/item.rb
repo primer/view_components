@@ -34,7 +34,7 @@ module Primer
 
         # An icon, avatar, SVG, or custom content that will render to the left of the label.
         #
-        # To render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by <%= link_to_component(Primer::OcticonComponent) %>.
+        # To render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Octicon) %>.
         #
         # To render an avatar, call the `with_leading_visual_avatar` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %>.
         #
@@ -42,7 +42,7 @@ module Primer
         #
         # To render custom content, call the `with_leading_visual_content` method and pass a block that returns a string.
         renders_one :leading_visual, types: {
-          icon: Primer::OcticonComponent,
+          icon: Primer::Beta::Octicon,
           avatar: ->(**kwargs) { Primer::Beta::Avatar.new(**{ **kwargs, size: 16 }) },
           svg: lambda { |**system_arguments|
             Primer::BaseComponent.new(tag: :svg, width: "16", height: "16", **system_arguments)
@@ -55,31 +55,31 @@ module Primer
         # Used internally.
         #
         # @private
-        renders_one :private_leading_action_icon, Primer::OcticonComponent
+        renders_one :private_leading_action_icon, Primer::Beta::Octicon
 
         # An icon, label, counter, or text to render to the right of the label.
         #
-        # To render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by <%= link_to_component(Primer::OcticonComponent) %>.
+        # To render an icon, call the `with_leading_visual_icon` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Octicon) %>.
         #
         # To render a label, call the `with_leading_visual_label` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Label) %>.
         #
-        # To render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by <%= link_to_component(Primer::CounterComponent) %>.
+        # To render a counter, call the `with_leading_visual_counter` method, which accepts the arguments accepted by <%= link_to_component(Primer::Beta::Counter) %>.
         #
         # To render text, call the `with_leading_visual_text` method and pass a block that returns a string. Eg:
         # ```ruby
         # with_leading_visual_text { "Text here" }`
         # ```
         renders_one :trailing_visual, types: {
-          icon: Primer::OcticonComponent,
+          icon: Primer::Beta::Octicon,
           label: Primer::Beta::Label,
-          counter: Primer::CounterComponent,
+          counter: Primer::Beta::Counter,
           text: ->(text) { text }
         }
 
         # Used internally.
         #
         # @private
-        renders_one :private_trailing_action_icon, Primer::OcticonComponent
+        renders_one :private_trailing_action_icon, Primer::Beta::Octicon
 
         # A button rendered after the trailing icon that can be used to show a menu, activate
         # a dialog, etc.
@@ -128,7 +128,7 @@ module Primer
         # @param parent [Primer::Alpha::ActionList::Item] This item's parent item. `nil` if this item is at the root. Used internally.
         # @param label [String] Item label.
         # @param label_classes [String] CSS classes that will be added to the label.
-        # @param content_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the item's anchor or span tag.
+        # @param content_arguments [Hash] <%= link_to_system_arguments_docs %> used to construct the item's anchor or button tag.
         # @param truncate_label [Boolean] Truncate label with ellipsis.
         # @param href [String] Link URL.
         # @param role [String] ARIA role describing the function of the item.
@@ -155,7 +155,7 @@ module Primer
           description_scheme: DEFAULT_DESCRIPTION_SCHEME,
           active: false,
           on_click: nil,
-          id: SecureRandom.hex,
+          id: self.class.generate_id,
           **system_arguments
         )
           @list = list
@@ -206,7 +206,7 @@ module Primer
             @content_arguments[:tag] = :a
             @content_arguments[:href] = @href
           else
-            @content_arguments[:tag] = :span
+            @content_arguments[:tag] = :button
             @content_arguments[:onclick] = on_click if on_click
           end
 

@@ -19,15 +19,15 @@ module Primer
                  scheme: scheme,
                  show_dividers: show_dividers,
                  aria: { label: "Action List" }
-               )) do |c|
-          c.with_heading(title: "Action List")
-          c.with_item(label: "Item one", href: "/") do |item|
+               )) do |component|
+          component.with_heading(title: "Action List")
+          component.with_item(label: "Item one", href: "/") do |item|
             item.with_leading_visual_icon(icon: :gear)
           end
-          c.with_item(label: "Item two", href: "/") do |item|
+          component.with_item(label: "Item two", href: "/") do |item|
             item.with_leading_visual_icon(icon: :star)
           end
-          c.with_item(label: "Item three", href: "/") do |item|
+          component.with_item(label: "Item three", href: "/") do |item|
             item.with_leading_visual_icon(icon: :heart)
           end
         end
@@ -48,15 +48,15 @@ module Primer
                  scheme: scheme,
                  show_dividers: show_dividers,
                  aria: { label: "Action List" }
-               )) do |c|
-          c.with_heading(title: "Action List")
-          c.with_item(label: "Item one", href: "/") do |item|
+               )) do |component|
+          component.with_heading(title: "Action List")
+          component.with_item(label: "Item one", href: "/") do |item|
             item.with_leading_visual_icon(icon: :gear)
           end
-          c.with_item(label: "Item two", href: "/") do |item|
+          component.with_item(label: "Item two", href: "/") do |item|
             item.with_leading_visual_icon(icon: :star)
           end
-          c.with_item(label: "Item three", href: "/") do |item|
+          component.with_item(label: "Item three", href: "/") do |item|
             item.with_leading_visual_icon(icon: :heart)
           end
         end
@@ -77,14 +77,14 @@ module Primer
                  scheme: scheme,
                  show_dividers: show_dividers,
                  aria: { label: "Action List" }
-               )) do |c|
-          c.with_heading(title: "Action List")
-          c.with_item(label: "Leading SVG visual", href: "/") do |item|
+               )) do |component|
+          component.with_heading(title: "Action List")
+          component.with_item(label: "Leading SVG visual", href: "/") do |item|
             item.with_leading_visual_svg do
               '<path d="M8 16a2 2 0 001.985-1.75c.017-.137-.097-.25-.235-.25h-3.5c-.138 0-.252.113-.235.25A2 2 0 008 16z"></path><path fill-rule="evenodd" d="M8 1.5A3.5 3.5 0 004.5 5v2.947c0 .346-.102.683-.294.97l-1.703 2.556a.018.018 0 00-.003.01l.001.006c0 .002.002.004.004.006a.017.017 0 00.006.004l.007.001h10.964l.007-.001a.016.016 0 00.006-.004.016.016 0 00.004-.006l.001-.007a.017.017 0 00-.003-.01l-1.703-2.554a1.75 1.75 0 01-.294-.97V5A3.5 3.5 0 008 1.5zM3 5a5 5 0 0110 0v2.947c0 .05.015.098.042.139l1.703 2.555A1.518 1.518 0 0113.482 13H2.518a1.518 1.518 0 01-1.263-2.36l1.703-2.554A.25.25 0 003 7.947V5z"></path>'.html_safe
             end
           end
-          c.with_item(label: "Custom content", href: "/") do |item|
+          component.with_item(label: "Custom content", href: "/") do |item|
             item.with_leading_visual_content do
               '<span style="width: 16px; height: 16px; display: block; text-align: center; line-height: 16px">A</span>'.html_safe
             end
@@ -169,7 +169,7 @@ module Primer
         tooltip: false
       )
         list = Primer::Alpha::ActionList.new(aria: { label: "Action List" })
-        list.item(
+        list.with_item(
           label: label,
           truncate_label: truncate_label,
           href: href,
@@ -217,8 +217,8 @@ module Primer
       def item_default
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "Default item", href: "/")
+               )) do |component|
+          component.with_item(label: "Default item", href: "/")
         end
       end
 
@@ -226,8 +226,8 @@ module Primer
       def item_size_large
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "Default item", href: "/", size: :large)
+               )) do |component|
+          component.with_item(label: "Default item", href: "/", size: :large)
         end
       end
 
@@ -235,8 +235,8 @@ module Primer
       def item_size_xlarge
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "Default item", href: "/", size: :xlarge)
+               )) do |component|
+          component.with_item(label: "Default item", href: "/", size: :xlarge)
         end
       end
 
@@ -244,8 +244,8 @@ module Primer
       def item_leading_visual
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "Item with leading visual", href: "/") do |item|
+               )) do |component|
+          component.with_item(label: "Item with leading visual", href: "/") do |item|
             item.with_leading_visual_icon(icon: :star)
           end
         end
@@ -255,8 +255,8 @@ module Primer
       def item_trailing_visual
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "Item with trailing visual", href: "/") do |item|
+               )) do |component|
+          component.with_item(label: "Item with trailing visual", href: "/") do |item|
             item.with_trailing_visual_icon(icon: :star)
           end
         end
@@ -266,8 +266,8 @@ module Primer
       def item_leading_trailing_visual
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "Item with trailing visual", href: "/") do |item|
+               )) do |component|
+          component.with_item(label: "Item with trailing visual", href: "/") do |item|
             item.with_leading_visual_icon(icon: :heart)
             item.with_trailing_visual_icon(icon: :star)
           end
@@ -278,8 +278,8 @@ module Primer
       def item_with_description
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "Default item", href: "/") do |item|
+               )) do |component|
+          component.with_item(label: "Default item", href: "/") do |item|
             item.with_description.with_content("This is a description")
           end
         end
@@ -289,8 +289,8 @@ module Primer
       def item_with_description_inline
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "Default item", href: "/", description_scheme: :inline) do |item|
+               )) do |component|
+          component.with_item(label: "Default item", href: "/", description_scheme: :inline) do |item|
             item.with_description.with_content("This is a description")
           end
         end
@@ -300,8 +300,8 @@ module Primer
       def item_trailing_action
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "Default item", href: "/") do |item|
+               )) do |component|
+          component.with_item(label: "Default item", href: "/") do |item|
             item.with_trailing_action(show_on_hover: false, icon: "plus", "aria-label": "Button tooltip", size: :medium)
           end
         end
@@ -311,8 +311,8 @@ module Primer
       def item_trailing_action_hover
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "Default item", href: "/") do |item|
+               )) do |component|
+          component.with_item(label: "Default item", href: "/") do |item|
             item.with_trailing_action(show_on_hover: true, icon: "plus", "aria-label": "Button tooltip", size: :medium)
           end
         end
@@ -322,8 +322,8 @@ module Primer
       def item_danger
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "Danger item", href: "/", scheme: :danger)
+               )) do |component|
+          component.with_item(label: "Danger item", href: "/", scheme: :danger)
         end
       end
 
@@ -331,8 +331,8 @@ module Primer
       def item_disabled
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "Disabled item", href: "/", disabled: true)
+               )) do |component|
+          component.with_item(label: "Disabled item", href: "/", disabled: true)
         end
       end
 
@@ -340,8 +340,8 @@ module Primer
       def item_wrap_label
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "This is a very long string of text that will wrap if it runs out of horizontal space", href: "/")
+               )) do |component|
+          component.with_item(label: "This is a very long string of text that will wrap if it runs out of horizontal space", href: "/")
         end
       end
 
@@ -349,8 +349,8 @@ module Primer
       def item_truncate_label
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "This is a very long string of text that will truncate if it runs out of horizontal space", href: "/", truncate_label: true)
+               )) do |component|
+          component.with_item(label: "This is a very long string of text that will truncate if it runs out of horizontal space", href: "/", truncate_label: true)
         end
       end
 
@@ -358,8 +358,8 @@ module Primer
       def item_active
         render(Primer::Alpha::ActionList.new(
                  aria: { label: "List heading" }
-               )) do |c|
-          c.with_item(label: "Active item", href: "/", active: true)
+               )) do |component|
+          component.with_item(label: "Active item", href: "/", active: true)
         end
       end
     end

@@ -60,7 +60,7 @@ module Primer
         show_dividers: false,
         **system_arguments
       )
-        @id = "action-list-#{SecureRandom.uuid}"
+        @id = self.class.generate_id
         @role = role
 
         @system_arguments = system_arguments

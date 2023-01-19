@@ -19,7 +19,7 @@ class Primer::ViewHelperTest < Minitest::Test
   def test_renders_time_ago_using_shorthand
     primer_time_ago(time: Time.at(1_615_490_863).utc)
 
-    assert_selector("time-ago", text: "Mar 11, 2021")
+    assert_selector("relative-time", text: "Mar 11, 2021")
   end
 
   def test_renders_octicon_using_shorthand

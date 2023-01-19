@@ -1,0 +1,10 @@
+<%= render(Primer::Alpha::Dialog.new(id: "dialog-one", title: title, subtitle: subtitle, visually_hide_title: false)) do |d| %>
+  <% d.show_button { button_text } %>
+  <% d.body do %>
+    <p>Dialog One!</p>
+
+    <form>
+      <input type="text" value="Some text goes in here">
+    </form>
+  <% end %>
+<% end %>

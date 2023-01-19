@@ -17,8 +17,8 @@ module Primer
           add_input HiddenInput.new(builder: builder, form: form, **options)
         end
 
-        def check_box(**options)
-          add_input CheckBoxInput.new(builder: builder, form: form, **options)
+        def check_box(**options, &block)
+          add_input CheckBoxInput.new(builder: builder, form: form, **options, &block)
         end
 
         def radio_button_group(**options, &block)
@@ -61,6 +61,11 @@ module Primer
         def submit(**options, &block)
           options = decorate_options(**options)
           add_input SubmitButtonInput.new(builder: builder, form: form, **options, &block)
+        end
+
+        def button(**options, &block)
+          options = decorate_options(**options)
+          add_input ButtonInput.new(builder: builder, form: form, **options, &block)
         end
 
         # END button input methods

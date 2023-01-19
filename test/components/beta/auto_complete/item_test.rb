@@ -25,7 +25,7 @@ class PrimerBetaAutoCompleteItemTest < Minitest::Test
 
   def test_renders_with_leading_visual_icon
     render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo", disabled: false)) do |component|
-      component.leading_visual_icon(icon: :search)
+      component.with_leading_visual_icon(icon: :search)
       "Item text"
     end
 
@@ -38,7 +38,7 @@ class PrimerBetaAutoCompleteItemTest < Minitest::Test
 
   def test_renders_with_leading_visual_avatar
     render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo", disabled: false)) do |component|
-      component.leading_visual_avatar(src: "https://github.com/github.png", alt: "github")
+      component.with_leading_visual_avatar(src: "https://github.com/github.png", alt: "github")
       "Item text"
     end
 
@@ -51,7 +51,7 @@ class PrimerBetaAutoCompleteItemTest < Minitest::Test
 
   def test_renders_with_trailing_visual
     render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo", disabled: false)) do |component|
-      component.trailing_visual_icon(icon: :search)
+      component.with_trailing_visual_icon(icon: :search)
       "Item text"
     end
 
@@ -64,7 +64,7 @@ class PrimerBetaAutoCompleteItemTest < Minitest::Test
 
   def test_renders_with_description
     render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo", disabled: false)) do |component|
-      component.description { "Item description" }
+      component.with_description { "Item description" }
       "Item text"
     end
 
@@ -79,7 +79,7 @@ class PrimerBetaAutoCompleteItemTest < Minitest::Test
 
   def test_renders_with_inline_description
     render_inline(Primer::Beta::AutoComplete::Item.new(value: "foo", disabled: false, description_variant: :inline)) do |component|
-      component.description { "Item description" }
+      component.with_description { "Item description" }
       "Item text"
     end
 

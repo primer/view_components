@@ -4,6 +4,7 @@ on:
     branches-ignore:
       - 'main'
       - 'dependabot/**'
+      - 'changeset-release/**'
 
 jobs:
   release-canary:

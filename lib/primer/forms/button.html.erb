@@ -1,0 +1,4 @@
+<%= render(Primer::Beta::Button.new(**input_arguments)) do |component| %>
+  <% @input.block.call(component) if @input.block %>
+  <%= @input.label %>
+<% end %>

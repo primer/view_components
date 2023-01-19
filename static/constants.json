@@ -163,14 +163,16 @@
       "medium_portrait": "Overlay--size-medium-portrait",
       "medium": "Overlay--size-medium",
       "large": "Overlay--size-large",
-      "xlarge": "Overlay--size-xlarge"
+      "xlarge": "Overlay--size-xlarge",
+      "auto": "Overlay--size-auto"
     },
     "SIZE_OPTIONS": [
       "small",
       "medium_portrait",
       "medium",
       "large",
-      "xlarge"
+      "xlarge",
+      "auto"
     ]
   },
   "Primer::Alpha::Dialog::Body": {
@@ -178,6 +180,45 @@
   "Primer::Alpha::Dialog::Footer": {
   },
   "Primer::Alpha::Dialog::Header": {
+  },
+  "Primer::Alpha::Dropdown": {
+    "Menu": "Primer::Alpha::Dropdown::Menu"
+  },
+  "Primer::Alpha::Dropdown::Menu": {
+    "AS_DEFAULT": "default",
+    "AS_OPTIONS": [
+      "default",
+      "list"
+    ],
+    "DIRECTION_DEFAULT": "se",
+    "DIRECTION_OPTIONS": [
+      "se",
+      "sw",
+      "w",
+      "e",
+      "ne",
+      "s"
+    ],
+    "Item": "Primer::Alpha::Dropdown::Menu::Item",
+    "SCHEME_DEFAULT": "default",
+    "SCHEME_MAPPINGS": {
+      "default": "",
+      "dark": "dropdown-menu-dark"
+    }
+  },
+  "Primer::Alpha::Dropdown::Menu::Item": {
+    "BUTTON_TAGS": [
+      "button",
+      "summary"
+    ],
+    "TAG_DEFAULT": "a",
+    "TAG_OPTIONS": [
+      "a",
+      "button",
+      "summary"
+    ]
+  },
+  "Primer::Alpha::HellipButton": {
   },
   "Primer::Alpha::HiddenTextExpander": {
   },
@@ -263,6 +304,17 @@
       "section"
     ]
   },
+  "Primer::Alpha::Menu": {
+    "HEADING_TAG_FALLBACK": "h2",
+    "HEADING_TAG_OPTIONS": [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
   "Primer::Alpha::NavList": {
     "Item": "Primer::Alpha::NavList::Item",
     "Section": "Primer::Alpha::NavList::Section"
@@ -271,12 +323,16 @@
   },
   "Primer::Alpha::NavList::Section": {
   },
+  "Primer::Alpha::OcticonSymbols": {
+  },
   "Primer::Alpha::SegmentedControl": {
     "FULL_WIDTH_DEFAULT": false,
     "HIDE_LABELS_DEFAULT": false,
     "Item": "Primer::Alpha::SegmentedControl::Item"
   },
   "Primer::Alpha::SegmentedControl::Item": {
+  },
+  "Primer::Alpha::TabContainer": {
   },
   "Primer::Alpha::TabNav": {
     "BODY_TAG_DEFAULT": "ul",
@@ -521,6 +577,8 @@
   },
   "Primer::Beta::ButtonGroup": {
   },
+  "Primer::Beta::ClipboardCopy": {
+  },
   "Primer::Beta::CloseButton": {
     "DEFAULT_TYPE": "button",
     "TYPE_OPTIONS": [
@@ -670,6 +728,47 @@
       "span"
     ]
   },
+  "Primer::Beta::Markdown": {
+    "DEFAULT_TAG": "div",
+    "TAG_OPTIONS": [
+      "div",
+      "article",
+      "td"
+    ]
+  },
+  "Primer::Beta::Octicon": {
+    "SIZE_DEFAULT": "small",
+    "SIZE_MAPPINGS": {
+      "xsmall": 12,
+      "small": 16,
+      "medium": 24
+    },
+    "SIZE_MEDIUM": "medium",
+    "SIZE_OPTIONS": [
+      "xsmall",
+      "small",
+      "medium"
+    ],
+    "SIZE_XSMALL": "xsmall"
+  },
+  "Primer::Beta::Popover": {
+    "CARET_DEFAULT": "top",
+    "CARET_MAPPINGS": {
+      "top": "",
+      "bottom": "Popover-message--bottom",
+      "bottom_right": "Popover-message--bottom-right",
+      "bottom_left": "Popover-message--bottom-left",
+      "left": "Popover-message--left",
+      "left_bottom": "Popover-message--left-bottom",
+      "left_top": "Popover-message--left-top",
+      "right": "Popover-message--right",
+      "right_bottom": "Popover-message--right-bottom",
+      "right_top": "Popover-message--right-top",
+      "top_left": "Popover-message--top-left",
+      "top_right": "Popover-message--top-right"
+    },
+    "DEFAULT_HEADING_TAG": "h4"
+  },
   "Primer::Beta::ProgressBar": {
     "SIZE_DEFAULT": "default",
     "SIZE_MAPPINGS": {
@@ -683,8 +782,214 @@
       "large"
     ]
   },
+  "Primer::Beta::RelativeTime": {
+    "DAY_DEFAULT": null,
+    "DAY_MAPPINGS": {
+      "": null,
+      "numeric": "numeric",
+      "two_digit": "2-digit"
+    },
+    "DAY_OPTIONS": [
+      null,
+      "numeric",
+      "two_digit"
+    ],
+    "FORMAT_DEFAULT": "auto",
+    "FORMAT_OPTIONS": [
+      "auto",
+      "micro",
+      "elapsed"
+    ],
+    "FORMAT_STYLE_DEFAULT": null,
+    "FORMAT_STYLE_OPTIONS": [
+      null,
+      "long",
+      "short",
+      "narrow"
+    ],
+    "HOUR_DEFAULT": null,
+    "HOUR_MAPPINGS": {
+      "": null,
+      "numeric": "numeric",
+      "two_digit": "2-digit"
+    },
+    "HOUR_OPTIONS": [
+      null,
+      "numeric",
+      "two_digit"
+    ],
+    "MINUTE_DEFAULT": null,
+    "MINUTE_MAPPINGS": {
+      "": null,
+      "numeric": "numeric",
+      "two_digit": "2-digit"
+    },
+    "MINUTE_OPTIONS": [
+      null,
+      "numeric",
+      "two_digit"
+    ],
+    "MONTH_DEFAULT": null,
+    "MONTH_MAPPINGS": {
+      "": null,
+      "numeric": "numeric",
+      "two_digit": "2-digit",
+      "short": "short",
+      "long": "long",
+      "narrow": "narrow"
+    },
+    "MONTH_OPTIONS": [
+      null,
+      "numeric",
+      "two_digit",
+      "short",
+      "long",
+      "narrow"
+    ],
+    "PRECISION_DEFAULT": null,
+    "PRECISION_OPTIONS": [
+      null,
+      "second",
+      "minute",
+      "hour",
+      "day",
+      "month",
+      "year"
+    ],
+    "SECOND_DEFAULT": null,
+    "SECOND_MAPPINGS": {
+      "": null,
+      "numeric": "numeric",
+      "two_digit": "2-digit"
+    },
+    "SECOND_OPTIONS": [
+      null,
+      "numeric",
+      "two_digit"
+    ],
+    "TENSE_DEFAULT": "auto",
+    "TENSE_OPTIONS": [
+      "auto",
+      "past",
+      "future"
+    ],
+    "TIMEZONENAME_DEFAULT": null,
+    "TIMEZONENAME_OPTIONS": [
+      null,
+      "long",
+      "short",
+      "short_offset",
+      "long_offset",
+      "short_generic",
+      "long_generic"
+    ],
+    "TIMEZONE_MAPPINGS": {
+      "": null,
+      "long": "long",
+      "short": "short",
+      "short_offset": "shortOffset",
+      "long_offset": "longOffset",
+      "short_generic": "shortGeneric",
+      "long_generic": "longGeneric"
+    },
+    "WEEKDAY_DEFAULT": null,
+    "WEEKDAY_OPTIONS": [
+      null,
+      "long",
+      "short",
+      "narrow"
+    ],
+    "YEAR_DEFAULT": null,
+    "YEAR_MAPPINGS": {
+      "": null,
+      "numeric": "numeric",
+      "two_digit": "2-digit"
+    },
+    "YEAR_OPTIONS": [
+      null,
+      "numeric",
+      "two_digit"
+    ]
+  },
+  "Primer::Beta::Spinner": {
+    "DEFAULT_SIZE": "medium",
+    "DEFAULT_STYLE": "box-sizing: content-box; color: var(--color-icon-primary);",
+    "SIZE_MAPPINGS": {
+      "small": 16,
+      "medium": 32,
+      "large": 64
+    },
+    "SIZE_OPTIONS": [
+      "small",
+      "medium",
+      "large"
+    ]
+  },
+  "Primer::Beta::State": {
+    "DEPRECATED_SCHEME_MAPPINGS": {
+      "default": "",
+      "green": "State--open",
+      "red": "State--closed",
+      "purple": "State--merged"
+    },
+    "NEW_SCHEME_MAPPINGS": {
+      "open": "State--open",
+      "closed": "State--closed",
+      "merged": "State--merged"
+    },
+    "SCHEME_DEFAULT": "default",
+    "SCHEME_MAPPINGS": {
+      "open": "State--open",
+      "closed": "State--closed",
+      "merged": "State--merged",
+      "default": "",
+      "green": "State--open",
+      "red": "State--closed",
+      "purple": "State--merged"
+    },
+    "SCHEME_OPTIONS": [
+      "open",
+      "closed",
+      "merged",
+      "default",
+      "green",
+      "red",
+      "purple"
+    ],
+    "SIZE_DEFAULT": "default",
+    "SIZE_MAPPINGS": {
+      "default": "",
+      "small": "State--small"
+    },
+    "SIZE_OPTIONS": [
+      "default",
+      "small"
+    ],
+    "TAG_DEFAULT": "span",
+    "TAG_OPTIONS": [
+      "span",
+      "div"
+    ]
+  },
+  "Primer::Beta::Subhead": {
+    "DEFAULT_HEADING_TAG": "div",
+    "HEADING_TAG_OPTIONS": [
+      "div",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6"
+    ]
+  },
   "Primer::Beta::Text": {
     "DEFAULT_TAG": "span"
+  },
+  "Primer::Beta::TimelineItem": {
+    "Badge": "Primer::Beta::TimelineItem::Badge"
+  },
+  "Primer::Beta::TimelineItem::Badge": {
   },
   "Primer::Beta::Truncate": {
     "TruncateText": "Primer::Beta::Truncate::TruncateText"
@@ -732,44 +1037,13 @@
   },
   "Primer::Content": {
   },
-  "Primer::CounterComponent": {
-  },
   "Primer::Dropdown": {
     "Menu": "Primer::Dropdown::Menu"
   },
   "Primer::Dropdown::Menu": {
-    "AS_DEFAULT": "default",
-    "AS_OPTIONS": [
-      "default",
-      "list"
-    ],
-    "DIRECTION_DEFAULT": "se",
-    "DIRECTION_OPTIONS": [
-      "se",
-      "sw",
-      "w",
-      "e",
-      "ne",
-      "s"
-    ],
-    "Item": "Primer::Dropdown::Menu::Item",
-    "SCHEME_DEFAULT": "default",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "dark": "dropdown-menu-dark"
-    }
+    "Item": "Primer::Dropdown::Menu::Item"
   },
   "Primer::Dropdown::Menu::Item": {
-    "BUTTON_TAGS": [
-      "button",
-      "summary"
-    ],
-    "TAG_DEFAULT": "a",
-    "TAG_OPTIONS": [
-      "a",
-      "button",
-      "summary"
-    ]
   },
   "Primer::DropdownMenuComponent": {
     "DIRECTION_DEFAULT": "se",
@@ -799,8 +1073,6 @@
       "default",
       "danger"
     ]
-  },
-  "Primer::Image": {
   },
   "Primer::LabelComponent": {
   },
@@ -841,23 +1113,8 @@
     ]
   },
   "Primer::Markdown": {
-    "DEFAULT_TAG": "div",
-    "TAG_OPTIONS": [
-      "div",
-      "article",
-      "td"
-    ]
   },
   "Primer::MenuComponent": {
-    "HEADING_TAG_FALLBACK": "h2",
-    "HEADING_TAG_OPTIONS": [
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6"
-    ]
   },
   "Primer::Navigation::TabComponent": {
     "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [
@@ -867,113 +1124,16 @@
     "DEFAULT_ARIA_CURRENT_FOR_ANCHOR": "page"
   },
   "Primer::OcticonComponent": {
-    "SIZE_DEFAULT": "small",
-    "SIZE_MAPPINGS": {
-      "xsmall": 12,
-      "small": 16,
-      "medium": 24
-    },
-    "SIZE_MEDIUM": "medium",
-    "SIZE_OPTIONS": [
-      "xsmall",
-      "small",
-      "medium"
-    ],
-    "SIZE_XSMALL": "xsmall"
   },
   "Primer::OcticonSymbolsComponent": {
   },
   "Primer::PopoverComponent": {
-    "CARET_DEFAULT": "top",
-    "CARET_MAPPINGS": {
-      "top": "",
-      "bottom": "Popover-message--bottom",
-      "bottom_right": "Popover-message--bottom-right",
-      "bottom_left": "Popover-message--bottom-left",
-      "left": "Popover-message--left",
-      "left_bottom": "Popover-message--left-bottom",
-      "left_top": "Popover-message--left-top",
-      "right": "Popover-message--right",
-      "right_bottom": "Popover-message--right-bottom",
-      "right_top": "Popover-message--right-top",
-      "top_left": "Popover-message--top-left",
-      "top_right": "Popover-message--top-right"
-    },
-    "DEFAULT_HEADING_TAG": "h4"
-  },
-  "Primer::ProgressBarComponent": {
   },
   "Primer::SpinnerComponent": {
-    "DEFAULT_SIZE": "medium",
-    "DEFAULT_STYLE": "box-sizing: content-box; color: var(--color-icon-primary);",
-    "SIZE_MAPPINGS": {
-      "small": 16,
-      "medium": 32,
-      "large": 64
-    },
-    "SIZE_OPTIONS": [
-      "small",
-      "medium",
-      "large"
-    ]
   },
   "Primer::StateComponent": {
-    "DEPRECATED_SCHEME_MAPPINGS": {
-      "default": "",
-      "green": "State--open",
-      "red": "State--closed",
-      "purple": "State--merged"
-    },
-    "NEW_SCHEME_MAPPINGS": {
-      "open": "State--open",
-      "closed": "State--closed",
-      "merged": "State--merged"
-    },
-    "SCHEME_DEFAULT": "default",
-    "SCHEME_MAPPINGS": {
-      "open": "State--open",
-      "closed": "State--closed",
-      "merged": "State--merged",
-      "default": "",
-      "green": "State--open",
-      "red": "State--closed",
-      "purple": "State--merged"
-    },
-    "SCHEME_OPTIONS": [
-      "open",
-      "closed",
-      "merged",
-      "default",
-      "green",
-      "red",
-      "purple"
-    ],
-    "SIZE_DEFAULT": "default",
-    "SIZE_MAPPINGS": {
-      "default": "",
-      "small": "State--small"
-    },
-    "SIZE_OPTIONS": [
-      "default",
-      "small"
-    ],
-    "TAG_DEFAULT": "span",
-    "TAG_OPTIONS": [
-      "span",
-      "div"
-    ]
   },
   "Primer::SubheadComponent": {
-    "DEFAULT_HEADING_TAG": "div",
-    "HEADING_TAG_OPTIONS": [
-      "div",
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6"
-    ]
   },
   "Primer::TabContainerComponent": {
   },

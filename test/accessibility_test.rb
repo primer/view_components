@@ -8,7 +8,7 @@ class AccessibilityTest < System::TestCase
   # Skip components that should be tested as part of a larger component.
   # Do not add to this list for any other reason!
   IGNORED_PREVIEWS = %w[
-    Primer::MarkdownPreview
+    Primer::Beta::MarkdownPreview
     Primer::Beta::AutoCompleteItemPreview
     Docs::BetaAutoCompleteItemPreview
     Docs::NavigationTabComponentPreview

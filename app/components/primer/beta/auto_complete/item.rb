@@ -12,9 +12,9 @@ module Primer
 
         # The leading visual rendered before the link.
         #
-        # @param kwargs [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %> or <%= link_to_component(Primer::OcticonComponent) %>
+        # @param kwargs [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Avatar) %> or <%= link_to_component(Primer::Beta::Octicon) %>
         renders_one :leading_visual, types: {
-          icon: Primer::OcticonComponent,
+          icon: Primer::Beta::Octicon,
           avatar: lambda { |**kwargs|
             Primer::Beta::Avatar.new(**{ **kwargs, size: 16 })
           }
@@ -22,9 +22,9 @@ module Primer
 
         # The trailing visual rendered after the link.
         #
-        # @param kwargs [Hash] The arguments accepted by <%= link_to_component(Primer::OcticonComponent) %>, <%= link_to_component(Primer::Beta::Label) %>, or <%= link_to_component(Primer::Beta::Counter) %>
+        # @param kwargs [Hash] The arguments accepted by <%= link_to_component(Primer::Beta::Octicon) %>, <%= link_to_component(Primer::Beta::Label) %>, or <%= link_to_component(Primer::Beta::Counter) %>
         renders_one :trailing_visual, types: {
-          icon: Primer::OcticonComponent,
+          icon: Primer::Beta::Octicon,
           label: Primer::Beta::Label,
           counter: Primer::Beta::Counter
         }
@@ -35,10 +35,10 @@ module Primer
         renders_one :description
 
         # @example Default
-        #   <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "value")) do |c| %>
+        #   <%= render(Primer::Beta::AutoComplete::Item.new(selected: true, value: "value")) do %>
         #     Selected
         #   <% end %>
-        #   <%= render(Primer::Beta::AutoComplete::Item.new(value: "value")) do |c| %>
+        #   <%= render(Primer::Beta::AutoComplete::Item.new(value: "value")) do %>
         #     Not selected
         #   <% end %>
         #

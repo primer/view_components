@@ -1,0 +1,73 @@
+/* avatar */
+
+.avatar {
+  display: inline-block;
+  overflow: hidden; /* Ensure page layout in Firefox should images fail to load */
+  line-height: 1;
+  vertical-align: middle;
+  background-color: var(--color-avatar-bg); /* adds opaque bg to transparent avatars */
+  border-radius: var(--primer-borderRadius-medium, 6px);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px var(--color-avatar-border);
+}
+
+.avatar-link {
+  float: left;
+  line-height: 1;
+}
+
+/* User for example on /stars and /user for grids of avatars */
+.avatar-group-item {
+  display: inline-block;
+  margin-bottom: 3px;
+}
+
+/* Border radius */
+
+.avatar-1,
+.avatar-2,
+.avatar-small {
+  border-radius: var(--primer-borderRadius-small, 4px);
+}
+
+/* Sizes */
+
+.avatar-1 {
+  width: var(--base-size-16, 16px);
+  height: var(--base-size-16, 16px);
+}
+
+.avatar-2 {
+  width: var(--base-size-20, 20px);
+  height: var(--base-size-20, 20px);
+}
+
+.avatar-3 {
+  width: var(--base-size-24, 24px);
+  height: var(--base-size-24, 24px);
+}
+
+.avatar-4 {
+  width: var(--base-size-28, 28px);
+  height: var(--base-size-28, 28px);
+}
+
+.avatar-5 {
+  width: var(--base-size-32, 32px);
+  height: var(--base-size-32, 32px);
+}
+
+.avatar-6 {
+  width: var(--base-size-40, 40px);
+  height: var(--base-size-40, 40px);
+}
+
+.avatar-7 {
+  width: var(--base-size-48, 48px);
+  height: var(--base-size-48, 48px);
+}
+
+.avatar-8 {
+  width: var(--base-size-64, 64px);
+  height: var(--base-size-64, 64px);
+}

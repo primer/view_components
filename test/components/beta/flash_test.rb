@@ -50,7 +50,7 @@ class PrimerFlashTest < Minitest::Test
 
   def test_renders_flash_action_slot
     render_inline(Primer::Beta::Flash.new) do |component|
-      component.action { "submit" }
+      component.with_action { "submit" }
     end
 
     assert_selector(".flash .flash-action", text: "submit")

@@ -32,24 +32,24 @@ module Primer
       SIZE_OPTIONS = SIZE_MAPPINGS.keys
       # @example Default
       #   <%= render(Primer::Beta::ProgressBar.new) do |component| %>
-      #     <% component.item(percentage: 25) %>
+      #     <% component.with_item(percentage: 25) %>
       #   <% end %>
       #
       # @example Small
       #   <%= render(Primer::Beta::ProgressBar.new(size: :small)) do |component| %>
-      #     <% component.item(bg: :accent_emphasis, percentage: 50) %>
+      #     <% component.with_item(bg: :accent_emphasis, percentage: 50) %>
       #   <% end %>
       #
       # @example Large
       #   <%= render(Primer::Beta::ProgressBar.new(size: :large)) do |component| %>
-      #     <% component.item(bg: :danger_emphasis, percentage: 75) %>
+      #     <% component.with_item(bg: :danger_emphasis, percentage: 75) %>
       #   <% end %>
       #
       # @example Multiple items
       #   <%= render(Primer::Beta::ProgressBar.new) do |component| %>
-      #     <% component.item(percentage: 10) %>
-      #     <% component.item(bg: :accent_emphasis, percentage: 20) %>
-      #     <% component.item(bg: :danger_emphasis, percentage: 30) %>
+      #     <% component.with_item(percentage: 10) %>
+      #     <% component.with_item(bg: :accent_emphasis, percentage: 20) %>
+      #     <% component.with_item(bg: :danger_emphasis, percentage: 30) %>
       #   <% end %>
       #
       # @param size [Symbol] <%= one_of(Primer::Beta::ProgressBar::SIZE_OPTIONS) %> Increases height.
@@ -65,7 +65,7 @@ module Primer
       end
 
       def render?
-        items.any?
+        items?
       end
     end
   end

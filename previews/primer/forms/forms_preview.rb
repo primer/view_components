@@ -2,6 +2,7 @@
 
 module Primer
   module Forms
+    # :nodoc:
     class FormsPreview < ViewComponent::Preview
       def single_text_field_form; end
 
@@ -36,6 +37,10 @@ module Primer
       def multi_input_form; end
 
       def name_with_question_mark_form; end
+
+      def immediate_validation_form; end
+
+      def example_toggle_switch_form; end
     end
   end
 end

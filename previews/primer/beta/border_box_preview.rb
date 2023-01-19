@@ -6,41 +6,93 @@ module Primer
     class BorderBoxPreview < ViewComponent::Preview
       # @label Playground
       #
-      # @param padding [Symbol] select [default, condensed]
-      def playground(padding: :default)
-        render(Primer::Beta::BorderBox.new(padding: padding)) do |component|
-          component.header { "Header" }
-          component.body { "Body" }
-          component.row { "Row one" }
-          component.row { "Row two" }
-          component.row { "Row three" }
-          component.footer { "Footer" }
-        end
-      end
-
-      # @label Default options
-      #
-      # @param padding [Symbol] select [default, condensed]
-      def default(padding: :default)
-        render(Primer::Beta::BorderBox.new(padding: padding)) do |component|
-          component.header { "Header" }
-          component.body { "Body" }
-          component.row { "Row one" }
-          component.row { "Row two" }
-          component.row { "Row three" }
-          component.footer { "Footer" }
-        end
-      end
-
-      # @label Row schemes
-      #
-      # @param padding [Symbol] select [default, condensed]
+      # @param padding [Symbol] select [default, condensed, spacious]
       # @param scheme [Symbol] select [default, neutral, info, warning]
-      def row_schemes(padding: :default, scheme: :default)
+      def playground(padding: :default, scheme: :default)
         render(Primer::Beta::BorderBox.new(padding: padding)) do |component|
-          component.row(scheme: scheme) { "#{scheme.to_s.capitalize} scheme" }
+          component.with_header { "Header" }
+          component.with_body { "Body" }
+          component.with_row(scheme: scheme) { "#{scheme.to_s.capitalize} row one" }
+          component.with_row(scheme: scheme) { "#{scheme.to_s.capitalize} row two" }
+          component.with_row(scheme: scheme) { "#{scheme.to_s.capitalize} row three" }
+          component.with_footer { "Footer" }
         end
       end
+
+      # @label Default
+      def default
+        render(Primer::Beta::BorderBox.new) do |component|
+          component.with_header { "Header" }
+          component.with_body { "Body" }
+          component.with_row { "Row one" }
+          component.with_row { "Row two" }
+          component.with_row { "Row three" }
+          component.with_footer { "Footer" }
+        end
+      end
+
+      # @label Header with title
+      def header_with_title
+        render(Primer::Beta::BorderBox.new) do |component|
+          component.with_header do |header|
+            header.with_title(tag: :h2) do
+              "Header with title"
+            end
+          end
+          component.with_body { "Body" }
+          component.with_footer { "Footer" }
+        end
+      end
+
+      # @label Row colors
+      def row_colors
+        render(Primer::Beta::BorderBox.new) do |component|
+          component.with_row(scheme: :default) { "Default" }
+          component.with_row(scheme: :neutral) { "Neutral" }
+          component.with_row(scheme: :info) { "Info" }
+          component.with_row(scheme: :warning) { "Warning" }
+        end
+      end
+
+      # @!group Padding
+      #
+      # @label Default
+      def padding_default
+        render(Primer::Beta::BorderBox.new) do |component|
+          component.with_header { "Header" }
+          component.with_body { "Body" }
+          component.with_row { "Row one" }
+          component.with_row { "Row two" }
+          component.with_row { "Row three" }
+          component.with_footer { "Footer" }
+        end
+      end
+
+      # @label Condensed
+      def padding_condensed
+        render(Primer::Beta::BorderBox.new(padding: :condensed)) do |component|
+          component.with_header { "Header" }
+          component.with_body { "Body" }
+          component.with_row { "Row one" }
+          component.with_row { "Row two" }
+          component.with_row { "Row three" }
+          component.with_footer { "Footer" }
+        end
+      end
+
+      # @label Spacious
+      def padding_spacious
+        render(Primer::Beta::BorderBox.new(padding: :spacious)) do |component|
+          component.with_header { "Header" }
+          component.with_body { "Body" }
+          component.with_row { "Row one" }
+          component.with_row { "Row two" }
+          component.with_row { "Row three" }
+          component.with_footer { "Footer" }
+        end
+      end
+      #
+      # @!endgroup
     end
   end
 end

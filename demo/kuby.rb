@@ -109,7 +109,7 @@ Kuby.define("ViewComponentsStorybook") do
           tsconfig.json
           rollup.config.js
           postcss.config.js
-          lib/postcss_mixins
+          lib/
           app/
           package.json
           package-lock.json

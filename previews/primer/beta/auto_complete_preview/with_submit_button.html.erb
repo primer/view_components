@@ -4,7 +4,7 @@
             label_text: label_text,
             input_id: input_id,
             list_id: list_id,
-            src: "/auto_complete",
+            src: autocomplete_index_path,
             show_clear_button: show_clear_button,
             visually_hide_label: visually_hide_label,
             placeholder: placeholder,
@@ -13,8 +13,8 @@
             disabled: disabled,
             invalid: invalid,
             input_name: input_name
-    )) do |c| %>
-        <% c.leading_visual_icon(icon: :search) %>
+    )) do |component| %>
+        <% component.with_leading_visual_icon(icon: :search) %>
     <% end %>
     <%= render(Primer::ButtonComponent.new(scheme: :primary)) { "Submit" } %>
 </div>

@@ -39,6 +39,6 @@ linters:
       AllCops:
         DisabledByDefault: true
       Primer/DeprecatedComponents:
-        Enabled: true
+        Enabled: false
         Exclude:
           - app/components/primer/layout_component.html.erb

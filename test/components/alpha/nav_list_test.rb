@@ -30,8 +30,8 @@ module Primer
       end
 
       def test_no_selected_item
-        render_inline(Primer::Alpha::NavList.new) do |c|
-          c.with_section(aria: { label: "Nav list" }) do |section|
+        render_inline(Primer::Alpha::NavList.new) do |component|
+          component.with_section(aria: { label: "Nav list" }) do |section|
             section.with_item(label: "Item 1", href: "/item1", selected_by_ids: :item1)
             section.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
           end
@@ -41,8 +41,8 @@ module Primer
       end
 
       def test_selected_item
-        render_inline(Primer::Alpha::NavList.new(selected_item_id: :item2)) do |c|
-          c.with_section(aria: { label: "Nav list" }) do |section|
+        render_inline(Primer::Alpha::NavList.new(selected_item_id: :item2)) do |component|
+          component.with_section(aria: { label: "Nav list" }) do |section|
             section.with_item(label: "Item 1", href: "/item1", selected_by_ids: :item1)
             section.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
           end
@@ -53,8 +53,8 @@ module Primer
       end
 
       def test_item_can_be_selected_by_any_of_its_ids
-        render_inline(Primer::Alpha::NavList.new(selected_item_id: :other_item1_id)) do |c|
-          c.with_section(aria: { label: "Nav list" }) do |section|
+        render_inline(Primer::Alpha::NavList.new(selected_item_id: :other_item1_id)) do |component|
+          component.with_section(aria: { label: "Nav list" }) do |section|
             section.with_item(label: "Item 1", href: "/item1", selected_by_ids: [:item1, :other_item1_id])
             section.with_item(label: "Item 2", href: "/item2", selected_by_ids: :item2)
           end
@@ -80,8 +80,8 @@ module Primer
       def test_item_can_be_selected_by_current_page
         current_page_href = "/item2"
 
-        render_inline(Primer::Alpha::NavList.new) do |c|
-          c.with_section(aria: { label: "Nav list" }) do |section|
+        render_inline(Primer::Alpha::NavList.new) do |component|
+          component.with_section(aria: { label: "Nav list" }) do |section|
             # use CurrentPageItem instead of a mock since the API supports it
             section.with_item(component_klass: CurrentPageItem, label: "Item 1", href: "/item1", current_page_href: current_page_href)
             section.with_item(component_klass: CurrentPageItem, label: "Item 2", href: "/item2", current_page_href: current_page_href)
@@ -94,8 +94,8 @@ module Primer
 
       def test_max_nesting_depth
         error = assert_raises(RuntimeError) do
-          render_inline(Primer::Alpha::NavList.new) do |c|
-            c.with_section(aria: { label: "Nav list" }) do |section|
+          render_inline(Primer::Alpha::NavList.new) do |component|
+            component.with_section(aria: { label: "Nav list" }) do |section|
               section.with_item(label: "Item at level 1", href: "/item_level_1") do |item|
                 item.with_item(label: "Item at level 2", href: "/item_level_2") do |sub_item|
                   sub_item.with_item(label: "Item at level 3", href: "/item_level_3")
@@ -116,8 +116,8 @@ module Primer
 
       def test_disallow_subitems_and_trailing_action
         error = assert_raises(RuntimeError) do
-          render_inline(Primer::Alpha::NavList.new) do |c|
-            c.with_section(aria: { label: "List" }) do |section|
+          render_inline(Primer::Alpha::NavList.new) do |component|
+            component.with_section(aria: { label: "List" }) do |section|
               section.with_item(label: "Level 1", href: "/level1") do |item|
                 item.with_item(label: "Level 2", href: "/level2")
                 item.with_trailing_action(icon: :megaphone, aria: { label: "Action" })

@@ -54,7 +54,7 @@ class AstTraverser
     end
 
     # Octicon is the only component that accepts positional arguments.
-    res[:icon] = args.first.source if name == "Primer::OcticonComponent" && args.size > 1
+    res[:icon] = args.first.source if name == "Primer::Beta::Octicon" && args.size > 1
 
     res
   end

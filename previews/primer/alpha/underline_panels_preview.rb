@@ -9,11 +9,11 @@ module Primer
       # @param number_of_panels [Integer] number
       # @param align [Symbol] select [left, right]
       def playground(number_of_panels: 3, align: :left)
-        render(Primer::Alpha::UnderlinePanels.new(label: "Test navigation", align: align)) do |c|
+        render(Primer::Alpha::UnderlinePanels.new(label: "Test navigation", align: align)) do |component|
           Array.new(number_of_panels || 3) do |i|
-            c.tab(selected: i.zero?, id: "tab-#{i + 1}") do |t|
-              t.panel { "Panel #{i + 1}" }
-              t.text { "Tab #{i + 1}" }
+            component.with_tab(selected: i.zero?, id: "tab-#{i + 1}") do |tab|
+              tab.with_panel { "Panel #{i + 1}" }
+              tab.with_text { "Tab #{i + 1}" }
             end
           end
         end
@@ -24,11 +24,11 @@ module Primer
       # @param number_of_panels [Integer] number
       # @param align [Symbol] select [left, right]
       def default(number_of_panels: 3, align: :left)
-        render(Primer::Alpha::UnderlinePanels.new(label: "Test navigation", align: align)) do |c|
+        render(Primer::Alpha::UnderlinePanels.new(label: "Test navigation", align: align)) do |component|
           Array.new(number_of_panels || 3) do |i|
-            c.tab(selected: i.zero?, id: "tab-#{i + 1}") do |t|
-              t.panel { "Panel #{i + 1}" }
-              t.text { "Tab #{i + 1}" }
+            component.with_tab(selected: i.zero?, id: "tab-#{i + 1}") do |tab|
+              tab.with_panel { "Panel #{i + 1}" }
+              tab.with_text { "Tab #{i + 1}" }
             end
           end
         end

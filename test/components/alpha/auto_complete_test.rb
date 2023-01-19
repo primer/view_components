@@ -8,7 +8,7 @@ class PrimerAlphaAutoCompleteTest < Minitest::Test
   def test_raises_if_no_label_text_is_passed_in
     assert_raises ArgumentError do
       render_inline Primer::Alpha::AutoComplete.new(src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
-        component.icon(icon: :person)
+        component.with_icon(icon: :person)
       end
     end
   end
@@ -17,8 +17,8 @@ class PrimerAlphaAutoCompleteTest < Minitest::Test
     with_raise_on_invalid_options(true) do
       err = assert_raises ArgumentError do
         render_inline Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
-          component.input(autofocus: true)
-          component.icon(icon: :person)
+          component.with_input(autofocus: true)
+          component.with_icon(icon: :person)
         end
       end
       assert_includes(err.message, "autofocus is not allowed for accessibility reasons")
@@ -29,8 +29,8 @@ class PrimerAlphaAutoCompleteTest < Minitest::Test
     with_raise_on_invalid_aria(true) do
       err = assert_raises ArgumentError do
         render_inline Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
-          component.input("aria-label": "Don't add one")
-          component.icon(icon: :person)
+          component.with_input("aria-label": "Don't add one")
+          component.with_icon(icon: :person)
         end
       end
       assert_includes(err.message, "instead of `aria-label`, include `label_text` and set `is_label_visible` to `false` on the component initializer.")
@@ -129,7 +129,7 @@ class PrimerAlphaAutoCompleteTest < Minitest::Test
 
   def test_renders_results_with_custom_classes
     render_inline Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/url", list_id: "my-list-id", input_id: "test-input") do |component|
-      component.results(classes: "my-class")
+      component.with_results(classes: "my-class")
     end
     assert_selector('auto-complete[for="my-list-id"][src="/url"]') do
       assert_selector('ul[id="my-list-id"].autocomplete-results.my-class')
@@ -153,7 +153,7 @@ class PrimerAlphaAutoCompleteTest < Minitest::Test
     with_raise_on_invalid_options(true) do
       err = assert_raises ArgumentError do
         render_inline Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
-          component.input(id: "some-other-id")
+          component.with_input(id: "some-other-id")
         end
       end
       assert_includes(err.message, "`id` will always be set to @input_id.")
@@ -164,7 +164,7 @@ class PrimerAlphaAutoCompleteTest < Minitest::Test
     with_raise_on_invalid_options(true) do
       err = assert_raises ArgumentError do
         render_inline Primer::Alpha::AutoComplete.new(label_text: "Fruits", src: "/url", input_id: "test-input", list_id: "my-list-id") do |component|
-          component.input(name: "some-other-name")
+          component.with_input(name: "some-other-name")
         end
       end
       assert_includes(err.message, "Set @input_name on the component initializer instead with `input_name`.")
