@@ -6,6 +6,10 @@ module Primer
 
     class RadioButton < Primer::Component
       status :alpha
+
+      # @!method initialize
+      #
+      # @param foo [String]
     end
   end
 end
