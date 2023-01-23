@@ -74,7 +74,6 @@
   "Primer::BlankslateComponent": "deprecated",
   "Primer::Box": "stable",
   "Primer::ButtonComponent": "deprecated",
-  "Primer::ClipboardCopy": "deprecated",
   "Primer::ConditionalWrapper": "alpha",
   "Primer::Content": "stable",
   "Primer::Dropdown": "deprecated",
