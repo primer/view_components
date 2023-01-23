@@ -17,10 +17,6 @@ deprecations:
     autocorrect: true
     replacement: "Primer::Beta::Blankslate"
 
-  - component: "Primer::BoxComponent"
-    autocorrect: true
-    replacement: "Primer::Box"
-
   - component: "Primer::ButtonComponent"
     autocorrect: false
     replacement: "Primer::Beta::Button"
