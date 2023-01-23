@@ -15,3 +15,6 @@ Primer/DeprecatedArguments:
 
 Primer/DeprecatedComponents:
   Enabled: true
+
+Primer/TestSelector:
+  Enabled: true
