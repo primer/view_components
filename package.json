@@ -1,6 +1,6 @@
 {
   "name": "@primer/view-components",
-  "version": "0.0.118",
+  "version": "0.0.119",
   "description": "ViewComponents for the Primer Design System",
   "main": "app/assets/javascripts/primer_view_components.js",
   "module": "app/components/primer/primer.js",
@@ -68,7 +68,7 @@
     "@rollup/plugin-typescript": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
-    "axe-core": "^4.5.1",
+    "axe-core": "^4.6.2",
     "chokidar-cli": "^3.0.0",
     "cssnano": "^5.1.13",
     "eslint": "^8.23.1",
