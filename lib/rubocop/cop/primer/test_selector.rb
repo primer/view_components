@@ -11,11 +11,11 @@ module RuboCop
       #
       # Bad:
       #
-      # Component.new(data: { "test-selector": "the-component" })
+      # Primer::BaseComponent.new(data: { "test-selector": "the-component" })
       #
       # Good:
       #
-      # Component.new(test_selector: "the-component")
+      # Primer::BaseComponent.new(test_selector: "the-component")
       class TestSelector < BaseCop
         INVALID_MESSAGE = <<~STR
           Prefer the `test_selector` argument over manually generating a `data-test-selector` attribute: https://primer.style/view-components/system-arguments.
