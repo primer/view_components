@@ -26,7 +26,7 @@ class RubocopTestSelectorTest < CopTestCase
 
   def test_non_primer_view_helper
     investigate(cop, <<-RUBY)
-      octicon(data: { "test-selector": "the-component" })
+      octicon(data: { "test-selector": "the-octicon" })
     RUBY
 
     assert_empty cop.offenses
