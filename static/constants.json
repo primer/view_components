@@ -1000,8 +1000,6 @@
   },
   "Primer::Box": {
   },
-  "Primer::BoxComponent": {
-  },
   "Primer::ButtonComponent": {
     "DEFAULT_SCHEME": "default",
     "DEFAULT_SIZE": "medium",
