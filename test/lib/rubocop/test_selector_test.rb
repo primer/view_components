@@ -15,9 +15,18 @@ class RubocopTestSelectorTest < CopTestCase
     assert_empty cop.offenses
   end
 
-  def test_primer_component
+  def test_primer_component_with_symbol_key
     investigate(cop, <<-RUBY)
       Primer::BaseComponent.new(data: { "test-selector": "the-component" })
+    RUBY
+
+    assert_equal 1, cop.offenses.count
+    assert_equal "Prefer the `test_selector` argument over manually generating a `data-test-selector` attribute: https://primer.style/view-components/system-arguments.\n", cop.offenses.first.message
+  end
+
+  def test_primer_component_with_string_key
+    investigate(cop, <<-RUBY)
+      Primer::BaseComponent.new(data: { "test-selector" => "the-component" })
     RUBY
 
     assert_equal 1, cop.offenses.count
