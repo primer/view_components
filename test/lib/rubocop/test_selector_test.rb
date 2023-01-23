@@ -23,4 +23,12 @@ class RubocopTestSelectorTest < CopTestCase
     assert_equal 1, cop.offenses.count
     assert_equal "Prefer the `test_selector` argument over manually generating a `data-test-selector` attribute: https://primer.style/view-components/system-arguments.\n", cop.offenses.first.message
   end
+
+  def test_non_primer_view_helper
+    investigate(cop, <<-RUBY)
+      octicon(data: { "test-selector": "the-component" })
+    RUBY
+
+    assert_empty cop.offenses
+  end
 end
