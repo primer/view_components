@@ -131,7 +131,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
-      "Primer::BoxComponent",
       "Primer::PopoverComponent",
       "Primer::Dropdown",
       "Primer::Dropdown::Menu"
