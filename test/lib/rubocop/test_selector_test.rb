@@ -57,4 +57,12 @@ class RubocopTestSelectorTest < CopTestCase
 
     assert_empty cop.offenses
   end
+
+  def test_data_with_no_test_selector
+    investigate(cop, <<-RUBY)
+      Primer::BaseComponent.new(data: { "some-other" => "data-thing" })
+    RUBY
+
+    assert_empty cop.offenses
+  end
 end
