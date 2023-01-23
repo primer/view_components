@@ -75,7 +75,6 @@
   "Primer::Box": "stable",
   "Primer::BoxComponent": "deprecated",
   "Primer::ButtonComponent": "deprecated",
-  "Primer::ClipboardCopy": "deprecated",
   "Primer::ConditionalWrapper": "alpha",
   "Primer::Content": "stable",
   "Primer::Dropdown": "deprecated",
