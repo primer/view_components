@@ -159,6 +159,12 @@ module Primer
         end
       end
       # @!endgroup
+
+      # @!group With aria labeled headings
+      def with_subhead_actions; end
+
+      def with_label_and_caption; end
+      # @!endgroup
     end
   end
 end

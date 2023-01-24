@@ -61,6 +61,30 @@ module Primer
       #     <%= component.with_item(label: "Blame", icon: :people) %>
       #   <% end %>
       #
+      # @example With subheading and description
+      #   <%= render(Primer::Beta::Subhead.new) do |component| %>
+      #     <% component.with_heading(id: "scLabel-vert") { "File view" } %>
+      #     <% component.with_description(id: "scCaption-vert") { "Change the way the file is viewed" } %>
+      #     <% component.with_actions do %>
+      #       <%= render(Primer::Alpha::SegmentedControl.new("aria-labelledby": "scLabel-vert", "aria-describedby": "scCaption-vert")) do |component| %>
+      #         <% component.with_item(label: "Preview", selected: true) %>
+      #         <% component.with_item(label: "Raw") %>
+      #         <% component.with_item(label: "Blame") %>
+      #       <% end %>
+      #     <% end %>
+      #   <% end %>
+      #
+      # @example With Label and caption
+      #   <%= render(Primer::Box.new(display: :flex, direction: :column)) do %>
+      #     <%= render(Primer::BaseComponent.new(tag: "label", id: "scLabel-horiz")) { "File view" } %>
+      #     <%= render(Primer::Alpha::SegmentedControl.new("aria-labelledby": "scLabel-horiz", "aria-describedby": "scCaption-horiz")) do |component| %>
+      #       <% component.with_item(label: "Preview", selected: true) %>
+      #       <% component.with_item(label: "Raw") %>
+      #       <% component.with_item(label: "Blame") %>
+      #     <% end %>
+      #     <%= render(Primer::Beta::Text.new(font_size: :small, mt: 1, color: :muted, id: "scCaption-horiz")) { "Change the way the file is viewed" } %>
+      #   <% end %>
+      #
       # @param hide_labels [Boolean] Whether to hide the labels and only show the icons
       # @param full_width [Boolean] If the component should be full width
       # @param size [Symbol] <%= one_of(Primer::Beta::Button::SIZE_OPTIONS) %>
@@ -79,6 +103,8 @@ module Primer
           "SegmentedControl--iconOnly": hide_labels,
           "SegmentedControl--fullWidth": full_width
         )
+
+        validate_aria_labeled
       end
 
       def render?
