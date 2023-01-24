@@ -97,7 +97,7 @@ module Primer
           render_inline(Primer::Alpha::SegmentedControl.new)
         end
 
-        assert_equal("`aria-label`, `aria-labelledby` or `aria-describedby` is required.", err.message)
+        assert_equal("`aria-label` or `aria-labelledby` is required.", err.message)
       end
     end
   end
