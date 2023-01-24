@@ -99,7 +99,7 @@ module Primer
         end
 
         def components_without_docs
-          @components_without_docs ||= @all_components - components_with_docs.map { |c| c[:class] }
+          @components_without_docs ||= all_components - components_with_docs
         end
 
         def components_with_examples

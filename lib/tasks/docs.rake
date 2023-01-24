@@ -21,9 +21,10 @@ namespace :docs do
     sleep
   end
 
-  task :build do
-    init_pvc
-    registry = generate_yard_registry
+  task build: [:build_gatsby, :build_gatsby_adrs, :build_forms]
+
+  task build_gatsby: :build_yard_registry do
+    registry = Primer::YARD::Registry.make
 
     require "primer/yard/legacy_markdown_backend"
 
@@ -44,17 +45,11 @@ namespace :docs do
       puts "\n\n==============================================="
       puts "==============================================="
       puts "==============================================="
-
-      raise
     end
 
     File.open("static/arguments.json", "w") do |f|
       f.puts JSON.pretty_generate(args_for_components)
     end
-
-    # Copy over ADR docs and insert them into the nav
-    puts "Copying ADRs..."
-    Rake::Task["docs:build_adrs"].invoke
 
     puts "Markdown compiled."
 
@@ -66,20 +61,17 @@ namespace :docs do
     end
   end
 
-  task :build_forms do
-    init_pvc
-
+  task build_forms: :build_yard_registry do
     require "pry-byebug"
     require "primer/yard/registry"
     require "primer/yard/lookbook_pages_backend"
 
-    registry = generate_yard_registry
-    # registry = Primer::YARD::Registry.make
+    registry = Primer::YARD::Registry.make
     backend = Primer::YARD::LookbookPagesBackend.new(registry)
     backend.generate
   end
 
-  task :build_adrs do
+  task :build_gatsby_adrs do
     adr_content_dir = File.join(*%w[docs content adr])
 
     FileUtils.rm_rf(File.join(adr_content_dir))
@@ -124,8 +116,8 @@ namespace :docs do
     File.write(nav_yaml_file, YAML.dump(nav_yaml))
   end
 
-  task :preview do
-    registry = generate_yard_registry
+  task preview: :build_yard_registry do
+    registry = Primer::YARD::Registry.make
 
     require "primer/yard/legacy_markdown_backend"
 
@@ -165,13 +157,13 @@ namespace :docs do
     end
   end
 
-  def init_pvc
+  task :init_pvc do
     ENV["RAILS_ENV"] = "test"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
     Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
   end
 
-  def generate_yard_registry
+  task build_yard_registry: :init_pvc do
     require "primer/yard/registry"
 
     ::YARD::Rake::YardocTask.new do |task|
@@ -186,7 +178,5 @@ namespace :docs do
 
     puts "Building YARD documentation."
     Rake::Task["yard"].execute
-
-    Primer::YARD::Registry.make
   end
 end
