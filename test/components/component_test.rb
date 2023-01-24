@@ -121,7 +121,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::OcticonComponent",
       "Primer::Markdown",
       "Primer::MenuComponent",
-      "Primer::ClipboardCopy",
       "Primer::LabelComponent",
       "Primer::LinkComponent",
       "Primer::Alpha::ActionList::Heading",
@@ -131,7 +130,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Component",
       "Primer::OcticonsSymbolComponent",
       "Primer::Content",
-      "Primer::BoxComponent",
       "Primer::PopoverComponent",
       "Primer::Dropdown",
       "Primer::Dropdown::Menu"

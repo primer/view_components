@@ -82,3 +82,6 @@ Primer/DeprecatedLabelVariants:
   Enabled: true
   Exclude:
     - "test/**/*"
+
+Primer/TestSelector:
+  Enabled: true

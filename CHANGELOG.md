@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.0.119
+
+### Patch Changes
+
+- [#1763](https://github.com/primer/view_components/pull/1763) [`a2c5b4c9`](https://github.com/primer/view_components/commit/a2c5b4c9f73554a401a58902da1b4d247a6408b8) Thanks [@neall](https://github.com/neall)! - Standardize how we generate ids for HTML
+
+* [#1588](https://github.com/primer/view_components/pull/1588) [`e389a554`](https://github.com/primer/view_components/commit/e389a554a05ec3dd12dbf139b2158caa81ee904b) Thanks [@koddsson](https://github.com/koddsson)! - Update `axe-core` scanning in system tests
+
+- [#1760](https://github.com/primer/view_components/pull/1760) [`fdd7bc1e`](https://github.com/primer/view_components/commit/fdd7bc1ea3309a649586a04b3a10eeef5e1d0650) Thanks [@camertron](https://github.com/camertron)! - Show error messages when toggle switches fail
+
 ## 0.0.118
 
 ### Patch Changes

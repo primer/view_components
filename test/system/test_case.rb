@@ -4,9 +4,6 @@ require "system/test_helper"
 require "capybara/rails"
 require "capybara/minitest"
 
-require "axe/matchers/be_axe_clean"
-require "axe/expectation"
-
 require "test_helpers/cuprite_setup"
 require "test_helpers/retry"
 
@@ -16,8 +13,15 @@ module System
 
     # Skip `:region` which relates to preview page structure rather than individual component.
     # Skip `:color-contrast` which requires primer design-level change.
-    AXE_RULES_TO_SKIP = [:region, :"color-contrast"].freeze
-    AXE_WITHIN_SELECTOR = "body"
+    # Skip `:aria-required-children` is broken in 4.5: https://github.com/dequelabs/axe-core/issues/3758
+    # Skip `:link-in-text-block` which is new and seems broken.
+    AXE_RULES_TO_SKIP = %i[
+      region
+      color-contrast
+      color-contrast-enhanced
+      aria-required-children
+      link-in-text-block
+    ].freeze
 
     def visit_preview(preview_name, params = {})
       component_name = self.class.name.gsub("Test", "").gsub("Integration", "")
@@ -33,34 +37,98 @@ module System
 
       visit(url)
 
-      assert_accessible(page)
+      assert_accessible
     end
 
-    def assert_accessible(page, within: AXE_WITHIN_SELECTOR, skipping: AXE_RULES_TO_SKIP, **options)
-      options[:within] = within
-      options[:skipping] = skipping
+    def format_accessibility_errors(violations)
+      index = 0
+      results = violations.map do |summary|
+        summary["nodes"].map do |node|
+          index += 1
+          %{
+    #{index}) #{summary['id']}: #{summary['description']} (#{summary['impact']})
+    #{summary['helpUrl']}
+    The following #{node['any'].size} node violate this rule:
+      #{node['any'].map do |_violation|
+        items = node['failureSummary'].sub('Fix any of the following:', '').split("\n")
+        %(Selector: #{node['target'].join(', ')}
+      HTML: #{node['html']}
+      Fix any of the following:
+      #{items.map { |item| "- #{item.strip}" }.join}
+    )
+      end.join}
+            }
+        end.join
+      end.join
+      %(
+    Found #{violations.size} accessibility violations:
+    #{results}
+      )
+    end
 
-      is_axe_clean = Axe::Matchers::BeAxeClean.new.tap do |a|
-        options.each do |option|
-          key, value = option
-          a.send(key, *value)
-        end
-      end
+    def assert_accessible(excludes: [])
+      excludes = Set.new(AXE_RULES_TO_SKIP) + excludes
 
-      Axe::AccessibleExpectation.new.assert page, is_axe_clean
+      axe_exists = driver.evaluate_async_script <<~JS
+        const callback = arguments[arguments.length - 1];
+        callback(!!window.axe)
+      JS
+
+      results = driver.evaluate_async_script <<~JS
+        const callback = arguments[arguments.length - 1];
+        #{File.read('node_modules/axe-core/axe.min.js') unless axe_exists}
+        // Remove cyclic references
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Cyclic_object_value#examples
+        const getCircularReplacer = () => {
+          const seen = new WeakSet();
+          return (key, value) => {
+            if (typeof value === "object" && value !== null) {
+              if (seen.has(value)) {
+                return;
+              }
+              seen.add(value);
+            }
+            return value;
+          };
+        };
+        const excludedRulesConfig = {};
+        for (const rule of [#{excludes.map { |id| "'#{id}'" }.join(', ')}]) {
+          excludedRulesConfig[rule] = { enabled: false };
+        }
+        const options = {
+          elementRef: true,
+          resultTypes: ['violations'],
+          rules: {
+            ...excludedRulesConfig
+          }
+        }
+        axe.run(document.body, options).then(res => JSON.parse(JSON.stringify(res, getCircularReplacer()))).then(callback);
+      JS
+
+      violations = results["violations"]
+
+      message = format_accessibility_errors(violations)
+
+      assert violations.size.zero?, message
     end
 
     # Capybara Overrides to run accessibility checks when UI changes.
     def fill_in(locator = nil, **kwargs)
       super
 
-      assert_accessible(page)
+      assert_accessible
     end
 
     def click_button(locator = nil, **kwargs)
       super
 
-      assert_accessible(page)
+      assert_accessible
+    end
+
+    private
+
+    def driver
+      page.driver
     end
   end
 end
