@@ -51,8 +51,12 @@
     & p:last-child {
       margin-bottom: 0;
     }
+  }
 
-    & .Banner-title:not(:only-child) {
+  & .Banner-title {
+    max-width: var(--primer-breakpoint-medium, 768px);
+
+    & :not(:only-child) {
       margin-bottom: 0;
       font-weight: var(--base-text-weight-semibold, 600);
     }
@@ -113,8 +117,6 @@
     border-right: 0;
     border-left: 0;
     border-radius: 0;
-    grid-template-areas: '. visual message actions close .';
-    grid-template-columns: 1fr min-content minmax(auto,var(--primer-breakpoint-small)) minmax(0,auto) min-content 1fr;
   }
 
   @media (max-width: 767.98px) {

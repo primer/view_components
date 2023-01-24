@@ -64,6 +64,19 @@ module Primer
       def full_width_in_narrow_viewport
         render(Primer::Alpha::Banner.new(full: true, full_when_narrow: true)) { "This is a full width banner in a narrow viewport." }
       end
+
+      # @label Full width with max-width
+      def full_width_with_max_width
+        render(Primer::Alpha::Banner.new(full: true)) { "This is a full width banner with a lot of content. It has a max-width to make sure that the text doesn't exceed too long and starts wrapping onto multiple lines." }
+      end
+
+      # @label Full width with max-width and more options
+      def full_width_with_max_width_and_more_options
+        render(Primer::Alpha::Banner.new(full: true, dismissible: true)) do |component|
+          component.with_action_button(size: :small) { "Take action" }
+          "This is a full width banner with a lot of content. It has a max-width to make sure that the text does not exceed too long and starts wrapping onto multiple lines."
+        end
+      end
       #
       # @!endgroup
 
