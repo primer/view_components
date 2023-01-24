@@ -53,7 +53,7 @@ module Primer
     def validate_aria_label
       aria_label = aria("label", @system_arguments)
       aria_labelledby = aria("labelledby", @system_arguments)
-      raise ArgumentError, "`aria-label` or `aria-labelledby` is required." if (aria_label.nil? || aria_labelledby.nil?) && !Rails.env.production?
+      raise ArgumentError, "`aria-label` or `aria-labelledby` is required." if aria_label.nil? && aria_labelledby.nil? && !Rails.env.production?
     end
 
     def silence_deprecations?
