@@ -54,5 +54,10 @@ module Primer
     def self.read(stats)
       File.read(File.join(DEFAULT_STATIC_PATH, FILE_NAMES[stats]))
     end
+
+    # primer/view_components root directory.
+    def self.root
+      Pathname(File.expand_path(File.join("..", ".."), __dir__))
+    end
   end
 end

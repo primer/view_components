@@ -31,11 +31,10 @@
       <div class="asset-preview">
         <header class="asset-header">
           <%= icon :file, size: 3.5, class: "asset-icon" %>
-          <h4 class="asset-title font-mono"><%= asset.basename %></h4>
+          <h4 class="asset-title font-mono"><%= asset[:path].relative_path_from(Primer::ViewComponents.root) %></h4>
         </header>
         <div class="asset-contents">
-          <% extension = asset.extname %>
-          <%= code language: extension == ".css" ? :css : :js, line_numbers: true do %><%== File.read(asset) %><% end %>
+          <%= code language: asset[:language], line_numbers: true do %><%== File.read(asset[:path]) %><% end %>
         </div>
       </div>
     <% end %>
