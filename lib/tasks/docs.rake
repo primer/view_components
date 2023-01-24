@@ -111,7 +111,7 @@ namespace :docs do
   task preview: :build_yard_registry do
     registry = Primer::YARD::Registry.make
 
-    require "primer/yard/legacy_markdown_backend"
+    require "primer/yard/legacy_gatsby_backend"
 
     FileUtils.rm_rf("previews/primer/docs/")
 
