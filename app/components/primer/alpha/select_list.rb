@@ -4,8 +4,16 @@ module Primer
   module Alpha
     SelectList = Primer::FormComponents.from_input(Primer::Forms::Dsl::SelectListInput)
 
-    # A select list suitable for use outside a form. For a select list input suitable for use
-    # within an HTML form, see the Primer forms documentation.
+    # Select lists are single-line text inputs rendered as `<select>` tags in HTML.
+    #
+    # @form_usage
+    #   class ExampleForm < ApplicationForm
+    #     form do |example_form|
+    #       example_form.select_list(attributes) do |list|
+    #         list.option(option_attributes)
+    #       end
+    #     end
+    #   end
     class SelectList < Primer::Component
       status :alpha
 
@@ -59,7 +67,7 @@ module Primer
       #     <% c.option(label: "San Juan Island", value: "san_juan") %>
       #   <% end %>
       #
-      # @macro form_input_attributes
+      # @macro form_input_arguments
       #
       # @param multiple [Boolean] If set to true, the selection will allow multiple choices.
       # @param include_blank [Boolean, String] If set to true, an empty option will be created. If set to a string, the string will be used as the option's content and the value will be empty.
@@ -68,9 +76,10 @@ module Primer
 
       # @!method option
       #
+      # Adds an option to the list.
+      #
       # @param label [String] The user-facing label for the option.
       # @param value [String] The value sent to the server on form submission.
-      # @param system_arguments [Hash] HTML attributes to apply to the `<option>` element.
     end
   end
 end

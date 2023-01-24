@@ -22,9 +22,22 @@ module Primer
     # the input as the `data-name` attribute as a way to identify constituent inputs, and will not
     # be sent to the server.
     #
-    # Note that this `MultiInput` component is designed for use outside Primer forms. For a multi
-    # input suitable for use within a form, see the Primer forms documentation.
+    # @form_usage
+    #   class ExampleForm < ApplicationForm
+    #     form do |example_form|
+    #       example_form.multi(attributes) do |multi|
+    #         # can define any number of child inputs, for example:
+    #         multi.text_field(text_field_attributes)
+    #         multi.select_list(select_list_attributes, hidden: true) do |list|
+    #           list.option(option_attributes)
+    #           list.option(option_attributes)
+    #         end
+    #       end
+    #     end
+    #   end
     class MultiInput < Primer::Component
+      # @!parse include Primer::Forms::Dsl::InputMethods
+
       status :alpha
 
       # @!method initialize
@@ -62,8 +75,7 @@ module Primer
       #     };
       #   </script>
       #
-      # @macro form_input_attributes
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      # @macro form_input_arguments
     end
   end
 end

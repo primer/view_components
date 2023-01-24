@@ -1,0 +1,58 @@
+---
+title: Radio Button Group
+id: radio_button_group_input
+---
+
+A group of mutually exclusive radio buttons.
+
+## Usage
+
+```ruby
+class ExampleForm < ApplicationForm
+  form do |example_form|
+    example_form.radio_button_group(attributes) do |group|
+      group.radio_button(radio_button_attributes)
+    end
+  end
+end
+```
+
+
+## Common arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `name` | String | N/A | Value for the HTML name attribute. |
+| `id` | String | N/A | Value for the HTML id attribute. |
+| `class` | String | N/A | CSS classes to include in the input's HTML `class` attribute. Exists for compatibility with Rails form builders. |
+| `classes` | Array | N/A | CSS classes to include in the input's HTML `class` attribute. Combined with the `:class` argument. The list may contain strings, hashes, or `nil` values, and is automatically cleaned up by Primer's [`class_name` helper](https://github.com/primer/view_components/blob/c9cb95c98fee3e2e27f4a10683f555e22285e7f1/app/lib/primer/class_name_helper.rb) (`nils`, falsy entries, and blank strings are ignored). |
+| `caption` | String | N/A | A string describing the field and what sorts of input it expects. Displayed below the input. |
+| `label` | String | N/A | Label text displayed above the input. |
+| `visually_hide_label` | Boolean | N/A | When set to `true`, hides the label. Although the label will be hidden visually, it will still be visible to screen readers. |
+| `size` | Symbol | N/A | The size of the field. One of `:large`, `:medium`, or `:small`. |
+| `full_width` | Boolean | N/A | When set to `true`, the field will take up all the horizontal space allowed by its container. |
+| `disabled` | Boolean | N/A | When set to `true`, the input will not accept keyboard or mouse input. |
+| `hidden` | Boolean | N/A | When set to `true`, visually hides the field. |
+| `invalid` | Boolean | N/A | If set to `true`, the input will be rendered with a red border. Implied if `validation_message` is truthy. This option is set to `true` automatically if the model object associated with the form reports that the input is invalid via Rails validations. It is provided for cases where the form does not have an associated model. If the input is invalid as determined by Rails validations, setting `invalid` to `false` will have no effect. |
+| `validation_message` | String | N/A | A string displayed between the caption and the input indicating the input's contents are invalid. This option is, by default, set to the first Rails validation message for the input (assuming the form is associated with a model object). Use `validation_message` to override the default or to provide a validation message in case there is no associated model object. |
+| `label_arguments` | Hash | N/A | Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag. |
+| `scope_name_to_model` | Boolean | N/A | Default `true`. When set to `false`, prevents the model name from prefixing the field name. For example, if the field name is `my_field`, Rails will normally emit an HTML name attribute of `model[my_field]`. Setting `scope_name_to_model` to `false` will cause Rails to emit `my_field` instead. |
+| `scope_id_to_model` | Boolean | N/A | Default `true`. When set to `false`, prevents the model name from prefixing the field ID. For example, if the field name is `my_field`, Rails will normally emit an HTML ID attribute of `model_my_field`. Setting `scope_id_to_model` to `false` will cause Rails to emit `my_field` instead. |
+| `required` | Boolean | N/A | Default `false`. When set to `true`, causes an asterisk (*) to appear next to the field's label indicating it is a required field. Note that this option explicitly does _not_ add a `required` HTML attribute. Doing so would enable native browser validations, which are inaccessible and inconsistent with the Primer design system. |
+| `aria` | Hash | N/A | Key/value pairs that represent Aria attributes and their values. Eg. `aria: { current: true }` becomes `aria-current="true"`. |
+| `data` | Hash | N/A | Key/value pairs that represent data attributes and their values. Eg. `data: { foo: "bar" }` becomes `data-foo="bar"`. |
+| `system_arguments` | Hash | N/A | HTML attributes to apply to the `<option>` element. |
+
+
+## Methods
+
+### `#radio_button`
+
+Adds a radio button to the group.
+
+
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+| `system_arguments` | Hash | N/A | The arguments accepted by [RadioButton](/components/alpha/radiobutton). |
+

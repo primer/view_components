@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 require "primer/yard/component_manifest"
+require "primer/yard/backend"
 
 module Primer
   module YARD
-    class LegacyMarkdownBackend
-      include DocsHelper
-
+    class LegacyMarkdownBackend < Backend
       class << self
         def parse_example_tag(tag)
           name = tag.name
@@ -91,9 +90,7 @@ module Primer
               end
             end
 
-            params = docs.constructor.tags(:param)
-
-            errors << { component.name => { arguments: "No argument documentation found" } } unless params.any?
+            errors << { component.name => { arguments: "No argument documentation found" } } unless docs.params.any?
 
             f.puts
             f.puts("## Arguments")
@@ -101,7 +98,7 @@ module Primer
             f.puts("| Name | Type | Default | Description |")
             f.puts("| :- | :- | :- | :- |")
 
-            documented_params = params.map(&:name)
+            documented_params = docs.params.map(&:name)
             component_params = component.instance_method(:initialize).parameters.map { |p| p.last.to_s }
 
             if (documented_params & component_params).size != component_params.size
@@ -114,7 +111,7 @@ module Primer
             end
 
             args = []
-            params.each do |tag|
+            docs.params.each do |tag|
               default_value = pretty_default_value(tag, component)
 
               args << {
@@ -151,6 +148,9 @@ module Primer
               f.puts("## Methods")
 
               docs.non_slot_methods.each do |method_docs|
+                next if method_docs.parent.title != component.name
+                next if method_docs.base_docstring.strip.empty?
+
                 emit_method(method_docs, component, f)
               end
             end
@@ -269,32 +269,8 @@ module Primer
         (%w[Alpha Beta] & component.name.split("::")).any?
       end
 
-      def pretty_default_value(tag, component)
-        params = tag.object.parameters.find { |param| [tag.name.to_s, "#{tag.name}:"].include?(param[0]) }
-        default = tag.defaults&.first || params&.second
-
-        return "N/A" unless default
-
-        constant_name = "#{component.name}::#{default}"
-        constant_value = default.safe_constantize || constant_name.safe_constantize
-
-        return pretty_value(default) if constant_value.nil?
-
-        pretty_value(constant_value)
-      end
-
       def parse_example_tag(tag)
         self.class.parse_example_tag(tag)
-      end
-
-      def view_context
-        @view_context ||= begin
-          # Rails controller for rendering arbitrary ERB
-          vc = ApplicationController.new.tap { |c| c.request = ActionDispatch::TestRequest.create }.view_context
-          vc.singleton_class.include(DocsHelper)
-          vc.singleton_class.include(Primer::ViewHelper)
-          vc
-        end
       end
     end
   end

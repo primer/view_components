@@ -39,6 +39,10 @@ module Primer
         docs.meths.find(&:constructor?)
       end
 
+      def params
+        constructor.tags(:param)
+      end
+
       def slot_methods
         public_methods.select { |mtd| slot_method?(mtd) }
       end
@@ -56,7 +60,6 @@ module Primer
         # excluding the constructor
         @public_methods ||= docs.meths
           .reject { |mtd| mtd.tag(:private) || mtd.name == :initialize }
-          .select { |mtd| mtd.parent.title == component.name }
       end
 
       def title

@@ -1,0 +1,110 @@
+---
+title: "Getting started"
+id: getting_started
+---
+
+A number of the concepts in Primer Forms are borrowed from the [view_component](https://viewcomponent.org) framework. For example, forms are defined inside Ruby classes and rendered using the `#render` method.
+
+Let's create a sign up form and render it on the page.
+
+### Example for the impatient
+
+<%= code :ruby do %>
+  class SignUpForm < ApplicationForm
+    form do |sign_up_form|
+      sign_up_form.group(layout: :horizontal) do |name_group|
+        name_group.text_field(
+          name: :first_name,
+          label: "First name",
+          required: true,
+          caption: "What your friends call you."
+        )
+
+        name_group.text_field(
+          name: :last_name,
+          label: "Last name",
+          required: true,
+          caption: "What the principal calls you."
+        )
+      end
+
+      sign_up_form.text_field(
+        name: :dietary_restrictions,
+        label: "Dietary restrictions",
+        caption: "Any allergies?"
+      )
+
+      if @show_notifications_checkbox
+        sign_up_form.check_box(
+          name: :email_notifications,
+          label: "Send me gobs of email!",
+          caption: "Check this if you enjoy getting spam."
+        )
+      end
+
+      sign_up_form.submit(label: "Submit")
+    end
+
+    def initialize(show_notifications_checkbox: true)
+      @show_notifications_checkbox = show_notifications_checkbox
+    end
+  end
+<% end %>
+
+### Directory structure
+
+Autoloading is automatically enabled for any sub-directory inside a Rails' app's app/ directory. Accordingly, we recommend placing all form classes inside app/forms/.
+
+The directory structure within app/forms/ is arbitrary, but we have seen success using the same directory structure as app/controllers/. For example:
+
+```
+app
+  ╵─ controllers
+     ╵─ settings
+        ╵─ email_notifications_controller.rb
+  ╵─ forms
+     ╵─ settings
+        ╵─ email_notifications
+           ╵─ config_form.rb
+```
+
+### `ApplicationForm`
+
+Our example class above inherits from `ApplicationForm`. This follows the Rails convention of a base class that houses application-specific logic common to all forms. It's similar in purpose to `ApplicationRecord` and `ApplicationController`.
+
+Ultimately, forms must inherit from `Primer::Forms::Base`, meaning `ApplicationForm` can be as simple as:
+
+<%= code :ruby do %>
+  class ApplicationForm < Primer::Forms::Base
+    # empty body, add common methods, includes, etc here
+  end
+<% end %>
+
+Place `ApplicationForm` in app/forms/application_form.rb
+
+### Anatomy of a form
+
+Forms are just Ruby classes that inherit from `Primer::Forms::Base`. Define a form's inputs using the `form` class method, which accepts a block. The block is called with an instance of `Primer::Forms::Dsl::FormObject`, which responds to the following form input methods:
+
+* [`text_field`](<%= page_path(:text_field_input) %>): Text input field.
+* `text_area`: Text area field (multi-line).
+* [`select_list`](<%= page_path(:select_list_input) %>): Drop-down select list.
+* `check_box`: Single check box.
+* `check_box_group`: Group of related check boxes.
+* [`radio_button_group`](<%= page_path(:radio_button_group_input) %>): Group of related radio buttons.
+* `hidden`: Hidden input.
+* [`multi`](<%= page_path(:multi_input) %>): Multi input (multiple fields that look like a single field).
+* `submit`: Submit button.
+* `button`: Regular, non-submit button.
+* `separator`: Horizontal separator.
+* `fields_for`: Used for composing forms together.
+
+### Rendering
+
+Forms are rendered using the familiar Rails `#render` method:
+
+<%= code :erb do %>
+  <%%= primer_form_with(model: @user) do |f| %>
+    <%%= render SignUpForm.new(f, show_notifications_checkbox: false) %>
+  <%% end %>
+<% end %>

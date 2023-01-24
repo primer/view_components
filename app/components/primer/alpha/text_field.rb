@@ -4,8 +4,14 @@ module Primer
   module Alpha
     TextField = Primer::FormComponents.from_input(Primer::Forms::Dsl::TextFieldInput)
 
-    # A text field suitable for use outside a form. For a text field input suitable for use
-    # within an HTML form, see the Primer forms documentation.
+    # Text fields are single-line text inputs rendered as `<input type="text">` in HTML.
+    #
+    # @form_usage
+    #   class ExampleForm < ApplicationForm
+    #     form do |example_form|
+    #       example_form.text_field(attributes)
+    #     end
+    #   end
     class TextField < Primer::Component
       status :alpha
 
@@ -79,7 +85,7 @@ module Primer
       #     )
       #   ) %>
       #
-      # @macro form_input_attributes
+      # @macro form_input_arguments
       #
       # @param placeholder [String] Placeholder text.
       # @param inset [Boolean] If `true`, renders the input in a visually inset state.
@@ -87,7 +93,6 @@ module Primer
       # @param leading_visual [Hash] Renders a leading visual icon before the text field's cursor. The hash will be passed to Primer's <%= link_to_component(Primer::Beta::Octicon) component.
       # @param show_clear_button [Boolean] Whether or not to include a clear button inside the input that clears the input's contents when clicked.
       # @param clear_button_id [String] The HTML id attribute of the clear button.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
     end
   end
 end

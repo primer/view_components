@@ -4,8 +4,16 @@ module Primer
   module Alpha
     RadioButtonGroup = Primer::FormComponents.from_input(Primer::Forms::Dsl::RadioButtonGroupInput)
 
-    # A group of mutually exclusive radio buttons suitable for use outside a form. For a radio button
-    # group suitable for use within an HTML form, see the Primer forms documentation.
+    # A group of mutually exclusive radio buttons.
+    #
+    # @form_usage
+    #   class ExampleForm < ApplicationForm
+    #     form do |example_form|
+    #       example_form.radio_button_group(attributes) do |group|
+    #         group.radio_button(radio_button_attributes)
+    #       end
+    #     end
+    #   end
     class RadioButtonGroup < Primer::Component
       status :alpha
 
@@ -35,8 +43,7 @@ module Primer
       #     <% c.radio_button(label: "Benjamin L. Sisko", value: "sisko") %>
       #   <% end %>
       #
-      # @macro form_input_attributes
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
+      # @macro form_input_arguments
 
       # @!method radio_button
       #

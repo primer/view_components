@@ -1,0 +1,35 @@
+---
+title: '"After" content'
+id: after_content
+---
+
+Primer forms is designed to be accessible by default. In service of this goal, the framework intentionally limits the types of inputs, layout styles, etc that may be used to build a form. For example, consider rendering a hidden component like a dialog or tooltip that appears when a form input is hovered or clicked. Normally these hidden elements can only be rendered _outside_ the form. The hidden elements don't "travel" with the form and can be easily forgotten.
+
+For such cases, Primer forms feature "after" content. Like [caption templates](<%= page_path(:caption_templates) %>), after content lives in a directory named after the form, specifically in a file called after\_content.html.erb. If present, after\_content.html.erb is rendered after the last form input.
+
+## Example
+
+<%= code :ruby do %>
+  # app/forms/example_form.rb
+  class ExampleForm < ApplicationForm
+    form do |example_form|
+      example_form.text_field(
+        name: :name,
+        label: "Name",
+        id: "my-text-field"
+      )
+    end
+  end
+<% end %>
+
+<%= code :erb do %>
+  <%%# app/forms/example_form/after_content.html.erb %>
+  <%%= render(
+    Primer::Alpha::Tooltip.new(
+      for_id: "my-text-field",
+      type: :description,
+      text: "Some tooltip text",
+      direction: :ne
+    )
+  ) %>
+<% end %>

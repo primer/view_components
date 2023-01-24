@@ -7,7 +7,7 @@ module Primer
       class Input
         # Use this macro anywhere you want to include the various params all inputs can receive.
         #
-        # @!macro [new] form_input_attributes
+        # @!macro [new] form_input_arguments
         #   @param name [String] Value for the HTML name attribute.
         #   @param id [String] Value for the HTML id attribute.
         #   @param class [String] CSS classes to include in the input's HTML `class` attribute. Exists for compatibility with Rails form builders.
@@ -27,6 +27,7 @@ module Primer
         #   @param required [Boolean] Default `false`. When set to `true`, causes an asterisk (*) to appear next to the field's label indicating it is a required field. Note that this option explicitly does _not_ add a `required` HTML attribute. Doing so would enable native browser validations, which are inaccessible and inconsistent with the Primer design system.
         #   @param aria [Hash] Key/value pairs that represent Aria attributes and their values. Eg. `aria: { current: true }` becomes `aria-current="true"`.
         #   @param data [Hash] Key/value pairs that represent data attributes and their values. Eg. `data: { foo: "bar" }` becomes `data-foo="bar"`.
+        #   @param system_arguments [Hash] HTML attributes to apply to the `<option>` element.
 
         SPACE_DELIMITED_ARIA_ATTRIBUTES = %i[describedby].freeze
         DEFAULT_SIZE = :medium

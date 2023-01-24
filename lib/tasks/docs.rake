@@ -22,6 +22,7 @@ namespace :docs do
   end
 
   task :build do
+    init_pvc
     registry = generate_yard_registry
 
     require "primer/yard/legacy_markdown_backend"
@@ -63,6 +64,19 @@ namespace :docs do
       puts
       puts "The following components needs docs. Care to contribute them? #{components_needing_docs.map(&:name).join(', ')}"
     end
+  end
+
+  task :build_forms do
+    init_pvc
+
+    require "pry-byebug"
+    require "primer/yard/registry"
+    require "primer/yard/lookbook_pages_backend"
+
+    registry = generate_yard_registry
+    # registry = Primer::YARD::Registry.make
+    backend = Primer::YARD::LookbookPagesBackend.new(registry)
+    backend.generate
   end
 
   task :build_adrs do
@@ -151,19 +165,24 @@ namespace :docs do
     end
   end
 
-  def generate_yard_registry
+  def init_pvc
     ENV["RAILS_ENV"] = "test"
     require File.expand_path("./../../demo/config/environment.rb", __dir__)
+    Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
+  end
+
+  def generate_yard_registry
     require "primer/yard/registry"
 
-    Dir["./app/components/primer/**/*.rb"].sort.each { |file| require file }
-
-    ::YARD::Rake::YardocTask.new
+    ::YARD::Rake::YardocTask.new do |task|
+      task.options << "--no-output"
+    end
 
     # Custom tags for yard
     ::YARD::Tags::Library.define_tag("Accessibility", :accessibility)
     ::YARD::Tags::Library.define_tag("Deprecation", :deprecation)
     ::YARD::Tags::Library.define_tag("Parameter", :param, :with_types_name_and_default)
+    ::YARD::Tags::Library.define_tag("Form Usage", :form_usage)
 
     puts "Building YARD documentation."
     Rake::Task["yard"].execute
