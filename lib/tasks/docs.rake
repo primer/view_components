@@ -34,7 +34,7 @@ namespace :docs do
     components_content_glob = File.join(*%w[docs content components ** *.md])
     FileUtils.rm_rf(components_content_glob)
 
-    backend = Primer::YARD::LegacyMarkdownBackend.new(registry)
+    backend = Primer::YARD::LegacyGatsbyBackend.new(registry)
     args_for_components, errors = backend.generate
 
     unless errors.empty?
@@ -140,7 +140,7 @@ namespace :docs do
         f.puts("  class #{docs.short_name}Preview < ViewComponent::Preview")
 
         yard_example_tags.each_with_index do |tag, index|
-          name, _, code = Primer::YARD::LegacyMarkdownBackend.parse_example_tag(tag)
+          name, _, code = Primer::YARD::LegacyGatsbyBackend.parse_example_tag(tag)
           method_name = name.split("|").first.downcase.parameterize.underscore
           f.puts("    def #{method_name}; end")
           f.puts unless index == yard_example_tags.size - 1

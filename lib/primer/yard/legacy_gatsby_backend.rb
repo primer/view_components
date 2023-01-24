@@ -5,7 +5,7 @@ require "primer/yard/backend"
 
 module Primer
   module YARD
-    class LegacyMarkdownBackend < Backend
+    class LegacyGatsbyBackend < Backend
       class << self
         def parse_example_tag(tag)
           name = tag.name
