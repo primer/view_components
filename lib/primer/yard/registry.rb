@@ -6,6 +6,8 @@ require "view_component/test_helpers"
 
 module Primer
   module YARD
+    # A wrapper around a YARD class reference that provides convenience methods
+    # for extracting component parameters, accessibility status, etc.
     class RegistryEntry
       include DocsHelper
 
@@ -58,8 +60,8 @@ module Primer
       def public_methods
         # Returns: only public methods that belong to this class (i.e. no inherited methods)
         # excluding the constructor
-        @public_methods ||= docs.meths
-          .reject { |mtd| mtd.tag(:private) || mtd.name == :initialize }
+        @public_methods ||=
+          docs.meths.reject { |mtd| mtd.tag(:private) || mtd.name == :initialize }
       end
 
       def title
@@ -101,7 +103,8 @@ module Primer
       end
     end
 
-
+    # Wrapper around an instance of YARD::Registry that provides easy access to component
+    # documentation.
     class Registry
       class << self
         include ViewComponent::TestHelpers
@@ -125,9 +128,9 @@ module Primer
       def find(component)
         return entries[component] if entries.include?(component)
 
-        if (docs = yard_registry.get(component.name))
-          entries[component] = RegistryEntry.new(component, docs)
-        end
+        return unless (docs = yard_registry.get(component.name))
+
+        entries[component] = RegistryEntry.new(component, docs)
       end
 
       private

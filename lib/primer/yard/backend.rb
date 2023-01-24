@@ -2,6 +2,7 @@
 
 module Primer
   module YARD
+    # Shared functionality for generating documentation from YARD comments.
     class Backend
       include DocsHelper
 
