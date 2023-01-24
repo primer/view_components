@@ -104,7 +104,7 @@ module Primer
           "SegmentedControl--fullWidth": full_width
         )
 
-        validate_aria_labeled
+        validate_aria_label
       end
 
       def render?
