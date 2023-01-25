@@ -5,6 +5,9 @@ source "https://rubygems.org"
 gemspec
 rails_version = (ENV["RAILS_VERSION"] || "7.0.3").to_s
 
+# remove when https://github.com/rails/rails/pull/47142 is merged
+gem "rack", "~> 2.0"
+
 gem "rack-cors"
 gem "rake", "~> 13.0"
 

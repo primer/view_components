@@ -79,7 +79,6 @@
   "Primer::Dropdown": "deprecated",
   "Primer::Dropdown::Menu": "deprecated",
   "Primer::Dropdown::Menu::Item": "deprecated",
-  "Primer::DropdownMenuComponent": "deprecated",
   "Primer::HellipButton": "deprecated",
   "Primer::IconButton": "deprecated",
   "Primer::LabelComponent": "deprecated",

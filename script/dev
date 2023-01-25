@@ -22,7 +22,7 @@ esac; done
 
 if [ -n "$debug" ]; then
   mkdir -p tmp/pids
-  overmind start --processes doctocat,assets > tmp/lookbook.log 2>&1 &
+  overmind start --processes js,css > tmp/lookbook.log 2>&1 &
   echo $! > tmp/pids/lookbook.pid
 
   # ensure we cleanup tmp files and overmind

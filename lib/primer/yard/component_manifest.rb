@@ -36,7 +36,6 @@ module Primer
         Primer::Beta::Details => {},
         Primer::Alpha::Dialog => {},
         Primer::Alpha::Dropdown => { js: true },
-        Primer::DropdownMenuComponent => {},
         Primer::Beta::Flash => {},
         Primer::Beta::Heading => {},
         Primer::Alpha::HiddenTextExpander => {},
