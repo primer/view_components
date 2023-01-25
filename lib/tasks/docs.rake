@@ -60,7 +60,6 @@ namespace :docs do
       Primer::Beta::Details,
       Primer::Alpha::Dialog,
       Primer::Alpha::Dropdown,
-      Primer::DropdownMenuComponent,
       Primer::Beta::Flash,
       Primer::Beta::Heading,
       Primer::Alpha::HiddenTextExpander,
