@@ -27,4 +27,8 @@ class Primer::ViewComponentsTest < Minitest::Test
 
     assert_equal JSON.pretty_generate(Primer::ViewComponents.generate_audited_at), Primer::ViewComponents.read(:audited_at).chomp
   end
+
+  def test_root
+    assert Primer::ViewComponents.root.join("app", "components", "primer", "base_component.rb").exist?
+  end
 end
