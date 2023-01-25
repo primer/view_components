@@ -110,8 +110,6 @@ jobs:
       env:
         RUBY_VERSION: ${{ matrix.ruby_version }}
         RAILS_VERSION: ${{ matrix.rails_version }}
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
     - name: Test
       run: |
         bundle exec rake test:lib

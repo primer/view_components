@@ -262,6 +262,7 @@ DEPENDENCIES
   primer_view_components!
   pry
   puma (~> 5.6.4)
+  rack (~> 2.0)
   rack-cors
   railties (= 7.0.3)
   rake (~> 13.0)
