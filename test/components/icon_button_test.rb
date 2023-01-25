@@ -53,7 +53,7 @@ class PrimerIconButtonTest < Minitest::Test
       render_inline(Primer::IconButton.new(icon: :star))
     end
 
-    assert_equal("`aria-label` is required.", err.message)
+    assert_equal("`aria-label` or `aria-labelledby` is required.", err.message)
   end
 
   def test_does_not_raise_if_aria_label_is_provided_as_an_object
