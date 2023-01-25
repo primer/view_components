@@ -2232,38 +2232,6 @@
     ]
   },
   {
-    "component": "DropdownMenu",
-    "status": "deprecated",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/dropdown_menu_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/dropdown_menu/default/",
-    "parameters": [
-      {
-        "name": "direction",
-        "type": "Symbol",
-        "default": "`:se`",
-        "description": "One of `:e`, `:ne`, `:s`, `:se`, `:sw`, or `:w`."
-      },
-      {
-        "name": "scheme",
-        "type": "Symbol",
-        "default": "`:default`",
-        "description": "Pass `:dark` for dark mode theming"
-      },
-      {
-        "name": "header",
-        "type": "String",
-        "default": "`nil`",
-        "description": "Optional string to display as the header"
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
     "component": "IconButton",
     "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/icon_button.rb",
