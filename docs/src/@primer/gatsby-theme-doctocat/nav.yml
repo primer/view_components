@@ -125,8 +125,6 @@
     url: "/components/box"
   - title: ButtonComponent
     url: "/components/button"
-  - title: DropdownMenuComponent
-    url: "/components/dropdownmenu"
   - title: IconButton
     url: "/components/iconbutton"
   - title: LocalTime

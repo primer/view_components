@@ -77,7 +77,6 @@ class PrimerComponentTest < Minitest::Test
       end
     end],
     [Primer::Alpha::Dropdown::Menu, {}],
-    [Primer::DropdownMenuComponent, {}],
     [Primer::Beta::Flash, {}],
     [Primer::Beta::Heading, { tag: :h1 }],
     [Primer::Alpha::HiddenTextExpander, { "aria-label": "No action" }],

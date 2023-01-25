@@ -31,8 +31,8 @@ options.
 
 ```yml
 - component: [string]
-  autocorrect: [boolean] 
-  replacement: [string] 
+  autocorrect: [boolean]
+  replacement: [string]
   guide: [string]
 ```
 
@@ -97,7 +97,7 @@ configurations for more information.
 4. A non-autocorrectable deprecation, without a replacement component, and with a guide to alternatives
 
 ```yml
-  - component: "Primer::DropdownMenuComponent"
+  - component: "Primer::DeprecatedComponent"
     autocorrect: false
     guide: "https://example.com/dropdown_menu_alternatives"
 ```

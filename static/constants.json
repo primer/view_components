@@ -1041,22 +1041,6 @@
   },
   "Primer::Dropdown::Menu::Item": {
   },
-  "Primer::DropdownMenuComponent": {
-    "DIRECTION_DEFAULT": "se",
-    "DIRECTION_OPTIONS": [
-      "se",
-      "sw",
-      "w",
-      "e",
-      "ne",
-      "s"
-    ],
-    "SCHEME_DEFAULT": "default",
-    "SCHEME_MAPPINGS": {
-      "default": "",
-      "dark": "dropdown-menu-dark"
-    }
-  },
   "Primer::HellipButton": {
   },
   "Primer::IconButton": {

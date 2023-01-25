@@ -55,7 +55,7 @@ module Demo
           assets += data.examples.each_with_object([]) do |rendered_example, memo|
             form_constants = rendered_example.source.match(/([\w:]+Form)\.new/)&.captures || []
             form_constants.each do |form_constant|
-              path, _ = Kernel.const_source_location(form_constant)
+              path, = Kernel.const_source_location(form_constant)
               memo << { path: Pathname(path), language: :ruby }
 
               const = Kernel.const_get(form_constant)
