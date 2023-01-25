@@ -81,6 +81,7 @@ export class ModalDialogElement extends HTMLElement {
       if (this.open) return
       this.setAttribute('open', '')
       this.#overlayBackdrop?.classList.remove('Overlay--hidden')
+      document.body.style.paddingRight = `${window.innerWidth - document.body.clientWidth}px`
       document.body.style.overflow = 'hidden'
       if (this.#focusAbortController.signal.aborted) {
         this.#focusAbortController = new AbortController()
@@ -91,6 +92,7 @@ export class ModalDialogElement extends HTMLElement {
       if (!this.open) return
       this.removeAttribute('open')
       this.#overlayBackdrop?.classList.add('Overlay--hidden')
+      document.body.style.paddingRight = '0'
       document.body.style.overflow = 'initial'
       this.#focusAbortController.abort()
       // if #openButton is a child of a menu, we need to focus a suitable child of the menu
