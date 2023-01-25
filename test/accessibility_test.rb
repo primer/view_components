@@ -12,6 +12,7 @@ class AccessibilityTest < System::TestCase
     Primer::Beta::AutoCompleteItemPreview
     Docs::AutoCompleteItemPreview
     Docs::BetaAutoCompleteItemPreview
+    Docs::NavigationTabPreview
     Docs::NavigationTabComponentPreview
   ].freeze
 
