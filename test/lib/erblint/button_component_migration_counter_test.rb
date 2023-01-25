@@ -24,28 +24,28 @@ class ButtonComponentMigrationCounterTest < ErblintTestCase
     @file = "<button class=\"btn btn-sm btn-primary\">Button</button>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::ButtonComponent.new(size: :small, scheme: :primary)")
+    assert_includes(offenses.first.message, "render Primer::Beta::Button.new(size: :small, scheme: :primary)")
   end
 
   def test_suggests_how_to_use_the_component_as_link
     @file = "<button class=\"btn-link\">Button</button>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::ButtonComponent.new(scheme: :link)")
+    assert_includes(offenses.first.message, "render Primer::Beta::Button.new(scheme: :link)")
   end
 
   def test_suggest_when_button_is_disabled
     @file = "<button class=\"btn\" disabled>Button</button>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::ButtonComponent.new(disabled: true)")
+    assert_includes(offenses.first.message, "render Primer::Beta::Button.new(disabled: true)")
   end
 
   def test_suggest_using_the_tag_system_argument
     @file = "<a class=\"btn\">Button</a>"
     @linter.run(processed_source)
 
-    assert_includes(offenses.first.message, "render Primer::ButtonComponent.new(tag: :a)")
+    assert_includes(offenses.first.message, "render Primer::Beta::Button.new(tag: :a)")
   end
 
   def test_autocorrects
@@ -74,19 +74,19 @@ class ButtonComponentMigrationCounterTest < ErblintTestCase
 
     expected = <<~HTML
       <%# erblint:counter ButtonComponentMigrationCounter 1 %>
-      <%= render Primer::ButtonComponent.new(scheme: :primary) do %>
+      <%= render Primer::Beta::Button.new(scheme: :primary) do %>
         button 1
         <button invalid-attr class="btn">
           Can't be autocorrected
         </button>
-        <%= render Primer::ButtonComponent.new(scheme: :danger) do %>
+        <%= render Primer::Beta::Button.new(scheme: :danger) do %>
           button 2
-          <%= render Primer::ButtonComponent.new(scheme: :outline) do %>
+          <%= render Primer::Beta::Button.new(scheme: :outline) do %>
             button 3
             <a>not a button</a>
-            <%= render Primer::ButtonComponent.new(tag: :summary, size: :small) do %>
+            <%= render Primer::Beta::Button.new(tag: :summary, size: :small) do %>
               summary
-              <%= render Primer::ButtonComponent.new(tag: :a, test_selector: "test selector") do %>
+              <%= render Primer::Beta::Button.new(tag: :a, test_selector: "test selector") do %>
                 a
               <% end %>
             <% end %>
@@ -107,7 +107,7 @@ class ButtonComponentMigrationCounterTest < ErblintTestCase
     HTML
 
     expected = <<~HTML
-      <%= render Primer::ButtonComponent.new(href: "href", value: "value", name: "name", tabindex: "tabindex") do %>
+      <%= render Primer::Beta::Button.new(href: "href", value: "value", name: "name", tabindex: "tabindex") do %>
         button
       <% end %>
     HTML
