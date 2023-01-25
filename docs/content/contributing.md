@@ -115,7 +115,7 @@ To minimize the number of restarts, we recommend checking the component in Lookb
 0. Make sure the tests pass on your machine
 0. Create a new branch: `git checkout -b my-branch-name`
 0. Make your change, add tests, and make sure the tests still pass
-0. 1. Add a [changeset](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md) for your changes
+0. Add a [changeset](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md) for your changes if needed
 0. Push to your fork and [submit a pull request](https://github.com/primer/view_components/compare)
 0. Pat yourself on the back and wait for your pull request to be reviewed and merged.
 
