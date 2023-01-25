@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nocov:
 module Primer
   module YARD
     # The set of documented components (and associated metadata).
@@ -119,3 +120,4 @@ module Primer
     end
   end
 end
+# :nocov:

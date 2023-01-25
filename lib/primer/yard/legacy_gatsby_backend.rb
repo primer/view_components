@@ -2,6 +2,8 @@
 
 # rubocop:disable Naming/MethodParameterName
 
+# :nocov:
+
 require "primer/yard/component_manifest"
 require "primer/yard/backend"
 
@@ -264,5 +266,6 @@ module Primer
     end
   end
 end
+# :nocov:
 
 # rubocop:enable Naming/MethodParameterName

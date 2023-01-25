@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nocov:
 module Primer
   module YARD
     # Shared functionality for generating documentation from YARD comments.
@@ -34,3 +35,4 @@ module Primer
     end
   end
 end
+# :nocov:

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# :nocov:
+
 require "primer/view_components"
 require "primer/yard/docs_helper"
 require "view_component/test_helpers"
@@ -141,3 +143,4 @@ module Primer
     end
   end
 end
+# :nocov:
