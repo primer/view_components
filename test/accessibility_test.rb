@@ -10,6 +10,7 @@ class AccessibilityTest < System::TestCase
   IGNORED_PREVIEWS = %w[
     Primer::Beta::MarkdownPreview
     Primer::Beta::AutoCompleteItemPreview
+    Docs::AutoCompleteItemPreview
     Docs::BetaAutoCompleteItemPreview
     Docs::NavigationTabComponentPreview
   ].freeze
