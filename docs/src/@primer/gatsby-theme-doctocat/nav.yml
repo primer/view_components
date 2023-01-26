@@ -39,6 +39,10 @@
     url: "/components/beta/buttongroup"
   - title: ButtonMarketing
     url: "/components/alpha/buttonmarketing"
+  - title: CheckBox
+    url: "/components/alpha/checkbox"
+  - title: CheckBoxGroup
+    url: "/components/alpha/checkboxgroup"
   - title: ClipboardCopy
     url: "/components/beta/clipboardcopy"
   - title: CloseButton
@@ -73,6 +77,8 @@
     url: "/components/beta/markdown"
   - title: Menu
     url: "/components/alpha/menu"
+  - title: MultiInput
+    url: "/components/alpha/multiinput"
   - title: NavList
     url: "/components/alpha/navlist"
   - title: Octicon
@@ -83,6 +89,10 @@
     url: "/components/beta/popover"
   - title: ProgressBar
     url: "/components/beta/progressbar"
+  - title: RadioButton
+    url: "/components/alpha/radiobutton"
+  - title: RadioButtonGroup
+    url: "/components/alpha/radiobuttongroup"
   - title: RelativeTime
     url: "/components/beta/relativetime"
   - title: SegmentedControl

@@ -148,7 +148,6 @@ module Primer
               f.puts("## Methods")
 
               docs.non_slot_methods.each do |method_docs|
-                next if method_docs.parent.title != component.name
                 next if method_docs.base_docstring.strip.empty?
 
                 emit_method(method_docs, component, f)
