@@ -35,7 +35,6 @@ module Primer
         Primer::Beta::Details => {},
         Primer::Alpha::Dialog => {},
         Primer::Alpha::Dropdown => { js: true },
-        Primer::DropdownMenuComponent => {},
         Primer::Beta::Flash => {},
         Primer::Beta::Heading => {},
         Primer::Alpha::HiddenTextExpander => {},
@@ -82,7 +81,9 @@ module Primer
         Primer::Alpha::SelectList => { form_component: true },
         Primer::Alpha::MultiInput => { form_component: true, js: true },
         Primer::Alpha::RadioButton => { form_component: true },
-        Primer::Alpha::RadioButtonGroup => { form_component: true }
+        Primer::Alpha::RadioButtonGroup => { form_component: true },
+        Primer::Alpha::CheckBox => { form_component: true },
+        Primer::Alpha::CheckBoxGroup => { form_component: true },
       }
 
       class << self

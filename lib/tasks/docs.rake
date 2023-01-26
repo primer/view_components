@@ -62,7 +62,6 @@ namespace :docs do
   end
 
   task build_forms: :build_yard_registry do
-    require "pry-byebug"
     require "primer/yard/registry"
     require "primer/yard/lookbook_pages_backend"
 

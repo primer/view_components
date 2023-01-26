@@ -43,13 +43,16 @@ module Primer
       #     <% c.radio_button(label: "Benjamin L. Sisko", value: "sisko") %>
       #   <% end %>
       #
-      # @macro form_input_arguments
+      # @param hidden [Boolean] When set to `true`, visually hides the group.
+      # @param caption [String] A string describing the field and what sorts of input it expects. Displayed below the group.
+      # @param label_arguments [Hash] Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag.
 
       # @!method radio_button
       #
       # Adds a radio button to the group.
       #
       # @param system_arguments [Hash] The arguments accepted by <%= link_to_component(Primer::Alpha::RadioButton) %>.
+      # @param block [Proc] The block accepted by <%= link_to_component(Primer::Alpha::RadioButton) %>.
     end
   end
 end

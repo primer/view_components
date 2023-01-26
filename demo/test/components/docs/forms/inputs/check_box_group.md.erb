@@ -1,17 +1,17 @@
 ---
-title: Radio Button Group
-id: radio_button_group_input
+title: Check Box Group
+id: check_box_group_input
 ---
 
-A group of mutually exclusive radio buttons.
+Check boxes are true/false inputs rendered as `<input type="checkbox">` in HTML.
 
 ## Usage
 
 ```ruby
 class ExampleForm < ApplicationForm
   form do |example_form|
-    example_form.radio_button_group(attributes) do |group|
-      group.radio_button(radio_button_attributes)
+    example_form.check_box_group(attributes) do |group|
+      group.check_box(check_box_attributes)
     end
   end
 end
@@ -29,14 +29,14 @@ end
 
 ## Methods
 
-### `#radio_button`
+### `#check_box`
 
-Adds a radio button to the group.
+Adds a check box to the group.
 
 
 
 | Name | Type | Default | Description |
 | :- | :- | :- | :- |
-| `system_arguments` | Hash | N/A | The arguments accepted by [RadioButton](/components/alpha/radiobutton). |
-| `block` | Proc | N/A | The block accepted by [RadioButton](/components/alpha/radiobutton). |
+| `system_arguments` | Hash | N/A | The arguments accepted by [CheckBox](/components/alpha/checkbox). |
+| `block` | Proc | N/A | The block accepted by [CheckBox](/components/alpha/checkbox). |
 

@@ -1,12 +1,15 @@
-<%= content_tag(:fieldset, hidden: @input.hidden?) do %>
-  <% if @input.label %>
-    <%= content_tag(:legend, **@input.label_arguments) do %>
-      <%= @input.label %>
+<div class="FormControl-check-group-wrap">
+  <%= content_tag(:fieldset, hidden: @input.hidden?) do %>
+    <% if @input.label %>
+      <%= content_tag(:legend, **@input.label_arguments) do %>
+        <%= @input.label %>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= render(SpacingWrapper.new) do %>
-    <% @input.check_boxes.each do |check_box| %>
-      <%= render(check_box.to_component) %>
+    <%= render(SpacingWrapper.new) do %>
+      <% @input.check_boxes.each do |check_box| %>
+        <%= render(check_box.to_component) %>
+      <% end %>
     <% end %>
+    <%= render(Caption.new(input: @input)) %>
   <% end %>
-<% end %>
+</div>
