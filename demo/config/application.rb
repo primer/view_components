@@ -88,6 +88,11 @@ module Demo
           ["All themes", "all"]
         ]
       }
+
+      ActiveSupport.on_load(:action_controller) do
+        require "primer/yard/lookbook_docs_helper"
+        Lookbook::PageHelper.include(Primer::YARD::LookbookDocsHelper)
+      end
     end
   end
 end

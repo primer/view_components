@@ -110,7 +110,7 @@ module Primer
 
         def make
           registry = ::YARD::RegistryStore.new
-          registry.load!(".yardoc")
+          registry.load!(File.expand_path(File.join("..", "..", "..", ".yardoc"), __dir__))
 
           new(registry)
         end

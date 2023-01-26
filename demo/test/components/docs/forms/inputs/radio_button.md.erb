@@ -4,8 +4,8 @@ id: radio_button_input
 ---
 
 Radio buttons represent one of a set of options and are rendered as `<input type="radio">` in HTML.
-**NOTE**: You probably want to use the `RadioButtonGroup` component, as it allows rendering the
-aforementioned set of options.
+**NOTE**: You probably want to use the <%= link_to_component(Primer::Alpha::RadioButtonGroup) %>
+component instead, as it allows rendering a group of options.
 
 ## Usage
 
@@ -44,3 +44,7 @@ end
 | `system_arguments` | Hash | N/A | HTML attributes to apply to the `<option>` element. |
 
 
+
+## Examples
+
+<%= embed Primer::Forms::FormsPreview, :radio_button_with_nested_form %>

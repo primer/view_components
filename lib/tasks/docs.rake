@@ -21,9 +21,9 @@ namespace :docs do
     sleep
   end
 
-  task build: [:build_gatsby, :build_gatsby_adrs, :build_forms]
+  task build: [:build_gatsby_pages, :build_gatsby_adrs, :build_lookbook_pages]
 
-  task build_gatsby: :build_yard_registry do
+  task build_gatsby_pages: :build_yard_registry do
     registry = Primer::YARD::Registry.make
 
     require "primer/yard/legacy_gatsby_backend"
@@ -61,7 +61,7 @@ namespace :docs do
     end
   end
 
-  task build_forms: :build_yard_registry do
+  task build_lookbook_pages: :build_yard_registry do
     require "primer/yard/registry"
     require "primer/yard/lookbook_pages_backend"
 

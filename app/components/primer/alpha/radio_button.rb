@@ -5,8 +5,8 @@ module Primer
     RadioButton = Primer::FormComponents.from_input(Primer::Forms::Dsl::RadioButtonInput)
 
     # Radio buttons represent one of a set of options and are rendered as `<input type="radio">` in HTML.
-    # **NOTE**: You probably want to use the `RadioButtonGroup` component, as it allows rendering the
-    # aforementioned set of options.
+    # **NOTE**: You probably want to use the <%= link_to_component(Primer::Alpha::RadioButtonGroup) %>
+    # component instead, as it allows rendering a group of options.
     #
     # @form_usage
     #   class ExampleForm < ApplicationForm

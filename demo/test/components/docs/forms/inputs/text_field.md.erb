@@ -22,7 +22,7 @@ end
 | `placeholder` | String | N/A | Placeholder text. |
 | `inset` | Boolean | N/A | If `true`, renders the input in a visually inset state. |
 | `monospace` | Boolean | N/A | If `true`, uses a monospace font for the input field. |
-| `leading_visual` | Hash | N/A | Renders a leading visual icon before the text field's cursor. The hash will be passed to Primer's <%= link_to_component(Primer::Beta::Octicon) component. |
+| `leading_visual` | Hash | N/A | Renders a leading visual icon before the text field's cursor. The hash will be passed to Primer's [Octicon](<%= page_path(:octicon_input) %>) component. |
 | `show_clear_button` | Boolean | N/A | Whether or not to include a clear button inside the input that clears the input's contents when clicked. |
 | `clear_button_id` | String | N/A | The HTML id attribute of the clear button. |
 
@@ -53,3 +53,8 @@ end
 | `system_arguments` | Hash | N/A | HTML attributes to apply to the `<option>` element. |
 
 
+
+## Examples
+
+<%= embed Primer::Forms::FormsPreview, :single_text_field_form %>
+<%= embed Primer::Forms::FormsPreview, :multi_text_field_form %>

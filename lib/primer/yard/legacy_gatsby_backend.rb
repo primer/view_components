@@ -143,17 +143,6 @@ module Primer
               end
             end
 
-            if docs.non_slot_methods.any?
-              f.puts
-              f.puts("## Methods")
-
-              docs.non_slot_methods.each do |method_docs|
-                next if method_docs.base_docstring.strip.empty?
-
-                emit_method(method_docs, component, f)
-              end
-            end
-
             example_tags = docs.constructor.tags(:example)
 
             if example_tags.any?

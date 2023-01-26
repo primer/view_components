@@ -128,6 +128,12 @@ Kuby.define("ViewComponentsStorybook") do
       insert :build_demo_assets, before: :assets_phase do |dockerfile|
         dockerfile.run("npm", "install")
       end
+
+      # Certain Lookbook pages (specifically form input pages) need the yardoc registry
+      # to link to other components.
+      insert :build_yard_registry, after: :assets_phase do |dockerfile|
+        dockerfile.run("bundle", "exec", "rake", "docs:build_yard_registry")
+      end
     end
 
     kubernetes do
