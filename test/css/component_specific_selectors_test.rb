@@ -31,9 +31,6 @@ class ComponentSpecificSelectorsTest < Minitest::Test
     Primer::Alpha::AutoComplete => [
       ".autocomplete-item"
     ],
-    Primer::Alpha::Banner => [
-      ".Banner .Banner-close"
-    ],
     Primer::Alpha::Dialog => [
       ".Overlay"
     ],
