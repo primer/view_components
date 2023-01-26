@@ -65,16 +65,35 @@ module Primer
         render(Primer::Alpha::Banner.new(full: true, full_when_narrow: true)) { "This is a full width banner in a narrow viewport." }
       end
 
-      # @label Full width with max-width
-      def full_width_with_max_width
+      # @label Full width with lots more content
+      def full_width_with_lots_more_content
         render(Primer::Alpha::Banner.new(full: true)) { "This is a full width banner with a lot of content. It has a max-width to make sure that the text doesn't exceed too long and starts wrapping onto multiple lines." }
       end
 
-      # @label Full width with max-width and more options
-      def full_width_with_max_width_and_more_options
+      # @label Full width with dismissible
+      def full_width_with_dismissible
+        render(Primer::Alpha::Banner.new(full: true, dismissible: true)) { "This is a full width banner with a lot of content. It's dismissible. It has a max-width to make sure that the text doesn't exceed too long and starts wrapping onto multiple lines." }
+      end
+
+      # @label Full width with action button
+      def full_width_with_action_button
         render(Primer::Alpha::Banner.new(full: true, dismissible: true)) do |component|
           component.with_action_button(size: :small) { "Take action" }
-          "This is a full width banner with a lot of content. It has a max-width to make sure that the text does not exceed too long and starts wrapping onto multiple lines."
+          "This is a full width banner with a lot of content. It's dismissible and has an action button. It has a max-width to make sure that the text does not exceed too long and starts wrapping onto multiple lines."
+        end
+      end
+
+      # @label Full width with description
+      def full_width_with_description
+        render(
+          Primer::Alpha::Banner.new(
+            full: true,
+            dismissible: true,
+            description: "It also has a description that is long and wraps onto multiple lines. Not yet.. so I have to type some more, a lot more. Ok, I think now."
+          )
+        ) do |component|
+          component.with_action_button(size: :small) { "Take action" }
+          "This is a full width banner with a lot of content. It's dismissible and has an action button. It has a max-width to make sure that the text does not exceed too long and starts wrapping onto multiple lines."
         end
       end
       #
