@@ -113,7 +113,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::TimelineItemComponent",
       "Primer::SubheadComponent",
       "Primer::TabContainerComponent",
-      "Primer::HellipButton",
       "Primer::StateComponent",
       "Primer::OcticonSymbolsComponent",
       "Primer::SpinnerComponent",

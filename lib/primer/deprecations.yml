@@ -22,10 +22,6 @@ deprecations:
     replacement: "Primer::Beta::Button"
     guide: "https://primer.style/view-components/guides/primer_button_component"
 
-  - component: "Primer::HellipButton"
-    autocorrect: true
-    replacement: "Primer::Alpha::HellipButton"
-
   - component: "Primer::IconButton"
     autocorrect: true
     replacement: "Primer::Beta::IconButton"

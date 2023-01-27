@@ -1033,8 +1033,6 @@
   },
   "Primer::Content": {
   },
-  "Primer::HellipButton": {
-  },
   "Primer::IconButton": {
     "DEFAULT_SCHEME": "default",
     "SCHEME_MAPPINGS": {
