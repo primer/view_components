@@ -22,18 +22,6 @@ deprecations:
     replacement: "Primer::Beta::Button"
     guide: "https://primer.style/view-components/guides/primer_button_component"
 
-  - component: "Primer::Dropdown"
-    autocorrect: true
-    replacement: "Primer::Alpha::Dropdown"
-
-  - component: "Primer::Dropdown::Menu"
-    autocorrect: true
-    replacement: "Primer::Alpha::Dropdown::Menu"
-
-  - component: "Primer::Dropdown::Menu::Item"
-    autocorrect: true
-    replacement: "Primer::Alpha::Dropdown::Menu::Item"
-
   - component: "Primer::HellipButton"
     autocorrect: true
     replacement: "Primer::Alpha::HellipButton"

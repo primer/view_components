@@ -1033,14 +1033,6 @@
   },
   "Primer::Content": {
   },
-  "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
-  },
-  "Primer::Dropdown::Menu": {
-    "Item": "Primer::Dropdown::Menu::Item"
-  },
-  "Primer::Dropdown::Menu::Item": {
-  },
   "Primer::HellipButton": {
   },
   "Primer::IconButton": {
