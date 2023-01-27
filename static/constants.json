@@ -1085,8 +1085,6 @@
     ],
     "DEFAULT_ARIA_CURRENT_FOR_ANCHOR": "page"
   },
-  "Primer::StateComponent": {
-  },
   "Primer::SubheadComponent": {
   },
   "Primer::TabContainerComponent": {

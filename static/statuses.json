@@ -80,7 +80,6 @@
   "Primer::LayoutComponent": "alpha",
   "Primer::LocalTime": "deprecated",
   "Primer::Navigation::TabComponent": "alpha",
-  "Primer::StateComponent": "deprecated",
   "Primer::SubheadComponent": "deprecated",
   "Primer::TabContainerComponent": "deprecated",
   "Primer::TimeAgoComponent": "deprecated",

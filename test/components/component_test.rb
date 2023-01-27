@@ -113,7 +113,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::TimelineItemComponent",
       "Primer::SubheadComponent",
       "Primer::TabContainerComponent",
-      "Primer::StateComponent",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
