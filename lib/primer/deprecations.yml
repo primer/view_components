@@ -26,10 +26,6 @@ deprecations:
     autocorrect: true
     replacement: "Primer::Beta::IconButton"
 
-  - component: "Primer::LabelComponent"
-    autocorrect: true
-    replacement: "Primer::Beta::Label"
-
   - component: "Primer::LocalTime"
     autocorrect: false
     replacement: "Primer::Beta::RelativeTime"

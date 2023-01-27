@@ -77,7 +77,6 @@
   "Primer::ConditionalWrapper": "alpha",
   "Primer::Content": "stable",
   "Primer::IconButton": "deprecated",
-  "Primer::LabelComponent": "deprecated",
   "Primer::LayoutComponent": "alpha",
   "Primer::LinkComponent": "deprecated",
   "Primer::LocalTime": "deprecated",

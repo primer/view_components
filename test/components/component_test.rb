@@ -119,7 +119,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::OcticonComponent",
       "Primer::Markdown",
       "Primer::MenuComponent",
-      "Primer::LabelComponent",
       "Primer::LinkComponent",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",

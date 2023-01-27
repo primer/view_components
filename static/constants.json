@@ -1044,8 +1044,6 @@
       "danger"
     ]
   },
-  "Primer::LabelComponent": {
-  },
   "Primer::LayoutComponent": {
     "ALLOWED_SIDEBAR_COLS": [
       1,
