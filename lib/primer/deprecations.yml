@@ -31,10 +31,6 @@ deprecations:
     replacement: "Primer::Beta::RelativeTime"
     guide: "https://primer.style/view-components/guides/primer_local_time"
 
-  - component: "Primer::MenuComponent"
-    autocorrect: true
-    replacement: "Primer::Alpha::Menu"
-
   - component: "Primer::OcticonComponent"
     autocorrect: true
     replacement: "Primer::Beta::Octicon"

@@ -1078,8 +1078,6 @@
       "long"
     ]
   },
-  "Primer::MenuComponent": {
-  },
   "Primer::Navigation::TabComponent": {
     "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [
       true,
