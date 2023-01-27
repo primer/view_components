@@ -114,14 +114,12 @@ class PrimerComponentTest < Minitest::Test
       "Primer::SubheadComponent",
       "Primer::TabContainerComponent",
       "Primer::StateComponent",
-      "Primer::OcticonSymbolsComponent",
       "Primer::SpinnerComponent",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
       "Primer::Alpha::NavList::Section",
       "Primer::Component",
-      "Primer::OcticonsSymbolComponent",
       "Primer::Content",
       "Primer::PopoverComponent"
     ]

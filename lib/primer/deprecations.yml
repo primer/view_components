@@ -31,10 +31,6 @@ deprecations:
     replacement: "Primer::Beta::RelativeTime"
     guide: "https://primer.style/view-components/guides/primer_local_time"
 
-  - component: "Primer::OcticonSymbolsComponent"
-    autocorrect: true
-    replacement: "Primer::Alpha::OcticonSymbols"
-
   - component: "Primer::PopoverComponent"
     autocorrect: true
     replacement: "Primer::Beta::Popover"
