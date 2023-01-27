@@ -5,6 +5,7 @@ module Primer
     # Use a segmented control to let users select an option from a short list and immediately apply the selection
     class SegmentedControl < Primer::Component
       status :alpha
+      audited_at "2023-02-01"
 
       FULL_WIDTH_DEFAULT = false
       HIDE_LABELS_DEFAULT = false
