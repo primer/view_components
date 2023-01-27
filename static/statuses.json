@@ -81,8 +81,6 @@
   "Primer::LocalTime": "deprecated",
   "Primer::Navigation::TabComponent": "alpha",
   "Primer::TimeAgoComponent": "deprecated",
-  "Primer::TimelineItemComponent": "deprecated",
-  "Primer::TimelineItemComponent::BadgeComponent": "deprecated",
   "Primer::Tooltip": "deprecated",
   "Primer::Truncate": "beta"
 }

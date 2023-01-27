@@ -81,8 +81,6 @@
   "Primer::LocalTime": "",
   "Primer::Navigation::TabComponent": "",
   "Primer::TimeAgoComponent": "",
-  "Primer::TimelineItemComponent": "",
-  "Primer::TimelineItemComponent::BadgeComponent": "",
   "Primer::Tooltip": "",
   "Primer::Truncate": ""
 }
