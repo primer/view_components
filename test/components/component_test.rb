@@ -103,7 +103,6 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Tooltip, { label: "More" }],
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.with_tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
-    [Primer::Alpha::ActionList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::NavList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::Banner, {}]
   ].freeze
@@ -112,8 +111,10 @@ class PrimerComponentTest < Minitest::Test
     ignored_components = [
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
-      "Primer::Alpha::ActionList::Separator",
+      "Primer::Alpha::ActionList::Divider",
+      "Primer::Alpha::NavList::Item",
       "Primer::Alpha::NavList::Section",
+      "Primer::Alpha::OcticonSymbols",
       "Primer::Component",
       "Primer::Content"
     ]
