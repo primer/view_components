@@ -80,7 +80,6 @@
   "Primer::LayoutComponent": "",
   "Primer::LocalTime": "",
   "Primer::Navigation::TabComponent": "",
-  "Primer::TabContainerComponent": "",
   "Primer::TimeAgoComponent": "",
   "Primer::TimelineItemComponent": "",
   "Primer::TimelineItemComponent::BadgeComponent": "",

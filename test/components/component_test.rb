@@ -111,7 +111,6 @@ class PrimerComponentTest < Minitest::Test
   def test_registered_components
     ignored_components = [
       "Primer::TimelineItemComponent",
-      "Primer::TabContainerComponent",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
