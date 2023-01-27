@@ -114,7 +114,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::SubheadComponent",
       "Primer::TabContainerComponent",
       "Primer::StateComponent",
-      "Primer::SpinnerComponent",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",

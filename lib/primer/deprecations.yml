@@ -31,10 +31,6 @@ deprecations:
     replacement: "Primer::Beta::RelativeTime"
     guide: "https://primer.style/view-components/guides/primer_local_time"
 
-  - component: "Primer::SpinnerComponent"
-    autocorrect: true
-    replacement: "Primer::Beta::Spinner"
-
   - component: "Primer::StateComponent"
     autocorrect: true
     replacement: "Primer::Beta::State"
