@@ -79,7 +79,6 @@
   "Primer::IconButton": "deprecated",
   "Primer::LayoutComponent": "alpha",
   "Primer::LocalTime": "deprecated",
-  "Primer::Markdown": "deprecated",
   "Primer::MenuComponent": "deprecated",
   "Primer::Navigation::TabComponent": "alpha",
   "Primer::OcticonComponent": "deprecated",
