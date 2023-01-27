@@ -72,7 +72,6 @@ module Primer
       # @param multiple [Boolean] If set to true, the selection will allow multiple choices.
       # @param include_blank [Boolean, String] If set to true, an empty option will be created. If set to a string, the string will be used as the option's content and the value will be empty.
       # @param prompt [String] Create a prompt option with blank value and the text asking user to select something.
-      # @param system_arguments [Hash] <%= link_to_system_arguments_docs %>
 
       # @!method option
       #

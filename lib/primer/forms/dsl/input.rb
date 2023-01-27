@@ -27,7 +27,10 @@ module Primer
         #   @param required [Boolean] Default `false`. When set to `true`, causes an asterisk (*) to appear next to the field's label indicating it is a required field. Note that this option explicitly does _not_ add a `required` HTML attribute. Doing so would enable native browser validations, which are inaccessible and inconsistent with the Primer design system.
         #   @param aria [Hash] Key/value pairs that represent Aria attributes and their values. Eg. `aria: { current: true }` becomes `aria-current="true"`.
         #   @param data [Hash] Key/value pairs that represent data attributes and their values. Eg. `data: { foo: "bar" }` becomes `data-foo="bar"`.
-        #   @param system_arguments [Hash] HTML attributes to apply to the `<option>` element.
+        #   @macro form_system_arguments
+
+        # @!macro [new] form_system_arguments
+        #   @param system_arguments [Hash] A hash of attributes passed to the underlying Rails builder methods. These options may mean something special depending on the type of input, otherwise they are emitted as HTML attributes. See the [Rails documentation](https://guides.rubyonrails.org/form_helpers.html) for more information. In addition, the usual Primer utility arguments are accepted in system arguments. For example, passing `mt: 2` will add the `mt-2` class to the input. See the Primer system arguments docs for details.
 
         SPACE_DELIMITED_ARIA_ATTRIBUTES = %i[describedby].freeze
         DEFAULT_SIZE = :medium

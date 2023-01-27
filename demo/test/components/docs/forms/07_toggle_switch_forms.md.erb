@@ -1,0 +1,58 @@
+---
+title: "Toggle switch forms"
+label: "Toggle Switch Forms"
+id: toggle_switch_forms
+---
+
+The Primer toggle switch component is designed to immediately submit a true/false value to the server when toggled. The forms framework adds a label, caption, and validation message to the stock toggle switch in keeping with the other inputs in the framework. However, toggle switches cannot be added to forms directly. Instead, toggle switch forms are their own complete, standalone forms.
+
+Toggle switches make POST requests to the configured URL (the `src` argument).
+
+## Creating toggle switch forms
+
+Toggle switch forms can be defined in one of two ways: either by creating an instance of the `Primer::Forms::ToggleSwitchForm` class or by inheriting from it.
+
+### Instance
+
+<%= code :erb do %>
+  <%% render(Primer::Forms::ToggleSwitchForm.new(arguments)) %>
+<% end %>
+
+### Inheritance
+
+Define the form:
+
+<%= code :ruby do %>
+  # app/forms/my_toggle_form.rb
+  class MyToggleForm < Primer::Forms::ToggleSwitchForm
+    def initialize(**system_arguments)
+      super(arguments, **system_arguments)
+    end
+  end
+<% end %>
+
+Render the form:
+
+<%= code :erb do %>
+  <%%# app/views/some_controller/some_view.html.erb %>
+  <%% render(MyToggleForm.new) %>
+<% end %>
+
+## Arguments
+
+| Name | Type | Default | Description |
+| :- | :- | :- | :- |
+|`name`|String||The name of the input, used to associate the toggle switch with its label.|
+|`label`|String||Label text displayed adjacent to the input.|
+|`src`|String||The URL to submit toggle POST requests to.|
+|`csrf`|String||A CSRF token to submit along with the toggle value.|
+|`hidden`|Boolean||When set to `true`, visually hides the form.|
+|`label_arguments`|Hash||Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag.|
+
+## Error messages
+
+The server can indicate that an error occurred by responding with a non-2xx status code to toggle switch POST requests. In such a scenario, the response body will be used to populate the toggle switch form's validation message, and will cause a red warning icon to appear next to the switch.
+
+## Example
+
+<%= embed Primer::Forms::FormsPreview, :example_toggle_switch_form %>

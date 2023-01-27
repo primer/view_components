@@ -24,3 +24,7 @@ In cases where a lot of logic or markup is necessary, or where the caption text 
 Caption template files must be named after the field they describe. For example, a caption template for the `disco_name` field above would live in app/forms/example\_form/disco\_name_caption.html.erb.
 
 In cases where the `caption:` argument _and_ a caption template are provided, the `caption:` argument takes precedence.
+
+## Example
+
+<%= embed Primer::Forms::FormsPreview, :caption_template_form %>

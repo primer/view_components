@@ -78,12 +78,15 @@ module Primer
 
         # Forms
         Primer::Alpha::TextField => { form_component: true },
+        Primer::Alpha::TextArea => { form_component: true },
         Primer::Alpha::SelectList => { form_component: true },
         Primer::Alpha::MultiInput => { form_component: true, js: true },
         Primer::Alpha::RadioButton => { form_component: true },
         Primer::Alpha::RadioButtonGroup => { form_component: true },
         Primer::Alpha::CheckBox => { form_component: true },
         Primer::Alpha::CheckBoxGroup => { form_component: true },
+        Primer::Alpha::SubmitButton => { form_component: true },
+        Primer::Alpha::FormButton => { form_component: true },
       }
 
       class << self

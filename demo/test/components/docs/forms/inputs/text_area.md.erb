@@ -1,18 +1,16 @@
 ---
-title: Radio Button
-id: radio_button_input
+title: Text Area
+id: text_area_input
 ---
 
-Radio buttons represent one of a set of options and are rendered as `<input type="radio">` in HTML.
-**NOTE**: You probably want to use the <%= link_to_component(Primer::Alpha::RadioButtonGroup) %>
-component instead, as it allows rendering a group of options.
+Text areas are multi-line text inputs rendered using the `<textarea>` tag in HTML.
 
 ## Usage
 
 ```ruby
 class ExampleForm < ApplicationForm
   form do |example_form|
-    example_form.radio_button(attributes)
+    example_form.text_area(attributes)
   end
 end
 ```
@@ -45,6 +43,3 @@ end
 
 
 
-## Examples
-
-<%= embed Primer::Forms::FormsPreview, :radio_button_with_nested_form %>

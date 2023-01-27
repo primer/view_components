@@ -7,7 +7,7 @@ Primer forms is designed to be accessible by default. In service of this goal, t
 
 For such cases, Primer forms feature "after" content. Like [caption templates](<%= page_path(:caption_templates) %>), after content lives in a directory named after the form, specifically in a file called after\_content.html.erb. If present, after\_content.html.erb is rendered after the last form input.
 
-## Example
+## Usage
 
 <%= code :ruby do %>
   # app/forms/example_form.rb
@@ -33,3 +33,7 @@ For such cases, Primer forms feature "after" content. Like [caption templates](<
     )
   ) %>
 <% end %>
+
+## Example
+
+<%= embed Primer::Forms::FormsPreview, :after_content_form %>
