@@ -1066,8 +1066,6 @@
     "DEFAULT_SIDEBAR_COL": 3,
     "MAX_COL": 12
   },
-  "Primer::LinkComponent": {
-  },
   "Primer::LocalTime": {
     "DEFAULT_DIGIT_TYPE": "numeric",
     "DEFAULT_TEXT_TYPE": "short",
