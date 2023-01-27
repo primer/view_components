@@ -1085,8 +1085,6 @@
     ],
     "DEFAULT_ARIA_CURRENT_FOR_ANCHOR": "page"
   },
-  "Primer::OcticonComponent": {
-  },
   "Primer::OcticonSymbolsComponent": {
   },
   "Primer::PopoverComponent": {

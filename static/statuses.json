@@ -80,7 +80,6 @@
   "Primer::LayoutComponent": "alpha",
   "Primer::LocalTime": "deprecated",
   "Primer::Navigation::TabComponent": "alpha",
-  "Primer::OcticonComponent": "deprecated",
   "Primer::OcticonSymbolsComponent": "deprecated",
   "Primer::PopoverComponent": "deprecated",
   "Primer::SpinnerComponent": "deprecated",

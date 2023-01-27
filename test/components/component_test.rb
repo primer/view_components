@@ -116,7 +116,6 @@ class PrimerComponentTest < Minitest::Test
       "Primer::StateComponent",
       "Primer::OcticonSymbolsComponent",
       "Primer::SpinnerComponent",
-      "Primer::OcticonComponent",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
       "Primer::Alpha::ActionList::Separator",
