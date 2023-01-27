@@ -31,10 +31,6 @@ deprecations:
     replacement: "Primer::Beta::RelativeTime"
     guide: "https://primer.style/view-components/guides/primer_local_time"
 
-  - component: "Primer::SubheadComponent"
-    autocorrect: true
-    replacement: "Primer::Beta::Subhead"
-
   - component: "Primer::TabContainerComponent"
     autocorrect: true
     replacement: "Primer::Alpha::TabContainer"
