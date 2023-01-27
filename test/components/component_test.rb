@@ -120,8 +120,7 @@ class PrimerComponentTest < Minitest::Test
       "Primer::Alpha::ActionList::Separator",
       "Primer::Alpha::NavList::Section",
       "Primer::Component",
-      "Primer::Content",
-      "Primer::PopoverComponent"
+      "Primer::Content"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
