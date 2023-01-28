@@ -25,7 +25,9 @@ module Primer
         if respond_to?(:page_path)
           link_to(page.docs.short_name, page_path(page.page_id.to_sym.inspect))
         else
+          # rubocop:disable Rails/OutputSafety
           "[#{page.docs.short_name}](<%= page_path(#{page.page_id.to_sym.inspect}) %>)".html_safe
+          # rubocop:enable Rails/OutputSafety
         end
       end
     end

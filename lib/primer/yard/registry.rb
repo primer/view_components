@@ -62,8 +62,9 @@ module Primer
       def public_methods
         # Returns: only public methods that belong to this class (i.e. no inherited methods)
         # excluding the constructor
-        @public_methods ||= docs.meths
-          .reject { |mtd| mtd.tag(:private) || mtd.name == :initialize }
+        @public_methods ||= docs.meths.reject do |mtd|
+          mtd.tag(:private) || mtd.name == :initialize
+        end
       end
 
       def title

@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
+# :nocov:
+
 require "primer/yard/component_manifest"
 require "primer/yard/backend"
 require "primer/yard/lookbook_docs_helper"
 
 module Primer
   module YARD
+    # A single Lookbook page.
     class LookbookPage
       include DocsHelper
 
@@ -31,13 +34,15 @@ module Primer
       end
 
       def page_id
-        @id ||= docs.short_name.dasherize.underscore.tap do |id|
-          id << "_input" unless id.end_with?("_input")
+        @page_id ||= docs.short_name.dasherize.underscore.tap do |page_id|
+          page_id << "_input" unless id.end_with?("_input")
         end
       end
 
       def generate
-        path = File.join(*%w(demo test components docs forms inputs), "#{docs.short_name.dasherize.underscore}.md.erb")
+        path = File.join(*%w[demo test components docs forms inputs], "#{docs.short_name.dasherize.underscore}.md.erb")
+
+        # rubocop:disable Lint/UselessAssignment
         documented_methods = docs.non_slot_methods.select do |mtd|
           [component.name, "Primer::Forms::Dsl::InputMethods"].include?(mtd.parent.title)
         end
@@ -46,7 +51,9 @@ module Primer
         preview_erbs = preview_methods.map do |preview_method|
           "<%= embed Primer::Forms::FormsPreview, #{preview_method.inspect} %>"
         end
+        # rubocop:enable Lint/UselessAssignment
 
+        # rubocop:disable Security/Eval
         File.open(path, "w") do |f|
           f.write(eval(Erubi::Engine.new(<<~ERB, trim: true).src))
             ---
@@ -97,6 +104,7 @@ module Primer
             <% end %>
           ERB
         end
+        # rubocop:enable Security/Eval
       end
 
       private
@@ -116,14 +124,14 @@ module Primer
             description
           ]
 
-          "| #{parts.join(" | ")} |"
+          "| #{parts.join(' | ')} |"
         end
 
-        <<~END
+        <<~MARKDOWN
           | Name | Type | Default | Description |
           | :- | :- | :- | :- |
           #{rows.join("\n")}
-        END
+        MARKDOWN
       end
 
       def common_args_from(params)
@@ -139,13 +147,15 @@ module Primer
           macro = registry.yard_registry[".macro.form_input_arguments"]
           parser = ::YARD::Docstring.parser
           parser.parse(macro.macro_data)
-          parser.tags
+          parser
+            .tags
             .select { |tag| tag.tag_name == "param" }
             .map(&:name)
         end
       end
     end
 
+    # Backend that generates Lookbook pages.
     class LookbookPagesBackend < Backend
       attr_reader :registry
 
@@ -181,3 +191,4 @@ module Primer
     end
   end
 end
+# :nocov:
