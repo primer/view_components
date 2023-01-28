@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
+# :nocov:
+
 require "primer/view_components"
 require "primer/yard/docs_helper"
 require "view_component/test_helpers"
 
 module Primer
   module YARD
+    # A wrapper around a YARD class reference that provides convenience methods
+    # for extracting component parameters, accessibility status, etc.
     class RegistryEntry
       include DocsHelper
 
@@ -101,7 +105,8 @@ module Primer
       end
     end
 
-
+    # Wrapper around an instance of YARD::Registry that provides easy access to component
+    # documentation.
     class Registry
       class << self
         include ViewComponent::TestHelpers
@@ -125,9 +130,9 @@ module Primer
       def find(component)
         return entries[component] if entries.include?(component)
 
-        if (docs = yard_registry.get(component.name))
-          entries[component] = RegistryEntry.new(component, docs)
-        end
+        return unless (docs = yard_registry.get(component.name))
+
+        entries[component] = RegistryEntry.new(component, docs)
       end
 
       private
@@ -138,3 +143,4 @@ module Primer
     end
   end
 end
+# :nocov:

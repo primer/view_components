@@ -93,3 +93,4 @@ module Primer
     end
   end
 end
+# :nocov:

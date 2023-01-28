@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 0.0.120
+
+### Patch Changes
+
+- [#1772](https://github.com/primer/view_components/pull/1772) [`9dfec861`](https://github.com/primer/view_components/commit/9dfec861e67aa90a392a0047ae7a06bdbcd1d437) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing deprecated Primer::ClipboardCopy component and clipboard_copy.rb file
+
+* [#1771](https://github.com/primer/view_components/pull/1771) [`0541d18c`](https://github.com/primer/view_components/commit/0541d18c9d76155f5aea3e72420884b97c0ac3b9) Thanks [@jonrohan](https://github.com/jonrohan)! - Removing deprecated box_component.rb file `Primer::BoxComponent`
+
+- [#1782](https://github.com/primer/view_components/pull/1782) [`809d8d32`](https://github.com/primer/view_components/commit/809d8d3226ba62ce1040e5d9d5feacdbff1654f9) Thanks [@jdennes](https://github.com/jdennes)! - Prefer Primer::Beta::Button in ERBLint::Linters::ButtonComponentMigrationCounter
+
+* [#1783](https://github.com/primer/view_components/pull/1783) [`7337d5ef`](https://github.com/primer/view_components/commit/7337d5ef691c07288d42ba14bf2ac30a2eb11737) Thanks [@langermank](https://github.com/langermank)! - Remove the deprecated `Primer::DropdownMenuComponent`.
+
+- [#1768](https://github.com/primer/view_components/pull/1768) [`fe8e7071`](https://github.com/primer/view_components/commit/fe8e7071d90aa6bc8fe838fb75af384466f31bfa) Thanks [@jdennes](https://github.com/jdennes)! - Add RuboCop::Cop::Primer::TestSelector to encourage use of the test_selector argument
+
+* [#1780](https://github.com/primer/view_components/pull/1780) [`49d27b22`](https://github.com/primer/view_components/commit/49d27b22724deeb68b8e017306c97808813e3ee3) Thanks [@langermank](https://github.com/langermank)! - Bug fix: Adjust the body tag padding-right when an overlay is open to avoid page shift
+
+- [#1767](https://github.com/primer/view_components/pull/1767) [`cf28f5e4`](https://github.com/primer/view_components/commit/cf28f5e4179b73fe9307a944fdba52fc8e86449e) Thanks [@joelhawksley](https://github.com/joelhawksley)! - Use ViewComponent 3.0.0.rc1
+
+* [#1770](https://github.com/primer/view_components/pull/1770) [`b8b0308d`](https://github.com/primer/view_components/commit/b8b0308d9c12c98cc491cc2b9db905a3f0bb1073) Thanks [@tomthorogood](https://github.com/tomthorogood)! - Fix incorrect typography descriptions
+
+- [#1781](https://github.com/primer/view_components/pull/1781) [`716abfb1`](https://github.com/primer/view_components/commit/716abfb1ddb026790c8d26f6d88f5de472946d3e) Thanks [@jdennes](https://github.com/jdennes)! - Correct contributing guidelines
+
 ## 0.0.119
 
 ### Patch Changes

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nocov:
 module Primer
   module YARD
     # YARD Handler to parse `renders_one` calls.
@@ -19,3 +20,4 @@ module Primer
     end
   end
 end
+# :nocov:

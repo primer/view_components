@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
+# rubocop:disable Naming/MethodParameterName
+
+# :nocov:
+
 require "primer/yard/component_manifest"
 require "primer/yard/backend"
 
 module Primer
   module YARD
+    # Backend that generates documentation for the legacy, Gatsby-powered PVC docsite.
     class LegacyGatsbyBackend < Backend
       class << self
         def parse_example_tag(tag)
@@ -165,10 +170,8 @@ module Primer
                 f.puts(code.to_s)
                 f.puts("```")
               end
-            else
-              if manifest.components_with_examples.include?(component)
-                errors << { component.name => { example: "No examples found" } }
-              end
+            elsif manifest.components_with_examples.include?(component)
+              errors << { component.name => { example: "No examples found" } }
             end
           end
         end
@@ -263,3 +266,6 @@ module Primer
     end
   end
 end
+# :nocov:
+
+# rubocop:enable Naming/MethodParameterName

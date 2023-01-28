@@ -1,11 +1,16 @@
 # frozen_string_literal: true
 
+# :nocov:
+
 require "primer/yard/docs_helper"
 
 module Primer
   module YARD
+    # Shared functionality for generating documentation from YARD comments.
     class Backend
       include DocsHelper
+
+      private
 
       def view_context
         @view_context ||= begin
@@ -19,3 +24,4 @@ module Primer
     end
   end
 end
+# :nocov:

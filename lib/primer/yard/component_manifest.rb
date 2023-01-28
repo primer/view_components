@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
+# :nocov:
 module Primer
   module YARD
+    # The set of documented components (and associated metadata).
     class ComponentManifest
       COMPONENTS = {
         Primer::Beta::RelativeTime => {},
@@ -29,7 +31,7 @@ module Primer
         Primer::ButtonComponent => { js: true },
         Primer::Beta::ButtonGroup => {},
         Primer::Alpha::ButtonMarketing => {},
-        Primer::Beta::ClipboardCopy => {js: true },
+        Primer::Beta::ClipboardCopy => { js: true },
         Primer::Beta::CloseButton => {},
         Primer::Beta::Counter => {},
         Primer::Beta::Details => {},
@@ -40,7 +42,7 @@ module Primer
         Primer::Alpha::HiddenTextExpander => {},
         Primer::Beta::Label => {},
         Primer::LayoutComponent => {},
-        Primer::Beta::Link => {js: true },
+        Primer::Beta::Link => { js: true },
         Primer::Beta::Markdown => {},
         Primer::Alpha::Menu => {},
         Primer::Navigation::TabComponent => {},
@@ -87,7 +89,7 @@ module Primer
         Primer::Alpha::CheckBoxGroup => { form_component: true },
         Primer::Alpha::SubmitButton => { form_component: true },
         Primer::Alpha::FormButton => { form_component: true },
-      }
+      }.freeze
 
       class << self
         def each(&block)
@@ -108,22 +110,23 @@ module Primer
 
         def components_with_examples
           @components_with_examples ||= COMPONENTS.keys.select do |c|
-            COMPONENTS[c].fetch(:examples) { true }
+            COMPONENTS[c].fetch(:examples, true)
           end
         end
 
         def components_requiring_js
           @components_requiring_js ||= COMPONENTS.keys.select do |c|
-            COMPONENTS[c].fetch(:js) { false }
+            COMPONENTS[c].fetch(:js, false)
           end
         end
 
         def form_components
           @form_components ||= COMPONENTS.keys.select do |c|
-            COMPONENTS[c].fetch(:form_component) { false }
+            COMPONENTS[c].fetch(:form_component, false)
           end
         end
       end
     end
   end
 end
+# :nocov:
