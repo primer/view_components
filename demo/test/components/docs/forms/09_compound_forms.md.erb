@@ -1,0 +1,97 @@
+---
+title: "Compound forms"
+label: "Compound Forms"
+id: toggle_switch_forms
+---
+
+In addition to rendering individual forms, Primer supports combining forms together.
+
+## Form lists
+
+Form lists are arrays of one or more forms. They can be rendered anywhere individual forms can be rendered. Consider this example where the user wants to render two individual forms:
+
+<%= code :erb do %>
+  <%%= primer_form_with(model: Foo.new) do |f| %>
+    <%%= render(FirstForm.new(f)) %>
+    <%%= render(SecondForm.new(f)) %>
+  <%% end %>
+<% end %>
+
+The example above can be re-written using `FormList`:
+
+<%= code :erb do %>
+  <%%= primer_form_with(model: Foo.new) do |f| %>
+    <%%= render(Primer::Forms::FormList.new(FirstForm.new(f), SecondForm.new(f))) %>
+  <%% end %>
+<% end %>
+
+Form lists can come in handy in cases where the framework expects a single form object, such as the nested form option for check boxes and radio buttons:
+
+<%= code :ruby do %>
+  class ExampleForm < ApplicationForm
+    form do |example_form|
+      example_form.check_box(name: :foo, label: "Foo") do |check_box|
+        check_box.nested_form do |builder|
+          Primer::Forms::FormList.new(
+            FirstForm.new(builder),
+            SecondForm.new(builder)
+          )
+        end
+      end
+    end
+  end
+<% end %>
+
+## Associated records
+
+In all the examples above, Primer assumes `FirstForm` and `SecondForm` define inputs that have corresponding fields in the provided model object (an instance of `Foo`). However it's common in Rails to accept nested attributes for an associated model object. For example, a `User` may have a `Profile`. Both are created on signup, so the form should accept both sets of attributes. Rails provides the `fields_for` helper for just this scenario:
+
+<%= code :erb do %>
+  <%%= form_with(model: User.new) do |f| %>
+    <%%= f.text_field :username %>
+    <%%= f.fields_for(:profile) do |f| %>
+      <%%= f.text_field :first_name %>
+      <%%= f.text_field :last_name %>
+    <%% end %>
+  <%% end %>
+<% end %>
+
+Primer forms also support a `#fields_for` method for accomplishing the same goal with form objects. The example above can be rewritten as follows:
+
+<%= code :ruby do %>
+  # app/forms/signup_form.rb
+  class SignupForm < ApplicationForm
+    form do |signup_form|
+      signup_form.text_field(name: :username, label: "Username")
+      signup_form.fields_for(:profile) do |builder|
+        ProfileForm.new(builder)
+      end
+    end
+  end
+<% end %>
+
+<%= code :ruby do %>
+  # app/forms/profile_form.rb
+  class ProfileForm < ApplicationForm
+    form do |profile_form|
+      profile_form.text_field(name: :first_name, label: "First name")
+      profile_form.text_field(name: :last_name, label: "Last name")
+    end
+  end
+<% end %>
+
+## Avoiding attribute nesting
+
+For situations where an association exists between two models, the approach described above works well. However sometimes all you want is to compose two forms together that aren't connected by an association. In such cases the fields will still include the name of the parent model when submitted to the server, eg. `user[profile][first_name]` instead of `profile[first_name]`. To render the form independent of the parent, pass `nested: false` to `fields_for`:
+
+<%= code :ruby do %>
+  # app/forms/signup_form.rb
+  class SignupForm < ApplicationForm
+    form do |signup_form|
+      signup_form.text_field(name: :username, label: "Username")
+      signup_form.fields_for(:profile, nested: false) do |builder|
+        ProfileForm.new(builder)
+      end
+    end
+  end
+<% end %>

@@ -1,0 +1,28 @@
+---
+title: "Validations"
+id: validations
+---
+
+In Rails, forms usually have an associated model object. Models define validations which include validation messages that describe which validations failed and why. Primer forms automatically display validation messages when a model object is provided.
+
+## Custom validation messages
+
+All form inputs allow overriding the default validation message via the `:validation_message` argument:
+
+<%= code :ruby do %>
+  class ExampleForm < ApplicationForm
+    form do |example_form|
+      example_form.text_field(
+        name: :foo,
+        label: "Foo",
+        validation_message: "Custom validation message"
+      )
+    end
+  end
+<% end %>
+
+A custom validation message is also useful if no associated model object is available, i.e. for forms that are not tied to a database table.
+
+## Input focus
+
+Primer forms will automatically focus the first invalid input in accordance with accessibility best-practices. Inputs are considered invalid if the associated model's field is invalid _or_ if a custom validation message has been provided.
