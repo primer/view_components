@@ -144,6 +144,20 @@ module Primer
       end
       #
       # @!endgroup
+
+      # @!group Auto check
+      #
+      # @label Auto check request ok
+      def with_auto_check_ok
+        render(Primer::Alpha::TextField.new(auto_check_src: URLHelpers.example_check_ok_path, name: "my-text-field", label: "My text field"))
+      end
+
+      # @label Auto check request error
+      def with_auto_check_error
+        render(Primer::Alpha::TextField.new(auto_check_src: URLHelpers.example_check_error_path, name: "my-text-field", label: "My text field"))
+      end
+      #
+      # @!endgroup
     end
   end
 end
