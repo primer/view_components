@@ -10,6 +10,7 @@ class Primer::Forms::ToggleSwitchFormTest < Minitest::Test
     render_inline(ExampleToggleSwitchForm.new(csrf: bogus_csrf, src: "/toggle_switch"))
 
     assert_selector "toggle-switch[src='/toggle_switch'][csrf='#{bogus_csrf}']"
+    assert_selector "em", text: "favorite"
   end
 
   def test_can_render_without_subclass
