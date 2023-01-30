@@ -71,18 +71,18 @@ configurations for more information.
 1. An autocorrectable deprecation without a migration guide
 
 ```yml
-  - component: "Primer::LabelComponent"
+  - component: "Primer::DeprecatedComponent"
     autocorrect: true
-    replacement: "Primer::Beta::Label
+    replacement: "Primer::Beta::Component
 ```
 
 2. An autocorrectable deprecation with a migration guide to provide more information about the changes
 
 ```yml
-  - component: "Primer::LabelComponent"
+  - component: "Primer::DeprecatedComponent"
     autocorrect: true
-    replacement: "Primer::Beta::Label
-    guide: "https://example.com/label_component"
+    replacement: "Primer::Beta::Component
+    guide: "https://example.com/primer_component"
 ```
 
 3. A non-autocorrectable deprecation, with a replacement component and migration guide

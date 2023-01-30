@@ -1033,16 +1033,6 @@
   },
   "Primer::Content": {
   },
-  "Primer::Dropdown": {
-    "Menu": "Primer::Dropdown::Menu"
-  },
-  "Primer::Dropdown::Menu": {
-    "Item": "Primer::Dropdown::Menu::Item"
-  },
-  "Primer::Dropdown::Menu::Item": {
-  },
-  "Primer::HellipButton": {
-  },
   "Primer::IconButton": {
     "DEFAULT_SCHEME": "default",
     "SCHEME_MAPPINGS": {
@@ -1053,8 +1043,6 @@
       "default",
       "danger"
     ]
-  },
-  "Primer::LabelComponent": {
   },
   "Primer::LayoutComponent": {
     "ALLOWED_SIDEBAR_COLS": [
@@ -1078,8 +1066,6 @@
     "DEFAULT_SIDEBAR_COL": 3,
     "MAX_COL": 12
   },
-  "Primer::LinkComponent": {
-  },
   "Primer::LocalTime": {
     "DEFAULT_DIGIT_TYPE": "numeric",
     "DEFAULT_TEXT_TYPE": "short",
@@ -1092,10 +1078,6 @@
       "long"
     ]
   },
-  "Primer::Markdown": {
-  },
-  "Primer::MenuComponent": {
-  },
   "Primer::Navigation::TabComponent": {
     "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [
       true,
@@ -1103,26 +1085,7 @@
     ],
     "DEFAULT_ARIA_CURRENT_FOR_ANCHOR": "page"
   },
-  "Primer::OcticonComponent": {
-  },
-  "Primer::OcticonSymbolsComponent": {
-  },
-  "Primer::PopoverComponent": {
-  },
-  "Primer::SpinnerComponent": {
-  },
-  "Primer::StateComponent": {
-  },
-  "Primer::SubheadComponent": {
-  },
-  "Primer::TabContainerComponent": {
-  },
   "Primer::TimeAgoComponent": {
-  },
-  "Primer::TimelineItemComponent": {
-    "BadgeComponent": "Primer::TimelineItemComponent::BadgeComponent"
-  },
-  "Primer::TimelineItemComponent::BadgeComponent": {
   },
   "Primer::Tooltip": {
     "ALIGN_DEFAULT": "default",

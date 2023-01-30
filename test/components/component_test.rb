@@ -103,35 +103,20 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Tooltip, { label: "More" }],
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.with_tab(selected: true) { "Foo" } }],
     [Primer::Alpha::Tooltip, { type: :label, for_id: "some-button", text: "Foo" }],
-    [Primer::Alpha::ActionList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::NavList, { aria: { label: "Nav list" } }],
     [Primer::Alpha::Banner, {}]
   ].freeze
 
   def test_registered_components
     ignored_components = [
-      "Primer::TimelineItemComponent",
-      "Primer::SubheadComponent",
-      "Primer::TabContainerComponent",
-      "Primer::HellipButton",
-      "Primer::StateComponent",
-      "Primer::OcticonSymbolsComponent",
-      "Primer::SpinnerComponent",
-      "Primer::OcticonComponent",
-      "Primer::Markdown",
-      "Primer::MenuComponent",
-      "Primer::LabelComponent",
-      "Primer::LinkComponent",
       "Primer::Alpha::ActionList::Heading",
       "Primer::Alpha::ActionList::Item",
-      "Primer::Alpha::ActionList::Separator",
+      "Primer::Alpha::ActionList::Divider",
+      "Primer::Alpha::NavList::Item",
       "Primer::Alpha::NavList::Section",
+      "Primer::Alpha::OcticonSymbols",
       "Primer::Component",
-      "Primer::OcticonsSymbolComponent",
-      "Primer::Content",
-      "Primer::PopoverComponent",
-      "Primer::Dropdown",
-      "Primer::Dropdown::Menu"
+      "Primer::Content"
     ]
 
     primer_component_files_count = Dir["app/components/**/*.rb"].count { |p| p.exclude?("/experimental/") }
