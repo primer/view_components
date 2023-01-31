@@ -19,30 +19,6 @@ module Primer
 
       # @!method initialize
       #
-      # @example Default
-      #   <%= render(Primer::Alpha::RadioButtonGroup.new(name: :captain_default, label: "Favorite starship captain")) do |c| %>
-      #     <% c.radio_button(label: "Kathryn M. Janeway", value: "janeway") %>
-      #     <% c.radio_button(label: "Jean-Luc Picard", value: "picard") %>
-      #     <% c.radio_button(label: "James T. Kirk", value: "kirk") %>
-      #     <% c.radio_button(label: "Benjamin L. Sisko", value: "sisko") %>
-      #   <% end %>
-      #
-      # @example Disabled
-      #   <%= render(Primer::Alpha::RadioButtonGroup.new(name: :captain_disabled, label: "Favorite starship captain", disabled: true)) do |c| %>
-      #     <% c.radio_button(label: "Kathryn M. Janeway", value: "janeway") %>
-      #     <% c.radio_button(label: "Jean-Luc Picard", value: "picard") %>
-      #     <% c.radio_button(label: "James T. Kirk", value: "kirk") %>
-      #     <% c.radio_button(label: "Benjamin L. Sisko", value: "sisko") %>
-      #   <% end %>
-      #
-      # @example With a caption
-      #   <%= render(Primer::Alpha::RadioButtonGroup.new(name: :captain_caption, label: "Favorite starship captain", caption: "Make it so.")) do |c| %>
-      #     <% c.radio_button(label: "Kathryn M. Janeway", value: "janeway") %>
-      #     <% c.radio_button(label: "Jean-Luc Picard", value: "picard") %>
-      #     <% c.radio_button(label: "James T. Kirk", value: "kirk") %>
-      #     <% c.radio_button(label: "Benjamin L. Sisko", value: "sisko") %>
-      #   <% end %>
-      #
       # @param hidden [Boolean] When set to `true`, visually hides the group.
       # @param caption [String] A string describing the field and what sorts of input it expects. Displayed below the group.
       # @param label_arguments [Hash] Attributes that will be passed to Rails' `builder.label` method. These can be HTML attributes or any of the other label options Rails supports. They will appear as HTML attributes on the `<label>` tag.

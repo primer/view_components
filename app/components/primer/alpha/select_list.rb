@@ -19,54 +19,6 @@ module Primer
 
       # @!method initialize
       #
-      # @example Default
-      #   <%= render(Primer::Alpha::SelectList.new(name: :places, label: "Places")) do |c| %>
-      #     <% c.option(label: "Lopez Island", value: "lopez") %>
-      #     <% c.option(label: "Shaw Island", value: "shaw") %>
-      #     <% c.option(label: "Orcas Island", value: "orcas") %>
-      #     <% c.option(label: "San Juan Island", value: "san_juan") %>
-      #   <% end %>
-      #
-      # @example Full width
-      #   <%= render(Primer::Alpha::SelectList.new(name: :places, label: "Places", full_width: true)) do |c| %>
-      #     <% c.option(label: "Lopez Island", value: "lopez") %>
-      #     <% c.option(label: "Shaw Island", value: "shaw") %>
-      #     <% c.option(label: "Orcas Island", value: "orcas") %>
-      #     <% c.option(label: "San Juan Island", value: "san_juan") %>
-      #   <% end %>
-      #
-      # @example Disabled
-      #   <%= render(Primer::Alpha::SelectList.new(name: :places, label: "Places", disabled: true)) do |c| %>
-      #     <% c.option(label: "Lopez Island", value: "lopez") %>
-      #     <% c.option(label: "Shaw Island", value: "shaw") %>
-      #     <% c.option(label: "Orcas Island", value: "orcas") %>
-      #     <% c.option(label: "San Juan Island", value: "san_juan") %>
-      #   <% end %>
-      #
-      # @example Invalid
-      #   <%= render(Primer::Alpha::SelectList.new(name: :places, label: "Places", invalid: true)) do |c| %>
-      #     <% c.option(label: "Lopez Island", value: "lopez") %>
-      #     <% c.option(label: "Shaw Island", value: "shaw") %>
-      #     <% c.option(label: "Orcas Island", value: "orcas") %>
-      #     <% c.option(label: "San Juan Island", value: "san_juan") %>
-      #   <% end %>
-      #
-      # @example With a caption
-      #   <%= render(Primer::Alpha::SelectList.new(name: :places, label: "Places", caption: "Choose your favorite place!")) do |c| %>
-      #     <% c.option(label: "Lopez Island", value: "lopez") %>
-      #     <% c.option(label: "Shaw Island", value: "shaw") %>
-      #     <% c.option(label: "Orcas Island", value: "orcas") %>
-      #     <% c.option(label: "San Juan Island", value: "san_juan") %>
-      #   <% end %>
-      #
-      # @example With a validation message
-      #   <%= render(Primer::Alpha::SelectList.new(name: :places, label: "Places", include_blank: "Select a place", validation_message: "Place can't be blank")) do |c| %>
-      #     <% c.option(label: "Lopez Island", value: "lopez") %>
-      #     <% c.option(label: "Shaw Island", value: "shaw") %>
-      #     <% c.option(label: "Orcas Island", value: "orcas") %>
-      #     <% c.option(label: "San Juan Island", value: "san_juan") %>
-      #   <% end %>
-      #
       # @macro form_input_arguments
       #
       # @param multiple [Boolean] If set to true, the selection will allow multiple choices.
