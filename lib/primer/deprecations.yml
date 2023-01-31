@@ -26,11 +26,6 @@ deprecations:
     autocorrect: true
     replacement: "Primer::Beta::IconButton"
 
-  - component: "Primer::LocalTime"
-    autocorrect: false
-    replacement: "Primer::Beta::RelativeTime"
-    guide: "https://primer.style/view-components/guides/primer_local_time"
-
   - component: "Primer::TimeAgoComponent"
     autocorrect: false
     replacement: "Primer::Beta::RelativeTime"
