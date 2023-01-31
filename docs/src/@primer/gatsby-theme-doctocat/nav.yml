@@ -39,10 +39,6 @@
     url: "/components/beta/buttongroup"
   - title: ButtonMarketing
     url: "/components/alpha/buttonmarketing"
-  - title: CheckBox
-    url: "/components/alpha/checkbox"
-  - title: CheckBoxGroup
-    url: "/components/alpha/checkboxgroup"
   - title: ClipboardCopy
     url: "/components/beta/clipboardcopy"
   - title: CloseButton
@@ -57,8 +53,6 @@
     url: "/components/alpha/dropdown"
   - title: Flash
     url: "/components/beta/flash"
-  - title: FormButton
-    url: "/components/alpha/formbutton"
   - title: Heading
     url: "/components/beta/heading"
   - title: HiddenTextExpander
@@ -79,8 +73,6 @@
     url: "/components/beta/markdown"
   - title: Menu
     url: "/components/alpha/menu"
-  - title: MultiInput
-    url: "/components/alpha/multiinput"
   - title: NavList
     url: "/components/alpha/navlist"
   - title: Octicon
@@ -91,24 +83,16 @@
     url: "/components/beta/popover"
   - title: ProgressBar
     url: "/components/beta/progressbar"
-  - title: RadioButton
-    url: "/components/alpha/radiobutton"
-  - title: RadioButtonGroup
-    url: "/components/alpha/radiobuttongroup"
   - title: RelativeTime
     url: "/components/beta/relativetime"
   - title: SegmentedControl
     url: "/components/alpha/segmentedcontrol"
-  - title: SelectList
-    url: "/components/alpha/selectlist"
   - title: Spinner
     url: "/components/beta/spinner"
   - title: State
     url: "/components/beta/state"
   - title: Subhead
     url: "/components/beta/subhead"
-  - title: SubmitButton
-    url: "/components/alpha/submitbutton"
   - title: TabContainer
     url: "/components/alpha/tabcontainer"
   - title: TabNav
@@ -117,8 +101,6 @@
     url: "/components/alpha/tabpanels"
   - title: Text
     url: "/components/beta/text"
-  - title: TextArea
-    url: "/components/alpha/textarea"
   - title: TextField
     url: "/components/alpha/textfield"
   - title: TimelineItem
@@ -149,10 +131,6 @@
     url: "/components/timeago"
   - title: Tooltip
     url: "/components/tooltip"
-- title: Forms
-  children:
-  - title: Getting started
-    url: "/forms/getting_started"
 - title: Architecture decisions
   children:
   - title: Developing and publishing client-side behaviours
