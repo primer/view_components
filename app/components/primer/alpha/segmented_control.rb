@@ -28,7 +28,18 @@ module Primer
         )
       }
 
-      # @example With subheading and description
+      # @example With a label above and caption below
+      #   <%= render(Primer::Box.new(display: :flex, direction: :column)) do %>
+      #     <%= render(Primer::BaseComponent.new(tag: "span", id: "scLabel-horiz")) { "File view" } %>
+      #     <%= render(Primer::Alpha::SegmentedControl.new("aria-labelledby": "scLabel-horiz", "aria-describedby": "scCaption-horiz")) do |component| %>
+      #       <% component.with_item(label: "Preview", selected: true) %>
+      #       <% component.with_item(label: "Raw") %>
+      #       <% component.with_item(label: "Blame") %>
+      #     <% end %>
+      #     <%= render(Primer::Beta::Text.new(font_size: :small, mt: 1, color: :muted, id: "scCaption-horiz")) { "Change the way the file is viewed" } %>
+      #   <% end %>
+      #
+      # @example With a label and caption on the left
       #   <%= render(Primer::Beta::Subhead.new) do |component| %>
       #     <% component.with_heading(id: "scLabel-vert") { "File view" } %>
       #     <% component.with_description(id: "scCaption-vert") { "Change the way the file is viewed" } %>
@@ -39,17 +50,6 @@ module Primer
       #         <% component.with_item(label: "Blame") %>
       #       <% end %>
       #     <% end %>
-      #   <% end %>
-      #
-      # @example With Label and caption
-      #   <%= render(Primer::Box.new(display: :flex, direction: :column)) do %>
-      #     <%= render(Primer::BaseComponent.new(tag: "label", id: "scLabel-horiz")) { "File view" } %>
-      #     <%= render(Primer::Alpha::SegmentedControl.new("aria-labelledby": "scLabel-horiz", "aria-describedby": "scCaption-horiz")) do |component| %>
-      #       <% component.with_item(label: "Preview", selected: true) %>
-      #       <% component.with_item(label: "Raw") %>
-      #       <% component.with_item(label: "Blame") %>
-      #     <% end %>
-      #     <%= render(Primer::Beta::Text.new(font_size: :small, mt: 1, color: :muted, id: "scCaption-horiz")) { "Change the way the file is viewed" } %>
       #   <% end %>
       #
       # @example Basic usage
