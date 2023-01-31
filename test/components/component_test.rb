@@ -99,7 +99,6 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Beta::Text, {}],
     [Primer::Truncate, {}],
     [Primer::Beta::Truncate, {}, proc { |component| component.with_item { "Foo" } }],
-    [Primer::TimeAgoComponent, { time: Time.zone.now }],
     [Primer::Beta::TimelineItem, {}, proc { |component| component.with_body { "Foo" } }],
     [Primer::Tooltip, { label: "More" }],
     [Primer::Alpha::UnderlineNav, { label: "aria label" }, proc { |component| component.with_tab(selected: true) { "Foo" } }],

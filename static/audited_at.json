@@ -80,7 +80,6 @@
   "Primer::LayoutComponent": "",
   "Primer::LocalTime": "",
   "Primer::Navigation::TabComponent": "",
-  "Primer::TimeAgoComponent": "",
   "Primer::Tooltip": "",
   "Primer::Truncate": ""
 }

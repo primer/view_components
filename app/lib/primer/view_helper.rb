@@ -9,7 +9,6 @@ module Primer
     HELPERS = {
       octicon: "Primer::Beta::Octicon",
       heading: "Primer::Beta::Heading",
-      time_ago: "Primer::TimeAgoComponent",
       image: "Primer::Alpha::Image"
     }.freeze
 
