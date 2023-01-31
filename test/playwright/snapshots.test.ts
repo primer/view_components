@@ -20,7 +20,8 @@ test('default snapshots', async ({page}) => {
     console.log(`Testing ${preview.name}`)
     // If any preview example contains a "default" key, we'll use that as the default screenshot
     const defaultExample = preview.examples.find(example => example.name === 'default')!
-    await page.goto(defaultExample.inspect_path)
+    const previewUrl = defaultExample.inspect_path.replace('/lookbook/inspect', '/lookbook/preview')
+    await page.goto(previewUrl)
     const defaultScreenshot = await page.locator('#component-preview').screenshot({animations: 'disabled'})
     expect(defaultScreenshot).toMatchSnapshot([preview.name, 'default.png'])
   }
