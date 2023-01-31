@@ -1,5 +1,5 @@
 <%= render(Primer::Box.new(display: :flex, direction: :column)) do %>
-  <%= render(Primer::BaseComponent.new(tag: "label", id: "scLabel-horiz")) { "File view" } %>
+  <%= render(Primer::BaseComponent.new(tag: "span", id: "scLabel-horiz")) { "File view" } %>
   <%= render(Primer::Alpha::SegmentedControl.new("aria-labelledby": "scLabel-horiz", "aria-describedby": "scCaption-horiz")) do |component| %>
     <% component.with_item(label: "Preview", selected: true) %>
     <% component.with_item(label: "Raw") %>
