@@ -3,6 +3,9 @@
 module Primer
   module Alpha
     # Use a segmented control to let users select an option from a short list and immediately apply the selection
+    # @accessibility
+    #   A `SegmentedControl` should not be used in a form as a replacement for something like a radio group or select.
+    #   See the [Accessibility section](https://primer.style/design/components/segmented-control#accessibility) of the SegmentedControl interface guidelines for more details.
     class SegmentedControl < Primer::Component
       status :alpha
       audited_at "2023-02-01"
@@ -25,6 +28,30 @@ module Primer
         )
       }
 
+      # @example With subheading and description
+      #   <%= render(Primer::Beta::Subhead.new) do |component| %>
+      #     <% component.with_heading(id: "scLabel-vert") { "File view" } %>
+      #     <% component.with_description(id: "scCaption-vert") { "Change the way the file is viewed" } %>
+      #     <% component.with_actions do %>
+      #       <%= render(Primer::Alpha::SegmentedControl.new("aria-labelledby": "scLabel-vert", "aria-describedby": "scCaption-vert")) do |component| %>
+      #         <% component.with_item(label: "Preview", selected: true) %>
+      #         <% component.with_item(label: "Raw") %>
+      #         <% component.with_item(label: "Blame") %>
+      #       <% end %>
+      #     <% end %>
+      #   <% end %>
+      #
+      # @example With Label and caption
+      #   <%= render(Primer::Box.new(display: :flex, direction: :column)) do %>
+      #     <%= render(Primer::BaseComponent.new(tag: "label", id: "scLabel-horiz")) { "File view" } %>
+      #     <%= render(Primer::Alpha::SegmentedControl.new("aria-labelledby": "scLabel-horiz", "aria-describedby": "scCaption-horiz")) do |component| %>
+      #       <% component.with_item(label: "Preview", selected: true) %>
+      #       <% component.with_item(label: "Raw") %>
+      #       <% component.with_item(label: "Blame") %>
+      #     <% end %>
+      #     <%= render(Primer::Beta::Text.new(font_size: :small, mt: 1, color: :muted, id: "scCaption-horiz")) { "Change the way the file is viewed" } %>
+      #   <% end %>
+      #
       # @example Basic usage
       #
       #   <%= render(Primer::Alpha::SegmentedControl.new("aria-label": "File view")) do |component| %>
@@ -60,30 +87,6 @@ module Primer
       #     <%= component.with_item(label: "Preview", icon: :eye, selected: true) %>
       #     <%= component.with_item(label: "Raw", icon: :"file-code") %>
       #     <%= component.with_item(label: "Blame", icon: :people) %>
-      #   <% end %>
-      #
-      # @example With subheading and description
-      #   <%= render(Primer::Beta::Subhead.new) do |component| %>
-      #     <% component.with_heading(id: "scLabel-vert") { "File view" } %>
-      #     <% component.with_description(id: "scCaption-vert") { "Change the way the file is viewed" } %>
-      #     <% component.with_actions do %>
-      #       <%= render(Primer::Alpha::SegmentedControl.new("aria-labelledby": "scLabel-vert", "aria-describedby": "scCaption-vert")) do |component| %>
-      #         <% component.with_item(label: "Preview", selected: true) %>
-      #         <% component.with_item(label: "Raw") %>
-      #         <% component.with_item(label: "Blame") %>
-      #       <% end %>
-      #     <% end %>
-      #   <% end %>
-      #
-      # @example With Label and caption
-      #   <%= render(Primer::Box.new(display: :flex, direction: :column)) do %>
-      #     <%= render(Primer::BaseComponent.new(tag: "label", id: "scLabel-horiz")) { "File view" } %>
-      #     <%= render(Primer::Alpha::SegmentedControl.new("aria-labelledby": "scLabel-horiz", "aria-describedby": "scCaption-horiz")) do |component| %>
-      #       <% component.with_item(label: "Preview", selected: true) %>
-      #       <% component.with_item(label: "Raw") %>
-      #       <% component.with_item(label: "Blame") %>
-      #     <% end %>
-      #     <%= render(Primer::Beta::Text.new(font_size: :small, mt: 1, color: :muted, id: "scCaption-horiz")) { "Change the way the file is viewed" } %>
       #   <% end %>
       #
       # @param hide_labels [Boolean] Whether to hide the labels and only show the icons
