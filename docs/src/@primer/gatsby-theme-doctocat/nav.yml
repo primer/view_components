@@ -125,8 +125,6 @@
     url: "/components/button"
   - title: IconButton
     url: "/components/iconbutton"
-  - title: LocalTime
-    url: "/components/localtime"
   - title: Tooltip
     url: "/components/tooltip"
 - title: Architecture decisions

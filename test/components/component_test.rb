@@ -28,7 +28,6 @@ class PrimerComponentTest < Minitest::Test
     [Primer::Alpha::TabNav, { label: "label" }],
     [Primer::Alpha::UnderlinePanels, { label: "Panel label" }],
     [Primer::Alpha::Image, { src: "https://github.com/github.png", alt: "alt" }],
-    [Primer::LocalTime, { datetime: DateTime.parse("2014-06-01T13:05:07Z") }],
     [Primer::Alpha::ImageCrop, { src: "Foo" }],
     [Primer::IconButton, { icon: :star, "aria-label": "Label" }],
     [Primer::Alpha::ActionList, { aria: { label: "Action List" } }, lambda do |component|
