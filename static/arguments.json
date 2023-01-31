@@ -2450,32 +2450,6 @@
     ]
   },
   {
-    "component": "TimeAgo",
-    "status": "deprecated",
-    "source": "https://github.com/primer/view_components/tree/main/app/components/primer/time_ago_component.rb",
-    "lookbook": "https://primer.style/view-components/lookbook/inspect/primer/time_ago/default/",
-    "parameters": [
-      {
-        "name": "time",
-        "type": "Time",
-        "default": "N/A",
-        "description": "The time to be formatted"
-      },
-      {
-        "name": "micro",
-        "type": "Boolean",
-        "default": "`false`",
-        "description": "If true then the text will be formatted in \"micro\" mode, using as few characters as possible"
-      },
-      {
-        "name": "system_arguments",
-        "type": "Hash",
-        "default": "N/A",
-        "description": "[System arguments](/system-arguments)"
-      }
-    ]
-  },
-  {
     "component": "Tooltip",
     "status": "deprecated",
     "source": "https://github.com/primer/view_components/tree/main/app/components/primer/tooltip.rb",
