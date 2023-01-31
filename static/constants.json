@@ -1066,18 +1066,6 @@
     "DEFAULT_SIDEBAR_COL": 3,
     "MAX_COL": 12
   },
-  "Primer::LocalTime": {
-    "DEFAULT_DIGIT_TYPE": "numeric",
-    "DEFAULT_TEXT_TYPE": "short",
-    "DIGIT_TYPE_OPTIONS": [
-      "numeric",
-      "2-digit"
-    ],
-    "TEXT_TYPE_OPTIONS": [
-      "short",
-      "long"
-    ]
-  },
   "Primer::Navigation::TabComponent": {
     "ARIA_CURRENT_OPTIONS_FOR_ANCHOR": [
       true,
